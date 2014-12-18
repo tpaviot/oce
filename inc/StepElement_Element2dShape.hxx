@@ -6,14 +6,13 @@
 #ifndef _StepElement_Element2dShape_HeaderFile
 #define _StepElement_Element2dShape_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepElement_Element2dShape {
+
+enum StepElement_Element2dShape
+{
 StepElement_Quadrilateral,
 StepElement_Triangle
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepElement_Element2dShape_HeaderFile

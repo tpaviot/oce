@@ -6,65 +6,58 @@
 #ifndef _BRepPrim_Wedge_HeaderFile
 #define _BRepPrim_Wedge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepPrim_GWedge_HeaderFile
 #include <BRepPrim_GWedge.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_DomainError;
 class gp_Ax2;
 
 
-//! Provides constructors without Builders. <br>
-class BRepPrim_Wedge  : public BRepPrim_GWedge {
+//! Provides constructors without Builders.
+class BRepPrim_Wedge  : public BRepPrim_GWedge
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a  Wedge  algorithm.   <Axes> is  the axis <br>
-//!          system for the primitive. <br>
-//! <br>
-//!          XMin, YMin, ZMin are set to 0 <br>
-//!          XMax, YMax, ZMax are set to dx, dy, dz <br>
-//!          Z2Min = ZMin <br>
-//!          Z2Max = ZMax <br>
-//!          X2Min = XMin <br>
-//!          X2Max = XMax <br>
-//!          The result is a box <br>
-//!          dx,dy,dz should be positive <br>
-  Standard_EXPORT   BRepPrim_Wedge(const gp_Ax2& Axes,const Standard_Real dx,const Standard_Real dy,const Standard_Real dz);
-  //! Creates  a Wedge  primitive. <Axes> is   the  axis <br>
-//!          system for the primitive. <br>
-//! <br>
-//!          XMin, YMin, ZMin are set to 0 <br>
-//!          XMax, YMax, ZMax are set to dx, dy, dz <br>
-//!          Z2Min = ZMin <br>
-//!          Z2Max = ZMax <br>
-//!          X2Min = ltx <br>
-//!          X2Max = ltx <br>
-//!          The result is a STEP right angular wedge <br>
-//!          dx,dy,dz should be positive <br>
-//!          ltx should not be negative <br>
-  Standard_EXPORT   BRepPrim_Wedge(const gp_Ax2& Axes,const Standard_Real dx,const Standard_Real dy,const Standard_Real dz,const Standard_Real ltx);
-  //! Create  a Wedge primitive.   <Axes>  is  the  axis <br>
-//!          system for the primitive. <br>
-//! <br>
-//!          all the fields are set to the corresponding value <br>
-//!          XYZMax - XYZMin should be positive <br>
-//!          ZX2Max - ZX2Min should not be negative <br>
-  Standard_EXPORT   BRepPrim_Wedge(const gp_Ax2& Axes,const Standard_Real xmin,const Standard_Real ymin,const Standard_Real zmin,const Standard_Real z2min,const Standard_Real x2min,const Standard_Real xmax,const Standard_Real ymax,const Standard_Real zmax,const Standard_Real z2max,const Standard_Real x2max);
-
+  
+  //! Creates a  Wedge  algorithm.   <Axes> is  the axis
+  //! system for the primitive.
+  //!
+  //! XMin, YMin, ZMin are set to 0
+  //! XMax, YMax, ZMax are set to dx, dy, dz
+  //! Z2Min = ZMin
+  //! Z2Max = ZMax
+  //! X2Min = XMin
+  //! X2Max = XMax
+  //! The result is a box
+  //! dx,dy,dz should be positive
+  Standard_EXPORT BRepPrim_Wedge(const gp_Ax2& Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz);
+  
+  //! Creates  a Wedge  primitive. <Axes> is   the  axis
+  //! system for the primitive.
+  //!
+  //! XMin, YMin, ZMin are set to 0
+  //! XMax, YMax, ZMax are set to dx, dy, dz
+  //! Z2Min = ZMin
+  //! Z2Max = ZMax
+  //! X2Min = ltx
+  //! X2Max = ltx
+  //! The result is a STEP right angular wedge
+  //! dx,dy,dz should be positive
+  //! ltx should not be negative
+  Standard_EXPORT BRepPrim_Wedge(const gp_Ax2& Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz, const Standard_Real ltx);
+  
+  //! Create  a Wedge primitive.   <Axes>  is  the  axis
+  //! system for the primitive.
+  //!
+  //! all the fields are set to the corresponding value
+  //! XYZMax - XYZMin should be positive
+  //! ZX2Max - ZX2Min should not be negative
+  Standard_EXPORT BRepPrim_Wedge(const gp_Ax2& Axes, const Standard_Real xmin, const Standard_Real ymin, const Standard_Real zmin, const Standard_Real z2min, const Standard_Real x2min, const Standard_Real xmax, const Standard_Real ymax, const Standard_Real zmax, const Standard_Real z2max, const Standard_Real x2max);
 
 
 
@@ -87,7 +80,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepPrim_Wedge_HeaderFile

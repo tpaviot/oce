@@ -5,28 +5,14 @@
 
 #include <TDF_HAttributeArray1.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_AttributeArray1_HeaderFile
 #include <TDF_AttributeArray1.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(TDF_HAttributeArray1,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TDF_HAttributeArray1)
 
 
-#define ItemHArray1 Handle_TDF_Attribute
+#define ItemHArray1 Handle(TDF_Attribute)
 #define ItemHArray1_hxx <TDF_Attribute.hxx>
 #define TheArray1 TDF_AttributeArray1
 #define TheArray1_hxx <TDF_AttributeArray1.hxx>

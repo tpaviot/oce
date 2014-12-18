@@ -6,28 +6,21 @@
 #ifndef _StepRepr_ValueRange_HeaderFile
 #define _StepRepr_ValueRange_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_ValueRange_HeaderFile
 #include <Handle_StepRepr_ValueRange.hxx>
-#endif
 
-#ifndef _StepRepr_CompoundRepresentationItem_HeaderFile
 #include <StepRepr_CompoundRepresentationItem.hxx>
-#endif
 
 
-//! Added for Dimensional Tolerances <br>
-class StepRepr_ValueRange : public StepRepr_CompoundRepresentationItem {
+//! Added for Dimensional Tolerances
+class StepRepr_ValueRange : public StepRepr_CompoundRepresentationItem
+{
 
 public:
 
   
-  Standard_EXPORT   StepRepr_ValueRange();
+  Standard_EXPORT StepRepr_ValueRange();
 
 
 
@@ -50,7 +43,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_ValueRange_HeaderFile

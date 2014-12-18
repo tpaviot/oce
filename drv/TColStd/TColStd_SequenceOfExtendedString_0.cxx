@@ -5,18 +5,10 @@
 
 #include <TColStd_SequenceOfExtendedString.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TColStd_SequenceNodeOfSequenceOfExtendedString_HeaderFile
 #include <TColStd_SequenceNodeOfSequenceOfExtendedString.hxx>
-#endif
  
 
 #define SeqItem TCollection_ExtendedString

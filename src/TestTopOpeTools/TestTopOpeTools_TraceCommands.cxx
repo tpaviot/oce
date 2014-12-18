@@ -14,20 +14,13 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
 #include <TestTopOpeTools.hxx>
 #include <TestTopOpeTools_Trace.hxx>
 #include <Draw_Interpretor.hxx>
 #include <Draw_Appli.hxx>
 #include <TopOpeBRepTool_define.hxx>
 
-#ifdef HAVE_STRINGS_H
-# include <strings.h>
-#endif
-
-#ifdef DEB
+#ifdef OCCT_DEBUG
 TestTopOpeTools_Trace theTrace(100,"trace");
 TestTopOpeTools_Trace theContext(100,"context");
 
@@ -126,7 +119,7 @@ Standard_IMPORT void TopOpeBRepDS_SetcontextNOPFI(const Standard_Boolean);
 Standard_IMPORT void TopOpeBRepDS_SetcontextMKTONREG(const Standard_Boolean);
 #endif
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 //----------------------------------------------------------------------------
 static Standard_Integer InitTraceTopOpeKernel (TestTopOpeTools_Trace& T)
 //----------------------------------------------------------------------------
@@ -198,7 +191,7 @@ static Standard_Integer InitTraceTopOpeKernel (TestTopOpeTools_Trace& T)
   return 0;
 }
 #endif
-#ifdef DEB
+#ifdef OCCT_DEBUG
 //----------------------------------------------------------------------------
 Standard_Integer InitContextTopOpeKernel (TestTopOpeTools_Trace& T)
 //----------------------------------------------------------------------------
@@ -280,14 +273,14 @@ Standard_EXPORT Standard_Integer TestTopOpeTools_SetFlags
 //=========================================================================
 
  
-#ifdef DEB
+#ifdef OCCT_DEBUG
 Standard_Integer TestTopOpeTools_SetTrace(Draw_Interpretor&, Standard_Integer n ,const char** a)
 #else
 Standard_Integer TestTopOpeTools_SetTrace(Draw_Interpretor&, Standard_Integer,const char**)
 #endif
 {
   Standard_Integer ok = Standard_True;
-#ifdef DEB
+#ifdef OCCT_DEBUG
   InitTraceTopOpeKernel(theTrace);
   Standard_Integer mute = 0; if (!strcasecmp(a[0],"trcmute")) mute = 1;
   ok = TestTopOpeTools_SetFlags(theTrace,mute,n,a);
@@ -299,7 +292,7 @@ Standard_Integer TestTopOpeTools_SetTrace(Draw_Interpretor&, Standard_Integer,co
 // a1 = flag (for example tbs) <a2> = value, if omitted flag becomes True
 //=========================================================================
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 Standard_Integer TestTopOpeTools_SetContext(Draw_Interpretor&, Standard_Integer n ,const char** a)
 {
   Standard_Integer ok = Standard_True;

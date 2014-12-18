@@ -6,16 +6,15 @@
 #ifndef _Contap_IType_HeaderFile
 #define _Contap_IType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Contap_IType {
+
+enum Contap_IType
+{
 Contap_Lin,
 Contap_Circle,
 Contap_Walking,
 Contap_Restriction
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Contap_IType_HeaderFile

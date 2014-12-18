@@ -6,54 +6,42 @@
 #ifndef _StepVisual_SurfaceStyleParameterLine_HeaderFile
 #define _StepVisual_SurfaceStyleParameterLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_SurfaceStyleParameterLine_HeaderFile
 #include <Handle_StepVisual_SurfaceStyleParameterLine.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_CurveStyle_HeaderFile
 #include <Handle_StepVisual_CurveStyle.hxx>
-#endif
-#ifndef _Handle_StepVisual_HArray1OfDirectionCountSelect_HeaderFile
 #include <Handle_StepVisual_HArray1OfDirectionCountSelect.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepVisual_CurveStyle;
 class StepVisual_HArray1OfDirectionCountSelect;
 class StepVisual_DirectionCountSelect;
 
 
 
-class StepVisual_SurfaceStyleParameterLine : public MMgt_TShared {
+class StepVisual_SurfaceStyleParameterLine : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a SurfaceStyleParameterLine <br>
-  Standard_EXPORT   StepVisual_SurfaceStyleParameterLine();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepVisual_CurveStyle)& aStyleOfParameterLines,const Handle(StepVisual_HArray1OfDirectionCountSelect)& aDirectionCounts) ;
+  //! Returns a SurfaceStyleParameterLine
+  Standard_EXPORT StepVisual_SurfaceStyleParameterLine();
   
-  Standard_EXPORT     void SetStyleOfParameterLines(const Handle(StepVisual_CurveStyle)& aStyleOfParameterLines) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepVisual_CurveStyle)& aStyleOfParameterLines, const Handle(StepVisual_HArray1OfDirectionCountSelect)& aDirectionCounts) ;
   
-  Standard_EXPORT     Handle_StepVisual_CurveStyle StyleOfParameterLines() const;
+  Standard_EXPORT   void SetStyleOfParameterLines (const Handle(StepVisual_CurveStyle)& aStyleOfParameterLines) ;
   
-  Standard_EXPORT     void SetDirectionCounts(const Handle(StepVisual_HArray1OfDirectionCountSelect)& aDirectionCounts) ;
+  Standard_EXPORT   Handle(StepVisual_CurveStyle) StyleOfParameterLines()  const;
   
-  Standard_EXPORT     Handle_StepVisual_HArray1OfDirectionCountSelect DirectionCounts() const;
+  Standard_EXPORT   void SetDirectionCounts (const Handle(StepVisual_HArray1OfDirectionCountSelect)& aDirectionCounts) ;
   
-  Standard_EXPORT     StepVisual_DirectionCountSelect DirectionCountsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepVisual_HArray1OfDirectionCountSelect) DirectionCounts()  const;
   
-  Standard_EXPORT     Standard_Integer NbDirectionCounts() const;
+  Standard_EXPORT   StepVisual_DirectionCountSelect DirectionCountsValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbDirectionCounts()  const;
 
 
 
@@ -68,8 +56,8 @@ protected:
 private: 
 
 
-Handle_StepVisual_CurveStyle styleOfParameterLines;
-Handle_StepVisual_HArray1OfDirectionCountSelect directionCounts;
+  Handle(StepVisual_CurveStyle) styleOfParameterLines;
+  Handle(StepVisual_HArray1OfDirectionCountSelect) directionCounts;
 
 
 };
@@ -78,7 +66,6 @@ Handle_StepVisual_HArray1OfDirectionCountSelect directionCounts;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_SurfaceStyleParameterLine_HeaderFile

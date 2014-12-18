@@ -47,8 +47,8 @@
 #include <Precision.hxx>
 #include <AIS_Selection.hxx>
 #include <AIS_DataMapIteratorOfDataMapOfIOStatus.hxx>
-#include <AIS_ConnectedShape.hxx>
-#include <AIS_MultipleConnectedShape.hxx>
+#include <AIS_ConnectedInteractive.hxx>
+#include <AIS_MultipleConnectedInteractive.hxx>
 #include <AIS_DataMapIteratorOfDataMapOfILC.hxx>
 #include <AIS_GlobalStatus.hxx>
 #include <AIS_MapIteratorOfMapOfInteractive.hxx>
@@ -121,7 +121,7 @@ mgrSelector(new SelectMgr_SelectionManager()),
 myMainPM(new PrsMgr_PresentationManager3d(MainViewer->Viewer())),
 myMainVwr(MainViewer),
 myMainSel(new StdSelect_ViewerSelector3d()),
-myToHilightSelected( Standard_False ),
+myToHilightSelected( Standard_True ),
 myFilters(new SelectMgr_OrFilter()),
 myDefaultDrawer(new Prs3d_Drawer()),
 myDefaultColor(Quantity_NOC_GOLDENROD),
@@ -215,7 +215,7 @@ Standard_CString AIS_InteractiveContext::DomainOfMainViewer() const
 void AIS_InteractiveContext::DisplayedObjects(AIS_ListOfInteractive& aListOfIO,
                                               const Standard_Boolean OnlyFromNeutral) const 
 {
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
   cout<<"AIS_IC::DisplayedObjects"<<endl;
 #endif
 
@@ -233,12 +233,10 @@ void AIS_InteractiveContext::DisplayedObjects(AIS_ListOfInteractive& aListOfIO,
       if(It.Value()->GraphicStatus()==AIS_DS_Displayed)
         theMap.Add(It.Key());
     }
-#ifdef DEBUG
-    cout<<"\tFrom Neutral Point : "<<theMap.Extent()<<endl;
-#endif
 
     //parse all local contexts...
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
+    cout<<"\tFrom Neutral Point : "<<theMap.Extent()<<endl;
     Standard_Integer NbDisp;
     for(AIS_DataMapIteratorOfDataMapOfILC it1(myLocalContexts);it1.More();it1.Next()){
       const Handle(AIS_LocalContext)& LC = it1.Value();
@@ -1197,7 +1195,7 @@ void AIS_InteractiveContext::Redisplay(const AIS_KindOfInteractive KOI,
     Handle(AIS_InteractiveObject) IO = It.Key();
     // ENDCLE
     if(IO->Type()== KOI){ 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 //      Standard_Boolean good = (Sign==-1)? Standard_True : 
 //        ((IO->Signature()==Sign)? Standard_True:Standard_False);
 #endif
@@ -1243,26 +1241,36 @@ void AIS_InteractiveContext::RecomputePrsOnly(const Handle(AIS_InteractiveObject
 //function : RecomputeSelectionOnly
 //purpose  : 
 //=======================================================================
-void AIS_InteractiveContext::RecomputeSelectionOnly(const Handle(AIS_InteractiveObject)& anIObj)
+void AIS_InteractiveContext::RecomputeSelectionOnly (const Handle(AIS_InteractiveObject)& theIO)
 {
-  if(anIObj.IsNull()) return;
-  mgrSelector->RecomputeSelection(anIObj);
+  if (theIO.IsNull())
+  {
+    return;
+  }
 
+  mgrSelector->RecomputeSelection (theIO);
 
-
-  TColStd_ListOfInteger LI;
-  TColStd_ListIteratorOfListOfInteger Lit;
-  ActivatedModes(anIObj,LI);
-  if(!HasOpenedContext()){
-    if(!myObjects.IsBound(anIObj)) return;
-
-    if (myObjects(anIObj)->GraphicStatus() == AIS_DS_Displayed)
+  if (HasOpenedContext())
+  {
+    for (Standard_Integer aContextIdx = 1; aContextIdx <= myLocalContexts.Extent(); aContextIdx++)
     {
-      for(Lit.Initialize(LI);Lit.More();Lit.Next())
-      {
-        mgrSelector->Activate(anIObj,Lit.Value(),myMainSel);
-      }
+      myLocalContexts (aContextIdx)->ClearOutdatedSelection (theIO, Standard_False);
     }
+    return;
+  }
+
+  if (!myObjects.IsBound (theIO) ||
+      myObjects (theIO)->GraphicStatus() != AIS_DS_Displayed)
+  {
+    return;
+  }
+
+  TColStd_ListOfInteger aModes;
+  ActivatedModes (theIO, aModes);
+  TColStd_ListIteratorOfListOfInteger aModesIter (aModes);
+  for (; aModesIter.More(); aModesIter.Next())
+  {
+    mgrSelector->Activate (theIO, aModesIter.Value(), myMainSel);
   }
 }
 
@@ -1288,6 +1296,11 @@ void AIS_InteractiveContext::Update (const Handle(AIS_InteractiveObject)& theIOb
   }
 
   mgrSelector->Update(theIObj);
+
+  for (Standard_Integer aContextIdx = 1; aContextIdx <= myLocalContexts.Extent(); aContextIdx++)
+  {
+    myLocalContexts (aContextIdx)->ClearOutdatedSelection (theIObj, Standard_False);
+  }
 
   if (theUpdateViewer)
   {
@@ -1319,19 +1332,19 @@ void AIS_InteractiveContext::SetLocation(const Handle(AIS_InteractiveObject)& an
   if(anIObj.IsNull()) return;
 
 
-  if(anIObj->HasLocation() && aLoc.IsIdentity()){
-    anIObj->ResetLocation();
+  if(anIObj->HasTransformation() && aLoc.IsIdentity()){
+    anIObj->ResetTransformation();
     mgrSelector->Update(anIObj,Standard_False);
     return;
   }
   if(aLoc.IsIdentity()) return ;
 
   // first reset the previous location to properly clean everything...
-  if(anIObj->HasLocation())
-    anIObj->ResetLocation();
+  if(anIObj->HasTransformation())
+    anIObj->ResetTransformation();
 
 
-  anIObj->SetLocation(aLoc);
+  anIObj->SetLocalTransformation (aLoc.Transformation());
   
   if(!HasOpenedContext())
     mgrSelector->Update(anIObj,Standard_False);
@@ -1352,7 +1365,7 @@ void AIS_InteractiveContext::ResetLocation(const Handle(AIS_InteractiveObject)& 
 {
   if(anIObj.IsNull()) return;
 
-  anIObj->ResetLocation();
+  anIObj->ResetTransformation();
   mgrSelector->Update(anIObj,Standard_False);
 }
 
@@ -1366,13 +1379,13 @@ HasLocation(const Handle(AIS_InteractiveObject)& anIObj) const
 {
   if(anIObj.IsNull()) return Standard_False;
 
-  return anIObj->HasLocation();
+  return anIObj->HasTransformation();
 }
 
-const TopLoc_Location& AIS_InteractiveContext::
+TopLoc_Location AIS_InteractiveContext::
 Location(const Handle(AIS_InteractiveObject)& anIObj) const
 {
-  return anIObj->Location();
+  return anIObj->Transformation();
 }
 
 //=======================================================================
@@ -1489,8 +1502,8 @@ void AIS_InteractiveContext::SetDisplayMode(const AIS_DisplayMode aMode,
     Handle(AIS_InteractiveObject) anObj = It.Key();
     // ENDCLE
     Standard_Boolean Processed = (anObj->IsKind(STANDARD_TYPE(AIS_Shape)) ||
-                                  anObj->IsKind(STANDARD_TYPE(AIS_ConnectedShape)) ||
-                                  anObj->IsKind(STANDARD_TYPE(AIS_MultipleConnectedShape)) );
+                                  anObj->IsKind(STANDARD_TYPE(AIS_ConnectedInteractive)) ||
+                                  anObj->IsKind(STANDARD_TYPE(AIS_MultipleConnectedInteractive)) );
     
     if ((!anObj->HasDisplayMode()) && Processed) 
       {
@@ -1670,13 +1683,13 @@ void AIS_InteractiveContext::SetColor(const Handle(AIS_InteractiveObject)& anIOb
           NbDisp++;
         }
       anIObj->SetRecomputeOk();
-#ifdef DEB
+#ifdef OCCT_DEBUG
       cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
 
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 //   // pour isg
 //   if(anIObj->Type()==AIS_KOI_Datum && anIObj->Signature()==3){
 //     Handle(AIS_Trihedron) Tr = *((Handle(AIS_Trihedron)*)&anIObj);
@@ -1745,7 +1758,7 @@ void AIS_InteractiveContext::SetDeviationCoefficient(
           NbDisp++;
         }
       anIObj->SetRecomputeOk();
-#ifdef DEB
+#ifdef OCCT_DEBUG
       cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
@@ -1789,7 +1802,7 @@ void AIS_InteractiveContext::SetHLRDeviationCoefficient(
           NbDisp++;
         }
       anIObj->SetRecomputeOk();
-#ifdef DEB
+#ifdef OCCT_DEBUG
       cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
@@ -1832,7 +1845,7 @@ void AIS_InteractiveContext::SetDeviationAngle(
           NbDisp++;
         }
       anIObj->SetRecomputeOk();
-#ifdef DEB
+#ifdef OCCT_DEBUG
       cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
@@ -1903,7 +1916,7 @@ void AIS_InteractiveContext::SetHLRAngleAndDeviation(
           NbDisp++;
         }
       anIObj->SetRecomputeOk();
-#ifdef DEB
+#ifdef OCCT_DEBUG
       cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
@@ -1945,7 +1958,7 @@ void AIS_InteractiveContext::SetHLRDeviationAngle(
           NbDisp++;
         }
       anIObj->SetRecomputeOk();
-#ifdef DEB
+#ifdef OCCT_DEBUG
       cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
@@ -1973,7 +1986,7 @@ void AIS_InteractiveContext::UnsetColor(const Handle(AIS_InteractiveObject)& anI
           anIObj->Update(ITI.Value(),Standard_False);
           NbDisp++;
         }
-#ifdef DEB
+#ifdef OCCT_DEBUG
       cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
       anIObj->SetRecomputeOk();
@@ -2044,7 +2057,7 @@ void AIS_InteractiveContext::SetWidth(const Handle(AIS_InteractiveObject)& anIOb
           anIObj->Update(ITI.Value(),Standard_False);
           NbDisp++;
         }
-#ifdef DEB
+#ifdef OCCT_DEBUG
       cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
       anIObj->SetRecomputeOk();
@@ -2580,7 +2593,7 @@ Standard_Boolean AIS_InteractiveContext::IsoOnPlane() const
 //purpose  : 
 //=======================================================================
 
-void AIS_InteractiveContext::SetSelectionMode(const Handle_AIS_InteractiveObject&, const Standard_Integer )
+void AIS_InteractiveContext::SetSelectionMode(const Handle(AIS_InteractiveObject)&, const Standard_Integer )
 {
 }
 
@@ -2589,7 +2602,7 @@ void AIS_InteractiveContext::SetSelectionMode(const Handle_AIS_InteractiveObject
 //purpose  : 
 //=======================================================================
 
-void AIS_InteractiveContext::UnsetSelectionMode(const Handle_AIS_InteractiveObject&)
+void AIS_InteractiveContext::UnsetSelectionMode(const Handle(AIS_InteractiveObject)&)
 {
 }
 
@@ -2676,7 +2689,7 @@ Standard_Integer AIS_InteractiveContext::PixelTolerance() const {
 //purpose  : 
 //=======================================================================
 
-Standard_Boolean AIS_InteractiveContext::IsInLocal(const Handle_AIS_InteractiveObject& anIObj,
+Standard_Boolean AIS_InteractiveContext::IsInLocal(const Handle(AIS_InteractiveObject)& anIObj,
                                                    Standard_Integer& TheIndex) const 
 {
   if(anIObj.IsNull()) return Standard_False;

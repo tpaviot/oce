@@ -5,18 +5,10 @@
 
 #include <BRepBlend_SequenceOfPointOnRst.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _BRepBlend_PointOnRst_HeaderFile
 #include <BRepBlend_PointOnRst.hxx>
-#endif
-#ifndef _BRepBlend_SequenceNodeOfSequenceOfPointOnRst_HeaderFile
 #include <BRepBlend_SequenceNodeOfSequenceOfPointOnRst.hxx>
-#endif
  
 
 #define SeqItem BRepBlend_PointOnRst

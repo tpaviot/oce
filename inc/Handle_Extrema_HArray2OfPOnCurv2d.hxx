@@ -6,22 +6,15 @@
 #ifndef _Handle_Extrema_HArray2OfPOnCurv2d_HeaderFile
 #define _Handle_Extrema_HArray2OfPOnCurv2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MMgt_TShared_HeaderFile
 #include <Handle_MMgt_TShared.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MMgt_TShared);
 class Extrema_HArray2OfPOnCurv2d;
 
-DEFINE_STANDARD_HANDLE(Extrema_HArray2OfPOnCurv2d,MMgt_TShared)
+DEFINE_STANDARD_HANDLE(Extrema_HArray2OfPOnCurv2d, MMgt_TShared)
 
-#endif
+#endif // _Handle_Extrema_HArray2OfPOnCurv2d_HeaderFile

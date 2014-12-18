@@ -6,8 +6,11 @@
 #ifndef _AIS_StatusOfPick_HeaderFile
 #define _AIS_StatusOfPick_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum AIS_StatusOfPick {
+
+enum AIS_StatusOfPick
+{
 AIS_SOP_Error,
 AIS_SOP_NothingSelected,
 AIS_SOP_Removed,
@@ -15,8 +18,4 @@ AIS_SOP_OneSelected,
 AIS_SOP_SeveralSelected
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_StatusOfPick_HeaderFile

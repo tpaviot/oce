@@ -20,16 +20,16 @@ class   GenExtCS from Extrema
     	--          between acurve and a surface.
     	--          These distances can be minimum or maximum.
 
-uses  	POnSurf       from Extrema,
-        POnCurv       from Extrema,
-    	Pnt           from gp,
-	HArray1OfPnt  from TColgp,
-	HArray2OfPnt  from TColgp,
-	FuncExtCS     from Extrema,
-	Surface       from Adaptor3d,
-	SurfacePtr    from Adaptor3d,
-	Curve         from Adaptor3d,
-	CurvePtr      from Adaptor3d
+uses  POnSurf       from Extrema,
+      POnCurv       from Extrema,
+      Pnt           from gp,
+      HArray1OfPnt  from TColgp,
+      HArray2OfPnt  from TColgp,
+      FuncExtCS     from Extrema,
+      Surface       from Adaptor3d,
+      SurfacePtr    from Adaptor3d,
+      Curve         from Adaptor3d,
+      CurvePtr      from Adaptor3d
 
 raises  NotDone      from StdFail,
     	OutOfRange   from Standard,
@@ -139,20 +139,19 @@ is
 fields
     myDone     : Boolean;
     myInit     : Boolean;
-    mytmin    : Real;
-    mytsup    : Real;
-    myumin    : Real;
-    myusup    : Real;
-    myvmin    : Real;
-    myvsup    : Real;
+    mytmin     : Real;
+    mytsup     : Real;
+    myumin     : Real;
+    myusup     : Real;
+    myvmin     : Real;
+    myvsup     : Real;
     mytsample  : Integer;
     myusample  : Integer;
     myvsample  : Integer;
-    mypoints1  : HArray1OfPnt from TColgp;
-    mypoints2  : HArray2OfPnt from TColgp;
     mytol1     : Real;
     mytol2     : Real;
     myF        : FuncExtCS from Extrema;
     myS        : SurfacePtr from Adaptor3d;
+    mySurfPnts : HArray2OfPnt from TColgp;
 
 end GenExtCS;

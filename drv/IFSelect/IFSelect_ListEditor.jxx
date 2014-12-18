@@ -1,18 +1,6 @@
-#ifndef _Interface_TypedValue_HeaderFile
 #include <Interface_TypedValue.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <TColStd_HSequenceOfHAsciiString.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfInteger_HeaderFile
 #include <TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IFSelect_ListEditor_HeaderFile
 #include <IFSelect_ListEditor.hxx>
-#endif

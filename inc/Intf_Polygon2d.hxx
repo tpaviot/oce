@@ -6,50 +6,43 @@
 #ifndef _Intf_Polygon2d_HeaderFile
 #define _Intf_Polygon2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_OutOfRange;
 class Bnd_Box2d;
 class gp_Pnt2d;
 
 
-
-class Intf_Polygon2d  {
+//! Describes the necessary polygon information to compute
+//! the interferences.
+class Intf_Polygon2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the bounding box of the polygon. <br>
-       const Bnd_Box2d& Bounding() const;
-  //! Returns True if the polyline is closed. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Closed() const;
-  //! Returns the tolerance of the polygon. <br>
-  Standard_EXPORT   virtual  Standard_Real DeflectionOverEstimation() const = 0;
-  //! Returns the number of Segments in the polyline. <br>
-  Standard_EXPORT   virtual  Standard_Integer NbSegments() const = 0;
-  //! Returns the points of the segment <Index> in the Polygon. <br>
-  Standard_EXPORT   virtual  void Segment(const Standard_Integer theIndex,gp_Pnt2d& theBegin,gp_Pnt2d& theEnd) const = 0;
-
+  
+  //! Returns the bounding box of the polygon.
+     const  Bnd_Box2d& Bounding()  const;
+  
+  //! Returns True if the polyline is closed.
+  Standard_EXPORT virtual   Standard_Boolean Closed()  const;
+  virtual ~Intf_Polygon2d() {}
+  
+  //! Returns the tolerance of the polygon.
+  Standard_EXPORT virtual   Standard_Real DeflectionOverEstimation()  const = 0;
+  
+  //! Returns the number of Segments in the polyline.
+  Standard_EXPORT virtual   Standard_Integer NbSegments()  const = 0;
+  
+  //! Returns the points of the segment <Index> in the Polygon.
+  Standard_EXPORT virtual   void Segment (const Standard_Integer theIndex, gp_Pnt2d& theBegin, gp_Pnt2d& theEnd)  const = 0;
 
 
 
@@ -58,7 +51,7 @@ protected:
 
 
 
-Bnd_Box2d myBox;
+  Bnd_Box2d myBox;
 
 
 private:
@@ -74,7 +67,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Intf_Polygon2d_HeaderFile

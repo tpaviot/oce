@@ -13,10 +13,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-  #include <oce-config.h>
-#endif
-
 #include <OpenGl_GraphicDriver.hxx>
 #include <OpenGl_Context.hxx>
 #include <OpenGl_Flipper.hxx>
@@ -29,7 +25,18 @@
 #include <OpenGl_Trihedron.hxx>
 #include <OpenGl_Workspace.hxx>
 
+#include <Aspect_GraphicDeviceDefinitionError.hxx>
+#include <Message_Messenger.hxx>
+#include <OSD_Environment.hxx>
 #include <Standard_NotImplemented.hxx>
+
+#if !defined(_WIN32) && !defined(__ANDROID__) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX))
+  #include <X11/Xlib.h> // XOpenDisplay()
+#endif
+
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+  #include <EGL/egl.h>
+#endif
 
 IMPLEMENT_STANDARD_HANDLE(OpenGl_GraphicDriver,Graphic3d_GraphicDriver)
 IMPLEMENT_STANDARD_RTTIEXT(OpenGl_GraphicDriver,Graphic3d_GraphicDriver)
@@ -37,58 +44,295 @@ IMPLEMENT_STANDARD_RTTIEXT(OpenGl_GraphicDriver,Graphic3d_GraphicDriver)
 namespace
 {
   static const Handle(OpenGl_Context) TheNullGlCtx;
-};
+}
 
-// Pour eviter de "mangler" MetaGraphicDriverFactory, le nom de la
-// fonction qui cree un Graphic3d_GraphicDriver.
-// En effet, ce nom est recherche par la methode DlSymb de la
-// classe OSD_SharedLibrary dans la methode SetGraphicDriver de la
-// classe Graphic3d_GraphicDevice
-extern "C" {
-#if defined(_MSC_VER) // disable MS VC++ warning on C-style function returning C++ object
-  #pragma warning(push)
-  #pragma warning(disable:4190)
+// =======================================================================
+// function : OpenGl_GraphicDriver
+// purpose  :
+// =======================================================================
+OpenGl_GraphicDriver::OpenGl_GraphicDriver (const Handle(Aspect_DisplayConnection)& theDisp,
+                                            const Standard_Boolean                  theToInitialize)
+: Graphic3d_GraphicDriver (theDisp),
+  myIsOwnContext (Standard_False),
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+  myEglDisplay ((Aspect_Display )EGL_NO_DISPLAY),
+  myEglContext ((Aspect_RenderingContext )EGL_NO_CONTEXT),
+  myEglConfig  (NULL),
 #endif
-  Standard_EXPORT Handle(Graphic3d_GraphicDriver) MetaGraphicDriverFactory (const Standard_CString theShrName)
+  myCaps           (new OpenGl_Caps()),
+  myMapOfView      (1, NCollection_BaseAllocator::CommonBaseAllocator()),
+  myMapOfWS        (1, NCollection_BaseAllocator::CommonBaseAllocator()),
+  myMapOfStructure (1, NCollection_BaseAllocator::CommonBaseAllocator()),
+  myUserDrawCallback (NULL),
+  myTempText (new OpenGl_Text())
+{
+#if !defined(_WIN32) && !defined(__ANDROID__) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX))
+  if (myDisplayConnection.IsNull())
   {
-    Handle(OpenGl_GraphicDriver) aDriver = new OpenGl_GraphicDriver (theShrName);
-    return aDriver;
+    //Aspect_GraphicDeviceDefinitionError::Raise ("OpenGl_GraphicDriver: cannot connect to X server!");
+    return;
   }
-#if defined(_MSC_VER)
-  #pragma warning(pop)
+
+  Display* aDisplay = myDisplayConnection->GetDisplay();
+  Bool toSync = ::getenv ("CSF_GraphicSync") != NULL
+             || ::getenv ("CALL_SYNCHRO_X")  != NULL;
+  XSynchronize (aDisplay, toSync);
+
+#if !defined(HAVE_EGL)
+  // does the server know about OpenGL & GLX?
+  int aDummy;
+  if (!XQueryExtension (aDisplay, "GLX", &aDummy, &aDummy, &aDummy))
+  {
+    ::Message::DefaultMessenger()->Send ("OpenGl_GraphicDriver, this system doesn't appear to support OpenGL!", Message_Warning);
+  }
 #endif
+#endif
+  if (theToInitialize
+  && !InitContext())
+  {
+    Aspect_GraphicDeviceDefinitionError::Raise ("OpenGl_GraphicDriver: default context can not be initialized!");
+  }
 }
 
 // =======================================================================
-// function : OpenGl_GraphicDriver
+// function : ~OpenGl_GraphicDriver
 // purpose  :
 // =======================================================================
-OpenGl_GraphicDriver::OpenGl_GraphicDriver (const Handle(Aspect_DisplayConnection)& theDisplayConnection)
-: Graphic3d_GraphicDriver ("TKOpenGl"),
-  myCaps           (new OpenGl_Caps()),
-  myMapOfView      (1, NCollection_BaseAllocator::CommonBaseAllocator()),
-  myMapOfWS        (1, NCollection_BaseAllocator::CommonBaseAllocator()),
-  myMapOfStructure (1, NCollection_BaseAllocator::CommonBaseAllocator()),
-  myUserDrawCallback (NULL),
-  myTempText (new OpenGl_Text())
+OpenGl_GraphicDriver::~OpenGl_GraphicDriver()
 {
-  Begin (theDisplayConnection);
+  ReleaseContext();
 }
 
 // =======================================================================
-// function : OpenGl_GraphicDriver
+// function : ReleaseContext
 // purpose  :
 // =======================================================================
-OpenGl_GraphicDriver::OpenGl_GraphicDriver (const Standard_CString theShrName)
-: Graphic3d_GraphicDriver (theShrName),
-  myCaps           (new OpenGl_Caps()),
-  myMapOfView      (1, NCollection_BaseAllocator::CommonBaseAllocator()),
-  myMapOfWS        (1, NCollection_BaseAllocator::CommonBaseAllocator()),
-  myMapOfStructure (1, NCollection_BaseAllocator::CommonBaseAllocator()),
-  myUserDrawCallback (NULL),
-  myTempText (new OpenGl_Text())
+void OpenGl_GraphicDriver::ReleaseContext()
 {
-  //
+  Handle(OpenGl_Context) aCtxShared;
+  for (NCollection_DataMap<Standard_Integer, Handle(OpenGl_Workspace)>::Iterator aWindowIter (myMapOfWS);
+       aWindowIter.More(); aWindowIter.Next())
+  {
+    const Handle(OpenGl_Workspace)& aWindow = aWindowIter.ChangeValue();
+    const Handle(OpenGl_Context)&   aCtx    = aWindow->GetGlContext();
+    if (aCtx->MakeCurrent()
+     && aCtxShared.IsNull())
+    {
+      aCtxShared = aCtx;
+    }
+  }
+
+  if (!aCtxShared.IsNull())
+  {
+    aCtxShared->MakeCurrent();
+  }
+  for (NCollection_DataMap<Standard_Integer, Handle(OpenGl_View)>::Iterator aViewIter (myMapOfView);
+       aViewIter.More(); aViewIter.Next())
+  {
+    const Handle(OpenGl_View)& aView = aViewIter.ChangeValue();
+    aView->ReleaseGlResources (aCtxShared);
+  }
+
+  for (NCollection_DataMap<Standard_Integer, OpenGl_Structure*>::Iterator aStructIt (myMapOfStructure);
+       aStructIt.More (); aStructIt.Next())
+  {
+    OpenGl_Structure* aStruct = aStructIt.ChangeValue();
+    aStruct->ReleaseGlResources (aCtxShared);
+  }
+  myTempText->Release (aCtxShared.operator->());
+  myDeviceLostFlag = myDeviceLostFlag || !myMapOfStructure.IsEmpty();
+
+  for (NCollection_DataMap<Standard_Integer, Handle(OpenGl_Workspace)>::Iterator aWindowIter (myMapOfWS);
+       aWindowIter.More(); aWindowIter.Next())
+  {
+    const Handle(OpenGl_Workspace)& aWindow = aWindowIter.ChangeValue();
+    const Handle(OpenGl_Context)&   aCtx    = aWindow->GetGlContext();
+    aCtx->forcedRelease();
+  }
+
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+  if (myIsOwnContext)
+  {
+    if (myEglContext != (Aspect_RenderingContext )EGL_NO_CONTEXT)
+    {
+      if (eglMakeCurrent ((EGLDisplay )myEglDisplay, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT) != EGL_TRUE)
+      {
+        ::Message::DefaultMessenger()->Send ("OpenGl_GraphicDriver, FAILED to release OpenGL context!", Message_Warning);
+      }
+      eglDestroyContext ((EGLDisplay )myEglDisplay, (EGLContext )myEglContext);
+    }
+
+    if (myEglDisplay != (Aspect_Display )EGL_NO_DISPLAY)
+    {
+      if (eglTerminate ((EGLDisplay )myEglDisplay) != EGL_TRUE)
+      {
+        ::Message::DefaultMessenger()->Send ("OpenGl_GraphicDriver, EGL, eglTerminate FAILED!", Message_Warning);
+      }
+    }
+  }
+
+  myEglDisplay = (Aspect_Display )EGL_NO_DISPLAY;
+  myEglContext = (Aspect_RenderingContext )EGL_NO_CONTEXT;
+  myEglConfig  = NULL;
+#endif
+  myIsOwnContext = Standard_False;
+}
+
+// =======================================================================
+// function : InitContext
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_GraphicDriver::InitContext()
+{
+  ReleaseContext();
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+
+#if !defined(_WIN32) && !defined(__ANDROID__) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX))
+  if (myDisplayConnection.IsNull())
+  {
+    return Standard_False;
+  }
+  Display* aDisplay = myDisplayConnection->GetDisplay();
+  myEglDisplay = (Aspect_Display )eglGetDisplay (aDisplay);
+#else
+  myEglDisplay = (Aspect_Display )eglGetDisplay (EGL_DEFAULT_DISPLAY);
+#endif
+  if ((EGLDisplay )myEglDisplay == EGL_NO_DISPLAY)
+  {
+    ::Message::DefaultMessenger()->Send ("Error: no EGL display!", Message_Fail);
+    return Standard_False;
+  }
+
+  EGLint aVerMajor = 0; EGLint aVerMinor = 0;
+  if (eglInitialize ((EGLDisplay )myEglDisplay, &aVerMajor, &aVerMinor) != EGL_TRUE)
+  {
+    ::Message::DefaultMessenger()->Send ("Error: EGL display is unavailable!", Message_Fail);
+    return Standard_False;
+  }
+
+  EGLint aConfigAttribs[] =
+  {
+    EGL_RED_SIZE,     8,
+    EGL_GREEN_SIZE,   8,
+    EGL_BLUE_SIZE,    8,
+    EGL_ALPHA_SIZE,   0,
+    EGL_DEPTH_SIZE,   24,
+    EGL_STENCIL_SIZE, 8,
+  #if defined(GL_ES_VERSION_2_0)
+    EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+  #else
+    EGL_RENDERABLE_TYPE, EGL_OPENGL_BIT,
+  #endif
+    EGL_NONE
+  };
+
+  EGLint aNbConfigs = 0;
+  if (eglChooseConfig ((EGLDisplay )myEglDisplay, aConfigAttribs, &myEglConfig, 1, &aNbConfigs) != EGL_TRUE
+   || myEglConfig == NULL)
+  {
+    eglGetError();
+    aConfigAttribs[4 * 2 + 1] = 16; // try config with smaller depth buffer
+    if (eglChooseConfig ((EGLDisplay )myEglDisplay, aConfigAttribs, &myEglConfig, 1, &aNbConfigs) != EGL_TRUE
+     || myEglConfig == NULL)
+    {
+      ::Message::DefaultMessenger()->Send ("Error: EGL does not provide compatible configurations!", Message_Fail);
+      return Standard_False;
+    }
+  }
+
+#if defined(GL_ES_VERSION_2_0)
+  EGLint anEglCtxAttribs[] =
+  {
+    EGL_CONTEXT_CLIENT_VERSION, 2,
+    EGL_NONE
+  };
+  if (eglBindAPI (EGL_OPENGL_ES_API) != EGL_TRUE)
+  {
+    ::Message::DefaultMessenger()->Send ("Error: EGL does not provide OpenGL ES client!", Message_Fail);
+    return Standard_False;
+  }
+#else
+  EGLint* anEglCtxAttribs = NULL;
+  if (eglBindAPI (EGL_OPENGL_API) != EGL_TRUE)
+  {
+    ::Message::DefaultMessenger()->Send ("Error: EGL does not provide OpenGL client!", Message_Fail);
+    return Standard_False;
+  }
+#endif
+
+  myEglContext = (Aspect_RenderingContext )eglCreateContext ((EGLDisplay )myEglDisplay, myEglConfig, EGL_NO_CONTEXT, anEglCtxAttribs);
+  if ((EGLContext )myEglContext == EGL_NO_CONTEXT)
+  {
+    ::Message::DefaultMessenger()->Send ("Error: EGL is unable to create OpenGL context!", Message_Fail);
+    return Standard_False;
+  }
+  if (eglMakeCurrent ((EGLDisplay )myEglDisplay, EGL_NO_SURFACE, EGL_NO_SURFACE, (EGLContext )myEglContext) != EGL_TRUE)
+  {
+    ::Message::DefaultMessenger()->Send ("Error: EGL is unable bind OpenGL context!", Message_Fail);
+    return Standard_False;
+  }
+#endif
+  myIsOwnContext = Standard_True;
+  return Standard_True;
+}
+
+#if defined(HAVE_EGL) || defined(__ANDROID__)
+// =======================================================================
+// function : InitEglContext
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_GraphicDriver::InitEglContext (Aspect_Display          theEglDisplay,
+                                                       Aspect_RenderingContext theEglContext,
+                                                       void*                   theEglConfig)
+{
+  ReleaseContext();
+#if !defined(_WIN32) && !defined(__ANDROID__) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX))
+  if (myDisplayConnection.IsNull())
+  {
+    return Standard_False;
+  }
+#endif
+
+  if ((EGLDisplay )theEglDisplay == EGL_NO_DISPLAY
+   || (EGLContext )theEglContext == EGL_NO_CONTEXT
+   || theEglConfig == NULL)
+  {
+    return Standard_False;
+  }
+  myEglDisplay = theEglDisplay;
+  myEglContext = theEglContext;
+  myEglConfig  = theEglConfig;
+  return Standard_True;
+}
+#endif
+
+// =======================================================================
+// function : InquireLightLimit
+// purpose  :
+// =======================================================================
+Standard_Integer OpenGl_GraphicDriver::InquireLightLimit()
+{
+  return OpenGLMaxLights;
+}
+
+// =======================================================================
+// function : InquireViewLimit
+// purpose  :
+// =======================================================================
+Standard_Integer OpenGl_GraphicDriver::InquireViewLimit()
+{
+  return 10000;
+}
+
+// =======================================================================
+// function : InquirePlaneLimit
+// purpose  :
+// =======================================================================
+Standard_Integer OpenGl_GraphicDriver::InquirePlaneLimit()
+{
+  // NOTE the 2 first planes are reserved for ZClipping
+  const Handle(OpenGl_Context)& aCtx = GetSharedContext();
+  return aCtx.IsNull() ? 0 : Max (aCtx->MaxClipPlanes() - 2, 0);
 }
 
 // =======================================================================
@@ -172,136 +416,39 @@ Standard_Boolean OpenGl_GraphicDriver::SetImmediateModeDrawToFront (const Graphi
 }
 
 // =======================================================================
-// function : GetOpenClDeviceInfo
-// purpose  : Returns information about device used for computations
-// =======================================================================
-#ifndef HAVE_OPENCL
-
-Standard_Boolean OpenGl_GraphicDriver::GetOpenClDeviceInfo (const Graphic3d_CView&,
-  NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>&)
-{
-  return Standard_False;
-}
-
-#else
-
-Standard_Boolean OpenGl_GraphicDriver::GetOpenClDeviceInfo (const Graphic3d_CView& theCView,
-  NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>& theInfo)
-{
-
-  if (theCView.ViewId == -1 || theCView.ptrView == NULL)
-  {
-    return Standard_False;
-  }
-  
-  return reinterpret_cast<const OpenGl_CView*> (theCView.ptrView)->WS->GetOpenClDeviceInfo (theInfo);
-}
-
-#endif
-
-// =======================================================================
-// function : BeginAddMode
+// function : DisplayImmediateStructure
 // purpose  :
 // =======================================================================
-Standard_Boolean OpenGl_GraphicDriver::BeginAddMode (const Graphic3d_CView& theCView)
+void OpenGl_GraphicDriver::DisplayImmediateStructure (const Graphic3d_CView&      theCView,
+                                                      const Graphic3d_CStructure& theCStructure)
 {
-  if (theCView.ViewId == -1)
-  {
-    return Standard_False;
-  }
-
-  const OpenGl_CView* aCView = (const OpenGl_CView* )theCView.ptrView;
-  if (aCView != NULL && aCView->WS->BeginAddMode())
-  {
-    myImmediateWS = aCView->WS;
-    return Standard_True;
-  }
-
-  return Standard_False;
-}
-
-// =======================================================================
-// function : EndAddMode
-// purpose  :
-// =======================================================================
-void OpenGl_GraphicDriver::EndAddMode()
-{
-  if (!myImmediateWS.IsNull())
-  {
-    myImmediateWS->EndAddMode();
-    myImmediateWS.Nullify();
-  }
-}
-
-// =======================================================================
-// function : BeginImmediatMode
-// purpose  :
-// =======================================================================
-Standard_Boolean OpenGl_GraphicDriver::BeginImmediatMode (const Graphic3d_CView& theCView,
-                                                          const Aspect_CLayer2d& /*theCUnderLayer*/,
-                                                          const Aspect_CLayer2d& /*theCOverLayer*/,
-                                                          const Standard_Boolean theDoubleBuffer,
-                                                          const Standard_Boolean theRetainMode)
-{
-  if (theCView.ViewId == -1)
-  {
-    return Standard_False;
-  }
-
-  const OpenGl_CView* aCView = (const OpenGl_CView* )theCView.ptrView;
-  if (aCView != NULL && aCView->WS->BeginImmediatMode (theCView, theDoubleBuffer, theRetainMode))
-  {
-    myImmediateWS = aCView->WS;
-    return Standard_True;
-  }
-
-  return Standard_False;
-}
-
-// =======================================================================
-// function : ClearImmediatMode
-// purpose  :
-// =======================================================================
-void OpenGl_GraphicDriver::ClearImmediatMode (const Graphic3d_CView& theCView,
-                                              const Standard_Boolean theToFlush)
-{
-  const OpenGl_CView* aCView = (const OpenGl_CView* )theCView.ptrView;
-  if (aCView != NULL)
-  {
-    aCView->WS->ClearImmediatMode (theCView, theToFlush);
-  }
-}
-
-// =======================================================================
-// function : DrawStructure
-// purpose  :
-// =======================================================================
-void OpenGl_GraphicDriver::DrawStructure (const Graphic3d_CStructure& theCStructure)
-{
-  OpenGl_Structure* aStructure = (OpenGl_Structure* )theCStructure.ptrStructure;
-  if (aStructure == NULL)
+  OpenGl_CView*     aCView     = (OpenGl_CView*     )theCView.ptrView;
+  OpenGl_Structure* aStructure = (OpenGl_Structure* )&theCStructure;
+  if (aCView == NULL)
   {
     return;
   }
 
-  if (!myImmediateWS.IsNull())
-  {
-    myImmediateWS->DrawStructure (aStructure);
-  }
+  aCView->View->DisplayImmediateStructure (aStructure);
 }
 
 // =======================================================================
-// function : EndImmediatMode
+// function : EraseImmediateStructure
 // purpose  :
 // =======================================================================
-void OpenGl_GraphicDriver::EndImmediatMode (const Standard_Integer )
+void OpenGl_GraphicDriver::EraseImmediateStructure (const Graphic3d_CView&      theCView,
+                                                    const Graphic3d_CStructure& theCStructure)
 {
-  if (!myImmediateWS.IsNull())
+  OpenGl_CView*     aCView     = (OpenGl_CView*     )theCView.ptrView;
+  OpenGl_Structure* aStructure = (OpenGl_Structure* )&theCStructure;
+  if (aCView == NULL)
   {
-    myImmediateWS->EndImmediatMode();
-    myImmediateWS.Nullify();
+    return;
   }
+
+  aCView->View->EraseImmediateStructure (aStructure);
 }
+
 
 // =======================================================================
 // function : Print
@@ -340,89 +487,6 @@ Standard_Boolean OpenGl_GraphicDriver::Print (const Graphic3d_CView& theCView,
 #endif
   myPrintContext.Nullify();
   return isPrinted;
-}
-
-void OpenGl_GraphicDriver::SetStencilTestOptions (const Graphic3d_CGroup& theCGroup,
-                                                  const Standard_Boolean theIsEnabled)
-{
-  OpenGl_StencilTest* aStencilTest = new OpenGl_StencilTest();
-  aStencilTest->SetOptions (theIsEnabled);
-  ((OpenGl_Group* )theCGroup.ptrGroup)->AddElement (TelNil, aStencilTest);
-}
-
-// =======================================================================
-// function : Text
-// purpose  :
-// =======================================================================
-void OpenGl_GraphicDriver::Text (const Graphic3d_CGroup&                 theCGroup,
-                                 const TCollection_ExtendedString&       theText,
-                                 const Graphic3d_Vertex&                 thePoint,
-                                 const Standard_Real                     theHeight,
-                                 const Quantity_PlaneAngle               /*theAngle*/,
-                                 const Graphic3d_TextPath                /*theTp*/,
-                                 const Graphic3d_HorizontalTextAlignment theHta,
-                                 const Graphic3d_VerticalTextAlignment   theVta,
-                                 const Standard_Boolean                  /*theToEvalMinMax*/)
-{
-  if (theCGroup.ptrGroup == NULL)
-  {
-    return;
-  }
-
-  OpenGl_TextParam aParams;
-  aParams.Height = int ((theHeight < 2.0) ? DefaultTextHeight() : theHeight);
-  aParams.HAlign = theHta;
-  aParams.VAlign = theVta;
-  const OpenGl_Vec3 aPoint (thePoint.X(), thePoint.Y(), thePoint.Z());
-  OpenGl_Text* aText = new OpenGl_Text (theText, aPoint, aParams);
-  ((OpenGl_Group* )theCGroup.ptrGroup)->AddElement (TelText, aText);
-}
-
-// =======================================================================
-// function : Text
-// purpose  : Wrapper CString -> TCollection_ExtendedString
-// =======================================================================
-void OpenGl_GraphicDriver::Text (const Graphic3d_CGroup&                 theCGroup,
-                                 const Standard_CString                  theText,
-                                 const Graphic3d_Vertex&                 thePoint,
-                                 const Standard_Real                     theHeight,
-                                 const Quantity_PlaneAngle               theAngle,
-                                 const Graphic3d_TextPath                theTp,
-                                 const Graphic3d_HorizontalTextAlignment theHta,
-                                 const Graphic3d_VerticalTextAlignment   theVta,
-                                 const Standard_Boolean                  theToEvalMinMax)
-{
-  OpenGl_GraphicDriver::Text (theCGroup, TCollection_ExtendedString (theText),
-                              thePoint, theHeight, theAngle, theTp, theHta, theVta, theToEvalMinMax);
-}
-
-// =======================================================================
-// function : Text
-// purpose  : Wrapper CString -> TCollection_ExtendedString
-// =======================================================================
-void OpenGl_GraphicDriver::Text (const Graphic3d_CGroup& theCGroup,
-                                 const Standard_CString  theText,
-                                 const Graphic3d_Vertex& thePoint,
-                                 const Standard_Real     theHeight,
-                                 const Standard_Boolean  theToEvalMinMax)
-{
-  OpenGl_GraphicDriver::Text (theCGroup, TCollection_ExtendedString (theText), thePoint, theHeight, theToEvalMinMax);
-}
-
-// =======================================================================
-// function : Text
-// purpose  : Wrapper with default values
-// =======================================================================
-void OpenGl_GraphicDriver::Text (const Graphic3d_CGroup&           theCGroup,
-                                 const TCollection_ExtendedString& theText,
-                                 const Graphic3d_Vertex&           thePoint,
-                                 const Standard_Real               theHeight,
-                                 const Standard_Boolean            theToEvalMinMax)
-{
-  OpenGl_GraphicDriver::Text (theCGroup,
-                              theText, thePoint, theHeight, 0.0,
-                              Graphic3d_TP_RIGHT, Graphic3d_HTA_LEFT, Graphic3d_VTA_BOTTOM,
-                              theToEvalMinMax);
 }
 
 // =======================================================================
@@ -577,17 +641,4 @@ void OpenGl_GraphicDriver::GraduatedTrihedronMinMaxValues (const Standard_ShortR
                                                            const Standard_ShortReal theMaxZ)
 {
   OpenGl_GraduatedTrihedron::SetMinMax (theMinX, theMinY, theMinZ, theMaxX, theMaxY, theMaxZ);
-}
-
-// =======================================================================
-// function : SetFlippingOptions
-// purpose  : Enable or disable flipping option for the given group
-// =======================================================================
-void OpenGl_GraphicDriver::SetFlippingOptions (const Graphic3d_CGroup& theCGroup,
-                                               const Standard_Boolean  theIsEnabled,
-                                               const gp_Ax2&           theRefPlane)
-{
-  OpenGl_Flipper* aFlipper = new OpenGl_Flipper (theRefPlane);
-  aFlipper->SetOptions (theIsEnabled);
-  ((OpenGl_Group* )theCGroup.ptrGroup)->AddElement (TelNil, aFlipper);
 }

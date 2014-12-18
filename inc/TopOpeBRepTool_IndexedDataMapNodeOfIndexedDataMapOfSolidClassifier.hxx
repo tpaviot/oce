@@ -6,31 +6,15 @@
 #ifndef _TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier_HeaderFile
 #define _TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier_HeaderFile
 #include <Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _BRepClass3d_SolidClassifier_HeaderFile
 #include <BRepClass3d_SolidClassifier.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TopoDS_Shape;
 class BRepClass3d_SolidClassifier;
 class TopTools_ShapeMapHasher;
@@ -38,20 +22,21 @@ class TopOpeBRepTool_IndexedDataMapOfSolidClassifier;
 
 
 
-class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier : public TCollection_MapNode {
+class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier(const TopoDS_Shape& K1,const Standard_Integer K2,const BRepClass3d_SolidClassifier& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier(const TopoDS_Shape& K1, const Standard_Integer K2, const BRepClass3d_SolidClassifier& I, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        TopoDS_Shape& Key1() const;
+      TopoDS_Shape& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
   
-        BRepClass3d_SolidClassifier& Value() const;
+      BRepClass3d_SolidClassifier& Value()  const;
 
 
 
@@ -66,10 +51,10 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey1;
-Standard_Integer myKey2;
-BRepClass3d_SolidClassifier myValue;
-TCollection_MapNodePtr myNext2;
+  TopoDS_Shape myKey1;
+  Standard_Integer myKey2;
+  BRepClass3d_SolidClassifier myValue;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -103,7 +88,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedDataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier_HeaderFile

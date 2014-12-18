@@ -88,7 +88,7 @@
 #include <BRepFeat_SplitShape.hxx>
 #include <BRepAlgoAPI_Section.hxx>
 
-#if ! defined(WNT)
+#if ! defined(_WIN32)
 extern ViewerTest_DoubleMapOfInteractiveAndName& GetMapOfAIS();
 #else
 Standard_EXPORT ViewerTest_DoubleMapOfInteractiveAndName& GetMapOfAIS();
@@ -1348,7 +1348,7 @@ static Standard_Integer OCC369(Draw_Interpretor& di, Standard_Integer argc, cons
     if(aShape.IsNull()) {di << "OCC369 FAULTY. Entry shape is NULL \n"; return 0;}
 
     // 3. Build mesh
-    BRepMesh_IncrementalMesh aMesh(aShape, 0.2, Standard_True, M_PI/6);
+    BRepMesh_IncrementalMesh aMesh(aShape, 0.2, Standard_True, M_PI / 6);
 
   }
   catch (Standard_Failure) {di << "OCC369 Exception \n" ;return 0;}
@@ -1675,7 +1675,7 @@ static Standard_Integer OCC708 (Draw_Interpretor& di, Standard_Integer argc, con
       di << argv[1] << " : No interactive object" << "\n";
       return 1;
     } 
-    AISObj->UnsetTransformation();
+    AISObj->ResetTransformation();
     if (!aContext->HasOpenedContext()) {
       aContext->OpenLocalContext();
     }
@@ -2136,7 +2136,7 @@ TopoDS_Shape OCC1077_boolbl(BRepAlgoAPI_BooleanOperation& aBoolenaOperation,cons
   TopoDS_Shape ShapeCut = aBoolenaOperation.Shape();
 
 //#ifdef OCC40 
-//  Handle_TopOpeBRepBuild_HBuilder build = aBoolenaOperation.Builder();
+//  Handle(TopOpeBRepBuild_HBuilder) build = aBoolenaOperation.Builder();
 //#endif 
   TopTools_ListIteratorOfListOfShape its;
 
@@ -2202,7 +2202,7 @@ TopoDS_Shape OCC1077_Bug()
   TopoDS_Shape theCylinder3 = BRepPrimAPI_MakeCylinder(gp_Ax2(gp_Pnt(0, - 10, 0),
 							      gp_Dir(0, 1, 0)), 3, 20).Shape();
   TopoDS_Shape theTmp1 = OCC1077_cut_blend(theCommon,theCylinder1,0.7);
-  Handle_ShapeFix_Shape fixer = new ShapeFix_Shape(theTmp1);
+  Handle(ShapeFix_Shape) fixer = new ShapeFix_Shape(theTmp1);
   fixer->Perform();
   theTmp1 = fixer->Shape();
   TopoDS_Shape theTmp2 = OCC1077_cut_blend(theTmp1,theCylinder2,0.7);
@@ -2357,7 +2357,8 @@ static Standard_Integer OCC5698 (Draw_Interpretor& di, Standard_Integer argc, co
   return 0;
 }
 
-#ifdef WNT
+// stack overflow can be successfully handled only on 32-bit Windows
+#if defined(_WIN32) && !defined(_WIN64)
 static int StackOverflow (int i = -1)
 {
   char arr[2000];
@@ -2366,8 +2367,10 @@ static int StackOverflow (int i = -1)
     StackOverflow(i-1);
   return i;
 }
+#endif
 
 // this code does not work with optimize mode on Windows
+#ifdef _WIN32
 #pragma optimize( "", off )
 #endif
 static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
@@ -2394,7 +2397,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
       di << " 4 / 0 = " << res << "  Does not Caught... KO"<< "\n";
       Succes = Standard_False;
     }
-#if defined(SOLARIS) || defined(WNT)
+#if defined(SOLARIS) || defined(_WIN32)
     catch(Standard_DivideByZero)
 #else
     catch(Standard_NumericError)
@@ -2427,16 +2430,17 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
       di << "\n";
       Standard_Real res, a= 4.0, b=0.0;
       res = a / b;
-      di << " 4.0 / 0.0 = " << res << "  Does not Caught... KO"<< "\n";
-      Succes = Standard_False;
+      di << " 4.0 / 0.0 = " << res << "  Does not Caught... OK"<< "\n";
     }
     catch(Standard_DivideByZero) // Solaris, Windows w/o SSE2
     {
-      di << " Ok" << "\n";
+      di << " KO" << "\n";
+      Succes = Standard_False;
     }
     catch(Standard_NumericError) // Linux, Windows with SSE2
     {
-      di << " Ok" << "\n";
+      di << " KO" << "\n";
+      Succes = Standard_False;
     }
     catch(Standard_Failure) {
       //cout << " Caught (" << Standard_Failure::Caught() << ")... KO" << endl;
@@ -2484,16 +2488,17 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
       
       (void)sin(1.); //this function tests FPU flags and raises signal (tested on LINUX).
 
-      di << "-- "<<res<<"="<<r<<"*"<<r<<"   Does not Caught... KO"<< "\n";
-      Succes = Standard_False;
+      di << "-- "<<res<<"="<<r<<"*"<<r<<"   Does not Caught... OK"<< "\n";
     }
     catch(Standard_Overflow) // Solaris, Windows w/o SSE2
     {
-      di << " Ok" << "\n";
+      di << " KO" << "\n";
+      Succes = Standard_False;
     }
     catch(Standard_NumericError) // Linux, Windows with SSE2
     {
-      di << " Ok" << "\n";
+      di << " KO" << "\n";
+      Succes = Standard_False;
     }
     catch(Standard_Failure) {
       //cout << " Caught (" << Standard_Failure::Caught() << ")... KO" << endl;
@@ -2520,11 +2525,13 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
     }
     catch(Standard_Underflow) // could be on Solaris, Windows w/o SSE2
     {
-      di << " Ok" << "\n";
+      di << " KO" << "\n";
+      Succes = Standard_False;
     }
     catch(Standard_NumericError) // could be on Linux, Windows with SSE2
     {
-      di << " Ok" << "\n";
+      di << " KO" << "\n";
+      Succes = Standard_False;
     }
     catch(Standard_Failure) {
       //cout << " Caught (" << Standard_Failure::Caught() << ")... KO" << endl;
@@ -2544,11 +2551,11 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
       di << "\n";
       Standard_Real res, r=-1;
       res = sqrt(r);
-      di<<" "<<res<<"=sqrt("<<r<<")  Does not Caught... KO"<<"\n";
-      Succes = Standard_False;
+      di<<" "<<res<<"=sqrt("<<r<<")  Does not Caught... OK"<<"\n";
     }
     catch(Standard_NumericError) {
-      di << " Ok"<< "\n";
+      di << " KO"<< "\n";
+      Succes = Standard_False;
     }
     catch(Standard_Failure) {
       //cout << " Caught (" << Standard_Failure::Caught() << ")... KO" << endl;
@@ -2571,7 +2578,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
       di << "  Does not Caught... KO"<<"\n";
       Succes = Standard_False;
     }
-#ifdef WNT
+#ifdef _WIN32
     catch(OSD_Exception_ACCESS_VIOLATION)
 #else
     catch(OSD_SIGSEGV)
@@ -2587,7 +2594,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
     }
   }
 
-#ifdef WNT
+#if defined(_WIN32) && !defined(_WIN64)
   {//==== Test Stack Overflow ===============================================
     try {
       OCC_CATCH_SIGNALS
@@ -2620,7 +2627,7 @@ static Standard_Integer OCC6143 (Draw_Interpretor& di, Standard_Integer argc, co
 
   return 0;
 }
-#ifdef WNT
+#ifdef _WIN32
 #pragma optimize( "", on )
 #endif
 
@@ -2657,9 +2664,9 @@ static Standard_Integer OCC7141 (Draw_Interpretor& di, Standard_Integer argc, co
     nCount = Draw::Atoi(argv[1]);
     TCollection_AsciiString aFilePath = argv[2];
   STEPCAFControl_Writer writer;
-  Handle_TDocStd_Document document;
+  Handle(TDocStd_Document) document;
   document = new TDocStd_Document("Pace Test-StepExporter-");
-  Handle_XCAFDoc_ShapeTool shapeTool;
+  Handle(XCAFDoc_ShapeTool) shapeTool;
   shapeTool = XCAFDoc_DocumentTool::ShapeTool(document->Main());
   shapeTool->AddShape(AddTestStructure(nCount), Standard_True);
   STEPControl_StepModelType mode = STEPControl_AsIs;
@@ -3194,7 +3201,7 @@ Standard_Integer OCC14376(Draw_Interpretor& di, Standard_Integer argc, const cha
   }
   di<<"deflection="<< aDeflection << "\n";
 
-  BRepMesh_IncrementalMesh aIMesh(aShape, aDeflection, Standard_False, M_PI/9.);
+  BRepMesh_IncrementalMesh aIMesh(aShape, aDeflection, Standard_False, M_PI / 9.);
   TopLoc_Location aLocation;
   Handle(Poly_Triangulation) aTriang = BRep_Tool::Triangulation(TopoDS::Face(aShape), aLocation);
 

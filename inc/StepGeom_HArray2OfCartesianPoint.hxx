@@ -6,28 +6,14 @@
 #ifndef _StepGeom_HArray2OfCartesianPoint_HeaderFile
 #define _StepGeom_HArray2OfCartesianPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_HArray2OfCartesianPoint_HeaderFile
 #include <Handle_StepGeom_HArray2OfCartesianPoint.hxx>
-#endif
 
-#ifndef _StepGeom_Array2OfCartesianPoint_HeaderFile
 #include <StepGeom_Array2OfCartesianPoint.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -37,38 +23,39 @@ class StepGeom_Array2OfCartesianPoint;
 
 
 
-class StepGeom_HArray2OfCartesianPoint : public MMgt_TShared {
+class StepGeom_HArray2OfCartesianPoint : public MMgt_TShared
+{
 
 public:
 
   
-      StepGeom_HArray2OfCartesianPoint(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+    StepGeom_HArray2OfCartesianPoint(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-      StepGeom_HArray2OfCartesianPoint(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(StepGeom_CartesianPoint)& V);
+    StepGeom_HArray2OfCartesianPoint(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const Handle(StepGeom_CartesianPoint)& V);
   
-        void Init(const Handle(StepGeom_CartesianPoint)& V) ;
+      void Init (const Handle(StepGeom_CartesianPoint)& V) ;
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(StepGeom_CartesianPoint)& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Handle(StepGeom_CartesianPoint)& Value) ;
   
-       const Handle_StepGeom_CartesianPoint& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+     const  Handle(StepGeom_CartesianPoint)& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
   
-        Handle_StepGeom_CartesianPoint& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+      Handle(StepGeom_CartesianPoint)& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
   
-       const StepGeom_Array2OfCartesianPoint& Array2() const;
+     const  StepGeom_Array2OfCartesianPoint& Array2()  const;
   
-        StepGeom_Array2OfCartesianPoint& ChangeArray2() ;
+      StepGeom_Array2OfCartesianPoint& ChangeArray2() ;
 
 
 
@@ -83,12 +70,12 @@ protected:
 private: 
 
 
-StepGeom_Array2OfCartesianPoint myArray;
+  StepGeom_Array2OfCartesianPoint myArray;
 
 
 };
 
-#define ItemHArray2 Handle_StepGeom_CartesianPoint
+#define ItemHArray2 Handle(StepGeom_CartesianPoint)
 #define ItemHArray2_hxx <StepGeom_CartesianPoint.hxx>
 #define TheArray2 StepGeom_Array2OfCartesianPoint
 #define TheArray2_hxx <StepGeom_Array2OfCartesianPoint.hxx>
@@ -109,7 +96,6 @@ StepGeom_Array2OfCartesianPoint myArray;
 #undef TCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_HArray2OfCartesianPoint_HeaderFile

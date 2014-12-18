@@ -1,3 +1,1 @@
-#ifndef _StepData_DescrProtocol_HeaderFile
 #include <StepData_DescrProtocol.hxx>
-#endif

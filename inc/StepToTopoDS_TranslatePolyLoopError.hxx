@@ -6,14 +6,13 @@
 #ifndef _StepToTopoDS_TranslatePolyLoopError_HeaderFile
 #define _StepToTopoDS_TranslatePolyLoopError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepToTopoDS_TranslatePolyLoopError {
+
+enum StepToTopoDS_TranslatePolyLoopError
+{
 StepToTopoDS_TranslatePolyLoopDone,
 StepToTopoDS_TranslatePolyLoopOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepToTopoDS_TranslatePolyLoopError_HeaderFile

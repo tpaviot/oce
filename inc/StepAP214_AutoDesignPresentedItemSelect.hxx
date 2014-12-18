@@ -6,43 +6,19 @@
 #ifndef _StepAP214_AutoDesignPresentedItemSelect_HeaderFile
 #define _StepAP214_AutoDesignPresentedItemSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Handle_StepRepr_ProductDefinitionShape_HeaderFile
 #include <Handle_StepRepr_ProductDefinitionShape.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationRelationship_HeaderFile
 #include <Handle_StepRepr_RepresentationRelationship.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentRelationship_HeaderFile
 #include <Handle_StepBasic_DocumentRelationship.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_ProductDefinitionRelationship;
 class StepBasic_ProductDefinition;
@@ -53,35 +29,43 @@ class StepBasic_DocumentRelationship;
 
 
 
-class StepAP214_AutoDesignPresentedItemSelect  : public StepData_SelectType {
+class StepAP214_AutoDesignPresentedItemSelect  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a AutoDesignPresentedItemSelect SelectType <br>
-  Standard_EXPORT   StepAP214_AutoDesignPresentedItemSelect();
-  //! Recognizes a AutoDesignPresentedItemSelect Kind Entity that is : <br>
-//!  1 -> ProductDefinition, <br>
-//!  2 -> ProductDefinitionRelationship, <br>
-//!  3 -> ProductDefinitionShape <br>
-//!  4 -> RepresentationRelationship <br>
-//!  5 -> ShapeAspect <br>
-//!  6 -> DocumentRelationship, <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a ProductDefinitionRelationship (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionRelationship ProductDefinitionRelationship() const;
-  //! returns Value as a ProductDefinition (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinition ProductDefinition() const;
-  //! returns Value as a ProductDefinitionShape (Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ProductDefinitionShape ProductDefinitionShape() const;
-  //! returns Value as a RepresentationRelationship (Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_RepresentationRelationship RepresentationRelationship() const;
-  //! returns Value as a ShapeAspect (Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ShapeAspect ShapeAspect() const;
-  //! returns Value as a DocumentRelationship (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_DocumentRelationship DocumentRelationship() const;
-
+  
+  //! Returns a AutoDesignPresentedItemSelect SelectType
+  Standard_EXPORT StepAP214_AutoDesignPresentedItemSelect();
+  
+  //! Recognizes a AutoDesignPresentedItemSelect Kind Entity that is :
+  //! 1 -> ProductDefinition,
+  //! 2 -> ProductDefinitionRelationship,
+  //! 3 -> ProductDefinitionShape
+  //! 4 -> RepresentationRelationship
+  //! 5 -> ShapeAspect
+  //! 6 -> DocumentRelationship,
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a ProductDefinitionRelationship (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionRelationship) ProductDefinitionRelationship()  const;
+  
+  //! returns Value as a ProductDefinition (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinition) ProductDefinition()  const;
+  
+  //! returns Value as a ProductDefinitionShape (Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ProductDefinitionShape) ProductDefinitionShape()  const;
+  
+  //! returns Value as a RepresentationRelationship (Null if another type)
+  Standard_EXPORT   Handle(StepRepr_RepresentationRelationship) RepresentationRelationship()  const;
+  
+  //! returns Value as a ShapeAspect (Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ShapeAspect) ShapeAspect()  const;
+  
+  //! returns Value as a DocumentRelationship (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_DocumentRelationship) DocumentRelationship()  const;
 
 
 
@@ -104,7 +88,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_AutoDesignPresentedItemSelect_HeaderFile

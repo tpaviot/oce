@@ -6,70 +6,63 @@
 #ifndef _BRepBuilderAPI_FindPlane_HeaderFile
 #define _BRepBuilderAPI_FindPlane_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Plane_HeaderFile
 #include <Handle_Geom_Plane.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom_Plane;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 
 
-//! Describes functions to find the plane in which the edges <br>
-//! of a given shape are located. <br>
-//! A FindPlane object provides a framework for: <br>
-//! -   extracting the edges of a given shape, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class BRepBuilderAPI_FindPlane  {
+//! Describes functions to find the plane in which the edges
+//! of a given shape are located.
+//! A FindPlane object provides a framework for:
+//! -   extracting the edges of a given shape,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class BRepBuilderAPI_FindPlane 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Initializes an empty algorithm. The function Init is then used to define the shape. <br>
-  Standard_EXPORT   BRepBuilderAPI_FindPlane();
-  //!  Constructs the plane containing the edges of the shape S. <br>
-//! A plane is built only if all the edges are within a distance <br>
-//! of less than or equal to tolerance from a planar surface. <br>
-//! This tolerance value is equal to the larger of the following two values: <br>
-//! -   Tol, where the default value is negative, or <br>
-//! -   the largest of the tolerance values assigned to the individual edges of S. <br>
-//!   Use the function Found to verify that a plane is built. <br>
-//! The resulting plane is then retrieved using the function Plane. <br>
-  Standard_EXPORT   BRepBuilderAPI_FindPlane(const TopoDS_Shape& S,const Standard_Real Tol = -1);
-  //! Constructs the plane containing the edges of the shape S. <br>
-//! A plane is built only if all the edges are within a distance <br>
-//! of less than or equal to tolerance from a planar surface. <br>
-//! This tolerance value is equal to the larger of the following two values: <br>
-//! -   Tol, where the default value is negative, or <br>
-//! -   the largest of the tolerance values assigned to the individual edges of S. <br>
-//!   Use the function Found to verify that a plane is built. <br>
-//! The resulting plane is then retrieved using the function Plane. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& S,const Standard_Real Tol = -1) ;
-  //! Returns true if a plane containing the edges of the <br>
-//! shape is found and built. Use the function Plane to consult the result. <br>
-  Standard_EXPORT     Standard_Boolean Found() const;
-  //! Returns the plane containing the edges of the shape. <br>
-//! Warning <br>
-//! Use the function Found to verify that the plane is built. If <br>
-//! a plane is not found, Plane returns a null handle. <br>
-  Standard_EXPORT     Handle_Geom_Plane Plane() const;
-
+  
+  //! Initializes an empty algorithm. The function Init is then used to define the shape.
+  Standard_EXPORT BRepBuilderAPI_FindPlane();
+  
+  //! Constructs the plane containing the edges of the shape S.
+  //! A plane is built only if all the edges are within a distance
+  //! of less than or equal to tolerance from a planar surface.
+  //! This tolerance value is equal to the larger of the following two values:
+  //! -   Tol, where the default value is negative, or
+  //! -   the largest of the tolerance values assigned to the individual edges of S.
+  //! Use the function Found to verify that a plane is built.
+  //! The resulting plane is then retrieved using the function Plane.
+  Standard_EXPORT BRepBuilderAPI_FindPlane(const TopoDS_Shape& S, const Standard_Real Tol = -1);
+  
+  //! Constructs the plane containing the edges of the shape S.
+  //! A plane is built only if all the edges are within a distance
+  //! of less than or equal to tolerance from a planar surface.
+  //! This tolerance value is equal to the larger of the following two values:
+  //! -   Tol, where the default value is negative, or
+  //! -   the largest of the tolerance values assigned to the individual edges of S.
+  //! Use the function Found to verify that a plane is built.
+  //! The resulting plane is then retrieved using the function Plane.
+  Standard_EXPORT   void Init (const TopoDS_Shape& S, const Standard_Real Tol = -1) ;
+  
+  //! Returns true if a plane containing the edges of the
+  //! shape is found and built. Use the function Plane to consult the result.
+  Standard_EXPORT   Standard_Boolean Found()  const;
+  
+  //! Returns the plane containing the edges of the shape.
+  //! Warning
+  //! Use the function Found to verify that the plane is built. If
+  //! a plane is not found, Plane returns a null handle.
+  Standard_EXPORT   Handle(Geom_Plane) Plane()  const;
 
 
 
@@ -84,7 +77,7 @@ private:
 
 
 
-Handle_Geom_Plane myPlane;
+  Handle(Geom_Plane) myPlane;
 
 
 };
@@ -93,7 +86,6 @@ Handle_Geom_Plane myPlane;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBuilderAPI_FindPlane_HeaderFile

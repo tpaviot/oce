@@ -6,22 +6,15 @@
 #ifndef _Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode_HeaderFile
 #define _Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_SeqNode_HeaderFile
 #include <Handle_TCollection_SeqNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_SeqNode);
 class AdvApp2Var_SequenceNodeOfSequenceOfNode;
 
-DEFINE_STANDARD_HANDLE(AdvApp2Var_SequenceNodeOfSequenceOfNode,TCollection_SeqNode)
+DEFINE_STANDARD_HANDLE(AdvApp2Var_SequenceNodeOfSequenceOfNode, TCollection_SeqNode)
 
-#endif
+#endif // _Handle_AdvApp2Var_SequenceNodeOfSequenceOfNode_HeaderFile

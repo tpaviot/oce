@@ -1,6 +1,2 @@
-#ifndef _Quantity_PeriodDefinitionError_HeaderFile
 #include <Quantity_PeriodDefinitionError.hxx>
-#endif
-#ifndef _Quantity_Period_HeaderFile
 #include <Quantity_Period.hxx>
-#endif

@@ -5,21 +5,11 @@
 
 #include <TColStd_DataMapOfAsciiStringInteger.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_DataMapNodeOfDataMapOfAsciiStringInteger_HeaderFile
 #include <TColStd_DataMapNodeOfDataMapOfAsciiStringInteger.hxx>
-#endif
-#ifndef _TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger_HeaderFile
 #include <TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString

@@ -6,22 +6,12 @@
 #ifndef _TDF_MapIteratorOfLabelMap_HeaderFile
 #define _TDF_MapIteratorOfLabelMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_TDF_StdMapNodeOfLabelMap_HeaderFile
 #include <Handle_TDF_StdMapNodeOfLabelMap.hxx>
-#endif
 class Standard_NoSuchObject;
 class TDF_Label;
 class TDF_LabelMapHasher;
@@ -30,20 +20,20 @@ class TDF_StdMapNodeOfLabelMap;
 
 
 
-class TDF_MapIteratorOfLabelMap  : public TCollection_BasicMapIterator {
+class TDF_MapIteratorOfLabelMap  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_MapIteratorOfLabelMap();
+  Standard_EXPORT TDF_MapIteratorOfLabelMap();
   
-  Standard_EXPORT   TDF_MapIteratorOfLabelMap(const TDF_LabelMap& aMap);
+  Standard_EXPORT TDF_MapIteratorOfLabelMap(const TDF_LabelMap& aMap);
   
-  Standard_EXPORT     void Initialize(const TDF_LabelMap& aMap) ;
+  Standard_EXPORT   void Initialize (const TDF_LabelMap& aMap) ;
   
-  Standard_EXPORT    const TDF_Label& Key() const;
-
+  Standard_EXPORT  const  TDF_Label& Key()  const;
 
 
 
@@ -66,7 +56,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_MapIteratorOfLabelMap_HeaderFile

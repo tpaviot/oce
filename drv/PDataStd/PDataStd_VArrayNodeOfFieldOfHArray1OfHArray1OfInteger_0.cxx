@@ -5,19 +5,11 @@
 
 #include <PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PColStd_HArray1OfInteger_HeaderFile
 #include <PColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _PDataStd_FieldOfHArray1OfHArray1OfInteger_HeaderFile
 #include <PDataStd_FieldOfHArray1OfHArray1OfInteger.hxx>
-#endif
-#ifndef _PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfInteger_HeaderFile
 #include <PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfInteger.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger,Standar
 IMPLEMENT_STANDARD_RTTI(PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger)
 
 
-#define Item Handle_PColStd_HArray1OfInteger
+#define Item Handle(PColStd_HArray1OfInteger)
 #define Item_hxx <PColStd_HArray1OfInteger.hxx>
 #define DBC_VArrayNode PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger
 #define DBC_VArrayNode_hxx <PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger.hxx>

@@ -6,15 +6,14 @@
 #ifndef _VrmlConverter_TypeOfCamera_HeaderFile
 #define _VrmlConverter_TypeOfCamera_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum VrmlConverter_TypeOfCamera {
+
+enum VrmlConverter_TypeOfCamera
+{
 VrmlConverter_NoCamera,
 VrmlConverter_PerspectiveCamera,
 VrmlConverter_OrthographicCamera
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _VrmlConverter_TypeOfCamera_HeaderFile

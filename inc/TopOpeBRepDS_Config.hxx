@@ -6,15 +6,14 @@
 #ifndef _TopOpeBRepDS_Config_HeaderFile
 #define _TopOpeBRepDS_Config_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopOpeBRepDS_Config {
+
+enum TopOpeBRepDS_Config
+{
 TopOpeBRepDS_UNSHGEOMETRY,
 TopOpeBRepDS_SAMEORIENTED,
 TopOpeBRepDS_DIFFORIENTED
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopOpeBRepDS_Config_HeaderFile

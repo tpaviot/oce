@@ -6,22 +6,15 @@
 #ifndef _Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier_HeaderFile
 #define _Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_SeqNode_HeaderFile
 #include <Handle_TCollection_SeqNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_SeqNode);
 class IFSelect_SequenceNodeOfSequenceOfGeneralModifier;
 
-DEFINE_STANDARD_HANDLE(IFSelect_SequenceNodeOfSequenceOfGeneralModifier,TCollection_SeqNode)
+DEFINE_STANDARD_HANDLE(IFSelect_SequenceNodeOfSequenceOfGeneralModifier, TCollection_SeqNode)
 
-#endif
+#endif // _Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier_HeaderFile

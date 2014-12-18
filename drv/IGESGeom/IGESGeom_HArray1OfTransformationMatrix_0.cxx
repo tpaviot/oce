@@ -5,28 +5,14 @@
 
 #include <IGESGeom_HArray1OfTransformationMatrix.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESGeom_TransformationMatrix_HeaderFile
 #include <IGESGeom_TransformationMatrix.hxx>
-#endif
-#ifndef _IGESGeom_Array1OfTransformationMatrix_HeaderFile
 #include <IGESGeom_Array1OfTransformationMatrix.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESGeom_HArray1OfTransformationMatrix,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESGeom_HArray1OfTransformationMatrix)
 
 
-#define ItemHArray1 Handle_IGESGeom_TransformationMatrix
+#define ItemHArray1 Handle(IGESGeom_TransformationMatrix)
 #define ItemHArray1_hxx <IGESGeom_TransformationMatrix.hxx>
 #define TheArray1 IGESGeom_Array1OfTransformationMatrix
 #define TheArray1_hxx <IGESGeom_Array1OfTransformationMatrix.hxx>

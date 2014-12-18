@@ -5,18 +5,10 @@
 
 #include <ShapeFix_SequenceOfWireSegment.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _ShapeFix_WireSegment_HeaderFile
 #include <ShapeFix_WireSegment.hxx>
-#endif
-#ifndef _ShapeFix_SequenceNodeOfSequenceOfWireSegment_HeaderFile
 #include <ShapeFix_SequenceNodeOfSequenceOfWireSegment.hxx>
-#endif
  
 
 #define SeqItem ShapeFix_WireSegment

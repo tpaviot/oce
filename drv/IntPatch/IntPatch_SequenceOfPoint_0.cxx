@@ -5,18 +5,10 @@
 
 #include <IntPatch_SequenceOfPoint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntPatch_Point_HeaderFile
 #include <IntPatch_Point.hxx>
-#endif
-#ifndef _IntPatch_SequenceNodeOfSequenceOfPoint_HeaderFile
 #include <IntPatch_SequenceNodeOfSequenceOfPoint.hxx>
-#endif
  
 
 #define SeqItem IntPatch_Point

@@ -5,18 +5,10 @@
 
 #include <FEmTool_SeqOfLinConstr.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _FEmTool_ListOfVectors_HeaderFile
 #include <FEmTool_ListOfVectors.hxx>
-#endif
-#ifndef _FEmTool_SequenceNodeOfSeqOfLinConstr_HeaderFile
 #include <FEmTool_SequenceNodeOfSeqOfLinConstr.hxx>
-#endif
  
 
 #define SeqItem FEmTool_ListOfVectors

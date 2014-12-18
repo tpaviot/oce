@@ -6,59 +6,52 @@
 #ifndef _OSD_Printer_HeaderFile
 #define _OSD_Printer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _OSD_Error_HeaderFile
 #include <OSD_Error.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_NullObject;
 class OSD_OSDError;
 class TCollection_AsciiString;
 
 
-//! Selects a printer. <br>
-class OSD_Printer  {
+//! Selects a printer (used by File).
+class OSD_Printer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Initializes printer to use with its name. <br>
-//!          The string must contain only ASCII characters <br>
-//!          between ' ' and '~'; this means no control character <br>
-//!          and no extended ASCII code. If it is not the case the <br>
-//!          exception ConstructionError is raised. <br>
-  Standard_EXPORT   OSD_Printer(const TCollection_AsciiString& Name);
-  //! Changes name of printer to use. <br>
-  Standard_EXPORT     void SetName(const TCollection_AsciiString& Name) ;
-  //! Returns name of current printer <br>
-  Standard_EXPORT     void Name(TCollection_AsciiString& Name) const;
-  //! Returns TRUE if an error occurs <br>
-  Standard_EXPORT     Standard_Boolean Failed() const;
-  //! Resets error counter to zero <br>
-  Standard_EXPORT     void Reset() ;
-  //! Raises OSD_Error <br>
-  Standard_EXPORT     void Perror() ;
-  //! Returns error number if 'Failed' is TRUE. <br>
-  Standard_EXPORT     Standard_Integer Error() const;
-
+  
+  //! Initializes printer to use with its name.
+  //! The string must contain only ASCII characters
+  //! between ' ' and '~'; this means no control character
+  //! and no extended ASCII code. If it is not the case the
+  //! exception ConstructionError is raised.
+  Standard_EXPORT OSD_Printer(const TCollection_AsciiString& Name);
+  
+  //! Changes name of printer to use.
+  Standard_EXPORT   void SetName (const TCollection_AsciiString& Name) ;
+  
+  //! Returns name of current printer
+  Standard_EXPORT   void Name (TCollection_AsciiString& Name)  const;
+  
+  //! Returns TRUE if an error occurs
+  Standard_EXPORT   Standard_Boolean Failed()  const;
+  
+  //! Resets error counter to zero
+  Standard_EXPORT   void Reset() ;
+  
+  //! Raises OSD_Error
+  Standard_EXPORT   void Perror() ;
+  
+  //! Returns error number if 'Failed' is TRUE.
+  Standard_EXPORT   Standard_Integer Error()  const;
 
 
 
@@ -73,8 +66,8 @@ private:
 
 
 
-TCollection_AsciiString myName;
-OSD_Error myError;
+  TCollection_AsciiString myName;
+  OSD_Error myError;
 
 
 };
@@ -83,7 +76,6 @@ OSD_Error myError;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _OSD_Printer_HeaderFile

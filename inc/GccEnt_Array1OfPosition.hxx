@@ -6,28 +6,14 @@
 #ifndef _GccEnt_Array1OfPosition_HeaderFile
 #define _GccEnt_Array1OfPosition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _GccEnt_Position_HeaderFile
 #include <GccEnt_Position.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -35,52 +21,52 @@ class Standard_OutOfMemory;
 
 
 
-class GccEnt_Array1OfPosition  {
+class GccEnt_Array1OfPosition 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      GccEnt_Array1OfPosition(const Standard_Integer Low,const Standard_Integer Up);
+    GccEnt_Array1OfPosition(const Standard_Integer Low, const Standard_Integer Up);
   
-      GccEnt_Array1OfPosition(const GccEnt_Position& Item,const Standard_Integer Low,const Standard_Integer Up);
+    GccEnt_Array1OfPosition(const GccEnt_Position& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const GccEnt_Position& V) ;
+  Standard_EXPORT   void Init (const GccEnt_Position& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~GccEnt_Array1OfPosition()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const GccEnt_Array1OfPosition& Assign(const GccEnt_Array1OfPosition& Other) ;
-   const GccEnt_Array1OfPosition& operator =(const GccEnt_Array1OfPosition& Other) 
+  Standard_EXPORT  const  GccEnt_Array1OfPosition& Assign (const GccEnt_Array1OfPosition& Other) ;
+ const  GccEnt_Array1OfPosition& operator = (const GccEnt_Array1OfPosition& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const GccEnt_Position& Value) ;
+      void SetValue (const Standard_Integer Index, const GccEnt_Position& Value) ;
   
-       const GccEnt_Position& Value(const Standard_Integer Index) const;
-     const GccEnt_Position& operator ()(const Standard_Integer Index) const
+     const  GccEnt_Position& Value (const Standard_Integer Index)  const;
+   const  GccEnt_Position& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        GccEnt_Position& ChangeValue(const Standard_Integer Index) ;
-      GccEnt_Position& operator ()(const Standard_Integer Index) 
+      GccEnt_Position& ChangeValue (const Standard_Integer Index) ;
+    GccEnt_Position& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -94,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   GccEnt_Array1OfPosition(const GccEnt_Array1OfPosition& AnArray);
+  Standard_EXPORT GccEnt_Array1OfPosition(const GccEnt_Array1OfPosition& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -118,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GccEnt_Array1OfPosition_HeaderFile

@@ -5,19 +5,11 @@
 
 #include <FEmTool_ListNodeOfListOfVectors.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _FEmTool_ListOfVectors_HeaderFile
 #include <FEmTool_ListOfVectors.hxx>
-#endif
-#ifndef _FEmTool_ListIteratorOfListOfVectors_HeaderFile
 #include <FEmTool_ListIteratorOfListOfVectors.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(FEmTool_ListNodeOfListOfVectors,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(FEmTool_ListNodeOfListOfVectors)
 
 
-#define Item Handle_TColStd_HArray1OfReal
+#define Item Handle(TColStd_HArray1OfReal)
 #define Item_hxx <TColStd_HArray1OfReal.hxx>
 #define TCollection_ListNode FEmTool_ListNodeOfListOfVectors
 #define TCollection_ListNode_hxx <FEmTool_ListNodeOfListOfVectors.hxx>

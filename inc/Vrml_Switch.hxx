@@ -6,47 +6,37 @@
 #ifndef _Vrml_Switch_HeaderFile
 #define _Vrml_Switch_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 
 
-//! defines a Switch node of VRML specifying group properties. <br>
-//!  This  group  node  traverses  one,  none,  or  all  of  its  children. <br>
-//!  One  can  use  this  node  to  switch  on  and  off  the  effects  of  some <br>
-//!  properties  or  to  switch  between  different  properties. <br>
-//!  The  whichChild  field  specifies  the  index  of  the  child  to  traverse, <br>
-//!  where  the  first  child  has  index  0. <br>
-//!  A  value  of  -1  (the  default)  means  do  not  traverse  any  children. <br>
-//!  A  value  of  -3  traverses  all  children,  making  the  switch  behave  exactly <br>
-//!  like  a  regular  Group. <br>
-class Vrml_Switch  {
+//! defines a Switch node of VRML specifying group properties.
+//! This  group  node  traverses  one,  none,  or  all  of  its  children.
+//! One  can  use  this  node  to  switch  on  and  off  the  effects  of  some
+//! properties  or  to  switch  between  different  properties.
+//! The  whichChild  field  specifies  the  index  of  the  child  to  traverse,
+//! where  the  first  child  has  index  0.
+//! A  value  of  -1  (the  default)  means  do  not  traverse  any  children.
+//! A  value  of  -3  traverses  all  children,  making  the  switch  behave  exactly
+//! like  a  regular  Group.
+class Vrml_Switch 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_Switch(const Standard_Integer aWhichChild = -1);
+  Standard_EXPORT Vrml_Switch(const Standard_Integer aWhichChild = -1);
   
-  Standard_EXPORT     void SetWhichChild(const Standard_Integer aWhichChild) ;
+  Standard_EXPORT   void SetWhichChild (const Standard_Integer aWhichChild) ;
   
-  Standard_EXPORT     Standard_Integer WhichChild() const;
+  Standard_EXPORT   Standard_Integer WhichChild()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -61,7 +51,7 @@ private:
 
 
 
-Standard_Integer myWhichChild;
+  Standard_Integer myWhichChild;
 
 
 };
@@ -70,7 +60,6 @@ Standard_Integer myWhichChild;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_Switch_HeaderFile

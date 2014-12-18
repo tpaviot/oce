@@ -5,27 +5,15 @@
 
 #include <StepToTopoDS_DataMapIteratorOfDataMapOfTRI.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _StepShape_TopologicalRepresentationItem_HeaderFile
 #include <StepShape_TopologicalRepresentationItem.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapOfTRI_HeaderFile
 #include <StepToTopoDS_DataMapOfTRI.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapNodeOfDataMapOfTRI_HeaderFile
 #include <StepToTopoDS_DataMapNodeOfDataMapOfTRI.hxx>
-#endif
  
 
-#define TheKey Handle_StepShape_TopologicalRepresentationItem
+#define TheKey Handle(StepShape_TopologicalRepresentationItem)
 #define TheKey_hxx <StepShape_TopologicalRepresentationItem.hxx>
 #define TheItem TopoDS_Shape
 #define TheItem_hxx <TopoDS_Shape.hxx>

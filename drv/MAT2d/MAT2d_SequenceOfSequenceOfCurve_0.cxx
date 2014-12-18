@@ -5,18 +5,10 @@
 
 #include <MAT2d_SequenceOfSequenceOfCurve.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColGeom2d_SequenceOfCurve_HeaderFile
 #include <TColGeom2d_SequenceOfCurve.hxx>
-#endif
-#ifndef _MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve_HeaderFile
 #include <MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve.hxx>
-#endif
  
 
 #define SeqItem TColGeom2d_SequenceOfCurve

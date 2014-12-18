@@ -6,49 +6,21 @@
 #ifndef _IntPatch_WLine_HeaderFile
 #define _IntPatch_WLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntPatch_WLine_HeaderFile
 #include <Handle_IntPatch_WLine.hxx>
-#endif
 
-#ifndef _Handle_IntSurf_LineOn2S_HeaderFile
 #include <Handle_IntSurf_LineOn2S.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfPoint_HeaderFile
 #include <IntPatch_SequenceOfPoint.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _IntPatch_Line_HeaderFile
 #include <IntPatch_Line.hxx>
-#endif
-#ifndef _IntSurf_TypeTrans_HeaderFile
 #include <IntSurf_TypeTrans.hxx>
-#endif
-#ifndef _IntSurf_Situation_HeaderFile
 #include <IntSurf_Situation.hxx>
-#endif
 class IntSurf_LineOn2S;
 class Adaptor2d_HCurve2d;
 class Standard_OutOfRange;
@@ -59,97 +31,114 @@ class gp_Pnt2d;
 class gp_Pnt;
 
 
-//! Definition of set of points as a result of the intersection <br>
-//!          between 2 parametrised patches. <br>
-class IntPatch_WLine : public IntPatch_Line {
+//! Definition of set of points as a result of the intersection
+//! between 2 parametrised patches.
+class IntPatch_WLine : public IntPatch_Line
+{
 
 public:
 
-  //! Creates a WLine as an intersection when the <br>
-//!          transitions are In or Out. <br>
-  Standard_EXPORT   IntPatch_WLine(const Handle(IntSurf_LineOn2S)& Line,const Standard_Boolean Tang,const IntSurf_TypeTrans Trans1,const IntSurf_TypeTrans Trans2);
-  //! Creates a WLine as an intersection when the <br>
-//!          transitions are Touch. <br>
-  Standard_EXPORT   IntPatch_WLine(const Handle(IntSurf_LineOn2S)& Line,const Standard_Boolean Tang,const IntSurf_Situation Situ1,const IntSurf_Situation Situ2);
-  //! Creates a WLine as an intersection when the <br>
-//!          transitions are Undecided. <br>
-  Standard_EXPORT   IntPatch_WLine(const Handle(IntSurf_LineOn2S)& Line,const Standard_Boolean Tang);
-  //! Adds a vertex in the list. <br>
-        void AddVertex(const IntPatch_Point& Pnt) ;
-  //! Set the Point of index <Index> in the LineOn2S <br>
-  Standard_EXPORT     void SetPoint(const Standard_Integer Index,const IntPatch_Point& Pnt) ;
-  //! Replaces the element of range Index in the list <br>
-//!          of points. <br>
-//!          The exception OutOfRange is raised when <br>
-//!          Index <= 0 or Index > NbVertex. <br>
-        void Replace(const Standard_Integer Index,const IntPatch_Point& Pnt) ;
   
-        void SetFirstPoint(const Standard_Integer IndFirst) ;
+  //! Creates a WLine as an intersection when the
+  //! transitions are In or Out.
+  Standard_EXPORT IntPatch_WLine(const Handle(IntSurf_LineOn2S)& Line, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
   
-        void SetLastPoint(const Standard_Integer IndLast) ;
-  //! Returns the number of intersection points. <br>
-        Standard_Integer NbPnts() const;
-  //! Returns the intersection point of range Index. <br>
-       const IntSurf_PntOn2S& Point(const Standard_Integer Index) const;
-  //! Returns True if the line has a known First point. <br>
-//!          This point is given by the method FirstPoint(). <br>
-        Standard_Boolean HasFirstPoint() const;
-  //! Returns True if the line has a known Last point. <br>
-//!          This point is given by the method LastPoint(). <br>
-        Standard_Boolean HasLastPoint() const;
-  //! Returns the Point corresponding to the FirstPoint. <br>
-       const IntPatch_Point& FirstPoint() const;
-  //! Returns the Point corresponding to the LastPoint. <br>
-       const IntPatch_Point& LastPoint() const;
-  //! Returns the Point corresponding to the FirstPoint. <br>
-//!          Indfirst is the index of the first in the list <br>
-//!          of vertices. <br>
-       const IntPatch_Point& FirstPoint(Standard_Integer& Indfirst) const;
-  //! Returns the Point corresponding to the LastPoint. <br>
-//!          Indlast is the index of the last in the list <br>
-//!          of vertices. <br>
-       const IntPatch_Point& LastPoint(Standard_Integer& Indlast) const;
+  //! Creates a WLine as an intersection when the
+  //! transitions are Touch.
+  Standard_EXPORT IntPatch_WLine(const Handle(IntSurf_LineOn2S)& Line, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
   
-        Standard_Integer NbVertex() const;
-  //! Returns the vertex of range Index on the line. <br>
-       const IntPatch_Point& Vertex(const Standard_Integer Index) const;
-  //! Set the parameters of all the vertex on the line. <br>
-//!          if a vertex is already in the line, <br>
-//!             its parameter is modified <br>
-//!          else a new point in the line is inserted. <br>
-  Standard_EXPORT     void ComputeVertexParameters(const Standard_Real Tol,const Standard_Boolean hasBeenAdded = Standard_False) ;
+  //! Creates a WLine as an intersection when the
+  //! transitions are Undecided.
+  Standard_EXPORT IntPatch_WLine(const Handle(IntSurf_LineOn2S)& Line, const Standard_Boolean Tang);
   
-  Standard_EXPORT     Handle_IntSurf_LineOn2S Curve() const;
+  //! Adds a vertex in the list.
+      void AddVertex (const IntPatch_Point& Pnt) ;
   
-  Standard_EXPORT     Standard_Boolean IsOutSurf1Box(const gp_Pnt2d& P1) ;
+  //! Set the Point of index <Index> in the LineOn2S
+  Standard_EXPORT   void SetPoint (const Standard_Integer Index, const IntPatch_Point& Pnt) ;
   
-  Standard_EXPORT     Standard_Boolean IsOutSurf2Box(const gp_Pnt2d& P1) ;
+  //! Replaces the element of range Index in the list
+  //! of points.
+  //! The exception OutOfRange is raised when
+  //! Index <= 0 or Index > NbVertex.
+      void Replace (const Standard_Integer Index, const IntPatch_Point& Pnt) ;
   
-  Standard_EXPORT     Standard_Boolean IsOutBox(const gp_Pnt& P) ;
+      void SetFirstPoint (const Standard_Integer IndFirst) ;
   
-  Standard_EXPORT     void SetPeriod(const Standard_Real pu1,const Standard_Real pv1,const Standard_Real pu2,const Standard_Real pv2) ;
+      void SetLastPoint (const Standard_Integer IndLast) ;
   
-  Standard_EXPORT     Standard_Real U1Period() const;
+  //! Returns the number of intersection points.
+      Standard_Integer NbPnts()  const;
   
-  Standard_EXPORT     Standard_Real V1Period() const;
+  //! Returns the intersection point of range Index.
+     const  IntSurf_PntOn2S& Point (const Standard_Integer Index)  const;
   
-  Standard_EXPORT     Standard_Real U2Period() const;
+  //! Returns True if the line has a known First point.
+  //! This point is given by the method FirstPoint().
+      Standard_Boolean HasFirstPoint()  const;
   
-  Standard_EXPORT     Standard_Real V2Period() const;
+  //! Returns True if the line has a known Last point.
+  //! This point is given by the method LastPoint().
+      Standard_Boolean HasLastPoint()  const;
   
-  Standard_EXPORT     void SetArcOnS1(const Handle(Adaptor2d_HCurve2d)& A) ;
+  //! Returns the Point corresponding to the FirstPoint.
+     const  IntPatch_Point& FirstPoint()  const;
   
-  Standard_EXPORT     Standard_Boolean HasArcOnS1() const;
+  //! Returns the Point corresponding to the LastPoint.
+     const  IntPatch_Point& LastPoint()  const;
   
-  Standard_EXPORT    const Handle_Adaptor2d_HCurve2d& GetArcOnS1() const;
+  //! Returns the Point corresponding to the FirstPoint.
+  //! Indfirst is the index of the first in the list
+  //! of vertices.
+     const  IntPatch_Point& FirstPoint (Standard_Integer& Indfirst)  const;
   
-  Standard_EXPORT     void SetArcOnS2(const Handle(Adaptor2d_HCurve2d)& A) ;
+  //! Returns the Point corresponding to the LastPoint.
+  //! Indlast is the index of the last in the list
+  //! of vertices.
+     const  IntPatch_Point& LastPoint (Standard_Integer& Indlast)  const;
   
-  Standard_EXPORT     Standard_Boolean HasArcOnS2() const;
+      Standard_Integer NbVertex()  const;
   
-  Standard_EXPORT    const Handle_Adaptor2d_HCurve2d& GetArcOnS2() const;
+  //! Returns the vertex of range Index on the line.
+     const  IntPatch_Point& Vertex (const Standard_Integer Index)  const;
   
-  Standard_EXPORT     void Dump() const;
+  //! Set the parameters of all the vertex on the line.
+  //! if a vertex is already in the line,
+  //! its parameter is modified
+  //! else a new point in the line is inserted.
+  Standard_EXPORT   void ComputeVertexParameters (const Standard_Real Tol, const Standard_Boolean hasBeenAdded = Standard_False) ;
+  
+  Standard_EXPORT   Handle(IntSurf_LineOn2S) Curve()  const;
+  
+  Standard_EXPORT   Standard_Boolean IsOutSurf1Box (const gp_Pnt2d& P1) ;
+  
+  Standard_EXPORT   Standard_Boolean IsOutSurf2Box (const gp_Pnt2d& P1) ;
+  
+  Standard_EXPORT   Standard_Boolean IsOutBox (const gp_Pnt& P) ;
+  
+  Standard_EXPORT   void SetPeriod (const Standard_Real pu1, const Standard_Real pv1, const Standard_Real pu2, const Standard_Real pv2) ;
+  
+  Standard_EXPORT   Standard_Real U1Period()  const;
+  
+  Standard_EXPORT   Standard_Real V1Period()  const;
+  
+  Standard_EXPORT   Standard_Real U2Period()  const;
+  
+  Standard_EXPORT   Standard_Real V2Period()  const;
+  
+  Standard_EXPORT   void SetArcOnS1 (const Handle(Adaptor2d_HCurve2d)& A) ;
+  
+  Standard_EXPORT   Standard_Boolean HasArcOnS1()  const;
+  
+  Standard_EXPORT  const  Handle(Adaptor2d_HCurve2d)& GetArcOnS1()  const;
+  
+  Standard_EXPORT   void SetArcOnS2 (const Handle(Adaptor2d_HCurve2d)& A) ;
+  
+  Standard_EXPORT   Standard_Boolean HasArcOnS2()  const;
+  
+  Standard_EXPORT  const  Handle(Adaptor2d_HCurve2d)& GetArcOnS2()  const;
+  
+  Standard_EXPORT   void Dump()  const;
 
 
 
@@ -164,23 +153,23 @@ protected:
 private: 
 
 
-Handle_IntSurf_LineOn2S curv;
-Standard_Boolean fipt;
-Standard_Boolean lapt;
-Standard_Integer indf;
-Standard_Integer indl;
-IntPatch_SequenceOfPoint svtx;
-Bnd_Box2d Buv1;
-Bnd_Box2d Buv2;
-Bnd_Box Bxyz;
-Standard_Real u1period;
-Standard_Real v1period;
-Standard_Real u2period;
-Standard_Real v2period;
-Standard_Boolean hasArcOnS1;
-Handle_Adaptor2d_HCurve2d theArcOnS1;
-Standard_Boolean hasArcOnS2;
-Handle_Adaptor2d_HCurve2d theArcOnS2;
+  Handle(IntSurf_LineOn2S) curv;
+  Standard_Boolean fipt;
+  Standard_Boolean lapt;
+  Standard_Integer indf;
+  Standard_Integer indl;
+  IntPatch_SequenceOfPoint svtx;
+  Bnd_Box2d Buv1;
+  Bnd_Box2d Buv2;
+  Bnd_Box Bxyz;
+  Standard_Real u1period;
+  Standard_Real v1period;
+  Standard_Real u2period;
+  Standard_Real v2period;
+  Standard_Boolean hasArcOnS1;
+  Handle(Adaptor2d_HCurve2d) theArcOnS1;
+  Standard_Boolean hasArcOnS2;
+  Handle(Adaptor2d_HCurve2d) theArcOnS2;
 
 
 };
@@ -190,7 +179,6 @@ Handle_Adaptor2d_HCurve2d theArcOnS2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_WLine_HeaderFile

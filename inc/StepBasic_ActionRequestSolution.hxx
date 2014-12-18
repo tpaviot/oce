@@ -6,46 +6,41 @@
 #ifndef _StepBasic_ActionRequestSolution_HeaderFile
 #define _StepBasic_ActionRequestSolution_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ActionRequestSolution_HeaderFile
 #include <Handle_StepBasic_ActionRequestSolution.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_ActionMethod_HeaderFile
 #include <Handle_StepBasic_ActionMethod.hxx>
-#endif
-#ifndef _Handle_StepBasic_VersionedActionRequest_HeaderFile
 #include <Handle_StepBasic_VersionedActionRequest.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_ActionMethod;
 class StepBasic_VersionedActionRequest;
 
 
-//! Representation of STEP entity ActionRequestSolution <br>
-class StepBasic_ActionRequestSolution : public MMgt_TShared {
+//! Representation of STEP entity ActionRequestSolution
+class StepBasic_ActionRequestSolution : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_ActionRequestSolution();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_ActionMethod)& aMethod,const Handle(StepBasic_VersionedActionRequest)& aRequest) ;
-  //! Returns field Method <br>
-  Standard_EXPORT     Handle_StepBasic_ActionMethod Method() const;
-  //! Set field Method <br>
-  Standard_EXPORT     void SetMethod(const Handle(StepBasic_ActionMethod)& Method) ;
-  //! Returns field Request <br>
-  Standard_EXPORT     Handle_StepBasic_VersionedActionRequest Request() const;
-  //! Set field Request <br>
-  Standard_EXPORT     void SetRequest(const Handle(StepBasic_VersionedActionRequest)& Request) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_ActionRequestSolution();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_ActionMethod)& aMethod, const Handle(StepBasic_VersionedActionRequest)& aRequest) ;
+  
+  //! Returns field Method
+  Standard_EXPORT   Handle(StepBasic_ActionMethod) Method()  const;
+  
+  //! Set field Method
+  Standard_EXPORT   void SetMethod (const Handle(StepBasic_ActionMethod)& Method) ;
+  
+  //! Returns field Request
+  Standard_EXPORT   Handle(StepBasic_VersionedActionRequest) Request()  const;
+  
+  //! Set field Request
+  Standard_EXPORT   void SetRequest (const Handle(StepBasic_VersionedActionRequest)& Request) ;
 
 
 
@@ -60,8 +55,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_ActionMethod theMethod;
-Handle_StepBasic_VersionedActionRequest theRequest;
+  Handle(StepBasic_ActionMethod) theMethod;
+  Handle(StepBasic_VersionedActionRequest) theRequest;
 
 
 };
@@ -70,7 +65,6 @@ Handle_StepBasic_VersionedActionRequest theRequest;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ActionRequestSolution_HeaderFile

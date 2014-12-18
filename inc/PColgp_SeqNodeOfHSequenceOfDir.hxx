@@ -6,60 +6,45 @@
 #ifndef _PColgp_SeqNodeOfHSequenceOfDir_HeaderFile
 #define _PColgp_SeqNodeOfHSequenceOfDir_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColgp_SeqNodeOfHSequenceOfDir_HeaderFile
 #include <Handle_PColgp_SeqNodeOfHSequenceOfDir.hxx>
-#endif
 
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _Handle_PColgp_SeqNodeOfHSequenceOfDir_HeaderFile
 #include <Handle_PColgp_SeqNodeOfHSequenceOfDir.hxx>
-#endif
-#ifndef _PMMgt_PManaged_HeaderFile
 #include <PMMgt_PManaged.hxx>
-#endif
-#ifndef _Handle_PColgp_HSequenceOfDir_HeaderFile
 #include <Handle_PColgp_HSequenceOfDir.hxx>
-#endif
 class PColgp_HSequenceOfDir;
 class PColgp_SeqExplorerOfHSequenceOfDir;
 class gp_Dir;
 
 
-class PColgp_SeqNodeOfHSequenceOfDir : public PMMgt_PManaged {
+class PColgp_SeqNodeOfHSequenceOfDir : public PMMgt_PManaged
+{
 
 public:
 
   
-  Standard_EXPORT   PColgp_SeqNodeOfHSequenceOfDir(const Handle(PColgp_SeqNodeOfHSequenceOfDir)& TheLast,const gp_Dir& TheItem);
+  Standard_EXPORT PColgp_SeqNodeOfHSequenceOfDir(const Handle(PColgp_SeqNodeOfHSequenceOfDir)& TheLast, const gp_Dir& TheItem);
   
-  Standard_EXPORT   PColgp_SeqNodeOfHSequenceOfDir(const gp_Dir& TheItem,const Handle(PColgp_SeqNodeOfHSequenceOfDir)& TheFirst);
+  Standard_EXPORT PColgp_SeqNodeOfHSequenceOfDir(const gp_Dir& TheItem, const Handle(PColgp_SeqNodeOfHSequenceOfDir)& TheFirst);
   
-  Standard_EXPORT   PColgp_SeqNodeOfHSequenceOfDir(const Handle(PColgp_SeqNodeOfHSequenceOfDir)& ThePrevious,const Handle(PColgp_SeqNodeOfHSequenceOfDir)& TheNext,const gp_Dir& TheItem);
+  Standard_EXPORT PColgp_SeqNodeOfHSequenceOfDir(const Handle(PColgp_SeqNodeOfHSequenceOfDir)& ThePrevious, const Handle(PColgp_SeqNodeOfHSequenceOfDir)& TheNext, const gp_Dir& TheItem);
   
-  Standard_EXPORT     gp_Dir Value() const;
+  Standard_EXPORT   gp_Dir Value()  const;
   
-  Standard_EXPORT     Handle_PColgp_SeqNodeOfHSequenceOfDir Next() const;
+  Standard_EXPORT   Handle(PColgp_SeqNodeOfHSequenceOfDir) Next()  const;
   
-  Standard_EXPORT     Handle_PColgp_SeqNodeOfHSequenceOfDir Previous() const;
+  Standard_EXPORT   Handle(PColgp_SeqNodeOfHSequenceOfDir) Previous()  const;
   
-  Standard_EXPORT     void SetValue(const gp_Dir& AnItem) ;
+  Standard_EXPORT   void SetValue (const gp_Dir& AnItem) ;
   
-  Standard_EXPORT     void SetNext(const Handle(PColgp_SeqNodeOfHSequenceOfDir)& ANode) ;
+  Standard_EXPORT   void SetNext (const Handle(PColgp_SeqNodeOfHSequenceOfDir)& ANode) ;
   
-  Standard_EXPORT     void SetPrevious(const Handle(PColgp_SeqNodeOfHSequenceOfDir)& ANode) ;
+  Standard_EXPORT   void SetPrevious (const Handle(PColgp_SeqNodeOfHSequenceOfDir)& ANode) ;
 
-  PColgp_SeqNodeOfHSequenceOfDir( )
+PColgp_SeqNodeOfHSequenceOfDir( )
 {
   
 }
@@ -87,9 +72,9 @@ protected:
 private: 
 
 
-Handle_PColgp_SeqNodeOfHSequenceOfDir MyPrevious;
-gp_Dir MyItem;
-Handle_PColgp_SeqNodeOfHSequenceOfDir MyNext;
+  Handle(PColgp_SeqNodeOfHSequenceOfDir) MyPrevious;
+  gp_Dir MyItem;
+  Handle(PColgp_SeqNodeOfHSequenceOfDir) MyNext;
 
 
 };
@@ -98,7 +83,6 @@ Handle_PColgp_SeqNodeOfHSequenceOfDir MyNext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColgp_SeqNodeOfHSequenceOfDir_HeaderFile

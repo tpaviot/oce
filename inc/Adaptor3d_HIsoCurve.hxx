@@ -6,22 +6,12 @@
 #ifndef _Adaptor3d_HIsoCurve_HeaderFile
 #define _Adaptor3d_HIsoCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HIsoCurve_HeaderFile
 #include <Handle_Adaptor3d_HIsoCurve.hxx>
-#endif
 
-#ifndef _Adaptor3d_IsoCurve_HeaderFile
 #include <Adaptor3d_IsoCurve.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -30,22 +20,23 @@ class Adaptor3d_Curve;
 
 
 
-class Adaptor3d_HIsoCurve : public Adaptor3d_HCurve {
+class Adaptor3d_HIsoCurve : public Adaptor3d_HCurve
+{
 
 public:
 
   
-  Standard_EXPORT   Adaptor3d_HIsoCurve();
+  Standard_EXPORT Adaptor3d_HIsoCurve();
   
-  Standard_EXPORT   Adaptor3d_HIsoCurve(const Adaptor3d_IsoCurve& C);
+  Standard_EXPORT Adaptor3d_HIsoCurve(const Adaptor3d_IsoCurve& C);
   
-  Standard_EXPORT     void Set(const Adaptor3d_IsoCurve& C) ;
+  Standard_EXPORT   void Set (const Adaptor3d_IsoCurve& C) ;
   
-  Standard_EXPORT    const Adaptor3d_Curve& Curve() const;
+  Standard_EXPORT  const  Adaptor3d_Curve& Curve()  const;
   
-  Standard_EXPORT     Adaptor3d_Curve& GetCurve() ;
+  Standard_EXPORT   Adaptor3d_Curve& GetCurve() ;
   
-        Adaptor3d_IsoCurve& ChangeCurve() ;
+      Adaptor3d_IsoCurve& ChangeCurve() ;
 
 
 
@@ -55,7 +46,7 @@ public:
 protected:
 
 
-Adaptor3d_IsoCurve myCurve;
+  Adaptor3d_IsoCurve myCurve;
 
 
 private: 
@@ -82,7 +73,6 @@ private:
 #undef Adaptor3d_GenHCurve_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Adaptor3d_HIsoCurve_HeaderFile

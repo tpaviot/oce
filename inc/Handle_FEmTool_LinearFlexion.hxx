@@ -6,22 +6,15 @@
 #ifndef _Handle_FEmTool_LinearFlexion_HeaderFile
 #define _Handle_FEmTool_LinearFlexion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_FEmTool_ElementaryCriterion_HeaderFile
 #include <Handle_FEmTool_ElementaryCriterion.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(FEmTool_ElementaryCriterion);
 class FEmTool_LinearFlexion;
 
-DEFINE_STANDARD_HANDLE(FEmTool_LinearFlexion,FEmTool_ElementaryCriterion)
+DEFINE_STANDARD_HANDLE(FEmTool_LinearFlexion, FEmTool_ElementaryCriterion)
 
-#endif
+#endif // _Handle_FEmTool_LinearFlexion_HeaderFile

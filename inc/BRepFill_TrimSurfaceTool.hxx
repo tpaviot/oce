@@ -6,37 +6,17 @@
 #ifndef _BRepFill_TrimSurfaceTool_HeaderFile
 #define _BRepFill_TrimSurfaceTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
 class Geom2d_Curve;
 class Standard_NoSuchObject;
 class TopoDS_Face;
@@ -46,29 +26,34 @@ class gp_Pnt2d;
 class Geom_Curve;
 
 
-
-class BRepFill_TrimSurfaceTool  {
+//! Compute the Pcurves and  the 3d curves resulting
+//! of the trimming of a face by an extruded surface.
+class BRepFill_TrimSurfaceTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepFill_TrimSurfaceTool(const Handle(Geom2d_Curve)& Bis,const TopoDS_Face& Face1,const TopoDS_Face& Face2,const TopoDS_Edge& Edge1,const TopoDS_Edge& Edge2,const Standard_Boolean Inv1,const Standard_Boolean Inv2);
-  //! Intersect <Bis>  with the  projection of the edges <br>
-//!          <EdgeOnFi> and returns the intersecting parameters <br>
-//!          on Bis and on the edges <br>
-//!          P.X() : Parameter on Bis <br>
-//!          P.Y() : Parameter on EdgeOnF1 <br>
-//!          P.Z() : Parameter on EdgeOnF2 <br>//! raises if <Edge> is not a edge of Face1 or Face2. <br>
-  Standard_EXPORT     void IntersectWith(const TopoDS_Edge& EdgeOnF1,const TopoDS_Edge& EdgeOnF2,TColgp_SequenceOfPnt& Points) const;
-  //! returns True if the Line (P, DZ) intersect the Faces <br>
-  Standard_EXPORT     Standard_Boolean IsOnFace(const gp_Pnt2d& Point) const;
-  //! returns the parameter of the  point <Point> on the <br>
-//!          Edge <Edge>, assuming that the point is on the edge. <br>
-  Standard_EXPORT     Standard_Real ProjOn(const gp_Pnt2d& Point,const TopoDS_Edge& Edge) const;
+  Standard_EXPORT BRepFill_TrimSurfaceTool(const Handle(Geom2d_Curve)& Bis, const TopoDS_Face& Face1, const TopoDS_Face& Face2, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, const Standard_Boolean Inv1, const Standard_Boolean Inv2);
   
-  Standard_EXPORT     void Project(const Standard_Real U1,const Standard_Real U2,Handle(Geom_Curve)& Curve,Handle(Geom2d_Curve)& PCurve1,Handle(Geom2d_Curve)& PCurve2,GeomAbs_Shape& myCont) const;
-
+  //! Intersect <Bis>  with the  projection of the edges
+  //! <EdgeOnFi> and returns the intersecting parameters
+  //! on Bis and on the edges
+  //! P.X() : Parameter on Bis
+  //! P.Y() : Parameter on EdgeOnF1
+  //! P.Z() : Parameter on EdgeOnF2
+  //! raises if <Edge> is not a edge of Face1 or Face2.
+  Standard_EXPORT   void IntersectWith (const TopoDS_Edge& EdgeOnF1, const TopoDS_Edge& EdgeOnF2, TColgp_SequenceOfPnt& Points)  const;
+  
+  //! returns True if the Line (P, DZ) intersect the Faces
+  Standard_EXPORT   Standard_Boolean IsOnFace (const gp_Pnt2d& Point)  const;
+  
+  //! returns the parameter of the  point <Point> on the
+  //! Edge <Edge>, assuming that the point is on the edge.
+  Standard_EXPORT   Standard_Real ProjOn (const gp_Pnt2d& Point, const TopoDS_Edge& Edge)  const;
+  
+  Standard_EXPORT   void Project (const Standard_Real U1, const Standard_Real U2, Handle(Geom_Curve)& Curve, Handle(Geom2d_Curve)& PCurve1, Handle(Geom2d_Curve)& PCurve2, GeomAbs_Shape& myCont)  const;
 
 
 
@@ -83,13 +68,13 @@ private:
 
 
 
-TopoDS_Face myFace1;
-TopoDS_Face myFace2;
-TopoDS_Edge myEdge1;
-TopoDS_Edge myEdge2;
-Standard_Boolean myInv1;
-Standard_Boolean myInv2;
-Handle_Geom2d_Curve myBis;
+  TopoDS_Face myFace1;
+  TopoDS_Face myFace2;
+  TopoDS_Edge myEdge1;
+  TopoDS_Edge myEdge2;
+  Standard_Boolean myInv1;
+  Standard_Boolean myInv2;
+  Handle(Geom2d_Curve) myBis;
 
 
 };
@@ -98,7 +83,6 @@ Handle_Geom2d_Curve myBis;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_TrimSurfaceTool_HeaderFile

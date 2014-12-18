@@ -6,22 +6,15 @@
 #ifndef _Handle_AIS_Drawer_HeaderFile
 #define _Handle_AIS_Drawer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Prs3d_Drawer);
 class AIS_Drawer;
 
-DEFINE_STANDARD_HANDLE(AIS_Drawer,Prs3d_Drawer)
+DEFINE_STANDARD_HANDLE(AIS_Drawer, Prs3d_Drawer)
 
-#endif
+#endif // _Handle_AIS_Drawer_HeaderFile

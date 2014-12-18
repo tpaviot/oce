@@ -6,46 +6,41 @@
 #ifndef _StepBasic_IdentificationAssignment_HeaderFile
 #define _StepBasic_IdentificationAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_IdentificationAssignment_HeaderFile
 #include <Handle_StepBasic_IdentificationAssignment.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_IdentificationRole_HeaderFile
 #include <Handle_StepBasic_IdentificationRole.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_IdentificationRole;
 
 
-//! Representation of STEP entity IdentificationAssignment <br>
-class StepBasic_IdentificationAssignment : public MMgt_TShared {
+//! Representation of STEP entity IdentificationAssignment
+class StepBasic_IdentificationAssignment : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_IdentificationAssignment();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aAssignedId,const Handle(StepBasic_IdentificationRole)& aRole) ;
-  //! Returns field AssignedId <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString AssignedId() const;
-  //! Set field AssignedId <br>
-  Standard_EXPORT     void SetAssignedId(const Handle(TCollection_HAsciiString)& AssignedId) ;
-  //! Returns field Role <br>
-  Standard_EXPORT     Handle_StepBasic_IdentificationRole Role() const;
-  //! Set field Role <br>
-  Standard_EXPORT     void SetRole(const Handle(StepBasic_IdentificationRole)& Role) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_IdentificationAssignment();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aAssignedId, const Handle(StepBasic_IdentificationRole)& aRole) ;
+  
+  //! Returns field AssignedId
+  Standard_EXPORT   Handle(TCollection_HAsciiString) AssignedId()  const;
+  
+  //! Set field AssignedId
+  Standard_EXPORT   void SetAssignedId (const Handle(TCollection_HAsciiString)& AssignedId) ;
+  
+  //! Returns field Role
+  Standard_EXPORT   Handle(StepBasic_IdentificationRole) Role()  const;
+  
+  //! Set field Role
+  Standard_EXPORT   void SetRole (const Handle(StepBasic_IdentificationRole)& Role) ;
 
 
 
@@ -60,8 +55,8 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theAssignedId;
-Handle_StepBasic_IdentificationRole theRole;
+  Handle(TCollection_HAsciiString) theAssignedId;
+  Handle(StepBasic_IdentificationRole) theRole;
 
 
 };
@@ -70,7 +65,6 @@ Handle_StepBasic_IdentificationRole theRole;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_IdentificationAssignment_HeaderFile

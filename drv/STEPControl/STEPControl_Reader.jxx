@@ -1,21 +1,7 @@
-#ifndef _XSControl_WorkSession_HeaderFile
 #include <XSControl_WorkSession.hxx>
-#endif
-#ifndef _StepData_StepModel_HeaderFile
 #include <StepData_StepModel.hxx>
-#endif
-#ifndef _TColStd_SequenceOfAsciiString_HeaderFile
 #include <TColStd_SequenceOfAsciiString.hxx>
-#endif
-#ifndef _StepRepr_RepresentationContext_HeaderFile
 #include <StepRepr_RepresentationContext.hxx>
-#endif
-#ifndef _TColStd_Array1OfAsciiString_HeaderFile
 #include <TColStd_Array1OfAsciiString.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _STEPControl_Reader_HeaderFile
 #include <STEPControl_Reader.hxx>
-#endif

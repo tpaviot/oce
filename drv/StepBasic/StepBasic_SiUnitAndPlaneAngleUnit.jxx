@@ -1,9 +1,3 @@
-#ifndef _StepBasic_PlaneAngleUnit_HeaderFile
 #include <StepBasic_PlaneAngleUnit.hxx>
-#endif
-#ifndef _StepBasic_DimensionalExponents_HeaderFile
 #include <StepBasic_DimensionalExponents.hxx>
-#endif
-#ifndef _StepBasic_SiUnitAndPlaneAngleUnit_HeaderFile
 #include <StepBasic_SiUnitAndPlaneAngleUnit.hxx>
-#endif

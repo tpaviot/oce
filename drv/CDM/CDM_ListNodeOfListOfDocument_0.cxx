@@ -5,19 +5,11 @@
 
 #include <CDM_ListNodeOfListOfDocument.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _CDM_ListOfDocument_HeaderFile
 #include <CDM_ListOfDocument.hxx>
-#endif
-#ifndef _CDM_ListIteratorOfListOfDocument_HeaderFile
 #include <CDM_ListIteratorOfListOfDocument.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(CDM_ListNodeOfListOfDocument,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(CDM_ListNodeOfListOfDocument)
 
 
-#define Item Handle_CDM_Document
+#define Item Handle(CDM_Document)
 #define Item_hxx <CDM_Document.hxx>
 #define TCollection_ListNode CDM_ListNodeOfListOfDocument
 #define TCollection_ListNode_hxx <CDM_ListNodeOfListOfDocument.hxx>

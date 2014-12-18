@@ -1,3 +1,1 @@
-#ifndef _StepVisual_Colour_HeaderFile
 #include <StepVisual_Colour.hxx>
-#endif

@@ -5,19 +5,11 @@
 
 #include <TDF_ListNodeOfDeltaList.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Delta_HeaderFile
 #include <TDF_Delta.hxx>
-#endif
-#ifndef _TDF_DeltaList_HeaderFile
 #include <TDF_DeltaList.hxx>
-#endif
-#ifndef _TDF_ListIteratorOfDeltaList_HeaderFile
 #include <TDF_ListIteratorOfDeltaList.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(TDF_ListNodeOfDeltaList,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TDF_ListNodeOfDeltaList)
 
 
-#define Item Handle_TDF_Delta
+#define Item Handle(TDF_Delta)
 #define Item_hxx <TDF_Delta.hxx>
 #define TCollection_ListNode TDF_ListNodeOfDeltaList
 #define TCollection_ListNode_hxx <TDF_ListNodeOfDeltaList.hxx>

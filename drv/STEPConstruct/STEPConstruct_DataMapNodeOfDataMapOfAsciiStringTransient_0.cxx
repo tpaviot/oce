@@ -5,22 +5,12 @@
 
 #include <STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _STEPConstruct_DataMapOfAsciiStringTransient_HeaderFile
 #include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
-#endif
-#ifndef _STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient_HeaderFile
 #include <STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient.hxx>
-#endif
 
  
 
@@ -41,7 +31,7 @@ IMPLEMENT_STANDARD_RTTI(STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient
 
 #define TheKey TCollection_AsciiString
 #define TheKey_hxx <TCollection_AsciiString.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher TCollection_AsciiString
 #define Hasher_hxx <TCollection_AsciiString.hxx>

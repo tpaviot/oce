@@ -1,39 +1,12 @@
-#ifndef _BRepBlend_Line_HeaderFile
 #include <BRepBlend_Line.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Adaptor3d_TopolTool_HeaderFile
 #include <Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Blend_RstRstFunction_HeaderFile
 #include <Blend_RstRstFunction.hxx>
-#endif
-#ifndef _Blend_SurfCurvFuncInv_HeaderFile
 #include <Blend_SurfCurvFuncInv.hxx>
-#endif
-#ifndef _Blend_CurvPointFuncInv_HeaderFile
 #include <Blend_CurvPointFuncInv.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _Adaptor3d_HVertex_HeaderFile
 #include <Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _IntSurf_Transition_HeaderFile
 #include <IntSurf_Transition.hxx>
-#endif
-#ifndef _BRepBlend_Extremity_HeaderFile
 #include <BRepBlend_Extremity.hxx>
-#endif
-#ifndef _Blend_Point_HeaderFile
 #include <Blend_Point.hxx>
-#endif
-#ifndef _BRepBlend_RstRstLineBuilder_HeaderFile
 #include <BRepBlend_RstRstLineBuilder.hxx>
-#endif

@@ -6,38 +6,30 @@
 #ifndef _StepVisual_ColourSpecification_HeaderFile
 #define _StepVisual_ColourSpecification_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_ColourSpecification_HeaderFile
 #include <Handle_StepVisual_ColourSpecification.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepVisual_Colour_HeaderFile
 #include <StepVisual_Colour.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
 
-class StepVisual_ColourSpecification : public StepVisual_Colour {
+class StepVisual_ColourSpecification : public StepVisual_Colour
+{
 
 public:
 
-  //! Returns a ColourSpecification <br>
-  Standard_EXPORT   StepVisual_ColourSpecification();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a ColourSpecification
+  Standard_EXPORT StepVisual_ColourSpecification();
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
 
 
 
@@ -52,7 +44,7 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString name;
+  Handle(TCollection_HAsciiString) name;
 
 
 };
@@ -61,7 +53,6 @@ Handle_TCollection_HAsciiString name;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_ColourSpecification_HeaderFile

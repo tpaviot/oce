@@ -6,58 +6,24 @@
 #ifndef _ShapeFix_Shape_HeaderFile
 #define _ShapeFix_Shape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Shape_HeaderFile
 #include <Handle_ShapeFix_Shape.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Solid_HeaderFile
 #include <Handle_ShapeFix_Solid.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _ShapeFix_Root_HeaderFile
 #include <ShapeFix_Root.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Message_ProgressIndicator_HeaderFile
 #include <Handle_Message_ProgressIndicator.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Shell_HeaderFile
 #include <Handle_ShapeFix_Shell.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Face_HeaderFile
 #include <Handle_ShapeFix_Face.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Wire_HeaderFile
 #include <Handle_ShapeFix_Wire.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Edge_HeaderFile
 #include <Handle_ShapeFix_Edge.hxx>
-#endif
-#ifndef _ShapeExtend_Status_HeaderFile
 #include <ShapeExtend_Status.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_BasicMsgRegistrator_HeaderFile
 #include <Handle_ShapeExtend_BasicMsgRegistrator.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class ShapeFix_Solid;
 class TopoDS_Shape;
 class Message_ProgressIndicator;
@@ -68,66 +34,88 @@ class ShapeFix_Edge;
 class ShapeExtend_BasicMsgRegistrator;
 
 
-//! Fixing shape in general <br>
-class ShapeFix_Shape : public ShapeFix_Root {
+//! Fixing shape in general
+class ShapeFix_Shape : public ShapeFix_Root
+{
 
 public:
 
-  //! Empty Constructor <br>
-  Standard_EXPORT   ShapeFix_Shape();
-  //! Initislises by shape. <br>
-  Standard_EXPORT   ShapeFix_Shape(const TopoDS_Shape& shape);
-  //! Initislises by shape. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& shape) ;
-  //! Iterates on sub- shape and performs fixes <br>
-  Standard_EXPORT     Standard_Boolean Perform(const Handle(Message_ProgressIndicator)& theProgress = 0) ;
-  //! Returns resulting shape <br>
-  Standard_EXPORT     TopoDS_Shape Shape() const;
-  //! Returns tool for fixing solids. <br>
-        Handle_ShapeFix_Solid FixSolidTool() const;
-  //! Returns tool for fixing shells. <br>
-        Handle_ShapeFix_Shell FixShellTool() const;
-  //! Returns tool for fixing faces. <br>
-        Handle_ShapeFix_Face FixFaceTool() const;
-  //! Returns tool for fixing wires. <br>
-        Handle_ShapeFix_Wire FixWireTool() const;
-  //! Returns tool for fixing edges. <br>
-        Handle_ShapeFix_Edge FixEdgeTool() const;
-  //! Returns the status of the last Fix. <br>
-//!          This can be a combination of the following flags: <br>
-//!          ShapeExtend_DONE1: some free edges were fixed <br>
-//!          ShapeExtend_DONE2: some free wires were fixed <br>
-//!          ShapeExtend_DONE3: some free faces were fixed <br>
-//!          ShapeExtend_DONE4: some free shells were fixed <br>
-//!          ShapeExtend_DONE5: some free solids were fixed <br>
-//!          ShapeExtend_DONE6: shapes in compound(s) were fixed <br>
-  Standard_EXPORT     Standard_Boolean Status(const ShapeExtend_Status status) const;
-  //! Sets message registrator <br>
-  Standard_EXPORT   virtual  void SetMsgRegistrator(const Handle(ShapeExtend_BasicMsgRegistrator)& msgreg) ;
-  //! Sets basic precision value (also to FixSolidTool) <br>
-  Standard_EXPORT   virtual  void SetPrecision(const Standard_Real preci) ;
-  //! Sets minimal allowed tolerance (also to FixSolidTool) <br>
-  Standard_EXPORT   virtual  void SetMinTolerance(const Standard_Real mintol) ;
-  //! Sets maximal allowed tolerance (also to FixSolidTool) <br>
-  Standard_EXPORT   virtual  void SetMaxTolerance(const Standard_Real maxtol) ;
-  //! Returns (modifiable) the mode for applying fixes of <br>
-//!          ShapeFix_Solid, by default True. <br>
-        Standard_Integer& FixSolidMode() ;
-  //! Returns (modifiable) the mode for applying fixes of <br>
-//!          ShapeFix_Shell, by default True. <br>
-        Standard_Integer& FixFreeShellMode() ;
-  //! Returns (modifiable) the mode for applying fixes of <br>
-//!          ShapeFix_Face, by default True. <br>
-        Standard_Integer& FixFreeFaceMode() ;
-  //! Returns (modifiable) the mode for applying fixes of <br>
-//!          ShapeFix_Wire, by default True. <br>
-        Standard_Integer& FixFreeWireMode() ;
-  //! Returns (modifiable) the mode for applying <br>
-//!          ShapeFix::SameParameter after all fixes, by default True. <br>
-        Standard_Integer& FixSameParameterMode() ;
-  //! Returns (modifiable) the mode for applying <br>
-//!          ShapeFix::FixVertexPosition before all fixes, by default False. <br>
-        Standard_Integer& FixVertexPositionMode() ;
+  
+  //! Empty Constructor
+  Standard_EXPORT ShapeFix_Shape();
+  
+  //! Initislises by shape.
+  Standard_EXPORT ShapeFix_Shape(const TopoDS_Shape& shape);
+  
+  //! Initislises by shape.
+  Standard_EXPORT   void Init (const TopoDS_Shape& shape) ;
+  
+  //! Iterates on sub- shape and performs fixes
+  Standard_EXPORT   Standard_Boolean Perform (const Handle(Message_ProgressIndicator)& theProgress = 0) ;
+  
+  //! Returns resulting shape
+  Standard_EXPORT   TopoDS_Shape Shape()  const;
+  
+  //! Returns tool for fixing solids.
+      Handle(ShapeFix_Solid) FixSolidTool()  const;
+  
+  //! Returns tool for fixing shells.
+      Handle(ShapeFix_Shell) FixShellTool()  const;
+  
+  //! Returns tool for fixing faces.
+      Handle(ShapeFix_Face) FixFaceTool()  const;
+  
+  //! Returns tool for fixing wires.
+      Handle(ShapeFix_Wire) FixWireTool()  const;
+  
+  //! Returns tool for fixing edges.
+      Handle(ShapeFix_Edge) FixEdgeTool()  const;
+  
+  //! Returns the status of the last Fix.
+  //! This can be a combination of the following flags:
+  //! ShapeExtend_DONE1: some free edges were fixed
+  //! ShapeExtend_DONE2: some free wires were fixed
+  //! ShapeExtend_DONE3: some free faces were fixed
+  //! ShapeExtend_DONE4: some free shells were fixed
+  //! ShapeExtend_DONE5: some free solids were fixed
+  //! ShapeExtend_DONE6: shapes in compound(s) were fixed
+  Standard_EXPORT   Standard_Boolean Status (const ShapeExtend_Status status)  const;
+  
+  //! Sets message registrator
+  Standard_EXPORT virtual   void SetMsgRegistrator (const Handle(ShapeExtend_BasicMsgRegistrator)& msgreg) ;
+  
+  //! Sets basic precision value (also to FixSolidTool)
+  Standard_EXPORT virtual   void SetPrecision (const Standard_Real preci) ;
+  
+  //! Sets minimal allowed tolerance (also to FixSolidTool)
+  Standard_EXPORT virtual   void SetMinTolerance (const Standard_Real mintol) ;
+  
+  //! Sets maximal allowed tolerance (also to FixSolidTool)
+  Standard_EXPORT virtual   void SetMaxTolerance (const Standard_Real maxtol) ;
+  
+  //! Returns (modifiable) the mode for applying fixes of
+  //! ShapeFix_Solid, by default True.
+      Standard_Integer& FixSolidMode() ;
+  
+  //! Returns (modifiable) the mode for applying fixes of
+  //! ShapeFix_Shell, by default True.
+      Standard_Integer& FixFreeShellMode() ;
+  
+  //! Returns (modifiable) the mode for applying fixes of
+  //! ShapeFix_Face, by default True.
+      Standard_Integer& FixFreeFaceMode() ;
+  
+  //! Returns (modifiable) the mode for applying fixes of
+  //! ShapeFix_Wire, by default True.
+      Standard_Integer& FixFreeWireMode() ;
+  
+  //! Returns (modifiable) the mode for applying
+  //! ShapeFix::SameParameter after all fixes, by default True.
+      Standard_Integer& FixSameParameterMode() ;
+  
+  //! Returns (modifiable) the mode for applying
+  //! ShapeFix::FixVertexPosition before all fixes, by default False.
+      Standard_Integer& FixVertexPositionMode() ;
 
 
 
@@ -136,21 +124,22 @@ public:
 
 protected:
 
-  //! Fixes same parameterization problem on the passed shape <br>
-//!          by updating tolerances of the corresponding topological <br>
-//!          entitites. <br>
-  Standard_EXPORT     void SameParameter(const TopoDS_Shape& shape,const Standard_Boolean enforce,const Handle(Message_ProgressIndicator)& theProgress = 0) ;
+  
+  //! Fixes same parameterization problem on the passed shape
+  //! by updating tolerances of the corresponding topological
+  //! entitites.
+  Standard_EXPORT   void SameParameter (const TopoDS_Shape& shape, const Standard_Boolean enforce, const Handle(Message_ProgressIndicator)& theProgress = 0) ;
 
-TopoDS_Shape myResult;
-Handle_ShapeFix_Solid myFixSolid;
-TopTools_MapOfShape myMapFixingShape;
-Standard_Integer myFixSolidMode;
-Standard_Integer myFixShellMode;
-Standard_Integer myFixFaceMode;
-Standard_Integer myFixWireMode;
-Standard_Integer myFixSameParameterMode;
-Standard_Integer myFixVertexPositionMode;
-Standard_Integer myStatus;
+  TopoDS_Shape myResult;
+  Handle(ShapeFix_Solid) myFixSolid;
+  TopTools_MapOfShape myMapFixingShape;
+  Standard_Integer myFixSolidMode;
+  Standard_Integer myFixShellMode;
+  Standard_Integer myFixFaceMode;
+  Standard_Integer myFixWireMode;
+  Standard_Integer myFixSameParameterMode;
+  Standard_Integer myFixVertexPositionMode;
+  Standard_Integer myStatus;
 
 
 private: 
@@ -165,7 +154,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_Shape_HeaderFile

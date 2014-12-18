@@ -6,44 +6,17 @@
 #ifndef _PColgp_HArray2OfXYZ_HeaderFile
 #define _PColgp_HArray2OfXYZ_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColgp_HArray2OfXYZ_HeaderFile
 #include <Handle_PColgp_HArray2OfXYZ.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray2OfXYZ_HeaderFile
 #include <PColgp_FieldOfHArray2OfXYZ.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray2OfXYZ_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray2OfXYZ.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_RangeError;
 class Standard_OutOfRange;
 class gp_XYZ;
@@ -52,36 +25,33 @@ class PColgp_VArrayNodeOfFieldOfHArray2OfXYZ;
 class PColgp_VArrayTNodeOfFieldOfHArray2OfXYZ;
 
 
-class PColgp_HArray2OfXYZ : public Standard_Persistent {
+class PColgp_HArray2OfXYZ : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PColgp_HArray2OfXYZ(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT PColgp_HArray2OfXYZ(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT   PColgp_HArray2OfXYZ(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const gp_XYZ& V);
+  Standard_EXPORT PColgp_HArray2OfXYZ(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const gp_XYZ& V);
   
-  Standard_EXPORT     Standard_Integer ColLength() const;
+  Standard_EXPORT   Standard_Integer ColLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-  Standard_EXPORT     Standard_Integer RowLength() const;
+  Standard_EXPORT   Standard_Integer RowLength()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Row,const Standard_Integer Col,const gp_XYZ& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Row, const Standard_Integer Col, const gp_XYZ& Value) ;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-  Standard_EXPORT     gp_XYZ Value(const Standard_Integer Row,const Standard_Integer Col) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
+  Standard_EXPORT   gp_XYZ Value (const Standard_Integer Row, const Standard_Integer Col)  const;
 
-  PColgp_HArray2OfXYZ( )
+PColgp_HArray2OfXYZ( )
 {
   
 }
@@ -111,15 +81,15 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PColgp_FieldOfHArray2OfXYZ Field() const;
+  Standard_EXPORT   PColgp_FieldOfHArray2OfXYZ Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer myLowerRow;
-Standard_Integer myLowerCol;
-Standard_Integer myUpperRow;
-Standard_Integer myUpperCol;
-PColgp_FieldOfHArray2OfXYZ Data;
+  Standard_Integer myLowerRow;
+  Standard_Integer myLowerCol;
+  Standard_Integer myUpperRow;
+  Standard_Integer myUpperCol;
+  PColgp_FieldOfHArray2OfXYZ Data;
 
 
 };
@@ -169,11 +139,6 @@ PColgp_FieldOfHArray2OfXYZ Data;
 #undef PCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PColgp_HArray2OfXYZ& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
 
 
-
-#endif
+#endif // _PColgp_HArray2OfXYZ_HeaderFile

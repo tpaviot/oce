@@ -1,21 +1,7 @@
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _BRepMAT2d_Explorer_HeaderFile
 #include <BRepMAT2d_Explorer.hxx>
-#endif
-#ifndef _BRepMAT2d_BisectingLocus_HeaderFile
 #include <BRepMAT2d_BisectingLocus.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _MAT_BasicElt_HeaderFile
 #include <MAT_BasicElt.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _BRepMAT2d_LinkTopoBilo_HeaderFile
 #include <BRepMAT2d_LinkTopoBilo.hxx>
-#endif

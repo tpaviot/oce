@@ -6,46 +6,42 @@
 #ifndef _Geom2dToIGES_Geom2dEntity_HeaderFile
 #define _Geom2dToIGES_Geom2dEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESData_IGESModel_HeaderFile
 #include <Handle_IGESData_IGESModel.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class IGESData_IGESModel;
 
 
-//! provides methods to transfer Geom2d entity from CASCADE to IGES. <br>
-class Geom2dToIGES_Geom2dEntity  {
+//! provides methods to transfer Geom2d entity from CASCADE to IGES.
+class Geom2dToIGES_Geom2dEntity 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a tool Geom2dEntity <br>
-  Standard_EXPORT   Geom2dToIGES_Geom2dEntity();
-  //! Creates a tool ready to run and sets its <br>
-//!         fields as GE's. <br>
-  Standard_EXPORT   Geom2dToIGES_Geom2dEntity(const Geom2dToIGES_Geom2dEntity& GE);
-  //! Set the value of "TheModel" <br>
-  Standard_EXPORT     void SetModel(const Handle(IGESData_IGESModel)& model) ;
-  //! Returns the value of "TheModel" <br>
-  Standard_EXPORT     Handle_IGESData_IGESModel GetModel() const;
-  //! Sets the value of the UnitFlag <br>
-  Standard_EXPORT     void SetUnit(const Standard_Real unit) ;
-  //! Returns the value of the UnitFlag of the header of the model <br>
-//!           in millimeters. <br>
-  Standard_EXPORT     Standard_Real GetUnit() const;
-
+  
+  //! Creates a tool Geom2dEntity
+  Standard_EXPORT Geom2dToIGES_Geom2dEntity();
+  
+  //! Creates a tool ready to run and sets its
+  //! fields as GE's.
+  Standard_EXPORT Geom2dToIGES_Geom2dEntity(const Geom2dToIGES_Geom2dEntity& GE);
+  
+  //! Set the value of "TheModel"
+  Standard_EXPORT   void SetModel (const Handle(IGESData_IGESModel)& model) ;
+  
+  //! Returns the value of "TheModel"
+  Standard_EXPORT   Handle(IGESData_IGESModel) GetModel()  const;
+  
+  //! Sets the value of the UnitFlag
+  Standard_EXPORT   void SetUnit (const Standard_Real unit) ;
+  
+  //! Returns the value of the UnitFlag of the header of the model
+  //! in millimeters.
+  Standard_EXPORT   Standard_Real GetUnit()  const;
 
 
 
@@ -60,8 +56,8 @@ private:
 
 
 
-Handle_IGESData_IGESModel TheModel;
-Standard_Real TheUnitFactor;
+  Handle(IGESData_IGESModel) TheModel;
+  Standard_Real TheUnitFactor;
 
 
 };
@@ -70,7 +66,6 @@ Standard_Real TheUnitFactor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dToIGES_Geom2dEntity_HeaderFile

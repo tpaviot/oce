@@ -6,51 +6,50 @@
 #ifndef _QANewBRepNaming_Prism_HeaderFile
 #define _QANewBRepNaming_Prism_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _QANewBRepNaming_TopNaming_HeaderFile
 #include <QANewBRepNaming_TopNaming.hxx>
-#endif
 class TDF_Label;
 class BRepPrimAPI_MakePrism;
 class TopoDS_Shape;
 
 
-//! To load the Prism results <br>
-class QANewBRepNaming_Prism  : public QANewBRepNaming_TopNaming {
+//! To load the Prism results
+class QANewBRepNaming_Prism  : public QANewBRepNaming_TopNaming
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANewBRepNaming_Prism();
+  Standard_EXPORT QANewBRepNaming_Prism();
   
-  Standard_EXPORT   QANewBRepNaming_Prism(const TDF_Label& ResultLabel);
+  Standard_EXPORT QANewBRepNaming_Prism(const TDF_Label& ResultLabel);
   
-  Standard_EXPORT     void Init(const TDF_Label& ResultLabel) ;
-  //! Loads the prism in the data framework <br>
-  Standard_EXPORT     void Load(BRepPrimAPI_MakePrism& mkPrism,const TopoDS_Shape& basis) const;
-  //! Returns the insertion label of the bottom face of the Prism. <br>
-  Standard_EXPORT     TDF_Label Bottom() const;
-  //! Returns  the insertion label of the  top face of the Prism. <br>
-  Standard_EXPORT     TDF_Label Top() const;
-  //! Returns the insertion label of the lateral face of the Prism. <br>
-  Standard_EXPORT     TDF_Label Lateral() const;
-  //! Returns the insertion label of the degenerated face of the Prism. <br>
-  Standard_EXPORT     TDF_Label Degenerated() const;
-  //! Returns the insertion label of the degenerated face of the Prism. <br>
-  Standard_EXPORT     TDF_Label Dangle() const;
-  //! Returns the insertion label of the degenerated face of the Prism. <br>
-  Standard_EXPORT     TDF_Label Content() const;
-
+  Standard_EXPORT   void Init (const TDF_Label& ResultLabel) ;
+  
+  //! Loads the prism in the data framework
+  Standard_EXPORT   void Load (BRepPrimAPI_MakePrism& mkPrism, const TopoDS_Shape& basis)  const;
+  
+  //! Returns the insertion label of the bottom face of the Prism.
+  Standard_EXPORT   TDF_Label Bottom()  const;
+  
+  //! Returns  the insertion label of the  top face of the Prism.
+  Standard_EXPORT   TDF_Label Top()  const;
+  
+  //! Returns the insertion label of the lateral face of the Prism.
+  Standard_EXPORT   TDF_Label Lateral()  const;
+  
+  //! Returns the insertion label of the degenerated face of the Prism.
+  Standard_EXPORT   TDF_Label Degenerated()  const;
+  
+  //! Returns the insertion label of the degenerated face of the Prism.
+  Standard_EXPORT   TDF_Label Dangle()  const;
+  
+  //! Returns the insertion label of the degenerated face of the Prism.
+  Standard_EXPORT   TDF_Label Content()  const;
 
 
 
@@ -73,7 +72,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_Prism_HeaderFile

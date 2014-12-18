@@ -6,44 +6,32 @@
 #ifndef _PBRep_Polygon3D_HeaderFile
 #define _PBRep_Polygon3D_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_Polygon3D_HeaderFile
 #include <Handle_PBRep_Polygon3D.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PPoly_Polygon3D_HeaderFile
 #include <Handle_PPoly_Polygon3D.hxx>
-#endif
-#ifndef _PBRep_CurveRepresentation_HeaderFile
 #include <PBRep_CurveRepresentation.hxx>
-#endif
 class PPoly_Polygon3D;
 class PTopLoc_Location;
 
 
-class PBRep_Polygon3D : public PBRep_CurveRepresentation {
+class PBRep_Polygon3D : public PBRep_CurveRepresentation
+{
 
 public:
 
   
-  Standard_EXPORT   PBRep_Polygon3D(const Handle(PPoly_Polygon3D)& P,const PTopLoc_Location& L);
-  //! Returns True. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygon3D() const;
+  Standard_EXPORT PBRep_Polygon3D(const Handle(PPoly_Polygon3D)& P, const PTopLoc_Location& L);
   
-  Standard_EXPORT     Handle_PPoly_Polygon3D Polygon3D() const;
+  //! Returns True.
+  Standard_EXPORT virtual   Standard_Boolean IsPolygon3D()  const;
+  
+  Standard_EXPORT   Handle(PPoly_Polygon3D) Polygon3D()  const;
 
-  PBRep_Polygon3D( )
+PBRep_Polygon3D( )
 {
   
 }
@@ -66,7 +54,7 @@ protected:
 private: 
 
 
-Handle_PPoly_Polygon3D myPolygon3D;
+  Handle(PPoly_Polygon3D) myPolygon3D;
 
 
 };
@@ -75,7 +63,6 @@ Handle_PPoly_Polygon3D myPolygon3D;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_Polygon3D_HeaderFile

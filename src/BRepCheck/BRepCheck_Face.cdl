@@ -27,7 +27,7 @@ is
 
     Create(F: Face from TopoDS)
     
-    	returns mutable Face from BRepCheck;
+    	returns Face from BRepCheck;
 
 
     InContext(me: mutable; ContextShape: Shape from TopoDS);
@@ -65,6 +65,13 @@ is
     SetUnorientable(me: mutable)
     
     	is static;
+
+    SetStatus(me: mutable;
+              theStatus:Status from BRepCheck)
+
+          --- Purpose: Sets status of Face;
+	is static;
+
 
 
     IsUnorientable(me)

@@ -6,54 +6,45 @@
 #ifndef _BRepSweep_Iterator_HeaderFile
 #define _BRepSweep_Iterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Iterator_HeaderFile
 #include <TopoDS_Iterator.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 
 
-//! This class provides iteration services required by <br>
-//!          the Generating Line (TopoDS Shape) of a BRepSweep. <br>
-//!          This   tool is  used  to   iterate  on the  direct <br>
-//!          sub-shapes of a Shape. <br>
-//! <br>
-class BRepSweep_Iterator  {
+//! This class provides iteration services required by
+//! the Generating Line (TopoDS Shape) of a BRepSweep.
+//! This   tool is  used  to   iterate  on the  direct
+//! sub-shapes of a Shape.
+class BRepSweep_Iterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepSweep_Iterator();
-  //! Resest the Iterator on sub-shapes of <aShape>. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& aShape) ;
-  //! Returns True if there is a current sub-shape. <br>
-//! <br>
-        Standard_Boolean More() const;
-  //! Moves to the next sub-shape. <br>
-  Standard_EXPORT     void Next() ;
-  //! Returns the current sub-shape. <br>
-       const TopoDS_Shape& Value() const;
-  //! Returns the orientation of the current sub-shape. <br>
-        TopAbs_Orientation Orientation() const;
-
+  Standard_EXPORT BRepSweep_Iterator();
+  
+  //! Resest the Iterator on sub-shapes of <aShape>.
+  Standard_EXPORT   void Init (const TopoDS_Shape& aShape) ;
+  
+  //! Returns True if there is a current sub-shape.
+      Standard_Boolean More()  const;
+  
+  //! Moves to the next sub-shape.
+  Standard_EXPORT   void Next() ;
+  
+  //! Returns the current sub-shape.
+     const  TopoDS_Shape& Value()  const;
+  
+  //! Returns the orientation of the current sub-shape.
+      TopAbs_Orientation Orientation()  const;
 
 
 
@@ -68,7 +59,7 @@ private:
 
 
 
-TopoDS_Iterator myIterator;
+  TopoDS_Iterator myIterator;
 
 
 };
@@ -78,7 +69,6 @@ TopoDS_Iterator myIterator;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepSweep_Iterator_HeaderFile

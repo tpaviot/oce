@@ -5,32 +5,18 @@
 
 #include <BRepAlgo_DataMapOfShapeInterference.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BRepAlgo_DataMapNodeOfDataMapOfShapeInterference_HeaderFile
 #include <BRepAlgo_DataMapNodeOfDataMapOfShapeInterference.hxx>
-#endif
-#ifndef _BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference_HeaderFile
 #include <BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_TopOpeBRepDS_Interference
+#define TheItem Handle(TopOpeBRepDS_Interference)
 #define TheItem_hxx <TopOpeBRepDS_Interference.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>

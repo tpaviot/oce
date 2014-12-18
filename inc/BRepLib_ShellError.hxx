@@ -6,16 +6,15 @@
 #ifndef _BRepLib_ShellError_HeaderFile
 #define _BRepLib_ShellError_HeaderFile
 
-//! Errors that can occur at shell construction. <br>
-enum BRepLib_ShellError {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Errors that can occur at shell construction.
+enum BRepLib_ShellError
+{
 BRepLib_ShellDone,
 BRepLib_EmptyShell,
 BRepLib_DisconnectedShell,
 BRepLib_ShellParametersOutOfRange
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepLib_ShellError_HeaderFile

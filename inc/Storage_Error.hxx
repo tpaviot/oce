@@ -6,28 +6,31 @@
 #ifndef _Storage_Error_HeaderFile
 #define _Storage_Error_HeaderFile
 
-//! Error codes returned by the ErrorStatus <br>
-//! function on a Storage_Data set of data during a <br>
-//! storage or retrieval operation : <br>
-//! -   Storage_VSOk : no problem has been detected <br>
-//! -   Storage_VSOpenError : an error has <br>
-//!  occurred when opening the driver <br>
-//! -   Storage_VSModeError : the driver has not <br>
-//!  been opened in the correct mode <br>
-//! -   Storage_VSCloseError : an error has <br>
-//!   occurred when closing the driver <br>
-//! -   Storage_VSAlreadyOpen : the driver is   already open <br>
-//! -   Storage_VSNotOpen : the driver is not   open <br>
-//! -   Storage_VSSectionNotFound : a section <br>
-//!   has not been found in the driver <br>
-//! -   Storage_VSWriteError : an error occurred when writing the driver <br>
-//! -   Storage_VSFormatError : the file format is wrong <br>
-//! -   Storage_VSUnknownType : a type is not known from the schema <br>
-//! -   Storage_VSTypeMismatch : trying to read   a wrong type <br>
-//! -   Storage_VSInternalError : an internal error  has been detected <br>
-//! -   Storage_VSExtCharParityError : an error <br>
-//!   has occurred while reading 16 bit characte <br>
-enum Storage_Error {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Error codes returned by the ErrorStatus
+//! function on a Storage_Data set of data during a
+//! storage or retrieval operation :
+//! -   Storage_VSOk : no problem has been detected
+//! -   Storage_VSOpenError : an error has
+//! occurred when opening the driver
+//! -   Storage_VSModeError : the driver has not
+//! been opened in the correct mode
+//! -   Storage_VSCloseError : an error has
+//! occurred when closing the driver
+//! -   Storage_VSAlreadyOpen : the driver is   already open
+//! -   Storage_VSNotOpen : the driver is not   open
+//! -   Storage_VSSectionNotFound : a section
+//! has not been found in the driver
+//! -   Storage_VSWriteError : an error occurred when writing the driver
+//! -   Storage_VSFormatError : the file format is wrong
+//! -   Storage_VSUnknownType : a type is not known from the schema
+//! -   Storage_VSTypeMismatch : trying to read   a wrong type
+//! -   Storage_VSInternalError : an internal error  has been detected
+//! -   Storage_VSExtCharParityError : an error
+//! has occurred while reading 16 bit characte
+enum Storage_Error
+{
 Storage_VSOk,
 Storage_VSOpenError,
 Storage_VSModeError,
@@ -44,8 +47,4 @@ Storage_VSExtCharParityError,
 Storage_VSWrongFileDriver
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Storage_Error_HeaderFile

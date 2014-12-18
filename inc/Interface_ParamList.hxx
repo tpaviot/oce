@@ -6,25 +6,13 @@
 #ifndef _Interface_ParamList_HeaderFile
 #define _Interface_ParamList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_ParamList_HeaderFile
 #include <Handle_Interface_ParamList.hxx>
-#endif
 
-#ifndef _Interface_VectorOfFileParameter_HeaderFile
 #include <Interface_VectorOfFileParameter.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -32,40 +20,46 @@ class Interface_FileParameter;
 
 
 
-class Interface_ParamList : public MMgt_TShared {
+class Interface_ParamList : public MMgt_TShared
+{
 
 public:
 
-  //! Creates an vector with size of memmory blok equal to theIncrement <br>
-  Standard_EXPORT   Interface_ParamList(const Standard_Integer theIncrement = 256);
-  //! Returns the number of elements of <me>. <br>
-//! <br>
-        Standard_Integer Length() const;
-  //!  Returns the lower bound. <br>
-//! Warning <br>
-        Standard_Integer Lower() const;
-  //! Returns the upper bound. <br>
-//! Warning <br>
-        Standard_Integer Upper() const;
-  //! Assigns the value <Value> to the <Index>-th item of this array. <br>
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Interface_FileParameter& Value) ;
-  //! Return the value of  the  <Index>th element of the <br>
-//!          array. <br>
-  Standard_EXPORT    const Interface_FileParameter& Value(const Standard_Integer Index) const;
-   const Interface_FileParameter& operator ()(const Standard_Integer Index) const
+  
+  //! Creates an vector with size of memmory blok equal to theIncrement
+  Standard_EXPORT Interface_ParamList(const Standard_Integer theIncrement = 256);
+  
+  //! Returns the number of elements of <me>.
+      Standard_Integer Length()  const;
+  
+  //! Returns the lower bound.
+  //! Warning
+      Standard_Integer Lower()  const;
+  
+  //! Returns the upper bound.
+  //! Warning
+      Standard_Integer Upper()  const;
+  
+  //! Assigns the value <Value> to the <Index>-th item of this array.
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Interface_FileParameter& Value) ;
+  
+  //! Return the value of  the  <Index>th element of the
+  //! array.
+  Standard_EXPORT  const  Interface_FileParameter& Value (const Standard_Integer Index)  const;
+ const  Interface_FileParameter& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
-  //! return the value  of the <Index>th element  of the <br>
-//!          array. <br>
-//! <br>
-  Standard_EXPORT     Interface_FileParameter& ChangeValue(const Standard_Integer Index) ;
-    Interface_FileParameter& operator ()(const Standard_Integer Index) 
+  
+  //! return the value  of the <Index>th element  of the
+  //! array.
+  Standard_EXPORT   Interface_FileParameter& ChangeValue (const Standard_Integer Index) ;
+  Interface_FileParameter& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 
 
 
@@ -80,7 +74,7 @@ protected:
 private: 
 
 
-Interface_VectorOfFileParameter myVector;
+  Interface_VectorOfFileParameter myVector;
 
 
 };
@@ -90,7 +84,6 @@ Interface_VectorOfFileParameter myVector;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_ParamList_HeaderFile

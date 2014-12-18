@@ -6,28 +6,22 @@
 #ifndef _StepBasic_PlaneAngleUnit_HeaderFile
 #define _StepBasic_PlaneAngleUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_PlaneAngleUnit_HeaderFile
 #include <Handle_StepBasic_PlaneAngleUnit.hxx>
-#endif
 
-#ifndef _StepBasic_NamedUnit_HeaderFile
 #include <StepBasic_NamedUnit.hxx>
-#endif
 
 
 
-class StepBasic_PlaneAngleUnit : public StepBasic_NamedUnit {
+class StepBasic_PlaneAngleUnit : public StepBasic_NamedUnit
+{
 
 public:
 
-  //! Returns a PlaneAngleUnit <br>
-  Standard_EXPORT   StepBasic_PlaneAngleUnit();
+  
+  //! Returns a PlaneAngleUnit
+  Standard_EXPORT StepBasic_PlaneAngleUnit();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_PlaneAngleUnit_HeaderFile

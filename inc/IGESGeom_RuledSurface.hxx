@@ -6,72 +6,66 @@
 #ifndef _IGESGeom_RuledSurface_HeaderFile
 #define _IGESGeom_RuledSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_RuledSurface_HeaderFile
 #include <Handle_IGESGeom_RuledSurface.hxx>
-#endif
 
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESData_IGESEntity;
 
 
-//! defines IGESRuledSurface, Type <118> Form <0-1> <br>
-//!          in package IGESGeom <br>
-//!          A ruled surface is formed by moving a line connecting points <br>
-//!          of equal relative arc length or equal relative parametric <br>
-//!          value on two parametric curves from a start point to a <br>
-//!          terminate point on the curves. The parametric curves may be <br>
-//!          points, lines, circles, conics, rational B-splines, <br>
-//!          parametric splines or any parametric curve defined in <br>
-//!          the IGES specification. <br>
-class IGESGeom_RuledSurface : public IGESData_IGESEntity {
+//! defines IGESRuledSurface, Type <118> Form <0-1>
+//! in package IGESGeom
+//! A ruled surface is formed by moving a line connecting points
+//! of equal relative arc length or equal relative parametric
+//! value on two parametric curves from a start point to a
+//! terminate point on the curves. The parametric curves may be
+//! points, lines, circles, conics, rational B-splines,
+//! parametric splines or any parametric curve defined in
+//! the IGES specification.
+class IGESGeom_RuledSurface : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGeom_RuledSurface();
-  //! This method is used to set the fields of the class <br>
-//!           RuledSurface <br>
-//!       - aCurve       : First parametric curve <br>
-//!       - anotherCurve : Second parametric curve <br>
-//!       - aDirFlag     : Direction Flag <br>
-//!                        0 = Join first to first, last to last <br>
-//!                        1 = Join first to last, last to first <br>
-//!       - aDevFlag     : Developable Surface Flag <br>
-//!                        1 = Developable <br>
-//!                        0 = Possibly not <br>
-  Standard_EXPORT     void Init(const Handle(IGESData_IGESEntity)& aCurve,const Handle(IGESData_IGESEntity)& anotherCurve,const Standard_Integer aDirFlag,const Standard_Integer aDevFlag) ;
-  //! Sets <me> to be Ruled by Parameter (Form 1) if <mode> is <br>
-//!           True, or Ruled by Length (Form 0) else <br>
-  Standard_EXPORT     void SetRuledByParameter(const Standard_Boolean mode) ;
-  //! Returns True if Form is 1 <br>
-  Standard_EXPORT     Standard_Boolean IsRuledByParameter() const;
-  //! returns the first curve <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity FirstCurve() const;
-  //! returns the second curve <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity SecondCurve() const;
-  //! return the sense of direction <br>
-//! 0 = Join first to first, last to last <br>
-//! 1 = Join first to last, last to first <br>
-  Standard_EXPORT     Standard_Integer DirectionFlag() const;
-  //! returns True if developable else False <br>
-  Standard_EXPORT     Standard_Boolean IsDevelopable() const;
+  Standard_EXPORT IGESGeom_RuledSurface();
+  
+  //! This method is used to set the fields of the class
+  //! RuledSurface
+  //! - aCurve       : First parametric curve
+  //! - anotherCurve : Second parametric curve
+  //! - aDirFlag     : Direction Flag
+  //! 0 = Join first to first, last to last
+  //! 1 = Join first to last, last to first
+  //! - aDevFlag     : Developable Surface Flag
+  //! 1 = Developable
+  //! 0 = Possibly not
+  Standard_EXPORT   void Init (const Handle(IGESData_IGESEntity)& aCurve, const Handle(IGESData_IGESEntity)& anotherCurve, const Standard_Integer aDirFlag, const Standard_Integer aDevFlag) ;
+  
+  //! Sets <me> to be Ruled by Parameter (Form 1) if <mode> is
+  //! True, or Ruled by Length (Form 0) else
+  Standard_EXPORT   void SetRuledByParameter (const Standard_Boolean mode) ;
+  
+  //! Returns True if Form is 1
+  Standard_EXPORT   Standard_Boolean IsRuledByParameter()  const;
+  
+  //! returns the first curve
+  Standard_EXPORT   Handle(IGESData_IGESEntity) FirstCurve()  const;
+  
+  //! returns the second curve
+  Standard_EXPORT   Handle(IGESData_IGESEntity) SecondCurve()  const;
+  
+  //! return the sense of direction
+  //! 0 = Join first to first, last to last
+  //! 1 = Join first to last, last to first
+  Standard_EXPORT   Standard_Integer DirectionFlag()  const;
+  
+  //! returns True if developable else False
+  Standard_EXPORT   Standard_Boolean IsDevelopable()  const;
 
 
 
@@ -86,10 +80,10 @@ protected:
 private: 
 
 
-Handle_IGESData_IGESEntity theCurve1;
-Handle_IGESData_IGESEntity theCurve2;
-Standard_Integer theDirFlag;
-Standard_Integer theDevFlag;
+  Handle(IGESData_IGESEntity) theCurve1;
+  Handle(IGESData_IGESEntity) theCurve2;
+  Standard_Integer theDirFlag;
+  Standard_Integer theDevFlag;
 
 
 };
@@ -98,7 +92,6 @@ Standard_Integer theDevFlag;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_RuledSurface_HeaderFile

@@ -6,37 +6,17 @@
 #ifndef _StepVisual_ContextDependentOverRidingStyledItem_HeaderFile
 #define _StepVisual_ContextDependentOverRidingStyledItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_ContextDependentOverRidingStyledItem_HeaderFile
 #include <Handle_StepVisual_ContextDependentOverRidingStyledItem.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_HArray1OfStyleContextSelect_HeaderFile
 #include <Handle_StepVisual_HArray1OfStyleContextSelect.hxx>
-#endif
-#ifndef _StepVisual_OverRidingStyledItem_HeaderFile
 #include <StepVisual_OverRidingStyledItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepVisual_HArray1OfPresentationStyleAssignment_HeaderFile
 #include <Handle_StepVisual_HArray1OfPresentationStyleAssignment.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _Handle_StepVisual_StyledItem_HeaderFile
 #include <Handle_StepVisual_StyledItem.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepVisual_HArray1OfStyleContextSelect;
 class TCollection_HAsciiString;
 class StepVisual_HArray1OfPresentationStyleAssignment;
@@ -46,24 +26,26 @@ class StepVisual_StyleContextSelect;
 
 
 
-class StepVisual_ContextDependentOverRidingStyledItem : public StepVisual_OverRidingStyledItem {
+class StepVisual_ContextDependentOverRidingStyledItem : public StepVisual_OverRidingStyledItem
+{
 
 public:
 
-  //! Returns a ContextDependentOverRidingStyledItem <br>
-  Standard_EXPORT   StepVisual_ContextDependentOverRidingStyledItem();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles,const Handle(StepRepr_RepresentationItem)& aItem,const Handle(StepVisual_StyledItem)& aOverRiddenStyle) ;
+  //! Returns a ContextDependentOverRidingStyledItem
+  Standard_EXPORT StepVisual_ContextDependentOverRidingStyledItem();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles,const Handle(StepRepr_RepresentationItem)& aItem,const Handle(StepVisual_StyledItem)& aOverRiddenStyle,const Handle(StepVisual_HArray1OfStyleContextSelect)& aStyleContext) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles, const Handle(StepRepr_RepresentationItem)& aItem, const Handle(StepVisual_StyledItem)& aOverRiddenStyle) ;
   
-  Standard_EXPORT     void SetStyleContext(const Handle(StepVisual_HArray1OfStyleContextSelect)& aStyleContext) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles, const Handle(StepRepr_RepresentationItem)& aItem, const Handle(StepVisual_StyledItem)& aOverRiddenStyle, const Handle(StepVisual_HArray1OfStyleContextSelect)& aStyleContext) ;
   
-  Standard_EXPORT     Handle_StepVisual_HArray1OfStyleContextSelect StyleContext() const;
+  Standard_EXPORT   void SetStyleContext (const Handle(StepVisual_HArray1OfStyleContextSelect)& aStyleContext) ;
   
-  Standard_EXPORT     StepVisual_StyleContextSelect StyleContextValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepVisual_HArray1OfStyleContextSelect) StyleContext()  const;
   
-  Standard_EXPORT     Standard_Integer NbStyleContext() const;
+  Standard_EXPORT   StepVisual_StyleContextSelect StyleContextValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbStyleContext()  const;
 
 
 
@@ -78,7 +60,7 @@ protected:
 private: 
 
 
-Handle_StepVisual_HArray1OfStyleContextSelect styleContext;
+  Handle(StepVisual_HArray1OfStyleContextSelect) styleContext;
 
 
 };
@@ -87,7 +69,6 @@ Handle_StepVisual_HArray1OfStyleContextSelect styleContext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_ContextDependentOverRidingStyledItem_HeaderFile

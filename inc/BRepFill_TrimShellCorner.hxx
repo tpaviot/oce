@@ -6,37 +6,17 @@
 #ifndef _BRepFill_TrimShellCorner_HeaderFile
 #define _BRepFill_TrimShellCorner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Ax2_HeaderFile
 #include <gp_Ax2.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Handle_TopTools_HArray2OfShape_HeaderFile
 #include <Handle_TopTools_HArray2OfShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
 class TopTools_HArray2OfShape;
 class gp_Ax2;
 class TopoDS_Face;
@@ -46,30 +26,30 @@ class TopTools_ListOfShape;
 
 
 
-class BRepFill_TrimShellCorner  {
+class BRepFill_TrimShellCorner 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepFill_TrimShellCorner(const Handle(TopTools_HArray2OfShape)& theFaces,const gp_Ax2& theAxeOfBisPlane,const TopoDS_Face& theSecPlane);
+  Standard_EXPORT BRepFill_TrimShellCorner(const Handle(TopTools_HArray2OfShape)& theFaces, const gp_Ax2& theAxeOfBisPlane, const TopoDS_Face& theSecPlane);
   
-  Standard_EXPORT   BRepFill_TrimShellCorner(const Handle(TopTools_HArray2OfShape)& theFaces,const gp_Ax2& theAxeOfBisPlane,const TopoDS_Wire& theSpine,const TopoDS_Face& theSecPlane);
+  Standard_EXPORT BRepFill_TrimShellCorner(const Handle(TopTools_HArray2OfShape)& theFaces, const gp_Ax2& theAxeOfBisPlane, const TopoDS_Wire& theSpine, const TopoDS_Face& theSecPlane);
   
-  Standard_EXPORT     void SetSpine(const TopoDS_Wire& theSpine) ;
+  Standard_EXPORT   void SetSpine (const TopoDS_Wire& theSpine) ;
   
-  Standard_EXPORT     void AddBounds(const Handle(TopTools_HArray2OfShape)& Bounds) ;
+  Standard_EXPORT   void AddBounds (const Handle(TopTools_HArray2OfShape)& Bounds) ;
   
-  Standard_EXPORT     void AddUEdges(const Handle(TopTools_HArray2OfShape)& theUEdges) ;
+  Standard_EXPORT   void AddUEdges (const Handle(TopTools_HArray2OfShape)& theUEdges) ;
   
-  Standard_EXPORT     void Perform() ;
+  Standard_EXPORT   void Perform() ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Boolean HasSection() const;
+  Standard_EXPORT   Standard_Boolean HasSection()  const;
   
-  Standard_EXPORT     void Modified(const TopoDS_Shape& S,TopTools_ListOfShape& theModified) ;
-
+  Standard_EXPORT   void Modified (const TopoDS_Shape& S, TopTools_ListOfShape& theModified) ;
 
 
 
@@ -84,17 +64,17 @@ private:
 
 
 
-gp_Ax2 myAxeOfBisPlane;
-TopoDS_Shape myShape1;
-TopoDS_Shape myShape2;
-TopoDS_Wire mySpine;
-TopoDS_Face mySecPln;
-Handle_TopTools_HArray2OfShape myBounds;
-Handle_TopTools_HArray2OfShape myUEdges;
-Handle_TopTools_HArray2OfShape myFaces;
-Standard_Boolean myDone;
-Standard_Boolean myHasSection;
-TopTools_DataMapOfShapeListOfShape myHistMap;
+  gp_Ax2 myAxeOfBisPlane;
+  TopoDS_Shape myShape1;
+  TopoDS_Shape myShape2;
+  TopoDS_Wire mySpine;
+  TopoDS_Face mySecPln;
+  Handle(TopTools_HArray2OfShape) myBounds;
+  Handle(TopTools_HArray2OfShape) myUEdges;
+  Handle(TopTools_HArray2OfShape) myFaces;
+  Standard_Boolean myDone;
+  Standard_Boolean myHasSection;
+  TopTools_DataMapOfShapeListOfShape myHistMap;
 
 
 };
@@ -103,7 +83,6 @@ TopTools_DataMapOfShapeListOfShape myHistMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_TrimShellCorner_HeaderFile

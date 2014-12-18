@@ -1,6 +1,2 @@
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _Geom2dLProp_CurAndInf2d_HeaderFile
 #include <Geom2dLProp_CurAndInf2d.hxx>
-#endif

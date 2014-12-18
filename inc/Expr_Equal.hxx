@@ -6,28 +6,14 @@
 #ifndef _Expr_Equal_HeaderFile
 #define _Expr_Equal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Expr_Equal_HeaderFile
 #include <Handle_Expr_Equal.hxx>
-#endif
 
-#ifndef _Expr_SingleRelation_HeaderFile
 #include <Expr_SingleRelation.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralRelation_HeaderFile
 #include <Handle_Expr_GeneralRelation.hxx>
-#endif
 class Standard_NumericError;
 class Expr_GeneralExpression;
 class Expr_GeneralRelation;
@@ -35,25 +21,31 @@ class TCollection_AsciiString;
 
 
 
-class Expr_Equal : public Expr_SingleRelation {
+class Expr_Equal : public Expr_SingleRelation
+{
 
 public:
 
-  //! Creates the relation <exp1> = <exp2>. <br>
-  Standard_EXPORT   Expr_Equal(const Handle(Expr_GeneralExpression)& exp1,const Handle(Expr_GeneralExpression)& exp2);
   
-  Standard_EXPORT     Standard_Boolean IsSatisfied() const;
-  //! returns a GeneralRelation after replacement of <br>
-//!          NamedUnknowns by an associated expression and after <br>
-//!          values computation. <br>
-  Standard_EXPORT     Handle_Expr_GeneralRelation Simplified() const;
-  //! Replaces NamedUnknowns by an associated expressions <br>
-//!          and computes values in <me>. <br>
-  Standard_EXPORT     void Simplify() ;
-  //! Returns a copy of <me> having the same unknowns and functions. <br>
-  Standard_EXPORT     Handle_Expr_GeneralRelation Copy() const;
-  //! returns a string representing <me> in a readable way. <br>
-  Standard_EXPORT     TCollection_AsciiString String() const;
+  //! Creates the relation <exp1> = <exp2>.
+  Standard_EXPORT Expr_Equal(const Handle(Expr_GeneralExpression)& exp1, const Handle(Expr_GeneralExpression)& exp2);
+  
+  Standard_EXPORT   Standard_Boolean IsSatisfied()  const;
+  
+  //! returns a GeneralRelation after replacement of
+  //! NamedUnknowns by an associated expression and after
+  //! values computation.
+  Standard_EXPORT   Handle(Expr_GeneralRelation) Simplified()  const;
+  
+  //! Replaces NamedUnknowns by an associated expressions
+  //! and computes values in <me>.
+  Standard_EXPORT   void Simplify() ;
+  
+  //! Returns a copy of <me> having the same unknowns and functions.
+  Standard_EXPORT   Handle(Expr_GeneralRelation) Copy()  const;
+  
+  //! returns a string representing <me> in a readable way.
+  Standard_EXPORT   TCollection_AsciiString String()  const;
 
 
 
@@ -76,7 +68,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Expr_Equal_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <ProjLib_SequenceOfHSequenceOfPnt.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColgp_HSequenceOfPnt_HeaderFile
 #include <TColgp_HSequenceOfPnt.hxx>
-#endif
-#ifndef _ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt_HeaderFile
 #include <ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt.hxx>
-#endif
  
 
-#define SeqItem Handle_TColgp_HSequenceOfPnt
+#define SeqItem Handle(TColgp_HSequenceOfPnt)
 #define SeqItem_hxx <TColgp_HSequenceOfPnt.hxx>
 #define TCollection_SequenceNode ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt
 #define TCollection_SequenceNode_hxx <ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt.hxx>

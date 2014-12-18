@@ -6,25 +6,13 @@
 #ifndef _Aspect_Array1OfEdge_HeaderFile
 #define _Aspect_Array1OfEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class Aspect_Edge;
 
 
 
-class Aspect_Array1OfEdge  {
+class Aspect_Array1OfEdge 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Aspect_Array1OfEdge(const Standard_Integer Low,const Standard_Integer Up);
+    Aspect_Array1OfEdge(const Standard_Integer Low, const Standard_Integer Up);
   
-      Aspect_Array1OfEdge(const Aspect_Edge& Item,const Standard_Integer Low,const Standard_Integer Up);
+    Aspect_Array1OfEdge(const Aspect_Edge& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Aspect_Edge& V) ;
+  Standard_EXPORT   void Init (const Aspect_Edge& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~Aspect_Array1OfEdge()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const Aspect_Array1OfEdge& Assign(const Aspect_Array1OfEdge& Other) ;
-   const Aspect_Array1OfEdge& operator =(const Aspect_Array1OfEdge& Other) 
+  Standard_EXPORT  const  Aspect_Array1OfEdge& Assign (const Aspect_Array1OfEdge& Other) ;
+ const  Aspect_Array1OfEdge& operator = (const Aspect_Array1OfEdge& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Aspect_Edge& Value) ;
+      void SetValue (const Standard_Integer Index, const Aspect_Edge& Value) ;
   
-       const Aspect_Edge& Value(const Standard_Integer Index) const;
-     const Aspect_Edge& operator ()(const Standard_Integer Index) const
+     const  Aspect_Edge& Value (const Standard_Integer Index)  const;
+   const  Aspect_Edge& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Aspect_Edge& ChangeValue(const Standard_Integer Index) ;
-      Aspect_Edge& operator ()(const Standard_Integer Index) 
+      Aspect_Edge& ChangeValue (const Standard_Integer Index) ;
+    Aspect_Edge& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   Aspect_Array1OfEdge(const Aspect_Array1OfEdge& AnArray);
+  Standard_EXPORT Aspect_Array1OfEdge(const Aspect_Array1OfEdge& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Aspect_Array1OfEdge_HeaderFile

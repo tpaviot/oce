@@ -6,39 +6,31 @@
 #ifndef _StepBasic_OrdinalDate_HeaderFile
 #define _StepBasic_OrdinalDate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_OrdinalDate_HeaderFile
 #include <Handle_StepBasic_OrdinalDate.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _StepBasic_Date_HeaderFile
 #include <StepBasic_Date.hxx>
-#endif
 
 
 
-class StepBasic_OrdinalDate : public StepBasic_Date {
+class StepBasic_OrdinalDate : public StepBasic_Date
+{
 
 public:
 
-  //! Returns a OrdinalDate <br>
-  Standard_EXPORT   StepBasic_OrdinalDate();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Integer aYearComponent) ;
+  //! Returns a OrdinalDate
+  Standard_EXPORT StepBasic_OrdinalDate();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Integer aYearComponent,const Standard_Integer aDayComponent) ;
+  Standard_EXPORT virtual   void Init (const Standard_Integer aYearComponent) ;
   
-  Standard_EXPORT     void SetDayComponent(const Standard_Integer aDayComponent) ;
+  Standard_EXPORT virtual   void Init (const Standard_Integer aYearComponent, const Standard_Integer aDayComponent) ;
   
-  Standard_EXPORT     Standard_Integer DayComponent() const;
+  Standard_EXPORT   void SetDayComponent (const Standard_Integer aDayComponent) ;
+  
+  Standard_EXPORT   Standard_Integer DayComponent()  const;
 
 
 
@@ -53,7 +45,7 @@ protected:
 private: 
 
 
-Standard_Integer dayComponent;
+  Standard_Integer dayComponent;
 
 
 };
@@ -62,7 +54,6 @@ Standard_Integer dayComponent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_OrdinalDate_HeaderFile

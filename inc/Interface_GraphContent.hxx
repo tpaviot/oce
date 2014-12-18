@@ -6,67 +6,64 @@
 #ifndef _Interface_GraphContent_HeaderFile
 #define _Interface_GraphContent_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Interface_Graph;
 class Standard_Transient;
 class Interface_EntityIterator;
 
 
-//! Defines general form for classes of graph algorithms on <br>
-//!           Interfaces, this form is that of EntityIterator <br>
-//!           Each sub-class fills it according to its own algorithm <br>
-//!           This also allows to combine any graph result to others, <br>
-//!           all being given under one unique form <br>
-class Interface_GraphContent  : public Interface_EntityIterator {
+//! Defines general form for classes of graph algorithms on
+//! Interfaces, this form is that of EntityIterator
+//! Each sub-class fills it according to its own algorithm
+//! This also allows to combine any graph result to others,
+//! all being given under one unique form
+class Interface_GraphContent  : public Interface_EntityIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty GraphContent, ready to be filled <br>
-  Standard_EXPORT   Interface_GraphContent();
-  //! Creates with all entities designated by a Graph <br>
-  Standard_EXPORT   Interface_GraphContent(const Interface_Graph& agraph);
-  //! Creates with entities having specific Status value in a Graph <br>
-  Standard_EXPORT   Interface_GraphContent(const Interface_Graph& agraph,const Standard_Integer stat);
-  //! Creates an Iterator with Shared entities of an entity <br>
-//!           (equivalente to EntityIterator but with a Graph) <br>
-  Standard_EXPORT   Interface_GraphContent(const Interface_Graph& agraph,const Handle(Standard_Transient)& ent);
-  //! Gets all Entities designated by a Graph (once created), adds <br>
-//!           them to those already recorded <br>
-  Standard_EXPORT     void GetFromGraph(const Interface_Graph& agraph) ;
-  //! Gets entities from a graph which have a specific Status value <br>
-//!           (one created), adds them to those already recorded <br>
-  Standard_EXPORT     void GetFromGraph(const Interface_Graph& agraph,const Standard_Integer stat) ;
-  //! Returns Result under the exact form of an EntityIterator : <br>
-//!           Can be used when EntityIterator itself is required (as a <br>
-//!           returned value for instance), whitout way for a sub-class <br>
-  Standard_EXPORT     Interface_EntityIterator Result() ;
-  //! Does the Evaluation before starting the iteration itself <br>
-//!           (in out) <br>
-  Standard_EXPORT     void Begin() ;
-  //! Evaluates list of Entities to be iterated. Called by Start <br>
-//!           Default is set to doing nothing : intended to be redefined <br>
-//!           by each sub-class <br>
-  Standard_EXPORT   virtual  void Evaluate() ;
-
+  
+  //! Creates an empty GraphContent, ready to be filled
+  Standard_EXPORT Interface_GraphContent();
+  
+  //! Creates with all entities designated by a Graph
+  Standard_EXPORT Interface_GraphContent(const Interface_Graph& agraph);
+  
+  //! Creates with entities having specific Status value in a Graph
+  Standard_EXPORT Interface_GraphContent(const Interface_Graph& agraph, const Standard_Integer stat);
+  
+  //! Creates an Iterator with Shared entities of an entity
+  //! (equivalente to EntityIterator but with a Graph)
+  Standard_EXPORT Interface_GraphContent(const Interface_Graph& agraph, const Handle(Standard_Transient)& ent);
+  
+  //! Gets all Entities designated by a Graph (once created), adds
+  //! them to those already recorded
+  Standard_EXPORT   void GetFromGraph (const Interface_Graph& agraph) ;
+  
+  //! Gets entities from a graph which have a specific Status value
+  //! (one created), adds them to those already recorded
+  Standard_EXPORT   void GetFromGraph (const Interface_Graph& agraph, const Standard_Integer stat) ;
+  
+  //! Returns Result under the exact form of an EntityIterator :
+  //! Can be used when EntityIterator itself is required (as a
+  //! returned value for instance), whitout way for a sub-class
+  Standard_EXPORT   Interface_EntityIterator Result() ;
+  
+  //! Does the Evaluation before starting the iteration itself
+  //! (in out)
+  Standard_EXPORT   void Begin() ;
+  
+  //! Evaluates list of Entities to be iterated. Called by Start
+  //! Default is set to doing nothing : intended to be redefined
+  //! by each sub-class
+  Standard_EXPORT virtual   void Evaluate() ;
 
 
 
@@ -89,7 +86,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_GraphContent_HeaderFile

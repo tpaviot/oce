@@ -6,53 +6,50 @@
 #ifndef _QANewBRepNaming_Box_HeaderFile
 #define _QANewBRepNaming_Box_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _QANewBRepNaming_TopNaming_HeaderFile
 #include <QANewBRepNaming_TopNaming.hxx>
-#endif
-#ifndef _QANewBRepNaming_TypeOfPrimitive3D_HeaderFile
 #include <QANewBRepNaming_TypeOfPrimitive3D.hxx>
-#endif
 class TDF_Label;
 class BRepPrimAPI_MakeBox;
 
 
-//! To load the Box results <br>
-class QANewBRepNaming_Box  : public QANewBRepNaming_TopNaming {
+//! To load the Box results
+class QANewBRepNaming_Box  : public QANewBRepNaming_TopNaming
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANewBRepNaming_Box();
+  Standard_EXPORT QANewBRepNaming_Box();
   
-  Standard_EXPORT   QANewBRepNaming_Box(const TDF_Label& ResultLabel);
+  Standard_EXPORT QANewBRepNaming_Box(const TDF_Label& ResultLabel);
   
-  Standard_EXPORT     void Init(const TDF_Label& ResultLabel) ;
-  //! Load  the box in  the data  framework <br>
-  Standard_EXPORT     void Load(BRepPrimAPI_MakeBox& MakeShape,const QANewBRepNaming_TypeOfPrimitive3D Type) const;
-  //! Returns the label of the back face of a box . <br>
-  Standard_EXPORT     TDF_Label Back() const;
-  //! Returns the label of the  bottom face of a box . <br>
-  Standard_EXPORT     TDF_Label Bottom() const;
-  //! Returns the label of the  front face of a box . <br>
-  Standard_EXPORT     TDF_Label Front() const;
-  //! Returns the label of the  left face of a box . <br>
-  Standard_EXPORT     TDF_Label Left() const;
-  //! Returns the  label of the  right face of a box . <br>
-  Standard_EXPORT     TDF_Label Right() const;
-  //! Returns the  label of the  top face of a box . <br>
-  Standard_EXPORT     TDF_Label Top() const;
-
+  Standard_EXPORT   void Init (const TDF_Label& ResultLabel) ;
+  
+  //! Load  the box in  the data  framework
+  Standard_EXPORT   void Load (BRepPrimAPI_MakeBox& MakeShape, const QANewBRepNaming_TypeOfPrimitive3D Type)  const;
+  
+  //! Returns the label of the back face of a box .
+  Standard_EXPORT   TDF_Label Back()  const;
+  
+  //! Returns the label of the  bottom face of a box .
+  Standard_EXPORT   TDF_Label Bottom()  const;
+  
+  //! Returns the label of the  front face of a box .
+  Standard_EXPORT   TDF_Label Front()  const;
+  
+  //! Returns the label of the  left face of a box .
+  Standard_EXPORT   TDF_Label Left()  const;
+  
+  //! Returns the  label of the  right face of a box .
+  Standard_EXPORT   TDF_Label Right()  const;
+  
+  //! Returns the  label of the  top face of a box .
+  Standard_EXPORT   TDF_Label Top()  const;
 
 
 
@@ -75,7 +72,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_Box_HeaderFile

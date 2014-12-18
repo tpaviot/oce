@@ -6,22 +6,15 @@
 #ifndef _Handle_StepRepr_Extension_HeaderFile
 #define _Handle_StepRepr_Extension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_DerivedShapeAspect_HeaderFile
 #include <Handle_StepRepr_DerivedShapeAspect.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_DerivedShapeAspect);
 class StepRepr_Extension;
 
-DEFINE_STANDARD_HANDLE(StepRepr_Extension,StepRepr_DerivedShapeAspect)
+DEFINE_STANDARD_HANDLE(StepRepr_Extension, StepRepr_DerivedShapeAspect)
 
-#endif
+#endif // _Handle_StepRepr_Extension_HeaderFile

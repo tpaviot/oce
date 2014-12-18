@@ -6,62 +6,56 @@
 #ifndef _IGESSelect_AutoCorrect_HeaderFile
 #define _IGESSelect_AutoCorrect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_AutoCorrect_HeaderFile
 #include <Handle_IGESSelect_AutoCorrect.hxx>
-#endif
 
-#ifndef _IGESSelect_ModelModifier_HeaderFile
 #include <IGESSelect_ModelModifier.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESModel_HeaderFile
 #include <Handle_IGESData_IGESModel.hxx>
-#endif
 class IFSelect_ContextModif;
 class IGESData_IGESModel;
 class Interface_CopyTool;
 class TCollection_AsciiString;
 
 
-//! Does the absolutely effective corrections on IGES Entity. <br>
-//!           That is to say : regarding the norm in details, some values <br>
-//!           have mandatory values, or set of values with constraints. <br>
-//!           When such values/constraints are univoque, they can be forced. <br>
-//!           Also nullifies items of Directory Part, Associativities, and <br>
-//!           Properties, which are not (or not longer) in <target> Model. <br>
-//! <br>
-//!           Works by calling a BasicEditor from IGESData <br>
-//!           Works with the specific IGES Services : DirChecker which <br>
-//!           allows to correct data in "Directory Part" of Entities (such <br>
-//!           as required values for status, or references to be null), and <br>
-//!           the specific IGES service OwnCorrect, which is specialised for <br>
-//!           each type of entity. <br>
-//! <br>
-//!           Remark : this does not comprise the computation of use flag or <br>
-//!           subordinate status according references, which is made by <br>
-//!           the ModelModifier class ComputeStatus. <br>
-//! <br>
-//!           The Input Selection, when present, designates the entities to <br>
-//!           be corrected. If it is not present, all the entities of the <br>
-//!           model are corrected. <br>
-class IGESSelect_AutoCorrect : public IGESSelect_ModelModifier {
+//! Does the absolutely effective corrections on IGES Entity.
+//! That is to say : regarding the norm in details, some values
+//! have mandatory values, or set of values with constraints.
+//! When such values/constraints are univoque, they can be forced.
+//! Also nullifies items of Directory Part, Associativities, and
+//! Properties, which are not (or not longer) in <target> Model.
+//!
+//! Works by calling a BasicEditor from IGESData
+//! Works with the specific IGES Services : DirChecker which
+//! allows to correct data in "Directory Part" of Entities (such
+//! as required values for status, or references to be null), and
+//! the specific IGES service OwnCorrect, which is specialised for
+//! each type of entity.
+//!
+//! Remark : this does not comprise the computation of use flag or
+//! subordinate status according references, which is made by
+//! the ModelModifier class ComputeStatus.
+//!
+//! The Input Selection, when present, designates the entities to
+//! be corrected. If it is not present, all the entities of the
+//! model are corrected.
+class IGESSelect_AutoCorrect : public IGESSelect_ModelModifier
+{
 
 public:
 
-  //! Creates an AutoCorrect. <br>
-  Standard_EXPORT   IGESSelect_AutoCorrect();
-  //! Specific action : corrects entities when it is absolutely <br>
-//!           obvious, i.e. non equivoque (by DirChecker and specific <br>
-//!           service OwnCorrect) : works with a protocol. <br>
-  Standard_EXPORT     void Performing(IFSelect_ContextModif& ctx,const Handle(IGESData_IGESModel)& target,Interface_CopyTool& TC) const;
-  //! Returns a text which is <br>
-//!           "Auto-correction of IGES Entities" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates an AutoCorrect.
+  Standard_EXPORT IGESSelect_AutoCorrect();
+  
+  //! Specific action : corrects entities when it is absolutely
+  //! obvious, i.e. non equivoque (by DirChecker and specific
+  //! service OwnCorrect) : works with a protocol.
+  Standard_EXPORT   void Performing (IFSelect_ContextModif& ctx, const Handle(IGESData_IGESModel)& target, Interface_CopyTool& TC)  const;
+  
+  //! Returns a text which is
+  //! "Auto-correction of IGES Entities"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -84,7 +78,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_AutoCorrect_HeaderFile

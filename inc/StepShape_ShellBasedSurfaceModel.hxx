@@ -6,52 +6,40 @@
 #ifndef _StepShape_ShellBasedSurfaceModel_HeaderFile
 #define _StepShape_ShellBasedSurfaceModel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_ShellBasedSurfaceModel_HeaderFile
 #include <Handle_StepShape_ShellBasedSurfaceModel.hxx>
-#endif
 
-#ifndef _Handle_StepShape_HArray1OfShell_HeaderFile
 #include <Handle_StepShape_HArray1OfShell.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepShape_HArray1OfShell;
 class TCollection_HAsciiString;
 class StepShape_Shell;
 
 
 
-class StepShape_ShellBasedSurfaceModel : public StepGeom_GeometricRepresentationItem {
+class StepShape_ShellBasedSurfaceModel : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a ShellBasedSurfaceModel <br>
-  Standard_EXPORT   StepShape_ShellBasedSurfaceModel();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a ShellBasedSurfaceModel
+  Standard_EXPORT StepShape_ShellBasedSurfaceModel();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_HArray1OfShell)& aSbsmBoundary) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetSbsmBoundary(const Handle(StepShape_HArray1OfShell)& aSbsmBoundary) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_HArray1OfShell)& aSbsmBoundary) ;
   
-  Standard_EXPORT     Handle_StepShape_HArray1OfShell SbsmBoundary() const;
+  Standard_EXPORT   void SetSbsmBoundary (const Handle(StepShape_HArray1OfShell)& aSbsmBoundary) ;
   
-  Standard_EXPORT     StepShape_Shell SbsmBoundaryValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepShape_HArray1OfShell) SbsmBoundary()  const;
   
-  Standard_EXPORT     Standard_Integer NbSbsmBoundary() const;
+  Standard_EXPORT   StepShape_Shell SbsmBoundaryValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbSbsmBoundary()  const;
 
 
 
@@ -66,7 +54,7 @@ protected:
 private: 
 
 
-Handle_StepShape_HArray1OfShell sbsmBoundary;
+  Handle(StepShape_HArray1OfShell) sbsmBoundary;
 
 
 };
@@ -75,7 +63,6 @@ Handle_StepShape_HArray1OfShell sbsmBoundary;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_ShellBasedSurfaceModel_HeaderFile

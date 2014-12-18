@@ -6,31 +6,15 @@
 #ifndef _TransferBRep_HSequenceOfTransferResultInfo_HeaderFile
 #define _TransferBRep_HSequenceOfTransferResultInfo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TransferBRep_HSequenceOfTransferResultInfo_HeaderFile
 #include <Handle_TransferBRep_HSequenceOfTransferResultInfo.hxx>
-#endif
 
-#ifndef _TransferBRep_SequenceOfTransferResultInfo_HeaderFile
 #include <TransferBRep_SequenceOfTransferResultInfo.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TransferBRep_TransferResultInfo_HeaderFile
 #include <Handle_TransferBRep_TransferResultInfo.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TransferBRep_TransferResultInfo;
@@ -38,56 +22,57 @@ class TransferBRep_SequenceOfTransferResultInfo;
 
 
 
-class TransferBRep_HSequenceOfTransferResultInfo : public MMgt_TShared {
+class TransferBRep_HSequenceOfTransferResultInfo : public MMgt_TShared
+{
 
 public:
 
   
-      TransferBRep_HSequenceOfTransferResultInfo();
+    TransferBRep_HSequenceOfTransferResultInfo();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(TransferBRep_TransferResultInfo)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(TransferBRep_TransferResultInfo)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(TransferBRep_HSequenceOfTransferResultInfo)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(TransferBRep_HSequenceOfTransferResultInfo)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TransferBRep_TransferResultInfo)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(TransferBRep_TransferResultInfo)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TransferBRep_HSequenceOfTransferResultInfo)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(TransferBRep_HSequenceOfTransferResultInfo)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(TransferBRep_TransferResultInfo)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(TransferBRep_TransferResultInfo)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(TransferBRep_HSequenceOfTransferResultInfo)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(TransferBRep_HSequenceOfTransferResultInfo)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(TransferBRep_TransferResultInfo)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(TransferBRep_TransferResultInfo)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(TransferBRep_HSequenceOfTransferResultInfo)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(TransferBRep_HSequenceOfTransferResultInfo)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_TransferBRep_HSequenceOfTransferResultInfo Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(TransferBRep_HSequenceOfTransferResultInfo) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(TransferBRep_TransferResultInfo)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(TransferBRep_TransferResultInfo)& anItem) ;
   
-  Standard_EXPORT    const Handle_TransferBRep_TransferResultInfo& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(TransferBRep_TransferResultInfo)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_TransferBRep_TransferResultInfo& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(TransferBRep_TransferResultInfo)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const TransferBRep_SequenceOfTransferResultInfo& Sequence() const;
+     const  TransferBRep_SequenceOfTransferResultInfo& Sequence()  const;
   
-        TransferBRep_SequenceOfTransferResultInfo& ChangeSequence() ;
+      TransferBRep_SequenceOfTransferResultInfo& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_TransferBRep_HSequenceOfTransferResultInfo ShallowCopy() const;
+  Standard_EXPORT   Handle(TransferBRep_HSequenceOfTransferResultInfo) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-TransferBRep_SequenceOfTransferResultInfo mySequence;
+  TransferBRep_SequenceOfTransferResultInfo mySequence;
 
 
 };
 
-#define Item Handle_TransferBRep_TransferResultInfo
+#define Item Handle(TransferBRep_TransferResultInfo)
 #define Item_hxx <TransferBRep_TransferResultInfo.hxx>
 #define TheSequence TransferBRep_SequenceOfTransferResultInfo
 #define TheSequence_hxx <TransferBRep_SequenceOfTransferResultInfo.hxx>
@@ -128,11 +113,10 @@ TransferBRep_SequenceOfTransferResultInfo mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_TransferBRep_HSequenceOfTransferResultInfo ShallowCopy(const Handle_TransferBRep_HSequenceOfTransferResultInfo& me) {
+inline Handle(TransferBRep_HSequenceOfTransferResultInfo) ShallowCopy(const Handle(TransferBRep_HSequenceOfTransferResultInfo)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _TransferBRep_HSequenceOfTransferResultInfo_HeaderFile

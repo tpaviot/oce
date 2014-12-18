@@ -6,22 +6,15 @@
 #ifndef _Handle_Aspect_WindowDefinitionError_HeaderFile
 #define _Handle_Aspect_WindowDefinitionError_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Standard_OutOfRange_HeaderFile
 #include <Handle_Standard_OutOfRange.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Standard_OutOfRange);
 class Aspect_WindowDefinitionError;
 
-DEFINE_STANDARD_HANDLE(Aspect_WindowDefinitionError,Standard_OutOfRange)
+DEFINE_STANDARD_HANDLE(Aspect_WindowDefinitionError, Standard_OutOfRange)
 
-#endif
+#endif // _Handle_Aspect_WindowDefinitionError_HeaderFile

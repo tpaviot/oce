@@ -6,47 +6,33 @@
 #ifndef _ShapeConstruct_MakeTriangulation_HeaderFile
 #define _ShapeConstruct_MakeTriangulation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _BRepBuilderAPI_MakeShape_HeaderFile
 #include <BRepBuilderAPI_MakeShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TColgp_Array1OfPnt;
 class TopoDS_Wire;
 
 
 
-class ShapeConstruct_MakeTriangulation  : public BRepBuilderAPI_MakeShape {
+class ShapeConstruct_MakeTriangulation  : public BRepBuilderAPI_MakeShape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ShapeConstruct_MakeTriangulation(const TColgp_Array1OfPnt& pnts,const Standard_Real prec = 0.0);
+  Standard_EXPORT ShapeConstruct_MakeTriangulation(const TColgp_Array1OfPnt& pnts, const Standard_Real prec = 0.0);
   
-  Standard_EXPORT   ShapeConstruct_MakeTriangulation(const TopoDS_Wire& wire,const Standard_Real prec = 0.0);
+  Standard_EXPORT ShapeConstruct_MakeTriangulation(const TopoDS_Wire& wire, const Standard_Real prec = 0.0);
   
-  Standard_EXPORT   virtual  void Build() ;
+  Standard_EXPORT virtual   void Build() ;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsDone() const;
-
+  Standard_EXPORT virtual   Standard_Boolean IsDone()  const;
 
 
 
@@ -60,13 +46,13 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Triangulate(const TopoDS_Wire& wire) ;
+  Standard_EXPORT   void Triangulate (const TopoDS_Wire& wire) ;
   
-  Standard_EXPORT     void AddFacet(const TopoDS_Wire& wire) ;
+  Standard_EXPORT   void AddFacet (const TopoDS_Wire& wire) ;
 
 
-Standard_Real myPrecision;
-TopoDS_Wire myWire;
+  Standard_Real myPrecision;
+  TopoDS_Wire myWire;
 
 
 };
@@ -75,7 +61,6 @@ TopoDS_Wire myWire;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeConstruct_MakeTriangulation_HeaderFile

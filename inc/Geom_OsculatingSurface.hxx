@@ -6,43 +6,19 @@
 #ifndef _Geom_OsculatingSurface_HeaderFile
 #define _Geom_OsculatingSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_HSequenceOfBSplineSurface_HeaderFile
 #include <Handle_Geom_HSequenceOfBSplineSurface.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfInteger_HeaderFile
 #include <Handle_TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _TColStd_Array1OfBoolean_HeaderFile
 #include <TColStd_Array1OfBoolean.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _GeomAbs_IsoType_HeaderFile
 #include <GeomAbs_IsoType.hxx>
-#endif
 class Geom_Surface;
 class Geom_HSequenceOfBSplineSurface;
 class TColStd_HSequenceOfInteger;
@@ -51,31 +27,34 @@ class Geom_SequenceOfBSplineSurface;
 
 
 
-class Geom_OsculatingSurface  {
+class Geom_OsculatingSurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom_OsculatingSurface();
-  //! detects if the  surface has punctual U  or  V <br>
-//!  isoparametric  curve along on  the bounds of the surface <br>
-//!  relativly to the tolerance Tol and Builds the corresponding <br>
-//!  osculating surfaces. <br>
-  Standard_EXPORT   Geom_OsculatingSurface(const Handle(Geom_Surface)& BS,const Standard_Real Tol);
+  Standard_EXPORT Geom_OsculatingSurface();
   
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& BS,const Standard_Real Tol) ;
+  //! detects if the  surface has punctual U  or  V
+  //! isoparametric  curve along on  the bounds of the surface
+  //! relativly to the tolerance Tol and Builds the corresponding
+  //! osculating surfaces.
+  Standard_EXPORT Geom_OsculatingSurface(const Handle(Geom_Surface)& BS, const Standard_Real Tol);
   
-  Standard_EXPORT     Handle_Geom_Surface BasisSurface() const;
+  Standard_EXPORT   void Init (const Handle(Geom_Surface)& BS, const Standard_Real Tol) ;
   
-  Standard_EXPORT     Standard_Real Tolerance() const;
-  //! if Standard_True, L is the local osculating surface <br>
-//!          along U at the point U,V. <br>
-  Standard_EXPORT     Standard_Boolean UOscSurf(const Standard_Real U,const Standard_Real V,Standard_Boolean& t,Handle(Geom_BSplineSurface)& L) const;
-  //! if Standard_True, L is the local osculating surface <br>
-//!          along V at the point U,V. <br>
-  Standard_EXPORT     Standard_Boolean VOscSurf(const Standard_Real U,const Standard_Real V,Standard_Boolean& t,Handle(Geom_BSplineSurface)& L) const;
-
+  Standard_EXPORT   Handle(Geom_Surface) BasisSurface()  const;
+  
+  Standard_EXPORT   Standard_Real Tolerance()  const;
+  
+  //! if Standard_True, L is the local osculating surface
+  //! along U at the point U,V.
+  Standard_EXPORT   Standard_Boolean UOscSurf (const Standard_Real U, const Standard_Real V, Standard_Boolean& t, Handle(Geom_BSplineSurface)& L)  const;
+  
+  //! if Standard_True, L is the local osculating surface
+  //! along V at the point U,V.
+  Standard_EXPORT   Standard_Boolean VOscSurf (const Standard_Real U, const Standard_Real V, Standard_Boolean& t, Handle(Geom_BSplineSurface)& L)  const;
 
 
 
@@ -88,32 +67,33 @@ protected:
 
 private:
 
-  //! returns False if the osculating surface can't be built <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean BuildOsculatingSurface(const Standard_Real Param,const Standard_Integer UKnot,const Standard_Integer VKnot,const Handle(Geom_BSplineSurface)& BS,Handle(Geom_BSplineSurface)& L) const;
-  //! returns    True    if  the    isoparametric     is <br>
-//!          quasi-punctual <br>
-  Standard_EXPORT     Standard_Boolean IsQPunctual(const Handle(Geom_Surface)& S,const Standard_Real Param,const GeomAbs_IsoType IT,const Standard_Real TolMin,const Standard_Real TolMax) const;
   
-  Standard_EXPORT     Standard_Boolean HasOscSurf() const;
+  //! returns False if the osculating surface can't be built
+  Standard_EXPORT   Standard_Boolean BuildOsculatingSurface (const Standard_Real Param, const Standard_Integer UKnot, const Standard_Integer VKnot, const Handle(Geom_BSplineSurface)& BS, Handle(Geom_BSplineSurface)& L)  const;
   
-  Standard_EXPORT     Standard_Boolean IsAlongU() const;
+  //! returns    True    if  the    isoparametric     is
+  //! quasi-punctual
+  Standard_EXPORT   Standard_Boolean IsQPunctual (const Handle(Geom_Surface)& S, const Standard_Real Param, const GeomAbs_IsoType IT, const Standard_Real TolMin, const Standard_Real TolMax)  const;
   
-  Standard_EXPORT     Standard_Boolean IsAlongV() const;
+  Standard_EXPORT   Standard_Boolean HasOscSurf()  const;
   
-  Standard_EXPORT     void ClearOsculFlags() ;
+  Standard_EXPORT   Standard_Boolean IsAlongU()  const;
   
-  Standard_EXPORT    const Geom_SequenceOfBSplineSurface& GetSeqOfL1() const;
+  Standard_EXPORT   Standard_Boolean IsAlongV()  const;
   
-  Standard_EXPORT    const Geom_SequenceOfBSplineSurface& GetSeqOfL2() const;
+  Standard_EXPORT   void ClearOsculFlags() ;
+  
+  Standard_EXPORT  const  Geom_SequenceOfBSplineSurface& GetSeqOfL1()  const;
+  
+  Standard_EXPORT  const  Geom_SequenceOfBSplineSurface& GetSeqOfL2()  const;
 
 
-Handle_Geom_Surface myBasisSurf;
-Standard_Real myTol;
-Handle_Geom_HSequenceOfBSplineSurface myOsculSurf1;
-Handle_Geom_HSequenceOfBSplineSurface myOsculSurf2;
-Handle_TColStd_HSequenceOfInteger myKdeg;
-TColStd_Array1OfBoolean myAlong;
+  Handle(Geom_Surface) myBasisSurf;
+  Standard_Real myTol;
+  Handle(Geom_HSequenceOfBSplineSurface) myOsculSurf1;
+  Handle(Geom_HSequenceOfBSplineSurface) myOsculSurf2;
+  Handle(TColStd_HSequenceOfInteger) myKdeg;
+  TColStd_Array1OfBoolean myAlong;
 
 
 };
@@ -122,7 +102,6 @@ TColStd_Array1OfBoolean myAlong;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom_OsculatingSurface_HeaderFile

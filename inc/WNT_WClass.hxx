@@ -6,75 +6,63 @@
 #ifndef _WNT_WClass_HeaderFile
 #define _WNT_WClass_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_WNT_WClass_HeaderFile
 #include <Handle_WNT_WClass.hxx>
-#endif
 
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Aspect_Handle_HeaderFile
 #include <Aspect_Handle.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _WNT_Uint_HeaderFile
 #include <WNT_Uint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class WNT_ClassDefinitionError;
 class WNT_Window;
 
 
-//! This class defines a Windows NT window class. <br>
-//!          A window in Windows NT is always created based on a <br>
-//!          window class. The window class identifies the window <br>
-//!          procedure that processes messages to the window. Each <br>
-//!          window class has unique name ( character string ). More <br>
-//!          than one window can be created based on a single window <br>
-//!          class. For example, all button windows in Windows NT <br>
-//!          are created based on the same window class. The window <br>
-//!          class defines the window procedure and some other <br>
-//!          characteristics ( background, mouse cursor shape etc. ) <br>
-//!          of the windows that are created based on that class. <br>
-//!          When we create a window, we define additional <br>
-//!          characteristics of the window that are unique to that <br>
-//!          window. So, we have to create and register window <br>
-//!          class before creation of any window. Of course, it's possible <br>
-//!          to create a new window class for each window inside <br>
-//!          the Window class and do not use the WClass at all. <br>
-//!          We implemented this class for sake of flexibility of <br>
-//!          event processing. <br>
-class WNT_WClass : public MMgt_TShared {
+//! This class defines a Windows NT window class.
+//! A window in Windows NT is always created based on a
+//! window class. The window class identifies the window
+//! procedure that processes messages to the window. Each
+//! window class has unique name ( character string ). More
+//! than one window can be created based on a single window
+//! class. For example, all button windows in Windows NT
+//! are created based on the same window class. The window
+//! class defines the window procedure and some other
+//! characteristics ( background, mouse cursor shape etc. )
+//! of the windows that are created based on that class.
+//! When we create a window, we define additional
+//! characteristics of the window that are unique to that
+//! window. So, we have to create and register window
+//! class before creation of any window. Of course, it's possible
+//! to create a new window class for each window inside
+//! the Window class and do not use the WClass at all.
+//! We implemented this class for sake of flexibility of
+//! event processing.
+class WNT_WClass : public MMgt_TShared
+{
 
 public:
 
-  //! Creates a Windows NT window class and registers it. <br>
-  Standard_EXPORT   WNT_WClass(const Standard_CString aClassName,const Standard_Address aWndProc,const WNT_Uint& aStyle,const Standard_Integer aClassExtra = 0,const Standard_Integer aWindowExtra = 0,const Aspect_Handle aCursor = 0,const Aspect_Handle anIcon = 0,const Standard_CString aMenuName = 0);
-  //! Destroys all resources attached to the class <br>
-  Standard_EXPORT   virtual  void Destroy() ;
+  
+  //! Creates a Windows NT window class and registers it.
+  Standard_EXPORT WNT_WClass(const Standard_CString aClassName, const Standard_Address aWndProc, const WNT_Uint& aStyle, const Standard_Integer aClassExtra = 0, const Standard_Integer aWindowExtra = 0, const Aspect_Handle aCursor = 0, const Aspect_Handle anIcon = 0, const Standard_CString aMenuName = 0);
+  
+  //! Destroys all resources attached to the class
+  Standard_EXPORT virtual   void Destroy() ;
 ~WNT_WClass()
 {
   Destroy();
 }
-  //! Returns address of window procedure. <br>
-        Standard_Address WndProc() const;
-  //! Returns a class name. <br>
-        Standard_CString Name() const;
-  //! Returns a program instance handle. <br>
-        Aspect_Handle Instance() const;
+  
+  //! Returns address of window procedure.
+      Standard_Address WndProc()  const;
+  
+  //! Returns a class name.
+      Standard_CString Name()  const;
+  
+  //! Returns a program instance handle.
+      Aspect_Handle Instance()  const;
 
 friend class WNT_Window;
 
@@ -84,9 +72,9 @@ friend class WNT_Window;
 protected:
 
 
-Standard_CString lpszName;
-Aspect_Handle hInstance;
-Standard_Address lpfnWndProc;
+  Standard_CString lpszName;
+  Aspect_Handle hInstance;
+  Standard_Address lpfnWndProc;
 
 
 private: 
@@ -101,7 +89,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _WNT_WClass_HeaderFile

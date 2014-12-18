@@ -6,31 +6,15 @@
 #ifndef _TDF_AttributeIndexedMap_HeaderFile
 #define _TDF_AttributeIndexedMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_IndexedMapNodeOfAttributeIndexedMap_HeaderFile
 #include <Handle_TDF_IndexedMapNodeOfAttributeIndexedMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class TDF_Attribute;
@@ -39,44 +23,46 @@ class TDF_IndexedMapNodeOfAttributeIndexedMap;
 
 
 
-class TDF_AttributeIndexedMap  : public TCollection_BasicMap {
+class TDF_AttributeIndexedMap  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_AttributeIndexedMap(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TDF_AttributeIndexedMap(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TDF_AttributeIndexedMap& Assign(const TDF_AttributeIndexedMap& Other) ;
-    TDF_AttributeIndexedMap& operator =(const TDF_AttributeIndexedMap& Other) 
+  Standard_EXPORT TDF_AttributeIndexedMap(const TDF_AttributeIndexedMap& Other);
+  
+  Standard_EXPORT   TDF_AttributeIndexedMap& Assign (const TDF_AttributeIndexedMap& Other) ;
+  TDF_AttributeIndexedMap& operator = (const TDF_AttributeIndexedMap& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDF_AttributeIndexedMap()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Integer Add(const Handle(TDF_Attribute)& K) ;
+  Standard_EXPORT   Standard_Integer Add (const Handle(TDF_Attribute)& K) ;
   
-  Standard_EXPORT     void Substitute(const Standard_Integer I,const Handle(TDF_Attribute)& K) ;
+  Standard_EXPORT   void Substitute (const Standard_Integer I, const Handle(TDF_Attribute)& K) ;
   
-  Standard_EXPORT     void RemoveLast() ;
+  Standard_EXPORT   void RemoveLast() ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Handle(TDF_Attribute)& K) const;
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(TDF_Attribute)& K)  const;
   
-  Standard_EXPORT    const Handle_TDF_Attribute& FindKey(const Standard_Integer I) const;
-   const Handle_TDF_Attribute& operator ()(const Standard_Integer I) const
+  Standard_EXPORT  const  Handle(TDF_Attribute)& FindKey (const Standard_Integer I)  const;
+ const  Handle(TDF_Attribute)& operator () (const Standard_Integer I)  const
 {
   return FindKey(I);
 }
   
-  Standard_EXPORT     Standard_Integer FindIndex(const Handle(TDF_Attribute)& K) const;
-
+  Standard_EXPORT   Standard_Integer FindIndex (const Handle(TDF_Attribute)& K)  const;
 
 
 
@@ -89,8 +75,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_AttributeIndexedMap(const TDF_AttributeIndexedMap& Other);
 
 
 
@@ -101,7 +85,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_AttributeIndexedMap_HeaderFile

@@ -6,44 +6,34 @@
 #ifndef _StepShape_SweptAreaSolid_HeaderFile
 #define _StepShape_SweptAreaSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_SweptAreaSolid_HeaderFile
 #include <Handle_StepShape_SweptAreaSolid.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_CurveBoundedSurface_HeaderFile
 #include <Handle_StepGeom_CurveBoundedSurface.hxx>
-#endif
-#ifndef _StepShape_SolidModel_HeaderFile
 #include <StepShape_SolidModel.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_CurveBoundedSurface;
 class TCollection_HAsciiString;
 
 
 
-class StepShape_SweptAreaSolid : public StepShape_SolidModel {
+class StepShape_SweptAreaSolid : public StepShape_SolidModel
+{
 
 public:
 
-  //! Returns a SweptAreaSolid <br>
-  Standard_EXPORT   StepShape_SweptAreaSolid();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a SweptAreaSolid
+  Standard_EXPORT StepShape_SweptAreaSolid();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_CurveBoundedSurface)& aSweptArea) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetSweptArea(const Handle(StepGeom_CurveBoundedSurface)& aSweptArea) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_CurveBoundedSurface)& aSweptArea) ;
   
-  Standard_EXPORT     Handle_StepGeom_CurveBoundedSurface SweptArea() const;
+  Standard_EXPORT   void SetSweptArea (const Handle(StepGeom_CurveBoundedSurface)& aSweptArea) ;
+  
+  Standard_EXPORT   Handle(StepGeom_CurveBoundedSurface) SweptArea()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-Handle_StepGeom_CurveBoundedSurface sweptArea;
+  Handle(StepGeom_CurveBoundedSurface) sweptArea;
 
 
 };
@@ -67,7 +57,6 @@ Handle_StepGeom_CurveBoundedSurface sweptArea;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_SweptAreaSolid_HeaderFile

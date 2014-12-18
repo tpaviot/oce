@@ -5,28 +5,14 @@
 
 #include <IGESData_GlobalNodeOfSpecificLib.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IGESData_SpecificModule_HeaderFile
 #include <IGESData_SpecificModule.hxx>
-#endif
-#ifndef _IGESData_Protocol_HeaderFile
 #include <IGESData_Protocol.hxx>
-#endif
-#ifndef _IGESData_GlobalNodeOfSpecificLib_HeaderFile
 #include <IGESData_GlobalNodeOfSpecificLib.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESData_SpecificLib_HeaderFile
 #include <IGESData_SpecificLib.hxx>
-#endif
-#ifndef _IGESData_NodeOfSpecificLib_HeaderFile
 #include <IGESData_NodeOfSpecificLib.hxx>
-#endif
 
  
 
@@ -43,7 +29,7 @@ IMPLEMENT_DOWNCAST(IGESData_GlobalNodeOfSpecificLib,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESData_GlobalNodeOfSpecificLib)
 
 
-#define TheObject Handle_IGESData_IGESEntity
+#define TheObject Handle(IGESData_IGESEntity)
 #define TheObject_hxx <IGESData_IGESEntity.hxx>
 #define Handle_TheModule Handle_IGESData_SpecificModule
 #define TheModule IGESData_SpecificModule

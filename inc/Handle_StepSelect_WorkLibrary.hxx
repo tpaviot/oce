@@ -6,22 +6,15 @@
 #ifndef _Handle_StepSelect_WorkLibrary_HeaderFile
 #define _Handle_StepSelect_WorkLibrary_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_WorkLibrary_HeaderFile
 #include <Handle_IFSelect_WorkLibrary.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_WorkLibrary);
 class StepSelect_WorkLibrary;
 
-DEFINE_STANDARD_HANDLE(StepSelect_WorkLibrary,IFSelect_WorkLibrary)
+DEFINE_STANDARD_HANDLE(StepSelect_WorkLibrary, IFSelect_WorkLibrary)
 
-#endif
+#endif // _Handle_StepSelect_WorkLibrary_HeaderFile

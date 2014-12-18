@@ -5,15 +5,9 @@
 
 #include <PColgp_VArrayTNodeOfFieldOfHArray1OfPnt.hxx>
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray1OfPnt_HeaderFile
 #include <PColgp_FieldOfHArray1OfPnt.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray1OfPnt_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray1OfPnt.hxx>
-#endif
  
 
 #define Item gp_Pnt

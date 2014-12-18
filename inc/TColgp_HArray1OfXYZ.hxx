@@ -6,25 +6,13 @@
 #ifndef _TColgp_HArray1OfXYZ_HeaderFile
 #define _TColgp_HArray1OfXYZ_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfXYZ_HeaderFile
 #include <Handle_TColgp_HArray1OfXYZ.hxx>
-#endif
 
-#ifndef _TColgp_Array1OfXYZ_HeaderFile
 #include <TColgp_Array1OfXYZ.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class TColgp_Array1OfXYZ;
 
 
 
-class TColgp_HArray1OfXYZ : public MMgt_TShared {
+class TColgp_HArray1OfXYZ : public MMgt_TShared
+{
 
 public:
 
   
-      TColgp_HArray1OfXYZ(const Standard_Integer Low,const Standard_Integer Up);
+    TColgp_HArray1OfXYZ(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColgp_HArray1OfXYZ(const Standard_Integer Low,const Standard_Integer Up,const gp_XYZ& V);
+    TColgp_HArray1OfXYZ(const Standard_Integer Low, const Standard_Integer Up, const gp_XYZ& V);
   
-        void Init(const gp_XYZ& V) ;
+      void Init (const gp_XYZ& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const gp_XYZ& Value) ;
+      void SetValue (const Standard_Integer Index, const gp_XYZ& Value) ;
   
-       const gp_XYZ& Value(const Standard_Integer Index) const;
+     const  gp_XYZ& Value (const Standard_Integer Index)  const;
   
-        gp_XYZ& ChangeValue(const Standard_Integer Index) ;
+      gp_XYZ& ChangeValue (const Standard_Integer Index) ;
   
-       const TColgp_Array1OfXYZ& Array1() const;
+     const  TColgp_Array1OfXYZ& Array1()  const;
   
-        TColgp_Array1OfXYZ& ChangeArray1() ;
+      TColgp_Array1OfXYZ& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-TColgp_Array1OfXYZ myArray;
+  TColgp_Array1OfXYZ myArray;
 
 
 };
@@ -100,7 +89,6 @@ TColgp_Array1OfXYZ myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_HArray1OfXYZ_HeaderFile

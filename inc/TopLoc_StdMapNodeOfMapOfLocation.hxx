@@ -6,25 +6,13 @@
 #ifndef _TopLoc_StdMapNodeOfMapOfLocation_HeaderFile
 #define _TopLoc_StdMapNodeOfMapOfLocation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopLoc_StdMapNodeOfMapOfLocation_HeaderFile
 #include <Handle_TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#endif
 
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopLoc_Location;
 class TopLoc_MapLocationHasher;
 class TopLoc_MapOfLocation;
@@ -32,14 +20,15 @@ class TopLoc_MapIteratorOfMapOfLocation;
 
 
 
-class TopLoc_StdMapNodeOfMapOfLocation : public TCollection_MapNode {
+class TopLoc_StdMapNodeOfMapOfLocation : public TCollection_MapNode
+{
 
 public:
 
   
-      TopLoc_StdMapNodeOfMapOfLocation(const TopLoc_Location& K,const TCollection_MapNodePtr& n);
+    TopLoc_StdMapNodeOfMapOfLocation(const TopLoc_Location& K, const TCollection_MapNodePtr& n);
   
-        TopLoc_Location& Key() const;
+      TopLoc_Location& Key()  const;
 
 
 
@@ -54,7 +43,7 @@ protected:
 private: 
 
 
-TopLoc_Location myKey;
+  TopLoc_Location myKey;
 
 
 };
@@ -88,7 +77,6 @@ TopLoc_Location myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopLoc_StdMapNodeOfMapOfLocation_HeaderFile

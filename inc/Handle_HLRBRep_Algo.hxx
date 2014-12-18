@@ -6,22 +6,15 @@
 #ifndef _Handle_HLRBRep_Algo_HeaderFile
 #define _Handle_HLRBRep_Algo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_HLRBRep_InternalAlgo_HeaderFile
 #include <Handle_HLRBRep_InternalAlgo.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(HLRBRep_InternalAlgo);
 class HLRBRep_Algo;
 
-DEFINE_STANDARD_HANDLE(HLRBRep_Algo,HLRBRep_InternalAlgo)
+DEFINE_STANDARD_HANDLE(HLRBRep_Algo, HLRBRep_InternalAlgo)
 
-#endif
+#endif // _Handle_HLRBRep_Algo_HeaderFile

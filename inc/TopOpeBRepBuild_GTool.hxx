@@ -6,52 +6,42 @@
 #ifndef _TopOpeBRepBuild_GTool_HeaderFile
 #define _TopOpeBRepBuild_GTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TopOpeBRepBuild_GTopo;
 
 
 
-class TopOpeBRepBuild_GTool  {
+class TopOpeBRepBuild_GTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  TopOpeBRepBuild_GTopo GFusUnsh(const TopAbs_ShapeEnum s1,const TopAbs_ShapeEnum s2) ;
+  Standard_EXPORT static   TopOpeBRepBuild_GTopo GFusUnsh (const TopAbs_ShapeEnum s1, const TopAbs_ShapeEnum s2) ;
   
-  Standard_EXPORT   static  TopOpeBRepBuild_GTopo GFusSame(const TopAbs_ShapeEnum s1,const TopAbs_ShapeEnum s2) ;
+  Standard_EXPORT static   TopOpeBRepBuild_GTopo GFusSame (const TopAbs_ShapeEnum s1, const TopAbs_ShapeEnum s2) ;
   
-  Standard_EXPORT   static  TopOpeBRepBuild_GTopo GFusDiff(const TopAbs_ShapeEnum s1,const TopAbs_ShapeEnum s2) ;
+  Standard_EXPORT static   TopOpeBRepBuild_GTopo GFusDiff (const TopAbs_ShapeEnum s1, const TopAbs_ShapeEnum s2) ;
   
-  Standard_EXPORT   static  TopOpeBRepBuild_GTopo GCutUnsh(const TopAbs_ShapeEnum s1,const TopAbs_ShapeEnum s2) ;
+  Standard_EXPORT static   TopOpeBRepBuild_GTopo GCutUnsh (const TopAbs_ShapeEnum s1, const TopAbs_ShapeEnum s2) ;
   
-  Standard_EXPORT   static  TopOpeBRepBuild_GTopo GCutSame(const TopAbs_ShapeEnum s1,const TopAbs_ShapeEnum s2) ;
+  Standard_EXPORT static   TopOpeBRepBuild_GTopo GCutSame (const TopAbs_ShapeEnum s1, const TopAbs_ShapeEnum s2) ;
   
-  Standard_EXPORT   static  TopOpeBRepBuild_GTopo GCutDiff(const TopAbs_ShapeEnum s1,const TopAbs_ShapeEnum s2) ;
+  Standard_EXPORT static   TopOpeBRepBuild_GTopo GCutDiff (const TopAbs_ShapeEnum s1, const TopAbs_ShapeEnum s2) ;
   
-  Standard_EXPORT   static  TopOpeBRepBuild_GTopo GComUnsh(const TopAbs_ShapeEnum s1,const TopAbs_ShapeEnum s2) ;
+  Standard_EXPORT static   TopOpeBRepBuild_GTopo GComUnsh (const TopAbs_ShapeEnum s1, const TopAbs_ShapeEnum s2) ;
   
-  Standard_EXPORT   static  TopOpeBRepBuild_GTopo GComSame(const TopAbs_ShapeEnum s1,const TopAbs_ShapeEnum s2) ;
+  Standard_EXPORT static   TopOpeBRepBuild_GTopo GComSame (const TopAbs_ShapeEnum s1, const TopAbs_ShapeEnum s2) ;
   
-  Standard_EXPORT   static  TopOpeBRepBuild_GTopo GComDiff(const TopAbs_ShapeEnum s1,const TopAbs_ShapeEnum s2) ;
+  Standard_EXPORT static   TopOpeBRepBuild_GTopo GComDiff (const TopAbs_ShapeEnum s1, const TopAbs_ShapeEnum s2) ;
   
-  Standard_EXPORT   static  void Dump(Standard_OStream& OS) ;
-
+  Standard_EXPORT static   void Dump (Standard_OStream& OS) ;
 
 
 
@@ -74,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_GTool_HeaderFile

@@ -6,67 +6,50 @@
 #ifndef _BRepTopAdaptor_FClass2d_HeaderFile
 #define _BRepTopAdaptor_FClass2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepTopAdaptor_SeqOfPtr_HeaderFile
 #include <BRepTopAdaptor_SeqOfPtr.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Face;
 class gp_Pnt2d;
 
 
 
-class BRepTopAdaptor_FClass2d  {
+class BRepTopAdaptor_FClass2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepTopAdaptor_FClass2d(const TopoDS_Face& F,const Standard_Real Tol);
+  Standard_EXPORT BRepTopAdaptor_FClass2d(const TopoDS_Face& F, const Standard_Real Tol);
   
-  Standard_EXPORT     TopAbs_State PerformInfinitePoint() const;
+  Standard_EXPORT   TopAbs_State PerformInfinitePoint()  const;
   
-  Standard_EXPORT     TopAbs_State Perform(const gp_Pnt2d& Puv,const Standard_Boolean RecadreOnPeriodic = Standard_True) const;
+  Standard_EXPORT   TopAbs_State Perform (const gp_Pnt2d& Puv, const Standard_Boolean RecadreOnPeriodic = Standard_True)  const;
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~BRepTopAdaptor_FClass2d()
 {
   Destroy();
 }
   
-  Standard_EXPORT    const BRepTopAdaptor_FClass2d& Copy(const BRepTopAdaptor_FClass2d& Other) const;
-   const BRepTopAdaptor_FClass2d& operator=(const BRepTopAdaptor_FClass2d& Other) const
+  Standard_EXPORT  const  BRepTopAdaptor_FClass2d& Copy (const BRepTopAdaptor_FClass2d& Other)  const;
+ const  BRepTopAdaptor_FClass2d& operator= (const BRepTopAdaptor_FClass2d& Other)  const
 {
   return Copy(Other);
 }
-  //! Test a point with +- an offset (Tol) and returns <br>
-//!          On if some points are OUT an some are IN <br>
-//!          (Caution: Internal use . see the code for more details) <br>
-  Standard_EXPORT     TopAbs_State TestOnRestriction(const gp_Pnt2d& Puv,const Standard_Real Tol,const Standard_Boolean RecadreOnPeriodic = Standard_True) const;
-
+  
+  //! Test a point with +- an offset (Tol) and returns
+  //! On if some points are OUT an some are IN
+  //! (Caution: Internal use . see the code for more details)
+  Standard_EXPORT   TopAbs_State TestOnRestriction (const gp_Pnt2d& Puv, const Standard_Real Tol, const Standard_Boolean RecadreOnPeriodic = Standard_True)  const;
 
 
 
@@ -81,18 +64,18 @@ private:
 
 
 
-BRepTopAdaptor_SeqOfPtr TabClass;
-TColStd_SequenceOfInteger TabOrien;
-Standard_Real Toluv;
-TopoDS_Face Face;
-Standard_Real U1;
-Standard_Real V1;
-Standard_Real U2;
-Standard_Real V2;
-Standard_Real Umin;
-Standard_Real Umax;
-Standard_Real Vmin;
-Standard_Real Vmax;
+  BRepTopAdaptor_SeqOfPtr TabClass;
+  TColStd_SequenceOfInteger TabOrien;
+  Standard_Real Toluv;
+  TopoDS_Face Face;
+  Standard_Real U1;
+  Standard_Real V1;
+  Standard_Real U2;
+  Standard_Real V2;
+  Standard_Real Umin;
+  Standard_Real Umax;
+  Standard_Real Vmin;
+  Standard_Real Vmax;
 
 
 };
@@ -101,7 +84,6 @@ Standard_Real Vmax;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepTopAdaptor_FClass2d_HeaderFile

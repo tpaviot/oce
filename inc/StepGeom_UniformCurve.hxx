@@ -6,28 +6,22 @@
 #ifndef _StepGeom_UniformCurve_HeaderFile
 #define _StepGeom_UniformCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_UniformCurve_HeaderFile
 #include <Handle_StepGeom_UniformCurve.hxx>
-#endif
 
-#ifndef _StepGeom_BSplineCurve_HeaderFile
 #include <StepGeom_BSplineCurve.hxx>
-#endif
 
 
 
-class StepGeom_UniformCurve : public StepGeom_BSplineCurve {
+class StepGeom_UniformCurve : public StepGeom_BSplineCurve
+{
 
 public:
 
-  //! Returns a UniformCurve <br>
-  Standard_EXPORT   StepGeom_UniformCurve();
+  
+  //! Returns a UniformCurve
+  Standard_EXPORT StepGeom_UniformCurve();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_UniformCurve_HeaderFile

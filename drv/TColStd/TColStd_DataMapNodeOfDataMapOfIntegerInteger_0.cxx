@@ -5,19 +5,11 @@
 
 #include <TColStd_DataMapNodeOfDataMapOfIntegerInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TColStd_DataMapOfIntegerInteger_HeaderFile
 #include <TColStd_DataMapOfIntegerInteger.hxx>
-#endif
-#ifndef _TColStd_DataMapIteratorOfDataMapOfIntegerInteger_HeaderFile
 #include <TColStd_DataMapIteratorOfDataMapOfIntegerInteger.hxx>
-#endif
 
  
 

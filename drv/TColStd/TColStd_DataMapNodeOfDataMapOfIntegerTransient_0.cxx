@@ -5,22 +5,12 @@
 
 #include <TColStd_DataMapNodeOfDataMapOfIntegerTransient.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TColStd_DataMapOfIntegerTransient_HeaderFile
 #include <TColStd_DataMapOfIntegerTransient.hxx>
-#endif
-#ifndef _TColStd_DataMapIteratorOfDataMapOfIntegerTransient_HeaderFile
 #include <TColStd_DataMapIteratorOfDataMapOfIntegerTransient.hxx>
-#endif
 
  
 
@@ -41,7 +31,7 @@ IMPLEMENT_STANDARD_RTTI(TColStd_DataMapNodeOfDataMapOfIntegerTransient)
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>

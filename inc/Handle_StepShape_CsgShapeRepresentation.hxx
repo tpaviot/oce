@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_CsgShapeRepresentation_HeaderFile
 #define _Handle_StepShape_CsgShapeRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_ShapeRepresentation_HeaderFile
 #include <Handle_StepShape_ShapeRepresentation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_ShapeRepresentation);
 class StepShape_CsgShapeRepresentation;
 
-DEFINE_STANDARD_HANDLE(StepShape_CsgShapeRepresentation,StepShape_ShapeRepresentation)
+DEFINE_STANDARD_HANDLE(StepShape_CsgShapeRepresentation, StepShape_ShapeRepresentation)
 
-#endif
+#endif // _Handle_StepShape_CsgShapeRepresentation_HeaderFile

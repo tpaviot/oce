@@ -6,22 +6,12 @@
 #ifndef _GeomAdaptor_GHSurface_HeaderFile
 #define _GeomAdaptor_GHSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomAdaptor_GHSurface_HeaderFile
 #include <Handle_GeomAdaptor_GHSurface.hxx>
-#endif
 
-#ifndef _GeomAdaptor_Surface_HeaderFile
 #include <GeomAdaptor_Surface.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -30,20 +20,21 @@ class Adaptor3d_Surface;
 
 
 
-class GeomAdaptor_GHSurface : public Adaptor3d_HSurface {
+class GeomAdaptor_GHSurface : public Adaptor3d_HSurface
+{
 
 public:
 
   
-  Standard_EXPORT   GeomAdaptor_GHSurface();
+  Standard_EXPORT GeomAdaptor_GHSurface();
   
-  Standard_EXPORT   GeomAdaptor_GHSurface(const GeomAdaptor_Surface& S);
+  Standard_EXPORT GeomAdaptor_GHSurface(const GeomAdaptor_Surface& S);
   
-  Standard_EXPORT     void Set(const GeomAdaptor_Surface& S) ;
+  Standard_EXPORT   void Set (const GeomAdaptor_Surface& S) ;
   
-  Standard_EXPORT    const Adaptor3d_Surface& Surface() const;
+  Standard_EXPORT  const  Adaptor3d_Surface& Surface()  const;
   
-        GeomAdaptor_Surface& ChangeSurface() ;
+      GeomAdaptor_Surface& ChangeSurface() ;
 
 
 
@@ -53,7 +44,7 @@ public:
 protected:
 
 
-GeomAdaptor_Surface mySurf;
+  GeomAdaptor_Surface mySurf;
 
 
 private: 
@@ -80,7 +71,6 @@ private:
 #undef Adaptor3d_GenHSurface_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomAdaptor_GHSurface_HeaderFile

@@ -5,27 +5,13 @@
 
 #include <TDF_GUIDProgIDMap.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_MultiplyDefined_HeaderFile
 #include <Standard_MultiplyDefined.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDF_DoubleMapNodeOfGUIDProgIDMap_HeaderFile
 #include <TDF_DoubleMapNodeOfGUIDProgIDMap.hxx>
-#endif
-#ifndef _TDF_DoubleMapIteratorOfGUIDProgIDMap_HeaderFile
 #include <TDF_DoubleMapIteratorOfGUIDProgIDMap.hxx>
-#endif
  
 
 #define TheKey1 Standard_GUID

@@ -6,99 +6,97 @@
 #ifndef _Graphic3d_TextureParams_HeaderFile
 #define _Graphic3d_TextureParams_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_TextureParams_HeaderFile
 #include <Handle_Graphic3d_TextureParams.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Graphic3d_TypeOfTextureFilter_HeaderFile
 #include <Graphic3d_TypeOfTextureFilter.hxx>
-#endif
-#ifndef _Graphic3d_LevelOfTextureAnisotropy_HeaderFile
 #include <Graphic3d_LevelOfTextureAnisotropy.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Graphic3d_Vec2_HeaderFile
 #include <Graphic3d_Vec2.hxx>
-#endif
-#ifndef _Graphic3d_TypeOfTextureMode_HeaderFile
 #include <Graphic3d_TypeOfTextureMode.hxx>
-#endif
-#ifndef _Graphic3d_Vec4_HeaderFile
 #include <Graphic3d_Vec4.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
 
 
-//! This class describes texture parameters. <br>
-class Graphic3d_TextureParams : public Standard_Transient {
+//! This class describes texture parameters.
+class Graphic3d_TextureParams : public Standard_Transient
+{
 
 public:
 
-  //! Default constructor. <br>
-  Standard_EXPORT   Graphic3d_TextureParams();
   
-  Standard_EXPORT     void Destroy() const;
+  //! Default constructor.
+  Standard_EXPORT Graphic3d_TextureParams();
+  
+  Standard_EXPORT   void Destroy()  const;
 ~Graphic3d_TextureParams()
 {
   Destroy();
 }
-  //! @return TRUE if the texture is modulate. <br>
-//! Default value is FALSE. <br>
-  Standard_EXPORT     Standard_Boolean IsModulate() const;
-  //! @param theToModulate turn modulation on/off. <br>
-  Standard_EXPORT     void SetModulate(const Standard_Boolean theToModulate) ;
-  //! @return TRUE if the texture repeat is enabled. <br>
-//! Default value is FALSE. <br>
-  Standard_EXPORT     Standard_Boolean IsRepeat() const;
-  //! @param theToRepeat turn texture repeat mode ON or OFF (clamping). <br>
-  Standard_EXPORT     void SetRepeat(const Standard_Boolean theToRepeat) ;
-  //! @return texture interpolation filter. <br>
-//! Default value is Graphic3d_TOTF_NEAREST. <br>
-  Standard_EXPORT     Graphic3d_TypeOfTextureFilter Filter() const;
-  //! @param theFilter texture interpolation filter. <br>
-  Standard_EXPORT     void SetFilter(const Graphic3d_TypeOfTextureFilter theFilter) ;
-  //! @return level of anisontropy texture filter. <br>
-//! Default value is Graphic3d_LOTA_OFF. <br>
-  Standard_EXPORT     Graphic3d_LevelOfTextureAnisotropy AnisoFilter() const;
-  //! @param theLevel level of anisontropy texture filter. <br>
-  Standard_EXPORT     void SetAnisoFilter(const Graphic3d_LevelOfTextureAnisotropy theLevel) ;
-  //! @return rotation angle in degrees <br>
-//! Default value is 0. <br>
-  Standard_EXPORT     Standard_ShortReal Rotation() const;
-  //! @param theAngleDegrees rotation angle. <br>
-  Standard_EXPORT     void SetRotation(const Standard_ShortReal theAngleDegrees) ;
-  //! @return scale factor <br>
-//! Default value is no scaling (1.0; 1.0). <br>
-  Standard_EXPORT    const Graphic3d_Vec2& Scale() const;
-  //! @param theScale scale factor. <br>
-  Standard_EXPORT     void SetScale(const Graphic3d_Vec2 theScale) ;
-  //! @return translation vector <br>
-//! Default value is no translation (0.0; 0.0). <br>
-  Standard_EXPORT    const Graphic3d_Vec2& Translation() const;
-  //! @param theVec translation vector. <br>
-  Standard_EXPORT     void SetTranslation(const Graphic3d_Vec2 theVec) ;
-  //! @return texture coordinates generation mode. <br>
-//! Default value is Graphic3d_TOTM_MANUAL. <br>
-  Standard_EXPORT     Graphic3d_TypeOfTextureMode GenMode() const;
-  //! @return texture coordinates generation plane S. <br>
-  Standard_EXPORT    const Graphic3d_Vec4& GenPlaneS() const;
-  //! @return texture coordinates generation plane T. <br>
-  Standard_EXPORT    const Graphic3d_Vec4& GenPlaneT() const;
-  //! Setup texture coordinates generation mode. <br>
-  Standard_EXPORT     void SetGenMode(const Graphic3d_TypeOfTextureMode theMode,const Graphic3d_Vec4 thePlaneS,const Graphic3d_Vec4 thePlaneT) ;
+  
+  //! @return TRUE if the texture is modulate.
+  //! Default value is FALSE.
+  Standard_EXPORT   Standard_Boolean IsModulate()  const;
+  
+  //! @param theToModulate turn modulation on/off.
+  Standard_EXPORT   void SetModulate (const Standard_Boolean theToModulate) ;
+  
+  //! @return TRUE if the texture repeat is enabled.
+  //! Default value is FALSE.
+  Standard_EXPORT   Standard_Boolean IsRepeat()  const;
+  
+  //! @param theToRepeat turn texture repeat mode ON or OFF (clamping).
+  Standard_EXPORT   void SetRepeat (const Standard_Boolean theToRepeat) ;
+  
+  //! @return texture interpolation filter.
+  //! Default value is Graphic3d_TOTF_NEAREST.
+  Standard_EXPORT   Graphic3d_TypeOfTextureFilter Filter()  const;
+  
+  //! @param theFilter texture interpolation filter.
+  Standard_EXPORT   void SetFilter (const Graphic3d_TypeOfTextureFilter theFilter) ;
+  
+  //! @return level of anisontropy texture filter.
+  //! Default value is Graphic3d_LOTA_OFF.
+  Standard_EXPORT   Graphic3d_LevelOfTextureAnisotropy AnisoFilter()  const;
+  
+  //! @param theLevel level of anisontropy texture filter.
+  Standard_EXPORT   void SetAnisoFilter (const Graphic3d_LevelOfTextureAnisotropy theLevel) ;
+  
+  //! @return rotation angle in degrees
+  //! Default value is 0.
+  Standard_EXPORT   Standard_ShortReal Rotation()  const;
+  
+  //! @param theAngleDegrees rotation angle.
+  Standard_EXPORT   void SetRotation (const Standard_ShortReal theAngleDegrees) ;
+  
+  //! @return scale factor
+  //! Default value is no scaling (1.0; 1.0).
+  Standard_EXPORT  const  Graphic3d_Vec2& Scale()  const;
+  
+  //! @param theScale scale factor.
+  Standard_EXPORT   void SetScale (const Graphic3d_Vec2 theScale) ;
+  
+  //! @return translation vector
+  //! Default value is no translation (0.0; 0.0).
+  Standard_EXPORT  const  Graphic3d_Vec2& Translation()  const;
+  
+  //! @param theVec translation vector.
+  Standard_EXPORT   void SetTranslation (const Graphic3d_Vec2 theVec) ;
+  
+  //! @return texture coordinates generation mode.
+  //! Default value is Graphic3d_TOTM_MANUAL.
+  Standard_EXPORT   Graphic3d_TypeOfTextureMode GenMode()  const;
+  
+  //! @return texture coordinates generation plane S.
+  Standard_EXPORT  const  Graphic3d_Vec4& GenPlaneS()  const;
+  
+  //! @return texture coordinates generation plane T.
+  Standard_EXPORT  const  Graphic3d_Vec4& GenPlaneT()  const;
+  
+  //! Setup texture coordinates generation mode.
+  Standard_EXPORT   void SetGenMode (const Graphic3d_TypeOfTextureMode theMode, const Graphic3d_Vec4 thePlaneS, const Graphic3d_Vec4 thePlaneT) ;
 
 
 
@@ -112,16 +110,16 @@ protected:
 private: 
 
 
-Standard_Boolean myToModulate;
-Standard_Boolean myToRepeat;
-Graphic3d_TypeOfTextureFilter myFilter;
-Graphic3d_LevelOfTextureAnisotropy myAnisoLevel;
-Standard_ShortReal myRotAngle;
-Graphic3d_Vec2 myScale;
-Graphic3d_Vec2 myTranslation;
-Graphic3d_TypeOfTextureMode myGenMode;
-Graphic3d_Vec4 myGenPlaneS;
-Graphic3d_Vec4 myGenPlaneT;
+  Standard_Boolean myToModulate;
+  Standard_Boolean myToRepeat;
+  Graphic3d_TypeOfTextureFilter myFilter;
+  Graphic3d_LevelOfTextureAnisotropy myAnisoLevel;
+  Standard_ShortReal myRotAngle;
+  Graphic3d_Vec2 myScale;
+  Graphic3d_Vec2 myTranslation;
+  Graphic3d_TypeOfTextureMode myGenMode;
+  Graphic3d_Vec4 myGenPlaneS;
+  Graphic3d_Vec4 myGenPlaneT;
 
 
 };
@@ -130,7 +128,6 @@ Graphic3d_Vec4 myGenPlaneT;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_TextureParams_HeaderFile

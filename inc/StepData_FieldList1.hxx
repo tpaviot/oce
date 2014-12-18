@@ -6,48 +6,40 @@
 #ifndef _StepData_FieldList1_HeaderFile
 #define _StepData_FieldList1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_Field_HeaderFile
 #include <StepData_Field.hxx>
-#endif
-#ifndef _StepData_FieldList_HeaderFile
 #include <StepData_FieldList.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_OutOfRange;
 class StepData_Field;
 
 
-//! Describes a list of ONE field <br>
-class StepData_FieldList1  : public StepData_FieldList {
+//! Describes a list of ONE field
+class StepData_FieldList1  : public StepData_FieldList
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a FieldList of 1 Field <br>
-  Standard_EXPORT   StepData_FieldList1();
-  //! Returns the count of fields. Here, returns 1 <br>
-  Standard_EXPORT   virtual  Standard_Integer NbFields() const;
-  //! Returns the field n0 <num> between 1 and NbFields (read only) <br>
-  Standard_EXPORT   virtual const StepData_Field& Field(const Standard_Integer num) const;
-  //! Returns the field n0 <num> between 1 and NbFields, in order to <br>
-//!           modify its content <br>
-  Standard_EXPORT   virtual  StepData_Field& CField(const Standard_Integer num) ;
   
-  Standard_EXPORT   virtual  void Destroy() ;
+  //! Creates a FieldList of 1 Field
+  Standard_EXPORT StepData_FieldList1();
+  
+  //! Returns the count of fields. Here, returns 1
+  Standard_EXPORT virtual   Standard_Integer NbFields()  const;
+  
+  //! Returns the field n0 <num> between 1 and NbFields (read only)
+  Standard_EXPORT virtual  const  StepData_Field& Field (const Standard_Integer num)  const;
+  
+  //! Returns the field n0 <num> between 1 and NbFields, in order to
+  //! modify its content
+  Standard_EXPORT virtual   StepData_Field& CField (const Standard_Integer num) ;
+  
+  Standard_EXPORT virtual   void Destroy() ;
 Standard_EXPORT virtual ~StepData_FieldList1() { Destroy(); }
-
 
 
 
@@ -62,7 +54,7 @@ private:
 
 
 
-StepData_Field thefield;
+  StepData_Field thefield;
 
 
 };
@@ -71,7 +63,6 @@ StepData_Field thefield;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_FieldList1_HeaderFile

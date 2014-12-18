@@ -6,58 +6,24 @@
 #ifndef _ChFiDS_ElSpine_HeaderFile
 #define _ChFiDS_ElSpine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GeomAdaptor_Curve_HeaderFile
 #include <GeomAdaptor_Curve.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Handle_ChFiDS_SurfData_HeaderFile
 #include <Handle_ChFiDS_SurfData.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Adaptor3d_Curve_HeaderFile
 #include <Adaptor3d_Curve.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _GeomAbs_CurveType_HeaderFile
 #include <GeomAbs_CurveType.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom_BezierCurve_HeaderFile
 #include <Handle_Geom_BezierCurve.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineCurve_HeaderFile
 #include <Handle_Geom_BSplineCurve.hxx>
-#endif
 class ChFiDS_SurfData;
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
@@ -76,87 +42,88 @@ class Geom_BezierCurve;
 class Geom_BSplineCurve;
 
 
-//! Elementary  Spine for cheminements and approximations. <br>
-class ChFiDS_ElSpine  : public Adaptor3d_Curve {
+//! Elementary  Spine for cheminements and approximations.
+class ChFiDS_ElSpine  : public Adaptor3d_Curve
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ChFiDS_ElSpine();
+  Standard_EXPORT ChFiDS_ElSpine();
   
-  Standard_EXPORT   virtual  Standard_Real FirstParameter() const;
+  Standard_EXPORT virtual   Standard_Real FirstParameter()  const;
   
-  Standard_EXPORT   virtual  Standard_Real LastParameter() const;
+  Standard_EXPORT virtual   Standard_Real LastParameter()  const;
   
-  Standard_EXPORT     GeomAbs_Shape Continuity() const;
+  Standard_EXPORT   GeomAbs_Shape Continuity()  const;
   
-  Standard_EXPORT     Standard_Integer NbIntervals(const GeomAbs_Shape S) ;
+  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S) ;
   
-  Standard_EXPORT     void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) ;
-  //! Returns    a  curve equivalent   of  <me>  between <br>
-//!          parameters <First>  and <Last>. <Tol>  is used  to <br>
-//!          test for 3d points confusion. <br>
-  Standard_EXPORT   virtual  Handle_Adaptor3d_HCurve Trim(const Standard_Real First,const Standard_Real Last,const Standard_Real Tol) const;
+  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S) ;
   
-  Standard_EXPORT   virtual  Standard_Real Resolution(const Standard_Real R3d) const;
+  //! Returns    a  curve equivalent   of  <me>  between
+  //! parameters <First>  and <Last>. <Tol>  is used  to
+  //! test for 3d points confusion.
+  Standard_EXPORT virtual   Handle(Adaptor3d_HCurve) Trim (const Standard_Real First, const Standard_Real Last, const Standard_Real Tol)  const;
   
-  Standard_EXPORT   virtual  GeomAbs_CurveType GetType() const;
+  Standard_EXPORT virtual   Standard_Real Resolution (const Standard_Real R3d)  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsPeriodic() const;
+  Standard_EXPORT virtual   GeomAbs_CurveType GetType()  const;
   
-  Standard_EXPORT     void SetPeriodic(const Standard_Boolean I) ;
+  Standard_EXPORT virtual   Standard_Boolean IsPeriodic()  const;
   
-  Standard_EXPORT   virtual  Standard_Real Period() const;
+  Standard_EXPORT   void SetPeriodic (const Standard_Boolean I) ;
   
-  Standard_EXPORT   virtual  gp_Pnt Value(const Standard_Real AbsC) const;
+  Standard_EXPORT virtual   Standard_Real Period()  const;
   
-  Standard_EXPORT   virtual  void D0(const Standard_Real AbsC,gp_Pnt& P) const;
+  Standard_EXPORT virtual   gp_Pnt Value (const Standard_Real AbsC)  const;
   
-  Standard_EXPORT   virtual  void D1(const Standard_Real AbsC,gp_Pnt& P,gp_Vec& V1) const;
+  Standard_EXPORT virtual   void D0 (const Standard_Real AbsC, gp_Pnt& P)  const;
   
-  Standard_EXPORT   virtual  void D2(const Standard_Real AbsC,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2) const;
+  Standard_EXPORT virtual   void D1 (const Standard_Real AbsC, gp_Pnt& P, gp_Vec& V1)  const;
   
-  Standard_EXPORT   virtual  void D3(const Standard_Real AbsC,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2,gp_Vec& V3) const;
+  Standard_EXPORT virtual   void D2 (const Standard_Real AbsC, gp_Pnt& P, gp_Vec& V1, gp_Vec& V2)  const;
   
-  Standard_EXPORT     void FirstParameter(const Standard_Real P) ;
+  Standard_EXPORT virtual   void D3 (const Standard_Real AbsC, gp_Pnt& P, gp_Vec& V1, gp_Vec& V2, gp_Vec& V3)  const;
   
-  Standard_EXPORT     void LastParameter(const Standard_Real P) ;
+  Standard_EXPORT   void FirstParameter (const Standard_Real P) ;
   
-  Standard_EXPORT     void SetOrigin(const Standard_Real O) ;
+  Standard_EXPORT   void LastParameter (const Standard_Real P) ;
   
-  Standard_EXPORT     void FirstPointAndTgt(gp_Pnt& P,gp_Vec& T) const;
+  Standard_EXPORT   void SetOrigin (const Standard_Real O) ;
   
-  Standard_EXPORT     void LastPointAndTgt(gp_Pnt& P,gp_Vec& T) const;
+  Standard_EXPORT   void FirstPointAndTgt (gp_Pnt& P, gp_Vec& T)  const;
   
-  Standard_EXPORT     void SetFirstPointAndTgt(const gp_Pnt& P,const gp_Vec& T) ;
+  Standard_EXPORT   void LastPointAndTgt (gp_Pnt& P, gp_Vec& T)  const;
   
-  Standard_EXPORT     void SetLastPointAndTgt(const gp_Pnt& P,const gp_Vec& T) ;
+  Standard_EXPORT   void SetFirstPointAndTgt (const gp_Pnt& P, const gp_Vec& T) ;
   
-  Standard_EXPORT     void SetCurve(const Handle(Geom_Curve)& C) ;
+  Standard_EXPORT   void SetLastPointAndTgt (const gp_Pnt& P, const gp_Vec& T) ;
   
-  Standard_EXPORT    const Handle_ChFiDS_SurfData& Previous() const;
+  Standard_EXPORT   void SetCurve (const Handle(Geom_Curve)& C) ;
   
-  Standard_EXPORT     Handle_ChFiDS_SurfData& ChangePrevious() ;
+  Standard_EXPORT  const  Handle(ChFiDS_SurfData)& Previous()  const;
   
-  Standard_EXPORT    const Handle_ChFiDS_SurfData& Next() const;
+  Standard_EXPORT   Handle(ChFiDS_SurfData)& ChangePrevious() ;
   
-  Standard_EXPORT     Handle_ChFiDS_SurfData& ChangeNext() ;
+  Standard_EXPORT  const  Handle(ChFiDS_SurfData)& Next()  const;
   
-  Standard_EXPORT     gp_Lin Line() const;
+  Standard_EXPORT   Handle(ChFiDS_SurfData)& ChangeNext() ;
   
-  Standard_EXPORT     gp_Circ Circle() const;
+  Standard_EXPORT   gp_Lin Line()  const;
   
-  Standard_EXPORT     gp_Elips Ellipse() const;
+  Standard_EXPORT   gp_Circ Circle()  const;
   
-  Standard_EXPORT     gp_Hypr Hyperbola() const;
+  Standard_EXPORT   gp_Elips Ellipse()  const;
   
-  Standard_EXPORT     gp_Parab Parabola() const;
+  Standard_EXPORT   gp_Hypr Hyperbola()  const;
   
-  Standard_EXPORT     Handle_Geom_BezierCurve Bezier() const;
+  Standard_EXPORT   gp_Parab Parabola()  const;
   
-  Standard_EXPORT     Handle_Geom_BSplineCurve BSpline() const;
-
+  Standard_EXPORT   Handle(Geom_BezierCurve) Bezier()  const;
+  
+  Standard_EXPORT   Handle(Geom_BSplineCurve) BSpline()  const;
 
 
 
@@ -171,17 +138,17 @@ private:
 
 
 
-GeomAdaptor_Curve curve;
-gp_Pnt ptfirst;
-gp_Pnt ptlast;
-gp_Vec tgfirst;
-gp_Vec tglast;
-Handle_ChFiDS_SurfData previous;
-Handle_ChFiDS_SurfData next;
-Standard_Real pfirst;
-Standard_Real plast;
-Standard_Real period;
-Standard_Boolean periodic;
+  GeomAdaptor_Curve curve;
+  gp_Pnt ptfirst;
+  gp_Pnt ptlast;
+  gp_Vec tgfirst;
+  gp_Vec tglast;
+  Handle(ChFiDS_SurfData) previous;
+  Handle(ChFiDS_SurfData) next;
+  Standard_Real pfirst;
+  Standard_Real plast;
+  Standard_Real period;
+  Standard_Boolean periodic;
 
 
 };
@@ -190,7 +157,6 @@ Standard_Boolean periodic;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_ElSpine_HeaderFile

@@ -1,12 +1,4 @@
-#ifndef _StepGeom_ToroidalSurface_HeaderFile
 #include <StepGeom_ToroidalSurface.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Geom_ToroidalSurface_HeaderFile
 #include <Geom_ToroidalSurface.hxx>
-#endif
-#ifndef _GeomToStep_MakeToroidalSurface_HeaderFile
 #include <GeomToStep_MakeToroidalSurface.hxx>
-#endif

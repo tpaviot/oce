@@ -6,22 +6,15 @@
 #ifndef _Handle_XmlMDataStd_IntegerListDriver_HeaderFile
 #define _Handle_XmlMDataStd_IntegerListDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_XmlMDF_ADriver_HeaderFile
 #include <Handle_XmlMDF_ADriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(XmlMDF_ADriver);
 class XmlMDataStd_IntegerListDriver;
 
-DEFINE_STANDARD_HANDLE(XmlMDataStd_IntegerListDriver,XmlMDF_ADriver)
+DEFINE_STANDARD_HANDLE(XmlMDataStd_IntegerListDriver, XmlMDF_ADriver)
 
-#endif
+#endif // _Handle_XmlMDataStd_IntegerListDriver_HeaderFile

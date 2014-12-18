@@ -5,18 +5,10 @@
 
 #include <TopTools_ListOfShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopTools_ListIteratorOfListOfShape_HeaderFile
 #include <TopTools_ListIteratorOfListOfShape.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListNodeOfListOfShape_HeaderFile
 #include <TopTools_ListNodeOfListOfShape.hxx>
-#endif
  
 
 #define Item TopoDS_Shape

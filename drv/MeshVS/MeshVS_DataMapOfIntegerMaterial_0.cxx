@@ -5,24 +5,12 @@
 
 #include <MeshVS_DataMapOfIntegerMaterial.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Graphic3d_MaterialAspect_HeaderFile
 #include <Graphic3d_MaterialAspect.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerMaterial_HeaderFile
 #include <MeshVS_DataMapNodeOfDataMapOfIntegerMaterial.hxx>
-#endif
-#ifndef _MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial_HeaderFile
 #include <MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

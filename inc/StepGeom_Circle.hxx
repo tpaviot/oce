@@ -6,44 +6,34 @@
 #ifndef _StepGeom_Circle_HeaderFile
 #define _StepGeom_Circle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_Circle_HeaderFile
 #include <Handle_StepGeom_Circle.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepGeom_Conic_HeaderFile
 #include <StepGeom_Conic.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepGeom_Axis2Placement;
 
 
 
-class StepGeom_Circle : public StepGeom_Conic {
+class StepGeom_Circle : public StepGeom_Conic
+{
 
 public:
 
-  //! Returns a Circle <br>
-  Standard_EXPORT   StepGeom_Circle();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const StepGeom_Axis2Placement& aPosition) ;
+  //! Returns a Circle
+  Standard_EXPORT StepGeom_Circle();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const StepGeom_Axis2Placement& aPosition,const Standard_Real aRadius) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const StepGeom_Axis2Placement& aPosition) ;
   
-  Standard_EXPORT     void SetRadius(const Standard_Real aRadius) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const StepGeom_Axis2Placement& aPosition, const Standard_Real aRadius) ;
   
-  Standard_EXPORT     Standard_Real Radius() const;
+  Standard_EXPORT   void SetRadius (const Standard_Real aRadius) ;
+  
+  Standard_EXPORT   Standard_Real Radius()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-Standard_Real radius;
+  Standard_Real radius;
 
 
 };
@@ -67,7 +57,6 @@ Standard_Real radius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Circle_HeaderFile

@@ -6,25 +6,28 @@
 #ifndef _gce_ErrorType_HeaderFile
 #define _gce_ErrorType_HeaderFile
 
-//! Indicates the outcome of a construction, i.e. <br>
-//! whether it is successful or not, as explained below. <br>
-//! gce_Done: Construction was successful. <br>
-//! gce_ConfusedPoints: Two points are coincident. <br>
-//! gce_NegativeRadius: Radius value is negative. <br>
-//! gce_ColinearPoints: Three points are collinear. <br>
-//! gce_IntersectionError: Intersection cannot be computed. <br>
-//! gce_NullAxis: Axis is undefined. <br>
-//! gce_NullAngle: Angle value is invalid (usually null). <br>
-//! gce_NullRadius: Radius is null. <br>
-//! gce_InvertAxis: Axis value is invalid. <br>
-//! gce_BadAngle: Angle value is invalid. <br>
-//! gce_InvertRadius: Radius value is incorrect <br>
-//! (usually with respect to another radius). <br>
-//! gce_NullFocusLength: Focal distance is null. <br>
-//! gce_NullVector: Vector is null. <br>
-//! gce_BadEquation: Coefficients are <br>
-//! incorrect (applies to the equation of a geometric object). <br>
-enum gce_ErrorType {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Indicates the outcome of a construction, i.e.
+//! whether it is successful or not, as explained below.
+//! gce_Done: Construction was successful.
+//! gce_ConfusedPoints: Two points are coincident.
+//! gce_NegativeRadius: Radius value is negative.
+//! gce_ColinearPoints: Three points are collinear.
+//! gce_IntersectionError: Intersection cannot be computed.
+//! gce_NullAxis: Axis is undefined.
+//! gce_NullAngle: Angle value is invalid (usually null).
+//! gce_NullRadius: Radius is null.
+//! gce_InvertAxis: Axis value is invalid.
+//! gce_BadAngle: Angle value is invalid.
+//! gce_InvertRadius: Radius value is incorrect
+//! (usually with respect to another radius).
+//! gce_NullFocusLength: Focal distance is null.
+//! gce_NullVector: Vector is null.
+//! gce_BadEquation: Coefficients are
+//! incorrect (applies to the equation of a geometric object).
+enum gce_ErrorType
+{
 gce_Done,
 gce_ConfusedPoints,
 gce_NegativeRadius,
@@ -41,8 +44,4 @@ gce_NullVector,
 gce_BadEquation
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _gce_ErrorType_HeaderFile

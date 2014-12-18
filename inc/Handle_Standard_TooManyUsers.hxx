@@ -6,22 +6,15 @@
 #ifndef _Handle_Standard_TooManyUsers_HeaderFile
 #define _Handle_Standard_TooManyUsers_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Standard_LicenseError_HeaderFile
 #include <Handle_Standard_LicenseError.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Standard_LicenseError);
 class Standard_TooManyUsers;
 
-DEFINE_STANDARD_HANDLE(Standard_TooManyUsers,Standard_LicenseError)
+DEFINE_STANDARD_HANDLE(Standard_TooManyUsers, Standard_LicenseError)
 
-#endif
+#endif // _Handle_Standard_TooManyUsers_HeaderFile

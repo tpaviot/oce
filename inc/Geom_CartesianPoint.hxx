@@ -6,70 +6,71 @@
 #ifndef _Geom_CartesianPoint_HeaderFile
 #define _Geom_CartesianPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom_CartesianPoint_HeaderFile
 #include <Handle_Geom_CartesianPoint.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Geom_Point_HeaderFile
 #include <Geom_Point.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_Geometry_HeaderFile
 #include <Handle_Geom_Geometry.hxx>
-#endif
 class gp_Pnt;
 class gp_Trsf;
 class Geom_Geometry;
 
 
-//! Describes a point in 3D space. A <br>
-//! Geom_CartesianPoint is defined by a gp_Pnt point, <br>
-//! with its three Cartesian coordinates X, Y and Z. <br>
-class Geom_CartesianPoint : public Geom_Point {
+//! Describes a point in 3D space. A
+//! Geom_CartesianPoint is defined by a gp_Pnt point,
+//! with its three Cartesian coordinates X, Y and Z.
+class Geom_CartesianPoint : public Geom_Point
+{
 
 public:
 
-  //! Returns a transient copy of P. <br>
-  Standard_EXPORT   Geom_CartesianPoint(const gp_Pnt& P);
-  //! Constructs a point defined by its three Cartesian coordinates X, Y and Z. <br>
-  Standard_EXPORT   Geom_CartesianPoint(const Standard_Real X,const Standard_Real Y,const Standard_Real Z);
-  //! Assigns the coordinates X, Y and Z to this point. <br>
-  Standard_EXPORT     void SetCoord(const Standard_Real X,const Standard_Real Y,const Standard_Real Z) ;
-  //! Set <me> to P.X(), P.Y(), P.Z() coordinates. <br>
-  Standard_EXPORT     void SetPnt(const gp_Pnt& P) ;
-  //! Changes the X coordinate of me. <br>
-  Standard_EXPORT     void SetX(const Standard_Real X) ;
-  //! Changes the Y coordinate of me. <br>
-  Standard_EXPORT     void SetY(const Standard_Real Y) ;
-  //! Changes the Z coordinate of me. <br>
-  Standard_EXPORT     void SetZ(const Standard_Real Z) ;
-  //! Returns the coordinates of <me>. <br>
-  Standard_EXPORT     void Coord(Standard_Real& X,Standard_Real& Y,Standard_Real& Z) const;
   
-//!  Returns a non transient cartesian point with <br>
-//!  the same coordinates as <me>. <br>
-  Standard_EXPORT     gp_Pnt Pnt() const;
-  //! Returns the X coordinate of <me>. <br>
-  Standard_EXPORT     Standard_Real X() const;
-  //! Returns the Y coordinate of <me>. <br>
-  Standard_EXPORT     Standard_Real Y() const;
-  //! Returns the Z coordinate of <me>. <br>
-  Standard_EXPORT     Standard_Real Z() const;
-  //! Applies the transformation T to this point. <br>
-  Standard_EXPORT     void Transform(const gp_Trsf& T) ;
-  //!  Creates a new object which is a copy of this point. <br>
-  Standard_EXPORT     Handle_Geom_Geometry Copy() const;
+  //! Returns a transient copy of P.
+  Standard_EXPORT Geom_CartesianPoint(const gp_Pnt& P);
+  
+  //! Constructs a point defined by its three Cartesian coordinates X, Y and Z.
+  Standard_EXPORT Geom_CartesianPoint(const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
+  
+  //! Assigns the coordinates X, Y and Z to this point.
+  Standard_EXPORT   void SetCoord (const Standard_Real X, const Standard_Real Y, const Standard_Real Z) ;
+  
+  //! Set <me> to P.X(), P.Y(), P.Z() coordinates.
+  Standard_EXPORT   void SetPnt (const gp_Pnt& P) ;
+  
+  //! Changes the X coordinate of me.
+  Standard_EXPORT   void SetX (const Standard_Real X) ;
+  
+  //! Changes the Y coordinate of me.
+  Standard_EXPORT   void SetY (const Standard_Real Y) ;
+  
+  //! Changes the Z coordinate of me.
+  Standard_EXPORT   void SetZ (const Standard_Real Z) ;
+  
+  //! Returns the coordinates of <me>.
+  Standard_EXPORT   void Coord (Standard_Real& X, Standard_Real& Y, Standard_Real& Z)  const;
+  
+
+  //! Returns a non transient cartesian point with
+  //! the same coordinates as <me>.
+  Standard_EXPORT   gp_Pnt Pnt()  const;
+  
+  //! Returns the X coordinate of <me>.
+  Standard_EXPORT   Standard_Real X()  const;
+  
+  //! Returns the Y coordinate of <me>.
+  Standard_EXPORT   Standard_Real Y()  const;
+  
+  //! Returns the Z coordinate of <me>.
+  Standard_EXPORT   Standard_Real Z()  const;
+  
+  //! Applies the transformation T to this point.
+  Standard_EXPORT   void Transform (const gp_Trsf& T) ;
+  
+  //! Creates a new object which is a copy of this point.
+  Standard_EXPORT   Handle(Geom_Geometry) Copy()  const;
 
 
 
@@ -84,7 +85,7 @@ protected:
 private: 
 
 
-gp_Pnt gpPnt;
+  gp_Pnt gpPnt;
 
 
 };
@@ -93,7 +94,6 @@ gp_Pnt gpPnt;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom_CartesianPoint_HeaderFile

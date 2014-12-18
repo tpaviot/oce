@@ -6,22 +6,15 @@
 #ifndef _Handle_IFSelect_TransformStandard_HeaderFile
 #define _Handle_IFSelect_TransformStandard_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_Transformer_HeaderFile
 #include <Handle_IFSelect_Transformer.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_Transformer);
 class IFSelect_TransformStandard;
 
-DEFINE_STANDARD_HANDLE(IFSelect_TransformStandard,IFSelect_Transformer)
+DEFINE_STANDARD_HANDLE(IFSelect_TransformStandard, IFSelect_Transformer)
 
-#endif
+#endif // _Handle_IFSelect_TransformStandard_HeaderFile

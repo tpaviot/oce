@@ -6,49 +6,21 @@
 #ifndef _IFSelect_ParamEditor_HeaderFile
 #define _IFSelect_ParamEditor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_ParamEditor_HeaderFile
 #include <Handle_IFSelect_ParamEditor.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _IFSelect_Editor_HeaderFile
 #include <IFSelect_Editor.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Interface_TypedValue_HeaderFile
 #include <Handle_Interface_TypedValue.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IFSelect_EditForm_HeaderFile
 #include <Handle_IFSelect_EditForm.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <Handle_TColStd_HSequenceOfHAsciiString.hxx>
-#endif
 class Interface_TypedValue;
 class TCollection_AsciiString;
 class IFSelect_EditForm;
@@ -58,43 +30,48 @@ class Interface_InterfaceModel;
 class TColStd_HSequenceOfHAsciiString;
 
 
-//! A ParamEditor gives access for edition to a list of TypedValue <br>
-//!           (i.e. of Static too) <br>
-//!           Its definition is made of the TypedValue to edit themselves, <br>
-//!           and can add some constants, which can then be displayed but <br>
-//!           not changed (for instance, system name, processor version ...) <br>
-//! <br>
-//!           I.E. it gives a way of editing or at least displaying <br>
-//!           parameters as global <br>
-class IFSelect_ParamEditor : public IFSelect_Editor {
+//! A ParamEditor gives access for edition to a list of TypedValue
+//! (i.e. of Static too)
+//! Its definition is made of the TypedValue to edit themselves,
+//! and can add some constants, which can then be displayed but
+//! not changed (for instance, system name, processor version ...)
+//!
+//! I.E. it gives a way of editing or at least displaying
+//! parameters as global
+class IFSelect_ParamEditor : public IFSelect_Editor
+{
 
 public:
 
-  //! Creates a ParamEditor, empty, with a maximum count of params <br>
-//!           (default is 100) <br>
-//!           And a label, by default it will be "Param Editor" <br>
-  Standard_EXPORT   IFSelect_ParamEditor(const Standard_Integer nbmax = 100,const Standard_CString label = "");
-  //! Adds a TypedValue <br>
-//!           By default, its short name equates its complete name, it can <br>
-//!           be explicited <br>
-  Standard_EXPORT     void AddValue(const Handle(Interface_TypedValue)& val,const Standard_CString shortname = "") ;
-  //! Adds a Constant Text, it will be Read Only <br>
-//!           By default, its long name equates its shortname <br>
-  Standard_EXPORT     void AddConstantText(const Standard_CString val,const Standard_CString shortname,const Standard_CString completename = "") ;
   
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  //! Creates a ParamEditor, empty, with a maximum count of params
+  //! (default is 100)
+  //! And a label, by default it will be "Param Editor"
+  Standard_EXPORT IFSelect_ParamEditor(const Standard_Integer nbmax = 100, const Standard_CString label = "");
   
-  Standard_EXPORT     Standard_Boolean Recognize(const Handle(IFSelect_EditForm)& form) const;
+  //! Adds a TypedValue
+  //! By default, its short name equates its complete name, it can
+  //! be explicited
+  Standard_EXPORT   void AddValue (const Handle(Interface_TypedValue)& val, const Standard_CString shortname = "") ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString StringValue(const Handle(IFSelect_EditForm)& form,const Standard_Integer num) const;
+  //! Adds a Constant Text, it will be Read Only
+  //! By default, its long name equates its shortname
+  Standard_EXPORT   void AddConstantText (const Standard_CString val, const Standard_CString shortname, const Standard_CString completename = "") ;
   
-  Standard_EXPORT     Standard_Boolean Load(const Handle(IFSelect_EditForm)& form,const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
   
-  Standard_EXPORT     Standard_Boolean Apply(const Handle(IFSelect_EditForm)& form,const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
-  //! Returns a ParamEditor to work on the Static Parameters of <br>
-//!           which names are listed in <list> <br>
-//!           Null Handle if <list> is null or empty <br>
-  Standard_EXPORT   static  Handle_IFSelect_ParamEditor StaticEditor(const Handle(TColStd_HSequenceOfHAsciiString)& list,const Standard_CString label = "") ;
+  Standard_EXPORT   Standard_Boolean Recognize (const Handle(IFSelect_EditForm)& form)  const;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) StringValue (const Handle(IFSelect_EditForm)& form, const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Boolean Load (const Handle(IFSelect_EditForm)& form, const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
+  
+  Standard_EXPORT   Standard_Boolean Apply (const Handle(IFSelect_EditForm)& form, const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
+  
+  //! Returns a ParamEditor to work on the Static Parameters of
+  //! which names are listed in <list>
+  //! Null Handle if <list> is null or empty
+  Standard_EXPORT static   Handle(IFSelect_ParamEditor) StaticEditor (const Handle(TColStd_HSequenceOfHAsciiString)& list, const Standard_CString label = "") ;
 
 
 
@@ -109,7 +86,7 @@ protected:
 private: 
 
 
-TCollection_AsciiString thelabel;
+  TCollection_AsciiString thelabel;
 
 
 };
@@ -118,7 +95,6 @@ TCollection_AsciiString thelabel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_ParamEditor_HeaderFile

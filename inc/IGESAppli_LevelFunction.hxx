@@ -6,53 +6,46 @@
 #ifndef _IGESAppli_LevelFunction_HeaderFile
 #define _IGESAppli_LevelFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESAppli_LevelFunction_HeaderFile
 #include <Handle_IGESAppli_LevelFunction.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! defines LevelFunction, Type <406> Form <3> <br>
-//!          in package IGESAppli <br>
-//!          Used to transfer the meaning or intended use of a level <br>
-//!          in the sending system <br>
-class IGESAppli_LevelFunction : public IGESData_IGESEntity {
+//! defines LevelFunction, Type <406> Form <3>
+//! in package IGESAppli
+//! Used to transfer the meaning or intended use of a level
+//! in the sending system
+class IGESAppli_LevelFunction : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESAppli_LevelFunction();
-  //! This method is used to set the fields of the class <br>
-//!           LevelFunction <br>
-//!       - nbPropVal    : Number of Properties, always = 2 <br>
-//!       - aCode        : Function Description code <br>
-//!                        default = 0 <br>
-//!       - aFuncDescrip : Function Description <br>
-//!                        default = null string <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbPropVal,const Standard_Integer aCode,const Handle(TCollection_HAsciiString)& aFuncDescrip) ;
-  //! is always 2 <br>
-  Standard_EXPORT     Standard_Integer NbPropertyValues() const;
-  //! returns the function description code . Default = 0 <br>
-  Standard_EXPORT     Standard_Integer FuncDescriptionCode() const;
-  //! returns the function description <br>
-//! Default = null string <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString FuncDescription() const;
+  Standard_EXPORT IGESAppli_LevelFunction();
+  
+  //! This method is used to set the fields of the class
+  //! LevelFunction
+  //! - nbPropVal    : Number of Properties, always = 2
+  //! - aCode        : Function Description code
+  //! default = 0
+  //! - aFuncDescrip : Function Description
+  //! default = null string
+  Standard_EXPORT   void Init (const Standard_Integer nbPropVal, const Standard_Integer aCode, const Handle(TCollection_HAsciiString)& aFuncDescrip) ;
+  
+  //! is always 2
+  Standard_EXPORT   Standard_Integer NbPropertyValues()  const;
+  
+  //! returns the function description code . Default = 0
+  Standard_EXPORT   Standard_Integer FuncDescriptionCode()  const;
+  
+  //! returns the function description
+  //! Default = null string
+  Standard_EXPORT   Handle(TCollection_HAsciiString) FuncDescription()  const;
 
 
 
@@ -67,9 +60,9 @@ protected:
 private: 
 
 
-Standard_Integer theNbPropertyValues;
-Standard_Integer theFuncDescripCode;
-Handle_TCollection_HAsciiString theFuncDescrip;
+  Standard_Integer theNbPropertyValues;
+  Standard_Integer theFuncDescripCode;
+  Handle(TCollection_HAsciiString) theFuncDescrip;
 
 
 };
@@ -78,7 +71,6 @@ Handle_TCollection_HAsciiString theFuncDescrip;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESAppli_LevelFunction_HeaderFile

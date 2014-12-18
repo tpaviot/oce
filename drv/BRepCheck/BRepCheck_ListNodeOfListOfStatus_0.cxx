@@ -5,16 +5,10 @@
 
 #include <BRepCheck_ListNodeOfListOfStatus.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _BRepCheck_ListOfStatus_HeaderFile
 #include <BRepCheck_ListOfStatus.hxx>
-#endif
-#ifndef _BRepCheck_ListIteratorOfListOfStatus_HeaderFile
 #include <BRepCheck_ListIteratorOfListOfStatus.hxx>
-#endif
 
  
 

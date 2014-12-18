@@ -5,18 +5,10 @@
 
 #include <TDataStd_DataMapIteratorOfDataMapOfStringByte.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDataStd_DataMapOfStringByte_HeaderFile
 #include <TDataStd_DataMapOfStringByte.hxx>
-#endif
-#ifndef _TDataStd_DataMapNodeOfDataMapOfStringByte_HeaderFile
 #include <TDataStd_DataMapNodeOfDataMapOfStringByte.hxx>
-#endif
  
 
 #define TheKey TCollection_ExtendedString

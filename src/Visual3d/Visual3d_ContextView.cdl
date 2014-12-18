@@ -36,7 +36,7 @@ uses
 
     SequenceOfAddress    from TColStd,
     Light                from Visual3d,
-    HSetOfLight          from Visual3d,
+    HSequenceOfLight     from Visual3d,
     TypeOfModel          from Visual3d,
     TypeOfVisualization  from Visual3d,
     TypeOfSurfaceDetail  from Visual3d,
@@ -180,14 +180,7 @@ is
 		   AModel	: TypeOfModel from Visual3d )
 		is static;
 	---Level: Public
-	---Purpose: Modifies the shading model when the type of
-	--	    visualization is TOV_SHADING
-	--
-	--	    TypeOfModel	: TOM_NONE
-	--			  TOM_INTERP_COLOR
-	--			  TOM_FACET
-	--			  TOM_VERTEX
-	--
+	---Purpose: Modifies the shading model when the type of visualization is TOV_SHADING
 	---Category: Methods to modify the class definition
 
 	SetVisualization ( me		: in out;
@@ -277,7 +270,7 @@ is
 	----------------------------
 
 	ActivatedLights ( me )
-		returns HSetOfLight from Visual3d
+		returns HSequenceOfLight from Visual3d
 		is static;
 	---Level: Internal
 	---Purpose: Returns the group of active light sources

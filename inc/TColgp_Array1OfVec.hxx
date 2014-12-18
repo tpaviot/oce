@@ -6,25 +6,13 @@
 #ifndef _TColgp_Array1OfVec_HeaderFile
 #define _TColgp_Array1OfVec_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class gp_Vec;
 
 
 
-class TColgp_Array1OfVec  {
+class TColgp_Array1OfVec 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColgp_Array1OfVec(const Standard_Integer Low,const Standard_Integer Up);
+    TColgp_Array1OfVec(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColgp_Array1OfVec(const gp_Vec& Item,const Standard_Integer Low,const Standard_Integer Up);
+    TColgp_Array1OfVec(const gp_Vec& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const gp_Vec& V) ;
+  Standard_EXPORT   void Init (const gp_Vec& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~TColgp_Array1OfVec()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const TColgp_Array1OfVec& Assign(const TColgp_Array1OfVec& Other) ;
-   const TColgp_Array1OfVec& operator =(const TColgp_Array1OfVec& Other) 
+  Standard_EXPORT  const  TColgp_Array1OfVec& Assign (const TColgp_Array1OfVec& Other) ;
+ const  TColgp_Array1OfVec& operator = (const TColgp_Array1OfVec& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const gp_Vec& Value) ;
+      void SetValue (const Standard_Integer Index, const gp_Vec& Value) ;
   
-       const gp_Vec& Value(const Standard_Integer Index) const;
-     const gp_Vec& operator ()(const Standard_Integer Index) const
+     const  gp_Vec& Value (const Standard_Integer Index)  const;
+   const  gp_Vec& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        gp_Vec& ChangeValue(const Standard_Integer Index) ;
-      gp_Vec& operator ()(const Standard_Integer Index) 
+      gp_Vec& ChangeValue (const Standard_Integer Index) ;
+    gp_Vec& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   TColgp_Array1OfVec(const TColgp_Array1OfVec& AnArray);
+  Standard_EXPORT TColgp_Array1OfVec(const TColgp_Array1OfVec& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_Array1OfVec_HeaderFile

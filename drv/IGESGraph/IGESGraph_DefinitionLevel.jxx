@@ -1,9 +1,3 @@
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IGESGraph_DefinitionLevel_HeaderFile
 #include <IGESGraph_DefinitionLevel.hxx>
-#endif

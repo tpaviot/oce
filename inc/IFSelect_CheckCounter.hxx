@@ -6,57 +6,48 @@
 #ifndef _IFSelect_CheckCounter_HeaderFile
 #define _IFSelect_CheckCounter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_CheckCounter_HeaderFile
 #include <Handle_IFSelect_CheckCounter.hxx>
-#endif
 
-#ifndef _Handle_MoniTool_SignText_HeaderFile
 #include <Handle_MoniTool_SignText.hxx>
-#endif
-#ifndef _IFSelect_SignatureList_HeaderFile
 #include <IFSelect_SignatureList.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class MoniTool_SignText;
 class Interface_CheckIterator;
 class Interface_InterfaceModel;
 
 
-//! A CheckCounter allows to see a CheckList (i.e. CheckIterator) <br>
-//!           not per entity, its messages, but per message, the entities <br>
-//!           attached (count and list). Because many messages can be <br>
-//!           repeated if they are due to systematic errors <br>
-class IFSelect_CheckCounter : public IFSelect_SignatureList {
+//! A CheckCounter allows to see a CheckList (i.e. CheckIterator)
+//! not per entity, its messages, but per message, the entities
+//! attached (count and list). Because many messages can be
+//! repeated if they are due to systematic errors
+class IFSelect_CheckCounter : public IFSelect_SignatureList
+{
 
 public:
 
-  //! Creates a CheckCounter, empty ready to work <br>
-  Standard_EXPORT   IFSelect_CheckCounter(const Standard_Boolean withlist = Standard_False);
-  //! Sets a specific signature <br>
-//!           Else, the current SignType (in the model) is used <br>
-  Standard_EXPORT     void SetSignature(const Handle(MoniTool_SignText)& sign) ;
-  //! Returns the Signature; <br>
-  Standard_EXPORT     Handle_MoniTool_SignText Signature() const;
-  //! Analyses a CheckIterator according a Model (which detains the <br>
-//!           entities for which the CheckIterator has messages), i.e. <br>
-//!           counts messages for entities <br>
-//!           If <original> is True, does not consider final messages but <br>
-//!             those before interpretation (such as inserting variables : <br>
-//!             integers, reals, strings) <br>
-//!           If <failsonly> is True, only Fails are considered <br>
-//!           Remark : global messages are recorded with a Null entity <br>
-  Standard_EXPORT     void Analyse(const Interface_CheckIterator& list,const Handle(Interface_InterfaceModel)& model,const Standard_Boolean original = Standard_False,const Standard_Boolean failsonly = Standard_False) ;
+  
+  //! Creates a CheckCounter, empty ready to work
+  Standard_EXPORT IFSelect_CheckCounter(const Standard_Boolean withlist = Standard_False);
+  
+  //! Sets a specific signature
+  //! Else, the current SignType (in the model) is used
+  Standard_EXPORT   void SetSignature (const Handle(MoniTool_SignText)& sign) ;
+  
+  //! Returns the Signature;
+  Standard_EXPORT   Handle(MoniTool_SignText) Signature()  const;
+  
+  //! Analyses a CheckIterator according a Model (which detains the
+  //! entities for which the CheckIterator has messages), i.e.
+  //! counts messages for entities
+  //! If <original> is True, does not consider final messages but
+  //! those before interpretation (such as inserting variables :
+  //! integers, reals, strings)
+  //! If <failsonly> is True, only Fails are considered
+  //! Remark : global messages are recorded with a Null entity
+  Standard_EXPORT   void Analyse (const Interface_CheckIterator& list, const Handle(Interface_InterfaceModel)& model, const Standard_Boolean original = Standard_False, const Standard_Boolean failsonly = Standard_False) ;
 
 
 
@@ -71,7 +62,7 @@ protected:
 private: 
 
 
-Handle_MoniTool_SignText thesign;
+  Handle(MoniTool_SignText) thesign;
 
 
 };
@@ -80,7 +71,6 @@ Handle_MoniTool_SignText thesign;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_CheckCounter_HeaderFile

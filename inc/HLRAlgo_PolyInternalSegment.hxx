@@ -6,35 +6,25 @@
 #ifndef _HLRAlgo_PolyInternalSegment_HeaderFile
 #define _HLRAlgo_PolyInternalSegment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 
 
-
-class HLRAlgo_PolyInternalSegment  {
+//! to Update OutLines.
+class HLRAlgo_PolyInternalSegment 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      HLRAlgo_PolyInternalSegment();
+    HLRAlgo_PolyInternalSegment();
   
-        Standard_Address Indices() const;
-
+      Standard_Address Indices()  const;
 
 
 
@@ -49,7 +39,7 @@ private:
 
 
 
-Standard_Integer myIndices[6];
+  Standard_Integer myIndices[6];
 
 
 };
@@ -59,7 +49,6 @@ Standard_Integer myIndices[6];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_PolyInternalSegment_HeaderFile

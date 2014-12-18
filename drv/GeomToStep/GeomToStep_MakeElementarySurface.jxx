@@ -1,12 +1,4 @@
-#ifndef _StepGeom_ElementarySurface_HeaderFile
 #include <StepGeom_ElementarySurface.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Geom_ElementarySurface_HeaderFile
 #include <Geom_ElementarySurface.hxx>
-#endif
-#ifndef _GeomToStep_MakeElementarySurface_HeaderFile
 #include <GeomToStep_MakeElementarySurface.hxx>
-#endif

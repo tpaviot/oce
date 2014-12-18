@@ -6,28 +6,14 @@
 #ifndef _TDataStd_ListOfExtendedString_HeaderFile
 #define _TDataStd_ListOfExtendedString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TDataStd_ListNodeOfListOfExtendedString_HeaderFile
 #include <Handle_TDataStd_ListNodeOfListOfExtendedString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TDataStd_ListIteratorOfListOfExtendedString;
 class TCollection_ExtendedString;
@@ -35,61 +21,63 @@ class TDataStd_ListNodeOfListOfExtendedString;
 
 
 
-class TDataStd_ListOfExtendedString  {
+class TDataStd_ListOfExtendedString 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDataStd_ListOfExtendedString();
+  Standard_EXPORT TDataStd_ListOfExtendedString();
   
-  Standard_EXPORT     void Assign(const TDataStd_ListOfExtendedString& Other) ;
-    void operator=(const TDataStd_ListOfExtendedString& Other) 
+  Standard_EXPORT TDataStd_ListOfExtendedString(const TDataStd_ListOfExtendedString& Other);
+  
+  Standard_EXPORT   void Assign (const TDataStd_ListOfExtendedString& Other) ;
+  void operator= (const TDataStd_ListOfExtendedString& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDataStd_ListOfExtendedString()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const TCollection_ExtendedString& I) ;
+  Standard_EXPORT   void Prepend (const TCollection_ExtendedString& I) ;
   
-  Standard_EXPORT     void Prepend(const TCollection_ExtendedString& I,TDataStd_ListIteratorOfListOfExtendedString& theIt) ;
+  Standard_EXPORT   void Prepend (const TCollection_ExtendedString& I, TDataStd_ListIteratorOfListOfExtendedString& theIt) ;
   
-  Standard_EXPORT     void Prepend(TDataStd_ListOfExtendedString& Other) ;
+  Standard_EXPORT   void Prepend (TDataStd_ListOfExtendedString& Other) ;
   
-  Standard_EXPORT     void Append(const TCollection_ExtendedString& I) ;
+  Standard_EXPORT   void Append (const TCollection_ExtendedString& I) ;
   
-  Standard_EXPORT     void Append(const TCollection_ExtendedString& I,TDataStd_ListIteratorOfListOfExtendedString& theIt) ;
+  Standard_EXPORT   void Append (const TCollection_ExtendedString& I, TDataStd_ListIteratorOfListOfExtendedString& theIt) ;
   
-  Standard_EXPORT     void Append(TDataStd_ListOfExtendedString& Other) ;
+  Standard_EXPORT   void Append (TDataStd_ListOfExtendedString& Other) ;
   
-  Standard_EXPORT     TCollection_ExtendedString& First() const;
+  Standard_EXPORT   TCollection_ExtendedString& First()  const;
   
-  Standard_EXPORT     TCollection_ExtendedString& Last() const;
+  Standard_EXPORT   TCollection_ExtendedString& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TDataStd_ListIteratorOfListOfExtendedString& It) ;
+  Standard_EXPORT   void Remove (TDataStd_ListIteratorOfListOfExtendedString& It) ;
   
-  Standard_EXPORT     void InsertBefore(const TCollection_ExtendedString& I,TDataStd_ListIteratorOfListOfExtendedString& It) ;
+  Standard_EXPORT   void InsertBefore (const TCollection_ExtendedString& I, TDataStd_ListIteratorOfListOfExtendedString& It) ;
   
-  Standard_EXPORT     void InsertBefore(TDataStd_ListOfExtendedString& Other,TDataStd_ListIteratorOfListOfExtendedString& It) ;
+  Standard_EXPORT   void InsertBefore (TDataStd_ListOfExtendedString& Other, TDataStd_ListIteratorOfListOfExtendedString& It) ;
   
-  Standard_EXPORT     void InsertAfter(const TCollection_ExtendedString& I,TDataStd_ListIteratorOfListOfExtendedString& It) ;
+  Standard_EXPORT   void InsertAfter (const TCollection_ExtendedString& I, TDataStd_ListIteratorOfListOfExtendedString& It) ;
   
-  Standard_EXPORT     void InsertAfter(TDataStd_ListOfExtendedString& Other,TDataStd_ListIteratorOfListOfExtendedString& It) ;
+  Standard_EXPORT   void InsertAfter (TDataStd_ListOfExtendedString& Other, TDataStd_ListIteratorOfListOfExtendedString& It) ;
 
 
 friend class TDataStd_ListIteratorOfListOfExtendedString;
-
 
 
 protected:
@@ -100,12 +88,10 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDataStd_ListOfExtendedString(const TDataStd_ListOfExtendedString& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_ListOfExtendedString_HeaderFile

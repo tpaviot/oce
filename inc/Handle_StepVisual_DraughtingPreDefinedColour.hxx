@@ -6,22 +6,15 @@
 #ifndef _Handle_StepVisual_DraughtingPreDefinedColour_HeaderFile
 #define _Handle_StepVisual_DraughtingPreDefinedColour_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepVisual_PreDefinedColour_HeaderFile
 #include <Handle_StepVisual_PreDefinedColour.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepVisual_PreDefinedColour);
 class StepVisual_DraughtingPreDefinedColour;
 
-DEFINE_STANDARD_HANDLE(StepVisual_DraughtingPreDefinedColour,StepVisual_PreDefinedColour)
+DEFINE_STANDARD_HANDLE(StepVisual_DraughtingPreDefinedColour, StepVisual_PreDefinedColour)
 
-#endif
+#endif // _Handle_StepVisual_DraughtingPreDefinedColour_HeaderFile

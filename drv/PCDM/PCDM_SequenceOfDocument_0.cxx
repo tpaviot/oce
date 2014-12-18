@@ -5,21 +5,13 @@
 
 #include <PCDM_SequenceOfDocument.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _PCDM_Document_HeaderFile
 #include <PCDM_Document.hxx>
-#endif
-#ifndef _PCDM_SequenceNodeOfSequenceOfDocument_HeaderFile
 #include <PCDM_SequenceNodeOfSequenceOfDocument.hxx>
-#endif
  
 
-#define SeqItem Handle_PCDM_Document
+#define SeqItem Handle(PCDM_Document)
 #define SeqItem_hxx <PCDM_Document.hxx>
 #define TCollection_SequenceNode PCDM_SequenceNodeOfSequenceOfDocument
 #define TCollection_SequenceNode_hxx <PCDM_SequenceNodeOfSequenceOfDocument.hxx>

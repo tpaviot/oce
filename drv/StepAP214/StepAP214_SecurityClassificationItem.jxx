@@ -1,3 +1,1 @@
-#ifndef _StepAP214_SecurityClassificationItem_HeaderFile
 #include <StepAP214_SecurityClassificationItem.hxx>
-#endif

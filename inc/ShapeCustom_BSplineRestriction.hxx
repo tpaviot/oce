@@ -6,43 +6,19 @@
 #ifndef _ShapeCustom_BSplineRestriction_HeaderFile
 #define _ShapeCustom_BSplineRestriction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeCustom_BSplineRestriction_HeaderFile
 #include <Handle_ShapeCustom_BSplineRestriction.hxx>
-#endif
 
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_ShapeCustom_RestrictionParameters_HeaderFile
 #include <Handle_ShapeCustom_RestrictionParameters.hxx>
-#endif
-#ifndef _BRepTools_Modification_HeaderFile
 #include <BRepTools_Modification.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
 class ShapeCustom_RestrictionParameters;
 class TopoDS_Face;
 class Geom_Surface;
@@ -54,121 +30,149 @@ class TopoDS_Vertex;
 class gp_Pnt;
 
 
-//! this tool intended for aproximation surfaces, curves and pcurves with <br>
-//! specified degree , max number of segments, tolerance 2d, tolerance 3d. Specified <br>
-//! continuity can be reduced if approximation with specified continuity was not done. <br>
-class ShapeCustom_BSplineRestriction : public BRepTools_Modification {
+//! this tool intended for aproximation surfaces, curves and pcurves with
+//! specified degree , max number of segments, tolerance 2d, tolerance 3d. Specified
+//! continuity can be reduced if approximation with specified continuity was not done.
+class ShapeCustom_BSplineRestriction : public BRepTools_Modification
+{
 
 public:
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   ShapeCustom_BSplineRestriction();
-  //! Initializes with specified parameters of aproximation. <br>
-  Standard_EXPORT   ShapeCustom_BSplineRestriction(const Standard_Boolean anApproxSurfaceFlag,const Standard_Boolean anApproxCurve3dFlag,const Standard_Boolean anApproxCurve2dFlag,const Standard_Real aTol3d,const Standard_Real aTol2d,const GeomAbs_Shape aContinuity3d,const GeomAbs_Shape aContinuity2d,const Standard_Integer aMaxDegree,const Standard_Integer aNbMaxSeg,const Standard_Boolean Degree,const Standard_Boolean Rational);
-  //! Initializes with specified parameters of aproximation. <br>
-  Standard_EXPORT   ShapeCustom_BSplineRestriction(const Standard_Boolean anApproxSurfaceFlag,const Standard_Boolean anApproxCurve3dFlag,const Standard_Boolean anApproxCurve2dFlag,const Standard_Real aTol3d,const Standard_Real aTol2d,const GeomAbs_Shape aContinuity3d,const GeomAbs_Shape aContinuity2d,const Standard_Integer aMaxDegree,const Standard_Integer aNbMaxSeg,const Standard_Boolean Degree,const Standard_Boolean Rational,const Handle(ShapeCustom_RestrictionParameters)& aModes);
-  //! Returns Standard_True if  the  face <F> has   been <br>
-//!          modified.  In this  case, <S> is the new geometric <br>
-//!          support of  the  face, <L> the new  location,<Tol> <br>
-//!          the new   tolerance.<RevWires>  has to be   set to <br>
-//!          Standard_True when  the modification reverses  the <br>
-//!          normal of  the   surface.(the wires  have   to  be <br>
-//!          reversed).  <RevFace>    has   to   be   set    to <br>
-//!          Standard_True if  the  orientation of the modified <br>
-//!          face changes in the shells which contain it. <br>
-//! <br>
-//!          Otherwise, returns Standard_False, and <S>,   <L>, <br>
-//!          <Tol> , <RevWires> ,<RevFace> are not  significant. <br>
-  Standard_EXPORT     Standard_Boolean NewSurface(const TopoDS_Face& F,Handle(Geom_Surface)& S,TopLoc_Location& L,Standard_Real& Tol,Standard_Boolean& RevWires,Standard_Boolean& RevFace) ;
-  //! Returns Standard_True  if  curve from the edge <E> has  been <br>
-//!          modified.  In this case,  <C> is the new geometric <br>
-//!          support of the  edge, <L> the  new location, <Tol> <br>
-//!          the         new    tolerance. <br>
-//!          Otherwise, returns Standard_True if Surface is modified or <br>
-//!          one of pcurves of edge is modified. In this case C is copy of <br>
-//!          geometric support of the edge. <br>
-//!          In other cases returns Standard_False, and  <C>,  <L>,  <Tol> are not <br>
-//!          significant. <br>
-  Standard_EXPORT     Standard_Boolean NewCurve(const TopoDS_Edge& E,Handle(Geom_Curve)& C,TopLoc_Location& L,Standard_Real& Tol) ;
-  //! Returns Standard_True if  the edge  <E> has been modified. <br>
-//!          In this case,if curve on the surface is modified, <C> <br>
-//!          is the new geometric support of  the edge, <L> the <br>
-//!          new location, <Tol> the new tolerance. If curve on the surface <br>
-//!    	    is not modified C is copy curve on surface from the edge <E>. <br>
-//! <br>
-//!          Otherwise, returns  Standard_False, and <C>,  <L>, <br>
-//!          <Tol> are not significant. <br>
-//! <br>
-//!          <NewE> is the new  edge created from  <E>.  <NewF> <br>
-//!          is the new face created from <F>. They may be usefull. <br>
-  Standard_EXPORT     Standard_Boolean NewCurve2d(const TopoDS_Edge& E,const TopoDS_Face& F,const TopoDS_Edge& NewE,const TopoDS_Face& NewF,Handle(Geom2d_Curve)& C,Standard_Real& Tol) ;
-  //! Returns Standard_True if  the surface has been modified. <br>
-//!          if flag IsOf equals Standard_True Offset surfaces are aproximated to Offset <br>
-//!	        if Standard_False to BSpline <br>
-  Standard_EXPORT     Standard_Boolean ConvertSurface(const Handle(Geom_Surface)& aSurface,Handle(Geom_Surface)& S,const Standard_Real UF,const Standard_Real UL,const Standard_Real VF,const Standard_Real VL,const Standard_Boolean IsOf = Standard_True) ;
-  //! Returns Standard_True if  the curve has been modified. <br>
-//!          if flag IsOf equals Standard_True Offset curves are aproximated to Offset <br>
-//!	        if Standard_False to BSpline <br>
-  Standard_EXPORT     Standard_Boolean ConvertCurve(Handle(Geom_Curve)& aCurve,Handle(Geom_Curve)& C,const Standard_Boolean IsConvert,const Standard_Real First,const Standard_Real Last,Standard_Real& TolCur,const Standard_Boolean IsOf = Standard_True) ;
-  //! Returns Standard_True if the pcurve has been modified. <br>
-//!          if flag IsOf equals Standard_True Offset pcurves are aproximated to Offset <br>
-//!	        if Standard_False to BSpline <br>
-  Standard_EXPORT     Standard_Boolean ConvertCurve2d(Handle(Geom2d_Curve)& aCurve,Handle(Geom2d_Curve)& C,const Standard_Boolean IsConvert,const Standard_Real First,const Standard_Real Last,Standard_Real& TolCur,const Standard_Boolean IsOf = Standard_True) ;
-  //! Sets tolerance of aproximation for curve3d and surface <br>
-        void SetTol3d(const Standard_Real Tol3d) ;
-  //! Sets tolerance of aproximation for curve2d <br>
-        void SetTol2d(const Standard_Real Tol2d) ;
-  //! Returns (modifiable) the flag which defines whether the <br>
-//!          surface is aproximated. <br>
-        Standard_Boolean& ModifyApproxSurfaceFlag() ;
-  //! Returns (modifiable) the flag which defines whether the <br>
-//!          curve3d is aproximated. <br>
-        Standard_Boolean& ModifyApproxCurve3dFlag() ;
-  //! Returns (modifiable) the flag which defines whether the curve2d is aproximated. <br>
-        Standard_Boolean& ModifyApproxCurve2dFlag() ;
-  //! Sets continuity3d for aproximation curve3d and surface. <br>
-        void SetContinuity3d(const GeomAbs_Shape Continuity3d) ;
-  //! Sets continuity3d for aproximation curve2d. <br>
-        void SetContinuity2d(const GeomAbs_Shape Continuity2d) ;
-  //! Sets max degree for aproximation. <br>
-        void SetMaxDegree(const Standard_Integer MaxDegree) ;
-  //! Sets max number of segments for aproximation. <br>
-        void SetMaxNbSegments(const Standard_Integer MaxNbSegments) ;
-  //! Sets priority  for aproximation curves and surface. <br>
-//!          If Degree is True approximation is made with degree less <br>
-//!          then specified MaxDegree at the expense of number of spanes. <br>
-//!          If Degree is False approximation is made with number of <br>
-//!          spans less then specified MaxNbSegment at the expense of <br>
-//!          specified MaxDegree. <br>
-        void SetPriority(const Standard_Boolean Degree) ;
-  //! Sets flag for define if rational BSpline or Bezier is <br>
-//!          converted to polynomial. If Rational is True approximation <br>
-//!          for rational BSpline and Bezier is made to polynomial even <br>
-//!          if degree is less then MaxDegree and number of spans is less <br>
-//!          then specified MaxNbSegment. <br>
-        void SetConvRational(const Standard_Boolean Rational) ;
-  //! Returns the container of modes which defines <br>
-//!          what geometry should be converted to BSplines. <br>
-        Handle_ShapeCustom_RestrictionParameters GetRestrictionParameters() const;
-  //! Sets the container of modes which defines <br>
-//!          what geometry should be converted to BSplines. <br>
-        void SetRestrictionParameters(const Handle(ShapeCustom_RestrictionParameters)& aModes) ;
-  //!Returns error for aproximation curve3d. <br>
-        Standard_Real Curve3dError() const;
-  //!Returns error for aproximation curve2d. <br>
-        Standard_Real Curve2dError() const;
-  //!Returns error for aproximation surface. <br>
-        Standard_Real SurfaceError() const;
   
-  Standard_EXPORT     Standard_Boolean NewPoint(const TopoDS_Vertex& V,gp_Pnt& P,Standard_Real& Tol) ;
+  //! Empty constructor.
+  Standard_EXPORT ShapeCustom_BSplineRestriction();
   
-  Standard_EXPORT     Standard_Boolean NewParameter(const TopoDS_Vertex& V,const TopoDS_Edge& E,Standard_Real& P,Standard_Real& Tol) ;
+  //! Initializes with specified parameters of aproximation.
+  Standard_EXPORT ShapeCustom_BSplineRestriction(const Standard_Boolean anApproxSurfaceFlag, const Standard_Boolean anApproxCurve3dFlag, const Standard_Boolean anApproxCurve2dFlag, const Standard_Real aTol3d, const Standard_Real aTol2d, const GeomAbs_Shape aContinuity3d, const GeomAbs_Shape aContinuity2d, const Standard_Integer aMaxDegree, const Standard_Integer aNbMaxSeg, const Standard_Boolean Degree, const Standard_Boolean Rational);
   
-  Standard_EXPORT     GeomAbs_Shape Continuity(const TopoDS_Edge& E,const TopoDS_Face& F1,const TopoDS_Face& F2,const TopoDS_Edge& NewE,const TopoDS_Face& NewF1,const TopoDS_Face& NewF2) ;
-  //!Returns error for aproximation surface, curve3d and curve2d. <br>
-  Standard_EXPORT     Standard_Real MaxErrors(Standard_Real& aCurve3dErr,Standard_Real& aCurve2dErr) const;
-  //!Returns number for aproximation surface, curve3d and curve2d. <br>
-  Standard_EXPORT     Standard_Integer NbOfSpan() const;
+  //! Initializes with specified parameters of aproximation.
+  Standard_EXPORT ShapeCustom_BSplineRestriction(const Standard_Boolean anApproxSurfaceFlag, const Standard_Boolean anApproxCurve3dFlag, const Standard_Boolean anApproxCurve2dFlag, const Standard_Real aTol3d, const Standard_Real aTol2d, const GeomAbs_Shape aContinuity3d, const GeomAbs_Shape aContinuity2d, const Standard_Integer aMaxDegree, const Standard_Integer aNbMaxSeg, const Standard_Boolean Degree, const Standard_Boolean Rational, const Handle(ShapeCustom_RestrictionParameters)& aModes);
+  
+  //! Returns Standard_True if  the  face <F> has   been
+  //! modified.  In this  case, <S> is the new geometric
+  //! support of  the  face, <L> the new  location,<Tol>
+  //! the new   tolerance.<RevWires>  has to be   set to
+  //! Standard_True when  the modification reverses  the
+  //! normal of  the   surface.(the wires  have   to  be
+  //! reversed).  <RevFace>    has   to   be   set    to
+  //! Standard_True if  the  orientation of the modified
+  //! face changes in the shells which contain it.
+  //!
+  //! Otherwise, returns Standard_False, and <S>,   <L>,
+  //! <Tol> , <RevWires> ,<RevFace> are not  significant.
+  Standard_EXPORT   Standard_Boolean NewSurface (const TopoDS_Face& F, Handle(Geom_Surface)& S, TopLoc_Location& L, Standard_Real& Tol, Standard_Boolean& RevWires, Standard_Boolean& RevFace) ;
+  
+  //! Returns Standard_True  if  curve from the edge <E> has  been
+  //! modified.  In this case,  <C> is the new geometric
+  //! support of the  edge, <L> the  new location, <Tol>
+  //! the         new    tolerance.
+  //! Otherwise, returns Standard_True if Surface is modified or
+  //! one of pcurves of edge is modified. In this case C is copy of
+  //! geometric support of the edge.
+  //! In other cases returns Standard_False, and  <C>,  <L>,  <Tol> are not
+  //! significant.
+  Standard_EXPORT   Standard_Boolean NewCurve (const TopoDS_Edge& E, Handle(Geom_Curve)& C, TopLoc_Location& L, Standard_Real& Tol) ;
+  
+  //! Returns Standard_True if  the edge  <E> has been modified.
+  //! In this case,if curve on the surface is modified, <C>
+  //! is the new geometric support of  the edge, <L> the
+  //! new location, <Tol> the new tolerance. If curve on the surface
+  //! is not modified C is copy curve on surface from the edge <E>.
+  //!
+  //! Otherwise, returns  Standard_False, and <C>,  <L>,
+  //! <Tol> are not significant.
+  //!
+  //! <NewE> is the new  edge created from  <E>.  <NewF>
+  //! is the new face created from <F>. They may be usefull.
+  Standard_EXPORT   Standard_Boolean NewCurve2d (const TopoDS_Edge& E, const TopoDS_Face& F, const TopoDS_Edge& NewE, const TopoDS_Face& NewF, Handle(Geom2d_Curve)& C, Standard_Real& Tol) ;
+  
+  //! Returns Standard_True if  the surface has been modified.
+  //! if flag IsOf equals Standard_True Offset surfaces are aproximated to Offset
+  //! if Standard_False to BSpline
+  Standard_EXPORT   Standard_Boolean ConvertSurface (const Handle(Geom_Surface)& aSurface, Handle(Geom_Surface)& S, const Standard_Real UF, const Standard_Real UL, const Standard_Real VF, const Standard_Real VL, const Standard_Boolean IsOf = Standard_True) ;
+  
+  //! Returns Standard_True if  the curve has been modified.
+  //! if flag IsOf equals Standard_True Offset curves are aproximated to Offset
+  //! if Standard_False to BSpline
+  Standard_EXPORT   Standard_Boolean ConvertCurve (Handle(Geom_Curve)& aCurve, Handle(Geom_Curve)& C, const Standard_Boolean IsConvert, const Standard_Real First, const Standard_Real Last, Standard_Real& TolCur, const Standard_Boolean IsOf = Standard_True) ;
+  
+  //! Returns Standard_True if the pcurve has been modified.
+  //! if flag IsOf equals Standard_True Offset pcurves are aproximated to Offset
+  //! if Standard_False to BSpline
+  Standard_EXPORT   Standard_Boolean ConvertCurve2d (Handle(Geom2d_Curve)& aCurve, Handle(Geom2d_Curve)& C, const Standard_Boolean IsConvert, const Standard_Real First, const Standard_Real Last, Standard_Real& TolCur, const Standard_Boolean IsOf = Standard_True) ;
+  
+  //! Sets tolerance of aproximation for curve3d and surface
+      void SetTol3d (const Standard_Real Tol3d) ;
+  
+  //! Sets tolerance of aproximation for curve2d
+      void SetTol2d (const Standard_Real Tol2d) ;
+  
+  //! Returns (modifiable) the flag which defines whether the
+  //! surface is aproximated.
+      Standard_Boolean& ModifyApproxSurfaceFlag() ;
+  
+  //! Returns (modifiable) the flag which defines whether the
+  //! curve3d is aproximated.
+      Standard_Boolean& ModifyApproxCurve3dFlag() ;
+  
+  //! Returns (modifiable) the flag which defines whether the curve2d is aproximated.
+      Standard_Boolean& ModifyApproxCurve2dFlag() ;
+  
+  //! Sets continuity3d for aproximation curve3d and surface.
+      void SetContinuity3d (const GeomAbs_Shape Continuity3d) ;
+  
+  //! Sets continuity3d for aproximation curve2d.
+      void SetContinuity2d (const GeomAbs_Shape Continuity2d) ;
+  
+  //! Sets max degree for aproximation.
+      void SetMaxDegree (const Standard_Integer MaxDegree) ;
+  
+  //! Sets max number of segments for aproximation.
+      void SetMaxNbSegments (const Standard_Integer MaxNbSegments) ;
+  
+  //! Sets priority  for aproximation curves and surface.
+  //! If Degree is True approximation is made with degree less
+  //! then specified MaxDegree at the expense of number of spanes.
+  //! If Degree is False approximation is made with number of
+  //! spans less then specified MaxNbSegment at the expense of
+  //! specified MaxDegree.
+      void SetPriority (const Standard_Boolean Degree) ;
+  
+  //! Sets flag for define if rational BSpline or Bezier is
+  //! converted to polynomial. If Rational is True approximation
+  //! for rational BSpline and Bezier is made to polynomial even
+  //! if degree is less then MaxDegree and number of spans is less
+  //! then specified MaxNbSegment.
+      void SetConvRational (const Standard_Boolean Rational) ;
+  
+  //! Returns the container of modes which defines
+  //! what geometry should be converted to BSplines.
+      Handle(ShapeCustom_RestrictionParameters) GetRestrictionParameters()  const;
+  
+  //! Sets the container of modes which defines
+  //! what geometry should be converted to BSplines.
+      void SetRestrictionParameters (const Handle(ShapeCustom_RestrictionParameters)& aModes) ;
+  
+  //! Returns error for aproximation curve3d.
+      Standard_Real Curve3dError()  const;
+  
+  //! Returns error for aproximation curve2d.
+      Standard_Real Curve2dError()  const;
+  
+  //! Returns error for aproximation surface.
+      Standard_Real SurfaceError()  const;
+  
+  Standard_EXPORT   Standard_Boolean NewPoint (const TopoDS_Vertex& V, gp_Pnt& P, Standard_Real& Tol) ;
+  
+  Standard_EXPORT   Standard_Boolean NewParameter (const TopoDS_Vertex& V, const TopoDS_Edge& E, Standard_Real& P, Standard_Real& Tol) ;
+  
+  Standard_EXPORT   GeomAbs_Shape Continuity (const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2, const TopoDS_Edge& NewE, const TopoDS_Face& NewF1, const TopoDS_Face& NewF2) ;
+  
+  //! Returns error for aproximation surface, curve3d and curve2d.
+  Standard_EXPORT   Standard_Real MaxErrors (Standard_Real& aCurve3dErr, Standard_Real& aCurve2dErr)  const;
+  
+  //! Returns number for aproximation surface, curve3d and curve2d.
+  Standard_EXPORT   Standard_Integer NbOfSpan()  const;
 
 
 
@@ -183,23 +187,23 @@ protected:
 private: 
 
 
-GeomAbs_Shape myContinuity3d;
-GeomAbs_Shape myContinuity2d;
-Standard_Integer myMaxDegree;
-Standard_Integer myNbMaxSeg;
-Standard_Real myTol3d;
-Standard_Real myTol2d;
-Standard_Real mySurfaceError;
-Standard_Real myCurve3dError;
-Standard_Real myCurve2dError;
-Standard_Integer myNbOfSpan;
-Standard_Boolean myApproxSurfaceFlag;
-Standard_Boolean myApproxCurve3dFlag;
-Standard_Boolean myApproxCurve2dFlag;
-Standard_Boolean myDeg;
-Standard_Boolean myConvert;
-Standard_Boolean myRational;
-Handle_ShapeCustom_RestrictionParameters myParameters;
+  GeomAbs_Shape myContinuity3d;
+  GeomAbs_Shape myContinuity2d;
+  Standard_Integer myMaxDegree;
+  Standard_Integer myNbMaxSeg;
+  Standard_Real myTol3d;
+  Standard_Real myTol2d;
+  Standard_Real mySurfaceError;
+  Standard_Real myCurve3dError;
+  Standard_Real myCurve2dError;
+  Standard_Integer myNbOfSpan;
+  Standard_Boolean myApproxSurfaceFlag;
+  Standard_Boolean myApproxCurve3dFlag;
+  Standard_Boolean myApproxCurve2dFlag;
+  Standard_Boolean myDeg;
+  Standard_Boolean myConvert;
+  Standard_Boolean myRational;
+  Handle(ShapeCustom_RestrictionParameters) myParameters;
 
 
 };
@@ -209,7 +213,6 @@ Handle_ShapeCustom_RestrictionParameters myParameters;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeCustom_BSplineRestriction_HeaderFile

@@ -6,67 +6,46 @@
 #ifndef _GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #define _GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _Handle_AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <Handle_AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
 class Standard_OutOfRange;
 class GeomInt_TheMultiLineOfWLApprox;
 class GeomInt_TheMultiLineToolOfWLApprox;
 class AppParCurves_MultiCurve;
 class AppParCurves_HArray1OfConstraintCouple;
 class math_Matrix;
-class math_Vector;
 
 
 
-class GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox  {
+class GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox& SSP,AppParCurves_MultiCurve& SCurv,const Standard_Integer FirstPoint,const Standard_Integer LastPoint,const Handle(AppParCurves_HArray1OfConstraintCouple)& Constraints,const math_Matrix& Bern,const math_Matrix& DerivativeBern,const Standard_Real Tolerance = 1.0e-10);
+  Standard_EXPORT GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox& SSP, AppParCurves_MultiCurve& SCurv, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const Handle(AppParCurves_HArray1OfConstraintCouple)& Constraints, const math_Matrix& Bern, const math_Matrix& DerivativeBern, const Standard_Real Tolerance = 1.0e-10);
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Real Error() const;
+  Standard_EXPORT   Standard_Real Error()  const;
   
-  Standard_EXPORT    const math_Matrix& ConstraintMatrix() const;
+  Standard_EXPORT  const  math_Matrix& ConstraintMatrix()  const;
   
-  Standard_EXPORT    const math_Vector& Duale() const;
+  Standard_EXPORT  const  math_Vector& Duale()  const;
   
-  Standard_EXPORT    const math_Matrix& ConstraintDerivative(const GeomInt_TheMultiLineOfWLApprox& SSP,const math_Vector& Parameters,const Standard_Integer Deg,const math_Matrix& DA) ;
+  Standard_EXPORT  const  math_Matrix& ConstraintDerivative (const GeomInt_TheMultiLineOfWLApprox& SSP, const math_Vector& Parameters, const Standard_Integer Deg, const math_Matrix& DA) ;
   
-  Standard_EXPORT    const math_Matrix& InverseMatrix() const;
-
+  Standard_EXPORT  const  math_Matrix& InverseMatrix()  const;
 
 
 
@@ -74,9 +53,9 @@ public:
 protected:
 
   
-  Standard_EXPORT     Standard_Integer NbConstraints(const GeomInt_TheMultiLineOfWLApprox& SSP,const Standard_Integer FirstPoint,const Standard_Integer LastPoint,const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints) const;
+  Standard_EXPORT   Standard_Integer NbConstraints (const GeomInt_TheMultiLineOfWLApprox& SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints)  const;
   
-  Standard_EXPORT     Standard_Integer NbColumns(const GeomInt_TheMultiLineOfWLApprox& SSP,const Standard_Integer Deg) const;
+  Standard_EXPORT   Standard_Integer NbColumns (const GeomInt_TheMultiLineOfWLApprox& SSP, const Standard_Integer Deg)  const;
 
 
 
@@ -85,19 +64,19 @@ private:
 
 
 
-Standard_Boolean Done;
-Standard_Real Err;
-math_Matrix Cont;
-math_Matrix DeCont;
-math_Vector Secont;
-math_Matrix CTCinv;
-math_Vector Vardua;
-Standard_Integer IncPass;
-Standard_Integer IncTan;
-Standard_Integer IncCurv;
-TColStd_Array1OfInteger IPas;
-TColStd_Array1OfInteger ITan;
-TColStd_Array1OfInteger ICurv;
+  Standard_Boolean Done;
+  Standard_Real Err;
+  math_Matrix Cont;
+  math_Matrix DeCont;
+  math_Vector Secont;
+  math_Matrix CTCinv;
+  math_Vector Vardua;
+  Standard_Integer IncPass;
+  Standard_Integer IncTan;
+  Standard_Integer IncCurv;
+  TColStd_Array1OfInteger IPas;
+  TColStd_Array1OfInteger ITan;
+  TColStd_Array1OfInteger ICurv;
 
 
 };
@@ -106,7 +85,6 @@ TColStd_Array1OfInteger ICurv;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile

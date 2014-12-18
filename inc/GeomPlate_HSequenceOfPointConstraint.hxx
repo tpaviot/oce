@@ -6,31 +6,15 @@
 #ifndef _GeomPlate_HSequenceOfPointConstraint_HeaderFile
 #define _GeomPlate_HSequenceOfPointConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomPlate_HSequenceOfPointConstraint_HeaderFile
 #include <Handle_GeomPlate_HSequenceOfPointConstraint.hxx>
-#endif
 
-#ifndef _GeomPlate_SequenceOfPointConstraint_HeaderFile
 #include <GeomPlate_SequenceOfPointConstraint.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_GeomPlate_PointConstraint_HeaderFile
 #include <Handle_GeomPlate_PointConstraint.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class GeomPlate_PointConstraint;
@@ -38,56 +22,57 @@ class GeomPlate_SequenceOfPointConstraint;
 
 
 
-class GeomPlate_HSequenceOfPointConstraint : public MMgt_TShared {
+class GeomPlate_HSequenceOfPointConstraint : public MMgt_TShared
+{
 
 public:
 
   
-      GeomPlate_HSequenceOfPointConstraint();
+    GeomPlate_HSequenceOfPointConstraint();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(GeomPlate_PointConstraint)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(GeomPlate_PointConstraint)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(GeomPlate_HSequenceOfPointConstraint)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(GeomPlate_HSequenceOfPointConstraint)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(GeomPlate_PointConstraint)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(GeomPlate_PointConstraint)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(GeomPlate_HSequenceOfPointConstraint)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(GeomPlate_HSequenceOfPointConstraint)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(GeomPlate_PointConstraint)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(GeomPlate_PointConstraint)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(GeomPlate_HSequenceOfPointConstraint)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(GeomPlate_HSequenceOfPointConstraint)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(GeomPlate_PointConstraint)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(GeomPlate_PointConstraint)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(GeomPlate_HSequenceOfPointConstraint)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(GeomPlate_HSequenceOfPointConstraint)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_GeomPlate_HSequenceOfPointConstraint Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(GeomPlate_HSequenceOfPointConstraint) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(GeomPlate_PointConstraint)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(GeomPlate_PointConstraint)& anItem) ;
   
-  Standard_EXPORT    const Handle_GeomPlate_PointConstraint& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(GeomPlate_PointConstraint)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_GeomPlate_PointConstraint& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(GeomPlate_PointConstraint)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const GeomPlate_SequenceOfPointConstraint& Sequence() const;
+     const  GeomPlate_SequenceOfPointConstraint& Sequence()  const;
   
-        GeomPlate_SequenceOfPointConstraint& ChangeSequence() ;
+      GeomPlate_SequenceOfPointConstraint& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_GeomPlate_HSequenceOfPointConstraint ShallowCopy() const;
+  Standard_EXPORT   Handle(GeomPlate_HSequenceOfPointConstraint) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-GeomPlate_SequenceOfPointConstraint mySequence;
+  GeomPlate_SequenceOfPointConstraint mySequence;
 
 
 };
 
-#define Item Handle_GeomPlate_PointConstraint
+#define Item Handle(GeomPlate_PointConstraint)
 #define Item_hxx <GeomPlate_PointConstraint.hxx>
 #define TheSequence GeomPlate_SequenceOfPointConstraint
 #define TheSequence_hxx <GeomPlate_SequenceOfPointConstraint.hxx>
@@ -128,11 +113,10 @@ GeomPlate_SequenceOfPointConstraint mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_GeomPlate_HSequenceOfPointConstraint ShallowCopy(const Handle_GeomPlate_HSequenceOfPointConstraint& me) {
+inline Handle(GeomPlate_HSequenceOfPointConstraint) ShallowCopy(const Handle(GeomPlate_HSequenceOfPointConstraint)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _GeomPlate_HSequenceOfPointConstraint_HeaderFile

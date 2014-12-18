@@ -6,43 +6,19 @@
 #ifndef _TopOpeBRepDS_HeaderFile
 #define _TopOpeBRepDS_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Kind_HeaderFile
 #include <TopOpeBRepDS_Kind.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Config_HeaderFile
 #include <TopOpeBRepDS_Config.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TCollection_AsciiString;
 class TopOpeBRepDS_DataMapOfCheckStatus;
 class TopOpeBRepDS_Interference;
@@ -139,47 +115,51 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState;
 class TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState;
 
 
-//! This package provides services used by the TopOpeBRepBuild <br>
-//!          package performing topological operations on the BRep <br>
-//!          data structure. <br>
-class TopOpeBRepDS  {
+//! This package provides services used by the TopOpeBRepBuild
+//! package performing topological operations on the BRep
+//! data structure.
+class TopOpeBRepDS 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! IN OU ON UN <br>
-  Standard_EXPORT   static  TCollection_AsciiString SPrint(const TopAbs_State S) ;
   
-  Standard_EXPORT   static  Standard_OStream& Print(const TopAbs_State S,Standard_OStream& OS) ;
-  //! <K> <br>
-  Standard_EXPORT   static  TCollection_AsciiString SPrint(const TopOpeBRepDS_Kind K) ;
-  //! S1(<K>,<I>)S2 <br>
-  Standard_EXPORT   static  TCollection_AsciiString SPrint(const TopOpeBRepDS_Kind K,const Standard_Integer I,const TCollection_AsciiString& B = "",const TCollection_AsciiString& A = "") ;
+  //! IN OU ON UN
+  Standard_EXPORT static   TCollection_AsciiString SPrint (const TopAbs_State S) ;
   
-  Standard_EXPORT   static  Standard_OStream& Print(const TopOpeBRepDS_Kind K,Standard_OStream& S) ;
+  Standard_EXPORT static   Standard_OStream& Print (const TopAbs_State S, Standard_OStream& OS) ;
   
-  Standard_EXPORT   static  Standard_OStream& Print(const TopOpeBRepDS_Kind K,const Standard_Integer I,Standard_OStream& S,const TCollection_AsciiString& B = "",const TCollection_AsciiString& A = "") ;
+  //! <K>
+  Standard_EXPORT static   TCollection_AsciiString SPrint (const TopOpeBRepDS_Kind K) ;
   
-  Standard_EXPORT   static  TCollection_AsciiString SPrint(const TopAbs_ShapeEnum T) ;
-  //! (<T>,<I>) <br>
-  Standard_EXPORT   static  TCollection_AsciiString SPrint(const TopAbs_ShapeEnum T,const Standard_Integer I) ;
+  //! S1(<K>,<I>)S2
+  Standard_EXPORT static   TCollection_AsciiString SPrint (const TopOpeBRepDS_Kind K, const Standard_Integer I, const TCollection_AsciiString& B = "", const TCollection_AsciiString& A = "") ;
   
-  Standard_EXPORT   static  Standard_OStream& Print(const TopAbs_ShapeEnum T,const Standard_Integer I,Standard_OStream& S) ;
+  Standard_EXPORT static   Standard_OStream& Print (const TopOpeBRepDS_Kind K, Standard_OStream& S) ;
   
-  Standard_EXPORT   static  TCollection_AsciiString SPrint(const TopAbs_Orientation O) ;
+  Standard_EXPORT static   Standard_OStream& Print (const TopOpeBRepDS_Kind K, const Standard_Integer I, Standard_OStream& S, const TCollection_AsciiString& B = "", const TCollection_AsciiString& A = "") ;
   
-  Standard_EXPORT   static  TCollection_AsciiString SPrint(const TopOpeBRepDS_Config C) ;
+  Standard_EXPORT static   TCollection_AsciiString SPrint (const TopAbs_ShapeEnum T) ;
   
-  Standard_EXPORT   static  Standard_OStream& Print(const TopOpeBRepDS_Config C,Standard_OStream& S) ;
+  //! (<T>,<I>)
+  Standard_EXPORT static   TCollection_AsciiString SPrint (const TopAbs_ShapeEnum T, const Standard_Integer I) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsGeometry(const TopOpeBRepDS_Kind K) ;
+  Standard_EXPORT static   Standard_OStream& Print (const TopAbs_ShapeEnum T, const Standard_Integer I, Standard_OStream& S) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsTopology(const TopOpeBRepDS_Kind K) ;
+  Standard_EXPORT static   TCollection_AsciiString SPrint (const TopAbs_Orientation O) ;
   
-  Standard_EXPORT   static  TopAbs_ShapeEnum KindToShape(const TopOpeBRepDS_Kind K) ;
+  Standard_EXPORT static   TCollection_AsciiString SPrint (const TopOpeBRepDS_Config C) ;
   
-  Standard_EXPORT   static  TopOpeBRepDS_Kind ShapeToKind(const TopAbs_ShapeEnum S) ;
-
+  Standard_EXPORT static   Standard_OStream& Print (const TopOpeBRepDS_Config C, Standard_OStream& S) ;
+  
+  Standard_EXPORT static   Standard_Boolean IsGeometry (const TopOpeBRepDS_Kind K) ;
+  
+  Standard_EXPORT static   Standard_Boolean IsTopology (const TopOpeBRepDS_Kind K) ;
+  
+  Standard_EXPORT static   TopAbs_ShapeEnum KindToShape (const TopOpeBRepDS_Kind K) ;
+  
+  Standard_EXPORT static   TopOpeBRepDS_Kind ShapeToKind (const TopAbs_ShapeEnum S) ;
 
 
 
@@ -295,7 +275,6 @@ friend class TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_HeaderFile

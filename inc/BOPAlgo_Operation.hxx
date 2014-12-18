@@ -6,8 +6,11 @@
 #ifndef _BOPAlgo_Operation_HeaderFile
 #define _BOPAlgo_Operation_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum BOPAlgo_Operation {
+
+enum BOPAlgo_Operation
+{
 BOPAlgo_COMMON,
 BOPAlgo_FUSE,
 BOPAlgo_CUT,
@@ -16,8 +19,4 @@ BOPAlgo_SECTION,
 BOPAlgo_UNKNOWN
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BOPAlgo_Operation_HeaderFile

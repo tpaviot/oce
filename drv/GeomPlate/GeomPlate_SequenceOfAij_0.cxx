@@ -5,18 +5,10 @@
 
 #include <GeomPlate_SequenceOfAij.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _GeomPlate_Aij_HeaderFile
 #include <GeomPlate_Aij.hxx>
-#endif
-#ifndef _GeomPlate_SequenceNodeOfSequenceOfAij_HeaderFile
 #include <GeomPlate_SequenceNodeOfSequenceOfAij.hxx>
-#endif
  
 
 #define SeqItem GeomPlate_Aij

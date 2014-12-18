@@ -6,33 +6,27 @@
 #ifndef _IFSelect_SelectIncorrectEntities_HeaderFile
 #define _IFSelect_SelectIncorrectEntities_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SelectIncorrectEntities_HeaderFile
 #include <Handle_IFSelect_SelectIncorrectEntities.hxx>
-#endif
 
-#ifndef _IFSelect_SelectFlag_HeaderFile
 #include <IFSelect_SelectFlag.hxx>
-#endif
 
 
-//! A SelectIncorrectEntities sorts the Entities which have been <br>
-//!           noted as Incorrect in the Graph of the Session <br>
-//!             (flag "Incorrect") <br>
-//!           It can find a result only if ComputeCheck has formerly been <br>
-//!           called on the WorkSession. Else, its result will be empty. <br>
-class IFSelect_SelectIncorrectEntities : public IFSelect_SelectFlag {
+//! A SelectIncorrectEntities sorts the Entities which have been
+//! noted as Incorrect in the Graph of the Session
+//! (flag "Incorrect")
+//! It can find a result only if ComputeCheck has formerly been
+//! called on the WorkSession. Else, its result will be empty.
+class IFSelect_SelectIncorrectEntities : public IFSelect_SelectFlag
+{
 
 public:
 
-  //! Creates a SelectIncorrectEntities <br>
-//!           i.e. a SelectFlag("Incorrect") <br>
-  Standard_EXPORT   IFSelect_SelectIncorrectEntities();
+  
+  //! Creates a SelectIncorrectEntities
+  //! i.e. a SelectFlag("Incorrect")
+  Standard_EXPORT IFSelect_SelectIncorrectEntities();
 
 
 
@@ -55,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SelectIncorrectEntities_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _STEPCAFControl_DataMapNodeOfDataMapOfShapePD_HeaderFile
 #define _STEPCAFControl_DataMapNodeOfDataMapOfShapePD_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD_HeaderFile
 #include <Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapePD.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class StepBasic_ProductDefinition;
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
 
 
 
-class STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public TCollection_MapNode {
+class STEPCAFControl_DataMapNodeOfDataMapOfShapePD : public TCollection_MapNode
+{
 
 public:
 
   
-      STEPCAFControl_DataMapNodeOfDataMapOfShapePD(const TopoDS_Shape& K,const Handle(StepBasic_ProductDefinition)& I,const TCollection_MapNodePtr& n);
+    STEPCAFControl_DataMapNodeOfDataMapOfShapePD(const TopoDS_Shape& K, const Handle(StepBasic_ProductDefinition)& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Handle_StepBasic_ProductDefinition& Value() const;
+      Handle(StepBasic_ProductDefinition)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Handle_StepBasic_ProductDefinition myValue;
+  TopoDS_Shape myKey;
+  Handle(StepBasic_ProductDefinition) myValue;
 
 
 };
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_StepBasic_ProductDefinition
+#define TheItem Handle(StepBasic_ProductDefinition)
 #define TheItem_hxx <StepBasic_ProductDefinition.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>
@@ -99,7 +86,6 @@ Handle_StepBasic_ProductDefinition myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_DataMapNodeOfDataMapOfShapePD_HeaderFile

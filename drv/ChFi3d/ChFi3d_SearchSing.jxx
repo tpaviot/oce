@@ -1,6 +1,2 @@
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
-#ifndef _ChFi3d_SearchSing_HeaderFile
 #include <ChFi3d_SearchSing.hxx>
-#endif

@@ -6,22 +6,15 @@
 #ifndef _Handle_Graphic3d_Texture2Dplane_HeaderFile
 #define _Handle_Graphic3d_Texture2Dplane_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Graphic3d_Texture2D_HeaderFile
 #include <Handle_Graphic3d_Texture2D.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Graphic3d_Texture2D);
 class Graphic3d_Texture2Dplane;
 
-DEFINE_STANDARD_HANDLE(Graphic3d_Texture2Dplane,Graphic3d_Texture2D)
+DEFINE_STANDARD_HANDLE(Graphic3d_Texture2Dplane, Graphic3d_Texture2D)
 
-#endif
+#endif // _Handle_Graphic3d_Texture2Dplane_HeaderFile

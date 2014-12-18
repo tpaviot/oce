@@ -6,98 +6,90 @@
 #ifndef _Standard_AncestorIterator_HeaderFile
 #define _Standard_AncestorIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_Type;
 class Standard_NoMoreObject;
 
 
 
-//! The class <AncestorIterator> is a iterator which provides <br>
-//! information about inheritance. <br>
-//! An AncestorIterator object is used to scan sequentially the <br>
-//! hierarchy of a type object from its direct super-type to the root. <br>
-//! <br>
-//! Warning: <br>
-//!   The near parents are first. <br>
-//! <br>
-class Standard_AncestorIterator  {
+//! The class <AncestorIterator> is a iterator which provides
+//! information about inheritance.
+//! An AncestorIterator object is used to scan sequentially the
+//! hierarchy of a type object from its direct super-type to the root.
+//!
+//! Warning:
+//! The near parents are first.
+class Standard_AncestorIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!   The copy constructor for a AncestorIterator . <br>
-//! <br>
-  Standard_EXPORT   Standard_AncestorIterator(const Standard_AncestorIterator& anOther);
+
+  //! The copy constructor for a AncestorIterator .
+  Standard_EXPORT Standard_AncestorIterator(const Standard_AncestorIterator& anOther);
   
-//!   Creates an iterator on the type <aType>. <br>
-//!   Set the iterator at the beginning of the ancestors; <br>
-//!   this means near parents are first. <br>
-  Standard_EXPORT   Standard_AncestorIterator(const Handle(Standard_Type)& aType);
+
+  //! Creates an iterator on the type <aType>.
+  //! Set the iterator at the beginning of the ancestors;
+  //! this means near parents are first.
+  Standard_EXPORT Standard_AncestorIterator(const Handle(Standard_Type)& aType);
   
-//!   Assigns an  AncestorIterator from another AncestorIterator. <br>
-//! <br>
-  Standard_EXPORT     void Assign(const Standard_AncestorIterator& anOther) ;
-    void operator =(const Standard_AncestorIterator& anOther) 
+
+  //! Assigns an  AncestorIterator from another AncestorIterator.
+  Standard_EXPORT   void Assign (const Standard_AncestorIterator& anOther) ;
+  void operator = (const Standard_AncestorIterator& anOther) 
 {
   Assign(anOther);
 }
   
-//! Returns True if there are other ancestors. <br>
-//! <br>
-//! Example: <br>
-//! <br>
-//! Handle(Standard_Type) type; <br>
-//! Standard_AncestorIterator super(TYPE(Geom_Circle)); <br>
-//! while(super.More()) { type = super.Value(); <br>
-//!      super.Next(); <br>
-//! } <br>
-  Standard_EXPORT     Standard_Boolean More() const;
-  
-//! Moves the position of the iterator to the next super-type. <br>
-//! If the current position corresponds to a root class, it becomes undefined. <br>
-//! <br>
-//! Exceptions: <br>
-//! Standard_NoMoreObject if the position of the iterator is undefined <br>
-//! If there are no more ancestors. <br>
-  Standard_EXPORT     void Next() ;
-  
-//!   Returns an <AncestorIterator> corresponding to the current position <br>
-//!   of the iterator. <br>
-//! If there are no more Ancestors. <br>
-  Standard_EXPORT     Standard_AncestorIterator Iterator() const;
-  
-//! Returns the type corresponding to the current position of <br>
-//! the iterator. <br>
-//! <br>
-//! Example: <br>
-//! <br>
-//! Standard_AncestorIterator super(TYPE(Geom_Circle)); <br>
-//! assert (super.Value() == TYPE(Geom_Conic)); <br>
-//! <br>
-//! Exceptions: <br>
-//! Standard_NoSuchObject if the position of the iterator is undefined. <br>
-//! If there are no more ancestors. <br>
-  Standard_EXPORT     Handle_Standard_Type Value() const;
 
+  //! Returns True if there are other ancestors.
+  //!
+  //! Example:
+  //!
+  //! Handle(Standard_Type) type;
+  //! Standard_AncestorIterator super(TYPE(Geom_Circle));
+  //! while(super.More()) { type = super.Value();
+  //! super.Next();
+  //! }
+  Standard_EXPORT   Standard_Boolean More()  const;
+  
+
+  //! Moves the position of the iterator to the next super-type.
+  //! If the current position corresponds to a root class, it becomes undefined.
+  //!
+  //! Exceptions:
+  //! Standard_NoMoreObject if the position of the iterator is undefined
+  //! If there are no more ancestors.
+  Standard_EXPORT   void Next() ;
+  
+
+  //! Returns an <AncestorIterator> corresponding to the current position
+  //! of the iterator.
+  //! If there are no more Ancestors.
+  Standard_EXPORT   Standard_AncestorIterator Iterator()  const;
+  
+
+  //! Returns the type corresponding to the current position of
+  //! the iterator.
+  //!
+  //! Example:
+  //!
+  //! Standard_AncestorIterator super(TYPE(Geom_Circle));
+  //! assert (super.Value() == TYPE(Geom_Conic));
+  //!
+  //! Exceptions:
+  //! Standard_NoSuchObject if the position of the iterator is undefined.
+  //! If there are no more ancestors.
+  Standard_EXPORT   Handle(Standard_Type) Value()  const;
 
 
 
@@ -112,8 +104,8 @@ private:
 
 
 
-Handle_Standard_Type myType;
-Standard_Integer myNbIter;
+  Handle(Standard_Type) myType;
+  Standard_Integer myNbIter;
 
 
 };
@@ -122,7 +114,6 @@ Standard_Integer myNbIter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Standard_AncestorIterator_HeaderFile

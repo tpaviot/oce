@@ -6,28 +6,14 @@
 #ifndef _MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger_HeaderFile
 #define _MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger_HeaderFile
 #include <Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger.hxx>
-#endif
 
-#ifndef _MAT2d_BiInt_HeaderFile
 #include <MAT2d_BiInt.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MAT2d_BiInt;
 class TColStd_SequenceOfInteger;
 class MAT2d_MapBiIntHasher;
@@ -36,16 +22,17 @@ class MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger;
 
 
 
-class MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger : public TCollection_MapNode {
+class MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger : public TCollection_MapNode
+{
 
 public:
 
   
-      MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger(const MAT2d_BiInt& K,const TColStd_SequenceOfInteger& I,const TCollection_MapNodePtr& n);
+    MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger(const MAT2d_BiInt& K, const TColStd_SequenceOfInteger& I, const TCollection_MapNodePtr& n);
   
-        MAT2d_BiInt& Key() const;
+      MAT2d_BiInt& Key()  const;
   
-        TColStd_SequenceOfInteger& Value() const;
+      TColStd_SequenceOfInteger& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-MAT2d_BiInt myKey;
-TColStd_SequenceOfInteger myValue;
+  MAT2d_BiInt myKey;
+  TColStd_SequenceOfInteger myValue;
 
 
 };
@@ -99,7 +86,6 @@ TColStd_SequenceOfInteger myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger_HeaderFile

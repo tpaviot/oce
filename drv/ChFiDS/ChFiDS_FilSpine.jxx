@@ -1,21 +1,7 @@
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _Law_Function_HeaderFile
 #include <Law_Function.hxx>
-#endif
-#ifndef _Law_Composite_HeaderFile
 #include <Law_Composite.hxx>
-#endif
-#ifndef _ChFiDS_HElSpine_HeaderFile
 #include <ChFiDS_HElSpine.hxx>
-#endif
-#ifndef _ChFiDS_FilSpine_HeaderFile
 #include <ChFiDS_FilSpine.hxx>
-#endif

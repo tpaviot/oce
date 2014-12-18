@@ -6,44 +6,33 @@
 #ifndef _StepBasic_OrganizationAssignment_HeaderFile
 #define _StepBasic_OrganizationAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_OrganizationAssignment_HeaderFile
 #include <Handle_StepBasic_OrganizationAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_Organization_HeaderFile
 #include <Handle_StepBasic_Organization.hxx>
-#endif
-#ifndef _Handle_StepBasic_OrganizationRole_HeaderFile
 #include <Handle_StepBasic_OrganizationRole.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_Organization;
 class StepBasic_OrganizationRole;
 
 
 
-class StepBasic_OrganizationAssignment : public MMgt_TShared {
+class StepBasic_OrganizationAssignment : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_Organization)& aAssignedOrganization,const Handle(StepBasic_OrganizationRole)& aRole) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_Organization)& aAssignedOrganization, const Handle(StepBasic_OrganizationRole)& aRole) ;
   
-  Standard_EXPORT     void SetAssignedOrganization(const Handle(StepBasic_Organization)& aAssignedOrganization) ;
+  Standard_EXPORT   void SetAssignedOrganization (const Handle(StepBasic_Organization)& aAssignedOrganization) ;
   
-  Standard_EXPORT     Handle_StepBasic_Organization AssignedOrganization() const;
+  Standard_EXPORT   Handle(StepBasic_Organization) AssignedOrganization()  const;
   
-  Standard_EXPORT     void SetRole(const Handle(StepBasic_OrganizationRole)& aRole) ;
+  Standard_EXPORT   void SetRole (const Handle(StepBasic_OrganizationRole)& aRole) ;
   
-  Standard_EXPORT     Handle_StepBasic_OrganizationRole Role() const;
+  Standard_EXPORT   Handle(StepBasic_OrganizationRole) Role()  const;
 
 
 
@@ -58,8 +47,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_Organization assignedOrganization;
-Handle_StepBasic_OrganizationRole role;
+  Handle(StepBasic_Organization) assignedOrganization;
+  Handle(StepBasic_OrganizationRole) role;
 
 
 };
@@ -68,7 +57,6 @@ Handle_StepBasic_OrganizationRole role;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_OrganizationAssignment_HeaderFile

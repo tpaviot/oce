@@ -1,6 +1,2 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_VersionedActionRequest_HeaderFile
 #include <StepBasic_VersionedActionRequest.hxx>
-#endif

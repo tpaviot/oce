@@ -6,34 +6,16 @@
 #ifndef _ProjLib_PrjResolve_HeaderFile
 #define _ProjLib_PrjResolve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Adaptor3d_CurvePtr_HeaderFile
 #include <Adaptor3d_CurvePtr.hxx>
-#endif
-#ifndef _Adaptor3d_SurfacePtr_HeaderFile
 #include <Adaptor3d_SurfacePtr.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_DomainError;
 class Standard_ConstructionError;
 class StdFail_NotDone;
@@ -43,25 +25,28 @@ class gp_Pnt2d;
 
 
 
-class ProjLib_PrjResolve  {
+class ProjLib_PrjResolve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ProjLib_PrjResolve(const Adaptor3d_Curve& C,const Adaptor3d_Surface& S,const Standard_Integer Fix);
-  //! Calculates the ort from  C(t)  to  S  with a close point. <br>
-//!          The close point is defined by the parameter values <br>
-//!          U0 and V0. <br>
-//!          The function F(u,v)=distance(S(u,v),C(t)) has an <br>
-//!          extremum when gradient(F)=0. The algorithm searchs <br>
-//!          a zero near the close point. <br>
-  Standard_EXPORT     void Perform(const Standard_Real t,const Standard_Real U,const Standard_Real V,const gp_Pnt2d& Tol,const gp_Pnt2d& Inf,const gp_Pnt2d& Sup,const Standard_Real FTol = -1,const Standard_Boolean StrictInside = Standard_False) ;
-  //! Returns True if the distance is found. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns the point of the extremum distance. <br>
-  Standard_EXPORT     gp_Pnt2d Solution() const;
-
+  Standard_EXPORT ProjLib_PrjResolve(const Adaptor3d_Curve& C, const Adaptor3d_Surface& S, const Standard_Integer Fix);
+  
+  //! Calculates the ort from  C(t)  to  S  with a close point.
+  //! The close point is defined by the parameter values
+  //! U0 and V0.
+  //! The function F(u,v)=distance(S(u,v),C(t)) has an
+  //! extremum when gradient(F)=0. The algorithm searchs
+  //! a zero near the close point.
+  Standard_EXPORT   void Perform (const Standard_Real t, const Standard_Real U, const Standard_Real V, const gp_Pnt2d& Tol, const gp_Pnt2d& Inf, const gp_Pnt2d& Sup, const Standard_Real FTol = -1, const Standard_Boolean StrictInside = Standard_False) ;
+  
+  //! Returns True if the distance is found.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns the point of the extremum distance.
+  Standard_EXPORT   gp_Pnt2d Solution()  const;
 
 
 
@@ -76,11 +61,11 @@ private:
 
 
 
-Adaptor3d_CurvePtr myCurve;
-Adaptor3d_SurfacePtr mySurface;
-Standard_Boolean myDone;
-gp_Pnt2d mySolution;
-Standard_Integer myFix;
+  Adaptor3d_CurvePtr myCurve;
+  Adaptor3d_SurfacePtr mySurface;
+  Standard_Boolean myDone;
+  gp_Pnt2d mySolution;
+  Standard_Integer myFix;
 
 
 };
@@ -89,7 +74,6 @@ Standard_Integer myFix;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_PrjResolve_HeaderFile

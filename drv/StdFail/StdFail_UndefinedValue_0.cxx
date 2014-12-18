@@ -5,9 +5,7 @@
 
 #include <StdFail_UndefinedValue.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 IMPLEMENT_STANDARD_EXCEPTION(StdFail_UndefinedValue)
  

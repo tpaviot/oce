@@ -6,37 +6,17 @@
 #ifndef _Storage_HeaderData_HeaderFile
 #define _Storage_HeaderData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_HeaderData_HeaderFile
 #include <Handle_Storage_HeaderData.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TColStd_SequenceOfAsciiString_HeaderFile
 #include <TColStd_SequenceOfAsciiString.hxx>
-#endif
-#ifndef _TColStd_SequenceOfExtendedString_HeaderFile
 #include <TColStd_SequenceOfExtendedString.hxx>
-#endif
-#ifndef _Storage_Error_HeaderFile
 #include <Storage_Error.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class Storage_Schema;
 class TCollection_AsciiString;
 class TCollection_ExtendedString;
@@ -45,50 +25,66 @@ class TColStd_SequenceOfExtendedString;
 
 
 
-class Storage_HeaderData : public MMgt_TShared {
+class Storage_HeaderData : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Storage_HeaderData();
-  //! return the creation date <br>
-  Standard_EXPORT     TCollection_AsciiString CreationDate() const;
-  //! return the Storage package version <br>
-  Standard_EXPORT     TCollection_AsciiString StorageVersion() const;
-  //! get the version of the schema <br>
-  Standard_EXPORT     TCollection_AsciiString SchemaVersion() const;
-  //! get the schema's name <br>
-  Standard_EXPORT     TCollection_AsciiString SchemaName() const;
-  //! set the version of the application <br>
-  Standard_EXPORT     void SetApplicationVersion(const TCollection_AsciiString& aVersion) ;
-  //! get the version of the application <br>
-  Standard_EXPORT     TCollection_AsciiString ApplicationVersion() const;
-  //! set the name of the application <br>
-  Standard_EXPORT     void SetApplicationName(const TCollection_ExtendedString& aName) ;
-  //! get the name of the application <br>
-  Standard_EXPORT     TCollection_ExtendedString ApplicationName() const;
-  //! set the data type <br>
-  Standard_EXPORT     void SetDataType(const TCollection_ExtendedString& aType) ;
-  //! returns data type <br>
-  Standard_EXPORT     TCollection_ExtendedString DataType() const;
-  //! add <theUserInfo> to the user informations <br>
-  Standard_EXPORT     void AddToUserInfo(const TCollection_AsciiString& theUserInfo) ;
-  //! return the user informations <br>
-  Standard_EXPORT    const TColStd_SequenceOfAsciiString& UserInfo() const;
-  //! add <theUserInfo> to the user informations <br>
-  Standard_EXPORT     void AddToComments(const TCollection_ExtendedString& aComment) ;
-  //! return the user informations <br>
-  Standard_EXPORT    const TColStd_SequenceOfExtendedString& Comments() const;
-  //! the the number of persistent objects <br>
-//!  Return: <br>
-//!   the number of persistent objects readed <br>
-  Standard_EXPORT     Standard_Integer NumberOfObjects() const;
+  Standard_EXPORT Storage_HeaderData();
   
-  Standard_EXPORT     Storage_Error ErrorStatus() const;
+  //! return the creation date
+  Standard_EXPORT   TCollection_AsciiString CreationDate()  const;
   
-  Standard_EXPORT     TCollection_AsciiString ErrorStatusExtension() const;
+  //! return the Storage package version
+  Standard_EXPORT   TCollection_AsciiString StorageVersion()  const;
   
-  Standard_EXPORT     void ClearErrorStatus() ;
+  //! get the version of the schema
+  Standard_EXPORT   TCollection_AsciiString SchemaVersion()  const;
+  
+  //! get the schema's name
+  Standard_EXPORT   TCollection_AsciiString SchemaName()  const;
+  
+  //! set the version of the application
+  Standard_EXPORT   void SetApplicationVersion (const TCollection_AsciiString& aVersion) ;
+  
+  //! get the version of the application
+  Standard_EXPORT   TCollection_AsciiString ApplicationVersion()  const;
+  
+  //! set the name of the application
+  Standard_EXPORT   void SetApplicationName (const TCollection_ExtendedString& aName) ;
+  
+  //! get the name of the application
+  Standard_EXPORT   TCollection_ExtendedString ApplicationName()  const;
+  
+  //! set the data type
+  Standard_EXPORT   void SetDataType (const TCollection_ExtendedString& aType) ;
+  
+  //! returns data type
+  Standard_EXPORT   TCollection_ExtendedString DataType()  const;
+  
+  //! add <theUserInfo> to the user informations
+  Standard_EXPORT   void AddToUserInfo (const TCollection_AsciiString& theUserInfo) ;
+  
+  //! return the user informations
+  Standard_EXPORT  const  TColStd_SequenceOfAsciiString& UserInfo()  const;
+  
+  //! add <theUserInfo> to the user informations
+  Standard_EXPORT   void AddToComments (const TCollection_ExtendedString& aComment) ;
+  
+  //! return the user informations
+  Standard_EXPORT  const  TColStd_SequenceOfExtendedString& Comments()  const;
+  
+  //! the the number of persistent objects
+  //! Return:
+  //! the number of persistent objects readed
+  Standard_EXPORT   Standard_Integer NumberOfObjects()  const;
+  
+  Standard_EXPORT   Storage_Error ErrorStatus()  const;
+  
+  Standard_EXPORT   TCollection_AsciiString ErrorStatusExtension()  const;
+  
+  Standard_EXPORT   void ClearErrorStatus() ;
 
 
 friend class Storage_Schema;
@@ -104,32 +100,32 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void SetNumberOfObjects(const Standard_Integer anObjectNumber) ;
+  Standard_EXPORT   void SetNumberOfObjects (const Standard_Integer anObjectNumber) ;
   
-  Standard_EXPORT     void SetStorageVersion(const TCollection_AsciiString& aVersion) ;
+  Standard_EXPORT   void SetStorageVersion (const TCollection_AsciiString& aVersion) ;
   
-  Standard_EXPORT     void SetCreationDate(const TCollection_AsciiString& aDate) ;
+  Standard_EXPORT   void SetCreationDate (const TCollection_AsciiString& aDate) ;
   
-  Standard_EXPORT     void SetSchemaVersion(const TCollection_AsciiString& aVersion) ;
+  Standard_EXPORT   void SetSchemaVersion (const TCollection_AsciiString& aVersion) ;
   
-  Standard_EXPORT     void SetSchemaName(const TCollection_AsciiString& aName) ;
+  Standard_EXPORT   void SetSchemaName (const TCollection_AsciiString& aName) ;
   
-  Standard_EXPORT     void SetErrorStatus(const Storage_Error anError) ;
+  Standard_EXPORT   void SetErrorStatus (const Storage_Error anError) ;
   
-  Standard_EXPORT     void SetErrorStatusExtension(const TCollection_AsciiString& anErrorExt) ;
+  Standard_EXPORT   void SetErrorStatusExtension (const TCollection_AsciiString& anErrorExt) ;
 
-Standard_Integer myNBObj;
-TCollection_AsciiString myStorageVersion;
-TCollection_AsciiString mySchemaVersion;
-TCollection_AsciiString mySchemaName;
-TCollection_AsciiString myApplicationVersion;
-TCollection_ExtendedString myApplicationName;
-TCollection_ExtendedString myDataType;
-TCollection_AsciiString myDate;
-TColStd_SequenceOfAsciiString myUserInfo;
-TColStd_SequenceOfExtendedString myComments;
-Storage_Error myErrorStatus;
-TCollection_AsciiString myErrorStatusExt;
+  Standard_Integer myNBObj;
+  TCollection_AsciiString myStorageVersion;
+  TCollection_AsciiString mySchemaVersion;
+  TCollection_AsciiString mySchemaName;
+  TCollection_AsciiString myApplicationVersion;
+  TCollection_ExtendedString myApplicationName;
+  TCollection_ExtendedString myDataType;
+  TCollection_AsciiString myDate;
+  TColStd_SequenceOfAsciiString myUserInfo;
+  TColStd_SequenceOfExtendedString myComments;
+  Storage_Error myErrorStatus;
+  TCollection_AsciiString myErrorStatusExt;
 
 
 };
@@ -138,7 +134,6 @@ TCollection_AsciiString myErrorStatusExt;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_HeaderData_HeaderFile

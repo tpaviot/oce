@@ -5,26 +5,16 @@
 
 #include <MAT_DataMapIteratorOfDataMapOfIntegerNode.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _MAT_Node_HeaderFile
 #include <MAT_Node.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MAT_DataMapOfIntegerNode_HeaderFile
 #include <MAT_DataMapOfIntegerNode.hxx>
-#endif
-#ifndef _MAT_DataMapNodeOfDataMapOfIntegerNode_HeaderFile
 #include <MAT_DataMapNodeOfDataMapOfIntegerNode.hxx>
-#endif
  
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_MAT_Node
+#define TheItem Handle(MAT_Node)
 #define TheItem_hxx <MAT_Node.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>

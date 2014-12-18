@@ -6,34 +6,15 @@
 #ifndef _DBC_BaseArray_HeaderFile
 #define _DBC_BaseArray_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _DBC_DBVArray_HeaderFile
 #include <DBC_DBVArray.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_NullObject;
 class Standard_NegativeValue;
 class Standard_DimensionMismatch;
@@ -42,34 +23,39 @@ class Standard_DimensionMismatch;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(DBC_BaseArray);
 
 
-class DBC_BaseArray  {
+class DBC_BaseArray 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an BaseArray of NULL size <br>
-  Standard_EXPORT   DBC_BaseArray();
-  //! Creates  an BaseArray of lower bound 0 and <br>
-//!          upper bound <Size>-1. <br>
-  Standard_EXPORT   DBC_BaseArray(const Standard_Integer Size);
-  //! Creates an array which  is the copy of the given <br>
-//!          argument. <br>
-  Standard_EXPORT   DBC_BaseArray(const DBC_BaseArray& BaseArray);
   
-  Standard_EXPORT   virtual  void Delete() ;
+  //! Creates an BaseArray of NULL size
+  Standard_EXPORT DBC_BaseArray();
+  
+  //! Creates  an BaseArray of lower bound 0 and
+  //! upper bound <Size>-1.
+  Standard_EXPORT DBC_BaseArray(const Standard_Integer Size);
+  
+  //! Creates an array which  is the copy of the given
+  //! argument.
+  Standard_EXPORT DBC_BaseArray(const DBC_BaseArray& BaseArray);
+  
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~DBC_BaseArray(){Delete();}
   
-        Standard_Integer Length() const;
-  //! Returns the upper bound <br>
-        Standard_Integer Upper() const;
-  //! Locks the array <me> in memory and <br>
-//!          returns its virtual address <br>
-  Standard_EXPORT     Standard_Address Lock() const;
-  //! unlocks the array <me> from memory <br>
-  Standard_EXPORT     void Unlock() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& S) const;
+  //! Returns the upper bound
+      Standard_Integer Upper()  const;
+  
+  //! Locks the array <me> in memory and
+  //! returns its virtual address
+  Standard_EXPORT   Standard_Address Lock()  const;
+  
+  //! unlocks the array <me> from memory
+  Standard_EXPORT   void Unlock()  const;
     Standard_Integer _CSFDB_GetDBC_BaseArraymySize() const { return mySize; }
     void _CSFDB_SetDBC_BaseArraymySize(const Standard_Integer p) { mySize = p; }
     DBC_DBVArray _CSFDB_GetDBC_BaseArraymyData() const { return myData; }
@@ -80,8 +66,8 @@ Standard_EXPORT virtual ~DBC_BaseArray(){Delete();}
 protected:
 
 
-Standard_Integer mySize;
-DBC_DBVArray myData;
+  Standard_Integer mySize;
+  DBC_DBVArray myData;
 
 
 private: 
@@ -96,11 +82,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const DBC_BaseArray& me,Standard_OStream& S) {
- me.ShallowDump(S);
-}
 
 
-
-#endif
+#endif // _DBC_BaseArray_HeaderFile

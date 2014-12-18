@@ -6,22 +6,15 @@
 #ifndef _Handle_Expr_NamedUnknown_HeaderFile
 #define _Handle_Expr_NamedUnknown_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Expr_NamedExpression_HeaderFile
 #include <Handle_Expr_NamedExpression.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Expr_NamedExpression);
 class Expr_NamedUnknown;
 
-DEFINE_STANDARD_HANDLE(Expr_NamedUnknown,Expr_NamedExpression)
+DEFINE_STANDARD_HANDLE(Expr_NamedUnknown, Expr_NamedExpression)
 
-#endif
+#endif // _Handle_Expr_NamedUnknown_HeaderFile

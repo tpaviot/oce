@@ -6,25 +6,13 @@
 #ifndef _TDataStd_DataMapIteratorOfDataMapOfStringReal_HeaderFile
 #define _TDataStd_DataMapIteratorOfDataMapOfStringReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TDataStd_DataMapNodeOfDataMapOfStringReal_HeaderFile
 #include <Handle_TDataStd_DataMapNodeOfDataMapOfStringReal.hxx>
-#endif
 class Standard_NoSuchObject;
 class TCollection_ExtendedString;
 class TDataStd_DataMapOfStringReal;
@@ -32,22 +20,22 @@ class TDataStd_DataMapNodeOfDataMapOfStringReal;
 
 
 
-class TDataStd_DataMapIteratorOfDataMapOfStringReal  : public TCollection_BasicMapIterator {
+class TDataStd_DataMapIteratorOfDataMapOfStringReal  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDataStd_DataMapIteratorOfDataMapOfStringReal();
+  Standard_EXPORT TDataStd_DataMapIteratorOfDataMapOfStringReal();
   
-  Standard_EXPORT   TDataStd_DataMapIteratorOfDataMapOfStringReal(const TDataStd_DataMapOfStringReal& aMap);
+  Standard_EXPORT TDataStd_DataMapIteratorOfDataMapOfStringReal(const TDataStd_DataMapOfStringReal& aMap);
   
-  Standard_EXPORT     void Initialize(const TDataStd_DataMapOfStringReal& aMap) ;
+  Standard_EXPORT   void Initialize (const TDataStd_DataMapOfStringReal& aMap) ;
   
-  Standard_EXPORT    const TCollection_ExtendedString& Key() const;
+  Standard_EXPORT  const  TCollection_ExtendedString& Key()  const;
   
-  Standard_EXPORT    const Standard_Real& Value() const;
-
+  Standard_EXPORT  const  Standard_Real& Value()  const;
 
 
 
@@ -70,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_DataMapIteratorOfDataMapOfStringReal_HeaderFile

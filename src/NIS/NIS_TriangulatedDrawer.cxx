@@ -16,9 +16,7 @@
 #include <NIS_TriangulatedDrawer.hxx>
 #include <NIS_InteractiveObject.hxx>
 #include <NIS_Triangulated.hxx>
-#ifdef _DEBUG
 #include <Standard_ProgramError.hxx>
-#endif
 
 #include <OpenGl_GlCore11.hxx>
 
@@ -61,7 +59,7 @@ NIS_TriangulatedDrawer::NIS_TriangulatedDrawer
 //purpose  :
 //=======================================================================
 
-void NIS_TriangulatedDrawer::Assign (const Handle_NIS_Drawer& theOther)
+void NIS_TriangulatedDrawer::Assign (const Handle(NIS_Drawer)& theOther)
 {
   if (theOther.IsNull() == Standard_False) {
     NIS_Drawer::Assign (theOther);
@@ -84,7 +82,7 @@ void NIS_TriangulatedDrawer::Assign (const Handle_NIS_Drawer& theOther)
 //=======================================================================
 
 Standard_Boolean NIS_TriangulatedDrawer::IsEqual
-                                (const Handle_NIS_Drawer& theOther)const
+                                (const Handle(NIS_Drawer)& theOther)const
 {
   static const Standard_Real anEpsilon2 (1e-7);
   Standard_Boolean aResult (Standard_False);
@@ -224,17 +222,14 @@ void NIS_TriangulatedDrawer::AfterDraw (const DrawType      theType,
 //purpose  :
 //=======================================================================
 
-void NIS_TriangulatedDrawer::Draw (const Handle_NIS_InteractiveObject& theObj,
+void NIS_TriangulatedDrawer::Draw (const Handle(NIS_InteractiveObject)& theObj,
                                    const DrawType                   /*theType*/,
                                    const NIS_DrawList&)
 {
   // Assertion for the type of the drawn object
-#ifdef _DEBUG
-  static const Handle(Standard_Type) ThisType = STANDARD_TYPE(NIS_Triangulated);
-  if (theObj->IsKind(ThisType) == Standard_False)
-    Standard_ProgramError::Raise ("NIS_Triangulated::Draw: "
-                                  "irrelevant object type");
-#endif
+  Standard_ProgramError_Raise_if (! theObj->IsKind(STANDARD_TYPE(NIS_Triangulated)),
+                                  "NIS_Triangulated::Draw: irrelevant object type");
+
   const NIS_Triangulated * pObject =
     static_cast <const NIS_Triangulated *> (theObj.operator->());
   glVertexPointer (pObject->myNodeCoord, GL_FLOAT, 0, pObject->Node(0));

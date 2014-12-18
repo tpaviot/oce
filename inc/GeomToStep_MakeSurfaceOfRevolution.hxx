@@ -6,44 +6,32 @@
 #ifndef _GeomToStep_MakeSurfaceOfRevolution_HeaderFile
 #define _GeomToStep_MakeSurfaceOfRevolution_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_SurfaceOfRevolution_HeaderFile
 #include <Handle_StepGeom_SurfaceOfRevolution.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_SurfaceOfRevolution_HeaderFile
 #include <Handle_Geom_SurfaceOfRevolution.hxx>
-#endif
 class StepGeom_SurfaceOfRevolution;
 class StdFail_NotDone;
 class Geom_SurfaceOfRevolution;
 
 
-//! This class implements the mapping between class <br>
-//!          SurfaceOfRevolution from Geom and the class <br>
-//!          SurfaceOfRevolution from StepGeom which describes a <br>
-//!          surface_of_revolution from Prostep <br>
-class GeomToStep_MakeSurfaceOfRevolution  : public GeomToStep_Root {
+//! This class implements the mapping between class
+//! SurfaceOfRevolution from Geom and the class
+//! SurfaceOfRevolution from StepGeom which describes a
+//! surface_of_revolution from Prostep
+class GeomToStep_MakeSurfaceOfRevolution  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeSurfaceOfRevolution(const Handle(Geom_SurfaceOfRevolution)& RevSurf);
+  Standard_EXPORT GeomToStep_MakeSurfaceOfRevolution(const Handle(Geom_SurfaceOfRevolution)& RevSurf);
   
-  Standard_EXPORT    const Handle_StepGeom_SurfaceOfRevolution& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_SurfaceOfRevolution)& Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Handle_StepGeom_SurfaceOfRevolution theSurfaceOfRevolution;
+  Handle(StepGeom_SurfaceOfRevolution) theSurfaceOfRevolution;
 
 
 };
@@ -67,7 +55,6 @@ Handle_StepGeom_SurfaceOfRevolution theSurfaceOfRevolution;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeSurfaceOfRevolution_HeaderFile

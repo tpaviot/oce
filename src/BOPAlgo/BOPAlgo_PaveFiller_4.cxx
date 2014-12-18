@@ -29,7 +29,7 @@
 #include <BOPCol_NCVector.hxx>
 #include <BOPCol_TBB.hxx>
 //
-#include <BOPInt_Context.hxx>
+#include <IntTools_Context.hxx>
 //
 #include <BOPDS_Iterator.hxx>
 #include <BOPDS_VectorOfInterfVF.hxx>
@@ -42,14 +42,17 @@
 //class    : BOPAlgo_VertexFace
 //purpose  : 
 //=======================================================================
-class BOPAlgo_VertexFace {
+class BOPAlgo_VertexFace : public BOPAlgo_Algo {
  public:
-  BOPAlgo_VertexFace()
-    : myIV(-1), myIF(-1), myIVx(-1), 
+  DEFINE_STANDARD_ALLOC
+
+  BOPAlgo_VertexFace() : 
+    BOPAlgo_Algo(),
+    myIV(-1), myIF(-1), myIVx(-1), 
     myFlag(-1), myT1(-1.),  myT2(-1.) {
   }
   //
-  ~BOPAlgo_VertexFace(){
+  virtual ~BOPAlgo_VertexFace(){
   }
   //
   void SetIndices(const Standard_Integer nV,
@@ -94,15 +97,16 @@ class BOPAlgo_VertexFace {
     aT2=myT2;
   }
   //
-  void SetContext(const Handle(BOPInt_Context)& aContext) {
+  void SetContext(const Handle(IntTools_Context)& aContext) {
     myContext=aContext;
   }
   //
-  const Handle(BOPInt_Context)& Context()const {
+  const Handle(IntTools_Context)& Context()const {
     return myContext;
   }
   //
-  void Perform() {
+  virtual void Perform() {
+    BOPAlgo_Algo::UserBreak();
     myFlag=myContext->ComputeVF(myV, myF, myT1, myT2);
   }
   //
@@ -115,7 +119,7 @@ class BOPAlgo_VertexFace {
   Standard_Real myT2;
   TopoDS_Vertex myV;
   TopoDS_Face myF;
-  Handle(BOPInt_Context) myContext;
+  Handle(IntTools_Context) myContext;
 };
 //=======================================================================
 typedef BOPCol_NCVector<BOPAlgo_VertexFace>
@@ -124,13 +128,13 @@ typedef BOPCol_NCVector<BOPAlgo_VertexFace>
 typedef BOPCol_TBBContextFunctor 
   <BOPAlgo_VertexFace,
   BOPAlgo_VectorOfVertexFace,
-  Handle_BOPInt_Context, 
-  BOPInt_Context> BOPAlgo_VertexFaceFunctor;
+  Handle(IntTools_Context), 
+  IntTools_Context> BOPAlgo_VertexFaceFunctor;
 //
 typedef BOPCol_TBBContextCnt 
   <BOPAlgo_VertexFaceFunctor,
   BOPAlgo_VectorOfVertexFace,
-  Handle_BOPInt_Context> BOPAlgo_VertexFaceCnt;
+  Handle(IntTools_Context)> BOPAlgo_VertexFaceCnt;
 //
 //=======================================================================
 // function: PerformVF
@@ -189,6 +193,7 @@ void BOPAlgo_PaveFiller::PerformVF()
       aVertexFace.SetIndices(nV, nF, nVx);
       aVertexFace.SetVertex(aV);
       aVertexFace.SetFace(aF);
+      aVertexFace.SetProgressIndicator(myProgressIndicator);
     }//for (; myIterator->More(); myIterator->Next()) {
     //
     aNbVF=aVVF.Extent();

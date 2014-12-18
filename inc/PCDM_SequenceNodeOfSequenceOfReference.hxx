@@ -6,38 +6,27 @@
 #ifndef _PCDM_SequenceNodeOfSequenceOfReference_HeaderFile
 #define _PCDM_SequenceNodeOfSequenceOfReference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_PCDM_SequenceNodeOfSequenceOfReference_HeaderFile
 #include <Handle_PCDM_SequenceNodeOfSequenceOfReference.hxx>
-#endif
 
-#ifndef _PCDM_Reference_HeaderFile
 #include <PCDM_Reference.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class PCDM_Reference;
 class PCDM_SequenceOfReference;
 
 
 
-class PCDM_SequenceNodeOfSequenceOfReference : public TCollection_SeqNode {
+class PCDM_SequenceNodeOfSequenceOfReference : public TCollection_SeqNode
+{
 
 public:
 
   
-      PCDM_SequenceNodeOfSequenceOfReference(const PCDM_Reference& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    PCDM_SequenceNodeOfSequenceOfReference(const PCDM_Reference& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        PCDM_Reference& Value() const;
+      PCDM_Reference& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-PCDM_Reference myValue;
+  PCDM_Reference myValue;
 
 
 };
@@ -78,7 +67,6 @@ PCDM_Reference myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PCDM_SequenceNodeOfSequenceOfReference_HeaderFile

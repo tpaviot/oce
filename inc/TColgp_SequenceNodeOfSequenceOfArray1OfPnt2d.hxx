@@ -6,38 +6,27 @@
 #ifndef _TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d_HeaderFile
 #define _TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d_HeaderFile
 #include <Handle_TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
-#endif
 
-#ifndef _Handle_TColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TColgp_HArray1OfPnt2d;
 class TColgp_SequenceOfArray1OfPnt2d;
 
 
 
-class TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d : public TCollection_SeqNode {
+class TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d(const Handle(TColgp_HArray1OfPnt2d)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d(const Handle(TColgp_HArray1OfPnt2d)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_TColgp_HArray1OfPnt2d& Value() const;
+      Handle(TColgp_HArray1OfPnt2d)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_TColgp_HArray1OfPnt2d myValue;
+  Handle(TColgp_HArray1OfPnt2d) myValue;
 
 
 };
 
-#define SeqItem Handle_TColgp_HArray1OfPnt2d
+#define SeqItem Handle(TColgp_HArray1OfPnt2d)
 #define SeqItem_hxx <TColgp_HArray1OfPnt2d.hxx>
 #define TCollection_SequenceNode TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d
 #define TCollection_SequenceNode_hxx <TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
@@ -78,7 +67,6 @@ Handle_TColgp_HArray1OfPnt2d myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d_HeaderFile

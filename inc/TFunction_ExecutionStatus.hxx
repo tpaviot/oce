@@ -6,8 +6,11 @@
 #ifndef _TFunction_ExecutionStatus_HeaderFile
 #define _TFunction_ExecutionStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TFunction_ExecutionStatus {
+
+enum TFunction_ExecutionStatus
+{
 TFunction_ES_WrongDefinition,
 TFunction_ES_NotExecuted,
 TFunction_ES_Executing,
@@ -15,8 +18,4 @@ TFunction_ES_Succeeded,
 TFunction_ES_Failed
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TFunction_ExecutionStatus_HeaderFile

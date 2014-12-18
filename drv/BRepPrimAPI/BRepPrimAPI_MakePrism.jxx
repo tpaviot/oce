@@ -1,18 +1,6 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _BRepSweep_Prism_HeaderFile
 #include <BRepSweep_Prism.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _BRepPrimAPI_MakePrism_HeaderFile
 #include <BRepPrimAPI_MakePrism.hxx>
-#endif

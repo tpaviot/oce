@@ -6,22 +6,15 @@
 #ifndef _Handle_StepRepr_MeasureRepresentationItem_HeaderFile
 #define _Handle_StepRepr_MeasureRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_RepresentationItem);
 class StepRepr_MeasureRepresentationItem;
 
-DEFINE_STANDARD_HANDLE(StepRepr_MeasureRepresentationItem,StepRepr_RepresentationItem)
+DEFINE_STANDARD_HANDLE(StepRepr_MeasureRepresentationItem, StepRepr_RepresentationItem)
 
-#endif
+#endif // _Handle_StepRepr_MeasureRepresentationItem_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _LocOpe_Generator_HeaderFile
 #define _LocOpe_Generator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Handle_LocOpe_GeneratedShape_HeaderFile
 #include <Handle_LocOpe_GeneratedShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
 class LocOpe_GeneratedShape;
 class StdFail_NotDone;
 class Standard_NullObject;
@@ -38,31 +24,37 @@ class TopoDS_Face;
 
 
 
-class LocOpe_Generator  {
+class LocOpe_Generator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor. <br>
-      LocOpe_Generator();
-  //! Creates the algorithm on the shape <S>. <br>
-      LocOpe_Generator(const TopoDS_Shape& S);
-  //! Initializes the algorithm on the shape <S>. <br>
-        void Init(const TopoDS_Shape& S) ;
   
-  Standard_EXPORT     void Perform(const Handle(LocOpe_GeneratedShape)& G) ;
+  //! Empty constructor.
+    LocOpe_Generator();
   
-        Standard_Boolean IsDone() const;
-  //! Returns the new shape <br>
-       const TopoDS_Shape& ResultingShape() const;
-  //! Returns the initial shape <br>
-       const TopoDS_Shape& Shape() const;
-  //! Returns  the  descendant  face  of <F>.    <F> may <br>
-//!          belong to the original shape or to the "generated" <br>
-//!          shape.  The returned    face may be   a null shape <br>
-//!          (when <F> disappears). <br>
-  Standard_EXPORT    const TopTools_ListOfShape& DescendantFace(const TopoDS_Face& F) ;
-
+  //! Creates the algorithm on the shape <S>.
+    LocOpe_Generator(const TopoDS_Shape& S);
+  
+  //! Initializes the algorithm on the shape <S>.
+      void Init (const TopoDS_Shape& S) ;
+  
+  Standard_EXPORT   void Perform (const Handle(LocOpe_GeneratedShape)& G) ;
+  
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns the new shape
+     const  TopoDS_Shape& ResultingShape()  const;
+  
+  //! Returns the initial shape
+     const  TopoDS_Shape& Shape()  const;
+  
+  //! Returns  the  descendant  face  of <F>.    <F> may
+  //! belong to the original shape or to the "generated"
+  //! shape.  The returned    face may be   a null shape
+  //! (when <F> disappears).
+  Standard_EXPORT  const  TopTools_ListOfShape& DescendantFace (const TopoDS_Face& F) ;
 
 
 
@@ -77,11 +69,11 @@ private:
 
 
 
-TopoDS_Shape myShape;
-Handle_LocOpe_GeneratedShape myGen;
-Standard_Boolean myDone;
-TopoDS_Shape myRes;
-TopTools_DataMapOfShapeListOfShape myModShapes;
+  TopoDS_Shape myShape;
+  Handle(LocOpe_GeneratedShape) myGen;
+  Standard_Boolean myDone;
+  TopoDS_Shape myRes;
+  TopTools_DataMapOfShapeListOfShape myModShapes;
 
 
 };
@@ -91,7 +83,6 @@ TopTools_DataMapOfShapeListOfShape myModShapes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_Generator_HeaderFile

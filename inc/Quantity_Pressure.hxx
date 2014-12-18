@@ -6,13 +6,11 @@
 #ifndef _Quantity_Pressure_HeaderFile
 #define _Quantity_Pressure_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_Pressure;
 
 
 #define Quantity_Pressure_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_Pressure_HeaderFile

@@ -6,54 +6,43 @@
 #ifndef _StepRepr_ItemDefinedTransformation_HeaderFile
 #define _StepRepr_ItemDefinedTransformation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_ItemDefinedTransformation_HeaderFile
 #include <Handle_StepRepr_ItemDefinedTransformation.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepRepr_RepresentationItem;
 
 
-//! Added from StepRepr Rev2 to Rev4 <br>
-class StepRepr_ItemDefinedTransformation : public MMgt_TShared {
+//! Added from StepRepr Rev2 to Rev4
+class StepRepr_ItemDefinedTransformation : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   StepRepr_ItemDefinedTransformation();
+  Standard_EXPORT StepRepr_ItemDefinedTransformation();
   
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Handle(StepRepr_RepresentationItem)& aTransformItem1,const Handle(StepRepr_RepresentationItem)& aTransformItem2) ;
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Handle(StepRepr_RepresentationItem)& aTransformItem1, const Handle(StepRepr_RepresentationItem)& aTransformItem2) ;
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
   
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& aDescription) ;
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& aDescription) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
   
-  Standard_EXPORT     void SetTransformItem1(const Handle(StepRepr_RepresentationItem)& aItem) ;
+  Standard_EXPORT   void SetTransformItem1 (const Handle(StepRepr_RepresentationItem)& aItem) ;
   
-  Standard_EXPORT     Handle_StepRepr_RepresentationItem TransformItem1() const;
+  Standard_EXPORT   Handle(StepRepr_RepresentationItem) TransformItem1()  const;
   
-  Standard_EXPORT     void SetTransformItem2(const Handle(StepRepr_RepresentationItem)& aItem) ;
+  Standard_EXPORT   void SetTransformItem2 (const Handle(StepRepr_RepresentationItem)& aItem) ;
   
-  Standard_EXPORT     Handle_StepRepr_RepresentationItem TransformItem2() const;
+  Standard_EXPORT   Handle(StepRepr_RepresentationItem) TransformItem2()  const;
 
 
 
@@ -68,10 +57,10 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theName;
-Handle_TCollection_HAsciiString theDescription;
-Handle_StepRepr_RepresentationItem theTransformItem1;
-Handle_StepRepr_RepresentationItem theTransformItem2;
+  Handle(TCollection_HAsciiString) theName;
+  Handle(TCollection_HAsciiString) theDescription;
+  Handle(StepRepr_RepresentationItem) theTransformItem1;
+  Handle(StepRepr_RepresentationItem) theTransformItem2;
 
 
 };
@@ -80,7 +69,6 @@ Handle_StepRepr_RepresentationItem theTransformItem2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_ItemDefinedTransformation_HeaderFile

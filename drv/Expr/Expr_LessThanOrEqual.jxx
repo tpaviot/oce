@@ -1,15 +1,5 @@
-#ifndef _Standard_NumericError_HeaderFile
 #include <Standard_NumericError.hxx>
-#endif
-#ifndef _Expr_GeneralExpression_HeaderFile
 #include <Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Expr_GeneralRelation_HeaderFile
 #include <Expr_GeneralRelation.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Expr_LessThanOrEqual_HeaderFile
 #include <Expr_LessThanOrEqual.hxx>
-#endif

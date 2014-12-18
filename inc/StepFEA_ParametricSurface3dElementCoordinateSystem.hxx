@@ -6,48 +6,41 @@
 #ifndef _StepFEA_ParametricSurface3dElementCoordinateSystem_HeaderFile
 #define _StepFEA_ParametricSurface3dElementCoordinateSystem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_ParametricSurface3dElementCoordinateSystem_HeaderFile
 #include <Handle_StepFEA_ParametricSurface3dElementCoordinateSystem.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepFEA_FeaRepresentationItem_HeaderFile
 #include <StepFEA_FeaRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity ParametricSurface3dElementCoordinateSystem <br>
-class StepFEA_ParametricSurface3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
+//! Representation of STEP entity ParametricSurface3dElementCoordinateSystem
+class StepFEA_ParametricSurface3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_ParametricSurface3dElementCoordinateSystem();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentationItem_Name,const Standard_Integer aAxis,const Standard_Real aAngle) ;
-  //! Returns field Axis <br>
-  Standard_EXPORT     Standard_Integer Axis() const;
-  //! Set field Axis <br>
-  Standard_EXPORT     void SetAxis(const Standard_Integer Axis) ;
-  //! Returns field Angle <br>
-  Standard_EXPORT     Standard_Real Angle() const;
-  //! Set field Angle <br>
-  Standard_EXPORT     void SetAngle(const Standard_Real Angle) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_ParametricSurface3dElementCoordinateSystem();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentationItem_Name, const Standard_Integer aAxis, const Standard_Real aAngle) ;
+  
+  //! Returns field Axis
+  Standard_EXPORT   Standard_Integer Axis()  const;
+  
+  //! Set field Axis
+  Standard_EXPORT   void SetAxis (const Standard_Integer Axis) ;
+  
+  //! Returns field Angle
+  Standard_EXPORT   Standard_Real Angle()  const;
+  
+  //! Set field Angle
+  Standard_EXPORT   void SetAngle (const Standard_Real Angle) ;
 
 
 
@@ -62,8 +55,8 @@ protected:
 private: 
 
 
-Standard_Integer theAxis;
-Standard_Real theAngle;
+  Standard_Integer theAxis;
+  Standard_Real theAngle;
 
 
 };
@@ -72,7 +65,6 @@ Standard_Real theAngle;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_ParametricSurface3dElementCoordinateSystem_HeaderFile

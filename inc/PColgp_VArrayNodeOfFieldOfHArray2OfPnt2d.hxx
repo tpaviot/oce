@@ -6,45 +6,32 @@
 #ifndef _PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d_HeaderFile
 #define _PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _PStandard_ArrayNode_HeaderFile
 #include <PStandard_ArrayNode.hxx>
-#endif
 class gp_Pnt2d;
 class PColgp_FieldOfHArray2OfPnt2d;
 class PColgp_VArrayTNodeOfFieldOfHArray2OfPnt2d;
 
 
-class PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d : public PStandard_ArrayNode {
+class PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d : public PStandard_ArrayNode
+{
 
 public:
 
   
-  Standard_EXPORT   PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d();
+  Standard_EXPORT PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d();
   
-  Standard_EXPORT   PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d(const gp_Pnt2d& aValue);
+  Standard_EXPORT PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d(const gp_Pnt2d& aValue);
   
-  Standard_EXPORT     void SetValue(const gp_Pnt2d& aValue) ;
+  Standard_EXPORT   void SetValue (const gp_Pnt2d& aValue) ;
   
-  Standard_EXPORT     Standard_Address Value() const;
+  Standard_EXPORT   Standard_Address Value()  const;
 
 PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d(const Storage_stCONSTclCOM& a) : PStandard_ArrayNode(a)
 {
@@ -64,7 +51,7 @@ protected:
 private: 
 
 
-gp_Pnt2d myValue;
+  gp_Pnt2d myValue;
 
 
 };
@@ -73,7 +60,6 @@ gp_Pnt2d myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d_HeaderFile

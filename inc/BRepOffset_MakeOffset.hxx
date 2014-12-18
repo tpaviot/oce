@@ -6,55 +6,23 @@
 #ifndef _BRepOffset_MakeOffset_HeaderFile
 #define _BRepOffset_MakeOffset_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepOffset_Mode_HeaderFile
 #include <BRepOffset_Mode.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _GeomAbs_JoinType_HeaderFile
 #include <GeomAbs_JoinType.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeReal_HeaderFile
 #include <TopTools_DataMapOfShapeReal.hxx>
-#endif
-#ifndef _TopTools_IndexedMapOfShape_HeaderFile
 #include <TopTools_IndexedMapOfShape.hxx>
-#endif
-#ifndef _BRepOffset_Analyse_HeaderFile
 #include <BRepOffset_Analyse.hxx>
-#endif
-#ifndef _BRepAlgo_Image_HeaderFile
 #include <BRepAlgo_Image.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _Handle_BRepAlgo_AsDes_HeaderFile
 #include <Handle_BRepAlgo_AsDes.hxx>
-#endif
-#ifndef _BRepOffset_Error_HeaderFile
 #include <BRepOffset_Error.hxx>
-#endif
-#ifndef _BRepOffset_MakeLoops_HeaderFile
 #include <BRepOffset_MakeLoops.hxx>
-#endif
 class BRepAlgo_AsDes;
 class TopoDS_Shape;
 class TopoDS_Face;
@@ -67,47 +35,54 @@ class BRepOffset_DataMapOfShapeOffset;
 
 
 
-class BRepOffset_MakeOffset  {
+class BRepOffset_MakeOffset 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepOffset_MakeOffset();
+  Standard_EXPORT BRepOffset_MakeOffset();
   
-  Standard_EXPORT   BRepOffset_MakeOffset(const TopoDS_Shape& S,const Standard_Real Offset,const Standard_Real Tol,const BRepOffset_Mode Mode = BRepOffset_Skin,const Standard_Boolean Intersection = Standard_False,const Standard_Boolean SelfInter = Standard_False,const GeomAbs_JoinType Join = GeomAbs_Arc,const Standard_Boolean Thickening = Standard_False);
+  Standard_EXPORT BRepOffset_MakeOffset(const TopoDS_Shape& S, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean Thickening = Standard_False);
   
-  Standard_EXPORT     void Initialize(const TopoDS_Shape& S,const Standard_Real Offset,const Standard_Real Tol,const BRepOffset_Mode Mode = BRepOffset_Skin,const Standard_Boolean Intersection = Standard_False,const Standard_Boolean SelfInter = Standard_False,const GeomAbs_JoinType Join = GeomAbs_Arc,const Standard_Boolean Thickening = Standard_False) ;
+  Standard_EXPORT   void Initialize (const TopoDS_Shape& S, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean Thickening = Standard_False) ;
   
-  Standard_EXPORT     void Clear() ;
-  //! Add Closing Faces,  <F>  has to be  in  the initial <br>
-//!          shape S. <br>
-  Standard_EXPORT     void AddFace(const TopoDS_Face& F) ;
-  //! set the offset <Off> on the Face <F> <br>
-  Standard_EXPORT     void SetOffsetOnFace(const TopoDS_Face& F,const Standard_Real Off) ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void MakeOffsetShape() ;
+  //! Add Closing Faces,  <F>  has to be  in  the initial
+  //! shape S.
+  Standard_EXPORT   void AddFace (const TopoDS_Face& F) ;
   
-  Standard_EXPORT     void MakeThickSolid() ;
+  //! set the offset <Off> on the Face <F>
+  Standard_EXPORT   void SetOffsetOnFace (const TopoDS_Face& F, const Standard_Real Off) ;
   
-  Standard_EXPORT    const BRepOffset_Analyse& GetAnalyse() const;
+  Standard_EXPORT   void MakeOffsetShape() ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   void MakeThickSolid() ;
   
-  Standard_EXPORT    const TopoDS_Shape& Shape() const;
-  //! returns information if IsDone() = FALSE. <br>
-  Standard_EXPORT     BRepOffset_Error Error() const;
-  //! Returns <Image> containing links between initials <br>
-//!          shapes and offset faces. <br>
-  Standard_EXPORT    const BRepAlgo_Image& OffsetFacesFromShapes() const;
-  //! Returns myJoin. <br>
-  Standard_EXPORT     GeomAbs_JoinType GetJoinType() const;
-  //! Returns <Image> containing links between initials <br>
-//!          shapes and offset edges. <br>
-  Standard_EXPORT    const BRepAlgo_Image& OffsetEdgesFromShapes() const;
-  //! Returns the list of closing faces stores by AddFace <br>
-  Standard_EXPORT    const TopTools_IndexedMapOfShape& ClosingFaces() const;
-
+  Standard_EXPORT  const  BRepOffset_Analyse& GetAnalyse()  const;
+  
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  Standard_EXPORT  const  TopoDS_Shape& Shape()  const;
+  
+  //! returns information if IsDone() = FALSE.
+  Standard_EXPORT   BRepOffset_Error Error()  const;
+  
+  //! Returns <Image> containing links between initials
+  //! shapes and offset faces.
+  Standard_EXPORT  const  BRepAlgo_Image& OffsetFacesFromShapes()  const;
+  
+  //! Returns myJoin.
+  Standard_EXPORT   GeomAbs_JoinType GetJoinType()  const;
+  
+  //! Returns <Image> containing links between initials
+  //! shapes and offset edges.
+  Standard_EXPORT  const  BRepAlgo_Image& OffsetEdgesFromShapes()  const;
+  
+  //! Returns the list of closing faces stores by AddFace
+  Standard_EXPORT  const  TopTools_IndexedMapOfShape& ClosingFaces()  const;
 
 
 
@@ -121,59 +96,62 @@ protected:
 private:
 
   
-  Standard_EXPORT     void BuildOffsetByArc() ;
+  Standard_EXPORT   void BuildOffsetByArc() ;
   
-  Standard_EXPORT     void BuildOffsetByInter() ;
+  Standard_EXPORT   void BuildOffsetByInter() ;
   
-  Standard_EXPORT     void SelfInter(TopTools_MapOfShape& Modif) ;
+  Standard_EXPORT   void SelfInter (TopTools_MapOfShape& Modif) ;
   
-  Standard_EXPORT     void Intersection3D(BRepOffset_Inter3d& Inter) ;
+  Standard_EXPORT   void Intersection3D (BRepOffset_Inter3d& Inter) ;
   
-  Standard_EXPORT     void Intersection2D(const TopTools_IndexedMapOfShape& Modif,const TopTools_IndexedMapOfShape& NewEdges) ;
+  Standard_EXPORT   void Intersection2D (const TopTools_IndexedMapOfShape& Modif, const TopTools_IndexedMapOfShape& NewEdges) ;
   
-  Standard_EXPORT     void MakeLoops(TopTools_IndexedMapOfShape& Modif) ;
+  Standard_EXPORT   void MakeLoops (TopTools_IndexedMapOfShape& Modif) ;
   
-  Standard_EXPORT     void MakeLoopsOnContext(TopTools_MapOfShape& Modif) ;
+  Standard_EXPORT   void MakeLoopsOnContext (TopTools_MapOfShape& Modif) ;
   
-  Standard_EXPORT     void MakeFaces(TopTools_IndexedMapOfShape& Modif) ;
+  Standard_EXPORT   void MakeFaces (TopTools_IndexedMapOfShape& Modif) ;
   
-  Standard_EXPORT     void MakeShells() ;
+  Standard_EXPORT   void MakeShells() ;
   
-  Standard_EXPORT     void SelectShells() ;
+  Standard_EXPORT   void SelectShells() ;
   
-  Standard_EXPORT     void EncodeRegularity() ;
+  Standard_EXPORT   void EncodeRegularity() ;
   
-  Standard_EXPORT     void MakeSolid() ;
+  Standard_EXPORT   void MakeSolid() ;
   
-  Standard_EXPORT     void ToContext(BRepOffset_DataMapOfShapeOffset& MapSF) ;
-  //! Private method use to update the map face<->offset <br>
-  Standard_EXPORT     void UpdateFaceOffset() ;
-  //! Private method used to correct degenerated edges on conical faces <br>
-  Standard_EXPORT     void CorrectConicalFaces() ;
-  //! Private method used to build walls for thickening the shell <br>
-  Standard_EXPORT     void MakeMissingWalls() ;
+  Standard_EXPORT   void ToContext (BRepOffset_DataMapOfShapeOffset& MapSF) ;
+  
+  //! Private method use to update the map face<->offset
+  Standard_EXPORT   void UpdateFaceOffset() ;
+  
+  //! Private method used to correct degenerated edges on conical faces
+  Standard_EXPORT   void CorrectConicalFaces() ;
+  
+  //! Private method used to build walls for thickening the shell
+  Standard_EXPORT   void MakeMissingWalls() ;
 
 
-Standard_Real myOffset;
-Standard_Real myTol;
-TopoDS_Shape myShape;
-BRepOffset_Mode myMode;
-Standard_Boolean myInter;
-Standard_Boolean mySelfInter;
-GeomAbs_JoinType myJoin;
-Standard_Boolean myThickening;
-TopTools_DataMapOfShapeReal myFaceOffset;
-TopTools_IndexedMapOfShape myFaces;
-BRepOffset_Analyse myAnalyse;
-TopoDS_Shape myOffsetShape;
-BRepAlgo_Image myInitOffsetFace;
-BRepAlgo_Image myInitOffsetEdge;
-BRepAlgo_Image myImageOffset;
-TopTools_ListOfShape myWalls;
-Handle_BRepAlgo_AsDes myAsDes;
-Standard_Boolean myDone;
-BRepOffset_Error myError;
-BRepOffset_MakeLoops myMakeLoops;
+  Standard_Real myOffset;
+  Standard_Real myTol;
+  TopoDS_Shape myShape;
+  BRepOffset_Mode myMode;
+  Standard_Boolean myInter;
+  Standard_Boolean mySelfInter;
+  GeomAbs_JoinType myJoin;
+  Standard_Boolean myThickening;
+  TopTools_DataMapOfShapeReal myFaceOffset;
+  TopTools_IndexedMapOfShape myFaces;
+  BRepOffset_Analyse myAnalyse;
+  TopoDS_Shape myOffsetShape;
+  BRepAlgo_Image myInitOffsetFace;
+  BRepAlgo_Image myInitOffsetEdge;
+  BRepAlgo_Image myImageOffset;
+  TopTools_ListOfShape myWalls;
+  Handle(BRepAlgo_AsDes) myAsDes;
+  Standard_Boolean myDone;
+  BRepOffset_Error myError;
+  BRepOffset_MakeLoops myMakeLoops;
 
 
 };
@@ -182,7 +160,6 @@ BRepOffset_MakeLoops myMakeLoops;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffset_MakeOffset_HeaderFile

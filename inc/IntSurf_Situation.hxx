@@ -6,15 +6,14 @@
 #ifndef _IntSurf_Situation_HeaderFile
 #define _IntSurf_Situation_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum IntSurf_Situation {
+
+enum IntSurf_Situation
+{
 IntSurf_Inside,
 IntSurf_Outside,
 IntSurf_Unknown
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IntSurf_Situation_HeaderFile

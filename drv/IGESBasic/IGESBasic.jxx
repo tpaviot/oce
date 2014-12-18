@@ -1,6 +1,2 @@
-#ifndef _IGESBasic_Protocol_HeaderFile
 #include <IGESBasic_Protocol.hxx>
-#endif
-#ifndef _IGESBasic_HeaderFile
 #include <IGESBasic.hxx>
-#endif

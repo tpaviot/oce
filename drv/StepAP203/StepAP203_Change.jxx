@@ -1,9 +1,3 @@
-#ifndef _StepAP203_HArray1OfWorkItem_HeaderFile
 #include <StepAP203_HArray1OfWorkItem.hxx>
-#endif
-#ifndef _StepBasic_Action_HeaderFile
 #include <StepBasic_Action.hxx>
-#endif
-#ifndef _StepAP203_Change_HeaderFile
 #include <StepAP203_Change.hxx>
-#endif

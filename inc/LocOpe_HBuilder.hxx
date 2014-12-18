@@ -6,36 +6,27 @@
 #ifndef _LocOpe_HBuilder_HeaderFile
 #define _LocOpe_HBuilder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_LocOpe_HBuilder_HeaderFile
 #include <Handle_LocOpe_HBuilder.hxx>
-#endif
 
-#ifndef _TopOpeBRepBuild_HBuilder_HeaderFile
 #include <TopOpeBRepBuild_HBuilder.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopOpeBRepDS_BuildTool;
 
 
 
-class LocOpe_HBuilder : public TopOpeBRepBuild_HBuilder {
+class LocOpe_HBuilder : public TopOpeBRepBuild_HBuilder
+{
 
 public:
 
   
-      LocOpe_HBuilder(const TopOpeBRepDS_BuildTool& BT);
+    LocOpe_HBuilder(const TopOpeBRepDS_BuildTool& BT);
   
-        Standard_Boolean Classify() const;
+      Standard_Boolean Classify()  const;
   
-        void Classify(const Standard_Boolean B) ;
+      void Classify (const Standard_Boolean B) ;
 
 
 
@@ -59,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_HBuilder_HeaderFile

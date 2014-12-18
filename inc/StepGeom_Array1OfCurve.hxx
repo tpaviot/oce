@@ -6,28 +6,14 @@
 #ifndef _StepGeom_Array1OfCurve_HeaderFile
 #define _StepGeom_Array1OfCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_Curve_HeaderFile
 #include <Handle_StepGeom_Curve.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class StepGeom_Curve;
 
 
 
-class StepGeom_Array1OfCurve  {
+class StepGeom_Array1OfCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepGeom_Array1OfCurve(const Standard_Integer Low,const Standard_Integer Up);
+    StepGeom_Array1OfCurve(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepGeom_Array1OfCurve(const Handle(StepGeom_Curve)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepGeom_Array1OfCurve(const Handle(StepGeom_Curve)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(StepGeom_Curve)& V) ;
+  Standard_EXPORT   void Init (const Handle(StepGeom_Curve)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepGeom_Array1OfCurve()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepGeom_Array1OfCurve& Assign(const StepGeom_Array1OfCurve& Other) ;
-   const StepGeom_Array1OfCurve& operator =(const StepGeom_Array1OfCurve& Other) 
+  Standard_EXPORT  const  StepGeom_Array1OfCurve& Assign (const StepGeom_Array1OfCurve& Other) ;
+ const  StepGeom_Array1OfCurve& operator = (const StepGeom_Array1OfCurve& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepGeom_Curve)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepGeom_Curve)& Value) ;
   
-       const Handle_StepGeom_Curve& Value(const Standard_Integer Index) const;
-     const Handle_StepGeom_Curve& operator ()(const Standard_Integer Index) const
+     const  Handle(StepGeom_Curve)& Value (const Standard_Integer Index)  const;
+   const  Handle(StepGeom_Curve)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_StepGeom_Curve& ChangeValue(const Standard_Integer Index) ;
-      Handle_StepGeom_Curve& operator ()(const Standard_Integer Index) 
+      Handle(StepGeom_Curve)& ChangeValue (const Standard_Integer Index) ;
+    Handle(StepGeom_Curve)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepGeom_Array1OfCurve(const StepGeom_Array1OfCurve& AnArray);
+  Standard_EXPORT StepGeom_Array1OfCurve(const StepGeom_Array1OfCurve& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_StepGeom_Curve
+#define Array1Item Handle(StepGeom_Curve)
 #define Array1Item_hxx <StepGeom_Curve.hxx>
 #define TCollection_Array1 StepGeom_Array1OfCurve
 #define TCollection_Array1_hxx <StepGeom_Array1OfCurve.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Array1OfCurve_HeaderFile

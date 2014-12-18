@@ -6,62 +6,36 @@
 #ifndef _QABugs_MyText_HeaderFile
 #define _QABugs_MyText_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_QABugs_MyText_HeaderFile
 #include <Handle_QABugs_MyText.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
-#endif
 class TCollection_ExtendedString;
 class gp_Pnt;
-class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class SelectMgr_Selection;
 
 
 
-class QABugs_MyText : public AIS_InteractiveObject {
+class QABugs_MyText : public AIS_InteractiveObject
+{
 
 public:
 
   
-  Standard_EXPORT   QABugs_MyText(const TCollection_ExtendedString& aText,const gp_Pnt& aPosition);
+  Standard_EXPORT QABugs_MyText(const TCollection_ExtendedString& aText, const gp_Pnt& aPosition);
   
-  Standard_EXPORT   QABugs_MyText(const TCollection_ExtendedString& aText,const gp_Pnt& aPosition,const Standard_CString aFont,const Quantity_NameOfColor aColor,const Standard_Real aHeight);
+  Standard_EXPORT QABugs_MyText(const TCollection_ExtendedString& aText, const gp_Pnt& aPosition, const Standard_CString aFont, const Quantity_NameOfColor aColor, const Standard_Real aHeight);
 
 
 
@@ -71,22 +45,22 @@ public:
 protected:
 
   
-  Standard_EXPORT   virtual  Standard_Integer NbPossibleSelection() const;
+  Standard_EXPORT virtual   Standard_Integer NbPossibleSelection()  const;
   
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
+  Standard_EXPORT virtual   void Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager, const Handle(Prs3d_Presentation)& aPresentation, const Standard_Integer aMode = 0) ;
   
-  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
+  Standard_EXPORT virtual   void ComputeSelection (const Handle(SelectMgr_Selection)& aSelection, const Standard_Integer aMode) ;
 
 
 
 private: 
 
 
-gp_Pnt myPosition;
-TCollection_ExtendedString myText;
-Quantity_NameOfColor myNameOfColor;
-Standard_CString myNameOfFont;
-Standard_Real myHeight;
+  gp_Pnt myPosition;
+  TCollection_ExtendedString myText;
+  Quantity_NameOfColor myNameOfColor;
+  Standard_CString myNameOfFont;
+  Standard_Real myHeight;
 
 
 };
@@ -95,7 +69,6 @@ Standard_Real myHeight;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QABugs_MyText_HeaderFile

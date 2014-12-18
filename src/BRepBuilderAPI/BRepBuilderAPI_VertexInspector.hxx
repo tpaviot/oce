@@ -16,22 +16,11 @@
 #ifndef _BRepBuilderAPI_VertexInspector_Header
 #define _BRepBuilderAPI_VertexInspector_Header
 
-#ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
-#endif
-#ifndef NCollection_Vector_HeaderFile
 #include <NCollection_Vector.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-
-#ifndef NCollection_CellFilter_HeaderFile
 #include <NCollection_CellFilter.hxx>
-#endif
 
 typedef NCollection_Vector<gp_XYZ> VectorOfPoint;
 
@@ -48,8 +37,7 @@ class BRepBuilderAPI_VertexInspector : public NCollection_CellFilter_InspectorXY
 public:
   typedef Standard_Integer Target;
   //! Constructor; remembers the tolerance
-  BRepBuilderAPI_VertexInspector (const Standard_Real theTol)
-                                  : myTol(theTol*theTol)
+  BRepBuilderAPI_VertexInspector (const Standard_Real theTol):myTol(theTol*theTol)
   {}
 
   //! Keep the points used for comparison
@@ -65,7 +53,7 @@ public:
   }
   
   //! Set current point to search for coincidence
-  void SetCurrent (const gp_XYZ& theCurPnt) 
+  void SetCurrent (const gp_XYZ& theCurPnt)
   { 
     myCurrent = theCurPnt;
   }
@@ -77,7 +65,7 @@ public:
   }
 
   //! Implementation of inspection method
-  NCollection_CellFilter_Action Inspect (const Standard_Integer theTarget); 
+  Standard_EXPORT NCollection_CellFilter_Action Inspect (const Standard_Integer theTarget); 
 
 private:
   Standard_Real myTol;

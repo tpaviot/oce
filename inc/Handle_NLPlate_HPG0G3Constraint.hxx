@@ -6,22 +6,15 @@
 #ifndef _Handle_NLPlate_HPG0G3Constraint_HeaderFile
 #define _Handle_NLPlate_HPG0G3Constraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_NLPlate_HPG0G2Constraint_HeaderFile
 #include <Handle_NLPlate_HPG0G2Constraint.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(NLPlate_HPG0G2Constraint);
 class NLPlate_HPG0G3Constraint;
 
-DEFINE_STANDARD_HANDLE(NLPlate_HPG0G3Constraint,NLPlate_HPG0G2Constraint)
+DEFINE_STANDARD_HANDLE(NLPlate_HPG0G3Constraint, NLPlate_HPG0G2Constraint)
 
-#endif
+#endif // _Handle_NLPlate_HPG0G3Constraint_HeaderFile

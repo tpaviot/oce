@@ -6,38 +6,27 @@
 #ifndef _IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds_HeaderFile
 #define _IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds_HeaderFile
 #include <Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds.hxx>
-#endif
 
-#ifndef _IntPatch_TheSegmentOfTheSOnBounds_HeaderFile
 #include <IntPatch_TheSegmentOfTheSOnBounds.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class IntPatch_TheSegmentOfTheSOnBounds;
 class IntPatch_SequenceOfSegmentOfTheSOnBounds;
 
 
 
-class IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds : public TCollection_SeqNode {
+class IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds : public TCollection_SeqNode
+{
 
 public:
 
   
-      IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds(const IntPatch_TheSegmentOfTheSOnBounds& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds(const IntPatch_TheSegmentOfTheSOnBounds& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        IntPatch_TheSegmentOfTheSOnBounds& Value() const;
+      IntPatch_TheSegmentOfTheSOnBounds& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-IntPatch_TheSegmentOfTheSOnBounds myValue;
+  IntPatch_TheSegmentOfTheSOnBounds myValue;
 
 
 };
@@ -78,7 +67,6 @@ IntPatch_TheSegmentOfTheSOnBounds myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds_HeaderFile

@@ -6,17 +6,11 @@
 #ifndef _TestTopOpeDraw_HeaderFile
 #define _TestTopOpeDraw_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-class Draw_Interpretor;
+#include <Draw_Interpretor.hxx>
 class TestTopOpeDraw_ListOfPnt2d;
 class TestTopOpeDraw_DrawableSHA;
 class TestTopOpeDraw_DrawableSUR;
@@ -34,16 +28,16 @@ class TestTopOpeDraw_ListIteratorOfListOfPnt2d;
 
 
 
-class TestTopOpeDraw  {
+class TestTopOpeDraw 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& I) ;
+  Standard_EXPORT static   void AllCommands (Draw_Interpretor& I) ;
   
-  Standard_EXPORT   static  void OtherCommands(Draw_Interpretor& I) ;
-
+  Standard_EXPORT static   void OtherCommands (Draw_Interpretor& I) ;
 
 
 
@@ -80,7 +74,6 @@ friend class TestTopOpeDraw_ListIteratorOfListOfPnt2d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeDraw_HeaderFile

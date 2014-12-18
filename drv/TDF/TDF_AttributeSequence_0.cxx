@@ -5,21 +5,13 @@
 
 #include <TDF_AttributeSequence.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_SequenceNodeOfAttributeSequence_HeaderFile
 #include <TDF_SequenceNodeOfAttributeSequence.hxx>
-#endif
  
 
-#define SeqItem Handle_TDF_Attribute
+#define SeqItem Handle(TDF_Attribute)
 #define SeqItem_hxx <TDF_Attribute.hxx>
 #define TCollection_SequenceNode TDF_SequenceNodeOfAttributeSequence
 #define TCollection_SequenceNode_hxx <TDF_SequenceNodeOfAttributeSequence.hxx>

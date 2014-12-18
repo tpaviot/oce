@@ -1,3 +1,1 @@
-#ifndef _StepBasic_MeasureValueMember_HeaderFile
 #include <StepBasic_MeasureValueMember.hxx>
-#endif

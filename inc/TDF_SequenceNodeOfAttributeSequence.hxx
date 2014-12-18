@@ -6,38 +6,27 @@
 #ifndef _TDF_SequenceNodeOfAttributeSequence_HeaderFile
 #define _TDF_SequenceNodeOfAttributeSequence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_SequenceNodeOfAttributeSequence_HeaderFile
 #include <Handle_TDF_SequenceNodeOfAttributeSequence.hxx>
-#endif
 
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TDF_Attribute;
 class TDF_AttributeSequence;
 
 
 
-class TDF_SequenceNodeOfAttributeSequence : public TCollection_SeqNode {
+class TDF_SequenceNodeOfAttributeSequence : public TCollection_SeqNode
+{
 
 public:
 
   
-      TDF_SequenceNodeOfAttributeSequence(const Handle(TDF_Attribute)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TDF_SequenceNodeOfAttributeSequence(const Handle(TDF_Attribute)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_TDF_Attribute& Value() const;
+      Handle(TDF_Attribute)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_TDF_Attribute myValue;
+  Handle(TDF_Attribute) myValue;
 
 
 };
 
-#define SeqItem Handle_TDF_Attribute
+#define SeqItem Handle(TDF_Attribute)
 #define SeqItem_hxx <TDF_Attribute.hxx>
 #define TCollection_SequenceNode TDF_SequenceNodeOfAttributeSequence
 #define TCollection_SequenceNode_hxx <TDF_SequenceNodeOfAttributeSequence.hxx>
@@ -78,7 +67,6 @@ Handle_TDF_Attribute myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_SequenceNodeOfAttributeSequence_HeaderFile

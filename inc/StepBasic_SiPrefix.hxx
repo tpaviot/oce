@@ -6,8 +6,11 @@
 #ifndef _StepBasic_SiPrefix_HeaderFile
 #define _StepBasic_SiPrefix_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepBasic_SiPrefix {
+
+enum StepBasic_SiPrefix
+{
 StepBasic_spExa,
 StepBasic_spPeta,
 StepBasic_spTera,
@@ -26,8 +29,4 @@ StepBasic_spFemto,
 StepBasic_spAtto
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepBasic_SiPrefix_HeaderFile

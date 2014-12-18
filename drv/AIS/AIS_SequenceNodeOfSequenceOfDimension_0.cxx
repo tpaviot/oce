@@ -5,16 +5,10 @@
 
 #include <AIS_SequenceNodeOfSequenceOfDimension.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _AIS_Relation_HeaderFile
 #include <AIS_Relation.hxx>
-#endif
-#ifndef _AIS_SequenceOfDimension_HeaderFile
 #include <AIS_SequenceOfDimension.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(AIS_SequenceNodeOfSequenceOfDimension,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(AIS_SequenceNodeOfSequenceOfDimension)
 
 
-#define SeqItem Handle_AIS_Relation
+#define SeqItem Handle(AIS_Relation)
 #define SeqItem_hxx <AIS_Relation.hxx>
 #define TCollection_SequenceNode AIS_SequenceNodeOfSequenceOfDimension
 #define TCollection_SequenceNode_hxx <AIS_SequenceNodeOfSequenceOfDimension.hxx>

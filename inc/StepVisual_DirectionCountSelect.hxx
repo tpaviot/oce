@@ -6,42 +6,34 @@
 #ifndef _StepVisual_DirectionCountSelect_HeaderFile
 #define _StepVisual_DirectionCountSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
 
-class StepVisual_DirectionCountSelect  {
+class StepVisual_DirectionCountSelect 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepVisual_DirectionCountSelect();
+  Standard_EXPORT StepVisual_DirectionCountSelect();
   
-  Standard_EXPORT     void SetTypeOfContent(const Standard_Integer aTypeOfContent) ;
+  Standard_EXPORT   void SetTypeOfContent (const Standard_Integer aTypeOfContent) ;
   
-  Standard_EXPORT     Standard_Integer TypeOfContent() const;
+  Standard_EXPORT   Standard_Integer TypeOfContent()  const;
   
-  Standard_EXPORT     Standard_Integer UDirectionCount() const;
+  Standard_EXPORT   Standard_Integer UDirectionCount()  const;
   
-  Standard_EXPORT     void SetUDirectionCount(const Standard_Integer aUDirectionCount) ;
+  Standard_EXPORT   void SetUDirectionCount (const Standard_Integer aUDirectionCount) ;
   
-  Standard_EXPORT     Standard_Integer VDirectionCount() const;
+  Standard_EXPORT   Standard_Integer VDirectionCount()  const;
   
-  Standard_EXPORT     void SetVDirectionCount(const Standard_Integer aUDirectionCount) ;
-
+  Standard_EXPORT   void SetVDirectionCount (const Standard_Integer aUDirectionCount) ;
 
 
 
@@ -56,9 +48,9 @@ private:
 
 
 
-Standard_Integer theUDirectionCount;
-Standard_Integer theVDirectionCount;
-Standard_Integer theTypeOfContent;
+  Standard_Integer theUDirectionCount;
+  Standard_Integer theVDirectionCount;
+  Standard_Integer theTypeOfContent;
 
 
 };
@@ -67,7 +59,6 @@ Standard_Integer theTypeOfContent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_DirectionCountSelect_HeaderFile

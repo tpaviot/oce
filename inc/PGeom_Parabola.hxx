@@ -6,42 +6,35 @@
 #ifndef _PGeom_Parabola_HeaderFile
 #define _PGeom_Parabola_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_Parabola_HeaderFile
 #include <Handle_PGeom_Parabola.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _PGeom_Conic_HeaderFile
 #include <PGeom_Conic.hxx>
-#endif
 class gp_Ax2;
 
 
-class PGeom_Parabola : public PGeom_Conic {
+class PGeom_Parabola : public PGeom_Conic
+{
 
 public:
 
-  //! Creates a parabola with default values. <br>
-  Standard_EXPORT   PGeom_Parabola();
-  //! Creates a Parabola with <aPosition> and <aFocalLength> <br>
-//!         as field values. <br>
-  Standard_EXPORT   PGeom_Parabola(const gp_Ax2& aPosition,const Standard_Real aFocalLength);
-  //!   Set the value  of   the  field focalLength with <br>
-//!         <aFocalLength>. <br>
-  Standard_EXPORT     void FocalLength(const Standard_Real aFocalLength) ;
-  //! Retruns the value of the field focalLength. <br>
-  Standard_EXPORT     Standard_Real FocalLength() const;
+  
+  //! Creates a parabola with default values.
+  Standard_EXPORT PGeom_Parabola();
+  
+  //! Creates a Parabola with <aPosition> and <aFocalLength>
+  //! as field values.
+  Standard_EXPORT PGeom_Parabola(const gp_Ax2& aPosition, const Standard_Real aFocalLength);
+  
+  //! Set the value  of   the  field focalLength with
+  //! <aFocalLength>.
+  Standard_EXPORT   void FocalLength (const Standard_Real aFocalLength) ;
+  
+  //! Retruns the value of the field focalLength.
+  Standard_EXPORT   Standard_Real FocalLength()  const;
 
 PGeom_Parabola(const Storage_stCONSTclCOM& a) : PGeom_Conic(a)
 {
@@ -62,7 +55,7 @@ protected:
 private: 
 
 
-Standard_Real focalLength;
+  Standard_Real focalLength;
 
 
 };
@@ -71,7 +64,6 @@ Standard_Real focalLength;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_Parabola_HeaderFile

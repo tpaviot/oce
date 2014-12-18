@@ -1,3 +1,0 @@
-#ifndef _PCollection_CompareOfReal_HeaderFile
-#include <PCollection_CompareOfReal.hxx>
-#endif

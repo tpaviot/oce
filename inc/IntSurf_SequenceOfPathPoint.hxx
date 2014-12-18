@@ -6,25 +6,13 @@
 #ifndef _IntSurf_SequenceOfPathPoint_HeaderFile
 #define _IntSurf_SequenceOfPathPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint_HeaderFile
 #include <Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class IntSurf_PathPoint;
@@ -32,66 +20,68 @@ class IntSurf_SequenceNodeOfSequenceOfPathPoint;
 
 
 
-class IntSurf_SequenceOfPathPoint  : public TCollection_BaseSequence {
+class IntSurf_SequenceOfPathPoint  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IntSurf_SequenceOfPathPoint();
+    IntSurf_SequenceOfPathPoint();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT IntSurf_SequenceOfPathPoint(const IntSurf_SequenceOfPathPoint& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~IntSurf_SequenceOfPathPoint()
 {
   Clear();
 }
   
-  Standard_EXPORT    const IntSurf_SequenceOfPathPoint& Assign(const IntSurf_SequenceOfPathPoint& Other) ;
-   const IntSurf_SequenceOfPathPoint& operator =(const IntSurf_SequenceOfPathPoint& Other) 
+  Standard_EXPORT  const  IntSurf_SequenceOfPathPoint& Assign (const IntSurf_SequenceOfPathPoint& Other) ;
+ const  IntSurf_SequenceOfPathPoint& operator = (const IntSurf_SequenceOfPathPoint& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const IntSurf_PathPoint& T) ;
+  Standard_EXPORT   void Append (const IntSurf_PathPoint& T) ;
   
-        void Append(IntSurf_SequenceOfPathPoint& S) ;
+      void Append (IntSurf_SequenceOfPathPoint& S) ;
   
-  Standard_EXPORT     void Prepend(const IntSurf_PathPoint& T) ;
+  Standard_EXPORT   void Prepend (const IntSurf_PathPoint& T) ;
   
-        void Prepend(IntSurf_SequenceOfPathPoint& S) ;
+      void Prepend (IntSurf_SequenceOfPathPoint& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const IntSurf_PathPoint& T) ;
+      void InsertBefore (const Standard_Integer Index, const IntSurf_PathPoint& T) ;
   
-        void InsertBefore(const Standard_Integer Index,IntSurf_SequenceOfPathPoint& S) ;
+      void InsertBefore (const Standard_Integer Index, IntSurf_SequenceOfPathPoint& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const IntSurf_PathPoint& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const IntSurf_PathPoint& T) ;
   
-        void InsertAfter(const Standard_Integer Index,IntSurf_SequenceOfPathPoint& S) ;
+      void InsertAfter (const Standard_Integer Index, IntSurf_SequenceOfPathPoint& S) ;
   
-  Standard_EXPORT    const IntSurf_PathPoint& First() const;
+  Standard_EXPORT  const  IntSurf_PathPoint& First()  const;
   
-  Standard_EXPORT    const IntSurf_PathPoint& Last() const;
+  Standard_EXPORT  const  IntSurf_PathPoint& Last()  const;
   
-        void Split(const Standard_Integer Index,IntSurf_SequenceOfPathPoint& Sub) ;
+      void Split (const Standard_Integer Index, IntSurf_SequenceOfPathPoint& Sub) ;
   
-  Standard_EXPORT    const IntSurf_PathPoint& Value(const Standard_Integer Index) const;
-   const IntSurf_PathPoint& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  IntSurf_PathPoint& Value (const Standard_Integer Index)  const;
+ const  IntSurf_PathPoint& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const IntSurf_PathPoint& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const IntSurf_PathPoint& I) ;
   
-  Standard_EXPORT     IntSurf_PathPoint& ChangeValue(const Standard_Integer Index) ;
-    IntSurf_PathPoint& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   IntSurf_PathPoint& ChangeValue (const Standard_Integer Index) ;
+  IntSurf_PathPoint& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntSurf_SequenceOfPathPoint(const IntSurf_SequenceOfPathPoint& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_SequenceOfPathPoint_HeaderFile

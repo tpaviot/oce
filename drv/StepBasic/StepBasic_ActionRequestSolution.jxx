@@ -1,9 +1,3 @@
-#ifndef _StepBasic_ActionMethod_HeaderFile
 #include <StepBasic_ActionMethod.hxx>
-#endif
-#ifndef _StepBasic_VersionedActionRequest_HeaderFile
 #include <StepBasic_VersionedActionRequest.hxx>
-#endif
-#ifndef _StepBasic_ActionRequestSolution_HeaderFile
 #include <StepBasic_ActionRequestSolution.hxx>
-#endif

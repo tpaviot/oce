@@ -6,43 +6,19 @@
 #ifndef _TFunction_GraphNode_HeaderFile
 #define _TFunction_GraphNode_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TFunction_GraphNode_HeaderFile
 #include <Handle_TFunction_GraphNode.hxx>
-#endif
 
-#ifndef _TColStd_MapOfInteger_HeaderFile
 #include <TColStd_MapOfInteger.hxx>
-#endif
-#ifndef _TFunction_ExecutionStatus_HeaderFile
 #include <TFunction_ExecutionStatus.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Handle_TDF_DataSet_HeaderFile
 #include <Handle_TDF_DataSet.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TDF_Label;
 class Standard_GUID;
 class TColStd_MapOfInteger;
@@ -51,61 +27,82 @@ class TDF_RelocationTable;
 class TDF_DataSet;
 
 
-//! Provides links between functions. <br>
-class TFunction_GraphNode : public TDF_Attribute {
+//! Provides links between functions.
+class TFunction_GraphNode : public TDF_Attribute
+{
 
 public:
 
-  //! Static methods <br>
-//!          ============== <br>//! Finds or Creates a graph node attribute at the label <L>. <br>
-//!          Returns the attribute. <br>
-  Standard_EXPORT   static  Handle_TFunction_GraphNode Set(const TDF_Label& L) ;
-  //! Returns the GUID for GraphNode attribute. <br>//! Instant methods <br>
-//!          =============== <br>//! Constructor (empty). <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
   
-  Standard_EXPORT   TFunction_GraphNode();
-  //! Defines a reference to the function as a previous one. <br>
-  Standard_EXPORT     Standard_Boolean AddPrevious(const Standard_Integer funcID) ;
-  //! Defines a reference to the function as a previous one. <br>
-  Standard_EXPORT     Standard_Boolean AddPrevious(const TDF_Label& func) ;
-  //! Removes a reference to the function as a previous one. <br>
-  Standard_EXPORT     Standard_Boolean RemovePrevious(const Standard_Integer funcID) ;
-  //! Removes a reference to the function as a previous one. <br>
-  Standard_EXPORT     Standard_Boolean RemovePrevious(const TDF_Label& func) ;
-  //! Returns a map of previous functions. <br>
-  Standard_EXPORT    const TColStd_MapOfInteger& GetPrevious() const;
-  //! Clears a map of previous functions. <br>
-  Standard_EXPORT     void RemoveAllPrevious() ;
-  //! Defines a reference to the function as a next one. <br>
-  Standard_EXPORT     Standard_Boolean AddNext(const Standard_Integer funcID) ;
-  //! Defines a reference to the function as a next one. <br>
-  Standard_EXPORT     Standard_Boolean AddNext(const TDF_Label& func) ;
-  //! Removes a reference to the function as a next one. <br>
-  Standard_EXPORT     Standard_Boolean RemoveNext(const Standard_Integer funcID) ;
-  //! Removes a reference to the function as a next one. <br>
-  Standard_EXPORT     Standard_Boolean RemoveNext(const TDF_Label& func) ;
-  //! Returns a map of next functions. <br>
-  Standard_EXPORT    const TColStd_MapOfInteger& GetNext() const;
-  //! Clears a map of next functions. <br>
-  Standard_EXPORT     void RemoveAllNext() ;
-  //! Returns the execution status of the function. <br>
-  Standard_EXPORT     TFunction_ExecutionStatus GetStatus() const;
-  //! Defines an execution status for a function. <br>//! Implementation of Attribute methods <br>
-//!          =================================== <br>
-  Standard_EXPORT     void SetStatus(const TFunction_ExecutionStatus status) ;
+  //! Static methods
+  //! ==============
+  //! Finds or Creates a graph node attribute at the label <L>.
+  //! Returns the attribute.
+  Standard_EXPORT static   Handle(TFunction_GraphNode) Set (const TDF_Label& L) ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  //! Returns the GUID for GraphNode attribute.
+  //! Instant methods
+  //! ===============
+  //! Constructor (empty).
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT   virtual  void Restore(const Handle(TDF_Attribute)& with) ;
+  Standard_EXPORT TFunction_GraphNode();
   
-  Standard_EXPORT   virtual  void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  //! Defines a reference to the function as a previous one.
+  Standard_EXPORT   Standard_Boolean AddPrevious (const Standard_Integer funcID) ;
   
-  Standard_EXPORT   virtual  Handle_TDF_Attribute NewEmpty() const;
+  //! Defines a reference to the function as a previous one.
+  Standard_EXPORT   Standard_Boolean AddPrevious (const TDF_Label& func) ;
   
-  Standard_EXPORT   virtual  void References(const Handle(TDF_DataSet)& aDataSet) const;
+  //! Removes a reference to the function as a previous one.
+  Standard_EXPORT   Standard_Boolean RemovePrevious (const Standard_Integer funcID) ;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  //! Removes a reference to the function as a previous one.
+  Standard_EXPORT   Standard_Boolean RemovePrevious (const TDF_Label& func) ;
+  
+  //! Returns a map of previous functions.
+  Standard_EXPORT  const  TColStd_MapOfInteger& GetPrevious()  const;
+  
+  //! Clears a map of previous functions.
+  Standard_EXPORT   void RemoveAllPrevious() ;
+  
+  //! Defines a reference to the function as a next one.
+  Standard_EXPORT   Standard_Boolean AddNext (const Standard_Integer funcID) ;
+  
+  //! Defines a reference to the function as a next one.
+  Standard_EXPORT   Standard_Boolean AddNext (const TDF_Label& func) ;
+  
+  //! Removes a reference to the function as a next one.
+  Standard_EXPORT   Standard_Boolean RemoveNext (const Standard_Integer funcID) ;
+  
+  //! Removes a reference to the function as a next one.
+  Standard_EXPORT   Standard_Boolean RemoveNext (const TDF_Label& func) ;
+  
+  //! Returns a map of next functions.
+  Standard_EXPORT  const  TColStd_MapOfInteger& GetNext()  const;
+  
+  //! Clears a map of next functions.
+  Standard_EXPORT   void RemoveAllNext() ;
+  
+  //! Returns the execution status of the function.
+  Standard_EXPORT   TFunction_ExecutionStatus GetStatus()  const;
+  
+  //! Defines an execution status for a function.
+  //! Implementation of Attribute methods
+  //! ===================================
+  Standard_EXPORT   void SetStatus (const TFunction_ExecutionStatus status) ;
+  
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT virtual   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT virtual   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT virtual   void References (const Handle(TDF_DataSet)& aDataSet)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -120,9 +117,9 @@ protected:
 private: 
 
 
-TColStd_MapOfInteger myPrevious;
-TColStd_MapOfInteger myNext;
-TFunction_ExecutionStatus myStatus;
+  TColStd_MapOfInteger myPrevious;
+  TColStd_MapOfInteger myNext;
+  TFunction_ExecutionStatus myStatus;
 
 
 };
@@ -131,7 +128,6 @@ TFunction_ExecutionStatus myStatus;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TFunction_GraphNode_HeaderFile

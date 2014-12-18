@@ -6,46 +6,20 @@
 #ifndef _XSAlgo_AlgoContainer_HeaderFile
 #define _XSAlgo_AlgoContainer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XSAlgo_AlgoContainer_HeaderFile
 #include <Handle_XSAlgo_AlgoContainer.hxx>
-#endif
 
-#ifndef _Handle_XSAlgo_ToolContainer_HeaderFile
 #include <Handle_XSAlgo_ToolContainer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Message_ProgressIndicator_HeaderFile
 #include <Handle_Message_ProgressIndicator.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Transfer_TransientProcess_HeaderFile
 #include <Handle_Transfer_TransientProcess.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
 class XSAlgo_ToolContainer;
 class TopoDS_Shape;
 class Standard_Transient;
@@ -57,38 +31,45 @@ class Transfer_FinderProcess;
 
 
 
-class XSAlgo_AlgoContainer : public MMgt_TShared {
+class XSAlgo_AlgoContainer : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   XSAlgo_AlgoContainer();
-  //! Sets ToolContainer <br>
-        void SetToolContainer(const Handle(XSAlgo_ToolContainer)& TC) ;
-  //! Returns ToolContainer <br>
-        Handle_XSAlgo_ToolContainer ToolContainer() const;
-  //! Performs actions necessary for preparing environment <br>
-//!          for transfer. Empty in Open version. <br>
-  Standard_EXPORT   virtual  void PrepareForTransfer() const;
-  //! Does shape processing with specified tolerances <br>
-//!          and returns resulting shape and associated information <br>
-//!          in the form of Transient. <br>
-//!          This information should be later transmitted to <br>
-//!          MergeTransferInfo in order to be recorded in the <br>
-//!          translation map <br>
-//! <br>
-  Standard_EXPORT   virtual  TopoDS_Shape ProcessShape(const TopoDS_Shape& shape,const Standard_Real Prec,const Standard_Real MaxTol,const Standard_CString rscfile,const Standard_CString seq,Handle(Standard_Transient)& info,const Handle(Message_ProgressIndicator)& progress = 0) const;
-  //! Checks quality of pcurve of the edge on the given face, <br>
-//!          and corrects it if necessary. <br>
-  Standard_EXPORT   virtual  Standard_Boolean CheckPCurve(const TopoDS_Edge& edge,const TopoDS_Face& face,const Standard_Real preci,const Standard_Boolean isSeam) const;
   
-  Standard_EXPORT   virtual  void MergeTransferInfo(const Handle(Transfer_TransientProcess)& TP,const Handle(Standard_Transient)& info,const Standard_Integer startTPitem = 1) const;
-  //! Updates translation map (TP or FP) with information <br>
-//!          resulting from ShapeProcessing <br>
-//!          Parameter startTPitem can be used for optimisation, to <br>
-//!          restrict modifications to entities stored in TP starting <br>
-//!          from item startTPitem <br>
-  Standard_EXPORT   virtual  void MergeTransferInfo(const Handle(Transfer_FinderProcess)& FP,const Handle(Standard_Transient)& info) const;
+  //! Empty constructor
+  Standard_EXPORT XSAlgo_AlgoContainer();
+  
+  //! Sets ToolContainer
+      void SetToolContainer (const Handle(XSAlgo_ToolContainer)& TC) ;
+  
+  //! Returns ToolContainer
+      Handle(XSAlgo_ToolContainer) ToolContainer()  const;
+  
+  //! Performs actions necessary for preparing environment
+  //! for transfer. Empty in Open version.
+  Standard_EXPORT virtual   void PrepareForTransfer()  const;
+  
+  //! Does shape processing with specified tolerances
+  //! and returns resulting shape and associated information
+  //! in the form of Transient.
+  //! This information should be later transmitted to
+  //! MergeTransferInfo in order to be recorded in the
+  //! translation map
+  Standard_EXPORT virtual   TopoDS_Shape ProcessShape (const TopoDS_Shape& shape, const Standard_Real Prec, const Standard_Real MaxTol, const Standard_CString rscfile, const Standard_CString seq, Handle(Standard_Transient)& info, const Handle(Message_ProgressIndicator)& progress = 0)  const;
+  
+  //! Checks quality of pcurve of the edge on the given face,
+  //! and corrects it if necessary.
+  Standard_EXPORT virtual   Standard_Boolean CheckPCurve (const TopoDS_Edge& edge, const TopoDS_Face& face, const Standard_Real preci, const Standard_Boolean isSeam)  const;
+  
+  Standard_EXPORT virtual   void MergeTransferInfo (const Handle(Transfer_TransientProcess)& TP, const Handle(Standard_Transient)& info, const Standard_Integer startTPitem = 1)  const;
+  
+  //! Updates translation map (TP or FP) with information
+  //! resulting from ShapeProcessing
+  //! Parameter startTPitem can be used for optimisation, to
+  //! restrict modifications to entities stored in TP starting
+  //! from item startTPitem
+  Standard_EXPORT virtual   void MergeTransferInfo (const Handle(Transfer_FinderProcess)& FP, const Handle(Standard_Transient)& info)  const;
 
 
 
@@ -103,7 +84,7 @@ protected:
 private: 
 
 
-Handle_XSAlgo_ToolContainer myTC;
+  Handle(XSAlgo_ToolContainer) myTC;
 
 
 };
@@ -113,7 +94,6 @@ Handle_XSAlgo_ToolContainer myTC;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSAlgo_AlgoContainer_HeaderFile

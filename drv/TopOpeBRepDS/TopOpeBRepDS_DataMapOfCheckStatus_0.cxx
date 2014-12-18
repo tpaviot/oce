@@ -5,21 +5,11 @@
 
 #include <TopOpeBRepDS_DataMapOfCheckStatus.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus_HeaderFile
 #include <TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

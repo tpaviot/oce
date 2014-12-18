@@ -6,30 +6,25 @@
 #ifndef _XSDRAWSTEP_HeaderFile
 #define _XSDRAWSTEP_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-class Draw_Interpretor;
+#include <Draw_Interpretor.hxx>
 
 
-//! XSDRAW for STEP AP214 and AP203 <br>
-class XSDRAWSTEP  {
+//! XSDRAW for STEP AP214 and AP203
+class XSDRAWSTEP 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void Init() ;
-  //! Inits commands to access product data and to write shapes <br>
-  Standard_EXPORT   static  void InitCommands(Draw_Interpretor& theCommands) ;
-
+  Standard_EXPORT static   void Init() ;
+  
+  //! Inits commands to access product data and to write shapes
+  Standard_EXPORT static   void InitCommands (Draw_Interpretor& theCommands) ;
 
 
 
@@ -52,7 +47,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSDRAWSTEP_HeaderFile

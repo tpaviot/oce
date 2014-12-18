@@ -6,14 +6,13 @@
 #ifndef _MAT_Side_HeaderFile
 #define _MAT_Side_HeaderFile
 
-//! Definition on the Left and the Right on the Fig. <br>
-enum MAT_Side {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition on the Left and the Right on the Fig.
+enum MAT_Side
+{
 MAT_Left,
 MAT_Right
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _MAT_Side_HeaderFile

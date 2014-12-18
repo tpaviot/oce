@@ -6,46 +6,34 @@
 #ifndef _BOPDS_PassKeyBoolean_HeaderFile
 #define _BOPDS_PassKeyBoolean_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BOPDS_PassKey_HeaderFile
 #include <BOPDS_PassKey.hxx>
-#endif
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
 
 
 
-class BOPDS_PassKeyBoolean  : public BOPDS_PassKey {
+class BOPDS_PassKeyBoolean  : public BOPDS_PassKey
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      BOPDS_PassKeyBoolean();
+    BOPDS_PassKeyBoolean();
 virtual ~BOPDS_PassKeyBoolean();
   
-      BOPDS_PassKeyBoolean(const BOPCol_BaseAllocator& theAllocator);
+    BOPDS_PassKeyBoolean(const BOPCol_BaseAllocator& theAllocator);
   
-      BOPDS_PassKeyBoolean(const BOPDS_PassKeyBoolean& Other);
+    BOPDS_PassKeyBoolean(const BOPDS_PassKeyBoolean& Other);
   
-        void SetFlag(const Standard_Boolean theFlag) ;
+      void SetFlag (const Standard_Boolean theFlag) ;
 BOPDS_PassKeyBoolean& operator =(const BOPDS_PassKeyBoolean& );
   
-        Standard_Boolean Flag() const;
-
+      Standard_Boolean Flag()  const;
 
 
 
@@ -54,7 +42,7 @@ protected:
 
 
 
-Standard_Boolean myFlag;
+  Standard_Boolean myFlag;
 
 
 private:
@@ -70,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPDS_PassKeyBoolean_HeaderFile

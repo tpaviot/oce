@@ -6,40 +6,18 @@
 #ifndef _V3d_LayerMgr_HeaderFile
 #define _V3d_LayerMgr_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_V3d_LayerMgr_HeaderFile
 #include <Handle_V3d_LayerMgr.hxx>
-#endif
 
-#ifndef _V3d_ViewPointer_HeaderFile
 #include <V3d_ViewPointer.hxx>
-#endif
-#ifndef _Handle_Visual3d_Layer_HeaderFile
 #include <Handle_Visual3d_Layer.hxx>
-#endif
-#ifndef _Handle_V3d_ColorScale_HeaderFile
 #include <Handle_V3d_ColorScale.hxx>
-#endif
-#ifndef _Handle_V3d_ColorScaleLayerItem_HeaderFile
 #include <Handle_V3d_ColorScaleLayerItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_V3d_View_HeaderFile
 #include <Handle_V3d_View.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Aspect_ColorScale_HeaderFile
 #include <Handle_Aspect_ColorScale.hxx>
-#endif
 class Visual3d_Layer;
 class V3d_ColorScale;
 class V3d_ColorScaleLayerItem;
@@ -47,29 +25,31 @@ class V3d_View;
 class Aspect_ColorScale;
 
 
-//! Class to manage layers <br>
-class V3d_LayerMgr : public MMgt_TShared {
+//! Class to manage layers
+class V3d_LayerMgr : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   V3d_LayerMgr(const Handle(V3d_View)& aView);
+  Standard_EXPORT V3d_LayerMgr(const Handle(V3d_View)& aView);
   
-       const Handle_Visual3d_Layer& Overlay() const;
+     const  Handle(Visual3d_Layer)& Overlay()  const;
   
-        Handle_V3d_View View() const;
+      Handle(V3d_View) View()  const;
   
-  Standard_EXPORT     void ColorScaleDisplay() ;
+  Standard_EXPORT   void ColorScaleDisplay() ;
   
-  Standard_EXPORT     void ColorScaleErase() ;
+  Standard_EXPORT   void ColorScaleErase() ;
   
-  Standard_EXPORT     Standard_Boolean ColorScaleIsDisplayed() const;
+  Standard_EXPORT   Standard_Boolean ColorScaleIsDisplayed()  const;
   
-  Standard_EXPORT     Handle_Aspect_ColorScale ColorScale() const;
-  //! Recompute layer with objects <br>
-  Standard_EXPORT     void Compute() ;
+  Standard_EXPORT   Handle(Aspect_ColorScale) ColorScale()  const;
   
-  Standard_EXPORT     void Resized() ;
+  //! Recompute layer with objects
+  Standard_EXPORT   void Compute() ;
+  
+  Standard_EXPORT   void Resized() ;
 
 
 
@@ -78,17 +58,20 @@ public:
 
 protected:
 
-  //! Begin layers recomputation <br>
-  Standard_EXPORT   virtual  Standard_Boolean Begin() ;
-  //! Perform layers recomputation <br>
-  Standard_EXPORT   virtual  void Redraw() ;
-  //! End layers recomputation <br>
-  Standard_EXPORT   virtual  void End() ;
+  
+  //! Begin layers recomputation
+  Standard_EXPORT virtual   Standard_Boolean Begin() ;
+  
+  //! Perform layers recomputation
+  Standard_EXPORT virtual   void Redraw() ;
+  
+  //! End layers recomputation
+  Standard_EXPORT virtual   void End() ;
 
-V3d_ViewPointer myView;
-Handle_Visual3d_Layer myOverlay;
-Handle_V3d_ColorScale myColorScale;
-Handle_V3d_ColorScaleLayerItem myColorScaleLayerItem;
+  V3d_ViewPointer myView;
+  Handle(Visual3d_Layer) myOverlay;
+  Handle(V3d_ColorScale) myColorScale;
+  Handle(V3d_ColorScaleLayerItem) myColorScaleLayerItem;
 
 
 private: 
@@ -103,7 +86,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _V3d_LayerMgr_HeaderFile

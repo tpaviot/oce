@@ -6,28 +6,14 @@
 #ifndef _IGESGeom_HArray1OfBoundary_HeaderFile
 #define _IGESGeom_HArray1OfBoundary_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_HArray1OfBoundary_HeaderFile
 #include <Handle_IGESGeom_HArray1OfBoundary.hxx>
-#endif
 
-#ifndef _IGESGeom_Array1OfBoundary_HeaderFile
 #include <IGESGeom_Array1OfBoundary.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Boundary_HeaderFile
 #include <Handle_IGESGeom_Boundary.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESGeom_Array1OfBoundary;
 
 
 
-class IGESGeom_HArray1OfBoundary : public MMgt_TShared {
+class IGESGeom_HArray1OfBoundary : public MMgt_TShared
+{
 
 public:
 
   
-      IGESGeom_HArray1OfBoundary(const Standard_Integer Low,const Standard_Integer Up);
+    IGESGeom_HArray1OfBoundary(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESGeom_HArray1OfBoundary(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESGeom_Boundary)& V);
+    IGESGeom_HArray1OfBoundary(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESGeom_Boundary)& V);
   
-        void Init(const Handle(IGESGeom_Boundary)& V) ;
+      void Init (const Handle(IGESGeom_Boundary)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESGeom_Boundary)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESGeom_Boundary)& Value) ;
   
-       const Handle_IGESGeom_Boundary& Value(const Standard_Integer Index) const;
+     const  Handle(IGESGeom_Boundary)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESGeom_Boundary& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESGeom_Boundary)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESGeom_Array1OfBoundary& Array1() const;
+     const  IGESGeom_Array1OfBoundary& Array1()  const;
   
-        IGESGeom_Array1OfBoundary& ChangeArray1() ;
+      IGESGeom_Array1OfBoundary& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESGeom_Array1OfBoundary myArray;
+  IGESGeom_Array1OfBoundary myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESGeom_Boundary
+#define ItemHArray1 Handle(IGESGeom_Boundary)
 #define ItemHArray1_hxx <IGESGeom_Boundary.hxx>
 #define TheArray1 IGESGeom_Array1OfBoundary
 #define TheArray1_hxx <IGESGeom_Array1OfBoundary.hxx>
@@ -103,7 +90,6 @@ IGESGeom_Array1OfBoundary myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_HArray1OfBoundary_HeaderFile

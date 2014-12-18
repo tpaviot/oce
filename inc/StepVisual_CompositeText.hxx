@@ -6,52 +6,40 @@
 #ifndef _StepVisual_CompositeText_HeaderFile
 #define _StepVisual_CompositeText_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_CompositeText_HeaderFile
 #include <Handle_StepVisual_CompositeText.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_HArray1OfTextOrCharacter_HeaderFile
 #include <Handle_StepVisual_HArray1OfTextOrCharacter.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepVisual_HArray1OfTextOrCharacter;
 class TCollection_HAsciiString;
 class StepVisual_TextOrCharacter;
 
 
 
-class StepVisual_CompositeText : public StepGeom_GeometricRepresentationItem {
+class StepVisual_CompositeText : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a CompositeText <br>
-  Standard_EXPORT   StepVisual_CompositeText();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a CompositeText
+  Standard_EXPORT StepVisual_CompositeText();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepVisual_HArray1OfTextOrCharacter)& aCollectedText) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetCollectedText(const Handle(StepVisual_HArray1OfTextOrCharacter)& aCollectedText) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepVisual_HArray1OfTextOrCharacter)& aCollectedText) ;
   
-  Standard_EXPORT     Handle_StepVisual_HArray1OfTextOrCharacter CollectedText() const;
+  Standard_EXPORT   void SetCollectedText (const Handle(StepVisual_HArray1OfTextOrCharacter)& aCollectedText) ;
   
-  Standard_EXPORT     StepVisual_TextOrCharacter CollectedTextValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepVisual_HArray1OfTextOrCharacter) CollectedText()  const;
   
-  Standard_EXPORT     Standard_Integer NbCollectedText() const;
+  Standard_EXPORT   StepVisual_TextOrCharacter CollectedTextValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbCollectedText()  const;
 
 
 
@@ -66,7 +54,7 @@ protected:
 private: 
 
 
-Handle_StepVisual_HArray1OfTextOrCharacter collectedText;
+  Handle(StepVisual_HArray1OfTextOrCharacter) collectedText;
 
 
 };
@@ -75,7 +63,6 @@ Handle_StepVisual_HArray1OfTextOrCharacter collectedText;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_CompositeText_HeaderFile

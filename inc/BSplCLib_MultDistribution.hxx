@@ -6,25 +6,24 @@
 #ifndef _BSplCLib_MultDistribution_HeaderFile
 #define _BSplCLib_MultDistribution_HeaderFile
 
-//!  This   enumeration describes the   form  of  the <br>
-//!         sequence of mutiplicities.  MultDistribution is : <br>
-//! <br>
-//!            Constant if all the multiplicities have the same <br>
-//!            value. <br>
-//! <br>
-//!            QuasiConstant if all the internal knots have the <br>
-//!            same multiplicity and if the first and last knot <br>
-//!            have  a different  multiplicity. <br>
-//! <br>
-//!            NonConstant in other cases. <br>
-enum BSplCLib_MultDistribution {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! This   enumeration describes the   form  of  the
+//! sequence of mutiplicities.  MultDistribution is :
+//!
+//! Constant if all the multiplicities have the same
+//! value.
+//!
+//! QuasiConstant if all the internal knots have the
+//! same multiplicity and if the first and last knot
+//! have  a different  multiplicity.
+//!
+//! NonConstant in other cases.
+enum BSplCLib_MultDistribution
+{
 BSplCLib_NonConstant,
 BSplCLib_Constant,
 BSplCLib_QuasiConstant
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BSplCLib_MultDistribution_HeaderFile

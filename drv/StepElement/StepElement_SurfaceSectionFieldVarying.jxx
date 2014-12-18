@@ -1,6 +1,2 @@
-#ifndef _StepElement_HArray1OfSurfaceSection_HeaderFile
 #include <StepElement_HArray1OfSurfaceSection.hxx>
-#endif
-#ifndef _StepElement_SurfaceSectionFieldVarying_HeaderFile
 #include <StepElement_SurfaceSectionFieldVarying.hxx>
-#endif

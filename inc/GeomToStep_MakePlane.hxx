@@ -6,47 +6,35 @@
 #ifndef _GeomToStep_MakePlane_HeaderFile
 #define _GeomToStep_MakePlane_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Plane_HeaderFile
 #include <Handle_StepGeom_Plane.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_Plane_HeaderFile
 #include <Handle_Geom_Plane.hxx>
-#endif
 class StepGeom_Plane;
 class StdFail_NotDone;
 class gp_Pln;
 class Geom_Plane;
 
 
-//! This class implements the mapping between classes <br>
-//!          Plane from Geom and Pln from gp, and the class <br>
-//!          Plane from StepGeom which describes a plane from <br>
-//!          Prostep. <br>
-class GeomToStep_MakePlane  : public GeomToStep_Root {
+//! This class implements the mapping between classes
+//! Plane from Geom and Pln from gp, and the class
+//! Plane from StepGeom which describes a plane from
+//! Prostep.
+class GeomToStep_MakePlane  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakePlane(const gp_Pln& P);
+  Standard_EXPORT GeomToStep_MakePlane(const gp_Pln& P);
   
-  Standard_EXPORT   GeomToStep_MakePlane(const Handle(Geom_Plane)& P);
+  Standard_EXPORT GeomToStep_MakePlane(const Handle(Geom_Plane)& P);
   
-  Standard_EXPORT    const Handle_StepGeom_Plane& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_Plane)& Value()  const;
 
 
 
@@ -61,7 +49,7 @@ private:
 
 
 
-Handle_StepGeom_Plane thePlane;
+  Handle(StepGeom_Plane) thePlane;
 
 
 };
@@ -70,7 +58,6 @@ Handle_StepGeom_Plane thePlane;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakePlane_HeaderFile

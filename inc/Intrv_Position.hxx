@@ -6,8 +6,11 @@
 #ifndef _Intrv_Position_HeaderFile
 #define _Intrv_Position_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Intrv_Position {
+
+enum Intrv_Position
+{
 Intrv_Before,
 Intrv_JustBefore,
 Intrv_OverlappingAtStart,
@@ -23,8 +26,4 @@ Intrv_JustAfter,
 Intrv_After
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Intrv_Position_HeaderFile

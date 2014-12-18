@@ -6,25 +6,13 @@
 #ifndef _AppCont_FunctionTool2d_HeaderFile
 #define _AppCont_FunctionTool2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class AppCont_Function2d;
 class TColgp_Array1OfPnt2d;
 class TColgp_Array1OfVec2d;
@@ -32,36 +20,43 @@ class TColgp_Array1OfPnt;
 class TColgp_Array1OfVec;
 
 
-
-class AppCont_FunctionTool2d  {
+//! This class is the inteface between the Function2d
+//! class and the tool asked by LeastSquare.
+class AppCont_FunctionTool2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! returns the first parameter of the Function. <br>
-  Standard_EXPORT   static  Standard_Real FirstParameter(const AppCont_Function2d& C) ;
-  //! returns the last parameter of the Function. <br>
-  Standard_EXPORT   static  Standard_Real LastParameter(const AppCont_Function2d& C) ;
-  //! Returns 1. (the approximation will be done only for one <br>
-//!          function. <br>
-  Standard_EXPORT   static  Standard_Integer NbP2d(const AppCont_Function2d& C) ;
-  //! Returns 0. <br>
-  Standard_EXPORT   static  Standard_Integer NbP3d(const AppCont_Function2d& C) ;
-  //! <tabP> is an array of only 1 element, the point value at <br>
-//!          the parameter <U>. <br>
-  Standard_EXPORT   static  void Value(const AppCont_Function2d& C,const Standard_Real U,TColgp_Array1OfPnt2d& tabPt) ;
-  //! <tabV> is an array of only 1 element, the derivative <br>
-//!          value at the parameter <U>. <br>
-  Standard_EXPORT   static  Standard_Boolean D1(const AppCont_Function2d& C,const Standard_Real U,TColgp_Array1OfVec2d& tabV) ;
   
-  Standard_EXPORT   static  void Value(const AppCont_Function2d& C,const Standard_Real U,TColgp_Array1OfPnt& tabPt2d) ;
+  //! returns the first parameter of the Function.
+  Standard_EXPORT static   Standard_Real FirstParameter (const AppCont_Function2d& C) ;
   
-  Standard_EXPORT   static  void Value(const AppCont_Function2d& C,const Standard_Real U,TColgp_Array1OfPnt& tabPt,TColgp_Array1OfPnt2d& tabPt2d) ;
+  //! returns the last parameter of the Function.
+  Standard_EXPORT static   Standard_Real LastParameter (const AppCont_Function2d& C) ;
   
-  Standard_EXPORT   static  Standard_Boolean D1(const AppCont_Function2d& C,const Standard_Real U,TColgp_Array1OfVec& tabV2d) ;
+  //! Returns 1. (the approximation will be done only for one
+  //! function.
+  Standard_EXPORT static   Standard_Integer NbP2d (const AppCont_Function2d& C) ;
   
-  Standard_EXPORT   static  Standard_Boolean D1(const AppCont_Function2d& C,const Standard_Real U,TColgp_Array1OfVec& tabV,TColgp_Array1OfVec2d& tabV2d) ;
-
+  //! Returns 0.
+  Standard_EXPORT static   Standard_Integer NbP3d (const AppCont_Function2d& C) ;
+  
+  //! <tabP> is an array of only 1 element, the point value at
+  //! the parameter <U>.
+  Standard_EXPORT static   void Value (const AppCont_Function2d& C, const Standard_Real U, TColgp_Array1OfPnt2d& tabPt) ;
+  
+  //! <tabV> is an array of only 1 element, the derivative
+  //! value at the parameter <U>.
+  Standard_EXPORT static   Standard_Boolean D1 (const AppCont_Function2d& C, const Standard_Real U, TColgp_Array1OfVec2d& tabV) ;
+  
+  Standard_EXPORT static   void Value (const AppCont_Function2d& C, const Standard_Real U, TColgp_Array1OfPnt& tabPt2d) ;
+  
+  Standard_EXPORT static   void Value (const AppCont_Function2d& C, const Standard_Real U, TColgp_Array1OfPnt& tabPt, TColgp_Array1OfPnt2d& tabPt2d) ;
+  
+  Standard_EXPORT static   Standard_Boolean D1 (const AppCont_Function2d& C, const Standard_Real U, TColgp_Array1OfVec& tabV2d) ;
+  
+  Standard_EXPORT static   Standard_Boolean D1 (const AppCont_Function2d& C, const Standard_Real U, TColgp_Array1OfVec& tabV, TColgp_Array1OfVec2d& tabV2d) ;
 
 
 
@@ -84,7 +79,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AppCont_FunctionTool2d_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _ChFiDS_SecArray1_HeaderFile
 #define _ChFiDS_SecArray1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class ChFiDS_CircSection;
 
 
 
-class ChFiDS_SecArray1  {
+class ChFiDS_SecArray1 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      ChFiDS_SecArray1(const Standard_Integer Low,const Standard_Integer Up);
+    ChFiDS_SecArray1(const Standard_Integer Low, const Standard_Integer Up);
   
-      ChFiDS_SecArray1(const ChFiDS_CircSection& Item,const Standard_Integer Low,const Standard_Integer Up);
+    ChFiDS_SecArray1(const ChFiDS_CircSection& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const ChFiDS_CircSection& V) ;
+  Standard_EXPORT   void Init (const ChFiDS_CircSection& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~ChFiDS_SecArray1()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const ChFiDS_SecArray1& Assign(const ChFiDS_SecArray1& Other) ;
-   const ChFiDS_SecArray1& operator =(const ChFiDS_SecArray1& Other) 
+  Standard_EXPORT  const  ChFiDS_SecArray1& Assign (const ChFiDS_SecArray1& Other) ;
+ const  ChFiDS_SecArray1& operator = (const ChFiDS_SecArray1& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const ChFiDS_CircSection& Value) ;
+      void SetValue (const Standard_Integer Index, const ChFiDS_CircSection& Value) ;
   
-       const ChFiDS_CircSection& Value(const Standard_Integer Index) const;
-     const ChFiDS_CircSection& operator ()(const Standard_Integer Index) const
+     const  ChFiDS_CircSection& Value (const Standard_Integer Index)  const;
+   const  ChFiDS_CircSection& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        ChFiDS_CircSection& ChangeValue(const Standard_Integer Index) ;
-      ChFiDS_CircSection& operator ()(const Standard_Integer Index) 
+      ChFiDS_CircSection& ChangeValue (const Standard_Integer Index) ;
+    ChFiDS_CircSection& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   ChFiDS_SecArray1(const ChFiDS_SecArray1& AnArray);
+  Standard_EXPORT ChFiDS_SecArray1(const ChFiDS_SecArray1& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_SecArray1_HeaderFile

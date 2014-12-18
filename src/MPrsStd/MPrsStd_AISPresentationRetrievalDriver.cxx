@@ -68,7 +68,7 @@ void MPrsStd_AISPresentationRetrievalDriver::Paste(const Handle(PDF_Attribute)& 
   if( S->Width() != -1. ) T->SetWidth( S->Width() );
   else T->UnsetWidth(); 
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
   cout << "AISPresentationRetrievalDriver "  << "retrieved DriverGUID ==> ";
   guid.ShallowDump(cout);
   cout << endl;

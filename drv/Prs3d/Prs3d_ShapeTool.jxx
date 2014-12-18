@@ -1,33 +1,11 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopTools_HSequenceOfShape_HeaderFile
 #include <TopTools_HSequenceOfShape.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _Poly_Triangulation_HeaderFile
 #include <Poly_Triangulation.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _Poly_PolygonOnTriangulation_HeaderFile
 #include <Poly_PolygonOnTriangulation.hxx>
-#endif
-#ifndef _Poly_Polygon3D_HeaderFile
 #include <Poly_Polygon3D.hxx>
-#endif
-#ifndef _Prs3d_ShapeTool_HeaderFile
 #include <Prs3d_ShapeTool.hxx>
-#endif

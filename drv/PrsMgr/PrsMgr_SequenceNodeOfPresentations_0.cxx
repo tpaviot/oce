@@ -5,16 +5,10 @@
 
 #include <PrsMgr_SequenceNodeOfPresentations.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PrsMgr_ModedPresentation_HeaderFile
 #include <PrsMgr_ModedPresentation.hxx>
-#endif
-#ifndef _PrsMgr_Presentations_HeaderFile
 #include <PrsMgr_Presentations.hxx>
-#endif
 
  
 

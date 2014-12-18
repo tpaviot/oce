@@ -6,58 +6,48 @@
 #ifndef _math_MultipleVarFunctionWithGradient_HeaderFile
 #define _math_MultipleVarFunctionWithGradient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _math_MultipleVarFunction_HeaderFile
 #include <math_MultipleVarFunction.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
+#include <math_Vector.hxx>
 #include <Standard_Real.hxx>
-#endif
-class math_Vector;
 
 
 
-//! The abstract class MultipleVarFunctionWithGradient <br>
-//! describes the virtual functions associated with a multiple variable function. <br>
-class math_MultipleVarFunctionWithGradient  : public math_MultipleVarFunction {
+//! The abstract class MultipleVarFunctionWithGradient
+//! describes the virtual functions associated with a multiple variable function.
+class math_MultipleVarFunctionWithGradient  : public math_MultipleVarFunction
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~math_MultipleVarFunctionWithGradient(){Delete();}
-  //! Returns the number of variables of the function. <br>
-  Standard_EXPORT   virtual  Standard_Integer NbVariables() const = 0;
-  //! Computes the values of the Functions <F> for the   variable <X>. <br>
-//!          Returns True if the computation was done successfully, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Value(const math_Vector& X,Standard_Real& F)  = 0;
-  //! Computes the gradient <G> of the functions for the   variable <X>. <br>
-//!         Returns True if the computation was done successfully, <br>
-//!         False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Gradient(const math_Vector& X,math_Vector& G)  = 0;
-  //! computes the value <F> and the gradient <G> of the <br>
-//!          functions for the variable <X>. <br>
-//!          Returns True if the computation was done successfully, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Values(const math_Vector& X,Standard_Real& F,math_Vector& G)  = 0;
-
+  
+  //! Returns the number of variables of the function.
+  Standard_EXPORT virtual   Standard_Integer NbVariables()  const = 0;
+  
+  //! Computes the values of the Functions <F> for the   variable <X>.
+  //! Returns True if the computation was done successfully,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Value (const math_Vector& X, Standard_Real& F)  = 0;
+  
+  //! Computes the gradient <G> of the functions for the   variable <X>.
+  //! Returns True if the computation was done successfully,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Gradient (const math_Vector& X, math_Vector& G)  = 0;
+  
+  //! computes the value <F> and the gradient <G> of the
+  //! functions for the variable <X>.
+  //! Returns True if the computation was done successfully,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Values (const math_Vector& X, Standard_Real& F, math_Vector& G)  = 0;
 
 
 
@@ -80,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_MultipleVarFunctionWithGradient_HeaderFile

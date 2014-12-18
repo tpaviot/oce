@@ -6,78 +6,59 @@
 #ifndef _PDataXtd_Constraint_HeaderFile
 #define _PDataXtd_Constraint_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataXtd_Constraint_HeaderFile
 #include <Handle_PDataXtd_Constraint.hxx>
-#endif
 
-#ifndef _Handle_PDataStd_Real_HeaderFile
 #include <Handle_PDataStd_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PDF_HAttributeArray1_HeaderFile
 #include <Handle_PDF_HAttributeArray1.hxx>
-#endif
-#ifndef _Handle_PNaming_NamedShape_HeaderFile
 #include <Handle_PNaming_NamedShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PDataStd_Real;
 class PDF_HAttributeArray1;
 class PNaming_NamedShape;
 
 
-class PDataXtd_Constraint : public PDF_Attribute {
+class PDataXtd_Constraint : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataXtd_Constraint();
+  Standard_EXPORT PDataXtd_Constraint();
   
-  Standard_EXPORT   PDataXtd_Constraint(const Standard_Integer Type,const Handle(PDF_HAttributeArray1)& Geometries,const Handle(PDataStd_Real)& Value,const Handle(PNaming_NamedShape)& Plane);
+  Standard_EXPORT PDataXtd_Constraint(const Standard_Integer Type, const Handle(PDF_HAttributeArray1)& Geometries, const Handle(PDataStd_Real)& Value, const Handle(PNaming_NamedShape)& Plane);
   
-  Standard_EXPORT     Handle_PDataStd_Real GetValue() const;
+  Standard_EXPORT   Handle(PDataStd_Real) GetValue()  const;
   
-  Standard_EXPORT     Standard_Integer GetType() const;
+  Standard_EXPORT   Standard_Integer GetType()  const;
   
-  Standard_EXPORT     Handle_PDF_HAttributeArray1 GetGeometries() const;
+  Standard_EXPORT   Handle(PDF_HAttributeArray1) GetGeometries()  const;
   
-  Standard_EXPORT     void Set(const Handle(PDataStd_Real)& V) ;
+  Standard_EXPORT   void Set (const Handle(PDataStd_Real)& V) ;
   
-  Standard_EXPORT     void SetType(const Standard_Integer Type) ;
+  Standard_EXPORT   void SetType (const Standard_Integer Type) ;
   
-  Standard_EXPORT     void SetGeometries(const Handle(PDF_HAttributeArray1)& Geometries) ;
+  Standard_EXPORT   void SetGeometries (const Handle(PDF_HAttributeArray1)& Geometries) ;
   
-  Standard_EXPORT     void SetPlane(const Handle(PNaming_NamedShape)& plane) ;
+  Standard_EXPORT   void SetPlane (const Handle(PNaming_NamedShape)& plane) ;
   
-  Standard_EXPORT     Handle_PNaming_NamedShape GetPlane() const;
+  Standard_EXPORT   Handle(PNaming_NamedShape) GetPlane()  const;
   
-  Standard_EXPORT     void Verified(const Standard_Boolean status) ;
+  Standard_EXPORT   void Verified (const Standard_Boolean status) ;
   
-  Standard_EXPORT     Standard_Boolean Verified() const;
+  Standard_EXPORT   Standard_Boolean Verified()  const;
   
-  Standard_EXPORT     void Inverted(const Standard_Boolean status) ;
+  Standard_EXPORT   void Inverted (const Standard_Boolean status) ;
   
-  Standard_EXPORT     Standard_Boolean Inverted() const;
+  Standard_EXPORT   Standard_Boolean Inverted()  const;
   
-  Standard_EXPORT     void Reversed(const Standard_Boolean status) ;
+  Standard_EXPORT   void Reversed (const Standard_Boolean status) ;
   
-  Standard_EXPORT     Standard_Boolean Reversed() const;
+  Standard_EXPORT   Standard_Boolean Reversed()  const;
 
 PDataXtd_Constraint(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -110,13 +91,13 @@ protected:
 private: 
 
 
-Standard_Integer myType;
-Handle_PDF_HAttributeArray1 myGeometries;
-Handle_PDataStd_Real myValue;
-Standard_Boolean myIsReversed;
-Standard_Boolean myIsInverted;
-Standard_Boolean myIsVerified;
-Handle_PNaming_NamedShape myPlane;
+  Standard_Integer myType;
+  Handle(PDF_HAttributeArray1) myGeometries;
+  Handle(PDataStd_Real) myValue;
+  Standard_Boolean myIsReversed;
+  Standard_Boolean myIsInverted;
+  Standard_Boolean myIsVerified;
+  Handle(PNaming_NamedShape) myPlane;
 
 
 };
@@ -125,7 +106,6 @@ Handle_PNaming_NamedShape myPlane;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataXtd_Constraint_HeaderFile

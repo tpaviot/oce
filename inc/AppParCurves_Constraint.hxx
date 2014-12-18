@@ -6,20 +6,19 @@
 #ifndef _AppParCurves_Constraint_HeaderFile
 #define _AppParCurves_Constraint_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//! -   NoConstraint: this point has no constraints. <br>
-//! -   PassPoint: the approximation curve passes through this point. <br>
-//! -   TangencyPoint: this point has a tangency constraint. <br>
-//! -   CurvaturePoint: this point has a curvature constraint. <br>
-enum AppParCurves_Constraint {
+
+//! -   NoConstraint: this point has no constraints.
+//! -   PassPoint: the approximation curve passes through this point.
+//! -   TangencyPoint: this point has a tangency constraint.
+//! -   CurvaturePoint: this point has a curvature constraint.
+enum AppParCurves_Constraint
+{
 AppParCurves_NoConstraint,
 AppParCurves_PassPoint,
 AppParCurves_TangencyPoint,
 AppParCurves_CurvaturePoint
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AppParCurves_Constraint_HeaderFile

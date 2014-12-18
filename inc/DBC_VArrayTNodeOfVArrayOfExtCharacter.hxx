@@ -6,44 +6,32 @@
 #ifndef _DBC_VArrayTNodeOfVArrayOfExtCharacter_HeaderFile
 #define _DBC_VArrayTNodeOfVArrayOfExtCharacter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_ExtCharacter_HeaderFile
 #include <Standard_ExtCharacter.hxx>
-#endif
-#ifndef _Handle_DBC_VArrayNodeOfVArrayOfExtCharacter_HeaderFile
 #include <Handle_DBC_VArrayNodeOfVArrayOfExtCharacter.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class DBC_VArrayOfExtCharacter;
 class DBC_VArrayNodeOfVArrayOfExtCharacter;
 
 
 
-class DBC_VArrayTNodeOfVArrayOfExtCharacter  {
+class DBC_VArrayTNodeOfVArrayOfExtCharacter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      DBC_VArrayTNodeOfVArrayOfExtCharacter();
+    DBC_VArrayTNodeOfVArrayOfExtCharacter();
   
-      DBC_VArrayTNodeOfVArrayOfExtCharacter(const Standard_ExtCharacter& aValue);
+    DBC_VArrayTNodeOfVArrayOfExtCharacter(const Standard_ExtCharacter& aValue);
   
-        void SetValue(const Standard_ExtCharacter& aValue) ;
+      void SetValue (const Standard_ExtCharacter& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Standard_ExtCharacter myValue;
+  Standard_ExtCharacter myValue;
 
 
 };
@@ -88,7 +76,6 @@ Standard_ExtCharacter myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBC_VArrayTNodeOfVArrayOfExtCharacter_HeaderFile

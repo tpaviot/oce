@@ -5,18 +5,10 @@
 
 #include <BRepFill_SequenceOfEdgeFaceAndOrder.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _BRepFill_EdgeFaceAndOrder_HeaderFile
 #include <BRepFill_EdgeFaceAndOrder.hxx>
-#endif
-#ifndef _BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder_HeaderFile
 #include <BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder.hxx>
-#endif
  
 
 #define SeqItem BRepFill_EdgeFaceAndOrder

@@ -5,28 +5,13 @@
 
 #include <PDataStd_HArray1OfByte.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _PDataStd_FieldOfHArray1OfByte_HeaderFile
 #include <PDataStd_FieldOfHArray1OfByte.hxx>
-#endif
-#ifndef _PDataStd_VArrayNodeOfFieldOfHArray1OfByte_HeaderFile
 #include <PDataStd_VArrayNodeOfFieldOfHArray1OfByte.hxx>
-#endif
-#ifndef _PDataStd_VArrayTNodeOfFieldOfHArray1OfByte_HeaderFile
 #include <PDataStd_VArrayTNodeOfFieldOfHArray1OfByte.hxx>
-#endif
 
  
 

@@ -6,22 +6,15 @@
 #ifndef _Handle_BRepCheck_Shell_HeaderFile
 #define _Handle_BRepCheck_Shell_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BRepCheck_Result_HeaderFile
 #include <Handle_BRepCheck_Result.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BRepCheck_Result);
 class BRepCheck_Shell;
 
-DEFINE_STANDARD_HANDLE(BRepCheck_Shell,BRepCheck_Result)
+DEFINE_STANDARD_HANDLE(BRepCheck_Shell, BRepCheck_Result)
 
-#endif
+#endif // _Handle_BRepCheck_Shell_HeaderFile

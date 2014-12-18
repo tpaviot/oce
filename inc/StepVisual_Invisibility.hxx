@@ -6,46 +6,36 @@
 #ifndef _StepVisual_Invisibility_HeaderFile
 #define _StepVisual_Invisibility_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_Invisibility_HeaderFile
 #include <Handle_StepVisual_Invisibility.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_HArray1OfInvisibleItem_HeaderFile
 #include <Handle_StepVisual_HArray1OfInvisibleItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepVisual_HArray1OfInvisibleItem;
 class StepVisual_InvisibleItem;
 
 
 
-class StepVisual_Invisibility : public MMgt_TShared {
+class StepVisual_Invisibility : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a Invisibility <br>
-  Standard_EXPORT   StepVisual_Invisibility();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepVisual_HArray1OfInvisibleItem)& aInvisibleItems) ;
+  //! Returns a Invisibility
+  Standard_EXPORT StepVisual_Invisibility();
   
-  Standard_EXPORT     void SetInvisibleItems(const Handle(StepVisual_HArray1OfInvisibleItem)& aInvisibleItems) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepVisual_HArray1OfInvisibleItem)& aInvisibleItems) ;
   
-  Standard_EXPORT     Handle_StepVisual_HArray1OfInvisibleItem InvisibleItems() const;
+  Standard_EXPORT   void SetInvisibleItems (const Handle(StepVisual_HArray1OfInvisibleItem)& aInvisibleItems) ;
   
-  Standard_EXPORT     StepVisual_InvisibleItem InvisibleItemsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepVisual_HArray1OfInvisibleItem) InvisibleItems()  const;
   
-  Standard_EXPORT     Standard_Integer NbInvisibleItems() const;
+  Standard_EXPORT   StepVisual_InvisibleItem InvisibleItemsValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbInvisibleItems()  const;
 
 
 
@@ -60,7 +50,7 @@ protected:
 private: 
 
 
-Handle_StepVisual_HArray1OfInvisibleItem invisibleItems;
+  Handle(StepVisual_HArray1OfInvisibleItem) invisibleItems;
 
 
 };
@@ -69,7 +59,6 @@ Handle_StepVisual_HArray1OfInvisibleItem invisibleItems;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_Invisibility_HeaderFile

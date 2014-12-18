@@ -6,19 +6,18 @@
 #ifndef _V3d_TypeOfBackfacingModel_HeaderFile
 #define _V3d_TypeOfBackfacingModel_HeaderFile
 
-//! Modes of display of back faces in the view <br>
-//! <br>
-//!            TOBM_AUTOMATIC graphic's structure setting is in use <br>
-//!            TOBM_ALWAYS_DISPLAYED     force display of back faces <br>
-//!            TOBM_NEVER_DISPLAYED      disable display of back faces <br>
-enum V3d_TypeOfBackfacingModel {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Modes of display of back faces in the view
+//!
+//! TOBM_AUTOMATIC graphic's structure setting is in use
+//! TOBM_ALWAYS_DISPLAYED     force display of back faces
+//! TOBM_NEVER_DISPLAYED      disable display of back faces
+enum V3d_TypeOfBackfacingModel
+{
 V3d_TOBM_AUTOMATIC,
 V3d_TOBM_ALWAYS_DISPLAYED,
 V3d_TOBM_NEVER_DISPLAYED
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _V3d_TypeOfBackfacingModel_HeaderFile

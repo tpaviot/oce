@@ -6,38 +6,27 @@
 #ifndef _GeomFill_SequenceNodeOfSequenceOfTrsf_HeaderFile
 #define _GeomFill_SequenceNodeOfSequenceOfTrsf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomFill_SequenceNodeOfSequenceOfTrsf_HeaderFile
 #include <Handle_GeomFill_SequenceNodeOfSequenceOfTrsf.hxx>
-#endif
 
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class gp_Trsf;
 class GeomFill_SequenceOfTrsf;
 
 
 
-class GeomFill_SequenceNodeOfSequenceOfTrsf : public TCollection_SeqNode {
+class GeomFill_SequenceNodeOfSequenceOfTrsf : public TCollection_SeqNode
+{
 
 public:
 
   
-      GeomFill_SequenceNodeOfSequenceOfTrsf(const gp_Trsf& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    GeomFill_SequenceNodeOfSequenceOfTrsf(const gp_Trsf& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        gp_Trsf& Value() const;
+      gp_Trsf& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-gp_Trsf myValue;
+  gp_Trsf myValue;
 
 
 };
@@ -78,7 +67,6 @@ gp_Trsf myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_SequenceNodeOfSequenceOfTrsf_HeaderFile

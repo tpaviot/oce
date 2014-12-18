@@ -6,15 +6,14 @@
 #ifndef _ChFiDS_ChamfMethod_HeaderFile
 #define _ChFiDS_ChamfMethod_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum ChFiDS_ChamfMethod {
+
+enum ChFiDS_ChamfMethod
+{
 ChFiDS_Sym,
 ChFiDS_TwoDist,
 ChFiDS_DistAngle
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _ChFiDS_ChamfMethod_HeaderFile

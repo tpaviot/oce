@@ -5,28 +5,14 @@
 
 #include <StepShape_HArray1OfOrientedClosedShell.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepShape_OrientedClosedShell_HeaderFile
 #include <StepShape_OrientedClosedShell.hxx>
-#endif
-#ifndef _StepShape_Array1OfOrientedClosedShell_HeaderFile
 #include <StepShape_Array1OfOrientedClosedShell.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepShape_HArray1OfOrientedClosedShell,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepShape_HArray1OfOrientedClosedShell)
 
 
-#define ItemHArray1 Handle_StepShape_OrientedClosedShell
+#define ItemHArray1 Handle(StepShape_OrientedClosedShell)
 #define ItemHArray1_hxx <StepShape_OrientedClosedShell.hxx>
 #define TheArray1 StepShape_Array1OfOrientedClosedShell
 #define TheArray1_hxx <StepShape_Array1OfOrientedClosedShell.hxx>

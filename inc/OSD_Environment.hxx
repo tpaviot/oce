@@ -6,80 +6,79 @@
 #ifndef _OSD_Environment_HeaderFile
 #define _OSD_Environment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _OSD_Error_HeaderFile
 #include <OSD_Error.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_NullObject;
 class OSD_OSDError;
 class TCollection_AsciiString;
 
 
-//! Management of system environment variables <br>
-//!          An environment variable is composed of a variable name <br>
-//!          and its value. <br>
-//! <br>
-//!          To be portable among various systems, environment variables <br>
-//!          are local to a process. <br>
-class OSD_Environment  {
+//! Management of system environment variables
+//! An environment variable is composed of a variable name
+//! and its value.
+//!
+//! To be portable among various systems, environment variables
+//! are local to a process.
+class OSD_Environment 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates the object Environment. <br>
-  Standard_EXPORT   OSD_Environment();
-  //! Creates an Environment variable initialized with value <br>
-//!          set to an empty AsciiString. <br>
-  Standard_EXPORT   OSD_Environment(const TCollection_AsciiString& Name);
-  //! Creates an Environment variable initialized with Value. <br>
-  Standard_EXPORT   OSD_Environment(const TCollection_AsciiString& Name,const TCollection_AsciiString& Value);
-  //! Changes environment variable value. <br>
-//!          Raises ConstructionError either if the string contains <br>
-//!          characters not in range of ' '...'~' or if the string <br>
-//!          contains the character '$' which is forbiden. <br>
-  Standard_EXPORT     void SetValue(const TCollection_AsciiString& Value) ;
-  //! Gets the value of an environment variable <br>
-  Standard_EXPORT     TCollection_AsciiString Value() ;
-  //! Changes environment variable name. <br>
-//!          Raises ConstructionError either if the string contains <br>
-//!          characters not in range of ' '...'~' or if the string <br>
-//!          contains the character '$' which is forbiden. <br>
-  Standard_EXPORT     void SetName(const TCollection_AsciiString& name) ;
-  //! Gets the name of <me>. <br>
-  Standard_EXPORT     TCollection_AsciiString Name() const;
-  //! Sets the value of an environment variable <br>
-//!          into system (physically). <br>
-  Standard_EXPORT     void Build() ;
-  //! Removes (physically) an environment variable <br>
-  Standard_EXPORT     void Remove() ;
-  //! Returns TRUE if an error occurs <br>
-  Standard_EXPORT     Standard_Boolean Failed() const;
-  //! Resets error counter to zero <br>
-  Standard_EXPORT     void Reset() ;
-  //! Raises OSD_Error <br>
-  Standard_EXPORT     void Perror() ;
-  //! Returns error number if 'Failed' is TRUE. <br>
-  Standard_EXPORT     Standard_Integer Error() const;
-
+  
+  //! Creates the object Environment.
+  Standard_EXPORT OSD_Environment();
+  
+  //! Creates an Environment variable initialized with value
+  //! set to an empty AsciiString.
+  Standard_EXPORT OSD_Environment(const TCollection_AsciiString& Name);
+  
+  //! Creates an Environment variable initialized with Value.
+  Standard_EXPORT OSD_Environment(const TCollection_AsciiString& Name, const TCollection_AsciiString& Value);
+  
+  //! Changes environment variable value.
+  //! Raises ConstructionError either if the string contains
+  //! characters not in range of ' '...'~' or if the string
+  //! contains the character '$' which is forbiden.
+  Standard_EXPORT   void SetValue (const TCollection_AsciiString& Value) ;
+  
+  //! Gets the value of an environment variable
+  Standard_EXPORT   TCollection_AsciiString Value() ;
+  
+  //! Changes environment variable name.
+  //! Raises ConstructionError either if the string contains
+  //! characters not in range of ' '...'~' or if the string
+  //! contains the character '$' which is forbiden.
+  Standard_EXPORT   void SetName (const TCollection_AsciiString& name) ;
+  
+  //! Gets the name of <me>.
+  Standard_EXPORT   TCollection_AsciiString Name()  const;
+  
+  //! Sets the value of an environment variable
+  //! into system (physically).
+  Standard_EXPORT   void Build() ;
+  
+  //! Removes (physically) an environment variable
+  Standard_EXPORT   void Remove() ;
+  
+  //! Returns TRUE if an error occurs
+  Standard_EXPORT   Standard_Boolean Failed()  const;
+  
+  //! Resets error counter to zero
+  Standard_EXPORT   void Reset() ;
+  
+  //! Raises OSD_Error
+  Standard_EXPORT   void Perror() ;
+  
+  //! Returns error number if 'Failed' is TRUE.
+  Standard_EXPORT   Standard_Integer Error()  const;
 
 
 
@@ -94,9 +93,9 @@ private:
 
 
 
-TCollection_AsciiString myName;
-TCollection_AsciiString myValue;
-OSD_Error myError;
+  TCollection_AsciiString myName;
+  TCollection_AsciiString myValue;
+  OSD_Error myError;
 
 
 };
@@ -105,7 +104,6 @@ OSD_Error myError;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _OSD_Environment_HeaderFile

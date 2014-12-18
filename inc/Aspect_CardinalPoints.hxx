@@ -6,8 +6,11 @@
 #ifndef _Aspect_CardinalPoints_HeaderFile
 #define _Aspect_CardinalPoints_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Aspect_CardinalPoints {
+
+enum Aspect_CardinalPoints
+{
 Aspect_CP_North,
 Aspect_CP_NorthEast,
 Aspect_CP_East,
@@ -19,8 +22,4 @@ Aspect_CP_NorthWest,
 Aspect_CP_Center
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_CardinalPoints_HeaderFile

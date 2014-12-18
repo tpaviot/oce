@@ -6,117 +6,102 @@
 #ifndef _HLRBRep_HLRToShape_HeaderFile
 #define _HLRBRep_HLRToShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_HLRBRep_Algo_HeaderFile
 #include <Handle_HLRBRep_Algo.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_HLRBRep_Data_HeaderFile
 #include <Handle_HLRBRep_Data.hxx>
-#endif
 class HLRBRep_Algo;
 class TopoDS_Shape;
 class HLRBRep_Data;
 class HLRBRep_EdgeData;
 
 
-//! A framework for filtering the computation <br>
-//! results of an HLRBRep_Algo algorithm by extraction. <br>
-//! From the results calculated by the algorithm on <br>
-//! a shape, a filter returns the type of edge you <br>
-//! want to identify. You can choose any of the following types of output: <br>
-//! -   visible sharp edges <br>
-//! -   hidden sharp edges <br>
-//! -   visible smooth edges <br>
-//! -   hidden smooth edges <br>
-//! -   visible sewn edges <br>
-//! -   hidden sewn edges <br>
-//! -   visible outline edges <br>
-//! -   hidden outline edges. <br>
-//! -   visible isoparameters and <br>
-//! -   hidden isoparameters. <br>
-//! Sharp edges present a C0 continuity (non G1). <br>
-//! Smooth edges present a G1 continuity (non G2). <br>
-//! Sewn edges present a C2 continuity. <br>
-//! The result is composed of 2D edges in the <br>
-//! projection plane of the view which the <br>
-//! algorithm has worked with. These 2D edges <br>
-//! are not included in the data structure of the visualized shape. <br>
-//! In order to obtain a complete image, you must <br>
-//! combine the shapes given by each of the chosen filters. <br>
-//! The construction of the shape does not call a <br>
-//! new computation of the algorithm, but only <br>
-//! reads its internal results. <br>
-//! The methods of this shape are almost identic to those of the HLRBrep_PolyHLRToShape class. <br>
-class HLRBRep_HLRToShape  {
+//! A framework for filtering the computation
+//! results of an HLRBRep_Algo algorithm by extraction.
+//! From the results calculated by the algorithm on
+//! a shape, a filter returns the type of edge you
+//! want to identify. You can choose any of the following types of output:
+//! -   visible sharp edges
+//! -   hidden sharp edges
+//! -   visible smooth edges
+//! -   hidden smooth edges
+//! -   visible sewn edges
+//! -   hidden sewn edges
+//! -   visible outline edges
+//! -   hidden outline edges.
+//! -   visible isoparameters and
+//! -   hidden isoparameters.
+//! Sharp edges present a C0 continuity (non G1).
+//! Smooth edges present a G1 continuity (non G2).
+//! Sewn edges present a C2 continuity.
+//! The result is composed of 2D edges in the
+//! projection plane of the view which the
+//! algorithm has worked with. These 2D edges
+//! are not included in the data structure of the visualized shape.
+//! In order to obtain a complete image, you must
+//! combine the shapes given by each of the chosen filters.
+//! The construction of the shape does not call a
+//! new computation of the algorithm, but only
+//! reads its internal results.
+//! The methods of this shape are almost identic to those of the HLRBrep_PolyHLRToShape class.
+class HLRBRep_HLRToShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a framework for filtering the <br>
-//! results of the HLRBRep_Algo algorithm, A. <br>
-//! Use the extraction filters to obtain the results you want for A. <br>
-  Standard_EXPORT   HLRBRep_HLRToShape(const Handle(HLRBRep_Algo)& A);
   
-        TopoDS_Shape VCompound() ;
+  //! Constructs a framework for filtering the
+  //! results of the HLRBRep_Algo algorithm, A.
+  //! Use the extraction filters to obtain the results you want for A.
+  Standard_EXPORT HLRBRep_HLRToShape(const Handle(HLRBRep_Algo)& A);
   
-        TopoDS_Shape VCompound(const TopoDS_Shape& S) ;
+      TopoDS_Shape VCompound() ;
   
-        TopoDS_Shape Rg1LineVCompound() ;
+      TopoDS_Shape VCompound (const TopoDS_Shape& S) ;
   
-        TopoDS_Shape Rg1LineVCompound(const TopoDS_Shape& S) ;
+      TopoDS_Shape Rg1LineVCompound() ;
   
-        TopoDS_Shape RgNLineVCompound() ;
+      TopoDS_Shape Rg1LineVCompound (const TopoDS_Shape& S) ;
   
-        TopoDS_Shape RgNLineVCompound(const TopoDS_Shape& S) ;
+      TopoDS_Shape RgNLineVCompound() ;
   
-        TopoDS_Shape OutLineVCompound() ;
+      TopoDS_Shape RgNLineVCompound (const TopoDS_Shape& S) ;
   
-        TopoDS_Shape OutLineVCompound3d() ;
+      TopoDS_Shape OutLineVCompound() ;
   
-        TopoDS_Shape OutLineVCompound(const TopoDS_Shape& S) ;
+      TopoDS_Shape OutLineVCompound3d() ;
   
-        TopoDS_Shape IsoLineVCompound() ;
+      TopoDS_Shape OutLineVCompound (const TopoDS_Shape& S) ;
   
-        TopoDS_Shape IsoLineVCompound(const TopoDS_Shape& S) ;
+      TopoDS_Shape IsoLineVCompound() ;
   
-        TopoDS_Shape HCompound() ;
+      TopoDS_Shape IsoLineVCompound (const TopoDS_Shape& S) ;
   
-        TopoDS_Shape HCompound(const TopoDS_Shape& S) ;
+      TopoDS_Shape HCompound() ;
   
-        TopoDS_Shape Rg1LineHCompound() ;
+      TopoDS_Shape HCompound (const TopoDS_Shape& S) ;
   
-        TopoDS_Shape Rg1LineHCompound(const TopoDS_Shape& S) ;
+      TopoDS_Shape Rg1LineHCompound() ;
   
-        TopoDS_Shape RgNLineHCompound() ;
+      TopoDS_Shape Rg1LineHCompound (const TopoDS_Shape& S) ;
   
-        TopoDS_Shape RgNLineHCompound(const TopoDS_Shape& S) ;
+      TopoDS_Shape RgNLineHCompound() ;
   
-        TopoDS_Shape OutLineHCompound() ;
+      TopoDS_Shape RgNLineHCompound (const TopoDS_Shape& S) ;
   
-        TopoDS_Shape OutLineHCompound(const TopoDS_Shape& S) ;
+      TopoDS_Shape OutLineHCompound() ;
   
-        TopoDS_Shape IsoLineHCompound() ;
+      TopoDS_Shape OutLineHCompound (const TopoDS_Shape& S) ;
   
-        TopoDS_Shape IsoLineHCompound(const TopoDS_Shape& S) ;
-
+      TopoDS_Shape IsoLineHCompound() ;
+  
+      TopoDS_Shape IsoLineHCompound (const TopoDS_Shape& S) ;
 
 
 
@@ -130,14 +115,14 @@ protected:
 private:
 
   
-  Standard_EXPORT     TopoDS_Shape InternalCompound(const Standard_Integer typ,const Standard_Boolean visible,const TopoDS_Shape& S,const Standard_Boolean In3d = Standard_False) ;
+  Standard_EXPORT   TopoDS_Shape InternalCompound (const Standard_Integer typ, const Standard_Boolean visible, const TopoDS_Shape& S, const Standard_Boolean In3d = Standard_False) ;
   
-  Standard_EXPORT     void DrawFace(const Standard_Boolean visible,const Standard_Integer typ,const Standard_Integer iface,Handle(HLRBRep_Data)& DS,TopoDS_Shape& Result,Standard_Boolean& added,const Standard_Boolean In3d = Standard_False) const;
+  Standard_EXPORT   void DrawFace (const Standard_Boolean visible, const Standard_Integer typ, const Standard_Integer iface, Handle(HLRBRep_Data)& DS, TopoDS_Shape& Result, Standard_Boolean& added, const Standard_Boolean In3d = Standard_False)  const;
   
-  Standard_EXPORT     void DrawEdge(const Standard_Boolean visible,const Standard_Boolean inFace,const Standard_Integer typ,HLRBRep_EdgeData& ed,TopoDS_Shape& Result,Standard_Boolean& added,const Standard_Boolean In3d = Standard_False) const;
+  Standard_EXPORT   void DrawEdge (const Standard_Boolean visible, const Standard_Boolean inFace, const Standard_Integer typ, HLRBRep_EdgeData& ed, TopoDS_Shape& Result, Standard_Boolean& added, const Standard_Boolean In3d = Standard_False)  const;
 
 
-Handle_HLRBRep_Algo myAlgo;
+  Handle(HLRBRep_Algo) myAlgo;
 
 
 };
@@ -147,7 +132,6 @@ Handle_HLRBRep_Algo myAlgo;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_HLRToShape_HeaderFile

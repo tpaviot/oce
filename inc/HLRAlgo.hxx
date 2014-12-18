@@ -6,22 +6,12 @@
 #ifndef _HLRAlgo_HeaderFile
 #define _HLRAlgo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class HLRAlgo_BiPoint;
 class HLRAlgo_ListOfBPoint;
 class HLRAlgo_PolyShellData;
@@ -55,51 +45,52 @@ class HLRAlgo_ListNodeOfInterferenceList;
 class HLRAlgo_ListIteratorOfInterferenceList;
 
 
-//!        In order to have the precision required in <br>
-//! industrial design, drawings need to offer the <br>
-//! possibility of removing lines, which are hidden <br>
-//! in a given projection. To do this, the Hidden <br>
-//! Line Removal component provides two <br>
-//!   algorithms: HLRBRep_Algo and HLRBRep_PolyAlgo. <br>
-//! These algorithms remove or indicate lines <br>
-//! hidden by surfaces. For a given projection, they <br>
-//! calculate a set of lines characteristic of the <br>
-//! object being represented. They are also used <br>
-//! in conjunction with extraction utilities, which <br>
-//! reconstruct a new, simplified shape from a <br>
-//! selection of calculation results. This new shape <br>
-//! is made up of edges, which represent the lines <br>
-//! of the visualized shape in a plane. This plane is the projection plane. <br>
-//! HLRBRep_Algo takes into account the shape <br>
-//! itself. HLRBRep_PolyAlgo works with a <br>
-//! polyhedral simplification of the shape. When <br>
-//! you use HLRBRep_Algo, you obtain an exact <br>
-//! result, whereas, when you use <br>
-//! HLRBRep_PolyAlgo, you reduce computation <br>
-//! time but obtain polygonal segments. <br>
-class HLRAlgo  {
+//! In order to have the precision required in
+//! industrial design, drawings need to offer the
+//! possibility of removing lines, which are hidden
+//! in a given projection. To do this, the Hidden
+//! Line Removal component provides two
+//! algorithms: HLRBRep_Algo and HLRBRep_PolyAlgo.
+//! These algorithms remove or indicate lines
+//! hidden by surfaces. For a given projection, they
+//! calculate a set of lines characteristic of the
+//! object being represented. They are also used
+//! in conjunction with extraction utilities, which
+//! reconstruct a new, simplified shape from a
+//! selection of calculation results. This new shape
+//! is made up of edges, which represent the lines
+//! of the visualized shape in a plane. This plane is the projection plane.
+//! HLRBRep_Algo takes into account the shape
+//! itself. HLRBRep_PolyAlgo works with a
+//! polyhedral simplification of the shape. When
+//! you use HLRBRep_Algo, you obtain an exact
+//! result, whereas, when you use
+//! HLRBRep_PolyAlgo, you reduce computation
+//! time but obtain polygonal segments.
+class HLRAlgo 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Iterator  on the  visible or  hidden  parts of  an <br>
-//!          EdgeStatus. <br>
-  Standard_EXPORT   static  void UpdateMinMax(const Standard_Real x,const Standard_Real y,const Standard_Real z,const Standard_Address Min,const Standard_Address Max) ;
   
-  Standard_EXPORT   static  void EnlargeMinMax(const Standard_Real tol,const Standard_Address Min,const Standard_Address Max) ;
+  //! Iterator  on the  visible or  hidden  parts of  an
+  //! EdgeStatus.
+  Standard_EXPORT static   void UpdateMinMax (const Standard_Real x, const Standard_Real y, const Standard_Real z, const Standard_Address Min, const Standard_Address Max) ;
   
-  Standard_EXPORT   static  void InitMinMax(const Standard_Real Big,const Standard_Address Min,const Standard_Address Max) ;
+  Standard_EXPORT static   void EnlargeMinMax (const Standard_Real tol, const Standard_Address Min, const Standard_Address Max) ;
   
-  Standard_EXPORT   static  void EncodeMinMax(const Standard_Address Min,const Standard_Address Max,const Standard_Address MinMax) ;
+  Standard_EXPORT static   void InitMinMax (const Standard_Real Big, const Standard_Address Min, const Standard_Address Max) ;
   
-  Standard_EXPORT   static  Standard_Real SizeBox(const Standard_Address Min,const Standard_Address Max) ;
+  Standard_EXPORT static   void EncodeMinMax (const Standard_Address Min, const Standard_Address Max, const Standard_Address MinMax) ;
   
-  Standard_EXPORT   static  void DecodeMinMax(const Standard_Address MinMax,const Standard_Address Min,const Standard_Address Max) ;
+  Standard_EXPORT static   Standard_Real SizeBox (const Standard_Address Min, const Standard_Address Max) ;
   
-  Standard_EXPORT   static  void CopyMinMax(const Standard_Address IMin,const Standard_Address IMax,const Standard_Address OMin,const Standard_Address OMax) ;
+  Standard_EXPORT static   void DecodeMinMax (const Standard_Address MinMax, const Standard_Address Min, const Standard_Address Max) ;
   
-  Standard_EXPORT   static  void AddMinMax(const Standard_Address IMin,const Standard_Address IMax,const Standard_Address OMin,const Standard_Address OMax) ;
-
+  Standard_EXPORT static   void CopyMinMax (const Standard_Address IMin, const Standard_Address IMax, const Standard_Address OMin, const Standard_Address OMax) ;
+  
+  Standard_EXPORT static   void AddMinMax (const Standard_Address IMin, const Standard_Address IMax, const Standard_Address OMin, const Standard_Address OMax) ;
 
 
 
@@ -153,7 +144,6 @@ friend class HLRAlgo_ListIteratorOfInterferenceList;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_HeaderFile

@@ -5,24 +5,12 @@
 
 #include <Draft_DataMapIteratorOfDataMapOfFaceFaceInfo.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Draft_FaceInfo_HeaderFile
 #include <Draft_FaceInfo.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _Draft_DataMapOfFaceFaceInfo_HeaderFile
 #include <Draft_DataMapOfFaceFaceInfo.hxx>
-#endif
-#ifndef _Draft_DataMapNodeOfDataMapOfFaceFaceInfo_HeaderFile
 #include <Draft_DataMapNodeOfDataMapOfFaceFaceInfo.hxx>
-#endif
  
 
 #define TheKey TopoDS_Face

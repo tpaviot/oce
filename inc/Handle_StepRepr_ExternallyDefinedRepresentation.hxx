@@ -6,22 +6,15 @@
 #ifndef _Handle_StepRepr_ExternallyDefinedRepresentation_HeaderFile
 #define _Handle_StepRepr_ExternallyDefinedRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_Representation_HeaderFile
 #include <Handle_StepRepr_Representation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_Representation);
 class StepRepr_ExternallyDefinedRepresentation;
 
-DEFINE_STANDARD_HANDLE(StepRepr_ExternallyDefinedRepresentation,StepRepr_Representation)
+DEFINE_STANDARD_HANDLE(StepRepr_ExternallyDefinedRepresentation, StepRepr_Representation)
 
-#endif
+#endif // _Handle_StepRepr_ExternallyDefinedRepresentation_HeaderFile

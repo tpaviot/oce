@@ -1,6 +1,0 @@
-#ifndef _Graphic3d_GraphicDriver_HeaderFile
-#include <Graphic3d_GraphicDriver.hxx>
-#endif
-#ifndef _Graphic3d_HeaderFile
-#include <Graphic3d.hxx>
-#endif

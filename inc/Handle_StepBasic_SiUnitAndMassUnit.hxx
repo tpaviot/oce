@@ -6,22 +6,15 @@
 #ifndef _Handle_StepBasic_SiUnitAndMassUnit_HeaderFile
 #define _Handle_StepBasic_SiUnitAndMassUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_SiUnit_HeaderFile
 #include <Handle_StepBasic_SiUnit.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_SiUnit);
 class StepBasic_SiUnitAndMassUnit;
 
-DEFINE_STANDARD_HANDLE(StepBasic_SiUnitAndMassUnit,StepBasic_SiUnit)
+DEFINE_STANDARD_HANDLE(StepBasic_SiUnitAndMassUnit, StepBasic_SiUnit)
 
-#endif
+#endif // _Handle_StepBasic_SiUnitAndMassUnit_HeaderFile

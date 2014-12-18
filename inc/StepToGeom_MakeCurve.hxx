@@ -6,42 +6,30 @@
 #ifndef _StepToGeom_MakeCurve_HeaderFile
 #define _StepToGeom_MakeCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_Curve_HeaderFile
 #include <Handle_StepGeom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
 class StepGeom_Curve;
 class Geom_Curve;
 
 
-//! This class implements the mapping between classes <br>
-//!          class Curve from StepGeom which <br>
-//!          describes a Curve from prostep and Curve from Geom. <br>
-//!          As Curve is an abstract class <br>
-//!          this class an access to the sub-class required. <br>
-class StepToGeom_MakeCurve  {
+//! This class implements the mapping between classes
+//! class Curve from StepGeom which
+//! describes a Curve from prostep and Curve from Geom.
+//! As Curve is an abstract class
+//! this class an access to the sub-class required.
+class StepToGeom_MakeCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_Curve)& SC,Handle(Geom_Curve)& CC) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_Curve)& SC, Handle(Geom_Curve)& CC) ;
 
 
 
@@ -64,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeCurve_HeaderFile

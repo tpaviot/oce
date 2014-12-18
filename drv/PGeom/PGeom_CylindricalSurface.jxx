@@ -1,6 +1,2 @@
-#ifndef _gp_Ax3_HeaderFile
 #include <gp_Ax3.hxx>
-#endif
-#ifndef _PGeom_CylindricalSurface_HeaderFile
 #include <PGeom_CylindricalSurface.hxx>
-#endif

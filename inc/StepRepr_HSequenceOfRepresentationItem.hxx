@@ -6,31 +6,15 @@
 #ifndef _StepRepr_HSequenceOfRepresentationItem_HeaderFile
 #define _StepRepr_HSequenceOfRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_HSequenceOfRepresentationItem_HeaderFile
 #include <Handle_StepRepr_HSequenceOfRepresentationItem.hxx>
-#endif
 
-#ifndef _StepRepr_SequenceOfRepresentationItem_HeaderFile
 #include <StepRepr_SequenceOfRepresentationItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class StepRepr_RepresentationItem;
@@ -38,56 +22,57 @@ class StepRepr_SequenceOfRepresentationItem;
 
 
 
-class StepRepr_HSequenceOfRepresentationItem : public MMgt_TShared {
+class StepRepr_HSequenceOfRepresentationItem : public MMgt_TShared
+{
 
 public:
 
   
-      StepRepr_HSequenceOfRepresentationItem();
+    StepRepr_HSequenceOfRepresentationItem();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(StepRepr_RepresentationItem)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(StepRepr_RepresentationItem)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(StepRepr_HSequenceOfRepresentationItem)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(StepRepr_HSequenceOfRepresentationItem)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepRepr_RepresentationItem)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(StepRepr_RepresentationItem)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepRepr_HSequenceOfRepresentationItem)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(StepRepr_HSequenceOfRepresentationItem)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(StepRepr_RepresentationItem)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(StepRepr_RepresentationItem)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(StepRepr_HSequenceOfRepresentationItem)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(StepRepr_HSequenceOfRepresentationItem)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(StepRepr_RepresentationItem)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(StepRepr_RepresentationItem)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(StepRepr_HSequenceOfRepresentationItem)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(StepRepr_HSequenceOfRepresentationItem)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_StepRepr_HSequenceOfRepresentationItem Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(StepRepr_HSequenceOfRepresentationItem) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(StepRepr_RepresentationItem)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(StepRepr_RepresentationItem)& anItem) ;
   
-  Standard_EXPORT    const Handle_StepRepr_RepresentationItem& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(StepRepr_RepresentationItem)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_StepRepr_RepresentationItem& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(StepRepr_RepresentationItem)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const StepRepr_SequenceOfRepresentationItem& Sequence() const;
+     const  StepRepr_SequenceOfRepresentationItem& Sequence()  const;
   
-        StepRepr_SequenceOfRepresentationItem& ChangeSequence() ;
+      StepRepr_SequenceOfRepresentationItem& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_StepRepr_HSequenceOfRepresentationItem ShallowCopy() const;
+  Standard_EXPORT   Handle(StepRepr_HSequenceOfRepresentationItem) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-StepRepr_SequenceOfRepresentationItem mySequence;
+  StepRepr_SequenceOfRepresentationItem mySequence;
 
 
 };
 
-#define Item Handle_StepRepr_RepresentationItem
+#define Item Handle(StepRepr_RepresentationItem)
 #define Item_hxx <StepRepr_RepresentationItem.hxx>
 #define TheSequence StepRepr_SequenceOfRepresentationItem
 #define TheSequence_hxx <StepRepr_SequenceOfRepresentationItem.hxx>
@@ -128,11 +113,10 @@ StepRepr_SequenceOfRepresentationItem mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_StepRepr_HSequenceOfRepresentationItem ShallowCopy(const Handle_StepRepr_HSequenceOfRepresentationItem& me) {
+inline Handle(StepRepr_HSequenceOfRepresentationItem) ShallowCopy(const Handle(StepRepr_HSequenceOfRepresentationItem)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _StepRepr_HSequenceOfRepresentationItem_HeaderFile

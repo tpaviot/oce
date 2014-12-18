@@ -5,21 +5,13 @@
 
 #include <TColGeom_SequenceOfCurve.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
-#ifndef _TColGeom_SequenceNodeOfSequenceOfCurve_HeaderFile
 #include <TColGeom_SequenceNodeOfSequenceOfCurve.hxx>
-#endif
  
 
-#define SeqItem Handle_Geom_Curve
+#define SeqItem Handle(Geom_Curve)
 #define SeqItem_hxx <Geom_Curve.hxx>
 #define TCollection_SequenceNode TColGeom_SequenceNodeOfSequenceOfCurve
 #define TCollection_SequenceNode_hxx <TColGeom_SequenceNodeOfSequenceOfCurve.hxx>

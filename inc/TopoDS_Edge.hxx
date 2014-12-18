@@ -6,37 +6,30 @@
 #ifndef _TopoDS_Edge_HeaderFile
 #define _TopoDS_Edge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
 
 
-//! Describes an edge which <br>
-//! - references an underlying edge with the potential to <br>
-//!   be given a location and an orientation <br>
-//! - has a location for the underlying edge, giving its <br>
-//!   placement in the local coordinate system <br>
-//! - has an orientation for the underlying edge, in terms <br>
-//!   of its geometry (as opposed to orientation in <br>
-//!   relation to other shapes). <br>
-class TopoDS_Edge  : public TopoDS_Shape {
+//! Describes an edge which
+//! - references an underlying edge with the potential to
+//! be given a location and an orientation
+//! - has a location for the underlying edge, giving its
+//! placement in the local coordinate system
+//! - has an orientation for the underlying edge, in terms
+//! of its geometry (as opposed to orientation in
+//! relation to other shapes).
+class TopoDS_Edge  : public TopoDS_Shape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Undefined Edge. <br>
-      TopoDS_Edge();
-
+  
+  //! Undefined Edge.
+    TopoDS_Edge();
 
 
 
@@ -60,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_Edge_HeaderFile

@@ -6,73 +6,61 @@
 #ifndef _TDataStd_Current_HeaderFile
 #define _TDataStd_Current_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_Current_HeaderFile
 #include <Handle_TDataStd_Current.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! this attribute,  located at root label,  manage an <br>
-//!          access to a current label. <br>
-class TDataStd_Current : public TDF_Attribute {
+//! this attribute,  located at root label,  manage an
+//! access to a current label.
+class TDataStd_Current : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!          ============= <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Set <L> as current of <L> Framework. <br>
-  Standard_EXPORT   static  void Set(const TDF_Label& L) ;
-  //! returns current of <acces> Framework. raise if (!Has) <br>
-  Standard_EXPORT   static  TDF_Label Get(const TDF_Label& acces) ;
-  //! returns True if a  current label is managed in <acces> <br>
-//!          Framework. <br>//! class methods <br>
-//!          ============= <br>
-  Standard_EXPORT   static  Standard_Boolean Has(const TDF_Label& acces) ;
   
-  Standard_EXPORT   TDataStd_Current();
+  //! class methods
+  //! =============
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT     void SetLabel(const TDF_Label& current) ;
+  //! Set <L> as current of <L> Framework.
+  Standard_EXPORT static   void Set (const TDF_Label& L) ;
   
-  Standard_EXPORT     TDF_Label GetLabel() const;
+  //! returns current of <acces> Framework. raise if (!Has)
+  Standard_EXPORT static   TDF_Label Get (const TDF_Label& acces) ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  //! returns True if a  current label is managed in <acces>
+  //! Framework.
+  //! class methods
+  //! =============
+  Standard_EXPORT static   Standard_Boolean Has (const TDF_Label& acces) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  Standard_EXPORT TDataStd_Current();
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT   void SetLabel (const TDF_Label& current) ;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT   TDF_Label GetLabel()  const;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -87,7 +75,7 @@ protected:
 private: 
 
 
-TDF_Label myLabel;
+  TDF_Label myLabel;
 
 
 };
@@ -96,7 +84,6 @@ TDF_Label myLabel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_Current_HeaderFile

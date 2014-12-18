@@ -6,31 +6,15 @@
 #ifndef _BRep_PolygonOnSurface_HeaderFile
 #define _BRep_PolygonOnSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRep_PolygonOnSurface_HeaderFile
 #include <Handle_BRep_PolygonOnSurface.hxx>
-#endif
 
-#ifndef _Handle_Poly_Polygon2D_HeaderFile
 #include <Handle_Poly_Polygon2D.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _BRep_CurveRepresentation_HeaderFile
 #include <BRep_CurveRepresentation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_BRep_CurveRepresentation_HeaderFile
 #include <Handle_BRep_CurveRepresentation.hxx>
-#endif
 class Poly_Polygon2D;
 class Geom_Surface;
 class Standard_DomainError;
@@ -38,28 +22,32 @@ class TopLoc_Location;
 class BRep_CurveRepresentation;
 
 
-//! Representation of a 2D polygon in the parametric <br>
-//!          space of a surface. <br>
-class BRep_PolygonOnSurface : public BRep_CurveRepresentation {
+//! Representation of a 2D polygon in the parametric
+//! space of a surface.
+class BRep_PolygonOnSurface : public BRep_CurveRepresentation
+{
 
 public:
 
   
-  Standard_EXPORT   BRep_PolygonOnSurface(const Handle(Poly_Polygon2D)& P,const Handle(Geom_Surface)& S,const TopLoc_Location& L);
-  //! A   2D polygon  representation  in the  parametric <br>
-//!          space of a surface. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygonOnSurface() const;
-  //! A   2D polygon  representation  in the  parametric <br>
-//!          space of a surface. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygonOnSurface(const Handle(Geom_Surface)& S,const TopLoc_Location& L) const;
+  Standard_EXPORT BRep_PolygonOnSurface(const Handle(Poly_Polygon2D)& P, const Handle(Geom_Surface)& S, const TopLoc_Location& L);
   
-  Standard_EXPORT   virtual const Handle_Geom_Surface& Surface() const;
+  //! A   2D polygon  representation  in the  parametric
+  //! space of a surface.
+  Standard_EXPORT virtual   Standard_Boolean IsPolygonOnSurface()  const;
   
-  Standard_EXPORT   virtual const Handle_Poly_Polygon2D& Polygon() const;
+  //! A   2D polygon  representation  in the  parametric
+  //! space of a surface.
+  Standard_EXPORT virtual   Standard_Boolean IsPolygonOnSurface (const Handle(Geom_Surface)& S, const TopLoc_Location& L)  const;
   
-  Standard_EXPORT   virtual  void Polygon(const Handle(Poly_Polygon2D)& P) ;
-  //! Return a copy of this representation. <br>
-  Standard_EXPORT   virtual  Handle_BRep_CurveRepresentation Copy() const;
+  Standard_EXPORT virtual  const  Handle(Geom_Surface)& Surface()  const;
+  
+  Standard_EXPORT virtual  const  Handle(Poly_Polygon2D)& Polygon()  const;
+  
+  Standard_EXPORT virtual   void Polygon (const Handle(Poly_Polygon2D)& P) ;
+  
+  //! Return a copy of this representation.
+  Standard_EXPORT virtual   Handle(BRep_CurveRepresentation) Copy()  const;
 
 
 
@@ -74,8 +62,8 @@ protected:
 private: 
 
 
-Handle_Poly_Polygon2D myPolygon2D;
-Handle_Geom_Surface mySurface;
+  Handle(Poly_Polygon2D) myPolygon2D;
+  Handle(Geom_Surface) mySurface;
 
 
 };
@@ -84,7 +72,6 @@ Handle_Geom_Surface mySurface;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_PolygonOnSurface_HeaderFile

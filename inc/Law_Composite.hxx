@@ -6,96 +6,87 @@
 #ifndef _Law_Composite_HeaderFile
 #define _Law_Composite_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Law_Composite_HeaderFile
 #include <Handle_Law_Composite.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Law_Function_HeaderFile
 #include <Handle_Law_Function.hxx>
-#endif
-#ifndef _Law_Laws_HeaderFile
 #include <Law_Laws.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Law_Function_HeaderFile
 #include <Law_Function.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Law_Function;
 class Standard_OutOfRange;
 class TColStd_Array1OfReal;
 class Law_Laws;
 
 
-//! Loi  composite constituee  d une liste  de lois de <br>
-//!          ranges consecutifs. <br>
-//!          Cette implementation un peu lourde permet de reunir <br>
-//!          en une seule loi des portions de loi construites de <br>
-//!          facon independantes (par exemple en interactif) et <br>
-//!          de lancer le walking d un coup a l echelle d une <br>
-//!          ElSpine. <br>
-//!          CET OBJET REPOND DONC A UN PROBLEME D IMPLEMENTATION <br>
-//!          SPECIFIQUE AUX CONGES!!! <br>
-class Law_Composite : public Law_Function {
+//! Loi  composite constituee  d une liste  de lois de
+//! ranges consecutifs.
+//! Cette implementation un peu lourde permet de reunir
+//! en une seule loi des portions de loi construites de
+//! facon independantes (par exemple en interactif) et
+//! de lancer le walking d un coup a l echelle d une
+//! ElSpine.
+//! CET OBJET REPOND DONC A UN PROBLEME D IMPLEMENTATION
+//! SPECIFIQUE AUX CONGES!!!
+class Law_Composite : public Law_Function
+{
 
 public:
 
-  //! Construct an empty Law <br>
-  Standard_EXPORT   Law_Composite();
-  //! Construct an empty, trimed Law <br>
-  Standard_EXPORT   Law_Composite(const Standard_Real First,const Standard_Real Last,const Standard_Real Tol);
   
-  Standard_EXPORT     GeomAbs_Shape Continuity() const;
-  //! Returns  the number  of  intervals for  continuity <br>
-//!          <S>. May be one if Continuity(me) >= <S> <br>
-  Standard_EXPORT     Standard_Integer NbIntervals(const GeomAbs_Shape S) const;
-  //! Stores in <T> the  parameters bounding the intervals <br>
-//!          of continuity <S>. <br>
-//! <br>
-//!          The array must provide  enough room to  accomodate <br>
-//!          for the parameters. i.e. T.Length() > NbIntervals() <br>
-  Standard_EXPORT     void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const;
-  //! Returns the value at parameter X. <br>
-  Standard_EXPORT     Standard_Real Value(const Standard_Real X) ;
-  //! Returns the value and the first derivative at parameter X. <br>
-  Standard_EXPORT     void D1(const Standard_Real X,Standard_Real& F,Standard_Real& D) ;
-  //! Returns the value, first and second derivatives <br>
-//!          at parameter X. <br>
-  Standard_EXPORT     void D2(const Standard_Real X,Standard_Real& F,Standard_Real& D,Standard_Real& D2) ;
-  //!   Returns a  law equivalent of  <me>  between <br>
-//!        parameters <First>  and <Last>. <Tol>  is used  to <br>
-//!        test for 3d points confusion. <br>
-//!        It is usfule to determines the derivatives <br>
-//!        in these values <First> and <Last> if <br>
-//!        the Law is not Cn. <br>
-  Standard_EXPORT     Handle_Law_Function Trim(const Standard_Real PFirst,const Standard_Real PLast,const Standard_Real Tol) const;
-  //! Returns the parametric bounds of the function. <br>
-  Standard_EXPORT     void Bounds(Standard_Real& PFirst,Standard_Real& PLast) ;
-  //! Returns the elementary  function of the composite used <br>
-//!          to compute at parameter W. <br>
-  Standard_EXPORT     Handle_Law_Function& ChangeElementaryLaw(const Standard_Real W) ;
+  //! Construct an empty Law
+  Standard_EXPORT Law_Composite();
   
-  Standard_EXPORT     Law_Laws& ChangeLaws() ;
+  //! Construct an empty, trimed Law
+  Standard_EXPORT Law_Composite(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
   
-  Standard_EXPORT     Standard_Boolean IsPeriodic() const;
+  Standard_EXPORT   GeomAbs_Shape Continuity()  const;
   
-  Standard_EXPORT     void SetPeriodic() ;
+  //! Returns  the number  of  intervals for  continuity
+  //! <S>. May be one if Continuity(me) >= <S>
+  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
+  
+  //! Stores in <T> the  parameters bounding the intervals
+  //! of continuity <S>.
+  //!
+  //! The array must provide  enough room to  accomodate
+  //! for the parameters. i.e. T.Length() > NbIntervals()
+  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
+  
+  //! Returns the value at parameter X.
+  Standard_EXPORT   Standard_Real Value (const Standard_Real X) ;
+  
+  //! Returns the value and the first derivative at parameter X.
+  Standard_EXPORT   void D1 (const Standard_Real X, Standard_Real& F, Standard_Real& D) ;
+  
+  //! Returns the value, first and second derivatives
+  //! at parameter X.
+  Standard_EXPORT   void D2 (const Standard_Real X, Standard_Real& F, Standard_Real& D, Standard_Real& D2) ;
+  
+  //! Returns a  law equivalent of  <me>  between
+  //! parameters <First>  and <Last>. <Tol>  is used  to
+  //! test for 3d points confusion.
+  //! It is usfule to determines the derivatives
+  //! in these values <First> and <Last> if
+  //! the Law is not Cn.
+  Standard_EXPORT   Handle(Law_Function) Trim (const Standard_Real PFirst, const Standard_Real PLast, const Standard_Real Tol)  const;
+  
+  //! Returns the parametric bounds of the function.
+  Standard_EXPORT   void Bounds (Standard_Real& PFirst, Standard_Real& PLast) ;
+  
+  //! Returns the elementary  function of the composite used
+  //! to compute at parameter W.
+  Standard_EXPORT   Handle(Law_Function)& ChangeElementaryLaw (const Standard_Real W) ;
+  
+  Standard_EXPORT   Law_Laws& ChangeLaws() ;
+  
+  Standard_EXPORT   Standard_Boolean IsPeriodic()  const;
+  
+  Standard_EXPORT   void SetPeriodic() ;
 
 
 
@@ -109,17 +100,18 @@ protected:
 
 private: 
 
-  //! Set the current function. <br>
-  Standard_EXPORT     void Prepare(Standard_Real& W) ;
+  
+  //! Set the current function.
+  Standard_EXPORT   void Prepare (Standard_Real& W) ;
 
-Standard_Real first;
-Standard_Real last;
-Handle_Law_Function curfunc;
-Law_Laws funclist;
-Standard_Boolean periodic;
-Standard_Real TFirst;
-Standard_Real TLast;
-Standard_Real PTol;
+  Standard_Real first;
+  Standard_Real last;
+  Handle(Law_Function) curfunc;
+  Law_Laws funclist;
+  Standard_Boolean periodic;
+  Standard_Real TFirst;
+  Standard_Real TLast;
+  Standard_Real PTol;
 
 
 };
@@ -128,7 +120,6 @@ Standard_Real PTol;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Law_Composite_HeaderFile

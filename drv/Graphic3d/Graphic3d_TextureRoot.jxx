@@ -1,12 +1,4 @@
-#ifndef _Graphic3d_TextureParams_HeaderFile
 #include <Graphic3d_TextureParams.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _OSD_Path_HeaderFile
 #include <OSD_Path.hxx>
-#endif
-#ifndef _Graphic3d_TextureRoot_HeaderFile
 #include <Graphic3d_TextureRoot.hxx>
-#endif

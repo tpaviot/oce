@@ -5,16 +5,10 @@
 
 #include <Graphic3d_SequenceNodeOfSequenceOfStructure.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
-#endif
-#ifndef _Graphic3d_SequenceOfStructure_HeaderFile
 #include <Graphic3d_SequenceOfStructure.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Graphic3d_SequenceNodeOfSequenceOfStructure,Standard_Transien
 IMPLEMENT_STANDARD_RTTI(Graphic3d_SequenceNodeOfSequenceOfStructure)
 
 
-#define SeqItem Handle_Graphic3d_Structure
+#define SeqItem Handle(Graphic3d_Structure)
 #define SeqItem_hxx <Graphic3d_Structure.hxx>
 #define TCollection_SequenceNode Graphic3d_SequenceNodeOfSequenceOfStructure
 #define TCollection_SequenceNode_hxx <Graphic3d_SequenceNodeOfSequenceOfStructure.hxx>

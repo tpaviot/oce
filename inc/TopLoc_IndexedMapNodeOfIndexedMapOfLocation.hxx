@@ -6,46 +6,33 @@
 #ifndef _TopLoc_IndexedMapNodeOfIndexedMapOfLocation_HeaderFile
 #define _TopLoc_IndexedMapNodeOfIndexedMapOfLocation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation_HeaderFile
 #include <Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
-#endif
 
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TopLoc_Location;
 class TopLoc_MapLocationHasher;
 class TopLoc_IndexedMapOfLocation;
 
 
 
-class TopLoc_IndexedMapNodeOfIndexedMapOfLocation : public TCollection_MapNode {
+class TopLoc_IndexedMapNodeOfIndexedMapOfLocation : public TCollection_MapNode
+{
 
 public:
 
   
-      TopLoc_IndexedMapNodeOfIndexedMapOfLocation(const TopLoc_Location& K1,const Standard_Integer K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TopLoc_IndexedMapNodeOfIndexedMapOfLocation(const TopLoc_Location& K1, const Standard_Integer K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        TopLoc_Location& Key1() const;
+      TopLoc_Location& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -60,9 +47,9 @@ protected:
 private: 
 
 
-TopLoc_Location myKey1;
-Standard_Integer myKey2;
-TCollection_MapNodePtr myNext2;
+  TopLoc_Location myKey1;
+  Standard_Integer myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -92,7 +79,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopLoc_IndexedMapNodeOfIndexedMapOfLocation_HeaderFile

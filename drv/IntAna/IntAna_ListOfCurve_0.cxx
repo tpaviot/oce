@@ -5,18 +5,10 @@
 
 #include <IntAna_ListOfCurve.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IntAna_ListIteratorOfListOfCurve_HeaderFile
 #include <IntAna_ListIteratorOfListOfCurve.hxx>
-#endif
-#ifndef _IntAna_Curve_HeaderFile
 #include <IntAna_Curve.hxx>
-#endif
-#ifndef _IntAna_ListNodeOfListOfCurve_HeaderFile
 #include <IntAna_ListNodeOfListOfCurve.hxx>
-#endif
  
 
 #define Item IntAna_Curve

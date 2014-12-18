@@ -6,71 +6,63 @@
 #ifndef _IGESSolid_SphericalSurface_HeaderFile
 #define _IGESSolid_SphericalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_SphericalSurface_HeaderFile
 #include <Handle_IGESSolid_SphericalSurface.hxx>
-#endif
 
-#ifndef _Handle_IGESGeom_Point_HeaderFile
 #include <Handle_IGESGeom_Point.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Direction_HeaderFile
 #include <Handle_IGESGeom_Direction.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESGeom_Point;
 class IGESGeom_Direction;
 class gp_Pnt;
 
 
-//! defines SphericalSurface, Type <196> Form Number <0,1> <br>
-//!          in package IGESSolid <br>
-//!          Spherical surface is defined by a center and radius. <br>
-//!          In case of parametrised surface an axis and a <br>
-//!          reference direction is provided. <br>
-class IGESSolid_SphericalSurface : public IGESData_IGESEntity {
+//! defines SphericalSurface, Type <196> Form Number <0,1>
+//! in package IGESSolid
+//! Spherical surface is defined by a center and radius.
+//! In case of parametrised surface an axis and a
+//! reference direction is provided.
+class IGESSolid_SphericalSurface : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSolid_SphericalSurface();
-  //! This method is used to set the fields of the class <br>
-//!           SphericalSurface <br>
-//!       - aCenter : the coordinates of the center point <br>
-//!       - aRadius : value of radius <br>
-//!       - anAxis  : the direction of the axis <br>
-//!                   Null in case of Unparametrised surface <br>
-//!       - aRefdir : the reference direction <br>
-//!                   Null in case of Unparametrised surface <br>
-  Standard_EXPORT     void Init(const Handle(IGESGeom_Point)& aCenter,const Standard_Real aRadius,const Handle(IGESGeom_Direction)& anAxis,const Handle(IGESGeom_Direction)& aRefdir) ;
-  //! returns the center of the spherical surface <br>
-  Standard_EXPORT     Handle_IGESGeom_Point Center() const;
-  //! returns the center of the spherical surface after applying <br>
-//! TransformationMatrix <br>
-  Standard_EXPORT     gp_Pnt TransformedCenter() const;
-  //! returns the radius of the spherical surface <br>
-  Standard_EXPORT     Standard_Real Radius() const;
-  //! returns the direction of the axis (Parametrised surface) <br>
-//! Null is returned if the surface is not parametrised <br>
-  Standard_EXPORT     Handle_IGESGeom_Direction Axis() const;
-  //! returns the reference direction (Parametrised surface) <br>
-//! Null is returned if the surface is not parametrised <br>
-  Standard_EXPORT     Handle_IGESGeom_Direction ReferenceDir() const;
-  //! Returns True if the surface is parametrised, else False <br>
-  Standard_EXPORT     Standard_Boolean IsParametrised() const;
+  Standard_EXPORT IGESSolid_SphericalSurface();
+  
+  //! This method is used to set the fields of the class
+  //! SphericalSurface
+  //! - aCenter : the coordinates of the center point
+  //! - aRadius : value of radius
+  //! - anAxis  : the direction of the axis
+  //! Null in case of Unparametrised surface
+  //! - aRefdir : the reference direction
+  //! Null in case of Unparametrised surface
+  Standard_EXPORT   void Init (const Handle(IGESGeom_Point)& aCenter, const Standard_Real aRadius, const Handle(IGESGeom_Direction)& anAxis, const Handle(IGESGeom_Direction)& aRefdir) ;
+  
+  //! returns the center of the spherical surface
+  Standard_EXPORT   Handle(IGESGeom_Point) Center()  const;
+  
+  //! returns the center of the spherical surface after applying
+  //! TransformationMatrix
+  Standard_EXPORT   gp_Pnt TransformedCenter()  const;
+  
+  //! returns the radius of the spherical surface
+  Standard_EXPORT   Standard_Real Radius()  const;
+  
+  //! returns the direction of the axis (Parametrised surface)
+  //! Null is returned if the surface is not parametrised
+  Standard_EXPORT   Handle(IGESGeom_Direction) Axis()  const;
+  
+  //! returns the reference direction (Parametrised surface)
+  //! Null is returned if the surface is not parametrised
+  Standard_EXPORT   Handle(IGESGeom_Direction) ReferenceDir()  const;
+  
+  //! Returns True if the surface is parametrised, else False
+  Standard_EXPORT   Standard_Boolean IsParametrised()  const;
 
 
 
@@ -85,10 +77,10 @@ protected:
 private: 
 
 
-Handle_IGESGeom_Point theCenter;
-Standard_Real theRadius;
-Handle_IGESGeom_Direction theAxis;
-Handle_IGESGeom_Direction theRefDir;
+  Handle(IGESGeom_Point) theCenter;
+  Standard_Real theRadius;
+  Handle(IGESGeom_Direction) theAxis;
+  Handle(IGESGeom_Direction) theRefDir;
 
 
 };
@@ -97,7 +89,6 @@ Handle_IGESGeom_Direction theRefDir;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_SphericalSurface_HeaderFile

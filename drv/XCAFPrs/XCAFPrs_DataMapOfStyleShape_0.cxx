@@ -5,24 +5,12 @@
 
 #include <XCAFPrs_DataMapOfStyleShape.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _XCAFPrs_Style_HeaderFile
 #include <XCAFPrs_Style.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _XCAFPrs_DataMapNodeOfDataMapOfStyleShape_HeaderFile
 #include <XCAFPrs_DataMapNodeOfDataMapOfStyleShape.hxx>
-#endif
-#ifndef _XCAFPrs_DataMapIteratorOfDataMapOfStyleShape_HeaderFile
 #include <XCAFPrs_DataMapIteratorOfDataMapOfStyleShape.hxx>
-#endif
  
 
 #define TheKey XCAFPrs_Style

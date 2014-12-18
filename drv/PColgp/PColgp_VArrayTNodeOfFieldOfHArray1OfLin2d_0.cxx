@@ -5,15 +5,9 @@
 
 #include <PColgp_VArrayTNodeOfFieldOfHArray1OfLin2d.hxx>
 
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray1OfLin2d_HeaderFile
 #include <PColgp_FieldOfHArray1OfLin2d.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray1OfLin2d_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray1OfLin2d.hxx>
-#endif
  
 
 #define Item gp_Lin2d

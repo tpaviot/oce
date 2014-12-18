@@ -6,54 +6,45 @@
 #ifndef _math_FunctionWithDerivative_HeaderFile
 #define _math_FunctionWithDerivative_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _math_Function_HeaderFile
 #include <math_Function.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 
 
-//! This abstract class describes the virtual functions associated with <br>
-//! a function of a single variable for which the first derivative is <br>
-//! available. <br>
-class math_FunctionWithDerivative  : public math_Function {
+//! This abstract class describes the virtual functions associated with
+//! a function of a single variable for which the first derivative is
+//! available.
+class math_FunctionWithDerivative  : public math_Function
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~math_FunctionWithDerivative(){Delete();}
-  //! Computes the value <F>of the function for the variable <X>. <br>
-//!          Returns True if the calculation were successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Value(const Standard_Real X,Standard_Real& F)  = 0;
-  //! Computes the derivative <D> of the function <br>
-//!          for the variable <X>. <br>
-//!           Returns True if the calculation were successfully done, <br>
-//!           False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Derivative(const Standard_Real X,Standard_Real& D)  = 0;
-  //! Computes the value <F> and the derivative <D> of the <br>
-//!          function for the variable <X>. <br>
-//!          Returns True if the calculation were successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Values(const Standard_Real X,Standard_Real& F,Standard_Real& D)  = 0;
-
+  
+  //! Computes the value <F>of the function for the variable <X>.
+  //! Returns True if the calculation were successfully done,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Value (const Standard_Real X, Standard_Real& F)  = 0;
+  
+  //! Computes the derivative <D> of the function
+  //! for the variable <X>.
+  //! Returns True if the calculation were successfully done,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Derivative (const Standard_Real X, Standard_Real& D)  = 0;
+  
+  //! Computes the value <F> and the derivative <D> of the
+  //! function for the variable <X>.
+  //! Returns True if the calculation were successfully done,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Values (const Standard_Real X, Standard_Real& F, Standard_Real& D)  = 0;
 
 
 
@@ -76,7 +67,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_FunctionWithDerivative_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
 #define _IGESData_HArray1OfIGESEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESData_HArray1OfIGESEntity_HeaderFile
 #include <Handle_IGESData_HArray1OfIGESEntity.hxx>
-#endif
 
-#ifndef _IGESData_Array1OfIGESEntity_HeaderFile
 #include <IGESData_Array1OfIGESEntity.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESData_Array1OfIGESEntity;
 
 
 
-class IGESData_HArray1OfIGESEntity : public MMgt_TShared {
+class IGESData_HArray1OfIGESEntity : public MMgt_TShared
+{
 
 public:
 
   
-      IGESData_HArray1OfIGESEntity(const Standard_Integer Low,const Standard_Integer Up);
+    IGESData_HArray1OfIGESEntity(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESData_HArray1OfIGESEntity(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESData_IGESEntity)& V);
+    IGESData_HArray1OfIGESEntity(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESData_IGESEntity)& V);
   
-        void Init(const Handle(IGESData_IGESEntity)& V) ;
+      void Init (const Handle(IGESData_IGESEntity)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESData_IGESEntity)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESData_IGESEntity)& Value) ;
   
-       const Handle_IGESData_IGESEntity& Value(const Standard_Integer Index) const;
+     const  Handle(IGESData_IGESEntity)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESData_IGESEntity& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESData_IGESEntity)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESData_Array1OfIGESEntity& Array1() const;
+     const  IGESData_Array1OfIGESEntity& Array1()  const;
   
-        IGESData_Array1OfIGESEntity& ChangeArray1() ;
+      IGESData_Array1OfIGESEntity& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESData_Array1OfIGESEntity myArray;
+  IGESData_Array1OfIGESEntity myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESData_IGESEntity
+#define ItemHArray1 Handle(IGESData_IGESEntity)
 #define ItemHArray1_hxx <IGESData_IGESEntity.hxx>
 #define TheArray1 IGESData_Array1OfIGESEntity
 #define TheArray1_hxx <IGESData_Array1OfIGESEntity.hxx>
@@ -103,7 +90,6 @@ IGESData_Array1OfIGESEntity myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_HArray1OfIGESEntity_HeaderFile

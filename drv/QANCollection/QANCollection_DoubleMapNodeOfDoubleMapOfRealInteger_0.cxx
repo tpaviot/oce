@@ -5,22 +5,12 @@
 
 #include <QANCollection_DoubleMapNodeOfDoubleMapOfRealInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_MapRealHasher_HeaderFile
 #include <TColStd_MapRealHasher.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _QANCollection_DoubleMapOfRealInteger_HeaderFile
 #include <QANCollection_DoubleMapOfRealInteger.hxx>
-#endif
-#ifndef _QANCollection_DoubleMapIteratorOfDoubleMapOfRealInteger_HeaderFile
 #include <QANCollection_DoubleMapIteratorOfDoubleMapOfRealInteger.hxx>
-#endif
 
  
 

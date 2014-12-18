@@ -6,34 +6,16 @@
 #ifndef _StepAP214_AutoDesignDateAndTimeItem_HeaderFile
 #define _StepAP214_AutoDesignDateAndTimeItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_ApprovalPersonOrganization_HeaderFile
 #include <Handle_StepBasic_ApprovalPersonOrganization.hxx>
-#endif
-#ifndef _Handle_StepAP214_AutoDesignDateAndPersonAssignment_HeaderFile
 #include <Handle_StepAP214_AutoDesignDateAndPersonAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionEffectivity_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionEffectivity.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_ApprovalPersonOrganization;
 class StepAP214_AutoDesignDateAndPersonAssignment;
@@ -41,25 +23,29 @@ class StepBasic_ProductDefinitionEffectivity;
 
 
 
-class StepAP214_AutoDesignDateAndTimeItem  : public StepData_SelectType {
+class StepAP214_AutoDesignDateAndTimeItem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a AutoDesignDateAndTimeItem SelectType <br>
-  Standard_EXPORT   StepAP214_AutoDesignDateAndTimeItem();
-  //! Recognizes a AutoDesignDateAndTimeItem Kind Entity that is : <br>
-//!        1 -> ApprovalPersonOrganization <br>
-//!        2 -> AutoDesignDateAndPersonAssignment <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a ApprovalPersonOrganization (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ApprovalPersonOrganization ApprovalPersonOrganization() const;
-  //! returns Value as a AutoDesignDateAndPersonAssignment (Null if another type) <br>
-  Standard_EXPORT     Handle_StepAP214_AutoDesignDateAndPersonAssignment AutoDesignDateAndPersonAssignment() const;
   
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionEffectivity ProductDefinitionEffectivity() const;
-
+  //! Returns a AutoDesignDateAndTimeItem SelectType
+  Standard_EXPORT StepAP214_AutoDesignDateAndTimeItem();
+  
+  //! Recognizes a AutoDesignDateAndTimeItem Kind Entity that is :
+  //! 1 -> ApprovalPersonOrganization
+  //! 2 -> AutoDesignDateAndPersonAssignment
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a ApprovalPersonOrganization (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ApprovalPersonOrganization) ApprovalPersonOrganization()  const;
+  
+  //! returns Value as a AutoDesignDateAndPersonAssignment (Null if another type)
+  Standard_EXPORT   Handle(StepAP214_AutoDesignDateAndPersonAssignment) AutoDesignDateAndPersonAssignment()  const;
+  
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionEffectivity) ProductDefinitionEffectivity()  const;
 
 
 
@@ -82,7 +68,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_AutoDesignDateAndTimeItem_HeaderFile

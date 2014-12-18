@@ -1,6 +1,2 @@
-#ifndef _StepBasic_CoordinatedUniversalTimeOffset_HeaderFile
 #include <StepBasic_CoordinatedUniversalTimeOffset.hxx>
-#endif
-#ifndef _StepBasic_LocalTime_HeaderFile
 #include <StepBasic_LocalTime.hxx>
-#endif

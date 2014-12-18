@@ -6,34 +6,16 @@
 #ifndef _TPrsStd_DataMapOfGUIDDriver_HeaderFile
 #define _TPrsStd_DataMapOfGUIDDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_TPrsStd_Driver_HeaderFile
 #include <Handle_TPrsStd_Driver.hxx>
-#endif
-#ifndef _Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver_HeaderFile
 #include <Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class Standard_GUID;
@@ -43,50 +25,50 @@ class TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver;
 
 
 
-class TPrsStd_DataMapOfGUIDDriver  : public TCollection_BasicMap {
+class TPrsStd_DataMapOfGUIDDriver  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TPrsStd_DataMapOfGUIDDriver(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TPrsStd_DataMapOfGUIDDriver(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TPrsStd_DataMapOfGUIDDriver& Assign(const TPrsStd_DataMapOfGUIDDriver& Other) ;
-    TPrsStd_DataMapOfGUIDDriver& operator =(const TPrsStd_DataMapOfGUIDDriver& Other) 
+  Standard_EXPORT   TPrsStd_DataMapOfGUIDDriver& Assign (const TPrsStd_DataMapOfGUIDDriver& Other) ;
+  TPrsStd_DataMapOfGUIDDriver& operator = (const TPrsStd_DataMapOfGUIDDriver& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TPrsStd_DataMapOfGUIDDriver()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const Standard_GUID& K,const Handle(TPrsStd_Driver)& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const Standard_GUID& K, const Handle(TPrsStd_Driver)& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Standard_GUID& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const Standard_GUID& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const Standard_GUID& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const Standard_GUID& K) ;
   
-  Standard_EXPORT    const Handle_TPrsStd_Driver& Find(const Standard_GUID& K) const;
-   const Handle_TPrsStd_Driver& operator()(const Standard_GUID& K) const
+  Standard_EXPORT  const  Handle(TPrsStd_Driver)& Find (const Standard_GUID& K)  const;
+ const  Handle(TPrsStd_Driver)& operator() (const Standard_GUID& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Handle_TPrsStd_Driver& ChangeFind(const Standard_GUID& K) ;
-    Handle_TPrsStd_Driver& operator()(const Standard_GUID& K) 
+  Standard_EXPORT   Handle(TPrsStd_Driver)& ChangeFind (const Standard_GUID& K) ;
+  Handle(TPrsStd_Driver)& operator() (const Standard_GUID& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const Standard_GUID& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const Standard_GUID& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const Standard_GUID& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const Standard_GUID& K) ;
 
 
 
@@ -100,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   TPrsStd_DataMapOfGUIDDriver(const TPrsStd_DataMapOfGUIDDriver& Other);
+  Standard_EXPORT TPrsStd_DataMapOfGUIDDriver(const TPrsStd_DataMapOfGUIDDriver& Other);
 
 
 
@@ -111,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TPrsStd_DataMapOfGUIDDriver_HeaderFile

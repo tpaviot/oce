@@ -6,38 +6,27 @@
 #ifndef _TColGeom_SequenceNodeOfSequenceOfBoundedCurve_HeaderFile
 #define _TColGeom_SequenceNodeOfSequenceOfBoundedCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve_HeaderFile
 #include <Handle_TColGeom_SequenceNodeOfSequenceOfBoundedCurve.hxx>
-#endif
 
-#ifndef _Handle_Geom_BoundedCurve_HeaderFile
 #include <Handle_Geom_BoundedCurve.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Geom_BoundedCurve;
 class TColGeom_SequenceOfBoundedCurve;
 
 
 
-class TColGeom_SequenceNodeOfSequenceOfBoundedCurve : public TCollection_SeqNode {
+class TColGeom_SequenceNodeOfSequenceOfBoundedCurve : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColGeom_SequenceNodeOfSequenceOfBoundedCurve(const Handle(Geom_BoundedCurve)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColGeom_SequenceNodeOfSequenceOfBoundedCurve(const Handle(Geom_BoundedCurve)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Geom_BoundedCurve& Value() const;
+      Handle(Geom_BoundedCurve)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Geom_BoundedCurve myValue;
+  Handle(Geom_BoundedCurve) myValue;
 
 
 };
 
-#define SeqItem Handle_Geom_BoundedCurve
+#define SeqItem Handle(Geom_BoundedCurve)
 #define SeqItem_hxx <Geom_BoundedCurve.hxx>
 #define TCollection_SequenceNode TColGeom_SequenceNodeOfSequenceOfBoundedCurve
 #define TCollection_SequenceNode_hxx <TColGeom_SequenceNodeOfSequenceOfBoundedCurve.hxx>
@@ -78,7 +67,6 @@ Handle_Geom_BoundedCurve myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColGeom_SequenceNodeOfSequenceOfBoundedCurve_HeaderFile

@@ -6,59 +6,51 @@
 #ifndef _IGESBasic_SingleParent_HeaderFile
 #define _IGESBasic_SingleParent_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESBasic_SingleParent_HeaderFile
 #include <Handle_IGESBasic_SingleParent.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESData_HArray1OfIGESEntity_HeaderFile
 #include <Handle_IGESData_HArray1OfIGESEntity.hxx>
-#endif
-#ifndef _IGESData_SingleParentEntity_HeaderFile
 #include <IGESData_SingleParentEntity.hxx>
-#endif
 class IGESData_IGESEntity;
 class IGESData_HArray1OfIGESEntity;
 class Standard_OutOfRange;
 
 
-//! defines SingleParent, Type <402> Form <9> <br>
-//!          in package IGESBasic <br>
-//!          It defines a logical structure of one independent <br>
-//!          (parent) entity and one or more subordinate (children) <br>
-//!          entities <br>
-class IGESBasic_SingleParent : public IGESData_SingleParentEntity {
+//! defines SingleParent, Type <402> Form <9>
+//! in package IGESBasic
+//! It defines a logical structure of one independent
+//! (parent) entity and one or more subordinate (children)
+//! entities
+class IGESBasic_SingleParent : public IGESData_SingleParentEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESBasic_SingleParent();
-  //! This method is used to set the fields of the class <br>
-//!           SingleParent <br>
-//!       - nbParentEntities : Indicates number of Parents, always = 1 <br>
-//!       - aParentEntity    : Used to hold the Parent Entity <br>
-//!       - allChildren      : Used to hold the children <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbParentEntities,const Handle(IGESData_IGESEntity)& aParentEntity,const Handle(IGESData_HArray1OfIGESEntity)& allChildren) ;
-  //! returns the number of Parent Entities, which should be 1 <br>
-  Standard_EXPORT     Standard_Integer NbParentEntities() const;
-  //! Returns the Parent Entity (inherited method) <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity SingleParent() const;
-  //! returns the number of children of the Parent <br>
-  Standard_EXPORT     Standard_Integer NbChildren() const;
-  //! returns the specific child as indicated by Index <br>
-//! raises exception if Index <= 0 or Index > NbChildren() <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Child(const Standard_Integer Index) const;
+  Standard_EXPORT IGESBasic_SingleParent();
+  
+  //! This method is used to set the fields of the class
+  //! SingleParent
+  //! - nbParentEntities : Indicates number of Parents, always = 1
+  //! - aParentEntity    : Used to hold the Parent Entity
+  //! - allChildren      : Used to hold the children
+  Standard_EXPORT   void Init (const Standard_Integer nbParentEntities, const Handle(IGESData_IGESEntity)& aParentEntity, const Handle(IGESData_HArray1OfIGESEntity)& allChildren) ;
+  
+  //! returns the number of Parent Entities, which should be 1
+  Standard_EXPORT   Standard_Integer NbParentEntities()  const;
+  
+  //! Returns the Parent Entity (inherited method)
+  Standard_EXPORT   Handle(IGESData_IGESEntity) SingleParent()  const;
+  
+  //! returns the number of children of the Parent
+  Standard_EXPORT   Standard_Integer NbChildren()  const;
+  
+  //! returns the specific child as indicated by Index
+  //! raises exception if Index <= 0 or Index > NbChildren()
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Child (const Standard_Integer Index)  const;
 
 
 
@@ -73,9 +65,9 @@ protected:
 private: 
 
 
-Standard_Integer theNbParentEntities;
-Handle_IGESData_IGESEntity theParentEntity;
-Handle_IGESData_HArray1OfIGESEntity theChildren;
+  Standard_Integer theNbParentEntities;
+  Handle(IGESData_IGESEntity) theParentEntity;
+  Handle(IGESData_HArray1OfIGESEntity) theChildren;
 
 
 };
@@ -84,7 +76,6 @@ Handle_IGESData_HArray1OfIGESEntity theChildren;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_SingleParent_HeaderFile

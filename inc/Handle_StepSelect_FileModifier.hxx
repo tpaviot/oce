@@ -6,22 +6,15 @@
 #ifndef _Handle_StepSelect_FileModifier_HeaderFile
 #define _Handle_StepSelect_FileModifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_GeneralModifier_HeaderFile
 #include <Handle_IFSelect_GeneralModifier.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_GeneralModifier);
 class StepSelect_FileModifier;
 
-DEFINE_STANDARD_HANDLE(StepSelect_FileModifier,IFSelect_GeneralModifier)
+DEFINE_STANDARD_HANDLE(StepSelect_FileModifier, IFSelect_GeneralModifier)
 
-#endif
+#endif // _Handle_StepSelect_FileModifier_HeaderFile

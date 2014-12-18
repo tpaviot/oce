@@ -6,35 +6,26 @@
 #ifndef _MoniTool_IntVal_HeaderFile
 #define _MoniTool_IntVal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MoniTool_IntVal_HeaderFile
 #include <Handle_MoniTool_IntVal.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
-//! An Integer through a Handle (i.e. managed as TShared) <br>
-class MoniTool_IntVal : public MMgt_TShared {
+//! An Integer through a Handle (i.e. managed as TShared)
+class MoniTool_IntVal : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   MoniTool_IntVal(const Standard_Integer val = 0);
+  Standard_EXPORT MoniTool_IntVal(const Standard_Integer val = 0);
   
-  Standard_EXPORT     Standard_Integer Value() const;
+  Standard_EXPORT   Standard_Integer Value()  const;
   
-  Standard_EXPORT     Standard_Integer& CValue() ;
+  Standard_EXPORT   Standard_Integer& CValue() ;
 
 
 
@@ -49,7 +40,7 @@ protected:
 private: 
 
 
-Standard_Integer theval;
+  Standard_Integer theval;
 
 
 };
@@ -58,7 +49,6 @@ Standard_Integer theval;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MoniTool_IntVal_HeaderFile

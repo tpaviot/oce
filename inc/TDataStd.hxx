@@ -6,22 +6,12 @@
 #ifndef _TDataStd_HeaderFile
 #define _TDataStd_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _TDataStd_RealEnum_HeaderFile
 #include <TDataStd_RealEnum.hxx>
-#endif
 class TDF_IDList;
 class TDataStd_Current;
 class TDataStd_Name;
@@ -87,37 +77,39 @@ class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal;
 class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal;
 
 
-//!  This  package  defines   standard attributes for <br>
-//!           modelling. <br>
-//! These allow you to create and modify labels <br>
-//! and attributes for many basic data types. <br>
-//! Standard topological and visualization <br>
-//! attributes have also been created. <br>
-//! To find an attribute attached to a specific label, <br>
-//! you use the GUID of the type of attribute you <br>
-//! are looking for. To do this, first find this <br>
-//! information using the method GetID as follows: Standard_GUID anID = <br>
-//! MyAttributeClass::GetID(); <br>
-//! Then, use the method Find for the label as follows: <br>
-//! Standard_Boolean HasAttribute <br>
-//! = <br>
-//! aLabel.Find(anID,anAttribute); <br>
-//! Note <br>
-//! For information on the relations between this <br>
-//! component of OCAF and the others, refer to the OCAF User's Guide. <br>
-class TDataStd  {
+//! This  package  defines   standard attributes for
+//! modelling.
+//! These allow you to create and modify labels
+//! and attributes for many basic data types.
+//! Standard topological and visualization
+//! attributes have also been created.
+//! To find an attribute attached to a specific label,
+//! you use the GUID of the type of attribute you
+//! are looking for. To do this, first find this
+//! information using the method GetID as follows: Standard_GUID anID =
+//! MyAttributeClass::GetID();
+//! Then, use the method Find for the label as follows:
+//! Standard_Boolean HasAttribute
+//! =
+//! aLabel.Find(anID,anAttribute);
+//! Note
+//! For information on the relations between this
+//! component of OCAF and the others, refer to the OCAF User's Guide.
+class TDataStd 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Appends to <anIDList> the list of the attributes <br>
-//!          IDs of this package. CAUTION: <anIDList> is NOT <br>
-//!          cleared before use. <br>
-  Standard_EXPORT   static  void IDList(TDF_IDList& anIDList) ;
-  //! Prints the name of the real dimension <DIM> as a String on <br>
-//!          the Stream <S> and returns <S>. <br>
-  Standard_EXPORT   static  Standard_OStream& Print(const TDataStd_RealEnum DIM,Standard_OStream& S) ;
-
+  
+  //! Appends to <anIDList> the list of the attributes
+  //! IDs of this package. CAUTION: <anIDList> is NOT
+  //! cleared before use.
+  Standard_EXPORT static   void IDList (TDF_IDList& anIDList) ;
+  
+  //! Prints the name of the real dimension <DIM> as a String on
+  //! the Stream <S> and returns <S>.
+  Standard_EXPORT static   Standard_OStream& Print (const TDataStd_RealEnum DIM, Standard_OStream& S) ;
 
 
 
@@ -202,7 +194,6 @@ friend class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_HeaderFile

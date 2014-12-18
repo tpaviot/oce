@@ -6,45 +6,40 @@
 #ifndef _StepElement_SurfaceSectionFieldVarying_HeaderFile
 #define _StepElement_SurfaceSectionFieldVarying_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_SurfaceSectionFieldVarying_HeaderFile
 #include <Handle_StepElement_SurfaceSectionFieldVarying.hxx>
-#endif
 
-#ifndef _Handle_StepElement_HArray1OfSurfaceSection_HeaderFile
 #include <Handle_StepElement_HArray1OfSurfaceSection.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepElement_SurfaceSectionField_HeaderFile
 #include <StepElement_SurfaceSectionField.hxx>
-#endif
 class StepElement_HArray1OfSurfaceSection;
 
 
-//! Representation of STEP entity SurfaceSectionFieldVarying <br>
-class StepElement_SurfaceSectionFieldVarying : public StepElement_SurfaceSectionField {
+//! Representation of STEP entity SurfaceSectionFieldVarying
+class StepElement_SurfaceSectionFieldVarying : public StepElement_SurfaceSectionField
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_SurfaceSectionFieldVarying();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepElement_HArray1OfSurfaceSection)& aDefinitions,const Standard_Boolean aAdditionalNodeValues) ;
-  //! Returns field Definitions <br>
-  Standard_EXPORT     Handle_StepElement_HArray1OfSurfaceSection Definitions() const;
-  //! Set field Definitions <br>
-  Standard_EXPORT     void SetDefinitions(const Handle(StepElement_HArray1OfSurfaceSection)& Definitions) ;
-  //! Returns field AdditionalNodeValues <br>
-  Standard_EXPORT     Standard_Boolean AdditionalNodeValues() const;
-  //! Set field AdditionalNodeValues <br>
-  Standard_EXPORT     void SetAdditionalNodeValues(const Standard_Boolean AdditionalNodeValues) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_SurfaceSectionFieldVarying();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepElement_HArray1OfSurfaceSection)& aDefinitions, const Standard_Boolean aAdditionalNodeValues) ;
+  
+  //! Returns field Definitions
+  Standard_EXPORT   Handle(StepElement_HArray1OfSurfaceSection) Definitions()  const;
+  
+  //! Set field Definitions
+  Standard_EXPORT   void SetDefinitions (const Handle(StepElement_HArray1OfSurfaceSection)& Definitions) ;
+  
+  //! Returns field AdditionalNodeValues
+  Standard_EXPORT   Standard_Boolean AdditionalNodeValues()  const;
+  
+  //! Set field AdditionalNodeValues
+  Standard_EXPORT   void SetAdditionalNodeValues (const Standard_Boolean AdditionalNodeValues) ;
 
 
 
@@ -59,8 +54,8 @@ protected:
 private: 
 
 
-Handle_StepElement_HArray1OfSurfaceSection theDefinitions;
-Standard_Boolean theAdditionalNodeValues;
+  Handle(StepElement_HArray1OfSurfaceSection) theDefinitions;
+  Standard_Boolean theAdditionalNodeValues;
 
 
 };
@@ -69,7 +64,6 @@ Standard_Boolean theAdditionalNodeValues;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_SurfaceSectionFieldVarying_HeaderFile

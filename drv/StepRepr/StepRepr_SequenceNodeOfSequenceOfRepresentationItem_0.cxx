@@ -5,16 +5,10 @@
 
 #include <StepRepr_SequenceNodeOfSequenceOfRepresentationItem.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _StepRepr_SequenceOfRepresentationItem_HeaderFile
 #include <StepRepr_SequenceOfRepresentationItem.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(StepRepr_SequenceNodeOfSequenceOfRepresentationItem,Standard_
 IMPLEMENT_STANDARD_RTTI(StepRepr_SequenceNodeOfSequenceOfRepresentationItem)
 
 
-#define SeqItem Handle_StepRepr_RepresentationItem
+#define SeqItem Handle(StepRepr_RepresentationItem)
 #define SeqItem_hxx <StepRepr_RepresentationItem.hxx>
 #define TCollection_SequenceNode StepRepr_SequenceNodeOfSequenceOfRepresentationItem
 #define TCollection_SequenceNode_hxx <StepRepr_SequenceNodeOfSequenceOfRepresentationItem.hxx>

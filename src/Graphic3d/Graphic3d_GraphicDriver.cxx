@@ -14,41 +14,14 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-//              11/97 ; CAL : retrait de la dependance avec math
-
-
-//-Version  
-
-//-Design Declaration des variables specifiques aux Drivers
-
-//-Warning  Un driver encapsule les Pex, Phigs et OpenGl drivers
-
-//-References 
-
-//-Language C++ 2.0
-
-//-Declarations
-
-// for the class
 #include <Graphic3d_GraphicDriver.ixx>
 
-#include <Aspect_DriverDefinitionError.hxx>
-
-//-Aliases
-
-//-Global data definitions
-
-//-Constructors
-
-Graphic3d_GraphicDriver::Graphic3d_GraphicDriver (const Standard_CString AShrName) {
-
-  SetTrace (0);
-  MySharedLibrary.SetName (AShrName);
-  myDeviceLostFlag = Standard_False;
-
-  //if (! MySharedLibrary.DlOpen (OSD_RTLD_LAZY))
-  //Aspect_DriverDefinitionError::Raise (MySharedLibrary.DlError ());
-
+Graphic3d_GraphicDriver::Graphic3d_GraphicDriver (const Handle(Aspect_DisplayConnection)& theDisp)
+: MyTraceLevel        (0),
+  myDisplayConnection (theDisp),
+  myDeviceLostFlag    (Standard_False)
+{
+  //
 }
 
 //-Internal methods, in order
@@ -58,16 +31,6 @@ void Graphic3d_GraphicDriver::PrintBoolean (const Standard_CString AComment, con
   cout << "\t" << AComment << " : "
     << (AValue ? "True" : "False") << "\n";
   cout << flush;
-
-}
-
-void Graphic3d_GraphicDriver::PrintCGroup (const Graphic3d_CGroup& ACGroup, const Standard_Integer AField) const {
-
-  if (AField) {
-    cout << "\tstruct id " << ACGroup.Struct->Id << "\n";
-    cout << "\tgroup\n";
-    cout << flush;
-  }
 
 }
 

@@ -6,17 +6,11 @@
 #ifndef _XDEDRAW_HeaderFile
 #define _XDEDRAW_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-class Draw_Interpretor;
+#include <Draw_Interpretor.hxx>
 class XDEDRAW_Shapes;
 class XDEDRAW_Colors;
 class XDEDRAW_Layers;
@@ -24,17 +18,20 @@ class XDEDRAW_Props;
 class XDEDRAW_Common;
 
 
-//! Provides DRAW commands for work with DECAF data structures <br>
-class XDEDRAW  {
+//! Provides DRAW commands for work with DECAF data structures
+class XDEDRAW 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Provides common commands for work XDE <br>//! Initializes all the functions <br>
-  Standard_EXPORT   static  void Init(Draw_Interpretor& di) ;
-  //! Loads all Draw commands of  TKXDEDRAW. Used for plugin. <br>
-  Standard_EXPORT   static  void Factory(Draw_Interpretor& theDI) ;
-
+  
+  //! Provides common commands for work XDE
+  //! Initializes all the functions
+  Standard_EXPORT static   void Init (Draw_Interpretor& di) ;
+  
+  //! Loads all Draw commands of  TKXDEDRAW. Used for plugin.
+  Standard_EXPORT static   void Factory (Draw_Interpretor& theDI) ;
 
 
 
@@ -62,7 +59,6 @@ friend class XDEDRAW_Common;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XDEDRAW_HeaderFile

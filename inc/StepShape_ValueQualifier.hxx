@@ -6,54 +6,41 @@
 #ifndef _StepShape_ValueQualifier_HeaderFile
 #define _StepShape_ValueQualifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepShape_PrecisionQualifier_HeaderFile
 #include <Handle_StepShape_PrecisionQualifier.hxx>
-#endif
-#ifndef _Handle_StepShape_TypeQualifier_HeaderFile
 #include <Handle_StepShape_TypeQualifier.hxx>
-#endif
 class Standard_Transient;
 class StepShape_PrecisionQualifier;
 class StepShape_TypeQualifier;
 
 
-//! Added for Dimensional Tolerances <br>
-class StepShape_ValueQualifier  : public StepData_SelectType {
+//! Added for Dimensional Tolerances
+class StepShape_ValueQualifier  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepShape_ValueQualifier();
-  //! Recognizes a kind of ValueQualifier Select Type : <br>
-//!           1 -> PrecisionQualifier from StepShape <br>
-//!           2 -> TypeQualifier from StepShape <br>
-//!           3 -> UnceraintyQualifier .. not yet implemented <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as PrecisionQualifier <br>
-  Standard_EXPORT     Handle_StepShape_PrecisionQualifier PrecisionQualifier() const;
-  //! Returns Value as TypeQualifier <br>
-  Standard_EXPORT     Handle_StepShape_TypeQualifier TypeQualifier() const;
-
+  Standard_EXPORT StepShape_ValueQualifier();
+  
+  //! Recognizes a kind of ValueQualifier Select Type :
+  //! 1 -> PrecisionQualifier from StepShape
+  //! 2 -> TypeQualifier from StepShape
+  //! 3 -> UnceraintyQualifier .. not yet implemented
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as PrecisionQualifier
+  Standard_EXPORT   Handle(StepShape_PrecisionQualifier) PrecisionQualifier()  const;
+  
+  //! Returns Value as TypeQualifier
+  Standard_EXPORT   Handle(StepShape_TypeQualifier) TypeQualifier()  const;
 
 
 
@@ -76,7 +63,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_ValueQualifier_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _TDF_DoubleMapNodeOfGUIDProgIDMap_HeaderFile
 #define _TDF_DoubleMapNodeOfGUIDProgIDMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_DoubleMapNodeOfGUIDProgIDMap_HeaderFile
 #include <Handle_TDF_DoubleMapNodeOfGUIDProgIDMap.hxx>
-#endif
 
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class Standard_GUID;
 class TCollection_ExtendedString;
 class TDF_GUIDProgIDMap;
@@ -35,18 +21,19 @@ class TDF_DoubleMapIteratorOfGUIDProgIDMap;
 
 
 
-class TDF_DoubleMapNodeOfGUIDProgIDMap : public TCollection_MapNode {
+class TDF_DoubleMapNodeOfGUIDProgIDMap : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_DoubleMapNodeOfGUIDProgIDMap(const Standard_GUID& K1,const TCollection_ExtendedString& K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TDF_DoubleMapNodeOfGUIDProgIDMap(const Standard_GUID& K1, const TCollection_ExtendedString& K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Standard_GUID& Key1() const;
+      Standard_GUID& Key1()  const;
   
-        TCollection_ExtendedString& Key2() const;
+      TCollection_ExtendedString& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -61,9 +48,9 @@ protected:
 private: 
 
 
-Standard_GUID myKey1;
-TCollection_ExtendedString myKey2;
-TCollection_MapNodePtr myNext2;
+  Standard_GUID myKey1;
+  TCollection_ExtendedString myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -105,7 +92,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_DoubleMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_DoubleMapNodeOfGUIDProgIDMap_HeaderFile

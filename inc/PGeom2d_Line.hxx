@@ -6,42 +6,35 @@
 #ifndef _PGeom2d_Line_HeaderFile
 #define _PGeom2d_Line_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Line_HeaderFile
 #include <Handle_PGeom2d_Line.hxx>
-#endif
 
-#ifndef _gp_Ax2d_HeaderFile
 #include <gp_Ax2d.hxx>
-#endif
-#ifndef _PGeom2d_Curve_HeaderFile
 #include <PGeom2d_Curve.hxx>
-#endif
 class gp_Ax2d;
 
 
-class PGeom2d_Line : public PGeom2d_Curve {
+class PGeom2d_Line : public PGeom2d_Curve
+{
 
 public:
 
-  //! Creates a line with default values. <br>
-  Standard_EXPORT   PGeom2d_Line();
-  //! Creates   a  line  located    in  3D space   with <br>
-//!         <aPosition>.  The Location   of <aPosition> is  the <br>
-//!         origin of the line. <br>
-  Standard_EXPORT   PGeom2d_Line(const gp_Ax2d& aPosition);
-  //! Set the value of the field position with <aPosition>. <br>
-  Standard_EXPORT     void Position(const gp_Ax2d& aPosition) ;
-  //! Returns the value of the field position. <br>
-  Standard_EXPORT     gp_Ax2d Position() const;
+  
+  //! Creates a line with default values.
+  Standard_EXPORT PGeom2d_Line();
+  
+  //! Creates   a  line  located    in  3D space   with
+  //! <aPosition>.  The Location   of <aPosition> is  the
+  //! origin of the line.
+  Standard_EXPORT PGeom2d_Line(const gp_Ax2d& aPosition);
+  
+  //! Set the value of the field position with <aPosition>.
+  Standard_EXPORT   void Position (const gp_Ax2d& aPosition) ;
+  
+  //! Returns the value of the field position.
+  Standard_EXPORT   gp_Ax2d Position()  const;
 
 PGeom2d_Line(const Storage_stCONSTclCOM& a) : PGeom2d_Curve(a)
 {
@@ -61,7 +54,7 @@ protected:
 private: 
 
 
-gp_Ax2d position;
+  gp_Ax2d position;
 
 
 };
@@ -70,7 +63,6 @@ gp_Ax2d position;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom2d_Line_HeaderFile

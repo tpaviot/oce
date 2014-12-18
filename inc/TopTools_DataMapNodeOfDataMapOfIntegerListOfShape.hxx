@@ -6,28 +6,14 @@
 #ifndef _TopTools_DataMapNodeOfDataMapOfIntegerListOfShape_HeaderFile
 #define _TopTools_DataMapNodeOfDataMapOfIntegerListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape_HeaderFile
 #include <Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopTools_ListOfShape;
 class TColStd_MapIntegerHasher;
 class TopTools_DataMapOfIntegerListOfShape;
@@ -35,16 +21,17 @@ class TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape;
 
 
 
-class TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public TCollection_MapNode {
+class TopTools_DataMapNodeOfDataMapOfIntegerListOfShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TopTools_DataMapNodeOfDataMapOfIntegerListOfShape(const Standard_Integer& K,const TopTools_ListOfShape& I,const TCollection_MapNodePtr& n);
+    TopTools_DataMapNodeOfDataMapOfIntegerListOfShape(const Standard_Integer& K, const TopTools_ListOfShape& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        TopTools_ListOfShape& Value() const;
+      TopTools_ListOfShape& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-TopTools_ListOfShape myValue;
+  Standard_Integer myKey;
+  TopTools_ListOfShape myValue;
 
 
 };
@@ -98,7 +85,6 @@ TopTools_ListOfShape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_DataMapNodeOfDataMapOfIntegerListOfShape_HeaderFile

@@ -6,34 +6,16 @@
 #ifndef _XmlObjMgt_HeaderFile
 #define _XmlObjMgt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _XmlObjMgt_DOMString_HeaderFile
 #include <XmlObjMgt_DOMString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _XmlObjMgt_Element_HeaderFile
 #include <XmlObjMgt_Element.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TCollection_ExtendedString;
 class TCollection_AsciiString;
 class XmlObjMgt_Persistent;
@@ -41,46 +23,53 @@ class XmlObjMgt_GP;
 class XmlObjMgt_Array1;
 
 
-//! This package defines services to manage the storage <br>
-//!          grain of data produced by applications and those classes <br>
-//!          to manage persistent extern reference. <br>
-class XmlObjMgt  {
+//! This package defines services to manage the storage
+//! grain of data produced by applications and those classes
+//! to manage persistent extern reference.
+class XmlObjMgt 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! translation of gp objects <br>//! Define the name of XMLattribute 'ID' (to be used everywhere) <br>
-  Standard_EXPORT   static const XmlObjMgt_DOMString& IdString() ;
-  //! Add attribute <theElement extstring="theString" ...> <br>
-  Standard_EXPORT   static  Standard_Boolean SetExtendedString(XmlObjMgt_Element& theElement,const TCollection_ExtendedString& theString) ;
-  //! Get attribute <theElement extstring="theString" ...> <br>
-  Standard_EXPORT   static  Standard_Boolean GetExtendedString(const XmlObjMgt_Element& theElement,TCollection_ExtendedString& theString) ;
-  //! Returns the first child text node <br>
-  Standard_EXPORT   static  XmlObjMgt_DOMString GetStringValue(const XmlObjMgt_Element& theElement) ;
-  //! Add theData as the last child text node to theElement <br>
-//!          isClearText(True) avoids analysis of the string and replacement <br>
-//!          of characters like '<' and '&' during XML file storage. <br>
-//!          Do NEVER set isClearText unless you have a hell of a reason <br>
-  Standard_EXPORT   static  void SetStringValue(XmlObjMgt_Element& theElement,const XmlObjMgt_DOMString& theData,const Standard_Boolean isClearText = Standard_False) ;
-  //! Convert XPath expression (DOMString) into TagEntry string <br>
-//!          returns False on Error <br>
-  Standard_EXPORT   static  Standard_Boolean GetTagEntryString(const XmlObjMgt_DOMString& theTarget,TCollection_AsciiString& theTagEntry) ;
-  //! Convert XPath expression (DOMString) into TagEntry string <br>
-//!          returns False on Error <br>
-  Standard_EXPORT   static  void SetTagEntryString(XmlObjMgt_DOMString& theSource,const TCollection_AsciiString& theTagEntry) ;
   
-  Standard_EXPORT   static  XmlObjMgt_Element FindChildElement(const XmlObjMgt_Element& theSource,const Standard_Integer theObjId) ;
+  //! Define the name of XMLattribute 'ID' (to be used everywhere)
+  Standard_EXPORT static  const  XmlObjMgt_DOMString& IdString() ;
   
-  Standard_EXPORT   static  XmlObjMgt_Element FindChildByRef(const XmlObjMgt_Element& theSource,const XmlObjMgt_DOMString& theRefName) ;
+  //! Add attribute <theElement extstring="theString" ...>
+  Standard_EXPORT static   Standard_Boolean SetExtendedString (XmlObjMgt_Element& theElement, const TCollection_ExtendedString& theString) ;
   
-  Standard_EXPORT   static  XmlObjMgt_Element FindChildByName(const XmlObjMgt_Element& theSource,const XmlObjMgt_DOMString& theName) ;
+  //! Get attribute <theElement extstring="theString" ...>
+  Standard_EXPORT static   Standard_Boolean GetExtendedString (const XmlObjMgt_Element& theElement, TCollection_ExtendedString& theString) ;
   
-  Standard_EXPORT   static  Standard_Boolean GetInteger(Standard_CString& theString,Standard_Integer& theValue) ;
+  //! Returns the first child text node
+  Standard_EXPORT static   XmlObjMgt_DOMString GetStringValue (const XmlObjMgt_Element& theElement) ;
   
-  Standard_EXPORT   static  Standard_Boolean GetReal(Standard_CString& theString,Standard_Real& theValue) ;
+  //! Add theData as the last child text node to theElement
+  //! isClearText(True) avoids analysis of the string and replacement
+  //! of characters like '<' and '&' during XML file storage.
+  //! Do NEVER set isClearText unless you have a hell of a reason
+  Standard_EXPORT static   void SetStringValue (XmlObjMgt_Element& theElement, const XmlObjMgt_DOMString& theData, const Standard_Boolean isClearText = Standard_False) ;
   
-  Standard_EXPORT   static  Standard_Boolean GetReal(const XmlObjMgt_DOMString& theString,Standard_Real& theValue) ;
-
+  //! Convert XPath expression (DOMString) into TagEntry string
+  //! returns False on Error
+  Standard_EXPORT static   Standard_Boolean GetTagEntryString (const XmlObjMgt_DOMString& theTarget, TCollection_AsciiString& theTagEntry) ;
+  
+  //! Convert XPath expression (DOMString) into TagEntry string
+  //! returns False on Error
+  Standard_EXPORT static   void SetTagEntryString (XmlObjMgt_DOMString& theSource, const TCollection_AsciiString& theTagEntry) ;
+  
+  Standard_EXPORT static   XmlObjMgt_Element FindChildElement (const XmlObjMgt_Element& theSource, const Standard_Integer theObjId) ;
+  
+  Standard_EXPORT static   XmlObjMgt_Element FindChildByRef (const XmlObjMgt_Element& theSource, const XmlObjMgt_DOMString& theRefName) ;
+  
+  Standard_EXPORT static   XmlObjMgt_Element FindChildByName (const XmlObjMgt_Element& theSource, const XmlObjMgt_DOMString& theName) ;
+  
+  Standard_EXPORT static   Standard_Boolean GetInteger (Standard_CString& theString, Standard_Integer& theValue) ;
+  
+  Standard_EXPORT static   Standard_Boolean GetReal (Standard_CString& theString, Standard_Real& theValue) ;
+  
+  Standard_EXPORT static   Standard_Boolean GetReal (const XmlObjMgt_DOMString& theString, Standard_Real& theValue) ;
 
 
 
@@ -106,7 +95,6 @@ friend class XmlObjMgt_Array1;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XmlObjMgt_HeaderFile

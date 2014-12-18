@@ -5,25 +5,13 @@
 
 #include <BRepAlgo_DataMapNodeOfDataMapOfShapeInterference.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BRepAlgo_DataMapOfShapeInterference_HeaderFile
 #include <BRepAlgo_DataMapOfShapeInterference.hxx>
-#endif
-#ifndef _BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference_HeaderFile
 #include <BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference.hxx>
-#endif
 
  
 
@@ -44,7 +32,7 @@ IMPLEMENT_STANDARD_RTTI(BRepAlgo_DataMapNodeOfDataMapOfShapeInterference)
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_TopOpeBRepDS_Interference
+#define TheItem Handle(TopOpeBRepDS_Interference)
 #define TheItem_hxx <TopOpeBRepDS_Interference.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>

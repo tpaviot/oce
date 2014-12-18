@@ -6,25 +6,13 @@
 #ifndef _IGESSelect_DispPerDrawing_HeaderFile
 #define _IGESSelect_DispPerDrawing_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_DispPerDrawing_HeaderFile
 #include <Handle_IGESSelect_DispPerDrawing.hxx>
-#endif
 
-#ifndef _Handle_IGESSelect_ViewSorter_HeaderFile
 #include <Handle_IGESSelect_ViewSorter.hxx>
-#endif
-#ifndef _IFSelect_Dispatch_HeaderFile
 #include <IFSelect_Dispatch.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESSelect_ViewSorter;
 class TCollection_AsciiString;
 class Interface_Graph;
@@ -32,28 +20,34 @@ class IFGraph_SubPartsIterator;
 class Interface_EntityIterator;
 
 
-//! This type of dispatch defines sets of entities attached to <br>
-//!           distinct drawings. This information is taken from attached <br>
-//!           views which appear in the Directory Part. Also Drawing Frames <br>
-//!           are considered when Drawings are part of input list. <br>
-//! <br>
-//!           Remaining data concern entities not attached to a drawing. <br>
-class IGESSelect_DispPerDrawing : public IFSelect_Dispatch {
+//! This type of dispatch defines sets of entities attached to
+//! distinct drawings. This information is taken from attached
+//! views which appear in the Directory Part. Also Drawing Frames
+//! are considered when Drawings are part of input list.
+//!
+//! Remaining data concern entities not attached to a drawing.
+class IGESSelect_DispPerDrawing : public IFSelect_Dispatch
+{
 
 public:
 
-  //! Creates a DispPerDrawing <br>
-  Standard_EXPORT   IGESSelect_DispPerDrawing();
-  //! Returns as Label, "One File per Drawing" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
-  //! Computes the list of produced Packets. Packets are computed <br>
-//!           by a ViewSorter (SortDrawings with also frames). <br>
-  Standard_EXPORT     void Packets(const Interface_Graph& G,IFGraph_SubPartsIterator& packs) const;
-  //! Returns True, because of entities attached to no view. <br>
-  Standard_EXPORT   virtual  Standard_Boolean CanHaveRemainder() const;
-  //! Returns Remainder which is a set of Entities. <br>
-//!           It is supposed to be called once Packets has been called. <br>
-  Standard_EXPORT   virtual  Interface_EntityIterator Remainder(const Interface_Graph& G) const;
+  
+  //! Creates a DispPerDrawing
+  Standard_EXPORT IGESSelect_DispPerDrawing();
+  
+  //! Returns as Label, "One File per Drawing"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
+  
+  //! Computes the list of produced Packets. Packets are computed
+  //! by a ViewSorter (SortDrawings with also frames).
+  Standard_EXPORT   void Packets (const Interface_Graph& G, IFGraph_SubPartsIterator& packs)  const;
+  
+  //! Returns True, because of entities attached to no view.
+  Standard_EXPORT virtual   Standard_Boolean CanHaveRemainder()  const;
+  
+  //! Returns Remainder which is a set of Entities.
+  //! It is supposed to be called once Packets has been called.
+  Standard_EXPORT virtual   Interface_EntityIterator Remainder (const Interface_Graph& G)  const;
 
 
 
@@ -68,7 +62,7 @@ protected:
 private: 
 
 
-Handle_IGESSelect_ViewSorter thesorter;
+  Handle(IGESSelect_ViewSorter) thesorter;
 
 
 };
@@ -77,7 +71,6 @@ Handle_IGESSelect_ViewSorter thesorter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_DispPerDrawing_HeaderFile

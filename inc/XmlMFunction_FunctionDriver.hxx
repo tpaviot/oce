@@ -6,52 +6,35 @@
 #ifndef _XmlMFunction_FunctionDriver_HeaderFile
 #define _XmlMFunction_FunctionDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XmlMFunction_FunctionDriver_HeaderFile
 #include <Handle_XmlMFunction_FunctionDriver.hxx>
-#endif
 
-#ifndef _XmlMDF_ADriver_HeaderFile
 #include <XmlMDF_ADriver.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _XmlObjMgt_RRelocationTable_HeaderFile
 #include <XmlObjMgt_RRelocationTable.hxx>
-#endif
-#ifndef _XmlObjMgt_SRelocationTable_HeaderFile
 #include <XmlObjMgt_SRelocationTable.hxx>
-#endif
 class CDM_MessageDriver;
 class TDF_Attribute;
 class XmlObjMgt_Persistent;
 
 
-//! Attribute Driver. <br>
-class XmlMFunction_FunctionDriver : public XmlMDF_ADriver {
+//! Attribute Driver.
+class XmlMFunction_FunctionDriver : public XmlMDF_ADriver
+{
 
 public:
 
   
-  Standard_EXPORT   XmlMFunction_FunctionDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
+  Standard_EXPORT XmlMFunction_FunctionDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
   
-  Standard_EXPORT     Standard_Boolean Paste(const XmlObjMgt_Persistent& Source,const Handle(TDF_Attribute)& Target,XmlObjMgt_RRelocationTable& RelocTable) const;
+  Standard_EXPORT   Standard_Boolean Paste (const XmlObjMgt_Persistent& Source, const Handle(TDF_Attribute)& Target, XmlObjMgt_RRelocationTable& RelocTable)  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Source,XmlObjMgt_Persistent& Target,XmlObjMgt_SRelocationTable& RelocTable) const;
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Source, XmlObjMgt_Persistent& Target, XmlObjMgt_SRelocationTable& RelocTable)  const;
 
 
 
@@ -74,7 +57,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XmlMFunction_FunctionDriver_HeaderFile

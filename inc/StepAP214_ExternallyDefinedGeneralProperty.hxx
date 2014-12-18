@@ -6,50 +6,39 @@
 #ifndef _StepAP214_ExternallyDefinedGeneralProperty_HeaderFile
 #define _StepAP214_ExternallyDefinedGeneralProperty_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP214_ExternallyDefinedGeneralProperty_HeaderFile
 #include <Handle_StepAP214_ExternallyDefinedGeneralProperty.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_ExternallyDefinedItem_HeaderFile
 #include <Handle_StepBasic_ExternallyDefinedItem.hxx>
-#endif
-#ifndef _StepBasic_GeneralProperty_HeaderFile
 #include <StepBasic_GeneralProperty.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepBasic_ExternalSource_HeaderFile
 #include <Handle_StepBasic_ExternalSource.hxx>
-#endif
 class StepBasic_ExternallyDefinedItem;
 class TCollection_HAsciiString;
 class StepBasic_SourceItem;
 class StepBasic_ExternalSource;
 
 
-//! Representation of STEP entity ExternallyDefinedGeneralProperty <br>
-class StepAP214_ExternallyDefinedGeneralProperty : public StepBasic_GeneralProperty {
+//! Representation of STEP entity ExternallyDefinedGeneralProperty
+class StepAP214_ExternallyDefinedGeneralProperty : public StepBasic_GeneralProperty
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepAP214_ExternallyDefinedGeneralProperty();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aGeneralProperty_Id,const Handle(TCollection_HAsciiString)& aGeneralProperty_Name,const Standard_Boolean hasGeneralProperty_Description,const Handle(TCollection_HAsciiString)& aGeneralProperty_Description,const StepBasic_SourceItem& aExternallyDefinedItem_ItemId,const Handle(StepBasic_ExternalSource)& aExternallyDefinedItem_Source) ;
-  //! Returns data for supertype ExternallyDefinedItem <br>
-  Standard_EXPORT     Handle_StepBasic_ExternallyDefinedItem ExternallyDefinedItem() const;
-  //! Set data for supertype ExternallyDefinedItem <br>
-  Standard_EXPORT     void SetExternallyDefinedItem(const Handle(StepBasic_ExternallyDefinedItem)& ExternallyDefinedItem) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepAP214_ExternallyDefinedGeneralProperty();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aGeneralProperty_Id, const Handle(TCollection_HAsciiString)& aGeneralProperty_Name, const Standard_Boolean hasGeneralProperty_Description, const Handle(TCollection_HAsciiString)& aGeneralProperty_Description, const StepBasic_SourceItem& aExternallyDefinedItem_ItemId, const Handle(StepBasic_ExternalSource)& aExternallyDefinedItem_Source) ;
+  
+  //! Returns data for supertype ExternallyDefinedItem
+  Standard_EXPORT   Handle(StepBasic_ExternallyDefinedItem) ExternallyDefinedItem()  const;
+  
+  //! Set data for supertype ExternallyDefinedItem
+  Standard_EXPORT   void SetExternallyDefinedItem (const Handle(StepBasic_ExternallyDefinedItem)& ExternallyDefinedItem) ;
 
 
 
@@ -64,7 +53,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_ExternallyDefinedItem theExternallyDefinedItem;
+  Handle(StepBasic_ExternallyDefinedItem) theExternallyDefinedItem;
 
 
 };
@@ -73,7 +62,6 @@ Handle_StepBasic_ExternallyDefinedItem theExternallyDefinedItem;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_ExternallyDefinedGeneralProperty_HeaderFile

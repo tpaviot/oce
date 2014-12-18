@@ -48,13 +48,11 @@
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_HArray1OfReal.hxx>
 #include <TColStd_HArray1OfBoolean.hxx>
-#include <Handle_TColStd_HArray1OfReal.hxx>
-#include <Handle_TColStd_HArray1OfBoolean.hxx>
 
 #include <AppParCurves_MultiBSpCurve.hxx>
 #include <AppParCurves_MultiCurve.hxx>
 #include <AppDef_MultiLine.hxx>
-#include <AppDef_TheVariational.hxx>
+#include <AppDef_Variational.hxx>
 #include <AppDef_Compute.hxx>
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
 #include <AppParCurves_ConstraintCouple.hxx>
@@ -408,7 +406,7 @@ static Standard_Integer smoothing (Draw_Interpretor& di,Standard_Integer n, cons
       }
     }
 
-    AppDef_TheVariational Variation(AML, 
+    AppDef_Variational Variation(AML, 
 				    1, NbPoints,
 				    TABofCC);
     
@@ -421,7 +419,7 @@ static Standard_Integer smoothing (Draw_Interpretor& di,Standard_Integer n, cons
     if (Tolerance>0) { Variation.SetWithMinMax(Standard_True);}
     Variation.Approximate();
 
-#  ifdef DEB
+#  ifdef GEOMLITETEST_DEB
     //Variation.Dump(cout);
     Standard_SStream aSStream;
     Variation.Dump(aSStream);
@@ -454,7 +452,7 @@ static Standard_Integer smoothing (Draw_Interpretor& di,Standard_Integer n, cons
       }
     } 
 
-    AppDef_TheVariational Variation(AML, 
+    AppDef_Variational Variation(AML, 
 				    1,  NbPoints,
 				    TABofCC);
 
@@ -466,7 +464,7 @@ static Standard_Integer smoothing (Draw_Interpretor& di,Standard_Integer n, cons
     Variation.SetTolerance( Abs(Tolerance));
     if (Tolerance>0) { Variation.SetWithMinMax(Standard_True);}
     Variation.Approximate();
-#     ifdef DEB
+#     ifdef GEOMLITETEST_DEB
     //Variation.Dump(cout);
     Standard_SStream aSStream;
     Variation.Dump(aSStream);
@@ -612,7 +610,7 @@ static Standard_Integer smoothingbybezier (Draw_Interpretor& di,
       di <<" Error2D is : " << err2d << "\n";
     }
     else {
-      AppDef_TheVariational Varia(AML, 
+      AppDef_Variational Varia(AML, 
 				  1,  NbPoints,
 				  TABofCC,
 				  Degree, 1);
@@ -687,7 +685,7 @@ static Standard_Integer smoothingbybezier (Draw_Interpretor& di,
       di <<" Error3D is : " << err << "\n";
     }
     else {
-      AppDef_TheVariational Varia(AML, 
+      AppDef_Variational Varia(AML, 
 				  1,  NbPoints,
 				  TABofCC,
 				  Degree, 1);

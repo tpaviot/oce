@@ -6,28 +6,14 @@
 #ifndef _TDataXtd_Point_HeaderFile
 #define _TDataXtd_Point_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataXtd_Point_HeaderFile
 #include <Handle_TDataXtd_Point.hxx>
-#endif
 
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class gp_Pnt;
@@ -36,41 +22,47 @@ class TDF_RelocationTable;
 
 
 
-//! The basis to define a point attribute. <br>
-//! The topological attribute must contain a vertex. <br>
-//! You use this class to create reference points in a design. <br>
-//! <br>
-//!  Warning:  Use TDataXtd_Geometry  attribute  to retrieve the <br>
-//!          gp_Pnt of the Point attribute <br>
-class TDataXtd_Point : public TDF_Attribute {
+//! The basis to define a point attribute.
+//! The topological attribute must contain a vertex.
+//! You use this class to create reference points in a design.
+//!
+//! Warning:  Use TDataXtd_Geometry  attribute  to retrieve the
+//! gp_Pnt of the Point attribute
+class TDataXtd_Point : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!          ============= <br>
-//! Returns the GUID for point attributes. <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
   
-//! Sets the label Label as a point attribute. <br>
-//! If no object is found, a point attribute is created. <br>
-  Standard_EXPORT   static  Handle_TDataXtd_Point Set(const TDF_Label& label) ;
+  //! class methods
+  //! =============
+  //!
+  //! Returns the GUID for point attributes.
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-//! Sets the label Label as a point attribute containing the point P. <br>
-//! If no object is found, a point attribute is created. <br>//! Point methods <br>
-//!          ============= <br>
-  Standard_EXPORT   static  Handle_TDataXtd_Point Set(const TDF_Label& label,const gp_Pnt& P) ;
+
+  //! Sets the label Label as a point attribute.
+  //! If no object is found, a point attribute is created.
+  Standard_EXPORT static   Handle(TDataXtd_Point) Set (const TDF_Label& label) ;
   
-  Standard_EXPORT   TDataXtd_Point();
+
+  //! Sets the label Label as a point attribute containing the point P.
+  //! If no object is found, a point attribute is created.
+  //! Point methods
+  //! =============
+  Standard_EXPORT static   Handle(TDataXtd_Point) Set (const TDF_Label& label, const gp_Pnt& P) ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  Standard_EXPORT TDataXtd_Point();
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -93,7 +85,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataXtd_Point_HeaderFile

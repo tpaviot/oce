@@ -21,11 +21,12 @@ inherits
     TShared from MMgt
     
 	---Purpose: Constructs a circuit on a set of lines.
-	--          
+	--          EquiCircuit gives a Circuit passing by all the lines
+	--          in a set and all the connexions of the minipath associated.
 	--           
 
 uses
-
+    JoinType                         from GeomAbs,
     SequenceOfInteger                from TColStd,
     Geometry                         from Geom2d,
     SequenceOfGeometry               from TColGeom2d,
@@ -40,7 +41,9 @@ uses
 
 is
 
-    Create returns mutable Circuit from MAT2d;
+    Create(aJoinType    : JoinType from GeomAbs  = GeomAbs_Arc;
+    	   IsOpenResult : Boolean  from Standard = Standard_False)
+    returns Circuit from MAT2d;
 
 ---Category:  Computation
 
@@ -50,6 +53,11 @@ is
             IndRefLine  :        Integer;
             Trigo       :        Boolean)
     is static;	    
+    
+    IsSharpCorner(me; Geom1, Geom2 : Geometry from Geom2d;
+    	    	      Direction : Real from Standard)
+    returns Boolean
+    is static private;
     
     PassByLast(me ; C1,C2 : Connexion from MAT2d) 
     returns Boolean
@@ -75,7 +83,7 @@ is
     DoubleLine(me ; 
                Line       : in out  SequenceOfGeometry;
                Connexions : in out  SequenceOfConnexion from MAT2d; 
-	       Father     : mutable Connexion from MAT2d;
+	       Father     : Connexion from MAT2d;
 	       Side       : Real)
     is static private;
     
@@ -128,6 +136,8 @@ fields
     connexionMap : DataMapOfIntegerConnexion       from MAT2d;
     linkRefEqui  : DataMapOfBiIntSequenceOfInteger from MAT2d;
     linesLength  : SequenceOfInteger               from TColStd; 
+    myJoinType     : JoinType from GeomAbs;
+    myIsOpenResult : Boolean  from Standard;
     
 end Circuit;
 

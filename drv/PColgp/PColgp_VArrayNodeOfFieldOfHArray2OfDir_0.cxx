@@ -5,19 +5,11 @@
 
 #include <PColgp_VArrayNodeOfFieldOfHArray2OfDir.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray2OfDir_HeaderFile
 #include <PColgp_FieldOfHArray2OfDir.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfDir_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray2OfDir.hxx>
-#endif
 
  
 

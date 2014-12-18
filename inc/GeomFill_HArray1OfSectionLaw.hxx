@@ -6,28 +6,14 @@
 #ifndef _GeomFill_HArray1OfSectionLaw_HeaderFile
 #define _GeomFill_HArray1OfSectionLaw_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomFill_HArray1OfSectionLaw_HeaderFile
 #include <Handle_GeomFill_HArray1OfSectionLaw.hxx>
-#endif
 
-#ifndef _GeomFill_Array1OfSectionLaw_HeaderFile
 #include <GeomFill_Array1OfSectionLaw.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_GeomFill_SectionLaw_HeaderFile
 #include <Handle_GeomFill_SectionLaw.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class GeomFill_Array1OfSectionLaw;
 
 
 
-class GeomFill_HArray1OfSectionLaw : public MMgt_TShared {
+class GeomFill_HArray1OfSectionLaw : public MMgt_TShared
+{
 
 public:
 
   
-      GeomFill_HArray1OfSectionLaw(const Standard_Integer Low,const Standard_Integer Up);
+    GeomFill_HArray1OfSectionLaw(const Standard_Integer Low, const Standard_Integer Up);
   
-      GeomFill_HArray1OfSectionLaw(const Standard_Integer Low,const Standard_Integer Up,const Handle(GeomFill_SectionLaw)& V);
+    GeomFill_HArray1OfSectionLaw(const Standard_Integer Low, const Standard_Integer Up, const Handle(GeomFill_SectionLaw)& V);
   
-        void Init(const Handle(GeomFill_SectionLaw)& V) ;
+      void Init (const Handle(GeomFill_SectionLaw)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(GeomFill_SectionLaw)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(GeomFill_SectionLaw)& Value) ;
   
-       const Handle_GeomFill_SectionLaw& Value(const Standard_Integer Index) const;
+     const  Handle(GeomFill_SectionLaw)& Value (const Standard_Integer Index)  const;
   
-        Handle_GeomFill_SectionLaw& ChangeValue(const Standard_Integer Index) ;
+      Handle(GeomFill_SectionLaw)& ChangeValue (const Standard_Integer Index) ;
   
-       const GeomFill_Array1OfSectionLaw& Array1() const;
+     const  GeomFill_Array1OfSectionLaw& Array1()  const;
   
-        GeomFill_Array1OfSectionLaw& ChangeArray1() ;
+      GeomFill_Array1OfSectionLaw& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-GeomFill_Array1OfSectionLaw myArray;
+  GeomFill_Array1OfSectionLaw myArray;
 
 
 };
 
-#define ItemHArray1 Handle_GeomFill_SectionLaw
+#define ItemHArray1 Handle(GeomFill_SectionLaw)
 #define ItemHArray1_hxx <GeomFill_SectionLaw.hxx>
 #define TheArray1 GeomFill_Array1OfSectionLaw
 #define TheArray1_hxx <GeomFill_Array1OfSectionLaw.hxx>
@@ -103,7 +90,6 @@ GeomFill_Array1OfSectionLaw myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_HArray1OfSectionLaw_HeaderFile

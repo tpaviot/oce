@@ -5,18 +5,10 @@
 
 #include <HLRAlgo_InterferenceList.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _HLRAlgo_ListIteratorOfInterferenceList_HeaderFile
 #include <HLRAlgo_ListIteratorOfInterferenceList.hxx>
-#endif
-#ifndef _HLRAlgo_Interference_HeaderFile
 #include <HLRAlgo_Interference.hxx>
-#endif
-#ifndef _HLRAlgo_ListNodeOfInterferenceList_HeaderFile
 #include <HLRAlgo_ListNodeOfInterferenceList.hxx>
-#endif
  
 
 #define Item HLRAlgo_Interference

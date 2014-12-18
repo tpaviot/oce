@@ -1,33 +1,11 @@
-#ifndef _IGESDraw_HArray1OfViewKindEntity_HeaderFile
 #include <IGESDraw_HArray1OfViewKindEntity.hxx>
-#endif
-#ifndef _TColgp_HArray1OfXY_HeaderFile
 #include <TColgp_HArray1OfXY.hxx>
-#endif
-#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
 #include <IGESData_HArray1OfIGESEntity.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IGESData_ViewKindEntity_HeaderFile
 #include <IGESData_ViewKindEntity.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _IGESDraw_Drawing_HeaderFile
 #include <IGESDraw_Drawing.hxx>
-#endif

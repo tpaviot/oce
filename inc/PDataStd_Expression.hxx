@@ -6,48 +6,35 @@
 #ifndef _PDataStd_Expression_HeaderFile
 #define _PDataStd_Expression_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_Expression_HeaderFile
 #include <Handle_PDataStd_Expression.hxx>
-#endif
 
-#ifndef _Handle_PCollection_HExtendedString_HeaderFile
 #include <Handle_PCollection_HExtendedString.hxx>
-#endif
-#ifndef _Handle_PDF_HAttributeArray1_HeaderFile
 #include <Handle_PDF_HAttributeArray1.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PCollection_HExtendedString;
 class PDF_HAttributeArray1;
 
 
-class PDataStd_Expression : public PDF_Attribute {
+class PDataStd_Expression : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_Expression();
+  Standard_EXPORT PDataStd_Expression();
   
-  Standard_EXPORT   PDataStd_Expression(const Handle(PCollection_HExtendedString)& name);
+  Standard_EXPORT PDataStd_Expression(const Handle(PCollection_HExtendedString)& name);
   
-  Standard_EXPORT     Handle_PCollection_HExtendedString GetName() const;
+  Standard_EXPORT   Handle(PCollection_HExtendedString) GetName()  const;
   
-  Standard_EXPORT     void SetName(const Handle(PCollection_HExtendedString)& name) ;
+  Standard_EXPORT   void SetName (const Handle(PCollection_HExtendedString)& name) ;
   
-  Standard_EXPORT     Handle_PDF_HAttributeArray1 GetVariables() const;
+  Standard_EXPORT   Handle(PDF_HAttributeArray1) GetVariables()  const;
   
-  Standard_EXPORT     void SetVariables(const Handle(PDF_HAttributeArray1)& vars) ;
+  Standard_EXPORT   void SetVariables (const Handle(PDF_HAttributeArray1)& vars) ;
 
 PDataStd_Expression(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -70,8 +57,8 @@ protected:
 private: 
 
 
-Handle_PCollection_HExtendedString myName;
-Handle_PDF_HAttributeArray1 myVariables;
+  Handle(PCollection_HExtendedString) myName;
+  Handle(PDF_HAttributeArray1) myVariables;
 
 
 };
@@ -80,7 +67,6 @@ Handle_PDF_HAttributeArray1 myVariables;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_Expression_HeaderFile

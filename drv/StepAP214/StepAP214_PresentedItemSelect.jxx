@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _StepAP214_PresentedItemSelect_HeaderFile
 #include <StepAP214_PresentedItemSelect.hxx>
-#endif

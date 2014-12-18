@@ -5,27 +5,13 @@
 
 #include <IntTools_DataMapOfCurveSampleBox.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IntTools_CurveRangeSample_HeaderFile
 #include <IntTools_CurveRangeSample.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _IntTools_CurveRangeSampleMapHasher_HeaderFile
 #include <IntTools_CurveRangeSampleMapHasher.hxx>
-#endif
-#ifndef _IntTools_DataMapNodeOfDataMapOfCurveSampleBox_HeaderFile
 #include <IntTools_DataMapNodeOfDataMapOfCurveSampleBox.hxx>
-#endif
-#ifndef _IntTools_DataMapIteratorOfDataMapOfCurveSampleBox_HeaderFile
 #include <IntTools_DataMapIteratorOfDataMapOfCurveSampleBox.hxx>
-#endif
  
 
 #define TheKey IntTools_CurveRangeSample

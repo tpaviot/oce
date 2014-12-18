@@ -5,33 +5,15 @@
 
 #include <IntCurveSurface_TheInterferenceOfHInter.hxx>
 
-#ifndef _IntCurveSurface_ThePolygonOfHInter_HeaderFile
 #include <IntCurveSurface_ThePolygonOfHInter.hxx>
-#endif
-#ifndef _IntCurveSurface_ThePolygonToolOfHInter_HeaderFile
 #include <IntCurveSurface_ThePolygonToolOfHInter.hxx>
-#endif
-#ifndef _IntCurveSurface_ThePolyhedronOfHInter_HeaderFile
 #include <IntCurveSurface_ThePolyhedronOfHInter.hxx>
-#endif
-#ifndef _IntCurveSurface_ThePolyhedronToolOfHInter_HeaderFile
 #include <IntCurveSurface_ThePolyhedronToolOfHInter.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _Intf_Array1OfLin_HeaderFile
 #include <Intf_Array1OfLin.hxx>
-#endif
-#ifndef _Bnd_BoundSortBox_HeaderFile
 #include <Bnd_BoundSortBox.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
  
 
 #define Polygon3d IntCurveSurface_ThePolygonOfHInter

@@ -6,15 +6,9 @@
 #ifndef _HLRBRep_EdgeIList_HeaderFile
 #define _HLRBRep_EdgeIList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class HLRAlgo_InterferenceList;
 class HLRAlgo_Interference;
@@ -22,16 +16,18 @@ class HLRBRep_EdgeInterferenceTool;
 
 
 
-class HLRBRep_EdgeIList  {
+class HLRBRep_EdgeIList 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Add the interference <I> to the list <IL>. <br>
-  Standard_EXPORT   static  void AddInterference(HLRAlgo_InterferenceList& IL,const HLRAlgo_Interference& I,const HLRBRep_EdgeInterferenceTool& T) ;
-  //! Process complex transitions on the list IL. <br>
-  Standard_EXPORT   static  void ProcessComplex(HLRAlgo_InterferenceList& IL,const HLRBRep_EdgeInterferenceTool& T) ;
-
+  
+  //! Add the interference <I> to the list <IL>.
+  Standard_EXPORT static   void AddInterference (HLRAlgo_InterferenceList& IL, const HLRAlgo_Interference& I, const HLRBRep_EdgeInterferenceTool& T) ;
+  
+  //! Process complex transitions on the list IL.
+  Standard_EXPORT static   void ProcessComplex (HLRAlgo_InterferenceList& IL, const HLRBRep_EdgeInterferenceTool& T) ;
 
 
 
@@ -54,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_EdgeIList_HeaderFile

@@ -6,36 +6,29 @@
 #ifndef _BRepAlgo_Fuse_HeaderFile
 #define _BRepAlgo_Fuse_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepAlgo_BooleanOperation_HeaderFile
 #include <BRepAlgo_BooleanOperation.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Describes functions for performing a topological <br>
-//! fusion operation (Boolean union). <br>
-//! A Fuse object provides the framework for: <br>
-//! - defining the construction of a fused shape, <br>
-//! - implementing the construction algorithm, and <br>
-//! - consulting the result. <br>
-class BRepAlgo_Fuse  : public BRepAlgo_BooleanOperation {
+//! Describes functions for performing a topological
+//! fusion operation (Boolean union).
+//! A Fuse object provides the framework for:
+//! - defining the construction of a fused shape,
+//! - implementing the construction algorithm, and
+//! - consulting the result.
+class BRepAlgo_Fuse  : public BRepAlgo_BooleanOperation
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Fuse S1 and S2. <br>
-  Standard_EXPORT   BRepAlgo_Fuse(const TopoDS_Shape& S1,const TopoDS_Shape& S2);
-
+  
+  //! Fuse S1 and S2.
+  Standard_EXPORT BRepAlgo_Fuse(const TopoDS_Shape& S1, const TopoDS_Shape& S2);
 
 
 
@@ -58,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAlgo_Fuse_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_Transfer_ActorOfTransientProcess_HeaderFile
 #define _Handle_Transfer_ActorOfTransientProcess_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Transfer_ActorOfProcessForTransient_HeaderFile
 #include <Handle_Transfer_ActorOfProcessForTransient.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Transfer_ActorOfProcessForTransient);
 class Transfer_ActorOfTransientProcess;
 
-DEFINE_STANDARD_HANDLE(Transfer_ActorOfTransientProcess,Transfer_ActorOfProcessForTransient)
+DEFINE_STANDARD_HANDLE(Transfer_ActorOfTransientProcess, Transfer_ActorOfProcessForTransient)
 
-#endif
+#endif // _Handle_Transfer_ActorOfTransientProcess_HeaderFile

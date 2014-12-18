@@ -6,22 +6,15 @@
 #ifndef _Handle_Geom2d_Conic_HeaderFile
 #define _Handle_Geom2d_Conic_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Geom2d_Curve);
 class Geom2d_Conic;
 
-DEFINE_STANDARD_HANDLE(Geom2d_Conic,Geom2d_Curve)
+DEFINE_STANDARD_HANDLE(Geom2d_Conic, Geom2d_Curve)
 
-#endif
+#endif // _Handle_Geom2d_Conic_HeaderFile

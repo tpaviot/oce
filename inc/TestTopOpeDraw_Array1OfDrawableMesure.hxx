@@ -6,28 +6,14 @@
 #ifndef _TestTopOpeDraw_Array1OfDrawableMesure_HeaderFile
 #define _TestTopOpeDraw_Array1OfDrawableMesure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TestTopOpeDraw_DrawableMesure_HeaderFile
 #include <Handle_TestTopOpeDraw_DrawableMesure.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class TestTopOpeDraw_DrawableMesure;
 
 
 
-class TestTopOpeDraw_Array1OfDrawableMesure  {
+class TestTopOpeDraw_Array1OfDrawableMesure 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TestTopOpeDraw_Array1OfDrawableMesure(const Standard_Integer Low,const Standard_Integer Up);
+    TestTopOpeDraw_Array1OfDrawableMesure(const Standard_Integer Low, const Standard_Integer Up);
   
-      TestTopOpeDraw_Array1OfDrawableMesure(const Handle(TestTopOpeDraw_DrawableMesure)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    TestTopOpeDraw_Array1OfDrawableMesure(const Handle(TestTopOpeDraw_DrawableMesure)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(TestTopOpeDraw_DrawableMesure)& V) ;
+  Standard_EXPORT   void Init (const Handle(TestTopOpeDraw_DrawableMesure)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~TestTopOpeDraw_Array1OfDrawableMesure()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const TestTopOpeDraw_Array1OfDrawableMesure& Assign(const TestTopOpeDraw_Array1OfDrawableMesure& Other) ;
-   const TestTopOpeDraw_Array1OfDrawableMesure& operator =(const TestTopOpeDraw_Array1OfDrawableMesure& Other) 
+  Standard_EXPORT  const  TestTopOpeDraw_Array1OfDrawableMesure& Assign (const TestTopOpeDraw_Array1OfDrawableMesure& Other) ;
+ const  TestTopOpeDraw_Array1OfDrawableMesure& operator = (const TestTopOpeDraw_Array1OfDrawableMesure& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(TestTopOpeDraw_DrawableMesure)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(TestTopOpeDraw_DrawableMesure)& Value) ;
   
-       const Handle_TestTopOpeDraw_DrawableMesure& Value(const Standard_Integer Index) const;
-     const Handle_TestTopOpeDraw_DrawableMesure& operator ()(const Standard_Integer Index) const
+     const  Handle(TestTopOpeDraw_DrawableMesure)& Value (const Standard_Integer Index)  const;
+   const  Handle(TestTopOpeDraw_DrawableMesure)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_TestTopOpeDraw_DrawableMesure& ChangeValue(const Standard_Integer Index) ;
-      Handle_TestTopOpeDraw_DrawableMesure& operator ()(const Standard_Integer Index) 
+      Handle(TestTopOpeDraw_DrawableMesure)& ChangeValue (const Standard_Integer Index) ;
+    Handle(TestTopOpeDraw_DrawableMesure)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   TestTopOpeDraw_Array1OfDrawableMesure(const TestTopOpeDraw_Array1OfDrawableMesure& AnArray);
+  Standard_EXPORT TestTopOpeDraw_Array1OfDrawableMesure(const TestTopOpeDraw_Array1OfDrawableMesure& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_TestTopOpeDraw_DrawableMesure
+#define Array1Item Handle(TestTopOpeDraw_DrawableMesure)
 #define Array1Item_hxx <TestTopOpeDraw_DrawableMesure.hxx>
 #define TCollection_Array1 TestTopOpeDraw_Array1OfDrawableMesure
 #define TCollection_Array1_hxx <TestTopOpeDraw_Array1OfDrawableMesure.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeDraw_Array1OfDrawableMesure_HeaderFile

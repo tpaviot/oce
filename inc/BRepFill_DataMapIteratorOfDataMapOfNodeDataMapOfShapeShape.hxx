@@ -6,25 +6,13 @@
 #ifndef _BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape_HeaderFile
 #define _BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_MAT_Node_HeaderFile
 #include <Handle_MAT_Node.hxx>
-#endif
-#ifndef _Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape_HeaderFile
 #include <Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape.hxx>
-#endif
 class Standard_NoSuchObject;
 class MAT_Node;
 class TopTools_DataMapOfShapeShape;
@@ -34,22 +22,22 @@ class BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape;
 
 
 
-class BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape  : public TCollection_BasicMapIterator {
+class BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape();
+  Standard_EXPORT BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape();
   
-  Standard_EXPORT   BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape(const BRepFill_DataMapOfNodeDataMapOfShapeShape& aMap);
+  Standard_EXPORT BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape(const BRepFill_DataMapOfNodeDataMapOfShapeShape& aMap);
   
-  Standard_EXPORT     void Initialize(const BRepFill_DataMapOfNodeDataMapOfShapeShape& aMap) ;
+  Standard_EXPORT   void Initialize (const BRepFill_DataMapOfNodeDataMapOfShapeShape& aMap) ;
   
-  Standard_EXPORT    const Handle_MAT_Node& Key() const;
+  Standard_EXPORT  const  Handle(MAT_Node)& Key()  const;
   
-  Standard_EXPORT    const TopTools_DataMapOfShapeShape& Value() const;
-
+  Standard_EXPORT  const  TopTools_DataMapOfShapeShape& Value()  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape_HeaderFile

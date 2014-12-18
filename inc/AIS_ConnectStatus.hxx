@@ -6,25 +6,24 @@
 #ifndef _AIS_ConnectStatus_HeaderFile
 #define _AIS_ConnectStatus_HeaderFile
 
-//! Gives the status of connection of an Interactive <br>
-//! Object. This will be one of the following: <br>
-//! -   No connection <br>
-//! -   Connection <br>
-//! -   Transformation <br>
-//! -   Both connection and transformation <br>
-//!   This enumeration is used in <br>
-//! AIS_ConnectedInteractive. Transform indicates <br>
-//! that the Interactive Object reference geometry has <br>
-//! changed location relative to the reference geometry. <br>
-enum AIS_ConnectStatus {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Gives the status of connection of an Interactive
+//! Object. This will be one of the following:
+//! -   No connection
+//! -   Connection
+//! -   Transformation
+//! -   Both connection and transformation
+//! This enumeration is used in
+//! AIS_ConnectedInteractive. Transform indicates
+//! that the Interactive Object reference geometry has
+//! changed location relative to the reference geometry.
+enum AIS_ConnectStatus
+{
 AIS_CS_None,
 AIS_CS_Connection,
 AIS_CS_Transform,
 AIS_CS_Both
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_ConnectStatus_HeaderFile

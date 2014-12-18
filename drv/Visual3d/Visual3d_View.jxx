@@ -1,57 +1,17 @@
-#ifndef _Aspect_Window_HeaderFile
 #include <Aspect_Window.hxx>
-#endif
-#ifndef _Graphic3d_GraphicDriver_HeaderFile
 #include <Graphic3d_GraphicDriver.hxx>
-#endif
-#ifndef _Visual3d_TransformError_HeaderFile
 #include <Visual3d_TransformError.hxx>
-#endif
-#ifndef _Visual3d_ViewDefinitionError_HeaderFile
 #include <Visual3d_ViewDefinitionError.hxx>
-#endif
-#ifndef _Visual3d_ViewManager_HeaderFile
 #include <Visual3d_ViewManager.hxx>
-#endif
-#ifndef _Visual3d_ViewOrientation_HeaderFile
-#include <Visual3d_ViewOrientation.hxx>
-#endif
-#ifndef _Visual3d_ViewMapping_HeaderFile
-#include <Visual3d_ViewMapping.hxx>
-#endif
-#ifndef _Visual3d_ContextView_HeaderFile
-#include <Visual3d_ContextView.hxx>
-#endif
-#ifndef _Visual3d_Layer_HeaderFile
 #include <Visual3d_Layer.hxx>
-#endif
-#ifndef _Aspect_Background_HeaderFile
 #include <Aspect_Background.hxx>
-#endif
-#ifndef _Aspect_GradientBackground_HeaderFile
 #include <Aspect_GradientBackground.hxx>
-#endif
-#ifndef _TColStd_Array2OfReal_HeaderFile
-#include <TColStd_Array2OfReal.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
+#include <Visual3d_ContextView.hxx>
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Graphic3d_MapOfStructure_HeaderFile
 #include <Graphic3d_MapOfStructure.hxx>
-#endif
-#ifndef _Graphic3d_Structure_HeaderFile
+#include <Bnd_Box.hxx>
 #include <Graphic3d_Structure.hxx>
-#endif
-#ifndef _Graphic3d_Plotter_HeaderFile
-#include <Graphic3d_Plotter.hxx>
-#endif
-#ifndef _Visual3d_View_HeaderFile
+#include <TColStd_Array2OfReal.hxx>
 #include <Visual3d_View.hxx>
-#endif

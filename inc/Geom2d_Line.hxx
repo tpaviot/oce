@@ -6,37 +6,17 @@
 #ifndef _Geom2d_Line_HeaderFile
 #define _Geom2d_Line_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom2d_Line_HeaderFile
 #include <Handle_Geom2d_Line.hxx>
-#endif
 
-#ifndef _gp_Ax2d_HeaderFile
 #include <gp_Ax2d.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Geom2d_Geometry_HeaderFile
 #include <Handle_Geom2d_Geometry.hxx>
-#endif
 class Standard_RangeError;
 class gp_Ax2d;
 class gp_Lin2d;
@@ -47,118 +27,147 @@ class gp_Trsf2d;
 class Geom2d_Geometry;
 
 
-//! Describes an infinite line in the plane (2D space). <br>
-//! A line is defined and positioned in the plane with an <br>
-//! axis (gp_Ax2d object) which gives it an origin and a unit vector. <br>
-//! The Geom2d_Line line is parameterized as follows: <br>
-//! P (U) = O + U*Dir <br>
-//! where: <br>
-//! - P is the point of parameter U, <br>
-//! - O is the origin and Dir the unit vector of its positioning axis. <br>
-//!   The parameter range is ] -infinite, +infinite [. <br>
-//! The orientation of the line is given by the unit vector <br>
-//! of its positioning axis. <br>
-//! See Also <br>
-//! GCE2d_MakeLine which provides functions for more <br>
-//! complex line constructions <br>
-//! gp_Ax2d <br>
-//! gp_Lin2d for an equivalent, non-parameterized data structure. <br>
-class Geom2d_Line : public Geom2d_Curve {
+//! Describes an infinite line in the plane (2D space).
+//! A line is defined and positioned in the plane with an
+//! axis (gp_Ax2d object) which gives it an origin and a unit vector.
+//! The Geom2d_Line line is parameterized as follows:
+//! P (U) = O + U*Dir
+//! where:
+//! - P is the point of parameter U,
+//! - O is the origin and Dir the unit vector of its positioning axis.
+//! The parameter range is ] -infinite, +infinite [.
+//! The orientation of the line is given by the unit vector
+//! of its positioning axis.
+//! See Also
+//! GCE2d_MakeLine which provides functions for more
+//! complex line constructions
+//! gp_Ax2d
+//! gp_Lin2d for an equivalent, non-parameterized data structure.
+class Geom2d_Line : public Geom2d_Curve
+{
 
 public:
 
   
-//!  Creates a line located in 2D space with the axis placement A. <br>
-//!  The Location of A is the origin of the line. <br>
-  Standard_EXPORT   Geom2d_Line(const gp_Ax2d& A);
+
+  //! Creates a line located in 2D space with the axis placement A.
+  //! The Location of A is the origin of the line.
+  Standard_EXPORT Geom2d_Line(const gp_Ax2d& A);
   
-//!  Creates a line by conversion of the gp_Lin2d line L. <br>
-  Standard_EXPORT   Geom2d_Line(const gp_Lin2d& L);
-  //! Constructs a line passing through point P and parallel to <br>
-//!   vector V (P and V are, respectively, the origin <br>
-//!   and the unit vector of the positioning axis of the line). <br>
-  Standard_EXPORT   Geom2d_Line(const gp_Pnt2d& P,const gp_Dir2d& V);
+
+  //! Creates a line by conversion of the gp_Lin2d line L.
+  Standard_EXPORT Geom2d_Line(const gp_Lin2d& L);
   
-//!  Set <me> so that <me> has the same geometric properties as L. <br>
-  Standard_EXPORT     void SetLin2d(const gp_Lin2d& L) ;
-  //! changes the direction of the line. <br>
-  Standard_EXPORT     void SetDirection(const gp_Dir2d& V) ;
-  //! changes the direction of the line. <br>
-  Standard_EXPORT    const gp_Dir2d& Direction() const;
+  //! Constructs a line passing through point P and parallel to
+  //! vector V (P and V are, respectively, the origin
+  //! and the unit vector of the positioning axis of the line).
+  Standard_EXPORT Geom2d_Line(const gp_Pnt2d& P, const gp_Dir2d& V);
   
-//!  Changes the "Location" point (origin) of the line. <br>
-  Standard_EXPORT     void SetLocation(const gp_Pnt2d& P) ;
+
+  //! Set <me> so that <me> has the same geometric properties as L.
+  Standard_EXPORT   void SetLin2d (const gp_Lin2d& L) ;
   
-//!  Changes the "Location" point (origin) of the line. <br>
-  Standard_EXPORT    const gp_Pnt2d& Location() const;
+  //! changes the direction of the line.
+  Standard_EXPORT   void SetDirection (const gp_Dir2d& V) ;
   
-//!  Changes the "Location" and a the "Direction" of <me>. <br>
-  Standard_EXPORT     void SetPosition(const gp_Ax2d& A) ;
+  //! changes the direction of the line.
+  Standard_EXPORT  const  gp_Dir2d& Direction()  const;
   
-  Standard_EXPORT    const gp_Ax2d& Position() const;
+
+  //! Changes the "Location" point (origin) of the line.
+  Standard_EXPORT   void SetLocation (const gp_Pnt2d& P) ;
   
-//!  Returns non persistent line from gp with the same geometric <br>
-//!  properties as <me> <br>
-  Standard_EXPORT     gp_Lin2d Lin2d() const;
-  //! Changes the orientation of this line. As a result, the <br>
-//! unit vector of the positioning axis of this line is reversed. <br>
-  Standard_EXPORT     void Reverse() ;
-  //! Computes the parameter on the reversed line for the <br>
-//! point of parameter U on this line. <br>
-//! For a line, the returned value is -U. <br>
-  Standard_EXPORT     Standard_Real ReversedParameter(const Standard_Real U) const;
-  //! Returns RealFirst  from  Standard. <br>
-  Standard_EXPORT     Standard_Real FirstParameter() const;
-  //! Returns RealLast  from Standard <br>
-  Standard_EXPORT     Standard_Real LastParameter() const;
-  //! Returns False <br>
-  Standard_EXPORT     Standard_Boolean IsClosed() const;
-  //! Returns False <br>
-  Standard_EXPORT     Standard_Boolean IsPeriodic() const;
-  //! Returns GeomAbs_CN, which is the global continuity of any line. <br>
-  Standard_EXPORT     GeomAbs_Shape Continuity() const;
-  //! Computes the distance between <me> and the point P. <br>
-  Standard_EXPORT     Standard_Real Distance(const gp_Pnt2d& P) const;
-  //! Returns True. <br>
-  Standard_EXPORT     Standard_Boolean IsCN(const Standard_Integer N) const;
-  //! Returns in P the point of parameter U. <br>
-//!  P (U) = O + U * Dir where O is the "Location" point of the <br>
-//!  line and Dir the direction of the line. <br>
-  Standard_EXPORT     void D0(const Standard_Real U,gp_Pnt2d& P) const;
+
+  //! Changes the "Location" point (origin) of the line.
+  Standard_EXPORT  const  gp_Pnt2d& Location()  const;
   
-//!  Returns the point P of parameter u and the first derivative V1. <br>
-  Standard_EXPORT     void D1(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V1) const;
+
+  //! Changes the "Location" and a the "Direction" of <me>.
+  Standard_EXPORT   void SetPosition (const gp_Ax2d& A) ;
   
-//!  Returns the point P of parameter U, the first and second <br>
-//!  derivatives V1 and V2. V2 is a vector with null magnitude <br>
-//!  for a line. <br>
-  Standard_EXPORT     void D2(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V1,gp_Vec2d& V2) const;
+  Standard_EXPORT  const  gp_Ax2d& Position()  const;
   
-//!  V2 and V3 are vectors with null magnitude for a line. <br>
-  Standard_EXPORT     void D3(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V1,gp_Vec2d& V2,gp_Vec2d& V3) const;
-  //! For the point of parameter U of this line, computes <br>
-//! the vector corresponding to the Nth derivative. <br>
-//! Note: if N is greater than or equal to 2, the result is a <br>
-//! vector with null magnitude. <br>
-//! Exceptions Standard_RangeError if N is less than 1. <br>
-  Standard_EXPORT     gp_Vec2d DN(const Standard_Real U,const Standard_Integer N) const;
-  //! Applies the transformation T to this line. <br>
-  Standard_EXPORT     void Transform(const gp_Trsf2d& T) ;
-  //! Computes the parameter on the line transformed by <br>
-//! T for the point of parameter U on this line. <br>
-//! For a line, the returned value is equal to U multiplied <br>
-//! by the scale factor of transformation T. <br>
-  Standard_EXPORT   virtual  Standard_Real TransformedParameter(const Standard_Real U,const gp_Trsf2d& T) const;
-  //! Returns the coefficient required to compute the <br>
-//! parametric transformation of this line when <br>
-//! transformation T is applied. This coefficient is the <br>
-//! ratio between the parameter of a point on this line <br>
-//! and the parameter of the transformed point on the <br>
-//! new line transformed by T. <br>
-//! For a line, the returned value is the scale factor of the transformation T. <br>
-  Standard_EXPORT   virtual  Standard_Real ParametricTransformation(const gp_Trsf2d& T) const;
-  //! Creates a new object, which is a copy of this line. <br>
-  Standard_EXPORT     Handle_Geom2d_Geometry Copy() const;
+
+  //! Returns non persistent line from gp with the same geometric
+  //! properties as <me>
+  Standard_EXPORT   gp_Lin2d Lin2d()  const;
+  
+  //! Changes the orientation of this line. As a result, the
+  //! unit vector of the positioning axis of this line is reversed.
+  Standard_EXPORT   void Reverse() ;
+  
+  //! Computes the parameter on the reversed line for the
+  //! point of parameter U on this line.
+  //! For a line, the returned value is -U.
+  Standard_EXPORT   Standard_Real ReversedParameter (const Standard_Real U)  const;
+  
+  //! Returns RealFirst  from  Standard.
+  Standard_EXPORT   Standard_Real FirstParameter()  const;
+  
+  //! Returns RealLast  from Standard
+  Standard_EXPORT   Standard_Real LastParameter()  const;
+  
+  //! Returns False
+  Standard_EXPORT   Standard_Boolean IsClosed()  const;
+  
+  //! Returns False
+  Standard_EXPORT   Standard_Boolean IsPeriodic()  const;
+  
+  //! Returns GeomAbs_CN, which is the global continuity of any line.
+  Standard_EXPORT   GeomAbs_Shape Continuity()  const;
+  
+  //! Computes the distance between <me> and the point P.
+  Standard_EXPORT   Standard_Real Distance (const gp_Pnt2d& P)  const;
+  
+  //! Returns True.
+  Standard_EXPORT   Standard_Boolean IsCN (const Standard_Integer N)  const;
+  
+  //! Returns in P the point of parameter U.
+  //! P (U) = O + U * Dir where O is the "Location" point of the
+  //! line and Dir the direction of the line.
+  Standard_EXPORT   void D0 (const Standard_Real U, gp_Pnt2d& P)  const;
+  
+
+  //! Returns the point P of parameter u and the first derivative V1.
+  Standard_EXPORT   void D1 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1)  const;
+  
+
+  //! Returns the point P of parameter U, the first and second
+  //! derivatives V1 and V2. V2 is a vector with null magnitude
+  //! for a line.
+  Standard_EXPORT   void D2 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2)  const;
+  
+
+  //! V2 and V3 are vectors with null magnitude for a line.
+  Standard_EXPORT   void D3 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3)  const;
+  
+  //! For the point of parameter U of this line, computes
+  //! the vector corresponding to the Nth derivative.
+  //! Note: if N is greater than or equal to 2, the result is a
+  //! vector with null magnitude.
+  //! Exceptions Standard_RangeError if N is less than 1.
+  Standard_EXPORT   gp_Vec2d DN (const Standard_Real U, const Standard_Integer N)  const;
+  
+  //! Applies the transformation T to this line.
+  Standard_EXPORT   void Transform (const gp_Trsf2d& T) ;
+  
+  //! Computes the parameter on the line transformed by
+  //! T for the point of parameter U on this line.
+  //! For a line, the returned value is equal to U multiplied
+  //! by the scale factor of transformation T.
+  Standard_EXPORT virtual   Standard_Real TransformedParameter (const Standard_Real U, const gp_Trsf2d& T)  const;
+  
+  //! Returns the coefficient required to compute the
+  //! parametric transformation of this line when
+  //! transformation T is applied. This coefficient is the
+  //! ratio between the parameter of a point on this line
+  //! and the parameter of the transformed point on the
+  //! new line transformed by T.
+  //! For a line, the returned value is the scale factor of the transformation T.
+  Standard_EXPORT virtual   Standard_Real ParametricTransformation (const gp_Trsf2d& T)  const;
+  
+  //! Creates a new object, which is a copy of this line.
+  Standard_EXPORT   Handle(Geom2d_Geometry) Copy()  const;
 
 
 
@@ -173,7 +182,7 @@ protected:
 private: 
 
 
-gp_Ax2d pos;
+  gp_Ax2d pos;
 
 
 };
@@ -182,7 +191,6 @@ gp_Ax2d pos;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2d_Line_HeaderFile

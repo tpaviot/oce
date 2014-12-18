@@ -6,22 +6,15 @@
 #ifndef _Handle_Transfer_BinderOfTransientInteger_HeaderFile
 #define _Handle_Transfer_BinderOfTransientInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Transfer_SimpleBinderOfTransient_HeaderFile
 #include <Handle_Transfer_SimpleBinderOfTransient.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Transfer_SimpleBinderOfTransient);
 class Transfer_BinderOfTransientInteger;
 
-DEFINE_STANDARD_HANDLE(Transfer_BinderOfTransientInteger,Transfer_SimpleBinderOfTransient)
+DEFINE_STANDARD_HANDLE(Transfer_BinderOfTransientInteger, Transfer_SimpleBinderOfTransient)
 
-#endif
+#endif // _Handle_Transfer_BinderOfTransientInteger_HeaderFile

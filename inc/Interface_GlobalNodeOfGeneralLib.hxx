@@ -6,34 +6,16 @@
 #ifndef _Interface_GlobalNodeOfGeneralLib_HeaderFile
 #define _Interface_GlobalNodeOfGeneralLib_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_GlobalNodeOfGeneralLib_HeaderFile
 #include <Handle_Interface_GlobalNodeOfGeneralLib.hxx>
-#endif
 
-#ifndef _Handle_Interface_GeneralModule_HeaderFile
 #include <Handle_Interface_GeneralModule.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_Interface_GlobalNodeOfGeneralLib_HeaderFile
 #include <Handle_Interface_GlobalNodeOfGeneralLib.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_NodeOfGeneralLib_HeaderFile
 #include <Handle_Interface_NodeOfGeneralLib.hxx>
-#endif
 class Interface_GeneralModule;
 class Interface_Protocol;
 class Standard_Transient;
@@ -42,20 +24,21 @@ class Interface_NodeOfGeneralLib;
 
 
 
-class Interface_GlobalNodeOfGeneralLib : public Standard_Transient {
+class Interface_GlobalNodeOfGeneralLib : public Standard_Transient
+{
 
 public:
 
   
-  Standard_EXPORT   Interface_GlobalNodeOfGeneralLib();
+  Standard_EXPORT Interface_GlobalNodeOfGeneralLib();
   
-  Standard_EXPORT     void Add(const Handle(Interface_GeneralModule)& amodule,const Handle(Interface_Protocol)& aprotocol) ;
+  Standard_EXPORT   void Add (const Handle(Interface_GeneralModule)& amodule, const Handle(Interface_Protocol)& aprotocol) ;
   
-  Standard_EXPORT    const Handle_Interface_GeneralModule& Module() const;
+  Standard_EXPORT  const  Handle(Interface_GeneralModule)& Module()  const;
   
-  Standard_EXPORT    const Handle_Interface_Protocol& Protocol() const;
+  Standard_EXPORT  const  Handle(Interface_Protocol)& Protocol()  const;
   
-  Standard_EXPORT    const Handle_Interface_GlobalNodeOfGeneralLib& Next() const;
+  Standard_EXPORT  const  Handle(Interface_GlobalNodeOfGeneralLib)& Next()  const;
 
 
 
@@ -70,9 +53,9 @@ protected:
 private: 
 
 
-Handle_Interface_GeneralModule themod;
-Handle_Interface_Protocol theprot;
-Handle_Interface_GlobalNodeOfGeneralLib thenext;
+  Handle(Interface_GeneralModule) themod;
+  Handle(Interface_Protocol) theprot;
+  Handle(Interface_GlobalNodeOfGeneralLib) thenext;
 
 
 };
@@ -81,7 +64,6 @@ Handle_Interface_GlobalNodeOfGeneralLib thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_GlobalNodeOfGeneralLib_HeaderFile

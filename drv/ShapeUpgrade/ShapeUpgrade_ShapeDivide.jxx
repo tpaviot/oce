@@ -1,12 +1,4 @@
-#ifndef _ShapeUpgrade_FaceDivide_HeaderFile
 #include <ShapeUpgrade_FaceDivide.hxx>
-#endif
-#ifndef _ShapeBuild_ReShape_HeaderFile
 #include <ShapeBuild_ReShape.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _ShapeUpgrade_ShapeDivide_HeaderFile
 #include <ShapeUpgrade_ShapeDivide.hxx>
-#endif

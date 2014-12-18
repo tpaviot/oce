@@ -1,27 +1,9 @@
-#ifndef _StepBasic_ApplicationProtocolDefinition_HeaderFile
 #include <StepBasic_ApplicationProtocolDefinition.hxx>
-#endif
-#ifndef _StepGeom_Axis2Placement3d_HeaderFile
 #include <StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _StepData_StepModel_HeaderFile
 #include <StepData_StepModel.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _STEPConstruct_AP203Context_HeaderFile
 #include <STEPConstruct_AP203Context.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _STEPConstruct_Part_HeaderFile
 #include <STEPConstruct_Part.hxx>
-#endif
-#ifndef _STEPConstruct_Assembly_HeaderFile
 #include <STEPConstruct_Assembly.hxx>
-#endif
-#ifndef _STEPConstruct_ContextTool_HeaderFile
 #include <STEPConstruct_ContextTool.hxx>
-#endif

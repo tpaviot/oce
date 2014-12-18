@@ -5,25 +5,13 @@
 
 #include <HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _HLRTopoBRep_ListOfVData_HeaderFile
 #include <HLRTopoBRep_ListOfVData.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _HLRTopoBRep_MapOfShapeListOfVData_HeaderFile
 #include <HLRTopoBRep_MapOfShapeListOfVData.hxx>
-#endif
-#ifndef _HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData_HeaderFile
 #include <HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData.hxx>
-#endif
 
  
 

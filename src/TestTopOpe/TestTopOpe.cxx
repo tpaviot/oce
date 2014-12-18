@@ -24,6 +24,7 @@
 #include <Draw_Interpretor.hxx>
 #include <Draw_PluginMacro.hxx>
 #include <BOPTest.hxx>
+#include <SWDRAW.hxx>
 #ifdef _MSC_VER
 #pragma warning(4:4190)
 #endif
@@ -61,7 +62,7 @@ void TestTopOpe::Shapes(const TopoDS_Shape& S1,const TopoDS_Shape& S2)
 { 
   if (PHDSD != NULL) { PHDSD->SetShape1(S1);PHDSD->SetShape2(S2); }
   if (PBOOP != NULL) { PBOOP->SetShape1(S1);PBOOP->SetShape2(S2); }
-#ifdef DEB
+#ifdef OCCT_DEBUG
   TopOpeBRepDS_SettraceSPSX_SS(S1,S2);
 #endif
 }
@@ -74,12 +75,12 @@ void TestTopOpe::CurrentDS(const Handle(TopOpeBRepDS_HDataStructure)& HDS)
 {
   if (PHDSD != NULL) { PHDSD->SetCurrentHDS(HDS); }
   if (PBOOP != NULL) { PBOOP->SetCurrentHDS(HDS); }
-#ifdef DEB
+#ifdef OCCT_DEBUG
   TopOpeBRepDS_SettraceSPSX_HDS(HDS);
 #endif
 }
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 Standard_EXPORT void debloi(const TopOpeBRepDS_ListOfInterference& L)
 {
   if (PBOOP == NULL) return;
@@ -117,7 +118,9 @@ void TestTopOpe::Factory(Draw_Interpretor& theDI)
 
   BOPTest::Factory(theDI);
 
-#ifdef DEB
+  SWDRAW::Init (theDI);
+
+#ifdef OCCT_DEBUG
       cout << "Draw Plugin : All topological operations kernel commands are loaded" << endl;
 #endif
 }

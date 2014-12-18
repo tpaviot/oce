@@ -5,22 +5,12 @@
 
 #include <TPrsStd_DataMapNodeOfDataMapOfGUIDDriver.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TPrsStd_Driver_HeaderFile
 #include <TPrsStd_Driver.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TPrsStd_DataMapOfGUIDDriver_HeaderFile
 #include <TPrsStd_DataMapOfGUIDDriver.hxx>
-#endif
-#ifndef _TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver_HeaderFile
 #include <TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver.hxx>
-#endif
 
  
 
@@ -41,7 +31,7 @@ IMPLEMENT_STANDARD_RTTI(TPrsStd_DataMapNodeOfDataMapOfGUIDDriver)
 
 #define TheKey Standard_GUID
 #define TheKey_hxx <Standard_GUID.hxx>
-#define TheItem Handle_TPrsStd_Driver
+#define TheItem Handle(TPrsStd_Driver)
 #define TheItem_hxx <TPrsStd_Driver.hxx>
 #define Hasher Standard_GUID
 #define Hasher_hxx <Standard_GUID.hxx>

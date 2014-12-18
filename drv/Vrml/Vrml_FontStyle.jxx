@@ -1,3 +1,1 @@
-#ifndef _Vrml_FontStyle_HeaderFile
 #include <Vrml_FontStyle.hxx>
-#endif

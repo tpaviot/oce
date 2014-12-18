@@ -6,28 +6,14 @@
 #ifndef _BRepCheck_DataMapNodeOfDataMapOfShapeResult_HeaderFile
 #define _BRepCheck_DataMapNodeOfDataMapOfShapeResult_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult_HeaderFile
 #include <Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Handle_BRepCheck_Result_HeaderFile
 #include <Handle_BRepCheck_Result.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class BRepCheck_Result;
 class TopoDS_Shape;
 class TopTools_OrientedShapeMapHasher;
@@ -36,16 +22,17 @@ class BRepCheck_DataMapIteratorOfDataMapOfShapeResult;
 
 
 
-class BRepCheck_DataMapNodeOfDataMapOfShapeResult : public TCollection_MapNode {
+class BRepCheck_DataMapNodeOfDataMapOfShapeResult : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepCheck_DataMapNodeOfDataMapOfShapeResult(const TopoDS_Shape& K,const Handle(BRepCheck_Result)& I,const TCollection_MapNodePtr& n);
+    BRepCheck_DataMapNodeOfDataMapOfShapeResult(const TopoDS_Shape& K, const Handle(BRepCheck_Result)& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Handle_BRepCheck_Result& Value() const;
+      Handle(BRepCheck_Result)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Handle_BRepCheck_Result myValue;
+  TopoDS_Shape myKey;
+  Handle(BRepCheck_Result) myValue;
 
 
 };
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_BRepCheck_Result
+#define TheItem Handle(BRepCheck_Result)
 #define TheItem_hxx <BRepCheck_Result.hxx>
 #define Hasher TopTools_OrientedShapeMapHasher
 #define Hasher_hxx <TopTools_OrientedShapeMapHasher.hxx>
@@ -99,7 +86,6 @@ Handle_BRepCheck_Result myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepCheck_DataMapNodeOfDataMapOfShapeResult_HeaderFile

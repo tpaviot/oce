@@ -6,45 +6,32 @@
 #ifndef _PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1_HeaderFile
 #define _PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1_HeaderFile
 #include <Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _PTopoDS_Shape1_HeaderFile
 #include <PTopoDS_Shape1.hxx>
-#endif
-#ifndef _PStandard_ArrayNode_HeaderFile
 #include <PStandard_ArrayNode.hxx>
-#endif
 class PTopoDS_Shape1;
 class PTopoDS_FieldOfHArray1OfShape1;
 class PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1;
 
 
-class PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1 : public PStandard_ArrayNode {
+class PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1 : public PStandard_ArrayNode
+{
 
 public:
 
   
-  Standard_EXPORT   PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1();
+  Standard_EXPORT PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1();
   
-  Standard_EXPORT   PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1(const PTopoDS_Shape1& aValue);
+  Standard_EXPORT PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1(const PTopoDS_Shape1& aValue);
   
-  Standard_EXPORT     void SetValue(const PTopoDS_Shape1& aValue) ;
+  Standard_EXPORT   void SetValue (const PTopoDS_Shape1& aValue) ;
   
-  Standard_EXPORT     Standard_Address Value() const;
+  Standard_EXPORT   Standard_Address Value()  const;
 
 PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1(const Storage_stCONSTclCOM& a) : PStandard_ArrayNode(a)
 {
@@ -64,7 +51,7 @@ protected:
 private: 
 
 
-PTopoDS_Shape1 myValue;
+  PTopoDS_Shape1 myValue;
 
 
 };
@@ -73,7 +60,6 @@ PTopoDS_Shape1 myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1_HeaderFile

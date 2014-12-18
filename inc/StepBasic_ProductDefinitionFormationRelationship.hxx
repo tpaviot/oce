@@ -6,58 +6,59 @@
 #ifndef _StepBasic_ProductDefinitionFormationRelationship_HeaderFile
 #define _StepBasic_ProductDefinitionFormationRelationship_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionFormationRelationship_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionFormationRelationship.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionFormation_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionFormation.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_ProductDefinitionFormation;
 
 
-//! Representation of STEP entity ProductDefinitionFormationRelationship <br>
-class StepBasic_ProductDefinitionFormationRelationship : public MMgt_TShared {
+//! Representation of STEP entity ProductDefinitionFormationRelationship
+class StepBasic_ProductDefinitionFormationRelationship : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_ProductDefinitionFormationRelationship();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aId,const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Handle(StepBasic_ProductDefinitionFormation)& aRelatingProductDefinitionFormation,const Handle(StepBasic_ProductDefinitionFormation)& aRelatedProductDefinitionFormation) ;
-  //! Returns field Id <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Id() const;
-  //! Set field Id <br>
-  Standard_EXPORT     void SetId(const Handle(TCollection_HAsciiString)& Id) ;
-  //! Returns field Name <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
-  //! Set field Name <br>
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& Name) ;
-  //! Returns field Description <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
-  //! Set field Description <br>
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& Description) ;
-  //! Returns field RelatingProductDefinitionFormation <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionFormation RelatingProductDefinitionFormation() const;
-  //! Set field RelatingProductDefinitionFormation <br>
-  Standard_EXPORT     void SetRelatingProductDefinitionFormation(const Handle(StepBasic_ProductDefinitionFormation)& RelatingProductDefinitionFormation) ;
-  //! Returns field RelatedProductDefinitionFormation <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionFormation RelatedProductDefinitionFormation() const;
-  //! Set field RelatedProductDefinitionFormation <br>
-  Standard_EXPORT     void SetRelatedProductDefinitionFormation(const Handle(StepBasic_ProductDefinitionFormation)& RelatedProductDefinitionFormation) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_ProductDefinitionFormationRelationship();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aId, const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Handle(StepBasic_ProductDefinitionFormation)& aRelatingProductDefinitionFormation, const Handle(StepBasic_ProductDefinitionFormation)& aRelatedProductDefinitionFormation) ;
+  
+  //! Returns field Id
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Id()  const;
+  
+  //! Set field Id
+  Standard_EXPORT   void SetId (const Handle(TCollection_HAsciiString)& Id) ;
+  
+  //! Returns field Name
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
+  
+  //! Set field Name
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& Name) ;
+  
+  //! Returns field Description
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
+  
+  //! Set field Description
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& Description) ;
+  
+  //! Returns field RelatingProductDefinitionFormation
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionFormation) RelatingProductDefinitionFormation()  const;
+  
+  //! Set field RelatingProductDefinitionFormation
+  Standard_EXPORT   void SetRelatingProductDefinitionFormation (const Handle(StepBasic_ProductDefinitionFormation)& RelatingProductDefinitionFormation) ;
+  
+  //! Returns field RelatedProductDefinitionFormation
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionFormation) RelatedProductDefinitionFormation()  const;
+  
+  //! Set field RelatedProductDefinitionFormation
+  Standard_EXPORT   void SetRelatedProductDefinitionFormation (const Handle(StepBasic_ProductDefinitionFormation)& RelatedProductDefinitionFormation) ;
 
 
 
@@ -72,11 +73,11 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theId;
-Handle_TCollection_HAsciiString theName;
-Handle_TCollection_HAsciiString theDescription;
-Handle_StepBasic_ProductDefinitionFormation theRelatingProductDefinitionFormation;
-Handle_StepBasic_ProductDefinitionFormation theRelatedProductDefinitionFormation;
+  Handle(TCollection_HAsciiString) theId;
+  Handle(TCollection_HAsciiString) theName;
+  Handle(TCollection_HAsciiString) theDescription;
+  Handle(StepBasic_ProductDefinitionFormation) theRelatingProductDefinitionFormation;
+  Handle(StepBasic_ProductDefinitionFormation) theRelatedProductDefinitionFormation;
 
 
 };
@@ -85,7 +86,6 @@ Handle_StepBasic_ProductDefinitionFormation theRelatedProductDefinitionFormation
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ProductDefinitionFormationRelationship_HeaderFile

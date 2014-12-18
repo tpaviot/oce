@@ -6,34 +6,16 @@
 #ifndef _TDocStd_Owner_HeaderFile
 #define _TDocStd_Owner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDocStd_Owner_HeaderFile
 #include <Handle_TDocStd_Owner.hxx>
-#endif
 
-#ifndef _Handle_TDocStd_Document_HeaderFile
 #include <Handle_TDocStd_Document.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_Data_HeaderFile
 #include <Handle_TDF_Data.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TDocStd_Document;
 class Standard_GUID;
 class TDF_Data;
@@ -41,35 +23,41 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
-class TDocStd_Owner : public TDF_Attribute {
+//! This  attribute located  at  the  root label  of the
+//! framework contains  a   back reference to   the  owner
+//! TDocStd_Document, providing acces to the document from
+//! any label.  private class Owner;
+class TDocStd_Owner : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!          ============= <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
   
-  Standard_EXPORT   static  void SetDocument(const Handle(TDF_Data)& indata,const Handle(TDocStd_Document)& doc) ;
-  //! Owner methods <br>
-//!          =============== <br>
-  Standard_EXPORT   static  Handle_TDocStd_Document GetDocument(const Handle(TDF_Data)& ofdata) ;
+  //! class methods
+  //! =============
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT   TDocStd_Owner();
+  Standard_EXPORT static   void SetDocument (const Handle(TDF_Data)& indata, const Handle(TDocStd_Document)& doc) ;
   
-  Standard_EXPORT     void SetDocument(const Handle(TDocStd_Document)& document) ;
+  //! Owner methods
+  //! ===============
+  Standard_EXPORT static   Handle(TDocStd_Document) GetDocument (const Handle(TDF_Data)& ofdata) ;
   
-  Standard_EXPORT     Handle_TDocStd_Document GetDocument() const;
+  Standard_EXPORT TDocStd_Owner();
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  Standard_EXPORT   void SetDocument (const Handle(TDocStd_Document)& document) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  Standard_EXPORT   Handle(TDocStd_Document) GetDocument()  const;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -84,7 +72,7 @@ protected:
 private: 
 
 
-Handle_TDocStd_Document myDocument;
+  Handle(TDocStd_Document) myDocument;
 
 
 };
@@ -93,7 +81,6 @@ Handle_TDocStd_Document myDocument;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDocStd_Owner_HeaderFile

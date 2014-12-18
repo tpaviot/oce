@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape_HeaderFile
 #define _TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape_HeaderFile
 #include <Handle_TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListOfShapeListOfShape_HeaderFile
 #include <TopOpeBRepBuild_ListOfShapeListOfShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopOpeBRepBuild_ListOfShapeListOfShape;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class TopOpeBRepBuild_DataMapIteratorOfDataMapOfShapeListOfShapeListOfShape;
 
 
 
-class TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape : public TCollection_MapNode {
+class TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape(const TopoDS_Shape& K,const TopOpeBRepBuild_ListOfShapeListOfShape& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape(const TopoDS_Shape& K, const TopOpeBRepBuild_ListOfShapeListOfShape& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TopOpeBRepBuild_ListOfShapeListOfShape& Value() const;
+      TopOpeBRepBuild_ListOfShapeListOfShape& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TopOpeBRepBuild_ListOfShapeListOfShape myValue;
+  TopoDS_Shape myKey;
+  TopOpeBRepBuild_ListOfShapeListOfShape myValue;
 
 
 };
@@ -99,7 +86,6 @@ TopOpeBRepBuild_ListOfShapeListOfShape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <TDocStd_SequenceOfApplicationDelta.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TDocStd_ApplicationDelta_HeaderFile
 #include <TDocStd_ApplicationDelta.hxx>
-#endif
-#ifndef _TDocStd_SequenceNodeOfSequenceOfApplicationDelta_HeaderFile
 #include <TDocStd_SequenceNodeOfSequenceOfApplicationDelta.hxx>
-#endif
  
 
-#define SeqItem Handle_TDocStd_ApplicationDelta
+#define SeqItem Handle(TDocStd_ApplicationDelta)
 #define SeqItem_hxx <TDocStd_ApplicationDelta.hxx>
 #define TCollection_SequenceNode TDocStd_SequenceNodeOfSequenceOfApplicationDelta
 #define TCollection_SequenceNode_hxx <TDocStd_SequenceNodeOfSequenceOfApplicationDelta.hxx>

@@ -5,19 +5,11 @@
 
 #include <IntSurf_ListNodeOfListOfPntOn2S.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntSurf_PntOn2S_HeaderFile
 #include <IntSurf_PntOn2S.hxx>
-#endif
-#ifndef _IntSurf_ListOfPntOn2S_HeaderFile
 #include <IntSurf_ListOfPntOn2S.hxx>
-#endif
-#ifndef _IntSurf_ListIteratorOfListOfPntOn2S_HeaderFile
 #include <IntSurf_ListIteratorOfListOfPntOn2S.hxx>
-#endif
 
  
 

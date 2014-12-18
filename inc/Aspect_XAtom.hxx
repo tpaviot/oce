@@ -6,16 +6,14 @@
 #ifndef _Aspect_XAtom_HeaderFile
 #define _Aspect_XAtom_HeaderFile
 
-//! Defines custom identifiers(atoms) for X window custom named properties <br>
-//! <br>
-//! Category: Instantiated classes <br>
-//! <br>
-enum Aspect_XAtom {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Defines custom identifiers(atoms) for X window custom named properties
+//!
+//! Category: Instantiated classes
+enum Aspect_XAtom
+{
 Aspect_XA_DELETE_WINDOW
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_XAtom_HeaderFile

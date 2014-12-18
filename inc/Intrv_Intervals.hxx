@@ -6,62 +6,57 @@
 #ifndef _Intrv_Intervals_HeaderFile
 #define _Intrv_Intervals_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Intrv_SequenceOfInterval_HeaderFile
 #include <Intrv_SequenceOfInterval.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_OutOfRange;
 class Intrv_Interval;
 
 
-//! The class  Intervals is a  sorted  sequence of non <br>
-//!          overlapping  Real Intervals. <br>
-class Intrv_Intervals  {
+//! The class  Intervals is a  sorted  sequence of non
+//! overlapping  Real Intervals.
+class Intrv_Intervals 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a void sequence of intervals. <br>
-  Standard_EXPORT   Intrv_Intervals();
-  //! Creates a sequence of one interval. <br>
-  Standard_EXPORT   Intrv_Intervals(const Intrv_Interval& Int);
-  //! Creates   by   copying  an   existing  sequence of <br>
-//!          intervals. <br>
-  Standard_EXPORT   Intrv_Intervals(const Intrv_Intervals& Int);
-  //! Intersects the intervals with the interval <Tool>. <br>
-  Standard_EXPORT     void Intersect(const Intrv_Interval& Tool) ;
-  //! Intersects the intervals with the intervals in the <br>
-//!          sequence  <Tool>. <br>
-  Standard_EXPORT     void Intersect(const Intrv_Intervals& Tool) ;
   
-  Standard_EXPORT     void Subtract(const Intrv_Interval& Tool) ;
+  //! Creates a void sequence of intervals.
+  Standard_EXPORT Intrv_Intervals();
   
-  Standard_EXPORT     void Subtract(const Intrv_Intervals& Tool) ;
+  //! Creates a sequence of one interval.
+  Standard_EXPORT Intrv_Intervals(const Intrv_Interval& Int);
   
-  Standard_EXPORT     void Unite(const Intrv_Interval& Tool) ;
+  //! Creates   by   copying  an   existing  sequence of
+  //! intervals.
+  Standard_EXPORT Intrv_Intervals(const Intrv_Intervals& Int);
   
-  Standard_EXPORT     void Unite(const Intrv_Intervals& Tool) ;
+  //! Intersects the intervals with the interval <Tool>.
+  Standard_EXPORT   void Intersect (const Intrv_Interval& Tool) ;
   
-  Standard_EXPORT     void XUnite(const Intrv_Interval& Tool) ;
+  //! Intersects the intervals with the intervals in the
+  //! sequence  <Tool>.
+  Standard_EXPORT   void Intersect (const Intrv_Intervals& Tool) ;
   
-  Standard_EXPORT     void XUnite(const Intrv_Intervals& Tool) ;
+  Standard_EXPORT   void Subtract (const Intrv_Interval& Tool) ;
   
-        Standard_Integer NbIntervals() const;
+  Standard_EXPORT   void Subtract (const Intrv_Intervals& Tool) ;
   
-       const Intrv_Interval& Value(const Standard_Integer Index) const;
-
+  Standard_EXPORT   void Unite (const Intrv_Interval& Tool) ;
+  
+  Standard_EXPORT   void Unite (const Intrv_Intervals& Tool) ;
+  
+  Standard_EXPORT   void XUnite (const Intrv_Interval& Tool) ;
+  
+  Standard_EXPORT   void XUnite (const Intrv_Intervals& Tool) ;
+  
+      Standard_Integer NbIntervals()  const;
+  
+     const  Intrv_Interval& Value (const Standard_Integer Index)  const;
 
 
 
@@ -76,7 +71,7 @@ private:
 
 
 
-Intrv_SequenceOfInterval myInter;
+  Intrv_SequenceOfInterval myInter;
 
 
 };
@@ -86,7 +81,6 @@ Intrv_SequenceOfInterval myInter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Intrv_Intervals_HeaderFile

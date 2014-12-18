@@ -6,40 +6,27 @@
 #ifndef _PBRep_PointsOnSurface_HeaderFile
 #define _PBRep_PointsOnSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_PointsOnSurface_HeaderFile
 #include <Handle_PBRep_PointsOnSurface.hxx>
-#endif
 
-#ifndef _Handle_PGeom_Surface_HeaderFile
 #include <Handle_PGeom_Surface.hxx>
-#endif
-#ifndef _PBRep_PointRepresentation_HeaderFile
 #include <PBRep_PointRepresentation.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class PGeom_Surface;
 class PTopLoc_Location;
 
 
-class PBRep_PointsOnSurface : public PBRep_PointRepresentation {
+class PBRep_PointsOnSurface : public PBRep_PointRepresentation
+{
 
 public:
 
   
-  Standard_EXPORT     Handle_PGeom_Surface Surface() const;
+  Standard_EXPORT   Handle(PGeom_Surface) Surface()  const;
 
-  PBRep_PointsOnSurface( )
+PBRep_PointsOnSurface( )
 {
   
 }
@@ -57,14 +44,14 @@ PBRep_PointsOnSurface(const Storage_stCONSTclCOM& a) : PBRep_PointRepresentation
 protected:
 
   
-  Standard_EXPORT   PBRep_PointsOnSurface(const Standard_Real P,const Handle(PGeom_Surface)& S,const PTopLoc_Location& L);
+  Standard_EXPORT PBRep_PointsOnSurface(const Standard_Real P, const Handle(PGeom_Surface)& S, const PTopLoc_Location& L);
 
 
 
 private: 
 
 
-Handle_PGeom_Surface mySurface;
+  Handle(PGeom_Surface) mySurface;
 
 
 };
@@ -73,7 +60,6 @@ Handle_PGeom_Surface mySurface;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_PointsOnSurface_HeaderFile

@@ -6,33 +6,25 @@
 #ifndef _StlAPI_Reader_HeaderFile
 #define _StlAPI_Reader_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Reading from stereolithography format. <br>
-class StlAPI_Reader  {
+//! Reading from stereolithography format.
+class StlAPI_Reader 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StlAPI_Reader();
+  Standard_EXPORT StlAPI_Reader();
   
-  Standard_EXPORT     void Read(TopoDS_Shape& aShape,const Standard_CString aFileName) ;
-
+  Standard_EXPORT   void Read (TopoDS_Shape& aShape, const Standard_CString aFileName) ;
 
 
 
@@ -55,7 +47,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StlAPI_Reader_HeaderFile

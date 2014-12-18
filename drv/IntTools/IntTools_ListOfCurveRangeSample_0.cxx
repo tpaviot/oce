@@ -5,18 +5,10 @@
 
 #include <IntTools_ListOfCurveRangeSample.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IntTools_ListIteratorOfListOfCurveRangeSample_HeaderFile
 #include <IntTools_ListIteratorOfListOfCurveRangeSample.hxx>
-#endif
-#ifndef _IntTools_CurveRangeSample_HeaderFile
 #include <IntTools_CurveRangeSample.hxx>
-#endif
-#ifndef _IntTools_ListNodeOfListOfCurveRangeSample_HeaderFile
 #include <IntTools_ListNodeOfListOfCurveRangeSample.hxx>
-#endif
  
 
 #define Item IntTools_CurveRangeSample

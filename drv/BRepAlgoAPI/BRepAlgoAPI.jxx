@@ -1,6 +1,2 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepAlgoAPI_HeaderFile
 #include <BRepAlgoAPI.hxx>
-#endif

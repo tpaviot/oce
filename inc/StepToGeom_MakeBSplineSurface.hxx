@@ -6,40 +6,28 @@
 #ifndef _StepToGeom_MakeBSplineSurface_HeaderFile
 #define _StepToGeom_MakeBSplineSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_BSplineSurface_HeaderFile
 #include <Handle_StepGeom_BSplineSurface.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
 class StepGeom_BSplineSurface;
 class Geom_BSplineSurface;
 
 
-//! This class implements the mapping between classes <br>
-//!          BSplineSurface from StepGeom <br>
-//!          and class BSplineSurface from Geom <br>
-class StepToGeom_MakeBSplineSurface  {
+//! This class implements the mapping between classes
+//! BSplineSurface from StepGeom
+//! and class BSplineSurface from Geom
+class StepToGeom_MakeBSplineSurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_BSplineSurface)& SS,Handle(Geom_BSplineSurface)& CS) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_BSplineSurface)& SS, Handle(Geom_BSplineSurface)& CS) ;
 
 
 
@@ -62,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeBSplineSurface_HeaderFile

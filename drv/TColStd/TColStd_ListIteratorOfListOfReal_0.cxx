@@ -5,18 +5,10 @@
 
 #include <TColStd_ListIteratorOfListOfReal.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_ListOfReal_HeaderFile
 #include <TColStd_ListOfReal.hxx>
-#endif
-#ifndef _TColStd_ListNodeOfListOfReal_HeaderFile
 #include <TColStd_ListNodeOfListOfReal.hxx>
-#endif
  
 
 #define Item Standard_Real

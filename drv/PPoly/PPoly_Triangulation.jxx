@@ -1,12 +1,4 @@
-#ifndef _PColgp_HArray1OfPnt_HeaderFile
 #include <PColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _PColgp_HArray1OfPnt2d_HeaderFile
 #include <PColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _PPoly_HArray1OfTriangle_HeaderFile
 #include <PPoly_HArray1OfTriangle.hxx>
-#endif
-#ifndef _PPoly_Triangulation_HeaderFile
 #include <PPoly_Triangulation.hxx>
-#endif

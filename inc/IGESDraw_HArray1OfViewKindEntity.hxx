@@ -6,28 +6,14 @@
 #ifndef _IGESDraw_HArray1OfViewKindEntity_HeaderFile
 #define _IGESDraw_HArray1OfViewKindEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDraw_HArray1OfViewKindEntity_HeaderFile
 #include <Handle_IGESDraw_HArray1OfViewKindEntity.hxx>
-#endif
 
-#ifndef _IGESDraw_Array1OfViewKindEntity_HeaderFile
 #include <IGESDraw_Array1OfViewKindEntity.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESData_ViewKindEntity_HeaderFile
 #include <Handle_IGESData_ViewKindEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESDraw_Array1OfViewKindEntity;
 
 
 
-class IGESDraw_HArray1OfViewKindEntity : public MMgt_TShared {
+class IGESDraw_HArray1OfViewKindEntity : public MMgt_TShared
+{
 
 public:
 
   
-      IGESDraw_HArray1OfViewKindEntity(const Standard_Integer Low,const Standard_Integer Up);
+    IGESDraw_HArray1OfViewKindEntity(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESDraw_HArray1OfViewKindEntity(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESData_ViewKindEntity)& V);
+    IGESDraw_HArray1OfViewKindEntity(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESData_ViewKindEntity)& V);
   
-        void Init(const Handle(IGESData_ViewKindEntity)& V) ;
+      void Init (const Handle(IGESData_ViewKindEntity)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESData_ViewKindEntity)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESData_ViewKindEntity)& Value) ;
   
-       const Handle_IGESData_ViewKindEntity& Value(const Standard_Integer Index) const;
+     const  Handle(IGESData_ViewKindEntity)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESData_ViewKindEntity& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESData_ViewKindEntity)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESDraw_Array1OfViewKindEntity& Array1() const;
+     const  IGESDraw_Array1OfViewKindEntity& Array1()  const;
   
-        IGESDraw_Array1OfViewKindEntity& ChangeArray1() ;
+      IGESDraw_Array1OfViewKindEntity& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESDraw_Array1OfViewKindEntity myArray;
+  IGESDraw_Array1OfViewKindEntity myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESData_ViewKindEntity
+#define ItemHArray1 Handle(IGESData_ViewKindEntity)
 #define ItemHArray1_hxx <IGESData_ViewKindEntity.hxx>
 #define TheArray1 IGESDraw_Array1OfViewKindEntity
 #define TheArray1_hxx <IGESDraw_Array1OfViewKindEntity.hxx>
@@ -103,7 +90,6 @@ IGESDraw_Array1OfViewKindEntity myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDraw_HArray1OfViewKindEntity_HeaderFile

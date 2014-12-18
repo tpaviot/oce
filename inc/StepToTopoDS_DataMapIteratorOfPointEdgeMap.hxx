@@ -6,22 +6,12 @@
 #ifndef _StepToTopoDS_DataMapIteratorOfPointEdgeMap_HeaderFile
 #define _StepToTopoDS_DataMapIteratorOfPointEdgeMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap_HeaderFile
 #include <Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap.hxx>
-#endif
 class Standard_NoSuchObject;
 class StepToTopoDS_PointPair;
 class TopoDS_Edge;
@@ -31,22 +21,22 @@ class StepToTopoDS_DataMapNodeOfPointEdgeMap;
 
 
 
-class StepToTopoDS_DataMapIteratorOfPointEdgeMap  : public TCollection_BasicMapIterator {
+class StepToTopoDS_DataMapIteratorOfPointEdgeMap  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepToTopoDS_DataMapIteratorOfPointEdgeMap();
+  Standard_EXPORT StepToTopoDS_DataMapIteratorOfPointEdgeMap();
   
-  Standard_EXPORT   StepToTopoDS_DataMapIteratorOfPointEdgeMap(const StepToTopoDS_PointEdgeMap& aMap);
+  Standard_EXPORT StepToTopoDS_DataMapIteratorOfPointEdgeMap(const StepToTopoDS_PointEdgeMap& aMap);
   
-  Standard_EXPORT     void Initialize(const StepToTopoDS_PointEdgeMap& aMap) ;
+  Standard_EXPORT   void Initialize (const StepToTopoDS_PointEdgeMap& aMap) ;
   
-  Standard_EXPORT    const StepToTopoDS_PointPair& Key() const;
+  Standard_EXPORT  const  StepToTopoDS_PointPair& Key()  const;
   
-  Standard_EXPORT    const TopoDS_Edge& Value() const;
-
+  Standard_EXPORT  const  TopoDS_Edge& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_DataMapIteratorOfPointEdgeMap_HeaderFile

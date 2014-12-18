@@ -6,8 +6,11 @@
 #ifndef _AIS_KindOfUnit_HeaderFile
 #define _AIS_KindOfUnit_HeaderFile
 
-//! Declares the type of Interactive Object unit. <br>
-enum AIS_KindOfUnit {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Declares the type of Interactive Object unit.
+enum AIS_KindOfUnit
+{
 AIS_TOU_LENGTH,
 AIS_TOU_SURFACE,
 AIS_TOU_VOLUME,
@@ -18,8 +21,4 @@ AIS_TOU_FORCE,
 AIS_TOU_TIME
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_KindOfUnit_HeaderFile

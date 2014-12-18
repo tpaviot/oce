@@ -5,22 +5,12 @@
 
 #include <Geom_HSequenceOfBSplineSurface.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Geom_BSplineSurface_HeaderFile
 #include <Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Geom_SequenceOfBSplineSurface_HeaderFile
 #include <Geom_SequenceOfBSplineSurface.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(Geom_HSequenceOfBSplineSurface,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Geom_HSequenceOfBSplineSurface)
 
 
-#define Item Handle_Geom_BSplineSurface
+#define Item Handle(Geom_BSplineSurface)
 #define Item_hxx <Geom_BSplineSurface.hxx>
 #define TheSequence Geom_SequenceOfBSplineSurface
 #define TheSequence_hxx <Geom_SequenceOfBSplineSurface.hxx>

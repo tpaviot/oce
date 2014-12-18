@@ -6,70 +6,55 @@
 #ifndef _Units_Quantity_HeaderFile
 #define _Units_Quantity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Units_Quantity_HeaderFile
 #include <Handle_Units_Quantity.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_Units_Dimensions_HeaderFile
 #include <Handle_Units_Dimensions.hxx>
-#endif
-#ifndef _Handle_Units_UnitsSequence_HeaderFile
 #include <Handle_Units_UnitsSequence.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TCollection_HAsciiString;
 class Units_Dimensions;
 class Units_UnitsSequence;
 
 
-//! This  class stores  in its  field all the possible <br>
-//!          units of all the unit systems for a given physical <br>
-//!          quantity. Each unit's  value  is  expressed in the <br>
-//!          S.I. unit system. <br>
-class Units_Quantity : public MMgt_TShared {
+//! This  class stores  in its  field all the possible
+//! units of all the unit systems for a given physical
+//! quantity. Each unit's  value  is  expressed in the
+//! S.I. unit system.
+class Units_Quantity : public MMgt_TShared
+{
 
 public:
 
-  //! Creates  a new Quantity  object with <aname> which  is <br>
-//!          the name of the physical quantity, <adimensions> which <br>
-//!          is the physical dimensions, and <aunitssequence> which <br>
-//!          describes all the units known for this quantity. <br>
-      Units_Quantity(const Standard_CString aname,const Handle(Units_Dimensions)& adimensions,const Handle(Units_UnitsSequence)& aunitssequence);
-  //! Returns in a AsciiString from TCollection the name of the quantity. <br>
-        TCollection_AsciiString Name() const;
-  //! Returns the physical dimensions of the quantity. <br>
-        Handle_Units_Dimensions Dimensions() const;
-  //! Returns <theunitssequence>, which  is the  sequence of <br>
-//!          all the units stored for this physical quantity. <br>
-        Handle_Units_UnitsSequence Sequence() const;
-  //! Returns True if the name of the Quantity <me> is equal <br>
-//!          to <astring>, False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean IsEqual(const Standard_CString astring) const;
-  //! Useful for debugging. <br>
-  Standard_EXPORT     void Dump(const Standard_Integer ashift,const Standard_Integer alevel) const;
+  
+  //! Creates  a new Quantity  object with <aname> which  is
+  //! the name of the physical quantity, <adimensions> which
+  //! is the physical dimensions, and <aunitssequence> which
+  //! describes all the units known for this quantity.
+    Units_Quantity(const Standard_CString aname, const Handle(Units_Dimensions)& adimensions, const Handle(Units_UnitsSequence)& aunitssequence);
+  
+  //! Returns in a AsciiString from TCollection the name of the quantity.
+      TCollection_AsciiString Name()  const;
+  
+  //! Returns the physical dimensions of the quantity.
+      Handle(Units_Dimensions) Dimensions()  const;
+  
+  //! Returns <theunitssequence>, which  is the  sequence of
+  //! all the units stored for this physical quantity.
+      Handle(Units_UnitsSequence) Sequence()  const;
+  
+  //! Returns True if the name of the Quantity <me> is equal
+  //! to <astring>, False otherwise.
+  Standard_EXPORT   Standard_Boolean IsEqual (const Standard_CString astring)  const;
+  
+  //! Useful for debugging.
+  Standard_EXPORT   void Dump (const Standard_Integer ashift, const Standard_Integer alevel)  const;
 
 
 
@@ -84,9 +69,9 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString thename;
-Handle_Units_Dimensions thedimensions;
-Handle_Units_UnitsSequence theunitssequence;
+  Handle(TCollection_HAsciiString) thename;
+  Handle(Units_Dimensions) thedimensions;
+  Handle(Units_UnitsSequence) theunitssequence;
 
 
 };
@@ -96,7 +81,6 @@ Handle_Units_UnitsSequence theunitssequence;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_Quantity_HeaderFile

@@ -15,22 +15,13 @@
 #ifndef _Standard_Persistent_proto_HeaderFile
 #define _Standard_Persistent_proto_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
-#include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
-#include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
+#include <Standard_TypeDef.hxx>
+#include <Standard_OStream.hxx>
 
-class Handle_Standard_Persistent;
 class Standard_Type;
 class Handle_Standard_Type;
+class Handle_Standard_Persistent;
 class Standard_Type;
 
 class Storage_stCONSTclCOM;
@@ -50,7 +41,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   Standard_EXPORT virtual Handle_Standard_Persistent This() const;
-  Standard_EXPORT virtual Handle_Standard_Persistent ShallowCopy () const;
   Standard_EXPORT virtual void Delete() const;
   Standard_EXPORT virtual ~Standard_Persistent();
   
@@ -62,7 +52,6 @@ public:
   Standard_EXPORT virtual const Handle_Standard_Type& DynamicType() const;
   Standard_EXPORT         Standard_Boolean            IsKind(const Handle_Standard_Type&)const;
   Standard_EXPORT         Standard_Boolean            IsInstance(const Handle_Standard_Type&)const;  
-  Standard_EXPORT virtual void                        ShallowDump(Standard_OStream& ) const;
 };
 
 #include <Handle_Standard_Persistent.hxx>

@@ -1,27 +1,9 @@
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_IDFilter_HeaderFile
 #include <TDF_IDFilter.hxx>
-#endif
-#ifndef _TDF_AttributeMap_HeaderFile
 #include <TDF_AttributeMap.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
-#endif
-#ifndef _TDF_Data_HeaderFile
 #include <TDF_Data.hxx>
-#endif
-#ifndef _TDF_LabelList_HeaderFile
 #include <TDF_LabelList.hxx>
-#endif
-#ifndef _TDF_LabelIntegerMap_HeaderFile
 #include <TDF_LabelIntegerMap.hxx>
-#endif
-#ifndef _TDF_Tool_HeaderFile
 #include <TDF_Tool.hxx>
-#endif

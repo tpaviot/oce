@@ -5,22 +5,12 @@
 
 #include <TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDataStd_DataMapOfStringHArray1OfReal_HeaderFile
 #include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
-#endif
-#ifndef _TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal_HeaderFile
 #include <TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal.hxx>
-#endif
 
  
 
@@ -41,7 +31,7 @@ IMPLEMENT_STANDARD_RTTI(TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal)
 
 #define TheKey TCollection_ExtendedString
 #define TheKey_hxx <TCollection_ExtendedString.hxx>
-#define TheItem Handle_TColStd_HArray1OfReal
+#define TheItem Handle(TColStd_HArray1OfReal)
 #define TheItem_hxx <TColStd_HArray1OfReal.hxx>
 #define Hasher TCollection_ExtendedString
 #define Hasher_hxx <TCollection_ExtendedString.hxx>

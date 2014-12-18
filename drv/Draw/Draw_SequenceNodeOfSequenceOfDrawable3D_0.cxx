@@ -5,16 +5,10 @@
 
 #include <Draw_SequenceNodeOfSequenceOfDrawable3D.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Draw_Drawable3D_HeaderFile
 #include <Draw_Drawable3D.hxx>
-#endif
-#ifndef _Draw_SequenceOfDrawable3D_HeaderFile
 #include <Draw_SequenceOfDrawable3D.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Draw_SequenceNodeOfSequenceOfDrawable3D,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Draw_SequenceNodeOfSequenceOfDrawable3D)
 
 
-#define SeqItem Handle_Draw_Drawable3D
+#define SeqItem Handle(Draw_Drawable3D)
 #define SeqItem_hxx <Draw_Drawable3D.hxx>
 #define TCollection_SequenceNode Draw_SequenceNodeOfSequenceOfDrawable3D
 #define TCollection_SequenceNode_hxx <Draw_SequenceNodeOfSequenceOfDrawable3D.hxx>

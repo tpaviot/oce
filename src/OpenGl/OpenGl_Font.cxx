@@ -36,7 +36,7 @@ OpenGl_Font::OpenGl_Font (const Handle(Font_FTFont)&     theFont,
   myTileSizeX (0),
   myTileSizeY (0),
   myLastTileId (-1),
-  myTextureFormat (GL_ALPHA8)
+  myTextureFormat (GL_ALPHA)
 {
   memset (&myLastTilePx, 0, sizeof(myLastTilePx));
 }
@@ -54,7 +54,7 @@ OpenGl_Font::~OpenGl_Font()
 // function : Release
 // purpose  :
 // =======================================================================
-void OpenGl_Font::Release (const OpenGl_Context* theCtx)
+void OpenGl_Font::Release (OpenGl_Context* theCtx)
 {
   if (myTextures.IsEmpty())
   {
@@ -131,8 +131,8 @@ bool OpenGl_Font::createTexture (const Handle(OpenGl_Context)& theCtx)
   }
 
   aTexture->Bind (theCtx);
-  glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-  glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+  glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, theCtx->TextureWrapClamp());
+  glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, theCtx->TextureWrapClamp());
   aTexture->Unbind (theCtx);
   return true;
 }
@@ -173,8 +173,10 @@ bool OpenGl_Font::renderGlyph (const Handle(OpenGl_Context)& theCtx,
   }
 
   aTexture->Bind (theCtx);
+#if !defined(GL_ES_VERSION_2_0)
   glPixelStorei (GL_UNPACK_LSB_FIRST,  GL_FALSE);
   glPixelStorei (GL_UNPACK_ROW_LENGTH, 0);
+#endif
   glPixelStorei (GL_UNPACK_ALIGNMENT,  1);
 
   glTexSubImage2D (GL_TEXTURE_2D, 0,

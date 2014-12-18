@@ -6,25 +6,13 @@
 #ifndef _TFunction_HArray1OfDataMapOfGUIDDriver_HeaderFile
 #define _TFunction_HArray1OfDataMapOfGUIDDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TFunction_HArray1OfDataMapOfGUIDDriver_HeaderFile
 #include <Handle_TFunction_HArray1OfDataMapOfGUIDDriver.hxx>
-#endif
 
-#ifndef _TFunction_Array1OfDataMapOfGUIDDriver_HeaderFile
 #include <TFunction_Array1OfDataMapOfGUIDDriver.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class TFunction_Array1OfDataMapOfGUIDDriver;
 
 
 
-class TFunction_HArray1OfDataMapOfGUIDDriver : public MMgt_TShared {
+class TFunction_HArray1OfDataMapOfGUIDDriver : public MMgt_TShared
+{
 
 public:
 
   
-      TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer Low,const Standard_Integer Up);
+    TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer Low, const Standard_Integer Up);
   
-      TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer Low,const Standard_Integer Up,const TFunction_DataMapOfGUIDDriver& V);
+    TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer Low, const Standard_Integer Up, const TFunction_DataMapOfGUIDDriver& V);
   
-        void Init(const TFunction_DataMapOfGUIDDriver& V) ;
+      void Init (const TFunction_DataMapOfGUIDDriver& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TFunction_DataMapOfGUIDDriver& Value) ;
+      void SetValue (const Standard_Integer Index, const TFunction_DataMapOfGUIDDriver& Value) ;
   
-       const TFunction_DataMapOfGUIDDriver& Value(const Standard_Integer Index) const;
+     const  TFunction_DataMapOfGUIDDriver& Value (const Standard_Integer Index)  const;
   
-        TFunction_DataMapOfGUIDDriver& ChangeValue(const Standard_Integer Index) ;
+      TFunction_DataMapOfGUIDDriver& ChangeValue (const Standard_Integer Index) ;
   
-       const TFunction_Array1OfDataMapOfGUIDDriver& Array1() const;
+     const  TFunction_Array1OfDataMapOfGUIDDriver& Array1()  const;
   
-        TFunction_Array1OfDataMapOfGUIDDriver& ChangeArray1() ;
+      TFunction_Array1OfDataMapOfGUIDDriver& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-TFunction_Array1OfDataMapOfGUIDDriver myArray;
+  TFunction_Array1OfDataMapOfGUIDDriver myArray;
 
 
 };
@@ -100,7 +89,6 @@ TFunction_Array1OfDataMapOfGUIDDriver myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TFunction_HArray1OfDataMapOfGUIDDriver_HeaderFile

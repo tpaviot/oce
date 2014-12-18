@@ -1,24 +1,8 @@
-#ifndef _Standard_NumericError_HeaderFile
 #include <Standard_NumericError.hxx>
-#endif
-#ifndef _Expr_NotEvaluable_HeaderFile
 #include <Expr_NotEvaluable.hxx>
-#endif
-#ifndef _Expr_GeneralExpression_HeaderFile
 #include <Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Expr_NamedUnknown_HeaderFile
 #include <Expr_NamedUnknown.hxx>
-#endif
-#ifndef _Expr_Array1OfNamedUnknown_HeaderFile
 #include <Expr_Array1OfNamedUnknown.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Expr_ArcCosine_HeaderFile
 #include <Expr_ArcCosine.hxx>
-#endif

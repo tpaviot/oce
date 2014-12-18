@@ -1,30 +1,10 @@
-#ifndef _Adaptor3d_HCurveOnSurface_HeaderFile
 #include <Adaptor3d_HCurveOnSurface.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Law_Function_HeaderFile
 #include <Law_Function.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _GeomLProp_SLProps_HeaderFile
 #include <GeomLProp_SLProps.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _GeomPlate_CurveConstraint_HeaderFile
 #include <GeomPlate_CurveConstraint.hxx>
-#endif

@@ -7,7 +7,6 @@
 #define _TDataStd_PtrTreeNode_HeaderFile
 
 class TDataStd_TreeNode;
-
 typedef TDataStd_TreeNode* TDataStd_PtrTreeNode;
 
-#endif
+#endif // _TDataStd_PtrTreeNode_HeaderFile

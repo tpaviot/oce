@@ -6,22 +6,15 @@
 #ifndef _Handle_Prs3d_IsoAspect_HeaderFile
 #define _Handle_Prs3d_IsoAspect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Prs3d_LineAspect_HeaderFile
 #include <Handle_Prs3d_LineAspect.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Prs3d_LineAspect);
 class Prs3d_IsoAspect;
 
-DEFINE_STANDARD_HANDLE(Prs3d_IsoAspect,Prs3d_LineAspect)
+DEFINE_STANDARD_HANDLE(Prs3d_IsoAspect, Prs3d_LineAspect)
 
-#endif
+#endif // _Handle_Prs3d_IsoAspect_HeaderFile

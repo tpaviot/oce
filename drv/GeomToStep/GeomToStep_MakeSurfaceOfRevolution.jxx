@@ -1,12 +1,4 @@
-#ifndef _StepGeom_SurfaceOfRevolution_HeaderFile
 #include <StepGeom_SurfaceOfRevolution.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Geom_SurfaceOfRevolution_HeaderFile
 #include <Geom_SurfaceOfRevolution.hxx>
-#endif
-#ifndef _GeomToStep_MakeSurfaceOfRevolution_HeaderFile
 #include <GeomToStep_MakeSurfaceOfRevolution.hxx>
-#endif

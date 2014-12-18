@@ -6,31 +6,15 @@
 #ifndef _IntAna_IntQuadQuad_HeaderFile
 #define _IntAna_IntQuadQuad_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntAna_Curve_HeaderFile
 #include <IntAna_Curve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_OutOfRange;
 class StdFail_NotDone;
 class Standard_DomainError;
@@ -41,104 +25,115 @@ class IntAna_Curve;
 class gp_Pnt;
 
 
-//! This class provides the analytic intersection between a <br>
-//!          cylinder or a cone from gp and another quadric, as defined <br>
-//!          in the class Quadric from IntAna. <br>
-//!          This algorithm is used when the geometric intersection <br>
-//!          (class QuadQuadGeo from IntAna) returns no geometric <br>
-//!          solution. <br>
-//!          The result of the intersection may be <br>
-//!           - Curves as defined in the class Curve from IntAna <br>
-//!           - Points (Pnt from gp) <br>
-class IntAna_IntQuadQuad  {
+//! This class provides the analytic intersection between a
+//! cylinder or a cone from gp and another quadric, as defined
+//! in the class Quadric from IntAna.
+//! This algorithm is used when the geometric intersection
+//! (class QuadQuadGeo from IntAna) returns no geometric
+//! solution.
+//! The result of the intersection may be
+//! - Curves as defined in the class Curve from IntAna
+//! - Points (Pnt from gp)
+class IntAna_IntQuadQuad 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty Constructor <br>
-  Standard_EXPORT   IntAna_IntQuadQuad();
-  //! Creates the intersection between a cylinder and a quadric . <br>
-//!          Tol est a definir plus precisemment. <br>
-  Standard_EXPORT   IntAna_IntQuadQuad(const gp_Cylinder& C,const IntAna_Quadric& Q,const Standard_Real Tol);
-  //! Creates the intersection between a cone and a quadric. <br>
-//!          Tol est a definir plus precisemment. <br>
-  Standard_EXPORT   IntAna_IntQuadQuad(const gp_Cone& C,const IntAna_Quadric& Q,const Standard_Real Tol);
-  //! Intersects a cylinder and a quadric . <br>
-//!          Tol est a definir plus precisemment. <br>
-  Standard_EXPORT     void Perform(const gp_Cylinder& C,const IntAna_Quadric& Q,const Standard_Real Tol) ;
-  //! Intersects a cone and a quadric. <br>
-//!          Tol est a definir plus precisemment. <br>
-  Standard_EXPORT     void Perform(const gp_Cone& C,const IntAna_Quadric& Q,const Standard_Real Tol) ;
-  //! Returns True if the computation was successful. <br>
-//! <br>
-        Standard_Boolean IsDone() const;
-  //! Returns TRUE if the cylinder, the cone or the sphere <br>
-//!          is identical to the quadric. <br>
-//! <br>
-        Standard_Boolean IdenticalElements() const;
-  //! Returns the number of curves solution. <br>
-//! <br>
-        Standard_Integer NbCurve() const;
-  //! Returns the curve of range N. <br>
-//! <br>
-  Standard_EXPORT    const IntAna_Curve& Curve(const Standard_Integer N) const;
-  //! Returns the number of contact point. <br>
-//! <br>
-        Standard_Integer NbPnt() const;
-  //! Returns the point of range N. <br>
-//! <br>
-  Standard_EXPORT    const gp_Pnt& Point(const Standard_Integer N) const;
-  //! Returns  the paramaters on the  "explicit quadric" <br>
-//!          (i.e  the cylinder or the  cone, the <br>
-//!          first argument   given to the constructor)  of the <br>
-//!          point of  range  N. <br>
-  Standard_EXPORT     void Parameters(const Standard_Integer N,Standard_Real& U1,Standard_Real& U2) const;
-  //! Returns True if the Curve I  shares its last bound <br>
-//!          with another curve. <br>
-  Standard_EXPORT     Standard_Boolean HasNextCurve(const Standard_Integer I) const;
-  //! If  HasNextCurve(I)  returns True,  this  function <br>
-//!          returns  the  Index J  of the curve  which   has a <br>
-//!          common bound  with the curve   I.  If  Opposite == <br>
-//!          True , then the last parameter of the curve I, and <br>
-//!          the last parameter of  the curve J  give  the same <br>
-//!          point. Else the last  parameter of the curve I and <br>
-//!          the first parameter  of  the curve J are  the same <br>
-//!          point. <br>
-  Standard_EXPORT     Standard_Integer NextCurve(const Standard_Integer I,Standard_Boolean& Opposite) const;
-  //! Returns True if the Curve I shares its first bound <br>
-//!          with another curve. <br>
-  Standard_EXPORT     Standard_Boolean HasPreviousCurve(const Standard_Integer I) const;
-  //! if HasPreviousCurve(I) returns True, this function <br>
-//!          returns the   Index  J of the   curve  which has a <br>
-//!          common  bound with the  curve  I.  If Opposite  == <br>
-//!          True  , then the  first parameter of  the curve I, <br>
-//!          and the first parameter of the curve  J  give  the <br>
-//!          same point. Else the first  parameter of the curve <br>
-//!          I and the last  parameter  of the curve J  are the <br>
-//!          same point. <br>
-  Standard_EXPORT     Standard_Integer PreviousCurve(const Standard_Integer I,Standard_Boolean& Opposite) const;
-
+  
+  //! Empty Constructor
+  Standard_EXPORT IntAna_IntQuadQuad();
+  
+  //! Creates the intersection between a cylinder and a quadric .
+  //! Tol est a definir plus precisemment.
+  Standard_EXPORT IntAna_IntQuadQuad(const gp_Cylinder& C, const IntAna_Quadric& Q, const Standard_Real Tol);
+  
+  //! Creates the intersection between a cone and a quadric.
+  //! Tol est a definir plus precisemment.
+  Standard_EXPORT IntAna_IntQuadQuad(const gp_Cone& C, const IntAna_Quadric& Q, const Standard_Real Tol);
+  
+  //! Intersects a cylinder and a quadric .
+  //! Tol est a definir plus precisemment.
+  Standard_EXPORT   void Perform (const gp_Cylinder& C, const IntAna_Quadric& Q, const Standard_Real Tol) ;
+  
+  //! Intersects a cone and a quadric.
+  //! Tol est a definir plus precisemment.
+  Standard_EXPORT   void Perform (const gp_Cone& C, const IntAna_Quadric& Q, const Standard_Real Tol) ;
+  
+  //! Returns True if the computation was successful.
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns TRUE if the cylinder, the cone or the sphere
+  //! is identical to the quadric.
+      Standard_Boolean IdenticalElements()  const;
+  
+  //! Returns the number of curves solution.
+      Standard_Integer NbCurve()  const;
+  
+  //! Returns the curve of range N.
+  Standard_EXPORT  const  IntAna_Curve& Curve (const Standard_Integer N)  const;
+  
+  //! Returns the number of contact point.
+      Standard_Integer NbPnt()  const;
+  
+  //! Returns the point of range N.
+  Standard_EXPORT  const  gp_Pnt& Point (const Standard_Integer N)  const;
+  
+  //! Returns  the paramaters on the  "explicit quadric"
+  //! (i.e  the cylinder or the  cone, the
+  //! first argument   given to the constructor)  of the
+  //! point of  range  N.
+  Standard_EXPORT   void Parameters (const Standard_Integer N, Standard_Real& U1, Standard_Real& U2)  const;
+  
+  //! Returns True if the Curve I  shares its last bound
+  //! with another curve.
+  Standard_EXPORT   Standard_Boolean HasNextCurve (const Standard_Integer I)  const;
+  
+  //! If  HasNextCurve(I)  returns True,  this  function
+  //! returns  the  Index J  of the curve  which   has a
+  //! common bound  with the curve   I.  If  Opposite ==
+  //! True , then the last parameter of the curve I, and
+  //! the last parameter of  the curve J  give  the same
+  //! point. Else the last  parameter of the curve I and
+  //! the first parameter  of  the curve J are  the same
+  //! point.
+  Standard_EXPORT   Standard_Integer NextCurve (const Standard_Integer I, Standard_Boolean& Opposite)  const;
+  
+  //! Returns True if the Curve I shares its first bound
+  //! with another curve.
+  Standard_EXPORT   Standard_Boolean HasPreviousCurve (const Standard_Integer I)  const;
+  
+  //! if HasPreviousCurve(I) returns True, this function
+  //! returns the   Index  J of the   curve  which has a
+  //! common  bound with the  curve  I.  If Opposite  ==
+  //! True  , then the  first parameter of  the curve I,
+  //! and the first parameter of the curve  J  give  the
+  //! same point. Else the first  parameter of the curve
+  //! I and the last  parameter  of the curve J  are the
+  //! same point.
+  Standard_EXPORT   Standard_Integer PreviousCurve (const Standard_Integer I, Standard_Boolean& Opposite)  const;
 
 
 
 
 protected:
 
-  //! Set the next and previous fields. Private method. <br>
-  Standard_EXPORT     void InternalSetNextAndPrevious() ;
+  
+  //! Set the next and previous fields. Private method.
+  Standard_EXPORT   void InternalSetNextAndPrevious() ;
 
 
-Standard_Boolean done;
-Standard_Boolean identical;
-IntAna_Curve TheCurve[12];
-Standard_Integer previouscurve[12];
-Standard_Integer nextcurve[12];
-Standard_Integer NbCurves;
-Standard_Integer Nbpoints;
-gp_Pnt Thepoints[2];
-Standard_Integer myNbMaxCurves;
-Standard_Real myEpsilon;
-Standard_Real myEpsilonCoeffPolyNull;
+  Standard_Boolean done;
+  Standard_Boolean identical;
+  IntAna_Curve TheCurve[12];
+  Standard_Integer previouscurve[12];
+  Standard_Integer nextcurve[12];
+  Standard_Integer NbCurves;
+  Standard_Integer Nbpoints;
+  gp_Pnt Thepoints[2];
+  Standard_Integer myNbMaxCurves;
+  Standard_Real myEpsilon;
+  Standard_Real myEpsilonCoeffPolyNull;
 
 
 private:
@@ -154,7 +149,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntAna_IntQuadQuad_HeaderFile

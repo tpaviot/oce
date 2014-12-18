@@ -5,18 +5,10 @@
 
 #include <Hatch_SequenceOfParameter.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Hatch_Parameter_HeaderFile
 #include <Hatch_Parameter.hxx>
-#endif
-#ifndef _Hatch_SequenceNodeOfSequenceOfParameter_HeaderFile
 #include <Hatch_SequenceNodeOfSequenceOfParameter.hxx>
-#endif
  
 
 #define SeqItem Hatch_Parameter

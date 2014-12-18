@@ -6,69 +6,53 @@
 #ifndef _Vrml_DirectionalLight_HeaderFile
 #define _Vrml_DirectionalLight_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Quantity_Color;
 class gp_Vec;
 
 
-//!defines a directional  light node of VRML specifying <br>
-//!         properties of lights. <br>
-//!  This  node  defines  a  directional  light  source  that  illuminates <br>
-//!  along  rays  parallel  to  a  given  3-dimentional  vector <br>
-//!  Color is  written  as  an  RGB  triple. <br>
-//!  Light intensity must be in the range 0.0 to 1.0, inclusive. <br>
-class Vrml_DirectionalLight  {
+//! defines a directional  light node of VRML specifying
+//! properties of lights.
+//! This  node  defines  a  directional  light  source  that  illuminates
+//! along  rays  parallel  to  a  given  3-dimentional  vector
+//! Color is  written  as  an  RGB  triple.
+//! Light intensity must be in the range 0.0 to 1.0, inclusive.
+class Vrml_DirectionalLight 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_DirectionalLight();
+  Standard_EXPORT Vrml_DirectionalLight();
   
-  Standard_EXPORT   Vrml_DirectionalLight(const Standard_Boolean aOnOff,const Standard_Real aIntensity,const Quantity_Color& aColor,const gp_Vec& aDirection);
+  Standard_EXPORT Vrml_DirectionalLight(const Standard_Boolean aOnOff, const Standard_Real aIntensity, const Quantity_Color& aColor, const gp_Vec& aDirection);
   
-  Standard_EXPORT     void SetOnOff(const Standard_Boolean aOnOff) ;
+  Standard_EXPORT   void SetOnOff (const Standard_Boolean aOnOff) ;
   
-  Standard_EXPORT     Standard_Boolean OnOff() const;
+  Standard_EXPORT   Standard_Boolean OnOff()  const;
   
-  Standard_EXPORT     void SetIntensity(const Standard_Real aIntensity) ;
+  Standard_EXPORT   void SetIntensity (const Standard_Real aIntensity) ;
   
-  Standard_EXPORT     Standard_Real Intensity() const;
+  Standard_EXPORT   Standard_Real Intensity()  const;
   
-  Standard_EXPORT     void SetColor(const Quantity_Color& aColor) ;
+  Standard_EXPORT   void SetColor (const Quantity_Color& aColor) ;
   
-  Standard_EXPORT     Quantity_Color Color() const;
+  Standard_EXPORT   Quantity_Color Color()  const;
   
-  Standard_EXPORT     void SetDirection(const gp_Vec& aDirection) ;
+  Standard_EXPORT   void SetDirection (const gp_Vec& aDirection) ;
   
-  Standard_EXPORT     gp_Vec Direction() const;
+  Standard_EXPORT   gp_Vec Direction()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -83,10 +67,10 @@ private:
 
 
 
-Standard_Boolean myOnOff;
-Standard_Real myIntensity;
-Quantity_Color myColor;
-gp_Vec myDirection;
+  Standard_Boolean myOnOff;
+  Standard_Real myIntensity;
+  Quantity_Color myColor;
+  gp_Vec myDirection;
 
 
 };
@@ -95,7 +79,6 @@ gp_Vec myDirection;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_DirectionalLight_HeaderFile

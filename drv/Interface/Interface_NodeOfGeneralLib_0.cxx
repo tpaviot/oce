@@ -5,28 +5,14 @@
 
 #include <Interface_NodeOfGeneralLib.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Interface_GlobalNodeOfGeneralLib_HeaderFile
 #include <Interface_GlobalNodeOfGeneralLib.hxx>
-#endif
-#ifndef _Interface_NodeOfGeneralLib_HeaderFile
 #include <Interface_NodeOfGeneralLib.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_GeneralModule_HeaderFile
 #include <Interface_GeneralModule.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _Interface_GeneralLib_HeaderFile
 #include <Interface_GeneralLib.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(Interface_NodeOfGeneralLib,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Interface_NodeOfGeneralLib)
 
 
-#define TheObject Handle_Standard_Transient
+#define TheObject Handle(Standard_Transient)
 #define TheObject_hxx <Standard_Transient.hxx>
 #define Handle_TheModule Handle_Interface_GeneralModule
 #define TheModule Interface_GeneralModule

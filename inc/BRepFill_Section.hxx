@@ -6,53 +6,41 @@
 #ifndef _BRepFill_Section_HeaderFile
 #define _BRepFill_Section_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 class TopoDS_Vertex;
 class TopoDS_Wire;
 
 
-//! To store section definition <br>
-class BRepFill_Section  {
+//! To store section definition
+class BRepFill_Section 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepFill_Section();
+  Standard_EXPORT BRepFill_Section();
   
-  Standard_EXPORT   BRepFill_Section(const TopoDS_Shape& Profile,const TopoDS_Vertex& V,const Standard_Boolean WithContact,const Standard_Boolean WithCorrection);
+  Standard_EXPORT BRepFill_Section(const TopoDS_Shape& Profile, const TopoDS_Vertex& V, const Standard_Boolean WithContact, const Standard_Boolean WithCorrection);
   
-  Standard_EXPORT     void Set(const Standard_Boolean IsLaw) ;
+  Standard_EXPORT   void Set (const Standard_Boolean IsLaw) ;
   
-       const TopoDS_Wire& Wire() const;
+     const  TopoDS_Wire& Wire()  const;
   
-       const TopoDS_Vertex& Vertex() const;
+     const  TopoDS_Vertex& Vertex()  const;
   
-        Standard_Boolean IsLaw() const;
+      Standard_Boolean IsLaw()  const;
   
-        Standard_Boolean WithContact() const;
+      Standard_Boolean WithContact()  const;
   
-        Standard_Boolean WithCorrection() const;
-
+      Standard_Boolean WithCorrection()  const;
 
 
 
@@ -67,11 +55,11 @@ private:
 
 
 
-TopoDS_Wire wire;
-TopoDS_Vertex vertex;
-Standard_Boolean islaw;
-Standard_Boolean contact;
-Standard_Boolean correction;
+  TopoDS_Wire wire;
+  TopoDS_Vertex vertex;
+  Standard_Boolean islaw;
+  Standard_Boolean contact;
+  Standard_Boolean correction;
 
 
 };
@@ -81,7 +69,6 @@ Standard_Boolean correction;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_Section_HeaderFile

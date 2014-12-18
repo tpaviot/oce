@@ -5,22 +5,12 @@
 
 #include <GeomPlate_HSequenceOfCurveConstraint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _GeomPlate_CurveConstraint_HeaderFile
 #include <GeomPlate_CurveConstraint.hxx>
-#endif
-#ifndef _GeomPlate_SequenceOfCurveConstraint_HeaderFile
 #include <GeomPlate_SequenceOfCurveConstraint.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(GeomPlate_HSequenceOfCurveConstraint,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(GeomPlate_HSequenceOfCurveConstraint)
 
 
-#define Item Handle_GeomPlate_CurveConstraint
+#define Item Handle(GeomPlate_CurveConstraint)
 #define Item_hxx <GeomPlate_CurveConstraint.hxx>
 #define TheSequence GeomPlate_SequenceOfCurveConstraint
 #define TheSequence_hxx <GeomPlate_SequenceOfCurveConstraint.hxx>

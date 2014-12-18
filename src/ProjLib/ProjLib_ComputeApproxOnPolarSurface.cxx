@@ -52,8 +52,6 @@
 
 #include <GeomAbs_SurfaceType.hxx>
 #include <GeomAbs_CurveType.hxx>
-#include <Handle_Adaptor3d_HCurve.hxx>
-#include <Handle_Adaptor3d_HSurface.hxx>
 #include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_HSurface.hxx>
@@ -76,7 +74,7 @@
 //#include <GeomLib_IsIso.hxx>
 //#include <GeomLib_CheckSameParameter.hxx>
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 #ifdef DRAW
 #include <DrawTrSurf.hxx>
 #endif
@@ -412,7 +410,7 @@ ProjLib_ComputeApproxOnPolarSurface::ProjLib_ComputeApproxOnPolarSurface
 {
   myTolerance = tol3d; //OCC217
   //myTolerance = Max(tolerance,Precision::PApproximation());
-  const Handle_Adaptor2d_HCurve2d InitCurve2d ;
+  const Handle(Adaptor2d_HCurve2d) InitCurve2d ;
   myBSpline = Perform(InitCurve2d,Curve,S);  
 } 
 
@@ -1108,6 +1106,38 @@ Handle(Adaptor2d_HCurve2d)
                   V1 = V0 + vsens*vperiod;
                   Pts2d(i).SetCoord(U1,V1);
                   myProjIsDone = Standard_True;
+
+                  if((i == 2) && (!IsEqual(uperiod, 0.0) || !IsEqual(vperiod, 0.0)))
+                  {//Make 1st point more precise for periodic surfaces
+                    const Standard_Integer aSize = 3;
+                    const gp_Pnt2d aP(Pts2d(2)); 
+                    Standard_Real aUpar[aSize], aVpar[aSize];
+                    Pts2d(1).Coord(aUpar[1], aVpar[1]);
+                    aUpar[0] = aUpar[1] - uperiod;
+                    aUpar[2] = aUpar[1] + uperiod;
+                    aVpar[0] = aVpar[1] - vperiod;
+                    aVpar[2] = aVpar[1] + vperiod;
+
+                    Standard_Real aSQdistMin = RealLast();
+                    Standard_Integer aBestUInd = 1, aBestVInd = 1;
+                    const Standard_Integer  aSizeU = IsEqual(uperiod, 0.0) ? 1 : aSize,
+                                            aSizeV = IsEqual(vperiod, 0.0) ? 1 : aSize;
+                    for(Standard_Integer uInd = 0; uInd < aSizeU; uInd++)
+                    {
+                      for(Standard_Integer vInd = 0; vInd < aSizeV; vInd++)
+                      {
+                        Standard_Real aSQdist = aP.SquareDistance(gp_Pnt2d(aUpar[uInd], aVpar[vInd]));
+                        if(aSQdist < aSQdistMin)
+                        {
+                          aSQdistMin = aSQdist;
+                          aBestUInd = uInd;
+                          aBestVInd = vInd;
+                        }
+                      }
+                    }
+
+                    Pts2d(1).SetCoord(aUpar[aBestUInd], aVpar[aBestVInd]);
+                  }//if(i == 2) condition
                 }
               }
             }
@@ -1272,7 +1302,7 @@ Handle(Adaptor2d_HCurve2d)
     //////////////////////////////////////////
     Geom2dAdaptor_Curve GAC(myBSpline);
     Handle(Adaptor2d_HCurve2d) IC2d = new Geom2dAdaptor_HCurve(GAC);
-#ifdef DEB
+#ifdef OCCT_DEBUG
 //    char name [100];
 //    sprintf(name,"%s_%d","build",compteur++);
 //    DrawTrSurf::Set(name,myBSpline);
@@ -1568,7 +1598,7 @@ Handle(Geom2d_BSplineCurve)
   ProjLib_PolarFunction F(Curve, Surf, InitCurve2d, Tol3d) ;  //OCC217
   //ProjLib_PolarFunction F(Curve, Surf, InitCurve2d, myTolerance) ;
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
   Standard_Integer Nb = 50;
   
   Standard_Real U, U1, U2;
@@ -1687,7 +1717,7 @@ Handle(Geom2d_BSplineCurve)
       OK = OK && Dummy->RemoveKnot(ij,MaxDeg-1,Tol3d);  //OCC217
       //OK = OK && Dummy->RemoveKnot(ij,MaxDeg-1,myTolerance);
     }
-#ifdef DEB
+#ifdef OCCT_DEBUG
     if (!OK) {
       cout << "ProjLib_ComputeApproxOnPolarSurface : Smoothing echoue"<<endl;
     }

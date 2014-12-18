@@ -6,38 +6,27 @@
 #ifndef _TDocStd_SequenceNodeOfSequenceOfApplicationDelta_HeaderFile
 #define _TDocStd_SequenceNodeOfSequenceOfApplicationDelta_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta_HeaderFile
 #include <Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta.hxx>
-#endif
 
-#ifndef _Handle_TDocStd_ApplicationDelta_HeaderFile
 #include <Handle_TDocStd_ApplicationDelta.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TDocStd_ApplicationDelta;
 class TDocStd_SequenceOfApplicationDelta;
 
 
 
-class TDocStd_SequenceNodeOfSequenceOfApplicationDelta : public TCollection_SeqNode {
+class TDocStd_SequenceNodeOfSequenceOfApplicationDelta : public TCollection_SeqNode
+{
 
 public:
 
   
-      TDocStd_SequenceNodeOfSequenceOfApplicationDelta(const Handle(TDocStd_ApplicationDelta)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TDocStd_SequenceNodeOfSequenceOfApplicationDelta(const Handle(TDocStd_ApplicationDelta)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_TDocStd_ApplicationDelta& Value() const;
+      Handle(TDocStd_ApplicationDelta)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_TDocStd_ApplicationDelta myValue;
+  Handle(TDocStd_ApplicationDelta) myValue;
 
 
 };
 
-#define SeqItem Handle_TDocStd_ApplicationDelta
+#define SeqItem Handle(TDocStd_ApplicationDelta)
 #define SeqItem_hxx <TDocStd_ApplicationDelta.hxx>
 #define TCollection_SequenceNode TDocStd_SequenceNodeOfSequenceOfApplicationDelta
 #define TCollection_SequenceNode_hxx <TDocStd_SequenceNodeOfSequenceOfApplicationDelta.hxx>
@@ -78,7 +67,6 @@ Handle_TDocStd_ApplicationDelta myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDocStd_SequenceNodeOfSequenceOfApplicationDelta_HeaderFile

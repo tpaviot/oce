@@ -6,33 +6,20 @@
 #ifndef _math_NotSquare_HeaderFile
 #define _math_NotSquare_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_DimensionError_HeaderFile
 #include <Standard_DimensionError.hxx>
-#endif
-#ifndef _Handle_math_NotSquare_HeaderFile
 #include <Handle_math_NotSquare.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_math_NotSquare
-#define math_NotSquare_Raise_if(CONDITION,MESSAGE) \
+  #define math_NotSquare_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) math_NotSquare::Raise(MESSAGE);
 #else
-#define math_NotSquare_Raise_if(CONDITION,MESSAGE)
+  #define math_NotSquare_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(math_NotSquare,Standard_DimensionError)
+DEFINE_STANDARD_EXCEPTION(math_NotSquare, Standard_DimensionError)
 
-#endif
+#endif // _math_NotSquare_HeaderFile

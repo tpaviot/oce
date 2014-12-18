@@ -6,19 +6,11 @@
 #ifndef _IGESDraw_HeaderFile
 #define _IGESDraw_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESDraw_Protocol_HeaderFile
 #include <Handle_IGESDraw_Protocol.hxx>
-#endif
 class IGESDraw_Protocol;
 class IGESDraw_ConnectPoint;
 class IGESDraw_NetworkSubfigureDef;
@@ -58,19 +50,21 @@ class IGESDraw_HArray1OfConnectPoint;
 class IGESDraw_HArray1OfViewKindEntity;
 
 
-//! This package contains the group of classes necessary for <br>
-//!           Structure Entities implied in Drawings and Structured <br>
-//!           Graphics (Sets for drawing, Drawings and Views). <br>
-class IGESDraw  {
+//! This package contains the group of classes necessary for
+//! Structure Entities implied in Drawings and Structured
+//! Graphics (Sets for drawing, Drawings and Views).
+class IGESDraw 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prepares dynamic data (Protocol, Modules) for this package <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Returns the Protocol for this Package <br>
-  Standard_EXPORT   static  Handle_IGESDraw_Protocol Protocol() ;
-
+  
+  //! Prepares dynamic data (Protocol, Modules) for this package
+  Standard_EXPORT static   void Init() ;
+  
+  //! Returns the Protocol for this Package
+  Standard_EXPORT static   Handle(IGESDraw_Protocol) Protocol() ;
 
 
 
@@ -129,7 +123,6 @@ friend class IGESDraw_HArray1OfViewKindEntity;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDraw_HeaderFile

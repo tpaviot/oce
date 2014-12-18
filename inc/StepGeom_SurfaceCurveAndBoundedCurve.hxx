@@ -6,35 +6,28 @@
 #ifndef _StepGeom_SurfaceCurveAndBoundedCurve_HeaderFile
 #define _StepGeom_SurfaceCurveAndBoundedCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_SurfaceCurveAndBoundedCurve_HeaderFile
 #include <Handle_StepGeom_SurfaceCurveAndBoundedCurve.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_BoundedCurve_HeaderFile
 #include <Handle_StepGeom_BoundedCurve.hxx>
-#endif
-#ifndef _StepGeom_SurfaceCurve_HeaderFile
 #include <StepGeom_SurfaceCurve.hxx>
-#endif
 class StepGeom_BoundedCurve;
 
 
-//! complex type: bounded_curve + surface_curve <br>
-//!          needed for curve_bounded_surfaces (S4132) <br>
-class StepGeom_SurfaceCurveAndBoundedCurve : public StepGeom_SurfaceCurve {
+//! complex type: bounded_curve + surface_curve
+//! needed for curve_bounded_surfaces (S4132)
+class StepGeom_SurfaceCurveAndBoundedCurve : public StepGeom_SurfaceCurve
+{
 
 public:
 
-  //! creates empty object <br>
-  Standard_EXPORT   StepGeom_SurfaceCurveAndBoundedCurve();
-  //! returns field BoundedCurve <br>
-  Standard_EXPORT     Handle_StepGeom_BoundedCurve& BoundedCurve() ;
+  
+  //! creates empty object
+  Standard_EXPORT StepGeom_SurfaceCurveAndBoundedCurve();
+  
+  //! returns field BoundedCurve
+  Standard_EXPORT   Handle(StepGeom_BoundedCurve)& BoundedCurve() ;
 
 
 
@@ -49,7 +42,7 @@ protected:
 private: 
 
 
-Handle_StepGeom_BoundedCurve myBoundedCurve;
+  Handle(StepGeom_BoundedCurve) myBoundedCurve;
 
 
 };
@@ -58,7 +51,6 @@ Handle_StepGeom_BoundedCurve myBoundedCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_SurfaceCurveAndBoundedCurve_HeaderFile

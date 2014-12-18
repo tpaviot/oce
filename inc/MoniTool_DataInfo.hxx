@@ -6,44 +6,34 @@
 #ifndef _MoniTool_DataInfo_HeaderFile
 #define _MoniTool_DataInfo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class Standard_Type;
 class Standard_Transient;
 
 
-//! Gives informations on an object <br>
-//!           Used as template to instantiate Elem, etc <br>
-//!           This class is for Transient <br>
-class MoniTool_DataInfo  {
+//! Gives informations on an object
+//! Used as template to instantiate Elem, etc
+//! This class is for Transient
+class MoniTool_DataInfo 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the Type attached to an object <br>
-//!           Here, the Dynamic Type of a Transient. Null Type if unknown <br>
-  Standard_EXPORT   static  Handle_Standard_Type Type(const Handle(Standard_Transient)& ent) ;
-  //! Returns Type Name (string) <br>
-//!           Allows to name type of non-handled objects <br>
-  Standard_EXPORT   static  Standard_CString TypeName(const Handle(Standard_Transient)& ent) ;
-
+  
+  //! Returns the Type attached to an object
+  //! Here, the Dynamic Type of a Transient. Null Type if unknown
+  Standard_EXPORT static   Handle(Standard_Type) Type (const Handle(Standard_Transient)& ent) ;
+  
+  //! Returns Type Name (string)
+  //! Allows to name type of non-handled objects
+  Standard_EXPORT static   Standard_CString TypeName (const Handle(Standard_Transient)& ent) ;
 
 
 
@@ -66,7 +56,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MoniTool_DataInfo_HeaderFile

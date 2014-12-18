@@ -6,38 +6,27 @@
 #ifndef _StlMesh_SequenceNodeOfSequenceOfMeshTriangle_HeaderFile
 #define _StlMesh_SequenceNodeOfSequenceOfMeshTriangle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle_HeaderFile
 #include <Handle_StlMesh_SequenceNodeOfSequenceOfMeshTriangle.hxx>
-#endif
 
-#ifndef _Handle_StlMesh_MeshTriangle_HeaderFile
 #include <Handle_StlMesh_MeshTriangle.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class StlMesh_MeshTriangle;
 class StlMesh_SequenceOfMeshTriangle;
 
 
 
-class StlMesh_SequenceNodeOfSequenceOfMeshTriangle : public TCollection_SeqNode {
+class StlMesh_SequenceNodeOfSequenceOfMeshTriangle : public TCollection_SeqNode
+{
 
 public:
 
   
-      StlMesh_SequenceNodeOfSequenceOfMeshTriangle(const Handle(StlMesh_MeshTriangle)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    StlMesh_SequenceNodeOfSequenceOfMeshTriangle(const Handle(StlMesh_MeshTriangle)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_StlMesh_MeshTriangle& Value() const;
+      Handle(StlMesh_MeshTriangle)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_StlMesh_MeshTriangle myValue;
+  Handle(StlMesh_MeshTriangle) myValue;
 
 
 };
 
-#define SeqItem Handle_StlMesh_MeshTriangle
+#define SeqItem Handle(StlMesh_MeshTriangle)
 #define SeqItem_hxx <StlMesh_MeshTriangle.hxx>
 #define TCollection_SequenceNode StlMesh_SequenceNodeOfSequenceOfMeshTriangle
 #define TCollection_SequenceNode_hxx <StlMesh_SequenceNodeOfSequenceOfMeshTriangle.hxx>
@@ -78,7 +67,6 @@ Handle_StlMesh_MeshTriangle myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StlMesh_SequenceNodeOfSequenceOfMeshTriangle_HeaderFile

@@ -1,12 +1,4 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Interface_HArray1OfHAsciiString_HeaderFile
 #include <Interface_HArray1OfHAsciiString.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IGESDefs_MacroDef_HeaderFile
 #include <IGESDefs_MacroDef.hxx>
-#endif

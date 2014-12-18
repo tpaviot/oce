@@ -1,3 +1,1 @@
-#ifndef _RWHeaderSection_HeaderFile
 #include <RWHeaderSection.hxx>
-#endif

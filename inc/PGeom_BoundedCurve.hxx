@@ -6,25 +6,16 @@
 #ifndef _PGeom_BoundedCurve_HeaderFile
 #define _PGeom_BoundedCurve_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_BoundedCurve_HeaderFile
 #include <Handle_PGeom_BoundedCurve.hxx>
-#endif
 
-#ifndef _PGeom_Curve_HeaderFile
 #include <PGeom_Curve.hxx>
-#endif
 
 
-class PGeom_BoundedCurve : public PGeom_Curve {
+class PGeom_BoundedCurve : public PGeom_Curve
+{
 
 public:
 
@@ -33,7 +24,7 @@ PGeom_BoundedCurve(const Storage_stCONSTclCOM& a) : PGeom_Curve(a)
 {
   
 }
-  PGeom_BoundedCurve( )
+PGeom_BoundedCurve( )
 {
   
 }
@@ -58,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_BoundedCurve_HeaderFile

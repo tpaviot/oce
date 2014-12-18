@@ -1,6 +1,0 @@
-#ifndef _TopoDS_Shape_HeaderFile
-#include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepMesh_HeaderFile
-#include <BRepMesh.hxx>
-#endif

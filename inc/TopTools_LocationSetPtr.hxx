@@ -7,7 +7,6 @@
 #define _TopTools_LocationSetPtr_HeaderFile
 
 class TopTools_LocationSet;
-
 typedef TopTools_LocationSet* TopTools_LocationSetPtr;
 
-#endif
+#endif // _TopTools_LocationSetPtr_HeaderFile

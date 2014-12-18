@@ -1,36 +1,12 @@
-#ifndef _Graphic3d_AspectLine3d_HeaderFile
 #include <Graphic3d_AspectLine3d.hxx>
-#endif
-#ifndef _Graphic3d_AspectText3d_HeaderFile
 #include <Graphic3d_AspectText3d.hxx>
-#endif
-#ifndef _Graphic3d_AspectMarker3d_HeaderFile
 #include <Graphic3d_AspectMarker3d.hxx>
-#endif
-#ifndef _Graphic3d_AspectFillArea3d_HeaderFile
 #include <Graphic3d_AspectFillArea3d.hxx>
-#endif
-#ifndef _Graphic3d_GraphicDriver_HeaderFile
 #include <Graphic3d_GraphicDriver.hxx>
-#endif
-#ifndef _Graphic3d_InitialisationError_HeaderFile
 #include <Graphic3d_InitialisationError.hxx>
-#endif
-#ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
-#endif
-#ifndef _Graphic3d_MapOfStructure_HeaderFile
 #include <Graphic3d_MapOfStructure.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _Graphic3d_DataStructureManager_HeaderFile
 #include <Graphic3d_DataStructureManager.hxx>
-#endif
-#ifndef _TColStd_Array2OfReal_HeaderFile
 #include <TColStd_Array2OfReal.hxx>
-#endif
-#ifndef _Graphic3d_StructureManager_HeaderFile
 #include <Graphic3d_StructureManager.hxx>
-#endif

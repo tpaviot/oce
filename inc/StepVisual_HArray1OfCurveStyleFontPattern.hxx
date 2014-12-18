@@ -6,28 +6,14 @@
 #ifndef _StepVisual_HArray1OfCurveStyleFontPattern_HeaderFile
 #define _StepVisual_HArray1OfCurveStyleFontPattern_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_HArray1OfCurveStyleFontPattern_HeaderFile
 #include <Handle_StepVisual_HArray1OfCurveStyleFontPattern.hxx>
-#endif
 
-#ifndef _StepVisual_Array1OfCurveStyleFontPattern_HeaderFile
 #include <StepVisual_Array1OfCurveStyleFontPattern.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepVisual_CurveStyleFontPattern_HeaderFile
 #include <Handle_StepVisual_CurveStyleFontPattern.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepVisual_Array1OfCurveStyleFontPattern;
 
 
 
-class StepVisual_HArray1OfCurveStyleFontPattern : public MMgt_TShared {
+class StepVisual_HArray1OfCurveStyleFontPattern : public MMgt_TShared
+{
 
 public:
 
   
-      StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer Low,const Standard_Integer Up);
+    StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepVisual_CurveStyleFontPattern)& V);
+    StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepVisual_CurveStyleFontPattern)& V);
   
-        void Init(const Handle(StepVisual_CurveStyleFontPattern)& V) ;
+      void Init (const Handle(StepVisual_CurveStyleFontPattern)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepVisual_CurveStyleFontPattern)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepVisual_CurveStyleFontPattern)& Value) ;
   
-       const Handle_StepVisual_CurveStyleFontPattern& Value(const Standard_Integer Index) const;
+     const  Handle(StepVisual_CurveStyleFontPattern)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepVisual_CurveStyleFontPattern& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepVisual_CurveStyleFontPattern)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepVisual_Array1OfCurveStyleFontPattern& Array1() const;
+     const  StepVisual_Array1OfCurveStyleFontPattern& Array1()  const;
   
-        StepVisual_Array1OfCurveStyleFontPattern& ChangeArray1() ;
+      StepVisual_Array1OfCurveStyleFontPattern& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepVisual_Array1OfCurveStyleFontPattern myArray;
+  StepVisual_Array1OfCurveStyleFontPattern myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepVisual_CurveStyleFontPattern
+#define ItemHArray1 Handle(StepVisual_CurveStyleFontPattern)
 #define ItemHArray1_hxx <StepVisual_CurveStyleFontPattern.hxx>
 #define TheArray1 StepVisual_Array1OfCurveStyleFontPattern
 #define TheArray1_hxx <StepVisual_Array1OfCurveStyleFontPattern.hxx>
@@ -103,7 +90,6 @@ StepVisual_Array1OfCurveStyleFontPattern myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_HArray1OfCurveStyleFontPattern_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _XCAFPrs_DataMapNodeOfDataMapOfStyleShape_HeaderFile
 #define _XCAFPrs_DataMapNodeOfDataMapOfStyleShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape_HeaderFile
 #include <Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape.hxx>
-#endif
 
-#ifndef _XCAFPrs_Style_HeaderFile
 #include <XCAFPrs_Style.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class XCAFPrs_Style;
 class TopoDS_Shape;
 class XCAFPrs_DataMapOfStyleShape;
@@ -35,16 +21,17 @@ class XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
 
 
 
-class XCAFPrs_DataMapNodeOfDataMapOfStyleShape : public TCollection_MapNode {
+class XCAFPrs_DataMapNodeOfDataMapOfStyleShape : public TCollection_MapNode
+{
 
 public:
 
   
-      XCAFPrs_DataMapNodeOfDataMapOfStyleShape(const XCAFPrs_Style& K,const TopoDS_Shape& I,const TCollection_MapNodePtr& n);
+    XCAFPrs_DataMapNodeOfDataMapOfStyleShape(const XCAFPrs_Style& K, const TopoDS_Shape& I, const TCollection_MapNodePtr& n);
   
-        XCAFPrs_Style& Key() const;
+      XCAFPrs_Style& Key()  const;
   
-        TopoDS_Shape& Value() const;
+      TopoDS_Shape& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-XCAFPrs_Style myKey;
-TopoDS_Shape myValue;
+  XCAFPrs_Style myKey;
+  TopoDS_Shape myValue;
 
 
 };
@@ -98,7 +85,6 @@ TopoDS_Shape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFPrs_DataMapNodeOfDataMapOfStyleShape_HeaderFile

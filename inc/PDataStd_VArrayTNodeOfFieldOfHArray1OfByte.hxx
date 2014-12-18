@@ -6,44 +6,32 @@
 #ifndef _PDataStd_VArrayTNodeOfFieldOfHArray1OfByte_HeaderFile
 #define _PDataStd_VArrayTNodeOfFieldOfHArray1OfByte_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Byte_HeaderFile
 #include <Standard_Byte.hxx>
-#endif
-#ifndef _Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte_HeaderFile
 #include <Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class PDataStd_FieldOfHArray1OfByte;
 class PDataStd_VArrayNodeOfFieldOfHArray1OfByte;
 
 
 
-class PDataStd_VArrayTNodeOfFieldOfHArray1OfByte  {
+class PDataStd_VArrayTNodeOfFieldOfHArray1OfByte 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PDataStd_VArrayTNodeOfFieldOfHArray1OfByte();
+    PDataStd_VArrayTNodeOfFieldOfHArray1OfByte();
   
-      PDataStd_VArrayTNodeOfFieldOfHArray1OfByte(const Standard_Byte& aValue);
+    PDataStd_VArrayTNodeOfFieldOfHArray1OfByte(const Standard_Byte& aValue);
   
-        void SetValue(const Standard_Byte& aValue) ;
+      void SetValue (const Standard_Byte& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Standard_Byte myValue;
+  Standard_Byte myValue;
 
 
 };
@@ -88,7 +76,6 @@ Standard_Byte myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_VArrayTNodeOfFieldOfHArray1OfByte_HeaderFile

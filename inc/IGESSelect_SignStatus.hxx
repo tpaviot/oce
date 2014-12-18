@@ -6,60 +6,47 @@
 #ifndef _IGESSelect_SignStatus_HeaderFile
 #define _IGESSelect_SignStatus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_SignStatus_HeaderFile
 #include <Handle_IGESSelect_SignStatus.hxx>
-#endif
 
-#ifndef _IFSelect_Signature_HeaderFile
 #include <IFSelect_Signature.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_Transient;
 class Interface_InterfaceModel;
 class TCollection_AsciiString;
 
 
-//! Gives D.E. Status under the form i,j,k,l (4 figures) <br>
-//!           i for BlankStatus <br>
-//!           j for SubordinateStatus <br>
-//!           k for UseFlag <br>
-//!           l for Hierarchy <br>
-//! <br>
-//!           For matching, allowed shortcuts <br>
-//!           B(Blanked) or V(Visible) are allowed instead of  i <br>
-//!           I(Independant=0), P(Physically Dep.=1), L(Logically Dep.=2) or <br>
-//!             D(Dependant=3) are allowed instead of  j <br>
-//!           These letters must be given in their good position <br>
-//!           For non-exact matching : <br>
-//!           a letter (see above), no comma : only this status is checked <br>
-//!           nothing or a star between commas : this status is OK <br>
-class IGESSelect_SignStatus : public IFSelect_Signature {
+//! Gives D.E. Status under the form i,j,k,l (4 figures)
+//! i for BlankStatus
+//! j for SubordinateStatus
+//! k for UseFlag
+//! l for Hierarchy
+//!
+//! For matching, allowed shortcuts
+//! B(Blanked) or V(Visible) are allowed instead of  i
+//! I(Independant=0), P(Physically Dep.=1), L(Logically Dep.=2) or
+//! D(Dependant=3) are allowed instead of  j
+//! These letters must be given in their good position
+//! For non-exact matching :
+//! a letter (see above), no comma : only this status is checked
+//! nothing or a star between commas : this status is OK
+class IGESSelect_SignStatus : public IFSelect_Signature
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSelect_SignStatus();
-  //! Returns the value (see above) <br>
-  Standard_EXPORT     Standard_CString Value(const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
-  //! Performs the match rule (see above) <br>
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model,const TCollection_AsciiString& text,const Standard_Boolean exact) const;
+  Standard_EXPORT IGESSelect_SignStatus();
+  
+  //! Returns the value (see above)
+  Standard_EXPORT   Standard_CString Value (const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
+  
+  //! Performs the match rule (see above)
+  Standard_EXPORT virtual   Standard_Boolean Matches (const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model, const TCollection_AsciiString& text, const Standard_Boolean exact)  const;
 
 
 
@@ -82,7 +69,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_SignStatus_HeaderFile

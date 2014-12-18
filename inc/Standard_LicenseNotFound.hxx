@@ -6,33 +6,20 @@
 #ifndef _Standard_LicenseNotFound_HeaderFile
 #define _Standard_LicenseNotFound_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_LicenseError_HeaderFile
 #include <Standard_LicenseError.hxx>
-#endif
-#ifndef _Handle_Standard_LicenseNotFound_HeaderFile
 #include <Handle_Standard_LicenseNotFound.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_Standard_LicenseNotFound
-#define Standard_LicenseNotFound_Raise_if(CONDITION,MESSAGE) \
+  #define Standard_LicenseNotFound_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) Standard_LicenseNotFound::Raise(MESSAGE);
 #else
-#define Standard_LicenseNotFound_Raise_if(CONDITION,MESSAGE)
+  #define Standard_LicenseNotFound_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(Standard_LicenseNotFound,Standard_LicenseError)
+DEFINE_STANDARD_EXCEPTION(Standard_LicenseNotFound, Standard_LicenseError)
 
-#endif
+#endif // _Standard_LicenseNotFound_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <STEPSelections_SequenceOfAssemblyLink.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _STEPSelections_AssemblyLink_HeaderFile
 #include <STEPSelections_AssemblyLink.hxx>
-#endif
-#ifndef _STEPSelections_SequenceNodeOfSequenceOfAssemblyLink_HeaderFile
 #include <STEPSelections_SequenceNodeOfSequenceOfAssemblyLink.hxx>
-#endif
  
 
-#define SeqItem Handle_STEPSelections_AssemblyLink
+#define SeqItem Handle(STEPSelections_AssemblyLink)
 #define SeqItem_hxx <STEPSelections_AssemblyLink.hxx>
 #define TCollection_SequenceNode STEPSelections_SequenceNodeOfSequenceOfAssemblyLink
 #define TCollection_SequenceNode_hxx <STEPSelections_SequenceNodeOfSequenceOfAssemblyLink.hxx>

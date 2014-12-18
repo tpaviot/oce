@@ -6,58 +6,24 @@
 #ifndef _StepBasic_RoleSelect_HeaderFile
 #define _StepBasic_RoleSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_ActionAssignment_HeaderFile
 #include <Handle_StepBasic_ActionAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_ActionRequestAssignment_HeaderFile
 #include <Handle_StepBasic_ActionRequestAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_ApprovalAssignment_HeaderFile
 #include <Handle_StepBasic_ApprovalAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_ApprovalDateTime_HeaderFile
 #include <Handle_StepBasic_ApprovalDateTime.hxx>
-#endif
-#ifndef _Handle_StepBasic_CertificationAssignment_HeaderFile
 #include <Handle_StepBasic_CertificationAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_ContractAssignment_HeaderFile
 #include <Handle_StepBasic_ContractAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentReference_HeaderFile
 #include <Handle_StepBasic_DocumentReference.hxx>
-#endif
-#ifndef _Handle_StepBasic_EffectivityAssignment_HeaderFile
 #include <Handle_StepBasic_EffectivityAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_GroupAssignment_HeaderFile
 #include <Handle_StepBasic_GroupAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_NameAssignment_HeaderFile
 #include <Handle_StepBasic_NameAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_SecurityClassificationAssignment_HeaderFile
 #include <Handle_StepBasic_SecurityClassificationAssignment.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_ActionAssignment;
 class StepBasic_ActionRequestAssignment;
@@ -72,51 +38,64 @@ class StepBasic_NameAssignment;
 class StepBasic_SecurityClassificationAssignment;
 
 
-//! Representation of STEP SELECT type RoleSelect <br>
-class StepBasic_RoleSelect  : public StepData_SelectType {
+//! Representation of STEP SELECT type RoleSelect
+class StepBasic_RoleSelect  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_RoleSelect();
-  //! Recognizes a kind of RoleSelect select type <br>
-//!          1 -> ActionAssignment from StepBasic <br>
-//!          2 -> ActionRequestAssignment from StepBasic <br>
-//!          3 -> ApprovalAssignment from StepBasic <br>
-//!          4 -> ApprovalDateTime from StepBasic <br>
-//!          5 -> CertificationAssignment from StepBasic <br>
-//!          6 -> ContractAssignment from StepBasic <br>
-//!          7 -> DocumentReference from StepBasic <br>
-//!          8 -> EffectivityAssignment from StepBasic <br>
-//!          9 -> GroupAssignment from StepBasic <br>
-//!          10 -> NameAssignment from StepBasic <br>
-//!          11 -> SecurityClassificationAssignment from StepBasic <br>
-//!          0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as ActionAssignment (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ActionAssignment ActionAssignment() const;
-  //! Returns Value as ActionRequestAssignment (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ActionRequestAssignment ActionRequestAssignment() const;
-  //! Returns Value as ApprovalAssignment (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ApprovalAssignment ApprovalAssignment() const;
-  //! Returns Value as ApprovalDateTime (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ApprovalDateTime ApprovalDateTime() const;
-  //! Returns Value as CertificationAssignment (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_CertificationAssignment CertificationAssignment() const;
-  //! Returns Value as ContractAssignment (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ContractAssignment ContractAssignment() const;
-  //! Returns Value as DocumentReference (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_DocumentReference DocumentReference() const;
-  //! Returns Value as EffectivityAssignment (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_EffectivityAssignment EffectivityAssignment() const;
-  //! Returns Value as GroupAssignment (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_GroupAssignment GroupAssignment() const;
-  //! Returns Value as NameAssignment (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_NameAssignment NameAssignment() const;
-  //! Returns Value as SecurityClassificationAssignment (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_SecurityClassificationAssignment SecurityClassificationAssignment() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_RoleSelect();
+  
+  //! Recognizes a kind of RoleSelect select type
+  //! 1 -> ActionAssignment from StepBasic
+  //! 2 -> ActionRequestAssignment from StepBasic
+  //! 3 -> ApprovalAssignment from StepBasic
+  //! 4 -> ApprovalDateTime from StepBasic
+  //! 5 -> CertificationAssignment from StepBasic
+  //! 6 -> ContractAssignment from StepBasic
+  //! 7 -> DocumentReference from StepBasic
+  //! 8 -> EffectivityAssignment from StepBasic
+  //! 9 -> GroupAssignment from StepBasic
+  //! 10 -> NameAssignment from StepBasic
+  //! 11 -> SecurityClassificationAssignment from StepBasic
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as ActionAssignment (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ActionAssignment) ActionAssignment()  const;
+  
+  //! Returns Value as ActionRequestAssignment (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ActionRequestAssignment) ActionRequestAssignment()  const;
+  
+  //! Returns Value as ApprovalAssignment (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ApprovalAssignment) ApprovalAssignment()  const;
+  
+  //! Returns Value as ApprovalDateTime (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ApprovalDateTime) ApprovalDateTime()  const;
+  
+  //! Returns Value as CertificationAssignment (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_CertificationAssignment) CertificationAssignment()  const;
+  
+  //! Returns Value as ContractAssignment (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ContractAssignment) ContractAssignment()  const;
+  
+  //! Returns Value as DocumentReference (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_DocumentReference) DocumentReference()  const;
+  
+  //! Returns Value as EffectivityAssignment (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_EffectivityAssignment) EffectivityAssignment()  const;
+  
+  //! Returns Value as GroupAssignment (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_GroupAssignment) GroupAssignment()  const;
+  
+  //! Returns Value as NameAssignment (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_NameAssignment) NameAssignment()  const;
+  
+  //! Returns Value as SecurityClassificationAssignment (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_SecurityClassificationAssignment) SecurityClassificationAssignment()  const;
 
 
 
@@ -139,7 +118,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_RoleSelect_HeaderFile

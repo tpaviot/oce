@@ -5,16 +5,10 @@
 
 #include <TDF_SequenceNodeOfAttributeSequence.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_AttributeSequence_HeaderFile
 #include <TDF_AttributeSequence.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TDF_SequenceNodeOfAttributeSequence,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TDF_SequenceNodeOfAttributeSequence)
 
 
-#define SeqItem Handle_TDF_Attribute
+#define SeqItem Handle(TDF_Attribute)
 #define SeqItem_hxx <TDF_Attribute.hxx>
 #define TCollection_SequenceNode TDF_SequenceNodeOfAttributeSequence
 #define TCollection_SequenceNode_hxx <TDF_SequenceNodeOfAttributeSequence.hxx>

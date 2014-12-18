@@ -5,24 +5,14 @@
 
 #include <SelectMgr_IndexedMapOfOwner.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _SelectMgr_IndexedMapNodeOfIndexedMapOfOwner_HeaderFile
 #include <SelectMgr_IndexedMapNodeOfIndexedMapOfOwner.hxx>
-#endif
  
 
-#define TheKey Handle_SelectMgr_EntityOwner
+#define TheKey Handle(SelectMgr_EntityOwner)
 #define TheKey_hxx <SelectMgr_EntityOwner.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

@@ -6,70 +6,28 @@
 #ifndef _IGESToBRep_BasicSurface_HeaderFile
 #define _IGESToBRep_BasicSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _IGESToBRep_CurveAndSurface_HeaderFile
 #include <IGESToBRep_CurveAndSurface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_Geom_Plane_HeaderFile
 #include <Handle_Geom_Plane.hxx>
-#endif
-#ifndef _Handle_IGESSolid_PlaneSurface_HeaderFile
 #include <Handle_IGESSolid_PlaneSurface.hxx>
-#endif
-#ifndef _Handle_Geom_CylindricalSurface_HeaderFile
 #include <Handle_Geom_CylindricalSurface.hxx>
-#endif
-#ifndef _Handle_IGESSolid_CylindricalSurface_HeaderFile
 #include <Handle_IGESSolid_CylindricalSurface.hxx>
-#endif
-#ifndef _Handle_Geom_ConicalSurface_HeaderFile
 #include <Handle_Geom_ConicalSurface.hxx>
-#endif
-#ifndef _Handle_IGESSolid_ConicalSurface_HeaderFile
 #include <Handle_IGESSolid_ConicalSurface.hxx>
-#endif
-#ifndef _Handle_Geom_SphericalSurface_HeaderFile
 #include <Handle_Geom_SphericalSurface.hxx>
-#endif
-#ifndef _Handle_IGESSolid_SphericalSurface_HeaderFile
 #include <Handle_IGESSolid_SphericalSurface.hxx>
-#endif
-#ifndef _Handle_Geom_ToroidalSurface_HeaderFile
 #include <Handle_Geom_ToroidalSurface.hxx>
-#endif
-#ifndef _Handle_IGESSolid_ToroidalSurface_HeaderFile
 #include <Handle_IGESSolid_ToroidalSurface.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Handle_IGESGeom_SplineSurface_HeaderFile
 #include <Handle_IGESGeom_SplineSurface.hxx>
-#endif
-#ifndef _Handle_IGESGeom_BSplineSurface_HeaderFile
 #include <Handle_IGESGeom_BSplineSurface.hxx>
-#endif
 class IGESToBRep_CurveAndSurface;
 class Geom_Surface;
 class IGESData_IGESEntity;
@@ -88,50 +46,61 @@ class IGESGeom_SplineSurface;
 class IGESGeom_BSplineSurface;
 
 
-//! Provides methods to transfer basic geometric surface entities <br>
-//!         from IGES to CASCADE. <br>
-//!         These can be : <br>
-//!         * Spline surface <br>
-//!         * BSpline surface <br>
-class IGESToBRep_BasicSurface  : public IGESToBRep_CurveAndSurface {
+//! Provides methods to transfer basic geometric surface entities
+//! from IGES to CASCADE.
+//! These can be :
+//! * Spline surface
+//! * BSpline surface
+class IGESToBRep_BasicSurface  : public IGESToBRep_CurveAndSurface
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates  a tool BasicSurface  ready  to  run, with <br>
-//!          epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the <br>
-//!          optimization of  the continuity to False. <br>
-  Standard_EXPORT   IGESToBRep_BasicSurface();
-  //! Creates a tool BasicSurface ready to run and sets its <br>
-//!          fields as CS's. <br>
-  Standard_EXPORT   IGESToBRep_BasicSurface(const IGESToBRep_CurveAndSurface& CS);
-  //! Creates a tool BasicSurface ready to run. <br>
-  Standard_EXPORT   IGESToBRep_BasicSurface(const Standard_Real eps,const Standard_Real epsGeom,const Standard_Real epsCoeff,const Standard_Boolean mode,const Standard_Boolean modeapprox,const Standard_Boolean optimized);
-  //! Returns Surface  from Geom if the last transfer has <br>
-//!          succeded. <br>
-  Standard_EXPORT     Handle_Geom_Surface TransferBasicSurface(const Handle(IGESData_IGESEntity)& start) ;
-  //! Returns Plane from Geom if the transfer has <br>
-//!          succeded. <br>
-  Standard_EXPORT     Handle_Geom_Plane TransferPlaneSurface(const Handle(IGESSolid_PlaneSurface)& start) ;
-  //! Returns CylindricalSurface from Geom if the transfer has <br>
-//!          succeded. <br>
-  Standard_EXPORT     Handle_Geom_CylindricalSurface TransferRigthCylindricalSurface(const Handle(IGESSolid_CylindricalSurface)& start) ;
-  //! Returns ConicalSurface from Geom if the transfer has <br>
-//!          succeded. <br>
-  Standard_EXPORT     Handle_Geom_ConicalSurface TransferRigthConicalSurface(const Handle(IGESSolid_ConicalSurface)& start) ;
-  //! Returns SphericalSurface from Geom if the transfer has <br>
-//!          succeded. <br>
-  Standard_EXPORT     Handle_Geom_SphericalSurface TransferSphericalSurface(const Handle(IGESSolid_SphericalSurface)& start) ;
-  //! Returns SphericalSurface from Geom if the transfer has <br>
-//!          succeded. <br>
-  Standard_EXPORT     Handle_Geom_ToroidalSurface TransferToroidalSurface(const Handle(IGESSolid_ToroidalSurface)& start) ;
-  //! Returns BSplineSurface  from Geom if the transfer has <br>
-//!          succeded. <br>
-  Standard_EXPORT     Handle_Geom_BSplineSurface TransferSplineSurface(const Handle(IGESGeom_SplineSurface)& start) ;
-  //! Returns BSplineSurface  from Geom if the transfer has <br>
-//!          succeded. <br>
-  Standard_EXPORT     Handle_Geom_BSplineSurface TransferBSplineSurface(const Handle(IGESGeom_BSplineSurface)& start) ;
-
+  
+  //! Creates  a tool BasicSurface  ready  to  run, with
+  //! epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
+  //! optimization of  the continuity to False.
+  Standard_EXPORT IGESToBRep_BasicSurface();
+  
+  //! Creates a tool BasicSurface ready to run and sets its
+  //! fields as CS's.
+  Standard_EXPORT IGESToBRep_BasicSurface(const IGESToBRep_CurveAndSurface& CS);
+  
+  //! Creates a tool BasicSurface ready to run.
+  Standard_EXPORT IGESToBRep_BasicSurface(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
+  
+  //! Returns Surface  from Geom if the last transfer has
+  //! succeded.
+  Standard_EXPORT   Handle(Geom_Surface) TransferBasicSurface (const Handle(IGESData_IGESEntity)& start) ;
+  
+  //! Returns Plane from Geom if the transfer has
+  //! succeded.
+  Standard_EXPORT   Handle(Geom_Plane) TransferPlaneSurface (const Handle(IGESSolid_PlaneSurface)& start) ;
+  
+  //! Returns CylindricalSurface from Geom if the transfer has
+  //! succeded.
+  Standard_EXPORT   Handle(Geom_CylindricalSurface) TransferRigthCylindricalSurface (const Handle(IGESSolid_CylindricalSurface)& start) ;
+  
+  //! Returns ConicalSurface from Geom if the transfer has
+  //! succeded.
+  Standard_EXPORT   Handle(Geom_ConicalSurface) TransferRigthConicalSurface (const Handle(IGESSolid_ConicalSurface)& start) ;
+  
+  //! Returns SphericalSurface from Geom if the transfer has
+  //! succeded.
+  Standard_EXPORT   Handle(Geom_SphericalSurface) TransferSphericalSurface (const Handle(IGESSolid_SphericalSurface)& start) ;
+  
+  //! Returns SphericalSurface from Geom if the transfer has
+  //! succeded.
+  Standard_EXPORT   Handle(Geom_ToroidalSurface) TransferToroidalSurface (const Handle(IGESSolid_ToroidalSurface)& start) ;
+  
+  //! Returns BSplineSurface  from Geom if the transfer has
+  //! succeded.
+  Standard_EXPORT   Handle(Geom_BSplineSurface) TransferSplineSurface (const Handle(IGESGeom_SplineSurface)& start) ;
+  
+  //! Returns BSplineSurface  from Geom if the transfer has
+  //! succeded.
+  Standard_EXPORT   Handle(Geom_BSplineSurface) TransferBSplineSurface (const Handle(IGESGeom_BSplineSurface)& start) ;
 
 
 
@@ -154,7 +123,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESToBRep_BasicSurface_HeaderFile

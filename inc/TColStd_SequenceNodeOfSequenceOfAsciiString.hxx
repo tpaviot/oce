@@ -6,38 +6,27 @@
 #ifndef _TColStd_SequenceNodeOfSequenceOfAsciiString_HeaderFile
 #define _TColStd_SequenceNodeOfSequenceOfAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfAsciiString_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfAsciiString.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TCollection_AsciiString;
 class TColStd_SequenceOfAsciiString;
 
 
 
-class TColStd_SequenceNodeOfSequenceOfAsciiString : public TCollection_SeqNode {
+class TColStd_SequenceNodeOfSequenceOfAsciiString : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColStd_SequenceNodeOfSequenceOfAsciiString(const TCollection_AsciiString& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColStd_SequenceNodeOfSequenceOfAsciiString(const TCollection_AsciiString& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        TCollection_AsciiString& Value() const;
+      TCollection_AsciiString& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-TCollection_AsciiString myValue;
+  TCollection_AsciiString myValue;
 
 
 };
@@ -78,7 +67,6 @@ TCollection_AsciiString myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceNodeOfSequenceOfAsciiString_HeaderFile

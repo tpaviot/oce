@@ -1,3 +1,0 @@
-#ifndef _PCollection_CompareOfInteger_HeaderFile
-#include <PCollection_CompareOfInteger.hxx>
-#endif

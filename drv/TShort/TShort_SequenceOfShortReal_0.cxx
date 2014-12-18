@@ -5,15 +5,9 @@
 
 #include <TShort_SequenceOfShortReal.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TShort_SequenceNodeOfSequenceOfShortReal_HeaderFile
 #include <TShort_SequenceNodeOfSequenceOfShortReal.hxx>
-#endif
  
 
 #define SeqItem Standard_ShortReal

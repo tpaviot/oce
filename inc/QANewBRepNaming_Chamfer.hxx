@@ -6,45 +6,40 @@
 #ifndef _QANewBRepNaming_Chamfer_HeaderFile
 #define _QANewBRepNaming_Chamfer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _QANewBRepNaming_TopNaming_HeaderFile
 #include <QANewBRepNaming_TopNaming.hxx>
-#endif
 class TDF_Label;
 class TopoDS_Shape;
 class BRepFilletAPI_MakeChamfer;
 
 
-//! To load the Chamfer results <br>
-class QANewBRepNaming_Chamfer  : public QANewBRepNaming_TopNaming {
+//! To load the Chamfer results
+class QANewBRepNaming_Chamfer  : public QANewBRepNaming_TopNaming
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANewBRepNaming_Chamfer();
+  Standard_EXPORT QANewBRepNaming_Chamfer();
   
-  Standard_EXPORT   QANewBRepNaming_Chamfer(const TDF_Label& ResultLabel);
+  Standard_EXPORT QANewBRepNaming_Chamfer(const TDF_Label& ResultLabel);
   
-  Standard_EXPORT     void Init(const TDF_Label& ResultLabel) ;
+  Standard_EXPORT   void Init (const TDF_Label& ResultLabel) ;
   
-  Standard_EXPORT     void Load(const TopoDS_Shape& part,BRepFilletAPI_MakeChamfer& mkChamfer) const;
-  //! Returns the label of faces generated from edges <br>
-  Standard_EXPORT     TDF_Label FacesFromEdges() const;
-  //! Returns the label of modified faces <br>
-  Standard_EXPORT     TDF_Label ModifiedFaces() const;
-  //! Returns the label of deleted faces <br>
-  Standard_EXPORT     TDF_Label DeletedFaces() const;
-
+  Standard_EXPORT   void Load (const TopoDS_Shape& part, BRepFilletAPI_MakeChamfer& mkChamfer)  const;
+  
+  //! Returns the label of faces generated from edges
+  Standard_EXPORT   TDF_Label FacesFromEdges()  const;
+  
+  //! Returns the label of modified faces
+  Standard_EXPORT   TDF_Label ModifiedFaces()  const;
+  
+  //! Returns the label of deleted faces
+  Standard_EXPORT   TDF_Label DeletedFaces()  const;
 
 
 
@@ -67,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_Chamfer_HeaderFile

@@ -6,29 +6,14 @@
 #ifndef _TDF_LabelMap_HeaderFile
 #define _TDF_LabelMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_TDF_StdMapNodeOfLabelMap_HeaderFile
 #include <Handle_TDF_StdMapNodeOfLabelMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-class Standard_DomainError;
 class TDF_Label;
 class TDF_LabelMapHasher;
 class TDF_StdMapNodeOfLabelMap;
@@ -36,34 +21,36 @@ class TDF_MapIteratorOfLabelMap;
 
 
 
-class TDF_LabelMap  : public TCollection_BasicMap {
+class TDF_LabelMap  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_LabelMap(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TDF_LabelMap(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TDF_LabelMap& Assign(const TDF_LabelMap& Other) ;
-    TDF_LabelMap& operator =(const TDF_LabelMap& Other) 
+  Standard_EXPORT TDF_LabelMap(const TDF_LabelMap& Other);
+  
+  Standard_EXPORT   TDF_LabelMap& Assign (const TDF_LabelMap& Other) ;
+  TDF_LabelMap& operator = (const TDF_LabelMap& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDF_LabelMap()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Add(const TDF_Label& aKey) ;
+  Standard_EXPORT   Standard_Boolean Add (const TDF_Label& aKey) ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const TDF_Label& aKey) const;
+  Standard_EXPORT   Standard_Boolean Contains (const TDF_Label& aKey)  const;
   
-  Standard_EXPORT     Standard_Boolean Remove(const TDF_Label& aKey) ;
-
+  Standard_EXPORT   Standard_Boolean Remove (const TDF_Label& aKey) ;
 
 
 
@@ -76,8 +63,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_LabelMap(const TDF_LabelMap& Other);
 
 
 
@@ -88,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_LabelMap_HeaderFile

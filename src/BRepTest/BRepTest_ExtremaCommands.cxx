@@ -18,16 +18,12 @@
 
 #include <DBRep.hxx>
 #include <BRepTest.hxx>
-#include <gp_Pnt.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Edge.hxx>
 #include <BRepExtrema_Poly.hxx>
 #include <BRepExtrema_DistShapeShape.hxx>
 #include <BRepLib_MakeEdge.hxx>
-#include <BRepLib_MakeEdge.hxx>
 #include <BRepLib_MakeVertex.hxx>
 #include <Draw.hxx>
-#include <Draw_Interpretor.hxx>
+
 //#ifdef WNT
 #include <stdio.h>
 //#endif
@@ -58,10 +54,11 @@ static Standard_Integer distance (Draw_Interpretor& di,
   DBRep::Set("distance",E);
   return 0;
 }
+
 static Standard_Integer distmini(Draw_Interpretor& di, Standard_Integer n, const char** a)
 { 
   Standard_Integer i1;
-//  gp_Pnt P;
+  //  gp_Pnt P;
 
   if (n != 4) return 1;
 
@@ -71,48 +68,63 @@ static Standard_Integer distmini(Draw_Interpretor& di, Standard_Integer n, const
 
 
   if (dst.IsDone()) 
-      { 
-#ifdef DEB
-         //dst.Dump(cout);
-	Standard_SStream aSStream;
-	dst.Dump(aSStream);
-	di << aSStream;
+  { 
+#ifdef OCCT_DEBUG
+    //dst.Dump(cout);
+    di << "*** Dump of \"BRepExtrema_DistShapeShape\" in DEBUG mode (begin) *****\n";
+    Standard_SStream aSStream;
+    dst.Dump(aSStream);
+    di << aSStream;
+    di << "*** Dump of \"BRepExtrema_DistShapeShape\" in DEBUG mode (end)   *****\n";
 #endif
 
-	 char named[100];
-	 Sprintf(named, "%s%s" ,ns0,"_val");
-	 char* tempd = named;
-	 Draw::Set(tempd,dst.Value());
-         di << named << " ";
+    di << "\"distmini\" command returns:\n";
 
-         for (i1=1; i1<= dst.NbSolution(); i1++)
-	   {
-             gp_Pnt P1,P2;
-	     P1 = (dst.PointOnShape1(i1));
-	     P2 = (dst.PointOnShape2(i1));
-             if (dst.Value()<=1.e-9) 
-             {
-              TopoDS_Vertex V = (TopoDS_Vertex) BRepLib_MakeVertex(P1);
-              char namev[100];
-              if (i1==1) 
-	      Sprintf(namev, "%s" ,ns0);
-              else Sprintf(namev, "%s%d" ,ns0,i1);
-	      char* tempv = namev;
-	      DBRep::Set(tempv,V);
-              di << namev << " ";
-              }
-             else
-	     {char name[100];
-              TopoDS_Edge E = (TopoDS_Edge) BRepLib_MakeEdge (P1, P2);
-	      if (i1==1)
-              {Sprintf(name,"%s",ns0);}
-              else {Sprintf(name,"%s%d",ns0,i1);}
-	      char* temp = name;
-	      DBRep::Set(temp,E);
-	      di << name << " " ;
-             }
-           }
+    char named[100];
+    Sprintf(named, "%s%s" ,ns0,"_val");
+    char* tempd = named;
+    Draw::Set(tempd,dst.Value());
+    di << named << " ";
+
+    for (i1=1; i1<= dst.NbSolution(); i1++)
+    {
+      gp_Pnt P1,P2;
+      P1 = (dst.PointOnShape1(i1));
+      P2 = (dst.PointOnShape2(i1));
+      if (dst.Value()<=1.e-9) 
+      {
+        TopoDS_Vertex V = (TopoDS_Vertex) BRepLib_MakeVertex(P1);
+        char namev[100];
+        if (i1==1) 
+          Sprintf(namev, "%s" ,ns0);
+        else
+          Sprintf(namev, "%s%d" ,ns0,i1);
+        char* tempv = namev;
+        DBRep::Set(tempv,V);
+        di << namev << " ";
       }
+      else
+      {
+        char name[100];
+        TopoDS_Edge E = (TopoDS_Edge) BRepLib_MakeEdge (P1, P2);
+        if (i1==1)
+        {
+          Sprintf(name,"%s",ns0);
+        }
+        else
+        {
+          Sprintf(name,"%s%d",ns0,i1);
+        }
+        
+        char* temp = name;
+        DBRep::Set(temp,E);
+        di << name << " " ;
+      }
+    }
+
+    di << "\nOutput is complete.\n";
+
+  }
   
   else di << "probleme"<< "\n";
   //else cout << "probleme"<< endl;
@@ -124,31 +136,25 @@ static Standard_Integer distmini(Draw_Interpretor& di, Standard_Integer n, const
 //purpose  : 
 //=======================================================================
 
-void  BRepTest::ExtremaCommands(Draw_Interpretor& theCommands)
+void BRepTest::ExtremaCommands (Draw_Interpretor& theCommands)
 {
-  static Standard_Boolean done = Standard_False;
-  if (done) return;
-  done = Standard_True;
+  static const char*      aGroup = "TOPOLOGY Extrema commands";
+  static Standard_Boolean isDone = Standard_False;
+  if (isDone)
+  {
+    return;
+  }
+  isDone = Standard_True;
 
-  const char* g = "TOPOLOGY Extrema commands";
+  theCommands.Add ("dist",
+                   "dist Shape1 Shape2",
+                   __FILE__,
+                   distance,
+                   aGroup);
 
-  theCommands.Add("dist","dist Shape1 Shape2"   ,__FILE__,distance,g);
-
-  
-  theCommands.Add("distmini",
-                  "distmini name Shape1 Shape2",
-		  __FILE__,
-		  distmini,g);
+  theCommands.Add ("distmini",
+                   "distmini name Shape1 Shape2",
+                   __FILE__,
+                   distmini,
+                   aGroup);
 }
-
-
-
-
-
-
-
-
-
-
-
-

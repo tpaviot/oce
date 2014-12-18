@@ -6,46 +6,20 @@
 #ifndef _IntPatch_ImpPrmIntersection_HeaderFile
 #define _IntPatch_ImpPrmIntersection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfPoint_HeaderFile
 #include <IntPatch_SequenceOfPoint.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfLine_HeaderFile
 #include <IntPatch_SequenceOfLine.hxx>
-#endif
-#ifndef _IntPatch_TheSOnBounds_HeaderFile
 #include <IntPatch_TheSOnBounds.hxx>
-#endif
-#ifndef _IntPatch_TheSearchInside_HeaderFile
 #include <IntPatch_TheSearchInside.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IntPatch_Line_HeaderFile
 #include <Handle_IntPatch_Line.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_DomainError;
@@ -56,37 +30,44 @@ class IntPatch_Point;
 class IntPatch_Line;
 
 
-//! Implementation of the intersection between a natural <br>
-//!          quadric patch : Plane, Cone, Cylinder or Sphere and <br>
-//!          a bi-parametrised surface. <br>
-class IntPatch_ImpPrmIntersection  {
+//! Implementation of the intersection between a natural
+//! quadric patch : Plane, Cone, Cylinder or Sphere and
+//! a bi-parametrised surface.
+class IntPatch_ImpPrmIntersection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntPatch_ImpPrmIntersection();
+  Standard_EXPORT IntPatch_ImpPrmIntersection();
   
-  Standard_EXPORT   IntPatch_ImpPrmIntersection(const Handle(Adaptor3d_HSurface)& Surf1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& Surf2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Real Fleche,const Standard_Real Pas);
-  //! to search for solution from the given point <br>
-  Standard_EXPORT     void SetStartPoint(const Standard_Real U,const Standard_Real V) ;
+  Standard_EXPORT IntPatch_ImpPrmIntersection(const Handle(Adaptor3d_HSurface)& Surf1, const Handle(Adaptor3d_TopolTool)& D1, const Handle(Adaptor3d_HSurface)& Surf2, const Handle(Adaptor3d_TopolTool)& D2, const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Real Fleche, const Standard_Real Pas);
   
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& Surf1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& Surf2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Real Fleche,const Standard_Real Pas) ;
-  //! Returns true if the calculus was succesfull. <br>
-        Standard_Boolean IsDone() const;
-  //! Returns true if the is no intersection. <br>
-        Standard_Boolean IsEmpty() const;
-  //! Returns the number of "single" points. <br>
-        Standard_Integer NbPnts() const;
-  //! Returns the point of range Index. <br>
-//!          An exception is raised if Index<=0 or Index>NbPnt. <br>
-       const IntPatch_Point& Point(const Standard_Integer Index) const;
-  //! Returns the number of intersection lines. <br>
-        Standard_Integer NbLines() const;
-  //! Returns the line of range Index. <br>
-//!          An exception is raised if Index<=0 or Index>NbLine. <br>
-       const Handle_IntPatch_Line& Line(const Standard_Integer Index) const;
-
+  //! to search for solution from the given point
+  Standard_EXPORT   void SetStartPoint (const Standard_Real U, const Standard_Real V) ;
+  
+  Standard_EXPORT   void Perform (const Handle(Adaptor3d_HSurface)& Surf1, const Handle(Adaptor3d_TopolTool)& D1, const Handle(Adaptor3d_HSurface)& Surf2, const Handle(Adaptor3d_TopolTool)& D2, const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Real Fleche, const Standard_Real Pas) ;
+  
+  //! Returns true if the calculus was succesfull.
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns true if the is no intersection.
+      Standard_Boolean IsEmpty()  const;
+  
+  //! Returns the number of "single" points.
+      Standard_Integer NbPnts()  const;
+  
+  //! Returns the point of range Index.
+  //! An exception is raised if Index<=0 or Index>NbPnt.
+     const  IntPatch_Point& Point (const Standard_Integer Index)  const;
+  
+  //! Returns the number of intersection lines.
+      Standard_Integer NbLines()  const;
+  
+  //! Returns the line of range Index.
+  //! An exception is raised if Index<=0 or Index>NbLine.
+     const  Handle(IntPatch_Line)& Line (const Standard_Integer Index)  const;
 
 
 
@@ -101,15 +82,15 @@ private:
 
 
 
-Standard_Boolean done;
-Standard_Boolean empt;
-IntPatch_SequenceOfPoint spnt;
-IntPatch_SequenceOfLine slin;
-IntPatch_TheSOnBounds solrst;
-IntPatch_TheSearchInside solins;
-Standard_Boolean myIsStartPnt;
-Standard_Real myUStart;
-Standard_Real myVStart;
+  Standard_Boolean done;
+  Standard_Boolean empt;
+  IntPatch_SequenceOfPoint spnt;
+  IntPatch_SequenceOfLine slin;
+  IntPatch_TheSOnBounds solrst;
+  IntPatch_TheSearchInside solins;
+  Standard_Boolean myIsStartPnt;
+  Standard_Real myUStart;
+  Standard_Real myVStart;
 
 
 };
@@ -119,7 +100,6 @@ Standard_Real myVStart;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_ImpPrmIntersection_HeaderFile

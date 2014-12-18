@@ -6,46 +6,36 @@
 #ifndef _StepVisual_TextStyle_HeaderFile
 #define _StepVisual_TextStyle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_TextStyle_HeaderFile
 #include <Handle_StepVisual_TextStyle.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepVisual_TextStyleForDefinedFont_HeaderFile
 #include <Handle_StepVisual_TextStyleForDefinedFont.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepVisual_TextStyleForDefinedFont;
 
 
 
-class StepVisual_TextStyle : public MMgt_TShared {
+class StepVisual_TextStyle : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a TextStyle <br>
-  Standard_EXPORT   StepVisual_TextStyle();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepVisual_TextStyleForDefinedFont)& aCharacterAppearance) ;
+  //! Returns a TextStyle
+  Standard_EXPORT StepVisual_TextStyle();
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepVisual_TextStyleForDefinedFont)& aCharacterAppearance) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetCharacterAppearance(const Handle(StepVisual_TextStyleForDefinedFont)& aCharacterAppearance) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
   
-  Standard_EXPORT     Handle_StepVisual_TextStyleForDefinedFont CharacterAppearance() const;
+  Standard_EXPORT   void SetCharacterAppearance (const Handle(StepVisual_TextStyleForDefinedFont)& aCharacterAppearance) ;
+  
+  Standard_EXPORT   Handle(StepVisual_TextStyleForDefinedFont) CharacterAppearance()  const;
 
 
 
@@ -60,8 +50,8 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString name;
-Handle_StepVisual_TextStyleForDefinedFont characterAppearance;
+  Handle(TCollection_HAsciiString) name;
+  Handle(StepVisual_TextStyleForDefinedFont) characterAppearance;
 
 
 };
@@ -70,7 +60,6 @@ Handle_StepVisual_TextStyleForDefinedFont characterAppearance;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_TextStyle_HeaderFile

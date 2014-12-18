@@ -6,63 +6,50 @@
 #ifndef _TColStd_MapOfAsciiString_HeaderFile
 #define _TColStd_MapOfAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_TColStd_StdMapNodeOfMapOfAsciiString_HeaderFile
 #include <Handle_TColStd_StdMapNodeOfMapOfAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-class Standard_DomainError;
 class TCollection_AsciiString;
 class TColStd_StdMapNodeOfMapOfAsciiString;
 class TColStd_MapIteratorOfMapOfAsciiString;
 
 
 
-class TColStd_MapOfAsciiString  : public TCollection_BasicMap {
+class TColStd_MapOfAsciiString  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColStd_MapOfAsciiString(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TColStd_MapOfAsciiString(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TColStd_MapOfAsciiString& Assign(const TColStd_MapOfAsciiString& Other) ;
-    TColStd_MapOfAsciiString& operator =(const TColStd_MapOfAsciiString& Other) 
+  Standard_EXPORT TColStd_MapOfAsciiString(const TColStd_MapOfAsciiString& Other);
+  
+  Standard_EXPORT   TColStd_MapOfAsciiString& Assign (const TColStd_MapOfAsciiString& Other) ;
+  TColStd_MapOfAsciiString& operator = (const TColStd_MapOfAsciiString& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TColStd_MapOfAsciiString()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Add(const TCollection_AsciiString& aKey) ;
+  Standard_EXPORT   Standard_Boolean Add (const TCollection_AsciiString& aKey) ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const TCollection_AsciiString& aKey) const;
+  Standard_EXPORT   Standard_Boolean Contains (const TCollection_AsciiString& aKey)  const;
   
-  Standard_EXPORT     Standard_Boolean Remove(const TCollection_AsciiString& aKey) ;
-
+  Standard_EXPORT   Standard_Boolean Remove (const TCollection_AsciiString& aKey) ;
 
 
 
@@ -75,8 +62,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_MapOfAsciiString(const TColStd_MapOfAsciiString& Other);
 
 
 
@@ -87,7 +72,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_MapOfAsciiString_HeaderFile

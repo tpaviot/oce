@@ -6,34 +6,16 @@
 #ifndef _TNaming_HeaderFile
 #define _TNaming_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
-#ifndef _Handle_TopTools_HArray1OfShape_HeaderFile
 #include <Handle_TopTools_HArray1OfShape.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _TNaming_Evolution_HeaderFile
 #include <TNaming_Evolution.hxx>
-#endif
-#ifndef _TNaming_NameType_HeaderFile
 #include <TNaming_NameType.hxx>
-#endif
 class TDF_Label;
 class TopTools_DataMapOfShapeShape;
 class TopLoc_Location;
@@ -91,127 +73,145 @@ class TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape;
 class TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape;
 
 
-//! A topological attribute can be seen as a hook <br>
-//! into the topological structure. To this hook, <br>
-//! data can be attached and references defined. <br>
-//!  It is used for keeping and access to <br>
-//! topological objects and their evolution. All <br>
-//! topological objects are stored in the one <br>
-//! user-protected TNaming_UsedShapes <br>
-//! attribute at the root label of the data <br>
-//! framework. This attribute contains map with all <br>
-//! topological shapes, used in this document. <br>
-//! To all other labels TNaming_NamedShape <br>
-//! attribute can be added. This attribute contains <br>
-//! references (hooks) to shapes from the <br>
-//! TNaming_UsedShapes attribute and evolution <br>
-//! of these shapes. TNaming_NamedShape <br>
-//! attribute contains a set of pairs of hooks: old <br>
-//! shape and new shape (see the figure below). <br>
-//! It allows not only get the topological shapes by <br>
-//! the labels, but also trace evolution of the <br>
-//! shapes and correctly resolve dependent <br>
-//! shapes by the changed one. <br>
-//! If shape is just-created, then the old shape for <br>
-//! accorded named shape is an empty shape. If <br>
-//! a shape is deleted, then the new shape in this named shape is empty. <br>
-//! Different algorithms may dispose sub-shapes <br>
-//! of the result shape at the individual label depending on necessity: <br>
-//!   -  If a sub-shape must have some extra attributes (material of <br>
-//!      each face or color of each edge). In this case a specific sub-shape is <br>
-//!      placed to the separate label (usually, sub-label of the result shape label) <br>
-//!      with all attributes of this sub-shape. <br>
-//!   -  If topological naming is needed, a necessary and sufficient <br>
-//!      (for selected sub-shapes identification) set of sub-shapes is <br>
-//!      placed to the child labels of the result <br>
-//!      shape label. As usual, as far as basic solids and closed shells are <br>
-//!      concerned, all faces of the shape are disposed. Edges and vertices <br>
-//!      sub-shapes can be identified as intersection of contiguous faces. <br>
-//!      Modified/generated shapes may be placed to one named shape and <br>
-//!      identified as this named shape and source named shape that also can be <br>
-//!      identified with used algorithms. <br>
-//!   TNaming_NamedShape may contain a few <br>
-//! pairs of hooks with the same evolution. In this <br>
-//! case topology shape, which belongs to the <br>
-//! named shape, is a compound of new shapes. <br>
-//!   The data model contains both the topology <br>
-//! and the hooks, and functions handle both <br>
-//! topological entities and hooks. Consider the <br>
-//! case of a box function, which creates a solid <br>
-//! with six faces and six hooks. Each hook is <br>
-//! attached to a face. If you want, you can also <br>
-//! have this function create hooks for edges and <br>
-//! vertices as well as for faces. For the sake of <br>
-//! simplicity though, let's limit the example. <br>
-//!   Not all functions can define explicit hooks for <br>
-//! all topological entities they create, but all <br>
-//! topological entities can be turned into hooks <br>
-//! when necessary. This is where topological naming is necessary. <br>
-class TNaming  {
+//! A topological attribute can be seen as a hook
+//! into the topological structure. To this hook,
+//! data can be attached and references defined.
+//! It is used for keeping and access to
+//! topological objects and their evolution. All
+//! topological objects are stored in the one
+//! user-protected TNaming_UsedShapes
+//! attribute at the root label of the data
+//! framework. This attribute contains map with all
+//! topological shapes, used in this document.
+//! To all other labels TNaming_NamedShape
+//! attribute can be added. This attribute contains
+//! references (hooks) to shapes from the
+//! TNaming_UsedShapes attribute and evolution
+//! of these shapes. TNaming_NamedShape
+//! attribute contains a set of pairs of hooks: old
+//! shape and new shape (see the figure below).
+//! It allows not only get the topological shapes by
+//! the labels, but also trace evolution of the
+//! shapes and correctly resolve dependent
+//! shapes by the changed one.
+//! If shape is just-created, then the old shape for
+//! accorded named shape is an empty shape. If
+//! a shape is deleted, then the new shape in this named shape is empty.
+//! Different algorithms may dispose sub-shapes
+//! of the result shape at the individual label depending on necessity:
+//! -  If a sub-shape must have some extra attributes (material of
+//! each face or color of each edge). In this case a specific sub-shape is
+//! placed to the separate label (usually, sub-label of the result shape label)
+//! with all attributes of this sub-shape.
+//! -  If topological naming is needed, a necessary and sufficient
+//! (for selected sub-shapes identification) set of sub-shapes is
+//! placed to the child labels of the result
+//! shape label. As usual, as far as basic solids and closed shells are
+//! concerned, all faces of the shape are disposed. Edges and vertices
+//! sub-shapes can be identified as intersection of contiguous faces.
+//! Modified/generated shapes may be placed to one named shape and
+//! identified as this named shape and source named shape that also can be
+//! identified with used algorithms.
+//! TNaming_NamedShape may contain a few
+//! pairs of hooks with the same evolution. In this
+//! case topology shape, which belongs to the
+//! named shape, is a compound of new shapes.
+//! The data model contains both the topology
+//! and the hooks, and functions handle both
+//! topological entities and hooks. Consider the
+//! case of a box function, which creates a solid
+//! with six faces and six hooks. Each hook is
+//! attached to a face. If you want, you can also
+//! have this function create hooks for edges and
+//! vertices as well as for faces. For the sake of
+//! simplicity though, let's limit the example.
+//! Not all functions can define explicit hooks for
+//! all topological entities they create, but all
+//! topological entities can be turned into hooks
+//! when necessary. This is where topological naming is necessary.
+class TNaming 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Subtituter les  shapes  sur les structures de   source <br>
-//!          vers cible <br>
-  Standard_EXPORT   static  void Substitute(const TDF_Label& labelsource,const TDF_Label& labelcible,TopTools_DataMapOfShapeShape& mapOldNew) ;
-  //! Mise a jour des shapes du label  et de ses fils en <br>
-//!          tenant compte des  substitutions decrite par <br>
-//!          mapOldNew. <br>
-//! <br>
-//!  Warning: le  remplacement du shape est  fait    dans tous <br>
-//!          les    attributs  qui  le contiennent meme si ceux <br>
-//!          ci ne sont pas associees a des sous-labels de <Label>. <br>
-  Standard_EXPORT   static  void Update(const TDF_Label& label,TopTools_DataMapOfShapeShape& mapOldNew) ;
-  //! Application de la Location sur les shapes du label <br>
-//!          et  de   ses   sous   labels. <br>
-  Standard_EXPORT   static  void Displace(const TDF_Label& label,const TopLoc_Location& aLocation,const Standard_Boolean WithOld = Standard_True) ;
-  //! Remplace  les  shapes du label et  des sous-labels <br>
-//!          par des copies. <br>
-  Standard_EXPORT   static  void ChangeShapes(const TDF_Label& label,TopTools_DataMapOfShapeShape& M) ;
-  //! Application de la transformation sur les shapes du <br>
-//!          label et de ses sous labels. <br>
-//!  Warning: le  remplacement du shape est  fait    dans tous <br>
-//!          les    attributs  qui  le contiennent meme si ceux <br>
-//!          ci ne sont pas associees a des sous-labels de <Label>. <br>
-  Standard_EXPORT   static  void Transform(const TDF_Label& label,const gp_Trsf& aTransformation) ;
-  //! Replicates the named shape with the transformation <T> <br>
-//!          on the label <L> (and sub-labels if necessary) <br>
-//!          (TNaming_GENERATED is set) <br>
-  Standard_EXPORT   static  void Replicate(const Handle(TNaming_NamedShape)& NS,const gp_Trsf& T,const TDF_Label& L) ;
-  //! Replicates the shape with the transformation <T> <br>
-//!          on the label <L> (and sub-labels if necessary) <br>
-//!          (TNaming_GENERATED is set) <br>
-  Standard_EXPORT   static  void Replicate(const TopoDS_Shape& SH,const gp_Trsf& T,const TDF_Label& L) ;
-  //! Builds shape from map content <br>
-  Standard_EXPORT   static  TopoDS_Shape MakeShape(const TopTools_MapOfShape& MS) ;
-  //! Find unique context of shape <S> <br>
-  Standard_EXPORT   static  TopoDS_Shape FindUniqueContext(const TopoDS_Shape& S,const TopoDS_Shape& Context) ;
-  //! Find unique context of shape <S>,which is pure concatenation <br>
-//!          of atomic shapes (Compound). The result is concatenation of <br>
-//!          single contexts <br>
-  Standard_EXPORT   static  TopoDS_Shape FindUniqueContextSet(const TopoDS_Shape& S,const TopoDS_Shape& Context,Handle(TopTools_HArray1OfShape)& Arr) ;
-  //! Subtitutes shape in source structure <br>
-  Standard_EXPORT   static  Standard_Boolean SubstituteSShape(const TDF_Label& accesslabel,const TopoDS_Shape& From,TopoDS_Shape& To) ;
-  //! Returns True if outer wire is found and the found wire in <theWire>. <br>
-  Standard_EXPORT   static  Standard_Boolean OuterWire(const TopoDS_Face& theFace,TopoDS_Wire& theWire) ;
-  //! Returns True if outer Shell is found and the found shell in <theShell>. <br>//! Print of TNaming enumeration <br>
-//!          ============================= <br>
-  Standard_EXPORT   static  Standard_Boolean OuterShell(const TopoDS_Solid& theSolid,TopoDS_Shell& theShell) ;
-  //! Appends to <anIDList> the list of the attributes <br>
-//!          IDs of this package. CAUTION: <anIDList> is NOT <br>
-//!          cleared before use. <br>
-  Standard_EXPORT   static  void IDList(TDF_IDList& anIDList) ;
-  //! Prints the  evolution  <EVOL> as  a String on  the <br>
-//!          Stream <S> and returns <S>. <br>
-  Standard_EXPORT   static  Standard_OStream& Print(const TNaming_Evolution EVOL,Standard_OStream& S) ;
-  //! Prints the name of name type <NAME> as a String on <br>
-//!          the Stream <S> and returns <S>. <br>
-  Standard_EXPORT   static  Standard_OStream& Print(const TNaming_NameType NAME,Standard_OStream& S) ;
-  //! Prints the content of UsedShapes private  attribute as a String Table on <br>
-//!          the Stream <S> and returns <S>. <br>
-  Standard_EXPORT   static  Standard_OStream& Print(const TDF_Label& ACCESS,Standard_OStream& S) ;
-
+  
+  //! Subtituter les  shapes  sur les structures de   source
+  //! vers cible
+  Standard_EXPORT static   void Substitute (const TDF_Label& labelsource, const TDF_Label& labelcible, TopTools_DataMapOfShapeShape& mapOldNew) ;
+  
+  //! Mise a jour des shapes du label  et de ses fils en
+  //! tenant compte des  substitutions decrite par
+  //! mapOldNew.
+  //!
+  //! Warning: le  remplacement du shape est  fait    dans tous
+  //! les    attributs  qui  le contiennent meme si ceux
+  //! ci ne sont pas associees a des sous-labels de <Label>.
+  Standard_EXPORT static   void Update (const TDF_Label& label, TopTools_DataMapOfShapeShape& mapOldNew) ;
+  
+  //! Application de la Location sur les shapes du label
+  //! et  de   ses   sous   labels.
+  Standard_EXPORT static   void Displace (const TDF_Label& label, const TopLoc_Location& aLocation, const Standard_Boolean WithOld = Standard_True) ;
+  
+  //! Remplace  les  shapes du label et  des sous-labels
+  //! par des copies.
+  Standard_EXPORT static   void ChangeShapes (const TDF_Label& label, TopTools_DataMapOfShapeShape& M) ;
+  
+  //! Application de la transformation sur les shapes du
+  //! label et de ses sous labels.
+  //! Warning: le  remplacement du shape est  fait    dans tous
+  //! les    attributs  qui  le contiennent meme si ceux
+  //! ci ne sont pas associees a des sous-labels de <Label>.
+  Standard_EXPORT static   void Transform (const TDF_Label& label, const gp_Trsf& aTransformation) ;
+  
+  //! Replicates the named shape with the transformation <T>
+  //! on the label <L> (and sub-labels if necessary)
+  //! (TNaming_GENERATED is set)
+  Standard_EXPORT static   void Replicate (const Handle(TNaming_NamedShape)& NS, const gp_Trsf& T, const TDF_Label& L) ;
+  
+  //! Replicates the shape with the transformation <T>
+  //! on the label <L> (and sub-labels if necessary)
+  //! (TNaming_GENERATED is set)
+  Standard_EXPORT static   void Replicate (const TopoDS_Shape& SH, const gp_Trsf& T, const TDF_Label& L) ;
+  
+  //! Builds shape from map content
+  Standard_EXPORT static   TopoDS_Shape MakeShape (const TopTools_MapOfShape& MS) ;
+  
+  //! Find unique context of shape <S>
+  Standard_EXPORT static   TopoDS_Shape FindUniqueContext (const TopoDS_Shape& S, const TopoDS_Shape& Context) ;
+  
+  //! Find unique context of shape <S>,which is pure concatenation
+  //! of atomic shapes (Compound). The result is concatenation of
+  //! single contexts
+  Standard_EXPORT static   TopoDS_Shape FindUniqueContextSet (const TopoDS_Shape& S, const TopoDS_Shape& Context, Handle(TopTools_HArray1OfShape)& Arr) ;
+  
+  //! Subtitutes shape in source structure
+  Standard_EXPORT static   Standard_Boolean SubstituteSShape (const TDF_Label& accesslabel, const TopoDS_Shape& From, TopoDS_Shape& To) ;
+  
+  //! Returns True if outer wire is found and the found wire in <theWire>.
+  Standard_EXPORT static   Standard_Boolean OuterWire (const TopoDS_Face& theFace, TopoDS_Wire& theWire) ;
+  
+  //! Returns True if outer Shell is found and the found shell in <theShell>.
+  //! Print of TNaming enumeration
+  //! =============================
+  Standard_EXPORT static   Standard_Boolean OuterShell (const TopoDS_Solid& theSolid, TopoDS_Shell& theShell) ;
+  
+  //! Appends to <anIDList> the list of the attributes
+  //! IDs of this package. CAUTION: <anIDList> is NOT
+  //! cleared before use.
+  Standard_EXPORT static   void IDList (TDF_IDList& anIDList) ;
+  
+  //! Prints the  evolution  <EVOL> as  a String on  the
+  //! Stream <S> and returns <S>.
+  Standard_EXPORT static   Standard_OStream& Print (const TNaming_Evolution EVOL, Standard_OStream& S) ;
+  
+  //! Prints the name of name type <NAME> as a String on
+  //! the Stream <S> and returns <S>.
+  Standard_EXPORT static   Standard_OStream& Print (const TNaming_NameType NAME, Standard_OStream& S) ;
+  
+  //! Prints the content of UsedShapes private  attribute as a String Table on
+  //! the Stream <S> and returns <S>.
+  Standard_EXPORT static   Standard_OStream& Print (const TDF_Label& ACCESS, Standard_OStream& S) ;
 
 
 
@@ -276,7 +276,6 @@ friend class TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_HeaderFile

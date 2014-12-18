@@ -6,47 +6,34 @@
 #ifndef _Dico_StackItemOfDictionaryOfInteger_HeaderFile
 #define _Dico_StackItemOfDictionaryOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Dico_StackItemOfDictionaryOfInteger_HeaderFile
 #include <Handle_Dico_StackItemOfDictionaryOfInteger.hxx>
-#endif
 
-#ifndef _Handle_Dico_DictionaryOfInteger_HeaderFile
 #include <Handle_Dico_DictionaryOfInteger.hxx>
-#endif
-#ifndef _Handle_Dico_StackItemOfDictionaryOfInteger_HeaderFile
 #include <Handle_Dico_StackItemOfDictionaryOfInteger.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Dico_DictionaryOfInteger;
 class Dico_IteratorOfDictionaryOfInteger;
 
 
 
-class Dico_StackItemOfDictionaryOfInteger : public MMgt_TShared {
+class Dico_StackItemOfDictionaryOfInteger : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Dico_StackItemOfDictionaryOfInteger();
+  Standard_EXPORT Dico_StackItemOfDictionaryOfInteger();
   
-  Standard_EXPORT   Dico_StackItemOfDictionaryOfInteger(const Handle(Dico_StackItemOfDictionaryOfInteger)& previous);
+  Standard_EXPORT Dico_StackItemOfDictionaryOfInteger(const Handle(Dico_StackItemOfDictionaryOfInteger)& previous);
   
-  Standard_EXPORT     Handle_Dico_StackItemOfDictionaryOfInteger Previous() const;
+  Standard_EXPORT   Handle(Dico_StackItemOfDictionaryOfInteger) Previous()  const;
   
-  Standard_EXPORT     Handle_Dico_DictionaryOfInteger Value() const;
+  Standard_EXPORT   Handle(Dico_DictionaryOfInteger) Value()  const;
   
-  Standard_EXPORT     void SetValue(const Handle(Dico_DictionaryOfInteger)& cval) ;
+  Standard_EXPORT   void SetValue (const Handle(Dico_DictionaryOfInteger)& cval) ;
 
 
 
@@ -61,8 +48,8 @@ protected:
 private: 
 
 
-Handle_Dico_DictionaryOfInteger thevalue;
-Handle_Dico_StackItemOfDictionaryOfInteger theprev;
+  Handle(Dico_DictionaryOfInteger) thevalue;
+  Handle(Dico_StackItemOfDictionaryOfInteger) theprev;
 
 
 };
@@ -71,7 +58,6 @@ Handle_Dico_StackItemOfDictionaryOfInteger theprev;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Dico_StackItemOfDictionaryOfInteger_HeaderFile

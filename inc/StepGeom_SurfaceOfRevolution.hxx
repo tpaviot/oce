@@ -6,48 +6,36 @@
 #ifndef _StepGeom_SurfaceOfRevolution_HeaderFile
 #define _StepGeom_SurfaceOfRevolution_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_SurfaceOfRevolution_HeaderFile
 #include <Handle_StepGeom_SurfaceOfRevolution.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Axis1Placement_HeaderFile
 #include <Handle_StepGeom_Axis1Placement.hxx>
-#endif
-#ifndef _StepGeom_SweptSurface_HeaderFile
 #include <StepGeom_SweptSurface.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepGeom_Curve_HeaderFile
 #include <Handle_StepGeom_Curve.hxx>
-#endif
 class StepGeom_Axis1Placement;
 class TCollection_HAsciiString;
 class StepGeom_Curve;
 
 
 
-class StepGeom_SurfaceOfRevolution : public StepGeom_SweptSurface {
+class StepGeom_SurfaceOfRevolution : public StepGeom_SweptSurface
+{
 
 public:
 
-  //! Returns a SurfaceOfRevolution <br>
-  Standard_EXPORT   StepGeom_SurfaceOfRevolution();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Curve)& aSweptCurve) ;
+  //! Returns a SurfaceOfRevolution
+  Standard_EXPORT StepGeom_SurfaceOfRevolution();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Curve)& aSweptCurve,const Handle(StepGeom_Axis1Placement)& aAxisPosition) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Curve)& aSweptCurve) ;
   
-  Standard_EXPORT     void SetAxisPosition(const Handle(StepGeom_Axis1Placement)& aAxisPosition) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Curve)& aSweptCurve, const Handle(StepGeom_Axis1Placement)& aAxisPosition) ;
   
-  Standard_EXPORT     Handle_StepGeom_Axis1Placement AxisPosition() const;
+  Standard_EXPORT   void SetAxisPosition (const Handle(StepGeom_Axis1Placement)& aAxisPosition) ;
+  
+  Standard_EXPORT   Handle(StepGeom_Axis1Placement) AxisPosition()  const;
 
 
 
@@ -62,7 +50,7 @@ protected:
 private: 
 
 
-Handle_StepGeom_Axis1Placement axisPosition;
+  Handle(StepGeom_Axis1Placement) axisPosition;
 
 
 };
@@ -71,7 +59,6 @@ Handle_StepGeom_Axis1Placement axisPosition;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_SurfaceOfRevolution_HeaderFile

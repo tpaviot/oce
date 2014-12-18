@@ -6,25 +6,13 @@
 #ifndef _BRepFill_ListIteratorOfListOfOffsetWire_HeaderFile
 #define _BRepFill_ListIteratorOfListOfOffsetWire_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_BRepFill_ListNodeOfListOfOffsetWire_HeaderFile
 #include <Handle_BRepFill_ListNodeOfListOfOffsetWire.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class BRepFill_ListOfOffsetWire;
@@ -33,27 +21,27 @@ class BRepFill_ListNodeOfListOfOffsetWire;
 
 
 
-class BRepFill_ListIteratorOfListOfOffsetWire  {
+class BRepFill_ListIteratorOfListOfOffsetWire 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepFill_ListIteratorOfListOfOffsetWire();
+  Standard_EXPORT BRepFill_ListIteratorOfListOfOffsetWire();
   
-  Standard_EXPORT   BRepFill_ListIteratorOfListOfOffsetWire(const BRepFill_ListOfOffsetWire& L);
+  Standard_EXPORT BRepFill_ListIteratorOfListOfOffsetWire(const BRepFill_ListOfOffsetWire& L);
   
-  Standard_EXPORT     void Initialize(const BRepFill_ListOfOffsetWire& L) ;
+  Standard_EXPORT   void Initialize (const BRepFill_ListOfOffsetWire& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     BRepFill_OffsetWire& Value() const;
+  Standard_EXPORT   BRepFill_OffsetWire& Value()  const;
 
 
 friend class BRepFill_ListOfOffsetWire;
-
 
 
 protected:
@@ -66,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -97,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_ListIteratorOfListOfOffsetWire_HeaderFile

@@ -6,51 +6,36 @@
 #ifndef _IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress_HeaderFile
 #define _IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress_HeaderFile
 #include <Handle_IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class Standard_Transient;
 class TColStd_MapTransientHasher;
 class IntTools_IndexedDataMapOfTransientAddress;
 
 
 
-class IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : public TCollection_MapNode {
+class IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress : public TCollection_MapNode
+{
 
 public:
 
   
-      IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress(const Handle(Standard_Transient)& K1,const Standard_Integer K2,const Standard_Address& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress(const Handle(Standard_Transient)& K1, const Standard_Integer K2, const Standard_Address& I, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_Standard_Transient& Key1() const;
+      Handle(Standard_Transient)& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
   
-        Standard_Address& Value() const;
+      Standard_Address& Value()  const;
 
 
 
@@ -65,15 +50,15 @@ protected:
 private: 
 
 
-Handle_Standard_Transient myKey1;
-Standard_Integer myKey2;
-Standard_Address myValue;
-TCollection_MapNodePtr myNext2;
+  Handle(Standard_Transient) myKey1;
+  Standard_Integer myKey2;
+  Standard_Address myValue;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
 #define TheItem Standard_Address
 #define TheItem_hxx <Standard_Address.hxx>
@@ -102,7 +87,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedDataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress_HeaderFile

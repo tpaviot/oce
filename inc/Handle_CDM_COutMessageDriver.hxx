@@ -6,22 +6,15 @@
 #ifndef _Handle_CDM_COutMessageDriver_HeaderFile
 #define _Handle_CDM_COutMessageDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(CDM_MessageDriver);
 class CDM_COutMessageDriver;
 
-DEFINE_STANDARD_HANDLE(CDM_COutMessageDriver,CDM_MessageDriver)
+DEFINE_STANDARD_HANDLE(CDM_COutMessageDriver, CDM_MessageDriver)
 
-#endif
+#endif // _Handle_CDM_COutMessageDriver_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESDimen_SpecificModule_HeaderFile
 #define _Handle_IGESDimen_SpecificModule_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESData_SpecificModule_HeaderFile
 #include <Handle_IGESData_SpecificModule.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESData_SpecificModule);
 class IGESDimen_SpecificModule;
 
-DEFINE_STANDARD_HANDLE(IGESDimen_SpecificModule,IGESData_SpecificModule)
+DEFINE_STANDARD_HANDLE(IGESDimen_SpecificModule, IGESData_SpecificModule)
 
-#endif
+#endif // _Handle_IGESDimen_SpecificModule_HeaderFile

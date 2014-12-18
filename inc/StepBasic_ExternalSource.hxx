@@ -6,38 +6,33 @@
 #ifndef _StepBasic_ExternalSource_HeaderFile
 #define _StepBasic_ExternalSource_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ExternalSource_HeaderFile
 #include <Handle_StepBasic_ExternalSource.hxx>
-#endif
 
-#ifndef _StepBasic_SourceItem_HeaderFile
 #include <StepBasic_SourceItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_SourceItem;
 
 
-//! Representation of STEP entity ExternalSource <br>
-class StepBasic_ExternalSource : public MMgt_TShared {
+//! Representation of STEP entity ExternalSource
+class StepBasic_ExternalSource : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_ExternalSource();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepBasic_SourceItem& aSourceId) ;
-  //! Returns field SourceId <br>
-  Standard_EXPORT     StepBasic_SourceItem SourceId() const;
-  //! Set field SourceId <br>
-  Standard_EXPORT     void SetSourceId(const StepBasic_SourceItem& SourceId) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_ExternalSource();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepBasic_SourceItem& aSourceId) ;
+  
+  //! Returns field SourceId
+  Standard_EXPORT   StepBasic_SourceItem SourceId()  const;
+  
+  //! Set field SourceId
+  Standard_EXPORT   void SetSourceId (const StepBasic_SourceItem& SourceId) ;
 
 
 
@@ -52,7 +47,7 @@ protected:
 private: 
 
 
-StepBasic_SourceItem theSourceId;
+  StepBasic_SourceItem theSourceId;
 
 
 };
@@ -61,7 +56,6 @@ StepBasic_SourceItem theSourceId;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ExternalSource_HeaderFile

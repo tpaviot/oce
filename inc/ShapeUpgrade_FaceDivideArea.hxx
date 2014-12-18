@@ -6,42 +6,34 @@
 #ifndef _ShapeUpgrade_FaceDivideArea_HeaderFile
 #define _ShapeUpgrade_FaceDivideArea_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_FaceDivideArea_HeaderFile
 #include <Handle_ShapeUpgrade_FaceDivideArea.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _ShapeUpgrade_FaceDivide_HeaderFile
 #include <ShapeUpgrade_FaceDivide.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Face;
 
 
-//! Divides face by max area criterium. <br>
-class ShapeUpgrade_FaceDivideArea : public ShapeUpgrade_FaceDivide {
+//! Divides face by max area criterium.
+class ShapeUpgrade_FaceDivideArea : public ShapeUpgrade_FaceDivide
+{
 
 public:
 
-  //! Creates empty  constructor. <br>
-  Standard_EXPORT   ShapeUpgrade_FaceDivideArea();
   
-  Standard_EXPORT   ShapeUpgrade_FaceDivideArea(const TopoDS_Face& F);
-  //! Performs splitting and computes the resulting shell <br>
-//!          The context is used to keep track of former splittings <br>
-  Standard_EXPORT   virtual  Standard_Boolean Perform() ;
-  //!Set max area allowed for faces <br>
-        Standard_Real& MaxArea() ;
+  //! Creates empty  constructor.
+  Standard_EXPORT ShapeUpgrade_FaceDivideArea();
+  
+  Standard_EXPORT ShapeUpgrade_FaceDivideArea(const TopoDS_Face& F);
+  
+  //! Performs splitting and computes the resulting shell
+  //! The context is used to keep track of former splittings
+  Standard_EXPORT virtual   Standard_Boolean Perform() ;
+  
+  //! Set max area allowed for faces
+      Standard_Real& MaxArea() ;
 
 
 
@@ -56,7 +48,7 @@ protected:
 private: 
 
 
-Standard_Real myMaxArea;
+  Standard_Real myMaxArea;
 
 
 };
@@ -66,7 +58,6 @@ Standard_Real myMaxArea;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_FaceDivideArea_HeaderFile

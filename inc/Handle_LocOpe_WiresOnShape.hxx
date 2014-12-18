@@ -6,22 +6,15 @@
 #ifndef _Handle_LocOpe_WiresOnShape_HeaderFile
 #define _Handle_LocOpe_WiresOnShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_LocOpe_ProjectedWires_HeaderFile
-#include <Handle_LocOpe_ProjectedWires.hxx>
-#endif
+#include <Handle_MMgt_TShared.hxx>
 
 class Standard_Transient;
 class Handle(Standard_Type);
-class Handle(LocOpe_ProjectedWires);
+class Handle(MMgt_TShared);
 class LocOpe_WiresOnShape;
 
-DEFINE_STANDARD_HANDLE(LocOpe_WiresOnShape,LocOpe_ProjectedWires)
+DEFINE_STANDARD_HANDLE(LocOpe_WiresOnShape, MMgt_TShared)
 
-#endif
+#endif // _Handle_LocOpe_WiresOnShape_HeaderFile

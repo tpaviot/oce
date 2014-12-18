@@ -5,24 +5,12 @@
 
 #include <TDocStd_DataMapIteratorOfLabelIDMapDataMap.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_IDMap_HeaderFile
 #include <TDF_IDMap.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _TDocStd_LabelIDMapDataMap_HeaderFile
 #include <TDocStd_LabelIDMapDataMap.hxx>
-#endif
-#ifndef _TDocStd_DataMapNodeOfLabelIDMapDataMap_HeaderFile
 #include <TDocStd_DataMapNodeOfLabelIDMapDataMap.hxx>
-#endif
  
 
 #define TheKey TDF_Label

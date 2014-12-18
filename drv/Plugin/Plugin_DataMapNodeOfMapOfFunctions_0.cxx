@@ -5,19 +5,11 @@
 
 #include <Plugin_DataMapNodeOfMapOfFunctions.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Plugin_MapOfFunctions_HeaderFile
 #include <Plugin_MapOfFunctions.hxx>
-#endif
-#ifndef _Plugin_DataMapIteratorOfMapOfFunctions_HeaderFile
 #include <Plugin_DataMapIteratorOfMapOfFunctions.hxx>
-#endif
 
  
 

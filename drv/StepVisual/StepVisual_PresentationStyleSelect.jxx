@@ -1,15 +1,5 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepVisual_PointStyle_HeaderFile
 #include <StepVisual_PointStyle.hxx>
-#endif
-#ifndef _StepVisual_CurveStyle_HeaderFile
 #include <StepVisual_CurveStyle.hxx>
-#endif
-#ifndef _StepVisual_SurfaceStyleUsage_HeaderFile
 #include <StepVisual_SurfaceStyleUsage.hxx>
-#endif
-#ifndef _StepVisual_PresentationStyleSelect_HeaderFile
 #include <StepVisual_PresentationStyleSelect.hxx>
-#endif

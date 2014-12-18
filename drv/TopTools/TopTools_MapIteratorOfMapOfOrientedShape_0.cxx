@@ -5,21 +5,11 @@
 
 #include <TopTools_MapIteratorOfMapOfOrientedShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_OrientedShapeMapHasher_HeaderFile
 #include <TopTools_OrientedShapeMapHasher.hxx>
-#endif
-#ifndef _TopTools_MapOfOrientedShape_HeaderFile
 #include <TopTools_MapOfOrientedShape.hxx>
-#endif
-#ifndef _TopTools_StdMapNodeOfMapOfOrientedShape_HeaderFile
 #include <TopTools_StdMapNodeOfMapOfOrientedShape.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

@@ -1,39 +1,13 @@
-#ifndef _Interface_GTool_HeaderFile
 #include <Interface_GTool.hxx>
-#endif
-#ifndef _Interface_CheckFailure_HeaderFile
 #include <Interface_CheckFailure.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _Interface_HGraph_HeaderFile
 #include <Interface_HGraph.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_ShareTool_HeaderFile
 #include <Interface_ShareTool.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
-#endif
-#ifndef _Interface_CheckIterator_HeaderFile
 #include <Interface_CheckIterator.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _Interface_CheckTool_HeaderFile
 #include <Interface_CheckTool.hxx>
-#endif

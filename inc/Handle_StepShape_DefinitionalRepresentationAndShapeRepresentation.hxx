@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation_HeaderFile
 #define _Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_DefinitionalRepresentation_HeaderFile
 #include <Handle_StepRepr_DefinitionalRepresentation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_DefinitionalRepresentation);
 class StepShape_DefinitionalRepresentationAndShapeRepresentation;
 
-DEFINE_STANDARD_HANDLE(StepShape_DefinitionalRepresentationAndShapeRepresentation,StepRepr_DefinitionalRepresentation)
+DEFINE_STANDARD_HANDLE(StepShape_DefinitionalRepresentationAndShapeRepresentation, StepRepr_DefinitionalRepresentation)
 
-#endif
+#endif // _Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation_HeaderFile

@@ -1,12 +1,4 @@
-#ifndef _Geom_BezierSurface_HeaderFile
 #include <Geom_BezierSurface.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _Geom_BezierCurve_HeaderFile
 #include <Geom_BezierCurve.hxx>
-#endif
-#ifndef _GeomFill_BezierCurves_HeaderFile
 #include <GeomFill_BezierCurves.hxx>
-#endif

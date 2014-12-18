@@ -81,7 +81,7 @@ uses
 
 is
 
-    Create returns mutable LocalContext from AIS;
+    Create returns LocalContext from AIS;
     
 
     Create (aCtx                : InteractiveContext from AIS;
@@ -90,7 +90,7 @@ is
             AcceptStandardModes : Boolean from Standard=Standard_True;
             AcceptErase         : Boolean from Standard= Standard_False;
             UseBothViewers      : Boolean from Standard= Standard_False)
-            returns mutable LocalContext from AIS;
+            returns LocalContext from AIS;
     ---Purpose: Constructor By Default, the  displayed objects are 
     --          automatically loaded.
 
@@ -230,13 +230,12 @@ is
     AutomaticHilight(me) returns Boolean;
     ---C++: inline
 
-
-
                     ---Category: THE SELECTION PROCESS
 
-
-    MoveTo(me:mutable;Xpix,Ypix : Integer from Standard;
-                         aview : View from V3d)
+    MoveTo (me                   : mutable;
+            theXpix, theYpix     : Integer from Standard;
+            theView              : View from V3d;
+            theToRedrawImmediate : Boolean from Standard)
     returns StatusOfDetection from AIS;
 
 
@@ -245,15 +244,18 @@ is
     ---Purpose: returns True if more than one entity
     --          was detected at the last Mouse position.
     
-    HilightNextDetected(me:mutable;aView:View from V3d)
+    HilightNextDetected (me      : mutable;
+                         theView : View from V3d;
+                         theToRedrawImmediate : Boolean from Standard)
     returns Integer from Standard;
     ---Purpose: returns True if  last detected. the next detected will
     --          be first one (endless loop)
 
-    HilightPreviousDetected(me:mutable;aView:View from V3d)
+    HilightPreviousDetected (me                   : mutable;
+                             theView              : View from V3d;
+                             theToRedrawImmediate : Boolean from Standard)
     returns Integer from Standard;
 
-    
     UnhilightLastDetected(me:mutable;aView:View from V3d) returns Boolean from Standard;
     ---Purpose: returns True if something was done...
 
@@ -321,28 +323,55 @@ is
                         aShape       : Shape from TopoDS;
                         updateviewer : Boolean from Standard=Standard_True);
 
-    AddOrRemoveSelected(me           : mutable;
-                        Ownr         : EntityOwner from SelectMgr;
-                        updateviewer : Boolean from Standard=Standard_True);
+    AddOrRemoveSelected(me             : mutable;
+                        theOwner       : EntityOwner from SelectMgr;
+                        toUpdateViewer : Boolean from Standard = Standard_True);
 
+    ClearSelected (me             : mutable;
+                   toUpdateViewer : Boolean from Standard = Standard_True);
+    ---Purpose: Clears local context selection.
+    --          @param toUpdateViewer [in] if TRUE the viewer will be updated.
 
+    ClearOutdatedSelection (me                 : mutable;
+                            theIO              : InteractiveObject from AIS;
+                            toClearDeactivated : Boolean from Standard);
+    ---Purpose: Clears outdated selection and detection of owners for the
+    --          interactive object. Use this method if selection structures
+    --          of the interactive object have changed. The method unhilights
+    --          and removes outdated entity owners from lists of selected
+    --          and detected owners.
+    --          @param theIO [in] the interactive object.
+    --          @param toClearDeactivated [in] pass TRUE to treat deactivated
+    --                 entity owners as 'outdated' when clearing the selection.
 
-    ClearSelected(me:mutable;updateviewer : Boolean from Standard=Standard_True);
-    ---Purpose: 
-
-                    
                     ---Category: GET THE DETECTED
-
 
     HasDetected     (me) returns Boolean from Standard;
     ---C++: inline
 
     InitDetected(me: mutable);
+    ---Purpose:
+    -- Initialization for iteration through mouse-detected objects in local context.
+
     MoreDetected(me) returns Boolean from Standard;
+    ---Purpose:
+    -- @return true if there is more mouse-detected objects after the current one
+    -- during iteration through mouse-detected interactive objects.
+
     NextDetected(me: mutable);
+    ---Purpose:
+    -- Gets next current object during iteration through mouse-detected
+    -- interactive objects.
+
     DetectedCurrentShape(me) returns Shape from TopoDS;
     ---C++: return const &
+    ---Purpose:
+    -- @return current mouse-detected shape or empty (null) shape, if current interactive object
+    -- is not a shape (AIS_Shape) or there is no current mouse-detected interactive object at all.
+
     DetectedCurrentObject(me) returns InteractiveObject from AIS;
+    ---Purpose:
+    -- @return current mouse-detected interactive object or null object if there is no current detected.
 
     HasDetectedShape(me) returns Boolean from Standard;
     DetectedShape   (me) returns Shape from TopoDS;
@@ -360,7 +389,6 @@ is
     ---Purpose: returns TRUE if the detected entity is a shape
     --          coming from a Decomposition of an element.
     SelectedShape(me) returns Shape from TopoDS;
-    ---C++: return const &
 
     SelectedOwner(me) returns EntityOwner from SelectMgr;
     IsSelected(me;aniobj: InteractiveObject from AIS) returns Boolean  from  Standard;
@@ -474,24 +502,29 @@ is
                         ---Category: IMMEDIATE MODE
 
 
-    BeginImmediateDraw (me:mutable)  returns Boolean from Standard;
-    ---Purpose: initializes the list of presentations to be displayed
-    --          returns False if No Local COnte
-
-    ImmediateAdd (me:mutable;anIObj:InteractiveObject from AIS;aMode:Integer from Standard=0)
+    BeginImmediateDraw (me : mutable)
     returns Boolean from Standard;
-    ---Purpose: returns True if <anIObj> has been stored in the list.
+    ---Purpose: Resets the transient list of presentations previously displayed in immediate mode
+    -- and begins accumulation of new list by following AddToImmediateList()/Color()/Highlight() calls.
 
-    ImmediateRemove (me:mutable;anIObj:InteractiveObject from AIS;aMode:Integer from Standard=0)
+    ClearImmediateDraw (me : mutable) is virtual;
+    ---Purpose: Resets the transient list of presentations previously displayed in immediate mode.
+
+    ImmediateAdd (me : mutable;
+                  theObj  : InteractiveObject from AIS;
+                  theMode : Integer from Standard = 0)
     returns Boolean from Standard;
-    ---Purpose: returns True if <anIObj> has been removed from the list.
+    ---Purpose: Stores presentation theMode of object theObj in the transient list of presentations to be displayed in immediate mode.
+    -- Will be taken in account in EndImmediateDraw method.
 
-    EndImmediateDraw(me:mutable;aView : View from V3d;DoubleBuf:Boolean from Standard=Standard_False)
+    EndImmediateDraw (me      : mutable;
+                      theView : View from V3d)
     returns Boolean from Standard;
-    ---Purpose: returns True if the immediate display has been done.
+    ---Purpose: Allows rapid drawing of the view theView by avoiding an update of the whole background.
 
-    IsImmediateModeOn(me) returns Boolean from Standard;
-            
+    IsImmediateModeOn (me) returns Boolean from Standard;
+    ---Purpose: Returns true if Presentation Manager is accumulating transient list of presentations to be displayed in immediate mode.
+
                             ---Category: INTERNAL METHODS;
 
     UpdateConversion(me:mutable);
@@ -523,9 +556,10 @@ is
     ActivateStandardModes(me:mutable;anObject: SelectableObject from SelectMgr;
             WithProj: Boolean from Standard = Standard_True)  is  static  private;
 
-    ManageDetected(me:mutable;
-                   aPickOwner : EntityOwner from SelectMgr;
-                   aview      : View  from  V3d) is static  private;
+    manageDetected (me                   : mutable;
+                    thePickOwner         : EntityOwner from SelectMgr;
+                    theView              : View from V3d;
+                    theToRedrawImmediate : Boolean from Standard) is static private;
 
     DetectedIndex(me:mutable) returns Integer from Standard is static private;
     ---C++: inline
@@ -568,16 +602,9 @@ is
     
     ClearSensitive(me:mutable;aView:View from V3d) is static;
 
-
-        
     MainSelector(me) returns any ViewerSelector3d from StdSelect;
     ---C++: inline
     ---C++: return const&
-
-
-    HilightTriangle(me:mutable;Rank:Integer from Standard;aViou:View from V3d) is static private;
-    ---Level: Internal 
-
 
     FindSelectedOwnerFromIO(me;anIObj:InteractiveObject from AIS)
     returns EntityOwner from SelectMgr;
@@ -624,10 +651,13 @@ fields
     myDetectedSeq  : SequenceOfInteger from TColStd;
     myCurDetected  : Integer from Standard;
 
-   -- the detected objects.
+   -- The detected objects.
+
     myAISDetectedSeq : SequenceOfInteractive from AIS;
+    -- the sequence of detected interative objects.
     myAISCurDetected : Integer from Standard;
-    -- This variables is used by following functions:
+    -- current detected interactive object.
+    -- This variable is used by following functions:
     -- InitDetected(), MoreDetected(), NextDetected(), DetectedCurrentShape(), DetectedCurrentObject().
     
 friends 

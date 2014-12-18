@@ -6,67 +6,56 @@
 #ifndef _Vrml_IndexedLineSet_HeaderFile
 #define _Vrml_IndexedLineSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Vrml_IndexedLineSet_HeaderFile
 #include <Handle_Vrml_IndexedLineSet.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 
 
-//!  defines a IndexedLineSet node of VRML specifying geometry shapes. <br>
-//!  This node represents a 3D shape formed by constructing polylines from vertices <br>
-//!  located at the current coordinates. IndexedLineSet uses the indices in its coordIndex <br>
-//!  field to specify the polylines. An index of -1 separates one polyline from the next <br>
-//!  (thus, a final -1 is optional). the current polyline has ended and the next one begins. <br>
-//!  Treatment of the current material and normal binding is as follows: The PER_PART binding <br>
-//!  specifies a material or normal for each segment of the line. The PER_FACE binding <br>
-//!  specifies a material or normal for each polyline. PER_VERTEX specifies a material or <br>
-//!  normal for each vertex. The corresponding _INDEXED bindings are the same, but use <br>
-//!  the materialIndex or normalIndex indices. The DEFAULT material binding is equal <br>
-//!  to OVERALL. The DEFAULT normal binding is equal to  PER_VERTEX_INDEXED; <br>
-//!  if insufficient normals exist in the state, the lines will be drawn unlit. The same <br>
-//!  rules for texture coordinate generation as IndexedFaceSet are used. <br>
-class Vrml_IndexedLineSet : public MMgt_TShared {
+//! defines a IndexedLineSet node of VRML specifying geometry shapes.
+//! This node represents a 3D shape formed by constructing polylines from vertices
+//! located at the current coordinates. IndexedLineSet uses the indices in its coordIndex
+//! field to specify the polylines. An index of -1 separates one polyline from the next
+//! (thus, a final -1 is optional). the current polyline has ended and the next one begins.
+//! Treatment of the current material and normal binding is as follows: The PER_PART binding
+//! specifies a material or normal for each segment of the line. The PER_FACE binding
+//! specifies a material or normal for each polyline. PER_VERTEX specifies a material or
+//! normal for each vertex. The corresponding _INDEXED bindings are the same, but use
+//! the materialIndex or normalIndex indices. The DEFAULT material binding is equal
+//! to OVERALL. The DEFAULT normal binding is equal to  PER_VERTEX_INDEXED;
+//! if insufficient normals exist in the state, the lines will be drawn unlit. The same
+//! rules for texture coordinate generation as IndexedFaceSet are used.
+class Vrml_IndexedLineSet : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Vrml_IndexedLineSet(const Handle(TColStd_HArray1OfInteger)& aCoordIndex,const Handle(TColStd_HArray1OfInteger)& aMaterialIndex,const Handle(TColStd_HArray1OfInteger)& aNormalIndex,const Handle(TColStd_HArray1OfInteger)& aTextureCoordIndex);
+  Standard_EXPORT Vrml_IndexedLineSet(const Handle(TColStd_HArray1OfInteger)& aCoordIndex, const Handle(TColStd_HArray1OfInteger)& aMaterialIndex, const Handle(TColStd_HArray1OfInteger)& aNormalIndex, const Handle(TColStd_HArray1OfInteger)& aTextureCoordIndex);
   
-  Standard_EXPORT   Vrml_IndexedLineSet();
+  Standard_EXPORT Vrml_IndexedLineSet();
   
-  Standard_EXPORT     void SetCoordIndex(const Handle(TColStd_HArray1OfInteger)& aCoordIndex) ;
+  Standard_EXPORT   void SetCoordIndex (const Handle(TColStd_HArray1OfInteger)& aCoordIndex) ;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfInteger CoordIndex() const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfInteger) CoordIndex()  const;
   
-  Standard_EXPORT     void SetMaterialIndex(const Handle(TColStd_HArray1OfInteger)& aMaterialIndex) ;
+  Standard_EXPORT   void SetMaterialIndex (const Handle(TColStd_HArray1OfInteger)& aMaterialIndex) ;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfInteger MaterialIndex() const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfInteger) MaterialIndex()  const;
   
-  Standard_EXPORT     void SetNormalIndex(const Handle(TColStd_HArray1OfInteger)& aNormalIndex) ;
+  Standard_EXPORT   void SetNormalIndex (const Handle(TColStd_HArray1OfInteger)& aNormalIndex) ;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfInteger NormalIndex() const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfInteger) NormalIndex()  const;
   
-  Standard_EXPORT     void SetTextureCoordIndex(const Handle(TColStd_HArray1OfInteger)& aTextureCoordIndex) ;
+  Standard_EXPORT   void SetTextureCoordIndex (const Handle(TColStd_HArray1OfInteger)& aTextureCoordIndex) ;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfInteger TextureCoordIndex() const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfInteger) TextureCoordIndex()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -81,10 +70,10 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfInteger myCoordIndex;
-Handle_TColStd_HArray1OfInteger myMaterialIndex;
-Handle_TColStd_HArray1OfInteger myNormalIndex;
-Handle_TColStd_HArray1OfInteger myTextureCoordIndex;
+  Handle(TColStd_HArray1OfInteger) myCoordIndex;
+  Handle(TColStd_HArray1OfInteger) myMaterialIndex;
+  Handle(TColStd_HArray1OfInteger) myNormalIndex;
+  Handle(TColStd_HArray1OfInteger) myTextureCoordIndex;
 
 
 };
@@ -93,7 +82,6 @@ Handle_TColStd_HArray1OfInteger myTextureCoordIndex;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_IndexedLineSet_HeaderFile

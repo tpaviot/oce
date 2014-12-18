@@ -1,15 +1,5 @@
-#ifndef _ShapeUpgrade_SplitSurface_HeaderFile
 #include <ShapeUpgrade_SplitSurface.hxx>
-#endif
-#ifndef _ShapeUpgrade_WireDivide_HeaderFile
 #include <ShapeUpgrade_WireDivide.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _ShapeUpgrade_FaceDivide_HeaderFile
 #include <ShapeUpgrade_FaceDivide.hxx>
-#endif

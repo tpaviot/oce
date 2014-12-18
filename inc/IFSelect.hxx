@@ -6,25 +6,13 @@
 #ifndef _IFSelect_HeaderFile
 #define _IFSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IFSelect_WorkSession_HeaderFile
 #include <Handle_IFSelect_WorkSession.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class IFSelect_WorkSession;
 class IFSelect_Signature;
 class IFSelect_SignMultiple;
@@ -59,7 +47,6 @@ class IFSelect_SelectShared;
 class IFSelect_SelectSharing;
 class IFSelect_SelectAnyList;
 class IFSelect_SelectInList;
-class IFSelect_SelectList;
 class IFSelect_SelectSuite;
 class IFSelect_SelectExtract;
 class IFSelect_SelectUnknownEntities;
@@ -118,33 +105,35 @@ class IFSelect_SequenceNodeOfSequenceOfInterfaceModel;
 class IFSelect_SequenceNodeOfSequenceOfAppliedModifiers;
 
 
-//! Gives tools to manage Selecting a group of Entities <br>
-//!           processed by an Interface, for instance to divide up an <br>
-//!           original Model (from a File) to several smaller ones <br>
-//!           They use description of an Interface Model as a graph <br>
-//! <br>
-//!           Remark that this corresponds to the description of a <br>
-//!           "scenario" of sharing out a File. Parts of this Scenario <br>
-//!           are intended to be permanently stored. IFSelect provides <br>
-//!           the Transient, active counterparts (to run the Scenario). <br>
-//!           But a permanent one (either as Persistent Objects or as <br>
-//!           interpretable Text) must be provided elsewhere. <br>
-class IFSelect  {
+//! Gives tools to manage Selecting a group of Entities
+//! processed by an Interface, for instance to divide up an
+//! original Model (from a File) to several smaller ones
+//! They use description of an Interface Model as a graph
+//!
+//! Remark that this corresponds to the description of a
+//! "scenario" of sharing out a File. Parts of this Scenario
+//! are intended to be permanently stored. IFSelect provides
+//! the Transient, active counterparts (to run the Scenario).
+//! But a permanent one (either as Persistent Objects or as
+//! interpretable Text) must be provided elsewhere.
+class IFSelect 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Saves the state of a WorkSession from IFSelect, by using a <br>
-//!           SessionFile from IFSelect. Returns True if Done, False in <br>
-//!           case of Error on Writing. <file> gives the name of the File <br>
-//!           to be produced (this avoids to export the class SessionFile). <br>
-  Standard_EXPORT   static  Standard_Boolean SaveSession(const Handle(IFSelect_WorkSession)& WS,const Standard_CString file) ;
-  //! Restore the state of a WorkSession from IFSelect, by using a <br>
-//!           SessionFile from IFSelect. Returns True if Done, False in <br>
-//!           case of Error on Writing. <file> gives the name of the File <br>
-//!           to be used (this avoids to export the class SessionFile). <br>
-  Standard_EXPORT   static  Standard_Boolean RestoreSession(const Handle(IFSelect_WorkSession)& WS,const Standard_CString file) ;
-
+  
+  //! Saves the state of a WorkSession from IFSelect, by using a
+  //! SessionFile from IFSelect. Returns True if Done, False in
+  //! case of Error on Writing. <file> gives the name of the File
+  //! to be produced (this avoids to export the class SessionFile).
+  Standard_EXPORT static   Standard_Boolean SaveSession (const Handle(IFSelect_WorkSession)& WS, const Standard_CString file) ;
+  
+  //! Restore the state of a WorkSession from IFSelect, by using a
+  //! SessionFile from IFSelect. Returns True if Done, False in
+  //! case of Error on Writing. <file> gives the name of the File
+  //! to be used (this avoids to export the class SessionFile).
+  Standard_EXPORT static   Standard_Boolean RestoreSession (const Handle(IFSelect_WorkSession)& WS, const Standard_CString file) ;
 
 
 
@@ -193,7 +182,6 @@ friend class IFSelect_SelectShared;
 friend class IFSelect_SelectSharing;
 friend class IFSelect_SelectAnyList;
 friend class IFSelect_SelectInList;
-friend class IFSelect_SelectList;
 friend class IFSelect_SelectSuite;
 friend class IFSelect_SelectExtract;
 friend class IFSelect_SelectUnknownEntities;
@@ -257,7 +245,6 @@ friend class IFSelect_SequenceNodeOfSequenceOfAppliedModifiers;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_HeaderFile

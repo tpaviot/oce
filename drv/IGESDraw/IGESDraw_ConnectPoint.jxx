@@ -1,18 +1,6 @@
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESGraph_TextDisplayTemplate_HeaderFile
 #include <IGESGraph_TextDisplayTemplate.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _IGESDraw_ConnectPoint_HeaderFile
 #include <IGESDraw_ConnectPoint.hxx>
-#endif

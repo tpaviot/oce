@@ -6,73 +6,29 @@
 #ifndef _StepData_StepWriter_HeaderFile
 #define _StepData_StepWriter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepModel_HeaderFile
 #include <Handle_StepData_StepModel.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <Handle_TColStd_HSequenceOfHAsciiString.hxx>
-#endif
-#ifndef _Interface_LineBuffer_HeaderFile
 #include <Interface_LineBuffer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Interface_FloatWriter_HeaderFile
 #include <Interface_FloatWriter.hxx>
-#endif
-#ifndef _Interface_CheckIterator_HeaderFile
 #include <Interface_CheckIterator.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_StepData_Protocol_HeaderFile
 #include <Handle_StepData_Protocol.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepData_PDescr_HeaderFile
 #include <Handle_StepData_PDescr.hxx>
-#endif
-#ifndef _Handle_StepData_SelectMember_HeaderFile
 #include <Handle_StepData_SelectMember.hxx>
-#endif
-#ifndef _Handle_StepData_ESDescr_HeaderFile
 #include <Handle_StepData_ESDescr.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _StepData_Logical_HeaderFile
 #include <StepData_Logical.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class StepData_StepModel;
 class TColStd_HSequenceOfHAsciiString;
 class TColStd_HArray1OfInteger;
@@ -92,178 +48,228 @@ class TColStd_HArray1OfReal;
 class Interface_CheckIterator;
 
 
-//! manages atomic file writing, under control of StepModel (for <br>
-//!           general organisation of file) and each class of Transient <br>
-//!           (for its own parameters) : prepares text to be written then <br>
-//!           writes it <br>
-//!           A stream cannot be used because Step limits line length at 72 <br>
-//!           In more, a specific object offers more appropriate functions <br>
-class StepData_StepWriter  {
+//! manages atomic file writing, under control of StepModel (for
+//! general organisation of file) and each class of Transient
+//! (for its own parameters) : prepares text to be written then
+//! writes it
+//! A stream cannot be used because Step limits line length at 72
+//! In more, a specific object offers more appropriate functions
+class StepData_StepWriter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty StepWriter from a StepModel. The StepModel <br>
-//!           provides the Number of Entities, as identifiers for File <br>
-  Standard_EXPORT   StepData_StepWriter(const Handle(StepData_StepModel)& amodel);
-  //! ModeLabel controls how to display entity ids : <br>
-//!           0 (D) gives entity number in the model <br>
-//!           1 gives the already recorded label (else, its number) <br>
-//!  Warning : conflicts are not controlled <br>
-  Standard_EXPORT     Standard_Integer& LabelMode() ;
-  //! TypeMode  controls the type form to use : <br>
-//!           0 (D) for normal long form <br>
-//!           1 for short form (if a type name has no short form, normal <br>
-//!             long form is then used) <br>
-  Standard_EXPORT     Standard_Integer& TypeMode() ;
-  //! Returns the embedded FloatWriter, which controls sending Reals <br>
-//!           Use this method to access FloatWriter in order to consult or <br>
-//!           change its options (MainFormat, FormatForRange,ZeroSuppress), <br>
-//!           because it is returned as the address of its field <br>
-  Standard_EXPORT     Interface_FloatWriter& FloatWriter() ;
-  //! Declares the Entity Number <numscope> to correspond to a Scope <br>
-//!           which contains the Entity Number <numin>. Several calls to the <br>
-//!           same <numscope> add Entities in this Scope, in this order. <br>//!           Error if <numin> is already declared in the Scope <br>
-//!  Warning : the declaration of the Scopes is assumed to be consistent, <br>
-//!           i.e. <numin> is not referenced from outside this Scope <br>
-//!           (not checked here) <br>
-  Standard_EXPORT     void SetScope(const Standard_Integer numscope,const Standard_Integer numin) ;
-  //! Returns True if an Entity identified by its Number is in a Scope <br>
-  Standard_EXPORT     Standard_Boolean IsInScope(const Standard_Integer num) const;
-  //! Sends the complete Model, included HEADER and DATA Sections <br>
-//!           Works with a WriterLib defined through a Protocol <br>
-//!           If <headeronly> is given True, only the HEADER Section is sent <br>
-//!           (used to Dump the Header of a StepModel) <br>
-  Standard_EXPORT     void SendModel(const Handle(StepData_Protocol)& protocol,const Standard_Boolean headeronly = Standard_False) ;
-  //! Begins model header <br>
-  Standard_EXPORT     void SendHeader() ;
-  //! Begins data section; error if EndSec was not set <br>
-  Standard_EXPORT     void SendData() ;
-  //! Send an Entity of the Data Section. If it corresponds to a <br>
-//!           Scope, also Sends the Scope informations and contained Items <br>
-  Standard_EXPORT     void SendEntity(const Standard_Integer nument,const StepData_WriterLib& lib) ;
-  //! sets end of section; to be done before passing to next one <br>
-  Standard_EXPORT     void EndSec() ;
-  //! sets end of file; error is EndSec was not set <br>
-  Standard_EXPORT     void EndFile() ;
-  //! flushes current line; if empty, flushes it (defines a new <br>
-//!           empty line) if evenempty is True; else, skips it <br>
-  Standard_EXPORT     void NewLine(const Standard_Boolean evenempty) ;
-  //! joins current line to last one, only if new length is 72 max <br>
-//!           if newline is True, a new current line begins; else, current <br>
-//!           line is set to the last line (once joined) itself an can be <br>
-//!           completed <br>
-  Standard_EXPORT     void JoinLast(const Standard_Boolean newline) ;
-  //! asks that further indentations will begin at position of <br>
-//!           entity first opening bracket; else they begin at zero (def) <br>
-//!           for each sublist level, two more blancks are added at beginning <br>
-//!           (except for text continuation, which must begin at true zero) <br>
-  Standard_EXPORT     void Indent(const Standard_Boolean onent) ;
-  //! begins an entity with an ident plus '=' (at beginning of line) <br>
-//!           entity ident is its Number given by the containing Model <br>
-//!  Warning : <ident> must be, either Number or Label, according LabelMode <br>
-  Standard_EXPORT     void SendIdent(const Standard_Integer ident) ;
-  //! sets a begin of Scope (ends this line) <br>
-  Standard_EXPORT     void SendScope() ;
-  //! sets an end of Scope  (on a separate line) <br>
-  Standard_EXPORT     void SendEndscope() ;
-  //! sets a comment mark : if mode is True, begins Comment zone, <br>
-//!           if mode is False, ends Comment zone (if one is begun) <br>
-  Standard_EXPORT     void Comment(const Standard_Boolean mode) ;
-  //! sends a comment. Error if we are not inside a comment zone <br>
-  Standard_EXPORT     void SendComment(const Handle(TCollection_HAsciiString)& text) ;
-  //! same as above but accepts a CString (ex.: "..." directly) <br>
-  Standard_EXPORT     void SendComment(const Standard_CString text) ;
-  //! sets entity's StepType, opens brakets, starts param no to 0 <br>
-//!           params are separated by comma <br>
-//!           Remark : for a Multiple Type Entity (see Express ANDOR clause) <br>
-//!           StartComplex must be called before sending componants, then <br>
-//!           each "Componant" must be send separately (one call to <br>
-//!           StartEntity for each one) : the Type which preceeds is then <br>
-//!           automaticaly closed. Once all the componants have been sent, <br>
-//!           EndComplex must be called, then and only then EndEntity <br>
-  Standard_EXPORT     void StartEntity(const TCollection_AsciiString& atype) ;
-  //! sends the start of a complex entity, which is a simple open <br>
-//!           bracket (without increasing braket level) <br>
-//!           It must be called JUST AFTER SendEntity and BEFORE sending <br>
-//!           componants, each one begins by StartEntity <br>
-  Standard_EXPORT     void StartComplex() ;
-  //! sends the end of a complex entity : a simple closed bracket <br>
-//!           It must be called AFTER sending all the componants and BEFORE <br>
-//!           the final call to EndEntity <br>
-  Standard_EXPORT     void EndComplex() ;
-  //! Sends the content of a field, controlled by its descriptor <br>
-//!           If the descriptor is not defined, follows the description <br>
-//!           detained by the field itself <br>
-  Standard_EXPORT     void SendField(const StepData_Field& fild,const Handle(StepData_PDescr)& descr) ;
-  //! Sends a SelectMember, which cab be named or not <br>
-  Standard_EXPORT     void SendSelect(const Handle(StepData_SelectMember)& sm,const Handle(StepData_PDescr)& descr) ;
-  //! Send the content of an entity as being a FieldList controlled <br>
-//!           by its descriptor. This includes start and end brackets but <br>
-//!           not the entity type <br>
-  Standard_EXPORT     void SendList(const StepData_FieldList& list,const Handle(StepData_ESDescr)& descr) ;
-  //! open a sublist by a '(' <br>
-  Standard_EXPORT     void OpenSub() ;
-  //! open a sublist with its type then a '(' <br>
-  Standard_EXPORT     void OpenTypedSub(const Standard_CString subtype) ;
-  //! closes a sublist by a ')' <br>
-  Standard_EXPORT     void CloseSub() ;
-  //! prepares adding a parameter (that is, adds ',' except for <br>
-//!           first one); normally for internal use; can be used to send <br>
-//!           a totally empty parameter (with no litteral value) <br>
-  Standard_EXPORT     void AddParam() ;
-  //! sends an integer parameter <br>
-  Standard_EXPORT     void Send(const Standard_Integer val) ;
-  //! sends a real parameter (wroks with FloatWriter) <br>
-  Standard_EXPORT     void Send(const Standard_Real val) ;
-  //! sends a text given as string (it will be set between '...') <br>
-  Standard_EXPORT     void Send(const TCollection_AsciiString& val) ;
-  //! sends a reference to an entity (its identifier with '#') <br>
-//!           REMARK 1 : a Null <val> is interpreted as "Undefined" <br>
-//!           REMARK 2 : for an HAsciiString which is not recorded in the <br>
-//!           Model, it is send as its String Content, between quotes <br>
-  Standard_EXPORT     void Send(const Handle(Standard_Transient)& val) ;
-  //! sends a Boolean as .T. for True or .F. for False <br>
-//!           (it is an useful case of Enum, which is built-in) <br>
-  Standard_EXPORT     void SendBoolean(const Standard_Boolean val) ;
-  //! sends a Logical as .T. or .F. or .U. according its Value <br>
-//!           (it is a standard case of Enum for Step, and is built-in) <br>
-  Standard_EXPORT     void SendLogical(const StepData_Logical val) ;
-  //! sends a string exactly as it is given <br>
-  Standard_EXPORT     void SendString(const TCollection_AsciiString& val) ;
-  //! sends a string exactly as it is given <br>
-  Standard_EXPORT     void SendString(const Standard_CString val) ;
-  //! sends an enum given by String (litteral expression) <br>
-//!           adds '.' around it if not done <br>
-//!           Remark : val can be computed by class EnumTool from StepData: <br>
-//!             StepWriter.SendEnum (myenum.Text(enumval)); <br>
-  Standard_EXPORT     void SendEnum(const TCollection_AsciiString& val) ;
-  //! sends an enum given by String (litteral expression) <br>
-//!           adds '.' around it if not done <br>
-  Standard_EXPORT     void SendEnum(const Standard_CString val) ;
-  //! sends an array of real <br>
-  Standard_EXPORT     void SendArrReal(const Handle(TColStd_HArray1OfReal)& anArr) ;
-  //! sends an undefined (optionnal absent) parameter (by '$') <br>
-  Standard_EXPORT     void SendUndef() ;
-  //! sends a "Derived" parameter (by '*'). A Derived Parameter has <br>
-//!           been inherited from a Super-Type then redefined as being <br>
-//!           computed by a function. Hence its value in file is senseless. <br>
-  Standard_EXPORT     void SendDerived() ;
-  //! sends end of entity (closing bracket plus ';') <br>
-//!           Error if count of opened-closed brackets is not null <br>
-  Standard_EXPORT     void EndEntity() ;
-  //! Returns the check-list, which has received possible checks : <br>
-//!           for unknown entities, badly loaded ones, null or unknown <br>
-//!           references <br>
-  Standard_EXPORT     Interface_CheckIterator CheckList() const;
-  //! Returns count of Lines <br>
-  Standard_EXPORT     Standard_Integer NbLines() const;
-  //! Returns a Line given its rank in the File <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Line(const Standard_Integer num) const;
-  //! writes result on an output defined as an OStream <br>
-//!           then clears it <br>
-  Standard_EXPORT     Standard_Boolean Print(Standard_OStream& S) ;
-
+  
+  //! Creates an empty StepWriter from a StepModel. The StepModel
+  //! provides the Number of Entities, as identifiers for File
+  Standard_EXPORT StepData_StepWriter(const Handle(StepData_StepModel)& amodel);
+  
+  //! ModeLabel controls how to display entity ids :
+  //! 0 (D) gives entity number in the model
+  //! 1 gives the already recorded label (else, its number)
+  //! Warning : conflicts are not controlled
+  Standard_EXPORT   Standard_Integer& LabelMode() ;
+  
+  //! TypeMode  controls the type form to use :
+  //! 0 (D) for normal long form
+  //! 1 for short form (if a type name has no short form, normal
+  //! long form is then used)
+  Standard_EXPORT   Standard_Integer& TypeMode() ;
+  
+  //! Returns the embedded FloatWriter, which controls sending Reals
+  //! Use this method to access FloatWriter in order to consult or
+  //! change its options (MainFormat, FormatForRange,ZeroSuppress),
+  //! because it is returned as the address of its field
+  Standard_EXPORT   Interface_FloatWriter& FloatWriter() ;
+  
+  //! Declares the Entity Number <numscope> to correspond to a Scope
+  //! which contains the Entity Number <numin>. Several calls to the
+  //! same <numscope> add Entities in this Scope, in this order.
+  //! Error if <numin> is already declared in the Scope
+  //! Warning : the declaration of the Scopes is assumed to be consistent,
+  //! i.e. <numin> is not referenced from outside this Scope
+  //! (not checked here)
+  Standard_EXPORT   void SetScope (const Standard_Integer numscope, const Standard_Integer numin) ;
+  
+  //! Returns True if an Entity identified by its Number is in a Scope
+  Standard_EXPORT   Standard_Boolean IsInScope (const Standard_Integer num)  const;
+  
+  //! Sends the complete Model, included HEADER and DATA Sections
+  //! Works with a WriterLib defined through a Protocol
+  //! If <headeronly> is given True, only the HEADER Section is sent
+  //! (used to Dump the Header of a StepModel)
+  Standard_EXPORT   void SendModel (const Handle(StepData_Protocol)& protocol, const Standard_Boolean headeronly = Standard_False) ;
+  
+  //! Begins model header
+  Standard_EXPORT   void SendHeader() ;
+  
+  //! Begins data section; error if EndSec was not set
+  Standard_EXPORT   void SendData() ;
+  
+  //! Send an Entity of the Data Section. If it corresponds to a
+  //! Scope, also Sends the Scope informations and contained Items
+  Standard_EXPORT   void SendEntity (const Standard_Integer nument, const StepData_WriterLib& lib) ;
+  
+  //! sets end of section; to be done before passing to next one
+  Standard_EXPORT   void EndSec() ;
+  
+  //! sets end of file; error is EndSec was not set
+  Standard_EXPORT   void EndFile() ;
+  
+  //! flushes current line; if empty, flushes it (defines a new
+  //! empty line) if evenempty is True; else, skips it
+  Standard_EXPORT   void NewLine (const Standard_Boolean evenempty) ;
+  
+  //! joins current line to last one, only if new length is 72 max
+  //! if newline is True, a new current line begins; else, current
+  //! line is set to the last line (once joined) itself an can be
+  //! completed
+  Standard_EXPORT   void JoinLast (const Standard_Boolean newline) ;
+  
+  //! asks that further indentations will begin at position of
+  //! entity first opening bracket; else they begin at zero (def)
+  //! for each sublist level, two more blancks are added at beginning
+  //! (except for text continuation, which must begin at true zero)
+  Standard_EXPORT   void Indent (const Standard_Boolean onent) ;
+  
+  //! begins an entity with an ident plus '=' (at beginning of line)
+  //! entity ident is its Number given by the containing Model
+  //! Warning : <ident> must be, either Number or Label, according LabelMode
+  Standard_EXPORT   void SendIdent (const Standard_Integer ident) ;
+  
+  //! sets a begin of Scope (ends this line)
+  Standard_EXPORT   void SendScope() ;
+  
+  //! sets an end of Scope  (on a separate line)
+  Standard_EXPORT   void SendEndscope() ;
+  
+  //! sets a comment mark : if mode is True, begins Comment zone,
+  //! if mode is False, ends Comment zone (if one is begun)
+  Standard_EXPORT   void Comment (const Standard_Boolean mode) ;
+  
+  //! sends a comment. Error if we are not inside a comment zone
+  Standard_EXPORT   void SendComment (const Handle(TCollection_HAsciiString)& text) ;
+  
+  //! same as above but accepts a CString (ex.: "..." directly)
+  Standard_EXPORT   void SendComment (const Standard_CString text) ;
+  
+  //! sets entity's StepType, opens brakets, starts param no to 0
+  //! params are separated by comma
+  //! Remark : for a Multiple Type Entity (see Express ANDOR clause)
+  //! StartComplex must be called before sending componants, then
+  //! each "Componant" must be send separately (one call to
+  //! StartEntity for each one) : the Type which preceeds is then
+  //! automaticaly closed. Once all the componants have been sent,
+  //! EndComplex must be called, then and only then EndEntity
+  Standard_EXPORT   void StartEntity (const TCollection_AsciiString& atype) ;
+  
+  //! sends the start of a complex entity, which is a simple open
+  //! bracket (without increasing braket level)
+  //! It must be called JUST AFTER SendEntity and BEFORE sending
+  //! componants, each one begins by StartEntity
+  Standard_EXPORT   void StartComplex() ;
+  
+  //! sends the end of a complex entity : a simple closed bracket
+  //! It must be called AFTER sending all the componants and BEFORE
+  //! the final call to EndEntity
+  Standard_EXPORT   void EndComplex() ;
+  
+  //! Sends the content of a field, controlled by its descriptor
+  //! If the descriptor is not defined, follows the description
+  //! detained by the field itself
+  Standard_EXPORT   void SendField (const StepData_Field& fild, const Handle(StepData_PDescr)& descr) ;
+  
+  //! Sends a SelectMember, which cab be named or not
+  Standard_EXPORT   void SendSelect (const Handle(StepData_SelectMember)& sm, const Handle(StepData_PDescr)& descr) ;
+  
+  //! Send the content of an entity as being a FieldList controlled
+  //! by its descriptor. This includes start and end brackets but
+  //! not the entity type
+  Standard_EXPORT   void SendList (const StepData_FieldList& list, const Handle(StepData_ESDescr)& descr) ;
+  
+  //! open a sublist by a '('
+  Standard_EXPORT   void OpenSub() ;
+  
+  //! open a sublist with its type then a '('
+  Standard_EXPORT   void OpenTypedSub (const Standard_CString subtype) ;
+  
+  //! closes a sublist by a ')'
+  Standard_EXPORT   void CloseSub() ;
+  
+  //! prepares adding a parameter (that is, adds ',' except for
+  //! first one); normally for internal use; can be used to send
+  //! a totally empty parameter (with no litteral value)
+  Standard_EXPORT   void AddParam() ;
+  
+  //! sends an integer parameter
+  Standard_EXPORT   void Send (const Standard_Integer val) ;
+  
+  //! sends a real parameter (wroks with FloatWriter)
+  Standard_EXPORT   void Send (const Standard_Real val) ;
+  
+  //! sends a text given as string (it will be set between '...')
+  Standard_EXPORT   void Send (const TCollection_AsciiString& val) ;
+  
+  //! sends a reference to an entity (its identifier with '#')
+  //! REMARK 1 : a Null <val> is interpreted as "Undefined"
+  //! REMARK 2 : for an HAsciiString which is not recorded in the
+  //! Model, it is send as its String Content, between quotes
+  Standard_EXPORT   void Send (const Handle(Standard_Transient)& val) ;
+  
+  //! sends a Boolean as .T. for True or .F. for False
+  //! (it is an useful case of Enum, which is built-in)
+  Standard_EXPORT   void SendBoolean (const Standard_Boolean val) ;
+  
+  //! sends a Logical as .T. or .F. or .U. according its Value
+  //! (it is a standard case of Enum for Step, and is built-in)
+  Standard_EXPORT   void SendLogical (const StepData_Logical val) ;
+  
+  //! sends a string exactly as it is given
+  Standard_EXPORT   void SendString (const TCollection_AsciiString& val) ;
+  
+  //! sends a string exactly as it is given
+  Standard_EXPORT   void SendString (const Standard_CString val) ;
+  
+  //! sends an enum given by String (litteral expression)
+  //! adds '.' around it if not done
+  //! Remark : val can be computed by class EnumTool from StepData:
+  //! StepWriter.SendEnum (myenum.Text(enumval));
+  Standard_EXPORT   void SendEnum (const TCollection_AsciiString& val) ;
+  
+  //! sends an enum given by String (litteral expression)
+  //! adds '.' around it if not done
+  Standard_EXPORT   void SendEnum (const Standard_CString val) ;
+  
+  //! sends an array of real
+  Standard_EXPORT   void SendArrReal (const Handle(TColStd_HArray1OfReal)& anArr) ;
+  
+  //! sends an undefined (optionnal absent) parameter (by '$')
+  Standard_EXPORT   void SendUndef() ;
+  
+  //! sends a "Derived" parameter (by '*'). A Derived Parameter has
+  //! been inherited from a Super-Type then redefined as being
+  //! computed by a function. Hence its value in file is senseless.
+  Standard_EXPORT   void SendDerived() ;
+  
+  //! sends end of entity (closing bracket plus ';')
+  //! Error if count of opened-closed brackets is not null
+  Standard_EXPORT   void EndEntity() ;
+  
+  //! Returns the check-list, which has received possible checks :
+  //! for unknown entities, badly loaded ones, null or unknown
+  //! references
+  Standard_EXPORT   Interface_CheckIterator CheckList()  const;
+  
+  //! Returns count of Lines
+  Standard_EXPORT   Standard_Integer NbLines()  const;
+  
+  //! Returns a Line given its rank in the File
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Line (const Standard_Integer num)  const;
+  
+  //! writes result on an output defined as an OStream
+  //! then clears it
+  Standard_EXPORT   Standard_Boolean Print (Standard_OStream& S) ;
 
 
 
@@ -276,32 +282,34 @@ protected:
 
 private:
 
-  //! adds a string to current line; first flushes it if full <br>
-//!           (72 char); more allows to ask a reserve at end of line : flush <br>
-//!           is done if remaining length (to 72) is less than <more> <br>
-  Standard_EXPORT     void AddString(const TCollection_AsciiString& str,const Standard_Integer more = 0) ;
-  //! Same as above, but the string is given by CString + Length <br>
-  Standard_EXPORT     void AddString(const Standard_CString str,const Standard_Integer lnstr,const Standard_Integer more = 0) ;
+  
+  //! adds a string to current line; first flushes it if full
+  //! (72 char); more allows to ask a reserve at end of line : flush
+  //! is done if remaining length (to 72) is less than <more>
+  Standard_EXPORT   void AddString (const TCollection_AsciiString& str, const Standard_Integer more = 0) ;
+  
+  //! Same as above, but the string is given by CString + Length
+  Standard_EXPORT   void AddString (const Standard_CString str, const Standard_Integer lnstr, const Standard_Integer more = 0) ;
 
 
-Handle_StepData_StepModel themodel;
-Handle_TColStd_HSequenceOfHAsciiString thefile;
-Interface_LineBuffer thecurr;
-Standard_Boolean thesect;
-Standard_Boolean thecomm;
-Standard_Boolean thefirst;
-Standard_Boolean themult;
-Standard_Integer thelevel;
-Standard_Boolean theindent;
-Standard_Integer theindval;
-Standard_Integer thetypmode;
-Interface_FloatWriter thefloatw;
-Interface_CheckIterator thechecks;
-Standard_Integer thenum;
-Standard_Integer thelabmode;
-Handle_TColStd_HArray1OfInteger thescopebeg;
-Handle_TColStd_HArray1OfInteger thescopeend;
-Handle_TColStd_HArray1OfInteger thescopenext;
+  Handle(StepData_StepModel) themodel;
+  Handle(TColStd_HSequenceOfHAsciiString) thefile;
+  Interface_LineBuffer thecurr;
+  Standard_Boolean thesect;
+  Standard_Boolean thecomm;
+  Standard_Boolean thefirst;
+  Standard_Boolean themult;
+  Standard_Integer thelevel;
+  Standard_Boolean theindent;
+  Standard_Integer theindval;
+  Standard_Integer thetypmode;
+  Interface_FloatWriter thefloatw;
+  Interface_CheckIterator thechecks;
+  Standard_Integer thenum;
+  Standard_Integer thelabmode;
+  Handle(TColStd_HArray1OfInteger) thescopebeg;
+  Handle(TColStd_HArray1OfInteger) thescopeend;
+  Handle(TColStd_HArray1OfInteger) thescopenext;
 
 
 };
@@ -310,7 +318,6 @@ Handle_TColStd_HArray1OfInteger thescopenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_StepWriter_HeaderFile

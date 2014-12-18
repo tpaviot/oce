@@ -6,25 +6,13 @@
 #ifndef _TopTools_StdMapNodeOfMapOfShape_HeaderFile
 #define _TopTools_StdMapNodeOfMapOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopTools_StdMapNodeOfMapOfShape_HeaderFile
 #include <Handle_TopTools_StdMapNodeOfMapOfShape.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
 class TopTools_MapOfShape;
@@ -32,14 +20,15 @@ class TopTools_MapIteratorOfMapOfShape;
 
 
 
-class TopTools_StdMapNodeOfMapOfShape : public TCollection_MapNode {
+class TopTools_StdMapNodeOfMapOfShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TopTools_StdMapNodeOfMapOfShape(const TopoDS_Shape& K,const TCollection_MapNodePtr& n);
+    TopTools_StdMapNodeOfMapOfShape(const TopoDS_Shape& K, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
 
 
 
@@ -54,7 +43,7 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
+  TopoDS_Shape myKey;
 
 
 };
@@ -88,7 +77,6 @@ TopoDS_Shape myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_StdMapNodeOfMapOfShape_HeaderFile

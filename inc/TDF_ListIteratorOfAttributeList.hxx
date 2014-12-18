@@ -6,28 +6,14 @@
 #ifndef _TDF_ListIteratorOfAttributeList_HeaderFile
 #define _TDF_ListIteratorOfAttributeList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_ListNodeOfAttributeList_HeaderFile
 #include <Handle_TDF_ListNodeOfAttributeList.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TDF_AttributeList;
@@ -36,27 +22,27 @@ class TDF_ListNodeOfAttributeList;
 
 
 
-class TDF_ListIteratorOfAttributeList  {
+class TDF_ListIteratorOfAttributeList 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_ListIteratorOfAttributeList();
+  Standard_EXPORT TDF_ListIteratorOfAttributeList();
   
-  Standard_EXPORT   TDF_ListIteratorOfAttributeList(const TDF_AttributeList& L);
+  Standard_EXPORT TDF_ListIteratorOfAttributeList(const TDF_AttributeList& L);
   
-  Standard_EXPORT     void Initialize(const TDF_AttributeList& L) ;
+  Standard_EXPORT   void Initialize (const TDF_AttributeList& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_TDF_Attribute& Value() const;
+  Standard_EXPORT   Handle(TDF_Attribute)& Value()  const;
 
 
 friend class TDF_AttributeList;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_TDF_Attribute
+#define Item Handle(TDF_Attribute)
 #define Item_hxx <TDF_Attribute.hxx>
 #define TCollection_ListNode TDF_ListNodeOfAttributeList
 #define TCollection_ListNode_hxx <TDF_ListNodeOfAttributeList.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_ListIteratorOfAttributeList_HeaderFile

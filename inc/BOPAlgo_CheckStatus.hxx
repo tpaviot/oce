@@ -6,8 +6,11 @@
 #ifndef _BOPAlgo_CheckStatus_HeaderFile
 #define _BOPAlgo_CheckStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum BOPAlgo_CheckStatus {
+
+enum BOPAlgo_CheckStatus
+{
 BOPAlgo_CheckUnknown,
 BOPAlgo_BadType,
 BOPAlgo_SelfIntersect,
@@ -18,11 +21,8 @@ BOPAlgo_IncompatibilityOfEdge,
 BOPAlgo_IncompatibilityOfFace,
 BOPAlgo_OperationAborted,
 BOPAlgo_GeomAbs_C0,
+BOPAlgo_InvalidCurveOnSurface,
 BOPAlgo_NotValid
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BOPAlgo_CheckStatus_HeaderFile

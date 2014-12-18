@@ -37,18 +37,6 @@
 #include <Storage_StreamExtCharParityError.hxx>
 #include <Standard_ErrorHandler.hxx>
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
-#if defined(HAVE_TIME_H) || defined(WNT)
-# include <time.h>
-#endif
-
-#ifdef HAVE_SYS_TIME_H
-# include <sys/time.h>
-#endif
-
 #include <locale.h>
 #include <stdio.h>
 
@@ -1371,7 +1359,7 @@ Standard_Boolean Storage_Schema::CheckTypeMigration(
 	      aFile.Close();
 	      break;
 	    }
-#ifdef DATATYPE_MIGRATION_DEB
+#ifdef OCCT_DEBUG
 	    cout << "Storage_Sheme:: Line: = " << aLine <<endl;
 #endif
 	    TCollection_AsciiString aKey, aValue;
@@ -1381,7 +1369,7 @@ Standard_Boolean Storage_Schema::CheckTypeMigration(
 	  }
 	}
       }
-#ifdef DATATYPE_MIGRATION_DEB
+#ifdef OCCT_DEBUG
       cout << "Storage_Sheme:: aDataMap.Size = " << aDMap.Extent() <<endl;
 #endif
     }
@@ -1392,7 +1380,7 @@ Standard_Boolean Storage_Schema::CheckTypeMigration(
       newName.Clear();
       newName = aDMap.Find(oldName);
       aMigration = Standard_True;
-#ifdef DATATYPE_MIGRATION_DEB
+#ifdef OCCT_DEBUG
       cout << " newName = " << newName << endl;
 #endif
     }
@@ -1430,7 +1418,7 @@ static Standard_Boolean         result;
 #ifdef DATATYPE_MIGRATION
 	TCollection_AsciiString  newName;	
 	if(CheckTypeMigration(typeName, newName)) {
-#ifdef DATATYPE_MIGRATION_DEB
+#ifdef OCCT_DEBUG
 	  cout << "CheckTypeMigration:OldType = " <<typeName << " Len = "<<typeName.Length()<<endl;
 	  cout << "CheckTypeMigration:NewType = " <<newName  << " Len = "<< newName.Length()<<endl;
 #endif
@@ -1553,12 +1541,20 @@ TCollection_AsciiString Storage_Schema::ICreationDate()
   time_t nowbin;
   struct tm *nowstruct;
   if (time(&nowbin) == (time_t)-1)
+  {
+#ifdef OCCT_DEBUG
     cerr << "Storage ERROR : Could not get time of day from time()" << endl;
+#endif
+  }
 
   nowstruct = localtime(&nowbin);
 
   if (strftime(nowstr, SLENGTH, "%m/%d/%Y", nowstruct) == (size_t) 0)
+  {
+#ifdef OCCT_DEBUG
     cerr << "Storage ERROR : Could not get string from strftime()" << endl;
+#endif
+  }
 
   TCollection_AsciiString t(nowstr);
   return t;

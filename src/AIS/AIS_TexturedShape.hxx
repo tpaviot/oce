@@ -22,17 +22,13 @@
 #include <Image_PixMap.hxx>
 #include <Standard_DefineHandle.hxx>
 #include <TCollection_AsciiString.hxx>
-#include <Handle_Graphic3d_AspectFillArea3d.hxx>
-#include <Handle_Graphic3d_Texture2Dmanual.hxx>
-#include <Handle_Prs3d_Presentation.hxx>
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
+#include <Graphic3d_AspectFillArea3d.hxx>
+#include <Graphic3d_Texture2Dmanual.hxx>
+#include <Prs3d_Presentation.hxx>
+#include <PrsMgr_PresentationManager3d.hxx>
 
 class Graphic3d_AspectFillArea3d;
 class Graphic3d_Texture2Dmanual;
-class TopoDS_Shape;
-class TCollection_AsciiString;
-class PrsMgr_PresentationManager3d;
-class Prs3d_Presentation;
 
 //! This class allows to map textures on shapes.
 //! Presentations modes AIS_WireFrame (0) and AIS_Shaded (1) behave in the same manner as in AIS_Shape,
@@ -102,6 +98,18 @@ public: //! @name methods to alter texture mapping properties
   //! @endcode
   Standard_EXPORT void UpdateAttributes();
 
+  //! Sets the color.
+  Standard_EXPORT virtual void SetColor (const Quantity_Color& theColor);
+
+  //! Removes settings for the color.
+  Standard_EXPORT virtual void UnsetColor();
+
+  //! Sets the material aspect.
+  Standard_EXPORT virtual void SetMaterial (const Graphic3d_MaterialAspect& theAspect);
+
+  //! Removes settings for material aspect.
+  Standard_EXPORT virtual void UnsetMaterial();
+
   //! Enables texture modulation
   Standard_EXPORT void EnableTextureModulate();
 
@@ -159,7 +167,7 @@ public: //! @name methods to alter texture mapping properties
   Standard_Boolean ShowTriangles() const { return myToShowTriangles; }
 
   //! Use this method to show the triangulation of the shape (for debugging etc.).
-  Standard_EXPORT void ShowTriangles (const Standard_Boolean theToShowTriangles = Standard_False);
+  Standard_EXPORT void ShowTriangles (const Standard_Boolean theToShowTriangles);
 
   //! @return true if texture color modulation is turned on
   Standard_Boolean TextureModulate() const { return myModulate; }
@@ -170,6 +178,8 @@ protected: //! @name overridden methods
   Standard_EXPORT virtual void Compute (const Handle(PrsMgr_PresentationManager3d)& thePrsMgr,
                                         const Handle(Prs3d_Presentation)&           thePrs,
                                         const Standard_Integer                      theMode);
+
+  Standard_EXPORT void updateAttributes (const Handle(Prs3d_Presentation)& thePrs);
 
 protected: //! @name presentation fields
 

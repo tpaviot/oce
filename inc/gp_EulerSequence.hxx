@@ -6,8 +6,11 @@
 #ifndef _gp_EulerSequence_HeaderFile
 #define _gp_EulerSequence_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum gp_EulerSequence {
+
+enum gp_EulerSequence
+{
 gp_EulerAngles,
 gp_YawPitchRoll,
 gp_Extrinsic_XYZ,
@@ -36,8 +39,4 @@ gp_Intrinsic_ZXZ,
 gp_Intrinsic_ZYZ
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _gp_EulerSequence_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_MeshVS_ElementalColorPrsBuilder_HeaderFile
 #define _Handle_MeshVS_ElementalColorPrsBuilder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MeshVS_PrsBuilder_HeaderFile
 #include <Handle_MeshVS_PrsBuilder.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MeshVS_PrsBuilder);
 class MeshVS_ElementalColorPrsBuilder;
 
-DEFINE_STANDARD_HANDLE(MeshVS_ElementalColorPrsBuilder,MeshVS_PrsBuilder)
+DEFINE_STANDARD_HANDLE(MeshVS_ElementalColorPrsBuilder, MeshVS_PrsBuilder)
 
-#endif
+#endif // _Handle_MeshVS_ElementalColorPrsBuilder_HeaderFile

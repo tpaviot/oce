@@ -6,19 +6,11 @@
 #ifndef _TNaming_NamingTool_HeaderFile
 #define _TNaming_NamingTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
 class TDF_LabelMap;
 class TNaming_NamedShape;
 class TopTools_MapOfShape;
@@ -27,18 +19,18 @@ class TopoDS_Shape;
 
 
 
-class TNaming_NamingTool  {
+class TNaming_NamingTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void CurrentShape(const TDF_LabelMap& Valid,const TDF_LabelMap& Forbiden,const Handle(TNaming_NamedShape)& NS,TopTools_MapOfShape& MS) ;
+  Standard_EXPORT static   void CurrentShape (const TDF_LabelMap& Valid, const TDF_LabelMap& Forbiden, const Handle(TNaming_NamedShape)& NS, TopTools_MapOfShape& MS) ;
   
-  Standard_EXPORT   static  void CurrentShapeFromShape(const TDF_LabelMap& Valid,const TDF_LabelMap& Forbiden,const TDF_Label& Acces,const TopoDS_Shape& S,TopTools_MapOfShape& MS) ;
+  Standard_EXPORT static   void CurrentShapeFromShape (const TDF_LabelMap& Valid, const TDF_LabelMap& Forbiden, const TDF_Label& Acces, const TopoDS_Shape& S, TopTools_MapOfShape& MS) ;
   
-  Standard_EXPORT   static  void BuildDescendants(const Handle(TNaming_NamedShape)& NS,TDF_LabelMap& Labels) ;
-
+  Standard_EXPORT static   void BuildDescendants (const Handle(TNaming_NamedShape)& NS, TDF_LabelMap& Labels) ;
 
 
 
@@ -61,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_NamingTool_HeaderFile

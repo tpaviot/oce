@@ -6,16 +6,15 @@
 #ifndef _GeomFill_PipeError_HeaderFile
 #define _GeomFill_PipeError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum GeomFill_PipeError {
+
+enum GeomFill_PipeError
+{
 GeomFill_PipeOk,
 GeomFill_PipeNotOk,
 GeomFill_PlaneNotIntersectGuide,
 GeomFill_ImpossibleContact
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GeomFill_PipeError_HeaderFile

@@ -5,24 +5,14 @@
 
 #include <GeomFill_Array1OfLocationLaw.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _GeomFill_LocationLaw_HeaderFile
 #include <GeomFill_LocationLaw.hxx>
-#endif
  
 
-#define Array1Item Handle_GeomFill_LocationLaw
+#define Array1Item Handle(GeomFill_LocationLaw)
 #define Array1Item_hxx <GeomFill_LocationLaw.hxx>
 #define TCollection_Array1 GeomFill_Array1OfLocationLaw
 #define TCollection_Array1_hxx <GeomFill_Array1OfLocationLaw.hxx>

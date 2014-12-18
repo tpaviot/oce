@@ -6,22 +6,15 @@
 #ifndef _Handle_ShapeFix_Solid_HeaderFile
 #define _Handle_ShapeFix_Solid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_ShapeFix_Root_HeaderFile
 #include <Handle_ShapeFix_Root.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(ShapeFix_Root);
 class ShapeFix_Solid;
 
-DEFINE_STANDARD_HANDLE(ShapeFix_Solid,ShapeFix_Root)
+DEFINE_STANDARD_HANDLE(ShapeFix_Solid, ShapeFix_Root)
 
-#endif
+#endif // _Handle_ShapeFix_Solid_HeaderFile

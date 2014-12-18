@@ -6,38 +6,38 @@
 #ifndef _DPrsStd_HeaderFile
 #define _DPrsStd_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-class Draw_Interpretor;
+#include <Draw_Interpretor.hxx>
 
 
-//!  commands for presentation based on AIS <br>
-//!           ====================================== <br>
-class DPrsStd  {
+//! commands for presentation based on AIS
+//! ======================================
+class DPrsStd 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Presentation commands <br>
-//!          ===================== <br>//! to load all sketch commands <br>
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& I) ;
-  //! to display....etc... ais presentation <br>
-  Standard_EXPORT   static  void AISPresentationCommands(Draw_Interpretor& I) ;
-  //! to repaint...etc... ais viewer <br>
-  Standard_EXPORT   static  void AISViewerCommands(Draw_Interpretor& I) ;
-  //! set/get position attribute <br>
-  Standard_EXPORT   static  void BasicCommands(Draw_Interpretor& I) ;
-  //! Loads all Draw commands of  TKDCAF. Used for plugin. <br>
-  Standard_EXPORT   static  void Factory(Draw_Interpretor& theDI) ;
-
+  
+  //! Presentation commands
+  //! =====================
+  //! to load all sketch commands
+  Standard_EXPORT static   void AllCommands (Draw_Interpretor& I) ;
+  
+  //! to display....etc... ais presentation
+  Standard_EXPORT static   void AISPresentationCommands (Draw_Interpretor& I) ;
+  
+  //! to repaint...etc... ais viewer
+  Standard_EXPORT static   void AISViewerCommands (Draw_Interpretor& I) ;
+  
+  //! set/get position attribute
+  Standard_EXPORT static   void BasicCommands (Draw_Interpretor& I) ;
+  
+  //! Loads all Draw commands of  TKDCAF. Used for plugin.
+  Standard_EXPORT static   void Factory (Draw_Interpretor& theDI) ;
 
 
 
@@ -60,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DPrsStd_HeaderFile

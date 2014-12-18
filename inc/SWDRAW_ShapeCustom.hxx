@@ -6,31 +6,26 @@
 #ifndef _SWDRAW_ShapeCustom_HeaderFile
 #define _SWDRAW_ShapeCustom_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-class Draw_Interpretor;
+#include <Draw_Interpretor.hxx>
 
 
-//! Contains commands to activate package ShapeCustom <br>
-//!          List of DRAW commands and corresponding functionalities: <br>
-//!          directfaces - ShapeCustom::DirectFaces <br>
-//!          scaleshape  - ShapeCustom::ScaleShape <br>
-class SWDRAW_ShapeCustom  {
+//! Contains commands to activate package ShapeCustom
+//! List of DRAW commands and corresponding functionalities:
+//! directfaces - ShapeCustom::DirectFaces
+//! scaleshape  - ShapeCustom::ScaleShape
+class SWDRAW_ShapeCustom 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Loads commands defined in ShapeCustom <br>
-  Standard_EXPORT   static  void InitCommands(Draw_Interpretor& theCommands) ;
-
+  
+  //! Loads commands defined in ShapeCustom
+  Standard_EXPORT static   void InitCommands (Draw_Interpretor& theCommands) ;
 
 
 
@@ -53,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SWDRAW_ShapeCustom_HeaderFile

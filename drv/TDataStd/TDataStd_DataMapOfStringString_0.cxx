@@ -5,21 +5,11 @@
 
 #include <TDataStd_DataMapOfStringString.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDataStd_DataMapNodeOfDataMapOfStringString_HeaderFile
 #include <TDataStd_DataMapNodeOfDataMapOfStringString.hxx>
-#endif
-#ifndef _TDataStd_DataMapIteratorOfDataMapOfStringString_HeaderFile
 #include <TDataStd_DataMapIteratorOfDataMapOfStringString.hxx>
-#endif
  
 
 #define TheKey TCollection_ExtendedString

@@ -6,22 +6,12 @@
 #ifndef _BRepLProp_HeaderFile
 #define _BRepLProp_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class BRepAdaptor_Curve;
 class BRepLProp_CurveTool;
 class BRepLProp_SurfaceTool;
@@ -29,23 +19,25 @@ class BRepLProp_CLProps;
 class BRepLProp_SLProps;
 
 
-//! These global functions compute the degree of <br>
-//! continuity of a curve built by concatenation of two <br>
-//! edges at their junction point. <br>
-class BRepLProp  {
+//! These global functions compute the degree of
+//! continuity of a curve built by concatenation of two
+//! edges at their junction point.
+class BRepLProp 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Computes the regularity at the junction between C1 and <br>
-//!          C2. The point u1 on C1 and the point u2 on  C2 must be <br>
-//!          confused.   tl  and ta  are  the  linear  and  angular <br>
-//!          tolerance used two compare the derivative. <br>
-  Standard_EXPORT   static  GeomAbs_Shape Continuity(const BRepAdaptor_Curve& C1,const BRepAdaptor_Curve& C2,const Standard_Real u1,const Standard_Real u2,const Standard_Real tl,const Standard_Real ta) ;
-  //! The  same  as  preciding   but   using  the   standard <br>
-//!          tolerances from package Precision. <br>
-  Standard_EXPORT   static  GeomAbs_Shape Continuity(const BRepAdaptor_Curve& C1,const BRepAdaptor_Curve& C2,const Standard_Real u1,const Standard_Real u2) ;
-
+  
+  //! Computes the regularity at the junction between C1 and
+  //! C2. The point u1 on C1 and the point u2 on  C2 must be
+  //! confused.   tl  and ta  are  the  linear  and  angular
+  //! tolerance used two compare the derivative.
+  Standard_EXPORT static   GeomAbs_Shape Continuity (const BRepAdaptor_Curve& C1, const BRepAdaptor_Curve& C2, const Standard_Real u1, const Standard_Real u2, const Standard_Real tl, const Standard_Real ta) ;
+  
+  //! The  same  as  preciding   but   using  the   standard
+  //! tolerances from package Precision.
+  Standard_EXPORT static   GeomAbs_Shape Continuity (const BRepAdaptor_Curve& C1, const BRepAdaptor_Curve& C2, const Standard_Real u1, const Standard_Real u2) ;
 
 
 
@@ -72,7 +64,6 @@ friend class BRepLProp_SLProps;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepLProp_HeaderFile

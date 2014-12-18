@@ -6,25 +6,13 @@
 #ifndef _GeomPlate_Array1OfSequenceOfReal_HeaderFile
 #define _GeomPlate_Array1OfSequenceOfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class TColStd_SequenceOfReal;
 
 
 
-class GeomPlate_Array1OfSequenceOfReal  {
+class GeomPlate_Array1OfSequenceOfReal 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      GeomPlate_Array1OfSequenceOfReal(const Standard_Integer Low,const Standard_Integer Up);
+    GeomPlate_Array1OfSequenceOfReal(const Standard_Integer Low, const Standard_Integer Up);
   
-      GeomPlate_Array1OfSequenceOfReal(const TColStd_SequenceOfReal& Item,const Standard_Integer Low,const Standard_Integer Up);
+    GeomPlate_Array1OfSequenceOfReal(const TColStd_SequenceOfReal& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const TColStd_SequenceOfReal& V) ;
+  Standard_EXPORT   void Init (const TColStd_SequenceOfReal& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~GeomPlate_Array1OfSequenceOfReal()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const GeomPlate_Array1OfSequenceOfReal& Assign(const GeomPlate_Array1OfSequenceOfReal& Other) ;
-   const GeomPlate_Array1OfSequenceOfReal& operator =(const GeomPlate_Array1OfSequenceOfReal& Other) 
+  Standard_EXPORT  const  GeomPlate_Array1OfSequenceOfReal& Assign (const GeomPlate_Array1OfSequenceOfReal& Other) ;
+ const  GeomPlate_Array1OfSequenceOfReal& operator = (const GeomPlate_Array1OfSequenceOfReal& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TColStd_SequenceOfReal& Value) ;
+      void SetValue (const Standard_Integer Index, const TColStd_SequenceOfReal& Value) ;
   
-       const TColStd_SequenceOfReal& Value(const Standard_Integer Index) const;
-     const TColStd_SequenceOfReal& operator ()(const Standard_Integer Index) const
+     const  TColStd_SequenceOfReal& Value (const Standard_Integer Index)  const;
+   const  TColStd_SequenceOfReal& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        TColStd_SequenceOfReal& ChangeValue(const Standard_Integer Index) ;
-      TColStd_SequenceOfReal& operator ()(const Standard_Integer Index) 
+      TColStd_SequenceOfReal& ChangeValue (const Standard_Integer Index) ;
+    TColStd_SequenceOfReal& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   GeomPlate_Array1OfSequenceOfReal(const GeomPlate_Array1OfSequenceOfReal& AnArray);
+  Standard_EXPORT GeomPlate_Array1OfSequenceOfReal(const GeomPlate_Array1OfSequenceOfReal& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomPlate_Array1OfSequenceOfReal_HeaderFile

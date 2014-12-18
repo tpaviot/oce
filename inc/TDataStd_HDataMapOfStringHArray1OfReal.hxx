@@ -6,42 +6,31 @@
 #ifndef _TDataStd_HDataMapOfStringHArray1OfReal_HeaderFile
 #define _TDataStd_HDataMapOfStringHArray1OfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_HDataMapOfStringHArray1OfReal_HeaderFile
 #include <Handle_TDataStd_HDataMapOfStringHArray1OfReal.hxx>
-#endif
 
-#ifndef _TDataStd_DataMapOfStringHArray1OfReal_HeaderFile
 #include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TDataStd_DataMapOfStringHArray1OfReal;
 
 
-//! Extension of TDataStd_DataMapOfStringHArray1OfReal class <br>
-//!          to be manipulated by handle. <br>
-class TDataStd_HDataMapOfStringHArray1OfReal : public MMgt_TShared {
+//! Extension of TDataStd_DataMapOfStringHArray1OfReal class
+//! to be manipulated by handle.
+class TDataStd_HDataMapOfStringHArray1OfReal : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   TDataStd_HDataMapOfStringHArray1OfReal(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TDataStd_HDataMapOfStringHArray1OfReal(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT   TDataStd_HDataMapOfStringHArray1OfReal(const TDataStd_DataMapOfStringHArray1OfReal& theOther);
+  Standard_EXPORT TDataStd_HDataMapOfStringHArray1OfReal(const TDataStd_DataMapOfStringHArray1OfReal& theOther);
   
-       const TDataStd_DataMapOfStringHArray1OfReal& Map() const;
+     const  TDataStd_DataMapOfStringHArray1OfReal& Map()  const;
   
-        TDataStd_DataMapOfStringHArray1OfReal& ChangeMap() ;
+      TDataStd_DataMapOfStringHArray1OfReal& ChangeMap() ;
 
 
 
@@ -56,7 +45,7 @@ protected:
 private: 
 
 
-TDataStd_DataMapOfStringHArray1OfReal myMap;
+  TDataStd_DataMapOfStringHArray1OfReal myMap;
 
 
 };
@@ -66,7 +55,6 @@ TDataStd_DataMapOfStringHArray1OfReal myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_HDataMapOfStringHArray1OfReal_HeaderFile

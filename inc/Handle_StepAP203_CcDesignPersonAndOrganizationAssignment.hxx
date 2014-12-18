@@ -6,22 +6,15 @@
 #ifndef _Handle_StepAP203_CcDesignPersonAndOrganizationAssignment_HeaderFile
 #define _Handle_StepAP203_CcDesignPersonAndOrganizationAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_PersonAndOrganizationAssignment_HeaderFile
 #include <Handle_StepBasic_PersonAndOrganizationAssignment.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_PersonAndOrganizationAssignment);
 class StepAP203_CcDesignPersonAndOrganizationAssignment;
 
-DEFINE_STANDARD_HANDLE(StepAP203_CcDesignPersonAndOrganizationAssignment,StepBasic_PersonAndOrganizationAssignment)
+DEFINE_STANDARD_HANDLE(StepAP203_CcDesignPersonAndOrganizationAssignment, StepBasic_PersonAndOrganizationAssignment)
 
-#endif
+#endif // _Handle_StepAP203_CcDesignPersonAndOrganizationAssignment_HeaderFile

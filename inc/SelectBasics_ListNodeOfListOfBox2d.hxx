@@ -6,39 +6,28 @@
 #ifndef _SelectBasics_ListNodeOfListOfBox2d_HeaderFile
 #define _SelectBasics_ListNodeOfListOfBox2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectBasics_ListNodeOfListOfBox2d_HeaderFile
 #include <Handle_SelectBasics_ListNodeOfListOfBox2d.hxx>
-#endif
 
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Bnd_Box2d;
 class SelectBasics_ListOfBox2d;
 class SelectBasics_ListIteratorOfListOfBox2d;
 
 
 
-class SelectBasics_ListNodeOfListOfBox2d : public TCollection_MapNode {
+class SelectBasics_ListNodeOfListOfBox2d : public TCollection_MapNode
+{
 
 public:
 
   
-      SelectBasics_ListNodeOfListOfBox2d(const Bnd_Box2d& I,const TCollection_MapNodePtr& n);
+    SelectBasics_ListNodeOfListOfBox2d(const Bnd_Box2d& I, const TCollection_MapNodePtr& n);
   
-        Bnd_Box2d& Value() const;
+      Bnd_Box2d& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-Bnd_Box2d myValue;
+  Bnd_Box2d myValue;
 
 
 };
@@ -83,7 +72,6 @@ Bnd_Box2d myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectBasics_ListNodeOfListOfBox2d_HeaderFile

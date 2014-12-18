@@ -12,10 +12,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
 //------------------------------------------------------------------------
 //                    UNIX Part
 //------------------------------------------------------------------------
@@ -39,22 +35,11 @@ const OSD_WhoAmI Iam = OSD_WFile;
 #endif
 
 #include <errno.h>
-
-#ifdef HAVE_UNISTD_H
-# include <unistd.h>
-#endif
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
-
-#ifdef HAVE_SYS_TYPES_H
-# include <sys/types.h>
-#endif
-
-#ifdef HAVE_SYS_STAT_H
-# include <sys/stat.h>
-#endif
+#include <unistd.h>
+#include <sys/stat.h>
 
 #define NEWLINE '\10';
 
@@ -845,6 +830,7 @@ Standard_Boolean OSD_File::IsExecutable()
 #include <stdint.h>
 #endif
 #include <Standard_PCharacter.hxx>
+#include <TCollection_ExtendedString.hxx>
 
 #ifndef _INC_TCHAR
 # include <tchar.h>
@@ -870,11 +856,11 @@ Standard_Boolean OSD_File::IsExecutable()
 #define OPEN_APPEND 2
 
 void                            _osd_wnt_set_error        ( OSD_Error&, OSD_WhoAmI, ... );
-PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd ( const OSD_Protection&, BOOL, char* = NULL );
+PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd ( const OSD_Protection&, BOOL, wchar_t* = NULL );
 BOOL                 __fastcall _osd_wnt_sd_to_protection (
                                  PSECURITY_DESCRIPTOR, OSD_Protection&, BOOL
                                 );
-BOOL                 __fastcall _osd_print (const Standard_PCharacter, Standard_CString );
+BOOL                 __fastcall _osd_print (const Standard_PCharacter, const wchar_t* );
 
 static void      __fastcall _test_raise ( HANDLE, Standard_CString );
 static DWORDLONG __fastcall _get_line   ( Standard_PCharacter&, DWORD );
@@ -936,14 +922,14 @@ void OSD_File :: Build (
                                         
  if (myFileHandle != INVALID_HANDLE_VALUE)
 
-  RAISE(  TEXT( "OSD_File :: Build (): incorrect call - file already opened" )  );
+  RAISE(  "OSD_File :: Build (): incorrect call - file already opened"  );
 
  myMode = Mode;
  myPath.SystemName ( fName );
 
  if (  fName.IsEmpty ()  )
 
-  RAISE(  TEXT( "OSD_File :: Build (): incorrent call - no filename given" )  );
+  RAISE(  "OSD_File :: Build (): incorrent call - no filename given"  );
 
  myFileHandle = _open_file ( fName.ToCString (), Mode, OPEN_NEW );
 
@@ -974,14 +960,14 @@ void OSD_File :: Open (const OSD_OpenMode Mode, const OSD_Protection& /*Protect*
 
  if (myFileHandle != INVALID_HANDLE_VALUE)
 
-  RAISE(  TEXT( "OSD_File :: Open (): incorrect call - file already opened" )  );
+  RAISE(  "OSD_File :: Open (): incorrect call - file already opened"  );
 
  myMode = Mode;
  myPath.SystemName ( fName );
 
  if (  fName.IsEmpty ()  )
 
-  RAISE(  TEXT( "OSD_File :: Open (): incorrent call - no filename given" )  );
+  RAISE(  "OSD_File :: Open (): incorrent call - no filename given"  );
 
  myFileHandle = _open_file ( fName.ToCString (), Mode, OPEN_OLD );
 
@@ -1008,14 +994,14 @@ void OSD_File :: Append (
 
  if (myFileHandle != INVALID_HANDLE_VALUE)
 
-  RAISE(  TEXT( "OSD_File :: Append (): incorrect call - file already opened" )  );
+  RAISE(  "OSD_File :: Append (): incorrect call - file already opened"  );
 
  myMode = Mode;
  myPath.SystemName ( fName );
 
  if (  fName.IsEmpty ()  )
 
-  RAISE(  TEXT( "OSD_File :: Append (): incorrent call - no filename given" )  );
+  RAISE(  "OSD_File :: Append (): incorrent call - no filename given"  );
 
  myFileHandle = _open_file ( fName.ToCString (), Mode, OPEN_APPEND, &fNew );
 
@@ -1050,7 +1036,9 @@ void OSD_File :: Read (
                  ) {
 
  if ( OSD_File::KindOfFile ( ) == OSD_DIRECTORY ) { 
+#ifdef OCCT_DEBUG
    cout << " OSD_File::Read : it is a directory " << endl;
+#endif
    return ;
 //   Standard_ProgramError::Raise("OSD_File::Read : it is a directory");
  }
@@ -1058,7 +1046,7 @@ void OSD_File :: Read (
  Standard_Integer NbyteRead;
  Standard_Character* buff;
 
- TEST_RAISE(  TEXT( "Read" )  );
+ TEST_RAISE(  "Read"  );
      
  buff = new Standard_Character[ Nbyte + 1 ];
 
@@ -1104,11 +1092,11 @@ void OSD_File :: ReadLine (
    Standard_ProgramError::Raise("OSD_File::Read : it is a directory");
  }
                                         
- TEST_RAISE(  TEXT( "ReadLine" )  );              
+ TEST_RAISE(  "ReadLine"  );              
 
  if (  myIO & FLAG_PIPE && !( myIO & FLAG_READ_PIPE )  )
 
-  RAISE(  TEXT( "OSD_File :: ReadLine (): attempt to read from write only pipe" )  );
+  RAISE(  "OSD_File :: ReadLine (): attempt to read from write only pipe"  );
 
                                         // +----> leave space for end-of-string
                                         // |       plus <CR><LF> sequence      
@@ -1239,7 +1227,7 @@ void OSD_File :: ReadLine (
    
  } else
 
-  RAISE(  TEXT( "OSD_File :: ReadLine (): incorrect call - file is a directory" )  );
+  RAISE(  "OSD_File :: ReadLine (): incorrect call - file is a directory"  );
 
  if (  !Failed () && !IsAtEnd ()  )
 
@@ -1264,11 +1252,11 @@ void OSD_File :: Read (
    Standard_ProgramError::Raise("OSD_File::Read : it is a directory");
  }
                                         
- TEST_RAISE(  TEXT( "Read" )  );
+ TEST_RAISE(  "Read"  );
 
  if (  myIO & FLAG_PIPE && !( myIO & FLAG_READ_PIPE )  )
 
-  RAISE(  TEXT( "OSD_File :: Read (): attempt to read from write only pipe" )  );
+  RAISE(  "OSD_File :: Read (): attempt to read from write only pipe"  );
 
  if (!ReadFile (myFileHandle, Buffer, (DWORD)Nbyte, &dwBytesRead, NULL)) {
  
@@ -1307,11 +1295,11 @@ void OSD_File :: Write (
 
  DWORD dwBytesWritten;
 
- TEST_RAISE(  TEXT( "Write" )  );
+ TEST_RAISE(  "Write"  );
 
  if ( myIO & FLAG_PIPE && myIO & FLAG_READ_PIPE )
 
-  RAISE(  TEXT( "OSD_File :: Write (): attempt to write to read only pipe" )  );
+  RAISE(  "OSD_File :: Write (): attempt to write to read only pipe"  );
 
  if (!WriteFile (myFileHandle, Buffer, (DWORD)Nbyte, &dwBytesWritten, NULL) || 
      dwBytesWritten != (DWORD)Nbyte)
@@ -1326,7 +1314,7 @@ void OSD_File :: Seek (
 
  DWORD dwMoveMethod = 0;
 
- TEST_RAISE(  TEXT( "Seek" )  );
+ TEST_RAISE(  "Seek"  );
 
  if ( myIO & FLAG_FILE || myIO & FLAG_DIRECTORY ) {
 
@@ -1352,7 +1340,7 @@ void OSD_File :: Seek (
 
    default:
 
-    RAISE(  TEXT( "OSD_File :: Seek (): invalid parameter" )  );
+    RAISE(  "OSD_File :: Seek (): invalid parameter"  );
   
   }  // end switch
 
@@ -1372,7 +1360,7 @@ void OSD_File :: Seek (
 
 void OSD_File :: Close () {
 
- TEST_RAISE(  TEXT( "Close" )  );
+ TEST_RAISE(  "Close"  );
 
  CloseHandle (myFileHandle);
 
@@ -1387,7 +1375,7 @@ void OSD_File :: Close () {
 
 Standard_Boolean OSD_File :: IsAtEnd () {
 
- TEST_RAISE(  TEXT( "IsAtEnd" )  );
+ TEST_RAISE(  "IsAtEnd"  );
 
  if (myIO & FLAG_EOF)
    return Standard_True ;
@@ -1408,7 +1396,7 @@ OSD_KindFile OSD_File :: KindOfFile () const {
 
   if (  fName.IsEmpty ()  )
 
-   RAISE(  TEXT( "OSD_File :: KindOfFile (): incorrent call - no filename given" )  );
+   RAISE(  "OSD_File :: KindOfFile (): incorrent call - no filename given"  );
 
   flags = _get_file_type (fName.ToCString(), INVALID_HANDLE_VALUE);
 
@@ -1502,10 +1490,10 @@ OSD_File OSD_File :: BuildTemporary () {
  OSD_WNT_KEY    regKey[ 2 ] = {
  
                  { HKEY_LOCAL_MACHINE,
-                   TEXT( "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment" )
+                   "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment"
                  },
                  { HKEY_USERS,
-                   TEXT( ".DEFAULT\\Environment" )
+                   ".DEFAULT\\Environment"
                  }
  
                 };
@@ -1521,7 +1509,7 @@ OSD_File OSD_File :: BuildTemporary () {
    DWORD dwSize = 0;
 
    if (  RegQueryValueEx (
-          hKey, TEXT( "TEMP" ), NULL, &dwType, NULL, &dwSize
+          hKey, "TEMP", NULL, &dwType, NULL, &dwSize
          ) == ERROR_SUCCESS
    ) {
   
@@ -1530,7 +1518,7 @@ OSD_File OSD_File :: BuildTemporary () {
                              dwSize + sizeof ( TCHAR )
                             );
 
-     RegQueryValueEx (  hKey, TEXT( "TEMP" ), NULL, &dwType, ( LPBYTE )kVal, &dwSize  );
+     RegQueryValueEx (  hKey, "TEMP", NULL, &dwType, ( LPBYTE )kVal, &dwSize  );
 
      if ( dwType == REG_EXPAND_SZ )
     
@@ -1553,7 +1541,7 @@ OSD_File OSD_File :: BuildTemporary () {
 
  }  // end for
 
- if ( !fOK ) lstrcpy (  tmpPath, TEXT( "./" )  );
+ if ( !fOK ) lstrcpy (  tmpPath, "./"  );
  
  GetTempFileName ( tmpPath, "CSF", 0, tmpPath );
 
@@ -1574,7 +1562,7 @@ void OSD_File :: SetLock ( const OSD_LockType Lock ) {
  DWORD      dwFlags;
  OVERLAPPED ovlp;
 
- TEST_RAISE(  TEXT( "SetLock" )  );
+ TEST_RAISE(  "SetLock"  );
  
  ZeroMemory (  &ovlp, sizeof ( OVERLAPPED )  );
 
@@ -1616,7 +1604,7 @@ void OSD_File :: SetLock ( const OSD_LockType Lock ) {
 
 void OSD_File :: UnLock () {
 
- TEST_RAISE(  TEXT( "Unlock" )  );
+ TEST_RAISE(  "Unlock"  );
 
  if ( ImperativeFlag ) {
  
@@ -1640,7 +1628,7 @@ OSD_LockType OSD_File :: GetLock () {
 
 Standard_Boolean OSD_File :: IsLocked () {
 
- TEST_RAISE(  TEXT( "IsLocked" )  );
+ TEST_RAISE(  "IsLocked"  );
 
  return ImperativeFlag;
 
@@ -1655,7 +1643,7 @@ Standard_Size OSD_File :: Size () {
 
  Standard_Integer retVal;
 
- TEST_RAISE(  TEXT( "Size" )  );
+ TEST_RAISE(  "Size"  );
 
  LARGE_INTEGER aSize;
  aSize.QuadPart = 0;
@@ -1677,14 +1665,16 @@ void OSD_File :: Print ( const OSD_Printer& WhichPrinter ) {
 
  if (myFileHandle != INVALID_HANDLE_VALUE)
 
-  RAISE(  TEXT( "OSD_File :: Print (): incorrect call - file opened" )  );
+  RAISE(  "OSD_File :: Print (): incorrect call - file opened"  );
 
  TCollection_AsciiString pName, fName;
 
  WhichPrinter.Name ( pName );
  myPath.SystemName ( fName );
+ TCollection_ExtendedString fNameW(fName);
 
- if (   !_osd_print ( (Standard_PCharacter)pName.ToCString (), fName.ToCString ()  )   )
+ if (   !_osd_print ( (Standard_PCharacter)pName.ToCString (),
+                      (const wchar_t*)fNameW.ToExtString ()  )   )
 
   _osd_wnt_set_error ( myError, OSD_WFile );
 
@@ -1702,7 +1692,7 @@ Standard_Boolean OSD_File :: IsOpen () const {
 
 
 PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd (
-                                 const OSD_Protection& prot, BOOL fDir, char* fName
+                                 const OSD_Protection& prot, BOOL fDir, wchar_t* fName
                                 ) {
 
  int                  i, j;
@@ -1977,9 +1967,9 @@ static void __fastcall _test_raise ( HANDLE hFile, Standard_CString str ) {
 
  if (hFile == INVALID_HANDLE_VALUE) {
  
-  _tcscpy (  buff, TEXT( "OSD_File :: " )  );
-  _tcscat (  buff, str );
-  _tcscat (  buff, TEXT( " (): wrong access" )  );
+  strcpy (  buff, "OSD_File :: "  );
+  strcat (  buff, str );
+  strcat (  buff, " (): wrong access"  );
 
   Standard_ProgramError :: Raise ( buff );
  
@@ -2000,7 +1990,7 @@ static DWORDLONG __fastcall _get_line ( Standard_PCharacter& buffer, DWORD dwBuf
 
  while ( *ptr != 0 ) {
  
-  if (  *ptr == TEXT( '\n' )  ) {
+  if (  *ptr == '\n'  ) {
   
    ptr++ ;   // jump newline char.
    *ptr = 0 ;
@@ -2013,7 +2003,7 @@ static DWORDLONG __fastcall _get_line ( Standard_PCharacter& buffer, DWORD dwBuf
 #endif   
    return retVal;
   
-  } else if (  *ptr == TEXT( '\r' ) && ptr[ 1 ] == TEXT( '\n' )  ) {
+  } else if (  *ptr == '\r' && ptr[ 1 ] == '\n'  ) {
   
    *(ptr++) = '\n' ; // Substitue carriage return by newline.
    *ptr = 0 ;
@@ -2026,7 +2016,7 @@ static DWORDLONG __fastcall _get_line ( Standard_PCharacter& buffer, DWORD dwBuf
 #endif
    return retVal;
   
-  } else if (  *ptr == TEXT( '\r' ) && ptr[ 1 ] == 0  ) {
+  } else if (  *ptr == '\r' && ptr[ 1 ] == 0  ) {
     *ptr = '\n' ; // Substitue carriage return by newline
 
 #ifdef VAC  
@@ -2209,7 +2199,7 @@ static DWORD __fastcall _get_access_mask ( OSD_SingleProtection prt ) {
 
   default:
 
-   RAISE(  TEXT( "_get_access_mask (): incorrect parameter" )  );
+   RAISE(  "_get_access_mask (): incorrect parameter"  );
  
  }  // end switch
 
@@ -2321,7 +2311,7 @@ static DWORD __fastcall _get_dir_access_mask ( OSD_SingleProtection prt ) {
 
   default:
 
-   RAISE(  TEXT( "_get_dir_access_mask (): incorrect parameter" )  );
+   RAISE(  "_get_dir_access_mask (): incorrect parameter"  );
  
  }  // end switch
 
@@ -2361,14 +2351,16 @@ static HANDLE __fastcall _open_file (
 
   default:
 
-   RAISE(  TEXT( "_open_file (): incorrect parameter" )  );
+   RAISE(  "_open_file (): incorrect parameter"  );
   
  }  // end switch
 
  dwCreationDistribution = ( dwOptions != OPEN_NEW ) ? OPEN_EXISTING : CREATE_ALWAYS;
 
- retVal = CreateFile (
-           fName, dwDesiredAccess,
+ // make wide character string from UTF-8
+ TCollection_ExtendedString fNameW(fName, Standard_True);
+ retVal = CreateFileW (
+           (const wchar_t*) fNameW.ToExtString(), dwDesiredAccess,
            FILE_SHARE_READ | FILE_SHARE_WRITE,
            NULL, dwCreationDistribution, FILE_ATTRIBUTE_NORMAL, NULL
           );
@@ -2381,8 +2373,8 @@ static HANDLE __fastcall _open_file (
  
   dwCreationDistribution = CREATE_ALWAYS;
   
-  retVal = CreateFile (
-            fName, dwDesiredAccess,
+  retVal = CreateFileW (
+            (const wchar_t*) fNameW.ToExtString(), dwDesiredAccess,
             FILE_SHARE_READ | FILE_SHARE_WRITE,
             NULL, dwCreationDistribution, FILE_ATTRIBUTE_NORMAL, NULL
            );
@@ -2415,15 +2407,18 @@ Standard_Integer __fastcall _get_file_type (
   break;
 
   case FILE_TYPE_DISK:
-
-   if (   (  dwType = GetFileAttributes ( fName )  ) != 0xFFFFFFFF  )
+  {
+   // make wide character string from UTF-8
+   TCollection_ExtendedString fNameW(fName, Standard_True);
+   dwType = GetFileAttributesW ( (const wchar_t*) fNameW.ToExtString() );
+   if (  dwType  != 0xFFFFFFFF  )
 
     retVal =  dwType & FILE_ATTRIBUTE_DIRECTORY ? FLAG_DIRECTORY : FLAG_FILE;
 
    else
 
     retVal = 0x80000000;
-
+  }
   break;
 
   case FILE_TYPE_CHAR:
@@ -2751,7 +2746,7 @@ static OSD_SingleProtection __fastcall _get_protection_dir ( DWORD mask ) {
 }  // end _get_protection_dir
 
 
-BOOL __fastcall _osd_print (const Standard_PCharacter pName, Standard_CString fName ) {
+BOOL __fastcall _osd_print (const Standard_PCharacter pName, const wchar_t* fName ) {
 
  BOOL   fOK, fJob;                
  HANDLE hPrinter = NULL;
@@ -2773,7 +2768,7 @@ BOOL __fastcall _osd_print (const Standard_PCharacter pName, Standard_CString fN
 
  if (Ret)
  {
-  if (   !AddJob (
+  if (   !AddJobW (
            hPrinter, 1, jobInfo, MAX_PATH + sizeof ( DWORD ), &dwNeeded
           )
   ) Ret = false;
@@ -2783,8 +2778,8 @@ BOOL __fastcall _osd_print (const Standard_PCharacter pName, Standard_CString fN
  { 
   fJob = TRUE;
 
-  if (  !CopyFile (
-          fName, (  ( ADDJOB_INFO_1* )jobInfo  ) -> Path, FALSE
+  if (  !CopyFileW (
+          fName, (LPWSTR) (  ( ADDJOB_INFO_1* )jobInfo  ) -> Path, FALSE
          )
   )  Ret = false;
  }

@@ -6,47 +6,42 @@
 #ifndef _gce_MakeTranslation_HeaderFile
 #define _gce_MakeTranslation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
 class gp_Vec;
 class gp_Pnt;
 class gp_Trsf;
 
 
-//! This class implements elementary construction algorithms for a <br>
-//! translation in 3D space. The result is a gp_Trsf transformation. <br>
-//! A MakeTranslation object provides a framework for: <br>
-//! -   defining the construction of the transformation, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class gce_MakeTranslation  {
+//! This class implements elementary construction algorithms for a
+//! translation in 3D space. The result is a gp_Trsf transformation.
+//! A MakeTranslation object provides a framework for:
+//! -   defining the construction of the transformation,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class gce_MakeTranslation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a translation along the vector " Vect" <br>
-  Standard_EXPORT   gce_MakeTranslation(const gp_Vec& Vect);
-  //! Constructs a translation along the vector <br>
-//!   (Point1,Point2) defined from the point Point1 to the point Point2. <br>
-  Standard_EXPORT   gce_MakeTranslation(const gp_Pnt& Point1,const gp_Pnt& Point2);
   
-//! Returns the constructed transformation. <br>
-  Standard_EXPORT    const gp_Trsf& Value() const;
+  //! Constructs a translation along the vector " Vect"
+  Standard_EXPORT gce_MakeTranslation(const gp_Vec& Vect);
   
-  Standard_EXPORT    const gp_Trsf& Operator() const;
-Standard_EXPORT operator gp_Trsf() const;
+  //! Constructs a translation along the vector
+  //! (Point1,Point2) defined from the point Point1 to the point Point2.
+  Standard_EXPORT gce_MakeTranslation(const gp_Pnt& Point1, const gp_Pnt& Point2);
+  
 
+  //! Returns the constructed transformation.
+  Standard_EXPORT  const  gp_Trsf& Value()  const;
+  
+  Standard_EXPORT  const  gp_Trsf& Operator()  const;
+Standard_EXPORT operator gp_Trsf() const;
 
 
 
@@ -61,7 +56,7 @@ private:
 
 
 
-gp_Trsf TheTranslation;
+  gp_Trsf TheTranslation;
 
 
 };
@@ -70,7 +65,6 @@ gp_Trsf TheTranslation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gce_MakeTranslation_HeaderFile

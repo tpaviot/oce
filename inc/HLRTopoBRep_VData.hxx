@@ -6,40 +6,30 @@
 #ifndef _HLRTopoBRep_VData_HeaderFile
 #define _HLRTopoBRep_VData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
 class TopoDS_Shape;
 
 
 
-class HLRTopoBRep_VData  {
+class HLRTopoBRep_VData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      HLRTopoBRep_VData();
+    HLRTopoBRep_VData();
   
-  Standard_EXPORT   HLRTopoBRep_VData(const Standard_Real P,const TopoDS_Shape& V);
+  Standard_EXPORT HLRTopoBRep_VData(const Standard_Real P, const TopoDS_Shape& V);
   
-        Standard_Real Parameter() const;
+      Standard_Real Parameter()  const;
   
-       const TopoDS_Shape& Vertex() const;
-
+     const  TopoDS_Shape& Vertex()  const;
 
 
 
@@ -54,8 +44,8 @@ private:
 
 
 
-Standard_Real myParameter;
-TopoDS_Shape myVertex;
+  Standard_Real myParameter;
+  TopoDS_Shape myVertex;
 
 
 };
@@ -65,7 +55,6 @@ TopoDS_Shape myVertex;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRTopoBRep_VData_HeaderFile

@@ -6,8 +6,11 @@
 #ifndef _Aspect_TypeOfPrimitive_HeaderFile
 #define _Aspect_TypeOfPrimitive_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Aspect_TypeOfPrimitive {
+
+enum Aspect_TypeOfPrimitive
+{
 Aspect_TOP_UNKNOWN,
 Aspect_TOP_POLYLINE,
 Aspect_TOP_POLYGON,
@@ -18,8 +21,4 @@ Aspect_TOP_POINTS,
 Aspect_TOP_MARKERS
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfPrimitive_HeaderFile

@@ -6,112 +6,42 @@
 #ifndef _MgtGeom2d_HeaderFile
 #define _MgtGeom2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_AxisPlacement_HeaderFile
 #include <Handle_Geom2d_AxisPlacement.hxx>
-#endif
-#ifndef _Handle_PGeom2d_AxisPlacement_HeaderFile
 #include <Handle_PGeom2d_AxisPlacement.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_PGeom2d_BSplineCurve_HeaderFile
 #include <Handle_PGeom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_BezierCurve_HeaderFile
 #include <Handle_Geom2d_BezierCurve.hxx>
-#endif
-#ifndef _Handle_PGeom2d_BezierCurve_HeaderFile
 #include <Handle_PGeom2d_BezierCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_CartesianPoint_HeaderFile
 #include <Handle_Geom2d_CartesianPoint.hxx>
-#endif
-#ifndef _Handle_PGeom2d_CartesianPoint_HeaderFile
 #include <Handle_PGeom2d_CartesianPoint.hxx>
-#endif
-#ifndef _Handle_Geom2d_Circle_HeaderFile
 #include <Handle_Geom2d_Circle.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Circle_HeaderFile
 #include <Handle_PGeom2d_Circle.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Curve_HeaderFile
 #include <Handle_PGeom2d_Curve.hxx>
-#endif
-#ifndef _Handle_Geom2d_Direction_HeaderFile
 #include <Handle_Geom2d_Direction.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Direction_HeaderFile
 #include <Handle_PGeom2d_Direction.hxx>
-#endif
-#ifndef _Handle_Geom2d_Ellipse_HeaderFile
 #include <Handle_Geom2d_Ellipse.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Ellipse_HeaderFile
 #include <Handle_PGeom2d_Ellipse.hxx>
-#endif
-#ifndef _Handle_Geom2d_Hyperbola_HeaderFile
 #include <Handle_Geom2d_Hyperbola.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Hyperbola_HeaderFile
 #include <Handle_PGeom2d_Hyperbola.hxx>
-#endif
-#ifndef _Handle_Geom2d_Line_HeaderFile
 #include <Handle_Geom2d_Line.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Line_HeaderFile
 #include <Handle_PGeom2d_Line.hxx>
-#endif
-#ifndef _Handle_Geom2d_OffsetCurve_HeaderFile
 #include <Handle_Geom2d_OffsetCurve.hxx>
-#endif
-#ifndef _Handle_PGeom2d_OffsetCurve_HeaderFile
 #include <Handle_PGeom2d_OffsetCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_Parabola_HeaderFile
 #include <Handle_Geom2d_Parabola.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Parabola_HeaderFile
 #include <Handle_PGeom2d_Parabola.hxx>
-#endif
-#ifndef _Handle_Geom2d_Point_HeaderFile
 #include <Handle_Geom2d_Point.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Point_HeaderFile
 #include <Handle_PGeom2d_Point.hxx>
-#endif
-#ifndef _Handle_Geom2d_Transformation_HeaderFile
 #include <Handle_Geom2d_Transformation.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Transformation_HeaderFile
 #include <Handle_PGeom2d_Transformation.hxx>
-#endif
-#ifndef _Handle_Geom2d_TrimmedCurve_HeaderFile
 #include <Handle_Geom2d_TrimmedCurve.hxx>
-#endif
-#ifndef _Handle_PGeom2d_TrimmedCurve_HeaderFile
 #include <Handle_PGeom2d_TrimmedCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_VectorWithMagnitude_HeaderFile
 #include <Handle_Geom2d_VectorWithMagnitude.hxx>
-#endif
-#ifndef _Handle_PGeom2d_VectorWithMagnitude_HeaderFile
 #include <Handle_PGeom2d_VectorWithMagnitude.hxx>
-#endif
 class Geom2d_AxisPlacement;
 class PGeom2d_AxisPlacement;
 class Geom2d_BSplineCurve;
@@ -146,87 +76,119 @@ class Geom2d_VectorWithMagnitude;
 class PGeom2d_VectorWithMagnitude;
 
 
-//! This  package   provides   methods  to   translate <br>
-//!          transient   objects   from  Geom2d   to persistent <br>
-//!          objects from PGeom2d and vice-versa. No track from <br>
-//!          previous translation is kept. <br>
-//! <br>
-//! Data is not shared: <br>
-//! -   between transient and persistent objects, <br>
-//!   or <br>
-//! -   between two successive translations of the same object. <br>
-class MgtGeom2d  {
+//! This  package   provides   methods  to   translate
+//! transient   objects   from  Geom2d   to persistent
+//! objects from PGeom2d and vice-versa. No track from
+//! previous translation is kept.
+//!
+//! Data is not shared:
+//! -   between transient and persistent objects,
+//! or
+//! -   between two successive translations of the same object.
+class MgtGeom2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_AxisPlacement Translate(const Handle(PGeom2d_AxisPlacement)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_AxisPlacement Translate(const Handle(Geom2d_AxisPlacement)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_BSplineCurve Translate(const Handle(PGeom2d_BSplineCurve)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_BSplineCurve Translate(const Handle(Geom2d_BSplineCurve)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_BezierCurve Translate(const Handle(PGeom2d_BezierCurve)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_BezierCurve Translate(const Handle(Geom2d_BezierCurve)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_CartesianPoint Translate(const Handle(PGeom2d_CartesianPoint)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_CartesianPoint Translate(const Handle(Geom2d_CartesianPoint)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Circle Translate(const Handle(PGeom2d_Circle)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_Circle Translate(const Handle(Geom2d_Circle)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-//!          Raises Null Object if PObj has no mapping <br>
-  Standard_EXPORT   static  Handle_Geom2d_Curve Translate(const Handle(PGeom2d_Curve)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-//!          Raises NullObject if TObj has no mapping <br>
-  Standard_EXPORT   static  Handle_PGeom2d_Curve Translate(const Handle(Geom2d_Curve)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Direction Translate(const Handle(PGeom2d_Direction)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_Direction Translate(const Handle(Geom2d_Direction)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Ellipse Translate(const Handle(PGeom2d_Ellipse)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_Ellipse Translate(const Handle(Geom2d_Ellipse)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Hyperbola Translate(const Handle(PGeom2d_Hyperbola)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_Hyperbola Translate(const Handle(Geom2d_Hyperbola)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Line Translate(const Handle(PGeom2d_Line)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_Line Translate(const Handle(Geom2d_Line)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_OffsetCurve Translate(const Handle(PGeom2d_OffsetCurve)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_OffsetCurve Translate(const Handle(Geom2d_OffsetCurve)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Parabola Translate(const Handle(PGeom2d_Parabola)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_Parabola Translate(const Handle(Geom2d_Parabola)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Point Translate(const Handle(PGeom2d_Point)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_Point Translate(const Handle(Geom2d_Point)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Transformation Translate(const Handle(PGeom2d_Transformation)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_Transformation Translate(const Handle(Geom2d_Transformation)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_TrimmedCurve Translate(const Handle(PGeom2d_TrimmedCurve)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_TrimmedCurve Translate(const Handle(Geom2d_TrimmedCurve)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom2d. <br>
-  Standard_EXPORT   static  Handle_Geom2d_VectorWithMagnitude Translate(const Handle(PGeom2d_VectorWithMagnitude)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom2d. <br>
-  Standard_EXPORT   static  Handle_PGeom2d_VectorWithMagnitude Translate(const Handle(Geom2d_VectorWithMagnitude)& TObj) ;
-
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_AxisPlacement) Translate (const Handle(PGeom2d_AxisPlacement)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_AxisPlacement) Translate (const Handle(Geom2d_AxisPlacement)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_BSplineCurve) Translate (const Handle(PGeom2d_BSplineCurve)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_BSplineCurve) Translate (const Handle(Geom2d_BSplineCurve)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_BezierCurve) Translate (const Handle(PGeom2d_BezierCurve)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_BezierCurve) Translate (const Handle(Geom2d_BezierCurve)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_CartesianPoint) Translate (const Handle(PGeom2d_CartesianPoint)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_CartesianPoint) Translate (const Handle(Geom2d_CartesianPoint)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_Circle) Translate (const Handle(PGeom2d_Circle)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_Circle) Translate (const Handle(Geom2d_Circle)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  //! Raises Null Object if PObj has no mapping
+  Standard_EXPORT static   Handle(Geom2d_Curve) Translate (const Handle(PGeom2d_Curve)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  //! Raises NullObject if TObj has no mapping
+  Standard_EXPORT static   Handle(PGeom2d_Curve) Translate (const Handle(Geom2d_Curve)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_Direction) Translate (const Handle(PGeom2d_Direction)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_Direction) Translate (const Handle(Geom2d_Direction)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_Ellipse) Translate (const Handle(PGeom2d_Ellipse)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_Ellipse) Translate (const Handle(Geom2d_Ellipse)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_Hyperbola) Translate (const Handle(PGeom2d_Hyperbola)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_Hyperbola) Translate (const Handle(Geom2d_Hyperbola)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_Line) Translate (const Handle(PGeom2d_Line)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_Line) Translate (const Handle(Geom2d_Line)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_OffsetCurve) Translate (const Handle(PGeom2d_OffsetCurve)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_OffsetCurve) Translate (const Handle(Geom2d_OffsetCurve)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_Parabola) Translate (const Handle(PGeom2d_Parabola)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_Parabola) Translate (const Handle(Geom2d_Parabola)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_Point) Translate (const Handle(PGeom2d_Point)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_Point) Translate (const Handle(Geom2d_Point)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_Transformation) Translate (const Handle(PGeom2d_Transformation)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_Transformation) Translate (const Handle(Geom2d_Transformation)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_TrimmedCurve) Translate (const Handle(PGeom2d_TrimmedCurve)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_TrimmedCurve) Translate (const Handle(Geom2d_TrimmedCurve)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom2d.
+  Standard_EXPORT static   Handle(Geom2d_VectorWithMagnitude) Translate (const Handle(PGeom2d_VectorWithMagnitude)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom2d.
+  Standard_EXPORT static   Handle(PGeom2d_VectorWithMagnitude) Translate (const Handle(Geom2d_VectorWithMagnitude)& TObj) ;
 
 
 
@@ -249,7 +211,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MgtGeom2d_HeaderFile

@@ -6,35 +6,27 @@
 #ifndef _StepToTopoDS_PointPair_HeaderFile
 #define _StepToTopoDS_PointPair_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
 class StepGeom_CartesianPoint;
 class StepToTopoDS_PointPairHasher;
 
 
-//! Stores a pair of Points from step <br>
-class StepToTopoDS_PointPair  {
+//! Stores a pair of Points from step
+class StepToTopoDS_PointPair 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepToTopoDS_PointPair(const Handle(StepGeom_CartesianPoint)& P1,const Handle(StepGeom_CartesianPoint)& P2);
+  Standard_EXPORT StepToTopoDS_PointPair(const Handle(StepGeom_CartesianPoint)& P1, const Handle(StepGeom_CartesianPoint)& P2);
 
 
 friend class StepToTopoDS_PointPairHasher;
-
 
 
 protected:
@@ -47,8 +39,8 @@ private:
 
 
 
-Handle_StepGeom_CartesianPoint myP1;
-Handle_StepGeom_CartesianPoint myP2;
+  Handle(StepGeom_CartesianPoint) myP1;
+  Handle(StepGeom_CartesianPoint) myP2;
 
 
 };
@@ -57,7 +49,6 @@ Handle_StepGeom_CartesianPoint myP2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_PointPair_HeaderFile

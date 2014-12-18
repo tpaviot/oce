@@ -1,3 +1,1 @@
-#ifndef _StepGeom_BoundaryCurve_HeaderFile
 #include <StepGeom_BoundaryCurve.hxx>
-#endif

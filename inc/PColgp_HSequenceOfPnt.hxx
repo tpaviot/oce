@@ -6,111 +6,81 @@
 #ifndef _PColgp_HSequenceOfPnt_HeaderFile
 #define _PColgp_HSequenceOfPnt_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColgp_HSequenceOfPnt_HeaderFile
 #include <Handle_PColgp_HSequenceOfPnt.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Handle_PColgp_HSequenceOfPnt_HeaderFile
 #include <Handle_PColgp_HSequenceOfPnt.hxx>
-#endif
-#ifndef _Handle_PColgp_SeqNodeOfHSequenceOfPnt_HeaderFile
 #include <Handle_PColgp_SeqNodeOfHSequenceOfPnt.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PColgp_SeqNodeOfHSequenceOfPnt;
-class Standard_Persistent;
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class PColgp_SeqExplorerOfHSequenceOfPnt;
 class gp_Pnt;
 
 
-class PColgp_HSequenceOfPnt : public Standard_Persistent {
+class PColgp_HSequenceOfPnt : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PColgp_HSequenceOfPnt();
+  Standard_EXPORT PColgp_HSequenceOfPnt();
   
-  Standard_EXPORT     Standard_Boolean IsEmpty() const;
+  Standard_EXPORT   Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     Standard_Integer Length() const;
+  Standard_EXPORT   Standard_Integer Length()  const;
   
-  Standard_EXPORT     gp_Pnt First() const;
+  Standard_EXPORT   gp_Pnt First()  const;
   
-  Standard_EXPORT     gp_Pnt Last() const;
+  Standard_EXPORT   gp_Pnt Last()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const gp_Pnt& T) ;
+  Standard_EXPORT   void Append (const gp_Pnt& T) ;
   
-  Standard_EXPORT     void Append(const Handle(PColgp_HSequenceOfPnt)& S) ;
+  Standard_EXPORT   void Append (const Handle(PColgp_HSequenceOfPnt)& S) ;
   
-  Standard_EXPORT     void Prepend(const gp_Pnt& T) ;
+  Standard_EXPORT   void Prepend (const gp_Pnt& T) ;
   
-  Standard_EXPORT     void Prepend(const Handle(PColgp_HSequenceOfPnt)& S) ;
+  Standard_EXPORT   void Prepend (const Handle(PColgp_HSequenceOfPnt)& S) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer Index,const gp_Pnt& T) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer Index, const gp_Pnt& T) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer Index,const Handle(PColgp_HSequenceOfPnt)& S) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer Index, const Handle(PColgp_HSequenceOfPnt)& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const gp_Pnt& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const gp_Pnt& T) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(PColgp_HSequenceOfPnt)& S) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(PColgp_HSequenceOfPnt)& S) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer I,const Standard_Integer J) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer I, const Standard_Integer J) ;
   
-  Standard_EXPORT     Handle_PColgp_HSequenceOfPnt SubSequence(const Standard_Integer FromIndex,const Standard_Integer ToIndex) const;
+  Standard_EXPORT   Handle(PColgp_HSequenceOfPnt) SubSequence (const Standard_Integer FromIndex, const Standard_Integer ToIndex)  const;
   
-  Standard_EXPORT     Handle_PColgp_HSequenceOfPnt Split(const Standard_Integer Index) ;
+  Standard_EXPORT   Handle(PColgp_HSequenceOfPnt) Split (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_Pnt& T) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_Pnt& T) ;
   
-  Standard_EXPORT     gp_Pnt Value(const Standard_Integer Index) const;
+  Standard_EXPORT   gp_Pnt Value (const Standard_Integer Index)  const;
   
-  Standard_EXPORT     Standard_Boolean Contains(const gp_Pnt& T) const;
+  Standard_EXPORT   Standard_Boolean Contains (const gp_Pnt& T)  const;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const gp_Pnt& T,const Standard_Integer FromIndex,const Standard_Integer ToIndex) const;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const gp_Pnt& T, const Standard_Integer FromIndex, const Standard_Integer ToIndex)  const;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const gp_Pnt& T) const;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const gp_Pnt& T)  const;
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
   
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
-  
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~PColgp_HSequenceOfPnt()
 {
   Destroy();
@@ -139,13 +109,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     Handle_PColgp_SeqNodeOfHSequenceOfPnt GetFirst() const;
+  Standard_EXPORT   Handle(PColgp_SeqNodeOfHSequenceOfPnt) GetFirst()  const;
   
-  Standard_EXPORT     Handle_PColgp_SeqNodeOfHSequenceOfPnt GetLast() const;
+  Standard_EXPORT   Handle(PColgp_SeqNodeOfHSequenceOfPnt) GetLast()  const;
 
-Handle_PColgp_SeqNodeOfHSequenceOfPnt FirstItem;
-Handle_PColgp_SeqNodeOfHSequenceOfPnt LastItem;
-Standard_Integer Size;
+  Handle(PColgp_SeqNodeOfHSequenceOfPnt) FirstItem;
+  Handle(PColgp_SeqNodeOfHSequenceOfPnt) LastItem;
+  Standard_Integer Size;
 
 
 };
@@ -154,15 +124,6 @@ Standard_Integer Size;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_Standard_Persistent ShallowCopy(const Handle_PColgp_HSequenceOfPnt& me) {
- return me->ShallowCopy();
-}
-
-inline void ShallowDump(const Handle_PColgp_HSequenceOfPnt& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
 
 
-
-#endif
+#endif // _PColgp_HSequenceOfPnt_HeaderFile

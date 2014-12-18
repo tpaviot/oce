@@ -6,22 +6,15 @@
 #ifndef _Handle_BinMFunction_ScopeDriver_HeaderFile
 #define _Handle_BinMFunction_ScopeDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BinMDF_ADriver_HeaderFile
 #include <Handle_BinMDF_ADriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BinMDF_ADriver);
 class BinMFunction_ScopeDriver;
 
-DEFINE_STANDARD_HANDLE(BinMFunction_ScopeDriver,BinMDF_ADriver)
+DEFINE_STANDARD_HANDLE(BinMFunction_ScopeDriver, BinMDF_ADriver)
 
-#endif
+#endif // _Handle_BinMFunction_ScopeDriver_HeaderFile

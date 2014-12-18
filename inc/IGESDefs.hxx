@@ -6,19 +6,11 @@
 #ifndef _IGESDefs_HeaderFile
 #define _IGESDefs_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESDefs_Protocol_HeaderFile
 #include <Handle_IGESDefs_Protocol.hxx>
-#endif
 class IGESDefs_Protocol;
 class IGESDefs_AssociativityDef;
 class IGESDefs_MacroDef;
@@ -43,18 +35,20 @@ class IGESDefs_HArray1OfTabularData;
 class IGESDefs_HArray1OfHArray1OfTextDisplayTemplate;
 
 
-//! To embody general definitions of Entities <br>
-//!           (Parameters, Tables ...) <br>
-class IGESDefs  {
+//! To embody general definitions of Entities
+//! (Parameters, Tables ...)
+class IGESDefs 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prepares dynamic data (Protocol, Modules) for this package <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Returns the Protocol for this Package <br>
-  Standard_EXPORT   static  Handle_IGESDefs_Protocol Protocol() ;
-
+  
+  //! Prepares dynamic data (Protocol, Modules) for this package
+  Standard_EXPORT static   void Init() ;
+  
+  //! Returns the Protocol for this Package
+  Standard_EXPORT static   Handle(IGESDefs_Protocol) Protocol() ;
 
 
 
@@ -98,7 +92,6 @@ friend class IGESDefs_HArray1OfHArray1OfTextDisplayTemplate;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDefs_HeaderFile

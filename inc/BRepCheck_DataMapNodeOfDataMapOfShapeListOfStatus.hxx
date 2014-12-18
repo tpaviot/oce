@@ -6,28 +6,14 @@
 #ifndef _BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus_HeaderFile
 #define _BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus_HeaderFile
 #include <Handle_BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepCheck_ListOfStatus_HeaderFile
 #include <BRepCheck_ListOfStatus.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class BRepCheck_ListOfStatus;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
 
 
 
-class BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus : public TCollection_MapNode {
+class BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus(const TopoDS_Shape& K,const BRepCheck_ListOfStatus& I,const TCollection_MapNodePtr& n);
+    BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus(const TopoDS_Shape& K, const BRepCheck_ListOfStatus& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        BRepCheck_ListOfStatus& Value() const;
+      BRepCheck_ListOfStatus& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-BRepCheck_ListOfStatus myValue;
+  TopoDS_Shape myKey;
+  BRepCheck_ListOfStatus myValue;
 
 
 };
@@ -99,7 +86,6 @@ BRepCheck_ListOfStatus myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepCheck_DataMapNodeOfDataMapOfShapeListOfStatus_HeaderFile

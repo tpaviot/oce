@@ -6,52 +6,22 @@
 #ifndef _TopOpeBRep_Point2d_HeaderFile
 #define _TopOpeBRep_Point2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _IntRes2d_IntersectionPoint_HeaderFile
 #include <IntRes2d_IntersectionPoint.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Transition_HeaderFile
 #include <TopOpeBRepDS_Transition.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopOpeBRep_P2Dstatus_HeaderFile
 #include <TopOpeBRep_P2Dstatus.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Config_HeaderFile
 #include <TopOpeBRepDS_Config.hxx>
-#endif
-#ifndef _Handle_TopOpeBRep_Hctxff2d_HeaderFile
 #include <Handle_TopOpeBRep_Hctxff2d.hxx>
-#endif
-#ifndef _Handle_TopOpeBRep_Hctxee2d_HeaderFile
 #include <Handle_TopOpeBRep_Hctxee2d.hxx>
-#endif
 class TopOpeBRep_Hctxff2d;
 class TopOpeBRep_Hctxee2d;
 class TopOpeBRep_EdgesIntersector;
@@ -63,87 +33,87 @@ class gp_Pnt2d;
 
 
 
-class TopOpeBRep_Point2d  {
+class TopOpeBRep_Point2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_Point2d();
+  Standard_EXPORT TopOpeBRep_Point2d();
   
-  Standard_EXPORT     void Dump(const Standard_Integer ie1 = 0,const Standard_Integer ie2 = 0) const;
+  Standard_EXPORT   void Dump (const Standard_Integer ie1 = 0, const Standard_Integer ie2 = 0)  const;
   
-        void SetPint(const IntRes2d_IntersectionPoint& P) ;
+      void SetPint (const IntRes2d_IntersectionPoint& P) ;
   
-        Standard_Boolean HasPint() const;
+      Standard_Boolean HasPint()  const;
   
-       const IntRes2d_IntersectionPoint& Pint() const;
+     const  IntRes2d_IntersectionPoint& Pint()  const;
   
-        void SetIsVertex(const Standard_Integer I,const Standard_Boolean B) ;
+      void SetIsVertex (const Standard_Integer I, const Standard_Boolean B) ;
   
-        Standard_Boolean IsVertex(const Standard_Integer I) const;
+      Standard_Boolean IsVertex (const Standard_Integer I)  const;
   
-        void SetVertex(const Standard_Integer I,const TopoDS_Vertex& V) ;
+      void SetVertex (const Standard_Integer I, const TopoDS_Vertex& V) ;
   
-  Standard_EXPORT    const TopoDS_Vertex& Vertex(const Standard_Integer I) const;
+  Standard_EXPORT  const  TopoDS_Vertex& Vertex (const Standard_Integer I)  const;
   
-        void SetTransition(const Standard_Integer I,const TopOpeBRepDS_Transition& T) ;
+      void SetTransition (const Standard_Integer I, const TopOpeBRepDS_Transition& T) ;
   
-  Standard_EXPORT    const TopOpeBRepDS_Transition& Transition(const Standard_Integer I) const;
+  Standard_EXPORT  const  TopOpeBRepDS_Transition& Transition (const Standard_Integer I)  const;
   
-  Standard_EXPORT     TopOpeBRepDS_Transition& ChangeTransition(const Standard_Integer I) ;
+  Standard_EXPORT   TopOpeBRepDS_Transition& ChangeTransition (const Standard_Integer I) ;
   
-        void SetParameter(const Standard_Integer I,const Standard_Real P) ;
+      void SetParameter (const Standard_Integer I, const Standard_Real P) ;
   
-        Standard_Real Parameter(const Standard_Integer I) const;
+      Standard_Real Parameter (const Standard_Integer I)  const;
   
-        void SetIsPointOfSegment(const Standard_Boolean B) ;
+      void SetIsPointOfSegment (const Standard_Boolean B) ;
   
-        Standard_Boolean IsPointOfSegment() const;
+      Standard_Boolean IsPointOfSegment()  const;
   
-        void SetSegmentAncestors(const Standard_Integer IP1,const Standard_Integer IP2) ;
+      void SetSegmentAncestors (const Standard_Integer IP1, const Standard_Integer IP2) ;
   
-        Standard_Boolean SegmentAncestors(Standard_Integer& IP1,Standard_Integer& IP2) const;
+      Standard_Boolean SegmentAncestors (Standard_Integer& IP1, Standard_Integer& IP2)  const;
   
-        void SetStatus(const TopOpeBRep_P2Dstatus S) ;
+      void SetStatus (const TopOpeBRep_P2Dstatus S) ;
   
-        TopOpeBRep_P2Dstatus Status() const;
+      TopOpeBRep_P2Dstatus Status()  const;
   
-        void SetIndex(const Standard_Integer X) ;
+      void SetIndex (const Standard_Integer X) ;
   
-        Standard_Integer Index() const;
+      Standard_Integer Index()  const;
   
-        void SetValue(const gp_Pnt& P) ;
+      void SetValue (const gp_Pnt& P) ;
   
-       const gp_Pnt& Value() const;
+     const  gp_Pnt& Value()  const;
   
-        void SetValue2d(const gp_Pnt2d& P) ;
+      void SetValue2d (const gp_Pnt2d& P) ;
   
-       const gp_Pnt2d& Value2d() const;
+     const  gp_Pnt2d& Value2d()  const;
   
-        void SetKeep(const Standard_Boolean B) ;
+      void SetKeep (const Standard_Boolean B) ;
   
-        Standard_Boolean Keep() const;
+      Standard_Boolean Keep()  const;
   
-        void SetEdgesConfig(const TopOpeBRepDS_Config C) ;
+      void SetEdgesConfig (const TopOpeBRepDS_Config C) ;
   
-        TopOpeBRepDS_Config EdgesConfig() const;
+      TopOpeBRepDS_Config EdgesConfig()  const;
   
-        void SetTolerance(const Standard_Real T) ;
+      void SetTolerance (const Standard_Real T) ;
   
-        Standard_Real Tolerance() const;
+      Standard_Real Tolerance()  const;
   
-        void SetHctxff2d(const Handle(TopOpeBRep_Hctxff2d)& ff2d) ;
+      void SetHctxff2d (const Handle(TopOpeBRep_Hctxff2d)& ff2d) ;
   
-        Handle_TopOpeBRep_Hctxff2d Hctxff2d() const;
+      Handle(TopOpeBRep_Hctxff2d) Hctxff2d()  const;
   
-        void SetHctxee2d(const Handle(TopOpeBRep_Hctxee2d)& ee2d) ;
+      void SetHctxee2d (const Handle(TopOpeBRep_Hctxee2d)& ee2d) ;
   
-        Handle_TopOpeBRep_Hctxee2d Hctxee2d() const;
+      Handle(TopOpeBRep_Hctxee2d) Hctxee2d()  const;
 
 
 friend class TopOpeBRep_EdgesIntersector;
-
 
 
 protected:
@@ -156,29 +126,29 @@ private:
 
 
 
-IntRes2d_IntersectionPoint mypint;
-Standard_Boolean myhaspint;
-Standard_Boolean myisvertex1;
-TopoDS_Vertex myvertex1;
-TopOpeBRepDS_Transition mytransition1;
-Standard_Real myparameter1;
-Standard_Boolean myisvertex2;
-TopoDS_Vertex myvertex2;
-TopOpeBRepDS_Transition mytransition2;
-Standard_Real myparameter2;
-Standard_Boolean myispointofsegment;
-Standard_Integer myips1;
-Standard_Integer myips2;
-Standard_Boolean myhasancestors;
-TopOpeBRep_P2Dstatus mystatus;
-Standard_Integer myindex;
-gp_Pnt mypnt;
-gp_Pnt2d mypnt2d;
-Standard_Boolean mykeep;
-TopOpeBRepDS_Config myedgesconfig;
-Standard_Real mytolerance;
-Handle_TopOpeBRep_Hctxff2d myctxff2d;
-Handle_TopOpeBRep_Hctxee2d myctxee2d;
+  IntRes2d_IntersectionPoint mypint;
+  Standard_Boolean myhaspint;
+  Standard_Boolean myisvertex1;
+  TopoDS_Vertex myvertex1;
+  TopOpeBRepDS_Transition mytransition1;
+  Standard_Real myparameter1;
+  Standard_Boolean myisvertex2;
+  TopoDS_Vertex myvertex2;
+  TopOpeBRepDS_Transition mytransition2;
+  Standard_Real myparameter2;
+  Standard_Boolean myispointofsegment;
+  Standard_Integer myips1;
+  Standard_Integer myips2;
+  Standard_Boolean myhasancestors;
+  TopOpeBRep_P2Dstatus mystatus;
+  Standard_Integer myindex;
+  gp_Pnt mypnt;
+  gp_Pnt2d mypnt2d;
+  Standard_Boolean mykeep;
+  TopOpeBRepDS_Config myedgesconfig;
+  Standard_Real mytolerance;
+  Handle(TopOpeBRep_Hctxff2d) myctxff2d;
+  Handle(TopOpeBRep_Hctxee2d) myctxee2d;
 
 
 };
@@ -188,7 +158,6 @@ Handle_TopOpeBRep_Hctxee2d myctxee2d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_Point2d_HeaderFile

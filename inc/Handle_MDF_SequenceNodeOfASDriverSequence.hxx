@@ -6,22 +6,15 @@
 #ifndef _Handle_MDF_SequenceNodeOfASDriverSequence_HeaderFile
 #define _Handle_MDF_SequenceNodeOfASDriverSequence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_SeqNode_HeaderFile
 #include <Handle_TCollection_SeqNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_SeqNode);
 class MDF_SequenceNodeOfASDriverSequence;
 
-DEFINE_STANDARD_HANDLE(MDF_SequenceNodeOfASDriverSequence,TCollection_SeqNode)
+DEFINE_STANDARD_HANDLE(MDF_SequenceNodeOfASDriverSequence, TCollection_SeqNode)
 
-#endif
+#endif // _Handle_MDF_SequenceNodeOfASDriverSequence_HeaderFile

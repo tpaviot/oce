@@ -6,45 +6,36 @@
 #ifndef _PGeom_SurfaceOfRevolution_HeaderFile
 #define _PGeom_SurfaceOfRevolution_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_SurfaceOfRevolution_HeaderFile
 #include <Handle_PGeom_SurfaceOfRevolution.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _PGeom_SweptSurface_HeaderFile
 #include <PGeom_SweptSurface.hxx>
-#endif
-#ifndef _Handle_PGeom_Curve_HeaderFile
 #include <Handle_PGeom_Curve.hxx>
-#endif
 class PGeom_Curve;
 class gp_Dir;
 class gp_Pnt;
 
 
-class PGeom_SurfaceOfRevolution : public PGeom_SweptSurface {
+class PGeom_SurfaceOfRevolution : public PGeom_SweptSurface
+{
 
 public:
 
-  //! Creates a SurfaceOfRevolution with default values. <br>
-  Standard_EXPORT   PGeom_SurfaceOfRevolution();
-  //! Creates a SurfaceOfRevolution with these values. <br>
-  Standard_EXPORT   PGeom_SurfaceOfRevolution(const Handle(PGeom_Curve)& aBasisCurve,const gp_Dir& aDirection,const gp_Pnt& aLocation);
-  //! Set the value of the field location with <aLocation>. <br>
-  Standard_EXPORT     void Location(const gp_Pnt& aLocation) ;
-  //! Returns the value of the field location. <br>
-  Standard_EXPORT     gp_Pnt Location() const;
+  
+  //! Creates a SurfaceOfRevolution with default values.
+  Standard_EXPORT PGeom_SurfaceOfRevolution();
+  
+  //! Creates a SurfaceOfRevolution with these values.
+  Standard_EXPORT PGeom_SurfaceOfRevolution(const Handle(PGeom_Curve)& aBasisCurve, const gp_Dir& aDirection, const gp_Pnt& aLocation);
+  
+  //! Set the value of the field location with <aLocation>.
+  Standard_EXPORT   void Location (const gp_Pnt& aLocation) ;
+  
+  //! Returns the value of the field location.
+  Standard_EXPORT   gp_Pnt Location()  const;
 
 PGeom_SurfaceOfRevolution(const Storage_stCONSTclCOM& a) : PGeom_SweptSurface(a)
 {
@@ -64,7 +55,7 @@ protected:
 private: 
 
 
-gp_Pnt location;
+  gp_Pnt location;
 
 
 };
@@ -73,7 +64,6 @@ gp_Pnt location;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_SurfaceOfRevolution_HeaderFile

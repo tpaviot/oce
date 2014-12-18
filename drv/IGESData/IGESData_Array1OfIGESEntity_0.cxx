@@ -5,24 +5,14 @@
 
 #include <IGESData_Array1OfIGESEntity.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
  
 
-#define Array1Item Handle_IGESData_IGESEntity
+#define Array1Item Handle(IGESData_IGESEntity)
 #define Array1Item_hxx <IGESData_IGESEntity.hxx>
 #define TCollection_Array1 IGESData_Array1OfIGESEntity
 #define TCollection_Array1_hxx <IGESData_Array1OfIGESEntity.hxx>

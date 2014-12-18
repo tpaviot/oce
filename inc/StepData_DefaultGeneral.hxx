@@ -6,31 +6,15 @@
 #ifndef _StepData_DefaultGeneral_HeaderFile
 #define _StepData_DefaultGeneral_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_DefaultGeneral_HeaderFile
 #include <Handle_StepData_DefaultGeneral.hxx>
-#endif
 
-#ifndef _StepData_GeneralModule_HeaderFile
 #include <StepData_GeneralModule.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_Transient;
 class Interface_EntityIterator;
 class Interface_ShareTool;
@@ -38,25 +22,31 @@ class Interface_Check;
 class Interface_CopyTool;
 
 
-//! DefaultGeneral defines a GeneralModule which processes <br>
-//!           Unknown Entity from StepData  only <br>
-class StepData_DefaultGeneral : public StepData_GeneralModule {
+//! DefaultGeneral defines a GeneralModule which processes
+//! Unknown Entity from StepData  only
+class StepData_DefaultGeneral : public StepData_GeneralModule
+{
 
 public:
 
-  //! Creates a Default General Module <br>
-  Standard_EXPORT   StepData_DefaultGeneral();
-  //! Specific filling of the list of Entities shared by an Entity <br>
-//!           <ent>, which is an UnknownEntity from StepData. <br>
-  Standard_EXPORT     void FillSharedCase(const Standard_Integer casenum,const Handle(Standard_Transient)& ent,Interface_EntityIterator& iter) const;
-  //! Specific Checking of an Entity <ent> <br>
-  Standard_EXPORT     void CheckCase(const Standard_Integer casenum,const Handle(Standard_Transient)& ent,const Interface_ShareTool& shares,Handle(Interface_Check)& ach) const;
-  //! Specific creation of a new void entity <br>
-  Standard_EXPORT     Standard_Boolean NewVoid(const Standard_Integer CN,Handle(Standard_Transient)& entto) const;
-  //! Specific Copy ("Deep") from <entfrom> to <entto> (same type) <br>
-//!           by using a CopyTool which provides its working Map. <br>
-//!           Use method Transferred from TransferControl to work <br>
-  Standard_EXPORT     void CopyCase(const Standard_Integer casenum,const Handle(Standard_Transient)& entfrom,const Handle(Standard_Transient)& entto,Interface_CopyTool& TC) const;
+  
+  //! Creates a Default General Module
+  Standard_EXPORT StepData_DefaultGeneral();
+  
+  //! Specific filling of the list of Entities shared by an Entity
+  //! <ent>, which is an UnknownEntity from StepData.
+  Standard_EXPORT   void FillSharedCase (const Standard_Integer casenum, const Handle(Standard_Transient)& ent, Interface_EntityIterator& iter)  const;
+  
+  //! Specific Checking of an Entity <ent>
+  Standard_EXPORT   void CheckCase (const Standard_Integer casenum, const Handle(Standard_Transient)& ent, const Interface_ShareTool& shares, Handle(Interface_Check)& ach)  const;
+  
+  //! Specific creation of a new void entity
+  Standard_EXPORT   Standard_Boolean NewVoid (const Standard_Integer CN, Handle(Standard_Transient)& entto)  const;
+  
+  //! Specific Copy ("Deep") from <entfrom> to <entto> (same type)
+  //! by using a CopyTool which provides its working Map.
+  //! Use method Transferred from TransferControl to work
+  Standard_EXPORT   void CopyCase (const Standard_Integer casenum, const Handle(Standard_Transient)& entfrom, const Handle(Standard_Transient)& entto, Interface_CopyTool& TC)  const;
 
 
 
@@ -79,7 +69,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_DefaultGeneral_HeaderFile

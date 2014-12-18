@@ -5,18 +5,10 @@
 
 #include <MAT2d_SequenceOfSequenceOfGeometry.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColGeom2d_SequenceOfGeometry_HeaderFile
 #include <TColGeom2d_SequenceOfGeometry.hxx>
-#endif
-#ifndef _MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry_HeaderFile
 #include <MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry.hxx>
-#endif
  
 
 #define SeqItem TColGeom2d_SequenceOfGeometry

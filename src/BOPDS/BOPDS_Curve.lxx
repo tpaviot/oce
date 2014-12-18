@@ -12,6 +12,8 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
+#include <BOPDS_PaveBlock.hxx>
+
 //=======================================================================
 //function : 
 //purpose  : 
@@ -104,7 +106,7 @@
 //=======================================================================
   inline Handle(BOPDS_PaveBlock)& BOPDS_Curve::ChangePaveBlock1()
 {
-  Handle_BOPDS_PaveBlock* pPB=(Handle_BOPDS_PaveBlock*)&myPaveBlocks.First();
+  Handle(BOPDS_PaveBlock)* pPB=(Handle(BOPDS_PaveBlock)*)&myPaveBlocks.First();
   return *pPB;
 }
 //=======================================================================

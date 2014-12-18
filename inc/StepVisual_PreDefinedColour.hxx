@@ -6,36 +6,30 @@
 #ifndef _StepVisual_PreDefinedColour_HeaderFile
 #define _StepVisual_PreDefinedColour_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_PreDefinedColour_HeaderFile
 #include <Handle_StepVisual_PreDefinedColour.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_PreDefinedItem_HeaderFile
 #include <Handle_StepVisual_PreDefinedItem.hxx>
-#endif
-#ifndef _StepVisual_Colour_HeaderFile
 #include <StepVisual_Colour.hxx>
-#endif
 class StepVisual_PreDefinedItem;
 
 
 
-class StepVisual_PreDefinedColour : public StepVisual_Colour {
+class StepVisual_PreDefinedColour : public StepVisual_Colour
+{
 
 public:
 
-  //! Returns a PreDefinedColour <br>
-  Standard_EXPORT   StepVisual_PreDefinedColour();
-  //! set a pre_defined_item part <br>
-  Standard_EXPORT     void SetPreDefinedItem(const Handle(StepVisual_PreDefinedItem)& item) ;
-  //! return a pre_defined_item part <br>
-  Standard_EXPORT    const Handle_StepVisual_PreDefinedItem& GetPreDefinedItem() const;
+  
+  //! Returns a PreDefinedColour
+  Standard_EXPORT StepVisual_PreDefinedColour();
+  
+  //! set a pre_defined_item part
+  Standard_EXPORT   void SetPreDefinedItem (const Handle(StepVisual_PreDefinedItem)& item) ;
+  
+  //! return a pre_defined_item part
+  Standard_EXPORT  const  Handle(StepVisual_PreDefinedItem)& GetPreDefinedItem()  const;
 
 
 
@@ -50,7 +44,7 @@ protected:
 private: 
 
 
-Handle_StepVisual_PreDefinedItem myItem;
+  Handle(StepVisual_PreDefinedItem) myItem;
 
 
 };
@@ -59,7 +53,6 @@ Handle_StepVisual_PreDefinedItem myItem;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PreDefinedColour_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_Standard_Overflow_HeaderFile
 #define _Handle_Standard_Overflow_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Standard_NumericError_HeaderFile
 #include <Handle_Standard_NumericError.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Standard_NumericError);
 class Standard_Overflow;
 
-DEFINE_STANDARD_HANDLE(Standard_Overflow,Standard_NumericError)
+DEFINE_STANDARD_HANDLE(Standard_Overflow, Standard_NumericError)
 
-#endif
+#endif // _Handle_Standard_Overflow_HeaderFile

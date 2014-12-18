@@ -6,43 +6,19 @@
 #ifndef _TDataStd_IntPackedMap_HeaderFile
 #define _TDataStd_IntPackedMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_IntPackedMap_HeaderFile
 #include <Handle_TDataStd_IntPackedMap.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HPackedMapOfInteger_HeaderFile
 #include <Handle_TColStd_HPackedMapOfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TColStd_PackedMapOfInteger_HeaderFile
 #include <TColStd_PackedMapOfInteger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Handle_TDF_DeltaOnModification_HeaderFile
 #include <Handle_TDF_DeltaOnModification.hxx>
-#endif
 class TColStd_HPackedMapOfInteger;
 class TDataStd_DeltaOnModificationOfIntPackedMap;
 class Standard_GUID;
@@ -52,58 +28,65 @@ class TDF_RelocationTable;
 class TDF_DeltaOnModification;
 
 
-//! Attribute for storing TColStd_PackedMapOfInteger <br>
-class TDataStd_IntPackedMap : public TDF_Attribute {
+//! Attribute for storing TColStd_PackedMapOfInteger
+class TDataStd_IntPackedMap : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!          ============= <br>//! Returns the GUID of the attribute. <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Finds or creates an integer map attribute on the given label. <br>
-//! If <isDelta> == False, DefaultDeltaOnModification is used. <br>
-//! If <isDelta> == True, DeltaOnModification of the current attribute is used. <br>
-//! If attribute is already set, input parameter <isDelta> is refused and the found <br>
-//! attribute returned. <br>//! Attribute methods <br>
-//!          =================== <br>
-  Standard_EXPORT   static  Handle_TDataStd_IntPackedMap Set(const TDF_Label& label,const Standard_Boolean isDelta = Standard_False) ;
   
-  Standard_EXPORT   TDataStd_IntPackedMap();
+  //! class methods
+  //! =============
+  //! Returns the GUID of the attribute.
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT     Standard_Boolean ChangeMap(const Handle(TColStd_HPackedMapOfInteger)& theMap) ;
+  //! Finds or creates an integer map attribute on the given label.
+  //! If <isDelta> == False, DefaultDeltaOnModification is used.
+  //! If <isDelta> == True, DeltaOnModification of the current attribute is used.
+  //! If attribute is already set, input parameter <isDelta> is refused and the found
+  //! attribute returned.
+  //! Attribute methods
+  //! ===================
+  Standard_EXPORT static   Handle(TDataStd_IntPackedMap) Set (const TDF_Label& label, const Standard_Boolean isDelta = Standard_False) ;
   
-       const TColStd_PackedMapOfInteger& GetMap() const;
+  Standard_EXPORT TDataStd_IntPackedMap();
   
-       const Handle_TColStd_HPackedMapOfInteger& GetHMap() const;
+  Standard_EXPORT   Standard_Boolean ChangeMap (const Handle(TColStd_HPackedMapOfInteger)& theMap) ;
   
-  Standard_EXPORT     Standard_Boolean Clear() ;
+     const  TColStd_PackedMapOfInteger& GetMap()  const;
   
-  Standard_EXPORT     Standard_Boolean Add(const Standard_Integer theKey) ;
+     const  Handle(TColStd_HPackedMapOfInteger)& GetHMap()  const;
   
-  Standard_EXPORT     Standard_Boolean Remove(const Standard_Integer theKey) ;
+  Standard_EXPORT   Standard_Boolean Clear() ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Standard_Integer theKey) const;
+  Standard_EXPORT   Standard_Boolean Add (const Standard_Integer theKey) ;
   
-        Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Boolean Remove (const Standard_Integer theKey) ;
   
-        Standard_Boolean IsEmpty() const;
+  Standard_EXPORT   Standard_Boolean Contains (const Standard_Integer theKey)  const;
   
-        Standard_Boolean GetDelta() const;
-  //! for  internal  use  only! <br>
-        void SetDelta(const Standard_Boolean isDelta) ;
+      Standard_Integer Extent()  const;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& with) ;
+      Standard_Boolean GetDelta()  const;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! for  internal  use  only!
+      void SetDelta (const Standard_Boolean isDelta) ;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
-  //! Makes a DeltaOnModification between <me> and <br>
-//!         <anOldAttribute>. <br>
-  Standard_EXPORT   virtual  Handle_TDF_DeltaOnModification DeltaOnModification(const Handle(TDF_Attribute)& anOldAttribute) const;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
+  
+  //! Makes a DeltaOnModification between <me> and
+  //! <anOldAttribute>.
+  Standard_EXPORT virtual   Handle(TDF_DeltaOnModification) DeltaOnModification (const Handle(TDF_Attribute)& anOldAttribute)  const;
 
 
 friend class TDataStd_DeltaOnModificationOfIntPackedMap;
@@ -119,10 +102,10 @@ protected:
 private: 
 
   
-        void RemoveMap() ;
+      void RemoveMap() ;
 
-Handle_TColStd_HPackedMapOfInteger myMap;
-Standard_Boolean myIsDelta;
+  Handle(TColStd_HPackedMapOfInteger) myMap;
+  Standard_Boolean myIsDelta;
 
 
 };
@@ -132,7 +115,6 @@ Standard_Boolean myIsDelta;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_IntPackedMap_HeaderFile

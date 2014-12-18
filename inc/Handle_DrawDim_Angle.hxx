@@ -6,22 +6,15 @@
 #ifndef _Handle_DrawDim_Angle_HeaderFile
 #define _Handle_DrawDim_Angle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_DrawDim_Dimension_HeaderFile
 #include <Handle_DrawDim_Dimension.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(DrawDim_Dimension);
 class DrawDim_Angle;
 
-DEFINE_STANDARD_HANDLE(DrawDim_Angle,DrawDim_Dimension)
+DEFINE_STANDARD_HANDLE(DrawDim_Angle, DrawDim_Dimension)
 
-#endif
+#endif // _Handle_DrawDim_Angle_HeaderFile

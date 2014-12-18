@@ -6,45 +6,33 @@
 #ifndef _STEPSelections_SelectGSCurves_HeaderFile
 #define _STEPSelections_SelectGSCurves_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPSelections_SelectGSCurves_HeaderFile
 #include <Handle_STEPSelections_SelectGSCurves.hxx>
-#endif
 
-#ifndef _IFSelect_SelectExplore_HeaderFile
 #include <IFSelect_SelectExplore.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Standard_Transient;
 class Interface_Graph;
 class Interface_EntityIterator;
 class TCollection_AsciiString;
 
 
-//! This selection returns "curves in the geometric_set (except composite curves)" <br>
-class STEPSelections_SelectGSCurves : public IFSelect_SelectExplore {
+//! This selection returns "curves in the geometric_set (except composite curves)"
+class STEPSelections_SelectGSCurves : public IFSelect_SelectExplore
+{
 
 public:
 
   
-  Standard_EXPORT   STEPSelections_SelectGSCurves();
+  Standard_EXPORT STEPSelections_SelectGSCurves();
   
-  Standard_EXPORT     Standard_Boolean Explore(const Standard_Integer level,const Handle(Standard_Transient)& ent,const Interface_Graph& G,Interface_EntityIterator& explored) const;
-  //! Returns a text defining the criterium : "Curves" <br>
-  Standard_EXPORT     TCollection_AsciiString ExploreLabel() const;
+  Standard_EXPORT   Standard_Boolean Explore (const Standard_Integer level, const Handle(Standard_Transient)& ent, const Interface_Graph& G, Interface_EntityIterator& explored)  const;
+  
+  //! Returns a text defining the criterium : "Curves"
+  Standard_EXPORT   TCollection_AsciiString ExploreLabel()  const;
 
 
 
@@ -67,7 +55,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPSelections_SelectGSCurves_HeaderFile

@@ -6,38 +6,27 @@
 #ifndef _IFSelect_SequenceNodeOfTSeqOfSelection_HeaderFile
 #define _IFSelect_SequenceNodeOfTSeqOfSelection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SequenceNodeOfTSeqOfSelection_HeaderFile
 #include <Handle_IFSelect_SequenceNodeOfTSeqOfSelection.hxx>
-#endif
 
-#ifndef _Handle_IFSelect_Selection_HeaderFile
 #include <Handle_IFSelect_Selection.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class IFSelect_Selection;
 class IFSelect_TSeqOfSelection;
 
 
 
-class IFSelect_SequenceNodeOfTSeqOfSelection : public TCollection_SeqNode {
+class IFSelect_SequenceNodeOfTSeqOfSelection : public TCollection_SeqNode
+{
 
 public:
 
   
-      IFSelect_SequenceNodeOfTSeqOfSelection(const Handle(IFSelect_Selection)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    IFSelect_SequenceNodeOfTSeqOfSelection(const Handle(IFSelect_Selection)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_IFSelect_Selection& Value() const;
+      Handle(IFSelect_Selection)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_IFSelect_Selection myValue;
+  Handle(IFSelect_Selection) myValue;
 
 
 };
 
-#define SeqItem Handle_IFSelect_Selection
+#define SeqItem Handle(IFSelect_Selection)
 #define SeqItem_hxx <IFSelect_Selection.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfTSeqOfSelection
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfTSeqOfSelection.hxx>
@@ -78,7 +67,6 @@ Handle_IFSelect_Selection myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SequenceNodeOfTSeqOfSelection_HeaderFile

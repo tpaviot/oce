@@ -6,28 +6,14 @@
 #ifndef _Bnd_B2f_HeaderFile
 #define _Bnd_B2f_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_XY;
 class gp_Pnt2d;
 class gp_Trsf2d;
@@ -35,58 +21,58 @@ class gp_Ax2d;
 
 
 
-class Bnd_B2f  {
+class Bnd_B2f 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Bnd_B2f();
+    Bnd_B2f();
   
-      Bnd_B2f(const gp_XY& theCenter,const gp_XY& theHSize);
+    Bnd_B2f(const gp_XY& theCenter, const gp_XY& theHSize);
   
-        Standard_Boolean IsVoid() const;
+      Standard_Boolean IsVoid()  const;
   
-        void Clear() ;
+      void Clear() ;
   
-  Standard_EXPORT     void Add(const gp_XY& thePnt) ;
+  Standard_EXPORT   void Add (const gp_XY& thePnt) ;
   
-  Standard_EXPORT     void Add(const gp_Pnt2d& thePnt) ;
+  Standard_EXPORT   void Add (const gp_Pnt2d& thePnt) ;
   
-        void Add(const Bnd_B2f& theBox) ;
+      void Add (const Bnd_B2f& theBox) ;
   
-        gp_XY CornerMin() const;
+      gp_XY CornerMin()  const;
   
-        gp_XY CornerMax() const;
+      gp_XY CornerMax()  const;
   
-        Standard_Real SquareExtent() const;
+      Standard_Real SquareExtent()  const;
   
-        void Enlarge(const Standard_Real theDiff) ;
+      void Enlarge (const Standard_Real theDiff) ;
   
-  Standard_EXPORT     Standard_Boolean Limit(const Bnd_B2f& theOtherBox) ;
+  Standard_EXPORT   Standard_Boolean Limit (const Bnd_B2f& theOtherBox) ;
   
-  Standard_EXPORT     Bnd_B2f Transformed(const gp_Trsf2d& theTrsf) const;
+  Standard_EXPORT   Bnd_B2f Transformed (const gp_Trsf2d& theTrsf)  const;
   
-        Standard_Boolean IsOut(const gp_XY& thePnt) const;
+      Standard_Boolean IsOut (const gp_XY& thePnt)  const;
   
-  Standard_EXPORT     Standard_Boolean IsOut(const gp_XY& theCenter,const Standard_Real theRadius,const Standard_Boolean isCircleHollow = Standard_False) const;
+  Standard_EXPORT   Standard_Boolean IsOut (const gp_XY& theCenter, const Standard_Real theRadius, const Standard_Boolean isCircleHollow = Standard_False)  const;
   
-        Standard_Boolean IsOut(const Bnd_B2f& theOtherBox) const;
+      Standard_Boolean IsOut (const Bnd_B2f& theOtherBox)  const;
   
-  Standard_EXPORT     Standard_Boolean IsOut(const Bnd_B2f& theOtherBox,const gp_Trsf2d& theTrsf) const;
+  Standard_EXPORT   Standard_Boolean IsOut (const Bnd_B2f& theOtherBox, const gp_Trsf2d& theTrsf)  const;
   
-  Standard_EXPORT     Standard_Boolean IsOut(const gp_Ax2d& theLine) const;
+  Standard_EXPORT   Standard_Boolean IsOut (const gp_Ax2d& theLine)  const;
   
-  Standard_EXPORT     Standard_Boolean IsOut(const gp_XY& theP0,const gp_XY& theP1) const;
+  Standard_EXPORT   Standard_Boolean IsOut (const gp_XY& theP0, const gp_XY& theP1)  const;
   
-        Standard_Boolean IsIn(const Bnd_B2f& theBox) const;
+      Standard_Boolean IsIn (const Bnd_B2f& theBox)  const;
   
-  Standard_EXPORT     Standard_Boolean IsIn(const Bnd_B2f& theBox,const gp_Trsf2d& theTrsf) const;
+  Standard_EXPORT   Standard_Boolean IsIn (const Bnd_B2f& theBox, const gp_Trsf2d& theTrsf)  const;
   
-        void SetCenter(const gp_XY& theCenter) ;
+      void SetCenter (const gp_XY& theCenter) ;
   
-        void SetHSize(const gp_XY& theHSize) ;
-
+      void SetHSize (const gp_XY& theHSize) ;
 
 
 
@@ -95,8 +81,8 @@ protected:
 
 
 
-Standard_ShortReal myCenter[2];
-Standard_ShortReal myHSize[2];
+  Standard_ShortReal myCenter[2];
+  Standard_ShortReal myHSize[2];
 
 
 private:
@@ -120,7 +106,6 @@ private:
 #undef Bnd_B2x_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Bnd_B2f_HeaderFile

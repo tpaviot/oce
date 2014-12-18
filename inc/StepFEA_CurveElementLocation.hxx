@@ -6,38 +6,33 @@
 #ifndef _StepFEA_CurveElementLocation_HeaderFile
 #define _StepFEA_CurveElementLocation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_CurveElementLocation_HeaderFile
 #include <Handle_StepFEA_CurveElementLocation.hxx>
-#endif
 
-#ifndef _Handle_StepFEA_FeaParametricPoint_HeaderFile
 #include <Handle_StepFEA_FeaParametricPoint.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepFEA_FeaParametricPoint;
 
 
-//! Representation of STEP entity CurveElementLocation <br>
-class StepFEA_CurveElementLocation : public MMgt_TShared {
+//! Representation of STEP entity CurveElementLocation
+class StepFEA_CurveElementLocation : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_CurveElementLocation();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepFEA_FeaParametricPoint)& aCoordinate) ;
-  //! Returns field Coordinate <br>
-  Standard_EXPORT     Handle_StepFEA_FeaParametricPoint Coordinate() const;
-  //! Set field Coordinate <br>
-  Standard_EXPORT     void SetCoordinate(const Handle(StepFEA_FeaParametricPoint)& Coordinate) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_CurveElementLocation();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepFEA_FeaParametricPoint)& aCoordinate) ;
+  
+  //! Returns field Coordinate
+  Standard_EXPORT   Handle(StepFEA_FeaParametricPoint) Coordinate()  const;
+  
+  //! Set field Coordinate
+  Standard_EXPORT   void SetCoordinate (const Handle(StepFEA_FeaParametricPoint)& Coordinate) ;
 
 
 
@@ -52,7 +47,7 @@ protected:
 private: 
 
 
-Handle_StepFEA_FeaParametricPoint theCoordinate;
+  Handle(StepFEA_FeaParametricPoint) theCoordinate;
 
 
 };
@@ -61,7 +56,6 @@ Handle_StepFEA_FeaParametricPoint theCoordinate;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_CurveElementLocation_HeaderFile

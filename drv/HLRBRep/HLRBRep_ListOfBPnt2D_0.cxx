@@ -5,18 +5,10 @@
 
 #include <HLRBRep_ListOfBPnt2D.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _HLRBRep_ListIteratorOfListOfBPnt2D_HeaderFile
 #include <HLRBRep_ListIteratorOfListOfBPnt2D.hxx>
-#endif
-#ifndef _HLRBRep_BiPnt2D_HeaderFile
 #include <HLRBRep_BiPnt2D.hxx>
-#endif
-#ifndef _HLRBRep_ListNodeOfListOfBPnt2D_HeaderFile
 #include <HLRBRep_ListNodeOfListOfBPnt2D.hxx>
-#endif
  
 
 #define Item HLRBRep_BiPnt2D

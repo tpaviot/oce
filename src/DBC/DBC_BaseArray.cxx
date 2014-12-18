@@ -74,22 +74,10 @@ static PStandard_ArrayNode DBC_tmpItem;
 //                     should be d_Varray for 4.6
 //                Use an Collection of StandardDB_O2Handle
 //                for none primitive type to avoid to import
-//                Handle_Standard_Persistent.
+//                Handle(Standard_Persistent).
 // --------------------------------------------------------------------
 //   Last revision : January 1996 JMS/CLE
 //                   portage OBJY 3.8
-
-
-
-
-// --------------------------------------------------------------------
-//                                 ShallowDump
-// --------------------------------------------------------------------
-//void DBC_BaseArray::ShallowDump( Standard_OStream& S) const
-void DBC_BaseArray::ShallowDump( Standard_OStream& ) const
-{
-}
-
 
 // --------------------------------------------------------------------
 //                                  Constructor

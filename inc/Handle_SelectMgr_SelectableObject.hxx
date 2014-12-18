@@ -6,22 +6,15 @@
 #ifndef _Handle_SelectMgr_SelectableObject_HeaderFile
 #define _Handle_SelectMgr_SelectableObject_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_PrsMgr_PresentableObject_HeaderFile
 #include <Handle_PrsMgr_PresentableObject.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(PrsMgr_PresentableObject);
 class SelectMgr_SelectableObject;
 
-DEFINE_STANDARD_HANDLE(SelectMgr_SelectableObject,PrsMgr_PresentableObject)
+DEFINE_STANDARD_HANDLE(SelectMgr_SelectableObject, PrsMgr_PresentableObject)
 
-#endif
+#endif // _Handle_SelectMgr_SelectableObject_HeaderFile

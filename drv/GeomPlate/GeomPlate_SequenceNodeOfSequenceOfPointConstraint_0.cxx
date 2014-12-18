@@ -5,16 +5,10 @@
 
 #include <GeomPlate_SequenceNodeOfSequenceOfPointConstraint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _GeomPlate_PointConstraint_HeaderFile
 #include <GeomPlate_PointConstraint.hxx>
-#endif
-#ifndef _GeomPlate_SequenceOfPointConstraint_HeaderFile
 #include <GeomPlate_SequenceOfPointConstraint.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(GeomPlate_SequenceNodeOfSequenceOfPointConstraint,Standard_Tr
 IMPLEMENT_STANDARD_RTTI(GeomPlate_SequenceNodeOfSequenceOfPointConstraint)
 
 
-#define SeqItem Handle_GeomPlate_PointConstraint
+#define SeqItem Handle(GeomPlate_PointConstraint)
 #define SeqItem_hxx <GeomPlate_PointConstraint.hxx>
 #define TCollection_SequenceNode GeomPlate_SequenceNodeOfSequenceOfPointConstraint
 #define TCollection_SequenceNode_hxx <GeomPlate_SequenceNodeOfSequenceOfPointConstraint.hxx>

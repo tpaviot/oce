@@ -6,28 +6,14 @@
 #ifndef _IGESSolid_HArray1OfVertexList_HeaderFile
 #define _IGESSolid_HArray1OfVertexList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_HArray1OfVertexList_HeaderFile
 #include <Handle_IGESSolid_HArray1OfVertexList.hxx>
-#endif
 
-#ifndef _IGESSolid_Array1OfVertexList_HeaderFile
 #include <IGESSolid_Array1OfVertexList.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESSolid_VertexList_HeaderFile
 #include <Handle_IGESSolid_VertexList.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESSolid_Array1OfVertexList;
 
 
 
-class IGESSolid_HArray1OfVertexList : public MMgt_TShared {
+class IGESSolid_HArray1OfVertexList : public MMgt_TShared
+{
 
 public:
 
   
-      IGESSolid_HArray1OfVertexList(const Standard_Integer Low,const Standard_Integer Up);
+    IGESSolid_HArray1OfVertexList(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESSolid_HArray1OfVertexList(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESSolid_VertexList)& V);
+    IGESSolid_HArray1OfVertexList(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESSolid_VertexList)& V);
   
-        void Init(const Handle(IGESSolid_VertexList)& V) ;
+      void Init (const Handle(IGESSolid_VertexList)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESSolid_VertexList)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESSolid_VertexList)& Value) ;
   
-       const Handle_IGESSolid_VertexList& Value(const Standard_Integer Index) const;
+     const  Handle(IGESSolid_VertexList)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESSolid_VertexList& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESSolid_VertexList)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESSolid_Array1OfVertexList& Array1() const;
+     const  IGESSolid_Array1OfVertexList& Array1()  const;
   
-        IGESSolid_Array1OfVertexList& ChangeArray1() ;
+      IGESSolid_Array1OfVertexList& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESSolid_Array1OfVertexList myArray;
+  IGESSolid_Array1OfVertexList myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESSolid_VertexList
+#define ItemHArray1 Handle(IGESSolid_VertexList)
 #define ItemHArray1_hxx <IGESSolid_VertexList.hxx>
 #define TheArray1 IGESSolid_Array1OfVertexList
 #define TheArray1_hxx <IGESSolid_Array1OfVertexList.hxx>
@@ -103,7 +90,6 @@ IGESSolid_Array1OfVertexList myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_HArray1OfVertexList_HeaderFile

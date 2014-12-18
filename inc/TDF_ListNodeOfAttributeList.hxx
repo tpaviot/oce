@@ -6,39 +6,28 @@
 #ifndef _TDF_ListNodeOfAttributeList_HeaderFile
 #define _TDF_ListNodeOfAttributeList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_ListNodeOfAttributeList_HeaderFile
 #include <Handle_TDF_ListNodeOfAttributeList.hxx>
-#endif
 
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TDF_Attribute;
 class TDF_AttributeList;
 class TDF_ListIteratorOfAttributeList;
 
 
 
-class TDF_ListNodeOfAttributeList : public TCollection_MapNode {
+class TDF_ListNodeOfAttributeList : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_ListNodeOfAttributeList(const Handle(TDF_Attribute)& I,const TCollection_MapNodePtr& n);
+    TDF_ListNodeOfAttributeList(const Handle(TDF_Attribute)& I, const TCollection_MapNodePtr& n);
   
-        Handle_TDF_Attribute& Value() const;
+      Handle(TDF_Attribute)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_TDF_Attribute myValue;
+  Handle(TDF_Attribute) myValue;
 
 
 };
 
-#define Item Handle_TDF_Attribute
+#define Item Handle(TDF_Attribute)
 #define Item_hxx <TDF_Attribute.hxx>
 #define TCollection_ListNode TDF_ListNodeOfAttributeList
 #define TCollection_ListNode_hxx <TDF_ListNodeOfAttributeList.hxx>
@@ -83,7 +72,6 @@ Handle_TDF_Attribute myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_ListNodeOfAttributeList_HeaderFile

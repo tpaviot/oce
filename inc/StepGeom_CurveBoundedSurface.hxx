@@ -6,57 +6,50 @@
 #ifndef _StepGeom_CurveBoundedSurface_HeaderFile
 #define _StepGeom_CurveBoundedSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_CurveBoundedSurface_HeaderFile
 #include <Handle_StepGeom_CurveBoundedSurface.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Surface_HeaderFile
 #include <Handle_StepGeom_Surface.hxx>
-#endif
-#ifndef _Handle_StepGeom_HArray1OfSurfaceBoundary_HeaderFile
 #include <Handle_StepGeom_HArray1OfSurfaceBoundary.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepGeom_BoundedSurface_HeaderFile
 #include <StepGeom_BoundedSurface.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Surface;
 class StepGeom_HArray1OfSurfaceBoundary;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity CurveBoundedSurface <br>
-class StepGeom_CurveBoundedSurface : public StepGeom_BoundedSurface {
+//! Representation of STEP entity CurveBoundedSurface
+class StepGeom_CurveBoundedSurface : public StepGeom_BoundedSurface
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepGeom_CurveBoundedSurface();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentationItem_Name,const Handle(StepGeom_Surface)& aBasisSurface,const Handle(StepGeom_HArray1OfSurfaceBoundary)& aBoundaries,const Standard_Boolean aImplicitOuter) ;
-  //! Returns field BasisSurface <br>
-  Standard_EXPORT     Handle_StepGeom_Surface BasisSurface() const;
-  //! Set field BasisSurface <br>
-  Standard_EXPORT     void SetBasisSurface(const Handle(StepGeom_Surface)& BasisSurface) ;
-  //! Returns field Boundaries <br>
-  Standard_EXPORT     Handle_StepGeom_HArray1OfSurfaceBoundary Boundaries() const;
-  //! Set field Boundaries <br>
-  Standard_EXPORT     void SetBoundaries(const Handle(StepGeom_HArray1OfSurfaceBoundary)& Boundaries) ;
-  //! Returns field ImplicitOuter <br>
-  Standard_EXPORT     Standard_Boolean ImplicitOuter() const;
-  //! Set field ImplicitOuter <br>
-  Standard_EXPORT     void SetImplicitOuter(const Standard_Boolean ImplicitOuter) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepGeom_CurveBoundedSurface();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentationItem_Name, const Handle(StepGeom_Surface)& aBasisSurface, const Handle(StepGeom_HArray1OfSurfaceBoundary)& aBoundaries, const Standard_Boolean aImplicitOuter) ;
+  
+  //! Returns field BasisSurface
+  Standard_EXPORT   Handle(StepGeom_Surface) BasisSurface()  const;
+  
+  //! Set field BasisSurface
+  Standard_EXPORT   void SetBasisSurface (const Handle(StepGeom_Surface)& BasisSurface) ;
+  
+  //! Returns field Boundaries
+  Standard_EXPORT   Handle(StepGeom_HArray1OfSurfaceBoundary) Boundaries()  const;
+  
+  //! Set field Boundaries
+  Standard_EXPORT   void SetBoundaries (const Handle(StepGeom_HArray1OfSurfaceBoundary)& Boundaries) ;
+  
+  //! Returns field ImplicitOuter
+  Standard_EXPORT   Standard_Boolean ImplicitOuter()  const;
+  
+  //! Set field ImplicitOuter
+  Standard_EXPORT   void SetImplicitOuter (const Standard_Boolean ImplicitOuter) ;
 
 
 
@@ -71,9 +64,9 @@ protected:
 private: 
 
 
-Handle_StepGeom_Surface theBasisSurface;
-Handle_StepGeom_HArray1OfSurfaceBoundary theBoundaries;
-Standard_Boolean theImplicitOuter;
+  Handle(StepGeom_Surface) theBasisSurface;
+  Handle(StepGeom_HArray1OfSurfaceBoundary) theBoundaries;
+  Standard_Boolean theImplicitOuter;
 
 
 };
@@ -82,7 +75,6 @@ Standard_Boolean theImplicitOuter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_CurveBoundedSurface_HeaderFile

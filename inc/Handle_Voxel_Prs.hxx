@@ -6,22 +6,15 @@
 #ifndef _Handle_Voxel_Prs_HeaderFile
 #define _Handle_Voxel_Prs_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(AIS_InteractiveObject);
 class Voxel_Prs;
 
-DEFINE_STANDARD_HANDLE(Voxel_Prs,AIS_InteractiveObject)
+DEFINE_STANDARD_HANDLE(Voxel_Prs, AIS_InteractiveObject)
 
-#endif
+#endif // _Handle_Voxel_Prs_HeaderFile

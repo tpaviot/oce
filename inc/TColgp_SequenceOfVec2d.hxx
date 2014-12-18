@@ -6,25 +6,13 @@
 #ifndef _TColgp_SequenceOfVec2d_HeaderFile
 #define _TColgp_SequenceOfVec2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_TColgp_SequenceNodeOfSequenceOfVec2d_HeaderFile
 #include <Handle_TColgp_SequenceNodeOfSequenceOfVec2d.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class gp_Vec2d;
@@ -32,66 +20,68 @@ class TColgp_SequenceNodeOfSequenceOfVec2d;
 
 
 
-class TColgp_SequenceOfVec2d  : public TCollection_BaseSequence {
+class TColgp_SequenceOfVec2d  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColgp_SequenceOfVec2d();
+    TColgp_SequenceOfVec2d();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT TColgp_SequenceOfVec2d(const TColgp_SequenceOfVec2d& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~TColgp_SequenceOfVec2d()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TColgp_SequenceOfVec2d& Assign(const TColgp_SequenceOfVec2d& Other) ;
-   const TColgp_SequenceOfVec2d& operator =(const TColgp_SequenceOfVec2d& Other) 
+  Standard_EXPORT  const  TColgp_SequenceOfVec2d& Assign (const TColgp_SequenceOfVec2d& Other) ;
+ const  TColgp_SequenceOfVec2d& operator = (const TColgp_SequenceOfVec2d& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const gp_Vec2d& T) ;
+  Standard_EXPORT   void Append (const gp_Vec2d& T) ;
   
-        void Append(TColgp_SequenceOfVec2d& S) ;
+      void Append (TColgp_SequenceOfVec2d& S) ;
   
-  Standard_EXPORT     void Prepend(const gp_Vec2d& T) ;
+  Standard_EXPORT   void Prepend (const gp_Vec2d& T) ;
   
-        void Prepend(TColgp_SequenceOfVec2d& S) ;
+      void Prepend (TColgp_SequenceOfVec2d& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const gp_Vec2d& T) ;
+      void InsertBefore (const Standard_Integer Index, const gp_Vec2d& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TColgp_SequenceOfVec2d& S) ;
+      void InsertBefore (const Standard_Integer Index, TColgp_SequenceOfVec2d& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const gp_Vec2d& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const gp_Vec2d& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TColgp_SequenceOfVec2d& S) ;
+      void InsertAfter (const Standard_Integer Index, TColgp_SequenceOfVec2d& S) ;
   
-  Standard_EXPORT    const gp_Vec2d& First() const;
+  Standard_EXPORT  const  gp_Vec2d& First()  const;
   
-  Standard_EXPORT    const gp_Vec2d& Last() const;
+  Standard_EXPORT  const  gp_Vec2d& Last()  const;
   
-        void Split(const Standard_Integer Index,TColgp_SequenceOfVec2d& Sub) ;
+      void Split (const Standard_Integer Index, TColgp_SequenceOfVec2d& Sub) ;
   
-  Standard_EXPORT    const gp_Vec2d& Value(const Standard_Integer Index) const;
-   const gp_Vec2d& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  gp_Vec2d& Value (const Standard_Integer Index)  const;
+ const  gp_Vec2d& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_Vec2d& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_Vec2d& I) ;
   
-  Standard_EXPORT     gp_Vec2d& ChangeValue(const Standard_Integer Index) ;
-    gp_Vec2d& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   gp_Vec2d& ChangeValue (const Standard_Integer Index) ;
+  gp_Vec2d& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColgp_SequenceOfVec2d(const TColgp_SequenceOfVec2d& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_SequenceOfVec2d_HeaderFile

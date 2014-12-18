@@ -1,12 +1,4 @@
-#ifndef _StepGeom_Surface_HeaderFile
 #include <StepGeom_Surface.hxx>
-#endif
-#ifndef _StepGeom_CartesianTransformationOperator3d_HeaderFile
 #include <StepGeom_CartesianTransformationOperator3d.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepGeom_SurfaceReplica_HeaderFile
 #include <StepGeom_SurfaceReplica.hxx>
-#endif

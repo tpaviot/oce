@@ -5,25 +5,13 @@
 
 #include <Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _Draft_EdgeInfo_HeaderFile
 #include <Draft_EdgeInfo.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _Draft_DataMapOfEdgeEdgeInfo_HeaderFile
 #include <Draft_DataMapOfEdgeEdgeInfo.hxx>
-#endif
-#ifndef _Draft_DataMapIteratorOfDataMapOfEdgeEdgeInfo_HeaderFile
 #include <Draft_DataMapIteratorOfDataMapOfEdgeEdgeInfo.hxx>
-#endif
 
  
 

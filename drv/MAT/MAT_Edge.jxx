@@ -1,6 +1,2 @@
-#ifndef _MAT_Bisector_HeaderFile
 #include <MAT_Bisector.hxx>
-#endif
-#ifndef _MAT_Edge_HeaderFile
 #include <MAT_Edge.hxx>
-#endif

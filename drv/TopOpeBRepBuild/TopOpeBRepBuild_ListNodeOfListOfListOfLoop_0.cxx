@@ -5,19 +5,11 @@
 
 #include <TopOpeBRepBuild_ListNodeOfListOfListOfLoop.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepBuild_ListOfLoop_HeaderFile
 #include <TopOpeBRepBuild_ListOfLoop.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListOfListOfLoop_HeaderFile
 #include <TopOpeBRepBuild_ListOfListOfLoop.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListIteratorOfListOfListOfLoop_HeaderFile
 #include <TopOpeBRepBuild_ListIteratorOfListOfListOfLoop.hxx>
-#endif
 
  
 

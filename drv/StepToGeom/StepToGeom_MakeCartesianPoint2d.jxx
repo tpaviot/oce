@@ -1,9 +1,3 @@
-#ifndef _StepGeom_CartesianPoint_HeaderFile
 #include <StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _Geom2d_CartesianPoint_HeaderFile
 #include <Geom2d_CartesianPoint.hxx>
-#endif
-#ifndef _StepToGeom_MakeCartesianPoint2d_HeaderFile
 #include <StepToGeom_MakeCartesianPoint2d.hxx>
-#endif

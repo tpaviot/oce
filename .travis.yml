@@ -18,6 +18,10 @@ matrix:
     env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
   - compiler: gcc
     env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=ON
+  - compiler: gcc
+    env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=OPENMP
+  - compiler: gcc
+    env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=TBB
   exclude:
   - env: RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
   allow_failures:
@@ -27,7 +31,7 @@ matrix:
       env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=OFF
 
 before_install:
-  - sudo apt-get install tcl8.5-dev tk8.5-dev libgl2ps-dev libfreeimage-dev
+  - sudo apt-get install tcl8.5-dev tk8.5-dev libgl2ps-dev libfreeimage-dev libtbb-dev
 #  Needed to run OCCT tests in parallel
   - sudo apt-get install tclthread
 #  Is this needed to run OCCT tests?

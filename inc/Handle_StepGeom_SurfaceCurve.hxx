@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_SurfaceCurve_HeaderFile
 #define _Handle_StepGeom_SurfaceCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_Curve_HeaderFile
 #include <Handle_StepGeom_Curve.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_Curve);
 class StepGeom_SurfaceCurve;
 
-DEFINE_STANDARD_HANDLE(StepGeom_SurfaceCurve,StepGeom_Curve)
+DEFINE_STANDARD_HANDLE(StepGeom_SurfaceCurve, StepGeom_Curve)
 
-#endif
+#endif // _Handle_StepGeom_SurfaceCurve_HeaderFile

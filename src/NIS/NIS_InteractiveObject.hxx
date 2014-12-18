@@ -95,8 +95,8 @@
  * the virtual method Clone() should be correctly defined for every interactive
  * object subtype. Supposing that MyIOClass inherits MyBaseIOBase :
  * @code
- * void MyIOCalss::Clone (const Handle_NCollection_BaseAllocator& theAlloc,
- *                        Handle_NIS_InteractiveObject&           theDest) const
+ * void MyIOCalss::Clone (const Handle(NCollection_BaseAllocator)& theAlloc,
+ *                        Handle(NIS_InteractiveObject)&           theDest) const
  * {
  *   Handle(MyIOClass) aNewObj;
  *   if (theDest.IsNull()) {
@@ -160,25 +160,25 @@ class NIS_InteractiveObject : public Standard_Transient
 
   /**
    * Replace the drawer. This method must not be called for Object that
-   * has not yet been added to a Context (thus has empty drawer).<br>
+   * has not yet been added to a Context (thus has empty drawer).
    * It is possible to have unassigned myDrawer or a DefaultDrawer as the
    * parameter value (but not both). The Context where we work is taken
-   * from theDrawer first, then (if NULL) -- from myDrawer.<br>
+   * from theDrawer first, then (if NULL) -- from myDrawer.
    * This method matches theDrawer with the available Drawers in the Context
    * and adds if no match is found.
    * @return
    *   Reference to the finally stored or found Drawer instance inside
    *   the Context. 
    */
-  Standard_EXPORT const Handle_NIS_Drawer&
-                          SetDrawer     (const Handle_NIS_Drawer& theDrawer,
+  Standard_EXPORT const Handle(NIS_Drawer)&
+                          SetDrawer     (const Handle(NIS_Drawer)& theDrawer,
                                          const Standard_Boolean   setUpdated
                                          = Standard_True);
 
   /**
    * Query the current drawer.
    */
-  inline const Handle_NIS_Drawer&
+  inline const Handle(NIS_Drawer)&
                           GetDrawer     () const
   { return myDrawer; }
 
@@ -263,14 +263,14 @@ class NIS_InteractiveObject : public Standard_Transient
    *   <tt>[in-out]</tt> The target object where the data are copied.
    */
   Standard_EXPORT virtual void
-                          Clone (const Handle_NCollection_BaseAllocator& theAll,
-                                 Handle_NIS_InteractiveObject& theDest) const;
+                          Clone (const Handle(NCollection_BaseAllocator)& theAll,
+                                 Handle(NIS_InteractiveObject)& theDest) const;
 
   /**
    * The same as Clone() but also copies the ID.
    */
-  Standard_EXPORT void    CloneWithID (const Handle_NCollection_BaseAllocator&,
-                                       Handle_NIS_InteractiveObject&);
+  Standard_EXPORT void    CloneWithID (const Handle(NCollection_BaseAllocator)&,
+                                       Handle(NIS_InteractiveObject)&);
 
   /**
    * Intersect the InteractiveObject geometry with a line/ray.
@@ -291,8 +291,7 @@ class NIS_InteractiveObject : public Standard_Transient
    * Intersect the InteractiveObject geometry with an oriented box.
    * The default implementation (in this abstract class) always returns True,
    * signalling that every object pre-selected by its bounding box is
-   * automatically selected. The specializations should define a more correct
-   * behaviour.<br>
+   * automatically selected. The specializations should define a more correct behaviour.
    * The algorithm should transform the InteractiveObject geometry using the
    * parameter theTrf and then reject it with box theBox, like:
    * @code
@@ -320,8 +319,7 @@ class NIS_InteractiveObject : public Standard_Transient
    * Intersect the InteractiveObject geometry with a selection polygon.
    * The default implementation (in this abstract class) always returns True,
    * signalling that every object pre-selected by its bounding box is
-   * automatically selected. The specializations should define a more correct
-   * behaviour.<br>
+   * automatically selected. The specializations should define a more correct behaviour.
    * The algorithm should transform the InteractiveObject geometry using the
    * parameter theTrf and then reject it with polygon.
    * @param thePolygon
@@ -381,7 +379,7 @@ class NIS_InteractiveObject : public Standard_Transient
  private:
   // ---------- PRIVATE FIELDS ----------
 
-  Handle_NIS_Drawer             myDrawer;
+  Handle(NIS_Drawer)             myDrawer;
   Standard_Integer              myID;
   NIS_Drawer::DrawType          myDrawType      : 3;
   NIS_Drawer::DrawType          myBaseType      : 3;

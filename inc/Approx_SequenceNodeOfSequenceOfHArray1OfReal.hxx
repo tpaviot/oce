@@ -6,38 +6,27 @@
 #ifndef _Approx_SequenceNodeOfSequenceOfHArray1OfReal_HeaderFile
 #define _Approx_SequenceNodeOfSequenceOfHArray1OfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal_HeaderFile
 #include <Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class Approx_SequenceOfHArray1OfReal;
 
 
 
-class Approx_SequenceNodeOfSequenceOfHArray1OfReal : public TCollection_SeqNode {
+class Approx_SequenceNodeOfSequenceOfHArray1OfReal : public TCollection_SeqNode
+{
 
 public:
 
   
-      Approx_SequenceNodeOfSequenceOfHArray1OfReal(const Handle(TColStd_HArray1OfReal)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Approx_SequenceNodeOfSequenceOfHArray1OfReal(const Handle(TColStd_HArray1OfReal)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_TColStd_HArray1OfReal& Value() const;
+      Handle(TColStd_HArray1OfReal)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfReal myValue;
+  Handle(TColStd_HArray1OfReal) myValue;
 
 
 };
 
-#define SeqItem Handle_TColStd_HArray1OfReal
+#define SeqItem Handle(TColStd_HArray1OfReal)
 #define SeqItem_hxx <TColStd_HArray1OfReal.hxx>
 #define TCollection_SequenceNode Approx_SequenceNodeOfSequenceOfHArray1OfReal
 #define TCollection_SequenceNode_hxx <Approx_SequenceNodeOfSequenceOfHArray1OfReal.hxx>
@@ -78,7 +67,6 @@ Handle_TColStd_HArray1OfReal myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Approx_SequenceNodeOfSequenceOfHArray1OfReal_HeaderFile

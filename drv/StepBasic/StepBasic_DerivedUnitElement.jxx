@@ -1,6 +1,2 @@
-#ifndef _StepBasic_NamedUnit_HeaderFile
 #include <StepBasic_NamedUnit.hxx>
-#endif
-#ifndef _StepBasic_DerivedUnitElement_HeaderFile
 #include <StepBasic_DerivedUnitElement.hxx>
-#endif

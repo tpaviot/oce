@@ -6,37 +6,17 @@
 #ifndef _Units_HeaderFile
 #define _Units_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Units_UnitsDictionary_HeaderFile
 #include <Handle_Units_UnitsDictionary.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Units_Quantity_HeaderFile
 #include <Handle_Units_Quantity.hxx>
-#endif
-#ifndef _Handle_Units_Lexicon_HeaderFile
 #include <Handle_Units_Lexicon.hxx>
-#endif
-#ifndef _Handle_Units_Dimensions_HeaderFile
 #include <Handle_Units_Dimensions.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Units_UnitsDictionary;
 class Units_Quantity;
 class Units_Lexicon;
@@ -67,52 +47,62 @@ class Units_SequenceNodeOfTksSequence;
 class Units_SequenceNodeOfQtsSequence;
 
 
-//! This  package provides all the  facilities  to create <br>
-//!          and question a dictionary of  units,  and also  to <br>
-//!          manipulate measurements which are real values with <br>
-//!          units. <br>
-class Units  {
+//! This  package provides all the  facilities  to create
+//! and question a dictionary of  units,  and also  to
+//! manipulate measurements which are real values with
+//! units.
+class Units 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines the location of the file containing all the <br>
-//!          information useful in creating the dictionary of all <br>
-//!          the units known to the system. <br>
-  Standard_EXPORT   static  void UnitsFile(const Standard_CString afile) ;
-  //! Defines the location of the file containing the lexicon <br>
-//!          useful in manipulating composite units. <br>
-  Standard_EXPORT   static  void LexiconFile(const Standard_CString afile) ;
-  //! Returns a unique instance of the dictionary of units. <br>
-//!          If <amode> is True, then it forces the recomputation of <br>
-//!          the dictionary of units. <br>
-  Standard_EXPORT   static  Handle_Units_UnitsDictionary DictionaryOfUnits(const Standard_Boolean amode = Standard_False) ;
-  //! Returns a unique quantity instance corresponding to <aquantity>. <br>
-  Standard_EXPORT   static  Handle_Units_Quantity Quantity(const Standard_CString aquantity) ;
-  //! Returns the first quantity string founded from the unit <aUnit>. <br>
-  Standard_EXPORT   static  Standard_CString FirstQuantity(const Standard_CString aunit) ;
-  //! Returns a unique instance of the Units_Lexicon. <br>
-//!          If <amode> is True, it forces the recomputation of <br>
-//!          the dictionary of units, and by consequence the <br>
-//!          completion of the Units_Lexicon. <br>
-  Standard_EXPORT   static  Handle_Units_Lexicon LexiconUnits(const Standard_Boolean amode = Standard_True) ;
-  //! Return a unique instance of LexiconFormula. <br>
-  Standard_EXPORT   static  Handle_Units_Lexicon LexiconFormula() ;
-  //! Returns always the same instance of Dimensions. <br>
-  Standard_EXPORT   static  Handle_Units_Dimensions NullDimensions() ;
-  //! Converts <avalue> expressed in <afirstunit> into the <asecondunit>. <br>
-  Standard_EXPORT   static  Standard_Real Convert(const Standard_Real avalue,const Standard_CString afirstunit,const Standard_CString asecondunit) ;
   
-  Standard_EXPORT   static  Standard_Real ToSI(const Standard_Real aData,const Standard_CString aUnit) ;
+  //! Defines the location of the file containing all the
+  //! information useful in creating the dictionary of all
+  //! the units known to the system.
+  Standard_EXPORT static   void UnitsFile (const Standard_CString afile) ;
   
-  Standard_EXPORT   static  Standard_Real ToSI(const Standard_Real aData,const Standard_CString aUnit,Handle(Units_Dimensions)& aDim) ;
+  //! Defines the location of the file containing the lexicon
+  //! useful in manipulating composite units.
+  Standard_EXPORT static   void LexiconFile (const Standard_CString afile) ;
   
-  Standard_EXPORT   static  Standard_Real FromSI(const Standard_Real aData,const Standard_CString aUnit) ;
+  //! Returns a unique instance of the dictionary of units.
+  //! If <amode> is True, then it forces the recomputation of
+  //! the dictionary of units.
+  Standard_EXPORT static   Handle(Units_UnitsDictionary) DictionaryOfUnits (const Standard_Boolean amode = Standard_False) ;
   
-  Standard_EXPORT   static  Standard_Real FromSI(const Standard_Real aData,const Standard_CString aUnit,Handle(Units_Dimensions)& aDim) ;
-  //! return the dimension associated to the Type <br>
-  Standard_EXPORT   static  Handle_Units_Dimensions Dimensions(const Standard_CString aType) ;
-
+  //! Returns a unique quantity instance corresponding to <aquantity>.
+  Standard_EXPORT static   Handle(Units_Quantity) Quantity (const Standard_CString aquantity) ;
+  
+  //! Returns the first quantity string founded from the unit <aUnit>.
+  Standard_EXPORT static   Standard_CString FirstQuantity (const Standard_CString aunit) ;
+  
+  //! Returns a unique instance of the Units_Lexicon.
+  //! If <amode> is True, it forces the recomputation of
+  //! the dictionary of units, and by consequence the
+  //! completion of the Units_Lexicon.
+  Standard_EXPORT static   Handle(Units_Lexicon) LexiconUnits (const Standard_Boolean amode = Standard_True) ;
+  
+  //! Return a unique instance of LexiconFormula.
+  Standard_EXPORT static   Handle(Units_Lexicon) LexiconFormula() ;
+  
+  //! Returns always the same instance of Dimensions.
+  Standard_EXPORT static   Handle(Units_Dimensions) NullDimensions() ;
+  
+  //! Converts <avalue> expressed in <afirstunit> into the <asecondunit>.
+  Standard_EXPORT static   Standard_Real Convert (const Standard_Real avalue, const Standard_CString afirstunit, const Standard_CString asecondunit) ;
+  
+  Standard_EXPORT static   Standard_Real ToSI (const Standard_Real aData, const Standard_CString aUnit) ;
+  
+  Standard_EXPORT static   Standard_Real ToSI (const Standard_Real aData, const Standard_CString aUnit, Handle(Units_Dimensions)& aDim) ;
+  
+  Standard_EXPORT static   Standard_Real FromSI (const Standard_Real aData, const Standard_CString aUnit) ;
+  
+  Standard_EXPORT static   Standard_Real FromSI (const Standard_Real aData, const Standard_CString aUnit, Handle(Units_Dimensions)& aDim) ;
+  
+  //! return the dimension associated to the Type
+  Standard_EXPORT static   Handle(Units_Dimensions) Dimensions (const Standard_CString aType) ;
 
 
 
@@ -159,7 +149,6 @@ friend class Units_SequenceNodeOfQtsSequence;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_HeaderFile

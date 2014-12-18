@@ -6,28 +6,14 @@
 #ifndef _IntCurve_PConic_HeaderFile
 #define _IntCurve_PConic_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Ax22d_HeaderFile
 #include <gp_Ax22d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _GeomAbs_CurveType_HeaderFile
 #include <GeomAbs_CurveType.hxx>
-#endif
 class gp_Elips2d;
 class gp_Circ2d;
 class gp_Parab2d;
@@ -36,48 +22,51 @@ class gp_Lin2d;
 class gp_Ax22d;
 
 
-//! This class represents a conic from gp as a <br>
-//!          parametric curve ( in order to be used by the <br>
-//!          class PConicTool from IntCurve). <br>
-class IntCurve_PConic  {
+//! This class represents a conic from gp as a
+//! parametric curve ( in order to be used by the
+//! class PConicTool from IntCurve).
+class IntCurve_PConic 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntCurve_PConic(const IntCurve_PConic& PC);
+  Standard_EXPORT IntCurve_PConic(const IntCurve_PConic& PC);
   
-  Standard_EXPORT   IntCurve_PConic(const gp_Elips2d& E);
+  Standard_EXPORT IntCurve_PConic(const gp_Elips2d& E);
   
-  Standard_EXPORT   IntCurve_PConic(const gp_Circ2d& C);
+  Standard_EXPORT IntCurve_PConic(const gp_Circ2d& C);
   
-  Standard_EXPORT   IntCurve_PConic(const gp_Parab2d& P);
+  Standard_EXPORT IntCurve_PConic(const gp_Parab2d& P);
   
-  Standard_EXPORT   IntCurve_PConic(const gp_Hypr2d& H);
+  Standard_EXPORT IntCurve_PConic(const gp_Hypr2d& H);
   
-  Standard_EXPORT   IntCurve_PConic(const gp_Lin2d& L);
-  //! EpsX is a internal tolerance used in math <br>
-//!          algorithms, usually about 1e-10 <br>
-//!          (See FunctionAllRoots for more details) <br>
-  Standard_EXPORT     void SetEpsX(const Standard_Real EpsDist) ;
-  //! Accuracy is the number of samples used to <br>
-//!          approximate the parametric curve on its domain. <br>
-  Standard_EXPORT     void SetAccuracy(const Standard_Integer Nb) ;
+  Standard_EXPORT IntCurve_PConic(const gp_Lin2d& L);
   
-        Standard_Integer Accuracy() const;
+  //! EpsX is a internal tolerance used in math
+  //! algorithms, usually about 1e-10
+  //! (See FunctionAllRoots for more details)
+  Standard_EXPORT   void SetEpsX (const Standard_Real EpsDist) ;
   
-        Standard_Real EpsX() const;
-  //! The Conics are manipulated as objects which only <br>
-//!          depend on three parameters : Axis and two Real from Standards. <br>
-//!          Type Curve is used to select the correct Conic. <br>
-        GeomAbs_CurveType TypeCurve() const;
+  //! Accuracy is the number of samples used to
+  //! approximate the parametric curve on its domain.
+  Standard_EXPORT   void SetAccuracy (const Standard_Integer Nb) ;
   
-       const gp_Ax22d& Axis2() const;
+      Standard_Integer Accuracy()  const;
   
-        Standard_Real Param1() const;
+      Standard_Real EpsX()  const;
   
-        Standard_Real Param2() const;
-
+  //! The Conics are manipulated as objects which only
+  //! depend on three parameters : Axis and two Real from Standards.
+  //! Type Curve is used to select the correct Conic.
+      GeomAbs_CurveType TypeCurve()  const;
+  
+     const  gp_Ax22d& Axis2()  const;
+  
+      Standard_Real Param1()  const;
+  
+      Standard_Real Param2()  const;
 
 
 
@@ -92,12 +81,12 @@ private:
 
 
 
-gp_Ax22d axe;
-Standard_Real prm1;
-Standard_Real prm2;
-Standard_Real TheEpsX;
-Standard_Integer TheAccuracy;
-GeomAbs_CurveType type;
+  gp_Ax22d axe;
+  Standard_Real prm1;
+  Standard_Real prm2;
+  Standard_Real TheEpsX;
+  Standard_Integer TheAccuracy;
+  GeomAbs_CurveType type;
 
 
 };
@@ -107,7 +96,6 @@ GeomAbs_CurveType type;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntCurve_PConic_HeaderFile

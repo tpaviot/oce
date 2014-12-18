@@ -6,37 +6,17 @@
 #ifndef _StepData_HeaderTool_HeaderFile
 #define _StepData_HeaderTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfAsciiString_HeaderFile
 #include <TColStd_SequenceOfAsciiString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_StepData_Protocol_HeaderFile
 #include <Handle_StepData_Protocol.hxx>
-#endif
-#ifndef _Handle_StepData_FileProtocol_HeaderFile
 #include <Handle_StepData_FileProtocol.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class StepData_StepReaderData;
 class TColStd_SequenceOfAsciiString;
 class TCollection_AsciiString;
@@ -44,51 +24,62 @@ class StepData_Protocol;
 class StepData_FileProtocol;
 
 
-//! HeaderTool exploits data from Header to build a Protocol : <br>
-//!           it uses the Header Entity FileSchema to do this. <br>
-//!           It builds a Protocol from the Global List of Protocols <br>
-//!           stored in the Library ReaderLib <br>
-class StepData_HeaderTool  {
+//! HeaderTool exploits data from Header to build a Protocol :
+//! it uses the Header Entity FileSchema to do this.
+//! It builds a Protocol from the Global List of Protocols
+//! stored in the Library ReaderLib
+class StepData_HeaderTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a HeaderTool from data read from a File. Computes the <br>
-//!           list of Schema Names. The Protocol will be computed later <br>
-//!           (because there are several options) <br>
-  Standard_EXPORT   StepData_HeaderTool(const Handle(StepData_StepReaderData)& data);
-  //! Creates a HeaderTool directly from a list of Schema Names <br>
-  Standard_EXPORT   StepData_HeaderTool(const TColStd_SequenceOfAsciiString& names);
-  //! Returns the count of SchemaNames <br>
-  Standard_EXPORT     Standard_Integer NbSchemaNames() const;
-  //! Returns a SchemaName, given its rank <br>
-  Standard_EXPORT    const TCollection_AsciiString& SchemaName(const Standard_Integer num) const;
-  //! Returns the Protocol which corresponds to a Schema Name <br>
-//!           Returns a Null Handle if this Schema Name is attached to no <br>
-//!           Protocol recorded in the Global List of ReaderLib <br>
-  Standard_EXPORT     Handle_StepData_Protocol NamedProtocol(const TCollection_AsciiString& name) const;
-  //! Fills a FileProtocol with the list of Protocols attached to <br>
-//!           the list of Schema Names. It can remain empty ... <br>
-  Standard_EXPORT     void Build(const Handle(StepData_FileProtocol)& protocol) ;
-  //! Returns a Protocol computed from the list of Schema Names : <br>
-//!           - a Null Handle if no SchemaName has been recognized (or list <br>
-//!             empty) <br>
-//!           - a single Protocol if only one SchemaName has been recognized <br>
-//!           - a FileProtocol with its componants if several SchemaNames <br>
-//!             have been recognized <br>
-  Standard_EXPORT     Handle_StepData_Protocol Protocol() ;
-  //! Returns True if either Build or Protocol has been called <br>
-//!           If it is False, Ignored and NbIgnored should not be called <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns the count of ignored SchemaNames (0 if all were OK) <br>
-  Standard_EXPORT     Standard_Integer NbIgnoreds() const;
-  //! Returns an ignored SchemaName, given its rank in the list of <br>
-//!           Ignored SchemaNames (not in the total list) <br>
-  Standard_EXPORT    const TCollection_AsciiString& Ignored(const Standard_Integer num) const;
-  //! Sends the state of the HeaderTool in a comprehensive way, <br>
-//!           to an output stream <br>
-  Standard_EXPORT     void Print(Standard_OStream& S) const;
-
+  
+  //! Creates a HeaderTool from data read from a File. Computes the
+  //! list of Schema Names. The Protocol will be computed later
+  //! (because there are several options)
+  Standard_EXPORT StepData_HeaderTool(const Handle(StepData_StepReaderData)& data);
+  
+  //! Creates a HeaderTool directly from a list of Schema Names
+  Standard_EXPORT StepData_HeaderTool(const TColStd_SequenceOfAsciiString& names);
+  
+  //! Returns the count of SchemaNames
+  Standard_EXPORT   Standard_Integer NbSchemaNames()  const;
+  
+  //! Returns a SchemaName, given its rank
+  Standard_EXPORT  const  TCollection_AsciiString& SchemaName (const Standard_Integer num)  const;
+  
+  //! Returns the Protocol which corresponds to a Schema Name
+  //! Returns a Null Handle if this Schema Name is attached to no
+  //! Protocol recorded in the Global List of ReaderLib
+  Standard_EXPORT   Handle(StepData_Protocol) NamedProtocol (const TCollection_AsciiString& name)  const;
+  
+  //! Fills a FileProtocol with the list of Protocols attached to
+  //! the list of Schema Names. It can remain empty ...
+  Standard_EXPORT   void Build (const Handle(StepData_FileProtocol)& protocol) ;
+  
+  //! Returns a Protocol computed from the list of Schema Names :
+  //! - a Null Handle if no SchemaName has been recognized (or list
+  //! empty)
+  //! - a single Protocol if only one SchemaName has been recognized
+  //! - a FileProtocol with its componants if several SchemaNames
+  //! have been recognized
+  Standard_EXPORT   Handle(StepData_Protocol) Protocol() ;
+  
+  //! Returns True if either Build or Protocol has been called
+  //! If it is False, Ignored and NbIgnored should not be called
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns the count of ignored SchemaNames (0 if all were OK)
+  Standard_EXPORT   Standard_Integer NbIgnoreds()  const;
+  
+  //! Returns an ignored SchemaName, given its rank in the list of
+  //! Ignored SchemaNames (not in the total list)
+  Standard_EXPORT  const  TCollection_AsciiString& Ignored (const Standard_Integer num)  const;
+  
+  //! Sends the state of the HeaderTool in a comprehensive way,
+  //! to an output stream
+  Standard_EXPORT   void Print (Standard_OStream& S)  const;
 
 
 
@@ -103,9 +94,9 @@ private:
 
 
 
-TColStd_SequenceOfAsciiString thenames;
-Standard_Boolean thedone;
-TColStd_SequenceOfAsciiString theignored;
+  TColStd_SequenceOfAsciiString thenames;
+  Standard_Boolean thedone;
+  TColStd_SequenceOfAsciiString theignored;
 
 
 };
@@ -114,7 +105,6 @@ TColStd_SequenceOfAsciiString theignored;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_HeaderTool_HeaderFile

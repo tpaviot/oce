@@ -6,72 +6,54 @@
 #ifndef _TopOpeBRep_ShapeScanner_HeaderFile
 #define _TopOpeBRep_ShapeScanner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopOpeBRepTool_BoxSort_HeaderFile
 #include <TopOpeBRepTool_BoxSort.hxx>
-#endif
-#ifndef _TColStd_ListIteratorOfListOfInteger_HeaderFile
 #include <TColStd_ListIteratorOfListOfInteger.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TopoDS_Shape;
 class TopOpeBRepTool_ShapeExplorer;
 class TopOpeBRepTool_BoxSort;
 
 
-//! Find, among the  subshapes SS of a reference shape <br>
-//!          RS, the ones which 3D box interfers with the box of <br>
-//!          a shape S (SS and S are of the same type). <br>
-class TopOpeBRep_ShapeScanner  {
+//! Find, among the  subshapes SS of a reference shape
+//! RS, the ones which 3D box interfers with the box of
+//! a shape S (SS and S are of the same type).
+class TopOpeBRep_ShapeScanner 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_ShapeScanner();
+  Standard_EXPORT TopOpeBRep_ShapeScanner();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void AddBoxesMakeCOB(const TopoDS_Shape& S,const TopAbs_ShapeEnum TS,const TopAbs_ShapeEnum TA = TopAbs_SHAPE) ;
+  Standard_EXPORT   void AddBoxesMakeCOB (const TopoDS_Shape& S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA = TopAbs_SHAPE) ;
   
-  Standard_EXPORT     void Init(const TopoDS_Shape& E) ;
+  Standard_EXPORT   void Init (const TopoDS_Shape& E) ;
   
-  Standard_EXPORT     void Init(TopOpeBRepTool_ShapeExplorer& X) ;
+  Standard_EXPORT   void Init (TopOpeBRepTool_ShapeExplorer& X) ;
   
-  Standard_EXPORT     Standard_Boolean More() const;
+  Standard_EXPORT   Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT    const TopoDS_Shape& Current() const;
+  Standard_EXPORT  const  TopoDS_Shape& Current()  const;
   
-  Standard_EXPORT    const TopOpeBRepTool_BoxSort& BoxSort() const;
+  Standard_EXPORT  const  TopOpeBRepTool_BoxSort& BoxSort()  const;
   
-  Standard_EXPORT     TopOpeBRepTool_BoxSort& ChangeBoxSort() ;
+  Standard_EXPORT   TopOpeBRepTool_BoxSort& ChangeBoxSort() ;
   
-  Standard_EXPORT     Standard_Integer Index() const;
+  Standard_EXPORT   Standard_Integer Index()  const;
   
-  Standard_EXPORT     Standard_OStream& DumpCurrent(Standard_OStream& OS) const;
-
+  Standard_EXPORT   Standard_OStream& DumpCurrent (Standard_OStream& OS)  const;
 
 
 
@@ -86,8 +68,8 @@ private:
 
 
 
-TopOpeBRepTool_BoxSort myBoxSort;
-TColStd_ListIteratorOfListOfInteger myListIterator;
+  TopOpeBRepTool_BoxSort myBoxSort;
+  TColStd_ListIteratorOfListOfInteger myListIterator;
 
 
 };
@@ -96,7 +78,6 @@ TColStd_ListIteratorOfListOfInteger myListIterator;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_ShapeScanner_HeaderFile

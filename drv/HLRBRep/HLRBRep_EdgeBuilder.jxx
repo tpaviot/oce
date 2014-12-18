@@ -1,21 +1,7 @@
-#ifndef _HLRBRep_AreaLimit_HeaderFile
 #include <HLRBRep_AreaLimit.hxx>
-#endif
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _HLRBRep_VertexList_HeaderFile
 #include <HLRBRep_VertexList.hxx>
-#endif
-#ifndef _HLRAlgo_Intersection_HeaderFile
 #include <HLRAlgo_Intersection.hxx>
-#endif
-#ifndef _HLRBRep_EdgeBuilder_HeaderFile
 #include <HLRBRep_EdgeBuilder.hxx>
-#endif

@@ -6,69 +6,61 @@
 #ifndef _TNaming_Scope_HeaderFile
 #define _TNaming_Scope_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TDF_LabelMap_HeaderFile
 #include <TDF_LabelMap.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
 class TDF_LabelMap;
 class TDF_Label;
 class TopoDS_Shape;
 class TNaming_NamedShape;
 
 
-//! this class manage a scope of labels <br>
-//!          =================================== <br>
-class TNaming_Scope  {
+//! this class manage a scope of labels
+//! ===================================
+class TNaming_Scope 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! WithValid = FALSE <br>
-  Standard_EXPORT   TNaming_Scope();
-  //! if <WithValid> the scope is defined by the map. If not <br>
-//!          on the whole framework. <br>
-  Standard_EXPORT   TNaming_Scope(const Standard_Boolean WithValid);
-  //! create a scope with a map. WithValid = TRUE. <br>
-  Standard_EXPORT   TNaming_Scope(TDF_LabelMap& valid);
   
-  Standard_EXPORT     Standard_Boolean WithValid() const;
+  //! WithValid = FALSE
+  Standard_EXPORT TNaming_Scope();
   
-  Standard_EXPORT     void WithValid(const Standard_Boolean mode) ;
+  //! if <WithValid> the scope is defined by the map. If not
+  //! on the whole framework.
+  Standard_EXPORT TNaming_Scope(const Standard_Boolean WithValid);
   
-  Standard_EXPORT     void ClearValid() ;
+  //! create a scope with a map. WithValid = TRUE.
+  Standard_EXPORT TNaming_Scope(TDF_LabelMap& valid);
   
-  Standard_EXPORT     void Valid(const TDF_Label& L) ;
+  Standard_EXPORT   Standard_Boolean WithValid()  const;
   
-  Standard_EXPORT     void ValidChildren(const TDF_Label& L,const Standard_Boolean withroot = Standard_True) ;
+  Standard_EXPORT   void WithValid (const Standard_Boolean mode) ;
   
-  Standard_EXPORT     void Unvalid(const TDF_Label& L) ;
+  Standard_EXPORT   void ClearValid() ;
   
-  Standard_EXPORT     void UnvalidChildren(const TDF_Label& L,const Standard_Boolean withroot = Standard_True) ;
+  Standard_EXPORT   void Valid (const TDF_Label& L) ;
   
-  Standard_EXPORT     Standard_Boolean IsValid(const TDF_Label& L) const;
+  Standard_EXPORT   void ValidChildren (const TDF_Label& L, const Standard_Boolean withroot = Standard_True) ;
   
-  Standard_EXPORT    const TDF_LabelMap& GetValid() const;
+  Standard_EXPORT   void Unvalid (const TDF_Label& L) ;
   
-  Standard_EXPORT     TDF_LabelMap& ChangeValid() ;
-  //!  Returns  the current  value of  <NS> according to the <br>
-//!          Valid Scope. <br>
-  Standard_EXPORT     TopoDS_Shape CurrentShape(const Handle(TNaming_NamedShape)& NS) const;
-
+  Standard_EXPORT   void UnvalidChildren (const TDF_Label& L, const Standard_Boolean withroot = Standard_True) ;
+  
+  Standard_EXPORT   Standard_Boolean IsValid (const TDF_Label& L)  const;
+  
+  Standard_EXPORT  const  TDF_LabelMap& GetValid()  const;
+  
+  Standard_EXPORT   TDF_LabelMap& ChangeValid() ;
+  
+  //! Returns  the current  value of  <NS> according to the
+  //! Valid Scope.
+  Standard_EXPORT   TopoDS_Shape CurrentShape (const Handle(TNaming_NamedShape)& NS)  const;
 
 
 
@@ -83,8 +75,8 @@ private:
 
 
 
-Standard_Boolean myWithValid;
-TDF_LabelMap myValid;
+  Standard_Boolean myWithValid;
+  TDF_LabelMap myValid;
 
 
 };
@@ -93,7 +85,6 @@ TDF_LabelMap myValid;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_Scope_HeaderFile

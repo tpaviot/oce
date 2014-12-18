@@ -5,21 +5,13 @@
 
 #include <Draw_SequenceOfDrawable3D.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Draw_Drawable3D_HeaderFile
 #include <Draw_Drawable3D.hxx>
-#endif
-#ifndef _Draw_SequenceNodeOfSequenceOfDrawable3D_HeaderFile
 #include <Draw_SequenceNodeOfSequenceOfDrawable3D.hxx>
-#endif
  
 
-#define SeqItem Handle_Draw_Drawable3D
+#define SeqItem Handle(Draw_Drawable3D)
 #define SeqItem_hxx <Draw_Drawable3D.hxx>
 #define TCollection_SequenceNode Draw_SequenceNodeOfSequenceOfDrawable3D
 #define TCollection_SequenceNode_hxx <Draw_SequenceNodeOfSequenceOfDrawable3D.hxx>

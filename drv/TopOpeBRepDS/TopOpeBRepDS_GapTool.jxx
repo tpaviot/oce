@@ -1,18 +1,6 @@
-#ifndef _TopOpeBRepDS_HDataStructure_HeaderFile
 #include <TopOpeBRepDS_HDataStructure.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Curve_HeaderFile
 #include <TopOpeBRepDS_Curve.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepDS_GapTool_HeaderFile
 #include <TopOpeBRepDS_GapTool.hxx>
-#endif

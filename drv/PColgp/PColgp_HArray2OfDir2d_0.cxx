@@ -5,31 +5,14 @@
 
 #include <PColgp_HArray2OfDir2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray2OfDir2d_HeaderFile
 #include <PColgp_FieldOfHArray2OfDir2d.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray2OfDir2d_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray2OfDir2d.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfDir2d_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray2OfDir2d.hxx>
-#endif
 
  
 

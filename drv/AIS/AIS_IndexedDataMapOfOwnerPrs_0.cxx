@@ -5,32 +5,18 @@
 
 #include <AIS_IndexedDataMapOfOwnerPrs.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _Prs3d_Presentation_HeaderFile
 #include <Prs3d_Presentation.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_HeaderFile
 #include <AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs.hxx>
-#endif
  
 
-#define TheKey Handle_SelectMgr_EntityOwner
+#define TheKey Handle(SelectMgr_EntityOwner)
 #define TheKey_hxx <SelectMgr_EntityOwner.hxx>
-#define TheItem Handle_Prs3d_Presentation
+#define TheItem Handle(Prs3d_Presentation)
 #define TheItem_hxx <Prs3d_Presentation.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

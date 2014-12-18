@@ -6,45 +6,41 @@
 #ifndef _OSD_Directory_HeaderFile
 #define _OSD_Directory_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _OSD_FileNode_HeaderFile
 #include <OSD_FileNode.hxx>
-#endif
 class OSD_Path;
 class OSD_Protection;
 
 
-//! Management of directories <br>
-class OSD_Directory  : public OSD_FileNode {
+//! Management of directories (a set of directory oriented tools)
+class OSD_Directory  : public OSD_FileNode
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates Directory object. <br>
-//!          It is initiliazed to an empty name. <br>
-  Standard_EXPORT   OSD_Directory();
-  //! Creates Directory object initialized with Name. <br>
-  Standard_EXPORT   OSD_Directory(const OSD_Path& Name);
-  //! Creates (physically) a directory. <br>
-//!          When a directory of the same name already exists, no error is <br>
-//!          returned, and only <Protect> is applied to the existing directory. <br>
-//! <br>
-//!          If Build is used and <me> is instantiated without a name, <br>
-//!          OSDError is raised. <br>
-  Standard_EXPORT     void Build(const OSD_Protection& Protect) ;
-  //! Creates a temporary Directory in current directory. <br>
-//!          This directory is automatically removed when object dies. <br>
-  Standard_EXPORT   static  OSD_Directory BuildTemporary() ;
-
+  
+  //! Creates Directory object.
+  //! It is initiliazed to an empty name.
+  Standard_EXPORT OSD_Directory();
+  
+  //! Creates Directory object initialized with Name.
+  Standard_EXPORT OSD_Directory(const OSD_Path& Name);
+  
+  //! Creates (physically) a directory.
+  //! When a directory of the same name already exists, no error is
+  //! returned, and only <Protect> is applied to the existing directory.
+  //!
+  //! If Build is used and <me> is instantiated without a name,
+  //! OSDError is raised.
+  Standard_EXPORT   void Build (const OSD_Protection& Protect) ;
+  
+  //! Creates a temporary Directory in current directory.
+  //! This directory is automatically removed when object dies.
+  Standard_EXPORT static   OSD_Directory BuildTemporary() ;
 
 
 
@@ -67,7 +63,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _OSD_Directory_HeaderFile

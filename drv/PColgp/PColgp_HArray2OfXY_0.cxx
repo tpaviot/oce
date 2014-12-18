@@ -5,31 +5,14 @@
 
 #include <PColgp_HArray2OfXY.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray2OfXY_HeaderFile
 #include <PColgp_FieldOfHArray2OfXY.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray2OfXY_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray2OfXY.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfXY_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray2OfXY.hxx>
-#endif
 
  
 

@@ -6,28 +6,22 @@
 #ifndef _StepDimTol_StraightnessTolerance_HeaderFile
 #define _StepDimTol_StraightnessTolerance_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepDimTol_StraightnessTolerance_HeaderFile
 #include <Handle_StepDimTol_StraightnessTolerance.hxx>
-#endif
 
-#ifndef _StepDimTol_GeometricTolerance_HeaderFile
 #include <StepDimTol_GeometricTolerance.hxx>
-#endif
 
 
-//! Representation of STEP entity StraightnessTolerance <br>
-class StepDimTol_StraightnessTolerance : public StepDimTol_GeometricTolerance {
+//! Representation of STEP entity StraightnessTolerance
+class StepDimTol_StraightnessTolerance : public StepDimTol_GeometricTolerance
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepDimTol_StraightnessTolerance();
+  
+  //! Empty constructor
+  Standard_EXPORT StepDimTol_StraightnessTolerance();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepDimTol_StraightnessTolerance_HeaderFile

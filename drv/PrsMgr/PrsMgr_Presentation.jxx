@@ -1,6 +1,10 @@
-#ifndef _PrsMgr_PresentationManager_HeaderFile
 #include <PrsMgr_PresentationManager.hxx>
-#endif
-#ifndef _PrsMgr_Presentation_HeaderFile
+#include <PrsMgr_Prs.hxx>
+#include <PrsMgr_PresentableObject.hxx>
+#include <Geom_Transformation.hxx>
+#include <Prs3d_ShadingAspect.hxx>
+#include <Prs3d_Presentation.hxx>
+#include <Graphic3d_Structure.hxx>
+#include <Graphic3d_DataStructureManager.hxx>
+#include <Prs3d_Projector.hxx>
 #include <PrsMgr_Presentation.hxx>
-#endif

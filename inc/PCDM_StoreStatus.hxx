@@ -6,8 +6,11 @@
 #ifndef _PCDM_StoreStatus_HeaderFile
 #define _PCDM_StoreStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum PCDM_StoreStatus {
+
+enum PCDM_StoreStatus
+{
 PCDM_SS_OK,
 PCDM_SS_DriverFailure,
 PCDM_SS_WriteFailure,
@@ -17,8 +20,4 @@ PCDM_SS_No_Obj,
 PCDM_SS_Info_Section_Error
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _PCDM_StoreStatus_HeaderFile

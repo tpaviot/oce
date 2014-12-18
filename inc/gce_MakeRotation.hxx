@@ -6,22 +6,12 @@
 #ifndef _gce_MakeRotation_HeaderFile
 #define _gce_MakeRotation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_Lin;
 class gp_Ax1;
 class gp_Pnt;
@@ -29,31 +19,35 @@ class gp_Dir;
 class gp_Trsf;
 
 
-//! This class implements elementary construction algorithms for a <br>
-//! rotation in 3D space. The result is a gp_Trsf transformation. <br>
-//! A MakeRotation object provides a framework for: <br>
-//! -   defining the construction of the transformation, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class gce_MakeRotation  {
+//! This class implements elementary construction algorithms for a
+//! rotation in 3D space. The result is a gp_Trsf transformation.
+//! A MakeRotation object provides a framework for:
+//! -   defining the construction of the transformation,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class gce_MakeRotation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a rotation through angle Angle about the axis defined by the line Line. <br>
-  Standard_EXPORT   gce_MakeRotation(const gp_Lin& Line,const Standard_Real Angle);
-  //! Constructs a rotation through angle Angle about the axis defined by the axis Axis. <br>
-  Standard_EXPORT   gce_MakeRotation(const gp_Ax1& Axis,const Standard_Real Angle);
   
-//! Constructs a rotation through angle Angle about the axis defined by: <br>
-//! the point Point and the unit vector Direc. <br>
-  Standard_EXPORT   gce_MakeRotation(const gp_Pnt& Point,const gp_Dir& Direc,const Standard_Real Angle);
-  //! Returns the constructed transformation. <br>
-  Standard_EXPORT    const gp_Trsf& Value() const;
+  //! Constructs a rotation through angle Angle about the axis defined by the line Line.
+  Standard_EXPORT gce_MakeRotation(const gp_Lin& Line, const Standard_Real Angle);
   
-  Standard_EXPORT    const gp_Trsf& Operator() const;
-Standard_EXPORT operator gp_Trsf() const;
+  //! Constructs a rotation through angle Angle about the axis defined by the axis Axis.
+  Standard_EXPORT gce_MakeRotation(const gp_Ax1& Axis, const Standard_Real Angle);
+  
 
+  //! Constructs a rotation through angle Angle about the axis defined by:
+  //! the point Point and the unit vector Direc.
+  Standard_EXPORT gce_MakeRotation(const gp_Pnt& Point, const gp_Dir& Direc, const Standard_Real Angle);
+  
+  //! Returns the constructed transformation.
+  Standard_EXPORT  const  gp_Trsf& Value()  const;
+  
+  Standard_EXPORT  const  gp_Trsf& Operator()  const;
+Standard_EXPORT operator gp_Trsf() const;
 
 
 
@@ -68,7 +62,7 @@ private:
 
 
 
-gp_Trsf TheRotation;
+  gp_Trsf TheRotation;
 
 
 };
@@ -77,7 +71,6 @@ gp_Trsf TheRotation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gce_MakeRotation_HeaderFile

@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepVisual_PreDefinedTextFont_HeaderFile
 #include <StepVisual_PreDefinedTextFont.hxx>
-#endif
-#ifndef _StepVisual_ExternallyDefinedTextFont_HeaderFile
 #include <StepVisual_ExternallyDefinedTextFont.hxx>
-#endif
-#ifndef _StepVisual_FontSelect_HeaderFile
 #include <StepVisual_FontSelect.hxx>
-#endif

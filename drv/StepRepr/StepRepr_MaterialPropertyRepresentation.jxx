@@ -1,12 +1,4 @@
-#ifndef _StepRepr_DataEnvironment_HeaderFile
 #include <StepRepr_DataEnvironment.hxx>
-#endif
-#ifndef _StepRepr_RepresentedDefinition_HeaderFile
 #include <StepRepr_RepresentedDefinition.hxx>
-#endif
-#ifndef _StepRepr_Representation_HeaderFile
 #include <StepRepr_Representation.hxx>
-#endif
-#ifndef _StepRepr_MaterialPropertyRepresentation_HeaderFile
 #include <StepRepr_MaterialPropertyRepresentation.hxx>
-#endif

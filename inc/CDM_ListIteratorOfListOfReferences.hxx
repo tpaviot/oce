@@ -6,28 +6,14 @@
 #ifndef _CDM_ListIteratorOfListOfReferences_HeaderFile
 #define _CDM_ListIteratorOfListOfReferences_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_CDM_Reference_HeaderFile
 #include <Handle_CDM_Reference.hxx>
-#endif
-#ifndef _Handle_CDM_ListNodeOfListOfReferences_HeaderFile
 #include <Handle_CDM_ListNodeOfListOfReferences.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class CDM_ListOfReferences;
@@ -36,27 +22,27 @@ class CDM_ListNodeOfListOfReferences;
 
 
 
-class CDM_ListIteratorOfListOfReferences  {
+class CDM_ListIteratorOfListOfReferences 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   CDM_ListIteratorOfListOfReferences();
+  Standard_EXPORT CDM_ListIteratorOfListOfReferences();
   
-  Standard_EXPORT   CDM_ListIteratorOfListOfReferences(const CDM_ListOfReferences& L);
+  Standard_EXPORT CDM_ListIteratorOfListOfReferences(const CDM_ListOfReferences& L);
   
-  Standard_EXPORT     void Initialize(const CDM_ListOfReferences& L) ;
+  Standard_EXPORT   void Initialize (const CDM_ListOfReferences& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_CDM_Reference& Value() const;
+  Standard_EXPORT   Handle(CDM_Reference)& Value()  const;
 
 
 friend class CDM_ListOfReferences;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_CDM_Reference
+#define Item Handle(CDM_Reference)
 #define Item_hxx <CDM_Reference.hxx>
 #define TCollection_ListNode CDM_ListNodeOfListOfReferences
 #define TCollection_ListNode_hxx <CDM_ListNodeOfListOfReferences.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_ListIteratorOfListOfReferences_HeaderFile

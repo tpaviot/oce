@@ -6,28 +6,14 @@
 #ifndef _Message_SequenceOfPrinters_HeaderFile
 #define _Message_SequenceOfPrinters_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Message_Printer_HeaderFile
 #include <Handle_Message_Printer.hxx>
-#endif
-#ifndef _Handle_Message_SequenceNodeOfSequenceOfPrinters_HeaderFile
 #include <Handle_Message_SequenceNodeOfSequenceOfPrinters.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Message_Printer;
@@ -35,66 +21,68 @@ class Message_SequenceNodeOfSequenceOfPrinters;
 
 
 
-class Message_SequenceOfPrinters  : public TCollection_BaseSequence {
+class Message_SequenceOfPrinters  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Message_SequenceOfPrinters();
+    Message_SequenceOfPrinters();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT Message_SequenceOfPrinters(const Message_SequenceOfPrinters& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~Message_SequenceOfPrinters()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Message_SequenceOfPrinters& Assign(const Message_SequenceOfPrinters& Other) ;
-   const Message_SequenceOfPrinters& operator =(const Message_SequenceOfPrinters& Other) 
+  Standard_EXPORT  const  Message_SequenceOfPrinters& Assign (const Message_SequenceOfPrinters& Other) ;
+ const  Message_SequenceOfPrinters& operator = (const Message_SequenceOfPrinters& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(Message_Printer)& T) ;
+  Standard_EXPORT   void Append (const Handle(Message_Printer)& T) ;
   
-        void Append(Message_SequenceOfPrinters& S) ;
+      void Append (Message_SequenceOfPrinters& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Message_Printer)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(Message_Printer)& T) ;
   
-        void Prepend(Message_SequenceOfPrinters& S) ;
+      void Prepend (Message_SequenceOfPrinters& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(Message_Printer)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(Message_Printer)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Message_SequenceOfPrinters& S) ;
+      void InsertBefore (const Standard_Integer Index, Message_SequenceOfPrinters& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(Message_Printer)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(Message_Printer)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Message_SequenceOfPrinters& S) ;
+      void InsertAfter (const Standard_Integer Index, Message_SequenceOfPrinters& S) ;
   
-  Standard_EXPORT    const Handle_Message_Printer& First() const;
+  Standard_EXPORT  const  Handle(Message_Printer)& First()  const;
   
-  Standard_EXPORT    const Handle_Message_Printer& Last() const;
+  Standard_EXPORT  const  Handle(Message_Printer)& Last()  const;
   
-        void Split(const Standard_Integer Index,Message_SequenceOfPrinters& Sub) ;
+      void Split (const Standard_Integer Index, Message_SequenceOfPrinters& Sub) ;
   
-  Standard_EXPORT    const Handle_Message_Printer& Value(const Standard_Integer Index) const;
-   const Handle_Message_Printer& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(Message_Printer)& Value (const Standard_Integer Index)  const;
+ const  Handle(Message_Printer)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(Message_Printer)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(Message_Printer)& I) ;
   
-  Standard_EXPORT     Handle_Message_Printer& ChangeValue(const Standard_Integer Index) ;
-    Handle_Message_Printer& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(Message_Printer)& ChangeValue (const Standard_Integer Index) ;
+  Handle(Message_Printer)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -107,15 +95,13 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Message_SequenceOfPrinters(const Message_SequenceOfPrinters& Other);
 
 
 
 
 };
 
-#define SeqItem Handle_Message_Printer
+#define SeqItem Handle(Message_Printer)
 #define SeqItem_hxx <Message_Printer.hxx>
 #define TCollection_SequenceNode Message_SequenceNodeOfSequenceOfPrinters
 #define TCollection_SequenceNode_hxx <Message_SequenceNodeOfSequenceOfPrinters.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Message_SequenceOfPrinters_HeaderFile

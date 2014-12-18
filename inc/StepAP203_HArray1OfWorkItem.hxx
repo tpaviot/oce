@@ -6,25 +6,13 @@
 #ifndef _StepAP203_HArray1OfWorkItem_HeaderFile
 #define _StepAP203_HArray1OfWorkItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP203_HArray1OfWorkItem_HeaderFile
 #include <Handle_StepAP203_HArray1OfWorkItem.hxx>
-#endif
 
-#ifndef _StepAP203_Array1OfWorkItem_HeaderFile
 #include <StepAP203_Array1OfWorkItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepAP203_Array1OfWorkItem;
 
 
 
-class StepAP203_HArray1OfWorkItem : public MMgt_TShared {
+class StepAP203_HArray1OfWorkItem : public MMgt_TShared
+{
 
 public:
 
   
-      StepAP203_HArray1OfWorkItem(const Standard_Integer Low,const Standard_Integer Up);
+    StepAP203_HArray1OfWorkItem(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepAP203_HArray1OfWorkItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP203_WorkItem& V);
+    StepAP203_HArray1OfWorkItem(const Standard_Integer Low, const Standard_Integer Up, const StepAP203_WorkItem& V);
   
-        void Init(const StepAP203_WorkItem& V) ;
+      void Init (const StepAP203_WorkItem& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepAP203_WorkItem& Value) ;
+      void SetValue (const Standard_Integer Index, const StepAP203_WorkItem& Value) ;
   
-       const StepAP203_WorkItem& Value(const Standard_Integer Index) const;
+     const  StepAP203_WorkItem& Value (const Standard_Integer Index)  const;
   
-        StepAP203_WorkItem& ChangeValue(const Standard_Integer Index) ;
+      StepAP203_WorkItem& ChangeValue (const Standard_Integer Index) ;
   
-       const StepAP203_Array1OfWorkItem& Array1() const;
+     const  StepAP203_Array1OfWorkItem& Array1()  const;
   
-        StepAP203_Array1OfWorkItem& ChangeArray1() ;
+      StepAP203_Array1OfWorkItem& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepAP203_Array1OfWorkItem myArray;
+  StepAP203_Array1OfWorkItem myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepAP203_Array1OfWorkItem myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP203_HArray1OfWorkItem_HeaderFile

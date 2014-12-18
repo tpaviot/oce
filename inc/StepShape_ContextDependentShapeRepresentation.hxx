@@ -6,46 +6,35 @@
 #ifndef _StepShape_ContextDependentShapeRepresentation_HeaderFile
 #define _StepShape_ContextDependentShapeRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_ContextDependentShapeRepresentation_HeaderFile
 #include <Handle_StepShape_ContextDependentShapeRepresentation.hxx>
-#endif
 
-#ifndef _Handle_StepRepr_ShapeRepresentationRelationship_HeaderFile
 #include <Handle_StepRepr_ShapeRepresentationRelationship.hxx>
-#endif
-#ifndef _Handle_StepRepr_ProductDefinitionShape_HeaderFile
 #include <Handle_StepRepr_ProductDefinitionShape.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepRepr_ShapeRepresentationRelationship;
 class StepRepr_ProductDefinitionShape;
 
 
 
-class StepShape_ContextDependentShapeRepresentation : public MMgt_TShared {
+class StepShape_ContextDependentShapeRepresentation : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   StepShape_ContextDependentShapeRepresentation();
+  Standard_EXPORT StepShape_ContextDependentShapeRepresentation();
   
-  Standard_EXPORT     void Init(const Handle(StepRepr_ShapeRepresentationRelationship)& aRepRel,const Handle(StepRepr_ProductDefinitionShape)& aProRel) ;
+  Standard_EXPORT   void Init (const Handle(StepRepr_ShapeRepresentationRelationship)& aRepRel, const Handle(StepRepr_ProductDefinitionShape)& aProRel) ;
   
-  Standard_EXPORT     Handle_StepRepr_ShapeRepresentationRelationship RepresentationRelation() const;
+  Standard_EXPORT   Handle(StepRepr_ShapeRepresentationRelationship) RepresentationRelation()  const;
   
-  Standard_EXPORT     void SetRepresentationRelation(const Handle(StepRepr_ShapeRepresentationRelationship)& aRepRel) ;
+  Standard_EXPORT   void SetRepresentationRelation (const Handle(StepRepr_ShapeRepresentationRelationship)& aRepRel) ;
   
-  Standard_EXPORT     Handle_StepRepr_ProductDefinitionShape RepresentedProductRelation() const;
+  Standard_EXPORT   Handle(StepRepr_ProductDefinitionShape) RepresentedProductRelation()  const;
   
-  Standard_EXPORT     void SetRepresentedProductRelation(const Handle(StepRepr_ProductDefinitionShape)& aProRel) ;
+  Standard_EXPORT   void SetRepresentedProductRelation (const Handle(StepRepr_ProductDefinitionShape)& aProRel) ;
 
 
 
@@ -60,8 +49,8 @@ protected:
 private: 
 
 
-Handle_StepRepr_ShapeRepresentationRelationship theRepRel;
-Handle_StepRepr_ProductDefinitionShape theProRel;
+  Handle(StepRepr_ShapeRepresentationRelationship) theRepRel;
+  Handle(StepRepr_ProductDefinitionShape) theProRel;
 
 
 };
@@ -70,7 +59,6 @@ Handle_StepRepr_ProductDefinitionShape theProRel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_ContextDependentShapeRepresentation_HeaderFile

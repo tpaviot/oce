@@ -6,61 +6,50 @@
 #ifndef _IGESSelect_SelectSubordinate_HeaderFile
 #define _IGESSelect_SelectSubordinate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_SelectSubordinate_HeaderFile
 #include <Handle_IGESSelect_SelectSubordinate.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _IFSelect_SelectExtract_HeaderFile
 #include <IFSelect_SelectExtract.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class Standard_Transient;
 class Interface_InterfaceModel;
 class TCollection_AsciiString;
 
 
-//! This selections uses Subordinate Status as sort criterium <br>
-//!           It is an integer number which can be : <br>
-//!           0 Independant <br>
-//!           1 Physically Dependant <br>
-//!           2 Logically Dependant <br>
-//!           3 Both (recorded) <br>
-//!           + to sort : <br>
-//!           4 : 1 or 3  ->  at least Physically <br>
-//!           5 : 2 or 3  ->  at least Logically <br>
-//!           6 : 1 or 2 or 3 -> any kind of dependance <br>
-//!             (corresponds to 0 reversed) <br>
-class IGESSelect_SelectSubordinate : public IFSelect_SelectExtract {
+//! This selections uses Subordinate Status as sort criterium
+//! It is an integer number which can be :
+//! 0 Independant
+//! 1 Physically Dependant
+//! 2 Logically Dependant
+//! 3 Both (recorded)
+//! + to sort :
+//! 4 : 1 or 3  ->  at least Physically
+//! 5 : 2 or 3  ->  at least Logically
+//! 6 : 1 or 2 or 3 -> any kind of dependance
+//! (corresponds to 0 reversed)
+class IGESSelect_SelectSubordinate : public IFSelect_SelectExtract
+{
 
 public:
 
-  //! Creates a SelectSubordinate with a status to be sorted <br>
-  Standard_EXPORT   IGESSelect_SelectSubordinate(const Standard_Integer status);
-  //! Returns the status used for sorting <br>
-  Standard_EXPORT     Standard_Integer Status() const;
-  //! Returns True if <ent> is an IGES Entity with Subordinate <br>
-//!           Status matching the criterium <br>
-  Standard_EXPORT     Standard_Boolean Sort(const Standard_Integer rank,const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
-  //! Returns the Selection criterium : "IGES Entity, Independant" <br>
-//!           etc... <br>
-  Standard_EXPORT     TCollection_AsciiString ExtractLabel() const;
+  
+  //! Creates a SelectSubordinate with a status to be sorted
+  Standard_EXPORT IGESSelect_SelectSubordinate(const Standard_Integer status);
+  
+  //! Returns the status used for sorting
+  Standard_EXPORT   Standard_Integer Status()  const;
+  
+  //! Returns True if <ent> is an IGES Entity with Subordinate
+  //! Status matching the criterium
+  Standard_EXPORT   Standard_Boolean Sort (const Standard_Integer rank, const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
+  
+  //! Returns the Selection criterium : "IGES Entity, Independant"
+  //! etc...
+  Standard_EXPORT   TCollection_AsciiString ExtractLabel()  const;
 
 
 
@@ -75,7 +64,7 @@ protected:
 private: 
 
 
-Standard_Integer thestatus;
+  Standard_Integer thestatus;
 
 
 };
@@ -84,7 +73,6 @@ Standard_Integer thestatus;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_SelectSubordinate_HeaderFile

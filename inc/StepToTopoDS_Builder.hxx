@@ -6,52 +6,24 @@
 #ifndef _StepToTopoDS_Builder_HeaderFile
 #define _StepToTopoDS_Builder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepToTopoDS_BuilderError_HeaderFile
 #include <StepToTopoDS_BuilderError.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _StepToTopoDS_Root_HeaderFile
 #include <StepToTopoDS_Root.hxx>
-#endif
-#ifndef _Handle_StepShape_ManifoldSolidBrep_HeaderFile
 #include <Handle_StepShape_ManifoldSolidBrep.hxx>
-#endif
-#ifndef _Handle_Transfer_TransientProcess_HeaderFile
 #include <Handle_Transfer_TransientProcess.hxx>
-#endif
-#ifndef _Handle_StepShape_BrepWithVoids_HeaderFile
 #include <Handle_StepShape_BrepWithVoids.hxx>
-#endif
-#ifndef _Handle_StepShape_FacetedBrep_HeaderFile
 #include <Handle_StepShape_FacetedBrep.hxx>
-#endif
-#ifndef _Handle_StepShape_FacetedBrepAndBrepWithVoids_HeaderFile
 #include <Handle_StepShape_FacetedBrepAndBrepWithVoids.hxx>
-#endif
-#ifndef _Handle_StepShape_ShellBasedSurfaceModel_HeaderFile
 #include <Handle_StepShape_ShellBasedSurfaceModel.hxx>
-#endif
-#ifndef _Handle_StepShape_GeometricSet_HeaderFile
 #include <Handle_StepShape_GeometricSet.hxx>
-#endif
-#ifndef _Handle_StepShape_EdgeBasedWireframeModel_HeaderFile
 #include <Handle_StepShape_EdgeBasedWireframeModel.hxx>
-#endif
-#ifndef _Handle_StepShape_FaceBasedSurfaceModel_HeaderFile
 #include <Handle_StepShape_FaceBasedSurfaceModel.hxx>
-#endif
+#include <Handle_Transfer_ActorOfTransientProcess.hxx>
+#include <Standard_Boolean.hxx>
 class StdFail_NotDone;
 class StepShape_ManifoldSolidBrep;
 class Transfer_TransientProcess;
@@ -63,51 +35,51 @@ class StepToTopoDS_NMTool;
 class StepShape_GeometricSet;
 class StepShape_EdgeBasedWireframeModel;
 class StepShape_FaceBasedSurfaceModel;
+class Transfer_ActorOfTransientProcess;
 class TopoDS_Shape;
 
 
 
-//! <br>
-class StepToTopoDS_Builder  : public StepToTopoDS_Root {
+class StepToTopoDS_Builder  : public StepToTopoDS_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepToTopoDS_Builder();
+  Standard_EXPORT StepToTopoDS_Builder();
   
-  Standard_EXPORT   StepToTopoDS_Builder(const Handle(StepShape_ManifoldSolidBrep)& S,const Handle(Transfer_TransientProcess)& TP);
+  Standard_EXPORT StepToTopoDS_Builder(const Handle(StepShape_ManifoldSolidBrep)& S, const Handle(Transfer_TransientProcess)& TP);
   
-  Standard_EXPORT   StepToTopoDS_Builder(const Handle(StepShape_BrepWithVoids)& S,const Handle(Transfer_TransientProcess)& TP);
+  Standard_EXPORT StepToTopoDS_Builder(const Handle(StepShape_BrepWithVoids)& S, const Handle(Transfer_TransientProcess)& TP);
   
-  Standard_EXPORT   StepToTopoDS_Builder(const Handle(StepShape_FacetedBrep)& S,const Handle(Transfer_TransientProcess)& TP);
+  Standard_EXPORT StepToTopoDS_Builder(const Handle(StepShape_FacetedBrep)& S, const Handle(Transfer_TransientProcess)& TP);
   
-  Standard_EXPORT   StepToTopoDS_Builder(const Handle(StepShape_FacetedBrepAndBrepWithVoids)& S,const Handle(Transfer_TransientProcess)& TP);
+  Standard_EXPORT StepToTopoDS_Builder(const Handle(StepShape_FacetedBrepAndBrepWithVoids)& S, const Handle(Transfer_TransientProcess)& TP);
   
-  Standard_EXPORT   StepToTopoDS_Builder(const Handle(StepShape_ShellBasedSurfaceModel)& S,const Handle(Transfer_TransientProcess)& TP,StepToTopoDS_NMTool& NMTool);
+  Standard_EXPORT StepToTopoDS_Builder(const Handle(StepShape_ShellBasedSurfaceModel)& S, const Handle(Transfer_TransientProcess)& TP, StepToTopoDS_NMTool& NMTool);
   
-  Standard_EXPORT   StepToTopoDS_Builder(const Handle(StepShape_GeometricSet)& S,const Handle(Transfer_TransientProcess)& TP);
+  Standard_EXPORT StepToTopoDS_Builder(const Handle(StepShape_GeometricSet)& S, const Handle(Transfer_TransientProcess)& TP);
   
-  Standard_EXPORT     void Init(const Handle(StepShape_ManifoldSolidBrep)& S,const Handle(Transfer_TransientProcess)& TP) ;
+  Standard_EXPORT   void Init (const Handle(StepShape_ManifoldSolidBrep)& S, const Handle(Transfer_TransientProcess)& TP) ;
   
-  Standard_EXPORT     void Init(const Handle(StepShape_BrepWithVoids)& S,const Handle(Transfer_TransientProcess)& TP) ;
+  Standard_EXPORT   void Init (const Handle(StepShape_BrepWithVoids)& S, const Handle(Transfer_TransientProcess)& TP) ;
   
-  Standard_EXPORT     void Init(const Handle(StepShape_FacetedBrep)& S,const Handle(Transfer_TransientProcess)& TP) ;
+  Standard_EXPORT   void Init (const Handle(StepShape_FacetedBrep)& S, const Handle(Transfer_TransientProcess)& TP) ;
   
-  Standard_EXPORT     void Init(const Handle(StepShape_FacetedBrepAndBrepWithVoids)& S,const Handle(Transfer_TransientProcess)& TP) ;
+  Standard_EXPORT   void Init (const Handle(StepShape_FacetedBrepAndBrepWithVoids)& S, const Handle(Transfer_TransientProcess)& TP) ;
   
-  Standard_EXPORT     void Init(const Handle(StepShape_ShellBasedSurfaceModel)& S,const Handle(Transfer_TransientProcess)& TP,StepToTopoDS_NMTool& NMTool) ;
+  Standard_EXPORT   void Init (const Handle(StepShape_ShellBasedSurfaceModel)& S, const Handle(Transfer_TransientProcess)& TP, StepToTopoDS_NMTool& NMTool) ;
   
-  Standard_EXPORT     void Init(const Handle(StepShape_EdgeBasedWireframeModel)& S,const Handle(Transfer_TransientProcess)& TP) ;
+  Standard_EXPORT   void Init (const Handle(StepShape_EdgeBasedWireframeModel)& S, const Handle(Transfer_TransientProcess)& TP) ;
   
-  Standard_EXPORT     void Init(const Handle(StepShape_FaceBasedSurfaceModel)& S,const Handle(Transfer_TransientProcess)& TP) ;
+  Standard_EXPORT   void Init (const Handle(StepShape_FaceBasedSurfaceModel)& S, const Handle(Transfer_TransientProcess)& TP) ;
   
-  Standard_EXPORT     void Init(const Handle(StepShape_GeometricSet)& S,const Handle(Transfer_TransientProcess)& TP) ;
+  Standard_EXPORT   void Init (const Handle(StepShape_GeometricSet)& S, const Handle(Transfer_TransientProcess)& TP, const Handle(Transfer_ActorOfTransientProcess)& RA = NULL, const Standard_Boolean isManifold = Standard_False) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Value() const;
+  Standard_EXPORT  const  TopoDS_Shape& Value()  const;
   
-  Standard_EXPORT     StepToTopoDS_BuilderError Error() const;
-
+  Standard_EXPORT   StepToTopoDS_BuilderError Error()  const;
 
 
 
@@ -122,8 +94,8 @@ private:
 
 
 
-StepToTopoDS_BuilderError myError;
-TopoDS_Shape myResult;
+  StepToTopoDS_BuilderError myError;
+  TopoDS_Shape myResult;
 
 
 };
@@ -132,7 +104,6 @@ TopoDS_Shape myResult;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_Builder_HeaderFile

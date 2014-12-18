@@ -6,64 +6,43 @@
 #ifndef _V3d_RectangularGrid_HeaderFile
 #define _V3d_RectangularGrid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_V3d_RectangularGrid_HeaderFile
 #include <Handle_V3d_RectangularGrid.hxx>
-#endif
 
-#ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Group_HeaderFile
 #include <Handle_Graphic3d_Group.hxx>
-#endif
-#ifndef _gp_Ax3_HeaderFile
 #include <gp_Ax3.hxx>
-#endif
-#ifndef _V3d_ViewerPointer_HeaderFile
 #include <V3d_ViewerPointer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Aspect_GridDrawMode_HeaderFile
 #include <Aspect_GridDrawMode.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Aspect_RectangularGrid_HeaderFile
 #include <Aspect_RectangularGrid.hxx>
-#endif
 class Graphic3d_Structure;
 class Graphic3d_Group;
 class Quantity_Color;
 
 
 
-class V3d_RectangularGrid : public Aspect_RectangularGrid {
+class V3d_RectangularGrid : public Aspect_RectangularGrid
+{
 
 public:
 
   
-  Standard_EXPORT   V3d_RectangularGrid(const V3d_ViewerPointer& aViewer,const Quantity_Color& aColor,const Quantity_Color& aTenthColor);
+  Standard_EXPORT V3d_RectangularGrid(const V3d_ViewerPointer& aViewer, const Quantity_Color& aColor, const Quantity_Color& aTenthColor);
   
-  Standard_EXPORT     void SetColors(const Quantity_Color& aColor,const Quantity_Color& aTenthColor) ;
+  Standard_EXPORT   void SetColors (const Quantity_Color& aColor, const Quantity_Color& aTenthColor) ;
   
-  Standard_EXPORT     void Display() ;
+  Standard_EXPORT   void Display() ;
   
-  Standard_EXPORT     void Erase() const;
+  Standard_EXPORT   void Erase()  const;
   
-  Standard_EXPORT     Standard_Boolean IsDisplayed() const;
+  Standard_EXPORT   Standard_Boolean IsDisplayed()  const;
   
-  Standard_EXPORT     void GraphicValues(Standard_Real& XSize,Standard_Real& YSize,Standard_Real& OffSet) const;
+  Standard_EXPORT   void GraphicValues (Standard_Real& XSize, Standard_Real& YSize, Standard_Real& OffSet)  const;
   
-  Standard_EXPORT     void SetGraphicValues(const Standard_Real XSize,const Standard_Real YSize,const Standard_Real OffSet) ;
+  Standard_EXPORT   void SetGraphicValues (const Standard_Real XSize, const Standard_Real YSize, const Standard_Real OffSet) ;
 
 
 
@@ -73,31 +52,31 @@ public:
 protected:
 
   
-  Standard_EXPORT     void UpdateDisplay() ;
+  Standard_EXPORT   void UpdateDisplay() ;
 
 
 
 private: 
 
   
-  Standard_EXPORT     void DefineLines() ;
+  Standard_EXPORT   void DefineLines() ;
   
-  Standard_EXPORT     void DefinePoints() ;
+  Standard_EXPORT   void DefinePoints() ;
 
-Handle_Graphic3d_Structure myStructure;
-Handle_Graphic3d_Group myGroup;
-gp_Ax3 myCurViewPlane;
-V3d_ViewerPointer myViewer;
-Standard_Boolean myCurAreDefined;
-Aspect_GridDrawMode myCurDrawMode;
-Standard_Real myCurXo;
-Standard_Real myCurYo;
-Standard_Real myCurAngle;
-Standard_Real myCurXStep;
-Standard_Real myCurYStep;
-Standard_Real myXSize;
-Standard_Real myYSize;
-Standard_Real myOffSet;
+  Handle(Graphic3d_Structure) myStructure;
+  Handle(Graphic3d_Group) myGroup;
+  gp_Ax3 myCurViewPlane;
+  V3d_ViewerPointer myViewer;
+  Standard_Boolean myCurAreDefined;
+  Aspect_GridDrawMode myCurDrawMode;
+  Standard_Real myCurXo;
+  Standard_Real myCurYo;
+  Standard_Real myCurAngle;
+  Standard_Real myCurXStep;
+  Standard_Real myCurYStep;
+  Standard_Real myXSize;
+  Standard_Real myYSize;
+  Standard_Real myOffSet;
 
 
 };
@@ -106,7 +85,6 @@ Standard_Real myOffSet;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _V3d_RectangularGrid_HeaderFile

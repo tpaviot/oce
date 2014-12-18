@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESBasic_ExternalRefFileName_HeaderFile
 #define _Handle_IGESBasic_ExternalRefFileName_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESData_IGESEntity);
 class IGESBasic_ExternalRefFileName;
 
-DEFINE_STANDARD_HANDLE(IGESBasic_ExternalRefFileName,IGESData_IGESEntity)
+DEFINE_STANDARD_HANDLE(IGESBasic_ExternalRefFileName, IGESData_IGESEntity)
 
-#endif
+#endif // _Handle_IGESBasic_ExternalRefFileName_HeaderFile

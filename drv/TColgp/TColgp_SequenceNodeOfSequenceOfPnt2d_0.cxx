@@ -5,16 +5,10 @@
 
 #include <TColgp_SequenceNodeOfSequenceOfPnt2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TColgp_SequenceOfPnt2d_HeaderFile
 #include <TColgp_SequenceOfPnt2d.hxx>
-#endif
 
  
 

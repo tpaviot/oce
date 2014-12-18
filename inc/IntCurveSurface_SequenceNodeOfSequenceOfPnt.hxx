@@ -6,38 +6,27 @@
 #ifndef _IntCurveSurface_SequenceNodeOfSequenceOfPnt_HeaderFile
 #define _IntCurveSurface_SequenceNodeOfSequenceOfPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt_HeaderFile
 #include <Handle_IntCurveSurface_SequenceNodeOfSequenceOfPnt.hxx>
-#endif
 
-#ifndef _IntCurveSurface_IntersectionPoint_HeaderFile
 #include <IntCurveSurface_IntersectionPoint.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class IntCurveSurface_IntersectionPoint;
 class IntCurveSurface_SequenceOfPnt;
 
 
 
-class IntCurveSurface_SequenceNodeOfSequenceOfPnt : public TCollection_SeqNode {
+class IntCurveSurface_SequenceNodeOfSequenceOfPnt : public TCollection_SeqNode
+{
 
 public:
 
   
-      IntCurveSurface_SequenceNodeOfSequenceOfPnt(const IntCurveSurface_IntersectionPoint& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    IntCurveSurface_SequenceNodeOfSequenceOfPnt(const IntCurveSurface_IntersectionPoint& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        IntCurveSurface_IntersectionPoint& Value() const;
+      IntCurveSurface_IntersectionPoint& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-IntCurveSurface_IntersectionPoint myValue;
+  IntCurveSurface_IntersectionPoint myValue;
 
 
 };
@@ -78,7 +67,6 @@ IntCurveSurface_IntersectionPoint myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntCurveSurface_SequenceNodeOfSequenceOfPnt_HeaderFile

@@ -1,3 +1,1 @@
-#ifndef _TDF_ClosureMode_HeaderFile
 #include <TDF_ClosureMode.hxx>
-#endif

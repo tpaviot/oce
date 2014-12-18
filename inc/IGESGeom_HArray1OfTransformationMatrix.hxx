@@ -6,28 +6,14 @@
 #ifndef _IGESGeom_HArray1OfTransformationMatrix_HeaderFile
 #define _IGESGeom_HArray1OfTransformationMatrix_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_HArray1OfTransformationMatrix_HeaderFile
 #include <Handle_IGESGeom_HArray1OfTransformationMatrix.hxx>
-#endif
 
-#ifndef _IGESGeom_Array1OfTransformationMatrix_HeaderFile
 #include <IGESGeom_Array1OfTransformationMatrix.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESGeom_TransformationMatrix_HeaderFile
 #include <Handle_IGESGeom_TransformationMatrix.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESGeom_Array1OfTransformationMatrix;
 
 
 
-class IGESGeom_HArray1OfTransformationMatrix : public MMgt_TShared {
+class IGESGeom_HArray1OfTransformationMatrix : public MMgt_TShared
+{
 
 public:
 
   
-      IGESGeom_HArray1OfTransformationMatrix(const Standard_Integer Low,const Standard_Integer Up);
+    IGESGeom_HArray1OfTransformationMatrix(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESGeom_HArray1OfTransformationMatrix(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESGeom_TransformationMatrix)& V);
+    IGESGeom_HArray1OfTransformationMatrix(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESGeom_TransformationMatrix)& V);
   
-        void Init(const Handle(IGESGeom_TransformationMatrix)& V) ;
+      void Init (const Handle(IGESGeom_TransformationMatrix)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESGeom_TransformationMatrix)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESGeom_TransformationMatrix)& Value) ;
   
-       const Handle_IGESGeom_TransformationMatrix& Value(const Standard_Integer Index) const;
+     const  Handle(IGESGeom_TransformationMatrix)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESGeom_TransformationMatrix& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESGeom_TransformationMatrix)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESGeom_Array1OfTransformationMatrix& Array1() const;
+     const  IGESGeom_Array1OfTransformationMatrix& Array1()  const;
   
-        IGESGeom_Array1OfTransformationMatrix& ChangeArray1() ;
+      IGESGeom_Array1OfTransformationMatrix& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESGeom_Array1OfTransformationMatrix myArray;
+  IGESGeom_Array1OfTransformationMatrix myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESGeom_TransformationMatrix
+#define ItemHArray1 Handle(IGESGeom_TransformationMatrix)
 #define ItemHArray1_hxx <IGESGeom_TransformationMatrix.hxx>
 #define TheArray1 IGESGeom_Array1OfTransformationMatrix
 #define TheArray1_hxx <IGESGeom_Array1OfTransformationMatrix.hxx>
@@ -103,7 +90,6 @@ IGESGeom_Array1OfTransformationMatrix myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_HArray1OfTransformationMatrix_HeaderFile

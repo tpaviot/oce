@@ -6,25 +6,13 @@
 #ifndef _Geom2dConvert_BSplineCurveKnotSplitting_HeaderFile
 #define _Geom2dConvert_BSplineCurveKnotSplitting_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 class Standard_DimensionError;
 class Standard_RangeError;
@@ -32,80 +20,85 @@ class Geom2d_BSplineCurve;
 class TColStd_Array1OfInteger;
 
 
-//! An algorithm to determine points at which a BSpline <br>
-//!  curve should be split in order to obtain arcs of the same continuity. <br>
-//! If you require curves with a minimum continuity for <br>
-//! your computation, it is useful to know the points <br>
-//! between which an arc has a continuity of a given <br>
-//! order. For a BSpline curve, the discontinuities are <br>
-//! localized at the knot values. Between two knot values <br>
-//! the BSpline is infinitely and continuously <br>
-//! differentiable. At a given knot, the continuity is equal <br>
-//! to: Degree - Mult, where Degree is the <br>
-//! degree of the BSpline curve and Mult is the multiplicity of the knot. <br>
-//! It is possible to compute the arcs which correspond to <br>
-//! this splitting using the global function <br>
-//! SplitBSplineCurve provided by the package Geom2dConvert. <br>
-//! A BSplineCurveKnotSplitting object provides a framework for: <br>
-//! -   defining the curve to be analysed and the required degree of continuity, <br>
-//! -   implementing the computation algorithm, and <br>
-//! -   consulting the results. <br>
-class Geom2dConvert_BSplineCurveKnotSplitting  {
+//! An algorithm to determine points at which a BSpline
+//! curve should be split in order to obtain arcs of the same continuity.
+//! If you require curves with a minimum continuity for
+//! your computation, it is useful to know the points
+//! between which an arc has a continuity of a given
+//! order. The continuity order is given at the construction time.
+//! For a BSpline curve, the discontinuities are
+//! localized at the knot values. Between two knot values
+//! the BSpline is infinitely and continuously
+//! differentiable. At a given knot, the continuity is equal
+//! to: Degree - Mult, where Degree is the
+//! degree of the BSpline curve and Mult is the multiplicity of the knot.
+//! It is possible to compute the arcs which correspond to
+//! this splitting using the global function
+//! SplitBSplineCurve provided by the package Geom2dConvert.
+//! A BSplineCurveKnotSplitting object provides a framework for:
+//! -   defining the curve to be analysed and the required degree of continuity,
+//! -   implementing the computation algorithm, and
+//! -   consulting the results.
+class Geom2dConvert_BSplineCurveKnotSplitting 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Determines points at which the BSpline curve <br>
-//!  BasisCurve should be split in order to obtain arcs <br>
-//!  with a degree of continuity equal to ContinuityRange. <br>
-//! These points are knot values of BasisCurve. They <br>
-//! are identified by indices in the knots table of BasisCurve. <br>
-//! Use the available interrogation functions to access <br>
-//! computed values, followed by the global function <br>
-//! SplitBSplineCurve (provided by the package <br>
-//! Geom2dConvert) to split the curve. <br>
-//! Exceptions <br>
-//! Standard_RangeError if ContinuityRange is less than zero. <br>
-  Standard_EXPORT   Geom2dConvert_BSplineCurveKnotSplitting(const Handle(Geom2d_BSplineCurve)& BasisCurve,const Standard_Integer ContinuityRange);
-  //!Returns the number of points at which the analysed <br>
-//! BSpline curve should be split, in order to obtain arcs <br>
-//! with the continuity required by this framework. <br>
-//! All these points correspond to knot values. Note that <br>
-//! the first and last points of the curve, which bound the <br>
-//! first and last arcs, are counted among these splitting points. <br>
-  Standard_EXPORT     Standard_Integer NbSplits() const;
-  //! Loads the SplitValues table with the split knots <br>
-//! values computed in this framework. Each value in the <br>
-//! table is an index in the knots table of the BSpline <br>
-//! curve analysed by this algorithm. <br>
-//! The values in SplitValues are given in ascending <br>
-//! order and comprise the indices of the knots which <br>
-//! give the first and last points of the curve. Use two <br>
-//! consecutive values from the table as arguments of the <br>
-//! global function SplitBSplineCurve (provided by the <br>
-//! package Geom2dConvert) to split the curve. <br>
-//! Exceptions <br>
-//! Standard_DimensionError if the array SplitValues <br>
-//! was not created with the following bounds: <br>
-//! -   1, and <br>
-//! -   the number of split points computed in this <br>
-//!   framework (as given by the function NbSplits). <br>
-  Standard_EXPORT     void Splitting(TColStd_Array1OfInteger& SplitValues) const;
-  //!Returns the split knot of index Index to the split knots <br>
-//! table computed in this framework. The returned value <br>
-//! is an index in the knots table of the BSpline curve <br>
-//! analysed by this algorithm. <br>
-//! Notes: <br>
-//! -   If Index is equal to 1, the corresponding knot <br>
-//!   gives the first point of the curve. <br>
-//! -   If Index is equal to the number of split knots <br>
-//!   computed in this framework, the corresponding <br>
-//!   point is the last point of the curve. <br>
-//! Exceptions <br>
-//! Standard_RangeError if Index is less than 1 or <br>
-//! greater than the number of split knots computed in this framework. <br>
-  Standard_EXPORT     Standard_Integer SplitValue(const Standard_Integer Index) const;
-
+  
+  //! Determines points at which the BSpline curve
+  //! BasisCurve should be split in order to obtain arcs
+  //! with a degree of continuity equal to ContinuityRange.
+  //! These points are knot values of BasisCurve. They
+  //! are identified by indices in the knots table of BasisCurve.
+  //! Use the available interrogation functions to access
+  //! computed values, followed by the global function
+  //! SplitBSplineCurve (provided by the package
+  //! Geom2dConvert) to split the curve.
+  //! Exceptions
+  //! Standard_RangeError if ContinuityRange is less than zero.
+  Standard_EXPORT Geom2dConvert_BSplineCurveKnotSplitting(const Handle(Geom2d_BSplineCurve)& BasisCurve, const Standard_Integer ContinuityRange);
+  
+  //! Returns the number of points at which the analysed
+  //! BSpline curve should be split, in order to obtain arcs
+  //! with the continuity required by this framework.
+  //! All these points correspond to knot values. Note that
+  //! the first and last points of the curve, which bound the
+  //! first and last arcs, are counted among these splitting points.
+  Standard_EXPORT   Standard_Integer NbSplits()  const;
+  
+  //! Loads the SplitValues table with the split knots
+  //! values computed in this framework. Each value in the
+  //! table is an index in the knots table of the BSpline
+  //! curve analysed by this algorithm.
+  //! The values in SplitValues are given in ascending
+  //! order and comprise the indices of the knots which
+  //! give the first and last points of the curve. Use two
+  //! consecutive values from the table as arguments of the
+  //! global function SplitBSplineCurve (provided by the
+  //! package Geom2dConvert) to split the curve.
+  //! Exceptions
+  //! Standard_DimensionError if the array SplitValues
+  //! was not created with the following bounds:
+  //! -   1, and
+  //! -   the number of split points computed in this
+  //! framework (as given by the function NbSplits).
+  Standard_EXPORT   void Splitting (TColStd_Array1OfInteger& SplitValues)  const;
+  
+  //! Returns the split knot of index Index to the split knots
+  //! table computed in this framework. The returned value
+  //! is an index in the knots table of the BSpline curve
+  //! analysed by this algorithm.
+  //! Notes:
+  //! -   If Index is equal to 1, the corresponding knot
+  //! gives the first point of the curve.
+  //! -   If Index is equal to the number of split knots
+  //! computed in this framework, the corresponding
+  //! point is the last point of the curve.
+  //! Exceptions
+  //! Standard_RangeError if Index is less than 1 or
+  //! greater than the number of split knots computed in this framework.
+  Standard_EXPORT   Standard_Integer SplitValue (const Standard_Integer Index)  const;
 
 
 
@@ -120,7 +113,7 @@ private:
 
 
 
-Handle_TColStd_HArray1OfInteger splitIndexes;
+  Handle(TColStd_HArray1OfInteger) splitIndexes;
 
 
 };
@@ -129,7 +122,6 @@ Handle_TColStd_HArray1OfInteger splitIndexes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dConvert_BSplineCurveKnotSplitting_HeaderFile

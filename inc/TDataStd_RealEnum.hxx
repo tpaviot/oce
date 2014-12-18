@@ -6,17 +6,16 @@
 #ifndef _TDataStd_RealEnum_HeaderFile
 #define _TDataStd_RealEnum_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//! The terms of this enumeration define the <br>
-//! semantics of a real number value. <br>
-enum TDataStd_RealEnum {
+
+//! The terms of this enumeration define the
+//! semantics of a real number value.
+enum TDataStd_RealEnum
+{
 TDataStd_SCALAR,
 TDataStd_LENGTH,
 TDataStd_ANGULAR
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TDataStd_RealEnum_HeaderFile

@@ -6,31 +6,15 @@
 #ifndef _StepBasic_ConversionBasedUnitAndPlaneAngleUnit_HeaderFile
 #define _StepBasic_ConversionBasedUnitAndPlaneAngleUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit_HeaderFile
 #include <Handle_StepBasic_ConversionBasedUnitAndPlaneAngleUnit.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_PlaneAngleUnit_HeaderFile
 #include <Handle_StepBasic_PlaneAngleUnit.hxx>
-#endif
-#ifndef _StepBasic_ConversionBasedUnit_HeaderFile
 #include <StepBasic_ConversionBasedUnit.hxx>
-#endif
-#ifndef _Handle_StepBasic_DimensionalExponents_HeaderFile
 #include <Handle_StepBasic_DimensionalExponents.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_MeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_MeasureWithUnit.hxx>
-#endif
 class StepBasic_PlaneAngleUnit;
 class StepBasic_DimensionalExponents;
 class TCollection_HAsciiString;
@@ -38,20 +22,22 @@ class StepBasic_MeasureWithUnit;
 
 
 
-class StepBasic_ConversionBasedUnitAndPlaneAngleUnit : public StepBasic_ConversionBasedUnit {
+class StepBasic_ConversionBasedUnitAndPlaneAngleUnit : public StepBasic_ConversionBasedUnit
+{
 
 public:
 
-  //! Returns a ConversionBasedUnitAndPlaneAngleUnit <br>
-  Standard_EXPORT   StepBasic_ConversionBasedUnitAndPlaneAngleUnit();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
+  //! Returns a ConversionBasedUnitAndPlaneAngleUnit
+  Standard_EXPORT StepBasic_ConversionBasedUnitAndPlaneAngleUnit();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_DimensionalExponents)& aDimensions,const Handle(TCollection_HAsciiString)& aName,const Handle(StepBasic_MeasureWithUnit)& aConversionFactor) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
   
-  Standard_EXPORT     void SetPlaneAngleUnit(const Handle(StepBasic_PlaneAngleUnit)& aPlaneAngleUnit) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_DimensionalExponents)& aDimensions, const Handle(TCollection_HAsciiString)& aName, const Handle(StepBasic_MeasureWithUnit)& aConversionFactor) ;
   
-  Standard_EXPORT     Handle_StepBasic_PlaneAngleUnit PlaneAngleUnit() const;
+  Standard_EXPORT   void SetPlaneAngleUnit (const Handle(StepBasic_PlaneAngleUnit)& aPlaneAngleUnit) ;
+  
+  Standard_EXPORT   Handle(StepBasic_PlaneAngleUnit) PlaneAngleUnit()  const;
 
 
 
@@ -66,7 +52,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_PlaneAngleUnit planeAngleUnit;
+  Handle(StepBasic_PlaneAngleUnit) planeAngleUnit;
 
 
 };
@@ -75,7 +61,6 @@ Handle_StepBasic_PlaneAngleUnit planeAngleUnit;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ConversionBasedUnitAndPlaneAngleUnit_HeaderFile

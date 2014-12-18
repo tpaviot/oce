@@ -6,22 +6,15 @@
 #ifndef _Handle_StepAP214_RepItemGroup_HeaderFile
 #define _Handle_StepAP214_RepItemGroup_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_Group_HeaderFile
 #include <Handle_StepBasic_Group.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_Group);
 class StepAP214_RepItemGroup;
 
-DEFINE_STANDARD_HANDLE(StepAP214_RepItemGroup,StepBasic_Group)
+DEFINE_STANDARD_HANDLE(StepAP214_RepItemGroup, StepBasic_Group)
 
-#endif
+#endif // _Handle_StepAP214_RepItemGroup_HeaderFile

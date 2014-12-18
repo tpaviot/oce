@@ -12,10 +12,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
 #ifndef WNT
 
 #include <OSD_Process.ixx>
@@ -25,28 +21,11 @@
 const OSD_WhoAmI Iam = OSD_WProcess;
 
 #include <errno.h>
-
-#ifdef HAVE_UNISTD_H
-# include <unistd.h>
-#endif
-
 #include <stdlib.h>
-
-#ifdef HAVE_SYS_PARAM_H
-# include <sys/param.h>
-#endif
-
-#if defined(HAVE_TIME_H)
-# include <time.h>
-#endif
-
-#ifdef HAVE_SYS_TIME_H
-# include <sys/time.h>
-#endif
-
-#ifdef HAVE_PWD_H
-# include <pwd.h>       // For command getpwuid
-#endif
+#include <sys/param.h>
+#include <sys/time.h>
+#include <pwd.h>       // For command getpwuid
+#include <unistd.h>
 
 OSD_Process::OSD_Process(){
 }
@@ -228,6 +207,8 @@ Standard_Integer OSD_Process::Error()const{
 
 #include <OSD_Path.hxx>
 #include <Quantity_Date.hxx>
+#include <Standard_PExtCharacter.hxx>
+#include <TCollection_ExtendedString.hxx>
 
 #include <OSD_WNT_1.hxx>
 #include <lmcons.h> /// pour UNLEN  ( see MSDN about GetUserName() )
@@ -282,7 +263,7 @@ void OSD_Process :: Spawn ( const TCollection_AsciiString& cmd ,
 
 void OSD_Process :: TerminalType ( TCollection_AsciiString& Name ) {
 
- Name = TEXT( "WIN32 console" );
+ Name = "WIN32 console";
 
 }  // end OSD_Process :: TerminalType
 
@@ -397,10 +378,14 @@ OSD_Path OSD_Process :: CurrentDirectory () {
   OSD_Path anCurrentDirectory;
 
   DWORD dwSize = PATHLEN + 1;
-  Standard_PCharacter pBuff = new char[dwSize];
+  Standard_WideChar* pBuff = new wchar_t[dwSize];
 
-  if ( GetCurrentDirectory(dwSize, pBuff) > 0 )
-    anCurrentDirectory = OSD_Path ( pBuff );
+  if ( GetCurrentDirectoryW(dwSize, (wchar_t*)pBuff) > 0 )
+  {
+    // conversion to UTF-8 is performed inside
+    TCollection_AsciiString aPath(TCollection_ExtendedString((Standard_ExtString)pBuff));
+    anCurrentDirectory = OSD_Path ( aPath );
+  }
   else
     _osd_wnt_set_error ( myError, OSD_WProcess );
  
@@ -410,17 +395,12 @@ OSD_Path OSD_Process :: CurrentDirectory () {
 
 void OSD_Process :: SetCurrentDirectory ( const OSD_Path& where ) {
 
-#ifdef UNICODE
-# define SetCurrentDirectory  SetCurrentDirectoryW
-#else
-# define SetCurrentDirectory  SetCurrentDirectoryA
-#endif  // UNICODE
-
  TCollection_AsciiString path;
 
  where.SystemName ( path );
+ TCollection_ExtendedString pathW(path);
 
- if (   !::SetCurrentDirectory (  path.ToCString ()  )   )
+ if (   !::SetCurrentDirectoryW ( (const wchar_t*) pathW.ToExtString ()  )   )
 
   _osd_wnt_set_error ( myError, OSD_WProcess );
 

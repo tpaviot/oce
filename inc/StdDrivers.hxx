@@ -6,19 +6,11 @@
 #ifndef _StdDrivers_HeaderFile
 #define _StdDrivers_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Standard_Transient;
 class Standard_GUID;
 class StdDrivers_DocumentRetrievalDriver;
@@ -26,15 +18,16 @@ class StdDrivers_DocumentStorageDriver;
 
 
 
-class StdDrivers  {
+class StdDrivers 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Depending from the  ID, returns a list of  storage <br>
-//!          or retrieval attribute drivers. Used for plugin <br>
-  Standard_EXPORT   static  Handle_Standard_Transient Factory(const Standard_GUID& aGUID) ;
-
+  
+  //! Depending from the  ID, returns a list of  storage
+  //! or retrieval attribute drivers. Used for plugin
+  Standard_EXPORT static   Handle(Standard_Transient) Factory (const Standard_GUID& aGUID) ;
 
 
 
@@ -59,7 +52,6 @@ friend class StdDrivers_DocumentStorageDriver;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdDrivers_HeaderFile

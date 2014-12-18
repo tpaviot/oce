@@ -6,25 +6,13 @@
 #ifndef _StepAP203_HArray1OfApprovedItem_HeaderFile
 #define _StepAP203_HArray1OfApprovedItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP203_HArray1OfApprovedItem_HeaderFile
 #include <Handle_StepAP203_HArray1OfApprovedItem.hxx>
-#endif
 
-#ifndef _StepAP203_Array1OfApprovedItem_HeaderFile
 #include <StepAP203_Array1OfApprovedItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepAP203_Array1OfApprovedItem;
 
 
 
-class StepAP203_HArray1OfApprovedItem : public MMgt_TShared {
+class StepAP203_HArray1OfApprovedItem : public MMgt_TShared
+{
 
 public:
 
   
-      StepAP203_HArray1OfApprovedItem(const Standard_Integer Low,const Standard_Integer Up);
+    StepAP203_HArray1OfApprovedItem(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepAP203_HArray1OfApprovedItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP203_ApprovedItem& V);
+    StepAP203_HArray1OfApprovedItem(const Standard_Integer Low, const Standard_Integer Up, const StepAP203_ApprovedItem& V);
   
-        void Init(const StepAP203_ApprovedItem& V) ;
+      void Init (const StepAP203_ApprovedItem& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepAP203_ApprovedItem& Value) ;
+      void SetValue (const Standard_Integer Index, const StepAP203_ApprovedItem& Value) ;
   
-       const StepAP203_ApprovedItem& Value(const Standard_Integer Index) const;
+     const  StepAP203_ApprovedItem& Value (const Standard_Integer Index)  const;
   
-        StepAP203_ApprovedItem& ChangeValue(const Standard_Integer Index) ;
+      StepAP203_ApprovedItem& ChangeValue (const Standard_Integer Index) ;
   
-       const StepAP203_Array1OfApprovedItem& Array1() const;
+     const  StepAP203_Array1OfApprovedItem& Array1()  const;
   
-        StepAP203_Array1OfApprovedItem& ChangeArray1() ;
+      StepAP203_Array1OfApprovedItem& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepAP203_Array1OfApprovedItem myArray;
+  StepAP203_Array1OfApprovedItem myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepAP203_Array1OfApprovedItem myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP203_HArray1OfApprovedItem_HeaderFile

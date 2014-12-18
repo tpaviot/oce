@@ -1,12 +1,4 @@
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _ChFiDS_SecHArray1_HeaderFile
 #include <ChFiDS_SecHArray1.hxx>
-#endif
-#ifndef _BRepFilletAPI_LocalOperation_HeaderFile
 #include <BRepFilletAPI_LocalOperation.hxx>
-#endif

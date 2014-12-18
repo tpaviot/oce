@@ -6,22 +6,15 @@
 #ifndef _Handle_LocOpe_HBuilder_HeaderFile
 #define _Handle_LocOpe_HBuilder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TopOpeBRepBuild_HBuilder_HeaderFile
 #include <Handle_TopOpeBRepBuild_HBuilder.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TopOpeBRepBuild_HBuilder);
 class LocOpe_HBuilder;
 
-DEFINE_STANDARD_HANDLE(LocOpe_HBuilder,TopOpeBRepBuild_HBuilder)
+DEFINE_STANDARD_HANDLE(LocOpe_HBuilder, TopOpeBRepBuild_HBuilder)
 
-#endif
+#endif // _Handle_LocOpe_HBuilder_HeaderFile

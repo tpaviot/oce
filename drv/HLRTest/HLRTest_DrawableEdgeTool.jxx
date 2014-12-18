@@ -1,15 +1,5 @@
-#ifndef _HLRBRep_Algo_HeaderFile
 #include <HLRBRep_Algo.hxx>
-#endif
-#ifndef _Draw_Display_HeaderFile
 #include <Draw_Display.hxx>
-#endif
-#ifndef _HLRBRep_Data_HeaderFile
 #include <HLRBRep_Data.hxx>
-#endif
-#ifndef _HLRBRep_EdgeData_HeaderFile
 #include <HLRBRep_EdgeData.hxx>
-#endif
-#ifndef _HLRTest_DrawableEdgeTool_HeaderFile
 #include <HLRTest_DrawableEdgeTool.hxx>
-#endif

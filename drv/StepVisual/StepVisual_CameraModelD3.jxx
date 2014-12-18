@@ -1,12 +1,4 @@
-#ifndef _StepGeom_Axis2Placement3d_HeaderFile
 #include <StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _StepVisual_ViewVolume_HeaderFile
 #include <StepVisual_ViewVolume.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepVisual_CameraModelD3_HeaderFile
 #include <StepVisual_CameraModelD3.hxx>
-#endif

@@ -6,28 +6,14 @@
 #ifndef _IGESDraw_HArray1OfConnectPoint_HeaderFile
 #define _IGESDraw_HArray1OfConnectPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDraw_HArray1OfConnectPoint_HeaderFile
 #include <Handle_IGESDraw_HArray1OfConnectPoint.hxx>
-#endif
 
-#ifndef _IGESDraw_Array1OfConnectPoint_HeaderFile
 #include <IGESDraw_Array1OfConnectPoint.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESDraw_ConnectPoint_HeaderFile
 #include <Handle_IGESDraw_ConnectPoint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESDraw_Array1OfConnectPoint;
 
 
 
-class IGESDraw_HArray1OfConnectPoint : public MMgt_TShared {
+class IGESDraw_HArray1OfConnectPoint : public MMgt_TShared
+{
 
 public:
 
   
-      IGESDraw_HArray1OfConnectPoint(const Standard_Integer Low,const Standard_Integer Up);
+    IGESDraw_HArray1OfConnectPoint(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESDraw_HArray1OfConnectPoint(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESDraw_ConnectPoint)& V);
+    IGESDraw_HArray1OfConnectPoint(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESDraw_ConnectPoint)& V);
   
-        void Init(const Handle(IGESDraw_ConnectPoint)& V) ;
+      void Init (const Handle(IGESDraw_ConnectPoint)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESDraw_ConnectPoint)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESDraw_ConnectPoint)& Value) ;
   
-       const Handle_IGESDraw_ConnectPoint& Value(const Standard_Integer Index) const;
+     const  Handle(IGESDraw_ConnectPoint)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESDraw_ConnectPoint& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESDraw_ConnectPoint)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESDraw_Array1OfConnectPoint& Array1() const;
+     const  IGESDraw_Array1OfConnectPoint& Array1()  const;
   
-        IGESDraw_Array1OfConnectPoint& ChangeArray1() ;
+      IGESDraw_Array1OfConnectPoint& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESDraw_Array1OfConnectPoint myArray;
+  IGESDraw_Array1OfConnectPoint myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESDraw_ConnectPoint
+#define ItemHArray1 Handle(IGESDraw_ConnectPoint)
 #define ItemHArray1_hxx <IGESDraw_ConnectPoint.hxx>
 #define TheArray1 IGESDraw_Array1OfConnectPoint
 #define TheArray1_hxx <IGESDraw_Array1OfConnectPoint.hxx>
@@ -103,7 +90,6 @@ IGESDraw_Array1OfConnectPoint myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDraw_HArray1OfConnectPoint_HeaderFile

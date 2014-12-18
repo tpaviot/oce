@@ -1,15 +1,5 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepFEA_FeaAxis2Placement3d_HeaderFile
 #include <StepFEA_FeaAxis2Placement3d.hxx>
-#endif
-#ifndef _StepFEA_AlignedCurve3dElementCoordinateSystem_HeaderFile
 #include <StepFEA_AlignedCurve3dElementCoordinateSystem.hxx>
-#endif
-#ifndef _StepFEA_ParametricCurve3dElementCoordinateSystem_HeaderFile
 #include <StepFEA_ParametricCurve3dElementCoordinateSystem.hxx>
-#endif
-#ifndef _StepFEA_CurveElementEndCoordinateSystem_HeaderFile
 #include <StepFEA_CurveElementEndCoordinateSystem.hxx>
-#endif

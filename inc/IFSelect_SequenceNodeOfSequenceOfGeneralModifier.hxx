@@ -6,38 +6,27 @@
 #ifndef _IFSelect_SequenceNodeOfSequenceOfGeneralModifier_HeaderFile
 #define _IFSelect_SequenceNodeOfSequenceOfGeneralModifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier_HeaderFile
 #include <Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier.hxx>
-#endif
 
-#ifndef _Handle_IFSelect_GeneralModifier_HeaderFile
 #include <Handle_IFSelect_GeneralModifier.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class IFSelect_GeneralModifier;
 class IFSelect_SequenceOfGeneralModifier;
 
 
 
-class IFSelect_SequenceNodeOfSequenceOfGeneralModifier : public TCollection_SeqNode {
+class IFSelect_SequenceNodeOfSequenceOfGeneralModifier : public TCollection_SeqNode
+{
 
 public:
 
   
-      IFSelect_SequenceNodeOfSequenceOfGeneralModifier(const Handle(IFSelect_GeneralModifier)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    IFSelect_SequenceNodeOfSequenceOfGeneralModifier(const Handle(IFSelect_GeneralModifier)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_IFSelect_GeneralModifier& Value() const;
+      Handle(IFSelect_GeneralModifier)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_IFSelect_GeneralModifier myValue;
+  Handle(IFSelect_GeneralModifier) myValue;
 
 
 };
 
-#define SeqItem Handle_IFSelect_GeneralModifier
+#define SeqItem Handle(IFSelect_GeneralModifier)
 #define SeqItem_hxx <IFSelect_GeneralModifier.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfSequenceOfGeneralModifier
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfSequenceOfGeneralModifier.hxx>
@@ -78,7 +67,6 @@ Handle_IFSelect_GeneralModifier myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SequenceNodeOfSequenceOfGeneralModifier_HeaderFile

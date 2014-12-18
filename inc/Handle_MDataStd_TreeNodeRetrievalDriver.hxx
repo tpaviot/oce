@@ -6,22 +6,15 @@
 #ifndef _Handle_MDataStd_TreeNodeRetrievalDriver_HeaderFile
 #define _Handle_MDataStd_TreeNodeRetrievalDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MDF_ARDriver_HeaderFile
 #include <Handle_MDF_ARDriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MDF_ARDriver);
 class MDataStd_TreeNodeRetrievalDriver;
 
-DEFINE_STANDARD_HANDLE(MDataStd_TreeNodeRetrievalDriver,MDF_ARDriver)
+DEFINE_STANDARD_HANDLE(MDataStd_TreeNodeRetrievalDriver, MDF_ARDriver)
 
-#endif
+#endif // _Handle_MDataStd_TreeNodeRetrievalDriver_HeaderFile

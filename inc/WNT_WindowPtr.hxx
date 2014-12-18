@@ -7,7 +7,6 @@
 #define _WNT_WindowPtr_HeaderFile
 
 class WNT_Window;
-
 typedef WNT_Window* WNT_WindowPtr;
 
-#endif
+#endif // _WNT_WindowPtr_HeaderFile

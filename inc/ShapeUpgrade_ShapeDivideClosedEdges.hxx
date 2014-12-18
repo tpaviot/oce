@@ -6,37 +6,29 @@
 #ifndef _ShapeUpgrade_ShapeDivideClosedEdges_HeaderFile
 #define _ShapeUpgrade_ShapeDivideClosedEdges_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _ShapeUpgrade_ShapeDivide_HeaderFile
 #include <ShapeUpgrade_ShapeDivide.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopoDS_Shape;
 
 
 
-class ShapeUpgrade_ShapeDivideClosedEdges  : public ShapeUpgrade_ShapeDivide {
+class ShapeUpgrade_ShapeDivideClosedEdges  : public ShapeUpgrade_ShapeDivide
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Initialises tool with shape and default parameter. <br>
-  Standard_EXPORT   ShapeUpgrade_ShapeDivideClosedEdges(const TopoDS_Shape& S);
-  //! Sets the number of cuts applied to divide closed edges. <br>
-//!          The number of resulting faces will be num+1. <br>
-  Standard_EXPORT     void SetNbSplitPoints(const Standard_Integer num) ;
-
+  
+  //! Initialises tool with shape and default parameter.
+  Standard_EXPORT ShapeUpgrade_ShapeDivideClosedEdges(const TopoDS_Shape& S);
+  
+  //! Sets the number of cuts applied to divide closed edges.
+  //! The number of resulting faces will be num+1.
+  Standard_EXPORT   void SetNbSplitPoints (const Standard_Integer num) ;
 
 
 
@@ -59,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_ShapeDivideClosedEdges_HeaderFile

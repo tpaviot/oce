@@ -6,35 +6,28 @@
 #ifndef _TDF_DefaultDeltaOnRemoval_HeaderFile
 #define _TDF_DefaultDeltaOnRemoval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_DefaultDeltaOnRemoval_HeaderFile
 #include <Handle_TDF_DefaultDeltaOnRemoval.hxx>
-#endif
 
-#ifndef _TDF_DeltaOnRemoval_HeaderFile
 #include <TDF_DeltaOnRemoval.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
 class TDF_Attribute;
 
 
-//! This class provides a default implementation of a <br>
-//!          TDF_DeltaOnRemoval. <br>
-class TDF_DefaultDeltaOnRemoval : public TDF_DeltaOnRemoval {
+//! This class provides a default implementation of a
+//! TDF_DeltaOnRemoval.
+class TDF_DefaultDeltaOnRemoval : public TDF_DeltaOnRemoval
+{
 
 public:
 
-  //! Creates a TDF_DefaultDeltaOnRemoval. <br>
-  Standard_EXPORT   TDF_DefaultDeltaOnRemoval(const Handle(TDF_Attribute)& anAttribute);
-  //! Applies the delta to the attribute. <br>
-  Standard_EXPORT   virtual  void Apply() ;
+  
+  //! Creates a TDF_DefaultDeltaOnRemoval.
+  Standard_EXPORT TDF_DefaultDeltaOnRemoval(const Handle(TDF_Attribute)& anAttribute);
+  
+  //! Applies the delta to the attribute.
+  Standard_EXPORT virtual   void Apply() ;
 
 
 
@@ -57,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_DefaultDeltaOnRemoval_HeaderFile

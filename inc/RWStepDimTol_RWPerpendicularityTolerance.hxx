@@ -6,28 +6,14 @@
 #ifndef _RWStepDimTol_RWPerpendicularityTolerance_HeaderFile
 #define _RWStepDimTol_RWPerpendicularityTolerance_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_StepDimTol_PerpendicularityTolerance_HeaderFile
 #include <Handle_StepDimTol_PerpendicularityTolerance.hxx>
-#endif
 class StepData_StepReaderData;
 class Interface_Check;
 class StepDimTol_PerpendicularityTolerance;
@@ -35,21 +21,25 @@ class StepData_StepWriter;
 class Interface_EntityIterator;
 
 
-//! Read & Write tool for PerpendicularityTolerance <br>
-class RWStepDimTol_RWPerpendicularityTolerance  {
+//! Read & Write tool for PerpendicularityTolerance
+class RWStepDimTol_RWPerpendicularityTolerance 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   RWStepDimTol_RWPerpendicularityTolerance();
-  //! Reads PerpendicularityTolerance <br>
-  Standard_EXPORT     void ReadStep(const Handle(StepData_StepReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(StepDimTol_PerpendicularityTolerance)& ent) const;
-  //! Writes PerpendicularityTolerance <br>
-  Standard_EXPORT     void WriteStep(StepData_StepWriter& SW,const Handle(StepDimTol_PerpendicularityTolerance)& ent) const;
-  //! Fills data for graph (shared items) <br>
-  Standard_EXPORT     void Share(const Handle(StepDimTol_PerpendicularityTolerance)& ent,Interface_EntityIterator& iter) const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT RWStepDimTol_RWPerpendicularityTolerance();
+  
+  //! Reads PerpendicularityTolerance
+  Standard_EXPORT   void ReadStep (const Handle(StepData_StepReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(StepDimTol_PerpendicularityTolerance)& ent)  const;
+  
+  //! Writes PerpendicularityTolerance
+  Standard_EXPORT   void WriteStep (StepData_StepWriter& SW, const Handle(StepDimTol_PerpendicularityTolerance)& ent)  const;
+  
+  //! Fills data for graph (shared items)
+  Standard_EXPORT   void Share (const Handle(StepDimTol_PerpendicularityTolerance)& ent, Interface_EntityIterator& iter)  const;
 
 
 
@@ -72,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStepDimTol_RWPerpendicularityTolerance_HeaderFile

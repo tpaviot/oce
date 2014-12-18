@@ -6,70 +6,52 @@
 #ifndef _AIS_Triangulation_HeaderFile
 #define _AIS_Triangulation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_Triangulation_HeaderFile
 #include <Handle_AIS_Triangulation.hxx>
-#endif
 
-#ifndef _Handle_Poly_Triangulation_HeaderFile
 #include <Handle_Poly_Triangulation.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
-#endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Poly_Triangulation;
 class TColStd_HArray1OfInteger;
-class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class SelectMgr_Selection;
 
 
-//! Interactive object that draws data from  Poly_Triangulation, optionally with colors associated <br>
-//!          with each triangulation vertex. For maximum efficiency colors are represented as 32-bit integers <br>
-//!          instead of classic Quantity_Color values. <br>
-//!          Interactive selection of triangles and vertices is not yet implemented. <br>
-class AIS_Triangulation : public AIS_InteractiveObject {
+//! Interactive object that draws data from  Poly_Triangulation, optionally with colors associated
+//! with each triangulation vertex. For maximum efficiency colors are represented as 32-bit integers
+//! instead of classic Quantity_Color values.
+//! Interactive selection of triangles and vertices is not yet implemented.
+class AIS_Triangulation : public AIS_InteractiveObject
+{
 
 public:
 
-  //! Constructs the Triangulation display object <br>
-  Standard_EXPORT   AIS_Triangulation(const Handle(Poly_Triangulation)& aTriangulation);
   
-//! Set the color for each node. <br>
-//! Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red <br>
-//! Order of color components is essential for further usage by OpenGL <br>
-  Standard_EXPORT     void SetColors(const Handle(TColStd_HArray1OfInteger)& aColor) ;
+  //! Constructs the Triangulation display object
+  Standard_EXPORT AIS_Triangulation(const Handle(Poly_Triangulation)& aTriangulation);
   
-//! Get the color for each node. <br>
-//! Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red <br>
-  Standard_EXPORT     Handle_TColStd_HArray1OfInteger GetColors() const;
+
+  //! Set the color for each node.
+  //! Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red
+  //! Order of color components is essential for further usage by OpenGL
+  Standard_EXPORT   void SetColors (const Handle(TColStd_HArray1OfInteger)& aColor) ;
   
-  Standard_EXPORT     void SetTriangulation(const Handle(Poly_Triangulation)& aTriangulation) ;
-  //! Returns Poly_Triangulation . <br>
-  Standard_EXPORT     Handle_Poly_Triangulation GetTriangulation() const;
+
+  //! Get the color for each node.
+  //! Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red
+  Standard_EXPORT   Handle(TColStd_HArray1OfInteger) GetColors()  const;
+  
+  Standard_EXPORT   void SetTriangulation (const Handle(Poly_Triangulation)& aTriangulation) ;
+  
+  //! Returns Poly_Triangulation .
+  Standard_EXPORT   Handle(Poly_Triangulation) GetTriangulation()  const;
 
 
 
@@ -84,21 +66,22 @@ protected:
 private: 
 
   
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
+  Standard_EXPORT virtual   void Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager, const Handle(Prs3d_Presentation)& aPresentation, const Standard_Integer aMode = 0) ;
   
-  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
-  //! Attenuates 32-bit color by a given attenuation factor (0...1): <br>
-//! aColor = Alpha << 24 + Blue << 16 + Green << 8 + Red <br>
-//! All color components are multiplied by aComponent, the result is then packed again as 32-bit integer. <br>
-//! Color attenuation is applied to the vertex colors in order to have correct visual result <br>
-//! after glColorMaterial(GL_AMBIENT_AND_DIFFUSE). Without it, colors look unnatural and flat. <br>
-  Standard_EXPORT     Standard_Integer AttenuateColor(const Standard_Integer aColor,const Standard_Real aComponent) ;
+  Standard_EXPORT virtual   void ComputeSelection (const Handle(SelectMgr_Selection)& aSelection, const Standard_Integer aMode) ;
+  
+  //! Attenuates 32-bit color by a given attenuation factor (0...1):
+  //! aColor = Alpha << 24 + Blue << 16 + Green << 8 + Red
+  //! All color components are multiplied by aComponent, the result is then packed again as 32-bit integer.
+  //! Color attenuation is applied to the vertex colors in order to have correct visual result
+  //! after glColorMaterial(GL_AMBIENT_AND_DIFFUSE). Without it, colors look unnatural and flat.
+  Standard_EXPORT   Standard_Integer AttenuateColor (const Standard_Integer aColor, const Standard_Real aComponent) ;
 
-Handle_Poly_Triangulation myTriangulation;
-Handle_TColStd_HArray1OfInteger myColor;
-Standard_Integer myFlagColor;
-Standard_Integer myNbNodes;
-Standard_Integer myNbTriangles;
+  Handle(Poly_Triangulation) myTriangulation;
+  Handle(TColStd_HArray1OfInteger) myColor;
+  Standard_Integer myFlagColor;
+  Standard_Integer myNbNodes;
+  Standard_Integer myNbTriangles;
 
 
 };
@@ -107,7 +90,6 @@ Standard_Integer myNbTriangles;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_Triangulation_HeaderFile

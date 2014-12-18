@@ -6,70 +6,69 @@
 #ifndef _Voxel_BooleanOperation_HeaderFile
 #define _Voxel_BooleanOperation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Voxel_BoolDS;
 class Voxel_ColorDS;
 class Voxel_FloatDS;
 class Voxel_DS;
 
 
-//! Boolean operations (fuse, cut) <br>
-//!          for voxels of the same dimension. <br>
-class Voxel_BooleanOperation  {
+//! Boolean operations (fuse, cut)
+//! for voxels of the same dimension.
+class Voxel_BooleanOperation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! An empty constructor. <br>
-  Standard_EXPORT   Voxel_BooleanOperation();
-  //! Fuses two cubes of voxels. <br>
-//!          It modifies the first cube of voxels. <br>
-//!          It returns false in case of different dimension of the cube, <br>
-//!          different number of voxels. <br>
-  Standard_EXPORT     Standard_Boolean Fuse(Voxel_BoolDS& theVoxels1,const Voxel_BoolDS& theVoxels2) const;
-  //! Fuses two cubes of voxels. <br>
-//!          It modifies the first cube of voxels. <br>
-//!          It returns false in case of different dimension of the cube, <br>
-//!          different number of voxels. <br>
-//!          It summerizes the value of corresponding voxels and puts the result to theVoxels1. <br>
-//!          If the result exceeds 15 or becomes greater, it keeps 15. <br>
-  Standard_EXPORT     Standard_Boolean Fuse(Voxel_ColorDS& theVoxels1,const Voxel_ColorDS& theVoxels2) const;
-  //! Fuses two cubes of voxels. <br>
-//!          It modifies the first cube of voxels. <br>
-//!          It returns false in case of different dimension of the cube, <br>
-//!          different number of voxels. <br>
-//!          It summerizes the value of corresponding voxels and puts the result to theVoxels1. <br>
-  Standard_EXPORT     Standard_Boolean Fuse(Voxel_FloatDS& theVoxels1,const Voxel_FloatDS& theVoxels2) const;
-  //! Cuts two cubes of voxels. <br>
-//!          It modifies the first cube of voxels. <br>
-//!          It returns false in case of different dimension of the cube, <br>
-//!          different number of voxels. <br>
-  Standard_EXPORT     Standard_Boolean Cut(Voxel_BoolDS& theVoxels1,const Voxel_BoolDS& theVoxels2) const;
-  //! Cuts two cubes of voxels. <br>
-//!          It modifies the first cube of voxels. <br>
-//!          It returns false in case of different dimension of the cube, <br>
-//!          different number of voxels. <br>
-//!          It subtracts the value of corresponding voxels and puts the result to theVoxels1. <br>
-  Standard_EXPORT     Standard_Boolean Cut(Voxel_ColorDS& theVoxels1,const Voxel_ColorDS& theVoxels2) const;
-  //! Cuts two cubes of voxels. <br>
-//!          It modifies the first cube of voxels. <br>
-//!          It returns false in case of different dimension of the cube, <br>
-//!          different number of voxels. <br>
-//!          It subtracts the value of corresponding voxels and puts the result to theVoxels1. <br>
-  Standard_EXPORT     Standard_Boolean Cut(Voxel_FloatDS& theVoxels1,const Voxel_FloatDS& theVoxels2) const;
-
+  
+  //! An empty constructor.
+  Standard_EXPORT Voxel_BooleanOperation();
+  
+  //! Fuses two cubes of voxels.
+  //! It modifies the first cube of voxels.
+  //! It returns false in case of different dimension of the cube,
+  //! different number of voxels.
+  Standard_EXPORT   Standard_Boolean Fuse (Voxel_BoolDS& theVoxels1, const Voxel_BoolDS& theVoxels2)  const;
+  
+  //! Fuses two cubes of voxels.
+  //! It modifies the first cube of voxels.
+  //! It returns false in case of different dimension of the cube,
+  //! different number of voxels.
+  //! It summerizes the value of corresponding voxels and puts the result to theVoxels1.
+  //! If the result exceeds 15 or becomes greater, it keeps 15.
+  Standard_EXPORT   Standard_Boolean Fuse (Voxel_ColorDS& theVoxels1, const Voxel_ColorDS& theVoxels2)  const;
+  
+  //! Fuses two cubes of voxels.
+  //! It modifies the first cube of voxels.
+  //! It returns false in case of different dimension of the cube,
+  //! different number of voxels.
+  //! It summerizes the value of corresponding voxels and puts the result to theVoxels1.
+  Standard_EXPORT   Standard_Boolean Fuse (Voxel_FloatDS& theVoxels1, const Voxel_FloatDS& theVoxels2)  const;
+  
+  //! Cuts two cubes of voxels.
+  //! It modifies the first cube of voxels.
+  //! It returns false in case of different dimension of the cube,
+  //! different number of voxels.
+  Standard_EXPORT   Standard_Boolean Cut (Voxel_BoolDS& theVoxels1, const Voxel_BoolDS& theVoxels2)  const;
+  
+  //! Cuts two cubes of voxels.
+  //! It modifies the first cube of voxels.
+  //! It returns false in case of different dimension of the cube,
+  //! different number of voxels.
+  //! It subtracts the value of corresponding voxels and puts the result to theVoxels1.
+  Standard_EXPORT   Standard_Boolean Cut (Voxel_ColorDS& theVoxels1, const Voxel_ColorDS& theVoxels2)  const;
+  
+  //! Cuts two cubes of voxels.
+  //! It modifies the first cube of voxels.
+  //! It returns false in case of different dimension of the cube,
+  //! different number of voxels.
+  //! It subtracts the value of corresponding voxels and puts the result to theVoxels1.
+  Standard_EXPORT   Standard_Boolean Cut (Voxel_FloatDS& theVoxels1, const Voxel_FloatDS& theVoxels2)  const;
 
 
 
@@ -83,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Boolean Check(const Voxel_DS& theVoxels1,const Voxel_DS& theVoxels2) const;
+  Standard_EXPORT   Standard_Boolean Check (const Voxel_DS& theVoxels1, const Voxel_DS& theVoxels2)  const;
 
 
 
@@ -94,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Voxel_BooleanOperation_HeaderFile

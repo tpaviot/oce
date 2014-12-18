@@ -6,34 +6,16 @@
 #ifndef _IntPatch_TheSearchInside_HeaderFile
 #define _IntPatch_TheSearchInside_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntSurf_SequenceOfInteriorPoint_HeaderFile
 #include <IntSurf_SequenceOfInteriorPoint.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Adaptor3d_HSurface;
@@ -45,26 +27,26 @@ class IntSurf_InteriorPoint;
 
 
 
-class IntPatch_TheSearchInside  {
+class IntPatch_TheSearchInside 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntPatch_TheSearchInside();
+  Standard_EXPORT IntPatch_TheSearchInside();
   
-  Standard_EXPORT   IntPatch_TheSearchInside(IntPatch_TheSurfFunction& F,const Handle(Adaptor3d_HSurface)& Surf,const Handle(Adaptor3d_TopolTool)& T,const Standard_Real Epsilon);
+  Standard_EXPORT IntPatch_TheSearchInside(IntPatch_TheSurfFunction& F, const Handle(Adaptor3d_HSurface)& Surf, const Handle(Adaptor3d_TopolTool)& T, const Standard_Real Epsilon);
   
-  Standard_EXPORT     void Perform(IntPatch_TheSurfFunction& F,const Handle(Adaptor3d_HSurface)& Surf,const Handle(Adaptor3d_TopolTool)& T,const Standard_Real Epsilon) ;
+  Standard_EXPORT   void Perform (IntPatch_TheSurfFunction& F, const Handle(Adaptor3d_HSurface)& Surf, const Handle(Adaptor3d_TopolTool)& T, const Standard_Real Epsilon) ;
   
-  Standard_EXPORT     void Perform(IntPatch_TheSurfFunction& F,const Handle(Adaptor3d_HSurface)& Surf,const Standard_Real UStart,const Standard_Real VStart) ;
+  Standard_EXPORT   void Perform (IntPatch_TheSurfFunction& F, const Handle(Adaptor3d_HSurface)& Surf, const Standard_Real UStart, const Standard_Real VStart) ;
   
-        Standard_Boolean IsDone() const;
+      Standard_Boolean IsDone()  const;
   
-        Standard_Integer NbPoints() const;
+      Standard_Integer NbPoints()  const;
   
-       const IntSurf_InteriorPoint& Value(const Standard_Integer Index) const;
-
+     const  IntSurf_InteriorPoint& Value (const Standard_Integer Index)  const;
 
 
 
@@ -79,13 +61,13 @@ private:
 
 
 
-Standard_Boolean done;
-IntSurf_SequenceOfInteriorPoint list;
+  Standard_Boolean done;
+  IntSurf_SequenceOfInteriorPoint list;
 
 
 };
 
-#define ThePSurface Handle_Adaptor3d_HSurface
+#define ThePSurface Handle(Adaptor3d_HSurface)
 #define ThePSurface_hxx <Adaptor3d_HSurface.hxx>
 #define ThePSurfaceTool Adaptor3d_HSurfaceTool
 #define ThePSurfaceTool_hxx <Adaptor3d_HSurfaceTool.hxx>
@@ -116,7 +98,6 @@ IntSurf_SequenceOfInteriorPoint list;
 #undef IntStart_SearchInside_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_TheSearchInside_HeaderFile

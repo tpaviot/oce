@@ -6,25 +6,13 @@
 #ifndef _TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference_HeaderFile
 #define _TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopOpeBRepDS_Interference;
 class TopOpeBRepDS_ListOfInterference;
@@ -34,22 +22,22 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference;
 
 
 
-class TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference  : public TCollection_BasicMapIterator {
+class TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference();
+  Standard_EXPORT TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference();
   
-  Standard_EXPORT   TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference(const TopOpeBRepDS_DataMapOfInterferenceListOfInterference& aMap);
+  Standard_EXPORT TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference(const TopOpeBRepDS_DataMapOfInterferenceListOfInterference& aMap);
   
-  Standard_EXPORT     void Initialize(const TopOpeBRepDS_DataMapOfInterferenceListOfInterference& aMap) ;
+  Standard_EXPORT   void Initialize (const TopOpeBRepDS_DataMapOfInterferenceListOfInterference& aMap) ;
   
-  Standard_EXPORT    const Handle_TopOpeBRepDS_Interference& Key() const;
+  Standard_EXPORT  const  Handle(TopOpeBRepDS_Interference)& Key()  const;
   
-  Standard_EXPORT    const TopOpeBRepDS_ListOfInterference& Value() const;
-
+  Standard_EXPORT  const  TopOpeBRepDS_ListOfInterference& Value()  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference_HeaderFile

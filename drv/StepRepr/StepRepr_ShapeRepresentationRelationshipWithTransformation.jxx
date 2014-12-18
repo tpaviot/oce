@@ -1,3 +1,1 @@
-#ifndef _StepRepr_ShapeRepresentationRelationshipWithTransformation_HeaderFile
 #include <StepRepr_ShapeRepresentationRelationshipWithTransformation.hxx>
-#endif

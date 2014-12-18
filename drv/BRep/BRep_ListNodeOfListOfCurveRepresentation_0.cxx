@@ -5,19 +5,11 @@
 
 #include <BRep_ListNodeOfListOfCurveRepresentation.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _BRep_CurveRepresentation_HeaderFile
 #include <BRep_CurveRepresentation.hxx>
-#endif
-#ifndef _BRep_ListOfCurveRepresentation_HeaderFile
 #include <BRep_ListOfCurveRepresentation.hxx>
-#endif
-#ifndef _BRep_ListIteratorOfListOfCurveRepresentation_HeaderFile
 #include <BRep_ListIteratorOfListOfCurveRepresentation.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(BRep_ListNodeOfListOfCurveRepresentation,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(BRep_ListNodeOfListOfCurveRepresentation)
 
 
-#define Item Handle_BRep_CurveRepresentation
+#define Item Handle(BRep_CurveRepresentation)
 #define Item_hxx <BRep_CurveRepresentation.hxx>
 #define TCollection_ListNode BRep_ListNodeOfListOfCurveRepresentation
 #define TCollection_ListNode_hxx <BRep_ListNodeOfListOfCurveRepresentation.hxx>

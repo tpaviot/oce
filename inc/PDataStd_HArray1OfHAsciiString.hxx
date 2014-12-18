@@ -6,45 +6,18 @@
 #ifndef _PDataStd_HArray1OfHAsciiString_HeaderFile
 #define _PDataStd_HArray1OfHAsciiString_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_HArray1OfHAsciiString_HeaderFile
 #include <Handle_PDataStd_HArray1OfHAsciiString.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PCollection_HAsciiString_HeaderFile
 #include <Handle_PCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _PDataStd_FieldOfHArray1OfHAsciiString_HeaderFile
 #include <PDataStd_FieldOfHArray1OfHAsciiString.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString_HeaderFile
 #include <Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PCollection_HAsciiString;
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PDataStd_FieldOfHArray1OfHAsciiString;
@@ -52,30 +25,27 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString;
 class PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString;
 
 
-class PDataStd_HArray1OfHAsciiString : public Standard_Persistent {
+class PDataStd_HArray1OfHAsciiString : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_HArray1OfHAsciiString(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PDataStd_HArray1OfHAsciiString(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PDataStd_HArray1OfHAsciiString(const Standard_Integer Low,const Standard_Integer Up,const Handle(PCollection_HAsciiString)& V);
+  Standard_EXPORT PDataStd_HArray1OfHAsciiString(const Standard_Integer Low, const Standard_Integer Up, const Handle(PCollection_HAsciiString)& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(PCollection_HAsciiString)& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(PCollection_HAsciiString)& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     Handle_PCollection_HAsciiString Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
+  Standard_EXPORT   Handle(PCollection_HAsciiString) Value (const Standard_Integer Index)  const;
 
-  PDataStd_HArray1OfHAsciiString( )
+PDataStd_HArray1OfHAsciiString( )
 {
   
 }
@@ -101,18 +71,18 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PDataStd_FieldOfHArray1OfHAsciiString Field() const;
+  Standard_EXPORT   PDataStd_FieldOfHArray1OfHAsciiString Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PDataStd_FieldOfHArray1OfHAsciiString Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PDataStd_FieldOfHArray1OfHAsciiString Data;
 
 
 };
 
-#define Item Handle_PCollection_HAsciiString
+#define Item Handle(PCollection_HAsciiString)
 #define Item_hxx <PCollection_HAsciiString.hxx>
 #define PCollection_FieldOfHArray1 PDataStd_FieldOfHArray1OfHAsciiString
 #define PCollection_FieldOfHArray1_hxx <PDataStd_FieldOfHArray1OfHAsciiString.hxx>
@@ -157,11 +127,6 @@ PDataStd_FieldOfHArray1OfHAsciiString Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PDataStd_HArray1OfHAsciiString& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
 
 
-
-#endif
+#endif // _PDataStd_HArray1OfHAsciiString_HeaderFile

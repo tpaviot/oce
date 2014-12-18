@@ -5,24 +5,12 @@
 
 #include <BRepClass_FClassifier.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _BRepClass_FaceExplorer_HeaderFile
 #include <BRepClass_FaceExplorer.hxx>
-#endif
-#ifndef _BRepClass_Edge_HeaderFile
 #include <BRepClass_Edge.hxx>
-#endif
-#ifndef _BRepClass_Intersector_HeaderFile
 #include <BRepClass_Intersector.hxx>
-#endif
-#ifndef _BRepClass_FClass2dOfFClassifier_HeaderFile
 #include <BRepClass_FClass2dOfFClassifier.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
  
 
 #define TheFaceExplorer BRepClass_FaceExplorer

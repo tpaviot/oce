@@ -6,45 +6,32 @@
 #ifndef _PDF_VArrayNodeOfFieldOfHAttributeArray1_HeaderFile
 #define _PDF_VArrayNodeOfFieldOfHAttributeArray1_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDF_VArrayNodeOfFieldOfHAttributeArray1_HeaderFile
 #include <Handle_PDF_VArrayNodeOfFieldOfHAttributeArray1.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_PDF_Attribute_HeaderFile
 #include <Handle_PDF_Attribute.hxx>
-#endif
-#ifndef _PStandard_ArrayNode_HeaderFile
 #include <PStandard_ArrayNode.hxx>
-#endif
 class PDF_Attribute;
 class PDF_FieldOfHAttributeArray1;
 class PDF_VArrayTNodeOfFieldOfHAttributeArray1;
 
 
-class PDF_VArrayNodeOfFieldOfHAttributeArray1 : public PStandard_ArrayNode {
+class PDF_VArrayNodeOfFieldOfHAttributeArray1 : public PStandard_ArrayNode
+{
 
 public:
 
   
-  Standard_EXPORT   PDF_VArrayNodeOfFieldOfHAttributeArray1();
+  Standard_EXPORT PDF_VArrayNodeOfFieldOfHAttributeArray1();
   
-  Standard_EXPORT   PDF_VArrayNodeOfFieldOfHAttributeArray1(const Handle(PDF_Attribute)& aValue);
+  Standard_EXPORT PDF_VArrayNodeOfFieldOfHAttributeArray1(const Handle(PDF_Attribute)& aValue);
   
-  Standard_EXPORT     void SetValue(const Handle(PDF_Attribute)& aValue) ;
+  Standard_EXPORT   void SetValue (const Handle(PDF_Attribute)& aValue) ;
   
-  Standard_EXPORT     Standard_Address Value() const;
+  Standard_EXPORT   Standard_Address Value()  const;
 
 PDF_VArrayNodeOfFieldOfHAttributeArray1(const Storage_stCONSTclCOM& a) : PStandard_ArrayNode(a)
 {
@@ -65,7 +52,7 @@ protected:
 private: 
 
 
-Handle_PDF_Attribute myValue;
+  Handle(PDF_Attribute) myValue;
 
 
 };
@@ -74,7 +61,6 @@ Handle_PDF_Attribute myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDF_VArrayNodeOfFieldOfHAttributeArray1_HeaderFile

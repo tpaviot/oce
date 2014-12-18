@@ -5,18 +5,10 @@
 
 #include <TDF_LabelList.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDF_ListIteratorOfLabelList_HeaderFile
 #include <TDF_ListIteratorOfLabelList.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_ListNodeOfLabelList_HeaderFile
 #include <TDF_ListNodeOfLabelList.hxx>
-#endif
  
 
 #define Item TDF_Label

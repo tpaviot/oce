@@ -15,7 +15,7 @@
 -- commercial license or contractual agreement.
 
 class Face from DBRep inherits TShared from MMgt
-
+	---Purpose: Display of a face. Face + Array of iso + color.
 uses
     Face            from TopoDS,
     IsoType         from GeomAbs,
@@ -27,7 +27,7 @@ is
     Create (F : Face from TopoDS; 
     	    N : Integer;
     	    C : Color from Draw)
-    returns mutable Face from DBRep;
+    returns Face from DBRep;
 	---Purpose: N is the number of iso intervals.
     
     Face(me) returns Face from TopoDS

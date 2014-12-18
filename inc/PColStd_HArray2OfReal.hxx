@@ -6,44 +6,17 @@
 #ifndef _PColStd_HArray2OfReal_HeaderFile
 #define _PColStd_HArray2OfReal_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray2OfReal_HeaderFile
 #include <Handle_PColStd_HArray2OfReal.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _PColStd_FieldOfHArray2OfReal_HeaderFile
 #include <PColStd_FieldOfHArray2OfReal.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray2OfReal_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray2OfReal.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_RangeError;
 class Standard_OutOfRange;
 class PColStd_FieldOfHArray2OfReal;
@@ -51,36 +24,33 @@ class PColStd_VArrayNodeOfFieldOfHArray2OfReal;
 class PColStd_VArrayTNodeOfFieldOfHArray2OfReal;
 
 
-class PColStd_HArray2OfReal : public Standard_Persistent {
+class PColStd_HArray2OfReal : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PColStd_HArray2OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT PColStd_HArray2OfReal(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT   PColStd_HArray2OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_Real& V);
+  Standard_EXPORT PColStd_HArray2OfReal(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const Standard_Real& V);
   
-  Standard_EXPORT     Standard_Integer ColLength() const;
+  Standard_EXPORT   Standard_Integer ColLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-  Standard_EXPORT     Standard_Integer RowLength() const;
+  Standard_EXPORT   Standard_Integer RowLength()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Standard_Real& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Standard_Real& Value) ;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-  Standard_EXPORT     Standard_Real Value(const Standard_Integer Row,const Standard_Integer Col) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
+  Standard_EXPORT   Standard_Real Value (const Standard_Integer Row, const Standard_Integer Col)  const;
 
-  PColStd_HArray2OfReal( )
+PColStd_HArray2OfReal( )
 {
   
 }
@@ -110,15 +80,15 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PColStd_FieldOfHArray2OfReal Field() const;
+  Standard_EXPORT   PColStd_FieldOfHArray2OfReal Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer myLowerRow;
-Standard_Integer myLowerCol;
-Standard_Integer myUpperRow;
-Standard_Integer myUpperCol;
-PColStd_FieldOfHArray2OfReal Data;
+  Standard_Integer myLowerRow;
+  Standard_Integer myLowerCol;
+  Standard_Integer myUpperRow;
+  Standard_Integer myUpperCol;
+  PColStd_FieldOfHArray2OfReal Data;
 
 
 };
@@ -168,11 +138,6 @@ PColStd_FieldOfHArray2OfReal Data;
 #undef PCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PColStd_HArray2OfReal& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
 
 
-
-#endif
+#endif // _PColStd_HArray2OfReal_HeaderFile

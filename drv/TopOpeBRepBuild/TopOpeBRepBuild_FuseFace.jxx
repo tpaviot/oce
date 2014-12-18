@@ -1,6 +1,2 @@
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_FuseFace_HeaderFile
 #include <TopOpeBRepBuild_FuseFace.hxx>
-#endif

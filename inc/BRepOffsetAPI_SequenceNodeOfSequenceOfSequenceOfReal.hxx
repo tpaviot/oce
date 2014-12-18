@@ -6,38 +6,27 @@
 #ifndef _BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal_HeaderFile
 #define _BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal_HeaderFile
 #include <Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TColStd_SequenceOfReal;
 class BRepOffsetAPI_SequenceOfSequenceOfReal;
 
 
 
-class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal : public TCollection_SeqNode {
+class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal : public TCollection_SeqNode
+{
 
 public:
 
   
-      BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal(const TColStd_SequenceOfReal& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal(const TColStd_SequenceOfReal& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        TColStd_SequenceOfReal& Value() const;
+      TColStd_SequenceOfReal& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-TColStd_SequenceOfReal myValue;
+  TColStd_SequenceOfReal myValue;
 
 
 };
@@ -78,7 +67,6 @@ TColStd_SequenceOfReal myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal_HeaderFile

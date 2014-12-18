@@ -6,37 +6,17 @@
 #ifndef _Approx_FitAndDivide2d_HeaderFile
 #define _Approx_FitAndDivide2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _AppParCurves_SequenceOfMultiCurve_HeaderFile
 #include <AppParCurves_SequenceOfMultiCurve.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _AppParCurves_Constraint_HeaderFile
 #include <AppParCurves_Constraint.hxx>
-#endif
 class AppCont_Function2d;
 class AppCont_FunctionTool2d;
 class Approx_MyLeastSquareOfFitAndDivide2d;
@@ -44,36 +24,36 @@ class AppParCurves_MultiCurve;
 
 
 
-class Approx_FitAndDivide2d  {
+class Approx_FitAndDivide2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Approx_FitAndDivide2d(const AppCont_Function2d& Line,const Standard_Integer degreemin = 3,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-5,const Standard_Real Tolerance2d = 1.0e-5,const Standard_Boolean cutting = Standard_False,const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint,const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
+  Standard_EXPORT Approx_FitAndDivide2d(const AppCont_Function2d& Line, const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-5, const Standard_Real Tolerance2d = 1.0e-5, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
   
-  Standard_EXPORT   Approx_FitAndDivide2d(const Standard_Integer degreemin = 3,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-05,const Standard_Real Tolerance2d = 1.0e-05,const Standard_Boolean cutting = Standard_False,const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint,const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
+  Standard_EXPORT Approx_FitAndDivide2d(const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-05, const Standard_Real Tolerance2d = 1.0e-05, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
   
-  Standard_EXPORT     void Perform(const AppCont_Function2d& Line) ;
+  Standard_EXPORT   void Perform (const AppCont_Function2d& Line) ;
   
-  Standard_EXPORT     void SetDegrees(const Standard_Integer degreemin,const Standard_Integer degreemax) ;
+  Standard_EXPORT   void SetDegrees (const Standard_Integer degreemin, const Standard_Integer degreemax) ;
   
-  Standard_EXPORT     void SetTolerances(const Standard_Real Tolerance3d,const Standard_Real Tolerance2d) ;
+  Standard_EXPORT   void SetTolerances (const Standard_Real Tolerance3d, const Standard_Real Tolerance2d) ;
   
-  Standard_EXPORT     void SetConstraints(const AppParCurves_Constraint FirstC,const AppParCurves_Constraint LastC) ;
+  Standard_EXPORT   void SetConstraints (const AppParCurves_Constraint FirstC, const AppParCurves_Constraint LastC) ;
   
-  Standard_EXPORT     Standard_Boolean IsAllApproximated() const;
+  Standard_EXPORT   Standard_Boolean IsAllApproximated()  const;
   
-  Standard_EXPORT     Standard_Boolean IsToleranceReached() const;
+  Standard_EXPORT   Standard_Boolean IsToleranceReached()  const;
   
-  Standard_EXPORT     void Error(const Standard_Integer Index,Standard_Real& tol3d,Standard_Real& tol2d) const;
+  Standard_EXPORT   void Error (const Standard_Integer Index, Standard_Real& tol3d, Standard_Real& tol2d)  const;
   
-  Standard_EXPORT     Standard_Integer NbMultiCurves() const;
+  Standard_EXPORT   Standard_Integer NbMultiCurves()  const;
   
-  Standard_EXPORT     AppParCurves_MultiCurve Value(const Standard_Integer Index = 1) const;
+  Standard_EXPORT   AppParCurves_MultiCurve Value (const Standard_Integer Index = 1)  const;
   
-  Standard_EXPORT     void Parameters(const Standard_Integer Index,Standard_Real& firstp,Standard_Real& lastp) const;
-
+  Standard_EXPORT   void Parameters (const Standard_Integer Index, Standard_Real& firstp, Standard_Real& lastp)  const;
 
 
 
@@ -87,26 +67,26 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Boolean Compute(const AppCont_Function2d& Line,const Standard_Real Ufirst,const Standard_Real Ulast,Standard_Real& TheTol3d,Standard_Real& TheTol2d) ;
+  Standard_EXPORT   Standard_Boolean Compute (const AppCont_Function2d& Line, const Standard_Real Ufirst, const Standard_Real Ulast, Standard_Real& TheTol3d, Standard_Real& TheTol2d) ;
 
 
-AppParCurves_SequenceOfMultiCurve myMultiCurves;
-TColStd_SequenceOfReal myfirstparam;
-TColStd_SequenceOfReal mylastparam;
-AppParCurves_MultiCurve TheMultiCurve;
-Standard_Boolean alldone;
-Standard_Boolean tolreached;
-TColStd_SequenceOfReal Tolers3d;
-TColStd_SequenceOfReal Tolers2d;
-Standard_Integer mydegremin;
-Standard_Integer mydegremax;
-Standard_Real mytol3d;
-Standard_Real mytol2d;
-Standard_Real currenttol3d;
-Standard_Real currenttol2d;
-Standard_Boolean mycut;
-AppParCurves_Constraint myfirstC;
-AppParCurves_Constraint mylastC;
+  AppParCurves_SequenceOfMultiCurve myMultiCurves;
+  TColStd_SequenceOfReal myfirstparam;
+  TColStd_SequenceOfReal mylastparam;
+  AppParCurves_MultiCurve TheMultiCurve;
+  Standard_Boolean alldone;
+  Standard_Boolean tolreached;
+  TColStd_SequenceOfReal Tolers3d;
+  TColStd_SequenceOfReal Tolers2d;
+  Standard_Integer mydegremin;
+  Standard_Integer mydegremax;
+  Standard_Real mytol3d;
+  Standard_Real mytol2d;
+  Standard_Real currenttol3d;
+  Standard_Real currenttol2d;
+  Standard_Boolean mycut;
+  AppParCurves_Constraint myfirstC;
+  AppParCurves_Constraint mylastC;
 
 
 };
@@ -115,7 +95,6 @@ AppParCurves_Constraint mylastC;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Approx_FitAndDivide2d_HeaderFile

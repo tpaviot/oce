@@ -1,9 +1,3 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_IdentificationRole_HeaderFile
 #include <StepBasic_IdentificationRole.hxx>
-#endif
-#ifndef _StepBasic_IdentificationAssignment_HeaderFile
 #include <StepBasic_IdentificationAssignment.hxx>
-#endif

@@ -5,22 +5,12 @@
 
 #include <Storage_HSeqOfRoot.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Storage_Root_HeaderFile
 #include <Storage_Root.hxx>
-#endif
-#ifndef _Storage_SeqOfRoot_HeaderFile
 #include <Storage_SeqOfRoot.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(Storage_HSeqOfRoot,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Storage_HSeqOfRoot)
 
 
-#define Item Handle_Storage_Root
+#define Item Handle(Storage_Root)
 #define Item_hxx <Storage_Root.hxx>
 #define TheSequence Storage_SeqOfRoot
 #define TheSequence_hxx <Storage_SeqOfRoot.hxx>

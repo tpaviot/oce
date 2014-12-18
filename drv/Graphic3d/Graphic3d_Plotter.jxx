@@ -1,9 +1,0 @@
-#ifndef _Graphic3d_PlotterDefinitionError_HeaderFile
-#include <Graphic3d_PlotterDefinitionError.hxx>
-#endif
-#ifndef _Graphic3d_DataStructureManager_HeaderFile
-#include <Graphic3d_DataStructureManager.hxx>
-#endif
-#ifndef _Graphic3d_Plotter_HeaderFile
-#include <Graphic3d_Plotter.hxx>
-#endif

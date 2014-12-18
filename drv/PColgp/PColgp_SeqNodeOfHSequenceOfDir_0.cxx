@@ -5,22 +5,12 @@
 
 #include <PColgp_SeqNodeOfHSequenceOfDir.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PColgp_SeqNodeOfHSequenceOfDir_HeaderFile
 #include <PColgp_SeqNodeOfHSequenceOfDir.hxx>
-#endif
-#ifndef _PColgp_HSequenceOfDir_HeaderFile
 #include <PColgp_HSequenceOfDir.hxx>
-#endif
-#ifndef _PColgp_SeqExplorerOfHSequenceOfDir_HeaderFile
 #include <PColgp_SeqExplorerOfHSequenceOfDir.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
 
  
 

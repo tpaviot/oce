@@ -6,22 +6,15 @@
 #ifndef _Handle_StepFEA_FeaParametricPoint_HeaderFile
 #define _Handle_StepFEA_FeaParametricPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_Point_HeaderFile
 #include <Handle_StepGeom_Point.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_Point);
 class StepFEA_FeaParametricPoint;
 
-DEFINE_STANDARD_HANDLE(StepFEA_FeaParametricPoint,StepGeom_Point)
+DEFINE_STANDARD_HANDLE(StepFEA_FeaParametricPoint, StepGeom_Point)
 
-#endif
+#endif // _Handle_StepFEA_FeaParametricPoint_HeaderFile

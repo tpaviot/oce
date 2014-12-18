@@ -6,28 +6,14 @@
 #ifndef _IntSurf_ListOfPntOn2S_HeaderFile
 #define _IntSurf_ListOfPntOn2S_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_IntSurf_ListNodeOfListOfPntOn2S_HeaderFile
 #include <Handle_IntSurf_ListNodeOfListOfPntOn2S.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class IntSurf_ListIteratorOfListOfPntOn2S;
 class IntSurf_PntOn2S;
@@ -35,61 +21,63 @@ class IntSurf_ListNodeOfListOfPntOn2S;
 
 
 
-class IntSurf_ListOfPntOn2S  {
+class IntSurf_ListOfPntOn2S 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntSurf_ListOfPntOn2S();
+  Standard_EXPORT IntSurf_ListOfPntOn2S();
   
-  Standard_EXPORT     void Assign(const IntSurf_ListOfPntOn2S& Other) ;
-    void operator=(const IntSurf_ListOfPntOn2S& Other) 
+  Standard_EXPORT IntSurf_ListOfPntOn2S(const IntSurf_ListOfPntOn2S& Other);
+  
+  Standard_EXPORT   void Assign (const IntSurf_ListOfPntOn2S& Other) ;
+  void operator= (const IntSurf_ListOfPntOn2S& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~IntSurf_ListOfPntOn2S()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const IntSurf_PntOn2S& I) ;
+  Standard_EXPORT   void Prepend (const IntSurf_PntOn2S& I) ;
   
-  Standard_EXPORT     void Prepend(const IntSurf_PntOn2S& I,IntSurf_ListIteratorOfListOfPntOn2S& theIt) ;
+  Standard_EXPORT   void Prepend (const IntSurf_PntOn2S& I, IntSurf_ListIteratorOfListOfPntOn2S& theIt) ;
   
-  Standard_EXPORT     void Prepend(IntSurf_ListOfPntOn2S& Other) ;
+  Standard_EXPORT   void Prepend (IntSurf_ListOfPntOn2S& Other) ;
   
-  Standard_EXPORT     void Append(const IntSurf_PntOn2S& I) ;
+  Standard_EXPORT   void Append (const IntSurf_PntOn2S& I) ;
   
-  Standard_EXPORT     void Append(const IntSurf_PntOn2S& I,IntSurf_ListIteratorOfListOfPntOn2S& theIt) ;
+  Standard_EXPORT   void Append (const IntSurf_PntOn2S& I, IntSurf_ListIteratorOfListOfPntOn2S& theIt) ;
   
-  Standard_EXPORT     void Append(IntSurf_ListOfPntOn2S& Other) ;
+  Standard_EXPORT   void Append (IntSurf_ListOfPntOn2S& Other) ;
   
-  Standard_EXPORT     IntSurf_PntOn2S& First() const;
+  Standard_EXPORT   IntSurf_PntOn2S& First()  const;
   
-  Standard_EXPORT     IntSurf_PntOn2S& Last() const;
+  Standard_EXPORT   IntSurf_PntOn2S& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(IntSurf_ListIteratorOfListOfPntOn2S& It) ;
+  Standard_EXPORT   void Remove (IntSurf_ListIteratorOfListOfPntOn2S& It) ;
   
-  Standard_EXPORT     void InsertBefore(const IntSurf_PntOn2S& I,IntSurf_ListIteratorOfListOfPntOn2S& It) ;
+  Standard_EXPORT   void InsertBefore (const IntSurf_PntOn2S& I, IntSurf_ListIteratorOfListOfPntOn2S& It) ;
   
-  Standard_EXPORT     void InsertBefore(IntSurf_ListOfPntOn2S& Other,IntSurf_ListIteratorOfListOfPntOn2S& It) ;
+  Standard_EXPORT   void InsertBefore (IntSurf_ListOfPntOn2S& Other, IntSurf_ListIteratorOfListOfPntOn2S& It) ;
   
-  Standard_EXPORT     void InsertAfter(const IntSurf_PntOn2S& I,IntSurf_ListIteratorOfListOfPntOn2S& It) ;
+  Standard_EXPORT   void InsertAfter (const IntSurf_PntOn2S& I, IntSurf_ListIteratorOfListOfPntOn2S& It) ;
   
-  Standard_EXPORT     void InsertAfter(IntSurf_ListOfPntOn2S& Other,IntSurf_ListIteratorOfListOfPntOn2S& It) ;
+  Standard_EXPORT   void InsertAfter (IntSurf_ListOfPntOn2S& Other, IntSurf_ListIteratorOfListOfPntOn2S& It) ;
 
 
 friend class IntSurf_ListIteratorOfListOfPntOn2S;
-
 
 
 protected:
@@ -100,12 +88,10 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntSurf_ListOfPntOn2S(const IntSurf_ListOfPntOn2S& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_ListOfPntOn2S_HeaderFile

@@ -6,37 +6,27 @@
 #ifndef _ShapeProcess_Operator_HeaderFile
 #define _ShapeProcess_Operator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeProcess_Operator_HeaderFile
 #include <Handle_ShapeProcess_Operator.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_ShapeProcess_Context_HeaderFile
 #include <Handle_ShapeProcess_Context.hxx>
-#endif
 class ShapeProcess_Context;
 
 
-//! Abstract Operator class providing a tool to <br>
-//!          perform an operation on Context <br>
-class ShapeProcess_Operator : public MMgt_TShared {
+//! Abstract Operator class providing a tool to
+//! perform an operation on Context
+class ShapeProcess_Operator : public MMgt_TShared
+{
 
 public:
 
-  //! Performs operation and eventually records <br>
-//!          changes in the context <br>
-  Standard_EXPORT   virtual  Standard_Boolean Perform(const Handle(ShapeProcess_Context)& context)  = 0;
+  
+  //! Performs operation and eventually records
+  //! changes in the context
+  Standard_EXPORT virtual   Standard_Boolean Perform (const Handle(ShapeProcess_Context)& context)  = 0;
 
 
 
@@ -59,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeProcess_Operator_HeaderFile

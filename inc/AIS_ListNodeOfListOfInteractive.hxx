@@ -6,39 +6,28 @@
 #ifndef _AIS_ListNodeOfListOfInteractive_HeaderFile
 #define _AIS_ListNodeOfListOfInteractive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_ListNodeOfListOfInteractive_HeaderFile
 #include <Handle_AIS_ListNodeOfListOfInteractive.hxx>
-#endif
 
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class AIS_InteractiveObject;
 class AIS_ListOfInteractive;
 class AIS_ListIteratorOfListOfInteractive;
 
 
 
-class AIS_ListNodeOfListOfInteractive : public TCollection_MapNode {
+class AIS_ListNodeOfListOfInteractive : public TCollection_MapNode
+{
 
 public:
 
   
-      AIS_ListNodeOfListOfInteractive(const Handle(AIS_InteractiveObject)& I,const TCollection_MapNodePtr& n);
+    AIS_ListNodeOfListOfInteractive(const Handle(AIS_InteractiveObject)& I, const TCollection_MapNodePtr& n);
   
-        Handle_AIS_InteractiveObject& Value() const;
+      Handle(AIS_InteractiveObject)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_AIS_InteractiveObject myValue;
+  Handle(AIS_InteractiveObject) myValue;
 
 
 };
 
-#define Item Handle_AIS_InteractiveObject
+#define Item Handle(AIS_InteractiveObject)
 #define Item_hxx <AIS_InteractiveObject.hxx>
 #define TCollection_ListNode AIS_ListNodeOfListOfInteractive
 #define TCollection_ListNode_hxx <AIS_ListNodeOfListOfInteractive.hxx>
@@ -83,7 +72,6 @@ Handle_AIS_InteractiveObject myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_ListNodeOfListOfInteractive_HeaderFile

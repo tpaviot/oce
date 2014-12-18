@@ -6,28 +6,14 @@
 #ifndef _XmlMDF_DataMapNodeOfTypeADriverMap_HeaderFile
 #define _XmlMDF_DataMapNodeOfTypeADriverMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XmlMDF_DataMapNodeOfTypeADriverMap_HeaderFile
 #include <Handle_XmlMDF_DataMapNodeOfTypeADriverMap.hxx>
-#endif
 
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_XmlMDF_ADriver_HeaderFile
 #include <Handle_XmlMDF_ADriver.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Type;
 class XmlMDF_ADriver;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class XmlMDF_DataMapIteratorOfTypeADriverMap;
 
 
 
-class XmlMDF_DataMapNodeOfTypeADriverMap : public TCollection_MapNode {
+class XmlMDF_DataMapNodeOfTypeADriverMap : public TCollection_MapNode
+{
 
 public:
 
   
-      XmlMDF_DataMapNodeOfTypeADriverMap(const Handle(Standard_Type)& K,const Handle(XmlMDF_ADriver)& I,const TCollection_MapNodePtr& n);
+    XmlMDF_DataMapNodeOfTypeADriverMap(const Handle(Standard_Type)& K, const Handle(XmlMDF_ADriver)& I, const TCollection_MapNodePtr& n);
   
-        Handle_Standard_Type& Key() const;
+      Handle(Standard_Type)& Key()  const;
   
-        Handle_XmlMDF_ADriver& Value() const;
+      Handle(XmlMDF_ADriver)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-Handle_Standard_Type myKey;
-Handle_XmlMDF_ADriver myValue;
+  Handle(Standard_Type) myKey;
+  Handle(XmlMDF_ADriver) myValue;
 
 
 };
 
-#define TheKey Handle_Standard_Type
+#define TheKey Handle(Standard_Type)
 #define TheKey_hxx <Standard_Type.hxx>
-#define TheItem Handle_XmlMDF_ADriver
+#define TheItem Handle(XmlMDF_ADriver)
 #define TheItem_hxx <XmlMDF_ADriver.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -99,7 +86,6 @@ Handle_XmlMDF_ADriver myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XmlMDF_DataMapNodeOfTypeADriverMap_HeaderFile

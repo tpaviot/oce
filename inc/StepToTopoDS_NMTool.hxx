@@ -6,31 +6,15 @@
 #ifndef _StepToTopoDS_NMTool_HeaderFile
 #define _StepToTopoDS_NMTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepToTopoDS_DataMapOfRI_HeaderFile
 #include <StepToTopoDS_DataMapOfRI.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapOfRINames_HeaderFile
 #include <StepToTopoDS_DataMapOfRINames.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
 class StepToTopoDS_DataMapOfRI;
 class StepToTopoDS_DataMapOfRINames;
 class StepRepr_RepresentationItem;
@@ -38,48 +22,48 @@ class TCollection_AsciiString;
 class TopoDS_Shape;
 
 
-//! Provides data to process non-manifold topology when <br>
-//!          reading from STEP. <br>
-class StepToTopoDS_NMTool  {
+//! Provides data to process non-manifold topology when
+//! reading from STEP.
+class StepToTopoDS_NMTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepToTopoDS_NMTool();
+  Standard_EXPORT StepToTopoDS_NMTool();
   
-  Standard_EXPORT   StepToTopoDS_NMTool(const StepToTopoDS_DataMapOfRI& MapOfRI,const StepToTopoDS_DataMapOfRINames& MapOfRINames);
+  Standard_EXPORT StepToTopoDS_NMTool(const StepToTopoDS_DataMapOfRI& MapOfRI, const StepToTopoDS_DataMapOfRINames& MapOfRINames);
   
-  Standard_EXPORT     void Init(const StepToTopoDS_DataMapOfRI& MapOfRI,const StepToTopoDS_DataMapOfRINames& MapOfRINames) ;
+  Standard_EXPORT   void Init (const StepToTopoDS_DataMapOfRI& MapOfRI, const StepToTopoDS_DataMapOfRINames& MapOfRINames) ;
   
-  Standard_EXPORT     void SetActive(const Standard_Boolean isActive) ;
+  Standard_EXPORT   void SetActive (const Standard_Boolean isActive) ;
   
-  Standard_EXPORT     Standard_Boolean IsActive() ;
+  Standard_EXPORT   Standard_Boolean IsActive() ;
   
-  Standard_EXPORT     void CleanUp() ;
+  Standard_EXPORT   void CleanUp() ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Handle(StepRepr_RepresentationItem)& RI) ;
+  Standard_EXPORT   Standard_Boolean IsBound (const Handle(StepRepr_RepresentationItem)& RI) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const TCollection_AsciiString& RIName) ;
+  Standard_EXPORT   Standard_Boolean IsBound (const TCollection_AsciiString& RIName) ;
   
-  Standard_EXPORT     void Bind(const Handle(StepRepr_RepresentationItem)& RI,const TopoDS_Shape& S) ;
+  Standard_EXPORT   void Bind (const Handle(StepRepr_RepresentationItem)& RI, const TopoDS_Shape& S) ;
   
-  Standard_EXPORT     void Bind(const TCollection_AsciiString& RIName,const TopoDS_Shape& S) ;
+  Standard_EXPORT   void Bind (const TCollection_AsciiString& RIName, const TopoDS_Shape& S) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Find(const Handle(StepRepr_RepresentationItem)& RI) ;
+  Standard_EXPORT  const  TopoDS_Shape& Find (const Handle(StepRepr_RepresentationItem)& RI) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Find(const TCollection_AsciiString& RIName) ;
+  Standard_EXPORT  const  TopoDS_Shape& Find (const TCollection_AsciiString& RIName) ;
   
-  Standard_EXPORT     void RegisterNMEdge(const TopoDS_Shape& Edge) ;
+  Standard_EXPORT   void RegisterNMEdge (const TopoDS_Shape& Edge) ;
   
-  Standard_EXPORT     Standard_Boolean IsSuspectedAsClosing(const TopoDS_Shape& BaseShell,const TopoDS_Shape& SuspectedShell) ;
+  Standard_EXPORT   Standard_Boolean IsSuspectedAsClosing (const TopoDS_Shape& BaseShell, const TopoDS_Shape& SuspectedShell) ;
   
-  Standard_EXPORT     Standard_Boolean IsPureNMShell(const TopoDS_Shape& Shell) ;
+  Standard_EXPORT   Standard_Boolean IsPureNMShell (const TopoDS_Shape& Shell) ;
   
-  Standard_EXPORT     void SetIDEASCase(const Standard_Boolean IDEASCase) ;
+  Standard_EXPORT   void SetIDEASCase (const Standard_Boolean IDEASCase) ;
   
-  Standard_EXPORT     Standard_Boolean IsIDEASCase() ;
-
+  Standard_EXPORT   Standard_Boolean IsIDEASCase() ;
 
 
 
@@ -93,16 +77,16 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Boolean isEdgeRegisteredAsNM(const TopoDS_Shape& Edge) ;
+  Standard_EXPORT   Standard_Boolean isEdgeRegisteredAsNM (const TopoDS_Shape& Edge) ;
   
-  Standard_EXPORT     Standard_Boolean isAdjacentShell(const TopoDS_Shape& ShellA,const TopoDS_Shape& ShellB) ;
+  Standard_EXPORT   Standard_Boolean isAdjacentShell (const TopoDS_Shape& ShellA, const TopoDS_Shape& ShellB) ;
 
 
-StepToTopoDS_DataMapOfRI myRIMap;
-StepToTopoDS_DataMapOfRINames myRINamesMap;
-TopTools_ListOfShape myNMEdges;
-Standard_Boolean myIDEASCase;
-Standard_Boolean myActiveFlag;
+  StepToTopoDS_DataMapOfRI myRIMap;
+  StepToTopoDS_DataMapOfRINames myRINamesMap;
+  TopTools_ListOfShape myNMEdges;
+  Standard_Boolean myIDEASCase;
+  Standard_Boolean myActiveFlag;
 
 
 };
@@ -111,7 +95,6 @@ Standard_Boolean myActiveFlag;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_NMTool_HeaderFile

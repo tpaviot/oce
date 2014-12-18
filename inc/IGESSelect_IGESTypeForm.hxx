@@ -6,52 +6,40 @@
 #ifndef _IGESSelect_IGESTypeForm_HeaderFile
 #define _IGESSelect_IGESTypeForm_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_IGESTypeForm_HeaderFile
 #include <Handle_IGESSelect_IGESTypeForm.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IFSelect_Signature_HeaderFile
 #include <IFSelect_Signature.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class Standard_Transient;
 class Interface_InterfaceModel;
 
 
-//! IGESTypeForm is a Signature specific to the IGES Norm : <br>
-//!           it gives the signature under two possible forms : <br>
-//!           - as "mmm nnn", with "mmm" as IGES Type Number, and "nnn" <br>
-//!             as IGES From Number (even if = 0)  [Default] <br>
-//!           - as "mmm" alone, which gives only the IGES Type Number <br>
-class IGESSelect_IGESTypeForm : public IFSelect_Signature {
+//! IGESTypeForm is a Signature specific to the IGES Norm :
+//! it gives the signature under two possible forms :
+//! - as "mmm nnn", with "mmm" as IGES Type Number, and "nnn"
+//! as IGES From Number (even if = 0)  [Default]
+//! - as "mmm" alone, which gives only the IGES Type Number
+class IGESSelect_IGESTypeForm : public IFSelect_Signature
+{
 
 public:
 
-  //! Creates a Signature for IGES Type & Form Numbers <br>
-//!           If <withform> is False, for IGES Type Number only <br>
-  Standard_EXPORT   IGESSelect_IGESTypeForm(const Standard_Boolean withform = Standard_True);
-  //! Changes the mode for giving the Form Number <br>
-  Standard_EXPORT     void SetForm(const Standard_Boolean withform) ;
-  //! Returns the signature for IGES, "mmm nnn" or "mmm" according <br>
-//!           creation choice (Type & Form or Type only) <br>
-  Standard_EXPORT     Standard_CString Value(const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
+  
+  //! Creates a Signature for IGES Type & Form Numbers
+  //! If <withform> is False, for IGES Type Number only
+  Standard_EXPORT IGESSelect_IGESTypeForm(const Standard_Boolean withform = Standard_True);
+  
+  //! Changes the mode for giving the Form Number
+  Standard_EXPORT   void SetForm (const Standard_Boolean withform) ;
+  
+  //! Returns the signature for IGES, "mmm nnn" or "mmm" according
+  //! creation choice (Type & Form or Type only)
+  Standard_EXPORT   Standard_CString Value (const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
 
 
 
@@ -66,7 +54,7 @@ protected:
 private: 
 
 
-Standard_Boolean theform;
+  Standard_Boolean theform;
 
 
 };
@@ -75,7 +63,6 @@ Standard_Boolean theform;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_IGESTypeForm_HeaderFile

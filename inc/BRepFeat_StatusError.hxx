@@ -6,8 +6,11 @@
 #ifndef _BRepFeat_StatusError_HeaderFile
 #define _BRepFeat_StatusError_HeaderFile
 
-//! Discribes the error. <br>
-enum BRepFeat_StatusError {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Discribes the error.
+enum BRepFeat_StatusError
+{
 BRepFeat_OK,
 BRepFeat_BadDirect,
 BRepFeat_BadIntersect,
@@ -38,8 +41,4 @@ BRepFeat_NullToolF,
 BRepFeat_NullToolU
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepFeat_StatusError_HeaderFile

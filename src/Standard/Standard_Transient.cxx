@@ -28,9 +28,9 @@ IMPLEMENT_STANDARD_RTTI(Standard_Transient)
 
 // The Method This 
 //
-Handle_Standard_Transient Standard_Transient::This() const
+Handle(Standard_Transient) Standard_Transient::This() const
 {
-  return Handle_Standard_Transient(this);
+  return Handle(Standard_Transient)(this);
 }
 
 // Empty Destructor
@@ -66,12 +66,6 @@ Standard_Boolean Standard_Transient::IsKind (const Standard_CString theTypeName)
 {
   return DynamicType()->SubType ( theTypeName );
 }
-
-void Standard_Transient::ShallowDump(Standard_OStream& theStream) const
-{
-  theStream << "class " << DynamicType()->Name() << " at " << this << endl;
-}
-
 
 void Standard_Transient::Delete() const
 { 

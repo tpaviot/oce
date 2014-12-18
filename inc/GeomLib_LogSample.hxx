@@ -6,41 +6,30 @@
 #ifndef _GeomLib_LogSample_HeaderFile
 #define _GeomLib_LogSample_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_FunctionSample_HeaderFile
 #include <math_FunctionSample.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_OutOfRange;
 
 
 
-class GeomLib_LogSample  : public math_FunctionSample {
+class GeomLib_LogSample  : public math_FunctionSample
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomLib_LogSample(const Standard_Real A,const Standard_Real B,const Standard_Integer N);
-  //! Returns the value of parameter of the point of <br>
-//!          range Index : A + ((Index-1)/(NbPoints-1))*B. <br>
-//!          An exception is raised if Index<=0 or Index>NbPoints. <br>
-  Standard_EXPORT   virtual  Standard_Real GetParameter(const Standard_Integer Index) const;
-
+  Standard_EXPORT GeomLib_LogSample(const Standard_Real A, const Standard_Real B, const Standard_Integer N);
+  
+  //! Returns the value of parameter of the point of
+  //! range Index : A + ((Index-1)/(NbPoints-1))*B.
+  //! An exception is raised if Index<=0 or Index>NbPoints.
+  Standard_EXPORT virtual   Standard_Real GetParameter (const Standard_Integer Index)  const;
 
 
 
@@ -55,8 +44,8 @@ private:
 
 
 
-Standard_Real myF;
-Standard_Real myexp;
+  Standard_Real myF;
+  Standard_Real myexp;
 
 
 };
@@ -65,7 +54,6 @@ Standard_Real myexp;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomLib_LogSample_HeaderFile

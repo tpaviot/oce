@@ -59,12 +59,13 @@
 #include <TopExp.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Vertex.hxx>
+#include <TopExp_Explorer.hxx>
 
 #ifdef DRAW
 #include <DrawTrSurf.hxx>
 #include <DBRep.hxx>
 #endif
-#ifdef DEB
+#ifdef OCCT_DEBUG
 static Standard_Boolean Affich       = Standard_False;
 static Standard_Integer NBCALL  = 1;
 #endif
@@ -95,7 +96,7 @@ myInv1(Inv1),
 myInv2(Inv2),
 myBis  (Bis)
 {
-#ifdef DEB
+#ifdef OCCT_DEBUG
   if ( Affich) {
     cout << " ---------->TrimSurfaceTool : NBCALL = " << NBCALL << endl;
     
@@ -272,7 +273,7 @@ static void EvalParameters(const TopoDS_Edge&          Edge,
     NbSegments = Intersector.NbSegments();
     
     if (NbSegments > 0) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
       cout << " IntersectWith : " << NbSegments  
 	   << " Segments of intersection" << endl;
 #endif
@@ -434,7 +435,7 @@ Standard_Boolean BRepFill_TrimSurfaceTool::IsOnFace
 
   // eval if is on face 1
 //  modified by NIZHNY-EAP Fri Jan 21 09:49:09 2000 ___BEGIN___
-  Inter.Init(myFace1, Line, 1e-6);//Precision::PConfusion());
+  Inter.Init(myFace1, Line,1e-6);//Precision::PConfusion());
   if (Inter.More()) return Standard_True;
   
   // eval if is on face 2
@@ -467,11 +468,8 @@ Standard_Real BRepFill_TrimSurfaceTool::ProjOn(const gp_Pnt2d& Point,
 
   // evaluate the projection of the point on the curve.
   Geom2dAPI_ProjectPointOnCurve Projector(Point, C2d);
-#ifdef DEB  
-  Standard_Real Dist = 
-#endif
-    Projector.LowerDistance();
-#ifdef DEB
+#ifdef OCCT_DEBUG
+  Standard_Real Dist = Projector.LowerDistance();
   if ( Dist > Precision::Confusion() ) {
     cout << " *** WARNING  TrimSurfaceTool:  *** " << endl;
     cout << "      --> the point is not on the edge" <<endl;

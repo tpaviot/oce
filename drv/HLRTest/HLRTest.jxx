@@ -1,15 +1,4 @@
-#ifndef _HLRAlgo_Projector_HeaderFile
 #include <HLRAlgo_Projector.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _HLRTopoBRep_OutLiner_HeaderFile
 #include <HLRTopoBRep_OutLiner.hxx>
-#endif
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
-#ifndef _HLRTest_HeaderFile
 #include <HLRTest.hxx>
-#endif

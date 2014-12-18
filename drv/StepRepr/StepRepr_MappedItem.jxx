@@ -1,12 +1,4 @@
-#ifndef _StepRepr_RepresentationMap_HeaderFile
 #include <StepRepr_RepresentationMap.hxx>
-#endif
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepRepr_MappedItem_HeaderFile
 #include <StepRepr_MappedItem.hxx>
-#endif

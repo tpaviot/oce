@@ -6,43 +6,36 @@
 #ifndef _ShapeUpgrade_SplitSurfaceAngle_HeaderFile
 #define _ShapeUpgrade_SplitSurfaceAngle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_SplitSurfaceAngle_HeaderFile
 #include <Handle_ShapeUpgrade_SplitSurfaceAngle.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _ShapeUpgrade_SplitSurface_HeaderFile
 #include <ShapeUpgrade_SplitSurface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! Splits a surfaces of revolution, cylindrical, toroidal, <br>
-//!          conical, spherical so that each resulting segment covers <br>
-//!          not more than defined number of degrees. <br>
-class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface {
+//! Splits a surfaces of revolution, cylindrical, toroidal,
+//! conical, spherical so that each resulting segment covers
+//! not more than defined number of degrees.
+class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface
+{
 
 public:
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   ShapeUpgrade_SplitSurfaceAngle(const Standard_Real MaxAngle);
-  //! Set maximal angle <br>
-  Standard_EXPORT     void SetMaxAngle(const Standard_Real MaxAngle) ;
-  //! Returns maximal angle <br>
-  Standard_EXPORT     Standard_Real MaxAngle() const;
-  //! Performs splitting of the supporting surface(s). <br>
-//!         First defines splitting values, then calls inherited method. <br>
-  Standard_EXPORT   virtual  void Compute(const Standard_Boolean Segment) ;
+  
+  //! Empty constructor.
+  Standard_EXPORT ShapeUpgrade_SplitSurfaceAngle(const Standard_Real MaxAngle);
+  
+  //! Set maximal angle
+  Standard_EXPORT   void SetMaxAngle (const Standard_Real MaxAngle) ;
+  
+  //! Returns maximal angle
+  Standard_EXPORT   Standard_Real MaxAngle()  const;
+  
+  //! Performs splitting of the supporting surface(s).
+  //! First defines splitting values, then calls inherited method.
+  Standard_EXPORT virtual   void Compute (const Standard_Boolean Segment) ;
 
 
 
@@ -57,7 +50,7 @@ protected:
 private: 
 
 
-Standard_Real myMaxAngle;
+  Standard_Real myMaxAngle;
 
 
 };
@@ -66,7 +59,6 @@ Standard_Real myMaxAngle;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_SplitSurfaceAngle_HeaderFile

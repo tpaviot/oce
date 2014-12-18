@@ -1,9 +1,3 @@
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _PGeom_Axis2Placement_HeaderFile
 #include <PGeom_Axis2Placement.hxx>
-#endif

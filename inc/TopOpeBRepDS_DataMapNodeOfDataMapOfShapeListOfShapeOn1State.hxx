@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State_HeaderFile
 #define _TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListOfShapeOn1State_HeaderFile
 #include <TopOpeBRepDS_ListOfShapeOn1State.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopOpeBRepDS_ListOfShapeOn1State;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State;
 
 
 
-class TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State : public TCollection_MapNode {
+class TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State(const TopoDS_Shape& K,const TopOpeBRepDS_ListOfShapeOn1State& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State(const TopoDS_Shape& K, const TopOpeBRepDS_ListOfShapeOn1State& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TopOpeBRepDS_ListOfShapeOn1State& Value() const;
+      TopOpeBRepDS_ListOfShapeOn1State& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TopOpeBRepDS_ListOfShapeOn1State myValue;
+  TopoDS_Shape myKey;
+  TopOpeBRepDS_ListOfShapeOn1State myValue;
 
 
 };
@@ -99,7 +86,6 @@ TopOpeBRepDS_ListOfShapeOn1State myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State_HeaderFile

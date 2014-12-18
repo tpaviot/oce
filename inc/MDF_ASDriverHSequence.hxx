@@ -6,31 +6,15 @@
 #ifndef _MDF_ASDriverHSequence_HeaderFile
 #define _MDF_ASDriverHSequence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MDF_ASDriverHSequence_HeaderFile
 #include <Handle_MDF_ASDriverHSequence.hxx>
-#endif
 
-#ifndef _MDF_ASDriverSequence_HeaderFile
 #include <MDF_ASDriverSequence.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_MDF_ASDriver_HeaderFile
 #include <Handle_MDF_ASDriver.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class MDF_ASDriver;
@@ -38,56 +22,57 @@ class MDF_ASDriverSequence;
 
 
 
-class MDF_ASDriverHSequence : public MMgt_TShared {
+class MDF_ASDriverHSequence : public MMgt_TShared
+{
 
 public:
 
   
-      MDF_ASDriverHSequence();
+    MDF_ASDriverHSequence();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(MDF_ASDriver)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(MDF_ASDriver)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(MDF_ASDriverHSequence)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(MDF_ASDriverHSequence)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(MDF_ASDriver)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(MDF_ASDriver)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(MDF_ASDriverHSequence)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(MDF_ASDriverHSequence)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(MDF_ASDriver)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(MDF_ASDriver)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(MDF_ASDriverHSequence)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(MDF_ASDriverHSequence)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(MDF_ASDriver)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(MDF_ASDriver)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(MDF_ASDriverHSequence)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(MDF_ASDriverHSequence)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_MDF_ASDriverHSequence Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(MDF_ASDriverHSequence) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(MDF_ASDriver)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(MDF_ASDriver)& anItem) ;
   
-  Standard_EXPORT    const Handle_MDF_ASDriver& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(MDF_ASDriver)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_MDF_ASDriver& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(MDF_ASDriver)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const MDF_ASDriverSequence& Sequence() const;
+     const  MDF_ASDriverSequence& Sequence()  const;
   
-        MDF_ASDriverSequence& ChangeSequence() ;
+      MDF_ASDriverSequence& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_MDF_ASDriverHSequence ShallowCopy() const;
+  Standard_EXPORT   Handle(MDF_ASDriverHSequence) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-MDF_ASDriverSequence mySequence;
+  MDF_ASDriverSequence mySequence;
 
 
 };
 
-#define Item Handle_MDF_ASDriver
+#define Item Handle(MDF_ASDriver)
 #define Item_hxx <MDF_ASDriver.hxx>
 #define TheSequence MDF_ASDriverSequence
 #define TheSequence_hxx <MDF_ASDriverSequence.hxx>
@@ -128,11 +113,10 @@ MDF_ASDriverSequence mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_MDF_ASDriverHSequence ShallowCopy(const Handle_MDF_ASDriverHSequence& me) {
+inline Handle(MDF_ASDriverHSequence) ShallowCopy(const Handle(MDF_ASDriverHSequence)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _MDF_ASDriverHSequence_HeaderFile

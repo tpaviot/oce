@@ -6,53 +6,44 @@
 #ifndef _math_GaussSetIntegration_HeaderFile
 #define _math_GaussSetIntegration_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
+#include <math_IntegerVector.hxx>
 #include <Standard_OStream.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_NotImplemented;
 class math_FunctionSet;
-class math_Vector;
-class math_IntegerVector;
 
 
-//! -- This class implements the integration of a set of N <br>
-//!              functions of M  variables variables between the <br>
-//!              parameter bounds Lower[a..b] and Upper[a..b]. <br>
-//!  Warning: - The case M>1 is not implemented. <br>
-class math_GaussSetIntegration  {
+//! -- This class implements the integration of a set of N
+//! functions of M  variables variables between the
+//! parameter bounds Lower[a..b] and Upper[a..b].
+//! Warning: - The case M>1 is not implemented.
+class math_GaussSetIntegration 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! The Gauss-Legendre integration with Order = points of <br>
-//! integration for each unknow, is done on the function F <br>
-//! between the bounds Lower and Upper. <br>
-  Standard_EXPORT   math_GaussSetIntegration(math_FunctionSet& F,const math_Vector& Lower,const math_Vector& Upper,const math_IntegerVector& Order);
-  //! returns True if all has been correctly done. <br>
-        Standard_Boolean IsDone() const;
-  //! returns the value of the integral. <br>
-       const math_Vector& Value() const;
-  //! Prints information on the current state of the object. <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
 
+  //! The Gauss-Legendre integration with Order = points of
+  //! integration for each unknow, is done on the function F
+  //! between the bounds Lower and Upper.
+  Standard_EXPORT math_GaussSetIntegration(math_FunctionSet& F, const math_Vector& Lower, const math_Vector& Upper, const math_IntegerVector& Order);
+  
+  //! returns True if all has been correctly done.
+      Standard_Boolean IsDone()  const;
+  
+  //! returns the value of the integral.
+     const  math_Vector& Value()  const;
+  
+  //! Prints information on the current state of the object.
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
@@ -67,8 +58,8 @@ private:
 
 
 
-math_Vector Val;
-Standard_Boolean Done;
+  math_Vector Val;
+  Standard_Boolean Done;
 
 
 };
@@ -78,7 +69,6 @@ Standard_Boolean Done;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_GaussSetIntegration_HeaderFile

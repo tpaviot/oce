@@ -5,31 +5,14 @@
 
 #include <PDF_HAttributeArray1.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _PDF_FieldOfHAttributeArray1_HeaderFile
 #include <PDF_FieldOfHAttributeArray1.hxx>
-#endif
-#ifndef _PDF_VArrayNodeOfFieldOfHAttributeArray1_HeaderFile
 #include <PDF_VArrayNodeOfFieldOfHAttributeArray1.hxx>
-#endif
-#ifndef _PDF_VArrayTNodeOfFieldOfHAttributeArray1_HeaderFile
 #include <PDF_VArrayTNodeOfFieldOfHAttributeArray1.hxx>
-#endif
 
  
 
@@ -47,7 +30,7 @@ IMPLEMENT_DOWNCAST(PDF_HAttributeArray1,Standard_Persistent)
 IMPLEMENT_STANDARD_RTTI(PDF_HAttributeArray1)
 
 
-#define Item Handle_PDF_Attribute
+#define Item Handle(PDF_Attribute)
 #define Item_hxx <PDF_Attribute.hxx>
 #define PCollection_FieldOfHArray1 PDF_FieldOfHAttributeArray1
 #define PCollection_FieldOfHArray1_hxx <PDF_FieldOfHAttributeArray1.hxx>

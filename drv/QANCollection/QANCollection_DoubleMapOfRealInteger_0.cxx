@@ -5,27 +5,13 @@
 
 #include <QANCollection_DoubleMapOfRealInteger.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_MultiplyDefined_HeaderFile
 #include <Standard_MultiplyDefined.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_MapRealHasher_HeaderFile
 #include <TColStd_MapRealHasher.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _QANCollection_DoubleMapNodeOfDoubleMapOfRealInteger_HeaderFile
 #include <QANCollection_DoubleMapNodeOfDoubleMapOfRealInteger.hxx>
-#endif
-#ifndef _QANCollection_DoubleMapIteratorOfDoubleMapOfRealInteger_HeaderFile
 #include <QANCollection_DoubleMapIteratorOfDoubleMapOfRealInteger.hxx>
-#endif
  
 
 #define TheKey1 Standard_Real

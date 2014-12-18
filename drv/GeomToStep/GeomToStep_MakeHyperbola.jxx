@@ -1,15 +1,5 @@
-#ifndef _StepGeom_Hyperbola_HeaderFile
 #include <StepGeom_Hyperbola.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Geom2d_Hyperbola_HeaderFile
 #include <Geom2d_Hyperbola.hxx>
-#endif
-#ifndef _Geom_Hyperbola_HeaderFile
 #include <Geom_Hyperbola.hxx>
-#endif
-#ifndef _GeomToStep_MakeHyperbola_HeaderFile
 #include <GeomToStep_MakeHyperbola.hxx>
-#endif

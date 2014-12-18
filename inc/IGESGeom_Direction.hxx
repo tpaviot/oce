@@ -6,46 +6,39 @@
 #ifndef _IGESGeom_Direction_HeaderFile
 #define _IGESGeom_Direction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Direction_HeaderFile
 #include <Handle_IGESGeom_Direction.hxx>
-#endif
 
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 class gp_XYZ;
 class gp_Vec;
 
 
-//! defines IGESDirection, Type <123> Form <0> <br>
-//!          in package IGESGeom <br>
-//!          A direction entity is a non-zero vector in Euclidean 3-space <br>
-//!          that is defined by its three components (direction ratios) <br>
-//!          with respect to the coordinate axes. If x, y, z are the <br>
-//!          direction ratios then (x^2 + y^2 + z^2) > 0 <br>
-class IGESGeom_Direction : public IGESData_IGESEntity {
+//! defines IGESDirection, Type <123> Form <0>
+//! in package IGESGeom
+//! A direction entity is a non-zero vector in Euclidean 3-space
+//! that is defined by its three components (direction ratios)
+//! with respect to the coordinate axes. If x, y, z are the
+//! direction ratios then (x^2 + y^2 + z^2) > 0
+class IGESGeom_Direction : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGeom_Direction();
-  //! This method is used to set the fields of the class <br>
-//!           Direction <br>
-//!       - aDirection : Direction ratios, Z is 0 by default <br>
-  Standard_EXPORT     void Init(const gp_XYZ& aDirection) ;
+  Standard_EXPORT IGESGeom_Direction();
   
-  Standard_EXPORT     gp_Vec Value() const;
-  //! returns the Direction value after applying Transformation matrix <br>
-  Standard_EXPORT     gp_Vec TransformedValue() const;
+  //! This method is used to set the fields of the class
+  //! Direction
+  //! - aDirection : Direction ratios, Z is 0 by default
+  Standard_EXPORT   void Init (const gp_XYZ& aDirection) ;
+  
+  Standard_EXPORT   gp_Vec Value()  const;
+  
+  //! returns the Direction value after applying Transformation matrix
+  Standard_EXPORT   gp_Vec TransformedValue()  const;
 
 
 
@@ -60,7 +53,7 @@ protected:
 private: 
 
 
-gp_XYZ theDirection;
+  gp_XYZ theDirection;
 
 
 };
@@ -69,7 +62,6 @@ gp_XYZ theDirection;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_Direction_HeaderFile

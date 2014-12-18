@@ -5,27 +5,15 @@
 
 #include <Interface_ReaderLib.hxx>
 
-#ifndef _Interface_NodeOfReaderLib_HeaderFile
 #include <Interface_NodeOfReaderLib.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_ReaderModule_HeaderFile
 #include <Interface_ReaderModule.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _Interface_GlobalNodeOfReaderLib_HeaderFile
 #include <Interface_GlobalNodeOfReaderLib.hxx>
-#endif
  
 
-#define TheObject Handle_Standard_Transient
+#define TheObject Handle(Standard_Transient)
 #define TheObject_hxx <Standard_Transient.hxx>
 #define Handle_TheModule Handle_Interface_ReaderModule
 #define TheModule Interface_ReaderModule

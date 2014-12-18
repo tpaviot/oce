@@ -6,45 +6,33 @@
 #ifndef _PDF_VArrayTNodeOfFieldOfHAttributeArray1_HeaderFile
 #define _PDF_VArrayTNodeOfFieldOfHAttributeArray1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_PDF_Attribute_HeaderFile
 #include <Handle_PDF_Attribute.hxx>
-#endif
-#ifndef _Handle_PDF_VArrayNodeOfFieldOfHAttributeArray1_HeaderFile
 #include <Handle_PDF_VArrayNodeOfFieldOfHAttributeArray1.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class PDF_Attribute;
 class PDF_FieldOfHAttributeArray1;
 class PDF_VArrayNodeOfFieldOfHAttributeArray1;
 
 
 
-class PDF_VArrayTNodeOfFieldOfHAttributeArray1  {
+class PDF_VArrayTNodeOfFieldOfHAttributeArray1 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PDF_VArrayTNodeOfFieldOfHAttributeArray1();
+    PDF_VArrayTNodeOfFieldOfHAttributeArray1();
   
-      PDF_VArrayTNodeOfFieldOfHAttributeArray1(const Handle(PDF_Attribute)& aValue);
+    PDF_VArrayTNodeOfFieldOfHAttributeArray1(const Handle(PDF_Attribute)& aValue);
   
-        void SetValue(const Handle(PDF_Attribute)& aValue) ;
+      void SetValue (const Handle(PDF_Attribute)& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -59,12 +47,12 @@ private:
 
 
 
-Handle_PDF_Attribute myValue;
+  Handle(PDF_Attribute) myValue;
 
 
 };
 
-#define Item Handle_PDF_Attribute
+#define Item Handle(PDF_Attribute)
 #define Item_hxx <PDF_Attribute.hxx>
 #define DBC_VArrayNode PDF_VArrayNodeOfFieldOfHAttributeArray1
 #define DBC_VArrayNode_hxx <PDF_VArrayNodeOfFieldOfHAttributeArray1.hxx>
@@ -89,7 +77,6 @@ Handle_PDF_Attribute myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDF_VArrayTNodeOfFieldOfHAttributeArray1_HeaderFile

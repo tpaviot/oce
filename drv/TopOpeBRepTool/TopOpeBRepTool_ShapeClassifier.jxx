@@ -1,18 +1,6 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopOpeBRepTool_SolidClassifier_HeaderFile
 #include <TopOpeBRepTool_SolidClassifier.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TopOpeBRepTool_ShapeClassifier_HeaderFile
 #include <TopOpeBRepTool_ShapeClassifier.hxx>
-#endif

@@ -6,25 +6,13 @@
 #ifndef _TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver_HeaderFile
 #define _TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_TPrsStd_Driver_HeaderFile
 #include <Handle_TPrsStd_Driver.hxx>
-#endif
-#ifndef _Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver_HeaderFile
 #include <Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_GUID;
 class TPrsStd_Driver;
@@ -33,22 +21,22 @@ class TPrsStd_DataMapNodeOfDataMapOfGUIDDriver;
 
 
 
-class TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver  : public TCollection_BasicMapIterator {
+class TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver();
+  Standard_EXPORT TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver();
   
-  Standard_EXPORT   TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver(const TPrsStd_DataMapOfGUIDDriver& aMap);
+  Standard_EXPORT TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver(const TPrsStd_DataMapOfGUIDDriver& aMap);
   
-  Standard_EXPORT     void Initialize(const TPrsStd_DataMapOfGUIDDriver& aMap) ;
+  Standard_EXPORT   void Initialize (const TPrsStd_DataMapOfGUIDDriver& aMap) ;
   
-  Standard_EXPORT    const Standard_GUID& Key() const;
+  Standard_EXPORT  const  Standard_GUID& Key()  const;
   
-  Standard_EXPORT    const Handle_TPrsStd_Driver& Value() const;
-
+  Standard_EXPORT  const  Handle(TPrsStd_Driver)& Value()  const;
 
 
 
@@ -71,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver_HeaderFile

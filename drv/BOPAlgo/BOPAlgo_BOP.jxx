@@ -1,12 +1,3 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BOPAlgo_PaveFiller_HeaderFile
 #include <BOPAlgo_PaveFiller.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
-#include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _BOPAlgo_BOP_HeaderFile
 #include <BOPAlgo_BOP.hxx>
-#endif

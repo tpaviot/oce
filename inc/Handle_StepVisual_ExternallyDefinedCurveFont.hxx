@@ -6,22 +6,15 @@
 #ifndef _Handle_StepVisual_ExternallyDefinedCurveFont_HeaderFile
 #define _Handle_StepVisual_ExternallyDefinedCurveFont_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_ExternallyDefinedItem_HeaderFile
 #include <Handle_StepBasic_ExternallyDefinedItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_ExternallyDefinedItem);
 class StepVisual_ExternallyDefinedCurveFont;
 
-DEFINE_STANDARD_HANDLE(StepVisual_ExternallyDefinedCurveFont,StepBasic_ExternallyDefinedItem)
+DEFINE_STANDARD_HANDLE(StepVisual_ExternallyDefinedCurveFont, StepBasic_ExternallyDefinedItem)
 
-#endif
+#endif // _Handle_StepVisual_ExternallyDefinedCurveFont_HeaderFile

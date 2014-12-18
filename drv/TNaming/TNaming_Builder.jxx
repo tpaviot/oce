@@ -1,18 +1,6 @@
-#ifndef _TNaming_UsedShapes_HeaderFile
 #include <TNaming_UsedShapes.hxx>
-#endif
-#ifndef _TNaming_NamedShape_HeaderFile
 #include <TNaming_NamedShape.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TNaming_Builder_HeaderFile
 #include <TNaming_Builder.hxx>
-#endif

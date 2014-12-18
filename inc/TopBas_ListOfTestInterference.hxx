@@ -6,28 +6,14 @@
 #ifndef _TopBas_ListOfTestInterference_HeaderFile
 #define _TopBas_ListOfTestInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TopBas_ListNodeOfListOfTestInterference_HeaderFile
 #include <Handle_TopBas_ListNodeOfListOfTestInterference.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopBas_ListIteratorOfListOfTestInterference;
 class TopBas_TestInterference;
@@ -35,61 +21,63 @@ class TopBas_ListNodeOfListOfTestInterference;
 
 
 
-class TopBas_ListOfTestInterference  {
+class TopBas_ListOfTestInterference 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopBas_ListOfTestInterference();
+  Standard_EXPORT TopBas_ListOfTestInterference();
   
-  Standard_EXPORT     void Assign(const TopBas_ListOfTestInterference& Other) ;
-    void operator=(const TopBas_ListOfTestInterference& Other) 
+  Standard_EXPORT TopBas_ListOfTestInterference(const TopBas_ListOfTestInterference& Other);
+  
+  Standard_EXPORT   void Assign (const TopBas_ListOfTestInterference& Other) ;
+  void operator= (const TopBas_ListOfTestInterference& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopBas_ListOfTestInterference()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const TopBas_TestInterference& I) ;
+  Standard_EXPORT   void Prepend (const TopBas_TestInterference& I) ;
   
-  Standard_EXPORT     void Prepend(const TopBas_TestInterference& I,TopBas_ListIteratorOfListOfTestInterference& theIt) ;
+  Standard_EXPORT   void Prepend (const TopBas_TestInterference& I, TopBas_ListIteratorOfListOfTestInterference& theIt) ;
   
-  Standard_EXPORT     void Prepend(TopBas_ListOfTestInterference& Other) ;
+  Standard_EXPORT   void Prepend (TopBas_ListOfTestInterference& Other) ;
   
-  Standard_EXPORT     void Append(const TopBas_TestInterference& I) ;
+  Standard_EXPORT   void Append (const TopBas_TestInterference& I) ;
   
-  Standard_EXPORT     void Append(const TopBas_TestInterference& I,TopBas_ListIteratorOfListOfTestInterference& theIt) ;
+  Standard_EXPORT   void Append (const TopBas_TestInterference& I, TopBas_ListIteratorOfListOfTestInterference& theIt) ;
   
-  Standard_EXPORT     void Append(TopBas_ListOfTestInterference& Other) ;
+  Standard_EXPORT   void Append (TopBas_ListOfTestInterference& Other) ;
   
-  Standard_EXPORT     TopBas_TestInterference& First() const;
+  Standard_EXPORT   TopBas_TestInterference& First()  const;
   
-  Standard_EXPORT     TopBas_TestInterference& Last() const;
+  Standard_EXPORT   TopBas_TestInterference& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TopBas_ListIteratorOfListOfTestInterference& It) ;
+  Standard_EXPORT   void Remove (TopBas_ListIteratorOfListOfTestInterference& It) ;
   
-  Standard_EXPORT     void InsertBefore(const TopBas_TestInterference& I,TopBas_ListIteratorOfListOfTestInterference& It) ;
+  Standard_EXPORT   void InsertBefore (const TopBas_TestInterference& I, TopBas_ListIteratorOfListOfTestInterference& It) ;
   
-  Standard_EXPORT     void InsertBefore(TopBas_ListOfTestInterference& Other,TopBas_ListIteratorOfListOfTestInterference& It) ;
+  Standard_EXPORT   void InsertBefore (TopBas_ListOfTestInterference& Other, TopBas_ListIteratorOfListOfTestInterference& It) ;
   
-  Standard_EXPORT     void InsertAfter(const TopBas_TestInterference& I,TopBas_ListIteratorOfListOfTestInterference& It) ;
+  Standard_EXPORT   void InsertAfter (const TopBas_TestInterference& I, TopBas_ListIteratorOfListOfTestInterference& It) ;
   
-  Standard_EXPORT     void InsertAfter(TopBas_ListOfTestInterference& Other,TopBas_ListIteratorOfListOfTestInterference& It) ;
+  Standard_EXPORT   void InsertAfter (TopBas_ListOfTestInterference& Other, TopBas_ListIteratorOfListOfTestInterference& It) ;
 
 
 friend class TopBas_ListIteratorOfListOfTestInterference;
-
 
 
 protected:
@@ -100,12 +88,10 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopBas_ListOfTestInterference(const TopBas_ListOfTestInterference& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopBas_ListOfTestInterference_HeaderFile

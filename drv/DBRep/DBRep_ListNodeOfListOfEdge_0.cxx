@@ -5,19 +5,11 @@
 
 #include <DBRep_ListNodeOfListOfEdge.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _DBRep_Edge_HeaderFile
 #include <DBRep_Edge.hxx>
-#endif
-#ifndef _DBRep_ListOfEdge_HeaderFile
 #include <DBRep_ListOfEdge.hxx>
-#endif
-#ifndef _DBRep_ListIteratorOfListOfEdge_HeaderFile
 #include <DBRep_ListIteratorOfListOfEdge.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(DBRep_ListNodeOfListOfEdge,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(DBRep_ListNodeOfListOfEdge)
 
 
-#define Item Handle_DBRep_Edge
+#define Item Handle(DBRep_Edge)
 #define Item_hxx <DBRep_Edge.hxx>
 #define TCollection_ListNode DBRep_ListNodeOfListOfEdge
 #define TCollection_ListNode_hxx <DBRep_ListNodeOfListOfEdge.hxx>

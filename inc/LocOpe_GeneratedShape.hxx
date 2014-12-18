@@ -6,22 +6,12 @@
 #ifndef _LocOpe_GeneratedShape_HeaderFile
 #define _LocOpe_GeneratedShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_LocOpe_GeneratedShape_HeaderFile
 #include <Handle_LocOpe_GeneratedShape.hxx>
-#endif
 
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TopTools_ListOfShape;
 class TopoDS_Edge;
 class TopoDS_Vertex;
@@ -29,21 +19,25 @@ class TopoDS_Face;
 
 
 
-class LocOpe_GeneratedShape : public MMgt_TShared {
+class LocOpe_GeneratedShape : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual const TopTools_ListOfShape& GeneratingEdges()  = 0;
-  //! Returns the  edge  created by  the  vertex <V>. If <br>
-//!          none, must return a null shape. <br>
-  Standard_EXPORT   virtual  TopoDS_Edge Generated(const TopoDS_Vertex& V)  = 0;
-  //! Returns the face created by the edge <E>. If none, <br>
-//!          must return a null shape. <br>
-  Standard_EXPORT   virtual  TopoDS_Face Generated(const TopoDS_Edge& E)  = 0;
-  //! Returns  the  list of correctly oriented generated <br>
-//!          faces. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& OrientedFaces()  = 0;
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& GeneratingEdges()  = 0;
+  
+  //! Returns the  edge  created by  the  vertex <V>. If
+  //! none, must return a null shape.
+  Standard_EXPORT virtual   TopoDS_Edge Generated (const TopoDS_Vertex& V)  = 0;
+  
+  //! Returns the face created by the edge <E>. If none,
+  //! must return a null shape.
+  Standard_EXPORT virtual   TopoDS_Face Generated (const TopoDS_Edge& E)  = 0;
+  
+  //! Returns  the  list of correctly oriented generated
+  //! faces.
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& OrientedFaces()  = 0;
 
 
 
@@ -53,8 +47,8 @@ public:
 protected:
 
 
-TopTools_ListOfShape myGEdges;
-TopTools_ListOfShape myList;
+  TopTools_ListOfShape myGEdges;
+  TopTools_ListOfShape myList;
 
 
 private: 
@@ -68,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_GeneratedShape_HeaderFile

@@ -1,6 +1,2 @@
-#ifndef _PNaming_Name_1_HeaderFile
 #include <PNaming_Name_1.hxx>
-#endif
-#ifndef _PNaming_Naming_1_HeaderFile
 #include <PNaming_Naming_1.hxx>
-#endif

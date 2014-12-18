@@ -5,22 +5,12 @@
 
 #include <TransferBRep_HSequenceOfTransferResultInfo.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TransferBRep_TransferResultInfo_HeaderFile
 #include <TransferBRep_TransferResultInfo.hxx>
-#endif
-#ifndef _TransferBRep_SequenceOfTransferResultInfo_HeaderFile
 #include <TransferBRep_SequenceOfTransferResultInfo.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(TransferBRep_HSequenceOfTransferResultInfo,Standard_Transient
 IMPLEMENT_STANDARD_RTTI(TransferBRep_HSequenceOfTransferResultInfo)
 
 
-#define Item Handle_TransferBRep_TransferResultInfo
+#define Item Handle(TransferBRep_TransferResultInfo)
 #define Item_hxx <TransferBRep_TransferResultInfo.hxx>
 #define TheSequence TransferBRep_SequenceOfTransferResultInfo
 #define TheSequence_hxx <TransferBRep_SequenceOfTransferResultInfo.hxx>

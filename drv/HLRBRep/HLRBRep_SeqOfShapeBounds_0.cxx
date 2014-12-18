@@ -5,18 +5,10 @@
 
 #include <HLRBRep_SeqOfShapeBounds.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _HLRBRep_ShapeBounds_HeaderFile
 #include <HLRBRep_ShapeBounds.hxx>
-#endif
-#ifndef _HLRBRep_SequenceNodeOfSeqOfShapeBounds_HeaderFile
 #include <HLRBRep_SequenceNodeOfSeqOfShapeBounds.hxx>
-#endif
  
 
 #define SeqItem HLRBRep_ShapeBounds

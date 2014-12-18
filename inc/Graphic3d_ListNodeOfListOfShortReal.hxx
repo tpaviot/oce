@@ -6,38 +6,27 @@
 #ifndef _Graphic3d_ListNodeOfListOfShortReal_HeaderFile
 #define _Graphic3d_ListNodeOfListOfShortReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_ListNodeOfListOfShortReal_HeaderFile
 #include <Handle_Graphic3d_ListNodeOfListOfShortReal.hxx>
-#endif
 
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Graphic3d_ListOfShortReal;
 class Graphic3d_ListIteratorOfListOfShortReal;
 
 
 
-class Graphic3d_ListNodeOfListOfShortReal : public TCollection_MapNode {
+class Graphic3d_ListNodeOfListOfShortReal : public TCollection_MapNode
+{
 
 public:
 
   
-      Graphic3d_ListNodeOfListOfShortReal(const Standard_ShortReal& I,const TCollection_MapNodePtr& n);
+    Graphic3d_ListNodeOfListOfShortReal(const Standard_ShortReal& I, const TCollection_MapNodePtr& n);
   
-        Standard_ShortReal& Value() const;
+      Standard_ShortReal& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Standard_ShortReal myValue;
+  Standard_ShortReal myValue;
 
 
 };
@@ -82,7 +71,6 @@ Standard_ShortReal myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_ListNodeOfListOfShortReal_HeaderFile

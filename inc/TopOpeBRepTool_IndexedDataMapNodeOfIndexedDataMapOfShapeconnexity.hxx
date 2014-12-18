@@ -6,31 +6,15 @@
 #ifndef _TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity_HeaderFile
 #define _TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity_HeaderFile
 #include <Handle_TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopOpeBRepTool_connexity_HeaderFile
 #include <TopOpeBRepTool_connexity.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TopoDS_Shape;
 class TopOpeBRepTool_connexity;
 class TopTools_ShapeMapHasher;
@@ -38,20 +22,21 @@ class TopOpeBRepTool_IndexedDataMapOfShapeconnexity;
 
 
 
-class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity : public TCollection_MapNode {
+class TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity(const TopoDS_Shape& K1,const Standard_Integer K2,const TopOpeBRepTool_connexity& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity(const TopoDS_Shape& K1, const Standard_Integer K2, const TopOpeBRepTool_connexity& I, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        TopoDS_Shape& Key1() const;
+      TopoDS_Shape& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
   
-        TopOpeBRepTool_connexity& Value() const;
+      TopOpeBRepTool_connexity& Value()  const;
 
 
 
@@ -66,10 +51,10 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey1;
-Standard_Integer myKey2;
-TopOpeBRepTool_connexity myValue;
-TCollection_MapNodePtr myNext2;
+  TopoDS_Shape myKey1;
+  Standard_Integer myKey2;
+  TopOpeBRepTool_connexity myValue;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -103,7 +88,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedDataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeconnexity_HeaderFile

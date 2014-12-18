@@ -1,9 +1,3 @@
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Vrml_SpotLight_HeaderFile
 #include <Vrml_SpotLight.hxx>
-#endif

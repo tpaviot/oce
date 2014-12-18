@@ -7,7 +7,6 @@
 #define _QANewModTopOpe_CutPtr_HeaderFile
 
 class BRepAlgoAPI_Cut;
-
 typedef BRepAlgoAPI_Cut* QANewModTopOpe_CutPtr;
 
-#endif
+#endif // _QANewModTopOpe_CutPtr_HeaderFile

@@ -6,34 +6,16 @@
 #ifndef _BRepMAT2d_LinkTopoBilo_HeaderFile
 #define _BRepMAT2d_LinkTopoBilo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepMAT2d_DataMapOfShapeSequenceOfBasicElt_HeaderFile
 #include <BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.hxx>
-#endif
-#ifndef _BRepMAT2d_DataMapOfBasicEltShape_HeaderFile
 #include <BRepMAT2d_DataMapOfBasicEltShape.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_MAT_BasicElt_HeaderFile
 #include <Handle_MAT_BasicElt.hxx>
-#endif
 class Standard_ConstructionError;
 class BRepMAT2d_Explorer;
 class BRepMAT2d_BisectingLocus;
@@ -42,34 +24,44 @@ class MAT_BasicElt;
 class TopoDS_Wire;
 
 
-//!Constucts links between the Face of the explorer and <br>
-//!         the BasicElts contained in the bisecting locus. <br>
-class BRepMAT2d_LinkTopoBilo  {
+//! Constucts links between the Wire or the Face of the explorer and
+//! the BasicElts contained in the bisecting locus.
+class BRepMAT2d_LinkTopoBilo 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepMAT2d_LinkTopoBilo();
-  //! Constructs the links Between S and BiLo. <br>
-//! <br>//! raises if <S> is not a face. <br>
-  Standard_EXPORT   BRepMAT2d_LinkTopoBilo(const BRepMAT2d_Explorer& Explo,const BRepMAT2d_BisectingLocus& BiLo);
-  //! Constructs the links Between S and BiLo. <br>
-//! <br>//! raises if <S> is not a face or a wire. <br>
-  Standard_EXPORT     void Perform(const BRepMAT2d_Explorer& Explo,const BRepMAT2d_BisectingLocus& BiLo) ;
-  //! Initialise the Iterator on <S> <br>
-//!          <S> is an edge or a vertex of the initial <br>
-//!          wire or face. <br>//! raises if <S> is not an edge or a vertex. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& S) ;
-  //! Returns True if there  is a current  BasicElt. <br>
-  Standard_EXPORT     Standard_Boolean More() ;
-  //! Proceed to the next BasicElt. <br>
-  Standard_EXPORT     void Next() ;
-  //! Returns the current BasicElt. <br>
-  Standard_EXPORT     Handle_MAT_BasicElt Value() const;
-  //! Returns the Shape linked to <aBE>. <br>
-  Standard_EXPORT     TopoDS_Shape GeneratingShape(const Handle(MAT_BasicElt)& aBE) const;
-
+  Standard_EXPORT BRepMAT2d_LinkTopoBilo();
+  
+  //! Constructs the links Between S and BiLo.
+  //!
+  //! raises if <S> is not a face.
+  Standard_EXPORT BRepMAT2d_LinkTopoBilo(const BRepMAT2d_Explorer& Explo, const BRepMAT2d_BisectingLocus& BiLo);
+  
+  //! Constructs the links Between S and BiLo.
+  //!
+  //! raises if <S> is not a face or a wire.
+  Standard_EXPORT   void Perform (const BRepMAT2d_Explorer& Explo, const BRepMAT2d_BisectingLocus& BiLo) ;
+  
+  //! Initialise the Iterator on <S>
+  //! <S> is an edge or a vertex of the initial
+  //! wire or face.
+  //! raises if <S> is not an edge or a vertex.
+  Standard_EXPORT   void Init (const TopoDS_Shape& S) ;
+  
+  //! Returns True if there  is a current  BasicElt.
+  Standard_EXPORT   Standard_Boolean More() ;
+  
+  //! Proceed to the next BasicElt.
+  Standard_EXPORT   void Next() ;
+  
+  //! Returns the current BasicElt.
+  Standard_EXPORT   Handle(MAT_BasicElt) Value()  const;
+  
+  //! Returns the Shape linked to <aBE>.
+  Standard_EXPORT   TopoDS_Shape GeneratingShape (const Handle(MAT_BasicElt)& aBE)  const;
 
 
 
@@ -83,14 +75,14 @@ protected:
 private:
 
   
-  Standard_EXPORT     void LinkToWire(const TopoDS_Wire& W,const BRepMAT2d_Explorer& Explo,const Standard_Integer IndexContour,const BRepMAT2d_BisectingLocus& BiLo) ;
+  Standard_EXPORT   void LinkToWire (const TopoDS_Wire& W, const BRepMAT2d_Explorer& Explo, const Standard_Integer IndexContour, const BRepMAT2d_BisectingLocus& BiLo) ;
 
 
-BRepMAT2d_DataMapOfShapeSequenceOfBasicElt myMap;
-BRepMAT2d_DataMapOfBasicEltShape myBEShape;
-TopoDS_Shape myKey;
-Standard_Integer current;
-Standard_Boolean isEmpty;
+  BRepMAT2d_DataMapOfShapeSequenceOfBasicElt myMap;
+  BRepMAT2d_DataMapOfBasicEltShape myBEShape;
+  TopoDS_Shape myKey;
+  Standard_Integer current;
+  Standard_Boolean isEmpty;
 
 
 };
@@ -99,7 +91,6 @@ Standard_Boolean isEmpty;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepMAT2d_LinkTopoBilo_HeaderFile

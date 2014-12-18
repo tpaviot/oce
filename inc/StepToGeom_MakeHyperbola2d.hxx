@@ -6,40 +6,28 @@
 #ifndef _StepToGeom_MakeHyperbola2d_HeaderFile
 #define _StepToGeom_MakeHyperbola2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_Hyperbola_HeaderFile
 #include <Handle_StepGeom_Hyperbola.hxx>
-#endif
-#ifndef _Handle_Geom2d_Hyperbola_HeaderFile
 #include <Handle_Geom2d_Hyperbola.hxx>
-#endif
 class StepGeom_Hyperbola;
 class Geom2d_Hyperbola;
 
 
-//! This class implements the mapping between classes <br>
-//!          Hyperbola from StepGeom which describes a Hyperbola from <br>
-//!          Prostep and Hyperbola from Geom2d. <br>
-class StepToGeom_MakeHyperbola2d  {
+//! This class implements the mapping between classes
+//! Hyperbola from StepGeom which describes a Hyperbola from
+//! Prostep and Hyperbola from Geom2d.
+class StepToGeom_MakeHyperbola2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_Hyperbola)& SC,Handle(Geom2d_Hyperbola)& CC) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_Hyperbola)& SC, Handle(Geom2d_Hyperbola)& CC) ;
 
 
 
@@ -62,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeHyperbola2d_HeaderFile

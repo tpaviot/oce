@@ -6,42 +6,35 @@
 #ifndef _StepAP203_CcDesignCertification_HeaderFile
 #define _StepAP203_CcDesignCertification_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP203_CcDesignCertification_HeaderFile
 #include <Handle_StepAP203_CcDesignCertification.hxx>
-#endif
 
-#ifndef _Handle_StepAP203_HArray1OfCertifiedItem_HeaderFile
 #include <Handle_StepAP203_HArray1OfCertifiedItem.hxx>
-#endif
-#ifndef _StepBasic_CertificationAssignment_HeaderFile
 #include <StepBasic_CertificationAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_Certification_HeaderFile
 #include <Handle_StepBasic_Certification.hxx>
-#endif
 class StepAP203_HArray1OfCertifiedItem;
 class StepBasic_Certification;
 
 
-//! Representation of STEP entity CcDesignCertification <br>
-class StepAP203_CcDesignCertification : public StepBasic_CertificationAssignment {
+//! Representation of STEP entity CcDesignCertification
+class StepAP203_CcDesignCertification : public StepBasic_CertificationAssignment
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepAP203_CcDesignCertification();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_Certification)& aCertificationAssignment_AssignedCertification,const Handle(StepAP203_HArray1OfCertifiedItem)& aItems) ;
-  //! Returns field Items <br>
-  Standard_EXPORT     Handle_StepAP203_HArray1OfCertifiedItem Items() const;
-  //! Set field Items <br>
-  Standard_EXPORT     void SetItems(const Handle(StepAP203_HArray1OfCertifiedItem)& Items) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepAP203_CcDesignCertification();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_Certification)& aCertificationAssignment_AssignedCertification, const Handle(StepAP203_HArray1OfCertifiedItem)& aItems) ;
+  
+  //! Returns field Items
+  Standard_EXPORT   Handle(StepAP203_HArray1OfCertifiedItem) Items()  const;
+  
+  //! Set field Items
+  Standard_EXPORT   void SetItems (const Handle(StepAP203_HArray1OfCertifiedItem)& Items) ;
 
 
 
@@ -56,7 +49,7 @@ protected:
 private: 
 
 
-Handle_StepAP203_HArray1OfCertifiedItem theItems;
+  Handle(StepAP203_HArray1OfCertifiedItem) theItems;
 
 
 };
@@ -65,7 +58,6 @@ Handle_StepAP203_HArray1OfCertifiedItem theItems;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP203_CcDesignCertification_HeaderFile

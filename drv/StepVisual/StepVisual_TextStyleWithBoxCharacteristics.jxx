@@ -1,15 +1,5 @@
-#ifndef _StepVisual_HArray1OfBoxCharacteristicSelect_HeaderFile
 #include <StepVisual_HArray1OfBoxCharacteristicSelect.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepVisual_TextStyleForDefinedFont_HeaderFile
 #include <StepVisual_TextStyleForDefinedFont.hxx>
-#endif
-#ifndef _StepVisual_BoxCharacteristicSelect_HeaderFile
 #include <StepVisual_BoxCharacteristicSelect.hxx>
-#endif
-#ifndef _StepVisual_TextStyleWithBoxCharacteristics_HeaderFile
 #include <StepVisual_TextStyleWithBoxCharacteristics.hxx>
-#endif

@@ -5,27 +5,13 @@
 
 #include <BRepFill_DataMapOfOrientedShapeListOfShape.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopTools_OrientedShapeMapHasher_HeaderFile
 #include <TopTools_OrientedShapeMapHasher.hxx>
-#endif
-#ifndef _BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape_HeaderFile
 #include <BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape.hxx>
-#endif
-#ifndef _BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape_HeaderFile
 #include <BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

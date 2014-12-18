@@ -6,22 +6,15 @@
 #ifndef _Handle_TestTopOpeDraw_DrawableSHA_HeaderFile
 #define _Handle_TestTopOpeDraw_DrawableSHA_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_DBRep_DrawableShape_HeaderFile
 #include <Handle_DBRep_DrawableShape.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(DBRep_DrawableShape);
 class TestTopOpeDraw_DrawableSHA;
 
-DEFINE_STANDARD_HANDLE(TestTopOpeDraw_DrawableSHA,DBRep_DrawableShape)
+DEFINE_STANDARD_HANDLE(TestTopOpeDraw_DrawableSHA, DBRep_DrawableShape)
 
-#endif
+#endif // _Handle_TestTopOpeDraw_DrawableSHA_HeaderFile

@@ -5,25 +5,13 @@
 
 #include <TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapOfInterferenceShape_HeaderFile
 #include <TopOpeBRepDS_DataMapOfInterferenceShape.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape.hxx>
-#endif
 
  
 
@@ -42,7 +30,7 @@ IMPLEMENT_DOWNCAST(TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape,Standard
 IMPLEMENT_STANDARD_RTTI(TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape)
 
 
-#define TheKey Handle_TopOpeBRepDS_Interference
+#define TheKey Handle(TopOpeBRepDS_Interference)
 #define TheKey_hxx <TopOpeBRepDS_Interference.hxx>
 #define TheItem TopoDS_Shape
 #define TheItem_hxx <TopoDS_Shape.hxx>

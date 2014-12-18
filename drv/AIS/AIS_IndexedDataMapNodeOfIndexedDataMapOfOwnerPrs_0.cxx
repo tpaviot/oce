@@ -5,22 +5,12 @@
 
 #include <AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _Prs3d_Presentation_HeaderFile
 #include <Prs3d_Presentation.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _AIS_IndexedDataMapOfOwnerPrs_HeaderFile
 #include <AIS_IndexedDataMapOfOwnerPrs.hxx>
-#endif
 
  
 
@@ -39,9 +29,9 @@ IMPLEMENT_DOWNCAST(AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs,Standard_Tra
 IMPLEMENT_STANDARD_RTTI(AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs)
 
 
-#define TheKey Handle_SelectMgr_EntityOwner
+#define TheKey Handle(SelectMgr_EntityOwner)
 #define TheKey_hxx <SelectMgr_EntityOwner.hxx>
-#define TheItem Handle_Prs3d_Presentation
+#define TheItem Handle(Prs3d_Presentation)
 #define TheItem_hxx <Prs3d_Presentation.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

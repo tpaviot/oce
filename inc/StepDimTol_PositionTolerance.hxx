@@ -6,28 +6,22 @@
 #ifndef _StepDimTol_PositionTolerance_HeaderFile
 #define _StepDimTol_PositionTolerance_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepDimTol_PositionTolerance_HeaderFile
 #include <Handle_StepDimTol_PositionTolerance.hxx>
-#endif
 
-#ifndef _StepDimTol_GeometricTolerance_HeaderFile
 #include <StepDimTol_GeometricTolerance.hxx>
-#endif
 
 
-//! Representation of STEP entity PositionTolerance <br>
-class StepDimTol_PositionTolerance : public StepDimTol_GeometricTolerance {
+//! Representation of STEP entity PositionTolerance
+class StepDimTol_PositionTolerance : public StepDimTol_GeometricTolerance
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepDimTol_PositionTolerance();
+  
+  //! Empty constructor
+  Standard_EXPORT StepDimTol_PositionTolerance();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepDimTol_PositionTolerance_HeaderFile

@@ -6,13 +6,12 @@
 #ifndef _StepFEA_CurveEdge_HeaderFile
 #define _StepFEA_CurveEdge_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepFEA_CurveEdge {
+
+enum StepFEA_CurveEdge
+{
 StepFEA_ElementEdge
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepFEA_CurveEdge_HeaderFile

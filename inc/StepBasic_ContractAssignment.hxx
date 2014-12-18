@@ -6,38 +6,33 @@
 #ifndef _StepBasic_ContractAssignment_HeaderFile
 #define _StepBasic_ContractAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ContractAssignment_HeaderFile
 #include <Handle_StepBasic_ContractAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_Contract_HeaderFile
 #include <Handle_StepBasic_Contract.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_Contract;
 
 
-//! Representation of STEP entity ContractAssignment <br>
-class StepBasic_ContractAssignment : public MMgt_TShared {
+//! Representation of STEP entity ContractAssignment
+class StepBasic_ContractAssignment : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_ContractAssignment();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_Contract)& aAssignedContract) ;
-  //! Returns field AssignedContract <br>
-  Standard_EXPORT     Handle_StepBasic_Contract AssignedContract() const;
-  //! Set field AssignedContract <br>
-  Standard_EXPORT     void SetAssignedContract(const Handle(StepBasic_Contract)& AssignedContract) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_ContractAssignment();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_Contract)& aAssignedContract) ;
+  
+  //! Returns field AssignedContract
+  Standard_EXPORT   Handle(StepBasic_Contract) AssignedContract()  const;
+  
+  //! Set field AssignedContract
+  Standard_EXPORT   void SetAssignedContract (const Handle(StepBasic_Contract)& AssignedContract) ;
 
 
 
@@ -52,7 +47,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_Contract theAssignedContract;
+  Handle(StepBasic_Contract) theAssignedContract;
 
 
 };
@@ -61,7 +56,6 @@ Handle_StepBasic_Contract theAssignedContract;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ContractAssignment_HeaderFile

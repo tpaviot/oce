@@ -6,22 +6,15 @@
 #ifndef _Handle_V3d_CircularGrid_HeaderFile
 #define _Handle_V3d_CircularGrid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Aspect_CircularGrid_HeaderFile
 #include <Handle_Aspect_CircularGrid.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Aspect_CircularGrid);
 class V3d_CircularGrid;
 
-DEFINE_STANDARD_HANDLE(V3d_CircularGrid,Aspect_CircularGrid)
+DEFINE_STANDARD_HANDLE(V3d_CircularGrid, Aspect_CircularGrid)
 
-#endif
+#endif // _Handle_V3d_CircularGrid_HeaderFile

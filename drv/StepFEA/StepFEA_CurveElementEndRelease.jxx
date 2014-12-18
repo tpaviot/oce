@@ -1,9 +1,3 @@
-#ifndef _StepElement_HArray1OfCurveElementEndReleasePacket_HeaderFile
 #include <StepElement_HArray1OfCurveElementEndReleasePacket.hxx>
-#endif
-#ifndef _StepFEA_CurveElementEndCoordinateSystem_HeaderFile
 #include <StepFEA_CurveElementEndCoordinateSystem.hxx>
-#endif
-#ifndef _StepFEA_CurveElementEndRelease_HeaderFile
 #include <StepFEA_CurveElementEndRelease.hxx>
-#endif

@@ -1,24 +1,8 @@
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepDS_BuildTool_HeaderFile
 #include <TopOpeBRepDS_BuildTool.hxx>
-#endif
-#ifndef _TopOpeBRepDS_HDataStructure_HeaderFile
 #include <TopOpeBRepDS_HDataStructure.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_Builder_HeaderFile
 #include <TopOpeBRepBuild_Builder.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_HBuilder_HeaderFile
 #include <TopOpeBRepBuild_HBuilder.hxx>
-#endif

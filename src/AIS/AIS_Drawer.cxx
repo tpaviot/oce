@@ -27,11 +27,16 @@ AIS_Drawer::AIS_Drawer()
   myhasOwnHLRDeviationCoefficient (Standard_False),
   myhasOwnDeviationAngle (Standard_False),
   myhasOwnHLRDeviationAngle (Standard_False),
-  myHasOwnFaceBoundaryDraw (Standard_False)
+  myHasOwnFaceBoundaryDraw (Standard_False),
+  myHasOwnDimLengthModelUnits (Standard_False),
+  myHasOwnDimLengthDisplayUnits (Standard_False),
+  myHasOwnDimAngleModelUnits (Standard_False),
+  myHasOwnDimAngleDisplayUnits (Standard_False)
 {
   SetMaximalParameterValue (500000.0);
   myLink->SetMaximalParameterValue (500000.0);
   SetTypeOfHLR (Prs3d_TOH_NotSet);
+  SetVertexDrawMode (Prs3d_VDM_Inherited);
 }
 
 Aspect_TypeOfDeflection AIS_Drawer::TypeOfDeflection () const 
@@ -197,6 +202,18 @@ Handle (Prs3d_ArrowAspect) AIS_Drawer::ArrowAspect()
 Handle (Prs3d_PointAspect) AIS_Drawer::PointAspect() 
 {return myPointAspect.IsNull()?  myLink->PointAspect () :  myPointAspect;}
 
+void AIS_Drawer::SetVertexDrawMode (const Prs3d_VertexDrawMode theMode)
+{
+  // Assuming that myLink always exists --> Prs3d_VDM_Inherited value is acceptable.
+  // So we simply store the new mode, as opposed to Prs3d_Drawer::SetVertexDrawMode()
+  myVertexDrawMode = theMode;
+}
+
+Prs3d_VertexDrawMode AIS_Drawer::VertexDrawMode () const
+{
+  return IsOwnVertexDrawMode() ? myVertexDrawMode : myLink->VertexDrawMode();
+}
+
 Standard_Boolean AIS_Drawer::DrawHiddenLine ()  const 
 {return myLink->DrawHiddenLine();}
 
@@ -252,7 +269,7 @@ const TCollection_AsciiString& AIS_Drawer::DimLengthModelUnits() const
 void AIS_Drawer::SetDimLengthModelUnits (const TCollection_AsciiString& theUnits)
 {
   myHasOwnDimLengthModelUnits = Standard_True;
-  Prs3d_Drawer::SetDimLengthDisplayUnits (theUnits);
+  Prs3d_Drawer::SetDimLengthModelUnits (theUnits);
 }
 
 // =======================================================================
@@ -262,7 +279,7 @@ void AIS_Drawer::SetDimLengthModelUnits (const TCollection_AsciiString& theUnits
 void AIS_Drawer::SetDimAngleModelUnits (const TCollection_AsciiString& theUnits)
 {
   myHasOwnDimAngleModelUnits = Standard_True;
-  Prs3d_Drawer::SetDimAngleDisplayUnits (theUnits);
+  Prs3d_Drawer::SetDimAngleModelUnits (theUnits);
 }
 
 // =======================================================================
@@ -390,7 +407,7 @@ void AIS_Drawer::SetFaceBoundaryAspect (const Handle(Prs3d_LineAspect)& theAspec
 // function : FaceBoundaryAspect
 // purpose  :
 // =======================================================================
-Handle_Prs3d_LineAspect AIS_Drawer::FaceBoundaryAspect()
+Handle(Prs3d_LineAspect) AIS_Drawer::FaceBoundaryAspect()
 {
   if (!IsOwnFaceBoundaryAspect ())
   {

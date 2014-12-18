@@ -5,19 +5,11 @@
 
 #include <PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PNaming_NamedShape_HeaderFile
 #include <PNaming_NamedShape.hxx>
-#endif
-#ifndef _PNaming_FieldOfHArray1OfNamedShape_HeaderFile
 #include <PNaming_FieldOfHArray1OfNamedShape.hxx>
-#endif
-#ifndef _PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape_HeaderFile
 #include <PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape,Standard_Persi
 IMPLEMENT_STANDARD_RTTI(PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape)
 
 
-#define Item Handle_PNaming_NamedShape
+#define Item Handle(PNaming_NamedShape)
 #define Item_hxx <PNaming_NamedShape.hxx>
 #define DBC_VArrayNode PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape
 #define DBC_VArrayNode_hxx <PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape.hxx>

@@ -6,16 +6,15 @@
 #ifndef _StdSelect_SensitivityMode_HeaderFile
 #define _StdSelect_SensitivityMode_HeaderFile
 
-//! Selection sensitivity mode. SM_WINDOW mode uses the <br>
-//! specified pixel tolerance to compute the sensitivity value, <br>
-//! SM_VIEW mode allows to define the sensitivity manually. <br>
-enum StdSelect_SensitivityMode {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Selection sensitivity mode. SM_WINDOW mode uses the
+//! specified pixel tolerance to compute the sensitivity value,
+//! SM_VIEW mode allows to define the sensitivity manually.
+enum StdSelect_SensitivityMode
+{
 StdSelect_SM_WINDOW,
 StdSelect_SM_VIEW
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StdSelect_SensitivityMode_HeaderFile

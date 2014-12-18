@@ -6,82 +6,82 @@
 #ifndef _BRepPrimAPI_MakeSphere_HeaderFile
 #define _BRepPrimAPI_MakeSphere_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepPrim_Sphere_HeaderFile
 #include <BRepPrim_Sphere.hxx>
-#endif
-#ifndef _BRepPrimAPI_MakeOneAxis_HeaderFile
 #include <BRepPrimAPI_MakeOneAxis.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class gp_Pnt;
 class gp_Ax2;
 class BRepPrim_Sphere;
 
 
-//! Describes functions to build spheres or portions of spheres. <br>
-//! A MakeSphere object provides a framework for: <br>
-//! -   defining the construction of a sphere, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class BRepPrimAPI_MakeSphere  : public BRepPrimAPI_MakeOneAxis {
+//! Describes functions to build spheres or portions of spheres.
+//! A MakeSphere object provides a framework for:
+//! -   defining the construction of a sphere,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class BRepPrimAPI_MakeSphere  : public BRepPrimAPI_MakeOneAxis
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Make a sphere of radius R. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const Standard_Real R);
-  //! Make a sphere of radius R. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const Standard_Real R,const Standard_Real angle);
-  //! Make a sphere of radius R. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const Standard_Real R,const Standard_Real angle1,const Standard_Real angle2);
-  //! Make a sphere of radius R. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const Standard_Real R,const Standard_Real angle1,const Standard_Real angle2,const Standard_Real angle3);
-  //! Make a sphere of radius R. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const gp_Pnt& Center,const Standard_Real R);
-  //! Make a sphere of radius R. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const gp_Pnt& Center,const Standard_Real R,const Standard_Real angle);
-  //! Make a sphere of radius R. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const gp_Pnt& Center,const Standard_Real R,const Standard_Real angle1,const Standard_Real angle2);
-  //! Make a sphere of radius R. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const gp_Pnt& Center,const Standard_Real R,const Standard_Real angle1,const Standard_Real angle2,const Standard_Real angle3);
-  //! Make a sphere of radius R. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const gp_Ax2& Axis,const Standard_Real R);
-  //! Make a sphere of radius R. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const gp_Ax2& Axis,const Standard_Real R,const Standard_Real angle);
-  //! Make a sphere of radius R. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const gp_Ax2& Axis,const Standard_Real R,const Standard_Real angle1,const Standard_Real angle2);
-  //! Make a sphere of radius R. <br>//! For all algorithms The resulting shape is composed of <br>
-//! -   a lateral spherical face, <br>
-//! -   two planar faces parallel to the plane z = 0 if the <br>
-//!   sphere is truncated in the v parametric direction, or <br>
-//!   only one planar face if angle1 is equal to -p/2 or if <br>
-//!     angle2 is equal to p/2 (these faces are circles in <br>
-//!   case of a complete truncated sphere), <br>
-//! -   and in case of a portion of sphere, two planar faces <br>
-//!   to shut the shape.(in the planes u = 0 and u = angle). <br>
-  Standard_EXPORT   BRepPrimAPI_MakeSphere(const gp_Ax2& Axis,const Standard_Real R,const Standard_Real angle1,const Standard_Real angle2,const Standard_Real angle3);
-  //! Returns the algorithm. <br>
-  Standard_EXPORT     Standard_Address OneAxis() ;
-  //! Returns the algorithm. <br>
-//! <br>
-  Standard_EXPORT     BRepPrim_Sphere& Sphere() ;
-
+  
+  //! Make a sphere of radius R.
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const Standard_Real R);
+  
+  //! Make a sphere of radius R.
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const Standard_Real R, const Standard_Real angle);
+  
+  //! Make a sphere of radius R.
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2);
+  
+  //! Make a sphere of radius R.
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2, const Standard_Real angle3);
+  
+  //! Make a sphere of radius R.
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const gp_Pnt& Center, const Standard_Real R);
+  
+  //! Make a sphere of radius R.
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const gp_Pnt& Center, const Standard_Real R, const Standard_Real angle);
+  
+  //! Make a sphere of radius R.
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const gp_Pnt& Center, const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2);
+  
+  //! Make a sphere of radius R.
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const gp_Pnt& Center, const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2, const Standard_Real angle3);
+  
+  //! Make a sphere of radius R.
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const gp_Ax2& Axis, const Standard_Real R);
+  
+  //! Make a sphere of radius R.
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const gp_Ax2& Axis, const Standard_Real R, const Standard_Real angle);
+  
+  //! Make a sphere of radius R.
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const gp_Ax2& Axis, const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2);
+  
+  //! Make a sphere of radius R.
+  //! For all algorithms The resulting shape is composed of
+  //! -   a lateral spherical face,
+  //! -   two planar faces parallel to the plane z = 0 if the
+  //! sphere is truncated in the v parametric direction, or
+  //! only one planar face if angle1 is equal to -p/2 or if
+  //! angle2 is equal to p/2 (these faces are circles in
+  //! case of a complete truncated sphere),
+  //! -   and in case of a portion of sphere, two planar faces
+  //! to shut the shape.(in the planes u = 0 and u = angle).
+  Standard_EXPORT BRepPrimAPI_MakeSphere(const gp_Ax2& Axis, const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2, const Standard_Real angle3);
+  
+  //! Returns the algorithm.
+  Standard_EXPORT   Standard_Address OneAxis() ;
+  
+  //! Returns the algorithm.
+  Standard_EXPORT   BRepPrim_Sphere& Sphere() ;
 
 
 
@@ -96,7 +96,7 @@ private:
 
 
 
-BRepPrim_Sphere mySphere;
+  BRepPrim_Sphere mySphere;
 
 
 };
@@ -105,7 +105,6 @@ BRepPrim_Sphere mySphere;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepPrimAPI_MakeSphere_HeaderFile

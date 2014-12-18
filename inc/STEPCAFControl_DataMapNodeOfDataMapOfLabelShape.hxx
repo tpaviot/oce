@@ -6,28 +6,14 @@
 #ifndef _STEPCAFControl_DataMapNodeOfDataMapOfLabelShape_HeaderFile
 #define _STEPCAFControl_DataMapNodeOfDataMapOfLabelShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape_HeaderFile
 #include <Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TDF_Label;
 class TopoDS_Shape;
 class TDF_LabelMapHasher;
@@ -36,16 +22,17 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
 
 
 
-class STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public TCollection_MapNode {
+class STEPCAFControl_DataMapNodeOfDataMapOfLabelShape : public TCollection_MapNode
+{
 
 public:
 
   
-      STEPCAFControl_DataMapNodeOfDataMapOfLabelShape(const TDF_Label& K,const TopoDS_Shape& I,const TCollection_MapNodePtr& n);
+    STEPCAFControl_DataMapNodeOfDataMapOfLabelShape(const TDF_Label& K, const TopoDS_Shape& I, const TCollection_MapNodePtr& n);
   
-        TDF_Label& Key() const;
+      TDF_Label& Key()  const;
   
-        TopoDS_Shape& Value() const;
+      TopoDS_Shape& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TDF_Label myKey;
-TopoDS_Shape myValue;
+  TDF_Label myKey;
+  TopoDS_Shape myValue;
 
 
 };
@@ -99,7 +86,6 @@ TopoDS_Shape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_DataMapNodeOfDataMapOfLabelShape_HeaderFile

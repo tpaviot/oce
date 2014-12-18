@@ -1,9 +1,3 @@
-#ifndef _StepFEA_DegreeOfFreedom_HeaderFile
 #include <StepFEA_DegreeOfFreedom.hxx>
-#endif
-#ifndef _StepElement_MeasureOrUnspecifiedValue_HeaderFile
 #include <StepElement_MeasureOrUnspecifiedValue.hxx>
-#endif
-#ifndef _StepFEA_FreedomAndCoefficient_HeaderFile
 #include <StepFEA_FreedomAndCoefficient.hxx>
-#endif

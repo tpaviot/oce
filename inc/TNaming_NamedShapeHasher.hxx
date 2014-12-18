@@ -6,39 +6,27 @@
 #ifndef _TNaming_NamedShapeHasher_HeaderFile
 #define _TNaming_NamedShapeHasher_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TNaming_NamedShape;
 
 
 
-class TNaming_NamedShapeHasher  {
+class TNaming_NamedShapeHasher 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Integer HashCode(const Handle(TNaming_NamedShape)& K,const Standard_Integer Upper) ;
+  Standard_EXPORT static   Standard_Integer HashCode (const Handle(TNaming_NamedShape)& K, const Standard_Integer Upper) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsEqual(const Handle(TNaming_NamedShape)& K1,const Handle(TNaming_NamedShape)& K2) ;
-
+  Standard_EXPORT static   Standard_Boolean IsEqual (const Handle(TNaming_NamedShape)& K1, const Handle(TNaming_NamedShape)& K2) ;
 
 
 
@@ -61,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_NamedShapeHasher_HeaderFile

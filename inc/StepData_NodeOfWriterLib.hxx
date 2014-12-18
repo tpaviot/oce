@@ -6,34 +6,16 @@
 #ifndef _StepData_NodeOfWriterLib_HeaderFile
 #define _StepData_NodeOfWriterLib_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_NodeOfWriterLib_HeaderFile
 #include <Handle_StepData_NodeOfWriterLib.hxx>
-#endif
 
-#ifndef _Handle_StepData_GlobalNodeOfWriterLib_HeaderFile
 #include <Handle_StepData_GlobalNodeOfWriterLib.hxx>
-#endif
-#ifndef _Handle_StepData_NodeOfWriterLib_HeaderFile
 #include <Handle_StepData_NodeOfWriterLib.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepData_ReadWriteModule_HeaderFile
 #include <Handle_StepData_ReadWriteModule.hxx>
-#endif
-#ifndef _Handle_StepData_Protocol_HeaderFile
 #include <Handle_StepData_Protocol.hxx>
-#endif
 class StepData_GlobalNodeOfWriterLib;
 class Standard_Transient;
 class StepData_ReadWriteModule;
@@ -42,20 +24,21 @@ class StepData_WriterLib;
 
 
 
-class StepData_NodeOfWriterLib : public MMgt_TShared {
+class StepData_NodeOfWriterLib : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   StepData_NodeOfWriterLib();
+  Standard_EXPORT StepData_NodeOfWriterLib();
   
-  Standard_EXPORT     void AddNode(const Handle(StepData_GlobalNodeOfWriterLib)& anode) ;
+  Standard_EXPORT   void AddNode (const Handle(StepData_GlobalNodeOfWriterLib)& anode) ;
   
-  Standard_EXPORT    const Handle_StepData_ReadWriteModule& Module() const;
+  Standard_EXPORT  const  Handle(StepData_ReadWriteModule)& Module()  const;
   
-  Standard_EXPORT    const Handle_StepData_Protocol& Protocol() const;
+  Standard_EXPORT  const  Handle(StepData_Protocol)& Protocol()  const;
   
-  Standard_EXPORT    const Handle_StepData_NodeOfWriterLib& Next() const;
+  Standard_EXPORT  const  Handle(StepData_NodeOfWriterLib)& Next()  const;
 
 
 
@@ -70,8 +53,8 @@ protected:
 private: 
 
 
-Handle_StepData_GlobalNodeOfWriterLib thenode;
-Handle_StepData_NodeOfWriterLib thenext;
+  Handle(StepData_GlobalNodeOfWriterLib) thenode;
+  Handle(StepData_NodeOfWriterLib) thenext;
 
 
 };
@@ -80,7 +63,6 @@ Handle_StepData_NodeOfWriterLib thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_NodeOfWriterLib_HeaderFile

@@ -6,32 +6,24 @@
 #ifndef _SortTools_QuickSortOfInteger_HeaderFile
 #define _SortTools_QuickSortOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TColStd_Array1OfInteger;
 class TCollection_CompareOfInteger;
 
 
 
-class SortTools_QuickSortOfInteger  {
+class SortTools_QuickSortOfInteger 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void Sort(TColStd_Array1OfInteger& TheArray,const TCollection_CompareOfInteger& Comp) ;
-
+  Standard_EXPORT static   void Sort (TColStd_Array1OfInteger& TheArray, const TCollection_CompareOfInteger& Comp) ;
 
 
 
@@ -54,7 +46,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SortTools_QuickSortOfInteger_HeaderFile

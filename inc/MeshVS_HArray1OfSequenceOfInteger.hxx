@@ -6,25 +6,13 @@
 #ifndef _MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #define _MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <Handle_MeshVS_HArray1OfSequenceOfInteger.hxx>
-#endif
 
-#ifndef _MeshVS_Array1OfSequenceOfInteger_HeaderFile
 #include <MeshVS_Array1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class MeshVS_Array1OfSequenceOfInteger;
 
 
 
-class MeshVS_HArray1OfSequenceOfInteger : public MMgt_TShared {
+class MeshVS_HArray1OfSequenceOfInteger : public MMgt_TShared
+{
 
 public:
 
   
-      MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer Low,const Standard_Integer Up);
+    MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer Low, const Standard_Integer Up);
   
-      MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer Low,const Standard_Integer Up,const TColStd_SequenceOfInteger& V);
+    MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer Low, const Standard_Integer Up, const TColStd_SequenceOfInteger& V);
   
-        void Init(const TColStd_SequenceOfInteger& V) ;
+      void Init (const TColStd_SequenceOfInteger& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TColStd_SequenceOfInteger& Value) ;
+      void SetValue (const Standard_Integer Index, const TColStd_SequenceOfInteger& Value) ;
   
-       const TColStd_SequenceOfInteger& Value(const Standard_Integer Index) const;
+     const  TColStd_SequenceOfInteger& Value (const Standard_Integer Index)  const;
   
-        TColStd_SequenceOfInteger& ChangeValue(const Standard_Integer Index) ;
+      TColStd_SequenceOfInteger& ChangeValue (const Standard_Integer Index) ;
   
-       const MeshVS_Array1OfSequenceOfInteger& Array1() const;
+     const  MeshVS_Array1OfSequenceOfInteger& Array1()  const;
   
-        MeshVS_Array1OfSequenceOfInteger& ChangeArray1() ;
+      MeshVS_Array1OfSequenceOfInteger& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-MeshVS_Array1OfSequenceOfInteger myArray;
+  MeshVS_Array1OfSequenceOfInteger myArray;
 
 
 };
@@ -100,7 +89,6 @@ MeshVS_Array1OfSequenceOfInteger myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_HArray1OfSequenceOfInteger_HeaderFile

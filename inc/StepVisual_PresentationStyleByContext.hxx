@@ -6,44 +6,34 @@
 #ifndef _StepVisual_PresentationStyleByContext_HeaderFile
 #define _StepVisual_PresentationStyleByContext_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationStyleByContext_HeaderFile
 #include <Handle_StepVisual_PresentationStyleByContext.hxx>
-#endif
 
-#ifndef _StepVisual_StyleContextSelect_HeaderFile
 #include <StepVisual_StyleContextSelect.hxx>
-#endif
-#ifndef _StepVisual_PresentationStyleAssignment_HeaderFile
 #include <StepVisual_PresentationStyleAssignment.hxx>
-#endif
-#ifndef _Handle_StepVisual_HArray1OfPresentationStyleSelect_HeaderFile
 #include <Handle_StepVisual_HArray1OfPresentationStyleSelect.hxx>
-#endif
 class StepVisual_HArray1OfPresentationStyleSelect;
 class StepVisual_StyleContextSelect;
 
 
 
-class StepVisual_PresentationStyleByContext : public StepVisual_PresentationStyleAssignment {
+class StepVisual_PresentationStyleByContext : public StepVisual_PresentationStyleAssignment
+{
 
 public:
 
-  //! Returns a PresentationStyleByContext <br>
-  Standard_EXPORT   StepVisual_PresentationStyleByContext();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepVisual_HArray1OfPresentationStyleSelect)& aStyles) ;
+  //! Returns a PresentationStyleByContext
+  Standard_EXPORT StepVisual_PresentationStyleByContext();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepVisual_HArray1OfPresentationStyleSelect)& aStyles,const StepVisual_StyleContextSelect& aStyleContext) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepVisual_HArray1OfPresentationStyleSelect)& aStyles) ;
   
-  Standard_EXPORT     void SetStyleContext(const StepVisual_StyleContextSelect& aStyleContext) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepVisual_HArray1OfPresentationStyleSelect)& aStyles, const StepVisual_StyleContextSelect& aStyleContext) ;
   
-  Standard_EXPORT     StepVisual_StyleContextSelect StyleContext() const;
+  Standard_EXPORT   void SetStyleContext (const StepVisual_StyleContextSelect& aStyleContext) ;
+  
+  Standard_EXPORT   StepVisual_StyleContextSelect StyleContext()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-StepVisual_StyleContextSelect styleContext;
+  StepVisual_StyleContextSelect styleContext;
 
 
 };
@@ -67,7 +57,6 @@ StepVisual_StyleContextSelect styleContext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PresentationStyleByContext_HeaderFile

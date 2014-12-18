@@ -6,41 +6,32 @@
 #ifndef _BRepCheck_Vertex_HeaderFile
 #define _BRepCheck_Vertex_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepCheck_Vertex_HeaderFile
 #include <Handle_BRepCheck_Vertex.hxx>
-#endif
 
-#ifndef _BRepCheck_Result_HeaderFile
 #include <BRepCheck_Result.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopoDS_Vertex;
 class TopoDS_Shape;
 
 
 
-class BRepCheck_Vertex : public BRepCheck_Result {
+class BRepCheck_Vertex : public BRepCheck_Result
+{
 
 public:
 
   
-  Standard_EXPORT   BRepCheck_Vertex(const TopoDS_Vertex& V);
+  Standard_EXPORT BRepCheck_Vertex(const TopoDS_Vertex& V);
   
-  Standard_EXPORT     void InContext(const TopoDS_Shape& ContextShape) ;
+  Standard_EXPORT   void InContext (const TopoDS_Shape& ContextShape) ;
   
-  Standard_EXPORT     void Minimum() ;
+  Standard_EXPORT   void Minimum() ;
   
-  Standard_EXPORT     void Blind() ;
+  Standard_EXPORT   void Blind() ;
   
-  Standard_EXPORT     Standard_Real Tolerance() ;
+  Standard_EXPORT   Standard_Real Tolerance() ;
 
 
 
@@ -63,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepCheck_Vertex_HeaderFile

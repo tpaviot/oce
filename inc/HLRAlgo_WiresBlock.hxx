@@ -6,56 +6,42 @@
 #ifndef _HLRAlgo_WiresBlock_HeaderFile
 #define _HLRAlgo_WiresBlock_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_WiresBlock_HeaderFile
 #include <Handle_HLRAlgo_WiresBlock.hxx>
-#endif
 
-#ifndef _TColStd_Array1OfTransient_HeaderFile
 #include <TColStd_Array1OfTransient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_EdgesBlock_HeaderFile
 #include <Handle_HLRAlgo_EdgesBlock.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class HLRAlgo_EdgesBlock;
 
 
-//! A WiresBlock is a set of Blocks. It is used by the <br>
-//!          DataStructure to structure the Edges. <br>
-//! <br>
-//!          A WiresBlock contains : <br>
-//! <br>
-//!          * An Array  of Blocks. <br>
-class HLRAlgo_WiresBlock : public MMgt_TShared {
+//! A WiresBlock is a set of Blocks. It is used by the
+//! DataStructure to structure the Edges.
+//!
+//! A WiresBlock contains :
+//!
+//! * An Array  of Blocks.
+class HLRAlgo_WiresBlock : public MMgt_TShared
+{
 
 public:
 
-  //! Create a Block of Blocks. <br>
-  Standard_EXPORT   HLRAlgo_WiresBlock(const Standard_Integer NbWires);
   
-  Standard_EXPORT     Standard_Integer NbWires() const;
+  //! Create a Block of Blocks.
+  Standard_EXPORT HLRAlgo_WiresBlock(const Standard_Integer NbWires);
   
-  Standard_EXPORT     void Set(const Standard_Integer I,const Handle(HLRAlgo_EdgesBlock)& W) ;
+  Standard_EXPORT   Standard_Integer NbWires()  const;
   
-  Standard_EXPORT     Handle_HLRAlgo_EdgesBlock& Wire(const Standard_Integer I) ;
+  Standard_EXPORT   void Set (const Standard_Integer I, const Handle(HLRAlgo_EdgesBlock)& W) ;
   
-  Standard_EXPORT     void UpdateMinMax(const Standard_Address TotMinMax) ;
+  Standard_EXPORT   Handle(HLRAlgo_EdgesBlock)& Wire (const Standard_Integer I) ;
   
-        Standard_Address MinMax() const;
+  Standard_EXPORT   void UpdateMinMax (const Standard_Address TotMinMax) ;
+  
+      Standard_Address MinMax()  const;
 
 
 
@@ -70,8 +56,8 @@ protected:
 private: 
 
 
-TColStd_Array1OfTransient myWires;
-Standard_Integer myMinMax[16];
+  TColStd_Array1OfTransient myWires;
+  Standard_Integer myMinMax[16];
 
 
 };
@@ -81,7 +67,6 @@ Standard_Integer myMinMax[16];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_WiresBlock_HeaderFile

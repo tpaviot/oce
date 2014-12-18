@@ -6,87 +6,91 @@
 #ifndef _Prs3d_PlaneAspect_HeaderFile
 #define _Prs3d_PlaneAspect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Prs3d_PlaneAspect_HeaderFile
 #include <Handle_Prs3d_PlaneAspect.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_LineAspect_HeaderFile
 #include <Handle_Prs3d_LineAspect.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
-#ifndef _Quantity_PlaneAngle_HeaderFile
 #include <Quantity_PlaneAngle.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Prs3d_BasicAspect_HeaderFile
 #include <Prs3d_BasicAspect.hxx>
-#endif
 class Prs3d_LineAspect;
 
 
-//! A framework to define the display of planes. <br>
-class Prs3d_PlaneAspect : public Prs3d_BasicAspect {
+//! A framework to define the display of planes.
+class Prs3d_PlaneAspect : public Prs3d_BasicAspect
+{
 
 public:
 
-  //! Constructs an empty framework for the display of planes. <br>
-  Standard_EXPORT   Prs3d_PlaneAspect();
-  //! Returns the attributes of displayed edges involved in the presentation of planes. <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect EdgesAspect() const;
-  //! Returns the attributes of displayed isoparameters involved in the presentation of planes. <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect IsoAspect() const;
-  //! Returns the settings for displaying an arrow. <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect ArrowAspect() const;
   
-  Standard_EXPORT     void SetArrowsLength(const Quantity_Length L) ;
-  //! Returns the length of the arrow shaft used in the display of arrows. <br>
-  Standard_EXPORT     Quantity_Length ArrowsLength() const;
-  //! Sets the angle of the arrowhead used in the display of planes. <br>
-  Standard_EXPORT     void SetArrowsSize(const Quantity_Length L) ;
-  //! Returns the size of arrows used in the display of planes. <br>
-  Standard_EXPORT     Quantity_Length ArrowsSize() const;
-  //! Sets the angle of the arrowhead used in the display <br>
-//! of arrows involved in the presentation of planes. <br>
-  Standard_EXPORT     void SetArrowsAngle(const Quantity_PlaneAngle ang) ;
-  //! Returns the angle of the arrowhead used in the <br>
-//! display of arrows involved in the presentation of planes. <br>
-  Standard_EXPORT     Quantity_PlaneAngle ArrowsAngle() const;
-  //! Sets the display attributes defined in DisplayCenterArrow to active. <br>
-  Standard_EXPORT     void SetDisplayCenterArrow(const Standard_Boolean draw) ;
-  //! Returns true if the display of center arrows is allowed. <br>
-  Standard_EXPORT     Standard_Boolean DisplayCenterArrow() const;
-  //! Sets the display attributes defined in DisplayEdgesArrows to active. <br>
-  Standard_EXPORT     void SetDisplayEdgesArrows(const Standard_Boolean draw) ;
-  //! Returns true if the display of edge arrows is allowed. <br>
-  Standard_EXPORT     Standard_Boolean DisplayEdgesArrows() const;
+  //! Constructs an empty framework for the display of planes.
+  Standard_EXPORT Prs3d_PlaneAspect();
   
-  Standard_EXPORT     void SetDisplayEdges(const Standard_Boolean draw) ;
+  //! Returns the attributes of displayed edges involved in the presentation of planes.
+  Standard_EXPORT   Handle(Prs3d_LineAspect) EdgesAspect()  const;
   
-  Standard_EXPORT     Standard_Boolean DisplayEdges() const;
-  //! Sets the display attributes defined in DisplayIso to active. <br>
-  Standard_EXPORT     void SetDisplayIso(const Standard_Boolean draw) ;
-  //! Returns true if the display of isoparameters is allowed. <br>
-  Standard_EXPORT     Standard_Boolean DisplayIso() const;
+  //! Returns the attributes of displayed isoparameters involved in the presentation of planes.
+  Standard_EXPORT   Handle(Prs3d_LineAspect) IsoAspect()  const;
   
-  Standard_EXPORT     void SetPlaneLength(const Quantity_Length LX,const Quantity_Length LY) ;
-  //! Returns the length of the x axis used in the display of planes. <br>
-  Standard_EXPORT     Quantity_Length PlaneXLength() const;
-  //! Returns the length of the y axis used in the display of planes. <br>
-  Standard_EXPORT     Quantity_Length PlaneYLength() const;
-  //! Sets the distance L between isoparameters used in the display of planes. <br>
-  Standard_EXPORT     void SetIsoDistance(const Quantity_Length L) ;
-  //! Returns the distance between isoparameters used in the display of planes. <br>
-  Standard_EXPORT     Quantity_Length IsoDistance() const;
+  //! Returns the settings for displaying an arrow.
+  Standard_EXPORT   Handle(Prs3d_LineAspect) ArrowAspect()  const;
+  
+  Standard_EXPORT   void SetArrowsLength (const Quantity_Length L) ;
+  
+  //! Returns the length of the arrow shaft used in the display of arrows.
+  Standard_EXPORT   Quantity_Length ArrowsLength()  const;
+  
+  //! Sets the angle of the arrowhead used in the display of planes.
+  Standard_EXPORT   void SetArrowsSize (const Quantity_Length L) ;
+  
+  //! Returns the size of arrows used in the display of planes.
+  Standard_EXPORT   Quantity_Length ArrowsSize()  const;
+  
+  //! Sets the angle of the arrowhead used in the display
+  //! of arrows involved in the presentation of planes.
+  Standard_EXPORT   void SetArrowsAngle (const Quantity_PlaneAngle ang) ;
+  
+  //! Returns the angle of the arrowhead used in the
+  //! display of arrows involved in the presentation of planes.
+  Standard_EXPORT   Quantity_PlaneAngle ArrowsAngle()  const;
+  
+  //! Sets the display attributes defined in DisplayCenterArrow to active.
+  Standard_EXPORT   void SetDisplayCenterArrow (const Standard_Boolean draw) ;
+  
+  //! Returns true if the display of center arrows is allowed.
+  Standard_EXPORT   Standard_Boolean DisplayCenterArrow()  const;
+  
+  //! Sets the display attributes defined in DisplayEdgesArrows to active.
+  Standard_EXPORT   void SetDisplayEdgesArrows (const Standard_Boolean draw) ;
+  
+  //! Returns true if the display of edge arrows is allowed.
+  Standard_EXPORT   Standard_Boolean DisplayEdgesArrows()  const;
+  
+  Standard_EXPORT   void SetDisplayEdges (const Standard_Boolean draw) ;
+  
+  Standard_EXPORT   Standard_Boolean DisplayEdges()  const;
+  
+  //! Sets the display attributes defined in DisplayIso to active.
+  Standard_EXPORT   void SetDisplayIso (const Standard_Boolean draw) ;
+  
+  //! Returns true if the display of isoparameters is allowed.
+  Standard_EXPORT   Standard_Boolean DisplayIso()  const;
+  
+  Standard_EXPORT   void SetPlaneLength (const Quantity_Length LX, const Quantity_Length LY) ;
+  
+  //! Returns the length of the x axis used in the display of planes.
+  Standard_EXPORT   Quantity_Length PlaneXLength()  const;
+  
+  //! Returns the length of the y axis used in the display of planes.
+  Standard_EXPORT   Quantity_Length PlaneYLength()  const;
+  
+  //! Sets the distance L between isoparameters used in the display of planes.
+  Standard_EXPORT   void SetIsoDistance (const Quantity_Length L) ;
+  
+  //! Returns the distance between isoparameters used in the display of planes.
+  Standard_EXPORT   Quantity_Length IsoDistance()  const;
 
 
 
@@ -101,19 +105,19 @@ protected:
 private: 
 
 
-Handle_Prs3d_LineAspect myEdgesAspect;
-Handle_Prs3d_LineAspect myIsoAspect;
-Handle_Prs3d_LineAspect myArrowAspect;
-Quantity_Length myArrowsLength;
-Quantity_Length myArrowsSize;
-Quantity_PlaneAngle myArrowsAngle;
-Standard_Boolean myDrawCenterArrow;
-Standard_Boolean myDrawEdgesArrows;
-Standard_Boolean myDrawEdges;
-Standard_Boolean myDrawIso;
-Quantity_Length myPlaneXLength;
-Quantity_Length myPlaneYLength;
-Quantity_Length myIsoDistance;
+  Handle(Prs3d_LineAspect) myEdgesAspect;
+  Handle(Prs3d_LineAspect) myIsoAspect;
+  Handle(Prs3d_LineAspect) myArrowAspect;
+  Quantity_Length myArrowsLength;
+  Quantity_Length myArrowsSize;
+  Quantity_PlaneAngle myArrowsAngle;
+  Standard_Boolean myDrawCenterArrow;
+  Standard_Boolean myDrawEdgesArrows;
+  Standard_Boolean myDrawEdges;
+  Standard_Boolean myDrawIso;
+  Quantity_Length myPlaneXLength;
+  Quantity_Length myPlaneYLength;
+  Quantity_Length myIsoDistance;
 
 
 };
@@ -122,7 +126,6 @@ Quantity_Length myIsoDistance;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Prs3d_PlaneAspect_HeaderFile

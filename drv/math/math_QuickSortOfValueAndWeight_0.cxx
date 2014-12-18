@@ -5,15 +5,9 @@
 
 #include <math_QuickSortOfValueAndWeight.hxx>
 
-#ifndef _math_ValueAndWeight_HeaderFile
 #include <math_ValueAndWeight.hxx>
-#endif
-#ifndef _math_Array1OfValueAndWeight_HeaderFile
 #include <math_Array1OfValueAndWeight.hxx>
-#endif
-#ifndef _math_CompareOfValueAndWeight_HeaderFile
 #include <math_CompareOfValueAndWeight.hxx>
-#endif
  
 
 #define Item math_ValueAndWeight

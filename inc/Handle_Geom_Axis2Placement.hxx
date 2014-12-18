@@ -6,22 +6,15 @@
 #ifndef _Handle_Geom_Axis2Placement_HeaderFile
 #define _Handle_Geom_Axis2Placement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Geom_AxisPlacement_HeaderFile
 #include <Handle_Geom_AxisPlacement.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Geom_AxisPlacement);
 class Geom_Axis2Placement;
 
-DEFINE_STANDARD_HANDLE(Geom_Axis2Placement,Geom_AxisPlacement)
+DEFINE_STANDARD_HANDLE(Geom_Axis2Placement, Geom_AxisPlacement)
 
-#endif
+#endif // _Handle_Geom_Axis2Placement_HeaderFile

@@ -6,65 +6,55 @@
 #ifndef _IGESAppli_NodalConstraint_HeaderFile
 #define _IGESAppli_NodalConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESAppli_NodalConstraint_HeaderFile
 #include <Handle_IGESAppli_NodalConstraint.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESAppli_Node_HeaderFile
 #include <Handle_IGESAppli_Node.hxx>
-#endif
-#ifndef _Handle_IGESDefs_HArray1OfTabularData_HeaderFile
 #include <Handle_IGESDefs_HArray1OfTabularData.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESDefs_TabularData_HeaderFile
 #include <Handle_IGESDefs_TabularData.hxx>
-#endif
 class IGESAppli_Node;
 class IGESDefs_HArray1OfTabularData;
 class Standard_OutOfRange;
 class IGESDefs_TabularData;
 
 
-//! defines NodalConstraint, Type <418> Form <0> <br>
-//!          in package IGESAppli <br>
-//!          Relates loads and/or constraints to specific nodes in <br>
-//!          the Finite Element Model by creating a relation between <br>
-//!          Node entities and Tabular Data Property that contains <br>
-//!          the load or constraint data <br>
-class IGESAppli_NodalConstraint : public IGESData_IGESEntity {
+//! defines NodalConstraint, Type <418> Form <0>
+//! in package IGESAppli
+//! Relates loads and/or constraints to specific nodes in
+//! the Finite Element Model by creating a relation between
+//! Node entities and Tabular Data Property that contains
+//! the load or constraint data
+class IGESAppli_NodalConstraint : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESAppli_NodalConstraint();
-  //! This method is used to set the fields of the class <br>
-//!           NodalConstraint <br>
-//!       - aType      : Loads / Constraints <br>
-//!       - aNode      : the Node <br>
-//!       - allTabData : Tabular Data Property carrying the load <br>
-//!                      or constraint vector <br>
-  Standard_EXPORT     void Init(const Standard_Integer aType,const Handle(IGESAppli_Node)& aNode,const Handle(IGESDefs_HArray1OfTabularData)& allTabData) ;
-  //! returns total number of cases <br>
-  Standard_EXPORT     Standard_Integer NbCases() const;
-  //! returns whether Loads (1) or Constraints (2) <br>
-  Standard_EXPORT     Standard_Integer Type() const;
-  //! returns the Node <br>
-  Standard_EXPORT     Handle_IGESAppli_Node NodeEntity() const;
-  //! returns Tabular Data Property carrying load or constraint vector <br>
-//! raises exception if Index <= 0 or Index > NbCases <br>
-  Standard_EXPORT     Handle_IGESDefs_TabularData TabularData(const Standard_Integer Index) const;
+  Standard_EXPORT IGESAppli_NodalConstraint();
+  
+  //! This method is used to set the fields of the class
+  //! NodalConstraint
+  //! - aType      : Loads / Constraints
+  //! - aNode      : the Node
+  //! - allTabData : Tabular Data Property carrying the load
+  //! or constraint vector
+  Standard_EXPORT   void Init (const Standard_Integer aType, const Handle(IGESAppli_Node)& aNode, const Handle(IGESDefs_HArray1OfTabularData)& allTabData) ;
+  
+  //! returns total number of cases
+  Standard_EXPORT   Standard_Integer NbCases()  const;
+  
+  //! returns whether Loads (1) or Constraints (2)
+  Standard_EXPORT   Standard_Integer Type()  const;
+  
+  //! returns the Node
+  Standard_EXPORT   Handle(IGESAppli_Node) NodeEntity()  const;
+  
+  //! returns Tabular Data Property carrying load or constraint vector
+  //! raises exception if Index <= 0 or Index > NbCases
+  Standard_EXPORT   Handle(IGESDefs_TabularData) TabularData (const Standard_Integer Index)  const;
 
 
 
@@ -79,9 +69,9 @@ protected:
 private: 
 
 
-Standard_Integer theType;
-Handle_IGESAppli_Node theNode;
-Handle_IGESDefs_HArray1OfTabularData theTabularDataProps;
+  Standard_Integer theType;
+  Handle(IGESAppli_Node) theNode;
+  Handle(IGESDefs_HArray1OfTabularData) theTabularDataProps;
 
 
 };
@@ -90,7 +80,6 @@ Handle_IGESDefs_HArray1OfTabularData theTabularDataProps;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESAppli_NodalConstraint_HeaderFile

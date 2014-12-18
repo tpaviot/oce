@@ -1,7 +1,6 @@
 set(ENV{CASROOT}                      "@OCE_SOURCE_DIR@")
 set(ENV{DRAWDEFAULT}                  "@OCE_SOURCE_DIR@/src/DrawResources/DrawDefault")
 set(ENV{DRAWHOME}                     "@OCE_SOURCE_DIR@/src/DrawResources")
-set(ENV{CSF_GraphicShr}               "@OCE_CSF_GraphicShr@")
 set(ENV{CSF_UnitsLexicon}             "@OCE_SOURCE_DIR@/src/UnitsAPI/Lexi_Expr.dat")
 set(ENV{CSF_UnitsDefinition}          "@OCE_SOURCE_DIR@/src/UnitsAPI/Units.dat")
 set(ENV{CSF_CurrentUnitsDefaults}     "@OCE_SOURCE_DIR@/src/UnitsAPI")

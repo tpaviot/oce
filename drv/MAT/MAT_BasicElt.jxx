@@ -1,6 +1,2 @@
-#ifndef _MAT_Arc_HeaderFile
 #include <MAT_Arc.hxx>
-#endif
-#ifndef _MAT_BasicElt_HeaderFile
 #include <MAT_BasicElt.hxx>
-#endif

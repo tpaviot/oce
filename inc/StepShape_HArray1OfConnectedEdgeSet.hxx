@@ -6,28 +6,14 @@
 #ifndef _StepShape_HArray1OfConnectedEdgeSet_HeaderFile
 #define _StepShape_HArray1OfConnectedEdgeSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_HArray1OfConnectedEdgeSet_HeaderFile
 #include <Handle_StepShape_HArray1OfConnectedEdgeSet.hxx>
-#endif
 
-#ifndef _StepShape_Array1OfConnectedEdgeSet_HeaderFile
 #include <StepShape_Array1OfConnectedEdgeSet.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepShape_ConnectedEdgeSet_HeaderFile
 #include <Handle_StepShape_ConnectedEdgeSet.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepShape_Array1OfConnectedEdgeSet;
 
 
 
-class StepShape_HArray1OfConnectedEdgeSet : public MMgt_TShared {
+class StepShape_HArray1OfConnectedEdgeSet : public MMgt_TShared
+{
 
 public:
 
   
-      StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer Low,const Standard_Integer Up);
+    StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepShape_ConnectedEdgeSet)& V);
+    StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepShape_ConnectedEdgeSet)& V);
   
-        void Init(const Handle(StepShape_ConnectedEdgeSet)& V) ;
+      void Init (const Handle(StepShape_ConnectedEdgeSet)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepShape_ConnectedEdgeSet)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepShape_ConnectedEdgeSet)& Value) ;
   
-       const Handle_StepShape_ConnectedEdgeSet& Value(const Standard_Integer Index) const;
+     const  Handle(StepShape_ConnectedEdgeSet)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepShape_ConnectedEdgeSet& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepShape_ConnectedEdgeSet)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepShape_Array1OfConnectedEdgeSet& Array1() const;
+     const  StepShape_Array1OfConnectedEdgeSet& Array1()  const;
   
-        StepShape_Array1OfConnectedEdgeSet& ChangeArray1() ;
+      StepShape_Array1OfConnectedEdgeSet& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepShape_Array1OfConnectedEdgeSet myArray;
+  StepShape_Array1OfConnectedEdgeSet myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepShape_ConnectedEdgeSet
+#define ItemHArray1 Handle(StepShape_ConnectedEdgeSet)
 #define ItemHArray1_hxx <StepShape_ConnectedEdgeSet.hxx>
 #define TheArray1 StepShape_Array1OfConnectedEdgeSet
 #define TheArray1_hxx <StepShape_Array1OfConnectedEdgeSet.hxx>
@@ -103,7 +90,6 @@ StepShape_Array1OfConnectedEdgeSet myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_HArray1OfConnectedEdgeSet_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _TopOpeBRep_SequenceOfPoint2d_HeaderFile
 #define _TopOpeBRep_SequenceOfPoint2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d_HeaderFile
 #include <Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TopOpeBRep_Point2d;
@@ -32,66 +20,68 @@ class TopOpeBRep_SequenceNodeOfSequenceOfPoint2d;
 
 
 
-class TopOpeBRep_SequenceOfPoint2d  : public TCollection_BaseSequence {
+class TopOpeBRep_SequenceOfPoint2d  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TopOpeBRep_SequenceOfPoint2d();
+    TopOpeBRep_SequenceOfPoint2d();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT TopOpeBRep_SequenceOfPoint2d(const TopOpeBRep_SequenceOfPoint2d& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~TopOpeBRep_SequenceOfPoint2d()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TopOpeBRep_SequenceOfPoint2d& Assign(const TopOpeBRep_SequenceOfPoint2d& Other) ;
-   const TopOpeBRep_SequenceOfPoint2d& operator =(const TopOpeBRep_SequenceOfPoint2d& Other) 
+  Standard_EXPORT  const  TopOpeBRep_SequenceOfPoint2d& Assign (const TopOpeBRep_SequenceOfPoint2d& Other) ;
+ const  TopOpeBRep_SequenceOfPoint2d& operator = (const TopOpeBRep_SequenceOfPoint2d& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const TopOpeBRep_Point2d& T) ;
+  Standard_EXPORT   void Append (const TopOpeBRep_Point2d& T) ;
   
-        void Append(TopOpeBRep_SequenceOfPoint2d& S) ;
+      void Append (TopOpeBRep_SequenceOfPoint2d& S) ;
   
-  Standard_EXPORT     void Prepend(const TopOpeBRep_Point2d& T) ;
+  Standard_EXPORT   void Prepend (const TopOpeBRep_Point2d& T) ;
   
-        void Prepend(TopOpeBRep_SequenceOfPoint2d& S) ;
+      void Prepend (TopOpeBRep_SequenceOfPoint2d& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const TopOpeBRep_Point2d& T) ;
+      void InsertBefore (const Standard_Integer Index, const TopOpeBRep_Point2d& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TopOpeBRep_SequenceOfPoint2d& S) ;
+      void InsertBefore (const Standard_Integer Index, TopOpeBRep_SequenceOfPoint2d& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const TopOpeBRep_Point2d& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const TopOpeBRep_Point2d& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TopOpeBRep_SequenceOfPoint2d& S) ;
+      void InsertAfter (const Standard_Integer Index, TopOpeBRep_SequenceOfPoint2d& S) ;
   
-  Standard_EXPORT    const TopOpeBRep_Point2d& First() const;
+  Standard_EXPORT  const  TopOpeBRep_Point2d& First()  const;
   
-  Standard_EXPORT    const TopOpeBRep_Point2d& Last() const;
+  Standard_EXPORT  const  TopOpeBRep_Point2d& Last()  const;
   
-        void Split(const Standard_Integer Index,TopOpeBRep_SequenceOfPoint2d& Sub) ;
+      void Split (const Standard_Integer Index, TopOpeBRep_SequenceOfPoint2d& Sub) ;
   
-  Standard_EXPORT    const TopOpeBRep_Point2d& Value(const Standard_Integer Index) const;
-   const TopOpeBRep_Point2d& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  TopOpeBRep_Point2d& Value (const Standard_Integer Index)  const;
+ const  TopOpeBRep_Point2d& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const TopOpeBRep_Point2d& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const TopOpeBRep_Point2d& I) ;
   
-  Standard_EXPORT     TopOpeBRep_Point2d& ChangeValue(const Standard_Integer Index) ;
-    TopOpeBRep_Point2d& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   TopOpeBRep_Point2d& ChangeValue (const Standard_Integer Index) ;
+  TopOpeBRep_Point2d& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopOpeBRep_SequenceOfPoint2d(const TopOpeBRep_SequenceOfPoint2d& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_SequenceOfPoint2d_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_StepDimTol_PlacedDatumTargetFeature_HeaderFile
 #define _Handle_StepDimTol_PlacedDatumTargetFeature_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepDimTol_DatumTarget_HeaderFile
 #include <Handle_StepDimTol_DatumTarget.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepDimTol_DatumTarget);
 class StepDimTol_PlacedDatumTargetFeature;
 
-DEFINE_STANDARD_HANDLE(StepDimTol_PlacedDatumTargetFeature,StepDimTol_DatumTarget)
+DEFINE_STANDARD_HANDLE(StepDimTol_PlacedDatumTargetFeature, StepDimTol_DatumTarget)
 
-#endif
+#endif // _Handle_StepDimTol_PlacedDatumTargetFeature_HeaderFile

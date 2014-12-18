@@ -5,16 +5,10 @@
 
 #include <ChFiDS_SequenceNodeOfSequenceOfSurfData.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _ChFiDS_SurfData_HeaderFile
 #include <ChFiDS_SurfData.hxx>
-#endif
-#ifndef _ChFiDS_SequenceOfSurfData_HeaderFile
 #include <ChFiDS_SequenceOfSurfData.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(ChFiDS_SequenceNodeOfSequenceOfSurfData,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(ChFiDS_SequenceNodeOfSequenceOfSurfData)
 
 
-#define SeqItem Handle_ChFiDS_SurfData
+#define SeqItem Handle(ChFiDS_SurfData)
 #define SeqItem_hxx <ChFiDS_SurfData.hxx>
 #define TCollection_SequenceNode ChFiDS_SequenceNodeOfSequenceOfSurfData
 #define TCollection_SequenceNode_hxx <ChFiDS_SequenceNodeOfSequenceOfSurfData.hxx>

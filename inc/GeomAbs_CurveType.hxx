@@ -6,9 +6,12 @@
 #ifndef _GeomAbs_CurveType_HeaderFile
 #define _GeomAbs_CurveType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//! Identifies the type of a curve. <br>
-enum GeomAbs_CurveType {
+
+//! Identifies the type of a curve.
+enum GeomAbs_CurveType
+{
 GeomAbs_Line,
 GeomAbs_Circle,
 GeomAbs_Ellipse,
@@ -19,8 +22,4 @@ GeomAbs_BSplineCurve,
 GeomAbs_OtherCurve
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GeomAbs_CurveType_HeaderFile

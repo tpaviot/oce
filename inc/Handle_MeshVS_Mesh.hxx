@@ -6,22 +6,15 @@
 #ifndef _Handle_MeshVS_Mesh_HeaderFile
 #define _Handle_MeshVS_Mesh_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(AIS_InteractiveObject);
 class MeshVS_Mesh;
 
-DEFINE_STANDARD_HANDLE(MeshVS_Mesh,AIS_InteractiveObject)
+DEFINE_STANDARD_HANDLE(MeshVS_Mesh, AIS_InteractiveObject)
 
-#endif
+#endif // _Handle_MeshVS_Mesh_HeaderFile

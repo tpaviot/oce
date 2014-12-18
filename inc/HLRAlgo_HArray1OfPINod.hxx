@@ -6,28 +6,14 @@
 #ifndef _HLRAlgo_HArray1OfPINod_HeaderFile
 #define _HLRAlgo_HArray1OfPINod_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_HArray1OfPINod_HeaderFile
 #include <Handle_HLRAlgo_HArray1OfPINod.hxx>
-#endif
 
-#ifndef _HLRAlgo_Array1OfPINod_HeaderFile
 #include <HLRAlgo_Array1OfPINod.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_PolyInternalNode_HeaderFile
 #include <Handle_HLRAlgo_PolyInternalNode.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class HLRAlgo_Array1OfPINod;
 
 
 
-class HLRAlgo_HArray1OfPINod : public MMgt_TShared {
+class HLRAlgo_HArray1OfPINod : public MMgt_TShared
+{
 
 public:
 
   
-      HLRAlgo_HArray1OfPINod(const Standard_Integer Low,const Standard_Integer Up);
+    HLRAlgo_HArray1OfPINod(const Standard_Integer Low, const Standard_Integer Up);
   
-      HLRAlgo_HArray1OfPINod(const Standard_Integer Low,const Standard_Integer Up,const Handle(HLRAlgo_PolyInternalNode)& V);
+    HLRAlgo_HArray1OfPINod(const Standard_Integer Low, const Standard_Integer Up, const Handle(HLRAlgo_PolyInternalNode)& V);
   
-        void Init(const Handle(HLRAlgo_PolyInternalNode)& V) ;
+      void Init (const Handle(HLRAlgo_PolyInternalNode)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(HLRAlgo_PolyInternalNode)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(HLRAlgo_PolyInternalNode)& Value) ;
   
-       const Handle_HLRAlgo_PolyInternalNode& Value(const Standard_Integer Index) const;
+     const  Handle(HLRAlgo_PolyInternalNode)& Value (const Standard_Integer Index)  const;
   
-        Handle_HLRAlgo_PolyInternalNode& ChangeValue(const Standard_Integer Index) ;
+      Handle(HLRAlgo_PolyInternalNode)& ChangeValue (const Standard_Integer Index) ;
   
-       const HLRAlgo_Array1OfPINod& Array1() const;
+     const  HLRAlgo_Array1OfPINod& Array1()  const;
   
-        HLRAlgo_Array1OfPINod& ChangeArray1() ;
+      HLRAlgo_Array1OfPINod& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-HLRAlgo_Array1OfPINod myArray;
+  HLRAlgo_Array1OfPINod myArray;
 
 
 };
 
-#define ItemHArray1 Handle_HLRAlgo_PolyInternalNode
+#define ItemHArray1 Handle(HLRAlgo_PolyInternalNode)
 #define ItemHArray1_hxx <HLRAlgo_PolyInternalNode.hxx>
 #define TheArray1 HLRAlgo_Array1OfPINod
 #define TheArray1_hxx <HLRAlgo_Array1OfPINod.hxx>
@@ -103,7 +90,6 @@ HLRAlgo_Array1OfPINod myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_HArray1OfPINod_HeaderFile

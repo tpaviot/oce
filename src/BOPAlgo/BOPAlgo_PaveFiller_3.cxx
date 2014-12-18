@@ -42,15 +42,16 @@
 #include <BOPTools_AlgoTools.hxx>
 //
 #include <BOPCol_DataMapOfShapeInteger.hxx>
+#include <BOPCol_DataMapOfShapeListOfShape.hxx>
 #include <BOPCol_DataMapOfIntegerShape.hxx>
 #include <BOPCol_IndexedDataMapOfShapeBox.hxx>
 #include <BOPCol_BoxBndTree.hxx>
 #include <BOPCol_NCVector.hxx>
 #include <BOPCol_TBB.hxx>
 //
-#include <BOPInt_Context.hxx>
-#include <BOPInt_ShrunkRange.hxx>
-#include <BOPInt_Tools.hxx>
+#include <IntTools_Context.hxx>
+#include <IntTools_ShrunkRange.hxx>
+#include <IntTools_Tools.hxx>
 //
 #include <BOPDS_DataMapOfPaveBlockListOfPaveBlock.hxx>
 #include <BOPDS_MapOfPaveBlock.hxx>
@@ -64,17 +65,25 @@
 //
 #include <BOPAlgo_Tools.hxx>
 
+/////////////////////////////////////////////////////////////////////////
 //=======================================================================
 //class    : BOPAlgo_EdgeEdge
 //purpose  : 
 //=======================================================================
-class BOPAlgo_EdgeEdge : public IntTools_EdgeEdge {
+class BOPAlgo_EdgeEdge : 
+  public IntTools_EdgeEdge,
+  public BOPAlgo_Algo {
+ 
  public:
-  BOPAlgo_EdgeEdge()
-    : IntTools_EdgeEdge() {
+
+  DEFINE_STANDARD_ALLOC
+  //
+  BOPAlgo_EdgeEdge(): 
+    IntTools_EdgeEdge(),
+    BOPAlgo_Algo() {
   };
   //
-  ~BOPAlgo_EdgeEdge(){
+  virtual ~BOPAlgo_EdgeEdge(){
   };
   //
   void SetPaveBlock1(const Handle(BOPDS_PaveBlock)& aPB) {
@@ -91,6 +100,11 @@ class BOPAlgo_EdgeEdge : public IntTools_EdgeEdge {
   //
   Handle(BOPDS_PaveBlock)& PaveBlock2() {
     return myPB2;
+  }
+  // 
+  virtual void Perform() {
+    BOPAlgo_Algo::UserBreak();
+    IntTools_EdgeEdge::Perform();
   }
   //
  protected:
@@ -110,6 +124,147 @@ typedef BOPCol_TBBCnt
   <BOPAlgo_EdgeEdgeFunctor,
   BOPAlgo_VectorOfEdgeEdge> BOPAlgo_EdgeEdgeCnt;
 //
+/////////////////////////////////////////////////////////////////////////
+//=======================================================================
+//class    : BOPAlgo_TNV
+//purpose  : 
+//=======================================================================
+class BOPAlgo_TNV : public BOPCol_BoxBndTreeSelector{
+ public:
+  BOPAlgo_TNV() 
+    : BOPCol_BoxBndTreeSelector(), myTree(NULL) {
+  };
+  //
+  ~BOPAlgo_TNV(){
+  };
+  //
+  void SetVertex(const TopoDS_Vertex& aV) {
+    myV=aV;
+  }
+  //
+  const TopoDS_Vertex& Vertex()const {
+    return myV;
+  }
+  //
+  void SetTree(BOPCol_BoxBndTree& aTree) {
+    myTree=&aTree;
+  }
+  //
+  void Perform() {
+    myTree->Select(*this);
+  }
+  //
+ protected:
+  TopoDS_Vertex myV;
+  BOPCol_BoxBndTree *myTree;
+};
+//
+//=======================================================================
+typedef BOPCol_NCVector
+  <BOPAlgo_TNV> BOPAlgo_VectorOfTNV; 
+//
+typedef BOPCol_TBBFunctor 
+  <BOPAlgo_TNV,
+  BOPAlgo_VectorOfTNV> BOPAlgo_TNVFunctor;
+//
+typedef BOPCol_TBBCnt 
+  <BOPAlgo_TNVFunctor,
+  BOPAlgo_VectorOfTNV> BOPAlgo_TNVCnt;
+/////////////////////////////////////////////////////////////////////////
+//=======================================================================
+//class    : BOPAlgo_PVE
+//purpose  : 
+//=======================================================================
+class BOPAlgo_PVE {
+ public:
+  BOPAlgo_PVE()
+    : myIV(-1), myIE(-1), myFlag(-1), myT(-1.) {
+  };
+  //
+  ~BOPAlgo_PVE(){
+  };
+  //
+  void SetIndices(const Standard_Integer nV,
+                  const Standard_Integer nE){
+    myIV=nV;
+    myIE=nE;
+  }
+  //
+  void Indices(Standard_Integer& nV,
+               Standard_Integer& nE) const {
+    nV=myIV;
+    nE=myIE;
+  }
+  //
+  void SetVertex(const TopoDS_Vertex& aV) {
+    myV=aV;
+  }
+  //
+  const TopoDS_Vertex& Vertex()const {
+    return myV;
+  }
+  //
+  void SetEdge(const TopoDS_Edge& aE) {
+    myE=aE;
+  }
+  //
+  const TopoDS_Edge& Edge()const {
+    return myE;
+  }
+  //
+  void SetPaveBlock(const Handle(BOPDS_PaveBlock)& aPB) {
+    myPB=aPB;
+  }
+  //
+  Handle(BOPDS_PaveBlock)& PaveBlock() {
+    return myPB;
+  }
+  //
+  Standard_Integer Flag()const {
+    return myFlag;
+  }
+  //
+  Standard_Real Parameter()const {
+    return myT;
+  }
+  //
+  void SetContext(const Handle(IntTools_Context)& aContext) {
+    myContext=aContext;
+  }
+  //
+  const Handle(IntTools_Context)& Context()const {
+    return myContext;
+  }
+  //
+  void Perform() {
+    myFlag=myContext->ComputeVE (myV, myE, myT);
+  };
+  //
+ protected:
+  Standard_Integer myIV;
+  Standard_Integer myIE;
+  Standard_Integer myFlag;
+  Standard_Real myT;
+  TopoDS_Vertex myV;
+  TopoDS_Edge myE;
+  Handle(BOPDS_PaveBlock) myPB;
+  Handle(IntTools_Context) myContext;
+};
+//=======================================================================
+typedef BOPCol_NCVector
+  <BOPAlgo_PVE> BOPAlgo_VectorOfPVE; 
+//
+typedef BOPCol_TBBContextFunctor 
+  <BOPAlgo_PVE,
+  BOPAlgo_VectorOfPVE,
+  Handle(IntTools_Context), 
+  IntTools_Context> BOPAlgo_PVEFunctor;
+//
+typedef BOPCol_TBBContextCnt 
+  <BOPAlgo_PVEFunctor,
+  BOPAlgo_VectorOfPVE,
+  Handle(IntTools_Context)> BOPAlgo_PVECnt;
+/////////////////////////////////////////////////////////////////////////
 //=======================================================================
 // function: PerformEE
 // purpose: 
@@ -202,6 +357,7 @@ void BOPAlgo_PaveFiller::PerformEE()
         //
         anEdgeEdge.SetEdge1(aE1, aT11, aT12);
         anEdgeEdge.SetEdge2(aE2, aT21, aT22);
+        anEdgeEdge.SetProgressIndicator(myProgressIndicator);
       }//for (; aIt2.More(); aIt2.Next()) {
     }//for (; aIt1.More(); aIt1.Next()) {
   }//for (; myIterator->More(); myIterator->Next()) {
@@ -251,20 +407,20 @@ void BOPAlgo_PaveFiller::PerformEE()
           TopoDS_Vertex aVnew;
           IntTools_Range aCR1, aCR2;
           //
-          BOPInt_Tools::VertexParameters(aCPart, aT1, aT2);
+          IntTools_Tools::VertexParameters(aCPart, aT1, aT2);
           aTol = Precision::Confusion();
           aCR1 = aCPart.Range1();
           aCR2 = aCPart.Ranges2()(1);
           // 
           //decide to keep the pave or not
-          bIsOnPave[0] = BOPInt_Tools::IsOnPave1(aT1, aR11, aTol) ||
-            BOPInt_Tools::IsOnPave1(aR11.First(), aCR1, aTol);
-          bIsOnPave[1] = BOPInt_Tools::IsOnPave1(aT1, aR12, aTol) || 
-            BOPInt_Tools::IsOnPave1(aR12.Last(), aCR1, aTol);
-          bIsOnPave[2] = BOPInt_Tools::IsOnPave1(aT2, aR21, aTol) ||
-            BOPInt_Tools::IsOnPave1(aR21.First(), aCR2, aTol);
-          bIsOnPave[3] = BOPInt_Tools::IsOnPave1(aT2, aR22, aTol) ||
-            BOPInt_Tools::IsOnPave1(aR22.Last(), aCR2, aTol);
+          bIsOnPave[0] = IntTools_Tools::IsOnPave1(aT1, aR11, aTol) ||
+            IntTools_Tools::IsOnPave1(aR11.First(), aCR1, aTol);
+          bIsOnPave[1] = IntTools_Tools::IsOnPave1(aT1, aR12, aTol) || 
+            IntTools_Tools::IsOnPave1(aR12.Last(), aCR1, aTol);
+          bIsOnPave[2] = IntTools_Tools::IsOnPave1(aT2, aR21, aTol) ||
+            IntTools_Tools::IsOnPave1(aR21.First(), aCR2, aTol);
+          bIsOnPave[3] = IntTools_Tools::IsOnPave1(aT2, aR22, aTol) ||
+            IntTools_Tools::IsOnPave1(aR22.Last(), aCR2, aTol);
           //
           aPB1->Indices(nV[0], nV[1]);
           aPB2->Indices(nV[2], nV[3]);
@@ -492,10 +648,13 @@ Standard_Integer BOPAlgo_PaveFiller::PerformVerticesEE
       }
     }
   }
-  //
   // 5 
   // 5.1  Compute Extra Paves and 
   // 5.2. Add Extra Paves to the PaveBlocks
+  //-------------------------------------------------------------
+  Standard_Integer k, aNbVPVE;
+  BOPAlgo_VectorOfPVE aVPVE;
+  //
   aNb=aMPBLI.Extent();
   for(i=1; i<=aNb; ++i) {
     Handle(BOPDS_PaveBlock) aPB=aMPBLI.FindKey(i);
@@ -508,12 +667,30 @@ Standard_Integer BOPAlgo_PaveFiller::PerformVerticesEE
       nVx=aItLI.Value();
       const TopoDS_Vertex& aVx=(*(TopoDS_Vertex *)(&myDS->Shape(nVx)));
       //
-      iFlag=myContext->ComputeVE (aVx, aE, aT);
-      if (!iFlag) {
-        aPave.SetIndex(nVx);
-        aPave.SetParameter(aT);
-        aPB->AppendExtPave(aPave);
-      }
+      BOPAlgo_PVE& aPVE=aVPVE.Append1();
+      aPVE.SetIndices(nVx, nE);
+      aPVE.SetVertex(aVx);
+      aPVE.SetEdge(aE);
+      aPVE.SetPaveBlock(aPB);
+    }
+  }
+  //
+  aNbVPVE=aVPVE.Extent();
+  //=============================================================
+  BOPAlgo_PVECnt::Perform(myRunParallel, aVPVE, myContext);
+  //=============================================================
+  //
+  for (k=0; k < aNbVPVE; ++k) {
+    BOPAlgo_PVE& aPVE=aVPVE(k);
+    iFlag=aPVE.Flag();
+    if (!iFlag) {
+      aPVE.Indices(nVx, nE);
+      aT=aPVE.Parameter();
+      Handle(BOPDS_PaveBlock)& aPB=aPVE.PaveBlock();
+      //
+      aPave.SetIndex(nVx);
+      aPave.SetParameter(aT);
+      aPB->AppendExtPave(aPave);
     }
   }
   // 6  Split PaveBlocksa
@@ -533,7 +710,6 @@ Standard_Integer BOPAlgo_PaveFiller::PerformVerticesEE
   //
   return iRet;
 }
-
 //=======================================================================
 //function : TreatNewVertices
 //purpose  : 
@@ -542,136 +718,117 @@ void BOPAlgo_PaveFiller::TreatNewVertices
   (const BOPCol_IndexedDataMapOfShapeInteger& aMapVI,
    BOPCol_IndexedDataMapOfShapeListOfShape& myImages)
 {
-  Standard_Integer j, i, aNbV, aNbVSD;
+  Standard_Integer  i, aNbV;//, aNbVSD;
   Standard_Real aTol;
-  TopoDS_Shape aVF;
   TopoDS_Vertex aVnew;
+  TopoDS_Shape aVF;
   BOPCol_IndexedMapOfShape aMVProcessed;
-
+  BOPCol_MapOfInteger aMFence;
   BOPCol_ListIteratorOfListOfInteger aIt;
-  BOPCol_IndexedDataMapOfShapeListOfShape aMVLV;
-  BOPCol_DataMapOfIntegerShape aMIS;
-  BOPCol_IndexedDataMapOfShapeBox aMSB;
+  BOPCol_DataMapOfShapeListOfShape aDMVLV;
+  BOPCol_DataMapIteratorOfDataMapOfShapeListOfShape aItDMVLV;
   //
   BOPCol_BoxBndTreeSelector aSelector;
   BOPCol_BoxBndTree aBBTree;
-  NCollection_UBTreeFiller <Standard_Integer, Bnd_Box> aTreeFiller(aBBTree);
+  NCollection_UBTreeFiller <Standard_Integer, 
+                            Bnd_Box> aTreeFiller(aBBTree);
+  BOPAlgo_VectorOfTNV aVTNV;
   //
   aNbV = aMapVI.Extent();
   for (i=1; i<=aNbV; ++i) {
-    const TopoDS_Shape& aV=aMapVI.FindKey(i);
+    const TopoDS_Vertex& aV=*((TopoDS_Vertex*)&aMapVI.FindKey(i));
     Bnd_Box aBox;
     //
-    aTol=BRep_Tool::Tolerance(*(TopoDS_Vertex*)(&aV));
+    aTol=BRep_Tool::Tolerance(aV);
     aBox.SetGap(aTol);
-    BRepBndLib::Add(aV, aBox);
+    aBox.Add(BRep_Tool::Pnt(aV));
+    aBox.Enlarge(aTol);
     //
     aTreeFiller.Add(i, aBox);
     //
-    aMIS.Bind(i, aV);
-    aMSB.Add(aV, aBox);
+    BOPAlgo_TNV& aTNV=aVTNV.Append1();
+    aTNV.SetTree(aBBTree);
+    aTNV.SetBox(aBox);
+    aTNV.SetVertex(aV);
   }
   //
   aTreeFiller.Fill();
-
+  //
+  //===========================================
+  BOPAlgo_TNVCnt::Perform(myRunParallel, aVTNV);
+  //===========================================
+  //
   // Chains
   for (i=1; i<=aNbV; ++i) {
-    const TopoDS_Shape& aV=aMapVI.FindKey(i);
-    //
-    if (aMVProcessed.Contains(aV)) {
+    if (!aMFence.Add(i)) {
       continue;
     }
     //
-    Standard_Integer aNbIP, aIP, aNbIP1, aIP1;
+    Standard_Integer aIP, aNbIP1, aIP1;
     BOPCol_ListOfShape aLVSD;
-    BOPCol_MapOfInteger aMIP, aMIP1, aMIPC;
-    BOPCol_MapIteratorOfMapOfInteger aIt1;
+    BOPCol_MapIteratorOfMapOfInteger aItMI;
+    BOPCol_ListOfInteger aLIP, aLIP1, aLIPC;
+    BOPCol_ListIteratorOfListOfInteger aItLIP;
     //
-    aMIP.Add(i);
+    aLIPC.Append(i);
+    aLIP.Append(i);
     for(;;) {
-      aNbIP=aMIP.Extent();
-      aIt1.Initialize(aMIP);
-      for(; aIt1.More(); aIt1.Next()) {
-        aIP=aIt1.Key();
-        if (aMIPC.Contains(aIP)) {
-          continue;
-        }
+      aItLIP.Initialize(aLIP);
+      for(; aItLIP.More(); aItLIP.Next()) {
+        aIP=aItLIP.Value();
         //
-        const TopoDS_Shape& aVP=aMIS.Find(aIP);
-        const Bnd_Box& aBoxVP=aMSB.FindFromKey(aVP);
-        //
-        aSelector.Clear();
-        aSelector.SetBox(aBoxVP);
-        //
-        aNbVSD=aBBTree.Select(aSelector);
-        if (!aNbVSD) {
-          continue;  // it must not be
-        }
-        //
-        const BOPCol_ListOfInteger& aLI=aSelector.Indices();
+        BOPAlgo_TNV& aTNV=aVTNV(aIP-1);
+        const BOPCol_ListOfInteger& aLI=aTNV.Indices();
         aIt.Initialize(aLI);
         for (; aIt.More(); aIt.Next()) {
           aIP1=aIt.Value();
-          if (aMIP.Contains(aIP1)) {
+          if (!aMFence.Add(aIP1)) {
             continue;
           }
-          aMIP1.Add(aIP1);
+          aLIP1.Append(aIP1);
         } //for (; aIt.More(); aIt.Next()) {
       }//for(; aIt1.More(); aIt1.Next()) {
       //
-      aNbIP1=aMIP1.Extent();
+      aNbIP1=aLIP1.Extent();
       if (!aNbIP1) {
-        break; // from while(1)
+        break; // from for(;;) 
       }
       //
-      aIt1.Initialize(aMIP);
-      for(; aIt1.More(); aIt1.Next()) {
-        aIP=aIt1.Key();
-        aMIPC.Add(aIP);
+      aLIP.Clear();
+      aItLIP.Initialize(aLIP1);
+      for(; aItLIP.More(); aItLIP.Next()) {
+        aIP=aItLIP.Value();
+        aLIP.Append(aIP);
+        aLIPC.Append(aIP);
       }
-      //
-      aMIP.Clear();
-      aIt1.Initialize(aMIP1);
-      for(; aIt1.More(); aIt1.Next()) {
-        aIP=aIt1.Key();
-        aMIP.Add(aIP);
-      }
-      aMIP1.Clear();
-    }// while(1)
-    //...
-    aNbIP=aMIPC.Extent();
-    if (!aNbIP) {
-      aMIPC.Add(i);
-    }
+      aLIP1.Clear();
+    }// for(;;) {
     //
-    aIt1.Initialize(aMIPC);
-    for(j=0; aIt1.More(); aIt1.Next(), ++j) {
-      aIP=aIt1.Key();
-      const TopoDS_Shape& aVP=aMIS.Find(aIP);
-      if (!j) {
-        aVF=aVP;
-      }
+    aItLIP.Initialize(aLIPC);
+    for(; aItLIP.More(); aItLIP.Next()) {
+      aIP=aItLIP.Value();
+      const TopoDS_Vertex& aVP=aVTNV(aIP-1).Vertex(); 
       aLVSD.Append(aVP);
-      aMVProcessed.Add(aVP);
     }
-    aMVLV.Add(aVF, aLVSD);
+    aVF=aLVSD.First();
+    aDMVLV.Bind(aVF, aLVSD);
   }// for (i=1; i<=aNbV; ++i) {
 
   // Make new vertices
-  aNbV=aMVLV.Extent();
-  for (i=1; i<=aNbV; ++i) {
-    const TopoDS_Shape& aV=aMVLV.FindKey(i);
-    BOPCol_ListOfShape& aLVSD=aMVLV.ChangeFromIndex(i);
-    aNbVSD=aLVSD.Extent();
-    if (aNbVSD>1) {
-      BOPTools_AlgoTools::MakeVertex(aLVSD, aVnew);
-      myImages.Add(aVnew, aLVSD);
-    } else {
+  aItDMVLV.Initialize(aDMVLV);
+  for(; aItDMVLV.More(); aItDMVLV.Next()) {
+    const TopoDS_Shape& aV=aItDMVLV.Key();
+    const BOPCol_ListOfShape& aLVSD=aItDMVLV.Value();
+    if (aLVSD.IsEmpty()) {
       myImages.Add(aV, aLVSD);
     }
+    else {
+      BOPCol_ListOfShape* pLVSD=(BOPCol_ListOfShape*)&aLVSD;
+      BOPTools_AlgoTools::MakeVertex(*pLVSD, aVnew);
+      myImages.Add(aVnew, aLVSD);
+    } 
   }
 }
-
 //=======================================================================
 //function : FillShrunkData
 //purpose  : 
@@ -680,7 +837,7 @@ void BOPAlgo_PaveFiller::FillShrunkData(Handle(BOPDS_PaveBlock)& thePB)
 {
   Standard_Integer nE, nV1, nV2, iErr;
   Standard_Real aT1, aT2, aTS1, aTS2;
-  BOPInt_ShrunkRange aSR;
+  IntTools_ShrunkRange aSR;
   //
   myErrorStatus=0;
   myWarningStatus = 0;

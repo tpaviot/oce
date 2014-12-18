@@ -1,3 +1,1 @@
-#ifndef _StepFEA_FeaMaterialPropertyRepresentationItem_HeaderFile
 #include <StepFEA_FeaMaterialPropertyRepresentationItem.hxx>
-#endif

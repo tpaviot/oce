@@ -1,3 +1,1 @@
-#ifndef _StepGeom_Point_HeaderFile
 #include <StepGeom_Point.hxx>
-#endif

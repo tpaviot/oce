@@ -1,6 +1,2 @@
-#ifndef _ShapeBuild_ReShape_HeaderFile
 #include <ShapeBuild_ReShape.hxx>
-#endif
-#ifndef _ShapeUpgrade_Tool_HeaderFile
 #include <ShapeUpgrade_Tool.hxx>
-#endif

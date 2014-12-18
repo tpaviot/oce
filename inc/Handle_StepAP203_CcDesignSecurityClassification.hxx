@@ -6,22 +6,15 @@
 #ifndef _Handle_StepAP203_CcDesignSecurityClassification_HeaderFile
 #define _Handle_StepAP203_CcDesignSecurityClassification_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_SecurityClassificationAssignment_HeaderFile
 #include <Handle_StepBasic_SecurityClassificationAssignment.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_SecurityClassificationAssignment);
 class StepAP203_CcDesignSecurityClassification;
 
-DEFINE_STANDARD_HANDLE(StepAP203_CcDesignSecurityClassification,StepBasic_SecurityClassificationAssignment)
+DEFINE_STANDARD_HANDLE(StepAP203_CcDesignSecurityClassification, StepBasic_SecurityClassificationAssignment)
 
-#endif
+#endif // _Handle_StepAP203_CcDesignSecurityClassification_HeaderFile

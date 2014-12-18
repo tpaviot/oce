@@ -6,25 +6,16 @@
 #ifndef _PCDM_Document_HeaderFile
 #define _PCDM_Document_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PCDM_Document_HeaderFile
 #include <Handle_PCDM_Document.hxx>
-#endif
 
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 
 
-class PCDM_Document : public Standard_Persistent {
+class PCDM_Document : public Standard_Persistent
+{
 
 public:
 
@@ -33,7 +24,7 @@ PCDM_Document(const Storage_stCONSTclCOM& a) : Standard_Persistent(a)
 {
   
 }
-  PCDM_Document( )
+PCDM_Document( )
 {
   
 }
@@ -58,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PCDM_Document_HeaderFile

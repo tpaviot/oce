@@ -5,19 +5,11 @@
 
 #include <Expr_IndexedMapNodeOfMapOfNamedUnknown.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Expr_NamedUnknown_HeaderFile
 #include <Expr_NamedUnknown.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _Expr_MapOfNamedUnknown_HeaderFile
 #include <Expr_MapOfNamedUnknown.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(Expr_IndexedMapNodeOfMapOfNamedUnknown,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Expr_IndexedMapNodeOfMapOfNamedUnknown)
 
 
-#define TheKey Handle_Expr_NamedUnknown
+#define TheKey Handle(Expr_NamedUnknown)
 #define TheKey_hxx <Expr_NamedUnknown.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

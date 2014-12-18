@@ -6,28 +6,14 @@
 #ifndef _PColgp_SeqExplorerOfHSequenceOfPnt_HeaderFile
 #define _PColgp_SeqExplorerOfHSequenceOfPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_PColgp_SeqNodeOfHSequenceOfPnt_HeaderFile
 #include <Handle_PColgp_SeqNodeOfHSequenceOfPnt.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColgp_HSequenceOfPnt_HeaderFile
 #include <Handle_PColgp_HSequenceOfPnt.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class PColgp_SeqNodeOfHSequenceOfPnt;
 class PColgp_HSequenceOfPnt;
 class Standard_NoSuchObject;
@@ -36,22 +22,22 @@ class gp_Pnt;
 
 
 
-class PColgp_SeqExplorerOfHSequenceOfPnt  {
+class PColgp_SeqExplorerOfHSequenceOfPnt 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   PColgp_SeqExplorerOfHSequenceOfPnt(const Handle(PColgp_HSequenceOfPnt)& S);
+  Standard_EXPORT PColgp_SeqExplorerOfHSequenceOfPnt(const Handle(PColgp_HSequenceOfPnt)& S);
   
-  Standard_EXPORT     gp_Pnt Value(const Standard_Integer Index) ;
+  Standard_EXPORT   gp_Pnt Value (const Standard_Integer Index) ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const gp_Pnt& T) ;
+  Standard_EXPORT   Standard_Boolean Contains (const gp_Pnt& T) ;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const gp_Pnt& T,const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const gp_Pnt& T, const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const gp_Pnt& T) ;
-
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const gp_Pnt& T) ;
 
 
 
@@ -66,9 +52,9 @@ private:
 
 
 
-Handle_PColgp_SeqNodeOfHSequenceOfPnt CurrentItem;
-Standard_Integer CurrentIndex;
-Handle_PColgp_HSequenceOfPnt TheSequence;
+  Handle(PColgp_SeqNodeOfHSequenceOfPnt) CurrentItem;
+  Standard_Integer CurrentIndex;
+  Handle(PColgp_HSequenceOfPnt) TheSequence;
 
 
 };
@@ -77,7 +63,6 @@ Handle_PColgp_HSequenceOfPnt TheSequence;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColgp_SeqExplorerOfHSequenceOfPnt_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape_HeaderFile
 #define _Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_MapNode_HeaderFile
 #include <Handle_TCollection_MapNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_MapNode);
 class BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape;
 
-DEFINE_STANDARD_HANDLE(BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape,TCollection_MapNode)
+DEFINE_STANDARD_HANDLE(BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape, TCollection_MapNode)
 
-#endif
+#endif // _Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape_HeaderFile

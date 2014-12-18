@@ -6,45 +6,40 @@
 #ifndef _StepElement_CurveElementSectionDefinition_HeaderFile
 #define _StepElement_CurveElementSectionDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_CurveElementSectionDefinition_HeaderFile
 #include <Handle_StepElement_CurveElementSectionDefinition.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity CurveElementSectionDefinition <br>
-class StepElement_CurveElementSectionDefinition : public MMgt_TShared {
+//! Representation of STEP entity CurveElementSectionDefinition
+class StepElement_CurveElementSectionDefinition : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_CurveElementSectionDefinition();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aDescription,const Standard_Real aSectionAngle) ;
-  //! Returns field Description <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
-  //! Set field Description <br>
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& Description) ;
-  //! Returns field SectionAngle <br>
-  Standard_EXPORT     Standard_Real SectionAngle() const;
-  //! Set field SectionAngle <br>
-  Standard_EXPORT     void SetSectionAngle(const Standard_Real SectionAngle) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_CurveElementSectionDefinition();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aDescription, const Standard_Real aSectionAngle) ;
+  
+  //! Returns field Description
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
+  
+  //! Set field Description
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& Description) ;
+  
+  //! Returns field SectionAngle
+  Standard_EXPORT   Standard_Real SectionAngle()  const;
+  
+  //! Set field SectionAngle
+  Standard_EXPORT   void SetSectionAngle (const Standard_Real SectionAngle) ;
 
 
 
@@ -59,8 +54,8 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theDescription;
-Standard_Real theSectionAngle;
+  Handle(TCollection_HAsciiString) theDescription;
+  Standard_Real theSectionAngle;
 
 
 };
@@ -69,7 +64,6 @@ Standard_Real theSectionAngle;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_CurveElementSectionDefinition_HeaderFile

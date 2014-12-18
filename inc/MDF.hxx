@@ -6,46 +6,20 @@
 #ifndef _MDF_HeaderFile
 #define _MDF_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TDF_Data_HeaderFile
 #include <Handle_TDF_Data.hxx>
-#endif
-#ifndef _Handle_PDF_Data_HeaderFile
 #include <Handle_PDF_Data.hxx>
-#endif
-#ifndef _Handle_MDF_ASDriverTable_HeaderFile
 #include <Handle_MDF_ASDriverTable.hxx>
-#endif
-#ifndef _Handle_MDF_SRelocationTable_HeaderFile
 #include <Handle_MDF_SRelocationTable.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_MDF_ARDriverTable_HeaderFile
 #include <Handle_MDF_ARDriverTable.hxx>
-#endif
-#ifndef _Handle_MDF_RRelocationTable_HeaderFile
 #include <Handle_MDF_RRelocationTable.hxx>
-#endif
-#ifndef _Handle_MDF_ASDriverHSequence_HeaderFile
 #include <Handle_MDF_ASDriverHSequence.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Handle_MDF_ARDriverHSequence_HeaderFile
 #include <Handle_MDF_ARDriverHSequence.hxx>
-#endif
 class TDF_Data;
 class PDF_Data;
 class MDF_ASDriverTable;
@@ -96,45 +70,49 @@ class MDF_DataMapIteratorOfTypeDriverListMapOfARDriverTable;
 class MDF_TypeDriverListMapOfARDriverTable;
 
 
-//! This package provides classes and methods to <br>
-//!          translate a transient DF into a persistent one and <br>
-//!          vice versa. <br>
-//! <br>
-//!          Driver <br>
-//! <br>
-//!          A driver is a tool used to translate a transient <br>
-//!          attribute into a persistent one and vice versa. <br>
-//! <br>
-//!          Relocation Table <br>
-//! <br>
-//!          A relocation table is a tool who provides services <br>
-//!          to relocate transient objects into persistent ones <br>
-//!          (or vice versa). It uses a map system to keep the <br>
-//!          sharing. This service is used by the drivers. <br>
-//! <br>
-//!          Driver Table <br>
-//! <br>
-//!          A driver table is an object building links between <br>
-//!          object types and object drivers. In the <br>
-//!          translation process, a driver table is asked to <br>
-//!          give a translation driver for each current object <br>
-//!          to be translated. <br>
-class MDF  {
+//! This package provides classes and methods to
+//! translate a transient DF into a persistent one and
+//! vice versa.
+//!
+//! Driver
+//!
+//! A driver is a tool used to translate a transient
+//! attribute into a persistent one and vice versa.
+//!
+//! Relocation Table
+//!
+//! A relocation table is a tool who provides services
+//! to relocate transient objects into persistent ones
+//! (or vice versa). It uses a map system to keep the
+//! sharing. This service is used by the drivers.
+//!
+//! Driver Table
+//!
+//! A driver table is an object building links between
+//! object types and object drivers. In the
+//! translation process, a driver table is asked to
+//! give a translation driver for each current object
+//! to be translated.
+class MDF 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Translates a transient <aSource> into a persistent <br>
-//!          <aTarget>. <br>
-  Standard_EXPORT   static  void FromTo(const Handle(TDF_Data)& aSource,Handle(PDF_Data)& aTarget,const Handle(MDF_ASDriverTable)& aDriverTable,const Handle(MDF_SRelocationTable)& aReloc,const Standard_Integer aVersion = 0) ;
-  //! Translates a persistent <aSource> into a transient <br>
-//!          <aTarget>. <br>
-  Standard_EXPORT   static  void FromTo(const Handle(PDF_Data)& aSource,Handle(TDF_Data)& aTarget,const Handle(MDF_ARDriverTable)& aDriverTable,const Handle(MDF_RRelocationTable)& aReloc) ;
-  //! Adds the attribute storage drivers to <aDriverSeq>. <br>
-  Standard_EXPORT   static  void AddStorageDrivers(const Handle(MDF_ASDriverHSequence)& aDriverSeq,const Handle(CDM_MessageDriver)& theMessageDriver) ;
-  //! Adds the attribute retrieval drivers to <aDriverSeq>. <br>
-  Standard_EXPORT   static  void AddRetrievalDrivers(const Handle(MDF_ARDriverHSequence)& aDriverSeq,const Handle(CDM_MessageDriver)& theMessageDriver) ;
-
+  
+  //! Translates a transient <aSource> into a persistent
+  //! <aTarget>.
+  Standard_EXPORT static   void FromTo (const Handle(TDF_Data)& aSource, Handle(PDF_Data)& aTarget, const Handle(MDF_ASDriverTable)& aDriverTable, const Handle(MDF_SRelocationTable)& aReloc, const Standard_Integer aVersion = 0) ;
+  
+  //! Translates a persistent <aSource> into a transient
+  //! <aTarget>.
+  Standard_EXPORT static   void FromTo (const Handle(PDF_Data)& aSource, Handle(TDF_Data)& aTarget, const Handle(MDF_ARDriverTable)& aDriverTable, const Handle(MDF_RRelocationTable)& aReloc) ;
+  
+  //! Adds the attribute storage drivers to <aDriverSeq>.
+  Standard_EXPORT static   void AddStorageDrivers (const Handle(MDF_ASDriverHSequence)& aDriverSeq, const Handle(CDM_MessageDriver)& theMessageDriver) ;
+  
+  //! Adds the attribute retrieval drivers to <aDriverSeq>.
+  Standard_EXPORT static   void AddRetrievalDrivers (const Handle(MDF_ARDriverHSequence)& aDriverSeq, const Handle(CDM_MessageDriver)& theMessageDriver) ;
 
 
 
@@ -196,7 +174,6 @@ friend class MDF_TypeDriverListMapOfARDriverTable;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_HeaderFile

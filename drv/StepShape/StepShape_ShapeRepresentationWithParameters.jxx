@@ -1,3 +1,1 @@
-#ifndef _StepShape_ShapeRepresentationWithParameters_HeaderFile
 #include <StepShape_ShapeRepresentationWithParameters.hxx>
-#endif

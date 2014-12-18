@@ -6,25 +6,13 @@
 #ifndef _AppDef_HArray1OfMultiPointConstraint_HeaderFile
 #define _AppDef_HArray1OfMultiPointConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AppDef_HArray1OfMultiPointConstraint_HeaderFile
 #include <Handle_AppDef_HArray1OfMultiPointConstraint.hxx>
-#endif
 
-#ifndef _AppDef_Array1OfMultiPointConstraint_HeaderFile
 #include <AppDef_Array1OfMultiPointConstraint.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class AppDef_Array1OfMultiPointConstraint;
 
 
 
-class AppDef_HArray1OfMultiPointConstraint : public MMgt_TShared {
+class AppDef_HArray1OfMultiPointConstraint : public MMgt_TShared
+{
 
 public:
 
   
-      AppDef_HArray1OfMultiPointConstraint(const Standard_Integer Low,const Standard_Integer Up);
+    AppDef_HArray1OfMultiPointConstraint(const Standard_Integer Low, const Standard_Integer Up);
   
-      AppDef_HArray1OfMultiPointConstraint(const Standard_Integer Low,const Standard_Integer Up,const AppDef_MultiPointConstraint& V);
+    AppDef_HArray1OfMultiPointConstraint(const Standard_Integer Low, const Standard_Integer Up, const AppDef_MultiPointConstraint& V);
   
-        void Init(const AppDef_MultiPointConstraint& V) ;
+      void Init (const AppDef_MultiPointConstraint& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const AppDef_MultiPointConstraint& Value) ;
+      void SetValue (const Standard_Integer Index, const AppDef_MultiPointConstraint& Value) ;
   
-       const AppDef_MultiPointConstraint& Value(const Standard_Integer Index) const;
+     const  AppDef_MultiPointConstraint& Value (const Standard_Integer Index)  const;
   
-        AppDef_MultiPointConstraint& ChangeValue(const Standard_Integer Index) ;
+      AppDef_MultiPointConstraint& ChangeValue (const Standard_Integer Index) ;
   
-       const AppDef_Array1OfMultiPointConstraint& Array1() const;
+     const  AppDef_Array1OfMultiPointConstraint& Array1()  const;
   
-        AppDef_Array1OfMultiPointConstraint& ChangeArray1() ;
+      AppDef_Array1OfMultiPointConstraint& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-AppDef_Array1OfMultiPointConstraint myArray;
+  AppDef_Array1OfMultiPointConstraint myArray;
 
 
 };
@@ -100,7 +89,6 @@ AppDef_Array1OfMultiPointConstraint myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AppDef_HArray1OfMultiPointConstraint_HeaderFile

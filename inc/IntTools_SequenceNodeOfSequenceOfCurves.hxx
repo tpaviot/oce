@@ -6,38 +6,27 @@
 #ifndef _IntTools_SequenceNodeOfSequenceOfCurves_HeaderFile
 #define _IntTools_SequenceNodeOfSequenceOfCurves_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntTools_SequenceNodeOfSequenceOfCurves_HeaderFile
 #include <Handle_IntTools_SequenceNodeOfSequenceOfCurves.hxx>
-#endif
 
-#ifndef _IntTools_Curve_HeaderFile
 #include <IntTools_Curve.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class IntTools_Curve;
 class IntTools_SequenceOfCurves;
 
 
 
-class IntTools_SequenceNodeOfSequenceOfCurves : public TCollection_SeqNode {
+class IntTools_SequenceNodeOfSequenceOfCurves : public TCollection_SeqNode
+{
 
 public:
 
   
-      IntTools_SequenceNodeOfSequenceOfCurves(const IntTools_Curve& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    IntTools_SequenceNodeOfSequenceOfCurves(const IntTools_Curve& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        IntTools_Curve& Value() const;
+      IntTools_Curve& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-IntTools_Curve myValue;
+  IntTools_Curve myValue;
 
 
 };
@@ -78,7 +67,6 @@ IntTools_Curve myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_SequenceNodeOfSequenceOfCurves_HeaderFile

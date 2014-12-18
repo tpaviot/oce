@@ -6,53 +6,38 @@
 #ifndef _PTopoDS_HShape_HeaderFile
 #define _PTopoDS_HShape_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PTopoDS_HShape_HeaderFile
 #include <Handle_PTopoDS_HShape.hxx>
-#endif
 
-#ifndef _Handle_PTopoDS_TShape_HeaderFile
 #include <Handle_PTopoDS_TShape.hxx>
-#endif
-#ifndef _PTopLoc_Location_HeaderFile
 #include <PTopLoc_Location.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _ObjMgt_ExternShareable_HeaderFile
 #include <ObjMgt_ExternShareable.hxx>
-#endif
 class PTopoDS_TShape;
 class PTopLoc_Location;
 
 
-class PTopoDS_HShape : public ObjMgt_ExternShareable {
+class PTopoDS_HShape : public ObjMgt_ExternShareable
+{
 
 public:
 
   
-  Standard_EXPORT   PTopoDS_HShape();
+  Standard_EXPORT PTopoDS_HShape();
   
-  Standard_EXPORT     Handle_PTopoDS_TShape TShape() const;
+  Standard_EXPORT   Handle(PTopoDS_TShape) TShape()  const;
   
-  Standard_EXPORT     void TShape(const Handle(PTopoDS_TShape)& T) ;
+  Standard_EXPORT   void TShape (const Handle(PTopoDS_TShape)& T) ;
   
-  Standard_EXPORT     PTopLoc_Location Location() const;
+  Standard_EXPORT   PTopLoc_Location Location()  const;
   
-  Standard_EXPORT     void Location(const PTopLoc_Location& L) ;
+  Standard_EXPORT   void Location (const PTopLoc_Location& L) ;
   
-  Standard_EXPORT     TopAbs_Orientation Orientation() const;
+  Standard_EXPORT   TopAbs_Orientation Orientation()  const;
   
-  Standard_EXPORT     void Orientation(const TopAbs_Orientation O) ;
+  Standard_EXPORT   void Orientation (const TopAbs_Orientation O) ;
 
 PTopoDS_HShape(const Storage_stCONSTclCOM& a) : ObjMgt_ExternShareable(a)
 {
@@ -76,9 +61,9 @@ protected:
 private: 
 
 
-Handle_PTopoDS_TShape myTShape;
-PTopLoc_Location myLocation;
-TopAbs_Orientation myOrient;
+  Handle(PTopoDS_TShape) myTShape;
+  PTopLoc_Location myLocation;
+  TopAbs_Orientation myOrient;
 
 
 };
@@ -87,7 +72,6 @@ TopAbs_Orientation myOrient;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTopoDS_HShape_HeaderFile

@@ -6,38 +6,27 @@
 #ifndef _Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC_HeaderFile
 #define _Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC_HeaderFile
 #include <Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC.hxx>
-#endif
 
-#ifndef _Extrema_POnCurv_HeaderFile
 #include <Extrema_POnCurv.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Extrema_POnCurv;
 class Extrema_SeqPCOfPCFOfEPCOfELPCOfLocateExtPC;
 
 
 
-class Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC : public TCollection_SeqNode {
+class Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC : public TCollection_SeqNode
+{
 
 public:
 
   
-      Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC(const Extrema_POnCurv& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC(const Extrema_POnCurv& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Extrema_POnCurv& Value() const;
+      Extrema_POnCurv& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Extrema_POnCurv myValue;
+  Extrema_POnCurv myValue;
 
 
 };
@@ -78,7 +67,6 @@ Extrema_POnCurv myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfELPCOfLocateExtPC_HeaderFile

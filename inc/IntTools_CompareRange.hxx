@@ -6,53 +6,43 @@
 #ifndef _IntTools_CompareRange_HeaderFile
 #define _IntTools_CompareRange_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IntTools_Range;
 
 
-//! Auxiliary class to provide a sorting Ranges, <br>
-//!          taking  into  account a value of Left . <br>
-class IntTools_CompareRange  {
+//! Auxiliary class to provide a sorting Ranges,
+//! taking  into  account a value of Left .
+class IntTools_CompareRange 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty constructor <br>
-//! <br>
-  Standard_EXPORT   IntTools_CompareRange();
-  
-//! Initializes me by tolerance <br>
-//! <br>
-  Standard_EXPORT   IntTools_CompareRange(const Standard_Real aTol);
-  
-//! Returns True if <Left> is lower than <Right>. <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean IsLower(const IntTools_Range& Left,const IntTools_Range& Right) const;
-  
-//! Returns True if <Left> is greater than <Right>. <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean IsGreater(const IntTools_Range& Left,const IntTools_Range& Right) const;
-  
-//! Returns True when <Right> and <Left> are equal. <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean IsEqual(const IntTools_Range& Left,const IntTools_Range& Right) const;
 
+  //! Empty constructor
+  Standard_EXPORT IntTools_CompareRange();
+  
+
+  //! Initializes me by tolerance
+  Standard_EXPORT IntTools_CompareRange(const Standard_Real aTol);
+  
+
+  //! Returns True if <Left> is lower than <Right>.
+  Standard_EXPORT   Standard_Boolean IsLower (const IntTools_Range& Left, const IntTools_Range& Right)  const;
+  
+
+  //! Returns True if <Left> is greater than <Right>.
+  Standard_EXPORT   Standard_Boolean IsGreater (const IntTools_Range& Left, const IntTools_Range& Right)  const;
+  
+
+  //! Returns True when <Right> and <Left> are equal.
+  Standard_EXPORT   Standard_Boolean IsEqual (const IntTools_Range& Left, const IntTools_Range& Right)  const;
 
 
 
@@ -67,7 +57,7 @@ private:
 
 
 
-Standard_Real myTol;
+  Standard_Real myTol;
 
 
 };
@@ -76,7 +66,6 @@ Standard_Real myTol;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_CompareRange_HeaderFile

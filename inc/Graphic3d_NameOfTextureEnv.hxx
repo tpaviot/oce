@@ -6,8 +6,11 @@
 #ifndef _Graphic3d_NameOfTextureEnv_HeaderFile
 #define _Graphic3d_NameOfTextureEnv_HeaderFile
 
-//! Types of standard textures. <br>
-enum Graphic3d_NameOfTextureEnv {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Types of standard textures.
+enum Graphic3d_NameOfTextureEnv
+{
 Graphic3d_NOT_ENV_CLOUDS,
 Graphic3d_NOT_ENV_CV,
 Graphic3d_NOT_ENV_MEDIT,
@@ -19,8 +22,4 @@ Graphic3d_NOT_ENV_ROAD,
 Graphic3d_NOT_ENV_UNKNOWN
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_NameOfTextureEnv_HeaderFile

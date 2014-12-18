@@ -6,22 +6,15 @@
 #ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #define _Handle_Transfer_FinderProcess_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Transfer_ProcessForFinder_HeaderFile
 #include <Handle_Transfer_ProcessForFinder.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Transfer_ProcessForFinder);
 class Transfer_FinderProcess;
 
-DEFINE_STANDARD_HANDLE(Transfer_FinderProcess,Transfer_ProcessForFinder)
+DEFINE_STANDARD_HANDLE(Transfer_FinderProcess, Transfer_ProcessForFinder)
 
-#endif
+#endif // _Handle_Transfer_FinderProcess_HeaderFile

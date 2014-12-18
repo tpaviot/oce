@@ -6,28 +6,14 @@
 #ifndef _TShort_HArray2OfShortReal_HeaderFile
 #define _TShort_HArray2OfShortReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TShort_HArray2OfShortReal_HeaderFile
 #include <Handle_TShort_HArray2OfShortReal.hxx>
-#endif
 
-#ifndef _TShort_Array2OfShortReal_HeaderFile
 #include <TShort_Array2OfShortReal.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -36,38 +22,39 @@ class TShort_Array2OfShortReal;
 
 
 
-class TShort_HArray2OfShortReal : public MMgt_TShared {
+class TShort_HArray2OfShortReal : public MMgt_TShared
+{
 
 public:
 
   
-      TShort_HArray2OfShortReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+    TShort_HArray2OfShortReal(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-      TShort_HArray2OfShortReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_ShortReal& V);
+    TShort_HArray2OfShortReal(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const Standard_ShortReal& V);
   
-        void Init(const Standard_ShortReal& V) ;
+      void Init (const Standard_ShortReal& V) ;
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Standard_ShortReal& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Standard_ShortReal& Value) ;
   
-       const Standard_ShortReal& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+     const  Standard_ShortReal& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
   
-        Standard_ShortReal& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+      Standard_ShortReal& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
   
-       const TShort_Array2OfShortReal& Array2() const;
+     const  TShort_Array2OfShortReal& Array2()  const;
   
-        TShort_Array2OfShortReal& ChangeArray2() ;
+      TShort_Array2OfShortReal& ChangeArray2() ;
 
 
 
@@ -82,7 +69,7 @@ protected:
 private: 
 
 
-TShort_Array2OfShortReal myArray;
+  TShort_Array2OfShortReal myArray;
 
 
 };
@@ -108,7 +95,6 @@ TShort_Array2OfShortReal myArray;
 #undef TCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TShort_HArray2OfShortReal_HeaderFile

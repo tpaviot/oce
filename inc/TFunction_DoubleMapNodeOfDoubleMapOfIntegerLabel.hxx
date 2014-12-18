@@ -6,28 +6,14 @@
 #ifndef _TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel_HeaderFile
 #define _TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel_HeaderFile
 #include <Handle_TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TDF_Label;
 class TColStd_MapIntegerHasher;
 class TDF_LabelMapHasher;
@@ -36,18 +22,19 @@ class TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel;
 
 
 
-class TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel : public TCollection_MapNode {
+class TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel : public TCollection_MapNode
+{
 
 public:
 
   
-      TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel(const Standard_Integer& K1,const TDF_Label& K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel(const Standard_Integer& K1, const TDF_Label& K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Standard_Integer& Key1() const;
+      Standard_Integer& Key1()  const;
   
-        TDF_Label& Key2() const;
+      TDF_Label& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -62,9 +49,9 @@ protected:
 private: 
 
 
-Standard_Integer myKey1;
-TDF_Label myKey2;
-TCollection_MapNodePtr myNext2;
+  Standard_Integer myKey1;
+  TDF_Label myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -106,7 +93,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_DoubleMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel_HeaderFile

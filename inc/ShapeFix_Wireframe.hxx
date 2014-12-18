@@ -6,90 +6,84 @@
 #ifndef _ShapeFix_Wireframe_HeaderFile
 #define _ShapeFix_Wireframe_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Wireframe_HeaderFile
 #include <Handle_ShapeFix_Wireframe.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _ShapeFix_Root_HeaderFile
 #include <ShapeFix_Root.hxx>
-#endif
-#ifndef _ShapeExtend_Status_HeaderFile
 #include <ShapeExtend_Status.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_MapOfShape;
 class TopTools_DataMapOfShapeListOfShape;
 
 
-//! Provides methods for fixing wireframe of shape <br>
-class ShapeFix_Wireframe : public ShapeFix_Root {
+//! Provides methods for fixing wireframe of shape
+class ShapeFix_Wireframe : public ShapeFix_Root
+{
 
 public:
 
   
-  Standard_EXPORT   ShapeFix_Wireframe();
+  Standard_EXPORT ShapeFix_Wireframe();
   
-  Standard_EXPORT   ShapeFix_Wireframe(const TopoDS_Shape& shape);
-  //! Clears all statuses <br>
-  Standard_EXPORT   virtual  void ClearStatuses() ;
-  //! Loads a shape, resets statuses <br>
-  Standard_EXPORT     void Load(const TopoDS_Shape& shape) ;
-  //! Fixes gaps between ends of curves of adjacent edges <br>
-//!           (both 3d and pcurves) in wires <br>
-//!           If precision is 0.0, uses Precision::Confusion(). <br>
-  Standard_EXPORT     Standard_Boolean FixWireGaps() ;
-  //! Fixes small edges in shape by merging adjacent edges <br>
-//!           If precision is 0.0, uses Precision::Confusion(). <br>
-  Standard_EXPORT     Standard_Boolean FixSmallEdges() ;
-  //! Auxiliary tool for FixSmallEdges which checks for small edges and fills the maps. <br>
-//!          Returns True if at least one small edge has been found. <br>
-  Standard_EXPORT     Standard_Boolean CheckSmallEdges(TopTools_MapOfShape& theSmallEdges,TopTools_DataMapOfShapeListOfShape& theEdgeToFaces,TopTools_DataMapOfShapeListOfShape& theFaceWithSmall,TopTools_MapOfShape& theMultyEdges) ;
-  //! Auxiliary tool for FixSmallEdges which merges small edges. <br>
-//!          If theModeDrop is equal to Standard_True then small edges, <br>
-//!          which cannot be connected with adjacent edges are dropped. <br>
-//!          Otherwise they are kept. <br>
-//!          theLimitAngle specifies maximum allowed tangency <br>
-//!          discontinuity between adjacent edges. <br>
-//!          If theLimitAngle is equal to -1, this angle is not taken into account. <br>
-  Standard_EXPORT     Standard_Boolean MergeSmallEdges(TopTools_MapOfShape& theSmallEdges,TopTools_DataMapOfShapeListOfShape& theEdgeToFaces,TopTools_DataMapOfShapeListOfShape& theFaceWithSmall,TopTools_MapOfShape& theMultyEdges,const Standard_Boolean theModeDrop = Standard_False,const Standard_Real theLimitAngle = -1) ;
-  //! Decodes the status of the last FixWireGaps. <br>
-//!           OK - No gaps were found <br>
-//!           DONE1 - Some gaps in 3D were fixed <br>
-//!           DONE2 - Some gaps in 2D were fixed <br>
-//!           FAIL1 - Failed to fix some gaps in 3D <br>
-//!           FAIL2 - Failed to fix some gaps in 2D <br>
-        Standard_Boolean StatusWireGaps(const ShapeExtend_Status status) const;
-  //! Decodes the status of the last FixSmallEdges. <br>
-//!           OK - No small edges were found <br>
-//!           DONE1 - Some small edges were fixed <br>
-//!           FAIL1 - Failed to fix some small edges <br>
-        Standard_Boolean StatusSmallEdges(const ShapeExtend_Status status) const;
+  Standard_EXPORT ShapeFix_Wireframe(const TopoDS_Shape& shape);
   
-        TopoDS_Shape Shape() ;
-  //! Returns mode managing removing small edges. <br>
-        Standard_Boolean& ModeDropSmallEdges() ;
-  //!Set limit angle for merging edges. <br>
-        void SetLimitAngle(const Standard_Real theLimitAngle) ;
-  //!Get limit angle for merging edges. <br>
-        Standard_Real LimitAngle() const;
+  //! Clears all statuses
+  Standard_EXPORT virtual   void ClearStatuses() ;
+  
+  //! Loads a shape, resets statuses
+  Standard_EXPORT   void Load (const TopoDS_Shape& shape) ;
+  
+  //! Fixes gaps between ends of curves of adjacent edges
+  //! (both 3d and pcurves) in wires
+  //! If precision is 0.0, uses Precision::Confusion().
+  Standard_EXPORT   Standard_Boolean FixWireGaps() ;
+  
+  //! Fixes small edges in shape by merging adjacent edges
+  //! If precision is 0.0, uses Precision::Confusion().
+  Standard_EXPORT   Standard_Boolean FixSmallEdges() ;
+  
+  //! Auxiliary tool for FixSmallEdges which checks for small edges and fills the maps.
+  //! Returns True if at least one small edge has been found.
+  Standard_EXPORT   Standard_Boolean CheckSmallEdges (TopTools_MapOfShape& theSmallEdges, TopTools_DataMapOfShapeListOfShape& theEdgeToFaces, TopTools_DataMapOfShapeListOfShape& theFaceWithSmall, TopTools_MapOfShape& theMultyEdges) ;
+  
+  //! Auxiliary tool for FixSmallEdges which merges small edges.
+  //! If theModeDrop is equal to Standard_True then small edges,
+  //! which cannot be connected with adjacent edges are dropped.
+  //! Otherwise they are kept.
+  //! theLimitAngle specifies maximum allowed tangency
+  //! discontinuity between adjacent edges.
+  //! If theLimitAngle is equal to -1, this angle is not taken into account.
+  Standard_EXPORT   Standard_Boolean MergeSmallEdges (TopTools_MapOfShape& theSmallEdges, TopTools_DataMapOfShapeListOfShape& theEdgeToFaces, TopTools_DataMapOfShapeListOfShape& theFaceWithSmall, TopTools_MapOfShape& theMultyEdges, const Standard_Boolean theModeDrop = Standard_False, const Standard_Real theLimitAngle = -1) ;
+  
+  //! Decodes the status of the last FixWireGaps.
+  //! OK - No gaps were found
+  //! DONE1 - Some gaps in 3D were fixed
+  //! DONE2 - Some gaps in 2D were fixed
+  //! FAIL1 - Failed to fix some gaps in 3D
+  //! FAIL2 - Failed to fix some gaps in 2D
+      Standard_Boolean StatusWireGaps (const ShapeExtend_Status status)  const;
+  
+  //! Decodes the status of the last FixSmallEdges.
+  //! OK - No small edges were found
+  //! DONE1 - Some small edges were fixed
+  //! FAIL1 - Failed to fix some small edges
+      Standard_Boolean StatusSmallEdges (const ShapeExtend_Status status)  const;
+  
+      TopoDS_Shape Shape() ;
+  
+  //! Returns mode managing removing small edges.
+      Standard_Boolean& ModeDropSmallEdges() ;
+  
+  //! Set limit angle for merging edges.
+      void SetLimitAngle (const Standard_Real theLimitAngle) ;
+  
+  //! Get limit angle for merging edges.
+      Standard_Real LimitAngle()  const;
 
 
 
@@ -99,16 +93,16 @@ public:
 protected:
 
 
-TopoDS_Shape myShape;
+  TopoDS_Shape myShape;
 
 
 private: 
 
 
-Standard_Boolean myModeDrop;
-Standard_Real myLimitAngle;
-Standard_Integer myStatusWireGaps;
-Standard_Integer myStatusSmallEdges;
+  Standard_Boolean myModeDrop;
+  Standard_Real myLimitAngle;
+  Standard_Integer myStatusWireGaps;
+  Standard_Integer myStatusSmallEdges;
 
 
 };
@@ -118,7 +112,6 @@ Standard_Integer myStatusSmallEdges;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_Wireframe_HeaderFile

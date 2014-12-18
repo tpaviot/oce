@@ -1,24 +1,8 @@
-#ifndef _Transfer_TransferFailure_HeaderFile
 #include <Transfer_TransferFailure.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _Transfer_TransferIterator_HeaderFile
 #include <Transfer_TransferIterator.hxx>
-#endif
-#ifndef _Transfer_TransientProcess_HeaderFile
 #include <Transfer_TransientProcess.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _Transfer_FinderProcess_HeaderFile
 #include <Transfer_FinderProcess.hxx>
-#endif
-#ifndef _Transfer_TransferInput_HeaderFile
 #include <Transfer_TransferInput.hxx>
-#endif

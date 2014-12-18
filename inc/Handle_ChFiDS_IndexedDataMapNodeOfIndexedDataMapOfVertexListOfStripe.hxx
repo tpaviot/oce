@@ -6,22 +6,15 @@
 #ifndef _Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe_HeaderFile
 #define _Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_MapNode_HeaderFile
 #include <Handle_TCollection_MapNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_MapNode);
 class ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe;
 
-DEFINE_STANDARD_HANDLE(ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe,TCollection_MapNode)
+DEFINE_STANDARD_HANDLE(ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe, TCollection_MapNode)
 
-#endif
+#endif // _Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe_HeaderFile

@@ -6,18 +6,17 @@
 #ifndef _AdvApp2Var_CriterionRepartition_HeaderFile
 #define _AdvApp2Var_CriterionRepartition_HeaderFile
 
-//! way of cutting process <br>//! all new cutting points at each step of cutting <br>
-//!          process : (a+i(b-a)/N)i at step N, <br>
-//!                    (a+i(b-a)/(N+1))i at step N+1,... <br>
-//!                    where (a,b) is the global interval <br>//! add one new cutting point at each step <br>
-//!          of cutting process <br>
-enum AdvApp2Var_CriterionRepartition {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! way of cutting process//! all new cutting points at each step of cutting
+//! process : (a+i(b-a)/N)i at step N,
+//! (a+i(b-a)/(N+1))i at step N+1,...
+//! where (a,b) is the global interval//! add one new cutting point at each step
+//! of cutting process
+enum AdvApp2Var_CriterionRepartition
+{
 AdvApp2Var_Regular,
 AdvApp2Var_Incremental
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AdvApp2Var_CriterionRepartition_HeaderFile

@@ -5,28 +5,14 @@
 
 #include <TFunction_HArray1OfDataMapOfGUIDDriver.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _TFunction_DataMapOfGUIDDriver_HeaderFile
 #include <TFunction_DataMapOfGUIDDriver.hxx>
-#endif
-#ifndef _TFunction_Array1OfDataMapOfGUIDDriver_HeaderFile
 #include <TFunction_Array1OfDataMapOfGUIDDriver.hxx>
-#endif
 
  
 

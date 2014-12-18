@@ -5,28 +5,14 @@
 
 #include <IGESSolid_HArray1OfLoop.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESSolid_Loop_HeaderFile
 #include <IGESSolid_Loop.hxx>
-#endif
-#ifndef _IGESSolid_Array1OfLoop_HeaderFile
 #include <IGESSolid_Array1OfLoop.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESSolid_HArray1OfLoop,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESSolid_HArray1OfLoop)
 
 
-#define ItemHArray1 Handle_IGESSolid_Loop
+#define ItemHArray1 Handle(IGESSolid_Loop)
 #define ItemHArray1_hxx <IGESSolid_Loop.hxx>
 #define TheArray1 IGESSolid_Array1OfLoop
 #define TheArray1_hxx <IGESSolid_Array1OfLoop.hxx>

@@ -6,37 +6,33 @@
 #ifndef _IFSelect_SelectShared_HeaderFile
 #define _IFSelect_SelectShared_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SelectShared_HeaderFile
 #include <Handle_IFSelect_SelectShared.hxx>
-#endif
 
-#ifndef _IFSelect_SelectDeduct_HeaderFile
 #include <IFSelect_SelectDeduct.hxx>
-#endif
 class Interface_EntityIterator;
 class Interface_Graph;
 class TCollection_AsciiString;
 
 
-//! A SelectShared selects Entities which are directly Shared <br>
-//!           by the Entities of the Input list <br>
-class IFSelect_SelectShared : public IFSelect_SelectDeduct {
+//! A SelectShared selects Entities which are directly Shared
+//! by the Entities of the Input list
+class IFSelect_SelectShared : public IFSelect_SelectDeduct
+{
 
 public:
 
-  //! Creates a SelectShared; <br>
-  Standard_EXPORT   IFSelect_SelectShared();
-  //! Returns the list of selected entities (list of entities <br>
-//!           shared by those of input list) <br>
-  Standard_EXPORT     Interface_EntityIterator RootResult(const Interface_Graph& G) const;
-  //! Returns a text defining the criterium : "Shared (one level)" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates a SelectShared;
+  Standard_EXPORT IFSelect_SelectShared();
+  
+  //! Returns the list of selected entities (list of entities
+  //! shared by those of input list)
+  Standard_EXPORT   Interface_EntityIterator RootResult (const Interface_Graph& G)  const;
+  
+  //! Returns a text defining the criterium : "Shared (one level)"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -59,7 +55,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SelectShared_HeaderFile

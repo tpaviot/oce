@@ -6,43 +6,32 @@
 #ifndef _IFSelect_SignCategory_HeaderFile
 #define _IFSelect_SignCategory_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SignCategory_HeaderFile
 #include <Handle_IFSelect_SignCategory.hxx>
-#endif
 
-#ifndef _IFSelect_Signature_HeaderFile
 #include <IFSelect_Signature.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class Standard_Transient;
 class Interface_InterfaceModel;
 
 
-//! This Signature returns the Category of an entity, as recorded <br>
-//!           in the model <br>
-class IFSelect_SignCategory : public IFSelect_Signature {
+//! This Signature returns the Category of an entity, as recorded
+//! in the model
+class IFSelect_SignCategory : public IFSelect_Signature
+{
 
 public:
 
-  //! Returns a SignCategory <br>
-  Standard_EXPORT   IFSelect_SignCategory();
-  //! Returns the Signature for a Transient object, as its Category <br>
-//!           recorded in the model <br>
-  Standard_EXPORT     Standard_CString Value(const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
+  
+  //! Returns a SignCategory
+  Standard_EXPORT IFSelect_SignCategory();
+  
+  //! Returns the Signature for a Transient object, as its Category
+  //! recorded in the model
+  Standard_EXPORT   Standard_CString Value (const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
 
 
 
@@ -65,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SignCategory_HeaderFile

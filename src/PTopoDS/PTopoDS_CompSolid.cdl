@@ -15,9 +15,11 @@
 -- commercial license or contractual agreement.
 
 class CompSolid from PTopoDS inherits HShape from PTopoDS
-
+	---Purpose: A CompSolid is a TCompSolid with a Location and an
+	--          Orientation.
+	--          It inherits HShape
 is
-    Create returns mutable CompSolid from PTopoDS;
+    Create returns CompSolid from PTopoDS;
 	---Level: Internal 
 
 end CompSolid;

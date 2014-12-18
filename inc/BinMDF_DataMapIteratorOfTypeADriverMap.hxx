@@ -6,28 +6,14 @@
 #ifndef _BinMDF_DataMapIteratorOfTypeADriverMap_HeaderFile
 #define _BinMDF_DataMapIteratorOfTypeADriverMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_BinMDF_ADriver_HeaderFile
 #include <Handle_BinMDF_ADriver.hxx>
-#endif
-#ifndef _Handle_BinMDF_DataMapNodeOfTypeADriverMap_HeaderFile
 #include <Handle_BinMDF_DataMapNodeOfTypeADriverMap.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_Type;
 class BinMDF_ADriver;
@@ -37,22 +23,22 @@ class BinMDF_DataMapNodeOfTypeADriverMap;
 
 
 
-class BinMDF_DataMapIteratorOfTypeADriverMap  : public TCollection_BasicMapIterator {
+class BinMDF_DataMapIteratorOfTypeADriverMap  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BinMDF_DataMapIteratorOfTypeADriverMap();
+  Standard_EXPORT BinMDF_DataMapIteratorOfTypeADriverMap();
   
-  Standard_EXPORT   BinMDF_DataMapIteratorOfTypeADriverMap(const BinMDF_TypeADriverMap& aMap);
+  Standard_EXPORT BinMDF_DataMapIteratorOfTypeADriverMap(const BinMDF_TypeADriverMap& aMap);
   
-  Standard_EXPORT     void Initialize(const BinMDF_TypeADriverMap& aMap) ;
+  Standard_EXPORT   void Initialize (const BinMDF_TypeADriverMap& aMap) ;
   
-  Standard_EXPORT    const Handle_Standard_Type& Key() const;
+  Standard_EXPORT  const  Handle(Standard_Type)& Key()  const;
   
-  Standard_EXPORT    const Handle_BinMDF_ADriver& Value() const;
-
+  Standard_EXPORT  const  Handle(BinMDF_ADriver)& Value()  const;
 
 
 
@@ -75,7 +61,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BinMDF_DataMapIteratorOfTypeADriverMap_HeaderFile

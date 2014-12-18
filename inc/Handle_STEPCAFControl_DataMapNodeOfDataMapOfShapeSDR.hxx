@@ -6,22 +6,15 @@
 #ifndef _Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR_HeaderFile
 #define _Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_MapNode_HeaderFile
 #include <Handle_TCollection_MapNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_MapNode);
 class STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR;
 
-DEFINE_STANDARD_HANDLE(STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR,TCollection_MapNode)
+DEFINE_STANDARD_HANDLE(STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR, TCollection_MapNode)
 
-#endif
+#endif // _Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR_HeaderFile

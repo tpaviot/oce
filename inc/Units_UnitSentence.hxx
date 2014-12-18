@@ -6,55 +6,47 @@
 #ifndef _Units_UnitSentence_HeaderFile
 #define _Units_UnitSentence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Units_Sentence_HeaderFile
 #include <Units_Sentence.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Units_QuantitiesSequence_HeaderFile
 #include <Handle_Units_QuantitiesSequence.hxx>
-#endif
 class Units_QuantitiesSequence;
 
 
-//! This   class describes   all    the  facilities to <br>
-//!          manipulate and compute units contained in a string <br>
-//!          expression. <br>
-class Units_UnitSentence  : public Units_Sentence {
+//! This   class describes   all    the  facilities to
+//! manipulate and compute units contained in a string
+//! expression.
+class Units_UnitSentence  : public Units_Sentence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates   and   returns a   UnitSentence.   The string <br>
-//!          <astring> describes in natural  language the  unit  or <br>
-//!          the composed unit to be analysed. <br>
-  Standard_EXPORT   Units_UnitSentence(const Standard_CString astring);
-  //! Creates  and returns    a  UnitSentence.  The   string <br>
-//!          <astring> describes in natural language the unit to be <br>
-//!          analysed.   The    sequence     of physical quantities <br>
-//!          <asequenceofquantities>   describes    the   available <br>
-//!          dictionary of units you want to use. <br>
-  Standard_EXPORT   Units_UnitSentence(const Standard_CString astring,const Handle(Units_QuantitiesSequence)& aquantitiessequence);
-  //! Analyzes   the sequence  of   tokens  created  by  the <br>
-//!          constructor to  find  the true significance   of  each <br>
-//!          token. <br>
-  Standard_EXPORT     void Analyse() ;
-  //! For each token which  represents a unit, finds  in the <br>
-//!          sequence    of    physical   quantities      all   the <br>
-//!          characteristics of the unit found. <br>
-  Standard_EXPORT     void SetUnits(const Handle(Units_QuantitiesSequence)& aquantitiessequence) ;
-
+  
+  //! Creates   and   returns a   UnitSentence.   The string
+  //! <astring> describes in natural  language the  unit  or
+  //! the composed unit to be analysed.
+  Standard_EXPORT Units_UnitSentence(const Standard_CString astring);
+  
+  //! Creates  and returns    a  UnitSentence.  The   string
+  //! <astring> describes in natural language the unit to be
+  //! analysed.   The    sequence     of physical quantities
+  //! <asequenceofquantities>   describes    the   available
+  //! dictionary of units you want to use.
+  Standard_EXPORT Units_UnitSentence(const Standard_CString astring, const Handle(Units_QuantitiesSequence)& aquantitiessequence);
+  
+  //! Analyzes   the sequence  of   tokens  created  by  the
+  //! constructor to  find  the true significance   of  each
+  //! token.
+  Standard_EXPORT   void Analyse() ;
+  
+  //! For each token which  represents a unit, finds  in the
+  //! sequence    of    physical   quantities      all   the
+  //! characteristics of the unit found.
+  Standard_EXPORT   void SetUnits (const Handle(Units_QuantitiesSequence)& aquantitiessequence) ;
 
 
 
@@ -77,7 +69,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_UnitSentence_HeaderFile

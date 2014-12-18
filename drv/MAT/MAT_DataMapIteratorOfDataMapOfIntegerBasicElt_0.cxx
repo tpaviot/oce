@@ -5,26 +5,16 @@
 
 #include <MAT_DataMapIteratorOfDataMapOfIntegerBasicElt.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _MAT_BasicElt_HeaderFile
 #include <MAT_BasicElt.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MAT_DataMapOfIntegerBasicElt_HeaderFile
 #include <MAT_DataMapOfIntegerBasicElt.hxx>
-#endif
-#ifndef _MAT_DataMapNodeOfDataMapOfIntegerBasicElt_HeaderFile
 #include <MAT_DataMapNodeOfDataMapOfIntegerBasicElt.hxx>
-#endif
  
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_MAT_BasicElt
+#define TheItem Handle(MAT_BasicElt)
 #define TheItem_hxx <MAT_BasicElt.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>

@@ -56,9 +56,6 @@ Standard_Boolean StepToGeom_MakeSurface::Convert (const Handle(StepGeom_Surface)
 {
    // sln 01.10.2001 BUC61003. If entry shell is NULL do nothing
   if(SS.IsNull()) {
-//#ifdef DEB
-//      cout<<"Warning: StepToGeom_MakeSurface: Null Surface:"; 
-//#endif
     return Standard_False;
   }
 
@@ -70,6 +67,9 @@ Standard_Boolean StepToGeom_MakeSurface::Convert (const Handle(StepGeom_Surface)
     }
     if (SS->IsKind(STANDARD_TYPE(StepGeom_ElementarySurface))) {
       const Handle(StepGeom_ElementarySurface) S1 = Handle(StepGeom_ElementarySurface)::DownCast(SS);
+      if(S1->Position().IsNull())
+        return Standard_False;
+
       return StepToGeom_MakeElementarySurface::Convert(S1,*((Handle(Geom_ElementarySurface)*)&CS));
     }
     if (SS->IsKind(STANDARD_TYPE(StepGeom_SweptSurface))) {
@@ -125,7 +125,7 @@ Standard_Boolean StepToGeom_MakeSurface::Convert (const Handle(StepGeom_Surface)
   }
   catch(Standard_Failure) {
 //   ShapeTool_DB ?
-#ifdef DEB //:s5
+#ifdef OCCT_DEBUG //:s5
     cout<<"Warning: StepToGeom_MakeSurface: Exception:"; 
     Standard_Failure::Caught()->Print(cout); cout << endl;
 #endif

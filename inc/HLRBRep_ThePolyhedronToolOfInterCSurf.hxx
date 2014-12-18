@@ -6,28 +6,14 @@
 #ifndef _HLRBRep_ThePolyhedronToolOfInterCSurf_HeaderFile
 #define _HLRBRep_ThePolyhedronToolOfInterCSurf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Bnd_HArray1OfBox_HeaderFile
 #include <Handle_Bnd_HArray1OfBox.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_OutOfRange;
 class HLRBRep_ThePolyhedronOfInterCSurf;
 class Bnd_Box;
@@ -36,32 +22,32 @@ class gp_Pnt;
 
 
 
-class HLRBRep_ThePolyhedronToolOfInterCSurf  {
+class HLRBRep_ThePolyhedronToolOfInterCSurf 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      static const Bnd_Box& Bounding(const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
+    static  const  Bnd_Box& Bounding (const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
   
-      static const Handle_Bnd_HArray1OfBox& ComponentsBounding(const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
+    static  const  Handle(Bnd_HArray1OfBox)& ComponentsBounding (const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
   
-      static  Standard_Real DeflectionOverEstimation(const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
+    static   Standard_Real DeflectionOverEstimation (const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
   
-      static  Standard_Integer NbTriangles(const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
+    static   Standard_Integer NbTriangles (const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
   
-      static  void Triangle(const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh,const Standard_Integer Index,Standard_Integer& P1,Standard_Integer& P2,Standard_Integer& P3) ;
+    static   void Triangle (const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh, const Standard_Integer Index, Standard_Integer& P1, Standard_Integer& P2, Standard_Integer& P3) ;
   
-      static const gp_Pnt& Point(const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh,const Standard_Integer Index) ;
+    static  const  gp_Pnt& Point (const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh, const Standard_Integer Index) ;
   
-      static  Standard_Integer TriConnex(const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh,const Standard_Integer Triang,const Standard_Integer Pivot,const Standard_Integer Pedge,Standard_Integer& TriCon,Standard_Integer& OtherP) ;
+    static   Standard_Integer TriConnex (const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh, const Standard_Integer Triang, const Standard_Integer Pivot, const Standard_Integer Pedge, Standard_Integer& TriCon, Standard_Integer& OtherP) ;
   
-      static  Standard_Boolean IsOnBound(const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh,const Standard_Integer Index1,const Standard_Integer Index2) ;
+    static   Standard_Boolean IsOnBound (const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh, const Standard_Integer Index1, const Standard_Integer Index2) ;
   
-      static  Standard_Real GetBorderDeflection(const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
+    static   Standard_Real GetBorderDeflection (const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
   
-  Standard_EXPORT   static  void Dump(const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
-
+  Standard_EXPORT static   void Dump (const HLRBRep_ThePolyhedronOfInterCSurf& thePolyh) ;
 
 
 
@@ -93,7 +79,6 @@ private:
 #undef IntCurveSurface_PolyhedronTool_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_ThePolyhedronToolOfInterCSurf_HeaderFile

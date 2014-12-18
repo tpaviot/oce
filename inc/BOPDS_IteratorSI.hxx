@@ -6,60 +6,49 @@
 #ifndef _BOPDS_IteratorSI_HeaderFile
 #define _BOPDS_IteratorSI_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BOPDS_Iterator_HeaderFile
 #include <BOPDS_Iterator.hxx>
-#endif
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
 
-//! The class BOPDS_IteratorSI is <br>
-//!  1.to compute self-intersections between BRep sub-shapes <br>
-//!    of each argument of an operation (see the class BOPDS_DS) <br>
-//!    in terms of theirs bounding boxes <br>
-//!  2.provides interface to iterare the pairs of <br>
-//!    intersected sub-shapes of given type <br>
-class BOPDS_IteratorSI  : public BOPDS_Iterator {
+//! The class BOPDS_IteratorSI is
+//! 1.to compute self-intersections between BRep sub-shapes
+//! of each argument of an operation (see the class BOPDS_DS)
+//! in terms of theirs bounding boxes
+//! 2.provides interface to iterare the pairs of
+//! intersected sub-shapes of given type
+class BOPDS_IteratorSI  : public BOPDS_Iterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty contructor <br>
-//! <br>
-  Standard_EXPORT   BOPDS_IteratorSI();
+
+  //! Empty contructor
+  Standard_EXPORT BOPDS_IteratorSI();
 Standard_EXPORT virtual ~BOPDS_IteratorSI();
   
-//!  Contructor <br>
-//!  theAllocator - the allocator to manage the memory <br>
-//! <br>
-  Standard_EXPORT   BOPDS_IteratorSI(const BOPCol_BaseAllocator& theAllocator);
-  //!  Updates the lists of possible intersections <br>
-//!           according to the value of <theLevel>. <br>
-//!           It defines which interferferences will be checked: <br>
-//!           0 - only V/V; <br>
-//!           1 - V/V and V/E; <br>
-//!           2 - V/V, V/E and E/E; <br>
-//!           3 - V/V, V/E, E/E and V/F; <br>
-//!           4 - V/V, V/E, E/E, V/F and E/F; <br>
-//!           other - all interferences. <br>
-  Standard_EXPORT     void UpdateByLevelOfCheck(const Standard_Integer theLevel) ;
 
+  //! Contructor
+  //! theAllocator - the allocator to manage the memory
+  Standard_EXPORT BOPDS_IteratorSI(const BOPCol_BaseAllocator& theAllocator);
+  
+  //! Updates the lists of possible intersections
+  //! according to the value of <theLevel>.
+  //! It defines which interferferences will be checked:
+  //! 0 - only V/V;
+  //! 1 - V/V and V/E;
+  //! 2 - V/V, V/E and E/E;
+  //! 3 - V/V, V/E, E/E and V/F;
+  //! 4 - V/V, V/E, E/E, V/F and E/F;
+  //! other - all interferences.
+  Standard_EXPORT   void UpdateByLevelOfCheck (const Standard_Integer theLevel) ;
 
 
 
@@ -67,7 +56,7 @@ Standard_EXPORT virtual ~BOPDS_IteratorSI();
 protected:
 
   
-  Standard_EXPORT   virtual  void Intersect() ;
+  Standard_EXPORT virtual   void Intersect() ;
 
 
 
@@ -84,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPDS_IteratorSI_HeaderFile

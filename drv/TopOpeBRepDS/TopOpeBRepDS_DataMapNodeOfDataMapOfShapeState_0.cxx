@@ -5,22 +5,12 @@
 
 #include <TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapOfShapeState_HeaderFile
 #include <TopOpeBRepDS_DataMapOfShapeState.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState.hxx>
-#endif
 
  
 

@@ -6,28 +6,14 @@
 #ifndef _Storage_PArray_HeaderFile
 #define _Storage_PArray_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class Standard_Persistent;
 
 
 
-class Storage_PArray  {
+class Storage_PArray 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Storage_PArray(const Standard_Integer Low,const Standard_Integer Up);
+    Storage_PArray(const Standard_Integer Low, const Standard_Integer Up);
   
-      Storage_PArray(const Handle(Standard_Persistent)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    Storage_PArray(const Handle(Standard_Persistent)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(Standard_Persistent)& V) ;
+  Standard_EXPORT   void Init (const Handle(Standard_Persistent)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~Storage_PArray()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const Storage_PArray& Assign(const Storage_PArray& Other) ;
-   const Storage_PArray& operator =(const Storage_PArray& Other) 
+  Standard_EXPORT  const  Storage_PArray& Assign (const Storage_PArray& Other) ;
+ const  Storage_PArray& operator = (const Storage_PArray& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(Standard_Persistent)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(Standard_Persistent)& Value) ;
   
-       const Handle_Standard_Persistent& Value(const Standard_Integer Index) const;
-     const Handle_Standard_Persistent& operator ()(const Standard_Integer Index) const
+     const  Handle(Standard_Persistent)& Value (const Standard_Integer Index)  const;
+   const  Handle(Standard_Persistent)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_Standard_Persistent& ChangeValue(const Standard_Integer Index) ;
-      Handle_Standard_Persistent& operator ()(const Standard_Integer Index) 
+      Handle(Standard_Persistent)& ChangeValue (const Standard_Integer Index) ;
+    Handle(Standard_Persistent)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   Storage_PArray(const Storage_PArray& AnArray);
+  Standard_EXPORT Storage_PArray(const Storage_PArray& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_Standard_Persistent
+#define Array1Item Handle(Standard_Persistent)
 #define Array1Item_hxx <Standard_Persistent.hxx>
 #define TCollection_Array1 Storage_PArray
 #define TCollection_Array1_hxx <Storage_PArray.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_PArray_HeaderFile

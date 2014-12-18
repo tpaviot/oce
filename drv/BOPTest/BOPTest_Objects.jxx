@@ -1,12 +1,5 @@
-#ifndef _BOPAlgo_PaveFiller_HeaderFile
 #include <BOPAlgo_PaveFiller.hxx>
-#endif
-#ifndef _BOPAlgo_Builder_HeaderFile
 #include <BOPAlgo_Builder.hxx>
-#endif
-#ifndef _BOPAlgo_BOP_HeaderFile
 #include <BOPAlgo_BOP.hxx>
-#endif
-#ifndef _BOPTest_Objects_HeaderFile
+#include <BOPAlgo_Section.hxx>
 #include <BOPTest_Objects.hxx>
-#endif

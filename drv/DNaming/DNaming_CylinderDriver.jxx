@@ -1,12 +1,4 @@
-#ifndef _TFunction_Logbook_HeaderFile
 #include <TFunction_Logbook.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _BRepPrimAPI_MakeCylinder_HeaderFile
 #include <BRepPrimAPI_MakeCylinder.hxx>
-#endif
-#ifndef _DNaming_CylinderDriver_HeaderFile
 #include <DNaming_CylinderDriver.hxx>
-#endif

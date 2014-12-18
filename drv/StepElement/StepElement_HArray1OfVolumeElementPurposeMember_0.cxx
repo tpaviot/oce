@@ -5,28 +5,14 @@
 
 #include <StepElement_HArray1OfVolumeElementPurposeMember.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepElement_VolumeElementPurposeMember_HeaderFile
 #include <StepElement_VolumeElementPurposeMember.hxx>
-#endif
-#ifndef _StepElement_Array1OfVolumeElementPurposeMember_HeaderFile
 #include <StepElement_Array1OfVolumeElementPurposeMember.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepElement_HArray1OfVolumeElementPurposeMember,Standard_Tran
 IMPLEMENT_STANDARD_RTTI(StepElement_HArray1OfVolumeElementPurposeMember)
 
 
-#define ItemHArray1 Handle_StepElement_VolumeElementPurposeMember
+#define ItemHArray1 Handle(StepElement_VolumeElementPurposeMember)
 #define ItemHArray1_hxx <StepElement_VolumeElementPurposeMember.hxx>
 #define TheArray1 StepElement_Array1OfVolumeElementPurposeMember
 #define TheArray1_hxx <StepElement_Array1OfVolumeElementPurposeMember.hxx>

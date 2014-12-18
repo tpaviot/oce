@@ -6,44 +6,34 @@
 #ifndef _StepBasic_SiUnitAndVolumeUnit_HeaderFile
 #define _StepBasic_SiUnitAndVolumeUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_SiUnitAndVolumeUnit_HeaderFile
 #include <Handle_StepBasic_SiUnitAndVolumeUnit.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_VolumeUnit_HeaderFile
 #include <Handle_StepBasic_VolumeUnit.hxx>
-#endif
-#ifndef _StepBasic_SiUnit_HeaderFile
 #include <StepBasic_SiUnit.hxx>
-#endif
-#ifndef _Handle_StepBasic_DimensionalExponents_HeaderFile
 #include <Handle_StepBasic_DimensionalExponents.hxx>
-#endif
 class StepBasic_VolumeUnit;
 class StepBasic_DimensionalExponents;
 
 
 
-class StepBasic_SiUnitAndVolumeUnit : public StepBasic_SiUnit {
+class StepBasic_SiUnitAndVolumeUnit : public StepBasic_SiUnit
+{
 
 public:
 
-  //! Returns a SiUnitAndVolumeUnit <br>
-  Standard_EXPORT   StepBasic_SiUnitAndVolumeUnit();
   
-  Standard_EXPORT     void SetVolumeUnit(const Handle(StepBasic_VolumeUnit)& aVolumeUnit) ;
+  //! Returns a SiUnitAndVolumeUnit
+  Standard_EXPORT StepBasic_SiUnitAndVolumeUnit();
   
-  Standard_EXPORT     Handle_StepBasic_VolumeUnit VolumeUnit() const;
+  Standard_EXPORT   void SetVolumeUnit (const Handle(StepBasic_VolumeUnit)& aVolumeUnit) ;
   
-  Standard_EXPORT   virtual  void SetDimensions(const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
+  Standard_EXPORT   Handle(StepBasic_VolumeUnit) VolumeUnit()  const;
   
-  Standard_EXPORT   virtual  Handle_StepBasic_DimensionalExponents Dimensions() const;
+  Standard_EXPORT virtual   void SetDimensions (const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
+  
+  Standard_EXPORT virtual   Handle(StepBasic_DimensionalExponents) Dimensions()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_VolumeUnit volumeUnit;
+  Handle(StepBasic_VolumeUnit) volumeUnit;
 
 
 };
@@ -67,7 +57,6 @@ Handle_StepBasic_VolumeUnit volumeUnit;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_SiUnitAndVolumeUnit_HeaderFile

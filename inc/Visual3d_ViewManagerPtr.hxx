@@ -7,7 +7,6 @@
 #define _Visual3d_ViewManagerPtr_HeaderFile
 
 class Visual3d_ViewManager;
-
 typedef Visual3d_ViewManager* Visual3d_ViewManagerPtr;
 
-#endif
+#endif // _Visual3d_ViewManagerPtr_HeaderFile

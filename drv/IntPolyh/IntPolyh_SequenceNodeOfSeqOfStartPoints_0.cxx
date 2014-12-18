@@ -5,16 +5,10 @@
 
 #include <IntPolyh_SequenceNodeOfSeqOfStartPoints.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntPolyh_StartPoint_HeaderFile
 #include <IntPolyh_StartPoint.hxx>
-#endif
-#ifndef _IntPolyh_SeqOfStartPoints_HeaderFile
 #include <IntPolyh_SeqOfStartPoints.hxx>
-#endif
 
  
 

@@ -1,15 +1,5 @@
-#ifndef _HLRBRep_Data_HeaderFile
 #include <HLRBRep_Data.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _HLRAlgo_Projector_HeaderFile
 #include <HLRAlgo_Projector.hxx>
-#endif
-#ifndef _BRepAdaptor_Curve_HeaderFile
 #include <BRepAdaptor_Curve.hxx>
-#endif
-#ifndef _StdPrs_HLRToolShape_HeaderFile
 #include <StdPrs_HLRToolShape.hxx>
-#endif

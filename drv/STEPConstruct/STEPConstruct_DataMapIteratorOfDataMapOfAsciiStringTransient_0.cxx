@@ -5,26 +5,16 @@
 
 #include <STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _STEPConstruct_DataMapOfAsciiStringTransient_HeaderFile
 #include <STEPConstruct_DataMapOfAsciiStringTransient.hxx>
-#endif
-#ifndef _STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient_HeaderFile
 #include <STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString
 #define TheKey_hxx <TCollection_AsciiString.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher TCollection_AsciiString
 #define Hasher_hxx <TCollection_AsciiString.hxx>

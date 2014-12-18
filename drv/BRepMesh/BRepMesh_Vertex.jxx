@@ -1,6 +1,0 @@
-#ifndef _gp_XY_HeaderFile
-#include <gp_XY.hxx>
-#endif
-#ifndef _BRepMesh_Vertex_HeaderFile
-#include <BRepMesh_Vertex.hxx>
-#endif

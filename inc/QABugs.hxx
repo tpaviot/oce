@@ -6,68 +6,62 @@
 #ifndef _QABugs_HeaderFile
 #define _QABugs_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-class Draw_Interpretor;
+#include <Draw_Interpretor.hxx>
 class QABugs_MyText;
 class QABugs_PresentableObject;
 
 
 
-class QABugs  {
+class QABugs 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void Commands(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_1(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_1 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_2(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_2 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_3(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_3 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_4(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_4 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_5(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_5 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_6(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_6 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_7(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_7 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_8(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_8 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_9(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_9 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_10(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_10 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_11(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_11 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_12(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_12 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_13(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_13 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_14(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_14 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_15(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_15 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_16(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_16 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_17(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_17 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_18(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands_18 (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands_19(Draw_Interpretor& DI) ;
-
+  Standard_EXPORT static   void Commands_19 (Draw_Interpretor& DI) ;
 
 
 
@@ -92,7 +86,6 @@ friend class QABugs_PresentableObject;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QABugs_HeaderFile

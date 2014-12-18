@@ -1,6 +1,2 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _ShapeUpgrade_ShapeDivideClosedEdges_HeaderFile
 #include <ShapeUpgrade_ShapeDivideClosedEdges.hxx>
-#endif

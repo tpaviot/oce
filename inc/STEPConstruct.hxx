@@ -6,37 +6,17 @@
 #ifndef _STEPConstruct_HeaderFile
 #define _STEPConstruct_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
-#ifndef _Handle_Transfer_TransientProcess_HeaderFile
 #include <Handle_Transfer_TransientProcess.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
-#ifndef _Handle_StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <Handle_StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _Handle_StepShape_ContextDependentShapeRepresentation_HeaderFile
 #include <Handle_StepShape_ContextDependentShapeRepresentation.hxx>
-#endif
 class StepRepr_RepresentationItem;
 class Transfer_FinderProcess;
 class TopoDS_Shape;
@@ -63,31 +43,35 @@ class STEPConstruct_DataMapNodeOfDataMapOfPointTransient;
 class STEPConstruct_DataMapIteratorOfDataMapOfPointTransient;
 
 
-//! Defines tools for creation and investigation STEP constructs <br>
-//!          used for representing various kinds of data, such as product and <br>
-//!          assembly structure, unit contexts, associated information <br>
-//!          The creation of these structures is made according to currently <br>
-//!          active schema (AP203 or AP214 CD2 or DIS) <br>
-//!          This is taken from parameter write.step.schema <br>
-class STEPConstruct  {
+//! Defines tools for creation and investigation STEP constructs
+//! used for representing various kinds of data, such as product and
+//! assembly structure, unit contexts, associated information
+//! The creation of these structures is made according to currently
+//! active schema (AP203 or AP214 CD2 or DIS)
+//! This is taken from parameter write.step.schema
+class STEPConstruct 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns STEP entity of the (sub)type of RepresentationItem <br>
-//!          which is a result of the tranalation of the Shape, or Null if <br>
-//!          no result is recorded <br>
-  Standard_EXPORT   static  Handle_StepRepr_RepresentationItem FindEntity(const Handle(Transfer_FinderProcess)& FinderProcess,const TopoDS_Shape& Shape) ;
-  //! The same as above, but in the case if item not found, repeats <br>
-//!          search on the same shape without location. The Loc corresponds to the <br>
-//!          location with which result is found (either location of the Shape, <br>
-//!          or Null) <br>
-  Standard_EXPORT   static  Handle_StepRepr_RepresentationItem FindEntity(const Handle(Transfer_FinderProcess)& FinderProcess,const TopoDS_Shape& Shape,TopLoc_Location& Loc) ;
-  //! Returns Shape resulting from given STEP entity (Null if not mapped) <br>
-  Standard_EXPORT   static  TopoDS_Shape FindShape(const Handle(Transfer_TransientProcess)& TransientProcess,const Handle(StepRepr_RepresentationItem)& item) ;
-  //! Find CDSR correcponding to the component in the specified assembly <br>
-  Standard_EXPORT   static  Standard_Boolean FindCDSR(const Handle(Transfer_Binder)& ComponentBinder,const Handle(StepShape_ShapeDefinitionRepresentation)& AssemblySDR,Handle(StepShape_ContextDependentShapeRepresentation)& ComponentCDSR) ;
-
+  
+  //! Returns STEP entity of the (sub)type of RepresentationItem
+  //! which is a result of the tranalation of the Shape, or Null if
+  //! no result is recorded
+  Standard_EXPORT static   Handle(StepRepr_RepresentationItem) FindEntity (const Handle(Transfer_FinderProcess)& FinderProcess, const TopoDS_Shape& Shape) ;
+  
+  //! The same as above, but in the case if item not found, repeats
+  //! search on the same shape without location. The Loc corresponds to the
+  //! location with which result is found (either location of the Shape,
+  //! or Null)
+  Standard_EXPORT static   Handle(StepRepr_RepresentationItem) FindEntity (const Handle(Transfer_FinderProcess)& FinderProcess, const TopoDS_Shape& Shape, TopLoc_Location& Loc) ;
+  
+  //! Returns Shape resulting from given STEP entity (Null if not mapped)
+  Standard_EXPORT static   TopoDS_Shape FindShape (const Handle(Transfer_TransientProcess)& TransientProcess, const Handle(StepRepr_RepresentationItem)& item) ;
+  
+  //! Find CDSR correcponding to the component in the specified assembly
+  Standard_EXPORT static   Standard_Boolean FindCDSR (const Handle(Transfer_Binder)& ComponentBinder, const Handle(StepShape_ShapeDefinitionRepresentation)& AssemblySDR, Handle(StepShape_ContextDependentShapeRepresentation)& ComponentCDSR) ;
 
 
 
@@ -126,7 +110,6 @@ friend class STEPConstruct_DataMapIteratorOfDataMapOfPointTransient;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPConstruct_HeaderFile

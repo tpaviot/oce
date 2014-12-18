@@ -6,28 +6,14 @@
 #ifndef _StepElement_HArray2OfSurfaceElementPurposeMember_HeaderFile
 #define _StepElement_HArray2OfSurfaceElementPurposeMember_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_HArray2OfSurfaceElementPurposeMember_HeaderFile
 #include <Handle_StepElement_HArray2OfSurfaceElementPurposeMember.hxx>
-#endif
 
-#ifndef _StepElement_Array2OfSurfaceElementPurposeMember_HeaderFile
 #include <StepElement_Array2OfSurfaceElementPurposeMember.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepElement_SurfaceElementPurposeMember_HeaderFile
 #include <Handle_StepElement_SurfaceElementPurposeMember.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -37,38 +23,39 @@ class StepElement_Array2OfSurfaceElementPurposeMember;
 
 
 
-class StepElement_HArray2OfSurfaceElementPurposeMember : public MMgt_TShared {
+class StepElement_HArray2OfSurfaceElementPurposeMember : public MMgt_TShared
+{
 
 public:
 
   
-      StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+    StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-      StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(StepElement_SurfaceElementPurposeMember)& V);
+    StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const Handle(StepElement_SurfaceElementPurposeMember)& V);
   
-        void Init(const Handle(StepElement_SurfaceElementPurposeMember)& V) ;
+      void Init (const Handle(StepElement_SurfaceElementPurposeMember)& V) ;
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(StepElement_SurfaceElementPurposeMember)& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Handle(StepElement_SurfaceElementPurposeMember)& Value) ;
   
-       const Handle_StepElement_SurfaceElementPurposeMember& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+     const  Handle(StepElement_SurfaceElementPurposeMember)& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
   
-        Handle_StepElement_SurfaceElementPurposeMember& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+      Handle(StepElement_SurfaceElementPurposeMember)& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
   
-       const StepElement_Array2OfSurfaceElementPurposeMember& Array2() const;
+     const  StepElement_Array2OfSurfaceElementPurposeMember& Array2()  const;
   
-        StepElement_Array2OfSurfaceElementPurposeMember& ChangeArray2() ;
+      StepElement_Array2OfSurfaceElementPurposeMember& ChangeArray2() ;
 
 
 
@@ -83,12 +70,12 @@ protected:
 private: 
 
 
-StepElement_Array2OfSurfaceElementPurposeMember myArray;
+  StepElement_Array2OfSurfaceElementPurposeMember myArray;
 
 
 };
 
-#define ItemHArray2 Handle_StepElement_SurfaceElementPurposeMember
+#define ItemHArray2 Handle(StepElement_SurfaceElementPurposeMember)
 #define ItemHArray2_hxx <StepElement_SurfaceElementPurposeMember.hxx>
 #define TheArray2 StepElement_Array2OfSurfaceElementPurposeMember
 #define TheArray2_hxx <StepElement_Array2OfSurfaceElementPurposeMember.hxx>
@@ -109,7 +96,6 @@ StepElement_Array2OfSurfaceElementPurposeMember myArray;
 #undef TCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_HArray2OfSurfaceElementPurposeMember_HeaderFile

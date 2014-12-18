@@ -1,9 +1,3 @@
-#ifndef _TopOpeBRepDS_DataStructure_HeaderFile
 #include <TopOpeBRepDS_DataStructure.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Curve_HeaderFile
 #include <TopOpeBRepDS_Curve.hxx>
-#endif
-#ifndef _TopOpeBRepDS_CurveExplorer_HeaderFile
 #include <TopOpeBRepDS_CurveExplorer.hxx>
-#endif

@@ -5,25 +5,13 @@
 
 #include <ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _ViewerTest_DoubleMapOfInteractiveAndName_HeaderFile
 #include <ViewerTest_DoubleMapOfInteractiveAndName.hxx>
-#endif
-#ifndef _ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName_HeaderFile
 #include <ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName.hxx>
-#endif
 
  
 
@@ -42,7 +30,7 @@ IMPLEMENT_DOWNCAST(ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName,Stand
 IMPLEMENT_STANDARD_RTTI(ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName)
 
 
-#define TheKey1 Handle_Standard_Transient
+#define TheKey1 Handle(Standard_Transient)
 #define TheKey1_hxx <Standard_Transient.hxx>
 #define TheKey2 TCollection_AsciiString
 #define TheKey2_hxx <TCollection_AsciiString.hxx>

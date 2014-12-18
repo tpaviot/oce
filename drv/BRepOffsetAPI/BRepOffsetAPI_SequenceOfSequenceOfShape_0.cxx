@@ -5,18 +5,10 @@
 
 #include <BRepOffsetAPI_SequenceOfSequenceOfShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
-#endif
-#ifndef _BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape_HeaderFile
 #include <BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape.hxx>
-#endif
  
 
 #define SeqItem TopTools_SequenceOfShape

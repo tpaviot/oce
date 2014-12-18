@@ -1,18 +1,5 @@
-#ifndef _HLRTopoBRep_OutLiner_HeaderFile
 #include <HLRTopoBRep_OutLiner.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Draw_Display_HeaderFile
 #include <Draw_Display.hxx>
-#endif
-#ifndef _Draw_Drawable3D_HeaderFile
 #include <Draw_Drawable3D.hxx>
-#endif
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
-#ifndef _HLRTest_OutLiner_HeaderFile
 #include <HLRTest_OutLiner.hxx>
-#endif

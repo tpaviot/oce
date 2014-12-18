@@ -16,7 +16,8 @@
 
 class SurfData from ChFiDS inherits TShared from MMgt
 
-	---Purpose: 
+	---Purpose: data structure for all information related to  the
+  --          fillet and to 2 faces vis a vis
 
 uses 
     Pnt2d from gp,
@@ -26,7 +27,7 @@ uses
     CommonPoint from ChFiDS
 
 is
-    Create returns mutable SurfData;
+    Create returns SurfData;
     
     Copy(me: mutable; Other : SurfData from ChFiDS);
     
@@ -171,7 +172,7 @@ is
     FirstExtensionValue(me:mutable;Extend:Real from Standard) is static;
     LastExtensionValue(me:mutable;Extend:Real from Standard) is static;
   
-    Simul(me) returns mutable TShared from MMgt;
+    Simul(me) returns TShared from MMgt;
     SetSimul(me : mutable; S : TShared from MMgt);
     ResetSimul(me : mutable);
 

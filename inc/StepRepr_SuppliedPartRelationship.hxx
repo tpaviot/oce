@@ -6,28 +6,21 @@
 #ifndef _StepRepr_SuppliedPartRelationship_HeaderFile
 #define _StepRepr_SuppliedPartRelationship_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_SuppliedPartRelationship_HeaderFile
 #include <Handle_StepRepr_SuppliedPartRelationship.hxx>
-#endif
 
-#ifndef _StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <StepBasic_ProductDefinitionRelationship.hxx>
-#endif
 
 
 
-class StepRepr_SuppliedPartRelationship : public StepBasic_ProductDefinitionRelationship {
+class StepRepr_SuppliedPartRelationship : public StepBasic_ProductDefinitionRelationship
+{
 
 public:
 
   
-  Standard_EXPORT   StepRepr_SuppliedPartRelationship();
+  Standard_EXPORT StepRepr_SuppliedPartRelationship();
 
 
 
@@ -50,7 +43,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_SuppliedPartRelationship_HeaderFile

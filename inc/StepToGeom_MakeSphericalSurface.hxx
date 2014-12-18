@@ -6,40 +6,28 @@
 #ifndef _StepToGeom_MakeSphericalSurface_HeaderFile
 #define _StepToGeom_MakeSphericalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_SphericalSurface_HeaderFile
 #include <Handle_StepGeom_SphericalSurface.hxx>
-#endif
-#ifndef _Handle_Geom_SphericalSurface_HeaderFile
 #include <Handle_Geom_SphericalSurface.hxx>
-#endif
 class StepGeom_SphericalSurface;
 class Geom_SphericalSurface;
 
 
-//! This class implements the mapping between class <br>
-//!          SphericalSurface from StepGeom which describes a <br>
-//!          spherical_surface from Prostepand SphericalSurface from Geom <br>
-class StepToGeom_MakeSphericalSurface  {
+//! This class implements the mapping between class
+//! SphericalSurface from StepGeom which describes a
+//! spherical_surface from Prostepand SphericalSurface from Geom
+class StepToGeom_MakeSphericalSurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_SphericalSurface)& Surf,Handle(Geom_SphericalSurface)& CS) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_SphericalSurface)& Surf, Handle(Geom_SphericalSurface)& CS) ;
 
 
 
@@ -62,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeSphericalSurface_HeaderFile

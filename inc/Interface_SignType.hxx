@@ -6,51 +6,42 @@
 #ifndef _Interface_SignType_HeaderFile
 #define _Interface_SignType_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_SignType_HeaderFile
 #include <Handle_Interface_SignType.hxx>
-#endif
 
-#ifndef _MoniTool_SignText_HeaderFile
 #include <MoniTool_SignText.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class TCollection_AsciiString;
 class Standard_Transient;
 class Interface_InterfaceModel;
 
 
-//! Provides the basic service to get a type name, according <br>
-//!           to a norm <br>
-//!           It can be used for other classes (general signatures ...) <br>
-class Interface_SignType : public MoniTool_SignText {
+//! Provides the basic service to get a type name, according
+//! to a norm
+//! It can be used for other classes (general signatures ...)
+class Interface_SignType : public MoniTool_SignText
+{
 
 public:
 
-  //! Returns an identification of the Signature (a word), given at <br>
-//!           initialization time <br>//! Specialised to consider context as an InterfaceModel <br>
-  Standard_EXPORT     TCollection_AsciiString Text(const Handle(Standard_Transient)& ent,const Handle(Standard_Transient)& context) const;
-  //! Returns the Signature for a Transient object. It is specific <br>
-//!           of each sub-class of Signature. For a Null Handle, it should <br>
-//!           provide "" <br>
-//!           It can work with the model which contains the entity <br>
-  Standard_EXPORT   virtual  Standard_CString Value(const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const = 0;
-  //! From a CDL Type Name, returns the Class part (package dropped) <br>
-//!           WARNING : buffered, to be immediately copied or printed <br>
-  Standard_EXPORT   static  Standard_CString ClassName(const Standard_CString typnam) ;
+  
+  //! Returns an identification of the Signature (a word), given at
+  //! initialization time
+  //! Specialised to consider context as an InterfaceModel
+  Standard_EXPORT   TCollection_AsciiString Text (const Handle(Standard_Transient)& ent, const Handle(Standard_Transient)& context)  const;
+  
+  //! Returns the Signature for a Transient object. It is specific
+  //! of each sub-class of Signature. For a Null Handle, it should
+  //! provide ""
+  //! It can work with the model which contains the entity
+  Standard_EXPORT virtual   Standard_CString Value (const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const = 0;
+  
+  //! From a CDL Type Name, returns the Class part (package dropped)
+  //! WARNING : buffered, to be immediately copied or printed
+  Standard_EXPORT static   Standard_CString ClassName (const Standard_CString typnam) ;
 
 
 
@@ -73,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_SignType_HeaderFile

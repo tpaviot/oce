@@ -6,37 +6,17 @@
 #ifndef _MNaming_NamedShapeRetrievalDriver_HeaderFile
 #define _MNaming_NamedShapeRetrievalDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MNaming_NamedShapeRetrievalDriver_HeaderFile
 #include <Handle_MNaming_NamedShapeRetrievalDriver.hxx>
-#endif
 
-#ifndef _MDF_ARDriver_HeaderFile
 #include <MDF_ARDriver.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_PDF_Attribute_HeaderFile
 #include <Handle_PDF_Attribute.hxx>
-#endif
-#ifndef _Handle_MDF_RRelocationTable_HeaderFile
 #include <Handle_MDF_RRelocationTable.hxx>
-#endif
 class CDM_MessageDriver;
 class Standard_Type;
 class TDF_Attribute;
@@ -45,21 +25,24 @@ class MDF_RRelocationTable;
 
 
 
-class MNaming_NamedShapeRetrievalDriver : public MDF_ARDriver {
+class MNaming_NamedShapeRetrievalDriver : public MDF_ARDriver
+{
 
 public:
 
   
-  Standard_EXPORT   MNaming_NamedShapeRetrievalDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
-  //! Returns the version number from which the driver <br>
-//!          is available: 0. <br>
-  Standard_EXPORT     Standard_Integer VersionNumber() const;
-  //! Returns the type NamedShape from PNaming. <br>
-  Standard_EXPORT     Handle_Standard_Type SourceType() const;
+  Standard_EXPORT MNaming_NamedShapeRetrievalDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! Returns the version number from which the driver
+  //! is available: 0.
+  Standard_EXPORT   Standard_Integer VersionNumber()  const;
   
-  Standard_EXPORT     void Paste(const Handle(PDF_Attribute)& Source,const Handle(TDF_Attribute)& Target,const Handle(MDF_RRelocationTable)& RelocTable) const;
+  //! Returns the type NamedShape from PNaming.
+  Standard_EXPORT   Handle(Standard_Type) SourceType()  const;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(PDF_Attribute)& Source, const Handle(TDF_Attribute)& Target, const Handle(MDF_RRelocationTable)& RelocTable)  const;
 
 
 
@@ -82,7 +65,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MNaming_NamedShapeRetrievalDriver_HeaderFile

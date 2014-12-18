@@ -6,39 +6,28 @@
 #ifndef _PDataXtd_Geometry_HeaderFile
 #define _PDataXtd_Geometry_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataXtd_Geometry_HeaderFile
 #include <Handle_PDataXtd_Geometry.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 
 
-class PDataXtd_Geometry : public PDF_Attribute {
+class PDataXtd_Geometry : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataXtd_Geometry();
+  Standard_EXPORT PDataXtd_Geometry();
   
-  Standard_EXPORT   PDataXtd_Geometry(const Standard_Integer Type);
+  Standard_EXPORT PDataXtd_Geometry(const Standard_Integer Type);
   
-  Standard_EXPORT     Standard_Integer GetType() const;
+  Standard_EXPORT   Standard_Integer GetType()  const;
   
-  Standard_EXPORT     void SetType(const Standard_Integer Type) ;
+  Standard_EXPORT   void SetType (const Standard_Integer Type) ;
 
 PDataXtd_Geometry(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -59,7 +48,7 @@ protected:
 private: 
 
 
-Standard_Integer myType;
+  Standard_Integer myType;
 
 
 };
@@ -68,7 +57,6 @@ Standard_Integer myType;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataXtd_Geometry_HeaderFile

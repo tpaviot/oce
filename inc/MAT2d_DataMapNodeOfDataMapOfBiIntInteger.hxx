@@ -6,28 +6,14 @@
 #ifndef _MAT2d_DataMapNodeOfDataMapOfBiIntInteger_HeaderFile
 #define _MAT2d_DataMapNodeOfDataMapOfBiIntInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger_HeaderFile
 #include <Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger.hxx>
-#endif
 
-#ifndef _MAT2d_BiInt_HeaderFile
 #include <MAT2d_BiInt.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MAT2d_BiInt;
 class MAT2d_MapBiIntHasher;
 class MAT2d_DataMapOfBiIntInteger;
@@ -35,16 +21,17 @@ class MAT2d_DataMapIteratorOfDataMapOfBiIntInteger;
 
 
 
-class MAT2d_DataMapNodeOfDataMapOfBiIntInteger : public TCollection_MapNode {
+class MAT2d_DataMapNodeOfDataMapOfBiIntInteger : public TCollection_MapNode
+{
 
 public:
 
   
-      MAT2d_DataMapNodeOfDataMapOfBiIntInteger(const MAT2d_BiInt& K,const Standard_Integer& I,const TCollection_MapNodePtr& n);
+    MAT2d_DataMapNodeOfDataMapOfBiIntInteger(const MAT2d_BiInt& K, const Standard_Integer& I, const TCollection_MapNodePtr& n);
   
-        MAT2d_BiInt& Key() const;
+      MAT2d_BiInt& Key()  const;
   
-        Standard_Integer& Value() const;
+      Standard_Integer& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-MAT2d_BiInt myKey;
-Standard_Integer myValue;
+  MAT2d_BiInt myKey;
+  Standard_Integer myValue;
 
 
 };
@@ -98,7 +85,6 @@ Standard_Integer myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_DataMapNodeOfDataMapOfBiIntInteger_HeaderFile

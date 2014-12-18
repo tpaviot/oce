@@ -1,6 +1,0 @@
-#ifndef _Dynamic_Variable_HeaderFile
-#include <Dynamic_Variable.hxx>
-#endif
-#ifndef _Dynamic_VariableInstance_HeaderFile
-#include <Dynamic_VariableInstance.hxx>
-#endif

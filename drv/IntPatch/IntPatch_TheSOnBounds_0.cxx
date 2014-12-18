@@ -5,56 +5,26 @@
 
 #include <IntPatch_TheSOnBounds.hxx>
 
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _Adaptor3d_HVertex_HeaderFile
 #include <Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _IntPatch_HCurve2dTool_HeaderFile
 #include <IntPatch_HCurve2dTool.hxx>
-#endif
-#ifndef _IntPatch_HInterTool_HeaderFile
 #include <IntPatch_HInterTool.hxx>
-#endif
-#ifndef _Adaptor3d_TopolTool_HeaderFile
 #include <Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _IntPatch_ArcFunction_HeaderFile
 #include <IntPatch_ArcFunction.hxx>
-#endif
-#ifndef _IntPatch_ThePathPointOfTheSOnBounds_HeaderFile
 #include <IntPatch_ThePathPointOfTheSOnBounds.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfPathPointOfTheSOnBounds_HeaderFile
 #include <IntPatch_SequenceOfPathPointOfTheSOnBounds.hxx>
-#endif
-#ifndef _IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds_HeaderFile
 #include <IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds.hxx>
-#endif
-#ifndef _IntPatch_TheSegmentOfTheSOnBounds_HeaderFile
 #include <IntPatch_TheSegmentOfTheSOnBounds.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfSegmentOfTheSOnBounds_HeaderFile
 #include <IntPatch_SequenceOfSegmentOfTheSOnBounds.hxx>
-#endif
-#ifndef _IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds_HeaderFile
 #include <IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds.hxx>
-#endif
  
 
-#define TheVertex Handle_Adaptor3d_HVertex
+#define TheVertex Handle(Adaptor3d_HVertex)
 #define TheVertex_hxx <Adaptor3d_HVertex.hxx>
-#define TheArc Handle_Adaptor2d_HCurve2d
+#define TheArc Handle(Adaptor2d_HCurve2d)
 #define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
 #define TheArcTool IntPatch_HCurve2dTool
 #define TheArcTool_hxx <IntPatch_HCurve2dTool.hxx>

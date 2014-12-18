@@ -6,28 +6,14 @@
 #ifndef _gce_MakeCirc2d_HeaderFile
 #define _gce_MakeCirc2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _gce_Root_HeaderFile
 #include <gce_Root.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class StdFail_NotDone;
 class gp_Ax2d;
 class gp_Ax22d;
@@ -35,71 +21,79 @@ class gp_Circ2d;
 class gp_Pnt2d;
 
 
-//! This class implements the following algorithms used <br>
-//!           to create Circ2d from gp. <br>
-//! <br>
-//!           * Create a Circ2d concentric with another and passing <br>
-//!             though a point. <br>
-//!           * Create a Circ2d concentric with another at the distance <br>
-//!             Dist. <br>
-//!           * Create a Circ2d passing through 3 points. <br>
-//!           * Create a Circ2d with its center and radius. <br>
-//!           * Create a Circ2d with its center and a point given <br>
-//!             the radius. <br>
-//!           * Create a Circ2d with its axis and its radius. <br>
-class gce_MakeCirc2d  : public gce_Root {
+//! This class implements the following algorithms used
+//! to create Circ2d from gp.
+//!
+//! * Create a Circ2d concentric with another and passing
+//! though a point.
+//! * Create a Circ2d concentric with another at the distance
+//! Dist.
+//! * Create a Circ2d passing through 3 points.
+//! * Create a Circ2d with its center and radius.
+//! * Create a Circ2d with its center and a point given
+//! the radius.
+//! * Create a Circ2d with its axis and its radius.
+class gce_MakeCirc2d  : public gce_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  The location point of XAxis is the center of the circle. <br>
-//! Warnings : <br>
-//!  It is not forbidden to create a circle with Radius = 0.0 <br>
-//!  If Sense is true the local coordinate system of the solution <br>
-//!  is direct and non direct in the other case. <br>
-//!  The status is "NegativeRadius" if Radius < 0.0. <br>
-  Standard_EXPORT   gce_MakeCirc2d(const gp_Ax2d& XAxis,const Standard_Real Radius,const Standard_Boolean Sense = Standard_True);
-  
-//!  The location point of Axis is the center of the circle. <br>
-//!  Warnings : <br>
-//!  It is not forbidden to create a circle with Radius = 0.0 <br>
-  Standard_EXPORT   gce_MakeCirc2d(const gp_Ax22d& Axis,const Standard_Real Radius);
-  //! Makes a Circ2d from gp <TheCirc> concentric with another <br>
-//!           circ2d <Circ> with a distance <Dist>. <br>
-//!           If Dist is greater than zero the result encloses <br>
-//!           the circle <Circ>, else the result is enclosed by the <br>
-//!           circle <Circ>. <br>
-//!           The local coordinate system of the solution is the <br>
-//!           same as Circ. <br>
-  Standard_EXPORT   gce_MakeCirc2d(const gp_Circ2d& Circ,const Standard_Real Dist);
-  //! Makes a Circ2d from gp <TheCirc> concentric with another <br>
-//!           circ2d <Circ> and passing through a Pnt2d <Point>. <br>
-//!           The local coordinate system of the solution is the <br>
-//!           same as Circ. <br>
-  Standard_EXPORT   gce_MakeCirc2d(const gp_Circ2d& Circ,const gp_Pnt2d& Point);
-  //! Makes a Circ2d from gp <TheCirc> passing through 3 <br>
-//!           Pnt2d <P1>,<P2>,<P3>. <br>
-//!           The local coordinate system of the solution is given <br>
-//!           by the three points P1, P2, P3. <br>
-  Standard_EXPORT   gce_MakeCirc2d(const gp_Pnt2d& P1,const gp_Pnt2d& P2,const gp_Pnt2d& P3);
-  //! Makes a Circ2d from gp <TheCirc> with its center <br>
-//!           <Center> and its radius <Radius>. <br>
-//!           If Sense is true the local coordinate system of <br>
-//!           the solution is direct and non direct in the other case. <br>
-  Standard_EXPORT   gce_MakeCirc2d(const gp_Pnt2d& Center,const Standard_Real Radius,const Standard_Boolean Sense = Standard_True);
-  //! Makes a Circ2d from gp <TheCirc> with its center <br>
-//!           <Center> and a point giving the radius. <br>
-//!           If Sense is true the local coordinate system of <br>
-//!           the solution is direct and non direct in the other case. <br>
-  Standard_EXPORT   gce_MakeCirc2d(const gp_Pnt2d& Center,const gp_Pnt2d& Point,const Standard_Boolean Sense = Standard_True);
-  //! Returns the constructed circle. <br>
-//! Exceptions StdFail_NotDone if no circle is constructed. <br>
-  Standard_EXPORT    const gp_Circ2d& Value() const;
-  
-  Standard_EXPORT    const gp_Circ2d& Operator() const;
-Standard_EXPORT operator gp_Circ2d() const;
 
+  //! The location point of XAxis is the center of the circle.
+  //! Warnings :
+  //! It is not forbidden to create a circle with Radius = 0.0
+  //! If Sense is true the local coordinate system of the solution
+  //! is direct and non direct in the other case.
+  //! The status is "NegativeRadius" if Radius < 0.0.
+  Standard_EXPORT gce_MakeCirc2d(const gp_Ax2d& XAxis, const Standard_Real Radius, const Standard_Boolean Sense = Standard_True);
+  
+
+  //! The location point of Axis is the center of the circle.
+  //! Warnings :
+  //! It is not forbidden to create a circle with Radius = 0.0
+  Standard_EXPORT gce_MakeCirc2d(const gp_Ax22d& Axis, const Standard_Real Radius);
+  
+  //! Makes a Circ2d from gp <TheCirc> concentric with another
+  //! circ2d <Circ> with a distance <Dist>.
+  //! If Dist is greater than zero the result encloses
+  //! the circle <Circ>, else the result is enclosed by the
+  //! circle <Circ>.
+  //! The local coordinate system of the solution is the
+  //! same as Circ.
+  Standard_EXPORT gce_MakeCirc2d(const gp_Circ2d& Circ, const Standard_Real Dist);
+  
+  //! Makes a Circ2d from gp <TheCirc> concentric with another
+  //! circ2d <Circ> and passing through a Pnt2d <Point>.
+  //! The local coordinate system of the solution is the
+  //! same as Circ.
+  Standard_EXPORT gce_MakeCirc2d(const gp_Circ2d& Circ, const gp_Pnt2d& Point);
+  
+  //! Makes a Circ2d from gp <TheCirc> passing through 3
+  //! Pnt2d <P1>,<P2>,<P3>.
+  //! The local coordinate system of the solution is given
+  //! by the three points P1, P2, P3.
+  Standard_EXPORT gce_MakeCirc2d(const gp_Pnt2d& P1, const gp_Pnt2d& P2, const gp_Pnt2d& P3);
+  
+  //! Makes a Circ2d from gp <TheCirc> with its center
+  //! <Center> and its radius <Radius>.
+  //! If Sense is true the local coordinate system of
+  //! the solution is direct and non direct in the other case.
+  Standard_EXPORT gce_MakeCirc2d(const gp_Pnt2d& Center, const Standard_Real Radius, const Standard_Boolean Sense = Standard_True);
+  
+  //! Makes a Circ2d from gp <TheCirc> with its center
+  //! <Center> and a point giving the radius.
+  //! If Sense is true the local coordinate system of
+  //! the solution is direct and non direct in the other case.
+  Standard_EXPORT gce_MakeCirc2d(const gp_Pnt2d& Center, const gp_Pnt2d& Point, const Standard_Boolean Sense = Standard_True);
+  
+  //! Returns the constructed circle.
+  //! Exceptions StdFail_NotDone if no circle is constructed.
+  Standard_EXPORT  const  gp_Circ2d& Value()  const;
+  
+  Standard_EXPORT  const  gp_Circ2d& Operator()  const;
+Standard_EXPORT operator gp_Circ2d() const;
 
 
 
@@ -114,7 +108,7 @@ private:
 
 
 
-gp_Circ2d TheCirc2d;
+  gp_Circ2d TheCirc2d;
 
 
 };
@@ -123,7 +117,6 @@ gp_Circ2d TheCirc2d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gce_MakeCirc2d_HeaderFile

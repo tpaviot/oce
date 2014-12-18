@@ -6,28 +6,14 @@
 #ifndef _AIS_DataMapNodeOfDataMapOfIOStatus_HeaderFile
 #define _AIS_DataMapNodeOfDataMapOfIOStatus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_DataMapNodeOfDataMapOfIOStatus_HeaderFile
 #include <Handle_AIS_DataMapNodeOfDataMapOfIOStatus.hxx>
-#endif
 
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
-#ifndef _Handle_AIS_GlobalStatus_HeaderFile
 #include <Handle_AIS_GlobalStatus.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class AIS_InteractiveObject;
 class AIS_GlobalStatus;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class AIS_DataMapIteratorOfDataMapOfIOStatus;
 
 
 
-class AIS_DataMapNodeOfDataMapOfIOStatus : public TCollection_MapNode {
+class AIS_DataMapNodeOfDataMapOfIOStatus : public TCollection_MapNode
+{
 
 public:
 
   
-      AIS_DataMapNodeOfDataMapOfIOStatus(const Handle(AIS_InteractiveObject)& K,const Handle(AIS_GlobalStatus)& I,const TCollection_MapNodePtr& n);
+    AIS_DataMapNodeOfDataMapOfIOStatus(const Handle(AIS_InteractiveObject)& K, const Handle(AIS_GlobalStatus)& I, const TCollection_MapNodePtr& n);
   
-        Handle_AIS_InteractiveObject& Key() const;
+      Handle(AIS_InteractiveObject)& Key()  const;
   
-        Handle_AIS_GlobalStatus& Value() const;
+      Handle(AIS_GlobalStatus)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-Handle_AIS_InteractiveObject myKey;
-Handle_AIS_GlobalStatus myValue;
+  Handle(AIS_InteractiveObject) myKey;
+  Handle(AIS_GlobalStatus) myValue;
 
 
 };
 
-#define TheKey Handle_AIS_InteractiveObject
+#define TheKey Handle(AIS_InteractiveObject)
 #define TheKey_hxx <AIS_InteractiveObject.hxx>
-#define TheItem Handle_AIS_GlobalStatus
+#define TheItem Handle(AIS_GlobalStatus)
 #define TheItem_hxx <AIS_GlobalStatus.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -99,7 +86,6 @@ Handle_AIS_GlobalStatus myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_DataMapNodeOfDataMapOfIOStatus_HeaderFile

@@ -6,73 +6,67 @@
 #ifndef _Law_Linear_HeaderFile
 #define _Law_Linear_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Law_Linear_HeaderFile
 #include <Handle_Law_Linear.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Law_Function_HeaderFile
 #include <Law_Function.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Law_Function_HeaderFile
 #include <Handle_Law_Function.hxx>
-#endif
 class Standard_OutOfRange;
 class TColStd_Array1OfReal;
 class Law_Function;
 
 
-//! Describes an linear evolution law. <br>
-class Law_Linear : public Law_Function {
+//! Describes an linear evolution law.
+class Law_Linear : public Law_Function
+{
 
 public:
 
-  //! Constructs an empty linear evolution law. <br>
-  Standard_EXPORT   Law_Linear();
   
-//! Defines this linear evolution law by assigning both: <br>
-//! -   the bounds Pdeb and Pfin of the parameter, and <br>
-//! -   the values Valdeb and Valfin of the function at these <br>
-//!   two parametric bounds. <br>
-  Standard_EXPORT     void Set(const Standard_Real Pdeb,const Standard_Real Valdeb,const Standard_Real Pfin,const Standard_Real Valfin) ;
-  //! Returns GeomAbs_CN <br>
-  Standard_EXPORT     GeomAbs_Shape Continuity() const;
-  //! Returns  1 <br>
-  Standard_EXPORT     Standard_Integer NbIntervals(const GeomAbs_Shape S) const;
+  //! Constructs an empty linear evolution law.
+  Standard_EXPORT Law_Linear();
   
-  Standard_EXPORT     void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const;
-  //! Returns the value of this function at the point of parameter X. <br>
-  Standard_EXPORT     Standard_Real Value(const Standard_Real X) ;
+
+  //! Defines this linear evolution law by assigning both:
+  //! -   the bounds Pdeb and Pfin of the parameter, and
+  //! -   the values Valdeb and Valfin of the function at these
+  //! two parametric bounds.
+  Standard_EXPORT   void Set (const Standard_Real Pdeb, const Standard_Real Valdeb, const Standard_Real Pfin, const Standard_Real Valfin) ;
   
-//! Returns the value F and the first derivative D of this <br>
-//! function at the point of parameter X. <br>
-  Standard_EXPORT     void D1(const Standard_Real X,Standard_Real& F,Standard_Real& D) ;
-  //! Returns the value, first and second derivatives <br>
-//!          at parameter X. <br>
-  Standard_EXPORT     void D2(const Standard_Real X,Standard_Real& F,Standard_Real& D,Standard_Real& D2) ;
-  //!   Returns a  law equivalent of  <me>  between <br>
-//!        parameters <First>  and <Last>. <Tol>  is used  to <br>
-//!        test for 3d points confusion. <br>
-//!        It is usfule to determines the derivatives <br>
-//!        in these values <First> and <Last> if <br>
-//!        the Law is not Cn. <br>
-  Standard_EXPORT     Handle_Law_Function Trim(const Standard_Real PFirst,const Standard_Real PLast,const Standard_Real Tol) const;
-  //! Returns the parametric bounds of the function. <br>
-  Standard_EXPORT     void Bounds(Standard_Real& PFirst,Standard_Real& PLast) ;
+  //! Returns GeomAbs_CN
+  Standard_EXPORT   GeomAbs_Shape Continuity()  const;
+  
+  //! Returns  1
+  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
+  
+  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
+  
+  //! Returns the value of this function at the point of parameter X.
+  Standard_EXPORT   Standard_Real Value (const Standard_Real X) ;
+  
+
+  //! Returns the value F and the first derivative D of this
+  //! function at the point of parameter X.
+  Standard_EXPORT   void D1 (const Standard_Real X, Standard_Real& F, Standard_Real& D) ;
+  
+  //! Returns the value, first and second derivatives
+  //! at parameter X.
+  Standard_EXPORT   void D2 (const Standard_Real X, Standard_Real& F, Standard_Real& D, Standard_Real& D2) ;
+  
+  //! Returns a  law equivalent of  <me>  between
+  //! parameters <First>  and <Last>. <Tol>  is used  to
+  //! test for 3d points confusion.
+  //! It is usfule to determines the derivatives
+  //! in these values <First> and <Last> if
+  //! the Law is not Cn.
+  Standard_EXPORT   Handle(Law_Function) Trim (const Standard_Real PFirst, const Standard_Real PLast, const Standard_Real Tol)  const;
+  
+  //! Returns the parametric bounds of the function.
+  Standard_EXPORT   void Bounds (Standard_Real& PFirst, Standard_Real& PLast) ;
 
 
 
@@ -87,10 +81,10 @@ protected:
 private: 
 
 
-Standard_Real valdeb;
-Standard_Real valfin;
-Standard_Real pdeb;
-Standard_Real pfin;
+  Standard_Real valdeb;
+  Standard_Real valfin;
+  Standard_Real pdeb;
+  Standard_Real pfin;
 
 
 };
@@ -99,7 +93,6 @@ Standard_Real pfin;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Law_Linear_HeaderFile

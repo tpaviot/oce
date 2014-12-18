@@ -6,52 +6,42 @@
 #ifndef _TPrsStd_Driver_HeaderFile
 #define _TPrsStd_Driver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TPrsStd_Driver_HeaderFile
 #include <Handle_TPrsStd_Driver.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
 class TDF_Label;
 class AIS_InteractiveObject;
 
 
-//! Driver for AIS <br>
-//!           ============== <br>
-//! An abstract class, which - in classes inheriting <br>
-//! from it - allows you to update an <br>
-//!  AIS_InteractiveObject or create one if one does <br>
-//!  not already exist. <br>
-//!  For both creation and update, the interactive <br>
-//!  object is filled with information contained in <br>
-//!  attributes. These attributes are those found on <br>
-//! the label given as an argument in the method Update. <br>
-//! true is returned if the interactive object was modified by the update. <br>
-//!  This class  provide  an algorithm  to  Build with its  default <br>
-//!  values (if Null) or Update (if !Null) an AIS_InteractiveObject <br>
-//!  .   Resources are found  in  attributes associated to  a given <br>
-//!  label. <br>
-class TPrsStd_Driver : public MMgt_TShared {
+//! Driver for AIS
+//! ==============
+//! An abstract class, which - in classes inheriting
+//! from it - allows you to update an
+//! AIS_InteractiveObject or create one if one does
+//! not already exist.
+//! For both creation and update, the interactive
+//! object is filled with information contained in
+//! attributes. These attributes are those found on
+//! the label given as an argument in the method Update.
+//! true is returned if the interactive object was modified by the update.
+//! This class  provide  an algorithm  to  Build with its  default
+//! values (if Null) or Update (if !Null) an AIS_InteractiveObject
+//! .   Resources are found  in  attributes associated to  a given
+//! label.
+class TPrsStd_Driver : public MMgt_TShared
+{
 
 public:
 
   
-//! Updates the interactive object ais with <br>
-//! information found on the attributes associated with the label L. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Update(const TDF_Label& L,Handle(AIS_InteractiveObject)& ais)  = 0;
+
+  //! Updates the interactive object ais with
+  //! information found on the attributes associated with the label L.
+  Standard_EXPORT virtual   Standard_Boolean Update (const TDF_Label& L, Handle(AIS_InteractiveObject)& ais)  = 0;
 
 
 
@@ -61,7 +51,7 @@ public:
 protected:
 
   
-  Standard_EXPORT   TPrsStd_Driver();
+  Standard_EXPORT TPrsStd_Driver();
 
 
 
@@ -76,7 +66,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TPrsStd_Driver_HeaderFile

@@ -1,15 +1,5 @@
-#ifndef _IFSelect_HSeqOfSelection_HeaderFile
 #include <IFSelect_HSeqOfSelection.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IFSelect_Selection_HeaderFile
 #include <IFSelect_Selection.hxx>
-#endif
-#ifndef _IFSelect_TSeqOfSelection_HeaderFile
 #include <IFSelect_TSeqOfSelection.hxx>
-#endif
-#ifndef _IFSelect_SelectionIterator_HeaderFile
 #include <IFSelect_SelectionIterator.hxx>
-#endif

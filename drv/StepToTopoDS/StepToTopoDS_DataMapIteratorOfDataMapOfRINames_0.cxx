@@ -5,21 +5,11 @@
 
 #include <StepToTopoDS_DataMapIteratorOfDataMapOfRINames.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapOfRINames_HeaderFile
 #include <StepToTopoDS_DataMapOfRINames.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapNodeOfDataMapOfRINames_HeaderFile
 #include <StepToTopoDS_DataMapNodeOfDataMapOfRINames.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString

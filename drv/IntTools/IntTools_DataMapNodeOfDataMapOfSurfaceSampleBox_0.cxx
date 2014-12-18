@@ -5,25 +5,13 @@
 
 #include <IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntTools_SurfaceRangeSample_HeaderFile
 #include <IntTools_SurfaceRangeSample.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _IntTools_SurfaceRangeSampleMapHasher_HeaderFile
 #include <IntTools_SurfaceRangeSampleMapHasher.hxx>
-#endif
-#ifndef _IntTools_DataMapOfSurfaceSampleBox_HeaderFile
 #include <IntTools_DataMapOfSurfaceSampleBox.hxx>
-#endif
-#ifndef _IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox_HeaderFile
 #include <IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox.hxx>
-#endif
 
  
 

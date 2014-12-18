@@ -44,7 +44,6 @@ set(TOOLKIT_DEPENDS
 	TKXDESTEP
 	TKXSDRAW
 	TKSTL
-	TKAdvTools
 	TKVoxel
 	TKShapeSchema
 	TKPShape

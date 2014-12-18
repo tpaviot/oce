@@ -6,52 +6,22 @@
 #ifndef _ShapeFix_Face_HeaderFile
 #define _ShapeFix_Face_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Face_HeaderFile
 #include <Handle_ShapeFix_Face.hxx>
-#endif
 
-#ifndef _Handle_ShapeAnalysis_Surface_HeaderFile
 #include <Handle_ShapeAnalysis_Surface.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Wire_HeaderFile
 #include <Handle_ShapeFix_Wire.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _ShapeFix_Root_HeaderFile
 #include <ShapeFix_Root.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_BasicMsgRegistrator_HeaderFile
 #include <Handle_ShapeExtend_BasicMsgRegistrator.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_WireData_HeaderFile
 #include <Handle_ShapeExtend_WireData.hxx>
-#endif
-#ifndef _ShapeExtend_Status_HeaderFile
 #include <ShapeExtend_Status.hxx>
-#endif
 class ShapeAnalysis_Surface;
 class ShapeFix_Wire;
 class TopoDS_Face;
@@ -65,163 +35,200 @@ class TopoDS_Vertex;
 class ShapeFix_DataMapOfShapeBox2d;
 
 
-//! This operator allows to perform various fixes on face <br>
-//!          and its wires: fixes provided by ShapeFix_Wire, <br>
-//!          fixing orientation of wires, addition of natural bounds, <br>
-//!          fixing of missing seam edge, <br>
-//!          and detection and removal of null-area wires <br>
-class ShapeFix_Face : public ShapeFix_Root {
+//! This operator allows to perform various fixes on face
+//! and its wires: fixes provided by ShapeFix_Wire,
+//! fixing orientation of wires, addition of natural bounds,
+//! fixing of missing seam edge,
+//! and detection and removal of null-area wires
+class ShapeFix_Face : public ShapeFix_Root
+{
 
 public:
 
-  //! Creates an empty tool <br>
-  Standard_EXPORT   ShapeFix_Face();
-  //! Creates a tool and loads a face <br>
-  Standard_EXPORT   ShapeFix_Face(const TopoDS_Face& face);
-  //! Sets all modes to default <br>
-  Standard_EXPORT   virtual  void ClearModes() ;
-  //! Loads a whole face already created, with its wires, sense and <br>
-//!          location <br>
-  Standard_EXPORT     void Init(const TopoDS_Face& face) ;
-  //! Starts the creation of the face <br>
-//!          By default it will be FORWARD, or REVERSED if <fwd> is False <br>
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& surf,const Standard_Real preci,const Standard_Boolean fwd = Standard_True) ;
-  //! Starts the creation of the face <br>
-//!          By default it will be FORWARD, or REVERSED if <fwd> is False <br>
-  Standard_EXPORT     void Init(const Handle(ShapeAnalysis_Surface)& surf,const Standard_Real preci,const Standard_Boolean fwd = Standard_True) ;
-  //! Sets message registrator <br>
-  Standard_EXPORT   virtual  void SetMsgRegistrator(const Handle(ShapeExtend_BasicMsgRegistrator)& msgreg) ;
-  //! Sets basic precision value (also to FixWireTool) <br>
-  Standard_EXPORT   virtual  void SetPrecision(const Standard_Real preci) ;
-  //! Sets minimal allowed tolerance (also to FixWireTool) <br>
-  Standard_EXPORT   virtual  void SetMinTolerance(const Standard_Real mintol) ;
-  //! Sets maximal allowed tolerance (also to FixWireTool) <br>
-  Standard_EXPORT   virtual  void SetMaxTolerance(const Standard_Real maxtol) ;
-  //! Returns (modifiable) the mode for applying fixes of <br>
-//!          ShapeFix_Wire, by default True. <br>
-        Standard_Integer& FixWireMode() ;
-  //! Returns (modifiable) the fix orientation mode, by default <br>
-//!          True. If True, wires oriented to border limited square. <br>
-        Standard_Integer& FixOrientationMode() ;
-  //! Returns (modifiable) the add natural bound mode. <br>
-//!          If true, natural boundary is added on faces that miss them. <br>
-//!          Default is False for faces with single wire (they are <br>
-//!          handled by FixOrientation in that case) and True for others. <br>
-        Standard_Integer& FixAddNaturalBoundMode() ;
-  //! Returns (modifiable) the fix missing seam mode, by default <br>
-//!          True. If True, tries to insert seam is missed. <br>
-        Standard_Integer& FixMissingSeamMode() ;
-  //! Returns (modifiable) the fix small area wire mode, by default <br>
-//!          False. If True, drops small wires. <br>
-        Standard_Integer& FixSmallAreaWireMode() ;
-  //! Returns (modifiable) the fix intersecting wires mode <br>
-//!          by default True. <br>
-        Standard_Integer& FixIntersectingWiresMode() ;
-  //! Returns (modifiable) the fix loop wires mode <br>
-//!          by default True. <br>
-        Standard_Integer& FixLoopWiresMode() ;
-  //! Returns (modifiable) the fix split face mode <br>
-//!          by default True. <br>
-        Standard_Integer& FixSplitFaceMode() ;
-  //! Returns (modifiable) the auto-correct precision mode <br>
-//!          by default False. <br>
-        Standard_Integer& AutoCorrectPrecisionMode() ;
-  //! Returns (modifiable) the activation flag for periodic <br>
-//!          degenerated fix. False by default. <br>
-        Standard_Integer& FixPeriodicDegeneratedMode() ;
-  //! Returns a face which corresponds to the current state <br>
-//!  Warning: The finally produced face may be another one ... but with the <br>
-//!          same support <br>
-        TopoDS_Face Face() const;
-  //! Returns resulting shape (Face or Shell if splitted) <br>
-//!          To be used instead of Face() if FixMissingSeam involved <br>
-        TopoDS_Shape Result() const;
-  //! Add a wire to current face using BRep_Builder. <br>
-//!          Wire is added without taking into account orientation of face <br>
-//!          (as if face were FORWARD). <br>
-  Standard_EXPORT     void Add(const TopoDS_Wire& wire) ;
-  //! Performs all the fixes, depending on modes <br>
-//! Function Status returns the status of last call to Perform() <br>
-//!          ShapeExtend_OK   : face was OK, nothing done <br>
-//!          ShapeExtend_DONE1: some wires are fixed <br>
-//!          ShapeExtend_DONE2: orientation of wires fixed <br>
-//!          ShapeExtend_DONE3: missing seam added <br>
-//!          ShapeExtend_DONE4: small area wire removed <br>
-//!          ShapeExtend_DONE5: natural bounds added <br>
-//!          ShapeExtend_FAIL1: some fails during fixing wires <br>
-//!          ShapeExtend_FAIL2: cannot fix orientation of wires <br>
-//!          ShapeExtend_FAIL3: cannot add missing seam <br>
-//!          ShapeExtend_FAIL4: cannot remove small area wire <br>
-  Standard_EXPORT     Standard_Boolean Perform() ;
-  //! Fixes orientation of wires on the face <br>
-//!          It tries to make all wires lie outside all others (according <br>
-//!          to orientation) by reversing orientation of some of them. <br>
-//!          If face lying on sphere or torus has single wire and <br>
-//!          AddNaturalBoundMode is True, that wire is not reversed in <br>
-//!          any case (supposing that natural bound will be added). <br>
-//!          Returns True if wires were reversed <br>
-  Standard_EXPORT     Standard_Boolean FixOrientation() ;
-  //! Fixes orientation of wires on the face <br>
-//!          It tries to make all wires lie outside all others (according <br>
-//!          to orientation) by reversing orientation of some of them. <br>
-//!          If face lying on sphere or torus has single wire and <br>
-//!          AddNaturalBoundMode is True, that wire is not reversed in <br>
-//!          any case (supposing that natural bound will be added). <br>
-//!          Returns True if wires were reversed <br>
-//!          OutWires return information about out wires + list of <br>
-//!          internal wires for each (for performing split face). <br>
-  Standard_EXPORT     Standard_Boolean FixOrientation(TopTools_DataMapOfShapeListOfShape& MapWires) ;
-  //! Adds natural boundary on face if it is missing. <br>
-//!          Two cases are supported: <br>
-//!          - face has no wires <br>
-//!          - face lies on geometrically double-closed surface <br>
-//!            (sphere or torus) and none of wires is left-oriented <br>
-//!          Returns True if natural boundary was added <br>
-  Standard_EXPORT     Standard_Boolean FixAddNaturalBound() ;
-  //! Detects and fixes the special case when face on a closed <br>
-//!          surface is given by two wires closed in 3d but with gap in 2d. <br>
-//!          In that case it creates a new wire from the two, and adds a <br>
-//!          missing seam edge <br>
-//!          Returns True if missing seam was added <br>
-  Standard_EXPORT     Standard_Boolean FixMissingSeam() ;
-  //! Detects wires with small area (that is less than <br>
-//!          100*Precision::PConfusion(). Removes these wires if they are internal. <br>
-//!  Returns : True if at least one small wire removed, <br>
-//!    	    False if does nothing. <br>
-  Standard_EXPORT     Standard_Boolean FixSmallAreaWire() ;
-  //! Detects if wire has a loop and fixes this situation by splitting on the few parts. <br>
-//!          if wire has a loops and it was splitted Status was set to value ShapeExtend_DONE6. <br>
-  Standard_EXPORT     Standard_Boolean FixLoopWire(TopTools_SequenceOfShape& aResWires) ;
-  //! Detects and fixes the special case when face has more than one wire <br>
-//!          and this wires have intersection point <br>
-  Standard_EXPORT     Standard_Boolean FixIntersectingWires() ;
-  //! If wire contains two coincidence edges it must be removed <br>
-//! Queries on status after Perform() <br>
-  Standard_EXPORT     Standard_Boolean FixWiresTwoCoincEdges() ;
-  //! Split face if there are more than one out wire <br>
-//!          using inrormation after FixOrientation() <br>
-  Standard_EXPORT     Standard_Boolean FixSplitFace(const TopTools_DataMapOfShapeListOfShape& MapWires) ;
-  //! Fixes topology for a specific case when face is composed <br>
-//!          by a single wire belting a periodic surface. In that case <br>
-//!          a degenerated edge is reconstructed in the degenerated pole <br>
-//!          of the surface. Initial wire gets consistent orientation. <br>
-//!          Must be used in couple and before FixMissingSeam routine <br>
-  Standard_EXPORT     Standard_Boolean FixPeriodicDegenerated() ;
-  //! Returns the status of last call to Perform() <br>
-//!          ShapeExtend_OK   : face was OK, nothing done <br>
-//!          ShapeExtend_DONE1: some wires are fixed <br>
-//!          ShapeExtend_DONE2: orientation of wires fixed <br>
-//!          ShapeExtend_DONE3: missing seam added <br>
-//!          ShapeExtend_DONE4: small area wire removed <br>
-//!          ShapeExtend_DONE5: natural bounds added <br>
-//!          ShapeExtend_DONE8: face may be splited <br>
-//!          ShapeExtend_FAIL1: some fails during fixing wires <br>
-//!          ShapeExtend_FAIL2: cannot fix orientation of wires <br>
-//!          ShapeExtend_FAIL3: cannot add missing seam <br>
-//!          ShapeExtend_FAIL4: cannot remove small area wire <br>
-        Standard_Boolean Status(const ShapeExtend_Status status) const;
-  //! Returns tool for fixing wires. <br>
-        Handle_ShapeFix_Wire FixWireTool() ;
+  
+  //! Creates an empty tool
+  Standard_EXPORT ShapeFix_Face();
+  
+  //! Creates a tool and loads a face
+  Standard_EXPORT ShapeFix_Face(const TopoDS_Face& face);
+  
+  //! Sets all modes to default
+  Standard_EXPORT virtual   void ClearModes() ;
+  
+  //! Loads a whole face already created, with its wires, sense and
+  //! location
+  Standard_EXPORT   void Init (const TopoDS_Face& face) ;
+  
+  //! Starts the creation of the face
+  //! By default it will be FORWARD, or REVERSED if <fwd> is False
+  Standard_EXPORT   void Init (const Handle(Geom_Surface)& surf, const Standard_Real preci, const Standard_Boolean fwd = Standard_True) ;
+  
+  //! Starts the creation of the face
+  //! By default it will be FORWARD, or REVERSED if <fwd> is False
+  Standard_EXPORT   void Init (const Handle(ShapeAnalysis_Surface)& surf, const Standard_Real preci, const Standard_Boolean fwd = Standard_True) ;
+  
+  //! Sets message registrator
+  Standard_EXPORT virtual   void SetMsgRegistrator (const Handle(ShapeExtend_BasicMsgRegistrator)& msgreg) ;
+  
+  //! Sets basic precision value (also to FixWireTool)
+  Standard_EXPORT virtual   void SetPrecision (const Standard_Real preci) ;
+  
+  //! Sets minimal allowed tolerance (also to FixWireTool)
+  Standard_EXPORT virtual   void SetMinTolerance (const Standard_Real mintol) ;
+  
+  //! Sets maximal allowed tolerance (also to FixWireTool)
+  Standard_EXPORT virtual   void SetMaxTolerance (const Standard_Real maxtol) ;
+  
+  //! Returns (modifiable) the mode for applying fixes of
+  //! ShapeFix_Wire, by default True.
+      Standard_Integer& FixWireMode() ;
+  
+  //! Returns (modifiable) the fix orientation mode, by default
+  //! True. If True, wires oriented to border limited square.
+      Standard_Integer& FixOrientationMode() ;
+  
+  //! Returns (modifiable) the add natural bound mode.
+  //! If true, natural boundary is added on faces that miss them.
+  //! Default is False for faces with single wire (they are
+  //! handled by FixOrientation in that case) and True for others.
+      Standard_Integer& FixAddNaturalBoundMode() ;
+  
+  //! Returns (modifiable) the fix missing seam mode, by default
+  //! True. If True, tries to insert seam is missed.
+      Standard_Integer& FixMissingSeamMode() ;
+  
+  //! Returns (modifiable) the fix small area wire mode, by default
+  //! False. If True, drops small wires.
+      Standard_Integer& FixSmallAreaWireMode() ;
+  
+  //! Returns (modifiable) the fix intersecting wires mode
+  //! by default True.
+      Standard_Integer& FixIntersectingWiresMode() ;
+  
+  //! Returns (modifiable) the fix loop wires mode
+  //! by default True.
+      Standard_Integer& FixLoopWiresMode() ;
+  
+  //! Returns (modifiable) the fix split face mode
+  //! by default True.
+      Standard_Integer& FixSplitFaceMode() ;
+  
+  //! Returns (modifiable) the auto-correct precision mode
+  //! by default False.
+      Standard_Integer& AutoCorrectPrecisionMode() ;
+  
+  //! Returns (modifiable) the activation flag for periodic
+  //! degenerated fix. False by default.
+      Standard_Integer& FixPeriodicDegeneratedMode() ;
+  
+  //! Returns a face which corresponds to the current state
+  //! Warning: The finally produced face may be another one ... but with the
+  //! same support
+      TopoDS_Face Face()  const;
+  
+  //! Returns resulting shape (Face or Shell if splitted)
+  //! To be used instead of Face() if FixMissingSeam involved
+      TopoDS_Shape Result()  const;
+  
+  //! Add a wire to current face using BRep_Builder.
+  //! Wire is added without taking into account orientation of face
+  //! (as if face were FORWARD).
+  Standard_EXPORT   void Add (const TopoDS_Wire& wire) ;
+  
+  //! Performs all the fixes, depending on modes
+  //! Function Status returns the status of last call to Perform()
+  //! ShapeExtend_OK   : face was OK, nothing done
+  //! ShapeExtend_DONE1: some wires are fixed
+  //! ShapeExtend_DONE2: orientation of wires fixed
+  //! ShapeExtend_DONE3: missing seam added
+  //! ShapeExtend_DONE4: small area wire removed
+  //! ShapeExtend_DONE5: natural bounds added
+  //! ShapeExtend_FAIL1: some fails during fixing wires
+  //! ShapeExtend_FAIL2: cannot fix orientation of wires
+  //! ShapeExtend_FAIL3: cannot add missing seam
+  //! ShapeExtend_FAIL4: cannot remove small area wire
+  Standard_EXPORT   Standard_Boolean Perform() ;
+  
+  //! Fixes orientation of wires on the face
+  //! It tries to make all wires lie outside all others (according
+  //! to orientation) by reversing orientation of some of them.
+  //! If face lying on sphere or torus has single wire and
+  //! AddNaturalBoundMode is True, that wire is not reversed in
+  //! any case (supposing that natural bound will be added).
+  //! Returns True if wires were reversed
+  Standard_EXPORT   Standard_Boolean FixOrientation() ;
+  
+  //! Fixes orientation of wires on the face
+  //! It tries to make all wires lie outside all others (according
+  //! to orientation) by reversing orientation of some of them.
+  //! If face lying on sphere or torus has single wire and
+  //! AddNaturalBoundMode is True, that wire is not reversed in
+  //! any case (supposing that natural bound will be added).
+  //! Returns True if wires were reversed
+  //! OutWires return information about out wires + list of
+  //! internal wires for each (for performing split face).
+  Standard_EXPORT   Standard_Boolean FixOrientation (TopTools_DataMapOfShapeListOfShape& MapWires) ;
+  
+  //! Adds natural boundary on face if it is missing.
+  //! Two cases are supported:
+  //! - face has no wires
+  //! - face lies on geometrically double-closed surface
+  //! (sphere or torus) and none of wires is left-oriented
+  //! Returns True if natural boundary was added
+  Standard_EXPORT   Standard_Boolean FixAddNaturalBound() ;
+  
+  //! Detects and fixes the special case when face on a closed
+  //! surface is given by two wires closed in 3d but with gap in 2d.
+  //! In that case it creates a new wire from the two, and adds a
+  //! missing seam edge
+  //! Returns True if missing seam was added
+  Standard_EXPORT   Standard_Boolean FixMissingSeam() ;
+  
+  //! Detects wires with small area (that is less than
+  //! 100*Precision::PConfusion(). Removes these wires if they are internal.
+  //! Returns : True if at least one small wire removed,
+  //! False if does nothing.
+  Standard_EXPORT   Standard_Boolean FixSmallAreaWire() ;
+  
+  //! Detects if wire has a loop and fixes this situation by splitting on the few parts.
+  //! if wire has a loops and it was splitted Status was set to value ShapeExtend_DONE6.
+  Standard_EXPORT   Standard_Boolean FixLoopWire (TopTools_SequenceOfShape& aResWires) ;
+  
+  //! Detects and fixes the special case when face has more than one wire
+  //! and this wires have intersection point
+  Standard_EXPORT   Standard_Boolean FixIntersectingWires() ;
+  
+  //! If wire contains two coincidence edges it must be removed
+  //! Queries on status after Perform()
+  Standard_EXPORT   Standard_Boolean FixWiresTwoCoincEdges() ;
+  
+  //! Split face if there are more than one out wire
+  //! using inrormation after FixOrientation()
+  Standard_EXPORT   Standard_Boolean FixSplitFace (const TopTools_DataMapOfShapeListOfShape& MapWires) ;
+  
+  //! Fixes topology for a specific case when face is composed
+  //! by a single wire belting a periodic surface. In that case
+  //! a degenerated edge is reconstructed in the degenerated pole
+  //! of the surface. Initial wire gets consistent orientation.
+  //! Must be used in couple and before FixMissingSeam routine
+  Standard_EXPORT   Standard_Boolean FixPeriodicDegenerated() ;
+  
+  //! Returns the status of last call to Perform()
+  //! ShapeExtend_OK   : face was OK, nothing done
+  //! ShapeExtend_DONE1: some wires are fixed
+  //! ShapeExtend_DONE2: orientation of wires fixed
+  //! ShapeExtend_DONE3: missing seam added
+  //! ShapeExtend_DONE4: small area wire removed
+  //! ShapeExtend_DONE5: natural bounds added
+  //! ShapeExtend_DONE8: face may be splited
+  //! ShapeExtend_FAIL1: some fails during fixing wires
+  //! ShapeExtend_FAIL2: cannot fix orientation of wires
+  //! ShapeExtend_FAIL3: cannot add missing seam
+  //! ShapeExtend_FAIL4: cannot remove small area wire
+      Standard_Boolean Status (const ShapeExtend_Status status)  const;
+  
+  //! Returns tool for fixing wires.
+      Handle(ShapeFix_Wire) FixWireTool() ;
 
 
 
@@ -231,31 +238,31 @@ public:
 protected:
 
 
-Handle_ShapeAnalysis_Surface mySurf;
-TopoDS_Face myFace;
-TopoDS_Shape myResult;
-Handle_ShapeFix_Wire myFixWire;
-Standard_Boolean myFwd;
-Standard_Integer myStatus;
+  Handle(ShapeAnalysis_Surface) mySurf;
+  TopoDS_Face myFace;
+  TopoDS_Shape myResult;
+  Handle(ShapeFix_Wire) myFixWire;
+  Standard_Boolean myFwd;
+  Standard_Integer myStatus;
 
 
 private: 
 
   
-  Standard_EXPORT     Standard_Boolean SplitEdge(const Handle(ShapeExtend_WireData)& sewd,const Standard_Integer num,const Standard_Real param,const TopoDS_Vertex& vert,const Standard_Real preci,ShapeFix_DataMapOfShapeBox2d& boxes) ;
+  Standard_EXPORT   Standard_Boolean SplitEdge (const Handle(ShapeExtend_WireData)& sewd, const Standard_Integer num, const Standard_Real param, const TopoDS_Vertex& vert, const Standard_Real preci, ShapeFix_DataMapOfShapeBox2d& boxes) ;
   
-  Standard_EXPORT     Standard_Boolean SplitEdge(const Handle(ShapeExtend_WireData)& sewd,const Standard_Integer num,const Standard_Real param1,const Standard_Real param2,const TopoDS_Vertex& vert,const Standard_Real preci,ShapeFix_DataMapOfShapeBox2d& boxes) ;
+  Standard_EXPORT   Standard_Boolean SplitEdge (const Handle(ShapeExtend_WireData)& sewd, const Standard_Integer num, const Standard_Real param1, const Standard_Real param2, const TopoDS_Vertex& vert, const Standard_Real preci, ShapeFix_DataMapOfShapeBox2d& boxes) ;
 
-Standard_Integer myFixWireMode;
-Standard_Integer myFixOrientationMode;
-Standard_Integer myFixAddNaturalBoundMode;
-Standard_Integer myFixMissingSeamMode;
-Standard_Integer myFixSmallAreaWireMode;
-Standard_Integer myFixLoopWiresMode;
-Standard_Integer myFixIntersectingWiresMode;
-Standard_Integer myFixSplitFaceMode;
-Standard_Integer myAutoCorrectPrecisionMode;
-Standard_Integer myFixPeriodicDegenerated;
+  Standard_Integer myFixWireMode;
+  Standard_Integer myFixOrientationMode;
+  Standard_Integer myFixAddNaturalBoundMode;
+  Standard_Integer myFixMissingSeamMode;
+  Standard_Integer myFixSmallAreaWireMode;
+  Standard_Integer myFixLoopWiresMode;
+  Standard_Integer myFixIntersectingWiresMode;
+  Standard_Integer myFixSplitFaceMode;
+  Standard_Integer myAutoCorrectPrecisionMode;
+  Standard_Integer myFixPeriodicDegenerated;
 
 
 };
@@ -265,7 +272,6 @@ Standard_Integer myFixPeriodicDegenerated;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_Face_HeaderFile

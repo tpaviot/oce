@@ -6,15 +6,9 @@
 #ifndef _BRepClass3d_HeaderFile
 #define _BRepClass3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class TopoDS_Shell;
 class TopoDS_Solid;
@@ -29,16 +23,17 @@ class BRepClass3d_DataMapIteratorOfMapOfInter;
 
 
 
-class BRepClass3d  {
+class BRepClass3d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the outer most shell of <S>. Returns a Null <br>
-//!          shell if <S> has no outer shell. <br>
-//!          If <S> has only one shell, then it will return, without checking orientation. <br>
-  Standard_EXPORT   static  TopoDS_Shell OuterShell(const TopoDS_Solid& S) ;
-
+  
+  //! Returns the outer most shell of <S>. Returns a Null
+  //! shell if <S> has no outer shell.
+  //! If <S> has only one shell, then it will return, without checking orientation.
+  Standard_EXPORT static   TopoDS_Shell OuterShell (const TopoDS_Solid& S) ;
 
 
 
@@ -69,7 +64,6 @@ friend class BRepClass3d_DataMapIteratorOfMapOfInter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepClass3d_HeaderFile

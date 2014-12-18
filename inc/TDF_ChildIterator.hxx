@@ -6,94 +6,85 @@
 #ifndef _TDF_ChildIterator_HeaderFile
 #define _TDF_ChildIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TDF_LabelNodePtr_HeaderFile
 #include <TDF_LabelNodePtr.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
 class TDF_Label;
 
 
-//! Iterates on the children of a label, at the first <br>
-//!          level only. It is possible to ask the iterator to <br>
-//!          explore all the sub label levels of the given one, <br>
-//!          with the option "allLevels". <br>
-class TDF_ChildIterator  {
+//! Iterates on the children of a label, at the first
+//! level only. It is possible to ask the iterator to
+//! explore all the sub label levels of the given one,
+//! with the option "allLevels".
+class TDF_ChildIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty iterator  object to <br>
-//!  explore the children of a label. <br>
-  Standard_EXPORT   TDF_ChildIterator();
-  //! Constructs the iterator object defined by <br>
-//!  the label aLabel.  Iterates on the children of the given label. If <br>
-//!          <allLevels> option is set to true, it explores not <br>
-//!          only the first, but all the sub label levels. <br>
-  Standard_EXPORT   TDF_ChildIterator(const TDF_Label& aLabel,const Standard_Boolean allLevels = Standard_False);
-  //! Initializes the iteration on the children of the <br>
-//!          given label. <br>
-//! If <allLevels> option is set to true, <br>
-//!          it explores not only the first, but all the sub <br>
-//!          label levels. <br>
-//!  If allLevels is false, only the first level of <br>
-//!  child labels is explored. <br>
-//!  In the example below, the label is iterated <br>
-//!  using Initialize, More and Next and its <br>
-//!  child labels dumped using TDF_Tool::Entry. <br>
-//!  Example <br>
-//!  void DumpChildren(const <br>
-//!  TDF_Label& aLabel) <br>
-//!  { <br>
-//!  TDF_ChildIterator it; <br>
-//!  TCollection_AsciiString es; <br>
-//!  for <br>
-//!  (it.Initialize(aLabel,Standard_True); <br>
-//!  it.More(); it.Next()){ <br>
-//!  TDF_Tool::Entry(it.Value(),es); <br>
-//!  cout << as.ToCString() << endl; <br>
-//!  } <br>
-//!  } <br>
-  Standard_EXPORT     void Initialize(const TDF_Label& aLabel,const Standard_Boolean allLevels = Standard_False) ;
-  //! Returns true if a current label is found in the <br>
-//!  iteration process. <br>
-//! <br>
-        Standard_Boolean More() const;
-  //! Move the  current  iteration  to the next Item. <br>
-  Standard_EXPORT     void Next() ;
-  //! Moves this iteration to the next brother <br>
-//!  label. A brother label is one with the same <br>
-//!  father as an initial label. <br>
-//!  Use this function when the non-empty <br>
-//!  constructor or Initialize has allLevels set to <br>
-//!  true. The result is that the iteration does not <br>
-//!  explore the children of the current label. <br>
-//!          This method is interesting only with <br>
-//!          "allLevels" behavior, because it avoids to explore <br>
-//!          the current label children. <br>
-  Standard_EXPORT     void NextBrother() ;
-  //! Returns the current label; or, if there is <br>
-//!          none, a null label. <br>
-//! <br>
-       const TDF_Label Value() const;
-
+  
+  //! Creates an empty iterator  object to
+  //! explore the children of a label.
+  Standard_EXPORT TDF_ChildIterator();
+  
+  //! Constructs the iterator object defined by
+  //! the label aLabel.  Iterates on the children of the given label. If
+  //! <allLevels> option is set to true, it explores not
+  //! only the first, but all the sub label levels.
+  Standard_EXPORT TDF_ChildIterator(const TDF_Label& aLabel, const Standard_Boolean allLevels = Standard_False);
+  
+  //! Initializes the iteration on the children of the
+  //! given label.
+  //! If <allLevels> option is set to true,
+  //! it explores not only the first, but all the sub
+  //! label levels.
+  //! If allLevels is false, only the first level of
+  //! child labels is explored.
+  //! In the example below, the label is iterated
+  //! using Initialize, More and Next and its
+  //! child labels dumped using TDF_Tool::Entry.
+  //! Example
+  //! void DumpChildren(const
+  //! TDF_Label& aLabel)
+  //! {
+  //! TDF_ChildIterator it;
+  //! TCollection_AsciiString es;
+  //! for
+  //! (it.Initialize(aLabel,Standard_True);
+  //! it.More(); it.Next()){
+  //! TDF_Tool::Entry(it.Value(),es);
+  //! cout << as.ToCString() << endl;
+  //! }
+  //! }
+  Standard_EXPORT   void Initialize (const TDF_Label& aLabel, const Standard_Boolean allLevels = Standard_False) ;
+  
+  //! Returns true if a current label is found in the
+  //! iteration process.
+      Standard_Boolean More()  const;
+  
+  //! Move the  current  iteration  to the next Item.
+  Standard_EXPORT   void Next() ;
+  
+  //! Moves this iteration to the next brother
+  //! label. A brother label is one with the same
+  //! father as an initial label.
+  //! Use this function when the non-empty
+  //! constructor or Initialize has allLevels set to
+  //! true. The result is that the iteration does not
+  //! explore the children of the current label.
+  //! This method is interesting only with
+  //! "allLevels" behavior, because it avoids to explore
+  //! the current label children.
+  Standard_EXPORT   void NextBrother() ;
+  
+  //! Returns the current label; or, if there is
+  //! none, a null label.
+     const  TDF_Label Value()  const;
 
 
 
@@ -108,8 +99,8 @@ private:
 
 
 
-TDF_LabelNodePtr myNode;
-Standard_Integer myFirstLevel;
+  TDF_LabelNodePtr myNode;
+  Standard_Integer myFirstLevel;
 
 
 };
@@ -119,7 +110,6 @@ Standard_Integer myFirstLevel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_ChildIterator_HeaderFile

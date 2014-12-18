@@ -5,29 +5,21 @@
 
 #include <ExprIntrp_StackOfGeneralRelation.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _ExprIntrp_StackIteratorOfStackOfGeneralRelation_HeaderFile
-#include <ExprIntrp_StackIteratorOfStackOfGeneralRelation.hxx>
-#endif
-#ifndef _Expr_GeneralRelation_HeaderFile
+#include <ExprIntrp_ListIteratorOfStackOfGeneralRelation.hxx>
 #include <Expr_GeneralRelation.hxx>
-#endif
-#ifndef _ExprIntrp_StackNodeOfStackOfGeneralRelation_HeaderFile
-#include <ExprIntrp_StackNodeOfStackOfGeneralRelation.hxx>
-#endif
+#include <ExprIntrp_ListNodeOfStackOfGeneralRelation.hxx>
  
 
-#define Item Handle_Expr_GeneralRelation
+#define Item Handle(Expr_GeneralRelation)
 #define Item_hxx <Expr_GeneralRelation.hxx>
-#define TCollection_StackNode ExprIntrp_StackNodeOfStackOfGeneralRelation
-#define TCollection_StackNode_hxx <ExprIntrp_StackNodeOfStackOfGeneralRelation.hxx>
-#define TCollection_StackIterator ExprIntrp_StackIteratorOfStackOfGeneralRelation
-#define TCollection_StackIterator_hxx <ExprIntrp_StackIteratorOfStackOfGeneralRelation.hxx>
-#define Handle_TCollection_StackNode Handle_ExprIntrp_StackNodeOfStackOfGeneralRelation
-#define TCollection_StackNode_Type_() ExprIntrp_StackNodeOfStackOfGeneralRelation_Type_()
-#define TCollection_Stack ExprIntrp_StackOfGeneralRelation
-#define TCollection_Stack_hxx <ExprIntrp_StackOfGeneralRelation.hxx>
-#include <TCollection_Stack.gxx>
+#define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralRelation
+#define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralRelation.hxx>
+#define TCollection_ListIterator ExprIntrp_ListIteratorOfStackOfGeneralRelation
+#define TCollection_ListIterator_hxx <ExprIntrp_ListIteratorOfStackOfGeneralRelation.hxx>
+#define Handle_TCollection_ListNode Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation
+#define TCollection_ListNode_Type_() ExprIntrp_ListNodeOfStackOfGeneralRelation_Type_()
+#define TCollection_List ExprIntrp_StackOfGeneralRelation
+#define TCollection_List_hxx <ExprIntrp_StackOfGeneralRelation.hxx>
+#include <TCollection_List.gxx>
 

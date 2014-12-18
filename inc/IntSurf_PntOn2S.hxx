@@ -6,62 +6,60 @@
 #ifndef _IntSurf_PntOn2S_HeaderFile
 #define _IntSurf_PntOn2S_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_Pnt;
 
 
-//! This class defines the geometric informations <br>
-//!          for an intersection point between 2 surfaces : <br>
-//!          The coordinates ( Pnt from gp ), and two <br>
-//!          parametric coordinates. <br>
-class IntSurf_PntOn2S  {
+//! This class defines the geometric informations
+//! for an intersection point between 2 surfaces :
+//! The coordinates ( Pnt from gp ), and two
+//! parametric coordinates.
+class IntSurf_PntOn2S 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   IntSurf_PntOn2S();
-  //! Sets the value of the point in 3d space. <br>
-        void SetValue(const gp_Pnt& Pt) ;
-  //! Sets the values of the point in 3d space, and <br>
-//!          in the parametric space of one of the surface. <br>
-  Standard_EXPORT     void SetValue(const gp_Pnt& Pt,const Standard_Boolean OnFirst,const Standard_Real U,const Standard_Real V) ;
-  //! Sets the values of the point in 3d space, and <br>
-//!          in the parametric space of each surface. <br>
-        void SetValue(const gp_Pnt& Pt,const Standard_Real U1,const Standard_Real V1,const Standard_Real U2,const Standard_Real V2) ;
-  //! Set the values of the point in the parametric <br>
-//!          space of one of the surface. <br>
-  Standard_EXPORT     void SetValue(const Standard_Boolean OnFirst,const Standard_Real U,const Standard_Real V) ;
-  //! Set the values of the point in the parametric <br>
-//!          space of one of the surface. <br>
-        void SetValue(const Standard_Real U1,const Standard_Real V1,const Standard_Real U2,const Standard_Real V2) ;
-  //! Returns the point in 3d space. <br>
-       const gp_Pnt& Value() const;
-  //! Returns the parameters of the point on the first surface. <br>
-        void ParametersOnS1(Standard_Real& U1,Standard_Real& V1) const;
-  //! Returns the parameters of the point on the second surface. <br>
-        void ParametersOnS2(Standard_Real& U2,Standard_Real& V2) const;
-  //! Returns the parameters of the point on both surfaces. <br>
-        void Parameters(Standard_Real& U1,Standard_Real& V1,Standard_Real& U2,Standard_Real& V2) const;
-
+  
+  //! Empty constructor.
+  Standard_EXPORT IntSurf_PntOn2S();
+  
+  //! Sets the value of the point in 3d space.
+      void SetValue (const gp_Pnt& Pt) ;
+  
+  //! Sets the values of the point in 3d space, and
+  //! in the parametric space of one of the surface.
+  Standard_EXPORT   void SetValue (const gp_Pnt& Pt, const Standard_Boolean OnFirst, const Standard_Real U, const Standard_Real V) ;
+  
+  //! Sets the values of the point in 3d space, and
+  //! in the parametric space of each surface.
+      void SetValue (const gp_Pnt& Pt, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2) ;
+  
+  //! Set the values of the point in the parametric
+  //! space of one of the surface.
+  Standard_EXPORT   void SetValue (const Standard_Boolean OnFirst, const Standard_Real U, const Standard_Real V) ;
+  
+  //! Set the values of the point in the parametric
+  //! space of one of the surface.
+      void SetValue (const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2) ;
+  
+  //! Returns the point in 3d space.
+     const  gp_Pnt& Value()  const;
+  
+  //! Returns the parameters of the point on the first surface.
+      void ParametersOnS1 (Standard_Real& U1, Standard_Real& V1)  const;
+  
+  //! Returns the parameters of the point on the second surface.
+      void ParametersOnS2 (Standard_Real& U2, Standard_Real& V2)  const;
+  
+  //! Returns the parameters of the point on both surfaces.
+      void Parameters (Standard_Real& U1, Standard_Real& V1, Standard_Real& U2, Standard_Real& V2)  const;
 
 
 
@@ -76,11 +74,11 @@ private:
 
 
 
-gp_Pnt pt;
-Standard_Real u1;
-Standard_Real v1;
-Standard_Real u2;
-Standard_Real v2;
+  gp_Pnt pt;
+  Standard_Real u1;
+  Standard_Real v1;
+  Standard_Real u2;
+  Standard_Real v2;
 
 
 };
@@ -90,7 +88,6 @@ Standard_Real v2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_PntOn2S_HeaderFile

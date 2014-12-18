@@ -6,28 +6,22 @@
 #ifndef _StepVisual_DraughtingPreDefinedColour_HeaderFile
 #define _StepVisual_DraughtingPreDefinedColour_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_DraughtingPreDefinedColour_HeaderFile
 #include <Handle_StepVisual_DraughtingPreDefinedColour.hxx>
-#endif
 
-#ifndef _StepVisual_PreDefinedColour_HeaderFile
 #include <StepVisual_PreDefinedColour.hxx>
-#endif
 
 
 
-class StepVisual_DraughtingPreDefinedColour : public StepVisual_PreDefinedColour {
+class StepVisual_DraughtingPreDefinedColour : public StepVisual_PreDefinedColour
+{
 
 public:
 
-  //! Returns a DraughtingPreDefinedColour <br>
-  Standard_EXPORT   StepVisual_DraughtingPreDefinedColour();
+  
+  //! Returns a DraughtingPreDefinedColour
+  Standard_EXPORT StepVisual_DraughtingPreDefinedColour();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_DraughtingPreDefinedColour_HeaderFile

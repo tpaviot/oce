@@ -5,33 +5,15 @@
 
 #include <BRepLProp_CLProps.hxx>
 
-#ifndef _LProp_BadContinuity_HeaderFile
 #include <LProp_BadContinuity.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _LProp_NotDefined_HeaderFile
 #include <LProp_NotDefined.hxx>
-#endif
-#ifndef _BRepAdaptor_Curve_HeaderFile
 #include <BRepAdaptor_Curve.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _BRepLProp_CurveTool_HeaderFile
 #include <BRepLProp_CurveTool.hxx>
-#endif
  
 
 #define Curve BRepAdaptor_Curve

@@ -6,45 +6,36 @@
 #ifndef _StepDimTol_Datum_HeaderFile
 #define _StepDimTol_Datum_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepDimTol_Datum_HeaderFile
 #include <Handle_StepDimTol_Datum.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepRepr_ShapeAspect_HeaderFile
 #include <StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _Handle_StepRepr_ProductDefinitionShape_HeaderFile
 #include <Handle_StepRepr_ProductDefinitionShape.hxx>
-#endif
-#ifndef _StepData_Logical_HeaderFile
 #include <StepData_Logical.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepRepr_ProductDefinitionShape;
 
 
-//! Representation of STEP entity Datum <br>
-class StepDimTol_Datum : public StepRepr_ShapeAspect {
+//! Representation of STEP entity Datum
+class StepDimTol_Datum : public StepRepr_ShapeAspect
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepDimTol_Datum();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aShapeAspect_Name,const Handle(TCollection_HAsciiString)& aShapeAspect_Description,const Handle(StepRepr_ProductDefinitionShape)& aShapeAspect_OfShape,const StepData_Logical aShapeAspect_ProductDefinitional,const Handle(TCollection_HAsciiString)& aIdentification) ;
-  //! Returns field Identification <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Identification() const;
-  //! Set field Identification <br>
-  Standard_EXPORT     void SetIdentification(const Handle(TCollection_HAsciiString)& Identification) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepDimTol_Datum();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aShapeAspect_Name, const Handle(TCollection_HAsciiString)& aShapeAspect_Description, const Handle(StepRepr_ProductDefinitionShape)& aShapeAspect_OfShape, const StepData_Logical aShapeAspect_ProductDefinitional, const Handle(TCollection_HAsciiString)& aIdentification) ;
+  
+  //! Returns field Identification
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Identification()  const;
+  
+  //! Set field Identification
+  Standard_EXPORT   void SetIdentification (const Handle(TCollection_HAsciiString)& Identification) ;
 
 
 
@@ -59,7 +50,7 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theIdentification;
+  Handle(TCollection_HAsciiString) theIdentification;
 
 
 };
@@ -68,7 +59,6 @@ Handle_TCollection_HAsciiString theIdentification;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepDimTol_Datum_HeaderFile

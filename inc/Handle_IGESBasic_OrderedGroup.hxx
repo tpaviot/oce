@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESBasic_OrderedGroup_HeaderFile
 #define _Handle_IGESBasic_OrderedGroup_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESBasic_Group_HeaderFile
 #include <Handle_IGESBasic_Group.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESBasic_Group);
 class IGESBasic_OrderedGroup;
 
-DEFINE_STANDARD_HANDLE(IGESBasic_OrderedGroup,IGESBasic_Group)
+DEFINE_STANDARD_HANDLE(IGESBasic_OrderedGroup, IGESBasic_Group)
 
-#endif
+#endif // _Handle_IGESBasic_OrderedGroup_HeaderFile

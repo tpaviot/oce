@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepGeom_BoundaryCurve_HeaderFile
 #include <StepGeom_BoundaryCurve.hxx>
-#endif
-#ifndef _StepGeom_DegeneratePcurve_HeaderFile
 #include <StepGeom_DegeneratePcurve.hxx>
-#endif
-#ifndef _StepGeom_SurfaceBoundary_HeaderFile
 #include <StepGeom_SurfaceBoundary.hxx>
-#endif

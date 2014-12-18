@@ -6,28 +6,14 @@
 #ifndef _CDM_DataMapNodeOfPresentationDirectory_HeaderFile
 #define _CDM_DataMapNodeOfPresentationDirectory_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDM_DataMapNodeOfPresentationDirectory_HeaderFile
 #include <Handle_CDM_DataMapNodeOfPresentationDirectory.hxx>
-#endif
 
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class CDM_Document;
 class TCollection_ExtendedString;
 class CDM_PresentationDirectory;
@@ -35,16 +21,17 @@ class CDM_DataMapIteratorOfPresentationDirectory;
 
 
 
-class CDM_DataMapNodeOfPresentationDirectory : public TCollection_MapNode {
+class CDM_DataMapNodeOfPresentationDirectory : public TCollection_MapNode
+{
 
 public:
 
   
-      CDM_DataMapNodeOfPresentationDirectory(const TCollection_ExtendedString& K,const Handle(CDM_Document)& I,const TCollection_MapNodePtr& n);
+    CDM_DataMapNodeOfPresentationDirectory(const TCollection_ExtendedString& K, const Handle(CDM_Document)& I, const TCollection_MapNodePtr& n);
   
-        TCollection_ExtendedString& Key() const;
+      TCollection_ExtendedString& Key()  const;
   
-        Handle_CDM_Document& Value() const;
+      Handle(CDM_Document)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-TCollection_ExtendedString myKey;
-Handle_CDM_Document myValue;
+  TCollection_ExtendedString myKey;
+  Handle(CDM_Document) myValue;
 
 
 };
 
 #define TheKey TCollection_ExtendedString
 #define TheKey_hxx <TCollection_ExtendedString.hxx>
-#define TheItem Handle_CDM_Document
+#define TheItem Handle(CDM_Document)
 #define TheItem_hxx <CDM_Document.hxx>
 #define Hasher TCollection_ExtendedString
 #define Hasher_hxx <TCollection_ExtendedString.hxx>
@@ -98,7 +85,6 @@ Handle_CDM_Document myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_DataMapNodeOfPresentationDirectory_HeaderFile

@@ -1,18 +1,6 @@
-#ifndef _TColStd_HSequenceOfReal_HeaderFile
 #include <TColStd_HSequenceOfReal.hxx>
-#endif
-#ifndef _ShapeUpgrade_SplitCurve3d_HeaderFile
 #include <ShapeUpgrade_SplitCurve3d.hxx>
-#endif
-#ifndef _ShapeUpgrade_SplitCurve2d_HeaderFile
 #include <ShapeUpgrade_SplitCurve2d.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _ShapeUpgrade_EdgeDivide_HeaderFile
 #include <ShapeUpgrade_EdgeDivide.hxx>
-#endif

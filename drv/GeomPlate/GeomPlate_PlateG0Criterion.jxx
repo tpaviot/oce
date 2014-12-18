@@ -1,15 +1,5 @@
-#ifndef _TColgp_SequenceOfXY_HeaderFile
 #include <TColgp_SequenceOfXY.hxx>
-#endif
-#ifndef _TColgp_SequenceOfXYZ_HeaderFile
 #include <TColgp_SequenceOfXYZ.hxx>
-#endif
-#ifndef _AdvApp2Var_Patch_HeaderFile
 #include <AdvApp2Var_Patch.hxx>
-#endif
-#ifndef _AdvApp2Var_Context_HeaderFile
 #include <AdvApp2Var_Context.hxx>
-#endif
-#ifndef _GeomPlate_PlateG0Criterion_HeaderFile
 #include <GeomPlate_PlateG0Criterion.hxx>
-#endif

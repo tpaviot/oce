@@ -5,18 +5,10 @@
 
 #include <TopOpeBRepBuild_ListOfShapeListOfShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape_HeaderFile
 #include <TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ShapeListOfShape_HeaderFile
 #include <TopOpeBRepBuild_ShapeListOfShape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape_HeaderFile
 #include <TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape.hxx>
-#endif
  
 
 #define Item TopOpeBRepBuild_ShapeListOfShape

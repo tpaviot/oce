@@ -14,9 +14,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
 #include <TestTopOpe.ixx>
 
 #include <DBRep.hxx>
@@ -40,11 +37,8 @@
 #include <BRep_Tool.hxx>
 #include <Precision.hxx>
 
-#ifdef WNT
+#ifdef _WIN32
 Standard_IMPORT Draw_Viewer dout;
-#endif
-#ifdef HAVE_STRINGS_H
-# include <strings.h>
 #endif
 
 //=======================================================================
@@ -193,6 +187,7 @@ Standard_Integer MKSOLSHE(Draw_Interpretor&, Standard_Integer narg, const char**
     if (S.IsNull()) continue;
     if (S.ShapeType() == TopAbs_FACE) {
       BB.Add(she,S);
+      she.Closed (BRep_Tool::IsClosed (she));
       yaface = Standard_True;
     }
   }
@@ -267,7 +262,7 @@ Standard_Integer GETP3D(Draw_Interpretor& di, Standard_Integer /*narg*/, const c
   di<<pV.X()<<" "<<pV.Y()<<" "<<pV.Z()<<"\n";
   return 0;
 }
-#ifdef DEB 
+#ifdef OCCT_DEBUG
 #include <Draw_Chronometer.hxx>
 Standard_IMPORT Standard_Boolean Draw_Chrono;
 Standard_Integer CHROBOOP(Draw_Interpretor& di, Standard_Integer n, const char** a)
@@ -343,7 +338,7 @@ void TestTopOpe::OtherCommands(Draw_Interpretor& theCommands)
   theCommands.Add("mksol","make a solid [1] with [2] ...",__FILE__,MKSOLSHE,g);
   theCommands.Add("mkshe","make a shell [1] with [2] ...",__FILE__,MKSOLSHE,g);
   theCommands.Add("getp3d","getp3d vertex",__FILE__,GETP3D,g);
-#ifdef DEB
+#ifdef OCCT_DEBUG
   theCommands.Add("chroboop","",__FILE__,CHROBOOP,g);
 #endif
 }

@@ -6,48 +6,38 @@
 #ifndef _Transfer_FindHasher_HeaderFile
 #define _Transfer_FindHasher_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Transfer_Finder_HeaderFile
 #include <Handle_Transfer_Finder.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Transfer_Finder;
 
 
-//! FindHasher defines HashCode for Finder, which is : ask a <br>
-//!           Finder its HashCode !  Because this is the Finder itself which <br>
-//!           brings the HashCode for its Key <br>
-//! <br>
-//!           This class complies to the template given in TCollection by <br>
-//!           MapHasher itself <br>
-class Transfer_FindHasher  {
+//! FindHasher defines HashCode for Finder, which is : ask a
+//! Finder its HashCode !  Because this is the Finder itself which
+//! brings the HashCode for its Key
+//!
+//! This class complies to the template given in TCollection by
+//! MapHasher itself
+class Transfer_FindHasher 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a HashCode in the range <0,Upper> for a Finder : <br>
-//!           asks the Finder its HashCode then transforms it to be in the <br>
-//!           required range <br>
-  Standard_EXPORT   static  Standard_Integer HashCode(const Handle(Transfer_Finder)& K,const Standard_Integer Upper) ;
-  //! Returns True if two keys are the same. <br>
-//!           The test does not work on the Finders themselves but by <br>
-//!           calling their methods Equates <br>
-  Standard_EXPORT   static  Standard_Boolean IsEqual(const Handle(Transfer_Finder)& K1,const Handle(Transfer_Finder)& K2) ;
-
+  
+  //! Returns a HashCode in the range <0,Upper> for a Finder :
+  //! asks the Finder its HashCode then transforms it to be in the
+  //! required range
+  Standard_EXPORT static   Standard_Integer HashCode (const Handle(Transfer_Finder)& K, const Standard_Integer Upper) ;
+  
+  //! Returns True if two keys are the same.
+  //! The test does not work on the Finders themselves but by
+  //! calling their methods Equates
+  Standard_EXPORT static   Standard_Boolean IsEqual (const Handle(Transfer_Finder)& K1, const Handle(Transfer_Finder)& K2) ;
 
 
 
@@ -70,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_FindHasher_HeaderFile

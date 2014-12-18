@@ -6,37 +6,17 @@
 #ifndef _IGESSolid_SolidAssembly_HeaderFile
 #define _IGESSolid_SolidAssembly_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_SolidAssembly_HeaderFile
 #include <Handle_IGESSolid_SolidAssembly.hxx>
-#endif
 
-#ifndef _Handle_IGESData_HArray1OfIGESEntity_HeaderFile
 #include <Handle_IGESData_HArray1OfIGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESGeom_HArray1OfTransformationMatrix_HeaderFile
 #include <Handle_IGESGeom_HArray1OfTransformationMatrix.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESGeom_TransformationMatrix_HeaderFile
 #include <Handle_IGESGeom_TransformationMatrix.hxx>
-#endif
 class IGESData_HArray1OfIGESEntity;
 class IGESGeom_HArray1OfTransformationMatrix;
 class Standard_DimensionMismatch;
@@ -45,41 +25,48 @@ class IGESData_IGESEntity;
 class IGESGeom_TransformationMatrix;
 
 
-//! defines SolidAssembly, Type <184> Form <0> <br>
-//!          in package IGESSolid <br>
-//!          Solid assembly is a collection of items which possess a <br>
-//!          shared fixed geometric relationship. <br>
-//! <br>
-//!          From IGES-5.3, From 1 says that at least one item is a Brep <br>
-//!          else all are Primitives, Boolean Trees, Solid Instances or <br>
-//!          other Assemblies <br>
-class IGESSolid_SolidAssembly : public IGESData_IGESEntity {
+//! defines SolidAssembly, Type <184> Form <0>
+//! in package IGESSolid
+//! Solid assembly is a collection of items which possess a
+//! shared fixed geometric relationship.
+//!
+//! From IGES-5.3, From 1 says that at least one item is a Brep
+//! else all are Primitives, Boolean Trees, Solid Instances or
+//! other Assemblies
+class IGESSolid_SolidAssembly : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSolid_SolidAssembly();
-  //! This method is used to set the fields of the class <br>
-//!           SolidAssembly <br>
-//!       - allItems    : the collection of items <br>
-//!       - allMatrices : transformation matrices corresponding to each <br>
-//!                       item <br>
-//! raises exception if the length of allItems & allMatrices <br>
-//! do not match <br>
-  Standard_EXPORT     void Init(const Handle(IGESData_HArray1OfIGESEntity)& allItems,const Handle(IGESGeom_HArray1OfTransformationMatrix)& allMatrices) ;
-  //! Tells if at least one item is a Brep, from FormNumber <br>
-  Standard_EXPORT     Standard_Boolean HasBrep() const;
-  //! Sets or Unsets the status "HasBrep" from FormNumber <br>
-//!           Default is False <br>
-  Standard_EXPORT     void SetBrep(const Standard_Boolean hasbrep) ;
-  //! returns the number of items in the collection <br>
-  Standard_EXPORT     Standard_Integer NbItems() const;
-  //! returns the Index'th item <br>
-//! raises exception if Index <= 0 or Index > NbItems() <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Item(const Standard_Integer Index) const;
-  //! returns the transformation matrix of the Index'th item <br>
-//! raises exception if Index <= 0 or Index > NbItems() <br>
-  Standard_EXPORT     Handle_IGESGeom_TransformationMatrix TransfMatrix(const Standard_Integer Index) const;
+  Standard_EXPORT IGESSolid_SolidAssembly();
+  
+  //! This method is used to set the fields of the class
+  //! SolidAssembly
+  //! - allItems    : the collection of items
+  //! - allMatrices : transformation matrices corresponding to each
+  //! item
+  //! raises exception if the length of allItems & allMatrices
+  //! do not match
+  Standard_EXPORT   void Init (const Handle(IGESData_HArray1OfIGESEntity)& allItems, const Handle(IGESGeom_HArray1OfTransformationMatrix)& allMatrices) ;
+  
+  //! Tells if at least one item is a Brep, from FormNumber
+  Standard_EXPORT   Standard_Boolean HasBrep()  const;
+  
+  //! Sets or Unsets the status "HasBrep" from FormNumber
+  //! Default is False
+  Standard_EXPORT   void SetBrep (const Standard_Boolean hasbrep) ;
+  
+  //! returns the number of items in the collection
+  Standard_EXPORT   Standard_Integer NbItems()  const;
+  
+  //! returns the Index'th item
+  //! raises exception if Index <= 0 or Index > NbItems()
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Item (const Standard_Integer Index)  const;
+  
+  //! returns the transformation matrix of the Index'th item
+  //! raises exception if Index <= 0 or Index > NbItems()
+  Standard_EXPORT   Handle(IGESGeom_TransformationMatrix) TransfMatrix (const Standard_Integer Index)  const;
 
 
 
@@ -94,8 +81,8 @@ protected:
 private: 
 
 
-Handle_IGESData_HArray1OfIGESEntity theItems;
-Handle_IGESGeom_HArray1OfTransformationMatrix theMatrices;
+  Handle(IGESData_HArray1OfIGESEntity) theItems;
+  Handle(IGESGeom_HArray1OfTransformationMatrix) theMatrices;
 
 
 };
@@ -104,7 +91,6 @@ Handle_IGESGeom_HArray1OfTransformationMatrix theMatrices;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_SolidAssembly_HeaderFile

@@ -6,43 +6,32 @@
 #ifndef _StepData_SelectReal_HeaderFile
 #define _StepData_SelectReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_SelectReal_HeaderFile
 #include <Handle_StepData_SelectReal.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepData_SelectMember_HeaderFile
 #include <StepData_SelectMember.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
-//! A SelectReal is a SelectMember specialised for a basic real <br>
-//!           type in a select which also accepts entities : this one has <br>
-//!           NO NAME <br>
-//!           For a named select, see SelectNamed <br>
-class StepData_SelectReal : public StepData_SelectMember {
+//! A SelectReal is a SelectMember specialised for a basic real
+//! type in a select which also accepts entities : this one has
+//! NO NAME
+//! For a named select, see SelectNamed
+class StepData_SelectReal : public StepData_SelectMember
+{
 
 public:
 
   
-  Standard_EXPORT   StepData_SelectReal();
+  Standard_EXPORT StepData_SelectReal();
   
-  Standard_EXPORT   virtual  Standard_Integer Kind() const;
+  Standard_EXPORT virtual   Standard_Integer Kind()  const;
   
-  Standard_EXPORT   virtual  Standard_Real Real() const;
+  Standard_EXPORT virtual   Standard_Real Real()  const;
   
-  Standard_EXPORT   virtual  void SetReal(const Standard_Real val) ;
+  Standard_EXPORT virtual   void SetReal (const Standard_Real val) ;
 
 
 
@@ -57,7 +46,7 @@ protected:
 private: 
 
 
-Standard_Real theval;
+  Standard_Real theval;
 
 
 };
@@ -66,7 +55,6 @@ Standard_Real theval;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_SelectReal_HeaderFile

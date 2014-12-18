@@ -6,77 +6,62 @@
 #ifndef _TopOpeBRepBuild_WireEdgeClassifier_HeaderFile
 #define _TopOpeBRepBuild_WireEdgeClassifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _BRepClass_Edge_HeaderFile
 #include <BRepClass_Edge.hxx>
-#endif
-#ifndef _BRepClass_FacePassiveClassifier_HeaderFile
 #include <BRepClass_FacePassiveClassifier.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_CompositeClassifier_HeaderFile
 #include <TopOpeBRepBuild_CompositeClassifier.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_Loop_HeaderFile
 #include <Handle_TopOpeBRepBuild_Loop.hxx>
-#endif
 class TopoDS_Shape;
 class TopOpeBRepBuild_BlockBuilder;
 class TopOpeBRepBuild_Loop;
 
 
 
-//! Classify edges and wires. <br>
-//! shapes are Wires, Element are Edge. <br>
-class TopOpeBRepBuild_WireEdgeClassifier  : public TopOpeBRepBuild_CompositeClassifier {
+//! Classify edges and wires.
+//! shapes are Wires, Element are Edge.
+class TopOpeBRepBuild_WireEdgeClassifier  : public TopOpeBRepBuild_CompositeClassifier
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a classifier on edge <F>. <br>
-//! Used to compare edges and wires on the edge <F>. <br>
-  Standard_EXPORT   TopOpeBRepBuild_WireEdgeClassifier(const TopoDS_Shape& F,const TopOpeBRepBuild_BlockBuilder& BB);
   
-  Standard_EXPORT   virtual  TopAbs_State Compare(const Handle(TopOpeBRepBuild_Loop)& L1,const Handle(TopOpeBRepBuild_Loop)& L2) ;
+  //! Creates a classifier on edge <F>.
+  //! Used to compare edges and wires on the edge <F>.
+  Standard_EXPORT TopOpeBRepBuild_WireEdgeClassifier(const TopoDS_Shape& F, const TopOpeBRepBuild_BlockBuilder& BB);
   
-  Standard_EXPORT     TopoDS_Shape LoopToShape(const Handle(TopOpeBRepBuild_Loop)& L) ;
-  //! classify wire <B1> with wire <B2> <br>
-  Standard_EXPORT     TopAbs_State CompareShapes(const TopoDS_Shape& B1,const TopoDS_Shape& B2) ;
-  //! classify edge <E> with wire <B> <br>
-  Standard_EXPORT     TopAbs_State CompareElementToShape(const TopoDS_Shape& E,const TopoDS_Shape& B) ;
-  //! prepare classification involving wire <B> <br>
-//! calls ResetElement on first edge of <B> <br>
-  Standard_EXPORT     void ResetShape(const TopoDS_Shape& B) ;
-  //! prepare classification involving edge <E> <br>
-//! define 2D point (later used in Compare()) on first vertex of edge <E>. <br>
-  Standard_EXPORT     void ResetElement(const TopoDS_Shape& E) ;
-  //! Add the edge <E> in the set of edges used in 2D point <br>
-//! classification. <br>
-  Standard_EXPORT     Standard_Boolean CompareElement(const TopoDS_Shape& E) ;
-  //! Returns state of classification of 2D point, defined by <br>
-//! ResetElement, with the current set of edges, defined by Compare. <br>
-  Standard_EXPORT     TopAbs_State State() ;
-
+  Standard_EXPORT virtual   TopAbs_State Compare (const Handle(TopOpeBRepBuild_Loop)& L1, const Handle(TopOpeBRepBuild_Loop)& L2) ;
+  
+  Standard_EXPORT   TopoDS_Shape LoopToShape (const Handle(TopOpeBRepBuild_Loop)& L) ;
+  
+  //! classify wire <B1> with wire <B2>
+  Standard_EXPORT   TopAbs_State CompareShapes (const TopoDS_Shape& B1, const TopoDS_Shape& B2) ;
+  
+  //! classify edge <E> with wire <B>
+  Standard_EXPORT   TopAbs_State CompareElementToShape (const TopoDS_Shape& E, const TopoDS_Shape& B) ;
+  
+  //! prepare classification involving wire <B>
+  //! calls ResetElement on first edge of <B>
+  Standard_EXPORT   void ResetShape (const TopoDS_Shape& B) ;
+  
+  //! prepare classification involving edge <E>
+  //! define 2D point (later used in Compare()) on first vertex of edge <E>.
+  Standard_EXPORT   void ResetElement (const TopoDS_Shape& E) ;
+  
+  //! Add the edge <E> in the set of edges used in 2D point
+  //! classification.
+  Standard_EXPORT   Standard_Boolean CompareElement (const TopoDS_Shape& E) ;
+  
+  //! Returns state of classification of 2D point, defined by
+  //! ResetElement, with the current set of edges, defined by Compare.
+  Standard_EXPORT   TopAbs_State State() ;
 
 
 
@@ -91,11 +76,11 @@ private:
 
 
 
-Standard_Boolean myFirstCompare;
-gp_Pnt2d myPoint2d;
-BRepClass_Edge myBCEdge;
-BRepClass_FacePassiveClassifier myFPC;
-TopoDS_Shape myShape;
+  Standard_Boolean myFirstCompare;
+  gp_Pnt2d myPoint2d;
+  BRepClass_Edge myBCEdge;
+  BRepClass_FacePassiveClassifier myFPC;
+  TopoDS_Shape myShape;
 
 
 };
@@ -104,7 +89,6 @@ TopoDS_Shape myShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_WireEdgeClassifier_HeaderFile

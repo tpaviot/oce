@@ -5,13 +5,9 @@
 
 #include <Extrema_POnCurv.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
 
 IMPLEMENT_STANDARD_TYPE(Extrema_POnCurv)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()

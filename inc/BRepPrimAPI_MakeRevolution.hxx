@@ -6,76 +6,70 @@
 #ifndef _BRepPrimAPI_MakeRevolution_HeaderFile
 #define _BRepPrimAPI_MakeRevolution_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepPrim_Revolution_HeaderFile
 #include <BRepPrim_Revolution.hxx>
-#endif
-#ifndef _BRepPrimAPI_MakeOneAxis_HeaderFile
 #include <BRepPrimAPI_MakeOneAxis.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Geom_Curve;
 class gp_Ax2;
 class BRepPrim_Revolution;
 
 
-//! Describes functions to build revolved shapes. <br>
-//! A MakeRevolution object provides a framework for: <br>
-//! -   defining the construction of a revolved shape, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class BRepPrimAPI_MakeRevolution  : public BRepPrimAPI_MakeOneAxis {
+//! Describes functions to build revolved shapes.
+//! A MakeRevolution object provides a framework for:
+//! -   defining the construction of a revolved shape,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class BRepPrimAPI_MakeRevolution  : public BRepPrimAPI_MakeOneAxis
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Make a revolution body by rotating a curve around Z. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeRevolution(const Handle(Geom_Curve)& Meridian);
-  //! Make a revolution body by rotating a curve around Z. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeRevolution(const Handle(Geom_Curve)& Meridian,const Standard_Real angle);
-  //! Make a revolution body by rotating a curve around Z. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeRevolution(const Handle(Geom_Curve)& Meridian,const Standard_Real VMin,const Standard_Real VMax);
-  //! Make a revolution body by rotating a curve around Z. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeRevolution(const Handle(Geom_Curve)& Meridian,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real angle);
-  //! Make a revolution body by rotating a curve around Z. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeRevolution(const gp_Ax2& Axes,const Handle(Geom_Curve)& Meridian);
-  //! Make a revolution body by rotating a curve around Z. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeRevolution(const gp_Ax2& Axes,const Handle(Geom_Curve)& Meridian,const Standard_Real angle);
-  //! Make a revolution body by rotating a curve around Z. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeRevolution(const gp_Ax2& Axes,const Handle(Geom_Curve)& Meridian,const Standard_Real VMin,const Standard_Real VMax);
-  //! Make a revolution body by rotating a curve around Z. <br>//! For all algorithms the resulting shape is composed of <br>
-//! -   a lateral revolved face, <br>
-//! -   two planar faces in planes parallel to the plane z = <br>
-//!   0, and passing by the extremities of the revolved <br>
-//!   portion of Meridian, if these points are not on the Z <br>
-//!   axis (in case of a complete revolved shape, these faces are circles), <br>
-//! -   and in the case of a portion of a revolved shape, two <br>
-//!   planar faces to close the shape (in the planes u = 0 and u = angle). <br>
-  Standard_EXPORT   BRepPrimAPI_MakeRevolution(const gp_Ax2& Axes,const Handle(Geom_Curve)& Meridian,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real angle);
-  //! Returns the algorithm. <br>
-  Standard_EXPORT     Standard_Address OneAxis() ;
-  //! Returns the algorithm. <br>
-//! <br>
-  Standard_EXPORT     BRepPrim_Revolution& Revolution() ;
-
+  
+  //! Make a revolution body by rotating a curve around Z.
+  Standard_EXPORT BRepPrimAPI_MakeRevolution(const Handle(Geom_Curve)& Meridian);
+  
+  //! Make a revolution body by rotating a curve around Z.
+  Standard_EXPORT BRepPrimAPI_MakeRevolution(const Handle(Geom_Curve)& Meridian, const Standard_Real angle);
+  
+  //! Make a revolution body by rotating a curve around Z.
+  Standard_EXPORT BRepPrimAPI_MakeRevolution(const Handle(Geom_Curve)& Meridian, const Standard_Real VMin, const Standard_Real VMax);
+  
+  //! Make a revolution body by rotating a curve around Z.
+  Standard_EXPORT BRepPrimAPI_MakeRevolution(const Handle(Geom_Curve)& Meridian, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real angle);
+  
+  //! Make a revolution body by rotating a curve around Z.
+  Standard_EXPORT BRepPrimAPI_MakeRevolution(const gp_Ax2& Axes, const Handle(Geom_Curve)& Meridian);
+  
+  //! Make a revolution body by rotating a curve around Z.
+  Standard_EXPORT BRepPrimAPI_MakeRevolution(const gp_Ax2& Axes, const Handle(Geom_Curve)& Meridian, const Standard_Real angle);
+  
+  //! Make a revolution body by rotating a curve around Z.
+  Standard_EXPORT BRepPrimAPI_MakeRevolution(const gp_Ax2& Axes, const Handle(Geom_Curve)& Meridian, const Standard_Real VMin, const Standard_Real VMax);
+  
+  //! Make a revolution body by rotating a curve around Z.
+  //! For all algorithms the resulting shape is composed of
+  //! -   a lateral revolved face,
+  //! -   two planar faces in planes parallel to the plane z =
+  //! 0, and passing by the extremities of the revolved
+  //! portion of Meridian, if these points are not on the Z
+  //! axis (in case of a complete revolved shape, these faces are circles),
+  //! -   and in the case of a portion of a revolved shape, two
+  //! planar faces to close the shape (in the planes u = 0 and u = angle).
+  Standard_EXPORT BRepPrimAPI_MakeRevolution(const gp_Ax2& Axes, const Handle(Geom_Curve)& Meridian, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real angle);
+  
+  //! Returns the algorithm.
+  Standard_EXPORT   Standard_Address OneAxis() ;
+  
+  //! Returns the algorithm.
+  Standard_EXPORT   BRepPrim_Revolution& Revolution() ;
 
 
 
@@ -90,7 +84,7 @@ private:
 
 
 
-BRepPrim_Revolution myRevolution;
+  BRepPrim_Revolution myRevolution;
 
 
 };
@@ -99,7 +93,6 @@ BRepPrim_Revolution myRevolution;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepPrimAPI_MakeRevolution_HeaderFile

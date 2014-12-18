@@ -6,111 +6,81 @@
 #ifndef _PXCAFDoc_GraphNodeSequence_HeaderFile
 #define _PXCAFDoc_GraphNodeSequence_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_GraphNodeSequence_HeaderFile
 #include <Handle_PXCAFDoc_GraphNodeSequence.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_GraphNode_HeaderFile
 #include <Handle_PXCAFDoc_GraphNode.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_GraphNodeSequence_HeaderFile
 #include <Handle_PXCAFDoc_GraphNodeSequence.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile
 #include <Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PXCAFDoc_GraphNode;
 class PXCAFDoc_SeqNodeOfGraphNodeSequence;
-class Standard_Persistent;
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class PXCAFDoc_SeqExplorerOfGraphNodeSequence;
 
 
-class PXCAFDoc_GraphNodeSequence : public Standard_Persistent {
+class PXCAFDoc_GraphNodeSequence : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PXCAFDoc_GraphNodeSequence();
+  Standard_EXPORT PXCAFDoc_GraphNodeSequence();
   
-  Standard_EXPORT     Standard_Boolean IsEmpty() const;
+  Standard_EXPORT   Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     Standard_Integer Length() const;
+  Standard_EXPORT   Standard_Integer Length()  const;
   
-  Standard_EXPORT     Handle_PXCAFDoc_GraphNode First() const;
+  Standard_EXPORT   Handle(PXCAFDoc_GraphNode) First()  const;
   
-  Standard_EXPORT     Handle_PXCAFDoc_GraphNode Last() const;
+  Standard_EXPORT   Handle(PXCAFDoc_GraphNode) Last()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(PXCAFDoc_GraphNode)& T) ;
+  Standard_EXPORT   void Append (const Handle(PXCAFDoc_GraphNode)& T) ;
   
-  Standard_EXPORT     void Append(const Handle(PXCAFDoc_GraphNodeSequence)& S) ;
+  Standard_EXPORT   void Append (const Handle(PXCAFDoc_GraphNodeSequence)& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(PXCAFDoc_GraphNode)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(PXCAFDoc_GraphNode)& T) ;
   
-  Standard_EXPORT     void Prepend(const Handle(PXCAFDoc_GraphNodeSequence)& S) ;
+  Standard_EXPORT   void Prepend (const Handle(PXCAFDoc_GraphNodeSequence)& S) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer Index,const Handle(PXCAFDoc_GraphNode)& T) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer Index, const Handle(PXCAFDoc_GraphNode)& T) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer Index,const Handle(PXCAFDoc_GraphNodeSequence)& S) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer Index, const Handle(PXCAFDoc_GraphNodeSequence)& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(PXCAFDoc_GraphNode)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(PXCAFDoc_GraphNode)& T) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(PXCAFDoc_GraphNodeSequence)& S) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(PXCAFDoc_GraphNodeSequence)& S) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer I,const Standard_Integer J) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer I, const Standard_Integer J) ;
   
-  Standard_EXPORT     Handle_PXCAFDoc_GraphNodeSequence SubSequence(const Standard_Integer FromIndex,const Standard_Integer ToIndex) const;
+  Standard_EXPORT   Handle(PXCAFDoc_GraphNodeSequence) SubSequence (const Standard_Integer FromIndex, const Standard_Integer ToIndex)  const;
   
-  Standard_EXPORT     Handle_PXCAFDoc_GraphNodeSequence Split(const Standard_Integer Index) ;
+  Standard_EXPORT   Handle(PXCAFDoc_GraphNodeSequence) Split (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(PXCAFDoc_GraphNode)& T) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(PXCAFDoc_GraphNode)& T) ;
   
-  Standard_EXPORT     Handle_PXCAFDoc_GraphNode Value(const Standard_Integer Index) const;
+  Standard_EXPORT   Handle(PXCAFDoc_GraphNode) Value (const Standard_Integer Index)  const;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Handle(PXCAFDoc_GraphNode)& T) const;
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(PXCAFDoc_GraphNode)& T)  const;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const Handle(PXCAFDoc_GraphNode)& T,const Standard_Integer FromIndex,const Standard_Integer ToIndex) const;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const Handle(PXCAFDoc_GraphNode)& T, const Standard_Integer FromIndex, const Standard_Integer ToIndex)  const;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const Handle(PXCAFDoc_GraphNode)& T) const;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const Handle(PXCAFDoc_GraphNode)& T)  const;
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
   
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
-  
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~PXCAFDoc_GraphNodeSequence()
 {
   Destroy();
@@ -139,13 +109,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence GetFirst() const;
+  Standard_EXPORT   Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence) GetFirst()  const;
   
-  Standard_EXPORT     Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence GetLast() const;
+  Standard_EXPORT   Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence) GetLast()  const;
 
-Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence FirstItem;
-Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence LastItem;
-Standard_Integer Size;
+  Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence) FirstItem;
+  Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence) LastItem;
+  Standard_Integer Size;
 
 
 };
@@ -154,15 +124,6 @@ Standard_Integer Size;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_Standard_Persistent ShallowCopy(const Handle_PXCAFDoc_GraphNodeSequence& me) {
- return me->ShallowCopy();
-}
-
-inline void ShallowDump(const Handle_PXCAFDoc_GraphNodeSequence& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
 
 
-
-#endif
+#endif // _PXCAFDoc_GraphNodeSequence_HeaderFile

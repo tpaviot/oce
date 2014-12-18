@@ -1,12 +1,4 @@
-#ifndef _StepAP214_HArray1OfApprovalItem_HeaderFile
 #include <StepAP214_HArray1OfApprovalItem.hxx>
-#endif
-#ifndef _StepBasic_Approval_HeaderFile
 #include <StepBasic_Approval.hxx>
-#endif
-#ifndef _StepAP214_ApprovalItem_HeaderFile
 #include <StepAP214_ApprovalItem.hxx>
-#endif
-#ifndef _StepAP214_AppliedApprovalAssignment_HeaderFile
 #include <StepAP214_AppliedApprovalAssignment.hxx>
-#endif

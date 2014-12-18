@@ -6,15 +6,14 @@
 #ifndef _QANewModTopOpe_ModeOfLimitation_HeaderFile
 #define _QANewModTopOpe_ModeOfLimitation_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum QANewModTopOpe_ModeOfLimitation {
+
+enum QANewModTopOpe_ModeOfLimitation
+{
 QANewModTopOpe_Forward,
 QANewModTopOpe_Reversed,
 QANewModTopOpe_BothParts
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _QANewModTopOpe_ModeOfLimitation_HeaderFile

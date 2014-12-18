@@ -5,28 +5,14 @@
 
 #include <TColStd_HArray2OfTransient.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_Array2OfTransient_HeaderFile
 #include <TColStd_Array2OfTransient.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(TColStd_HArray2OfTransient,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TColStd_HArray2OfTransient)
 
 
-#define ItemHArray2 Handle_Standard_Transient
+#define ItemHArray2 Handle(Standard_Transient)
 #define ItemHArray2_hxx <Standard_Transient.hxx>
 #define TheArray2 TColStd_Array2OfTransient
 #define TheArray2_hxx <TColStd_Array2OfTransient.hxx>

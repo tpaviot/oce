@@ -6,22 +6,15 @@
 #ifndef _Handle_MeshVS_MeshEntityOwner_HeaderFile
 #define _Handle_MeshVS_MeshEntityOwner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(SelectMgr_EntityOwner);
 class MeshVS_MeshEntityOwner;
 
-DEFINE_STANDARD_HANDLE(MeshVS_MeshEntityOwner,SelectMgr_EntityOwner)
+DEFINE_STANDARD_HANDLE(MeshVS_MeshEntityOwner, SelectMgr_EntityOwner)
 
-#endif
+#endif // _Handle_MeshVS_MeshEntityOwner_HeaderFile

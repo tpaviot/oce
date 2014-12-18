@@ -41,8 +41,7 @@
 #include <TopTools_DataMapOfIntegerShape.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_IndexedMapOfReal.hxx>
-#include <TCollection_CompareOfReal.hxx>
-#include <SortTools_QuickSortOfReal.hxx>
+#include <NCollection_Array1.hxx>
 #include <BRepLProp_CLProps.hxx>
 #include <GeomLProp_SLProps.hxx>
 #include <gp_Torus.hxx>
@@ -51,6 +50,7 @@
 #include <Bnd_Box.hxx>
 #include <BRepBndLib.hxx>
 #include <ElCLib.hxx>
+#include <algorithm>
 
 #define M_FORWARD(sta)  (sta == TopAbs_FORWARD)
 #define M_REVERSED(sta) (sta == TopAbs_REVERSED)
@@ -262,7 +262,7 @@ void TopOpeBRepTool_TOOL::Vertices(const TopoDS_Edge& E, TopTools_Array1OfShape&
 
   Standard_Real par1 = BRep_Tool::Parameter(v1,E);
   Standard_Real par2 = BRep_Tool::Parameter(v2,E);
-#ifdef DEB
+#ifdef OCCT_DEBUG
 //  if (par1>par2) cout<<"TopOpeBRepTool_TOOL::Vertices ERROR"<<endl;
 #endif
   Standard_Integer ivparSMA = (par1<par2) ? FORWARD : REVERSED; 
@@ -335,7 +335,7 @@ static void FUN_tool_sortVonE(TopTools_ListOfShape& lov, const TopoDS_Edge E)
     mapiv.Bind(iv,v);
   }
   Standard_Integer nv = mapiv.Extent();
-  TColStd_Array1OfReal tabpar(1,nv);
+  NCollection_Array1<Standard_Real> tabpar(1,nv);
 //  for (Standard_Integer i = 1; i <= nv; i++) {
   Standard_Integer i ;
   for ( i = 1; i <= nv; i++) {
@@ -344,7 +344,7 @@ static void FUN_tool_sortVonE(TopTools_ListOfShape& lov, const TopoDS_Edge E)
   }
   
   TopTools_ListOfShape newlov;
-  TCollection_CompareOfReal compare; SortTools_QuickSortOfReal::Sort(tabpar, compare);
+  std::sort (tabpar.begin(), tabpar.end());
   for (i = 1; i <= nv; i++) {
     Standard_Real par = tabpar.Value(i);
     Standard_Integer iv = mappar.FindIndex(par);
@@ -496,11 +496,11 @@ Standard_Boolean TopOpeBRepTool_TOOL::TgINSIDE(const TopoDS_Vertex& v, const Top
 Standard_Boolean TopOpeBRepTool_TOOL::TggeomE(const Standard_Real par, const BRepAdaptor_Curve& BC, 
 				 gp_Vec& Tg)
 {
-//#ifdef DEB
+//#ifdef OCCT_DEBUG
 //  GeomAbs_CurveType ct =
 //#endif
 //                         BC.GetType();
-//#ifdef DEB
+//#ifdef OCCT_DEBUG
 //  Standard_Boolean apoles = (ct == GeomAbs_BezierCurve)||(ct == GeomAbs_BSplineCurve);
 //#endif
   
@@ -707,7 +707,7 @@ Standard_Boolean TopOpeBRepTool_TOOL::tryNgApp(const Standard_Real par,const Top
   gp_Pnt2d uv; Standard_Boolean ok = FUN_tool_paronEF(e,par,f,uv);
   if (!ok) return Standard_False;
   gp_Dir ng( FUN_tool_nggeomF(uv,f) );  
-#ifdef DEB
+#ifdef OCCT_DEBUG
   gp_Dir ngApp;
 #endif
   ok = TopOpeBRepTool_TOOL::NgApp(par,e,f,tola,Ng);
@@ -960,7 +960,7 @@ Standard_Boolean TopOpeBRepTool_TOOL::UVISO(const TopOpeBRepTool_C2DF& C2DF,
 			       Standard_Boolean & isoU, Standard_Boolean& isoV, gp_Dir2d& d2d, gp_Pnt2d& o2d)
 {
   Standard_Real f,l,tol; const Handle(Geom2d_Curve)& PC = C2DF.PC(f,l,tol);
-//#ifdef DEB
+//#ifdef OCCT_DEBUG
 //  const iso = UVISO(PC,isoU,isoV,d2d,o2d);
 //#else
   const Standard_Boolean iso = UVISO(PC,isoU,isoV,d2d,o2d);
@@ -1266,7 +1266,7 @@ static Standard_Boolean FUN_ngF(const gp_Pnt2d& uv, const TopoDS_Face& F, gp_Vec
 	ngF = ng; return Standard_True;
       }
     }
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<"FUN_tool_nggeomF NYI"<<endl;
 #endif
     return Standard_False;

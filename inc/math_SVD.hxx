@@ -6,76 +6,62 @@
 #ifndef _math_SVD_HeaderFile
 #define _math_SVD_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_DimensionError;
 class math_Matrix;
-class math_Vector;
 
 
-//! SVD implements the solution of a set of N linear equations <br>
-//! of M unknowns without condition on N or M. The Singular <br>
-//! Value Decomposition algorithm is used. For singular or <br>
-//! nearly singular matrices SVD is a better choice than Gauss <br>
-//! or GaussLeastSquare. <br>
-class math_SVD  {
+//! SVD implements the solution of a set of N linear equations
+//! of M unknowns without condition on N or M. The Singular
+//! Value Decomposition algorithm is used. For singular or
+//! nearly singular matrices SVD is a better choice than Gauss
+//! or GaussLeastSquare.
+class math_SVD 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Given as input an n X m matrix A with n < m, n = m or n > m <br>
-//! this constructor performs the Singular Value Decomposition. <br>
-  Standard_EXPORT   math_SVD(const math_Matrix& A);
-  //! Returns true if the computations are successful, otherwise returns false. <br>
-        Standard_Boolean IsDone() const;
-  
-//! Given the input Vector B this routine solves the set of linear <br>
-//! equations A . X = B. <br>
-//! Exception NotDone is raised if the decomposition of A was not done <br>
-//! successfully. <br>
-//! Exception DimensionError is raised if the range of B is not <br>
-//! equal to the rowrange of A. <br>
-//! Exception DimensionError is raised if the range of X is not <br>
-//! equal to the colrange of A. <br>
-  Standard_EXPORT     void Solve(const math_Vector& B,math_Vector& X,const Standard_Real Eps = 1.0e-6) const;
-  //! Computes the inverse Inv of matrix A such as A * Inverse = Identity. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if the algorithm fails (and IsDone returns false). <br>
-//! Standard_DimensionError if the ranges of Inv are <br>
-//! compatible with the ranges of A. <br>
-  Standard_EXPORT     void PseudoInverse(math_Matrix& Inv,const Standard_Real Eps = 1.0e-6) const;
-  //! Prints information on the current state of the object. <br>
-//!          Is used to redefine the operator <<. <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
 
+  //! Given as input an n X m matrix A with n < m, n = m or n > m
+  //! this constructor performs the Singular Value Decomposition.
+  Standard_EXPORT math_SVD(const math_Matrix& A);
+  
+  //! Returns true if the computations are successful, otherwise returns false.
+      Standard_Boolean IsDone()  const;
+  
+
+  //! Given the input Vector B this routine solves the set of linear
+  //! equations A . X = B.
+  //! Exception NotDone is raised if the decomposition of A was not done
+  //! successfully.
+  //! Exception DimensionError is raised if the range of B is not
+  //! equal to the rowrange of A.
+  //! Exception DimensionError is raised if the range of X is not
+  //! equal to the colrange of A.
+  Standard_EXPORT   void Solve (const math_Vector& B, math_Vector& X, const Standard_Real Eps = 1.0e-6)  const;
+  
+  //! Computes the inverse Inv of matrix A such as A * Inverse = Identity.
+  //! Exceptions
+  //! StdFail_NotDone if the algorithm fails (and IsDone returns false).
+  //! Standard_DimensionError if the ranges of Inv are
+  //! compatible with the ranges of A.
+  Standard_EXPORT   void PseudoInverse (math_Matrix& Inv, const Standard_Real Eps = 1.0e-6)  const;
+  
+  //! Prints information on the current state of the object.
+  //! Is used to redefine the operator <<.
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
@@ -90,11 +76,11 @@ private:
 
 
 
-Standard_Boolean Done;
-math_Matrix U;
-math_Matrix V;
-math_Vector Diag;
-Standard_Integer RowA;
+  Standard_Boolean Done;
+  math_Matrix U;
+  math_Matrix V;
+  math_Vector Diag;
+  Standard_Integer RowA;
 
 
 };
@@ -104,7 +90,6 @@ Standard_Integer RowA;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_SVD_HeaderFile

@@ -1,9 +1,3 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _VrmlConverter_Drawer_HeaderFile
 #include <VrmlConverter_Drawer.hxx>
-#endif
-#ifndef _VrmlConverter_WFDeflectionShape_HeaderFile
 #include <VrmlConverter_WFDeflectionShape.hxx>
-#endif

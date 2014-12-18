@@ -6,36 +6,31 @@
 #ifndef _math_IntegerRandom_HeaderFile
 #define _math_IntegerRandom_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
 
-//! This class implements an integer random number generator. <br>
-class math_IntegerRandom  {
+//! This class implements an integer random number generator.
+class math_IntegerRandom 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! creates a Integer random generator between the values Lower and Upper. <br>
-  Standard_EXPORT   math_IntegerRandom(const Standard_Integer Lower,const Standard_Integer Upper);
-  //! reinitializes the random generator <br>
-  Standard_EXPORT     void Reset() ;
-  //! returns the next random number. <br>
-  Standard_EXPORT     Standard_Integer Next() ;
 
+  //! creates a Integer random generator between the values Lower and Upper.
+  Standard_EXPORT math_IntegerRandom(const Standard_Integer Lower, const Standard_Integer Upper);
+  
+  //! reinitializes the random generator
+  Standard_EXPORT   void Reset() ;
+  
+  //! returns the next random number.
+  Standard_EXPORT   Standard_Integer Next() ;
 
 
 
@@ -50,9 +45,9 @@ private:
 
 
 
-Standard_Integer Low;
-Standard_Integer Up;
-Standard_Integer Dummy;
+  Standard_Integer Low;
+  Standard_Integer Up;
+  Standard_Integer Dummy;
 
 
 };
@@ -61,7 +56,6 @@ Standard_Integer Dummy;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_IntegerRandom_HeaderFile

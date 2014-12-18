@@ -1,3 +1,1 @@
-#ifndef _StepElement_ElementAspectMember_HeaderFile
 #include <StepElement_ElementAspectMember.hxx>
-#endif

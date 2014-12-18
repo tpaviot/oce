@@ -6,14 +6,13 @@
 #ifndef _Graphic3d_NameOfTexture1D_HeaderFile
 #define _Graphic3d_NameOfTexture1D_HeaderFile
 
-//! Types of standard textures. <br>
-enum Graphic3d_NameOfTexture1D {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Types of standard textures.
+enum Graphic3d_NameOfTexture1D
+{
 Graphic3d_NOT_1D_ELEVATION,
 Graphic3d_NOT_1D_UNKNOWN
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_NameOfTexture1D_HeaderFile

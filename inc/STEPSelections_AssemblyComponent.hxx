@@ -6,46 +6,35 @@
 #ifndef _STEPSelections_AssemblyComponent_HeaderFile
 #define _STEPSelections_AssemblyComponent_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPSelections_AssemblyComponent_HeaderFile
 #include <Handle_STEPSelections_AssemblyComponent.hxx>
-#endif
 
-#ifndef _Handle_StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <Handle_StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _Handle_STEPSelections_HSequenceOfAssemblyLink_HeaderFile
 #include <Handle_STEPSelections_HSequenceOfAssemblyLink.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepShape_ShapeDefinitionRepresentation;
 class STEPSelections_HSequenceOfAssemblyLink;
 
 
 
-class STEPSelections_AssemblyComponent : public MMgt_TShared {
+class STEPSelections_AssemblyComponent : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   STEPSelections_AssemblyComponent();
+  Standard_EXPORT STEPSelections_AssemblyComponent();
   
-  Standard_EXPORT   STEPSelections_AssemblyComponent(const Handle(StepShape_ShapeDefinitionRepresentation)& sdr,const Handle(STEPSelections_HSequenceOfAssemblyLink)& list);
+  Standard_EXPORT STEPSelections_AssemblyComponent(const Handle(StepShape_ShapeDefinitionRepresentation)& sdr, const Handle(STEPSelections_HSequenceOfAssemblyLink)& list);
   
-        Handle_StepShape_ShapeDefinitionRepresentation GetSDR() const;
+      Handle(StepShape_ShapeDefinitionRepresentation) GetSDR()  const;
   
-        Handle_STEPSelections_HSequenceOfAssemblyLink GetList() const;
+      Handle(STEPSelections_HSequenceOfAssemblyLink) GetList()  const;
   
-        void SetSDR(const Handle(StepShape_ShapeDefinitionRepresentation)& sdr) ;
+      void SetSDR (const Handle(StepShape_ShapeDefinitionRepresentation)& sdr) ;
   
-        void SetList(const Handle(STEPSelections_HSequenceOfAssemblyLink)& list) ;
+      void SetList (const Handle(STEPSelections_HSequenceOfAssemblyLink)& list) ;
 
 
 
@@ -60,8 +49,8 @@ protected:
 private: 
 
 
-Handle_StepShape_ShapeDefinitionRepresentation mySDR;
-Handle_STEPSelections_HSequenceOfAssemblyLink myList;
+  Handle(StepShape_ShapeDefinitionRepresentation) mySDR;
+  Handle(STEPSelections_HSequenceOfAssemblyLink) myList;
 
 
 };
@@ -71,7 +60,6 @@ Handle_STEPSelections_HSequenceOfAssemblyLink myList;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPSelections_AssemblyComponent_HeaderFile

@@ -7,7 +7,6 @@
 #define _TopOpeBRepDS_PDataStructure_HeaderFile
 
 class TopOpeBRepDS_DataStructure;
-
 typedef TopOpeBRepDS_DataStructure* TopOpeBRepDS_PDataStructure;
 
-#endif
+#endif // _TopOpeBRepDS_PDataStructure_HeaderFile

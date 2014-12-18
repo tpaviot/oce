@@ -6,19 +6,18 @@
 #ifndef _Prs3d_DimensionArrowOrientation_HeaderFile
 #define _Prs3d_DimensionArrowOrientation_HeaderFile
 
-//! Specifies dimension arrow location and orientation. <br>
-//! DAO_Internal - arrows "inside", pointing outwards. <br>
-//! DAO_External - arrows "outside", pointing inwards. <br>
-//! DAO_Fit      - arrows oriented inside if value label with arrowtips fit the dimension line, <br>
-//!                otherwise - externally <br>
-enum Prs3d_DimensionArrowOrientation {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Specifies dimension arrow location and orientation.
+//! DAO_Internal - arrows "inside", pointing outwards.
+//! DAO_External - arrows "outside", pointing inwards.
+//! DAO_Fit      - arrows oriented inside if value label with arrowtips fit the dimension line,
+//! otherwise - externally
+enum Prs3d_DimensionArrowOrientation
+{
 Prs3d_DAO_Internal,
 Prs3d_DAO_External,
 Prs3d_DAO_Fit
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Prs3d_DimensionArrowOrientation_HeaderFile

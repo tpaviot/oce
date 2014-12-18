@@ -6,49 +6,38 @@
 #ifndef _Vrml_Normal_HeaderFile
 #define _Vrml_Normal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Vrml_Normal_HeaderFile
 #include <Handle_Vrml_Normal.hxx>
-#endif
 
-#ifndef _Handle_TColgp_HArray1OfVec_HeaderFile
 #include <Handle_TColgp_HArray1OfVec.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TColgp_HArray1OfVec;
 
 
-//! defines a Normal node of VRML specifying properties of geometry <br>
-//!          and its appearance. <br>
-//!  This node defines a set of 3D surface normal vectors to be used by vertex-based shape <br>
-//!  nodes (IndexedFaceSet, IndexedLineSet, PointSet) that follow it in the scene graph. This <br>
-//!  node does not produce a visible result during rendering; it simply replaces the current <br>
-//!  normals in the rendering state for subsequent nodes to use. This node contains one <br>
-//!  multiple-valued field that contains the normal vectors. <br>
-class Vrml_Normal : public MMgt_TShared {
+//! defines a Normal node of VRML specifying properties of geometry
+//! and its appearance.
+//! This node defines a set of 3D surface normal vectors to be used by vertex-based shape
+//! nodes (IndexedFaceSet, IndexedLineSet, PointSet) that follow it in the scene graph. This
+//! node does not produce a visible result during rendering; it simply replaces the current
+//! normals in the rendering state for subsequent nodes to use. This node contains one
+//! multiple-valued field that contains the normal vectors.
+class Vrml_Normal : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Vrml_Normal(const Handle(TColgp_HArray1OfVec)& aVector);
+  Standard_EXPORT Vrml_Normal(const Handle(TColgp_HArray1OfVec)& aVector);
   
-  Standard_EXPORT   Vrml_Normal();
+  Standard_EXPORT Vrml_Normal();
   
-  Standard_EXPORT     void SetVector(const Handle(TColgp_HArray1OfVec)& aVector) ;
+  Standard_EXPORT   void SetVector (const Handle(TColgp_HArray1OfVec)& aVector) ;
   
-  Standard_EXPORT     Handle_TColgp_HArray1OfVec Vector() const;
+  Standard_EXPORT   Handle(TColgp_HArray1OfVec) Vector()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -63,7 +52,7 @@ protected:
 private: 
 
 
-Handle_TColgp_HArray1OfVec myVector;
+  Handle(TColgp_HArray1OfVec) myVector;
 
 
 };
@@ -72,7 +61,6 @@ Handle_TColgp_HArray1OfVec myVector;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_Normal_HeaderFile

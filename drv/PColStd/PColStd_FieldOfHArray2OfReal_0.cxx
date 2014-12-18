@@ -5,28 +5,14 @@
 
 #include <PColStd_FieldOfHArray2OfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NegativeValue_HeaderFile
 #include <Standard_NegativeValue.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _PColStd_VArrayNodeOfFieldOfHArray2OfReal_HeaderFile
 #include <PColStd_VArrayNodeOfFieldOfHArray2OfReal.hxx>
-#endif
-#ifndef _PColStd_VArrayTNodeOfFieldOfHArray2OfReal_HeaderFile
 #include <PColStd_VArrayTNodeOfFieldOfHArray2OfReal.hxx>
-#endif
 
 IMPLEMENT_STANDARD_TYPE(PColStd_FieldOfHArray2OfReal)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()

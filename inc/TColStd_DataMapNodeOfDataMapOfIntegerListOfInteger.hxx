@@ -6,28 +6,14 @@
 #ifndef _TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger_HeaderFile
 #define _TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger_HeaderFile
 #include <Handle_TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TColStd_ListOfInteger;
 class TColStd_MapIntegerHasher;
 class TColStd_DataMapOfIntegerListOfInteger;
@@ -35,16 +21,17 @@ class TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger;
 
 
 
-class TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public TCollection_MapNode {
+class TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger : public TCollection_MapNode
+{
 
 public:
 
   
-      TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger(const Standard_Integer& K,const TColStd_ListOfInteger& I,const TCollection_MapNodePtr& n);
+    TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger(const Standard_Integer& K, const TColStd_ListOfInteger& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        TColStd_ListOfInteger& Value() const;
+      TColStd_ListOfInteger& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-TColStd_ListOfInteger myValue;
+  Standard_Integer myKey;
+  TColStd_ListOfInteger myValue;
 
 
 };
@@ -98,7 +85,6 @@ TColStd_ListOfInteger myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger_HeaderFile

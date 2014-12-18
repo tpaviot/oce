@@ -6,18 +6,16 @@
 #ifndef _Aspect_TypeOfUpdate_HeaderFile
 #define _Aspect_TypeOfUpdate_HeaderFile
 
-//! Definition of screen refresh mode <br>
-//! <br>
-//!          TOU_ASAP    as soon as possible <br>
-//!          TOU_WAIT    on demand (Update) <br>
-//! <br>
-enum Aspect_TypeOfUpdate {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of screen refresh mode
+//!
+//! TOU_ASAP    as soon as possible
+//! TOU_WAIT    on demand (Update)
+enum Aspect_TypeOfUpdate
+{
 Aspect_TOU_ASAP,
 Aspect_TOU_WAIT
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfUpdate_HeaderFile

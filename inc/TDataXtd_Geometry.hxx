@@ -6,37 +6,17 @@
 #ifndef _TDataXtd_Geometry_HeaderFile
 #define _TDataXtd_Geometry_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataXtd_Geometry_HeaderFile
 #include <Handle_TDataXtd_Geometry.hxx>
-#endif
 
-#ifndef _TDataXtd_GeometryEnum_HeaderFile
 #include <TDataXtd_GeometryEnum.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TDF_Label;
 class TNaming_NamedShape;
 class gp_Pnt;
@@ -51,97 +31,120 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! This class is used to model construction geometry. <br>
-//! The specific geometric construction of the <br>
-//!  attribute is defined by an element of the <br>
-//! enumeration TDataXtd_GeometryEnum. <br>
-//!      This attribute may  also be used to qualify  underlying <br>
-//!          geometry  of   the  associated NamedShape.     for <br>
-//!          Constructuion element by example. <br>
-class TDataXtd_Geometry : public TDF_Attribute {
+//! This class is used to model construction geometry.
+//! The specific geometric construction of the
+//! attribute is defined by an element of the
+//! enumeration TDataXtd_GeometryEnum.
+//! This attribute may  also be used to qualify  underlying
+//! geometry  of   the  associated NamedShape.     for
+//! Constructuion element by example.
+class TDataXtd_Geometry : public TDF_Attribute
+{
 
 public:
 
-  //! API class methods <br>
-//!         ================= <br>//! Finds, or  creates, a Geometry attribute  defined by the label label. <br>
-//! The default type of geometry is the value <br>
-//! ANY_GEOM of the enumeration TDataXtd_GeometryEnum. <br>
-//! To specify another value of this enumeration, use <br>
-//! the function SetType. <br>
-  Standard_EXPORT   static  Handle_TDataXtd_Geometry Set(const TDF_Label& label) ;
   
-//! Returns the label L used to define the type of <br>
-//! geometric construction for the geometry attribute. <br>
-  Standard_EXPORT   static  TDataXtd_GeometryEnum Type(const TDF_Label& L) ;
-  //! Returns the topological attribute S used to define <br>
-//! the type of geometric construction for the geometry attribute. <br>
-  Standard_EXPORT   static  TDataXtd_GeometryEnum Type(const Handle(TNaming_NamedShape)& S) ;
+  //! API class methods
+  //! =================
+  //! Finds, or  creates, a Geometry attribute  defined by the label label.
+  //! The default type of geometry is the value
+  //! ANY_GEOM of the enumeration TDataXtd_GeometryEnum.
+  //! To specify another value of this enumeration, use
+  //! the function SetType.
+  Standard_EXPORT static   Handle(TDataXtd_Geometry) Set (const TDF_Label& label) ;
   
-//! Returns the point attribute defined by the label L and the point G. <br>
-  Standard_EXPORT   static  Standard_Boolean Point(const TDF_Label& L,gp_Pnt& G) ;
+
+  //! Returns the label L used to define the type of
+  //! geometric construction for the geometry attribute.
+  Standard_EXPORT static   TDataXtd_GeometryEnum Type (const TDF_Label& L) ;
   
-//! Returns the point attribute defined by the topological attribute S and the point G. <br>
-  Standard_EXPORT   static  Standard_Boolean Point(const Handle(TNaming_NamedShape)& S,gp_Pnt& G) ;
+  //! Returns the topological attribute S used to define
+  //! the type of geometric construction for the geometry attribute.
+  Standard_EXPORT static   TDataXtd_GeometryEnum Type (const Handle(TNaming_NamedShape)& S) ;
   
-//! Returns the axis attribute defined by the label L and the axis G. <br>
-  Standard_EXPORT   static  Standard_Boolean Axis(const TDF_Label& L,gp_Ax1& G) ;
+
+  //! Returns the point attribute defined by the label L and the point G.
+  Standard_EXPORT static   Standard_Boolean Point (const TDF_Label& L, gp_Pnt& G) ;
   
-//! Returns the axis attribute defined by the topological attribute S and the axis G. <br>
-  Standard_EXPORT   static  Standard_Boolean Axis(const Handle(TNaming_NamedShape)& S,gp_Ax1& G) ;
+
+  //! Returns the point attribute defined by the topological attribute S and the point G.
+  Standard_EXPORT static   Standard_Boolean Point (const Handle(TNaming_NamedShape)& S, gp_Pnt& G) ;
   
-//! Returns the line attribute defined by the label L and the line G. <br>
-  Standard_EXPORT   static  Standard_Boolean Line(const TDF_Label& L,gp_Lin& G) ;
+
+  //! Returns the axis attribute defined by the label L and the axis G.
+  Standard_EXPORT static   Standard_Boolean Axis (const TDF_Label& L, gp_Ax1& G) ;
   
-//! Returns the line attribute defined by the topological attribute S and the line G. <br>
-  Standard_EXPORT   static  Standard_Boolean Line(const Handle(TNaming_NamedShape)& S,gp_Lin& G) ;
+
+  //! Returns the axis attribute defined by the topological attribute S and the axis G.
+  Standard_EXPORT static   Standard_Boolean Axis (const Handle(TNaming_NamedShape)& S, gp_Ax1& G) ;
   
-//! Returns the circle attribute defined by the label L and the circle G. <br>
-  Standard_EXPORT   static  Standard_Boolean Circle(const TDF_Label& L,gp_Circ& G) ;
+
+  //! Returns the line attribute defined by the label L and the line G.
+  Standard_EXPORT static   Standard_Boolean Line (const TDF_Label& L, gp_Lin& G) ;
   
-//! Returns the circle attribute defined by the topological attribute S and the circle G. <br>
-  Standard_EXPORT   static  Standard_Boolean Circle(const Handle(TNaming_NamedShape)& S,gp_Circ& G) ;
+
+  //! Returns the line attribute defined by the topological attribute S and the line G.
+  Standard_EXPORT static   Standard_Boolean Line (const Handle(TNaming_NamedShape)& S, gp_Lin& G) ;
   
-//! Returns the ellipse attribute defined by the label L and the ellipse G. <br>
-  Standard_EXPORT   static  Standard_Boolean Ellipse(const TDF_Label& L,gp_Elips& G) ;
+
+  //! Returns the circle attribute defined by the label L and the circle G.
+  Standard_EXPORT static   Standard_Boolean Circle (const TDF_Label& L, gp_Circ& G) ;
   
-//! Returns the ellipse attribute defined by the <br>
-//! topological attribute S and the ellipse G. <br>
-  Standard_EXPORT   static  Standard_Boolean Ellipse(const Handle(TNaming_NamedShape)& S,gp_Elips& G) ;
+
+  //! Returns the circle attribute defined by the topological attribute S and the circle G.
+  Standard_EXPORT static   Standard_Boolean Circle (const Handle(TNaming_NamedShape)& S, gp_Circ& G) ;
   
-//! Returns the plane attribute defined by the label L and the plane G. <br>
-  Standard_EXPORT   static  Standard_Boolean Plane(const TDF_Label& L,gp_Pln& G) ;
+
+  //! Returns the ellipse attribute defined by the label L and the ellipse G.
+  Standard_EXPORT static   Standard_Boolean Ellipse (const TDF_Label& L, gp_Elips& G) ;
   
-//! Returns the plane attribute defined by the <br>
-//! topological attribute S and the plane G. <br>
-  Standard_EXPORT   static  Standard_Boolean Plane(const Handle(TNaming_NamedShape)& S,gp_Pln& G) ;
+
+  //! Returns the ellipse attribute defined by the
+  //! topological attribute S and the ellipse G.
+  Standard_EXPORT static   Standard_Boolean Ellipse (const Handle(TNaming_NamedShape)& S, gp_Elips& G) ;
   
-//! Returns the cylinder attribute defined by the label L and the cylinder G. <br>
-  Standard_EXPORT   static  Standard_Boolean Cylinder(const TDF_Label& L,gp_Cylinder& G) ;
+
+  //! Returns the plane attribute defined by the label L and the plane G.
+  Standard_EXPORT static   Standard_Boolean Plane (const TDF_Label& L, gp_Pln& G) ;
   
-//! Returns the cylinder attribute defined by the <br>
-//! topological attribute S and the cylinder G. <br>
-  Standard_EXPORT   static  Standard_Boolean Cylinder(const Handle(TNaming_NamedShape)& S,gp_Cylinder& G) ;
-  //! Returns the GUID for geometry attributes. <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! This and the next methods are used to  retrieve  underlying geometry of  the <br>
-//!           NamedShape, even   if  noone Geometry   Attribute  is <br>
-//!          associated  .  if not  found or not compliant geometry return False. <br>
-  Standard_EXPORT   TDataXtd_Geometry();
-  //! Returns the type of geometric construction T of this attribute. <br>
-//! T will be a value of the enumeration TDataXtd_GeometryEnum. <br>
-  Standard_EXPORT     void SetType(const TDataXtd_GeometryEnum T) ;
-  //! Returns the type of geometric construction. <br>
-  Standard_EXPORT     TDataXtd_GeometryEnum GetType() const;
+
+  //! Returns the plane attribute defined by the
+  //! topological attribute S and the plane G.
+  Standard_EXPORT static   Standard_Boolean Plane (const Handle(TNaming_NamedShape)& S, gp_Pln& G) ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+
+  //! Returns the cylinder attribute defined by the label L and the cylinder G.
+  Standard_EXPORT static   Standard_Boolean Cylinder (const TDF_Label& L, gp_Cylinder& G) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& with) ;
+
+  //! Returns the cylinder attribute defined by the
+  //! topological attribute S and the cylinder G.
+  Standard_EXPORT static   Standard_Boolean Cylinder (const Handle(TNaming_NamedShape)& S, gp_Cylinder& G) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! Returns the GUID for geometry attributes.
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  //! This and the next methods are used to  retrieve  underlying geometry of  the
+  //! NamedShape, even   if  noone Geometry   Attribute  is
+  //! associated  .  if not  found or not compliant geometry return False.
+  Standard_EXPORT TDataXtd_Geometry();
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  //! Returns the type of geometric construction T of this attribute.
+  //! T will be a value of the enumeration TDataXtd_GeometryEnum.
+  Standard_EXPORT   void SetType (const TDataXtd_GeometryEnum T) ;
+  
+  //! Returns the type of geometric construction.
+  Standard_EXPORT   TDataXtd_GeometryEnum GetType()  const;
+  
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -156,7 +159,7 @@ protected:
 private: 
 
 
-TDataXtd_GeometryEnum myType;
+  TDataXtd_GeometryEnum myType;
 
 
 };
@@ -165,7 +168,6 @@ TDataXtd_GeometryEnum myType;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataXtd_Geometry_HeaderFile

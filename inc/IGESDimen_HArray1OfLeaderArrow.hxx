@@ -6,28 +6,14 @@
 #ifndef _IGESDimen_HArray1OfLeaderArrow_HeaderFile
 #define _IGESDimen_HArray1OfLeaderArrow_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDimen_HArray1OfLeaderArrow_HeaderFile
 #include <Handle_IGESDimen_HArray1OfLeaderArrow.hxx>
-#endif
 
-#ifndef _IGESDimen_Array1OfLeaderArrow_HeaderFile
 #include <IGESDimen_Array1OfLeaderArrow.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESDimen_LeaderArrow_HeaderFile
 #include <Handle_IGESDimen_LeaderArrow.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESDimen_Array1OfLeaderArrow;
 
 
 
-class IGESDimen_HArray1OfLeaderArrow : public MMgt_TShared {
+class IGESDimen_HArray1OfLeaderArrow : public MMgt_TShared
+{
 
 public:
 
   
-      IGESDimen_HArray1OfLeaderArrow(const Standard_Integer Low,const Standard_Integer Up);
+    IGESDimen_HArray1OfLeaderArrow(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESDimen_HArray1OfLeaderArrow(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESDimen_LeaderArrow)& V);
+    IGESDimen_HArray1OfLeaderArrow(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESDimen_LeaderArrow)& V);
   
-        void Init(const Handle(IGESDimen_LeaderArrow)& V) ;
+      void Init (const Handle(IGESDimen_LeaderArrow)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESDimen_LeaderArrow)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESDimen_LeaderArrow)& Value) ;
   
-       const Handle_IGESDimen_LeaderArrow& Value(const Standard_Integer Index) const;
+     const  Handle(IGESDimen_LeaderArrow)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESDimen_LeaderArrow& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESDimen_LeaderArrow)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESDimen_Array1OfLeaderArrow& Array1() const;
+     const  IGESDimen_Array1OfLeaderArrow& Array1()  const;
   
-        IGESDimen_Array1OfLeaderArrow& ChangeArray1() ;
+      IGESDimen_Array1OfLeaderArrow& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESDimen_Array1OfLeaderArrow myArray;
+  IGESDimen_Array1OfLeaderArrow myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESDimen_LeaderArrow
+#define ItemHArray1 Handle(IGESDimen_LeaderArrow)
 #define ItemHArray1_hxx <IGESDimen_LeaderArrow.hxx>
 #define TheArray1 IGESDimen_Array1OfLeaderArrow
 #define TheArray1_hxx <IGESDimen_Array1OfLeaderArrow.hxx>
@@ -103,7 +90,6 @@ IGESDimen_Array1OfLeaderArrow myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDimen_HArray1OfLeaderArrow_HeaderFile

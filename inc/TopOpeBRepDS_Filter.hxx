@@ -6,52 +6,40 @@
 #ifndef _TopOpeBRepDS_Filter_HeaderFile
 #define _TopOpeBRepDS_Filter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TopOpeBRepDS_HDataStructure_HeaderFile
 #include <Handle_TopOpeBRepDS_HDataStructure.hxx>
-#endif
-#ifndef _TopOpeBRepTool_PShapeClassifier_HeaderFile
 #include <TopOpeBRepTool_PShapeClassifier.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopOpeBRepDS_HDataStructure;
 class TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State;
 
 
 
-class TopOpeBRepDS_Filter  {
+class TopOpeBRepDS_Filter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_Filter(const Handle(TopOpeBRepDS_HDataStructure)& HDS,const TopOpeBRepTool_PShapeClassifier& pClassif = 0);
+  Standard_EXPORT TopOpeBRepDS_Filter(const Handle(TopOpeBRepDS_HDataStructure)& HDS, const TopOpeBRepTool_PShapeClassifier& pClassif = 0);
   
-  Standard_EXPORT     void ProcessInterferences() ;
+  Standard_EXPORT   void ProcessInterferences() ;
   
-  Standard_EXPORT     void ProcessFaceInterferences(const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State& MEsp) ;
+  Standard_EXPORT   void ProcessFaceInterferences (const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State& MEsp) ;
   
-  Standard_EXPORT     void ProcessFaceInterferences(const Standard_Integer I,const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State& MEsp) ;
+  Standard_EXPORT   void ProcessFaceInterferences (const Standard_Integer I, const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State& MEsp) ;
   
-  Standard_EXPORT     void ProcessEdgeInterferences() ;
+  Standard_EXPORT   void ProcessEdgeInterferences() ;
   
-  Standard_EXPORT     void ProcessEdgeInterferences(const Standard_Integer I) ;
+  Standard_EXPORT   void ProcessEdgeInterferences (const Standard_Integer I) ;
   
-  Standard_EXPORT     void ProcessCurveInterferences() ;
+  Standard_EXPORT   void ProcessCurveInterferences() ;
   
-  Standard_EXPORT     void ProcessCurveInterferences(const Standard_Integer I) ;
-
+  Standard_EXPORT   void ProcessCurveInterferences (const Standard_Integer I) ;
 
 
 
@@ -66,8 +54,8 @@ private:
 
 
 
-Handle_TopOpeBRepDS_HDataStructure myHDS;
-TopOpeBRepTool_PShapeClassifier myPShapeClassif;
+  Handle(TopOpeBRepDS_HDataStructure) myHDS;
+  TopOpeBRepTool_PShapeClassifier myPShapeClassif;
 
 
 };
@@ -76,7 +64,6 @@ TopOpeBRepTool_PShapeClassifier myPShapeClassif;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_Filter_HeaderFile

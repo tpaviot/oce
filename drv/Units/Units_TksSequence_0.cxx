@@ -5,21 +5,13 @@
 
 #include <Units_TksSequence.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Units_Token_HeaderFile
 #include <Units_Token.hxx>
-#endif
-#ifndef _Units_SequenceNodeOfTksSequence_HeaderFile
 #include <Units_SequenceNodeOfTksSequence.hxx>
-#endif
  
 
-#define SeqItem Handle_Units_Token
+#define SeqItem Handle(Units_Token)
 #define SeqItem_hxx <Units_Token.hxx>
 #define TCollection_SequenceNode Units_SequenceNodeOfTksSequence
 #define TCollection_SequenceNode_hxx <Units_SequenceNodeOfTksSequence.hxx>

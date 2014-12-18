@@ -18,17 +18,22 @@ class OffsetWire from BRepFill
 
 	---Purpose: Constructs a Offset Wire to a spine (wire or face) 
 	--          on the left of spine.
-
+	--          The Wire or the Face must be planar.
 uses
 
     Face        from TopoDS,
     Shape       from TopoDS,
     JoinType    from GeomAbs,
     ListOfShape from TopTools,
+    SequenceOfShape from TopTools,
+    SequenceOfPnt from TColgp,
     DataMapOfShapeShape               from TopTools,
     IndexedDataMapOfOrientedShapeListOfShape from BRepFill,  
+    DataMapOfOrientedShapeListOfShape from BRepFill,  
     BisectingLocus                    from BRepMAT2d, 
-    LinkTopoBilo                      from BRepMAT2d
+    LinkTopoBilo                      from BRepMAT2d,
+    Bisec from Bisector,
+    TrimEdgeTool from BRepFill
     
 raises
     ConstructionError from Standard,
@@ -39,12 +44,14 @@ is
     Create returns OffsetWire from BRepFill;
 
     Create ( Spine : Face     from TopoDS; 
-    	     Join  : JoinType from GeomAbs  =  GeomAbs_Arc)
+    	     Join  : JoinType from GeomAbs  =  GeomAbs_Arc;
+	     IsOpenResult : Boolean from Standard = Standard_False)
     returns OffsetWire from BRepFill;
 
     Init ( me    : in out;
     	   Spine : Face     from TopoDS; 
-    	   Join  : JoinType from GeomAbs  =  GeomAbs_Arc)
+    	   Join  : JoinType from GeomAbs  =  GeomAbs_Arc;
+	   IsOpenResult : Boolean from Standard = Standard_False)
 	---Purpose: Initialize the evaluation of Offseting.
     raises
     	ConstructionError from Standard
@@ -114,6 +121,16 @@ is
 	---Purpose: Add the OffsetWire <Other> to <me> and update <myMap>
     is static private;
     
+    UpdateDetromp (me; Detromp : in out DataMapOfOrientedShapeListOfShape from BRepFill;
+    	    	       Shape1, Shape2 : Shape from TopoDS;
+		       Vertices : SequenceOfShape from TopTools;
+		       Params   : SequenceOfPnt   from TColgp;
+		       Bisec    : Bisec from Bisector;
+		       SOnE     : Boolean from Standard;
+		       EOnE     : Boolean from Standard;
+		       Trim     : TrimEdgeTool from BRepFill)
+    is static private;
+    
     MakeWires (me : in  out)
 	---Purpose: Constructs the wires with the trimmed offset edges.
     is static private;
@@ -127,6 +144,7 @@ fields
     mySpine     : Face      from TopoDS;
     myWorkSpine : Face      from TopoDS;
     myOffset    : Real      from Standard; -- >0 ;
+    myIsOpenResult : Boolean from Standard;
     myShape     : Shape     from TopoDS;
     myIsDone    : Boolean   from Standard;
     myJoinType  : JoinType  from GeomAbs;	    

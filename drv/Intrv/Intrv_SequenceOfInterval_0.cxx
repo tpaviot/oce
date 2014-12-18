@@ -5,18 +5,10 @@
 
 #include <Intrv_SequenceOfInterval.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Intrv_Interval_HeaderFile
 #include <Intrv_Interval.hxx>
-#endif
-#ifndef _Intrv_SequenceNodeOfSequenceOfInterval_HeaderFile
 #include <Intrv_SequenceNodeOfSequenceOfInterval.hxx>
-#endif
  
 
 #define SeqItem Intrv_Interval

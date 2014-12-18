@@ -5,15 +5,9 @@
 
 #include <IntTools_QuickSort.hxx>
 
-#ifndef _IntTools_Root_HeaderFile
 #include <IntTools_Root.hxx>
-#endif
-#ifndef _IntTools_Array1OfRoots_HeaderFile
 #include <IntTools_Array1OfRoots.hxx>
-#endif
-#ifndef _IntTools_Compare_HeaderFile
 #include <IntTools_Compare.hxx>
-#endif
  
 
 #define Item IntTools_Root

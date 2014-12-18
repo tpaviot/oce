@@ -6,38 +6,29 @@
 #ifndef _TNaming_DeltaOnRemoval_HeaderFile
 #define _TNaming_DeltaOnRemoval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TNaming_DeltaOnRemoval_HeaderFile
 #include <Handle_TNaming_DeltaOnRemoval.hxx>
-#endif
 
-#ifndef _Handle_TNaming_DeltaOnModification_HeaderFile
 #include <Handle_TNaming_DeltaOnModification.hxx>
-#endif
-#ifndef _TDF_DeltaOnRemoval_HeaderFile
 #include <TDF_DeltaOnRemoval.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
 class TNaming_DeltaOnModification;
 class TNaming_NamedShape;
 
 
 
-class TNaming_DeltaOnRemoval : public TDF_DeltaOnRemoval {
+class TNaming_DeltaOnRemoval : public TDF_DeltaOnRemoval
+{
 
 public:
 
-  //! Initializes a TDF_DeltaOnModification. <br>
-  Standard_EXPORT   TNaming_DeltaOnRemoval(const Handle(TNaming_NamedShape)& NS);
-  //! Applies the delta to the attribute. <br>
-  Standard_EXPORT   virtual  void Apply() ;
+  
+  //! Initializes a TDF_DeltaOnModification.
+  Standard_EXPORT TNaming_DeltaOnRemoval(const Handle(TNaming_NamedShape)& NS);
+  
+  //! Applies the delta to the attribute.
+  Standard_EXPORT virtual   void Apply() ;
 
 
 
@@ -52,7 +43,7 @@ protected:
 private: 
 
 
-Handle_TNaming_DeltaOnModification myDelta;
+  Handle(TNaming_DeltaOnModification) myDelta;
 
 
 };
@@ -61,7 +52,6 @@ Handle_TNaming_DeltaOnModification myDelta;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_DeltaOnRemoval_HeaderFile

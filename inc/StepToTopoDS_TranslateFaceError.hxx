@@ -6,14 +6,13 @@
 #ifndef _StepToTopoDS_TranslateFaceError_HeaderFile
 #define _StepToTopoDS_TranslateFaceError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepToTopoDS_TranslateFaceError {
+
+enum StepToTopoDS_TranslateFaceError
+{
 StepToTopoDS_TranslateFaceDone,
 StepToTopoDS_TranslateFaceOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepToTopoDS_TranslateFaceError_HeaderFile

@@ -5,19 +5,11 @@
 
 #include <IntTools_ListNodeOfListOfBox.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _IntTools_ListOfBox_HeaderFile
 #include <IntTools_ListOfBox.hxx>
-#endif
-#ifndef _IntTools_ListIteratorOfListOfBox_HeaderFile
 #include <IntTools_ListIteratorOfListOfBox.hxx>
-#endif
 
  
 

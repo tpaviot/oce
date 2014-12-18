@@ -83,10 +83,10 @@ void OpenGl_AspectLine::Render (const Handle(OpenGl_Workspace) &theWorkspace) co
 // function : Release
 // purpose  :
 // =======================================================================
-void OpenGl_AspectLine::Release (const Handle(OpenGl_Context)& theContext)
+void OpenGl_AspectLine::Release (OpenGl_Context* theContext)
 {
   if (!myResources.ShaderProgram.IsNull()
-   && !theContext.IsNull())
+   && theContext)
   {
     theContext->ShaderManager()->Unregister (myResources.ShaderProgramId,
                                              myResources.ShaderProgram);
@@ -99,11 +99,10 @@ void OpenGl_AspectLine::Release (const Handle(OpenGl_Context)& theContext)
 // function : BuildShader
 // purpose  :
 // =======================================================================
-void OpenGl_AspectLine::Resources::BuildShader (const Handle(OpenGl_Workspace)&        theWS,
+void OpenGl_AspectLine::Resources::BuildShader (const Handle(OpenGl_Context)&          theCtx,
                                                 const Handle(Graphic3d_ShaderProgram)& theShader)
 {
-  const Handle(OpenGl_Context)& aContext = theWS->GetGlContext();
-  if (!aContext->IsGlGreaterEqual (2, 0))
+  if (!theCtx->IsGlGreaterEqual (2, 0))
   {
     return;
   }
@@ -111,7 +110,7 @@ void OpenGl_AspectLine::Resources::BuildShader (const Handle(OpenGl_Workspace)& 
   // release old shader program resources
   if (!ShaderProgram.IsNull())
   {
-    aContext->ShaderManager()->Unregister (ShaderProgramId, ShaderProgram);
+    theCtx->ShaderManager()->Unregister (ShaderProgramId, ShaderProgram);
     ShaderProgramId.Clear();
     ShaderProgram.Nullify();
   }
@@ -120,5 +119,5 @@ void OpenGl_AspectLine::Resources::BuildShader (const Handle(OpenGl_Workspace)& 
     return;
   }
 
-  aContext->ShaderManager()->Create (theShader, ShaderProgramId, ShaderProgram);
+  theCtx->ShaderManager()->Create (theShader, ShaderProgramId, ShaderProgram);
 }

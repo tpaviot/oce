@@ -6,70 +6,61 @@
 #ifndef _BRepClass3d_SClassifier_HeaderFile
 #define _BRepClass3d_SClassifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
 class Standard_DomainError;
 class BRepClass3d_SolidExplorer;
 class gp_Pnt;
 class TopoDS_Face;
 
 
-//! Provides an algorithm to classify a point in a solid. <br>
-class BRepClass3d_SClassifier  {
+//! Provides an algorithm to classify a point in a solid.
+class BRepClass3d_SClassifier 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   BRepClass3d_SClassifier();
-  //! Constructor to classify the point P with the <br>
-//!          tolerance Tol on the solid S. <br>
-  Standard_EXPORT   BRepClass3d_SClassifier(BRepClass3d_SolidExplorer& S,const gp_Pnt& P,const Standard_Real Tol);
-  //! Classify the point P with the <br>
-//!          tolerance Tol on the solid S. <br>
-//! <br>
-  Standard_EXPORT     void Perform(BRepClass3d_SolidExplorer& S,const gp_Pnt& P,const Standard_Real Tol) ;
-  //! Classify an infinite point with the <br>
-//!          tolerance Tol on the solid S. <br>
-  Standard_EXPORT     void PerformInfinitePoint(BRepClass3d_SolidExplorer& S,const Standard_Real Tol) ;
-  //! Returns True if the classification has been <br>
-//!          computed by rejection. <br>
-//!          The State is then OUT. <br>
-  Standard_EXPORT     Standard_Boolean Rejected() const;
-  //! Returns the result of the classification. <br>
-  Standard_EXPORT     TopAbs_State State() const;
-  //! Returns True when the point is a point of a face. <br>
-  Standard_EXPORT     Standard_Boolean IsOnAFace() const;
-  //! Returns the face used to determine the <br>
-//!          classification. When the state is ON, this is the <br>
-//!          face containing the point. <br>
-//! <br>
-//!          When Rejected() returns True, Face() has no signification. <br>
-  Standard_EXPORT     TopoDS_Face Face() const;
-
+  
+  //! Empty constructor.
+  Standard_EXPORT BRepClass3d_SClassifier();
+  
+  //! Constructor to classify the point P with the
+  //! tolerance Tol on the solid S.
+  Standard_EXPORT BRepClass3d_SClassifier(BRepClass3d_SolidExplorer& S, const gp_Pnt& P, const Standard_Real Tol);
+  
+  //! Classify the point P with the
+  //! tolerance Tol on the solid S.
+  Standard_EXPORT   void Perform (BRepClass3d_SolidExplorer& S, const gp_Pnt& P, const Standard_Real Tol) ;
+  
+  //! Classify an infinite point with the
+  //! tolerance Tol on the solid S.
+  Standard_EXPORT   void PerformInfinitePoint (BRepClass3d_SolidExplorer& S, const Standard_Real Tol) ;
+  
+  //! Returns True if the classification has been
+  //! computed by rejection.
+  //! The State is then OUT.
+  Standard_EXPORT   Standard_Boolean Rejected()  const;
+  
+  //! Returns the result of the classification.
+  Standard_EXPORT   TopAbs_State State()  const;
+  
+  //! Returns True when the point is a point of a face.
+  Standard_EXPORT   Standard_Boolean IsOnAFace()  const;
+  
+  //! Returns the face used to determine the
+  //! classification. When the state is ON, this is the
+  //! face containing the point.
+  //!
+  //! When Rejected() returns True, Face() has no signification.
+  Standard_EXPORT   TopoDS_Face Face()  const;
 
 
 
@@ -77,9 +68,9 @@ public:
 protected:
 
   
-  Standard_EXPORT     void ForceIn() ;
+  Standard_EXPORT   void ForceIn() ;
   
-  Standard_EXPORT     void ForceOut() ;
+  Standard_EXPORT   void ForceOut() ;
 
 
 
@@ -88,8 +79,8 @@ private:
 
 
 
-TopoDS_Face myFace;
-Standard_Integer myState;
+  TopoDS_Face myFace;
+  Standard_Integer myState;
 
 
 };
@@ -98,7 +89,6 @@ Standard_Integer myState;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepClass3d_SClassifier_HeaderFile

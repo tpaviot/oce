@@ -6,55 +6,52 @@
 #ifndef _PNaming_NamedShape_HeaderFile
 #define _PNaming_NamedShape_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PNaming_NamedShape_HeaderFile
 #include <Handle_PNaming_NamedShape.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PTopoDS_HArray1OfShape1_HeaderFile
 #include <Handle_PTopoDS_HArray1OfShape1.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PTopoDS_HArray1OfShape1;
 
 
-class PNaming_NamedShape : public PDF_Attribute {
+class PNaming_NamedShape : public PDF_Attribute
+{
 
 public:
 
-  //! Creates a mutable NamedShape from PNaming. <br>
-  Standard_EXPORT   PNaming_NamedShape();
-  //! Returns the number of shapes. <br>
-  Standard_EXPORT     Standard_Integer NbShapes() const;
-  //! Sets the field <myOldShapes>. <br>
-  Standard_EXPORT     void OldShapes(const Handle(PTopoDS_HArray1OfShape1)& theShapes) ;
-  //! Returns the field <myOldShapes>. <br>
-  Standard_EXPORT     Handle_PTopoDS_HArray1OfShape1 OldShapes() const;
-  //! Sets the field <myNewShapes>. <br>
-  Standard_EXPORT     void NewShapes(const Handle(PTopoDS_HArray1OfShape1)& theShapes) ;
-  //! Returns the field <myNewShapes>. <br>
-  Standard_EXPORT     Handle_PTopoDS_HArray1OfShape1 NewShapes() const;
-  //! Sets the field <myShapeStatus>. <br>
-  Standard_EXPORT     void ShapeStatus(const Standard_Integer theShapeStatus) ;
-  //! Returns the field <myShapeStatus>. <br>
-  Standard_EXPORT     Standard_Integer ShapeStatus() const;
-  //! Sets the field <myVersion>. <br>
-  Standard_EXPORT     void Version(const Standard_Integer theVersion) ;
-  //! Returns the field <myVersion>. <br>
-  Standard_EXPORT     Standard_Integer Version() const;
+  
+  //! Creates a mutable NamedShape from PNaming.
+  Standard_EXPORT PNaming_NamedShape();
+  
+  //! Returns the number of shapes.
+  Standard_EXPORT   Standard_Integer NbShapes()  const;
+  
+  //! Sets the field <myOldShapes>.
+  Standard_EXPORT   void OldShapes (const Handle(PTopoDS_HArray1OfShape1)& theShapes) ;
+  
+  //! Returns the field <myOldShapes>.
+  Standard_EXPORT   Handle(PTopoDS_HArray1OfShape1) OldShapes()  const;
+  
+  //! Sets the field <myNewShapes>.
+  Standard_EXPORT   void NewShapes (const Handle(PTopoDS_HArray1OfShape1)& theShapes) ;
+  
+  //! Returns the field <myNewShapes>.
+  Standard_EXPORT   Handle(PTopoDS_HArray1OfShape1) NewShapes()  const;
+  
+  //! Sets the field <myShapeStatus>.
+  Standard_EXPORT   void ShapeStatus (const Standard_Integer theShapeStatus) ;
+  
+  //! Returns the field <myShapeStatus>.
+  Standard_EXPORT   Standard_Integer ShapeStatus()  const;
+  
+  //! Sets the field <myVersion>.
+  Standard_EXPORT   void Version (const Standard_Integer theVersion) ;
+  
+  //! Returns the field <myVersion>.
+  Standard_EXPORT   Standard_Integer Version()  const;
 
 PNaming_NamedShape(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -81,10 +78,10 @@ protected:
 private: 
 
 
-Handle_PTopoDS_HArray1OfShape1 myOldShapes;
-Handle_PTopoDS_HArray1OfShape1 myNewShapes;
-Standard_Integer myShapeStatus;
-Standard_Integer myVersion;
+  Handle(PTopoDS_HArray1OfShape1) myOldShapes;
+  Handle(PTopoDS_HArray1OfShape1) myNewShapes;
+  Standard_Integer myShapeStatus;
+  Standard_Integer myVersion;
 
 
 };
@@ -93,7 +90,6 @@ Standard_Integer myVersion;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PNaming_NamedShape_HeaderFile

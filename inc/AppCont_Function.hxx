@@ -6,45 +6,41 @@
 #ifndef _AppCont_Function_HeaderFile
 #define _AppCont_Function_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_Pnt;
 class gp_Vec;
 
 
-//! deferred class describing a continous 3d function f(u) <br>
-class AppCont_Function  {
+//! deferred class describing a continous 3d function f(u)
+//! This class must be provided by the user to use the
+//! approximation algorithm FittingCurve.
+class AppCont_Function 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~AppCont_Function(){Delete() ; }
-  //! returns the first parameter of the function. <br>
-  Standard_EXPORT   virtual  Standard_Real FirstParameter() const = 0;
-  //! returns the last parameter of the function. <br>
-  Standard_EXPORT   virtual  Standard_Real LastParameter() const = 0;
-  //! returns the point at parameter <U>. <br>
-  Standard_EXPORT   virtual  gp_Pnt Value(const Standard_Real U) const = 0;
-  //! returns the point and the derivative values at <br>
-//!          the parameter <U>. <br>
-  Standard_EXPORT   virtual  Standard_Boolean D1(const Standard_Real U,gp_Pnt& P,gp_Vec& V) const = 0;
-
+  
+  //! returns the first parameter of the function.
+  Standard_EXPORT virtual   Standard_Real FirstParameter()  const = 0;
+  
+  //! returns the last parameter of the function.
+  Standard_EXPORT virtual   Standard_Real LastParameter()  const = 0;
+  
+  //! returns the point at parameter <U>.
+  Standard_EXPORT virtual   gp_Pnt Value (const Standard_Real U)  const = 0;
+  
+  //! returns the point and the derivative values at
+  //! the parameter <U>.
+  Standard_EXPORT virtual   Standard_Boolean D1 (const Standard_Real U, gp_Pnt& P, gp_Vec& V)  const = 0;
 
 
 
@@ -67,7 +63,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AppCont_Function_HeaderFile

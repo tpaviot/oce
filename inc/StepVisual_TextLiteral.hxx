@@ -6,67 +6,53 @@
 #ifndef _StepVisual_TextLiteral_HeaderFile
 #define _StepVisual_TextLiteral_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_TextLiteral_HeaderFile
 #include <Handle_StepVisual_TextLiteral.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepGeom_Axis2Placement_HeaderFile
 #include <StepGeom_Axis2Placement.hxx>
-#endif
-#ifndef _StepVisual_TextPath_HeaderFile
 #include <StepVisual_TextPath.hxx>
-#endif
-#ifndef _StepVisual_FontSelect_HeaderFile
 #include <StepVisual_FontSelect.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepGeom_Axis2Placement;
 class StepVisual_FontSelect;
 
 
 
-class StepVisual_TextLiteral : public StepGeom_GeometricRepresentationItem {
+class StepVisual_TextLiteral : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a TextLiteral <br>
-  Standard_EXPORT   StepVisual_TextLiteral();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a TextLiteral
+  Standard_EXPORT StepVisual_TextLiteral();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aLiteral,const StepGeom_Axis2Placement& aPlacement,const Handle(TCollection_HAsciiString)& aAlignment,const StepVisual_TextPath aPath,const StepVisual_FontSelect& aFont) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetLiteral(const Handle(TCollection_HAsciiString)& aLiteral) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aLiteral, const StepGeom_Axis2Placement& aPlacement, const Handle(TCollection_HAsciiString)& aAlignment, const StepVisual_TextPath aPath, const StepVisual_FontSelect& aFont) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Literal() const;
+  Standard_EXPORT   void SetLiteral (const Handle(TCollection_HAsciiString)& aLiteral) ;
   
-  Standard_EXPORT     void SetPlacement(const StepGeom_Axis2Placement& aPlacement) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Literal()  const;
   
-  Standard_EXPORT     StepGeom_Axis2Placement Placement() const;
+  Standard_EXPORT   void SetPlacement (const StepGeom_Axis2Placement& aPlacement) ;
   
-  Standard_EXPORT     void SetAlignment(const Handle(TCollection_HAsciiString)& aAlignment) ;
+  Standard_EXPORT   StepGeom_Axis2Placement Placement()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Alignment() const;
+  Standard_EXPORT   void SetAlignment (const Handle(TCollection_HAsciiString)& aAlignment) ;
   
-  Standard_EXPORT     void SetPath(const StepVisual_TextPath aPath) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Alignment()  const;
   
-  Standard_EXPORT     StepVisual_TextPath Path() const;
+  Standard_EXPORT   void SetPath (const StepVisual_TextPath aPath) ;
   
-  Standard_EXPORT     void SetFont(const StepVisual_FontSelect& aFont) ;
+  Standard_EXPORT   StepVisual_TextPath Path()  const;
   
-  Standard_EXPORT     StepVisual_FontSelect Font() const;
+  Standard_EXPORT   void SetFont (const StepVisual_FontSelect& aFont) ;
+  
+  Standard_EXPORT   StepVisual_FontSelect Font()  const;
 
 
 
@@ -81,11 +67,11 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString literal;
-StepGeom_Axis2Placement placement;
-Handle_TCollection_HAsciiString alignment;
-StepVisual_TextPath path;
-StepVisual_FontSelect font;
+  Handle(TCollection_HAsciiString) literal;
+  StepGeom_Axis2Placement placement;
+  Handle(TCollection_HAsciiString) alignment;
+  StepVisual_TextPath path;
+  StepVisual_FontSelect font;
 
 
 };
@@ -94,7 +80,6 @@ StepVisual_FontSelect font;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_TextLiteral_HeaderFile

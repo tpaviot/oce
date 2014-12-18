@@ -6,67 +6,55 @@
 #ifndef _TopOpeBRepBuild_FuseFace_HeaderFile
 #define _TopOpeBRepBuild_FuseFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopTools_ListOfShape;
 
 
 
-class TopOpeBRepBuild_FuseFace  {
+class TopOpeBRepBuild_FuseFace 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TopOpeBRepBuild_FuseFace();
+    TopOpeBRepBuild_FuseFace();
   
-      TopOpeBRepBuild_FuseFace(const TopTools_ListOfShape& LIF,const TopTools_ListOfShape& LRF,const Standard_Integer CXM);
+    TopOpeBRepBuild_FuseFace(const TopTools_ListOfShape& LIF, const TopTools_ListOfShape& LRF, const Standard_Integer CXM);
   
-  Standard_EXPORT     void Init(const TopTools_ListOfShape& LIF,const TopTools_ListOfShape& LRF,const Standard_Integer CXM) ;
+  Standard_EXPORT   void Init (const TopTools_ListOfShape& LIF, const TopTools_ListOfShape& LRF, const Standard_Integer CXM) ;
   
-  Standard_EXPORT     void PerformFace() ;
+  Standard_EXPORT   void PerformFace() ;
   
-  Standard_EXPORT     void PerformEdge() ;
+  Standard_EXPORT   void PerformEdge() ;
   
-  Standard_EXPORT     void ClearEdge() ;
+  Standard_EXPORT   void ClearEdge() ;
   
-  Standard_EXPORT     void ClearVertex() ;
+  Standard_EXPORT   void ClearVertex() ;
   
-        Standard_Boolean IsDone() const;
+      Standard_Boolean IsDone()  const;
   
-        Standard_Boolean IsModified() const;
+      Standard_Boolean IsModified()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& LFuseFace() const;
+  Standard_EXPORT  const  TopTools_ListOfShape& LFuseFace()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& LInternEdge() const;
+  Standard_EXPORT  const  TopTools_ListOfShape& LInternEdge()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& LExternEdge() const;
+  Standard_EXPORT  const  TopTools_ListOfShape& LExternEdge()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& LModifEdge() const;
+  Standard_EXPORT  const  TopTools_ListOfShape& LModifEdge()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& LInternVertex() const;
+  Standard_EXPORT  const  TopTools_ListOfShape& LInternVertex()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& LExternVertex() const;
+  Standard_EXPORT  const  TopTools_ListOfShape& LExternVertex()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& LModifVertex() const;
-
+  Standard_EXPORT  const  TopTools_ListOfShape& LModifVertex()  const;
 
 
 
@@ -75,24 +63,24 @@ protected:
 
 
 
-TopTools_ListOfShape myLIE;
-TopTools_ListOfShape myLEE;
-TopTools_ListOfShape myLME;
-TopTools_ListOfShape myLIV;
-TopTools_ListOfShape myLEV;
-TopTools_ListOfShape myLMV;
+  TopTools_ListOfShape myLIE;
+  TopTools_ListOfShape myLEE;
+  TopTools_ListOfShape myLME;
+  TopTools_ListOfShape myLIV;
+  TopTools_ListOfShape myLEV;
+  TopTools_ListOfShape myLMV;
 
 
 private:
 
 
 
-TopTools_ListOfShape myLIF;
-TopTools_ListOfShape myLRF;
-TopTools_ListOfShape myLFF;
-Standard_Boolean myInternal;
-Standard_Boolean myModified;
-Standard_Boolean myDone;
+  TopTools_ListOfShape myLIF;
+  TopTools_ListOfShape myLRF;
+  TopTools_ListOfShape myLFF;
+  Standard_Boolean myInternal;
+  Standard_Boolean myModified;
+  Standard_Boolean myDone;
 
 
 };
@@ -102,7 +90,6 @@ Standard_Boolean myDone;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_FuseFace_HeaderFile

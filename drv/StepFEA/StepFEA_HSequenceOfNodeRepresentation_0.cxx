@@ -5,22 +5,12 @@
 
 #include <StepFEA_HSequenceOfNodeRepresentation.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepFEA_NodeRepresentation_HeaderFile
 #include <StepFEA_NodeRepresentation.hxx>
-#endif
-#ifndef _StepFEA_SequenceOfNodeRepresentation_HeaderFile
 #include <StepFEA_SequenceOfNodeRepresentation.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(StepFEA_HSequenceOfNodeRepresentation,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepFEA_HSequenceOfNodeRepresentation)
 
 
-#define Item Handle_StepFEA_NodeRepresentation
+#define Item Handle(StepFEA_NodeRepresentation)
 #define Item_hxx <StepFEA_NodeRepresentation.hxx>
 #define TheSequence StepFEA_SequenceOfNodeRepresentation
 #define TheSequence_hxx <StepFEA_SequenceOfNodeRepresentation.hxx>

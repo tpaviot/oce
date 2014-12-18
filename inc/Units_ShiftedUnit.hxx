@@ -6,72 +6,61 @@
 #ifndef _Units_ShiftedUnit_HeaderFile
 #define _Units_ShiftedUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Units_ShiftedUnit_HeaderFile
 #include <Handle_Units_ShiftedUnit.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Units_Unit_HeaderFile
 #include <Units_Unit.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Units_Quantity_HeaderFile
 #include <Handle_Units_Quantity.hxx>
-#endif
-#ifndef _Handle_Units_Token_HeaderFile
 #include <Handle_Units_Token.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Units_Quantity;
 class Units_Token;
 
 
-//! This class is useful   to describe  units  with  a <br>
-//!          shifted origin in relation to another unit. A well <br>
-//!          known example  is the  Celsius degrees in relation <br>
-//!          to Kelvin degrees. The shift of the Celsius origin <br>
-//!          is 273.15 Kelvin degrees. <br>
-class Units_ShiftedUnit : public Units_Unit {
+//! This class is useful   to describe  units  with  a
+//! shifted origin in relation to another unit. A well
+//! known example  is the  Celsius degrees in relation
+//! to Kelvin degrees. The shift of the Celsius origin
+//! is 273.15 Kelvin degrees.
+class Units_ShiftedUnit : public Units_Unit
+{
 
 public:
 
-  //! Creates  and  returns a  shifted unit.   <aname> is the <br>
-//!          name of the unit,  <asymbol> is the usual abbreviation <br>
-//!          of the unit, <avalue> is the  value in relation to the <br>
-//!          International System of Units, and <amove>  is the gap <br>
-//!          in relation to another unit. <br>
-//! <br>
-//!          For  example Celcius   dregee   of temperature  is  an <br>
-//!          instance of ShiftedUnit  with <avalue> equal to 1. and <br>
-//!          <amove> equal to 273.15. <br>
-  Standard_EXPORT   Units_ShiftedUnit(const Standard_CString aname,const Standard_CString asymbol,const Standard_Real avalue,const Standard_Real amove,const Handle(Units_Quantity)& aquantity);
-  //! Creates  and returns a  unit.  <aname> is  the name of <br>
-//!          the  unit, <asymbol> is the  usual abbreviation of the <br>
-//!          unit. <br>
-  Standard_EXPORT   Units_ShiftedUnit(const Standard_CString aname,const Standard_CString asymbol);
-  //! Creates  and returns a  unit.  <aname> is  the name of <br>
-//!          the  unit. <br>
-  Standard_EXPORT   Units_ShiftedUnit(const Standard_CString aname);
-  //! Sets the field <themove> to <amove> <br>
-  Standard_EXPORT     void Move(const Standard_Real amove) ;
-  //! Returns the shifted value <themove>. <br>
-  Standard_EXPORT     Standard_Real Move() const;
-  //! This redefined method returns a ShiftedToken object. <br>
-  Standard_EXPORT   virtual  Handle_Units_Token Token() const;
   
-  Standard_EXPORT   virtual  void Dump(const Standard_Integer ashift,const Standard_Integer alevel) const;
+  //! Creates  and  returns a  shifted unit.   <aname> is the
+  //! name of the unit,  <asymbol> is the usual abbreviation
+  //! of the unit, <avalue> is the  value in relation to the
+  //! International System of Units, and <amove>  is the gap
+  //! in relation to another unit.
+  //!
+  //! For  example Celcius   dregee   of temperature  is  an
+  //! instance of ShiftedUnit  with <avalue> equal to 1. and
+  //! <amove> equal to 273.15.
+  Standard_EXPORT Units_ShiftedUnit(const Standard_CString aname, const Standard_CString asymbol, const Standard_Real avalue, const Standard_Real amove, const Handle(Units_Quantity)& aquantity);
+  
+  //! Creates  and returns a  unit.  <aname> is  the name of
+  //! the  unit, <asymbol> is the  usual abbreviation of the
+  //! unit.
+  Standard_EXPORT Units_ShiftedUnit(const Standard_CString aname, const Standard_CString asymbol);
+  
+  //! Creates  and returns a  unit.  <aname> is  the name of
+  //! the  unit.
+  Standard_EXPORT Units_ShiftedUnit(const Standard_CString aname);
+  
+  //! Sets the field <themove> to <amove>
+  Standard_EXPORT   void Move (const Standard_Real amove) ;
+  
+  //! Returns the shifted value <themove>.
+  Standard_EXPORT   Standard_Real Move()  const;
+  
+  //! This redefined method returns a ShiftedToken object.
+  Standard_EXPORT virtual   Handle(Units_Token) Token()  const;
+  
+  Standard_EXPORT virtual   void Dump (const Standard_Integer ashift, const Standard_Integer alevel)  const;
 
 
 
@@ -86,7 +75,7 @@ protected:
 private: 
 
 
-Standard_Real themove;
+  Standard_Real themove;
 
 
 };
@@ -95,7 +84,6 @@ Standard_Real themove;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_ShiftedUnit_HeaderFile

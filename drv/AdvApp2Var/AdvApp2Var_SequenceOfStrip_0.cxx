@@ -5,18 +5,10 @@
 
 #include <AdvApp2Var_SequenceOfStrip.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _AdvApp2Var_Strip_HeaderFile
 #include <AdvApp2Var_Strip.hxx>
-#endif
-#ifndef _AdvApp2Var_SequenceNodeOfSequenceOfStrip_HeaderFile
 #include <AdvApp2Var_SequenceNodeOfSequenceOfStrip.hxx>
-#endif
  
 
 #define SeqItem AdvApp2Var_Strip

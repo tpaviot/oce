@@ -6,40 +6,18 @@
 #ifndef _RWStepBasic_RWSiUnit_HeaderFile
 #define _RWStepBasic_RWSiUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_StepBasic_SiUnit_HeaderFile
 #include <Handle_StepBasic_SiUnit.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepBasic_SiPrefix_HeaderFile
 #include <StepBasic_SiPrefix.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _StepBasic_SiUnitName_HeaderFile
 #include <StepBasic_SiUnitName.hxx>
-#endif
 class StepData_StepReaderData;
 class Interface_Check;
 class StepBasic_SiUnit;
@@ -47,27 +25,27 @@ class StepData_StepWriter;
 class TCollection_AsciiString;
 
 
-//! Read & Write Module for SiUnit <br>
-class RWStepBasic_RWSiUnit  {
+//! Read & Write Module for SiUnit
+class RWStepBasic_RWSiUnit 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   RWStepBasic_RWSiUnit();
+  Standard_EXPORT RWStepBasic_RWSiUnit();
   
-  Standard_EXPORT     void ReadStep(const Handle(StepData_StepReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(StepBasic_SiUnit)& ent) const;
+  Standard_EXPORT   void ReadStep (const Handle(StepData_StepReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(StepBasic_SiUnit)& ent)  const;
   
-  Standard_EXPORT     void WriteStep(StepData_StepWriter& SW,const Handle(StepBasic_SiUnit)& ent) const;
+  Standard_EXPORT   void WriteStep (StepData_StepWriter& SW, const Handle(StepBasic_SiUnit)& ent)  const;
   
-  Standard_EXPORT     Standard_Boolean DecodePrefix(StepBasic_SiPrefix& aPrefix,const Standard_CString text) const;
+  Standard_EXPORT   Standard_Boolean DecodePrefix (StepBasic_SiPrefix& aPrefix, const Standard_CString text)  const;
   
-  Standard_EXPORT     Standard_Boolean DecodeName(StepBasic_SiUnitName& aName,const Standard_CString text) const;
+  Standard_EXPORT   Standard_Boolean DecodeName (StepBasic_SiUnitName& aName, const Standard_CString text)  const;
   
-  Standard_EXPORT     TCollection_AsciiString EncodePrefix(const StepBasic_SiPrefix aPrefix) const;
+  Standard_EXPORT   TCollection_AsciiString EncodePrefix (const StepBasic_SiPrefix aPrefix)  const;
   
-  Standard_EXPORT     TCollection_AsciiString EncodeName(const StepBasic_SiUnitName aName) const;
-
+  Standard_EXPORT   TCollection_AsciiString EncodeName (const StepBasic_SiUnitName aName)  const;
 
 
 
@@ -90,7 +68,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStepBasic_RWSiUnit_HeaderFile

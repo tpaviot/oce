@@ -6,39 +6,31 @@
 #ifndef _STEPConstruct_PointHasher_HeaderFile
 #define _STEPConstruct_PointHasher_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_Pnt;
 
 
 
-class STEPConstruct_PointHasher  {
+class STEPConstruct_PointHasher 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a HasCode value  for  the  Key <K>  in the <br>
-//!          range 0..Upper. <br>
-      static  Standard_Integer HashCode(const gp_Pnt& Point,const Standard_Integer Upper) ;
-  //! Returns True  when the two  keys are the same. Two <br>
-//!          same  keys  must   have  the  same  hashcode,  the <br>
-//!          contrary is not necessary. <br>
-  Standard_EXPORT   static  Standard_Boolean IsEqual(const gp_Pnt& Point1,const gp_Pnt& Point2) ;
-
+  
+  //! Returns a HasCode value  for  the  Key <K>  in the
+  //! range 0..Upper.
+    static   Standard_Integer HashCode (const gp_Pnt& Point, const Standard_Integer Upper) ;
+  
+  //! Returns True  when the two  keys are the same. Two
+  //! same  keys  must   have  the  same  hashcode,  the
+  //! contrary is not necessary.
+  Standard_EXPORT static   Standard_Boolean IsEqual (const gp_Pnt& Point1, const gp_Pnt& Point2) ;
 
 
 
@@ -62,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPConstruct_PointHasher_HeaderFile

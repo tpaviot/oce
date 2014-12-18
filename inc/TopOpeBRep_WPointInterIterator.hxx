@@ -6,52 +6,40 @@
 #ifndef _TopOpeBRep_WPointInterIterator_HeaderFile
 #define _TopOpeBRep_WPointInterIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopOpeBRep_PLineInter_HeaderFile
 #include <TopOpeBRep_PLineInter.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopOpeBRep_LineInter;
 class TopOpeBRep_WPointInter;
 
 
 
-class TopOpeBRep_WPointInterIterator  {
+class TopOpeBRep_WPointInterIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_WPointInterIterator();
+  Standard_EXPORT TopOpeBRep_WPointInterIterator();
   
-  Standard_EXPORT   TopOpeBRep_WPointInterIterator(const TopOpeBRep_LineInter& LI);
+  Standard_EXPORT TopOpeBRep_WPointInterIterator(const TopOpeBRep_LineInter& LI);
   
-  Standard_EXPORT     void Init(const TopOpeBRep_LineInter& LI) ;
+  Standard_EXPORT   void Init (const TopOpeBRep_LineInter& LI) ;
   
-  Standard_EXPORT     void Init() ;
+  Standard_EXPORT   void Init() ;
   
-  Standard_EXPORT     Standard_Boolean More() const;
+  Standard_EXPORT   Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT    const TopOpeBRep_WPointInter& CurrentWP() ;
+  Standard_EXPORT  const  TopOpeBRep_WPointInter& CurrentWP() ;
   
-  Standard_EXPORT     TopOpeBRep_PLineInter PLineInterDummy() const;
-
+  Standard_EXPORT   TopOpeBRep_PLineInter PLineInterDummy()  const;
 
 
 
@@ -66,9 +54,9 @@ private:
 
 
 
-TopOpeBRep_PLineInter myLineInter;
-Standard_Integer myWPointIndex;
-Standard_Integer myWPointNb;
+  TopOpeBRep_PLineInter myLineInter;
+  Standard_Integer myWPointIndex;
+  Standard_Integer myWPointNb;
 
 
 };
@@ -77,7 +65,6 @@ Standard_Integer myWPointNb;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_WPointInterIterator_HeaderFile

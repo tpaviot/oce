@@ -6,40 +6,34 @@
 #ifndef _LocOpe_BuildShape_HeaderFile
 #define _LocOpe_BuildShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
 class TopTools_ListOfShape;
 class TopoDS_Shape;
 
 
 
-class LocOpe_BuildShape  {
+class LocOpe_BuildShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      LocOpe_BuildShape();
-  //! Builds shape(s) from  the list <L>.  Uses only the <br>
-//!          faces of <L>. <br>
-      LocOpe_BuildShape(const TopTools_ListOfShape& L);
-  //! Builds shape(s) from  the list <L>.  Uses only the <br>
-//!          faces of <L>. <br>
-  Standard_EXPORT     void Perform(const TopTools_ListOfShape& L) ;
+    LocOpe_BuildShape();
   
-       const TopoDS_Shape& Shape() const;
-
+  //! Builds shape(s) from  the list <L>.  Uses only the
+  //! faces of <L>.
+    LocOpe_BuildShape(const TopTools_ListOfShape& L);
+  
+  //! Builds shape(s) from  the list <L>.  Uses only the
+  //! faces of <L>.
+  Standard_EXPORT   void Perform (const TopTools_ListOfShape& L) ;
+  
+     const  TopoDS_Shape& Shape()  const;
 
 
 
@@ -54,7 +48,7 @@ private:
 
 
 
-TopoDS_Shape myRes;
+  TopoDS_Shape myRes;
 
 
 };
@@ -64,7 +58,6 @@ TopoDS_Shape myRes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_BuildShape_HeaderFile

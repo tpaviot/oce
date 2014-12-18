@@ -5,16 +5,10 @@
 
 #include <PDataStd_VArrayNodeOfFieldOfHArray1OfByte.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PDataStd_FieldOfHArray1OfByte_HeaderFile
 #include <PDataStd_FieldOfHArray1OfByte.hxx>
-#endif
-#ifndef _PDataStd_VArrayTNodeOfFieldOfHArray1OfByte_HeaderFile
 #include <PDataStd_VArrayTNodeOfFieldOfHArray1OfByte.hxx>
-#endif
 
  
 

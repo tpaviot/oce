@@ -6,31 +6,15 @@
 #ifndef _GeomToIGES_GeomVector_HeaderFile
 #define _GeomToIGES_GeomVector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GeomToIGES_GeomEntity_HeaderFile
 #include <GeomToIGES_GeomEntity.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Direction_HeaderFile
 #include <Handle_IGESGeom_Direction.hxx>
-#endif
-#ifndef _Handle_Geom_Vector_HeaderFile
 #include <Handle_Geom_Vector.hxx>
-#endif
-#ifndef _Handle_Geom_VectorWithMagnitude_HeaderFile
 #include <Handle_Geom_VectorWithMagnitude.hxx>
-#endif
-#ifndef _Handle_Geom_Direction_HeaderFile
 #include <Handle_Geom_Direction.hxx>
-#endif
 class GeomToIGES_GeomEntity;
 class IGESGeom_Direction;
 class Geom_Vector;
@@ -38,30 +22,32 @@ class Geom_VectorWithMagnitude;
 class Geom_Direction;
 
 
-//! This class implements the transfer of the Vector from Geom <br>
-//!          to IGES . These can be : <br>
-//!          . Vector <br>
-//!              * Direction <br>
-//!              * VectorWithMagnitude <br>
-class GeomToIGES_GeomVector  : public GeomToIGES_GeomEntity {
+//! This class implements the transfer of the Vector from Geom
+//! to IGES . These can be :
+//! . Vector
+//! * Direction
+//! * VectorWithMagnitude
+class GeomToIGES_GeomVector  : public GeomToIGES_GeomEntity
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToIGES_GeomVector();
-  //! Creates a tool GeomVector ready to run and sets its <br>
-//!         fields as GE's. <br>
-  Standard_EXPORT   GeomToIGES_GeomVector(const GeomToIGES_GeomEntity& GE);
-  //!  Transfert  a  GeometryEntity which  answer True  to  the <br>
-//!            member : BRepToIGES::IsGeomVector(Geometry).  If this <br>
-//!            Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESGeom_Direction TransferVector(const Handle(Geom_Vector)& start) ;
+  Standard_EXPORT GeomToIGES_GeomVector();
   
-  Standard_EXPORT     Handle_IGESGeom_Direction TransferVector(const Handle(Geom_VectorWithMagnitude)& start) ;
+  //! Creates a tool GeomVector ready to run and sets its
+  //! fields as GE's.
+  Standard_EXPORT GeomToIGES_GeomVector(const GeomToIGES_GeomEntity& GE);
   
-  Standard_EXPORT     Handle_IGESGeom_Direction TransferVector(const Handle(Geom_Direction)& start) ;
-
+  //! Transfert  a  GeometryEntity which  answer True  to  the
+  //! member : BRepToIGES::IsGeomVector(Geometry).  If this
+  //! Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESGeom_Direction) TransferVector (const Handle(Geom_Vector)& start) ;
+  
+  Standard_EXPORT   Handle(IGESGeom_Direction) TransferVector (const Handle(Geom_VectorWithMagnitude)& start) ;
+  
+  Standard_EXPORT   Handle(IGESGeom_Direction) TransferVector (const Handle(Geom_Direction)& start) ;
 
 
 
@@ -84,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToIGES_GeomVector_HeaderFile

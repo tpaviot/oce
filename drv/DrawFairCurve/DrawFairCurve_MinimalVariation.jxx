@@ -1,3 +1,1 @@
-#ifndef _DrawFairCurve_MinimalVariation_HeaderFile
 #include <DrawFairCurve_MinimalVariation.hxx>
-#endif

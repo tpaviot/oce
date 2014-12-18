@@ -5,21 +5,13 @@
 
 #include <BRepBlend_SequenceOfLine.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _BRepBlend_Line_HeaderFile
 #include <BRepBlend_Line.hxx>
-#endif
-#ifndef _BRepBlend_SequenceNodeOfSequenceOfLine_HeaderFile
 #include <BRepBlend_SequenceNodeOfSequenceOfLine.hxx>
-#endif
  
 
-#define SeqItem Handle_BRepBlend_Line
+#define SeqItem Handle(BRepBlend_Line)
 #define SeqItem_hxx <BRepBlend_Line.hxx>
 #define TCollection_SequenceNode BRepBlend_SequenceNodeOfSequenceOfLine
 #define TCollection_SequenceNode_hxx <BRepBlend_SequenceNodeOfSequenceOfLine.hxx>

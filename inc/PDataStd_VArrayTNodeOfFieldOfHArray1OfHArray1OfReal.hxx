@@ -6,45 +6,33 @@
 #ifndef _PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal_HeaderFile
 #define _PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_PColStd_HArray1OfReal_HeaderFile
 #include <Handle_PColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal_HeaderFile
 #include <Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class PColStd_HArray1OfReal;
 class PDataStd_FieldOfHArray1OfHArray1OfReal;
 class PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal;
 
 
 
-class PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal  {
+class PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal();
+    PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal();
   
-      PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal(const Handle(PColStd_HArray1OfReal)& aValue);
+    PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal(const Handle(PColStd_HArray1OfReal)& aValue);
   
-        void SetValue(const Handle(PColStd_HArray1OfReal)& aValue) ;
+      void SetValue (const Handle(PColStd_HArray1OfReal)& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -59,12 +47,12 @@ private:
 
 
 
-Handle_PColStd_HArray1OfReal myValue;
+  Handle(PColStd_HArray1OfReal) myValue;
 
 
 };
 
-#define Item Handle_PColStd_HArray1OfReal
+#define Item Handle(PColStd_HArray1OfReal)
 #define Item_hxx <PColStd_HArray1OfReal.hxx>
 #define DBC_VArrayNode PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal
 #define DBC_VArrayNode_hxx <PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal.hxx>
@@ -89,7 +77,6 @@ Handle_PColStd_HArray1OfReal myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal_HeaderFile

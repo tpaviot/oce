@@ -6,22 +6,15 @@
 #ifndef _Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment_HeaderFile
 #define _Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_PersonAndOrganizationAssignment_HeaderFile
 #include <Handle_StepBasic_PersonAndOrganizationAssignment.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_PersonAndOrganizationAssignment);
 class StepAP214_AutoDesignPersonAndOrganizationAssignment;
 
-DEFINE_STANDARD_HANDLE(StepAP214_AutoDesignPersonAndOrganizationAssignment,StepBasic_PersonAndOrganizationAssignment)
+DEFINE_STANDARD_HANDLE(StepAP214_AutoDesignPersonAndOrganizationAssignment, StepBasic_PersonAndOrganizationAssignment)
 
-#endif
+#endif // _Handle_StepAP214_AutoDesignPersonAndOrganizationAssignment_HeaderFile

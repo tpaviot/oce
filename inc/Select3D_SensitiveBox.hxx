@@ -6,46 +6,20 @@
 #ifndef _Select3D_SensitiveBox_HeaderFile
 #define _Select3D_SensitiveBox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveBox_HeaderFile
 #include <Handle_Select3D_SensitiveBox.hxx>
-#endif
 
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _SelectBasics_PickArgs_HeaderFile
 #include <SelectBasics_PickArgs.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class SelectBasics_EntityOwner;
 class Bnd_Box;
 class Select3D_Projector;
@@ -57,43 +31,50 @@ class Bnd_Box2d;
 class gp_Lin;
 
 
-//! A framework to define selection by a sensitive box. <br>
-class Select3D_SensitiveBox : public Select3D_SensitiveEntity {
+//! A framework to define selection by a sensitive box.
+class Select3D_SensitiveBox : public Select3D_SensitiveEntity
+{
 
 public:
 
-  //! Constructs a sensitive box object defined by the <br>
-//! owner OwnerId, and the bounding box BoundingBox. <br>
-  Standard_EXPORT   Select3D_SensitiveBox(const Handle(SelectBasics_EntityOwner)& OwnerId,const Bnd_Box& BoundingBox);
-  //! Constructs a sensitive box object defined by the <br>
-//! owner OwnerId, and the coordinates Xmin, YMin, ZMin, XMax, YMax, ZMax. <br>
-//! Xmin, YMin and ZMin define the minimum point in <br>
-//! the front lower left hand corner of the box, <br>
-//! and   XMax, YMax   and ZMax define the maximum <br>
-//! point in the back upper right hand corner of the box. <br>
-  Standard_EXPORT   Select3D_SensitiveBox(const Handle(SelectBasics_EntityOwner)& OwnerId,const Standard_Real XMin,const Standard_Real YMin,const Standard_Real ZMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real ZMax);
-  //! projection of the sensitive primitive in order to <br>
-//!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT     void Project(const Handle(Select3D_Projector)& aProjector) ;
-  //! gives the 2D boxes which represent the Box in the <br>
-//!          selection process... <br>
-  Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;
   
-  Standard_EXPORT     Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& aLocation) ;
-  //! Checks whether the sensitive entity matches the picking <br>
-//! detection area (close to the picking line). <br>
-//! For details please refer to base class declaration. <br>
-  Standard_EXPORT     Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
+  //! Constructs a sensitive box object defined by the
+  //! owner OwnerId, and the bounding box BoundingBox.
+  Standard_EXPORT Select3D_SensitiveBox(const Handle(SelectBasics_EntityOwner)& OwnerId, const Bnd_Box& BoundingBox);
   
-  Standard_EXPORT     Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
+  //! Constructs a sensitive box object defined by the
+  //! owner OwnerId, and the coordinates Xmin, YMin, ZMin, XMax, YMax, ZMax.
+  //! Xmin, YMin and ZMin define the minimum point in
+  //! the front lower left hand corner of the box,
+  //! and   XMax, YMax   and ZMax define the maximum
+  //! point in the back upper right hand corner of the box.
+  Standard_EXPORT Select3D_SensitiveBox(const Handle(SelectBasics_EntityOwner)& OwnerId, const Standard_Real XMin, const Standard_Real YMin, const Standard_Real ZMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real ZMax);
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
+  //! projection of the sensitive primitive in order to
+  //! get 2D boxes for the Sort Algorithm
+  Standard_EXPORT   void Project (const Handle(Select3D_Projector)& aProjector) ;
   
-  Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& EyeLine) const;
+  //! gives the 2D boxes which represent the Box in the
+  //! selection process...
+  Standard_EXPORT   void Areas (SelectBasics_ListOfBox2d& boxes) ;
   
-  Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
-  //! Returns the sensitive 3D box used at the time of construction. <br>
-       const Bnd_Box& Box() const;
+  Standard_EXPORT   Handle(Select3D_SensitiveEntity) GetConnected (const TopLoc_Location& aLocation) ;
+  
+  //! Checks whether the sensitive entity matches the picking
+  //! detection area (close to the picking line).
+  //! For details please refer to base class declaration.
+  Standard_EXPORT   Standard_Boolean Matches (const SelectBasics_PickArgs& thePickArgs, Standard_Real& theMatchDMin, Standard_Real& theMatchDepth) ;
+  
+  Standard_EXPORT   Standard_Boolean Matches (const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol) ;
+  
+  Standard_EXPORT virtual   Standard_Boolean Matches (const TColgp_Array1OfPnt2d& Polyline, const Bnd_Box2d& aBox, const Standard_Real aTol) ;
+  
+  Standard_EXPORT   Standard_Real ComputeDepth (const gp_Lin& EyeLine)  const;
+  
+  Standard_EXPORT virtual   void Dump (Standard_OStream& S, const Standard_Boolean FullDump = Standard_True)  const;
+  
+  //! Returns the sensitive 3D box used at the time of construction.
+     const  Bnd_Box& Box()  const;
 
 
 
@@ -108,10 +89,10 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void ProjectBox(const Handle(Select3D_Projector)& aPrj,const Bnd_Box& aBox) ;
+  Standard_EXPORT   void ProjectBox (const Handle(Select3D_Projector)& aPrj, const Bnd_Box& aBox) ;
 
-Bnd_Box mybox3d;
-Bnd_Box2d mybox2d;
+  Bnd_Box mybox3d;
+  Bnd_Box2d mybox2d;
 
 
 };
@@ -121,7 +102,6 @@ Bnd_Box2d mybox2d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_SensitiveBox_HeaderFile

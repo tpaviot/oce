@@ -5,26 +5,16 @@
 
 #include <AIS_DataMapIteratorOfDataMapOfILC.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _AIS_LocalContext_HeaderFile
 #include <AIS_LocalContext.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _AIS_DataMapOfILC_HeaderFile
 #include <AIS_DataMapOfILC.hxx>
-#endif
-#ifndef _AIS_DataMapNodeOfDataMapOfILC_HeaderFile
 #include <AIS_DataMapNodeOfDataMapOfILC.hxx>
-#endif
  
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_AIS_LocalContext
+#define TheItem Handle(AIS_LocalContext)
 #define TheItem_hxx <AIS_LocalContext.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>

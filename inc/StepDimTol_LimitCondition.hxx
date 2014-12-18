@@ -6,15 +6,14 @@
 #ifndef _StepDimTol_LimitCondition_HeaderFile
 #define _StepDimTol_LimitCondition_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepDimTol_LimitCondition {
+
+enum StepDimTol_LimitCondition
+{
 StepDimTol_MaximumMaterialCondition,
 StepDimTol_LeastMaterialCondition,
 StepDimTol_RegardlessOfFeatureSize
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepDimTol_LimitCondition_HeaderFile

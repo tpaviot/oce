@@ -5,16 +5,10 @@
 
 #include <TColGeom_SequenceNodeOfSequenceOfBoundedCurve.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Geom_BoundedCurve_HeaderFile
 #include <Geom_BoundedCurve.hxx>
-#endif
-#ifndef _TColGeom_SequenceOfBoundedCurve_HeaderFile
 #include <TColGeom_SequenceOfBoundedCurve.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TColGeom_SequenceNodeOfSequenceOfBoundedCurve,Standard_Transi
 IMPLEMENT_STANDARD_RTTI(TColGeom_SequenceNodeOfSequenceOfBoundedCurve)
 
 
-#define SeqItem Handle_Geom_BoundedCurve
+#define SeqItem Handle(Geom_BoundedCurve)
 #define SeqItem_hxx <Geom_BoundedCurve.hxx>
 #define TCollection_SequenceNode TColGeom_SequenceNodeOfSequenceOfBoundedCurve
 #define TCollection_SequenceNode_hxx <TColGeom_SequenceNodeOfSequenceOfBoundedCurve.hxx>

@@ -6,13 +6,11 @@
 #ifndef _Quantity_Volume_HeaderFile
 #define _Quantity_Volume_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_Volume;
 
 
 #define Quantity_Volume_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_Volume_HeaderFile

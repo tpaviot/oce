@@ -6,40 +6,18 @@
 #ifndef _MDataXtd_HeaderFile
 #define _MDataXtd_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_MDF_ASDriverHSequence_HeaderFile
 #include <Handle_MDF_ASDriverHSequence.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Handle_MDF_ARDriverHSequence_HeaderFile
 #include <Handle_MDF_ARDriverHSequence.hxx>
-#endif
-#ifndef _Handle_PGeom_Geometry_HeaderFile
 #include <Handle_PGeom_Geometry.hxx>
-#endif
-#ifndef _Handle_Geom_Geometry_HeaderFile
 #include <Handle_Geom_Geometry.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TDataXtd_ConstraintEnum_HeaderFile
 #include <TDataXtd_ConstraintEnum.hxx>
-#endif
-#ifndef _TDataXtd_GeometryEnum_HeaderFile
 #include <TDataXtd_GeometryEnum.hxx>
-#endif
 class MDF_ASDriverHSequence;
 class CDM_MessageDriver;
 class MDF_ARDriverHSequence;
@@ -63,37 +41,42 @@ class MDataXtd_PlacementRetrievalDriver;
 class MDataXtd_PatternStdRetrievalDriver;
 
 
-//! Storage    and  Retrieval  drivers   for modelling <br>
-//!          attributes.   Transient  attributes are defined in <br>
-//!          package TDataStd and persistent one are defined in <br>
-//!          package PDataStd <br>
-class MDataXtd  {
+//! Storage    and  Retrieval  drivers   for modelling
+//! attributes.   Transient  attributes are defined in
+//! package TDataStd and persistent one are defined in
+//! package PDataStd
+class MDataXtd 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the attribute storage drivers to <aDriverSeq>. <br>
-  Standard_EXPORT   static  void AddStorageDrivers(const Handle(MDF_ASDriverHSequence)& aDriverSeq,const Handle(CDM_MessageDriver)& theMessageDriver) ;
-  //! Adds the attribute retrieval drivers to <aDriverSeq>. <br>
-  Standard_EXPORT   static  void AddRetrievalDrivers(const Handle(MDF_ARDriverHSequence)& aDriverSeq,const Handle(CDM_MessageDriver)& theMessageDriver) ;
-  //! Method to launch in MgtGeom <br>
-//!           Delete MDataStd_1.cxx <br>
-//!           Modify MDataStd_GeometryStorageDriver::Paste <br>
-  Standard_EXPORT   static  Handle_PGeom_Geometry Translate(const Handle(Geom_Geometry)& Geometry) ;
-  //! Method to lasunch in MgtGeom <br>
-//!           Delete MDataStd_1.cxx <br>
-//!           Modify MDataStd_GeometryRetrievalDriver::Paste <br>//! Translation of TDataXtd enumerations to integer <br>
-//!          =============================================== <br>
-  Standard_EXPORT   static  Handle_Geom_Geometry Translate(const Handle(PGeom_Geometry)& Geometry) ;
   
-  Standard_EXPORT   static  Standard_Integer ConstraintTypeToInteger(const TDataXtd_ConstraintEnum e) ;
+  //! Adds the attribute storage drivers to <aDriverSeq>.
+  Standard_EXPORT static   void AddStorageDrivers (const Handle(MDF_ASDriverHSequence)& aDriverSeq, const Handle(CDM_MessageDriver)& theMessageDriver) ;
   
-  Standard_EXPORT   static  TDataXtd_ConstraintEnum IntegerToConstraintType(const Standard_Integer i) ;
+  //! Adds the attribute retrieval drivers to <aDriverSeq>.
+  Standard_EXPORT static   void AddRetrievalDrivers (const Handle(MDF_ARDriverHSequence)& aDriverSeq, const Handle(CDM_MessageDriver)& theMessageDriver) ;
   
-  Standard_EXPORT   static  Standard_Integer GeometryTypeToInteger(const TDataXtd_GeometryEnum e) ;
+  //! Method to launch in MgtGeom
+  //! Delete MDataStd_1.cxx
+  //! Modify MDataStd_GeometryStorageDriver::Paste
+  Standard_EXPORT static   Handle(PGeom_Geometry) Translate (const Handle(Geom_Geometry)& Geometry) ;
   
-  Standard_EXPORT   static  TDataXtd_GeometryEnum IntegerToGeometryType(const Standard_Integer i) ;
-
+  //! Method to lasunch in MgtGeom
+  //! Delete MDataStd_1.cxx
+  //! Modify MDataStd_GeometryRetrievalDriver::Paste
+  //! Translation of TDataXtd enumerations to integer
+  //! ===============================================
+  Standard_EXPORT static   Handle(Geom_Geometry) Translate (const Handle(PGeom_Geometry)& Geometry) ;
+  
+  Standard_EXPORT static   Standard_Integer ConstraintTypeToInteger (const TDataXtd_ConstraintEnum e) ;
+  
+  Standard_EXPORT static   TDataXtd_ConstraintEnum IntegerToConstraintType (const Standard_Integer i) ;
+  
+  Standard_EXPORT static   Standard_Integer GeometryTypeToInteger (const TDataXtd_GeometryEnum e) ;
+  
+  Standard_EXPORT static   TDataXtd_GeometryEnum IntegerToGeometryType (const Standard_Integer i) ;
 
 
 
@@ -132,7 +115,6 @@ friend class MDataXtd_PatternStdRetrievalDriver;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDataXtd_HeaderFile

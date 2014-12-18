@@ -6,38 +6,33 @@
 #ifndef _StepBasic_EffectivityAssignment_HeaderFile
 #define _StepBasic_EffectivityAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_EffectivityAssignment_HeaderFile
 #include <Handle_StepBasic_EffectivityAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_Effectivity_HeaderFile
 #include <Handle_StepBasic_Effectivity.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_Effectivity;
 
 
-//! Representation of STEP entity EffectivityAssignment <br>
-class StepBasic_EffectivityAssignment : public MMgt_TShared {
+//! Representation of STEP entity EffectivityAssignment
+class StepBasic_EffectivityAssignment : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_EffectivityAssignment();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_Effectivity)& aAssignedEffectivity) ;
-  //! Returns field AssignedEffectivity <br>
-  Standard_EXPORT     Handle_StepBasic_Effectivity AssignedEffectivity() const;
-  //! Set field AssignedEffectivity <br>
-  Standard_EXPORT     void SetAssignedEffectivity(const Handle(StepBasic_Effectivity)& AssignedEffectivity) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_EffectivityAssignment();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_Effectivity)& aAssignedEffectivity) ;
+  
+  //! Returns field AssignedEffectivity
+  Standard_EXPORT   Handle(StepBasic_Effectivity) AssignedEffectivity()  const;
+  
+  //! Set field AssignedEffectivity
+  Standard_EXPORT   void SetAssignedEffectivity (const Handle(StepBasic_Effectivity)& AssignedEffectivity) ;
 
 
 
@@ -52,7 +47,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_Effectivity theAssignedEffectivity;
+  Handle(StepBasic_Effectivity) theAssignedEffectivity;
 
 
 };
@@ -61,7 +56,6 @@ Handle_StepBasic_Effectivity theAssignedEffectivity;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_EffectivityAssignment_HeaderFile

@@ -6,45 +6,33 @@
 #ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d_HeaderFile
 #define _PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray2OfCirc2d_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray2OfCirc2d.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class gp_Circ2d;
 class PColgp_FieldOfHArray2OfCirc2d;
 class PColgp_VArrayNodeOfFieldOfHArray2OfCirc2d;
 
 
 
-class PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d  {
+class PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d();
+    PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d();
   
-      PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d(const gp_Circ2d& aValue);
+    PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d(const gp_Circ2d& aValue);
   
-        void SetValue(const gp_Circ2d& aValue) ;
+      void SetValue (const gp_Circ2d& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -59,7 +47,7 @@ private:
 
 
 
-gp_Circ2d myValue;
+  gp_Circ2d myValue;
 
 
 };
@@ -89,7 +77,6 @@ gp_Circ2d myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d_HeaderFile

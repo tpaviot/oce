@@ -1,18 +1,6 @@
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _Geom_HSequenceOfBSplineSurface_HeaderFile
 #include <Geom_HSequenceOfBSplineSurface.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfInteger_HeaderFile
 #include <TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _Geom_BSplineSurface_HeaderFile
 #include <Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Geom_SequenceOfBSplineSurface_HeaderFile
 #include <Geom_SequenceOfBSplineSurface.hxx>
-#endif
-#ifndef _Geom_OsculatingSurface_HeaderFile
 #include <Geom_OsculatingSurface.hxx>
-#endif

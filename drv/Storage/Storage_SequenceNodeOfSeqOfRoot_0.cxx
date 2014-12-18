@@ -5,16 +5,10 @@
 
 #include <Storage_SequenceNodeOfSeqOfRoot.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Storage_Root_HeaderFile
 #include <Storage_Root.hxx>
-#endif
-#ifndef _Storage_SeqOfRoot_HeaderFile
 #include <Storage_SeqOfRoot.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Storage_SequenceNodeOfSeqOfRoot,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Storage_SequenceNodeOfSeqOfRoot)
 
 
-#define SeqItem Handle_Storage_Root
+#define SeqItem Handle(Storage_Root)
 #define SeqItem_hxx <Storage_Root.hxx>
 #define TCollection_SequenceNode Storage_SequenceNodeOfSeqOfRoot
 #define TCollection_SequenceNode_hxx <Storage_SequenceNodeOfSeqOfRoot.hxx>

@@ -6,28 +6,21 @@
 #ifndef _StepBasic_DesignContext_HeaderFile
 #define _StepBasic_DesignContext_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_DesignContext_HeaderFile
 #include <Handle_StepBasic_DesignContext.hxx>
-#endif
 
-#ifndef _StepBasic_ProductDefinitionContext_HeaderFile
 #include <StepBasic_ProductDefinitionContext.hxx>
-#endif
 
 
-//! class added to Schema AP214 around April 1996 <br>
-class StepBasic_DesignContext : public StepBasic_ProductDefinitionContext {
+//! class added to Schema AP214 around April 1996
+class StepBasic_DesignContext : public StepBasic_ProductDefinitionContext
+{
 
 public:
 
   
-  Standard_EXPORT   StepBasic_DesignContext();
+  Standard_EXPORT StepBasic_DesignContext();
 
 
 
@@ -50,7 +43,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_DesignContext_HeaderFile

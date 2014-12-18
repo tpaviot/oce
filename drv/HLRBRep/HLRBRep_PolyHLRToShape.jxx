@@ -1,9 +1,3 @@
-#ifndef _HLRBRep_PolyAlgo_HeaderFile
 #include <HLRBRep_PolyAlgo.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _HLRBRep_PolyHLRToShape_HeaderFile
 #include <HLRBRep_PolyHLRToShape.hxx>
-#endif

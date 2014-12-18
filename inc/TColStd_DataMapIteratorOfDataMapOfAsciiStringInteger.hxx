@@ -6,25 +6,13 @@
 #ifndef _TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger_HeaderFile
 #define _TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger_HeaderFile
 #include <Handle_TColStd_DataMapNodeOfDataMapOfAsciiStringInteger.hxx>
-#endif
 class Standard_NoSuchObject;
 class TCollection_AsciiString;
 class TColStd_DataMapOfAsciiStringInteger;
@@ -32,22 +20,22 @@ class TColStd_DataMapNodeOfDataMapOfAsciiStringInteger;
 
 
 
-class TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger  : public TCollection_BasicMapIterator {
+class TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger();
+  Standard_EXPORT TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger();
   
-  Standard_EXPORT   TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger(const TColStd_DataMapOfAsciiStringInteger& aMap);
+  Standard_EXPORT TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger(const TColStd_DataMapOfAsciiStringInteger& aMap);
   
-  Standard_EXPORT     void Initialize(const TColStd_DataMapOfAsciiStringInteger& aMap) ;
+  Standard_EXPORT   void Initialize (const TColStd_DataMapOfAsciiStringInteger& aMap) ;
   
-  Standard_EXPORT    const TCollection_AsciiString& Key() const;
+  Standard_EXPORT  const  TCollection_AsciiString& Key()  const;
   
-  Standard_EXPORT    const Standard_Integer& Value() const;
-
+  Standard_EXPORT  const  Standard_Integer& Value()  const;
 
 
 
@@ -70,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger_HeaderFile

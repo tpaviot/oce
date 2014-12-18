@@ -1,27 +1,9 @@
-#ifndef _StepFEA_FeaModel3d_HeaderFile
 #include <StepFEA_FeaModel3d.hxx>
-#endif
-#ifndef _StepElement_Surface3dElementDescriptor_HeaderFile
 #include <StepElement_Surface3dElementDescriptor.hxx>
-#endif
-#ifndef _StepElement_SurfaceElementProperty_HeaderFile
 #include <StepElement_SurfaceElementProperty.hxx>
-#endif
-#ifndef _StepElement_ElementMaterial_HeaderFile
 #include <StepElement_ElementMaterial.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepRepr_HArray1OfRepresentationItem_HeaderFile
 #include <StepRepr_HArray1OfRepresentationItem.hxx>
-#endif
-#ifndef _StepRepr_RepresentationContext_HeaderFile
 #include <StepRepr_RepresentationContext.hxx>
-#endif
-#ifndef _StepFEA_HArray1OfNodeRepresentation_HeaderFile
 #include <StepFEA_HArray1OfNodeRepresentation.hxx>
-#endif
-#ifndef _StepFEA_Surface3dElementRepresentation_HeaderFile
 #include <StepFEA_Surface3dElementRepresentation.hxx>
-#endif

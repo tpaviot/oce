@@ -6,14 +6,13 @@
 #ifndef _Graphic3d_TypeOfConnection_HeaderFile
 #define _Graphic3d_TypeOfConnection_HeaderFile
 
-//! To manage the connections between the structures. <br>
-enum Graphic3d_TypeOfConnection {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! To manage the connections between the structures.
+enum Graphic3d_TypeOfConnection
+{
 Graphic3d_TOC_ANCESTOR,
 Graphic3d_TOC_DESCENDANT
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_TypeOfConnection_HeaderFile

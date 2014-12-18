@@ -5,21 +5,10 @@
 
 #include <TopLoc_MapOfLocation.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _TopLoc_MapLocationHasher_HeaderFile
 #include <TopLoc_MapLocationHasher.hxx>
-#endif
-#ifndef _TopLoc_StdMapNodeOfMapOfLocation_HeaderFile
 #include <TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#endif
-#ifndef _TopLoc_MapIteratorOfMapOfLocation_HeaderFile
 #include <TopLoc_MapIteratorOfMapOfLocation.hxx>
-#endif
  
 
 #define TheKey TopLoc_Location

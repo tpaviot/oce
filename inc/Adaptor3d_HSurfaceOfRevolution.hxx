@@ -6,22 +6,12 @@
 #ifndef _Adaptor3d_HSurfaceOfRevolution_HeaderFile
 #define _Adaptor3d_HSurfaceOfRevolution_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurfaceOfRevolution_HeaderFile
 #include <Handle_Adaptor3d_HSurfaceOfRevolution.hxx>
-#endif
 
-#ifndef _Adaptor3d_SurfaceOfRevolution_HeaderFile
 #include <Adaptor3d_SurfaceOfRevolution.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -30,20 +20,21 @@ class Adaptor3d_Surface;
 
 
 
-class Adaptor3d_HSurfaceOfRevolution : public Adaptor3d_HSurface {
+class Adaptor3d_HSurfaceOfRevolution : public Adaptor3d_HSurface
+{
 
 public:
 
   
-  Standard_EXPORT   Adaptor3d_HSurfaceOfRevolution();
+  Standard_EXPORT Adaptor3d_HSurfaceOfRevolution();
   
-  Standard_EXPORT   Adaptor3d_HSurfaceOfRevolution(const Adaptor3d_SurfaceOfRevolution& S);
+  Standard_EXPORT Adaptor3d_HSurfaceOfRevolution(const Adaptor3d_SurfaceOfRevolution& S);
   
-  Standard_EXPORT     void Set(const Adaptor3d_SurfaceOfRevolution& S) ;
+  Standard_EXPORT   void Set (const Adaptor3d_SurfaceOfRevolution& S) ;
   
-  Standard_EXPORT    const Adaptor3d_Surface& Surface() const;
+  Standard_EXPORT  const  Adaptor3d_Surface& Surface()  const;
   
-        Adaptor3d_SurfaceOfRevolution& ChangeSurface() ;
+      Adaptor3d_SurfaceOfRevolution& ChangeSurface() ;
 
 
 
@@ -53,7 +44,7 @@ public:
 protected:
 
 
-Adaptor3d_SurfaceOfRevolution mySurf;
+  Adaptor3d_SurfaceOfRevolution mySurf;
 
 
 private: 
@@ -80,7 +71,6 @@ private:
 #undef Adaptor3d_GenHSurface_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Adaptor3d_HSurfaceOfRevolution_HeaderFile

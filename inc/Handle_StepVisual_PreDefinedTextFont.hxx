@@ -6,22 +6,15 @@
 #ifndef _Handle_StepVisual_PreDefinedTextFont_HeaderFile
 #define _Handle_StepVisual_PreDefinedTextFont_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepVisual_PreDefinedItem_HeaderFile
 #include <Handle_StepVisual_PreDefinedItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepVisual_PreDefinedItem);
 class StepVisual_PreDefinedTextFont;
 
-DEFINE_STANDARD_HANDLE(StepVisual_PreDefinedTextFont,StepVisual_PreDefinedItem)
+DEFINE_STANDARD_HANDLE(StepVisual_PreDefinedTextFont, StepVisual_PreDefinedItem)
 
-#endif
+#endif // _Handle_StepVisual_PreDefinedTextFont_HeaderFile

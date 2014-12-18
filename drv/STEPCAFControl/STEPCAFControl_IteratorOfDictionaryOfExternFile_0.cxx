@@ -5,24 +5,14 @@
 
 #include <STEPCAFControl_IteratorOfDictionaryOfExternFile.hxx>
 
-#ifndef _STEPCAFControl_DictionaryOfExternFile_HeaderFile
 #include <STEPCAFControl_DictionaryOfExternFile.hxx>
-#endif
-#ifndef _STEPCAFControl_StackItemOfDictionaryOfExternFile_HeaderFile
 #include <STEPCAFControl_StackItemOfDictionaryOfExternFile.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _STEPCAFControl_ExternFile_HeaderFile
 #include <STEPCAFControl_ExternFile.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
  
 
-#define TheItem Handle_STEPCAFControl_ExternFile
+#define TheItem Handle(STEPCAFControl_ExternFile)
 #define TheItem_hxx <STEPCAFControl_ExternFile.hxx>
 #define Dico_Iterator STEPCAFControl_IteratorOfDictionaryOfExternFile
 #define Dico_Iterator_hxx <STEPCAFControl_IteratorOfDictionaryOfExternFile.hxx>

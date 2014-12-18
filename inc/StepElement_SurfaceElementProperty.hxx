@@ -6,50 +6,47 @@
 #ifndef _StepElement_SurfaceElementProperty_HeaderFile
 #define _StepElement_SurfaceElementProperty_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_SurfaceElementProperty_HeaderFile
 #include <Handle_StepElement_SurfaceElementProperty.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepElement_SurfaceSectionField_HeaderFile
 #include <Handle_StepElement_SurfaceSectionField.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepElement_SurfaceSectionField;
 
 
-//! Representation of STEP entity SurfaceElementProperty <br>
-class StepElement_SurfaceElementProperty : public MMgt_TShared {
+//! Representation of STEP entity SurfaceElementProperty
+class StepElement_SurfaceElementProperty : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_SurfaceElementProperty();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aPropertyId,const Handle(TCollection_HAsciiString)& aDescription,const Handle(StepElement_SurfaceSectionField)& aSection) ;
-  //! Returns field PropertyId <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString PropertyId() const;
-  //! Set field PropertyId <br>
-  Standard_EXPORT     void SetPropertyId(const Handle(TCollection_HAsciiString)& PropertyId) ;
-  //! Returns field Description <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
-  //! Set field Description <br>
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& Description) ;
-  //! Returns field Section <br>
-  Standard_EXPORT     Handle_StepElement_SurfaceSectionField Section() const;
-  //! Set field Section <br>
-  Standard_EXPORT     void SetSection(const Handle(StepElement_SurfaceSectionField)& Section) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_SurfaceElementProperty();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aPropertyId, const Handle(TCollection_HAsciiString)& aDescription, const Handle(StepElement_SurfaceSectionField)& aSection) ;
+  
+  //! Returns field PropertyId
+  Standard_EXPORT   Handle(TCollection_HAsciiString) PropertyId()  const;
+  
+  //! Set field PropertyId
+  Standard_EXPORT   void SetPropertyId (const Handle(TCollection_HAsciiString)& PropertyId) ;
+  
+  //! Returns field Description
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
+  
+  //! Set field Description
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& Description) ;
+  
+  //! Returns field Section
+  Standard_EXPORT   Handle(StepElement_SurfaceSectionField) Section()  const;
+  
+  //! Set field Section
+  Standard_EXPORT   void SetSection (const Handle(StepElement_SurfaceSectionField)& Section) ;
 
 
 
@@ -64,9 +61,9 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString thePropertyId;
-Handle_TCollection_HAsciiString theDescription;
-Handle_StepElement_SurfaceSectionField theSection;
+  Handle(TCollection_HAsciiString) thePropertyId;
+  Handle(TCollection_HAsciiString) theDescription;
+  Handle(StepElement_SurfaceSectionField) theSection;
 
 
 };
@@ -75,7 +72,6 @@ Handle_StepElement_SurfaceSectionField theSection;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_SurfaceElementProperty_HeaderFile

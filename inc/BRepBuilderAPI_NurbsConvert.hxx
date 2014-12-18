@@ -6,59 +6,53 @@
 #ifndef _BRepBuilderAPI_NurbsConvert_HeaderFile
 #define _BRepBuilderAPI_NurbsConvert_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepBuilderAPI_ModifyShape_HeaderFile
 #include <BRepBuilderAPI_ModifyShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Conversion of the complete geometry of a shape into <br>
-//! NURBS geometry. For example, all curves supporting <br>
-//! edges of the basis shape are converted into BSpline <br>
-//! curves, and all surfaces supporting its faces are <br>
-//! converted into BSpline surfaces. <br>
-class BRepBuilderAPI_NurbsConvert  : public BRepBuilderAPI_ModifyShape {
+//! Conversion of the complete geometry of a shape
+//! (all 3D analytical representation of surfaces and curves)
+//! into NURBS geometry (execpt for Planes). For example,
+//! all curves supporting edges of the basis shape are converted
+//! into BSpline curves, and all surfaces supporting its faces are
+//! converted into BSpline surfaces.
+class BRepBuilderAPI_NurbsConvert  : public BRepBuilderAPI_ModifyShape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a framework for converting the geometry of a <br>
-//! shape into NURBS geometry. Use the function Perform <br>
-//! to define the shape to convert. <br>
-  Standard_EXPORT   BRepBuilderAPI_NurbsConvert();
-  //!  Builds a new shape by converting the geometry of the <br>
-//! shape S into NURBS geometry. Specifically, all curves <br>
-//! supporting edges of S are converted into BSpline <br>
-//! curves, and all surfaces supporting its faces are <br>
-//! converted into BSpline surfaces. <br>
-//! Use the function Shape to access the new shape. <br>
-//! Note: the constructed framework can be reused to <br>
-//! convert other shapes. You specify these with the <br>
-//! function Perform. <br>
-  Standard_EXPORT   BRepBuilderAPI_NurbsConvert(const TopoDS_Shape& S,const Standard_Boolean Copy = Standard_False);
-  //! Builds a new shape by converting the geometry of the <br>
-//! shape S into NURBS geometry. <br>
-//! Specifically, all curves supporting edges of S are <br>
-//! converted into BSpline curves, and all surfaces <br>
-//! supporting its faces are converted into BSpline surfaces. <br>
-//! Use the function Shape to access the new shape. <br>
-//! Note: this framework can be reused to convert other <br>
-//! shapes: you specify them by calling the function Perform again. <br>
-  Standard_EXPORT     void Perform(const TopoDS_Shape& S,const Standard_Boolean Copy = Standard_False) ;
-
+  
+  //! Constructs a framework for converting the geometry of a
+  //! shape into NURBS geometry. Use the function Perform
+  //! to define the shape to convert.
+  Standard_EXPORT BRepBuilderAPI_NurbsConvert();
+  
+  //! Builds a new shape by converting the geometry of the
+  //! shape S into NURBS geometry. Specifically, all curves
+  //! supporting edges of S are converted into BSpline
+  //! curves, and all surfaces supporting its faces are
+  //! converted into BSpline surfaces.
+  //! Use the function Shape to access the new shape.
+  //! Note: the constructed framework can be reused to
+  //! convert other shapes. You specify these with the
+  //! function Perform.
+  Standard_EXPORT BRepBuilderAPI_NurbsConvert(const TopoDS_Shape& S, const Standard_Boolean Copy = Standard_False);
+  
+  //! Builds a new shape by converting the geometry of the
+  //! shape S into NURBS geometry.
+  //! Specifically, all curves supporting edges of S are
+  //! converted into BSpline curves, and all surfaces
+  //! supporting its faces are converted into BSpline surfaces.
+  //! Use the function Shape to access the new shape.
+  //! Note: this framework can be reused to convert other
+  //! shapes: you specify them by calling the function Perform again.
+  Standard_EXPORT   void Perform (const TopoDS_Shape& S, const Standard_Boolean Copy = Standard_False) ;
 
 
 
@@ -81,7 +75,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBuilderAPI_NurbsConvert_HeaderFile

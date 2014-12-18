@@ -5,19 +5,11 @@
 
 #include <ChFiDS_ListNodeOfListOfHElSpine.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _ChFiDS_HElSpine_HeaderFile
 #include <ChFiDS_HElSpine.hxx>
-#endif
-#ifndef _ChFiDS_ListOfHElSpine_HeaderFile
 #include <ChFiDS_ListOfHElSpine.hxx>
-#endif
-#ifndef _ChFiDS_ListIteratorOfListOfHElSpine_HeaderFile
 #include <ChFiDS_ListIteratorOfListOfHElSpine.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(ChFiDS_ListNodeOfListOfHElSpine,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(ChFiDS_ListNodeOfListOfHElSpine)
 
 
-#define Item Handle_ChFiDS_HElSpine
+#define Item Handle(ChFiDS_HElSpine)
 #define Item_hxx <ChFiDS_HElSpine.hxx>
 #define TCollection_ListNode ChFiDS_ListNodeOfListOfHElSpine
 #define TCollection_ListNode_hxx <ChFiDS_ListNodeOfListOfHElSpine.hxx>

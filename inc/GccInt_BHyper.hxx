@@ -6,41 +6,33 @@
 #ifndef _GccInt_BHyper_HeaderFile
 #define _GccInt_BHyper_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GccInt_BHyper_HeaderFile
 #include <Handle_GccInt_BHyper.hxx>
-#endif
 
-#ifndef _gp_Hypr2d_HeaderFile
 #include <gp_Hypr2d.hxx>
-#endif
-#ifndef _GccInt_Bisec_HeaderFile
 #include <GccInt_Bisec.hxx>
-#endif
-#ifndef _GccInt_IType_HeaderFile
 #include <GccInt_IType.hxx>
-#endif
 class gp_Hypr2d;
 
 
-//! Describes a hyperbola as a bisecting curve between two <br>
-//! 2D geometric objects (such as circles or points). <br>
-class GccInt_BHyper : public GccInt_Bisec {
+//! Describes a hyperbola as a bisecting curve between two
+//! 2D geometric objects (such as circles or points).
+class GccInt_BHyper : public GccInt_Bisec
+{
 
 public:
 
   
-//! Constructs a bisecting curve whose geometry is the 2D hyperbola Hyper. <br>
-  Standard_EXPORT   GccInt_BHyper(const gp_Hypr2d& Hyper);
-  //! Returns a 2D hyperbola which is the geometry of this bisecting curve. <br>
-  Standard_EXPORT   virtual  gp_Hypr2d Hyperbola() const;
-  //! Returns GccInt_Hpr, which is the type of any GccInt_BHyper bisecting curve. <br>
-  Standard_EXPORT     GccInt_IType ArcType() const;
+
+  //! Constructs a bisecting curve whose geometry is the 2D hyperbola Hyper.
+  Standard_EXPORT GccInt_BHyper(const gp_Hypr2d& Hyper);
+  
+  //! Returns a 2D hyperbola which is the geometry of this bisecting curve.
+  Standard_EXPORT virtual   gp_Hypr2d Hyperbola()  const;
+  
+  //! Returns GccInt_Hpr, which is the type of any GccInt_BHyper bisecting curve.
+  Standard_EXPORT   GccInt_IType ArcType()  const;
 
 
 
@@ -55,7 +47,7 @@ protected:
 private: 
 
 
-gp_Hypr2d hyp;
+  gp_Hypr2d hyp;
 
 
 };
@@ -64,7 +56,6 @@ gp_Hypr2d hyp;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GccInt_BHyper_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_ShapeUpgrade_WireDivide_HeaderFile
 #define _Handle_ShapeUpgrade_WireDivide_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_ShapeUpgrade_Tool_HeaderFile
 #include <Handle_ShapeUpgrade_Tool.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(ShapeUpgrade_Tool);
 class ShapeUpgrade_WireDivide;
 
-DEFINE_STANDARD_HANDLE(ShapeUpgrade_WireDivide,ShapeUpgrade_Tool)
+DEFINE_STANDARD_HANDLE(ShapeUpgrade_WireDivide, ShapeUpgrade_Tool)
 
-#endif
+#endif // _Handle_ShapeUpgrade_WireDivide_HeaderFile

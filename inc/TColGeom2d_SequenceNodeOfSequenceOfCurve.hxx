@@ -6,38 +6,27 @@
 #ifndef _TColGeom2d_SequenceNodeOfSequenceOfCurve_HeaderFile
 #define _TColGeom2d_SequenceNodeOfSequenceOfCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve_HeaderFile
 #include <Handle_TColGeom2d_SequenceNodeOfSequenceOfCurve.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Geom2d_Curve;
 class TColGeom2d_SequenceOfCurve;
 
 
 
-class TColGeom2d_SequenceNodeOfSequenceOfCurve : public TCollection_SeqNode {
+class TColGeom2d_SequenceNodeOfSequenceOfCurve : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColGeom2d_SequenceNodeOfSequenceOfCurve(const Handle(Geom2d_Curve)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColGeom2d_SequenceNodeOfSequenceOfCurve(const Handle(Geom2d_Curve)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Geom2d_Curve& Value() const;
+      Handle(Geom2d_Curve)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Geom2d_Curve myValue;
+  Handle(Geom2d_Curve) myValue;
 
 
 };
 
-#define SeqItem Handle_Geom2d_Curve
+#define SeqItem Handle(Geom2d_Curve)
 #define SeqItem_hxx <Geom2d_Curve.hxx>
 #define TCollection_SequenceNode TColGeom2d_SequenceNodeOfSequenceOfCurve
 #define TCollection_SequenceNode_hxx <TColGeom2d_SequenceNodeOfSequenceOfCurve.hxx>
@@ -78,7 +67,6 @@ Handle_Geom2d_Curve myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColGeom2d_SequenceNodeOfSequenceOfCurve_HeaderFile

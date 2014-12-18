@@ -6,8 +6,11 @@
 #ifndef _StepGeom_BSplineCurveForm_HeaderFile
 #define _StepGeom_BSplineCurveForm_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepGeom_BSplineCurveForm {
+
+enum StepGeom_BSplineCurveForm
+{
 StepGeom_bscfPolylineForm,
 StepGeom_bscfCircularArc,
 StepGeom_bscfEllipticArc,
@@ -16,8 +19,4 @@ StepGeom_bscfHyperbolicArc,
 StepGeom_bscfUnspecified
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepGeom_BSplineCurveForm_HeaderFile

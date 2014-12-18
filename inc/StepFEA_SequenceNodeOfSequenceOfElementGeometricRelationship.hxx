@@ -6,38 +6,27 @@
 #ifndef _StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship_HeaderFile
 #define _StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship_HeaderFile
 #include <Handle_StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship.hxx>
-#endif
 
-#ifndef _Handle_StepFEA_ElementGeometricRelationship_HeaderFile
 #include <Handle_StepFEA_ElementGeometricRelationship.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class StepFEA_ElementGeometricRelationship;
 class StepFEA_SequenceOfElementGeometricRelationship;
 
 
 
-class StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship : public TCollection_SeqNode {
+class StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship : public TCollection_SeqNode
+{
 
 public:
 
   
-      StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship(const Handle(StepFEA_ElementGeometricRelationship)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship(const Handle(StepFEA_ElementGeometricRelationship)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_StepFEA_ElementGeometricRelationship& Value() const;
+      Handle(StepFEA_ElementGeometricRelationship)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_StepFEA_ElementGeometricRelationship myValue;
+  Handle(StepFEA_ElementGeometricRelationship) myValue;
 
 
 };
 
-#define SeqItem Handle_StepFEA_ElementGeometricRelationship
+#define SeqItem Handle(StepFEA_ElementGeometricRelationship)
 #define SeqItem_hxx <StepFEA_ElementGeometricRelationship.hxx>
 #define TCollection_SequenceNode StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship
 #define TCollection_SequenceNode_hxx <StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship.hxx>
@@ -78,7 +67,6 @@ Handle_StepFEA_ElementGeometricRelationship myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship_HeaderFile

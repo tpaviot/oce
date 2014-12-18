@@ -1,12 +1,4 @@
-#ifndef _XSControl_TransferReader_HeaderFile
 #include <XSControl_TransferReader.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _STEPSelections_SelectForTransfer_HeaderFile
 #include <STEPSelections_SelectForTransfer.hxx>
-#endif

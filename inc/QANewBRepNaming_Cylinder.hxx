@@ -6,56 +6,51 @@
 #ifndef _QANewBRepNaming_Cylinder_HeaderFile
 #define _QANewBRepNaming_Cylinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _QANewBRepNaming_TopNaming_HeaderFile
 #include <QANewBRepNaming_TopNaming.hxx>
-#endif
-#ifndef _QANewBRepNaming_TypeOfPrimitive3D_HeaderFile
 #include <QANewBRepNaming_TypeOfPrimitive3D.hxx>
-#endif
 class TDF_Label;
 class BRepPrimAPI_MakeCylinder;
 
 
-//! To load the Cylinder results <br>
-class QANewBRepNaming_Cylinder  : public QANewBRepNaming_TopNaming {
+//! To load the Cylinder results
+class QANewBRepNaming_Cylinder  : public QANewBRepNaming_TopNaming
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANewBRepNaming_Cylinder();
+  Standard_EXPORT QANewBRepNaming_Cylinder();
   
-  Standard_EXPORT   QANewBRepNaming_Cylinder(const TDF_Label& ResultLabel);
+  Standard_EXPORT QANewBRepNaming_Cylinder(const TDF_Label& ResultLabel);
   
-  Standard_EXPORT     void Init(const TDF_Label& ResultLabel) ;
+  Standard_EXPORT   void Init (const TDF_Label& ResultLabel) ;
   
-  Standard_EXPORT     void Load(BRepPrimAPI_MakeCylinder& mkCylinder,const QANewBRepNaming_TypeOfPrimitive3D Type) const;
-  //! Returns the label of the bottom <br>
-//!          face of the cylinder. <br>
-  Standard_EXPORT     TDF_Label Bottom() const;
-  //! Returns the label of the top <br>
-//!          face of the cylinder. <br>
-  Standard_EXPORT     TDF_Label Top() const;
-  //! Returns the label of the lateral <br>
-//!          face of the cylinder. <br>
-  Standard_EXPORT     TDF_Label Lateral() const;
-  //! Returns the label of the first <br>
-//!          side of the cylinder <br>
-  Standard_EXPORT     TDF_Label StartSide() const;
-  //! Returns the label of the second <br>
-//!          side of the cylinder. <br>
-  Standard_EXPORT     TDF_Label EndSide() const;
-
+  Standard_EXPORT   void Load (BRepPrimAPI_MakeCylinder& mkCylinder, const QANewBRepNaming_TypeOfPrimitive3D Type)  const;
+  
+  //! Returns the label of the bottom
+  //! face of the cylinder.
+  Standard_EXPORT   TDF_Label Bottom()  const;
+  
+  //! Returns the label of the top
+  //! face of the cylinder.
+  Standard_EXPORT   TDF_Label Top()  const;
+  
+  //! Returns the label of the lateral
+  //! face of the cylinder.
+  Standard_EXPORT   TDF_Label Lateral()  const;
+  
+  //! Returns the label of the first
+  //! side of the cylinder
+  Standard_EXPORT   TDF_Label StartSide()  const;
+  
+  //! Returns the label of the second
+  //! side of the cylinder.
+  Standard_EXPORT   TDF_Label EndSide()  const;
 
 
 
@@ -78,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_Cylinder_HeaderFile

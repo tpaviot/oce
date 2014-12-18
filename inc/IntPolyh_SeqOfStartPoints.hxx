@@ -6,25 +6,13 @@
 #ifndef _IntPolyh_SeqOfStartPoints_HeaderFile
 #define _IntPolyh_SeqOfStartPoints_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints_HeaderFile
 #include <Handle_IntPolyh_SequenceNodeOfSeqOfStartPoints.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class IntPolyh_StartPoint;
@@ -32,66 +20,68 @@ class IntPolyh_SequenceNodeOfSeqOfStartPoints;
 
 
 
-class IntPolyh_SeqOfStartPoints  : public TCollection_BaseSequence {
+class IntPolyh_SeqOfStartPoints  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IntPolyh_SeqOfStartPoints();
+    IntPolyh_SeqOfStartPoints();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT IntPolyh_SeqOfStartPoints(const IntPolyh_SeqOfStartPoints& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~IntPolyh_SeqOfStartPoints()
 {
   Clear();
 }
   
-  Standard_EXPORT    const IntPolyh_SeqOfStartPoints& Assign(const IntPolyh_SeqOfStartPoints& Other) ;
-   const IntPolyh_SeqOfStartPoints& operator =(const IntPolyh_SeqOfStartPoints& Other) 
+  Standard_EXPORT  const  IntPolyh_SeqOfStartPoints& Assign (const IntPolyh_SeqOfStartPoints& Other) ;
+ const  IntPolyh_SeqOfStartPoints& operator = (const IntPolyh_SeqOfStartPoints& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const IntPolyh_StartPoint& T) ;
+  Standard_EXPORT   void Append (const IntPolyh_StartPoint& T) ;
   
-        void Append(IntPolyh_SeqOfStartPoints& S) ;
+      void Append (IntPolyh_SeqOfStartPoints& S) ;
   
-  Standard_EXPORT     void Prepend(const IntPolyh_StartPoint& T) ;
+  Standard_EXPORT   void Prepend (const IntPolyh_StartPoint& T) ;
   
-        void Prepend(IntPolyh_SeqOfStartPoints& S) ;
+      void Prepend (IntPolyh_SeqOfStartPoints& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const IntPolyh_StartPoint& T) ;
+      void InsertBefore (const Standard_Integer Index, const IntPolyh_StartPoint& T) ;
   
-        void InsertBefore(const Standard_Integer Index,IntPolyh_SeqOfStartPoints& S) ;
+      void InsertBefore (const Standard_Integer Index, IntPolyh_SeqOfStartPoints& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const IntPolyh_StartPoint& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const IntPolyh_StartPoint& T) ;
   
-        void InsertAfter(const Standard_Integer Index,IntPolyh_SeqOfStartPoints& S) ;
+      void InsertAfter (const Standard_Integer Index, IntPolyh_SeqOfStartPoints& S) ;
   
-  Standard_EXPORT    const IntPolyh_StartPoint& First() const;
+  Standard_EXPORT  const  IntPolyh_StartPoint& First()  const;
   
-  Standard_EXPORT    const IntPolyh_StartPoint& Last() const;
+  Standard_EXPORT  const  IntPolyh_StartPoint& Last()  const;
   
-        void Split(const Standard_Integer Index,IntPolyh_SeqOfStartPoints& Sub) ;
+      void Split (const Standard_Integer Index, IntPolyh_SeqOfStartPoints& Sub) ;
   
-  Standard_EXPORT    const IntPolyh_StartPoint& Value(const Standard_Integer Index) const;
-   const IntPolyh_StartPoint& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  IntPolyh_StartPoint& Value (const Standard_Integer Index)  const;
+ const  IntPolyh_StartPoint& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const IntPolyh_StartPoint& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const IntPolyh_StartPoint& I) ;
   
-  Standard_EXPORT     IntPolyh_StartPoint& ChangeValue(const Standard_Integer Index) ;
-    IntPolyh_StartPoint& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   IntPolyh_StartPoint& ChangeValue (const Standard_Integer Index) ;
+  IntPolyh_StartPoint& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntPolyh_SeqOfStartPoints(const IntPolyh_SeqOfStartPoints& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPolyh_SeqOfStartPoints_HeaderFile

@@ -6,57 +6,41 @@
 #ifndef _Bisector_FunctionH_HeaderFile
 #define _Bisector_FunctionH_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _math_FunctionWithDerivative_HeaderFile
 #include <math_FunctionWithDerivative.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom2d_Curve;
 class gp_Pnt2d;
 class gp_Vec2d;
 
 
-//! H(v) = (T1  .P2(v) - P1) * ||T(v)||  - <br>
-//!                                  2         2 <br>
-//!                 (T(v).P2(v) - P1) * ||T1|| <br>
-class Bisector_FunctionH  : public math_FunctionWithDerivative {
+//! H(v) = (T1  .P2(v) - P1) * ||T(v)||  -
+//! 2         2
+//! (T(v).P2(v) - P1) * ||T1||
+class Bisector_FunctionH  : public math_FunctionWithDerivative
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Bisector_FunctionH(const Handle(Geom2d_Curve)& C2,const gp_Pnt2d& P1,const gp_Vec2d& T1);
-  //! Computes the values of the Functions for the variable <X>. <br>
-  Standard_EXPORT     Standard_Boolean Value(const Standard_Real X,Standard_Real& F) ;
+  Standard_EXPORT Bisector_FunctionH(const Handle(Geom2d_Curve)& C2, const gp_Pnt2d& P1, const gp_Vec2d& T1);
   
-  Standard_EXPORT     Standard_Boolean Derivative(const Standard_Real X,Standard_Real& D) ;
-  //! Returns the values of the functions and the derivatives <br>
-//!          for the variable <X>. <br>
-  Standard_EXPORT     Standard_Boolean Values(const Standard_Real X,Standard_Real& F,Standard_Real& D) ;
-
+  //! Computes the values of the Functions for the variable <X>.
+  Standard_EXPORT   Standard_Boolean Value (const Standard_Real X, Standard_Real& F) ;
+  
+  Standard_EXPORT   Standard_Boolean Derivative (const Standard_Real X, Standard_Real& D) ;
+  
+  //! Returns the values of the functions and the derivatives
+  //! for the variable <X>.
+  Standard_EXPORT   Standard_Boolean Values (const Standard_Real X, Standard_Real& F, Standard_Real& D) ;
 
 
 
@@ -71,9 +55,9 @@ private:
 
 
 
-Handle_Geom2d_Curve curve2;
-gp_Pnt2d p1;
-gp_Vec2d t1;
+  Handle(Geom2d_Curve) curve2;
+  gp_Pnt2d p1;
+  gp_Vec2d t1;
 
 
 };
@@ -82,7 +66,6 @@ gp_Vec2d t1;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Bisector_FunctionH_HeaderFile

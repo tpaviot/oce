@@ -1,3 +1,0 @@
-#ifndef _Dynamic_HeaderFile
-#include <Dynamic.hxx>
-#endif

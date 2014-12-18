@@ -6,22 +6,15 @@
 #ifndef _Handle_GeomAdaptor_GHSurface_HeaderFile
 #define _Handle_GeomAdaptor_GHSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Adaptor3d_HSurface);
 class GeomAdaptor_GHSurface;
 
-DEFINE_STANDARD_HANDLE(GeomAdaptor_GHSurface,Adaptor3d_HSurface)
+DEFINE_STANDARD_HANDLE(GeomAdaptor_GHSurface, Adaptor3d_HSurface)
 
-#endif
+#endif // _Handle_GeomAdaptor_GHSurface_HeaderFile

@@ -6,51 +6,42 @@
 #ifndef _IFSelect_SelectInList_HeaderFile
 #define _IFSelect_SelectInList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SelectInList_HeaderFile
 #include <Handle_IFSelect_SelectInList.hxx>
-#endif
 
-#ifndef _IFSelect_SelectAnyList_HeaderFile
 #include <IFSelect_SelectAnyList.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_Transient;
 class Interface_EntityIterator;
 
 
-//! A SelectInList kind Selection selects a List of an Entity, <br>
-//!           which is composed of single Entities <br>
-//!           To know the list on which to work, SelectInList has two <br>
-//!           deferred methods : NbItems (inherited from SelectAnyList) and <br>
-//!           ListedEntity (which gives an item as an Entity) which must be <br>
-//!           defined to get a List in an Entity of the required Type (and <br>
-//!           consider that list is empty if Entity has not required Type) <br>
-//! <br>
-//!           As for SelectAnyList, if a type of Entity defines several <br>
-//!           lists, a given sub-class of SelectInList is attached on one <br>
-class IFSelect_SelectInList : public IFSelect_SelectAnyList {
+//! A SelectInList kind Selection selects a List of an Entity,
+//! which is composed of single Entities
+//! To know the list on which to work, SelectInList has two
+//! deferred methods : NbItems (inherited from SelectAnyList) and
+//! ListedEntity (which gives an item as an Entity) which must be
+//! defined to get a List in an Entity of the required Type (and
+//! consider that list is empty if Entity has not required Type)
+//!
+//! As for SelectAnyList, if a type of Entity defines several
+//! lists, a given sub-class of SelectInList is attached on one
+class IFSelect_SelectInList : public IFSelect_SelectAnyList
+{
 
 public:
 
-  //! Returns an Entity, given its rank in the list <br>
-  Standard_EXPORT   virtual  Handle_Standard_Transient ListedEntity(const Standard_Integer num,const Handle(Standard_Transient)& ent) const = 0;
-  //! Puts into the result, the sub-entities of the list, from n1 to <br>
-//!           n2 included. Remark that adequation with Entity's type and <br>
-//!           length of list has already been made at this stage <br>
-//!           Called by RootResult; calls ListedEntity (see below) <br>
-  Standard_EXPORT     void FillResult(const Standard_Integer n1,const Standard_Integer n2,const Handle(Standard_Transient)& ent,Interface_EntityIterator& result) const;
+  
+  //! Returns an Entity, given its rank in the list
+  Standard_EXPORT virtual   Handle(Standard_Transient) ListedEntity (const Standard_Integer num, const Handle(Standard_Transient)& ent)  const = 0;
+  
+  //! Puts into the result, the sub-entities of the list, from n1 to
+  //! n2 included. Remark that adequation with Entity's type and
+  //! length of list has already been made at this stage
+  //! Called by RootResult; calls ListedEntity (see below)
+  Standard_EXPORT   void FillResult (const Standard_Integer n1, const Standard_Integer n2, const Handle(Standard_Transient)& ent, Interface_EntityIterator& result)  const;
 
 
 
@@ -73,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SelectInList_HeaderFile

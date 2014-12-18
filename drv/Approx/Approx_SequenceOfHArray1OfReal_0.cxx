@@ -5,21 +5,13 @@
 
 #include <Approx_SequenceOfHArray1OfReal.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Approx_SequenceNodeOfSequenceOfHArray1OfReal_HeaderFile
 #include <Approx_SequenceNodeOfSequenceOfHArray1OfReal.hxx>
-#endif
  
 
-#define SeqItem Handle_TColStd_HArray1OfReal
+#define SeqItem Handle(TColStd_HArray1OfReal)
 #define SeqItem_hxx <TColStd_HArray1OfReal.hxx>
 #define TCollection_SequenceNode Approx_SequenceNodeOfSequenceOfHArray1OfReal
 #define TCollection_SequenceNode_hxx <Approx_SequenceNodeOfSequenceOfHArray1OfReal.hxx>

@@ -6,28 +6,14 @@
 #ifndef _IGESAppli_HArray1OfFlow_HeaderFile
 #define _IGESAppli_HArray1OfFlow_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESAppli_HArray1OfFlow_HeaderFile
 #include <Handle_IGESAppli_HArray1OfFlow.hxx>
-#endif
 
-#ifndef _IGESAppli_Array1OfFlow_HeaderFile
 #include <IGESAppli_Array1OfFlow.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESAppli_Flow_HeaderFile
 #include <Handle_IGESAppli_Flow.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESAppli_Array1OfFlow;
 
 
 
-class IGESAppli_HArray1OfFlow : public MMgt_TShared {
+class IGESAppli_HArray1OfFlow : public MMgt_TShared
+{
 
 public:
 
   
-      IGESAppli_HArray1OfFlow(const Standard_Integer Low,const Standard_Integer Up);
+    IGESAppli_HArray1OfFlow(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESAppli_HArray1OfFlow(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESAppli_Flow)& V);
+    IGESAppli_HArray1OfFlow(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESAppli_Flow)& V);
   
-        void Init(const Handle(IGESAppli_Flow)& V) ;
+      void Init (const Handle(IGESAppli_Flow)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESAppli_Flow)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESAppli_Flow)& Value) ;
   
-       const Handle_IGESAppli_Flow& Value(const Standard_Integer Index) const;
+     const  Handle(IGESAppli_Flow)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESAppli_Flow& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESAppli_Flow)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESAppli_Array1OfFlow& Array1() const;
+     const  IGESAppli_Array1OfFlow& Array1()  const;
   
-        IGESAppli_Array1OfFlow& ChangeArray1() ;
+      IGESAppli_Array1OfFlow& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESAppli_Array1OfFlow myArray;
+  IGESAppli_Array1OfFlow myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESAppli_Flow
+#define ItemHArray1 Handle(IGESAppli_Flow)
 #define ItemHArray1_hxx <IGESAppli_Flow.hxx>
 #define TheArray1 IGESAppli_Array1OfFlow
 #define TheArray1_hxx <IGESAppli_Array1OfFlow.hxx>
@@ -103,7 +90,6 @@ IGESAppli_Array1OfFlow myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESAppli_HArray1OfFlow_HeaderFile

@@ -6,44 +6,30 @@
 #ifndef _AdvApprox_PrefCutting_HeaderFile
 #define _AdvApprox_PrefCutting_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _AdvApprox_Cutting_HeaderFile
 #include <AdvApprox_Cutting.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TColStd_Array1OfReal;
 
 
 
-//! inherits class Cutting; contains a list of preferential points (di)i <br>
-//! if Cutting is necessary in [a,b], we cut at the di nearest from (a+b)/2. <br>
-class AdvApprox_PrefCutting  : public AdvApprox_Cutting {
+//! inherits class Cutting; contains a list of preferential points (di)i
+//! if Cutting is necessary in [a,b], we cut at the di nearest from (a+b)/2.
+class AdvApprox_PrefCutting  : public AdvApprox_Cutting
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AdvApprox_PrefCutting(const TColStd_Array1OfReal& CutPnts);
+  Standard_EXPORT AdvApprox_PrefCutting(const TColStd_Array1OfReal& CutPnts);
   
-  Standard_EXPORT   virtual  Standard_Boolean Value(const Standard_Real a,const Standard_Real b,Standard_Real& cuttingvalue) const;
-
+  Standard_EXPORT virtual   Standard_Boolean Value (const Standard_Real a, const Standard_Real b, Standard_Real& cuttingvalue)  const;
 
 
 
@@ -58,7 +44,7 @@ private:
 
 
 
-TColStd_Array1OfReal myPntOfCutting;
+  TColStd_Array1OfReal myPntOfCutting;
 
 
 };
@@ -67,7 +53,6 @@ TColStd_Array1OfReal myPntOfCutting;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AdvApprox_PrefCutting_HeaderFile

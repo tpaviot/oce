@@ -5,15 +5,9 @@
 
 #include <IntTools_QuickSortRange.hxx>
 
-#ifndef _IntTools_Range_HeaderFile
 #include <IntTools_Range.hxx>
-#endif
-#ifndef _IntTools_Array1OfRange_HeaderFile
 #include <IntTools_Array1OfRange.hxx>
-#endif
-#ifndef _IntTools_CompareRange_HeaderFile
 #include <IntTools_CompareRange.hxx>
-#endif
  
 
 #define Item IntTools_Range

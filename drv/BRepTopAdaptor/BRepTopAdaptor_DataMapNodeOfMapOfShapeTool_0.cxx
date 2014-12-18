@@ -5,25 +5,13 @@
 
 #include <BRepTopAdaptor_DataMapNodeOfMapOfShapeTool.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepTopAdaptor_Tool_HeaderFile
 #include <BRepTopAdaptor_Tool.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BRepTopAdaptor_MapOfShapeTool_HeaderFile
 #include <BRepTopAdaptor_MapOfShapeTool.hxx>
-#endif
-#ifndef _BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool_HeaderFile
 #include <BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool.hxx>
-#endif
 
  
 

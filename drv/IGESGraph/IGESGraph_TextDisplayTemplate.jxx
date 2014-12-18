@@ -1,12 +1,4 @@
-#ifndef _IGESGraph_TextFontDef_HeaderFile
 #include <IGESGraph_TextFontDef.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _IGESGraph_TextDisplayTemplate_HeaderFile
 #include <IGESGraph_TextDisplayTemplate.hxx>
-#endif

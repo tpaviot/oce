@@ -6,42 +6,35 @@
 #ifndef _StepAP203_CcDesignApproval_HeaderFile
 #define _StepAP203_CcDesignApproval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP203_CcDesignApproval_HeaderFile
 #include <Handle_StepAP203_CcDesignApproval.hxx>
-#endif
 
-#ifndef _Handle_StepAP203_HArray1OfApprovedItem_HeaderFile
 #include <Handle_StepAP203_HArray1OfApprovedItem.hxx>
-#endif
-#ifndef _StepBasic_ApprovalAssignment_HeaderFile
 #include <StepBasic_ApprovalAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_Approval_HeaderFile
 #include <Handle_StepBasic_Approval.hxx>
-#endif
 class StepAP203_HArray1OfApprovedItem;
 class StepBasic_Approval;
 
 
-//! Representation of STEP entity CcDesignApproval <br>
-class StepAP203_CcDesignApproval : public StepBasic_ApprovalAssignment {
+//! Representation of STEP entity CcDesignApproval
+class StepAP203_CcDesignApproval : public StepBasic_ApprovalAssignment
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepAP203_CcDesignApproval();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_Approval)& aApprovalAssignment_AssignedApproval,const Handle(StepAP203_HArray1OfApprovedItem)& aItems) ;
-  //! Returns field Items <br>
-  Standard_EXPORT     Handle_StepAP203_HArray1OfApprovedItem Items() const;
-  //! Set field Items <br>
-  Standard_EXPORT     void SetItems(const Handle(StepAP203_HArray1OfApprovedItem)& Items) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepAP203_CcDesignApproval();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_Approval)& aApprovalAssignment_AssignedApproval, const Handle(StepAP203_HArray1OfApprovedItem)& aItems) ;
+  
+  //! Returns field Items
+  Standard_EXPORT   Handle(StepAP203_HArray1OfApprovedItem) Items()  const;
+  
+  //! Set field Items
+  Standard_EXPORT   void SetItems (const Handle(StepAP203_HArray1OfApprovedItem)& Items) ;
 
 
 
@@ -56,7 +49,7 @@ protected:
 private: 
 
 
-Handle_StepAP203_HArray1OfApprovedItem theItems;
+  Handle(StepAP203_HArray1OfApprovedItem) theItems;
 
 
 };
@@ -65,7 +58,6 @@ Handle_StepAP203_HArray1OfApprovedItem theItems;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP203_CcDesignApproval_HeaderFile

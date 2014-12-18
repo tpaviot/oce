@@ -1,27 +1,9 @@
-#ifndef _Interface_HArray1OfHAsciiString_HeaderFile
 #include <Interface_HArray1OfHAsciiString.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _IFSelect_ContextWrite_HeaderFile
 #include <IFSelect_ContextWrite.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _Interface_CopyTool_HeaderFile
 #include <Interface_CopyTool.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
-#endif
-#ifndef _IFSelect_WorkLibrary_HeaderFile
 #include <IFSelect_WorkLibrary.hxx>
-#endif

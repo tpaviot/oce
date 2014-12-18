@@ -6,57 +6,50 @@
 #ifndef _Message_Printer_HeaderFile
 #define _Message_Printer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Message_Printer_HeaderFile
 #include <Handle_Message_Printer.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
-#include <MMgt_TShared.hxx>
-#endif
-#ifndef _Message_Gravity_HeaderFile
 #include <Message_Gravity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
+#include <MMgt_TShared.hxx>
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class TCollection_ExtendedString;
 class TCollection_AsciiString;
 
 
-//! Abstract interface class defining printer as output context for <br>
-//!          text messages <br>
-//! <br>
-//!          The message, besides being text string, has associated gravity <br>
-//!          level, which can be used by printer to decide either to process <br>
-//!          a message or ignore it. <br>
-class Message_Printer : public MMgt_TShared {
+//! Abstract interface class defining printer as output context for text messages
+//!
+//! The message, besides being text string, has associated gravity
+//! level, which can be used by printer to decide either to process a message or ignore it.
+class Message_Printer : public MMgt_TShared
+{
 
 public:
 
-  //! Send a string message with specified trace level. <br>
-//!          The parameter putEndl specified whether end-of-line <br>
-//!          should be added to the end of the message. <br>
-//!          This method must be redefined in descentant. <br>
-  Standard_EXPORT   virtual  void Send(const TCollection_ExtendedString& theString,const Message_Gravity theGravity,const Standard_Boolean putEndl) const = 0;
-  //! Send a string message with specified trace level. <br>
-//!          The parameter putEndl specified whether end-of-line <br>
-//!          should be added to the end of the message. <br>
-//!          Default implementation calls first method Send(). <br>
-  Standard_EXPORT   virtual  void Send(const Standard_CString theString,const Message_Gravity theGravity,const Standard_Boolean putEndl) const;
-  //! Send a string message with specified trace level. <br>
-//!          The parameter putEndl specified whether end-of-line <br>
-//!          should be added to the end of the message. <br>
-//!          Default implementation calls first method Send(). <br>
-  Standard_EXPORT   virtual  void Send(const TCollection_AsciiString& theString,const Message_Gravity theGravity,const Standard_Boolean putEndl) const;
+  
+  //! Return trace level used for filtering messages;
+  //! messages with lover gravity will be ignored.
+      Message_Gravity GetTraceLevel()  const;
+  
+  //! Set trace level used for filtering messages.
+  //! By default, trace level is Message_Info, so that all messages are output
+      void SetTraceLevel (const Message_Gravity theTraceLevel) ;
+  
+  //! Send a string message with specified trace level.
+  //! The parameter theToPutEol specified whether end-of-line should be added to the end of the message.
+  //! This method must be redefined in descentant.
+  Standard_EXPORT virtual   void Send (const TCollection_ExtendedString& theString, const Message_Gravity theGravity, const Standard_Boolean theToPutEol)  const = 0;
+  
+  //! Send a string message with specified trace level.
+  //! The parameter theToPutEol specified whether end-of-line should be added to the end of the message.
+  //! Default implementation calls first method Send().
+  Standard_EXPORT virtual   void Send (const Standard_CString theString, const Message_Gravity theGravity, const Standard_Boolean theToPutEol)  const;
+  
+  //! Send a string message with specified trace level.
+  //! The parameter theToPutEol specified whether end-of-line should be added to the end of the message.
+  //! Default implementation calls first method Send().
+  Standard_EXPORT virtual   void Send (const TCollection_AsciiString& theString, const Message_Gravity theGravity, const Standard_Boolean theToPutEol)  const;
 
 
 
@@ -65,7 +58,11 @@ public:
 
 protected:
 
+  
+  //! Empty constructor with Message_Info trace level
+  Standard_EXPORT Message_Printer();
 
+  Message_Gravity myTraceLevel;
 
 
 private: 
@@ -76,10 +73,10 @@ private:
 };
 
 
+#include <Message_Printer.lxx>
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Message_Printer_HeaderFile

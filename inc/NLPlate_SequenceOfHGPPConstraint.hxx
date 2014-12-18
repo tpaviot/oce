@@ -6,28 +6,14 @@
 #ifndef _NLPlate_SequenceOfHGPPConstraint_HeaderFile
 #define _NLPlate_SequenceOfHGPPConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_NLPlate_HGPPConstraint_HeaderFile
 #include <Handle_NLPlate_HGPPConstraint.hxx>
-#endif
-#ifndef _Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint_HeaderFile
 #include <Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class NLPlate_HGPPConstraint;
@@ -35,66 +21,68 @@ class NLPlate_SequenceNodeOfSequenceOfHGPPConstraint;
 
 
 
-class NLPlate_SequenceOfHGPPConstraint  : public TCollection_BaseSequence {
+class NLPlate_SequenceOfHGPPConstraint  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      NLPlate_SequenceOfHGPPConstraint();
+    NLPlate_SequenceOfHGPPConstraint();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT NLPlate_SequenceOfHGPPConstraint(const NLPlate_SequenceOfHGPPConstraint& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~NLPlate_SequenceOfHGPPConstraint()
 {
   Clear();
 }
   
-  Standard_EXPORT    const NLPlate_SequenceOfHGPPConstraint& Assign(const NLPlate_SequenceOfHGPPConstraint& Other) ;
-   const NLPlate_SequenceOfHGPPConstraint& operator =(const NLPlate_SequenceOfHGPPConstraint& Other) 
+  Standard_EXPORT  const  NLPlate_SequenceOfHGPPConstraint& Assign (const NLPlate_SequenceOfHGPPConstraint& Other) ;
+ const  NLPlate_SequenceOfHGPPConstraint& operator = (const NLPlate_SequenceOfHGPPConstraint& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(NLPlate_HGPPConstraint)& T) ;
+  Standard_EXPORT   void Append (const Handle(NLPlate_HGPPConstraint)& T) ;
   
-        void Append(NLPlate_SequenceOfHGPPConstraint& S) ;
+      void Append (NLPlate_SequenceOfHGPPConstraint& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(NLPlate_HGPPConstraint)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(NLPlate_HGPPConstraint)& T) ;
   
-        void Prepend(NLPlate_SequenceOfHGPPConstraint& S) ;
+      void Prepend (NLPlate_SequenceOfHGPPConstraint& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(NLPlate_HGPPConstraint)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(NLPlate_HGPPConstraint)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,NLPlate_SequenceOfHGPPConstraint& S) ;
+      void InsertBefore (const Standard_Integer Index, NLPlate_SequenceOfHGPPConstraint& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(NLPlate_HGPPConstraint)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(NLPlate_HGPPConstraint)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,NLPlate_SequenceOfHGPPConstraint& S) ;
+      void InsertAfter (const Standard_Integer Index, NLPlate_SequenceOfHGPPConstraint& S) ;
   
-  Standard_EXPORT    const Handle_NLPlate_HGPPConstraint& First() const;
+  Standard_EXPORT  const  Handle(NLPlate_HGPPConstraint)& First()  const;
   
-  Standard_EXPORT    const Handle_NLPlate_HGPPConstraint& Last() const;
+  Standard_EXPORT  const  Handle(NLPlate_HGPPConstraint)& Last()  const;
   
-        void Split(const Standard_Integer Index,NLPlate_SequenceOfHGPPConstraint& Sub) ;
+      void Split (const Standard_Integer Index, NLPlate_SequenceOfHGPPConstraint& Sub) ;
   
-  Standard_EXPORT    const Handle_NLPlate_HGPPConstraint& Value(const Standard_Integer Index) const;
-   const Handle_NLPlate_HGPPConstraint& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(NLPlate_HGPPConstraint)& Value (const Standard_Integer Index)  const;
+ const  Handle(NLPlate_HGPPConstraint)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(NLPlate_HGPPConstraint)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(NLPlate_HGPPConstraint)& I) ;
   
-  Standard_EXPORT     Handle_NLPlate_HGPPConstraint& ChangeValue(const Standard_Integer Index) ;
-    Handle_NLPlate_HGPPConstraint& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(NLPlate_HGPPConstraint)& ChangeValue (const Standard_Integer Index) ;
+  Handle(NLPlate_HGPPConstraint)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -107,15 +95,13 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   NLPlate_SequenceOfHGPPConstraint(const NLPlate_SequenceOfHGPPConstraint& Other);
 
 
 
 
 };
 
-#define SeqItem Handle_NLPlate_HGPPConstraint
+#define SeqItem Handle(NLPlate_HGPPConstraint)
 #define SeqItem_hxx <NLPlate_HGPPConstraint.hxx>
 #define TCollection_SequenceNode NLPlate_SequenceNodeOfSequenceOfHGPPConstraint
 #define TCollection_SequenceNode_hxx <NLPlate_SequenceNodeOfSequenceOfHGPPConstraint.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _NLPlate_SequenceOfHGPPConstraint_HeaderFile

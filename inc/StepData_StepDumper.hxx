@@ -6,43 +6,19 @@
 #ifndef _StepData_StepDumper_HeaderFile
 #define _StepData_StepDumper_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepModel_HeaderFile
 #include <Handle_StepData_StepModel.hxx>
-#endif
-#ifndef _Interface_GeneralLib_HeaderFile
 #include <Interface_GeneralLib.hxx>
-#endif
-#ifndef _StepData_WriterLib_HeaderFile
 #include <StepData_WriterLib.hxx>
-#endif
-#ifndef _StepData_StepWriter_HeaderFile
 #include <StepData_StepWriter.hxx>
-#endif
-#ifndef _Handle_StepData_Protocol_HeaderFile
 #include <Handle_StepData_Protocol.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class StepData_StepModel;
 class Interface_InterfaceMismatch;
 class StepData_Protocol;
@@ -51,53 +27,57 @@ class Message_Messenger;
 class Standard_Transient;
 
 
-//! Provides a way to dump entities processed through STEP, with <br>
-//!           these features : <br>
-//!           - same form as for writing a STEP File (because it is clear <br>
-//!             and compact enough, even if the names of the fields do not <br>
-//!             appear) : thus, no additionnal resource is required <br>
-//!           - possibility to look for an entity itself (only its Type or <br>
-//!             with its content), an entity and it shared items (one level) <br>
-//!             or all the entities its refers to, directly or recursively. <br>
-class StepData_StepDumper  {
+//! Provides a way to dump entities processed through STEP, with
+//! these features :
+//! - same form as for writing a STEP File (because it is clear
+//! and compact enough, even if the names of the fields do not
+//! appear) : thus, no additionnal resource is required
+//! - possibility to look for an entity itself (only its Type or
+//! with its content), an entity and it shared items (one level)
+//! or all the entities its refers to, directly or recursively.
+class StepData_StepDumper 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a StepDumper, able to work on a given StepModel <br>
-//!           (which defines the total scope for dumping entities) and <br>
-//!           a given Protocol from Step (which defines the authorized <br>
-//!           types to be dumped) <br>
-//!           <mode> commands what is to be displayed (number or label) <br>
-//!           0 for number (and corresponding labels  are displayed apart) <br>
-//!           1 for label  (and corresponding numbers are displayed apart) <br>
-//!           2 for label without anymore <br>
-  Standard_EXPORT   StepData_StepDumper(const Handle(StepData_StepModel)& amodel,const Handle(StepData_Protocol)& protocol,const Standard_Integer mode = 0);
-  //! Gives an access to the tool which is used to work : this allow <br>
-//!           to acts on some parameters : Floating Format, Scopes ... <br>
-  Standard_EXPORT     StepData_StepWriter& StepWriter() ;
-  //! Dumps a Entity on an Messenger. Returns True if <br>
-//!           sucess, False, if the entity to dump has not been recognized <br>
-//!           by the Protocol. <level> can have one of these values : <br>
-//!           - 0 : prints the TYPE only, as known in STEP Files (StepType) <br>
-//!             If <ent> has not been regognized by the Protocol, or if its <br>
-//!             type is Complex, the StepType is replaced by the display of <br>
-//!             the cdl type. Complex Type are well processed by level 1. <br>
-//!           - 1 : dumps the entity, completely (whatever it has simple or <br>
-//!             complex type) but alone. <br>
-//!           - 2 : dumps the entity completely, plus the item its refers to <br>
-//!                 at first level (a header message designates the starting <br>
-//!                 entity of the dump) <Lists Shared and Implied> <br>
-//!           - 3 : dumps the entity and its refered items at any levels <br>
-//! <br>
-//!           For levels 1,2,3, the numbers displayed (form #nnn) are the <br>
-//!           numbers of the corresponding entities in the Model <br>
-  Standard_EXPORT     Standard_Boolean Dump(const Handle(Message_Messenger)& S,const Handle(Standard_Transient)& ent,const Standard_Integer level) ;
-  //! Works as Dump with a Transient, but directly takes the <br>
-//!           entity designated by its number in the Model <br>
-//!           Returns False, also if <num> is out of range <br>
-  Standard_EXPORT     Standard_Boolean Dump(const Handle(Message_Messenger)& S,const Standard_Integer num,const Standard_Integer level) ;
-
+  
+  //! Creates a StepDumper, able to work on a given StepModel
+  //! (which defines the total scope for dumping entities) and
+  //! a given Protocol from Step (which defines the authorized
+  //! types to be dumped)
+  //! <mode> commands what is to be displayed (number or label)
+  //! 0 for number (and corresponding labels  are displayed apart)
+  //! 1 for label  (and corresponding numbers are displayed apart)
+  //! 2 for label without anymore
+  Standard_EXPORT StepData_StepDumper(const Handle(StepData_StepModel)& amodel, const Handle(StepData_Protocol)& protocol, const Standard_Integer mode = 0);
+  
+  //! Gives an access to the tool which is used to work : this allow
+  //! to acts on some parameters : Floating Format, Scopes ...
+  Standard_EXPORT   StepData_StepWriter& StepWriter() ;
+  
+  //! Dumps a Entity on an Messenger. Returns True if
+  //! sucess, False, if the entity to dump has not been recognized
+  //! by the Protocol. <level> can have one of these values :
+  //! - 0 : prints the TYPE only, as known in STEP Files (StepType)
+  //! If <ent> has not been regognized by the Protocol, or if its
+  //! type is Complex, the StepType is replaced by the display of
+  //! the cdl type. Complex Type are well processed by level 1.
+  //! - 1 : dumps the entity, completely (whatever it has simple or
+  //! complex type) but alone.
+  //! - 2 : dumps the entity completely, plus the item its refers to
+  //! at first level (a header message designates the starting
+  //! entity of the dump) <Lists Shared and Implied>
+  //! - 3 : dumps the entity and its refered items at any levels
+  //!
+  //! For levels 1,2,3, the numbers displayed (form #nnn) are the
+  //! numbers of the corresponding entities in the Model
+  Standard_EXPORT   Standard_Boolean Dump (const Handle(Message_Messenger)& S, const Handle(Standard_Transient)& ent, const Standard_Integer level) ;
+  
+  //! Works as Dump with a Transient, but directly takes the
+  //! entity designated by its number in the Model
+  //! Returns False, also if <num> is out of range
+  Standard_EXPORT   Standard_Boolean Dump (const Handle(Message_Messenger)& S, const Standard_Integer num, const Standard_Integer level) ;
 
 
 
@@ -112,10 +92,10 @@ private:
 
 
 
-Handle_StepData_StepModel themodel;
-Interface_GeneralLib theslib;
-StepData_WriterLib thewlib;
-StepData_StepWriter thewriter;
+  Handle(StepData_StepModel) themodel;
+  Interface_GeneralLib theslib;
+  StepData_WriterLib thewlib;
+  StepData_StepWriter thewriter;
 
 
 };
@@ -124,7 +104,6 @@ StepData_StepWriter thewriter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_StepDumper_HeaderFile

@@ -56,7 +56,7 @@ public:
   }
 
   //! Destroy object - will release GPU memory if any.
-  Standard_EXPORT virtual void Release (const OpenGl_Context* theGlCtx);
+  Standard_EXPORT virtual void Release (OpenGl_Context* theGlCtx);
 
   //! Creates VBO and Texture names (ids) if not yet generated.
   //! Data should be initialized by another method.
@@ -68,6 +68,13 @@ public:
                              const GLuint   theComponentsNb,
                              const GLsizei  theElemsNb,
                              const GLfloat* theData);
+
+  //! Perform TBO initialization with specified data.
+  //! Existing data will be deleted.
+  Standard_EXPORT bool Init (const Handle(OpenGl_Context)& theGlCtx,
+                             const GLuint   theComponentsNb,
+                             const GLsizei  theElemsNb,
+                             const GLuint*  theData);
 
   //! Bind TBO to specified Texture Unit.
   Standard_EXPORT void BindTexture (const Handle(OpenGl_Context)& theGlCtx,

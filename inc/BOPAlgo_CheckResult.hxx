@@ -6,58 +6,82 @@
 #ifndef _BOPAlgo_CheckResult_HeaderFile
 #define _BOPAlgo_CheckResult_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BOPAlgo_CheckStatus_HeaderFile
 #include <BOPAlgo_CheckStatus.hxx>
-#endif
-#ifndef _BOPCol_ListOfShape_HeaderFile
 #include <BOPCol_ListOfShape.hxx>
-#endif
+#include <Standard_Real.hxx>
 class TopoDS_Shape;
 
 
-//! contains information about faulty shapes and faulty types <br>
-//!         can't be processed by Boolean Operations <br>
-class BOPAlgo_CheckResult  {
+//! contains information about faulty shapes and faulty types
+//! can't be processed by Boolean Operations
+class BOPAlgo_CheckResult 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! empty constructor <br>
-  Standard_EXPORT   BOPAlgo_CheckResult();
-  //! sets ancestor shape (object) for faulty sub-shapes <br>
-  Standard_EXPORT     void SetShape1(const TopoDS_Shape& TheShape) ;
-  //! adds faulty sub-shapes from object to a list <br>
-  Standard_EXPORT     void AddFaultyShape1(const TopoDS_Shape& TheShape) ;
-  //! sets ancestor shape (tool) for faulty sub-shapes <br>
-  Standard_EXPORT     void SetShape2(const TopoDS_Shape& TheShape) ;
-  //! adds faulty sub-shapes from tool to a list <br>
-  Standard_EXPORT     void AddFaultyShape2(const TopoDS_Shape& TheShape) ;
-  //! returns ancestor shape (object) for faulties <br>
-  Standard_EXPORT    const TopoDS_Shape& GetShape1() const;
-  //! returns ancestor shape (tool) for faulties <br>
-  Standard_EXPORT    const TopoDS_Shape& GetShape2() const;
-  //! returns list of faulty shapes for object <br>
-  Standard_EXPORT    const BOPCol_ListOfShape& GetFaultyShapes1() const;
-  //! returns list of faulty shapes for tool <br>
-  Standard_EXPORT    const BOPCol_ListOfShape& GetFaultyShapes2() const;
-  //! set status of faulty <br>
-  Standard_EXPORT     void SetCheckStatus(const BOPAlgo_CheckStatus TheStatus) ;
-  //! gets status of faulty <br>
-  Standard_EXPORT     BOPAlgo_CheckStatus GetCheckStatus() const;
-
+  
+  //! empty constructor
+  Standard_EXPORT BOPAlgo_CheckResult();
+  
+  //! sets ancestor shape (object) for faulty sub-shapes
+  Standard_EXPORT   void SetShape1 (const TopoDS_Shape& TheShape) ;
+  
+  //! adds faulty sub-shapes from object to a list
+  Standard_EXPORT   void AddFaultyShape1 (const TopoDS_Shape& TheShape) ;
+  
+  //! sets ancestor shape (tool) for faulty sub-shapes
+  Standard_EXPORT   void SetShape2 (const TopoDS_Shape& TheShape) ;
+  
+  //! adds faulty sub-shapes from tool to a list
+  Standard_EXPORT   void AddFaultyShape2 (const TopoDS_Shape& TheShape) ;
+  
+  //! returns ancestor shape (object) for faulties
+  Standard_EXPORT  const  TopoDS_Shape& GetShape1()  const;
+  
+  //! returns ancestor shape (tool) for faulties
+  Standard_EXPORT  const  TopoDS_Shape& GetShape2()  const;
+  
+  //! returns list of faulty shapes for object
+  Standard_EXPORT  const  BOPCol_ListOfShape& GetFaultyShapes1()  const;
+  
+  //! returns list of faulty shapes for tool
+  Standard_EXPORT  const  BOPCol_ListOfShape& GetFaultyShapes2()  const;
+  
+  //! set status of faulty
+  Standard_EXPORT   void SetCheckStatus (const BOPAlgo_CheckStatus TheStatus) ;
+  
+  //! gets status of faulty
+  Standard_EXPORT   BOPAlgo_CheckStatus GetCheckStatus()  const;
+  
+  //! Sets max distance for the first shape
+  Standard_EXPORT   void SetMaxDistance1 (const Standard_Real theDist) ;
+  
+  //! Sets max distance for the second shape
+  Standard_EXPORT   void SetMaxDistance2 (const Standard_Real theDist) ;
+  
+  //! Sets the parameter for the first shape
+  Standard_EXPORT   void SetMaxParameter1 (const Standard_Real thePar) ;
+  
+  //! Sets the parameter for the second shape
+  Standard_EXPORT   void SetMaxParameter2 (const Standard_Real thePar) ;
+  
+  //! Returns the distance for the first shape
+  Standard_EXPORT   Standard_Real GetMaxDistance1()  const;
+  
+  //! Returns the distance for the second shape
+  Standard_EXPORT   Standard_Real GetMaxDistance2()  const;
+  
+  //! Returns the parameter for the fircst shape
+  Standard_EXPORT   Standard_Real GetMaxParameter1()  const;
+  
+  //! Returns the parameter for the second shape
+  Standard_EXPORT   Standard_Real GetMaxParameter2()  const;
 
 
 
@@ -72,11 +96,15 @@ private:
 
 
 
-TopoDS_Shape myShape1;
-TopoDS_Shape myShape2;
-BOPAlgo_CheckStatus myStatus;
-BOPCol_ListOfShape myFaulty1;
-BOPCol_ListOfShape myFaulty2;
+  TopoDS_Shape myShape1;
+  TopoDS_Shape myShape2;
+  BOPAlgo_CheckStatus myStatus;
+  BOPCol_ListOfShape myFaulty1;
+  BOPCol_ListOfShape myFaulty2;
+  Standard_Real myMaxDist1;
+  Standard_Real myMaxDist2;
+  Standard_Real myMaxPar1;
+  Standard_Real myMaxPar2;
 
 
 };
@@ -85,7 +113,6 @@ BOPCol_ListOfShape myFaulty2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPAlgo_CheckResult_HeaderFile

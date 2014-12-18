@@ -6,33 +6,20 @@
 #ifndef _CDF_MetaDataDriverError_HeaderFile
 #define _CDF_MetaDataDriverError_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_Failure_HeaderFile
 #include <Standard_Failure.hxx>
-#endif
-#ifndef _Handle_CDF_MetaDataDriverError_HeaderFile
 #include <Handle_CDF_MetaDataDriverError.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_CDF_MetaDataDriverError
-#define CDF_MetaDataDriverError_Raise_if(CONDITION,MESSAGE) \
+  #define CDF_MetaDataDriverError_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) CDF_MetaDataDriverError::Raise(MESSAGE);
 #else
-#define CDF_MetaDataDriverError_Raise_if(CONDITION,MESSAGE)
+  #define CDF_MetaDataDriverError_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(CDF_MetaDataDriverError,Standard_Failure)
+DEFINE_STANDARD_EXCEPTION(CDF_MetaDataDriverError, Standard_Failure)
 
-#endif
+#endif // _CDF_MetaDataDriverError_HeaderFile

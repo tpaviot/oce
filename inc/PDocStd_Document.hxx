@@ -6,40 +6,29 @@
 #ifndef _PDocStd_Document_HeaderFile
 #define _PDocStd_Document_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDocStd_Document_HeaderFile
 #include <Handle_PDocStd_Document.hxx>
-#endif
 
-#ifndef _Handle_PDF_Data_HeaderFile
 #include <Handle_PDF_Data.hxx>
-#endif
-#ifndef _PCDM_Document_HeaderFile
 #include <PCDM_Document.hxx>
-#endif
 class PDF_Data;
 
 
-class PDocStd_Document : public PCDM_Document {
+class PDocStd_Document : public PCDM_Document
+{
 
 public:
 
   
-  Standard_EXPORT   PDocStd_Document();
+  Standard_EXPORT PDocStd_Document();
   
-  Standard_EXPORT   PDocStd_Document(const Handle(PDF_Data)& data);
+  Standard_EXPORT PDocStd_Document(const Handle(PDF_Data)& data);
   
-  Standard_EXPORT     void SetData(const Handle(PDF_Data)& data) ;
+  Standard_EXPORT   void SetData (const Handle(PDF_Data)& data) ;
   
-  Standard_EXPORT     Handle_PDF_Data GetData() const;
+  Standard_EXPORT   Handle(PDF_Data) GetData()  const;
 
 PDocStd_Document(const Storage_stCONSTclCOM& a) : PCDM_Document(a)
 {
@@ -60,7 +49,7 @@ protected:
 private: 
 
 
-Handle_PDF_Data myData;
+  Handle(PDF_Data) myData;
 
 
 };
@@ -69,7 +58,6 @@ Handle_PDF_Data myData;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDocStd_Document_HeaderFile

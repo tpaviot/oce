@@ -6,92 +6,36 @@
 #ifndef _Graphic3d_Structure_HeaderFile
 #define _Graphic3d_Structure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
-#endif
 
-#ifndef _Graphic3d_CStructure_HeaderFile
-#include <Graphic3d_CStructure.hxx>
-#endif
-#ifndef _TColStd_SequenceOfAddress_HeaderFile
+#include <Graphic3d_CStructure_Handle.hxx>
 #include <TColStd_SequenceOfAddress.hxx>
-#endif
-#ifndef _Graphic3d_SequenceOfGroup_HeaderFile
-#include <Graphic3d_SequenceOfGroup.hxx>
-#endif
-#ifndef _Handle_Graphic3d_GraphicDriver_HeaderFile
-#include <Handle_Graphic3d_GraphicDriver.hxx>
-#endif
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _Aspect_TypeOfHighlightMethod_HeaderFile
 #include <Aspect_TypeOfHighlightMethod.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
+#include <Graphic3d_StructureManagerPtr.hxx>
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Graphic3d_TypeOfStructure_HeaderFile
 #include <Graphic3d_TypeOfStructure.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Graphic3d_StructureManager_HeaderFile
 #include <Handle_Graphic3d_StructureManager.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Graphic3d_SequenceOfHClipPlane_HeaderFile
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectLine3d_HeaderFile
 #include <Handle_Graphic3d_AspectLine3d.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectFillArea3d_HeaderFile
 #include <Handle_Graphic3d_AspectFillArea3d.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectText3d_HeaderFile
 #include <Handle_Graphic3d_AspectText3d.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectMarker3d_HeaderFile
 #include <Handle_Graphic3d_AspectMarker3d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Graphic3d_DataStructureManager_HeaderFile
 #include <Handle_Graphic3d_DataStructureManager.hxx>
-#endif
-#ifndef _Graphic3d_TypeOfConnection_HeaderFile
-#include <Graphic3d_TypeOfConnection.hxx>
-#endif
-#ifndef _Graphic3d_TypeOfComposition_HeaderFile
-#include <Graphic3d_TypeOfComposition.hxx>
-#endif
-#ifndef _Graphic3d_TransModeFlags_HeaderFile
-#include <Graphic3d_TransModeFlags.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Group_HeaderFile
+#include <Graphic3d_SequenceOfGroup.hxx>
 #include <Handle_Graphic3d_Group.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Plotter_HeaderFile
-#include <Handle_Graphic3d_Plotter.hxx>
-#endif
-#ifndef _Graphic3d_Vertex_HeaderFile
+#include <Graphic3d_TypeOfConnection.hxx>
+#include <Graphic3d_TypeOfComposition.hxx>
+#include <Graphic3d_TransModeFlags.hxx>
+#include <Graphic3d_BndBox4f.hxx>
+#include <Graphic3d_BndBox4d.hxx>
 #include <Graphic3d_Vertex.hxx>
-#endif
-class Graphic3d_GraphicDriver;
 class Graphic3d_PriorityDefinitionError;
 class Graphic3d_StructureDefinitionError;
 class Graphic3d_TransformError;
@@ -104,383 +48,473 @@ class Graphic3d_AspectText3d;
 class Graphic3d_AspectMarker3d;
 class Graphic3d_DataStructureManager;
 class TColStd_Array2OfReal;
-class Graphic3d_SequenceOfGroup;
+class Bnd_Box;
 class Graphic3d_MapOfStructure;
 class gp_Pnt;
-class Graphic3d_Plotter;
 class Graphic3d_Vector;
 
 
-//! This class allows the definition a graphic object. <br>
-//!	    This graphic structure can be displayed, <br>
-//!	    erased, or highlighted. <br>
-//!	    This graphic structure can be connected with <br>
-//!	    another graphic structure. <br>
-//!  Keywords: Structure, StructureManager, Display, Erase, Highlight, <br>
-//!	     UnHighlight, Visible, Priority, Selectable, Visible, <br>
-//!	     Visual, Connection, Ancestors, Descendants, Transformation <br>
-class Graphic3d_Structure : public MMgt_TShared {
+//! This class allows the definition a graphic object.
+//! This graphic structure can be displayed,
+//! erased, or highlighted.
+//! This graphic structure can be connected with
+//! another graphic structure.
+//! Keywords: Structure, StructureManager, Display, Erase, Highlight,
+//! UnHighlight, Visible, Priority, Selectable, Visible,
+//! Visual, Connection, Ancestors, Descendants, Transformation
+class Graphic3d_Structure : public MMgt_TShared
+{
 
 public:
 
-  //! Creates a graphic object in the manager <AManager>. <br>
-//!	    It will appear in all the views of the visualiser. <br>
-//!  Warning: The default values AspectLine, AspectFillArea, <br>
-//!	    AspectText and AspectMarker are NOT applied to the <br>
-//!	    structure. <br>
-//!	    The structure is not displayed when it is created. <br>
-  Standard_EXPORT   Graphic3d_Structure(const Handle(Graphic3d_StructureManager)& AManager);
-  //! if WithDestruction == Standard_True then <br>
-//!		suppress all the groups of primitives in the structure. <br>
-//!	        and it is mandatory to create a new group in <me>. <br>
-//!	    if WithDestruction == Standard_False then <br>
-//!		clears all the groups of primitives in the structure. <br>
-//!	        and all the groups are conserved and empty. <br>
-//!	    They will be erased at the next screen update. <br>
-//!	    The structure itself is conserved. <br>
-//!	    The transformation and the attributes of <me> are conserved. <br>
-//!	    The childs of <me> are conserved. <br>
-  Standard_EXPORT   virtual  void Clear(const Standard_Boolean WithDestruction = Standard_True) ;
-  //! Suppresses the structure <me>. <br>
-//!	    It will be erased at the next screen update. <br>
-  Standard_EXPORT   virtual  void Destroy() ;
+  
+  //! Creates a graphic object in the manager theManager.
+  //! It will appear in all the views of the visualiser.
+  //! Warning: The default values AspectLine, AspectFillArea, AspectText and AspectMarker are NOT applied to the structure.
+  //! The structure is not displayed when it is created.
+  Standard_EXPORT Graphic3d_Structure(const Handle(Graphic3d_StructureManager)& theManager);
+  
+  //! Creates a shadow link to existing graphic object.
+  Standard_EXPORT Graphic3d_Structure(const Handle(Graphic3d_StructureManager)& theManager, const Handle(Graphic3d_Structure)& thePrs);
+  
+  //! if WithDestruction == Standard_True then
+  //! suppress all the groups of primitives in the structure.
+  //! and it is mandatory to create a new group in <me>.
+  //! if WithDestruction == Standard_False then
+  //! clears all the groups of primitives in the structure.
+  //! and all the groups are conserved and empty.
+  //! They will be erased at the next screen update.
+  //! The structure itself is conserved.
+  //! The transformation and the attributes of <me> are conserved.
+  //! The childs of <me> are conserved.
+  Standard_EXPORT virtual   void Clear (const Standard_Boolean WithDestruction = Standard_True) ;
+  
+  //! Suppresses the structure <me>.
+  //! It will be erased at the next screen update.
+  Standard_EXPORT virtual   void Destroy() ;
 ~Graphic3d_Structure()
 {
   Destroy();
 }
-  //! Displays the structure <me> in all the views of <br>
-//!	    the visualiser. <br>
-  Standard_EXPORT   virtual  void Display() ;
-  //! Displays the structure <me> in all the views of <br>
-//!	    the visualiser, while modifying its current priority. <br>
-//!          Note: Display Priorities <br>
-//!          Structure display priorities control the order in which <br>
-//!          structures are redrawn.   When you display a <br>
-//!          structure, you specify its priority. The lower the value, <br>
-//!          the lower the display priority. When the display is <br>
-//!          regenerated, the structures with the lowest priority <br>
-//!          are drawn first. For structures with the same display <br>
-//!          priority, the order in which they were displayed <br>
-//!          determines the drawing order. Open CASCADE <br>
-//!          supports 11 structure display priorities, 0 to 10. <br>
-//!          Warning: Raises PriorityDefinitionError if <Priority> is <br>
-//!	    greater than 10 or a negative value. <br>
-  Standard_EXPORT     void Display(const Standard_Integer Priority) ;
-  //! Returns the current display priority for the <br>
-//!	    structure <me>. <br>
-  Standard_EXPORT     Standard_Integer DisplayPriority() const;
-  //! Erases the structure <me> in all the views <br>
-//!	    of the visualiser. <br>
-  Standard_EXPORT   virtual  void Erase() ;
-  //! Highlights the structure <me> in all the <br>
-//!	    views of the visualiser, using the following methods: <br>
-//! <br>
-//!   TOHM_COLOR		= drawn in the highlight color <br>
-//!				  (default white) <br>
-//!	    TOHM_BLINK		= blinking <br>
-//!   TOHM_BOUNDBOX	= enclosed by the boundary box <br>
-//!				  (default white) <br>
-//! <br>
-  Standard_EXPORT     void Highlight(const Aspect_TypeOfHighlightMethod Method) ;
-  //! Suppress the structure <me>. <br>
-//!	    It will be erased at the next screen update. <br>
-//!  Warning: No more graphic operations in <me> after this call. <br>
-//!  Category: Methods to modify the class definition <br>
-  Standard_EXPORT     void Remove() ;
-  //! Modifies the highlight color for the Highlight method <br>
-//!	    with the highlight method TOHM_COLOR or TOHM_BOUNDBOX. <br>
-  Standard_EXPORT     void SetHighlightColor(const Quantity_Color& AColor) ;
-  //! Modifies the coordinates of the boundary box <br>
-//!	    of the structure <me>. <br>
-//!	    if <AFlag> is Standard_True then <me> is infinite and <br>
-//!	    the MinMaxValues method or the MinMaxCoord method return : <br>
-//!	    XMin = YMin = ZMin = RealFirst (). <br>
-//!	    XMax = YMax = ZMax = RealLast (). <br>
-//!	    By default, <me> is not infinite but empty. <br>
-  Standard_EXPORT     void SetInfiniteState(const Standard_Boolean AFlag) ;
-  //! Modifies the order of displaying the structure. <br>
-//!	    Values are between 0 and 10. <br>
-//!          Structures are drawn according to their display priorities <br>
-//!          in ascending order. <br>
-//!	    A structure of priority 10 is displayed the last and appears over the others. <br>
-//!	    The default value is 5. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: If <me> is displayed then the SetDisplayPriority <br>
-//!	    method erase <me> and display <me> with the <br>
-//!	    new priority. <br>
-//!	    Raises PriorityDefinitionError if <Priority> is <br>
-//!	    greater than 10 or a negative value. <br>
-  Standard_EXPORT     void SetDisplayPriority(const Standard_Integer Priority) ;
-  //! Reset the current priority of the structure to the <br>
-//!	    previous priority. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: If <me> is displayed then the SetDisplayPriority <br>
-//!	    method erase <me> and display <me> with the <br>
-//!	    previous priority. <br>
-  Standard_EXPORT     void ResetDisplayPriority() ;
-  //! Set Z layer ID for the structure. The Z layer mechanism <br>
-//! allows to display structures presented in higher layers in overlay <br>
-//! of structures in lower layers by switching off z buffer depth <br>
-//! test between layers <br>
-  Standard_EXPORT     void SetZLayer(const Standard_Integer theLayerId) ;
-  //! Get Z layer ID of displayed structure. The method <br>
-//! returns -1 if the structure has no ID (deleted from graphic driver). <br>
-  Standard_EXPORT     Standard_Integer GetZLayer() const;
-  //! Changes a sequence of clip planes slicing the structure on rendering. <br>
-//! @param thePlanes [in] the set of clip planes. <br>
-  Standard_EXPORT     void SetClipPlanes(const Graphic3d_SequenceOfHClipPlane& thePlanes) ;
-  //! Get clip planes slicing the structure on rendering. <br>
-//! @return set of clip planes. <br>
-  Standard_EXPORT    const Graphic3d_SequenceOfHClipPlane& GetClipPlanes() const;
-  //! Modifies the detectability indicator to Standard_True <br>
-//!	    or Standard_False for the structure <me>. <br>
-//!	    The default value at the definition of <me> is <br>
-//!	    Standard_True. <br>
-  Standard_EXPORT     void SetPick(const Standard_Boolean AValue) ;
-  //! Modifies the default attributes for lines <br>
-//!	    in the structure <me>. <br>
-  Standard_EXPORT     void SetPrimitivesAspect(const Handle(Graphic3d_AspectLine3d)& CTX) ;
-  //! Modifies the default attributes for faces <br>
-//!	    in the structure <me>. <br>
-  Standard_EXPORT     void SetPrimitivesAspect(const Handle(Graphic3d_AspectFillArea3d)& CTX) ;
-  //! Modifies the default attributes for text <br>
-//!	    in the structure <me>. <br>
-  Standard_EXPORT     void SetPrimitivesAspect(const Handle(Graphic3d_AspectText3d)& CTX) ;
-  //! Modifies the default attributes for markers <br>
-//!	    in the structure <me>. <br>
-  Standard_EXPORT     void SetPrimitivesAspect(const Handle(Graphic3d_AspectMarker3d)& CTX) ;
-  //! Modifies the visibility indicator to Standard_True or <br>
-//!	    Standard_False for the structure <me>. <br>
-//!	    The default value at the definition of <me> is <br>
-//!	    Standard_True. <br>
-  Standard_EXPORT     void SetVisible(const Standard_Boolean AValue) ;
-  //! Moves the graphic object <me> in the manager <AManager>. <br>
-//!	    If <WithPropagation> is Standard_True then all the connected <br>
-//!	    graphic objects to <me> are moved. <br>
-  Standard_EXPORT     void SetManager(const Handle(Graphic3d_StructureManager)& AManager,const Standard_Boolean WithPropagation = Standard_False) ;
-  //! Modifies the visualisation mode for the structure <me>. <br>
-  Standard_EXPORT   virtual  void SetVisual(const Graphic3d_TypeOfStructure AVisual) ;
-  //! Modifies the minimum and maximum zoom coefficients <br>
-//!	    for the structure <me>. <br>
-//!	    The default value at the definition of <me> is unlimited. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: Raises StructureDefinitionError if <LimitInf> is <br>
-//!	    greater than <LimitSup> or if <LimitInf> or <br>
-//!	    <LimitSup> is a negative value. <br>
-  Standard_EXPORT     void SetZoomLimit(const Standard_Real LimitInf,const Standard_Real LimitSup) ;
-  //! Suppresses the highlight for the structure <me> <br>
-//!	     in all the views of the visualiser. <br>
-  Standard_EXPORT     void UnHighlight() ;
   
-  Standard_EXPORT   virtual  void Compute() ;
-  //! Returns the new Structure defined for the new visualization <br>
-  Standard_EXPORT   virtual  Handle_Graphic3d_Structure Compute(const Handle(Graphic3d_DataStructureManager)& aProjector) ;
-  //! Returns the new Structure defined for the new visualization <br>
-  Standard_EXPORT   virtual  Handle_Graphic3d_Structure Compute(const Handle(Graphic3d_DataStructureManager)& aProjector,const TColStd_Array2OfReal& AMatrix) ;
-  //! Returns the new Structure defined for the new visualization <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(Graphic3d_DataStructureManager)& aProjector,Handle(Graphic3d_Structure)& aStructure) ;
-  //! Returns the new Structure defined for the new visualization <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(Graphic3d_DataStructureManager)& aProjector,const TColStd_Array2OfReal& AMatrix,Handle(Graphic3d_Structure)& aStructure) ;
-  //! Forces a new construction of the structure <me> <br>
-//!	    if <me> is displayed and TOS_COMPUTED. <br>
-  Standard_EXPORT     void ReCompute() ;
-  //! Forces a new construction of the structure <me> <br>
-//!	    if <me> is displayed in <aProjetor> and TOS_COMPUTED. <br>
-  Standard_EXPORT     void ReCompute(const Handle(Graphic3d_DataStructureManager)& aProjector) ;
-  //! Returns Standard_True if the structure <me> contains <br>
-//!	    Polygons, Triangles or Quadrangles. <br>
-  Standard_EXPORT     Standard_Boolean ContainsFacet() const;
-  //! Returns the values of the current default attributes. <br>
-  Standard_EXPORT     Handle_Graphic3d_AspectFillArea3d FillArea3dAspect() const;
-  //! Returns the groups sequence included in the structure <me> (internal storage). <br>
-  Standard_EXPORT    const Graphic3d_SequenceOfGroup& Groups() const;
-  //! Returns the current number of groups in the <br>
-//!	    structure <me>. <br>
-  Standard_EXPORT     Standard_Integer NumberOfGroups() const;
-  //! Returns the highlight color for the Highlight method <br>
-//!	    with the highlight method TOHM_COLOR or TOHM_BOUNDBOX. <br>
-  Standard_EXPORT     Quantity_Color HighlightColor() const;
-  //! Returns Standard_True if the structure <me> is deleted. <br>
-//!	    <me> is deleted after the call Remove (me). <br>
-  Standard_EXPORT     Standard_Boolean IsDeleted() const;
-  //! Returns the display indicator for the structure <me>. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsDisplayed() const;
-  //! Returns Standard_True if the structure <me> is empty. <br>
-//!  Warning: A structure is empty if : <br>
-//!		it do not have group or all the groups are empties <br>
-//!		and it do not have descendant or all the descendants <br>
-//!		are empties. <br>
-  Standard_EXPORT     Standard_Boolean IsEmpty() const;
-  //! Returns Standard_True if the structure <me> is infinite. <br>
-  Standard_EXPORT     Standard_Boolean IsInfinite() const;
-  //! Returns the highlight indicator for the structure <me>. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsHighlighted() const;
-  //! Returns the detectability indicator for the structure <me>. <br>
-  Standard_EXPORT     Standard_Boolean IsSelectable() const;
-  //! Returns Standard_True if the structure <me> is rotated. <br>
-//!	    <=> The transformation != Identity, != Scale, != Translation. <br>
-  Standard_EXPORT     Standard_Boolean IsRotated() const;
-  //! Returns Standard_True if the structure <me> is transformed. <br>
-//!	    <=> The transformation != Identity. <br>
-  Standard_EXPORT     Standard_Boolean IsTransformed() const;
-  //! Returns the visibility indicator for the structure <me>. <br>
-  Standard_EXPORT     Standard_Boolean IsVisible() const;
-  //! Returns the values of the current default attributes. <br>
-  Standard_EXPORT     Handle_Graphic3d_AspectLine3d Line3dAspect() const;
-  //! Returns the current group of graphic attributes used <br>
-//! for 3d marker primitives. <br>
-  Standard_EXPORT     Handle_Graphic3d_AspectMarker3d Marker3dAspect() const;
-  //! Returns the coordinates of the boundary box <br>
-//!	    of the structure <me>. <br>
-//!  Warning: If the structure <me> is empty or infinite then : <br>
-//!	    XMin = YMin = ZMin = RealFirst (). <br>
-//!	    XMax = YMax = ZMax = RealLast (). <br>
-  Standard_EXPORT     void MinMaxValues(Standard_Real& XMin,Standard_Real& YMin,Standard_Real& ZMin,Standard_Real& XMax,Standard_Real& YMax,Standard_Real& ZMax) const;
-  //! Returns the current values of the default attributes. <br>
-  Standard_EXPORT     void PrimitivesAspect(Handle(Graphic3d_AspectLine3d)& CTXL,Handle(Graphic3d_AspectText3d)& CTXT,Handle(Graphic3d_AspectMarker3d)& CTXM,Handle(Graphic3d_AspectFillArea3d)& CTXF) const;
-  //! Returns the values of the current default attributes. <br>
-  Standard_EXPORT     Handle_Graphic3d_AspectText3d Text3dAspect() const;
-  //! Returns the visualisation mode for the structure <me>. <br>
-  Standard_EXPORT     Graphic3d_TypeOfStructure Visual() const;
-  //! Returns Standard_True if the connection is possible between <br>
-//!	    <AStructure1> and <AStructure2> without a creation <br>
-//!	    of a cycle. <br>
-//! <br>
-//!	    It's not possible to call the method <br>
-//!	       AStructure1->Connect (AStructure2, TypeOfConnection) <br>
-//!	    if <br>
-//!	    - the set of all ancestors of <AStructure1> contains <br>
-//!	      <AStructure1> and if the <br>
-//!	      TypeOfConnection == TOC_DESCENDANT <br>
-//!	    - the set of all descendants of <AStructure1> contains <br>
-//!	      <AStructure2> and if the <br>
-//!	      TypeOfConnection == TOC_ANCESTOR <br>
-  Standard_EXPORT   static  Standard_Boolean AcceptConnection(const Handle(Graphic3d_Structure)& AStructure1,const Handle(Graphic3d_Structure)& AStructure2,const Graphic3d_TypeOfConnection AType) ;
-  //! Returns the group of structures to which <me> is connected. <br>
-  Standard_EXPORT     void Ancestors(Graphic3d_MapOfStructure& SG) const;
-  //! If Atype is TOC_DESCENDANT then add <AStructure> <br>
-//!	    as a child structure of  <me>. <br>
-//!	    If Atype is TOC_ANCESTOR then add <AStructure> <br>
-//!	    as a parent structure of <me>. <br>
-//!	    The connection propagates Display, Highlight, Erase, <br>
-//!	    Remove, and stacks the transformations. <br>
-//!	    No connection if the graph of the structures <br>
-//!	    contains a cycle and <WithCheck> is Standard_True; <br>
-  Standard_EXPORT     void Connect(const Handle(Graphic3d_Structure)& AStructure,const Graphic3d_TypeOfConnection AType,const Standard_Boolean WithCheck = Standard_False) ;
-  //! Returns the group of structures connected to <me>. <br>
-  Standard_EXPORT     void Descendants(Graphic3d_MapOfStructure& SG) const;
-  //! Suppress the connection between <AStructure> and <me>. <br>
-  Standard_EXPORT     void Disconnect(const Handle(Graphic3d_Structure)& AStructure) ;
-  //! If Atype is TOC_DESCENDANT then suppress all <br>
-//!	    the connections with the child structures of <me>. <br>
-//!	    If Atype is TOC_ANCESTOR then suppress all <br>
-//!	    the connections with the parent structures of <me>. <br>
-  Standard_EXPORT     void DisconnectAll(const Graphic3d_TypeOfConnection AType) ;
-  //! Returns <ASet> the group of structures : <br>
-//!	    - directly or indirectly connected to <AStructure> if the <br>
-//!	      TypeOfConnection == TOC_DESCENDANT <br>
-//!	    - to which <AStructure> is directly or indirectly connected <br>
-//!	      if the TypeOfConnection == TOC_ANCESTOR <br>
-  Standard_EXPORT   static  void Network(const Handle(Graphic3d_Structure)& AStructure,const Graphic3d_TypeOfConnection AType,Graphic3d_MapOfStructure& ASet) ;
+  //! Displays the structure <me> in all the views of
+  //! the visualiser.
+  Standard_EXPORT virtual   void Display() ;
   
-  Standard_EXPORT     void SetOwner(const Standard_Address Owner) ;
+  //! Displays the structure <me> in all the views of
+  //! the visualiser, while modifying its current priority.
+  //! Note: Display Priorities
+  //! Structure display priorities control the order in which
+  //! structures are redrawn.   When you display a
+  //! structure, you specify its priority. The lower the value,
+  //! the lower the display priority. When the display is
+  //! regenerated, the structures with the lowest priority
+  //! are drawn first. For structures with the same display
+  //! priority, the order in which they were displayed
+  //! determines the drawing order. Open CASCADE
+  //! supports 11 structure display priorities, 0 to 10.
+  //! Warning: Raises PriorityDefinitionError if <Priority> is
+  //! greater than 10 or a negative value.
+  Standard_EXPORT   void Display (const Standard_Integer Priority) ;
   
-  Standard_EXPORT     Standard_Address Owner() const;
+  //! Returns the current display priority for the
+  //! structure <me>.
+  Standard_EXPORT   Standard_Integer DisplayPriority()  const;
   
-  Standard_EXPORT     void SetHLRValidation(const Standard_Boolean AFlag) ;
+  //! Erases the structure <me> in all the views
+  //! of the visualiser.
+  Standard_EXPORT virtual   void Erase() ;
   
-  Standard_EXPORT     Standard_Boolean HLRValidation() const;
-  //! Returns the type of composition applied to matrices <br>
-//!	    of transformation of <me>. <br>
-  Standard_EXPORT     Graphic3d_TypeOfComposition Composition() const;
-  //! Modifies the current local modelling transformation <br>
-//!	    in the structure <me>. <br>
-//! <br>
-//!	    It is defined as a 4*4 real matrix. <br>
-//! <br>
-//!	    ------------------- <br>
-//!	    | a11 a12 a13  t1 | <br>
-//!	    | a21 a22 a23  t2 | <br>
-//!	    | a31 a32 a33  t3 | <br>
-//!	    |  0   0   0   1  | <br>
-//!	    ------------------- <br>
-//! <br>
-//!	    TypeOfComposition : TOC_REPLACE <br>
-//!				TOC_POSTCONCATENATE <br>
-//! <br>
-//! Then the modified Local Modelling Transformation is composed <br>
-//! with the current Global Modelling Transformation to create a <br>
-//! new Composite Modelling Transformation. <br>
-//! <br>
-//! The compose type specifies the role of the current local <br>
-//! modelling transformation (L) in composing the new value for <br>
-//! the current local modelling transformation (L'), which is <br>
-//! then combined with the current global modelling transforma- <br>
-//! tion (G) to calculate the new composite modelling transfor- <br>
-//! mation (C). <br>
-//! <br>
-//! TOC_REPLACE <br>
-//! The transformation matrix (T) replaces the value of <br>
-//! current local modelling transformation (L). <br>
-//! <br>
-//!	L' <- T <br>
-//!	C <- G x L' <br>
-//! <br>
-//! TOC_POSTCONCATENATE <br>
-//! The current local modelling transformation (L) is multiplied <br>
-//! by the transformation matrix (T): <br>
-//! <br>
-//!	L' <- T x L <br>
-//!	C <- G x L' <br>
-//! <br>
-//!  Category: Methods to manage the structure transformation <br>
-//!  Warning: Raises TransformError if the matrix is not a 4x4 matrix. <br>
-  Standard_EXPORT     void SetTransform(const TColStd_Array2OfReal& AMatrix,const Graphic3d_TypeOfComposition AType) ;
-  //! Returns the transformation associated with <br>
-//!	    the structure <me>. <br>
-  Standard_EXPORT     void Transform(TColStd_Array2OfReal& AMatrix) const;
-  //! Modifies the current modelling transform persistence (pan, zoom or rotate) <br>
-  Standard_EXPORT     void SetTransformPersistence(const Graphic3d_TransModeFlags& AFlag,const gp_Pnt& APoint) ;
+  //! Highlights the structure <me> in all the
+  //! views of the visualiser, using the following methods:
+  //!
+  //! TOHM_COLOR		= drawn in the highlight color
+  //! (default white)
+  //! TOHM_BLINK		= blinking
+  //! TOHM_BOUNDBOX	= enclosed by the boundary box
+  //! (default white)
+  Standard_EXPORT   void Highlight (const Aspect_TypeOfHighlightMethod Method) ;
   
-  Standard_EXPORT     void SetTransformPersistence(const Graphic3d_TransModeFlags& AFlag) ;
-  //! Get the current modelling transform persistence (pan, zoom or rotate) <br>
-  Standard_EXPORT     Graphic3d_TransModeFlags TransformPersistenceMode() const;
-  //! Get the current point of relative modelling transform persistence <br>
-  Standard_EXPORT     gp_Pnt TransformPersistencePoint() const;
+  //! Suppress the structure <me>.
+  //! It will be erased at the next screen update.
+  //! Warning: No more graphic operations in <me> after this call.
+  //! Category: Methods to modify the class definition
+  Standard_EXPORT   void Remove() ;
   
-  Standard_EXPORT     Graphic3d_TypeOfStructure ComputeVisual() const;
-  //! Clears the structure <me>. <br>
-  Standard_EXPORT     void GraphicClear(const Standard_Boolean WithDestruction) ;
+  //! Computes axis-aligned bounding box of a structure.
+  //! Category: Methods to modify the class definition
+  Standard_EXPORT   void CalculateBoundBox() ;
   
-  Standard_EXPORT     void GraphicConnect(const Handle(Graphic3d_Structure)& ADaughter) ;
+  //! Modifies the highlight color for the Highlight method
+  //! with the highlight method TOHM_COLOR or TOHM_BOUNDBOX.
+  Standard_EXPORT   void SetHighlightColor (const Quantity_Color& AColor) ;
   
-  Standard_EXPORT     void GraphicDisconnect(const Handle(Graphic3d_Structure)& ADaughter) ;
-  //! Highlights the structure <me>. <br>
-  Standard_EXPORT     void GraphicHighlight(const Aspect_TypeOfHighlightMethod Method) ;
+  //! If <theToSet> is Standard_True then <me> is infinite and
+  //! the MinMaxValues method method return :
+  //! theXMin = theYMin = theZMin = RealFirst().
+  //! theXMax = theYMax = theZMax = RealLast().
+  //! By default, <me> is not infinite but empty.
+  Standard_EXPORT   void SetInfiniteState (const Standard_Boolean theToSet) ;
   
-  Standard_EXPORT     void GraphicTransform(const TColStd_Array2OfReal& AMatrix) ;
-  //! Suppress the highlight for the structure <me>. <br>
-  Standard_EXPORT     void GraphicUnHighlight() ;
-  //! Returns the identification number of the structure <me>. <br>
-  Standard_EXPORT     Standard_Integer Identification() const;
+  //! Modifies the order of displaying the structure.
+  //! Values are between 0 and 10.
+  //! Structures are drawn according to their display priorities
+  //! in ascending order.
+  //! A structure of priority 10 is displayed the last and appears over the others.
+  //! The default value is 5.
+  //! Category: Methods to modify the class definition
+  //! Warning: If <me> is displayed then the SetDisplayPriority
+  //! method erase <me> and display <me> with the
+  //! new priority.
+  //! Raises PriorityDefinitionError if <Priority> is
+  //! greater than 10 or a negative value.
+  Standard_EXPORT   void SetDisplayPriority (const Standard_Integer Priority) ;
   
-  Standard_EXPORT   virtual  void Plot(const Handle(Graphic3d_Plotter)& aPlotter) ;
-  //! Prints informations about the network associated <br>
-//!	    with the structure <AStructure>. <br>
-  Standard_EXPORT   static  void PrintNetwork(const Handle(Graphic3d_Structure)& AStructure,const Graphic3d_TypeOfConnection AType) ;
-  //! Suppress the adress <APtr> in the list <br>
-//!	    of descendants or in the list of ancestors. <br>
-  Standard_EXPORT     void Remove(const Standard_Address APtr,const Graphic3d_TypeOfConnection AType) ;
+  //! Reset the current priority of the structure to the
+  //! previous priority.
+  //! Category: Methods to modify the class definition
+  //! Warning: If <me> is displayed then the SetDisplayPriority
+  //! method erase <me> and display <me> with the
+  //! previous priority.
+  Standard_EXPORT   void ResetDisplayPriority() ;
   
-  Standard_EXPORT     void SetComputeVisual(const Graphic3d_TypeOfStructure AVisual) ;
-  //! Transforms <X>, <Y>, <Z> with the transformation <ATrsf>. <br>
-  Standard_EXPORT   static  void Transforms(const TColStd_Array2OfReal& ATrsf,const Standard_Real X,const Standard_Real Y,const Standard_Real Z,Standard_Real& NewX,Standard_Real& NewY,Standard_Real& NewZ) ;
-  //! Transforms <Coord> with the transformation <ATrsf>. <br>
-  Standard_EXPORT   static  Graphic3d_Vector Transforms(const TColStd_Array2OfReal& ATrsf,const Graphic3d_Vector& Coord) ;
-  //! Transforms <Coord> with the transformation <ATrsf>. <br>
-  Standard_EXPORT   static  Graphic3d_Vertex Transforms(const TColStd_Array2OfReal& ATrsf,const Graphic3d_Vertex& Coord) ;
-  //! Returns the c structure associated to <me>. <br>
-  Standard_EXPORT     Graphic3d_CStructure* CStructure() ;
+  //! Set Z layer ID for the structure. The Z layer mechanism
+  //! allows to display structures presented in higher layers in overlay
+  //! of structures in lower layers by switching off z buffer depth
+  //! test between layers
+  Standard_EXPORT   void SetZLayer (const Standard_Integer theLayerId) ;
+  
+  //! Get Z layer ID of displayed structure. The method
+  //! returns -1 if the structure has no ID (deleted from graphic driver).
+  Standard_EXPORT   Standard_Integer GetZLayer()  const;
+  
+  //! Changes a sequence of clip planes slicing the structure on rendering.
+  //! @param thePlanes [in] the set of clip planes.
+  Standard_EXPORT   void SetClipPlanes (const Graphic3d_SequenceOfHClipPlane& thePlanes) ;
+  
+  //! Get clip planes slicing the structure on rendering.
+  //! @return set of clip planes.
+  Standard_EXPORT  const  Graphic3d_SequenceOfHClipPlane& GetClipPlanes()  const;
+  
+  //! Modifies the detectability indicator to Standard_True
+  //! or Standard_False for the structure <me>.
+  //! The default value at the definition of <me> is
+  //! Standard_True.
+  Standard_EXPORT   void SetPick (const Standard_Boolean AValue) ;
+  
+  //! Modifies the default attributes for lines
+  //! in the structure <me>.
+  Standard_EXPORT   void SetPrimitivesAspect (const Handle(Graphic3d_AspectLine3d)& CTX) ;
+  
+  //! Modifies the default attributes for faces
+  //! in the structure <me>.
+  Standard_EXPORT   void SetPrimitivesAspect (const Handle(Graphic3d_AspectFillArea3d)& CTX) ;
+  
+  //! Modifies the default attributes for text
+  //! in the structure <me>.
+  Standard_EXPORT   void SetPrimitivesAspect (const Handle(Graphic3d_AspectText3d)& CTX) ;
+  
+  //! Modifies the default attributes for markers
+  //! in the structure <me>.
+  Standard_EXPORT   void SetPrimitivesAspect (const Handle(Graphic3d_AspectMarker3d)& CTX) ;
+  
+  //! Modifies the visibility indicator to Standard_True or
+  //! Standard_False for the structure <me>.
+  //! The default value at the definition of <me> is
+  //! Standard_True.
+  Standard_EXPORT   void SetVisible (const Standard_Boolean AValue) ;
+  
+  //! Modifies the visualisation mode for the structure <me>.
+  Standard_EXPORT virtual   void SetVisual (const Graphic3d_TypeOfStructure AVisual) ;
+  
+  //! Modifies the minimum and maximum zoom coefficients
+  //! for the structure <me>.
+  //! The default value at the definition of <me> is unlimited.
+  //! Category: Methods to modify the class definition
+  //! Warning: Raises StructureDefinitionError if <LimitInf> is
+  //! greater than <LimitSup> or if <LimitInf> or
+  //! <LimitSup> is a negative value.
+  Standard_EXPORT   void SetZoomLimit (const Standard_Real LimitInf, const Standard_Real LimitSup) ;
+  
+  //! marks the structure <me> representing wired structure needed for
+  //! highlight only so it won't be added to BVH tree.
+  //! Category: Methods to modify the class definition
+  Standard_EXPORT   void SetIsForHighlight (const Standard_Boolean isForHighlight) ;
+  
+  //! Suppresses the highlight for the structure <me>
+  //! in all the views of the visualiser.
+  Standard_EXPORT   void UnHighlight() ;
+  
+  Standard_EXPORT virtual   void Compute() ;
+  
+  //! Returns the new Structure defined for the new visualization
+  Standard_EXPORT virtual   Handle(Graphic3d_Structure) Compute (const Handle(Graphic3d_DataStructureManager)& aProjector) ;
+  
+  //! Returns the new Structure defined for the new visualization
+  Standard_EXPORT virtual   Handle(Graphic3d_Structure) Compute (const Handle(Graphic3d_DataStructureManager)& aProjector, const TColStd_Array2OfReal& AMatrix) ;
+  
+  //! Returns the new Structure defined for the new visualization
+  Standard_EXPORT virtual   void Compute (const Handle(Graphic3d_DataStructureManager)& aProjector, Handle(Graphic3d_Structure)& aStructure) ;
+  
+  //! Returns the new Structure defined for the new visualization
+  Standard_EXPORT virtual   void Compute (const Handle(Graphic3d_DataStructureManager)& aProjector, const TColStd_Array2OfReal& AMatrix, Handle(Graphic3d_Structure)& aStructure) ;
+  
+  //! Forces a new construction of the structure <me>
+  //! if <me> is displayed and TOS_COMPUTED.
+  Standard_EXPORT   void ReCompute() ;
+  
+  //! Forces a new construction of the structure <me>
+  //! if <me> is displayed in <aProjetor> and TOS_COMPUTED.
+  Standard_EXPORT   void ReCompute (const Handle(Graphic3d_DataStructureManager)& aProjector) ;
+  
+  //! Returns Standard_True if the structure <me> contains
+  //! Polygons, Triangles or Quadrangles.
+  Standard_EXPORT   Standard_Boolean ContainsFacet()  const;
+  
+  //! Returns the values of the current default attributes.
+  Standard_EXPORT   Handle(Graphic3d_AspectFillArea3d) FillArea3dAspect()  const;
+  
+  //! Returns the groups sequence included in the structure <me> (internal storage).
+  Standard_EXPORT  const  Graphic3d_SequenceOfGroup& Groups()  const;
+  
+  //! Returns the current number of groups in the
+  //! structure <me>.
+  Standard_EXPORT   Standard_Integer NumberOfGroups()  const;
+  
+  //! Append new group to this structure.
+  Standard_EXPORT   Handle(Graphic3d_Group) NewGroup() ;
+  
+  //! Returns the highlight color for the Highlight method
+  //! with the highlight method TOHM_COLOR or TOHM_BOUNDBOX.
+  Standard_EXPORT  const  Quantity_Color& HighlightColor()  const;
+  
+  //! Returns Standard_True if the structure <me> is deleted.
+  //! <me> is deleted after the call Remove (me).
+  Standard_EXPORT   Standard_Boolean IsDeleted()  const;
+  
+  //! Returns the display indicator for the structure <me>.
+  Standard_EXPORT virtual   Standard_Boolean IsDisplayed()  const;
+  
+  //! Returns Standard_True if the structure <me> is empty.
+  //! Warning: A structure is empty if :
+  //! it do not have group or all the groups are empties
+  //! and it do not have descendant or all the descendants
+  //! are empties.
+  Standard_EXPORT   Standard_Boolean IsEmpty()  const;
+  
+  //! Returns Standard_True if the structure <me> is infinite.
+  Standard_EXPORT   Standard_Boolean IsInfinite()  const;
+  
+  //! Returns the highlight indicator for the structure <me>.
+  Standard_EXPORT virtual   Standard_Boolean IsHighlighted()  const;
+  
+  //! Returns the detectability indicator for the structure <me>.
+  Standard_EXPORT   Standard_Boolean IsSelectable()  const;
+  
+  //! Returns Standard_True if the structure <me> is rotated.
+  //! <=> The transformation != Identity, != Scale, != Translation.
+  Standard_EXPORT   Standard_Boolean IsRotated()  const;
+  
+  //! Returns Standard_True if the structure <me> is transformed.
+  //! <=> The transformation != Identity.
+  Standard_EXPORT   Standard_Boolean IsTransformed()  const;
+  
+  //! Returns the visibility indicator for the structure <me>.
+  Standard_EXPORT   Standard_Boolean IsVisible()  const;
+  
+  //! Returns the values of the current default attributes.
+  Standard_EXPORT   Handle(Graphic3d_AspectLine3d) Line3dAspect()  const;
+  
+  //! Returns the current group of graphic attributes used
+  //! for 3d marker primitives.
+  Standard_EXPORT   Handle(Graphic3d_AspectMarker3d) Marker3dAspect()  const;
+  
+  //! Returns the coordinates of the boundary box of the structure <me>.
+  //! If <theToIgnoreInfiniteFlag> is TRUE, the method returns actual graphical
+  //! boundaries of the Graphic3d_Group components. Otherwise, the
+  //! method returns boundaries taking into account infinite state
+  //! of the structure. This approach generally used for application
+  //! specific fit operation (e.g. fitting the model into screen,
+  //! not taking into accout infinite helper elements).
+  //! Warning: If the structure <me> is empty then the empty box is returned,
+  //! If the structure <me> is infinite then the whole box is returned.
+  Standard_EXPORT   Bnd_Box MinMaxValues (const Standard_Boolean theToIgnoreInfiniteFlag = Standard_False)  const;
+  
+  //! Returns the current values of the default attributes.
+  Standard_EXPORT   void PrimitivesAspect (Handle(Graphic3d_AspectLine3d)& CTXL, Handle(Graphic3d_AspectText3d)& CTXT, Handle(Graphic3d_AspectMarker3d)& CTXM, Handle(Graphic3d_AspectFillArea3d)& CTXF)  const;
+  
+  //! Returns the values of the current default attributes.
+  Standard_EXPORT   Handle(Graphic3d_AspectText3d) Text3dAspect()  const;
+  
+  //! Returns the visualisation mode for the structure <me>.
+  Standard_EXPORT   Graphic3d_TypeOfStructure Visual()  const;
+  
+  //! Returns Standard_True if the connection is possible between
+  //! <AStructure1> and <AStructure2> without a creation
+  //! of a cycle.
+  //!
+  //! It's not possible to call the method
+  //! AStructure1->Connect (AStructure2, TypeOfConnection)
+  //! if
+  //! - the set of all ancestors of <AStructure1> contains
+  //! <AStructure1> and if the
+  //! TypeOfConnection == TOC_DESCENDANT
+  //! - the set of all descendants of <AStructure1> contains
+  //! <AStructure2> and if the
+  //! TypeOfConnection == TOC_ANCESTOR
+  Standard_EXPORT static   Standard_Boolean AcceptConnection (const Handle(Graphic3d_Structure)& AStructure1, const Handle(Graphic3d_Structure)& AStructure2, const Graphic3d_TypeOfConnection AType) ;
+  
+  //! Returns the group of structures to which <me> is connected.
+  Standard_EXPORT   void Ancestors (Graphic3d_MapOfStructure& SG)  const;
+  
+  //! If Atype is TOC_DESCENDANT then add <AStructure>
+  //! as a child structure of  <me>.
+  //! If Atype is TOC_ANCESTOR then add <AStructure>
+  //! as a parent structure of <me>.
+  //! The connection propagates Display, Highlight, Erase,
+  //! Remove, and stacks the transformations.
+  //! No connection if the graph of the structures
+  //! contains a cycle and <WithCheck> is Standard_True;
+  Standard_EXPORT   void Connect (const Handle(Graphic3d_Structure)& AStructure, const Graphic3d_TypeOfConnection AType, const Standard_Boolean WithCheck = Standard_False) ;
+  
+  //! Returns the group of structures connected to <me>.
+  Standard_EXPORT   void Descendants (Graphic3d_MapOfStructure& SG)  const;
+  
+  //! Suppress the connection between <AStructure> and <me>.
+  Standard_EXPORT   void Disconnect (const Handle(Graphic3d_Structure)& AStructure) ;
+  
+  //! If Atype is TOC_DESCENDANT then suppress all
+  //! the connections with the child structures of <me>.
+  //! If Atype is TOC_ANCESTOR then suppress all
+  //! the connections with the parent structures of <me>.
+  Standard_EXPORT   void DisconnectAll (const Graphic3d_TypeOfConnection AType) ;
+  
+  //! Returns <ASet> the group of structures :
+  //! - directly or indirectly connected to <AStructure> if the
+  //! TypeOfConnection == TOC_DESCENDANT
+  //! - to which <AStructure> is directly or indirectly connected
+  //! if the TypeOfConnection == TOC_ANCESTOR
+  Standard_EXPORT static   void Network (const Handle(Graphic3d_Structure)& AStructure, const Graphic3d_TypeOfConnection AType, Graphic3d_MapOfStructure& ASet) ;
+  
+  Standard_EXPORT   void SetOwner (const Standard_Address Owner) ;
+  
+  Standard_EXPORT   Standard_Address Owner()  const;
+  
+  Standard_EXPORT   void SetHLRValidation (const Standard_Boolean AFlag) ;
+  
+  Standard_EXPORT   Standard_Boolean HLRValidation()  const;
+  
+  //! Returns the type of composition applied to matrices
+  //! of transformation of <me>.
+  Standard_EXPORT   Graphic3d_TypeOfComposition Composition()  const;
+  
+  //! Modifies the current local modelling transformation
+  //! in the structure <me>.
+  //!
+  //! It is defined as a 4*4 real matrix.
+  //!
+  //! -------------------
+  //! | a11 a12 a13  t1 |
+  //! | a21 a22 a23  t2 |
+  //! | a31 a32 a33  t3 |
+  //! |  0   0   0   1  |
+  //! -------------------
+  //!
+  //! TypeOfComposition : TOC_REPLACE
+  //! TOC_POSTCONCATENATE
+  //!
+  //! Then the modified Local Modelling Transformation is composed
+  //! with the current Global Modelling Transformation to create a
+  //! new Composite Modelling Transformation.
+  //!
+  //! The compose type specifies the role of the current local
+  //! modelling transformation (L) in composing the new value for
+  //! the current local modelling transformation (L'), which is
+  //! then combined with the current global modelling transforma-
+  //! tion (G) to calculate the new composite modelling transfor-
+  //! mation (C).
+  //!
+  //! TOC_REPLACE
+  //! The transformation matrix (T) replaces the value of
+  //! current local modelling transformation (L).
+  //!
+  //! L' <- T
+  //! C <- G x L'
+  //!
+  //! TOC_POSTCONCATENATE
+  //! The current local modelling transformation (L) is multiplied
+  //! by the transformation matrix (T):
+  //!
+  //! L' <- T x L
+  //! C <- G x L'
+  //!
+  //! Category: Methods to manage the structure transformation
+  //! Warning: Raises TransformError if the matrix is not a 4x4 matrix.
+  Standard_EXPORT   void SetTransform (const TColStd_Array2OfReal& AMatrix, const Graphic3d_TypeOfComposition AType) ;
+  
+  //! Returns the transformation associated with
+  //! the structure <me>.
+  Standard_EXPORT   void Transform (TColStd_Array2OfReal& AMatrix)  const;
+  
+  //! Modifies the current modelling transform persistence (pan, zoom or rotate)
+  Standard_EXPORT   void SetTransformPersistence (const Graphic3d_TransModeFlags& AFlag, const gp_Pnt& APoint) ;
+  
+  Standard_EXPORT   void SetTransformPersistence (const Graphic3d_TransModeFlags& AFlag) ;
+  
+  //! Get the current modelling transform persistence (pan, zoom or rotate)
+  Standard_EXPORT   Graphic3d_TransModeFlags TransformPersistenceMode()  const;
+  
+  //! Get the current point of relative modelling transform persistence
+  Standard_EXPORT   gp_Pnt TransformPersistencePoint()  const;
+  
+  //! Sets if the structure location has mutable nature (content or location will be changed regularly).
+  Standard_EXPORT   void SetMutable (const Standard_Boolean theIsMutable) ;
+  
+  //! Returns true if structure has mutable nature (content or location are be changed regularly).
+  //! Mutable structure will be managed in different way than static onces.
+  Standard_EXPORT   Standard_Boolean IsMutable()  const;
+  
+  Standard_EXPORT   Graphic3d_TypeOfStructure ComputeVisual()  const;
+  
+  //! Clears the structure <me>.
+  Standard_EXPORT   void GraphicClear (const Standard_Boolean WithDestruction) ;
+  
+  Standard_EXPORT   void GraphicConnect (const Handle(Graphic3d_Structure)& ADaughter) ;
+  
+  Standard_EXPORT   void GraphicDisconnect (const Handle(Graphic3d_Structure)& ADaughter) ;
+  
+  //! Highlights the structure <me>.
+  Standard_EXPORT   void GraphicHighlight (const Aspect_TypeOfHighlightMethod Method) ;
+  
+  Standard_EXPORT   void GraphicTransform (const TColStd_Array2OfReal& AMatrix) ;
+  
+  //! Suppress the highlight for the structure <me>.
+  Standard_EXPORT   void GraphicUnHighlight() ;
+  
+  //! Returns the identification number of the structure <me>.
+  Standard_EXPORT   Standard_Integer Identification()  const;
+  
+  //! Prints informations about the network associated
+  //! with the structure <AStructure>.
+  Standard_EXPORT static   void PrintNetwork (const Handle(Graphic3d_Structure)& AStructure, const Graphic3d_TypeOfConnection AType) ;
+  
+  //! Suppress the adress <APtr> in the list
+  //! of descendants or in the list of ancestors.
+  Standard_EXPORT   void Remove (const Standard_Address APtr, const Graphic3d_TypeOfConnection AType) ;
+  
+  Standard_EXPORT   void SetComputeVisual (const Graphic3d_TypeOfStructure AVisual) ;
+  
+  //! Transforms <X>, <Y>, <Z> with the transformation <ATrsf>.
+  Standard_EXPORT static   void Transforms (const TColStd_Array2OfReal& ATrsf, const Standard_Real X, const Standard_Real Y, const Standard_Real Z, Standard_Real& NewX, Standard_Real& NewY, Standard_Real& NewZ) ;
+  
+  //! Transforms <Coord> with the transformation <ATrsf>.
+  Standard_EXPORT static   Graphic3d_Vector Transforms (const TColStd_Array2OfReal& ATrsf, const Graphic3d_Vector& Coord) ;
+  
+  //! Transforms <Coord> with the transformation <ATrsf>.
+  Standard_EXPORT static   Graphic3d_Vertex Transforms (const TColStd_Array2OfReal& ATrsf, const Graphic3d_Vertex& Coord) ;
+  
+  //! Returns the low-level structure
+     const  Graphic3d_CStructure_Handle& CStructure()  const;
 
 friend class Graphic3d_Group;
 
@@ -489,57 +523,63 @@ friend class Graphic3d_Group;
 
 protected:
 
+  
+  //! Transforms boundaries with <theTrsf> transformation.
+  Standard_EXPORT static   void TransformBoundaries (const TColStd_Array2OfReal& theTrsf, Standard_Real& theXMin, Standard_Real& theYMin, Standard_Real& theZMin, Standard_Real& theXMax, Standard_Real& theYMax, Standard_Real& theZMax) ;
 
-Standard_Address MyPtrStructureManager;
-Standard_Address MyFirstPtrStructureManager;
-Graphic3d_TypeOfStructure MyComputeVisual;
+  Graphic3d_StructureManagerPtr myStructureManager;
+  Graphic3d_StructureManagerPtr myFirstStructureManager;
+  Graphic3d_TypeOfStructure myComputeVisual;
 
 
 private: 
 
-  //! Inserts in the structure <me>, the group <G>. <br>
-//!	    It will be erased at the next screen update. <br>
-  Standard_EXPORT     void Add(const Handle(Graphic3d_Group)& AGroup) ;
-  //! Manages the number of groups in the structure <me> <br>
-//!	    which contains facet. <br>
-//!	    Polygons, Triangles or Quadrangles. <br>
-//!	    <ADelta> = +1 or -1 <br>
-  Standard_EXPORT     void GroupsWithFacet(const Standard_Integer ADelta) ;
-  //! Returns the extreme coordinates found in the <br>
-//!	    structure <me>. <br>
-//!  Warning: If the structure <me> is empty or infinite then : <br>
-//!	    XMin = YMin = ZMin = RealFirst (). <br>
-//!	    XMax = YMax = ZMax = RealLast (). <br>
-  Standard_EXPORT     void MinMaxCoord(Standard_Real& XMin,Standard_Real& YMin,Standard_Real& ZMin,Standard_Real& XMax,Standard_Real& YMax,Standard_Real& ZMax) const;
-  //! Suppress in the structure <me>, the group <AGroup>. <br>
-//!	    It will be erased at the next screen update. <br>
-  Standard_EXPORT     void Remove(const Handle(Graphic3d_Group)& AGroup) ;
-  //! Returns the manager to which <me> is associated. <br>
-  Standard_EXPORT     Handle_Graphic3d_StructureManager StructureManager() const;
-  //! Calls the Update method of the StructureManager which <br>
-//!	    contains the Structure <me>. <br>
-  Standard_EXPORT     void Update() const;
-  //! Updates the c structure associated to <me>. <br>
-  Standard_EXPORT     void UpdateStructure(const Handle(Graphic3d_AspectLine3d)& CTXL,const Handle(Graphic3d_AspectText3d)& CTXT,const Handle(Graphic3d_AspectMarker3d)& CTXM,const Handle(Graphic3d_AspectFillArea3d)& CTXF) ;
+  
+  //! Suppress in the structure <me>, the group theGroup.
+  //! It will be erased at the next screen update.
+  Standard_EXPORT   void Remove (const Handle(Graphic3d_Group)& theGroup) ;
+  
+  //! Manages the number of groups in the structure <me>
+  //! which contains facet.
+  //! Polygons, Triangles or Quadrangles.
+  //! <ADelta> = +1 or -1
+  Standard_EXPORT   void GroupsWithFacet (const Standard_Integer ADelta) ;
+  
+  //! Returns the extreme coordinates found in the structure <me> without transformation applied.
+  Standard_EXPORT   Graphic3d_BndBox4f minMaxCoord (const Standard_Boolean theToIgnoreInfiniteFlag = Standard_False)  const;
+  
+  //! Gets untransformed bounding box from structure.
+  Standard_EXPORT   void getBox (Graphic3d_BndBox4d& theBox, const Standard_Boolean theToIgnoreInfiniteFlag = Standard_False)  const;
+  
+  //! Adds transformed (with myCStructure->Transformation) bounding box of structure to theBox.
+  Standard_EXPORT   void addTransformed (Graphic3d_BndBox4d& theBox, const Standard_Boolean theToIgnoreInfiniteFlag = Standard_False)  const;
+  
+  //! Returns the manager to which <me> is associated.
+  Standard_EXPORT   Handle(Graphic3d_StructureManager) StructureManager()  const;
+  
+  //! Calls the Update method of the StructureManager which
+  //! contains the Structure <me>.
+  Standard_EXPORT   void Update()  const;
+  
+  //! Updates the c structure associated to <me>.
+  Standard_EXPORT   void UpdateStructure (const Handle(Graphic3d_AspectLine3d)& CTXL, const Handle(Graphic3d_AspectText3d)& CTXT, const Handle(Graphic3d_AspectMarker3d)& CTXM, const Handle(Graphic3d_AspectFillArea3d)& CTXF) ;
 
-Graphic3d_CStructure MyCStructure;
-TColStd_SequenceOfAddress MyAncestors;
-TColStd_SequenceOfAddress MyDescendants;
-Graphic3d_SequenceOfGroup MyGroups;
-Handle_Graphic3d_GraphicDriver MyGraphicDriver;
-Quantity_Color MyHighlightColor;
-Aspect_TypeOfHighlightMethod MyHighlightMethod;
-Standard_Address MyOwner;
-Graphic3d_TypeOfStructure MyVisual;
+  Graphic3d_CStructure_Handle myCStructure;
+  TColStd_SequenceOfAddress myAncestors;
+  TColStd_SequenceOfAddress myDescendants;
+  Quantity_Color myHighlightColor;
+  Aspect_TypeOfHighlightMethod myHighlightMethod;
+  Standard_Address myOwner;
+  Graphic3d_TypeOfStructure myVisual;
 
 
 };
 
 
+#include <Graphic3d_Structure.lxx>
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_Structure_HeaderFile

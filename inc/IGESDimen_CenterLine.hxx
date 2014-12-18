@@ -6,68 +6,61 @@
 #ifndef _IGESDimen_CenterLine_HeaderFile
 #define _IGESDimen_CenterLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDimen_CenterLine_HeaderFile
 #include <Handle_IGESDimen_CenterLine.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfXY_HeaderFile
 #include <Handle_TColgp_HArray1OfXY.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TColgp_HArray1OfXY;
 class Standard_OutOfRange;
 class gp_Pnt;
 
 
-//! defines CenterLine, Type <106> Form <20-21> <br>
-//!          in package IGESDimen <br>
-//!          Is an entity appearing as crosshairs or as a <br>
-//!          construction between 2 positions <br>
-class IGESDimen_CenterLine : public IGESData_IGESEntity {
+//! defines CenterLine, Type <106> Form <20-21>
+//! in package IGESDimen
+//! Is an entity appearing as crosshairs or as a
+//! construction between 2 positions
+class IGESDimen_CenterLine : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDimen_CenterLine();
-  //! This method is used to set the fields of the class <br>
-//!           CenterLine <br>
-//!       - aDataType      : Interpretation Flag, always = 1 <br>
-//!       - aZDisplacement : Common z displacement <br>
-//!       - dataPnts       : Data points (x and y) <br>
-  Standard_EXPORT     void Init(const Standard_Integer aDataType,const Standard_Real aZdisp,const Handle(TColgp_HArray1OfXY)& dataPnts) ;
-  //! Sets FormNumber to 20 if <mode> is True, 21 else <br>
-  Standard_EXPORT     void SetCrossHair(const Standard_Boolean mode) ;
-  //! returns Interpretation Flag : IP = 1. <br>
-  Standard_EXPORT     Standard_Integer Datatype() const;
-  //! returns Number of Data Points. <br>
-  Standard_EXPORT     Standard_Integer NbPoints() const;
-  //! returns Common Z displacement. <br>
-  Standard_EXPORT     Standard_Real ZDisplacement() const;
-  //! returns the data point as Pnt from gp. <br>
-//! raises exception if Index <= 0 or Index > NbPoints() <br>
-  Standard_EXPORT     gp_Pnt Point(const Standard_Integer Index) const;
-  //! returns the data point as Pnt from gp after Transformation. <br>
-//! raises exception if Index <= 0 or Index > NbPoints() <br>
-  Standard_EXPORT     gp_Pnt TransformedPoint(const Standard_Integer Index) const;
-  //! returns True if Form is 20. <br>
-  Standard_EXPORT     Standard_Boolean IsCrossHair() const;
+  Standard_EXPORT IGESDimen_CenterLine();
+  
+  //! This method is used to set the fields of the class
+  //! CenterLine
+  //! - aDataType      : Interpretation Flag, always = 1
+  //! - aZDisplacement : Common z displacement
+  //! - dataPnts       : Data points (x and y)
+  Standard_EXPORT   void Init (const Standard_Integer aDataType, const Standard_Real aZdisp, const Handle(TColgp_HArray1OfXY)& dataPnts) ;
+  
+  //! Sets FormNumber to 20 if <mode> is True, 21 else
+  Standard_EXPORT   void SetCrossHair (const Standard_Boolean mode) ;
+  
+  //! returns Interpretation Flag : IP = 1.
+  Standard_EXPORT   Standard_Integer Datatype()  const;
+  
+  //! returns Number of Data Points.
+  Standard_EXPORT   Standard_Integer NbPoints()  const;
+  
+  //! returns Common Z displacement.
+  Standard_EXPORT   Standard_Real ZDisplacement()  const;
+  
+  //! returns the data point as Pnt from gp.
+  //! raises exception if Index <= 0 or Index > NbPoints()
+  Standard_EXPORT   gp_Pnt Point (const Standard_Integer Index)  const;
+  
+  //! returns the data point as Pnt from gp after Transformation.
+  //! raises exception if Index <= 0 or Index > NbPoints()
+  Standard_EXPORT   gp_Pnt TransformedPoint (const Standard_Integer Index)  const;
+  
+  //! returns True if Form is 20.
+  Standard_EXPORT   Standard_Boolean IsCrossHair()  const;
 
 
 
@@ -82,9 +75,9 @@ protected:
 private: 
 
 
-Standard_Integer theDatatype;
-Standard_Real theZDisplacement;
-Handle_TColgp_HArray1OfXY theDataPoints;
+  Standard_Integer theDatatype;
+  Standard_Real theZDisplacement;
+  Handle(TColgp_HArray1OfXY) theDataPoints;
 
 
 };
@@ -93,7 +86,6 @@ Handle_TColgp_HArray1OfXY theDataPoints;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDimen_CenterLine_HeaderFile

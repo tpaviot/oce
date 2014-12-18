@@ -6,52 +6,40 @@
 #ifndef _StepGeom_CompositeCurveSegment_HeaderFile
 #define _StepGeom_CompositeCurveSegment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_CompositeCurveSegment_HeaderFile
 #include <Handle_StepGeom_CompositeCurveSegment.hxx>
-#endif
 
-#ifndef _StepGeom_TransitionCode_HeaderFile
 #include <StepGeom_TransitionCode.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_Curve_HeaderFile
 #include <Handle_StepGeom_Curve.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepGeom_Curve;
 
 
 
-class StepGeom_CompositeCurveSegment : public MMgt_TShared {
+class StepGeom_CompositeCurveSegment : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a CompositeCurveSegment <br>
-  Standard_EXPORT   StepGeom_CompositeCurveSegment();
   
-  Standard_EXPORT   virtual  void Init(const StepGeom_TransitionCode aTransition,const Standard_Boolean aSameSense,const Handle(StepGeom_Curve)& aParentCurve) ;
+  //! Returns a CompositeCurveSegment
+  Standard_EXPORT StepGeom_CompositeCurveSegment();
   
-  Standard_EXPORT     void SetTransition(const StepGeom_TransitionCode aTransition) ;
+  Standard_EXPORT virtual   void Init (const StepGeom_TransitionCode aTransition, const Standard_Boolean aSameSense, const Handle(StepGeom_Curve)& aParentCurve) ;
   
-  Standard_EXPORT     StepGeom_TransitionCode Transition() const;
+  Standard_EXPORT   void SetTransition (const StepGeom_TransitionCode aTransition) ;
   
-  Standard_EXPORT     void SetSameSense(const Standard_Boolean aSameSense) ;
+  Standard_EXPORT   StepGeom_TransitionCode Transition()  const;
   
-  Standard_EXPORT     Standard_Boolean SameSense() const;
+  Standard_EXPORT   void SetSameSense (const Standard_Boolean aSameSense) ;
   
-  Standard_EXPORT     void SetParentCurve(const Handle(StepGeom_Curve)& aParentCurve) ;
+  Standard_EXPORT   Standard_Boolean SameSense()  const;
   
-  Standard_EXPORT     Handle_StepGeom_Curve ParentCurve() const;
+  Standard_EXPORT   void SetParentCurve (const Handle(StepGeom_Curve)& aParentCurve) ;
+  
+  Standard_EXPORT   Handle(StepGeom_Curve) ParentCurve()  const;
 
 
 
@@ -66,9 +54,9 @@ protected:
 private: 
 
 
-StepGeom_TransitionCode transition;
-Standard_Boolean sameSense;
-Handle_StepGeom_Curve parentCurve;
+  StepGeom_TransitionCode transition;
+  Standard_Boolean sameSense;
+  Handle(StepGeom_Curve) parentCurve;
 
 
 };
@@ -77,7 +65,6 @@ Handle_StepGeom_Curve parentCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_CompositeCurveSegment_HeaderFile

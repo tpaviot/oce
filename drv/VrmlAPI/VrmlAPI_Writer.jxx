@@ -1,18 +1,6 @@
-#ifndef _VrmlConverter_Drawer_HeaderFile
 #include <VrmlConverter_Drawer.hxx>
-#endif
-#ifndef _VrmlConverter_Projector_HeaderFile
 #include <VrmlConverter_Projector.hxx>
-#endif
-#ifndef _Vrml_Material_HeaderFile
 #include <Vrml_Material.hxx>
-#endif
-#ifndef _Quantity_HArray1OfColor_HeaderFile
 #include <Quantity_HArray1OfColor.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _VrmlAPI_Writer_HeaderFile
 #include <VrmlAPI_Writer.hxx>
-#endif

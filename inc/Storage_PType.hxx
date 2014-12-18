@@ -6,31 +6,15 @@
 #ifndef _Storage_PType_HeaderFile
 #define _Storage_PType_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Storage_IndexedDataMapNodeOfPType_HeaderFile
 #include <Handle_Storage_IndexedDataMapNodeOfPType.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
@@ -39,60 +23,60 @@ class Storage_IndexedDataMapNodeOfPType;
 
 
 
-class Storage_PType  : public TCollection_BasicMap {
+class Storage_PType  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Storage_PType(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT Storage_PType(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     Storage_PType& Assign(const Storage_PType& Other) ;
-    Storage_PType& operator =(const Storage_PType& Other) 
+  Standard_EXPORT   Storage_PType& Assign (const Storage_PType& Other) ;
+  Storage_PType& operator = (const Storage_PType& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Storage_PType()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Integer Add(const TCollection_AsciiString& K,const Standard_Integer& I) ;
+  Standard_EXPORT   Standard_Integer Add (const TCollection_AsciiString& K, const Standard_Integer& I) ;
   
-  Standard_EXPORT     void Substitute(const Standard_Integer I,const TCollection_AsciiString& K,const Standard_Integer& T) ;
+  Standard_EXPORT   void Substitute (const Standard_Integer I, const TCollection_AsciiString& K, const Standard_Integer& T) ;
   
-  Standard_EXPORT     void RemoveLast() ;
+  Standard_EXPORT   void RemoveLast() ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const TCollection_AsciiString& K) const;
+  Standard_EXPORT   Standard_Boolean Contains (const TCollection_AsciiString& K)  const;
   
-  Standard_EXPORT    const TCollection_AsciiString& FindKey(const Standard_Integer I) const;
+  Standard_EXPORT  const  TCollection_AsciiString& FindKey (const Standard_Integer I)  const;
   
-  Standard_EXPORT    const Standard_Integer& FindFromIndex(const Standard_Integer I) const;
-   const Standard_Integer& operator ()(const Standard_Integer I) const
+  Standard_EXPORT  const  Standard_Integer& FindFromIndex (const Standard_Integer I)  const;
+ const  Standard_Integer& operator () (const Standard_Integer I)  const
 {
   return FindFromIndex(I);
 }
   
-  Standard_EXPORT     Standard_Integer& ChangeFromIndex(const Standard_Integer I) ;
-    Standard_Integer& operator ()(const Standard_Integer I) 
+  Standard_EXPORT   Standard_Integer& ChangeFromIndex (const Standard_Integer I) ;
+  Standard_Integer& operator () (const Standard_Integer I) 
 {
   return ChangeFromIndex(I);
 }
   
-  Standard_EXPORT     Standard_Integer FindIndex(const TCollection_AsciiString& K) const;
+  Standard_EXPORT   Standard_Integer FindIndex (const TCollection_AsciiString& K)  const;
   
-  Standard_EXPORT    const Standard_Integer& FindFromKey(const TCollection_AsciiString& K) const;
+  Standard_EXPORT  const  Standard_Integer& FindFromKey (const TCollection_AsciiString& K)  const;
   
-  Standard_EXPORT     Standard_Integer& ChangeFromKey(const TCollection_AsciiString& K) ;
+  Standard_EXPORT   Standard_Integer& ChangeFromKey (const TCollection_AsciiString& K) ;
   
-  Standard_EXPORT     Standard_Address FindFromKey1(const TCollection_AsciiString& K) const;
+  Standard_EXPORT   Standard_Address FindFromKey1 (const TCollection_AsciiString& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFromKey1(const TCollection_AsciiString& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFromKey1 (const TCollection_AsciiString& K) ;
 
 
 
@@ -106,7 +90,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   Storage_PType(const Storage_PType& Other);
+  Standard_EXPORT Storage_PType(const Storage_PType& Other);
 
 
 
@@ -117,7 +101,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_PType_HeaderFile

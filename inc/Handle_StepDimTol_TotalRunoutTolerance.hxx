@@ -6,22 +6,15 @@
 #ifndef _Handle_StepDimTol_TotalRunoutTolerance_HeaderFile
 #define _Handle_StepDimTol_TotalRunoutTolerance_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepDimTol_GeometricToleranceWithDatumReference_HeaderFile
 #include <Handle_StepDimTol_GeometricToleranceWithDatumReference.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepDimTol_GeometricToleranceWithDatumReference);
 class StepDimTol_TotalRunoutTolerance;
 
-DEFINE_STANDARD_HANDLE(StepDimTol_TotalRunoutTolerance,StepDimTol_GeometricToleranceWithDatumReference)
+DEFINE_STANDARD_HANDLE(StepDimTol_TotalRunoutTolerance, StepDimTol_GeometricToleranceWithDatumReference)
 
-#endif
+#endif // _Handle_StepDimTol_TotalRunoutTolerance_HeaderFile

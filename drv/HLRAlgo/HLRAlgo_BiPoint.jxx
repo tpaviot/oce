@@ -1,3 +1,1 @@
-#ifndef _HLRAlgo_BiPoint_HeaderFile
 #include <HLRAlgo_BiPoint.hxx>
-#endif

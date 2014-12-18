@@ -6,8 +6,11 @@
 #ifndef _TopOpeBRepDS_Kind_HeaderFile
 #define _TopOpeBRepDS_Kind_HeaderFile
 
-//! different types of objects in DataStructure <br>
-enum TopOpeBRepDS_Kind {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! different types of objects in DataStructure
+enum TopOpeBRepDS_Kind
+{
 TopOpeBRepDS_POINT,
 TopOpeBRepDS_CURVE,
 TopOpeBRepDS_SURFACE,
@@ -22,8 +25,4 @@ TopOpeBRepDS_COMPOUND,
 TopOpeBRepDS_UNKNOWN
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopOpeBRepDS_Kind_HeaderFile

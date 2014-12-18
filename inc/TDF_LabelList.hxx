@@ -6,28 +6,14 @@
 #ifndef _TDF_LabelList_HeaderFile
 #define _TDF_LabelList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TDF_ListNodeOfLabelList_HeaderFile
 #include <Handle_TDF_ListNodeOfLabelList.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TDF_ListIteratorOfLabelList;
 class TDF_Label;
@@ -35,61 +21,63 @@ class TDF_ListNodeOfLabelList;
 
 
 
-class TDF_LabelList  {
+class TDF_LabelList 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_LabelList();
+  Standard_EXPORT TDF_LabelList();
   
-  Standard_EXPORT     void Assign(const TDF_LabelList& Other) ;
-    void operator=(const TDF_LabelList& Other) 
+  Standard_EXPORT TDF_LabelList(const TDF_LabelList& Other);
+  
+  Standard_EXPORT   void Assign (const TDF_LabelList& Other) ;
+  void operator= (const TDF_LabelList& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDF_LabelList()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const TDF_Label& I) ;
+  Standard_EXPORT   void Prepend (const TDF_Label& I) ;
   
-  Standard_EXPORT     void Prepend(const TDF_Label& I,TDF_ListIteratorOfLabelList& theIt) ;
+  Standard_EXPORT   void Prepend (const TDF_Label& I, TDF_ListIteratorOfLabelList& theIt) ;
   
-  Standard_EXPORT     void Prepend(TDF_LabelList& Other) ;
+  Standard_EXPORT   void Prepend (TDF_LabelList& Other) ;
   
-  Standard_EXPORT     void Append(const TDF_Label& I) ;
+  Standard_EXPORT   void Append (const TDF_Label& I) ;
   
-  Standard_EXPORT     void Append(const TDF_Label& I,TDF_ListIteratorOfLabelList& theIt) ;
+  Standard_EXPORT   void Append (const TDF_Label& I, TDF_ListIteratorOfLabelList& theIt) ;
   
-  Standard_EXPORT     void Append(TDF_LabelList& Other) ;
+  Standard_EXPORT   void Append (TDF_LabelList& Other) ;
   
-  Standard_EXPORT     TDF_Label& First() const;
+  Standard_EXPORT   TDF_Label& First()  const;
   
-  Standard_EXPORT     TDF_Label& Last() const;
+  Standard_EXPORT   TDF_Label& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TDF_ListIteratorOfLabelList& It) ;
+  Standard_EXPORT   void Remove (TDF_ListIteratorOfLabelList& It) ;
   
-  Standard_EXPORT     void InsertBefore(const TDF_Label& I,TDF_ListIteratorOfLabelList& It) ;
+  Standard_EXPORT   void InsertBefore (const TDF_Label& I, TDF_ListIteratorOfLabelList& It) ;
   
-  Standard_EXPORT     void InsertBefore(TDF_LabelList& Other,TDF_ListIteratorOfLabelList& It) ;
+  Standard_EXPORT   void InsertBefore (TDF_LabelList& Other, TDF_ListIteratorOfLabelList& It) ;
   
-  Standard_EXPORT     void InsertAfter(const TDF_Label& I,TDF_ListIteratorOfLabelList& It) ;
+  Standard_EXPORT   void InsertAfter (const TDF_Label& I, TDF_ListIteratorOfLabelList& It) ;
   
-  Standard_EXPORT     void InsertAfter(TDF_LabelList& Other,TDF_ListIteratorOfLabelList& It) ;
+  Standard_EXPORT   void InsertAfter (TDF_LabelList& Other, TDF_ListIteratorOfLabelList& It) ;
 
 
 friend class TDF_ListIteratorOfLabelList;
-
 
 
 protected:
@@ -100,12 +88,10 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_LabelList(const TDF_LabelList& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_LabelList_HeaderFile

@@ -6,31 +6,15 @@
 #ifndef _TNaming_Iterator_HeaderFile
 #define _TNaming_Iterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TNaming_PtrNode_HeaderFile
 #include <TNaming_PtrNode.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TNaming_Evolution_HeaderFile
 #include <TNaming_Evolution.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TNaming_NewShapeIterator;
@@ -40,50 +24,57 @@ class TDF_Label;
 class TopoDS_Shape;
 
 
-//! A tool to visit the contents of a named shape attribute. <br>
-//! Pairs of shapes in the attribute are iterated, one <br>
-//! being the pre-modification or the old shape, and <br>
-//! the other the post-modification or the new shape. <br>
-//! This allows you to have a full access to all <br>
-//! contents of an attribute. If, on the other hand, you <br>
-//! are only interested in topological entities stored <br>
-//! in the attribute, you can use the functions <br>
-//! GetShape and CurrentShape in TNaming_Tool. <br>
-class TNaming_Iterator  {
+//! A tool to visit the contents of a named shape attribute.
+//! Pairs of shapes in the attribute are iterated, one
+//! being the pre-modification or the old shape, and
+//! the other the post-modification or the new shape.
+//! This allows you to have a full access to all
+//! contents of an attribute. If, on the other hand, you
+//! are only interested in topological entities stored
+//! in the attribute, you can use the functions
+//! GetShape and CurrentShape in TNaming_Tool.
+class TNaming_Iterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Iterates on all  the history records in <br>
-//!          <anAtt>. <br>
-  Standard_EXPORT   TNaming_Iterator(const Handle(TNaming_NamedShape)& anAtt);
-  //! Iterates on all  the history records in <br>
-//!          the current transaction <br>
-  Standard_EXPORT   TNaming_Iterator(const TDF_Label& aLabel);
-  //! Iterates on all  the history records in <br>
-//!          the transaction <aTrans> <br>
-  Standard_EXPORT   TNaming_Iterator(const TDF_Label& aLabel,const Standard_Integer aTrans);
-  //! Returns True if there is a current Item in <br>
-//!          the iteration. <br>
-        Standard_Boolean More() const;
-  //! Moves the iteration to the next Item <br>
-  Standard_EXPORT     void Next() ;
-  //! Returns the old shape in this iterator object. <br>
-//! This shape can be a null one. <br>
-  Standard_EXPORT    const TopoDS_Shape& OldShape() const;
-  //! Returns the new shape in this iterator object. <br>
-  Standard_EXPORT    const TopoDS_Shape& NewShape() const;
-  //! Returns true if the  new  shape is a modification  (split, <br>
-//!          fuse,etc...) of the old shape. <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean IsModification() const;
   
-  Standard_EXPORT     TNaming_Evolution Evolution() const;
+  //! Iterates on all  the history records in
+  //! <anAtt>.
+  Standard_EXPORT TNaming_Iterator(const Handle(TNaming_NamedShape)& anAtt);
+  
+  //! Iterates on all  the history records in
+  //! the current transaction
+  Standard_EXPORT TNaming_Iterator(const TDF_Label& aLabel);
+  
+  //! Iterates on all  the history records in
+  //! the transaction <aTrans>
+  Standard_EXPORT TNaming_Iterator(const TDF_Label& aLabel, const Standard_Integer aTrans);
+  
+  //! Returns True if there is a current Item in
+  //! the iteration.
+      Standard_Boolean More()  const;
+  
+  //! Moves the iteration to the next Item
+  Standard_EXPORT   void Next() ;
+  
+  //! Returns the old shape in this iterator object.
+  //! This shape can be a null one.
+  Standard_EXPORT  const  TopoDS_Shape& OldShape()  const;
+  
+  //! Returns the new shape in this iterator object.
+  Standard_EXPORT  const  TopoDS_Shape& NewShape()  const;
+  
+  //! Returns true if the  new  shape is a modification  (split,
+  //! fuse,etc...) of the old shape.
+  Standard_EXPORT   Standard_Boolean IsModification()  const;
+  
+  Standard_EXPORT   TNaming_Evolution Evolution()  const;
 
 
 friend class TNaming_NewShapeIterator;
 friend class TNaming_OldShapeIterator;
-
 
 
 protected:
@@ -96,8 +87,8 @@ private:
 
 
 
-TNaming_PtrNode myNode;
-Standard_Integer myTrans;
+  TNaming_PtrNode myNode;
+  Standard_Integer myTrans;
 
 
 };
@@ -107,7 +98,6 @@ Standard_Integer myTrans;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_Iterator_HeaderFile

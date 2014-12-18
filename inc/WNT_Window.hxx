@@ -6,119 +6,102 @@
 #ifndef _WNT_Window_HeaderFile
 #define _WNT_Window_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_WNT_Window_HeaderFile
 #include <Handle_WNT_Window.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_WNT_WClass_HeaderFile
 #include <Handle_WNT_WClass.hxx>
-#endif
-#ifndef _Aspect_Handle_HeaderFile
 #include <Aspect_Handle.hxx>
-#endif
-#ifndef _WNT_WindowData_HeaderFile
-#include <WNT_WindowData.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
-#include <Standard_Address.hxx>
-#endif
-#ifndef _Aspect_Window_HeaderFile
-#include <Aspect_Window.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
-#include <Standard_CString.hxx>
-#endif
-#ifndef _WNT_Dword_HeaderFile
-#include <WNT_Dword.hxx>
-#endif
-#ifndef _Quantity_NameOfColor_HeaderFile
-#include <Quantity_NameOfColor.hxx>
-#endif
-#ifndef _Aspect_TypeOfResize_HeaderFile
-#include <Aspect_TypeOfResize.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Quantity_Ratio_HeaderFile
+#include <Aspect_Window.hxx>
+#include <Standard_CString.hxx>
+#include <WNT_Dword.hxx>
+#include <Quantity_NameOfColor.hxx>
+#include <Standard_Address.hxx>
+#include <Aspect_TypeOfResize.hxx>
 #include <Quantity_Ratio.hxx>
-#endif
+#include <Aspect_Drawable.hxx>
 class WNT_WClass;
 class Aspect_WindowDefinitionError;
 class Aspect_WindowError;
 
 
-//! This class defines Windows NT window <br>
-class WNT_Window : public Aspect_Window {
+//! This class defines Windows NT window
+class WNT_Window : public Aspect_Window
+{
 
 public:
 
-  //! Creates a Window defined by his position and size <br>
-//!	    in pixles from the Parent Window. <br>
-//!  Trigger: Raises WindowDefinitionError if the Position out of the <br>
-//!          Screen Space or the window creation failed. <br>
-  Standard_EXPORT   WNT_Window(const Standard_CString theTitle,const Handle(WNT_WClass)& theClass,const WNT_Dword& theStyle,const Standard_Integer thePxLeft,const Standard_Integer thePxTop,const Standard_Integer thePxWidth,const Standard_Integer thePxHeight,const Quantity_NameOfColor theBackColor = Quantity_NOC_MATRAGRAY,const Aspect_Handle theParent = 0,const Aspect_Handle theMenu = 0,const Standard_Address theClientStruct = 0);
-  //! Creates a Window based on the existing window handle. <br>
-//!          This handle equals ( aPart1 << 16 ) + aPart2. <br>
-  Standard_EXPORT   WNT_Window(const Aspect_Handle aHandle,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY);
-  //! Creates a Window based on the existing window <aHandle>. <br>
-  Standard_EXPORT   WNT_Window(const Standard_Integer aPart1,const Standard_Integer aPart2,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY);
-  //! Destroies the Window and all resourses attached to it. <br>
-  Standard_EXPORT   virtual  void Destroy() ;
+  
+  //! Creates a Window defined by his position and size
+  //! in pixles from the Parent Window.
+  //! Trigger: Raises WindowDefinitionError if the Position out of the
+  //! Screen Space or the window creation failed.
+  Standard_EXPORT WNT_Window(const Standard_CString theTitle, const Handle(WNT_WClass)& theClass, const WNT_Dword& theStyle, const Standard_Integer thePxLeft, const Standard_Integer thePxTop, const Standard_Integer thePxWidth, const Standard_Integer thePxHeight, const Quantity_NameOfColor theBackColor = Quantity_NOC_MATRAGRAY, const Aspect_Handle theParent = 0, const Aspect_Handle theMenu = 0, const Standard_Address theClientStruct = 0);
+  
+  //! Creates a Window based on the existing window handle.
+  //! This handle equals ( aPart1 << 16 ) + aPart2.
+  Standard_EXPORT WNT_Window(const Aspect_Handle aHandle, const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY);
+  
+  //! Destroies the Window and all resourses attached to it.
+  Standard_EXPORT virtual   void Destroy() ;
 ~WNT_Window()
 {
   Destroy();
 }
-  //! Sets cursor <aCursor> for ENTIRE WINDOW CLASS to which <br>
-//!          the Window belongs. <br>
-  Standard_EXPORT     void SetCursor(const Aspect_Handle aCursor) const;
-  //!  Opens the window <me>. <br>
-  Standard_EXPORT   virtual  void Map() const;
-  //! Opens a window <me> according to <aMapMode>. <br>
-//!          This method is specific to Windows NT. <br>
-//!          <aMapMode> can be one of SW_xxx constants defined <br>
-//!          in <windows.h>. See documentation. <br>
-  Standard_EXPORT     void Map(const Standard_Integer aMapMode) const;
-  //! Closes the window <me>. <br>
-  Standard_EXPORT   virtual  void Unmap() const;
-  //! Applies the resizing to the window <me>. <br>
-  Standard_EXPORT   virtual  Aspect_TypeOfResize DoResize() const;
-  //! Apply the mapping change to the window <me> <br>
-//! and returns TRUE if the window is mapped at screen. <br>
-  Standard_EXPORT   virtual  Standard_Boolean DoMapping() const;
-  //! Changes variables due to window position. <br>
-  Standard_EXPORT     void SetPos(const Standard_Integer X,const Standard_Integer Y,const Standard_Integer X1,const Standard_Integer Y1) ;
-  //! Sets user defined flags in the extra window data area. <br>
-//!          Supported flags WDF_* are listed in InterfaceGraphic_WNT.hxx <br>
-//!          In particular, the window backround can be turned off using this method. <br>
-  Standard_EXPORT     void SetFlags(const Standard_Integer aFlags) ;
-  //! Reset specified flags in the extra window data area. <br>
-//!          Supported flags WDF_* are listed in InterfaceGraphic_WNT.hxx <br>
-//!          In particular, the window backround can be turned on using this method. <br>
-  Standard_EXPORT     void ResetFlags(const Standard_Integer aFlags) ;
-  //! Returns True if the window <me> is opened <br>
-//!	        and False if the window is closed. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsMapped() const;
-  //! Returns The Window RATIO equal to the physical <br>
-//!	    WIDTH/HEIGHT dimensions. <br>
-  Standard_EXPORT   virtual  Quantity_Ratio Ratio() const;
-  //! Returns The Window POSITION in PIXEL <br>
-  Standard_EXPORT   virtual  void Position(Standard_Integer& X1,Standard_Integer& Y1,Standard_Integer& X2,Standard_Integer& Y2) const;
-  //! Returns The Window SIZE in PIXEL <br>
-  Standard_EXPORT   virtual  void Size(Standard_Integer& Width,Standard_Integer& Height) const;
-  //! Returns the Windows NT handle of the created window <me>. <br>
-        Aspect_Handle HWindow() const;
-  //! Returns the Windows NT handle parent of the created window <me>. <br>
-        Aspect_Handle HParentWindow() const;
+  
+  //! Sets cursor <aCursor> for ENTIRE WINDOW CLASS to which
+  //! the Window belongs.
+  Standard_EXPORT   void SetCursor (const Aspect_Handle aCursor)  const;
+  
+  //! Opens the window <me>.
+  Standard_EXPORT virtual   void Map()  const;
+  
+  //! Opens a window <me> according to <aMapMode>.
+  //! This method is specific to Windows NT.
+  //! <aMapMode> can be one of SW_xxx constants defined
+  //! in <windows.h>. See documentation.
+  Standard_EXPORT   void Map (const Standard_Integer aMapMode)  const;
+  
+  //! Closes the window <me>.
+  Standard_EXPORT virtual   void Unmap()  const;
+  
+  //! Applies the resizing to the window <me>.
+  Standard_EXPORT virtual   Aspect_TypeOfResize DoResize()  const;
+  
+  //! Apply the mapping change to the window <me>
+  //! and returns TRUE if the window is mapped at screen.
+    virtual   Standard_Boolean DoMapping()  const;
+  
+  //! Changes variables due to window position.
+  Standard_EXPORT   void SetPos (const Standard_Integer X, const Standard_Integer Y, const Standard_Integer X1, const Standard_Integer Y1) ;
+  
+  //! Returns True if the window <me> is opened
+  //! and False if the window is closed.
+  Standard_EXPORT virtual   Standard_Boolean IsMapped()  const;
+  
+  //! Returns The Window RATIO equal to the physical
+  //! WIDTH/HEIGHT dimensions.
+  Standard_EXPORT virtual   Quantity_Ratio Ratio()  const;
+  
+  //! Returns The Window POSITION in PIXEL
+  Standard_EXPORT virtual   void Position (Standard_Integer& X1, Standard_Integer& Y1, Standard_Integer& X2, Standard_Integer& Y2)  const;
+  
+  //! Returns The Window SIZE in PIXEL
+  Standard_EXPORT virtual   void Size (Standard_Integer& Width, Standard_Integer& Height)  const;
+  
+  //! Returns the Windows NT handle of the created window <me>.
+      Aspect_Handle HWindow()  const;
+  
+  //! Returns the Windows NT handle parent of the created window <me>.
+      Aspect_Handle HParentWindow()  const;
+  
+  //! Returns native Window handle (HWND)
+    virtual   Aspect_Drawable NativeHandle()  const;
+  
+  //! Returns parent of native Window handle (HWND on Windows, Window with Xlib, and so on)
+    virtual   Aspect_Drawable NativeParentHandle()  const;
 
 
 
@@ -127,21 +110,18 @@ public:
 protected:
 
 
-Standard_Integer aXLeft;
-Standard_Integer aYTop;
-Standard_Integer aXRight;
-Standard_Integer aYBottom;
-Handle_WNT_WClass myWClass;
-Aspect_Handle myHWindow;
-Aspect_Handle myHParentWindow;
-WNT_WindowData myExtraData;
-Standard_Address myUsrData;
+  Standard_Integer aXLeft;
+  Standard_Integer aYTop;
+  Standard_Integer aXRight;
+  Standard_Integer aYBottom;
+  Handle(WNT_WClass) myWClass;
+  Aspect_Handle myHWindow;
+  Aspect_Handle myHParentWindow;
+  Standard_Boolean myIsForeign;
 
 
 private: 
 
-  //! private method <br>
-  Standard_EXPORT     void doCreate(const Aspect_Handle aHandle,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY) ;
 
 
 
@@ -152,7 +132,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _WNT_Window_HeaderFile

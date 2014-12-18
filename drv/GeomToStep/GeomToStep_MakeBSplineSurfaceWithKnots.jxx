@@ -1,12 +1,4 @@
-#ifndef _StepGeom_BSplineSurfaceWithKnots_HeaderFile
 #include <StepGeom_BSplineSurfaceWithKnots.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Geom_BSplineSurface_HeaderFile
 #include <Geom_BSplineSurface.hxx>
-#endif
-#ifndef _GeomToStep_MakeBSplineSurfaceWithKnots_HeaderFile
 #include <GeomToStep_MakeBSplineSurfaceWithKnots.hxx>
-#endif

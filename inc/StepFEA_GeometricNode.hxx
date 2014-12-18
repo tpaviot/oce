@@ -6,28 +6,22 @@
 #ifndef _StepFEA_GeometricNode_HeaderFile
 #define _StepFEA_GeometricNode_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_GeometricNode_HeaderFile
 #include <Handle_StepFEA_GeometricNode.hxx>
-#endif
 
-#ifndef _StepFEA_NodeRepresentation_HeaderFile
 #include <StepFEA_NodeRepresentation.hxx>
-#endif
 
 
-//! Representation of STEP entity GeometricNode <br>
-class StepFEA_GeometricNode : public StepFEA_NodeRepresentation {
+//! Representation of STEP entity GeometricNode
+class StepFEA_GeometricNode : public StepFEA_NodeRepresentation
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_GeometricNode();
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_GeometricNode();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_GeometricNode_HeaderFile

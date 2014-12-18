@@ -6,40 +6,37 @@
 #ifndef _IFSelect_SelectModelEntities_HeaderFile
 #define _IFSelect_SelectModelEntities_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SelectModelEntities_HeaderFile
 #include <Handle_IFSelect_SelectModelEntities.hxx>
-#endif
 
-#ifndef _IFSelect_SelectBase_HeaderFile
 #include <IFSelect_SelectBase.hxx>
-#endif
 class Interface_EntityIterator;
 class Interface_Graph;
 class TCollection_AsciiString;
 
 
-//! A SelectModelEntities gets all the Entities of an <br>
-//!           InterfaceModel. <br>
-class IFSelect_SelectModelEntities : public IFSelect_SelectBase {
+//! A SelectModelEntities gets all the Entities of an
+//! InterfaceModel.
+class IFSelect_SelectModelEntities : public IFSelect_SelectBase
+{
 
 public:
 
-  //! Creates a SelectModelRoot <br>
-  Standard_EXPORT   IFSelect_SelectModelEntities();
-  //! Returns the list of selected entities : the Entities of the <br>
-//!           Model (note that this result assures naturally uniqueness) <br>
-  Standard_EXPORT     Interface_EntityIterator RootResult(const Interface_Graph& G) const;
-  //! The complete list of Entities (including shared ones) ... <br>
-//!           is exactly identical to RootResults in this case <br>
-  Standard_EXPORT   virtual  Interface_EntityIterator CompleteResult(const Interface_Graph& G) const;
-  //! Returns a text defining the criterium : "Model Entities" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates a SelectModelRoot
+  Standard_EXPORT IFSelect_SelectModelEntities();
+  
+  //! Returns the list of selected entities : the Entities of the
+  //! Model (note that this result assures naturally uniqueness)
+  Standard_EXPORT   Interface_EntityIterator RootResult (const Interface_Graph& G)  const;
+  
+  //! The complete list of Entities (including shared ones) ...
+  //! is exactly identical to RootResults in this case
+  Standard_EXPORT virtual   Interface_EntityIterator CompleteResult (const Interface_Graph& G)  const;
+  
+  //! Returns a text defining the criterium : "Model Entities"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -62,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SelectModelEntities_HeaderFile

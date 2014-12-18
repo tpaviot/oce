@@ -5,19 +5,11 @@
 
 #include <Law_ListNodeOfLaws.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Law_Function_HeaderFile
 #include <Law_Function.hxx>
-#endif
-#ifndef _Law_Laws_HeaderFile
 #include <Law_Laws.hxx>
-#endif
-#ifndef _Law_ListIteratorOfLaws_HeaderFile
 #include <Law_ListIteratorOfLaws.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(Law_ListNodeOfLaws,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Law_ListNodeOfLaws)
 
 
-#define Item Handle_Law_Function
+#define Item Handle(Law_Function)
 #define Item_hxx <Law_Function.hxx>
 #define TCollection_ListNode Law_ListNodeOfLaws
 #define TCollection_ListNode_hxx <Law_ListNodeOfLaws.hxx>

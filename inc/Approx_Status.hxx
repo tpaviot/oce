@@ -6,15 +6,14 @@
 #ifndef _Approx_Status_HeaderFile
 #define _Approx_Status_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Approx_Status {
+
+enum Approx_Status
+{
 Approx_PointsAdded,
 Approx_NoPointsAdded,
 Approx_NoApproximation
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Approx_Status_HeaderFile

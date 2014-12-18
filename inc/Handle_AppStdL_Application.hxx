@@ -6,22 +6,15 @@
 #ifndef _Handle_AppStdL_Application_HeaderFile
 #define _Handle_AppStdL_Application_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TDocStd_Application_HeaderFile
 #include <Handle_TDocStd_Application.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TDocStd_Application);
 class AppStdL_Application;
 
-DEFINE_STANDARD_HANDLE(AppStdL_Application,TDocStd_Application)
+DEFINE_STANDARD_HANDLE(AppStdL_Application, TDocStd_Application)
 
-#endif
+#endif // _Handle_AppStdL_Application_HeaderFile

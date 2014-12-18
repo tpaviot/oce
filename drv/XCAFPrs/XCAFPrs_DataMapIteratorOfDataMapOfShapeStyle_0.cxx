@@ -5,24 +5,12 @@
 
 #include <XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _XCAFPrs_Style_HeaderFile
 #include <XCAFPrs_Style.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _XCAFPrs_DataMapOfShapeStyle_HeaderFile
 #include <XCAFPrs_DataMapOfShapeStyle.hxx>
-#endif
-#ifndef _XCAFPrs_DataMapNodeOfDataMapOfShapeStyle_HeaderFile
 #include <XCAFPrs_DataMapNodeOfDataMapOfShapeStyle.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

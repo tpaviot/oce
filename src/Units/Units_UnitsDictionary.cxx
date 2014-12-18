@@ -19,19 +19,8 @@
 
 #include <Standard_Stream.hxx>
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
 #include <stdio.h>
-#ifdef HAVE_STDLIB_H
-# include <stdlib.h>
-#endif
-#ifdef HAVE_SYS_TYPES_H
-# include <sys/types.h>
-#endif
-#if defined (HAVE_SYS_STAT_H) || defined(WNT)
-# include <sys/stat.h>
-#endif
+#include <sys/stat.h>
 
 #include <Units_Token.hxx>
 #include <Units_TokensSequence.hxx>
@@ -83,7 +72,9 @@ void Units_UnitsDictionary::Creates(const Standard_CString afilename)
   
   ifstream file(afilename, ios::in);
   if(!file) {
+#ifdef OCCT_DEBUG
     cout<<"unable to open "<<afilename<<" for input"<<endl;
+#endif
     return;
   }
   
@@ -186,16 +177,6 @@ void Units_UnitsDictionary::Creates(const Standard_CString afilename)
       Handle(Units_Dimensions) dimensions = 
         new Units_Dimensions (M, L, T, I, t, N, J, P, S);
 
-#ifdef DEB
-      /*cout << " Name of Dimension : " << name << endl ;
-	  cout << MM << " " << LL << " " << TT << " " 
-		   << II << " " << tt << " " << NN << " " 
-		   << JJ << " " << PP << " " << SS << endl;
-	  cout << M << " " << L << " " << T << " " 
-		   << I << " " << t << " " << N << " " 
-		   << J << " " << P << " " << S << endl;*/
-#endif
-
       numberofunits = 0;
       theunitssequence = new Units_UnitsSequence();
       quantity = new Units_Quantity(name,dimensions,theunitssequence);
@@ -286,7 +267,7 @@ void Units_UnitsDictionary::Creates(const Standard_CString afilename)
         if(move) {
           Standard_Integer last = theunitssequence->Length();
           unit = theunitssequence->Value(last);
-          shiftedunit = *(Handle_Units_ShiftedUnit*)&unit;
+          shiftedunit = *(Handle(Units_ShiftedUnit)*)&unit;
           shiftedunit->Move(move);
         }
       }
@@ -362,7 +343,9 @@ TCollection_AsciiString Units_UnitsDictionary::ActiveUnit(const Standard_CString
       if(unitssequence->Length())
         return unitssequence->Value(1)->SymbolsSequence()->Value(1)->String();
       else {
+#ifdef OCCT_DEBUG
         cout<<" Pas d'unite active pour "<<aquantity<<endl;
+#endif
         return "";
       }
     }

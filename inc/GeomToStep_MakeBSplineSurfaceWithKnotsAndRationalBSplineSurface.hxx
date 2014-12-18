@@ -6,45 +6,33 @@
 #ifndef _GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_HeaderFile
 #define _GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_HeaderFile
 #include <Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
 class StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
 class StdFail_NotDone;
 class Geom_BSplineSurface;
 
 
-//! This class implements the mapping between class <br>
-//!          BSplineSurface from Geom and the class <br>
-//!          BSplineSurfaceWithKnotsAndRationalBSplineSurface from <br>
-//!          StepGeom which describes a <br>
-//!          rational_bspline_Surface_with_knots from Prostep <br>
-class GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface  : public GeomToStep_Root {
+//! This class implements the mapping between class
+//! BSplineSurface from Geom and the class
+//! BSplineSurfaceWithKnotsAndRationalBSplineSurface from
+//! StepGeom which describes a
+//! rational_bspline_Surface_with_knots from Prostep
+class GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface(const Handle(Geom_BSplineSurface)& Bsplin);
+  Standard_EXPORT GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface(const Handle(Geom_BSplineSurface)& Bsplin);
   
-  Standard_EXPORT    const Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface)& Value()  const;
 
 
 
@@ -59,7 +47,7 @@ private:
 
 
 
-Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface theBSplineSurfaceWithKnotsAndRationalBSplineSurface;
+  Handle(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface) theBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 
 
 };
@@ -68,7 +56,6 @@ Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface theBSplineSurfa
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_HeaderFile

@@ -6,34 +6,16 @@
 #ifndef _TopOpeBRep_DataMapOfTopolTool_HeaderFile
 #define _TopOpeBRep_DataMapOfTopolTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_BRepTopAdaptor_TopolTool_HeaderFile
 #include <Handle_BRepTopAdaptor_TopolTool.hxx>
-#endif
-#ifndef _Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool_HeaderFile
 #include <Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
@@ -44,50 +26,50 @@ class TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool;
 
 
 
-class TopOpeBRep_DataMapOfTopolTool  : public TCollection_BasicMap {
+class TopOpeBRep_DataMapOfTopolTool  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_DataMapOfTopolTool(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TopOpeBRep_DataMapOfTopolTool(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TopOpeBRep_DataMapOfTopolTool& Assign(const TopOpeBRep_DataMapOfTopolTool& Other) ;
-    TopOpeBRep_DataMapOfTopolTool& operator =(const TopOpeBRep_DataMapOfTopolTool& Other) 
+  Standard_EXPORT   TopOpeBRep_DataMapOfTopolTool& Assign (const TopOpeBRep_DataMapOfTopolTool& Other) ;
+  TopOpeBRep_DataMapOfTopolTool& operator = (const TopOpeBRep_DataMapOfTopolTool& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopOpeBRep_DataMapOfTopolTool()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const TopoDS_Shape& K,const Handle(BRepTopAdaptor_TopolTool)& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const TopoDS_Shape& K, const Handle(BRepTopAdaptor_TopolTool)& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const TopoDS_Shape& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const TopoDS_Shape& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const TopoDS_Shape& K) ;
   
-  Standard_EXPORT    const Handle_BRepTopAdaptor_TopolTool& Find(const TopoDS_Shape& K) const;
-   const Handle_BRepTopAdaptor_TopolTool& operator()(const TopoDS_Shape& K) const
+  Standard_EXPORT  const  Handle(BRepTopAdaptor_TopolTool)& Find (const TopoDS_Shape& K)  const;
+ const  Handle(BRepTopAdaptor_TopolTool)& operator() (const TopoDS_Shape& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Handle_BRepTopAdaptor_TopolTool& ChangeFind(const TopoDS_Shape& K) ;
-    Handle_BRepTopAdaptor_TopolTool& operator()(const TopoDS_Shape& K) 
+  Standard_EXPORT   Handle(BRepTopAdaptor_TopolTool)& ChangeFind (const TopoDS_Shape& K) ;
+  Handle(BRepTopAdaptor_TopolTool)& operator() (const TopoDS_Shape& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const TopoDS_Shape& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const TopoDS_Shape& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const TopoDS_Shape& K) ;
 
 
 
@@ -101,7 +83,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   TopOpeBRep_DataMapOfTopolTool(const TopOpeBRep_DataMapOfTopolTool& Other);
+  Standard_EXPORT TopOpeBRep_DataMapOfTopolTool(const TopOpeBRep_DataMapOfTopolTool& Other);
 
 
 
@@ -112,7 +94,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_DataMapOfTopolTool_HeaderFile

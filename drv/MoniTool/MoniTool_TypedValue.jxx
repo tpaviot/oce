@@ -1,33 +1,11 @@
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _TColStd_HArray1OfAsciiString_HeaderFile
 #include <TColStd_HArray1OfAsciiString.hxx>
-#endif
-#ifndef _Dico_DictionaryOfInteger_HeaderFile
 #include <Dico_DictionaryOfInteger.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfAsciiString_HeaderFile
 #include <TColStd_HSequenceOfAsciiString.hxx>
-#endif
-#ifndef _Dico_DictionaryOfTransient_HeaderFile
 #include <Dico_DictionaryOfTransient.hxx>
-#endif
-#ifndef _MoniTool_TypedValue_HeaderFile
 #include <MoniTool_TypedValue.hxx>
-#endif

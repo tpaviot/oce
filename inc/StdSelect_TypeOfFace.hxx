@@ -6,10 +6,13 @@
 #ifndef _StdSelect_TypeOfFace_HeaderFile
 #define _StdSelect_TypeOfFace_HeaderFile
 
-//! Provides values for different types of faces. These <br>
-//! values are used to filter faces in frameworks inheriting <br>
-//! StdSelect_FaceFilter. <br>
-enum StdSelect_TypeOfFace {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Provides values for different types of faces. These
+//! values are used to filter faces in frameworks inheriting
+//! StdSelect_FaceFilter.
+enum StdSelect_TypeOfFace
+{
 StdSelect_AnyFace,
 StdSelect_Plane,
 StdSelect_Cylinder,
@@ -19,8 +22,4 @@ StdSelect_Revol,
 StdSelect_Cone
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StdSelect_TypeOfFace_HeaderFile

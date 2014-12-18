@@ -5,28 +5,14 @@
 
 #include <Approx_HArray1OfAdHSurface.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Approx_Array1OfAdHSurface_HeaderFile
 #include <Approx_Array1OfAdHSurface.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(Approx_HArray1OfAdHSurface,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Approx_HArray1OfAdHSurface)
 
 
-#define ItemHArray1 Handle_Adaptor3d_HSurface
+#define ItemHArray1 Handle(Adaptor3d_HSurface)
 #define ItemHArray1_hxx <Adaptor3d_HSurface.hxx>
 #define TheArray1 Approx_Array1OfAdHSurface
 #define TheArray1_hxx <Approx_Array1OfAdHSurface.hxx>

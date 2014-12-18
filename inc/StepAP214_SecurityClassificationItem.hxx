@@ -6,30 +6,23 @@
 #ifndef _StepAP214_SecurityClassificationItem_HeaderFile
 #define _StepAP214_SecurityClassificationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepAP214_ApprovalItem_HeaderFile
 #include <StepAP214_ApprovalItem.hxx>
-#endif
 
 
 
-class StepAP214_SecurityClassificationItem  : public StepAP214_ApprovalItem {
+class StepAP214_SecurityClassificationItem  : public StepAP214_ApprovalItem
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a SecurityClassificationItem SelectType <br>
-  Standard_EXPORT   StepAP214_SecurityClassificationItem();
-
+  
+  //! Returns a SecurityClassificationItem SelectType
+  Standard_EXPORT StepAP214_SecurityClassificationItem();
 
 
 
@@ -52,7 +45,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_SecurityClassificationItem_HeaderFile

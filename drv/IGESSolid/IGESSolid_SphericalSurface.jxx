@@ -1,12 +1,4 @@
-#ifndef _IGESGeom_Point_HeaderFile
 #include <IGESGeom_Point.hxx>
-#endif
-#ifndef _IGESGeom_Direction_HeaderFile
 #include <IGESGeom_Direction.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _IGESSolid_SphericalSurface_HeaderFile
 #include <IGESSolid_SphericalSurface.hxx>
-#endif

@@ -6,123 +6,114 @@
 #ifndef _StdPrs_WFDeflectionRestrictedFace_HeaderFile
 #define _StdPrs_WFDeflectionRestrictedFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Prs3d_Root_HeaderFile
 #include <Prs3d_Root.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_BRepAdaptor_HSurface_HeaderFile
 #include <Handle_BRepAdaptor_HSurface.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Prs3d_NListOfSequenceOfPnt_HeaderFile
 #include <Prs3d_NListOfSequenceOfPnt.hxx>
-#endif
 class Prs3d_Presentation;
 class BRepAdaptor_HSurface;
 class Prs3d_Drawer;
+class Bnd_Box;
 
 
-//! A framework to provide display of U and V <br>
-//! isoparameters of faces, while allowing you to impose <br>
-//! a deflection on them. <br>
-class StdPrs_WFDeflectionRestrictedFace  : public Prs3d_Root {
+//! A framework to provide display of U and V
+//! isoparameters of faces, while allowing you to impose
+//! a deflection on them.
+//! Computes the wireframe presentation of faces with
+//! restrictions by displaying a given number of U and/or
+//! V isoparametric curves. The isoparametric curves are
+//! drawn with respect to a maximal chordial deviation.
+//! The presentation includes the restriction curves.
+class StdPrs_WFDeflectionRestrictedFace  : public Prs3d_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines a display featuring U and V isoparameters. <br>
-//! Adds the surface aFace to the <br>
-//! StdPrs_WFRestrictedFace algorithm. This face is <br>
-//! found in a shape in the presentation object <br>
-//! aPresentation, and its display attributes - in <br>
-//! particular, the number of U and V isoparameters - are <br>
-//! set in the attribute manager aDrawer. <br>
-//! aFace is BRepAdaptor_HSurface surface created <br>
-//! from a face in a topological shape.   which is passed <br>
-//! as an argument through the <br>
-//! BRepAdaptor_HSurface surface created from it. <br>
-//! This is what allows the topological face to be treated <br>
-//! as a geometric surface. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(BRepAdaptor_HSurface)& aFace,const Handle(Prs3d_Drawer)& aDrawer) ;
-  //!	Defines a display featuring U isoparameters <br>
-//! respectively. Add the surface aFace to the <br>
-//! StdPrs_WFRestrictedFace algorithm. This face <br>
-//! is found in a shape in the presentation object <br>
-//! aPresentation, and its display attributes - in <br>
-//! particular, the number of U isoparameters - <br>
-//! are set in the attribute manager aDrawer. <br>
-//! aFace is BRepAdaptor_HSurface surface <br>
-//! created from a face in a topological shape.   which <br>
-//! is passed to the function as an argument through <br>
-//! the BRepAdaptor_HSurface surface created from <br>
-//! it. This is what allows the topological face to be <br>
-//! treated as a geometric surface. <br>
-  Standard_EXPORT   static  void AddUIso(const Handle(Prs3d_Presentation)& aPresentation,const Handle(BRepAdaptor_HSurface)& aFace,const Handle(Prs3d_Drawer)& aDrawer) ;
-  //!	Defines a display featuring V isoparameters <br>
-//! respectively. Add the surface aFace to the <br>
-//! StdPrs_WFRestrictedFace algorithm. This face <br>
-//! is found in a shape in the presentation object <br>
-//! aPresentation, and its display attributes - in <br>
-//! particular, the number of V isoparameters - <br>
-//! are set in the attribute manager aDrawer. <br>
-//! aFace is BRepAdaptor_HSurface surface <br>
-//! created from a face in a topological shape.   which <br>
-//! is passed to the function as an argument through <br>
-//! the BRepAdaptor_HSurface surface created from <br>
-//! it. This is what allows the topological face to be <br>
-//! treated as a geometric surface. <br>
-  Standard_EXPORT   static  void AddVIso(const Handle(Prs3d_Presentation)& aPresentation,const Handle(BRepAdaptor_HSurface)& aFace,const Handle(Prs3d_Drawer)& aDrawer) ;
-  //! Defines a display of a delection-specified face. The <br>
-//! display will feature U and V isoparameters. <br>
-//! Adds the topology aShape to the <br>
-//! StdPrs_WFRestrictedFace algorithm. This shape is <br>
-//! found in the presentation object aPresentation, and <br>
-//! its display attributes - except the number of U and V <br>
-//! isoparameters - are set in the attribute manager aDrawer. <br>
-//! The function sets the number of U and V <br>
-//! isoparameters, NBUiso and NBViso, in the shape. To <br>
-//! do this, the arguments DrawUIso and DrawVIso must be true. <br>
-//! aFace is BRepAdaptor_HSurface surface created <br>
-//! from a face in a topological shape.   which is passed <br>
-//! as an argument through the <br>
-//! BRepAdaptor_HSurface surface created from it. <br>
-//! This is what allows the topological face to be treated <br>
-//! as a geometric surface. <br>
-//! Curves give a sequence of face curves, it is used if the PrimitiveArray <br>
-//! visualization approach is activated (it is activated by default). <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(BRepAdaptor_HSurface)& aFace,const Standard_Boolean DrawUIso,const Standard_Boolean DrawVIso,const Quantity_Length Deflection,const Standard_Integer NBUiso,const Standard_Integer NBViso,const Handle(Prs3d_Drawer)& aDrawer,Prs3d_NListOfSequenceOfPnt& Curves) ;
   
-  Standard_EXPORT   static  Standard_Boolean Match(const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const Handle(BRepAdaptor_HSurface)& aFace,const Handle(Prs3d_Drawer)& aDrawer) ;
+  //! Defines a display featuring U and V isoparameters.
+  //! Adds the surface aFace to the
+  //! StdPrs_WFRestrictedFace algorithm. This face is
+  //! found in a shape in the presentation object
+  //! aPresentation, and its display attributes - in
+  //! particular, the number of U and V isoparameters - are
+  //! set in the attribute manager aDrawer.
+  //! aFace is BRepAdaptor_HSurface surface created
+  //! from a face in a topological shape.   which is passed
+  //! as an argument through the
+  //! BRepAdaptor_HSurface surface created from it.
+  //! This is what allows the topological face to be treated
+  //! as a geometric surface.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(BRepAdaptor_HSurface)& aFace, const Handle(Prs3d_Drawer)& aDrawer) ;
   
-  Standard_EXPORT   static  Standard_Boolean MatchUIso(const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const Handle(BRepAdaptor_HSurface)& aFace,const Handle(Prs3d_Drawer)& aDrawer) ;
+  //! Defines a display featuring U isoparameters
+  //! respectively. Add the surface aFace to the
+  //! StdPrs_WFRestrictedFace algorithm. This face
+  //! is found in a shape in the presentation object
+  //! aPresentation, and its display attributes - in
+  //! particular, the number of U isoparameters -
+  //! are set in the attribute manager aDrawer.
+  //! aFace is BRepAdaptor_HSurface surface
+  //! created from a face in a topological shape.   which
+  //! is passed to the function as an argument through
+  //! the BRepAdaptor_HSurface surface created from
+  //! it. This is what allows the topological face to be
+  //! treated as a geometric surface.
+  Standard_EXPORT static   void AddUIso (const Handle(Prs3d_Presentation)& aPresentation, const Handle(BRepAdaptor_HSurface)& aFace, const Handle(Prs3d_Drawer)& aDrawer) ;
   
-  Standard_EXPORT   static  Standard_Boolean MatchVIso(const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const Handle(BRepAdaptor_HSurface)& aFace,const Handle(Prs3d_Drawer)& aDrawer) ;
+  //! Defines a display featuring V isoparameters
+  //! respectively. Add the surface aFace to the
+  //! StdPrs_WFRestrictedFace algorithm. This face
+  //! is found in a shape in the presentation object
+  //! aPresentation, and its display attributes - in
+  //! particular, the number of V isoparameters -
+  //! are set in the attribute manager aDrawer.
+  //! aFace is BRepAdaptor_HSurface surface
+  //! created from a face in a topological shape.   which
+  //! is passed to the function as an argument through
+  //! the BRepAdaptor_HSurface surface created from
+  //! it. This is what allows the topological face to be
+  //! treated as a geometric surface.
+  Standard_EXPORT static   void AddVIso (const Handle(Prs3d_Presentation)& aPresentation, const Handle(BRepAdaptor_HSurface)& aFace, const Handle(Prs3d_Drawer)& aDrawer) ;
   
-  Standard_EXPORT   static  Standard_Boolean Match(const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const Handle(BRepAdaptor_HSurface)& aFace,const Handle(Prs3d_Drawer)& aDrawer,const Standard_Boolean DrawUIso,const Standard_Boolean DrawVIso,const Quantity_Length aDeflection,const Standard_Integer NBUiso,const Standard_Integer NBViso) ;
-
+  //! Defines a display of a delection-specified face. The
+  //! display will feature U and V isoparameters.
+  //! Adds the topology aShape to the
+  //! StdPrs_WFRestrictedFace algorithm. This shape is
+  //! found in the presentation object aPresentation, and
+  //! its display attributes - except the number of U and V
+  //! isoparameters - are set in the attribute manager aDrawer.
+  //! The function sets the number of U and V
+  //! isoparameters, NBUiso and NBViso, in the shape. To
+  //! do this, the arguments DrawUIso and DrawVIso must be true.
+  //! aFace is BRepAdaptor_HSurface surface created
+  //! from a face in a topological shape.   which is passed
+  //! as an argument through the
+  //! BRepAdaptor_HSurface surface created from it.
+  //! This is what allows the topological face to be treated
+  //! as a geometric surface.
+  //! Curves give a sequence of face curves, it is used if the PrimitiveArray
+  //! visualization approach is activated (it is activated by default).
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(BRepAdaptor_HSurface)& aFace, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Quantity_Length Deflection, const Standard_Integer NBUiso, const Standard_Integer NBViso, const Handle(Prs3d_Drawer)& aDrawer, Prs3d_NListOfSequenceOfPnt& Curves) ;
+  
+  //! Adds box as polyline to the presentation object
+  Standard_EXPORT static   void AddBox (const Handle(Prs3d_Presentation)& thePrs, const Bnd_Box& theBndBox, const Handle(Prs3d_Drawer)& theDrawer) ;
+  
+  Standard_EXPORT static   Standard_Boolean Match (const Quantity_Length X, const Quantity_Length Y, const Quantity_Length Z, const Quantity_Length aDistance, const Handle(BRepAdaptor_HSurface)& aFace, const Handle(Prs3d_Drawer)& aDrawer) ;
+  
+  Standard_EXPORT static   Standard_Boolean MatchUIso (const Quantity_Length X, const Quantity_Length Y, const Quantity_Length Z, const Quantity_Length aDistance, const Handle(BRepAdaptor_HSurface)& aFace, const Handle(Prs3d_Drawer)& aDrawer) ;
+  
+  Standard_EXPORT static   Standard_Boolean MatchVIso (const Quantity_Length X, const Quantity_Length Y, const Quantity_Length Z, const Quantity_Length aDistance, const Handle(BRepAdaptor_HSurface)& aFace, const Handle(Prs3d_Drawer)& aDrawer) ;
+  
+  Standard_EXPORT static   Standard_Boolean Match (const Quantity_Length X, const Quantity_Length Y, const Quantity_Length Z, const Quantity_Length aDistance, const Handle(BRepAdaptor_HSurface)& aFace, const Handle(Prs3d_Drawer)& aDrawer, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Quantity_Length aDeflection, const Standard_Integer NBUiso, const Standard_Integer NBViso) ;
 
 
 
@@ -145,7 +136,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdPrs_WFDeflectionRestrictedFace_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <TColgp_SequenceOfPnt.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TColgp_SequenceNodeOfSequenceOfPnt_HeaderFile
 #include <TColgp_SequenceNodeOfSequenceOfPnt.hxx>
-#endif
  
 
 #define SeqItem gp_Pnt

@@ -6,54 +6,42 @@
 #ifndef _StepVisual_SurfaceSideStyle_HeaderFile
 #define _StepVisual_SurfaceSideStyle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_SurfaceSideStyle_HeaderFile
 #include <Handle_StepVisual_SurfaceSideStyle.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepVisual_HArray1OfSurfaceStyleElementSelect_HeaderFile
 #include <Handle_StepVisual_HArray1OfSurfaceStyleElementSelect.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepVisual_HArray1OfSurfaceStyleElementSelect;
 class StepVisual_SurfaceStyleElementSelect;
 
 
 
-class StepVisual_SurfaceSideStyle : public MMgt_TShared {
+class StepVisual_SurfaceSideStyle : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a SurfaceSideStyle <br>
-  Standard_EXPORT   StepVisual_SurfaceSideStyle();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepVisual_HArray1OfSurfaceStyleElementSelect)& aStyles) ;
+  //! Returns a SurfaceSideStyle
+  Standard_EXPORT StepVisual_SurfaceSideStyle();
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepVisual_HArray1OfSurfaceStyleElementSelect)& aStyles) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetStyles(const Handle(StepVisual_HArray1OfSurfaceStyleElementSelect)& aStyles) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
   
-  Standard_EXPORT     Handle_StepVisual_HArray1OfSurfaceStyleElementSelect Styles() const;
+  Standard_EXPORT   void SetStyles (const Handle(StepVisual_HArray1OfSurfaceStyleElementSelect)& aStyles) ;
   
-  Standard_EXPORT     StepVisual_SurfaceStyleElementSelect StylesValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepVisual_HArray1OfSurfaceStyleElementSelect) Styles()  const;
   
-  Standard_EXPORT     Standard_Integer NbStyles() const;
+  Standard_EXPORT   StepVisual_SurfaceStyleElementSelect StylesValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbStyles()  const;
 
 
 
@@ -68,8 +56,8 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString name;
-Handle_StepVisual_HArray1OfSurfaceStyleElementSelect styles;
+  Handle(TCollection_HAsciiString) name;
+  Handle(StepVisual_HArray1OfSurfaceStyleElementSelect) styles;
 
 
 };
@@ -78,7 +66,6 @@ Handle_StepVisual_HArray1OfSurfaceStyleElementSelect styles;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_SurfaceSideStyle_HeaderFile

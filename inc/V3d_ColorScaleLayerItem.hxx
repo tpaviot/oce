@@ -6,38 +6,32 @@
 #ifndef _V3d_ColorScaleLayerItem_HeaderFile
 #define _V3d_ColorScaleLayerItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_V3d_ColorScaleLayerItem_HeaderFile
 #include <Handle_V3d_ColorScaleLayerItem.hxx>
-#endif
 
-#ifndef _Handle_V3d_ColorScale_HeaderFile
 #include <Handle_V3d_ColorScale.hxx>
-#endif
-#ifndef _Visual3d_LayerItem_HeaderFile
 #include <Visual3d_LayerItem.hxx>
-#endif
 class V3d_ColorScale;
 
 
-//! This class is drawable unit of ColorScale of 2d scene <br>
-class V3d_ColorScaleLayerItem : public Visual3d_LayerItem {
+//! This class is drawable unit of ColorScale of 2d scene
+class V3d_ColorScaleLayerItem : public Visual3d_LayerItem
+{
 
 public:
 
-  //! Creates a layer item <br>
-  Standard_EXPORT   V3d_ColorScaleLayerItem(const Handle(V3d_ColorScale)& aColorScale);
-  //! virtual function for recompute 2D <br>
-//!        presentation (empty by default) <br>
-  Standard_EXPORT   virtual  void ComputeLayerPrs() ;
-  //! virtual function for recompute 2D <br>
-//!        presentation (empty by default) <br>
-  Standard_EXPORT   virtual  void RedrawLayerPrs() ;
+  
+  //! Creates a layer item
+  Standard_EXPORT V3d_ColorScaleLayerItem(const Handle(V3d_ColorScale)& aColorScale);
+  
+  //! virtual function for recompute 2D
+  //! presentation (empty by default)
+  Standard_EXPORT virtual   void ComputeLayerPrs() ;
+  
+  //! virtual function for recompute 2D
+  //! presentation (empty by default)
+  Standard_EXPORT virtual   void RedrawLayerPrs() ;
 
 
 
@@ -52,7 +46,7 @@ protected:
 private: 
 
 
-Handle_V3d_ColorScale MyColorScale;
+  Handle(V3d_ColorScale) MyColorScale;
 
 
 };
@@ -61,7 +55,6 @@ Handle_V3d_ColorScale MyColorScale;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _V3d_ColorScaleLayerItem_HeaderFile

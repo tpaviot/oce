@@ -50,7 +50,6 @@
 #include <AIS_Selection.hxx>
 #include <V3d_Viewer.hxx>
 #include <V3d_View.hxx>
-#include <Visual3d_TransientManager.hxx>
 #include <Visual3d_View.hxx>
 
 #ifdef ALE70590
@@ -321,12 +320,21 @@ Erase(const Handle(AIS_InteractiveObject)& anInteractive)
     if(myMainPM->IsDisplayed(anInteractive,STAT->HilightMode()))
       myMainPM->SetVisibility (anInteractive, STAT->HilightMode(), Standard_False);
   }
-  //selection step
-  
-  TColStd_ListIteratorOfListOfInteger It(STAT->SelectionModes());
-  for(;It.More();It.Next())
-    mySM->Deactivate(anInteractive,It.Value(),myMainVS);
-  //  STAT->ClearSelectionModes();
+
+  // Deactivate selectable entities of interactive object
+  if (mySM->Contains (anInteractive))
+  {
+    TColStd_ListIteratorOfListOfInteger aModeIter (STAT->SelectionModes());
+    for (; aModeIter.More(); aModeIter.Next())
+    {
+      mySM->Deactivate (anInteractive, aModeIter.Value(), myMainVS);
+    }
+  }
+
+  UpdateSort();
+
+  ClearOutdatedSelection (anInteractive, Standard_True);
+
   return status;
 }
 
@@ -486,68 +494,15 @@ Standard_Boolean AIS_LocalContext::Remove(const Handle(AIS_InteractiveObject)& a
     AddOrRemoveSelected(aSelectable);
   myActiveObjects.UnBind(aSelectable);
 
-  //Last detected object keeps for lastindex initialization.
-  Handle(SelectMgr_EntityOwner) aLastPicked = myMainVS->OnePicked();
+  // Remove the interactive object from selection manager
+  if (mySM->Contains (aSelectable))
+  {
+    mySM->Remove (aSelectable);
+  }
 
   UpdateSort();
 
-  //Object removes from SelectMgr
-  if( mySM->Contains(aSelectable) )
-    mySM->Remove(aSelectable);
-
-  //Object removes from Detected sequence
-  AIS_SequenceOfInteractive detectAIS;
-
-  Standard_Integer i = 1;
-  for(i = 1 ; i < myAISDetectedSeq.Length(); i++)
-  {
-    Handle(AIS_InteractiveObject) anObj = DetectedCurrentObject();
-    if( !anObj.IsNull() && anObj != aSelectable )
-      myAISDetectedSeq.Remove( i );
-  }
-
-  Standard_Integer aHM = aSelectable->HasHilightMode() ? aSelectable->HilightMode() : 0;
-
-  //EntityOwners remove from AIS_Selection
-  Handle(AIS_Selection) aSel = AIS_Selection::Selection(mySelName.ToCString());
-  AIS_NListTransient::Iterator anIter(aSel->Objects()); 
-  AIS_NListTransient removeEntites;
-  for(; anIter.More(); anIter.Next()){
-    const Handle(Standard_Transient)& Tr = anIter.Value();
-    if (!Tr.IsNull()){
-      const Handle(SelectMgr_EntityOwner)& anOwnr = *((const Handle(SelectMgr_EntityOwner)*) &Tr);
-      if(anOwnr->Selectable() == aSelectable){
-        removeEntites.Append(Tr);
-        if(IsSelected(anOwnr))
-          anOwnr->Unhilight(myMainPM, aHM);//Unhilight selected
-      }
-    }
-  }
-  AIS_NListTransient::Iterator anIterRemove(removeEntites); 
-  for(; anIterRemove.More(); anIterRemove.Next())
-    aSel->Select(anIterRemove.Value());//EntityOwner removes from the selection data
-
-  //EntityOwners remove from myMapOfOwner
-  SelectMgr_IndexedMapOfOwner ownersToKeep; 
-  const Handle(V3d_Viewer)& aViewer = myCTX->CurrentViewer();
-  for(i = 1; i <= myMapOfOwner.Extent(); i++){
-    const Handle(SelectMgr_EntityOwner)& anOwner = myMapOfOwner(i) ;
-    if(!anOwner.IsNull()) {
-      if(anOwner->Selectable() != aSelectable)
-        ownersToKeep.Add(anOwner);
-      else
-      {
-        if(anOwner->IsHilighted(myMainPM, aHM))
-        {
-          for(aViewer->InitActiveViews(); aViewer->MoreActiveViews(); aViewer->NextActiveViews())
-            Unhilight(anOwner, aViewer->ActiveView());
-        }
-      }
-    }
-  }
-  myMapOfOwner.Clear();
-  myMapOfOwner.Assign(ownersToKeep);
-  mylastindex = myMapOfOwner.FindIndex(aLastPicked);
+  ClearOutdatedSelection (aSelectable, Standard_True);
 
   return Standard_True;
 }
@@ -693,10 +648,10 @@ Standard_Boolean AIS_LocalContext::HasSameProjector(const Handle(Select3D_Projec
 
 //=======================================================================
 //function : Terminate
-//purpose  : 
+//purpose  :
 //=======================================================================
 
-void AIS_LocalContext::Terminate( const Standard_Boolean updateviewer )
+void AIS_LocalContext::Terminate (const Standard_Boolean theToUpdate)
 {
   ClearDetected();
   Clear();
@@ -713,30 +668,28 @@ void AIS_LocalContext::Terminate( const Standard_Boolean updateviewer )
   Handle(Standard_Transient) Tr;
   for(S->Init();S->More();S->Next()){
     Tr = S->Value();
-    (*((Handle(SelectMgr_EntityOwner)*)&Tr))->State(0);
+    (*((Handle(SelectMgr_EntityOwner)*)&Tr))->SetSelected (Standard_False);
   }
 
       
   AIS_Selection::Select();
   AIS_Selection::Remove(mySelName.ToCString());
 
-  // CLE
-  // const Handle(V3d_Viewer)& Vwr = myCTX->CurrentViewer();
-  Handle(V3d_Viewer) Vwr = myCTX->CurrentViewer();
-  // ENDCLE
-  Handle(V3d_View) curV;
-  for(Vwr->InitActiveViews();Vwr->MoreActiveViews();Vwr->NextActiveViews()){
-    curV = Vwr->ActiveView(); 
-    Visual3d_TransientManager::ClearDraw( curV->View(), updateviewer );
+  Handle(V3d_Viewer) aViewer = myCTX->CurrentViewer();
+  for (aViewer->InitActiveViews(); aViewer->MoreActiveViews(); aViewer->NextActiveViews())
+  {
+    Handle(V3d_View) aView = aViewer->ActiveView();
+    aView->View()->ClearImmediate();
   }
 
+  Handle(V3d_View) aDummyView;
+  myMainVS->ClearAreas     (aDummyView);
+  myMainVS->ClearSensitive (aDummyView);
 
-#ifdef DEB
-  Handle(V3d_View) BidV;
-  myMainVS->ClearAreas(BidV);
-  myMainVS->ClearSensitive(BidV);
-  
-#endif
+  if (theToUpdate)
+  {
+    myCTX->UpdateCurrentViewer();
+  }
 }
 
 
@@ -1172,50 +1125,68 @@ void AIS_LocalContext::UpdateSort()
   myMainVS->UpdateSort();
 }
 
-
-
 //=======================================================================
-//function : IMMEDIATE MODE
-//purpose  : 
+//function : BeginImmediateDraw
+//purpose  :
 //=======================================================================
-
-Standard_Boolean  AIS_LocalContext::BeginImmediateDraw()
+Standard_Boolean AIS_LocalContext::BeginImmediateDraw()
 {
-  if(myMainPM->IsImmediateModeOn()){
-    myMainPM->BeginDraw();
+  if (myMainPM->IsImmediateModeOn())
+  {
+    myMainPM->BeginImmediateDraw();
     return Standard_True;
   }
   return Standard_False;
 }
 
-
-Standard_Boolean AIS_LocalContext::ImmediateAdd(const Handle(AIS_InteractiveObject)& anIObj,
-						      const Standard_Integer aMode)
+//=======================================================================
+//function : ImmediateAdd
+//purpose  :
+//=======================================================================
+Standard_Boolean AIS_LocalContext::ImmediateAdd (const Handle(AIS_InteractiveObject)& theObj,
+                                                 const Standard_Integer               theMode)
 {
-  if(!myMainPM->IsImmediateModeOn())
+  if (!myMainPM->IsImmediateModeOn())
+  {
     return Standard_False;
-  myMainPM->Add(anIObj,aMode);
+  }
+
+  myMainPM->AddToImmediateList (myMainPM->Presentation (theObj, theMode)->Presentation());
   return Standard_True;
 }
 
-Standard_Boolean AIS_LocalContext::ImmediateRemove(const Handle(AIS_InteractiveObject)& anIObj,
-						   const Standard_Integer aMode)
+//=======================================================================
+//function : EndImmediateDraw
+//purpose  :
+//=======================================================================
+Standard_Boolean AIS_LocalContext::EndImmediateDraw (const Handle(V3d_View)& theView)
 {
-  if(!myMainPM->IsImmediateModeOn())   return Standard_False;
-  myMainPM->Remove(anIObj,aMode);
+  if (!myMainPM->IsImmediateModeOn())
+  {
+    return Standard_False;
+  }
+
+  myMainPM->EndImmediateDraw (theView);
   return Standard_True;
 }
 
-Standard_Boolean AIS_LocalContext::EndImmediateDraw(const Handle(V3d_View)& aView,
-							  const Standard_Boolean DoubleBuf)
+// =======================================================================
+// function : ClearImmediateDraw
+// purpose  :
+// =======================================================================
+void AIS_LocalContext::ClearImmediateDraw()
 {
-  if(!myMainPM->IsImmediateModeOn()) return Standard_False;
-  myMainPM->EndDraw(aView,DoubleBuf);
-  return Standard_True;
+  myMainPM->ClearImmediateDraw();
 }
 
+//=======================================================================
+//function : IsImmediateModeOn
+//purpose  :
+//=======================================================================
 Standard_Boolean AIS_LocalContext::IsImmediateModeOn() const
-{return myMainPM->IsImmediateModeOn();}
+{
+  return myMainPM->IsImmediateModeOn();
+}
 
 void AIS_LocalContext::SetSensitivityMode(const StdSelect_SensitivityMode aMode) {
 

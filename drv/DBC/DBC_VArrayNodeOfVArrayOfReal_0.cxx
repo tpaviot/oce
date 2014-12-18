@@ -5,16 +5,10 @@
 
 #include <DBC_VArrayNodeOfVArrayOfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _DBC_VArrayOfReal_HeaderFile
 #include <DBC_VArrayOfReal.hxx>
-#endif
-#ifndef _DBC_VArrayTNodeOfVArrayOfReal_HeaderFile
 #include <DBC_VArrayTNodeOfVArrayOfReal.hxx>
-#endif
 
  
 

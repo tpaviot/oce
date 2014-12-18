@@ -5,18 +5,10 @@
 
 #include <BRepCheck_ListIteratorOfListOfStatus.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _BRepCheck_ListOfStatus_HeaderFile
 #include <BRepCheck_ListOfStatus.hxx>
-#endif
-#ifndef _BRepCheck_ListNodeOfListOfStatus_HeaderFile
 #include <BRepCheck_ListNodeOfListOfStatus.hxx>
-#endif
  
 
 #define Item BRepCheck_Status

@@ -6,22 +6,15 @@
 #ifndef _Handle_IntPatch_GLine_HeaderFile
 #define _Handle_IntPatch_GLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IntPatch_Line_HeaderFile
 #include <Handle_IntPatch_Line.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IntPatch_Line);
 class IntPatch_GLine;
 
-DEFINE_STANDARD_HANDLE(IntPatch_GLine,IntPatch_Line)
+DEFINE_STANDARD_HANDLE(IntPatch_GLine, IntPatch_Line)
 
-#endif
+#endif // _Handle_IntPatch_GLine_HeaderFile

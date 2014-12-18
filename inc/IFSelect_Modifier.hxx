@@ -6,57 +6,45 @@
 #ifndef _IFSelect_Modifier_HeaderFile
 #define _IFSelect_Modifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_Modifier_HeaderFile
 #include <Handle_IFSelect_Modifier.hxx>
-#endif
 
-#ifndef _IFSelect_GeneralModifier_HeaderFile
 #include <IFSelect_GeneralModifier.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
 class IFSelect_ContextModif;
 class Interface_InterfaceModel;
 class Interface_Protocol;
 class Interface_CopyTool;
 
 
-//! This class gives a frame for Actions which can work globally <br>
-//!           on a File once completely defined (i.e. afterwards) <br>
-//! <br>
-//!           Remark : if no Selection is set as criterium, the Modifier is <br>
-//!           set to work and should consider all the content of the Model <br>
-//!           produced. <br>
-class IFSelect_Modifier : public IFSelect_GeneralModifier {
+//! This class gives a frame for Actions which can work globally
+//! on a File once completely defined (i.e. afterwards)
+//!
+//! Remark : if no Selection is set as criterium, the Modifier is
+//! set to work and should consider all the content of the Model
+//! produced.
+class IFSelect_Modifier : public IFSelect_GeneralModifier
+{
 
 public:
 
-  //! This deferred method defines the action specific to each class <br>
-//!           of Modifier. It is called by a ModelCopier, once the Model <br>
-//!           generated and filled. ModelCopier has already checked the <br>
-//!           criteria (Dispatch, Model Rank, Selection) before calling it. <br>
-//! <br>
-//!           <ctx> detains informations about original data and selection. <br>
-//!           The result of copying, on which modifications are to be done, <br>
-//!           is <target>. <br>
-//!           <TC> allows to run additional copies as required <br>
-//! <br>
-//!           In case of Error, use methods CCheck from the ContextModif <br>
-//!           to aknowledge an entity Check or a Global Check with messages <br>
-  Standard_EXPORT   virtual  void Perform(IFSelect_ContextModif& ctx,const Handle(Interface_InterfaceModel)& target,const Handle(Interface_Protocol)& protocol,Interface_CopyTool& TC) const = 0;
+  
+  //! This deferred method defines the action specific to each class
+  //! of Modifier. It is called by a ModelCopier, once the Model
+  //! generated and filled. ModelCopier has already checked the
+  //! criteria (Dispatch, Model Rank, Selection) before calling it.
+  //!
+  //! <ctx> detains informations about original data and selection.
+  //! The result of copying, on which modifications are to be done,
+  //! is <target>.
+  //! <TC> allows to run additional copies as required
+  //!
+  //! In case of Error, use methods CCheck from the ContextModif
+  //! to aknowledge an entity Check or a Global Check with messages
+  Standard_EXPORT virtual   void Perform (IFSelect_ContextModif& ctx, const Handle(Interface_InterfaceModel)& target, const Handle(Interface_Protocol)& protocol, Interface_CopyTool& TC)  const = 0;
 
 
 
@@ -65,9 +53,10 @@ public:
 
 protected:
 
-  //! Calls inherited Initialize, transmits to it the information <br>
-//!           <maychangegraph> <br>
-  Standard_EXPORT   IFSelect_Modifier(const Standard_Boolean maychangegraph);
+  
+  //! Calls inherited Initialize, transmits to it the information
+  //! <maychangegraph>
+  Standard_EXPORT IFSelect_Modifier(const Standard_Boolean maychangegraph);
 
 
 
@@ -82,7 +71,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_Modifier_HeaderFile

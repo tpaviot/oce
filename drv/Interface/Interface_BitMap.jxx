@@ -1,9 +1,3 @@
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfAsciiString_HeaderFile
 #include <TColStd_HSequenceOfAsciiString.hxx>
-#endif
-#ifndef _Interface_BitMap_HeaderFile
 #include <Interface_BitMap.hxx>
-#endif

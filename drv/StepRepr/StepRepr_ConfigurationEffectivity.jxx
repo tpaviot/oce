@@ -1,12 +1,4 @@
-#ifndef _StepRepr_ConfigurationDesign_HeaderFile
 #include <StepRepr_ConfigurationDesign.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _StepRepr_ConfigurationEffectivity_HeaderFile
 #include <StepRepr_ConfigurationEffectivity.hxx>
-#endif

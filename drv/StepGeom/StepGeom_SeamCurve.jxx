@@ -1,3 +1,1 @@
-#ifndef _StepGeom_SeamCurve_HeaderFile
 #include <StepGeom_SeamCurve.hxx>
-#endif

@@ -6,51 +6,35 @@
 #ifndef _HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_HeaderFile
 #define _HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _IntSurf_Quadric_HeaderFile
 #include <IntSurf_Quadric.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _math_FunctionWithDerivative_HeaderFile
 #include <math_FunctionWithDerivative.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class IntSurf_Quadric;
 class gp_Lin;
 class HLRBRep_LineTool;
 
 
 
-class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf  : public math_FunctionWithDerivative {
+class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf  : public math_FunctionWithDerivative
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf(const IntSurf_Quadric& Q,const gp_Lin& C);
+  Standard_EXPORT HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf(const IntSurf_Quadric& Q, const gp_Lin& C);
   
-  Standard_EXPORT     Standard_Boolean Value(const Standard_Real Param,Standard_Real& F) ;
+  Standard_EXPORT   Standard_Boolean Value (const Standard_Real Param, Standard_Real& F) ;
   
-  Standard_EXPORT     Standard_Boolean Derivative(const Standard_Real Param,Standard_Real& D) ;
+  Standard_EXPORT   Standard_Boolean Derivative (const Standard_Real Param, Standard_Real& D) ;
   
-  Standard_EXPORT     Standard_Boolean Values(const Standard_Real Param,Standard_Real& F,Standard_Real& D) ;
-
+  Standard_EXPORT   Standard_Boolean Values (const Standard_Real Param, Standard_Real& F, Standard_Real& D) ;
 
 
 
@@ -65,8 +49,8 @@ private:
 
 
 
-IntSurf_Quadric myQuadric;
-gp_Lin myCurve;
+  IntSurf_Quadric myQuadric;
+  gp_Lin myCurve;
 
 
 };
@@ -75,7 +59,6 @@ gp_Lin myCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_HeaderFile

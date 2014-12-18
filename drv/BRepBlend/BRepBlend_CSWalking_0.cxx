@@ -5,81 +5,36 @@
 
 #include <BRepBlend_CSWalking.hxx>
 
-#ifndef _BRepBlend_Line_HeaderFile
 #include <BRepBlend_Line.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Adaptor3d_TopolTool_HeaderFile
 #include <Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Adaptor3d_HVertex_HeaderFile
 #include <Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _BRepBlend_HCurve2dTool_HeaderFile
 #include <BRepBlend_HCurve2dTool.hxx>
-#endif
-#ifndef _Adaptor3d_HSurfaceTool_HeaderFile
 #include <Adaptor3d_HSurfaceTool.hxx>
-#endif
-#ifndef _BRepBlend_HCurveTool_HeaderFile
 #include <BRepBlend_HCurveTool.hxx>
-#endif
-#ifndef _BRepBlend_BlendTool_HeaderFile
 #include <BRepBlend_BlendTool.hxx>
-#endif
-#ifndef _BRepBlend_PointOnRst_HeaderFile
 #include <BRepBlend_PointOnRst.hxx>
-#endif
-#ifndef _BRepBlend_SequenceOfPointOnRst_HeaderFile
 #include <BRepBlend_SequenceOfPointOnRst.hxx>
-#endif
-#ifndef _BRepBlend_Extremity_HeaderFile
 #include <BRepBlend_Extremity.hxx>
-#endif
-#ifndef _Blend_CSFunction_HeaderFile
 #include <Blend_CSFunction.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _IntSurf_Transition_HeaderFile
 #include <IntSurf_Transition.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
  
 
-#define TheVertex Handle_Adaptor3d_HVertex
+#define TheVertex Handle(Adaptor3d_HVertex)
 #define TheVertex_hxx <Adaptor3d_HVertex.hxx>
-#define TheArc Handle_Adaptor2d_HCurve2d
+#define TheArc Handle(Adaptor2d_HCurve2d)
 #define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
-#define TheSurface Handle_Adaptor3d_HSurface
+#define TheSurface Handle(Adaptor3d_HSurface)
 #define TheSurface_hxx <Adaptor3d_HSurface.hxx>
-#define TheCurve Handle_Adaptor3d_HCurve
+#define TheCurve Handle(Adaptor3d_HCurve)
 #define TheCurve_hxx <Adaptor3d_HCurve.hxx>
 #define TheVertexTool Standard_Integer
 #define TheVertexTool_hxx <Standard_Integer.hxx>

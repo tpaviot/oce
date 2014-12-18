@@ -6,34 +6,16 @@
 #ifndef _TPrsStd_AISViewer_HeaderFile
 #define _TPrsStd_AISViewer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TPrsStd_AISViewer_HeaderFile
 #include <Handle_TPrsStd_AISViewer.hxx>
-#endif
 
-#ifndef _Handle_AIS_InteractiveContext_HeaderFile
 #include <Handle_AIS_InteractiveContext.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_V3d_Viewer_HeaderFile
 #include <Handle_V3d_Viewer.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
 class AIS_InteractiveContext;
 class Standard_GUID;
 class TDF_Label;
@@ -42,54 +24,64 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! The groundwork to define an interactive viewer attribute. <br>
-//! This attribute stores an interactive context at the root label. <br>
-//! You can only have one instance of this class per data framework. <br>
-class TPrsStd_AISViewer : public TDF_Attribute {
+//! The groundwork to define an interactive viewer attribute.
+//! This attribute stores an interactive context at the root label.
+//! You can only have one instance of this class per data framework.
+class TPrsStd_AISViewer : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!         ============= <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //!  returns True if   there is an AISViewer attribute  in <br>
-//!          <acces> Data Framework. <br>
-  Standard_EXPORT   static  Standard_Boolean Has(const TDF_Label& acces) ;
-  //! create and set an  AISViewer at. Raise an exception if <br>
-//!          Has. <br>
-  Standard_EXPORT   static  Handle_TPrsStd_AISViewer New(const TDF_Label& access,const Handle(AIS_InteractiveContext)& selector) ;
-  //!  create  and set an   AISAttribute at root  label. The <br>
-//!          interactive context is  build.  Raise an exception  if <br>
-//!          Has. <br>
-  Standard_EXPORT   static  Handle_TPrsStd_AISViewer New(const TDF_Label& acces,const Handle(V3d_Viewer)& viewer) ;
   
-//! Finds the viewer attribute at the label access, the <br>
-//! root of the data framework. Calling this function can be used to initialize an AIS viewer <br>
-  Standard_EXPORT   static  Standard_Boolean Find(const TDF_Label& acces,Handle(TPrsStd_AISViewer)& A) ;
+  //! class methods
+  //! =============
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT   static  Standard_Boolean Find(const TDF_Label& acces,Handle(AIS_InteractiveContext)& IC) ;
+  //! returns True if   there is an AISViewer attribute  in
+  //! <acces> Data Framework.
+  Standard_EXPORT static   Standard_Boolean Has (const TDF_Label& acces) ;
   
-  Standard_EXPORT   static  Standard_Boolean Find(const TDF_Label& acces,Handle(V3d_Viewer)& V) ;
-  //! AISViewer methods <br>
-//!          ================= <br>
-  Standard_EXPORT   static  void Update(const TDF_Label& acces) ;
+  //! create and set an  AISViewer at. Raise an exception if
+  //! Has.
+  Standard_EXPORT static   Handle(TPrsStd_AISViewer) New (const TDF_Label& access, const Handle(AIS_InteractiveContext)& selector) ;
   
-  Standard_EXPORT   TPrsStd_AISViewer();
-  //! Updates the viewer at the label access. <br>
-//!  access is the root of the data framework. <br>
-  Standard_EXPORT     void Update() const;
-  //! Sets the interactive context ctx for this attribute. <br>
-  Standard_EXPORT     void SetInteractiveContext(const Handle(AIS_InteractiveContext)& ctx) ;
-  //! Returns the interactive context in this attribute. <br>
-  Standard_EXPORT     Handle_AIS_InteractiveContext GetInteractiveContext() const;
+  //! create  and set an   AISAttribute at root  label. The
+  //! interactive context is  build.  Raise an exception  if
+  //! Has.
+  Standard_EXPORT static   Handle(TPrsStd_AISViewer) New (const TDF_Label& acces, const Handle(V3d_Viewer)& viewer) ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+
+  //! Finds the viewer attribute at the label access, the
+  //! root of the data framework. Calling this function can be used to initialize an AIS viewer
+  Standard_EXPORT static   Standard_Boolean Find (const TDF_Label& acces, Handle(TPrsStd_AISViewer)& A) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& with) ;
+  Standard_EXPORT static   Standard_Boolean Find (const TDF_Label& acces, Handle(AIS_InteractiveContext)& IC) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT static   Standard_Boolean Find (const TDF_Label& acces, Handle(V3d_Viewer)& V) ;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  //! AISViewer methods
+  //! =================
+  Standard_EXPORT static   void Update (const TDF_Label& acces) ;
+  
+  Standard_EXPORT TPrsStd_AISViewer();
+  
+  //! Updates the viewer at the label access.
+  //! access is the root of the data framework.
+  Standard_EXPORT   void Update()  const;
+  
+  //! Sets the interactive context ctx for this attribute.
+  Standard_EXPORT   void SetInteractiveContext (const Handle(AIS_InteractiveContext)& ctx) ;
+  
+  //! Returns the interactive context in this attribute.
+  Standard_EXPORT   Handle(AIS_InteractiveContext) GetInteractiveContext()  const;
+  
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
 
 
 
@@ -104,7 +96,7 @@ protected:
 private: 
 
 
-Handle_AIS_InteractiveContext myInteractiveContext;
+  Handle(AIS_InteractiveContext) myInteractiveContext;
 
 
 };
@@ -113,7 +105,6 @@ Handle_AIS_InteractiveContext myInteractiveContext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TPrsStd_AISViewer_HeaderFile

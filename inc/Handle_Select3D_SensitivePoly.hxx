@@ -6,22 +6,15 @@
 #ifndef _Handle_Select3D_SensitivePoly_HeaderFile
 #define _Handle_Select3D_SensitivePoly_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Select3D_SensitiveEntity);
 class Select3D_SensitivePoly;
 
-DEFINE_STANDARD_HANDLE(Select3D_SensitivePoly,Select3D_SensitiveEntity)
+DEFINE_STANDARD_HANDLE(Select3D_SensitivePoly, Select3D_SensitiveEntity)
 
-#endif
+#endif // _Handle_Select3D_SensitivePoly_HeaderFile

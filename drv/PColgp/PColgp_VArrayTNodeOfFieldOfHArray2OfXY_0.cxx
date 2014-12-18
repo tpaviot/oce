@@ -5,15 +5,9 @@
 
 #include <PColgp_VArrayTNodeOfFieldOfHArray2OfXY.hxx>
 
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray2OfXY_HeaderFile
 #include <PColgp_FieldOfHArray2OfXY.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray2OfXY_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray2OfXY.hxx>
-#endif
  
 
 #define Item gp_XY

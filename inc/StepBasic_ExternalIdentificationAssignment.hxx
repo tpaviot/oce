@@ -6,46 +6,37 @@
 #ifndef _StepBasic_ExternalIdentificationAssignment_HeaderFile
 #define _StepBasic_ExternalIdentificationAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ExternalIdentificationAssignment_HeaderFile
 #include <Handle_StepBasic_ExternalIdentificationAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_ExternalSource_HeaderFile
 #include <Handle_StepBasic_ExternalSource.hxx>
-#endif
-#ifndef _StepBasic_IdentificationAssignment_HeaderFile
 #include <StepBasic_IdentificationAssignment.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_IdentificationRole_HeaderFile
 #include <Handle_StepBasic_IdentificationRole.hxx>
-#endif
 class StepBasic_ExternalSource;
 class TCollection_HAsciiString;
 class StepBasic_IdentificationRole;
 
 
-//! Representation of STEP entity ExternalIdentificationAssignment <br>
-class StepBasic_ExternalIdentificationAssignment : public StepBasic_IdentificationAssignment {
+//! Representation of STEP entity ExternalIdentificationAssignment
+class StepBasic_ExternalIdentificationAssignment : public StepBasic_IdentificationAssignment
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_ExternalIdentificationAssignment();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aIdentificationAssignment_AssignedId,const Handle(StepBasic_IdentificationRole)& aIdentificationAssignment_Role,const Handle(StepBasic_ExternalSource)& aSource) ;
-  //! Returns field Source <br>
-  Standard_EXPORT     Handle_StepBasic_ExternalSource Source() const;
-  //! Set field Source <br>
-  Standard_EXPORT     void SetSource(const Handle(StepBasic_ExternalSource)& Source) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_ExternalIdentificationAssignment();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aIdentificationAssignment_AssignedId, const Handle(StepBasic_IdentificationRole)& aIdentificationAssignment_Role, const Handle(StepBasic_ExternalSource)& aSource) ;
+  
+  //! Returns field Source
+  Standard_EXPORT   Handle(StepBasic_ExternalSource) Source()  const;
+  
+  //! Set field Source
+  Standard_EXPORT   void SetSource (const Handle(StepBasic_ExternalSource)& Source) ;
 
 
 
@@ -60,7 +51,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_ExternalSource theSource;
+  Handle(StepBasic_ExternalSource) theSource;
 
 
 };
@@ -69,7 +60,6 @@ Handle_StepBasic_ExternalSource theSource;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ExternalIdentificationAssignment_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _SelectMgr_SequenceOfSelector_HeaderFile
 #define _SelectMgr_SequenceOfSelector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_SelectMgr_ViewerSelector_HeaderFile
 #include <Handle_SelectMgr_ViewerSelector.hxx>
-#endif
-#ifndef _Handle_SelectMgr_SequenceNodeOfSequenceOfSelector_HeaderFile
 #include <Handle_SelectMgr_SequenceNodeOfSequenceOfSelector.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class SelectMgr_ViewerSelector;
@@ -35,66 +21,68 @@ class SelectMgr_SequenceNodeOfSequenceOfSelector;
 
 
 
-class SelectMgr_SequenceOfSelector  : public TCollection_BaseSequence {
+class SelectMgr_SequenceOfSelector  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      SelectMgr_SequenceOfSelector();
+    SelectMgr_SequenceOfSelector();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT SelectMgr_SequenceOfSelector(const SelectMgr_SequenceOfSelector& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~SelectMgr_SequenceOfSelector()
 {
   Clear();
 }
   
-  Standard_EXPORT    const SelectMgr_SequenceOfSelector& Assign(const SelectMgr_SequenceOfSelector& Other) ;
-   const SelectMgr_SequenceOfSelector& operator =(const SelectMgr_SequenceOfSelector& Other) 
+  Standard_EXPORT  const  SelectMgr_SequenceOfSelector& Assign (const SelectMgr_SequenceOfSelector& Other) ;
+ const  SelectMgr_SequenceOfSelector& operator = (const SelectMgr_SequenceOfSelector& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(SelectMgr_ViewerSelector)& T) ;
+  Standard_EXPORT   void Append (const Handle(SelectMgr_ViewerSelector)& T) ;
   
-        void Append(SelectMgr_SequenceOfSelector& S) ;
+      void Append (SelectMgr_SequenceOfSelector& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(SelectMgr_ViewerSelector)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(SelectMgr_ViewerSelector)& T) ;
   
-        void Prepend(SelectMgr_SequenceOfSelector& S) ;
+      void Prepend (SelectMgr_SequenceOfSelector& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(SelectMgr_ViewerSelector)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(SelectMgr_ViewerSelector)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,SelectMgr_SequenceOfSelector& S) ;
+      void InsertBefore (const Standard_Integer Index, SelectMgr_SequenceOfSelector& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(SelectMgr_ViewerSelector)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(SelectMgr_ViewerSelector)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,SelectMgr_SequenceOfSelector& S) ;
+      void InsertAfter (const Standard_Integer Index, SelectMgr_SequenceOfSelector& S) ;
   
-  Standard_EXPORT    const Handle_SelectMgr_ViewerSelector& First() const;
+  Standard_EXPORT  const  Handle(SelectMgr_ViewerSelector)& First()  const;
   
-  Standard_EXPORT    const Handle_SelectMgr_ViewerSelector& Last() const;
+  Standard_EXPORT  const  Handle(SelectMgr_ViewerSelector)& Last()  const;
   
-        void Split(const Standard_Integer Index,SelectMgr_SequenceOfSelector& Sub) ;
+      void Split (const Standard_Integer Index, SelectMgr_SequenceOfSelector& Sub) ;
   
-  Standard_EXPORT    const Handle_SelectMgr_ViewerSelector& Value(const Standard_Integer Index) const;
-   const Handle_SelectMgr_ViewerSelector& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(SelectMgr_ViewerSelector)& Value (const Standard_Integer Index)  const;
+ const  Handle(SelectMgr_ViewerSelector)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(SelectMgr_ViewerSelector)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(SelectMgr_ViewerSelector)& I) ;
   
-  Standard_EXPORT     Handle_SelectMgr_ViewerSelector& ChangeValue(const Standard_Integer Index) ;
-    Handle_SelectMgr_ViewerSelector& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(SelectMgr_ViewerSelector)& ChangeValue (const Standard_Integer Index) ;
+  Handle(SelectMgr_ViewerSelector)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -107,15 +95,13 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   SelectMgr_SequenceOfSelector(const SelectMgr_SequenceOfSelector& Other);
 
 
 
 
 };
 
-#define SeqItem Handle_SelectMgr_ViewerSelector
+#define SeqItem Handle(SelectMgr_ViewerSelector)
 #define SeqItem_hxx <SelectMgr_ViewerSelector.hxx>
 #define TCollection_SequenceNode SelectMgr_SequenceNodeOfSequenceOfSelector
 #define TCollection_SequenceNode_hxx <SelectMgr_SequenceNodeOfSequenceOfSelector.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_SequenceOfSelector_HeaderFile

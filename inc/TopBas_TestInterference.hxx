@@ -6,62 +6,50 @@
 #ifndef _TopBas_TestInterference_HeaderFile
 #define _TopBas_TestInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 
 
 
-class TopBas_TestInterference  {
+class TopBas_TestInterference 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopBas_TestInterference();
+  Standard_EXPORT TopBas_TestInterference();
   
-  Standard_EXPORT   TopBas_TestInterference(const Standard_Real& Inters,const Standard_Integer& Bound,const TopAbs_Orientation Orient,const TopAbs_Orientation Trans,const TopAbs_Orientation BTrans);
+  Standard_EXPORT TopBas_TestInterference(const Standard_Real& Inters, const Standard_Integer& Bound, const TopAbs_Orientation Orient, const TopAbs_Orientation Trans, const TopAbs_Orientation BTrans);
   
-        void Intersection(const Standard_Real& I) ;
+      void Intersection (const Standard_Real& I) ;
   
-        void Boundary(const Standard_Integer& B) ;
+      void Boundary (const Standard_Integer& B) ;
   
-        void Orientation(const TopAbs_Orientation O) ;
+      void Orientation (const TopAbs_Orientation O) ;
   
-        void Transition(const TopAbs_Orientation Tr) ;
+      void Transition (const TopAbs_Orientation Tr) ;
   
-        void BoundaryTransition(const TopAbs_Orientation BTr) ;
+      void BoundaryTransition (const TopAbs_Orientation BTr) ;
   
-       const Standard_Real& Intersection() const;
+     const  Standard_Real& Intersection()  const;
   
-        Standard_Real& ChangeIntersection() ;
+      Standard_Real& ChangeIntersection() ;
   
-       const Standard_Integer& Boundary() const;
+     const  Standard_Integer& Boundary()  const;
   
-        Standard_Integer& ChangeBoundary() ;
+      Standard_Integer& ChangeBoundary() ;
   
-        TopAbs_Orientation Orientation() const;
+      TopAbs_Orientation Orientation()  const;
   
-        TopAbs_Orientation Transition() const;
+      TopAbs_Orientation Transition()  const;
   
-        TopAbs_Orientation BoundaryTransition() const;
-
+      TopAbs_Orientation BoundaryTransition()  const;
 
 
 
@@ -76,11 +64,11 @@ private:
 
 
 
-Standard_Real myIntersection;
-Standard_Integer myBoundary;
-TopAbs_Orientation myOrientation;
-TopAbs_Orientation myTransition;
-TopAbs_Orientation myBTransition;
+  Standard_Real myIntersection;
+  Standard_Integer myBoundary;
+  TopAbs_Orientation myOrientation;
+  TopAbs_Orientation myTransition;
+  TopAbs_Orientation myBTransition;
 
 
 };
@@ -102,7 +90,6 @@ TopAbs_Orientation myBTransition;
 #undef TopBas_Interference_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopBas_TestInterference_HeaderFile

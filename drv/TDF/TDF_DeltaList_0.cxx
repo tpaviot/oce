@@ -5,21 +5,13 @@
 
 #include <TDF_DeltaList.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDF_ListIteratorOfDeltaList_HeaderFile
 #include <TDF_ListIteratorOfDeltaList.hxx>
-#endif
-#ifndef _TDF_Delta_HeaderFile
 #include <TDF_Delta.hxx>
-#endif
-#ifndef _TDF_ListNodeOfDeltaList_HeaderFile
 #include <TDF_ListNodeOfDeltaList.hxx>
-#endif
  
 
-#define Item Handle_TDF_Delta
+#define Item Handle(TDF_Delta)
 #define Item_hxx <TDF_Delta.hxx>
 #define TCollection_ListNode TDF_ListNodeOfDeltaList
 #define TCollection_ListNode_hxx <TDF_ListNodeOfDeltaList.hxx>

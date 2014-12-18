@@ -1,21 +1,7 @@
-#ifndef _Interface_GTool_HeaderFile
 #include <Interface_GTool.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_ShareTool_HeaderFile
 #include <Interface_ShareTool.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_Category_HeaderFile
 #include <Interface_Category.hxx>
-#endif

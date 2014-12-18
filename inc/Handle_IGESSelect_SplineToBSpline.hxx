@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESSelect_SplineToBSpline_HeaderFile
 #define _Handle_IGESSelect_SplineToBSpline_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_Transformer_HeaderFile
 #include <Handle_IFSelect_Transformer.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_Transformer);
 class IGESSelect_SplineToBSpline;
 
-DEFINE_STANDARD_HANDLE(IGESSelect_SplineToBSpline,IFSelect_Transformer)
+DEFINE_STANDARD_HANDLE(IGESSelect_SplineToBSpline, IFSelect_Transformer)
 
-#endif
+#endif // _Handle_IGESSelect_SplineToBSpline_HeaderFile

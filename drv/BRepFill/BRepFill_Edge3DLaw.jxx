@@ -1,9 +1,3 @@
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _GeomFill_LocationLaw_HeaderFile
 #include <GeomFill_LocationLaw.hxx>
-#endif
-#ifndef _BRepFill_Edge3DLaw_HeaderFile
 #include <BRepFill_Edge3DLaw.hxx>
-#endif

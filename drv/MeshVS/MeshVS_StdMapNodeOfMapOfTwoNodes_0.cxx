@@ -5,19 +5,11 @@
 
 #include <MeshVS_StdMapNodeOfMapOfTwoNodes.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MeshVS_TwoNodesHasher_HeaderFile
 #include <MeshVS_TwoNodesHasher.hxx>
-#endif
-#ifndef _MeshVS_MapOfTwoNodes_HeaderFile
 #include <MeshVS_MapOfTwoNodes.hxx>
-#endif
-#ifndef _MeshVS_MapIteratorOfMapOfTwoNodes_HeaderFile
 #include <MeshVS_MapIteratorOfMapOfTwoNodes.hxx>
-#endif
 
  
 

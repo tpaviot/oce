@@ -5,24 +5,14 @@
 
 #include <Law_ListIteratorOfLaws.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Law_Laws_HeaderFile
 #include <Law_Laws.hxx>
-#endif
-#ifndef _Law_Function_HeaderFile
 #include <Law_Function.hxx>
-#endif
-#ifndef _Law_ListNodeOfLaws_HeaderFile
 #include <Law_ListNodeOfLaws.hxx>
-#endif
  
 
-#define Item Handle_Law_Function
+#define Item Handle(Law_Function)
 #define Item_hxx <Law_Function.hxx>
 #define TCollection_ListNode Law_ListNodeOfLaws
 #define TCollection_ListNode_hxx <Law_ListNodeOfLaws.hxx>

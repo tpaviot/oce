@@ -6,15 +6,14 @@
 #ifndef _Aspect_TypeOfColorSpace_HeaderFile
 #define _Aspect_TypeOfColorSpace_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Aspect_TypeOfColorSpace {
+
+enum Aspect_TypeOfColorSpace
+{
 Aspect_TOCS_BlackAndWhite,
 Aspect_TOCS_GreyScale,
 Aspect_TOCS_RGB
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfColorSpace_HeaderFile

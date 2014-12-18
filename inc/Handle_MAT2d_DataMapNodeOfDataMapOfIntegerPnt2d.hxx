@@ -6,22 +6,15 @@
 #ifndef _Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d_HeaderFile
 #define _Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_MapNode_HeaderFile
 #include <Handle_TCollection_MapNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_MapNode);
 class MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d;
 
-DEFINE_STANDARD_HANDLE(MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d,TCollection_MapNode)
+DEFINE_STANDARD_HANDLE(MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d, TCollection_MapNode)
 
-#endif
+#endif // _Handle_MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d_HeaderFile

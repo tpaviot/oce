@@ -6,40 +6,18 @@
 #ifndef _XmlMDF_HeaderFile
 #define _XmlMDF_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TDF_Data_HeaderFile
 #include <Handle_TDF_Data.hxx>
-#endif
-#ifndef _XmlObjMgt_Element_HeaderFile
 #include <XmlObjMgt_Element.hxx>
-#endif
-#ifndef _XmlObjMgt_SRelocationTable_HeaderFile
 #include <XmlObjMgt_SRelocationTable.hxx>
-#endif
-#ifndef _Handle_XmlMDF_ADriverTable_HeaderFile
 #include <Handle_XmlMDF_ADriverTable.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _XmlObjMgt_RRelocationTable_HeaderFile
 #include <XmlObjMgt_RRelocationTable.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
 class TDF_Data;
 class XmlMDF_ADriverTable;
 class TDF_Label;
@@ -57,37 +35,40 @@ class XmlMDF_DataMapNodeOfTypeADriverMap;
 class XmlMDF_DataMapIteratorOfTypeADriverMap;
 
 
-//! This package provides classes and methods to <br>
-//!          translate a transient DF into a persistent one and <br>
-//!          vice versa. <br>
-//! <br>
-//!          Driver <br>
-//! <br>
-//!          A driver is a tool used to translate a transient <br>
-//!          attribute into a persistent one and vice versa. <br>
-//! <br>
-//!          Driver Table <br>
-//! <br>
-//!          A driver table is an object building links between <br>
-//!          object types and object drivers. In the <br>
-//!          translation process, a driver table is asked to <br>
-//!          give a translation driver for each current object <br>
-//!          to be translated. <br>
-class XmlMDF  {
+//! This package provides classes and methods to
+//! translate a transient DF into a persistent one and
+//! vice versa.
+//!
+//! Driver
+//!
+//! A driver is a tool used to translate a transient
+//! attribute into a persistent one and vice versa.
+//!
+//! Driver Table
+//!
+//! A driver table is an object building links between
+//! object types and object drivers. In the
+//! translation process, a driver table is asked to
+//! give a translation driver for each current object
+//! to be translated.
+class XmlMDF 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Translates a transient <aSource> into a persistent <br>
-//!          <aTarget>. <br>
-  Standard_EXPORT   static  void FromTo(const Handle(TDF_Data)& aSource,XmlObjMgt_Element& aTarget,XmlObjMgt_SRelocationTable& aReloc,const Handle(XmlMDF_ADriverTable)& aDrivers) ;
-  //! Translates a persistent <aSource> into a transient <br>
-//!          <aTarget>. <br>
-//!          Returns True if completed successfully (False on error) <br>
-  Standard_EXPORT   static  Standard_Boolean FromTo(const XmlObjMgt_Element& aSource,Handle(TDF_Data)& aTarget,XmlObjMgt_RRelocationTable& aReloc,const Handle(XmlMDF_ADriverTable)& aDrivers) ;
-  //! Adds the attribute storage drivers to <aDriverSeq>. <br>
-  Standard_EXPORT   static  void AddDrivers(const Handle(XmlMDF_ADriverTable)& aDriverTable,const Handle(CDM_MessageDriver)& theMessageDriver) ;
-
+  
+  //! Translates a transient <aSource> into a persistent
+  //! <aTarget>.
+  Standard_EXPORT static   void FromTo (const Handle(TDF_Data)& aSource, XmlObjMgt_Element& aTarget, XmlObjMgt_SRelocationTable& aReloc, const Handle(XmlMDF_ADriverTable)& aDrivers) ;
+  
+  //! Translates a persistent <aSource> into a transient
+  //! <aTarget>.
+  //! Returns True if completed successfully (False on error)
+  Standard_EXPORT static   Standard_Boolean FromTo (const XmlObjMgt_Element& aSource, Handle(TDF_Data)& aTarget, XmlObjMgt_RRelocationTable& aReloc, const Handle(XmlMDF_ADriverTable)& aDrivers) ;
+  
+  //! Adds the attribute storage drivers to <aDriverSeq>.
+  Standard_EXPORT static   void AddDrivers (const Handle(XmlMDF_ADriverTable)& aDriverTable, const Handle(CDM_MessageDriver)& theMessageDriver) ;
 
 
 
@@ -101,11 +82,11 @@ protected:
 private:
 
   
-  Standard_EXPORT   static  Standard_Integer WriteSubTree(const TDF_Label& theLabel,XmlObjMgt_Element& theElement,XmlObjMgt_SRelocationTable& aReloc,const Handle(XmlMDF_ADriverTable)& aDrivers) ;
+  Standard_EXPORT static   Standard_Integer WriteSubTree (const TDF_Label& theLabel, XmlObjMgt_Element& theElement, XmlObjMgt_SRelocationTable& aReloc, const Handle(XmlMDF_ADriverTable)& aDrivers) ;
   
-  Standard_EXPORT   static  Standard_Integer ReadSubTree(const XmlObjMgt_Element& theElement,const TDF_Label& theLabel,XmlObjMgt_RRelocationTable& aReloc,const XmlMDF_MapOfDriver& aDrivers) ;
+  Standard_EXPORT static   Standard_Integer ReadSubTree (const XmlObjMgt_Element& theElement, const TDF_Label& theLabel, XmlObjMgt_RRelocationTable& aReloc, const XmlMDF_MapOfDriver& aDrivers) ;
   
-  Standard_EXPORT   static  void CreateDrvMap(const Handle(XmlMDF_ADriverTable)& aDriverTable,XmlMDF_MapOfDriver& anAsciiDriverMap) ;
+  Standard_EXPORT static   void CreateDrvMap (const Handle(XmlMDF_ADriverTable)& aDriverTable, XmlMDF_MapOfDriver& anAsciiDriverMap) ;
 
 
 
@@ -126,7 +107,6 @@ friend class XmlMDF_DataMapIteratorOfTypeADriverMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XmlMDF_HeaderFile

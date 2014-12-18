@@ -6,25 +6,13 @@
 #ifndef _Standard_HeaderFile
 #define _Standard_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Size_HeaderFile
 #include <Standard_Size.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_ErrorHandlerCallback;
 class Standard_ErrorHandler;
 class Standard_AncestorIterator;
@@ -37,27 +25,43 @@ class Standard_Failure;
 
 
 
-class Standard  {
+class Standard 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  Allocates memory blocks <br>
-//!           aSize - bytes to  allocate <br>
-  Standard_EXPORT   static  Standard_Address Allocate(const Standard_Size aSize) ;
-  //!  Deallocates memory blocks <br>
-//!           aStorage - previously allocated memory block to be freed <br>
-  Standard_EXPORT   static  void Free(const Standard_Address aStorage) ;
+  
+  //! Allocates memory blocks
+  //! aSize - bytes to  allocate
+  Standard_EXPORT static   Standard_Address Allocate (const Standard_Size aSize) ;
+  
+  //! Deallocates memory blocks
+  //! aStorage - previously allocated memory block to be freed
+  Standard_EXPORT static   void Free (const Standard_Address aStorage) ;
 template <typename T> static inline void Free (T*& thePtr) { Free ((void*)thePtr); thePtr = 0; }
-  //!  Reallocates memory blocks <br>
-//!           aStorage - previously allocated memory block <br>
-//!           aNewSize - new size in bytes <br>
-  Standard_EXPORT   static  Standard_Address Reallocate(const Standard_Address aStorage,const Standard_Size aNewSize) ;
-  //!  Deallocates the storage retained on the free list <br>
-//!           and clears the list. <br>
-//!           Returns non-zero if some memory has been actually freed. <br>
-  Standard_EXPORT   static  Standard_Integer Purge() ;
-
+  
+  //! Reallocates memory blocks
+  //! aStorage - previously allocated memory block
+  //! aNewSize - new size in bytes
+  Standard_EXPORT static   Standard_Address Reallocate (const Standard_Address aStorage, const Standard_Size aNewSize) ;
+  
+  //! Allocates aligned memory blocks.
+  //! Should be used with CPU instructions which require specific alignment.
+  //! For example: SSE requires 16 bytes, AVX requires 32 bytes.
+  //! @param theSize  bytes to allocate
+  //! @param theAlign alignment in bytes
+  Standard_EXPORT static   Standard_Address AllocateAligned (const Standard_Size theSize, const Standard_Size theAlign) ;
+  
+  //! Deallocates memory blocks
+  //! @param thePtrAligned the memory block previously allocated with AllocateAligned()
+  Standard_EXPORT static   void FreeAligned (const Standard_Address thePtrAligned) ;
+template <typename T> static inline void FreeAligned (T*& thePtrAligned) { FreeAligned ((void* )thePtrAligned); thePtrAligned = 0; }
+  
+  //! Deallocates the storage retained on the free list
+  //! and clears the list.
+  //! Returns non-zero if some memory has been actually freed.
+  Standard_EXPORT static   Standard_Integer Purge() ;
 
 
 
@@ -89,7 +93,6 @@ friend class Standard_Failure;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Standard_HeaderFile

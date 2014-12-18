@@ -1,15 +1,4 @@
-#ifndef _MeshVS_DataSource_HeaderFile
 #include <MeshVS_DataSource.hxx>
-#endif
-#ifndef _TColStd_HPackedMapOfInteger_HeaderFile
 #include <TColStd_HPackedMapOfInteger.hxx>
-#endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
-#include <PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _PrsMgr_PresentationManager_HeaderFile
 #include <PrsMgr_PresentationManager.hxx>
-#endif
-#ifndef _MeshVS_MeshOwner_HeaderFile
 #include <MeshVS_MeshOwner.hxx>
-#endif

@@ -6,28 +6,14 @@
 #ifndef _Storage_HArrayOfCallBack_HeaderFile
 #define _Storage_HArrayOfCallBack_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_HArrayOfCallBack_HeaderFile
 #include <Handle_Storage_HArrayOfCallBack.hxx>
-#endif
 
-#ifndef _Storage_ArrayOfCallBack_HeaderFile
 #include <Storage_ArrayOfCallBack.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Storage_CallBack_HeaderFile
 #include <Handle_Storage_CallBack.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class Storage_ArrayOfCallBack;
 
 
 
-class Storage_HArrayOfCallBack : public MMgt_TShared {
+class Storage_HArrayOfCallBack : public MMgt_TShared
+{
 
 public:
 
   
-      Storage_HArrayOfCallBack(const Standard_Integer Low,const Standard_Integer Up);
+    Storage_HArrayOfCallBack(const Standard_Integer Low, const Standard_Integer Up);
   
-      Storage_HArrayOfCallBack(const Standard_Integer Low,const Standard_Integer Up,const Handle(Storage_CallBack)& V);
+    Storage_HArrayOfCallBack(const Standard_Integer Low, const Standard_Integer Up, const Handle(Storage_CallBack)& V);
   
-        void Init(const Handle(Storage_CallBack)& V) ;
+      void Init (const Handle(Storage_CallBack)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(Storage_CallBack)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(Storage_CallBack)& Value) ;
   
-       const Handle_Storage_CallBack& Value(const Standard_Integer Index) const;
+     const  Handle(Storage_CallBack)& Value (const Standard_Integer Index)  const;
   
-        Handle_Storage_CallBack& ChangeValue(const Standard_Integer Index) ;
+      Handle(Storage_CallBack)& ChangeValue (const Standard_Integer Index) ;
   
-       const Storage_ArrayOfCallBack& Array1() const;
+     const  Storage_ArrayOfCallBack& Array1()  const;
   
-        Storage_ArrayOfCallBack& ChangeArray1() ;
+      Storage_ArrayOfCallBack& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-Storage_ArrayOfCallBack myArray;
+  Storage_ArrayOfCallBack myArray;
 
 
 };
 
-#define ItemHArray1 Handle_Storage_CallBack
+#define ItemHArray1 Handle(Storage_CallBack)
 #define ItemHArray1_hxx <Storage_CallBack.hxx>
 #define TheArray1 Storage_ArrayOfCallBack
 #define TheArray1_hxx <Storage_ArrayOfCallBack.hxx>
@@ -103,7 +90,6 @@ Storage_ArrayOfCallBack myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_HArrayOfCallBack_HeaderFile

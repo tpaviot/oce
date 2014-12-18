@@ -1,6 +1,2 @@
-#ifndef _gp_Pln_HeaderFile
 #include <gp_Pln.hxx>
-#endif
-#ifndef _Prs3d_PlaneSet_HeaderFile
 #include <Prs3d_PlaneSet.hxx>
-#endif

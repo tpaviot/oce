@@ -6,46 +6,34 @@
 #ifndef _TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_HeaderFile
 #define _TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepShape_FacetedBrepAndBrepWithVoids_HeaderFile
 #include <Handle_StepShape_FacetedBrepAndBrepWithVoids.hxx>
-#endif
-#ifndef _TopoDSToStep_Root_HeaderFile
 #include <TopoDSToStep_Root.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
 class StepShape_FacetedBrepAndBrepWithVoids;
 class StdFail_NotDone;
 class TopoDS_Solid;
 class Transfer_FinderProcess;
 
 
-//! This class implements the mapping between classes <br>
-//!          Solid from TopoDS and FacetedBrepAndBrepWithVoids from <br>
-//!          StepShape. All the topology and geometry comprised <br>
-//!          into the shell or the solid are taken into account and <br>
-//!          translated. <br>
-class TopoDSToStep_MakeFacetedBrepAndBrepWithVoids  : public TopoDSToStep_Root {
+//! This class implements the mapping between classes
+//! Solid from TopoDS and FacetedBrepAndBrepWithVoids from
+//! StepShape. All the topology and geometry comprised
+//! into the shell or the solid are taken into account and
+//! translated.
+class TopoDSToStep_MakeFacetedBrepAndBrepWithVoids  : public TopoDSToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopoDSToStep_MakeFacetedBrepAndBrepWithVoids(const TopoDS_Solid& S,const Handle(Transfer_FinderProcess)& FP);
+  Standard_EXPORT TopoDSToStep_MakeFacetedBrepAndBrepWithVoids(const TopoDS_Solid& S, const Handle(Transfer_FinderProcess)& FP);
   
-  Standard_EXPORT    const Handle_StepShape_FacetedBrepAndBrepWithVoids& Value() const;
-
+  Standard_EXPORT  const  Handle(StepShape_FacetedBrepAndBrepWithVoids)& Value()  const;
 
 
 
@@ -60,7 +48,7 @@ private:
 
 
 
-Handle_StepShape_FacetedBrepAndBrepWithVoids theFacetedBrepAndBrepWithVoids;
+  Handle(StepShape_FacetedBrepAndBrepWithVoids) theFacetedBrepAndBrepWithVoids;
 
 
 };
@@ -69,7 +57,6 @@ Handle_StepShape_FacetedBrepAndBrepWithVoids theFacetedBrepAndBrepWithVoids;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_HeaderFile

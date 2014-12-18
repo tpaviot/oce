@@ -6,25 +6,13 @@
 #ifndef _Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_HeaderFile
 #define _Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_HeaderFile
 #include <Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx>
-#endif
 class Standard_DomainError;
 class Standard_TypeMismatch;
 class StdFail_NotDone;
@@ -38,30 +26,30 @@ class Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
 
 
 
-class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter  {
+class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter();
+  Standard_EXPORT Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter();
   
-  Standard_EXPORT   Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter(const gp_Pnt2d& P,const Adaptor2d_Curve2d& C,const Standard_Real U0,const Standard_Real TolU);
+  Standard_EXPORT Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter(const gp_Pnt2d& P, const Adaptor2d_Curve2d& C, const Standard_Real U0, const Standard_Real TolU);
   
-  Standard_EXPORT   Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter(const gp_Pnt2d& P,const Adaptor2d_Curve2d& C,const Standard_Real U0,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real TolU);
+  Standard_EXPORT Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter(const gp_Pnt2d& P, const Adaptor2d_Curve2d& C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
   
-  Standard_EXPORT     void Initialize(const Adaptor2d_Curve2d& C,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real TolU) ;
+  Standard_EXPORT   void Initialize (const Adaptor2d_Curve2d& C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU) ;
   
-  Standard_EXPORT     void Perform(const gp_Pnt2d& P,const Standard_Real U0) ;
+  Standard_EXPORT   void Perform (const gp_Pnt2d& P, const Standard_Real U0) ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Real SquareDistance() const;
+  Standard_EXPORT   Standard_Real SquareDistance()  const;
   
-  Standard_EXPORT     Standard_Boolean IsMin() const;
+  Standard_EXPORT   Standard_Boolean IsMin()  const;
   
-  Standard_EXPORT    const Extrema_POnCurv2d& Point() const;
-
+  Standard_EXPORT  const  Extrema_POnCurv2d& Point()  const;
 
 
 
@@ -76,11 +64,11 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Real mytolU;
-Standard_Real myumin;
-Standard_Real myusup;
-Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter myF;
+  Standard_Boolean myDone;
+  Standard_Real mytolU;
+  Standard_Real myumin;
+  Standard_Real myusup;
+  Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter myF;
 
 
 };
@@ -89,7 +77,6 @@ Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter myF;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_HeaderFile

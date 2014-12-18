@@ -6,38 +6,27 @@
 #ifndef _GeomPlate_SequenceNodeOfSequenceOfAij_HeaderFile
 #define _GeomPlate_SequenceNodeOfSequenceOfAij_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomPlate_SequenceNodeOfSequenceOfAij_HeaderFile
 #include <Handle_GeomPlate_SequenceNodeOfSequenceOfAij.hxx>
-#endif
 
-#ifndef _GeomPlate_Aij_HeaderFile
 #include <GeomPlate_Aij.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class GeomPlate_Aij;
 class GeomPlate_SequenceOfAij;
 
 
 
-class GeomPlate_SequenceNodeOfSequenceOfAij : public TCollection_SeqNode {
+class GeomPlate_SequenceNodeOfSequenceOfAij : public TCollection_SeqNode
+{
 
 public:
 
   
-      GeomPlate_SequenceNodeOfSequenceOfAij(const GeomPlate_Aij& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    GeomPlate_SequenceNodeOfSequenceOfAij(const GeomPlate_Aij& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        GeomPlate_Aij& Value() const;
+      GeomPlate_Aij& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-GeomPlate_Aij myValue;
+  GeomPlate_Aij myValue;
 
 
 };
@@ -78,7 +67,6 @@ GeomPlate_Aij myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomPlate_SequenceNodeOfSequenceOfAij_HeaderFile

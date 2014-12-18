@@ -5,16 +5,10 @@
 
 #include <TColStd_SequenceNodeOfSequenceOfTransient.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_SequenceOfTransient_HeaderFile
 #include <TColStd_SequenceOfTransient.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TColStd_SequenceNodeOfSequenceOfTransient,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TColStd_SequenceNodeOfSequenceOfTransient)
 
 
-#define SeqItem Handle_Standard_Transient
+#define SeqItem Handle(Standard_Transient)
 #define SeqItem_hxx <Standard_Transient.hxx>
 #define TCollection_SequenceNode TColStd_SequenceNodeOfSequenceOfTransient
 #define TCollection_SequenceNode_hxx <TColStd_SequenceNodeOfSequenceOfTransient.hxx>

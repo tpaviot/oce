@@ -5,16 +5,10 @@
 
 #include <Intf_SequenceNodeOfSeqOfSectionPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Intf_SectionPoint_HeaderFile
 #include <Intf_SectionPoint.hxx>
-#endif
-#ifndef _Intf_SeqOfSectionPoint_HeaderFile
 #include <Intf_SeqOfSectionPoint.hxx>
-#endif
 
  
 

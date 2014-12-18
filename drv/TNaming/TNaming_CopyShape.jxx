@@ -1,15 +1,5 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_IndexedDataMapOfTransientTransient_HeaderFile
 #include <TColStd_IndexedDataMapOfTransientTransient.hxx>
-#endif
-#ifndef _TNaming_TranslateTool_HeaderFile
 #include <TNaming_TranslateTool.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _TNaming_CopyShape_HeaderFile
 #include <TNaming_CopyShape.hxx>
-#endif

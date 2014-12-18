@@ -6,43 +6,19 @@
 #ifndef _GeomAPI_ProjectPointOnSurf_HeaderFile
 #define _GeomAPI_ProjectPointOnSurf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Extrema_ExtPS_HeaderFile
 #include <Extrema_ExtPS.hxx>
-#endif
-#ifndef _GeomAdaptor_Surface_HeaderFile
 #include <GeomAdaptor_Surface.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Extrema_ExtAlgo_HeaderFile
 #include <Extrema_ExtAlgo.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Quantity_Parameter_HeaderFile
 #include <Quantity_Parameter.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
 class Standard_OutOfRange;
 class StdFail_NotDone;
 class gp_Pnt;
@@ -51,93 +27,109 @@ class Extrema_ExtPS;
 
 
 
-//! This class implements methods for  computing all the orthogonal <br>
-//!  projections of a point onto a  surface. <br>
-class GeomAPI_ProjectPointOnSurf  {
+//! This class implements methods for  computing all the orthogonal
+//! projections of a point onto a  surface.
+class GeomAPI_ProjectPointOnSurf 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty object. Use the <br>
-//! Init function for further initialization. <br>
-  Standard_EXPORT   GeomAPI_ProjectPointOnSurf();
-  //! Create the projection  of a point <P> on a surface <br>
-//!          <Surface> <br>
-  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
-  //! Create the projection  of a point <P> on a surface <br>
-//!          <Surface> <br>//! Create the projection of a point <P>  on a surface <br>
-//!          <Surface>. The solution are computed in the domain <br>
-//!          [Umin,Usup] [Vmin,Vsup] of the surface. <br>
-  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
   
-  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
-  //! Init the projection  of a point <P> on a surface <br>
-//!          <Surface> <br>
-  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
+  //! Creates an empty object. Use the
+  //! Init function for further initialization.
+  Standard_EXPORT GeomAPI_ProjectPointOnSurf();
   
-  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
-  //! Init the projection of a point <P>  on a surface <br>
-//!          <Surface>. The solution are computed in the domain <br>
-//!          [Umin,Usup] [Vmin,Vsup] of the surface. <br>
-  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
+  //! Create the projection  of a point <P> on a surface
+  //! <Surface>
+  Standard_EXPORT GeomAPI_ProjectPointOnSurf(const gp_Pnt& P, const Handle(Geom_Surface)& Surface, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
   
-  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
-  //! Init the projection for many points on a surface <br>
-//!          <Surface>. The solutions will be computed in the domain <br>
-//!          [Umin,Usup] [Vmin,Vsup] of the surface. <br>
-  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
+  //! Create the projection  of a point <P> on a surface
+  //! <Surface>
+  //! Create the projection of a point <P>  on a surface
+  //! <Surface>. The solution are computed in the domain
+  //! [Umin,Usup] [Vmin,Vsup] of the surface.
+  Standard_EXPORT GeomAPI_ProjectPointOnSurf(const gp_Pnt& P, const Handle(Geom_Surface)& Surface, const Standard_Real Tolerance, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
   
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
+  Standard_EXPORT GeomAPI_ProjectPointOnSurf(const gp_Pnt& P, const Handle(Geom_Surface)& Surface, const Quantity_Parameter Umin, const Quantity_Parameter Usup, const Quantity_Parameter Vmin, const Quantity_Parameter Vsup, const Standard_Real Tolerance, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
   
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
-  //! Performs the projection of a point on the current surface. <br>
-  Standard_EXPORT     void Perform(const gp_Pnt& P) ;
+  //! Init the projection  of a point <P> on a surface
+  //! <Surface>
+  Standard_EXPORT GeomAPI_ProjectPointOnSurf(const gp_Pnt& P, const Handle(Geom_Surface)& Surface, const Quantity_Parameter Umin, const Quantity_Parameter Usup, const Quantity_Parameter Vmin, const Quantity_Parameter Vsup, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns the number of computed orthogonal projection points. <br>
-//! Note: if projection fails, NbPoints returns 0. <br>
-  Standard_EXPORT     Standard_Integer NbPoints() const;
+  Standard_EXPORT   void Init (const gp_Pnt& P, const Handle(Geom_Surface)& Surface, const Standard_Real Tolerance, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
+  
+  //! Init the projection of a point <P>  on a surface
+  //! <Surface>. The solution are computed in the domain
+  //! [Umin,Usup] [Vmin,Vsup] of the surface.
+  Standard_EXPORT   void Init (const gp_Pnt& P, const Handle(Geom_Surface)& Surface, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
+  
+  Standard_EXPORT   void Init (const gp_Pnt& P, const Handle(Geom_Surface)& Surface, const Quantity_Parameter Umin, const Quantity_Parameter Usup, const Quantity_Parameter Vmin, const Quantity_Parameter Vsup, const Standard_Real Tolerance, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
+  
+  //! Init the projection for many points on a surface
+  //! <Surface>. The solutions will be computed in the domain
+  //! [Umin,Usup] [Vmin,Vsup] of the surface.
+  Standard_EXPORT   void Init (const gp_Pnt& P, const Handle(Geom_Surface)& Surface, const Quantity_Parameter Umin, const Quantity_Parameter Usup, const Quantity_Parameter Vmin, const Quantity_Parameter Vsup, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
+  
+  Standard_EXPORT   void Init (const Handle(Geom_Surface)& Surface, const Quantity_Parameter Umin, const Quantity_Parameter Usup, const Quantity_Parameter Vmin, const Quantity_Parameter Vsup, const Standard_Real Tolerance, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
+  
+  Standard_EXPORT   void Init (const Handle(Geom_Surface)& Surface, const Quantity_Parameter Umin, const Quantity_Parameter Usup, const Quantity_Parameter Vmin, const Quantity_Parameter Vsup, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
+  
+  //! Performs the projection of a point on the current surface.
+  Standard_EXPORT   void Perform (const gp_Pnt& P) ;
+  
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns the number of computed orthogonal projection points.
+  //! Note: if projection fails, NbPoints returns 0.
+  Standard_EXPORT   Standard_Integer NbPoints()  const;
 Standard_EXPORT operator Standard_Integer() const;
-  //! Returns the orthogonal projection <br>
-//! on the surface. Index is a number of a computed point. <br>
-//! Exceptions <br>
-//! Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where <br>
-//! NbPoints is the number of solution points. <br>
-  Standard_EXPORT     gp_Pnt Point(const Standard_Integer Index) const;
-  //! Returns the parameters (U,V) on the <br>
-//! surface of the orthogonal projection. Index is a number of a <br>
-//! computed point. <br>
-//! Exceptions <br>
-//! Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where <br>
-//! NbPoints is the number of solution points. <br>
-  Standard_EXPORT     void Parameters(const Standard_Integer Index,Quantity_Parameter& U,Quantity_Parameter& V) const;
-  //! Computes the distance between the <br>
-//! point and its orthogonal projection on the surface. Index is a number <br>
-//! of a computed point. <br>
-//! Exceptions <br>
-//! Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where <br>
-//! NbPoints is the number of solution points. <br>
-  Standard_EXPORT     Quantity_Length Distance(const Standard_Integer Index) const;
-  //! Returns the nearest orthogonal projection of the point <br>
-//! on the surface. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if projection fails. <br>
-  Standard_EXPORT     gp_Pnt NearestPoint() const;
+  
+  //! Returns the orthogonal projection
+  //! on the surface. Index is a number of a computed point.
+  //! Exceptions
+  //! Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+  //! NbPoints is the number of solution points.
+  Standard_EXPORT   gp_Pnt Point (const Standard_Integer Index)  const;
+  
+  //! Returns the parameters (U,V) on the
+  //! surface of the orthogonal projection. Index is a number of a
+  //! computed point.
+  //! Exceptions
+  //! Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+  //! NbPoints is the number of solution points.
+  Standard_EXPORT   void Parameters (const Standard_Integer Index, Quantity_Parameter& U, Quantity_Parameter& V)  const;
+  
+  //! Computes the distance between the
+  //! point and its orthogonal projection on the surface. Index is a number
+  //! of a computed point.
+  //! Exceptions
+  //! Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+  //! NbPoints is the number of solution points.
+  Standard_EXPORT   Quantity_Length Distance (const Standard_Integer Index)  const;
+  
+  //! Returns the nearest orthogonal projection of the point
+  //! on the surface.
+  //! Exceptions
+  //! StdFail_NotDone if projection fails.
+  Standard_EXPORT   gp_Pnt NearestPoint()  const;
 Standard_EXPORT operator gp_Pnt() const;
-  //! Returns the parameters (U,V) on the <br>
-//! surface of the nearest computed orthogonal projection of the point. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if projection fails. <br>
-  Standard_EXPORT     void LowerDistanceParameters(Quantity_Parameter& U,Quantity_Parameter& V) const;
-  //! Computes the distance between the <br>
-//! point and its nearest orthogonal projection on the surface. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if projection fails. <br>
-  Standard_EXPORT     Quantity_Length LowerDistance() const;
+  
+  //! Returns the parameters (U,V) on the
+  //! surface of the nearest computed orthogonal projection of the point.
+  //! Exceptions
+  //! StdFail_NotDone if projection fails.
+  Standard_EXPORT   void LowerDistanceParameters (Quantity_Parameter& U, Quantity_Parameter& V)  const;
+  
+  //! Computes the distance between the
+  //! point and its nearest orthogonal projection on the surface.
+  //! Exceptions
+  //! StdFail_NotDone if projection fails.
+  Standard_EXPORT   Quantity_Length LowerDistance()  const;
 Standard_EXPORT operator Standard_Real() const;
-  //! return the algorithmic object from Extrema <br>
-       const Extrema_ExtPS& Extrema() const;
-
+  
+  //! return the algorithmic object from Extrema
+     const  Extrema_ExtPS& Extrema()  const;
 
 
 
@@ -151,13 +143,13 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Init() ;
+  Standard_EXPORT   void Init() ;
 
 
-Standard_Boolean myIsDone;
-Standard_Integer myIndex;
-Extrema_ExtPS myExtPS;
-GeomAdaptor_Surface myGeomAdaptor;
+  Standard_Boolean myIsDone;
+  Standard_Integer myIndex;
+  Extrema_ExtPS myExtPS;
+  GeomAdaptor_Surface myGeomAdaptor;
 
 
 };
@@ -167,7 +159,6 @@ GeomAdaptor_Surface myGeomAdaptor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomAPI_ProjectPointOnSurf_HeaderFile

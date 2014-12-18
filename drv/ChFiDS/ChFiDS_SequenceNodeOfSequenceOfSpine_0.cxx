@@ -5,16 +5,10 @@
 
 #include <ChFiDS_SequenceNodeOfSequenceOfSpine.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _ChFiDS_Spine_HeaderFile
 #include <ChFiDS_Spine.hxx>
-#endif
-#ifndef _ChFiDS_SequenceOfSpine_HeaderFile
 #include <ChFiDS_SequenceOfSpine.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(ChFiDS_SequenceNodeOfSequenceOfSpine,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(ChFiDS_SequenceNodeOfSequenceOfSpine)
 
 
-#define SeqItem Handle_ChFiDS_Spine
+#define SeqItem Handle(ChFiDS_Spine)
 #define SeqItem_hxx <ChFiDS_Spine.hxx>
 #define TCollection_SequenceNode ChFiDS_SequenceNodeOfSequenceOfSpine
 #define TCollection_SequenceNode_hxx <ChFiDS_SequenceNodeOfSequenceOfSpine.hxx>

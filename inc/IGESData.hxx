@@ -6,19 +6,11 @@
 #ifndef _IGESData_HeaderFile
 #define _IGESData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESData_Protocol_HeaderFile
 #include <Handle_IGESData_Protocol.hxx>
-#endif
 class IGESData_Protocol;
 class IGESData_Protocol;
 class IGESData_IGESModel;
@@ -64,18 +56,20 @@ class IGESData_GlobalNodeOfSpecificLib;
 class IGESData_NodeOfSpecificLib;
 
 
-//! basic description of an IGES Interface <br>
-class IGESData  {
+//! basic description of an IGES Interface
+class IGESData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prepares General dynamic data used for IGESData specifically : <br>
-//!           Protocol and Modules, which treat UndefinedEntity <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Returns a Protocol from IGESData (avoids to create it) <br>
-  Standard_EXPORT   static  Handle_IGESData_Protocol Protocol() ;
-
+  
+  //! Prepares General dynamic data used for IGESData specifically :
+  //! Protocol and Modules, which treat UndefinedEntity
+  Standard_EXPORT static   void Init() ;
+  
+  //! Returns a Protocol from IGESData (avoids to create it)
+  Standard_EXPORT static   Handle(IGESData_Protocol) Protocol() ;
 
 
 
@@ -140,7 +134,6 @@ friend class IGESData_NodeOfSpecificLib;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_HeaderFile

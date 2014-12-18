@@ -6,49 +6,21 @@
 #ifndef _StepAP214_AutoDesignGeneralOrgItem_HeaderFile
 #define _StepAP214_AutoDesignGeneralOrgItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_Product_HeaderFile
 #include <Handle_StepBasic_Product.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionFormation_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionFormation.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionWithAssociatedDocuments_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionWithAssociatedDocuments.hxx>
-#endif
-#ifndef _Handle_StepRepr_Representation_HeaderFile
 #include <Handle_StepRepr_Representation.hxx>
-#endif
-#ifndef _Handle_StepRepr_ExternallyDefinedRepresentation_HeaderFile
 #include <Handle_StepRepr_ExternallyDefinedRepresentation.hxx>
-#endif
-#ifndef _Handle_StepAP214_AutoDesignDocumentReference_HeaderFile
 #include <Handle_StepAP214_AutoDesignDocumentReference.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_Product;
 class StepBasic_ProductDefinition;
@@ -61,41 +33,50 @@ class StepAP214_AutoDesignDocumentReference;
 
 
 
-class StepAP214_AutoDesignGeneralOrgItem  : public StepData_SelectType {
+class StepAP214_AutoDesignGeneralOrgItem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a AutoDesignGeneralOrgItem SelectType <br>
-  Standard_EXPORT   StepAP214_AutoDesignGeneralOrgItem();
-  //! Recognizes a AutoDesignGeneralOrgItem Kind Entity that is : <br>
-//! 1     Product from StepBasic, <br>
-//! 2     ProductDefinition from StepBasic, <br>
-//! 3     ProductDefinitionFormation from StepBasic, <br>
-//! 4     ProductDefinitionRelationship from StepBasic, <br>
-//! 5     ProductDefinitionWithAssociatedDocuments from StepBasic, <br>
-//! 6     Representation from StepRepr <br>
-//! 7     ExternallyDefinedRepresentation from StepRepr, <br>
-//! 8     AutoDesignDocumentReference from StepAP214, <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a Product (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_Product Product() const;
-  //! returns Value as a ProductDefinition (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinition ProductDefinition() const;
-  //! returns Value as a ProductDefinitionFormation (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation() const;
-  //! returns Value as a ProductDefinitionRelationship (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionRelationship ProductDefinitionRelationship() const;
-  //! returns Value as a ProductDefinitionWithAssociatedDocuments (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionWithAssociatedDocuments ProductDefinitionWithAssociatedDocuments() const;
-  //! returns Value as a Representation (Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_Representation Representation() const;
-  //! returns Value as a Representation (Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ExternallyDefinedRepresentation ExternallyDefinedRepresentation() const;
   
-  Standard_EXPORT     Handle_StepAP214_AutoDesignDocumentReference AutoDesignDocumentReference() const;
-
+  //! Returns a AutoDesignGeneralOrgItem SelectType
+  Standard_EXPORT StepAP214_AutoDesignGeneralOrgItem();
+  
+  //! Recognizes a AutoDesignGeneralOrgItem Kind Entity that is :
+  //! 1     Product from StepBasic,
+  //! 2     ProductDefinition from StepBasic,
+  //! 3     ProductDefinitionFormation from StepBasic,
+  //! 4     ProductDefinitionRelationship from StepBasic,
+  //! 5     ProductDefinitionWithAssociatedDocuments from StepBasic,
+  //! 6     Representation from StepRepr
+  //! 7     ExternallyDefinedRepresentation from StepRepr,
+  //! 8     AutoDesignDocumentReference from StepAP214,
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a Product (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_Product) Product()  const;
+  
+  //! returns Value as a ProductDefinition (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinition) ProductDefinition()  const;
+  
+  //! returns Value as a ProductDefinitionFormation (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionFormation) ProductDefinitionFormation()  const;
+  
+  //! returns Value as a ProductDefinitionRelationship (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionRelationship) ProductDefinitionRelationship()  const;
+  
+  //! returns Value as a ProductDefinitionWithAssociatedDocuments (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionWithAssociatedDocuments) ProductDefinitionWithAssociatedDocuments()  const;
+  
+  //! returns Value as a Representation (Null if another type)
+  Standard_EXPORT   Handle(StepRepr_Representation) Representation()  const;
+  
+  //! returns Value as a Representation (Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ExternallyDefinedRepresentation) ExternallyDefinedRepresentation()  const;
+  
+  Standard_EXPORT   Handle(StepAP214_AutoDesignDocumentReference) AutoDesignDocumentReference()  const;
 
 
 
@@ -118,7 +99,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_AutoDesignGeneralOrgItem_HeaderFile

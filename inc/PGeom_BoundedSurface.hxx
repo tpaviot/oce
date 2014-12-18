@@ -6,25 +6,16 @@
 #ifndef _PGeom_BoundedSurface_HeaderFile
 #define _PGeom_BoundedSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_BoundedSurface_HeaderFile
 #include <Handle_PGeom_BoundedSurface.hxx>
-#endif
 
-#ifndef _PGeom_Surface_HeaderFile
 #include <PGeom_Surface.hxx>
-#endif
 
 
-class PGeom_BoundedSurface : public PGeom_Surface {
+class PGeom_BoundedSurface : public PGeom_Surface
+{
 
 public:
 
@@ -33,7 +24,7 @@ PGeom_BoundedSurface(const Storage_stCONSTclCOM& a) : PGeom_Surface(a)
 {
   
 }
-  PGeom_BoundedSurface( )
+PGeom_BoundedSurface( )
 {
   
 }
@@ -58,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_BoundedSurface_HeaderFile

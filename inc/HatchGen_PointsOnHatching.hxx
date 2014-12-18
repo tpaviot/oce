@@ -6,25 +6,13 @@
 #ifndef _HatchGen_PointsOnHatching_HeaderFile
 #define _HatchGen_PointsOnHatching_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_HatchGen_SequenceNodeOfPointsOnHatching_HeaderFile
 #include <Handle_HatchGen_SequenceNodeOfPointsOnHatching.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class HatchGen_PointOnHatching;
@@ -32,66 +20,68 @@ class HatchGen_SequenceNodeOfPointsOnHatching;
 
 
 
-class HatchGen_PointsOnHatching  : public TCollection_BaseSequence {
+class HatchGen_PointsOnHatching  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      HatchGen_PointsOnHatching();
+    HatchGen_PointsOnHatching();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT HatchGen_PointsOnHatching(const HatchGen_PointsOnHatching& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~HatchGen_PointsOnHatching()
 {
   Clear();
 }
   
-  Standard_EXPORT    const HatchGen_PointsOnHatching& Assign(const HatchGen_PointsOnHatching& Other) ;
-   const HatchGen_PointsOnHatching& operator =(const HatchGen_PointsOnHatching& Other) 
+  Standard_EXPORT  const  HatchGen_PointsOnHatching& Assign (const HatchGen_PointsOnHatching& Other) ;
+ const  HatchGen_PointsOnHatching& operator = (const HatchGen_PointsOnHatching& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const HatchGen_PointOnHatching& T) ;
+  Standard_EXPORT   void Append (const HatchGen_PointOnHatching& T) ;
   
-        void Append(HatchGen_PointsOnHatching& S) ;
+      void Append (HatchGen_PointsOnHatching& S) ;
   
-  Standard_EXPORT     void Prepend(const HatchGen_PointOnHatching& T) ;
+  Standard_EXPORT   void Prepend (const HatchGen_PointOnHatching& T) ;
   
-        void Prepend(HatchGen_PointsOnHatching& S) ;
+      void Prepend (HatchGen_PointsOnHatching& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const HatchGen_PointOnHatching& T) ;
+      void InsertBefore (const Standard_Integer Index, const HatchGen_PointOnHatching& T) ;
   
-        void InsertBefore(const Standard_Integer Index,HatchGen_PointsOnHatching& S) ;
+      void InsertBefore (const Standard_Integer Index, HatchGen_PointsOnHatching& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const HatchGen_PointOnHatching& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const HatchGen_PointOnHatching& T) ;
   
-        void InsertAfter(const Standard_Integer Index,HatchGen_PointsOnHatching& S) ;
+      void InsertAfter (const Standard_Integer Index, HatchGen_PointsOnHatching& S) ;
   
-  Standard_EXPORT    const HatchGen_PointOnHatching& First() const;
+  Standard_EXPORT  const  HatchGen_PointOnHatching& First()  const;
   
-  Standard_EXPORT    const HatchGen_PointOnHatching& Last() const;
+  Standard_EXPORT  const  HatchGen_PointOnHatching& Last()  const;
   
-        void Split(const Standard_Integer Index,HatchGen_PointsOnHatching& Sub) ;
+      void Split (const Standard_Integer Index, HatchGen_PointsOnHatching& Sub) ;
   
-  Standard_EXPORT    const HatchGen_PointOnHatching& Value(const Standard_Integer Index) const;
-   const HatchGen_PointOnHatching& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  HatchGen_PointOnHatching& Value (const Standard_Integer Index)  const;
+ const  HatchGen_PointOnHatching& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const HatchGen_PointOnHatching& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const HatchGen_PointOnHatching& I) ;
   
-  Standard_EXPORT     HatchGen_PointOnHatching& ChangeValue(const Standard_Integer Index) ;
-    HatchGen_PointOnHatching& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   HatchGen_PointOnHatching& ChangeValue (const Standard_Integer Index) ;
+  HatchGen_PointOnHatching& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   HatchGen_PointsOnHatching(const HatchGen_PointsOnHatching& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HatchGen_PointsOnHatching_HeaderFile

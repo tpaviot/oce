@@ -6,25 +6,13 @@
 #ifndef _TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape_HeaderFile
 #define _TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape_HeaderFile
 #include <Handle_TopTools_DataMapNodeOfDataMapOfIntegerListOfShape.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopTools_ListOfShape;
 class TColStd_MapIntegerHasher;
@@ -33,22 +21,22 @@ class TopTools_DataMapNodeOfDataMapOfIntegerListOfShape;
 
 
 
-class TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape  : public TCollection_BasicMapIterator {
+class TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape();
+  Standard_EXPORT TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape();
   
-  Standard_EXPORT   TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape(const TopTools_DataMapOfIntegerListOfShape& aMap);
+  Standard_EXPORT TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape(const TopTools_DataMapOfIntegerListOfShape& aMap);
   
-  Standard_EXPORT     void Initialize(const TopTools_DataMapOfIntegerListOfShape& aMap) ;
+  Standard_EXPORT   void Initialize (const TopTools_DataMapOfIntegerListOfShape& aMap) ;
   
-  Standard_EXPORT    const Standard_Integer& Key() const;
+  Standard_EXPORT  const  Standard_Integer& Key()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& Value() const;
-
+  Standard_EXPORT  const  TopTools_ListOfShape& Value()  const;
 
 
 
@@ -71,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape_HeaderFile

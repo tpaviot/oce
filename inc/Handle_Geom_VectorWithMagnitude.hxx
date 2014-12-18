@@ -6,22 +6,15 @@
 #ifndef _Handle_Geom_VectorWithMagnitude_HeaderFile
 #define _Handle_Geom_VectorWithMagnitude_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Geom_Vector_HeaderFile
 #include <Handle_Geom_Vector.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Geom_Vector);
 class Geom_VectorWithMagnitude;
 
-DEFINE_STANDARD_HANDLE(Geom_VectorWithMagnitude,Geom_Vector)
+DEFINE_STANDARD_HANDLE(Geom_VectorWithMagnitude, Geom_Vector)
 
-#endif
+#endif // _Handle_Geom_VectorWithMagnitude_HeaderFile

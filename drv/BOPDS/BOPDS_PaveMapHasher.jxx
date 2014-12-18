@@ -1,6 +1,2 @@
-#ifndef _BOPDS_Pave_HeaderFile
 #include <BOPDS_Pave.hxx>
-#endif
-#ifndef _BOPDS_PaveMapHasher_HeaderFile
 #include <BOPDS_PaveMapHasher.hxx>
-#endif

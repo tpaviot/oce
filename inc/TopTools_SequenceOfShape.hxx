@@ -6,25 +6,13 @@
 #ifndef _TopTools_SequenceOfShape_HeaderFile
 #define _TopTools_SequenceOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_TopTools_SequenceNodeOfSequenceOfShape_HeaderFile
 #include <Handle_TopTools_SequenceNodeOfSequenceOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TopoDS_Shape;
@@ -32,66 +20,68 @@ class TopTools_SequenceNodeOfSequenceOfShape;
 
 
 
-class TopTools_SequenceOfShape  : public TCollection_BaseSequence {
+class TopTools_SequenceOfShape  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TopTools_SequenceOfShape();
+    TopTools_SequenceOfShape();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT TopTools_SequenceOfShape(const TopTools_SequenceOfShape& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~TopTools_SequenceOfShape()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TopTools_SequenceOfShape& Assign(const TopTools_SequenceOfShape& Other) ;
-   const TopTools_SequenceOfShape& operator =(const TopTools_SequenceOfShape& Other) 
+  Standard_EXPORT  const  TopTools_SequenceOfShape& Assign (const TopTools_SequenceOfShape& Other) ;
+ const  TopTools_SequenceOfShape& operator = (const TopTools_SequenceOfShape& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const TopoDS_Shape& T) ;
+  Standard_EXPORT   void Append (const TopoDS_Shape& T) ;
   
-        void Append(TopTools_SequenceOfShape& S) ;
+      void Append (TopTools_SequenceOfShape& S) ;
   
-  Standard_EXPORT     void Prepend(const TopoDS_Shape& T) ;
+  Standard_EXPORT   void Prepend (const TopoDS_Shape& T) ;
   
-        void Prepend(TopTools_SequenceOfShape& S) ;
+      void Prepend (TopTools_SequenceOfShape& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const TopoDS_Shape& T) ;
+      void InsertBefore (const Standard_Integer Index, const TopoDS_Shape& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TopTools_SequenceOfShape& S) ;
+      void InsertBefore (const Standard_Integer Index, TopTools_SequenceOfShape& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const TopoDS_Shape& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const TopoDS_Shape& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TopTools_SequenceOfShape& S) ;
+      void InsertAfter (const Standard_Integer Index, TopTools_SequenceOfShape& S) ;
   
-  Standard_EXPORT    const TopoDS_Shape& First() const;
+  Standard_EXPORT  const  TopoDS_Shape& First()  const;
   
-  Standard_EXPORT    const TopoDS_Shape& Last() const;
+  Standard_EXPORT  const  TopoDS_Shape& Last()  const;
   
-        void Split(const Standard_Integer Index,TopTools_SequenceOfShape& Sub) ;
+      void Split (const Standard_Integer Index, TopTools_SequenceOfShape& Sub) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Value(const Standard_Integer Index) const;
-   const TopoDS_Shape& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  TopoDS_Shape& Value (const Standard_Integer Index)  const;
+ const  TopoDS_Shape& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const TopoDS_Shape& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const TopoDS_Shape& I) ;
   
-  Standard_EXPORT     TopoDS_Shape& ChangeValue(const Standard_Integer Index) ;
-    TopoDS_Shape& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   TopoDS_Shape& ChangeValue (const Standard_Integer Index) ;
+  TopoDS_Shape& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopTools_SequenceOfShape(const TopTools_SequenceOfShape& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_SequenceOfShape_HeaderFile

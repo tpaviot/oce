@@ -5,18 +5,10 @@
 
 #include <Plate_SequenceOfPinpointConstraint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Plate_PinpointConstraint_HeaderFile
 #include <Plate_PinpointConstraint.hxx>
-#endif
-#ifndef _Plate_SequenceNodeOfSequenceOfPinpointConstraint_HeaderFile
 #include <Plate_SequenceNodeOfSequenceOfPinpointConstraint.hxx>
-#endif
  
 
 #define SeqItem Plate_PinpointConstraint

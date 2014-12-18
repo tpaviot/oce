@@ -6,16 +6,15 @@
 #ifndef _Graphic3d_TypeOfReflection_HeaderFile
 #define _Graphic3d_TypeOfReflection_HeaderFile
 
-//! Nature of the reflection of a material. <br>
-enum Graphic3d_TypeOfReflection {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Nature of the reflection of a material.
+enum Graphic3d_TypeOfReflection
+{
 Graphic3d_TOR_AMBIENT,
 Graphic3d_TOR_DIFFUSE,
 Graphic3d_TOR_SPECULAR,
 Graphic3d_TOR_EMISSION
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_TypeOfReflection_HeaderFile

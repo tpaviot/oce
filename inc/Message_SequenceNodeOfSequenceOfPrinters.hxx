@@ -6,38 +6,27 @@
 #ifndef _Message_SequenceNodeOfSequenceOfPrinters_HeaderFile
 #define _Message_SequenceNodeOfSequenceOfPrinters_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Message_SequenceNodeOfSequenceOfPrinters_HeaderFile
 #include <Handle_Message_SequenceNodeOfSequenceOfPrinters.hxx>
-#endif
 
-#ifndef _Handle_Message_Printer_HeaderFile
 #include <Handle_Message_Printer.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Message_Printer;
 class Message_SequenceOfPrinters;
 
 
 
-class Message_SequenceNodeOfSequenceOfPrinters : public TCollection_SeqNode {
+class Message_SequenceNodeOfSequenceOfPrinters : public TCollection_SeqNode
+{
 
 public:
 
   
-      Message_SequenceNodeOfSequenceOfPrinters(const Handle(Message_Printer)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Message_SequenceNodeOfSequenceOfPrinters(const Handle(Message_Printer)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Message_Printer& Value() const;
+      Handle(Message_Printer)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Message_Printer myValue;
+  Handle(Message_Printer) myValue;
 
 
 };
 
-#define SeqItem Handle_Message_Printer
+#define SeqItem Handle(Message_Printer)
 #define SeqItem_hxx <Message_Printer.hxx>
 #define TCollection_SequenceNode Message_SequenceNodeOfSequenceOfPrinters
 #define TCollection_SequenceNode_hxx <Message_SequenceNodeOfSequenceOfPrinters.hxx>
@@ -78,7 +67,6 @@ Handle_Message_Printer myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Message_SequenceNodeOfSequenceOfPrinters_HeaderFile

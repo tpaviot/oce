@@ -1,6 +1,2 @@
-#ifndef _TopOpeBRepDS_BuildTool_HeaderFile
 #include <TopOpeBRepDS_BuildTool.hxx>
-#endif
-#ifndef _LocOpe_HBuilder_HeaderFile
 #include <LocOpe_HBuilder.hxx>
-#endif

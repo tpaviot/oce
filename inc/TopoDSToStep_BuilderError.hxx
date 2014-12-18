@@ -6,15 +6,14 @@
 #ifndef _TopoDSToStep_BuilderError_HeaderFile
 #define _TopoDSToStep_BuilderError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopoDSToStep_BuilderError {
+
+enum TopoDSToStep_BuilderError
+{
 TopoDSToStep_BuilderDone,
 TopoDSToStep_NoFaceMapped,
 TopoDSToStep_BuilderOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopoDSToStep_BuilderError_HeaderFile

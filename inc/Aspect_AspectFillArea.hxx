@@ -6,85 +6,76 @@
 #ifndef _Aspect_AspectFillArea_HeaderFile
 #define _Aspect_AspectFillArea_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Aspect_AspectFillArea_HeaderFile
 #include <Handle_Aspect_AspectFillArea.hxx>
-#endif
 
-#ifndef _Aspect_InteriorStyle_HeaderFile
 #include <Aspect_InteriorStyle.hxx>
-#endif
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _Aspect_TypeOfLine_HeaderFile
 #include <Aspect_TypeOfLine.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Aspect_HatchStyle_HeaderFile
 #include <Aspect_HatchStyle.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class Aspect_AspectFillAreaDefinitionError;
 class Quantity_Color;
 
 
-//! Group of attributes for the FACE primitives. <br>
-//! The attributes are: <br>
-//!	* type of interior <br>
-//!	* type of hatch <br>
-//!	* interior colour <br>
-//!	* border colour <br>
-//!	* type of border <br>
-//!	* thickness of border <br>
-//! when the value of the group is modified, all graphic <br>
-//! objects using this group are modified. <br>
-class Aspect_AspectFillArea : public MMgt_TShared {
+//! Group of attributes for the FACE primitives.
+//! The attributes are:
+//! * type of interior
+//! * type of hatch
+//! * interior colour
+//! * border colour
+//! * type of border
+//! * thickness of border
+//! when the value of the group is modified, all graphic
+//! objects using this group are modified.
+class Aspect_AspectFillArea : public MMgt_TShared
+{
 
 public:
 
-  //! Modifies the colour of the edge of the face <br>
-  Standard_EXPORT     void SetEdgeColor(const Quantity_Color& AColor) ;
-  //! Modifies the edge line type <br>
-  Standard_EXPORT     void SetEdgeLineType(const Aspect_TypeOfLine AType) ;
-  //! Modifies the edge thickness <br>
-//! <br>
-//!  Category: Methods to modify the class definition <br>
-//! <br>
-//!  Warning: Raises AspectFillAreaDefinitionError if the <br>
-//!	    width is a negative value. <br>
-  Standard_EXPORT     void SetEdgeWidth(const Standard_Real AWidth) ;
-  //! Modifies the hatch type used when InteriorStyle <br>
-//!	    is IS_HATCH <br>
-  Standard_EXPORT     void SetHatchStyle(const Aspect_HatchStyle AStyle) ;
-  //! Modifies the colour of the interior of the face <br>
-  Standard_EXPORT     void SetInteriorColor(const Quantity_Color& AColor) ;
-  //! Modifies the colour of the interior of the back face <br>
-  Standard_EXPORT     void SetBackInteriorColor(const Quantity_Color& color) ;
-  //! Modifies the interior type used for rendering <br>
-//! <br>
-//! InteriorStyle : IS_EMPTY	no interior <br>
-//!		   IS_HOLLOW	display the boundaries of the surface <br>
-//!		   IS_HATCH	display hatching <br>
-//!		   IS_SOLID	display interior entirely filled <br>
-//! <br>
-  Standard_EXPORT     void SetInteriorStyle(const Aspect_InteriorStyle AStyle) ;
-  //! Returns the hatch type used when InteriorStyle <br>
-//!	    is IS_HATCH <br>
-  Standard_EXPORT     Aspect_HatchStyle HatchStyle() const;
   
-  Standard_EXPORT     void Values(Aspect_InteriorStyle& AStyle,Quantity_Color& AIntColor,Quantity_Color& AEdgeColor,Aspect_TypeOfLine& AType,Standard_Real& AWidth) const;
-  //! Returns the current values of the <me> group. <br>
-  Standard_EXPORT     void Values(Aspect_InteriorStyle& AStyle,Quantity_Color& AIntColor,Quantity_Color& BackIntColor,Quantity_Color& AEdgeColor,Aspect_TypeOfLine& AType,Standard_Real& AWidth) const;
+  //! Modifies the colour of the edge of the face
+  Standard_EXPORT   void SetEdgeColor (const Quantity_Color& AColor) ;
+  
+  //! Modifies the edge line type
+  Standard_EXPORT   void SetEdgeLineType (const Aspect_TypeOfLine AType) ;
+  
+  //! Modifies the edge thickness
+  //!
+  //! Category: Methods to modify the class definition
+  //!
+  //! Warning: Raises AspectFillAreaDefinitionError if the
+  //! width is a negative value.
+  Standard_EXPORT   void SetEdgeWidth (const Standard_Real AWidth) ;
+  
+  //! Modifies the hatch type used when InteriorStyle
+  //! is IS_HATCH
+  Standard_EXPORT   void SetHatchStyle (const Aspect_HatchStyle AStyle) ;
+  
+  //! Modifies the colour of the interior of the face
+  Standard_EXPORT   void SetInteriorColor (const Quantity_Color& AColor) ;
+  
+  //! Modifies the colour of the interior of the back face
+  Standard_EXPORT   void SetBackInteriorColor (const Quantity_Color& color) ;
+  
+  //! Modifies the interior type used for rendering
+  //!
+  //! InteriorStyle : IS_EMPTY	no interior
+  //! IS_HOLLOW	display the boundaries of the surface
+  //! IS_HATCH	display hatching
+  //! IS_SOLID	display interior entirely filled
+  Standard_EXPORT   void SetInteriorStyle (const Aspect_InteriorStyle AStyle) ;
+  
+  //! Returns the hatch type used when InteriorStyle
+  //! is IS_HATCH
+  Standard_EXPORT   Aspect_HatchStyle HatchStyle()  const;
+  
+  Standard_EXPORT   void Values (Aspect_InteriorStyle& AStyle, Quantity_Color& AIntColor, Quantity_Color& AEdgeColor, Aspect_TypeOfLine& AType, Standard_Real& AWidth)  const;
+  
+  //! Returns the current values of the <me> group.
+  Standard_EXPORT   void Values (Aspect_InteriorStyle& AStyle, Quantity_Color& AIntColor, Quantity_Color& BackIntColor, Quantity_Color& AEdgeColor, Aspect_TypeOfLine& AType, Standard_Real& AWidth)  const;
 
 
 
@@ -93,52 +84,54 @@ public:
 
 protected:
 
-  //! Initialise the constructor <br>
-//!	    of Graphic3d_AspectFillArea3d. <br>
-//! <br>
-//! default values : <br>
-//! <br>
-//!	InteriorStyle	= Aspect_IS_EMPTY; <br>
-//!	InteriorColor	= Quantity_NOC_CYAN1; <br>
-//!	EdgeColor	= Quantity_NOC_WHITE; <br>
-//!	EdgeType	= Aspect_TOL_SOLID; <br>
-//!	EdgeWidth	= 1.0; <br>
-//!	HatchStyle	= Aspect_HS_VERTICAL; <br>
-  Standard_EXPORT   Aspect_AspectFillArea();
-  //! Initialise the values for the constructor of <br>
-//!	    Graphic3d_AspectFillArea3d. <br>
-//! <br>
-//! InteriorStyle : <br>
-//!	    IS_EMPTY	no interior. <br>
-//!	    IS_HOLLOW	display the boundaries of the surface. <br>
-//!	    IS_HATCH	display hatched with a hatch style. <br>
-//!	    IS_SOLID	display the interior entirely filled. <br>
-//! <br>
-//! EdgeLineType : <br>
-//!	    TOL_SOLID	continuous <br>
-//!	    TOL_DASH	dashed <br>
-//!	    TOL_DOT	dotted <br>
-//!	    TOL_DOTDASH	mixed <br>
-//! <br>
-//! default values : <br>
-//!	HatchStyle	= Aspect_HS_VERTICAL; <br>
-//! <br>
-//!  Warning: Raises AspectFillAreaDefinitionError if the <br>
-//!	    width is a negative value. <br>
-  Standard_EXPORT   Aspect_AspectFillArea(const Aspect_InteriorStyle InteriorStyle,const Quantity_Color& InteriorColor,const Quantity_Color& EdgeColor,const Aspect_TypeOfLine EdgeLineType,const Standard_Real EdgeLineWidth);
+  
+  //! Initialise the constructor
+  //! of Graphic3d_AspectFillArea3d.
+  //!
+  //! default values :
+  //!
+  //! InteriorStyle	= Aspect_IS_EMPTY;
+  //! InteriorColor	= Quantity_NOC_CYAN1;
+  //! EdgeColor	= Quantity_NOC_WHITE;
+  //! EdgeType	= Aspect_TOL_SOLID;
+  //! EdgeWidth	= 1.0;
+  //! HatchStyle	= Aspect_HS_VERTICAL;
+  Standard_EXPORT Aspect_AspectFillArea();
+  
+  //! Initialise the values for the constructor of
+  //! Graphic3d_AspectFillArea3d.
+  //!
+  //! InteriorStyle :
+  //! IS_EMPTY	no interior.
+  //! IS_HOLLOW	display the boundaries of the surface.
+  //! IS_HATCH	display hatched with a hatch style.
+  //! IS_SOLID	display the interior entirely filled.
+  //!
+  //! EdgeLineType :
+  //! TOL_SOLID	continuous
+  //! TOL_DASH	dashed
+  //! TOL_DOT	dotted
+  //! TOL_DOTDASH	mixed
+  //!
+  //! default values :
+  //! HatchStyle	= Aspect_HS_VERTICAL;
+  //!
+  //! Warning: Raises AspectFillAreaDefinitionError if the
+  //! width is a negative value.
+  Standard_EXPORT Aspect_AspectFillArea(const Aspect_InteriorStyle InteriorStyle, const Quantity_Color& InteriorColor, const Quantity_Color& EdgeColor, const Aspect_TypeOfLine EdgeLineType, const Standard_Real EdgeLineWidth);
 
 
 
 private: 
 
 
-Aspect_InteriorStyle MyInteriorStyle;
-Quantity_Color MyInteriorColor;
-Quantity_Color MyBackInteriorColor;
-Quantity_Color MyEdgeColor;
-Aspect_TypeOfLine MyEdgeType;
-Standard_Real MyEdgeWidth;
-Aspect_HatchStyle MyHatchStyle;
+  Aspect_InteriorStyle MyInteriorStyle;
+  Quantity_Color MyInteriorColor;
+  Quantity_Color MyBackInteriorColor;
+  Quantity_Color MyEdgeColor;
+  Aspect_TypeOfLine MyEdgeType;
+  Standard_Real MyEdgeWidth;
+  Aspect_HatchStyle MyHatchStyle;
 
 
 };
@@ -147,7 +140,6 @@ Aspect_HatchStyle MyHatchStyle;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Aspect_AspectFillArea_HeaderFile

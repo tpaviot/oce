@@ -6,44 +6,33 @@
 #ifndef _DBRep_Edge_HeaderFile
 #define _DBRep_Edge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_DBRep_Edge_HeaderFile
 #include <Handle_DBRep_Edge.hxx>
-#endif
 
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _Draw_Color_HeaderFile
 #include <Draw_Color.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TopoDS_Edge;
 class Draw_Color;
 
 
-
-class DBRep_Edge : public MMgt_TShared {
+//! Display of an edge. Edge + color.
+class DBRep_Edge : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   DBRep_Edge(const TopoDS_Edge& E,const Draw_Color& C);
+  Standard_EXPORT DBRep_Edge(const TopoDS_Edge& E, const Draw_Color& C);
   
-       const TopoDS_Edge& Edge() const;
+     const  TopoDS_Edge& Edge()  const;
   
-        void Edge(const TopoDS_Edge& E) ;
+      void Edge (const TopoDS_Edge& E) ;
   
-       const Draw_Color& Color() const;
+     const  Draw_Color& Color()  const;
   
-        void Color(const Draw_Color& C) ;
+      void Color (const Draw_Color& C) ;
 
 
 
@@ -58,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Edge myEdge;
-Draw_Color myColor;
+  TopoDS_Edge myEdge;
+  Draw_Color myColor;
 
 
 };
@@ -69,7 +58,6 @@ Draw_Color myColor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBRep_Edge_HeaderFile

@@ -6,46 +6,33 @@
 #ifndef _TDataStd_DeltaOnModificationOfRealArray_HeaderFile
 #define _TDataStd_DeltaOnModificationOfRealArray_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_DeltaOnModificationOfRealArray_HeaderFile
 #include <Handle_TDataStd_DeltaOnModificationOfRealArray.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TDF_DeltaOnModification_HeaderFile
 #include <TDF_DeltaOnModification.hxx>
-#endif
-#ifndef _Handle_TDataStd_RealArray_HeaderFile
 #include <Handle_TDataStd_RealArray.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 class TColStd_HArray1OfReal;
 class TDataStd_RealArray;
 
 
-//! This class provides default services for an <br>
-//!          AttributeDelta on a MODIFICATION action <br>
-class TDataStd_DeltaOnModificationOfRealArray : public TDF_DeltaOnModification {
+//! This class provides default services for an
+//! AttributeDelta on a MODIFICATION action
+class TDataStd_DeltaOnModificationOfRealArray : public TDF_DeltaOnModification
+{
 
 public:
 
-  //! Initializes a TDF_DeltaOnModification. <br>
-  Standard_EXPORT   TDataStd_DeltaOnModificationOfRealArray(const Handle(TDataStd_RealArray)& Arr);
-  //! Applies the delta to the attribute. <br>
-  Standard_EXPORT   virtual  void Apply() ;
+  
+  //! Initializes a TDF_DeltaOnModification.
+  Standard_EXPORT TDataStd_DeltaOnModificationOfRealArray(const Handle(TDataStd_RealArray)& Arr);
+  
+  //! Applies the delta to the attribute.
+  Standard_EXPORT virtual   void Apply() ;
 
 
 
@@ -60,10 +47,10 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfInteger myIndxes;
-Handle_TColStd_HArray1OfReal myValues;
-Standard_Integer myUp1;
-Standard_Integer myUp2;
+  Handle(TColStd_HArray1OfInteger) myIndxes;
+  Handle(TColStd_HArray1OfReal) myValues;
+  Standard_Integer myUp1;
+  Standard_Integer myUp2;
 
 
 };
@@ -72,7 +59,6 @@ Standard_Integer myUp2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_DeltaOnModificationOfRealArray_HeaderFile

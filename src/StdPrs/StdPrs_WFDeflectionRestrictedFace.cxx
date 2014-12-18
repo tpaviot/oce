@@ -17,6 +17,8 @@
 #include <StdPrs_WFDeflectionRestrictedFace.ixx>
 
 #include <Hatch_Hatcher.hxx>
+#include <Graphic3d_ArrayOfPolylines.hxx>
+#include <Graphic3d_AspectLine3d.hxx>
 #include <Graphic3d_Group.hxx>
 #include <gp_Pnt.hxx>
 #include <gp_Pnt2d.hxx>
@@ -38,7 +40,7 @@
 
 
 
-#ifdef DEB_MESH
+#ifdef OCCT_DEBUG_MESH
 #include <OSD_Chronometer.hxx>
 extern OSD_Chronometer FFaceTimer1,FFaceTimer2,FFaceTimer3,FFaceTimer4;
 #endif
@@ -106,7 +108,7 @@ void StdPrs_WFDeflectionRestrictedFace::Add
    const Handle(Prs3d_Drawer)& aDrawer,
    Prs3d_NListOfSequenceOfPnt& Curves) {
 
-#ifdef DEB_MESH
+#ifdef OCCT_DEBUG_MESH
   FFaceTimer1.Start();
 #endif
 
@@ -179,9 +181,11 @@ void StdPrs_WFDeflectionRestrictedFace::Add
 	    }
 	  }
 	}
+#ifdef OCCT_DEBUG
 	else {
 	  cout << "Cannot evaluate curve on surface"<<endl;
 	}
+#endif
       }
       else {
 	U1 = TheRCurve->FirstParameter();
@@ -228,7 +232,7 @@ void StdPrs_WFDeflectionRestrictedFace::Add
   }
 
 
-#ifdef DEB_MESH
+#ifdef OCCT_DEBUG_MESH
   FFaceTimer1.Stop();
 
   FFaceTimer2.Start();
@@ -273,7 +277,7 @@ void StdPrs_WFDeflectionRestrictedFace::Add
     }
   }
 
-#ifdef DEB_MESH
+#ifdef OCCT_DEBUG_MESH
   FFaceTimer2.Stop();
   FFaceTimer3.Start();
 #endif
@@ -285,7 +289,7 @@ void StdPrs_WFDeflectionRestrictedFace::Add
   }
 
 
-#ifdef DEB_MESH  
+#ifdef OCCT_DEBUG_MESH  
   FFaceTimer3.Stop();
   FFaceTimer4.Start();
 #endif
@@ -324,8 +328,9 @@ void StdPrs_WFDeflectionRestrictedFace::Add
 	GeomAdaptor_Curve GC(BC);
 	FindLimits(GC, aLimit,b1, b2);
 	if (b2-b1>Precision::Confusion()) {
-	  TColgp_SequenceOfPnt Points;
-	  StdPrs_DeflectionCurve::Add(aPresentation, GC, b1, b2, Deflection, Points, anAngle, Standard_False);
+	  Handle(TColgp_HSequenceOfPnt) Points = new TColgp_HSequenceOfPnt;
+	  StdPrs_DeflectionCurve::Add (aPresentation, GC, b1, b2, Deflection, 
+                                       Points->ChangeSequence(), anAngle, Standard_False);
 	  Curves.Append(Points);
 	}
       }
@@ -336,14 +341,15 @@ void StdPrs_WFDeflectionRestrictedFace::Add
 	  anIso.Load(GeomAbs_IsoV,Coord,b1,b2);
 	FindLimits(anIso, aLimit,b1, b2);
 	if (b2-b1>Precision::Confusion()) {
-	  TColgp_SequenceOfPnt Points;
-	  StdPrs_DeflectionCurve::Add(aPresentation, anIso, b1, b2, Deflection, Points, anAngle, Standard_False);
+	  Handle(TColgp_HSequenceOfPnt) Points = new TColgp_HSequenceOfPnt;
+	  StdPrs_DeflectionCurve::Add (aPresentation, anIso, b1, b2, Deflection, 
+                                       Points->ChangeSequence(), anAngle, Standard_False);
 	  Curves.Append(Points);
 	}
       }
     }
   }
-#ifdef DEB_MESH
+#ifdef OCCT_DEBUG_MESH
   FFaceTimer4.Stop();
 #endif
 }
@@ -450,9 +456,11 @@ Standard_Boolean StdPrs_WFDeflectionRestrictedFace::Match
 	  }
 	}
       }
+#ifdef OCCT_DEBUG
       else {
 	cout << "Cannot evaluate curve on surface"<<endl;
       }
+#endif
     }
   }
   
@@ -622,4 +630,47 @@ Standard_Boolean StdPrs_WFDeflectionRestrictedFace::MatchVIso
                       aDrawer->MaximalChordialDeviation(),
                       aDrawer->UIsoAspect()->Number(),
                       aDrawer->VIsoAspect()->Number());
+}
+
+namespace
+{
+  static const Standard_Integer THE_INDICES[][3] =
+  { { 0, 0, 0 }, { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 1 },
+    { 0, 1, 1 }, { 1, 1, 1 }, { 1, 1, 0 }, { 0, 1, 0 },
+    { 0, 0, 0 }, { 0, 0, 1 }, { 1, 0, 1 }, { 1, 1, 1 },
+    { 0, 1, 1 }, { 0, 1, 0 }, { 1, 1, 0 }, { 1, 0, 0 } };
+}
+
+//=======================================================================
+//function : AddBox
+//purpose  :
+//=======================================================================
+void StdPrs_WFDeflectionRestrictedFace::AddBox (const Handle(Prs3d_Presentation)& thePrs,
+                                                const Bnd_Box&                    theBndBox,
+                                                const Handle(Prs3d_Drawer)&       theDrawer)
+{
+  if (theBndBox.IsVoid())
+  {
+    return;
+  }
+
+  Standard_Real X[2], Y[2], Z[2];
+  theBndBox.Get (X[0], Y[0], Z[0], X[1], Y[1], Z[1]);
+
+  Handle(Graphic3d_Group) aGroup = Prs3d_Root::CurrentGroup (thePrs);
+  Quantity_Color    aColor;
+  Aspect_TypeOfLine aDummyLineType;
+  Standard_Real     aWidth = 1.0;
+  theDrawer->LineAspect()->Aspect()->Values (aColor, aDummyLineType, aWidth);
+
+  aGroup->SetGroupPrimitivesAspect (new Graphic3d_AspectLine3d (aColor, Aspect_TOL_DOTDASH, aWidth));
+
+  Handle(Graphic3d_ArrayOfPolylines) aPolyline = new Graphic3d_ArrayOfPolylines(16);
+  for(Standard_Integer aVertIter = 0; aVertIter < 16; ++aVertIter)
+  {
+    aPolyline->AddVertex (X[THE_INDICES[aVertIter][0]],
+                          Y[THE_INDICES[aVertIter][1]],
+                          Z[THE_INDICES[aVertIter][2]]);
+  }
+  aGroup->AddPrimitiveArray (aPolyline);
 }

@@ -6,37 +6,17 @@
 #ifndef _IntCurveSurface_ThePolyhedronOfHInter_HeaderFile
 #define _IntCurveSurface_ThePolyhedronOfHInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _Handle_Bnd_HArray1OfBox_HeaderFile
 #include <Handle_Bnd_HArray1OfBox.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
 class Bnd_HArray1OfBox;
 class Standard_OutOfRange;
 class Adaptor3d_HSurface;
@@ -48,80 +28,80 @@ class gp_XYZ;
 
 
 
-class IntCurveSurface_ThePolyhedronOfHInter  {
+class IntCurveSurface_ThePolyhedronOfHInter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntCurveSurface_ThePolyhedronOfHInter(const Handle(Adaptor3d_HSurface)& Surface,const Standard_Integer nbdU,const Standard_Integer nbdV,const Standard_Real U1,const Standard_Real V1,const Standard_Real U2,const Standard_Real V2);
+  Standard_EXPORT IntCurveSurface_ThePolyhedronOfHInter(const Handle(Adaptor3d_HSurface)& Surface, const Standard_Integer nbdU, const Standard_Integer nbdV, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2);
   
-  Standard_EXPORT   IntCurveSurface_ThePolyhedronOfHInter(const Handle(Adaptor3d_HSurface)& Surface,const TColStd_Array1OfReal& Upars,const TColStd_Array1OfReal& Vpars);
+  Standard_EXPORT IntCurveSurface_ThePolyhedronOfHInter(const Handle(Adaptor3d_HSurface)& Surface, const TColStd_Array1OfReal& Upars, const TColStd_Array1OfReal& Vpars);
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~IntCurveSurface_ThePolyhedronOfHInter()
 {
   Destroy();
 }
   
-  Standard_EXPORT     void DeflectionOverEstimation(const Standard_Real flec) ;
+  Standard_EXPORT   void DeflectionOverEstimation (const Standard_Real flec) ;
   
-  Standard_EXPORT     Standard_Real DeflectionOnTriangle(const Handle(Adaptor3d_HSurface)& Surface,const Standard_Integer Index) const;
+  Standard_EXPORT   Standard_Real DeflectionOnTriangle (const Handle(Adaptor3d_HSurface)& Surface, const Standard_Integer Index)  const;
   
-  Standard_EXPORT     void UMinSingularity(const Standard_Boolean Sing) ;
+  Standard_EXPORT   void UMinSingularity (const Standard_Boolean Sing) ;
   
-  Standard_EXPORT     void UMaxSingularity(const Standard_Boolean Sing) ;
+  Standard_EXPORT   void UMaxSingularity (const Standard_Boolean Sing) ;
   
-  Standard_EXPORT     void VMinSingularity(const Standard_Boolean Sing) ;
+  Standard_EXPORT   void VMinSingularity (const Standard_Boolean Sing) ;
   
-  Standard_EXPORT     void VMaxSingularity(const Standard_Boolean Sing) ;
+  Standard_EXPORT   void VMaxSingularity (const Standard_Boolean Sing) ;
   
-  Standard_EXPORT     void Size(Standard_Integer& nbdu,Standard_Integer& nbdv) const;
+  Standard_EXPORT   void Size (Standard_Integer& nbdu, Standard_Integer& nbdv)  const;
   
-  Standard_EXPORT     Standard_Integer NbTriangles() const;
+  Standard_EXPORT   Standard_Integer NbTriangles()  const;
   
-  Standard_EXPORT     void Triangle(const Standard_Integer Index,Standard_Integer& P1,Standard_Integer& P2,Standard_Integer& P3) const;
+  Standard_EXPORT   void Triangle (const Standard_Integer Index, Standard_Integer& P1, Standard_Integer& P2, Standard_Integer& P3)  const;
   
-  Standard_EXPORT     Standard_Integer TriConnex(const Standard_Integer Triang,const Standard_Integer Pivot,const Standard_Integer Pedge,Standard_Integer& TriCon,Standard_Integer& OtherP) const;
+  Standard_EXPORT   Standard_Integer TriConnex (const Standard_Integer Triang, const Standard_Integer Pivot, const Standard_Integer Pedge, Standard_Integer& TriCon, Standard_Integer& OtherP)  const;
   
-  Standard_EXPORT     Standard_Integer NbPoints() const;
+  Standard_EXPORT   Standard_Integer NbPoints()  const;
   
-  Standard_EXPORT     void Point(const gp_Pnt& thePnt,const Standard_Integer lig,const Standard_Integer col,const Standard_Real U,const Standard_Real V) ;
+  Standard_EXPORT   void Point (const gp_Pnt& thePnt, const Standard_Integer lig, const Standard_Integer col, const Standard_Real U, const Standard_Real V) ;
   
-  Standard_EXPORT    const gp_Pnt& Point(const Standard_Integer Index,Standard_Real& U,Standard_Real& V) const;
+  Standard_EXPORT  const  gp_Pnt& Point (const Standard_Integer Index, Standard_Real& U, Standard_Real& V)  const;
   
-  Standard_EXPORT    const gp_Pnt& Point(const Standard_Integer Index) const;
+  Standard_EXPORT  const  gp_Pnt& Point (const Standard_Integer Index)  const;
   
-  Standard_EXPORT     void Point(const Standard_Integer Index,gp_Pnt& P) const;
+  Standard_EXPORT   void Point (const Standard_Integer Index, gp_Pnt& P)  const;
   
-  Standard_EXPORT    const Bnd_Box& Bounding() const;
+  Standard_EXPORT  const  Bnd_Box& Bounding()  const;
   
-  Standard_EXPORT     void FillBounding() ;
+  Standard_EXPORT   void FillBounding() ;
   
-  Standard_EXPORT    const Handle_Bnd_HArray1OfBox& ComponentsBounding() const;
+  Standard_EXPORT  const  Handle(Bnd_HArray1OfBox)& ComponentsBounding()  const;
   
-  Standard_EXPORT     Standard_Real DeflectionOverEstimation() const;
+  Standard_EXPORT   Standard_Real DeflectionOverEstimation()  const;
   
-  Standard_EXPORT     Standard_Boolean HasUMinSingularity() const;
+  Standard_EXPORT   Standard_Boolean HasUMinSingularity()  const;
   
-  Standard_EXPORT     Standard_Boolean HasUMaxSingularity() const;
+  Standard_EXPORT   Standard_Boolean HasUMaxSingularity()  const;
   
-  Standard_EXPORT     Standard_Boolean HasVMinSingularity() const;
+  Standard_EXPORT   Standard_Boolean HasVMinSingularity()  const;
   
-  Standard_EXPORT     Standard_Boolean HasVMaxSingularity() const;
+  Standard_EXPORT   Standard_Boolean HasVMaxSingularity()  const;
   
-  Standard_EXPORT     void PlaneEquation(const Standard_Integer Triang,gp_XYZ& NormalVector,Standard_Real& PolarDistance) const;
+  Standard_EXPORT   void PlaneEquation (const Standard_Integer Triang, gp_XYZ& NormalVector, Standard_Real& PolarDistance)  const;
   
-  Standard_EXPORT     Standard_Boolean Contain(const Standard_Integer Triang,const gp_Pnt& ThePnt) const;
+  Standard_EXPORT   Standard_Boolean Contain (const Standard_Integer Triang, const gp_Pnt& ThePnt)  const;
   
-  Standard_EXPORT     void Parameters(const Standard_Integer Index,Standard_Real& U,Standard_Real& V) const;
+  Standard_EXPORT   void Parameters (const Standard_Integer Index, Standard_Real& U, Standard_Real& V)  const;
   
-  Standard_EXPORT     Standard_Boolean IsOnBound(const Standard_Integer Index1,const Standard_Integer Index2) const;
+  Standard_EXPORT   Standard_Boolean IsOnBound (const Standard_Integer Index1, const Standard_Integer Index2)  const;
   
-        Standard_Real GetBorderDeflection() const;
+      Standard_Real GetBorderDeflection()  const;
   
-  Standard_EXPORT     void Dump() const;
-
+  Standard_EXPORT   void Dump()  const;
 
 
 
@@ -129,9 +109,9 @@ public:
 protected:
 
   
-  Standard_EXPORT     void Init(const Handle(Adaptor3d_HSurface)& Surface,const Standard_Real U1,const Standard_Real V1,const Standard_Real U2,const Standard_Real V2) ;
+  Standard_EXPORT   void Init (const Handle(Adaptor3d_HSurface)& Surface, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2) ;
   
-  Standard_EXPORT     void Init(const Handle(Adaptor3d_HSurface)& Surface,const TColStd_Array1OfReal& Upars,const TColStd_Array1OfReal& Vpars) ;
+  Standard_EXPORT   void Init (const Handle(Adaptor3d_HSurface)& Surface, const TColStd_Array1OfReal& Upars, const TColStd_Array1OfReal& Vpars) ;
 
 
 
@@ -139,28 +119,28 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Real ComputeBorderDeflection(const Handle(Adaptor3d_HSurface)& Surface,const Standard_Real Parameter,const Standard_Real PMin,const Standard_Real PMax,const Standard_Boolean isUIso) const;
+  Standard_EXPORT   Standard_Real ComputeBorderDeflection (const Handle(Adaptor3d_HSurface)& Surface, const Standard_Real Parameter, const Standard_Real PMin, const Standard_Real PMax, const Standard_Boolean isUIso)  const;
 
 
-Standard_Integer nbdeltaU;
-Standard_Integer nbdeltaV;
-Bnd_Box TheBnd;
-Handle_Bnd_HArray1OfBox TheComponentsBnd;
-Standard_Real TheDeflection;
-Standard_Address C_MyPnts;
-Standard_Address C_MyU;
-Standard_Address C_MyV;
-Standard_Boolean UMinSingular;
-Standard_Boolean UMaxSingular;
-Standard_Boolean VMinSingular;
-Standard_Boolean VMaxSingular;
-Standard_Real TheBorderDeflection;
-Standard_Address C_MyIsOnBounds;
+  Standard_Integer nbdeltaU;
+  Standard_Integer nbdeltaV;
+  Bnd_Box TheBnd;
+  Handle(Bnd_HArray1OfBox) TheComponentsBnd;
+  Standard_Real TheDeflection;
+  Standard_Address C_MyPnts;
+  Standard_Address C_MyU;
+  Standard_Address C_MyV;
+  Standard_Boolean UMinSingular;
+  Standard_Boolean UMaxSingular;
+  Standard_Boolean VMinSingular;
+  Standard_Boolean VMaxSingular;
+  Standard_Real TheBorderDeflection;
+  Standard_Address C_MyIsOnBounds;
 
 
 };
 
-#define ThePSurface Handle_Adaptor3d_HSurface
+#define ThePSurface Handle(Adaptor3d_HSurface)
 #define ThePSurface_hxx <Adaptor3d_HSurface.hxx>
 #define ThePSurfaceTool Adaptor3d_HSurfaceTool
 #define ThePSurfaceTool_hxx <Adaptor3d_HSurfaceTool.hxx>
@@ -177,7 +157,6 @@ Standard_Address C_MyIsOnBounds;
 #undef IntCurveSurface_Polyhedron_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntCurveSurface_ThePolyhedronOfHInter_HeaderFile

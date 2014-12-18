@@ -1,24 +1,8 @@
-#ifndef _ExprIntrp_Generator_HeaderFile
 #include <ExprIntrp_Generator.hxx>
-#endif
-#ifndef _Expr_GeneralExpression_HeaderFile
 #include <Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Expr_GeneralRelation_HeaderFile
 #include <Expr_GeneralRelation.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Expr_GeneralFunction_HeaderFile
 #include <Expr_GeneralFunction.hxx>
-#endif
-#ifndef _Expr_NamedFunction_HeaderFile
 #include <Expr_NamedFunction.hxx>
-#endif
-#ifndef _Expr_NamedExpression_HeaderFile
 #include <Expr_NamedExpression.hxx>
-#endif
-#ifndef _ExprIntrp_Analysis_HeaderFile
 #include <ExprIntrp_Analysis.hxx>
-#endif

@@ -6,28 +6,14 @@
 #ifndef _MDF_DataMapNodeOfTypeARDriverMap_HeaderFile
 #define _MDF_DataMapNodeOfTypeARDriverMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MDF_DataMapNodeOfTypeARDriverMap_HeaderFile
 #include <Handle_MDF_DataMapNodeOfTypeARDriverMap.hxx>
-#endif
 
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_MDF_ARDriver_HeaderFile
 #include <Handle_MDF_ARDriver.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Type;
 class MDF_ARDriver;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class MDF_DataMapIteratorOfTypeARDriverMap;
 
 
 
-class MDF_DataMapNodeOfTypeARDriverMap : public TCollection_MapNode {
+class MDF_DataMapNodeOfTypeARDriverMap : public TCollection_MapNode
+{
 
 public:
 
   
-      MDF_DataMapNodeOfTypeARDriverMap(const Handle(Standard_Type)& K,const Handle(MDF_ARDriver)& I,const TCollection_MapNodePtr& n);
+    MDF_DataMapNodeOfTypeARDriverMap(const Handle(Standard_Type)& K, const Handle(MDF_ARDriver)& I, const TCollection_MapNodePtr& n);
   
-        Handle_Standard_Type& Key() const;
+      Handle(Standard_Type)& Key()  const;
   
-        Handle_MDF_ARDriver& Value() const;
+      Handle(MDF_ARDriver)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-Handle_Standard_Type myKey;
-Handle_MDF_ARDriver myValue;
+  Handle(Standard_Type) myKey;
+  Handle(MDF_ARDriver) myValue;
 
 
 };
 
-#define TheKey Handle_Standard_Type
+#define TheKey Handle(Standard_Type)
 #define TheKey_hxx <Standard_Type.hxx>
-#define TheItem Handle_MDF_ARDriver
+#define TheItem Handle(MDF_ARDriver)
 #define TheItem_hxx <MDF_ARDriver.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -99,7 +86,6 @@ Handle_MDF_ARDriver myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_DataMapNodeOfTypeARDriverMap_HeaderFile

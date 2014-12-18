@@ -6,42 +6,35 @@
 #ifndef _PGeom_Line_HeaderFile
 #define _PGeom_Line_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_Line_HeaderFile
 #include <Handle_PGeom_Line.hxx>
-#endif
 
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
-#ifndef _PGeom_Curve_HeaderFile
 #include <PGeom_Curve.hxx>
-#endif
 class gp_Ax1;
 
 
-class PGeom_Line : public PGeom_Curve {
+class PGeom_Line : public PGeom_Curve
+{
 
 public:
 
-  //! Creates a line with default values. <br>
-  Standard_EXPORT   PGeom_Line();
-  //! Creates   a  line  located    in  3D space   with <br>
-//!         <aPosition>.  The Location   of <aPosition> is  the <br>
-//!         origin of the line. <br>
-  Standard_EXPORT   PGeom_Line(const gp_Ax1& aPosition);
-  //! Set the value of the field position with <aPosition>. <br>
-  Standard_EXPORT     void Position(const gp_Ax1& aPosition) ;
-  //! Returns the value of the field position. <br>
-  Standard_EXPORT     gp_Ax1 Position() const;
+  
+  //! Creates a line with default values.
+  Standard_EXPORT PGeom_Line();
+  
+  //! Creates   a  line  located    in  3D space   with
+  //! <aPosition>.  The Location   of <aPosition> is  the
+  //! origin of the line.
+  Standard_EXPORT PGeom_Line(const gp_Ax1& aPosition);
+  
+  //! Set the value of the field position with <aPosition>.
+  Standard_EXPORT   void Position (const gp_Ax1& aPosition) ;
+  
+  //! Returns the value of the field position.
+  Standard_EXPORT   gp_Ax1 Position()  const;
 
 PGeom_Line(const Storage_stCONSTclCOM& a) : PGeom_Curve(a)
 {
@@ -61,7 +54,7 @@ protected:
 private: 
 
 
-gp_Ax1 position;
+  gp_Ax1 position;
 
 
 };
@@ -70,7 +63,6 @@ gp_Ax1 position;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_Line_HeaderFile

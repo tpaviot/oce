@@ -7,7 +7,6 @@
 #define _TopOpeBRep_PIntRes2d_IntersectionPoint_HeaderFile
 
 class IntRes2d_IntersectionPoint;
-
 typedef IntRes2d_IntersectionPoint* TopOpeBRep_PIntRes2d_IntersectionPoint;
 
-#endif
+#endif // _TopOpeBRep_PIntRes2d_IntersectionPoint_HeaderFile

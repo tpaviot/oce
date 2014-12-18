@@ -6,34 +6,16 @@
 #ifndef _TDataStd_Directory_HeaderFile
 #define _TDataStd_Directory_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_Directory_HeaderFile
 #include <Handle_TDataStd_Directory.hxx>
-#endif
 
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Handle_TDF_DataSet_HeaderFile
 #include <Handle_TDF_DataSet.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TDF_Label;
 class Standard_GUID;
 class TDF_Attribute;
@@ -41,46 +23,53 @@ class TDF_RelocationTable;
 class TDF_DataSet;
 
 
-//! Associates a directory in the data framework with <br>
-//! a TDataStd_TagSource attribute. <br>
-//! You can create a new directory label and add <br>
-//! sub-directory or object labels to it, <br>
-class TDataStd_Directory : public TDF_Attribute {
+//! Associates a directory in the data framework with
+//! a TDataStd_TagSource attribute.
+//! You can create a new directory label and add
+//! sub-directory or object labels to it,
+class TDataStd_Directory : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!          ============= <br>//! Searches for a directory attribute on the label <br>
-//! current, or on one of the father labels of current. <br>
-//! If a directory attribute is found, true is returned, <br>
-//! and the attribute found is set as D. <br>
-  Standard_EXPORT   static  Standard_Boolean Find(const TDF_Label& current,Handle(TDataStd_Directory)& D) ;
-  //!  Creates  an  enpty   Directory attribute,  located  at <br>
-//!          <label>. Raises if <label> has attribute <br>
-  Standard_EXPORT   static  Handle_TDataStd_Directory New(const TDF_Label& label) ;
-  //!  Creates a new sub-label and sets the <br>
-//! sub-directory dir on that label. <br>
-  Standard_EXPORT   static  Handle_TDataStd_Directory AddDirectory(const Handle(TDataStd_Directory)& dir) ;
-  //!  Makes new label and returns it to insert <br>
-//!           other object attributes (sketch,part...etc...) <br>
-  Standard_EXPORT   static  TDF_Label MakeObjectLabel(const Handle(TDataStd_Directory)& dir) ;
-  //! Directory methods <br>
-//!          =============== <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
   
-  Standard_EXPORT   TDataStd_Directory();
+  //! class methods
+  //! =============
+  //! Searches for a directory attribute on the label
+  //! current, or on one of the father labels of current.
+  //! If a directory attribute is found, true is returned,
+  //! and the attribute found is set as D.
+  Standard_EXPORT static   Standard_Boolean Find (const TDF_Label& current, Handle(TDataStd_Directory)& D) ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  //! Creates  an  enpty   Directory attribute,  located  at
+  //! <label>. Raises if <label> has attribute
+  Standard_EXPORT static   Handle(TDataStd_Directory) New (const TDF_Label& label) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& with) ;
+  //! Creates a new sub-label and sets the
+  //! sub-directory dir on that label.
+  Standard_EXPORT static   Handle(TDataStd_Directory) AddDirectory (const Handle(TDataStd_Directory)& dir) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! Makes new label and returns it to insert
+  //! other object attributes (sketch,part...etc...)
+  Standard_EXPORT static   TDF_Label MakeObjectLabel (const Handle(TDataStd_Directory)& dir) ;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  //! Directory methods
+  //! ===============
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT   virtual  void References(const Handle(TDF_DataSet)& DS) const;
+  Standard_EXPORT TDataStd_Directory();
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   void References (const Handle(TDF_DataSet)& DS)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -103,7 +92,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_Directory_HeaderFile

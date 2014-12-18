@@ -5,9 +5,7 @@
 
 #include <Standard_Storable.jxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 
 IMPLEMENT_STANDARD_TYPE(Standard_Storable)

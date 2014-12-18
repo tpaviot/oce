@@ -6,22 +6,15 @@
 #ifndef _Handle_StepVisual_AnnotationText_HeaderFile
 #define _Handle_StepVisual_AnnotationText_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_MappedItem_HeaderFile
 #include <Handle_StepRepr_MappedItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_MappedItem);
 class StepVisual_AnnotationText;
 
-DEFINE_STANDARD_HANDLE(StepVisual_AnnotationText,StepRepr_MappedItem)
+DEFINE_STANDARD_HANDLE(StepVisual_AnnotationText, StepRepr_MappedItem)
 
-#endif
+#endif // _Handle_StepVisual_AnnotationText_HeaderFile

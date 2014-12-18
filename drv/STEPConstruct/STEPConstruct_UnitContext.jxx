@@ -1,18 +1,6 @@
-#ifndef _StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_HeaderFile
 #include <StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx>
-#endif
-#ifndef _StepRepr_GlobalUnitAssignedContext_HeaderFile
 #include <StepRepr_GlobalUnitAssignedContext.hxx>
-#endif
-#ifndef _StepBasic_NamedUnit_HeaderFile
 #include <StepBasic_NamedUnit.hxx>
-#endif
-#ifndef _StepRepr_GlobalUncertaintyAssignedContext_HeaderFile
 #include <StepRepr_GlobalUncertaintyAssignedContext.hxx>
-#endif
-#ifndef _StepBasic_SiUnit_HeaderFile
 #include <StepBasic_SiUnit.hxx>
-#endif
-#ifndef _STEPConstruct_UnitContext_HeaderFile
 #include <STEPConstruct_UnitContext.hxx>
-#endif

@@ -1,4 +1,7 @@
-# Script reproducing creation of bottle model as described in OCCT Tutorial
+# Script demonstrating ray tracing in 3d view
+
+#Category: Visualization
+#Title: Ray tracing
 
 # make bottle by calling another script
 source [file join [file dirname [info script]] bottle.tcl]
@@ -12,6 +15,7 @@ bcut glass glass_out glass_in
 ttranslate glass -30 -30 0
 
 # show table and glass
+vinit w=1024 h=1024
 vsetmaterial bottle aluminium
 vdisplay table
 vsetmaterial table bronze
@@ -30,10 +34,7 @@ vsetcolorbg 255 255 255
 vfit
 
 # set ray tracing
-if { [regexp {HAVE_OPENCL} [dversion]] } {
-    puts "Trying raytrace mode..."
-    if { ! [catch {vraytrace 1}] } {
-        vtextureenv on 1
-        vsetraytracemode shad=1 refl=1 aa=1
-    }
+puts "Trying raytrace mode..."
+if { ! [catch {vrenderparams -raytrace -shadows -reflections -fsaa -rayDepth 5}] } {
+  vtextureenv on 1
 }

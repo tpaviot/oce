@@ -6,15 +6,14 @@
 #ifndef _TopOpeBRepBuild_LoopEnum_HeaderFile
 #define _TopOpeBRepBuild_LoopEnum_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopOpeBRepBuild_LoopEnum {
+
+enum TopOpeBRepBuild_LoopEnum
+{
 TopOpeBRepBuild_ANYLOOP,
 TopOpeBRepBuild_BOUNDARY,
 TopOpeBRepBuild_BLOCK
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopOpeBRepBuild_LoopEnum_HeaderFile

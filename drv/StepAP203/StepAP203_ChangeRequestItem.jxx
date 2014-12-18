@@ -1,9 +1,3 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinitionFormation_HeaderFile
 #include <StepBasic_ProductDefinitionFormation.hxx>
-#endif
-#ifndef _StepAP203_ChangeRequestItem_HeaderFile
 #include <StepAP203_ChangeRequestItem.hxx>
-#endif

@@ -6,9 +6,12 @@
 #ifndef _Aspect_GradientFillMethod_HeaderFile
 #define _Aspect_GradientFillMethod_HeaderFile
 
-//! Defines the fill methods to <br>
-//!      write gradient background in a window. <br>
-enum Aspect_GradientFillMethod {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Defines the fill methods to
+//! write gradient background in a window.
+enum Aspect_GradientFillMethod
+{
 Aspect_GFM_NONE,
 Aspect_GFM_HOR,
 Aspect_GFM_VER,
@@ -20,8 +23,4 @@ Aspect_GFM_CORNER3,
 Aspect_GFM_CORNER4
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_GradientFillMethod_HeaderFile

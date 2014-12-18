@@ -6,44 +6,39 @@
 #ifndef _PGeom_ToroidalSurface_HeaderFile
 #define _PGeom_ToroidalSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_ToroidalSurface_HeaderFile
 #include <Handle_PGeom_ToroidalSurface.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _PGeom_ElementarySurface_HeaderFile
 #include <PGeom_ElementarySurface.hxx>
-#endif
 class gp_Ax3;
 
 
-class PGeom_ToroidalSurface : public PGeom_ElementarySurface {
+class PGeom_ToroidalSurface : public PGeom_ElementarySurface
+{
 
 public:
 
-  //! Creates a ToroidalSurface with default values. <br>
-  Standard_EXPORT   PGeom_ToroidalSurface();
-  //! Creates a ToroidalSurface with these values. <br>
-  Standard_EXPORT   PGeom_ToroidalSurface(const gp_Ax3& aPosition,const Standard_Real aMajorRadius,const Standard_Real aMinorRadius);
-  //! Set the field majorRadius with <aMajorRadius>. <br>
-  Standard_EXPORT     void MajorRadius(const Standard_Real aMajorRadius) ;
-  //! Returns the value of the field majorRadius. <br>
-  Standard_EXPORT     Standard_Real MajorRadius() const;
-  //! Set the field minorRadius with <aMinorRadius>. <br>
-  Standard_EXPORT     void MinorRadius(const Standard_Real aMinorRadius) ;
-  //! Returns the value of the field minorRadius. <br>
-  Standard_EXPORT     Standard_Real MinorRadius() const;
+  
+  //! Creates a ToroidalSurface with default values.
+  Standard_EXPORT PGeom_ToroidalSurface();
+  
+  //! Creates a ToroidalSurface with these values.
+  Standard_EXPORT PGeom_ToroidalSurface(const gp_Ax3& aPosition, const Standard_Real aMajorRadius, const Standard_Real aMinorRadius);
+  
+  //! Set the field majorRadius with <aMajorRadius>.
+  Standard_EXPORT   void MajorRadius (const Standard_Real aMajorRadius) ;
+  
+  //! Returns the value of the field majorRadius.
+  Standard_EXPORT   Standard_Real MajorRadius()  const;
+  
+  //! Set the field minorRadius with <aMinorRadius>.
+  Standard_EXPORT   void MinorRadius (const Standard_Real aMinorRadius) ;
+  
+  //! Returns the value of the field minorRadius.
+  Standard_EXPORT   Standard_Real MinorRadius()  const;
 
 PGeom_ToroidalSurface(const Storage_stCONSTclCOM& a) : PGeom_ElementarySurface(a)
 {
@@ -66,8 +61,8 @@ protected:
 private: 
 
 
-Standard_Real majorRadius;
-Standard_Real minorRadius;
+  Standard_Real majorRadius;
+  Standard_Real minorRadius;
 
 
 };
@@ -76,7 +71,6 @@ Standard_Real minorRadius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_ToroidalSurface_HeaderFile

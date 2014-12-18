@@ -6,75 +6,60 @@
 #ifndef _Prs3d_PointAspect_HeaderFile
 #define _Prs3d_PointAspect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Prs3d_PointAspect_HeaderFile
 #include <Handle_Prs3d_PointAspect.hxx>
-#endif
 
-#ifndef _Handle_Graphic3d_AspectMarker3d_HeaderFile
 #include <Handle_Graphic3d_AspectMarker3d.hxx>
-#endif
-#ifndef _Prs3d_BasicAspect_HeaderFile
 #include <Prs3d_BasicAspect.hxx>
-#endif
-#ifndef _Aspect_TypeOfMarker_HeaderFile
 #include <Aspect_TypeOfMarker.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfByte_HeaderFile
 #include <Handle_TColStd_HArray1OfByte.hxx>
-#endif
-#ifndef _Graphic3d_MarkerImage_Handle_HeaderFile
 #include <Graphic3d_MarkerImage_Handle.hxx>
-#endif
 class Graphic3d_AspectMarker3d;
 class Quantity_Color;
 class TColStd_HArray1OfByte;
 
 
-//! This  class  defines  attributes for the points <br>
-//!  The points are drawn using markers, whose size does not depend on <br>
-//!  the zoom value of the views. <br>
-class Prs3d_PointAspect : public Prs3d_BasicAspect {
+//! This  class  defines  attributes for the points
+//! The points are drawn using markers, whose size does not depend on
+//! the zoom value of the views.
+class Prs3d_PointAspect : public Prs3d_BasicAspect
+{
 
 public:
 
   
-  Standard_EXPORT   Prs3d_PointAspect(const Aspect_TypeOfMarker aType,const Quantity_Color& aColor,const Standard_Real aScale);
+  Standard_EXPORT Prs3d_PointAspect(const Aspect_TypeOfMarker aType, const Quantity_Color& aColor, const Standard_Real aScale);
   
-  Standard_EXPORT   Prs3d_PointAspect(const Aspect_TypeOfMarker aType,const Quantity_NameOfColor aColor,const Standard_Real aScale);
-  //! defines only the urer defined marker point. <br>
-  Standard_EXPORT   Prs3d_PointAspect(const Quantity_Color& AColor,const Standard_Integer AWidth,const Standard_Integer AHeight,const Handle(TColStd_HArray1OfByte)& ATexture);
+  Standard_EXPORT Prs3d_PointAspect(const Aspect_TypeOfMarker aType, const Quantity_NameOfColor aColor, const Standard_Real aScale);
   
-  Standard_EXPORT     void SetColor(const Quantity_Color& aColor) ;
-  //! defines the color to be used when drawing a point. <br>
-//!          Default value: Quantity_NOC_YELLOW <br>
-  Standard_EXPORT     void SetColor(const Quantity_NameOfColor aColor) ;
-  //! defines the type of representation to be used when drawing a point. <br>
-//!          Default value: Aspect_TOM_PLUS <br>
-  Standard_EXPORT     void SetTypeOfMarker(const Aspect_TypeOfMarker aType) ;
-  //! defines the size of the marker used when drawing a point. <br>
-//!          Default value: 1. <br>
-  Standard_EXPORT     void SetScale(const Standard_Real aScale) ;
+  //! defines only the urer defined marker point.
+  Standard_EXPORT Prs3d_PointAspect(const Quantity_Color& AColor, const Standard_Integer AWidth, const Standard_Integer AHeight, const Handle(TColStd_HArray1OfByte)& ATexture);
   
-  Standard_EXPORT     Handle_Graphic3d_AspectMarker3d Aspect() const;
-  //! Returns marker's texture size. <br>
-  Standard_EXPORT     void GetTextureSize(Standard_Integer& AWidth,Standard_Integer& AHeight) ;
-  //! Returns marker's texture. <br>
-  Standard_EXPORT    const Graphic3d_MarkerImage_Handle& GetTexture() ;
+  Standard_EXPORT   void SetColor (const Quantity_Color& aColor) ;
+  
+  //! defines the color to be used when drawing a point.
+  //! Default value: Quantity_NOC_YELLOW
+  Standard_EXPORT   void SetColor (const Quantity_NameOfColor aColor) ;
+  
+  //! defines the type of representation to be used when drawing a point.
+  //! Default value: Aspect_TOM_PLUS
+  Standard_EXPORT   void SetTypeOfMarker (const Aspect_TypeOfMarker aType) ;
+  
+  //! defines the size of the marker used when drawing a point.
+  //! Default value: 1.
+  Standard_EXPORT   void SetScale (const Standard_Real aScale) ;
+  
+  Standard_EXPORT   Handle(Graphic3d_AspectMarker3d) Aspect()  const;
+  
+  //! Returns marker's texture size.
+  Standard_EXPORT   void GetTextureSize (Standard_Integer& AWidth, Standard_Integer& AHeight) ;
+  
+  //! Returns marker's texture.
+  Standard_EXPORT  const  Graphic3d_MarkerImage_Handle& GetTexture() ;
 
 
 
@@ -89,7 +74,7 @@ protected:
 private: 
 
 
-Handle_Graphic3d_AspectMarker3d myAspect;
+  Handle(Graphic3d_AspectMarker3d) myAspect;
 
 
 };
@@ -98,7 +83,6 @@ Handle_Graphic3d_AspectMarker3d myAspect;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Prs3d_PointAspect_HeaderFile

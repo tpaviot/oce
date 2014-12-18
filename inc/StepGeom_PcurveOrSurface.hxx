@@ -6,54 +6,42 @@
 #ifndef _StepGeom_PcurveOrSurface_HeaderFile
 #define _StepGeom_PcurveOrSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepGeom_Pcurve_HeaderFile
 #include <Handle_StepGeom_Pcurve.hxx>
-#endif
-#ifndef _Handle_StepGeom_Surface_HeaderFile
 #include <Handle_StepGeom_Surface.hxx>
-#endif
 class Standard_Transient;
 class StepGeom_Pcurve;
 class StepGeom_Surface;
 
 
 
-class StepGeom_PcurveOrSurface  : public StepData_SelectType {
+class StepGeom_PcurveOrSurface  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a PcurveOrSurface SelectType <br>
-  Standard_EXPORT   StepGeom_PcurveOrSurface();
-  //! Recognizes a PcurveOrSurface Kind Entity that is : <br>
-//!        1 -> Pcurve <br>
-//!        2 -> Surface <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a Pcurve (Null if another type) <br>
-  Standard_EXPORT     Handle_StepGeom_Pcurve Pcurve() const;
-  //! returns Value as a Surface (Null if another type) <br>
-  Standard_EXPORT     Handle_StepGeom_Surface Surface() const;
-
+  
+  //! Returns a PcurveOrSurface SelectType
+  Standard_EXPORT StepGeom_PcurveOrSurface();
+  
+  //! Recognizes a PcurveOrSurface Kind Entity that is :
+  //! 1 -> Pcurve
+  //! 2 -> Surface
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a Pcurve (Null if another type)
+  Standard_EXPORT   Handle(StepGeom_Pcurve) Pcurve()  const;
+  
+  //! returns Value as a Surface (Null if another type)
+  Standard_EXPORT   Handle(StepGeom_Surface) Surface()  const;
 
 
 
@@ -76,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_PcurveOrSurface_HeaderFile

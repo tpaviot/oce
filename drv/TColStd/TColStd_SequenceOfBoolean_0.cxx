@@ -5,15 +5,9 @@
 
 #include <TColStd_SequenceOfBoolean.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColStd_SequenceNodeOfSequenceOfBoolean_HeaderFile
 #include <TColStd_SequenceNodeOfSequenceOfBoolean.hxx>
-#endif
  
 
 #define SeqItem Standard_Boolean

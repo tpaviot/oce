@@ -6,37 +6,17 @@
 #ifndef _StepToTopoDS_MakeTransformed_HeaderFile
 #define _StepToTopoDS_MakeTransformed_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _StepToTopoDS_Root_HeaderFile
 #include <StepToTopoDS_Root.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_Axis2Placement3d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _Handle_StepGeom_CartesianTransformationOperator3d_HeaderFile
 #include <Handle_StepGeom_CartesianTransformationOperator3d.hxx>
-#endif
-#ifndef _Handle_StepRepr_MappedItem_HeaderFile
 #include <Handle_StepRepr_MappedItem.hxx>
-#endif
-#ifndef _Handle_Transfer_TransientProcess_HeaderFile
 #include <Handle_Transfer_TransientProcess.hxx>
-#endif
 class StepGeom_Axis2Placement3d;
 class StepGeom_CartesianTransformationOperator3d;
 class gp_Trsf;
@@ -45,38 +25,43 @@ class StepRepr_MappedItem;
 class Transfer_TransientProcess;
 
 
-//! Produces instances by Transformation of a basic item <br>
-class StepToTopoDS_MakeTransformed  : public StepToTopoDS_Root {
+//! Produces instances by Transformation of a basic item
+class StepToTopoDS_MakeTransformed  : public StepToTopoDS_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepToTopoDS_MakeTransformed();
-  //! Computes a transformation to pass from an Origin placement to <br>
-//!           a Target placement. Returns True when done <br>
-//!           If not done, the transformation will by Identity <br>
-  Standard_EXPORT     Standard_Boolean Compute(const Handle(StepGeom_Axis2Placement3d)& Origin,const Handle(StepGeom_Axis2Placement3d)& Target) ;
-  //! Computes a transformation defined by an operator 3D <br>
-  Standard_EXPORT     Standard_Boolean Compute(const Handle(StepGeom_CartesianTransformationOperator3d)& Operator) ;
-  //! Returns the computed transformation (Identity if not yet or <br>
-//!           if failed) <br>
-  Standard_EXPORT    const gp_Trsf& Transformation() const;
-  //! Applies the computed transformation to a shape <br>
-//!           Returns False if the transformation is Identity <br>
-  Standard_EXPORT     Standard_Boolean Transform(TopoDS_Shape& shape) const;
-  //! Translates a MappedItem. More precisely <br>
-//!           A MappedItem has a MappingSource and a MappingTarget <br>
-//!           MappingSource has a MappedRepresentation and a MappingOrigin <br>
-//!           MappedRepresentation is the basic item to be instanced <br>
-//!           MappingOrigin is the starting placement <br>
-//!           MappingTarget is the final placement <br>
-//! <br>
-//!           Hence, the transformation from MappingOrigin and MappingTarget <br>
-//!           is computed, the MappedRepr. is converted to a Shape, then <br>
-//!           transformed as an instance of this Shape <br>
-  Standard_EXPORT     TopoDS_Shape TranslateMappedItem(const Handle(StepRepr_MappedItem)& mapit,const Handle(Transfer_TransientProcess)& TP) ;
-
+  Standard_EXPORT StepToTopoDS_MakeTransformed();
+  
+  //! Computes a transformation to pass from an Origin placement to
+  //! a Target placement. Returns True when done
+  //! If not done, the transformation will by Identity
+  Standard_EXPORT   Standard_Boolean Compute (const Handle(StepGeom_Axis2Placement3d)& Origin, const Handle(StepGeom_Axis2Placement3d)& Target) ;
+  
+  //! Computes a transformation defined by an operator 3D
+  Standard_EXPORT   Standard_Boolean Compute (const Handle(StepGeom_CartesianTransformationOperator3d)& Operator) ;
+  
+  //! Returns the computed transformation (Identity if not yet or
+  //! if failed)
+  Standard_EXPORT  const  gp_Trsf& Transformation()  const;
+  
+  //! Applies the computed transformation to a shape
+  //! Returns False if the transformation is Identity
+  Standard_EXPORT   Standard_Boolean Transform (TopoDS_Shape& shape)  const;
+  
+  //! Translates a MappedItem. More precisely
+  //! A MappedItem has a MappingSource and a MappingTarget
+  //! MappingSource has a MappedRepresentation and a MappingOrigin
+  //! MappedRepresentation is the basic item to be instanced
+  //! MappingOrigin is the starting placement
+  //! MappingTarget is the final placement
+  //!
+  //! Hence, the transformation from MappingOrigin and MappingTarget
+  //! is computed, the MappedRepr. is converted to a Shape, then
+  //! transformed as an instance of this Shape
+  Standard_EXPORT   TopoDS_Shape TranslateMappedItem (const Handle(StepRepr_MappedItem)& mapit, const Handle(Transfer_TransientProcess)& TP) ;
 
 
 
@@ -91,7 +76,7 @@ private:
 
 
 
-gp_Trsf theTrsf;
+  gp_Trsf theTrsf;
 
 
 };
@@ -100,7 +85,6 @@ gp_Trsf theTrsf;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_MakeTransformed_HeaderFile

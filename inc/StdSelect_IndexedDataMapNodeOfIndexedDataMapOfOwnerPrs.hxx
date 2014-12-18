@@ -6,31 +6,15 @@
 #ifndef _StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_HeaderFile
 #define _StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_HeaderFile
 #include <Handle_StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs.hxx>
-#endif
 
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_StdSelect_Prs_HeaderFile
 #include <Handle_StdSelect_Prs.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class SelectBasics_EntityOwner;
 class StdSelect_Prs;
 class TColStd_MapTransientHasher;
@@ -38,20 +22,21 @@ class StdSelect_IndexedDataMapOfOwnerPrs;
 
 
 
-class StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public TCollection_MapNode {
+class StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public TCollection_MapNode
+{
 
 public:
 
   
-      StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs(const Handle(SelectBasics_EntityOwner)& K1,const Standard_Integer K2,const Handle(StdSelect_Prs)& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs(const Handle(SelectBasics_EntityOwner)& K1, const Standard_Integer K2, const Handle(StdSelect_Prs)& I, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_SelectBasics_EntityOwner& Key1() const;
+      Handle(SelectBasics_EntityOwner)& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
   
-        Handle_StdSelect_Prs& Value() const;
+      Handle(StdSelect_Prs)& Value()  const;
 
 
 
@@ -66,17 +51,17 @@ protected:
 private: 
 
 
-Handle_SelectBasics_EntityOwner myKey1;
-Standard_Integer myKey2;
-Handle_StdSelect_Prs myValue;
-TCollection_MapNodePtr myNext2;
+  Handle(SelectBasics_EntityOwner) myKey1;
+  Standard_Integer myKey2;
+  Handle(StdSelect_Prs) myValue;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey Handle_SelectBasics_EntityOwner
+#define TheKey Handle(SelectBasics_EntityOwner)
 #define TheKey_hxx <SelectBasics_EntityOwner.hxx>
-#define TheItem Handle_StdSelect_Prs
+#define TheItem Handle(StdSelect_Prs)
 #define TheItem_hxx <StdSelect_Prs.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -103,7 +88,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedDataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_HeaderFile

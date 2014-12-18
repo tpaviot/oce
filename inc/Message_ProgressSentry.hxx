@@ -6,77 +6,66 @@
 #ifndef _Message_ProgressSentry_HeaderFile
 #define _Message_ProgressSentry_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Message_ProgressIndicator_HeaderFile
 #include <Handle_Message_ProgressIndicator.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class Message_ProgressIndicator;
 class TCollection_HAsciiString;
 
 
-//! This class is a tool allowing to manage opening/closing <br>
-//!          scopes in the ProgressIndicator in convenient and safe way. <br>
-//! <br>
-//!          Its main features are: <br>
-//!          - Set all parameters for the current scale on the given <br>
-//!            ProgressIndicator and open a new scope at one line <br>
-//!          - Iterator-like interface to opening next scopes and <br>
-//!            check for user break <br>
-//!          - Automatic scope closing in destructor <br>
-//!          - Safe for NULL ProgressIndicator (just does nothing) <br>
-class Message_ProgressSentry  {
+//! This class is a tool allowing to manage opening/closing
+//! scopes in the ProgressIndicator in convenient and safe way.
+//!
+//! Its main features are:
+//! - Set all parameters for the current scale on the given
+//! ProgressIndicator and open a new scope at one line
+//! - Iterator-like interface to opening next scopes and
+//! check for user break
+//! - Automatic scope closing in destructor
+//! - Safe for NULL ProgressIndicator (just does nothing)
+class Message_ProgressSentry 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Message_ProgressSentry(const Handle(Message_ProgressIndicator)& PI,const Standard_CString name,const Standard_Real min,const Standard_Real max,const Standard_Real step,const Standard_Boolean isInf = Standard_False,const Standard_Real newScopeSpan = 0.0);
-  //! Creates an instance of ProgressSentry attaching it to <br>
-//!          the specified ProgressIndicator, selects parameters of <br>
-//!          the current scale, and opens a new scope with specified <br>
-//!          span (equal to step by default) <br>
-  Standard_EXPORT   Message_ProgressSentry(const Handle(Message_ProgressIndicator)& PI,const Handle(TCollection_HAsciiString)& name,const Standard_Real min,const Standard_Real max,const Standard_Real step,const Standard_Boolean isInf = Standard_False,const Standard_Real newScopeSpan = 0.0);
-  //! Moves progress indicator to the end of the current scale <br>
-//!          and relieves sentry from its duty. Methods other than Show() <br>
-//!          will do nothing after this one is called. <br>
-        void Relieve() ;
+  Standard_EXPORT Message_ProgressSentry(const Handle(Message_ProgressIndicator)& PI, const Standard_CString name, const Standard_Real min, const Standard_Real max, const Standard_Real step, const Standard_Boolean isInf = Standard_False, const Standard_Real newScopeSpan = 0.0);
+  
+  //! Creates an instance of ProgressSentry attaching it to
+  //! the specified ProgressIndicator, selects parameters of
+  //! the current scale, and opens a new scope with specified
+  //! span (equal to step by default)
+  Standard_EXPORT Message_ProgressSentry(const Handle(Message_ProgressIndicator)& PI, const Handle(TCollection_HAsciiString)& name, const Standard_Real min, const Standard_Real max, const Standard_Real step, const Standard_Boolean isInf = Standard_False, const Standard_Real newScopeSpan = 0.0);
+  
+  //! Moves progress indicator to the end of the current scale
+  //! and relieves sentry from its duty. Methods other than Show()
+  //! will do nothing after this one is called.
+      void Relieve() ;
 ~Message_ProgressSentry()
 {
   Relieve();
 }
   
-        void Next(const Standard_CString name = 0) const;
+      void Next (const Standard_CString name = 0)  const;
   
-        void Next(const Standard_Real span,const Standard_CString name = 0) const;
-  //! Closes current scope and opens next one <br>
-//!          with either specified or default span <br>
-        void Next(const Standard_Real span,const Handle(TCollection_HAsciiString)& name) const;
-  //! Returns False if ProgressIndicator signals UserBreak <br>
-        Standard_Boolean More() const;
-  //! Forces update of progress indicator display <br>
-        void Show() const;
-
+      void Next (const Standard_Real span, const Standard_CString name = 0)  const;
+  
+  //! Closes current scope and opens next one
+  //! with either specified or default span
+      void Next (const Standard_Real span, const Handle(TCollection_HAsciiString)& name)  const;
+  
+  //! Returns False if ProgressIndicator signals UserBreak
+      Standard_Boolean More()  const;
+  
+  //! Forces update of progress indicator display
+      void Show()  const;
 
 
 
@@ -91,8 +80,8 @@ private:
 
 
 
-Handle_Message_ProgressIndicator myProgress;
-Standard_Boolean myActive;
+  Handle(Message_ProgressIndicator) myProgress;
+  Standard_Boolean myActive;
 
 
 };
@@ -102,7 +91,6 @@ Standard_Boolean myActive;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Message_ProgressSentry_HeaderFile

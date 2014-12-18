@@ -22,7 +22,7 @@
 
 #include <NCollection_BaseAllocator.hxx>
 
-#include <BOPInt_Context.hxx>
+#include <IntTools_Context.hxx>
 #include <BOPDS_DS.hxx>
 #include <BOPDS_Iterator.hxx>
 
@@ -93,7 +93,7 @@ BOPDS_PDS BOPAlgo_PaveFiller::PDS()
 //function : Context
 //purpose  : 
 //=======================================================================
-Handle(BOPInt_Context) BOPAlgo_PaveFiller::Context()
+Handle(IntTools_Context) BOPAlgo_PaveFiller::Context()
 {
   return myContext;
 }
@@ -145,11 +145,12 @@ void BOPAlgo_PaveFiller::Init()
   //
   // 2.myIterator 
   myIterator=new BOPDS_Iterator(myAllocator);
+  myIterator->SetRunParallel(myRunParallel);
   myIterator->SetDS(myDS);
   myIterator->Prepare();
   //
   // 3 myContext
-  myContext=new BOPInt_Context;
+  myContext=new IntTools_Context;
   //
   myErrorStatus=0;
 }
@@ -163,67 +164,106 @@ void BOPAlgo_PaveFiller::Perform()
   try { 
     OCC_CATCH_SIGNALS
     //
-    Init();
-    if (myErrorStatus) {
-      return; 
-    }
-    // 00
-    PerformVV();
-    if (myErrorStatus) {
-      return; 
-    }
-    // 01
-    PerformVE();
-    if (myErrorStatus) {
-      return; 
-    }
-    //
-    myDS->UpdatePaveBlocks();
-    // 11
-    PerformEE();
-    if (myErrorStatus) {
-      return; 
-    }
-    // 02
-    PerformVF();
-    if (myErrorStatus) {
-      return; 
-    }
-    // 12
-    PerformEF();
-    if (myErrorStatus) {
-      return; 
-    }
-    //
-    MakeSplitEdges();
-    if (myErrorStatus) {
-      return; 
-    }
-    //
-    // 22
-    PerformFF();
-    if (myErrorStatus) {
-      return; 
-    }
-    //
-    MakeBlocks();
-    if (myErrorStatus) {
-      return; 
-    }
-    //
-    RefineFaceInfoOn();
-    //
-    MakePCurves();
-    if (myErrorStatus) {
-      return; 
-    }
-    //
-    ProcessDE();
-    if (myErrorStatus) {
-      return; 
-    }
-  } // try {
+    PerformInternal();
+  }
+  //
   catch (Standard_Failure) {
     myErrorStatus=11;
-  }  
+  } 
 }
+//=======================================================================
+// function: PerformInternal
+// purpose: 
+//=======================================================================
+void BOPAlgo_PaveFiller::PerformInternal()
+{
+  myErrorStatus=0;
+  //
+  Init();
+  if (myErrorStatus) {
+    return; 
+  }
+  //
+  Prepare();
+  if (myErrorStatus) {
+    return; 
+  }
+  // 00
+  PerformVV();
+  if (myErrorStatus) {
+    return; 
+  }
+  // 01
+  PerformVE();
+  if (myErrorStatus) {
+    return; 
+  }
+  //
+  myDS->UpdatePaveBlocks();
+  // 11
+  PerformEE();
+  if (myErrorStatus) {
+    return; 
+  }
+  // 02
+  PerformVF();
+  if (myErrorStatus) {
+    return; 
+  }
+  // 12
+  PerformEF();
+  if (myErrorStatus) {
+    return; 
+  }
+  //
+  MakeSplitEdges();
+  if (myErrorStatus) {
+    return; 
+  }
+  //
+  // 22
+  PerformFF();
+  if (myErrorStatus) {
+    return; 
+  }
+  //
+  MakeBlocks();
+  if (myErrorStatus) {
+    return; 
+  }
+  //
+  RefineFaceInfoOn();
+  //
+  MakePCurves();
+  if (myErrorStatus) {
+    return; 
+  }
+  //
+  ProcessDE();
+  if (myErrorStatus) {
+    return; 
+  }
+  //
+  //modified by NIZNHY-PKV Fri Sep 12 07:06:50 2014f
+  // 03
+  PerformVZ();
+  if (myErrorStatus) {
+    return;
+  }
+  // 13
+  PerformEZ();
+  if (myErrorStatus) {
+    return;
+  }
+  // 23
+  PerformFZ();
+  if (myErrorStatus) {
+    return;
+  }
+  // 33
+  PerformZZ();
+  if (myErrorStatus) {
+    return;
+  }
+  //modified by NIZNHY-PKV Fri Sep 12 07:06:52 2014t
+} 

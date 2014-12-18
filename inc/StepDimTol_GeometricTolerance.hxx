@@ -6,58 +6,55 @@
 #ifndef _StepDimTol_GeometricTolerance_HeaderFile
 #define _StepDimTol_GeometricTolerance_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepDimTol_GeometricTolerance_HeaderFile
 #include <Handle_StepDimTol_GeometricTolerance.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_MeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_MeasureWithUnit.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_MeasureWithUnit;
 class StepRepr_ShapeAspect;
 
 
-//! Representation of STEP entity GeometricTolerance <br>
-class StepDimTol_GeometricTolerance : public MMgt_TShared {
+//! Representation of STEP entity GeometricTolerance
+class StepDimTol_GeometricTolerance : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepDimTol_GeometricTolerance();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Handle(StepBasic_MeasureWithUnit)& aMagnitude,const Handle(StepRepr_ShapeAspect)& aTolerancedShapeAspect) ;
-  //! Returns field Name <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
-  //! Set field Name <br>
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& Name) ;
-  //! Returns field Description <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
-  //! Set field Description <br>
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& Description) ;
-  //! Returns field Magnitude <br>
-  Standard_EXPORT     Handle_StepBasic_MeasureWithUnit Magnitude() const;
-  //! Set field Magnitude <br>
-  Standard_EXPORT     void SetMagnitude(const Handle(StepBasic_MeasureWithUnit)& Magnitude) ;
-  //! Returns field TolerancedShapeAspect <br>
-  Standard_EXPORT     Handle_StepRepr_ShapeAspect TolerancedShapeAspect() const;
-  //! Set field TolerancedShapeAspect <br>
-  Standard_EXPORT     void SetTolerancedShapeAspect(const Handle(StepRepr_ShapeAspect)& TolerancedShapeAspect) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepDimTol_GeometricTolerance();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Handle(StepBasic_MeasureWithUnit)& aMagnitude, const Handle(StepRepr_ShapeAspect)& aTolerancedShapeAspect) ;
+  
+  //! Returns field Name
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
+  
+  //! Set field Name
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& Name) ;
+  
+  //! Returns field Description
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
+  
+  //! Set field Description
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& Description) ;
+  
+  //! Returns field Magnitude
+  Standard_EXPORT   Handle(StepBasic_MeasureWithUnit) Magnitude()  const;
+  
+  //! Set field Magnitude
+  Standard_EXPORT   void SetMagnitude (const Handle(StepBasic_MeasureWithUnit)& Magnitude) ;
+  
+  //! Returns field TolerancedShapeAspect
+  Standard_EXPORT   Handle(StepRepr_ShapeAspect) TolerancedShapeAspect()  const;
+  
+  //! Set field TolerancedShapeAspect
+  Standard_EXPORT   void SetTolerancedShapeAspect (const Handle(StepRepr_ShapeAspect)& TolerancedShapeAspect) ;
 
 
 
@@ -72,10 +69,10 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theName;
-Handle_TCollection_HAsciiString theDescription;
-Handle_StepBasic_MeasureWithUnit theMagnitude;
-Handle_StepRepr_ShapeAspect theTolerancedShapeAspect;
+  Handle(TCollection_HAsciiString) theName;
+  Handle(TCollection_HAsciiString) theDescription;
+  Handle(StepBasic_MeasureWithUnit) theMagnitude;
+  Handle(StepRepr_ShapeAspect) theTolerancedShapeAspect;
 
 
 };
@@ -84,7 +81,6 @@ Handle_StepRepr_ShapeAspect theTolerancedShapeAspect;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepDimTol_GeometricTolerance_HeaderFile

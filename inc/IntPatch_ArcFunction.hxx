@@ -6,43 +6,19 @@
 #ifndef _IntPatch_ArcFunction_HeaderFile
 #define _IntPatch_ArcFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _IntSurf_Quadric_HeaderFile
 #include <IntSurf_Quadric.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TColgp_SequenceOfPnt_HeaderFile
 #include <TColgp_SequenceOfPnt.hxx>
-#endif
-#ifndef _math_FunctionWithDerivative_HeaderFile
 #include <math_FunctionWithDerivative.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Adaptor2d_HCurve2d;
 class Adaptor3d_HSurface;
 class IntSurf_Quadric;
@@ -50,38 +26,38 @@ class gp_Pnt;
 
 
 
-class IntPatch_ArcFunction  : public math_FunctionWithDerivative {
+class IntPatch_ArcFunction  : public math_FunctionWithDerivative
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntPatch_ArcFunction();
+  Standard_EXPORT IntPatch_ArcFunction();
   
-        void SetQuadric(const IntSurf_Quadric& Q) ;
+      void SetQuadric (const IntSurf_Quadric& Q) ;
   
-        void Set(const Handle(Adaptor2d_HCurve2d)& A) ;
+      void Set (const Handle(Adaptor2d_HCurve2d)& A) ;
   
-        void Set(const Handle(Adaptor3d_HSurface)& S) ;
+      void Set (const Handle(Adaptor3d_HSurface)& S) ;
   
-  Standard_EXPORT     Standard_Boolean Value(const Standard_Real X,Standard_Real& F) ;
+  Standard_EXPORT   Standard_Boolean Value (const Standard_Real X, Standard_Real& F) ;
   
-  Standard_EXPORT     Standard_Boolean Derivative(const Standard_Real X,Standard_Real& D) ;
+  Standard_EXPORT   Standard_Boolean Derivative (const Standard_Real X, Standard_Real& D) ;
   
-  Standard_EXPORT     Standard_Boolean Values(const Standard_Real X,Standard_Real& F,Standard_Real& D) ;
+  Standard_EXPORT   Standard_Boolean Values (const Standard_Real X, Standard_Real& F, Standard_Real& D) ;
   
-  Standard_EXPORT     Standard_Integer NbSamples() const;
+  Standard_EXPORT   Standard_Integer NbSamples()  const;
   
-  Standard_EXPORT   virtual  Standard_Integer GetStateNumber() ;
+  Standard_EXPORT virtual   Standard_Integer GetStateNumber() ;
   
-       const gp_Pnt& Valpoint(const Standard_Integer Index) const;
+     const  gp_Pnt& Valpoint (const Standard_Integer Index)  const;
   
-       const IntSurf_Quadric& Quadric() const;
+     const  IntSurf_Quadric& Quadric()  const;
   
-       const Handle_Adaptor2d_HCurve2d& Arc() const;
+     const  Handle(Adaptor2d_HCurve2d)& Arc()  const;
   
-       const Handle_Adaptor3d_HSurface& Surface() const;
-
+     const  Handle(Adaptor3d_HSurface)& Surface()  const;
 
 
 
@@ -96,11 +72,11 @@ private:
 
 
 
-Handle_Adaptor2d_HCurve2d myArc;
-Handle_Adaptor3d_HSurface mySurf;
-IntSurf_Quadric myQuad;
-gp_Pnt ptsol;
-TColgp_SequenceOfPnt seqpt;
+  Handle(Adaptor2d_HCurve2d) myArc;
+  Handle(Adaptor3d_HSurface) mySurf;
+  IntSurf_Quadric myQuad;
+  gp_Pnt ptsol;
+  TColgp_SequenceOfPnt seqpt;
 
 
 };
@@ -110,7 +86,6 @@ TColgp_SequenceOfPnt seqpt;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_ArcFunction_HeaderFile

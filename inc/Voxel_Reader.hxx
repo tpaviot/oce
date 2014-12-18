@@ -6,49 +6,47 @@
 #ifndef _Voxel_Reader_HeaderFile
 #define _Voxel_Reader_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TCollection_ExtendedString;
 
 
-//! Reads a cube of voxels from disk. <br>
-//!          Beware, a caller of the reader is responsible for deletion of the read voxels. <br>
-class Voxel_Reader  {
+//! Reads a cube of voxels from disk.
+//! Beware, a caller of the reader is responsible for deletion of the read voxels.
+class Voxel_Reader 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! An empty constructor. <br>
-  Standard_EXPORT   Voxel_Reader();
-  //! Reads the voxels from disk <br>
-  Standard_EXPORT     Standard_Boolean Read(const TCollection_ExtendedString& file) ;
-  //! Informs the user about the type of voxels he has read. <br>
-  Standard_EXPORT     Standard_Boolean IsBoolVoxels() const;
-  //! Informs the user about the type of voxels he has read. <br>
-  Standard_EXPORT     Standard_Boolean IsColorVoxels() const;
-  //! Informs the user about the type of voxels he has read. <br>
-  Standard_EXPORT     Standard_Boolean IsFloatVoxels() const;
-  //! Returns a pointer to the read 1bit voxels. <br>
-  Standard_EXPORT     Standard_Address GetBoolVoxels() const;
-  //! Returns a pointer to the read 4bit voxels. <br>
-  Standard_EXPORT     Standard_Address GetColorVoxels() const;
-  //! Returns a pointer to the read 4bytes voxels. <br>
-  Standard_EXPORT     Standard_Address GetFloatVoxels() const;
-
+  
+  //! An empty constructor.
+  Standard_EXPORT Voxel_Reader();
+  
+  //! Reads the voxels from disk
+  Standard_EXPORT   Standard_Boolean Read (const TCollection_ExtendedString& file) ;
+  
+  //! Informs the user about the type of voxels he has read.
+  Standard_EXPORT   Standard_Boolean IsBoolVoxels()  const;
+  
+  //! Informs the user about the type of voxels he has read.
+  Standard_EXPORT   Standard_Boolean IsColorVoxels()  const;
+  
+  //! Informs the user about the type of voxels he has read.
+  Standard_EXPORT   Standard_Boolean IsFloatVoxels()  const;
+  
+  //! Returns a pointer to the read 1bit voxels.
+  Standard_EXPORT   Standard_Address GetBoolVoxels()  const;
+  
+  //! Returns a pointer to the read 4bit voxels.
+  Standard_EXPORT   Standard_Address GetColorVoxels()  const;
+  
+  //! Returns a pointer to the read 4bytes voxels.
+  Standard_EXPORT   Standard_Address GetFloatVoxels()  const;
 
 
 
@@ -61,23 +59,29 @@ protected:
 
 private:
 
-  //! Reads 1bit voxels from disk in ASCII format. <br>
-  Standard_EXPORT     Standard_Boolean ReadBoolAsciiVoxels(const TCollection_ExtendedString& file) ;
-  //! Reads 4bit voxels from disk in ASCII format. <br>
-  Standard_EXPORT     Standard_Boolean ReadColorAsciiVoxels(const TCollection_ExtendedString& file) ;
-  //! Reads 4bytes voxels from disk in ASCII format. <br>
-  Standard_EXPORT     Standard_Boolean ReadFloatAsciiVoxels(const TCollection_ExtendedString& file) ;
-  //! Reads 1bit voxels from disk in BINARY format. <br>
-  Standard_EXPORT     Standard_Boolean ReadBoolBinaryVoxels(const TCollection_ExtendedString& file) ;
-  //! Reads 4bit voxels from disk in BINARY format. <br>
-  Standard_EXPORT     Standard_Boolean ReadColorBinaryVoxels(const TCollection_ExtendedString& file) ;
-  //! Reads 4bytes voxels from disk in BINARY format. <br>
-  Standard_EXPORT     Standard_Boolean ReadFloatBinaryVoxels(const TCollection_ExtendedString& file) ;
+  
+  //! Reads 1bit voxels from disk in ASCII format.
+  Standard_EXPORT   Standard_Boolean ReadBoolAsciiVoxels (const TCollection_ExtendedString& file) ;
+  
+  //! Reads 4bit voxels from disk in ASCII format.
+  Standard_EXPORT   Standard_Boolean ReadColorAsciiVoxels (const TCollection_ExtendedString& file) ;
+  
+  //! Reads 4bytes voxels from disk in ASCII format.
+  Standard_EXPORT   Standard_Boolean ReadFloatAsciiVoxels (const TCollection_ExtendedString& file) ;
+  
+  //! Reads 1bit voxels from disk in BINARY format.
+  Standard_EXPORT   Standard_Boolean ReadBoolBinaryVoxels (const TCollection_ExtendedString& file) ;
+  
+  //! Reads 4bit voxels from disk in BINARY format.
+  Standard_EXPORT   Standard_Boolean ReadColorBinaryVoxels (const TCollection_ExtendedString& file) ;
+  
+  //! Reads 4bytes voxels from disk in BINARY format.
+  Standard_EXPORT   Standard_Boolean ReadFloatBinaryVoxels (const TCollection_ExtendedString& file) ;
 
 
-Standard_Address myBoolVoxels;
-Standard_Address myColorVoxels;
-Standard_Address myFloatVoxels;
+  Standard_Address myBoolVoxels;
+  Standard_Address myColorVoxels;
+  Standard_Address myFloatVoxels;
 
 
 };
@@ -86,7 +90,6 @@ Standard_Address myFloatVoxels;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Voxel_Reader_HeaderFile

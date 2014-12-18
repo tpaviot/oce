@@ -6,47 +6,33 @@
 #ifndef _RWHeaderSection_RWFileName_HeaderFile
 #define _RWHeaderSection_RWFileName_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_HeaderSection_FileName_HeaderFile
 #include <Handle_HeaderSection_FileName.hxx>
-#endif
 class StepData_StepReaderData;
 class Interface_Check;
 class HeaderSection_FileName;
 class StepData_StepWriter;
 
 
-//! Read & Write Module for FileName <br>
-class RWHeaderSection_RWFileName  {
+//! Read & Write Module for FileName
+class RWHeaderSection_RWFileName 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   RWHeaderSection_RWFileName();
+  Standard_EXPORT RWHeaderSection_RWFileName();
   
-  Standard_EXPORT     void ReadStep(const Handle(StepData_StepReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(HeaderSection_FileName)& ent) const;
+  Standard_EXPORT   void ReadStep (const Handle(StepData_StepReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(HeaderSection_FileName)& ent)  const;
   
-  Standard_EXPORT     void WriteStep(StepData_StepWriter& SW,const Handle(HeaderSection_FileName)& ent) const;
-
+  Standard_EXPORT   void WriteStep (StepData_StepWriter& SW, const Handle(HeaderSection_FileName)& ent)  const;
 
 
 
@@ -69,7 +55,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWHeaderSection_RWFileName_HeaderFile

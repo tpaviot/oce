@@ -6,54 +6,42 @@
 #ifndef _StepGeom_VectorOrDirection_HeaderFile
 #define _StepGeom_VectorOrDirection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepGeom_Vector_HeaderFile
 #include <Handle_StepGeom_Vector.hxx>
-#endif
-#ifndef _Handle_StepGeom_Direction_HeaderFile
 #include <Handle_StepGeom_Direction.hxx>
-#endif
 class Standard_Transient;
 class StepGeom_Vector;
 class StepGeom_Direction;
 
 
 
-class StepGeom_VectorOrDirection  : public StepData_SelectType {
+class StepGeom_VectorOrDirection  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a VectorOrDirection SelectType <br>
-  Standard_EXPORT   StepGeom_VectorOrDirection();
-  //! Recognizes a VectorOrDirection Kind Entity that is : <br>
-//!        1 -> Vector <br>
-//!        2 -> Direction <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a Vector (Null if another type) <br>
-  Standard_EXPORT     Handle_StepGeom_Vector Vector() const;
-  //! returns Value as a Direction (Null if another type) <br>
-  Standard_EXPORT     Handle_StepGeom_Direction Direction() const;
-
+  
+  //! Returns a VectorOrDirection SelectType
+  Standard_EXPORT StepGeom_VectorOrDirection();
+  
+  //! Recognizes a VectorOrDirection Kind Entity that is :
+  //! 1 -> Vector
+  //! 2 -> Direction
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a Vector (Null if another type)
+  Standard_EXPORT   Handle(StepGeom_Vector) Vector()  const;
+  
+  //! returns Value as a Direction (Null if another type)
+  Standard_EXPORT   Handle(StepGeom_Direction) Direction()  const;
 
 
 
@@ -76,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_VectorOrDirection_HeaderFile

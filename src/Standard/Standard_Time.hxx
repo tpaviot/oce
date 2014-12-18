@@ -14,13 +14,7 @@
 #ifndef _Standard_Time_HeaderFile
 #define _Standard_Time_HeaderFile
 
-#ifndef _Standard_TypeDef_HeaderFile
 #include <Standard_TypeDef.hxx>
-#endif
-
-class Handle_Standard_Type;
-
-__Standard_API const Handle_Standard_Type& Standard_Time_Type_();
 
 // ===============================================
 // Methods from Standard_Entity class which are redefined:  

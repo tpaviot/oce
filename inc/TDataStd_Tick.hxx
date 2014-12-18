@@ -6,59 +6,49 @@
 #ifndef _TDataStd_Tick_HeaderFile
 #define _TDataStd_Tick_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_Tick_HeaderFile
 #include <Handle_TDataStd_Tick.hxx>
-#endif
 
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! Defines a boolean attribute. <br>
-//!          If it exists at a label - true, <br>
-//!          Otherwise - false. <br>
-class TDataStd_Tick : public TDF_Attribute {
+//! Defines a boolean attribute.
+//! If it exists at a label - true,
+//! Otherwise - false.
+class TDataStd_Tick : public TDF_Attribute
+{
 
 public:
 
-  //! Static methods <br>
-//!          ============== <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Find, or create, a Tick attribute. <br>//! Tick methods <br>
-//!          ============ <br>
-  Standard_EXPORT   static  Handle_TDataStd_Tick Set(const TDF_Label& label) ;
   
-  Standard_EXPORT   TDataStd_Tick();
+  //! Static methods
+  //! ==============
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  //! Find, or create, a Tick attribute.
+  //! Tick methods
+  //! ============
+  Standard_EXPORT static   Handle(TDataStd_Tick) Set (const TDF_Label& label) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  Standard_EXPORT TDataStd_Tick();
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -81,7 +71,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_Tick_HeaderFile

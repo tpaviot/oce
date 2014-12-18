@@ -7,7 +7,6 @@
 #define _TopExp_Stack_HeaderFile
 
 class TopoDS_Iterator;
-
 typedef TopoDS_Iterator* TopExp_Stack;
 
-#endif
+#endif // _TopExp_Stack_HeaderFile

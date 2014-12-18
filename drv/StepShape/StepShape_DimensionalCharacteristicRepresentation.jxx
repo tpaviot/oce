@@ -1,9 +1,3 @@
-#ifndef _StepShape_ShapeDimensionRepresentation_HeaderFile
 #include <StepShape_ShapeDimensionRepresentation.hxx>
-#endif
-#ifndef _StepShape_DimensionalCharacteristic_HeaderFile
 #include <StepShape_DimensionalCharacteristic.hxx>
-#endif
-#ifndef _StepShape_DimensionalCharacteristicRepresentation_HeaderFile
 #include <StepShape_DimensionalCharacteristicRepresentation.hxx>
-#endif

@@ -6,28 +6,14 @@
 #ifndef _ChFiDS_ListIteratorOfListOfHElSpine_HeaderFile
 #define _ChFiDS_ListIteratorOfListOfHElSpine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_ChFiDS_HElSpine_HeaderFile
 #include <Handle_ChFiDS_HElSpine.hxx>
-#endif
-#ifndef _Handle_ChFiDS_ListNodeOfListOfHElSpine_HeaderFile
 #include <Handle_ChFiDS_ListNodeOfListOfHElSpine.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class ChFiDS_ListOfHElSpine;
@@ -36,27 +22,27 @@ class ChFiDS_ListNodeOfListOfHElSpine;
 
 
 
-class ChFiDS_ListIteratorOfListOfHElSpine  {
+class ChFiDS_ListIteratorOfListOfHElSpine 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ChFiDS_ListIteratorOfListOfHElSpine();
+  Standard_EXPORT ChFiDS_ListIteratorOfListOfHElSpine();
   
-  Standard_EXPORT   ChFiDS_ListIteratorOfListOfHElSpine(const ChFiDS_ListOfHElSpine& L);
+  Standard_EXPORT ChFiDS_ListIteratorOfListOfHElSpine(const ChFiDS_ListOfHElSpine& L);
   
-  Standard_EXPORT     void Initialize(const ChFiDS_ListOfHElSpine& L) ;
+  Standard_EXPORT   void Initialize (const ChFiDS_ListOfHElSpine& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_ChFiDS_HElSpine& Value() const;
+  Standard_EXPORT   Handle(ChFiDS_HElSpine)& Value()  const;
 
 
 friend class ChFiDS_ListOfHElSpine;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_ChFiDS_HElSpine
+#define Item Handle(ChFiDS_HElSpine)
 #define Item_hxx <ChFiDS_HElSpine.hxx>
 #define TCollection_ListNode ChFiDS_ListNodeOfListOfHElSpine
 #define TCollection_ListNode_hxx <ChFiDS_ListNodeOfListOfHElSpine.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_ListIteratorOfListOfHElSpine_HeaderFile

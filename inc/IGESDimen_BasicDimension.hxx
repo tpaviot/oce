@@ -6,51 +6,45 @@
 #ifndef _IGESDimen_BasicDimension_HeaderFile
 #define _IGESDimen_BasicDimension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDimen_BasicDimension_HeaderFile
 #include <Handle_IGESDimen_BasicDimension.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 class gp_XY;
 class gp_Pnt2d;
 
 
-//! Defines IGES Basic Dimension, Type 406, Form 31, <br>
-//!          in package IGESDimen <br>
-//!          The basic Dimension Property indicates that the referencing <br>
-//!          dimension entity is to be displayed with a box around text. <br>
-class IGESDimen_BasicDimension : public IGESData_IGESEntity {
+//! Defines IGES Basic Dimension, Type 406, Form 31,
+//! in package IGESDimen
+//! The basic Dimension Property indicates that the referencing
+//! dimension entity is to be displayed with a box around text.
+class IGESDimen_BasicDimension : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDimen_BasicDimension();
+  Standard_EXPORT IGESDimen_BasicDimension();
   
-  Standard_EXPORT     void Init(const Standard_Integer nbPropVal,const gp_XY& lowerLeft,const gp_XY& lowerRight,const gp_XY& upperRight,const gp_XY& upperLeft) ;
-  //! returns the number of properties = 8 <br>
-  Standard_EXPORT     Standard_Integer NbPropertyValues() const;
-  //! returns coordinates of lower left corner <br>
-  Standard_EXPORT     gp_Pnt2d LowerLeft() const;
-  //! returns coordinates of lower right corner <br>
-  Standard_EXPORT     gp_Pnt2d LowerRight() const;
-  //! returns coordinates of upper right corner <br>
-  Standard_EXPORT     gp_Pnt2d UpperRight() const;
-  //! returns coordinates of upper left corner <br>
-  Standard_EXPORT     gp_Pnt2d UpperLeft() const;
+  Standard_EXPORT   void Init (const Standard_Integer nbPropVal, const gp_XY& lowerLeft, const gp_XY& lowerRight, const gp_XY& upperRight, const gp_XY& upperLeft) ;
+  
+  //! returns the number of properties = 8
+  Standard_EXPORT   Standard_Integer NbPropertyValues()  const;
+  
+  //! returns coordinates of lower left corner
+  Standard_EXPORT   gp_Pnt2d LowerLeft()  const;
+  
+  //! returns coordinates of lower right corner
+  Standard_EXPORT   gp_Pnt2d LowerRight()  const;
+  
+  //! returns coordinates of upper right corner
+  Standard_EXPORT   gp_Pnt2d UpperRight()  const;
+  
+  //! returns coordinates of upper left corner
+  Standard_EXPORT   gp_Pnt2d UpperLeft()  const;
 
 
 
@@ -65,11 +59,11 @@ protected:
 private: 
 
 
-Standard_Integer theNbPropertyValues;
-gp_XY theLowerLeft;
-gp_XY theLowerRight;
-gp_XY theUpperRight;
-gp_XY theUpperLeft;
+  Standard_Integer theNbPropertyValues;
+  gp_XY theLowerLeft;
+  gp_XY theLowerRight;
+  gp_XY theUpperRight;
+  gp_XY theUpperLeft;
 
 
 };
@@ -78,7 +72,6 @@ gp_XY theUpperLeft;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDimen_BasicDimension_HeaderFile

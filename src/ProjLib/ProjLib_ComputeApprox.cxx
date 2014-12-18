@@ -32,9 +32,7 @@
 #include <Precision.hxx>
 #include <Approx_FitAndDivide2d.hxx>
 #include <AppParCurves_MultiCurve.hxx>
-#include <Handle_Adaptor3d_HCurve.hxx>
 #include <Adaptor3d_HCurve.hxx>
-#include <Handle_Adaptor3d_HSurface.hxx>
 #include <Adaptor3d_HSurface.hxx>
 #include <TColgp_Array1OfPnt2d.hxx>
 #include <TColgp_Array1OfPnt.hxx>
@@ -45,10 +43,11 @@
 #include <Geom2d_BSplineCurve.hxx>
 #include <Geom2d_BezierCurve.hxx>
 
+//#define DRAW
 #ifdef DRAW
 #include <DrawTrSurf.hxx>
 #endif
-#ifdef DEB
+#ifdef OCCT_DEBUG
 static Standard_Boolean AffichValue = Standard_False;
 #endif    
 
@@ -465,7 +464,7 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       // box+sphere >>
       Standard_Real UU = 0.;
       ElSLib::Parameters(SP, P1, U1, V1);
-      Standard_Real eps = 2.*Epsilon(1.);
+      Standard_Real eps = 10.*Epsilon(1.);
       Standard_Real dt = Max(Precision::PConfusion(), 0.01*(W2-W1)); 
       if(Abs(U1) < eps)
       {
@@ -890,7 +889,7 @@ ProjLib_ComputeApprox::ProjLib_ComputeApprox
   else {
     ProjLib_Function F( C, S);
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
     if ( AffichValue) {
       Standard_Integer Nb = 20;
       Standard_Real U1, U2, dU, U;
@@ -1073,9 +1072,14 @@ ProjLib_ComputeApprox::ProjLib_ComputeApprox
     }
     if (F.UCouture || (F.VCouture && SType == GeomAbs_Sphere))
     {
-      gp_Pnt2d P2d = F.Value( UFirst );
-      number = (Standard_Integer) (Floor((P2d.X()-u)/M_PI + Epsilon(M_PI)));
-      du = -number*M_PI;
+      Standard_Real aNbPer;
+      gp_Pnt2d P2d = F.Value(UFirst);
+      du = u - P2d.X();
+      du = (du < 0) ? (du - Precision::PConfusion()) : 
+        (du + Precision::PConfusion());
+      modf(du/M_PI, &aNbPer);
+      number = (Standard_Integer)aNbPer;
+      du = number*M_PI;
     }
 
     if (!myBSpline.IsNull())

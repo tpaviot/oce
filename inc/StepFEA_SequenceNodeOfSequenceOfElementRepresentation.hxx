@@ -6,38 +6,27 @@
 #ifndef _StepFEA_SequenceNodeOfSequenceOfElementRepresentation_HeaderFile
 #define _StepFEA_SequenceNodeOfSequenceOfElementRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation_HeaderFile
 #include <Handle_StepFEA_SequenceNodeOfSequenceOfElementRepresentation.hxx>
-#endif
 
-#ifndef _Handle_StepFEA_ElementRepresentation_HeaderFile
 #include <Handle_StepFEA_ElementRepresentation.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class StepFEA_ElementRepresentation;
 class StepFEA_SequenceOfElementRepresentation;
 
 
 
-class StepFEA_SequenceNodeOfSequenceOfElementRepresentation : public TCollection_SeqNode {
+class StepFEA_SequenceNodeOfSequenceOfElementRepresentation : public TCollection_SeqNode
+{
 
 public:
 
   
-      StepFEA_SequenceNodeOfSequenceOfElementRepresentation(const Handle(StepFEA_ElementRepresentation)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    StepFEA_SequenceNodeOfSequenceOfElementRepresentation(const Handle(StepFEA_ElementRepresentation)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_StepFEA_ElementRepresentation& Value() const;
+      Handle(StepFEA_ElementRepresentation)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_StepFEA_ElementRepresentation myValue;
+  Handle(StepFEA_ElementRepresentation) myValue;
 
 
 };
 
-#define SeqItem Handle_StepFEA_ElementRepresentation
+#define SeqItem Handle(StepFEA_ElementRepresentation)
 #define SeqItem_hxx <StepFEA_ElementRepresentation.hxx>
 #define TCollection_SequenceNode StepFEA_SequenceNodeOfSequenceOfElementRepresentation
 #define TCollection_SequenceNode_hxx <StepFEA_SequenceNodeOfSequenceOfElementRepresentation.hxx>
@@ -78,7 +67,6 @@ Handle_StepFEA_ElementRepresentation myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_SequenceNodeOfSequenceOfElementRepresentation_HeaderFile

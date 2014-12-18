@@ -1,12 +1,4 @@
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _HLRAlgo_EdgeStatus_HeaderFile
 #include <HLRAlgo_EdgeStatus.hxx>
-#endif
-#ifndef _HLRBRep_Curve_HeaderFile
 #include <HLRBRep_Curve.hxx>
-#endif
-#ifndef _HLRBRep_EdgeData_HeaderFile
 #include <HLRBRep_EdgeData.hxx>
-#endif

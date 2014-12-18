@@ -6,43 +6,19 @@
 #ifndef _HLRBRep_InternalAlgo_HeaderFile
 #define _HLRBRep_InternalAlgo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRBRep_InternalAlgo_HeaderFile
 #include <Handle_HLRBRep_InternalAlgo.hxx>
-#endif
 
-#ifndef _Handle_HLRBRep_Data_HeaderFile
 #include <Handle_HLRBRep_Data.hxx>
-#endif
-#ifndef _HLRAlgo_Projector_HeaderFile
 #include <HLRAlgo_Projector.hxx>
-#endif
-#ifndef _HLRBRep_SeqOfShapeBounds_HeaderFile
 #include <HLRBRep_SeqOfShapeBounds.hxx>
-#endif
-#ifndef _BRepTopAdaptor_MapOfShapeTool_HeaderFile
 #include <BRepTopAdaptor_MapOfShapeTool.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_HLRTopoBRep_OutLiner_HeaderFile
 #include <Handle_HLRTopoBRep_OutLiner.hxx>
-#endif
-#ifndef _Handle_MMgt_TShared_HeaderFile
 #include <Handle_MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class HLRBRep_Data;
 class Standard_OutOfRange;
 class HLRAlgo_Projector;
@@ -53,71 +29,93 @@ class HLRBRep_ShapeBounds;
 
 
 
-class HLRBRep_InternalAlgo : public MMgt_TShared {
+class HLRBRep_InternalAlgo : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   HLRBRep_InternalAlgo();
+  Standard_EXPORT HLRBRep_InternalAlgo();
   
-  Standard_EXPORT   HLRBRep_InternalAlgo(const Handle(HLRBRep_InternalAlgo)& A);
-  //! set the projector. <br>
-  Standard_EXPORT     void Projector(const HLRAlgo_Projector& P) ;
-  //! set the projector. <br>
-  Standard_EXPORT     HLRAlgo_Projector& Projector() ;
-  //! update the DataStructure. <br>
-  Standard_EXPORT     void Update() ;
-  //! add the shape <S>. <br>
-  Standard_EXPORT     void Load(const Handle(HLRTopoBRep_OutLiner)& S,const Handle(MMgt_TShared)& SData,const Standard_Integer nbIso = 0) ;
-  //! add the shape <S>. <br>
-  Standard_EXPORT     void Load(const Handle(HLRTopoBRep_OutLiner)& S,const Standard_Integer nbIso = 0) ;
-  //! return the index of the Shape <S> and  return 0 if <br>
-//!          the Shape <S> is not found. <br>
-  Standard_EXPORT     Standard_Integer Index(const Handle(HLRTopoBRep_OutLiner)& S) const;
-  //! remove the Shape of Index <I>. <br>
-  Standard_EXPORT     void Remove(const Standard_Integer I) ;
-  //! Change the Shape Data of the Shape of index <I>. <br>
-  Standard_EXPORT     void ShapeData(const Standard_Integer I,const Handle(MMgt_TShared)& SData) ;
+  Standard_EXPORT HLRBRep_InternalAlgo(const Handle(HLRBRep_InternalAlgo)& A);
   
-  Standard_EXPORT     HLRBRep_SeqOfShapeBounds& SeqOfShapeBounds() ;
+  //! set the projector.
+  Standard_EXPORT   void Projector (const HLRAlgo_Projector& P) ;
   
-  Standard_EXPORT     Standard_Integer NbShapes() const;
+  //! set the projector.
+  Standard_EXPORT   HLRAlgo_Projector& Projector() ;
   
-  Standard_EXPORT     HLRBRep_ShapeBounds& ShapeBounds(const Standard_Integer I) ;
-  //! init the status of the selected edges depending of <br>
-//!          the back faces of a closed shell. <br>
-  Standard_EXPORT     void InitEdgeStatus() ;
-  //! select all the DataStructure. <br>
-  Standard_EXPORT     void Select() ;
-  //! select  only   the Shape of index <I>. <br>
-  Standard_EXPORT     void Select(const Standard_Integer I) ;
-  //! select only the edges of the Shape <S>. <br>
-  Standard_EXPORT     void SelectEdge(const Standard_Integer I) ;
-  //! select only the faces of the Shape <S>. <br>
-  Standard_EXPORT     void SelectFace(const Standard_Integer I) ;
-  //! set to visible all the edges. <br>
-  Standard_EXPORT     void ShowAll() ;
-  //! set to visible all the edges of the Shape <S>. <br>
-  Standard_EXPORT     void ShowAll(const Standard_Integer I) ;
-  //! set to hide all the edges. <br>
-  Standard_EXPORT     void HideAll() ;
-  //! set to  hide all the  edges of the  Shape <S>. <br>
-  Standard_EXPORT     void HideAll(const Standard_Integer I) ;
-  //! own hiding  of all the shapes of the DataStructure <br>
-//!          without hiding by each other. <br>
-  Standard_EXPORT     void PartialHide() ;
-  //! hide all the DataStructure. <br>
-  Standard_EXPORT     void Hide() ;
-  //! hide the Shape <S> by itself. <br>
-  Standard_EXPORT     void Hide(const Standard_Integer I) ;
-  //! hide the Shape <S1> by the shape <S2>. <br>
-  Standard_EXPORT     void Hide(const Standard_Integer I,const Standard_Integer J) ;
+  //! update the DataStructure.
+  Standard_EXPORT   void Update() ;
   
-  Standard_EXPORT     void Debug(const Standard_Boolean deb) ;
+  //! add the shape <S>.
+  Standard_EXPORT   void Load (const Handle(HLRTopoBRep_OutLiner)& S, const Handle(MMgt_TShared)& SData, const Standard_Integer nbIso = 0) ;
   
-  Standard_EXPORT     Standard_Boolean Debug() const;
+  //! add the shape <S>.
+  Standard_EXPORT   void Load (const Handle(HLRTopoBRep_OutLiner)& S, const Standard_Integer nbIso = 0) ;
   
-  Standard_EXPORT     Handle_HLRBRep_Data DataStructure() const;
+  //! return the index of the Shape <S> and  return 0 if
+  //! the Shape <S> is not found.
+  Standard_EXPORT   Standard_Integer Index (const Handle(HLRTopoBRep_OutLiner)& S)  const;
+  
+  //! remove the Shape of Index <I>.
+  Standard_EXPORT   void Remove (const Standard_Integer I) ;
+  
+  //! Change the Shape Data of the Shape of index <I>.
+  Standard_EXPORT   void ShapeData (const Standard_Integer I, const Handle(MMgt_TShared)& SData) ;
+  
+  Standard_EXPORT   HLRBRep_SeqOfShapeBounds& SeqOfShapeBounds() ;
+  
+  Standard_EXPORT   Standard_Integer NbShapes()  const;
+  
+  Standard_EXPORT   HLRBRep_ShapeBounds& ShapeBounds (const Standard_Integer I) ;
+  
+  //! init the status of the selected edges depending of
+  //! the back faces of a closed shell.
+  Standard_EXPORT   void InitEdgeStatus() ;
+  
+  //! select all the DataStructure.
+  Standard_EXPORT   void Select() ;
+  
+  //! select  only   the Shape of index <I>.
+  Standard_EXPORT   void Select (const Standard_Integer I) ;
+  
+  //! select only the edges of the Shape <S>.
+  Standard_EXPORT   void SelectEdge (const Standard_Integer I) ;
+  
+  //! select only the faces of the Shape <S>.
+  Standard_EXPORT   void SelectFace (const Standard_Integer I) ;
+  
+  //! set to visible all the edges.
+  Standard_EXPORT   void ShowAll() ;
+  
+  //! set to visible all the edges of the Shape <S>.
+  Standard_EXPORT   void ShowAll (const Standard_Integer I) ;
+  
+  //! set to hide all the edges.
+  Standard_EXPORT   void HideAll() ;
+  
+  //! set to  hide all the  edges of the  Shape <S>.
+  Standard_EXPORT   void HideAll (const Standard_Integer I) ;
+  
+  //! own hiding  of all the shapes of the DataStructure
+  //! without hiding by each other.
+  Standard_EXPORT   void PartialHide() ;
+  
+  //! hide all the DataStructure.
+  Standard_EXPORT   void Hide() ;
+  
+  //! hide the Shape <S> by itself.
+  Standard_EXPORT   void Hide (const Standard_Integer I) ;
+  
+  //! hide the Shape <S1> by the shape <S2>.
+  Standard_EXPORT   void Hide (const Standard_Integer I, const Standard_Integer J) ;
+  
+  Standard_EXPORT   void Debug (const Standard_Boolean deb) ;
+  
+  Standard_EXPORT   Standard_Boolean Debug()  const;
+  
+  Standard_EXPORT   Handle(HLRBRep_Data) DataStructure()  const;
 
 
 
@@ -131,16 +129,17 @@ protected:
 
 private: 
 
-  //! first if <SideFace> own hiding  of the side faces. <br>
-//!          After hiding  of    the  selected  parts  of   the <br>
-//!          DataStructure. <br>
-  Standard_EXPORT     void HideSelected(const Standard_Integer I,const Standard_Boolean SideFace) ;
+  
+  //! first if <SideFace> own hiding  of the side faces.
+  //! After hiding  of    the  selected  parts  of   the
+  //! DataStructure.
+  Standard_EXPORT   void HideSelected (const Standard_Integer I, const Standard_Boolean SideFace) ;
 
-Handle_HLRBRep_Data myDS;
-HLRAlgo_Projector myProj;
-HLRBRep_SeqOfShapeBounds myShapes;
-BRepTopAdaptor_MapOfShapeTool myMapOfShapeTool;
-Standard_Boolean myDebug;
+  Handle(HLRBRep_Data) myDS;
+  HLRAlgo_Projector myProj;
+  HLRBRep_SeqOfShapeBounds myShapes;
+  BRepTopAdaptor_MapOfShapeTool myMapOfShapeTool;
+  Standard_Boolean myDebug;
 
 
 };
@@ -149,7 +148,6 @@ Standard_Boolean myDebug;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_InternalAlgo_HeaderFile

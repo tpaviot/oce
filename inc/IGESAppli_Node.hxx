@@ -6,63 +6,53 @@
 #ifndef _IGESAppli_Node_HeaderFile
 #define _IGESAppli_Node_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESAppli_Node_HeaderFile
 #include <Handle_IGESAppli_Node.hxx>
-#endif
 
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _Handle_IGESGeom_TransformationMatrix_HeaderFile
 #include <Handle_IGESGeom_TransformationMatrix.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESData_TransfEntity_HeaderFile
 #include <Handle_IGESData_TransfEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class IGESGeom_TransformationMatrix;
 class gp_XYZ;
 class gp_Pnt;
 class IGESData_TransfEntity;
 
 
-//! defines Node, Type <134> Form <0> <br>
-//!          in package IGESAppli <br>
-//!          Geometric point used in the definition of a finite element. <br>
-class IGESAppli_Node : public IGESData_IGESEntity {
+//! defines Node, Type <134> Form <0>
+//! in package IGESAppli
+//! Geometric point used in the definition of a finite element.
+class IGESAppli_Node : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESAppli_Node();
-  //! This method is used to set the fields of the class Node <br>
-//!       - aCoord       : Nodal Coordinates <br>
-//!       - aCoordSystem : the Nodal Displacement Coordinate <br>
-//!                        System Entity (default 0 is Global <br>
-//!                        Cartesian Coordinate system) <br>
-  Standard_EXPORT     void Init(const gp_XYZ& aCoord,const Handle(IGESGeom_TransformationMatrix)& aCoordSystem) ;
-  //! returns the nodal coordinates <br>
-  Standard_EXPORT     gp_Pnt Coord() const;
-  //! returns TransfEntity if a Nodal Displacement Coordinate <br>
-//!           System Entity is defined <br>
-//! else (for Global Cartesien) returns Null Handle <br>
-  Standard_EXPORT     Handle_IGESData_TransfEntity System() const;
-  //! Computes & returns the Type of Coordinate System : <br>
-//! 0 GlobalCartesian, 1 Cartesian, 2 Cylindrical, 3 Spherical <br>
-  Standard_EXPORT     Standard_Integer SystemType() const;
-  //! returns the Nodal coordinates after transformation <br>
-  Standard_EXPORT     gp_Pnt TransformedNodalCoord() const;
+  Standard_EXPORT IGESAppli_Node();
+  
+  //! This method is used to set the fields of the class Node
+  //! - aCoord       : Nodal Coordinates
+  //! - aCoordSystem : the Nodal Displacement Coordinate
+  //! System Entity (default 0 is Global
+  //! Cartesian Coordinate system)
+  Standard_EXPORT   void Init (const gp_XYZ& aCoord, const Handle(IGESGeom_TransformationMatrix)& aCoordSystem) ;
+  
+  //! returns the nodal coordinates
+  Standard_EXPORT   gp_Pnt Coord()  const;
+  
+  //! returns TransfEntity if a Nodal Displacement Coordinate
+  //! System Entity is defined
+  //! else (for Global Cartesien) returns Null Handle
+  Standard_EXPORT   Handle(IGESData_TransfEntity) System()  const;
+  
+  //! Computes & returns the Type of Coordinate System :
+  //! 0 GlobalCartesian, 1 Cartesian, 2 Cylindrical, 3 Spherical
+  Standard_EXPORT   Standard_Integer SystemType()  const;
+  
+  //! returns the Nodal coordinates after transformation
+  Standard_EXPORT   gp_Pnt TransformedNodalCoord()  const;
 
 
 
@@ -77,8 +67,8 @@ protected:
 private: 
 
 
-gp_XYZ theCoord;
-Handle_IGESGeom_TransformationMatrix theSystem;
+  gp_XYZ theCoord;
+  Handle(IGESGeom_TransformationMatrix) theSystem;
 
 
 };
@@ -87,7 +77,6 @@ Handle_IGESGeom_TransformationMatrix theSystem;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESAppli_Node_HeaderFile

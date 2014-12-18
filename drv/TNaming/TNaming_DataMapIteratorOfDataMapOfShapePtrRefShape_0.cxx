@@ -5,21 +5,11 @@
 
 #include <TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TNaming_DataMapOfShapePtrRefShape_HeaderFile
 #include <TNaming_DataMapOfShapePtrRefShape.hxx>
-#endif
-#ifndef _TNaming_DataMapNodeOfDataMapOfShapePtrRefShape_HeaderFile
 #include <TNaming_DataMapNodeOfDataMapOfShapePtrRefShape.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

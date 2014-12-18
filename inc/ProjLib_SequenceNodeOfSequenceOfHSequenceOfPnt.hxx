@@ -6,38 +6,27 @@
 #ifndef _ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt_HeaderFile
 #define _ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt_HeaderFile
 #include <Handle_ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt.hxx>
-#endif
 
-#ifndef _Handle_TColgp_HSequenceOfPnt_HeaderFile
 #include <Handle_TColgp_HSequenceOfPnt.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TColgp_HSequenceOfPnt;
 class ProjLib_SequenceOfHSequenceOfPnt;
 
 
 
-class ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public TCollection_SeqNode {
+class ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt : public TCollection_SeqNode
+{
 
 public:
 
   
-      ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt(const Handle(TColgp_HSequenceOfPnt)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt(const Handle(TColgp_HSequenceOfPnt)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_TColgp_HSequenceOfPnt& Value() const;
+      Handle(TColgp_HSequenceOfPnt)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_TColgp_HSequenceOfPnt myValue;
+  Handle(TColgp_HSequenceOfPnt) myValue;
 
 
 };
 
-#define SeqItem Handle_TColgp_HSequenceOfPnt
+#define SeqItem Handle(TColgp_HSequenceOfPnt)
 #define SeqItem_hxx <TColgp_HSequenceOfPnt.hxx>
 #define TCollection_SequenceNode ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt
 #define TCollection_SequenceNode_hxx <ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt.hxx>
@@ -78,7 +67,6 @@ Handle_TColgp_HSequenceOfPnt myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt_HeaderFile

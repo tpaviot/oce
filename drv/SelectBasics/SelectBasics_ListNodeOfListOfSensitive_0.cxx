@@ -5,19 +5,11 @@
 
 #include <SelectBasics_ListNodeOfListOfSensitive.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _SelectBasics_SensitiveEntity_HeaderFile
 #include <SelectBasics_SensitiveEntity.hxx>
-#endif
-#ifndef _SelectBasics_ListOfSensitive_HeaderFile
 #include <SelectBasics_ListOfSensitive.hxx>
-#endif
-#ifndef _SelectBasics_ListIteratorOfListOfSensitive_HeaderFile
 #include <SelectBasics_ListIteratorOfListOfSensitive.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(SelectBasics_ListNodeOfListOfSensitive,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(SelectBasics_ListNodeOfListOfSensitive)
 
 
-#define Item Handle_SelectBasics_SensitiveEntity
+#define Item Handle(SelectBasics_SensitiveEntity)
 #define Item_hxx <SelectBasics_SensitiveEntity.hxx>
 #define TCollection_ListNode SelectBasics_ListNodeOfListOfSensitive
 #define TCollection_ListNode_hxx <SelectBasics_ListNodeOfListOfSensitive.hxx>

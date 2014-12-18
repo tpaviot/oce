@@ -6,28 +6,14 @@
 #ifndef _MoniTool_DataMapNodeOfDataMapOfShapeTransient_HeaderFile
 #define _MoniTool_DataMapNodeOfDataMapOfShapeTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MoniTool_DataMapNodeOfDataMapOfShapeTransient_HeaderFile
 #include <Handle_MoniTool_DataMapNodeOfDataMapOfShapeTransient.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Transient;
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class MoniTool_DataMapIteratorOfDataMapOfShapeTransient;
 
 
 
-class MoniTool_DataMapNodeOfDataMapOfShapeTransient : public TCollection_MapNode {
+class MoniTool_DataMapNodeOfDataMapOfShapeTransient : public TCollection_MapNode
+{
 
 public:
 
   
-      MoniTool_DataMapNodeOfDataMapOfShapeTransient(const TopoDS_Shape& K,const Handle(Standard_Transient)& I,const TCollection_MapNodePtr& n);
+    MoniTool_DataMapNodeOfDataMapOfShapeTransient(const TopoDS_Shape& K, const Handle(Standard_Transient)& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Handle_Standard_Transient& Value() const;
+      Handle(Standard_Transient)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Handle_Standard_Transient myValue;
+  TopoDS_Shape myKey;
+  Handle(Standard_Transient) myValue;
 
 
 };
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>
@@ -99,7 +86,6 @@ Handle_Standard_Transient myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MoniTool_DataMapNodeOfDataMapOfShapeTransient_HeaderFile

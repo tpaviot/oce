@@ -1,21 +1,7 @@
-#ifndef _TColgp_HSequenceOfXY_HeaderFile
 #include <TColgp_HSequenceOfXY.hxx>
-#endif
-#ifndef _StdFail_UndefinedDerivative_HeaderFile
 #include <StdFail_UndefinedDerivative.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _IntSurf_PathPoint_HeaderFile
 #include <IntSurf_PathPoint.hxx>
-#endif

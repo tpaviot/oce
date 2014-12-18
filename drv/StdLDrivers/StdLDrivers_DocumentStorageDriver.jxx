@@ -1,15 +1,5 @@
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _PCDM_SequenceOfDocument_HeaderFile
 #include <PCDM_SequenceOfDocument.hxx>
-#endif
-#ifndef _MDF_ASDriverTable_HeaderFile
 #include <MDF_ASDriverTable.hxx>
-#endif
-#ifndef _CDM_MessageDriver_HeaderFile
 #include <CDM_MessageDriver.hxx>
-#endif
-#ifndef _StdLDrivers_DocumentStorageDriver_HeaderFile
 #include <StdLDrivers_DocumentStorageDriver.hxx>
-#endif

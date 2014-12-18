@@ -7,7 +7,6 @@
 #define _TopOpeBRep_PFacesFiller_HeaderFile
 
 class TopOpeBRep_FacesFiller;
-
 typedef TopOpeBRep_FacesFiller* TopOpeBRep_PFacesFiller;
 
-#endif
+#endif // _TopOpeBRep_PFacesFiller_HeaderFile

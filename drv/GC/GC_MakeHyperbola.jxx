@@ -1,18 +1,6 @@
-#ifndef _Geom_Hyperbola_HeaderFile
 #include <Geom_Hyperbola.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _gp_Hypr_HeaderFile
 #include <gp_Hypr.hxx>
-#endif
-#ifndef _gp_Ax2_HeaderFile
 #include <gp_Ax2.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _GC_MakeHyperbola_HeaderFile
 #include <GC_MakeHyperbola.hxx>
-#endif

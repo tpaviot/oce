@@ -14,7 +14,7 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-//#ifndef DEB
+//#ifndef OCCT_DEBUG
 #define No_Standard_RangeError
 #define No_Standard_OutOfRange
 #define No_Standard_DimensionError
@@ -143,12 +143,19 @@ void math_NewtonMinimum::Perform(math_MultipleVarFunctionWithHessian& F,
     }
    
     LU.Solve(TheGradient, TheStep);
-    *suivant = *precedent - TheStep;
+    Standard_Boolean hasProblem = Standard_False;
+    do
+    {
+      *suivant = *precedent - TheStep;
 
+      //  Gestion de la convergence
+      hasProblem = !(F.Value(*suivant, TheMinimum));
 
-    //  Gestion de la convergence
-
-    F.Value(*suivant, TheMinimum);
+      if (hasProblem)
+      {
+        TheStep /= 2.0;
+      }
+    } while (hasProblem);
 
     if (IsConverged()) { NbConv++; }
     else               { NbConv=0; }

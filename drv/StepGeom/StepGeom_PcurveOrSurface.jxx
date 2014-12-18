@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepGeom_Pcurve_HeaderFile
 #include <StepGeom_Pcurve.hxx>
-#endif
-#ifndef _StepGeom_Surface_HeaderFile
 #include <StepGeom_Surface.hxx>
-#endif
-#ifndef _StepGeom_PcurveOrSurface_HeaderFile
 #include <StepGeom_PcurveOrSurface.hxx>
-#endif

@@ -6,38 +6,27 @@
 #ifndef _MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve_HeaderFile
 #define _MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve_HeaderFile
 #include <Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve.hxx>
-#endif
 
-#ifndef _TColGeom2d_SequenceOfCurve_HeaderFile
 #include <TColGeom2d_SequenceOfCurve.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TColGeom2d_SequenceOfCurve;
 class MAT2d_SequenceOfSequenceOfCurve;
 
 
 
-class MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve : public TCollection_SeqNode {
+class MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve : public TCollection_SeqNode
+{
 
 public:
 
   
-      MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve(const TColGeom2d_SequenceOfCurve& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve(const TColGeom2d_SequenceOfCurve& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        TColGeom2d_SequenceOfCurve& Value() const;
+      TColGeom2d_SequenceOfCurve& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-TColGeom2d_SequenceOfCurve myValue;
+  TColGeom2d_SequenceOfCurve myValue;
 
 
 };
@@ -78,7 +67,6 @@ TColGeom2d_SequenceOfCurve myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_SequenceNodeOfSequenceOfSequenceOfCurve_HeaderFile

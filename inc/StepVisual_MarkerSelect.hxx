@@ -6,54 +6,43 @@
 #ifndef _StepVisual_MarkerSelect_HeaderFile
 #define _StepVisual_MarkerSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepData_SelectMember_HeaderFile
 #include <Handle_StepData_SelectMember.hxx>
-#endif
-#ifndef _Handle_StepVisual_MarkerMember_HeaderFile
 #include <Handle_StepVisual_MarkerMember.hxx>
-#endif
 class Standard_Transient;
 class StepData_SelectMember;
 class StepVisual_MarkerMember;
 
 
 
-class StepVisual_MarkerSelect  : public StepData_SelectType {
+class StepVisual_MarkerSelect  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a MarkerSelect SelectType <br>
-  Standard_EXPORT   StepVisual_MarkerSelect();
-  //! Recognizes a MarkerSelect Kind Entity that is : <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns a new MarkerMember <br>
-  Standard_EXPORT   virtual  Handle_StepData_SelectMember NewMember() const;
-  //! Returns 1 for a SelectMember enum, named MARKER_TYPE <br>
-  Standard_EXPORT   virtual  Standard_Integer CaseMem(const Handle(StepData_SelectMember)& sm) const;
-  //! Gives access to the MarkerMember in order to get/set its value <br>
-  Standard_EXPORT     Handle_StepVisual_MarkerMember MarkerMember() const;
-
+  
+  //! Returns a MarkerSelect SelectType
+  Standard_EXPORT StepVisual_MarkerSelect();
+  
+  //! Recognizes a MarkerSelect Kind Entity that is :
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns a new MarkerMember
+  Standard_EXPORT virtual   Handle(StepData_SelectMember) NewMember()  const;
+  
+  //! Returns 1 for a SelectMember enum, named MARKER_TYPE
+  Standard_EXPORT virtual   Standard_Integer CaseMem (const Handle(StepData_SelectMember)& sm)  const;
+  
+  //! Gives access to the MarkerMember in order to get/set its value
+  Standard_EXPORT   Handle(StepVisual_MarkerMember) MarkerMember()  const;
 
 
 
@@ -76,7 +65,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_MarkerSelect_HeaderFile

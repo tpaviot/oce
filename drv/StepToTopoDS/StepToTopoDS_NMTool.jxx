@@ -1,18 +1,6 @@
-#ifndef _StepToTopoDS_DataMapOfRI_HeaderFile
 #include <StepToTopoDS_DataMapOfRI.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapOfRINames_HeaderFile
 #include <StepToTopoDS_DataMapOfRINames.hxx>
-#endif
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _StepToTopoDS_NMTool_HeaderFile
 #include <StepToTopoDS_NMTool.hxx>
-#endif

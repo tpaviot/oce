@@ -6,48 +6,39 @@
 #ifndef _ShapeUpgrade_ConvertCurve2dToBezier_HeaderFile
 #define _ShapeUpgrade_ConvertCurve2dToBezier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_ConvertCurve2dToBezier_HeaderFile
 #include <Handle_ShapeUpgrade_ConvertCurve2dToBezier.hxx>
-#endif
 
-#ifndef _Handle_TColGeom2d_HSequenceOfCurve_HeaderFile
 #include <Handle_TColGeom2d_HSequenceOfCurve.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfReal_HeaderFile
 #include <Handle_TColStd_HSequenceOfReal.hxx>
-#endif
-#ifndef _ShapeUpgrade_SplitCurve2d_HeaderFile
 #include <ShapeUpgrade_SplitCurve2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TColGeom2d_HSequenceOfCurve;
 class TColStd_HSequenceOfReal;
 
 
-//! converts/splits a 2d curve to a list of beziers <br>
-class ShapeUpgrade_ConvertCurve2dToBezier : public ShapeUpgrade_SplitCurve2d {
+//! converts/splits a 2d curve to a list of beziers
+class ShapeUpgrade_ConvertCurve2dToBezier : public ShapeUpgrade_SplitCurve2d
+{
 
 public:
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   ShapeUpgrade_ConvertCurve2dToBezier();
-  //! Converts curve into a list of beziers, and stores the <br>
-//!          splitting parameters on original curve. <br>
-  Standard_EXPORT   virtual  void Compute() ;
-  //! Splits a list of beziers computed by Compute method according <br>
-//!          the split values and splitting parameters. <br>
-  Standard_EXPORT   virtual  void Build(const Standard_Boolean Segment) ;
-  //! Returns the list of splitted parameters in original curve <br>
-//!          parametrisation. <br>
-  Standard_EXPORT     Handle_TColStd_HSequenceOfReal SplitParams() const;
+  
+  //! Empty constructor.
+  Standard_EXPORT ShapeUpgrade_ConvertCurve2dToBezier();
+  
+  //! Converts curve into a list of beziers, and stores the
+  //! splitting parameters on original curve.
+  Standard_EXPORT virtual   void Compute() ;
+  
+  //! Splits a list of beziers computed by Compute method according
+  //! the split values and splitting parameters.
+  Standard_EXPORT virtual   void Build (const Standard_Boolean Segment) ;
+  
+  //! Returns the list of splitted parameters in original curve
+  //! parametrisation.
+  Standard_EXPORT   Handle(TColStd_HSequenceOfReal) SplitParams()  const;
 
 
 
@@ -61,12 +52,13 @@ protected:
 
 private: 
 
-  //! Returns the list of bezier curves correspondent to original <br>
-//!          curve. <br>
-  Standard_EXPORT     Handle_TColGeom2d_HSequenceOfCurve Segments() const;
+  
+  //! Returns the list of bezier curves correspondent to original
+  //! curve.
+  Standard_EXPORT   Handle(TColGeom2d_HSequenceOfCurve) Segments()  const;
 
-Handle_TColGeom2d_HSequenceOfCurve mySegments;
-Handle_TColStd_HSequenceOfReal mySplitParams;
+  Handle(TColGeom2d_HSequenceOfCurve) mySegments;
+  Handle(TColStd_HSequenceOfReal) mySplitParams;
 
 
 };
@@ -75,7 +67,6 @@ Handle_TColStd_HSequenceOfReal mySplitParams;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_ConvertCurve2dToBezier_HeaderFile

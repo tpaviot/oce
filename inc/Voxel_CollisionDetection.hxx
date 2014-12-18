@@ -6,95 +6,91 @@
 #ifndef _Voxel_CollisionDetection_HeaderFile
 #define _Voxel_CollisionDetection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Voxel_BoolDS_HeaderFile
 #include <Voxel_BoolDS.hxx>
-#endif
 class TopoDS_Shape;
 class Bnd_Box;
 class Voxel_BoolDS;
 
 
-//! Detects collisions between shapes. <br>
-class Voxel_CollisionDetection  {
+//! Detects collisions between shapes.
+class Voxel_CollisionDetection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! An empty constructor. <br>
-  Standard_EXPORT   Voxel_CollisionDetection();
-  //! A constructor. <br>
-//!          It defines deflection of triangulation for the shapes. <br>
-//!          As lower the deflection is, as proper the triangulation is generated. <br>
-//!          Also, it defines number of splits along X, Y and Z axes for generation of voxels. <br>
-//!          As greater the numbers are, as greater number of voxels is used for detection of collision. <br>
-  Standard_EXPORT   Voxel_CollisionDetection(const Standard_Real deflection,const Standard_Integer nbx,const Standard_Integer nby,const Standard_Integer nbz);
-  //! Adds a shape. <br>
-//!          Returns an index of the shape. <br>
-  Standard_EXPORT     Standard_Integer AddShape(const TopoDS_Shape& shape) ;
-  //! Replaces a shape by another one. <br>
-//!          <ishape> is an index of the shape. <br>
-//!          This method is useful for moving shape, for example. <br>
-  Standard_EXPORT     Standard_Boolean ReplaceShape(const Standard_Integer ishape,const TopoDS_Shape& shape) ;
-  //! Defines the deflection of triangulation of shapes. <br>
-  Standard_EXPORT     void SetDeflection(const Standard_Real deflection) ;
-  //! Defines the number of voxels along X, Y and Z axes. <br>
-  Standard_EXPORT     void SetNbVoxels(const Standard_Integer nbx,const Standard_Integer nby,const Standard_Integer nbz) ;
-  //! Defines a user-defined boundary box for generation of voxels. <br>
-//!          If this method is not called, the algorithm calculates the boundary box itself. <br>
-  Standard_EXPORT     void SetBoundaryBox(const Bnd_Box& box) ;
-  //! Defines usage of volume of shapes in collision detection algorithm. <br>
-//!          Beware, usage of volume a little bit decreases the speed of algorithm. <br>
-  Standard_EXPORT     void SetUsageOfVolume(const Standard_Boolean usage) ;
-  //! Doesn't clean the collision points on new call to the method Compute(). <br>
-//!          It allows to see the collisions for a moving shape. <br>
-  Standard_EXPORT     void KeepCollisions(const Standard_Boolean keep) ;
-  //! Prepares data for computation of collisions. <br>
-//!          It checks the inner parameters (number of voxels along X, Y and Z axes) and <br>
-//!          voxelizes the shapes. <br>
-//!          If the shape is not changed since the last call to this method, <br>
-//!          this method may be not called for this shape. <br>
-//!          <ishape> - is the index of the shape for processing by this method. <br>
-//!          If it is equal to -1, all shapes will be processed. <br>
-  Standard_EXPORT     Standard_Boolean Voxelize(const Standard_Integer ishape = -1) ;
-  //! Computes the collisions. <br>
-//!          This method may be called many times if, for example, the shapes are being moved. <br>
-  Standard_EXPORT     Standard_Boolean Compute() ;
-  //! Returns true if a collision is detected. <br>
-  Standard_EXPORT     Standard_Boolean HasCollisions() const;
-  //! Returns the collided voxels. <br>
-  Standard_EXPORT    const Voxel_BoolDS& GetCollisions() const;
-  //! A destructor. <br>
-  Standard_EXPORT     void Destroy() ;
+  
+  //! An empty constructor.
+  Standard_EXPORT Voxel_CollisionDetection();
+  
+  //! A constructor.
+  //! It defines deflection of triangulation for the shapes.
+  //! As lower the deflection is, as proper the triangulation is generated.
+  //! Also, it defines number of splits along X, Y and Z axes for generation of voxels.
+  //! As greater the numbers are, as greater number of voxels is used for detection of collision.
+  Standard_EXPORT Voxel_CollisionDetection(const Standard_Real deflection, const Standard_Integer nbx, const Standard_Integer nby, const Standard_Integer nbz);
+  
+  //! Adds a shape.
+  //! Returns an index of the shape.
+  Standard_EXPORT   Standard_Integer AddShape (const TopoDS_Shape& shape) ;
+  
+  //! Replaces a shape by another one.
+  //! <ishape> is an index of the shape.
+  //! This method is useful for moving shape, for example.
+  Standard_EXPORT   Standard_Boolean ReplaceShape (const Standard_Integer ishape, const TopoDS_Shape& shape) ;
+  
+  //! Defines the deflection of triangulation of shapes.
+  Standard_EXPORT   void SetDeflection (const Standard_Real deflection) ;
+  
+  //! Defines the number of voxels along X, Y and Z axes.
+  Standard_EXPORT   void SetNbVoxels (const Standard_Integer nbx, const Standard_Integer nby, const Standard_Integer nbz) ;
+  
+  //! Defines a user-defined boundary box for generation of voxels.
+  //! If this method is not called, the algorithm calculates the boundary box itself.
+  Standard_EXPORT   void SetBoundaryBox (const Bnd_Box& box) ;
+  
+  //! Defines usage of volume of shapes in collision detection algorithm.
+  //! Beware, usage of volume a little bit decreases the speed of algorithm.
+  Standard_EXPORT   void SetUsageOfVolume (const Standard_Boolean usage) ;
+  
+  //! Doesn't clean the collision points on new call to the method Compute().
+  //! It allows to see the collisions for a moving shape.
+  Standard_EXPORT   void KeepCollisions (const Standard_Boolean keep) ;
+  
+  //! Prepares data for computation of collisions.
+  //! It checks the inner parameters (number of voxels along X, Y and Z axes) and
+  //! voxelizes the shapes.
+  //! If the shape is not changed since the last call to this method,
+  //! this method may be not called for this shape.
+  //! <ishape> - is the index of the shape for processing by this method.
+  //! If it is equal to -1, all shapes will be processed.
+  Standard_EXPORT   Standard_Boolean Voxelize (const Standard_Integer ishape = -1) ;
+  
+  //! Computes the collisions.
+  //! This method may be called many times if, for example, the shapes are being moved.
+  Standard_EXPORT   Standard_Boolean Compute() ;
+  
+  //! Returns true if a collision is detected.
+  Standard_EXPORT   Standard_Boolean HasCollisions()  const;
+  
+  //! Returns the collided voxels.
+  Standard_EXPORT  const  Voxel_BoolDS& GetCollisions()  const;
+  
+  //! A destructor.
+  Standard_EXPORT   void Destroy() ;
 ~Voxel_CollisionDetection()
 {
   Destroy();
 }
-
 
 
 
@@ -107,29 +103,31 @@ protected:
 
 private:
 
-  //! An internal method for cleaning the intermediate data. <br>
-  Standard_EXPORT     void Clear() ;
-  //! An internal method, which checks correspondance <br>
-//!          of voxels to the parameters defined by user. <br>
-  Standard_EXPORT     Standard_Boolean CheckVoxels(const Voxel_BoolDS& voxels) const;
+  
+  //! An internal method for cleaning the intermediate data.
+  Standard_EXPORT   void Clear() ;
+  
+  //! An internal method, which checks correspondance
+  //! of voxels to the parameters defined by user.
+  Standard_EXPORT   Standard_Boolean CheckVoxels (const Voxel_BoolDS& voxels)  const;
 
 
-TopTools_ListOfShape myShapes;
-Standard_Real myDeflection;
-Standard_Integer myNbX;
-Standard_Integer myNbY;
-Standard_Integer myNbZ;
-Standard_Boolean myUsageOfVolume;
-Standard_Boolean myKeepCollisions;
-Standard_Real myX;
-Standard_Real myY;
-Standard_Real myZ;
-Standard_Real myXLen;
-Standard_Real myYLen;
-Standard_Real myZLen;
-Standard_Address myVoxels;
-Voxel_BoolDS myCollisions;
-Standard_Boolean myHasCollisions;
+  TopTools_ListOfShape myShapes;
+  Standard_Real myDeflection;
+  Standard_Integer myNbX;
+  Standard_Integer myNbY;
+  Standard_Integer myNbZ;
+  Standard_Boolean myUsageOfVolume;
+  Standard_Boolean myKeepCollisions;
+  Standard_Real myX;
+  Standard_Real myY;
+  Standard_Real myZ;
+  Standard_Real myXLen;
+  Standard_Real myYLen;
+  Standard_Real myZLen;
+  Standard_Address myVoxels;
+  Voxel_BoolDS myCollisions;
+  Standard_Boolean myHasCollisions;
 
 
 };
@@ -138,7 +136,6 @@ Standard_Boolean myHasCollisions;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Voxel_CollisionDetection_HeaderFile

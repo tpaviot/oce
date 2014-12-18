@@ -6,58 +6,44 @@
 #ifndef _StepGeom_OffsetSurface_HeaderFile
 #define _StepGeom_OffsetSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_OffsetSurface_HeaderFile
 #include <Handle_StepGeom_OffsetSurface.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Surface_HeaderFile
 #include <Handle_StepGeom_Surface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepData_Logical_HeaderFile
 #include <StepData_Logical.hxx>
-#endif
-#ifndef _StepGeom_Surface_HeaderFile
 #include <StepGeom_Surface.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Surface;
 class TCollection_HAsciiString;
 
 
 
-class StepGeom_OffsetSurface : public StepGeom_Surface {
+class StepGeom_OffsetSurface : public StepGeom_Surface
+{
 
 public:
 
-  //! Returns a OffsetSurface <br>
-  Standard_EXPORT   StepGeom_OffsetSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a OffsetSurface
+  Standard_EXPORT StepGeom_OffsetSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Surface)& aBasisSurface,const Standard_Real aDistance,const StepData_Logical aSelfIntersect) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetBasisSurface(const Handle(StepGeom_Surface)& aBasisSurface) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Surface)& aBasisSurface, const Standard_Real aDistance, const StepData_Logical aSelfIntersect) ;
   
-  Standard_EXPORT     Handle_StepGeom_Surface BasisSurface() const;
+  Standard_EXPORT   void SetBasisSurface (const Handle(StepGeom_Surface)& aBasisSurface) ;
   
-  Standard_EXPORT     void SetDistance(const Standard_Real aDistance) ;
+  Standard_EXPORT   Handle(StepGeom_Surface) BasisSurface()  const;
   
-  Standard_EXPORT     Standard_Real Distance() const;
+  Standard_EXPORT   void SetDistance (const Standard_Real aDistance) ;
   
-  Standard_EXPORT     void SetSelfIntersect(const StepData_Logical aSelfIntersect) ;
+  Standard_EXPORT   Standard_Real Distance()  const;
   
-  Standard_EXPORT     StepData_Logical SelfIntersect() const;
+  Standard_EXPORT   void SetSelfIntersect (const StepData_Logical aSelfIntersect) ;
+  
+  Standard_EXPORT   StepData_Logical SelfIntersect()  const;
 
 
 
@@ -72,9 +58,9 @@ protected:
 private: 
 
 
-Handle_StepGeom_Surface basisSurface;
-Standard_Real distance;
-StepData_Logical selfIntersect;
+  Handle(StepGeom_Surface) basisSurface;
+  Standard_Real distance;
+  StepData_Logical selfIntersect;
 
 
 };
@@ -83,7 +69,6 @@ StepData_Logical selfIntersect;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_OffsetSurface_HeaderFile

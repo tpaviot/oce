@@ -6,49 +6,43 @@
 #ifndef _IGESSelect_RebuildGroups_HeaderFile
 #define _IGESSelect_RebuildGroups_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_RebuildGroups_HeaderFile
 #include <Handle_IGESSelect_RebuildGroups.hxx>
-#endif
 
-#ifndef _IGESSelect_ModelModifier_HeaderFile
 #include <IGESSelect_ModelModifier.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESModel_HeaderFile
 #include <Handle_IGESData_IGESModel.hxx>
-#endif
 class IFSelect_ContextModif;
 class IGESData_IGESModel;
 class Interface_CopyTool;
 class TCollection_AsciiString;
 
 
-//! Rebuilds Groups which were bypassed to produce new models. <br>
-//!           If a set of entities, all put into a same IGESModel, were <br>
-//!           part of a same Group in the starting Model, this Modifier <br>
-//!           rebuilds the original group, but only with the transferred <br>
-//!           entities. The distinctions (Ordered or not, "WhithoutBackP" <br>
-//!           or not) are renewed, also the name of the group. <br>
-//! <br>
-//!           If the Input Selection is present, tries to rebuild groups <br>
-//!           only for the selected entities. Else, tries to rebuild <br>
-//!           groups for all the transferred entities. <br>
-class IGESSelect_RebuildGroups : public IGESSelect_ModelModifier {
+//! Rebuilds Groups which were bypassed to produce new models.
+//! If a set of entities, all put into a same IGESModel, were
+//! part of a same Group in the starting Model, this Modifier
+//! rebuilds the original group, but only with the transferred
+//! entities. The distinctions (Ordered or not, "WhithoutBackP"
+//! or not) are renewed, also the name of the group.
+//!
+//! If the Input Selection is present, tries to rebuild groups
+//! only for the selected entities. Else, tries to rebuild
+//! groups for all the transferred entities.
+class IGESSelect_RebuildGroups : public IGESSelect_ModelModifier
+{
 
 public:
 
-  //! Creates an RebuildGroups, which uses the system Date <br>
-  Standard_EXPORT   IGESSelect_RebuildGroups();
-  //! Specific action : Rebuilds the original groups <br>
-  Standard_EXPORT     void Performing(IFSelect_ContextModif& ctx,const Handle(IGESData_IGESModel)& target,Interface_CopyTool& TC) const;
-  //! Returns a text which is <br>
-//!           "Rebuild Groups" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates an RebuildGroups, which uses the system Date
+  Standard_EXPORT IGESSelect_RebuildGroups();
+  
+  //! Specific action : Rebuilds the original groups
+  Standard_EXPORT   void Performing (IFSelect_ContextModif& ctx, const Handle(IGESData_IGESModel)& target, Interface_CopyTool& TC)  const;
+  
+  //! Returns a text which is
+  //! "Rebuild Groups"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -71,7 +65,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_RebuildGroups_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _gce_MakePln_HeaderFile
 #define _gce_MakePln_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pln_HeaderFile
 #include <gp_Pln.hxx>
-#endif
-#ifndef _gce_Root_HeaderFile
 #include <gce_Root.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class StdFail_NotDone;
 class gp_Ax2;
 class gp_Pnt;
@@ -33,81 +21,91 @@ class gp_Pln;
 class gp_Ax1;
 
 
-//! This class implements the following algorithms used <br>
-//!           to create a Pln from gp. <br>
-//!           * Create a Pln parallel to another and passing <br>
-//!             through a point. <br>
-//!           * Create a Pln passing through 3 points. <br>
-//!           * Create a Pln by its normal. <br>
-//!  Defines a non-persistent plane. <br>
-//!  The plane is located in 3D space with an axis placement <br>
-//!  two axis. It is the local coordinate system of the plane. <br>
-//! <br>
-//!  The "Location" point and the main direction of this axis <br>
-//!  placement define the "Axis" of the plane. It is the axis <br>
-//!  normal to the plane which gives the orientation of the <br>
-//!  plane. <br>
-//! <br>
-//!  The "XDirection" and the "YDirection" of the axis <br>
-//!  placement define the plane ("XAxis" and "YAxis") . <br>
-class gce_MakePln  : public gce_Root {
+//! This class implements the following algorithms used
+//! to create a Plane from gp.
+//! * Create a Pln parallel to another and passing
+//! through a point.
+//! * Create a Pln passing through 3 points.
+//! * Create a Pln by its normal.
+//! Defines a non-persistent plane.
+//! The plane is located in 3D space with an axis placement
+//! two axis. It is the local coordinate system of the plane.
+//!
+//! The "Location" point and the main direction of this axis
+//! placement define the "Axis" of the plane. It is the axis
+//! normal to the plane which gives the orientation of the
+//! plane.
+//!
+//! The "XDirection" and the "YDirection" of the axis
+//! placement define the plane ("XAxis" and "YAxis") .
+class gce_MakePln  : public gce_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  The coordinate system of the plane is defined with the axis <br>
-//!  placement A2. <br>
-//!  The "Direction" of A2 defines the normal to the plane. <br>
-//!  The "Location" of A2 defines the location (origin) of the plane. <br>
-//!  The "XDirection" and "YDirection" of A2 define the "XAxis" and <br>
-//!  the "YAxis" of the plane used to parametrize the plane. <br>
-  Standard_EXPORT   gce_MakePln(const gp_Ax2& A2);
-  
-//!  Creates a plane with the  "Location" point <P> <br>
-//!  and the normal direction <V>. <br>
-  Standard_EXPORT   gce_MakePln(const gp_Pnt& P,const gp_Dir& V);
-  
-//!  Creates a plane from its cartesian equation : <br>
-//!  A * X + B * Y + C * Z + D = 0.0 <br>
-//!  the status is "BadEquation" if Sqrt (A*A + B*B + C*C) <= <br>
-//!  Resolution from gp. <br>
-  Standard_EXPORT   gce_MakePln(const Standard_Real A,const Standard_Real B,const Standard_Real C,const Standard_Real D);
-  //! Make a Pln from gp <ThePln> parallel to another <br>
-//!           Pln <Pln> and passing through a Pnt <Point>. <br>
-  Standard_EXPORT   gce_MakePln(const gp_Pln& Pln,const gp_Pnt& Point);
-  //! Make a Pln from gp <ThePln> parallel to another <br>
-//!           Pln <Pln> at the distance <Dist> which can be greater <br>
-//!           or less than zero. <br>
-//!           In the first case the result is at the distance <br>
-//!           <Dist> to the plane <Pln> in the direction of the <br>
-//!           normal to <Pln>. <br>
-//!           Otherwize it is in the opposite direction. <br>
-  Standard_EXPORT   gce_MakePln(const gp_Pln& Pln,const Standard_Real Dist);
-  //! Make a Pln from gp <ThePln> passing through 3 <br>
-//!           Pnt <P1>,<P2>,<P3>. <br>
-//!           It returns false if <P1> <P2> <P3> are confused. <br>
-  Standard_EXPORT   gce_MakePln(const gp_Pnt& P1,const gp_Pnt& P2,const gp_Pnt& P3);
-  //! Make a Pln from gp <ThePln> perpendicular to the line <br>
-//!           passing through <P1>,<P2>. <br>
-//!           The status is "ConfusedPoints" if <P1> <P2> are confused. <br>
-  Standard_EXPORT   gce_MakePln(const gp_Pnt& P1,const gp_Pnt& P2);
-  //! Make a pln  passing through the location of <Axis>and <br>
-//!          normal to the Direction of <Axis>. <br>
-//! Warning -  If an error occurs (that is, when IsDone returns <br>
-//! false), the Status function returns: <br>
-//! -   gce_BadEquation if Sqrt(A*A + B*B + <br>
-//!   C*C) is less than or equal to gp::Resolution(), <br>
-//! -   gce_ConfusedPoints if P1 and P2 are coincident, or <br>
-//! -   gce_ColinearPoints if P1, P2 and P3 are collinear. <br>
-  Standard_EXPORT   gce_MakePln(const gp_Ax1& Axis);
-  //! Returns the constructed plane. <br>
-//! Exceptions StdFail_NotDone if no plane is constructed. <br>
-  Standard_EXPORT    const gp_Pln& Value() const;
-  
-  Standard_EXPORT    const gp_Pln& Operator() const;
-Standard_EXPORT operator gp_Pln() const;
 
+  //! The coordinate system of the plane is defined with the axis
+  //! placement A2.
+  //! The "Direction" of A2 defines the normal to the plane.
+  //! The "Location" of A2 defines the location (origin) of the plane.
+  //! The "XDirection" and "YDirection" of A2 define the "XAxis" and
+  //! the "YAxis" of the plane used to parametrize the plane.
+  Standard_EXPORT gce_MakePln(const gp_Ax2& A2);
+  
+
+  //! Creates a plane with the  "Location" point <P>
+  //! and the normal direction <V>.
+  Standard_EXPORT gce_MakePln(const gp_Pnt& P, const gp_Dir& V);
+  
+
+  //! Creates a plane from its cartesian equation :
+  //! A * X + B * Y + C * Z + D = 0.0
+  //!
+  //! the status is "BadEquation" if Sqrt (A*A + B*B + C*C) <=
+  //! Resolution from gp.
+  Standard_EXPORT gce_MakePln(const Standard_Real A, const Standard_Real B, const Standard_Real C, const Standard_Real D);
+  
+  //! Make a Pln from gp <ThePln> parallel to another
+  //! Pln <Pln> and passing through a Pnt <Point>.
+  Standard_EXPORT gce_MakePln(const gp_Pln& Pln, const gp_Pnt& Point);
+  
+  //! Make a Pln from gp <ThePln> parallel to another
+  //! Pln <Pln> at the distance <Dist> which can be greater
+  //! or less than zero.
+  //! In the first case the result is at the distance
+  //! <Dist> to the plane <Pln> in the direction of the
+  //! normal to <Pln>.
+  //! Otherwize it is in the opposite direction.
+  Standard_EXPORT gce_MakePln(const gp_Pln& Pln, const Standard_Real Dist);
+  
+  //! Make a Pln from gp <ThePln> passing through 3
+  //! Pnt <P1>,<P2>,<P3>.
+  //! It returns false if <P1> <P2> <P3> are confused.
+  Standard_EXPORT gce_MakePln(const gp_Pnt& P1, const gp_Pnt& P2, const gp_Pnt& P3);
+  
+  //! Make a Pln from gp <ThePln> perpendicular to the line
+  //! passing through <P1>,<P2>.
+  //! The status is "ConfusedPoints" if <P1> <P2> are confused.
+  Standard_EXPORT gce_MakePln(const gp_Pnt& P1, const gp_Pnt& P2);
+  
+  //! Make a pln  passing through the location of <Axis>and
+  //! normal to the Direction of <Axis>.
+  //! Warning -  If an error occurs (that is, when IsDone returns
+  //! false), the Status function returns:
+  //! -   gce_BadEquation if Sqrt(A*A + B*B +
+  //! C*C) is less than or equal to gp::Resolution(),
+  //! -   gce_ConfusedPoints if P1 and P2 are coincident, or
+  //! -   gce_ColinearPoints if P1, P2 and P3 are collinear.
+  Standard_EXPORT gce_MakePln(const gp_Ax1& Axis);
+  
+  //! Returns the constructed plane.
+  //! Exceptions StdFail_NotDone if no plane is constructed.
+  Standard_EXPORT  const  gp_Pln& Value()  const;
+  
+  Standard_EXPORT  const  gp_Pln& Operator()  const;
+Standard_EXPORT operator gp_Pln() const;
 
 
 
@@ -122,7 +120,7 @@ private:
 
 
 
-gp_Pln ThePln;
+  gp_Pln ThePln;
 
 
 };
@@ -131,7 +129,6 @@ gp_Pln ThePln;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gce_MakePln_HeaderFile

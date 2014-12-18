@@ -36,11 +36,9 @@ is
     --  Dump, Write, Read tools
     
     class SurfaceSet;
-	---Purpose: A set of Surfaces from Geom.
-    	
+
     class CurveSet;
-	---Purpose: A set of Curves from Geom.
-    	
+
     class Curve2dSet;
 	---Purpose: A set of Curves from Geom2d.
     	
@@ -80,6 +78,11 @@ is
     SetUndefinedTypeHandler(aHandler: UndefinedTypeHandler from GeomTools);
     
     GetUndefinedTypeHandler returns UndefinedTypeHandler from GeomTools;
+
+    GetReal(IS : out IStream from Standard; theValue : out Real from Standard);
+      ---Purpose: Reads the Standard_Real value from the stream. Zero is read 
+      ---         in case of error
+
 
 end GeomTools;
 

@@ -6,46 +6,20 @@
 #ifndef _StepGeom_BSplineCurveWithKnots_HeaderFile
 #define _StepGeom_BSplineCurveWithKnots_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_BSplineCurveWithKnots_HeaderFile
 #include <Handle_StepGeom_BSplineCurveWithKnots.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _StepGeom_KnotType_HeaderFile
 #include <StepGeom_KnotType.hxx>
-#endif
-#ifndef _StepGeom_BSplineCurve_HeaderFile
 #include <StepGeom_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_StepGeom_HArray1OfCartesianPoint_HeaderFile
 #include <Handle_StepGeom_HArray1OfCartesianPoint.hxx>
-#endif
-#ifndef _StepGeom_BSplineCurveForm_HeaderFile
 #include <StepGeom_BSplineCurveForm.hxx>
-#endif
-#ifndef _StepData_Logical_HeaderFile
 #include <StepData_Logical.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 class TColStd_HArray1OfReal;
 class TCollection_HAsciiString;
@@ -53,36 +27,38 @@ class StepGeom_HArray1OfCartesianPoint;
 
 
 
-class StepGeom_BSplineCurveWithKnots : public StepGeom_BSplineCurve {
+class StepGeom_BSplineCurveWithKnots : public StepGeom_BSplineCurve
+{
 
 public:
 
-  //! Returns a BSplineCurveWithKnots <br>
-  Standard_EXPORT   StepGeom_BSplineCurveWithKnots();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Standard_Integer aDegree,const Handle(StepGeom_HArray1OfCartesianPoint)& aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect) ;
+  //! Returns a BSplineCurveWithKnots
+  Standard_EXPORT StepGeom_BSplineCurveWithKnots();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Standard_Integer aDegree,const Handle(StepGeom_HArray1OfCartesianPoint)& aControlPointsList,const StepGeom_BSplineCurveForm aCurveForm,const StepData_Logical aClosedCurve,const StepData_Logical aSelfIntersect,const Handle(TColStd_HArray1OfInteger)& aKnotMultiplicities,const Handle(TColStd_HArray1OfReal)& aKnots,const StepGeom_KnotType aKnotSpec) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Standard_Integer aDegree, const Handle(StepGeom_HArray1OfCartesianPoint)& aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect) ;
   
-  Standard_EXPORT     void SetKnotMultiplicities(const Handle(TColStd_HArray1OfInteger)& aKnotMultiplicities) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Standard_Integer aDegree, const Handle(StepGeom_HArray1OfCartesianPoint)& aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const Handle(TColStd_HArray1OfInteger)& aKnotMultiplicities, const Handle(TColStd_HArray1OfReal)& aKnots, const StepGeom_KnotType aKnotSpec) ;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfInteger KnotMultiplicities() const;
+  Standard_EXPORT   void SetKnotMultiplicities (const Handle(TColStd_HArray1OfInteger)& aKnotMultiplicities) ;
   
-  Standard_EXPORT     Standard_Integer KnotMultiplicitiesValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfInteger) KnotMultiplicities()  const;
   
-  Standard_EXPORT     Standard_Integer NbKnotMultiplicities() const;
+  Standard_EXPORT   Standard_Integer KnotMultiplicitiesValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     void SetKnots(const Handle(TColStd_HArray1OfReal)& aKnots) ;
+  Standard_EXPORT   Standard_Integer NbKnotMultiplicities()  const;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal Knots() const;
+  Standard_EXPORT   void SetKnots (const Handle(TColStd_HArray1OfReal)& aKnots) ;
   
-  Standard_EXPORT     Standard_Real KnotsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) Knots()  const;
   
-  Standard_EXPORT     Standard_Integer NbKnots() const;
+  Standard_EXPORT   Standard_Real KnotsValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     void SetKnotSpec(const StepGeom_KnotType aKnotSpec) ;
+  Standard_EXPORT   Standard_Integer NbKnots()  const;
   
-  Standard_EXPORT     StepGeom_KnotType KnotSpec() const;
+  Standard_EXPORT   void SetKnotSpec (const StepGeom_KnotType aKnotSpec) ;
+  
+  Standard_EXPORT   StepGeom_KnotType KnotSpec()  const;
 
 
 
@@ -97,9 +73,9 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfInteger knotMultiplicities;
-Handle_TColStd_HArray1OfReal knots;
-StepGeom_KnotType knotSpec;
+  Handle(TColStd_HArray1OfInteger) knotMultiplicities;
+  Handle(TColStd_HArray1OfReal) knots;
+  StepGeom_KnotType knotSpec;
 
 
 };
@@ -108,7 +84,6 @@ StepGeom_KnotType knotSpec;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_BSplineCurveWithKnots_HeaderFile

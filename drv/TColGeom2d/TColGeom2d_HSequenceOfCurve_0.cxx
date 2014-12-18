@@ -5,22 +5,12 @@
 
 #include <TColGeom2d_HSequenceOfCurve.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _TColGeom2d_SequenceOfCurve_HeaderFile
 #include <TColGeom2d_SequenceOfCurve.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(TColGeom2d_HSequenceOfCurve,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TColGeom2d_HSequenceOfCurve)
 
 
-#define Item Handle_Geom2d_Curve
+#define Item Handle(Geom2d_Curve)
 #define Item_hxx <Geom2d_Curve.hxx>
 #define TheSequence TColGeom2d_SequenceOfCurve
 #define TheSequence_hxx <TColGeom2d_SequenceOfCurve.hxx>

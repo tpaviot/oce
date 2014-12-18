@@ -5,28 +5,14 @@
 
 #include <StepShape_HArray1OfEdge.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepShape_Edge_HeaderFile
 #include <StepShape_Edge.hxx>
-#endif
-#ifndef _StepShape_Array1OfEdge_HeaderFile
 #include <StepShape_Array1OfEdge.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepShape_HArray1OfEdge,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepShape_HArray1OfEdge)
 
 
-#define ItemHArray1 Handle_StepShape_Edge
+#define ItemHArray1 Handle(StepShape_Edge)
 #define ItemHArray1_hxx <StepShape_Edge.hxx>
 #define TheArray1 StepShape_Array1OfEdge
 #define TheArray1_hxx <StepShape_Array1OfEdge.hxx>

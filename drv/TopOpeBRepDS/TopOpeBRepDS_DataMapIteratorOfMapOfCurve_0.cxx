@@ -5,21 +5,11 @@
 
 #include <TopOpeBRepDS_DataMapIteratorOfMapOfCurve.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepDS_CurveData_HeaderFile
 #include <TopOpeBRepDS_CurveData.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_MapOfCurve_HeaderFile
 #include <TopOpeBRepDS_MapOfCurve.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapNodeOfMapOfCurve_HeaderFile
 #include <TopOpeBRepDS_DataMapNodeOfMapOfCurve.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

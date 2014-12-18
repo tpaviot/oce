@@ -6,38 +6,27 @@
 #ifndef _Transfer_SequenceNodeOfSequenceOfBinder_HeaderFile
 #define _Transfer_SequenceNodeOfSequenceOfBinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Transfer_SequenceNodeOfSequenceOfBinder_HeaderFile
 #include <Handle_Transfer_SequenceNodeOfSequenceOfBinder.hxx>
-#endif
 
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Transfer_Binder;
 class Transfer_SequenceOfBinder;
 
 
 
-class Transfer_SequenceNodeOfSequenceOfBinder : public TCollection_SeqNode {
+class Transfer_SequenceNodeOfSequenceOfBinder : public TCollection_SeqNode
+{
 
 public:
 
   
-      Transfer_SequenceNodeOfSequenceOfBinder(const Handle(Transfer_Binder)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Transfer_SequenceNodeOfSequenceOfBinder(const Handle(Transfer_Binder)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Transfer_Binder& Value() const;
+      Handle(Transfer_Binder)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Transfer_Binder myValue;
+  Handle(Transfer_Binder) myValue;
 
 
 };
 
-#define SeqItem Handle_Transfer_Binder
+#define SeqItem Handle(Transfer_Binder)
 #define SeqItem_hxx <Transfer_Binder.hxx>
 #define TCollection_SequenceNode Transfer_SequenceNodeOfSequenceOfBinder
 #define TCollection_SequenceNode_hxx <Transfer_SequenceNodeOfSequenceOfBinder.hxx>
@@ -78,7 +67,6 @@ Handle_Transfer_Binder myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_SequenceNodeOfSequenceOfBinder_HeaderFile

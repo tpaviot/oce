@@ -6,33 +6,24 @@
 #ifndef _BRepFill_Edge3DLaw_HeaderFile
 #define _BRepFill_Edge3DLaw_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_Edge3DLaw_HeaderFile
 #include <Handle_BRepFill_Edge3DLaw.hxx>
-#endif
 
-#ifndef _BRepFill_LocationLaw_HeaderFile
 #include <BRepFill_LocationLaw.hxx>
-#endif
-#ifndef _Handle_GeomFill_LocationLaw_HeaderFile
 #include <Handle_GeomFill_LocationLaw.hxx>
-#endif
 class TopoDS_Wire;
 class GeomFill_LocationLaw;
 
 
-//! Build Location Law, with a  Wire. <br>
-class BRepFill_Edge3DLaw : public BRepFill_LocationLaw {
+//! Build Location Law, with a  Wire.
+class BRepFill_Edge3DLaw : public BRepFill_LocationLaw
+{
 
 public:
 
   
-  Standard_EXPORT   BRepFill_Edge3DLaw(const TopoDS_Wire& Path,const Handle(GeomFill_LocationLaw)& Law);
+  Standard_EXPORT BRepFill_Edge3DLaw(const TopoDS_Wire& Path, const Handle(GeomFill_LocationLaw)& Law);
 
 
 
@@ -55,7 +46,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_Edge3DLaw_HeaderFile

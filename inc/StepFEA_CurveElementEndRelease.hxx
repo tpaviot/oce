@@ -6,46 +6,41 @@
 #ifndef _StepFEA_CurveElementEndRelease_HeaderFile
 #define _StepFEA_CurveElementEndRelease_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_CurveElementEndRelease_HeaderFile
 #include <Handle_StepFEA_CurveElementEndRelease.hxx>
-#endif
 
-#ifndef _StepFEA_CurveElementEndCoordinateSystem_HeaderFile
 #include <StepFEA_CurveElementEndCoordinateSystem.hxx>
-#endif
-#ifndef _Handle_StepElement_HArray1OfCurveElementEndReleasePacket_HeaderFile
 #include <Handle_StepElement_HArray1OfCurveElementEndReleasePacket.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepElement_HArray1OfCurveElementEndReleasePacket;
 class StepFEA_CurveElementEndCoordinateSystem;
 
 
-//! Representation of STEP entity CurveElementEndRelease <br>
-class StepFEA_CurveElementEndRelease : public MMgt_TShared {
+//! Representation of STEP entity CurveElementEndRelease
+class StepFEA_CurveElementEndRelease : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_CurveElementEndRelease();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepFEA_CurveElementEndCoordinateSystem& aCoordinateSystem,const Handle(StepElement_HArray1OfCurveElementEndReleasePacket)& aReleases) ;
-  //! Returns field CoordinateSystem <br>
-  Standard_EXPORT     StepFEA_CurveElementEndCoordinateSystem CoordinateSystem() const;
-  //! Set field CoordinateSystem <br>
-  Standard_EXPORT     void SetCoordinateSystem(const StepFEA_CurveElementEndCoordinateSystem& CoordinateSystem) ;
-  //! Returns field Releases <br>
-  Standard_EXPORT     Handle_StepElement_HArray1OfCurveElementEndReleasePacket Releases() const;
-  //! Set field Releases <br>
-  Standard_EXPORT     void SetReleases(const Handle(StepElement_HArray1OfCurveElementEndReleasePacket)& Releases) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_CurveElementEndRelease();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepFEA_CurveElementEndCoordinateSystem& aCoordinateSystem, const Handle(StepElement_HArray1OfCurveElementEndReleasePacket)& aReleases) ;
+  
+  //! Returns field CoordinateSystem
+  Standard_EXPORT   StepFEA_CurveElementEndCoordinateSystem CoordinateSystem()  const;
+  
+  //! Set field CoordinateSystem
+  Standard_EXPORT   void SetCoordinateSystem (const StepFEA_CurveElementEndCoordinateSystem& CoordinateSystem) ;
+  
+  //! Returns field Releases
+  Standard_EXPORT   Handle(StepElement_HArray1OfCurveElementEndReleasePacket) Releases()  const;
+  
+  //! Set field Releases
+  Standard_EXPORT   void SetReleases (const Handle(StepElement_HArray1OfCurveElementEndReleasePacket)& Releases) ;
 
 
 
@@ -60,8 +55,8 @@ protected:
 private: 
 
 
-StepFEA_CurveElementEndCoordinateSystem theCoordinateSystem;
-Handle_StepElement_HArray1OfCurveElementEndReleasePacket theReleases;
+  StepFEA_CurveElementEndCoordinateSystem theCoordinateSystem;
+  Handle(StepElement_HArray1OfCurveElementEndReleasePacket) theReleases;
 
 
 };
@@ -70,7 +65,6 @@ Handle_StepElement_HArray1OfCurveElementEndReleasePacket theReleases;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_CurveElementEndRelease_HeaderFile

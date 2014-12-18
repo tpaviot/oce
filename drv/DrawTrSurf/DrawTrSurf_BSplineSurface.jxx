@@ -1,15 +1,5 @@
-#ifndef _Geom_BSplineSurface_HeaderFile
 #include <Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Draw_Color_HeaderFile
 #include <Draw_Color.hxx>
-#endif
-#ifndef _Draw_Display_HeaderFile
 #include <Draw_Display.hxx>
-#endif
-#ifndef _Draw_Drawable3D_HeaderFile
 #include <Draw_Drawable3D.hxx>
-#endif
-#ifndef _DrawTrSurf_BSplineSurface_HeaderFile
 #include <DrawTrSurf_BSplineSurface.hxx>
-#endif

@@ -1,3 +1,1 @@
-#ifndef _BOPDS_IteratorSI_HeaderFile
 #include <BOPDS_IteratorSI.hxx>
-#endif

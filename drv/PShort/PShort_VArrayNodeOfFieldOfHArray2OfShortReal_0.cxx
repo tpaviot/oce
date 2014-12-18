@@ -5,16 +5,10 @@
 
 #include <PShort_VArrayNodeOfFieldOfHArray2OfShortReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PShort_FieldOfHArray2OfShortReal_HeaderFile
 #include <PShort_FieldOfHArray2OfShortReal.hxx>
-#endif
-#ifndef _PShort_VArrayTNodeOfFieldOfHArray2OfShortReal_HeaderFile
 #include <PShort_VArrayTNodeOfFieldOfHArray2OfShortReal.hxx>
-#endif
 
  
 

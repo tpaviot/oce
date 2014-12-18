@@ -6,42 +6,36 @@
 #ifndef _IGESSelect_SelectDrawingFrom_HeaderFile
 #define _IGESSelect_SelectDrawingFrom_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_SelectDrawingFrom_HeaderFile
 #include <Handle_IGESSelect_SelectDrawingFrom.hxx>
-#endif
 
-#ifndef _IFSelect_SelectDeduct_HeaderFile
 #include <IFSelect_SelectDeduct.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Interface_InterfaceError;
 class Interface_EntityIterator;
 class Interface_Graph;
 class TCollection_AsciiString;
 
 
-//! This selection gets the Drawings attached to its input IGES <br>
-//!           entities. They are read through thr Single Views, referenced <br>
-//!           in Directory Parts of the entities <br>
-class IGESSelect_SelectDrawingFrom : public IFSelect_SelectDeduct {
+//! This selection gets the Drawings attached to its input IGES
+//! entities. They are read through thr Single Views, referenced
+//! in Directory Parts of the entities
+class IGESSelect_SelectDrawingFrom : public IFSelect_SelectDeduct
+{
 
 public:
 
-  //! Creates a SelectDrawingFrom <br>
-  Standard_EXPORT   IGESSelect_SelectDrawingFrom();
-  //! Selects the Drawings attached (through Single Views in <br>
-//!           Directory Part) to input entities <br>
-  Standard_EXPORT     Interface_EntityIterator RootResult(const Interface_Graph& G) const;
-  //! Returns the label, with is "Drawings attached" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates a SelectDrawingFrom
+  Standard_EXPORT IGESSelect_SelectDrawingFrom();
+  
+  //! Selects the Drawings attached (through Single Views in
+  //! Directory Part) to input entities
+  Standard_EXPORT   Interface_EntityIterator RootResult (const Interface_Graph& G)  const;
+  
+  //! Returns the label, with is "Drawings attached"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -50,9 +44,10 @@ public:
 
 protected:
 
-  //! Returns True, because selection works with a ViewSorter which <br>
-//!           gives a unique result <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasUniqueResult() const;
+  
+  //! Returns True, because selection works with a ViewSorter which
+  //! gives a unique result
+  Standard_EXPORT virtual   Standard_Boolean HasUniqueResult()  const;
 
 
 
@@ -67,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_SelectDrawingFrom_HeaderFile

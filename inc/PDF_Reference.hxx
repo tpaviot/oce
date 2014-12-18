@@ -6,40 +6,29 @@
 #ifndef _PDF_Reference_HeaderFile
 #define _PDF_Reference_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDF_Reference_HeaderFile
 #include <Handle_PDF_Reference.hxx>
-#endif
 
-#ifndef _Handle_PCollection_HAsciiString_HeaderFile
 #include <Handle_PCollection_HAsciiString.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PCollection_HAsciiString;
 
 
-class PDF_Reference : public PDF_Attribute {
+class PDF_Reference : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDF_Reference();
+  Standard_EXPORT PDF_Reference();
   
-  Standard_EXPORT   PDF_Reference(const Handle(PCollection_HAsciiString)& V);
+  Standard_EXPORT PDF_Reference(const Handle(PCollection_HAsciiString)& V);
   
-  Standard_EXPORT     Handle_PCollection_HAsciiString ReferencedLabel() const;
+  Standard_EXPORT   Handle(PCollection_HAsciiString) ReferencedLabel()  const;
   
-  Standard_EXPORT     void ReferencedLabel(const Handle(PCollection_HAsciiString)& V) ;
+  Standard_EXPORT   void ReferencedLabel (const Handle(PCollection_HAsciiString)& V) ;
 
 PDF_Reference(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -60,7 +49,7 @@ protected:
 private: 
 
 
-Handle_PCollection_HAsciiString myValue;
+  Handle(PCollection_HAsciiString) myValue;
 
 
 };
@@ -69,7 +58,6 @@ Handle_PCollection_HAsciiString myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDF_Reference_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepDS_DataMapNodeOfShapeSurface_HeaderFile
 #define _TopOpeBRepDS_DataMapNodeOfShapeSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Geom_Surface;
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class TopOpeBRepDS_DataMapIteratorOfShapeSurface;
 
 
 
-class TopOpeBRepDS_DataMapNodeOfShapeSurface : public TCollection_MapNode {
+class TopOpeBRepDS_DataMapNodeOfShapeSurface : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepDS_DataMapNodeOfShapeSurface(const TopoDS_Shape& K,const Handle(Geom_Surface)& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepDS_DataMapNodeOfShapeSurface(const TopoDS_Shape& K, const Handle(Geom_Surface)& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Handle_Geom_Surface& Value() const;
+      Handle(Geom_Surface)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Handle_Geom_Surface myValue;
+  TopoDS_Shape myKey;
+  Handle(Geom_Surface) myValue;
 
 
 };
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_Geom_Surface
+#define TheItem Handle(Geom_Surface)
 #define TheItem_hxx <Geom_Surface.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>
@@ -99,7 +86,6 @@ Handle_Geom_Surface myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DataMapNodeOfShapeSurface_HeaderFile

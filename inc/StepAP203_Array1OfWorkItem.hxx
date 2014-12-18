@@ -6,25 +6,13 @@
 #ifndef _StepAP203_Array1OfWorkItem_HeaderFile
 #define _StepAP203_Array1OfWorkItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class StepAP203_WorkItem;
 
 
 
-class StepAP203_Array1OfWorkItem  {
+class StepAP203_Array1OfWorkItem 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepAP203_Array1OfWorkItem(const Standard_Integer Low,const Standard_Integer Up);
+    StepAP203_Array1OfWorkItem(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepAP203_Array1OfWorkItem(const StepAP203_WorkItem& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepAP203_Array1OfWorkItem(const StepAP203_WorkItem& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const StepAP203_WorkItem& V) ;
+  Standard_EXPORT   void Init (const StepAP203_WorkItem& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepAP203_Array1OfWorkItem()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepAP203_Array1OfWorkItem& Assign(const StepAP203_Array1OfWorkItem& Other) ;
-   const StepAP203_Array1OfWorkItem& operator =(const StepAP203_Array1OfWorkItem& Other) 
+  Standard_EXPORT  const  StepAP203_Array1OfWorkItem& Assign (const StepAP203_Array1OfWorkItem& Other) ;
+ const  StepAP203_Array1OfWorkItem& operator = (const StepAP203_Array1OfWorkItem& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepAP203_WorkItem& Value) ;
+      void SetValue (const Standard_Integer Index, const StepAP203_WorkItem& Value) ;
   
-       const StepAP203_WorkItem& Value(const Standard_Integer Index) const;
-     const StepAP203_WorkItem& operator ()(const Standard_Integer Index) const
+     const  StepAP203_WorkItem& Value (const Standard_Integer Index)  const;
+   const  StepAP203_WorkItem& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        StepAP203_WorkItem& ChangeValue(const Standard_Integer Index) ;
-      StepAP203_WorkItem& operator ()(const Standard_Integer Index) 
+      StepAP203_WorkItem& ChangeValue (const Standard_Integer Index) ;
+    StepAP203_WorkItem& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepAP203_Array1OfWorkItem(const StepAP203_Array1OfWorkItem& AnArray);
+  Standard_EXPORT StepAP203_Array1OfWorkItem(const StepAP203_Array1OfWorkItem& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP203_Array1OfWorkItem_HeaderFile

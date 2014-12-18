@@ -1,6 +1,2 @@
-#ifndef _GeomFill_LocationLaw_HeaderFile
 #include <GeomFill_LocationLaw.hxx>
-#endif
-#ifndef _GeomFill_LocFunction_HeaderFile
 #include <GeomFill_LocFunction.hxx>
-#endif

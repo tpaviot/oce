@@ -6,54 +6,37 @@
 #ifndef _FairCurve_DistributionOfJerk_HeaderFile
 #define _FairCurve_DistributionOfJerk_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _FairCurve_BattenLaw_HeaderFile
 #include <FairCurve_BattenLaw.hxx>
-#endif
-#ifndef _FairCurve_DistributionOfEnergy_HeaderFile
 #include <FairCurve_DistributionOfEnergy.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
+#include <math_Vector.hxx>
 class TColStd_HArray1OfReal;
 class TColgp_HArray1OfPnt2d;
 class FairCurve_BattenLaw;
-class math_Vector;
 
 
-//! Compute the "Jerk" distribution. <br>
-class FairCurve_DistributionOfJerk  : public FairCurve_DistributionOfEnergy {
+//! Compute the "Jerk" distribution.
+class FairCurve_DistributionOfJerk  : public FairCurve_DistributionOfEnergy
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   FairCurve_DistributionOfJerk(const Standard_Integer BSplOrder,const Handle(TColStd_HArray1OfReal)& FlatKnots,const Handle(TColgp_HArray1OfPnt2d)& Poles,const Standard_Integer DerivativeOrder,const FairCurve_BattenLaw& Law,const Standard_Integer NbValAux = 0);
-  //! computes the values <F> of the functions for the <br>
-//!          variable <X>. <br>
-//!          returns True if the computation was done successfully, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Value(const math_Vector& X,math_Vector& F) ;
-
+  Standard_EXPORT FairCurve_DistributionOfJerk(const Standard_Integer BSplOrder, const Handle(TColStd_HArray1OfReal)& FlatKnots, const Handle(TColgp_HArray1OfPnt2d)& Poles, const Standard_Integer DerivativeOrder, const FairCurve_BattenLaw& Law, const Standard_Integer NbValAux = 0);
+  
+  //! computes the values <F> of the functions for the
+  //! variable <X>.
+  //! returns True if the computation was done successfully,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Value (const math_Vector& X, math_Vector& F) ;
 
 
 
@@ -68,7 +51,7 @@ private:
 
 
 
-FairCurve_BattenLaw MyLaw;
+  FairCurve_BattenLaw MyLaw;
 
 
 };
@@ -77,7 +60,6 @@ FairCurve_BattenLaw MyLaw;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _FairCurve_DistributionOfJerk_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_Law_Linear_HeaderFile
 #define _Handle_Law_Linear_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Law_Function_HeaderFile
 #include <Handle_Law_Function.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Law_Function);
 class Law_Linear;
 
-DEFINE_STANDARD_HANDLE(Law_Linear,Law_Function)
+DEFINE_STANDARD_HANDLE(Law_Linear, Law_Function)
 
-#endif
+#endif // _Handle_Law_Linear_HeaderFile

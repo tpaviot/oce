@@ -5,19 +5,11 @@
 
 #include <PColgp_VArrayNodeOfFieldOfHArray2OfVec.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray2OfVec_HeaderFile
 #include <PColgp_FieldOfHArray2OfVec.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfVec_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray2OfVec.hxx>
-#endif
 
  
 

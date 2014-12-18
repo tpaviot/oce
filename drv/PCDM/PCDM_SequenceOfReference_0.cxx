@@ -5,18 +5,10 @@
 
 #include <PCDM_SequenceOfReference.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _PCDM_Reference_HeaderFile
 #include <PCDM_Reference.hxx>
-#endif
-#ifndef _PCDM_SequenceNodeOfSequenceOfReference_HeaderFile
 #include <PCDM_SequenceNodeOfSequenceOfReference.hxx>
-#endif
  
 
 #define SeqItem PCDM_Reference

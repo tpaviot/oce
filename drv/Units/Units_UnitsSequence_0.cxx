@@ -5,22 +5,12 @@
 
 #include <Units_UnitsSequence.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Units_Unit_HeaderFile
 #include <Units_Unit.hxx>
-#endif
-#ifndef _Units_UtsSequence_HeaderFile
 #include <Units_UtsSequence.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(Units_UnitsSequence,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Units_UnitsSequence)
 
 
-#define Item Handle_Units_Unit
+#define Item Handle(Units_Unit)
 #define Item_hxx <Units_Unit.hxx>
 #define TheSequence Units_UtsSequence
 #define TheSequence_hxx <Units_UtsSequence.hxx>

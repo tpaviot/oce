@@ -6,61 +6,48 @@
 #ifndef _StepFEA_CurveElementEndCoordinateSystem_HeaderFile
 #define _StepFEA_CurveElementEndCoordinateSystem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepFEA_FeaAxis2Placement3d_HeaderFile
 #include <Handle_StepFEA_FeaAxis2Placement3d.hxx>
-#endif
-#ifndef _Handle_StepFEA_AlignedCurve3dElementCoordinateSystem_HeaderFile
 #include <Handle_StepFEA_AlignedCurve3dElementCoordinateSystem.hxx>
-#endif
-#ifndef _Handle_StepFEA_ParametricCurve3dElementCoordinateSystem_HeaderFile
 #include <Handle_StepFEA_ParametricCurve3dElementCoordinateSystem.hxx>
-#endif
 class Standard_Transient;
 class StepFEA_FeaAxis2Placement3d;
 class StepFEA_AlignedCurve3dElementCoordinateSystem;
 class StepFEA_ParametricCurve3dElementCoordinateSystem;
 
 
-//! Representation of STEP SELECT type CurveElementEndCoordinateSystem <br>
-class StepFEA_CurveElementEndCoordinateSystem  : public StepData_SelectType {
+//! Representation of STEP SELECT type CurveElementEndCoordinateSystem
+class StepFEA_CurveElementEndCoordinateSystem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_CurveElementEndCoordinateSystem();
-  //! Recognizes a kind of CurveElementEndCoordinateSystem select type <br>
-//!          1 -> FeaAxis2Placement3d from StepFEA <br>
-//!          2 -> AlignedCurve3dElementCoordinateSystem from StepFEA <br>
-//!          3 -> ParametricCurve3dElementCoordinateSystem from StepFEA <br>
-//!          0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as FeaAxis2Placement3d (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepFEA_FeaAxis2Placement3d FeaAxis2Placement3d() const;
-  //! Returns Value as AlignedCurve3dElementCoordinateSystem (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepFEA_AlignedCurve3dElementCoordinateSystem AlignedCurve3dElementCoordinateSystem() const;
-  //! Returns Value as ParametricCurve3dElementCoordinateSystem (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepFEA_ParametricCurve3dElementCoordinateSystem ParametricCurve3dElementCoordinateSystem() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_CurveElementEndCoordinateSystem();
+  
+  //! Recognizes a kind of CurveElementEndCoordinateSystem select type
+  //! 1 -> FeaAxis2Placement3d from StepFEA
+  //! 2 -> AlignedCurve3dElementCoordinateSystem from StepFEA
+  //! 3 -> ParametricCurve3dElementCoordinateSystem from StepFEA
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as FeaAxis2Placement3d (or Null if another type)
+  Standard_EXPORT   Handle(StepFEA_FeaAxis2Placement3d) FeaAxis2Placement3d()  const;
+  
+  //! Returns Value as AlignedCurve3dElementCoordinateSystem (or Null if another type)
+  Standard_EXPORT   Handle(StepFEA_AlignedCurve3dElementCoordinateSystem) AlignedCurve3dElementCoordinateSystem()  const;
+  
+  //! Returns Value as ParametricCurve3dElementCoordinateSystem (or Null if another type)
+  Standard_EXPORT   Handle(StepFEA_ParametricCurve3dElementCoordinateSystem) ParametricCurve3dElementCoordinateSystem()  const;
 
 
 
@@ -83,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_CurveElementEndCoordinateSystem_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_TopOpeBRepDS_SolidSurfaceInterference_HeaderFile
 #define _Handle_TopOpeBRepDS_SolidSurfaceInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TopOpeBRepDS_Interference);
 class TopOpeBRepDS_SolidSurfaceInterference;
 
-DEFINE_STANDARD_HANDLE(TopOpeBRepDS_SolidSurfaceInterference,TopOpeBRepDS_Interference)
+DEFINE_STANDARD_HANDLE(TopOpeBRepDS_SolidSurfaceInterference, TopOpeBRepDS_Interference)
 
-#endif
+#endif // _Handle_TopOpeBRepDS_SolidSurfaceInterference_HeaderFile

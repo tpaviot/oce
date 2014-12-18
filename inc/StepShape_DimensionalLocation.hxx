@@ -6,28 +6,22 @@
 #ifndef _StepShape_DimensionalLocation_HeaderFile
 #define _StepShape_DimensionalLocation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_DimensionalLocation_HeaderFile
 #include <Handle_StepShape_DimensionalLocation.hxx>
-#endif
 
-#ifndef _StepRepr_ShapeAspectRelationship_HeaderFile
 #include <StepRepr_ShapeAspectRelationship.hxx>
-#endif
 
 
-//! Representation of STEP entity DimensionalLocation <br>
-class StepShape_DimensionalLocation : public StepRepr_ShapeAspectRelationship {
+//! Representation of STEP entity DimensionalLocation
+class StepShape_DimensionalLocation : public StepRepr_ShapeAspectRelationship
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepShape_DimensionalLocation();
+  
+  //! Empty constructor
+  Standard_EXPORT StepShape_DimensionalLocation();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_DimensionalLocation_HeaderFile

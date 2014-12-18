@@ -6,39 +6,28 @@
 #ifndef _TopOpeBRepBuild_ListNodeOfListOfLoop_HeaderFile
 #define _TopOpeBRepBuild_ListNodeOfListOfLoop_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_ListNodeOfListOfLoop_HeaderFile
 #include <Handle_TopOpeBRepBuild_ListNodeOfListOfLoop.hxx>
-#endif
 
-#ifndef _Handle_TopOpeBRepBuild_Loop_HeaderFile
 #include <Handle_TopOpeBRepBuild_Loop.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopOpeBRepBuild_Loop;
 class TopOpeBRepBuild_ListOfLoop;
 class TopOpeBRepBuild_ListIteratorOfListOfLoop;
 
 
 
-class TopOpeBRepBuild_ListNodeOfListOfLoop : public TCollection_MapNode {
+class TopOpeBRepBuild_ListNodeOfListOfLoop : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepBuild_ListNodeOfListOfLoop(const Handle(TopOpeBRepBuild_Loop)& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepBuild_ListNodeOfListOfLoop(const Handle(TopOpeBRepBuild_Loop)& I, const TCollection_MapNodePtr& n);
   
-        Handle_TopOpeBRepBuild_Loop& Value() const;
+      Handle(TopOpeBRepBuild_Loop)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_TopOpeBRepBuild_Loop myValue;
+  Handle(TopOpeBRepBuild_Loop) myValue;
 
 
 };
 
-#define Item Handle_TopOpeBRepBuild_Loop
+#define Item Handle(TopOpeBRepBuild_Loop)
 #define Item_hxx <TopOpeBRepBuild_Loop.hxx>
 #define TCollection_ListNode TopOpeBRepBuild_ListNodeOfListOfLoop
 #define TCollection_ListNode_hxx <TopOpeBRepBuild_ListNodeOfListOfLoop.hxx>
@@ -83,7 +72,6 @@ Handle_TopOpeBRepBuild_Loop myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_ListNodeOfListOfLoop_HeaderFile

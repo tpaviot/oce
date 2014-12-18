@@ -6,28 +6,15 @@
 #ifndef _GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #define _GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_BFGS_HeaderFile
 #include <math_BFGS.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
+#include <math_Vector.hxx>
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class GeomInt_TheMultiLineOfWLApprox;
 class GeomInt_TheMultiLineToolOfWLApprox;
 class GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox;
@@ -35,20 +22,19 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class math_MultipleVarFunctionWithGradient;
-class math_Vector;
 
 
 
-class GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox  : public math_BFGS {
+class GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox  : public math_BFGS
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox(math_MultipleVarFunctionWithGradient& F,const math_Vector& StartingPoint,const Standard_Real Tolerance3d,const Standard_Real Tolerance2d,const Standard_Real Eps,const Standard_Integer NbIterations = 200);
+  Standard_EXPORT GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox(math_MultipleVarFunctionWithGradient& F, const math_Vector& StartingPoint, const Standard_Real Tolerance3d, const Standard_Real Tolerance2d, const Standard_Real Eps, const Standard_Integer NbIterations = 200);
   
-  Standard_EXPORT   virtual  Standard_Boolean IsSolutionReached(math_MultipleVarFunctionWithGradient& F) const;
-
+  Standard_EXPORT virtual   Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient& F)  const;
 
 
 
@@ -63,8 +49,8 @@ private:
 
 
 
-Standard_Real myTol3d;
-Standard_Real myTol2d;
+  Standard_Real myTol3d;
+  Standard_Real myTol2d;
 
 
 };
@@ -73,7 +59,6 @@ Standard_Real myTol2d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile

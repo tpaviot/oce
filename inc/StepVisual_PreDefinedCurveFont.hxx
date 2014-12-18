@@ -6,28 +6,22 @@
 #ifndef _StepVisual_PreDefinedCurveFont_HeaderFile
 #define _StepVisual_PreDefinedCurveFont_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_PreDefinedCurveFont_HeaderFile
 #include <Handle_StepVisual_PreDefinedCurveFont.hxx>
-#endif
 
-#ifndef _StepVisual_PreDefinedItem_HeaderFile
 #include <StepVisual_PreDefinedItem.hxx>
-#endif
 
 
 
-class StepVisual_PreDefinedCurveFont : public StepVisual_PreDefinedItem {
+class StepVisual_PreDefinedCurveFont : public StepVisual_PreDefinedItem
+{
 
 public:
 
-  //! Returns a PreDefinedCurveFont <br>
-  Standard_EXPORT   StepVisual_PreDefinedCurveFont();
+  
+  //! Returns a PreDefinedCurveFont
+  Standard_EXPORT StepVisual_PreDefinedCurveFont();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PreDefinedCurveFont_HeaderFile

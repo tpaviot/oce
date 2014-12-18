@@ -6,40 +6,28 @@
 #ifndef _StepToGeom_MakeRectangularTrimmedSurface_HeaderFile
 #define _StepToGeom_MakeRectangularTrimmedSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_RectangularTrimmedSurface_HeaderFile
 #include <Handle_StepGeom_RectangularTrimmedSurface.hxx>
-#endif
-#ifndef _Handle_Geom_RectangularTrimmedSurface_HeaderFile
 #include <Handle_Geom_RectangularTrimmedSurface.hxx>
-#endif
 class StepGeom_RectangularTrimmedSurface;
 class Geom_RectangularTrimmedSurface;
 
 
-//! This class implements the mapping between classes <br>
-//!          RectangularTrimmedSurface from StepGeom <br>
-//!          and class RectangularTrimmedSurface from Geom <br>
-class StepToGeom_MakeRectangularTrimmedSurface  {
+//! This class implements the mapping between classes
+//! RectangularTrimmedSurface from StepGeom
+//! and class RectangularTrimmedSurface from Geom
+class StepToGeom_MakeRectangularTrimmedSurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_RectangularTrimmedSurface)& SS,Handle(Geom_RectangularTrimmedSurface)& CS) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_RectangularTrimmedSurface)& SS, Handle(Geom_RectangularTrimmedSurface)& CS) ;
 
 
 
@@ -62,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeRectangularTrimmedSurface_HeaderFile

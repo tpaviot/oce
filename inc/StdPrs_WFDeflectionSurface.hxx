@@ -6,53 +6,40 @@
 #ifndef _StdPrs_WFDeflectionSurface_HeaderFile
 #define _StdPrs_WFDeflectionSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Prs3d_Root_HeaderFile
 #include <Prs3d_Root.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
 class Prs3d_Presentation;
 class Adaptor3d_HSurface;
 class Prs3d_Drawer;
 
 
-//! Draws a surface by drawing the isoparametric curves with respect to <br>
-//! a maximal chordial deviation. <br>
-//! The number of isoparametric curves to be drawn and their color are <br>
-//! controlled by the furnished Drawer. <br>
-class StdPrs_WFDeflectionSurface  : public Prs3d_Root {
+//! Draws a surface by drawing the isoparametric curves with respect to
+//! a maximal chordial deviation.
+//! The number of isoparametric curves to be drawn and their color are
+//! controlled by the furnished Drawer.
+class StdPrs_WFDeflectionSurface  : public Prs3d_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the surface aSurface to the presentation object <br>
-//! aPresentation, and defines its boundaries and isoparameters. <br>
-//! The shape's display attributes are set in the attribute <br>
-//! manager aDrawer. These include whether deflection <br>
-//! is absolute or relative to the size of the shape. <br>
-//! The surface aSurface is a surface object from <br>
-//! Adaptor, and provides data from a Geom surface. <br>
-//! This makes it possible to use the surface in a geometric algorithm. <br>
-//! Note that this surface object is manipulated by handles. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Adaptor3d_HSurface)& aSurface,const Handle(Prs3d_Drawer)& aDrawer) ;
-
+  
+  //! Adds the surface aSurface to the presentation object
+  //! aPresentation, and defines its boundaries and isoparameters.
+  //! The shape's display attributes are set in the attribute
+  //! manager aDrawer. These include whether deflection
+  //! is absolute or relative to the size of the shape.
+  //! The surface aSurface is a surface object from
+  //! Adaptor, and provides data from a Geom surface.
+  //! This makes it possible to use the surface in a geometric algorithm.
+  //! Note that this surface object is manipulated by handles.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Adaptor3d_HSurface)& aSurface, const Handle(Prs3d_Drawer)& aDrawer) ;
 
 
 
@@ -75,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdPrs_WFDeflectionSurface_HeaderFile

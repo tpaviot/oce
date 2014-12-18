@@ -6,22 +6,12 @@
 #ifndef _HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData_HeaderFile
 #define _HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData_HeaderFile
 #include <Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class HLRTopoBRep_FaceData;
@@ -31,22 +21,22 @@ class HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData;
 
 
 
-class HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData  : public TCollection_BasicMapIterator {
+class HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData();
+  Standard_EXPORT HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData();
   
-  Standard_EXPORT   HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData(const HLRTopoBRep_DataMapOfShapeFaceData& aMap);
+  Standard_EXPORT HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData(const HLRTopoBRep_DataMapOfShapeFaceData& aMap);
   
-  Standard_EXPORT     void Initialize(const HLRTopoBRep_DataMapOfShapeFaceData& aMap) ;
+  Standard_EXPORT   void Initialize (const HLRTopoBRep_DataMapOfShapeFaceData& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const HLRTopoBRep_FaceData& Value() const;
-
+  Standard_EXPORT  const  HLRTopoBRep_FaceData& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData_HeaderFile

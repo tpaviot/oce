@@ -6,22 +6,12 @@
 #ifndef _STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape_HeaderFile
 #define _STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape_HeaderFile
 #include <Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelShape.hxx>
-#endif
 class Standard_NoSuchObject;
 class TDF_Label;
 class TopoDS_Shape;
@@ -31,22 +21,22 @@ class STEPCAFControl_DataMapNodeOfDataMapOfLabelShape;
 
 
 
-class STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape  : public TCollection_BasicMapIterator {
+class STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape();
+  Standard_EXPORT STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape();
   
-  Standard_EXPORT   STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape(const STEPCAFControl_DataMapOfLabelShape& aMap);
+  Standard_EXPORT STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape(const STEPCAFControl_DataMapOfLabelShape& aMap);
   
-  Standard_EXPORT     void Initialize(const STEPCAFControl_DataMapOfLabelShape& aMap) ;
+  Standard_EXPORT   void Initialize (const STEPCAFControl_DataMapOfLabelShape& aMap) ;
   
-  Standard_EXPORT    const TDF_Label& Key() const;
+  Standard_EXPORT  const  TDF_Label& Key()  const;
   
-  Standard_EXPORT    const TopoDS_Shape& Value() const;
-
+  Standard_EXPORT  const  TopoDS_Shape& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape_HeaderFile

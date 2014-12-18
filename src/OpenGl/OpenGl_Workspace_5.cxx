@@ -25,10 +25,6 @@
 #include <OpenGl_ShaderManager.hxx>
 #include <OpenGl_telem_util.hxx>
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
 /* OCC22218 NOTE: project dependency on gl2ps is specified by macro */
 #ifdef HAVE_GL2PS
   #include <gl2ps.h>
@@ -50,6 +46,7 @@ static void TelUpdatePolygonOffsets (const TEL_POFFSET_PARAM& theOffsetData)
     glDisable (GL_POLYGON_OFFSET_FILL);
   }
 
+#if !defined(GL_ES_VERSION_2_0)
   if ((theOffsetData.mode & Aspect_POM_Line) == Aspect_POM_Line)
   {
     glEnable (GL_POLYGON_OFFSET_LINE);
@@ -67,6 +64,7 @@ static void TelUpdatePolygonOffsets (const TEL_POFFSET_PARAM& theOffsetData)
   {
     glDisable (GL_POLYGON_OFFSET_POINT);
   }
+#endif
 
   glPolygonOffset (theOffsetData.factor, theOffsetData.units);
 }
@@ -146,11 +144,13 @@ void OpenGl_Workspace::updateMaterial (const int theFlag)
   // reset material
   if (NamedStatus & OPENGL_NS_RESMAT)
   {
+  #if !defined(GL_ES_VERSION_2_0)
     glMaterialfv (aFace, GL_AMBIENT,   myMatTmp.Ambient.GetData());
     glMaterialfv (aFace, GL_DIFFUSE,   myMatTmp.Diffuse.GetData());
     glMaterialfv (aFace, GL_SPECULAR,  myMatTmp.Specular.GetData());
     glMaterialfv (aFace, GL_EMISSION,  myMatTmp.Emission.GetData());
     glMaterialf  (aFace, GL_SHININESS, myMatTmp.Shine());
+  #endif
 
     if (theFlag == TEL_FRONT_MATERIAL)
     {
@@ -170,7 +170,7 @@ void OpenGl_Workspace::updateMaterial (const int theFlag)
   OpenGl_Material& anOld = (theFlag == TEL_FRONT_MATERIAL)
                          ? myMatFront
                          : myMatBack;
-
+#if !defined(GL_ES_VERSION_2_0)
   if (myMatTmp.Ambient.r() != anOld.Ambient.r()
    || myMatTmp.Ambient.g() != anOld.Ambient.g()
    || myMatTmp.Ambient.b() != anOld.Ambient.b())
@@ -200,6 +200,7 @@ void OpenGl_Workspace::updateMaterial (const int theFlag)
   {
     glMaterialf (aFace, GL_SHININESS, myMatTmp.Shine());
   }
+#endif
   anOld = myMatTmp;
   if (aFace == GL_FRONT_AND_BACK)
   {
@@ -273,11 +274,11 @@ const OpenGl_Matrix * OpenGl_Workspace::SetStructureMatrix (const OpenGl_Matrix 
   {
     if (aRevert)
     {
-      myGlContext->ShaderManager()->RevertModelWorldStateTo (lmat.mat);
+      myGlContext->ShaderManager()->RevertModelWorldStateTo (OpenGl_Mat4::Map (*lmat.mat));
     }
     else
     {
-      myGlContext->ShaderManager()->UpdateModelWorldStateTo (lmat.mat);
+      myGlContext->ShaderManager()->UpdateModelWorldStateTo (OpenGl_Mat4::Map (*lmat.mat));
     }
   }
 
@@ -290,10 +291,11 @@ void OpenGl_Workspace::UpdateModelViewMatrix()
 {
   OpenGl_Matrix aStructureMatT;
   OpenGl_Transposemat3( &aStructureMatT, StructureMatrix_applied);
-
-  glMatrixMode (GL_MODELVIEW);
   OpenGl_Multiplymat3 (&myModelViewMatrix, &aStructureMatT, ViewMatrix_applied);
+#if !defined(GL_ES_VERSION_2_0)
+  glMatrixMode (GL_MODELVIEW);
   glLoadMatrixf ((const GLfloat* )&myModelViewMatrix.mat);
+#endif
 }
 
 /*----------------------------------------------------------------------*/
@@ -302,11 +304,14 @@ const OpenGl_AspectLine * OpenGl_Workspace::AspectLine(const Standard_Boolean Wi
 {
   if ( WithApply && (AspectLine_set != AspectLine_applied) )
   {
-    glColor3fv(AspectLine_set->Color().rgb);
+    const GLfloat* anRgb = AspectLine_set->Color().rgb;
+  #if !defined(GL_ES_VERSION_2_0)
+    glColor3fv(anRgb);
+  #endif
 
     if ( !AspectLine_applied || (AspectLine_set->Type() != AspectLine_applied->Type() ) )
     {
-      myDisplay->SetTypeOfLine(AspectLine_set->Type());
+      myLineAttribs->SetTypeOfLine (AspectLine_set->Type());
     }
 
     if ( !AspectLine_applied || ( AspectLine_set->Width() != AspectLine_applied->Width() ) )
@@ -326,11 +331,60 @@ const OpenGl_AspectLine * OpenGl_Workspace::AspectLine(const Standard_Boolean Wi
 
 const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean theToApply)
 {
-  if (!theToApply || (AspectFace_set == AspectFace_applied))
+  if (!theToApply)
   {
     return AspectFace_set;
   }
 
+  if (!ActiveView()->Backfacing())
+  {
+    // manage back face culling mode, disable culling when clipping is enabled
+    TelCullMode aCullingMode = (myGlContext->Clipping().IsClippingOrCappingOn()
+                             || AspectFace_set->InteriorStyle() == Aspect_IS_HATCH)
+                             ? TelCullNone
+                             : (TelCullMode )AspectFace_set->CullingMode();
+    if (aCullingMode != TelCullNone
+     && myUseTransparency && !(NamedStatus & OPENGL_NS_2NDPASSDO))
+    {
+      // disable culling in case of translucent shading aspect
+      if (AspectFace_set->IntFront().trans != 1.0f)
+      {
+        aCullingMode = TelCullNone;
+      }
+    }
+    if (myCullingMode != aCullingMode)
+    {
+      myCullingMode = aCullingMode;
+      switch (myCullingMode)
+      {
+        case TelCullNone:
+        case TelCullUndefined:
+        {
+          glDisable (GL_CULL_FACE);
+          break;
+        }
+        case TelCullFront:
+        {
+          glCullFace (GL_FRONT);
+          glEnable (GL_CULL_FACE);
+          break;
+        }
+        case TelCullBack:
+        {
+          glCullFace (GL_BACK);
+          glEnable (GL_CULL_FACE);
+          break;
+        }
+      }
+    }
+  }
+
+  if (AspectFace_set == AspectFace_applied)
+  {
+    return AspectFace_set;
+  }
+
+#if !defined(GL_ES_VERSION_2_0)
   const Aspect_InteriorStyle anIntstyle = AspectFace_set->InteriorStyle();
   if (AspectFace_applied == NULL || AspectFace_applied->InteriorStyle() != anIntstyle)
   {
@@ -345,7 +399,7 @@ const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean th
       case Aspect_IS_HATCH:
       {
         glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
-        myDisplay->SetTypeOfHatch (AspectFace_applied != NULL ? AspectFace_applied->Hatch() : TEL_HS_SOLID);
+        myLineAttribs->SetTypeOfHatch (AspectFace_applied != NULL ? AspectFace_applied->Hatch() : TEL_HS_SOLID);
         break;
       }
       case Aspect_IS_SOLID:
@@ -368,37 +422,10 @@ const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean th
     const Tint hatchstyle = AspectFace_set->Hatch();
     if (AspectFace_applied == NULL || AspectFace_applied->Hatch() != hatchstyle)
     {
-      myDisplay->SetTypeOfHatch(hatchstyle);
+      myLineAttribs->SetTypeOfHatch (hatchstyle);
     }
   }
-
-  if (!ActiveView()->Backfacing())
-  {
-    const Tint aCullingMode = AspectFace_set->CullingMode();
-    if (AspectFace_applied == NULL || AspectFace_applied->CullingMode() != aCullingMode)
-    {
-      switch ((TelCullMode )aCullingMode)
-      {
-        case TelCullNone:
-        {
-          glDisable (GL_CULL_FACE);
-          break;
-        }
-        case TelCullFront:
-        {
-          glCullFace (GL_FRONT);
-          glEnable (GL_CULL_FACE);
-          break;
-        }
-        case TelCullBack:
-        {
-          glCullFace (GL_BACK);
-          glEnable (GL_CULL_FACE);
-          break;
-        }
-      }
-    }
-  }
+#endif
 
   // Aspect_POM_None means: do not change current settings
   if ((AspectFace_set->PolygonOffset().mode & Aspect_POM_None) != Aspect_POM_None)
@@ -423,7 +450,7 @@ const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean th
   {
     if (AspectFace_set->DoTextureMap())
     {
-      EnableTexture (AspectFace_set->TextureRes (this),
+      EnableTexture (AspectFace_set->TextureRes (myGlContext),
                      AspectFace_set->TextureParams());
     }
     else
@@ -459,9 +486,11 @@ const OpenGl_AspectMarker* OpenGl_Workspace::AspectMarker (const Standard_Boolea
   {
     if (!AspectMarker_applied || (AspectMarker_set->Scale() != AspectMarker_applied->Scale()))
     {
+    #if !defined(GL_ES_VERSION_2_0)
       glPointSize (AspectMarker_set->Scale());
     #ifdef HAVE_GL2PS
       gl2psPointSize (AspectMarker_set->Scale());
+    #endif
     #endif
     }
     AspectMarker_applied = AspectMarker_set;

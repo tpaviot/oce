@@ -44,7 +44,9 @@ Handle(Standard_Transient) XmlDrivers::Factory(const Standard_GUID& theGUID)
 {
   if (theGUID == XmlStorageDriver)
   {
+#ifdef OCCT_DEBUG
     cout << "XmlDrivers : Storage Plugin" << endl;
+#endif
     static Handle(XmlDrivers_DocumentStorageDriver) model_sd =
       new XmlDrivers_DocumentStorageDriver
         ("Copyright: Open Cascade, 2001-2002"); // default copyright
@@ -53,7 +55,9 @@ Handle(Standard_Transient) XmlDrivers::Factory(const Standard_GUID& theGUID)
 
   if (theGUID == XmlRetrievalDriver)
   {
+#ifdef OCCT_DEBUG
     cout << "XmlDrivers : Retrieval Plugin" << endl;
+#endif
     static Handle (XmlDrivers_DocumentRetrievalDriver) model_rd =
       new XmlDrivers_DocumentRetrievalDriver ();
     return model_rd;
@@ -68,7 +72,7 @@ Handle(Standard_Transient) XmlDrivers::Factory(const Standard_GUID& theGUID)
 //purpose  : 
 //=======================================================================
 Handle(XmlMDF_ADriverTable) XmlDrivers::AttributeDrivers
-                (const Handle_CDM_MessageDriver& theMessageDriver)
+                (const Handle(CDM_MessageDriver)& theMessageDriver)
 {
   Handle(XmlMDF_ADriverTable) aTable = new XmlMDF_ADriverTable();
   //

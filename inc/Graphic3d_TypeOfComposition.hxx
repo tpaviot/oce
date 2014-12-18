@@ -6,14 +6,13 @@
 #ifndef _Graphic3d_TypeOfComposition_HeaderFile
 #define _Graphic3d_TypeOfComposition_HeaderFile
 
-//! To manage the transformation matrices of structures. <br>
-enum Graphic3d_TypeOfComposition {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! To manage the transformation matrices of structures.
+enum Graphic3d_TypeOfComposition
+{
 Graphic3d_TOC_REPLACE,
 Graphic3d_TOC_POSTCONCATENATE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_TypeOfComposition_HeaderFile

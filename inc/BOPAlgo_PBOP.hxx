@@ -7,7 +7,6 @@
 #define _BOPAlgo_PBOP_HeaderFile
 
 class BOPAlgo_BOP;
-
 typedef BOPAlgo_BOP* BOPAlgo_PBOP;
 
-#endif
+#endif // _BOPAlgo_PBOP_HeaderFile

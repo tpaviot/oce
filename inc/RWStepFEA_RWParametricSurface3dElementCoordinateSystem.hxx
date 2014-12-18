@@ -6,28 +6,14 @@
 #ifndef _RWStepFEA_RWParametricSurface3dElementCoordinateSystem_HeaderFile
 #define _RWStepFEA_RWParametricSurface3dElementCoordinateSystem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_StepFEA_ParametricSurface3dElementCoordinateSystem_HeaderFile
 #include <Handle_StepFEA_ParametricSurface3dElementCoordinateSystem.hxx>
-#endif
 class StepData_StepReaderData;
 class Interface_Check;
 class StepFEA_ParametricSurface3dElementCoordinateSystem;
@@ -35,21 +21,25 @@ class StepData_StepWriter;
 class Interface_EntityIterator;
 
 
-//! Read & Write tool for ParametricSurface3dElementCoordinateSystem <br>
-class RWStepFEA_RWParametricSurface3dElementCoordinateSystem  {
+//! Read & Write tool for ParametricSurface3dElementCoordinateSystem
+class RWStepFEA_RWParametricSurface3dElementCoordinateSystem 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   RWStepFEA_RWParametricSurface3dElementCoordinateSystem();
-  //! Reads ParametricSurface3dElementCoordinateSystem <br>
-  Standard_EXPORT     void ReadStep(const Handle(StepData_StepReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(StepFEA_ParametricSurface3dElementCoordinateSystem)& ent) const;
-  //! Writes ParametricSurface3dElementCoordinateSystem <br>
-  Standard_EXPORT     void WriteStep(StepData_StepWriter& SW,const Handle(StepFEA_ParametricSurface3dElementCoordinateSystem)& ent) const;
-  //! Fills data for graph (shared items) <br>
-  Standard_EXPORT     void Share(const Handle(StepFEA_ParametricSurface3dElementCoordinateSystem)& ent,Interface_EntityIterator& iter) const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT RWStepFEA_RWParametricSurface3dElementCoordinateSystem();
+  
+  //! Reads ParametricSurface3dElementCoordinateSystem
+  Standard_EXPORT   void ReadStep (const Handle(StepData_StepReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(StepFEA_ParametricSurface3dElementCoordinateSystem)& ent)  const;
+  
+  //! Writes ParametricSurface3dElementCoordinateSystem
+  Standard_EXPORT   void WriteStep (StepData_StepWriter& SW, const Handle(StepFEA_ParametricSurface3dElementCoordinateSystem)& ent)  const;
+  
+  //! Fills data for graph (shared items)
+  Standard_EXPORT   void Share (const Handle(StepFEA_ParametricSurface3dElementCoordinateSystem)& ent, Interface_EntityIterator& iter)  const;
 
 
 
@@ -72,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStepFEA_RWParametricSurface3dElementCoordinateSystem_HeaderFile

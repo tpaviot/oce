@@ -1,9 +1,3 @@
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESData_DirChecker_HeaderFile
 #include <IGESData_DirChecker.hxx>
-#endif

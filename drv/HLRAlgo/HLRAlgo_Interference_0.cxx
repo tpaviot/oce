@@ -5,12 +5,8 @@
 
 #include <HLRAlgo_Interference.hxx>
 
-#ifndef _HLRAlgo_Intersection_HeaderFile
 #include <HLRAlgo_Intersection.hxx>
-#endif
-#ifndef _HLRAlgo_Coincidence_HeaderFile
 #include <HLRAlgo_Coincidence.hxx>
-#endif
  
 
 #define TheSubShape HLRAlgo_Intersection

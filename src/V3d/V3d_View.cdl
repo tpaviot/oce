@@ -59,6 +59,7 @@ class View from V3d inherits TShared from MMgt
         --          and inquiring the parameters linked to the view.
         --          (Projection,Mapping,Zclipping,DepthCueing,AntiAliasing
         --           et Conversions) .
+        --          Provides a set of services common to all types of view.
         --  Warning: The default parameters are defined by the class
         --          Viewer (Example : SetDefaultViewSize()).
         --          Certain methods are mouse oriented, and it is
@@ -73,6 +74,8 @@ class View from V3d inherits TShared from MMgt
 uses
 
         -- S3892
+        Pnt                     from gp,
+        Dir                     from gp,
         Ax3                     from gp,
         LayerMgr                from V3d,
         ColorScale              from V3d,
@@ -93,17 +96,15 @@ uses
         TextureEnv                        from Graphic3d,
         TypeOfVisualization               from V3d,
         TypeOfZclipping                   from V3d,
-        TypeOfProjectionModel             from V3d,
         TypeOfBackfacingModel             from V3d,
+        StereoDumpOptions                 from V3d,
         Viewer                            from V3d,
         Light                             from V3d,
         View                              from Visual3d,
-        ViewMapping                       from Visual3d,
-        ViewOrientation                   from Visual3d,
         ContextView                       from Visual3d,
         Vector                            from Graphic3d,
         Vertex                            from Graphic3d,
-        Plotter                           from Graphic3d,
+        Camera_Handle                     from Graphic3d,
         Window                            from Aspect,
         PixMap                            from Image,
         BufferType                        from Graphic3d,
@@ -121,7 +122,6 @@ uses
         Coordinate                        from V3d,
         Array2OfReal                      from TColStd,
         ViewerPointer                     from V3d,
-        TransientManager                  from Visual3d,
         TypeOfTriedronEcho                from Aspect,
         TypeOfTriedronPosition            from Aspect,
         RenderingContext                  from Aspect,
@@ -133,7 +133,11 @@ uses
         ExtendedString                    from TCollection,
         PrintAlgo                         from Aspect,
         ClipPlane_Handle                  from Graphic3d,
-        SequenceOfHClipPlane              from Graphic3d
+        SequenceOfHClipPlane              from Graphic3d,
+        RenderingMode                     from Graphic3d,
+        RenderingParams                   from Graphic3d,
+        XYZ                               from gp,
+        Box                               from Bnd
 raises
 
         BadValue from V3d, TypeMismatch from Standard,
@@ -141,11 +145,11 @@ raises
 
 is
 
-        Create ( VM : mutable Viewer; Type : TypeOfView from V3d = V3d_ORTHOGRAPHIC );
-        ---Purpose: Initialises the view.
+        Create ( VM : Viewer; Type : TypeOfView from V3d = V3d_ORTHOGRAPHIC );
+        ---Purpose: Initializes the view.
 
-        Create ( VM : mutable Viewer ; V : View from V3d; Type : TypeOfView from V3d = V3d_ORTHOGRAPHIC );
-        ---Purpose: Initialises the view by copying.
+        Create (theVM : Viewer; theView : View from V3d);
+        ---Purpose: Initializes the view by copying.
 
         --------------------------------------------------------
         ---Category: Methods to modify the Status of the view
@@ -202,6 +206,14 @@ is
         --          Must be called if the view is shown.
         --          (Ex: DeIconification ) .
 
+        RedrawImmediate ( me );
+        ---Level: Public
+        ---Purpose: Updates layer of immediate presentations.
+
+        Invalidate ( me );
+        ---Level: Public
+        ---Purpose: Invalidates view content but does not redraw it.
+
         Redraw ( me ;x,y,width,height: Integer from Standard);
         ---Level: Public
         ---Purpose: Redisplays the view area after esxposure.
@@ -231,6 +243,16 @@ is
         UpdateLights (me);
         ---Level: Public
         ---Purpose: Updates the lights of the view. The view is redrawn.
+
+        AutoZFit (me : mutable);
+        ---Level: Public
+        ---Purpose: If automatic z-range fitting is turned on, adjusts Z-min and Z-max
+        --          projection volume planes with call to ZFitAll.
+
+        ZFitAll (me : mutable; theScaleFactor : Real from Standard = 1.0);
+        ---Level: Public
+        ---Purpose: Change Z-min and Z-max planes of projection volume to match the
+        --          displayed objects. 
 
         --------------------------------------------------------
         ---Category: Methods to modify the Attributes of the view
@@ -400,7 +422,6 @@ is
         SetImmediateUpdate(me: mutable; theImmediateUpdate: Boolean from Standard)
         returns Boolean from Standard;
     	  ---Purpose: sets the immediate update mode and returns the previous one.
-
 
         ---------------------------------------------------
         --           Triedron methods
@@ -694,13 +715,15 @@ is
         --          the current axis a distance relative to the initial
         --          position expressed by Start = Standard_True
 
-         Place (me: mutable; x,y: Integer from Standard;
-                      aZoomFactor: Factor from Quantity = 1)
+        Place (me            : mutable;
+               theXp         : Integer from Standard;
+               theYp         : Integer from Standard;
+               theZoomFactor : Factor from Quantity = 1)
         ---Level: Public
-         ---Purpose: places the point of the view corresponding
-         --          at the pixel position x,y at the center of the window
-         --          and updates the view.
-         is static;
+        ---Purpose: places the point of the view corresponding
+        --          at the pixel position x,y at the center of the window
+        --          and updates the view.
+        is static;
 
         Turn ( me : mutable ; Ax,Ay,Az : PlaneAngle ;
                               Start    : Boolean = Standard_True )
@@ -783,10 +806,6 @@ is
                 raises BadValue from V3d ;
         --      If the eye, view point, or high point are aligned or confused.
 
-    SetViewOrientation ( me : mutable; VO   : ViewOrientation from Visual3d );
-    ---Level: Public
-    ---Purpose: Modifies the orientation of the view.
-
         SetViewOrientationDefault( me : mutable );
         ---Level: Public
         ---Purpose: Saves the current state of the orientation of the view
@@ -801,36 +820,41 @@ is
         ---Category: Methods to modify the Mapping of the view
         --------------------------------------------------------
 
-        Panning ( me : mutable ; Dx , Dy      : Length ;
-                                 aZoomFactor  : Factor from Quantity = 1;
-                                 Start        : Boolean = Standard_True )
+        Panning (me            : mutable;
+                 theDXv        : Real from Standard;
+                 theDYv        : Real from Standard;
+                 theZoomFactor : Factor from Quantity = 1;
+                 theToStart    : Boolean = Standard_True);
         ---Level: Public
-        ---Purpose:       translates the center of the view and zooms the view.
-        --       Updates the view.
-        raises BadValue from V3d ;
+        ---Purpose: Translates the center of the view along "x" and "y" axes of
+        -- view projection. Can be used to perform interactive panning operation.
+        -- In that case the DXv, DXy parameters specify panning relative to the
+        -- point where the operation is started.
+        -- @param theDXv [in] the relative panning on "x" axis of view projection, in view space coordinates.
+        -- @param theDYv [in] the relative panning on "y" axis of view projection, in view space coordinates.
+        -- @param theZoomFactor [in] the zooming factor.
+        -- @param theToStart [in] pass TRUE when starting panning to remember view
+        -- state prior to panning for relative arguments. If panning is started,
+        -- passing {0, 0} for {theDXv, theDYv} will return view to initial state.
+        -- Performs update of view.
 
-        SetCenter ( me : mutable ; Xc , Yc : Coordinate )
+        SetCenter (me : mutable; theXp, theYp : Integer from Standard)
         ---Level: Public
-        ---Purpose: Defines the centre of the view.
-        --          Updates the view.
-                raises BadValue from V3d ;
-        --      If one of the dimensions of the projection is NULL.
+        ---Purpose: Relocates center of screen to the point, determined by
+        -- {Xp, Yp} pixel coordinates relative to the bottom-left corner of
+        -- screen. To calculate pixel coordinates for any point from world
+        -- coordinate space, it can be projected using "Project".
+        -- @param theXp [in] the x coordinate.
+        -- @param theYp [in] the y coordinate.
+        raises BadValue from V3d;
+        -- If one of the dimensions of the projection is NULL.
 
-        SetCenter ( me : mutable ; X,Y: Integer from Standard)
+        SetSize ( me : mutable; theSize : Length )
         ---Level: Public
-        ---Purpose: Defines the centre of the view from a pixel position.
-        --          Updates the view.
-                raises BadValue from V3d ;
-        --      If one of the dimensions of the projection is NULL.
-
-        SetSize ( me : mutable ; Size : Length )
-        ---Level: Public
-        ---Purpose: Defines the size of the view while preserving the
-        --          center and height/width ratio of the window supporting
-        --          the view.
-        --          NOTE than the Depth of the View is NOT modified .
-                raises BadValue from V3d ;
-        --      If the size of the view is <= 0
+        ---Purpose: Defines the view projection size in its maximum dimension,
+        --          keeping the inital height/width ratio unchanged.
+                raises BadValue from V3d;
+        --      If <theSize> is <= 0.0
 
         SetZSize ( me : mutable ; Size : Length )
         ---Level: Public
@@ -872,26 +896,16 @@ is
                 raises BadValue from V3d ;
         --      If the one of factors <= 0
 
-        FitAll ( me : mutable ; Coef : Coefficient = 0.01;
-                      FitZ: Boolean from Standard = Standard_False; update : Boolean from Standard = Standard_True )
+        FitAll (me : mutable;
+                theMargin : Coefficient = 0.01;
+                theToUpdate : Boolean from Standard = Standard_True);
         ---Level: Public
-        ---Purpose: Automatic zoom/panning. Objects in the view are visualised
-        --          so as to occupy the maximum space while respecting the
-        --          margin coefficient and the initial height /width ratio.
-        --          NOTE than the original Z size of the view is NOT modified .
-                raises BadValue from V3d ;
-        --      If the margin coefficient is <0 ou >= 1 or
-        --      Updates the view
-
-        ZFitAll ( me : mutable ;  Coef : Coefficient = 1.0 )
-        ---Level: Public
-        ---Purpose: Automatic Depth Panning. Objects visible in the view are
-        --          visualised so as to occupy the maximum Z amount of space
-        --          while respecting the margin coefficient .
-        --          NOTE than the original XY size of the view is NOT modified .
-                raises BadValue from V3d ;
-        --      If the margin coefficient is <0 ou or
-        --      If No Objects are displayed in the view
+        ---Purpose: Adjust view parameters to fit the displayed scene, respecting height / width ratio.
+        --          The Z clipping range (depth range) is fitted if AutoZFit flag is TRUE.
+        --          Throws program error exception if margin coefficient is < 0 or >= 1.
+        --          Updates the view.
+        --          @param theMargin [in] the margin coefficient for view borders.
+        --          @param theToUpdate [in] flag to perform view update.
 
         DepthFitAll( me : mutable ;   Aspect : Coefficient = 0.01;
                                       Margin : Coefficient = 0.01 );
@@ -901,40 +915,29 @@ is
         --          calculated Z size and Aspect parameter.
         --          NOTE than the original XY size of the view is NOT modified .
 
-        FitAll ( me : mutable ; Umin, Vmin, Umax, Vmax : Coordinate )
+        FitAll (me : mutable;
+                theMinXv : Real from Standard;
+                theMinYv : Real from Standard;
+                theMaxXv : Real from Standard;
+                theMaxYv : Real from Standard)
         ---Level: Public
-        ---Purpose: Centres the defined projection window so that it occupies
+        ---Purpose: Centers the defined projection window so that it occupies
         --          the maximum space while respecting the initial
         --          height/width ratio.
         --          NOTE than the original Z size of the view is NOT modified .
                 raises BadValue from V3d;
         --              If the defined projection window has zero size.
 
-
-        WindowFit ( me : mutable ; Xmin, Ymin, Xmax, Ymax : Integer)
+        WindowFit (me : mutable; theMinXp, theMinYp, theMaxXp, theMaxYp : Integer)
         ---Level: Public
-        ---Purpose: Centres the defined PIXEL window so that it occupies
-        --          the maximum space while respecting the initial
-        --          height/width ratio.
-        --          NOTE than the original Z size of the view is NOT modified .
-                raises BadValue from V3d
-        --              If the defined projection window has zero size.
+        ---Purpose: Centers the defined PIXEL window so that it occupies
+        -- the maximum space while respecting the initial height/width ratio.
+        -- NOTE than the original Z size of the view is NOT modified.
+        -- @param theMinXp [in] pixel coordinates of minimal corner on x screen axis.
+        -- @param theMinYp [in] pixel coordinates of minimal corner on y screen axis.
+        -- @param theMaxXp [in] pixel coordinates of maximal corner on x screen axis.
+        -- @param theMaxYp [in] pixel coordinates of maximal corner on y screen axis.
         is static;
-
-    SetViewingVolume ( me : mutable ; Left, Right, Bottom, Top, ZNear, ZFar : Real from Standard)
-        ---Level: Public
-        ---Purpose: Sets Z and XY size of the view according to given values
-        --          with respecting the initial view depth (eye position).
-        --          Width/heigth aspect ratio should be preserved by the caller
-        --          of this method similarly to SetSize() to avoid unexpected
-        --          visual results like non-uniform scaling of objects in the view. 
-                raises BadValue from V3d;
-        --              If the ZNear<0, ZFar<0 or ZNear>=Zfar.
-
-    SetViewMapping ( me : mutable; VM   : ViewMapping from Visual3d );
-    ---Level: Public
-    ---Purpose: Modifies the mapping of the view.
-
         SetViewMappingDefault( me : mutable );
         ---Level: Public
         ---Purpose: Saves the current view mapping. This will be the
@@ -942,12 +945,12 @@ is
 
         ResetViewMapping ( me : mutable );
         ---Level: Public
-        ---Purpose: Resets the centring of the view.
+        ---Purpose: Resets the centering of the view.
         --          Updates the view
 
         Reset ( me : mutable; update : Boolean from Standard = Standard_True );
         ---Level: Public
-        ---Purpose: Resets the centring and the orientation of the view
+        ---Purpose: Resets the centering and the orientation of the view
         --          Updates the view
         ---------------------------------------------------
         ---Category: Inquire methods
@@ -1006,18 +1009,19 @@ is
         --           in the reference frame of the view corresponding
         --           to the intersection with the projection plane
         --           of the eye/view point vector and display the grid marker.
-    --  Warning: When the grid is not active the result is identical
-    --     to the above Convert() method.
-    -- How to use :
+    --  Warning: When the grid is not active the result is identical to the above Convert() method.
+    -- How to use:
     -- 1) Enable the grid echo display
     --    myViewer->SetGridEcho(Standard_True);
-    -- 2) When application receive a move event :
+    -- 2) When application receive a move event:
     --   2.1) Check if any object is detected
     --     if( myInteractiveContext->MoveTo(x,y) == AIS_SOD_Nothing ) {
     --   2.2) Check if the grid is active
         --     if( myViewer->Grid()->IsActive() ) {
     --   2.3) Display the grid echo and gets the grid point
         --       myView->ConvertToGrid(x,y,X,Y,Z);
+        --       myView->Viewer()->ShowGridEcho (myView, Graphic3d_Vertex (X,Y,Z));
+        --       myView->RedrawImmediate();
     --   2.4) Else this is the standard case
         --     } else myView->Convert(x,y,X,Y,Z);
         raises UnMapped from V3d;
@@ -1079,10 +1083,6 @@ is
     AxialScale ( me ; Sx, Sy, Sz : out Real from Standard ) ;
         ---Level: Public
         ---Purpose: Returns the current values of the anisotropic (axial) scale factors.
-
-        Center ( me; Xc,Yc : out Coordinate );
-        ---Level: Public
-        ---Purpose: Returns the centre of the view.
 
         Size ( me; Width, Height : out Length );
         ---Level: Public
@@ -1188,10 +1188,10 @@ is
         ---Purpose : Go to the next active Light
         --           (if there is not, ActiveLight will raise an exception)
 
-        ActiveLight(me) returns mutable Light from V3d;
+        ActiveLight(me) returns Light from V3d;
         ---Level: Advanced
 
-        Viewer ( me ) returns mutable Viewer from V3d;
+        Viewer ( me ) returns Viewer from V3d;
         ---Level: Advanced
         ---Purpose: Returns the viewer in which the view has been created.
 
@@ -1199,7 +1199,7 @@ is
         ---Level: Public
         ---Purpose: Returns True if MyView is associated with a window .
 
-        Window ( me ) returns mutable Window from Aspect
+        Window ( me ) returns Window from Aspect
         ---Level: Public
         ---Purpose: Returns the Aspect Window associated with the view.
                 raises BadValue from V3d;
@@ -1209,31 +1209,51 @@ is
         ---Level: Public
         ---Purpose: Returns the Type of the View
 
-        Pan ( me : mutable; Dx, Dy: Integer from Standard;
-                             aZoomFactor: Factor from Quantity = 1);
+        Pan (me            : mutable;
+             theDXp        : Integer from Standard;
+             theDYp        : Integer from Standard;
+             theZoomFactor : Factor from Quantity = 1;
+             theToStart    : Boolean = Standard_True);
         ---Level: Public
-        ---Purpose: translates the center of the view and zooms the view.
-        --       and updates the view.
+        ---Purpose: Translates the center of the view along "x" and "y" axes of
+        -- view projection. Can be used to perform interactive panning operation.
+        -- In that case the DXp, DXp parameters specify panning relative to the
+        -- point where the operation is started.
+        -- @param theDXp [in] the relative panning on "x" axis of view projection, in pixels.
+        -- @param theDYp [in] the relative panning on "y" axis of view projection, in pixels.
+        -- @param theZoomFactor [in] the zooming factor.
+        -- @param theToStart [in] pass TRUE when starting panning to remember view
+        -- state prior to panning for relative arguments. Passing 0 for relative
+        -- panning parameter should return view panning to initial state.
+        -- Performs update of view.
 
-        Zoom ( me : mutable; X1 , Y1 , X2 , Y2 : Integer from Standard)
+        Zoom (me     : mutable;
+              theXp1 : Integer from Standard;
+              theYp1 : Integer from Standard;
+              theXp2 : Integer from Standard;
+              theYp2 : Integer from Standard)
         is static;
         ---Level: Public
         ---Purpose: Zoom the view according to a zoom factor computed
-        -- from the distance between the 2 mouse position <X1,Y1>,<X2,Y2>
+        -- from the distance between the 2 mouse position.
+        -- @param theXp1 [in] the x coordinate of first mouse position, in pixels.
+        -- @param theYp1 [in] the y coordinate of first mouse position, in pixels.
+        -- @param theXp2 [in] the x coordinate of second mouse position, in pixels.
+        -- @param theYp2 [in] the y coordinate of second mouse position, in pixels.
 
-        Zoom ( me: mutable; X,Y: Integer from Standard)
-        is static;
+        StartZoomAtPoint (me    : mutable;
+                          theXp : Integer from Standard;
+                          theYp : Integer from Standard);
         ---Level: Public
-        ---Purpose: Zoom the view according to a zoom factor computed
-        -- from the distance between the last and new mouse position <X,Y>
-
-        StartZoomAtPoint(me : mutable;
-                         xpix, ypix : Integer from Standard);
-        ---Level: Public
-        ---Purpose: Defines the point (pixel) of zooming (for the method ZoomAtPoint()).
+        ---Purpose: Defines starting point for ZoomAtPoint view operation.
+        -- @param theXp [in] the x mouse coordinate, in pixels.
+        -- @param theYp [in] the y mouse coordinate, in pixels.
 
         ZoomAtPoint(me : mutable;
-                    mouseStartX, mouseStartY, mouseEndX, mouseEndY : Integer from Standard);
+                    theMouseStartX : Integer from Standard;
+                    theMouseStartY : Integer from Standard;
+                    theMouseEndX   : Integer from Standard;
+                    theMouseEndY   : Integer from Standard);
         ---Level: Public
         ---Purpose: Zooms the model at a pixel defined by the method StartZoomAtPoint().
 
@@ -1247,13 +1267,13 @@ is
         StartRotation(me : mutable ; X,Y :Integer from Standard;
                zRotationThreshold: Ratio from Quantity = 0.0);
         ---Level: Public
-    ---Purpose: Begin the rotation of the view arround the screen axis
+    ---Purpose: Begin the rotation of the view around the screen axis
     -- according to the mouse position <X,Y>.
     --  Warning: Enable rotation around the Z screen axis when <zRotationThreshold>
     -- factor is > 0 soon the distance from the start point and the center
     -- of the view is > (medium viewSize * <zRotationThreshold> ).
     -- Generally a value of 0.4 is usable to rotate around XY screen axis
-    -- inside the circular treshold area and to rotate around Z screen axis
+    -- inside the circular threshold area and to rotate around Z screen axis
     -- outside this area.
 
         Rotation(me:mutable;  X,Y :Integer from Standard);
@@ -1284,85 +1304,24 @@ is
         Focale( me ) returns Length;
         ---Purpose: Returns the View Plane Distance for Perspective Views
 
-        View ( me) returns mutable View from Visual3d is static ;
+        View ( me) returns View from Visual3d is static ;
         ---Level: Advanced
         ---Purpose: Returns the associated Visual3d view.
 
-        ViewMapping ( me ) returns ViewMapping from Visual3d is static;
-    ---Level: Advanced
-    ---Purpose: Returns the current mapping of the view.
-
-    ViewOrientation ( me ) returns ViewOrientation from Visual3d is static;
-    ---Level: Advanced
-    ---Purpose: Returns the current orientation of the view.
-
-        ScreenAxis( myclass ; Vpn,Vup        : Vector from Graphic3d ;
+        ScreenAxis( myclass ; Vpn,Vup        : Dir from gp ;
                               Xaxe,Yaxe,Zaxe : out Vector from Graphic3d )
                                         returns Boolean is private ;
         ---Purpose: Determines the screen axes in the reference
         --          framework of the view.
 
-        InitMatrix ( myclass ; Matrix : out Array2OfReal from TColStd ) is private ;
 
-        Multiply( myclass ;
-                 Left, Right : Array2OfReal from TColStd ;
-                 Matrix      : out Array2OfReal from TColStd )
-                 returns Boolean from Standard is private ;
-
-        RotAxis( myclass ; Vrp      : Vertex from Graphic3d ;
-                           Axe      : Vector from Graphic3d ; Angle : PlaneAngle ;
-                           Matrix   : out Array2OfReal from TColStd ) is private ;
-        ---Purpose: Determines the rotation matrice around an axis
-        --          for a given angle.
-
-        TrsPoint( myclass ; P      : Vertex from Graphic3d ;
-                            Matrix : Array2OfReal from TColStd )
-                                returns Vertex from Graphic3d is private ;
-        ---Purpose: Transforms the point P according to the matrice Matrix .
-
-        TrsPoint( myclass ; V : Vector from Graphic3d ;
+        TrsPoint( myclass ; V : Vertex from Graphic3d ;
                                 Matrix : Array2OfReal from TColStd )
-                                returns Vector from Graphic3d is private ;
-        ---Purpose: Transforms the vector V according to the matrice Matrix .
+                                returns Vertex from Graphic3d is private ;
+        ---Purpose: Transforms the Vertex V according to the matrice Matrix .
         
         ImmediateUpdate (me) is static protected;
     	  ---Purpose: 
-
-        -----------------------------------------
-        ---Category: TransientManager methods
-        -----------------------------------------
-
-         TransientManagerBeginDraw(me; DoubleBuffer: Boolean = Standard_False;
-                                       RetainMode  : Boolean = Standard_False)
-        ---Level: Public
-        ---Purpose: Begins any graphics in the view <aView>
-        --          Redraw any structured graphics in the back buffer before
-        --          if <DoubleBuffer> is TRUE.
-        --          Restore the front buffer from the back before
-        --          if <DoubleBuffer> is FALSE.
-        --          if <RetainMode> is TRUE.
-        --          the graphic managed itself exposure,resizing ...
-        --          if <RetainMode> is FALSE.
-        --          the application must managed itself exposure,resizing ...
-        --
-                returns Boolean from Standard;
-
-         TransientManagerClearDraw(me);
-        ---Level: Public
-        ---Purpose: Clear all transient graphics in the view <aView>
-
-
-         TransientManagerBeginAddDraw(me)
-        ---Level: Public
-        ---Purpose: Begins any add graphics in the view <aView>
-        --          Redraw any structured graphics in the back buffer before
-        --          the application must managed itself exposure,resizing ...
-        --  Warning: Returns TRUE if transient drawing is enabled in
-        --         the associated view.
-        --          Returns FALSE ,if nothing works because something
-        --         is wrong for the transient principle :
-        --
-                returns Boolean from Standard;
 
         SetComputedMode ( me : mutable; aMode : Boolean from Standard )
         is static;
@@ -1399,16 +1358,6 @@ is
 
         WindowFitAll ( me : mutable ; Xmin, Ymin, Xmax, Ymax : Integer);
         ---Purpose: idem than WindowFit
-
-        SetPlotter ( me : mutable; aPlotter : Plotter from Graphic3d )
-        ---Purpose: Set a plotter for plotting the contents of the view
-        --          field MyPlotter
-        is virtual;
-
-        Plot ( me : mutable )
-        ---Purpose: Create a 2D View for plotting the contents of the view
-        raises BadValue from V3d;
-        --      if the plotter is undefined.
 
         Compute ( me; AVertex   : Vertex from Graphic3d )
                 returns Vertex from Graphic3d
@@ -1484,31 +1433,25 @@ is
     --  you use it for your purposes;
     --  Warning: Works only under Windows.
 
-        ToPixMap ( me : mutable;
-                   theImage  : in out PixMap from Image;
-                   theWidth  : Integer from Standard;
-                   theHeight : Integer from Standard;
-                   theBufferType : BufferType from Graphic3d = Graphic3d_BT_RGB;
-                   theForceCentered : Boolean from Standard = Standard_True )
+        ToPixMap (me : mutable;
+                  theImage  : in out PixMap from Image;
+                  theWidth  : Integer from Standard;
+                  theHeight : Integer from Standard;
+                  theBufferType : BufferType from Graphic3d = Graphic3d_BT_RGB;
+                  theToKeepAspect : Boolean from Standard = Standard_True;
+                  theStereoOptions : StereoDumpOptions from V3d = V3d_SDO_MONO)
         returns Boolean from Standard;
         ---Level   : Public
-        ---Purpose : dump the full contents of the view
-        --        to a pixmap of pixel size <theWidth>*<theHeight> and
-        --        buffer type <theBufferType>. If <theForceCentered> is true
-        --        view scene will be centered.
-        --       Pixmap will be automatically (re)allocated when needed.
-
-    SetProjModel( me : mutable;
-        amOdel: TypeOfProjectionModel from V3d = V3d_TPM_SCREEN )
-        is static;
-         ---Level   : Advanced
-         ---Purpose : Manages projection model
-
-    ProjModel( me )
-        returns TypeOfProjectionModel from V3d
-        is static;
-         ---Level   : Advanced
-         ---Purpose : Returns the current projection model
+        ---Purpose : Dumps the full contents of the view
+        --           to a pixmap of pixel size <theWidth> * <theHeight> and
+        --           buffer type <theBufferType>. If <theToKeepAspect> is true
+        --           the aspect ratio of view will be kept if <theWidth> and <theHeight>
+        --           define another ratio.
+        --           Pixmap will be automatically (re)allocated when needed.
+        --           When dumping stereographic camera - the corresponding
+        --           middle-point monographic projection will be used for dumping by default.
+        --           <theStereoOptions> flags are to be used for dumping then left or
+        --           right eye projections.
 
         SetBackFacingModel ( me     : mutable;
             aModel : TypeOfBackfacingModel from V3d = V3d_TOBM_AUTOMATIC)
@@ -1555,7 +1498,7 @@ is
      ---Purpose: Adds clip plane to the view. The composition of clip planes truncates the
      -- rendering space to convex volume. Number of supported clip planes can be consulted
      -- by PlaneLimit method of associated Visual3d_View. Please be aware that the planes
-     -- which exceed the limit are igonred during rendering. 
+     -- which exceed the limit are ignored during rendering. 
      -- @param thePlane [in] the clip plane to be added to view.
 
      RemoveClipPlane (me : mutable; thePlane : ClipPlane_Handle from Graphic3d) is virtual;
@@ -1568,7 +1511,7 @@ is
      -- truncates the rendering space to convex volume. Number of supported
      -- clip planes can be consulted by PlaneLimit method of associated
      -- Visual3d_View. Please be aware that the planes which exceed the limit
-     -- are igonred during rendering. 
+     -- are ignored during rendering. 
      -- @param thePlanes [in] the clip planes to set.
 
      GetClipPlanes (me) returns SequenceOfHClipPlane from Graphic3d;
@@ -1576,47 +1519,94 @@ is
      ---Purpose: Get clip planes.
      -- @return sequence clip planes that have been set for the view
 
-        SetRaytracingMode (me : mutable) is static;
-     ---Level: Public
-     ---Purpose: enables OpenCL-based ray-tracing mode
+    SetCamera (me : mutable; theCamera : Camera_Handle from Graphic3d) is static;
+    ---Level: Public
+    ---Purpose: Change camera used by view.
 
-        SetRasterizationMode (me : mutable) is static;
-     ---Level: Public
-     ---Purpose: enables OpenGL-based rasterization mode
+    Camera (me) returns Camera_Handle from Graphic3d is static;
+    ---Level: Public
+    ---C++: return const&
+    ---Purpose: Returns camera object of the view.
+    -- @return: handle to camera object, or NULL if 3D view does not use
+    -- the camera approach.
 
-        EnableRaytracedShadows (me : mutable) is static;
-     ---Level: Public
-     ---Purpose: enables sharp shadows in OpenCL-based ray-tracing mode
+    FitMinMax (me;
+               theCamera          : Camera_Handle from Graphic3d;
+               theBox             : Box from Bnd;
+               theMargin          : Real from Standard;
+               theResolution      : Real from Standard = 0.0;
+               theToEnlargeIfLine : Boolean from Standard = Standard_True)
+               returns Boolean from Standard is protected;
+    ---Level: Protected
+    ---Purpose: Transform camera eye, center and scale to fit in the
+    -- passed bounding box specified in WCS.
+    -- @param theCamera [in] the camera.
+    -- @param theBox [in] the bounding box.
+    -- @param theMargin [in] the margin coefficient for view borders.
+    -- @param theResolution [in] the minimum size of projection of
+    --        bounding box in Xv or Yv direction when it considered to
+    --        be a thin plane or point (without a volume).
+    --        In this case only the center of camera is adjusted.
+    -- @param theToEnlargeIfLine [in] if passed TRUE - in cases when the
+    -- whole bounding box projected into thin line going along
+    -- Z-axis of screen, the view plane is enlarged such that
+    -- we see the whole line on rotation, otherwise only the
+    -- center of camera is adjusted.
+    -- @return TRUE if the fit all operation can be done.
 
-        EnableRaytracedReflections (me : mutable) is static;
-     ---Level: Public
-     ---Purpose: enables specular reflections in OpenCL-based ray-tracing mode
+    Scale (me;
+           theCamera : Camera_Handle from Graphic3d;
+           theSizeXv : Real from Standard;
+           theSizeYv : Real from Standard) is protected;
+    ---Level: Protected
+    ---Purpose: Scales camera to fit the view frame of defined width and height
+    -- keeping the aspect. For orthogonal camera the method changes scale,
+    -- for perspective adjusts Eye location about the Center point.
+    -- @param theSizeXv [in] size of viewport frame on "x" axis.
+    -- @param theSizeYv [in] size of viewport frame on "y" axis.
 
-        EnableRaytracedAntialiasing (me : mutable) is static;
-     ---Level: Public
-     ---Purpose: enables antialiasing in OpenCL-based ray-tracing mode
+    Translate (me;
+         theCamera : Camera_Handle from Graphic3d;
+         theDXv    : Real from Standard;
+         theDYv    : Real from Standard) is protected;
+    ---Level: Protected
+    -- Purpose: Translates camera eye and center along the view plane.
+    -- @param theCamera [in] the camera to translate.
+    -- @param theDXv [in] the translation in "x" direction.
+    -- @param theDYv [in] the translation in "y" direction.
 
-        DisableRaytracedShadows (me : mutable) is static;
-     ---Level: Public
-     ---Purpose: disables sharp shadows in OpenCL-based ray-tracing mode
+    RenderingParams (me) returns RenderingParams from Graphic3d is static;
+    ---C++: return const &
+    ---Level: Public
+    ---Purpose: Returns current rendering parameters and effect settings.
+    
+    ChangeRenderingParams (me : mutable) returns RenderingParams from Graphic3d is static;
+    ---C++: return &
+    ---Level: Public
+    ---Purpose: Returns reference to current rendering parameters and effect settings.
 
-        DisableRaytracedReflections (me : mutable) is static;
+        IsCullingEnabled (me) returns Boolean from Standard is static;
      ---Level: Public
-     ---Purpose: disables specular reflections in OpenCL-based ray-tracing mode
+     ---Purpose: @return flag value of objects culling mechanism
 
-        DisableRaytracedAntialiasing (me : mutable) is static;
+        SetFrustumCulling (me : mutable; theMode : Boolean from Standard) is static;
      ---Level: Public
-     ---Purpose: disables antialiasing in OpenCL-based ray-tracing mode
+     ---Purpose: Turn on/off automatic culling of objects outside frustrum (ON by default)
 
 fields
 
-        MyType :                TypeOfView from V3d is protected ;
+        myOldMouseX : Real is protected;
+        myOldMouseY : Real is protected;
+        myCamStartOpUp : Dir from gp is protected;
+        myCamStartOpEye : Pnt from gp is protected;
+        myCamStartOpBnd : Real[6] is protected;
+        myCamStartOpCenter : Pnt from gp is protected;
+        myCamera : Camera_Handle from Graphic3d is protected;
+
         MyViewer :              ViewerPointer from V3d ;
         MyActiveLights:         ListOfTransient from V3d;
 
         MyView :                View from Visual3d is protected ;
-        MyViewMapping :         ViewMapping from Visual3d is protected ;
-        MyViewOrientation :     ViewOrientation from Visual3d ;
         MyViewContext :         ContextView from Visual3d ;
         MyBackground:           Background from Aspect ;
         MyGradientBackground:   GradientBackground from Aspect ;
@@ -1624,8 +1614,6 @@ fields
         MyDefaultViewPoint:     Vertex from Graphic3d ;
 
         MyWindow:               Window from Aspect;
-
-        MyPlotter:              Plotter from Graphic3d;
 
         myActiveLightsIterator: ListIteratorOfListOfTransient from TColStd;
 
@@ -1643,8 +1631,6 @@ fields
         --MyColorScale            :       ColorScale from V3d;
         MyLayerMgr              :       LayerMgr from V3d;
 
-        MyProjModel         :   TypeOfProjectionModel from V3d is protected;
-            
         -- the transformation between XoY and the grid plane
         MyTrsf                  :       Array2OfReal from TColStd;
 
@@ -1654,6 +1640,14 @@ fields
 
         MyTransparencyFlag      : Boolean from Standard;
         myImmediateUpdate: Boolean from Standard is protected;
+
+        myXscreenAxis           : Vector from Graphic3d;
+        myYscreenAxis           : Vector from Graphic3d;
+        myZscreenAxis           : Vector from Graphic3d;
+        myViewAxis              : Vector from Graphic3d;
+        myGravityReferencePoint : Vertex from Graphic3d;
+        myCamProjectionShift    : Pnt from gp;
+
 friends
 
         SetViewOn from class Viewer from V3d ( me : mutable ),

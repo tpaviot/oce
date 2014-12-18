@@ -17,80 +17,83 @@
 #define NCollection_List_HeaderFile
 
 #include <NCollection_TListIterator.hxx>
+#include <NCollection_StlIterator.hxx>
 
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
 #include <Standard_NoSuchObject.hxx>
-#endif
 
 /**
  * Purpose:      Simple list to link  items together keeping the first 
  *               and the last one.
  *               Inherits BaseList, adding the data item to each node.
  */               
-template <class TheItemType> class NCollection_List
-  : public NCollection_BaseCollection<TheItemType>,
-    public NCollection_BaseList
+template <class TheItemType>
+class NCollection_List : public NCollection_BaseList
 {
- public:
+public:
+  //! STL-compliant typedef for value type
+  typedef TheItemType value_type;
+
+public:
   typedef NCollection_TListNode<TheItemType>     ListNode;
   typedef NCollection_TListIterator<TheItemType> Iterator;
+
+  //! Shorthand for a regular iterator type.
+  typedef NCollection_StlIterator<std::forward_iterator_tag, Iterator, TheItemType, false> iterator;
+
+  //! Shorthand for a constant iterator type.
+  typedef NCollection_StlIterator<std::forward_iterator_tag, Iterator, TheItemType, true> const_iterator;
+
+  //! Returns an iterator pointing to the first element in the list.
+  iterator begin() const { return Iterator (*this); }
+
+  //! Returns an iterator referring to the past-the-end element in the list.
+  iterator end() const { return Iterator(); }
+
+  //! Returns a const iterator pointing to the first element in the list.
+  const_iterator cbegin() const { return Iterator (*this); }
+
+  //! Returns a const iterator referring to the past-the-end element in the list.
+  const_iterator cend() const { return Iterator(); }
 
  public:
   // ---------- PUBLIC METHODS ------------
 
   //! Constructor
   NCollection_List(const Handle(NCollection_BaseAllocator)& theAllocator=0L) :
-    NCollection_BaseCollection<TheItemType>(theAllocator),
-    NCollection_BaseList() {}
+    NCollection_BaseList(theAllocator) {}
 
   //! Copy constructor
   NCollection_List (const NCollection_List& theOther) :
-    NCollection_BaseCollection<TheItemType>(theOther.myAllocator),
-    NCollection_BaseList()
-  { *this = theOther; }
-
-  //! Size - Number of items
-  virtual Standard_Integer Size (void) const
-  { return Extent(); }
-
-  //! Replace this list by the items of theOther collection
-  virtual void Assign (const NCollection_BaseCollection<TheItemType>& theOther)
+    NCollection_BaseList(theOther.myAllocator)
   {
-    if (this == &theOther) 
-      return;
-    Clear();
-    TYPENAME NCollection_BaseCollection<TheItemType>::Iterator& anIter = 
-      theOther.CreateIterator();
-    for (; anIter.More(); anIter.Next())
-    {
-      ListNode* pNew = new (this->myAllocator) ListNode(anIter.Value());
-      PAppend(pNew);
-    }
+    Assign (theOther);
   }
 
-  //! Replace this list by the items of another list (theOther parameter)
-  void Assign (const NCollection_List& theOther)
+  //! Size - Number of items
+  Standard_Integer Size (void) const
+  { return Extent(); }
+
+  //! Replace this list by the items of another list (theOther parameter).
+  //! This method does not change the internal allocator.
+  NCollection_List& Assign (const NCollection_List& theOther)
   {
     if (this != &theOther) {
       Clear();
       appendList(theOther.PFirst());
     }
+    return *this;
   }
 
-  //! Replace this list by the items of theOther list
+  //! Replacement operator
   NCollection_List& operator= (const NCollection_List& theOther)
-  { 
-    if (this != &theOther) {
-      Clear (theOther.myAllocator);
-      appendList(theOther.PFirst());
-    }
-    return *this;
+  {
+    return Assign (theOther);
   }
 
   //! Clear this list
   void Clear (const Handle(NCollection_BaseAllocator)& theAllocator=0L)
   {
-    PClear (ListNode::delNode, this->myAllocator);
+    PClear (ListNode::delNode);
     if (!theAllocator.IsNull())
       this->myAllocator = theAllocator;
   }
@@ -98,21 +101,29 @@ template <class TheItemType> class NCollection_List
   //! First item
   const TheItemType& First (void) const
   {
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-    if (IsEmpty())
-      Standard_NoSuchObject::Raise ("NCollection_List::First");
-#endif
+    Standard_NoSuchObject_Raise_if (IsEmpty(), "NCollection_List::First");
     return ((const ListNode *) PFirst())->Value();
+  }
+
+  //! First item (non-const)
+  TheItemType& First (void)
+  {
+    Standard_NoSuchObject_Raise_if (IsEmpty(), "NCollection_List::First");
+    return ((ListNode *) PFirst())->ChangeValue();
   }
 
   //! Last item
   const TheItemType& Last (void) const
   { 
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-    if (IsEmpty())
-      Standard_NoSuchObject::Raise ("NCollection_List::Last");
-#endif
+    Standard_NoSuchObject_Raise_if (IsEmpty(), "NCollection_List::Last");
     return ((const ListNode *) PLast())->Value();
+  }
+
+  //! Last item (non-const)
+  TheItemType& Last (void)
+  { 
+    Standard_NoSuchObject_Raise_if (IsEmpty(), "NCollection_List::Last");
+    return ((ListNode *) PLast())->ChangeValue();
   }
 
   //! Append one item at the end
@@ -180,12 +191,12 @@ template <class TheItemType> class NCollection_List
 
   //! RemoveFirst item
   void RemoveFirst (void) 
-  { PRemoveFirst (ListNode::delNode, this->myAllocator); }
+  { PRemoveFirst (ListNode::delNode); }
 
   //! Remove item
   void Remove (Iterator& theIter) 
   { 
-    PRemove (theIter, ListNode::delNode, this->myAllocator); 
+    PRemove (theIter, ListNode::delNode); 
   }
 
   //! InsertBefore
@@ -245,10 +256,8 @@ template <class TheItemType> class NCollection_List
     else
     {
       // No - this list has different memory scope
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-      if (!theIter.More())
-        Standard_NoSuchObject::Raise ("NCollection_List::InsertAfter");
-#endif
+      Standard_NoSuchObject_Raise_if (!theIter.More(), "NCollection_List::InsertAfter");
+
       Iterator anIter;
       anIter.myPrevious = theIter.myCurrent;
       anIter.myCurrent = theIter.myCurrent->Next();
@@ -267,11 +276,6 @@ template <class TheItemType> class NCollection_List
 
  private:
   // ----------- PRIVATE METHODS -----------
-
-  //! Creates Iterator for use on BaseCollection
-  virtual TYPENAME NCollection_BaseCollection<TheItemType>::Iterator& 
-    CreateIterator(void) const
-  { return *(new (this->IterAllocator()) Iterator(*this)); }
 
   //! append the list headed by the given ListNode
   void appendList(const NCollection_ListNode * pCur) {

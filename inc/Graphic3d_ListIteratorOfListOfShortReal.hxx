@@ -6,28 +6,14 @@
 #ifndef _Graphic3d_ListIteratorOfListOfShortReal_HeaderFile
 #define _Graphic3d_ListIteratorOfListOfShortReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Handle_Graphic3d_ListNodeOfListOfShortReal_HeaderFile
 #include <Handle_Graphic3d_ListNodeOfListOfShortReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class Graphic3d_ListOfShortReal;
@@ -35,27 +21,27 @@ class Graphic3d_ListNodeOfListOfShortReal;
 
 
 
-class Graphic3d_ListIteratorOfListOfShortReal  {
+class Graphic3d_ListIteratorOfListOfShortReal 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Graphic3d_ListIteratorOfListOfShortReal();
+  Standard_EXPORT Graphic3d_ListIteratorOfListOfShortReal();
   
-  Standard_EXPORT   Graphic3d_ListIteratorOfListOfShortReal(const Graphic3d_ListOfShortReal& L);
+  Standard_EXPORT Graphic3d_ListIteratorOfListOfShortReal(const Graphic3d_ListOfShortReal& L);
   
-  Standard_EXPORT     void Initialize(const Graphic3d_ListOfShortReal& L) ;
+  Standard_EXPORT   void Initialize (const Graphic3d_ListOfShortReal& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Standard_ShortReal& Value() const;
+  Standard_EXPORT   Standard_ShortReal& Value()  const;
 
 
 friend class Graphic3d_ListOfShortReal;
-
 
 
 protected:
@@ -68,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -99,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_ListIteratorOfListOfShortReal_HeaderFile

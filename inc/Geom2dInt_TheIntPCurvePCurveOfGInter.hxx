@@ -6,31 +6,15 @@
 #ifndef _Geom2dInt_TheIntPCurvePCurveOfGInter_HeaderFile
 #define _Geom2dInt_TheIntPCurvePCurveOfGInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _IntRes2d_Domain_HeaderFile
 #include <IntRes2d_Domain.hxx>
-#endif
-#ifndef _IntRes2d_Intersection_HeaderFile
 #include <IntRes2d_Intersection.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Adaptor2d_Curve2d;
 class Geom2dInt_Geom2dCurveTool;
 class Geom2dInt_TheProjPCurOfGInter;
@@ -41,18 +25,18 @@ class IntRes2d_Domain;
 
 
 
-class Geom2dInt_TheIntPCurvePCurveOfGInter  : public IntRes2d_Intersection {
+class Geom2dInt_TheIntPCurvePCurveOfGInter  : public IntRes2d_Intersection
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dInt_TheIntPCurvePCurveOfGInter();
+  Standard_EXPORT Geom2dInt_TheIntPCurvePCurveOfGInter();
   
-  Standard_EXPORT     void Perform(const Adaptor2d_Curve2d& Curve1,const IntRes2d_Domain& Domain1,const Adaptor2d_Curve2d& Curve2,const IntRes2d_Domain& Domain2,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const Adaptor2d_Curve2d& Curve1, const IntRes2d_Domain& Domain1, const Adaptor2d_Curve2d& Curve2, const IntRes2d_Domain& Domain2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Perform(const Adaptor2d_Curve2d& Curve1,const IntRes2d_Domain& Domain1,const Standard_Real TolConf,const Standard_Real Tol) ;
-
+  Standard_EXPORT   void Perform (const Adaptor2d_Curve2d& Curve1, const IntRes2d_Domain& Domain1, const Standard_Real TolConf, const Standard_Real Tol) ;
 
 
 
@@ -60,9 +44,9 @@ public:
 protected:
 
   
-  Standard_EXPORT     void Perform(const Adaptor2d_Curve2d& Curve1,const IntRes2d_Domain& Domain1,const Adaptor2d_Curve2d& Curve2,const IntRes2d_Domain& Domain2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Integer NbIter,const Standard_Real DeltaU,const Standard_Real DeltaV) ;
+  Standard_EXPORT   void Perform (const Adaptor2d_Curve2d& Curve1, const IntRes2d_Domain& Domain1, const Adaptor2d_Curve2d& Curve2, const IntRes2d_Domain& Domain2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Integer NbIter, const Standard_Real DeltaU, const Standard_Real DeltaV) ;
   
-  Standard_EXPORT     void Perform(const Adaptor2d_Curve2d& Curve1,const IntRes2d_Domain& Domain1,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Integer NbIter,const Standard_Real DeltaU,const Standard_Real DeltaV) ;
+  Standard_EXPORT   void Perform (const Adaptor2d_Curve2d& Curve1, const IntRes2d_Domain& Domain1, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Integer NbIter, const Standard_Real DeltaU, const Standard_Real DeltaV) ;
 
 
 
@@ -70,11 +54,11 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Boolean findIntersect(const Adaptor2d_Curve2d& Curve1,const IntRes2d_Domain& Domain1,const Adaptor2d_Curve2d& Curve2,const IntRes2d_Domain& Domain2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Integer NbIter,const Standard_Real DeltaU,const Standard_Real DeltaV,const Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter& thePoly1,const Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter& thePoly2,const Standard_Boolean isFullRepresentation) ;
+  Standard_EXPORT   Standard_Boolean findIntersect (const Adaptor2d_Curve2d& Curve1, const IntRes2d_Domain& Domain1, const Adaptor2d_Curve2d& Curve2, const IntRes2d_Domain& Domain2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Integer NbIter, const Standard_Real DeltaU, const Standard_Real DeltaV, const Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter& thePoly1, const Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter& thePoly2, const Standard_Boolean isFullRepresentation) ;
 
 
-IntRes2d_Domain DomainOnCurve1;
-IntRes2d_Domain DomainOnCurve2;
+  IntRes2d_Domain DomainOnCurve1;
+  IntRes2d_Domain DomainOnCurve2;
 
 
 };
@@ -83,7 +67,6 @@ IntRes2d_Domain DomainOnCurve2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dInt_TheIntPCurvePCurveOfGInter_HeaderFile

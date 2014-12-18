@@ -6,71 +6,55 @@
 #ifndef _STEPCAFControl_ExternFile_HeaderFile
 #define _STEPCAFControl_ExternFile_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_ExternFile_HeaderFile
 #include <Handle_STEPCAFControl_ExternFile.hxx>
-#endif
 
-#ifndef _Handle_XSControl_WorkSession_HeaderFile
 #include <Handle_XSControl_WorkSession.hxx>
-#endif
-#ifndef _IFSelect_ReturnStatus_HeaderFile
 #include <IFSelect_ReturnStatus.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class XSControl_WorkSession;
 class TCollection_HAsciiString;
 class TDF_Label;
 
 
-//! Auxiliary class serving as container for data resulting <br>
-//!          from translation of external file <br>
-class STEPCAFControl_ExternFile : public MMgt_TShared {
+//! Auxiliary class serving as container for data resulting
+//! from translation of external file
+class STEPCAFControl_ExternFile : public MMgt_TShared
+{
 
 public:
 
-  //! Creates an empty structure <br>
-  Standard_EXPORT   STEPCAFControl_ExternFile();
   
-        void SetWS(const Handle(XSControl_WorkSession)& WS) ;
+  //! Creates an empty structure
+  Standard_EXPORT STEPCAFControl_ExternFile();
   
-        Handle_XSControl_WorkSession GetWS() const;
+      void SetWS (const Handle(XSControl_WorkSession)& WS) ;
   
-        void SetLoadStatus(const IFSelect_ReturnStatus stat) ;
+      Handle(XSControl_WorkSession) GetWS()  const;
   
-        IFSelect_ReturnStatus GetLoadStatus() const;
+      void SetLoadStatus (const IFSelect_ReturnStatus stat) ;
   
-        void SetTransferStatus(const Standard_Boolean isok) ;
+      IFSelect_ReturnStatus GetLoadStatus()  const;
   
-        Standard_Boolean GetTransferStatus() const;
+      void SetTransferStatus (const Standard_Boolean isok) ;
   
-        void SetWriteStatus(const IFSelect_ReturnStatus stat) ;
+      Standard_Boolean GetTransferStatus()  const;
   
-        IFSelect_ReturnStatus GetWriteStatus() const;
+      void SetWriteStatus (const IFSelect_ReturnStatus stat) ;
   
-        void SetName(const Handle(TCollection_HAsciiString)& name) ;
+      IFSelect_ReturnStatus GetWriteStatus()  const;
   
-        Handle_TCollection_HAsciiString GetName() const;
+      void SetName (const Handle(TCollection_HAsciiString)& name) ;
   
-        void SetLabel(const TDF_Label& L) ;
+      Handle(TCollection_HAsciiString) GetName()  const;
   
-        TDF_Label GetLabel() const;
+      void SetLabel (const TDF_Label& L) ;
+  
+      TDF_Label GetLabel()  const;
 
 
 
@@ -85,12 +69,12 @@ protected:
 private: 
 
 
-Handle_XSControl_WorkSession myWS;
-IFSelect_ReturnStatus myLoadStatus;
-Standard_Boolean myTransferStatus;
-IFSelect_ReturnStatus myWriteStatus;
-Handle_TCollection_HAsciiString myName;
-TDF_Label myLabel;
+  Handle(XSControl_WorkSession) myWS;
+  IFSelect_ReturnStatus myLoadStatus;
+  Standard_Boolean myTransferStatus;
+  IFSelect_ReturnStatus myWriteStatus;
+  Handle(TCollection_HAsciiString) myName;
+  TDF_Label myLabel;
 
 
 };
@@ -100,7 +84,6 @@ TDF_Label myLabel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_ExternFile_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _AppParCurves_HArray1OfMultiPoint_HeaderFile
 #define _AppParCurves_HArray1OfMultiPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AppParCurves_HArray1OfMultiPoint_HeaderFile
 #include <Handle_AppParCurves_HArray1OfMultiPoint.hxx>
-#endif
 
-#ifndef _AppParCurves_Array1OfMultiPoint_HeaderFile
 #include <AppParCurves_Array1OfMultiPoint.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class AppParCurves_Array1OfMultiPoint;
 
 
 
-class AppParCurves_HArray1OfMultiPoint : public MMgt_TShared {
+class AppParCurves_HArray1OfMultiPoint : public MMgt_TShared
+{
 
 public:
 
   
-      AppParCurves_HArray1OfMultiPoint(const Standard_Integer Low,const Standard_Integer Up);
+    AppParCurves_HArray1OfMultiPoint(const Standard_Integer Low, const Standard_Integer Up);
   
-      AppParCurves_HArray1OfMultiPoint(const Standard_Integer Low,const Standard_Integer Up,const AppParCurves_MultiPoint& V);
+    AppParCurves_HArray1OfMultiPoint(const Standard_Integer Low, const Standard_Integer Up, const AppParCurves_MultiPoint& V);
   
-        void Init(const AppParCurves_MultiPoint& V) ;
+      void Init (const AppParCurves_MultiPoint& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const AppParCurves_MultiPoint& Value) ;
+      void SetValue (const Standard_Integer Index, const AppParCurves_MultiPoint& Value) ;
   
-       const AppParCurves_MultiPoint& Value(const Standard_Integer Index) const;
+     const  AppParCurves_MultiPoint& Value (const Standard_Integer Index)  const;
   
-        AppParCurves_MultiPoint& ChangeValue(const Standard_Integer Index) ;
+      AppParCurves_MultiPoint& ChangeValue (const Standard_Integer Index) ;
   
-       const AppParCurves_Array1OfMultiPoint& Array1() const;
+     const  AppParCurves_Array1OfMultiPoint& Array1()  const;
   
-        AppParCurves_Array1OfMultiPoint& ChangeArray1() ;
+      AppParCurves_Array1OfMultiPoint& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-AppParCurves_Array1OfMultiPoint myArray;
+  AppParCurves_Array1OfMultiPoint myArray;
 
 
 };
@@ -100,7 +89,6 @@ AppParCurves_Array1OfMultiPoint myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AppParCurves_HArray1OfMultiPoint_HeaderFile

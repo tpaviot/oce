@@ -6,22 +6,15 @@
 #ifndef _Handle_StepFEA_FeaModel3d_HeaderFile
 #define _Handle_StepFEA_FeaModel3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepFEA_FeaModel_HeaderFile
 #include <Handle_StepFEA_FeaModel.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepFEA_FeaModel);
 class StepFEA_FeaModel3d;
 
-DEFINE_STANDARD_HANDLE(StepFEA_FeaModel3d,StepFEA_FeaModel)
+DEFINE_STANDARD_HANDLE(StepFEA_FeaModel3d, StepFEA_FeaModel)
 
-#endif
+#endif // _Handle_StepFEA_FeaModel3d_HeaderFile

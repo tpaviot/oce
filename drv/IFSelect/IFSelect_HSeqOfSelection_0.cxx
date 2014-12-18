@@ -5,22 +5,12 @@
 
 #include <IFSelect_HSeqOfSelection.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IFSelect_Selection_HeaderFile
 #include <IFSelect_Selection.hxx>
-#endif
-#ifndef _IFSelect_TSeqOfSelection_HeaderFile
 #include <IFSelect_TSeqOfSelection.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(IFSelect_HSeqOfSelection,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IFSelect_HSeqOfSelection)
 
 
-#define Item Handle_IFSelect_Selection
+#define Item Handle(IFSelect_Selection)
 #define Item_hxx <IFSelect_Selection.hxx>
 #define TheSequence IFSelect_TSeqOfSelection
 #define TheSequence_hxx <IFSelect_TSeqOfSelection.hxx>

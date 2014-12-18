@@ -6,28 +6,14 @@
 #ifndef _BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt_HeaderFile
 #define _BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt_HeaderFile
 #include <Handle_BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColgp_SequenceOfPnt_HeaderFile
 #include <TColgp_SequenceOfPnt.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TColgp_SequenceOfPnt;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt;
 
 
 
-class BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt : public TCollection_MapNode {
+class BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt(const TopoDS_Shape& K,const TColgp_SequenceOfPnt& I,const TCollection_MapNodePtr& n);
+    BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt(const TopoDS_Shape& K, const TColgp_SequenceOfPnt& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TColgp_SequenceOfPnt& Value() const;
+      TColgp_SequenceOfPnt& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TColgp_SequenceOfPnt myValue;
+  TopoDS_Shape myKey;
+  TColgp_SequenceOfPnt myValue;
 
 
 };
@@ -99,7 +86,6 @@ TColgp_SequenceOfPnt myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_DataMapNodeOfDataMapOfShapeSequenceOfPnt_HeaderFile

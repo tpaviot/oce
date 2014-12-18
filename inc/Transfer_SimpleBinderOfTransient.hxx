@@ -6,70 +6,60 @@
 #ifndef _Transfer_SimpleBinderOfTransient_HeaderFile
 #define _Transfer_SimpleBinderOfTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Transfer_SimpleBinderOfTransient_HeaderFile
 #include <Handle_Transfer_SimpleBinderOfTransient.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
 class Standard_Transient;
 class Transfer_TransferFailure;
 class Standard_Type;
 class Transfer_Binder;
 
 
-//! An adapted instantiation of SimpleBinder for Transient Result, <br>
-//!           i.e. ResultType can be computed from the Result itself, <br>
-//!           instead of being static <br>
-class Transfer_SimpleBinderOfTransient : public Transfer_Binder {
+//! An adapted instantiation of SimpleBinder for Transient Result,
+//! i.e. ResultType can be computed from the Result itself,
+//! instead of being static
+class Transfer_SimpleBinderOfTransient : public Transfer_Binder
+{
 
 public:
 
-  //! Creates an empty SimpleBinderOfTransient <br>//! Returns True if a starting object is bound with SEVERAL <br>
-//!           results : Here, returns allways False <br>
-//!           See Binder itself <br>
-  Standard_EXPORT   Transfer_SimpleBinderOfTransient();
-  //! Returns the Effective (Dynamic) Type of the Result <br>
-//!           (Standard_Transient if no Result is defined) <br>
-  Standard_EXPORT     Handle_Standard_Type ResultType() const;
-  //! Returns the Effective Name of (Dynamic) Type of the Result <br>
-//!           (void) if no result is defined <br>
-  Standard_EXPORT     Standard_CString ResultTypeName() const;
-  //! Defines the Result <br>
-  Standard_EXPORT     void SetResult(const Handle(Standard_Transient)& res) ;
-  //! Returns the defined Result, if there is one <br>
-  Standard_EXPORT    const Handle_Standard_Transient& Result() const;
-  //! Returns a transient result according to its type (IsKind) <br>
-//!           i.e. the result itself if IsKind(atype), else searches in <br>
-//!           NextResult, until first found, then returns True <br>
-//!           If not found, returns False (res is NOT touched) <br>
-//! <br>
-//!           This syntactic form avoids to do DownCast : if a result is <br>
-//!           found with the good type, it is loaded in <res> and can be <br>
-//!           immediately used, well initialised <br>
-  Standard_EXPORT   static  Standard_Boolean GetTypedResult(const Handle(Transfer_Binder)& bnd,const Handle(Standard_Type)& atype,Handle(Standard_Transient)& res) ;
+  
+  //! Creates an empty SimpleBinderOfTransient
+  //! Returns True if a starting object is bound with SEVERAL
+  //! results : Here, returns allways False
+  //! See Binder itself
+  Standard_EXPORT Transfer_SimpleBinderOfTransient();
+  
+  //! Returns the Effective (Dynamic) Type of the Result
+  //! (Standard_Transient if no Result is defined)
+  Standard_EXPORT   Handle(Standard_Type) ResultType()  const;
+  
+  //! Returns the Effective Name of (Dynamic) Type of the Result
+  //! (void) if no result is defined
+  Standard_EXPORT   Standard_CString ResultTypeName()  const;
+  
+  //! Defines the Result
+  Standard_EXPORT   void SetResult (const Handle(Standard_Transient)& res) ;
+  
+  //! Returns the defined Result, if there is one
+  Standard_EXPORT  const  Handle(Standard_Transient)& Result()  const;
+  
+  //! Returns a transient result according to its type (IsKind)
+  //! i.e. the result itself if IsKind(atype), else searches in
+  //! NextResult, until first found, then returns True
+  //! If not found, returns False (res is NOT touched)
+  //!
+  //! This syntactic form avoids to do DownCast : if a result is
+  //! found with the good type, it is loaded in <res> and can be
+  //! immediately used, well initialised
+  Standard_EXPORT static   Standard_Boolean GetTypedResult (const Handle(Transfer_Binder)& bnd, const Handle(Standard_Type)& atype, Handle(Standard_Transient)& res) ;
 
 
 
@@ -84,7 +74,7 @@ protected:
 private: 
 
 
-Handle_Standard_Transient theres;
+  Handle(Standard_Transient) theres;
 
 
 };
@@ -93,7 +83,6 @@ Handle_Standard_Transient theres;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_SimpleBinderOfTransient_HeaderFile

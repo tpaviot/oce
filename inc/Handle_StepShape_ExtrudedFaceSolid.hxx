@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_ExtrudedFaceSolid_HeaderFile
 #define _Handle_StepShape_ExtrudedFaceSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_SweptFaceSolid_HeaderFile
 #include <Handle_StepShape_SweptFaceSolid.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_SweptFaceSolid);
 class StepShape_ExtrudedFaceSolid;
 
-DEFINE_STANDARD_HANDLE(StepShape_ExtrudedFaceSolid,StepShape_SweptFaceSolid)
+DEFINE_STANDARD_HANDLE(StepShape_ExtrudedFaceSolid, StepShape_SweptFaceSolid)
 
-#endif
+#endif // _Handle_StepShape_ExtrudedFaceSolid_HeaderFile

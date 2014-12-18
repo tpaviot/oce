@@ -5,24 +5,14 @@
 
 #include <TestTopOpeDraw_Array1OfDrawableMesure.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _TestTopOpeDraw_DrawableMesure_HeaderFile
 #include <TestTopOpeDraw_DrawableMesure.hxx>
-#endif
  
 
-#define Array1Item Handle_TestTopOpeDraw_DrawableMesure
+#define Array1Item Handle(TestTopOpeDraw_DrawableMesure)
 #define Array1Item_hxx <TestTopOpeDraw_DrawableMesure.hxx>
 #define TCollection_Array1 TestTopOpeDraw_Array1OfDrawableMesure
 #define TCollection_Array1_hxx <TestTopOpeDraw_Array1OfDrawableMesure.hxx>

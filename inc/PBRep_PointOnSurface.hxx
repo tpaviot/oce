@@ -6,47 +6,33 @@
 #ifndef _PBRep_PointOnSurface_HeaderFile
 #define _PBRep_PointOnSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_PointOnSurface_HeaderFile
 #include <Handle_PBRep_PointOnSurface.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _PBRep_PointsOnSurface_HeaderFile
 #include <PBRep_PointsOnSurface.hxx>
-#endif
-#ifndef _Handle_PGeom_Surface_HeaderFile
 #include <Handle_PGeom_Surface.hxx>
-#endif
 class PGeom_Surface;
 class PTopLoc_Location;
 
 
-class PBRep_PointOnSurface : public PBRep_PointsOnSurface {
+class PBRep_PointOnSurface : public PBRep_PointsOnSurface
+{
 
 public:
 
   
-  Standard_EXPORT   PBRep_PointOnSurface(const Standard_Real P1,const Standard_Real P2,const Handle(PGeom_Surface)& S,const PTopLoc_Location& L);
+  Standard_EXPORT PBRep_PointOnSurface(const Standard_Real P1, const Standard_Real P2, const Handle(PGeom_Surface)& S, const PTopLoc_Location& L);
   
-  Standard_EXPORT     Standard_Real Parameter2() const;
-  //! Returns True <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPointOnSurface() const;
+  Standard_EXPORT   Standard_Real Parameter2()  const;
+  
+  //! Returns True
+  Standard_EXPORT virtual   Standard_Boolean IsPointOnSurface()  const;
 
-  PBRep_PointOnSurface( )
+PBRep_PointOnSurface( )
 {
   
 }
@@ -69,7 +55,7 @@ protected:
 private: 
 
 
-Standard_Real myParameter2;
+  Standard_Real myParameter2;
 
 
 };
@@ -78,7 +64,6 @@ Standard_Real myParameter2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_PointOnSurface_HeaderFile

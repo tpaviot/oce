@@ -6,34 +6,16 @@
 #ifndef _StepVisual_SurfaceStyleElementSelect_HeaderFile
 #define _StepVisual_SurfaceStyleElementSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepVisual_SurfaceStyleFillArea_HeaderFile
 #include <Handle_StepVisual_SurfaceStyleFillArea.hxx>
-#endif
-#ifndef _Handle_StepVisual_SurfaceStyleBoundary_HeaderFile
 #include <Handle_StepVisual_SurfaceStyleBoundary.hxx>
-#endif
-#ifndef _Handle_StepVisual_SurfaceStyleParameterLine_HeaderFile
 #include <Handle_StepVisual_SurfaceStyleParameterLine.hxx>
-#endif
 class Standard_Transient;
 class StepVisual_SurfaceStyleFillArea;
 class StepVisual_SurfaceStyleBoundary;
@@ -41,29 +23,34 @@ class StepVisual_SurfaceStyleParameterLine;
 
 
 
-class StepVisual_SurfaceStyleElementSelect  : public StepData_SelectType {
+class StepVisual_SurfaceStyleElementSelect  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a SurfaceStyleElementSelect SelectType <br>
-  Standard_EXPORT   StepVisual_SurfaceStyleElementSelect();
-  //! Recognizes a SurfaceStyleElementSelect Kind Entity that is : <br>
-//!        1 -> SurfaceStyleFillArea <br>
-//!        2 -> SurfaceStyleBoundary <br>
-//!        3 -> SurfaceStyleParameterLine <br>
-//!        4 -> SurfaceStyleSilhouette <br>
-//!        5 -> SurfaceStyleSegmentationCurve <br>
-//!        6 -> SurfaceStyleControlGrid <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a SurfaceStyleFillArea (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_SurfaceStyleFillArea SurfaceStyleFillArea() const;
-  //! returns Value as a SurfaceStyleBoundary (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_SurfaceStyleBoundary SurfaceStyleBoundary() const;
-  //! returns Value as a SurfaceStyleParameterLine (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_SurfaceStyleParameterLine SurfaceStyleParameterLine() const;
-
+  
+  //! Returns a SurfaceStyleElementSelect SelectType
+  Standard_EXPORT StepVisual_SurfaceStyleElementSelect();
+  
+  //! Recognizes a SurfaceStyleElementSelect Kind Entity that is :
+  //! 1 -> SurfaceStyleFillArea
+  //! 2 -> SurfaceStyleBoundary
+  //! 3 -> SurfaceStyleParameterLine
+  //! 4 -> SurfaceStyleSilhouette
+  //! 5 -> SurfaceStyleSegmentationCurve
+  //! 6 -> SurfaceStyleControlGrid
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a SurfaceStyleFillArea (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_SurfaceStyleFillArea) SurfaceStyleFillArea()  const;
+  
+  //! returns Value as a SurfaceStyleBoundary (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_SurfaceStyleBoundary) SurfaceStyleBoundary()  const;
+  
+  //! returns Value as a SurfaceStyleParameterLine (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_SurfaceStyleParameterLine) SurfaceStyleParameterLine()  const;
 
 
 
@@ -86,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_SurfaceStyleElementSelect_HeaderFile

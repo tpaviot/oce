@@ -1,9 +1,3 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepRepr_HArray1OfPropertyDefinitionRepresentation_HeaderFile
 #include <StepRepr_HArray1OfPropertyDefinitionRepresentation.hxx>
-#endif
-#ifndef _StepRepr_DataEnvironment_HeaderFile
 #include <StepRepr_DataEnvironment.hxx>
-#endif

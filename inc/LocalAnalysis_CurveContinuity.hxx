@@ -6,173 +6,153 @@
 #ifndef _LocalAnalysis_CurveContinuity_HeaderFile
 #define _LocalAnalysis_CurveContinuity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _LocalAnalysis_StatusErrorType_HeaderFile
 #include <LocalAnalysis_StatusErrorType.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
 class StdFail_NotDone;
 class Geom_Curve;
 class GeomLProp_CLProps;
 
 
 
-//!          This class gives tools to check local continuity C0 <br>
-//!          C1 C2 G1 G2 between  two points situated on two curves <br>
-class LocalAnalysis_CurveContinuity  {
+//! This class gives tools to check local continuity C0
+//! C1 C2 G1 G2 between  two points situated on two curves
+class LocalAnalysis_CurveContinuity 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! <br>
-//!           -u1 is the parameter of the point on Curv1 <br>
-//!           -u2 is the  parameter of the point on  Curv2 <br>
-//!           -Order is the required continuity: <br>
-//!            GeomAbs_C0    GeomAbs_C1  GeomAbs_C2 <br>
-//!            GeomAbs_G1 GeomAbs_G2 <br>
-//! <br>
-//!           -EpsNul  is  used to  detect a  a vector with nul <br>
-//!           magnitude (in mm) <br>
-//! <br>
-//!           -EpsC0 is used for C0  continuity to confuse two <br>
-//!            points (in mm) <br>
-//! <br>
-//!           -EpsC1 is  an angular  tolerance in radians  used <br>
-//!            for C1 continuity  to compare the angle between <br>
-//!            the first derivatives <br>
-//! <br>
-//!           -EpsC2 is an   angular tolerance in radians  used <br>
-//!           for C2  continuity to  compare the angle  between <br>
-//!           the second derivatives <br>
-//! <br>
-//!           -EpsG1 is an  angular  tolerance in radians  used <br>
-//!           for G1  continuity to compare  the angle  between <br>
-//!           the tangents <br>
-//! <br>
-//!           -EpsG2 is  an angular  tolerance in radians  used <br>
-//!           for  G2 continuity to  compare  the angle between <br>
-//!           the normals <br>
-//! <br>
-//!           - percent  : percentage of  curvature variation (unitless) <br>
-//!           used for G2 continuity <br>
-//! <br>
-//!           - Maxlen is the maximum length of Curv1 or Curv2 in <br>
-//!           meters used to detect nul curvature (in mm) <br>
-//! <br>
-//! <br>
-//! <br>
-//! <br>
-//!          the constructor computes the quantities  which are <br>
-//!          necessary to check the continuity in the following cases: <br>
-//! <br>
-//!           case  C0 <br>
-//!           -------- <br>
-//!           - the distance between P1 and P2  with P1=Curv1 (u1)  and <br>
-//!           P2=Curv2(u2) <br>
-//! <br>
-//!           case C1 <br>
-//!           ------- <br>
-//! <br>
-//!           - the angle  between  the first derivatives <br>
-//!             dCurv1(u1)           dCurv2(u2) <br>
-//!             --------     and     --------- <br>
-//!             du                   du <br>
-//! <br>
-//!           - the ratio   between  the magnitudes  of the first <br>
-//!             derivatives <br>
-//! <br>
-//!            the angle value is between 0 and PI/2 <br>
-//! <br>
-//!           case  C2 <br>
-//!           ------- <br>
-//!           - the angle  between the second derivatives <br>
-//!             2                   2 <br>
-//!            d  Curv1(u1)       d Curv2(u2) <br>
-//!            ----------        ---------- <br>
-//!             2                   2 <br>
-//!            du                  du <br>
-//! <br>
-//!            the angle value is between 0 and PI/2 <br>
-//! <br>
-//!           - the ratio between the magnitudes of  the second <br>
-//!             derivatives <br>
-//! <br>
-//!           case G1 <br>
-//!           ------- <br>
-//!           the angle between  the tangents at each point <br>
-//! <br>
-//!           the angle value is between 0 and PI/2 <br>
-//! <br>
-//!           case G2 <br>
-//!           ------- <br>
-//!           -the angle between the normals at each point <br>
-//! <br>
-//!            the angle value is between 0 and PI/2 <br>
-//! <br>
-//!           - the relative variation of curvature: <br>
-//!            |curvat1-curvat2| <br>
-//!            ------------------ <br>
-//!                              1/2 <br>
-//!            (curvat1*curvat2) <br>
-//! <br>
-//!             where curvat1 is the curvature at the first point <br>
-//!              and curvat2 the curvature at the second point <br>
-//! <br>
-  Standard_EXPORT   LocalAnalysis_CurveContinuity(const Handle(Geom_Curve)& Curv1,const Standard_Real u1,const Handle(Geom_Curve)& Curv2,const Standard_Real u2,const GeomAbs_Shape Order,const Standard_Real EpsNul = 0.001,const Standard_Real EpsC0 = 0.001,const Standard_Real EpsC1 = 0.001,const Standard_Real EpsC2 = 0.001,const Standard_Real EpsG1 = 0.001,const Standard_Real EpsG2 = 0.001,const Standard_Real Percent = 0.01,const Standard_Real Maxlen = 10000);
-  
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  
-  Standard_EXPORT     LocalAnalysis_StatusErrorType StatusError() const;
-  
-  Standard_EXPORT     GeomAbs_Shape ContinuityStatus() const;
-  
-  Standard_EXPORT     Standard_Real C0Value() const;
-  
-  Standard_EXPORT     Standard_Real C1Angle() const;
-  
-  Standard_EXPORT     Standard_Real C1Ratio() const;
-  
-  Standard_EXPORT     Standard_Real C2Angle() const;
-  
-  Standard_EXPORT     Standard_Real C2Ratio() const;
-  
-  Standard_EXPORT     Standard_Real G1Angle() const;
-  
-  Standard_EXPORT     Standard_Real G2Angle() const;
-  
-  Standard_EXPORT     Standard_Real G2CurvatureVariation() const;
-  
-  Standard_EXPORT     Standard_Boolean IsC0() const;
-  
-  Standard_EXPORT     Standard_Boolean IsC1() const;
-  
-  Standard_EXPORT     Standard_Boolean IsC2() const;
-  
-  Standard_EXPORT     Standard_Boolean IsG1() const;
-  
-  Standard_EXPORT     Standard_Boolean IsG2() const;
 
+  //! -u1 is the parameter of the point on Curv1
+  //! -u2 is the  parameter of the point on  Curv2
+  //! -Order is the required continuity:
+  //! GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+  //! GeomAbs_G1 GeomAbs_G2
+  //!
+  //! -EpsNul  is  used to  detect a  a vector with nul
+  //! magnitude (in mm)
+  //!
+  //! -EpsC0 is used for C0  continuity to confuse two
+  //! points (in mm)
+  //!
+  //! -EpsC1 is  an angular  tolerance in radians  used
+  //! for C1 continuity  to compare the angle between
+  //! the first derivatives
+  //!
+  //! -EpsC2 is an   angular tolerance in radians  used
+  //! for C2  continuity to  compare the angle  between
+  //! the second derivatives
+  //!
+  //! -EpsG1 is an  angular  tolerance in radians  used
+  //! for G1  continuity to compare  the angle  between
+  //! the tangents
+  //!
+  //! -EpsG2 is  an angular  tolerance in radians  used
+  //! for  G2 continuity to  compare  the angle between
+  //! the normals
+  //!
+  //! - percent  : percentage of  curvature variation (unitless)
+  //! used for G2 continuity
+  //!
+  //! - Maxlen is the maximum length of Curv1 or Curv2 in
+  //! meters used to detect nul curvature (in mm)
+  //!
+  //! the constructor computes the quantities  which are
+  //! necessary to check the continuity in the following cases:
+  //!
+  //! case  C0
+  //! --------
+  //! - the distance between P1 and P2  with P1=Curv1 (u1)  and
+  //! P2=Curv2(u2)
+  //!
+  //! case C1
+  //! -------
+  //!
+  //! - the angle  between  the first derivatives
+  //! dCurv1(u1)           dCurv2(u2)
+  //! --------     and     ---------
+  //! du                   du
+  //!
+  //! - the ratio   between  the magnitudes  of the first
+  //! derivatives
+  //!
+  //! the angle value is between 0 and PI/2
+  //!
+  //! case  C2
+  //! -------
+  //! - the angle  between the second derivatives
+  //! 2                   2
+  //! d  Curv1(u1)       d Curv2(u2)
+  //! ----------        ----------
+  //! 2                   2
+  //! du                  du
+  //!
+  //! the angle value is between 0 and PI/2
+  //!
+  //! - the ratio between the magnitudes of  the second
+  //! derivatives
+  //!
+  //! case G1
+  //! -------
+  //! the angle between  the tangents at each point
+  //!
+  //! the angle value is between 0 and PI/2
+  //!
+  //! case G2
+  //! -------
+  //! -the angle between the normals at each point
+  //!
+  //! the angle value is between 0 and PI/2
+  //!
+  //! - the relative variation of curvature:
+  //! |curvat1-curvat2|
+  //! ------------------
+  //! 1/2
+  //! (curvat1*curvat2)
+  //!
+  //! where curvat1 is the curvature at the first point
+  //! and curvat2 the curvature at the second point
+  Standard_EXPORT LocalAnalysis_CurveContinuity(const Handle(Geom_Curve)& Curv1, const Standard_Real u1, const Handle(Geom_Curve)& Curv2, const Standard_Real u2, const GeomAbs_Shape Order, const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real EpsG2 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
+  
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  Standard_EXPORT   LocalAnalysis_StatusErrorType StatusError()  const;
+  
+  Standard_EXPORT   GeomAbs_Shape ContinuityStatus()  const;
+  
+  Standard_EXPORT   Standard_Real C0Value()  const;
+  
+  Standard_EXPORT   Standard_Real C1Angle()  const;
+  
+  Standard_EXPORT   Standard_Real C1Ratio()  const;
+  
+  Standard_EXPORT   Standard_Real C2Angle()  const;
+  
+  Standard_EXPORT   Standard_Real C2Ratio()  const;
+  
+  Standard_EXPORT   Standard_Real G1Angle()  const;
+  
+  Standard_EXPORT   Standard_Real G2Angle()  const;
+  
+  Standard_EXPORT   Standard_Real G2CurvatureVariation()  const;
+  
+  Standard_EXPORT   Standard_Boolean IsC0()  const;
+  
+  Standard_EXPORT   Standard_Boolean IsC1()  const;
+  
+  Standard_EXPORT   Standard_Boolean IsC2()  const;
+  
+  Standard_EXPORT   Standard_Boolean IsG1()  const;
+  
+  Standard_EXPORT   Standard_Boolean IsG2()  const;
 
 
 
@@ -186,38 +166,38 @@ protected:
 private:
 
   
-  Standard_EXPORT     void CurvC0(GeomLProp_CLProps& Curv1,GeomLProp_CLProps& Curv2) ;
+  Standard_EXPORT   void CurvC0 (GeomLProp_CLProps& Curv1, GeomLProp_CLProps& Curv2) ;
   
-  Standard_EXPORT     void CurvC1(GeomLProp_CLProps& Curv1,GeomLProp_CLProps& Curv2) ;
+  Standard_EXPORT   void CurvC1 (GeomLProp_CLProps& Curv1, GeomLProp_CLProps& Curv2) ;
   
-  Standard_EXPORT     void CurvC2(GeomLProp_CLProps& Curv1,GeomLProp_CLProps& Curv2) ;
+  Standard_EXPORT   void CurvC2 (GeomLProp_CLProps& Curv1, GeomLProp_CLProps& Curv2) ;
   
-  Standard_EXPORT     void CurvG1(GeomLProp_CLProps& Curv1,GeomLProp_CLProps& Curv2) ;
+  Standard_EXPORT   void CurvG1 (GeomLProp_CLProps& Curv1, GeomLProp_CLProps& Curv2) ;
   
-  Standard_EXPORT     void CurvG2(GeomLProp_CLProps& Curv1,GeomLProp_CLProps& Curv2) ;
+  Standard_EXPORT   void CurvG2 (GeomLProp_CLProps& Curv1, GeomLProp_CLProps& Curv2) ;
 
 
-Standard_Real myContC0;
-Standard_Real myContC1;
-Standard_Real myContC2;
-Standard_Real myContG1;
-Standard_Real myContG2;
-Standard_Real myCourbC1;
-Standard_Real myCourbC2;
-Standard_Real myG2Variation;
-Standard_Real myLambda1;
-Standard_Real myLambda2;
-GeomAbs_Shape myTypeCont;
-Standard_Real myepsnul;
-Standard_Real myepsC0;
-Standard_Real myepsC1;
-Standard_Real myepsC2;
-Standard_Real myepsG1;
-Standard_Real myepsG2;
-Standard_Real myMaxLon;
-Standard_Real myperce;
-Standard_Boolean myIsDone;
-LocalAnalysis_StatusErrorType myErrorStatus;
+  Standard_Real myContC0;
+  Standard_Real myContC1;
+  Standard_Real myContC2;
+  Standard_Real myContG1;
+  Standard_Real myContG2;
+  Standard_Real myCourbC1;
+  Standard_Real myCourbC2;
+  Standard_Real myG2Variation;
+  Standard_Real myLambda1;
+  Standard_Real myLambda2;
+  GeomAbs_Shape myTypeCont;
+  Standard_Real myepsnul;
+  Standard_Real myepsC0;
+  Standard_Real myepsC1;
+  Standard_Real myepsC2;
+  Standard_Real myepsG1;
+  Standard_Real myepsG2;
+  Standard_Real myMaxLon;
+  Standard_Real myperce;
+  Standard_Boolean myIsDone;
+  LocalAnalysis_StatusErrorType myErrorStatus;
 
 
 };
@@ -226,7 +206,6 @@ LocalAnalysis_StatusErrorType myErrorStatus;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocalAnalysis_CurveContinuity_HeaderFile

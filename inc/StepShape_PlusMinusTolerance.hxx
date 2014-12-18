@@ -6,46 +6,35 @@
 #ifndef _StepShape_PlusMinusTolerance_HeaderFile
 #define _StepShape_PlusMinusTolerance_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_PlusMinusTolerance_HeaderFile
 #include <Handle_StepShape_PlusMinusTolerance.hxx>
-#endif
 
-#ifndef _StepShape_ToleranceMethodDefinition_HeaderFile
 #include <StepShape_ToleranceMethodDefinition.hxx>
-#endif
-#ifndef _StepShape_DimensionalCharacteristic_HeaderFile
 #include <StepShape_DimensionalCharacteristic.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepShape_ToleranceMethodDefinition;
 class StepShape_DimensionalCharacteristic;
 
 
-//! Added for Dimensional Tolerances <br>
-class StepShape_PlusMinusTolerance : public MMgt_TShared {
+//! Added for Dimensional Tolerances
+class StepShape_PlusMinusTolerance : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   StepShape_PlusMinusTolerance();
+  Standard_EXPORT StepShape_PlusMinusTolerance();
   
-  Standard_EXPORT     void Init(const StepShape_ToleranceMethodDefinition& range,const StepShape_DimensionalCharacteristic& toleranced_dimension) ;
+  Standard_EXPORT   void Init (const StepShape_ToleranceMethodDefinition& range, const StepShape_DimensionalCharacteristic& toleranced_dimension) ;
   
-  Standard_EXPORT     StepShape_ToleranceMethodDefinition Range() const;
+  Standard_EXPORT   StepShape_ToleranceMethodDefinition Range()  const;
   
-  Standard_EXPORT     void SetRange(const StepShape_ToleranceMethodDefinition& range) ;
+  Standard_EXPORT   void SetRange (const StepShape_ToleranceMethodDefinition& range) ;
   
-  Standard_EXPORT     StepShape_DimensionalCharacteristic TolerancedDimension() const;
+  Standard_EXPORT   StepShape_DimensionalCharacteristic TolerancedDimension()  const;
   
-  Standard_EXPORT     void SetTolerancedDimension(const StepShape_DimensionalCharacteristic& toleranced_dimension) ;
+  Standard_EXPORT   void SetTolerancedDimension (const StepShape_DimensionalCharacteristic& toleranced_dimension) ;
 
 
 
@@ -60,8 +49,8 @@ protected:
 private: 
 
 
-StepShape_ToleranceMethodDefinition theRange;
-StepShape_DimensionalCharacteristic theTolerancedDimension;
+  StepShape_ToleranceMethodDefinition theRange;
+  StepShape_DimensionalCharacteristic theTolerancedDimension;
 
 
 };
@@ -70,7 +59,6 @@ StepShape_DimensionalCharacteristic theTolerancedDimension;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_PlusMinusTolerance_HeaderFile

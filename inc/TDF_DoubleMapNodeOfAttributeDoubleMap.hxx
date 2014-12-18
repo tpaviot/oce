@@ -6,25 +6,13 @@
 #ifndef _TDF_DoubleMapNodeOfAttributeDoubleMap_HeaderFile
 #define _TDF_DoubleMapNodeOfAttributeDoubleMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_DoubleMapNodeOfAttributeDoubleMap_HeaderFile
 #include <Handle_TDF_DoubleMapNodeOfAttributeDoubleMap.hxx>
-#endif
 
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TDF_Attribute;
 class TColStd_MapTransientHasher;
 class TDF_AttributeDoubleMap;
@@ -32,18 +20,19 @@ class TDF_DoubleMapIteratorOfAttributeDoubleMap;
 
 
 
-class TDF_DoubleMapNodeOfAttributeDoubleMap : public TCollection_MapNode {
+class TDF_DoubleMapNodeOfAttributeDoubleMap : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_DoubleMapNodeOfAttributeDoubleMap(const Handle(TDF_Attribute)& K1,const Handle(TDF_Attribute)& K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TDF_DoubleMapNodeOfAttributeDoubleMap(const Handle(TDF_Attribute)& K1, const Handle(TDF_Attribute)& K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_TDF_Attribute& Key1() const;
+      Handle(TDF_Attribute)& Key1()  const;
   
-        Handle_TDF_Attribute& Key2() const;
+      Handle(TDF_Attribute)& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -58,16 +47,16 @@ protected:
 private: 
 
 
-Handle_TDF_Attribute myKey1;
-Handle_TDF_Attribute myKey2;
-TCollection_MapNodePtr myNext2;
+  Handle(TDF_Attribute) myKey1;
+  Handle(TDF_Attribute) myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey1 Handle_TDF_Attribute
+#define TheKey1 Handle(TDF_Attribute)
 #define TheKey1_hxx <TDF_Attribute.hxx>
-#define TheKey2 Handle_TDF_Attribute
+#define TheKey2 Handle(TDF_Attribute)
 #define TheKey2_hxx <TDF_Attribute.hxx>
 #define Hasher1 TColStd_MapTransientHasher
 #define Hasher1_hxx <TColStd_MapTransientHasher.hxx>
@@ -102,7 +91,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_DoubleMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_DoubleMapNodeOfAttributeDoubleMap_HeaderFile

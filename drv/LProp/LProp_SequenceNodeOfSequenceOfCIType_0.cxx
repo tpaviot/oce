@@ -5,13 +5,9 @@
 
 #include <LProp_SequenceNodeOfSequenceOfCIType.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _LProp_SequenceOfCIType_HeaderFile
 #include <LProp_SequenceOfCIType.hxx>
-#endif
 
  
 

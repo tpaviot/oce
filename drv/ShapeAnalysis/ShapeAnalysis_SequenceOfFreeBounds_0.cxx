@@ -5,21 +5,13 @@
 
 #include <ShapeAnalysis_SequenceOfFreeBounds.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _ShapeAnalysis_FreeBoundData_HeaderFile
 #include <ShapeAnalysis_FreeBoundData.hxx>
-#endif
-#ifndef _ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds_HeaderFile
 #include <ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds.hxx>
-#endif
  
 
-#define SeqItem Handle_ShapeAnalysis_FreeBoundData
+#define SeqItem Handle(ShapeAnalysis_FreeBoundData)
 #define SeqItem_hxx <ShapeAnalysis_FreeBoundData.hxx>
 #define TCollection_SequenceNode ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds
 #define TCollection_SequenceNode_hxx <ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds.hxx>

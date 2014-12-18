@@ -6,89 +6,77 @@
 #ifndef _TColStd_ListOfInteger_HeaderFile
 #define _TColStd_ListOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_ListNodeOfListOfInteger_HeaderFile
 #include <Handle_TColStd_ListNodeOfListOfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TColStd_ListIteratorOfListOfInteger;
 class TColStd_ListNodeOfListOfInteger;
 
 
 
-class TColStd_ListOfInteger  {
+class TColStd_ListOfInteger 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColStd_ListOfInteger();
+  Standard_EXPORT TColStd_ListOfInteger();
   
-  Standard_EXPORT     void Assign(const TColStd_ListOfInteger& Other) ;
-    void operator=(const TColStd_ListOfInteger& Other) 
+  Standard_EXPORT TColStd_ListOfInteger(const TColStd_ListOfInteger& Other);
+  
+  Standard_EXPORT   void Assign (const TColStd_ListOfInteger& Other) ;
+  void operator= (const TColStd_ListOfInteger& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TColStd_ListOfInteger()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Standard_Integer& I) ;
+  Standard_EXPORT   void Prepend (const Standard_Integer& I) ;
   
-  Standard_EXPORT     void Prepend(const Standard_Integer& I,TColStd_ListIteratorOfListOfInteger& theIt) ;
+  Standard_EXPORT   void Prepend (const Standard_Integer& I, TColStd_ListIteratorOfListOfInteger& theIt) ;
   
-  Standard_EXPORT     void Prepend(TColStd_ListOfInteger& Other) ;
+  Standard_EXPORT   void Prepend (TColStd_ListOfInteger& Other) ;
   
-  Standard_EXPORT     void Append(const Standard_Integer& I) ;
+  Standard_EXPORT   void Append (const Standard_Integer& I) ;
   
-  Standard_EXPORT     void Append(const Standard_Integer& I,TColStd_ListIteratorOfListOfInteger& theIt) ;
+  Standard_EXPORT   void Append (const Standard_Integer& I, TColStd_ListIteratorOfListOfInteger& theIt) ;
   
-  Standard_EXPORT     void Append(TColStd_ListOfInteger& Other) ;
+  Standard_EXPORT   void Append (TColStd_ListOfInteger& Other) ;
   
-  Standard_EXPORT     Standard_Integer& First() const;
+  Standard_EXPORT   Standard_Integer& First()  const;
   
-  Standard_EXPORT     Standard_Integer& Last() const;
+  Standard_EXPORT   Standard_Integer& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TColStd_ListIteratorOfListOfInteger& It) ;
+  Standard_EXPORT   void Remove (TColStd_ListIteratorOfListOfInteger& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer& I,TColStd_ListIteratorOfListOfInteger& It) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer& I, TColStd_ListIteratorOfListOfInteger& It) ;
   
-  Standard_EXPORT     void InsertBefore(TColStd_ListOfInteger& Other,TColStd_ListIteratorOfListOfInteger& It) ;
+  Standard_EXPORT   void InsertBefore (TColStd_ListOfInteger& Other, TColStd_ListIteratorOfListOfInteger& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer& I,TColStd_ListIteratorOfListOfInteger& It) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer& I, TColStd_ListIteratorOfListOfInteger& It) ;
   
-  Standard_EXPORT     void InsertAfter(TColStd_ListOfInteger& Other,TColStd_ListIteratorOfListOfInteger& It) ;
+  Standard_EXPORT   void InsertAfter (TColStd_ListOfInteger& Other, TColStd_ListIteratorOfListOfInteger& It) ;
 
 
 friend class TColStd_ListIteratorOfListOfInteger;
-
 
 
 protected:
@@ -99,12 +87,10 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_ListOfInteger(const TColStd_ListOfInteger& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -134,7 +120,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_ListOfInteger_HeaderFile

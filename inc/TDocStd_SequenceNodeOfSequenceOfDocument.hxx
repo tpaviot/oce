@@ -6,38 +6,27 @@
 #ifndef _TDocStd_SequenceNodeOfSequenceOfDocument_HeaderFile
 #define _TDocStd_SequenceNodeOfSequenceOfDocument_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDocStd_SequenceNodeOfSequenceOfDocument_HeaderFile
 #include <Handle_TDocStd_SequenceNodeOfSequenceOfDocument.hxx>
-#endif
 
-#ifndef _Handle_TDocStd_Document_HeaderFile
 #include <Handle_TDocStd_Document.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TDocStd_Document;
 class TDocStd_SequenceOfDocument;
 
 
 
-class TDocStd_SequenceNodeOfSequenceOfDocument : public TCollection_SeqNode {
+class TDocStd_SequenceNodeOfSequenceOfDocument : public TCollection_SeqNode
+{
 
 public:
 
   
-      TDocStd_SequenceNodeOfSequenceOfDocument(const Handle(TDocStd_Document)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TDocStd_SequenceNodeOfSequenceOfDocument(const Handle(TDocStd_Document)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_TDocStd_Document& Value() const;
+      Handle(TDocStd_Document)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_TDocStd_Document myValue;
+  Handle(TDocStd_Document) myValue;
 
 
 };
 
-#define SeqItem Handle_TDocStd_Document
+#define SeqItem Handle(TDocStd_Document)
 #define SeqItem_hxx <TDocStd_Document.hxx>
 #define TCollection_SequenceNode TDocStd_SequenceNodeOfSequenceOfDocument
 #define TCollection_SequenceNode_hxx <TDocStd_SequenceNodeOfSequenceOfDocument.hxx>
@@ -78,7 +67,6 @@ Handle_TDocStd_Document myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDocStd_SequenceNodeOfSequenceOfDocument_HeaderFile

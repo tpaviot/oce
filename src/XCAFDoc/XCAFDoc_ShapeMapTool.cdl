@@ -14,6 +14,7 @@
 -- commercial license or contractual agreement.
 
 class ShapeMapTool from XCAFDoc inherits Attribute from TDF
+    ---Purpose: attribute containing map of sub shapes
 
 uses
 
@@ -58,10 +59,10 @@ is
     Restore (me: mutable; with : Attribute from TDF);
 
     NewEmpty (me)
-    returns mutable Attribute from TDF;
+    returns Attribute from TDF;
 
-    Paste (me; into : mutable Attribute from TDF;
-	       RT   : mutable RelocationTable from TDF);    
+    Paste (me; into : Attribute from TDF;
+	       RT   : RelocationTable from TDF);    
 
     GetMap (me) returns IndexedMapOfShape from TopTools;
     ---C++: return const & 

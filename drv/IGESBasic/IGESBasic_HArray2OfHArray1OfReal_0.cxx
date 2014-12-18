@@ -5,28 +5,14 @@
 
 #include <IGESBasic_HArray2OfHArray1OfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _IGESBasic_Array2OfHArray1OfReal_HeaderFile
 #include <IGESBasic_Array2OfHArray1OfReal.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESBasic_HArray2OfHArray1OfReal,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESBasic_HArray2OfHArray1OfReal)
 
 
-#define ItemHArray2 Handle_TColStd_HArray1OfReal
+#define ItemHArray2 Handle(TColStd_HArray1OfReal)
 #define ItemHArray2_hxx <TColStd_HArray1OfReal.hxx>
 #define TheArray2 IGESBasic_Array2OfHArray1OfReal
 #define TheArray2_hxx <IGESBasic_Array2OfHArray1OfReal.hxx>

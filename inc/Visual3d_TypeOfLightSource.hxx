@@ -6,21 +6,20 @@
 #ifndef _Visual3d_TypeOfLightSource_HeaderFile
 #define _Visual3d_TypeOfLightSource_HeaderFile
 
-//! Definition of all the type of light sources <br>
-//! <br>
-//!      TOLS_AMBIENT    ambient light <br>
-//!      TOLS_DIRECTIONAL    directional light <br>
-//!      TOLS_POSITIONAL positional light <br>
-//!      TOLS_SPOT       spot light <br>
-enum Visual3d_TypeOfLightSource {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of all the type of light sources
+//!
+//! TOLS_AMBIENT    ambient light
+//! TOLS_DIRECTIONAL    directional light
+//! TOLS_POSITIONAL positional light
+//! TOLS_SPOT       spot light
+enum Visual3d_TypeOfLightSource
+{
 Visual3d_TOLS_AMBIENT,
 Visual3d_TOLS_DIRECTIONAL,
 Visual3d_TOLS_POSITIONAL,
 Visual3d_TOLS_SPOT
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Visual3d_TypeOfLightSource_HeaderFile

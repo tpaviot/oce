@@ -6,48 +6,27 @@
 #ifndef _TCollection_HeaderFile
 #define _TCollection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TCollection_AsciiString;
 class TCollection_ExtendedString;
 class TCollection_HAsciiString;
 class TCollection_HExtendedString;
-class TCollection_Array1Descriptor;
 class TCollection_Array1;
 class TCollection_HArray1;
-class TCollection_Array2Descriptor;
 class TCollection_Array2;
 class TCollection_HArray2;
-class TCollection_Stack;
-class TCollection_StackNode;
-class TCollection_StackIterator;
-class TCollection_Queue;
-class TCollection_QueueNode;
 class TCollection_List;
 class TCollection_ListNode;
 class TCollection_ListIterator;
-class TCollection_SList;
-class TCollection_SListNode;
 class TCollection_BaseSequence;
 class TCollection_SeqNode;
 class TCollection_Sequence;
 class TCollection_SequenceNode;
 class TCollection_HSequence;
-class TCollection_Set;
-class TCollection_SetIterator;
-class TCollection_SetList;
-class TCollection_HSet;
 class TCollection_MapHasher;
 class TCollection_BasicMap;
 class TCollection_MapNode;
@@ -70,28 +49,24 @@ class TCollection_PrivCompareOfInteger;
 class TCollection_PrivCompareOfReal;
 class TCollection_CompareOfInteger;
 class TCollection_CompareOfReal;
-class TCollection_AVLBaseNode;
-class TCollection_AVLSearchTree;
-class TCollection_AVLNode;
-class TCollection_AVLList;
-class TCollection_AVLIterator;
 
 
-//! The package <TCollection> provides the services for the <br>
-//! transient basic data structures. <br>
-class TCollection  {
+//! The package <TCollection> provides the services for the
+//! transient basic data structures.
+class TCollection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a  prime number greater than  <I> suitable <br>
-//! to dimension a Map.  When  <I> becomes great there <br>
-//! is  a  limit on  the  result (today  the  limit is <br>
-//! around 1 000 000). This is not a limit of the number of <br>
-//! items but a limit in the number  of buckets.  i.e. <br>
-//! there will be more collisions  in  the map. <br>
-  Standard_EXPORT   static  Standard_Integer NextPrimeForMap(const Standard_Integer I) ;
-
+  
+  //! Returns a  prime number greater than  <I> suitable
+  //! to dimension a Map.  When  <I> becomes great there
+  //! is  a  limit on  the  result (today  the  limit is
+  //! around 1 000 000). This is not a limit of the number of
+  //! items but a limit in the number  of buckets.  i.e.
+  //! there will be more collisions  in  the map.
+  Standard_EXPORT static   Standard_Integer NextPrimeForMap (const Standard_Integer I) ;
 
 
 
@@ -111,31 +86,18 @@ friend class TCollection_AsciiString;
 friend class TCollection_ExtendedString;
 friend class TCollection_HAsciiString;
 friend class TCollection_HExtendedString;
-friend class TCollection_Array1Descriptor;
 friend class TCollection_Array1;
 friend class TCollection_HArray1;
-friend class TCollection_Array2Descriptor;
 friend class TCollection_Array2;
 friend class TCollection_HArray2;
-friend class TCollection_Stack;
-friend class TCollection_StackNode;
-friend class TCollection_StackIterator;
-friend class TCollection_Queue;
-friend class TCollection_QueueNode;
 friend class TCollection_List;
 friend class TCollection_ListNode;
 friend class TCollection_ListIterator;
-friend class TCollection_SList;
-friend class TCollection_SListNode;
 friend class TCollection_BaseSequence;
 friend class TCollection_SeqNode;
 friend class TCollection_Sequence;
 friend class TCollection_SequenceNode;
 friend class TCollection_HSequence;
-friend class TCollection_Set;
-friend class TCollection_SetIterator;
-friend class TCollection_SetList;
-friend class TCollection_HSet;
 friend class TCollection_MapHasher;
 friend class TCollection_BasicMap;
 friend class TCollection_MapNode;
@@ -158,11 +120,6 @@ friend class TCollection_PrivCompareOfInteger;
 friend class TCollection_PrivCompareOfReal;
 friend class TCollection_CompareOfInteger;
 friend class TCollection_CompareOfReal;
-friend class TCollection_AVLBaseNode;
-friend class TCollection_AVLSearchTree;
-friend class TCollection_AVLNode;
-friend class TCollection_AVLList;
-friend class TCollection_AVLIterator;
 
 };
 
@@ -170,7 +127,6 @@ friend class TCollection_AVLIterator;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TCollection_HeaderFile

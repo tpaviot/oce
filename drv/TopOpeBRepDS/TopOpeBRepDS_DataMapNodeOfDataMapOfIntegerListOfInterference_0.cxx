@@ -5,22 +5,12 @@
 
 #include <TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapOfIntegerListOfInterference_HeaderFile
 #include <TopOpeBRepDS_DataMapOfIntegerListOfInterference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference.hxx>
-#endif
 
  
 

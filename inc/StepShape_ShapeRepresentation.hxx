@@ -6,28 +6,22 @@
 #ifndef _StepShape_ShapeRepresentation_HeaderFile
 #define _StepShape_ShapeRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_ShapeRepresentation_HeaderFile
 #include <Handle_StepShape_ShapeRepresentation.hxx>
-#endif
 
-#ifndef _StepRepr_Representation_HeaderFile
 #include <StepRepr_Representation.hxx>
-#endif
 
 
 
-class StepShape_ShapeRepresentation : public StepRepr_Representation {
+class StepShape_ShapeRepresentation : public StepRepr_Representation
+{
 
 public:
 
-  //! Returns a ShapeRepresentation <br>
-  Standard_EXPORT   StepShape_ShapeRepresentation();
+  
+  //! Returns a ShapeRepresentation
+  Standard_EXPORT StepShape_ShapeRepresentation();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_ShapeRepresentation_HeaderFile

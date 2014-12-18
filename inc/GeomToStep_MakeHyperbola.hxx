@@ -6,49 +6,35 @@
 #ifndef _GeomToStep_MakeHyperbola_HeaderFile
 #define _GeomToStep_MakeHyperbola_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Hyperbola_HeaderFile
 #include <Handle_StepGeom_Hyperbola.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom2d_Hyperbola_HeaderFile
 #include <Handle_Geom2d_Hyperbola.hxx>
-#endif
-#ifndef _Handle_Geom_Hyperbola_HeaderFile
 #include <Handle_Geom_Hyperbola.hxx>
-#endif
 class StepGeom_Hyperbola;
 class StdFail_NotDone;
 class Geom2d_Hyperbola;
 class Geom_Hyperbola;
 
 
-//! This class implements the mapping between the class <br>
-//!          Hyperbola from Geom and the class Hyperbola from <br>
-//!          StepGeom which describes a Hyperbola from ProSTEP <br>
-class GeomToStep_MakeHyperbola  : public GeomToStep_Root {
+//! This class implements the mapping between the class
+//! Hyperbola from Geom and the class Hyperbola from
+//! StepGeom which describes a Hyperbola from ProSTEP
+class GeomToStep_MakeHyperbola  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeHyperbola(const Handle(Geom2d_Hyperbola)& C);
+  Standard_EXPORT GeomToStep_MakeHyperbola(const Handle(Geom2d_Hyperbola)& C);
   
-  Standard_EXPORT   GeomToStep_MakeHyperbola(const Handle(Geom_Hyperbola)& C);
+  Standard_EXPORT GeomToStep_MakeHyperbola(const Handle(Geom_Hyperbola)& C);
   
-  Standard_EXPORT    const Handle_StepGeom_Hyperbola& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_Hyperbola)& Value()  const;
 
 
 
@@ -63,7 +49,7 @@ private:
 
 
 
-Handle_StepGeom_Hyperbola theHyperbola;
+  Handle(StepGeom_Hyperbola) theHyperbola;
 
 
 };
@@ -72,7 +58,6 @@ Handle_StepGeom_Hyperbola theHyperbola;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeHyperbola_HeaderFile

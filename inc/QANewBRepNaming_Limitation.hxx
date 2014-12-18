@@ -6,54 +6,51 @@
 #ifndef _QANewBRepNaming_Limitation_HeaderFile
 #define _QANewBRepNaming_Limitation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _QANewBRepNaming_BooleanOperationFeat_HeaderFile
 #include <QANewBRepNaming_BooleanOperationFeat.hxx>
-#endif
 class TDF_Label;
 class QANewModTopOpe_Limitation;
 
 
 
-class QANewBRepNaming_Limitation  : public QANewBRepNaming_BooleanOperationFeat {
+class QANewBRepNaming_Limitation  : public QANewBRepNaming_BooleanOperationFeat
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANewBRepNaming_Limitation();
+  Standard_EXPORT QANewBRepNaming_Limitation();
   
-  Standard_EXPORT   QANewBRepNaming_Limitation(const TDF_Label& ResultLabel);
+  Standard_EXPORT QANewBRepNaming_Limitation(const TDF_Label& ResultLabel);
   
-  Standard_EXPORT     void Load(QANewModTopOpe_Limitation& MakeShape) const;
-
+  Standard_EXPORT   void Load (QANewModTopOpe_Limitation& MakeShape)  const;
 
 
 
 
 protected:
 
-  //! Loads the content of the result. <br>
-  Standard_EXPORT     void LoadContent(QANewModTopOpe_Limitation& MakeShape) const;
-  //! Loads the result. <br>
-  Standard_EXPORT     void LoadResult(QANewModTopOpe_Limitation& MakeShape) const;
-  //! Loads the deletion of the degenerated edges. <br>
-  Standard_EXPORT     void LoadDegenerated(QANewModTopOpe_Limitation& MakeShape) const;
-  //! A default implementation for naming of a wire as an object of <br>
-//!          a boolean operation. <br>
-  Standard_EXPORT     void LoadWire(QANewModTopOpe_Limitation& MakeShape) const;
-  //! A default implementation for naming of a shell as an object of <br>
-//!          a boolean operation. <br>
-  Standard_EXPORT     void LoadShell(QANewModTopOpe_Limitation& MakeShape) const;
+  
+  //! Loads the content of the result.
+  Standard_EXPORT   void LoadContent (QANewModTopOpe_Limitation& MakeShape)  const;
+  
+  //! Loads the result.
+  Standard_EXPORT   void LoadResult (QANewModTopOpe_Limitation& MakeShape)  const;
+  
+  //! Loads the deletion of the degenerated edges.
+  Standard_EXPORT   void LoadDegenerated (QANewModTopOpe_Limitation& MakeShape)  const;
+  
+  //! A default implementation for naming of a wire as an object of
+  //! a boolean operation.
+  Standard_EXPORT   void LoadWire (QANewModTopOpe_Limitation& MakeShape)  const;
+  
+  //! A default implementation for naming of a shell as an object of
+  //! a boolean operation.
+  Standard_EXPORT   void LoadShell (QANewModTopOpe_Limitation& MakeShape)  const;
 
 
 
@@ -70,7 +67,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_Limitation_HeaderFile

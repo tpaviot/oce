@@ -6,45 +6,34 @@
 #ifndef _HLRTopoBRep_DSFiller_HeaderFile
 #define _HLRTopoBRep_DSFiller_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopoDS_Shape;
 class Contap_Contour;
 class HLRTopoBRep_Data;
 class BRepTopAdaptor_MapOfShapeTool;
 class TopoDS_Face;
 class TopoDS_Vertex;
-class Contap_ThePointOfContour;
+class Contap_Point;
 class TopoDS_Edge;
 
 
-//! Provides methods  to  fill a HLRTopoBRep_Data. <br>
-class HLRTopoBRep_DSFiller  {
+//! Provides methods  to  fill a HLRTopoBRep_Data.
+class HLRTopoBRep_DSFiller 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Stores in <DS> the outlines of  <S> using the current <br>
-//!          outliner and stores the isolines in <DS> using a Hatcher. <br>
-  Standard_EXPORT   static  void Insert(const TopoDS_Shape& S,Contap_Contour& FO,HLRTopoBRep_Data& DS,BRepTopAdaptor_MapOfShapeTool& MST,const Standard_Integer nbIso) ;
-
+  
+  //! Stores in <DS> the outlines of  <S> using the current
+  //! outliner and stores the isolines in <DS> using a Hatcher.
+  Standard_EXPORT static   void Insert (const TopoDS_Shape& S, Contap_Contour& FO, HLRTopoBRep_Data& DS, BRepTopAdaptor_MapOfShapeTool& MST, const Standard_Integer nbIso) ;
 
 
 
@@ -57,19 +46,23 @@ protected:
 
 private:
 
-  //! Stores in <DS> the outlines of  <F> using the current <br>
-//!          outliner. <br>
-  Standard_EXPORT   static  void InsertFace(const Standard_Integer FI,const TopoDS_Face& F,Contap_Contour& FO,HLRTopoBRep_Data& DS,const Standard_Boolean withPCurve) ;
-  //! Make a  vertex  from an intersection  point <P>and <br>
-//!          store it in the data structure <DS>. <br>
-  Standard_EXPORT   static  TopoDS_Vertex MakeVertex(const Contap_ThePointOfContour& P,const Standard_Real tol,HLRTopoBRep_Data& DS) ;
-  //! Insert a vertex    from an internal   intersection <br>
-//!          point <P> on restriction <E>  and store it in  the <br>
-//!          data structure <DS>. <br>
-  Standard_EXPORT   static  void InsertVertex(const Contap_ThePointOfContour& P,const Standard_Real tol,const TopoDS_Edge& E,HLRTopoBRep_Data& DS) ;
-  //! Split all  the edges  with  vertices in   the data <br>
-//!          structure. <br>
-  Standard_EXPORT   static  void ProcessEdges(HLRTopoBRep_Data& DS) ;
+  
+  //! Stores in <DS> the outlines of  <F> using the current
+  //! outliner.
+  Standard_EXPORT static   void InsertFace (const Standard_Integer FI, const TopoDS_Face& F, Contap_Contour& FO, HLRTopoBRep_Data& DS, const Standard_Boolean withPCurve) ;
+  
+  //! Make a  vertex  from an intersection  point <P>and
+  //! store it in the data structure <DS>.
+  Standard_EXPORT static   TopoDS_Vertex MakeVertex (const Contap_Point& P, const Standard_Real tol, HLRTopoBRep_Data& DS) ;
+  
+  //! Insert a vertex    from an internal   intersection
+  //! point <P> on restriction <E>  and store it in  the
+  //! data structure <DS>.
+  Standard_EXPORT static   void InsertVertex (const Contap_Point& P, const Standard_Real tol, const TopoDS_Edge& E, HLRTopoBRep_Data& DS) ;
+  
+  //! Split all  the edges  with  vertices in   the data
+  //! structure.
+  Standard_EXPORT static   void ProcessEdges (HLRTopoBRep_Data& DS) ;
 
 
 
@@ -80,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRTopoBRep_DSFiller_HeaderFile

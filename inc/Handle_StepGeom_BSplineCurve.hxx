@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_BSplineCurve_HeaderFile
 #define _Handle_StepGeom_BSplineCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_BoundedCurve_HeaderFile
 #include <Handle_StepGeom_BoundedCurve.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_BoundedCurve);
 class StepGeom_BSplineCurve;
 
-DEFINE_STANDARD_HANDLE(StepGeom_BSplineCurve,StepGeom_BoundedCurve)
+DEFINE_STANDARD_HANDLE(StepGeom_BSplineCurve, StepGeom_BoundedCurve)
 
-#endif
+#endif // _Handle_StepGeom_BSplineCurve_HeaderFile

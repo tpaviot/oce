@@ -1,18 +1,6 @@
-#ifndef _BRepFill_MultiLine_HeaderFile
 #include <BRepFill_MultiLine.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt_HeaderFile
 #include <TColgp_Array1OfPnt.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _TColgp_Array1OfVec_HeaderFile
 #include <TColgp_Array1OfVec.hxx>
-#endif
-#ifndef _TColgp_Array1OfVec2d_HeaderFile
 #include <TColgp_Array1OfVec2d.hxx>
-#endif
-#ifndef _BRepFill_MultiLineTool_HeaderFile
 #include <BRepFill_MultiLineTool.hxx>
-#endif

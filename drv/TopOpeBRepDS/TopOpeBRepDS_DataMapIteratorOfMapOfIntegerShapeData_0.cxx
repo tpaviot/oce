@@ -5,21 +5,11 @@
 
 #include <TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ShapeData_HeaderFile
 #include <TopOpeBRepDS_ShapeData.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_MapOfIntegerShapeData_HeaderFile
 #include <TopOpeBRepDS_MapOfIntegerShapeData.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData_HeaderFile
 #include <TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

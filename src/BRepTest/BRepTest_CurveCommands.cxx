@@ -57,6 +57,7 @@
 #include <Draw_Appli.hxx>
 #include <DrawTrSurf.hxx>
 #include <DrawTrSurf_BSplineCurve2d.hxx>
+#include <DrawTrSurf_Point.hxx>
 
 #include <gp.hxx>
 #include <Precision.hxx>
@@ -78,12 +79,13 @@ Standard_IMPORT Draw_Viewer dout;
 
 static Standard_Integer vertex(Draw_Interpretor& , Standard_Integer n, const char** a)
 {
-  if (n < 4) return 1;
+  if (n < 3) return 1;
   if (n >= 5) {
     DBRep::Set(a[1],
       BRepBuilderAPI_MakeVertex(gp_Pnt(Draw::Atof(a[2]),Draw::Atof(a[3]),Draw::Atof(a[4]))));
   }
-  else {
+  else if (n == 4)
+  {
     TopoDS_Shape S = DBRep::Get(a[3]);
     if (S.IsNull()) return 0;
     if (S.ShapeType() != TopAbs_EDGE) return 0;
@@ -91,6 +93,12 @@ static Standard_Integer vertex(Draw_Interpretor& , Standard_Integer n, const cha
     gp_Pnt P;
     C.D0(Draw::Atof(a[2]),P);
     DBRep::Set(a[1], BRepBuilderAPI_MakeVertex(P));
+  }
+  else
+  {
+    Handle(DrawTrSurf_Point) aP =
+      Handle(DrawTrSurf_Point)::DownCast(Draw::Get(a[2]));
+    DBRep::Set(a[1], BRepBuilderAPI_MakeVertex(aP->Point()));
   }
   return 0;
 }
@@ -1493,14 +1501,18 @@ Standard_Integer mkoffset(Draw_Interpretor& di,
   if (n < 5) return 1;
   char name[100];
 
-  BRepOffsetAPI_MakeOffset Paral;  
+  BRepOffsetAPI_MakeOffset Paral;
+  GeomAbs_JoinType theJoinType = GeomAbs_Arc;
+  if (n >= 6 && strcmp(a[5], "i") == 0)
+    theJoinType = GeomAbs_Intersection;
+  Paral.Init(theJoinType);
   TopoDS_Shape Base = DBRep::Get(a[2],TopAbs_FACE);
 
   if ( Base.IsNull())
   {
     Base = DBRep::Get(a[2]);
     if (Base.IsNull()) return 1;
-    Paral.Init(GeomAbs_Arc);
+    Paral.Init(theJoinType);
     TopExp_Explorer exp;
     for (exp.Init(Base,TopAbs_WIRE); exp.More(); exp.Next())
     {
@@ -1511,7 +1523,7 @@ Standard_Integer mkoffset(Draw_Interpretor& di,
   else
   {
     Base.Orientation(TopAbs_FORWARD);
-    Paral.Init(TopoDS::Face(Base));
+    Paral.Init(TopoDS::Face(Base), theJoinType);
   }
 
   Standard_Real U, dU;
@@ -1520,8 +1532,68 @@ Standard_Integer mkoffset(Draw_Interpretor& di,
   Nb = Draw::Atoi(a[3]);
 
   Standard_Real Alt = 0.;
-  if ( n == 6)
-    Alt = Draw::Atof(a[5]);
+  if ( n == 7)
+    Alt = Draw::Atof(a[6]);
+
+  Standard_Integer Compt = 1;
+
+  for ( Standard_Integer i = 1; i <= Nb; i++)
+  {
+    U = i * dU;
+    Paral.Perform(U,Alt);
+
+    if ( !Paral.IsDone())
+    {
+      di << " Error: Offset is not done." << "\n";
+      return 1;
+    }
+    else
+    {
+      Sprintf(name,"%s_%d", a[1], Compt++);
+      char* temp = name; // portage WNT
+      DBRep::Set(temp,Paral.Shape());
+    }
+  }
+
+  return 0;
+}
+
+//=======================================================================
+//function : openoffset
+//purpose  : 
+//=======================================================================
+
+Standard_Integer openoffset(Draw_Interpretor& di, 
+  Standard_Integer n, const char** a)
+{
+  if (n < 5) return 1;
+  char name[100];
+
+  BRepOffsetAPI_MakeOffset Paral;
+  GeomAbs_JoinType theJoinType = GeomAbs_Arc;
+  if (n == 6 && strcmp(a[5], "i") == 0)
+    theJoinType = GeomAbs_Intersection;
+  Paral.Init(theJoinType, Standard_True);
+  TopoDS_Shape Base = DBRep::Get(a[2] ,TopAbs_FACE);
+
+  if ( Base.IsNull())
+  {
+    Base = DBRep::Get(a[2], TopAbs_WIRE);
+    if (Base.IsNull()) return 1;
+    Paral.AddWire(TopoDS::Wire(Base));
+  }
+  else
+  {
+    Base.Orientation(TopAbs_FORWARD);
+    Paral.Init(TopoDS::Face(Base), theJoinType, Standard_True);
+  }
+
+  Standard_Real U, dU;
+  Standard_Integer Nb;
+  dU = Draw::Atof(a[4]);
+  Nb = Draw::Atoi(a[3]);
+
+  Standard_Real Alt = 0.;
 
   Standard_Integer Compt = 1;
 
@@ -1772,7 +1844,7 @@ void  BRepTest::CurveCommands(Draw_Interpretor& theCommands)
   const char* g = "TOPOLOGY Curve topology commands";
 
   theCommands.Add("vertex",
-    "vertex name [x y z / p edge]",__FILE__,
+    "vertex name [x y z | p edge | poin]",__FILE__,
     vertex,g);
 
   theCommands.Add("etrim",
@@ -1808,9 +1880,12 @@ void  BRepTest::CurveCommands(Draw_Interpretor& theCommands)
     profile2d,g);
 
   theCommands.Add("mkoffset",
-    "mkoffset result face/compound of wires  nboffset stepoffset [alt]",__FILE__,
+    "mkoffset result face/compound of wires  nboffset stepoffset [jointype(a/i) [alt]]",__FILE__,
     mkoffset);
 
+  theCommands.Add("openoffset",
+    "openoffset result face/wire nboffset stepoffset [jointype(a/i)]",__FILE__,
+    openoffset);
 
   theCommands.Add("mkedge",
     "mkedge edge curve [surface] [pfirst plast] [vfirst [pfirst] vlast [plast]] ",__FILE__,

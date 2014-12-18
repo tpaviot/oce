@@ -6,38 +6,27 @@
 #ifndef _MAT2d_SequenceNodeOfSequenceOfConnexion_HeaderFile
 #define _MAT2d_SequenceNodeOfSequenceOfConnexion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT2d_SequenceNodeOfSequenceOfConnexion_HeaderFile
 #include <Handle_MAT2d_SequenceNodeOfSequenceOfConnexion.hxx>
-#endif
 
-#ifndef _Handle_MAT2d_Connexion_HeaderFile
 #include <Handle_MAT2d_Connexion.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class MAT2d_Connexion;
 class MAT2d_SequenceOfConnexion;
 
 
 
-class MAT2d_SequenceNodeOfSequenceOfConnexion : public TCollection_SeqNode {
+class MAT2d_SequenceNodeOfSequenceOfConnexion : public TCollection_SeqNode
+{
 
 public:
 
   
-      MAT2d_SequenceNodeOfSequenceOfConnexion(const Handle(MAT2d_Connexion)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    MAT2d_SequenceNodeOfSequenceOfConnexion(const Handle(MAT2d_Connexion)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_MAT2d_Connexion& Value() const;
+      Handle(MAT2d_Connexion)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_MAT2d_Connexion myValue;
+  Handle(MAT2d_Connexion) myValue;
 
 
 };
 
-#define SeqItem Handle_MAT2d_Connexion
+#define SeqItem Handle(MAT2d_Connexion)
 #define SeqItem_hxx <MAT2d_Connexion.hxx>
 #define TCollection_SequenceNode MAT2d_SequenceNodeOfSequenceOfConnexion
 #define TCollection_SequenceNode_hxx <MAT2d_SequenceNodeOfSequenceOfConnexion.hxx>
@@ -78,7 +67,6 @@ Handle_MAT2d_Connexion myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_SequenceNodeOfSequenceOfConnexion_HeaderFile

@@ -1,9 +1,3 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _AdvApprox_PrefAndRec_HeaderFile
 #include <AdvApprox_PrefAndRec.hxx>
-#endif

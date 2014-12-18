@@ -6,22 +6,15 @@
 #ifndef _Handle_StdDrivers_DocumentStorageDriver_HeaderFile
 #define _Handle_StdDrivers_DocumentStorageDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MDocStd_DocumentStorageDriver_HeaderFile
 #include <Handle_MDocStd_DocumentStorageDriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MDocStd_DocumentStorageDriver);
 class StdDrivers_DocumentStorageDriver;
 
-DEFINE_STANDARD_HANDLE(StdDrivers_DocumentStorageDriver,MDocStd_DocumentStorageDriver)
+DEFINE_STANDARD_HANDLE(StdDrivers_DocumentStorageDriver, MDocStd_DocumentStorageDriver)
 
-#endif
+#endif // _Handle_StdDrivers_DocumentStorageDriver_HeaderFile

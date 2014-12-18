@@ -5,19 +5,11 @@
 
 #include <TColStd_StdMapNodeOfMapOfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_MapRealHasher_HeaderFile
 #include <TColStd_MapRealHasher.hxx>
-#endif
-#ifndef _TColStd_MapOfReal_HeaderFile
 #include <TColStd_MapOfReal.hxx>
-#endif
-#ifndef _TColStd_MapIteratorOfMapOfReal_HeaderFile
 #include <TColStd_MapIteratorOfMapOfReal.hxx>
-#endif
 
  
 

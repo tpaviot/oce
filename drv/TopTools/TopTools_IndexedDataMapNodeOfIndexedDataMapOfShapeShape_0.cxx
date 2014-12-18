@@ -5,19 +5,11 @@
 
 #include <TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopTools_IndexedDataMapOfShapeShape_HeaderFile
 #include <TopTools_IndexedDataMapOfShapeShape.hxx>
-#endif
 
  
 

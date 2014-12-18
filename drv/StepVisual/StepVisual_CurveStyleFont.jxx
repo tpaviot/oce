@@ -1,12 +1,4 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepVisual_HArray1OfCurveStyleFontPattern_HeaderFile
 #include <StepVisual_HArray1OfCurveStyleFontPattern.hxx>
-#endif
-#ifndef _StepVisual_CurveStyleFontPattern_HeaderFile
 #include <StepVisual_CurveStyleFontPattern.hxx>
-#endif
-#ifndef _StepVisual_CurveStyleFont_HeaderFile
 #include <StepVisual_CurveStyleFont.hxx>
-#endif

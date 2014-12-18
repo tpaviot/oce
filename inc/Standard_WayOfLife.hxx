@@ -6,8 +6,11 @@
 #ifndef _Standard_WayOfLife_HeaderFile
 #define _Standard_WayOfLife_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Standard_WayOfLife {
+
+enum Standard_WayOfLife
+{
 Standard_IsNothing,
 Standard_IsAddress,
 Standard_IsTransient,
@@ -15,8 +18,4 @@ Standard_IsPersistent,
 Standard_IsNotLoaded
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Standard_WayOfLife_HeaderFile

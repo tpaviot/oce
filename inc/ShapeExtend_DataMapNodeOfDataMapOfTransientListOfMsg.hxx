@@ -6,28 +6,14 @@
 #ifndef _ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg_HeaderFile
 #define _ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg_HeaderFile
 #include <Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Message_ListOfMsg_HeaderFile
 #include <Message_ListOfMsg.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Transient;
 class Message_ListOfMsg;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg;
 
 
 
-class ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public TCollection_MapNode {
+class ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg : public TCollection_MapNode
+{
 
 public:
 
   
-      ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg(const Handle(Standard_Transient)& K,const Message_ListOfMsg& I,const TCollection_MapNodePtr& n);
+    ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg(const Handle(Standard_Transient)& K, const Message_ListOfMsg& I, const TCollection_MapNodePtr& n);
   
-        Handle_Standard_Transient& Key() const;
+      Handle(Standard_Transient)& Key()  const;
   
-        Message_ListOfMsg& Value() const;
+      Message_ListOfMsg& Value()  const;
 
 
 
@@ -60,13 +47,13 @@ protected:
 private: 
 
 
-Handle_Standard_Transient myKey;
-Message_ListOfMsg myValue;
+  Handle(Standard_Transient) myKey;
+  Message_ListOfMsg myValue;
 
 
 };
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
 #define TheItem Message_ListOfMsg
 #define TheItem_hxx <Message_ListOfMsg.hxx>
@@ -99,7 +86,6 @@ Message_ListOfMsg myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg_HeaderFile

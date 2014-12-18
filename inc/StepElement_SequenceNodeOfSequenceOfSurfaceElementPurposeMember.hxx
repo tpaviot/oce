@@ -6,38 +6,27 @@
 #ifndef _StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember_HeaderFile
 #define _StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember_HeaderFile
 #include <Handle_StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember.hxx>
-#endif
 
-#ifndef _Handle_StepElement_SurfaceElementPurposeMember_HeaderFile
 #include <Handle_StepElement_SurfaceElementPurposeMember.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class StepElement_SurfaceElementPurposeMember;
 class StepElement_SequenceOfSurfaceElementPurposeMember;
 
 
 
-class StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember : public TCollection_SeqNode {
+class StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember : public TCollection_SeqNode
+{
 
 public:
 
   
-      StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember(const Handle(StepElement_SurfaceElementPurposeMember)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember(const Handle(StepElement_SurfaceElementPurposeMember)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_StepElement_SurfaceElementPurposeMember& Value() const;
+      Handle(StepElement_SurfaceElementPurposeMember)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_StepElement_SurfaceElementPurposeMember myValue;
+  Handle(StepElement_SurfaceElementPurposeMember) myValue;
 
 
 };
 
-#define SeqItem Handle_StepElement_SurfaceElementPurposeMember
+#define SeqItem Handle(StepElement_SurfaceElementPurposeMember)
 #define SeqItem_hxx <StepElement_SurfaceElementPurposeMember.hxx>
 #define TCollection_SequenceNode StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember
 #define TCollection_SequenceNode_hxx <StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember.hxx>
@@ -78,7 +67,6 @@ Handle_StepElement_SurfaceElementPurposeMember myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember_HeaderFile

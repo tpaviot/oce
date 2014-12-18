@@ -5,16 +5,10 @@
 
 #include <ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColgp_HSequenceOfPnt_HeaderFile
 #include <TColgp_HSequenceOfPnt.hxx>
-#endif
-#ifndef _ProjLib_SequenceOfHSequenceOfPnt_HeaderFile
 #include <ProjLib_SequenceOfHSequenceOfPnt.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt,Standard_Trans
 IMPLEMENT_STANDARD_RTTI(ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt)
 
 
-#define SeqItem Handle_TColgp_HSequenceOfPnt
+#define SeqItem Handle(TColgp_HSequenceOfPnt)
 #define SeqItem_hxx <TColgp_HSequenceOfPnt.hxx>
 #define TCollection_SequenceNode ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt
 #define TCollection_SequenceNode_hxx <ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt.hxx>

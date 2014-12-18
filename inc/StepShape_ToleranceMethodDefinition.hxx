@@ -6,53 +6,40 @@
 #ifndef _StepShape_ToleranceMethodDefinition_HeaderFile
 #define _StepShape_ToleranceMethodDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepShape_ToleranceValue_HeaderFile
 #include <Handle_StepShape_ToleranceValue.hxx>
-#endif
-#ifndef _Handle_StepShape_LimitsAndFits_HeaderFile
 #include <Handle_StepShape_LimitsAndFits.hxx>
-#endif
 class Standard_Transient;
 class StepShape_ToleranceValue;
 class StepShape_LimitsAndFits;
 
 
-//! Added for Dimensional Tolerances <br>
-class StepShape_ToleranceMethodDefinition  : public StepData_SelectType {
+//! Added for Dimensional Tolerances
+class StepShape_ToleranceMethodDefinition  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepShape_ToleranceMethodDefinition();
-  //! Recognizes a kind of ValueQualifier Select Type : <br>
-//!           1 -> ToleranceValue from StepShape <br>
-//!           2 -> LimitsAndFits from StepShape <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as ToleranceValue <br>
-  Standard_EXPORT     Handle_StepShape_ToleranceValue ToleranceValue() const;
-  //! Returns Value as LimitsAndFits <br>
-  Standard_EXPORT     Handle_StepShape_LimitsAndFits LimitsAndFits() const;
-
+  Standard_EXPORT StepShape_ToleranceMethodDefinition();
+  
+  //! Recognizes a kind of ValueQualifier Select Type :
+  //! 1 -> ToleranceValue from StepShape
+  //! 2 -> LimitsAndFits from StepShape
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as ToleranceValue
+  Standard_EXPORT   Handle(StepShape_ToleranceValue) ToleranceValue()  const;
+  
+  //! Returns Value as LimitsAndFits
+  Standard_EXPORT   Handle(StepShape_LimitsAndFits) LimitsAndFits()  const;
 
 
 
@@ -75,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_ToleranceMethodDefinition_HeaderFile

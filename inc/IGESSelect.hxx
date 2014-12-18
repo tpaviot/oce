@@ -6,22 +6,12 @@
 #ifndef _IGESSelect_HeaderFile
 #define _IGESSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
 class IGESData_IGESEntity;
 class Interface_Graph;
 class IGESSelect_EditHeader;
@@ -72,28 +62,30 @@ class IGESSelect_Activator;
 class IGESSelect_Dumper;
 
 
-//! This package defines the library of the most used tools for <br>
-//!           IGES Files : Selections & Modifiers specific to the IGES norm, <br>
-//!           and the most needed converters <br>
-class IGESSelect  {
+//! This package defines the library of the most used tools for
+//! IGES Files : Selections & Modifiers specific to the IGES norm,
+//! and the most needed converters
+class IGESSelect 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Simply gives a prompt for a conversational action on standard <br>
-//!           input/output. Returns the status of a <br>
-  Standard_EXPORT   static  void Run() ;
-  //! Gives a quick analysis of an IGES Entity in the context of a <br>
-//!           model (i.e. a File) described by a Graph. <br>
-//!           Returned values are : <br>
-//!           <sup> : the most meaningfull super entity, if any (else Null) <br>
-//!           <index> : meaningfull index relating to super entity, if any <br>
-//!           <returned> : a status which helps exploitation of <sup>, by <br>
-//!             giving a case <br>
-//!             (normally, types of <ent> and <sup> should suffice to <br>
-//!             known the case) <br>
-  Standard_EXPORT   static  Standard_Integer WhatIges(const Handle(IGESData_IGESEntity)& ent,const Interface_Graph& G,Handle(IGESData_IGESEntity)& sup,Standard_Integer& index) ;
-
+  
+  //! Simply gives a prompt for a conversational action on standard
+  //! input/output. Returns the status of a
+  Standard_EXPORT static   void Run() ;
+  
+  //! Gives a quick analysis of an IGES Entity in the context of a
+  //! model (i.e. a File) described by a Graph.
+  //! Returned values are :
+  //! <sup> : the most meaningfull super entity, if any (else Null)
+  //! <index> : meaningfull index relating to super entity, if any
+  //! <returned> : a status which helps exploitation of <sup>, by
+  //! giving a case
+  //! (normally, types of <ent> and <sup> should suffice to
+  //! known the case)
+  Standard_EXPORT static   Standard_Integer WhatIges (const Handle(IGESData_IGESEntity)& ent, const Interface_Graph& G, Handle(IGESData_IGESEntity)& sup, Standard_Integer& index) ;
 
 
 
@@ -162,7 +154,6 @@ friend class IGESSelect_Dumper;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_HeaderFile

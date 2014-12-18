@@ -1,3 +1,1 @@
-#ifndef _TColStd_HPackedMapOfInteger_HeaderFile
 #include <TColStd_HPackedMapOfInteger.hxx>
-#endif

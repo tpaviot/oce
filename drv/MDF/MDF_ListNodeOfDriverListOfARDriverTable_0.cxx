@@ -5,19 +5,11 @@
 
 #include <MDF_ListNodeOfDriverListOfARDriverTable.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MDF_ARDriver_HeaderFile
 #include <MDF_ARDriver.hxx>
-#endif
-#ifndef _MDF_DriverListOfARDriverTable_HeaderFile
 #include <MDF_DriverListOfARDriverTable.hxx>
-#endif
-#ifndef _MDF_ListIteratorOfDriverListOfARDriverTable_HeaderFile
 #include <MDF_ListIteratorOfDriverListOfARDriverTable.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(MDF_ListNodeOfDriverListOfARDriverTable,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(MDF_ListNodeOfDriverListOfARDriverTable)
 
 
-#define Item Handle_MDF_ARDriver
+#define Item Handle(MDF_ARDriver)
 #define Item_hxx <MDF_ARDriver.hxx>
 #define TCollection_ListNode MDF_ListNodeOfDriverListOfARDriverTable
 #define TCollection_ListNode_hxx <MDF_ListNodeOfDriverListOfARDriverTable.hxx>

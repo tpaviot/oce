@@ -6,28 +6,22 @@
 #ifndef _StepVisual_AnnotationText_HeaderFile
 #define _StepVisual_AnnotationText_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_AnnotationText_HeaderFile
 #include <Handle_StepVisual_AnnotationText.hxx>
-#endif
 
-#ifndef _StepRepr_MappedItem_HeaderFile
 #include <StepRepr_MappedItem.hxx>
-#endif
 
 
 
-class StepVisual_AnnotationText : public StepRepr_MappedItem {
+class StepVisual_AnnotationText : public StepRepr_MappedItem
+{
 
 public:
 
-  //! Returns a AnnotationText <br>
-  Standard_EXPORT   StepVisual_AnnotationText();
+  
+  //! Returns a AnnotationText
+  Standard_EXPORT StepVisual_AnnotationText();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_AnnotationText_HeaderFile

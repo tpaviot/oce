@@ -5,18 +5,10 @@
 
 #include <TColStd_MapIteratorOfMapOfInteger.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TColStd_MapOfInteger_HeaderFile
 #include <TColStd_MapOfInteger.hxx>
-#endif
-#ifndef _TColStd_StdMapNodeOfMapOfInteger_HeaderFile
 #include <TColStd_StdMapNodeOfMapOfInteger.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

@@ -1,6 +1,2 @@
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _GccEnt_QualifiedCirc_HeaderFile
 #include <GccEnt_QualifiedCirc.hxx>
-#endif

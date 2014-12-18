@@ -5,21 +5,13 @@
 
 #include <IFSelect_SequenceOfAppliedModifiers.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IFSelect_AppliedModifiers_HeaderFile
 #include <IFSelect_AppliedModifiers.hxx>
-#endif
-#ifndef _IFSelect_SequenceNodeOfSequenceOfAppliedModifiers_HeaderFile
 #include <IFSelect_SequenceNodeOfSequenceOfAppliedModifiers.hxx>
-#endif
  
 
-#define SeqItem Handle_IFSelect_AppliedModifiers
+#define SeqItem Handle(IFSelect_AppliedModifiers)
 #define SeqItem_hxx <IFSelect_AppliedModifiers.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfSequenceOfAppliedModifiers
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfSequenceOfAppliedModifiers.hxx>

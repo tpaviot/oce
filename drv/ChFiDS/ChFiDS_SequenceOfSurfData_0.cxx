@@ -5,21 +5,13 @@
 
 #include <ChFiDS_SequenceOfSurfData.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _ChFiDS_SurfData_HeaderFile
 #include <ChFiDS_SurfData.hxx>
-#endif
-#ifndef _ChFiDS_SequenceNodeOfSequenceOfSurfData_HeaderFile
 #include <ChFiDS_SequenceNodeOfSequenceOfSurfData.hxx>
-#endif
  
 
-#define SeqItem Handle_ChFiDS_SurfData
+#define SeqItem Handle(ChFiDS_SurfData)
 #define SeqItem_hxx <ChFiDS_SurfData.hxx>
 #define TCollection_SequenceNode ChFiDS_SequenceNodeOfSequenceOfSurfData
 #define TCollection_SequenceNode_hxx <ChFiDS_SequenceNodeOfSequenceOfSurfData.hxx>

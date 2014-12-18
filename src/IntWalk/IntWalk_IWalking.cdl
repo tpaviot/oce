@@ -16,14 +16,14 @@
 
 generic class IWalking from  IntWalk (
       ThePointOfPath     as any;
-      ThePointOfPathTool as any;   -- as PathPointTool(ThePointOfPath)
-      ThePOPIterator     as any;   -- as Iterator from IntWalk(ThePointOfPath)
+      ThePointOfPathTool as any;
+      ThePOPIterator     as any;
       ThePointOfLoop     as any;
-      ThePointOfLoopTool as any;   -- as LoopPointTool(ThePointOfLoop)
-      ThePOLIterator     as any;   -- as Iterator from IntWalk(ThePointOfLoop)
+      ThePointOfLoopTool as any;
+      ThePOLIterator     as any;
       ThePSurface        as any;
-      ThePSurfaceTool    as any;   -- as PSurfaceTool(ThePSurface)
-      TheIWFunction      as any)   -- as IWFunction from IntWalk(ThePSurface)
+      ThePSurfaceTool    as any;
+      TheIWFunction      as any)
 
 
     ---Purpose: This class implements an algorithm to find all the points
@@ -215,7 +215,7 @@ is
 		    
     TestArretCadre(me : in out; Umult  : SequenceOfReal from TColStd;
                                 Vmult  : SequenceOfReal from TColStd;
-                                Line   : mutable TheIWLine;
+                                Line   : TheIWLine;
 				Section: in out TheIWFunction;
                                 UV     : in out Vector from math;
                                 Irang  : out Integer from Standard)
@@ -244,7 +244,7 @@ is
                           Psol   : PntOn2S from IntSurf;
 			  Pnts1  : ThePOPIterator;
  			  Section: in out TheIWFunction;
-                          Line   : mutable TheIWLine)
+                          Line   : TheIWLine)
     is static protected;	
 
     ComputeCloseLine(me : in out; Umult  : SequenceOfReal from TColStd;
@@ -257,7 +257,7 @@ is
 
     AddPointInCurrentLine(me ; N           : Integer from Standard;
                                PathPnt     : ThePointOfPath;
-                               CurrentLine : mutable TheIWLine)
+                               CurrentLine : TheIWLine)
     is static protected;
 
     MakeWalkingPoint(me : in out ; Case    : Integer from Standard;

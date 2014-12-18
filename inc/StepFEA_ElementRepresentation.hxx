@@ -6,50 +6,39 @@
 #ifndef _StepFEA_ElementRepresentation_HeaderFile
 #define _StepFEA_ElementRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_ElementRepresentation_HeaderFile
 #include <Handle_StepFEA_ElementRepresentation.hxx>
-#endif
 
-#ifndef _Handle_StepFEA_HArray1OfNodeRepresentation_HeaderFile
 #include <Handle_StepFEA_HArray1OfNodeRepresentation.hxx>
-#endif
-#ifndef _StepRepr_Representation_HeaderFile
 #include <StepRepr_Representation.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepRepr_HArray1OfRepresentationItem_HeaderFile
 #include <Handle_StepRepr_HArray1OfRepresentationItem.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationContext_HeaderFile
 #include <Handle_StepRepr_RepresentationContext.hxx>
-#endif
 class StepFEA_HArray1OfNodeRepresentation;
 class TCollection_HAsciiString;
 class StepRepr_HArray1OfRepresentationItem;
 class StepRepr_RepresentationContext;
 
 
-//! Representation of STEP entity ElementRepresentation <br>
-class StepFEA_ElementRepresentation : public StepRepr_Representation {
+//! Representation of STEP entity ElementRepresentation
+class StepFEA_ElementRepresentation : public StepRepr_Representation
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_ElementRepresentation();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentation_Name,const Handle(StepRepr_HArray1OfRepresentationItem)& aRepresentation_Items,const Handle(StepRepr_RepresentationContext)& aRepresentation_ContextOfItems,const Handle(StepFEA_HArray1OfNodeRepresentation)& aNodeList) ;
-  //! Returns field NodeList <br>
-  Standard_EXPORT     Handle_StepFEA_HArray1OfNodeRepresentation NodeList() const;
-  //! Set field NodeList <br>
-  Standard_EXPORT     void SetNodeList(const Handle(StepFEA_HArray1OfNodeRepresentation)& NodeList) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_ElementRepresentation();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentation_Name, const Handle(StepRepr_HArray1OfRepresentationItem)& aRepresentation_Items, const Handle(StepRepr_RepresentationContext)& aRepresentation_ContextOfItems, const Handle(StepFEA_HArray1OfNodeRepresentation)& aNodeList) ;
+  
+  //! Returns field NodeList
+  Standard_EXPORT   Handle(StepFEA_HArray1OfNodeRepresentation) NodeList()  const;
+  
+  //! Set field NodeList
+  Standard_EXPORT   void SetNodeList (const Handle(StepFEA_HArray1OfNodeRepresentation)& NodeList) ;
 
 
 
@@ -64,7 +53,7 @@ protected:
 private: 
 
 
-Handle_StepFEA_HArray1OfNodeRepresentation theNodeList;
+  Handle(StepFEA_HArray1OfNodeRepresentation) theNodeList;
 
 
 };
@@ -73,7 +62,6 @@ Handle_StepFEA_HArray1OfNodeRepresentation theNodeList;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_ElementRepresentation_HeaderFile

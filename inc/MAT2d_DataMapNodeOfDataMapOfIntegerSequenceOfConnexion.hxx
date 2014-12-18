@@ -6,28 +6,14 @@
 #ifndef _MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion_HeaderFile
 #define _MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion_HeaderFile
 #include <Handle_MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MAT2d_SequenceOfConnexion_HeaderFile
 #include <MAT2d_SequenceOfConnexion.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MAT2d_SequenceOfConnexion;
 class TColStd_MapIntegerHasher;
 class MAT2d_DataMapOfIntegerSequenceOfConnexion;
@@ -35,16 +21,17 @@ class MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion;
 
 
 
-class MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion : public TCollection_MapNode {
+class MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion : public TCollection_MapNode
+{
 
 public:
 
   
-      MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion(const Standard_Integer& K,const MAT2d_SequenceOfConnexion& I,const TCollection_MapNodePtr& n);
+    MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion(const Standard_Integer& K, const MAT2d_SequenceOfConnexion& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        MAT2d_SequenceOfConnexion& Value() const;
+      MAT2d_SequenceOfConnexion& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-MAT2d_SequenceOfConnexion myValue;
+  Standard_Integer myKey;
+  MAT2d_SequenceOfConnexion myValue;
 
 
 };
@@ -98,7 +85,6 @@ MAT2d_SequenceOfConnexion myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion_HeaderFile

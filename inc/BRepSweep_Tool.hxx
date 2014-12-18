@@ -6,57 +6,49 @@
 #ifndef _BRepSweep_Tool_HeaderFile
 #define _BRepSweep_Tool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_IndexedMapOfShape_HeaderFile
 #include <TopTools_IndexedMapOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class Standard_OutOfRange;
 class TopoDS_Shape;
 
 
-//! Provides  the  indexation and type  analysis  services <br>
-//!          required by the TopoDS generating Shape of BRepSweep. <br>
-//! <br>
-class BRepSweep_Tool  {
+//! Provides  the  indexation and type  analysis  services
+//! required by the TopoDS generating Shape of BRepSweep.
+class BRepSweep_Tool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Initialize the tool  with <aShape>.  The IndexTool <br>
-//!          must prepare an indexation for  all  the subshapes <br>
-//!          of this shape. <br>
-  Standard_EXPORT   BRepSweep_Tool(const TopoDS_Shape& aShape);
-  //! Returns the number of subshapes in the shape. <br>
-  Standard_EXPORT     Standard_Integer NbShapes() const;
-  //! Returns the index of <aShape>. <br>
-  Standard_EXPORT     Standard_Integer Index(const TopoDS_Shape& aShape) const;
-  //! Returns the Shape at Index anIdex. <br>
-  Standard_EXPORT     TopoDS_Shape Shape(const Standard_Integer anIndex) const;
-  //! Returns the type of <aShape>. <br>
-  Standard_EXPORT     TopAbs_ShapeEnum Type(const TopoDS_Shape& aShape) const;
-  //! Returns the Orientation of <aShape>. <br>
-  Standard_EXPORT     TopAbs_Orientation Orientation(const TopoDS_Shape& aShape) const;
-  //! Set the Orientation of <aShape> with Or. <br>
-  Standard_EXPORT     void SetOrientation(TopoDS_Shape& aShape,const TopAbs_Orientation Or) const;
-
+  
+  //! Initialize the tool  with <aShape>.  The IndexTool
+  //! must prepare an indexation for  all  the subshapes
+  //! of this shape.
+  Standard_EXPORT BRepSweep_Tool(const TopoDS_Shape& aShape);
+  
+  //! Returns the number of subshapes in the shape.
+  Standard_EXPORT   Standard_Integer NbShapes()  const;
+  
+  //! Returns the index of <aShape>.
+  Standard_EXPORT   Standard_Integer Index (const TopoDS_Shape& aShape)  const;
+  
+  //! Returns the Shape at Index anIdex.
+  Standard_EXPORT   TopoDS_Shape Shape (const Standard_Integer anIndex)  const;
+  
+  //! Returns the type of <aShape>.
+  Standard_EXPORT   TopAbs_ShapeEnum Type (const TopoDS_Shape& aShape)  const;
+  
+  //! Returns the Orientation of <aShape>.
+  Standard_EXPORT   TopAbs_Orientation Orientation (const TopoDS_Shape& aShape)  const;
+  
+  //! Set the Orientation of <aShape> with Or.
+  Standard_EXPORT   void SetOrientation (TopoDS_Shape& aShape, const TopAbs_Orientation Or)  const;
 
 
 
@@ -71,7 +63,7 @@ private:
 
 
 
-TopTools_IndexedMapOfShape myMap;
+  TopTools_IndexedMapOfShape myMap;
 
 
 };
@@ -80,7 +72,6 @@ TopTools_IndexedMapOfShape myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepSweep_Tool_HeaderFile

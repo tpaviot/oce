@@ -6,8 +6,11 @@
 #ifndef _OSD_KindFile_HeaderFile
 #define _OSD_KindFile_HeaderFile
 
-//! Specifies the type of files. <br>
-enum OSD_KindFile {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Specifies the type of files.
+enum OSD_KindFile
+{
 OSD_FILE,
 OSD_DIRECTORY,
 OSD_LINK,
@@ -15,8 +18,4 @@ OSD_SOCKET,
 OSD_UNKNOWN
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _OSD_KindFile_HeaderFile

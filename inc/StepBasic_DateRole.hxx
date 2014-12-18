@@ -6,38 +6,30 @@
 #ifndef _StepBasic_DateRole_HeaderFile
 #define _StepBasic_DateRole_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_DateRole_HeaderFile
 #include <Handle_StepBasic_DateRole.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
 
-class StepBasic_DateRole : public MMgt_TShared {
+class StepBasic_DateRole : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a DateRole <br>
-  Standard_EXPORT   StepBasic_DateRole();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a DateRole
+  Standard_EXPORT StepBasic_DateRole();
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
 
 
 
@@ -52,7 +44,7 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString name;
+  Handle(TCollection_HAsciiString) name;
 
 
 };
@@ -61,7 +53,6 @@ Handle_TCollection_HAsciiString name;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_DateRole_HeaderFile

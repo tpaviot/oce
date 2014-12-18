@@ -6,38 +6,27 @@
 #ifndef _AIS_SequenceNodeOfSequenceOfInteractive_HeaderFile
 #define _AIS_SequenceNodeOfSequenceOfInteractive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_SequenceNodeOfSequenceOfInteractive_HeaderFile
 #include <Handle_AIS_SequenceNodeOfSequenceOfInteractive.hxx>
-#endif
 
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class AIS_InteractiveObject;
 class AIS_SequenceOfInteractive;
 
 
 
-class AIS_SequenceNodeOfSequenceOfInteractive : public TCollection_SeqNode {
+class AIS_SequenceNodeOfSequenceOfInteractive : public TCollection_SeqNode
+{
 
 public:
 
   
-      AIS_SequenceNodeOfSequenceOfInteractive(const Handle(AIS_InteractiveObject)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    AIS_SequenceNodeOfSequenceOfInteractive(const Handle(AIS_InteractiveObject)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_AIS_InteractiveObject& Value() const;
+      Handle(AIS_InteractiveObject)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_AIS_InteractiveObject myValue;
+  Handle(AIS_InteractiveObject) myValue;
 
 
 };
 
-#define SeqItem Handle_AIS_InteractiveObject
+#define SeqItem Handle(AIS_InteractiveObject)
 #define SeqItem_hxx <AIS_InteractiveObject.hxx>
 #define TCollection_SequenceNode AIS_SequenceNodeOfSequenceOfInteractive
 #define TCollection_SequenceNode_hxx <AIS_SequenceNodeOfSequenceOfInteractive.hxx>
@@ -78,7 +67,6 @@ Handle_AIS_InteractiveObject myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_SequenceNodeOfSequenceOfInteractive_HeaderFile

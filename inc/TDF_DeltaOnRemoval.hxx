@@ -6,31 +6,22 @@
 #ifndef _TDF_DeltaOnRemoval_HeaderFile
 #define _TDF_DeltaOnRemoval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_DeltaOnRemoval_HeaderFile
 #include <Handle_TDF_DeltaOnRemoval.hxx>
-#endif
 
-#ifndef _TDF_AttributeDelta_HeaderFile
 #include <TDF_AttributeDelta.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
 class TDF_Attribute;
 
 
-//! This class provides default services for an <br>
-//!          AttributeDelta on a REMOVAL action. <br>
-//! <br>
-//!          Applying this AttributeDelta means ADDING its <br>
-//!          attribute. <br>
-class TDF_DeltaOnRemoval : public TDF_AttributeDelta {
+//! This class provides default services for an
+//! AttributeDelta on a REMOVAL action.
+//!
+//! Applying this AttributeDelta means ADDING its
+//! attribute.
+class TDF_DeltaOnRemoval : public TDF_AttributeDelta
+{
 
 public:
 
@@ -42,8 +33,9 @@ public:
 
 protected:
 
-  //! Initializes a TDF_DeltaOnRemoval. <br>
-  Standard_EXPORT   TDF_DeltaOnRemoval(const Handle(TDF_Attribute)& anAtt);
+  
+  //! Initializes a TDF_DeltaOnRemoval.
+  Standard_EXPORT TDF_DeltaOnRemoval(const Handle(TDF_Attribute)& anAtt);
 
 
 
@@ -58,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_DeltaOnRemoval_HeaderFile

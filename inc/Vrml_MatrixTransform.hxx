@@ -6,53 +6,43 @@
 #ifndef _Vrml_MatrixTransform_HeaderFile
 #define _Vrml_MatrixTransform_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class gp_Trsf;
 
 
-//! defines a MatrixTransform node of VRML specifying matrix and transform <br>
-//!          properties. <br>
-//!  This  node  defines  3D  transformation  with  a  4  by  4  matrix. <br>
-//!  By  default  : <br>
-//!  a11=1  a12=0  a13=0  a14=0 <br>
-//!  a21=0  a22=1  a23=0  a24=0 <br>
-//!  a31=0  a32=0  a33=1  a34=0 <br>
-//!  a41=0  a42=0  a43=0  a44=1 <br>
-//!  It  is  written  to  the  file  in  row-major  order  as  16  Real numbers <br>
-//!  separated  by  whitespace.  For  example ,  matrix  expressing  a  translation <br>
-//!  of  7.3  units  along  the  X  axis  is  written  as: <br>
-//!  1  0  0  0   0  1  0  0   0  0  1  0   7.3 0  0  1 <br>
-class Vrml_MatrixTransform  {
+//! defines a MatrixTransform node of VRML specifying matrix and transform
+//! properties.
+//! This  node  defines  3D  transformation  with  a  4  by  4  matrix.
+//! By  default  :
+//! a11=1  a12=0  a13=0  a14=0
+//! a21=0  a22=1  a23=0  a24=0
+//! a31=0  a32=0  a33=1  a34=0
+//! a41=0  a42=0  a43=0  a44=1
+//! It  is  written  to  the  file  in  row-major  order  as  16  Real numbers
+//! separated  by  whitespace.  For  example ,  matrix  expressing  a  translation
+//! of  7.3  units  along  the  X  axis  is  written  as:
+//! 1  0  0  0   0  1  0  0   0  0  1  0   7.3 0  0  1
+class Vrml_MatrixTransform 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_MatrixTransform();
+  Standard_EXPORT Vrml_MatrixTransform();
   
-  Standard_EXPORT   Vrml_MatrixTransform(const gp_Trsf& aMatrix);
+  Standard_EXPORT Vrml_MatrixTransform(const gp_Trsf& aMatrix);
   
-  Standard_EXPORT     void SetMatrix(const gp_Trsf& aMatrix) ;
+  Standard_EXPORT   void SetMatrix (const gp_Trsf& aMatrix) ;
   
-  Standard_EXPORT     gp_Trsf Matrix() const;
+  Standard_EXPORT   gp_Trsf Matrix()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -67,7 +57,7 @@ private:
 
 
 
-gp_Trsf myMatrix;
+  gp_Trsf myMatrix;
 
 
 };
@@ -76,7 +66,6 @@ gp_Trsf myMatrix;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_MatrixTransform_HeaderFile

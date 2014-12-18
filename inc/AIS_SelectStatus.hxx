@@ -6,15 +6,14 @@
 #ifndef _AIS_SelectStatus_HeaderFile
 #define _AIS_SelectStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum AIS_SelectStatus {
+
+enum AIS_SelectStatus
+{
 AIS_SS_Added,
 AIS_SS_Removed,
 AIS_SS_NotDone
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_SelectStatus_HeaderFile

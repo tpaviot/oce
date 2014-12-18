@@ -6,25 +6,13 @@
 #ifndef _HLRBRep_SeqOfShapeBounds_HeaderFile
 #define _HLRBRep_SeqOfShapeBounds_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds_HeaderFile
 #include <Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class HLRBRep_ShapeBounds;
@@ -32,66 +20,68 @@ class HLRBRep_SequenceNodeOfSeqOfShapeBounds;
 
 
 
-class HLRBRep_SeqOfShapeBounds  : public TCollection_BaseSequence {
+class HLRBRep_SeqOfShapeBounds  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      HLRBRep_SeqOfShapeBounds();
+    HLRBRep_SeqOfShapeBounds();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT HLRBRep_SeqOfShapeBounds(const HLRBRep_SeqOfShapeBounds& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~HLRBRep_SeqOfShapeBounds()
 {
   Clear();
 }
   
-  Standard_EXPORT    const HLRBRep_SeqOfShapeBounds& Assign(const HLRBRep_SeqOfShapeBounds& Other) ;
-   const HLRBRep_SeqOfShapeBounds& operator =(const HLRBRep_SeqOfShapeBounds& Other) 
+  Standard_EXPORT  const  HLRBRep_SeqOfShapeBounds& Assign (const HLRBRep_SeqOfShapeBounds& Other) ;
+ const  HLRBRep_SeqOfShapeBounds& operator = (const HLRBRep_SeqOfShapeBounds& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const HLRBRep_ShapeBounds& T) ;
+  Standard_EXPORT   void Append (const HLRBRep_ShapeBounds& T) ;
   
-        void Append(HLRBRep_SeqOfShapeBounds& S) ;
+      void Append (HLRBRep_SeqOfShapeBounds& S) ;
   
-  Standard_EXPORT     void Prepend(const HLRBRep_ShapeBounds& T) ;
+  Standard_EXPORT   void Prepend (const HLRBRep_ShapeBounds& T) ;
   
-        void Prepend(HLRBRep_SeqOfShapeBounds& S) ;
+      void Prepend (HLRBRep_SeqOfShapeBounds& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const HLRBRep_ShapeBounds& T) ;
+      void InsertBefore (const Standard_Integer Index, const HLRBRep_ShapeBounds& T) ;
   
-        void InsertBefore(const Standard_Integer Index,HLRBRep_SeqOfShapeBounds& S) ;
+      void InsertBefore (const Standard_Integer Index, HLRBRep_SeqOfShapeBounds& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const HLRBRep_ShapeBounds& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const HLRBRep_ShapeBounds& T) ;
   
-        void InsertAfter(const Standard_Integer Index,HLRBRep_SeqOfShapeBounds& S) ;
+      void InsertAfter (const Standard_Integer Index, HLRBRep_SeqOfShapeBounds& S) ;
   
-  Standard_EXPORT    const HLRBRep_ShapeBounds& First() const;
+  Standard_EXPORT  const  HLRBRep_ShapeBounds& First()  const;
   
-  Standard_EXPORT    const HLRBRep_ShapeBounds& Last() const;
+  Standard_EXPORT  const  HLRBRep_ShapeBounds& Last()  const;
   
-        void Split(const Standard_Integer Index,HLRBRep_SeqOfShapeBounds& Sub) ;
+      void Split (const Standard_Integer Index, HLRBRep_SeqOfShapeBounds& Sub) ;
   
-  Standard_EXPORT    const HLRBRep_ShapeBounds& Value(const Standard_Integer Index) const;
-   const HLRBRep_ShapeBounds& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  HLRBRep_ShapeBounds& Value (const Standard_Integer Index)  const;
+ const  HLRBRep_ShapeBounds& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const HLRBRep_ShapeBounds& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const HLRBRep_ShapeBounds& I) ;
   
-  Standard_EXPORT     HLRBRep_ShapeBounds& ChangeValue(const Standard_Integer Index) ;
-    HLRBRep_ShapeBounds& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   HLRBRep_ShapeBounds& ChangeValue (const Standard_Integer Index) ;
+  HLRBRep_ShapeBounds& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   HLRBRep_SeqOfShapeBounds(const HLRBRep_SeqOfShapeBounds& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_SeqOfShapeBounds_HeaderFile

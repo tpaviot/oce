@@ -6,15 +6,14 @@
 #ifndef _Aspect_TypeOfFacingModel_HeaderFile
 #define _Aspect_TypeOfFacingModel_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Aspect_TypeOfFacingModel {
+
+enum Aspect_TypeOfFacingModel
+{
 Aspect_TOFM_BOTH_SIDE,
 Aspect_TOFM_BACK_SIDE,
 Aspect_TOFM_FRONT_SIDE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfFacingModel_HeaderFile

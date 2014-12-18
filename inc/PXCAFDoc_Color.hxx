@@ -6,40 +6,29 @@
 #ifndef _PXCAFDoc_Color_HeaderFile
 #define _PXCAFDoc_Color_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_Color_HeaderFile
 #include <Handle_PXCAFDoc_Color.hxx>
-#endif
 
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class Quantity_Color;
 
 
-class PXCAFDoc_Color : public PDF_Attribute {
+class PXCAFDoc_Color : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PXCAFDoc_Color();
+  Standard_EXPORT PXCAFDoc_Color();
   
-  Standard_EXPORT   PXCAFDoc_Color(const Quantity_Color& Loc);
+  Standard_EXPORT PXCAFDoc_Color(const Quantity_Color& Loc);
   
-  Standard_EXPORT     void Set(const Quantity_Color& Loc) ;
+  Standard_EXPORT   void Set (const Quantity_Color& Loc) ;
   
-  Standard_EXPORT     Quantity_Color Get() const;
+  Standard_EXPORT   Quantity_Color Get()  const;
 
 PXCAFDoc_Color(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -59,7 +48,7 @@ protected:
 private: 
 
 
-Quantity_Color myColor;
+  Quantity_Color myColor;
 
 
 };
@@ -68,7 +57,6 @@ Quantity_Color myColor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PXCAFDoc_Color_HeaderFile

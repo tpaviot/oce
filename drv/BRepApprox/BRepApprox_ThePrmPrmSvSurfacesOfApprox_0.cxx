@@ -5,30 +5,14 @@
 
 #include <BRepApprox_ThePrmPrmSvSurfacesOfApprox.hxx>
 
-#ifndef _BRepAdaptor_Surface_HeaderFile
 #include <BRepAdaptor_Surface.hxx>
-#endif
-#ifndef _BRepApprox_SurfaceTool_HeaderFile
 #include <BRepApprox_SurfaceTool.hxx>
-#endif
-#ifndef _BRepApprox_ApproxLine_HeaderFile
 #include <BRepApprox_ApproxLine.hxx>
-#endif
-#ifndef _BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_HeaderFile
 #include <BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_HeaderFile
 #include <BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
  
 
 #define ThePSurface BRepAdaptor_Surface

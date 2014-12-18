@@ -6,15 +6,14 @@
 #ifndef _StepShape_AngleRelator_HeaderFile
 #define _StepShape_AngleRelator_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepShape_AngleRelator {
+
+enum StepShape_AngleRelator
+{
 StepShape_Equal,
 StepShape_Large,
 StepShape_Small
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepShape_AngleRelator_HeaderFile

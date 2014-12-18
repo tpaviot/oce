@@ -6,8 +6,11 @@
 #ifndef _Draw_ColorKind_HeaderFile
 #define _Draw_ColorKind_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Draw_ColorKind {
+
+enum Draw_ColorKind
+{
 Draw_blanc,
 Draw_rouge,
 Draw_vert,
@@ -25,8 +28,4 @@ Draw_kaki,
 Draw_corail
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Draw_ColorKind_HeaderFile

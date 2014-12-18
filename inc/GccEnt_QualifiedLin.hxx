@@ -6,79 +6,70 @@
 #ifndef _GccEnt_QualifiedLin_HeaderFile
 #define _GccEnt_QualifiedLin_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GccEnt_Position_HeaderFile
 #include <GccEnt_Position.hxx>
-#endif
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class gp_Lin2d;
 
 
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(GccEnt_QualifiedLin);
 
-//! Describes a qualified 2D line. <br>
-//! A qualified 2D line is a line (gp_Lin2d line) with a <br>
-//! qualifier which specifies whether the solution of a <br>
-//! construction algorithm using the qualified line (as an argument): <br>
-//! -   is 'enclosed' by the line, or <br>
-//! -   is built so that both the line and it are external to one another, or <br>
-//! -   is undefined (all solutions apply). <br>
-//! Note: the interior of a line is defined as the left-hand <br>
-//! side of the line in relation to its orientation (i.e. when <br>
-//! moving from the start to the end of the curve). <br>
-class GccEnt_QualifiedLin  {
+//! Describes a qualified 2D line.
+//! A qualified 2D line is a line (gp_Lin2d line) with a
+//! qualifier which specifies whether the solution of a
+//! construction algorithm using the qualified line (as an argument):
+//! -   is 'enclosed' by the line, or
+//! -   is built so that both the line and it are external to one another, or
+//! -   is undefined (all solutions apply).
+//! Note: the interior of a line is defined as the left-hand
+//! side of the line in relation to its orientation (i.e. when
+//! moving from the start to the end of the curve).
+class GccEnt_QualifiedLin 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Constructs a qualified line by assigning the qualifier <br>
-//! Qualifier to the line Qualified. <br>
-//! Qualifier may be: <br>
-//! -   GccEnt_enclosed if the solution is enclosed by the line, or <br>
-//! -   GccEnt_outside if both the solution and the line are external to one another, or <br>
-//! -   GccEnt_unqualified if all solutions apply. <br>
-//! Note : the interior of a line is defined as the left-hand <br>
-//! side of the line in relation to its orientation. <br>
-  Standard_EXPORT   GccEnt_QualifiedLin(const gp_Lin2d& Qualified,const GccEnt_Position Qualifier);
-  //! Returns a 2D line to which the qualifier is assigned. <br>
-  Standard_EXPORT     gp_Lin2d Qualified() const;
+
+  //! Constructs a qualified line by assigning the qualifier
+  //! Qualifier to the line Qualified.
+  //! Qualifier may be:
+  //! -   GccEnt_enclosed if the solution is enclosed by the line, or
+  //! -   GccEnt_outside if both the solution and the line are external to one another, or
+  //! -   GccEnt_unqualified if all solutions apply.
+  //! Note : the interior of a line is defined as the left-hand
+  //! side of the line in relation to its orientation.
+  Standard_EXPORT GccEnt_QualifiedLin(const gp_Lin2d& Qualified, const GccEnt_Position Qualifier);
   
-//! Returns the qualifier of this qualified line, if it is "enclosed" or <br>
-//!   "outside", or <br>
-//! -   GccEnt_noqualifier if it is unqualified. <br>
-  Standard_EXPORT     GccEnt_Position Qualifier() const;
-  //! Returns true if the solution is unqualified and false in <br>
-//!          the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsUnqualified() const;
-  //! Returns true if the solution is Enclosed in the Lin2d and false in <br>
-//!          the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsEnclosed() const;
-  //! Returns true if the solution is Outside the Lin2d and false in <br>
-//!          the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsOutside() const;
-  GccEnt_QualifiedLin( )
+  //! Returns a 2D line to which the qualifier is assigned.
+  Standard_EXPORT   gp_Lin2d Qualified()  const;
+  
+
+  //! Returns the qualifier of this qualified line, if it is "enclosed" or
+  //! "outside", or
+  //! -   GccEnt_noqualifier if it is unqualified.
+  Standard_EXPORT   GccEnt_Position Qualifier()  const;
+  
+  //! Returns true if the solution is unqualified and false in
+  //! the other cases.
+  Standard_EXPORT   Standard_Boolean IsUnqualified()  const;
+  
+  //! Returns true if the solution is Enclosed in the Lin2d and false in
+  //! the other cases.
+  Standard_EXPORT   Standard_Boolean IsEnclosed()  const;
+  
+  //! Returns true if the solution is Outside the Lin2d and false in
+  //! the other cases.
+  Standard_EXPORT   Standard_Boolean IsOutside()  const;
+GccEnt_QualifiedLin( )
 {
   
 }
@@ -96,8 +87,8 @@ protected:
 private: 
 
 
-GccEnt_Position TheQualifier;
-gp_Lin2d TheQualified;
+  GccEnt_Position TheQualifier;
+  gp_Lin2d TheQualified;
 
 
 };
@@ -106,7 +97,6 @@ gp_Lin2d TheQualified;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GccEnt_QualifiedLin_HeaderFile

@@ -6,17 +6,16 @@
 #ifndef _StdSelect_TypeOfEdge_HeaderFile
 #define _StdSelect_TypeOfEdge_HeaderFile
 
-//! Provides values for different types of edges. These <br>
-//! values are used to filter edges in frameworks <br>
-//! inheriting StdSelect_EdgeFilter. <br>
-enum StdSelect_TypeOfEdge {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Provides values for different types of edges. These
+//! values are used to filter edges in frameworks
+//! inheriting StdSelect_EdgeFilter.
+enum StdSelect_TypeOfEdge
+{
 StdSelect_AnyEdge,
 StdSelect_Line,
 StdSelect_Circle
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StdSelect_TypeOfEdge_HeaderFile

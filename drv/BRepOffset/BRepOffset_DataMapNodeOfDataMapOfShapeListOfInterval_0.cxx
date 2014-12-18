@@ -5,25 +5,13 @@
 
 #include <BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepOffset_ListOfInterval_HeaderFile
 #include <BRepOffset_ListOfInterval.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BRepOffset_DataMapOfShapeListOfInterval_HeaderFile
 #include <BRepOffset_DataMapOfShapeListOfInterval.hxx>
-#endif
-#ifndef _BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval_HeaderFile
 #include <BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval.hxx>
-#endif
 
  
 

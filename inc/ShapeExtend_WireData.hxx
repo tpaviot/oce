@@ -6,31 +6,15 @@
 #ifndef _ShapeExtend_WireData_HeaderFile
 #define _ShapeExtend_WireData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_WireData_HeaderFile
 #include <Handle_ShapeExtend_WireData.hxx>
-#endif
 
-#ifndef _Handle_TopTools_HSequenceOfShape_HeaderFile
 #include <Handle_TopTools_HSequenceOfShape.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfInteger_HeaderFile
 #include <Handle_TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TopTools_HSequenceOfShape;
 class TColStd_HSequenceOfInteger;
 class TopoDS_Wire;
@@ -39,159 +23,188 @@ class TopoDS_Shape;
 class TopoDS_Face;
 
 
-//! This class provides a data structure necessary for work with the wire as with <br>
-//! ordered list of edges, what is required for many algorithms. The advantage of <br>
-//! this class is that it allows to work with wires which are not correct. <br>
-//! The object of the class ShapeExtend_WireData can be initialized by <br>
-//! TopoDS_Wire, and converted back to TopoDS_Wire. <br>
-//! An edge in the wire is defined by its rank number. Operations of accessing, <br>
-//! adding and removing edge at the given rank number are provided. On the whole <br>
-//! wire, operations of circular permutation and reversing (both orientations of <br>
-//! all edges and order of edges) are provided as well. <br>
-//! This class also provides a method to check if the edge in the wire is a seam <br>
-//! (if the wire lies on a face). <br>
-//! This class is handled by reference. Such an approach gives the following advantages: <br>
-//!    1.    Sharing the object of this class strongly optimizes the processes of <br>
-//!       analysis and fixing performed in parallel on the wire stored in the form <br>
-//!      of this class. Fixing tool (e.g. ShapeFix_Wire) fixes problems one by <br>
-//!      one using analyzing tool (e.g. ShapeAnalysis_Wire). Sharing allows not <br>
-//!      to reinitialize each time the analyzing tool with modified <br>
-//!      ShapeExtend_WireData what consumes certain time. <br>
-//!   2.    No copying of contents. The object of ShapeExtend_WireData class has <br>
-//!      quite big size, returning it as a result of the function would cause <br>
-//!      additional copying of contents if this class were one handled by value. <br>
-//!      Moreover, this class is stored as a field in other classes which are <br>
-//!      they returned as results of functions, storing only a handle to <br>
-//!      ShapeExtend_WireData saves time and memory. <br>
-class ShapeExtend_WireData : public MMgt_TShared {
+//! This class provides a data structure necessary for work with the wire as with
+//! ordered list of edges, what is required for many algorithms. The advantage of
+//! this class is that it allows to work with wires which are not correct.
+//! The object of the class ShapeExtend_WireData can be initialized by
+//! TopoDS_Wire, and converted back to TopoDS_Wire.
+//! An edge in the wire is defined by its rank number. Operations of accessing,
+//! adding and removing edge at the given rank number are provided. On the whole
+//! wire, operations of circular permutation and reversing (both orientations of
+//! all edges and order of edges) are provided as well.
+//! This class also provides a method to check if the edge in the wire is a seam
+//! (if the wire lies on a face).
+//! This class is handled by reference. Such an approach gives the following advantages:
+//! 1.    Sharing the object of this class strongly optimizes the processes of
+//! analysis and fixing performed in parallel on the wire stored in the form
+//! of this class. Fixing tool (e.g. ShapeFix_Wire) fixes problems one by
+//! one using analyzing tool (e.g. ShapeAnalysis_Wire). Sharing allows not
+//! to reinitialize each time the analyzing tool with modified
+//! ShapeExtend_WireData what consumes certain time.
+//! 2.    No copying of contents. The object of ShapeExtend_WireData class has
+//! quite big size, returning it as a result of the function would cause
+//! additional copying of contents if this class were one handled by value.
+//! Moreover, this class is stored as a field in other classes which are
+//! they returned as results of functions, storing only a handle to
+//! ShapeExtend_WireData saves time and memory.
+class ShapeExtend_WireData : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor, creates empty wire with no edges <br>
-  Standard_EXPORT   ShapeExtend_WireData();
-  //! Constructor initializing the data from TopoDS_Wire. Calls Init(wire,chained). <br>
-  Standard_EXPORT   ShapeExtend_WireData(const TopoDS_Wire& wire,const Standard_Boolean chained = Standard_True,const Standard_Boolean theManifoldMode = Standard_True);
-  //! Copies data from another WireData <br>
-  Standard_EXPORT     void Init(const Handle(ShapeExtend_WireData)& other) ;
-  //! Loads an already existing wire <br>
-//!          If <chained> is True (default), edges are added in the <br>
-//!          sequence as they are explored by TopoDS_Iterator <br>
-//!          Else, if <chained> is False, wire is explored by <br>
-//!          BRepTools_WireExplorer and it is guaranteed that edges will <br>
-//!          be sequencially connected. <br>
-//! Remark : In the latter case it can happen that not all edges <br>
-//!          will be found (because of limitations of <br>
-//!          BRepTools_WireExplorer for disconnected wires and wires <br>
-//!          with seam edges). <br>
-  Standard_EXPORT     Standard_Boolean Init(const TopoDS_Wire& wire,const Standard_Boolean chained = Standard_True,const Standard_Boolean theManifoldMode = Standard_True) ;
-  //! Clears data about Wire. <br>
-  Standard_EXPORT     void Clear() ;
-  //! Computes the list of seam edges <br>
-//!          By default (direct call), computing is enforced <br>
-//!          For indirect call (from IsSeam) it is redone only if not yet <br>
-//!          already done or if the list of edges has changed <br>
-//! Remark : A Seam Edge is an Edge present twice in the list, once as <br>
-//!          FORWARD and once as REVERSED <br>
-//!          Each sense has its own PCurve, the one for FORWARD <br>
-//!          must be set in first <br>
-  Standard_EXPORT     void ComputeSeams(const Standard_Boolean enforce = Standard_True) ;
-  //! Does a circular permutation in order to set <num>th edge last <br>
-  Standard_EXPORT     void SetLast(const Standard_Integer num) ;
-  //! When the wire contains at least one degenerated edge, sets it <br>
-//!          as last one <br>
-//! Note   : It is useful to process pcurves, for instance, while the pcurve <br>
-//!          of a DGNR may not be computed from its 3D part (there is none) <br>
-//!          it is computed after the other edges have been computed and <br>
-//!          chained. <br>
-  Standard_EXPORT     void SetDegeneratedLast() ;
-  //! Adds an edge to a wire, being defined (not yet ended) <br>
-//!          This is the plain, basic, function to add an edge <br>
-//!          <num> = 0 (D): Appends at end <br>
-//!          <num> = 1: Preprends at start <br>
-//!          else, Insert before <num> <br>
-//! Remark : Null Edge is simply ignored <br>
-  Standard_EXPORT     void Add(const TopoDS_Edge& edge,const Standard_Integer atnum = 0) ;
-  //! Adds an entire wire, considered as a list of edges <br>
-//! Remark : The wire is assumed to be ordered (TopoDS_Iterator <br>
-//!          is used) <br>
-  Standard_EXPORT     void Add(const TopoDS_Wire& wire,const Standard_Integer atnum = 0) ;
-  //! Adds a wire in the form of WireData <br>
-  Standard_EXPORT     void Add(const Handle(ShapeExtend_WireData)& wire,const Standard_Integer atnum = 0) ;
-  //! Adds an edge or a wire invoking corresponding method Add <br>
-  Standard_EXPORT     void Add(const TopoDS_Shape& shape,const Standard_Integer atnum = 0) ;
-  //! Adds an edge to start or end of <me>, according to <mode> <br>
-//!          0: at end, as direct <br>
-//!          1: at end, as reversed <br>
-//!          2: at start, as direct <br>
-//!          3: at start, as reversed <br>
-//!          < 0: no adding <br>
-  Standard_EXPORT     void AddOriented(const TopoDS_Edge& edge,const Standard_Integer mode) ;
-  //! Adds a wire to start or end of <me>, according to <mode> <br>
-//!          0: at end, as direct <br>
-//!          1: at end, as reversed <br>
-//!          2: at start, as direct <br>
-//!          3: at start, as reversed <br>
-//!          < 0: no adding <br>
-  Standard_EXPORT     void AddOriented(const TopoDS_Wire& wire,const Standard_Integer mode) ;
-  //! Adds an edge or a wire invoking corresponding method <br>
-//!          AddOriented <br>
-  Standard_EXPORT     void AddOriented(const TopoDS_Shape& shape,const Standard_Integer mode) ;
-  //! Removes an Edge, given its rank. By default removes the last edge. <br>
-  Standard_EXPORT     void Remove(const Standard_Integer num = 0) ;
-  //! Replaces an edge at the given <br>
-//!          rank number <num> with new one. Default is last edge (<num> = 0). <br>
-  Standard_EXPORT     void Set(const TopoDS_Edge& edge,const Standard_Integer num = 0) ;
-  //! Reverses the sense of the list and the orientation of each Edge <br>
-//!          This method should be called when either wire has no seam edges <br>
-//!          or face is not available <br>
-  Standard_EXPORT     void Reverse() ;
-  //! Reverses the sense of the list and the orientation of each Edge <br>
-//!          The face is necessary for swapping pcurves for seam edges <br>
-//!          (first pcurve corresponds to orientation FORWARD, and second to <br>
-//!          REVERSED; when edge is reversed, pcurves must be swapped) <br>
-//!          If face is NULL, no swapping is performed <br>
-  Standard_EXPORT     void Reverse(const TopoDS_Face& face) ;
-  //! Returns the count of currently recorded edges <br>
-  Standard_EXPORT     Standard_Integer NbEdges() const;
-  //! Returns the count of currently recorded non-manifold edges <br>
-  Standard_EXPORT     Standard_Integer NbNonManifoldEdges() const;
-  //! Returns <num>th nonmanifold Edge <br>
-  Standard_EXPORT     TopoDS_Edge NonmanifoldEdge(const Standard_Integer num) const;
-  //! Returns sequence of non-manifold edges <br>
-//!          This sequence can be not empty if wire data set in manifold mode but <br>
-//!          initial wire has INTERNAL orientation or contains INTERNAL edges <br>
-//! <br>
-  Standard_EXPORT     Handle_TopTools_HSequenceOfShape NonmanifoldEdges() const;
-  //! Returns mode defining manifold wire data or not. <br>
-//!          If manifold that nonmanifold edges will not be not <br>
-//!          consider during operations(previous behaviour) <br>
-//!         and they will be added only in result wire <br>
-//!          else non-manifold edges will consider during operations <br>
-  Standard_EXPORT     Standard_Boolean& ManifoldMode() ;
-  //! Returns <num>th Edge <br>
-  Standard_EXPORT     TopoDS_Edge Edge(const Standard_Integer num) const;
-  //! Returns the index of the edge <br>
-//!          If the edge is a seam the orientation is also checked <br>
-//!          Returns 0 if the edge is not found in the list <br>
-  Standard_EXPORT     Standard_Integer Index(const TopoDS_Edge& edge) ;
-  //! Tells if an Edge is seam (see ComputeSeams) <br>
-//! An edge is considered as seam if it presents twice in <br>
-//! the edge list, once as FORWARD and once as REVERSED. <br>
-  Standard_EXPORT     Standard_Boolean IsSeam(const Standard_Integer num) ;
-  //! Makes TopoDS_Wire using <br>
-//! BRep_Builder (just creates the TopoDS_Wire object and adds <br>
-//! all edges into it). This method should be called when <br>
-//! the wire is correct (for example, after successful <br>
-//! fixes by ShapeFix_Wire) and adjacent edges share common <br>
-//! vertices. In case if adjacent edges do not share the same <br>
-//! vertices the resulting TopoDS_Wire will be invalid. <br>
-  Standard_EXPORT     TopoDS_Wire Wire() const;
-  //! Makes TopoDS_Wire using <br>
-//! BRepAPI_MakeWire. Class BRepAPI_MakeWire merges <br>
-//! geometrically coincided vertices and can disturb <br>
-//! correct order of edges in the wire. If this class fails, <br>
-//! null shape is returned. <br>
-  Standard_EXPORT     TopoDS_Wire WireAPIMake() const;
+  
+  //! Empty constructor, creates empty wire with no edges
+  Standard_EXPORT ShapeExtend_WireData();
+  
+  //! Constructor initializing the data from TopoDS_Wire. Calls Init(wire,chained).
+  Standard_EXPORT ShapeExtend_WireData(const TopoDS_Wire& wire, const Standard_Boolean chained = Standard_True, const Standard_Boolean theManifoldMode = Standard_True);
+  
+  //! Copies data from another WireData
+  Standard_EXPORT   void Init (const Handle(ShapeExtend_WireData)& other) ;
+  
+  //! Loads an already existing wire
+  //! If <chained> is True (default), edges are added in the
+  //! sequence as they are explored by TopoDS_Iterator
+  //! Else, if <chained> is False, wire is explored by
+  //! BRepTools_WireExplorer and it is guaranteed that edges will
+  //! be sequencially connected.
+  //! Remark : In the latter case it can happen that not all edges
+  //! will be found (because of limitations of
+  //! BRepTools_WireExplorer for disconnected wires and wires
+  //! with seam edges).
+  Standard_EXPORT   Standard_Boolean Init (const TopoDS_Wire& wire, const Standard_Boolean chained = Standard_True, const Standard_Boolean theManifoldMode = Standard_True) ;
+  
+  //! Clears data about Wire.
+  Standard_EXPORT   void Clear() ;
+  
+  //! Computes the list of seam edges
+  //! By default (direct call), computing is enforced
+  //! For indirect call (from IsSeam) it is redone only if not yet
+  //! already done or if the list of edges has changed
+  //! Remark : A Seam Edge is an Edge present twice in the list, once as
+  //! FORWARD and once as REVERSED
+  //! Each sense has its own PCurve, the one for FORWARD
+  //! must be set in first
+  Standard_EXPORT   void ComputeSeams (const Standard_Boolean enforce = Standard_True) ;
+  
+  //! Does a circular permutation in order to set <num>th edge last
+  Standard_EXPORT   void SetLast (const Standard_Integer num) ;
+  
+  //! When the wire contains at least one degenerated edge, sets it
+  //! as last one
+  //! Note   : It is useful to process pcurves, for instance, while the pcurve
+  //! of a DGNR may not be computed from its 3D part (there is none)
+  //! it is computed after the other edges have been computed and
+  //! chained.
+  Standard_EXPORT   void SetDegeneratedLast() ;
+  
+  //! Adds an edge to a wire, being defined (not yet ended)
+  //! This is the plain, basic, function to add an edge
+  //! <num> = 0 (D): Appends at end
+  //! <num> = 1: Preprends at start
+  //! else, Insert before <num>
+  //! Remark : Null Edge is simply ignored
+  Standard_EXPORT   void Add (const TopoDS_Edge& edge, const Standard_Integer atnum = 0) ;
+  
+  //! Adds an entire wire, considered as a list of edges
+  //! Remark : The wire is assumed to be ordered (TopoDS_Iterator
+  //! is used)
+  Standard_EXPORT   void Add (const TopoDS_Wire& wire, const Standard_Integer atnum = 0) ;
+  
+  //! Adds a wire in the form of WireData
+  Standard_EXPORT   void Add (const Handle(ShapeExtend_WireData)& wire, const Standard_Integer atnum = 0) ;
+  
+  //! Adds an edge or a wire invoking corresponding method Add
+  Standard_EXPORT   void Add (const TopoDS_Shape& shape, const Standard_Integer atnum = 0) ;
+  
+  //! Adds an edge to start or end of <me>, according to <mode>
+  //! 0: at end, as direct
+  //! 1: at end, as reversed
+  //! 2: at start, as direct
+  //! 3: at start, as reversed
+  //! < 0: no adding
+  Standard_EXPORT   void AddOriented (const TopoDS_Edge& edge, const Standard_Integer mode) ;
+  
+  //! Adds a wire to start or end of <me>, according to <mode>
+  //! 0: at end, as direct
+  //! 1: at end, as reversed
+  //! 2: at start, as direct
+  //! 3: at start, as reversed
+  //! < 0: no adding
+  Standard_EXPORT   void AddOriented (const TopoDS_Wire& wire, const Standard_Integer mode) ;
+  
+  //! Adds an edge or a wire invoking corresponding method
+  //! AddOriented
+  Standard_EXPORT   void AddOriented (const TopoDS_Shape& shape, const Standard_Integer mode) ;
+  
+  //! Removes an Edge, given its rank. By default removes the last edge.
+  Standard_EXPORT   void Remove (const Standard_Integer num = 0) ;
+  
+  //! Replaces an edge at the given
+  //! rank number <num> with new one. Default is last edge (<num> = 0).
+  Standard_EXPORT   void Set (const TopoDS_Edge& edge, const Standard_Integer num = 0) ;
+  
+  //! Reverses the sense of the list and the orientation of each Edge
+  //! This method should be called when either wire has no seam edges
+  //! or face is not available
+  Standard_EXPORT   void Reverse() ;
+  
+  //! Reverses the sense of the list and the orientation of each Edge
+  //! The face is necessary for swapping pcurves for seam edges
+  //! (first pcurve corresponds to orientation FORWARD, and second to
+  //! REVERSED; when edge is reversed, pcurves must be swapped)
+  //! If face is NULL, no swapping is performed
+  Standard_EXPORT   void Reverse (const TopoDS_Face& face) ;
+  
+  //! Returns the count of currently recorded edges
+  Standard_EXPORT   Standard_Integer NbEdges()  const;
+  
+  //! Returns the count of currently recorded non-manifold edges
+  Standard_EXPORT   Standard_Integer NbNonManifoldEdges()  const;
+  
+  //! Returns <num>th nonmanifold Edge
+  Standard_EXPORT   TopoDS_Edge NonmanifoldEdge (const Standard_Integer num)  const;
+  
+  //! Returns sequence of non-manifold edges
+  //! This sequence can be not empty if wire data set in manifold mode but
+  //! initial wire has INTERNAL orientation or contains INTERNAL edges
+  Standard_EXPORT   Handle(TopTools_HSequenceOfShape) NonmanifoldEdges()  const;
+  
+  //! Returns mode defining manifold wire data or not.
+  //! If manifold that nonmanifold edges will not be not
+  //! consider during operations(previous behaviour)
+  //! and they will be added only in result wire
+  //! else non-manifold edges will consider during operations
+  Standard_EXPORT   Standard_Boolean& ManifoldMode() ;
+  
+  //! Returns <num>th Edge
+  Standard_EXPORT   TopoDS_Edge Edge (const Standard_Integer num)  const;
+  
+  //! Returns the index of the edge
+  //! If the edge is a seam the orientation is also checked
+  //! Returns 0 if the edge is not found in the list
+  Standard_EXPORT   Standard_Integer Index (const TopoDS_Edge& edge) ;
+  
+  //! Tells if an Edge is seam (see ComputeSeams)
+  //! An edge is considered as seam if it presents twice in
+  //! the edge list, once as FORWARD and once as REVERSED.
+  Standard_EXPORT   Standard_Boolean IsSeam (const Standard_Integer num) ;
+  
+  //! Makes TopoDS_Wire using
+  //! BRep_Builder (just creates the TopoDS_Wire object and adds
+  //! all edges into it). This method should be called when
+  //! the wire is correct (for example, after successful
+  //! fixes by ShapeFix_Wire) and adjacent edges share common
+  //! vertices. In case if adjacent edges do not share the same
+  //! vertices the resulting TopoDS_Wire will be invalid.
+  Standard_EXPORT   TopoDS_Wire Wire()  const;
+  
+  //! Makes TopoDS_Wire using
+  //! BRepAPI_MakeWire. Class BRepAPI_MakeWire merges
+  //! geometrically coincided vertices and can disturb
+  //! correct order of edges in the wire. If this class fails,
+  //! null shape is returned.
+  Standard_EXPORT   TopoDS_Wire WireAPIMake()  const;
 
 
 
@@ -206,12 +219,12 @@ protected:
 private: 
 
 
-Handle_TopTools_HSequenceOfShape myEdges;
-Handle_TopTools_HSequenceOfShape myNonmanifoldEdges;
-Handle_TColStd_HSequenceOfInteger mySeams;
-Standard_Integer mySeamF;
-Standard_Integer mySeamR;
-Standard_Boolean myManifoldMode;
+  Handle(TopTools_HSequenceOfShape) myEdges;
+  Handle(TopTools_HSequenceOfShape) myNonmanifoldEdges;
+  Handle(TColStd_HSequenceOfInteger) mySeams;
+  Standard_Integer mySeamF;
+  Standard_Integer mySeamR;
+  Standard_Boolean myManifoldMode;
 
 
 };
@@ -220,7 +233,6 @@ Standard_Boolean myManifoldMode;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeExtend_WireData_HeaderFile

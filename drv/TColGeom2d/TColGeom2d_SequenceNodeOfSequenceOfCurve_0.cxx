@@ -5,16 +5,10 @@
 
 #include <TColGeom2d_SequenceNodeOfSequenceOfCurve.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _TColGeom2d_SequenceOfCurve_HeaderFile
 #include <TColGeom2d_SequenceOfCurve.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TColGeom2d_SequenceNodeOfSequenceOfCurve,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TColGeom2d_SequenceNodeOfSequenceOfCurve)
 
 
-#define SeqItem Handle_Geom2d_Curve
+#define SeqItem Handle(Geom2d_Curve)
 #define SeqItem_hxx <Geom2d_Curve.hxx>
 #define TCollection_SequenceNode TColGeom2d_SequenceNodeOfSequenceOfCurve
 #define TCollection_SequenceNode_hxx <TColGeom2d_SequenceNodeOfSequenceOfCurve.hxx>

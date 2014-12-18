@@ -6,22 +6,15 @@
 #ifndef _Handle_StepFEA_FeaMaterialPropertyRepresentationItem_HeaderFile
 #define _Handle_StepFEA_FeaMaterialPropertyRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_RepresentationItem);
 class StepFEA_FeaMaterialPropertyRepresentationItem;
 
-DEFINE_STANDARD_HANDLE(StepFEA_FeaMaterialPropertyRepresentationItem,StepRepr_RepresentationItem)
+DEFINE_STANDARD_HANDLE(StepFEA_FeaMaterialPropertyRepresentationItem, StepRepr_RepresentationItem)
 
-#endif
+#endif // _Handle_StepFEA_FeaMaterialPropertyRepresentationItem_HeaderFile

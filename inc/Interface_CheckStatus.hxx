@@ -6,11 +6,14 @@
 #ifndef _Interface_CheckStatus_HeaderFile
 #define _Interface_CheckStatus_HeaderFile
 
-//! Classifies checks <br>
-//!           OK : check is empty  Warning : Warning, no Fail   Fail : Fail <br>
-//!           Others to query : <br>
-//!           Any : any status   Message : Warning/Fail  NoFail : Warning/OK <br>
-enum Interface_CheckStatus {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Classifies checks
+//! OK : check is empty  Warning : Warning, no Fail   Fail : Fail
+//! Others to query :
+//! Any : any status   Message : Warning/Fail  NoFail : Warning/OK
+enum Interface_CheckStatus
+{
 Interface_CheckOK,
 Interface_CheckWarning,
 Interface_CheckFail,
@@ -19,8 +22,4 @@ Interface_CheckMessage,
 Interface_CheckNoFail
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Interface_CheckStatus_HeaderFile

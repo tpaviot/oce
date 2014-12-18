@@ -107,14 +107,14 @@ void AIS_Trihedron::SetComponent(const Handle(Geom_Axis2Placement)& aComponent)
 //purpose  : 
 //=======================================================================
 
-void AIS_Trihedron::SetLocation(const TopLoc_Location& aLoc)
+void AIS_Trihedron::SetLocalTransformation (const gp_Trsf& theTransformation)
 {
   // Update location to the subshapes
   Standard_Integer anIdx;
   for (anIdx = 0; anIdx < 7; anIdx++)
-    myShapes[anIdx]->SetLocation (aLoc);
+    myShapes[anIdx]->SetLocalTransformation (theTransformation);
 
-  AIS_InteractiveObject::SetLocation (aLoc);
+  AIS_InteractiveObject::SetLocalTransformation (theTransformation);
 }
 
 //=======================================================================
@@ -291,11 +291,11 @@ void AIS_Trihedron::Compute(
 //purpose  : 
 //=======================================================================
 
-void AIS_Trihedron::Compute(const Handle_Prs3d_Projector& aProjector,
-                            const Handle_Geom_Transformation& aTransformation,
-                            const Handle_Prs3d_Presentation& aPresentation)
+void AIS_Trihedron::Compute(const Handle(Prs3d_Projector)& aProjector,
+                            const Handle(Geom_Transformation)& aTransformation,
+                            const Handle(Prs3d_Presentation)& aPresentation)
 {
-// Standard_NotImplemented::Raise("AIS_Trihedron::Compute(const Handle_Prs3d_Projector&, const Handle_Geom_Transformation&, const Handle_Prs3d_Presentation&)");
+// Standard_NotImplemented::Raise("AIS_Trihedron::Compute(const Handle(Prs3d_Projector)&, const Handle(Geom_Transformation)&, const Handle(Prs3d_Presentation)&)");
  PrsMgr_PresentableObject::Compute( aProjector , aTransformation , aPresentation) ;
 }
 

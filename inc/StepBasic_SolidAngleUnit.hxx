@@ -6,28 +6,22 @@
 #ifndef _StepBasic_SolidAngleUnit_HeaderFile
 #define _StepBasic_SolidAngleUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_SolidAngleUnit_HeaderFile
 #include <Handle_StepBasic_SolidAngleUnit.hxx>
-#endif
 
-#ifndef _StepBasic_NamedUnit_HeaderFile
 #include <StepBasic_NamedUnit.hxx>
-#endif
 
 
 
-class StepBasic_SolidAngleUnit : public StepBasic_NamedUnit {
+class StepBasic_SolidAngleUnit : public StepBasic_NamedUnit
+{
 
 public:
 
-  //! Returns a SolidAngleUnit <br>
-  Standard_EXPORT   StepBasic_SolidAngleUnit();
+  
+  //! Returns a SolidAngleUnit
+  Standard_EXPORT StepBasic_SolidAngleUnit();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_SolidAngleUnit_HeaderFile

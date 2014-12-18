@@ -5,66 +5,28 @@
 
 #include <GeomInt_WLApprox.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Adaptor3d_HSurfaceTool_HeaderFile
 #include <Adaptor3d_HSurfaceTool.hxx>
-#endif
-#ifndef _IntSurf_Quadric_HeaderFile
 #include <IntSurf_Quadric.hxx>
-#endif
-#ifndef _IntSurf_QuadricTool_HeaderFile
 #include <IntSurf_QuadricTool.hxx>
-#endif
-#ifndef _IntPatch_WLine_HeaderFile
 #include <IntPatch_WLine.hxx>
-#endif
-#ifndef _GeomInt_ThePrmPrmSvSurfacesOfWLApprox_HeaderFile
 #include <GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_HeaderFile
 #include <GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheImpPrmSvSurfacesOfWLApprox_HeaderFile
 #include <GeomInt_TheImpPrmSvSurfacesOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_HeaderFile
 #include <GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheMultiLineOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheMultiLineToolOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineToolOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_TheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_MyGradientbisOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_TheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
  
 
-#define ThePSurface Handle_Adaptor3d_HSurface
+#define ThePSurface Handle(Adaptor3d_HSurface)
 #define ThePSurface_hxx <Adaptor3d_HSurface.hxx>
 #define ThePSurfaceTool Adaptor3d_HSurfaceTool
 #define ThePSurfaceTool_hxx <Adaptor3d_HSurfaceTool.hxx>

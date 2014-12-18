@@ -6,28 +6,14 @@
 #ifndef _AIS_DataMapNodeOfDataMapOfILC_HeaderFile
 #define _AIS_DataMapNodeOfDataMapOfILC_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_DataMapNodeOfDataMapOfILC_HeaderFile
 #include <Handle_AIS_DataMapNodeOfDataMapOfILC.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_AIS_LocalContext_HeaderFile
 #include <Handle_AIS_LocalContext.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class AIS_LocalContext;
 class TColStd_MapIntegerHasher;
 class AIS_DataMapOfILC;
@@ -35,16 +21,17 @@ class AIS_DataMapIteratorOfDataMapOfILC;
 
 
 
-class AIS_DataMapNodeOfDataMapOfILC : public TCollection_MapNode {
+class AIS_DataMapNodeOfDataMapOfILC : public TCollection_MapNode
+{
 
 public:
 
   
-      AIS_DataMapNodeOfDataMapOfILC(const Standard_Integer& K,const Handle(AIS_LocalContext)& I,const TCollection_MapNodePtr& n);
+    AIS_DataMapNodeOfDataMapOfILC(const Standard_Integer& K, const Handle(AIS_LocalContext)& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Handle_AIS_LocalContext& Value() const;
+      Handle(AIS_LocalContext)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Handle_AIS_LocalContext myValue;
+  Standard_Integer myKey;
+  Handle(AIS_LocalContext) myValue;
 
 
 };
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_AIS_LocalContext
+#define TheItem Handle(AIS_LocalContext)
 #define TheItem_hxx <AIS_LocalContext.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>
@@ -98,7 +85,6 @@ Handle_AIS_LocalContext myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_DataMapNodeOfDataMapOfILC_HeaderFile

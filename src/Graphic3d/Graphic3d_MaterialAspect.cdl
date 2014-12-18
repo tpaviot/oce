@@ -29,6 +29,7 @@ class MaterialAspect from Graphic3d
 	---Version:
 
 	---Purpose: This class allows the definition of the type of a surface.
+	--          Aspect attributes of a 3d face.
 	--  Keywords: Material, FillArea, Shininess, Ambient, Color, Diffuse,
 	--	     Specular, Transparency, Emissive, ReflectionMode,
 	--	     BackFace, FrontFace, Reflection, Absorbtion
@@ -143,11 +144,20 @@ is
 	--	    negative value or greater than 1.0.
 	raises MaterialDefinitionError from Graphic3d is static;
 
+	SetRefractionIndex ( me	: in out;
+		      theValue	: Real from Standard )
+	---Level: Public
+	---Purpose: Modifies the refraction index of the material.
+	--  Category: Methods to modify the class definition
+	--  Warning: Raises MaterialDefinitionError if <theValue> is a
+	--	    lesser than 1.0.
+	raises MaterialDefinitionError from Graphic3d is static;
+
 	SetColor ( me		: in out;
 		   AColor	: Color from Quantity )
 		is static;
 	---Level: Public
-	---Purpose: Modifies the ambient colour of the surface.
+	---Purpose: Modifies the ambient and diffuse colour of the surface.
 	--  Category: Methods to modify the class definition
 	
 	SetAmbientColor ( me		: in out;
@@ -248,13 +258,15 @@ is
 	Color ( me )
 		returns Color from Quantity
 		is static;
+  ---C++: return const&
 	---Level: Public
-	---Purpose: Returns the ambient colour of the surface.
+	---Purpose: Returns the diffuse colour of the surface.
 	---Category: Inquire methods
 
 	AmbientColor ( me )
 		returns Color from Quantity
 		is static;
+  ---C++: return const&
 	---Level: Public
 	---Purpose: Returns the ambient colour of the surface.
 	---Category: Inquire methods
@@ -262,6 +274,7 @@ is
 	DiffuseColor ( me )
 		returns Color from Quantity
 		is static;
+  ---C++: return const&
 	---Level: Public
 	---Purpose: Returns the diffuse colour of the surface.
 	---Category: Inquire methods
@@ -269,6 +282,7 @@ is
 	SpecularColor ( me )
 		returns Color from Quantity
 		is static;
+  ---C++: return const&
 	---Level: Public
 	---Purpose: Returns the specular colour of the surface.
 	---Category: Inquire methods
@@ -276,6 +290,7 @@ is
 	EmissiveColor ( me )
 		returns Color from Quantity
 		is static;
+  ---C++: return const&
 	---Level: Public
 	---Purpose: Returns the emissive colour of the surface.
 	---Category: Inquire methods
@@ -308,7 +323,14 @@ is
 	---Purpose: Returns the transparency coefficient of the surface.
 	---Category: Inquire methods
 
-        Emissive ( me )
+	RefractionIndex ( me )
+		returns Real from Standard
+		is static;
+	---Level: Public
+	---Purpose: Returns the refraction index of the material
+	---Category: Inquire methods
+
+  Emissive ( me )
 		returns Real from Standard
 		is static;
 	---Level: Public
@@ -404,7 +426,7 @@ is
 
         Init ( me : out; AName  : NameOfMaterial from Graphic3d) is private;
 
---
+--
 
 fields
 
@@ -444,47 +466,44 @@ fields
 --			Iris Advanced Graphics, unit D
 --
 --
-	-- the coefficient of diffuse reflection, the colour, and the activity
-	MyDiffuseCoef		:	ShortReal from Standard;
-	MyDiffuseColor		:	Color from Quantity;
-	MyDiffuseActivity	:	Boolean from Standard;
+  -- the coefficient of diffuse reflection, the colour, and the activity
+  myDiffuseCoef     : ShortReal from Standard;
+  myDiffuseColor    : Color     from Quantity;
+  myDiffuseActivity : Boolean   from Standard;
 
-	-- the coefficient of ambient reflection, the colour
-	-- and the activity
-	MyAmbientCoef		:	ShortReal from Standard;
-	MyAmbientColor		:	Color from Quantity;
-	MyAmbientActivity	:	Boolean from Standard;
+  -- the coefficient of ambient reflection, the colour and the activity
+  myAmbientCoef     : ShortReal from Standard;
+  myAmbientColor    : Color     from Quantity;
+  myAmbientActivity : Boolean   from Standard;
 
-	-- the coefficient of specular reflection, the colour
-	-- and the activity
-	MySpecularCoef		:	ShortReal from Standard;
-	MySpecularColor		:	Color from Quantity;
-	MySpecularActivity	:	Boolean from Standard;
-	
-	-- the coefficient of emissive reflection
-	MyEmissiveCoef          :       ShortReal from Standard;
-	MyEmissiveColor         :       Color from Quantity;
-	MyEmissiveActivity      :       Boolean from Standard;
+  -- the coefficient of specular reflection, the colour and the activity
+  mySpecularCoef     : ShortReal from Standard;
+  mySpecularColor    : Color from Quantity;
+  mySpecularActivity : Boolean from Standard;
 
-	-- the coefficient of transparency
-	MyTransparencyCoef	:	ShortReal from Standard;
+  -- the coefficient of emissive reflection
+  myEmissiveCoef     : ShortReal from Standard;
+  myEmissiveColor    : Color     from Quantity;
+  myEmissiveActivity : Boolean   from Standard;
 
-	-- the coefficient of luminosity
-	MyShininess		:	ShortReal from Standard;
+  -- the coefficient of transparency and refraction index
+  myTransparencyCoef  : ShortReal from Standard;
+  myRefractionIndex   : ShortReal from Standard;
 
+  -- the specular exponent
+  myShininess    : ShortReal from Standard;
 
-    	-- the coeficient of reflexion for the environment texture
-    	MyEnvReflexion          :       ShortReal  from  Standard;
-	
-	-- the type of material
-	--MyMaterialType          :       Boolean from Standard;
-	MyMaterialType          :       TypeOfMaterial from Graphic3d;
+  -- the coeficient of reflexion for the environment texture
+  myEnvReflexion : ShortReal from Standard;
 
-        -- the Name of material
-        MyMaterialName          : NameOfMaterial from Graphic3d;
-        MyRequestedMaterialName : NameOfMaterial from Graphic3d;
+  -- the type of material
+  myMaterialType : TypeOfMaterial from Graphic3d;
 
-	-- the string name of the material
-	MyStringName		: AsciiString from TCollection;
+  -- the Name of material
+  myMaterialName          : NameOfMaterial from Graphic3d;
+  myRequestedMaterialName : NameOfMaterial from Graphic3d;
+
+  -- the string name of the material
+  myStringName : AsciiString from TCollection;
 
 end MaterialAspect;

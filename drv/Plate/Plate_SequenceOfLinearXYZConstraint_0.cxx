@@ -5,18 +5,10 @@
 
 #include <Plate_SequenceOfLinearXYZConstraint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Plate_LinearXYZConstraint_HeaderFile
 #include <Plate_LinearXYZConstraint.hxx>
-#endif
-#ifndef _Plate_SequenceNodeOfSequenceOfLinearXYZConstraint_HeaderFile
 #include <Plate_SequenceNodeOfSequenceOfLinearXYZConstraint.hxx>
-#endif
  
 
 #define SeqItem Plate_LinearXYZConstraint

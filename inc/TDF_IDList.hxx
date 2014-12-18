@@ -6,28 +6,14 @@
 #ifndef _TDF_IDList_HeaderFile
 #define _TDF_IDList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TDF_ListNodeOfIDList_HeaderFile
 #include <Handle_TDF_ListNodeOfIDList.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TDF_ListIteratorOfIDList;
 class Standard_GUID;
@@ -35,61 +21,63 @@ class TDF_ListNodeOfIDList;
 
 
 
-class TDF_IDList  {
+class TDF_IDList 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_IDList();
+  Standard_EXPORT TDF_IDList();
   
-  Standard_EXPORT     void Assign(const TDF_IDList& Other) ;
-    void operator=(const TDF_IDList& Other) 
+  Standard_EXPORT TDF_IDList(const TDF_IDList& Other);
+  
+  Standard_EXPORT   void Assign (const TDF_IDList& Other) ;
+  void operator= (const TDF_IDList& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDF_IDList()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Standard_GUID& I) ;
+  Standard_EXPORT   void Prepend (const Standard_GUID& I) ;
   
-  Standard_EXPORT     void Prepend(const Standard_GUID& I,TDF_ListIteratorOfIDList& theIt) ;
+  Standard_EXPORT   void Prepend (const Standard_GUID& I, TDF_ListIteratorOfIDList& theIt) ;
   
-  Standard_EXPORT     void Prepend(TDF_IDList& Other) ;
+  Standard_EXPORT   void Prepend (TDF_IDList& Other) ;
   
-  Standard_EXPORT     void Append(const Standard_GUID& I) ;
+  Standard_EXPORT   void Append (const Standard_GUID& I) ;
   
-  Standard_EXPORT     void Append(const Standard_GUID& I,TDF_ListIteratorOfIDList& theIt) ;
+  Standard_EXPORT   void Append (const Standard_GUID& I, TDF_ListIteratorOfIDList& theIt) ;
   
-  Standard_EXPORT     void Append(TDF_IDList& Other) ;
+  Standard_EXPORT   void Append (TDF_IDList& Other) ;
   
-  Standard_EXPORT     Standard_GUID& First() const;
+  Standard_EXPORT   Standard_GUID& First()  const;
   
-  Standard_EXPORT     Standard_GUID& Last() const;
+  Standard_EXPORT   Standard_GUID& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TDF_ListIteratorOfIDList& It) ;
+  Standard_EXPORT   void Remove (TDF_ListIteratorOfIDList& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_GUID& I,TDF_ListIteratorOfIDList& It) ;
+  Standard_EXPORT   void InsertBefore (const Standard_GUID& I, TDF_ListIteratorOfIDList& It) ;
   
-  Standard_EXPORT     void InsertBefore(TDF_IDList& Other,TDF_ListIteratorOfIDList& It) ;
+  Standard_EXPORT   void InsertBefore (TDF_IDList& Other, TDF_ListIteratorOfIDList& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_GUID& I,TDF_ListIteratorOfIDList& It) ;
+  Standard_EXPORT   void InsertAfter (const Standard_GUID& I, TDF_ListIteratorOfIDList& It) ;
   
-  Standard_EXPORT     void InsertAfter(TDF_IDList& Other,TDF_ListIteratorOfIDList& It) ;
+  Standard_EXPORT   void InsertAfter (TDF_IDList& Other, TDF_ListIteratorOfIDList& It) ;
 
 
 friend class TDF_ListIteratorOfIDList;
-
 
 
 protected:
@@ -100,12 +88,10 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TDF_IDList(const TDF_IDList& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_IDList_HeaderFile

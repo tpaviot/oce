@@ -1,45 +1,14 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Geom_Plane_HeaderFile
 #include <Geom_Plane.hxx>
-#endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
-#include <PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Prs3d_Presentation_HeaderFile
 #include <Prs3d_Presentation.hxx>
-#endif
-#ifndef _Prs3d_Projector_HeaderFile
 #include <Prs3d_Projector.hxx>
-#endif
-#ifndef _Geom_Transformation_HeaderFile
 #include <Geom_Transformation.hxx>
-#endif
-#ifndef _SelectMgr_Selection_HeaderFile
 #include <SelectMgr_Selection.hxx>
-#endif
-#ifndef _Geom_Line_HeaderFile
 #include <Geom_Line.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Geom_Circle_HeaderFile
 #include <Geom_Circle.hxx>
-#endif
-#ifndef _Geom_Ellipse_HeaderFile
 #include <Geom_Ellipse.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _AIS_IdenticRelation_HeaderFile
 #include <AIS_IdenticRelation.hxx>
-#endif

@@ -1,3 +1,1 @@
-#ifndef _math_ValueAndWeight_HeaderFile
 #include <math_ValueAndWeight.hxx>
-#endif

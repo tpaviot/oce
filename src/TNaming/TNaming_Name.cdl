@@ -18,7 +18,7 @@
 
 
 class Name from TNaming 
-    
+    ---Purpose: store the arguments of Naming.
 uses
 
     NameType         from TNaming,
@@ -89,7 +89,7 @@ is
 	    	
     Paste (me; 
     	   into : in out  Name from TNaming; 
-    	   RT   : mutable RelocationTable from TDF);
+    	   RT   : RelocationTable from TDF);
     	    	
 fields
 

@@ -6,13 +6,11 @@
 #ifndef _BRepOffsetAPI_Sewing_HeaderFile
 #define _BRepOffsetAPI_Sewing_HeaderFile
 
-#ifndef _BRepBuilderAPI_Sewing_HeaderFile
 #include <BRepBuilderAPI_Sewing.hxx>
-#endif
 
 typedef BRepBuilderAPI_Sewing BRepOffsetAPI_Sewing;
 typedef Handle_BRepBuilderAPI_Sewing Handle_BRepOffsetAPI_Sewing;
 
 #define BRepOffsetAPI_Sewing_Type_() BRepBuilderAPI_Sewing_Type_()
 
-#endif
+#endif // _BRepOffsetAPI_Sewing_HeaderFile

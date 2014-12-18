@@ -7,7 +7,6 @@
 #define _TopLoc_TrsfPtr_HeaderFile
 
 class gp_Trsf;
-
 typedef gp_Trsf* TopLoc_TrsfPtr;
 
-#endif
+#endif // _TopLoc_TrsfPtr_HeaderFile

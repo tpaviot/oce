@@ -6,28 +6,14 @@
 #ifndef _TNaming_ListOfIndexedDataMapOfShapeListOfShape_HeaderFile
 #define _TNaming_ListOfIndexedDataMapOfShapeListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape_HeaderFile
 #include <Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape;
 class TopTools_IndexedDataMapOfShapeListOfShape;
@@ -35,61 +21,63 @@ class TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape;
 
 
 
-class TNaming_ListOfIndexedDataMapOfShapeListOfShape  {
+class TNaming_ListOfIndexedDataMapOfShapeListOfShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TNaming_ListOfIndexedDataMapOfShapeListOfShape();
+  Standard_EXPORT TNaming_ListOfIndexedDataMapOfShapeListOfShape();
   
-  Standard_EXPORT     void Assign(const TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other) ;
-    void operator=(const TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other) 
+  Standard_EXPORT TNaming_ListOfIndexedDataMapOfShapeListOfShape(const TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other);
+  
+  Standard_EXPORT   void Assign (const TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other) ;
+  void operator= (const TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TNaming_ListOfIndexedDataMapOfShapeListOfShape()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const TopTools_IndexedDataMapOfShapeListOfShape& I) ;
+  Standard_EXPORT   void Prepend (const TopTools_IndexedDataMapOfShapeListOfShape& I) ;
   
-  Standard_EXPORT     void Prepend(const TopTools_IndexedDataMapOfShapeListOfShape& I,TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& theIt) ;
+  Standard_EXPORT   void Prepend (const TopTools_IndexedDataMapOfShapeListOfShape& I, TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& theIt) ;
   
-  Standard_EXPORT     void Prepend(TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other) ;
+  Standard_EXPORT   void Prepend (TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other) ;
   
-  Standard_EXPORT     void Append(const TopTools_IndexedDataMapOfShapeListOfShape& I) ;
+  Standard_EXPORT   void Append (const TopTools_IndexedDataMapOfShapeListOfShape& I) ;
   
-  Standard_EXPORT     void Append(const TopTools_IndexedDataMapOfShapeListOfShape& I,TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& theIt) ;
+  Standard_EXPORT   void Append (const TopTools_IndexedDataMapOfShapeListOfShape& I, TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& theIt) ;
   
-  Standard_EXPORT     void Append(TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other) ;
+  Standard_EXPORT   void Append (TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other) ;
   
-  Standard_EXPORT     TopTools_IndexedDataMapOfShapeListOfShape& First() const;
+  Standard_EXPORT   TopTools_IndexedDataMapOfShapeListOfShape& First()  const;
   
-  Standard_EXPORT     TopTools_IndexedDataMapOfShapeListOfShape& Last() const;
+  Standard_EXPORT   TopTools_IndexedDataMapOfShapeListOfShape& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& It) ;
+  Standard_EXPORT   void Remove (TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& It) ;
   
-  Standard_EXPORT     void InsertBefore(const TopTools_IndexedDataMapOfShapeListOfShape& I,TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& It) ;
+  Standard_EXPORT   void InsertBefore (const TopTools_IndexedDataMapOfShapeListOfShape& I, TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& It) ;
   
-  Standard_EXPORT     void InsertBefore(TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other,TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& It) ;
+  Standard_EXPORT   void InsertBefore (TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other, TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& It) ;
   
-  Standard_EXPORT     void InsertAfter(const TopTools_IndexedDataMapOfShapeListOfShape& I,TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& It) ;
+  Standard_EXPORT   void InsertAfter (const TopTools_IndexedDataMapOfShapeListOfShape& I, TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& It) ;
   
-  Standard_EXPORT     void InsertAfter(TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other,TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& It) ;
+  Standard_EXPORT   void InsertAfter (TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other, TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape& It) ;
 
 
 friend class TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape;
-
 
 
 protected:
@@ -100,12 +88,10 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TNaming_ListOfIndexedDataMapOfShapeListOfShape(const TNaming_ListOfIndexedDataMapOfShapeListOfShape& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_ListOfIndexedDataMapOfShapeListOfShape_HeaderFile

@@ -6,16 +6,15 @@
 #ifndef _Vrml_CylinderParts_HeaderFile
 #define _Vrml_CylinderParts_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Vrml_CylinderParts {
+
+enum Vrml_CylinderParts
+{
 Vrml_CylinderSIDES,
 Vrml_CylinderTOP,
 Vrml_CylinderBOTTOM,
 Vrml_CylinderALL
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Vrml_CylinderParts_HeaderFile

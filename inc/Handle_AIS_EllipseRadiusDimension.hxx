@@ -6,22 +6,15 @@
 #ifndef _Handle_AIS_EllipseRadiusDimension_HeaderFile
 #define _Handle_AIS_EllipseRadiusDimension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_AIS_Relation_HeaderFile
 #include <Handle_AIS_Relation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(AIS_Relation);
 class AIS_EllipseRadiusDimension;
 
-DEFINE_STANDARD_HANDLE(AIS_EllipseRadiusDimension,AIS_Relation)
+DEFINE_STANDARD_HANDLE(AIS_EllipseRadiusDimension, AIS_Relation)
 
-#endif
+#endif // _Handle_AIS_EllipseRadiusDimension_HeaderFile

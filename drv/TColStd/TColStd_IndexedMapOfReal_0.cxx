@@ -5,18 +5,10 @@
 
 #include <TColStd_IndexedMapOfReal.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColStd_MapRealHasher_HeaderFile
 #include <TColStd_MapRealHasher.hxx>
-#endif
-#ifndef _TColStd_IndexedMapNodeOfIndexedMapOfReal_HeaderFile
 #include <TColStd_IndexedMapNodeOfIndexedMapOfReal.hxx>
-#endif
  
 
 #define TheKey Standard_Real

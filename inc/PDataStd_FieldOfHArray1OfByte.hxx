@@ -6,31 +6,15 @@
 #ifndef _PDataStd_FieldOfHArray1OfByte_HeaderFile
 #define _PDataStd_FieldOfHArray1OfByte_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _DBC_BaseArray_HeaderFile
 #include <DBC_BaseArray.hxx>
-#endif
-#ifndef _Standard_Byte_HeaderFile
 #include <Standard_Byte.hxx>
-#endif
-#ifndef _Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte_HeaderFile
 #include <Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_NegativeValue;
 class Standard_OutOfRange;
 class Standard_DimensionMismatch;
@@ -43,36 +27,37 @@ class PDataStd_VArrayTNodeOfFieldOfHArray1OfByte;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(PDataStd_FieldOfHArray1OfByte);
 
 
-class PDataStd_FieldOfHArray1OfByte  : public DBC_BaseArray {
+class PDataStd_FieldOfHArray1OfByte  : public DBC_BaseArray
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   PDataStd_FieldOfHArray1OfByte();
+  Standard_EXPORT PDataStd_FieldOfHArray1OfByte();
   
-  Standard_EXPORT   PDataStd_FieldOfHArray1OfByte(const Standard_Integer Size);
+  Standard_EXPORT PDataStd_FieldOfHArray1OfByte(const Standard_Integer Size);
   
-  Standard_EXPORT   PDataStd_FieldOfHArray1OfByte(const PDataStd_FieldOfHArray1OfByte& Varray);
+  Standard_EXPORT PDataStd_FieldOfHArray1OfByte(const PDataStd_FieldOfHArray1OfByte& Varray);
   
-  Standard_EXPORT     void Resize(const Standard_Integer Size) ;
+  Standard_EXPORT   void Resize (const Standard_Integer Size) ;
   
-  Standard_EXPORT     void Assign(const PDataStd_FieldOfHArray1OfByte& Other) ;
-    void operator =(const PDataStd_FieldOfHArray1OfByte& Other) 
+  Standard_EXPORT   void Assign (const PDataStd_FieldOfHArray1OfByte& Other) ;
+  void operator = (const PDataStd_FieldOfHArray1OfByte& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_Byte& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_Byte& Value) ;
   
-  Standard_EXPORT     Standard_Byte& Value(const Standard_Integer Index) const;
-    Standard_Byte& operator ()(const Standard_Integer Index) const
+  Standard_EXPORT   Standard_Byte& Value (const Standard_Integer Index)  const;
+  Standard_Byte& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~PDataStd_FieldOfHArray1OfByte()
 {
   Destroy();
@@ -100,7 +85,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_FieldOfHArray1OfByte_HeaderFile

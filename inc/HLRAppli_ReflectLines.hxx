@@ -6,49 +6,39 @@
 #ifndef _HLRAppli_ReflectLines_HeaderFile
 #define _HLRAppli_ReflectLines_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _HLRAlgo_Projector_HeaderFile
 #include <HLRAlgo_Projector.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! This class builds reflect lines on a shape <br>
-//!         according to the axes of view defined by user. <br>
-//!         Reflect lines are represented by edges in 3d. <br>
-class HLRAppli_ReflectLines  {
+//! This class builds reflect lines on a shape
+//! according to the axes of view defined by user.
+//! Reflect lines are represented by edges in 3d.
+class HLRAppli_ReflectLines 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructor <br>
-//! <br>
-  Standard_EXPORT   HLRAppli_ReflectLines(const TopoDS_Shape& aShape);
-  //! Sets the normal to the plane of visualisation, <br>
-//!          the coordinates of the view point and <br>
-//!          the coordinates of the vertical direction vector. <br>
-  Standard_EXPORT     void SetAxes(const Standard_Real Nx,const Standard_Real Ny,const Standard_Real Nz,const Standard_Real XAt,const Standard_Real YAt,const Standard_Real ZAt,const Standard_Real XUp,const Standard_Real YUp,const Standard_Real ZUp) ;
   
-  Standard_EXPORT     void Perform() ;
-  //! returns resulting compound of reflect lines <br>
-//!          represented by edges in 3d <br>
-  Standard_EXPORT     TopoDS_Shape GetResult() const;
-
+  //! Constructor
+  Standard_EXPORT HLRAppli_ReflectLines(const TopoDS_Shape& aShape);
+  
+  //! Sets the normal to the plane of visualisation,
+  //! the coordinates of the view point and
+  //! the coordinates of the vertical direction vector.
+  Standard_EXPORT   void SetAxes (const Standard_Real Nx, const Standard_Real Ny, const Standard_Real Nz, const Standard_Real XAt, const Standard_Real YAt, const Standard_Real ZAt, const Standard_Real XUp, const Standard_Real YUp, const Standard_Real ZUp) ;
+  
+  Standard_EXPORT   void Perform() ;
+  
+  //! returns resulting compound of reflect lines
+  //! represented by edges in 3d
+  Standard_EXPORT   TopoDS_Shape GetResult()  const;
 
 
 
@@ -63,9 +53,9 @@ private:
 
 
 
-HLRAlgo_Projector myProjector;
-TopoDS_Shape myShape;
-TopoDS_Shape myCompound;
+  HLRAlgo_Projector myProjector;
+  TopoDS_Shape myShape;
+  TopoDS_Shape myCompound;
 
 
 };
@@ -74,7 +64,6 @@ TopoDS_Shape myCompound;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAppli_ReflectLines_HeaderFile

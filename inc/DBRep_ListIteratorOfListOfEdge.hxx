@@ -6,28 +6,14 @@
 #ifndef _DBRep_ListIteratorOfListOfEdge_HeaderFile
 #define _DBRep_ListIteratorOfListOfEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_DBRep_Edge_HeaderFile
 #include <Handle_DBRep_Edge.hxx>
-#endif
-#ifndef _Handle_DBRep_ListNodeOfListOfEdge_HeaderFile
 #include <Handle_DBRep_ListNodeOfListOfEdge.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class DBRep_ListOfEdge;
@@ -36,27 +22,27 @@ class DBRep_ListNodeOfListOfEdge;
 
 
 
-class DBRep_ListIteratorOfListOfEdge  {
+class DBRep_ListIteratorOfListOfEdge 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   DBRep_ListIteratorOfListOfEdge();
+  Standard_EXPORT DBRep_ListIteratorOfListOfEdge();
   
-  Standard_EXPORT   DBRep_ListIteratorOfListOfEdge(const DBRep_ListOfEdge& L);
+  Standard_EXPORT DBRep_ListIteratorOfListOfEdge(const DBRep_ListOfEdge& L);
   
-  Standard_EXPORT     void Initialize(const DBRep_ListOfEdge& L) ;
+  Standard_EXPORT   void Initialize (const DBRep_ListOfEdge& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_DBRep_Edge& Value() const;
+  Standard_EXPORT   Handle(DBRep_Edge)& Value()  const;
 
 
 friend class DBRep_ListOfEdge;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_DBRep_Edge
+#define Item Handle(DBRep_Edge)
 #define Item_hxx <DBRep_Edge.hxx>
 #define TCollection_ListNode DBRep_ListNodeOfListOfEdge
 #define TCollection_ListNode_hxx <DBRep_ListNodeOfListOfEdge.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBRep_ListIteratorOfListOfEdge_HeaderFile

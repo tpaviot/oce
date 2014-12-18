@@ -6,22 +6,15 @@
 #ifndef _Handle_MgtBRep_TranslateTool1_HeaderFile
 #define _Handle_MgtBRep_TranslateTool1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MgtTopoDS_TranslateTool1_HeaderFile
 #include <Handle_MgtTopoDS_TranslateTool1.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MgtTopoDS_TranslateTool1);
 class MgtBRep_TranslateTool1;
 
-DEFINE_STANDARD_HANDLE(MgtBRep_TranslateTool1,MgtTopoDS_TranslateTool1)
+DEFINE_STANDARD_HANDLE(MgtBRep_TranslateTool1, MgtTopoDS_TranslateTool1)
 
-#endif
+#endif // _Handle_MgtBRep_TranslateTool1_HeaderFile

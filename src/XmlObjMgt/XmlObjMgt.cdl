@@ -26,10 +26,8 @@ uses
 
 is
     class Persistent;
-    ---Purpose: root for XML-persistence
 
     class GP;
-    ---Purpose: translation of gp objects
 
     imported DOMString;
     imported Document;
@@ -41,7 +39,7 @@ is
     -- Retrieval Relocation Table
     alias RRelocationTable is DataMapOfIntegerTransient from TColStd;
 
-    generic class Array1; 
+    class Array1; 
 
     -- Package methods
     IdString returns DOMString from XmlObjMgt;

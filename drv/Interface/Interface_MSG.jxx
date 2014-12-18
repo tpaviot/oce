@@ -1,6 +1,2 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Interface_MSG_HeaderFile
 #include <Interface_MSG.hxx>
-#endif

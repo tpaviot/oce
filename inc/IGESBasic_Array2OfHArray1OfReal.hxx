@@ -6,28 +6,14 @@
 #ifndef _IGESBasic_Array2OfHArray1OfReal_HeaderFile
 #define _IGESBasic_Array2OfHArray1OfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -36,56 +22,56 @@ class TColStd_HArray1OfReal;
 
 
 
-class IGESBasic_Array2OfHArray1OfReal  {
+class IGESBasic_Array2OfHArray1OfReal 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IGESBasic_Array2OfHArray1OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT IGESBasic_Array2OfHArray1OfReal(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT   IGESBasic_Array2OfHArray1OfReal(const Handle(TColStd_HArray1OfReal)& Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT IGESBasic_Array2OfHArray1OfReal(const Handle(TColStd_HArray1OfReal)& Item, const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT     void Init(const Handle(TColStd_HArray1OfReal)& V) ;
+  Standard_EXPORT   void Init (const Handle(TColStd_HArray1OfReal)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~IGESBasic_Array2OfHArray1OfReal()
 {
   Destroy();
 }
   
-  Standard_EXPORT    const IGESBasic_Array2OfHArray1OfReal& Assign(const IGESBasic_Array2OfHArray1OfReal& Other) ;
-   const IGESBasic_Array2OfHArray1OfReal& operator =(const IGESBasic_Array2OfHArray1OfReal& Other) 
+  Standard_EXPORT  const  IGESBasic_Array2OfHArray1OfReal& Assign (const IGESBasic_Array2OfHArray1OfReal& Other) ;
+ const  IGESBasic_Array2OfHArray1OfReal& operator = (const IGESBasic_Array2OfHArray1OfReal& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(TColStd_HArray1OfReal)& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Handle(TColStd_HArray1OfReal)& Value) ;
   
-       const Handle_TColStd_HArray1OfReal& Value(const Standard_Integer Row,const Standard_Integer Col) const;
-     const Handle_TColStd_HArray1OfReal& operator()(const Standard_Integer Row,const Standard_Integer Col) const
+     const  Handle(TColStd_HArray1OfReal)& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
+   const  Handle(TColStd_HArray1OfReal)& operator() (const Standard_Integer Row, const Standard_Integer Col)  const
 {
   return Value(Row,Col);
 }
   
-        Handle_TColStd_HArray1OfReal& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
-      Handle_TColStd_HArray1OfReal& operator()(const Standard_Integer Row,const Standard_Integer Col) 
+      Handle(TColStd_HArray1OfReal)& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
+    Handle(TColStd_HArray1OfReal)& operator() (const Standard_Integer Row, const Standard_Integer Col) 
 {
   return ChangeValue(Row,Col);
 }
-
 
 
 
@@ -99,22 +85,22 @@ protected:
 private:
 
   
-  Standard_EXPORT   IGESBasic_Array2OfHArray1OfReal(const IGESBasic_Array2OfHArray1OfReal& AnArray);
+  Standard_EXPORT IGESBasic_Array2OfHArray1OfReal(const IGESBasic_Array2OfHArray1OfReal& AnArray);
   
-  Standard_EXPORT     void Allocate() ;
+  Standard_EXPORT   void Allocate() ;
 
 
-Standard_Integer myLowerRow;
-Standard_Integer myLowerColumn;
-Standard_Integer myUpperRow;
-Standard_Integer myUpperColumn;
-Standard_Boolean myDeletable;
-Standard_Address myData;
+  Standard_Integer myLowerRow;
+  Standard_Integer myLowerColumn;
+  Standard_Integer myUpperRow;
+  Standard_Integer myUpperColumn;
+  Standard_Boolean myDeletable;
+  Standard_Address myData;
 
 
 };
 
-#define Array2Item Handle_TColStd_HArray1OfReal
+#define Array2Item Handle(TColStd_HArray1OfReal)
 #define Array2Item_hxx <TColStd_HArray1OfReal.hxx>
 #define TCollection_Array2 IGESBasic_Array2OfHArray1OfReal
 #define TCollection_Array2_hxx <IGESBasic_Array2OfHArray1OfReal.hxx>
@@ -127,7 +113,6 @@ Standard_Address myData;
 #undef TCollection_Array2_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_Array2OfHArray1OfReal_HeaderFile

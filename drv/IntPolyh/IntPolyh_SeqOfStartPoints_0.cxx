@@ -5,18 +5,10 @@
 
 #include <IntPolyh_SeqOfStartPoints.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntPolyh_StartPoint_HeaderFile
 #include <IntPolyh_StartPoint.hxx>
-#endif
-#ifndef _IntPolyh_SequenceNodeOfSeqOfStartPoints_HeaderFile
 #include <IntPolyh_SequenceNodeOfSeqOfStartPoints.hxx>
-#endif
  
 
 #define SeqItem IntPolyh_StartPoint

@@ -1,15 +1,5 @@
-#ifndef _StepGeom_Plane_HeaderFile
 #include <StepGeom_Plane.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _gp_Pln_HeaderFile
 #include <gp_Pln.hxx>
-#endif
-#ifndef _Geom_Plane_HeaderFile
 #include <Geom_Plane.hxx>
-#endif
-#ifndef _GeomToStep_MakePlane_HeaderFile
 #include <GeomToStep_MakePlane.hxx>
-#endif

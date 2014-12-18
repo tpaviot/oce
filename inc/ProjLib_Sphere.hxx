@@ -6,25 +6,13 @@
 #ifndef _ProjLib_Sphere_HeaderFile
 #define _ProjLib_Sphere_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Sphere_HeaderFile
 #include <gp_Sphere.hxx>
-#endif
-#ifndef _ProjLib_Projector_HeaderFile
 #include <ProjLib_Projector.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_NoSuchObject;
 class gp_Sphere;
 class gp_Circ;
@@ -34,34 +22,38 @@ class gp_Parab;
 class gp_Hypr;
 
 
-//! Projects elementary curves on a sphere. <br>
-class ProjLib_Sphere  : public ProjLib_Projector {
+//! Projects elementary curves on a sphere.
+class ProjLib_Sphere  : public ProjLib_Projector
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Undefined projection. <br>
-  Standard_EXPORT   ProjLib_Sphere();
-  //! Projection on the sphere <Sp>. <br>
-  Standard_EXPORT   ProjLib_Sphere(const gp_Sphere& Sp);
-  //! Projection of the circle <C> on the sphere <Sp>. <br>
-  Standard_EXPORT   ProjLib_Sphere(const gp_Sphere& Sp,const gp_Circ& C);
   
-  Standard_EXPORT     void Init(const gp_Sphere& Sp) ;
+  //! Undefined projection.
+  Standard_EXPORT ProjLib_Sphere();
   
-  Standard_EXPORT   virtual  void Project(const gp_Lin& L) ;
+  //! Projection on the sphere <Sp>.
+  Standard_EXPORT ProjLib_Sphere(const gp_Sphere& Sp);
   
-  Standard_EXPORT   virtual  void Project(const gp_Circ& C) ;
+  //! Projection of the circle <C> on the sphere <Sp>.
+  Standard_EXPORT ProjLib_Sphere(const gp_Sphere& Sp, const gp_Circ& C);
   
-  Standard_EXPORT   virtual  void Project(const gp_Elips& E) ;
+  Standard_EXPORT   void Init (const gp_Sphere& Sp) ;
   
-  Standard_EXPORT   virtual  void Project(const gp_Parab& P) ;
+  Standard_EXPORT virtual   void Project (const gp_Lin& L) ;
   
-  Standard_EXPORT   virtual  void Project(const gp_Hypr& H) ;
-  //! Set the point of parameter U on C in the natural <br>
-//!          restrictions of the sphere. <br>
-  Standard_EXPORT     void SetInBounds(const Standard_Real U) ;
-
+  Standard_EXPORT virtual   void Project (const gp_Circ& C) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Elips& E) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Parab& P) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Hypr& H) ;
+  
+  //! Set the point of parameter U on C in the natural
+  //! restrictions of the sphere.
+  Standard_EXPORT   void SetInBounds (const Standard_Real U) ;
 
 
 
@@ -76,7 +68,7 @@ private:
 
 
 
-gp_Sphere mySphere;
+  gp_Sphere mySphere;
 
 
 };
@@ -85,7 +77,6 @@ gp_Sphere mySphere;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_Sphere_HeaderFile

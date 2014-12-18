@@ -6,25 +6,13 @@
 #ifndef _StepFEA_HArray1OfDegreeOfFreedom_HeaderFile
 #define _StepFEA_HArray1OfDegreeOfFreedom_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_HArray1OfDegreeOfFreedom_HeaderFile
 #include <Handle_StepFEA_HArray1OfDegreeOfFreedom.hxx>
-#endif
 
-#ifndef _StepFEA_Array1OfDegreeOfFreedom_HeaderFile
 #include <StepFEA_Array1OfDegreeOfFreedom.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepFEA_Array1OfDegreeOfFreedom;
 
 
 
-class StepFEA_HArray1OfDegreeOfFreedom : public MMgt_TShared {
+class StepFEA_HArray1OfDegreeOfFreedom : public MMgt_TShared
+{
 
 public:
 
   
-      StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer Low,const Standard_Integer Up);
+    StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer Low,const Standard_Integer Up,const StepFEA_DegreeOfFreedom& V);
+    StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer Low, const Standard_Integer Up, const StepFEA_DegreeOfFreedom& V);
   
-        void Init(const StepFEA_DegreeOfFreedom& V) ;
+      void Init (const StepFEA_DegreeOfFreedom& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepFEA_DegreeOfFreedom& Value) ;
+      void SetValue (const Standard_Integer Index, const StepFEA_DegreeOfFreedom& Value) ;
   
-       const StepFEA_DegreeOfFreedom& Value(const Standard_Integer Index) const;
+     const  StepFEA_DegreeOfFreedom& Value (const Standard_Integer Index)  const;
   
-        StepFEA_DegreeOfFreedom& ChangeValue(const Standard_Integer Index) ;
+      StepFEA_DegreeOfFreedom& ChangeValue (const Standard_Integer Index) ;
   
-       const StepFEA_Array1OfDegreeOfFreedom& Array1() const;
+     const  StepFEA_Array1OfDegreeOfFreedom& Array1()  const;
   
-        StepFEA_Array1OfDegreeOfFreedom& ChangeArray1() ;
+      StepFEA_Array1OfDegreeOfFreedom& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepFEA_Array1OfDegreeOfFreedom myArray;
+  StepFEA_Array1OfDegreeOfFreedom myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepFEA_Array1OfDegreeOfFreedom myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_HArray1OfDegreeOfFreedom_HeaderFile

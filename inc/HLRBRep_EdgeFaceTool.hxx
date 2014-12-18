@@ -6,42 +6,31 @@
 #ifndef _HLRBRep_EdgeFaceTool_HeaderFile
 #define _HLRBRep_EdgeFaceTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_Dir;
 
 
-//! The EdgeFaceTool computes the  UV coordinates at a <br>
-//!          given parameter on a Curve and a Surface.  It also <br>
-//!          compute the signed  curvature value in a direction <br>
-//!          at a given u,v point on a surface. <br>
-class HLRBRep_EdgeFaceTool  {
+//! The EdgeFaceTool computes the  UV coordinates at a
+//! given parameter on a Curve and a Surface.  It also
+//! compute the signed  curvature value in a direction
+//! at a given u,v point on a surface.
+class HLRBRep_EdgeFaceTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Real CurvatureValue(const Standard_Address F,const Standard_Real U,const Standard_Real V,const gp_Dir& Tg) ;
-  //! return True if U and V are found. <br>
-  Standard_EXPORT   static  Standard_Boolean UVPoint(const Standard_Real Par,const Standard_Address E,const Standard_Address F,Standard_Real& U,Standard_Real& V) ;
-
+  Standard_EXPORT static   Standard_Real CurvatureValue (const Standard_Address F, const Standard_Real U, const Standard_Real V, const gp_Dir& Tg) ;
+  
+  //! return True if U and V are found.
+  Standard_EXPORT static   Standard_Boolean UVPoint (const Standard_Real Par, const Standard_Address E, const Standard_Address F, Standard_Real& U, Standard_Real& V) ;
 
 
 
@@ -64,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_EdgeFaceTool_HeaderFile

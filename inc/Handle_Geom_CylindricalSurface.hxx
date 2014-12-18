@@ -6,22 +6,15 @@
 #ifndef _Handle_Geom_CylindricalSurface_HeaderFile
 #define _Handle_Geom_CylindricalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Geom_ElementarySurface_HeaderFile
 #include <Handle_Geom_ElementarySurface.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Geom_ElementarySurface);
 class Geom_CylindricalSurface;
 
-DEFINE_STANDARD_HANDLE(Geom_CylindricalSurface,Geom_ElementarySurface)
+DEFINE_STANDARD_HANDLE(Geom_CylindricalSurface, Geom_ElementarySurface)
 
-#endif
+#endif // _Handle_Geom_CylindricalSurface_HeaderFile

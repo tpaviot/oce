@@ -5,21 +5,11 @@
 
 #include <TDF_ListIteratorOfIDList.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDF_IDList_HeaderFile
 #include <TDF_IDList.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_ListNodeOfIDList_HeaderFile
 #include <TDF_ListNodeOfIDList.hxx>
-#endif
  
 
 #define Item Standard_GUID

@@ -1,12 +1,4 @@
-#ifndef _StepGeom_RectangularTrimmedSurface_HeaderFile
 #include <StepGeom_RectangularTrimmedSurface.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Geom_RectangularTrimmedSurface_HeaderFile
 #include <Geom_RectangularTrimmedSurface.hxx>
-#endif
-#ifndef _GeomToStep_MakeRectangularTrimmedSurface_HeaderFile
 #include <GeomToStep_MakeRectangularTrimmedSurface.hxx>
-#endif

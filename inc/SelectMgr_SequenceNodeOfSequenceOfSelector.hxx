@@ -6,38 +6,27 @@
 #ifndef _SelectMgr_SequenceNodeOfSequenceOfSelector_HeaderFile
 #define _SelectMgr_SequenceNodeOfSequenceOfSelector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_SequenceNodeOfSequenceOfSelector_HeaderFile
 #include <Handle_SelectMgr_SequenceNodeOfSequenceOfSelector.hxx>
-#endif
 
-#ifndef _Handle_SelectMgr_ViewerSelector_HeaderFile
 #include <Handle_SelectMgr_ViewerSelector.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class SelectMgr_ViewerSelector;
 class SelectMgr_SequenceOfSelector;
 
 
 
-class SelectMgr_SequenceNodeOfSequenceOfSelector : public TCollection_SeqNode {
+class SelectMgr_SequenceNodeOfSequenceOfSelector : public TCollection_SeqNode
+{
 
 public:
 
   
-      SelectMgr_SequenceNodeOfSequenceOfSelector(const Handle(SelectMgr_ViewerSelector)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    SelectMgr_SequenceNodeOfSequenceOfSelector(const Handle(SelectMgr_ViewerSelector)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_SelectMgr_ViewerSelector& Value() const;
+      Handle(SelectMgr_ViewerSelector)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_SelectMgr_ViewerSelector myValue;
+  Handle(SelectMgr_ViewerSelector) myValue;
 
 
 };
 
-#define SeqItem Handle_SelectMgr_ViewerSelector
+#define SeqItem Handle(SelectMgr_ViewerSelector)
 #define SeqItem_hxx <SelectMgr_ViewerSelector.hxx>
 #define TCollection_SequenceNode SelectMgr_SequenceNodeOfSequenceOfSelector
 #define TCollection_SequenceNode_hxx <SelectMgr_SequenceNodeOfSequenceOfSelector.hxx>
@@ -78,7 +67,6 @@ Handle_SelectMgr_ViewerSelector myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_SequenceNodeOfSequenceOfSelector_HeaderFile

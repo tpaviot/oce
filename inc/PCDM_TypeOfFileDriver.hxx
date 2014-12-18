@@ -6,15 +6,14 @@
 #ifndef _PCDM_TypeOfFileDriver_HeaderFile
 #define _PCDM_TypeOfFileDriver_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum PCDM_TypeOfFileDriver {
+
+enum PCDM_TypeOfFileDriver
+{
 PCDM_TOFD_File,
 PCDM_TOFD_CmpFile,
 PCDM_TOFD_Unknown
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _PCDM_TypeOfFileDriver_HeaderFile

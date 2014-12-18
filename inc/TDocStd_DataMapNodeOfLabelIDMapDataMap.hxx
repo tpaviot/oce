@@ -6,28 +6,14 @@
 #ifndef _TDocStd_DataMapNodeOfLabelIDMapDataMap_HeaderFile
 #define _TDocStd_DataMapNodeOfLabelIDMapDataMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap_HeaderFile
 #include <Handle_TDocStd_DataMapNodeOfLabelIDMapDataMap.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_IDMap_HeaderFile
 #include <TDF_IDMap.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TDF_Label;
 class TDF_IDMap;
 class TDF_LabelMapHasher;
@@ -36,16 +22,17 @@ class TDocStd_DataMapIteratorOfLabelIDMapDataMap;
 
 
 
-class TDocStd_DataMapNodeOfLabelIDMapDataMap : public TCollection_MapNode {
+class TDocStd_DataMapNodeOfLabelIDMapDataMap : public TCollection_MapNode
+{
 
 public:
 
   
-      TDocStd_DataMapNodeOfLabelIDMapDataMap(const TDF_Label& K,const TDF_IDMap& I,const TCollection_MapNodePtr& n);
+    TDocStd_DataMapNodeOfLabelIDMapDataMap(const TDF_Label& K, const TDF_IDMap& I, const TCollection_MapNodePtr& n);
   
-        TDF_Label& Key() const;
+      TDF_Label& Key()  const;
   
-        TDF_IDMap& Value() const;
+      TDF_IDMap& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TDF_Label myKey;
-TDF_IDMap myValue;
+  TDF_Label myKey;
+  TDF_IDMap myValue;
 
 
 };
@@ -99,7 +86,6 @@ TDF_IDMap myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDocStd_DataMapNodeOfLabelIDMapDataMap_HeaderFile

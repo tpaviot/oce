@@ -6,34 +6,16 @@
 #ifndef _TColStd_DataMapOfIntegerReal_HeaderFile
 #define _TColStd_DataMapOfIntegerReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal_HeaderFile
 #include <Handle_TColStd_DataMapNodeOfDataMapOfIntegerReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TColStd_MapIntegerHasher;
@@ -42,50 +24,50 @@ class TColStd_DataMapIteratorOfDataMapOfIntegerReal;
 
 
 
-class TColStd_DataMapOfIntegerReal  : public TCollection_BasicMap {
+class TColStd_DataMapOfIntegerReal  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColStd_DataMapOfIntegerReal(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TColStd_DataMapOfIntegerReal(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TColStd_DataMapOfIntegerReal& Assign(const TColStd_DataMapOfIntegerReal& Other) ;
-    TColStd_DataMapOfIntegerReal& operator =(const TColStd_DataMapOfIntegerReal& Other) 
+  Standard_EXPORT   TColStd_DataMapOfIntegerReal& Assign (const TColStd_DataMapOfIntegerReal& Other) ;
+  TColStd_DataMapOfIntegerReal& operator = (const TColStd_DataMapOfIntegerReal& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TColStd_DataMapOfIntegerReal()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const Standard_Integer& K,const Standard_Real& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const Standard_Integer& K, const Standard_Real& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const Standard_Integer& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const Standard_Integer& K) ;
   
-  Standard_EXPORT    const Standard_Real& Find(const Standard_Integer& K) const;
-   const Standard_Real& operator()(const Standard_Integer& K) const
+  Standard_EXPORT  const  Standard_Real& Find (const Standard_Integer& K)  const;
+ const  Standard_Real& operator() (const Standard_Integer& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Standard_Real& ChangeFind(const Standard_Integer& K) ;
-    Standard_Real& operator()(const Standard_Integer& K) 
+  Standard_EXPORT   Standard_Real& ChangeFind (const Standard_Integer& K) ;
+  Standard_Real& operator() (const Standard_Integer& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const Standard_Integer& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const Standard_Integer& K) ;
 
 
 
@@ -99,7 +81,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   TColStd_DataMapOfIntegerReal(const TColStd_DataMapOfIntegerReal& Other);
+  Standard_EXPORT TColStd_DataMapOfIntegerReal(const TColStd_DataMapOfIntegerReal& Other);
 
 
 
@@ -110,7 +92,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_DataMapOfIntegerReal_HeaderFile

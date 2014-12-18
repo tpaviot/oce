@@ -1,12 +1,4 @@
-#ifndef _StepGeom_Direction_HeaderFile
 #include <StepGeom_Direction.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepShape_FaceSurface_HeaderFile
 #include <StepShape_FaceSurface.hxx>
-#endif
-#ifndef _StepShape_ExtrudedFaceSolid_HeaderFile
 #include <StepShape_ExtrudedFaceSolid.hxx>
-#endif

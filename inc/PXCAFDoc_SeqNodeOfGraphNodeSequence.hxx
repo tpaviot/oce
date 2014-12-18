@@ -6,60 +6,45 @@
 #ifndef _PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile
 #define _PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile
 #include <Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>
-#endif
 
-#ifndef _Handle_PXCAFDoc_GraphNode_HeaderFile
 #include <Handle_PXCAFDoc_GraphNode.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile
 #include <Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>
-#endif
-#ifndef _PMMgt_PManaged_HeaderFile
 #include <PMMgt_PManaged.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_GraphNodeSequence_HeaderFile
 #include <Handle_PXCAFDoc_GraphNodeSequence.hxx>
-#endif
 class PXCAFDoc_GraphNode;
 class PXCAFDoc_GraphNodeSequence;
 class PXCAFDoc_SeqExplorerOfGraphNodeSequence;
 
 
-class PXCAFDoc_SeqNodeOfGraphNodeSequence : public PMMgt_PManaged {
+class PXCAFDoc_SeqNodeOfGraphNodeSequence : public PMMgt_PManaged
+{
 
 public:
 
   
-  Standard_EXPORT   PXCAFDoc_SeqNodeOfGraphNodeSequence(const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& TheLast,const Handle(PXCAFDoc_GraphNode)& TheItem);
+  Standard_EXPORT PXCAFDoc_SeqNodeOfGraphNodeSequence(const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& TheLast, const Handle(PXCAFDoc_GraphNode)& TheItem);
   
-  Standard_EXPORT   PXCAFDoc_SeqNodeOfGraphNodeSequence(const Handle(PXCAFDoc_GraphNode)& TheItem,const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& TheFirst);
+  Standard_EXPORT PXCAFDoc_SeqNodeOfGraphNodeSequence(const Handle(PXCAFDoc_GraphNode)& TheItem, const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& TheFirst);
   
-  Standard_EXPORT   PXCAFDoc_SeqNodeOfGraphNodeSequence(const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& ThePrevious,const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& TheNext,const Handle(PXCAFDoc_GraphNode)& TheItem);
+  Standard_EXPORT PXCAFDoc_SeqNodeOfGraphNodeSequence(const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& ThePrevious, const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& TheNext, const Handle(PXCAFDoc_GraphNode)& TheItem);
   
-  Standard_EXPORT     Handle_PXCAFDoc_GraphNode Value() const;
+  Standard_EXPORT   Handle(PXCAFDoc_GraphNode) Value()  const;
   
-  Standard_EXPORT     Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence Next() const;
+  Standard_EXPORT   Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence) Next()  const;
   
-  Standard_EXPORT     Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence Previous() const;
+  Standard_EXPORT   Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence) Previous()  const;
   
-  Standard_EXPORT     void SetValue(const Handle(PXCAFDoc_GraphNode)& AnItem) ;
+  Standard_EXPORT   void SetValue (const Handle(PXCAFDoc_GraphNode)& AnItem) ;
   
-  Standard_EXPORT     void SetNext(const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& ANode) ;
+  Standard_EXPORT   void SetNext (const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& ANode) ;
   
-  Standard_EXPORT     void SetPrevious(const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& ANode) ;
+  Standard_EXPORT   void SetPrevious (const Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence)& ANode) ;
 
-  PXCAFDoc_SeqNodeOfGraphNodeSequence( )
+PXCAFDoc_SeqNodeOfGraphNodeSequence( )
 {
   
 }
@@ -88,9 +73,9 @@ protected:
 private: 
 
 
-Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence MyPrevious;
-Handle_PXCAFDoc_GraphNode MyItem;
-Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence MyNext;
+  Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence) MyPrevious;
+  Handle(PXCAFDoc_GraphNode) MyItem;
+  Handle(PXCAFDoc_SeqNodeOfGraphNodeSequence) MyNext;
 
 
 };
@@ -99,7 +84,6 @@ Handle_PXCAFDoc_SeqNodeOfGraphNodeSequence MyNext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile

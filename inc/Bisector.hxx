@@ -6,25 +6,13 @@
 #ifndef _Bisector_HeaderFile
 #define _Bisector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom2d_Curve;
 class Bisector_Curve;
 class Bisector_BisecAna;
@@ -38,16 +26,16 @@ class Bisector_FunctionH;
 class Bisector_FunctionInter;
 
 
-//! This package provides the bisecting line between two <br>
-//!            geometric elements. <br>
-class Bisector  {
+//! This package provides the bisecting line between two
+//! geometric elements.
+class Bisector 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean IsConvex(const Handle(Geom2d_Curve)& Cu,const Standard_Real Sign) ;
-
+  Standard_EXPORT static   Standard_Boolean IsConvex (const Handle(Geom2d_Curve)& Cu, const Standard_Real Sign) ;
 
 
 
@@ -80,7 +68,6 @@ friend class Bisector_FunctionInter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Bisector_HeaderFile

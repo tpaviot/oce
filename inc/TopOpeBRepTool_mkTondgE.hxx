@@ -6,40 +6,18 @@
 #ifndef _TopOpeBRepTool_mkTondgE_HeaderFile
 #define _TopOpeBRepTool_mkTondgE_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeReal_HeaderFile
 #include <TopTools_DataMapOfShapeReal.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopoDS_Edge;
 class TopoDS_Face;
 class gp_Pnt2d;
@@ -47,32 +25,32 @@ class TopTools_ListOfShape;
 
 
 
-class TopOpeBRepTool_mkTondgE  {
+class TopOpeBRepTool_mkTondgE 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepTool_mkTondgE();
+  Standard_EXPORT TopOpeBRepTool_mkTondgE();
   
-  Standard_EXPORT     Standard_Boolean Initialize(const TopoDS_Edge& dgE,const TopoDS_Face& F,const gp_Pnt2d& uvi,const TopoDS_Face& Fi) ;
+  Standard_EXPORT   Standard_Boolean Initialize (const TopoDS_Edge& dgE, const TopoDS_Face& F, const gp_Pnt2d& uvi, const TopoDS_Face& Fi) ;
   
-  Standard_EXPORT     Standard_Boolean SetclE(const TopoDS_Edge& clE) ;
+  Standard_EXPORT   Standard_Boolean SetclE (const TopoDS_Edge& clE) ;
   
-  Standard_EXPORT     Standard_Boolean IsT2d() const;
+  Standard_EXPORT   Standard_Boolean IsT2d()  const;
   
-  Standard_EXPORT     Standard_Boolean SetRest(const Standard_Real pari,const TopoDS_Edge& Ei) ;
+  Standard_EXPORT   Standard_Boolean SetRest (const Standard_Real pari, const TopoDS_Edge& Ei) ;
   
-  Standard_EXPORT     Standard_Integer GetAllRest(TopTools_ListOfShape& lEi) ;
+  Standard_EXPORT   Standard_Integer GetAllRest (TopTools_ListOfShape& lEi) ;
   
-  Standard_EXPORT     Standard_Boolean Par(const Standard_Integer index,Standard_Real& pari) const;
+  Standard_EXPORT   Standard_Boolean Par (const Standard_Integer index, Standard_Real& pari)  const;
   
-  Standard_EXPORT     Standard_Boolean Ei(const Standard_Integer index,TopoDS_Edge& ei) const;
+  Standard_EXPORT   Standard_Boolean Ei (const Standard_Integer index, TopoDS_Edge& ei)  const;
   
-  Standard_EXPORT     Standard_Boolean MkTonE(Standard_Integer& mkT,Standard_Real& par1,Standard_Real& par2) ;
+  Standard_EXPORT   Standard_Boolean MkTonE (Standard_Integer& mkT, Standard_Real& par1, Standard_Real& par2) ;
   
-  Standard_EXPORT     Standard_Boolean MkTonE(const TopoDS_Edge& Ei,Standard_Integer& mkT,Standard_Real& par1,Standard_Real& par2) ;
-
+  Standard_EXPORT   Standard_Boolean MkTonE (const TopoDS_Edge& Ei, Standard_Integer& mkT, Standard_Real& par1, Standard_Real& par2) ;
 
 
 
@@ -87,17 +65,17 @@ private:
 
 
 
-TopoDS_Edge mydgE;
-TopoDS_Face myF;
-TopoDS_Edge myclE;
-gp_Dir mydirINcle;
-TopoDS_Face myFi;
-gp_Pnt2d myuvi;
-Standard_Boolean isT2d;
-TopTools_DataMapOfShapeReal myEpari;
-Standard_Boolean hasRest;
-gp_Dir myngf;
-gp_Dir myngfi;
+  TopoDS_Edge mydgE;
+  TopoDS_Face myF;
+  TopoDS_Edge myclE;
+  gp_Dir mydirINcle;
+  TopoDS_Face myFi;
+  gp_Pnt2d myuvi;
+  Standard_Boolean isT2d;
+  TopTools_DataMapOfShapeReal myEpari;
+  Standard_Boolean hasRest;
+  gp_Dir myngf;
+  gp_Dir myngfi;
 
 
 };
@@ -106,7 +84,6 @@ gp_Dir myngfi;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_mkTondgE_HeaderFile

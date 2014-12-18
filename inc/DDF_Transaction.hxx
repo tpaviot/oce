@@ -6,76 +6,66 @@
 #ifndef _DDF_Transaction_HeaderFile
 #define _DDF_Transaction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_DDF_Transaction_HeaderFile
 #include <Handle_DDF_Transaction.hxx>
-#endif
 
-#ifndef _TDF_Transaction_HeaderFile
 #include <TDF_Transaction.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TDF_Data_HeaderFile
 #include <Handle_TDF_Data.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TDF_Delta_HeaderFile
 #include <Handle_TDF_Delta.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NullObject;
 class TDF_Data;
 class TDF_Delta;
 
 
-//! This class encapsulates TDF_Transaction. <br>
-class DDF_Transaction : public MMgt_TShared {
+//! This class encapsulates TDF_Transaction.
+class DDF_Transaction : public MMgt_TShared
+{
 
 public:
 
-  //! Creates an empty transaction context, unable to be <br>
-//!          opened. <br>
-  Standard_EXPORT   DDF_Transaction();
-  //! Creates a transaction context on <aDF>, ready to <br>
-//!          be opened. <br>
-  Standard_EXPORT   DDF_Transaction(const Handle(TDF_Data)& aDF);
-  //! If not yet done, opens a new transaction on <br>
-//!          <myDF>. Returns the index of the just opened <br>
-//!          transaction. <br>
-//! <br>
-//!          It raises DomainError if the transaction is <br>
-//!          already open, and NullObject if there is no <br>
-//!          current Data framework. <br>
-  Standard_EXPORT     Standard_Integer Open() ;
-  //! Commits the transactions until AND including the <br>
-//!          current opened one. <br>
-  Standard_EXPORT     Handle_TDF_Delta Commit(const Standard_Boolean withDelta = Standard_False) ;
-  //! Aborts the transactions until AND including the <br>
-//!          current opened one. <br>
-//! <br>
-  Standard_EXPORT     void Abort() ;
+  
+  //! Creates an empty transaction context, unable to be
+  //! opened.
+  Standard_EXPORT DDF_Transaction();
+  
+  //! Creates a transaction context on <aDF>, ready to
+  //! be opened.
+  Standard_EXPORT DDF_Transaction(const Handle(TDF_Data)& aDF);
+  
+  //! If not yet done, opens a new transaction on
+  //! <myDF>. Returns the index of the just opened
+  //! transaction.
+  //!
+  //! It raises DomainError if the transaction is
+  //! already open, and NullObject if there is no
+  //! current Data framework.
+  Standard_EXPORT   Standard_Integer Open() ;
+  
+  //! Commits the transactions until AND including the
+  //! current opened one.
+  Standard_EXPORT   Handle(TDF_Delta) Commit (const Standard_Boolean withDelta = Standard_False) ;
+  
+  //! Aborts the transactions until AND including the
+  //! current opened one.
+  Standard_EXPORT   void Abort() ;
 ~DDF_Transaction()
 {
   Abort();
 }
-  //! Returns the Data from TDF. <br>
-  Standard_EXPORT     Handle_TDF_Data Data() const;
-  //! Returns the number of the transaction opened by <me>. <br>
-  Standard_EXPORT     Standard_Integer Transaction() const;
-  //! Returns true if the transaction is open. <br>
-  Standard_EXPORT     Standard_Boolean IsOpen() const;
+  
+  //! Returns the Data from TDF.
+  Standard_EXPORT   Handle(TDF_Data) Data()  const;
+  
+  //! Returns the number of the transaction opened by <me>.
+  Standard_EXPORT   Standard_Integer Transaction()  const;
+  
+  //! Returns true if the transaction is open.
+  Standard_EXPORT   Standard_Boolean IsOpen()  const;
 
 
 
@@ -89,7 +79,7 @@ protected:
 private: 
 
 
-TDF_Transaction myTransaction;
+  TDF_Transaction myTransaction;
 
 
 };
@@ -98,7 +88,6 @@ TDF_Transaction myTransaction;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DDF_Transaction_HeaderFile

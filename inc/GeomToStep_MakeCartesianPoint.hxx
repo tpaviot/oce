@@ -6,28 +6,14 @@
 #ifndef _GeomToStep_MakeCartesianPoint_HeaderFile
 #define _GeomToStep_MakeCartesianPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_CartesianPoint_HeaderFile
 #include <Handle_Geom_CartesianPoint.hxx>
-#endif
-#ifndef _Handle_Geom2d_CartesianPoint_HeaderFile
 #include <Handle_Geom2d_CartesianPoint.hxx>
-#endif
 class StepGeom_CartesianPoint;
 class StdFail_NotDone;
 class gp_Pnt;
@@ -36,26 +22,26 @@ class Geom_CartesianPoint;
 class Geom2d_CartesianPoint;
 
 
-//! This class implements the mapping between classes <br>
-//!          CartesianPoint from Geom and Pnt from gp, and the class <br>
-//!          CartesianPoint from StepGeom which describes a point from <br>
-//!          Prostep. <br>
-class GeomToStep_MakeCartesianPoint  : public GeomToStep_Root {
+//! This class implements the mapping between classes
+//! CartesianPoint from Geom and Pnt from gp, and the class
+//! CartesianPoint from StepGeom which describes a point from
+//! Prostep.
+class GeomToStep_MakeCartesianPoint  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeCartesianPoint(const gp_Pnt& P);
+  Standard_EXPORT GeomToStep_MakeCartesianPoint(const gp_Pnt& P);
   
-  Standard_EXPORT   GeomToStep_MakeCartesianPoint(const gp_Pnt2d& P);
+  Standard_EXPORT GeomToStep_MakeCartesianPoint(const gp_Pnt2d& P);
   
-  Standard_EXPORT   GeomToStep_MakeCartesianPoint(const Handle(Geom_CartesianPoint)& P);
+  Standard_EXPORT GeomToStep_MakeCartesianPoint(const Handle(Geom_CartesianPoint)& P);
   
-  Standard_EXPORT   GeomToStep_MakeCartesianPoint(const Handle(Geom2d_CartesianPoint)& P);
+  Standard_EXPORT GeomToStep_MakeCartesianPoint(const Handle(Geom2d_CartesianPoint)& P);
   
-  Standard_EXPORT    const Handle_StepGeom_CartesianPoint& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_CartesianPoint)& Value()  const;
 
 
 
@@ -70,7 +56,7 @@ private:
 
 
 
-Handle_StepGeom_CartesianPoint theCartesianPoint;
+  Handle(StepGeom_CartesianPoint) theCartesianPoint;
 
 
 };
@@ -79,7 +65,6 @@ Handle_StepGeom_CartesianPoint theCartesianPoint;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeCartesianPoint_HeaderFile

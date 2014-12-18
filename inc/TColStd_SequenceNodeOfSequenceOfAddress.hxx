@@ -6,37 +6,26 @@
 #ifndef _TColStd_SequenceNodeOfSequenceOfAddress_HeaderFile
 #define _TColStd_SequenceNodeOfSequenceOfAddress_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfAddress_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfAddress.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TColStd_SequenceOfAddress;
 
 
 
-class TColStd_SequenceNodeOfSequenceOfAddress : public TCollection_SeqNode {
+class TColStd_SequenceNodeOfSequenceOfAddress : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColStd_SequenceNodeOfSequenceOfAddress(const Standard_Address& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColStd_SequenceNodeOfSequenceOfAddress(const Standard_Address& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Standard_Address& Value() const;
+      Standard_Address& Value()  const;
 
 
 
@@ -51,7 +40,7 @@ protected:
 private: 
 
 
-Standard_Address myValue;
+  Standard_Address myValue;
 
 
 };
@@ -77,7 +66,6 @@ Standard_Address myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceNodeOfSequenceOfAddress_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _StepVisual_Array1OfBoxCharacteristicSelect_HeaderFile
 #define _StepVisual_Array1OfBoxCharacteristicSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class StepVisual_BoxCharacteristicSelect;
 
 
 
-class StepVisual_Array1OfBoxCharacteristicSelect  {
+class StepVisual_Array1OfBoxCharacteristicSelect 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepVisual_Array1OfBoxCharacteristicSelect(const Standard_Integer Low,const Standard_Integer Up);
+    StepVisual_Array1OfBoxCharacteristicSelect(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepVisual_Array1OfBoxCharacteristicSelect(const StepVisual_BoxCharacteristicSelect& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepVisual_Array1OfBoxCharacteristicSelect(const StepVisual_BoxCharacteristicSelect& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const StepVisual_BoxCharacteristicSelect& V) ;
+  Standard_EXPORT   void Init (const StepVisual_BoxCharacteristicSelect& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepVisual_Array1OfBoxCharacteristicSelect()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepVisual_Array1OfBoxCharacteristicSelect& Assign(const StepVisual_Array1OfBoxCharacteristicSelect& Other) ;
-   const StepVisual_Array1OfBoxCharacteristicSelect& operator =(const StepVisual_Array1OfBoxCharacteristicSelect& Other) 
+  Standard_EXPORT  const  StepVisual_Array1OfBoxCharacteristicSelect& Assign (const StepVisual_Array1OfBoxCharacteristicSelect& Other) ;
+ const  StepVisual_Array1OfBoxCharacteristicSelect& operator = (const StepVisual_Array1OfBoxCharacteristicSelect& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepVisual_BoxCharacteristicSelect& Value) ;
+      void SetValue (const Standard_Integer Index, const StepVisual_BoxCharacteristicSelect& Value) ;
   
-       const StepVisual_BoxCharacteristicSelect& Value(const Standard_Integer Index) const;
-     const StepVisual_BoxCharacteristicSelect& operator ()(const Standard_Integer Index) const
+     const  StepVisual_BoxCharacteristicSelect& Value (const Standard_Integer Index)  const;
+   const  StepVisual_BoxCharacteristicSelect& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        StepVisual_BoxCharacteristicSelect& ChangeValue(const Standard_Integer Index) ;
-      StepVisual_BoxCharacteristicSelect& operator ()(const Standard_Integer Index) 
+      StepVisual_BoxCharacteristicSelect& ChangeValue (const Standard_Integer Index) ;
+    StepVisual_BoxCharacteristicSelect& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepVisual_Array1OfBoxCharacteristicSelect(const StepVisual_Array1OfBoxCharacteristicSelect& AnArray);
+  Standard_EXPORT StepVisual_Array1OfBoxCharacteristicSelect(const StepVisual_Array1OfBoxCharacteristicSelect& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_Array1OfBoxCharacteristicSelect_HeaderFile

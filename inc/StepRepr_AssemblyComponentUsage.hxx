@@ -6,47 +6,39 @@
 #ifndef _StepRepr_AssemblyComponentUsage_HeaderFile
 #define _StepRepr_AssemblyComponentUsage_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_AssemblyComponentUsage_HeaderFile
 #include <Handle_StepRepr_AssemblyComponentUsage.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepRepr_ProductDefinitionUsage_HeaderFile
 #include <StepRepr_ProductDefinitionUsage.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_ProductDefinition;
 
 
-//! Representation of STEP entity AssemblyComponentUsage <br>
-class StepRepr_AssemblyComponentUsage : public StepRepr_ProductDefinitionUsage {
+//! Representation of STEP entity AssemblyComponentUsage
+class StepRepr_AssemblyComponentUsage : public StepRepr_ProductDefinitionUsage
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepRepr_AssemblyComponentUsage();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Id,const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Description,const Handle(StepBasic_ProductDefinition)& aProductDefinitionRelationship_RelatingProductDefinition,const Handle(StepBasic_ProductDefinition)& aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Boolean hasReferenceDesignator,const Handle(TCollection_HAsciiString)& aReferenceDesignator) ;
-  //! Returns field ReferenceDesignator <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString ReferenceDesignator() const;
-  //! Set field ReferenceDesignator <br>
-  Standard_EXPORT     void SetReferenceDesignator(const Handle(TCollection_HAsciiString)& ReferenceDesignator) ;
-  //! Returns True if optional field ReferenceDesignator is defined <br>
-  Standard_EXPORT     Standard_Boolean HasReferenceDesignator() const;
+  
+  //! Empty constructor
+  Standard_EXPORT StepRepr_AssemblyComponentUsage();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Id, const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Name, const Standard_Boolean hasProductDefinitionRelationship_Description, const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Description, const Handle(StepBasic_ProductDefinition)& aProductDefinitionRelationship_RelatingProductDefinition, const Handle(StepBasic_ProductDefinition)& aProductDefinitionRelationship_RelatedProductDefinition, const Standard_Boolean hasReferenceDesignator, const Handle(TCollection_HAsciiString)& aReferenceDesignator) ;
+  
+  //! Returns field ReferenceDesignator
+  Standard_EXPORT   Handle(TCollection_HAsciiString) ReferenceDesignator()  const;
+  
+  //! Set field ReferenceDesignator
+  Standard_EXPORT   void SetReferenceDesignator (const Handle(TCollection_HAsciiString)& ReferenceDesignator) ;
+  
+  //! Returns True if optional field ReferenceDesignator is defined
+  Standard_EXPORT   Standard_Boolean HasReferenceDesignator()  const;
 
 
 
@@ -61,8 +53,8 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theReferenceDesignator;
-Standard_Boolean defReferenceDesignator;
+  Handle(TCollection_HAsciiString) theReferenceDesignator;
+  Standard_Boolean defReferenceDesignator;
 
 
 };
@@ -71,7 +63,6 @@ Standard_Boolean defReferenceDesignator;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_AssemblyComponentUsage_HeaderFile

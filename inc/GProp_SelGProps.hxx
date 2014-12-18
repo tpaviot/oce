@@ -6,22 +6,12 @@
 #ifndef _GProp_SelGProps_HeaderFile
 #define _GProp_SelGProps_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GProp_GProps_HeaderFile
 #include <GProp_GProps.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_Cylinder;
 class gp_Pnt;
 class gp_Cone;
@@ -30,34 +20,34 @@ class gp_Torus;
 
 
 
-//!          Computes the global properties of an elementary <br>
-//!          surface (surface of the gp package) <br>
-class GProp_SelGProps  : public GProp_GProps {
+//! Computes the global properties of a bounded
+//! elementary surface in 3d (surface of the gp package)
+class GProp_SelGProps  : public GProp_GProps
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GProp_SelGProps();
+  Standard_EXPORT GProp_SelGProps();
   
-  Standard_EXPORT   GProp_SelGProps(const gp_Cylinder& S,const Standard_Real Alpha1,const Standard_Real Alpha2,const Standard_Real Z1,const Standard_Real Z2,const gp_Pnt& SLocation);
+  Standard_EXPORT GProp_SelGProps(const gp_Cylinder& S, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Real Z1, const Standard_Real Z2, const gp_Pnt& SLocation);
   
-  Standard_EXPORT   GProp_SelGProps(const gp_Cone& S,const Standard_Real Alpha1,const Standard_Real Alpha2,const Standard_Real Z1,const Standard_Real Z2,const gp_Pnt& SLocation);
+  Standard_EXPORT GProp_SelGProps(const gp_Cone& S, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Real Z1, const Standard_Real Z2, const gp_Pnt& SLocation);
   
-  Standard_EXPORT   GProp_SelGProps(const gp_Sphere& S,const Standard_Real Teta1,const Standard_Real Teta2,const Standard_Real Alpha1,const Standard_Real Alpha2,const gp_Pnt& SLocation);
+  Standard_EXPORT GProp_SelGProps(const gp_Sphere& S, const Standard_Real Teta1, const Standard_Real Teta2, const Standard_Real Alpha1, const Standard_Real Alpha2, const gp_Pnt& SLocation);
   
-  Standard_EXPORT   GProp_SelGProps(const gp_Torus& S,const Standard_Real Teta1,const Standard_Real Teta2,const Standard_Real Alpha1,const Standard_Real Alpha2,const gp_Pnt& SLocation);
+  Standard_EXPORT GProp_SelGProps(const gp_Torus& S, const Standard_Real Teta1, const Standard_Real Teta2, const Standard_Real Alpha1, const Standard_Real Alpha2, const gp_Pnt& SLocation);
   
-  Standard_EXPORT     void SetLocation(const gp_Pnt& SLocation) ;
+  Standard_EXPORT   void SetLocation (const gp_Pnt& SLocation) ;
   
-  Standard_EXPORT     void Perform(const gp_Cylinder& S,const Standard_Real Alpha1,const Standard_Real Alpha2,const Standard_Real Z1,const Standard_Real Z2) ;
+  Standard_EXPORT   void Perform (const gp_Cylinder& S, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Real Z1, const Standard_Real Z2) ;
   
-  Standard_EXPORT     void Perform(const gp_Cone& S,const Standard_Real Alpha1,const Standard_Real Alpha2,const Standard_Real Z1,const Standard_Real Z2) ;
+  Standard_EXPORT   void Perform (const gp_Cone& S, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Real Z1, const Standard_Real Z2) ;
   
-  Standard_EXPORT     void Perform(const gp_Sphere& S,const Standard_Real Teta1,const Standard_Real Teta2,const Standard_Real Alpha1,const Standard_Real Alpha2) ;
+  Standard_EXPORT   void Perform (const gp_Sphere& S, const Standard_Real Teta1, const Standard_Real Teta2, const Standard_Real Alpha1, const Standard_Real Alpha2) ;
   
-  Standard_EXPORT     void Perform(const gp_Torus& S,const Standard_Real Teta1,const Standard_Real Teta2,const Standard_Real Alpha1,const Standard_Real Alpha2) ;
-
+  Standard_EXPORT   void Perform (const gp_Torus& S, const Standard_Real Teta1, const Standard_Real Teta2, const Standard_Real Alpha1, const Standard_Real Alpha2) ;
 
 
 
@@ -80,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GProp_SelGProps_HeaderFile

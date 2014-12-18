@@ -6,78 +6,64 @@
 #ifndef _IntTools_CArray1OfReal_HeaderFile
 #define _IntTools_CArray1OfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
 
 
 
-class IntTools_CArray1OfReal  {
+class IntTools_CArray1OfReal 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntTools_CArray1OfReal(const Standard_Integer Length = 0);
+  Standard_EXPORT IntTools_CArray1OfReal(const Standard_Integer Length = 0);
   
-  Standard_EXPORT   IntTools_CArray1OfReal(const Standard_Real& Item,const Standard_Integer Length);
+  Standard_EXPORT IntTools_CArray1OfReal(const Standard_Real& Item, const Standard_Integer Length);
   
-  Standard_EXPORT     void Init(const Standard_Real& V) ;
+  Standard_EXPORT   void Init (const Standard_Real& V) ;
   
-  Standard_EXPORT     void Resize(const Standard_Integer theNewLength) ;
+  Standard_EXPORT   void Resize (const Standard_Integer theNewLength) ;
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~IntTools_CArray1OfReal()
 {
   Destroy();
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Append(const Standard_Real& Value) ;
+  Standard_EXPORT   void Append (const Standard_Real& Value) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_Real& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_Real& Value) ;
   
-  Standard_EXPORT    const Standard_Real& Value(const Standard_Integer Index) const;
-   const Standard_Real& operator ()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Standard_Real& Value (const Standard_Integer Index)  const;
+ const  Standard_Real& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     Standard_Real& ChangeValue(const Standard_Integer Index) ;
-    Standard_Real& operator ()(const Standard_Integer Index) 
+  Standard_EXPORT   Standard_Real& ChangeValue (const Standard_Integer Index) ;
+  Standard_Real& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     Standard_Boolean IsEqual(const IntTools_CArray1OfReal& Other) const;
-    Standard_Boolean operator ==(const IntTools_CArray1OfReal& Other) const
+  Standard_EXPORT   Standard_Boolean IsEqual (const IntTools_CArray1OfReal& Other)  const;
+  Standard_Boolean operator == (const IntTools_CArray1OfReal& Other)  const
 {
   return IsEqual(Other);
 }
-
 
 
 
@@ -91,12 +77,12 @@ protected:
 private:
 
   
-  Standard_EXPORT   IntTools_CArray1OfReal(const IntTools_CArray1OfReal& AnArray);
+  Standard_EXPORT IntTools_CArray1OfReal(const IntTools_CArray1OfReal& AnArray);
 
 
-Standard_Address myStart;
-Standard_Integer myLength;
-Standard_Boolean myIsAllocated;
+  Standard_Address myStart;
+  Standard_Integer myLength;
+  Standard_Boolean myIsAllocated;
 
 
 };
@@ -114,7 +100,6 @@ Standard_Boolean myIsAllocated;
 #undef IntTools_CArray1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_CArray1OfReal_HeaderFile

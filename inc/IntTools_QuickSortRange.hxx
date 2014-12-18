@@ -6,15 +6,9 @@
 #ifndef _IntTools_QuickSortRange_HeaderFile
 #define _IntTools_QuickSortRange_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class IntTools_Range;
 class IntTools_Array1OfRange;
@@ -22,14 +16,14 @@ class IntTools_CompareRange;
 
 
 
-class IntTools_QuickSortRange  {
+class IntTools_QuickSortRange 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void Sort(IntTools_Array1OfRange& TheArray,const IntTools_CompareRange& Comp) ;
-
+  Standard_EXPORT static   void Sort (IntTools_Array1OfRange& TheArray, const IntTools_CompareRange& Comp) ;
 
 
 
@@ -52,7 +46,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_QuickSortRange_HeaderFile

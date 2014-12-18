@@ -6,49 +6,43 @@
 #ifndef _MAT2d_SketchExplorer_HeaderFile
 #define _MAT2d_SketchExplorer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
 class Geom2d_Curve;
 
 
-//! SketchExplorer  is  an iterator on  a  sketch.   A <br>
-//!          sketch is a set of contours, each contour is a set <br>
-//!          of curves from Geom2d. <br>
-class MAT2d_SketchExplorer  {
+//! SketchExplorer  is  an iterator on  a  sketch.   A
+//! sketch is a set of contours, each contour is a set
+//! of curves from Geom2d.
+//! It's use by BisectingLocus.
+class MAT2d_SketchExplorer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the number of contours in the figure. <br>
-  Standard_EXPORT     Standard_Integer NumberOfContours() const;
-  //! Initializes the curves explorer on the contour <br>
-//!            of range <ContourIndex>. <br>
-  Standard_EXPORT     void Init(const Standard_Integer ContourIndex) ;
-  //! Returns False if  there is no  more curves on the <br>
-//!           current contour. <br>
-  Standard_EXPORT     Standard_Boolean More() const;
-  //! Moves to the next curve of the current contour. <br>
-  Standard_EXPORT     void Next() ;
-  //! Returns the current curve on the current contour. <br>
-  Standard_EXPORT     Handle_Geom2d_Curve Value() const;
-
+  
+  //! Returns the number of contours in the figure.
+  Standard_EXPORT   Standard_Integer NumberOfContours()  const;
+  
+  //! Initializes the curves explorer on the contour
+  //! of range <ContourIndex>.
+  Standard_EXPORT   void Init (const Standard_Integer ContourIndex) ;
+  
+  //! Returns False if  there is no  more curves on the
+  //! current contour.
+  Standard_EXPORT   Standard_Boolean More()  const;
+  
+  //! Moves to the next curve of the current contour.
+  Standard_EXPORT   void Next() ;
+  
+  //! Returns the current curve on the current contour.
+  Standard_EXPORT   Handle(Geom2d_Curve) Value()  const;
 
 
 
@@ -71,7 +65,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_SketchExplorer_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_StepAP203_CcDesignDateAndTimeAssignment_HeaderFile
 #define _Handle_StepAP203_CcDesignDateAndTimeAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_DateAndTimeAssignment_HeaderFile
 #include <Handle_StepBasic_DateAndTimeAssignment.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_DateAndTimeAssignment);
 class StepAP203_CcDesignDateAndTimeAssignment;
 
-DEFINE_STANDARD_HANDLE(StepAP203_CcDesignDateAndTimeAssignment,StepBasic_DateAndTimeAssignment)
+DEFINE_STANDARD_HANDLE(StepAP203_CcDesignDateAndTimeAssignment, StepBasic_DateAndTimeAssignment)
 
-#endif
+#endif // _Handle_StepAP203_CcDesignDateAndTimeAssignment_HeaderFile

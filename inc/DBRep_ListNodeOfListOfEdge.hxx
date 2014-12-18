@@ -6,39 +6,28 @@
 #ifndef _DBRep_ListNodeOfListOfEdge_HeaderFile
 #define _DBRep_ListNodeOfListOfEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_DBRep_ListNodeOfListOfEdge_HeaderFile
 #include <Handle_DBRep_ListNodeOfListOfEdge.hxx>
-#endif
 
-#ifndef _Handle_DBRep_Edge_HeaderFile
 #include <Handle_DBRep_Edge.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class DBRep_Edge;
 class DBRep_ListOfEdge;
 class DBRep_ListIteratorOfListOfEdge;
 
 
 
-class DBRep_ListNodeOfListOfEdge : public TCollection_MapNode {
+class DBRep_ListNodeOfListOfEdge : public TCollection_MapNode
+{
 
 public:
 
   
-      DBRep_ListNodeOfListOfEdge(const Handle(DBRep_Edge)& I,const TCollection_MapNodePtr& n);
+    DBRep_ListNodeOfListOfEdge(const Handle(DBRep_Edge)& I, const TCollection_MapNodePtr& n);
   
-        Handle_DBRep_Edge& Value() const;
+      Handle(DBRep_Edge)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_DBRep_Edge myValue;
+  Handle(DBRep_Edge) myValue;
 
 
 };
 
-#define Item Handle_DBRep_Edge
+#define Item Handle(DBRep_Edge)
 #define Item_hxx <DBRep_Edge.hxx>
 #define TCollection_ListNode DBRep_ListNodeOfListOfEdge
 #define TCollection_ListNode_hxx <DBRep_ListNodeOfListOfEdge.hxx>
@@ -83,7 +72,6 @@ Handle_DBRep_Edge myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBRep_ListNodeOfListOfEdge_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <IFSelect_SequenceOfGeneralModifier.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IFSelect_GeneralModifier_HeaderFile
 #include <IFSelect_GeneralModifier.hxx>
-#endif
-#ifndef _IFSelect_SequenceNodeOfSequenceOfGeneralModifier_HeaderFile
 #include <IFSelect_SequenceNodeOfSequenceOfGeneralModifier.hxx>
-#endif
  
 
-#define SeqItem Handle_IFSelect_GeneralModifier
+#define SeqItem Handle(IFSelect_GeneralModifier)
 #define SeqItem_hxx <IFSelect_GeneralModifier.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfSequenceOfGeneralModifier
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfSequenceOfGeneralModifier.hxx>

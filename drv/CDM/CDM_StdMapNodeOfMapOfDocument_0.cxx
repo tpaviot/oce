@@ -5,22 +5,12 @@
 
 #include <CDM_StdMapNodeOfMapOfDocument.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _CDM_DocumentHasher_HeaderFile
 #include <CDM_DocumentHasher.hxx>
-#endif
-#ifndef _CDM_MapOfDocument_HeaderFile
 #include <CDM_MapOfDocument.hxx>
-#endif
-#ifndef _CDM_MapIteratorOfMapOfDocument_HeaderFile
 #include <CDM_MapIteratorOfMapOfDocument.hxx>
-#endif
 
  
 
@@ -39,7 +29,7 @@ IMPLEMENT_DOWNCAST(CDM_StdMapNodeOfMapOfDocument,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(CDM_StdMapNodeOfMapOfDocument)
 
 
-#define TheKey Handle_CDM_Document
+#define TheKey Handle(CDM_Document)
 #define TheKey_hxx <CDM_Document.hxx>
 #define Hasher CDM_DocumentHasher
 #define Hasher_hxx <CDM_DocumentHasher.hxx>

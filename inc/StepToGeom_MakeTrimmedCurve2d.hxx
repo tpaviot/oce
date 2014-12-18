@@ -6,41 +6,29 @@
 #ifndef _StepToGeom_MakeTrimmedCurve2d_HeaderFile
 #define _StepToGeom_MakeTrimmedCurve2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_TrimmedCurve_HeaderFile
 #include <Handle_StepGeom_TrimmedCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
 class StepGeom_TrimmedCurve;
 class Geom2d_BSplineCurve;
 
 
-//! This class implements the mapping between classes <br>
-//!          class TrimmedCurve from StepGeom which <br>
-//!          describes a Trimmed Curve from prostep and TrimmedCurve from <br>
-//!          Geom. <br>
-class StepToGeom_MakeTrimmedCurve2d  {
+//! This class implements the mapping between classes
+//! class TrimmedCurve from StepGeom which
+//! describes a Trimmed Curve from prostep and TrimmedCurve from
+//! Geom.
+class StepToGeom_MakeTrimmedCurve2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_TrimmedCurve)& SC,Handle(Geom2d_BSplineCurve)& CC) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_TrimmedCurve)& SC, Handle(Geom2d_BSplineCurve)& CC) ;
 
 
 
@@ -63,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeTrimmedCurve2d_HeaderFile

@@ -6,8 +6,11 @@
 #ifndef _V3d_TypeOfOrientation_HeaderFile
 #define _V3d_TypeOfOrientation_HeaderFile
 
-//! Determines the type of orientation. <br>
-enum V3d_TypeOfOrientation {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Determines the type of orientation.
+enum V3d_TypeOfOrientation
+{
 V3d_Xpos,
 V3d_Ypos,
 V3d_Zpos,
@@ -36,8 +39,4 @@ V3d_XnegYnegZpos,
 V3d_XnegYnegZneg
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _V3d_TypeOfOrientation_HeaderFile

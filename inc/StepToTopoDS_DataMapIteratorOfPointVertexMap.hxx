@@ -6,25 +6,13 @@
 #ifndef _StepToTopoDS_DataMapIteratorOfPointVertexMap_HeaderFile
 #define _StepToTopoDS_DataMapIteratorOfPointVertexMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _Handle_StepToTopoDS_DataMapNodeOfPointVertexMap_HeaderFile
 #include <Handle_StepToTopoDS_DataMapNodeOfPointVertexMap.hxx>
-#endif
 class Standard_NoSuchObject;
 class StepGeom_CartesianPoint;
 class TopoDS_Vertex;
@@ -34,22 +22,22 @@ class StepToTopoDS_DataMapNodeOfPointVertexMap;
 
 
 
-class StepToTopoDS_DataMapIteratorOfPointVertexMap  : public TCollection_BasicMapIterator {
+class StepToTopoDS_DataMapIteratorOfPointVertexMap  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepToTopoDS_DataMapIteratorOfPointVertexMap();
+  Standard_EXPORT StepToTopoDS_DataMapIteratorOfPointVertexMap();
   
-  Standard_EXPORT   StepToTopoDS_DataMapIteratorOfPointVertexMap(const StepToTopoDS_PointVertexMap& aMap);
+  Standard_EXPORT StepToTopoDS_DataMapIteratorOfPointVertexMap(const StepToTopoDS_PointVertexMap& aMap);
   
-  Standard_EXPORT     void Initialize(const StepToTopoDS_PointVertexMap& aMap) ;
+  Standard_EXPORT   void Initialize (const StepToTopoDS_PointVertexMap& aMap) ;
   
-  Standard_EXPORT    const Handle_StepGeom_CartesianPoint& Key() const;
+  Standard_EXPORT  const  Handle(StepGeom_CartesianPoint)& Key()  const;
   
-  Standard_EXPORT    const TopoDS_Vertex& Value() const;
-
+  Standard_EXPORT  const  TopoDS_Vertex& Value()  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_DataMapIteratorOfPointVertexMap_HeaderFile

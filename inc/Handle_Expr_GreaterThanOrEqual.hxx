@@ -6,22 +6,15 @@
 #ifndef _Handle_Expr_GreaterThanOrEqual_HeaderFile
 #define _Handle_Expr_GreaterThanOrEqual_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Expr_SingleRelation_HeaderFile
 #include <Handle_Expr_SingleRelation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Expr_SingleRelation);
 class Expr_GreaterThanOrEqual;
 
-DEFINE_STANDARD_HANDLE(Expr_GreaterThanOrEqual,Expr_SingleRelation)
+DEFINE_STANDARD_HANDLE(Expr_GreaterThanOrEqual, Expr_SingleRelation)
 
-#endif
+#endif // _Handle_Expr_GreaterThanOrEqual_HeaderFile

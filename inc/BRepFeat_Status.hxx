@@ -6,15 +6,14 @@
 #ifndef _BRepFeat_Status_HeaderFile
 #define _BRepFeat_Status_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum BRepFeat_Status {
+
+enum BRepFeat_Status
+{
 BRepFeat_NoError,
 BRepFeat_InvalidPlacement,
 BRepFeat_HoleTooLong
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepFeat_Status_HeaderFile

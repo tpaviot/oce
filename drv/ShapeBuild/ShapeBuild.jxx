@@ -1,6 +1,2 @@
-#ifndef _Geom_Plane_HeaderFile
 #include <Geom_Plane.hxx>
-#endif
-#ifndef _ShapeBuild_HeaderFile
 #include <ShapeBuild.hxx>
-#endif

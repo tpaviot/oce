@@ -6,46 +6,37 @@
 #ifndef _StepFEA_CurveElementIntervalLinearlyVarying_HeaderFile
 #define _StepFEA_CurveElementIntervalLinearlyVarying_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_CurveElementIntervalLinearlyVarying_HeaderFile
 #include <Handle_StepFEA_CurveElementIntervalLinearlyVarying.hxx>
-#endif
 
-#ifndef _Handle_StepElement_HArray1OfCurveElementSectionDefinition_HeaderFile
 #include <Handle_StepElement_HArray1OfCurveElementSectionDefinition.hxx>
-#endif
-#ifndef _StepFEA_CurveElementInterval_HeaderFile
 #include <StepFEA_CurveElementInterval.hxx>
-#endif
-#ifndef _Handle_StepFEA_CurveElementLocation_HeaderFile
 #include <Handle_StepFEA_CurveElementLocation.hxx>
-#endif
-#ifndef _Handle_StepBasic_EulerAngles_HeaderFile
 #include <Handle_StepBasic_EulerAngles.hxx>
-#endif
 class StepElement_HArray1OfCurveElementSectionDefinition;
 class StepFEA_CurveElementLocation;
 class StepBasic_EulerAngles;
 
 
-//! Representation of STEP entity CurveElementIntervalLinearlyVarying <br>
-class StepFEA_CurveElementIntervalLinearlyVarying : public StepFEA_CurveElementInterval {
+//! Representation of STEP entity CurveElementIntervalLinearlyVarying
+class StepFEA_CurveElementIntervalLinearlyVarying : public StepFEA_CurveElementInterval
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_CurveElementIntervalLinearlyVarying();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepFEA_CurveElementLocation)& aCurveElementInterval_FinishPosition,const Handle(StepBasic_EulerAngles)& aCurveElementInterval_EuAngles,const Handle(StepElement_HArray1OfCurveElementSectionDefinition)& aSections) ;
-  //! Returns field Sections <br>
-  Standard_EXPORT     Handle_StepElement_HArray1OfCurveElementSectionDefinition Sections() const;
-  //! Set field Sections <br>
-  Standard_EXPORT     void SetSections(const Handle(StepElement_HArray1OfCurveElementSectionDefinition)& Sections) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_CurveElementIntervalLinearlyVarying();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepFEA_CurveElementLocation)& aCurveElementInterval_FinishPosition, const Handle(StepBasic_EulerAngles)& aCurveElementInterval_EuAngles, const Handle(StepElement_HArray1OfCurveElementSectionDefinition)& aSections) ;
+  
+  //! Returns field Sections
+  Standard_EXPORT   Handle(StepElement_HArray1OfCurveElementSectionDefinition) Sections()  const;
+  
+  //! Set field Sections
+  Standard_EXPORT   void SetSections (const Handle(StepElement_HArray1OfCurveElementSectionDefinition)& Sections) ;
 
 
 
@@ -60,7 +51,7 @@ protected:
 private: 
 
 
-Handle_StepElement_HArray1OfCurveElementSectionDefinition theSections;
+  Handle(StepElement_HArray1OfCurveElementSectionDefinition) theSections;
 
 
 };
@@ -69,7 +60,6 @@ Handle_StepElement_HArray1OfCurveElementSectionDefinition theSections;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_CurveElementIntervalLinearlyVarying_HeaderFile

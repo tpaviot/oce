@@ -5,24 +5,12 @@
 
 #include <Geom2dInt_TheProjPCurOfGInter.hxx>
 
-#ifndef _Adaptor2d_Curve2d_HeaderFile
 #include <Adaptor2d_Curve2d.hxx>
-#endif
-#ifndef _Geom2dInt_Geom2dCurveTool_HeaderFile
 #include <Geom2dInt_Geom2dCurveTool.hxx>
-#endif
-#ifndef _Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_HeaderFile
 #include <Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_HeaderFile
 #include <Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_HeaderFile
 #include <Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
  
 
 #define TheCurve Adaptor2d_Curve2d

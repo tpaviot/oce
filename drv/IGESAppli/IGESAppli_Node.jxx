@@ -1,15 +1,5 @@
-#ifndef _IGESGeom_TransformationMatrix_HeaderFile
 #include <IGESGeom_TransformationMatrix.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _IGESData_TransfEntity_HeaderFile
 #include <IGESData_TransfEntity.hxx>
-#endif
-#ifndef _IGESAppli_Node_HeaderFile
 #include <IGESAppli_Node.hxx>
-#endif

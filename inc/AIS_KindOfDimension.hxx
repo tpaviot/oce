@@ -6,9 +6,12 @@
 #ifndef _AIS_KindOfDimension_HeaderFile
 #define _AIS_KindOfDimension_HeaderFile
 
-//! Declares the kinds of dimensions needed in the <br>
-//! display of Interactive Objects. <br>
-enum AIS_KindOfDimension {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Declares the kinds of dimensions needed in the
+//! display of Interactive Objects.
+enum AIS_KindOfDimension
+{
 AIS_KOD_NONE,
 AIS_KOD_LENGTH,
 AIS_KOD_PLANEANGLE,
@@ -25,8 +28,4 @@ AIS_KOD_OFFSET,
 AIS_KOD_ELLIPSERADIUS
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_KindOfDimension_HeaderFile

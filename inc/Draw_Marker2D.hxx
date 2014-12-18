@@ -6,57 +6,40 @@
 #ifndef _Draw_Marker2D_HeaderFile
 #define _Draw_Marker2D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Draw_Marker2D_HeaderFile
 #include <Handle_Draw_Marker2D.hxx>
-#endif
 
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Draw_Color_HeaderFile
 #include <Draw_Color.hxx>
-#endif
-#ifndef _Draw_MarkerShape_HeaderFile
 #include <Draw_MarkerShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Draw_Drawable2D_HeaderFile
 #include <Draw_Drawable2D.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_Pnt2d;
 class Draw_Color;
 class Draw_Display;
 
 
 
-class Draw_Marker2D : public Draw_Drawable2D {
+class Draw_Marker2D : public Draw_Drawable2D
+{
 
 public:
 
   
-  Standard_EXPORT   Draw_Marker2D(const gp_Pnt2d& P,const Draw_MarkerShape T,const Draw_Color& C,const Standard_Integer Size = 5);
+  Standard_EXPORT Draw_Marker2D(const gp_Pnt2d& P, const Draw_MarkerShape T, const Draw_Color& C, const Standard_Integer Size = 5);
   
-  Standard_EXPORT   Draw_Marker2D(const gp_Pnt2d& P,const Draw_MarkerShape T,const Draw_Color& C,const Standard_Real RSize);
-  //! myPos field <br>
-  Standard_EXPORT     gp_Pnt2d& ChangePos() ;
+  Standard_EXPORT Draw_Marker2D(const gp_Pnt2d& P, const Draw_MarkerShape T, const Draw_Color& C, const Standard_Real RSize);
   
-  Standard_EXPORT     void DrawOn(Draw_Display& dis) const;
-  //! Returs always false <br>
-  Standard_EXPORT   virtual  Standard_Boolean PickReject(const Standard_Real X,const Standard_Real Y,const Standard_Real Prec) const;
+  //! myPos field
+  Standard_EXPORT   gp_Pnt2d& ChangePos() ;
+  
+  Standard_EXPORT   void DrawOn (Draw_Display& dis)  const;
+  
+  //! Returs always false
+  Standard_EXPORT virtual   Standard_Boolean PickReject (const Standard_Real X, const Standard_Real Y, const Standard_Real Prec)  const;
 
 
 
@@ -71,10 +54,10 @@ protected:
 private: 
 
 
-gp_Pnt2d myPos;
-Draw_Color myCol;
-Draw_MarkerShape myTyp;
-Standard_Integer mySiz;
+  gp_Pnt2d myPos;
+  Draw_Color myCol;
+  Draw_MarkerShape myTyp;
+  Standard_Integer mySiz;
 
 
 };
@@ -83,7 +66,6 @@ Standard_Integer mySiz;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draw_Marker2D_HeaderFile

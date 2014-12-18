@@ -6,55 +6,23 @@
 #ifndef _HLRBRep_Surface_HeaderFile
 #define _HLRBRep_Surface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepAdaptor_Surface_HeaderFile
 #include <BRepAdaptor_Surface.hxx>
-#endif
-#ifndef _GeomAbs_SurfaceType_HeaderFile
 #include <GeomAbs_SurfaceType.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Cylinder_HeaderFile
 #include <gp_Cylinder.hxx>
-#endif
-#ifndef _gp_Cone_HeaderFile
 #include <gp_Cone.hxx>
-#endif
-#ifndef _gp_Sphere_HeaderFile
 #include <gp_Sphere.hxx>
-#endif
-#ifndef _gp_Torus_HeaderFile
 #include <gp_Torus.hxx>
-#endif
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -67,110 +35,128 @@ class gp_Pln;
 
 
 
-class HLRBRep_Surface  {
+class HLRBRep_Surface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an undefined surface with no face loaded. <br>
-  Standard_EXPORT   HLRBRep_Surface();
   
-        void Projector(const Standard_Address Proj) ;
-  //! Returns the 3D Surface. <br>
-        BRepAdaptor_Surface& Surface() ;
-  //! Sets the 3D Surface to be projected. <br>
-  Standard_EXPORT     void Surface(const TopoDS_Face& F) ;
-  //! returns true if it is a side face <br>
-  Standard_EXPORT     Standard_Boolean IsSide(const Standard_Real tolf,const Standard_Real toler) const;
+  //! Creates an undefined surface with no face loaded.
+  Standard_EXPORT HLRBRep_Surface();
   
-  Standard_EXPORT     Standard_Boolean IsAbove(const Standard_Boolean back,const Standard_Address A,const Standard_Real tolC) const;
+      void Projector (const Standard_Address Proj) ;
   
-        Standard_Real FirstUParameter() const;
+  //! Returns the 3D Surface.
+      BRepAdaptor_Surface& Surface() ;
   
-        Standard_Real LastUParameter() const;
+  //! Sets the 3D Surface to be projected.
+  Standard_EXPORT   void Surface (const TopoDS_Face& F) ;
   
-        Standard_Real FirstVParameter() const;
+  //! returns true if it is a side face
+  Standard_EXPORT   Standard_Boolean IsSide (const Standard_Real tolf, const Standard_Real toler)  const;
   
-        Standard_Real LastVParameter() const;
+  Standard_EXPORT   Standard_Boolean IsAbove (const Standard_Boolean back, const Standard_Address A, const Standard_Real tolC)  const;
   
-        GeomAbs_Shape UContinuity() const;
+      Standard_Real FirstUParameter()  const;
   
-        GeomAbs_Shape VContinuity() const;
-  //! If necessary, breaks the surface in U intervals of <br>
-//!          continuity    <S>.  And   returns  the  number  of <br>
-//!          intervals. <br>
-        Standard_Integer NbUIntervals(const GeomAbs_Shape S) ;
-  //! If necessary, breaks the surface in V intervals of <br>
-//!          continuity    <S>.  And   returns  the  number  of <br>
-//!          intervals. <br>
-        Standard_Integer NbVIntervals(const GeomAbs_Shape S) ;
+      Standard_Real LastUParameter()  const;
   
-        GeomAbs_Shape UIntervalContinuity() const;
+      Standard_Real FirstVParameter()  const;
   
-        GeomAbs_Shape VIntervalContinuity() const;
+      Standard_Real LastVParameter()  const;
   
-        Standard_Boolean IsUClosed() const;
+      GeomAbs_Shape UContinuity()  const;
   
-        Standard_Boolean IsVClosed() const;
+      GeomAbs_Shape VContinuity()  const;
   
-        Standard_Boolean IsUPeriodic() const;
+  //! If necessary, breaks the surface in U intervals of
+  //! continuity    <S>.  And   returns  the  number  of
+  //! intervals.
+      Standard_Integer NbUIntervals (const GeomAbs_Shape S) ;
   
-        Standard_Real UPeriod() const;
+  //! If necessary, breaks the surface in V intervals of
+  //! continuity    <S>.  And   returns  the  number  of
+  //! intervals.
+      Standard_Integer NbVIntervals (const GeomAbs_Shape S) ;
   
-        Standard_Boolean IsVPeriodic() const;
+      GeomAbs_Shape UIntervalContinuity()  const;
   
-        Standard_Real VPeriod() const;
-  //! Computes the point of parameters U,V on the surface. <br>
-  Standard_EXPORT     gp_Pnt Value(const Standard_Real U,const Standard_Real V) const;
-  //! Computes the point of parameters U,V on the surface. <br>
-        void D0(const Standard_Real U,const Standard_Real V,gp_Pnt& P) const;
-  //! Computes the point  and the first derivatives on <br>
-//!  the surface. <br>//! Raised   if  the continuity  of   the  current <br>
-//!  intervals is not C1. <br>
-        void D1(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V) const;
-  //!  Computes   the point,  the  first  and  second <br>
-//!  derivatives on the surface. <br>//! Raised  if   the   continuity   of the current <br>
-//!  intervals is not C2. <br>
-        void D2(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V,gp_Vec& D2U,gp_Vec& D2V,gp_Vec& D2UV) const;
-  //! Computes the point,  the first, second and third <br>
-//!  derivatives on the surface. <br>//! Raised  if   the   continuity   of the current <br>
-//!  intervals is not C3. <br>
-        void D3(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V,gp_Vec& D2U,gp_Vec& D2V,gp_Vec& D2UV,gp_Vec& D3U,gp_Vec& D3V,gp_Vec& D3UUV,gp_Vec& D3UVV) const;
-  //! Computes  the  derivative of order   Nu  in the <br>
-//!  direction U and Nv in the  direction  V  at the point P(U, <br>
-//!  V). <br>//! Raised if the current U  interval is not not CNu <br>
-//!  and the current V interval is not CNv. <br>//! Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0. <br>
-        gp_Vec DN(const Standard_Real U,const Standard_Real V,const Standard_Integer Nu,const Standard_Integer Nv) const;
-  //! Returns the type of the surface : Plane, Cylinder, <br>
-//!          Cone,      Sphere,        Torus,    BezierSurface, <br>
-//!          BSplineSurface,               SurfaceOfRevolution, <br>
-//!          SurfaceOfExtrusion, OtherSurface <br>
-        GeomAbs_SurfaceType GetType() const;
+      GeomAbs_Shape VIntervalContinuity()  const;
   
-  Standard_EXPORT     gp_Pln Plane() const;
+      Standard_Boolean IsUClosed()  const;
   
-        gp_Cylinder Cylinder() const;
+      Standard_Boolean IsVClosed()  const;
   
-        gp_Cone Cone() const;
+      Standard_Boolean IsUPeriodic()  const;
   
-        gp_Sphere Sphere() const;
+      Standard_Real UPeriod()  const;
   
-        gp_Torus Torus() const;
+      Standard_Boolean IsVPeriodic()  const;
   
-        Standard_Integer UDegree() const;
+      Standard_Real VPeriod()  const;
   
-        Standard_Integer NbUPoles() const;
+  //! Computes the point of parameters U,V on the surface.
+  Standard_EXPORT   gp_Pnt Value (const Standard_Real U, const Standard_Real V)  const;
   
-        Standard_Integer VDegree() const;
+  //! Computes the point of parameters U,V on the surface.
+      void D0 (const Standard_Real U, const Standard_Real V, gp_Pnt& P)  const;
   
-        Standard_Integer NbVPoles() const;
+  //! Computes the point  and the first derivatives on
+  //! the surface.
+  //! Raised   if  the continuity  of   the  current
+  //! intervals is not C1.
+      void D1 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V)  const;
   
-        Standard_Integer NbUKnots() const;
+  //! Computes   the point,  the  first  and  second
+  //! derivatives on the surface.
+  //! Raised  if   the   continuity   of the current
+  //! intervals is not C2.
+      void D2 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV)  const;
   
-        Standard_Integer NbVKnots() const;
+  //! Computes the point,  the first, second and third
+  //! derivatives on the surface.
+  //! Raised  if   the   continuity   of the current
+  //! intervals is not C3.
+      void D3 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV, gp_Vec& D3U, gp_Vec& D3V, gp_Vec& D3UUV, gp_Vec& D3UVV)  const;
   
-        gp_Ax1 Axis() const;
-
+  //! Computes  the  derivative of order   Nu  in the
+  //! direction U and Nv in the  direction  V  at the point P(U,
+  //! V).
+  //! Raised if the current U  interval is not not CNu
+  //! and the current V interval is not CNv.
+  //! Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+      gp_Vec DN (const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv)  const;
+  
+  //! Returns the type of the surface : Plane, Cylinder,
+  //! Cone,      Sphere,        Torus,    BezierSurface,
+  //! BSplineSurface,               SurfaceOfRevolution,
+  //! SurfaceOfExtrusion, OtherSurface
+      GeomAbs_SurfaceType GetType()  const;
+  
+  Standard_EXPORT   gp_Pln Plane()  const;
+  
+      gp_Cylinder Cylinder()  const;
+  
+      gp_Cone Cone()  const;
+  
+      gp_Sphere Sphere()  const;
+  
+      gp_Torus Torus()  const;
+  
+      Standard_Integer UDegree()  const;
+  
+      Standard_Integer NbUPoles()  const;
+  
+      Standard_Integer VDegree()  const;
+  
+      Standard_Integer NbVPoles()  const;
+  
+      Standard_Integer NbUKnots()  const;
+  
+      Standard_Integer NbVKnots()  const;
+  
+      gp_Ax1 Axis()  const;
 
 
 
@@ -183,13 +169,14 @@ protected:
 
 private:
 
-  //! returns true if it is a side face <br>
-  Standard_EXPORT     Standard_Boolean SideRowsOfPoles(const Standard_Real tol,const Standard_Integer nbuPoles,const Standard_Integer nbvPoles,TColgp_Array2OfPnt& Pnt) const;
+  
+  //! returns true if it is a side face
+  Standard_EXPORT   Standard_Boolean SideRowsOfPoles (const Standard_Real tol, const Standard_Integer nbuPoles, const Standard_Integer nbvPoles, TColgp_Array2OfPnt& Pnt)  const;
 
 
-BRepAdaptor_Surface mySurf;
-GeomAbs_SurfaceType myType;
-Standard_Address myProj;
+  BRepAdaptor_Surface mySurf;
+  GeomAbs_SurfaceType myType;
+  Standard_Address myProj;
 
 
 };
@@ -199,7 +186,6 @@ Standard_Address myProj;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_Surface_HeaderFile

@@ -6,43 +6,19 @@
 #ifndef _StepData_UndefinedEntity_HeaderFile
 #define _StepData_UndefinedEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_UndefinedEntity_HeaderFile
 #include <Handle_StepData_UndefinedEntity.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_Interface_UndefinedContent_HeaderFile
 #include <Handle_Interface_UndefinedContent.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepData_UndefinedEntity_HeaderFile
 #include <Handle_StepData_UndefinedEntity.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
 class TCollection_HAsciiString;
 class Interface_UndefinedContent;
 class StepData_StepReaderData;
@@ -52,46 +28,59 @@ class Interface_CopyTool;
 class Interface_EntityIterator;
 
 
-//! Undefined entity specific to Step Interface, in which StepType <br>
-//!           is defined at each instance, or is a SubList of another one <br>
-//!           Uses an UndefinedContent, that from Interface is suitable. <br>
-//!           Also an Entity defined by STEP can be "Complex Type" (see <br>
-//!           ANDOR clause in Express). <br>
-class StepData_UndefinedEntity : public MMgt_TShared {
+//! Undefined entity specific to Step Interface, in which StepType
+//! is defined at each instance, or is a SubList of another one
+//! Uses an UndefinedContent, that from Interface is suitable.
+//! Also an Entity defined by STEP can be "Complex Type" (see
+//! ANDOR clause in Express).
+class StepData_UndefinedEntity : public MMgt_TShared
+{
 
 public:
 
-  //! creates an Unknown entity <br>
-  Standard_EXPORT   StepData_UndefinedEntity();
-  //! Creates a SubList of an Unknown entity : it is an Unknown <br>
-//!           Entity with no Type, but flagged as "SUB" if issub is True <br>
-  Standard_EXPORT   StepData_UndefinedEntity(const Standard_Boolean issub);
-  //! Returns the UndefinedContent which brings the Parameters <br>
-  Standard_EXPORT     Handle_Interface_UndefinedContent UndefinedContent() const;
-  //! Returns True if an Unndefined Entity is SubPart of another one <br>
-  Standard_EXPORT     Standard_Boolean IsSub() const;
-  //! Returns the "super-entity" of a sub-part <br>
-  Standard_EXPORT     Handle_StepData_UndefinedEntity Super() const;
-  //! Returns True if <me> defines a Multiple Type Entity (see ANDOR) <br>
-  Standard_EXPORT     Standard_Boolean IsComplex() const;
-  //! For a Multiple Type Entity, returns the Next "Componant" <br>
-//!           For more than two Types, iterative definition (Next->Next...) <br>
-//!           Returns a Null Handle for the end of the List <br>
-  Standard_EXPORT     Handle_StepData_UndefinedEntity Next() const;
-  //! gives entity type, read from file <br>
-//!           For a Complex Type Entity, gives the first Type read, each <br>
-//!           "Next" gives its "partial" type <br>
-//! was C++ : return const <br>
-  Standard_EXPORT     Standard_CString StepType() const;
-  //! reads data from StepReaderData (i.e. from file), by filling <br>
-//!           StepType and parameters stored in the UndefinedContent <br>
-  Standard_EXPORT     void ReadRecord(const Handle(StepData_StepReaderData)& SR,const Standard_Integer num,Handle(Interface_Check)& ach) ;
-  //! write data to StepWriter, taken from UndefinedContent <br>
-  Standard_EXPORT     void WriteParams(StepData_StepWriter& SW) const;
-  //! reads another UndefinedEntity from StepData <br>
-  Standard_EXPORT     void GetFromAnother(const Handle(StepData_UndefinedEntity)& other,Interface_CopyTool& TC) ;
-  //! Fills the list of shared entities <br>
-  Standard_EXPORT     void FillShared(Interface_EntityIterator& list) const;
+  
+  //! creates an Unknown entity
+  Standard_EXPORT StepData_UndefinedEntity();
+  
+  //! Creates a SubList of an Unknown entity : it is an Unknown
+  //! Entity with no Type, but flagged as "SUB" if issub is True
+  Standard_EXPORT StepData_UndefinedEntity(const Standard_Boolean issub);
+  
+  //! Returns the UndefinedContent which brings the Parameters
+  Standard_EXPORT   Handle(Interface_UndefinedContent) UndefinedContent()  const;
+  
+  //! Returns True if an Unndefined Entity is SubPart of another one
+  Standard_EXPORT   Standard_Boolean IsSub()  const;
+  
+  //! Returns the "super-entity" of a sub-part
+  Standard_EXPORT   Handle(StepData_UndefinedEntity) Super()  const;
+  
+  //! Returns True if <me> defines a Multiple Type Entity (see ANDOR)
+  Standard_EXPORT   Standard_Boolean IsComplex()  const;
+  
+  //! For a Multiple Type Entity, returns the Next "Componant"
+  //! For more than two Types, iterative definition (Next->Next...)
+  //! Returns a Null Handle for the end of the List
+  Standard_EXPORT   Handle(StepData_UndefinedEntity) Next()  const;
+  
+  //! gives entity type, read from file
+  //! For a Complex Type Entity, gives the first Type read, each
+  //! "Next" gives its "partial" type
+  //! was C++ : return const
+  Standard_EXPORT   Standard_CString StepType()  const;
+  
+  //! reads data from StepReaderData (i.e. from file), by filling
+  //! StepType and parameters stored in the UndefinedContent
+  Standard_EXPORT   void ReadRecord (const Handle(StepData_StepReaderData)& SR, const Standard_Integer num, Handle(Interface_Check)& ach) ;
+  
+  //! write data to StepWriter, taken from UndefinedContent
+  Standard_EXPORT   void WriteParams (StepData_StepWriter& SW)  const;
+  
+  //! reads another UndefinedEntity from StepData
+  Standard_EXPORT   void GetFromAnother (const Handle(StepData_UndefinedEntity)& other, Interface_CopyTool& TC) ;
+  
+  //! Fills the list of shared entities
+  Standard_EXPORT   void FillShared (Interface_EntityIterator& list)  const;
 
 
 
@@ -106,10 +95,10 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString thetype;
-Handle_Interface_UndefinedContent thecont;
-Standard_Boolean thesub;
-Handle_StepData_UndefinedEntity thenext;
+  Handle(TCollection_HAsciiString) thetype;
+  Handle(Interface_UndefinedContent) thecont;
+  Standard_Boolean thesub;
+  Handle(StepData_UndefinedEntity) thenext;
 
 
 };
@@ -118,7 +107,6 @@ Handle_StepData_UndefinedEntity thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_UndefinedEntity_HeaderFile

@@ -6,53 +6,41 @@
 #ifndef _StdSelect_EdgeFilter_HeaderFile
 #define _StdSelect_EdgeFilter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StdSelect_EdgeFilter_HeaderFile
 #include <Handle_StdSelect_EdgeFilter.hxx>
-#endif
 
-#ifndef _StdSelect_TypeOfEdge_HeaderFile
 #include <StdSelect_TypeOfEdge.hxx>
-#endif
-#ifndef _SelectMgr_Filter_HeaderFile
 #include <SelectMgr_Filter.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
 class SelectMgr_EntityOwner;
 
 
-//! A framework to define a filter to select a specific type of edge. <br>
-//! The types available include: <br>
-//! -   any edge <br>
-//! -   a linear edge <br>
-//! -   a circular edge. <br>
-class StdSelect_EdgeFilter : public SelectMgr_Filter {
+//! A framework to define a filter to select a specific type of edge.
+//! The types available include:
+//! -   any edge
+//! -   a linear edge
+//! -   a circular edge.
+class StdSelect_EdgeFilter : public SelectMgr_Filter
+{
 
 public:
 
-  //! Constructs an edge filter object defined by the type of edge Edge. <br>
-  Standard_EXPORT   StdSelect_EdgeFilter(const StdSelect_TypeOfEdge Edge);
-  //! Sets the type of edge aNewType. aNewType is to be highlighted in selection. <br>
-  Standard_EXPORT     void SetType(const StdSelect_TypeOfEdge aNewType) ;
-  //! Returns the type of edge to be highlighted in selection. <br>
-  Standard_EXPORT     StdSelect_TypeOfEdge Type() const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsOk(const Handle(SelectMgr_EntityOwner)& anobj) const;
+  //! Constructs an edge filter object defined by the type of edge Edge.
+  Standard_EXPORT StdSelect_EdgeFilter(const StdSelect_TypeOfEdge Edge);
   
-  Standard_EXPORT   virtual  Standard_Boolean ActsOn(const TopAbs_ShapeEnum aStandardMode) const;
+  //! Sets the type of edge aNewType. aNewType is to be highlighted in selection.
+  Standard_EXPORT   void SetType (const StdSelect_TypeOfEdge aNewType) ;
+  
+  //! Returns the type of edge to be highlighted in selection.
+  Standard_EXPORT   StdSelect_TypeOfEdge Type()  const;
+  
+  Standard_EXPORT virtual   Standard_Boolean IsOk (const Handle(SelectMgr_EntityOwner)& anobj)  const;
+  
+  Standard_EXPORT virtual   Standard_Boolean ActsOn (const TopAbs_ShapeEnum aStandardMode)  const;
 
 
 
@@ -67,7 +55,7 @@ protected:
 private: 
 
 
-StdSelect_TypeOfEdge mytype;
+  StdSelect_TypeOfEdge mytype;
 
 
 };
@@ -76,7 +64,6 @@ StdSelect_TypeOfEdge mytype;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdSelect_EdgeFilter_HeaderFile

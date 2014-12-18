@@ -6,22 +6,15 @@
 #ifndef _Handle_StepFEA_DummyNode_HeaderFile
 #define _Handle_StepFEA_DummyNode_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepFEA_NodeRepresentation_HeaderFile
 #include <Handle_StepFEA_NodeRepresentation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepFEA_NodeRepresentation);
 class StepFEA_DummyNode;
 
-DEFINE_STANDARD_HANDLE(StepFEA_DummyNode,StepFEA_NodeRepresentation)
+DEFINE_STANDARD_HANDLE(StepFEA_DummyNode, StepFEA_NodeRepresentation)
 
-#endif
+#endif // _Handle_StepFEA_DummyNode_HeaderFile

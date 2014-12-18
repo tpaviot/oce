@@ -6,51 +6,41 @@
 #ifndef _IGESBasic_ExternalReferenceFile_HeaderFile
 #define _IGESBasic_ExternalReferenceFile_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESBasic_ExternalReferenceFile_HeaderFile
 #include <Handle_IGESBasic_ExternalReferenceFile.hxx>
-#endif
 
-#ifndef _Handle_Interface_HArray1OfHAsciiString_HeaderFile
 #include <Handle_Interface_HArray1OfHAsciiString.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class Interface_HArray1OfHAsciiString;
 class Standard_OutOfRange;
 class TCollection_HAsciiString;
 
 
-//! defines ExternalReferenceFile, Type <406> Form <12> <br>
-//!          in package IGESBasic <br>
-//!          References definitions residing in another file <br>
-class IGESBasic_ExternalReferenceFile : public IGESData_IGESEntity {
+//! defines ExternalReferenceFile, Type <406> Form <12>
+//! in package IGESBasic
+//! References definitions residing in another file
+class IGESBasic_ExternalReferenceFile : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESBasic_ExternalReferenceFile();
-  //! This method is used to set the fields of the class <br>
-//!           ExternalReferenceFile <br>
-//!       - aNameArray : External Reference File Names <br>
-  Standard_EXPORT     void Init(const Handle(Interface_HArray1OfHAsciiString)& aNameArray) ;
-  //! returns number of External Reference File Names <br>
-  Standard_EXPORT     Standard_Integer NbListEntries() const;
-  //! returns External Reference File Name <br>
-//! raises exception if Index <= 0 or Index > NbListEntries() <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name(const Standard_Integer Index) const;
+  Standard_EXPORT IGESBasic_ExternalReferenceFile();
+  
+  //! This method is used to set the fields of the class
+  //! ExternalReferenceFile
+  //! - aNameArray : External Reference File Names
+  Standard_EXPORT   void Init (const Handle(Interface_HArray1OfHAsciiString)& aNameArray) ;
+  
+  //! returns number of External Reference File Names
+  Standard_EXPORT   Standard_Integer NbListEntries()  const;
+  
+  //! returns External Reference File Name
+  //! raises exception if Index <= 0 or Index > NbListEntries()
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name (const Standard_Integer Index)  const;
 
 
 
@@ -65,7 +55,7 @@ protected:
 private: 
 
 
-Handle_Interface_HArray1OfHAsciiString theNames;
+  Handle(Interface_HArray1OfHAsciiString) theNames;
 
 
 };
@@ -74,7 +64,6 @@ Handle_Interface_HArray1OfHAsciiString theNames;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_ExternalReferenceFile_HeaderFile

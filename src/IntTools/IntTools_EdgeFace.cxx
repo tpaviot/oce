@@ -28,7 +28,7 @@
 #include <IntTools_CommonPrt.hxx>
 #include <IntTools_Root.hxx>
 #include <IntTools_BeanFaceIntersector.hxx>
-#include <BOPInt_Context.hxx>
+#include <IntTools_Context.hxx>
 
 #include <BRep_Tool.hxx>
 
@@ -58,7 +58,7 @@
 #include <Extrema_POnCurv.hxx>
 #include <Extrema_POnSurf.hxx>
 
-// modified by NIZHNY-MKK  Thu Jul 21 11:35:59 2005
+
 #include <IntCurveSurface_HInter.hxx>
 #include <GeomAdaptor_HCurve.hxx>
 #include <GeomAdaptor_HSurface.hxx>
@@ -66,14 +66,14 @@
 
 static
   Standard_Boolean IsCoplanar (const BRepAdaptor_Curve&  ,
-			       const BRepAdaptor_Surface& );
+          const BRepAdaptor_Surface& );
 static
   Standard_Boolean IsRadius (const BRepAdaptor_Curve& aCurve ,
-			     const BRepAdaptor_Surface& aSurface);
+        const BRepAdaptor_Surface& aSurface);
 static
   Standard_Integer AdaptiveDiscret (const Standard_Integer iDiscret,
-				    const BRepAdaptor_Curve& aCurve ,
-				    const BRepAdaptor_Surface& aSurface);
+        const BRepAdaptor_Curve& aCurve ,
+        const BRepAdaptor_Surface& aSurface);
 
 //=======================================================================
 //function : IntTools_EdgeFace::IntTools_EdgeFace
@@ -96,7 +96,7 @@ static
 //function : SetContext
 //purpose  : 
 //=======================================================================
-void IntTools_EdgeFace::SetContext(const Handle(BOPInt_Context)& theContext) 
+void IntTools_EdgeFace::SetContext(const Handle(IntTools_Context)& theContext) 
 {
   myContext = theContext;
 }
@@ -105,7 +105,7 @@ void IntTools_EdgeFace::SetContext(const Handle(BOPInt_Context)& theContext)
 //function : Context
 //purpose  : 
 //=======================================================================
-const Handle(BOPInt_Context)& IntTools_EdgeFace::Context()const 
+const Handle(IntTools_Context)& IntTools_EdgeFace::Context()const 
 {
   return myContext;
 }
@@ -113,25 +113,23 @@ const Handle(BOPInt_Context)& IntTools_EdgeFace::Context()const
 //function : SetEdge
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::SetEdge(const TopoDS_Edge& anEdge)
+void IntTools_EdgeFace::SetEdge(const TopoDS_Edge& anEdge)
 {
   myEdge=anEdge;
 }
-
 //=======================================================================
 //function : SetFace
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::SetFace(const TopoDS_Face& aFace)
+void IntTools_EdgeFace::SetFace(const TopoDS_Face& aFace)
 {
   myFace=aFace;
 }
-
 //=======================================================================
 //function : SetTolE
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::SetTolE(const Standard_Real aTol) 
+void IntTools_EdgeFace::SetTolE(const Standard_Real aTol) 
 {
   myTolE=aTol;
 } 
@@ -139,16 +137,47 @@ const Handle(BOPInt_Context)& IntTools_EdgeFace::Context()const
 //function : SetTolF
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::SetTolF(const Standard_Real aTol) 
+void IntTools_EdgeFace::SetTolF(const Standard_Real aTol) 
 {
   myTolF=aTol;
 } 
-
+//=======================================================================
+//function : Edge
+//purpose  : 
+//=======================================================================
+const TopoDS_Edge& IntTools_EdgeFace::Edge()const 
+{
+  return myEdge;
+}
+//=======================================================================
+//function : Face
+//purpose  : 
+//=======================================================================
+const TopoDS_Face& IntTools_EdgeFace::Face()const 
+{
+  return myFace;
+}
+//=======================================================================
+//function : TolE
+//purpose  : 
+//=======================================================================
+Standard_Real IntTools_EdgeFace::TolE()const 
+{
+  return myTolE;
+}
+ //=======================================================================
+//function : TolF
+//purpose  : 
+//=======================================================================
+Standard_Real IntTools_EdgeFace::TolF()const 
+{
+  return myTolF;
+} 
 //=======================================================================
 //function : SetDiscretize
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::SetDiscretize(const Standard_Integer aDiscret)
+void IntTools_EdgeFace::SetDiscretize(const Standard_Integer aDiscret)
 {
   myDiscret=aDiscret;
 }
@@ -156,7 +185,7 @@ const Handle(BOPInt_Context)& IntTools_EdgeFace::Context()const
 //function : SetDeflection
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::SetDeflection(const Standard_Real aDefl) 
+void IntTools_EdgeFace::SetDeflection(const Standard_Real aDefl) 
 {
   myDeflection=aDefl;
 } 
@@ -164,7 +193,7 @@ const Handle(BOPInt_Context)& IntTools_EdgeFace::Context()const
 //function : SetEpsilonT
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::SetEpsilonT(const Standard_Real anEpsT) 
+void IntTools_EdgeFace::SetEpsilonT(const Standard_Real anEpsT) 
 {
   myEpsT=anEpsT;
 } 
@@ -172,7 +201,7 @@ const Handle(BOPInt_Context)& IntTools_EdgeFace::Context()const
 //function : SetEpsilonNull
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::SetEpsilonNull(const Standard_Real anEpsNull) 
+void IntTools_EdgeFace::SetEpsilonNull(const Standard_Real anEpsNull) 
 {
   myEpsNull=anEpsNull;
 } 
@@ -181,8 +210,8 @@ const Handle(BOPInt_Context)& IntTools_EdgeFace::Context()const
 //function : SetRange
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::SetRange(const Standard_Real aFirst,
-				   const Standard_Real aLast) 
+void IntTools_EdgeFace::SetRange(const Standard_Real aFirst,
+                                 const Standard_Real aLast) 
 {
   myRange.SetFirst (aFirst);
   myRange.SetLast  (aLast);
@@ -192,7 +221,7 @@ const Handle(BOPInt_Context)& IntTools_EdgeFace::Context()const
 //function : SetRange
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::SetRange(const IntTools_Range& aRange) 
+void IntTools_EdgeFace::SetRange(const IntTools_Range& aRange) 
 {
   myRange.SetFirst (aRange.First());
   myRange.SetLast  (aRange.Last());
@@ -247,7 +276,7 @@ void IntTools_EdgeFace::CheckData()
 //function : Prepare
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::Prepare() 
+void IntTools_EdgeFace::Prepare() 
 {
   Standard_Integer pri;
   IntTools_CArray1OfReal aPars;
@@ -260,7 +289,7 @@ void IntTools_EdgeFace::CheckData()
   //
   // 2.Prepare myCriteria
   if (aCurveType==GeomAbs_BSplineCurve||
-	aCurveType==GeomAbs_BezierCurve) {
+ aCurveType==GeomAbs_BezierCurve) {
     myCriteria=1.5*myTolE+myTolF;
   }
   else {
@@ -278,7 +307,8 @@ void IntTools_EdgeFace::CheckData()
   //
   //
   // 3.Prepare myPars 
-  pri = IntTools::PrepareArgs(myC, myTmax, myTmin, myDiscret, myDeflection, aPars);
+  pri = IntTools::PrepareArgs(myC, myTmax, myTmin, 
+                              myDiscret, myDeflection, aPars);
   if (pri) {
     myErrorStatus=6;
     return;
@@ -328,20 +358,20 @@ void IntTools_EdgeFace::CheckData()
 
     if (i==(aNb-1)) {
       if (ind1 && ind0) {
-	aRange.SetLast(t1);
-	myProjectableRanges.Append(aRange);
+ aRange.SetLast(t1);
+ myProjectableRanges.Append(aRange);
       }
       if (ind1 && !ind0) {
-	FindProjectableRoot(t0, t1, ind0, ind1, tRoot);
-	aRange.SetFirst(tRoot);
-	aRange.SetLast(t1);
-	myProjectableRanges.Append(aRange);
+ FindProjectableRoot(t0, t1, ind0, ind1, tRoot);
+ aRange.SetFirst(tRoot);
+ aRange.SetLast(t1);
+ myProjectableRanges.Append(aRange);
       }
       //
       if (ind0 && !ind1) {
-	FindProjectableRoot(t0, t1, ind0, ind1, tRoot);
-	aRange.SetLast(tRoot);
-	myProjectableRanges.Append(aRange);
+ FindProjectableRoot(t0, t1, ind0, ind1, tRoot);
+ aRange.SetLast(tRoot);
+ myProjectableRanges.Append(aRange);
       }
       //
       break;
@@ -351,11 +381,11 @@ void IntTools_EdgeFace::CheckData()
       FindProjectableRoot(t0, t1, ind0, ind1, tRoot);
       
       if (ind0 && !ind1) {
-	aRange.SetLast(tRoot);
-	myProjectableRanges.Append(aRange);
+ aRange.SetLast(tRoot);
+ myProjectableRanges.Append(aRange);
       }
       else {
-	aRange.SetFirst(tRoot);
+ aRange.SetFirst(tRoot);
       }
     } // if (ind0 != ind1)
     ind0=ind1;
@@ -367,44 +397,47 @@ void IntTools_EdgeFace::CheckData()
 //purpose  : 
 //=======================================================================
   void IntTools_EdgeFace::FindProjectableRoot (const Standard_Real tt1,
-					       const Standard_Real tt2,
-					       const Standard_Integer ff1,
-					       const Standard_Integer ff2,
-					       Standard_Real& tRoot)
+                                               const Standard_Real tt2,
+                                               const Standard_Integer ff1,
+                                               const Standard_Integer /*ff2*/,
+                                               Standard_Real& tRoot)
 {
   Standard_Real tm, t1, t2, aEpsT;
-  Standard_Integer anIsProj1, anIsProj2, anIsProjm;
-  aEpsT=0.5*myEpsT;
-  //
+  Standard_Integer anIsProj1, anIsProjm;
+  aEpsT = 0.5 * myEpsT;
+
   // Root is inside [tt1, tt2]
-  t1=tt1;  
-  t2=tt2;
-  anIsProj1=ff1;
-  anIsProj2=ff2;
-  
-  for(;;) {
-    if (fabs(t1-t2) < aEpsT) {
-      tRoot=(anIsProj1) ? t1 : t2;
+  t1 = tt1;
+  t2 = tt2;
+  anIsProj1 =  ff1;
+
+  for(;;)
+  {
+    if (fabs(t1 - t2) < aEpsT)
+    {
+      tRoot = (anIsProj1) ? t1 : t2;
       return;
     }
-    tm=.5*(t1+t2);
-    anIsProjm=IsProjectable(tm);
-    
-    if (anIsProjm != anIsProj1) {
-      t2=tm;
-      anIsProj2=anIsProjm;
+    tm = 0.5 * (t1 + t2);
+    anIsProjm = IsProjectable(tm);
+
+    if (anIsProjm != anIsProj1)
+    {
+      t2 = tm;
     }
-    else {
-      t1=tm;
-      anIsProj1=anIsProjm;
+    else
+    {
+      t1 = tm;
+      anIsProj1 = anIsProjm;
     }
-  }
+  } // for(;;)
 }
 //=======================================================================
 //function : IsProjectable
 //purpose  : 
 //=======================================================================
-Standard_Boolean IntTools_EdgeFace::IsProjectable(const Standard_Real aT) const
+Standard_Boolean IntTools_EdgeFace::IsProjectable
+  (const Standard_Real aT) const
 {
   Standard_Boolean bFlag; 
   gp_Pnt aPC;
@@ -418,7 +451,8 @@ Standard_Boolean IntTools_EdgeFace::IsProjectable(const Standard_Real aT) const
 //function : DistanceFunction
 //purpose  : 
 //=======================================================================
-Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
+Standard_Real IntTools_EdgeFace::DistanceFunction
+  (const Standard_Real t)
 {
   Standard_Real aD;
 
@@ -462,10 +496,11 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //function : IsEqDistance
 //purpose  : 
 //=======================================================================
-  Standard_Boolean IntTools_EdgeFace::IsEqDistance(const gp_Pnt& aP,
-						   const BRepAdaptor_Surface& aBAS,
-						   const Standard_Real aTol,
-						   Standard_Real& aD)
+Standard_Boolean IntTools_EdgeFace::IsEqDistance
+  (const gp_Pnt& aP,
+   const BRepAdaptor_Surface& aBAS,
+   const Standard_Real aTol,
+   Standard_Real& aD)
 {
   Standard_Boolean bRetFlag=Standard_True;
 
@@ -521,9 +556,9 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //function : PrepareArgsFuncArrays
 //purpose  : Obtain 
 //           myFuncArray and myArgsArray for the interval [ta, tb]
-//=======================================================================		
-  void IntTools_EdgeFace::PrepareArgsFuncArrays(const Standard_Real ta,
-						const Standard_Real tb)
+//=======================================================================  
+void IntTools_EdgeFace::PrepareArgsFuncArrays(const Standard_Real ta,
+                                              const Standard_Real tb)
 {
   IntTools_CArray1OfReal anArgs, aFunc;
   Standard_Integer i, aNb, pri;
@@ -564,14 +599,13 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
   AddDerivativePoints(anArgs, aFunc);
 
 }
-
-
 //=======================================================================
 //function : AddDerivativePoints
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::AddDerivativePoints(const IntTools_CArray1OfReal& t,
-					      const IntTools_CArray1OfReal& f)  
+void IntTools_EdgeFace::AddDerivativePoints
+  (const IntTools_CArray1OfReal& t,
+   const IntTools_CArray1OfReal& f)  
 {
   Standard_Integer i, j, n, k, nn=100;
   Standard_Real fr, tr, tr1, dEpsNull=10.*myEpsNull;
@@ -634,16 +668,16 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 
     if (fd1*fd2 < 0.) {
       if (fabs(fd1) < myEpsNull) {
-	tr=t1;
-	fr=DistanceFunction(tr);//fd1;
+ tr=t1;
+ fr=DistanceFunction(tr);//fd1;
       }
       else if (fabs(fd2) < myEpsNull) {
-	tr=t2;
-	fr=DistanceFunction(tr);
+ tr=t2;
+ fr=DistanceFunction(tr);
       }
       else {
-	tr=FindSimpleRoot(2, t1, t2, fd1);
-	fr=DistanceFunction(tr);
+ tr=FindSimpleRoot(2, t1, t2, fd1);
+ fr=DistanceFunction(tr);
       }
       
       aTSeq.Append(tr);
@@ -657,11 +691,11 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
     for (i=1; i<=aTSeq.Length(); i++) {
       tr=aTSeq(i);
       for (j=0; j<n; j++) {
-	tr1=t(j);
-	if (fabs (tr1-tr) < myEpsT) {
-	  aTSeq.Remove(i);
-	  aFSeq.Remove(i);
-	}
+ tr1=t(j);
+ if (fabs (tr1-tr) < myEpsT) {
+   aTSeq.Remove(i);
+   aFSeq.Remove(i);
+ }
       }
     }
     nn=aTSeq.Length();
@@ -706,7 +740,8 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //function : DerivativeFunction
 //purpose  : 
 //=======================================================================
-  Standard_Real IntTools_EdgeFace::DerivativeFunction(const Standard_Real t2)
+Standard_Real IntTools_EdgeFace::DerivativeFunction
+  (const Standard_Real t2)
 {
   Standard_Real t1, t3, aD1, aD2, aD3;
   Standard_Real dt=1.e-9;
@@ -723,10 +758,11 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //function : FindSimpleRoot
 //purpose  : [private]
 //=======================================================================
-  Standard_Real IntTools_EdgeFace::FindSimpleRoot (const Standard_Integer IP,
-						   const Standard_Real tA,
-						   const Standard_Real tB,
-						   const Standard_Real fA)
+Standard_Real IntTools_EdgeFace::FindSimpleRoot 
+  (const Standard_Integer IP,
+   const Standard_Real tA,
+   const Standard_Real tB,
+   const Standard_Real fA)
 {
   Standard_Real r, a, b, y, x0, s;
   
@@ -761,9 +797,10 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //function : FindGoldRoot
 //purpose  : [private]
 //=======================================================================
-  Standard_Real IntTools_EdgeFace::FindGoldRoot (const Standard_Real tA,
-						 const Standard_Real tB,
-						 const Standard_Real coeff)
+Standard_Real IntTools_EdgeFace::FindGoldRoot
+  (const Standard_Real tA,
+   const Standard_Real tB,
+   const Standard_Real coeff)
 {
   Standard_Real gs=0.61803399;
   Standard_Real a, b, xp, xl, yp, yl;
@@ -803,7 +840,8 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //function : MakeType
 //purpose  : 
 //=======================================================================
-  Standard_Integer IntTools_EdgeFace::MakeType(IntTools_CommonPrt&  aCommonPrt)
+Standard_Integer IntTools_EdgeFace::MakeType
+  (IntTools_CommonPrt&  aCommonPrt)
 {
   Standard_Real  af1, al1;
   Standard_Real  df1, tm;
@@ -827,72 +865,30 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
     if((Abs(af1 - myRange.First()) < myC.Resolution(myCriteria)) &&
        (Abs(al1 - myRange.Last()) < myC.Resolution(myCriteria)))
       isWholeRange = Standard_True;
-
+    
     
     if ((df1 > myCriteria * 2.) && isWholeRange) {
       aCommonPrt.SetType(TopAbs_EDGE);
     }
     else {
       if(isWholeRange) {
-	tm = (af1 + al1) * 0.5;
-
-	if(aPF.Distance(myC.Value(tm)) > myCriteria * 2.) {
-	  aCommonPrt.SetType(TopAbs_EDGE);
-	  return 0;
-	}
+        tm = (af1 + al1) * 0.5;
+        
+        if(aPF.Distance(myC.Value(tm)) > myCriteria * 2.) {
+          aCommonPrt.SetType(TopAbs_EDGE);
+          return 0;
+        }
       }
-
+      
       if(!CheckTouch(aCommonPrt, tm)) {
-	tm = (af1 + al1) * 0.5;
+        tm = (af1 + al1) * 0.5;
       }
       aCommonPrt.SetType(TopAbs_VERTEX);
       aCommonPrt.SetVertexParameter1(tm);
       aCommonPrt.SetRange1 (af1, al1);
     }
-	 return 0;
   }
-  
-  /*
-  dt=al1-af1;
-  if (dt<1.e-5) {
-    gp_Pnt aPF, aPL;
-    myC.D0(af1, aPF);
-    myC.D0(al1, aPL);
-    df1=aPF.Distance(aPL);
-    if (df1<myCriteria) {
-      //
-      tm=.5*(af1+al1);
-      aCommonPrt.SetType(TopAbs_VERTEX);
-      aCommonPrt.SetVertexParameter1(tm);
-      aCommonPrt.SetRange1 (af1, al1);
-      return 0;
-    }
-  }
-  //
-  IsIntersection (af1, al1);
-  //
-  if (!myParallel) {
-    aCommonPrt.SetType(TopAbs_VERTEX);
-    aCommonPrt.SetVertexParameter1(myPar1);
-    aCommonPrt.SetRange1 (af1, al1);
-  }
-  else {
-    dt=al1-af1;
-    if (dt<1.e-5) {
-      df1=DistanceFunction(af1);
-      df2=DistanceFunction(al1);
-      tm=(df1 < df2) ? af1 : al1;
-      aCommonPrt.SetType(TopAbs_VERTEX);
-      aCommonPrt.SetVertexParameter1(tm);
-      aCommonPrt.SetRange1 (af1, al1);
-    }
-
-    else {
-      aCommonPrt.SetType(TopAbs_EDGE);
-    }
-  }
-
-  return 0;*/
+ return 0;
 }
 
 
@@ -900,8 +896,8 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //function : IsIntersection
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::IsIntersection (const Standard_Real ta, 
-					  const Standard_Real tb) 
+void IntTools_EdgeFace::IsIntersection (const Standard_Real ta, 
+                                        const Standard_Real tb) 
 {
   IntTools_CArray1OfReal anArgs, aFunc;
   Standard_Integer i, aNb, aCnt=0;
@@ -928,10 +924,10 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
     //
     if (i) {
       if (aFunc(i)>aFunc(i-1)) {
-	aCntIncreasing++;
+ aCntIncreasing++;
       }
       if (aFunc(i)<aFunc(i-1)) {
-	aCntDecreasing++;
+ aCntDecreasing++;
       }
     }
     //
@@ -947,15 +943,15 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
   //
   if (myParallel) {
     if (!(myC.GetType()==GeomAbs_Line 
-	  && 
-	  myS.GetType()==GeomAbs_Cylinder)) {
+   && 
+   myS.GetType()==GeomAbs_Cylinder)) {
       if (aCntDecreasing==aNb) {
-	myPar1=anArgs(aNb-1);
-	myParallel=Standard_False;
+ myPar1=anArgs(aNb-1);
+ myParallel=Standard_False;
       }
       if (aCntIncreasing==aNb) {
-	myPar1=anArgs(0);
-	myParallel=Standard_False;
+ myPar1=anArgs(0);
+ myParallel=Standard_False;
       }
     }
   }
@@ -967,8 +963,9 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //function : FindDerivativeRoot
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::FindDerivativeRoot(const IntTools_CArray1OfReal& t,
-					     const IntTools_CArray1OfReal& f)  
+void IntTools_EdgeFace::FindDerivativeRoot
+  (const IntTools_CArray1OfReal& t,
+   const IntTools_CArray1OfReal& f)  
 {
   Standard_Integer i, n, k;
   Standard_Real tr;
@@ -1044,7 +1041,7 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //function : RemoveIdenticalRoots 
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::RemoveIdenticalRoots()
+void IntTools_EdgeFace::RemoveIdenticalRoots()
 {
   Standard_Integer aNbRoots, j, k;
 
@@ -1065,8 +1062,8 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 
       aDistance=aPj.Distance(aPk);
       if (aDistance < myCriteria) {
-	mySequenceOfRoots.Remove(k);
-	aNbRoots=mySequenceOfRoots.Length();
+ mySequenceOfRoots.Remove(k);
+ aNbRoots=mySequenceOfRoots.Length();
       }
     }
   }
@@ -1076,8 +1073,9 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //function : CheckTouch 
 //purpose  : 
 //=======================================================================
-  Standard_Boolean IntTools_EdgeFace::CheckTouch(const IntTools_CommonPrt& aCP,
-						 Standard_Real&            aTx) 
+Standard_Boolean IntTools_EdgeFace::CheckTouch
+  (const IntTools_CommonPrt& aCP,
+   Standard_Real&            aTx) 
 {
   Standard_Real aTF, aTL, Tol, U1f, U1l, V1f, V1l, af, al,aDist2, aMinDist2;
   Standard_Boolean theflag=Standard_False;
@@ -1106,7 +1104,7 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
   
   GeomAdaptor_Curve   TheCurve   (Curve,aTF, aTL);
   GeomAdaptor_Surface TheSurface (Surface, U1f, U1l, V1f, V1l); 
-				 
+     
   Extrema_ExtCS anExtrema (TheCurve, TheSurface, Tol, Tol);
 
   aDist2 = 1.e100;
@@ -1118,42 +1116,42 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
       aNbExt=anExtrema.NbExt();
       
       if(aNbExt > 0) {
-	iLower=1;
-	for (i=1; i<=aNbExt; i++) {
-	  aDist2=anExtrema.SquareDistance(i);
-	  if (aDist2 < aMinDist2) {
-	    aMinDist2=aDist2;
-	    iLower=i;
-	  }
-	}
-	aDist2=anExtrema.SquareDistance(iLower);
-	Extrema_POnCurv aPOnC;
-	Extrema_POnSurf aPOnS;
-	anExtrema.Points(iLower, aPOnC, aPOnS);
-	aTx=aPOnC.Parameter();
+ iLower=1;
+ for (i=1; i<=aNbExt; i++) {
+   aDist2=anExtrema.SquareDistance(i);
+   if (aDist2 < aMinDist2) {
+     aMinDist2=aDist2;
+     iLower=i;
+   }
+ }
+ aDist2=anExtrema.SquareDistance(iLower);
+ Extrema_POnCurv aPOnC;
+ Extrema_POnSurf aPOnS;
+ anExtrema.Points(iLower, aPOnC, aPOnS);
+ aTx=aPOnC.Parameter();
       }
       else {
-	// modified by NIZHNY-MKK  Thu Jul 21 11:35:32 2005.BEGIN
-	IntCurveSurface_HInter anExactIntersector;
+ // modified by NIZHNY-MKK  Thu Jul 21 11:35:32 2005.BEGIN
+ IntCurveSurface_HInter anExactIntersector;
   
-	Handle(GeomAdaptor_HCurve) aCurve     = new GeomAdaptor_HCurve(TheCurve);
-	Handle(GeomAdaptor_HSurface) aSurface = new GeomAdaptor_HSurface(TheSurface);
-	
-	anExactIntersector.Perform(aCurve, aSurface);
+ Handle(GeomAdaptor_HCurve) aCurve     = new GeomAdaptor_HCurve(TheCurve);
+ Handle(GeomAdaptor_HSurface) aSurface = new GeomAdaptor_HSurface(TheSurface);
+ 
+ anExactIntersector.Perform(aCurve, aSurface);
 
-	if(anExactIntersector.IsDone()) {
-	  Standard_Integer i = 0;
+ if(anExactIntersector.IsDone()) {
+   Standard_Integer i = 0;
 
-	  for(i = 1; i <= anExactIntersector.NbPoints(); i++) {
-	    const IntCurveSurface_IntersectionPoint& aPoint = anExactIntersector.Point(i);
+   for(i = 1; i <= anExactIntersector.NbPoints(); i++) {
+     const IntCurveSurface_IntersectionPoint& aPoint = anExactIntersector.Point(i);
       
-	    if((aPoint.W() >= aTF) && (aPoint.W() <= aTL)) {
-	      aDist2=0.;
-	      aTx = aPoint.W();
-	    }
-	  }
-	}
-	// modified by NIZHNY-MKK  Thu Jul 21 11:35:40 2005.END
+     if((aPoint.W() >= aTF) && (aPoint.W() <= aTL)) {
+       aDist2=0.;
+       aTx = aPoint.W();
+     }
+   }
+ }
+ // modified by NIZHNY-MKK  Thu Jul 21 11:35:40 2005.END
       }
     }
     else {
@@ -1200,13 +1198,11 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 
   return theflag;
 }
-
-
 //=======================================================================
 //function : Perform
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::Perform() 
+void IntTools_EdgeFace::Perform() 
 {
   Standard_Integer i, aNb;
   IntTools_CommonPrt aCommonPrt;
@@ -1220,7 +1216,7 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
   }
   //
   if (myContext.IsNull()) {
-    myContext=new BOPInt_Context;
+    myContext=new IntTools_Context;
   }
   //
   myIsDone = Standard_False;
@@ -1230,7 +1226,7 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
   //
   // Prepare myCriteria
   if (aCurveType==GeomAbs_BSplineCurve||
-	aCurveType==GeomAbs_BezierCurve) {
+      aCurveType==GeomAbs_BezierCurve) {
     //--- 5112
     Standard_Real diff1 = (myTolE/myTolF);
     Standard_Real diff2 = (myTolF/myTolE);
@@ -1243,27 +1239,27 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
   else {
     myCriteria=myTolE+myTolF;
   }
-
+  
   myTmin=myRange.First();
   myTmax=myRange.Last();
-
+  
   myS.Initialize (myFace,Standard_True);
-
+  
   if(myContext.IsNull()) {
     myFClass2d.Init(myFace, 1.e-6);
   }
-
+  
   IntTools_BeanFaceIntersector anIntersector(myC, myS, myTolE, myTolF);
   anIntersector.SetBeanParameters(myRange.First(), myRange.Last());
   //
   anIntersector.SetContext(myContext);
   //
   anIntersector.Perform();
-
+  
   if(!anIntersector.IsDone()) {
     return;
   }
-
+  
   for(Standard_Integer r = 1; r <= anIntersector.Result().Length(); r++) {
     const IntTools_Range& aRange = anIntersector.Result().Value(r);
     
@@ -1295,32 +1291,32 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
     TopAbs_ShapeEnum aType;
     Standard_Boolean bIsTouch;
     Standard_Real aTx;
-
+    
     aCType=myC.GetType();
     aSType=myS.GetType();
     
     if (aCType==GeomAbs_Line && aSType==GeomAbs_Cylinder) {
       for (i=1; i<=aNb; i++) {
-	IntTools_CommonPrt& aCP=mySeqOfCommonPrts(i);
-	aType=aCP.Type();
-	if (aType==TopAbs_EDGE) {
-	  bIsTouch=CheckTouch (aCP, aTx);
-	  if (bIsTouch) {
-	    aCP.SetType(TopAbs_VERTEX);
-	    aCP.SetVertexParameter1(aTx);
-	    aCP.SetRange1 (aTx, aTx);
-	  }
-	}
-	if (aType==TopAbs_VERTEX) {
-	  bIsTouch=CheckTouchVertex (aCP, aTx);
-	  if (bIsTouch) {
-	    aCP.SetVertexParameter1(aTx);
-	    aCP.SetRange1 (aTx, aTx);
-	  }
-	}
+        IntTools_CommonPrt& aCP=mySeqOfCommonPrts(i);
+        aType=aCP.Type();
+        if (aType==TopAbs_EDGE) {
+          bIsTouch=CheckTouch (aCP, aTx);
+          if (bIsTouch) {
+            aCP.SetType(TopAbs_VERTEX);
+            aCP.SetVertexParameter1(aTx);
+            aCP.SetRange1 (aTx, aTx);
+          }
+        }
+        if (aType==TopAbs_VERTEX) {
+          bIsTouch=CheckTouchVertex (aCP, aTx);
+          if (bIsTouch) {
+            aCP.SetVertexParameter1(aTx);
+            aCP.SetRange1 (aTx, aTx);
+          }
+        }
       }
     }
-
+    
     // Circle\Plane's Common Parts treatement
     
     if (aCType==GeomAbs_Circle && aSType==GeomAbs_Plane) {
@@ -1328,18 +1324,18 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
       bIsCoplanar=IsCoplanar(myC, myS);
       bIsRadius=IsRadius(myC, myS);
       if (!bIsCoplanar && !bIsRadius) {
-	for (i=1; i<=aNb; i++) {
-	  IntTools_CommonPrt& aCP=mySeqOfCommonPrts(i);
-	  aType=aCP.Type();
-	  if (aType==TopAbs_EDGE) {
-	    bIsTouch=CheckTouch (aCP, aTx);
-	    if (bIsTouch) {
-	      aCP.SetType(TopAbs_VERTEX);
-	      aCP.SetVertexParameter1(aTx);
-	      aCP.SetRange1 (aTx, aTx);
-	    }
-	  }
-	}
+        for (i=1; i<=aNb; i++) {
+          IntTools_CommonPrt& aCP=mySeqOfCommonPrts(i);
+          aType=aCP.Type();
+          if (aType==TopAbs_EDGE) {
+            bIsTouch=CheckTouch (aCP, aTx);
+            if (bIsTouch) {
+              aCP.SetType(TopAbs_VERTEX);
+              aCP.SetVertexParameter1(aTx);
+              aCP.SetRange1 (aTx, aTx);
+            }
+          }
+        }
       }
     }
   }
@@ -1360,8 +1356,9 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //function : CheckTouch 
 //purpose  : 
 //=======================================================================
-  Standard_Boolean IntTools_EdgeFace::CheckTouchVertex (const IntTools_CommonPrt& aCP,
-							Standard_Real& aTx) 
+Standard_Boolean IntTools_EdgeFace::CheckTouchVertex 
+  (const IntTools_CommonPrt& aCP,
+   Standard_Real& aTx) 
 {
   Standard_Real aTF, aTL, Tol, U1f,U1l,V1f,V1l, af, al,aDist2, aMinDist2, aTm, aDist2New;
   Standard_Real aEpsT;
@@ -1383,7 +1380,7 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
   
   GeomAdaptor_Curve   TheCurve   (Curve,aTF, aTL);
   GeomAdaptor_Surface TheSurface (Surface, U1f, U1l, V1f, V1l); 
-				 
+     
   Extrema_ExtCS anExtrema (TheCurve, TheSurface, Tol, Tol);
    
   if(!anExtrema.IsDone()) {
@@ -1447,7 +1444,7 @@ Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 //purpose  : 
 //=======================================================================
 Standard_Boolean IsCoplanar (const BRepAdaptor_Curve& aCurve ,
-			       const BRepAdaptor_Surface& aSurface)
+                             const BRepAdaptor_Surface& aSurface)
 {
   Standard_Boolean bFlag=Standard_False;
 
@@ -1475,7 +1472,7 @@ Standard_Boolean IsCoplanar (const BRepAdaptor_Curve& aCurve ,
 //purpose  : 
 //=======================================================================
 Standard_Boolean IsRadius (const BRepAdaptor_Curve& aCurve ,
-			   const BRepAdaptor_Surface& aSurface)
+                           const BRepAdaptor_Surface& aSurface)
 {
   Standard_Boolean bFlag=Standard_False;
 
@@ -1503,8 +1500,8 @@ Standard_Boolean IsRadius (const BRepAdaptor_Curve& aCurve ,
 //purpose  : 
 //=======================================================================
 Standard_Integer AdaptiveDiscret (const Standard_Integer iDiscret,
-				  const BRepAdaptor_Curve& aCurve ,
-				  const BRepAdaptor_Surface& aSurface)
+                                  const BRepAdaptor_Curve& aCurve ,
+                                  const BRepAdaptor_Surface& aSurface)
 {
   Standard_Integer iDiscretNew;
 

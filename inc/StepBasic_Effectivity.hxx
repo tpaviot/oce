@@ -6,38 +6,29 @@
 #ifndef _StepBasic_Effectivity_HeaderFile
 #define _StepBasic_Effectivity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_Effectivity_HeaderFile
 #include <Handle_StepBasic_Effectivity.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
 
-class StepBasic_Effectivity : public MMgt_TShared {
+class StepBasic_Effectivity : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   StepBasic_Effectivity();
+  Standard_EXPORT StepBasic_Effectivity();
   
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aid) ;
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aid) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Id() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Id()  const;
   
-  Standard_EXPORT     void SetId(const Handle(TCollection_HAsciiString)& aid) ;
+  Standard_EXPORT   void SetId (const Handle(TCollection_HAsciiString)& aid) ;
 
 
 
@@ -52,7 +43,7 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theid;
+  Handle(TCollection_HAsciiString) theid;
 
 
 };
@@ -61,7 +52,6 @@ Handle_TCollection_HAsciiString theid;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_Effectivity_HeaderFile

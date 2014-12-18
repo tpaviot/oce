@@ -6,16 +6,15 @@
 #ifndef _LProp_Status_HeaderFile
 #define _LProp_Status_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum LProp_Status {
+
+enum LProp_Status
+{
 LProp_Undecided,
 LProp_Undefined,
 LProp_Defined,
 LProp_Computed
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _LProp_Status_HeaderFile

@@ -1,3 +1,1 @@
-#ifndef _MoniTool_MTHasher_HeaderFile
 #include <MoniTool_MTHasher.hxx>
-#endif

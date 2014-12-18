@@ -6,17 +6,15 @@
 #ifndef _Aspect_TypeOfDrawMode_HeaderFile
 #define _Aspect_TypeOfDrawMode_HeaderFile
 
-//! Definition of the draw modes <br>
-//! <br>
-enum Aspect_TypeOfDrawMode {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of the draw modes
+enum Aspect_TypeOfDrawMode
+{
 Aspect_TODM_REPLACE,
 Aspect_TODM_ERASE,
 Aspect_TODM_XOR,
 Aspect_TODM_XORLIGHT
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfDrawMode_HeaderFile

@@ -6,37 +6,17 @@
 #ifndef _Select3D_SensitivePoly_HeaderFile
 #define _Select3D_SensitivePoly_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitivePoly_HeaderFile
 #include <Handle_Select3D_SensitivePoly.hxx>
-#endif
 
-#ifndef _Select3D_Box2d_HeaderFile
 #include <Select3D_Box2d.hxx>
-#endif
-#ifndef _Select3D_PointData_HeaderFile
 #include <Select3D_PointData.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_OutOfRange;
 class SelectBasics_EntityOwner;
@@ -47,24 +27,29 @@ class SelectBasics_ListOfBox2d;
 class TColgp_Array1OfPnt2d;
 
 
-//! Sensitive Entity to make a face selectable. <br>
-//! In some cases this class can raise Standard_ConstructionError and <br>
-//! Standard_OutOfRange exceptions from its member Select3D_PointData <br>
-//! mypolyg. <br>
-class Select3D_SensitivePoly : public Select3D_SensitiveEntity {
+//! Sensitive Entity to make a face selectable.
+//! In some cases this class can raise Standard_ConstructionError and
+//! Standard_OutOfRange exceptions from its member Select3D_PointData
+//! mypolyg.
+class Select3D_SensitivePoly : public Select3D_SensitiveEntity
+{
 
 public:
 
-  //! projection of the sensitive primitive in order to <br>
-//!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
-  //! stores in <boxes> the 2D Boxes which represent the sensitive face <br>
-//!          in the selection algorithm. <br>
-  Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;
-  //! Returns the 3D points of the array used at construction time. <br>
-        void Points3D(Handle(TColgp_HArray1OfPnt)& theHArrayOfPnt) ;
-  //! Returns the 2D points of the array used at construction time. <br>
-        void Points2D(TColgp_Array1OfPnt2d& theArrayOfPnt2d) ;
+  
+  //! projection of the sensitive primitive in order to
+  //! get 2D boxes for the Sort Algorithm
+  Standard_EXPORT virtual   void Project (const Handle(Select3D_Projector)& aProjector) ;
+  
+  //! stores in <boxes> the 2D Boxes which represent the sensitive face
+  //! in the selection algorithm.
+  Standard_EXPORT   void Areas (SelectBasics_ListOfBox2d& boxes) ;
+  
+  //! Returns the 3D points of the array used at construction time.
+      void Points3D (Handle(TColgp_HArray1OfPnt)& theHArrayOfPnt) ;
+  
+  //! Returns the 2D points of the array used at construction time.
+      void Points2D (TColgp_Array1OfPnt2d& theArrayOfPnt2d) ;
 
 
 
@@ -73,23 +58,26 @@ public:
 
 protected:
 
-  //! Constructs a sensitive face object defined by the <br>
-//! owner OwnerId, the array of points ThePoints, and <br>
-//! the sensitivity type Sensitivity. <br>
-//! The array of points is the outer polygon of the geometric face. <br>
-  Standard_EXPORT   Select3D_SensitivePoly(const Handle(SelectBasics_EntityOwner)& OwnerId,const TColgp_Array1OfPnt& ThePoints);
-  //! Constructs a sensitive face object defined by the <br>
-//! owner OwnerId, the array of points ThePoints, and <br>
-//! the sensitivity type Sensitivity. <br>
-//! The array of points is the outer polygon of the geometric face. <br>
-  Standard_EXPORT   Select3D_SensitivePoly(const Handle(SelectBasics_EntityOwner)& OwnerId,const Handle(TColgp_HArray1OfPnt)& ThePoints);
-  //! Constructs the sensitive circle object defined by the <br>
-//! owner OwnerId, the circle Circle, the Boolean <br>
-//! FilledCircle and the number of points NbOfPoints. <br>
-  Standard_EXPORT   Select3D_SensitivePoly(const Handle(SelectBasics_EntityOwner)& OwnerId,const Standard_Integer NbOfPoints = 6);
+  
+  //! Constructs a sensitive face object defined by the
+  //! owner OwnerId, the array of points ThePoints, and
+  //! the sensitivity type Sensitivity.
+  //! The array of points is the outer polygon of the geometric face.
+  Standard_EXPORT Select3D_SensitivePoly(const Handle(SelectBasics_EntityOwner)& OwnerId, const TColgp_Array1OfPnt& ThePoints);
+  
+  //! Constructs a sensitive face object defined by the
+  //! owner OwnerId, the array of points ThePoints, and
+  //! the sensitivity type Sensitivity.
+  //! The array of points is the outer polygon of the geometric face.
+  Standard_EXPORT Select3D_SensitivePoly(const Handle(SelectBasics_EntityOwner)& OwnerId, const Handle(TColgp_HArray1OfPnt)& ThePoints);
+  
+  //! Constructs the sensitive circle object defined by the
+  //! owner OwnerId, the circle Circle, the Boolean
+  //! FilledCircle and the number of points NbOfPoints.
+  Standard_EXPORT Select3D_SensitivePoly(const Handle(SelectBasics_EntityOwner)& OwnerId, const Standard_Integer NbOfPoints = 6);
 
-Select3D_Box2d mybox2d;
-Select3D_PointData mypolyg;
+  Select3D_Box2d mybox2d;
+  Select3D_PointData mypolyg;
 
 
 private: 
@@ -104,7 +92,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_SensitivePoly_HeaderFile

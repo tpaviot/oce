@@ -5,28 +5,14 @@
 
 #include <IGESSolid_HArray1OfVertexList.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESSolid_VertexList_HeaderFile
 #include <IGESSolid_VertexList.hxx>
-#endif
-#ifndef _IGESSolid_Array1OfVertexList_HeaderFile
 #include <IGESSolid_Array1OfVertexList.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESSolid_HArray1OfVertexList,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESSolid_HArray1OfVertexList)
 
 
-#define ItemHArray1 Handle_IGESSolid_VertexList
+#define ItemHArray1 Handle(IGESSolid_VertexList)
 #define ItemHArray1_hxx <IGESSolid_VertexList.hxx>
 #define TheArray1 IGESSolid_Array1OfVertexList
 #define TheArray1_hxx <IGESSolid_Array1OfVertexList.hxx>

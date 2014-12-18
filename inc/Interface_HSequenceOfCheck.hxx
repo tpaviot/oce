@@ -6,31 +6,15 @@
 #ifndef _Interface_HSequenceOfCheck_HeaderFile
 #define _Interface_HSequenceOfCheck_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_HSequenceOfCheck_HeaderFile
 #include <Handle_Interface_HSequenceOfCheck.hxx>
-#endif
 
-#ifndef _Interface_SequenceOfCheck_HeaderFile
 #include <Interface_SequenceOfCheck.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Interface_Check;
@@ -38,56 +22,57 @@ class Interface_SequenceOfCheck;
 
 
 
-class Interface_HSequenceOfCheck : public MMgt_TShared {
+class Interface_HSequenceOfCheck : public MMgt_TShared
+{
 
 public:
 
   
-      Interface_HSequenceOfCheck();
+    Interface_HSequenceOfCheck();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(Interface_Check)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(Interface_Check)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(Interface_HSequenceOfCheck)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(Interface_HSequenceOfCheck)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Interface_Check)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(Interface_Check)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Interface_HSequenceOfCheck)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(Interface_HSequenceOfCheck)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(Interface_Check)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(Interface_Check)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(Interface_HSequenceOfCheck)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(Interface_HSequenceOfCheck)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(Interface_Check)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(Interface_Check)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(Interface_HSequenceOfCheck)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(Interface_HSequenceOfCheck)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_Interface_HSequenceOfCheck Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(Interface_HSequenceOfCheck) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(Interface_Check)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(Interface_Check)& anItem) ;
   
-  Standard_EXPORT    const Handle_Interface_Check& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(Interface_Check)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_Interface_Check& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(Interface_Check)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const Interface_SequenceOfCheck& Sequence() const;
+     const  Interface_SequenceOfCheck& Sequence()  const;
   
-        Interface_SequenceOfCheck& ChangeSequence() ;
+      Interface_SequenceOfCheck& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_Interface_HSequenceOfCheck ShallowCopy() const;
+  Standard_EXPORT   Handle(Interface_HSequenceOfCheck) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-Interface_SequenceOfCheck mySequence;
+  Interface_SequenceOfCheck mySequence;
 
 
 };
 
-#define Item Handle_Interface_Check
+#define Item Handle(Interface_Check)
 #define Item_hxx <Interface_Check.hxx>
 #define TheSequence Interface_SequenceOfCheck
 #define TheSequence_hxx <Interface_SequenceOfCheck.hxx>
@@ -128,11 +113,10 @@ Interface_SequenceOfCheck mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_Interface_HSequenceOfCheck ShallowCopy(const Handle_Interface_HSequenceOfCheck& me) {
+inline Handle(Interface_HSequenceOfCheck) ShallowCopy(const Handle(Interface_HSequenceOfCheck)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _Interface_HSequenceOfCheck_HeaderFile

@@ -5,31 +5,14 @@
 
 #include <PColStd_HArray1OfExtendedString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PCollection_HExtendedString_HeaderFile
 #include <PCollection_HExtendedString.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _PColStd_FieldOfHArray1OfExtendedString_HeaderFile
 #include <PColStd_FieldOfHArray1OfExtendedString.hxx>
-#endif
-#ifndef _PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString_HeaderFile
 #include <PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString.hxx>
-#endif
-#ifndef _PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString_HeaderFile
 #include <PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString.hxx>
-#endif
 
  
 
@@ -47,7 +30,7 @@ IMPLEMENT_DOWNCAST(PColStd_HArray1OfExtendedString,Standard_Persistent)
 IMPLEMENT_STANDARD_RTTI(PColStd_HArray1OfExtendedString)
 
 
-#define Item Handle_PCollection_HExtendedString
+#define Item Handle(PCollection_HExtendedString)
 #define Item_hxx <PCollection_HExtendedString.hxx>
 #define PCollection_FieldOfHArray1 PColStd_FieldOfHArray1OfExtendedString
 #define PCollection_FieldOfHArray1_hxx <PColStd_FieldOfHArray1OfExtendedString.hxx>

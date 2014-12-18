@@ -6,22 +6,15 @@
 #ifndef _Handle_StepAP214_AppliedGroupAssignment_HeaderFile
 #define _Handle_StepAP214_AppliedGroupAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_GroupAssignment_HeaderFile
 #include <Handle_StepBasic_GroupAssignment.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_GroupAssignment);
 class StepAP214_AppliedGroupAssignment;
 
-DEFINE_STANDARD_HANDLE(StepAP214_AppliedGroupAssignment,StepBasic_GroupAssignment)
+DEFINE_STANDARD_HANDLE(StepAP214_AppliedGroupAssignment, StepBasic_GroupAssignment)
 
-#endif
+#endif // _Handle_StepAP214_AppliedGroupAssignment_HeaderFile

@@ -6,68 +6,56 @@
 #ifndef _IGESSelect_SelectLevelNumber_HeaderFile
 #define _IGESSelect_SelectLevelNumber_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_SelectLevelNumber_HeaderFile
 #include <Handle_IGESSelect_SelectLevelNumber.hxx>
-#endif
 
-#ifndef _Handle_IFSelect_IntParam_HeaderFile
 #include <Handle_IFSelect_IntParam.hxx>
-#endif
-#ifndef _IFSelect_SelectExtract_HeaderFile
 #include <IFSelect_SelectExtract.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class IFSelect_IntParam;
 class Standard_Transient;
 class Interface_InterfaceModel;
 class TCollection_AsciiString;
 
 
-//! This selection looks at Level Number of IGES Entities : <br>
-//!           it considers items attached, either to a single level with a <br>
-//!           given value, or to a level list which contains this value <br>
-//! <br>
-//!           Level = 0  means entities not attached to any level <br>
-//! <br>
-//!           Remark : the class CounterOfLevelNumber gives informations <br>
-//!             about present levels in a file. <br>
-class IGESSelect_SelectLevelNumber : public IFSelect_SelectExtract {
+//! This selection looks at Level Number of IGES Entities :
+//! it considers items attached, either to a single level with a
+//! given value, or to a level list which contains this value
+//!
+//! Level = 0  means entities not attached to any level
+//!
+//! Remark : the class CounterOfLevelNumber gives informations
+//! about present levels in a file.
+class IGESSelect_SelectLevelNumber : public IFSelect_SelectExtract
+{
 
 public:
 
-  //! Creates a SelectLevelNumber, with no Level criterium : see <br>
-//!           SetLevelNumber. Empty, this selection filters nothing. <br>
-  Standard_EXPORT   IGESSelect_SelectLevelNumber();
-  //! Sets a Parameter as Level criterium <br>
-  Standard_EXPORT     void SetLevelNumber(const Handle(IFSelect_IntParam)& levnum) ;
-  //! Returns the Level criterium. NullHandle if not yet set <br>
-//!           (interpreted as Level = 0 : no level number attached) <br>
-  Standard_EXPORT     Handle_IFSelect_IntParam LevelNumber() const;
-  //! Returns True if <ent> is an IGES Entity with Level Number <br>
-//!           admits the criterium (= value if single level, or one of the <br>
-//!           attached level numbers = value if level list) <br>
-  Standard_EXPORT     Standard_Boolean Sort(const Standard_Integer rank,const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
-  //! Returns the Selection criterium : <br>
-//!           "IGES Entity, Level Number admits <nn>" (if nn > 0) or <br>
-//!           "IGES Entity attached to no Level" (if nn = 0) <br>
-  Standard_EXPORT     TCollection_AsciiString ExtractLabel() const;
+  
+  //! Creates a SelectLevelNumber, with no Level criterium : see
+  //! SetLevelNumber. Empty, this selection filters nothing.
+  Standard_EXPORT IGESSelect_SelectLevelNumber();
+  
+  //! Sets a Parameter as Level criterium
+  Standard_EXPORT   void SetLevelNumber (const Handle(IFSelect_IntParam)& levnum) ;
+  
+  //! Returns the Level criterium. NullHandle if not yet set
+  //! (interpreted as Level = 0 : no level number attached)
+  Standard_EXPORT   Handle(IFSelect_IntParam) LevelNumber()  const;
+  
+  //! Returns True if <ent> is an IGES Entity with Level Number
+  //! admits the criterium (= value if single level, or one of the
+  //! attached level numbers = value if level list)
+  Standard_EXPORT   Standard_Boolean Sort (const Standard_Integer rank, const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
+  
+  //! Returns the Selection criterium :
+  //! "IGES Entity, Level Number admits <nn>" (if nn > 0) or
+  //! "IGES Entity attached to no Level" (if nn = 0)
+  Standard_EXPORT   TCollection_AsciiString ExtractLabel()  const;
 
 
 
@@ -82,7 +70,7 @@ protected:
 private: 
 
 
-Handle_IFSelect_IntParam thelevnum;
+  Handle(IFSelect_IntParam) thelevnum;
 
 
 };
@@ -91,7 +79,6 @@ Handle_IFSelect_IntParam thelevnum;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_SelectLevelNumber_HeaderFile

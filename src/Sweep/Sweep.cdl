@@ -27,23 +27,7 @@ uses
     TopAbs
 
 is
-
-    deferred generic class Tool;
-    -- signature  class. Required by  the LinearRegularSweep, defining
-    -- the indexation type analysis services uppon shapes.
     
-    deferred generic class Iterator;
-    -- signature  class. Required by  the LinearRegularSweep, defining
-    -- the iteration services uppon shapes.
-    
-    deferred generic class Builder;
-    -- signature class. Required by the LinearRegularSweep.
-    
-    deferred generic class LinearRegularSweep,
-    	Array2OfShapes,
-        SequenceOfShapes;
-	
-	
     --
     --     The following classes provides a directing topology for the
     --     LinearRegularSweep. This  is  the  topology of an  open  or
@@ -51,14 +35,11 @@ is
     --     
 
     class NumShape;
-	---Purpose: A shape represented by an index.
-    
+
     class NumShapeTool;
-	---Purpose: Tool for NumShapes.
-    
+
     class NumShapeIterator;
-	---Purpose: Iterator for NumShapes.
-    
+
 end Sweep;
 
 

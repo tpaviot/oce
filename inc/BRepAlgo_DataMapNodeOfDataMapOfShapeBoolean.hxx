@@ -6,28 +6,14 @@
 #ifndef _BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean_HeaderFile
 #define _BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean_HeaderFile
 #include <Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
 class BRepAlgo_DataMapOfShapeBoolean;
@@ -35,16 +21,17 @@ class BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean;
 
 
 
-class BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public TCollection_MapNode {
+class BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean(const TopoDS_Shape& K,const Standard_Boolean& I,const TCollection_MapNodePtr& n);
+    BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean(const TopoDS_Shape& K, const Standard_Boolean& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Standard_Boolean& Value() const;
+      Standard_Boolean& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Standard_Boolean myValue;
+  TopoDS_Shape myKey;
+  Standard_Boolean myValue;
 
 
 };
@@ -98,7 +85,6 @@ Standard_Boolean myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean_HeaderFile

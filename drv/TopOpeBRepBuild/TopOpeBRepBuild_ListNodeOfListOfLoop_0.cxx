@@ -5,19 +5,11 @@
 
 #include <TopOpeBRepBuild_ListNodeOfListOfLoop.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepBuild_Loop_HeaderFile
 #include <TopOpeBRepBuild_Loop.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListOfLoop_HeaderFile
 #include <TopOpeBRepBuild_ListOfLoop.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListIteratorOfListOfLoop_HeaderFile
 #include <TopOpeBRepBuild_ListIteratorOfListOfLoop.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(TopOpeBRepBuild_ListNodeOfListOfLoop,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TopOpeBRepBuild_ListNodeOfListOfLoop)
 
 
-#define Item Handle_TopOpeBRepBuild_Loop
+#define Item Handle(TopOpeBRepBuild_Loop)
 #define Item_hxx <TopOpeBRepBuild_Loop.hxx>
 #define TCollection_ListNode TopOpeBRepBuild_ListNodeOfListOfLoop
 #define TCollection_ListNode_hxx <TopOpeBRepBuild_ListNodeOfListOfLoop.hxx>

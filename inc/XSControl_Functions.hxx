@@ -6,31 +6,26 @@
 #ifndef _XSControl_Functions_HeaderFile
 #define _XSControl_Functions_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 
 
-//! Functions from XSControl gives access to actions which can be <br>
-//!           commanded with the resources provided by XSControl: especially <br>
-//!           Controller and Transfer <br>
-//! <br>
-//!           It works by adding functions by method Init <br>
-class XSControl_Functions  {
+//! Functions from XSControl gives access to actions which can be
+//! commanded with the resources provided by XSControl: especially
+//! Controller and Transfer
+//!
+//! It works by adding functions by method Init
+class XSControl_Functions 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines and loads all functions for XSControl (as ActFunc) <br>
-  Standard_EXPORT   static  void Init() ;
-
+  
+  //! Defines and loads all functions for XSControl (as ActFunc)
+  Standard_EXPORT static   void Init() ;
 
 
 
@@ -53,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSControl_Functions_HeaderFile

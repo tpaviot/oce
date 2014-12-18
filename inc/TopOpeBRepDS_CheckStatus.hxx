@@ -6,14 +6,13 @@
 #ifndef _TopOpeBRepDS_CheckStatus_HeaderFile
 #define _TopOpeBRepDS_CheckStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopOpeBRepDS_CheckStatus {
+
+enum TopOpeBRepDS_CheckStatus
+{
 TopOpeBRepDS_OK,
 TopOpeBRepDS_NOK
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopOpeBRepDS_CheckStatus_HeaderFile

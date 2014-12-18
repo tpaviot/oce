@@ -5,42 +5,17 @@
 
 #include <AppDef_MyBSplGradientOfBSplineCompute.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _AppDef_MultiLine_HeaderFile
 #include <AppDef_MultiLine.hxx>
-#endif
-#ifndef _AppDef_MyLineTool_HeaderFile
 #include <AppDef_MyLineTool.hxx>
-#endif
-#ifndef _AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_HeaderFile
 #include <AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_HeaderFile
 #include <AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_HeaderFile
 #include <AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
  
 
 #define MultiLine AppDef_MultiLine

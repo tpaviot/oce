@@ -6,38 +6,27 @@
 #ifndef _IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment_HeaderFile
 #define _IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment_HeaderFile
 #include <Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment.hxx>
-#endif
 
-#ifndef _IntRes2d_IntersectionSegment_HeaderFile
 #include <IntRes2d_IntersectionSegment.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class IntRes2d_IntersectionSegment;
 class IntRes2d_SequenceOfIntersectionSegment;
 
 
 
-class IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment : public TCollection_SeqNode {
+class IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment : public TCollection_SeqNode
+{
 
 public:
 
   
-      IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment(const IntRes2d_IntersectionSegment& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment(const IntRes2d_IntersectionSegment& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        IntRes2d_IntersectionSegment& Value() const;
+      IntRes2d_IntersectionSegment& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-IntRes2d_IntersectionSegment myValue;
+  IntRes2d_IntersectionSegment myValue;
 
 
 };
@@ -78,7 +67,6 @@ IntRes2d_IntersectionSegment myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment_HeaderFile

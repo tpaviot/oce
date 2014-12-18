@@ -23,9 +23,6 @@ uses
 
 is
     class  ListOfPnt   instantiates  List  from  TCollection    (Pnt  from  gp);
-    class  QueueOfPnt  instantiates  Queue from  TCollection    (Pnt  from  gp);
-    class  StackOfPnt  instantiates  Stack from  TCollection    (Pnt  from  gp);
-    class  SListOfPnt  instantiates  SList from  TCollection    (Pnt  from  gp);
     class  DataMapOfRealPnt instantiates DataMap from TCollection  
                                         (Real from Standard, 
                                          Pnt from gp, 
@@ -40,19 +37,11 @@ is
                                          MapRealHasher from TColStd, 
                                          MapIntegerHasher from TColStd);
 
-
----    HashCode (thePnt   : Pnt from gp;
----              theUpper : Integer from Standard)
----    returns Integer from Standard;
-    
----    IsEqual (thePnt1   : Pnt from gp;
----             thePnt2   : Pnt from gp)
----    returns Boolean from Standard;
-    
     Commands(DI : in out Interpretor from Draw);
-    Commands1(DI : in out Interpretor from Draw);
-    Commands2(DI : in out Interpretor from Draw);
-    Commands3(DI : in out Interpretor from Draw);
-    Commands4(DI : in out Interpretor from Draw);
+    CommandsSimple(DI : in out Interpretor from Draw);
+    CommandsTest(DI : in out Interpretor from Draw);
+    CommandsPerf(DI : in out Interpretor from Draw);
+    CommandsAlloc(DI : in out Interpretor from Draw);
+    CommandsStl(DI : in out Interpretor from Draw);
 
 end;

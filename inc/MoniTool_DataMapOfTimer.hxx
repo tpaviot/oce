@@ -6,37 +6,17 @@
 #ifndef _MoniTool_DataMapOfTimer_HeaderFile
 #define _MoniTool_DataMapOfTimer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_MoniTool_Timer_HeaderFile
 #include <Handle_MoniTool_Timer.hxx>
-#endif
-#ifndef _Handle_MoniTool_DataMapNodeOfDataMapOfTimer_HeaderFile
 #include <Handle_MoniTool_DataMapNodeOfDataMapOfTimer.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class MoniTool_Timer;
@@ -46,50 +26,50 @@ class MoniTool_DataMapIteratorOfDataMapOfTimer;
 
 
 
-class MoniTool_DataMapOfTimer  : public TCollection_BasicMap {
+class MoniTool_DataMapOfTimer  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MoniTool_DataMapOfTimer(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT MoniTool_DataMapOfTimer(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     MoniTool_DataMapOfTimer& Assign(const MoniTool_DataMapOfTimer& Other) ;
-    MoniTool_DataMapOfTimer& operator =(const MoniTool_DataMapOfTimer& Other) 
+  Standard_EXPORT   MoniTool_DataMapOfTimer& Assign (const MoniTool_DataMapOfTimer& Other) ;
+  MoniTool_DataMapOfTimer& operator = (const MoniTool_DataMapOfTimer& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~MoniTool_DataMapOfTimer()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const Standard_CString& K,const Handle(MoniTool_Timer)& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const Standard_CString& K, const Handle(MoniTool_Timer)& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Standard_CString& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const Standard_CString& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const Standard_CString& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const Standard_CString& K) ;
   
-  Standard_EXPORT    const Handle_MoniTool_Timer& Find(const Standard_CString& K) const;
-   const Handle_MoniTool_Timer& operator()(const Standard_CString& K) const
+  Standard_EXPORT  const  Handle(MoniTool_Timer)& Find (const Standard_CString& K)  const;
+ const  Handle(MoniTool_Timer)& operator() (const Standard_CString& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Handle_MoniTool_Timer& ChangeFind(const Standard_CString& K) ;
-    Handle_MoniTool_Timer& operator()(const Standard_CString& K) 
+  Standard_EXPORT   Handle(MoniTool_Timer)& ChangeFind (const Standard_CString& K) ;
+  Handle(MoniTool_Timer)& operator() (const Standard_CString& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const Standard_CString& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const Standard_CString& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const Standard_CString& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const Standard_CString& K) ;
 
 
 
@@ -103,7 +83,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   MoniTool_DataMapOfTimer(const MoniTool_DataMapOfTimer& Other);
+  Standard_EXPORT MoniTool_DataMapOfTimer(const MoniTool_DataMapOfTimer& Other);
 
 
 
@@ -114,7 +94,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MoniTool_DataMapOfTimer_HeaderFile

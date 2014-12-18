@@ -1,21 +1,7 @@
-#ifndef _Bnd_HArray1OfBox2d_HeaderFile
 #include <Bnd_HArray1OfBox2d.hxx>
-#endif
-#ifndef _TColStd_HArray1OfListOfInteger_HeaderFile
 #include <TColStd_HArray1OfListOfInteger.hxx>
-#endif
-#ifndef _Standard_NullValue_HeaderFile
 #include <Standard_NullValue.hxx>
-#endif
-#ifndef _Standard_MultiplyDefined_HeaderFile
 #include <Standard_MultiplyDefined.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
-#endif
-#ifndef _Bnd_BoundSortBox2d_HeaderFile
 #include <Bnd_BoundSortBox2d.hxx>
-#endif

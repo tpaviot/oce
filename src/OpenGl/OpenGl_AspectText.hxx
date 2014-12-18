@@ -20,6 +20,7 @@
 #include <Font_FontAspect.hxx>
 #include <Aspect_TypeOfStyleText.hxx>
 #include <Aspect_TypeOfDisplayText.hxx>
+#include <Graphic3d_CAspectText.hxx>
 
 #include <TCollection_AsciiString.hxx>
 
@@ -117,11 +118,11 @@ public:
 
   //! Init and return OpenGl shader program resource.
   //! @return shader program resource.
-  const Handle(OpenGl_ShaderProgram)& ShaderProgramRes (const Handle(OpenGl_Workspace)& theWorkspace) const
+  const Handle(OpenGl_ShaderProgram)& ShaderProgramRes (const Handle(OpenGl_Context)& theCtx) const
   {
     if (!myResources.IsShaderReady())
     {
-      myResources.BuildShader (theWorkspace, myShaderProgram);
+      myResources.BuildShader (theCtx, myShaderProgram);
       myResources.SetShaderReady();
     }
 
@@ -129,7 +130,7 @@ public:
   }
 
   Standard_EXPORT virtual void Render  (const Handle(OpenGl_Workspace)& theWorkspace) const;
-  Standard_EXPORT virtual void Release (const Handle(OpenGl_Context)&   theContext);
+  Standard_EXPORT virtual void Release (OpenGl_Context* theContext);
 
 protected:
 
@@ -155,7 +156,8 @@ protected:
     void SetShaderReady()       { myIsShaderReady = Standard_True; }
     void ResetShaderReadiness() { myIsShaderReady = Standard_False; }
 
-    void BuildShader (const Handle(OpenGl_Workspace)& theWS, const Handle(Graphic3d_ShaderProgram)& theShader);
+    Standard_EXPORT void BuildShader (const Handle(OpenGl_Context)&          theCtx,
+                                      const Handle(Graphic3d_ShaderProgram)& theShader);
 
     Handle(OpenGl_ShaderProgram) ShaderProgram;
     TCollection_AsciiString      ShaderProgramId;

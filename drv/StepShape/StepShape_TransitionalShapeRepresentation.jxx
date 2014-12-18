@@ -1,3 +1,1 @@
-#ifndef _StepShape_TransitionalShapeRepresentation_HeaderFile
 #include <StepShape_TransitionalShapeRepresentation.hxx>
-#endif

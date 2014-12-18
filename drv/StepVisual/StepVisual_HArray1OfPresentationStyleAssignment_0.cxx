@@ -5,28 +5,14 @@
 
 #include <StepVisual_HArray1OfPresentationStyleAssignment.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepVisual_PresentationStyleAssignment_HeaderFile
 #include <StepVisual_PresentationStyleAssignment.hxx>
-#endif
-#ifndef _StepVisual_Array1OfPresentationStyleAssignment_HeaderFile
 #include <StepVisual_Array1OfPresentationStyleAssignment.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepVisual_HArray1OfPresentationStyleAssignment,Standard_Tran
 IMPLEMENT_STANDARD_RTTI(StepVisual_HArray1OfPresentationStyleAssignment)
 
 
-#define ItemHArray1 Handle_StepVisual_PresentationStyleAssignment
+#define ItemHArray1 Handle(StepVisual_PresentationStyleAssignment)
 #define ItemHArray1_hxx <StepVisual_PresentationStyleAssignment.hxx>
 #define TheArray1 StepVisual_Array1OfPresentationStyleAssignment
 #define TheArray1_hxx <StepVisual_Array1OfPresentationStyleAssignment.hxx>

@@ -5,16 +5,10 @@
 
 #include <IntTools_SequenceNodeOfSequenceOfCommonPrts.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntTools_CommonPrt_HeaderFile
 #include <IntTools_CommonPrt.hxx>
-#endif
-#ifndef _IntTools_SequenceOfCommonPrts_HeaderFile
 #include <IntTools_SequenceOfCommonPrts.hxx>
-#endif
 
  
 

@@ -1,9 +1,3 @@
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _NLPlate_HPG0Constraint_HeaderFile
 #include <NLPlate_HPG0Constraint.hxx>
-#endif

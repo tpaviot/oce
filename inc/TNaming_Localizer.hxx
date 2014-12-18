@@ -6,43 +6,19 @@
 #ifndef _TNaming_Localizer_HeaderFile
 #define _TNaming_Localizer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TNaming_UsedShapes_HeaderFile
 #include <Handle_TNaming_UsedShapes.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TNaming_ListOfMapOfShape_HeaderFile
 #include <TNaming_ListOfMapOfShape.hxx>
-#endif
-#ifndef _TNaming_ListOfIndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TNaming_ListOfIndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _TNaming_Evolution_HeaderFile
 #include <TNaming_Evolution.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TNaming_UsedShapes;
 class TopTools_MapOfShape;
 class TopoDS_Shape;
@@ -55,34 +31,35 @@ class TNaming_MapOfNamedShape;
 
 
 
-class TNaming_Localizer  {
+class TNaming_Localizer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TNaming_Localizer();
+  Standard_EXPORT TNaming_Localizer();
   
-  Standard_EXPORT     void Init(const Handle(TNaming_UsedShapes)& US,const Standard_Integer CurTrans) ;
+  Standard_EXPORT   void Init (const Handle(TNaming_UsedShapes)& US, const Standard_Integer CurTrans) ;
   
-  Standard_EXPORT    const TopTools_MapOfShape& SubShapes(const TopoDS_Shape& S,const TopAbs_ShapeEnum Type) ;
+  Standard_EXPORT  const  TopTools_MapOfShape& SubShapes (const TopoDS_Shape& S, const TopAbs_ShapeEnum Type) ;
   
-  Standard_EXPORT    const TopTools_IndexedDataMapOfShapeListOfShape& Ancestors(const TopoDS_Shape& S,const TopAbs_ShapeEnum Type) ;
+  Standard_EXPORT  const  TopTools_IndexedDataMapOfShapeListOfShape& Ancestors (const TopoDS_Shape& S, const TopAbs_ShapeEnum Type) ;
   
-  Standard_EXPORT     void FindFeaturesInAncestors(const TopoDS_Shape& S,const TopoDS_Shape& In,TopTools_MapOfShape& AncInFeatures) ;
+  Standard_EXPORT   void FindFeaturesInAncestors (const TopoDS_Shape& S, const TopoDS_Shape& In, TopTools_MapOfShape& AncInFeatures) ;
   
-  Standard_EXPORT     void GoBack(const TopoDS_Shape& S,const TDF_Label& Lab,const TNaming_Evolution Evol,TopTools_ListOfShape& OldS,TNaming_ListOfNamedShape& OldLab) ;
+  Standard_EXPORT   void GoBack (const TopoDS_Shape& S, const TDF_Label& Lab, const TNaming_Evolution Evol, TopTools_ListOfShape& OldS, TNaming_ListOfNamedShape& OldLab) ;
   
-  Standard_EXPORT     void Backward(const Handle(TNaming_NamedShape)& NS,const TopoDS_Shape& S,TNaming_MapOfNamedShape& Primitives,TopTools_MapOfShape& ValidShapes) ;
+  Standard_EXPORT   void Backward (const Handle(TNaming_NamedShape)& NS, const TopoDS_Shape& S, TNaming_MapOfNamedShape& Primitives, TopTools_MapOfShape& ValidShapes) ;
   
-  Standard_EXPORT     void FindNeighbourg(const TopoDS_Shape& Cont,const TopoDS_Shape& S,TopTools_MapOfShape& Neighbourg) ;
+  Standard_EXPORT   void FindNeighbourg (const TopoDS_Shape& Cont, const TopoDS_Shape& S, TopTools_MapOfShape& Neighbourg) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsNew(const TopoDS_Shape& S,const Handle(TNaming_NamedShape)& NS) ;
+  Standard_EXPORT static   Standard_Boolean IsNew (const TopoDS_Shape& S, const Handle(TNaming_NamedShape)& NS) ;
   
-  Standard_EXPORT   static  void FindGenerator(const Handle(TNaming_NamedShape)& NS,const TopoDS_Shape& S,TopTools_ListOfShape& theListOfGenerators) ;
-  //! Finds context of the shape <S>. <br>
-  Standard_EXPORT   static  void FindShapeContext(const Handle(TNaming_NamedShape)& NS,const TopoDS_Shape& theS,TopoDS_Shape& theSC) ;
-
+  Standard_EXPORT static   void FindGenerator (const Handle(TNaming_NamedShape)& NS, const TopoDS_Shape& S, TopTools_ListOfShape& theListOfGenerators) ;
+  
+  //! Finds context of the shape <S>.
+  Standard_EXPORT static   void FindShapeContext (const Handle(TNaming_NamedShape)& NS, const TopoDS_Shape& theS, TopoDS_Shape& theSC) ;
 
 
 
@@ -97,12 +74,12 @@ private:
 
 
 
-Standard_Integer myCurTrans;
-Handle_TNaming_UsedShapes myUS;
-TopTools_ListOfShape myShapeWithSubShapes;
-TNaming_ListOfMapOfShape mySubShapes;
-TopTools_ListOfShape myShapeWithAncestors;
-TNaming_ListOfIndexedDataMapOfShapeListOfShape myAncestors;
+  Standard_Integer myCurTrans;
+  Handle(TNaming_UsedShapes) myUS;
+  TopTools_ListOfShape myShapeWithSubShapes;
+  TNaming_ListOfMapOfShape mySubShapes;
+  TopTools_ListOfShape myShapeWithAncestors;
+  TNaming_ListOfIndexedDataMapOfShapeListOfShape myAncestors;
 
 
 };
@@ -111,7 +88,6 @@ TNaming_ListOfIndexedDataMapOfShapeListOfShape myAncestors;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_Localizer_HeaderFile

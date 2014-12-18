@@ -1,3 +1,1 @@
-#ifndef _CDF_Timer_HeaderFile
 #include <CDF_Timer.hxx>
-#endif

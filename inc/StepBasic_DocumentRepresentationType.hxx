@@ -6,46 +6,41 @@
 #ifndef _StepBasic_DocumentRepresentationType_HeaderFile
 #define _StepBasic_DocumentRepresentationType_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentRepresentationType_HeaderFile
 #include <Handle_StepBasic_DocumentRepresentationType.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_Document_HeaderFile
 #include <Handle_StepBasic_Document.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_Document;
 
 
-//! Representation of STEP entity DocumentRepresentationType <br>
-class StepBasic_DocumentRepresentationType : public MMgt_TShared {
+//! Representation of STEP entity DocumentRepresentationType
+class StepBasic_DocumentRepresentationType : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_DocumentRepresentationType();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepBasic_Document)& aRepresentedDocument) ;
-  //! Returns field Name <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
-  //! Set field Name <br>
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& Name) ;
-  //! Returns field RepresentedDocument <br>
-  Standard_EXPORT     Handle_StepBasic_Document RepresentedDocument() const;
-  //! Set field RepresentedDocument <br>
-  Standard_EXPORT     void SetRepresentedDocument(const Handle(StepBasic_Document)& RepresentedDocument) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_DocumentRepresentationType();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepBasic_Document)& aRepresentedDocument) ;
+  
+  //! Returns field Name
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
+  
+  //! Set field Name
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& Name) ;
+  
+  //! Returns field RepresentedDocument
+  Standard_EXPORT   Handle(StepBasic_Document) RepresentedDocument()  const;
+  
+  //! Set field RepresentedDocument
+  Standard_EXPORT   void SetRepresentedDocument (const Handle(StepBasic_Document)& RepresentedDocument) ;
 
 
 
@@ -60,8 +55,8 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theName;
-Handle_StepBasic_Document theRepresentedDocument;
+  Handle(TCollection_HAsciiString) theName;
+  Handle(StepBasic_Document) theRepresentedDocument;
 
 
 };
@@ -70,7 +65,6 @@ Handle_StepBasic_Document theRepresentedDocument;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_DocumentRepresentationType_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <TColStd_MapIteratorOfMapOfReal.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_MapRealHasher_HeaderFile
 #include <TColStd_MapRealHasher.hxx>
-#endif
-#ifndef _TColStd_MapOfReal_HeaderFile
 #include <TColStd_MapOfReal.hxx>
-#endif
-#ifndef _TColStd_StdMapNodeOfMapOfReal_HeaderFile
 #include <TColStd_StdMapNodeOfMapOfReal.hxx>
-#endif
  
 
 #define TheKey Standard_Real

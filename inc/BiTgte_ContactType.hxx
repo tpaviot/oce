@@ -6,8 +6,11 @@
 #ifndef _BiTgte_ContactType_HeaderFile
 #define _BiTgte_ContactType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum BiTgte_ContactType {
+
+enum BiTgte_ContactType
+{
 BiTgte_FaceFace,
 BiTgte_FaceEdge,
 BiTgte_FaceVertex,
@@ -16,8 +19,4 @@ BiTgte_EdgeVertex,
 BiTgte_VertexVertex
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BiTgte_ContactType_HeaderFile

@@ -6,31 +6,15 @@
 #ifndef _ShapeAnalysis_HSequenceOfFreeBounds_HeaderFile
 #define _ShapeAnalysis_HSequenceOfFreeBounds_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeAnalysis_HSequenceOfFreeBounds_HeaderFile
 #include <Handle_ShapeAnalysis_HSequenceOfFreeBounds.hxx>
-#endif
 
-#ifndef _ShapeAnalysis_SequenceOfFreeBounds_HeaderFile
 #include <ShapeAnalysis_SequenceOfFreeBounds.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_ShapeAnalysis_FreeBoundData_HeaderFile
 #include <Handle_ShapeAnalysis_FreeBoundData.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class ShapeAnalysis_FreeBoundData;
@@ -38,56 +22,57 @@ class ShapeAnalysis_SequenceOfFreeBounds;
 
 
 
-class ShapeAnalysis_HSequenceOfFreeBounds : public MMgt_TShared {
+class ShapeAnalysis_HSequenceOfFreeBounds : public MMgt_TShared
+{
 
 public:
 
   
-      ShapeAnalysis_HSequenceOfFreeBounds();
+    ShapeAnalysis_HSequenceOfFreeBounds();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(ShapeAnalysis_FreeBoundData)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(ShapeAnalysis_FreeBoundData)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(ShapeAnalysis_HSequenceOfFreeBounds)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(ShapeAnalysis_HSequenceOfFreeBounds)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(ShapeAnalysis_FreeBoundData)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(ShapeAnalysis_FreeBoundData)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(ShapeAnalysis_HSequenceOfFreeBounds)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(ShapeAnalysis_HSequenceOfFreeBounds)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(ShapeAnalysis_FreeBoundData)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(ShapeAnalysis_FreeBoundData)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(ShapeAnalysis_HSequenceOfFreeBounds)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(ShapeAnalysis_HSequenceOfFreeBounds)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(ShapeAnalysis_FreeBoundData)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(ShapeAnalysis_FreeBoundData)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(ShapeAnalysis_HSequenceOfFreeBounds)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(ShapeAnalysis_HSequenceOfFreeBounds)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_ShapeAnalysis_HSequenceOfFreeBounds Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(ShapeAnalysis_HSequenceOfFreeBounds) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(ShapeAnalysis_FreeBoundData)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(ShapeAnalysis_FreeBoundData)& anItem) ;
   
-  Standard_EXPORT    const Handle_ShapeAnalysis_FreeBoundData& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(ShapeAnalysis_FreeBoundData)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_ShapeAnalysis_FreeBoundData& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(ShapeAnalysis_FreeBoundData)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const ShapeAnalysis_SequenceOfFreeBounds& Sequence() const;
+     const  ShapeAnalysis_SequenceOfFreeBounds& Sequence()  const;
   
-        ShapeAnalysis_SequenceOfFreeBounds& ChangeSequence() ;
+      ShapeAnalysis_SequenceOfFreeBounds& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_ShapeAnalysis_HSequenceOfFreeBounds ShallowCopy() const;
+  Standard_EXPORT   Handle(ShapeAnalysis_HSequenceOfFreeBounds) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-ShapeAnalysis_SequenceOfFreeBounds mySequence;
+  ShapeAnalysis_SequenceOfFreeBounds mySequence;
 
 
 };
 
-#define Item Handle_ShapeAnalysis_FreeBoundData
+#define Item Handle(ShapeAnalysis_FreeBoundData)
 #define Item_hxx <ShapeAnalysis_FreeBoundData.hxx>
 #define TheSequence ShapeAnalysis_SequenceOfFreeBounds
 #define TheSequence_hxx <ShapeAnalysis_SequenceOfFreeBounds.hxx>
@@ -128,11 +113,10 @@ ShapeAnalysis_SequenceOfFreeBounds mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_ShapeAnalysis_HSequenceOfFreeBounds ShallowCopy(const Handle_ShapeAnalysis_HSequenceOfFreeBounds& me) {
+inline Handle(ShapeAnalysis_HSequenceOfFreeBounds) ShallowCopy(const Handle(ShapeAnalysis_HSequenceOfFreeBounds)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _ShapeAnalysis_HSequenceOfFreeBounds_HeaderFile

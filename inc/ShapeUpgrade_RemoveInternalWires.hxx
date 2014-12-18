@@ -6,83 +6,70 @@
 #ifndef _ShapeUpgrade_RemoveInternalWires_HeaderFile
 #define _ShapeUpgrade_RemoveInternalWires_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_RemoveInternalWires_HeaderFile
 #include <Handle_ShapeUpgrade_RemoveInternalWires.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopTools_IndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _ShapeUpgrade_Tool_HeaderFile
 #include <ShapeUpgrade_Tool.hxx>
-#endif
-#ifndef _ShapeExtend_Status_HeaderFile
 #include <ShapeExtend_Status.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_SequenceOfShape;
 
 
-//! Removes all internal wires having area less than specified min area <br>
-class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
+//! Removes all internal wires having area less than specified min area
+class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool
+{
 
 public:
 
-  //! Creates empty  constructor. <br>
-  Standard_EXPORT   ShapeUpgrade_RemoveInternalWires();
   
-  Standard_EXPORT   ShapeUpgrade_RemoveInternalWires(const TopoDS_Shape& theShape);
-  //! Initialize by a Shape. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& theShape) ;
-  //!Removes all internal wires having area less than area specified as minimal allowed area <br>
-  Standard_EXPORT     Standard_Boolean Perform() ;
-  //!If specified sequence of shape contains - <br>
-//!	       1.wires then these wires will be removed if they have area less than allowed min area. <br>
-//!         2.faces than internal wires from these faces will be removed if they have area less than allowed min area. <br>
-  Standard_EXPORT     Standard_Boolean Perform(const TopTools_SequenceOfShape& theSeqShapes) ;
-  //!Get result shape <br>
-        TopoDS_Shape GetResult() const;
-  //!Set min area allowed for holes( all holes having area less than mi area will be removed) <br>
-        Standard_Real& MinArea() ;
-  //!Set mode which manage removing faces which have outer wires consisting only from edges <br>
-//!         belonginig to removed internal wires. <br>
-//!       By default it is equal to true. <br>
-        Standard_Boolean& RemoveFaceMode() ;
-  //!Returns sequence of removed faces. <br>
-       const TopTools_SequenceOfShape& RemovedFaces() const;
-  //!Returns sequence of removed faces. <br>
-       const TopTools_SequenceOfShape& RemovedWires() const;
-  //!Queries status of last call to Perform() <br>
-//!        : OK - nothing was done <br>
-//!        :DONE1 - internal wires were removed <br>
-//!        :DONE2 - small faces were removed. <br>
-//!        :FAIL1 - initial shape is not specified <br>
-//!        :FAIL2 - specified sub-shape is not belonged to inotial shape. <br>
-        Standard_Boolean Status(const ShapeExtend_Status theStatus) const;
+  //! Creates empty  constructor.
+  Standard_EXPORT ShapeUpgrade_RemoveInternalWires();
+  
+  Standard_EXPORT ShapeUpgrade_RemoveInternalWires(const TopoDS_Shape& theShape);
+  
+  //! Initialize by a Shape.
+  Standard_EXPORT   void Init (const TopoDS_Shape& theShape) ;
+  
+  //! Removes all internal wires having area less than area specified as minimal allowed area
+  Standard_EXPORT   Standard_Boolean Perform() ;
+  
+  //! If specified sequence of shape contains -
+  //! 1.wires then these wires will be removed if they have area less than allowed min area.
+  //! 2.faces than internal wires from these faces will be removed if they have area less than allowed min area.
+  Standard_EXPORT   Standard_Boolean Perform (const TopTools_SequenceOfShape& theSeqShapes) ;
+  
+  //! Get result shape
+      TopoDS_Shape GetResult()  const;
+  
+  //! Set min area allowed for holes( all holes having area less than mi area will be removed)
+      Standard_Real& MinArea() ;
+  
+  //! Set mode which manage removing faces which have outer wires consisting only from edges
+  //! belonginig to removed internal wires.
+  //! By default it is equal to true.
+      Standard_Boolean& RemoveFaceMode() ;
+  
+  //! Returns sequence of removed faces.
+     const  TopTools_SequenceOfShape& RemovedFaces()  const;
+  
+  //! Returns sequence of removed faces.
+     const  TopTools_SequenceOfShape& RemovedWires()  const;
+  
+  //! Queries status of last call to Perform()
+  //! : OK - nothing was done
+  //! :DONE1 - internal wires were removed
+  //! :DONE2 - small faces were removed.
+  //! :FAIL1 - initial shape is not specified
+  //! :FAIL2 - specified sub-shape is not belonged to inotial shape.
+      Standard_Boolean Status (const ShapeExtend_Status theStatus)  const;
 
 
 
@@ -91,28 +78,31 @@ public:
 
 protected:
 
-  //!Clear all sequences and temporary map; <br>
-  Standard_EXPORT     void Clear() ;
+  
+  //! Clear all sequences and temporary map;
+  Standard_EXPORT   void Clear() ;
 
-Standard_Integer myStatus;
+  Standard_Integer myStatus;
 
 
 private: 
 
-  //!Removes internal wires having area of contour less than specified MinArea <br>
-  Standard_EXPORT     void removeSmallWire(const TopoDS_Shape& theFace,const TopoDS_Shape& theWire) ;
-  //!Removes faces having outer wire consisting <br>
-//!         from removed edges(belonging small internal wires) <br>
-  Standard_EXPORT     void removeSmallFaces() ;
+  
+  //! Removes internal wires having area of contour less than specified MinArea
+  Standard_EXPORT   void removeSmallWire (const TopoDS_Shape& theFace, const TopoDS_Shape& theWire) ;
+  
+  //! Removes faces having outer wire consisting
+  //! from removed edges(belonging small internal wires)
+  Standard_EXPORT   void removeSmallFaces() ;
 
-TopoDS_Shape myShape;
-TopoDS_Shape myResult;
-Standard_Real myMinArea;
-Standard_Boolean myRemoveFacesMode;
-TopTools_IndexedDataMapOfShapeListOfShape myEdgeFaces;
-TopTools_DataMapOfShapeListOfShape myRemoveEdges;
-TopTools_SequenceOfShape myRemovedFaces;
-TopTools_SequenceOfShape myRemoveWires;
+  TopoDS_Shape myShape;
+  TopoDS_Shape myResult;
+  Standard_Real myMinArea;
+  Standard_Boolean myRemoveFacesMode;
+  TopTools_IndexedDataMapOfShapeListOfShape myEdgeFaces;
+  TopTools_DataMapOfShapeListOfShape myRemoveEdges;
+  TopTools_SequenceOfShape myRemovedFaces;
+  TopTools_SequenceOfShape myRemoveWires;
 
 
 };
@@ -122,7 +112,6 @@ TopTools_SequenceOfShape myRemoveWires;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_RemoveInternalWires_HeaderFile

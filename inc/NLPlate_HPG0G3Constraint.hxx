@@ -6,25 +6,13 @@
 #ifndef _NLPlate_HPG0G3Constraint_HeaderFile
 #define _NLPlate_HPG0G3Constraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_NLPlate_HPG0G3Constraint_HeaderFile
 #include <Handle_NLPlate_HPG0G3Constraint.hxx>
-#endif
 
-#ifndef _Plate_D3_HeaderFile
 #include <Plate_D3.hxx>
-#endif
-#ifndef _NLPlate_HPG0G2Constraint_HeaderFile
 #include <NLPlate_HPG0G2Constraint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class gp_XY;
 class gp_XYZ;
 class Plate_D1;
@@ -32,18 +20,19 @@ class Plate_D2;
 class Plate_D3;
 
 
-//! define a PinPoint G0+G3  Constraint  used to load a Non Linear <br>
-//!          Plate <br>
-class NLPlate_HPG0G3Constraint : public NLPlate_HPG0G2Constraint {
+//! define a PinPoint G0+G3  Constraint  used to load a Non Linear
+//! Plate
+class NLPlate_HPG0G3Constraint : public NLPlate_HPG0G2Constraint
+{
 
 public:
 
   
-  Standard_EXPORT   NLPlate_HPG0G3Constraint(const gp_XY& UV,const gp_XYZ& Value,const Plate_D1& D1T,const Plate_D2& D2T,const Plate_D3& D3T);
+  Standard_EXPORT NLPlate_HPG0G3Constraint(const gp_XY& UV, const gp_XYZ& Value, const Plate_D1& D1T, const Plate_D2& D2T, const Plate_D3& D3T);
   
-  Standard_EXPORT   virtual  Standard_Integer ActiveOrder() const;
+  Standard_EXPORT virtual   Standard_Integer ActiveOrder()  const;
   
-  Standard_EXPORT   virtual const Plate_D3& G3Target() const;
+  Standard_EXPORT virtual  const  Plate_D3& G3Target()  const;
 
 
 
@@ -58,7 +47,7 @@ protected:
 private: 
 
 
-Plate_D3 myG3Target;
+  Plate_D3 myG3Target;
 
 
 };
@@ -67,7 +56,6 @@ Plate_D3 myG3Target;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _NLPlate_HPG0G3Constraint_HeaderFile

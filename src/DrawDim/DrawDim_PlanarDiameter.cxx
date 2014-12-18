@@ -76,5 +76,7 @@ void DrawDim_PlanarDiameter::DrawOn(Draw_Display& dis) const
       return;
     }
   }  
+#ifdef OCCT_DEBUG
   cout << " DrawDim_PlanarDiameter::DrawOn : dimension error" << endl;
+#endif
 }

@@ -5,22 +5,12 @@
 
 #include <ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _ChFiDS_ListOfStripe_HeaderFile
 #include <ChFiDS_ListOfStripe.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _ChFiDS_IndexedDataMapOfVertexListOfStripe_HeaderFile
 #include <ChFiDS_IndexedDataMapOfVertexListOfStripe.hxx>
-#endif
 
  
 

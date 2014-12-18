@@ -6,25 +6,13 @@
 #ifndef _TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal_HeaderFile
 #define _TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal_HeaderFile
 #include <Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal.hxx>
-#endif
 class Standard_NoSuchObject;
 class TCollection_ExtendedString;
 class TColStd_HArray1OfReal;
@@ -33,22 +21,22 @@ class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfReal;
 
 
 
-class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal  : public TCollection_BasicMapIterator {
+class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal();
+  Standard_EXPORT TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal();
   
-  Standard_EXPORT   TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal(const TDataStd_DataMapOfStringHArray1OfReal& aMap);
+  Standard_EXPORT TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal(const TDataStd_DataMapOfStringHArray1OfReal& aMap);
   
-  Standard_EXPORT     void Initialize(const TDataStd_DataMapOfStringHArray1OfReal& aMap) ;
+  Standard_EXPORT   void Initialize (const TDataStd_DataMapOfStringHArray1OfReal& aMap) ;
   
-  Standard_EXPORT    const TCollection_ExtendedString& Key() const;
+  Standard_EXPORT  const  TCollection_ExtendedString& Key()  const;
   
-  Standard_EXPORT    const Handle_TColStd_HArray1OfReal& Value() const;
-
+  Standard_EXPORT  const  Handle(TColStd_HArray1OfReal)& Value()  const;
 
 
 
@@ -71,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal_HeaderFile

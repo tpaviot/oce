@@ -6,25 +6,13 @@
 #ifndef _TColgp_SequenceOfXYZ_HeaderFile
 #define _TColgp_SequenceOfXYZ_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_TColgp_SequenceNodeOfSequenceOfXYZ_HeaderFile
 #include <Handle_TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class gp_XYZ;
@@ -32,66 +20,68 @@ class TColgp_SequenceNodeOfSequenceOfXYZ;
 
 
 
-class TColgp_SequenceOfXYZ  : public TCollection_BaseSequence {
+class TColgp_SequenceOfXYZ  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColgp_SequenceOfXYZ();
+    TColgp_SequenceOfXYZ();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT TColgp_SequenceOfXYZ(const TColgp_SequenceOfXYZ& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~TColgp_SequenceOfXYZ()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TColgp_SequenceOfXYZ& Assign(const TColgp_SequenceOfXYZ& Other) ;
-   const TColgp_SequenceOfXYZ& operator =(const TColgp_SequenceOfXYZ& Other) 
+  Standard_EXPORT  const  TColgp_SequenceOfXYZ& Assign (const TColgp_SequenceOfXYZ& Other) ;
+ const  TColgp_SequenceOfXYZ& operator = (const TColgp_SequenceOfXYZ& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const gp_XYZ& T) ;
+  Standard_EXPORT   void Append (const gp_XYZ& T) ;
   
-        void Append(TColgp_SequenceOfXYZ& S) ;
+      void Append (TColgp_SequenceOfXYZ& S) ;
   
-  Standard_EXPORT     void Prepend(const gp_XYZ& T) ;
+  Standard_EXPORT   void Prepend (const gp_XYZ& T) ;
   
-        void Prepend(TColgp_SequenceOfXYZ& S) ;
+      void Prepend (TColgp_SequenceOfXYZ& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const gp_XYZ& T) ;
+      void InsertBefore (const Standard_Integer Index, const gp_XYZ& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TColgp_SequenceOfXYZ& S) ;
+      void InsertBefore (const Standard_Integer Index, TColgp_SequenceOfXYZ& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const gp_XYZ& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const gp_XYZ& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TColgp_SequenceOfXYZ& S) ;
+      void InsertAfter (const Standard_Integer Index, TColgp_SequenceOfXYZ& S) ;
   
-  Standard_EXPORT    const gp_XYZ& First() const;
+  Standard_EXPORT  const  gp_XYZ& First()  const;
   
-  Standard_EXPORT    const gp_XYZ& Last() const;
+  Standard_EXPORT  const  gp_XYZ& Last()  const;
   
-        void Split(const Standard_Integer Index,TColgp_SequenceOfXYZ& Sub) ;
+      void Split (const Standard_Integer Index, TColgp_SequenceOfXYZ& Sub) ;
   
-  Standard_EXPORT    const gp_XYZ& Value(const Standard_Integer Index) const;
-   const gp_XYZ& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  gp_XYZ& Value (const Standard_Integer Index)  const;
+ const  gp_XYZ& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_XYZ& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_XYZ& I) ;
   
-  Standard_EXPORT     gp_XYZ& ChangeValue(const Standard_Integer Index) ;
-    gp_XYZ& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   gp_XYZ& ChangeValue (const Standard_Integer Index) ;
+  gp_XYZ& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColgp_SequenceOfXYZ(const TColgp_SequenceOfXYZ& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_SequenceOfXYZ_HeaderFile

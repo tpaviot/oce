@@ -6,57 +6,44 @@
 #ifndef _LocOpe_PntFace_HeaderFile
 #define _LocOpe_PntFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_Pnt;
 class TopoDS_Face;
 
 
 
-class LocOpe_PntFace  {
+class LocOpe_PntFace 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor. Useful only for the list. <br>
-  Standard_EXPORT   LocOpe_PntFace();
   
-      LocOpe_PntFace(const gp_Pnt& P,const TopoDS_Face& F,const TopAbs_Orientation Or,const Standard_Real Param,const Standard_Real UPar,const Standard_Real VPar);
+  //! Empty constructor. Useful only for the list.
+  Standard_EXPORT LocOpe_PntFace();
   
-       const gp_Pnt& Pnt() const;
+    LocOpe_PntFace(const gp_Pnt& P, const TopoDS_Face& F, const TopAbs_Orientation Or, const Standard_Real Param, const Standard_Real UPar, const Standard_Real VPar);
   
-       const TopoDS_Face& Face() const;
+     const  gp_Pnt& Pnt()  const;
   
-        TopAbs_Orientation Orientation() const;
+     const  TopoDS_Face& Face()  const;
   
-        TopAbs_Orientation& ChangeOrientation() ;
+      TopAbs_Orientation Orientation()  const;
   
-        Standard_Real Parameter() const;
+      TopAbs_Orientation& ChangeOrientation() ;
   
-        Standard_Real UParameter() const;
+      Standard_Real Parameter()  const;
   
-        Standard_Real VParameter() const;
-
+      Standard_Real UParameter()  const;
+  
+      Standard_Real VParameter()  const;
 
 
 
@@ -71,12 +58,12 @@ private:
 
 
 
-gp_Pnt myPnt;
-TopoDS_Face myFace;
-TopAbs_Orientation myOri;
-Standard_Real myPar;
-Standard_Real myUPar;
-Standard_Real myVPar;
+  gp_Pnt myPnt;
+  TopoDS_Face myFace;
+  TopAbs_Orientation myOri;
+  Standard_Real myPar;
+  Standard_Real myUPar;
+  Standard_Real myVPar;
 
 
 };
@@ -86,7 +73,6 @@ Standard_Real myVPar;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_PntFace_HeaderFile

@@ -6,34 +6,16 @@
 #ifndef _Interface_NodeOfGeneralLib_HeaderFile
 #define _Interface_NodeOfGeneralLib_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_NodeOfGeneralLib_HeaderFile
 #include <Handle_Interface_NodeOfGeneralLib.hxx>
-#endif
 
-#ifndef _Handle_Interface_GlobalNodeOfGeneralLib_HeaderFile
 #include <Handle_Interface_GlobalNodeOfGeneralLib.hxx>
-#endif
-#ifndef _Handle_Interface_NodeOfGeneralLib_HeaderFile
 #include <Handle_Interface_NodeOfGeneralLib.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_GeneralModule_HeaderFile
 #include <Handle_Interface_GeneralModule.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
 class Interface_GlobalNodeOfGeneralLib;
 class Standard_Transient;
 class Interface_GeneralModule;
@@ -42,20 +24,21 @@ class Interface_GeneralLib;
 
 
 
-class Interface_NodeOfGeneralLib : public MMgt_TShared {
+class Interface_NodeOfGeneralLib : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Interface_NodeOfGeneralLib();
+  Standard_EXPORT Interface_NodeOfGeneralLib();
   
-  Standard_EXPORT     void AddNode(const Handle(Interface_GlobalNodeOfGeneralLib)& anode) ;
+  Standard_EXPORT   void AddNode (const Handle(Interface_GlobalNodeOfGeneralLib)& anode) ;
   
-  Standard_EXPORT    const Handle_Interface_GeneralModule& Module() const;
+  Standard_EXPORT  const  Handle(Interface_GeneralModule)& Module()  const;
   
-  Standard_EXPORT    const Handle_Interface_Protocol& Protocol() const;
+  Standard_EXPORT  const  Handle(Interface_Protocol)& Protocol()  const;
   
-  Standard_EXPORT    const Handle_Interface_NodeOfGeneralLib& Next() const;
+  Standard_EXPORT  const  Handle(Interface_NodeOfGeneralLib)& Next()  const;
 
 
 
@@ -70,8 +53,8 @@ protected:
 private: 
 
 
-Handle_Interface_GlobalNodeOfGeneralLib thenode;
-Handle_Interface_NodeOfGeneralLib thenext;
+  Handle(Interface_GlobalNodeOfGeneralLib) thenode;
+  Handle(Interface_NodeOfGeneralLib) thenext;
 
 
 };
@@ -80,7 +63,6 @@ Handle_Interface_NodeOfGeneralLib thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_NodeOfGeneralLib_HeaderFile

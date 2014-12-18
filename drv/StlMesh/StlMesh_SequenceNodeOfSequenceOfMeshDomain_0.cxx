@@ -5,16 +5,10 @@
 
 #include <StlMesh_SequenceNodeOfSequenceOfMeshDomain.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StlMesh_MeshDomain_HeaderFile
 #include <StlMesh_MeshDomain.hxx>
-#endif
-#ifndef _StlMesh_SequenceOfMeshDomain_HeaderFile
 #include <StlMesh_SequenceOfMeshDomain.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(StlMesh_SequenceNodeOfSequenceOfMeshDomain,Standard_Transient
 IMPLEMENT_STANDARD_RTTI(StlMesh_SequenceNodeOfSequenceOfMeshDomain)
 
 
-#define SeqItem Handle_StlMesh_MeshDomain
+#define SeqItem Handle(StlMesh_MeshDomain)
 #define SeqItem_hxx <StlMesh_MeshDomain.hxx>
 #define TCollection_SequenceNode StlMesh_SequenceNodeOfSequenceOfMeshDomain
 #define TCollection_SequenceNode_hxx <StlMesh_SequenceNodeOfSequenceOfMeshDomain.hxx>

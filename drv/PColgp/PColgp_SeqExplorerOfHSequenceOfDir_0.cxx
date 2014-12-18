@@ -5,21 +5,11 @@
 
 #include <PColgp_SeqExplorerOfHSequenceOfDir.hxx>
 
-#ifndef _PColgp_SeqNodeOfHSequenceOfDir_HeaderFile
 #include <PColgp_SeqNodeOfHSequenceOfDir.hxx>
-#endif
-#ifndef _PColgp_HSequenceOfDir_HeaderFile
 #include <PColgp_HSequenceOfDir.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
  
 
 #define Item gp_Dir

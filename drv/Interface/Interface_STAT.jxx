@@ -1,15 +1,5 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfAsciiString_HeaderFile
 #include <TColStd_HSequenceOfAsciiString.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfReal_HeaderFile
 #include <TColStd_HSequenceOfReal.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfInteger_HeaderFile
 #include <TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _Interface_STAT_HeaderFile
 #include <Interface_STAT.hxx>
-#endif

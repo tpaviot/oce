@@ -6,25 +6,13 @@
 #ifndef _LocOpe_SequenceOfCirc_HeaderFile
 #define _LocOpe_SequenceOfCirc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_LocOpe_SequenceNodeOfSequenceOfCirc_HeaderFile
 #include <Handle_LocOpe_SequenceNodeOfSequenceOfCirc.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class gp_Circ;
@@ -32,66 +20,68 @@ class LocOpe_SequenceNodeOfSequenceOfCirc;
 
 
 
-class LocOpe_SequenceOfCirc  : public TCollection_BaseSequence {
+class LocOpe_SequenceOfCirc  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      LocOpe_SequenceOfCirc();
+    LocOpe_SequenceOfCirc();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT LocOpe_SequenceOfCirc(const LocOpe_SequenceOfCirc& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~LocOpe_SequenceOfCirc()
 {
   Clear();
 }
   
-  Standard_EXPORT    const LocOpe_SequenceOfCirc& Assign(const LocOpe_SequenceOfCirc& Other) ;
-   const LocOpe_SequenceOfCirc& operator =(const LocOpe_SequenceOfCirc& Other) 
+  Standard_EXPORT  const  LocOpe_SequenceOfCirc& Assign (const LocOpe_SequenceOfCirc& Other) ;
+ const  LocOpe_SequenceOfCirc& operator = (const LocOpe_SequenceOfCirc& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const gp_Circ& T) ;
+  Standard_EXPORT   void Append (const gp_Circ& T) ;
   
-        void Append(LocOpe_SequenceOfCirc& S) ;
+      void Append (LocOpe_SequenceOfCirc& S) ;
   
-  Standard_EXPORT     void Prepend(const gp_Circ& T) ;
+  Standard_EXPORT   void Prepend (const gp_Circ& T) ;
   
-        void Prepend(LocOpe_SequenceOfCirc& S) ;
+      void Prepend (LocOpe_SequenceOfCirc& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const gp_Circ& T) ;
+      void InsertBefore (const Standard_Integer Index, const gp_Circ& T) ;
   
-        void InsertBefore(const Standard_Integer Index,LocOpe_SequenceOfCirc& S) ;
+      void InsertBefore (const Standard_Integer Index, LocOpe_SequenceOfCirc& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const gp_Circ& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const gp_Circ& T) ;
   
-        void InsertAfter(const Standard_Integer Index,LocOpe_SequenceOfCirc& S) ;
+      void InsertAfter (const Standard_Integer Index, LocOpe_SequenceOfCirc& S) ;
   
-  Standard_EXPORT    const gp_Circ& First() const;
+  Standard_EXPORT  const  gp_Circ& First()  const;
   
-  Standard_EXPORT    const gp_Circ& Last() const;
+  Standard_EXPORT  const  gp_Circ& Last()  const;
   
-        void Split(const Standard_Integer Index,LocOpe_SequenceOfCirc& Sub) ;
+      void Split (const Standard_Integer Index, LocOpe_SequenceOfCirc& Sub) ;
   
-  Standard_EXPORT    const gp_Circ& Value(const Standard_Integer Index) const;
-   const gp_Circ& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  gp_Circ& Value (const Standard_Integer Index)  const;
+ const  gp_Circ& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_Circ& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_Circ& I) ;
   
-  Standard_EXPORT     gp_Circ& ChangeValue(const Standard_Integer Index) ;
-    gp_Circ& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   gp_Circ& ChangeValue (const Standard_Integer Index) ;
+  gp_Circ& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   LocOpe_SequenceOfCirc(const LocOpe_SequenceOfCirc& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_SequenceOfCirc_HeaderFile

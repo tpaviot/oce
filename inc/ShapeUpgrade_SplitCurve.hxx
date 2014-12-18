@@ -6,68 +6,59 @@
 #ifndef _ShapeUpgrade_SplitCurve_HeaderFile
 #define _ShapeUpgrade_SplitCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_SplitCurve_HeaderFile
 #include <Handle_ShapeUpgrade_SplitCurve.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HSequenceOfReal_HeaderFile
 #include <Handle_TColStd_HSequenceOfReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _ShapeExtend_Status_HeaderFile
 #include <ShapeExtend_Status.hxx>
-#endif
 class TColStd_HSequenceOfReal;
 
 
-//! Splits a  curve with a  criterion. <br>
-class ShapeUpgrade_SplitCurve : public MMgt_TShared {
+//! Splits a  curve with a  criterion.
+class ShapeUpgrade_SplitCurve : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   ShapeUpgrade_SplitCurve();
-  //! Initializes with curve first and last parameters. <br>
-  Standard_EXPORT     void Init(const Standard_Real First,const Standard_Real Last) ;
-  //! Sets the parameters where splitting has to be done. <br>
-  Standard_EXPORT     void SetSplitValues(const Handle(TColStd_HSequenceOfReal)& SplitValues) ;
-  //! If Segment is True, the result is composed with <br>
-//!  segments of the curve bounded by the SplitValues.  If <br>
-//!  Segment is False, the result is composed with trimmed <br>
-//!  Curves all based on the same complete curve. <br>
-//! <br>
-  Standard_EXPORT   virtual  void Build(const Standard_Boolean Segment) ;
-  //! returns all the splitting values including the <br>
-//!  First and Last parameters of the input curve <br>//! Merges input split values and new ones into myGlobalKnots <br>
-  Standard_EXPORT    const Handle_TColStd_HSequenceOfReal& SplitValues() const;
-  //! Calculates points for correction/splitting of the curve <br>
-  Standard_EXPORT   virtual  void Compute() ;
-  //! Performs correction/splitting of the curve. <br>
-//!         First defines splitting values by method Compute(), then calls method Build(). <br>
-  Standard_EXPORT     void Perform(const Standard_Boolean Segment = Standard_True) ;
-  //! Returns the status <br>
-//! OK    - no splitting is needed <br>
-//! DONE1 - splitting required and gives more than one segment <br>
-//! DONE2 - splitting is required, but gives only one segment (initial) <br>
-//! DONE3 - geometric form of the curve or parametrisation is modified <br>
-  Standard_EXPORT     Standard_Boolean Status(const ShapeExtend_Status status) const;
+  
+  //! Empty constructor.
+  Standard_EXPORT ShapeUpgrade_SplitCurve();
+  
+  //! Initializes with curve first and last parameters.
+  Standard_EXPORT   void Init (const Standard_Real First, const Standard_Real Last) ;
+  
+  //! Sets the parameters where splitting has to be done.
+  Standard_EXPORT   void SetSplitValues (const Handle(TColStd_HSequenceOfReal)& SplitValues) ;
+  
+  //! If Segment is True, the result is composed with
+  //! segments of the curve bounded by the SplitValues.  If
+  //! Segment is False, the result is composed with trimmed
+  //! Curves all based on the same complete curve.
+  Standard_EXPORT virtual   void Build (const Standard_Boolean Segment) ;
+  
+  //! returns all the splitting values including the
+  //! First and Last parameters of the input curve
+  //! Merges input split values and new ones into myGlobalKnots
+  Standard_EXPORT  const  Handle(TColStd_HSequenceOfReal)& SplitValues()  const;
+  
+  //! Calculates points for correction/splitting of the curve
+  Standard_EXPORT virtual   void Compute() ;
+  
+  //! Performs correction/splitting of the curve.
+  //! First defines splitting values by method Compute(), then calls method Build().
+  Standard_EXPORT   void Perform (const Standard_Boolean Segment = Standard_True) ;
+  
+  //! Returns the status
+  //! OK    - no splitting is needed
+  //! DONE1 - splitting required and gives more than one segment
+  //! DONE2 - splitting is required, but gives only one segment (initial)
+  //! DONE3 - geometric form of the curve or parametrisation is modified
+  Standard_EXPORT   Standard_Boolean Status (const ShapeExtend_Status status)  const;
 
 
 
@@ -77,9 +68,9 @@ public:
 protected:
 
 
-Handle_TColStd_HSequenceOfReal mySplitValues;
-Standard_Integer myNbCurves;
-Standard_Integer myStatus;
+  Handle(TColStd_HSequenceOfReal) mySplitValues;
+  Standard_Integer myNbCurves;
+  Standard_Integer myStatus;
 
 
 private: 
@@ -93,7 +84,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_SplitCurve_HeaderFile

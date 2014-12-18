@@ -6,54 +6,42 @@
 #ifndef _ShapeUpgrade_SplitCurve3d_HeaderFile
 #define _ShapeUpgrade_SplitCurve3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_SplitCurve3d_HeaderFile
 #include <Handle_ShapeUpgrade_SplitCurve3d.hxx>
-#endif
 
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_TColGeom_HArray1OfCurve_HeaderFile
 #include <Handle_TColGeom_HArray1OfCurve.hxx>
-#endif
-#ifndef _ShapeUpgrade_SplitCurve_HeaderFile
 #include <ShapeUpgrade_SplitCurve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom_Curve;
 class TColGeom_HArray1OfCurve;
 
 
-//! Splits a 3d curve with a criterion. <br>
-class ShapeUpgrade_SplitCurve3d : public ShapeUpgrade_SplitCurve {
+//! Splits a 3d curve with a criterion.
+class ShapeUpgrade_SplitCurve3d : public ShapeUpgrade_SplitCurve
+{
 
 public:
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   ShapeUpgrade_SplitCurve3d();
-  //! Initializes with curve with its first and last parameters. <br>
-  Standard_EXPORT     void Init(const Handle(Geom_Curve)& C) ;
-  //! Initializes with curve with its parameters. <br>
-  Standard_EXPORT     void Init(const Handle(Geom_Curve)& C,const Standard_Real First,const Standard_Real Last) ;
-  //! If Segment is True, the result is composed with <br>
-//!  segments of the curve bounded by the SplitValues.  If <br>
-//!  Segment is False, the result is composed with trimmed <br>
-//!  Curves all based on the same complete curve. <br>
-//! <br>
-  Standard_EXPORT   virtual  void Build(const Standard_Boolean Segment) ;
   
-  Standard_EXPORT    const Handle_TColGeom_HArray1OfCurve& GetCurves() const;
+  //! Empty constructor.
+  Standard_EXPORT ShapeUpgrade_SplitCurve3d();
+  
+  //! Initializes with curve with its first and last parameters.
+  Standard_EXPORT   void Init (const Handle(Geom_Curve)& C) ;
+  
+  //! Initializes with curve with its parameters.
+  Standard_EXPORT   void Init (const Handle(Geom_Curve)& C, const Standard_Real First, const Standard_Real Last) ;
+  
+  //! If Segment is True, the result is composed with
+  //! segments of the curve bounded by the SplitValues.  If
+  //! Segment is False, the result is composed with trimmed
+  //! Curves all based on the same complete curve.
+  Standard_EXPORT virtual   void Build (const Standard_Boolean Segment) ;
+  
+  Standard_EXPORT  const  Handle(TColGeom_HArray1OfCurve)& GetCurves()  const;
 
 
 
@@ -63,8 +51,8 @@ public:
 protected:
 
 
-Handle_Geom_Curve myCurve;
-Handle_TColGeom_HArray1OfCurve myResultingCurves;
+  Handle(Geom_Curve) myCurve;
+  Handle(TColGeom_HArray1OfCurve) myResultingCurves;
 
 
 private: 
@@ -78,7 +66,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_SplitCurve3d_HeaderFile

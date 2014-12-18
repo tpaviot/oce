@@ -13,7 +13,7 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#include <XBRepMesh.ixx>
+#include <XBRepMesh.hxx>
 #include <BRepMesh_PluginMacro.hxx>
 #include <BRepMesh_IncrementalMesh.hxx>
 
@@ -21,10 +21,11 @@
 //function : Discret
 //purpose  : 
 //=======================================================================
-Standard_Integer XBRepMesh::Discret(const TopoDS_Shape& theShape,
-				    const Standard_Real theDeflection,
-				    const Standard_Real theAngle,
-				    BRepMesh_PDiscretRoot& theAlgo)
+Standard_Integer XBRepMesh::Discret(
+  const TopoDS_Shape&   theShape,
+  const Standard_Real   theDeflection,
+  const Standard_Real   theAngle,
+  BRepMesh_DiscretRoot* &theAlgo)
 {
   Standard_Integer iErr;
   //

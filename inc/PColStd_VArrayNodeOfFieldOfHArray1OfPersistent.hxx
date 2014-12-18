@@ -6,45 +6,32 @@
 #ifndef _PColStd_VArrayNodeOfFieldOfHArray1OfPersistent_HeaderFile
 #define _PColStd_VArrayNodeOfFieldOfHArray1OfPersistent_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray1OfPersistent_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray1OfPersistent.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _PStandard_ArrayNode_HeaderFile
 #include <PStandard_ArrayNode.hxx>
-#endif
 class Standard_Persistent;
 class PColStd_FieldOfHArray1OfPersistent;
 class PColStd_VArrayTNodeOfFieldOfHArray1OfPersistent;
 
 
-class PColStd_VArrayNodeOfFieldOfHArray1OfPersistent : public PStandard_ArrayNode {
+class PColStd_VArrayNodeOfFieldOfHArray1OfPersistent : public PStandard_ArrayNode
+{
 
 public:
 
   
-  Standard_EXPORT   PColStd_VArrayNodeOfFieldOfHArray1OfPersistent();
+  Standard_EXPORT PColStd_VArrayNodeOfFieldOfHArray1OfPersistent();
   
-  Standard_EXPORT   PColStd_VArrayNodeOfFieldOfHArray1OfPersistent(const Handle(Standard_Persistent)& aValue);
+  Standard_EXPORT PColStd_VArrayNodeOfFieldOfHArray1OfPersistent(const Handle(Standard_Persistent)& aValue);
   
-  Standard_EXPORT     void SetValue(const Handle(Standard_Persistent)& aValue) ;
+  Standard_EXPORT   void SetValue (const Handle(Standard_Persistent)& aValue) ;
   
-  Standard_EXPORT     Standard_Address Value() const;
+  Standard_EXPORT   Standard_Address Value()  const;
 
 PColStd_VArrayNodeOfFieldOfHArray1OfPersistent(const Storage_stCONSTclCOM& a) : PStandard_ArrayNode(a)
 {
@@ -65,7 +52,7 @@ protected:
 private: 
 
 
-Handle_Standard_Persistent myValue;
+  Handle(Standard_Persistent) myValue;
 
 
 };
@@ -74,7 +61,6 @@ Handle_Standard_Persistent myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColStd_VArrayNodeOfFieldOfHArray1OfPersistent_HeaderFile

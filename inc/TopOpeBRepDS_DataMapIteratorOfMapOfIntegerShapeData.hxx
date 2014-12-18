@@ -6,25 +6,13 @@
 #ifndef _TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData_HeaderFile
 #define _TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopOpeBRepDS_ShapeData;
 class TColStd_MapIntegerHasher;
@@ -33,22 +21,22 @@ class TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData;
 
 
 
-class TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData  : public TCollection_BasicMapIterator {
+class TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData();
+  Standard_EXPORT TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData();
   
-  Standard_EXPORT   TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData(const TopOpeBRepDS_MapOfIntegerShapeData& aMap);
+  Standard_EXPORT TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData(const TopOpeBRepDS_MapOfIntegerShapeData& aMap);
   
-  Standard_EXPORT     void Initialize(const TopOpeBRepDS_MapOfIntegerShapeData& aMap) ;
+  Standard_EXPORT   void Initialize (const TopOpeBRepDS_MapOfIntegerShapeData& aMap) ;
   
-  Standard_EXPORT    const Standard_Integer& Key() const;
+  Standard_EXPORT  const  Standard_Integer& Key()  const;
   
-  Standard_EXPORT    const TopOpeBRepDS_ShapeData& Value() const;
-
+  Standard_EXPORT  const  TopOpeBRepDS_ShapeData& Value()  const;
 
 
 
@@ -71,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData_HeaderFile

@@ -6,48 +6,38 @@
 #ifndef _StepShape_Edge_HeaderFile
 #define _StepShape_Edge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_Edge_HeaderFile
 #include <Handle_StepShape_Edge.hxx>
-#endif
 
-#ifndef _Handle_StepShape_Vertex_HeaderFile
 #include <Handle_StepShape_Vertex.hxx>
-#endif
-#ifndef _StepShape_TopologicalRepresentationItem_HeaderFile
 #include <StepShape_TopologicalRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepShape_Vertex;
 class TCollection_HAsciiString;
 
 
 
-class StepShape_Edge : public StepShape_TopologicalRepresentationItem {
+class StepShape_Edge : public StepShape_TopologicalRepresentationItem
+{
 
 public:
 
-  //! Returns a Edge <br>
-  Standard_EXPORT   StepShape_Edge();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a Edge
+  Standard_EXPORT StepShape_Edge();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_Vertex)& aEdgeStart,const Handle(StepShape_Vertex)& aEdgeEnd) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT   virtual  void SetEdgeStart(const Handle(StepShape_Vertex)& aEdgeStart) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_Vertex)& aEdgeStart, const Handle(StepShape_Vertex)& aEdgeEnd) ;
   
-  Standard_EXPORT   virtual  Handle_StepShape_Vertex EdgeStart() const;
+  Standard_EXPORT virtual   void SetEdgeStart (const Handle(StepShape_Vertex)& aEdgeStart) ;
   
-  Standard_EXPORT   virtual  void SetEdgeEnd(const Handle(StepShape_Vertex)& aEdgeEnd) ;
+  Standard_EXPORT virtual   Handle(StepShape_Vertex) EdgeStart()  const;
   
-  Standard_EXPORT   virtual  Handle_StepShape_Vertex EdgeEnd() const;
+  Standard_EXPORT virtual   void SetEdgeEnd (const Handle(StepShape_Vertex)& aEdgeEnd) ;
+  
+  Standard_EXPORT virtual   Handle(StepShape_Vertex) EdgeEnd()  const;
 
 
 
@@ -62,8 +52,8 @@ protected:
 private: 
 
 
-Handle_StepShape_Vertex edgeStart;
-Handle_StepShape_Vertex edgeEnd;
+  Handle(StepShape_Vertex) edgeStart;
+  Handle(StepShape_Vertex) edgeEnd;
 
 
 };
@@ -72,7 +62,6 @@ Handle_StepShape_Vertex edgeEnd;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_Edge_HeaderFile

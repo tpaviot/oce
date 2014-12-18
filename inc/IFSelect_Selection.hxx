@@ -6,22 +6,12 @@
 #ifndef _IFSelect_Selection_HeaderFile
 #define _IFSelect_Selection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_Selection_HeaderFile
 #include <Handle_IFSelect_Selection.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Interface_InterfaceError;
 class Interface_EntityIterator;
 class Interface_Graph;
@@ -29,40 +19,46 @@ class IFSelect_SelectionIterator;
 class TCollection_AsciiString;
 
 
-//! A Selection allows to define a set of Interface Entities. <br>
-//!           Entities to be put on an output file should be identified in <br>
-//!           a way as independant from such or such execution as possible. <br>
-//!           This permits to handle comprehensive criteria, and to replay <br>
-//!           them when a new variant of an input file has to be processed. <br>
-//! <br>
-//!           Its input can be, either an Interface Model (the very source), <br>
-//!           or another-other Selection(s) or any other ouput. All list <br>
-//!           computations start from an input Graph (from IFGraph) <br>
-class IFSelect_Selection : public MMgt_TShared {
+//! A Selection allows to define a set of Interface Entities.
+//! Entities to be put on an output file should be identified in
+//! a way as independant from such or such execution as possible.
+//! This permits to handle comprehensive criteria, and to replay
+//! them when a new variant of an input file has to be processed.
+//!
+//! Its input can be, either an Interface Model (the very source),
+//! or another-other Selection(s) or any other ouput. All list
+//! computations start from an input Graph (from IFGraph)
+class IFSelect_Selection : public MMgt_TShared
+{
 
 public:
 
-  //! Returns the list of selected entities, computed from Input <br>
-//!           given as a Graph. Specific to each class of Selection <br>
-//!           Note that uniqueness of each entity is not required here <br>
-//!           This method can raise an exception as necessary <br>
-  Standard_EXPORT   virtual  Interface_EntityIterator RootResult(const Interface_Graph& G) const = 0;
-  //! Returns the list of selected entities, each of them beeing <br>
-//!           unique. Default definition works from RootResult. According <br>
-//!           HasUniqueResult, UniqueResult returns directly RootResult, <br>
-//!           or build a Unique Result from it with a Graph. <br>
-  Standard_EXPORT     Interface_EntityIterator UniqueResult(const Interface_Graph& G) const;
-  //! Returns the list of entities involved by a Selection, i.e. <br>
-//!           UniqueResult plus the shared entities (directly or not) <br>
-  Standard_EXPORT   virtual  Interface_EntityIterator CompleteResult(const Interface_Graph& G) const;
-  //! Puts in an Iterator the Selections from which "me" depends <br>
-//!           (there can be zero, or one, or a list). <br>
-//!           Specific to each class of Selection <br>
-  Standard_EXPORT   virtual  void FillIterator(IFSelect_SelectionIterator& iter) const = 0;
-  //! Returns a text which defines the criterium applied by a <br>
-//!           Selection (can be used to be printed, displayed ...) <br>
-//!           Specific to each class <br>
-  Standard_EXPORT   virtual  TCollection_AsciiString Label() const = 0;
+  
+  //! Returns the list of selected entities, computed from Input
+  //! given as a Graph. Specific to each class of Selection
+  //! Note that uniqueness of each entity is not required here
+  //! This method can raise an exception as necessary
+  Standard_EXPORT virtual   Interface_EntityIterator RootResult (const Interface_Graph& G)  const = 0;
+  
+  //! Returns the list of selected entities, each of them beeing
+  //! unique. Default definition works from RootResult. According
+  //! HasUniqueResult, UniqueResult returns directly RootResult,
+  //! or build a Unique Result from it with a Graph.
+  Standard_EXPORT   Interface_EntityIterator UniqueResult (const Interface_Graph& G)  const;
+  
+  //! Returns the list of entities involved by a Selection, i.e.
+  //! UniqueResult plus the shared entities (directly or not)
+  Standard_EXPORT virtual   Interface_EntityIterator CompleteResult (const Interface_Graph& G)  const;
+  
+  //! Puts in an Iterator the Selections from which "me" depends
+  //! (there can be zero, or one, or a list).
+  //! Specific to each class of Selection
+  Standard_EXPORT virtual   void FillIterator (IFSelect_SelectionIterator& iter)  const = 0;
+  
+  //! Returns a text which defines the criterium applied by a
+  //! Selection (can be used to be printed, displayed ...)
+  //! Specific to each class
+  Standard_EXPORT virtual   TCollection_AsciiString Label()  const = 0;
 
 
 
@@ -71,10 +67,11 @@ public:
 
 protected:
 
-  //! Returns True if RootResult guarantees uniqueness for each <br>
-//!           Entity. Called by UniqueResult. <br>
-//!           Default answer is False. Can be redefined. <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasUniqueResult() const;
+  
+  //! Returns True if RootResult guarantees uniqueness for each
+  //! Entity. Called by UniqueResult.
+  //! Default answer is False. Can be redefined.
+  Standard_EXPORT virtual   Standard_Boolean HasUniqueResult()  const;
 
 
 
@@ -89,7 +86,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_Selection_HeaderFile

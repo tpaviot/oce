@@ -6,53 +6,38 @@
 #ifndef _PBRep_TVertex_HeaderFile
 #define _PBRep_TVertex_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_TVertex_HeaderFile
 #include <Handle_PBRep_TVertex.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Handle_PBRep_PointRepresentation_HeaderFile
 #include <Handle_PBRep_PointRepresentation.hxx>
-#endif
-#ifndef _PTopoDS_TVertex_HeaderFile
 #include <PTopoDS_TVertex.hxx>
-#endif
 class PBRep_PointRepresentation;
 class gp_Pnt;
 
 
-class PBRep_TVertex : public PTopoDS_TVertex {
+class PBRep_TVertex : public PTopoDS_TVertex
+{
 
 public:
 
   
-  Standard_EXPORT   PBRep_TVertex();
+  Standard_EXPORT PBRep_TVertex();
   
-  Standard_EXPORT     Standard_Real Tolerance() const;
+  Standard_EXPORT   Standard_Real Tolerance()  const;
   
-  Standard_EXPORT     void Tolerance(const Standard_Real T) ;
+  Standard_EXPORT   void Tolerance (const Standard_Real T) ;
   
-  Standard_EXPORT     gp_Pnt Pnt() const;
+  Standard_EXPORT   gp_Pnt Pnt()  const;
   
-  Standard_EXPORT     void Pnt(const gp_Pnt& P) ;
+  Standard_EXPORT   void Pnt (const gp_Pnt& P) ;
   
-  Standard_EXPORT     Handle_PBRep_PointRepresentation Points() const;
+  Standard_EXPORT   Handle(PBRep_PointRepresentation) Points()  const;
   
-  Standard_EXPORT     void Points(const Handle(PBRep_PointRepresentation)& P) ;
+  Standard_EXPORT   void Points (const Handle(PBRep_PointRepresentation)& P) ;
 
 PBRep_TVertex(const Storage_stCONSTclCOM& a) : PTopoDS_TVertex(a)
 {
@@ -76,9 +61,9 @@ protected:
 private: 
 
 
-Standard_Real myTolerance;
-gp_Pnt myPnt;
-Handle_PBRep_PointRepresentation myPoints;
+  Standard_Real myTolerance;
+  gp_Pnt myPnt;
+  Handle(PBRep_PointRepresentation) myPoints;
 
 
 };
@@ -87,7 +72,6 @@ Handle_PBRep_PointRepresentation myPoints;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_TVertex_HeaderFile

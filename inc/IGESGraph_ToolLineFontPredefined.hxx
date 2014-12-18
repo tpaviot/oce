@@ -6,34 +6,16 @@
 #ifndef _IGESGraph_ToolLineFontPredefined_HeaderFile
 #define _IGESGraph_ToolLineFontPredefined_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESGraph_LineFontPredefined_HeaderFile
 #include <Handle_IGESGraph_LineFontPredefined.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESReaderData_HeaderFile
 #include <Handle_IGESData_IGESReaderData.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_DomainError;
 class IGESGraph_LineFontPredefined;
 class IGESData_IGESReaderData;
@@ -48,35 +30,44 @@ class IGESData_IGESDumper;
 class Message_Messenger;
 
 
-//! Tool to work on a LineFontPredefined. Called by various Modules <br>
-//!           (ReadWriteModule, GeneralModule, SpecificModule) <br>
-class IGESGraph_ToolLineFontPredefined  {
+//! Tool to work on a LineFontPredefined. Called by various Modules
+//! (ReadWriteModule, GeneralModule, SpecificModule)
+class IGESGraph_ToolLineFontPredefined 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a ToolLineFontPredefined, ready to work <br>
-  Standard_EXPORT   IGESGraph_ToolLineFontPredefined();
-  //! Reads own parameters from file. <PR> gives access to them, <br>
-//!           <IR> detains parameter types and values <br>
-  Standard_EXPORT     void ReadOwnParams(const Handle(IGESGraph_LineFontPredefined)& ent,const Handle(IGESData_IGESReaderData)& IR,IGESData_ParamReader& PR) const;
-  //! Writes own parameters to IGESWriter <br>
-  Standard_EXPORT     void WriteOwnParams(const Handle(IGESGraph_LineFontPredefined)& ent,IGESData_IGESWriter& IW) const;
-  //! Lists the Entities shared by a LineFontPredefined <ent>, from <br>
-//!           its specific (own) parameters <br>
-  Standard_EXPORT     void OwnShared(const Handle(IGESGraph_LineFontPredefined)& ent,Interface_EntityIterator& iter) const;
-  //! Sets automatic unambiguous Correction on a LineFontPredefined <br>
-//!           (NbPropertyValues forced to 1) <br>
-  Standard_EXPORT     Standard_Boolean OwnCorrect(const Handle(IGESGraph_LineFontPredefined)& ent) const;
-  //! Returns specific DirChecker <br>
-  Standard_EXPORT     IGESData_DirChecker DirChecker(const Handle(IGESGraph_LineFontPredefined)& ent) const;
-  //! Performs Specific Semantic Check <br>
-  Standard_EXPORT     void OwnCheck(const Handle(IGESGraph_LineFontPredefined)& ent,const Interface_ShareTool& shares,Handle(Interface_Check)& ach) const;
-  //! Copies Specific Parameters <br>
-  Standard_EXPORT     void OwnCopy(const Handle(IGESGraph_LineFontPredefined)& entfrom,const Handle(IGESGraph_LineFontPredefined)& entto,Interface_CopyTool& TC) const;
-  //! Dump of Specific Parameters <br>
-  Standard_EXPORT     void OwnDump(const Handle(IGESGraph_LineFontPredefined)& ent,const IGESData_IGESDumper& dumper,const Handle(Message_Messenger)& S,const Standard_Integer own) const;
-
+  
+  //! Returns a ToolLineFontPredefined, ready to work
+  Standard_EXPORT IGESGraph_ToolLineFontPredefined();
+  
+  //! Reads own parameters from file. <PR> gives access to them,
+  //! <IR> detains parameter types and values
+  Standard_EXPORT   void ReadOwnParams (const Handle(IGESGraph_LineFontPredefined)& ent, const Handle(IGESData_IGESReaderData)& IR, IGESData_ParamReader& PR)  const;
+  
+  //! Writes own parameters to IGESWriter
+  Standard_EXPORT   void WriteOwnParams (const Handle(IGESGraph_LineFontPredefined)& ent, IGESData_IGESWriter& IW)  const;
+  
+  //! Lists the Entities shared by a LineFontPredefined <ent>, from
+  //! its specific (own) parameters
+  Standard_EXPORT   void OwnShared (const Handle(IGESGraph_LineFontPredefined)& ent, Interface_EntityIterator& iter)  const;
+  
+  //! Sets automatic unambiguous Correction on a LineFontPredefined
+  //! (NbPropertyValues forced to 1)
+  Standard_EXPORT   Standard_Boolean OwnCorrect (const Handle(IGESGraph_LineFontPredefined)& ent)  const;
+  
+  //! Returns specific DirChecker
+  Standard_EXPORT   IGESData_DirChecker DirChecker (const Handle(IGESGraph_LineFontPredefined)& ent)  const;
+  
+  //! Performs Specific Semantic Check
+  Standard_EXPORT   void OwnCheck (const Handle(IGESGraph_LineFontPredefined)& ent, const Interface_ShareTool& shares, Handle(Interface_Check)& ach)  const;
+  
+  //! Copies Specific Parameters
+  Standard_EXPORT   void OwnCopy (const Handle(IGESGraph_LineFontPredefined)& entfrom, const Handle(IGESGraph_LineFontPredefined)& entto, Interface_CopyTool& TC)  const;
+  
+  //! Dump of Specific Parameters
+  Standard_EXPORT   void OwnDump (const Handle(IGESGraph_LineFontPredefined)& ent, const IGESData_IGESDumper& dumper, const Handle(Message_Messenger)& S, const Standard_Integer own)  const;
 
 
 
@@ -99,7 +90,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_ToolLineFontPredefined_HeaderFile

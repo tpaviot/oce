@@ -6,22 +6,15 @@
 #ifndef _Handle_GeomFill_EvolvedSection_HeaderFile
 #define _Handle_GeomFill_EvolvedSection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_GeomFill_SectionLaw_HeaderFile
 #include <Handle_GeomFill_SectionLaw.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(GeomFill_SectionLaw);
 class GeomFill_EvolvedSection;
 
-DEFINE_STANDARD_HANDLE(GeomFill_EvolvedSection,GeomFill_SectionLaw)
+DEFINE_STANDARD_HANDLE(GeomFill_EvolvedSection, GeomFill_SectionLaw)
 
-#endif
+#endif // _Handle_GeomFill_EvolvedSection_HeaderFile

@@ -5,29 +5,17 @@
 
 #include <STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _STEPCAFControl_ExternFile_HeaderFile
 #include <STEPCAFControl_ExternFile.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _STEPCAFControl_DataMapOfPDExternFile_HeaderFile
 #include <STEPCAFControl_DataMapOfPDExternFile.hxx>
-#endif
-#ifndef _STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile_HeaderFile
 #include <STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile.hxx>
-#endif
  
 
-#define TheKey Handle_StepBasic_ProductDefinition
+#define TheKey Handle(StepBasic_ProductDefinition)
 #define TheKey_hxx <StepBasic_ProductDefinition.hxx>
-#define TheItem Handle_STEPCAFControl_ExternFile
+#define TheItem Handle(STEPCAFControl_ExternFile)
 #define TheItem_hxx <STEPCAFControl_ExternFile.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

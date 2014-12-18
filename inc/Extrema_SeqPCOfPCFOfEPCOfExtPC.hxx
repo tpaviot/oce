@@ -6,25 +6,13 @@
 #ifndef _Extrema_SeqPCOfPCFOfEPCOfExtPC_HeaderFile
 #define _Extrema_SeqPCOfPCFOfEPCOfExtPC_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC_HeaderFile
 #include <Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Extrema_POnCurv;
@@ -32,66 +20,68 @@ class Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC;
 
 
 
-class Extrema_SeqPCOfPCFOfEPCOfExtPC  : public TCollection_BaseSequence {
+class Extrema_SeqPCOfPCFOfEPCOfExtPC  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Extrema_SeqPCOfPCFOfEPCOfExtPC();
+    Extrema_SeqPCOfPCFOfEPCOfExtPC();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT Extrema_SeqPCOfPCFOfEPCOfExtPC(const Extrema_SeqPCOfPCFOfEPCOfExtPC& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~Extrema_SeqPCOfPCFOfEPCOfExtPC()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Extrema_SeqPCOfPCFOfEPCOfExtPC& Assign(const Extrema_SeqPCOfPCFOfEPCOfExtPC& Other) ;
-   const Extrema_SeqPCOfPCFOfEPCOfExtPC& operator =(const Extrema_SeqPCOfPCFOfEPCOfExtPC& Other) 
+  Standard_EXPORT  const  Extrema_SeqPCOfPCFOfEPCOfExtPC& Assign (const Extrema_SeqPCOfPCFOfEPCOfExtPC& Other) ;
+ const  Extrema_SeqPCOfPCFOfEPCOfExtPC& operator = (const Extrema_SeqPCOfPCFOfEPCOfExtPC& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Extrema_POnCurv& T) ;
+  Standard_EXPORT   void Append (const Extrema_POnCurv& T) ;
   
-        void Append(Extrema_SeqPCOfPCFOfEPCOfExtPC& S) ;
+      void Append (Extrema_SeqPCOfPCFOfEPCOfExtPC& S) ;
   
-  Standard_EXPORT     void Prepend(const Extrema_POnCurv& T) ;
+  Standard_EXPORT   void Prepend (const Extrema_POnCurv& T) ;
   
-        void Prepend(Extrema_SeqPCOfPCFOfEPCOfExtPC& S) ;
+      void Prepend (Extrema_SeqPCOfPCFOfEPCOfExtPC& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Extrema_POnCurv& T) ;
+      void InsertBefore (const Standard_Integer Index, const Extrema_POnCurv& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Extrema_SeqPCOfPCFOfEPCOfExtPC& S) ;
+      void InsertBefore (const Standard_Integer Index, Extrema_SeqPCOfPCFOfEPCOfExtPC& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Extrema_POnCurv& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Extrema_POnCurv& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Extrema_SeqPCOfPCFOfEPCOfExtPC& S) ;
+      void InsertAfter (const Standard_Integer Index, Extrema_SeqPCOfPCFOfEPCOfExtPC& S) ;
   
-  Standard_EXPORT    const Extrema_POnCurv& First() const;
+  Standard_EXPORT  const  Extrema_POnCurv& First()  const;
   
-  Standard_EXPORT    const Extrema_POnCurv& Last() const;
+  Standard_EXPORT  const  Extrema_POnCurv& Last()  const;
   
-        void Split(const Standard_Integer Index,Extrema_SeqPCOfPCFOfEPCOfExtPC& Sub) ;
+      void Split (const Standard_Integer Index, Extrema_SeqPCOfPCFOfEPCOfExtPC& Sub) ;
   
-  Standard_EXPORT    const Extrema_POnCurv& Value(const Standard_Integer Index) const;
-   const Extrema_POnCurv& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Extrema_POnCurv& Value (const Standard_Integer Index)  const;
+ const  Extrema_POnCurv& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Extrema_POnCurv& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Extrema_POnCurv& I) ;
   
-  Standard_EXPORT     Extrema_POnCurv& ChangeValue(const Standard_Integer Index) ;
-    Extrema_POnCurv& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Extrema_POnCurv& ChangeValue (const Standard_Integer Index) ;
+  Extrema_POnCurv& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Extrema_SeqPCOfPCFOfEPCOfExtPC(const Extrema_SeqPCOfPCFOfEPCOfExtPC& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_SeqPCOfPCFOfEPCOfExtPC_HeaderFile

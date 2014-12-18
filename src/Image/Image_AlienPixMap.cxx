@@ -13,10 +13,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
 #ifdef HAVE_FREEIMAGE
   #include <FreeImage.h>
 #endif
@@ -24,7 +20,10 @@
 #include <Image_AlienPixMap.hxx>
 #include <gp.hxx>
 #include <TCollection_AsciiString.hxx>
+#include <TCollection_ExtendedString.hxx>
+#include <OSD_OpenFile.hxx>
 #include <fstream>
+#include <algorithm>
 #include <stdio.h>
 
 #ifdef HAVE_FREEIMAGE
@@ -198,18 +197,17 @@ bool Image_AlienPixMap::InitCopy (const Image_PixMap& theCopy)
 
   if (myImgFormat == theCopy.Format())
   {
-    if (myData.mySizeRowBytes == theCopy.SizeRowBytes()
-     && myData.myTopToDown    == theCopy.TopDownInc())
+    if (SizeRowBytes() == theCopy.SizeRowBytes()
+     && TopDownInc()   == theCopy.TopDownInc())
     {
       // copy with one call
-      memcpy (myData.myDataPtr, theCopy.Data(), theCopy.SizeBytes());
+      memcpy (ChangeData(), theCopy.Data(), std::min (SizeBytes(), theCopy.SizeBytes()));
       return true;
     }
 
     // copy row-by-row
-    const Standard_Size aRowSizeBytes = (myData.mySizeRowBytes > theCopy.SizeRowBytes())
-                                      ? theCopy.SizeRowBytes() : myData.mySizeRowBytes;
-    for (Standard_Size aRow = 0; aRow < myData.mySizeY; ++aRow)
+    const Standard_Size aRowSizeBytes = std::min (SizeRowBytes(), theCopy.SizeRowBytes());
+    for (Standard_Size aRow = 0; aRow < myData.SizeY; ++aRow)
     {
       memcpy (ChangeRow (aRow), theCopy.Row (aRow), aRowSizeBytes);
     }
@@ -225,9 +223,9 @@ bool Image_AlienPixMap::InitCopy (const Image_PixMap& theCopy)
 // function : Clear
 // purpose  :
 // =======================================================================
-void Image_AlienPixMap::Clear (ImgFormat thePixelFormat)
+void Image_AlienPixMap::Clear()
 {
-  Image_PixMap::Clear (thePixelFormat);
+  Image_PixMap::Clear();
 #ifdef HAVE_FREEIMAGE
   if (myLibImage != NULL)
   {
@@ -245,7 +243,13 @@ void Image_AlienPixMap::Clear (ImgFormat thePixelFormat)
 bool Image_AlienPixMap::Load (const TCollection_AsciiString& theImagePath)
 {
   Clear();
+
+#ifdef _WIN32
+  const TCollection_ExtendedString aFileNameW (theImagePath.ToCString(), Standard_True);
+  FREE_IMAGE_FORMAT aFIF = FreeImage_GetFileTypeU ((const wchar_t* )aFileNameW.ToExtString(), 0);
+#else
   FREE_IMAGE_FORMAT aFIF = FreeImage_GetFileType (theImagePath.ToCString(), 0);
+#endif
   if (aFIF == FIF_UNKNOWN)
   {
     // no signature? try to guess the file format from the file extension
@@ -269,7 +273,11 @@ bool Image_AlienPixMap::Load (const TCollection_AsciiString& theImagePath)
     aLoadFlags = ICO_MAKEALPHA;
   }
 
-  FIBITMAP* anImage = FreeImage_Load (aFIF, theImagePath.ToCString(), aLoadFlags);
+#ifdef _WIN32
+  FIBITMAP* anImage = FreeImage_LoadU (aFIF, (const wchar_t* )aFileNameW.ToExtString(), aLoadFlags);
+#else
+  FIBITMAP* anImage = FreeImage_Load  (aFIF, theImagePath.ToCString(), aLoadFlags);
+#endif
   if (anImage == NULL)
   {
     return false;
@@ -312,7 +320,7 @@ bool Image_AlienPixMap::savePPM (const TCollection_AsciiString& theFileName) con
   }
 
   // Open file
-  FILE* aFile = fopen (theFileName.ToCString(), "wb");
+  FILE* aFile = OSD_OpenFile (theFileName.ToCString(), "wb");
   if (aFile == NULL)
   {
     return false;
@@ -328,7 +336,7 @@ bool Image_AlienPixMap::savePPM (const TCollection_AsciiString& theFileName) con
   Standard_Byte aByte;
   for (Standard_Size aRow = 0; aRow < SizeY(); ++aRow)
   {
-    for (Standard_Size aCol = 0; aCol < SizeY(); ++aCol)
+    for (Standard_Size aCol = 0; aCol < SizeX(); ++aCol)
     {
       // extremely SLOW but universal (implemented for all supported pixel formats)
       aColor = PixelColor ((Standard_Integer )aCol, (Standard_Integer )aRow, aDummy);
@@ -355,10 +363,17 @@ bool Image_AlienPixMap::Save (const TCollection_AsciiString& theFileName)
     return false;
   }
 
+#ifdef _WIN32
+  const TCollection_ExtendedString aFileNameW (theFileName.ToCString(), Standard_True);
+  FREE_IMAGE_FORMAT anImageFormat = FreeImage_GetFIFFromFilenameU ((const wchar_t* )aFileNameW.ToExtString());
+#else
   FREE_IMAGE_FORMAT anImageFormat = FreeImage_GetFIFFromFilename (theFileName.ToCString());
+#endif
   if (anImageFormat == FIF_UNKNOWN)
   {
+#ifdef OCCT_DEBUG
     std::cerr << "Image_PixMap, image format doesn't supported!\n";
+#endif
     return false;
   }
 
@@ -380,12 +395,11 @@ bool Image_AlienPixMap::Save (const TCollection_AsciiString& theFileName)
        || Format() == Image_PixMap::ImgRGB32)
       {
         // stupid FreeImage treats reserved byte as alpha if some bytes not set to 0xFF
-        Image_PixMapData<Image_ColorRGB32>& aData = Image_PixMap::EditData<Image_ColorRGB32>();
         for (Standard_Size aRow = 0; aRow < SizeY(); ++aRow)
         {
           for (Standard_Size aCol = 0; aCol < SizeX(); ++aCol)
           {
-            aData.ChangeValue (aRow, aCol).a_() = 0xFF;
+            myData.ChangeValue (aRow, aCol)[3] = 0xFF;
           }
         }
       }
@@ -485,7 +499,11 @@ bool Image_AlienPixMap::Save (const TCollection_AsciiString& theFileName)
     return false;
   }
 
-  bool isSaved = (FreeImage_Save (anImageFormat, anImageToDump, theFileName.ToCString()) != FALSE);
+#ifdef _WIN32
+  bool isSaved = (FreeImage_SaveU (anImageFormat, anImageToDump, (const wchar_t* )aFileNameW.ToExtString()) != FALSE);
+#else
+  bool isSaved = (FreeImage_Save  (anImageFormat, anImageToDump, theFileName.ToCString()) != FALSE);
+#endif
   if (anImageToDump != myLibImage)
   {
     FreeImage_Unload (anImageToDump);
@@ -498,7 +516,9 @@ bool Image_AlienPixMap::Save (const TCollection_AsciiString& theFileName)
   {
     return savePPM (theFileName);
   }
+#ifdef OCCT_DEBUG
   std::cerr << "Image_PixMap, no image library available! Image saved in PPM format.\n";
+#endif
   return savePPM (theFileName);
 #endif
 }
@@ -507,14 +527,12 @@ bool Image_AlienPixMap::Save (const TCollection_AsciiString& theFileName)
 // function : AdjustGamma
 // purpose  :
 // =======================================================================
+bool Image_AlienPixMap::AdjustGamma (const Standard_Real theGammaCorr)
+{
 #ifdef HAVE_FREEIMAGE
-Standard_EXPORT bool Image_AlienPixMap::AdjustGamma (const Standard_Real theGammaCorr)
-{
   return FreeImage_AdjustGamma (myLibImage, theGammaCorr) != FALSE;
-}
 #else
-Standard_EXPORT bool Image_AlienPixMap::AdjustGamma (const Standard_Real)
-{
-    return false;
-}
+  (void )theGammaCorr;
+  return false;
 #endif
+}

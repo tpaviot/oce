@@ -5,18 +5,10 @@
 
 #include <HLRBRep_ThePolygonToolOfInterCSurf.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _HLRBRep_ThePolygonOfInterCSurf_HeaderFile
 #include <HLRBRep_ThePolygonOfInterCSurf.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
  
 
 #define ThePoint gp_Pnt

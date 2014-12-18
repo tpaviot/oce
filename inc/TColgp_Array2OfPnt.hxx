@@ -6,25 +6,13 @@
 #ifndef _TColgp_Array2OfPnt_HeaderFile
 #define _TColgp_Array2OfPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -33,56 +21,56 @@ class gp_Pnt;
 
 
 
-class TColgp_Array2OfPnt  {
+class TColgp_Array2OfPnt 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColgp_Array2OfPnt(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT TColgp_Array2OfPnt(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT   TColgp_Array2OfPnt(const gp_Pnt& Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT TColgp_Array2OfPnt(const gp_Pnt& Item, const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT     void Init(const gp_Pnt& V) ;
+  Standard_EXPORT   void Init (const gp_Pnt& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~TColgp_Array2OfPnt()
 {
   Destroy();
 }
   
-  Standard_EXPORT    const TColgp_Array2OfPnt& Assign(const TColgp_Array2OfPnt& Other) ;
-   const TColgp_Array2OfPnt& operator =(const TColgp_Array2OfPnt& Other) 
+  Standard_EXPORT  const  TColgp_Array2OfPnt& Assign (const TColgp_Array2OfPnt& Other) ;
+ const  TColgp_Array2OfPnt& operator = (const TColgp_Array2OfPnt& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const gp_Pnt& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const gp_Pnt& Value) ;
   
-       const gp_Pnt& Value(const Standard_Integer Row,const Standard_Integer Col) const;
-     const gp_Pnt& operator()(const Standard_Integer Row,const Standard_Integer Col) const
+     const  gp_Pnt& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
+   const  gp_Pnt& operator() (const Standard_Integer Row, const Standard_Integer Col)  const
 {
   return Value(Row,Col);
 }
   
-        gp_Pnt& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
-      gp_Pnt& operator()(const Standard_Integer Row,const Standard_Integer Col) 
+      gp_Pnt& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
+    gp_Pnt& operator() (const Standard_Integer Row, const Standard_Integer Col) 
 {
   return ChangeValue(Row,Col);
 }
-
 
 
 
@@ -96,17 +84,17 @@ protected:
 private:
 
   
-  Standard_EXPORT   TColgp_Array2OfPnt(const TColgp_Array2OfPnt& AnArray);
+  Standard_EXPORT TColgp_Array2OfPnt(const TColgp_Array2OfPnt& AnArray);
   
-  Standard_EXPORT     void Allocate() ;
+  Standard_EXPORT   void Allocate() ;
 
 
-Standard_Integer myLowerRow;
-Standard_Integer myLowerColumn;
-Standard_Integer myUpperRow;
-Standard_Integer myUpperColumn;
-Standard_Boolean myDeletable;
-Standard_Address myData;
+  Standard_Integer myLowerRow;
+  Standard_Integer myLowerColumn;
+  Standard_Integer myUpperRow;
+  Standard_Integer myUpperColumn;
+  Standard_Boolean myDeletable;
+  Standard_Address myData;
 
 
 };
@@ -124,7 +112,6 @@ Standard_Address myData;
 #undef TCollection_Array2_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_Array2OfPnt_HeaderFile

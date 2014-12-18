@@ -5,18 +5,10 @@
 
 #include <HLRBRep_TheQuadCurvExactInterCSurf.hxx>
 
-#ifndef _HLRBRep_SurfaceTool_HeaderFile
 #include <HLRBRep_SurfaceTool.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _HLRBRep_LineTool_HeaderFile
 #include <HLRBRep_LineTool.hxx>
-#endif
-#ifndef _HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_HeaderFile
 #include <HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx>
-#endif
  
 
 #define TheSurface Standard_Address

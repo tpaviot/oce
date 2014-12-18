@@ -6,28 +6,14 @@
 #ifndef _Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo_HeaderFile
 #define _Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo_HeaderFile
 #include <Handle_Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo.hxx>
-#endif
 
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _Draft_EdgeInfo_HeaderFile
 #include <Draft_EdgeInfo.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Edge;
 class Draft_EdgeInfo;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class Draft_DataMapIteratorOfDataMapOfEdgeEdgeInfo;
 
 
 
-class Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo : public TCollection_MapNode {
+class Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo : public TCollection_MapNode
+{
 
 public:
 
   
-      Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo(const TopoDS_Edge& K,const Draft_EdgeInfo& I,const TCollection_MapNodePtr& n);
+    Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo(const TopoDS_Edge& K, const Draft_EdgeInfo& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Edge& Key() const;
+      TopoDS_Edge& Key()  const;
   
-        Draft_EdgeInfo& Value() const;
+      Draft_EdgeInfo& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Edge myKey;
-Draft_EdgeInfo myValue;
+  TopoDS_Edge myKey;
+  Draft_EdgeInfo myValue;
 
 
 };
@@ -99,7 +86,6 @@ Draft_EdgeInfo myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo_HeaderFile

@@ -6,13 +6,12 @@
 #ifndef _StepFEA_ElementVolume_HeaderFile
 #define _StepFEA_ElementVolume_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepFEA_ElementVolume {
+
+enum StepFEA_ElementVolume
+{
 StepFEA_Volume
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepFEA_ElementVolume_HeaderFile

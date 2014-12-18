@@ -5,58 +5,24 @@
 
 #include <Transfer_ProcessForTransient.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _Transfer_ActorOfProcessForTransient_HeaderFile
 #include <Transfer_ActorOfProcessForTransient.hxx>
-#endif
-#ifndef _Message_ProgressIndicator_HeaderFile
 #include <Message_ProgressIndicator.hxx>
-#endif
-#ifndef _Interface_InterfaceError_HeaderFile
 #include <Interface_InterfaceError.hxx>
-#endif
-#ifndef _Transfer_TransferFailure_HeaderFile
 #include <Transfer_TransferFailure.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _Transfer_TransferMapOfProcessForTransient_HeaderFile
 #include <Transfer_TransferMapOfProcessForTransient.hxx>
-#endif
-#ifndef _Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient_HeaderFile
 #include <Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient.hxx>
-#endif
-#ifndef _Transfer_IteratorOfProcessForTransient_HeaderFile
 #include <Transfer_IteratorOfProcessForTransient.hxx>
-#endif
-#ifndef _Message_Msg_HeaderFile
 #include <Message_Msg.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _Interface_CheckIterator_HeaderFile
 #include <Interface_CheckIterator.hxx>
-#endif
 
  
 
@@ -74,7 +40,7 @@ IMPLEMENT_DOWNCAST(Transfer_ProcessForTransient,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Transfer_ProcessForTransient)
 
 
-#define TheStart Handle_Standard_Transient
+#define TheStart Handle(Standard_Transient)
 #define TheStart_hxx <Standard_Transient.hxx>
 #define TheMapHasher TColStd_MapTransientHasher
 #define TheMapHasher_hxx <TColStd_MapTransientHasher.hxx>

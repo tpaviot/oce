@@ -6,31 +6,15 @@
 #ifndef _gp_Mat2d_HeaderFile
 #define _gp_Mat2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_OutOfRange;
 class gp_Trsf2d;
@@ -41,172 +25,201 @@ class gp_XY;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Mat2d);
 
 
-//! Describes a two column, two row matrix. This sort of <br>
-//! object is used in various vectorial or matrix computations. <br>
-class gp_Mat2d  {
+//! Describes a two column, two row matrix. This sort of
+//! object is used in various vectorial or matrix computations.
+class gp_Mat2d 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates  a matrix with null coefficients. <br>
-      gp_Mat2d();
   
-//!  Col1, Col2 are the 2 columns of the matrix. <br>
-  Standard_EXPORT   gp_Mat2d(const gp_XY& Col1,const gp_XY& Col2);
-  //!  Assigns the two coordinates of Value to the column of range <br>
-//!   Col of this matrix <br>
-//! Raises OutOfRange if Col < 1 or Col > 2. <br>
-  Standard_EXPORT     void SetCol(const Standard_Integer Col,const gp_XY& Value) ;
-  //! Assigns the number pairs Col1, Col2 to the two columns of   this matrix <br>
-  Standard_EXPORT     void SetCols(const gp_XY& Col1,const gp_XY& Col2) ;
+  //! Creates  a matrix with null coefficients.
+    gp_Mat2d();
   
-//!  Modifies the main diagonal of the matrix. <br>
-//!  <me>.Value (1, 1) = X1 <br>
-//!  <me>.Value (2, 2) = X2 <br>
-//!  The other coefficients of the matrix are not modified. <br>
-        void SetDiagonal(const Standard_Real X1,const Standard_Real X2) ;
-  //! Modifies this matrix, so that it represents the Identity matrix. <br>
-        void SetIdentity() ;
+
+  //! Col1, Col2 are the 2 columns of the matrix.
+  Standard_EXPORT gp_Mat2d(const gp_XY& Col1, const gp_XY& Col2);
   
-//!  Modifies this matrix, so that it representso a rotation. Ang is the angular <br>
-//!  value in radian of the rotation. <br>
-        void SetRotation(const Standard_Real Ang) ;
-  //! Assigns the two coordinates of Value to the row of index Row of this matrix. <br>
-//! Raises OutOfRange if Row < 1 or Row > 2. <br>
-  Standard_EXPORT     void SetRow(const Standard_Integer Row,const gp_XY& Value) ;
-  //! Assigns the number pairs Row1, Row2 to the two rows of this matrix. <br>
-  Standard_EXPORT     void SetRows(const gp_XY& Row1,const gp_XY& Row2) ;
+  //! Assigns the two coordinates of Value to the column of range
+  //! Col of this matrix
+  //! Raises OutOfRange if Col < 1 or Col > 2.
+  Standard_EXPORT   void SetCol (const Standard_Integer Col, const gp_XY& Value) ;
   
-//!  Modifies the matrix such that it <br>
-//! represents a scaling transformation, where S is the scale   factor : <br>
-//!           | S    0.0 | <br>
-//!   <me> =  | 0.0   S  | <br>
-        void SetScale(const Standard_Real S) ;
-  //! Assigns <Value> to the coefficient of row Row, column Col of this matrix. <br>
-//! Raises OutOfRange if Row < 1 or Row > 2 or Col < 1 or Col > 2 <br>
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Standard_Real Value) ;
-  //! Returns the column of Col index. <br>
-//! Raises OutOfRange if Col < 1 or Col > 2 <br>
-  Standard_EXPORT     gp_XY Column(const Standard_Integer Col) const;
-  //! Computes the determinant of the matrix. <br>
-        Standard_Real Determinant() const;
-  //! Returns the main diagonal of the matrix. <br>
-  Standard_EXPORT     gp_XY Diagonal() const;
-  //! Returns the row of index Row. <br>//! Raised if Row < 1 or Row > 2 <br>
-  Standard_EXPORT     gp_XY Row(const Standard_Integer Row) const;
-  //! Returns the coefficient of range (Row, Col) <br>
-//! Raises OutOfRange <br>
-//! if Row < 1 or Row > 2 or Col < 1 or Col > 2 <br>
-       const Standard_Real& Value(const Standard_Integer Row,const Standard_Integer Col) const;
-     const Standard_Real& operator()(const Standard_Integer Row,const Standard_Integer Col) const
+  //! Assigns the number pairs Col1, Col2 to the two columns of   this matrix
+  Standard_EXPORT   void SetCols (const gp_XY& Col1, const gp_XY& Col2) ;
+  
+
+  //! Modifies the main diagonal of the matrix.
+  //! <me>.Value (1, 1) = X1
+  //! <me>.Value (2, 2) = X2
+  //! The other coefficients of the matrix are not modified.
+      void SetDiagonal (const Standard_Real X1, const Standard_Real X2) ;
+  
+  //! Modifies this matrix, so that it represents the Identity matrix.
+      void SetIdentity() ;
+  
+
+  //! Modifies this matrix, so that it representso a rotation. Ang is the angular
+  //! value in radian of the rotation.
+      void SetRotation (const Standard_Real Ang) ;
+  
+  //! Assigns the two coordinates of Value to the row of index Row of this matrix.
+  //! Raises OutOfRange if Row < 1 or Row > 2.
+  Standard_EXPORT   void SetRow (const Standard_Integer Row, const gp_XY& Value) ;
+  
+  //! Assigns the number pairs Row1, Row2 to the two rows of this matrix.
+  Standard_EXPORT   void SetRows (const gp_XY& Row1, const gp_XY& Row2) ;
+  
+
+  //! Modifies the matrix such that it
+  //! represents a scaling transformation, where S is the scale   factor :
+  //! | S    0.0 |
+  //! <me> =  | 0.0   S  |
+      void SetScale (const Standard_Real S) ;
+  
+  //! Assigns <Value> to the coefficient of row Row, column Col of this matrix.
+  //! Raises OutOfRange if Row < 1 or Row > 2 or Col < 1 or Col > 2
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Standard_Real Value) ;
+  
+  //! Returns the column of Col index.
+  //! Raises OutOfRange if Col < 1 or Col > 2
+  Standard_EXPORT   gp_XY Column (const Standard_Integer Col)  const;
+  
+  //! Computes the determinant of the matrix.
+      Standard_Real Determinant()  const;
+  
+  //! Returns the main diagonal of the matrix.
+  Standard_EXPORT   gp_XY Diagonal()  const;
+  
+  //! Returns the row of index Row.
+  //! Raised if Row < 1 or Row > 2
+  Standard_EXPORT   gp_XY Row (const Standard_Integer Row)  const;
+  
+  //! Returns the coefficient of range (Row, Col)
+  //! Raises OutOfRange
+  //! if Row < 1 or Row > 2 or Col < 1 or Col > 2
+     const  Standard_Real& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
+   const  Standard_Real& operator() (const Standard_Integer Row, const Standard_Integer Col)  const
 {
   return Value(Row,Col);
 }
-  //! Returns the coefficient of range (Row, Col) <br>
-//! Raises OutOfRange <br>
-//! if Row < 1 or Row > 2 or Col < 1 or Col > 2 <br>
-        Standard_Real& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
-      Standard_Real& operator()(const Standard_Integer Row,const Standard_Integer Col) 
+  
+  //! Returns the coefficient of range (Row, Col)
+  //! Raises OutOfRange
+  //! if Row < 1 or Row > 2 or Col < 1 or Col > 2
+      Standard_Real& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
+    Standard_Real& operator() (const Standard_Integer Row, const Standard_Integer Col) 
 {
   return ChangeValue(Row,Col);
 }
   
-//! Returns true if this matrix is singular (and therefore, cannot be inverted). <br>
-//!  The Gauss LU decomposition is used to invert the matrix <br>
-//!  so the matrix is considered as singular if the largest <br>
-//!  pivot found is lower or equal to Resolution from gp. <br>
-        Standard_Boolean IsSingular() const;
+
+  //! Returns true if this matrix is singular (and therefore, cannot be inverted).
+  //! The Gauss LU decomposition is used to invert the matrix
+  //! so the matrix is considered as singular if the largest
+  //! pivot found is lower or equal to Resolution from gp.
+      Standard_Boolean IsSingular()  const;
   
-        void Add(const gp_Mat2d& Other) ;
-      void operator +=(const gp_Mat2d& Other) 
+      void Add (const gp_Mat2d& Other) ;
+    void operator += (const gp_Mat2d& Other) 
 {
   Add(Other);
 }
   
-//!  Computes the sum of this matrix and the matrix <br>
-//! Other.for each coefficient of the matrix : <br>
-//!  <me>.Coef(i,j) + <Other>.Coef(i,j) <br>
-//! Note: <br>
-//! -   operator += assigns the result to this matrix, while <br>
-//! -   operator + creates a new one. <br>
-        gp_Mat2d Added(const gp_Mat2d& Other) const;
-      gp_Mat2d operator +(const gp_Mat2d& Other) const
+
+  //! Computes the sum of this matrix and the matrix
+  //! Other.for each coefficient of the matrix :
+  //! <me>.Coef(i,j) + <Other>.Coef(i,j)
+  //! Note:
+  //! -   operator += assigns the result to this matrix, while
+  //! -   operator + creates a new one.
+      gp_Mat2d Added (const gp_Mat2d& Other)  const;
+    gp_Mat2d operator + (const gp_Mat2d& Other)  const
 {
   return Added(Other);
 }
   
-        void Divide(const Standard_Real Scalar) ;
-      void operator /=(const Standard_Real Scalar) 
+      void Divide (const Standard_Real Scalar) ;
+    void operator /= (const Standard_Real Scalar) 
 {
   Divide(Scalar);
 }
   
-//!  Divides all the coefficients of the matrix by a scalar. <br>
-        gp_Mat2d Divided(const Standard_Real Scalar) const;
-      gp_Mat2d operator /(const Standard_Real Scalar) const
+
+  //! Divides all the coefficients of the matrix by a scalar.
+      gp_Mat2d Divided (const Standard_Real Scalar)  const;
+    gp_Mat2d operator / (const Standard_Real Scalar)  const
 {
   return Divided(Scalar);
 }
   
-  Standard_EXPORT     void Invert() ;
+  Standard_EXPORT   void Invert() ;
   
-//!  Inverses the matrix and raises exception if the matrix <br>
-//!  is singular. <br>
-        gp_Mat2d Inverted() const;
+
+  //! Inverses the matrix and raises exception if the matrix
+  //! is singular.
+      gp_Mat2d Inverted()  const;
   
-        gp_Mat2d Multiplied(const gp_Mat2d& Other) const;
-      gp_Mat2d operator *(const gp_Mat2d& Other) const
+      gp_Mat2d Multiplied (const gp_Mat2d& Other)  const;
+    gp_Mat2d operator * (const gp_Mat2d& Other)  const
 {
   return Multiplied(Other);
 }
   
-//!  Computes the product of two matrices <me> * <Other> <br>
-        void Multiply(const gp_Mat2d& Other) ;
-  //! Modifies this matrix by premultiplying it by the matrix Other <br>
-//! <me> = Other * <me>. <br>
-        void PreMultiply(const gp_Mat2d& Other) ;
+
+  //! Computes the product of two matrices <me> * <Other>
+      void Multiply (const gp_Mat2d& Other) ;
   
-        gp_Mat2d Multiplied(const Standard_Real Scalar) const;
-      gp_Mat2d operator *(const Standard_Real Scalar) const
+  //! Modifies this matrix by premultiplying it by the matrix Other
+  //! <me> = Other * <me>.
+      void PreMultiply (const gp_Mat2d& Other) ;
+  
+      gp_Mat2d Multiplied (const Standard_Real Scalar)  const;
+    gp_Mat2d operator * (const Standard_Real Scalar)  const
 {
   return Multiplied(Scalar);
 }
   
-//!  Multiplies all the coefficients of the matrix by a scalar. <br>
-        void Multiply(const Standard_Real Scalar) ;
-      void operator *=(const Standard_Real Scalar) 
+
+  //! Multiplies all the coefficients of the matrix by a scalar.
+      void Multiply (const Standard_Real Scalar) ;
+    void operator *= (const Standard_Real Scalar) 
 {
   Multiply(Scalar);
 }
   
-  Standard_EXPORT     void Power(const Standard_Integer N) ;
+  Standard_EXPORT   void Power (const Standard_Integer N) ;
   
-//!  computes <me> = <me> * <me> * .......* <me>, N time. <br>
-//!  if N = 0 <me> = Identity <br>
-//!  if N < 0 <me> = <me>.Invert() *...........* <me>.Invert(). <br>
-//!  If N < 0 an exception can be raised if the matrix is not <br>
-//!  inversible <br>
-        gp_Mat2d Powered(const Standard_Integer N) const;
+
+  //! computes <me> = <me> * <me> * .......* <me>, N time.
+  //! if N = 0 <me> = Identity
+  //! if N < 0 <me> = <me>.Invert() *...........* <me>.Invert().
+  //! If N < 0 an exception can be raised if the matrix is not
+  //! inversible
+      gp_Mat2d Powered (const Standard_Integer N)  const;
   
-        void Subtract(const gp_Mat2d& Other) ;
-      void operator -=(const gp_Mat2d& Other) 
+      void Subtract (const gp_Mat2d& Other) ;
+    void operator -= (const gp_Mat2d& Other) 
 {
   Subtract(Other);
 }
   
-//!  Computes for each coefficient of the matrix : <br>
-//!  <me>.Coef(i,j) - <Other>.Coef(i,j) <br>
-        gp_Mat2d Subtracted(const gp_Mat2d& Other) const;
-      gp_Mat2d operator -(const gp_Mat2d& Other) const
+
+  //! Computes for each coefficient of the matrix :
+  //! <me>.Coef(i,j) - <Other>.Coef(i,j)
+      gp_Mat2d Subtracted (const gp_Mat2d& Other)  const;
+    gp_Mat2d operator - (const gp_Mat2d& Other)  const
 {
   return Subtracted(Other);
 }
   
-        void Transpose() ;
+      void Transpose() ;
   
-//!  Transposes the matrix. A(j, i) -> A (i, j) <br>
-        gp_Mat2d Transposed() const;
+
+  //! Transposes the matrix. A(j, i) -> A (i, j)
+      gp_Mat2d Transposed()  const;
     Standard_Real& _CSFDB_Getgp_Mat2dmatrix(const Standard_Integer i1,const Standard_Integer i2) { return matrix[i1][i2]; }
 
 friend class gp_Trsf2d;
@@ -222,7 +235,7 @@ protected:
 private: 
 
 
-Standard_Real matrix[2][2];
+  Standard_Real matrix[2][2];
 
 
 };
@@ -232,7 +245,6 @@ Standard_Real matrix[2][2];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gp_Mat2d_HeaderFile

@@ -116,7 +116,7 @@ Standard_Boolean TDF_Label::IsDescendant(const TDF_Label& aLabel) const
 
   const TDF_LabelNode* lp1 = aLabel.myLabelNode;
   TDF_LabelNode*   lp2 = myLabelNode;
-#ifdef DEB
+#ifdef OCCT_DEBUG
   if ((lp1 == NULL) || (lp2 == NULL))
     Standard_NullObject::Raise("A null label has no ancestor nor descendant.");
 #endif
@@ -550,7 +550,12 @@ void TDF_Label::AddToNode (const TDF_LabelNodePtr& toNode,
 
   anAttribute->myTransaction = toNode->Data()->Transaction();  /// myData->Transaction();
   anAttribute->mySavedTransaction = 0;
+
+  //append to the end of the attribute list
   dummyAtt.Nullify();
+  for (TDF_AttributeIterator itr (toNode); itr.More(); itr.Next())
+    dummyAtt = itr.Value();
+
   toNode->AddAttribute(dummyAtt,anAttribute);
   toNode->AttributesModified(anAttribute->myTransaction != 0);
   //if (myData->NotUndoMode()) anAttribute->AfterAddition();  

@@ -22,14 +22,18 @@
 #include <BOPCol_ListOfShape.hxx>
 #include <BOPCol_MapOfShape.hxx>
 
+#include <BOPDS_DS.hxx>
+
 #include <BOPTools_AlgoTools.hxx>
 #include <BOPTools.hxx>
+
 
 //=======================================================================
 //function : Generated
 //purpose  : 
 //=======================================================================
-  const TopTools_ListOfShape& BOPAlgo_Builder::Generated(const TopoDS_Shape&)
+const TopTools_ListOfShape& BOPAlgo_Builder::Generated
+  (const TopoDS_Shape&)
 {
   myHistShapes.Clear();
   return myHistShapes;
@@ -38,7 +42,8 @@
 //function : Modified
 //purpose  : 
 //=======================================================================
-  const TopTools_ListOfShape& BOPAlgo_Builder::Modified(const TopoDS_Shape& theS)
+const TopTools_ListOfShape& BOPAlgo_Builder::Modified
+  (const TopoDS_Shape& theS)
 {
   Standard_Boolean bHasImage, bToReverse;
   TopAbs_ShapeEnum aType;
@@ -78,7 +83,8 @@
         aSp.Orientation(theS.Orientation());
       }
       else {
-        bToReverse=BOPTools_AlgoTools::IsSplitToReverse(aSp, theS, myContext);
+        bToReverse=
+          BOPTools_AlgoTools::IsSplitToReverse(aSp, theS, myContext);
         if (bToReverse) {
           aSp.Reverse();
         }
@@ -94,60 +100,50 @@
 //function : IsDeleted
 //purpose  : 
 //=======================================================================
-  Standard_Boolean BOPAlgo_Builder::IsDeleted(const TopoDS_Shape& theS)
+Standard_Boolean BOPAlgo_Builder::IsDeleted
+  (const TopoDS_Shape& theS)
 {
-  Standard_Boolean bRet, bHasImage, bContains;
+  Standard_Boolean bRet;
   TopAbs_ShapeEnum aType;
   BOPCol_ListIteratorOfListOfShape aIt;
   //
-  bRet=Standard_False;
+  bRet = Standard_True;
   //
   if (theS.IsNull()) {
-    return !bRet; //true
+    return bRet;
   }
   //
-  aType=theS.ShapeType();
+  aType = theS.ShapeType();
   if (!(aType==TopAbs_EDGE || aType==TopAbs_FACE || 
       aType==TopAbs_VERTEX || aType==TopAbs_SOLID)) {
-    return !bRet;
+    return bRet;
   }
   //
-  bHasImage=myImages.IsBound(theS);
-  if (!bHasImage) {
-    return !bRet; //true
+  if (!myImages.IsBound(theS)) {
+    bRet = !myMapShape.Contains(theS);
+    return bRet;
   }
   //
-  //PrepareHistory();
-  //
-  bContains=myMapShape.Contains(theS);
-  if (bContains) {
-    return bRet; //false
-  }
-  //
-  const BOPCol_ListOfShape& aLSp=myImages.Find(theS);
+  const BOPCol_ListOfShape& aLSp = myImages.Find(theS);
   aIt.Initialize(aLSp);
   for (; aIt.More(); aIt.Next()) {
-    TopoDS_Shape aSp=aIt.Value();
+    const TopoDS_Shape& aSp = aIt.Value();
+    const TopoDS_Shape& aSpR = myShapesSD.IsBound(aSp) ? 
+      myShapesSD.Find(aSp) : aSp;
     //
-    if (!myShapesSD.IsBound(aSp)) {
-      if (myMapShape.Contains(aSp)) {
-        return bRet; //false
-      }
-    }
-    else {
-      TopoDS_Shape aSpR=myShapesSD.Find(aSp);
-      if (myMapShape.Contains(aSpR)) {
-        return bRet; //false
-      }
+    if (myMapShape.Contains(aSpR)) {                   
+      bRet = Standard_False;
+      break;
     }
   }
-  return !bRet; // true
+  //
+  return bRet;
 }
 //=======================================================================
 //function : PrepareHistory
 //purpose  : 
 //=======================================================================
-  void BOPAlgo_Builder::PrepareHistory()
+void BOPAlgo_Builder::PrepareHistory()
 {
   if (!myFlagHistory) {
     return;
@@ -170,7 +166,8 @@
   BOPTools::MapShapes(myShape, myMapShape);
   //
   // 3. MS - all argument shapes with theirs sub-shapes
-  aIt.Initialize(myArguments);
+  const BOPCol_ListOfShape& aArguments=myDS->Arguments();
+  aIt.Initialize(aArguments);
   for (; aIt.More(); aIt.Next()) {
     const TopoDS_Shape& aSx=aIt.Value();
     BOPTools::MapShapes(aSx, aMS);

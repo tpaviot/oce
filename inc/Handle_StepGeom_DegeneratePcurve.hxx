@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_DegeneratePcurve_HeaderFile
 #define _Handle_StepGeom_DegeneratePcurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_Point_HeaderFile
 #include <Handle_StepGeom_Point.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_Point);
 class StepGeom_DegeneratePcurve;
 
-DEFINE_STANDARD_HANDLE(StepGeom_DegeneratePcurve,StepGeom_Point)
+DEFINE_STANDARD_HANDLE(StepGeom_DegeneratePcurve, StepGeom_Point)
 
-#endif
+#endif // _Handle_StepGeom_DegeneratePcurve_HeaderFile

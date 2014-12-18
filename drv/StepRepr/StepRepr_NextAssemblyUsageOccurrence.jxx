@@ -1,3 +1,1 @@
-#ifndef _StepRepr_NextAssemblyUsageOccurrence_HeaderFile
 #include <StepRepr_NextAssemblyUsageOccurrence.hxx>
-#endif

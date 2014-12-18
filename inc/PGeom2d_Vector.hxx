@@ -6,36 +6,27 @@
 #ifndef _PGeom2d_Vector_HeaderFile
 #define _PGeom2d_Vector_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Vector_HeaderFile
 #include <Handle_PGeom2d_Vector.hxx>
-#endif
 
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _PGeom2d_Geometry_HeaderFile
 #include <PGeom2d_Geometry.hxx>
-#endif
 class gp_Vec2d;
 
 
-class PGeom2d_Vector : public PGeom2d_Geometry {
+class PGeom2d_Vector : public PGeom2d_Geometry
+{
 
 public:
 
-  //! Set the field vec. <br>
-  Standard_EXPORT     void Vec(const gp_Vec2d& aVec) ;
-  //! Returns the value of the field vec. <br>
-  Standard_EXPORT     gp_Vec2d Vec() const;
+  
+  //! Set the field vec.
+  Standard_EXPORT   void Vec (const gp_Vec2d& aVec) ;
+  
+  //! Returns the value of the field vec.
+  Standard_EXPORT   gp_Vec2d Vec()  const;
 
 PGeom2d_Vector(const Storage_stCONSTclCOM& a) : PGeom2d_Geometry(a)
 {
@@ -49,12 +40,14 @@ PGeom2d_Vector(const Storage_stCONSTclCOM& a) : PGeom2d_Geometry(a)
 
 protected:
 
-  //! Initializes the field(s) with default value(s). <br>
-  Standard_EXPORT   PGeom2d_Vector();
-  //! Initializes the field vec with <aVec>. <br>
-  Standard_EXPORT   PGeom2d_Vector(const gp_Vec2d& aVec);
+  
+  //! Initializes the field(s) with default value(s).
+  Standard_EXPORT PGeom2d_Vector();
+  
+  //! Initializes the field vec with <aVec>.
+  Standard_EXPORT PGeom2d_Vector(const gp_Vec2d& aVec);
 
-gp_Vec2d vec;
+  gp_Vec2d vec;
 
 
 private: 
@@ -68,7 +61,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom2d_Vector_HeaderFile

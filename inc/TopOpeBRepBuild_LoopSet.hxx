@@ -6,57 +6,41 @@
 #ifndef _TopOpeBRepBuild_LoopSet_HeaderFile
 #define _TopOpeBRepBuild_LoopSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopOpeBRepBuild_ListOfLoop_HeaderFile
 #include <TopOpeBRepBuild_ListOfLoop.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListIteratorOfListOfLoop_HeaderFile
 #include <TopOpeBRepBuild_ListIteratorOfListOfLoop.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_Loop_HeaderFile
 #include <Handle_TopOpeBRepBuild_Loop.hxx>
-#endif
 class TopOpeBRepBuild_ListOfLoop;
 class TopOpeBRepBuild_Loop;
 
 
 
-class TopOpeBRepBuild_LoopSet  {
+class TopOpeBRepBuild_LoopSet 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepBuild_LoopSet();
+  Standard_EXPORT TopOpeBRepBuild_LoopSet();
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~TopOpeBRepBuild_LoopSet(){Delete() ; }
   
-  Standard_EXPORT     TopOpeBRepBuild_ListOfLoop& ChangeListOfLoop() ;
+  Standard_EXPORT   TopOpeBRepBuild_ListOfLoop& ChangeListOfLoop() ;
   
-  Standard_EXPORT   virtual  void InitLoop() ;
+  Standard_EXPORT virtual   void InitLoop() ;
   
-  Standard_EXPORT   virtual  Standard_Boolean MoreLoop() const;
+  Standard_EXPORT virtual   Standard_Boolean MoreLoop()  const;
   
-  Standard_EXPORT   virtual  void NextLoop() ;
+  Standard_EXPORT virtual   void NextLoop() ;
   
-  Standard_EXPORT   virtual const Handle_TopOpeBRepBuild_Loop& Loop() const;
-
+  Standard_EXPORT virtual  const  Handle(TopOpeBRepBuild_Loop)& Loop()  const;
 
 
 
@@ -71,10 +55,10 @@ private:
 
 
 
-TopOpeBRepBuild_ListOfLoop myListOfLoop;
-TopOpeBRepBuild_ListIteratorOfListOfLoop myLoopIterator;
-Standard_Integer myLoopIndex;
-Standard_Integer myNbLoop;
+  TopOpeBRepBuild_ListOfLoop myListOfLoop;
+  TopOpeBRepBuild_ListIteratorOfListOfLoop myLoopIterator;
+  Standard_Integer myLoopIndex;
+  Standard_Integer myNbLoop;
 
 
 };
@@ -83,7 +67,6 @@ Standard_Integer myNbLoop;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_LoopSet_HeaderFile

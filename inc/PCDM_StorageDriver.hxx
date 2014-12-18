@@ -6,37 +6,17 @@
 #ifndef _PCDM_StorageDriver_HeaderFile
 #define _PCDM_StorageDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_PCDM_StorageDriver_HeaderFile
 #include <Handle_PCDM_StorageDriver.hxx>
-#endif
 
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _PCDM_StoreStatus_HeaderFile
 #include <PCDM_StoreStatus.hxx>
-#endif
-#ifndef _PCDM_Writer_HeaderFile
 #include <PCDM_Writer.hxx>
-#endif
-#ifndef _Handle_PCDM_Document_HeaderFile
 #include <Handle_PCDM_Document.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _Handle_Storage_Schema_HeaderFile
 #include <Handle_Storage_Schema.hxx>
-#endif
 class Standard_NoSuchObject;
 class PCDM_DriverError;
 class PCDM_Document;
@@ -47,54 +27,56 @@ class Storage_Schema;
 class TColStd_SequenceOfExtendedString;
 
 
-//! persistent implemention of storage. <br>
-//! <br>
-//!          The  application  must redefine one the two Make() <br>
-//!           methods.  The first one, if  the application wants to <br>
-//!          put only one document in the storage file. <br>
-//! <br>
-//!            The  second  method  should  be   redefined  to  put <br>
-//!            additional document  that   could  be  used by   the <br>
-//!          retrieval instead of the principal document, depending <br>
-//!          on the schema used during the retrieval.  For example, <br>
-//!          a    second     document   could   be     a   standard <br>
-//!             CDMShape_Document.    This  means   that a   client <br>
-//!          application will already be able to extract a CDMShape_Document <br>
-//!          of the file, if the Shape Schema remains unchanged. <br>
-//! <br>
-class PCDM_StorageDriver : public PCDM_Writer {
+//! persistent implemention of storage.
+//!
+//! The  application  must redefine one the two Make()
+//! methods.  The first one, if  the application wants to
+//! put only one document in the storage file.
+//!
+//! The  second  method  should  be   redefined  to  put
+//! additional document  that   could  be  used by   the
+//! retrieval instead of the principal document, depending
+//! on the schema used during the retrieval.  For example,
+//! a    second     document   could   be     a   standard
+//! CDMShape_Document.    This  means   that a   client
+//! application will already be able to extract a CDMShape_Document
+//! of the file, if the Shape Schema remains unchanged.
+class PCDM_StorageDriver : public PCDM_Writer
+{
 
 public:
 
-  //! raises NotImplemented. <br>
-  Standard_EXPORT   virtual  Handle_PCDM_Document Make(const Handle(CDM_Document)& aDocument) ;
-  //!By default, puts  in the Sequence the  document returns <br>
-//!            by the previous Make method. <br>
-//! <br>
-  Standard_EXPORT   virtual  void Make(const Handle(CDM_Document)& aDocument,PCDM_SequenceOfDocument& Documents) ;
   
-  Standard_EXPORT   virtual  TCollection_ExtendedString SchemaName() const = 0;
+  //! raises NotImplemented.
+  Standard_EXPORT virtual   Handle(PCDM_Document) Make (const Handle(CDM_Document)& aDocument) ;
   
-  Standard_EXPORT   virtual  void LoadExtensions(const Handle(Storage_Schema)& aSchema,const TColStd_SequenceOfExtendedString& Extensions) ;
-  //!  Warning! raises DriverError if an error occurs during inside the <br>
-//!          Make method. <br>//! stores the content of the Document into a new file. <br>
-//! <br>
-//!          by  default  Write will  use Make   method to build a persistent <br>
-//!          document and the Schema method to write the persistent document. <br>
-//! <br>
-  Standard_EXPORT   virtual  void Write(const Handle(CDM_Document)& aDocument,const TCollection_ExtendedString& aFileName) ;
+  //! By default, puts  in the Sequence the  document returns
+  //! by the previous Make method.
+  Standard_EXPORT virtual   void Make (const Handle(CDM_Document)& aDocument, PCDM_SequenceOfDocument& Documents) ;
   
-  Standard_EXPORT     void SetFormat(const TCollection_ExtendedString& aformat) ;
+  Standard_EXPORT virtual   TCollection_ExtendedString SchemaName()  const = 0;
   
-  Standard_EXPORT     TCollection_ExtendedString GetFormat() const;
+  Standard_EXPORT virtual   void LoadExtensions (const Handle(Storage_Schema)& aSchema, const TColStd_SequenceOfExtendedString& Extensions) ;
   
-  Standard_EXPORT     Standard_Boolean IsError() const;
+  //! Warning! raises DriverError if an error occurs during inside the
+  //! Make method.
+  //! stores the content of the Document into a new file.
+  //!
+  //! by  default  Write will  use Make   method to build a persistent
+  //! document and the Schema method to write the persistent document.
+  Standard_EXPORT virtual   void Write (const Handle(CDM_Document)& aDocument, const TCollection_ExtendedString& aFileName) ;
   
-  Standard_EXPORT     void SetIsError(const Standard_Boolean theIsError) ;
+  Standard_EXPORT   void SetFormat (const TCollection_ExtendedString& aformat) ;
   
-  Standard_EXPORT     PCDM_StoreStatus GetStoreStatus() const;
+  Standard_EXPORT   TCollection_ExtendedString GetFormat()  const;
   
-  Standard_EXPORT     void SetStoreStatus(const PCDM_StoreStatus theStoreStatus) ;
+  Standard_EXPORT   Standard_Boolean IsError()  const;
+  
+  Standard_EXPORT   void SetIsError (const Standard_Boolean theIsError) ;
+  
+  Standard_EXPORT   PCDM_StoreStatus GetStoreStatus()  const;
+  
+  Standard_EXPORT   void SetStoreStatus (const PCDM_StoreStatus theStoreStatus) ;
 
 
 
@@ -109,9 +91,9 @@ protected:
 private: 
 
 
-TCollection_ExtendedString myFormat;
-Standard_Boolean myIsError;
-PCDM_StoreStatus myStoreStatus;
+  TCollection_ExtendedString myFormat;
+  Standard_Boolean myIsError;
+  PCDM_StoreStatus myStoreStatus;
 
 
 };
@@ -120,7 +102,6 @@ PCDM_StoreStatus myStoreStatus;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PCDM_StorageDriver_HeaderFile

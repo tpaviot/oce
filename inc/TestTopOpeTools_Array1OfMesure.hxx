@@ -6,25 +6,13 @@
 #ifndef _TestTopOpeTools_Array1OfMesure_HeaderFile
 #define _TestTopOpeTools_Array1OfMesure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class TestTopOpeTools_Mesure;
 
 
 
-class TestTopOpeTools_Array1OfMesure  {
+class TestTopOpeTools_Array1OfMesure 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TestTopOpeTools_Array1OfMesure(const Standard_Integer Low,const Standard_Integer Up);
+    TestTopOpeTools_Array1OfMesure(const Standard_Integer Low, const Standard_Integer Up);
   
-      TestTopOpeTools_Array1OfMesure(const TestTopOpeTools_Mesure& Item,const Standard_Integer Low,const Standard_Integer Up);
+    TestTopOpeTools_Array1OfMesure(const TestTopOpeTools_Mesure& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const TestTopOpeTools_Mesure& V) ;
+  Standard_EXPORT   void Init (const TestTopOpeTools_Mesure& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~TestTopOpeTools_Array1OfMesure()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const TestTopOpeTools_Array1OfMesure& Assign(const TestTopOpeTools_Array1OfMesure& Other) ;
-   const TestTopOpeTools_Array1OfMesure& operator =(const TestTopOpeTools_Array1OfMesure& Other) 
+  Standard_EXPORT  const  TestTopOpeTools_Array1OfMesure& Assign (const TestTopOpeTools_Array1OfMesure& Other) ;
+ const  TestTopOpeTools_Array1OfMesure& operator = (const TestTopOpeTools_Array1OfMesure& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TestTopOpeTools_Mesure& Value) ;
+      void SetValue (const Standard_Integer Index, const TestTopOpeTools_Mesure& Value) ;
   
-       const TestTopOpeTools_Mesure& Value(const Standard_Integer Index) const;
-     const TestTopOpeTools_Mesure& operator ()(const Standard_Integer Index) const
+     const  TestTopOpeTools_Mesure& Value (const Standard_Integer Index)  const;
+   const  TestTopOpeTools_Mesure& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        TestTopOpeTools_Mesure& ChangeValue(const Standard_Integer Index) ;
-      TestTopOpeTools_Mesure& operator ()(const Standard_Integer Index) 
+      TestTopOpeTools_Mesure& ChangeValue (const Standard_Integer Index) ;
+    TestTopOpeTools_Mesure& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   TestTopOpeTools_Array1OfMesure(const TestTopOpeTools_Array1OfMesure& AnArray);
+  Standard_EXPORT TestTopOpeTools_Array1OfMesure(const TestTopOpeTools_Array1OfMesure& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeTools_Array1OfMesure_HeaderFile

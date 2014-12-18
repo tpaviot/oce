@@ -6,34 +6,16 @@
 #ifndef _StepVisual_StyledItem_HeaderFile
 #define _StepVisual_StyledItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_StyledItem_HeaderFile
 #include <Handle_StepVisual_StyledItem.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_HArray1OfPresentationStyleAssignment_HeaderFile
 #include <Handle_StepVisual_HArray1OfPresentationStyleAssignment.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationStyleAssignment_HeaderFile
 #include <Handle_StepVisual_PresentationStyleAssignment.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepVisual_HArray1OfPresentationStyleAssignment;
 class StepRepr_RepresentationItem;
 class TCollection_HAsciiString;
@@ -41,28 +23,30 @@ class StepVisual_PresentationStyleAssignment;
 
 
 
-class StepVisual_StyledItem : public StepRepr_RepresentationItem {
+class StepVisual_StyledItem : public StepRepr_RepresentationItem
+{
 
 public:
 
-  //! Returns a StyledItem <br>
-  Standard_EXPORT   StepVisual_StyledItem();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a StyledItem
+  Standard_EXPORT StepVisual_StyledItem();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles,const Handle(StepRepr_RepresentationItem)& aItem) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetStyles(const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles, const Handle(StepRepr_RepresentationItem)& aItem) ;
   
-  Standard_EXPORT     Handle_StepVisual_HArray1OfPresentationStyleAssignment Styles() const;
+  Standard_EXPORT   void SetStyles (const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles) ;
   
-  Standard_EXPORT     Handle_StepVisual_PresentationStyleAssignment StylesValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepVisual_HArray1OfPresentationStyleAssignment) Styles()  const;
   
-  Standard_EXPORT     Standard_Integer NbStyles() const;
+  Standard_EXPORT   Handle(StepVisual_PresentationStyleAssignment) StylesValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     void SetItem(const Handle(StepRepr_RepresentationItem)& aItem) ;
+  Standard_EXPORT   Standard_Integer NbStyles()  const;
   
-  Standard_EXPORT     Handle_StepRepr_RepresentationItem Item() const;
+  Standard_EXPORT   void SetItem (const Handle(StepRepr_RepresentationItem)& aItem) ;
+  
+  Standard_EXPORT   Handle(StepRepr_RepresentationItem) Item()  const;
 
 
 
@@ -77,8 +61,8 @@ protected:
 private: 
 
 
-Handle_StepVisual_HArray1OfPresentationStyleAssignment styles;
-Handle_StepRepr_RepresentationItem item;
+  Handle(StepVisual_HArray1OfPresentationStyleAssignment) styles;
+  Handle(StepRepr_RepresentationItem) item;
 
 
 };
@@ -87,7 +71,6 @@ Handle_StepRepr_RepresentationItem item;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_StyledItem_HeaderFile

@@ -6,41 +6,29 @@
 #ifndef _StepToGeom_MakeSurfaceOfLinearExtrusion_HeaderFile
 #define _StepToGeom_MakeSurfaceOfLinearExtrusion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_SurfaceOfLinearExtrusion_HeaderFile
 #include <Handle_StepGeom_SurfaceOfLinearExtrusion.hxx>
-#endif
-#ifndef _Handle_Geom_SurfaceOfLinearExtrusion_HeaderFile
 #include <Handle_Geom_SurfaceOfLinearExtrusion.hxx>
-#endif
 class StepGeom_SurfaceOfLinearExtrusion;
 class Geom_SurfaceOfLinearExtrusion;
 
 
-//! This class implements the mapping between class <br>
-//!          SurfaceOfLinearExtrusion from StepGeom which describes a <br>
-//!          surface_of_linear_extrusion from Prostep and <br>
-//!          SurfaceOfLinearExtrusion from Geom. <br>
-class StepToGeom_MakeSurfaceOfLinearExtrusion  {
+//! This class implements the mapping between class
+//! SurfaceOfLinearExtrusion from StepGeom which describes a
+//! surface_of_linear_extrusion from Prostep and
+//! SurfaceOfLinearExtrusion from Geom.
+class StepToGeom_MakeSurfaceOfLinearExtrusion 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_SurfaceOfLinearExtrusion)& SS,Handle(Geom_SurfaceOfLinearExtrusion)& CS) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_SurfaceOfLinearExtrusion)& SS, Handle(Geom_SurfaceOfLinearExtrusion)& CS) ;
 
 
 
@@ -63,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeSurfaceOfLinearExtrusion_HeaderFile

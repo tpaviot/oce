@@ -6,8 +6,11 @@
 #ifndef _AIS_TypeOfAttribute_HeaderFile
 #define _AIS_TypeOfAttribute_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum AIS_TypeOfAttribute {
+
+enum AIS_TypeOfAttribute
+{
 AIS_TOA_Line,
 AIS_TOA_Dimension,
 AIS_TOA_Wire,
@@ -25,8 +28,4 @@ AIS_TOA_SecondAxis,
 AIS_TOA_ThirdAxis
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_TypeOfAttribute_HeaderFile

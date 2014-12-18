@@ -5,24 +5,13 @@
 
 #include <TColStd_MapOfTransient.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _TColStd_StdMapNodeOfMapOfTransient_HeaderFile
 #include <TColStd_StdMapNodeOfMapOfTransient.hxx>
-#endif
-#ifndef _TColStd_MapIteratorOfMapOfTransient_HeaderFile
 #include <TColStd_MapIteratorOfMapOfTransient.hxx>
-#endif
  
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

@@ -6,38 +6,28 @@
 #ifndef _BinXCAFDrivers_DocumentStorageDriver_HeaderFile
 #define _BinXCAFDrivers_DocumentStorageDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BinXCAFDrivers_DocumentStorageDriver_HeaderFile
 #include <Handle_BinXCAFDrivers_DocumentStorageDriver.hxx>
-#endif
 
-#ifndef _BinDrivers_DocumentStorageDriver_HeaderFile
 #include <BinDrivers_DocumentStorageDriver.hxx>
-#endif
-#ifndef _Handle_BinMDF_ADriverTable_HeaderFile
 #include <Handle_BinMDF_ADriverTable.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
 class BinMDF_ADriverTable;
 class CDM_MessageDriver;
 
 
 
-class BinXCAFDrivers_DocumentStorageDriver : public BinDrivers_DocumentStorageDriver {
+class BinXCAFDrivers_DocumentStorageDriver : public BinDrivers_DocumentStorageDriver
+{
 
 public:
 
-  //! Constructor <br>
-  Standard_EXPORT   BinXCAFDrivers_DocumentStorageDriver();
   
-  Standard_EXPORT   virtual  Handle_BinMDF_ADriverTable AttributeDrivers(const Handle(CDM_MessageDriver)& theMsgDriver) ;
+  //! Constructor
+  Standard_EXPORT BinXCAFDrivers_DocumentStorageDriver();
+  
+  Standard_EXPORT virtual   Handle(BinMDF_ADriverTable) AttributeDrivers (const Handle(CDM_MessageDriver)& theMsgDriver) ;
 
 
 
@@ -60,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BinXCAFDrivers_DocumentStorageDriver_HeaderFile

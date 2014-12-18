@@ -6,22 +6,15 @@
 #ifndef _Handle_StdSelect_FaceFilter_HeaderFile
 #define _Handle_StdSelect_FaceFilter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_SelectMgr_Filter_HeaderFile
 #include <Handle_SelectMgr_Filter.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(SelectMgr_Filter);
 class StdSelect_FaceFilter;
 
-DEFINE_STANDARD_HANDLE(StdSelect_FaceFilter,SelectMgr_Filter)
+DEFINE_STANDARD_HANDLE(StdSelect_FaceFilter, SelectMgr_Filter)
 
-#endif
+#endif // _Handle_StdSelect_FaceFilter_HeaderFile

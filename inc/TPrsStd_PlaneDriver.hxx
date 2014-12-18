@@ -6,41 +6,32 @@
 #ifndef _TPrsStd_PlaneDriver_HeaderFile
 #define _TPrsStd_PlaneDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TPrsStd_PlaneDriver_HeaderFile
 #include <Handle_TPrsStd_PlaneDriver.hxx>
-#endif
 
-#ifndef _TPrsStd_Driver_HeaderFile
 #include <TPrsStd_Driver.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
 class TDF_Label;
 class AIS_InteractiveObject;
 
 
-//! An implementation of TPrsStd_Driver for planes. <br>
-class TPrsStd_PlaneDriver : public TPrsStd_Driver {
+//! An implementation of TPrsStd_Driver for planes.
+class TPrsStd_PlaneDriver : public TPrsStd_Driver
+{
 
 public:
 
-  //! Constructs an empty plane driver. <br>
-  Standard_EXPORT   TPrsStd_PlaneDriver();
-  //! Build the AISObject (if null) or update it. <br>
-//!           No compute is done. <br>
-//!           Returns <True> if informations was found <br>
-//!           and AISObject updated. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Update(const TDF_Label& aLabel,Handle(AIS_InteractiveObject)& anAISObject) ;
+  
+  //! Constructs an empty plane driver.
+  Standard_EXPORT TPrsStd_PlaneDriver();
+  
+  //! Build the AISObject (if null) or update it.
+  //! No compute is done.
+  //! Returns <True> if informations was found
+  //! and AISObject updated.
+  Standard_EXPORT virtual   Standard_Boolean Update (const TDF_Label& aLabel, Handle(AIS_InteractiveObject)& anAISObject) ;
 
 
 
@@ -63,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TPrsStd_PlaneDriver_HeaderFile

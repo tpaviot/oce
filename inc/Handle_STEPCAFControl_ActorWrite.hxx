@@ -6,22 +6,15 @@
 #ifndef _Handle_STEPCAFControl_ActorWrite_HeaderFile
 #define _Handle_STEPCAFControl_ActorWrite_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_STEPControl_ActorWrite_HeaderFile
 #include <Handle_STEPControl_ActorWrite.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(STEPControl_ActorWrite);
 class STEPCAFControl_ActorWrite;
 
-DEFINE_STANDARD_HANDLE(STEPCAFControl_ActorWrite,STEPControl_ActorWrite)
+DEFINE_STANDARD_HANDLE(STEPCAFControl_ActorWrite, STEPControl_ActorWrite)
 
-#endif
+#endif // _Handle_STEPCAFControl_ActorWrite_HeaderFile

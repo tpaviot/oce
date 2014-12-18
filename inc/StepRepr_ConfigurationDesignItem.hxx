@@ -6,54 +6,42 @@
 #ifndef _StepRepr_ConfigurationDesignItem_HeaderFile
 #define _StepRepr_ConfigurationDesignItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionFormation_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionFormation.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_ProductDefinition;
 class StepBasic_ProductDefinitionFormation;
 
 
-//! Representation of STEP SELECT type ConfigurationDesignItem <br>
-class StepRepr_ConfigurationDesignItem  : public StepData_SelectType {
+//! Representation of STEP SELECT type ConfigurationDesignItem
+class StepRepr_ConfigurationDesignItem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepRepr_ConfigurationDesignItem();
-  //! Recognizes a kind of ConfigurationDesignItem select type <br>
-//!          1 -> ProductDefinition from StepBasic <br>
-//!          2 -> ProductDefinitionFormation from StepBasic <br>
-//!          0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as ProductDefinition (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinition ProductDefinition() const;
-  //! Returns Value as ProductDefinitionFormation (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT StepRepr_ConfigurationDesignItem();
+  
+  //! Recognizes a kind of ConfigurationDesignItem select type
+  //! 1 -> ProductDefinition from StepBasic
+  //! 2 -> ProductDefinitionFormation from StepBasic
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as ProductDefinition (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinition) ProductDefinition()  const;
+  
+  //! Returns Value as ProductDefinitionFormation (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionFormation) ProductDefinitionFormation()  const;
 
 
 
@@ -76,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_ConfigurationDesignItem_HeaderFile

@@ -6,56 +6,44 @@
 #ifndef _TopOpeBRepDS_Point_HeaderFile
 #define _TopOpeBRepDS_Point_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_Pnt;
 class TopoDS_Shape;
 
 
-//! A Geom point and a tolerance. <br>
-class TopOpeBRepDS_Point  {
+//! A Geom point and a tolerance.
+class TopOpeBRepDS_Point 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_Point();
+  Standard_EXPORT TopOpeBRepDS_Point();
   
-  Standard_EXPORT   TopOpeBRepDS_Point(const gp_Pnt& P,const Standard_Real T);
+  Standard_EXPORT TopOpeBRepDS_Point(const gp_Pnt& P, const Standard_Real T);
   
-  Standard_EXPORT   TopOpeBRepDS_Point(const TopoDS_Shape& S);
+  Standard_EXPORT TopOpeBRepDS_Point(const TopoDS_Shape& S);
   
-  Standard_EXPORT     Standard_Boolean IsEqual(const TopOpeBRepDS_Point& other) const;
+  Standard_EXPORT   Standard_Boolean IsEqual (const TopOpeBRepDS_Point& other)  const;
   
-  Standard_EXPORT    const gp_Pnt& Point() const;
+  Standard_EXPORT  const  gp_Pnt& Point()  const;
   
-  Standard_EXPORT     gp_Pnt& ChangePoint() ;
+  Standard_EXPORT   gp_Pnt& ChangePoint() ;
   
-  Standard_EXPORT     Standard_Real Tolerance() const;
+  Standard_EXPORT   Standard_Real Tolerance()  const;
   
-  Standard_EXPORT     void Tolerance(const Standard_Real Tol) ;
+  Standard_EXPORT   void Tolerance (const Standard_Real Tol) ;
   
-  Standard_EXPORT     Standard_Boolean Keep() const;
+  Standard_EXPORT   Standard_Boolean Keep()  const;
   
-  Standard_EXPORT     void ChangeKeep(const Standard_Boolean B) ;
-
+  Standard_EXPORT   void ChangeKeep (const Standard_Boolean B) ;
 
 
 
@@ -70,9 +58,9 @@ private:
 
 
 
-gp_Pnt myPoint;
-Standard_Real myTolerance;
-Standard_Boolean myKeep;
+  gp_Pnt myPoint;
+  Standard_Real myTolerance;
+  Standard_Boolean myKeep;
 
 
 };
@@ -81,7 +69,6 @@ Standard_Boolean myKeep;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_Point_HeaderFile

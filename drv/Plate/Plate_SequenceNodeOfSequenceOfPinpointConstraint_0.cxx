@@ -5,16 +5,10 @@
 
 #include <Plate_SequenceNodeOfSequenceOfPinpointConstraint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Plate_PinpointConstraint_HeaderFile
 #include <Plate_PinpointConstraint.hxx>
-#endif
-#ifndef _Plate_SequenceOfPinpointConstraint_HeaderFile
 #include <Plate_SequenceOfPinpointConstraint.hxx>
-#endif
 
  
 

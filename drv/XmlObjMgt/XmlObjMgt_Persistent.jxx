@@ -1,3 +1,1 @@
-#ifndef _XmlObjMgt_Persistent_HeaderFile
 #include <XmlObjMgt_Persistent.hxx>
-#endif

@@ -6,110 +6,80 @@
 #ifndef _PShort_HSequenceOfShortReal_HeaderFile
 #define _PShort_HSequenceOfShortReal_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PShort_HSequenceOfShortReal_HeaderFile
 #include <Handle_PShort_HSequenceOfShortReal.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Handle_PShort_HSequenceOfShortReal_HeaderFile
 #include <Handle_PShort_HSequenceOfShortReal.hxx>
-#endif
-#ifndef _Handle_PShort_SeqNodeOfHSequenceOfShortReal_HeaderFile
 #include <Handle_PShort_SeqNodeOfHSequenceOfShortReal.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PShort_SeqNodeOfHSequenceOfShortReal;
-class Standard_Persistent;
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class PShort_SeqExplorerOfHSequenceOfShortReal;
 
 
-class PShort_HSequenceOfShortReal : public Standard_Persistent {
+class PShort_HSequenceOfShortReal : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PShort_HSequenceOfShortReal();
+  Standard_EXPORT PShort_HSequenceOfShortReal();
   
-  Standard_EXPORT     Standard_Boolean IsEmpty() const;
+  Standard_EXPORT   Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     Standard_Integer Length() const;
+  Standard_EXPORT   Standard_Integer Length()  const;
   
-  Standard_EXPORT     Standard_ShortReal First() const;
+  Standard_EXPORT   Standard_ShortReal First()  const;
   
-  Standard_EXPORT     Standard_ShortReal Last() const;
+  Standard_EXPORT   Standard_ShortReal Last()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Standard_ShortReal& T) ;
+  Standard_EXPORT   void Append (const Standard_ShortReal& T) ;
   
-  Standard_EXPORT     void Append(const Handle(PShort_HSequenceOfShortReal)& S) ;
+  Standard_EXPORT   void Append (const Handle(PShort_HSequenceOfShortReal)& S) ;
   
-  Standard_EXPORT     void Prepend(const Standard_ShortReal& T) ;
+  Standard_EXPORT   void Prepend (const Standard_ShortReal& T) ;
   
-  Standard_EXPORT     void Prepend(const Handle(PShort_HSequenceOfShortReal)& S) ;
+  Standard_EXPORT   void Prepend (const Handle(PShort_HSequenceOfShortReal)& S) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer Index,const Standard_ShortReal& T) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer Index, const Standard_ShortReal& T) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer Index,const Handle(PShort_HSequenceOfShortReal)& S) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer Index, const Handle(PShort_HSequenceOfShortReal)& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Standard_ShortReal& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Standard_ShortReal& T) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(PShort_HSequenceOfShortReal)& S) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(PShort_HSequenceOfShortReal)& S) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer I,const Standard_Integer J) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer I, const Standard_Integer J) ;
   
-  Standard_EXPORT     Handle_PShort_HSequenceOfShortReal SubSequence(const Standard_Integer FromIndex,const Standard_Integer ToIndex) const;
+  Standard_EXPORT   Handle(PShort_HSequenceOfShortReal) SubSequence (const Standard_Integer FromIndex, const Standard_Integer ToIndex)  const;
   
-  Standard_EXPORT     Handle_PShort_HSequenceOfShortReal Split(const Standard_Integer Index) ;
+  Standard_EXPORT   Handle(PShort_HSequenceOfShortReal) Split (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_ShortReal& T) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_ShortReal& T) ;
   
-  Standard_EXPORT     Standard_ShortReal Value(const Standard_Integer Index) const;
+  Standard_EXPORT   Standard_ShortReal Value (const Standard_Integer Index)  const;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Standard_ShortReal& T) const;
+  Standard_EXPORT   Standard_Boolean Contains (const Standard_ShortReal& T)  const;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const Standard_ShortReal& T,const Standard_Integer FromIndex,const Standard_Integer ToIndex) const;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const Standard_ShortReal& T, const Standard_Integer FromIndex, const Standard_Integer ToIndex)  const;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const Standard_ShortReal& T) const;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const Standard_ShortReal& T)  const;
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
   
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
-  
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~PShort_HSequenceOfShortReal()
 {
   Destroy();
@@ -138,13 +108,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     Handle_PShort_SeqNodeOfHSequenceOfShortReal GetFirst() const;
+  Standard_EXPORT   Handle(PShort_SeqNodeOfHSequenceOfShortReal) GetFirst()  const;
   
-  Standard_EXPORT     Handle_PShort_SeqNodeOfHSequenceOfShortReal GetLast() const;
+  Standard_EXPORT   Handle(PShort_SeqNodeOfHSequenceOfShortReal) GetLast()  const;
 
-Handle_PShort_SeqNodeOfHSequenceOfShortReal FirstItem;
-Handle_PShort_SeqNodeOfHSequenceOfShortReal LastItem;
-Standard_Integer Size;
+  Handle(PShort_SeqNodeOfHSequenceOfShortReal) FirstItem;
+  Handle(PShort_SeqNodeOfHSequenceOfShortReal) LastItem;
+  Standard_Integer Size;
 
 
 };
@@ -153,15 +123,6 @@ Standard_Integer Size;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_Standard_Persistent ShallowCopy(const Handle_PShort_HSequenceOfShortReal& me) {
- return me->ShallowCopy();
-}
-
-inline void ShallowDump(const Handle_PShort_HSequenceOfShortReal& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
 
 
-
-#endif
+#endif // _PShort_HSequenceOfShortReal_HeaderFile

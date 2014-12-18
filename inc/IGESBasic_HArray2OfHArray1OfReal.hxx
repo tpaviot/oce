@@ -6,28 +6,14 @@
 #ifndef _IGESBasic_HArray2OfHArray1OfReal_HeaderFile
 #define _IGESBasic_HArray2OfHArray1OfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESBasic_HArray2OfHArray1OfReal_HeaderFile
 #include <Handle_IGESBasic_HArray2OfHArray1OfReal.hxx>
-#endif
 
-#ifndef _IGESBasic_Array2OfHArray1OfReal_HeaderFile
 #include <IGESBasic_Array2OfHArray1OfReal.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -37,38 +23,39 @@ class IGESBasic_Array2OfHArray1OfReal;
 
 
 
-class IGESBasic_HArray2OfHArray1OfReal : public MMgt_TShared {
+class IGESBasic_HArray2OfHArray1OfReal : public MMgt_TShared
+{
 
 public:
 
   
-      IGESBasic_HArray2OfHArray1OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+    IGESBasic_HArray2OfHArray1OfReal(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-      IGESBasic_HArray2OfHArray1OfReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(TColStd_HArray1OfReal)& V);
+    IGESBasic_HArray2OfHArray1OfReal(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const Handle(TColStd_HArray1OfReal)& V);
   
-        void Init(const Handle(TColStd_HArray1OfReal)& V) ;
+      void Init (const Handle(TColStd_HArray1OfReal)& V) ;
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(TColStd_HArray1OfReal)& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Handle(TColStd_HArray1OfReal)& Value) ;
   
-       const Handle_TColStd_HArray1OfReal& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+     const  Handle(TColStd_HArray1OfReal)& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
   
-        Handle_TColStd_HArray1OfReal& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+      Handle(TColStd_HArray1OfReal)& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
   
-       const IGESBasic_Array2OfHArray1OfReal& Array2() const;
+     const  IGESBasic_Array2OfHArray1OfReal& Array2()  const;
   
-        IGESBasic_Array2OfHArray1OfReal& ChangeArray2() ;
+      IGESBasic_Array2OfHArray1OfReal& ChangeArray2() ;
 
 
 
@@ -83,12 +70,12 @@ protected:
 private: 
 
 
-IGESBasic_Array2OfHArray1OfReal myArray;
+  IGESBasic_Array2OfHArray1OfReal myArray;
 
 
 };
 
-#define ItemHArray2 Handle_TColStd_HArray1OfReal
+#define ItemHArray2 Handle(TColStd_HArray1OfReal)
 #define ItemHArray2_hxx <TColStd_HArray1OfReal.hxx>
 #define TheArray2 IGESBasic_Array2OfHArray1OfReal
 #define TheArray2_hxx <IGESBasic_Array2OfHArray1OfReal.hxx>
@@ -109,7 +96,6 @@ IGESBasic_Array2OfHArray1OfReal myArray;
 #undef TCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_HArray2OfHArray1OfReal_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_TestTopOpeDraw_DrawableMesure_HeaderFile
 #define _Handle_TestTopOpeDraw_DrawableMesure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TestTopOpeDraw_DrawableC3D_HeaderFile
 #include <Handle_TestTopOpeDraw_DrawableC3D.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TestTopOpeDraw_DrawableC3D);
 class TestTopOpeDraw_DrawableMesure;
 
-DEFINE_STANDARD_HANDLE(TestTopOpeDraw_DrawableMesure,TestTopOpeDraw_DrawableC3D)
+DEFINE_STANDARD_HANDLE(TestTopOpeDraw_DrawableMesure, TestTopOpeDraw_DrawableC3D)
 
-#endif
+#endif // _Handle_TestTopOpeDraw_DrawableMesure_HeaderFile

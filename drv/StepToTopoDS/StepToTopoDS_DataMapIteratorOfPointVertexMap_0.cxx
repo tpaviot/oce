@@ -5,27 +5,15 @@
 
 #include <StepToTopoDS_DataMapIteratorOfPointVertexMap.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _StepGeom_CartesianPoint_HeaderFile
 #include <StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _StepToTopoDS_CartesianPointHasher_HeaderFile
 #include <StepToTopoDS_CartesianPointHasher.hxx>
-#endif
-#ifndef _StepToTopoDS_PointVertexMap_HeaderFile
 #include <StepToTopoDS_PointVertexMap.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapNodeOfPointVertexMap_HeaderFile
 #include <StepToTopoDS_DataMapNodeOfPointVertexMap.hxx>
-#endif
  
 
-#define TheKey Handle_StepGeom_CartesianPoint
+#define TheKey Handle(StepGeom_CartesianPoint)
 #define TheKey_hxx <StepGeom_CartesianPoint.hxx>
 #define TheItem TopoDS_Vertex
 #define TheItem_hxx <TopoDS_Vertex.hxx>

@@ -6,25 +6,13 @@
 #ifndef _TDF_DoubleMapNodeOfLabelDoubleMap_HeaderFile
 #define _TDF_DoubleMapNodeOfLabelDoubleMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_DoubleMapNodeOfLabelDoubleMap_HeaderFile
 #include <Handle_TDF_DoubleMapNodeOfLabelDoubleMap.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TDF_Label;
 class TDF_LabelMapHasher;
 class TDF_LabelDoubleMap;
@@ -32,18 +20,19 @@ class TDF_DoubleMapIteratorOfLabelDoubleMap;
 
 
 
-class TDF_DoubleMapNodeOfLabelDoubleMap : public TCollection_MapNode {
+class TDF_DoubleMapNodeOfLabelDoubleMap : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_DoubleMapNodeOfLabelDoubleMap(const TDF_Label& K1,const TDF_Label& K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TDF_DoubleMapNodeOfLabelDoubleMap(const TDF_Label& K1, const TDF_Label& K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        TDF_Label& Key1() const;
+      TDF_Label& Key1()  const;
   
-        TDF_Label& Key2() const;
+      TDF_Label& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -58,9 +47,9 @@ protected:
 private: 
 
 
-TDF_Label myKey1;
-TDF_Label myKey2;
-TCollection_MapNodePtr myNext2;
+  TDF_Label myKey1;
+  TDF_Label myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -102,7 +91,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_DoubleMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_DoubleMapNodeOfLabelDoubleMap_HeaderFile

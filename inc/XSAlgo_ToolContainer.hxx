@@ -6,28 +6,22 @@
 #ifndef _XSAlgo_ToolContainer_HeaderFile
 #define _XSAlgo_ToolContainer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XSAlgo_ToolContainer_HeaderFile
 #include <Handle_XSAlgo_ToolContainer.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
-
-class XSAlgo_ToolContainer : public MMgt_TShared {
+//! Returns tools used by AlgoContainer
+class XSAlgo_ToolContainer : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   XSAlgo_ToolContainer();
+  
+  //! Empty constructor
+  Standard_EXPORT XSAlgo_ToolContainer();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSAlgo_ToolContainer_HeaderFile

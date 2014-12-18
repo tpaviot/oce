@@ -6,74 +6,60 @@
 #ifndef _StepGeom_RectangularTrimmedSurface_HeaderFile
 #define _StepGeom_RectangularTrimmedSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_RectangularTrimmedSurface_HeaderFile
 #include <Handle_StepGeom_RectangularTrimmedSurface.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Surface_HeaderFile
 #include <Handle_StepGeom_Surface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepGeom_BoundedSurface_HeaderFile
 #include <StepGeom_BoundedSurface.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Surface;
 class TCollection_HAsciiString;
 
 
 
-class StepGeom_RectangularTrimmedSurface : public StepGeom_BoundedSurface {
+class StepGeom_RectangularTrimmedSurface : public StepGeom_BoundedSurface
+{
 
 public:
 
-  //! Returns a RectangularTrimmedSurface <br>
-  Standard_EXPORT   StepGeom_RectangularTrimmedSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a RectangularTrimmedSurface
+  Standard_EXPORT StepGeom_RectangularTrimmedSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Surface)& aBasisSurface,const Standard_Real aU1,const Standard_Real aU2,const Standard_Real aV1,const Standard_Real aV2,const Standard_Boolean aUsense,const Standard_Boolean aVsense) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetBasisSurface(const Handle(StepGeom_Surface)& aBasisSurface) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Surface)& aBasisSurface, const Standard_Real aU1, const Standard_Real aU2, const Standard_Real aV1, const Standard_Real aV2, const Standard_Boolean aUsense, const Standard_Boolean aVsense) ;
   
-  Standard_EXPORT     Handle_StepGeom_Surface BasisSurface() const;
+  Standard_EXPORT   void SetBasisSurface (const Handle(StepGeom_Surface)& aBasisSurface) ;
   
-  Standard_EXPORT     void SetU1(const Standard_Real aU1) ;
+  Standard_EXPORT   Handle(StepGeom_Surface) BasisSurface()  const;
   
-  Standard_EXPORT     Standard_Real U1() const;
+  Standard_EXPORT   void SetU1 (const Standard_Real aU1) ;
   
-  Standard_EXPORT     void SetU2(const Standard_Real aU2) ;
+  Standard_EXPORT   Standard_Real U1()  const;
   
-  Standard_EXPORT     Standard_Real U2() const;
+  Standard_EXPORT   void SetU2 (const Standard_Real aU2) ;
   
-  Standard_EXPORT     void SetV1(const Standard_Real aV1) ;
+  Standard_EXPORT   Standard_Real U2()  const;
   
-  Standard_EXPORT     Standard_Real V1() const;
+  Standard_EXPORT   void SetV1 (const Standard_Real aV1) ;
   
-  Standard_EXPORT     void SetV2(const Standard_Real aV2) ;
+  Standard_EXPORT   Standard_Real V1()  const;
   
-  Standard_EXPORT     Standard_Real V2() const;
+  Standard_EXPORT   void SetV2 (const Standard_Real aV2) ;
   
-  Standard_EXPORT     void SetUsense(const Standard_Boolean aUsense) ;
+  Standard_EXPORT   Standard_Real V2()  const;
   
-  Standard_EXPORT     Standard_Boolean Usense() const;
+  Standard_EXPORT   void SetUsense (const Standard_Boolean aUsense) ;
   
-  Standard_EXPORT     void SetVsense(const Standard_Boolean aVsense) ;
+  Standard_EXPORT   Standard_Boolean Usense()  const;
   
-  Standard_EXPORT     Standard_Boolean Vsense() const;
+  Standard_EXPORT   void SetVsense (const Standard_Boolean aVsense) ;
+  
+  Standard_EXPORT   Standard_Boolean Vsense()  const;
 
 
 
@@ -88,13 +74,13 @@ protected:
 private: 
 
 
-Handle_StepGeom_Surface basisSurface;
-Standard_Real u1;
-Standard_Real u2;
-Standard_Real v1;
-Standard_Real v2;
-Standard_Boolean usense;
-Standard_Boolean vsense;
+  Handle(StepGeom_Surface) basisSurface;
+  Standard_Real u1;
+  Standard_Real u2;
+  Standard_Real v1;
+  Standard_Real v2;
+  Standard_Boolean usense;
+  Standard_Boolean vsense;
 
 
 };
@@ -103,7 +89,6 @@ Standard_Boolean vsense;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_RectangularTrimmedSurface_HeaderFile

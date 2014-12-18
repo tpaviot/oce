@@ -5,22 +5,12 @@
 
 #include <XSDRAWSTLVRML_DataMapNodeOfCoordsMap.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_DataMapOfIntegerReal_HeaderFile
 #include <TColStd_DataMapOfIntegerReal.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _XSDRAWSTLVRML_CoordsMap_HeaderFile
 #include <XSDRAWSTLVRML_CoordsMap.hxx>
-#endif
-#ifndef _XSDRAWSTLVRML_DataMapIteratorOfCoordsMap_HeaderFile
 #include <XSDRAWSTLVRML_DataMapIteratorOfCoordsMap.hxx>
-#endif
 
  
 

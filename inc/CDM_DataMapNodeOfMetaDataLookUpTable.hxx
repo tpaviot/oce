@@ -6,28 +6,14 @@
 #ifndef _CDM_DataMapNodeOfMetaDataLookUpTable_HeaderFile
 #define _CDM_DataMapNodeOfMetaDataLookUpTable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDM_DataMapNodeOfMetaDataLookUpTable_HeaderFile
 #include <Handle_CDM_DataMapNodeOfMetaDataLookUpTable.hxx>
-#endif
 
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Handle_CDM_MetaData_HeaderFile
 #include <Handle_CDM_MetaData.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class CDM_MetaData;
 class TCollection_ExtendedString;
 class CDM_MetaDataLookUpTable;
@@ -35,16 +21,17 @@ class CDM_DataMapIteratorOfMetaDataLookUpTable;
 
 
 
-class CDM_DataMapNodeOfMetaDataLookUpTable : public TCollection_MapNode {
+class CDM_DataMapNodeOfMetaDataLookUpTable : public TCollection_MapNode
+{
 
 public:
 
   
-      CDM_DataMapNodeOfMetaDataLookUpTable(const TCollection_ExtendedString& K,const Handle(CDM_MetaData)& I,const TCollection_MapNodePtr& n);
+    CDM_DataMapNodeOfMetaDataLookUpTable(const TCollection_ExtendedString& K, const Handle(CDM_MetaData)& I, const TCollection_MapNodePtr& n);
   
-        TCollection_ExtendedString& Key() const;
+      TCollection_ExtendedString& Key()  const;
   
-        Handle_CDM_MetaData& Value() const;
+      Handle(CDM_MetaData)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-TCollection_ExtendedString myKey;
-Handle_CDM_MetaData myValue;
+  TCollection_ExtendedString myKey;
+  Handle(CDM_MetaData) myValue;
 
 
 };
 
 #define TheKey TCollection_ExtendedString
 #define TheKey_hxx <TCollection_ExtendedString.hxx>
-#define TheItem Handle_CDM_MetaData
+#define TheItem Handle(CDM_MetaData)
 #define TheItem_hxx <CDM_MetaData.hxx>
 #define Hasher TCollection_ExtendedString
 #define Hasher_hxx <TCollection_ExtendedString.hxx>
@@ -98,7 +85,6 @@ Handle_CDM_MetaData myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_DataMapNodeOfMetaDataLookUpTable_HeaderFile

@@ -6,45 +6,33 @@
 #ifndef _PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape_HeaderFile
 #define _PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_PTopoDS_HShape_HeaderFile
 #include <Handle_PTopoDS_HShape.hxx>
-#endif
-#ifndef _Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape_HeaderFile
 #include <Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class PTopoDS_HShape;
 class PTopoDS_FieldOfHArray1OfHShape;
 class PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape;
 
 
 
-class PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape  {
+class PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape();
+    PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape();
   
-      PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape(const Handle(PTopoDS_HShape)& aValue);
+    PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape(const Handle(PTopoDS_HShape)& aValue);
   
-        void SetValue(const Handle(PTopoDS_HShape)& aValue) ;
+      void SetValue (const Handle(PTopoDS_HShape)& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -59,12 +47,12 @@ private:
 
 
 
-Handle_PTopoDS_HShape myValue;
+  Handle(PTopoDS_HShape) myValue;
 
 
 };
 
-#define Item Handle_PTopoDS_HShape
+#define Item Handle(PTopoDS_HShape)
 #define Item_hxx <PTopoDS_HShape.hxx>
 #define DBC_VArrayNode PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape
 #define DBC_VArrayNode_hxx <PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>
@@ -89,7 +77,6 @@ Handle_PTopoDS_HShape myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape_HeaderFile

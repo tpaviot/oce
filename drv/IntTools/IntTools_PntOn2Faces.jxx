@@ -1,6 +1,2 @@
-#ifndef _IntTools_PntOnFace_HeaderFile
 #include <IntTools_PntOnFace.hxx>
-#endif
-#ifndef _IntTools_PntOn2Faces_HeaderFile
 #include <IntTools_PntOn2Faces.hxx>
-#endif

@@ -6,22 +6,12 @@
 #ifndef _ProjLib_Plane_HeaderFile
 #define _ProjLib_Plane_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pln_HeaderFile
 #include <gp_Pln.hxx>
-#endif
-#ifndef _ProjLib_Projector_HeaderFile
 #include <ProjLib_Projector.hxx>
-#endif
 class Standard_NoSuchObject;
 class gp_Pln;
 class gp_Lin;
@@ -31,39 +21,46 @@ class gp_Parab;
 class gp_Hypr;
 
 
-//! Projects elementary curves on a plane. <br>
-class ProjLib_Plane  : public ProjLib_Projector {
+//! Projects elementary curves on a plane.
+class ProjLib_Plane  : public ProjLib_Projector
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Undefined projection. <br>
-  Standard_EXPORT   ProjLib_Plane();
-  //! Projection on the plane <Pl>. <br>
-  Standard_EXPORT   ProjLib_Plane(const gp_Pln& Pl);
-  //! Projection of the line <L> on the plane <Pl>. <br>
-  Standard_EXPORT   ProjLib_Plane(const gp_Pln& Pl,const gp_Lin& L);
-  //! Projection of the circle <C> on the plane <Pl>. <br>
-  Standard_EXPORT   ProjLib_Plane(const gp_Pln& Pl,const gp_Circ& C);
-  //! Projection of the ellipse <E> on the plane <Pl>. <br>
-  Standard_EXPORT   ProjLib_Plane(const gp_Pln& Pl,const gp_Elips& E);
-  //! Projection of the parabola <P> on the plane <Pl>. <br>
-  Standard_EXPORT   ProjLib_Plane(const gp_Pln& Pl,const gp_Parab& P);
-  //! Projection of the hyperbola <H> on the plane <Pl>. <br>
-  Standard_EXPORT   ProjLib_Plane(const gp_Pln& Pl,const gp_Hypr& H);
   
-  Standard_EXPORT     void Init(const gp_Pln& Pl) ;
+  //! Undefined projection.
+  Standard_EXPORT ProjLib_Plane();
   
-  Standard_EXPORT   virtual  void Project(const gp_Lin& L) ;
+  //! Projection on the plane <Pl>.
+  Standard_EXPORT ProjLib_Plane(const gp_Pln& Pl);
   
-  Standard_EXPORT   virtual  void Project(const gp_Circ& C) ;
+  //! Projection of the line <L> on the plane <Pl>.
+  Standard_EXPORT ProjLib_Plane(const gp_Pln& Pl, const gp_Lin& L);
   
-  Standard_EXPORT   virtual  void Project(const gp_Elips& E) ;
+  //! Projection of the circle <C> on the plane <Pl>.
+  Standard_EXPORT ProjLib_Plane(const gp_Pln& Pl, const gp_Circ& C);
   
-  Standard_EXPORT   virtual  void Project(const gp_Parab& P) ;
+  //! Projection of the ellipse <E> on the plane <Pl>.
+  Standard_EXPORT ProjLib_Plane(const gp_Pln& Pl, const gp_Elips& E);
   
-  Standard_EXPORT   virtual  void Project(const gp_Hypr& H) ;
-
+  //! Projection of the parabola <P> on the plane <Pl>.
+  Standard_EXPORT ProjLib_Plane(const gp_Pln& Pl, const gp_Parab& P);
+  
+  //! Projection of the hyperbola <H> on the plane <Pl>.
+  Standard_EXPORT ProjLib_Plane(const gp_Pln& Pl, const gp_Hypr& H);
+  
+  Standard_EXPORT   void Init (const gp_Pln& Pl) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Lin& L) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Circ& C) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Elips& E) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Parab& P) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Hypr& H) ;
 
 
 
@@ -78,7 +75,7 @@ private:
 
 
 
-gp_Pln myPlane;
+  gp_Pln myPlane;
 
 
 };
@@ -87,7 +84,6 @@ gp_Pln myPlane;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_Plane_HeaderFile

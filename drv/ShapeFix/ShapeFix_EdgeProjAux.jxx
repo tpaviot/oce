@@ -1,12 +1,4 @@
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _ShapeFix_EdgeProjAux_HeaderFile
 #include <ShapeFix_EdgeProjAux.hxx>
-#endif

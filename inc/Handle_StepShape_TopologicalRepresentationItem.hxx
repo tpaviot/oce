@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_TopologicalRepresentationItem_HeaderFile
 #define _Handle_StepShape_TopologicalRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_RepresentationItem);
 class StepShape_TopologicalRepresentationItem;
 
-DEFINE_STANDARD_HANDLE(StepShape_TopologicalRepresentationItem,StepRepr_RepresentationItem)
+DEFINE_STANDARD_HANDLE(StepShape_TopologicalRepresentationItem, StepRepr_RepresentationItem)
 
-#endif
+#endif // _Handle_StepShape_TopologicalRepresentationItem_HeaderFile

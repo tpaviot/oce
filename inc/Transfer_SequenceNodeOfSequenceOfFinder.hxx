@@ -6,38 +6,27 @@
 #ifndef _Transfer_SequenceNodeOfSequenceOfFinder_HeaderFile
 #define _Transfer_SequenceNodeOfSequenceOfFinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Transfer_SequenceNodeOfSequenceOfFinder_HeaderFile
 #include <Handle_Transfer_SequenceNodeOfSequenceOfFinder.hxx>
-#endif
 
-#ifndef _Handle_Transfer_Finder_HeaderFile
 #include <Handle_Transfer_Finder.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Transfer_Finder;
 class Transfer_SequenceOfFinder;
 
 
 
-class Transfer_SequenceNodeOfSequenceOfFinder : public TCollection_SeqNode {
+class Transfer_SequenceNodeOfSequenceOfFinder : public TCollection_SeqNode
+{
 
 public:
 
   
-      Transfer_SequenceNodeOfSequenceOfFinder(const Handle(Transfer_Finder)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Transfer_SequenceNodeOfSequenceOfFinder(const Handle(Transfer_Finder)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Transfer_Finder& Value() const;
+      Handle(Transfer_Finder)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Transfer_Finder myValue;
+  Handle(Transfer_Finder) myValue;
 
 
 };
 
-#define SeqItem Handle_Transfer_Finder
+#define SeqItem Handle(Transfer_Finder)
 #define SeqItem_hxx <Transfer_Finder.hxx>
 #define TCollection_SequenceNode Transfer_SequenceNodeOfSequenceOfFinder
 #define TCollection_SequenceNode_hxx <Transfer_SequenceNodeOfSequenceOfFinder.hxx>
@@ -78,7 +67,6 @@ Handle_Transfer_Finder myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_SequenceNodeOfSequenceOfFinder_HeaderFile

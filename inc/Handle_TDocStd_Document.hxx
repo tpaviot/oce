@@ -6,22 +6,15 @@
 #ifndef _Handle_TDocStd_Document_HeaderFile
 #define _Handle_TDocStd_Document_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(CDM_Document);
 class TDocStd_Document;
 
-DEFINE_STANDARD_HANDLE(TDocStd_Document,CDM_Document)
+DEFINE_STANDARD_HANDLE(TDocStd_Document, CDM_Document)
 
-#endif
+#endif // _Handle_TDocStd_Document_HeaderFile

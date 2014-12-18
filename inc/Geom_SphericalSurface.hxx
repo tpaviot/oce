@@ -6,34 +6,16 @@
 #ifndef _Geom_SphericalSurface_HeaderFile
 #define _Geom_SphericalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom_SphericalSurface_HeaderFile
 #include <Handle_Geom_SphericalSurface.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Geom_ElementarySurface_HeaderFile
 #include <Geom_ElementarySurface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Geom_Geometry_HeaderFile
 #include <Handle_Geom_Geometry.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_RangeError;
 class gp_Ax3;
@@ -45,160 +27,188 @@ class gp_Trsf;
 class Geom_Geometry;
 
 
-//!  Describes a sphere. <br>
-//! A sphere is defined by its radius, and is positioned in <br>
-//! space by a coordinate system (a gp_Ax3 object), the <br>
-//! origin of which is the center of the sphere. <br>
-//! This coordinate system is the "local coordinate <br>
-//! system" of the sphere. The following apply: <br>
-//! - Rotation around its "main Axis", in the trigonometric <br>
-//!   sense given by the "X Direction" and the "Y <br>
-//!   Direction", defines the u parametric direction. <br>
-//! - Its "X Axis" gives the origin for the u parameter. <br>
-//! - The "reference meridian" of the sphere is a <br>
-//!   half-circle, of radius equal to the radius of the <br>
-//!   sphere. It is located in the plane defined by the <br>
-//!   origin, "X Direction" and "main Direction", centered <br>
-//!   on the origin, and positioned on the positive side of the "X Axis". <br>
-//! - Rotation around the "Y Axis" gives the v parameter <br>
-//!   on the reference meridian. <br>
-//! - The "X Axis" gives the origin of the v parameter on <br>
-//!   the reference meridian. <br>
-//! - The v parametric direction is oriented by the "main <br>
-//!   Direction", i.e. when v increases, the Z coordinate <br>
-//!   increases. (This implies that the "Y Direction" <br>
-//!   orients the reference meridian only when the local <br>
-//!   coordinate system is indirect.) <br>
-//! - The u isoparametric curve is a half-circle obtained <br>
-//!   by rotating the reference meridian of the sphere <br>
-//!   through an angle u around the "main Axis", in the <br>
-//!   trigonometric sense defined by the "X Direction" <br>
-//!   and the "Y Direction". <br>
-//!   The parametric equation of the sphere is: <br>
-//! P(u,v) = O + R*cos(v)*(cos(u)*XDir + sin(u)*YDir)+R*sin(v)*ZDir <br>
-//! where: <br>
-//! - O, XDir, YDir and ZDir are respectively the <br>
-//!   origin, the "X Direction", the "Y Direction" and the "Z <br>
-//!   Direction" of its local coordinate system, and <br>
-//! - R is the radius of the sphere. <br>
-//!   The parametric range of the two parameters is: <br>
-//! - [ 0, 2.*Pi ] for u, and <br>
-//! - [ - Pi/2., + Pi/2. ] for v. <br>
-class Geom_SphericalSurface : public Geom_ElementarySurface {
+//! Describes a sphere.
+//! A sphere is defined by its radius, and is positioned in
+//! space by a coordinate system (a gp_Ax3 object), the
+//! origin of which is the center of the sphere.
+//! This coordinate system is the "local coordinate
+//! system" of the sphere. The following apply:
+//! - Rotation around its "main Axis", in the trigonometric
+//! sense given by the "X Direction" and the "Y
+//! Direction", defines the u parametric direction.
+//! - Its "X Axis" gives the origin for the u parameter.
+//! - The "reference meridian" of the sphere is a
+//! half-circle, of radius equal to the radius of the
+//! sphere. It is located in the plane defined by the
+//! origin, "X Direction" and "main Direction", centered
+//! on the origin, and positioned on the positive side of the "X Axis".
+//! - Rotation around the "Y Axis" gives the v parameter
+//! on the reference meridian.
+//! - The "X Axis" gives the origin of the v parameter on
+//! the reference meridian.
+//! - The v parametric direction is oriented by the "main
+//! Direction", i.e. when v increases, the Z coordinate
+//! increases. (This implies that the "Y Direction"
+//! orients the reference meridian only when the local
+//! coordinate system is indirect.)
+//! - The u isoparametric curve is a half-circle obtained
+//! by rotating the reference meridian of the sphere
+//! through an angle u around the "main Axis", in the
+//! trigonometric sense defined by the "X Direction"
+//! and the "Y Direction".
+//! The parametric equation of the sphere is:
+//! P(u,v) = O + R*cos(v)*(cos(u)*XDir + sin(u)*YDir)+R*sin(v)*ZDir
+//! where:
+//! - O, XDir, YDir and ZDir are respectively the
+//! origin, the "X Direction", the "Y Direction" and the "Z
+//! Direction" of its local coordinate system, and
+//! - R is the radius of the sphere.
+//! The parametric range of the two parameters is:
+//! - [ 0, 2.*Pi ] for u, and
+//! - [ - Pi/2., + Pi/2. ] for v.
+class Geom_SphericalSurface : public Geom_ElementarySurface
+{
 
 public:
 
   
-//!  A3 is the local coordinate system of the surface. <br>
-//!  At the creation the parametrization of the surface is defined <br>
-//!  such as the normal Vector (N = D1U ^ D1V) is directed away from <br>
-//!  the center of the sphere. <br>
-//!  The direction of increasing parametric value V is defined by the <br>
-//!  rotation around the "YDirection" of A2 in the trigonometric sense <br>
-//!  and the orientation of increasing parametric value U is defined <br>
-//!  by the rotation around the main direction of A2 in the <br>
-//!  trigonometric sense. <br>
-//!  Warnings : <br>
-//!  It is not forbidden to create a spherical surface with <br>
-//!  Radius = 0.0 <br>//! Raised if Radius < 0.0. <br>
-  Standard_EXPORT   Geom_SphericalSurface(const gp_Ax3& A3,const Standard_Real Radius);
+
+  //! A3 is the local coordinate system of the surface.
+  //! At the creation the parametrization of the surface is defined
+  //! such as the normal Vector (N = D1U ^ D1V) is directed away from
+  //! the center of the sphere.
+  //! The direction of increasing parametric value V is defined by the
+  //! rotation around the "YDirection" of A2 in the trigonometric sense
+  //! and the orientation of increasing parametric value U is defined
+  //! by the rotation around the main direction of A2 in the
+  //! trigonometric sense.
+  //! Warnings :
+  //! It is not forbidden to create a spherical surface with
+  //! Radius = 0.0
+  //! Raised if Radius < 0.0.
+  Standard_EXPORT Geom_SphericalSurface(const gp_Ax3& A3, const Standard_Real Radius);
   
-//!  Creates a SphericalSurface from a non persistent Sphere from <br>
-//!  package gp. <br>
-  Standard_EXPORT   Geom_SphericalSurface(const gp_Sphere& S);
-  //! Assigns the value R to the radius of this sphere. <br>
-//! Exceptions Standard_ConstructionError if R is less than 0.0. <br>
-  Standard_EXPORT     void SetRadius(const Standard_Real R) ;
-  //! Converts the gp_Sphere S into this sphere. <br>
-  Standard_EXPORT     void SetSphere(const gp_Sphere& S) ;
-  //! Returns a non persistent sphere with the same geometric <br>
-//!  properties as <me>. <br>
-  Standard_EXPORT     gp_Sphere Sphere() const;
-  //! Computes the u parameter on the modified <br>
-//! surface, when reversing its u  parametric <br>
-//! direction, for any point of u parameter U on this sphere. <br>
-//! In the case of a sphere, these functions returns 2.PI - U. <br>
-  Standard_EXPORT     Standard_Real UReversedParameter(const Standard_Real U) const;
-  //! Computes the v parameter on the modified <br>
-//! surface, when reversing its v parametric <br>
-//! direction, for any point of v parameter V on this sphere. <br>
-//! In the case of a sphere, these functions returns   -U. <br>
-  Standard_EXPORT     Standard_Real VReversedParameter(const Standard_Real V) const;
-  //! Computes the aera of the spherical surface. <br>
-  Standard_EXPORT     Standard_Real Area() const;
-  //! Returns the parametric bounds U1, U2, V1 and V2 of this sphere. <br>
-//! For a sphere: U1 = 0, U2 = 2*PI, V1 = -PI/2, V2 = PI/2. <br>
-  Standard_EXPORT     void Bounds(Standard_Real& U1,Standard_Real& U2,Standard_Real& V1,Standard_Real& V2) const;
-  //! Returns the coefficients of the implicit equation of the <br>
-//!  quadric in the absolute cartesian coordinates system : <br>
-//!  These coefficients are normalized. <br>
-//!  A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + <br>
-//!  2.(C1.X + C2.Y + C3.Z) + D = 0.0 <br>
-  Standard_EXPORT     void Coefficients(Standard_Real& A1,Standard_Real& A2,Standard_Real& A3,Standard_Real& B1,Standard_Real& B2,Standard_Real& B3,Standard_Real& C1,Standard_Real& C2,Standard_Real& C3,Standard_Real& D) const;
-  //! Computes the coefficients of the implicit equation of <br>
-//! this quadric in the absolute Cartesian coordinate system: <br>
-//! A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + <br>
-//! 2.(C1.X + C2.Y + C3.Z) + D = 0.0 <br>
-//! An implicit normalization is applied (i.e. A1 = A2 = 1. <br>
-//! in the local coordinate system of this sphere). <br>
-  Standard_EXPORT     Standard_Real Radius() const;
-  //! Computes the volume of the spherical surface. <br>
-  Standard_EXPORT     Standard_Real Volume() const;
-  //! Returns True. <br>
-  Standard_EXPORT     Standard_Boolean IsUClosed() const;
-  //! Returns False. <br>
-  Standard_EXPORT     Standard_Boolean IsVClosed() const;
-  //! Returns True. <br>
-  Standard_EXPORT     Standard_Boolean IsUPeriodic() const;
-  //! Returns False. <br>
-  Standard_EXPORT     Standard_Boolean IsVPeriodic() const;
-  //! Computes the U isoparametric curve. <br>
-//!  The U isoparametric curves of the surface are defined by the <br>
-//!  section of the spherical surface with plane obtained by rotation <br>
-//!  of the plane (Location, XAxis, ZAxis) around ZAxis. This plane <br>
-//!  defines the origin of parametrization u. <br>
-//!  For a SphericalSurface the UIso curve is a Circle. <br>
-//! Warnings : The radius of this circle can be zero. <br>
-  Standard_EXPORT     Handle_Geom_Curve UIso(const Standard_Real U) const;
-  //! Computes the V isoparametric curve. <br>
-//!  The V isoparametric curves of the surface  are defined by <br>
-//!  the section of the spherical surface with plane parallel to the <br>
-//!  plane (Location, XAxis, YAxis). This plane defines the origin of <br>
-//!  parametrization V. <br>
-//!  Be careful if  V is close to PI/2 or 3*PI/2 the radius of the <br>
-//!  circle becomes tiny. It is not forbidden in this toolkit to <br>
-//!  create circle with radius = 0.0 <br>
-//!  For a SphericalSurface the VIso curve is a Circle. <br>
-//!  Warnings : The radius of this circle can be zero. <br>
-  Standard_EXPORT     Handle_Geom_Curve VIso(const Standard_Real V) const;
+
+  //! Creates a SphericalSurface from a non persistent Sphere from
+  //! package gp.
+  Standard_EXPORT Geom_SphericalSurface(const gp_Sphere& S);
   
-//!  Computes the  point P (U, V) on the surface. <br>
-//!  P (U, V) = Loc + Radius * Sin (V) * Zdir + <br>
-//!             Radius * Cos (V) * (cos (U) * XDir + sin (U) * YDir) <br>
-//!  where Loc is the origin of the placement plane (XAxis, YAxis) <br>
-//!  XDir is the direction of the XAxis and YDir the direction of <br>
-//!  the YAxis and ZDir the direction of the ZAxis. <br>
-  Standard_EXPORT     void D0(const Standard_Real U,const Standard_Real V,gp_Pnt& P) const;
+  //! Assigns the value R to the radius of this sphere.
+  //! Exceptions Standard_ConstructionError if R is less than 0.0.
+  Standard_EXPORT   void SetRadius (const Standard_Real R) ;
   
-//!  Computes the current point and the first derivatives in the <br>
-//!  directions U and V. <br>
-  Standard_EXPORT     void D1(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V) const;
+  //! Converts the gp_Sphere S into this sphere.
+  Standard_EXPORT   void SetSphere (const gp_Sphere& S) ;
   
-//!  Computes the current point, the first and the second derivatives <br>
-//!  in the directions U and V. <br>
-  Standard_EXPORT     void D2(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V,gp_Vec& D2U,gp_Vec& D2V,gp_Vec& D2UV) const;
+  //! Returns a non persistent sphere with the same geometric
+  //! properties as <me>.
+  Standard_EXPORT   gp_Sphere Sphere()  const;
   
-//!  Computes the current point, the first,the second and the third <br>
-//!  derivatives in the directions U and V. <br>
-  Standard_EXPORT     void D3(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V,gp_Vec& D2U,gp_Vec& D2V,gp_Vec& D2UV,gp_Vec& D3U,gp_Vec& D3V,gp_Vec& D3UUV,gp_Vec& D3UVV) const;
+  //! Computes the u parameter on the modified
+  //! surface, when reversing its u  parametric
+  //! direction, for any point of u parameter U on this sphere.
+  //! In the case of a sphere, these functions returns 2.PI - U.
+  Standard_EXPORT   Standard_Real UReversedParameter (const Standard_Real U)  const;
   
-//!  Computes the derivative of order Nu in the direction u <br>
-//!  and Nv in the direction v. <br>//! Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0. <br>
-  Standard_EXPORT     gp_Vec DN(const Standard_Real U,const Standard_Real V,const Standard_Integer Nu,const Standard_Integer Nv) const;
-  //! Applies the transformation T to this sphere. <br>
-  Standard_EXPORT     void Transform(const gp_Trsf& T) ;
-  //! Creates a new object which is a copy of this sphere. <br>
-  Standard_EXPORT     Handle_Geom_Geometry Copy() const;
+  //! Computes the v parameter on the modified
+  //! surface, when reversing its v parametric
+  //! direction, for any point of v parameter V on this sphere.
+  //! In the case of a sphere, these functions returns   -U.
+  Standard_EXPORT   Standard_Real VReversedParameter (const Standard_Real V)  const;
+  
+  //! Computes the aera of the spherical surface.
+  Standard_EXPORT   Standard_Real Area()  const;
+  
+  //! Returns the parametric bounds U1, U2, V1 and V2 of this sphere.
+  //! For a sphere: U1 = 0, U2 = 2*PI, V1 = -PI/2, V2 = PI/2.
+  Standard_EXPORT   void Bounds (Standard_Real& U1, Standard_Real& U2, Standard_Real& V1, Standard_Real& V2)  const;
+  
+  //! Returns the coefficients of the implicit equation of the
+  //! quadric in the absolute cartesian coordinates system :
+  //! These coefficients are normalized.
+  //! A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) +
+  //! 2.(C1.X + C2.Y + C3.Z) + D = 0.0
+  Standard_EXPORT   void Coefficients (Standard_Real& A1, Standard_Real& A2, Standard_Real& A3, Standard_Real& B1, Standard_Real& B2, Standard_Real& B3, Standard_Real& C1, Standard_Real& C2, Standard_Real& C3, Standard_Real& D)  const;
+  
+  //! Computes the coefficients of the implicit equation of
+  //! this quadric in the absolute Cartesian coordinate system:
+  //! A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) +
+  //! 2.(C1.X + C2.Y + C3.Z) + D = 0.0
+  //! An implicit normalization is applied (i.e. A1 = A2 = 1.
+  //! in the local coordinate system of this sphere).
+  Standard_EXPORT   Standard_Real Radius()  const;
+  
+  //! Computes the volume of the spherical surface.
+  Standard_EXPORT   Standard_Real Volume()  const;
+  
+  //! Returns True.
+  Standard_EXPORT   Standard_Boolean IsUClosed()  const;
+  
+  //! Returns False.
+  Standard_EXPORT   Standard_Boolean IsVClosed()  const;
+  
+  //! Returns True.
+  Standard_EXPORT   Standard_Boolean IsUPeriodic()  const;
+  
+  //! Returns False.
+  Standard_EXPORT   Standard_Boolean IsVPeriodic()  const;
+  
+  //! Computes the U isoparametric curve.
+  //! The U isoparametric curves of the surface are defined by the
+  //! section of the spherical surface with plane obtained by rotation
+  //! of the plane (Location, XAxis, ZAxis) around ZAxis. This plane
+  //! defines the origin of parametrization u.
+  //! For a SphericalSurface the UIso curve is a Circle.
+  //! Warnings : The radius of this circle can be zero.
+  Standard_EXPORT   Handle(Geom_Curve) UIso (const Standard_Real U)  const;
+  
+  //! Computes the V isoparametric curve.
+  //! The V isoparametric curves of the surface  are defined by
+  //! the section of the spherical surface with plane parallel to the
+  //! plane (Location, XAxis, YAxis). This plane defines the origin of
+  //! parametrization V.
+  //! Be careful if  V is close to PI/2 or 3*PI/2 the radius of the
+  //! circle becomes tiny. It is not forbidden in this toolkit to
+  //! create circle with radius = 0.0
+  //! For a SphericalSurface the VIso curve is a Circle.
+  //! Warnings : The radius of this circle can be zero.
+  Standard_EXPORT   Handle(Geom_Curve) VIso (const Standard_Real V)  const;
+  
+
+  //! Computes the  point P (U, V) on the surface.
+  //! P (U, V) = Loc + Radius * Sin (V) * Zdir +
+  //! Radius * Cos (V) * (cos (U) * XDir + sin (U) * YDir)
+  //! where Loc is the origin of the placement plane (XAxis, YAxis)
+  //! XDir is the direction of the XAxis and YDir the direction of
+  //! the YAxis and ZDir the direction of the ZAxis.
+  Standard_EXPORT   void D0 (const Standard_Real U, const Standard_Real V, gp_Pnt& P)  const;
+  
+
+  //! Computes the current point and the first derivatives in the
+  //! directions U and V.
+  Standard_EXPORT   void D1 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V)  const;
+  
+
+  //! Computes the current point, the first and the second derivatives
+  //! in the directions U and V.
+  Standard_EXPORT   void D2 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV)  const;
+  
+
+  //! Computes the current point, the first,the second and the third
+  //! derivatives in the directions U and V.
+  Standard_EXPORT   void D3 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV, gp_Vec& D3U, gp_Vec& D3V, gp_Vec& D3UUV, gp_Vec& D3UVV)  const;
+  
+
+  //! Computes the derivative of order Nu in the direction u
+  //! and Nv in the direction v.
+  //! Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+  Standard_EXPORT   gp_Vec DN (const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv)  const;
+  
+  //! Applies the transformation T to this sphere.
+  Standard_EXPORT   void Transform (const gp_Trsf& T) ;
+  
+  //! Creates a new object which is a copy of this sphere.
+  Standard_EXPORT   Handle(Geom_Geometry) Copy()  const;
 
 
 
@@ -213,7 +223,7 @@ protected:
 private: 
 
 
-Standard_Real radius;
+  Standard_Real radius;
 
 
 };
@@ -222,7 +232,6 @@ Standard_Real radius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom_SphericalSurface_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_STEPSelections_SelectAssembly_HeaderFile
 #define _Handle_STEPSelections_SelectAssembly_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_SelectExplore_HeaderFile
 #include <Handle_IFSelect_SelectExplore.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_SelectExplore);
 class STEPSelections_SelectAssembly;
 
-DEFINE_STANDARD_HANDLE(STEPSelections_SelectAssembly,IFSelect_SelectExplore)
+DEFINE_STANDARD_HANDLE(STEPSelections_SelectAssembly, IFSelect_SelectExplore)
 
-#endif
+#endif // _Handle_STEPSelections_SelectAssembly_HeaderFile

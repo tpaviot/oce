@@ -6,40 +6,30 @@
 #ifndef _TCollection_CompareOfReal_HeaderFile
 #define _TCollection_CompareOfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_PrivCompareOfReal_HeaderFile
 #include <TCollection_PrivCompareOfReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 
 
-class TCollection_CompareOfReal  : public TCollection_PrivCompareOfReal {
+class TCollection_CompareOfReal  : public TCollection_PrivCompareOfReal
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TCollection_CompareOfReal();
-  //! Returns True if <Left> is lower than <Right>. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsLower(const Standard_Real& Left,const Standard_Real& Right) const;
-  //! Returns True if <Left> is greater than <Right>. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsGreater(const Standard_Real& Left,const Standard_Real& Right) const;
-
+  Standard_EXPORT TCollection_CompareOfReal();
+  
+  //! Returns True if <Left> is lower than <Right>.
+  Standard_EXPORT virtual   Standard_Boolean IsLower (const Standard_Real& Left, const Standard_Real& Right)  const;
+  
+  //! Returns True if <Left> is greater than <Right>.
+  Standard_EXPORT virtual   Standard_Boolean IsGreater (const Standard_Real& Left, const Standard_Real& Right)  const;
 
 
 
@@ -62,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TCollection_CompareOfReal_HeaderFile

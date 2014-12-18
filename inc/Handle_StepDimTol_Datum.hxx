@@ -6,22 +6,15 @@
 #ifndef _Handle_StepDimTol_Datum_HeaderFile
 #define _Handle_StepDimTol_Datum_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_ShapeAspect);
 class StepDimTol_Datum;
 
-DEFINE_STANDARD_HANDLE(StepDimTol_Datum,StepRepr_ShapeAspect)
+DEFINE_STANDARD_HANDLE(StepDimTol_Datum, StepRepr_ShapeAspect)
 
-#endif
+#endif // _Handle_StepDimTol_Datum_HeaderFile

@@ -5,24 +5,14 @@
 
 #include <TDF_ListIteratorOfAttributeDeltaList.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDF_AttributeDeltaList_HeaderFile
 #include <TDF_AttributeDeltaList.hxx>
-#endif
-#ifndef _TDF_AttributeDelta_HeaderFile
 #include <TDF_AttributeDelta.hxx>
-#endif
-#ifndef _TDF_ListNodeOfAttributeDeltaList_HeaderFile
 #include <TDF_ListNodeOfAttributeDeltaList.hxx>
-#endif
  
 
-#define Item Handle_TDF_AttributeDelta
+#define Item Handle(TDF_AttributeDelta)
 #define Item_hxx <TDF_AttributeDelta.hxx>
 #define TCollection_ListNode TDF_ListNodeOfAttributeDeltaList
 #define TCollection_ListNode_hxx <TDF_ListNodeOfAttributeDeltaList.hxx>

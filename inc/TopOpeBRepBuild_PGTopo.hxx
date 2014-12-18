@@ -7,7 +7,6 @@
 #define _TopOpeBRepBuild_PGTopo_HeaderFile
 
 class TopOpeBRepBuild_GTopo;
-
 typedef TopOpeBRepBuild_GTopo* TopOpeBRepBuild_PGTopo;
 
-#endif
+#endif // _TopOpeBRepBuild_PGTopo_HeaderFile

@@ -6,51 +6,38 @@
 #ifndef _PXCAFDoc_Material_HeaderFile
 #define _PXCAFDoc_Material_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_Material_HeaderFile
 #include <Handle_PXCAFDoc_Material.hxx>
-#endif
 
-#ifndef _Handle_PCollection_HAsciiString_HeaderFile
 #include <Handle_PCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PCollection_HAsciiString;
 
 
-class PXCAFDoc_Material : public PDF_Attribute {
+class PXCAFDoc_Material : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PXCAFDoc_Material();
+  Standard_EXPORT PXCAFDoc_Material();
   
-  Standard_EXPORT   PXCAFDoc_Material(const Handle(PCollection_HAsciiString)& theName,const Handle(PCollection_HAsciiString)& theDescr,const Standard_Real theDensity,const Handle(PCollection_HAsciiString)& theDensName,const Handle(PCollection_HAsciiString)& theDensValType);
+  Standard_EXPORT PXCAFDoc_Material(const Handle(PCollection_HAsciiString)& theName, const Handle(PCollection_HAsciiString)& theDescr, const Standard_Real theDensity, const Handle(PCollection_HAsciiString)& theDensName, const Handle(PCollection_HAsciiString)& theDensValType);
   
-  Standard_EXPORT     Handle_PCollection_HAsciiString GetName() const;
+  Standard_EXPORT   Handle(PCollection_HAsciiString) GetName()  const;
   
-  Standard_EXPORT     Handle_PCollection_HAsciiString GetDescription() const;
+  Standard_EXPORT   Handle(PCollection_HAsciiString) GetDescription()  const;
   
-  Standard_EXPORT     Standard_Real GetDensity() const;
+  Standard_EXPORT   Standard_Real GetDensity()  const;
   
-  Standard_EXPORT     Handle_PCollection_HAsciiString GetDensName() const;
+  Standard_EXPORT   Handle(PCollection_HAsciiString) GetDensName()  const;
   
-  Standard_EXPORT     Handle_PCollection_HAsciiString GetDensValType() const;
+  Standard_EXPORT   Handle(PCollection_HAsciiString) GetDensValType()  const;
   
-  Standard_EXPORT     void Set(const Handle(PCollection_HAsciiString)& theName,const Handle(PCollection_HAsciiString)& theDescr,const Standard_Real theDensity,const Handle(PCollection_HAsciiString)& theDensName,const Handle(PCollection_HAsciiString)& theDensValType) ;
+  Standard_EXPORT   void Set (const Handle(PCollection_HAsciiString)& theName, const Handle(PCollection_HAsciiString)& theDescr, const Standard_Real theDensity, const Handle(PCollection_HAsciiString)& theDensName, const Handle(PCollection_HAsciiString)& theDensValType) ;
 
 PXCAFDoc_Material(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -79,11 +66,11 @@ protected:
 private: 
 
 
-Handle_PCollection_HAsciiString myName;
-Handle_PCollection_HAsciiString myDescr;
-Standard_Real myDensity;
-Handle_PCollection_HAsciiString myDensName;
-Handle_PCollection_HAsciiString myDensValType;
+  Handle(PCollection_HAsciiString) myName;
+  Handle(PCollection_HAsciiString) myDescr;
+  Standard_Real myDensity;
+  Handle(PCollection_HAsciiString) myDensName;
+  Handle(PCollection_HAsciiString) myDensValType;
 
 
 };
@@ -92,7 +79,6 @@ Handle_PCollection_HAsciiString myDensValType;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PXCAFDoc_Material_HeaderFile

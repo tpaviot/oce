@@ -6,39 +6,31 @@
 #ifndef _TopoDS_TCompSolid_HeaderFile
 #define _TopoDS_TCompSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopoDS_TCompSolid_HeaderFile
 #include <Handle_TopoDS_TCompSolid.hxx>
-#endif
 
-#ifndef _TopoDS_TShape_HeaderFile
 #include <TopoDS_TShape.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Handle_TopoDS_TShape_HeaderFile
 #include <Handle_TopoDS_TShape.hxx>
-#endif
 class TopoDS_TShape;
 
 
-
-class TopoDS_TCompSolid : public TopoDS_TShape {
+//! A set of solids connected by their faces.
+class TopoDS_TCompSolid : public TopoDS_TShape
+{
 
 public:
 
-  //! Creates an empty TCompSolid. <br>
-      TopoDS_TCompSolid();
-  //! returns COMPSOLID <br>
-  Standard_EXPORT     TopAbs_ShapeEnum ShapeType() const;
-  //! Returns an empty TCompSolid. <br>
-  Standard_EXPORT     Handle_TopoDS_TShape EmptyCopy() const;
+  
+  //! Creates an empty TCompSolid.
+    TopoDS_TCompSolid();
+  
+  //! returns COMPSOLID
+  Standard_EXPORT   TopAbs_ShapeEnum ShapeType()  const;
+  
+  //! Returns an empty TCompSolid.
+  Standard_EXPORT   Handle(TopoDS_TShape) EmptyCopy()  const;
 
 
 
@@ -62,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_TCompSolid_HeaderFile

@@ -6,59 +6,43 @@
 #ifndef _AIS_GraphicTool_HeaderFile
 #define _AIS_GraphicTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _AIS_TypeOfAttribute_HeaderFile
 #include <AIS_TypeOfAttribute.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Aspect_TypeOfLine_HeaderFile
 #include <Aspect_TypeOfLine.hxx>
-#endif
 class Prs3d_Drawer;
 class Quantity_Color;
 class Graphic3d_MaterialAspect;
 
 
 
-class AIS_GraphicTool  {
+class AIS_GraphicTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Quantity_NameOfColor GetLineColor(const Handle(Prs3d_Drawer)& aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes) ;
+  Standard_EXPORT static   Quantity_NameOfColor GetLineColor (const Handle(Prs3d_Drawer)& aDrawer, const AIS_TypeOfAttribute TheTypeOfAttributes) ;
   
-  Standard_EXPORT   static  void GetLineColor(const Handle(Prs3d_Drawer)& aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes,Quantity_Color& TheLineColor) ;
+  Standard_EXPORT static   void GetLineColor (const Handle(Prs3d_Drawer)& aDrawer, const AIS_TypeOfAttribute TheTypeOfAttributes, Quantity_Color& TheLineColor) ;
   
-  Standard_EXPORT   static  Standard_Real GetLineWidth(const Handle(Prs3d_Drawer)& aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes) ;
+  Standard_EXPORT static   Standard_Real GetLineWidth (const Handle(Prs3d_Drawer)& aDrawer, const AIS_TypeOfAttribute TheTypeOfAttributes) ;
   
-  Standard_EXPORT   static  Aspect_TypeOfLine GetLineType(const Handle(Prs3d_Drawer)& aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes) ;
+  Standard_EXPORT static   Aspect_TypeOfLine GetLineType (const Handle(Prs3d_Drawer)& aDrawer, const AIS_TypeOfAttribute TheTypeOfAttributes) ;
   
-  Standard_EXPORT   static  void GetLineAtt(const Handle(Prs3d_Drawer)& aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes,Quantity_NameOfColor& aCol,Standard_Real& aWidth,Aspect_TypeOfLine& aTyp) ;
+  Standard_EXPORT static   void GetLineAtt (const Handle(Prs3d_Drawer)& aDrawer, const AIS_TypeOfAttribute TheTypeOfAttributes, Quantity_NameOfColor& aCol, Standard_Real& aWidth, Aspect_TypeOfLine& aTyp) ;
   
-  Standard_EXPORT   static  Quantity_NameOfColor GetInteriorColor(const Handle(Prs3d_Drawer)& aDrawer) ;
+  Standard_EXPORT static   Quantity_NameOfColor GetInteriorColor (const Handle(Prs3d_Drawer)& aDrawer) ;
   
-  Standard_EXPORT   static  void GetInteriorColor(const Handle(Prs3d_Drawer)& aDrawer,Quantity_Color& aColor) ;
+  Standard_EXPORT static   void GetInteriorColor (const Handle(Prs3d_Drawer)& aDrawer, Quantity_Color& aColor) ;
   
-  Standard_EXPORT   static  Graphic3d_MaterialAspect GetMaterial(const Handle(Prs3d_Drawer)& aDrawer) ;
-
+  Standard_EXPORT static   Graphic3d_MaterialAspect GetMaterial (const Handle(Prs3d_Drawer)& aDrawer) ;
 
 
 
@@ -81,7 +65,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_GraphicTool_HeaderFile

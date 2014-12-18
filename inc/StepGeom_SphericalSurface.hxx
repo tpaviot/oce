@@ -6,47 +6,35 @@
 #ifndef _StepGeom_SphericalSurface_HeaderFile
 #define _StepGeom_SphericalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_SphericalSurface_HeaderFile
 #include <Handle_StepGeom_SphericalSurface.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepGeom_ElementarySurface_HeaderFile
 #include <StepGeom_ElementarySurface.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepGeom_Axis2Placement3d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement3d.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepGeom_Axis2Placement3d;
 
 
 
-class StepGeom_SphericalSurface : public StepGeom_ElementarySurface {
+class StepGeom_SphericalSurface : public StepGeom_ElementarySurface
+{
 
 public:
 
-  //! Returns a SphericalSurface <br>
-  Standard_EXPORT   StepGeom_SphericalSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Axis2Placement3d)& aPosition) ;
+  //! Returns a SphericalSurface
+  Standard_EXPORT StepGeom_SphericalSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Axis2Placement3d)& aPosition,const Standard_Real aRadius) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Axis2Placement3d)& aPosition) ;
   
-  Standard_EXPORT     void SetRadius(const Standard_Real aRadius) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Axis2Placement3d)& aPosition, const Standard_Real aRadius) ;
   
-  Standard_EXPORT     Standard_Real Radius() const;
+  Standard_EXPORT   void SetRadius (const Standard_Real aRadius) ;
+  
+  Standard_EXPORT   Standard_Real Radius()  const;
 
 
 
@@ -61,7 +49,7 @@ protected:
 private: 
 
 
-Standard_Real radius;
+  Standard_Real radius;
 
 
 };
@@ -70,7 +58,6 @@ Standard_Real radius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_SphericalSurface_HeaderFile

@@ -6,39 +6,30 @@
 #ifndef _ExprIntrp_GenFct_HeaderFile
 #define _ExprIntrp_GenFct_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_GenFct_HeaderFile
 #include <Handle_ExprIntrp_GenFct.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _ExprIntrp_Generator_HeaderFile
 #include <ExprIntrp_Generator.hxx>
-#endif
 class Standard_NoSuchObject;
 class TCollection_AsciiString;
 
 
-//! Implements an interpreter for defining functions. <br>
-//!          All its functionnalities can be found in class <br>
-//!          GenExp. <br>
-class ExprIntrp_GenFct : public ExprIntrp_Generator {
+//! Implements an interpreter for defining functions.
+//! All its functionnalities can be found in class
+//! GenExp.
+class ExprIntrp_GenFct : public ExprIntrp_Generator
+{
 
 public:
 
   
-  Standard_EXPORT   static  Handle_ExprIntrp_GenFct Create() ;
+  Standard_EXPORT static   Handle(ExprIntrp_GenFct) Create() ;
   
-  Standard_EXPORT     void Process(const TCollection_AsciiString& str) ;
+  Standard_EXPORT   void Process (const TCollection_AsciiString& str) ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
 
 
 
@@ -53,9 +44,9 @@ protected:
 private: 
 
   
-  Standard_EXPORT   ExprIntrp_GenFct();
+  Standard_EXPORT ExprIntrp_GenFct();
 
-Standard_Boolean done;
+  Standard_Boolean done;
 
 
 };
@@ -64,7 +55,6 @@ Standard_Boolean done;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_GenFct_HeaderFile

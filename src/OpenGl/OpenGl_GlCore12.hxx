@@ -13,36 +13,34 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifndef _OpenGl_GlCore12_H__
-#define _OpenGl_GlCore12_H__
-
-#include <oce-config.h>
+#ifndef _OpenGl_GlCore12_Header
+#define _OpenGl_GlCore12_Header
 
 #include <OpenGl_GlCore11.hxx>
 
-// We can safely #undef GL_VERSION_x_y since redeclaration of typedef names can
-// be done for same type: http://msdn.microsoft.com/en-us/library/87txds41.aspx
-// It is required to fix build against Mesa >= 10:
-// http://cgit.freedesktop.org/mesa/mesa/commit/?id=a36f7e6
-#undef GL_VERSION_1_2
-#undef GL_VERSION_1_3
-#undef GL_VERSION_1_4
-#undef GL_VERSION_1_5
-#undef GL_VERSION_2_0
-
-#include <OpenGl_glext.h>
-
-//! Function list for GL1.2 core functionality.
-struct OpenGl_GlCore12
+//! OpenGL 1.2 core based on 1.1 version.
+template<typename theBaseClass_t>
+struct OpenGl_TmplCore12 : public theBaseClass_t
 {
 
-  PFNGLBLENDCOLORPROC        glBlendColor;
-  PFNGLBLENDEQUATIONPROC     glBlendEquation;
-  PFNGLDRAWRANGEELEMENTSPROC glDrawRangeElements;
-  PFNGLTEXIMAGE3DPROC        glTexImage3D;
-  PFNGLTEXSUBIMAGE3DPROC     glTexSubImage3D;
-  PFNGLCOPYTEXSUBIMAGE3DPROC glCopyTexSubImage3D;
+public: //! @name OpenGL 1.2 additives to 1.1
+
+  using theBaseClass_t::glBlendColor;
+  using theBaseClass_t::glBlendEquation;
+
+#if !defined(GL_ES_VERSION_2_0)
+  using theBaseClass_t::glDrawRangeElements;
+  using theBaseClass_t::glTexImage3D;
+  using theBaseClass_t::glTexSubImage3D;
+  using theBaseClass_t::glCopyTexSubImage3D;
+#endif
 
 };
 
-#endif // _OpenGl_GlCore12_H__
+//! OpenGL 1.2 core based on 1.1 version.
+typedef OpenGl_TmplCore12<OpenGl_GlCore11>    OpenGl_GlCore12;
+
+//! OpenGL 1.2 without deprecated entry points.
+typedef OpenGl_TmplCore12<OpenGl_GlCore11Fwd> OpenGl_GlCore12Fwd;
+
+#endif // _OpenGl_GlCore12_Header

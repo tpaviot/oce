@@ -1,9 +1,3 @@
-#ifndef _StepBasic_Date_HeaderFile
 #include <StepBasic_Date.hxx>
-#endif
-#ifndef _StepBasic_DateRole_HeaderFile
 #include <StepBasic_DateRole.hxx>
-#endif
-#ifndef _StepBasic_DateAssignment_HeaderFile
 #include <StepBasic_DateAssignment.hxx>
-#endif

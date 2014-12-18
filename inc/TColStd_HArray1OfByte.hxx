@@ -6,28 +6,14 @@
 #ifndef _TColStd_HArray1OfByte_HeaderFile
 #define _TColStd_HArray1OfByte_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfByte_HeaderFile
 #include <Handle_TColStd_HArray1OfByte.hxx>
-#endif
 
-#ifndef _TColStd_Array1OfByte_HeaderFile
 #include <TColStd_Array1OfByte.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Byte_HeaderFile
 #include <Standard_Byte.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,32 +22,33 @@ class TColStd_Array1OfByte;
 
 
 
-class TColStd_HArray1OfByte : public MMgt_TShared {
+class TColStd_HArray1OfByte : public MMgt_TShared
+{
 
 public:
 
   
-      TColStd_HArray1OfByte(const Standard_Integer Low,const Standard_Integer Up);
+    TColStd_HArray1OfByte(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColStd_HArray1OfByte(const Standard_Integer Low,const Standard_Integer Up,const Standard_Byte& V);
+    TColStd_HArray1OfByte(const Standard_Integer Low, const Standard_Integer Up, const Standard_Byte& V);
   
-        void Init(const Standard_Byte& V) ;
+      void Init (const Standard_Byte& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Standard_Byte& Value) ;
+      void SetValue (const Standard_Integer Index, const Standard_Byte& Value) ;
   
-       const Standard_Byte& Value(const Standard_Integer Index) const;
+     const  Standard_Byte& Value (const Standard_Integer Index)  const;
   
-        Standard_Byte& ChangeValue(const Standard_Integer Index) ;
+      Standard_Byte& ChangeValue (const Standard_Integer Index) ;
   
-       const TColStd_Array1OfByte& Array1() const;
+     const  TColStd_Array1OfByte& Array1()  const;
   
-        TColStd_Array1OfByte& ChangeArray1() ;
+      TColStd_Array1OfByte& ChangeArray1() ;
 
 
 
@@ -76,7 +63,7 @@ protected:
 private: 
 
 
-TColStd_Array1OfByte myArray;
+  TColStd_Array1OfByte myArray;
 
 
 };
@@ -102,7 +89,6 @@ TColStd_Array1OfByte myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_HArray1OfByte_HeaderFile

@@ -5,24 +5,14 @@
 
 #include <TopOpeBRepDS_ListIteratorOfListOfInterference.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListNodeOfListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListNodeOfListOfInterference.hxx>
-#endif
  
 
-#define Item Handle_TopOpeBRepDS_Interference
+#define Item Handle(TopOpeBRepDS_Interference)
 #define Item_hxx <TopOpeBRepDS_Interference.hxx>
 #define TCollection_ListNode TopOpeBRepDS_ListNodeOfListOfInterference
 #define TCollection_ListNode_hxx <TopOpeBRepDS_ListNodeOfListOfInterference.hxx>

@@ -7,7 +7,6 @@
 #define _TopOpeBRepBuild_PWireEdgeSet_HeaderFile
 
 class TopOpeBRepBuild_WireEdgeSet;
-
 typedef TopOpeBRepBuild_WireEdgeSet* TopOpeBRepBuild_PWireEdgeSet;
 
-#endif
+#endif // _TopOpeBRepBuild_PWireEdgeSet_HeaderFile

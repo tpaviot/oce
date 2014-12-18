@@ -6,16 +6,15 @@
 #ifndef _StepVisual_TextPath_HeaderFile
 #define _StepVisual_TextPath_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepVisual_TextPath {
+
+enum StepVisual_TextPath
+{
 StepVisual_tpUp,
 StepVisual_tpRight,
 StepVisual_tpDown,
 StepVisual_tpLeft
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepVisual_TextPath_HeaderFile

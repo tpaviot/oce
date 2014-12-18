@@ -1,6 +1,2 @@
-#ifndef _TopOpeBRepBuild_Loop_HeaderFile
 #include <TopOpeBRepBuild_Loop.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_LoopClassifier_HeaderFile
 #include <TopOpeBRepBuild_LoopClassifier.hxx>
-#endif

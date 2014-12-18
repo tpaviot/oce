@@ -6,28 +6,14 @@
 #ifndef _MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable_HeaderFile
 #define _MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable_HeaderFile
 #include <Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable.hxx>
-#endif
 
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _MDF_DriverListOfASDriverTable_HeaderFile
 #include <MDF_DriverListOfASDriverTable.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Type;
 class MDF_DriverListOfASDriverTable;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class MDF_DataMapIteratorOfTypeDriverListMapOfASDriverTable;
 
 
 
-class MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable : public TCollection_MapNode {
+class MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable : public TCollection_MapNode
+{
 
 public:
 
   
-      MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable(const Handle(Standard_Type)& K,const MDF_DriverListOfASDriverTable& I,const TCollection_MapNodePtr& n);
+    MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable(const Handle(Standard_Type)& K, const MDF_DriverListOfASDriverTable& I, const TCollection_MapNodePtr& n);
   
-        Handle_Standard_Type& Key() const;
+      Handle(Standard_Type)& Key()  const;
   
-        MDF_DriverListOfASDriverTable& Value() const;
+      MDF_DriverListOfASDriverTable& Value()  const;
 
 
 
@@ -60,13 +47,13 @@ protected:
 private: 
 
 
-Handle_Standard_Type myKey;
-MDF_DriverListOfASDriverTable myValue;
+  Handle(Standard_Type) myKey;
+  MDF_DriverListOfASDriverTable myValue;
 
 
 };
 
-#define TheKey Handle_Standard_Type
+#define TheKey Handle(Standard_Type)
 #define TheKey_hxx <Standard_Type.hxx>
 #define TheItem MDF_DriverListOfASDriverTable
 #define TheItem_hxx <MDF_DriverListOfASDriverTable.hxx>
@@ -99,7 +86,6 @@ MDF_DriverListOfASDriverTable myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable_HeaderFile

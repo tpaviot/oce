@@ -6,55 +6,23 @@
 #ifndef _Select3D_SensitiveSegment_HeaderFile
 #define _Select3D_SensitiveSegment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveSegment_HeaderFile
 #include <Handle_Select3D_SensitiveSegment.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Select3D_Pnt_HeaderFile
 #include <Select3D_Pnt.hxx>
-#endif
-#ifndef _Select3D_Pnt2d_HeaderFile
 #include <Select3D_Pnt2d.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _SelectBasics_PickArgs_HeaderFile
 #include <SelectBasics_PickArgs.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class SelectBasics_EntityOwner;
 class gp_Pnt;
 class Select3D_Projector;
@@ -66,57 +34,70 @@ class Bnd_Box2d;
 class gp_Lin;
 
 
-//! A framework to define sensitive zones along a segment <br>
-//!          One gives the 3D start and end point; <br>
-//!          the maximum number of 2D boxes given <br>
-//!          by this entity may be set by the user <br>
-//!          if the projected segment is <br>
-//!          vertical or horizontal, one needs only 1 box. <br>
-//!          for a pi/4 angle -> MaxNumber 2D boxes <br>
-class Select3D_SensitiveSegment : public Select3D_SensitiveEntity {
+//! A framework to define sensitive zones along a segment
+//! One gives the 3D start and end point;
+//! the maximum number of 2D boxes given
+//! by this entity may be set by the user
+//! if the projected segment is
+//! vertical or horizontal, one needs only 1 box.
+//! for a pi/4 angle -> MaxNumber 2D boxes
+class Select3D_SensitiveSegment : public Select3D_SensitiveEntity
+{
 
 public:
 
-  //! Constructs the sensitive segment object defined by <br>
-//! the owner OwnerId, the points FirstP, LastP and the <br>
-//! maximum number of sensitive bounding boxes MaxRect. <br>
-  Standard_EXPORT   Select3D_SensitiveSegment(const Handle(SelectBasics_EntityOwner)& OwnerId,const gp_Pnt& FirstP,const gp_Pnt& LastP,const Standard_Integer MaxRect = 1);
-  //!  Sets the maximum number of sensitive rectangles MaxRect. <br>
-        void Set(const Standard_Integer MaxRect) ;
-  //! changes the start Point of the Segment; <br>
-        void StartPoint(const gp_Pnt& aPt) ;
-  //! changes the end point of the segment <br>
-        void EndPoint(const gp_Pnt& aPt) ;
-  //! gives the 3D start Point of the Segment <br>
-        gp_Pnt StartPoint() const;
-  //! gives the 3D End Point of the Segment <br>
-        gp_Pnt EndPoint() const;
-  //! gives the 3D start Point of the Segment <br>
-        gp_Pnt2d StartPoint2d() const;
-  //! gives the 3D End Point of the Segment <br>
-        gp_Pnt2d EndPoint2d() const;
-  //! projection of the sensitive primitive in order to <br>
-//!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
-  //! gives the 2D boxes which represent the segment in the <br>
-//!          selection process... <br>
-  Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;
   
-  Standard_EXPORT     Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& aLocation) ;
-  //! Checks whether the sensitive entity matches the picking <br>
-//! detection area (close to the picking line). <br>
-//! For details please refer to base class declaration. <br>
-  Standard_EXPORT     Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
+  //! Constructs the sensitive segment object defined by
+  //! the owner OwnerId, the points FirstP, LastP and the
+  //! maximum number of sensitive bounding boxes MaxRect.
+  Standard_EXPORT Select3D_SensitiveSegment(const Handle(SelectBasics_EntityOwner)& OwnerId, const gp_Pnt& FirstP, const gp_Pnt& LastP, const Standard_Integer MaxRect = 1);
   
-  Standard_EXPORT     Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
+  //! Sets the maximum number of sensitive rectangles MaxRect.
+      void Set (const Standard_Integer MaxRect) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
+  //! changes the start Point of the Segment;
+      void StartPoint (const gp_Pnt& aPt) ;
   
-  Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& EyeLine) const;
-  //!returns <mymaxrect> <br>
-        Standard_Integer MaxBoxes() const;
+  //! changes the end point of the segment
+      void EndPoint (const gp_Pnt& aPt) ;
   
-  Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
+  //! gives the 3D start Point of the Segment
+      gp_Pnt StartPoint()  const;
+  
+  //! gives the 3D End Point of the Segment
+      gp_Pnt EndPoint()  const;
+  
+  //! gives the 3D start Point of the Segment
+      gp_Pnt2d StartPoint2d()  const;
+  
+  //! gives the 3D End Point of the Segment
+      gp_Pnt2d EndPoint2d()  const;
+  
+  //! projection of the sensitive primitive in order to
+  //! get 2D boxes for the Sort Algorithm
+  Standard_EXPORT virtual   void Project (const Handle(Select3D_Projector)& aProjector) ;
+  
+  //! gives the 2D boxes which represent the segment in the
+  //! selection process...
+  Standard_EXPORT   void Areas (SelectBasics_ListOfBox2d& boxes) ;
+  
+  Standard_EXPORT   Handle(Select3D_SensitiveEntity) GetConnected (const TopLoc_Location& aLocation) ;
+  
+  //! Checks whether the sensitive entity matches the picking
+  //! detection area (close to the picking line).
+  //! For details please refer to base class declaration.
+  Standard_EXPORT   Standard_Boolean Matches (const SelectBasics_PickArgs& thePickArgs, Standard_Real& theMatchDMin, Standard_Real& theMatchDepth) ;
+  
+  Standard_EXPORT   Standard_Boolean Matches (const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol) ;
+  
+  Standard_EXPORT virtual   Standard_Boolean Matches (const TColgp_Array1OfPnt2d& Polyline, const Bnd_Box2d& aBox, const Standard_Real aTol) ;
+  
+  Standard_EXPORT   Standard_Real ComputeDepth (const gp_Lin& EyeLine)  const;
+  
+  //! returns <mymaxrect>
+      Standard_Integer MaxBoxes()  const;
+  
+  Standard_EXPORT virtual   void Dump (Standard_OStream& S, const Standard_Boolean FullDump = Standard_True)  const;
 
 
 
@@ -131,11 +112,11 @@ protected:
 private: 
 
 
-Standard_Integer mymaxrect;
-Select3D_Pnt mystart;
-Select3D_Pnt myend;
-Select3D_Pnt2d myprojstart;
-Select3D_Pnt2d myprojend;
+  Standard_Integer mymaxrect;
+  Select3D_Pnt mystart;
+  Select3D_Pnt myend;
+  Select3D_Pnt2d myprojstart;
+  Select3D_Pnt2d myprojend;
 
 
 };
@@ -145,7 +126,6 @@ Select3D_Pnt2d myprojend;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_SensitiveSegment_HeaderFile

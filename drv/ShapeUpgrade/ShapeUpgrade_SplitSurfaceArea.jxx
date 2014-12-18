@@ -1,3 +1,1 @@
-#ifndef _ShapeUpgrade_SplitSurfaceArea_HeaderFile
 #include <ShapeUpgrade_SplitSurfaceArea.hxx>
-#endif

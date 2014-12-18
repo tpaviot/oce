@@ -6,22 +6,12 @@
 #ifndef _DNaming_DataMapIteratorOfDataMapOfShapeOfName_HeaderFile
 #define _DNaming_DataMapIteratorOfDataMapOfShapeOfName_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_DNaming_DataMapNodeOfDataMapOfShapeOfName_HeaderFile
 #include <Handle_DNaming_DataMapNodeOfDataMapOfShapeOfName.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class TCollection_AsciiString;
@@ -31,22 +21,22 @@ class DNaming_DataMapNodeOfDataMapOfShapeOfName;
 
 
 
-class DNaming_DataMapIteratorOfDataMapOfShapeOfName  : public TCollection_BasicMapIterator {
+class DNaming_DataMapIteratorOfDataMapOfShapeOfName  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   DNaming_DataMapIteratorOfDataMapOfShapeOfName();
+  Standard_EXPORT DNaming_DataMapIteratorOfDataMapOfShapeOfName();
   
-  Standard_EXPORT   DNaming_DataMapIteratorOfDataMapOfShapeOfName(const DNaming_DataMapOfShapeOfName& aMap);
+  Standard_EXPORT DNaming_DataMapIteratorOfDataMapOfShapeOfName(const DNaming_DataMapOfShapeOfName& aMap);
   
-  Standard_EXPORT     void Initialize(const DNaming_DataMapOfShapeOfName& aMap) ;
+  Standard_EXPORT   void Initialize (const DNaming_DataMapOfShapeOfName& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const TCollection_AsciiString& Value() const;
-
+  Standard_EXPORT  const  TCollection_AsciiString& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DNaming_DataMapIteratorOfDataMapOfShapeOfName_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_TopOpeBRepDS_CurvePointInterference_HeaderFile
 #define _Handle_TopOpeBRepDS_CurvePointInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TopOpeBRepDS_Interference);
 class TopOpeBRepDS_CurvePointInterference;
 
-DEFINE_STANDARD_HANDLE(TopOpeBRepDS_CurvePointInterference,TopOpeBRepDS_Interference)
+DEFINE_STANDARD_HANDLE(TopOpeBRepDS_CurvePointInterference, TopOpeBRepDS_Interference)
 
-#endif
+#endif // _Handle_TopOpeBRepDS_CurvePointInterference_HeaderFile

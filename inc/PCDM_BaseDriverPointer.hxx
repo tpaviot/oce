@@ -7,7 +7,6 @@
 #define _PCDM_BaseDriverPointer_HeaderFile
 
 class Storage_BaseDriver;
-
 typedef Storage_BaseDriver* PCDM_BaseDriverPointer;
 
-#endif
+#endif // _PCDM_BaseDriverPointer_HeaderFile

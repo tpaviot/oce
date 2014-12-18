@@ -6,52 +6,47 @@
 #ifndef _DNaming_CylinderDriver_HeaderFile
 #define _DNaming_CylinderDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_DNaming_CylinderDriver_HeaderFile
 #include <Handle_DNaming_CylinderDriver.hxx>
-#endif
 
-#ifndef _TFunction_Driver_HeaderFile
 #include <TFunction_Driver.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TFunction_Logbook;
 class TDF_Label;
 class BRepPrimAPI_MakeCylinder;
 
 
-//!  Computes Cylinder function <br>
-class DNaming_CylinderDriver : public TFunction_Driver {
+//! Computes Cylinder function
+class DNaming_CylinderDriver : public TFunction_Driver
+{
 
 public:
 
-  //! Constructor <br>//! validation <br>
-//!          ========== <br>
-  Standard_EXPORT   DNaming_CylinderDriver();
-  //! Validates labels of a function in <log>. <br>
-//!          In regeneration mode this method must be called (by the <br>
-//!          solver) even if the function is not executed, to build <br>
-//!          the valid label scope. <br>//! execution of function <br>
-//!          ====================== <br>
-  Standard_EXPORT   virtual  void Validate(TFunction_Logbook& theLog) const;
-  //! Analyse in <log> if the loaded function must be executed <br>
-//!          (i.e.arguments are modified) or not. <br>
-//!          If the Function label itself is modified, the function must <br>
-//!          be executed. <br>
-  Standard_EXPORT   virtual  Standard_Boolean MustExecute(const TFunction_Logbook& theLog) const;
-  //! Execute the function and push in <log> the impacted <br>
-//!          labels (see method SetImpacted). <br>
-  Standard_EXPORT   virtual  Standard_Integer Execute(TFunction_Logbook& theLog) const;
+  
+  //! Constructor
+  //! validation
+  //! ==========
+  Standard_EXPORT DNaming_CylinderDriver();
+  
+  //! Validates labels of a function in <log>.
+  //! In regeneration mode this method must be called (by the
+  //! solver) even if the function is not executed, to build
+  //! the valid label scope.
+  //! execution of function
+  //! ======================
+  Standard_EXPORT virtual   void Validate (TFunction_Logbook& theLog)  const;
+  
+  //! Analyse in <log> if the loaded function must be executed
+  //! (i.e.arguments are modified) or not.
+  //! If the Function label itself is modified, the function must
+  //! be executed.
+  Standard_EXPORT virtual   Standard_Boolean MustExecute (const TFunction_Logbook& theLog)  const;
+  
+  //! Execute the function and push in <log> the impacted
+  //! labels (see method SetImpacted).
+  Standard_EXPORT virtual   Standard_Integer Execute (TFunction_Logbook& theLog)  const;
 
 
 
@@ -66,7 +61,7 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void LoadNamingDS(const TDF_Label& theResultLabel,BRepPrimAPI_MakeCylinder& mkCyl) const;
+  Standard_EXPORT   void LoadNamingDS (const TDF_Label& theResultLabel, BRepPrimAPI_MakeCylinder& mkCyl)  const;
 
 
 
@@ -76,7 +71,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DNaming_CylinderDriver_HeaderFile

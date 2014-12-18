@@ -6,53 +6,41 @@
 #ifndef _StepBasic_Unit_HeaderFile
 #define _StepBasic_Unit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_NamedUnit_HeaderFile
 #include <Handle_StepBasic_NamedUnit.hxx>
-#endif
-#ifndef _Handle_StepBasic_DerivedUnit_HeaderFile
 #include <Handle_StepBasic_DerivedUnit.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_NamedUnit;
 class StepBasic_DerivedUnit;
 
 
-//! Implements a select type unit (NamedUnit or DerivedUnit) <br>
-class StepBasic_Unit  : public StepData_SelectType {
+//! Implements a select type unit (NamedUnit or DerivedUnit)
+class StepBasic_Unit  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates empty object <br>
-  Standard_EXPORT   StepBasic_Unit();
-  //! Recognizes a type of Unit Entity <br>
-//!        1 -> NamedUnit <br>
-//!        2 -> DerivedUnit <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a NamedUnit (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_NamedUnit NamedUnit() const;
-  //! returns Value as a DerivedUnit (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_DerivedUnit DerivedUnit() const;
-
+  
+  //! Creates empty object
+  Standard_EXPORT StepBasic_Unit();
+  
+  //! Recognizes a type of Unit Entity
+  //! 1 -> NamedUnit
+  //! 2 -> DerivedUnit
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a NamedUnit (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_NamedUnit) NamedUnit()  const;
+  
+  //! returns Value as a DerivedUnit (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_DerivedUnit) DerivedUnit()  const;
 
 
 
@@ -75,7 +63,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_Unit_HeaderFile

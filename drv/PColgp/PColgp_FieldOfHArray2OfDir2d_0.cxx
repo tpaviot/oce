@@ -5,31 +5,15 @@
 
 #include <PColgp_FieldOfHArray2OfDir2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NegativeValue_HeaderFile
 #include <Standard_NegativeValue.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray2OfDir2d_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray2OfDir2d.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfDir2d_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray2OfDir2d.hxx>
-#endif
 
 IMPLEMENT_STANDARD_TYPE(PColgp_FieldOfHArray2OfDir2d)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()

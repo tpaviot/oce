@@ -36,50 +36,21 @@ uses AppParCurves, Geom, math, StdFail, TCollection, TColStd, gp,
      TColgp, Standard
 
 
-is
-
-
-    deferred generic class TheLineTool; --- Template
-    	---Purpose: Tool describing a continous MultiLine.
-   	 --          The MultiLine is described by a parameter.
-
-    deferred generic class TheSurfTool; --- Template
-    	---Purpose: Tool describing a continous Surface.
-	    --          The Surface is described by a couple of parameters.
-
-
+is                                                                         
 
     -------------------------------
     --- Algorithms:
     -------------------------------
-  
-    ---Purpose: The two following algorithms are using the same recipe:
-    --          Minimizing the difference between the approximate result 
-    --          Curve or Surface and respectively a continous MultiLine 
-    --          or a continous surface.
 
     generic class LeastSquare;
-	    ---Purpose: makes an approximation of a continous Line described by
-	    --          the tool TheLineTool.
-
-    generic class SurfLeastSquare;
-	    ---Purpose: makes an approximation of a continous Surface 
-	    --          described by the tool TheSurfaceTool.
-
-
 
     ------------------------------------------------------
     --- Necessary class for approximation a function f(t):
     ------------------------------------------------------
 
     deferred class Function;
-	    ---Purpose: This class must be provided by the user to use the
-	    --          approximation algorithm FittingCurve.
-
 
     class FunctionTool;
-	    ---Purpose: This class is the inteface between the Function 
-	    --          class and the tool asked by LeastSquare.
 
 
     ---------------------------------------------------------
@@ -87,14 +58,8 @@ is
     ---------------------------------------------------------
 
     deferred class Function2d;
-	    ---Purpose: This class must be provided by the user to use the
-	    --          approximation algorithm FittingCurve2d.
-
 
     class FunctionTool2d;
-	    ---Purpose: This class is the inteface between the Function2d 
-	    --          class and the tool asked by LeastSquare.
-
 
 
     class FitFunction instantiates LeastSquare from AppCont

@@ -5,27 +5,13 @@
 
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopTools_DataMapNodeOfDataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapNodeOfDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopTools_DataMapIteratorOfDataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapIteratorOfDataMapOfShapeListOfShape.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

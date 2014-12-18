@@ -5,16 +5,10 @@
 
 #include <IntSurf_SequenceNodeOfSequenceOfCouple.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntSurf_Couple_HeaderFile
 #include <IntSurf_Couple.hxx>
-#endif
-#ifndef _IntSurf_SequenceOfCouple_HeaderFile
 #include <IntSurf_SequenceOfCouple.hxx>
-#endif
 
  
 

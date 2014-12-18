@@ -16,13 +16,11 @@
 #ifndef NCollection_Array2_HeaderFile
 #define NCollection_Array2_HeaderFile
 
-#ifndef No_Exception
 #include <Standard_DimensionMismatch.hxx>
 #include <Standard_OutOfMemory.hxx>
 #include <Standard_OutOfRange.hxx>
-#endif
 
-#include <NCollection_BaseCollection.hxx>
+#include <NCollection_DefineAlloc.hxx>
 
 // *********************************************** Template for Array2 class
 /**
@@ -37,12 +35,16 @@
 *            for (i = A.LowerRow(); i <= A.UpperRow(); i++)
 *              for (j = A.LowerCol(); j <= A.UpperCol(); j++)
 */            
-template <class TheItemType> class NCollection_Array2
-  : public NCollection_BaseCollection<TheItemType>
+template <class TheItemType>
+class NCollection_Array2
 {
- public:
+public:
+  //! STL-compliant typedef for value type
+  typedef TheItemType value_type;
+
+public:
   // **************** Implementation of the Iterator interface.
-  class Iterator : public NCollection_BaseCollection<TheItemType>::Iterator
+  class Iterator
   {
   public:
     //! Empty constructor - for later Init
@@ -63,16 +65,16 @@ template <class TheItemType> class NCollection_Array2
       myArray   = (NCollection_Array2<TheItemType> *) &theArray; 
     }
     //! Check end
-    virtual Standard_Boolean More (void) const
+    Standard_Boolean More (void) const
     { return (myCurrent < mySize); }
     //! Make step
-    virtual void Next (void)
+    void Next (void)
     { myCurrent++; }
     //! Constant value access
-    virtual const TheItemType& Value (void) const
+    const TheItemType& Value (void) const
     { return myArray->myStart[myCurrent]; }
     //! Variable value access
-    virtual TheItemType& ChangeValue (void) const
+    TheItemType& ChangeValue (void) const
     { return myArray->myStart[myCurrent]; }
   private:
     Standard_Integer    myCurrent;  //!< Index of the current item
@@ -88,7 +90,6 @@ template <class TheItemType> class NCollection_Array2
                      const Standard_Integer theRowUpper,
                      const Standard_Integer theColLower,
                      const Standard_Integer theColUpper) :
-    NCollection_BaseCollection<TheItemType>     (),
     myLowerRow                                  (theRowLower),
     myUpperRow                                  (theRowUpper),
     myLowerCol                                  (theColLower),
@@ -98,7 +99,6 @@ template <class TheItemType> class NCollection_Array2
 
   //! Copy constructor 
   NCollection_Array2 (const NCollection_Array2& theOther) :
-    NCollection_BaseCollection<TheItemType>     (),
     myLowerRow                                  (theOther.LowerRow()),
     myUpperRow                                  (theOther.UpperRow()),
     myLowerCol                                  (theOther.LowerCol()),
@@ -115,7 +115,6 @@ template <class TheItemType> class NCollection_Array2
                      const Standard_Integer theRowUpper,
                      const Standard_Integer theColLower,
                      const Standard_Integer theColUpper) :
-    NCollection_BaseCollection<TheItemType>     (),
     myLowerRow                                  (theRowLower),
     myUpperRow                                  (theRowUpper),
     myLowerCol                                  (theColLower),
@@ -135,7 +134,7 @@ template <class TheItemType> class NCollection_Array2
   }
 
   //! Size (number of items)
-  virtual Standard_Integer Size (void) const
+  Standard_Integer Size (void) const
   { return Length(); }
   //! Length (number of items)
   Standard_Integer Length (void) const
@@ -165,35 +164,12 @@ template <class TheItemType> class NCollection_Array2
   Standard_Boolean IsDeletable (void) const
   { return myDeletable; }
 
-  //! Assign 
-  // Copies items from the other collection into the allocated
-  // storage. Raises an exception when sizes differ.
-  virtual void Assign (const NCollection_BaseCollection<TheItemType>& theOther)
-  {
-    if (&theOther == this)
-      return;
-#if !defined No_Exception && !defined No_Standard_DimensionMismatch
-    if (Length() != theOther.Size())
-      Standard_DimensionMismatch::Raise ("NCollection_Array2::Assign");
-#endif
-    TYPENAME NCollection_BaseCollection<TheItemType>::Iterator& anIter2 = 
-      theOther.CreateIterator();
-    const TheItemType* pEnd = myStart+Length();
-    for (TheItemType* pItem=myStart;
-         pItem < pEnd;
-         pItem++, anIter2.Next())
-      *pItem = anIter2.Value();
-  }
-
-  //! operator= (array to array)
-  NCollection_Array2& operator= (const NCollection_Array2& theOther)
+  //! Assignment
+  NCollection_Array2& Assign (const NCollection_Array2& theOther)
   { 
     if (&theOther == this)
       return *this;
-#if !defined No_Exception && !defined No_Standard_DimensionMismatch
-    if (Length() != theOther.Length())
-      Standard_DimensionMismatch::Raise ("NCollection_Array2::operator=");
-#endif
+    Standard_DimensionMismatch_Raise_if (Length() != theOther.Length(), "NCollection_Array2::operator=");
     TheItemType * pMyItem  = myStart;
     TheItemType * pItem    = theOther.myStart;
     const Standard_Integer iSize = Length();
@@ -202,15 +178,18 @@ template <class TheItemType> class NCollection_Array2
     return *this; 
   }
 
+  //! Assignment operator
+  NCollection_Array2& operator= (const NCollection_Array2& theOther)
+  { 
+    return Assign (theOther);
+  }
+
   //! Constant value access
   const TheItemType& Value (const Standard_Integer theRow,
                             const Standard_Integer theCol) const
   {
-#if !defined No_Exception && !defined No_Standard_OutOfRange
-    if (theRow < myLowerRow || theRow > myUpperRow ||
-        theCol < myLowerCol || theCol > myUpperCol)
-      Standard_OutOfRange::Raise ("NCollection_Array2::Value");
-#endif
+    Standard_OutOfRange_Raise_if (theRow < myLowerRow || theRow > myUpperRow ||
+                                  theCol < myLowerCol || theCol > myUpperCol, "NCollection_Array2::Value");
     return myData[theRow][theCol];
   }
 
@@ -223,11 +202,8 @@ template <class TheItemType> class NCollection_Array2
   TheItemType& ChangeValue (const Standard_Integer theRow,
                             const Standard_Integer theCol)
   {
-#if !defined No_Exception && !defined No_Standard_OutOfRange
-    if (theRow < myLowerRow || theRow > myUpperRow ||
-        theCol < myLowerCol || theCol > myUpperCol)
-      Standard_OutOfRange::Raise ("NCollection_Array2::ChangeValue");
-#endif
+    Standard_OutOfRange_Raise_if (theRow < myLowerRow || theRow > myUpperRow ||
+                                  theCol < myLowerCol || theCol > myUpperCol, "NCollection_Array2::ChangeValue");
     return myData[theRow][theCol];
   }
 
@@ -241,11 +217,8 @@ template <class TheItemType> class NCollection_Array2
                  const Standard_Integer theCol,
                  const TheItemType&     theItem)
   {
-#if !defined No_Exception && !defined No_Standard_OutOfRange
-    if (theRow < myLowerRow || theRow > myUpperRow ||
-        theCol < myLowerCol || theCol > myUpperCol)
-      Standard_OutOfRange::Raise ("NCollection_Array2::SetValue");
-#endif
+    Standard_OutOfRange_Raise_if (theRow < myLowerRow || theRow > myUpperRow ||
+                                  theCol < myLowerCol || theCol > myUpperCol, "NCollection_Array2::SetValue");
     myData[theRow][theCol] = theItem;
   }
   
@@ -264,24 +237,15 @@ template <class TheItemType> class NCollection_Array2
   {
     const Standard_Integer iRowSize = myUpperCol - myLowerCol + 1;
     const Standard_Integer iColSize = myUpperRow - myLowerRow + 1;
-#if !defined No_Exception && !defined No_Standard_RangeError
-    if (iRowSize <= 0  || iColSize <= 0)
-      Standard_RangeError::Raise ("NCollection_Array2::Allocate");
-#endif
+    Standard_RangeError_Raise_if (iRowSize <= 0  || iColSize <= 0, "NCollection_Array2::Allocate");
     if (myDeletable) {
       // allocation of the data in the array
       myStart = new TheItemType[iRowSize * iColSize];
-#if !defined No_Exception && !defined No_Standard_OutOfMemory
-      if (!myStart)
-        Standard_OutOfMemory::Raise ("NCollection_Array2 : Allocation failed");
-#endif
+      Standard_OutOfMemory_Raise_if (!myStart, "NCollection_Array2 : Allocation failed");
     }
     // else myStart is set to the beginning of the given array
     TheItemType** pTable = new TheItemType* [iColSize];
-#if !defined No_Exception && !defined No_Standard_OutOfMemory
-    if (!pTable)
-      Standard_OutOfMemory::Raise ("NCollection_Array2 : Allocation failed");
-#endif
+    Standard_OutOfMemory_Raise_if (!pTable, "NCollection_Array2 : Allocation failed");
 
     // Items of pTable point to the '0'th items in the rows of the array
     TheItemType* pRow = myStart - myLowerCol;
@@ -294,11 +258,6 @@ template <class TheItemType> class NCollection_Array2
     // Set myData to the '0'th row pointer of the pTable
     myData = pTable - myLowerRow;
   }
-
-  //! Creates Iterator for use on BaseCollection
-  virtual TYPENAME NCollection_BaseCollection<TheItemType>::Iterator& 
-    CreateIterator(void) const
-  { return *(new (this->IterAllocator()) Iterator(*this)); }
 
  protected:
   // ---------- PROTECTED FIELDS -----------

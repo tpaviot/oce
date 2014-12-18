@@ -5,26 +5,16 @@
 
 #include <CDM_DataMapIteratorOfMetaDataLookUpTable.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _CDM_MetaData_HeaderFile
 #include <CDM_MetaData.hxx>
-#endif
-#ifndef _CDM_MetaDataLookUpTable_HeaderFile
 #include <CDM_MetaDataLookUpTable.hxx>
-#endif
-#ifndef _CDM_DataMapNodeOfMetaDataLookUpTable_HeaderFile
 #include <CDM_DataMapNodeOfMetaDataLookUpTable.hxx>
-#endif
  
 
 #define TheKey TCollection_ExtendedString
 #define TheKey_hxx <TCollection_ExtendedString.hxx>
-#define TheItem Handle_CDM_MetaData
+#define TheItem Handle(CDM_MetaData)
 #define TheItem_hxx <CDM_MetaData.hxx>
 #define Hasher TCollection_ExtendedString
 #define Hasher_hxx <TCollection_ExtendedString.hxx>

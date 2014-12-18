@@ -6,16 +6,15 @@
 #ifndef _Aspect_GridDrawMode_HeaderFile
 #define _Aspect_GridDrawMode_HeaderFile
 
-//! Defines the grid draw mode. The grid may be drawn <br>
-//!          by using lines or points. <br>
-enum Aspect_GridDrawMode {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Defines the grid draw mode. The grid may be drawn
+//! by using lines or points.
+enum Aspect_GridDrawMode
+{
 Aspect_GDM_Lines,
 Aspect_GDM_Points,
 Aspect_GDM_None
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_GridDrawMode_HeaderFile

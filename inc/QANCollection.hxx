@@ -6,30 +6,17 @@
 #ifndef _QANCollection_HeaderFile
 #define _QANCollection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-class Draw_Interpretor;
+#include <Draw_Interpretor.hxx>
 class QANCollection_ListOfPnt;
-class QANCollection_QueueOfPnt;
-class QANCollection_StackOfPnt;
-class QANCollection_SListOfPnt;
 class QANCollection_DataMapOfRealPnt;
 class QANCollection_IndexedDataMapOfRealPnt;
 class QANCollection_DoubleMapOfRealInteger;
 class QANCollection_ListNodeOfListOfPnt;
 class QANCollection_ListIteratorOfListOfPnt;
-class QANCollection_QueueNodeOfQueueOfPnt;
-class QANCollection_StackNodeOfStackOfPnt;
-class QANCollection_StackIteratorOfStackOfPnt;
-class QANCollection_SListNodeOfSListOfPnt;
 class QANCollection_DataMapNodeOfDataMapOfRealPnt;
 class QANCollection_DataMapIteratorOfDataMapOfRealPnt;
 class QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt;
@@ -38,22 +25,24 @@ class QANCollection_DoubleMapIteratorOfDoubleMapOfRealInteger;
 
 
 
-class QANCollection  {
+class QANCollection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void Commands(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands1(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void CommandsSimple (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands2(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void CommandsTest (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands3(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void CommandsPerf (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void Commands4(Draw_Interpretor& DI) ;
-
+  Standard_EXPORT static   void CommandsAlloc (Draw_Interpretor& DI) ;
+  
+  Standard_EXPORT static   void CommandsStl (Draw_Interpretor& DI) ;
 
 
 
@@ -70,18 +59,11 @@ private:
 
 
 friend class QANCollection_ListOfPnt;
-friend class QANCollection_QueueOfPnt;
-friend class QANCollection_StackOfPnt;
-friend class QANCollection_SListOfPnt;
 friend class QANCollection_DataMapOfRealPnt;
 friend class QANCollection_IndexedDataMapOfRealPnt;
 friend class QANCollection_DoubleMapOfRealInteger;
 friend class QANCollection_ListNodeOfListOfPnt;
 friend class QANCollection_ListIteratorOfListOfPnt;
-friend class QANCollection_QueueNodeOfQueueOfPnt;
-friend class QANCollection_StackNodeOfStackOfPnt;
-friend class QANCollection_StackIteratorOfStackOfPnt;
-friend class QANCollection_SListNodeOfSListOfPnt;
 friend class QANCollection_DataMapNodeOfDataMapOfRealPnt;
 friend class QANCollection_DataMapIteratorOfDataMapOfRealPnt;
 friend class QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt;
@@ -94,7 +76,6 @@ friend class QANCollection_DoubleMapIteratorOfDoubleMapOfRealInteger;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANCollection_HeaderFile

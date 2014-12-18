@@ -7,7 +7,6 @@
 #define _TestTopOpeTools_PMesure_HeaderFile
 
 class TestTopOpeTools_Mesure;
-
 typedef TestTopOpeTools_Mesure* TestTopOpeTools_PMesure;
 
-#endif
+#endif // _TestTopOpeTools_PMesure_HeaderFile

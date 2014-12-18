@@ -6,46 +6,20 @@
 #ifndef _StepRepr_CharacterizedDefinition_HeaderFile
 #define _StepRepr_CharacterizedDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_CharacterizedObject_HeaderFile
 #include <Handle_StepBasic_CharacterizedObject.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _Handle_StepRepr_ProductDefinitionShape_HeaderFile
 #include <Handle_StepRepr_ProductDefinitionShape.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspectRelationship_HeaderFile
 #include <Handle_StepRepr_ShapeAspectRelationship.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentFile_HeaderFile
 #include <Handle_StepBasic_DocumentFile.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_CharacterizedObject;
 class StepBasic_ProductDefinition;
@@ -56,39 +30,48 @@ class StepRepr_ShapeAspectRelationship;
 class StepBasic_DocumentFile;
 
 
-//! Representation of STEP SELECT type CharacterizedDefinition <br>
-class StepRepr_CharacterizedDefinition  : public StepData_SelectType {
+//! Representation of STEP SELECT type CharacterizedDefinition
+class StepRepr_CharacterizedDefinition  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepRepr_CharacterizedDefinition();
-  //! Recognizes a kind of CharacterizedDefinition select type <br>
-//!          1 -> CharacterizedObject from StepBasic <br>
-//!          2 -> ProductDefinition from StepBasic <br>
-//!          3 -> ProductDefinitionRelationship from StepBasic <br>
-//!          4 -> ProductDefinitionShape from StepRepr <br>
-//!          5 -> ShapeAspect from StepRepr <br>
-//!          6 -> ShapeAspectRelationship from StepRepr <br>
-//!          7 -> DocumentFile from StepBasic <br>
-//!          0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as CharacterizedObject (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_CharacterizedObject CharacterizedObject() const;
-  //! Returns Value as ProductDefinition (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinition ProductDefinition() const;
-  //! Returns Value as ProductDefinitionRelationship (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionRelationship ProductDefinitionRelationship() const;
-  //! Returns Value as ProductDefinitionShape (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ProductDefinitionShape ProductDefinitionShape() const;
-  //! Returns Value as ShapeAspect (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ShapeAspect ShapeAspect() const;
-  //! Returns Value as ShapeAspectRelationship (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ShapeAspectRelationship ShapeAspectRelationship() const;
-  //! Returns Value as DocumentFile (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_DocumentFile DocumentFile() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT StepRepr_CharacterizedDefinition();
+  
+  //! Recognizes a kind of CharacterizedDefinition select type
+  //! 1 -> CharacterizedObject from StepBasic
+  //! 2 -> ProductDefinition from StepBasic
+  //! 3 -> ProductDefinitionRelationship from StepBasic
+  //! 4 -> ProductDefinitionShape from StepRepr
+  //! 5 -> ShapeAspect from StepRepr
+  //! 6 -> ShapeAspectRelationship from StepRepr
+  //! 7 -> DocumentFile from StepBasic
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as CharacterizedObject (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_CharacterizedObject) CharacterizedObject()  const;
+  
+  //! Returns Value as ProductDefinition (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinition) ProductDefinition()  const;
+  
+  //! Returns Value as ProductDefinitionRelationship (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionRelationship) ProductDefinitionRelationship()  const;
+  
+  //! Returns Value as ProductDefinitionShape (or Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ProductDefinitionShape) ProductDefinitionShape()  const;
+  
+  //! Returns Value as ShapeAspect (or Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ShapeAspect) ShapeAspect()  const;
+  
+  //! Returns Value as ShapeAspectRelationship (or Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ShapeAspectRelationship) ShapeAspectRelationship()  const;
+  
+  //! Returns Value as DocumentFile (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_DocumentFile) DocumentFile()  const;
 
 
 
@@ -111,7 +94,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_CharacterizedDefinition_HeaderFile

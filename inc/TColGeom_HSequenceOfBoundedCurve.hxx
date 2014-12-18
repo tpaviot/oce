@@ -6,31 +6,15 @@
 #ifndef _TColGeom_HSequenceOfBoundedCurve_HeaderFile
 #define _TColGeom_HSequenceOfBoundedCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColGeom_HSequenceOfBoundedCurve_HeaderFile
 #include <Handle_TColGeom_HSequenceOfBoundedCurve.hxx>
-#endif
 
-#ifndef _TColGeom_SequenceOfBoundedCurve_HeaderFile
 #include <TColGeom_SequenceOfBoundedCurve.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Geom_BoundedCurve_HeaderFile
 #include <Handle_Geom_BoundedCurve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Geom_BoundedCurve;
@@ -38,56 +22,57 @@ class TColGeom_SequenceOfBoundedCurve;
 
 
 
-class TColGeom_HSequenceOfBoundedCurve : public MMgt_TShared {
+class TColGeom_HSequenceOfBoundedCurve : public MMgt_TShared
+{
 
 public:
 
   
-      TColGeom_HSequenceOfBoundedCurve();
+    TColGeom_HSequenceOfBoundedCurve();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(Geom_BoundedCurve)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(Geom_BoundedCurve)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(TColGeom_HSequenceOfBoundedCurve)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(TColGeom_HSequenceOfBoundedCurve)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Geom_BoundedCurve)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(Geom_BoundedCurve)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TColGeom_HSequenceOfBoundedCurve)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(TColGeom_HSequenceOfBoundedCurve)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(Geom_BoundedCurve)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(Geom_BoundedCurve)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(TColGeom_HSequenceOfBoundedCurve)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(TColGeom_HSequenceOfBoundedCurve)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(Geom_BoundedCurve)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(Geom_BoundedCurve)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(TColGeom_HSequenceOfBoundedCurve)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(TColGeom_HSequenceOfBoundedCurve)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_TColGeom_HSequenceOfBoundedCurve Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(TColGeom_HSequenceOfBoundedCurve) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(Geom_BoundedCurve)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(Geom_BoundedCurve)& anItem) ;
   
-  Standard_EXPORT    const Handle_Geom_BoundedCurve& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(Geom_BoundedCurve)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_Geom_BoundedCurve& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(Geom_BoundedCurve)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const TColGeom_SequenceOfBoundedCurve& Sequence() const;
+     const  TColGeom_SequenceOfBoundedCurve& Sequence()  const;
   
-        TColGeom_SequenceOfBoundedCurve& ChangeSequence() ;
+      TColGeom_SequenceOfBoundedCurve& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_TColGeom_HSequenceOfBoundedCurve ShallowCopy() const;
+  Standard_EXPORT   Handle(TColGeom_HSequenceOfBoundedCurve) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-TColGeom_SequenceOfBoundedCurve mySequence;
+  TColGeom_SequenceOfBoundedCurve mySequence;
 
 
 };
 
-#define Item Handle_Geom_BoundedCurve
+#define Item Handle(Geom_BoundedCurve)
 #define Item_hxx <Geom_BoundedCurve.hxx>
 #define TheSequence TColGeom_SequenceOfBoundedCurve
 #define TheSequence_hxx <TColGeom_SequenceOfBoundedCurve.hxx>
@@ -128,11 +113,10 @@ TColGeom_SequenceOfBoundedCurve mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_TColGeom_HSequenceOfBoundedCurve ShallowCopy(const Handle_TColGeom_HSequenceOfBoundedCurve& me) {
+inline Handle(TColGeom_HSequenceOfBoundedCurve) ShallowCopy(const Handle(TColGeom_HSequenceOfBoundedCurve)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _TColGeom_HSequenceOfBoundedCurve_HeaderFile

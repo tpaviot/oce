@@ -6,75 +6,86 @@
 #ifndef _BRepTest_HeaderFile
 #define _BRepTest_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-class Draw_Interpretor;
+#include <Draw_Interpretor.hxx>
 
 
-//! Provides commands to test BRep. <br>
-//! <br>
-class BRepTest  {
+//! Provides commands to test BRep.
+class BRepTest 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines all the topology commands. <br>
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& DI) ;
-  //! Defines the basic commands. <br>
-  Standard_EXPORT   static  void BasicCommands(Draw_Interpretor& DI) ;
-  //! Defines the commands to build edges and wires. <br>
-  Standard_EXPORT   static  void CurveCommands(Draw_Interpretor& DI) ;
-  //!  Defines the  commands  to perform add  fillets on <br>
-//!          wires and  edges. <br>
-  Standard_EXPORT   static  void Fillet2DCommands(Draw_Interpretor& DI) ;
-  //! Defines the commands to build faces and shells. <br>
-  Standard_EXPORT   static  void SurfaceCommands(Draw_Interpretor& DI) ;
-  //! Defines the commands to build primitives. <br>
-  Standard_EXPORT   static  void PrimitiveCommands(Draw_Interpretor& DI) ;
-  //! Defines the commands to build primitives. <br>
-  Standard_EXPORT   static  void FillingCommands(Draw_Interpretor& DI) ;
-  //! Defines the commands to sweep shapes. <br>
-  Standard_EXPORT   static  void SweepCommands(Draw_Interpretor& DI) ;
-  //! Defines  the    commands   to perform  topological <br>
-//!          operations. <br>
-  Standard_EXPORT   static  void TopologyCommands(Draw_Interpretor& DI) ;
-  //! Defines  the commands  to perform  add  fillets on <br>
-//!          shells. <br>
-  Standard_EXPORT   static  void FilletCommands(Draw_Interpretor& DI) ;
-  //! Defines  the commands  to perform  add chamfers on <br>
-//!          shells. <br>
-  Standard_EXPORT   static  void ChamferCommands(Draw_Interpretor& DI) ;
-  //! Defines commands to compute global properties. <br>
-  Standard_EXPORT   static  void GPropCommands(Draw_Interpretor& DI) ;
-  //! Defines commands to compute and to explore the map of the <br>
-//!          Bisecting locus. <br>
-  Standard_EXPORT   static  void MatCommands(Draw_Interpretor& DI) ;
-  //! Defines the commands to modify draft angles of the <br>
-//!          faces of a shape. <br>
-  Standard_EXPORT   static  void DraftAngleCommands(Draw_Interpretor& DI) ;
-  //! Defines the commands to create features on a shape. <br>
-  Standard_EXPORT   static  void FeatureCommands(Draw_Interpretor& DI) ;
-  //! Defines the auxiliary topology commands. <br>
-  Standard_EXPORT   static  void OtherCommands(Draw_Interpretor& DI) ;
-  //! Defines the extrema commands. <br>
-  Standard_EXPORT   static  void ExtremaCommands(Draw_Interpretor& DI) ;
-  //! Defines the checkshape command. <br>
-  Standard_EXPORT   static  void CheckCommands(Draw_Interpretor& DI) ;
-  //! Defines the placement  command. <br>
-//! <br>
-  Standard_EXPORT   static  void PlacementCommands(Draw_Interpretor& DI) ;
-  //! Defines the commands to project a wire on a shape. <br>
-//! <br>
-  Standard_EXPORT   static  void ProjectionCommands(Draw_Interpretor& DI) ;
-
+  
+  //! Defines all the topology commands.
+  Standard_EXPORT static   void AllCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the basic commands.
+  Standard_EXPORT static   void BasicCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the commands to build edges and wires.
+  Standard_EXPORT static   void CurveCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the  commands  to perform add  fillets on
+  //! wires and  edges.
+  Standard_EXPORT static   void Fillet2DCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the commands to build faces and shells.
+  Standard_EXPORT static   void SurfaceCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the commands to build primitives.
+  Standard_EXPORT static   void PrimitiveCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the commands to build primitives.
+  Standard_EXPORT static   void FillingCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the commands to sweep shapes.
+  Standard_EXPORT static   void SweepCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines  the    commands   to perform  topological
+  //! operations.
+  Standard_EXPORT static   void TopologyCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines  the commands  to perform  add  fillets on
+  //! shells.
+  Standard_EXPORT static   void FilletCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines  the commands  to perform  add chamfers on
+  //! shells.
+  Standard_EXPORT static   void ChamferCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines commands to compute global properties.
+  Standard_EXPORT static   void GPropCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines commands to compute and to explore the map of the
+  //! Bisecting locus.
+  Standard_EXPORT static   void MatCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the commands to modify draft angles of the
+  //! faces of a shape.
+  Standard_EXPORT static   void DraftAngleCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the commands to create features on a shape.
+  Standard_EXPORT static   void FeatureCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the auxiliary topology commands.
+  Standard_EXPORT static   void OtherCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the extrema commands.
+  Standard_EXPORT static   void ExtremaCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the checkshape command.
+  Standard_EXPORT static   void CheckCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the placement  command.
+  Standard_EXPORT static   void PlacementCommands (Draw_Interpretor& DI) ;
+  
+  //! Defines the commands to project a wire on a shape.
+  Standard_EXPORT static   void ProjectionCommands (Draw_Interpretor& DI) ;
 
 
 
@@ -97,7 +108,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepTest_HeaderFile

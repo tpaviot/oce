@@ -6,28 +6,14 @@
 #ifndef _SelectMgr_DataMapNodeOfDataMapOfSelectionActivation_HeaderFile
 #define _SelectMgr_DataMapNodeOfDataMapOfSelectionActivation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_DataMapNodeOfDataMapOfSelectionActivation_HeaderFile
 #include <Handle_SelectMgr_DataMapNodeOfDataMapOfSelectionActivation.hxx>
-#endif
 
-#ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class SelectMgr_Selection;
 class TColStd_MapTransientHasher;
 class SelectMgr_DataMapOfSelectionActivation;
@@ -35,16 +21,17 @@ class SelectMgr_DataMapIteratorOfDataMapOfSelectionActivation;
 
 
 
-class SelectMgr_DataMapNodeOfDataMapOfSelectionActivation : public TCollection_MapNode {
+class SelectMgr_DataMapNodeOfDataMapOfSelectionActivation : public TCollection_MapNode
+{
 
 public:
 
   
-      SelectMgr_DataMapNodeOfDataMapOfSelectionActivation(const Handle(SelectMgr_Selection)& K,const Standard_Integer& I,const TCollection_MapNodePtr& n);
+    SelectMgr_DataMapNodeOfDataMapOfSelectionActivation(const Handle(SelectMgr_Selection)& K, const Standard_Integer& I, const TCollection_MapNodePtr& n);
   
-        Handle_SelectMgr_Selection& Key() const;
+      Handle(SelectMgr_Selection)& Key()  const;
   
-        Standard_Integer& Value() const;
+      Standard_Integer& Value()  const;
 
 
 
@@ -59,13 +46,13 @@ protected:
 private: 
 
 
-Handle_SelectMgr_Selection myKey;
-Standard_Integer myValue;
+  Handle(SelectMgr_Selection) myKey;
+  Standard_Integer myValue;
 
 
 };
 
-#define TheKey Handle_SelectMgr_Selection
+#define TheKey Handle(SelectMgr_Selection)
 #define TheKey_hxx <SelectMgr_Selection.hxx>
 #define TheItem Standard_Integer
 #define TheItem_hxx <Standard_Integer.hxx>
@@ -98,7 +85,6 @@ Standard_Integer myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_DataMapNodeOfDataMapOfSelectionActivation_HeaderFile

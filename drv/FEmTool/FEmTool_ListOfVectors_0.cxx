@@ -5,21 +5,13 @@
 
 #include <FEmTool_ListOfVectors.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _FEmTool_ListIteratorOfListOfVectors_HeaderFile
 #include <FEmTool_ListIteratorOfListOfVectors.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _FEmTool_ListNodeOfListOfVectors_HeaderFile
 #include <FEmTool_ListNodeOfListOfVectors.hxx>
-#endif
  
 
-#define Item Handle_TColStd_HArray1OfReal
+#define Item Handle(TColStd_HArray1OfReal)
 #define Item_hxx <TColStd_HArray1OfReal.hxx>
 #define TCollection_ListNode FEmTool_ListNodeOfListOfVectors
 #define TCollection_ListNode_hxx <FEmTool_ListNodeOfListOfVectors.hxx>

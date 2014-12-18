@@ -6,9 +6,12 @@
 #ifndef _GeomAbs_CurveForm_HeaderFile
 #define _GeomAbs_CurveForm_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//!  This enumeration is used to note specific curve form. <br>
-enum GeomAbs_CurveForm {
+
+//! This enumeration is used to note specific curve form.
+enum GeomAbs_CurveForm
+{
 GeomAbs_PolylineForm,
 GeomAbs_CircularForm,
 GeomAbs_EllipticForm,
@@ -17,8 +20,4 @@ GeomAbs_ParabolicForm,
 GeomAbs_OtherCurveForm
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GeomAbs_CurveForm_HeaderFile

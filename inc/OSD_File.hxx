@@ -6,43 +6,19 @@
 #ifndef _OSD_File_HeaderFile
 #define _OSD_File_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _OSD_LockType_HeaderFile
 #include <OSD_LockType.hxx>
-#endif
-#ifndef _OSD_OpenMode_HeaderFile
 #include <OSD_OpenMode.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _OSD_FileNode_HeaderFile
 #include <OSD_FileNode.hxx>
-#endif
-#ifndef _OSD_FromWhere_HeaderFile
 #include <OSD_FromWhere.hxx>
-#endif
-#ifndef _OSD_KindFile_HeaderFile
 #include <OSD_KindFile.hxx>
-#endif
-#ifndef _Standard_Size_HeaderFile
 #include <Standard_Size.hxx>
-#endif
 class Standard_ProgramError;
 class OSD_Path;
 class OSD_Protection;
@@ -50,109 +26,136 @@ class TCollection_AsciiString;
 class OSD_Printer;
 
 
-//! Basic tools to manage files <br>
-//!  Warning: 'ProgramError' is raised when somebody wants to use the methods <br>
-//!          Read, Write, Seek, Close when File is not open. <br>
-class OSD_File  : public OSD_FileNode {
+//! Basic tools to manage files
+//! Warning: 'ProgramError' is raised when somebody wants to use the methods
+//! Read, Write, Seek, Close when File is not open.
+class OSD_File  : public OSD_FileNode
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates File object. <br>
-  Standard_EXPORT   OSD_File();
-  //! Instantiates the object file, storing its name <br>
-  Standard_EXPORT   OSD_File(const OSD_Path& Name);
-  //! CREATES a file if it doesn't already exists or empties <br>
-//!          an existing file. <br>
-//!          After 'Build', the file is open. <br>
-//!          If no name was given, ProgramError is raised. <br>
-  Standard_EXPORT     void Build(const OSD_OpenMode Mode,const OSD_Protection& Protect) ;
-  //! Opens a File with specific attributes <br>
-//!          This works only on already existing file. <br>
-//!          If no name was given, ProgramError is raised. <br>
-  Standard_EXPORT     void Open(const OSD_OpenMode Mode,const OSD_Protection& Protect) ;
-  //! Appends data to an existing file. <br>
-//!          If file doesn't exist, creates it first. <br>
-//!          After 'Append', the file is open. <br>
-//!          If no name was given, ProgramError is raised. <br>
-  Standard_EXPORT     void Append(const OSD_OpenMode Mode,const OSD_Protection& Protect) ;
-  //! Attempts to read Nbyte bytes from the file associated with <br>
-//!          the object file. <br>
-//!          Upon successful completion, Read returns the number of <br>
-//!          bytes actually read and placed in the Buffer. This number <br>
-//!          may be less than Nbyte if the number of bytes left in the file <br>
-//!          is less than Nbyte bytes. In this case only number of read <br>
-//!          bytes will be placed in the buffer. <br>
-  Standard_EXPORT     void Read(TCollection_AsciiString& Buffer,const Standard_Integer Nbyte) ;
-  //!  Reads bytes from the data pointed to by the object file <br>
-//!           into the buffer <Buffer>. <br>
-//!           Data is read until <NByte-1> bytes have been read, <br>
-//!           until	a newline character is read and transferred into <br>
-//!           <Buffer>, or until an EOF (End-of-File) condition is <br>
-//!           encountered. <br>
-//!           Upon successful completion, Read returns the number of <br>
-//!           bytes actually read into <NByteRead> and placed into the <br>
-//!           Buffer <Buffer>. <br>
-  Standard_EXPORT     void ReadLine(TCollection_AsciiString& Buffer,const Standard_Integer NByte,Standard_Integer& NbyteRead) ;
-  //! Attempts to read Nbyte bytes from the files associated with <br>
-//!          the object File. <br>
-//!          Upon successful completion, Read returns the number of <br>
-//!          bytes actually read and placed in the Buffer. This number <br>
-//!          may be less than Nbyte if the number of bytes left in the file <br>
-//!          is less than Nbyte bytes. For this reason the output <br>
-//!          parameter Readbyte will contain the number of read bytes. <br>
-  Standard_EXPORT     void Read(Standard_Address& Buffer,const Standard_Integer Nbyte,Standard_Integer& Readbyte) ;
-  //! Attempts to write Nbyte bytes from the AsciiString to the file <br>
-//!          associated to the object File. <br>
-  Standard_EXPORT     void Write(const TCollection_AsciiString& Buffer,const Standard_Integer Nbyte) ;
-  //! Attempts to write Nbyte bytes from the buffer pointed <br>
-//!          to by Buffer to the file associated to the object File. <br>
-  Standard_EXPORT     void Write(const Standard_Address Buffer,const Standard_Integer Nbyte) ;
-  //! Sets the seek pointer associated with the open file <br>
-  Standard_EXPORT     void Seek(const Standard_Integer Offset,const OSD_FromWhere Whence) ;
-  //! Closes the file (and deletes a descriptor) <br>
-  Standard_EXPORT     void Close() ;
-  //! Returns TRUE if the seek pointer is at end of file. <br>
-  Standard_EXPORT     Standard_Boolean IsAtEnd() ;
-  //! Returns the kind of file. A file can be a <br>
-//!          file, a directory or a link. <br>
-  Standard_EXPORT     OSD_KindFile KindOfFile() const;
-  //! Makes a temporary File <br>
-//!          This returned file is already open ! <br>
-//!          This file is non-persistent and will be automatically <br>
-//!          removed when its process finishes. <br>
-  Standard_EXPORT   static  OSD_File BuildTemporary() ;
-  //! Locks current file <br>
-  Standard_EXPORT     void SetLock(const OSD_LockType Lock) ;
-  //! Unlocks current file <br>
-  Standard_EXPORT     void UnLock() ;
-  //! Returns the current lock state <br>
-  Standard_EXPORT     OSD_LockType GetLock() ;
-  //! Returns TRUE if this file is locked. <br>
-  Standard_EXPORT     Standard_Boolean IsLocked() ;
-  //! Returns actual number of bytes of <me>. <br>
-  Standard_EXPORT     Standard_Size Size() ;
-  //! Prints a file on selected printer. <br>
-  Standard_EXPORT     void Print(const OSD_Printer& WhichPrinter) ;
-  //! Returns TRUE if <me> is open. <br>
-  Standard_EXPORT     Standard_Boolean IsOpen() const;
-  //! returns TRUE if the file exists and if the user <br>
-//!          has the autorization to read it. <br>
-  Standard_EXPORT     Standard_Boolean IsReadable() ;
-  //! returns TRUE if the file can be read and overwritten. <br>
-  Standard_EXPORT     Standard_Boolean IsWriteable() ;
-  //! returns TRUE if the file can be executed. <br>
-  Standard_EXPORT     Standard_Boolean IsExecutable() ;
-  //! Enables to emulate unix "tail -f" command. <br>
-//! If a line is available in the file <me> returns it. <br>
-//! Otherwise attemps to read again aNbTries times in the file <br>
-//! waiting aDelay seconds between each read. <br>
-//! If meanwhile the file increases returns the next line, otherwise <br>
-//! returns FALSE. <br>
-  Standard_EXPORT     Standard_Boolean ReadLastLine(TCollection_AsciiString& aLine,const Standard_Integer aDelay,const Standard_Integer aNbTries) ;
-  //! find an editor on the system and edit the given file <br>
-  Standard_EXPORT     Standard_Boolean Edit() ;
-
+  
+  //! Creates File object.
+  Standard_EXPORT OSD_File();
+  
+  //! Instantiates the object file, storing its name
+  Standard_EXPORT OSD_File(const OSD_Path& Name);
+  
+  //! CREATES a file if it doesn't already exists or empties
+  //! an existing file.
+  //! After 'Build', the file is open.
+  //! If no name was given, ProgramError is raised.
+  Standard_EXPORT   void Build (const OSD_OpenMode Mode, const OSD_Protection& Protect) ;
+  
+  //! Opens a File with specific attributes
+  //! This works only on already existing file.
+  //! If no name was given, ProgramError is raised.
+  Standard_EXPORT   void Open (const OSD_OpenMode Mode, const OSD_Protection& Protect) ;
+  
+  //! Appends data to an existing file.
+  //! If file doesn't exist, creates it first.
+  //! After 'Append', the file is open.
+  //! If no name was given, ProgramError is raised.
+  Standard_EXPORT   void Append (const OSD_OpenMode Mode, const OSD_Protection& Protect) ;
+  
+  //! Attempts to read Nbyte bytes from the file associated with
+  //! the object file.
+  //! Upon successful completion, Read returns the number of
+  //! bytes actually read and placed in the Buffer. This number
+  //! may be less than Nbyte if the number of bytes left in the file
+  //! is less than Nbyte bytes. In this case only number of read
+  //! bytes will be placed in the buffer.
+  Standard_EXPORT   void Read (TCollection_AsciiString& Buffer, const Standard_Integer Nbyte) ;
+  
+  //! Reads bytes from the data pointed to by the object file
+  //! into the buffer <Buffer>.
+  //! Data is read until <NByte-1> bytes have been read,
+  //! until	a newline character is read and transferred into
+  //! <Buffer>, or until an EOF (End-of-File) condition is
+  //! encountered.
+  //! Upon successful completion, Read returns the number of
+  //! bytes actually read into <NByteRead> and placed into the
+  //! Buffer <Buffer>.
+  Standard_EXPORT   void ReadLine (TCollection_AsciiString& Buffer, const Standard_Integer NByte, Standard_Integer& NbyteRead) ;
+  
+  //! Attempts to read Nbyte bytes from the files associated with
+  //! the object File.
+  //! Upon successful completion, Read returns the number of
+  //! bytes actually read and placed in the Buffer. This number
+  //! may be less than Nbyte if the number of bytes left in the file
+  //! is less than Nbyte bytes. For this reason the output
+  //! parameter Readbyte will contain the number of read bytes.
+  Standard_EXPORT   void Read (Standard_Address& Buffer, const Standard_Integer Nbyte, Standard_Integer& Readbyte) ;
+  
+  //! Attempts to write Nbyte bytes from the AsciiString to the file
+  //! associated to the object File.
+  Standard_EXPORT   void Write (const TCollection_AsciiString& Buffer, const Standard_Integer Nbyte) ;
+  
+  //! Attempts to write Nbyte bytes from the buffer pointed
+  //! to by Buffer to the file associated to the object File.
+  Standard_EXPORT   void Write (const Standard_Address Buffer, const Standard_Integer Nbyte) ;
+  
+  //! Sets the seek pointer associated with the open file
+  Standard_EXPORT   void Seek (const Standard_Integer Offset, const OSD_FromWhere Whence) ;
+  
+  //! Closes the file (and deletes a descriptor)
+  Standard_EXPORT   void Close() ;
+  
+  //! Returns TRUE if the seek pointer is at end of file.
+  Standard_EXPORT   Standard_Boolean IsAtEnd() ;
+  
+  //! Returns the kind of file. A file can be a
+  //! file, a directory or a link.
+  Standard_EXPORT   OSD_KindFile KindOfFile()  const;
+  
+  //! Makes a temporary File
+  //! This returned file is already open !
+  //! This file is non-persistent and will be automatically
+  //! removed when its process finishes.
+  Standard_EXPORT static   OSD_File BuildTemporary() ;
+  
+  //! Locks current file
+  Standard_EXPORT   void SetLock (const OSD_LockType Lock) ;
+  
+  //! Unlocks current file
+  Standard_EXPORT   void UnLock() ;
+  
+  //! Returns the current lock state
+  Standard_EXPORT   OSD_LockType GetLock() ;
+  
+  //! Returns TRUE if this file is locked.
+  Standard_EXPORT   Standard_Boolean IsLocked() ;
+  
+  //! Returns actual number of bytes of <me>.
+  Standard_EXPORT   Standard_Size Size() ;
+  
+  //! Prints a file on selected printer.
+  Standard_EXPORT   void Print (const OSD_Printer& WhichPrinter) ;
+  
+  //! Returns TRUE if <me> is open.
+  Standard_EXPORT   Standard_Boolean IsOpen()  const;
+  
+  //! returns TRUE if the file exists and if the user
+  //! has the autorization to read it.
+  Standard_EXPORT   Standard_Boolean IsReadable() ;
+  
+  //! returns TRUE if the file can be read and overwritten.
+  Standard_EXPORT   Standard_Boolean IsWriteable() ;
+  
+  //! returns TRUE if the file can be executed.
+  Standard_EXPORT   Standard_Boolean IsExecutable() ;
+  
+  //! Enables to emulate unix "tail -f" command.
+  //! If a line is available in the file <me> returns it.
+  //! Otherwise attemps to read again aNbTries times in the file
+  //! waiting aDelay seconds between each read.
+  //! If meanwhile the file increases returns the next line, otherwise
+  //! returns FALSE.
+  Standard_EXPORT   Standard_Boolean ReadLastLine (TCollection_AsciiString& aLine, const Standard_Integer aDelay, const Standard_Integer aNbTries) ;
+  
+  //! find an editor on the system and edit the given file
+  Standard_EXPORT   Standard_Boolean Edit() ;
 
 
 
@@ -161,19 +164,19 @@ protected:
 
 
 
-Standard_Integer myIO;
-Standard_Address myFILE;
-Standard_Integer myFileChannel;
-Standard_Address myFileHandle;
+  Standard_Integer myIO;
+  Standard_Address myFILE;
+  Standard_Integer myFileChannel;
+  Standard_Address myFileHandle;
 
 
 private:
 
 
 
-Standard_Boolean ImperativeFlag;
-OSD_LockType myLock;
-OSD_OpenMode myMode;
+  Standard_Boolean ImperativeFlag;
+  OSD_LockType myLock;
+  OSD_OpenMode myMode;
 
 
 };
@@ -182,7 +185,6 @@ OSD_OpenMode myMode;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _OSD_File_HeaderFile

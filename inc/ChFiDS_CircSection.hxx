@@ -6,46 +6,34 @@
 #ifndef _ChFiDS_CircSection_HeaderFile
 #define _ChFiDS_CircSection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Circ_HeaderFile
 #include <gp_Circ.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_Circ;
 class gp_Lin;
 
 
-//! A Section of fillet. <br>
-class ChFiDS_CircSection  {
+//! A Section of fillet.
+class ChFiDS_CircSection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ChFiDS_CircSection();
+  Standard_EXPORT ChFiDS_CircSection();
   
-  Standard_EXPORT     void Set(const gp_Circ& C,const Standard_Real F,const Standard_Real L) ;
+  Standard_EXPORT   void Set (const gp_Circ& C, const Standard_Real F, const Standard_Real L) ;
   
-  Standard_EXPORT     void Set(const gp_Lin& C,const Standard_Real F,const Standard_Real L) ;
+  Standard_EXPORT   void Set (const gp_Lin& C, const Standard_Real F, const Standard_Real L) ;
   
-  Standard_EXPORT     void Get(gp_Circ& C,Standard_Real& F,Standard_Real& L) const;
+  Standard_EXPORT   void Get (gp_Circ& C, Standard_Real& F, Standard_Real& L)  const;
   
-  Standard_EXPORT     void Get(gp_Lin& C,Standard_Real& F,Standard_Real& L) const;
-
+  Standard_EXPORT   void Get (gp_Lin& C, Standard_Real& F, Standard_Real& L)  const;
 
 
 
@@ -60,10 +48,10 @@ private:
 
 
 
-gp_Circ myCirc;
-gp_Lin myLin;
-Standard_Real myF;
-Standard_Real myL;
+  gp_Circ myCirc;
+  gp_Lin myLin;
+  Standard_Real myF;
+  Standard_Real myL;
 
 
 };
@@ -72,7 +60,6 @@ Standard_Real myL;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_CircSection_HeaderFile

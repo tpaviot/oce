@@ -6,44 +6,34 @@
 #ifndef _StepGeom_Placement_HeaderFile
 #define _StepGeom_Placement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_Placement_HeaderFile
 #include <Handle_StepGeom_Placement.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_CartesianPoint;
 class TCollection_HAsciiString;
 
 
 
-class StepGeom_Placement : public StepGeom_GeometricRepresentationItem {
+class StepGeom_Placement : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a Placement <br>
-  Standard_EXPORT   StepGeom_Placement();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a Placement
+  Standard_EXPORT StepGeom_Placement();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_CartesianPoint)& aLocation) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetLocation(const Handle(StepGeom_CartesianPoint)& aLocation) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_CartesianPoint)& aLocation) ;
   
-  Standard_EXPORT     Handle_StepGeom_CartesianPoint Location() const;
+  Standard_EXPORT   void SetLocation (const Handle(StepGeom_CartesianPoint)& aLocation) ;
+  
+  Standard_EXPORT   Handle(StepGeom_CartesianPoint) Location()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-Handle_StepGeom_CartesianPoint location;
+  Handle(StepGeom_CartesianPoint) location;
 
 
 };
@@ -67,7 +57,6 @@ Handle_StepGeom_CartesianPoint location;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Placement_HeaderFile

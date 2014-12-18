@@ -6,40 +6,18 @@
 #ifndef _TFunction_Scope_HeaderFile
 #define _TFunction_Scope_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TFunction_Scope_HeaderFile
 #include <Handle_TFunction_Scope.hxx>
-#endif
 
-#ifndef _TFunction_DoubleMapOfIntegerLabel_HeaderFile
 #include <TFunction_DoubleMapOfIntegerLabel.hxx>
-#endif
-#ifndef _TFunction_Logbook_HeaderFile
 #include <TFunction_Logbook.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TDF_Label;
 class Standard_GUID;
 class TFunction_Logbook;
@@ -48,58 +26,76 @@ class TDF_RelocationTable;
 class TFunction_DoubleMapOfIntegerLabel;
 
 
-//! Keeps a scope of functions. <br>
-class TFunction_Scope : public TDF_Attribute {
+//! Keeps a scope of functions.
+class TFunction_Scope : public TDF_Attribute
+{
 
 public:
 
-  //! Static methods <br>
-//!          ============== <br>//! Finds or Creates a TFunction_Scope attribute at the root label accessed by <Access>. <br>
-//!          Returns the attribute. <br>
-  Standard_EXPORT   static  Handle_TFunction_Scope Set(const TDF_Label& Access) ;
-  //! Returns the GUID for Scope attribute. <br>//! Instant methods <br>
-//!          =============== <br>//! Constructor (empty). <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
   
-  Standard_EXPORT   TFunction_Scope();
-  //! Adds a function to the scope of functions. <br>
-  Standard_EXPORT     Standard_Boolean AddFunction(const TDF_Label& L) ;
-  //! Removes a function from the scope of functions. <br>
-  Standard_EXPORT     Standard_Boolean RemoveFunction(const TDF_Label& L) ;
-  //! Removes a function from the scope of functions. <br>
-  Standard_EXPORT     Standard_Boolean RemoveFunction(const Standard_Integer ID) ;
-  //! Removes all functions from the scope of functions. <br>
-  Standard_EXPORT     void RemoveAllFunctions() ;
-  //! Returns true if the function exists with such an ID. <br>
-  Standard_EXPORT     Standard_Boolean HasFunction(const Standard_Integer ID) const;
-  //! Returns true if the label contains a function of this scope. <br>
-  Standard_EXPORT     Standard_Boolean HasFunction(const TDF_Label& L) const;
-  //! Returns an ID of the function. <br>
-  Standard_EXPORT     Standard_Integer GetFunction(const TDF_Label& L) const;
-  //! Returns the label of the function with this ID. <br>
-  Standard_EXPORT    const TDF_Label& GetFunction(const Standard_Integer ID) const;
-  //! Returns the Logbook used in TFunction_Driver methods. <br>//! Implementation of Attribute methods <br>
-//!          =================================== <br>
-  Standard_EXPORT     TFunction_Logbook& GetLogbook() ;
+  //! Static methods
+  //! ==============
+  //! Finds or Creates a TFunction_Scope attribute at the root label accessed by <Access>.
+  //! Returns the attribute.
+  Standard_EXPORT static   Handle(TFunction_Scope) Set (const TDF_Label& Access) ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  //! Returns the GUID for Scope attribute.
+  //! Instant methods
+  //! ===============
+  //! Constructor (empty).
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT   virtual  void Restore(const Handle(TDF_Attribute)& with) ;
+  Standard_EXPORT TFunction_Scope();
   
-  Standard_EXPORT   virtual  void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  //! Adds a function to the scope of functions.
+  Standard_EXPORT   Standard_Boolean AddFunction (const TDF_Label& L) ;
   
-  Standard_EXPORT   virtual  Handle_TDF_Attribute NewEmpty() const;
+  //! Removes a function from the scope of functions.
+  Standard_EXPORT   Standard_Boolean RemoveFunction (const TDF_Label& L) ;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
-  //! Returns the scope of functions. <br>
-  Standard_EXPORT    const TFunction_DoubleMapOfIntegerLabel& GetFunctions() const;
-  //! Returns the scope of functions for modification. <br>
-//!          Warning: Don't use this method if You are not sure what You do! <br>
-  Standard_EXPORT     TFunction_DoubleMapOfIntegerLabel& ChangeFunctions() ;
+  //! Removes a function from the scope of functions.
+  Standard_EXPORT   Standard_Boolean RemoveFunction (const Standard_Integer ID) ;
   
-  Standard_EXPORT     void SetFreeID(const Standard_Integer ID) ;
+  //! Removes all functions from the scope of functions.
+  Standard_EXPORT   void RemoveAllFunctions() ;
   
-  Standard_EXPORT     Standard_Integer GetFreeID() const;
+  //! Returns true if the function exists with such an ID.
+  Standard_EXPORT   Standard_Boolean HasFunction (const Standard_Integer ID)  const;
+  
+  //! Returns true if the label contains a function of this scope.
+  Standard_EXPORT   Standard_Boolean HasFunction (const TDF_Label& L)  const;
+  
+  //! Returns an ID of the function.
+  Standard_EXPORT   Standard_Integer GetFunction (const TDF_Label& L)  const;
+  
+  //! Returns the label of the function with this ID.
+  Standard_EXPORT  const  TDF_Label& GetFunction (const Standard_Integer ID)  const;
+  
+  //! Returns the Logbook used in TFunction_Driver methods.
+  //! Implementation of Attribute methods
+  //! ===================================
+  Standard_EXPORT   TFunction_Logbook& GetLogbook() ;
+  
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT virtual   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT virtual   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
+  
+  //! Returns the scope of functions.
+  Standard_EXPORT  const  TFunction_DoubleMapOfIntegerLabel& GetFunctions()  const;
+  
+  //! Returns the scope of functions for modification.
+  //! Warning: Don't use this method if You are not sure what You do!
+  Standard_EXPORT   TFunction_DoubleMapOfIntegerLabel& ChangeFunctions() ;
+  
+  Standard_EXPORT   void SetFreeID (const Standard_Integer ID) ;
+  
+  Standard_EXPORT   Standard_Integer GetFreeID()  const;
 
 
 
@@ -114,9 +110,9 @@ protected:
 private: 
 
 
-TFunction_DoubleMapOfIntegerLabel myFunctions;
-TFunction_Logbook myLogbook;
-Standard_Integer myFreeID;
+  TFunction_DoubleMapOfIntegerLabel myFunctions;
+  TFunction_Logbook myLogbook;
+  Standard_Integer myFreeID;
 
 
 };
@@ -125,7 +121,6 @@ Standard_Integer myFreeID;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TFunction_Scope_HeaderFile

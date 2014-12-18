@@ -6,28 +6,22 @@
 #ifndef _StepShape_OpenShell_HeaderFile
 #define _StepShape_OpenShell_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_OpenShell_HeaderFile
 #include <Handle_StepShape_OpenShell.hxx>
-#endif
 
-#ifndef _StepShape_ConnectedFaceSet_HeaderFile
 #include <StepShape_ConnectedFaceSet.hxx>
-#endif
 
 
 
-class StepShape_OpenShell : public StepShape_ConnectedFaceSet {
+class StepShape_OpenShell : public StepShape_ConnectedFaceSet
+{
 
 public:
 
-  //! Returns a OpenShell <br>
-  Standard_EXPORT   StepShape_OpenShell();
+  
+  //! Returns a OpenShell
+  Standard_EXPORT StepShape_OpenShell();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_OpenShell_HeaderFile

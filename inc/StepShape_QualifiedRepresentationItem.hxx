@@ -6,52 +6,39 @@
 #ifndef _StepShape_QualifiedRepresentationItem_HeaderFile
 #define _StepShape_QualifiedRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_QualifiedRepresentationItem_HeaderFile
 #include <Handle_StepShape_QualifiedRepresentationItem.hxx>
-#endif
 
-#ifndef _Handle_StepShape_HArray1OfValueQualifier_HeaderFile
 #include <Handle_StepShape_HArray1OfValueQualifier.hxx>
-#endif
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepShape_HArray1OfValueQualifier;
 class TCollection_HAsciiString;
 class StepShape_ValueQualifier;
 
 
-//! Added for Dimensional Tolerances <br>
-class StepShape_QualifiedRepresentationItem : public StepRepr_RepresentationItem {
+//! Added for Dimensional Tolerances
+class StepShape_QualifiedRepresentationItem : public StepRepr_RepresentationItem
+{
 
 public:
 
   
-  Standard_EXPORT   StepShape_QualifiedRepresentationItem();
+  Standard_EXPORT StepShape_QualifiedRepresentationItem();
   
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_HArray1OfValueQualifier)& qualifiers) ;
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_HArray1OfValueQualifier)& qualifiers) ;
   
-  Standard_EXPORT     Handle_StepShape_HArray1OfValueQualifier Qualifiers() const;
+  Standard_EXPORT   Handle(StepShape_HArray1OfValueQualifier) Qualifiers()  const;
   
-  Standard_EXPORT     Standard_Integer NbQualifiers() const;
+  Standard_EXPORT   Standard_Integer NbQualifiers()  const;
   
-  Standard_EXPORT     void SetQualifiers(const Handle(StepShape_HArray1OfValueQualifier)& qualifiers) ;
+  Standard_EXPORT   void SetQualifiers (const Handle(StepShape_HArray1OfValueQualifier)& qualifiers) ;
   
-  Standard_EXPORT     StepShape_ValueQualifier QualifiersValue(const Standard_Integer num) const;
+  Standard_EXPORT   StepShape_ValueQualifier QualifiersValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     void SetQualifiersValue(const Standard_Integer num,const StepShape_ValueQualifier& aqualifier) ;
+  Standard_EXPORT   void SetQualifiersValue (const Standard_Integer num, const StepShape_ValueQualifier& aqualifier) ;
 
 
 
@@ -66,7 +53,7 @@ protected:
 private: 
 
 
-Handle_StepShape_HArray1OfValueQualifier theQualifiers;
+  Handle(StepShape_HArray1OfValueQualifier) theQualifiers;
 
 
 };
@@ -75,7 +62,6 @@ Handle_StepShape_HArray1OfValueQualifier theQualifiers;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_QualifiedRepresentationItem_HeaderFile

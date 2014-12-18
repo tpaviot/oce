@@ -5,16 +5,10 @@
 
 #include <TColStd_IndexedMapNodeOfIndexedMapOfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_MapRealHasher_HeaderFile
 #include <TColStd_MapRealHasher.hxx>
-#endif
-#ifndef _TColStd_IndexedMapOfReal_HeaderFile
 #include <TColStd_IndexedMapOfReal.hxx>
-#endif
 
  
 

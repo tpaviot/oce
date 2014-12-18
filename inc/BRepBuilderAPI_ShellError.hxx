@@ -6,24 +6,23 @@
 #ifndef _BRepBuilderAPI_ShellError_HeaderFile
 #define _BRepBuilderAPI_ShellError_HeaderFile
 
-//! Indicates the outcome of the construction of a face, i.e. <br>
-//! whether it is successful or not, as explained below: <br>
-//! -   BRepBuilderAPI_ShellDone No error occurred. <br>
-//!   The shell is correctly built. <br>
-//! -   BRepBuilderAPI_EmptyShell No initialization of <br>
-//!   the algorithm: only an empty constructor was used. <br>
-//! -   BRepBuilderAPI_DisconnectedShell not yet used <br>
-//! -   BRepBuilderAPI_ShellParametersOutOfRange <br>
-//!   The parameters given to limit the surface are out of its bounds. <br>
-enum BRepBuilderAPI_ShellError {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Indicates the outcome of the construction of a face, i.e.
+//! whether it is successful or not, as explained below:
+//! -   BRepBuilderAPI_ShellDone No error occurred.
+//! The shell is correctly built.
+//! -   BRepBuilderAPI_EmptyShell No initialization of
+//! the algorithm: only an empty constructor was used.
+//! -   BRepBuilderAPI_DisconnectedShell not yet used
+//! -   BRepBuilderAPI_ShellParametersOutOfRange
+//! The parameters given to limit the surface are out of its bounds.
+enum BRepBuilderAPI_ShellError
+{
 BRepBuilderAPI_ShellDone,
 BRepBuilderAPI_EmptyShell,
 BRepBuilderAPI_DisconnectedShell,
 BRepBuilderAPI_ShellParametersOutOfRange
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepBuilderAPI_ShellError_HeaderFile

@@ -6,64 +6,49 @@
 #ifndef _CPnts_MyRootFunction_HeaderFile
 #define _CPnts_MyRootFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _CPnts_MyGaussFunction_HeaderFile
 #include <CPnts_MyGaussFunction.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _math_FunctionWithDerivative_HeaderFile
 #include <math_FunctionWithDerivative.hxx>
-#endif
-#ifndef _CPnts_RealFunction_HeaderFile
 #include <CPnts_RealFunction.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! Implements a function for the Newton algorithm to find the <br>
-//!          solution of Integral(F) = L <br>
-class CPnts_MyRootFunction  : public math_FunctionWithDerivative {
+//! Implements a function for the Newton algorithm to find the
+//! solution of Integral(F) = L
+//! (compute Length  and Derivative of the curve for Newton)
+class CPnts_MyRootFunction  : public math_FunctionWithDerivative
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      CPnts_MyRootFunction();
-  //! F  is a pointer on a  function  D is a client data <br>
-//!          Order is the order of integration to use <br>
-//! <br>
-  Standard_EXPORT     void Init(const CPnts_RealFunction& F,const Standard_Address D,const Standard_Integer Order) ;
-  //! We want to solve Integral(X0,X,F(X,D)) = L <br>
-  Standard_EXPORT     void Init(const Standard_Real X0,const Standard_Real L) ;
-  //! We want to solve Integral(X0,X,F(X,D)) = L <br>
-//!  with given tolerance <br>
-  Standard_EXPORT     void Init(const Standard_Real X0,const Standard_Real L,const Standard_Real Tol) ;
-  //! This is Integral(X0,X,F(X,D)) - L <br>
-  Standard_EXPORT     Standard_Boolean Value(const Standard_Real X,Standard_Real& F) ;
-  //! This is F(X,D) <br>
-  Standard_EXPORT     Standard_Boolean Derivative(const Standard_Real X,Standard_Real& Df) ;
+    CPnts_MyRootFunction();
   
-  Standard_EXPORT     Standard_Boolean Values(const Standard_Real X,Standard_Real& F,Standard_Real& Df) ;
-
+  //! F  is a pointer on a  function  D is a client data
+  //! Order is the order of integration to use
+  Standard_EXPORT   void Init (const CPnts_RealFunction& F, const Standard_Address D, const Standard_Integer Order) ;
+  
+  //! We want to solve Integral(X0,X,F(X,D)) = L
+  Standard_EXPORT   void Init (const Standard_Real X0, const Standard_Real L) ;
+  
+  //! We want to solve Integral(X0,X,F(X,D)) = L
+  //! with given tolerance
+  Standard_EXPORT   void Init (const Standard_Real X0, const Standard_Real L, const Standard_Real Tol) ;
+  
+  //! This is Integral(X0,X,F(X,D)) - L
+  Standard_EXPORT   Standard_Boolean Value (const Standard_Real X, Standard_Real& F) ;
+  
+  //! This is F(X,D)
+  Standard_EXPORT   Standard_Boolean Derivative (const Standard_Real X, Standard_Real& Df) ;
+  
+  Standard_EXPORT   Standard_Boolean Values (const Standard_Real X, Standard_Real& F, Standard_Real& Df) ;
 
 
 
@@ -78,11 +63,11 @@ private:
 
 
 
-CPnts_MyGaussFunction myFunction;
-Standard_Real myX0;
-Standard_Real myL;
-Standard_Integer myOrder;
-Standard_Real myTol;
+  CPnts_MyGaussFunction myFunction;
+  Standard_Real myX0;
+  Standard_Real myL;
+  Standard_Integer myOrder;
+  Standard_Real myTol;
 
 
 };
@@ -92,7 +77,6 @@ Standard_Real myTol;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CPnts_MyRootFunction_HeaderFile

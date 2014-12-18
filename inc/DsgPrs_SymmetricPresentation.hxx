@@ -6,22 +6,12 @@
 #ifndef _DsgPrs_SymmetricPresentation_HeaderFile
 #define _DsgPrs_SymmetricPresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_Drawer;
 class gp_Pnt;
@@ -30,35 +20,38 @@ class gp_Lin;
 class gp_Circ;
 
 
-//! A framework to define display of symmetry between shapes. <br>
-class DsgPrs_SymmetricPresentation  {
+//! A framework to define display of symmetry between shapes.
+class DsgPrs_SymmetricPresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the points OffsetPoint, AttachmentPoint1, <br>
-//! AttachmentPoint2, the direction aDirection1 and the <br>
-//! axis anAxis to the presentation object aPresentation. <br>
-//! The display attributes of the symmetry are defined by <br>
-//! the attribute manager aDrawer. <br>
-//! This syntax is used for display of symmetries between two segments. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Pnt& AttachmentPoint1,const gp_Pnt& AttachmentPoint2,const gp_Dir& aDirection1,const gp_Lin& aAxis,const gp_Pnt& OffsetPoint) ;
-  //! Adds the points OffsetPoint, AttachmentPoint1, <br>
-//! AttachmentPoint2, the direction aDirection1 the circle <br>
-//! aCircle1 and the axis anAxis to the presentation <br>
-//! object aPresentation. <br>
-//! The display attributes of the symmetry are defined by <br>
-//! the attribute manager aDrawer. <br>
-//! This syntax is used for display of symmetries between two arcs. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Pnt& AttachmentPoint1,const gp_Pnt& AttachmentPoint2,const gp_Circ& aCircle1,const gp_Lin& aAxis,const gp_Pnt& OffsetPoint) ;
-  //! Adds the points OffsetPoint, AttachmentPoint1, <br>
-//! AttachmentPoint2 and the axis anAxis to the <br>
-//! presentation object aPresentation. <br>
-//! The display attributes of the symmetry are defined by <br>
-//! the attribute manager aDrawer. <br>
-//! This syntax is used for display of symmetries between two vertices. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Pnt& AttachmentPoint1,const gp_Pnt& AttachmentPoint2,const gp_Lin& aAxis,const gp_Pnt& OffsetPoint) ;
-
+  
+  //! Adds the points OffsetPoint, AttachmentPoint1,
+  //! AttachmentPoint2, the direction aDirection1 and the
+  //! axis anAxis to the presentation object aPresentation.
+  //! The display attributes of the symmetry are defined by
+  //! the attribute manager aDrawer.
+  //! This syntax is used for display of symmetries between two segments.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Pnt& AttachmentPoint1, const gp_Pnt& AttachmentPoint2, const gp_Dir& aDirection1, const gp_Lin& aAxis, const gp_Pnt& OffsetPoint) ;
+  
+  //! Adds the points OffsetPoint, AttachmentPoint1,
+  //! AttachmentPoint2, the direction aDirection1 the circle
+  //! aCircle1 and the axis anAxis to the presentation
+  //! object aPresentation.
+  //! The display attributes of the symmetry are defined by
+  //! the attribute manager aDrawer.
+  //! This syntax is used for display of symmetries between two arcs.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Pnt& AttachmentPoint1, const gp_Pnt& AttachmentPoint2, const gp_Circ& aCircle1, const gp_Lin& aAxis, const gp_Pnt& OffsetPoint) ;
+  
+  //! Adds the points OffsetPoint, AttachmentPoint1,
+  //! AttachmentPoint2 and the axis anAxis to the
+  //! presentation object aPresentation.
+  //! The display attributes of the symmetry are defined by
+  //! the attribute manager aDrawer.
+  //! This syntax is used for display of symmetries between two vertices.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Pnt& AttachmentPoint1, const gp_Pnt& AttachmentPoint2, const gp_Lin& aAxis, const gp_Pnt& OffsetPoint) ;
 
 
 
@@ -81,7 +74,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DsgPrs_SymmetricPresentation_HeaderFile

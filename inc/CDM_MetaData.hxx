@@ -6,49 +6,21 @@
 #ifndef _CDM_MetaData_HeaderFile
 #define _CDM_MetaData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDM_MetaData_HeaderFile
 #include <Handle_CDM_MetaData.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _CDM_DocumentPointer_HeaderFile
 #include <CDM_DocumentPointer.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Handle_CDM_MetaData_HeaderFile
 #include <Handle_CDM_MetaData.hxx>
-#endif
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _CDM_Application_HeaderFile
 #include <CDM_Application.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Handle_CDM_Application_HeaderFile
 #include <Handle_CDM_Application.hxx>
-#endif
 class Standard_NoSuchObject;
 class CDM_Reference;
 class CDM_Document;
@@ -58,56 +30,60 @@ class CDM_Application;
 
 
 
-class CDM_MetaData : public Standard_Transient {
+class CDM_MetaData : public Standard_Transient
+{
 
 public:
 
   
-  Standard_EXPORT   static  Handle_CDM_MetaData LookUp(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName,const TCollection_ExtendedString& aPath,const TCollection_ExtendedString& aFileName,const Standard_Boolean ReadOnly) ;
+  Standard_EXPORT static   Handle(CDM_MetaData) LookUp (const TCollection_ExtendedString& aFolder, const TCollection_ExtendedString& aName, const TCollection_ExtendedString& aPath, const TCollection_ExtendedString& aFileName, const Standard_Boolean ReadOnly) ;
   
-  Standard_EXPORT   static  Handle_CDM_MetaData LookUp(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName,const TCollection_ExtendedString& aPath,const TCollection_ExtendedString& aVersion,const TCollection_ExtendedString& aFileName,const Standard_Boolean ReadOnly) ;
+  Standard_EXPORT static   Handle(CDM_MetaData) LookUp (const TCollection_ExtendedString& aFolder, const TCollection_ExtendedString& aName, const TCollection_ExtendedString& aPath, const TCollection_ExtendedString& aVersion, const TCollection_ExtendedString& aFileName, const Standard_Boolean ReadOnly) ;
   
-  Standard_EXPORT     Standard_Boolean IsRetrieved() const;
+  Standard_EXPORT   Standard_Boolean IsRetrieved()  const;
   
-  Standard_EXPORT     Handle_CDM_Document Document() const;
-  //! returns the folder in which the meta-data has to be created <br>
-//!          or has to be found. <br>
-//! <br>
-  Standard_EXPORT     TCollection_ExtendedString Folder() const;
-  //! returns the name under which the meta-data has to be created <br>
-//!          or has to be found. <br>
-//! <br>
-  Standard_EXPORT     TCollection_ExtendedString Name() const;
-  //! returns the version under which the meta-data has to be found. <br>
-//! Warning: raises NoSuchObject from Standard if no Version has been defined <br>
-  Standard_EXPORT     TCollection_ExtendedString Version() const;
-  //! indicates that the version has to be taken into account when <br>
-//!          searching the corresponding meta-data. <br>
-  Standard_EXPORT     Standard_Boolean HasVersion() const;
+  Standard_EXPORT   Handle(CDM_Document) Document()  const;
   
-  Standard_EXPORT     TCollection_ExtendedString FileName() const;
+  //! returns the folder in which the meta-data has to be created
+  //! or has to be found.
+  Standard_EXPORT   TCollection_ExtendedString Folder()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
+  //! returns the name under which the meta-data has to be created
+  //! or has to be found.
+  Standard_EXPORT   TCollection_ExtendedString Name()  const;
+  
+  //! returns the version under which the meta-data has to be found.
+  //! Warning: raises NoSuchObject from Standard if no Version has been defined
+  Standard_EXPORT   TCollection_ExtendedString Version()  const;
+  
+  //! indicates that the version has to be taken into account when
+  //! searching the corresponding meta-data.
+  Standard_EXPORT   Standard_Boolean HasVersion()  const;
+  
+  Standard_EXPORT   TCollection_ExtendedString FileName()  const;
+  
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 Standard_OStream& operator << (Standard_OStream& anOStream);
   
-  Standard_EXPORT     TCollection_ExtendedString Path() const;
+  Standard_EXPORT   TCollection_ExtendedString Path()  const;
   
-  Standard_EXPORT     void UnsetDocument() ;
+  Standard_EXPORT   void UnsetDocument() ;
   
-  Standard_EXPORT     Standard_Boolean IsReadOnly() const;
+  Standard_EXPORT   Standard_Boolean IsReadOnly()  const;
   
-  Standard_EXPORT     void SetIsReadOnly() ;
+  Standard_EXPORT   void SetIsReadOnly() ;
   
-  Standard_EXPORT     void UnsetIsReadOnly() ;
+  Standard_EXPORT   void UnsetIsReadOnly() ;
 
 
 friend class CDM_Reference;
-friend   //!  associates database  information to  a document which <br>
-//!          has been stored.  The name of the  document is now the <br>
-//!          name which has beenused to store the data. <br>
-  Standard_EXPORT   void CDM_Document::SetMetaData(const Handle(CDM_MetaData)& aMetaData) ;
 friend   
-  Standard_EXPORT   void CDM_Application::SetDocumentVersion(const Handle(CDM_Document)& aDocument,const Handle(CDM_MetaData)& aMetaData) const;
+  //! associates database  information to  a document which
+  //! has been stored.  The name of the  document is now the
+  //! name which has beenused to store the data.
+  Standard_EXPORT   void CDM_Document::SetMetaData (const Handle(CDM_MetaData)& aMetaData) ;
+friend   
+  Standard_EXPORT   void CDM_Application::SetDocumentVersion (const Handle(CDM_Document)& aDocument, const Handle(CDM_MetaData)& aMetaData)  const;
 
 
   DEFINE_STANDARD_RTTI(CDM_MetaData)
@@ -120,26 +96,26 @@ protected:
 private: 
 
   
-  Standard_EXPORT   CDM_MetaData(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName,const TCollection_ExtendedString& aPath,const TCollection_ExtendedString& aFileName,const Standard_Boolean ReadOnly);
+  Standard_EXPORT CDM_MetaData(const TCollection_ExtendedString& aFolder, const TCollection_ExtendedString& aName, const TCollection_ExtendedString& aPath, const TCollection_ExtendedString& aFileName, const Standard_Boolean ReadOnly);
   
-  Standard_EXPORT   CDM_MetaData(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName,const TCollection_ExtendedString& aPath,const TCollection_ExtendedString& aVersion,const TCollection_ExtendedString& aFileName,const Standard_Boolean ReadOnly);
+  Standard_EXPORT CDM_MetaData(const TCollection_ExtendedString& aFolder, const TCollection_ExtendedString& aName, const TCollection_ExtendedString& aPath, const TCollection_ExtendedString& aVersion, const TCollection_ExtendedString& aFileName, const Standard_Boolean ReadOnly);
   
-  Standard_EXPORT     void SetDocument(const Handle(CDM_Document)& aDocument) ;
+  Standard_EXPORT   void SetDocument (const Handle(CDM_Document)& aDocument) ;
   
-  Standard_EXPORT   static const CDM_MetaDataLookUpTable& LookUpTable() ;
+  Standard_EXPORT static  const  CDM_MetaDataLookUpTable& LookUpTable() ;
   
-  Standard_EXPORT     Standard_Integer DocumentVersion(const Handle(CDM_Application)& anApplication) ;
+  Standard_EXPORT   Standard_Integer DocumentVersion (const Handle(CDM_Application)& anApplication) ;
 
-Standard_Boolean myIsRetrieved;
-CDM_DocumentPointer myDocument;
-TCollection_ExtendedString myFolder;
-TCollection_ExtendedString myName;
-TCollection_ExtendedString myVersion;
-Standard_Boolean myHasVersion;
-TCollection_ExtendedString myFileName;
-TCollection_ExtendedString myPath;
-Standard_Integer myDocumentVersion;
-Standard_Boolean myIsReadOnly;
+  Standard_Boolean myIsRetrieved;
+  CDM_DocumentPointer myDocument;
+  TCollection_ExtendedString myFolder;
+  TCollection_ExtendedString myName;
+  TCollection_ExtendedString myVersion;
+  Standard_Boolean myHasVersion;
+  TCollection_ExtendedString myFileName;
+  TCollection_ExtendedString myPath;
+  Standard_Integer myDocumentVersion;
+  Standard_Boolean myIsReadOnly;
 
 
 };
@@ -148,7 +124,6 @@ Standard_Boolean myIsReadOnly;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_MetaData_HeaderFile

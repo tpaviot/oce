@@ -6,28 +6,22 @@
 #ifndef _StepBasic_DocumentProductEquivalence_HeaderFile
 #define _StepBasic_DocumentProductEquivalence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentProductEquivalence_HeaderFile
 #include <Handle_StepBasic_DocumentProductEquivalence.hxx>
-#endif
 
-#ifndef _StepBasic_DocumentProductAssociation_HeaderFile
 #include <StepBasic_DocumentProductAssociation.hxx>
-#endif
 
 
-//! Representation of STEP entity DocumentProductEquivalence <br>
-class StepBasic_DocumentProductEquivalence : public StepBasic_DocumentProductAssociation {
+//! Representation of STEP entity DocumentProductEquivalence
+class StepBasic_DocumentProductEquivalence : public StepBasic_DocumentProductAssociation
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_DocumentProductEquivalence();
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_DocumentProductEquivalence();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_DocumentProductEquivalence_HeaderFile

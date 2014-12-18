@@ -7,7 +7,6 @@
 #define _V3d_ViewPointer_HeaderFile
 
 class V3d_View;
-
 typedef V3d_View* V3d_ViewPointer;
 
-#endif
+#endif // _V3d_ViewPointer_HeaderFile

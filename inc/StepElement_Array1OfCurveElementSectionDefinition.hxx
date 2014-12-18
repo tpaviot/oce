@@ -6,28 +6,14 @@
 #ifndef _StepElement_Array1OfCurveElementSectionDefinition_HeaderFile
 #define _StepElement_Array1OfCurveElementSectionDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepElement_CurveElementSectionDefinition_HeaderFile
 #include <Handle_StepElement_CurveElementSectionDefinition.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class StepElement_CurveElementSectionDefinition;
 
 
 
-class StepElement_Array1OfCurveElementSectionDefinition  {
+class StepElement_Array1OfCurveElementSectionDefinition 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepElement_Array1OfCurveElementSectionDefinition(const Standard_Integer Low,const Standard_Integer Up);
+    StepElement_Array1OfCurveElementSectionDefinition(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepElement_Array1OfCurveElementSectionDefinition(const Handle(StepElement_CurveElementSectionDefinition)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepElement_Array1OfCurveElementSectionDefinition(const Handle(StepElement_CurveElementSectionDefinition)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(StepElement_CurveElementSectionDefinition)& V) ;
+  Standard_EXPORT   void Init (const Handle(StepElement_CurveElementSectionDefinition)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepElement_Array1OfCurveElementSectionDefinition()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepElement_Array1OfCurveElementSectionDefinition& Assign(const StepElement_Array1OfCurveElementSectionDefinition& Other) ;
-   const StepElement_Array1OfCurveElementSectionDefinition& operator =(const StepElement_Array1OfCurveElementSectionDefinition& Other) 
+  Standard_EXPORT  const  StepElement_Array1OfCurveElementSectionDefinition& Assign (const StepElement_Array1OfCurveElementSectionDefinition& Other) ;
+ const  StepElement_Array1OfCurveElementSectionDefinition& operator = (const StepElement_Array1OfCurveElementSectionDefinition& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepElement_CurveElementSectionDefinition)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepElement_CurveElementSectionDefinition)& Value) ;
   
-       const Handle_StepElement_CurveElementSectionDefinition& Value(const Standard_Integer Index) const;
-     const Handle_StepElement_CurveElementSectionDefinition& operator ()(const Standard_Integer Index) const
+     const  Handle(StepElement_CurveElementSectionDefinition)& Value (const Standard_Integer Index)  const;
+   const  Handle(StepElement_CurveElementSectionDefinition)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_StepElement_CurveElementSectionDefinition& ChangeValue(const Standard_Integer Index) ;
-      Handle_StepElement_CurveElementSectionDefinition& operator ()(const Standard_Integer Index) 
+      Handle(StepElement_CurveElementSectionDefinition)& ChangeValue (const Standard_Integer Index) ;
+    Handle(StepElement_CurveElementSectionDefinition)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepElement_Array1OfCurveElementSectionDefinition(const StepElement_Array1OfCurveElementSectionDefinition& AnArray);
+  Standard_EXPORT StepElement_Array1OfCurveElementSectionDefinition(const StepElement_Array1OfCurveElementSectionDefinition& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_StepElement_CurveElementSectionDefinition
+#define Array1Item Handle(StepElement_CurveElementSectionDefinition)
 #define Array1Item_hxx <StepElement_CurveElementSectionDefinition.hxx>
 #define TCollection_Array1 StepElement_Array1OfCurveElementSectionDefinition
 #define TCollection_Array1_hxx <StepElement_Array1OfCurveElementSectionDefinition.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_Array1OfCurveElementSectionDefinition_HeaderFile

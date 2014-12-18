@@ -96,14 +96,14 @@ void BinLDrivers_DocumentRetrievalDriver::Read
   Handle(TDocStd_Document) aDoc =
     Handle(TDocStd_Document)::DownCast(theNewDocument);
   if (aDoc.IsNull()) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     WriteMessage (aMethStr + "error: null document");
 #endif
     myReaderStatus = PCDM_RS_NoDocument;
     return;
   }
 
-  TCollection_AsciiString aFileName (theFileName,'?');
+  TCollection_AsciiString aFileName (theFileName);
 
   // 1. Read the information section
   Handle(Storage_HeaderData) aHeaderData;
@@ -124,12 +124,12 @@ void BinLDrivers_DocumentRetrievalDriver::Read
   Standard_Integer aFileVer = aHeaderData->StorageVersion().IntegerValue();
   Standard_Integer aCurrVer = BinLDrivers::StorageVersion().IntegerValue();
   // maintain one-way compatibility starting from version 2+
-  if (aFileVer < 2 || aFileVer > aCurrVer) {
+  if (!CheckDocumentVersion(aFileVer, aCurrVer)) {
+    myReaderStatus = PCDM_RS_NoVersion;
     // file was written with another version
     WriteMessage (aMethStr + "error: wrong file version: " +
 		  aHeaderData->StorageVersion() + " while current is " +
 		  BinLDrivers::StorageVersion());
-    myReaderStatus = PCDM_RS_NoVersion;
     return;
   }
 
@@ -150,7 +150,7 @@ void BinLDrivers_DocumentRetrievalDriver::Read
 #ifdef DATATYPE_MIGRATION
 	TCollection_AsciiString  newName;	
 	if(Storage_Schema::CheckTypeMigration(aStr, newName)) {
-#ifdef DATATYPE_MIGRATION_DEB
+#ifdef OCCT_DEBUG
 	  cout << "CheckTypeMigration:OldType = " <<aStr << " Len = "<<aStr.Length()<<endl;
 	  cout << "CheckTypeMigration:NewType = " <<newName  << " Len = "<< newName.Length()<<endl;
 #endif
@@ -179,8 +179,8 @@ void BinLDrivers_DocumentRetrievalDriver::Read
   }
 
   // Open the file stream
-#ifdef WNT
-  ifstream anIS (aFileName.ToCString(), ios::in | ios::binary);
+#ifdef _MSC_VER
+  ifstream anIS ((const wchar_t*) theFileName.ToExtString(), ios::in | ios::binary);
 #else
   ifstream anIS (aFileName.ToCString());
 #endif
@@ -253,7 +253,7 @@ void BinLDrivers_DocumentRetrievalDriver::Read
 #if DO_INVERSE
       aShapeSectionPos = InverseInt (aShapeSectionPos);
 #endif
-#ifdef DATATYPE_MIGRATION_DEB      
+#ifdef OCCT_DEBUG
       cout <<"aShapeSectionPos = " <<aShapeSectionPos <<endl;
 #endif
       if(aShapeSectionPos) { 
@@ -490,13 +490,10 @@ void BinLDrivers_DocumentRetrievalDriver::CheckShapeSection(
 				  const Storage_Position& ShapeSectionPos, 
 						    Standard_IStream& IS)
 {
-  if(!IS.eof()) {
-#if defined(WNT) || defined(OCE_HAVE_IOSTREAM)
+  if (!IS.eof())
+  {
     const std::streamoff endPos = IS.rdbuf()->pubseekoff(0L, std::ios_base::end, std::ios_base::in);
-#else
-    const Storage_Position endPos = IS.rdbuf()->seekoff(0L, unsafe_ios::end, unsafe_ios::in);
-#endif
-#ifdef DATATYPE_MIGRATION_DEB
+#ifdef OCCT_DEBUG
     cout << "endPos = " << endPos <<endl;
 #endif
     if(ShapeSectionPos != endPos) {
@@ -514,3 +511,19 @@ void BinLDrivers_DocumentRetrievalDriver::PropagateDocumentVersion(const Standar
 {
   BinMDataStd::SetDocumentVersion(theDocVersion);
 }
+
+//=======================================================================
+//function : CheckDocumentVersion
+//purpose  : 
+//=======================================================================
+Standard_Boolean BinLDrivers_DocumentRetrievalDriver::CheckDocumentVersion(
+                                                          const Standard_Integer theFileVersion,
+                                                          const Standard_Integer theCurVersion)
+{
+  if (theFileVersion < 2 || theFileVersion > theCurVersion) {
+    // file was written with another version
+    return Standard_False;
+  }
+  return Standard_True;
+}
+

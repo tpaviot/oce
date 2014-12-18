@@ -5,21 +5,11 @@
 
 #include <Storage_PType.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Storage_IndexedDataMapNodeOfPType_HeaderFile
 #include <Storage_IndexedDataMapNodeOfPType.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString

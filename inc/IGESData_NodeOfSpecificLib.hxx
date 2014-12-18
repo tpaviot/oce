@@ -6,34 +6,16 @@
 #ifndef _IGESData_NodeOfSpecificLib_HeaderFile
 #define _IGESData_NodeOfSpecificLib_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESData_NodeOfSpecificLib_HeaderFile
 #include <Handle_IGESData_NodeOfSpecificLib.hxx>
-#endif
 
-#ifndef _Handle_IGESData_GlobalNodeOfSpecificLib_HeaderFile
 #include <Handle_IGESData_GlobalNodeOfSpecificLib.hxx>
-#endif
-#ifndef _Handle_IGESData_NodeOfSpecificLib_HeaderFile
 #include <Handle_IGESData_NodeOfSpecificLib.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESData_SpecificModule_HeaderFile
 #include <Handle_IGESData_SpecificModule.hxx>
-#endif
-#ifndef _Handle_IGESData_Protocol_HeaderFile
 #include <Handle_IGESData_Protocol.hxx>
-#endif
 class IGESData_GlobalNodeOfSpecificLib;
 class IGESData_IGESEntity;
 class IGESData_SpecificModule;
@@ -42,20 +24,21 @@ class IGESData_SpecificLib;
 
 
 
-class IGESData_NodeOfSpecificLib : public MMgt_TShared {
+class IGESData_NodeOfSpecificLib : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   IGESData_NodeOfSpecificLib();
+  Standard_EXPORT IGESData_NodeOfSpecificLib();
   
-  Standard_EXPORT     void AddNode(const Handle(IGESData_GlobalNodeOfSpecificLib)& anode) ;
+  Standard_EXPORT   void AddNode (const Handle(IGESData_GlobalNodeOfSpecificLib)& anode) ;
   
-  Standard_EXPORT    const Handle_IGESData_SpecificModule& Module() const;
+  Standard_EXPORT  const  Handle(IGESData_SpecificModule)& Module()  const;
   
-  Standard_EXPORT    const Handle_IGESData_Protocol& Protocol() const;
+  Standard_EXPORT  const  Handle(IGESData_Protocol)& Protocol()  const;
   
-  Standard_EXPORT    const Handle_IGESData_NodeOfSpecificLib& Next() const;
+  Standard_EXPORT  const  Handle(IGESData_NodeOfSpecificLib)& Next()  const;
 
 
 
@@ -70,8 +53,8 @@ protected:
 private: 
 
 
-Handle_IGESData_GlobalNodeOfSpecificLib thenode;
-Handle_IGESData_NodeOfSpecificLib thenext;
+  Handle(IGESData_GlobalNodeOfSpecificLib) thenode;
+  Handle(IGESData_NodeOfSpecificLib) thenext;
 
 
 };
@@ -80,7 +63,6 @@ Handle_IGESData_NodeOfSpecificLib thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_NodeOfSpecificLib_HeaderFile

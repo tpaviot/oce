@@ -200,7 +200,7 @@ Standard_Boolean FEmTool_Assembly::Solve()
 {
   IsSolved = H->Decompose();
 
-#if DEB
+#ifdef OCCT_DEBUG
   if (!IsSolved) {
     cout << "Solve Echec  H = " << endl;
     H->OutM();

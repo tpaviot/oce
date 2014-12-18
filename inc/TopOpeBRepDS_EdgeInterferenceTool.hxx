@@ -6,50 +6,36 @@
 #ifndef _TopOpeBRepDS_EdgeInterferenceTool_HeaderFile
 #define _TopOpeBRepDS_EdgeInterferenceTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopTrans_CurveTransition_HeaderFile
 #include <TopTrans_CurveTransition.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
 class TopoDS_Shape;
 class TopOpeBRepDS_Interference;
 class TopOpeBRepDS_Point;
 
 
-//! a tool computing complex transition on Edge. <br>
-class TopOpeBRepDS_EdgeInterferenceTool  {
+//! a tool computing complex transition on Edge.
+class TopOpeBRepDS_EdgeInterferenceTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_EdgeInterferenceTool();
+  Standard_EXPORT TopOpeBRepDS_EdgeInterferenceTool();
   
-  Standard_EXPORT     void Init(const TopoDS_Shape& E,const Handle(TopOpeBRepDS_Interference)& I) ;
+  Standard_EXPORT   void Init (const TopoDS_Shape& E, const Handle(TopOpeBRepDS_Interference)& I) ;
   
-  Standard_EXPORT     void Add(const TopoDS_Shape& E,const TopoDS_Shape& V,const Handle(TopOpeBRepDS_Interference)& I) ;
+  Standard_EXPORT   void Add (const TopoDS_Shape& E, const TopoDS_Shape& V, const Handle(TopOpeBRepDS_Interference)& I) ;
   
-  Standard_EXPORT     void Add(const TopoDS_Shape& E,const TopOpeBRepDS_Point& P,const Handle(TopOpeBRepDS_Interference)& I) ;
+  Standard_EXPORT   void Add (const TopoDS_Shape& E, const TopOpeBRepDS_Point& P, const Handle(TopOpeBRepDS_Interference)& I) ;
   
-  Standard_EXPORT     void Transition(const Handle(TopOpeBRepDS_Interference)& I) const;
-
+  Standard_EXPORT   void Transition (const Handle(TopOpeBRepDS_Interference)& I)  const;
 
 
 
@@ -64,9 +50,9 @@ private:
 
 
 
-TopAbs_Orientation myEdgeOrientation;
-Standard_Integer myEdgeOriented;
-TopTrans_CurveTransition myTool;
+  TopAbs_Orientation myEdgeOrientation;
+  Standard_Integer myEdgeOriented;
+  TopTrans_CurveTransition myTool;
 
 
 };
@@ -75,7 +61,6 @@ TopTrans_CurveTransition myTool;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_EdgeInterferenceTool_HeaderFile

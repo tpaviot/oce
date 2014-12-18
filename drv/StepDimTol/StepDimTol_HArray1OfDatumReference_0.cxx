@@ -5,28 +5,14 @@
 
 #include <StepDimTol_HArray1OfDatumReference.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepDimTol_DatumReference_HeaderFile
 #include <StepDimTol_DatumReference.hxx>
-#endif
-#ifndef _StepDimTol_Array1OfDatumReference_HeaderFile
 #include <StepDimTol_Array1OfDatumReference.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepDimTol_HArray1OfDatumReference,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepDimTol_HArray1OfDatumReference)
 
 
-#define ItemHArray1 Handle_StepDimTol_DatumReference
+#define ItemHArray1 Handle(StepDimTol_DatumReference)
 #define ItemHArray1_hxx <StepDimTol_DatumReference.hxx>
 #define TheArray1 StepDimTol_Array1OfDatumReference
 #define TheArray1_hxx <StepDimTol_Array1OfDatumReference.hxx>

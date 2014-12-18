@@ -5,21 +5,11 @@
 
 #include <ChFiDS_ListIteratorOfRegularities.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _ChFiDS_Regularities_HeaderFile
 #include <ChFiDS_Regularities.hxx>
-#endif
-#ifndef _ChFiDS_Regul_HeaderFile
 #include <ChFiDS_Regul.hxx>
-#endif
-#ifndef _ChFiDS_ListNodeOfRegularities_HeaderFile
 #include <ChFiDS_ListNodeOfRegularities.hxx>
-#endif
  
 
 #define Item ChFiDS_Regul

@@ -6,22 +6,15 @@
 #ifndef _Handle_Geom_BezierSurface_HeaderFile
 #define _Handle_Geom_BezierSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Geom_BoundedSurface_HeaderFile
 #include <Handle_Geom_BoundedSurface.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Geom_BoundedSurface);
 class Geom_BezierSurface;
 
-DEFINE_STANDARD_HANDLE(Geom_BezierSurface,Geom_BoundedSurface)
+DEFINE_STANDARD_HANDLE(Geom_BezierSurface, Geom_BoundedSurface)
 
-#endif
+#endif // _Handle_Geom_BezierSurface_HeaderFile

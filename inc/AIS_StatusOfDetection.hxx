@@ -6,8 +6,11 @@
 #ifndef _AIS_StatusOfDetection_HeaderFile
 #define _AIS_StatusOfDetection_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum AIS_StatusOfDetection {
+
+enum AIS_StatusOfDetection
+{
 AIS_SOD_Error,
 AIS_SOD_Nothing,
 AIS_SOD_AllBad,
@@ -17,8 +20,4 @@ AIS_SOD_OnlyOneGood,
 AIS_SOD_SeveralGood
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_StatusOfDetection_HeaderFile

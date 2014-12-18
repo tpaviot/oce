@@ -1,9 +1,3 @@
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepAP214_RepItemGroup_HeaderFile
 #include <StepAP214_RepItemGroup.hxx>
-#endif

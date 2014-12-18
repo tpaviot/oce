@@ -5,18 +5,10 @@
 
 #include <HatchGen_Domains.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _HatchGen_Domain_HeaderFile
 #include <HatchGen_Domain.hxx>
-#endif
-#ifndef _HatchGen_SequenceNodeOfDomains_HeaderFile
 #include <HatchGen_SequenceNodeOfDomains.hxx>
-#endif
  
 
 #define SeqItem HatchGen_Domain

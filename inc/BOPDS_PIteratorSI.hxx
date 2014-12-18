@@ -7,7 +7,6 @@
 #define _BOPDS_PIteratorSI_HeaderFile
 
 class BOPDS_IteratorSI;
-
 typedef BOPDS_IteratorSI* BOPDS_PIteratorSI;
 
-#endif
+#endif // _BOPDS_PIteratorSI_HeaderFile

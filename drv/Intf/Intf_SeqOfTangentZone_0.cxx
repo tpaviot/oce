@@ -5,18 +5,10 @@
 
 #include <Intf_SeqOfTangentZone.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Intf_TangentZone_HeaderFile
 #include <Intf_TangentZone.hxx>
-#endif
-#ifndef _Intf_SequenceNodeOfSeqOfTangentZone_HeaderFile
 #include <Intf_SequenceNodeOfSeqOfTangentZone.hxx>
-#endif
  
 
 #define SeqItem Intf_TangentZone

@@ -6,8 +6,11 @@
 #ifndef _IntPatch_IType_HeaderFile
 #define _IntPatch_IType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum IntPatch_IType {
+
+enum IntPatch_IType
+{
 IntPatch_Lin,
 IntPatch_Circle,
 IntPatch_Ellipse,
@@ -18,8 +21,4 @@ IntPatch_Walking,
 IntPatch_Restriction
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IntPatch_IType_HeaderFile

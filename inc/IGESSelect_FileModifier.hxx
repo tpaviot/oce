@@ -6,30 +6,23 @@
 #ifndef _IGESSelect_FileModifier_HeaderFile
 #define _IGESSelect_FileModifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_FileModifier_HeaderFile
 #include <Handle_IGESSelect_FileModifier.hxx>
-#endif
 
-#ifndef _IFSelect_GeneralModifier_HeaderFile
 #include <IFSelect_GeneralModifier.hxx>
-#endif
 class IGESData_IGESWriter;
 class IFSelect_ContextWrite;
 
 
 
-class IGESSelect_FileModifier : public IFSelect_GeneralModifier {
+class IGESSelect_FileModifier : public IFSelect_GeneralModifier
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void Perform(IFSelect_ContextWrite& ctx,IGESData_IGESWriter& writer) const = 0;
+  Standard_EXPORT virtual   void Perform (IFSelect_ContextWrite& ctx, IGESData_IGESWriter& writer)  const = 0;
 
 
 
@@ -39,7 +32,7 @@ public:
 protected:
 
   
-  Standard_EXPORT   IGESSelect_FileModifier();
+  Standard_EXPORT IGESSelect_FileModifier();
 
 
 
@@ -54,7 +47,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_FileModifier_HeaderFile

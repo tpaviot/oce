@@ -5,22 +5,12 @@
 
 #include <IntTools_StdMapNodeOfMapOfCurveSample.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntTools_CurveRangeSample_HeaderFile
 #include <IntTools_CurveRangeSample.hxx>
-#endif
-#ifndef _IntTools_CurveRangeSampleMapHasher_HeaderFile
 #include <IntTools_CurveRangeSampleMapHasher.hxx>
-#endif
-#ifndef _IntTools_MapOfCurveSample_HeaderFile
 #include <IntTools_MapOfCurveSample.hxx>
-#endif
-#ifndef _IntTools_MapIteratorOfMapOfCurveSample_HeaderFile
 #include <IntTools_MapIteratorOfMapOfCurveSample.hxx>
-#endif
 
  
 

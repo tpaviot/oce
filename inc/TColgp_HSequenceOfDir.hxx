@@ -6,28 +6,14 @@
 #ifndef _TColgp_HSequenceOfDir_HeaderFile
 #define _TColgp_HSequenceOfDir_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColgp_HSequenceOfDir_HeaderFile
 #include <Handle_TColgp_HSequenceOfDir.hxx>
-#endif
 
-#ifndef _TColgp_SequenceOfDir_HeaderFile
 #include <TColgp_SequenceOfDir.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class gp_Dir;
@@ -35,56 +21,57 @@ class TColgp_SequenceOfDir;
 
 
 
-class TColgp_HSequenceOfDir : public MMgt_TShared {
+class TColgp_HSequenceOfDir : public MMgt_TShared
+{
 
 public:
 
   
-      TColgp_HSequenceOfDir();
+    TColgp_HSequenceOfDir();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const gp_Dir& anItem) ;
+  Standard_EXPORT   void Append (const gp_Dir& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(TColgp_HSequenceOfDir)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(TColgp_HSequenceOfDir)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const gp_Dir& anItem) ;
+  Standard_EXPORT   void Prepend (const gp_Dir& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TColgp_HSequenceOfDir)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(TColgp_HSequenceOfDir)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const gp_Dir& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const gp_Dir& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(TColgp_HSequenceOfDir)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(TColgp_HSequenceOfDir)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const gp_Dir& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const gp_Dir& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(TColgp_HSequenceOfDir)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(TColgp_HSequenceOfDir)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_TColgp_HSequenceOfDir Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(TColgp_HSequenceOfDir) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const gp_Dir& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const gp_Dir& anItem) ;
   
-  Standard_EXPORT    const gp_Dir& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  gp_Dir& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     gp_Dir& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   gp_Dir& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const TColgp_SequenceOfDir& Sequence() const;
+     const  TColgp_SequenceOfDir& Sequence()  const;
   
-        TColgp_SequenceOfDir& ChangeSequence() ;
+      TColgp_SequenceOfDir& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_TColgp_HSequenceOfDir ShallowCopy() const;
+  Standard_EXPORT   Handle(TColgp_HSequenceOfDir) ShallowCopy()  const;
 
 
 
@@ -99,7 +86,7 @@ protected:
 private: 
 
 
-TColgp_SequenceOfDir mySequence;
+  TColgp_SequenceOfDir mySequence;
 
 
 };
@@ -125,11 +112,10 @@ TColgp_SequenceOfDir mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_TColgp_HSequenceOfDir ShallowCopy(const Handle_TColgp_HSequenceOfDir& me) {
+inline Handle(TColgp_HSequenceOfDir) ShallowCopy(const Handle(TColgp_HSequenceOfDir)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _TColgp_HSequenceOfDir_HeaderFile

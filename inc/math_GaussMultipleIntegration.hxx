@@ -6,52 +6,44 @@
 #ifndef _math_GaussMultipleIntegration_HeaderFile
 #define _math_GaussMultipleIntegration_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
+#include <math_Vector.hxx>
+#include <math_IntegerVector.hxx>
 #include <Standard_OStream.hxx>
-#endif
 class StdFail_NotDone;
 class math_MultipleVarFunction;
-class math_Vector;
-class math_IntegerVector;
 
 
 
-//! This class implements the integration of a function of multiple <br>
-//! variables between the parameter bounds Lower[a..b] and Upper[a..b]. <br>
-//!  Warning: Each element of Order must be inferior or equal to 61. <br>
-class math_GaussMultipleIntegration  {
+//! This class implements the integration of a function of multiple
+//! variables between the parameter bounds Lower[a..b] and Upper[a..b].
+//! Warning: Each element of Order must be inferior or equal to 61.
+class math_GaussMultipleIntegration 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! The Gauss-Legendre integration with Order = points of <br>
-//! integration for each unknow, is done on the function F <br>
-//! between the bounds Lower and Upper. <br>
-  Standard_EXPORT   math_GaussMultipleIntegration(math_MultipleVarFunction& F,const math_Vector& Lower,const math_Vector& Upper,const math_IntegerVector& Order);
-  //! returns True if all has been correctly done. <br>
-        Standard_Boolean IsDone() const;
-  //! returns the value of the integral. <br>
-        Standard_Real Value() const;
-  //! Prints information on the current state of the object. <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
 
+  //! The Gauss-Legendre integration with Order = points of
+  //! integration for each unknow, is done on the function F
+  //! between the bounds Lower and Upper.
+  Standard_EXPORT math_GaussMultipleIntegration(math_MultipleVarFunction& F, const math_Vector& Lower, const math_Vector& Upper, const math_IntegerVector& Order);
+  
+  //! returns True if all has been correctly done.
+      Standard_Boolean IsDone()  const;
+  
+  //! returns the value of the integral.
+      Standard_Real Value()  const;
+  
+  //! Prints information on the current state of the object.
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
@@ -66,8 +58,8 @@ private:
 
 
 
-Standard_Real Val;
-Standard_Boolean Done;
+  Standard_Real Val;
+  Standard_Boolean Done;
 
 
 };
@@ -77,7 +69,6 @@ Standard_Boolean Done;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_GaussMultipleIntegration_HeaderFile

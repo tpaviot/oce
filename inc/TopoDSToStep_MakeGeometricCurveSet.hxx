@@ -6,44 +6,32 @@
 #ifndef _TopoDSToStep_MakeGeometricCurveSet_HeaderFile
 #define _TopoDSToStep_MakeGeometricCurveSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepShape_GeometricCurveSet_HeaderFile
 #include <Handle_StepShape_GeometricCurveSet.hxx>
-#endif
-#ifndef _TopoDSToStep_Root_HeaderFile
 #include <TopoDSToStep_Root.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
 class StepShape_GeometricCurveSet;
 class StdFail_NotDone;
 class TopoDS_Shape;
 class Transfer_FinderProcess;
 
 
-//! This class implements the mapping between a Shape <br>
-//!          from TopoDS and a GeometricCurveSet from StepShape in order <br>
-//!          to create a GeometricallyBoundedWireframeRepresentation. <br>
-class TopoDSToStep_MakeGeometricCurveSet  : public TopoDSToStep_Root {
+//! This class implements the mapping between a Shape
+//! from TopoDS and a GeometricCurveSet from StepShape in order
+//! to create a GeometricallyBoundedWireframeRepresentation.
+class TopoDSToStep_MakeGeometricCurveSet  : public TopoDSToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopoDSToStep_MakeGeometricCurveSet(const TopoDS_Shape& SH,const Handle(Transfer_FinderProcess)& FP);
+  Standard_EXPORT TopoDSToStep_MakeGeometricCurveSet(const TopoDS_Shape& SH, const Handle(Transfer_FinderProcess)& FP);
   
-  Standard_EXPORT    const Handle_StepShape_GeometricCurveSet& Value() const;
-
+  Standard_EXPORT  const  Handle(StepShape_GeometricCurveSet)& Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Handle_StepShape_GeometricCurveSet theGeometricCurveSet;
+  Handle(StepShape_GeometricCurveSet) theGeometricCurveSet;
 
 
 };
@@ -67,7 +55,6 @@ Handle_StepShape_GeometricCurveSet theGeometricCurveSet;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDSToStep_MakeGeometricCurveSet_HeaderFile

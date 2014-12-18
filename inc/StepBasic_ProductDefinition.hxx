@@ -6,58 +6,46 @@
 #ifndef _StepBasic_ProductDefinition_HeaderFile
 #define _StepBasic_ProductDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionFormation_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionFormation.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionContext_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionContext.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_ProductDefinitionFormation;
 class StepBasic_ProductDefinitionContext;
 
 
 
-class StepBasic_ProductDefinition : public MMgt_TShared {
+class StepBasic_ProductDefinition : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a ProductDefinition <br>
-  Standard_EXPORT   StepBasic_ProductDefinition();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aId,const Handle(TCollection_HAsciiString)& aDescription,const Handle(StepBasic_ProductDefinitionFormation)& aFormation,const Handle(StepBasic_ProductDefinitionContext)& aFrameOfReference) ;
+  //! Returns a ProductDefinition
+  Standard_EXPORT StepBasic_ProductDefinition();
   
-  Standard_EXPORT     void SetId(const Handle(TCollection_HAsciiString)& aId) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aId, const Handle(TCollection_HAsciiString)& aDescription, const Handle(StepBasic_ProductDefinitionFormation)& aFormation, const Handle(StepBasic_ProductDefinitionContext)& aFrameOfReference) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Id() const;
+  Standard_EXPORT   void SetId (const Handle(TCollection_HAsciiString)& aId) ;
   
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& aDescription) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Id()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& aDescription) ;
   
-  Standard_EXPORT     void SetFormation(const Handle(StepBasic_ProductDefinitionFormation)& aFormation) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
   
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionFormation Formation() const;
+  Standard_EXPORT   void SetFormation (const Handle(StepBasic_ProductDefinitionFormation)& aFormation) ;
   
-  Standard_EXPORT     void SetFrameOfReference(const Handle(StepBasic_ProductDefinitionContext)& aFrameOfReference) ;
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionFormation) Formation()  const;
   
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionContext FrameOfReference() const;
+  Standard_EXPORT   void SetFrameOfReference (const Handle(StepBasic_ProductDefinitionContext)& aFrameOfReference) ;
+  
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionContext) FrameOfReference()  const;
 
 
 
@@ -72,10 +60,10 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString id;
-Handle_TCollection_HAsciiString description;
-Handle_StepBasic_ProductDefinitionFormation formation;
-Handle_StepBasic_ProductDefinitionContext frameOfReference;
+  Handle(TCollection_HAsciiString) id;
+  Handle(TCollection_HAsciiString) description;
+  Handle(StepBasic_ProductDefinitionFormation) formation;
+  Handle(StepBasic_ProductDefinitionContext) frameOfReference;
 
 
 };
@@ -84,7 +72,6 @@ Handle_StepBasic_ProductDefinitionContext frameOfReference;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ProductDefinition_HeaderFile

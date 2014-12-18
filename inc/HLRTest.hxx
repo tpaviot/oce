@@ -6,29 +6,17 @@
 #ifndef _HLRTest_HeaderFile
 #define _HLRTest_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_HLRTopoBRep_OutLiner_HeaderFile
 #include <Handle_HLRTopoBRep_OutLiner.hxx>
-#endif
+#include <Draw_Interpretor.hxx>
 class HLRAlgo_Projector;
 class TopoDS_Shape;
 class HLRTopoBRep_OutLiner;
-class Draw_Interpretor;
 class HLRTest_ShapeData;
 class HLRTest_DrawableEdgeTool;
 class HLRTest_DrawablePolyEdgeTool;
@@ -36,27 +24,33 @@ class HLRTest_Projector;
 class HLRTest_OutLiner;
 
 
-//! This package   is  a test  of  the    Hidden Lines <br>
-//!          algorithms instantiated on the BRep Data Structure <br>
-//!          and using the Draw package to display the results. <br>
-class HLRTest  {
+//! This package   is  a test  of  the    Hidden Lines
+//! algorithms instantiated on the BRep Data Structure
+//! and using the Draw package to display the results.
+class HLRTest 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Draw Variable Outliner to test <br>//! Set a Projector Variable <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const HLRAlgo_Projector& P) ;
-  //! Get a projector variable <br>
-//!          Returns false if the variable is not a projector <br>
-  Standard_EXPORT   static  Standard_Boolean GetProjector(Standard_CString& Name,HLRAlgo_Projector& P) ;
-  //! Set a OutLiner Variable <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const TopoDS_Shape& S) ;
-  //! Get a outliner variable <br>
-//!          Returns a null handle if the variable is not a outliner <br>
-  Standard_EXPORT   static  Handle_HLRTopoBRep_OutLiner GetOutLiner(Standard_CString& Name) ;
-  //! Defines commands to test the Hidden Line Removal <br>
-  Standard_EXPORT   static  void Commands(Draw_Interpretor& I) ;
-
+  
+  //! Draw Variable Outliner to test
+  //! Set a Projector Variable
+  Standard_EXPORT static   void Set (const Standard_CString Name, const HLRAlgo_Projector& P) ;
+  
+  //! Get a projector variable
+  //! Returns false if the variable is not a projector
+  Standard_EXPORT static   Standard_Boolean GetProjector (Standard_CString& Name, HLRAlgo_Projector& P) ;
+  
+  //! Set a OutLiner Variable
+  Standard_EXPORT static   void Set (const Standard_CString Name, const TopoDS_Shape& S) ;
+  
+  //! Get a outliner variable
+  //! Returns a null handle if the variable is not a outliner
+  Standard_EXPORT static   Handle(HLRTopoBRep_OutLiner) GetOutLiner (Standard_CString& Name) ;
+  
+  //! Defines commands to test the Hidden Line Removal
+  Standard_EXPORT static   void Commands (Draw_Interpretor& I) ;
 
 
 
@@ -84,7 +78,6 @@ friend class HLRTest_OutLiner;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRTest_HeaderFile

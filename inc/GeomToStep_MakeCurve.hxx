@@ -6,50 +6,36 @@
 #ifndef _GeomToStep_MakeCurve_HeaderFile
 #define _GeomToStep_MakeCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Curve_HeaderFile
 #include <Handle_StepGeom_Curve.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
 class StepGeom_Curve;
 class StdFail_NotDone;
 class Geom_Curve;
 class Geom2d_Curve;
 
 
-//! This class implements the mapping between classes <br>
-//!          Curve from Geom and the class Curve from StepGeom which <br>
-//!          describes a Curve from prostep. As Curve is an <br>
-//!          abstract curve this class an access to the sub-class required. <br>
-class GeomToStep_MakeCurve  : public GeomToStep_Root {
+//! This class implements the mapping between classes
+//! Curve from Geom and the class Curve from StepGeom which
+//! describes a Curve from prostep. As Curve is an
+//! abstract curve this class an access to the sub-class required.
+class GeomToStep_MakeCurve  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeCurve(const Handle(Geom_Curve)& C);
+  Standard_EXPORT GeomToStep_MakeCurve(const Handle(Geom_Curve)& C);
   
-  Standard_EXPORT   GeomToStep_MakeCurve(const Handle(Geom2d_Curve)& C);
+  Standard_EXPORT GeomToStep_MakeCurve(const Handle(Geom2d_Curve)& C);
   
-  Standard_EXPORT    const Handle_StepGeom_Curve& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_Curve)& Value()  const;
 
 
 
@@ -64,7 +50,7 @@ private:
 
 
 
-Handle_StepGeom_Curve theCurve;
+  Handle(StepGeom_Curve) theCurve;
 
 
 };
@@ -73,7 +59,6 @@ Handle_StepGeom_Curve theCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeCurve_HeaderFile

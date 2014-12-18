@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepDS_DataMapNodeOfMapOfCurve_HeaderFile
 #define _TopOpeBRepDS_DataMapNodeOfMapOfCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfMapOfCurve.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopOpeBRepDS_CurveData_HeaderFile
 #include <TopOpeBRepDS_CurveData.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopOpeBRepDS_CurveData;
 class TColStd_MapIntegerHasher;
 class TopOpeBRepDS_MapOfCurve;
@@ -35,16 +21,17 @@ class TopOpeBRepDS_DataMapIteratorOfMapOfCurve;
 
 
 
-class TopOpeBRepDS_DataMapNodeOfMapOfCurve : public TCollection_MapNode {
+class TopOpeBRepDS_DataMapNodeOfMapOfCurve : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepDS_DataMapNodeOfMapOfCurve(const Standard_Integer& K,const TopOpeBRepDS_CurveData& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepDS_DataMapNodeOfMapOfCurve(const Standard_Integer& K, const TopOpeBRepDS_CurveData& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        TopOpeBRepDS_CurveData& Value() const;
+      TopOpeBRepDS_CurveData& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-TopOpeBRepDS_CurveData myValue;
+  Standard_Integer myKey;
+  TopOpeBRepDS_CurveData myValue;
 
 
 };
@@ -98,7 +85,6 @@ TopOpeBRepDS_CurveData myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DataMapNodeOfMapOfCurve_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString_HeaderFile
 #define _Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString_HeaderFile
 #include <Handle_Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TCollection_AsciiString;
 class TCollection_ExtendedString;
 class Resource_DataMapOfAsciiStringExtendedString;
@@ -35,16 +21,17 @@ class Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString;
 
 
 
-class Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString : public TCollection_MapNode {
+class Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString : public TCollection_MapNode
+{
 
 public:
 
   
-      Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString(const TCollection_AsciiString& K,const TCollection_ExtendedString& I,const TCollection_MapNodePtr& n);
+    Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString(const TCollection_AsciiString& K, const TCollection_ExtendedString& I, const TCollection_MapNodePtr& n);
   
-        TCollection_AsciiString& Key() const;
+      TCollection_AsciiString& Key()  const;
   
-        TCollection_ExtendedString& Value() const;
+      TCollection_ExtendedString& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-TCollection_AsciiString myKey;
-TCollection_ExtendedString myValue;
+  TCollection_AsciiString myKey;
+  TCollection_ExtendedString myValue;
 
 
 };
@@ -98,7 +85,6 @@ TCollection_ExtendedString myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString_HeaderFile

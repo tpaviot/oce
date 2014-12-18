@@ -6,46 +6,41 @@
 #ifndef _gce_MakeTranslation2d_HeaderFile
 #define _gce_MakeTranslation2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Trsf2d_HeaderFile
 #include <gp_Trsf2d.hxx>
-#endif
 class gp_Vec2d;
 class gp_Pnt2d;
 class gp_Trsf2d;
 
 
-//! This class implements elementary construction algorithms for a <br>
-//! translation in 2D space. The result is a gp_Trsf2d transformation. <br>
-//! A MakeTranslation2d object provides a framework for: <br>
-//! -   defining the construction of the transformation, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class gce_MakeTranslation2d  {
+//! This class implements elementary construction algorithms for a
+//! translation in 2D space. The result is a gp_Trsf2d transformation.
+//! A MakeTranslation2d object provides a framework for:
+//! -   defining the construction of the transformation,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class gce_MakeTranslation2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a translation along the vector Vect. <br>
-  Standard_EXPORT   gce_MakeTranslation2d(const gp_Vec2d& Vect);
-  //! Constructs a translation along the vector <br>
-//!  (Point1,Point2) defined from the point Point1 to the point Point2. <br>
-  Standard_EXPORT   gce_MakeTranslation2d(const gp_Pnt2d& Point1,const gp_Pnt2d& Point2);
-  //! Returns the constructed transformation. <br>
-  Standard_EXPORT    const gp_Trsf2d& Value() const;
   
-  Standard_EXPORT    const gp_Trsf2d& Operator() const;
+  //! Constructs a translation along the vector Vect.
+  Standard_EXPORT gce_MakeTranslation2d(const gp_Vec2d& Vect);
+  
+  //! Constructs a translation along the vector
+  //! (Point1,Point2) defined from the point Point1 to the point Point2.
+  Standard_EXPORT gce_MakeTranslation2d(const gp_Pnt2d& Point1, const gp_Pnt2d& Point2);
+  
+  //! Returns the constructed transformation.
+  Standard_EXPORT  const  gp_Trsf2d& Value()  const;
+  
+  Standard_EXPORT  const  gp_Trsf2d& Operator()  const;
 Standard_EXPORT operator gp_Trsf2d() const;
-
 
 
 
@@ -60,7 +55,7 @@ private:
 
 
 
-gp_Trsf2d TheTranslation2d;
+  gp_Trsf2d TheTranslation2d;
 
 
 };
@@ -69,7 +64,6 @@ gp_Trsf2d TheTranslation2d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gce_MakeTranslation2d_HeaderFile

@@ -6,52 +6,35 @@
 #ifndef _BinMDataXtd_PointDriver_HeaderFile
 #define _BinMDataXtd_PointDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BinMDataXtd_PointDriver_HeaderFile
 #include <Handle_BinMDataXtd_PointDriver.hxx>
-#endif
 
-#ifndef _BinMDF_ADriver_HeaderFile
 #include <BinMDF_ADriver.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BinObjMgt_RRelocationTable_HeaderFile
 #include <BinObjMgt_RRelocationTable.hxx>
-#endif
-#ifndef _BinObjMgt_SRelocationTable_HeaderFile
 #include <BinObjMgt_SRelocationTable.hxx>
-#endif
 class CDM_MessageDriver;
 class TDF_Attribute;
 class BinObjMgt_Persistent;
 
 
-//!  Point attribute Driver. <br>
-class BinMDataXtd_PointDriver : public BinMDF_ADriver {
+//! Point attribute Driver.
+class BinMDataXtd_PointDriver : public BinMDF_ADriver
+{
 
 public:
 
   
-  Standard_EXPORT   BinMDataXtd_PointDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
+  Standard_EXPORT BinMDataXtd_PointDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
   
-  Standard_EXPORT   virtual  Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT virtual   Handle(TDF_Attribute) NewEmpty()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean Paste(const BinObjMgt_Persistent& Source,const Handle(TDF_Attribute)& Target,BinObjMgt_RRelocationTable& RelocTable) const;
+  Standard_EXPORT virtual   Standard_Boolean Paste (const BinObjMgt_Persistent& Source, const Handle(TDF_Attribute)& Target, BinObjMgt_RRelocationTable& RelocTable)  const;
   
-  Standard_EXPORT   virtual  void Paste(const Handle(TDF_Attribute)& Source,BinObjMgt_Persistent& Target,BinObjMgt_SRelocationTable& RelocTable) const;
+  Standard_EXPORT virtual   void Paste (const Handle(TDF_Attribute)& Source, BinObjMgt_Persistent& Target, BinObjMgt_SRelocationTable& RelocTable)  const;
 
 
 
@@ -74,7 +57,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BinMDataXtd_PointDriver_HeaderFile

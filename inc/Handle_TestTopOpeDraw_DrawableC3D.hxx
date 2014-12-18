@@ -6,22 +6,15 @@
 #ifndef _Handle_TestTopOpeDraw_DrawableC3D_HeaderFile
 #define _Handle_TestTopOpeDraw_DrawableC3D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_DrawTrSurf_Curve_HeaderFile
 #include <Handle_DrawTrSurf_Curve.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(DrawTrSurf_Curve);
 class TestTopOpeDraw_DrawableC3D;
 
-DEFINE_STANDARD_HANDLE(TestTopOpeDraw_DrawableC3D,DrawTrSurf_Curve)
+DEFINE_STANDARD_HANDLE(TestTopOpeDraw_DrawableC3D, DrawTrSurf_Curve)
 
-#endif
+#endif // _Handle_TestTopOpeDraw_DrawableC3D_HeaderFile

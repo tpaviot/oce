@@ -6,38 +6,27 @@
 #ifndef _BRepBlend_SequenceNodeOfSequenceOfPointOnRst_HeaderFile
 #define _BRepBlend_SequenceNodeOfSequenceOfPointOnRst_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst_HeaderFile
 #include <Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst.hxx>
-#endif
 
-#ifndef _BRepBlend_PointOnRst_HeaderFile
 #include <BRepBlend_PointOnRst.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class BRepBlend_PointOnRst;
 class BRepBlend_SequenceOfPointOnRst;
 
 
 
-class BRepBlend_SequenceNodeOfSequenceOfPointOnRst : public TCollection_SeqNode {
+class BRepBlend_SequenceNodeOfSequenceOfPointOnRst : public TCollection_SeqNode
+{
 
 public:
 
   
-      BRepBlend_SequenceNodeOfSequenceOfPointOnRst(const BRepBlend_PointOnRst& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    BRepBlend_SequenceNodeOfSequenceOfPointOnRst(const BRepBlend_PointOnRst& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        BRepBlend_PointOnRst& Value() const;
+      BRepBlend_PointOnRst& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-BRepBlend_PointOnRst myValue;
+  BRepBlend_PointOnRst myValue;
 
 
 };
@@ -78,7 +67,6 @@ BRepBlend_PointOnRst myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBlend_SequenceNodeOfSequenceOfPointOnRst_HeaderFile

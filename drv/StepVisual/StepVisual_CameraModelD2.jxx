@@ -1,9 +1,3 @@
-#ifndef _StepVisual_PlanarBox_HeaderFile
 #include <StepVisual_PlanarBox.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepVisual_CameraModelD2_HeaderFile
 #include <StepVisual_CameraModelD2.hxx>
-#endif

@@ -6,9 +6,12 @@
 #ifndef _Draw_MarkerShape_HeaderFile
 #define _Draw_MarkerShape_HeaderFile
 
-//! Circle is not sensible to zoom, like <br>
-//!          other MarkerShape, contrarily to CircleZoom <br>
-enum Draw_MarkerShape {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Circle is not sensible to zoom, like
+//! other MarkerShape, contrarily to CircleZoom
+enum Draw_MarkerShape
+{
 Draw_Square,
 Draw_Losange,
 Draw_X,
@@ -17,8 +20,4 @@ Draw_Circle,
 Draw_CircleZoom
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Draw_MarkerShape_HeaderFile

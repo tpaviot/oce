@@ -1,15 +1,5 @@
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NotImplemented_HeaderFile
 #include <Standard_NotImplemented.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _GeomFill_TrihedronWithGuide_HeaderFile
 #include <GeomFill_TrihedronWithGuide.hxx>
-#endif

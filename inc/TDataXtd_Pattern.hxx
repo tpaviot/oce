@@ -6,43 +6,36 @@
 #ifndef _TDataXtd_Pattern_HeaderFile
 #define _TDataXtd_Pattern_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataXtd_Pattern_HeaderFile
 #include <Handle_TDataXtd_Pattern.hxx>
-#endif
 
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_GUID;
 class TDataXtd_Array1OfTrsf;
 
 
-//! a general pattern model <br>
-class TDataXtd_Pattern : public TDF_Attribute {
+//! a general pattern model
+class TDataXtd_Pattern : public TDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Returns the ID of the attribute. <br>
-//! <br>
-  Standard_EXPORT    const Standard_GUID& ID() const;
-  //! Returns the ID of the attribute. <br>
-//! <br>
-  Standard_EXPORT   virtual const Standard_GUID& PatternID() const = 0;
-  //! Give the number of transformation <br>
-  Standard_EXPORT   virtual  Standard_Integer NbTrsfs() const = 0;
-  //! Give the transformations <br>
-  Standard_EXPORT   virtual  void ComputeTrsfs(TDataXtd_Array1OfTrsf& Trsfs) const = 0;
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
+  
+  //! Returns the ID of the attribute.
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  //! Returns the ID of the attribute.
+  Standard_EXPORT virtual  const  Standard_GUID& PatternID()  const = 0;
+  
+  //! Give the number of transformation
+  Standard_EXPORT virtual   Standard_Integer NbTrsfs()  const = 0;
+  
+  //! Give the transformations
+  Standard_EXPORT virtual   void ComputeTrsfs (TDataXtd_Array1OfTrsf& Trsfs)  const = 0;
 
 
 
@@ -65,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataXtd_Pattern_HeaderFile

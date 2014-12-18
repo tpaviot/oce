@@ -48,23 +48,26 @@ deferred class PresentableObject from PrsMgr inherits TShared from MMgt
     	-- creation of new interactive objects.
 
 uses
-    Presentation          from PrsMgr,
-    Presentation          from Prs3d,
-    Presentations         from PrsMgr,
-    PresentationManager   from PrsMgr,
-    PresentationManager3d from PrsMgr,
-    TypeOfPresentation3d  from PrsMgr,
-    DataStructureManager  from Graphic3d,
-    Projector             from Prs3d,
-    Transformation        from Geom,
-    ListOfInteger         from TColStd,
-    Location              from TopLoc, 
-    ClipPlane_Handle      from Graphic3d,
-    SequenceOfHClipPlane  from Graphic3d,
+    Presentation           from PrsMgr,
+    Presentation           from Prs3d,
+    Presentations          from PrsMgr,
+    PresentationManager    from PrsMgr,
+    PresentationManager3d  from PrsMgr,
+    TypeOfPresentation3d   from PrsMgr,
+    ListOfPresentableObjects from PrsMgr,
+    PresentableObjectPointer from PrsMgr,
+    DataStructureManager   from Graphic3d,
+    Projector              from Prs3d,
+    Transformation         from Geom,
+    ListOfInteger          from TColStd,
+    Location               from TopLoc, 
+    ClipPlane_Handle       from Graphic3d,
+    SequenceOfHClipPlane   from Graphic3d,
     --   ABD 29/10/04  Transform Persistence of Presentation( pan, zoom, rotate )
-    TransModeFlags        from Graphic3d, 
-    Pnt                   from gp, 
-    CTransPersStruct      from  Graphic3d      
+    TransModeFlags         from Graphic3d, 
+    Pnt                    from gp,
+    Trsf                   from gp, 
+    CTransPersStruct       from  Graphic3d      
     --   ABD 29/10/04  Transform Persistence of Presentation( pan, zoom, rotate )
 
 raises
@@ -73,13 +76,14 @@ is
 
 
     Initialize(aTypeOfPresentation3d: TypeOfPresentation3d from PrsMgr = PrsMgr_TOP_AllView);
+      ---C++: alias "Standard_EXPORT virtual ~PrsMgr_PresentableObject();"
     
 ---Category: deferred methods.
 --           
     
     Compute(me:mutable;
                 aPresentationManager: PresentationManager3d from PrsMgr;
-                aPresentation: mutable Presentation from Prs3d;
+                aPresentation: Presentation from Prs3d;
                 aMode: Integer from Standard = 0)
     	---Purpose: Calculates the 3D view aPresentation and its
     	-- updates. The latter are managed by aPresentationManager.
@@ -90,7 +94,7 @@ is
     
     Compute(me            : mutable;
             aProjector    : Projector from Prs3d;
-            aPresentation  : mutable Presentation from Prs3d)
+            aPresentation  : Presentation from Prs3d)
     	---Purpose: Calculates the 3D view aPresentation and its
     	-- updates. The latter are managed by
     	-- aPresentationManager. Each of the views in the
@@ -107,7 +111,7 @@ is
     Compute(me            : mutable;
             aProjector    : Projector from Prs3d;
             aTrsf         : Transformation from Geom;
-            aPresentation : mutable Presentation from Prs3d)
+            aPresentation : Presentation from Prs3d)
     is virtual protected;
     	---Purpose: Calculates the 3D view aPresentation and its
     	-- updates. The latter are managed by
@@ -136,7 +140,7 @@ is
     
     Fill(me: mutable; 
                 aPresentationManager: PresentationManager from PrsMgr;
-                aPresentation: mutable Presentation from PrsMgr;
+                aPresentation: Presentation from PrsMgr;
                 aMode: Integer from Standard = 0)
     -- 22-03-04 OCC4895 SAN High-level interface for controlling polygon offsets
     is virtual protected;
@@ -149,7 +153,7 @@ is
     -- is static private;
     
     Presentations(me : mutable) returns Presentations from PrsMgr
-    is static protected;
+    is static;
     	---C++: return &
             
    TypeOfPresentation3d(me) returns TypeOfPresentation3d from PrsMgr
@@ -218,19 +222,30 @@ is
    ToBeUpdated(me;ListOfMode : out ListOfInteger from TColStd);
    ---Purpose: gives the list of modes which are flagged "to be updated".
     
-   SetLocation(me:mutable;aLoc:Location from TopLoc) is virtual;
+   SetLocalTransformation(me:mutable; theTransformation:Trsf from gp) is virtual;
+   ---Purpose: Sets local transformation to theTransformation.
+
+   SetCombinedParentTransform(me:mutable; theTransformation:Trsf from gp) is virtual protected;
+   ---Purpose: Sets myCombinedParentTransform to theTransformation. Thus object receives transformation
+   -- from parent node and able to derive its own.
     
-   HasLocation(me) returns Boolean from Standard;
+   HasTransformation(me) returns Boolean from Standard;
+   ---Purpose: Returns true if object has a transformation that is different from the identity.
    
-   Location(me) returns any Location from TopLoc;
+   LocalTransformation(me) returns any Trsf from gp;
+   ---C++: inline
+   ---C++: return const&
+
+   Transformation(me) returns any Trsf from gp;
    ---C++: inline
    ---C++: return const&
    
-   ResetLocation(me:mutable)  is virtual;
+   ResetTransformation(me:mutable)  is virtual;
+   ---Purpose: resets local transformation to identity.
 
-   UpdateLocation(me:mutable) is virtual;
+   UpdateTransformation(me:mutable) is virtual;
     
-   UpdateLocation(me:mutable;P : mutable Presentation from Prs3d) is virtual;
+   UpdateTransformation(me:mutable;P : Presentation from Prs3d) is virtual;
     
    SetZLayer ( me         : mutable;
                thePrsMgr  : PresentationManager from PrsMgr;
@@ -277,6 +292,36 @@ is
    ---Purpose: Get clip planes.
    -- @return set of previously added clip planes for all display mode presentations.
 
+  SetMutable ( me           : mutable;
+               theIsMutable : Boolean from Standard ) is virtual;
+  ---Purpose: Sets if the object has mutable nature (content or location will be changed regularly).
+  -- This method should be called before object displaying to take effect.
+
+  IsMutable (me) returns Boolean from Standard;
+  ---C++: return const
+  ---Purpose: Returns true if object has mutable nature (content or location are be changed regularly).
+  -- Mutable object will be managed in different way than static onces (another optimizations).
+
+  AddChild ( me           : mutable;
+             theObject    : PresentableObject from PrsMgr ) is virtual;
+    --- Purpose: Makes theObject child of current object in scene hierarchy. 
+
+  RemoveChild ( me           : mutable;
+                theObject    : PresentableObject from PrsMgr ) is virtual;
+    --- Purpose: Removes theObject from children of current object in scene hierarchy. 
+
+  Children (me) returns ListOfPresentableObjects from PrsMgr is static;
+    ---C++: return const&
+    --- Purpose: Returns children of the current object.
+
+  HasOwnPresentations (me) returns Boolean from Standard is static;
+    ---C++: return const
+    --- Purpose: Returns true if object should have own presentations.
+
+  Parent (me) returns PresentableObjectPointer from PrsMgr is static;
+    ---C++: return const
+    --- Purpose: Returns parent of current object in scene hierarchy.
+
    UpdateClipping (me : mutable) is virtual protected;
    ---Purpose: General virtual method for internal update of presentation state
    -- when some modifications on list of clip planes occurs. Base 
@@ -285,20 +330,30 @@ is
 fields
     myPresentations: Presentations from PrsMgr is protected;
     myTypeOfPresentation3d: TypeOfPresentation3d from PrsMgr is protected;
-    myLocation  : Location from TopLoc is protected; 
     myClipPlanes : SequenceOfHClipPlane from Graphic3d is protected;
-    --myTransformPersistence  :  TransModeFlags  from  Graphic3d; 
     myTransformPersistence  :  CTransPersStruct  from  Graphic3d;
+    myIsMutable : Boolean from Standard is protected;
+
+
+    myHasOwnPresentations : Boolean from Standard is protected; -- shows if object should have own presentations.
+
+    myParent : PresentableObjectPointer from PrsMgr; -- Reference to parent object in scene hierarchy.
+ 
+    myLocalTransformation : Trsf from gp;     -- Own transformation of presentable object.
+    myTransformation : Trsf from gp;          -- Combined transformation of presentable object.
+    myCombinedParentTransform : Trsf from gp; -- Combined transformation of presentable object excepting local transformation.
+
+    myChildren : ListOfPresentableObjects from PrsMgr; -- Child objects in scene hierarchy.
 
 friends
-    class Presentation3d      from PrsMgr,
+    class Presentation        from PrsMgr,
     class PresentationManager from PrsMgr,
-    Compute from Presentation3d from PrsMgr(me : mutable; aProjector   : DataStructureManager from Graphic3d),
-    Compute from Presentation3d from PrsMgr(me : mutable; aProjector   : DataStructureManager from Graphic3d;
-                                                          aGivenStruct :  Structure from Graphic3d),
-    Compute from Presentation3d from PrsMgr(me : mutable; aProjector   : DataStructureManager from Graphic3d;
-                                                          TheTrsf   : Transformation from Geom),
-    Compute from Presentation3d from PrsMgr(me : mutable; aProjector   : DataStructureManager from Graphic3d;
-                                                          TheTrsf      : Transformation from Geom;
-                                                          aGivenStruct : Structure from Graphic3d)
+    Compute from Presentation from PrsMgr(me : mutable; aProjector   : DataStructureManager from Graphic3d),
+    Compute from Presentation from PrsMgr(me : mutable; aProjector   : DataStructureManager from Graphic3d;
+                                                        aGivenStruct :  Structure from Graphic3d),
+    Compute from Presentation from PrsMgr(me : mutable; aProjector   : DataStructureManager from Graphic3d;
+                                                        TheTrsf   : Transformation from Geom),
+    Compute from Presentation from PrsMgr(me : mutable; aProjector   : DataStructureManager from Graphic3d;
+                                                        TheTrsf      : Transformation from Geom;
+                                                        aGivenStruct : Structure from Graphic3d)
 end PresentableObject from PrsMgr;

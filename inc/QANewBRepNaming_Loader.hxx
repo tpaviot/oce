@@ -6,22 +6,12 @@
 #ifndef _QANewBRepNaming_Loader_HeaderFile
 #define _QANewBRepNaming_Loader_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class BRepBuilderAPI_MakeShape;
 class TopoDS_Shape;
 class TNaming_Builder;
@@ -31,65 +21,72 @@ class TopTools_MapOfShape;
 
 
 
-class QANewBRepNaming_Loader  {
+class QANewBRepNaming_Loader 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  Load in   the naming data-structure   the  shape <br>
-//!          generated  from FACE,  EDGE, VERTEX,..., after the <br>
-//!          MakeShape   operation.  <ShapeIn>  is  the initial <br>
-//!          shape.   <GeneratedFrom>   defines  the   kind  of <br>
-//!          shape generation    to    record  in   the  naming <br>
-//!          data-structure. The <builder> is used to store the <br>
-//!          set of evolutions in the data-framework of TDF. <br>
-  Standard_EXPORT   static  void LoadGeneratedShapes(BRepBuilderAPI_MakeShape& MakeShape,const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum GeneratedFrom,TNaming_Builder& Buider) ;
-  //! Load in the naming data-structure the shape <br>
-//!              modified from FACE, EDGE, VERTEX,..., <br>
-//!              after the MakeShape operation. <br>
-//!            <ShapeIn> is the initial shape. <br>
-//!            <ModifiedFrom> defines the kind of shape modification <br>
-//!              to record in the naming data-structure. <br>
-//!            The <builder> is used to store the set of evolutions <br>
-//!              in the data-framework of TDF. <br>
-  Standard_EXPORT   static  void LoadModifiedShapes(BRepBuilderAPI_MakeShape& MakeShape,const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum ModifiedFrom,TNaming_Builder& Buider,const Standard_Boolean theBool = Standard_False) ;
-  //! Load in the naming data-structure the shape <br>
-//!             deleted after the MakeShape operation. <br>
-//!           <ShapeIn> is the initial shape. <br>
-//!           <KindOfDeletedShape> defines the kind of <br>
-//!             deletion to record in the naming data-structure. <br>
-//!           The <builder> is used to store the set of evolutions <br>
-//!             in the data-framework of TDF. <br>
-  Standard_EXPORT   static  void LoadDeletedShapes(BRepBuilderAPI_MakeShape& MakeShape,const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum KindOfDeletedShape,TNaming_Builder& Buider) ;
-  //! The same as LoadGeneratedShapes plus performs orientation of <br>
-//!           loaded shapes according orientation of SubShapes <br>
-  Standard_EXPORT   static  void LoadAndOrientGeneratedShapes(BRepBuilderAPI_MakeShape& MakeShape,const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum GeneratedFrom,TNaming_Builder& Buider,const TopTools_DataMapOfShapeShape& SubShapesOfResult) ;
-  //! The same as LoadModifiedShapes plus performs orientation of <br>
-//!            loaded shapes according orientation of SubShapes <br>
-  Standard_EXPORT   static  void LoadAndOrientModifiedShapes(BRepBuilderAPI_MakeShape& MakeShape,const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum ModifiedFrom,TNaming_Builder& Buider,const TopTools_DataMapOfShapeShape& SubShapesOfResult) ;
   
-  Standard_EXPORT   static  void ModifyPart(const TopoDS_Shape& PartShape,const TopoDS_Shape& Primitive,const TDF_Label& Label) ;
+  //! Load in   the naming data-structure   the  shape
+  //! generated  from FACE,  EDGE, VERTEX,..., after the
+  //! MakeShape   operation.  <ShapeIn>  is  the initial
+  //! shape.   <GeneratedFrom>   defines  the   kind  of
+  //! shape generation    to    record  in   the  naming
+  //! data-structure. The <builder> is used to store the
+  //! set of evolutions in the data-framework of TDF.
+  Standard_EXPORT static   void LoadGeneratedShapes (BRepBuilderAPI_MakeShape& MakeShape, const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum GeneratedFrom, TNaming_Builder& Buider) ;
   
-  Standard_EXPORT   static  Standard_Boolean HasDangleShapes(const TopoDS_Shape& ShapeIn) ;
+  //! Load in the naming data-structure the shape
+  //! modified from FACE, EDGE, VERTEX,...,
+  //! after the MakeShape operation.
+  //! <ShapeIn> is the initial shape.
+  //! <ModifiedFrom> defines the kind of shape modification
+  //! to record in the naming data-structure.
+  //! The <builder> is used to store the set of evolutions
+  //! in the data-framework of TDF.
+  Standard_EXPORT static   void LoadModifiedShapes (BRepBuilderAPI_MakeShape& MakeShape, const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum ModifiedFrom, TNaming_Builder& Buider, const Standard_Boolean theBool = Standard_False) ;
   
-  Standard_EXPORT   static  void LoadGeneratedDangleShapes(const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum GeneratedFrom,TNaming_Builder& GenBuider) ;
+  //! Load in the naming data-structure the shape
+  //! deleted after the MakeShape operation.
+  //! <ShapeIn> is the initial shape.
+  //! <KindOfDeletedShape> defines the kind of
+  //! deletion to record in the naming data-structure.
+  //! The <builder> is used to store the set of evolutions
+  //! in the data-framework of TDF.
+  Standard_EXPORT static   void LoadDeletedShapes (BRepBuilderAPI_MakeShape& MakeShape, const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum KindOfDeletedShape, TNaming_Builder& Buider) ;
   
-  Standard_EXPORT   static  void LoadGeneratedDangleShapes(const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum GeneratedFrom,const TopTools_MapOfShape& OnlyThese,TNaming_Builder& GenBuider) ;
+  //! The same as LoadGeneratedShapes plus performs orientation of
+  //! loaded shapes according orientation of SubShapes
+  Standard_EXPORT static   void LoadAndOrientGeneratedShapes (BRepBuilderAPI_MakeShape& MakeShape, const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum GeneratedFrom, TNaming_Builder& Buider, const TopTools_DataMapOfShapeShape& SubShapesOfResult) ;
   
-  Standard_EXPORT   static  void LoadModifiedDangleShapes(BRepBuilderAPI_MakeShape& MakeShape,const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum GeneratedFrom,TNaming_Builder& GenBuider) ;
+  //! The same as LoadModifiedShapes plus performs orientation of
+  //! loaded shapes according orientation of SubShapes
+  Standard_EXPORT static   void LoadAndOrientModifiedShapes (BRepBuilderAPI_MakeShape& MakeShape, const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum ModifiedFrom, TNaming_Builder& Buider, const TopTools_DataMapOfShapeShape& SubShapesOfResult) ;
   
-  Standard_EXPORT   static  void LoadDeletedDangleShapes(BRepBuilderAPI_MakeShape& MakeShape,const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum ShapeType,TNaming_Builder& DelBuider) ;
+  Standard_EXPORT static   void ModifyPart (const TopoDS_Shape& PartShape, const TopoDS_Shape& Primitive, const TDF_Label& Label) ;
   
-  Standard_EXPORT   static  void LoadDangleShapes(const TopoDS_Shape& theShape,const TDF_Label& theLabelGenerator) ;
+  Standard_EXPORT static   Standard_Boolean HasDangleShapes (const TopoDS_Shape& ShapeIn) ;
   
-  Standard_EXPORT   static  void LoadDangleShapes(const TopoDS_Shape& theShape,const TopoDS_Shape& ignoredShape,const TDF_Label& theLabelGenerator) ;
-  //! Returns dangle sub shapes Generator - Dangle. <br>
-  Standard_EXPORT   static  Standard_Boolean GetDangleShapes(const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum GeneratedFrom,TopTools_DataMapOfShapeShape& Dangles) ;
-  //! Returns dangle sub shapes. <br>
-  Standard_EXPORT   static  Standard_Boolean GetDangleShapes(const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum GeneratedFrom,TopTools_MapOfShape& Dangles) ;
+  Standard_EXPORT static   void LoadGeneratedDangleShapes (const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum GeneratedFrom, TNaming_Builder& GenBuider) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsDangle(const TopoDS_Shape& theDangle,const TopoDS_Shape& theShape) ;
-
+  Standard_EXPORT static   void LoadGeneratedDangleShapes (const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum GeneratedFrom, const TopTools_MapOfShape& OnlyThese, TNaming_Builder& GenBuider) ;
+  
+  Standard_EXPORT static   void LoadModifiedDangleShapes (BRepBuilderAPI_MakeShape& MakeShape, const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum GeneratedFrom, TNaming_Builder& GenBuider) ;
+  
+  Standard_EXPORT static   void LoadDeletedDangleShapes (BRepBuilderAPI_MakeShape& MakeShape, const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum ShapeType, TNaming_Builder& DelBuider) ;
+  
+  Standard_EXPORT static   void LoadDangleShapes (const TopoDS_Shape& theShape, const TDF_Label& theLabelGenerator) ;
+  
+  Standard_EXPORT static   void LoadDangleShapes (const TopoDS_Shape& theShape, const TopoDS_Shape& ignoredShape, const TDF_Label& theLabelGenerator) ;
+  
+  //! Returns dangle sub shapes Generator - Dangle.
+  Standard_EXPORT static   Standard_Boolean GetDangleShapes (const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum GeneratedFrom, TopTools_DataMapOfShapeShape& Dangles) ;
+  
+  //! Returns dangle sub shapes.
+  Standard_EXPORT static   Standard_Boolean GetDangleShapes (const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum GeneratedFrom, TopTools_MapOfShape& Dangles) ;
+  
+  Standard_EXPORT static   Standard_Boolean IsDangle (const TopoDS_Shape& theDangle, const TopoDS_Shape& theShape) ;
 
 
 
@@ -112,7 +109,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_Loader_HeaderFile

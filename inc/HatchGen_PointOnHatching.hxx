@@ -6,84 +6,81 @@
 #ifndef _HatchGen_PointOnHatching_HeaderFile
 #define _HatchGen_PointOnHatching_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _HatchGen_PointsOnElement_HeaderFile
 #include <HatchGen_PointsOnElement.hxx>
-#endif
-#ifndef _HatchGen_IntersectionPoint_HeaderFile
 #include <HatchGen_IntersectionPoint.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_OutOfRange;
 class IntRes2d_IntersectionPoint;
 class HatchGen_PointOnElement;
 
 
 
-class HatchGen_PointOnHatching  : public HatchGen_IntersectionPoint {
+class HatchGen_PointOnHatching  : public HatchGen_IntersectionPoint
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty point. <br>
-  Standard_EXPORT   HatchGen_PointOnHatching();
-  //! Creates a point from an other. <br>
-  Standard_EXPORT   HatchGen_PointOnHatching(const HatchGen_PointOnHatching& Point);
-  //! Creates a point from an intersection point. <br>
-  Standard_EXPORT   HatchGen_PointOnHatching(const IntRes2d_IntersectionPoint& Point);
-  //! linux porting <br>
-  Standard_EXPORT   virtual  void Delete() ;
+  
+  //! Creates an empty point.
+  Standard_EXPORT HatchGen_PointOnHatching();
+  
+  //! Creates a point from an other.
+  Standard_EXPORT HatchGen_PointOnHatching(const HatchGen_PointOnHatching& Point);
+  
+  //! Creates a point from an intersection point.
+  Standard_EXPORT HatchGen_PointOnHatching(const IntRes2d_IntersectionPoint& Point);
+  
+  //! linux porting
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~HatchGen_PointOnHatching(){Delete();}
-  //! Adds a point on element to the point. <br>
-  Standard_EXPORT     void AddPoint(const HatchGen_PointOnElement& Point,const Standard_Real Confusion) ;
-  //! Returns the number of elements intersecting the <br>
-//!          hatching at this point. <br>
-  Standard_EXPORT     Standard_Integer NbPoints() const;
-  //! Returns the Index-th point on element of the point. <br>
-//!          The exception OutOfRange is raised if <br>
-//!          Index > NbPoints. <br>
-  Standard_EXPORT    const HatchGen_PointOnElement& Point(const Standard_Integer Index) const;
-  //! Removes the Index-th point on element of the point. <br>
-//!          The exception OutOfRange is raised if <br>
-//!          Index > NbPoints. <br>
-  Standard_EXPORT     void RemPoint(const Standard_Integer Index) ;
-  //! Removes all the points on element of the point. <br>
-  Standard_EXPORT     void ClrPoints() ;
-  //! Tests if the point is lower than an other. <br>
-//!          A point on hatching P1 is said to be lower than an <br>
-//!          other P2 if : <br>
-//!            P2.myParam - P1.myParam > Confusion <br>
-  Standard_EXPORT     Standard_Boolean IsLower(const HatchGen_PointOnHatching& Point,const Standard_Real Confusion) const;
-  //! Tests if the  point is equal to an other. <br>
-//!          A  point on hatching P1 is said to be equal to an <br>
-//!          other P2 if : <br>
-//!            | P2.myParam - P1.myParam | <= Confusion <br>
-  Standard_EXPORT     Standard_Boolean IsEqual(const HatchGen_PointOnHatching& Point,const Standard_Real Confusion) const;
-  //! Tests if the point is greater than an other. <br>
-//!          A point on hatching P1 is said to be greater than an <br>
-//!          other P2 if : <br>
-//!            P1.myParam - P2.myParam > Confusion <br>
-  Standard_EXPORT     Standard_Boolean IsGreater(const HatchGen_PointOnHatching& Point,const Standard_Real Confusion) const;
-  //! Dump of the point. <br>
-  Standard_EXPORT     void Dump(const Standard_Integer Index = 0) const;
-
+  
+  //! Adds a point on element to the point.
+  Standard_EXPORT   void AddPoint (const HatchGen_PointOnElement& Point, const Standard_Real Confusion) ;
+  
+  //! Returns the number of elements intersecting the
+  //! hatching at this point.
+  Standard_EXPORT   Standard_Integer NbPoints()  const;
+  
+  //! Returns the Index-th point on element of the point.
+  //! The exception OutOfRange is raised if
+  //! Index > NbPoints.
+  Standard_EXPORT  const  HatchGen_PointOnElement& Point (const Standard_Integer Index)  const;
+  
+  //! Removes the Index-th point on element of the point.
+  //! The exception OutOfRange is raised if
+  //! Index > NbPoints.
+  Standard_EXPORT   void RemPoint (const Standard_Integer Index) ;
+  
+  //! Removes all the points on element of the point.
+  Standard_EXPORT   void ClrPoints() ;
+  
+  //! Tests if the point is lower than an other.
+  //! A point on hatching P1 is said to be lower than an
+  //! other P2 if :
+  //! P2.myParam - P1.myParam > Confusion
+  Standard_EXPORT   Standard_Boolean IsLower (const HatchGen_PointOnHatching& Point, const Standard_Real Confusion)  const;
+  
+  //! Tests if the  point is equal to an other.
+  //! A  point on hatching P1 is said to be equal to an
+  //! other P2 if :
+  //! | P2.myParam - P1.myParam | <= Confusion
+  Standard_EXPORT   Standard_Boolean IsEqual (const HatchGen_PointOnHatching& Point, const Standard_Real Confusion)  const;
+  
+  //! Tests if the point is greater than an other.
+  //! A point on hatching P1 is said to be greater than an
+  //! other P2 if :
+  //! P1.myParam - P2.myParam > Confusion
+  Standard_EXPORT   Standard_Boolean IsGreater (const HatchGen_PointOnHatching& Point, const Standard_Real Confusion)  const;
+  
+  //! Dump of the point.
+  Standard_EXPORT   void Dump (const Standard_Integer Index = 0)  const;
 
 
 
@@ -92,7 +89,7 @@ protected:
 
 
 
-HatchGen_PointsOnElement myPoints;
+  HatchGen_PointsOnElement myPoints;
 
 
 private:
@@ -107,7 +104,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HatchGen_PointOnHatching_HeaderFile

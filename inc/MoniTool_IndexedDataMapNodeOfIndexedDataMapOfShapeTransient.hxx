@@ -6,31 +6,15 @@
 #ifndef _MoniTool_IndexedDataMapNodeOfIndexedDataMapOfShapeTransient_HeaderFile
 #define _MoniTool_IndexedDataMapNodeOfIndexedDataMapOfShapeTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MoniTool_IndexedDataMapNodeOfIndexedDataMapOfShapeTransient_HeaderFile
 #include <Handle_MoniTool_IndexedDataMapNodeOfIndexedDataMapOfShapeTransient.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class Standard_Transient;
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
@@ -38,20 +22,21 @@ class MoniTool_IndexedDataMapOfShapeTransient;
 
 
 
-class MoniTool_IndexedDataMapNodeOfIndexedDataMapOfShapeTransient : public TCollection_MapNode {
+class MoniTool_IndexedDataMapNodeOfIndexedDataMapOfShapeTransient : public TCollection_MapNode
+{
 
 public:
 
   
-      MoniTool_IndexedDataMapNodeOfIndexedDataMapOfShapeTransient(const TopoDS_Shape& K1,const Standard_Integer K2,const Handle(Standard_Transient)& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    MoniTool_IndexedDataMapNodeOfIndexedDataMapOfShapeTransient(const TopoDS_Shape& K1, const Standard_Integer K2, const Handle(Standard_Transient)& I, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        TopoDS_Shape& Key1() const;
+      TopoDS_Shape& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
   
-        Handle_Standard_Transient& Value() const;
+      Handle(Standard_Transient)& Value()  const;
 
 
 
@@ -66,17 +51,17 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey1;
-Standard_Integer myKey2;
-Handle_Standard_Transient myValue;
-TCollection_MapNodePtr myNext2;
+  TopoDS_Shape myKey1;
+  Standard_Integer myKey2;
+  Handle(Standard_Transient) myValue;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>
@@ -103,7 +88,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedDataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MoniTool_IndexedDataMapNodeOfIndexedDataMapOfShapeTransient_HeaderFile

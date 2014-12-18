@@ -6,46 +6,36 @@
 #ifndef _StepBasic_Approval_HeaderFile
 #define _StepBasic_Approval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_Approval_HeaderFile
 #include <Handle_StepBasic_Approval.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_ApprovalStatus_HeaderFile
 #include <Handle_StepBasic_ApprovalStatus.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_ApprovalStatus;
 class TCollection_HAsciiString;
 
 
 
-class StepBasic_Approval : public MMgt_TShared {
+class StepBasic_Approval : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a Approval <br>
-  Standard_EXPORT   StepBasic_Approval();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_ApprovalStatus)& aStatus,const Handle(TCollection_HAsciiString)& aLevel) ;
+  //! Returns a Approval
+  Standard_EXPORT StepBasic_Approval();
   
-  Standard_EXPORT     void SetStatus(const Handle(StepBasic_ApprovalStatus)& aStatus) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_ApprovalStatus)& aStatus, const Handle(TCollection_HAsciiString)& aLevel) ;
   
-  Standard_EXPORT     Handle_StepBasic_ApprovalStatus Status() const;
+  Standard_EXPORT   void SetStatus (const Handle(StepBasic_ApprovalStatus)& aStatus) ;
   
-  Standard_EXPORT     void SetLevel(const Handle(TCollection_HAsciiString)& aLevel) ;
+  Standard_EXPORT   Handle(StepBasic_ApprovalStatus) Status()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Level() const;
+  Standard_EXPORT   void SetLevel (const Handle(TCollection_HAsciiString)& aLevel) ;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Level()  const;
 
 
 
@@ -60,8 +50,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_ApprovalStatus status;
-Handle_TCollection_HAsciiString level;
+  Handle(StepBasic_ApprovalStatus) status;
+  Handle(TCollection_HAsciiString) level;
 
 
 };
@@ -70,7 +60,6 @@ Handle_TCollection_HAsciiString level;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_Approval_HeaderFile

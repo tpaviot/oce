@@ -6,8 +6,11 @@
 #ifndef _Graphic3d_NameOfTexture2D_HeaderFile
 #define _Graphic3d_NameOfTexture2D_HeaderFile
 
-//! Types of standard textures. <br>
-enum Graphic3d_NameOfTexture2D {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Types of standard textures.
+enum Graphic3d_NameOfTexture2D
+{
 Graphic3d_NOT_2D_MATRA,
 Graphic3d_NOT_2D_ALIENSKIN,
 Graphic3d_NOT_2D_BLUE_ROCK,
@@ -32,8 +35,4 @@ Graphic3d_NOT_2D_RAIN,
 Graphic3d_NOT_2D_UNKNOWN
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_NameOfTexture2D_HeaderFile

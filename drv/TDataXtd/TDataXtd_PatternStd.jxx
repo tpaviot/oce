@@ -1,30 +1,10 @@
-#ifndef _TNaming_NamedShape_HeaderFile
 #include <TNaming_NamedShape.hxx>
-#endif
-#ifndef _TDataStd_Real_HeaderFile
 #include <TDataStd_Real.hxx>
-#endif
-#ifndef _TDataStd_Integer_HeaderFile
 #include <TDataStd_Integer.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDataXtd_Array1OfTrsf_HeaderFile
 #include <TDataXtd_Array1OfTrsf.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_RelocationTable_HeaderFile
 #include <TDF_RelocationTable.hxx>
-#endif
-#ifndef _TDF_DataSet_HeaderFile
 #include <TDF_DataSet.hxx>
-#endif
-#ifndef _TDataXtd_PatternStd_HeaderFile
 #include <TDataXtd_PatternStd.hxx>
-#endif

@@ -6,8 +6,11 @@
 #ifndef _TNaming_NameType_HeaderFile
 #define _TNaming_NameType_HeaderFile
 
-//! to store naming characteristcs <br>
-enum TNaming_NameType {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! to store naming characteristcs
+enum TNaming_NameType
+{
 TNaming_UNKNOWN,
 TNaming_IDENTITY,
 TNaming_MODIFUNTIL,
@@ -22,8 +25,4 @@ TNaming_WIREIN,
 TNaming_SHELLIN
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TNaming_NameType_HeaderFile

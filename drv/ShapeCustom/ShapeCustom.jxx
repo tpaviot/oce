@@ -1,18 +1,8 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepTools_Modification_HeaderFile
 #include <BRepTools_Modification.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _BRepTools_Modifier_HeaderFile
 #include <BRepTools_Modifier.hxx>
-#endif
-#ifndef _ShapeCustom_RestrictionParameters_HeaderFile
+#include <Message_ProgressIndicator.hxx>
+#include <ShapeBuild_ReShape.hxx>
 #include <ShapeCustom_RestrictionParameters.hxx>
-#endif
-#ifndef _ShapeCustom_HeaderFile
 #include <ShapeCustom.hxx>
-#endif

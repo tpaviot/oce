@@ -152,6 +152,11 @@ void TDocStd_Application::InitDocument(const Handle(TDocStd_Document)& /*aDoc*/)
 
 void TDocStd_Application::Close(const Handle(TDocStd_Document)& aDoc)
 {
+  if (aDoc.IsNull())
+  {
+    return;
+  }
+
   Handle(TDocStd_Owner) Owner;
   if (aDoc->Main().Root().FindAttribute(TDocStd_Owner::GetID(),Owner)) {
     Handle(TDocStd_Document) emptyDoc;
@@ -226,7 +231,7 @@ PCDM_ReaderStatus TDocStd_Application::Open(const TCollection_ExtendedString& pa
     }
   }
   status = GetRetrieveStatus();
-#ifdef DEB
+#ifdef OCCT_DEBUG
   cout<<"TDocStd_Application::Open(): The status = "<<status<<endl;
 #endif
   return status;
@@ -271,7 +276,7 @@ PCDM_StoreStatus TDocStd_Application::SaveAs(const Handle(TDocStd_Document)& D,c
   if(storer.StoreStatus() == PCDM_SS_OK)
     D->SetSaved();
 #ifdef BUC60867
-#ifdef DEB
+#ifdef OCCT_DEBUG
   cout<<"TDocStd_Application::SaveAs(): The status = "<<storer.StoreStatus()<<endl;
 #endif
   return storer.StoreStatus();
@@ -313,7 +318,7 @@ PCDM_StoreStatus TDocStd_Application::Save (const Handle(TDocStd_Document)& D) {
     status = PCDM_SS_Failure;
   }
 #ifdef BUC60867
-#ifdef DEB
+#ifdef OCCT_DEBUG
   cout<<"TDocStd_Application::Save(): The status = "<<status<<endl;
 #endif
   return status;

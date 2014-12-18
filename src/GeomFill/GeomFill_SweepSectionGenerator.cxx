@@ -353,7 +353,9 @@ void GeomFill_SweepSectionGenerator::Perform(const Standard_Boolean Polynomial)
       }
       else
 	if (D1Ref.IsOpposite(D1, Precision::Angular()))
+#ifdef OCCT_DEBUG
 	  cout <<"Que fais-je ???? " << endl;
+#endif
 
       // TR is the transformation between (i-1) section and the i-th.
       TR = Rot * Trans;
@@ -620,7 +622,8 @@ void GeomFill_SweepSectionGenerator::Section
 		    gp_Vec(PPath,P1));
       Angle = ElCLib::CircleParameter(Axis,P2);
     }
-#ifdef GF_DEB
+#ifdef OCCT_DEBUG
+/*
     if (Standard_False) {
       gp_Vec dummyD1 = myAdpPath->DN(U,1);
       gp_Vec dummyTg = Axis.Direction();
@@ -628,6 +631,7 @@ void GeomFill_SweepSectionGenerator::Section
       if ( Cos > 0.) cout << "+" ;
       else           cout << "-" ;
     }
+*/
 #endif
     if ( Angle < Precision::Angular()) {
       for ( Standard_Integer i = 1; i <= Poles.Upper(); i++) {

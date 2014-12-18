@@ -5,27 +5,13 @@
 
 #include <TFunction_DataMapOfLabelListOfLabel.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_LabelList_HeaderFile
 #include <TDF_LabelList.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _TFunction_DataMapNodeOfDataMapOfLabelListOfLabel_HeaderFile
 #include <TFunction_DataMapNodeOfDataMapOfLabelListOfLabel.hxx>
-#endif
-#ifndef _TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel_HeaderFile
 #include <TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel.hxx>
-#endif
  
 
 #define TheKey TDF_Label

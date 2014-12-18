@@ -6,28 +6,14 @@
 #ifndef _gce_MakeElips2d_HeaderFile
 #define _gce_MakeElips2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Elips2d_HeaderFile
 #include <gp_Elips2d.hxx>
-#endif
-#ifndef _gce_Root_HeaderFile
 #include <gce_Root.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class StdFail_NotDone;
 class gp_Ax2d;
 class gp_Ax22d;
@@ -35,66 +21,70 @@ class gp_Pnt2d;
 class gp_Elips2d;
 
 
-//!This class implements the following algorithms used to <br>
-//!          create Elips2d from gp. <br>
-//! <br>
-//!          * Create an ellipse from its center, and two points: <br>
-//!            one on the ciconference giving the major radius, the <br>
-//!            other giving the value of the small radius. <br>
-//!          * Create an ellipse from its major axis and its major <br>
-//!            radius and its minor radius. <br>
-class gce_MakeElips2d  : public gce_Root {
+//! This class implements the following algorithms used to
+//! create Elips2d from gp.
+//!
+//! * Create an ellipse from its center, and two points:
+//! one on the ciconference giving the major radius, the
+//! other giving the value of the small radius.
+//! * Create an ellipse from its major axis and its major
+//! radius and its minor radius.
+class gce_MakeElips2d  : public gce_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  Creates an ellipse with the major axis, the major and the <br>
-//!  minor radius. The location of the MajorAxis is the center <br>
-//!  of the  ellipse. <br>
-//!  The sense of parametrization is given by Sense. <br>
-//!  It is possible to create an ellipse with MajorRadius = MinorRadius. <br>
-//!  the status is "InvertRadius" if MajorRadius < MinorRadius or <br>
-//!  "NegativeRadius" if MinorRadius < 0.0 <br>
-  Standard_EXPORT   gce_MakeElips2d(const gp_Ax2d& MajorAxis,const Standard_Real MajorRadius,const Standard_Real MinorRadius,const Standard_Boolean Sense = Standard_True);
-  
-//!  Axis defines the Xaxis and Yaxis of the ellipse which defines <br>
-//!  the origin and the sense of parametrization. <br>
-//!  Creates an ellipse with the AxisPlacement the major and the <br>
-//!  minor radius. The location of Axis is the center <br>
-//!  of the  ellipse. <br>
-//!  It is possible to create an ellipse with MajorRadius = MinorRadius. <br>
-//!  the status is "InvertRadius" if MajorRadius < MinorRadius or <br>
-//!  "NegativeRadius" if MinorRadius < 0.0 <br>
-  Standard_EXPORT   gce_MakeElips2d(const gp_Ax22d& A,const Standard_Real MajorRadius,const Standard_Real MinorRadius);
-  //! Makes an Elips2d with its center and two points. <br>
-//!          The sense of parametrization is given by S1, S2, <br>
-//!          and Center. <br>
-//! Depending on the constructor, the  implicit orientation of the ellipse is: <br>
-//! -   the sense defined by A, <br>
-//! -   the sense defined by points Center, S1 and S2, <br>
-//! -   the trigonometric sense if Sense is not given or is true, or <br>
-//! -   the opposite if Sense is false. <br>
-//! It is possible to construct an ellipse where the major <br>
-//! and minor radii are equal. <br>
-//! Warning <br>
-//! If an error occurs (that is, when IsDone returns <br>
-//! false), the Status function returns: <br>
-//! -   gce_InvertRadius if MajorRadius is less than MinorRadius, <br>
-//! -   gce_NegativeRadius if MajorRadius or <br>
-//!   MinorRadius is less than 0.0, <br>
-//! -   gce_NullAxis if points S1, S2 and Center are collinear, or <br>
-//! -   gce_InvertAxis if the major radius computed with <br>
-//!   Center and S1 is less than the minor radius <br>
-//!   computed with Center, S1 and S2. <br>
-  Standard_EXPORT   gce_MakeElips2d(const gp_Pnt2d& S1,const gp_Pnt2d& S2,const gp_Pnt2d& Center);
-  //! Returns the constructed ellipse. <br>
-//! Exceptions StdFail_NotDone if no ellipse is constructed. <br>
-  Standard_EXPORT    const gp_Elips2d& Value() const;
-  
-  Standard_EXPORT    const gp_Elips2d& Operator() const;
-Standard_EXPORT operator gp_Elips2d() const;
 
+  //! Creates an ellipse with the major axis, the major and the
+  //! minor radius. The location of the MajorAxis is the center
+  //! of the  ellipse.
+  //! The sense of parametrization is given by Sense.
+  //! It is possible to create an ellipse with MajorRadius = MinorRadius.
+  //! the status is "InvertRadius" if MajorRadius < MinorRadius or
+  //! "NegativeRadius" if MinorRadius < 0.0
+  Standard_EXPORT gce_MakeElips2d(const gp_Ax2d& MajorAxis, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Boolean Sense = Standard_True);
+  
+
+  //! Axis defines the Xaxis and Yaxis of the ellipse which defines
+  //! the origin and the sense of parametrization.
+  //! Creates an ellipse with the AxisPlacement the major and the
+  //! minor radius. The location of Axis is the center
+  //! of the  ellipse.
+  //! It is possible to create an ellipse with MajorRadius = MinorRadius.
+  //! the status is "InvertRadius" if MajorRadius < MinorRadius or
+  //! "NegativeRadius" if MinorRadius < 0.0
+  Standard_EXPORT gce_MakeElips2d(const gp_Ax22d& A, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
+  
+  //! Makes an Elips2d with its center and two points.
+  //! The sense of parametrization is given by S1, S2,
+  //! and Center.
+  //! Depending on the constructor, the  implicit orientation of the ellipse is:
+  //! -   the sense defined by A,
+  //! -   the sense defined by points Center, S1 and S2,
+  //! -   the trigonometric sense if Sense is not given or is true, or
+  //! -   the opposite if Sense is false.
+  //! It is possible to construct an ellipse where the major
+  //! and minor radii are equal.
+  //! Warning
+  //! If an error occurs (that is, when IsDone returns
+  //! false), the Status function returns:
+  //! -   gce_InvertRadius if MajorRadius is less than MinorRadius,
+  //! -   gce_NegativeRadius if MajorRadius or
+  //! MinorRadius is less than 0.0,
+  //! -   gce_NullAxis if points S1, S2 and Center are collinear, or
+  //! -   gce_InvertAxis if the major radius computed with
+  //! Center and S1 is less than the minor radius
+  //! computed with Center, S1 and S2.
+  Standard_EXPORT gce_MakeElips2d(const gp_Pnt2d& S1, const gp_Pnt2d& S2, const gp_Pnt2d& Center);
+  
+  //! Returns the constructed ellipse.
+  //! Exceptions StdFail_NotDone if no ellipse is constructed.
+  Standard_EXPORT  const  gp_Elips2d& Value()  const;
+  
+  Standard_EXPORT  const  gp_Elips2d& Operator()  const;
+Standard_EXPORT operator gp_Elips2d() const;
 
 
 
@@ -109,7 +99,7 @@ private:
 
 
 
-gp_Elips2d TheElips2d;
+  gp_Elips2d TheElips2d;
 
 
 };
@@ -118,7 +108,6 @@ gp_Elips2d TheElips2d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gce_MakeElips2d_HeaderFile

@@ -6,28 +6,22 @@
 #ifndef _StepGeom_BoundedCurve_HeaderFile
 #define _StepGeom_BoundedCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_BoundedCurve_HeaderFile
 #include <Handle_StepGeom_BoundedCurve.hxx>
-#endif
 
-#ifndef _StepGeom_Curve_HeaderFile
 #include <StepGeom_Curve.hxx>
-#endif
 
 
 
-class StepGeom_BoundedCurve : public StepGeom_Curve {
+class StepGeom_BoundedCurve : public StepGeom_Curve
+{
 
 public:
 
-  //! Returns a BoundedCurve <br>
-  Standard_EXPORT   StepGeom_BoundedCurve();
+  
+  //! Returns a BoundedCurve
+  Standard_EXPORT StepGeom_BoundedCurve();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_BoundedCurve_HeaderFile

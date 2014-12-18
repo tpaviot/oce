@@ -5,18 +5,10 @@
 
 #include <IntSurf_SequenceOfPathPoint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntSurf_PathPoint_HeaderFile
 #include <IntSurf_PathPoint.hxx>
-#endif
-#ifndef _IntSurf_SequenceNodeOfSequenceOfPathPoint_HeaderFile
 #include <IntSurf_SequenceNodeOfSequenceOfPathPoint.hxx>
-#endif
  
 
 #define SeqItem IntSurf_PathPoint

@@ -26,7 +26,7 @@
 // level (store / retrieve)
 // ====================================================================================
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 static void Sample()
 {
 

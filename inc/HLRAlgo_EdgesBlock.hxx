@@ -6,87 +6,69 @@
 #ifndef _HLRAlgo_EdgesBlock_HeaderFile
 #define _HLRAlgo_EdgesBlock_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_EdgesBlock_HeaderFile
 #include <Handle_HLRAlgo_EdgesBlock.hxx>
-#endif
 
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _TColStd_Array1OfBoolean_HeaderFile
 #include <TColStd_Array1OfBoolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 
 
-//! An EdgesBlock is a set of Edges. It is used by the <br>
-//!          DataStructure to structure the Edges. <br>
-//! <br>
-//!          An EdgesBlock contains : <br>
-//! <br>
-//!          * An Array  of index of Edges. <br>
-//! <br>
-//!          * An Array of flagsf ( Orientation <br>
-//!                                OutLine <br>
-//!                                Internal <br>
-//!                                Double <br>
-//!                                IsoLine) <br>
-class HLRAlgo_EdgesBlock : public MMgt_TShared {
+//! An EdgesBlock is a set of Edges. It is used by the
+//! DataStructure to structure the Edges.
+//!
+//! An EdgesBlock contains :
+//!
+//! * An Array  of index of Edges.
+//!
+//! * An Array of flagsf ( Orientation
+//! OutLine
+//! Internal
+//! Double
+//! IsoLine)
+class HLRAlgo_EdgesBlock : public MMgt_TShared
+{
 
 public:
 
-  //! Create a Block of Edges for a wire. <br>
-  Standard_EXPORT   HLRAlgo_EdgesBlock(const Standard_Integer NbEdges);
   
-        Standard_Integer NbEdges() const;
+  //! Create a Block of Edges for a wire.
+  Standard_EXPORT HLRAlgo_EdgesBlock(const Standard_Integer NbEdges);
   
-        void Edge(const Standard_Integer I,const Standard_Integer EI) ;
+      Standard_Integer NbEdges()  const;
   
-        Standard_Integer Edge(const Standard_Integer I) const;
+      void Edge (const Standard_Integer I, const Standard_Integer EI) ;
   
-        void Orientation(const Standard_Integer I,const TopAbs_Orientation Or) ;
+      Standard_Integer Edge (const Standard_Integer I)  const;
   
-        TopAbs_Orientation Orientation(const Standard_Integer I) const;
+      void Orientation (const Standard_Integer I, const TopAbs_Orientation Or) ;
   
-        Standard_Boolean OutLine(const Standard_Integer I) const;
+      TopAbs_Orientation Orientation (const Standard_Integer I)  const;
   
-        void OutLine(const Standard_Integer I,const Standard_Boolean B) ;
+      Standard_Boolean OutLine (const Standard_Integer I)  const;
   
-        Standard_Boolean Internal(const Standard_Integer I) const;
+      void OutLine (const Standard_Integer I, const Standard_Boolean B) ;
   
-        void Internal(const Standard_Integer I,const Standard_Boolean B) ;
+      Standard_Boolean Internal (const Standard_Integer I)  const;
   
-        Standard_Boolean Double(const Standard_Integer I) const;
+      void Internal (const Standard_Integer I, const Standard_Boolean B) ;
   
-        void Double(const Standard_Integer I,const Standard_Boolean B) ;
+      Standard_Boolean Double (const Standard_Integer I)  const;
   
-        Standard_Boolean IsoLine(const Standard_Integer I) const;
+      void Double (const Standard_Integer I, const Standard_Boolean B) ;
   
-        void IsoLine(const Standard_Integer I,const Standard_Boolean B) ;
+      Standard_Boolean IsoLine (const Standard_Integer I)  const;
   
-  Standard_EXPORT     void UpdateMinMax(const Standard_Address TotMinMax) ;
+      void IsoLine (const Standard_Integer I, const Standard_Boolean B) ;
   
-        Standard_Address MinMax() const;
+  Standard_EXPORT   void UpdateMinMax (const Standard_Address TotMinMax) ;
+  
+      Standard_Address MinMax()  const;
 
 
 
@@ -101,9 +83,9 @@ protected:
 private: 
 
 
-TColStd_Array1OfInteger myEdges;
-TColStd_Array1OfInteger myFlags;
-Standard_Integer myMinMax[16];
+  TColStd_Array1OfInteger myEdges;
+  TColStd_Array1OfInteger myFlags;
+  Standard_Integer myMinMax[16];
 
 
 };
@@ -113,7 +95,6 @@ Standard_Integer myMinMax[16];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_EdgesBlock_HeaderFile

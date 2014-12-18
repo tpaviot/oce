@@ -1,21 +1,7 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _LocOpe_ProjectedWires_HeaderFile
-#include <LocOpe_ProjectedWires.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
+#include <LocOpe_WiresOnShape.hxx>
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _LocOpe_Spliter_HeaderFile
 #include <LocOpe_Spliter.hxx>
-#endif

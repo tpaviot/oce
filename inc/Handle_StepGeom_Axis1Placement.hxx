@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_Axis1Placement_HeaderFile
 #define _Handle_StepGeom_Axis1Placement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_Placement_HeaderFile
 #include <Handle_StepGeom_Placement.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_Placement);
 class StepGeom_Axis1Placement;
 
-DEFINE_STANDARD_HANDLE(StepGeom_Axis1Placement,StepGeom_Placement)
+DEFINE_STANDARD_HANDLE(StepGeom_Axis1Placement, StepGeom_Placement)
 
-#endif
+#endif // _Handle_StepGeom_Axis1Placement_HeaderFile

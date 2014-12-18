@@ -5,22 +5,12 @@
 
 #include <TDF_DoubleMapNodeOfGUIDProgIDMap.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDF_GUIDProgIDMap_HeaderFile
 #include <TDF_GUIDProgIDMap.hxx>
-#endif
-#ifndef _TDF_DoubleMapIteratorOfGUIDProgIDMap_HeaderFile
 #include <TDF_DoubleMapIteratorOfGUIDProgIDMap.hxx>
-#endif
 
  
 

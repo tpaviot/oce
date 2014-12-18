@@ -6,38 +6,27 @@
 #ifndef _STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent_HeaderFile
 #define _STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent_HeaderFile
 #include <Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent.hxx>
-#endif
 
-#ifndef _Handle_STEPSelections_AssemblyComponent_HeaderFile
 #include <Handle_STEPSelections_AssemblyComponent.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class STEPSelections_AssemblyComponent;
 class STEPSelections_SequenceOfAssemblyComponent;
 
 
 
-class STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent : public TCollection_SeqNode {
+class STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent : public TCollection_SeqNode
+{
 
 public:
 
   
-      STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent(const Handle(STEPSelections_AssemblyComponent)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent(const Handle(STEPSelections_AssemblyComponent)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_STEPSelections_AssemblyComponent& Value() const;
+      Handle(STEPSelections_AssemblyComponent)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_STEPSelections_AssemblyComponent myValue;
+  Handle(STEPSelections_AssemblyComponent) myValue;
 
 
 };
 
-#define SeqItem Handle_STEPSelections_AssemblyComponent
+#define SeqItem Handle(STEPSelections_AssemblyComponent)
 #define SeqItem_hxx <STEPSelections_AssemblyComponent.hxx>
 #define TCollection_SequenceNode STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent
 #define TCollection_SequenceNode_hxx <STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent.hxx>
@@ -78,7 +67,6 @@ Handle_STEPSelections_AssemblyComponent myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent_HeaderFile

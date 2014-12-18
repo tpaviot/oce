@@ -6,22 +6,15 @@
 #ifndef _Handle_MeshVS_DataSource3D_HeaderFile
 #define _Handle_MeshVS_DataSource3D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MeshVS_DataSource_HeaderFile
 #include <Handle_MeshVS_DataSource.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MeshVS_DataSource);
 class MeshVS_DataSource3D;
 
-DEFINE_STANDARD_HANDLE(MeshVS_DataSource3D,MeshVS_DataSource)
+DEFINE_STANDARD_HANDLE(MeshVS_DataSource3D, MeshVS_DataSource)
 
-#endif
+#endif // _Handle_MeshVS_DataSource3D_HeaderFile

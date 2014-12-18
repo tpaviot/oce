@@ -6,25 +6,13 @@
 #ifndef _Extrema_GenLocateExtPS_HeaderFile
 #define _Extrema_GenLocateExtPS_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
-#endif
 class Standard_DomainError;
 class StdFail_NotDone;
 class gp_Pnt;
@@ -32,30 +20,34 @@ class Adaptor3d_Surface;
 class Extrema_POnSurf;
 
 
-//! With a close point, it calculates the distance <br>
-//!          between a point and a surface. <br>
-//!          This distance can be a minimum or a maximum. <br>
-class Extrema_GenLocateExtPS  {
+//! With a close point, it calculates the distance
+//! between a point and a surface.
+//! This distance can be a minimum or a maximum.
+class Extrema_GenLocateExtPS 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_GenLocateExtPS();
-  //! Calculates the distance with a close point. <br>
-//!          The close point is defined by the parameter values <br>
-//!          U0 and V0. <br>
-//!          The function F(u,v)=distance(S(u,v),p) has an <br>
-//!          extremun when gradient(F)=0. The algorithm searchs <br>
-//!          a zero near the close point. <br>
-  Standard_EXPORT   Extrema_GenLocateExtPS(const gp_Pnt& P,const Adaptor3d_Surface& S,const Standard_Real U0,const Standard_Real V0,const Standard_Real TolU,const Standard_Real TolV);
-  //! Returns True if the distance is found. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns the value of the extremum square distance. <br>
-  Standard_EXPORT     Standard_Real SquareDistance() const;
-  //! Returns the point of the extremum distance. <br>
-  Standard_EXPORT    const Extrema_POnSurf& Point() const;
-
+  Standard_EXPORT Extrema_GenLocateExtPS();
+  
+  //! Calculates the distance with a close point.
+  //! The close point is defined by the parameter values
+  //! U0 and V0.
+  //! The function F(u,v)=distance(S(u,v),p) has an
+  //! extremun when gradient(F)=0. The algorithm searchs
+  //! a zero near the close point.
+  Standard_EXPORT Extrema_GenLocateExtPS(const gp_Pnt& P, const Adaptor3d_Surface& S, const Standard_Real U0, const Standard_Real V0, const Standard_Real TolU, const Standard_Real TolV);
+  
+  //! Returns True if the distance is found.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns the value of the extremum square distance.
+  Standard_EXPORT   Standard_Real SquareDistance()  const;
+  
+  //! Returns the point of the extremum distance.
+  Standard_EXPORT  const  Extrema_POnSurf& Point()  const;
 
 
 
@@ -70,9 +62,9 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Real mySqDist;
-Extrema_POnSurf myPoint;
+  Standard_Boolean myDone;
+  Standard_Real mySqDist;
+  Extrema_POnSurf myPoint;
 
 
 };
@@ -81,7 +73,6 @@ Extrema_POnSurf myPoint;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_GenLocateExtPS_HeaderFile

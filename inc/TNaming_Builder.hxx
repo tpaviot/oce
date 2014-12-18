@@ -6,22 +6,12 @@
 #ifndef _TNaming_Builder_HeaderFile
 #define _TNaming_Builder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TNaming_UsedShapes_HeaderFile
 #include <Handle_TNaming_UsedShapes.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
 class TNaming_UsedShapes;
 class TNaming_NamedShape;
 class Standard_ConstructionError;
@@ -29,47 +19,53 @@ class TDF_Label;
 class TopoDS_Shape;
 
 
-//! A tool to create and maintain topological attributes. <br>
-//! Constructor creates an empty <br>
-//! TNaming_NamedShape attribute at the given <br>
-//! label. It allows adding "old shape" and "new <br>
-//! shape" pairs with the specified evolution to this <br>
-//! named shape. One evolution type per one <br>
-//! builder must be used. <br>
-class TNaming_Builder  {
+//! A tool to create and maintain topological attributes.
+//! Constructor creates an empty
+//! TNaming_NamedShape attribute at the given
+//! label. It allows adding "old shape" and "new
+//! shape" pairs with the specified evolution to this
+//! named shape. One evolution type per one
+//! builder must be used.
+class TNaming_Builder 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  Create an   Builder. <br>
-//!  Warning:  Before Addition copies the current Value, and clear <br>
-  Standard_EXPORT   TNaming_Builder(const TDF_Label& aLabel);
-  //!  Records the shape newShape which was <br>
-//! generated during a topological construction. <br>
-//!  As an example, consider the case of a face <br>
-//!  generated in construction of a box. <br>
-  Standard_EXPORT     void Generated(const TopoDS_Shape& newShape) ;
-  //! Records the shape newShape which was <br>
-//!  generated from the shape oldShape during a topological construction. <br>
-//! As an example, consider the case of a face <br>
-//! generated from an edge in construction of a prism. <br>
-  Standard_EXPORT     void Generated(const TopoDS_Shape& oldShape,const TopoDS_Shape& newShape) ;
-  //!  Records the shape oldShape which was deleted from the current label. <br>
-//! As an example, consider the case of a face removed by a Boolean operation. <br>
-  Standard_EXPORT     void Delete(const TopoDS_Shape& oldShape) ;
-  //!  Records the shape newShape which is a <br>
-//! modification of the shape oldShape. <br>
-//! As an example, consider the case of a face split <br>
-//!  or merged in a Boolean operation. <br>
-//! <br>
-  Standard_EXPORT     void Modify(const TopoDS_Shape& oldShape,const TopoDS_Shape& newShape) ;
-  //!   Add a  Shape to the current label ,  This Shape is <br>
-//!          unmodified.  Used for example  to define a set <br>
-//!          of shapes under a label. <br>
-  Standard_EXPORT     void Select(const TopoDS_Shape& aShape,const TopoDS_Shape& inShape) ;
-  //! Returns the NamedShape which has been built or is under construction. <br>
-  Standard_EXPORT     Handle_TNaming_NamedShape NamedShape() const;
-
+  
+  //! Create an   Builder.
+  //! Warning:  Before Addition copies the current Value, and clear
+  Standard_EXPORT TNaming_Builder(const TDF_Label& aLabel);
+  
+  //! Records the shape newShape which was
+  //! generated during a topological construction.
+  //! As an example, consider the case of a face
+  //! generated in construction of a box.
+  Standard_EXPORT   void Generated (const TopoDS_Shape& newShape) ;
+  
+  //! Records the shape newShape which was
+  //! generated from the shape oldShape during a topological construction.
+  //! As an example, consider the case of a face
+  //! generated from an edge in construction of a prism.
+  Standard_EXPORT   void Generated (const TopoDS_Shape& oldShape, const TopoDS_Shape& newShape) ;
+  
+  //! Records the shape oldShape which was deleted from the current label.
+  //! As an example, consider the case of a face removed by a Boolean operation.
+  Standard_EXPORT   void Delete (const TopoDS_Shape& oldShape) ;
+  
+  //! Records the shape newShape which is a
+  //! modification of the shape oldShape.
+  //! As an example, consider the case of a face split
+  //! or merged in a Boolean operation.
+  Standard_EXPORT   void Modify (const TopoDS_Shape& oldShape, const TopoDS_Shape& newShape) ;
+  
+  //! Add a  Shape to the current label ,  This Shape is
+  //! unmodified.  Used for example  to define a set
+  //! of shapes under a label.
+  Standard_EXPORT   void Select (const TopoDS_Shape& aShape, const TopoDS_Shape& inShape) ;
+  
+  //! Returns the NamedShape which has been built or is under construction.
+  Standard_EXPORT   Handle(TNaming_NamedShape) NamedShape()  const;
 
 
 
@@ -84,8 +80,8 @@ private:
 
 
 
-Handle_TNaming_UsedShapes myShapes;
-Handle_TNaming_NamedShape myAtt;
+  Handle(TNaming_UsedShapes) myShapes;
+  Handle(TNaming_NamedShape) myAtt;
 
 
 };
@@ -94,7 +90,6 @@ Handle_TNaming_NamedShape myAtt;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_Builder_HeaderFile

@@ -5,9 +5,7 @@
 
 #include <DBC_BaseArray.jxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 
 IMPLEMENT_STANDARD_TYPE(DBC_BaseArray)

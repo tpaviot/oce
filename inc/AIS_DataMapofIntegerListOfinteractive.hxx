@@ -6,31 +6,15 @@
 #ifndef _AIS_DataMapofIntegerListOfinteractive_HeaderFile
 #define _AIS_DataMapofIntegerListOfinteractive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive_HeaderFile
 #include <Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class AIS_ListOfInteractive;
@@ -40,50 +24,50 @@ class AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
 
 
 
-class AIS_DataMapofIntegerListOfinteractive  : public TCollection_BasicMap {
+class AIS_DataMapofIntegerListOfinteractive  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AIS_DataMapofIntegerListOfinteractive(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT AIS_DataMapofIntegerListOfinteractive(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     AIS_DataMapofIntegerListOfinteractive& Assign(const AIS_DataMapofIntegerListOfinteractive& Other) ;
-    AIS_DataMapofIntegerListOfinteractive& operator =(const AIS_DataMapofIntegerListOfinteractive& Other) 
+  Standard_EXPORT   AIS_DataMapofIntegerListOfinteractive& Assign (const AIS_DataMapofIntegerListOfinteractive& Other) ;
+  AIS_DataMapofIntegerListOfinteractive& operator = (const AIS_DataMapofIntegerListOfinteractive& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~AIS_DataMapofIntegerListOfinteractive()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const Standard_Integer& K,const AIS_ListOfInteractive& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const Standard_Integer& K, const AIS_ListOfInteractive& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const Standard_Integer& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const Standard_Integer& K) ;
   
-  Standard_EXPORT    const AIS_ListOfInteractive& Find(const Standard_Integer& K) const;
-   const AIS_ListOfInteractive& operator()(const Standard_Integer& K) const
+  Standard_EXPORT  const  AIS_ListOfInteractive& Find (const Standard_Integer& K)  const;
+ const  AIS_ListOfInteractive& operator() (const Standard_Integer& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     AIS_ListOfInteractive& ChangeFind(const Standard_Integer& K) ;
-    AIS_ListOfInteractive& operator()(const Standard_Integer& K) 
+  Standard_EXPORT   AIS_ListOfInteractive& ChangeFind (const Standard_Integer& K) ;
+  AIS_ListOfInteractive& operator() (const Standard_Integer& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const Standard_Integer& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const Standard_Integer& K) ;
 
 
 
@@ -97,7 +81,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   AIS_DataMapofIntegerListOfinteractive(const AIS_DataMapofIntegerListOfinteractive& Other);
+  Standard_EXPORT AIS_DataMapofIntegerListOfinteractive(const AIS_DataMapofIntegerListOfinteractive& Other);
 
 
 
@@ -108,7 +92,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_DataMapofIntegerListOfinteractive_HeaderFile

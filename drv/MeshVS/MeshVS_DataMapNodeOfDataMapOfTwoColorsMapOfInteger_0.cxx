@@ -5,22 +5,12 @@
 
 #include <MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_MapOfInteger_HeaderFile
 #include <TColStd_MapOfInteger.hxx>
-#endif
-#ifndef _MeshVS_TwoColorsHasher_HeaderFile
 #include <MeshVS_TwoColorsHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfTwoColorsMapOfInteger_HeaderFile
 #include <MeshVS_DataMapOfTwoColorsMapOfInteger.hxx>
-#endif
-#ifndef _MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger_HeaderFile
 #include <MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger.hxx>
-#endif
 
  
 

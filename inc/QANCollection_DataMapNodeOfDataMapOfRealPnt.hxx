@@ -6,28 +6,14 @@
 #ifndef _QANCollection_DataMapNodeOfDataMapOfRealPnt_HeaderFile
 #define _QANCollection_DataMapNodeOfDataMapOfRealPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_QANCollection_DataMapNodeOfDataMapOfRealPnt_HeaderFile
 #include <Handle_QANCollection_DataMapNodeOfDataMapOfRealPnt.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class gp_Pnt;
 class TColStd_MapRealHasher;
 class QANCollection_DataMapOfRealPnt;
@@ -35,16 +21,17 @@ class QANCollection_DataMapIteratorOfDataMapOfRealPnt;
 
 
 
-class QANCollection_DataMapNodeOfDataMapOfRealPnt : public TCollection_MapNode {
+class QANCollection_DataMapNodeOfDataMapOfRealPnt : public TCollection_MapNode
+{
 
 public:
 
   
-      QANCollection_DataMapNodeOfDataMapOfRealPnt(const Standard_Real& K,const gp_Pnt& I,const TCollection_MapNodePtr& n);
+    QANCollection_DataMapNodeOfDataMapOfRealPnt(const Standard_Real& K, const gp_Pnt& I, const TCollection_MapNodePtr& n);
   
-        Standard_Real& Key() const;
+      Standard_Real& Key()  const;
   
-        gp_Pnt& Value() const;
+      gp_Pnt& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Real myKey;
-gp_Pnt myValue;
+  Standard_Real myKey;
+  gp_Pnt myValue;
 
 
 };
@@ -98,7 +85,6 @@ gp_Pnt myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANCollection_DataMapNodeOfDataMapOfRealPnt_HeaderFile

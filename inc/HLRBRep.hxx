@@ -6,19 +6,11 @@
 #ifndef _HLRBRep_HeaderFile
 #define _HLRBRep_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopoDS_Edge;
 class HLRBRep_Curve;
 class HLRBRep_CurveTool;
@@ -90,23 +82,23 @@ class HLRBRep_ListNodeOfListOfBPnt2D;
 class HLRBRep_ListIteratorOfListOfBPnt2D;
 
 
-//! Hidden Lines Removal <br>
-//!          algorithms on the BRep DataStructure. <br>
-//! <br>
-//!          The class PolyAlgo  is used to remove Hidden lines <br>
-//!          on Shapes with Triangulations. <br>
-class HLRBRep  {
+//! Hidden Lines Removal
+//! algorithms on the BRep DataStructure.
+//!
+//! The class PolyAlgo  is used to remove Hidden lines
+//! on Shapes with Triangulations.
+class HLRBRep 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  TopoDS_Edge MakeEdge(const HLRBRep_Curve& ec,const Standard_Real U1,const Standard_Real U2) ;
+  Standard_EXPORT static   TopoDS_Edge MakeEdge (const HLRBRep_Curve& ec, const Standard_Real U1, const Standard_Real U2) ;
   
-  Standard_EXPORT   static  TopoDS_Edge MakeEdge3d(const HLRBRep_Curve& ec,const Standard_Real U1,const Standard_Real U2) ;
+  Standard_EXPORT static   TopoDS_Edge MakeEdge3d (const HLRBRep_Curve& ec, const Standard_Real U1, const Standard_Real U2) ;
   
-  Standard_EXPORT   static  void PolyHLRAngleAndDeflection(const Standard_Real InAngl,Standard_Real& OutAngl,Standard_Real& OutDefl) ;
-
+  Standard_EXPORT static   void PolyHLRAngleAndDeflection (const Standard_Real InAngl, Standard_Real& OutAngl, Standard_Real& OutDefl) ;
 
 
 
@@ -196,7 +188,6 @@ friend class HLRBRep_ListIteratorOfListOfBPnt2D;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_HeaderFile

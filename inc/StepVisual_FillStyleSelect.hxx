@@ -6,51 +6,40 @@
 #ifndef _StepVisual_FillStyleSelect_HeaderFile
 #define _StepVisual_FillStyleSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepVisual_FillAreaStyleColour_HeaderFile
 #include <Handle_StepVisual_FillAreaStyleColour.hxx>
-#endif
 class Standard_Transient;
 class StepVisual_FillAreaStyleColour;
 
 
 
-class StepVisual_FillStyleSelect  : public StepData_SelectType {
+class StepVisual_FillStyleSelect  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a FillStyleSelect SelectType <br>
-  Standard_EXPORT   StepVisual_FillStyleSelect();
-  //! Recognizes a FillStyleSelect Kind Entity that is : <br>
-//!        1 -> FillAreaStyleColour <br>
-//!        2 -> ExternallyDefinedTileStyle <br>
-//!        3 -> FillAreaStyleTiles <br>
-//!        4 -> ExternallyDefinedHatchStyle <br>
-//!        5 -> FillAreaStyleHatching <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a FillAreaStyleColour (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_FillAreaStyleColour FillAreaStyleColour() const;
-
+  
+  //! Returns a FillStyleSelect SelectType
+  Standard_EXPORT StepVisual_FillStyleSelect();
+  
+  //! Recognizes a FillStyleSelect Kind Entity that is :
+  //! 1 -> FillAreaStyleColour
+  //! 2 -> ExternallyDefinedTileStyle
+  //! 3 -> FillAreaStyleTiles
+  //! 4 -> ExternallyDefinedHatchStyle
+  //! 5 -> FillAreaStyleHatching
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a FillAreaStyleColour (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_FillAreaStyleColour) FillAreaStyleColour()  const;
 
 
 
@@ -73,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_FillStyleSelect_HeaderFile

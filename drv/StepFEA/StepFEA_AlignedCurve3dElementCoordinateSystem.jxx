@@ -1,9 +1,3 @@
-#ifndef _StepFEA_FeaAxis2Placement3d_HeaderFile
 #include <StepFEA_FeaAxis2Placement3d.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepFEA_AlignedCurve3dElementCoordinateSystem_HeaderFile
 #include <StepFEA_AlignedCurve3dElementCoordinateSystem.hxx>
-#endif

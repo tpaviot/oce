@@ -54,7 +54,7 @@
 // This sample contains templates for typical actions with standard OCAF attributes
 // ====================================================================================
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 
 static void Sample()
 {

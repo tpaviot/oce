@@ -6,28 +6,22 @@
 #ifndef _StepShape_Vertex_HeaderFile
 #define _StepShape_Vertex_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_Vertex_HeaderFile
 #include <Handle_StepShape_Vertex.hxx>
-#endif
 
-#ifndef _StepShape_TopologicalRepresentationItem_HeaderFile
 #include <StepShape_TopologicalRepresentationItem.hxx>
-#endif
 
 
 
-class StepShape_Vertex : public StepShape_TopologicalRepresentationItem {
+class StepShape_Vertex : public StepShape_TopologicalRepresentationItem
+{
 
 public:
 
-  //! Returns a Vertex <br>
-  Standard_EXPORT   StepShape_Vertex();
+  
+  //! Returns a Vertex
+  Standard_EXPORT StepShape_Vertex();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_Vertex_HeaderFile

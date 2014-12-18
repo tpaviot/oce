@@ -6,66 +6,44 @@
 #ifndef _IntPatch_PolyLine_HeaderFile
 #define _IntPatch_PolyLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _IntPatch_IType_HeaderFile
 #include <IntPatch_IType.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IntPatch_WLine_HeaderFile
 #include <Handle_IntPatch_WLine.hxx>
-#endif
-#ifndef _Handle_IntPatch_RLine_HeaderFile
 #include <Handle_IntPatch_RLine.hxx>
-#endif
-#ifndef _IntPatch_Polygo_HeaderFile
 #include <IntPatch_Polygo.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class IntPatch_WLine;
 class IntPatch_RLine;
 class gp_Pnt2d;
 
 
 
-class IntPatch_PolyLine  : public IntPatch_Polygo {
+class IntPatch_PolyLine  : public IntPatch_Polygo
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntPatch_PolyLine();
+  Standard_EXPORT IntPatch_PolyLine();
   
-  Standard_EXPORT   IntPatch_PolyLine(const Standard_Real InitDefle);
+  Standard_EXPORT IntPatch_PolyLine(const Standard_Real InitDefle);
   
-  Standard_EXPORT     void SetWLine(const Standard_Boolean OnFirst,const Handle(IntPatch_WLine)& Line) ;
+  Standard_EXPORT   void SetWLine (const Standard_Boolean OnFirst, const Handle(IntPatch_WLine)& Line) ;
   
-  Standard_EXPORT     void SetRLine(const Standard_Boolean OnFirst,const Handle(IntPatch_RLine)& Line) ;
+  Standard_EXPORT   void SetRLine (const Standard_Boolean OnFirst, const Handle(IntPatch_RLine)& Line) ;
   
-  Standard_EXPORT     void ResetError() ;
+  Standard_EXPORT   void ResetError() ;
   
-  Standard_EXPORT     Standard_Integer NbPoints() const;
+  Standard_EXPORT   Standard_Integer NbPoints()  const;
   
-  Standard_EXPORT     gp_Pnt2d Point(const Standard_Integer Index) const;
-
+  Standard_EXPORT   gp_Pnt2d Point (const Standard_Integer Index)  const;
 
 
 
@@ -79,14 +57,14 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Prepare() ;
+  Standard_EXPORT   void Prepare() ;
 
 
-gp_Pnt2d pnt;
-IntPatch_IType typ;
-Standard_Boolean onfirst;
-Handle_IntPatch_WLine wpoly;
-Handle_IntPatch_RLine rpoly;
+  gp_Pnt2d pnt;
+  IntPatch_IType typ;
+  Standard_Boolean onfirst;
+  Handle(IntPatch_WLine) wpoly;
+  Handle(IntPatch_RLine) rpoly;
 
 
 };
@@ -95,7 +73,6 @@ Handle_IntPatch_RLine rpoly;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_PolyLine_HeaderFile

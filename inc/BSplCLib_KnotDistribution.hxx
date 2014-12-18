@@ -6,18 +6,17 @@
 #ifndef _BSplCLib_KnotDistribution_HeaderFile
 #define _BSplCLib_KnotDistribution_HeaderFile
 
-//! This enumeration describes the repartition of the <br>
-//!         knots  sequence.   If all the knots  differ  by the <br>
-//!         same positive constant from the  preceding knot the <br>
-//!         "KnotDistribution" is    <Uniform>    else   it  is <br>
-//!         <NonUniform> <br>
-enum BSplCLib_KnotDistribution {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! This enumeration describes the repartition of the
+//! knots  sequence.   If all the knots  differ  by the
+//! same positive constant from the  preceding knot the
+//! "KnotDistribution" is    <Uniform>    else   it  is
+//! <NonUniform>
+enum BSplCLib_KnotDistribution
+{
 BSplCLib_NonUniform,
 BSplCLib_Uniform
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BSplCLib_KnotDistribution_HeaderFile

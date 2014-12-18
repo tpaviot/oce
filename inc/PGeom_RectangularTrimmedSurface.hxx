@@ -6,60 +6,59 @@
 #ifndef _PGeom_RectangularTrimmedSurface_HeaderFile
 #define _PGeom_RectangularTrimmedSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_RectangularTrimmedSurface_HeaderFile
 #include <Handle_PGeom_RectangularTrimmedSurface.hxx>
-#endif
 
-#ifndef _Handle_PGeom_Surface_HeaderFile
 #include <Handle_PGeom_Surface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _PGeom_BoundedSurface_HeaderFile
 #include <PGeom_BoundedSurface.hxx>
-#endif
 class PGeom_Surface;
 
 
-class PGeom_RectangularTrimmedSurface : public PGeom_BoundedSurface {
+class PGeom_RectangularTrimmedSurface : public PGeom_BoundedSurface
+{
 
 public:
 
-  //! Creates a RectangularTrimmedSurface with default values. <br>
-  Standard_EXPORT   PGeom_RectangularTrimmedSurface();
-  //! Creates a RectangularTrimmedSurface with these values. <br>
-  Standard_EXPORT   PGeom_RectangularTrimmedSurface(const Handle(PGeom_Surface)& aBasisSurface,const Standard_Real aFirstU,const Standard_Real aLastU,const Standard_Real aFirstV,const Standard_Real aLastV);
-  //!  Set the value  of  the  field basisSurface  with <br>
-//!         <aBasisSurface>. <br>
-  Standard_EXPORT     void BasisSurface(const Handle(PGeom_Surface)& aBasisSurface) ;
-  //! Returns the value of the field basisSurface. <br>
-  Standard_EXPORT     Handle_PGeom_Surface BasisSurface() const;
-  //! Set the value of the field firstU with <aFirstU>. <br>
-  Standard_EXPORT     void FirstU(const Standard_Real aFirstU) ;
-  //! Returns the value of the field firstU. <br>
-  Standard_EXPORT     Standard_Real FirstU() const;
-  //! Set the value of the field lastU with <aLastU>. <br>
-  Standard_EXPORT     void LastU(const Standard_Real aLastU) ;
-  //! Returns the value of the field lastU. <br>
-  Standard_EXPORT     Standard_Real LastU() const;
-  //! Set the value of the field firstV with <aFirstV>. <br>
-  Standard_EXPORT     void FirstV(const Standard_Real aFirstV) ;
-  //! Returns the value of the field firstV. <br>
-  Standard_EXPORT     Standard_Real FirstV() const;
-  //! Set the value of the field lastV with <aLastV>. <br>
-  Standard_EXPORT     void LastV(const Standard_Real aLastV) ;
-  //! Returns the value of the field lastV. <br>
-  Standard_EXPORT     Standard_Real LastV() const;
+  
+  //! Creates a RectangularTrimmedSurface with default values.
+  Standard_EXPORT PGeom_RectangularTrimmedSurface();
+  
+  //! Creates a RectangularTrimmedSurface with these values.
+  Standard_EXPORT PGeom_RectangularTrimmedSurface(const Handle(PGeom_Surface)& aBasisSurface, const Standard_Real aFirstU, const Standard_Real aLastU, const Standard_Real aFirstV, const Standard_Real aLastV);
+  
+  //! Set the value  of  the  field basisSurface  with
+  //! <aBasisSurface>.
+  Standard_EXPORT   void BasisSurface (const Handle(PGeom_Surface)& aBasisSurface) ;
+  
+  //! Returns the value of the field basisSurface.
+  Standard_EXPORT   Handle(PGeom_Surface) BasisSurface()  const;
+  
+  //! Set the value of the field firstU with <aFirstU>.
+  Standard_EXPORT   void FirstU (const Standard_Real aFirstU) ;
+  
+  //! Returns the value of the field firstU.
+  Standard_EXPORT   Standard_Real FirstU()  const;
+  
+  //! Set the value of the field lastU with <aLastU>.
+  Standard_EXPORT   void LastU (const Standard_Real aLastU) ;
+  
+  //! Returns the value of the field lastU.
+  Standard_EXPORT   Standard_Real LastU()  const;
+  
+  //! Set the value of the field firstV with <aFirstV>.
+  Standard_EXPORT   void FirstV (const Standard_Real aFirstV) ;
+  
+  //! Returns the value of the field firstV.
+  Standard_EXPORT   Standard_Real FirstV()  const;
+  
+  //! Set the value of the field lastV with <aLastV>.
+  Standard_EXPORT   void LastV (const Standard_Real aLastV) ;
+  
+  //! Returns the value of the field lastV.
+  Standard_EXPORT   Standard_Real LastV()  const;
 
 PGeom_RectangularTrimmedSurface(const Storage_stCONSTclCOM& a) : PGeom_BoundedSurface(a)
 {
@@ -88,11 +87,11 @@ protected:
 private: 
 
 
-Handle_PGeom_Surface basisSurface;
-Standard_Real firstU;
-Standard_Real lastU;
-Standard_Real firstV;
-Standard_Real lastV;
+  Handle(PGeom_Surface) basisSurface;
+  Standard_Real firstU;
+  Standard_Real lastU;
+  Standard_Real firstV;
+  Standard_Real lastV;
 
 
 };
@@ -101,7 +100,6 @@ Standard_Real lastV;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_RectangularTrimmedSurface_HeaderFile

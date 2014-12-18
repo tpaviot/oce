@@ -29,6 +29,7 @@
 #include <set>
 #include <map>
 #include <cstdlib>
+#include <cstring>
 #include <iomanip>
 
 #ifndef SIZE_MAX
@@ -45,8 +46,13 @@ static OSD_MAllocHook::Callback* MypCurrentCallback = NULL;
 
 namespace {
   // dummy function to call at place where break point might be needed
-  inline void place_for_breakpoint () {}
-}
+  static unsigned debug_counter = 0;
+  inline void place_for_breakpoint () {
+      // this statement is just to have any instruction in object code,
+      // otherwise compiler does not leave a place for break point
+      debug_counter++;
+  }
+};
 
 //=======================================================================
 //function : GetCallback
@@ -87,7 +93,7 @@ OSD_MAllocHook::CollectBySize* OSD_MAllocHook::GetCollectBySize()
 #ifdef _MSC_VER
 #include <crtdbg.h>
 
-#if _MSC_VER == 1500  /* VS 2008 */
+#if _MSC_VER >= 1500  /* VS 2008 */
 
 static long getRequestNum(void* pvData, long lRequest, size_t& theSize)
 {
@@ -118,7 +124,7 @@ static long getRequestNum(void* pvData, long lRequest, size_t& theSize)
   return aHeader->lRequest;
 }
 
-#else /* _MSC_VER == 1500 */
+#else /* _MSC_VER < 1500 */
 
 static long getRequestNum(void* /*pvData*/, long lRequest, size_t& /*theSize*/)
 {

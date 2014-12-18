@@ -5,16 +5,10 @@
 
 #include <HatchGen_SequenceNodeOfDomains.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _HatchGen_Domain_HeaderFile
 #include <HatchGen_Domain.hxx>
-#endif
-#ifndef _HatchGen_Domains_HeaderFile
 #include <HatchGen_Domains.hxx>
-#endif
 
  
 

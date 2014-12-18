@@ -6,110 +6,101 @@
 #ifndef _IntRes2d_Intersection_HeaderFile
 #define _IntRes2d_Intersection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntRes2d_SequenceOfIntersectionPoint_HeaderFile
 #include <IntRes2d_SequenceOfIntersectionPoint.hxx>
-#endif
-#ifndef _IntRes2d_SequenceOfIntersectionSegment_HeaderFile
 #include <IntRes2d_SequenceOfIntersectionSegment.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class IntRes2d_IntersectionPoint;
 class IntRes2d_IntersectionSegment;
 
 
-//! Defines  the root   class  of  all  the  Intersections <br>
-//!          between  two 2D-Curves, and  provides all  the methods <br>
-//!          about the results of the Intersections Algorithms. <br>
-class IntRes2d_Intersection  {
+//! Defines  the root   class  of  all  the  Intersections
+//! between  two 2D-Curves, and  provides all  the methods
+//! about the results of the Intersections Algorithms.
+class IntRes2d_Intersection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! returns TRUE when the computation was successful. <br>
-        Standard_Boolean IsDone() const;
-  //! Returns TRUE if there is no intersection between the <br>
-//!          given arguments. <br>
-//!          The exception NotDone is raised if IsDone returns FALSE. <br>
-        Standard_Boolean IsEmpty() const;
-  //! This function returns the number of intersection <br>
-//!          points between the 2 curves. <br>
-//!          The exception NotDone is raised if IsDone returns FALSE. <br>
-        Standard_Integer NbPoints() const;
-  //! This function returns the intersection point <br>
-//!          of range N; <br>
-//!          The exception NotDone is raised if IsDone returns FALSE. <br>
-//!          The exception OutOfRange is raised if (N <= 0) <br>
-//!          or (N > NbPoints). <br>
-       const IntRes2d_IntersectionPoint& Point(const Standard_Integer N) const;
-  //! This function returns the number of intersection <br>
-//!          segments between the two curves. <br>
-//!          The exception NotDone is raised if IsDone returns FALSE. <br>
-        Standard_Integer NbSegments() const;
-  //! This function returns the intersection segment <br>
-//!          of range N; <br>
-//!          The exception NotDone is raised if IsDone returns FALSE. <br>
-//!          The exception OutOfRange is raised if (N <= 0) <br>
-//!          or (N > NbPoints). <br>
-       const IntRes2d_IntersectionSegment& Segment(const Standard_Integer N) const;
   
-        void SetReversedParameters(const Standard_Boolean Reverseflag) ;
-
+  //! returns TRUE when the computation was successful.
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns TRUE if there is no intersection between the
+  //! given arguments.
+  //! The exception NotDone is raised if IsDone returns FALSE.
+      Standard_Boolean IsEmpty()  const;
+  
+  //! This function returns the number of intersection
+  //! points between the 2 curves.
+  //! The exception NotDone is raised if IsDone returns FALSE.
+      Standard_Integer NbPoints()  const;
+  
+  //! This function returns the intersection point
+  //! of range N;
+  //! The exception NotDone is raised if IsDone returns FALSE.
+  //! The exception OutOfRange is raised if (N <= 0)
+  //! or (N > NbPoints).
+     const  IntRes2d_IntersectionPoint& Point (const Standard_Integer N)  const;
+  
+  //! This function returns the number of intersection
+  //! segments between the two curves.
+  //! The exception NotDone is raised if IsDone returns FALSE.
+      Standard_Integer NbSegments()  const;
+  
+  //! This function returns the intersection segment
+  //! of range N;
+  //! The exception NotDone is raised if IsDone returns FALSE.
+  //! The exception OutOfRange is raised if (N <= 0)
+  //! or (N > NbPoints).
+     const  IntRes2d_IntersectionSegment& Segment (const Standard_Integer N)  const;
+  
+      void SetReversedParameters (const Standard_Boolean Reverseflag) ;
 
 
 
 
 protected:
 
-  //! Empty constructor. <br>
-      IntRes2d_Intersection();
   
-      IntRes2d_Intersection(const IntRes2d_Intersection& Other);
+  //! Empty constructor.
+    IntRes2d_Intersection();
   
-  Standard_EXPORT     void SetValues(const IntRes2d_Intersection& Inter) ;
+    IntRes2d_Intersection(const IntRes2d_Intersection& Other);
   
-  Standard_EXPORT     void Append(const IntRes2d_Intersection& Inter,const Standard_Real FirstParam1,const Standard_Real LastParam1,const Standard_Real FirstParam2,const Standard_Real LastParam2) ;
+  Standard_EXPORT   void SetValues (const IntRes2d_Intersection& Inter) ;
   
-        void Append(const IntRes2d_IntersectionSegment& Seg) ;
+  Standard_EXPORT   void Append (const IntRes2d_Intersection& Inter, const Standard_Real FirstParam1, const Standard_Real LastParam1, const Standard_Real FirstParam2, const Standard_Real LastParam2) ;
   
-        void Append(const IntRes2d_IntersectionPoint& Pnt) ;
+      void Append (const IntRes2d_IntersectionSegment& Seg) ;
   
-  Standard_EXPORT     void Insert(const IntRes2d_IntersectionPoint& Pnt) ;
+      void Append (const IntRes2d_IntersectionPoint& Pnt) ;
   
-        void ResetFields() ;
+  Standard_EXPORT   void Insert (const IntRes2d_IntersectionPoint& Pnt) ;
   
-        Standard_Boolean ReversedParameters() const;
+      void ResetFields() ;
+  
+      Standard_Boolean ReversedParameters()  const;
 
 
-Standard_Boolean done;
+  Standard_Boolean done;
 
 
 private:
 
 
 
-Standard_Boolean reverse;
-IntRes2d_SequenceOfIntersectionPoint lpnt;
-IntRes2d_SequenceOfIntersectionSegment lseg;
+  Standard_Boolean reverse;
+  IntRes2d_SequenceOfIntersectionPoint lpnt;
+  IntRes2d_SequenceOfIntersectionSegment lseg;
 
 
 };
@@ -119,7 +110,6 @@ IntRes2d_SequenceOfIntersectionSegment lseg;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntRes2d_Intersection_HeaderFile

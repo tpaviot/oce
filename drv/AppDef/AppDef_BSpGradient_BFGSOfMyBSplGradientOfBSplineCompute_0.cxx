@@ -5,27 +5,12 @@
 
 #include <AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute.hxx>
 
-#ifndef _AppDef_MultiLine_HeaderFile
 #include <AppDef_MultiLine.hxx>
-#endif
-#ifndef _AppDef_MyLineTool_HeaderFile
 #include <AppDef_MyLineTool.hxx>
-#endif
-#ifndef _AppDef_MyBSplGradientOfBSplineCompute_HeaderFile
 #include <AppDef_MyBSplGradientOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_HeaderFile
 #include <AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_HeaderFile
 #include <AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx>
-#endif
-#ifndef _math_MultipleVarFunctionWithGradient_HeaderFile
 #include <math_MultipleVarFunctionWithGradient.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
  
 
 #define MultiLine AppDef_MultiLine

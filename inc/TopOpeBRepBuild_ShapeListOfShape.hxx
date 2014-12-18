@@ -6,47 +6,37 @@
 #ifndef _TopOpeBRepBuild_ShapeListOfShape_HeaderFile
 #define _TopOpeBRepBuild_ShapeListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ListOfShape;
 
 
-//! represent shape + a list of shape <br>
-class TopOpeBRepBuild_ShapeListOfShape  {
+//! represent shape + a list of shape
+class TopOpeBRepBuild_ShapeListOfShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepBuild_ShapeListOfShape();
+  Standard_EXPORT TopOpeBRepBuild_ShapeListOfShape();
   
-  Standard_EXPORT   TopOpeBRepBuild_ShapeListOfShape(const TopoDS_Shape& S);
+  Standard_EXPORT TopOpeBRepBuild_ShapeListOfShape(const TopoDS_Shape& S);
   
-  Standard_EXPORT   TopOpeBRepBuild_ShapeListOfShape(const TopoDS_Shape& S,const TopTools_ListOfShape& L);
+  Standard_EXPORT TopOpeBRepBuild_ShapeListOfShape(const TopoDS_Shape& S, const TopTools_ListOfShape& L);
   
-  Standard_EXPORT    const TopTools_ListOfShape& List() const;
+  Standard_EXPORT  const  TopTools_ListOfShape& List()  const;
   
-  Standard_EXPORT     TopTools_ListOfShape& ChangeList() ;
+  Standard_EXPORT   TopTools_ListOfShape& ChangeList() ;
   
-  Standard_EXPORT    const TopoDS_Shape& Shape() const;
+  Standard_EXPORT  const  TopoDS_Shape& Shape()  const;
   
-  Standard_EXPORT     TopoDS_Shape& ChangeShape() ;
-
+  Standard_EXPORT   TopoDS_Shape& ChangeShape() ;
 
 
 
@@ -61,8 +51,8 @@ private:
 
 
 
-TopTools_ListOfShape myList;
-TopoDS_Shape myShape;
+  TopTools_ListOfShape myList;
+  TopoDS_Shape myShape;
 
 
 };
@@ -71,7 +61,6 @@ TopoDS_Shape myShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_ShapeListOfShape_HeaderFile

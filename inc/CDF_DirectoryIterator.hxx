@@ -6,52 +6,42 @@
 #ifndef _CDF_DirectoryIterator_HeaderFile
 #define _CDF_DirectoryIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _CDM_ListIteratorOfListOfDocument_HeaderFile
 #include <CDM_ListIteratorOfListOfDocument.hxx>
-#endif
-#ifndef _Handle_CDF_Directory_HeaderFile
 #include <Handle_CDF_Directory.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
 class Standard_NoSuchObject;
 class CDF_Directory;
 class CDM_Document;
 
 
 
-class CDF_DirectoryIterator  {
+class CDF_DirectoryIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! creates an Iterator with the directory <br>
-//!          of the current CDF. <br>
-  Standard_EXPORT   CDF_DirectoryIterator();
   
-  Standard_EXPORT   CDF_DirectoryIterator(const Handle(CDF_Directory)& aDirectory);
-  //! Returns True if there are more entries to return <br>
-  Standard_EXPORT     Standard_Boolean MoreDocument() ;
-  //! Go to the next entry <br>
-//!           (if there is not, Value will raise an exception) <br>
-  Standard_EXPORT     void NextDocument() ;
-  //! Returns item value of current entry <br>
-  Standard_EXPORT     Handle_CDM_Document Document() ;
-
+  //! creates an Iterator with the directory
+  //! of the current CDF.
+  Standard_EXPORT CDF_DirectoryIterator();
+  
+  Standard_EXPORT CDF_DirectoryIterator(const Handle(CDF_Directory)& aDirectory);
+  
+  //! Returns True if there are more entries to return
+  Standard_EXPORT   Standard_Boolean MoreDocument() ;
+  
+  //! Go to the next entry
+  //! (if there is not, Value will raise an exception)
+  Standard_EXPORT   void NextDocument() ;
+  
+  //! Returns item value of current entry
+  Standard_EXPORT   Handle(CDM_Document) Document() ;
 
 
 
@@ -66,7 +56,7 @@ private:
 
 
 
-CDM_ListIteratorOfListOfDocument myIterator;
+  CDM_ListIteratorOfListOfDocument myIterator;
 
 
 };
@@ -75,7 +65,6 @@ CDM_ListIteratorOfListOfDocument myIterator;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDF_DirectoryIterator_HeaderFile

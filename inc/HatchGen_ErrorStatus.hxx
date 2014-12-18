@@ -6,8 +6,11 @@
 #ifndef _HatchGen_ErrorStatus_HeaderFile
 #define _HatchGen_ErrorStatus_HeaderFile
 
-//! Error status. <br>
-enum HatchGen_ErrorStatus {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Error status.
+enum HatchGen_ErrorStatus
+{
 HatchGen_NoProblem,
 HatchGen_TrimFailure,
 HatchGen_TransitionFailure,
@@ -15,8 +18,4 @@ HatchGen_IncoherentParity,
 HatchGen_IncompatibleStates
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _HatchGen_ErrorStatus_HeaderFile

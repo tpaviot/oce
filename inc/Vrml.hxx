@@ -6,22 +6,12 @@
 #ifndef _Vrml_HeaderFile
 #define _Vrml_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class Vrml_SFImage;
 class Vrml_SFRotation;
 class Vrml_AsciiText;
@@ -63,25 +53,27 @@ class Vrml_WWWInline;
 class Vrml_Instancing;
 
 
-//! Vrml package  implements the specification  of the <br>
-//!          VRML ( Virtual  Reality Modeling Language ).  VRML <br>
-//!          is a standard  language for describing interactive <br>
-//!          3-D objects and  worlds delivered across Internet. <br>
-//!          Actual version of Vrml package have made for objects <br>
-//!          of VRML version 1.0. <br>
-//!          This package is used by VrmlConverter package. <br>
-//!          The developer should  already be familiar with VRML <br>
-//!          specification before using this package. <br>
-class Vrml  {
+//! Vrml package  implements the specification  of the
+//! VRML ( Virtual  Reality Modeling Language ).  VRML
+//! is a standard  language for describing interactive
+//! 3-D objects and  worlds delivered across Internet.
+//! Actual version of Vrml package have made for objects
+//! of VRML version 1.0.
+//! This package is used by VrmlConverter package.
+//! The developer should  already be familiar with VRML
+//! specification before using this package.
+class Vrml 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Writes a header in anOStream (VRML file). <br>//! Writes one line of commentary in  anOStream (VRML file). <br>
-  Standard_EXPORT   static  Standard_OStream& VrmlHeaderWriter(Standard_OStream& anOStream) ;
   
-  Standard_EXPORT   static  Standard_OStream& CommentWriter(const Standard_CString aComment,Standard_OStream& anOStream) ;
-
+  //! Writes a header in anOStream (VRML file).
+  //! Writes one line of commentary in  anOStream (VRML file).
+  Standard_EXPORT static   Standard_OStream& VrmlHeaderWriter (Standard_OStream& anOStream) ;
+  
+  Standard_EXPORT static   Standard_OStream& CommentWriter (const Standard_CString aComment, Standard_OStream& anOStream) ;
 
 
 
@@ -143,7 +135,6 @@ friend class Vrml_Instancing;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_HeaderFile

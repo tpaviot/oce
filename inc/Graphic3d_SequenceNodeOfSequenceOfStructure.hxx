@@ -6,38 +6,27 @@
 #ifndef _Graphic3d_SequenceNodeOfSequenceOfStructure_HeaderFile
 #define _Graphic3d_SequenceNodeOfSequenceOfStructure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_SequenceNodeOfSequenceOfStructure_HeaderFile
 #include <Handle_Graphic3d_SequenceNodeOfSequenceOfStructure.hxx>
-#endif
 
-#ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Graphic3d_Structure;
 class Graphic3d_SequenceOfStructure;
 
 
 
-class Graphic3d_SequenceNodeOfSequenceOfStructure : public TCollection_SeqNode {
+class Graphic3d_SequenceNodeOfSequenceOfStructure : public TCollection_SeqNode
+{
 
 public:
 
   
-      Graphic3d_SequenceNodeOfSequenceOfStructure(const Handle(Graphic3d_Structure)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Graphic3d_SequenceNodeOfSequenceOfStructure(const Handle(Graphic3d_Structure)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Graphic3d_Structure& Value() const;
+      Handle(Graphic3d_Structure)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Graphic3d_Structure myValue;
+  Handle(Graphic3d_Structure) myValue;
 
 
 };
 
-#define SeqItem Handle_Graphic3d_Structure
+#define SeqItem Handle(Graphic3d_Structure)
 #define SeqItem_hxx <Graphic3d_Structure.hxx>
 #define TCollection_SequenceNode Graphic3d_SequenceNodeOfSequenceOfStructure
 #define TCollection_SequenceNode_hxx <Graphic3d_SequenceNodeOfSequenceOfStructure.hxx>
@@ -78,7 +67,6 @@ Handle_Graphic3d_Structure myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_SequenceNodeOfSequenceOfStructure_HeaderFile

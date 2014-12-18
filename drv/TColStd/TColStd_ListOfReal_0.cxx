@@ -5,15 +5,9 @@
 
 #include <TColStd_ListOfReal.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_ListIteratorOfListOfReal_HeaderFile
 #include <TColStd_ListIteratorOfListOfReal.hxx>
-#endif
-#ifndef _TColStd_ListNodeOfListOfReal_HeaderFile
 #include <TColStd_ListNodeOfListOfReal.hxx>
-#endif
  
 
 #define Item Standard_Real

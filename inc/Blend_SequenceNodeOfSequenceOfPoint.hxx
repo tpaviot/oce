@@ -6,38 +6,27 @@
 #ifndef _Blend_SequenceNodeOfSequenceOfPoint_HeaderFile
 #define _Blend_SequenceNodeOfSequenceOfPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Blend_SequenceNodeOfSequenceOfPoint_HeaderFile
 #include <Handle_Blend_SequenceNodeOfSequenceOfPoint.hxx>
-#endif
 
-#ifndef _Blend_Point_HeaderFile
 #include <Blend_Point.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Blend_Point;
 class Blend_SequenceOfPoint;
 
 
 
-class Blend_SequenceNodeOfSequenceOfPoint : public TCollection_SeqNode {
+class Blend_SequenceNodeOfSequenceOfPoint : public TCollection_SeqNode
+{
 
 public:
 
   
-      Blend_SequenceNodeOfSequenceOfPoint(const Blend_Point& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Blend_SequenceNodeOfSequenceOfPoint(const Blend_Point& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Blend_Point& Value() const;
+      Blend_Point& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Blend_Point myValue;
+  Blend_Point myValue;
 
 
 };
@@ -78,7 +67,6 @@ Blend_Point myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Blend_SequenceNodeOfSequenceOfPoint_HeaderFile

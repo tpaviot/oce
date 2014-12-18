@@ -6,28 +6,14 @@
 #ifndef _Geom2d_Direction_HeaderFile
 #define _Geom2d_Direction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom2d_Direction_HeaderFile
 #include <Handle_Geom2d_Direction.hxx>
-#endif
 
-#ifndef _Geom2d_Vector_HeaderFile
 #include <Geom2d_Vector.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom2d_Vector_HeaderFile
 #include <Handle_Geom2d_Vector.hxx>
-#endif
-#ifndef _Handle_Geom2d_Geometry_HeaderFile
 #include <Handle_Geom2d_Geometry.hxx>
-#endif
 class Standard_ConstructionError;
 class gp_Dir2d;
 class Geom2d_Vector;
@@ -36,54 +22,68 @@ class Geom2d_Geometry;
 
 
 
-//!  The class Direction specifies a vector that is never null. <br>
-//!  It is a unit vector. <br>
-class Geom2d_Direction : public Geom2d_Vector {
+//! The class Direction specifies a vector that is never null.
+//! It is a unit vector.
+class Geom2d_Direction : public Geom2d_Vector
+{
 
 public:
 
-  //! Creates a unit vector with it 2 cartesian coordinates. <br>
-//!  Raised if Sqrt( X*X + Y*Y) <= Resolution from gp. <br>
-  Standard_EXPORT   Geom2d_Direction(const Standard_Real X,const Standard_Real Y);
-  //! Creates a persistent copy of <me>. <br>
-  Standard_EXPORT   Geom2d_Direction(const gp_Dir2d& V);
-  //! Assigns the coordinates X and Y to this unit vector, <br>
-//! then normalizes it. <br>
-//! Exceptions <br>
-//! Standard_ConstructionError if Sqrt(X*X + <br>
-//! Y*Y) is less than or equal to gp::Resolution(). <br>
-  Standard_EXPORT     void SetCoord(const Standard_Real X,const Standard_Real Y) ;
-  //! Converts the gp_Dir2d unit vector V into this unit vector. <br>
-  Standard_EXPORT     void SetDir2d(const gp_Dir2d& V) ;
   
-//! Assigns a value to the X coordinate of this unit vector, then normalizes it. <br>
-//! Exceptions <br>
-//! Standard_ConstructionError if the value assigned <br>
-//! causes the magnitude of the vector to become less <br>
-//! than or equal to gp::Resolution(). <br>
-  Standard_EXPORT     void SetX(const Standard_Real X) ;
-  //! Assigns a value to the Y coordinate of this unit vector, then normalizes it. <br>
-//! Exceptions <br>
-//! Standard_ConstructionError if the value assigned <br>
-//! causes the magnitude of the vector to become less <br>
-//! than or equal to gp::Resolution(). <br>
-  Standard_EXPORT     void SetY(const Standard_Real Y) ;
-  //! Converts this unit vector into a gp_Dir2d unit vector. <br>
-  Standard_EXPORT     gp_Dir2d Dir2d() const;
-  //! returns 1.0 <br>
-  Standard_EXPORT     Standard_Real Magnitude() const;
-  //! returns 1.0 <br>
-  Standard_EXPORT     Standard_Real SquareMagnitude() const;
-  //! Computes the cross product between <me> and <Other>. <br>
-  Standard_EXPORT     Standard_Real Crossed(const Handle(Geom2d_Vector)& Other) const;
-    Standard_Real operator ^(const Handle(Geom2d_Vector)& Other) const
+  //! Creates a unit vector with it 2 cartesian coordinates.
+  //!
+  //! Raised if Sqrt( X*X + Y*Y) <= Resolution from gp.
+  Standard_EXPORT Geom2d_Direction(const Standard_Real X, const Standard_Real Y);
+  
+  //! Creates a persistent copy of <me>.
+  Standard_EXPORT Geom2d_Direction(const gp_Dir2d& V);
+  
+  //! Assigns the coordinates X and Y to this unit vector,
+  //! then normalizes it.
+  //! Exceptions
+  //! Standard_ConstructionError if Sqrt(X*X +
+  //! Y*Y) is less than or equal to gp::Resolution().
+  Standard_EXPORT   void SetCoord (const Standard_Real X, const Standard_Real Y) ;
+  
+  //! Converts the gp_Dir2d unit vector V into this unit vector.
+  Standard_EXPORT   void SetDir2d (const gp_Dir2d& V) ;
+  
+
+  //! Assigns a value to the X coordinate of this unit vector, then normalizes it.
+  //! Exceptions
+  //! Standard_ConstructionError if the value assigned
+  //! causes the magnitude of the vector to become less
+  //! than or equal to gp::Resolution().
+  Standard_EXPORT   void SetX (const Standard_Real X) ;
+  
+  //! Assigns a value to the Y coordinate of this unit vector, then normalizes it.
+  //! Exceptions
+  //! Standard_ConstructionError if the value assigned
+  //! causes the magnitude of the vector to become less
+  //! than or equal to gp::Resolution().
+  Standard_EXPORT   void SetY (const Standard_Real Y) ;
+  
+  //! Converts this unit vector into a gp_Dir2d unit vector.
+  Standard_EXPORT   gp_Dir2d Dir2d()  const;
+  
+  //! returns 1.0
+  Standard_EXPORT   Standard_Real Magnitude()  const;
+  
+  //! returns 1.0
+  Standard_EXPORT   Standard_Real SquareMagnitude()  const;
+  
+  //! Computes the cross product between <me> and <Other>.
+  Standard_EXPORT   Standard_Real Crossed (const Handle(Geom2d_Vector)& Other)  const;
+  Standard_Real operator ^ (const Handle(Geom2d_Vector)& Other)  const
 {
   return Crossed(Other);
 }
-  //! Applies the transformation T to this unit vector, then normalizes it. <br>
-  Standard_EXPORT     void Transform(const gp_Trsf2d& T) ;
-  //! Creates a new object which is a copy of this unit vector. <br>
-  Standard_EXPORT     Handle_Geom2d_Geometry Copy() const;
+  
+  //! Applies the transformation T to this unit vector, then normalizes it.
+  Standard_EXPORT   void Transform (const gp_Trsf2d& T) ;
+  
+  //! Creates a new object which is a copy of this unit vector.
+  Standard_EXPORT   Handle(Geom2d_Geometry) Copy()  const;
 
 
 
@@ -106,7 +106,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2d_Direction_HeaderFile

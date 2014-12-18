@@ -6,28 +6,14 @@
 #ifndef _SelectBasics_ListIteratorOfListOfSensitive_HeaderFile
 #define _SelectBasics_ListIteratorOfListOfSensitive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_SelectBasics_SensitiveEntity_HeaderFile
 #include <Handle_SelectBasics_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_SelectBasics_ListNodeOfListOfSensitive_HeaderFile
 #include <Handle_SelectBasics_ListNodeOfListOfSensitive.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class SelectBasics_ListOfSensitive;
@@ -36,27 +22,27 @@ class SelectBasics_ListNodeOfListOfSensitive;
 
 
 
-class SelectBasics_ListIteratorOfListOfSensitive  {
+class SelectBasics_ListIteratorOfListOfSensitive 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   SelectBasics_ListIteratorOfListOfSensitive();
+  Standard_EXPORT SelectBasics_ListIteratorOfListOfSensitive();
   
-  Standard_EXPORT   SelectBasics_ListIteratorOfListOfSensitive(const SelectBasics_ListOfSensitive& L);
+  Standard_EXPORT SelectBasics_ListIteratorOfListOfSensitive(const SelectBasics_ListOfSensitive& L);
   
-  Standard_EXPORT     void Initialize(const SelectBasics_ListOfSensitive& L) ;
+  Standard_EXPORT   void Initialize (const SelectBasics_ListOfSensitive& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_SelectBasics_SensitiveEntity& Value() const;
+  Standard_EXPORT   Handle(SelectBasics_SensitiveEntity)& Value()  const;
 
 
 friend class SelectBasics_ListOfSensitive;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_SelectBasics_SensitiveEntity
+#define Item Handle(SelectBasics_SensitiveEntity)
 #define Item_hxx <SelectBasics_SensitiveEntity.hxx>
 #define TCollection_ListNode SelectBasics_ListNodeOfListOfSensitive
 #define TCollection_ListNode_hxx <SelectBasics_ListNodeOfListOfSensitive.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectBasics_ListIteratorOfListOfSensitive_HeaderFile

@@ -6,28 +6,22 @@
 #ifndef _StepBasic_TimeMeasureWithUnit_HeaderFile
 #define _StepBasic_TimeMeasureWithUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_TimeMeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_TimeMeasureWithUnit.hxx>
-#endif
 
-#ifndef _StepBasic_MeasureWithUnit_HeaderFile
 #include <StepBasic_MeasureWithUnit.hxx>
-#endif
 
 
 
-class StepBasic_TimeMeasureWithUnit : public StepBasic_MeasureWithUnit {
+class StepBasic_TimeMeasureWithUnit : public StepBasic_MeasureWithUnit
+{
 
 public:
 
-  //! Returns a TimeMeasureWithUnit <br>
-  Standard_EXPORT   StepBasic_TimeMeasureWithUnit();
+  
+  //! Returns a TimeMeasureWithUnit
+  Standard_EXPORT StepBasic_TimeMeasureWithUnit();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_TimeMeasureWithUnit_HeaderFile

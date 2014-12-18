@@ -6,22 +6,15 @@
 #ifndef _Handle_AIS_Chamf3dDimension_HeaderFile
 #define _Handle_AIS_Chamf3dDimension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_AIS_Relation_HeaderFile
 #include <Handle_AIS_Relation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(AIS_Relation);
 class AIS_Chamf3dDimension;
 
-DEFINE_STANDARD_HANDLE(AIS_Chamf3dDimension,AIS_Relation)
+DEFINE_STANDARD_HANDLE(AIS_Chamf3dDimension, AIS_Relation)
 
-#endif
+#endif // _Handle_AIS_Chamf3dDimension_HeaderFile

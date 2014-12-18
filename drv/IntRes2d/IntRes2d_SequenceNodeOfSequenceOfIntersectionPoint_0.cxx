@@ -5,16 +5,10 @@
 
 #include <IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntRes2d_IntersectionPoint_HeaderFile
 #include <IntRes2d_IntersectionPoint.hxx>
-#endif
-#ifndef _IntRes2d_SequenceOfIntersectionPoint_HeaderFile
 #include <IntRes2d_SequenceOfIntersectionPoint.hxx>
-#endif
 
  
 

@@ -6,45 +6,32 @@
 #ifndef _PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape_HeaderFile
 #define _PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape_HeaderFile
 #include <Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_PTopoDS_HShape_HeaderFile
 #include <Handle_PTopoDS_HShape.hxx>
-#endif
-#ifndef _PStandard_ArrayNode_HeaderFile
 #include <PStandard_ArrayNode.hxx>
-#endif
 class PTopoDS_HShape;
 class PTopoDS_FieldOfHArray1OfHShape;
 class PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape;
 
 
-class PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape : public PStandard_ArrayNode {
+class PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape : public PStandard_ArrayNode
+{
 
 public:
 
   
-  Standard_EXPORT   PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape();
+  Standard_EXPORT PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape();
   
-  Standard_EXPORT   PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape(const Handle(PTopoDS_HShape)& aValue);
+  Standard_EXPORT PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape(const Handle(PTopoDS_HShape)& aValue);
   
-  Standard_EXPORT     void SetValue(const Handle(PTopoDS_HShape)& aValue) ;
+  Standard_EXPORT   void SetValue (const Handle(PTopoDS_HShape)& aValue) ;
   
-  Standard_EXPORT     Standard_Address Value() const;
+  Standard_EXPORT   Standard_Address Value()  const;
 
 PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape(const Storage_stCONSTclCOM& a) : PStandard_ArrayNode(a)
 {
@@ -65,7 +52,7 @@ protected:
 private: 
 
 
-Handle_PTopoDS_HShape myValue;
+  Handle(PTopoDS_HShape) myValue;
 
 
 };
@@ -74,7 +61,6 @@ Handle_PTopoDS_HShape myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape_HeaderFile

@@ -6,38 +6,27 @@
 #ifndef _Interface_SequenceNodeOfSequenceOfCheck_HeaderFile
 #define _Interface_SequenceNodeOfSequenceOfCheck_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_SequenceNodeOfSequenceOfCheck_HeaderFile
 #include <Handle_Interface_SequenceNodeOfSequenceOfCheck.hxx>
-#endif
 
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Interface_Check;
 class Interface_SequenceOfCheck;
 
 
 
-class Interface_SequenceNodeOfSequenceOfCheck : public TCollection_SeqNode {
+class Interface_SequenceNodeOfSequenceOfCheck : public TCollection_SeqNode
+{
 
 public:
 
   
-      Interface_SequenceNodeOfSequenceOfCheck(const Handle(Interface_Check)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Interface_SequenceNodeOfSequenceOfCheck(const Handle(Interface_Check)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Interface_Check& Value() const;
+      Handle(Interface_Check)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Interface_Check myValue;
+  Handle(Interface_Check) myValue;
 
 
 };
 
-#define SeqItem Handle_Interface_Check
+#define SeqItem Handle(Interface_Check)
 #define SeqItem_hxx <Interface_Check.hxx>
 #define TCollection_SequenceNode Interface_SequenceNodeOfSequenceOfCheck
 #define TCollection_SequenceNode_hxx <Interface_SequenceNodeOfSequenceOfCheck.hxx>
@@ -78,7 +67,6 @@ Handle_Interface_Check myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_SequenceNodeOfSequenceOfCheck_HeaderFile

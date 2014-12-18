@@ -6,34 +6,25 @@
 #ifndef _PCDM_Writer_HeaderFile
 #define _PCDM_Writer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_PCDM_Writer_HeaderFile
 #include <Handle_PCDM_Writer.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
 class PCDM_DriverError;
 class CDM_Document;
 class TCollection_ExtendedString;
 
 
 
-class PCDM_Writer : public Standard_Transient {
+class PCDM_Writer : public Standard_Transient
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void Write(const Handle(CDM_Document)& aDocument,const TCollection_ExtendedString& aFileName)  = 0;
+  Standard_EXPORT virtual   void Write (const Handle(CDM_Document)& aDocument, const TCollection_ExtendedString& aFileName)  = 0;
 
 
 
@@ -56,7 +47,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PCDM_Writer_HeaderFile

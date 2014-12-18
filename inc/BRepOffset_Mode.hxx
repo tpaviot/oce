@@ -6,22 +6,21 @@
 #ifndef _BRepOffset_Mode_HeaderFile
 #define _BRepOffset_Mode_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//! Lists the offset modes. These are the following: <br>
-//! - BRepOffset_Skin which describes the offset along <br>
-//!   the surface of a solid, used to obtain a manifold topological space, <br>
-//! - BRepOffset_Pipe which describes the offset of a <br>
-//!   curve, used to obtain a pre-surface, <br>
-//! - BRepOffset_RectoVerso which describes the offset <br>
-//!   of a given surface shell along both sides of the surface. <br>
-enum BRepOffset_Mode {
+
+//! Lists the offset modes. These are the following:
+//! - BRepOffset_Skin which describes the offset along
+//! the surface of a solid, used to obtain a manifold topological space,
+//! - BRepOffset_Pipe which describes the offset of a
+//! curve, used to obtain a pre-surface,
+//! - BRepOffset_RectoVerso which describes the offset
+//! of a given surface shell along both sides of the surface.
+enum BRepOffset_Mode
+{
 BRepOffset_Skin,
 BRepOffset_Pipe,
 BRepOffset_RectoVerso
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepOffset_Mode_HeaderFile

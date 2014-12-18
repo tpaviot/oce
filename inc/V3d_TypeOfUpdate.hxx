@@ -6,16 +6,15 @@
 #ifndef _V3d_TypeOfUpdate_HeaderFile
 #define _V3d_TypeOfUpdate_HeaderFile
 
-//! Determines the type of update of the view <br>
-//! -   V3d_ASAP: as soon as possible. The view is updated immediately after a modification. <br>
-//! -   V3d_WAIT: deferred. The view is updated when the Update function is called. <br>
-enum V3d_TypeOfUpdate {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Determines the type of update of the view
+//! -   V3d_ASAP: as soon as possible. The view is updated immediately after a modification.
+//! -   V3d_WAIT: deferred. The view is updated when the Update function is called.
+enum V3d_TypeOfUpdate
+{
 V3d_ASAP,
 V3d_WAIT
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _V3d_TypeOfUpdate_HeaderFile

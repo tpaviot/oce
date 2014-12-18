@@ -6,22 +6,15 @@
 #ifndef _Handle_StepVisual_CameraModel_HeaderFile
 #define _Handle_StepVisual_CameraModel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_GeometricRepresentationItem_HeaderFile
 #include <Handle_StepGeom_GeometricRepresentationItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_GeometricRepresentationItem);
 class StepVisual_CameraModel;
 
-DEFINE_STANDARD_HANDLE(StepVisual_CameraModel,StepGeom_GeometricRepresentationItem)
+DEFINE_STANDARD_HANDLE(StepVisual_CameraModel, StepGeom_GeometricRepresentationItem)
 
-#endif
+#endif // _Handle_StepVisual_CameraModel_HeaderFile

@@ -26,7 +26,7 @@
 #include <TopOpeBRepTool_ShapeTool.hxx>
 #include <Standard_ProgramError.hxx>
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettracePEI();
 #endif
 
@@ -47,7 +47,7 @@ static Standard_Real Parameter(const Handle(TopOpeBRepDS_Interference)& I)
   else if ( I->IsKind(STANDARD_TYPE(TopOpeBRepDS_CurvePointInterference)) )
     p = Handle(TopOpeBRepDS_CurvePointInterference)::DownCast(I)->Parameter();
   else {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<"EdgeInterference : mauvais type d'interference"<<endl;
 #endif
     Standard_ProgramError::Raise("TopOpeBRepDS_EdgeInterferenceTool1");
@@ -107,26 +107,25 @@ void TopOpeBRepDS_EdgeInterferenceTool::Add
   }
 
   // V est un sommet de E ?
-#ifdef DEB
   Standard_Boolean VofE = Standard_False;
-#endif
   TopoDS_Iterator it(E,Standard_False);
   for ( ; it.More(); it.Next() ) {
     const TopoDS_Shape& S = it.Value();
     if ( S.IsSame(V) ) {
-#ifdef DEB
       VofE = Standard_True; 
-#endif
       break;
     }
   }
  
-#ifdef DEB
+#ifdef OCCT_DEBUG
   if (TopOpeBRepDS_GettracePEI() && !VofE) {
     cout<<"===================== VofE = False"<<endl;
   }
 #endif 
-
+  if(!VofE)
+  {
+    return;
+  }
   // V est un sommet de E
   const TopoDS_Vertex& VV = TopoDS::Vertex(V);
   const TopoDS_Edge& EE = TopoDS::Edge(E);

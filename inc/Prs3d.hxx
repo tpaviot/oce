@@ -6,23 +6,17 @@
 #ifndef _Prs3d_HeaderFile
 #define _Prs3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
+#include <Standard_Real.hxx>
+#include <Handle_Prs3d_Drawer.hxx>
 class gp_Pnt;
+class TopoDS_Shape;
+class Prs3d_Drawer;
 class Prs3d_Presentation;
 class Prs3d_BasicAspect;
 class Prs3d_PointAspect;
@@ -43,28 +37,41 @@ class Prs3d_ShapeTool;
 class Prs3d_Arrow;
 
 
-//! The Prs3d package provides the following services <br>
-//! -   a presentation object (the context for all <br>
-//!   modifications to the display, its presentation will be <br>
-//!   displayed in every view of an active viewer) <br>
-//! -   an attribute manager governing how objects such <br>
-//!   as color, width, and type of line are displayed; <br>
-//!   these are generic objects, whereas those in <br>
-//!   StdPrs are specific geometries and topologies. <br>
-//! -   generic   algorithms providing default settings for <br>
-//!   objects such as points, curves, surfaces and shapes <br>
-//! -   a root object which provides the abstract <br>
-//!   framework for the DsgPrs definitions at work in <br>
-//!   display of dimensions, relations and trihedra. <br>
-class Prs3d  {
+//! The Prs3d package provides the following services
+//! -   a presentation object (the context for all
+//! modifications to the display, its presentation will be
+//! displayed in every view of an active viewer)
+//! -   an attribute manager governing how objects such
+//! as color, width, and type of line are displayed;
+//! these are generic objects, whereas those in
+//! StdPrs are specific geometries and topologies.
+//! -   generic   algorithms providing default settings for
+//! objects such as points, curves, surfaces and shapes
+//! -   a root object which provides the abstract
+//! framework for the DsgPrs definitions at work in
+//! display of dimensions, relations and trihedra.
+class Prs3d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! draws an arrow at a given location, with respect <br>
-//!          to a given direction. <br>
-  Standard_EXPORT   static  Standard_Boolean MatchSegment(const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const gp_Pnt& p1,const gp_Pnt& p2,Quantity_Length& dist) ;
-
+  
+  //! draws an arrow at a given location, with respect
+  //! to a given direction.
+  Standard_EXPORT static   Standard_Boolean MatchSegment (const Quantity_Length X, const Quantity_Length Y, const Quantity_Length Z, const Quantity_Length aDistance, const gp_Pnt& p1, const gp_Pnt& p2, Quantity_Length& dist) ;
+  
+  //! Computes the absolute deflection value depending on
+  //! the type of deflection in theDrawer:
+  //! <ul>
+  //! <li><b>Aspect_TOD_RELATIVE</b>: the absolute deflection is computed using the relative
+  //! deviation coefficient from theDrawer and the shape's bounding box;</li>
+  //! <li><b>Aspect_TOD_ABSOLUTE</b>: the maximal chordial deviation from theDrawer is returned.</li>
+  //! </ul>
+  //! This function should always be used to compute the deflection value for building
+  //! discrete representations of the shape (triangualtion, wireframe) to avoid incosistencies
+  //! between different representations of the shape and undesirable visual artifacts.
+  Standard_EXPORT static   Standard_Real GetDeflection (const TopoDS_Shape& theShape, const Handle(Prs3d_Drawer)& theDrawer) ;
 
 
 
@@ -105,7 +112,6 @@ friend class Prs3d_Arrow;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Prs3d_HeaderFile

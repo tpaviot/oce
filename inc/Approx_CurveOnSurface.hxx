@@ -6,40 +6,18 @@
 #ifndef _Approx_CurveOnSurface_HeaderFile
 #define _Approx_CurveOnSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineCurve_HeaderFile
 #include <Handle_Geom_BSplineCurve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Geom2d_BSplineCurve;
 class Geom_BSplineCurve;
 class Standard_OutOfRange;
@@ -48,30 +26,31 @@ class Adaptor2d_HCurve2d;
 class Adaptor3d_HSurface;
 
 
-//! Approximation of   curve on surface <br>
-class Approx_CurveOnSurface  {
+//! Approximation of   curve on surface
+class Approx_CurveOnSurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Approx_CurveOnSurface(const Handle(Adaptor2d_HCurve2d)& C2D,const Handle(Adaptor3d_HSurface)& Surf,const Standard_Real First,const Standard_Real Last,const Standard_Real Tol,const GeomAbs_Shape Continuity,const Standard_Integer MaxDegree,const Standard_Integer MaxSegments,const Standard_Boolean Only3d = Standard_False,const Standard_Boolean Only2d = Standard_False);
+  Standard_EXPORT Approx_CurveOnSurface(const Handle(Adaptor2d_HCurve2d)& C2D, const Handle(Adaptor3d_HSurface)& Surf, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol, const GeomAbs_Shape Continuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments, const Standard_Boolean Only3d = Standard_False, const Standard_Boolean Only2d = Standard_False);
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Boolean HasResult() const;
+  Standard_EXPORT   Standard_Boolean HasResult()  const;
   
-  Standard_EXPORT     Handle_Geom_BSplineCurve Curve3d() const;
+  Standard_EXPORT   Handle(Geom_BSplineCurve) Curve3d()  const;
   
-  Standard_EXPORT     Standard_Real MaxError3d() const;
+  Standard_EXPORT   Standard_Real MaxError3d()  const;
   
-  Standard_EXPORT     Handle_Geom2d_BSplineCurve Curve2d() const;
+  Standard_EXPORT   Handle(Geom2d_BSplineCurve) Curve2d()  const;
   
-  Standard_EXPORT     Standard_Real MaxError2dU() const;
-  //! returns the maximum errors relativly to the  U component or the V component of the <br>
-//!                 2d Curve <br>
-  Standard_EXPORT     Standard_Real MaxError2dV() const;
-
+  Standard_EXPORT   Standard_Real MaxError2dU()  const;
+  
+  //! returns the maximum errors relativly to the  U component or the V component of the
+  //! 2d Curve
+  Standard_EXPORT   Standard_Real MaxError2dV()  const;
 
 
 
@@ -86,13 +65,13 @@ private:
 
 
 
-Handle_Geom2d_BSplineCurve myCurve2d;
-Handle_Geom_BSplineCurve myCurve3d;
-Standard_Boolean myIsDone;
-Standard_Boolean myHasResult;
-Standard_Real myError3d;
-Standard_Real myError2dU;
-Standard_Real myError2dV;
+  Handle(Geom2d_BSplineCurve) myCurve2d;
+  Handle(Geom_BSplineCurve) myCurve3d;
+  Standard_Boolean myIsDone;
+  Standard_Boolean myHasResult;
+  Standard_Real myError3d;
+  Standard_Real myError2dU;
+  Standard_Real myError2dV;
 
 
 };
@@ -101,7 +80,6 @@ Standard_Real myError2dV;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Approx_CurveOnSurface_HeaderFile

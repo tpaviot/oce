@@ -6,15 +6,18 @@
 #ifndef _ChFi2d_ConstructionError_HeaderFile
 #define _ChFi2d_ConstructionError_HeaderFile
 
-//! error     that    can   occur       during   the <br>
-//!          fillet  construction on planar wire <br>//! the face is not planar <br>//! the face is null <br>//! the two  faces used for the initialisation are <br>
-//!          uncompatible. <br>//! the  parameters  as  distances   or  angle for <br>
-//!          chamfer are less or equal to zero. <br>//! the initialization has been succesfull. <br>//! the algorithm could not find a solution. <br>//! the vertex given  to locate the fillet  or the <br>
-//!          chamfer  is not connected to 2 edges. <br>//! the two edges connected to the vertex are tangent. <br>//! the first edge is degenerated. <br>//! the last edge is degenerated. <br>//! the two edges are degenerated. <br>//! One or the two  edges connected to the  vertex <br>
-//!          is a fillet or a chamfer <br>
-//!          One or the two  edges connected to the  vertex <br>
-//!          is not a line or a circle <br>
-enum ChFi2d_ConstructionError {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! error     that    can   occur       during   the
+//! fillet  construction on planar wire//! the face is not planar//! the face is null//! the two  faces used for the initialisation are
+//! uncompatible.//! the  parameters  as  distances   or  angle for
+//! chamfer are less or equal to zero.//! the initialization has been succesfull.//! the algorithm could not find a solution.//! the vertex given  to locate the fillet  or the
+//! chamfer  is not connected to 2 edges.//! the two edges connected to the vertex are tangent.//! the first edge is degenerated.//! the last edge is degenerated.//! the two edges are degenerated.//! One or the two  edges connected to the  vertex
+//! is a fillet or a chamfer
+//! One or the two  edges connected to the  vertex
+//! is not a line or a circle
+enum ChFi2d_ConstructionError
+{
 ChFi2d_NotPlanar,
 ChFi2d_NoFace,
 ChFi2d_InitialisationError,
@@ -30,8 +33,4 @@ ChFi2d_BothEdgesDegenerated,
 ChFi2d_NotAuthorized
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _ChFi2d_ConstructionError_HeaderFile

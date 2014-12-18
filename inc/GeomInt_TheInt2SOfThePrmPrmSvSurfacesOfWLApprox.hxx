@@ -6,40 +6,18 @@
 #ifndef _GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_HeaderFile
 #define _GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntSurf_PntOn2S_HeaderFile
 #include <IntSurf_PntOn2S.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_HeaderFile
 #include <GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _IntImp_ConstIsoparametric_HeaderFile
 #include <IntImp_ConstIsoparametric.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_DomainError;
 class Standard_ConstructionError;
@@ -55,38 +33,38 @@ class gp_Dir2d;
 
 
 
-class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox  {
+class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox();
+  Standard_EXPORT GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox();
   
-  Standard_EXPORT   GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const TColStd_Array1OfReal& Param,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_HSurface)& S2,const Standard_Real TolTangency);
+  Standard_EXPORT GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const TColStd_Array1OfReal& Param, const Handle(Adaptor3d_HSurface)& S1, const Handle(Adaptor3d_HSurface)& S2, const Standard_Real TolTangency);
   
-  Standard_EXPORT   GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_HSurface)& S2,const Standard_Real TolTangency);
+  Standard_EXPORT GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const Handle(Adaptor3d_HSurface)& S1, const Handle(Adaptor3d_HSurface)& S2, const Standard_Real TolTangency);
   
-  Standard_EXPORT     IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal& Param,math_FunctionSetRoot& Rsnld) ;
+  Standard_EXPORT   IntImp_ConstIsoparametric Perform (const TColStd_Array1OfReal& Param, math_FunctionSetRoot& Rsnld) ;
   
-  Standard_EXPORT     IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal& Param,math_FunctionSetRoot& Rsnld,const IntImp_ConstIsoparametric ChoixIso) ;
+  Standard_EXPORT   IntImp_ConstIsoparametric Perform (const TColStd_Array1OfReal& Param, math_FunctionSetRoot& Rsnld, const IntImp_ConstIsoparametric ChoixIso) ;
   
-        Standard_Boolean IsDone() const;
+      Standard_Boolean IsDone()  const;
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-       const IntSurf_PntOn2S& Point() const;
+     const  IntSurf_PntOn2S& Point()  const;
   
-        Standard_Boolean IsTangent() const;
+      Standard_Boolean IsTangent()  const;
   
-       const gp_Dir& Direction() const;
+     const  gp_Dir& Direction()  const;
   
-       const gp_Dir2d& DirectionOnS1() const;
+     const  gp_Dir2d& DirectionOnS1()  const;
   
-       const gp_Dir2d& DirectionOnS2() const;
+     const  gp_Dir2d& DirectionOnS2()  const;
   
-        GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox& Function() ;
-
+      GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox& Function() ;
 
 
 
@@ -101,32 +79,32 @@ private:
 
 
 
-Standard_Boolean done;
-Standard_Boolean empty;
-IntSurf_PntOn2S pint;
-Standard_Boolean tangent;
-gp_Dir d3d;
-gp_Dir2d d2d1;
-gp_Dir2d d2d2;
-GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox myZerParFunc;
-Standard_Real tol;
-Standard_Real ua0;
-Standard_Real va0;
-Standard_Real ua1;
-Standard_Real va1;
-Standard_Real ub0;
-Standard_Real vb0;
-Standard_Real ub1;
-Standard_Real vb1;
-Standard_Real ures1;
-Standard_Real ures2;
-Standard_Real vres1;
-Standard_Real vres2;
+  Standard_Boolean done;
+  Standard_Boolean empty;
+  IntSurf_PntOn2S pint;
+  Standard_Boolean tangent;
+  gp_Dir d3d;
+  gp_Dir2d d2d1;
+  gp_Dir2d d2d2;
+  GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox myZerParFunc;
+  Standard_Real tol;
+  Standard_Real ua0;
+  Standard_Real va0;
+  Standard_Real ua1;
+  Standard_Real va1;
+  Standard_Real ub0;
+  Standard_Real vb0;
+  Standard_Real ub1;
+  Standard_Real vb1;
+  Standard_Real ures1;
+  Standard_Real ures2;
+  Standard_Real vres1;
+  Standard_Real vres2;
 
 
 };
 
-#define ThePSurface Handle_Adaptor3d_HSurface
+#define ThePSurface Handle(Adaptor3d_HSurface)
 #define ThePSurface_hxx <Adaptor3d_HSurface.hxx>
 #define ThePSurfaceTool Adaptor3d_HSurfaceTool
 #define ThePSurfaceTool_hxx <Adaptor3d_HSurfaceTool.hxx>
@@ -147,7 +125,6 @@ Standard_Real vres2;
 #undef IntImp_Int2S_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_HeaderFile

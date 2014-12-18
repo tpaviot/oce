@@ -6,39 +6,28 @@
 #ifndef _Select3D_ListNodeOfListOfSensitive_HeaderFile
 #define _Select3D_ListNodeOfListOfSensitive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_ListNodeOfListOfSensitive_HeaderFile
 #include <Handle_Select3D_ListNodeOfListOfSensitive.hxx>
-#endif
 
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Select3D_SensitiveEntity;
 class Select3D_ListOfSensitive;
 class Select3D_ListIteratorOfListOfSensitive;
 
 
 
-class Select3D_ListNodeOfListOfSensitive : public TCollection_MapNode {
+class Select3D_ListNodeOfListOfSensitive : public TCollection_MapNode
+{
 
 public:
 
   
-      Select3D_ListNodeOfListOfSensitive(const Handle(Select3D_SensitiveEntity)& I,const TCollection_MapNodePtr& n);
+    Select3D_ListNodeOfListOfSensitive(const Handle(Select3D_SensitiveEntity)& I, const TCollection_MapNodePtr& n);
   
-        Handle_Select3D_SensitiveEntity& Value() const;
+      Handle(Select3D_SensitiveEntity)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_Select3D_SensitiveEntity myValue;
+  Handle(Select3D_SensitiveEntity) myValue;
 
 
 };
 
-#define Item Handle_Select3D_SensitiveEntity
+#define Item Handle(Select3D_SensitiveEntity)
 #define Item_hxx <Select3D_SensitiveEntity.hxx>
 #define TCollection_ListNode Select3D_ListNodeOfListOfSensitive
 #define TCollection_ListNode_hxx <Select3D_ListNodeOfListOfSensitive.hxx>
@@ -83,7 +72,6 @@ Handle_Select3D_SensitiveEntity myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_ListNodeOfListOfSensitive_HeaderFile

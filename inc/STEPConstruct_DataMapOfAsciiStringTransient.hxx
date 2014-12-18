@@ -6,34 +6,16 @@
 #ifndef _STEPConstruct_DataMapOfAsciiStringTransient_HeaderFile
 #define _STEPConstruct_DataMapOfAsciiStringTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient_HeaderFile
 #include <Handle_STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TCollection_AsciiString;
@@ -43,50 +25,50 @@ class STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient;
 
 
 
-class STEPConstruct_DataMapOfAsciiStringTransient  : public TCollection_BasicMap {
+class STEPConstruct_DataMapOfAsciiStringTransient  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   STEPConstruct_DataMapOfAsciiStringTransient(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT STEPConstruct_DataMapOfAsciiStringTransient(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     STEPConstruct_DataMapOfAsciiStringTransient& Assign(const STEPConstruct_DataMapOfAsciiStringTransient& Other) ;
-    STEPConstruct_DataMapOfAsciiStringTransient& operator =(const STEPConstruct_DataMapOfAsciiStringTransient& Other) 
+  Standard_EXPORT   STEPConstruct_DataMapOfAsciiStringTransient& Assign (const STEPConstruct_DataMapOfAsciiStringTransient& Other) ;
+  STEPConstruct_DataMapOfAsciiStringTransient& operator = (const STEPConstruct_DataMapOfAsciiStringTransient& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~STEPConstruct_DataMapOfAsciiStringTransient()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const TCollection_AsciiString& K,const Handle(Standard_Transient)& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const TCollection_AsciiString& K, const Handle(Standard_Transient)& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const TCollection_AsciiString& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const TCollection_AsciiString& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const TCollection_AsciiString& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const TCollection_AsciiString& K) ;
   
-  Standard_EXPORT    const Handle_Standard_Transient& Find(const TCollection_AsciiString& K) const;
-   const Handle_Standard_Transient& operator()(const TCollection_AsciiString& K) const
+  Standard_EXPORT  const  Handle(Standard_Transient)& Find (const TCollection_AsciiString& K)  const;
+ const  Handle(Standard_Transient)& operator() (const TCollection_AsciiString& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Handle_Standard_Transient& ChangeFind(const TCollection_AsciiString& K) ;
-    Handle_Standard_Transient& operator()(const TCollection_AsciiString& K) 
+  Standard_EXPORT   Handle(Standard_Transient)& ChangeFind (const TCollection_AsciiString& K) ;
+  Handle(Standard_Transient)& operator() (const TCollection_AsciiString& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const TCollection_AsciiString& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const TCollection_AsciiString& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const TCollection_AsciiString& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const TCollection_AsciiString& K) ;
 
 
 
@@ -100,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   STEPConstruct_DataMapOfAsciiStringTransient(const STEPConstruct_DataMapOfAsciiStringTransient& Other);
+  Standard_EXPORT STEPConstruct_DataMapOfAsciiStringTransient(const STEPConstruct_DataMapOfAsciiStringTransient& Other);
 
 
 
@@ -111,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPConstruct_DataMapOfAsciiStringTransient_HeaderFile

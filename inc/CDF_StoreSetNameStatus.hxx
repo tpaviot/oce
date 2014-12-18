@@ -6,15 +6,14 @@
 #ifndef _CDF_StoreSetNameStatus_HeaderFile
 #define _CDF_StoreSetNameStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum CDF_StoreSetNameStatus {
+
+enum CDF_StoreSetNameStatus
+{
 CDF_SSNS_OK,
 CDF_SSNS_ReplacingAnExistentDocument,
 CDF_SSNS_OpenDocument
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _CDF_StoreSetNameStatus_HeaderFile

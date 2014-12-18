@@ -6,43 +6,19 @@
 #ifndef _IntPatch_ALine_HeaderFile
 #define _IntPatch_ALine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntPatch_ALine_HeaderFile
 #include <Handle_IntPatch_ALine.hxx>
-#endif
 
-#ifndef _IntAna_Curve_HeaderFile
 #include <IntAna_Curve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfPoint_HeaderFile
 #include <IntPatch_SequenceOfPoint.hxx>
-#endif
-#ifndef _IntPatch_Line_HeaderFile
 #include <IntPatch_Line.hxx>
-#endif
-#ifndef _IntSurf_TypeTrans_HeaderFile
 #include <IntSurf_TypeTrans.hxx>
-#endif
-#ifndef _IntSurf_Situation_HeaderFile
 #include <IntSurf_Situation.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class IntAna_Curve;
@@ -51,82 +27,99 @@ class gp_Pnt;
 class gp_Vec;
 
 
-//! Implementation of an intersection line described by a <br>
-//!          parametrised curve. <br>
-class IntPatch_ALine : public IntPatch_Line {
+//! Implementation of an intersection line described by a
+//! parametrised curve.
+class IntPatch_ALine : public IntPatch_Line
+{
 
 public:
 
-  //! Creates an analytic intersection line <br>
-//!          when the transitions are In or Out. <br>
-  Standard_EXPORT   IntPatch_ALine(const IntAna_Curve& C,const Standard_Boolean Tang,const IntSurf_TypeTrans Trans1,const IntSurf_TypeTrans Trans2);
-  //! Creates an analytic intersection line <br>
-//!          when the transitions are Touch. <br>
-  Standard_EXPORT   IntPatch_ALine(const IntAna_Curve& C,const Standard_Boolean Tang,const IntSurf_Situation Situ1,const IntSurf_Situation Situ2);
-  //! Creates an analytic intersection line <br>
-//!          when the transitions are Undecided. <br>
-  Standard_EXPORT   IntPatch_ALine(const IntAna_Curve& C,const Standard_Boolean Tang);
-  //! To add a vertex in the list. <br>
-  Standard_EXPORT     void AddVertex(const IntPatch_Point& Pnt) ;
-  //! Replaces the element of range Index in the list <br>
-//!          of points. <br>
-        void Replace(const Standard_Integer Index,const IntPatch_Point& Pnt) ;
   
-        void SetFirstPoint(const Standard_Integer IndFirst) ;
+  //! Creates an analytic intersection line
+  //! when the transitions are In or Out.
+  Standard_EXPORT IntPatch_ALine(const IntAna_Curve& C, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
   
-        void SetLastPoint(const Standard_Integer IndLast) ;
-  //! Returns the first parameter on the intersection line. <br>
-//!          If IsIncluded returns True, Value and D1 methods can <br>
-//!          be call with a parameter equal to FirstParamater. <br>
-//!          Otherwise, the parameter must be greater than <br>
-//!          FirstParameter. <br>
-        Standard_Real FirstParameter(Standard_Boolean& IsIncluded) const;
-  //! Returns the last parameter on the intersection line. <br>
-//!          If IsIncluded returns True, Value and D1 methods can <br>
-//!          be call with a parameter equal to LastParamater. <br>
-//!          Otherwise, the parameter must be less than LastParameter. <br>
-        Standard_Real LastParameter(Standard_Boolean& IsIncluded) const;
-  //! Returns the point of parameter U on the analytic <br>
-//!          intersection line. <br>
-        gp_Pnt Value(const Standard_Real U) ;
-  //! Returns Standard_True when the derivative at parameter U <br>
-//!          is defined on the analytic intersection line. <br>
-//!          In that case, Du is the derivative. <br>
-//!          Returns Standard_False when it is not possible to <br>
-//!          evaluate the derivative. <br>
-//!          In both cases, P is the point at parameter U on the <br>
-//!          intersection. <br>
-        Standard_Boolean D1(const Standard_Real U,gp_Pnt& P,gp_Vec& Du) ;
-  //! Tries to find the parameter of the point P on the curve. <br>
-//!          If the method returns False, the "projection" is <br>
-//!          impossible, and the value of Para is not significant. <br>
-//!          If the method returns True, Para is the parameter of the <br>
-//!          nearest intersection between the curve and the iso-theta <br>
-//!          containing P. <br>
-        Standard_Boolean FindParameter(const gp_Pnt& P,Standard_Real& Para) const;
-  //! Returns True if the line has a known First point. <br>
-//!          This point is given by the method FirstPoint(). <br>
-        Standard_Boolean HasFirstPoint() const;
-  //! Returns True if the line has a known Last point. <br>
-//!          This point is given by the method LastPoint(). <br>
-        Standard_Boolean HasLastPoint() const;
-  //! Returns the IntPoint corresponding to the FirstPoint. <br>
-//!          An exception is raised when HasFirstPoint returns False. <br>
-       const IntPatch_Point& FirstPoint() const;
-  //! Returns the IntPoint corresponding to the LastPoint. <br>
-//!          An exception is raised when HasLastPoint returns False. <br>
-       const IntPatch_Point& LastPoint() const;
+  //! Creates an analytic intersection line
+  //! when the transitions are Touch.
+  Standard_EXPORT IntPatch_ALine(const IntAna_Curve& C, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
   
-        Standard_Integer NbVertex() const;
-  //! Returns the vertex of range Index on the line. <br>
-       const IntPatch_Point& Vertex(const Standard_Integer Index) const;
-  //! Set the parameters of all the vertex on the line. <br>
-//!          if a vertex is already in the line, <br>
-//!             its parameter is modified <br>
-//!          else a new point in the line is inserted. <br>
-  Standard_EXPORT     void ComputeVertexParameters(const Standard_Real Tol) ;
+  //! Creates an analytic intersection line
+  //! when the transitions are Undecided.
+  Standard_EXPORT IntPatch_ALine(const IntAna_Curve& C, const Standard_Boolean Tang);
   
-  Standard_EXPORT    const IntAna_Curve& Curve() const;
+  //! To add a vertex in the list.
+  Standard_EXPORT   void AddVertex (const IntPatch_Point& Pnt) ;
+  
+  //! Replaces the element of range Index in the list
+  //! of points.
+      void Replace (const Standard_Integer Index, const IntPatch_Point& Pnt) ;
+  
+      void SetFirstPoint (const Standard_Integer IndFirst) ;
+  
+      void SetLastPoint (const Standard_Integer IndLast) ;
+  
+  //! Returns the first parameter on the intersection line.
+  //! If IsIncluded returns True, Value and D1 methods can
+  //! be call with a parameter equal to FirstParamater.
+  //! Otherwise, the parameter must be greater than
+  //! FirstParameter.
+      Standard_Real FirstParameter (Standard_Boolean& IsIncluded)  const;
+  
+  //! Returns the last parameter on the intersection line.
+  //! If IsIncluded returns True, Value and D1 methods can
+  //! be call with a parameter equal to LastParamater.
+  //! Otherwise, the parameter must be less than LastParameter.
+      Standard_Real LastParameter (Standard_Boolean& IsIncluded)  const;
+  
+  //! Returns the point of parameter U on the analytic
+  //! intersection line.
+      gp_Pnt Value (const Standard_Real U) ;
+  
+  //! Returns Standard_True when the derivative at parameter U
+  //! is defined on the analytic intersection line.
+  //! In that case, Du is the derivative.
+  //! Returns Standard_False when it is not possible to
+  //! evaluate the derivative.
+  //! In both cases, P is the point at parameter U on the
+  //! intersection.
+      Standard_Boolean D1 (const Standard_Real U, gp_Pnt& P, gp_Vec& Du) ;
+  
+  //! Tries to find the parameter of the point P on the curve.
+  //! If the method returns False, the "projection" is
+  //! impossible, and the value of Para is not significant.
+  //! If the method returns True, Para is the parameter of the
+  //! nearest intersection between the curve and the iso-theta
+  //! containing P.
+      Standard_Boolean FindParameter (const gp_Pnt& P, Standard_Real& Para)  const;
+  
+  //! Returns True if the line has a known First point.
+  //! This point is given by the method FirstPoint().
+      Standard_Boolean HasFirstPoint()  const;
+  
+  //! Returns True if the line has a known Last point.
+  //! This point is given by the method LastPoint().
+      Standard_Boolean HasLastPoint()  const;
+  
+  //! Returns the IntPoint corresponding to the FirstPoint.
+  //! An exception is raised when HasFirstPoint returns False.
+     const  IntPatch_Point& FirstPoint()  const;
+  
+  //! Returns the IntPoint corresponding to the LastPoint.
+  //! An exception is raised when HasLastPoint returns False.
+     const  IntPatch_Point& LastPoint()  const;
+  
+      Standard_Integer NbVertex()  const;
+  
+  //! Returns the vertex of range Index on the line.
+     const  IntPatch_Point& Vertex (const Standard_Integer Index)  const;
+  
+  //! Set the parameters of all the vertex on the line.
+  //! if a vertex is already in the line,
+  //! its parameter is modified
+  //! else a new point in the line is inserted.
+  Standard_EXPORT   void ComputeVertexParameters (const Standard_Real Tol) ;
+  
+  Standard_EXPORT  const  IntAna_Curve& Curve()  const;
 
 
 
@@ -141,12 +134,12 @@ protected:
 private: 
 
 
-IntAna_Curve curv;
-Standard_Boolean fipt;
-Standard_Boolean lapt;
-Standard_Integer indf;
-Standard_Integer indl;
-IntPatch_SequenceOfPoint svtx;
+  IntAna_Curve curv;
+  Standard_Boolean fipt;
+  Standard_Boolean lapt;
+  Standard_Integer indf;
+  Standard_Integer indl;
+  IntPatch_SequenceOfPoint svtx;
 
 
 };
@@ -156,7 +149,6 @@ IntPatch_SequenceOfPoint svtx;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_ALine_HeaderFile

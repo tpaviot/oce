@@ -6,25 +6,13 @@
 #ifndef _BRepFill_MultiLineTool_HeaderFile
 #define _BRepFill_MultiLineTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class BRepFill_MultiLine;
 class TColgp_Array1OfPnt;
 class TColgp_Array1OfPnt2d;
@@ -32,43 +20,53 @@ class TColgp_Array1OfVec;
 class TColgp_Array1OfVec2d;
 
 
-//! private  class   used  to  instantiate the  continuous <br>
-//!          approximations routines. <br>
-class BRepFill_MultiLineTool  {
+//! private  class   used  to  instantiate the  continuous
+//! approximations routines.
+class BRepFill_MultiLineTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! returns the first parameter of the Line. <br>
-  Standard_EXPORT   static  Standard_Real FirstParameter(const BRepFill_MultiLine& ML) ;
-  //! returns the last parameter of the Line. <br>
-  Standard_EXPORT   static  Standard_Real LastParameter(const BRepFill_MultiLine& ML) ;
-  //! Returns the number of 2d points of a MLine <br>
-  Standard_EXPORT   static  Standard_Integer NbP2d(const BRepFill_MultiLine& ML) ;
-  //! Returns the number of 3d points of a MLine. <br>
-  Standard_EXPORT   static  Standard_Integer NbP3d(const BRepFill_MultiLine& ML) ;
-  //! returns the 3d points of the multipoint <MPointIndex> <br>
-//!          when only 3d points exist. <br>
-  Standard_EXPORT   static  void Value(const BRepFill_MultiLine& ML,const Standard_Real U,TColgp_Array1OfPnt& tabPt) ;
-  //! returns the 2d points of the multipoint <MPointIndex> <br>
-//!          when only 2d points exist. <br>
-  Standard_EXPORT   static  void Value(const BRepFill_MultiLine& ML,const Standard_Real U,TColgp_Array1OfPnt2d& tabPt2d) ;
-  //! returns the 3d and 2d points of the multipoint <br>
-//!          <MPointIndex>. <br>
-  Standard_EXPORT   static  void Value(const BRepFill_MultiLine& ML,const Standard_Real U,TColgp_Array1OfPnt& tabPt,TColgp_Array1OfPnt2d& tabPt2d) ;
-  //! returns the 3d derivative values of the multipoint <br>
-//!          <MPointIndex> when only 3d points exist. <br>
-//!          returns False if the derivative cannot be computed. <br>
-  Standard_EXPORT   static  Standard_Boolean D1(const BRepFill_MultiLine& ML,const Standard_Real U,TColgp_Array1OfVec& tabV) ;
-  //! returns the 2d derivative values of the multipoint <br>
-//!          <MPointIndex> only when 2d points exist. <br>
-//!          returns False if the derivative cannot be computed. <br>
-  Standard_EXPORT   static  Standard_Boolean D1(const BRepFill_MultiLine& ML,const Standard_Real U,TColgp_Array1OfVec2d& tabV2d) ;
-  //! returns the 3d and 2d derivative values of the <br>
-//!          multipoint <MPointIndex>. <br>
-//!          returns False if the derivative cannot be computed. <br>
-  Standard_EXPORT   static  Standard_Boolean D1(const BRepFill_MultiLine& ML,const Standard_Real U,TColgp_Array1OfVec& tabV,TColgp_Array1OfVec2d& tabV2d) ;
-
+  
+  //! returns the first parameter of the Line.
+  Standard_EXPORT static   Standard_Real FirstParameter (const BRepFill_MultiLine& ML) ;
+  
+  //! returns the last parameter of the Line.
+  Standard_EXPORT static   Standard_Real LastParameter (const BRepFill_MultiLine& ML) ;
+  
+  //! Returns the number of 2d points of a MLine
+  Standard_EXPORT static   Standard_Integer NbP2d (const BRepFill_MultiLine& ML) ;
+  
+  //! Returns the number of 3d points of a MLine.
+  Standard_EXPORT static   Standard_Integer NbP3d (const BRepFill_MultiLine& ML) ;
+  
+  //! returns the 3d points of the multipoint <MPointIndex>
+  //! when only 3d points exist.
+  Standard_EXPORT static   void Value (const BRepFill_MultiLine& ML, const Standard_Real U, TColgp_Array1OfPnt& tabPt) ;
+  
+  //! returns the 2d points of the multipoint <MPointIndex>
+  //! when only 2d points exist.
+  Standard_EXPORT static   void Value (const BRepFill_MultiLine& ML, const Standard_Real U, TColgp_Array1OfPnt2d& tabPt2d) ;
+  
+  //! returns the 3d and 2d points of the multipoint
+  //! <MPointIndex>.
+  Standard_EXPORT static   void Value (const BRepFill_MultiLine& ML, const Standard_Real U, TColgp_Array1OfPnt& tabPt, TColgp_Array1OfPnt2d& tabPt2d) ;
+  
+  //! returns the 3d derivative values of the multipoint
+  //! <MPointIndex> when only 3d points exist.
+  //! returns False if the derivative cannot be computed.
+  Standard_EXPORT static   Standard_Boolean D1 (const BRepFill_MultiLine& ML, const Standard_Real U, TColgp_Array1OfVec& tabV) ;
+  
+  //! returns the 2d derivative values of the multipoint
+  //! <MPointIndex> only when 2d points exist.
+  //! returns False if the derivative cannot be computed.
+  Standard_EXPORT static   Standard_Boolean D1 (const BRepFill_MultiLine& ML, const Standard_Real U, TColgp_Array1OfVec2d& tabV2d) ;
+  
+  //! returns the 3d and 2d derivative values of the
+  //! multipoint <MPointIndex>.
+  //! returns False if the derivative cannot be computed.
+  Standard_EXPORT static   Standard_Boolean D1 (const BRepFill_MultiLine& ML, const Standard_Real U, TColgp_Array1OfVec& tabV, TColgp_Array1OfVec2d& tabV2d) ;
 
 
 
@@ -91,7 +89,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_MultiLineTool_HeaderFile

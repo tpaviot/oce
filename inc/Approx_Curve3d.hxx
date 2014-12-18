@@ -6,37 +6,17 @@
 #ifndef _Approx_Curve3d_HeaderFile
 #define _Approx_Curve3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineCurve_HeaderFile
 #include <Handle_Geom_BSplineCurve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Geom_BSplineCurve;
 class Standard_OutOfRange;
 class Standard_ConstructionError;
@@ -44,29 +24,34 @@ class Adaptor3d_HCurve;
 
 
 
-class Approx_Curve3d  {
+class Approx_Curve3d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Approximation  of  a  curve  with respect of the <br>
-//!          requiered tolerance Tol3D. <br>
-  Standard_EXPORT   Approx_Curve3d(const Handle(Adaptor3d_HCurve)& Curve,const Standard_Real Tol3d,const GeomAbs_Shape Order,const Standard_Integer MaxSegments,const Standard_Integer MaxDegree);
   
-  Standard_EXPORT     Handle_Geom_BSplineCurve Curve() const;
-  //!  returns  Standard_True  if  the  approximation  has <br>
-//! been  done  within  requiered tolerance <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! returns  Standard_True if the approximation did come out <br>
-//! with a result that  is not NECESSARELY within the required <br>
-//! tolerance <br>
-  Standard_EXPORT     Standard_Boolean HasResult() const;
-  //!  returns  the  Maximum  Error  (>0 when an approximation <br>
-//!  has  been  done, 0  if  no  approximation) <br>
-  Standard_EXPORT     Standard_Real MaxError() const;
-  //!  Print on the stream  o  information about the object <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
-
+  //! Approximation  of  a  curve  with respect of the
+  //! requiered tolerance Tol3D.
+  Standard_EXPORT Approx_Curve3d(const Handle(Adaptor3d_HCurve)& Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
+  
+  Standard_EXPORT   Handle(Geom_BSplineCurve) Curve()  const;
+  
+  //! returns  Standard_True  if  the  approximation  has
+  //! been  done  within  requiered tolerance
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! returns  Standard_True if the approximation did come out
+  //! with a result that  is not NECESSARELY within the required
+  //! tolerance
+  Standard_EXPORT   Standard_Boolean HasResult()  const;
+  
+  //! returns  the  Maximum  Error  (>0 when an approximation
+  //! has  been  done, 0  if  no  approximation)
+  Standard_EXPORT   Standard_Real MaxError()  const;
+  
+  //! Print on the stream  o  information about the object
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
@@ -81,10 +66,10 @@ private:
 
 
 
-Standard_Boolean myIsDone;
-Standard_Boolean myHasResult;
-Handle_Geom_BSplineCurve myBSplCurve;
-Standard_Real myMaxError;
+  Standard_Boolean myIsDone;
+  Standard_Boolean myHasResult;
+  Handle(Geom_BSplineCurve) myBSplCurve;
+  Standard_Real myMaxError;
 
 
 };
@@ -93,7 +78,6 @@ Standard_Real myMaxError;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Approx_Curve3d_HeaderFile

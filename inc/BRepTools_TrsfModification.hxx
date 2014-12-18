@@ -6,40 +6,18 @@
 #ifndef _BRepTools_TrsfModification_HeaderFile
 #define _BRepTools_TrsfModification_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepTools_TrsfModification_HeaderFile
 #include <Handle_BRepTools_TrsfModification.hxx>
-#endif
 
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _BRepTools_Modification_HeaderFile
 #include <BRepTools_Modification.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
 class gp_Trsf;
 class TopoDS_Face;
 class Geom_Surface;
@@ -51,67 +29,75 @@ class gp_Pnt;
 class Geom2d_Curve;
 
 
-//! Describes a modification that uses a gp_Trsf to <br>
-//! change the geometry of a shape. All functions return <br>
-//! true and transform the geometry of the shape. <br>
-class BRepTools_TrsfModification : public BRepTools_Modification {
+//! Describes a modification that uses a gp_Trsf to
+//! change the geometry of a shape. All functions return
+//! true and transform the geometry of the shape.
+class BRepTools_TrsfModification : public BRepTools_Modification
+{
 
 public:
 
   
-  Standard_EXPORT   BRepTools_TrsfModification(const gp_Trsf& T);
-  //! Provides access to the gp_Trsf associated with this <br>
-//! modification. The transformation can be changed. <br>
-  Standard_EXPORT     gp_Trsf& Trsf() ;
-  //! Returns true if the face F has been modified. <br>
-//! If the face has been modified: <br>
-//! - S is the new geometry of the face, <br>
-//! - L is its new location, and <br>
-//! - Tol is the new tolerance. <br>
-//! RevWires is set to true when the modification <br>
-//! reverses the normal of the surface (the wires have to be reversed). <br>
-//! RevFace is set to true if the orientation of the <br>
-//! modified face changes in the shells which contain it. <br>
-//! For this class, RevFace returns true if the gp_Trsf <br>
-//! associated with this modification is negative. <br>
-  Standard_EXPORT     Standard_Boolean NewSurface(const TopoDS_Face& F,Handle(Geom_Surface)& S,TopLoc_Location& L,Standard_Real& Tol,Standard_Boolean& RevWires,Standard_Boolean& RevFace) ;
-  //! Returns true if the edge E has been modified. <br>
-//! If the edge has been modified: <br>
-//! - C is the new geometric support of the edge, <br>
-//! - L is the new location, and <br>
-//! - Tol is the new tolerance. <br>
-//!   If the edge has not been modified, this function <br>
-//! returns false, and the values of C, L and Tol are not significant. <br>
-  Standard_EXPORT     Standard_Boolean NewCurve(const TopoDS_Edge& E,Handle(Geom_Curve)& C,TopLoc_Location& L,Standard_Real& Tol) ;
-  //! Returns true if the vertex V has been modified. <br>
-//! If the vertex has been modified: <br>
-//! - P is the new geometry of the vertex, and <br>
-//! - Tol is the new tolerance. <br>
-//!   If the vertex has not been modified this function <br>
-//! returns false, and the values of P and Tol are not significant. <br>
-  Standard_EXPORT     Standard_Boolean NewPoint(const TopoDS_Vertex& V,gp_Pnt& P,Standard_Real& Tol) ;
-  //! Returns true if the edge E has a new curve on surface on the face F. <br>
-//! If a new curve exists: <br>
-//! - C is the new geometric support of the edge, <br>
-//! - L is the new location, and <br>
-//! - Tol the new tolerance. <br>
-//!   If no new curve exists, this function returns false, and <br>
-//! the values of C, L and Tol are not significant. <br>
-  Standard_EXPORT     Standard_Boolean NewCurve2d(const TopoDS_Edge& E,const TopoDS_Face& F,const TopoDS_Edge& NewE,const TopoDS_Face& NewF,Handle(Geom2d_Curve)& C,Standard_Real& Tol) ;
-  //! Returns true if the Vertex V has a new parameter on the edge E. <br>
-//! If a new parameter exists: <br>
-//! - P is the parameter, and <br>
-//! - Tol is the new tolerance. <br>
-//!   If no new parameter exists, this function returns false, <br>
-//! and the values of P and Tol are not significant. <br>
-  Standard_EXPORT     Standard_Boolean NewParameter(const TopoDS_Vertex& V,const TopoDS_Edge& E,Standard_Real& P,Standard_Real& Tol) ;
-  //! Returns the  continuity of  <NewE> between <NewF1> <br>
-//!          and <NewF2>. <br>
-//! <br>
-//!          <NewE> is the new  edge created from <E>.  <NewF1> <br>
-//!          (resp. <NewF2>) is the new  face created from <F1> <br>
-//!          (resp. <F2>). <br>
-  Standard_EXPORT     GeomAbs_Shape Continuity(const TopoDS_Edge& E,const TopoDS_Face& F1,const TopoDS_Face& F2,const TopoDS_Edge& NewE,const TopoDS_Face& NewF1,const TopoDS_Face& NewF2) ;
+  Standard_EXPORT BRepTools_TrsfModification(const gp_Trsf& T);
+  
+  //! Provides access to the gp_Trsf associated with this
+  //! modification. The transformation can be changed.
+  Standard_EXPORT   gp_Trsf& Trsf() ;
+  
+  //! Returns true if the face F has been modified.
+  //! If the face has been modified:
+  //! - S is the new geometry of the face,
+  //! - L is its new location, and
+  //! - Tol is the new tolerance.
+  //! RevWires is set to true when the modification
+  //! reverses the normal of the surface (the wires have to be reversed).
+  //! RevFace is set to true if the orientation of the
+  //! modified face changes in the shells which contain it.
+  //! For this class, RevFace returns true if the gp_Trsf
+  //! associated with this modification is negative.
+  Standard_EXPORT   Standard_Boolean NewSurface (const TopoDS_Face& F, Handle(Geom_Surface)& S, TopLoc_Location& L, Standard_Real& Tol, Standard_Boolean& RevWires, Standard_Boolean& RevFace) ;
+  
+  //! Returns true if the edge E has been modified.
+  //! If the edge has been modified:
+  //! - C is the new geometric support of the edge,
+  //! - L is the new location, and
+  //! - Tol is the new tolerance.
+  //! If the edge has not been modified, this function
+  //! returns false, and the values of C, L and Tol are not significant.
+  Standard_EXPORT   Standard_Boolean NewCurve (const TopoDS_Edge& E, Handle(Geom_Curve)& C, TopLoc_Location& L, Standard_Real& Tol) ;
+  
+  //! Returns true if the vertex V has been modified.
+  //! If the vertex has been modified:
+  //! - P is the new geometry of the vertex, and
+  //! - Tol is the new tolerance.
+  //! If the vertex has not been modified this function
+  //! returns false, and the values of P and Tol are not significant.
+  Standard_EXPORT   Standard_Boolean NewPoint (const TopoDS_Vertex& V, gp_Pnt& P, Standard_Real& Tol) ;
+  
+  //! Returns true if the edge E has a new curve on surface on the face F.
+  //! If a new curve exists:
+  //! - C is the new geometric support of the edge,
+  //! - L is the new location, and
+  //! - Tol the new tolerance.
+  //! If no new curve exists, this function returns false, and
+  //! the values of C, L and Tol are not significant.
+  Standard_EXPORT   Standard_Boolean NewCurve2d (const TopoDS_Edge& E, const TopoDS_Face& F, const TopoDS_Edge& NewE, const TopoDS_Face& NewF, Handle(Geom2d_Curve)& C, Standard_Real& Tol) ;
+  
+  //! Returns true if the Vertex V has a new parameter on the edge E.
+  //! If a new parameter exists:
+  //! - P is the parameter, and
+  //! - Tol is the new tolerance.
+  //! If no new parameter exists, this function returns false,
+  //! and the values of P and Tol are not significant.
+  Standard_EXPORT   Standard_Boolean NewParameter (const TopoDS_Vertex& V, const TopoDS_Edge& E, Standard_Real& P, Standard_Real& Tol) ;
+  
+  //! Returns the  continuity of  <NewE> between <NewF1>
+  //! and <NewF2>.
+  //!
+  //! <NewE> is the new  edge created from <E>.  <NewF1>
+  //! (resp. <NewF2>) is the new  face created from <F1>
+  //! (resp. <F2>).
+  Standard_EXPORT   GeomAbs_Shape Continuity (const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2, const TopoDS_Edge& NewE, const TopoDS_Face& NewF1, const TopoDS_Face& NewF2) ;
 
 
 
@@ -126,7 +112,7 @@ protected:
 private: 
 
 
-gp_Trsf myTrsf;
+  gp_Trsf myTrsf;
 
 
 };
@@ -135,7 +121,6 @@ gp_Trsf myTrsf;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepTools_TrsfModification_HeaderFile

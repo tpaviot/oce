@@ -6,32 +6,15 @@
 #ifndef _Graphic3d_MapOfStructure_HeaderFile
 #define _Graphic3d_MapOfStructure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
-#endif
-#ifndef _Handle_Graphic3d_StdMapNodeOfMapOfStructure_HeaderFile
 #include <Handle_Graphic3d_StdMapNodeOfMapOfStructure.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-class Standard_DomainError;
 class Graphic3d_Structure;
 class TColStd_MapTransientHasher;
 class Graphic3d_StdMapNodeOfMapOfStructure;
@@ -39,34 +22,36 @@ class Graphic3d_MapIteratorOfMapOfStructure;
 
 
 
-class Graphic3d_MapOfStructure  : public TCollection_BasicMap {
+class Graphic3d_MapOfStructure  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Graphic3d_MapOfStructure(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT Graphic3d_MapOfStructure(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     Graphic3d_MapOfStructure& Assign(const Graphic3d_MapOfStructure& Other) ;
-    Graphic3d_MapOfStructure& operator =(const Graphic3d_MapOfStructure& Other) 
+  Standard_EXPORT Graphic3d_MapOfStructure(const Graphic3d_MapOfStructure& Other);
+  
+  Standard_EXPORT   Graphic3d_MapOfStructure& Assign (const Graphic3d_MapOfStructure& Other) ;
+  Graphic3d_MapOfStructure& operator = (const Graphic3d_MapOfStructure& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Graphic3d_MapOfStructure()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Add(const Handle(Graphic3d_Structure)& aKey) ;
+  Standard_EXPORT   Standard_Boolean Add (const Handle(Graphic3d_Structure)& aKey) ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Handle(Graphic3d_Structure)& aKey) const;
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(Graphic3d_Structure)& aKey)  const;
   
-  Standard_EXPORT     Standard_Boolean Remove(const Handle(Graphic3d_Structure)& aKey) ;
-
+  Standard_EXPORT   Standard_Boolean Remove (const Handle(Graphic3d_Structure)& aKey) ;
 
 
 
@@ -79,8 +64,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Graphic3d_MapOfStructure(const Graphic3d_MapOfStructure& Other);
 
 
 
@@ -91,7 +74,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_MapOfStructure_HeaderFile

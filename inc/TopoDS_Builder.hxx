@@ -6,19 +6,11 @@
 #ifndef _TopoDS_Builder_HeaderFile
 #define _TopoDS_Builder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TopoDS_TShape_HeaderFile
 #include <Handle_TopoDS_TShape.hxx>
-#endif
 class Standard_NullObject;
 class TopoDS_FrozenShape;
 class TopoDS_UnCompatibleShapes;
@@ -31,79 +23,87 @@ class TopoDS_CompSolid;
 class TopoDS_Compound;
 
 
-//! A  Builder is used   to  create  Topological  Data <br>
-//!          Structures. <br>
-//! <br>
-//!          There are three groups of methods in the Builder : <br>
-//! <br>
-//!          The Make methods create Shapes. <br>
-//! <br>
-//!          The Add method includes a Shape in another Shape. <br>
-//! <br>
-//!          The Remove  method  removes a  Shape from an other <br>
-//!          Shape. <br>
-//! <br>
-//!          The methods in Builder are not static. They can be <br>
-//!          redefined in inherited builders. <br>
-//! <br>
-//!          This   Builder does not  provide   methods to Make <br>
-//!          Vertices,  Edges, Faces,  Shells  or Solids. These <br>
-//!          methods are  provided  in  the inherited  Builders <br>
-//!          as they must provide the geometry. <br>
-//! <br>
-//!          The Add method check for the following rules : <br>
-//! <br>
-//!          - Any SHAPE can be added in a COMPOUND. <br>
-//! <br>
-//!          - Only SOLID can be added in a COMPSOLID. <br>
-//! <br>
-//!          - Only SHELL, EDGE and VERTEX can be added in a SOLID. <br>
-//!                   EDGE and VERTEX as to be INTERNAL or EXTERNAL. <br>
-//! <br>
-//!          - Only FACE can be added in a SHELL. <br>
-//! <br>
-//!          - Only WIRE and VERTEX can be added in a FACE. <br>
-//!                   VERTEX as to be INTERNAL or EXTERNAL. <br>
-//! <br>
-//!          - Only EDGE can be added in a WIRE. <br>
-//! <br>
-//!          - Only VERTEX can be added in an EDGE. <br>
-//! <br>
-//!          - Nothing can be added in a VERTEX. <br>
-class TopoDS_Builder  {
+//! A  Builder is used   to  create  Topological  Data
+//! Structures.It is the root of the Builder class hierarchy.
+//!
+//! There are three groups of methods in the Builder :
+//!
+//! The Make methods create Shapes.
+//!
+//! The Add method includes a Shape in another Shape.
+//!
+//! The Remove  method  removes a  Shape from an other
+//! Shape.
+//!
+//! The methods in Builder are not static. They can be
+//! redefined in inherited builders.
+//!
+//! This   Builder does not  provide   methods to Make
+//! Vertices,  Edges, Faces,  Shells  or Solids. These
+//! methods are  provided  in  the inherited  Builders
+//! as they must provide the geometry.
+//!
+//! The Add method check for the following rules :
+//!
+//! - Any SHAPE can be added in a COMPOUND.
+//!
+//! - Only SOLID can be added in a COMPSOLID.
+//!
+//! - Only SHELL, EDGE and VERTEX can be added in a SOLID.
+//! EDGE and VERTEX as to be INTERNAL or EXTERNAL.
+//!
+//! - Only FACE can be added in a SHELL.
+//!
+//! - Only WIRE and VERTEX can be added in a FACE.
+//! VERTEX as to be INTERNAL or EXTERNAL.
+//!
+//! - Only EDGE can be added in a WIRE.
+//!
+//! - Only VERTEX can be added in an EDGE.
+//!
+//! - Nothing can be added in a VERTEX.
+class TopoDS_Builder 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Make an empty Wire. <br>
-        void MakeWire(TopoDS_Wire& W) const;
-  //! Make an empty Shell. <br>
-        void MakeShell(TopoDS_Shell& S) const;
-  //! Make a Solid covering the whole 3D space. <br>
-        void MakeSolid(TopoDS_Solid& S) const;
-  //! Make an empty Composite Solid. <br>
-        void MakeCompSolid(TopoDS_CompSolid& C) const;
-  //! Make an empty Compound. <br>
-        void MakeCompound(TopoDS_Compound& C) const;
-  //! Add the Shape C in the Shape S. <br>
-//! Exceptions <br>
-//! - TopoDS_FrozenShape if S is not free and cannot be modified. <br>
-//! - TopoDS__UnCompatibleShapes if S and C are not compatible. <br>
-  Standard_EXPORT     void Add(TopoDS_Shape& S,const TopoDS_Shape& C) const;
-  //! Remove the Shape C from the Shape S. <br>
-//! Exceptions <br>
-//! TopoDS_FrozenShape if S is frozen and cannot be modified. <br>
-  Standard_EXPORT     void Remove(TopoDS_Shape& S,const TopoDS_Shape& C) const;
-
+  
+  //! Make an empty Wire.
+      void MakeWire (TopoDS_Wire& W)  const;
+  
+  //! Make an empty Shell.
+      void MakeShell (TopoDS_Shell& S)  const;
+  
+  //! Make a Solid covering the whole 3D space.
+      void MakeSolid (TopoDS_Solid& S)  const;
+  
+  //! Make an empty Composite Solid.
+      void MakeCompSolid (TopoDS_CompSolid& C)  const;
+  
+  //! Make an empty Compound.
+      void MakeCompound (TopoDS_Compound& C)  const;
+  
+  //! Add the Shape C in the Shape S.
+  //! Exceptions
+  //! - TopoDS_FrozenShape if S is not free and cannot be modified.
+  //! - TopoDS__UnCompatibleShapes if S and C are not compatible.
+  Standard_EXPORT   void Add (TopoDS_Shape& S, const TopoDS_Shape& C)  const;
+  
+  //! Remove the Shape C from the Shape S.
+  //! Exceptions
+  //! TopoDS_FrozenShape if S is frozen and cannot be modified.
+  Standard_EXPORT   void Remove (TopoDS_Shape& S, const TopoDS_Shape& C)  const;
 
 
 
 
 protected:
 
-  //! The basic method to make  a Shape, used by all the <br>
-//!          Make methods. <br>
-  Standard_EXPORT     void MakeShape(TopoDS_Shape& S,const Handle(TopoDS_TShape)& T) const;
+  
+  //! The basic method to make  a Shape, used by all the
+  //! Make methods.
+  Standard_EXPORT   void MakeShape (TopoDS_Shape& S, const Handle(TopoDS_TShape)& T)  const;
 
 
 
@@ -121,7 +121,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_Builder_HeaderFile

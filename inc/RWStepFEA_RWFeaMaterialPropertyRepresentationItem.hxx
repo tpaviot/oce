@@ -6,28 +6,14 @@
 #ifndef _RWStepFEA_RWFeaMaterialPropertyRepresentationItem_HeaderFile
 #define _RWStepFEA_RWFeaMaterialPropertyRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_StepFEA_FeaMaterialPropertyRepresentationItem_HeaderFile
 #include <Handle_StepFEA_FeaMaterialPropertyRepresentationItem.hxx>
-#endif
 class StepData_StepReaderData;
 class Interface_Check;
 class StepFEA_FeaMaterialPropertyRepresentationItem;
@@ -35,21 +21,25 @@ class StepData_StepWriter;
 class Interface_EntityIterator;
 
 
-//! Read & Write tool for FeaMaterialPropertyRepresentationItem <br>
-class RWStepFEA_RWFeaMaterialPropertyRepresentationItem  {
+//! Read & Write tool for FeaMaterialPropertyRepresentationItem
+class RWStepFEA_RWFeaMaterialPropertyRepresentationItem 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   RWStepFEA_RWFeaMaterialPropertyRepresentationItem();
-  //! Reads FeaMaterialPropertyRepresentationItem <br>
-  Standard_EXPORT     void ReadStep(const Handle(StepData_StepReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(StepFEA_FeaMaterialPropertyRepresentationItem)& ent) const;
-  //! Writes FeaMaterialPropertyRepresentationItem <br>
-  Standard_EXPORT     void WriteStep(StepData_StepWriter& SW,const Handle(StepFEA_FeaMaterialPropertyRepresentationItem)& ent) const;
-  //! Fills data for graph (shared items) <br>
-  Standard_EXPORT     void Share(const Handle(StepFEA_FeaMaterialPropertyRepresentationItem)& ent,Interface_EntityIterator& iter) const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT RWStepFEA_RWFeaMaterialPropertyRepresentationItem();
+  
+  //! Reads FeaMaterialPropertyRepresentationItem
+  Standard_EXPORT   void ReadStep (const Handle(StepData_StepReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(StepFEA_FeaMaterialPropertyRepresentationItem)& ent)  const;
+  
+  //! Writes FeaMaterialPropertyRepresentationItem
+  Standard_EXPORT   void WriteStep (StepData_StepWriter& SW, const Handle(StepFEA_FeaMaterialPropertyRepresentationItem)& ent)  const;
+  
+  //! Fills data for graph (shared items)
+  Standard_EXPORT   void Share (const Handle(StepFEA_FeaMaterialPropertyRepresentationItem)& ent, Interface_EntityIterator& iter)  const;
 
 
 
@@ -72,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStepFEA_RWFeaMaterialPropertyRepresentationItem_HeaderFile

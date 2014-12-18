@@ -6,16 +6,15 @@
 #ifndef _IntRes2d_TypeTrans_HeaderFile
 #define _IntRes2d_TypeTrans_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum IntRes2d_TypeTrans {
+
+enum IntRes2d_TypeTrans
+{
 IntRes2d_In,
 IntRes2d_Out,
 IntRes2d_Touch,
 IntRes2d_Undecided
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IntRes2d_TypeTrans_HeaderFile

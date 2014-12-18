@@ -5,29 +5,17 @@
 
 #include <AIS_DataMapIteratorOfDataMapOfIOStatus.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
-#endif
-#ifndef _AIS_GlobalStatus_HeaderFile
 #include <AIS_GlobalStatus.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _AIS_DataMapOfIOStatus_HeaderFile
 #include <AIS_DataMapOfIOStatus.hxx>
-#endif
-#ifndef _AIS_DataMapNodeOfDataMapOfIOStatus_HeaderFile
 #include <AIS_DataMapNodeOfDataMapOfIOStatus.hxx>
-#endif
  
 
-#define TheKey Handle_AIS_InteractiveObject
+#define TheKey Handle(AIS_InteractiveObject)
 #define TheKey_hxx <AIS_InteractiveObject.hxx>
-#define TheItem Handle_AIS_GlobalStatus
+#define TheItem Handle(AIS_GlobalStatus)
 #define TheItem_hxx <AIS_GlobalStatus.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

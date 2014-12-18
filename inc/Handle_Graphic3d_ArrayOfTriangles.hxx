@@ -6,22 +6,15 @@
 #ifndef _Handle_Graphic3d_ArrayOfTriangles_HeaderFile
 #define _Handle_Graphic3d_ArrayOfTriangles_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Graphic3d_ArrayOfPrimitives_HeaderFile
 #include <Handle_Graphic3d_ArrayOfPrimitives.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Graphic3d_ArrayOfPrimitives);
 class Graphic3d_ArrayOfTriangles;
 
-DEFINE_STANDARD_HANDLE(Graphic3d_ArrayOfTriangles,Graphic3d_ArrayOfPrimitives)
+DEFINE_STANDARD_HANDLE(Graphic3d_ArrayOfTriangles, Graphic3d_ArrayOfPrimitives)
 
-#endif
+#endif // _Handle_Graphic3d_ArrayOfTriangles_HeaderFile

@@ -96,19 +96,25 @@ TopAbs_Orientation  TopCnx_EdgeFaceTransition::Transition()const
       return TopAbs_INTERNAL;
     else if (Aft == TopAbs_OUT) 
       return TopAbs_REVERSED;
+#ifdef OCCT_DEBUG
     else
       cout << "\n*** Complex Transition : unprocessed state"<<endl;
+#endif
   }
   else if (Bef == TopAbs_OUT) {
     if      (Aft == TopAbs_IN ) 
       return TopAbs_FORWARD;
     else if (Aft == TopAbs_OUT) 
       return TopAbs_EXTERNAL;
+#ifdef OCCT_DEBUG
     else 
       cout << "\n*** Complex Transition : unprocessed state"<<endl;
+#endif
   }
+#ifdef OCCT_DEBUG
   else 
     cout << "\n*** Complex Transition : unprocessed state"<<endl;
+#endif
   return TopAbs_INTERNAL;
 }
 

@@ -6,40 +6,29 @@
 #ifndef _PXCAFDoc_Centroid_HeaderFile
 #define _PXCAFDoc_Centroid_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_Centroid_HeaderFile
 #include <Handle_PXCAFDoc_Centroid.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class gp_Pnt;
 
 
-class PXCAFDoc_Centroid : public PDF_Attribute {
+class PXCAFDoc_Centroid : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PXCAFDoc_Centroid();
+  Standard_EXPORT PXCAFDoc_Centroid();
   
-  Standard_EXPORT   PXCAFDoc_Centroid(const gp_Pnt& pnt);
+  Standard_EXPORT PXCAFDoc_Centroid(const gp_Pnt& pnt);
   
-  Standard_EXPORT     void Set(const gp_Pnt& pnt) ;
+  Standard_EXPORT   void Set (const gp_Pnt& pnt) ;
   
-  Standard_EXPORT     gp_Pnt Get() const;
+  Standard_EXPORT   gp_Pnt Get()  const;
 
 PXCAFDoc_Centroid(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -59,7 +48,7 @@ protected:
 private: 
 
 
-gp_Pnt myPCentroid;
+  gp_Pnt myPCentroid;
 
 
 };
@@ -68,7 +57,6 @@ gp_Pnt myPCentroid;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PXCAFDoc_Centroid_HeaderFile

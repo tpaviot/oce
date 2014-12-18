@@ -6,52 +6,40 @@
 #ifndef _StepRepr_MappedItem_HeaderFile
 #define _StepRepr_MappedItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_MappedItem_HeaderFile
 #include <Handle_StepRepr_MappedItem.hxx>
-#endif
 
-#ifndef _Handle_StepRepr_RepresentationMap_HeaderFile
 #include <Handle_StepRepr_RepresentationMap.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepRepr_RepresentationMap;
 class StepRepr_RepresentationItem;
 class TCollection_HAsciiString;
 
 
 
-class StepRepr_MappedItem : public StepRepr_RepresentationItem {
+class StepRepr_MappedItem : public StepRepr_RepresentationItem
+{
 
 public:
 
-  //! Returns a MappedItem <br>
-  Standard_EXPORT   StepRepr_MappedItem();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a MappedItem
+  Standard_EXPORT StepRepr_MappedItem();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepRepr_RepresentationMap)& aMappingSource,const Handle(StepRepr_RepresentationItem)& aMappingTarget) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetMappingSource(const Handle(StepRepr_RepresentationMap)& aMappingSource) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepRepr_RepresentationMap)& aMappingSource, const Handle(StepRepr_RepresentationItem)& aMappingTarget) ;
   
-  Standard_EXPORT     Handle_StepRepr_RepresentationMap MappingSource() const;
+  Standard_EXPORT   void SetMappingSource (const Handle(StepRepr_RepresentationMap)& aMappingSource) ;
   
-  Standard_EXPORT     void SetMappingTarget(const Handle(StepRepr_RepresentationItem)& aMappingTarget) ;
+  Standard_EXPORT   Handle(StepRepr_RepresentationMap) MappingSource()  const;
   
-  Standard_EXPORT     Handle_StepRepr_RepresentationItem MappingTarget() const;
+  Standard_EXPORT   void SetMappingTarget (const Handle(StepRepr_RepresentationItem)& aMappingTarget) ;
+  
+  Standard_EXPORT   Handle(StepRepr_RepresentationItem) MappingTarget()  const;
 
 
 
@@ -66,8 +54,8 @@ protected:
 private: 
 
 
-Handle_StepRepr_RepresentationMap mappingSource;
-Handle_StepRepr_RepresentationItem mappingTarget;
+  Handle(StepRepr_RepresentationMap) mappingSource;
+  Handle(StepRepr_RepresentationItem) mappingTarget;
 
 
 };
@@ -76,7 +64,6 @@ Handle_StepRepr_RepresentationItem mappingTarget;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_MappedItem_HeaderFile

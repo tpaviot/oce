@@ -1,3 +1,1 @@
-#ifndef _IntPolyh_Couple_HeaderFile
 #include <IntPolyh_Couple.hxx>
-#endif

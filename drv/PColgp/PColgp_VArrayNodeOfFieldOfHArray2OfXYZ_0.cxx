@@ -5,19 +5,11 @@
 
 #include <PColgp_VArrayNodeOfFieldOfHArray2OfXYZ.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray2OfXYZ_HeaderFile
 #include <PColgp_FieldOfHArray2OfXYZ.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfXYZ_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray2OfXYZ.hxx>
-#endif
 
  
 

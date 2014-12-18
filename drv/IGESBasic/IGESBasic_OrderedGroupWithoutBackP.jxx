@@ -1,6 +1,2 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IGESBasic_OrderedGroupWithoutBackP_HeaderFile
 #include <IGESBasic_OrderedGroupWithoutBackP.hxx>
-#endif

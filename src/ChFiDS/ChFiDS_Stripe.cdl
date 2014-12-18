@@ -16,7 +16,7 @@
 
 class Stripe from ChFiDS inherits TShared
 
-	---Purpose: data structure associe au coin
+	---Purpose: Data characterising a band of fillet.
 
 uses HData from ChFiDS,
      Spine from ChFiDS,
@@ -25,7 +25,7 @@ uses HData from ChFiDS,
 
 is
 
-    Create returns mutable Stripe from ChFiDS;
+    Create returns Stripe from ChFiDS;
     
     
     Reset(me : mutable) is static;

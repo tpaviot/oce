@@ -6,46 +6,33 @@
 #ifndef _Expr_IndexedMapNodeOfMapOfNamedUnknown_HeaderFile
 #define _Expr_IndexedMapNodeOfMapOfNamedUnknown_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown_HeaderFile
 #include <Handle_Expr_IndexedMapNodeOfMapOfNamedUnknown.hxx>
-#endif
 
-#ifndef _Handle_Expr_NamedUnknown_HeaderFile
 #include <Handle_Expr_NamedUnknown.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class Expr_NamedUnknown;
 class TColStd_MapTransientHasher;
 class Expr_MapOfNamedUnknown;
 
 
 
-class Expr_IndexedMapNodeOfMapOfNamedUnknown : public TCollection_MapNode {
+class Expr_IndexedMapNodeOfMapOfNamedUnknown : public TCollection_MapNode
+{
 
 public:
 
   
-      Expr_IndexedMapNodeOfMapOfNamedUnknown(const Handle(Expr_NamedUnknown)& K1,const Standard_Integer K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    Expr_IndexedMapNodeOfMapOfNamedUnknown(const Handle(Expr_NamedUnknown)& K1, const Standard_Integer K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_Expr_NamedUnknown& Key1() const;
+      Handle(Expr_NamedUnknown)& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -60,14 +47,14 @@ protected:
 private: 
 
 
-Handle_Expr_NamedUnknown myKey1;
-Standard_Integer myKey2;
-TCollection_MapNodePtr myNext2;
+  Handle(Expr_NamedUnknown) myKey1;
+  Standard_Integer myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey Handle_Expr_NamedUnknown
+#define TheKey Handle(Expr_NamedUnknown)
 #define TheKey_hxx <Expr_NamedUnknown.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -92,7 +79,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Expr_IndexedMapNodeOfMapOfNamedUnknown_HeaderFile

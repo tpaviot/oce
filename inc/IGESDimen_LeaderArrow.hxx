@@ -6,31 +6,15 @@
 #ifndef _IGESDimen_LeaderArrow_HeaderFile
 #define _IGESDimen_LeaderArrow_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDimen_LeaderArrow_HeaderFile
 #include <Handle_IGESDimen_LeaderArrow.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfXY_HeaderFile
 #include <Handle_TColgp_HArray1OfXY.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TColgp_HArray1OfXY;
 class Standard_OutOfRange;
 class gp_XY;
@@ -38,46 +22,57 @@ class gp_Pnt2d;
 class gp_Pnt;
 
 
-//! defines LeaderArrow, Type <214> Form <1-12> <br>
-//!          in package IGESDimen <br>
-//!          Consists of one or more line segments except when <br>
-//!          leader is part of an angular dimension, with links to <br>
-//!          presumed text item <br>
-class IGESDimen_LeaderArrow : public IGESData_IGESEntity {
+//! defines LeaderArrow, Type <214> Form <1-12>
+//! in package IGESDimen
+//! Consists of one or more line segments except when
+//! leader is part of an angular dimension, with links to
+//! presumed text item
+class IGESDimen_LeaderArrow : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDimen_LeaderArrow();
-  //! This method is used to set the fields of the class <br>
-//!           LeaderArrow <br>
-//!       - height      : ArrowHead height <br>
-//!       - width       : ArrowHead width <br>
-//!       - depth       : Z Depth <br>
-//!       - position    : ArrowHead coordinates <br>
-//!       - segments    : Segment tail coordinate pairs <br>
-  Standard_EXPORT     void Init(const Standard_Real height,const Standard_Real width,const Standard_Real depth,const gp_XY& position,const Handle(TColgp_HArray1OfXY)& segments) ;
-  //! Changes FormNumber (indicates the Shape of the Arrow) <br>
-//!           Error if not in range [0-12] <br>
-  Standard_EXPORT     void SetFormNumber(const Standard_Integer form) ;
-  //! returns number of segments <br>
-  Standard_EXPORT     Standard_Integer NbSegments() const;
-  //! returns ArrowHead height <br>
-  Standard_EXPORT     Standard_Real ArrowHeadHeight() const;
-  //! returns ArrowHead width <br>
-  Standard_EXPORT     Standard_Real ArrowHeadWidth() const;
-  //! returns Z depth <br>
-  Standard_EXPORT     Standard_Real ZDepth() const;
-  //! returns ArrowHead co-ordinates <br>
-  Standard_EXPORT     gp_Pnt2d ArrowHead() const;
-  //! returns ArrowHead co-ordinates after Transformation <br>
-  Standard_EXPORT     gp_Pnt TransformedArrowHead() const;
-  //! returns segment tail co-ordinates. <br>
-//! raises exception if Index <= 0 or Index > NbSegments <br>
-  Standard_EXPORT     gp_Pnt2d SegmentTail(const Standard_Integer Index) const;
-  //! returns segment tail co-ordinates after Transformation. <br>
-//! raises exception if Index <= 0 or Index > NbSegments <br>
-  Standard_EXPORT     gp_Pnt TransformedSegmentTail(const Standard_Integer Index) const;
+  Standard_EXPORT IGESDimen_LeaderArrow();
+  
+  //! This method is used to set the fields of the class
+  //! LeaderArrow
+  //! - height      : ArrowHead height
+  //! - width       : ArrowHead width
+  //! - depth       : Z Depth
+  //! - position    : ArrowHead coordinates
+  //! - segments    : Segment tail coordinate pairs
+  Standard_EXPORT   void Init (const Standard_Real height, const Standard_Real width, const Standard_Real depth, const gp_XY& position, const Handle(TColgp_HArray1OfXY)& segments) ;
+  
+  //! Changes FormNumber (indicates the Shape of the Arrow)
+  //! Error if not in range [0-12]
+  Standard_EXPORT   void SetFormNumber (const Standard_Integer form) ;
+  
+  //! returns number of segments
+  Standard_EXPORT   Standard_Integer NbSegments()  const;
+  
+  //! returns ArrowHead height
+  Standard_EXPORT   Standard_Real ArrowHeadHeight()  const;
+  
+  //! returns ArrowHead width
+  Standard_EXPORT   Standard_Real ArrowHeadWidth()  const;
+  
+  //! returns Z depth
+  Standard_EXPORT   Standard_Real ZDepth()  const;
+  
+  //! returns ArrowHead co-ordinates
+  Standard_EXPORT   gp_Pnt2d ArrowHead()  const;
+  
+  //! returns ArrowHead co-ordinates after Transformation
+  Standard_EXPORT   gp_Pnt TransformedArrowHead()  const;
+  
+  //! returns segment tail co-ordinates.
+  //! raises exception if Index <= 0 or Index > NbSegments
+  Standard_EXPORT   gp_Pnt2d SegmentTail (const Standard_Integer Index)  const;
+  
+  //! returns segment tail co-ordinates after Transformation.
+  //! raises exception if Index <= 0 or Index > NbSegments
+  Standard_EXPORT   gp_Pnt TransformedSegmentTail (const Standard_Integer Index)  const;
 
 
 
@@ -92,11 +87,11 @@ protected:
 private: 
 
 
-Standard_Real theArrowHeadHeight;
-Standard_Real theArrowHeadWidth;
-Standard_Real theZDepth;
-gp_XY theArrowHead;
-Handle_TColgp_HArray1OfXY theSegmentTails;
+  Standard_Real theArrowHeadHeight;
+  Standard_Real theArrowHeadWidth;
+  Standard_Real theZDepth;
+  gp_XY theArrowHead;
+  Handle(TColgp_HArray1OfXY) theSegmentTails;
 
 
 };
@@ -105,7 +100,6 @@ Handle_TColgp_HArray1OfXY theSegmentTails;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDimen_LeaderArrow_HeaderFile

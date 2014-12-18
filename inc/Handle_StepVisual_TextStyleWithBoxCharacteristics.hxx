@@ -6,22 +6,15 @@
 #ifndef _Handle_StepVisual_TextStyleWithBoxCharacteristics_HeaderFile
 #define _Handle_StepVisual_TextStyleWithBoxCharacteristics_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepVisual_TextStyle_HeaderFile
 #include <Handle_StepVisual_TextStyle.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepVisual_TextStyle);
 class StepVisual_TextStyleWithBoxCharacteristics;
 
-DEFINE_STANDARD_HANDLE(StepVisual_TextStyleWithBoxCharacteristics,StepVisual_TextStyle)
+DEFINE_STANDARD_HANDLE(StepVisual_TextStyleWithBoxCharacteristics, StepVisual_TextStyle)
 
-#endif
+#endif // _Handle_StepVisual_TextStyleWithBoxCharacteristics_HeaderFile

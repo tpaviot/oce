@@ -6,25 +6,13 @@
 #ifndef _TDF_DataMapNodeOfAttributeDataMap_HeaderFile
 #define _TDF_DataMapNodeOfAttributeDataMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_DataMapNodeOfAttributeDataMap_HeaderFile
 #include <Handle_TDF_DataMapNodeOfAttributeDataMap.hxx>
-#endif
 
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TDF_Attribute;
 class TColStd_MapTransientHasher;
 class TDF_AttributeDataMap;
@@ -32,16 +20,17 @@ class TDF_DataMapIteratorOfAttributeDataMap;
 
 
 
-class TDF_DataMapNodeOfAttributeDataMap : public TCollection_MapNode {
+class TDF_DataMapNodeOfAttributeDataMap : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_DataMapNodeOfAttributeDataMap(const Handle(TDF_Attribute)& K,const Handle(TDF_Attribute)& I,const TCollection_MapNodePtr& n);
+    TDF_DataMapNodeOfAttributeDataMap(const Handle(TDF_Attribute)& K, const Handle(TDF_Attribute)& I, const TCollection_MapNodePtr& n);
   
-        Handle_TDF_Attribute& Key() const;
+      Handle(TDF_Attribute)& Key()  const;
   
-        Handle_TDF_Attribute& Value() const;
+      Handle(TDF_Attribute)& Value()  const;
 
 
 
@@ -56,15 +45,15 @@ protected:
 private: 
 
 
-Handle_TDF_Attribute myKey;
-Handle_TDF_Attribute myValue;
+  Handle(TDF_Attribute) myKey;
+  Handle(TDF_Attribute) myValue;
 
 
 };
 
-#define TheKey Handle_TDF_Attribute
+#define TheKey Handle(TDF_Attribute)
 #define TheKey_hxx <TDF_Attribute.hxx>
-#define TheItem Handle_TDF_Attribute
+#define TheItem Handle(TDF_Attribute)
 #define TheItem_hxx <TDF_Attribute.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -95,7 +84,6 @@ Handle_TDF_Attribute myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_DataMapNodeOfAttributeDataMap_HeaderFile

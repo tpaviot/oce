@@ -1,9 +1,3 @@
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _UnitsMethods_HeaderFile
 #include <UnitsMethods.hxx>
-#endif

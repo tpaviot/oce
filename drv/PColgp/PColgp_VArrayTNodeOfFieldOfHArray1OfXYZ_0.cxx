@@ -5,15 +5,9 @@
 
 #include <PColgp_VArrayTNodeOfFieldOfHArray1OfXYZ.hxx>
 
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray1OfXYZ_HeaderFile
 #include <PColgp_FieldOfHArray1OfXYZ.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray1OfXYZ_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray1OfXYZ.hxx>
-#endif
  
 
 #define Item gp_XYZ

@@ -5,22 +5,12 @@
 
 #include <AIS_DataMapNodeOfDataMapofIntegerListOfinteractive.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _AIS_ListOfInteractive_HeaderFile
 #include <AIS_ListOfInteractive.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _AIS_DataMapofIntegerListOfinteractive_HeaderFile
 #include <AIS_DataMapofIntegerListOfinteractive.hxx>
-#endif
-#ifndef _AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive_HeaderFile
 #include <AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive.hxx>
-#endif
 
  
 

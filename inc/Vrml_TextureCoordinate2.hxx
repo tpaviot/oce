@@ -6,53 +6,42 @@
 #ifndef _Vrml_TextureCoordinate2_HeaderFile
 #define _Vrml_TextureCoordinate2_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Vrml_TextureCoordinate2_HeaderFile
 #include <Handle_Vrml_TextureCoordinate2.hxx>
-#endif
 
-#ifndef _Handle_TColgp_HArray1OfVec2d_HeaderFile
 #include <Handle_TColgp_HArray1OfVec2d.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TColgp_HArray1OfVec2d;
 
 
-//!  defines a TextureCoordinate2 node of VRML specifying properties of geometry <br>
-//!  and its appearance. <br>
-//!  This  node  defines  a  set  of  2D  coordinates  to  be  used  to  map  textures <br>
-//!  to  the  vertices  of  subsequent  PointSet,  IndexedLineSet,  or  IndexedFaceSet <br>
-//!  objects.  It  replaces  the  current  texture  coordinates  in  the  rendering <br>
-//!  state  for  the  shapes  to  use. <br>
-//!  Texture  coordinates  range  from  0  to  1  across  the  texture. <br>
-//!  The  horizontal  coordinate,  called  S,  is  specified  first,  followed <br>
-//!  by  vertical  coordinate,  T. <br>
-//!  By  default  : <br>
-//!    myPoint (0 0) <br>
-class Vrml_TextureCoordinate2 : public MMgt_TShared {
+//! defines a TextureCoordinate2 node of VRML specifying properties of geometry
+//! and its appearance.
+//! This  node  defines  a  set  of  2D  coordinates  to  be  used  to  map  textures
+//! to  the  vertices  of  subsequent  PointSet,  IndexedLineSet,  or  IndexedFaceSet
+//! objects.  It  replaces  the  current  texture  coordinates  in  the  rendering
+//! state  for  the  shapes  to  use.
+//! Texture  coordinates  range  from  0  to  1  across  the  texture.
+//! The  horizontal  coordinate,  called  S,  is  specified  first,  followed
+//! by  vertical  coordinate,  T.
+//! By  default  :
+//! myPoint (0 0)
+class Vrml_TextureCoordinate2 : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Vrml_TextureCoordinate2();
+  Standard_EXPORT Vrml_TextureCoordinate2();
   
-  Standard_EXPORT   Vrml_TextureCoordinate2(const Handle(TColgp_HArray1OfVec2d)& aPoint);
+  Standard_EXPORT Vrml_TextureCoordinate2(const Handle(TColgp_HArray1OfVec2d)& aPoint);
   
-  Standard_EXPORT     void SetPoint(const Handle(TColgp_HArray1OfVec2d)& aPoint) ;
+  Standard_EXPORT   void SetPoint (const Handle(TColgp_HArray1OfVec2d)& aPoint) ;
   
-  Standard_EXPORT     Handle_TColgp_HArray1OfVec2d Point() const;
+  Standard_EXPORT   Handle(TColgp_HArray1OfVec2d) Point()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -67,7 +56,7 @@ protected:
 private: 
 
 
-Handle_TColgp_HArray1OfVec2d myPoint;
+  Handle(TColgp_HArray1OfVec2d) myPoint;
 
 
 };
@@ -76,7 +65,6 @@ Handle_TColgp_HArray1OfVec2d myPoint;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_TextureCoordinate2_HeaderFile

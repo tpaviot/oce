@@ -5,19 +5,11 @@
 
 #include <ChFiDS_ListNodeOfRegularities.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _ChFiDS_Regul_HeaderFile
 #include <ChFiDS_Regul.hxx>
-#endif
-#ifndef _ChFiDS_Regularities_HeaderFile
 #include <ChFiDS_Regularities.hxx>
-#endif
-#ifndef _ChFiDS_ListIteratorOfRegularities_HeaderFile
 #include <ChFiDS_ListIteratorOfRegularities.hxx>
-#endif
 
  
 

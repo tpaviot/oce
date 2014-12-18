@@ -7,7 +7,6 @@
 #define _Adaptor3d_SurfacePtr_HeaderFile
 
 class Adaptor3d_Surface;
-
 typedef Adaptor3d_Surface* Adaptor3d_SurfacePtr;
 
-#endif
+#endif // _Adaptor3d_SurfacePtr_HeaderFile

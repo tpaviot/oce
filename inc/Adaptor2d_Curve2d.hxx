@@ -6,40 +6,18 @@
 #ifndef _Adaptor2d_Curve2d_HeaderFile
 #define _Adaptor2d_Curve2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _GeomAbs_CurveType_HeaderFile
 #include <GeomAbs_CurveType.hxx>
-#endif
-#ifndef _Handle_Geom2d_BezierCurve_HeaderFile
 #include <Handle_Geom2d_BezierCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -56,102 +34,119 @@ class Geom2d_BezierCurve;
 class Geom2d_BSplineCurve;
 
 
-//! Root class for 2D curves on which geometric <br>
-//! algorithms work. <br>
-//! An adapted curve is an interface between the <br>
-//! services provided by a curve, and those required of <br>
-//! the curve by algorithms, which use it. <br>
-//! A derived concrete class is provided: <br>
-//! Geom2dAdaptor_Curve for a curve from the Geom2d package. <br>
-class Adaptor2d_Curve2d  {
+//! Root class for 2D curves on which geometric
+//! algorithms work.
+//! An adapted curve is an interface between the
+//! services provided by a curve, and those required of
+//! the curve by algorithms, which use it.
+//! A derived concrete class is provided:
+//! Geom2dAdaptor_Curve for a curve from the Geom2d package.
+class Adaptor2d_Curve2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~Adaptor2d_Curve2d(){Delete();}
   
-  Standard_EXPORT   virtual  Standard_Real FirstParameter() const;
+  Standard_EXPORT virtual   Standard_Real FirstParameter()  const;
   
-  Standard_EXPORT   virtual  Standard_Real LastParameter() const;
+  Standard_EXPORT virtual   Standard_Real LastParameter()  const;
   
-  Standard_EXPORT   virtual  GeomAbs_Shape Continuity() const;
-  //! If necessary,  breaks the  curve in  intervals  of <br>
-//!          continuity  <S>.    And  returns   the number   of <br>
-//!          intervals. <br>
-  Standard_EXPORT   virtual  Standard_Integer NbIntervals(const GeomAbs_Shape S) const;
-  //! Stores in <T> the  parameters bounding the intervals <br>
-//!          of continuity <S>. <br>
-//! <br>
-//!          The array must provide  enough room to  accomodate <br>
-//!          for the parameters. i.e. T.Length() > NbIntervals() <br>
-  Standard_EXPORT   virtual  void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const;
-  //! Returns    a  curve equivalent   of  <me>  between <br>
-//!          parameters <First>  and <Last>. <Tol>  is used  to <br>
-//!          test for 3d points confusion. <br>//! If <First> >= <Last> <br>
-  Standard_EXPORT   virtual  Handle_Adaptor2d_HCurve2d Trim(const Standard_Real First,const Standard_Real Last,const Standard_Real Tol) const;
+  Standard_EXPORT virtual   GeomAbs_Shape Continuity()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsClosed() const;
+  //! If necessary,  breaks the  curve in  intervals  of
+  //! continuity  <S>.    And  returns   the number   of
+  //! intervals.
+  Standard_EXPORT virtual   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsPeriodic() const;
+  //! Stores in <T> the  parameters bounding the intervals
+  //! of continuity <S>.
+  //!
+  //! The array must provide  enough room to  accomodate
+  //! for the parameters. i.e. T.Length() > NbIntervals()
+  Standard_EXPORT virtual   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
   
-  Standard_EXPORT   virtual  Standard_Real Period() const;
-  //! Computes the point of parameter U on the curve. <br>
-  Standard_EXPORT   virtual  gp_Pnt2d Value(const Standard_Real U) const;
-  //! Computes the point of parameter U on the curve. <br>
-  Standard_EXPORT   virtual  void D0(const Standard_Real U,gp_Pnt2d& P) const;
-  //! Computes the point of parameter U on the curve with its <br>
-//!  first derivative. <br>//! Raised if the continuity of the current interval <br>
-//!  is not C1. <br>
-  Standard_EXPORT   virtual  void D1(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V) const;
+  //! Returns    a  curve equivalent   of  <me>  between
+  //! parameters <First>  and <Last>. <Tol>  is used  to
+  //! test for 3d points confusion.
+  //! If <First> >= <Last>
+  Standard_EXPORT virtual   Handle(Adaptor2d_HCurve2d) Trim (const Standard_Real First, const Standard_Real Last, const Standard_Real Tol)  const;
   
-//!  Returns the point P of parameter U, the first and second <br>
-//!  derivatives V1 and V2. <br>//! Raised if the continuity of the current interval <br>
-//!  is not C2. <br>
-  Standard_EXPORT   virtual  void D2(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V1,gp_Vec2d& V2) const;
+  Standard_EXPORT virtual   Standard_Boolean IsClosed()  const;
   
-//!  Returns the point P of parameter U, the first, the second <br>
-//!  and the third derivative. <br>//! Raised if the continuity of the current interval <br>
-//!  is not C3. <br>
-  Standard_EXPORT   virtual  void D3(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V1,gp_Vec2d& V2,gp_Vec2d& V3) const;
+  Standard_EXPORT virtual   Standard_Boolean IsPeriodic()  const;
   
-//!  The returned vector gives the value of the derivative for the <br>
-//!  order of derivation N. <br>//! Raised if the continuity of the current interval <br>
-//!  is not CN. <br>//! Raised if N < 1. <br>
-  Standard_EXPORT   virtual  gp_Vec2d DN(const Standard_Real U,const Standard_Integer N) const;
-  //!  Returns the parametric  resolution corresponding <br>
-//!         to the real space resolution <R3d>. <br>
-  Standard_EXPORT   virtual  Standard_Real Resolution(const Standard_Real R3d) const;
-  //! Returns  the  type of the   curve  in the  current <br>
-//!          interval :   Line,   Circle,   Ellipse, Hyperbola, <br>
-//!          Parabola, BezierCurve, BSplineCurve, OtherCurve. <br>
-  Standard_EXPORT   virtual  GeomAbs_CurveType GetType() const;
+  Standard_EXPORT virtual   Standard_Real Period()  const;
   
-  Standard_EXPORT   virtual  gp_Lin2d Line() const;
+  //! Computes the point of parameter U on the curve.
+  Standard_EXPORT virtual   gp_Pnt2d Value (const Standard_Real U)  const;
   
-  Standard_EXPORT   virtual  gp_Circ2d Circle() const;
+  //! Computes the point of parameter U on the curve.
+  Standard_EXPORT virtual   void D0 (const Standard_Real U, gp_Pnt2d& P)  const;
   
-  Standard_EXPORT   virtual  gp_Elips2d Ellipse() const;
+  //! Computes the point of parameter U on the curve with its
+  //! first derivative.
+  //! Raised if the continuity of the current interval
+  //! is not C1.
+  Standard_EXPORT virtual   void D1 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V)  const;
   
-  Standard_EXPORT   virtual  gp_Hypr2d Hyperbola() const;
-  
-  Standard_EXPORT   virtual  gp_Parab2d Parabola() const;
-  
-  Standard_EXPORT   virtual  Standard_Integer Degree() const;
-  
-  Standard_EXPORT   virtual  Standard_Boolean IsRational() const;
-  
-  Standard_EXPORT   virtual  Standard_Integer NbPoles() const;
-  
-  Standard_EXPORT   virtual  Standard_Integer NbKnots() const;
-  
-  Standard_EXPORT   virtual  Standard_Integer NbSamples() const;
-  
-  Standard_EXPORT   virtual  Handle_Geom2d_BezierCurve Bezier() const;
-  
-  Standard_EXPORT   virtual  Handle_Geom2d_BSplineCurve BSpline() const;
 
+  //! Returns the point P of parameter U, the first and second
+  //! derivatives V1 and V2.
+  //! Raised if the continuity of the current interval
+  //! is not C2.
+  Standard_EXPORT virtual   void D2 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2)  const;
+  
+
+  //! Returns the point P of parameter U, the first, the second
+  //! and the third derivative.
+  //! Raised if the continuity of the current interval
+  //! is not C3.
+  Standard_EXPORT virtual   void D3 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3)  const;
+  
+
+  //! The returned vector gives the value of the derivative for the
+  //! order of derivation N.
+  //! Raised if the continuity of the current interval
+  //! is not CN.
+  //! Raised if N < 1.
+  Standard_EXPORT virtual   gp_Vec2d DN (const Standard_Real U, const Standard_Integer N)  const;
+  
+  //! Returns the parametric  resolution corresponding
+  //! to the real space resolution <R3d>.
+  Standard_EXPORT virtual   Standard_Real Resolution (const Standard_Real R3d)  const;
+  
+  //! Returns  the  type of the   curve  in the  current
+  //! interval :   Line,   Circle,   Ellipse, Hyperbola,
+  //! Parabola, BezierCurve, BSplineCurve, OtherCurve.
+  Standard_EXPORT virtual   GeomAbs_CurveType GetType()  const;
+  
+  Standard_EXPORT virtual   gp_Lin2d Line()  const;
+  
+  Standard_EXPORT virtual   gp_Circ2d Circle()  const;
+  
+  Standard_EXPORT virtual   gp_Elips2d Ellipse()  const;
+  
+  Standard_EXPORT virtual   gp_Hypr2d Hyperbola()  const;
+  
+  Standard_EXPORT virtual   gp_Parab2d Parabola()  const;
+  
+  Standard_EXPORT virtual   Standard_Integer Degree()  const;
+  
+  Standard_EXPORT virtual   Standard_Boolean IsRational()  const;
+  
+  Standard_EXPORT virtual   Standard_Integer NbPoles()  const;
+  
+  Standard_EXPORT virtual   Standard_Integer NbKnots()  const;
+  
+  Standard_EXPORT virtual   Standard_Integer NbSamples()  const;
+  
+  Standard_EXPORT virtual   Handle(Geom2d_BezierCurve) Bezier()  const;
+  
+  Standard_EXPORT virtual   Handle(Geom2d_BSplineCurve) BSpline()  const;
 
 
 
@@ -174,7 +169,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Adaptor2d_Curve2d_HeaderFile

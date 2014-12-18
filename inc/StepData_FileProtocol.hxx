@@ -6,43 +6,19 @@
 #ifndef _StepData_FileProtocol_HeaderFile
 #define _StepData_FileProtocol_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_FileProtocol_HeaderFile
 #include <Handle_StepData_FileProtocol.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfTransient_HeaderFile
 #include <TColStd_SequenceOfTransient.hxx>
-#endif
-#ifndef _StepData_Protocol_HeaderFile
 #include <StepData_Protocol.hxx>
-#endif
-#ifndef _Handle_StepData_Protocol_HeaderFile
 #include <Handle_StepData_Protocol.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class StepData_Protocol;
 class Interface_Protocol;
 class Standard_Type;
@@ -50,38 +26,46 @@ class Interface_Graph;
 class Interface_Check;
 
 
-//! A FileProtocol is defined as the addition of several already <br>
-//!           existing Protocols. It corresponds to the definition of a <br>
-//!           SchemaName with several Names, each one being attached to a <br>
-//!           specific Protocol. Thus, a File defined with a compound Schema <br>
-//!           is processed as any other one, once built the equivalent <br>
-//!           compound Protocol, a FileProtocol <br>
-class StepData_FileProtocol : public StepData_Protocol {
+//! A FileProtocol is defined as the addition of several already
+//! existing Protocols. It corresponds to the definition of a
+//! SchemaName with several Names, each one being attached to a
+//! specific Protocol. Thus, a File defined with a compound Schema
+//! is processed as any other one, once built the equivalent
+//! compound Protocol, a FileProtocol
+class StepData_FileProtocol : public StepData_Protocol
+{
 
 public:
 
-  //! Creates an empty FileProtocol <br>
-  Standard_EXPORT   StepData_FileProtocol();
-  //! Adds a Protocol to the definition list of the FileProtocol <br>
-//!           But ensures that each class of Protocol is present only once <br>
-//!           in this list <br>
-  Standard_EXPORT     void Add(const Handle(StepData_Protocol)& protocol) ;
-  //! Gives the count of Protocols used as Resource (can be zero) <br>
-//!           i.e. the count of Protocol recorded by calling the method Add <br>
-  Standard_EXPORT   virtual  Standard_Integer NbResources() const;
-  //! Returns a Resource, given a rank. Here, rank of calling Add <br>
-  Standard_EXPORT   virtual  Handle_Interface_Protocol Resource(const Standard_Integer num) const;
-  //! Returns a Case Number, specific of each recognized Type <br>
-//!           Here, NO Type at all is recognized properly : all Types are <br>
-//!           recognized by the resources <br>
-  Standard_EXPORT   virtual  Standard_Integer TypeNumber(const Handle(Standard_Type)& atype) const;
-  //! Calls GlobalCheck for each of its recorded ressources <br>
-  Standard_EXPORT   virtual  Standard_Boolean GlobalCheck(const Interface_Graph& G,Handle(Interface_Check)& ach) const;
-  //! Returns the Schema Name attached to each class of Protocol <br>
-//!           To be redefined by each sub-class <br>
-//!           Here, SchemaName returns "" (empty String) <br>
-//! was C++ : return const <br>
-  Standard_EXPORT   virtual  Standard_CString SchemaName() const;
+  
+  //! Creates an empty FileProtocol
+  Standard_EXPORT StepData_FileProtocol();
+  
+  //! Adds a Protocol to the definition list of the FileProtocol
+  //! But ensures that each class of Protocol is present only once
+  //! in this list
+  Standard_EXPORT   void Add (const Handle(StepData_Protocol)& protocol) ;
+  
+  //! Gives the count of Protocols used as Resource (can be zero)
+  //! i.e. the count of Protocol recorded by calling the method Add
+  Standard_EXPORT virtual   Standard_Integer NbResources()  const;
+  
+  //! Returns a Resource, given a rank. Here, rank of calling Add
+  Standard_EXPORT virtual   Handle(Interface_Protocol) Resource (const Standard_Integer num)  const;
+  
+  //! Returns a Case Number, specific of each recognized Type
+  //! Here, NO Type at all is recognized properly : all Types are
+  //! recognized by the resources
+  Standard_EXPORT virtual   Standard_Integer TypeNumber (const Handle(Standard_Type)& atype)  const;
+  
+  //! Calls GlobalCheck for each of its recorded ressources
+  Standard_EXPORT virtual   Standard_Boolean GlobalCheck (const Interface_Graph& G, Handle(Interface_Check)& ach)  const;
+  
+  //! Returns the Schema Name attached to each class of Protocol
+  //! To be redefined by each sub-class
+  //! Here, SchemaName returns "" (empty String)
+  //! was C++ : return const
+  Standard_EXPORT virtual   Standard_CString SchemaName()  const;
 
 
 
@@ -96,7 +80,7 @@ protected:
 private: 
 
 
-TColStd_SequenceOfTransient thecomps;
+  TColStd_SequenceOfTransient thecomps;
 
 
 };
@@ -105,7 +89,6 @@ TColStd_SequenceOfTransient thecomps;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_FileProtocol_HeaderFile

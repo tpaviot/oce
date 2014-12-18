@@ -6,22 +6,15 @@
 #ifndef _Handle_WNT_ClassDefinitionError_HeaderFile
 #define _Handle_WNT_ClassDefinitionError_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Standard_ConstructionError_HeaderFile
 #include <Handle_Standard_ConstructionError.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Standard_ConstructionError);
 class WNT_ClassDefinitionError;
 
-DEFINE_STANDARD_HANDLE(WNT_ClassDefinitionError,Standard_ConstructionError)
+DEFINE_STANDARD_HANDLE(WNT_ClassDefinitionError, Standard_ConstructionError)
 
-#endif
+#endif // _Handle_WNT_ClassDefinitionError_HeaderFile

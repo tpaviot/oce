@@ -5,28 +5,14 @@
 
 #include <FEmTool_HAssemblyTable.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _FEmTool_AssemblyTable_HeaderFile
 #include <FEmTool_AssemblyTable.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(FEmTool_HAssemblyTable,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(FEmTool_HAssemblyTable)
 
 
-#define ItemHArray2 Handle_TColStd_HArray1OfInteger
+#define ItemHArray2 Handle(TColStd_HArray1OfInteger)
 #define ItemHArray2_hxx <TColStd_HArray1OfInteger.hxx>
 #define TheArray2 FEmTool_AssemblyTable
 #define TheArray2_hxx <FEmTool_AssemblyTable.hxx>

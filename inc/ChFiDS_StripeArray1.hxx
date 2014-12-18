@@ -6,28 +6,14 @@
 #ifndef _ChFiDS_StripeArray1_HeaderFile
 #define _ChFiDS_StripeArray1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_ChFiDS_Stripe_HeaderFile
 #include <Handle_ChFiDS_Stripe.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class ChFiDS_Stripe;
 
 
 
-class ChFiDS_StripeArray1  {
+class ChFiDS_StripeArray1 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      ChFiDS_StripeArray1(const Standard_Integer Low,const Standard_Integer Up);
+    ChFiDS_StripeArray1(const Standard_Integer Low, const Standard_Integer Up);
   
-      ChFiDS_StripeArray1(const Handle(ChFiDS_Stripe)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    ChFiDS_StripeArray1(const Handle(ChFiDS_Stripe)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(ChFiDS_Stripe)& V) ;
+  Standard_EXPORT   void Init (const Handle(ChFiDS_Stripe)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~ChFiDS_StripeArray1()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const ChFiDS_StripeArray1& Assign(const ChFiDS_StripeArray1& Other) ;
-   const ChFiDS_StripeArray1& operator =(const ChFiDS_StripeArray1& Other) 
+  Standard_EXPORT  const  ChFiDS_StripeArray1& Assign (const ChFiDS_StripeArray1& Other) ;
+ const  ChFiDS_StripeArray1& operator = (const ChFiDS_StripeArray1& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(ChFiDS_Stripe)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(ChFiDS_Stripe)& Value) ;
   
-       const Handle_ChFiDS_Stripe& Value(const Standard_Integer Index) const;
-     const Handle_ChFiDS_Stripe& operator ()(const Standard_Integer Index) const
+     const  Handle(ChFiDS_Stripe)& Value (const Standard_Integer Index)  const;
+   const  Handle(ChFiDS_Stripe)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_ChFiDS_Stripe& ChangeValue(const Standard_Integer Index) ;
-      Handle_ChFiDS_Stripe& operator ()(const Standard_Integer Index) 
+      Handle(ChFiDS_Stripe)& ChangeValue (const Standard_Integer Index) ;
+    Handle(ChFiDS_Stripe)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   ChFiDS_StripeArray1(const ChFiDS_StripeArray1& AnArray);
+  Standard_EXPORT ChFiDS_StripeArray1(const ChFiDS_StripeArray1& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_ChFiDS_Stripe
+#define Array1Item Handle(ChFiDS_Stripe)
 #define Array1Item_hxx <ChFiDS_Stripe.hxx>
 #define TCollection_Array1 ChFiDS_StripeArray1
 #define TCollection_Array1_hxx <ChFiDS_StripeArray1.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_StripeArray1_HeaderFile

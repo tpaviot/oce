@@ -5,22 +5,12 @@
 
 #include <IGESData_FileRecognizer.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESData_FileRecognizer_HeaderFile
 #include <IGESData_FileRecognizer.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IGESData_IGESType_HeaderFile
 #include <IGESData_IGESType.hxx>
-#endif
 
  
 

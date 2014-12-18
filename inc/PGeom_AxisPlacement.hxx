@@ -6,36 +6,27 @@
 #ifndef _PGeom_AxisPlacement_HeaderFile
 #define _PGeom_AxisPlacement_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_AxisPlacement_HeaderFile
 #include <Handle_PGeom_AxisPlacement.hxx>
-#endif
 
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
-#ifndef _PGeom_Geometry_HeaderFile
 #include <PGeom_Geometry.hxx>
-#endif
 class gp_Ax1;
 
 
-class PGeom_AxisPlacement : public PGeom_Geometry {
+class PGeom_AxisPlacement : public PGeom_Geometry
+{
 
 public:
 
-  //! Set the field axis with <aAxis>. <br>
-  Standard_EXPORT     void Axis(const gp_Ax1& aAxis) ;
-  //! Returns the value of the field axis. <br>
-  Standard_EXPORT     gp_Ax1 Axis() const;
+  
+  //! Set the field axis with <aAxis>.
+  Standard_EXPORT   void Axis (const gp_Ax1& aAxis) ;
+  
+  //! Returns the value of the field axis.
+  Standard_EXPORT   gp_Ax1 Axis()  const;
 
 PGeom_AxisPlacement(const Storage_stCONSTclCOM& a) : PGeom_Geometry(a)
 {
@@ -49,12 +40,14 @@ PGeom_AxisPlacement(const Storage_stCONSTclCOM& a) : PGeom_Geometry(a)
 
 protected:
 
-  //! Initializes the field(s) with default value(s). <br>
-  Standard_EXPORT   PGeom_AxisPlacement();
-  //! Initializes the field axis with <aAxis>. <br>
-  Standard_EXPORT   PGeom_AxisPlacement(const gp_Ax1& aAxis);
+  
+  //! Initializes the field(s) with default value(s).
+  Standard_EXPORT PGeom_AxisPlacement();
+  
+  //! Initializes the field axis with <aAxis>.
+  Standard_EXPORT PGeom_AxisPlacement(const gp_Ax1& aAxis);
 
-gp_Ax1 axis;
+  gp_Ax1 axis;
 
 
 private: 
@@ -68,7 +61,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_AxisPlacement_HeaderFile

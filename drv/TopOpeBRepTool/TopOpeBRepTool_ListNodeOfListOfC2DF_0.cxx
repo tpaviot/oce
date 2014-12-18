@@ -5,19 +5,11 @@
 
 #include <TopOpeBRepTool_ListNodeOfListOfC2DF.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepTool_C2DF_HeaderFile
 #include <TopOpeBRepTool_C2DF.hxx>
-#endif
-#ifndef _TopOpeBRepTool_ListOfC2DF_HeaderFile
 #include <TopOpeBRepTool_ListOfC2DF.hxx>
-#endif
-#ifndef _TopOpeBRepTool_ListIteratorOfListOfC2DF_HeaderFile
 #include <TopOpeBRepTool_ListIteratorOfListOfC2DF.hxx>
-#endif
 
  
 

@@ -1,3 +1,1 @@
-#ifndef _TopOpeBRepTool_GeomTool_HeaderFile
 #include <TopOpeBRepTool_GeomTool.hxx>
-#endif

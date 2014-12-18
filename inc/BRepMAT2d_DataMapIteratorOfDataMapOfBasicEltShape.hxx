@@ -6,25 +6,13 @@
 #ifndef _BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape_HeaderFile
 #define _BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_MAT_BasicElt_HeaderFile
 #include <Handle_MAT_BasicElt.hxx>
-#endif
-#ifndef _Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape_HeaderFile
 #include <Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.hxx>
-#endif
 class Standard_NoSuchObject;
 class MAT_BasicElt;
 class TopoDS_Shape;
@@ -34,22 +22,22 @@ class BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape;
 
 
 
-class BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape  : public TCollection_BasicMapIterator {
+class BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape();
+  Standard_EXPORT BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape();
   
-  Standard_EXPORT   BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape(const BRepMAT2d_DataMapOfBasicEltShape& aMap);
+  Standard_EXPORT BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape(const BRepMAT2d_DataMapOfBasicEltShape& aMap);
   
-  Standard_EXPORT     void Initialize(const BRepMAT2d_DataMapOfBasicEltShape& aMap) ;
+  Standard_EXPORT   void Initialize (const BRepMAT2d_DataMapOfBasicEltShape& aMap) ;
   
-  Standard_EXPORT    const Handle_MAT_BasicElt& Key() const;
+  Standard_EXPORT  const  Handle(MAT_BasicElt)& Key()  const;
   
-  Standard_EXPORT    const TopoDS_Shape& Value() const;
-
+  Standard_EXPORT  const  TopoDS_Shape& Value()  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape_HeaderFile

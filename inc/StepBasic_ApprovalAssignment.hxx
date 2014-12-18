@@ -6,36 +6,27 @@
 #ifndef _StepBasic_ApprovalAssignment_HeaderFile
 #define _StepBasic_ApprovalAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ApprovalAssignment_HeaderFile
 #include <Handle_StepBasic_ApprovalAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_Approval_HeaderFile
 #include <Handle_StepBasic_Approval.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_Approval;
 
 
 
-class StepBasic_ApprovalAssignment : public MMgt_TShared {
+class StepBasic_ApprovalAssignment : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_Approval)& aAssignedApproval) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_Approval)& aAssignedApproval) ;
   
-  Standard_EXPORT     void SetAssignedApproval(const Handle(StepBasic_Approval)& aAssignedApproval) ;
+  Standard_EXPORT   void SetAssignedApproval (const Handle(StepBasic_Approval)& aAssignedApproval) ;
   
-  Standard_EXPORT     Handle_StepBasic_Approval AssignedApproval() const;
+  Standard_EXPORT   Handle(StepBasic_Approval) AssignedApproval()  const;
 
 
 
@@ -50,7 +41,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_Approval assignedApproval;
+  Handle(StepBasic_Approval) assignedApproval;
 
 
 };
@@ -59,7 +50,6 @@ Handle_StepBasic_Approval assignedApproval;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ApprovalAssignment_HeaderFile

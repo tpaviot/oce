@@ -6,50 +6,36 @@
 #ifndef _StepGeom_DegenerateToroidalSurface_HeaderFile
 #define _StepGeom_DegenerateToroidalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_DegenerateToroidalSurface_HeaderFile
 #include <Handle_StepGeom_DegenerateToroidalSurface.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepGeom_ToroidalSurface_HeaderFile
 #include <StepGeom_ToroidalSurface.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepGeom_Axis2Placement3d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepGeom_Axis2Placement3d;
 
 
 
-class StepGeom_DegenerateToroidalSurface : public StepGeom_ToroidalSurface {
+class StepGeom_DegenerateToroidalSurface : public StepGeom_ToroidalSurface
+{
 
 public:
 
-  //! Returns a DegenerateToroidalSurface <br>
-  Standard_EXPORT   StepGeom_DegenerateToroidalSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Axis2Placement3d)& aPosition,const Standard_Real aMajorRadius,const Standard_Real aMinorRadius) ;
+  //! Returns a DegenerateToroidalSurface
+  Standard_EXPORT StepGeom_DegenerateToroidalSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Axis2Placement3d)& aPosition,const Standard_Real aMajorRadius,const Standard_Real aMinorRadius,const Standard_Boolean aSelectOuter) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Axis2Placement3d)& aPosition, const Standard_Real aMajorRadius, const Standard_Real aMinorRadius) ;
   
-  Standard_EXPORT     void SetSelectOuter(const Standard_Boolean aSelectOuter) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Axis2Placement3d)& aPosition, const Standard_Real aMajorRadius, const Standard_Real aMinorRadius, const Standard_Boolean aSelectOuter) ;
   
-  Standard_EXPORT     Standard_Boolean SelectOuter() const;
+  Standard_EXPORT   void SetSelectOuter (const Standard_Boolean aSelectOuter) ;
+  
+  Standard_EXPORT   Standard_Boolean SelectOuter()  const;
 
 
 
@@ -64,7 +50,7 @@ protected:
 private: 
 
 
-Standard_Boolean selectOuter;
+  Standard_Boolean selectOuter;
 
 
 };
@@ -73,7 +59,6 @@ Standard_Boolean selectOuter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_DegenerateToroidalSurface_HeaderFile

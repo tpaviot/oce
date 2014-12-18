@@ -6,31 +6,15 @@
 #ifndef _DBRep_ListOfFace_HeaderFile
 #define _DBRep_ListOfFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_DBRep_Face_HeaderFile
 #include <Handle_DBRep_Face.hxx>
-#endif
-#ifndef _Handle_DBRep_ListNodeOfListOfFace_HeaderFile
 #include <Handle_DBRep_ListNodeOfListOfFace.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class DBRep_ListIteratorOfListOfFace;
 class DBRep_Face;
@@ -38,61 +22,63 @@ class DBRep_ListNodeOfListOfFace;
 
 
 
-class DBRep_ListOfFace  {
+class DBRep_ListOfFace 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   DBRep_ListOfFace();
+  Standard_EXPORT DBRep_ListOfFace();
   
-  Standard_EXPORT     void Assign(const DBRep_ListOfFace& Other) ;
-    void operator=(const DBRep_ListOfFace& Other) 
+  Standard_EXPORT DBRep_ListOfFace(const DBRep_ListOfFace& Other);
+  
+  Standard_EXPORT   void Assign (const DBRep_ListOfFace& Other) ;
+  void operator= (const DBRep_ListOfFace& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~DBRep_ListOfFace()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(DBRep_Face)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(DBRep_Face)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(DBRep_Face)& I,DBRep_ListIteratorOfListOfFace& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(DBRep_Face)& I, DBRep_ListIteratorOfListOfFace& theIt) ;
   
-  Standard_EXPORT     void Prepend(DBRep_ListOfFace& Other) ;
+  Standard_EXPORT   void Prepend (DBRep_ListOfFace& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(DBRep_Face)& I) ;
+  Standard_EXPORT   void Append (const Handle(DBRep_Face)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(DBRep_Face)& I,DBRep_ListIteratorOfListOfFace& theIt) ;
+  Standard_EXPORT   void Append (const Handle(DBRep_Face)& I, DBRep_ListIteratorOfListOfFace& theIt) ;
   
-  Standard_EXPORT     void Append(DBRep_ListOfFace& Other) ;
+  Standard_EXPORT   void Append (DBRep_ListOfFace& Other) ;
   
-  Standard_EXPORT     Handle_DBRep_Face& First() const;
+  Standard_EXPORT   Handle(DBRep_Face)& First()  const;
   
-  Standard_EXPORT     Handle_DBRep_Face& Last() const;
+  Standard_EXPORT   Handle(DBRep_Face)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(DBRep_ListIteratorOfListOfFace& It) ;
+  Standard_EXPORT   void Remove (DBRep_ListIteratorOfListOfFace& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(DBRep_Face)& I,DBRep_ListIteratorOfListOfFace& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(DBRep_Face)& I, DBRep_ListIteratorOfListOfFace& It) ;
   
-  Standard_EXPORT     void InsertBefore(DBRep_ListOfFace& Other,DBRep_ListIteratorOfListOfFace& It) ;
+  Standard_EXPORT   void InsertBefore (DBRep_ListOfFace& Other, DBRep_ListIteratorOfListOfFace& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(DBRep_Face)& I,DBRep_ListIteratorOfListOfFace& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(DBRep_Face)& I, DBRep_ListIteratorOfListOfFace& It) ;
   
-  Standard_EXPORT     void InsertAfter(DBRep_ListOfFace& Other,DBRep_ListIteratorOfListOfFace& It) ;
+  Standard_EXPORT   void InsertAfter (DBRep_ListOfFace& Other, DBRep_ListIteratorOfListOfFace& It) ;
 
 
 friend class DBRep_ListIteratorOfListOfFace;
-
 
 
 protected:
@@ -103,17 +89,15 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   DBRep_ListOfFace(const DBRep_ListOfFace& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_DBRep_Face
+#define Item Handle(DBRep_Face)
 #define Item_hxx <DBRep_Face.hxx>
 #define TCollection_ListNode DBRep_ListNodeOfListOfFace
 #define TCollection_ListNode_hxx <DBRep_ListNodeOfListOfFace.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBRep_ListOfFace_HeaderFile

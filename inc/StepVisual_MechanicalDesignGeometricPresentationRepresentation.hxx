@@ -6,28 +6,22 @@
 #ifndef _StepVisual_MechanicalDesignGeometricPresentationRepresentation_HeaderFile
 #define _StepVisual_MechanicalDesignGeometricPresentationRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation_HeaderFile
 #include <Handle_StepVisual_MechanicalDesignGeometricPresentationRepresentation.hxx>
-#endif
 
-#ifndef _StepVisual_PresentationRepresentation_HeaderFile
 #include <StepVisual_PresentationRepresentation.hxx>
-#endif
 
 
 
-class StepVisual_MechanicalDesignGeometricPresentationRepresentation : public StepVisual_PresentationRepresentation {
+class StepVisual_MechanicalDesignGeometricPresentationRepresentation : public StepVisual_PresentationRepresentation
+{
 
 public:
 
-  //! Returns a MechanicalDesignGeometricPresentationRepresentation <br>
-  Standard_EXPORT   StepVisual_MechanicalDesignGeometricPresentationRepresentation();
+  
+  //! Returns a MechanicalDesignGeometricPresentationRepresentation
+  Standard_EXPORT StepVisual_MechanicalDesignGeometricPresentationRepresentation();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_MechanicalDesignGeometricPresentationRepresentation_HeaderFile

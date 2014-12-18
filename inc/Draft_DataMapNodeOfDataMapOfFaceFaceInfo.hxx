@@ -6,28 +6,14 @@
 #ifndef _Draft_DataMapNodeOfDataMapOfFaceFaceInfo_HeaderFile
 #define _Draft_DataMapNodeOfDataMapOfFaceFaceInfo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo_HeaderFile
 #include <Handle_Draft_DataMapNodeOfDataMapOfFaceFaceInfo.hxx>
-#endif
 
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Draft_FaceInfo_HeaderFile
 #include <Draft_FaceInfo.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Face;
 class Draft_FaceInfo;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class Draft_DataMapIteratorOfDataMapOfFaceFaceInfo;
 
 
 
-class Draft_DataMapNodeOfDataMapOfFaceFaceInfo : public TCollection_MapNode {
+class Draft_DataMapNodeOfDataMapOfFaceFaceInfo : public TCollection_MapNode
+{
 
 public:
 
   
-      Draft_DataMapNodeOfDataMapOfFaceFaceInfo(const TopoDS_Face& K,const Draft_FaceInfo& I,const TCollection_MapNodePtr& n);
+    Draft_DataMapNodeOfDataMapOfFaceFaceInfo(const TopoDS_Face& K, const Draft_FaceInfo& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Face& Key() const;
+      TopoDS_Face& Key()  const;
   
-        Draft_FaceInfo& Value() const;
+      Draft_FaceInfo& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Face myKey;
-Draft_FaceInfo myValue;
+  TopoDS_Face myKey;
+  Draft_FaceInfo myValue;
 
 
 };
@@ -99,7 +86,6 @@ Draft_FaceInfo myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draft_DataMapNodeOfDataMapOfFaceFaceInfo_HeaderFile

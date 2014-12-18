@@ -6,38 +6,27 @@
 #ifndef _Intrv_SequenceNodeOfSequenceOfInterval_HeaderFile
 #define _Intrv_SequenceNodeOfSequenceOfInterval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Intrv_SequenceNodeOfSequenceOfInterval_HeaderFile
 #include <Handle_Intrv_SequenceNodeOfSequenceOfInterval.hxx>
-#endif
 
-#ifndef _Intrv_Interval_HeaderFile
 #include <Intrv_Interval.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Intrv_Interval;
 class Intrv_SequenceOfInterval;
 
 
 
-class Intrv_SequenceNodeOfSequenceOfInterval : public TCollection_SeqNode {
+class Intrv_SequenceNodeOfSequenceOfInterval : public TCollection_SeqNode
+{
 
 public:
 
   
-      Intrv_SequenceNodeOfSequenceOfInterval(const Intrv_Interval& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Intrv_SequenceNodeOfSequenceOfInterval(const Intrv_Interval& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Intrv_Interval& Value() const;
+      Intrv_Interval& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Intrv_Interval myValue;
+  Intrv_Interval myValue;
 
 
 };
@@ -78,7 +67,6 @@ Intrv_Interval myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Intrv_SequenceNodeOfSequenceOfInterval_HeaderFile

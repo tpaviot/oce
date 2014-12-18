@@ -5,18 +5,10 @@
 
 #include <TDF_MapIteratorOfIDMap.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_IDMap_HeaderFile
 #include <TDF_IDMap.hxx>
-#endif
-#ifndef _TDF_StdMapNodeOfIDMap_HeaderFile
 #include <TDF_StdMapNodeOfIDMap.hxx>
-#endif
  
 
 #define TheKey Standard_GUID

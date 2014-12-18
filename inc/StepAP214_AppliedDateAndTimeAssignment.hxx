@@ -6,31 +6,15 @@
 #ifndef _StepAP214_AppliedDateAndTimeAssignment_HeaderFile
 #define _StepAP214_AppliedDateAndTimeAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP214_AppliedDateAndTimeAssignment_HeaderFile
 #include <Handle_StepAP214_AppliedDateAndTimeAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepAP214_HArray1OfDateAndTimeItem_HeaderFile
 #include <Handle_StepAP214_HArray1OfDateAndTimeItem.hxx>
-#endif
-#ifndef _StepBasic_DateAndTimeAssignment_HeaderFile
 #include <StepBasic_DateAndTimeAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_DateAndTime_HeaderFile
 #include <Handle_StepBasic_DateAndTime.hxx>
-#endif
-#ifndef _Handle_StepBasic_DateTimeRole_HeaderFile
 #include <Handle_StepBasic_DateTimeRole.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepAP214_HArray1OfDateAndTimeItem;
 class StepBasic_DateAndTime;
 class StepBasic_DateTimeRole;
@@ -38,24 +22,26 @@ class StepAP214_DateAndTimeItem;
 
 
 
-class StepAP214_AppliedDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
+class StepAP214_AppliedDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment
+{
 
 public:
 
-  //! Returns a AppliedDateAndTimeAssignment <br>
-  Standard_EXPORT   StepAP214_AppliedDateAndTimeAssignment();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_DateAndTime)& aAssignedDateAndTime,const Handle(StepBasic_DateTimeRole)& aRole) ;
+  //! Returns a AppliedDateAndTimeAssignment
+  Standard_EXPORT StepAP214_AppliedDateAndTimeAssignment();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_DateAndTime)& aAssignedDateAndTime,const Handle(StepBasic_DateTimeRole)& aRole,const Handle(StepAP214_HArray1OfDateAndTimeItem)& aItems) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_DateAndTime)& aAssignedDateAndTime, const Handle(StepBasic_DateTimeRole)& aRole) ;
   
-  Standard_EXPORT     void SetItems(const Handle(StepAP214_HArray1OfDateAndTimeItem)& aItems) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_DateAndTime)& aAssignedDateAndTime, const Handle(StepBasic_DateTimeRole)& aRole, const Handle(StepAP214_HArray1OfDateAndTimeItem)& aItems) ;
   
-  Standard_EXPORT     Handle_StepAP214_HArray1OfDateAndTimeItem Items() const;
+  Standard_EXPORT   void SetItems (const Handle(StepAP214_HArray1OfDateAndTimeItem)& aItems) ;
   
-  Standard_EXPORT     StepAP214_DateAndTimeItem ItemsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepAP214_HArray1OfDateAndTimeItem) Items()  const;
   
-  Standard_EXPORT     Standard_Integer NbItems() const;
+  Standard_EXPORT   StepAP214_DateAndTimeItem ItemsValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbItems()  const;
 
 
 
@@ -70,7 +56,7 @@ protected:
 private: 
 
 
-Handle_StepAP214_HArray1OfDateAndTimeItem items;
+  Handle(StepAP214_HArray1OfDateAndTimeItem) items;
 
 
 };
@@ -79,7 +65,6 @@ Handle_StepAP214_HArray1OfDateAndTimeItem items;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_AppliedDateAndTimeAssignment_HeaderFile

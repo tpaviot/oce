@@ -6,31 +6,15 @@
 #ifndef _gp_Mat_HeaderFile
 #define _gp_Mat_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_OutOfRange;
 class gp_XYZ;
@@ -41,201 +25,231 @@ class gp_GTrsf;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Mat);
 
 
-//! Describes a three column, three row matrix. This sort of <br>
-//! object is used in various vectorial or matrix computations. <br>
-class gp_Mat  {
+//! Describes a three column, three row matrix. This sort of
+//! object is used in various vectorial or matrix computations.
+class gp_Mat 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! creates  a matrix with null coefficients. <br>
-      gp_Mat();
   
-      gp_Mat(const Standard_Real a11,const Standard_Real a12,const Standard_Real a13,const Standard_Real a21,const Standard_Real a22,const Standard_Real a23,const Standard_Real a31,const Standard_Real a32,const Standard_Real a33);
-  //! Creates a matrix. <br>
-//!  Col1, Col2, Col3 are the 3 columns of the matrix. <br>
-  Standard_EXPORT   gp_Mat(const gp_XYZ& Col1,const gp_XYZ& Col2,const gp_XYZ& Col3);
-  //! Assigns the three coordinates of Value to the column of index <br>
-//!   Col of this matrix. <br>
-//! Raises OutOfRange if Col < 1 or Col > 3. <br>
-  Standard_EXPORT     void SetCol(const Standard_Integer Col,const gp_XYZ& Value) ;
-  //! Assigns the number triples Col1, Col2, Col3 to the three <br>
-//!   columns of this matrix. <br>
-  Standard_EXPORT     void SetCols(const gp_XYZ& Col1,const gp_XYZ& Col2,const gp_XYZ& Col3) ;
+  //! creates  a matrix with null coefficients.
+    gp_Mat();
   
-//!  Modifies the matrix  M so that applying it to any number <br>
-//! triple (X, Y, Z) produces the same result as the cross <br>
-//! product of Ref and the number triple (X, Y, Z): <br>
-//! i.e.: M * {X,Y,Z}t = Ref.Cross({X, Y ,Z}) <br>
-//!  this matrix is anti symmetric. To apply this matrix to the <br>
-//!  triplet  {XYZ} is the same as to do the cross product between the <br>
-//!  triplet Ref and the triplet {XYZ}. <br>
-//! Note: this matrix is anti-symmetric. <br>
-  Standard_EXPORT     void SetCross(const gp_XYZ& Ref) ;
+    gp_Mat(const Standard_Real a11, const Standard_Real a12, const Standard_Real a13, const Standard_Real a21, const Standard_Real a22, const Standard_Real a23, const Standard_Real a31, const Standard_Real a32, const Standard_Real a33);
   
-//!  Modifies the main diagonal of the matrix. <br>
-//!  <me>.Value (1, 1) = X1 <br>
-//!  <me>.Value (2, 2) = X2 <br>
-//!  <me>.Value (3, 3) = X3 <br>
-//!  The other coefficients of the matrix are not modified. <br>
-        void SetDiagonal(const Standard_Real X1,const Standard_Real X2,const Standard_Real X3) ;
+  //! Creates a matrix.
+  //! Col1, Col2, Col3 are the 3 columns of the matrix.
+  Standard_EXPORT gp_Mat(const gp_XYZ& Col1, const gp_XYZ& Col2, const gp_XYZ& Col3);
   
-//!  Modifies this matrix so that applying it to any number <br>
-//! triple (X, Y, Z) produces the same result as the scalar <br>
-//! product of Ref and the number triple (X, Y, Z): <br>
-//! this * (X,Y,Z) = Ref.(X,Y,Z) <br>
-//! Note: this matrix is symmetric. <br>
-  Standard_EXPORT     void SetDot(const gp_XYZ& Ref) ;
-  //! Modifies this matrix so that it represents the Identity matrix. <br>
-        void SetIdentity() ;
+  //! Assigns the three coordinates of Value to the column of index
+  //! Col of this matrix.
+  //! Raises OutOfRange if Col < 1 or Col > 3.
+  Standard_EXPORT   void SetCol (const Standard_Integer Col, const gp_XYZ& Value) ;
   
-//!  Modifies this matrix so that it represents a rotation. Ang is the angular value in <br>
-//!  radians and the XYZ axis gives the direction of the <br>
-//!  rotation. <br>
-//!  Raises ConstructionError if XYZ.Modulus() <= Resolution() <br>
-  Standard_EXPORT     void SetRotation(const gp_XYZ& Axis,const Standard_Real Ang) ;
-  //! Assigns the three coordinates of Value to the row of index <br>
-//!   Row of this matrix. Raises OutOfRange if Row < 1 or Row > 3. <br>
-  Standard_EXPORT     void SetRow(const Standard_Integer Row,const gp_XYZ& Value) ;
-  //! Assigns the number triples Row1, Row2, Row3 to the three <br>
-//!   rows of this matrix. <br>
-  Standard_EXPORT     void SetRows(const gp_XYZ& Row1,const gp_XYZ& Row2,const gp_XYZ& Row3) ;
+  //! Assigns the number triples Col1, Col2, Col3 to the three
+  //! columns of this matrix.
+  Standard_EXPORT   void SetCols (const gp_XYZ& Col1, const gp_XYZ& Col2, const gp_XYZ& Col3) ;
   
-//!  Modifies the the matrix so that it represents <br>
-//! a scaling transformation, where S is the scale factor. : <br>
-//!           | S    0.0  0.0 | <br>
-//!   <me> =  | 0.0   S   0.0 | <br>
-//!           | 0.0  0.0   S  | <br>
-        void SetScale(const Standard_Real S) ;
-  //! Assigns <Value> to the coefficient of row Row, column Col of   this matrix. <br>
-//! Raises OutOfRange if Row < 1 or Row > 3 or Col < 1 or Col > 3 <br>
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Standard_Real Value) ;
-  //! Returns the column of Col index. <br>
-//!   Raises OutOfRange if Col < 1 or Col > 3 <br>
-  Standard_EXPORT     gp_XYZ Column(const Standard_Integer Col) const;
-  //! Computes the determinant of the matrix. <br>
-        Standard_Real Determinant() const;
-  //! Returns the main diagonal of the matrix. <br>
-  Standard_EXPORT     gp_XYZ Diagonal() const;
-  //! returns the row of Row index. <br>
-//!  Raises OutOfRange if Row < 1 or Row > 3 <br>
-  Standard_EXPORT     gp_XYZ Row(const Standard_Integer Row) const;
-  //! Returns the coefficient of range (Row, Col) <br>
-//!  Raises OutOfRange if Row < 1 or Row > 3 or Col < 1 or Col > 3 <br>
-       const Standard_Real& Value(const Standard_Integer Row,const Standard_Integer Col) const;
-     const Standard_Real& operator()(const Standard_Integer Row,const Standard_Integer Col) const
+
+  //! Modifies the matrix  M so that applying it to any number
+  //! triple (X, Y, Z) produces the same result as the cross
+  //! product of Ref and the number triple (X, Y, Z):
+  //! i.e.: M * {X,Y,Z}t = Ref.Cross({X, Y ,Z})
+  //! this matrix is anti symmetric. To apply this matrix to the
+  //! triplet  {XYZ} is the same as to do the cross product between the
+  //! triplet Ref and the triplet {XYZ}.
+  //! Note: this matrix is anti-symmetric.
+  Standard_EXPORT   void SetCross (const gp_XYZ& Ref) ;
+  
+
+  //! Modifies the main diagonal of the matrix.
+  //! <me>.Value (1, 1) = X1
+  //! <me>.Value (2, 2) = X2
+  //! <me>.Value (3, 3) = X3
+  //! The other coefficients of the matrix are not modified.
+      void SetDiagonal (const Standard_Real X1, const Standard_Real X2, const Standard_Real X3) ;
+  
+
+  //! Modifies this matrix so that applying it to any number
+  //! triple (X, Y, Z) produces the same result as the scalar
+  //! product of Ref and the number triple (X, Y, Z):
+  //! this * (X,Y,Z) = Ref.(X,Y,Z)
+  //! Note: this matrix is symmetric.
+  Standard_EXPORT   void SetDot (const gp_XYZ& Ref) ;
+  
+  //! Modifies this matrix so that it represents the Identity matrix.
+      void SetIdentity() ;
+  
+
+  //! Modifies this matrix so that it represents a rotation. Ang is the angular value in
+  //! radians and the XYZ axis gives the direction of the
+  //! rotation.
+  //! Raises ConstructionError if XYZ.Modulus() <= Resolution()
+  Standard_EXPORT   void SetRotation (const gp_XYZ& Axis, const Standard_Real Ang) ;
+  
+  //! Assigns the three coordinates of Value to the row of index
+  //! Row of this matrix. Raises OutOfRange if Row < 1 or Row > 3.
+  Standard_EXPORT   void SetRow (const Standard_Integer Row, const gp_XYZ& Value) ;
+  
+  //! Assigns the number triples Row1, Row2, Row3 to the three
+  //! rows of this matrix.
+  Standard_EXPORT   void SetRows (const gp_XYZ& Row1, const gp_XYZ& Row2, const gp_XYZ& Row3) ;
+  
+
+  //! Modifies the the matrix so that it represents
+  //! a scaling transformation, where S is the scale factor. :
+  //! | S    0.0  0.0 |
+  //! <me> =  | 0.0   S   0.0 |
+  //! | 0.0  0.0   S  |
+      void SetScale (const Standard_Real S) ;
+  
+  //! Assigns <Value> to the coefficient of row Row, column Col of   this matrix.
+  //! Raises OutOfRange if Row < 1 or Row > 3 or Col < 1 or Col > 3
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Standard_Real Value) ;
+  
+  //! Returns the column of Col index.
+  //! Raises OutOfRange if Col < 1 or Col > 3
+  Standard_EXPORT   gp_XYZ Column (const Standard_Integer Col)  const;
+  
+  //! Computes the determinant of the matrix.
+      Standard_Real Determinant()  const;
+  
+  //! Returns the main diagonal of the matrix.
+  Standard_EXPORT   gp_XYZ Diagonal()  const;
+  
+  //! returns the row of Row index.
+  //! Raises OutOfRange if Row < 1 or Row > 3
+  Standard_EXPORT   gp_XYZ Row (const Standard_Integer Row)  const;
+  
+  //! Returns the coefficient of range (Row, Col)
+  //! Raises OutOfRange if Row < 1 or Row > 3 or Col < 1 or Col > 3
+     const  Standard_Real& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
+   const  Standard_Real& operator() (const Standard_Integer Row, const Standard_Integer Col)  const
 {
   return Value(Row,Col);
 }
-  //! Returns the coefficient of range (Row, Col) <br>
-//!  Raises OutOfRange if Row < 1 or Row > 3 or Col < 1 or Col > 3 <br>
-        Standard_Real& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
-      Standard_Real& operator()(const Standard_Integer Row,const Standard_Integer Col) 
+  
+  //! Returns the coefficient of range (Row, Col)
+  //! Raises OutOfRange if Row < 1 or Row > 3 or Col < 1 or Col > 3
+      Standard_Real& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
+    Standard_Real& operator() (const Standard_Integer Row, const Standard_Integer Col) 
 {
   return ChangeValue(Row,Col);
 }
   
-//!  The Gauss LU decomposition is used to invert the matrix <br>
-//!  (see Math package) so the matrix is considered as singular if <br>
-//!  the largest pivot found is lower or equal to Resolution from gp. <br>
-        Standard_Boolean IsSingular() const;
+
+  //! The Gauss LU decomposition is used to invert the matrix
+  //! (see Math package) so the matrix is considered as singular if
+  //! the largest pivot found is lower or equal to Resolution from gp.
+      Standard_Boolean IsSingular()  const;
   
-        void Add(const gp_Mat& Other) ;
-      void operator +=(const gp_Mat& Other) 
+      void Add (const gp_Mat& Other) ;
+    void operator += (const gp_Mat& Other) 
 {
   Add(Other);
 }
-  //! Computes the sum of this matrix and <br>
-//!  the matrix Other for each coefficient of the matrix : <br>
-//!  <me>.Coef(i,j) + <Other>.Coef(i,j) <br>
-        gp_Mat Added(const gp_Mat& Other) const;
-      gp_Mat operator +(const gp_Mat& Other) const
+  
+  //! Computes the sum of this matrix and
+  //! the matrix Other for each coefficient of the matrix :
+  //! <me>.Coef(i,j) + <Other>.Coef(i,j)
+      gp_Mat Added (const gp_Mat& Other)  const;
+    gp_Mat operator + (const gp_Mat& Other)  const
 {
   return Added(Other);
 }
   
-        void Divide(const Standard_Real Scalar) ;
-      void operator /=(const Standard_Real Scalar) 
+      void Divide (const Standard_Real Scalar) ;
+    void operator /= (const Standard_Real Scalar) 
 {
   Divide(Scalar);
 }
-  //! Divides all the coefficients of the matrix by Scalar <br>
-        gp_Mat Divided(const Standard_Real Scalar) const;
-      gp_Mat operator /(const Standard_Real Scalar) const
+  
+  //! Divides all the coefficients of the matrix by Scalar
+      gp_Mat Divided (const Standard_Real Scalar)  const;
+    gp_Mat operator / (const Standard_Real Scalar)  const
 {
   return Divided(Scalar);
 }
   
-  Standard_EXPORT     void Invert() ;
+  Standard_EXPORT   void Invert() ;
   
-//!  Inverses the matrix and raises if the matrix is singular. <br>
-//! -   Invert assigns the result to this matrix, while <br>
-//! -   Inverted creates a new one. <br>
-//! Warning <br>
-//! The Gauss LU decomposition is used to invert the matrix. <br>
-//! Consequently, the matrix is considered as singular if the <br>
-//! largest pivot found is less than or equal to gp::Resolution(). <br>
-//! Exceptions <br>
-//! Standard_ConstructionError if this matrix is singular, <br>
-//! and therefore cannot be inverted. <br>
-  Standard_EXPORT     gp_Mat Inverted() const;
+
+  //! Inverses the matrix and raises if the matrix is singular.
+  //! -   Invert assigns the result to this matrix, while
+  //! -   Inverted creates a new one.
+  //! Warning
+  //! The Gauss LU decomposition is used to invert the matrix.
+  //! Consequently, the matrix is considered as singular if the
+  //! largest pivot found is less than or equal to gp::Resolution().
+  //! Exceptions
+  //! Standard_ConstructionError if this matrix is singular,
+  //! and therefore cannot be inverted.
+  Standard_EXPORT   gp_Mat Inverted()  const;
   
-//!  Computes  the product of two matrices <me> * <Other> <br>
-        gp_Mat Multiplied(const gp_Mat& Other) const;
-      gp_Mat operator *(const gp_Mat& Other) const
+
+  //! Computes  the product of two matrices <me> * <Other>
+      gp_Mat Multiplied (const gp_Mat& Other)  const;
+    gp_Mat operator * (const gp_Mat& Other)  const
 {
   return Multiplied(Other);
 }
-  //! Computes the product of two matrices <me> = <Other> * <me>. <br>
-        void Multiply(const gp_Mat& Other) ;
-      void operator *=(const gp_Mat& Other) 
+  
+  //! Computes the product of two matrices <me> = <Other> * <me>.
+      void Multiply (const gp_Mat& Other) ;
+    void operator *= (const gp_Mat& Other) 
 {
   Multiply(Other);
 }
   
-        void PreMultiply(const gp_Mat& Other) ;
+      void PreMultiply (const gp_Mat& Other) ;
   
-        gp_Mat Multiplied(const Standard_Real Scalar) const;
-      gp_Mat operator *(const Standard_Real Scalar) const
+      gp_Mat Multiplied (const Standard_Real Scalar)  const;
+    gp_Mat operator * (const Standard_Real Scalar)  const
 {
   return Multiplied(Scalar);
 }
   
-//!  Multiplies all the coefficients of the matrix by Scalar <br>
-        void Multiply(const Standard_Real Scalar) ;
-      void operator *=(const Standard_Real Scalar) 
+
+  //! Multiplies all the coefficients of the matrix by Scalar
+      void Multiply (const Standard_Real Scalar) ;
+    void operator *= (const Standard_Real Scalar) 
 {
   Multiply(Scalar);
 }
   
-  Standard_EXPORT     void Power(const Standard_Integer N) ;
+  Standard_EXPORT   void Power (const Standard_Integer N) ;
   
-//!  Computes <me> = <me> * <me> * .......* <me>,   N time. <br>
-//!  if N = 0 <me> = Identity <br>
-//!  if N < 0 <me> = <me>.Invert() *...........* <me>.Invert(). <br>
-//!  If N < 0 an exception will be raised if the matrix is not <br>
-//!  inversible <br>
-        gp_Mat Powered(const Standard_Integer N) const;
+
+  //! Computes <me> = <me> * <me> * .......* <me>,   N time.
+  //! if N = 0 <me> = Identity
+  //! if N < 0 <me> = <me>.Invert() *...........* <me>.Invert().
+  //! If N < 0 an exception will be raised if the matrix is not
+  //! inversible
+      gp_Mat Powered (const Standard_Integer N)  const;
   
-        void Subtract(const gp_Mat& Other) ;
-      void operator -=(const gp_Mat& Other) 
+      void Subtract (const gp_Mat& Other) ;
+    void operator -= (const gp_Mat& Other) 
 {
   Subtract(Other);
 }
   
-//!  cOmputes for each coefficient of the matrix : <br>
-//!  <me>.Coef(i,j) - <Other>.Coef(i,j) <br>
-        gp_Mat Subtracted(const gp_Mat& Other) const;
-      gp_Mat operator -(const gp_Mat& Other) const
+
+  //! cOmputes for each coefficient of the matrix :
+  //! <me>.Coef(i,j) - <Other>.Coef(i,j)
+      gp_Mat Subtracted (const gp_Mat& Other)  const;
+    gp_Mat operator - (const gp_Mat& Other)  const
 {
   return Subtracted(Other);
 }
   
-        void Transpose() ;
+      void Transpose() ;
   
-//!  Transposes the matrix. A(j, i) -> A (i, j) <br>
-        gp_Mat Transposed() const;
+
+  //! Transposes the matrix. A(j, i) -> A (i, j)
+      gp_Mat Transposed()  const;
     Standard_Real& _CSFDB_Getgp_Matmatrix(const Standard_Integer i1,const Standard_Integer i2) { return matrix[i1][i2]; }
 
 friend class gp_XYZ;
@@ -251,7 +265,7 @@ protected:
 private: 
 
 
-Standard_Real matrix[3][3];
+  Standard_Real matrix[3][3];
 
 
 };
@@ -261,7 +275,6 @@ Standard_Real matrix[3][3];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gp_Mat_HeaderFile

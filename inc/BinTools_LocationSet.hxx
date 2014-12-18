@@ -6,65 +6,57 @@
 #ifndef _BinTools_LocationSet_HeaderFile
 #define _BinTools_LocationSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopLoc_IndexedMapOfLocation_HeaderFile
 #include <TopLoc_IndexedMapOfLocation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Standard_IStream_HeaderFile
 #include <Standard_IStream.hxx>
-#endif
 class Standard_OutOfRange;
 class TopLoc_Location;
 
 
-//! The class LocationSet stores a set of location in <br>
-//!          a relocatable state. <br>
-//! <br>
-//!          It can be created from Locations. <br>
-//! <br>
-//!          It can create Locations. <br>
-class BinTools_LocationSet  {
+//! The class LocationSet stores a set of location in
+//! a relocatable state.
+//!
+//! It can be created from Locations.
+//!
+//! It can create Locations.
+class BinTools_LocationSet 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns an empty set of locations. <br>
-  Standard_EXPORT   BinTools_LocationSet();
-  //! Clears the content of the set. <br>
-  Standard_EXPORT     void Clear() ;
-  //! Incorporate a new Location in the  set and returns <br>
-//!          its index. <br>
-  Standard_EXPORT     Standard_Integer Add(const TopLoc_Location& L) ;
-  //! Returns the location of index <I>. <br>
-//! <br>
-  Standard_EXPORT    const TopLoc_Location& Location(const Standard_Integer I) const;
-  //! Returns the index of <L>. <br>
-  Standard_EXPORT     Standard_Integer Index(const TopLoc_Location& L) const;
-  //! Returns number of locations. <br>
-  Standard_EXPORT     Standard_Integer NbLocations() const;
-  //! Writes the content of  me  on the stream <OS> in a <br>
-//!          format that can be read back by Read. <br>
-  Standard_EXPORT     void Write(Standard_OStream& OS) const;
-  //! Reads the content of me from the  stream  <IS>. me <br>
-//!          is first cleared. <br>
-//! <br>
-  Standard_EXPORT     void Read(Standard_IStream& IS) ;
-
+  
+  //! Returns an empty set of locations.
+  Standard_EXPORT BinTools_LocationSet();
+  
+  //! Clears the content of the set.
+  Standard_EXPORT   void Clear() ;
+  
+  //! Incorporate a new Location in the  set and returns
+  //! its index.
+  Standard_EXPORT   Standard_Integer Add (const TopLoc_Location& L) ;
+  
+  //! Returns the location of index <I>.
+  Standard_EXPORT  const  TopLoc_Location& Location (const Standard_Integer I)  const;
+  
+  //! Returns the index of <L>.
+  Standard_EXPORT   Standard_Integer Index (const TopLoc_Location& L)  const;
+  
+  //! Returns number of locations.
+  Standard_EXPORT   Standard_Integer NbLocations()  const;
+  
+  //! Writes the content of  me  on the stream <OS> in a
+  //! format that can be read back by Read.
+  Standard_EXPORT   void Write (Standard_OStream& OS)  const;
+  
+  //! Reads the content of me from the  stream  <IS>. me
+  //! is first cleared.
+  Standard_EXPORT   void Read (Standard_IStream& IS) ;
 
 
 
@@ -79,7 +71,7 @@ private:
 
 
 
-TopLoc_IndexedMapOfLocation myMap;
+  TopLoc_IndexedMapOfLocation myMap;
 
 
 };
@@ -88,7 +80,6 @@ TopLoc_IndexedMapOfLocation myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BinTools_LocationSet_HeaderFile

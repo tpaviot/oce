@@ -6,38 +6,27 @@
 #ifndef _FEmTool_SequenceNodeOfSeqOfLinConstr_HeaderFile
 #define _FEmTool_SequenceNodeOfSeqOfLinConstr_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_FEmTool_SequenceNodeOfSeqOfLinConstr_HeaderFile
 #include <Handle_FEmTool_SequenceNodeOfSeqOfLinConstr.hxx>
-#endif
 
-#ifndef _FEmTool_ListOfVectors_HeaderFile
 #include <FEmTool_ListOfVectors.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class FEmTool_ListOfVectors;
 class FEmTool_SeqOfLinConstr;
 
 
 
-class FEmTool_SequenceNodeOfSeqOfLinConstr : public TCollection_SeqNode {
+class FEmTool_SequenceNodeOfSeqOfLinConstr : public TCollection_SeqNode
+{
 
 public:
 
   
-      FEmTool_SequenceNodeOfSeqOfLinConstr(const FEmTool_ListOfVectors& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    FEmTool_SequenceNodeOfSeqOfLinConstr(const FEmTool_ListOfVectors& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        FEmTool_ListOfVectors& Value() const;
+      FEmTool_ListOfVectors& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-FEmTool_ListOfVectors myValue;
+  FEmTool_ListOfVectors myValue;
 
 
 };
@@ -78,7 +67,6 @@ FEmTool_ListOfVectors myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _FEmTool_SequenceNodeOfSeqOfLinConstr_HeaderFile

@@ -5,26 +5,16 @@
 
 #include <TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TPrsStd_Driver_HeaderFile
 #include <TPrsStd_Driver.hxx>
-#endif
-#ifndef _TPrsStd_DataMapOfGUIDDriver_HeaderFile
 #include <TPrsStd_DataMapOfGUIDDriver.hxx>
-#endif
-#ifndef _TPrsStd_DataMapNodeOfDataMapOfGUIDDriver_HeaderFile
 #include <TPrsStd_DataMapNodeOfDataMapOfGUIDDriver.hxx>
-#endif
  
 
 #define TheKey Standard_GUID
 #define TheKey_hxx <Standard_GUID.hxx>
-#define TheItem Handle_TPrsStd_Driver
+#define TheItem Handle(TPrsStd_Driver)
 #define TheItem_hxx <TPrsStd_Driver.hxx>
 #define Hasher Standard_GUID
 #define Hasher_hxx <Standard_GUID.hxx>

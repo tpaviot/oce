@@ -5,27 +5,15 @@
 
 #include <BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _MAT_BasicElt_HeaderFile
 #include <MAT_BasicElt.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _BRepMAT2d_DataMapOfBasicEltShape_HeaderFile
 #include <BRepMAT2d_DataMapOfBasicEltShape.hxx>
-#endif
-#ifndef _BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape_HeaderFile
 #include <BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.hxx>
-#endif
  
 
-#define TheKey Handle_MAT_BasicElt
+#define TheKey Handle(MAT_BasicElt)
 #define TheKey_hxx <MAT_BasicElt.hxx>
 #define TheItem TopoDS_Shape
 #define TheItem_hxx <TopoDS_Shape.hxx>

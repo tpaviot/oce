@@ -1,33 +1,11 @@
-#ifndef _IGESData_IGESModel_HeaderFile
 #include <IGESData_IGESModel.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <TColStd_HSequenceOfHAsciiString.hxx>
-#endif
-#ifndef _Interface_InterfaceMismatch_HeaderFile
 #include <Interface_InterfaceMismatch.hxx>
-#endif
-#ifndef _Interface_FloatWriter_HeaderFile
 #include <Interface_FloatWriter.hxx>
-#endif
-#ifndef _IGESData_Protocol_HeaderFile
 #include <IGESData_Protocol.hxx>
-#endif
-#ifndef _IGESData_GlobalSection_HeaderFile
 #include <IGESData_GlobalSection.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _IGESData_IGESWriter_HeaderFile
 #include <IGESData_IGESWriter.hxx>
-#endif

@@ -5,22 +5,12 @@
 
 #include <ChFiDS_HData.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _ChFiDS_SurfData_HeaderFile
 #include <ChFiDS_SurfData.hxx>
-#endif
-#ifndef _ChFiDS_SequenceOfSurfData_HeaderFile
 #include <ChFiDS_SequenceOfSurfData.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(ChFiDS_HData,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(ChFiDS_HData)
 
 
-#define Item Handle_ChFiDS_SurfData
+#define Item Handle(ChFiDS_SurfData)
 #define Item_hxx <ChFiDS_SurfData.hxx>
 #define TheSequence ChFiDS_SequenceOfSurfData
 #define TheSequence_hxx <ChFiDS_SequenceOfSurfData.hxx>

@@ -6,14 +6,13 @@
 #ifndef _PCollection_AccessMode_HeaderFile
 #define _PCollection_AccessMode_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum PCollection_AccessMode {
+
+enum PCollection_AccessMode
+{
 PCollection_Read,
 PCollection_Update
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _PCollection_AccessMode_HeaderFile

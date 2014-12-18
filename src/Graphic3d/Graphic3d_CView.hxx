@@ -16,7 +16,10 @@
 
 #include <InterfaceGraphic_Graphic3d.hxx>
 #include <InterfaceGraphic_Visual3d.hxx>
-#include <Handle_Graphic3d_TextureEnv.hxx>
+#include <Graphic3d_RenderingParams.hxx>
+#include <Graphic3d_TextureEnv.hxx>
+#include <Graphic3d_Camera.hxx>
+
 #include <Graphic3d_CLight.hxx>
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
 
@@ -71,6 +74,8 @@ public:
   int   SurfaceDetail;
 
   Graphic3d_SequenceOfHClipPlane ClipPlanes;
+
+  Handle(Graphic3d_Camera) Camera;
 };
 
 class Graphic3d_CView
@@ -88,21 +93,14 @@ public:
     ptrUnderLayer (NULL),
     ptrOverLayer  (NULL),
     Backfacing  (0),
-	GContext (NULL),
+    GContext (NULL),
     GDisplayCB  (NULL),
     GClientData (NULL),
     ptrFBO (NULL),
     WasRedrawnGL (0),
-    IsRaytracing (0),
-    IsShadowsEnabled (1),
-    IsReflectionsEnabled (1),
-    IsAntialiasingEnabled (0)
+    IsCullingEnabled (Standard_True)
   {
-    memset(&Orientation,0,sizeof(Orientation));
-	memset(&Mapping,0,sizeof(Mapping));
-	memset(&OrientationReset,0,sizeof(OrientationReset));
-	memset(&MappingReset,0,sizeof(MappingReset));
-	memset(&DefWindow,0,sizeof(DefWindow));
+    memset (&DefWindow, 0, sizeof(DefWindow));
   }
 
 public:
@@ -115,12 +113,6 @@ public:
   int   IsOpen;
 
   int   Active;
-
-  CALL_DEF_VIEWORIENTATION Orientation;
-  CALL_DEF_VIEWMAPPING     Mapping;
-
-  CALL_DEF_VIEWORIENTATION OrientationReset;
-  CALL_DEF_VIEWMAPPING     MappingReset;
 
   CALL_DEF_VIEWCONTEXT     Context;
 
@@ -140,20 +132,12 @@ public:
   //! Was the window redrawn by standard OpenGL?
   mutable int WasRedrawnGL;
 
-  //! Enables/disables OpenCL-based ray-tracing.
-  int IsRaytracing;
+  //! Specifies rendering parameters and effects.
+  Graphic3d_RenderingParams RenderParams;
 
-  //! Enables/disables ray-traced sharp shadows.
-  int IsShadowsEnabled;
-  
-  //! Enables/disables ray-traced reflections.
-  int IsReflectionsEnabled;
-  
-  //! Enables/disables ray-traced adaptive anti-aliasing.
-  int IsAntialiasingEnabled;
+  //! Enables/disables frustum culling.
+  Standard_Boolean IsCullingEnabled;
 
 };
-
-const Handle(Standard_Type)& TYPE(Graphic3d_CView);
 
 #endif // Graphic3d_CView_HeaderFile

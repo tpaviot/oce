@@ -6,33 +6,20 @@
 #ifndef _Storage_StreamTypeMismatchError_HeaderFile
 #define _Storage_StreamTypeMismatchError_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Storage_StreamReadError_HeaderFile
 #include <Storage_StreamReadError.hxx>
-#endif
-#ifndef _Handle_Storage_StreamTypeMismatchError_HeaderFile
 #include <Handle_Storage_StreamTypeMismatchError.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_Storage_StreamTypeMismatchError
-#define Storage_StreamTypeMismatchError_Raise_if(CONDITION,MESSAGE) \
+  #define Storage_StreamTypeMismatchError_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) Storage_StreamTypeMismatchError::Raise(MESSAGE);
 #else
-#define Storage_StreamTypeMismatchError_Raise_if(CONDITION,MESSAGE)
+  #define Storage_StreamTypeMismatchError_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(Storage_StreamTypeMismatchError,Storage_StreamReadError)
+DEFINE_STANDARD_EXCEPTION(Storage_StreamTypeMismatchError, Storage_StreamReadError)
 
-#endif
+#endif // _Storage_StreamTypeMismatchError_HeaderFile

@@ -1,6 +1,1 @@
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _math_FunctionSet_HeaderFile
 #include <math_FunctionSet.hxx>
-#endif

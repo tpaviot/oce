@@ -6,38 +6,27 @@
 #ifndef _MAT_SequenceNodeOfSequenceOfArc_HeaderFile
 #define _MAT_SequenceNodeOfSequenceOfArc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT_SequenceNodeOfSequenceOfArc_HeaderFile
 #include <Handle_MAT_SequenceNodeOfSequenceOfArc.hxx>
-#endif
 
-#ifndef _Handle_MAT_Arc_HeaderFile
 #include <Handle_MAT_Arc.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class MAT_Arc;
 class MAT_SequenceOfArc;
 
 
 
-class MAT_SequenceNodeOfSequenceOfArc : public TCollection_SeqNode {
+class MAT_SequenceNodeOfSequenceOfArc : public TCollection_SeqNode
+{
 
 public:
 
   
-      MAT_SequenceNodeOfSequenceOfArc(const Handle(MAT_Arc)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    MAT_SequenceNodeOfSequenceOfArc(const Handle(MAT_Arc)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_MAT_Arc& Value() const;
+      Handle(MAT_Arc)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_MAT_Arc myValue;
+  Handle(MAT_Arc) myValue;
 
 
 };
 
-#define SeqItem Handle_MAT_Arc
+#define SeqItem Handle(MAT_Arc)
 #define SeqItem_hxx <MAT_Arc.hxx>
 #define TCollection_SequenceNode MAT_SequenceNodeOfSequenceOfArc
 #define TCollection_SequenceNode_hxx <MAT_SequenceNodeOfSequenceOfArc.hxx>
@@ -78,7 +67,6 @@ Handle_MAT_Arc myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT_SequenceNodeOfSequenceOfArc_HeaderFile

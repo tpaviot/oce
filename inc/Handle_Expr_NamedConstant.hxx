@@ -6,22 +6,15 @@
 #ifndef _Handle_Expr_NamedConstant_HeaderFile
 #define _Handle_Expr_NamedConstant_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Expr_NamedExpression_HeaderFile
 #include <Handle_Expr_NamedExpression.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Expr_NamedExpression);
 class Expr_NamedConstant;
 
-DEFINE_STANDARD_HANDLE(Expr_NamedConstant,Expr_NamedExpression)
+DEFINE_STANDARD_HANDLE(Expr_NamedConstant, Expr_NamedExpression)
 
-#endif
+#endif // _Handle_Expr_NamedConstant_HeaderFile

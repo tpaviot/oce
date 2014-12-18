@@ -6,25 +6,13 @@
 #ifndef _StepData_HArray1OfField_HeaderFile
 #define _StepData_HArray1OfField_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_HArray1OfField_HeaderFile
 #include <Handle_StepData_HArray1OfField.hxx>
-#endif
 
-#ifndef _StepData_Array1OfField_HeaderFile
 #include <StepData_Array1OfField.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepData_Array1OfField;
 
 
 
-class StepData_HArray1OfField : public MMgt_TShared {
+class StepData_HArray1OfField : public MMgt_TShared
+{
 
 public:
 
   
-      StepData_HArray1OfField(const Standard_Integer Low,const Standard_Integer Up);
+    StepData_HArray1OfField(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepData_HArray1OfField(const Standard_Integer Low,const Standard_Integer Up,const StepData_Field& V);
+    StepData_HArray1OfField(const Standard_Integer Low, const Standard_Integer Up, const StepData_Field& V);
   
-        void Init(const StepData_Field& V) ;
+      void Init (const StepData_Field& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepData_Field& Value) ;
+      void SetValue (const Standard_Integer Index, const StepData_Field& Value) ;
   
-       const StepData_Field& Value(const Standard_Integer Index) const;
+     const  StepData_Field& Value (const Standard_Integer Index)  const;
   
-        StepData_Field& ChangeValue(const Standard_Integer Index) ;
+      StepData_Field& ChangeValue (const Standard_Integer Index) ;
   
-       const StepData_Array1OfField& Array1() const;
+     const  StepData_Array1OfField& Array1()  const;
   
-        StepData_Array1OfField& ChangeArray1() ;
+      StepData_Array1OfField& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepData_Array1OfField myArray;
+  StepData_Array1OfField myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepData_Array1OfField myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_HArray1OfField_HeaderFile

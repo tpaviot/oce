@@ -5,21 +5,13 @@
 
 #include <MDF_DriverListOfASDriverTable.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _MDF_ListIteratorOfDriverListOfASDriverTable_HeaderFile
 #include <MDF_ListIteratorOfDriverListOfASDriverTable.hxx>
-#endif
-#ifndef _MDF_ASDriver_HeaderFile
 #include <MDF_ASDriver.hxx>
-#endif
-#ifndef _MDF_ListNodeOfDriverListOfASDriverTable_HeaderFile
 #include <MDF_ListNodeOfDriverListOfASDriverTable.hxx>
-#endif
  
 
-#define Item Handle_MDF_ASDriver
+#define Item Handle(MDF_ASDriver)
 #define Item_hxx <MDF_ASDriver.hxx>
 #define TCollection_ListNode MDF_ListNodeOfDriverListOfASDriverTable
 #define TCollection_ListNode_hxx <MDF_ListNodeOfDriverListOfASDriverTable.hxx>

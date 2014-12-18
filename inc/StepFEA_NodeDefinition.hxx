@@ -6,28 +6,22 @@
 #ifndef _StepFEA_NodeDefinition_HeaderFile
 #define _StepFEA_NodeDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_NodeDefinition_HeaderFile
 #include <Handle_StepFEA_NodeDefinition.hxx>
-#endif
 
-#ifndef _StepRepr_ShapeAspect_HeaderFile
 #include <StepRepr_ShapeAspect.hxx>
-#endif
 
 
-//! Representation of STEP entity NodeDefinition <br>
-class StepFEA_NodeDefinition : public StepRepr_ShapeAspect {
+//! Representation of STEP entity NodeDefinition
+class StepFEA_NodeDefinition : public StepRepr_ShapeAspect
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_NodeDefinition();
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_NodeDefinition();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_NodeDefinition_HeaderFile

@@ -6,32 +6,27 @@
 #ifndef _SWDRAW_ShapeAnalysis_HeaderFile
 #define _SWDRAW_ShapeAnalysis_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-class Draw_Interpretor;
+#include <Draw_Interpretor.hxx>
 
 
-//! Contains commands to activate package ShapeAnalysis <br>
-//!          List of DRAW commands and corresponding functionalities: <br>
-//!          tolerance - ShapeAnalysis_ShapeTolerance <br>
-//!          projcurve - ShapeAnalysis_Curve <br>
-//!          projface  - ShapeAnalysis_Surface <br>
-class SWDRAW_ShapeAnalysis  {
+//! Contains commands to activate package ShapeAnalysis
+//! List of DRAW commands and corresponding functionalities:
+//! tolerance - ShapeAnalysis_ShapeTolerance
+//! projcurve - ShapeAnalysis_Curve
+//! projface  - ShapeAnalysis_Surface
+class SWDRAW_ShapeAnalysis 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Loads commands defined in ShapeAnalysis <br>
-  Standard_EXPORT   static  void InitCommands(Draw_Interpretor& theCommands) ;
-
+  
+  //! Loads commands defined in ShapeAnalysis
+  Standard_EXPORT static   void InitCommands (Draw_Interpretor& theCommands) ;
 
 
 
@@ -54,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SWDRAW_ShapeAnalysis_HeaderFile

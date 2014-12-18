@@ -6,39 +6,28 @@
 #ifndef _IntTools_ListNodeOfListOfBox_HeaderFile
 #define _IntTools_ListNodeOfListOfBox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntTools_ListNodeOfListOfBox_HeaderFile
 #include <Handle_IntTools_ListNodeOfListOfBox.hxx>
-#endif
 
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Bnd_Box;
 class IntTools_ListOfBox;
 class IntTools_ListIteratorOfListOfBox;
 
 
 
-class IntTools_ListNodeOfListOfBox : public TCollection_MapNode {
+class IntTools_ListNodeOfListOfBox : public TCollection_MapNode
+{
 
 public:
 
   
-      IntTools_ListNodeOfListOfBox(const Bnd_Box& I,const TCollection_MapNodePtr& n);
+    IntTools_ListNodeOfListOfBox(const Bnd_Box& I, const TCollection_MapNodePtr& n);
   
-        Bnd_Box& Value() const;
+      Bnd_Box& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-Bnd_Box myValue;
+  Bnd_Box myValue;
 
 
 };
@@ -83,7 +72,6 @@ Bnd_Box myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_ListNodeOfListOfBox_HeaderFile

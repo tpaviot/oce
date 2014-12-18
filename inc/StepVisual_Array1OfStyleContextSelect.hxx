@@ -6,25 +6,13 @@
 #ifndef _StepVisual_Array1OfStyleContextSelect_HeaderFile
 #define _StepVisual_Array1OfStyleContextSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class StepVisual_StyleContextSelect;
 
 
 
-class StepVisual_Array1OfStyleContextSelect  {
+class StepVisual_Array1OfStyleContextSelect 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepVisual_Array1OfStyleContextSelect(const Standard_Integer Low,const Standard_Integer Up);
+    StepVisual_Array1OfStyleContextSelect(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepVisual_Array1OfStyleContextSelect(const StepVisual_StyleContextSelect& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepVisual_Array1OfStyleContextSelect(const StepVisual_StyleContextSelect& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const StepVisual_StyleContextSelect& V) ;
+  Standard_EXPORT   void Init (const StepVisual_StyleContextSelect& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepVisual_Array1OfStyleContextSelect()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepVisual_Array1OfStyleContextSelect& Assign(const StepVisual_Array1OfStyleContextSelect& Other) ;
-   const StepVisual_Array1OfStyleContextSelect& operator =(const StepVisual_Array1OfStyleContextSelect& Other) 
+  Standard_EXPORT  const  StepVisual_Array1OfStyleContextSelect& Assign (const StepVisual_Array1OfStyleContextSelect& Other) ;
+ const  StepVisual_Array1OfStyleContextSelect& operator = (const StepVisual_Array1OfStyleContextSelect& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepVisual_StyleContextSelect& Value) ;
+      void SetValue (const Standard_Integer Index, const StepVisual_StyleContextSelect& Value) ;
   
-       const StepVisual_StyleContextSelect& Value(const Standard_Integer Index) const;
-     const StepVisual_StyleContextSelect& operator ()(const Standard_Integer Index) const
+     const  StepVisual_StyleContextSelect& Value (const Standard_Integer Index)  const;
+   const  StepVisual_StyleContextSelect& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        StepVisual_StyleContextSelect& ChangeValue(const Standard_Integer Index) ;
-      StepVisual_StyleContextSelect& operator ()(const Standard_Integer Index) 
+      StepVisual_StyleContextSelect& ChangeValue (const Standard_Integer Index) ;
+    StepVisual_StyleContextSelect& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepVisual_Array1OfStyleContextSelect(const StepVisual_Array1OfStyleContextSelect& AnArray);
+  Standard_EXPORT StepVisual_Array1OfStyleContextSelect(const StepVisual_Array1OfStyleContextSelect& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_Array1OfStyleContextSelect_HeaderFile

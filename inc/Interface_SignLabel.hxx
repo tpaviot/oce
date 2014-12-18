@@ -6,41 +6,32 @@
 #ifndef _Interface_SignLabel_HeaderFile
 #define _Interface_SignLabel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_SignLabel_HeaderFile
 #include <Handle_Interface_SignLabel.hxx>
-#endif
 
-#ifndef _MoniTool_SignText_HeaderFile
 #include <MoniTool_SignText.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class TCollection_AsciiString;
 class Standard_Transient;
 
 
-//! Signature to give the Label from the Model <br>
-class Interface_SignLabel : public MoniTool_SignText {
+//! Signature to give the Label from the Model
+class Interface_SignLabel : public MoniTool_SignText
+{
 
 public:
 
   
-  Standard_EXPORT   Interface_SignLabel();
-  //! Returns "Entity Label" <br>
-  Standard_EXPORT     Standard_CString Name() const;
-  //! Considers context as an InterfaceModel and returns the Label <br>
-//!           computed by it <br>
-  Standard_EXPORT     TCollection_AsciiString Text(const Handle(Standard_Transient)& ent,const Handle(Standard_Transient)& context) const;
+  Standard_EXPORT Interface_SignLabel();
+  
+  //! Returns "Entity Label"
+  Standard_EXPORT   Standard_CString Name()  const;
+  
+  //! Considers context as an InterfaceModel and returns the Label
+  //! computed by it
+  Standard_EXPORT   TCollection_AsciiString Text (const Handle(Standard_Transient)& ent, const Handle(Standard_Transient)& context)  const;
 
 
 
@@ -63,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_SignLabel_HeaderFile

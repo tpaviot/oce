@@ -5,19 +5,11 @@
 
 #include <PColgp_VArrayNodeOfFieldOfHArray1OfPnt2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray1OfPnt2d_HeaderFile
 #include <PColgp_FieldOfHArray1OfPnt2d.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray1OfPnt2d_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray1OfPnt2d.hxx>
-#endif
 
  
 

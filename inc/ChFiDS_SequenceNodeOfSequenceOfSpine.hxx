@@ -6,38 +6,27 @@
 #ifndef _ChFiDS_SequenceNodeOfSequenceOfSpine_HeaderFile
 #define _ChFiDS_SequenceNodeOfSequenceOfSpine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ChFiDS_SequenceNodeOfSequenceOfSpine_HeaderFile
 #include <Handle_ChFiDS_SequenceNodeOfSequenceOfSpine.hxx>
-#endif
 
-#ifndef _Handle_ChFiDS_Spine_HeaderFile
 #include <Handle_ChFiDS_Spine.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class ChFiDS_Spine;
 class ChFiDS_SequenceOfSpine;
 
 
 
-class ChFiDS_SequenceNodeOfSequenceOfSpine : public TCollection_SeqNode {
+class ChFiDS_SequenceNodeOfSequenceOfSpine : public TCollection_SeqNode
+{
 
 public:
 
   
-      ChFiDS_SequenceNodeOfSequenceOfSpine(const Handle(ChFiDS_Spine)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    ChFiDS_SequenceNodeOfSequenceOfSpine(const Handle(ChFiDS_Spine)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_ChFiDS_Spine& Value() const;
+      Handle(ChFiDS_Spine)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_ChFiDS_Spine myValue;
+  Handle(ChFiDS_Spine) myValue;
 
 
 };
 
-#define SeqItem Handle_ChFiDS_Spine
+#define SeqItem Handle(ChFiDS_Spine)
 #define SeqItem_hxx <ChFiDS_Spine.hxx>
 #define TCollection_SequenceNode ChFiDS_SequenceNodeOfSequenceOfSpine
 #define TCollection_SequenceNode_hxx <ChFiDS_SequenceNodeOfSequenceOfSpine.hxx>
@@ -78,7 +67,6 @@ Handle_ChFiDS_Spine myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_SequenceNodeOfSequenceOfSpine_HeaderFile

@@ -1,9 +1,3 @@
-#ifndef _StepGeom_SurfaceOfLinearExtrusion_HeaderFile
 #include <StepGeom_SurfaceOfLinearExtrusion.hxx>
-#endif
-#ifndef _Geom_SurfaceOfLinearExtrusion_HeaderFile
 #include <Geom_SurfaceOfLinearExtrusion.hxx>
-#endif
-#ifndef _StepToGeom_MakeSurfaceOfLinearExtrusion_HeaderFile
 #include <StepToGeom_MakeSurfaceOfLinearExtrusion.hxx>
-#endif

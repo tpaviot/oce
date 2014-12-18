@@ -6,75 +6,60 @@
 #ifndef _DBRep_HideData_HeaderFile
 #define _DBRep_HideData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _HLRBRep_ListOfBPoint_HeaderFile
 #include <HLRBRep_ListOfBPoint.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_Trsf;
 class TopoDS_Shape;
 class Draw_Display;
 class Draw_Color;
 
 
-//! This  class stores all the informations concerning <br>
-//!          hidden lines on a view. <br>
-//! <br>
-//!          * View number <br>
-//!          * Matrix of projection <br>
-//!          * Type of projection, focal <br>
-//!          * Arrays of 3d points <br>
-//! <br>
-//!          A drawable shape contains a  list of such  objects <br>
-//!          to store  the  hidden lines  for  each view.   The <br>
-//!          IsSame method is  used  to check if   hidden lines <br>
-//!          must be recompiled. <br>
-class DBRep_HideData  {
+//! This  class stores all the informations concerning
+//! hidden lines on a view.
+//!
+//! * View number
+//! * Matrix of projection
+//! * Type of projection, focal
+//! * Arrays of 3d points
+//!
+//! A drawable shape contains a  list of such  objects
+//! to store  the  hidden lines  for  each view.   The
+//! IsSame method is  used  to check if   hidden lines
+//! must be recompiled.
+class DBRep_HideData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   DBRep_HideData();
-  //! ViewId is the view number <br>
-//!          TProj the projection <br>
-//!          Focal <= 0 means parallel projection <br>
-//!          Alg : the hidden lines <br>
-  Standard_EXPORT     void Set(const Standard_Integer ViewId,const gp_Trsf& TProj,const Standard_Real Focal,const TopoDS_Shape& S,const Standard_Real ang) ;
+  Standard_EXPORT DBRep_HideData();
   
-        Standard_Integer ViewId() const;
+  //! ViewId is the view number
+  //! TProj the projection
+  //! Focal <= 0 means parallel projection
+  //! Alg : the hidden lines
+  Standard_EXPORT   void Set (const Standard_Integer ViewId, const gp_Trsf& TProj, const Standard_Real Focal, const TopoDS_Shape& S, const Standard_Real ang) ;
   
-        Standard_Real Angle() const;
-  //! Returns True if the projection is the same <br>
-  Standard_EXPORT     Standard_Boolean IsSame(const gp_Trsf& TProj,const Standard_Real Focla) const;
+      Standard_Integer ViewId()  const;
   
-  Standard_EXPORT     void DrawOn(Draw_Display& D,const Standard_Boolean withRg1,const Standard_Boolean withRgN,const Standard_Boolean withHid,const Draw_Color& VisCol,const Draw_Color& HidCol) ;
-  //! Returns the subshape touched by the last pick. <br>
-  Standard_EXPORT    const TopoDS_Shape& LastPick() const;
-
+      Standard_Real Angle()  const;
+  
+  //! Returns True if the projection is the same
+  Standard_EXPORT   Standard_Boolean IsSame (const gp_Trsf& TProj, const Standard_Real Focla)  const;
+  
+  Standard_EXPORT   void DrawOn (Draw_Display& D, const Standard_Boolean withRg1, const Standard_Boolean withRgN, const Standard_Boolean withHid, const Draw_Color& VisCol, const Draw_Color& HidCol) ;
+  
+  //! Returns the subshape touched by the last pick.
+  Standard_EXPORT  const  TopoDS_Shape& LastPick()  const;
 
 
 
@@ -89,13 +74,13 @@ private:
 
 
 
-Standard_Integer myView;
-gp_Trsf myTrsf;
-Standard_Real myFocal;
-HLRBRep_ListOfBPoint myBiPntVis;
-HLRBRep_ListOfBPoint myBiPntHid;
-TopoDS_Shape myPickShap;
-Standard_Real myAngle;
+  Standard_Integer myView;
+  gp_Trsf myTrsf;
+  Standard_Real myFocal;
+  HLRBRep_ListOfBPoint myBiPntVis;
+  HLRBRep_ListOfBPoint myBiPntHid;
+  TopoDS_Shape myPickShap;
+  Standard_Real myAngle;
 
 
 };
@@ -105,7 +90,6 @@ Standard_Real myAngle;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBRep_HideData_HeaderFile

@@ -22,11 +22,6 @@
 #include <GeomAbs_SurfaceType.hxx>
 #include <Standard_OutOfRange.hxx>
 
-#include <Handle_Geom_BezierSurface.hxx>
-#include <Handle_Geom_BSplineSurface.hxx>
-#include <Handle_Geom2d_BezierCurve.hxx>
-#include <Handle_Geom2d_BSplineCurve.hxx>
-
 #include <Geom_BezierSurface.hxx>
 #include <Geom_BSplineSurface.hxx>
 #include <Geom2d_BezierCurve.hxx>
@@ -214,7 +209,7 @@ Standard_Integer IntPatch_HInterTool::NbSamplesOnArc (const Handle(Adaptor2d_HCu
     nbsOnC = A->NbPoles();
     break;
   case GeomAbs_BSplineCurve: { 
-    //-- Handle_Geom2d_BSplineCurve& BSC=A->BSpline();
+    //-- Handle(Geom2d_BSplineCurve)& BSC=A->BSpline();
     nbsOnC = 2 + A->NbKnots() * A->Degree();
     break;
   }

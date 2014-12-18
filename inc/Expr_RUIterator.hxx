@@ -6,54 +6,41 @@
 #ifndef _Expr_RUIterator_HeaderFile
 #define _Expr_RUIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Expr_MapOfNamedUnknown_HeaderFile
 #include <Expr_MapOfNamedUnknown.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralRelation_HeaderFile
 #include <Handle_Expr_GeneralRelation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Expr_NamedUnknown_HeaderFile
 #include <Handle_Expr_NamedUnknown.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class Expr_GeneralRelation;
 class Expr_NamedUnknown;
 
 
-//! Iterates on NamedUnknowns in a GeneralRelation. <br>
-class Expr_RUIterator  {
+//! Iterates on NamedUnknowns in a GeneralRelation.
+class Expr_RUIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an iterator on every NamedUnknown contained in <br>
-//!          <rel>. <br>
-  Standard_EXPORT   Expr_RUIterator(const Handle(Expr_GeneralRelation)& rel);
-  //! Returns False if on other unknown remains. <br>
-  Standard_EXPORT     Standard_Boolean More() const;
   
-  Standard_EXPORT     void Next() ;
-  //! Returns current NamedUnknown. <br>
-//!          Raises exception if no more unknowns remain. <br>
-  Standard_EXPORT     Handle_Expr_NamedUnknown Value() const;
-
+  //! Creates an iterator on every NamedUnknown contained in
+  //! <rel>.
+  Standard_EXPORT Expr_RUIterator(const Handle(Expr_GeneralRelation)& rel);
+  
+  //! Returns False if on other unknown remains.
+  Standard_EXPORT   Standard_Boolean More()  const;
+  
+  Standard_EXPORT   void Next() ;
+  
+  //! Returns current NamedUnknown.
+  //! Raises exception if no more unknowns remain.
+  Standard_EXPORT   Handle(Expr_NamedUnknown) Value()  const;
 
 
 
@@ -68,8 +55,8 @@ private:
 
 
 
-Expr_MapOfNamedUnknown myMap;
-Standard_Integer myCurrent;
+  Expr_MapOfNamedUnknown myMap;
+  Standard_Integer myCurrent;
 
 
 };
@@ -78,7 +65,6 @@ Standard_Integer myCurrent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Expr_RUIterator_HeaderFile

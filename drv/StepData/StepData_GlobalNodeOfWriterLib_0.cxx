@@ -5,28 +5,14 @@
 
 #include <StepData_GlobalNodeOfWriterLib.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepData_ReadWriteModule_HeaderFile
 #include <StepData_ReadWriteModule.hxx>
-#endif
-#ifndef _StepData_Protocol_HeaderFile
 #include <StepData_Protocol.hxx>
-#endif
-#ifndef _StepData_GlobalNodeOfWriterLib_HeaderFile
 #include <StepData_GlobalNodeOfWriterLib.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepData_WriterLib_HeaderFile
 #include <StepData_WriterLib.hxx>
-#endif
-#ifndef _StepData_NodeOfWriterLib_HeaderFile
 #include <StepData_NodeOfWriterLib.hxx>
-#endif
 
  
 
@@ -43,7 +29,7 @@ IMPLEMENT_DOWNCAST(StepData_GlobalNodeOfWriterLib,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepData_GlobalNodeOfWriterLib)
 
 
-#define TheObject Handle_Standard_Transient
+#define TheObject Handle(Standard_Transient)
 #define TheObject_hxx <Standard_Transient.hxx>
 #define Handle_TheModule Handle_StepData_ReadWriteModule
 #define TheModule StepData_ReadWriteModule

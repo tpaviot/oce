@@ -17,12 +17,12 @@
 class TCompSolid from PTopoDS inherits TShape from PTopoDS
 
 	---Purpose: A  topological Composite  Solid shape.
-
+  --          A structure of Solids sharing Faces.
 uses
     ShapeEnum from TopAbs
 
 is
-    Create returns mutable TCompSolid from PTopoDS;
+    Create returns TCompSolid from PTopoDS;
 	---Purpose: The new  TCompSolid is empty.
     ---Level: Internal 
     	

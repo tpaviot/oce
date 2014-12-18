@@ -23,7 +23,7 @@
 //purpose  : 
 //=======================================================================
 
-void Poly_CoherentNode::Clear (const Handle_NCollection_BaseAllocator& theAlloc)
+void Poly_CoherentNode::Clear (const Handle(NCollection_BaseAllocator)& theAlloc)
 {
   Poly_CoherentTriPtr::RemoveList (myTriangles, theAlloc);
   myUV[0] = Precision::Infinite();
@@ -53,7 +53,7 @@ void Poly_CoherentNode::SetNormal (const gp_XYZ& theVector)
 
 void Poly_CoherentNode::AddTriangle
                         (const Poly_CoherentTriangle&            theTri,
-                         const Handle_NCollection_BaseAllocator& theAlloc)
+                         const Handle(NCollection_BaseAllocator)& theAlloc)
 {
   if (myTriangles == NULL)
     myTriangles = new (theAlloc) Poly_CoherentTriPtr(theTri);
@@ -68,7 +68,7 @@ void Poly_CoherentNode::AddTriangle
 
 Standard_Boolean Poly_CoherentNode::RemoveTriangle
                         (const Poly_CoherentTriangle&            theTri,
-                         const Handle_NCollection_BaseAllocator& theAlloc)
+                         const Handle(NCollection_BaseAllocator)& theAlloc)
 {
   Standard_Boolean aResult(Standard_False);
   if (&myTriangles->GetTriangle() == &theTri) {

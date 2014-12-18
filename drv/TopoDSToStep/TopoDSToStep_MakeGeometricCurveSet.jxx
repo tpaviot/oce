@@ -1,15 +1,5 @@
-#ifndef _StepShape_GeometricCurveSet_HeaderFile
 #include <StepShape_GeometricCurveSet.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Transfer_FinderProcess_HeaderFile
 #include <Transfer_FinderProcess.hxx>
-#endif
-#ifndef _TopoDSToStep_MakeGeometricCurveSet_HeaderFile
 #include <TopoDSToStep_MakeGeometricCurveSet.hxx>
-#endif

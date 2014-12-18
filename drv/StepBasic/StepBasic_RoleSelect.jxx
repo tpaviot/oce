@@ -1,39 +1,13 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepBasic_ActionAssignment_HeaderFile
 #include <StepBasic_ActionAssignment.hxx>
-#endif
-#ifndef _StepBasic_ActionRequestAssignment_HeaderFile
 #include <StepBasic_ActionRequestAssignment.hxx>
-#endif
-#ifndef _StepBasic_ApprovalAssignment_HeaderFile
 #include <StepBasic_ApprovalAssignment.hxx>
-#endif
-#ifndef _StepBasic_ApprovalDateTime_HeaderFile
 #include <StepBasic_ApprovalDateTime.hxx>
-#endif
-#ifndef _StepBasic_CertificationAssignment_HeaderFile
 #include <StepBasic_CertificationAssignment.hxx>
-#endif
-#ifndef _StepBasic_ContractAssignment_HeaderFile
 #include <StepBasic_ContractAssignment.hxx>
-#endif
-#ifndef _StepBasic_DocumentReference_HeaderFile
 #include <StepBasic_DocumentReference.hxx>
-#endif
-#ifndef _StepBasic_EffectivityAssignment_HeaderFile
 #include <StepBasic_EffectivityAssignment.hxx>
-#endif
-#ifndef _StepBasic_GroupAssignment_HeaderFile
 #include <StepBasic_GroupAssignment.hxx>
-#endif
-#ifndef _StepBasic_NameAssignment_HeaderFile
 #include <StepBasic_NameAssignment.hxx>
-#endif
-#ifndef _StepBasic_SecurityClassificationAssignment_HeaderFile
 #include <StepBasic_SecurityClassificationAssignment.hxx>
-#endif
-#ifndef _StepBasic_RoleSelect_HeaderFile
 #include <StepBasic_RoleSelect.hxx>
-#endif

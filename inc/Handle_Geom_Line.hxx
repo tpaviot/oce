@@ -6,22 +6,15 @@
 #ifndef _Handle_Geom_Line_HeaderFile
 #define _Handle_Geom_Line_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Geom_Curve);
 class Geom_Line;
 
-DEFINE_STANDARD_HANDLE(Geom_Line,Geom_Curve)
+DEFINE_STANDARD_HANDLE(Geom_Line, Geom_Curve)
 
-#endif
+#endif // _Handle_Geom_Line_HeaderFile

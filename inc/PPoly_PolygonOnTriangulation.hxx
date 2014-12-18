@@ -6,68 +6,53 @@
 #ifndef _PPoly_PolygonOnTriangulation_HeaderFile
 #define _PPoly_PolygonOnTriangulation_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PPoly_PolygonOnTriangulation_HeaderFile
 #include <Handle_PPoly_PolygonOnTriangulation.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfInteger_HeaderFile
 #include <Handle_PColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfReal_HeaderFile
 #include <Handle_PColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class PColStd_HArray1OfInteger;
 class PColStd_HArray1OfReal;
 class Standard_NullObject;
 
 
-class PPoly_PolygonOnTriangulation : public Standard_Persistent {
+class PPoly_PolygonOnTriangulation : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PPoly_PolygonOnTriangulation();
-  //! Defaults with allocation of nodes. <br>
-  Standard_EXPORT   PPoly_PolygonOnTriangulation(const Handle(PColStd_HArray1OfInteger)& Nodes,const Standard_Real Defl);
-  //! Defaults with allocation of nodes. <br>
-  Standard_EXPORT   PPoly_PolygonOnTriangulation(const Handle(PColStd_HArray1OfInteger)& Nodes,const Standard_Real Defl,const Handle(PColStd_HArray1OfReal)& Parameters);
+  Standard_EXPORT PPoly_PolygonOnTriangulation();
   
-  Standard_EXPORT     Standard_Real Deflection() const;
+  //! Defaults with allocation of nodes.
+  Standard_EXPORT PPoly_PolygonOnTriangulation(const Handle(PColStd_HArray1OfInteger)& Nodes, const Standard_Real Defl);
   
-  Standard_EXPORT     void Deflection(const Standard_Real D) ;
+  //! Defaults with allocation of nodes.
+  Standard_EXPORT PPoly_PolygonOnTriangulation(const Handle(PColStd_HArray1OfInteger)& Nodes, const Standard_Real Defl, const Handle(PColStd_HArray1OfReal)& Parameters);
   
-  Standard_EXPORT     Standard_Integer NbNodes() const;
-  //! Reference on the 3d nodes indices. <br>
-  Standard_EXPORT     Handle_PColStd_HArray1OfInteger Nodes() const;
+  Standard_EXPORT   Standard_Real Deflection()  const;
   
-  Standard_EXPORT     void Nodes(const Handle(PColStd_HArray1OfInteger)& Nodes) ;
+  Standard_EXPORT   void Deflection (const Standard_Real D) ;
   
-  Standard_EXPORT     Standard_Boolean HasParameters() const;
-  //! Returns the parameters values. <br>
-  Standard_EXPORT     Handle_PColStd_HArray1OfReal Parameters() const;
+  Standard_EXPORT   Standard_Integer NbNodes()  const;
   
-  Standard_EXPORT     void Parameters(const Handle(PColStd_HArray1OfReal)& Param) ;
+  //! Reference on the 3d nodes indices.
+  Standard_EXPORT   Handle(PColStd_HArray1OfInteger) Nodes()  const;
+  
+  Standard_EXPORT   void Nodes (const Handle(PColStd_HArray1OfInteger)& Nodes) ;
+  
+  Standard_EXPORT   Standard_Boolean HasParameters()  const;
+  
+  //! Returns the parameters values.
+  Standard_EXPORT   Handle(PColStd_HArray1OfReal) Parameters()  const;
+  
+  Standard_EXPORT   void Parameters (const Handle(PColStd_HArray1OfReal)& Param) ;
 
 PPoly_PolygonOnTriangulation(const Storage_stCONSTclCOM& a) : Standard_Persistent(a)
 {
@@ -92,9 +77,9 @@ protected:
 private: 
 
 
-Standard_Real myDeflection;
-Handle_PColStd_HArray1OfInteger myNodes;
-Handle_PColStd_HArray1OfReal myParameters;
+  Standard_Real myDeflection;
+  Handle(PColStd_HArray1OfInteger) myNodes;
+  Handle(PColStd_HArray1OfReal) myParameters;
 
 
 };
@@ -103,7 +88,6 @@ Handle_PColStd_HArray1OfReal myParameters;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PPoly_PolygonOnTriangulation_HeaderFile

@@ -6,28 +6,22 @@
 #ifndef _StepShape_EdgeBasedWireframeShapeRepresentation_HeaderFile
 #define _StepShape_EdgeBasedWireframeShapeRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_EdgeBasedWireframeShapeRepresentation_HeaderFile
 #include <Handle_StepShape_EdgeBasedWireframeShapeRepresentation.hxx>
-#endif
 
-#ifndef _StepShape_ShapeRepresentation_HeaderFile
 #include <StepShape_ShapeRepresentation.hxx>
-#endif
 
 
-//! Representation of STEP entity EdgeBasedWireframeShapeRepresentation <br>
-class StepShape_EdgeBasedWireframeShapeRepresentation : public StepShape_ShapeRepresentation {
+//! Representation of STEP entity EdgeBasedWireframeShapeRepresentation
+class StepShape_EdgeBasedWireframeShapeRepresentation : public StepShape_ShapeRepresentation
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepShape_EdgeBasedWireframeShapeRepresentation();
+  
+  //! Empty constructor
+  Standard_EXPORT StepShape_EdgeBasedWireframeShapeRepresentation();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_EdgeBasedWireframeShapeRepresentation_HeaderFile

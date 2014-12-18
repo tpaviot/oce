@@ -6,74 +6,57 @@
 #ifndef _TopOpeBRepDS_ShapeShapeInterference_HeaderFile
 #define _TopOpeBRepDS_ShapeShapeInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_ShapeShapeInterference_HeaderFile
 #include <Handle_TopOpeBRepDS_ShapeShapeInterference.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Config_HeaderFile
 #include <TopOpeBRepDS_Config.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Kind_HeaderFile
 #include <TopOpeBRepDS_Kind.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TopOpeBRepDS_Transition;
 
 
-
-class TopOpeBRepDS_ShapeShapeInterference : public TopOpeBRepDS_Interference {
+//! Interference
+class TopOpeBRepDS_ShapeShapeInterference : public TopOpeBRepDS_Interference
+{
 
 public:
 
-  //! a shape interfers on shape <G> with shape <S>. <br>
-//! examples : <br>
-//! create a ShapeShapeInterference describing : <br>
-//! vertex V of edge E1 found on edge E2 : <br>
-//! ST,S,GT,G = TopOpeBRepDS_EDGE,E2,TopOpeBRepDS_VERTEX,V <br>
-//! <br>
-//! create a ShapeShapeInterference describing <br>
-//! vertex V of edge E found on face F : <br>
-//! ST,S,GT,G = TopOpeBRepDS_FACE,F,TopOpeBRepDS_VERTEX,V <br>
-//! <br>
-//! <GBound> indicates if shape <G> is a bound of shape <S>. <br>
-//! <br>
-//! <SCC> : <br>
-//! UNSH_GEOMETRY : <br>
-//! 	 <S> and <Ancestor> have any types, <br>
-//! 	 <S> and <Ancestor> don't share the same geometry <br>
-//! SAME_ORIENTED : <br>
-//! 	 <S> and <Ancestor> have identical types, <br>
-//! 	 <S> and <Ancestor> orientations are IDENTICAL. <br>
-//! DIFF_ORIENTED : <br>
-//! 	 <S> and <Ancestor> have identical types, <br>
-//! 	 <S> and <Ancestor> orientations are DIFFERENT. <br>
-//! <br>
-  Standard_EXPORT   TopOpeBRepDS_ShapeShapeInterference(const TopOpeBRepDS_Transition& T,const TopOpeBRepDS_Kind ST,const Standard_Integer S,const TopOpeBRepDS_Kind GT,const Standard_Integer G,const Standard_Boolean GBound,const TopOpeBRepDS_Config C);
   
-  Standard_EXPORT     TopOpeBRepDS_Config Config() const;
+  //! a shape interfers on shape <G> with shape <S>.
+  //! examples :
+  //! create a ShapeShapeInterference describing :
+  //! vertex V of edge E1 found on edge E2 :
+  //! ST,S,GT,G = TopOpeBRepDS_EDGE,E2,TopOpeBRepDS_VERTEX,V
+  //!
+  //! create a ShapeShapeInterference describing
+  //! vertex V of edge E found on face F :
+  //! ST,S,GT,G = TopOpeBRepDS_FACE,F,TopOpeBRepDS_VERTEX,V
+  //!
+  //! <GBound> indicates if shape <G> is a bound of shape <S>.
+  //!
+  //! <SCC> :
+  //! UNSH_GEOMETRY :
+  //! <S> and <Ancestor> have any types,
+  //! <S> and <Ancestor> don't share the same geometry
+  //! SAME_ORIENTED :
+  //! <S> and <Ancestor> have identical types,
+  //! <S> and <Ancestor> orientations are IDENTICAL.
+  //! DIFF_ORIENTED :
+  //! <S> and <Ancestor> have identical types,
+  //! <S> and <Ancestor> orientations are DIFFERENT.
+  Standard_EXPORT TopOpeBRepDS_ShapeShapeInterference(const TopOpeBRepDS_Transition& T, const TopOpeBRepDS_Kind ST, const Standard_Integer S, const TopOpeBRepDS_Kind GT, const Standard_Integer G, const Standard_Boolean GBound, const TopOpeBRepDS_Config C);
   
-  Standard_EXPORT     Standard_Boolean GBound() const;
+  Standard_EXPORT   TopOpeBRepDS_Config Config()  const;
   
-  Standard_EXPORT     void SetGBound(const Standard_Boolean b) ;
+  Standard_EXPORT   Standard_Boolean GBound()  const;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& OS) const;
+  Standard_EXPORT   void SetGBound (const Standard_Boolean b) ;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& OS)  const;
 
 
 
@@ -88,8 +71,8 @@ protected:
 private: 
 
 
-Standard_Boolean myGBound;
-TopOpeBRepDS_Config myC;
+  Standard_Boolean myGBound;
+  TopOpeBRepDS_Config myC;
 
 
 };
@@ -98,7 +81,6 @@ TopOpeBRepDS_Config myC;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_ShapeShapeInterference_HeaderFile

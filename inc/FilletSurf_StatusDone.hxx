@@ -6,15 +6,14 @@
 #ifndef _FilletSurf_StatusDone_HeaderFile
 #define _FilletSurf_StatusDone_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum FilletSurf_StatusDone {
+
+enum FilletSurf_StatusDone
+{
 FilletSurf_IsOk,
 FilletSurf_IsNotOk,
 FilletSurf_IsPartial
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _FilletSurf_StatusDone_HeaderFile

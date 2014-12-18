@@ -6,28 +6,22 @@
 #ifndef _StepVisual_CameraImage_HeaderFile
 #define _StepVisual_CameraImage_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_CameraImage_HeaderFile
 #include <Handle_StepVisual_CameraImage.hxx>
-#endif
 
-#ifndef _StepRepr_MappedItem_HeaderFile
 #include <StepRepr_MappedItem.hxx>
-#endif
 
 
 
-class StepVisual_CameraImage : public StepRepr_MappedItem {
+class StepVisual_CameraImage : public StepRepr_MappedItem
+{
 
 public:
 
-  //! Returns a CameraImage <br>
-  Standard_EXPORT   StepVisual_CameraImage();
+  
+  //! Returns a CameraImage
+  Standard_EXPORT StepVisual_CameraImage();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_CameraImage_HeaderFile

@@ -6,89 +6,104 @@
 #ifndef _BndLib_Add2dCurve_HeaderFile
 #define _BndLib_Add2dCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
+#include <Handle_Geom2d_Curve.hxx>
 class Adaptor2d_Curve2d;
 class Bnd_Box2d;
+class Geom2d_Curve;
 
 
-//! Computes the bounding box for a curve in 2d . <br>
-//! Functions to add a 2D curve to a bounding box. <br>
-//! The 2D curve is defined from a Geom2d curve. <br>
-class BndLib_Add2dCurve  {
+//! Computes the bounding box for a curve in 2d .
+//! Functions to add a 2D curve to a bounding box.
+//! The 2D curve is defined from a Geom2d curve.
+class BndLib_Add2dCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds to the bounding box B the curve C <br>
-//!  B is then enlarged by the tolerance value Tol. <br>
-//! Note: depending on the type of curve, one of the following <br>
-//! representations of the curve C is used to include it in the bounding box B: <br>
-//! -   an exact representation if C is built from a line, a circle   or a conic curve, <br>
-//! -   the poles of the curve if C is built from a Bezier curve or   a BSpline curve, <br>
-//! -   if not, the points of an approximation of the curve C. <br>
-//! Warning <br>
-//! C is an adapted curve, that is, an object which is an interface between: <br>
-//! -   the services provided by a 2D curve from the package Geom2d <br>
-//! -   and those required of the curve by the computation algorithm. <br>
-//!  The adapted curve is created in the following way: <br>
-//!    Handle(Geom2d_Curve) mycurve = ... <br>
-//! ; <br>
-//!    Geom2dAdaptor_Curve C(mycurve); <br>
-//! The bounding box B is then enlarged by adding it: <br>
-//!    Bnd_Box2d B; <br>
-//! // ... <br>
-//!    Standard_Real Tol = ... ; <br>
-//!    Add2dCurve::Add ( C, Tol, B ); <br>
-//! Exceptions <br>
-//! Standard_Failure if the curve is built from: <br>
-//! -   a Geom_Line, or <br>
-//! -   a Geom_Parabola, or <br>
-//! -   a Geom_Hyperbola, <br>
-//! and P1 and P2 are either two negative infinite real <br>
-//! numbers, or two positive infinite real numbers. <br>
-  Standard_EXPORT   static  void Add(const Adaptor2d_Curve2d& C,const Standard_Real Tol,Bnd_Box2d& B) ;
-  //! Adds to the bounding box Bthe arc of the curve C limited by the two parameter <br>
-//!  values P1 and P2. <br>
-//!  B is then enlarged by the tolerance value Tol. <br>
-//! Note: depending on the type of curve, one of the following <br>
-//! representations of the curve C is used to include it in the bounding box B: <br>
-//! -   an exact representation if C is built from a line, a circle   or a conic curve, <br>
-//! -   the poles of the curve if C is built from a Bezier curve or   a BSpline curve, <br>
-//! -   if not, the points of an approximation of the curve C. <br>
-//! Warning <br>
-//! C is an adapted curve, that is, an object which is an interface between: <br>
-//! -   the services provided by a 2D curve from the package Geom2d <br>
-//! -   and those required of the curve by the computation algorithm. <br>
-//!  The adapted curve is created in the following way: <br>
-//!    Handle(Geom2d_Curve) mycurve = ... <br>
-//! ; <br>
-//!    Geom2dAdaptor_Curve C(mycurve); <br>
-//! The bounding box B is then enlarged by adding it: <br>
-//!    Bnd_Box2d B; <br>
-//! // ... <br>
-//!    Standard_Real Tol = ... ; <br>
-//!    Add2dCurve::Add ( C, Tol, B ); <br>
-//! Exceptions <br>
-//! Standard_Failure if the curve is built from: <br>
-//! -   a Geom_Line, or <br>
-//! -   a Geom_Parabola, or <br>
-//! -   a Geom_Hyperbola, <br>
-//! and P1 and P2 are either two negative infinite real <br>
-//! numbers, or two positive infinite real numbers. <br>
-  Standard_EXPORT   static  void Add(const Adaptor2d_Curve2d& C,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol,Bnd_Box2d& B) ;
-
+  
+  //! Adds to the bounding box B the curve C
+  //! B is then enlarged by the tolerance value Tol.
+  //! Note: depending on the type of curve, one of the following
+  //! representations of the curve C is used to include it in the bounding box B:
+  //! -   an exact representation if C is built from a line, a circle   or a conic curve,
+  //! -   the poles of the curve if C is built from a Bezier curve or   a BSpline curve,
+  //! -   if not, the points of an approximation of the curve C.
+  //! Warning
+  //! C is an adapted curve, that is, an object which is an interface between:
+  //! -   the services provided by a 2D curve from the package Geom2d
+  //! -   and those required of the curve by the computation algorithm.
+  //! The adapted curve is created in the following way:
+  //! Handle(Geom2d_Curve) mycurve = ...
+  //! ;
+  //! Geom2dAdaptor_Curve C(mycurve);
+  //! The bounding box B is then enlarged by adding it:
+  //! Bnd_Box2d B;
+  //! // ...
+  //! Standard_Real Tol = ... ;
+  //! Add2dCurve::Add ( C, Tol, B );
+  //! Exceptions
+  //! Standard_Failure if the curve is built from:
+  //! -   a Geom_Line, or
+  //! -   a Geom_Parabola, or
+  //! -   a Geom_Hyperbola,
+  //! and P1 and P2 are either two negative infinite real
+  //! numbers, or two positive infinite real numbers.
+  Standard_EXPORT static   void Add (const Adaptor2d_Curve2d& C, const Standard_Real Tol, Bnd_Box2d& B) ;
+  
+  //! Adds to the bounding box Bthe arc of the curve C limited by the two parameter
+  //! values P1 and P2.
+  //! B is then enlarged by the tolerance value Tol.
+  //! Note: depending on the type of curve, one of the following
+  //! representations of the curve C is used to include it in the bounding box B:
+  //! -   an exact representation if C is built from a line, a circle   or a conic curve,
+  //! -   the poles of the curve if C is built from a Bezier curve or   a BSpline curve,
+  //! -   if not, the points of an approximation of the curve C.
+  //! Warning
+  //! C is an adapted curve, that is, an object which is an interface between:
+  //! -   the services provided by a 2D curve from the package Geom2d
+  //! -   and those required of the curve by the computation algorithm.
+  //! The adapted curve is created in the following way:
+  //! Handle(Geom2d_Curve) mycurve = ...
+  //! ;
+  //! Geom2dAdaptor_Curve C(mycurve);
+  //! The bounding box B is then enlarged by adding it:
+  //! Bnd_Box2d B;
+  //! // ...
+  //! Standard_Real Tol = ... ;
+  //! Add2dCurve::Add ( C, Tol, B );
+  //! Exceptions
+  //! Standard_Failure if the curve is built from:
+  //! -   a Geom_Line, or
+  //! -   a Geom_Parabola, or
+  //! -   a Geom_Hyperbola,
+  //! and P1 and P2 are either two negative infinite real
+  //! numbers, or two positive infinite real numbers.
+  Standard_EXPORT static   void Add (const Adaptor2d_Curve2d& C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box2d& B) ;
+  
+  //! Adds to the bounding box B the curve C
+  //! B is then enlarged by the tolerance value Tol.
+  //! Note: depending on the type of curve, one of the following
+  //! representations of the curve C is used to include it in the bounding box B:
+  //! -   an exact representation if C is built from a line, a circle or a conic curve,
+  //! -   the poles of the curve if C is built from a Bezier curve or a BSpline curve,
+  //! -   if not, the points of an approximation of the curve C.
+  Standard_EXPORT static   void Add (const Handle(Geom2d_Curve)& C, const Standard_Real Tol, Bnd_Box2d& Box) ;
+  
+  //! Adds to the bounding box B the part of curve C
+  //! B is then enlarged by the tolerance value Tol.
+  //! U1, U2 - the parametric range to comute the bounding box;
+  //! Note: depending on the type of curve, one of the following
+  //! representations of the curve C is used to include it in the bounding box B:
+  //! -   an exact representation if C is built from a line, a circle or a conic curve,
+  //! -   the poles of the curve if C is built from a Bezier curve or a BSpline curve,
+  //! -   if not, the points of an approximation of the curve C.
+  Standard_EXPORT static   void Add (const Handle(Geom2d_Curve)& C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box2d& B) ;
 
 
 
@@ -111,7 +126,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BndLib_Add2dCurve_HeaderFile

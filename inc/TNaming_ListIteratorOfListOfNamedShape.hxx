@@ -6,28 +6,14 @@
 #ifndef _TNaming_ListIteratorOfListOfNamedShape_HeaderFile
 #define _TNaming_ListIteratorOfListOfNamedShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
-#ifndef _Handle_TNaming_ListNodeOfListOfNamedShape_HeaderFile
 #include <Handle_TNaming_ListNodeOfListOfNamedShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TNaming_ListOfNamedShape;
@@ -36,27 +22,27 @@ class TNaming_ListNodeOfListOfNamedShape;
 
 
 
-class TNaming_ListIteratorOfListOfNamedShape  {
+class TNaming_ListIteratorOfListOfNamedShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TNaming_ListIteratorOfListOfNamedShape();
+  Standard_EXPORT TNaming_ListIteratorOfListOfNamedShape();
   
-  Standard_EXPORT   TNaming_ListIteratorOfListOfNamedShape(const TNaming_ListOfNamedShape& L);
+  Standard_EXPORT TNaming_ListIteratorOfListOfNamedShape(const TNaming_ListOfNamedShape& L);
   
-  Standard_EXPORT     void Initialize(const TNaming_ListOfNamedShape& L) ;
+  Standard_EXPORT   void Initialize (const TNaming_ListOfNamedShape& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_TNaming_NamedShape& Value() const;
+  Standard_EXPORT   Handle(TNaming_NamedShape)& Value()  const;
 
 
 friend class TNaming_ListOfNamedShape;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_TNaming_NamedShape
+#define Item Handle(TNaming_NamedShape)
 #define Item_hxx <TNaming_NamedShape.hxx>
 #define TCollection_ListNode TNaming_ListNodeOfListOfNamedShape
 #define TCollection_ListNode_hxx <TNaming_ListNodeOfListOfNamedShape.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_ListIteratorOfListOfNamedShape_HeaderFile

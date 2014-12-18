@@ -1,6 +1,2 @@
-#ifndef _TopOpeBRepDS_Transition_HeaderFile
 #include <TopOpeBRepDS_Transition.hxx>
-#endif
-#ifndef _TopOpeBRepDS_SolidSurfaceInterference_HeaderFile
 #include <TopOpeBRepDS_SolidSurfaceInterference.hxx>
-#endif

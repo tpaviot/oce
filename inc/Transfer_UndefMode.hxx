@@ -6,16 +6,15 @@
 #ifndef _Transfer_UndefMode_HeaderFile
 #define _Transfer_UndefMode_HeaderFile
 
-//! used on processing Undefined Entities (see TransferOutput) <br>
-enum Transfer_UndefMode {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! used on processing Undefined Entities (see TransferOutput)
+enum Transfer_UndefMode
+{
 Transfer_UndefIgnore,
 Transfer_UndefFailure,
 Transfer_UndefContent,
 Transfer_UndefUser
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Transfer_UndefMode_HeaderFile

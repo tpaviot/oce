@@ -5,16 +5,10 @@
 
 #include <Bnd_SequenceNodeOfSeqOfBox.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _Bnd_SeqOfBox_HeaderFile
 #include <Bnd_SeqOfBox.hxx>
-#endif
 
  
 

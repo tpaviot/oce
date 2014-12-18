@@ -6,96 +6,140 @@
 #ifndef _PrsMgr_Presentation_HeaderFile
 #define _PrsMgr_Presentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_PrsMgr_Presentation_HeaderFile
 #include <Handle_PrsMgr_Presentation.hxx>
-#endif
 
-#ifndef _Handle_PrsMgr_PresentationManager_HeaderFile
 #include <Handle_PrsMgr_PresentationManager.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
+#include <Handle_PrsMgr_Prs.hxx>
+#include <PrsMgr_PresentableObjectPointer.hxx>
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
-#include <MMgt_TShared.hxx>
-#endif
-#ifndef _PrsMgr_KindOfPrs_HeaderFile
-#include <PrsMgr_KindOfPrs.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
+#include <MMgt_TShared.hxx>
+#include <Handle_PrsMgr_PresentableObject.hxx>
+#include <Quantity_NameOfColor.hxx>
+#include <Handle_Geom_Transformation.hxx>
+#include <Quantity_Length.hxx>
+#include <Handle_Prs3d_ShadingAspect.hxx>
+#include <Handle_Prs3d_Presentation.hxx>
+#include <Handle_Graphic3d_Structure.hxx>
+#include <Handle_Graphic3d_DataStructureManager.hxx>
+#include <Handle_Prs3d_Projector.hxx>
 class PrsMgr_PresentationManager;
+class PrsMgr_Prs;
+class PrsMgr_PresentableObject;
+class Geom_Transformation;
+class Prs3d_ShadingAspect;
+class Prs3d_Presentation;
+class Graphic3d_Structure;
+class Graphic3d_DataStructureManager;
+class Prs3d_Projector;
 
 
 
-class PrsMgr_Presentation : public MMgt_TShared {
+class PrsMgr_Presentation : public MMgt_TShared
+{
 
 public:
 
-  //! 2D or 3D <br>
-  Standard_EXPORT   virtual  PrsMgr_KindOfPrs KindOfPresentation() const = 0;
-  //! Destructor <br>
-  Standard_EXPORT   virtual  void Destroy() ;
+  
+  //! Destructor
+  Standard_EXPORT virtual   void Destroy() ;
 ~PrsMgr_Presentation()
 {
   Destroy();
 }
-  //! returns the PresentationManager in which the <br>
-//!          presentation has been created. <br>
-       const Handle_PrsMgr_PresentationManager& PresentationManager() const;
   
-        void SetUpdateStatus(const Standard_Boolean aStat) ;
+     const  Handle(Prs3d_Presentation)& Presentation()  const;
   
-        Standard_Boolean MustBeUpdated() const;
+  //! returns the PresentationManager in which the presentation has been created.
+     const  Handle(PrsMgr_PresentationManager)& PresentationManager()  const;
+  
+      void SetUpdateStatus (const Standard_Boolean theStat) ;
+  
+      Standard_Boolean MustBeUpdated()  const;
 
 friend class PrsMgr_PresentationManager;
+friend class PrsMgr_PresentableObject;
+friend class PrsMgr_Prs;
 
 
   DEFINE_STANDARD_RTTI(PrsMgr_Presentation)
 
 protected:
 
-  
-  Standard_EXPORT   PrsMgr_Presentation(const Handle(PrsMgr_PresentationManager)& aPresentationManager);
 
-Handle_PrsMgr_PresentationManager myPresentationManager;
-Standard_Boolean myMustBeUpdated;
 
 
 private: 
 
   
-  Standard_EXPORT   virtual  void Display()  = 0;
+  Standard_EXPORT PrsMgr_Presentation(const Handle(PrsMgr_PresentationManager)& thePresentationManager, const Handle(PrsMgr_PresentableObject)& thePresentableObject);
   
-  Standard_EXPORT   virtual  void Erase()  = 0;
+  Standard_EXPORT virtual   void Display() ;
   
-  Standard_EXPORT   virtual  void SetVisible(const Standard_Boolean theValue)  = 0;
+  //! Displays myStructure.
+  Standard_EXPORT   void Display (const Standard_Boolean theIsHighlight) ;
   
-  Standard_EXPORT   virtual  void Highlight()  = 0;
+  Standard_EXPORT virtual   void Erase() ;
   
-  Standard_EXPORT   virtual  void Unhighlight() const = 0;
+  Standard_EXPORT virtual   void SetVisible (const Standard_Boolean theValue) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsHighlighted() const = 0;
+  Standard_EXPORT virtual   void Highlight() ;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsDisplayed() const = 0;
+  Standard_EXPORT virtual   void Unhighlight()  const;
   
-  Standard_EXPORT   virtual  Standard_Integer DisplayPriority() const = 0;
+  Standard_EXPORT virtual   Standard_Boolean IsHighlighted()  const;
   
-  Standard_EXPORT   virtual  void SetDisplayPriority(const Standard_Integer aNewPrior)  = 0;
-  //! Set Z layer ID for the presentation <br>
-  Standard_EXPORT   virtual  void SetZLayer(const Standard_Integer theLayerId)  = 0;
-  //! Get Z layer ID for the presentation <br>
-  Standard_EXPORT   virtual  Standard_Integer GetZLayer() const = 0;
+  Standard_EXPORT virtual   Standard_Boolean IsDisplayed()  const;
   
-  Standard_EXPORT   virtual  void Clear()  = 0;
+  Standard_EXPORT virtual   Standard_Integer DisplayPriority()  const;
+  
+  Standard_EXPORT virtual   void SetDisplayPriority (const Standard_Integer aNewPrior) ;
+  
+  //! Set Z layer ID for the presentation
+  Standard_EXPORT virtual   void SetZLayer (const Standard_Integer theLayerId) ;
+  
+  //! Get Z layer ID for the presentation
+  Standard_EXPORT virtual   Standard_Integer GetZLayer()  const;
+  
+  //! removes the whole content of the presentation.
+  //! Does not remove the other connected presentations.
+  Standard_EXPORT virtual   void Clear() ;
+  
+  Standard_EXPORT virtual   void Color (const Quantity_NameOfColor theColor) ;
+  
+  Standard_EXPORT   void BoundBox()  const;
+  
+  Standard_EXPORT   void Connect (const Handle(PrsMgr_Presentation)& theOther)  const;
+  
+  Standard_EXPORT   void Transform (const Handle(Geom_Transformation)& theTrsf)  const;
+  
+  Standard_EXPORT   void Place (const Quantity_Length theX, const Quantity_Length theY, const Quantity_Length theZ)  const;
+  
+  Standard_EXPORT   void Multiply (const Handle(Geom_Transformation)& theTrsf)  const;
+  
+  Standard_EXPORT   void Move (const Quantity_Length theX, const Quantity_Length theY, const Quantity_Length theZ)  const;
+  
+  Standard_EXPORT   void SetShadingAspect (const Handle(Prs3d_ShadingAspect)& theShadingAspect)  const;
+  
+  Standard_EXPORT   void Compute (const Handle(Graphic3d_Structure)& theStructure) ;
+  
+  Standard_EXPORT   Handle(Graphic3d_Structure) Compute (const Handle(Graphic3d_DataStructureManager)& theProjector) ;
+  
+  Standard_EXPORT   Handle(Graphic3d_Structure) Compute (const Handle(Graphic3d_DataStructureManager)& theProjector, const Handle(Geom_Transformation)& theTrsf) ;
+  
+  Standard_EXPORT   void Compute (const Handle(Graphic3d_DataStructureManager)& theProjector, const Handle(Graphic3d_Structure)& theGivenStruct) ;
+  
+  Standard_EXPORT   void Compute (const Handle(Graphic3d_DataStructureManager)& theProjector, const Handle(Geom_Transformation)& theTrsf, const Handle(Graphic3d_Structure)& theGivenStruct) ;
+  
+  Standard_EXPORT static   Handle(Prs3d_Projector) Projector (const Handle(Graphic3d_DataStructureManager)& theProjector) ;
 
+  Handle(PrsMgr_PresentationManager) myPresentationManager;
+  Handle(PrsMgr_Prs) myStructure;
+  PrsMgr_PresentableObjectPointer myPresentableObject;
+  Standard_Boolean myMustBeUpdated;
+  Standard_Integer myBeforeHighlightState;
 
 
 };
@@ -105,7 +149,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PrsMgr_Presentation_HeaderFile

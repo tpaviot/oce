@@ -6,46 +6,35 @@
 #ifndef _StepBasic_ApprovalDateTime_HeaderFile
 #define _StepBasic_ApprovalDateTime_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ApprovalDateTime_HeaderFile
 #include <Handle_StepBasic_ApprovalDateTime.hxx>
-#endif
 
-#ifndef _StepBasic_DateTimeSelect_HeaderFile
 #include <StepBasic_DateTimeSelect.hxx>
-#endif
-#ifndef _Handle_StepBasic_Approval_HeaderFile
 #include <Handle_StepBasic_Approval.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_Approval;
 class StepBasic_DateTimeSelect;
 
 
-//! Added from StepBasic Rev2 to Rev4 <br>
-class StepBasic_ApprovalDateTime : public MMgt_TShared {
+//! Added from StepBasic Rev2 to Rev4
+class StepBasic_ApprovalDateTime : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   StepBasic_ApprovalDateTime();
+  Standard_EXPORT StepBasic_ApprovalDateTime();
   
-  Standard_EXPORT     void Init(const StepBasic_DateTimeSelect& aDateTime,const Handle(StepBasic_Approval)& aDatedApproval) ;
+  Standard_EXPORT   void Init (const StepBasic_DateTimeSelect& aDateTime, const Handle(StepBasic_Approval)& aDatedApproval) ;
   
-  Standard_EXPORT     void SetDateTime(const StepBasic_DateTimeSelect& aDateTime) ;
+  Standard_EXPORT   void SetDateTime (const StepBasic_DateTimeSelect& aDateTime) ;
   
-  Standard_EXPORT     StepBasic_DateTimeSelect DateTime() const;
+  Standard_EXPORT   StepBasic_DateTimeSelect DateTime()  const;
   
-  Standard_EXPORT     void SetDatedApproval(const Handle(StepBasic_Approval)& aDatedApproval) ;
+  Standard_EXPORT   void SetDatedApproval (const Handle(StepBasic_Approval)& aDatedApproval) ;
   
-  Standard_EXPORT     Handle_StepBasic_Approval DatedApproval() const;
+  Standard_EXPORT   Handle(StepBasic_Approval) DatedApproval()  const;
 
 
 
@@ -60,8 +49,8 @@ protected:
 private: 
 
 
-StepBasic_DateTimeSelect theDateTime;
-Handle_StepBasic_Approval theDatedApproval;
+  StepBasic_DateTimeSelect theDateTime;
+  Handle(StepBasic_Approval) theDatedApproval;
 
 
 };
@@ -70,7 +59,6 @@ Handle_StepBasic_Approval theDatedApproval;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ApprovalDateTime_HeaderFile

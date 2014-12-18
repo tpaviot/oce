@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_CartesianTransformationOperator3d_HeaderFile
 #define _Handle_StepGeom_CartesianTransformationOperator3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_CartesianTransformationOperator_HeaderFile
 #include <Handle_StepGeom_CartesianTransformationOperator.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_CartesianTransformationOperator);
 class StepGeom_CartesianTransformationOperator3d;
 
-DEFINE_STANDARD_HANDLE(StepGeom_CartesianTransformationOperator3d,StepGeom_CartesianTransformationOperator)
+DEFINE_STANDARD_HANDLE(StepGeom_CartesianTransformationOperator3d, StepGeom_CartesianTransformationOperator)
 
-#endif
+#endif // _Handle_StepGeom_CartesianTransformationOperator3d_HeaderFile

@@ -5,28 +5,14 @@
 
 #include <GeomFill_HArray1OfSectionLaw.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _GeomFill_SectionLaw_HeaderFile
 #include <GeomFill_SectionLaw.hxx>
-#endif
-#ifndef _GeomFill_Array1OfSectionLaw_HeaderFile
 #include <GeomFill_Array1OfSectionLaw.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(GeomFill_HArray1OfSectionLaw,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(GeomFill_HArray1OfSectionLaw)
 
 
-#define ItemHArray1 Handle_GeomFill_SectionLaw
+#define ItemHArray1 Handle(GeomFill_SectionLaw)
 #define ItemHArray1_hxx <GeomFill_SectionLaw.hxx>
 #define TheArray1 GeomFill_Array1OfSectionLaw
 #define TheArray1_hxx <GeomFill_Array1OfSectionLaw.hxx>

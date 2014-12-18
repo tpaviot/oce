@@ -6,28 +6,14 @@
 #ifndef _StepFEA_HArray1OfCurveElementInterval_HeaderFile
 #define _StepFEA_HArray1OfCurveElementInterval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_HArray1OfCurveElementInterval_HeaderFile
 #include <Handle_StepFEA_HArray1OfCurveElementInterval.hxx>
-#endif
 
-#ifndef _StepFEA_Array1OfCurveElementInterval_HeaderFile
 #include <StepFEA_Array1OfCurveElementInterval.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepFEA_CurveElementInterval_HeaderFile
 #include <Handle_StepFEA_CurveElementInterval.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepFEA_Array1OfCurveElementInterval;
 
 
 
-class StepFEA_HArray1OfCurveElementInterval : public MMgt_TShared {
+class StepFEA_HArray1OfCurveElementInterval : public MMgt_TShared
+{
 
 public:
 
   
-      StepFEA_HArray1OfCurveElementInterval(const Standard_Integer Low,const Standard_Integer Up);
+    StepFEA_HArray1OfCurveElementInterval(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepFEA_HArray1OfCurveElementInterval(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepFEA_CurveElementInterval)& V);
+    StepFEA_HArray1OfCurveElementInterval(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepFEA_CurveElementInterval)& V);
   
-        void Init(const Handle(StepFEA_CurveElementInterval)& V) ;
+      void Init (const Handle(StepFEA_CurveElementInterval)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepFEA_CurveElementInterval)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepFEA_CurveElementInterval)& Value) ;
   
-       const Handle_StepFEA_CurveElementInterval& Value(const Standard_Integer Index) const;
+     const  Handle(StepFEA_CurveElementInterval)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepFEA_CurveElementInterval& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepFEA_CurveElementInterval)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepFEA_Array1OfCurveElementInterval& Array1() const;
+     const  StepFEA_Array1OfCurveElementInterval& Array1()  const;
   
-        StepFEA_Array1OfCurveElementInterval& ChangeArray1() ;
+      StepFEA_Array1OfCurveElementInterval& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepFEA_Array1OfCurveElementInterval myArray;
+  StepFEA_Array1OfCurveElementInterval myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepFEA_CurveElementInterval
+#define ItemHArray1 Handle(StepFEA_CurveElementInterval)
 #define ItemHArray1_hxx <StepFEA_CurveElementInterval.hxx>
 #define TheArray1 StepFEA_Array1OfCurveElementInterval
 #define TheArray1_hxx <StepFEA_Array1OfCurveElementInterval.hxx>
@@ -103,7 +90,6 @@ StepFEA_Array1OfCurveElementInterval myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_HArray1OfCurveElementInterval_HeaderFile

@@ -6,43 +6,19 @@
 #ifndef _IGESSelect_WorkLibrary_HeaderFile
 #define _IGESSelect_WorkLibrary_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_WorkLibrary_HeaderFile
 #include <Handle_IGESSelect_WorkLibrary.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IFSelect_WorkLibrary_HeaderFile
 #include <IFSelect_WorkLibrary.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_IGESData_Protocol_HeaderFile
 #include <Handle_IGESData_Protocol.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
 class Interface_InterfaceModel;
 class Interface_Protocol;
 class IFSelect_ContextWrite;
@@ -51,27 +27,33 @@ class Standard_Transient;
 class Message_Messenger;
 
 
-//! Performs Read and Write an IGES File with an IGES Model <br>
-class IGESSelect_WorkLibrary : public IFSelect_WorkLibrary {
+//! Performs Read and Write an IGES File with an IGES Model
+class IGESSelect_WorkLibrary : public IFSelect_WorkLibrary
+{
 
 public:
 
-  //! Creates a IGES WorkLibrary <br>
-//!           If <modefnes> is given as True, it will work for FNES <br>
-  Standard_EXPORT   IGESSelect_WorkLibrary(const Standard_Boolean modefnes = Standard_False);
-  //! Reads a IGES File and returns a IGES Model (into <mod>), <br>
-//!           or lets <mod> "Null" in case of Error <br>
-//!           Returns 0 if OK, 1 if Read Error, -1 if File not opened <br>
-  Standard_EXPORT     Standard_Integer ReadFile(const Standard_CString name,Handle(Interface_InterfaceModel)& model,const Handle(Interface_Protocol)& protocol) const;
-  //! Writes a File from a IGES Model (brought by <ctx>) <br>
-//!           Returns False (and writes no file) if <ctx> is not for IGES <br>
-  Standard_EXPORT     Standard_Boolean WriteFile(IFSelect_ContextWrite& ctx) const;
-  //! Defines a protocol to be adequate for IGES <br>
-//!           (encompasses ALL the IGES norm including IGESSolid, IGESAppli) <br>
-  Standard_EXPORT   static  Handle_IGESData_Protocol DefineProtocol() ;
-  //! Dumps an IGES Entity with an IGES Dumper. <level> is the one <br>
-//!           used by IGESDumper. <br>
-  Standard_EXPORT     void DumpEntity(const Handle(Interface_InterfaceModel)& model,const Handle(Interface_Protocol)& protocol,const Handle(Standard_Transient)& entity,const Handle(Message_Messenger)& S,const Standard_Integer level) const;
+  
+  //! Creates a IGES WorkLibrary
+  //! If <modefnes> is given as True, it will work for FNES
+  Standard_EXPORT IGESSelect_WorkLibrary(const Standard_Boolean modefnes = Standard_False);
+  
+  //! Reads a IGES File and returns a IGES Model (into <mod>),
+  //! or lets <mod> "Null" in case of Error
+  //! Returns 0 if OK, 1 if Read Error, -1 if File not opened
+  Standard_EXPORT   Standard_Integer ReadFile (const Standard_CString name, Handle(Interface_InterfaceModel)& model, const Handle(Interface_Protocol)& protocol)  const;
+  
+  //! Writes a File from a IGES Model (brought by <ctx>)
+  //! Returns False (and writes no file) if <ctx> is not for IGES
+  Standard_EXPORT   Standard_Boolean WriteFile (IFSelect_ContextWrite& ctx)  const;
+  
+  //! Defines a protocol to be adequate for IGES
+  //! (encompasses ALL the IGES norm including IGESSolid, IGESAppli)
+  Standard_EXPORT static   Handle(IGESData_Protocol) DefineProtocol() ;
+  
+  //! Dumps an IGES Entity with an IGES Dumper. <level> is the one
+  //! used by IGESDumper.
+  Standard_EXPORT   void DumpEntity (const Handle(Interface_InterfaceModel)& model, const Handle(Interface_Protocol)& protocol, const Handle(Standard_Transient)& entity, const Handle(Message_Messenger)& S, const Standard_Integer level)  const;
 
 
 
@@ -86,7 +68,7 @@ protected:
 private: 
 
 
-Standard_Boolean themodefnes;
+  Standard_Boolean themodefnes;
 
 
 };
@@ -95,7 +77,6 @@ Standard_Boolean themodefnes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_WorkLibrary_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_PCDM_StorageDriver_HeaderFile
 #define _Handle_PCDM_StorageDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_PCDM_Writer_HeaderFile
 #include <Handle_PCDM_Writer.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(PCDM_Writer);
 class PCDM_StorageDriver;
 
-DEFINE_STANDARD_HANDLE(PCDM_StorageDriver,PCDM_Writer)
+DEFINE_STANDARD_HANDLE(PCDM_StorageDriver, PCDM_Writer)
 
-#endif
+#endif // _Handle_PCDM_StorageDriver_HeaderFile

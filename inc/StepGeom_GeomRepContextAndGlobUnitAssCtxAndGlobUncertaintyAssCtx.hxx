@@ -6,46 +6,20 @@
 #ifndef _StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_HeaderFile
 #define _StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_HeaderFile
 #include <Handle_StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_GeometricRepresentationContext_HeaderFile
 #include <Handle_StepGeom_GeometricRepresentationContext.hxx>
-#endif
-#ifndef _Handle_StepRepr_GlobalUnitAssignedContext_HeaderFile
 #include <Handle_StepRepr_GlobalUnitAssignedContext.hxx>
-#endif
-#ifndef _Handle_StepRepr_GlobalUncertaintyAssignedContext_HeaderFile
 #include <Handle_StepRepr_GlobalUncertaintyAssignedContext.hxx>
-#endif
-#ifndef _StepRepr_RepresentationContext_HeaderFile
 #include <StepRepr_RepresentationContext.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_StepBasic_HArray1OfNamedUnit_HeaderFile
 #include <Handle_StepBasic_HArray1OfNamedUnit.hxx>
-#endif
-#ifndef _Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit.hxx>
-#endif
-#ifndef _Handle_StepBasic_NamedUnit_HeaderFile
 #include <Handle_StepBasic_NamedUnit.hxx>
-#endif
-#ifndef _Handle_StepBasic_UncertaintyMeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_UncertaintyMeasureWithUnit.hxx>
-#endif
 class StepGeom_GeometricRepresentationContext;
 class StepRepr_GlobalUnitAssignedContext;
 class StepRepr_GlobalUncertaintyAssignedContext;
@@ -57,50 +31,51 @@ class StepBasic_UncertaintyMeasureWithUnit;
 
 
 
-class StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : public StepRepr_RepresentationContext {
+class StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : public StepRepr_RepresentationContext
+{
 
 public:
 
   
-  Standard_EXPORT   StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx();
+  Standard_EXPORT StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aContextIdentifier,const Handle(TCollection_HAsciiString)& aContextType) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aContextIdentifier, const Handle(TCollection_HAsciiString)& aContextType) ;
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aContextIdentifier,const Handle(TCollection_HAsciiString)& aContextType,const Handle(StepGeom_GeometricRepresentationContext)& aGeometricRepresentationCtx,const Handle(StepRepr_GlobalUnitAssignedContext)& aGlobalUnitAssignedCtx,const Handle(StepRepr_GlobalUncertaintyAssignedContext)& aGlobalUncertaintyAssignedCtx) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aContextIdentifier, const Handle(TCollection_HAsciiString)& aContextType, const Handle(StepGeom_GeometricRepresentationContext)& aGeometricRepresentationCtx, const Handle(StepRepr_GlobalUnitAssignedContext)& aGlobalUnitAssignedCtx, const Handle(StepRepr_GlobalUncertaintyAssignedContext)& aGlobalUncertaintyAssignedCtx) ;
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aContextIdentifier,const Handle(TCollection_HAsciiString)& aContextType,const Standard_Integer aCoordinateSpaceDimension,const Handle(StepBasic_HArray1OfNamedUnit)& aUnits,const Handle(StepBasic_HArray1OfUncertaintyMeasureWithUnit)& anUncertainty) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aContextIdentifier, const Handle(TCollection_HAsciiString)& aContextType, const Standard_Integer aCoordinateSpaceDimension, const Handle(StepBasic_HArray1OfNamedUnit)& aUnits, const Handle(StepBasic_HArray1OfUncertaintyMeasureWithUnit)& anUncertainty) ;
   
-  Standard_EXPORT     void SetGeometricRepresentationContext(const Handle(StepGeom_GeometricRepresentationContext)& aGeometricRepresentationContext) ;
+  Standard_EXPORT   void SetGeometricRepresentationContext (const Handle(StepGeom_GeometricRepresentationContext)& aGeometricRepresentationContext) ;
   
-  Standard_EXPORT     Handle_StepGeom_GeometricRepresentationContext GeometricRepresentationContext() const;
+  Standard_EXPORT   Handle(StepGeom_GeometricRepresentationContext) GeometricRepresentationContext()  const;
   
-  Standard_EXPORT     void SetGlobalUnitAssignedContext(const Handle(StepRepr_GlobalUnitAssignedContext)& aGlobalUnitAssignedContext) ;
+  Standard_EXPORT   void SetGlobalUnitAssignedContext (const Handle(StepRepr_GlobalUnitAssignedContext)& aGlobalUnitAssignedContext) ;
   
-  Standard_EXPORT     Handle_StepRepr_GlobalUnitAssignedContext GlobalUnitAssignedContext() const;
+  Standard_EXPORT   Handle(StepRepr_GlobalUnitAssignedContext) GlobalUnitAssignedContext()  const;
   
-  Standard_EXPORT     void SetGlobalUncertaintyAssignedContext(const Handle(StepRepr_GlobalUncertaintyAssignedContext)& aGlobalUncertaintyAssignedCtx) ;
+  Standard_EXPORT   void SetGlobalUncertaintyAssignedContext (const Handle(StepRepr_GlobalUncertaintyAssignedContext)& aGlobalUncertaintyAssignedCtx) ;
   
-  Standard_EXPORT     Handle_StepRepr_GlobalUncertaintyAssignedContext GlobalUncertaintyAssignedContext() const;
+  Standard_EXPORT   Handle(StepRepr_GlobalUncertaintyAssignedContext) GlobalUncertaintyAssignedContext()  const;
   
-  Standard_EXPORT     void SetCoordinateSpaceDimension(const Standard_Integer aCoordinateSpaceDimension) ;
+  Standard_EXPORT   void SetCoordinateSpaceDimension (const Standard_Integer aCoordinateSpaceDimension) ;
   
-  Standard_EXPORT     Standard_Integer CoordinateSpaceDimension() const;
+  Standard_EXPORT   Standard_Integer CoordinateSpaceDimension()  const;
   
-  Standard_EXPORT     void SetUnits(const Handle(StepBasic_HArray1OfNamedUnit)& aUnits) ;
+  Standard_EXPORT   void SetUnits (const Handle(StepBasic_HArray1OfNamedUnit)& aUnits) ;
   
-  Standard_EXPORT     Handle_StepBasic_HArray1OfNamedUnit Units() const;
+  Standard_EXPORT   Handle(StepBasic_HArray1OfNamedUnit) Units()  const;
   
-  Standard_EXPORT     Handle_StepBasic_NamedUnit UnitsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepBasic_NamedUnit) UnitsValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     Standard_Integer NbUnits() const;
+  Standard_EXPORT   Standard_Integer NbUnits()  const;
   
-  Standard_EXPORT     void SetUncertainty(const Handle(StepBasic_HArray1OfUncertaintyMeasureWithUnit)& aUncertainty) ;
+  Standard_EXPORT   void SetUncertainty (const Handle(StepBasic_HArray1OfUncertaintyMeasureWithUnit)& aUncertainty) ;
   
-  Standard_EXPORT     Handle_StepBasic_HArray1OfUncertaintyMeasureWithUnit Uncertainty() const;
+  Standard_EXPORT   Handle(StepBasic_HArray1OfUncertaintyMeasureWithUnit) Uncertainty()  const;
   
-  Standard_EXPORT     Handle_StepBasic_UncertaintyMeasureWithUnit UncertaintyValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepBasic_UncertaintyMeasureWithUnit) UncertaintyValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     Standard_Integer NbUncertainty() const;
+  Standard_EXPORT   Standard_Integer NbUncertainty()  const;
 
 
 
@@ -115,9 +90,9 @@ protected:
 private: 
 
 
-Handle_StepGeom_GeometricRepresentationContext geometricRepresentationContext;
-Handle_StepRepr_GlobalUnitAssignedContext globalUnitAssignedContext;
-Handle_StepRepr_GlobalUncertaintyAssignedContext globalUncertaintyAssignedContext;
+  Handle(StepGeom_GeometricRepresentationContext) geometricRepresentationContext;
+  Handle(StepRepr_GlobalUnitAssignedContext) globalUnitAssignedContext;
+  Handle(StepRepr_GlobalUncertaintyAssignedContext) globalUncertaintyAssignedContext;
 
 
 };
@@ -126,7 +101,6 @@ Handle_StepRepr_GlobalUncertaintyAssignedContext globalUncertaintyAssignedContex
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_HeaderFile

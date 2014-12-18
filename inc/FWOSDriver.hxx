@@ -6,34 +6,26 @@
 #ifndef _FWOSDriver_HeaderFile
 #define _FWOSDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Standard_Transient;
 class Standard_GUID;
-class FWOSDriver_Driver;
 class FWOSDriver_DriverFactory;
 
 
 
-class FWOSDriver  {
+class FWOSDriver 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! returns a DriverFactory. <br>
-  Standard_EXPORT   static  Handle_Standard_Transient Factory(const Standard_GUID& aGUID) ;
-
+  
+  //! returns a DriverFactory.
+  Standard_EXPORT static   Handle(Standard_Transient) Factory (const Standard_GUID& aGUID) ;
 
 
 
@@ -49,7 +41,6 @@ private:
 
 
 
-friend class FWOSDriver_Driver;
 friend class FWOSDriver_DriverFactory;
 
 };
@@ -58,7 +49,6 @@ friend class FWOSDriver_DriverFactory;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _FWOSDriver_HeaderFile

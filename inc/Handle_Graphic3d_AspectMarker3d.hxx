@@ -6,22 +6,15 @@
 #ifndef _Handle_Graphic3d_AspectMarker3d_HeaderFile
 #define _Handle_Graphic3d_AspectMarker3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Aspect_AspectMarker_HeaderFile
 #include <Handle_Aspect_AspectMarker.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Aspect_AspectMarker);
 class Graphic3d_AspectMarker3d;
 
-DEFINE_STANDARD_HANDLE(Graphic3d_AspectMarker3d,Aspect_AspectMarker)
+DEFINE_STANDARD_HANDLE(Graphic3d_AspectMarker3d, Aspect_AspectMarker)
 
-#endif
+#endif // _Handle_Graphic3d_AspectMarker3d_HeaderFile

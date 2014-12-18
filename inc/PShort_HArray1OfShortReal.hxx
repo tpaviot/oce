@@ -6,44 +6,17 @@
 #ifndef _PShort_HArray1OfShortReal_HeaderFile
 #define _PShort_HArray1OfShortReal_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PShort_HArray1OfShortReal_HeaderFile
 #include <Handle_PShort_HArray1OfShortReal.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _PShort_FieldOfHArray1OfShortReal_HeaderFile
 #include <PShort_FieldOfHArray1OfShortReal.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PShort_VArrayNodeOfFieldOfHArray1OfShortReal_HeaderFile
 #include <Handle_PShort_VArrayNodeOfFieldOfHArray1OfShortReal.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PShort_FieldOfHArray1OfShortReal;
@@ -51,30 +24,27 @@ class PShort_VArrayNodeOfFieldOfHArray1OfShortReal;
 class PShort_VArrayTNodeOfFieldOfHArray1OfShortReal;
 
 
-class PShort_HArray1OfShortReal : public Standard_Persistent {
+class PShort_HArray1OfShortReal : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PShort_HArray1OfShortReal(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PShort_HArray1OfShortReal(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PShort_HArray1OfShortReal(const Standard_Integer Low,const Standard_Integer Up,const Standard_ShortReal& V);
+  Standard_EXPORT PShort_HArray1OfShortReal(const Standard_Integer Low, const Standard_Integer Up, const Standard_ShortReal& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_ShortReal& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_ShortReal& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     Standard_ShortReal Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
+  Standard_EXPORT   Standard_ShortReal Value (const Standard_Integer Index)  const;
 
-  PShort_HArray1OfShortReal( )
+PShort_HArray1OfShortReal( )
 {
   
 }
@@ -100,13 +70,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PShort_FieldOfHArray1OfShortReal Field() const;
+  Standard_EXPORT   PShort_FieldOfHArray1OfShortReal Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PShort_FieldOfHArray1OfShortReal Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PShort_FieldOfHArray1OfShortReal Data;
 
 
 };
@@ -156,11 +126,6 @@ PShort_FieldOfHArray1OfShortReal Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PShort_HArray1OfShortReal& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
 
 
-
-#endif
+#endif // _PShort_HArray1OfShortReal_HeaderFile

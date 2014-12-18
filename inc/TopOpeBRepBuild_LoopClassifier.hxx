@@ -6,37 +6,28 @@
 #ifndef _TopOpeBRepBuild_LoopClassifier_HeaderFile
 #define _TopOpeBRepBuild_LoopClassifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_Loop_HeaderFile
 #include <Handle_TopOpeBRepBuild_Loop.hxx>
-#endif
 class TopOpeBRepBuild_Loop;
 
 
-//! classify loops in order to build Areas <br>
-class TopOpeBRepBuild_LoopClassifier  {
+//! classify loops in order to build Areas
+class TopOpeBRepBuild_LoopClassifier 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~TopOpeBRepBuild_LoopClassifier(){Delete() ; }
-  //! Returns the state of loop <L1> compared with loop <L2>. <br>
-  Standard_EXPORT   virtual  TopAbs_State Compare(const Handle(TopOpeBRepBuild_Loop)& L1,const Handle(TopOpeBRepBuild_Loop)& L2)  = 0;
-
+  
+  //! Returns the state of loop <L1> compared with loop <L2>.
+  Standard_EXPORT virtual   TopAbs_State Compare (const Handle(TopOpeBRepBuild_Loop)& L1, const Handle(TopOpeBRepBuild_Loop)& L2)  = 0;
 
 
 
@@ -59,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_LoopClassifier_HeaderFile

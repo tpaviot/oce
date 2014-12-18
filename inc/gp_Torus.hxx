@@ -6,34 +6,16 @@
 #ifndef _gp_Torus_HeaderFile
 #define _gp_Torus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Ax3_HeaderFile
 #include <gp_Ax3.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_DimensionError;
 class gp_Ax3;
@@ -48,165 +30,194 @@ class gp_Vec;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Torus);
 
 
-//!  Describes a torus. <br>
-//! A torus is defined by its major and minor radii and <br>
-//! positioned in space with a coordinate system (a gp_Ax3 <br>
-//! object) as follows: <br>
-//! -   The origin of the coordinate system is the center of the torus; <br>
-//! -   The surface is obtained by rotating a circle of radius <br>
-//!   equal to the minor radius of the torus about the "main <br>
-//!   Direction" of the coordinate system. This circle is <br>
-//!   located in the plane defined by the origin, the "X <br>
-//!   Direction" and the "main Direction" of the coordinate <br>
-//!   system. It is centered on the "X Axis" of this coordinate <br>
-//!   system, and located at a distance, from the origin of <br>
-//!   this coordinate system, equal to the major radius of the   torus; <br>
-//! -   The "X Direction" and "Y Direction" define the <br>
-//!   reference plane of the torus. <br>
-//! The coordinate system described above is the "local <br>
-//! coordinate system" of the torus. <br>
-//! Note: when a gp_Torus torus is converted into a <br>
-//! Geom_ToroidalSurface torus, some implicit properties <br>
-//! of its local coordinate system are used explicitly: <br>
-//! -   its origin, "X Direction", "Y Direction" and "main <br>
-//!   Direction" are used directly to define the parametric <br>
-//!   directions on the torus and the origin of the parameters, <br>
-//! -   its implicit orientation (right-handed or left-handed) <br>
-//!   gives the orientation (direct, indirect) to the <br>
-//!   Geom_ToroidalSurface torus. <br>
-//! See Also <br>
-//! gce_MakeTorus which provides functions for more <br>
-//! complex torus constructions <br>
-//! Geom_ToroidalSurface which provides additional <br>
-//! functions for constructing tori and works, in particular, <br>
-//! with the parametric equations of tori. <br>
-class gp_Torus  {
+//! Describes a torus.
+//! A torus is defined by its major and minor radii and
+//! positioned in space with a coordinate system (a gp_Ax3
+//! object) as follows:
+//! -   The origin of the coordinate system is the center of the torus;
+//! -   The surface is obtained by rotating a circle of radius
+//! equal to the minor radius of the torus about the "main
+//! Direction" of the coordinate system. This circle is
+//! located in the plane defined by the origin, the "X
+//! Direction" and the "main Direction" of the coordinate
+//! system. It is centered on the "X Axis" of this coordinate
+//! system, and located at a distance, from the origin of
+//! this coordinate system, equal to the major radius of the   torus;
+//! -   The "X Direction" and "Y Direction" define the
+//! reference plane of the torus.
+//! The coordinate system described above is the "local
+//! coordinate system" of the torus.
+//! Note: when a gp_Torus torus is converted into a
+//! Geom_ToroidalSurface torus, some implicit properties
+//! of its local coordinate system are used explicitly:
+//! -   its origin, "X Direction", "Y Direction" and "main
+//! Direction" are used directly to define the parametric
+//! directions on the torus and the origin of the parameters,
+//! -   its implicit orientation (right-handed or left-handed)
+//! gives the orientation (direct, indirect) to the
+//! Geom_ToroidalSurface torus.
+//! See Also
+//! gce_MakeTorus which provides functions for more
+//! complex torus constructions
+//! Geom_ToroidalSurface which provides additional
+//! functions for constructing tori and works, in particular,
+//! with the parametric equations of tori.
+class gp_Torus 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! creates an indefinite Torus. <br>
-      gp_Torus();
   
-//! a torus centered on the origin of coordinate system <br>
-//!   A3, with major radius MajorRadius and minor radius <br>
-//!   MinorRadius, and with the reference plane defined <br>
-//!   by the origin, the "X Direction" and the "Y Direction" of A3. <br>
-//!  Warnings : <br>
-//!  It is not forbidden to create a torus with <br>
-//!  MajorRadius = MinorRadius = 0.0 <br>
-//! Raises ConstructionError if MinorRadius < 0.0 or if MajorRadius < 0.0 <br>
-      gp_Torus(const gp_Ax3& A3,const Standard_Real MajorRadius,const Standard_Real MinorRadius);
-  //! Modifies this torus, by redefining its local coordinate <br>
-//! system so that: <br>
-//! -   its origin and "main Direction" become those of the <br>
-//! axis A1 (the "X Direction" and "Y Direction" are then recomputed). <br>
-//! Raises ConstructionError if the direction of A1 is parallel to the "XDirection" <br>
-//!  of the coordinate system of the toroidal surface. <br>
-        void SetAxis(const gp_Ax1& A1) ;
-  //! Changes the location of the torus. <br>
-        void SetLocation(const gp_Pnt& Loc) ;
-  //! Assigns value to the major radius  of this torus. <br>
-//! Raises ConstructionError if MajorRadius - MinorRadius <= Resolution() <br>
-        void SetMajorRadius(const Standard_Real MajorRadius) ;
-  //! Assigns value to the  minor radius of this torus. <br>
-//! Raises ConstructionError if MinorRadius < 0.0 or if <br>
-//!  MajorRadius - MinorRadius <= Resolution from gp. <br>
-        void SetMinorRadius(const Standard_Real MinorRadius) ;
-  //! Changes the local coordinate system of the surface. <br>
-        void SetPosition(const gp_Ax3& A3) ;
-  //! Computes the area of the torus. <br>
-        Standard_Real Area() const;
-  //! Reverses the   U   parametrization of   the  torus <br>
-//!          reversing the YAxis. <br>
-        void UReverse() ;
-  //! Reverses the   V   parametrization of   the  torus <br>
-//!          reversing the ZAxis. <br>
-  Standard_EXPORT     void VReverse() ;
-  //! returns true if the Ax3, the local coordinate system of this torus, is right handed. <br>
-        Standard_Boolean Direct() const;
-  //! returns the symmetry axis of the torus. <br>
-       const gp_Ax1& Axis() const;
+  //! creates an indefinite Torus.
+    gp_Torus();
   
-//!  Computes the coefficients of the implicit equation of the surface <br>
-//!  in the absolute cartesian coordinate system : <br>
-//! Coef(1) * X**4 + Coef(2) * Y**4 + Coef(3) * Z**4 + <br>
-//! Coef(4) * X**3 * Y + Coef(5) * X**3 * Z + Coef(6) * Y**3 * X + <br>
-//! Coef(7) * Y**3 * Z + Coef(8) * Z**3 * X + Coef(9) * Z**3 * Y + <br>
-//! Coef(10) * X**2 * Y**2 + Coef(11) * X**2 * Z**2 + <br>
-//! Coef(12) * Y**2 * Z**2 + Coef(13) * X**3 + Coef(14) * Y**3 + <br>
-//! Coef(15) * Z**3 + Coef(16) * X**2 * Y + Coef(17) * X**2 * Z + <br>
-//! Coef(18) * Y**2 * X + Coef(19) * Y**2 * Z + Coef(20) * Z**2 * X + <br>
-//! Coef(21) * Z**2 * Y + Coef(22) * X**2 + Coef(23) * Y**2 + <br>
-//! Coef(24) * Z**2 + Coef(25) * X * Y + Coef(26) * X * Z + <br>
-//! Coef(27) * Y * Z + Coef(28) * X + Coef(29) * Y + Coef(30) *  Z + <br>
-//! Coef(31) = 0.0 <br>
-//! Raises DimensionError if the length of Coef is lower than 31. <br>
-  Standard_EXPORT     void Coefficients(TColStd_Array1OfReal& Coef) const;
-  //! Returns the Torus's location. <br>
-       const gp_Pnt& Location() const;
-  //! Returns the local coordinates system of the torus. <br>
-       const gp_Ax3& Position() const;
-  //! returns the major radius of the torus. <br>
-        Standard_Real MajorRadius() const;
-  //! returns the minor radius of the torus. <br>
-        Standard_Real MinorRadius() const;
-  //! Computes the volume of the torus. <br>
-        Standard_Real Volume() const;
-  //! returns the axis X of the torus. <br>
-        gp_Ax1 XAxis() const;
-  //! returns the axis Y of the torus. <br>
-        gp_Ax1 YAxis() const;
+
+  //! a torus centered on the origin of coordinate system
+  //! A3, with major radius MajorRadius and minor radius
+  //! MinorRadius, and with the reference plane defined
+  //! by the origin, the "X Direction" and the "Y Direction" of A3.
+  //! Warnings :
+  //! It is not forbidden to create a torus with
+  //! MajorRadius = MinorRadius = 0.0
+  //! Raises ConstructionError if MinorRadius < 0.0 or if MajorRadius < 0.0
+    gp_Torus(const gp_Ax3& A3, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
   
-  Standard_EXPORT     void Mirror(const gp_Pnt& P) ;
+  //! Modifies this torus, by redefining its local coordinate
+  //! system so that:
+  //! -   its origin and "main Direction" become those of the
+  //! axis A1 (the "X Direction" and "Y Direction" are then recomputed).
+  //! Raises ConstructionError if the direction of A1 is parallel to the "XDirection"
+  //! of the coordinate system of the toroidal surface.
+      void SetAxis (const gp_Ax1& A1) ;
   
-//!  Performs the symmetrical transformation of a torus <br>
-//!  with respect to the point P which is the center of the <br>
-//!  symmetry. <br>
-  Standard_EXPORT     gp_Torus Mirrored(const gp_Pnt& P) const;
+  //! Changes the location of the torus.
+      void SetLocation (const gp_Pnt& Loc) ;
   
-  Standard_EXPORT     void Mirror(const gp_Ax1& A1) ;
+  //! Assigns value to the major radius  of this torus.
+  //! Raises ConstructionError if MajorRadius - MinorRadius <= Resolution()
+      void SetMajorRadius (const Standard_Real MajorRadius) ;
   
-//!  Performs the symmetrical transformation of a torus with <br>
-//!  respect to an axis placement which is the axis of the <br>
-//!  symmetry. <br>
-  Standard_EXPORT     gp_Torus Mirrored(const gp_Ax1& A1) const;
+  //! Assigns value to the  minor radius of this torus.
+  //! Raises ConstructionError if MinorRadius < 0.0 or if
+  //! MajorRadius - MinorRadius <= Resolution from gp.
+      void SetMinorRadius (const Standard_Real MinorRadius) ;
   
-  Standard_EXPORT     void Mirror(const gp_Ax2& A2) ;
+  //! Changes the local coordinate system of the surface.
+      void SetPosition (const gp_Ax3& A3) ;
   
-//!  Performs the symmetrical transformation of a torus with respect <br>
-//!  to a plane. The axis placement A2 locates the plane of the <br>
-//!  of the symmetry : (Location, XDirection, YDirection). <br>
-  Standard_EXPORT     gp_Torus Mirrored(const gp_Ax2& A2) const;
+  //! Computes the area of the torus.
+      Standard_Real Area()  const;
   
-        void Rotate(const gp_Ax1& A1,const Standard_Real Ang) ;
+  //! Reverses the   U   parametrization of   the  torus
+  //! reversing the YAxis.
+      void UReverse() ;
   
-//!  Rotates a torus. A1 is the axis of the rotation. <br>
-//!  Ang is the angular value of the rotation in radians. <br>
-        gp_Torus Rotated(const gp_Ax1& A1,const Standard_Real Ang) const;
+  //! Reverses the   V   parametrization of   the  torus
+  //! reversing the ZAxis.
+  Standard_EXPORT   void VReverse() ;
   
-        void Scale(const gp_Pnt& P,const Standard_Real S) ;
+  //! returns true if the Ax3, the local coordinate system of this torus, is right handed.
+      Standard_Boolean Direct()  const;
   
-//!  Scales a torus. S is the scaling value. <br>
-//!  The absolute value of S is used to scale the torus <br>
-        gp_Torus Scaled(const gp_Pnt& P,const Standard_Real S) const;
+  //! returns the symmetry axis of the torus.
+     const  gp_Ax1& Axis()  const;
   
-        void Transform(const gp_Trsf& T) ;
+
+  //! Computes the coefficients of the implicit equation of the surface
+  //! in the absolute cartesian coordinate system :
+  //! Coef(1) * X**4 + Coef(2) * Y**4 + Coef(3) * Z**4 +
+  //! Coef(4) * X**3 * Y + Coef(5) * X**3 * Z + Coef(6) * Y**3 * X +
+  //! Coef(7) * Y**3 * Z + Coef(8) * Z**3 * X + Coef(9) * Z**3 * Y +
+  //! Coef(10) * X**2 * Y**2 + Coef(11) * X**2 * Z**2 +
+  //! Coef(12) * Y**2 * Z**2 + Coef(13) * X**3 + Coef(14) * Y**3 +
+  //! Coef(15) * Z**3 + Coef(16) * X**2 * Y + Coef(17) * X**2 * Z +
+  //! Coef(18) * Y**2 * X + Coef(19) * Y**2 * Z + Coef(20) * Z**2 * X +
+  //! Coef(21) * Z**2 * Y + Coef(22) * X**2 + Coef(23) * Y**2 +
+  //! Coef(24) * Z**2 + Coef(25) * X * Y + Coef(26) * X * Z +
+  //! Coef(27) * Y * Z + Coef(28) * X + Coef(29) * Y + Coef(30) *  Z +
+  //! Coef(31) = 0.0
+  //! Raises DimensionError if the length of Coef is lower than 31.
+  Standard_EXPORT   void Coefficients (TColStd_Array1OfReal& Coef)  const;
   
-//!  Transforms a torus with the transformation T from class Trsf. <br>
-        gp_Torus Transformed(const gp_Trsf& T) const;
+  //! Returns the Torus's location.
+     const  gp_Pnt& Location()  const;
   
-        void Translate(const gp_Vec& V) ;
+  //! Returns the local coordinates system of the torus.
+     const  gp_Ax3& Position()  const;
   
-//!  Translates a torus in the direction of the vector V. <br>
-//!  The magnitude of the translation is the vector's magnitude. <br>
-        gp_Torus Translated(const gp_Vec& V) const;
+  //! returns the major radius of the torus.
+      Standard_Real MajorRadius()  const;
   
-        void Translate(const gp_Pnt& P1,const gp_Pnt& P2) ;
+  //! returns the minor radius of the torus.
+      Standard_Real MinorRadius()  const;
   
-//!  Translates a torus from the point P1 to the point P2. <br>
-        gp_Torus Translated(const gp_Pnt& P1,const gp_Pnt& P2) const;
+  //! Computes the volume of the torus.
+      Standard_Real Volume()  const;
+  
+  //! returns the axis X of the torus.
+      gp_Ax1 XAxis()  const;
+  
+  //! returns the axis Y of the torus.
+      gp_Ax1 YAxis()  const;
+  
+  Standard_EXPORT   void Mirror (const gp_Pnt& P) ;
+  
+
+  //! Performs the symmetrical transformation of a torus
+  //! with respect to the point P which is the center of the
+  //! symmetry.
+  Standard_EXPORT   gp_Torus Mirrored (const gp_Pnt& P)  const;
+  
+  Standard_EXPORT   void Mirror (const gp_Ax1& A1) ;
+  
+
+  //! Performs the symmetrical transformation of a torus with
+  //! respect to an axis placement which is the axis of the
+  //! symmetry.
+  Standard_EXPORT   gp_Torus Mirrored (const gp_Ax1& A1)  const;
+  
+  Standard_EXPORT   void Mirror (const gp_Ax2& A2) ;
+  
+
+  //! Performs the symmetrical transformation of a torus with respect
+  //! to a plane. The axis placement A2 locates the plane of the
+  //! of the symmetry : (Location, XDirection, YDirection).
+  Standard_EXPORT   gp_Torus Mirrored (const gp_Ax2& A2)  const;
+  
+      void Rotate (const gp_Ax1& A1, const Standard_Real Ang) ;
+  
+
+  //! Rotates a torus. A1 is the axis of the rotation.
+  //! Ang is the angular value of the rotation in radians.
+      gp_Torus Rotated (const gp_Ax1& A1, const Standard_Real Ang)  const;
+  
+      void Scale (const gp_Pnt& P, const Standard_Real S) ;
+  
+
+  //! Scales a torus. S is the scaling value.
+  //! The absolute value of S is used to scale the torus
+      gp_Torus Scaled (const gp_Pnt& P, const Standard_Real S)  const;
+  
+      void Transform (const gp_Trsf& T) ;
+  
+
+  //! Transforms a torus with the transformation T from class Trsf.
+      gp_Torus Transformed (const gp_Trsf& T)  const;
+  
+      void Translate (const gp_Vec& V) ;
+  
+
+  //! Translates a torus in the direction of the vector V.
+  //! The magnitude of the translation is the vector's magnitude.
+      gp_Torus Translated (const gp_Vec& V)  const;
+  
+      void Translate (const gp_Pnt& P1, const gp_Pnt& P2) ;
+  
+
+  //! Translates a torus from the point P1 to the point P2.
+      gp_Torus Translated (const gp_Pnt& P1, const gp_Pnt& P2)  const;
     const gp_Ax3& _CSFDB_Getgp_Toruspos() const { return pos; }
     Standard_Real _CSFDB_Getgp_TorusmajorRadius() const { return majorRadius; }
     void _CSFDB_Setgp_TorusmajorRadius(const Standard_Real p) { majorRadius = p; }
@@ -223,9 +234,9 @@ protected:
 private: 
 
 
-gp_Ax3 pos;
-Standard_Real majorRadius;
-Standard_Real minorRadius;
+  gp_Ax3 pos;
+  Standard_Real majorRadius;
+  Standard_Real minorRadius;
 
 
 };
@@ -235,7 +246,6 @@ Standard_Real minorRadius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gp_Torus_HeaderFile

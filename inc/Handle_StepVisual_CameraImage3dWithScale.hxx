@@ -6,22 +6,15 @@
 #ifndef _Handle_StepVisual_CameraImage3dWithScale_HeaderFile
 #define _Handle_StepVisual_CameraImage3dWithScale_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepVisual_CameraImage_HeaderFile
 #include <Handle_StepVisual_CameraImage.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepVisual_CameraImage);
 class StepVisual_CameraImage3dWithScale;
 
-DEFINE_STANDARD_HANDLE(StepVisual_CameraImage3dWithScale,StepVisual_CameraImage)
+DEFINE_STANDARD_HANDLE(StepVisual_CameraImage3dWithScale, StepVisual_CameraImage)
 
-#endif
+#endif // _Handle_StepVisual_CameraImage3dWithScale_HeaderFile

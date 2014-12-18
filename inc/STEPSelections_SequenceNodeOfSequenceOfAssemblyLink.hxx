@@ -6,38 +6,27 @@
 #ifndef _STEPSelections_SequenceNodeOfSequenceOfAssemblyLink_HeaderFile
 #define _STEPSelections_SequenceNodeOfSequenceOfAssemblyLink_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink_HeaderFile
 #include <Handle_STEPSelections_SequenceNodeOfSequenceOfAssemblyLink.hxx>
-#endif
 
-#ifndef _Handle_STEPSelections_AssemblyLink_HeaderFile
 #include <Handle_STEPSelections_AssemblyLink.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class STEPSelections_AssemblyLink;
 class STEPSelections_SequenceOfAssemblyLink;
 
 
 
-class STEPSelections_SequenceNodeOfSequenceOfAssemblyLink : public TCollection_SeqNode {
+class STEPSelections_SequenceNodeOfSequenceOfAssemblyLink : public TCollection_SeqNode
+{
 
 public:
 
   
-      STEPSelections_SequenceNodeOfSequenceOfAssemblyLink(const Handle(STEPSelections_AssemblyLink)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    STEPSelections_SequenceNodeOfSequenceOfAssemblyLink(const Handle(STEPSelections_AssemblyLink)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_STEPSelections_AssemblyLink& Value() const;
+      Handle(STEPSelections_AssemblyLink)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_STEPSelections_AssemblyLink myValue;
+  Handle(STEPSelections_AssemblyLink) myValue;
 
 
 };
 
-#define SeqItem Handle_STEPSelections_AssemblyLink
+#define SeqItem Handle(STEPSelections_AssemblyLink)
 #define SeqItem_hxx <STEPSelections_AssemblyLink.hxx>
 #define TCollection_SequenceNode STEPSelections_SequenceNodeOfSequenceOfAssemblyLink
 #define TCollection_SequenceNode_hxx <STEPSelections_SequenceNodeOfSequenceOfAssemblyLink.hxx>
@@ -78,7 +67,6 @@ Handle_STEPSelections_AssemblyLink myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPSelections_SequenceNodeOfSequenceOfAssemblyLink_HeaderFile

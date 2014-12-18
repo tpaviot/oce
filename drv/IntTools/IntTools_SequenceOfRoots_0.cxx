@@ -5,18 +5,10 @@
 
 #include <IntTools_SequenceOfRoots.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntTools_Root_HeaderFile
 #include <IntTools_Root.hxx>
-#endif
-#ifndef _IntTools_SequenceNodeOfSequenceOfRoots_HeaderFile
 #include <IntTools_SequenceNodeOfSequenceOfRoots.hxx>
-#endif
  
 
 #define SeqItem IntTools_Root

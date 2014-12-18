@@ -1,6 +1,2 @@
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _CSLib_NormalPolyDef_HeaderFile
 #include <CSLib_NormalPolyDef.hxx>
-#endif

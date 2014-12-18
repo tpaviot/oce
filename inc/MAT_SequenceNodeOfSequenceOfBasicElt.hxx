@@ -6,38 +6,27 @@
 #ifndef _MAT_SequenceNodeOfSequenceOfBasicElt_HeaderFile
 #define _MAT_SequenceNodeOfSequenceOfBasicElt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT_SequenceNodeOfSequenceOfBasicElt_HeaderFile
 #include <Handle_MAT_SequenceNodeOfSequenceOfBasicElt.hxx>
-#endif
 
-#ifndef _Handle_MAT_BasicElt_HeaderFile
 #include <Handle_MAT_BasicElt.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class MAT_BasicElt;
 class MAT_SequenceOfBasicElt;
 
 
 
-class MAT_SequenceNodeOfSequenceOfBasicElt : public TCollection_SeqNode {
+class MAT_SequenceNodeOfSequenceOfBasicElt : public TCollection_SeqNode
+{
 
 public:
 
   
-      MAT_SequenceNodeOfSequenceOfBasicElt(const Handle(MAT_BasicElt)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    MAT_SequenceNodeOfSequenceOfBasicElt(const Handle(MAT_BasicElt)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_MAT_BasicElt& Value() const;
+      Handle(MAT_BasicElt)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_MAT_BasicElt myValue;
+  Handle(MAT_BasicElt) myValue;
 
 
 };
 
-#define SeqItem Handle_MAT_BasicElt
+#define SeqItem Handle(MAT_BasicElt)
 #define SeqItem_hxx <MAT_BasicElt.hxx>
 #define TCollection_SequenceNode MAT_SequenceNodeOfSequenceOfBasicElt
 #define TCollection_SequenceNode_hxx <MAT_SequenceNodeOfSequenceOfBasicElt.hxx>
@@ -78,7 +67,6 @@ Handle_MAT_BasicElt myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT_SequenceNodeOfSequenceOfBasicElt_HeaderFile

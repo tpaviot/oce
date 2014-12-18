@@ -1,9 +1,3 @@
-#ifndef _StepFEA_ParametricCurve3dElementCoordinateDirection_HeaderFile
 #include <StepFEA_ParametricCurve3dElementCoordinateDirection.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepFEA_ParametricCurve3dElementCoordinateSystem_HeaderFile
 #include <StepFEA_ParametricCurve3dElementCoordinateSystem.hxx>
-#endif

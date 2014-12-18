@@ -5,24 +5,12 @@
 
 #include <TopOpeBRepDS_DataMapOfIntegerListOfInterference.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference_HeaderFile
 #include <TopOpeBRepDS_DataMapNodeOfDataMapOfIntegerListOfInterference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

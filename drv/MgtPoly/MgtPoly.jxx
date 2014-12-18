@@ -1,39 +1,13 @@
-#ifndef _Poly_Triangle_HeaderFile
 #include <Poly_Triangle.hxx>
-#endif
-#ifndef _PPoly_Triangle_HeaderFile
 #include <PPoly_Triangle.hxx>
-#endif
-#ifndef _Poly_Triangulation_HeaderFile
 #include <Poly_Triangulation.hxx>
-#endif
-#ifndef _PPoly_Triangulation_HeaderFile
 #include <PPoly_Triangulation.hxx>
-#endif
-#ifndef _PTColStd_PersistentTransientMap_HeaderFile
 #include <PTColStd_PersistentTransientMap.hxx>
-#endif
-#ifndef _PTColStd_TransientPersistentMap_HeaderFile
 #include <PTColStd_TransientPersistentMap.hxx>
-#endif
-#ifndef _Poly_Polygon3D_HeaderFile
 #include <Poly_Polygon3D.hxx>
-#endif
-#ifndef _PPoly_Polygon3D_HeaderFile
 #include <PPoly_Polygon3D.hxx>
-#endif
-#ifndef _Poly_Polygon2D_HeaderFile
 #include <Poly_Polygon2D.hxx>
-#endif
-#ifndef _PPoly_Polygon2D_HeaderFile
 #include <PPoly_Polygon2D.hxx>
-#endif
-#ifndef _Poly_PolygonOnTriangulation_HeaderFile
 #include <Poly_PolygonOnTriangulation.hxx>
-#endif
-#ifndef _PPoly_PolygonOnTriangulation_HeaderFile
 #include <PPoly_PolygonOnTriangulation.hxx>
-#endif
-#ifndef _MgtPoly_HeaderFile
 #include <MgtPoly.hxx>
-#endif

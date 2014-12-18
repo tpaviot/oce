@@ -5,22 +5,12 @@
 
 #include <Interface_HSequenceOfCheck.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _Interface_SequenceOfCheck_HeaderFile
 #include <Interface_SequenceOfCheck.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(Interface_HSequenceOfCheck,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Interface_HSequenceOfCheck)
 
 
-#define Item Handle_Interface_Check
+#define Item Handle(Interface_Check)
 #define Item_hxx <Interface_Check.hxx>
 #define TheSequence Interface_SequenceOfCheck
 #define TheSequence_hxx <Interface_SequenceOfCheck.hxx>

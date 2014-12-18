@@ -1,21 +1,7 @@
-#ifndef _TopOpeBRepTool_GeomTool_HeaderFile
 #include <TopOpeBRepTool_GeomTool.hxx>
-#endif
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt_HeaderFile
 #include <TColgp_Array1OfPnt.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _TopOpeBRepTool_CurveTool_HeaderFile
 #include <TopOpeBRepTool_CurveTool.hxx>
-#endif

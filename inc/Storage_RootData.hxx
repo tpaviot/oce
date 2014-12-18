@@ -6,43 +6,19 @@
 #ifndef _Storage_RootData_HeaderFile
 #define _Storage_RootData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_RootData_HeaderFile
 #include <Handle_Storage_RootData.hxx>
-#endif
 
-#ifndef _Storage_MapOfPers_HeaderFile
 #include <Storage_MapOfPers.hxx>
-#endif
-#ifndef _Storage_Error_HeaderFile
 #include <Storage_Error.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Storage_Root_HeaderFile
 #include <Handle_Storage_Root.hxx>
-#endif
-#ifndef _Handle_Storage_HSeqOfRoot_HeaderFile
 #include <Handle_Storage_HSeqOfRoot.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
 class Standard_NoSuchObject;
 class Storage_Schema;
 class Storage_Root;
@@ -52,31 +28,37 @@ class Standard_Persistent;
 
 
 
-class Storage_RootData : public MMgt_TShared {
+class Storage_RootData : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Storage_RootData();
-  //! returns the number of roots. <br>
-  Standard_EXPORT     Standard_Integer NumberOfRoots() const;
-  //! add a root to <me>. If a root with same name is present, it <br>
-//!          will be replaced by <aRoot>. <br>
-  Standard_EXPORT     void AddRoot(const Handle(Storage_Root)& aRoot) ;
+  Standard_EXPORT Storage_RootData();
   
-  Standard_EXPORT     Handle_Storage_HSeqOfRoot Roots() const;
-  //! find a root with name <aName>. <br>
-  Standard_EXPORT     Handle_Storage_Root Find(const TCollection_AsciiString& aName) const;
-  //! returns Standard_True if <me> contains a root named <aName> <br>
-  Standard_EXPORT     Standard_Boolean IsRoot(const TCollection_AsciiString& aName) const;
-  //! remove the root named <aName>. <br>
-  Standard_EXPORT     void RemoveRoot(const TCollection_AsciiString& aName) ;
+  //! returns the number of roots.
+  Standard_EXPORT   Standard_Integer NumberOfRoots()  const;
   
-  Standard_EXPORT     Storage_Error ErrorStatus() const;
+  //! add a root to <me>. If a root with same name is present, it
+  //! will be replaced by <aRoot>.
+  Standard_EXPORT   void AddRoot (const Handle(Storage_Root)& aRoot) ;
   
-  Standard_EXPORT     TCollection_AsciiString ErrorStatusExtension() const;
+  Standard_EXPORT   Handle(Storage_HSeqOfRoot) Roots()  const;
   
-  Standard_EXPORT     void ClearErrorStatus() ;
+  //! find a root with name <aName>.
+  Standard_EXPORT   Handle(Storage_Root) Find (const TCollection_AsciiString& aName)  const;
+  
+  //! returns Standard_True if <me> contains a root named <aName>
+  Standard_EXPORT   Standard_Boolean IsRoot (const TCollection_AsciiString& aName)  const;
+  
+  //! remove the root named <aName>.
+  Standard_EXPORT   void RemoveRoot (const TCollection_AsciiString& aName) ;
+  
+  Standard_EXPORT   Storage_Error ErrorStatus()  const;
+  
+  Standard_EXPORT   TCollection_AsciiString ErrorStatusExtension()  const;
+  
+  Standard_EXPORT   void ClearErrorStatus() ;
 
 
 friend class Storage_Schema;
@@ -92,15 +74,15 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void UpdateRoot(const TCollection_AsciiString& aName,const Handle(Standard_Persistent)& aPers) ;
+  Standard_EXPORT   void UpdateRoot (const TCollection_AsciiString& aName, const Handle(Standard_Persistent)& aPers) ;
   
-  Standard_EXPORT     void SetErrorStatus(const Storage_Error anError) ;
+  Standard_EXPORT   void SetErrorStatus (const Storage_Error anError) ;
   
-  Standard_EXPORT     void SetErrorStatusExtension(const TCollection_AsciiString& anErrorExt) ;
+  Standard_EXPORT   void SetErrorStatusExtension (const TCollection_AsciiString& anErrorExt) ;
 
-Storage_MapOfPers myObjects;
-Storage_Error myErrorStatus;
-TCollection_AsciiString myErrorStatusExt;
+  Storage_MapOfPers myObjects;
+  Storage_Error myErrorStatus;
+  TCollection_AsciiString myErrorStatusExt;
 
 
 };
@@ -109,7 +91,6 @@ TCollection_AsciiString myErrorStatusExt;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_RootData_HeaderFile

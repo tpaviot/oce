@@ -6,15 +6,14 @@
 #ifndef _StepBasic_Source_HeaderFile
 #define _StepBasic_Source_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepBasic_Source {
+
+enum StepBasic_Source
+{
 StepBasic_sMade,
 StepBasic_sBought,
 StepBasic_sNotKnown
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepBasic_Source_HeaderFile

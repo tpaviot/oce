@@ -6,45 +6,33 @@
 #ifndef _PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString_HeaderFile
 #define _PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_PCollection_HExtendedString_HeaderFile
 #include <Handle_PCollection_HExtendedString.hxx>
-#endif
-#ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class PCollection_HExtendedString;
 class PColStd_FieldOfHArray1OfExtendedString;
 class PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString;
 
 
 
-class PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString  {
+class PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString();
+    PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString();
   
-      PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString(const Handle(PCollection_HExtendedString)& aValue);
+    PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString(const Handle(PCollection_HExtendedString)& aValue);
   
-        void SetValue(const Handle(PCollection_HExtendedString)& aValue) ;
+      void SetValue (const Handle(PCollection_HExtendedString)& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -59,12 +47,12 @@ private:
 
 
 
-Handle_PCollection_HExtendedString myValue;
+  Handle(PCollection_HExtendedString) myValue;
 
 
 };
 
-#define Item Handle_PCollection_HExtendedString
+#define Item Handle(PCollection_HExtendedString)
 #define Item_hxx <PCollection_HExtendedString.hxx>
 #define DBC_VArrayNode PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString
 #define DBC_VArrayNode_hxx <PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString.hxx>
@@ -89,7 +77,6 @@ Handle_PCollection_HExtendedString myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString_HeaderFile

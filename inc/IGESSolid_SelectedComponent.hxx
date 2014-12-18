@@ -6,52 +6,45 @@
 #ifndef _IGESSolid_SelectedComponent_HeaderFile
 #define _IGESSolid_SelectedComponent_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_SelectedComponent_HeaderFile
 #include <Handle_IGESSolid_SelectedComponent.hxx>
-#endif
 
-#ifndef _Handle_IGESSolid_BooleanTree_HeaderFile
 #include <Handle_IGESSolid_BooleanTree.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 class IGESSolid_BooleanTree;
 class gp_XYZ;
 class gp_Pnt;
 
 
-//! defines SelectedComponent, Type <182> Form Number <0> <br>
-//!          in package IGESSolid <br>
-//!          The Selected Component entity provides a means of <br>
-//!          selecting one component of a disjoint CSG solid <br>
-class IGESSolid_SelectedComponent : public IGESData_IGESEntity {
+//! defines SelectedComponent, Type <182> Form Number <0>
+//! in package IGESSolid
+//! The Selected Component entity provides a means of
+//! selecting one component of a disjoint CSG solid
+class IGESSolid_SelectedComponent : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSolid_SelectedComponent();
-  //! This method is used to set the fields of the class <br>
-//!           SelectedComponent <br>
-//!       - anEntity  : the Boolean tree entity <br>
-//!       - selectPnt : Point in or on the desired component <br>
-  Standard_EXPORT     void Init(const Handle(IGESSolid_BooleanTree)& anEntity,const gp_XYZ& selectPnt) ;
-  //! returns the Boolean tree entity <br>
-  Standard_EXPORT     Handle_IGESSolid_BooleanTree Component() const;
-  //! returns the point on/in the selected component <br>
-  Standard_EXPORT     gp_Pnt SelectPoint() const;
-  //! returns the point on/in the selected component <br>
-//! after applying TransformationMatrix <br>
-  Standard_EXPORT     gp_Pnt TransformedSelectPoint() const;
+  Standard_EXPORT IGESSolid_SelectedComponent();
+  
+  //! This method is used to set the fields of the class
+  //! SelectedComponent
+  //! - anEntity  : the Boolean tree entity
+  //! - selectPnt : Point in or on the desired component
+  Standard_EXPORT   void Init (const Handle(IGESSolid_BooleanTree)& anEntity, const gp_XYZ& selectPnt) ;
+  
+  //! returns the Boolean tree entity
+  Standard_EXPORT   Handle(IGESSolid_BooleanTree) Component()  const;
+  
+  //! returns the point on/in the selected component
+  Standard_EXPORT   gp_Pnt SelectPoint()  const;
+  
+  //! returns the point on/in the selected component
+  //! after applying TransformationMatrix
+  Standard_EXPORT   gp_Pnt TransformedSelectPoint()  const;
 
 
 
@@ -66,8 +59,8 @@ protected:
 private: 
 
 
-Handle_IGESSolid_BooleanTree theEntity;
-gp_XYZ theSelectPoint;
+  Handle(IGESSolid_BooleanTree) theEntity;
+  gp_XYZ theSelectPoint;
 
 
 };
@@ -76,7 +69,6 @@ gp_XYZ theSelectPoint;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_SelectedComponent_HeaderFile

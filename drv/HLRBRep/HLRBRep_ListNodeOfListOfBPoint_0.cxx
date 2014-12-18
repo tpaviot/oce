@@ -5,19 +5,11 @@
 
 #include <HLRBRep_ListNodeOfListOfBPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _HLRBRep_BiPoint_HeaderFile
 #include <HLRBRep_BiPoint.hxx>
-#endif
-#ifndef _HLRBRep_ListOfBPoint_HeaderFile
 #include <HLRBRep_ListOfBPoint.hxx>
-#endif
-#ifndef _HLRBRep_ListIteratorOfListOfBPoint_HeaderFile
 #include <HLRBRep_ListIteratorOfListOfBPoint.hxx>
-#endif
 
  
 

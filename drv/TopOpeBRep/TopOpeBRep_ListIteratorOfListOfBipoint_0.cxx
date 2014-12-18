@@ -5,21 +5,11 @@
 
 #include <TopOpeBRep_ListIteratorOfListOfBipoint.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRep_ListOfBipoint_HeaderFile
 #include <TopOpeBRep_ListOfBipoint.hxx>
-#endif
-#ifndef _TopOpeBRep_Bipoint_HeaderFile
 #include <TopOpeBRep_Bipoint.hxx>
-#endif
-#ifndef _TopOpeBRep_ListNodeOfListOfBipoint_HeaderFile
 #include <TopOpeBRep_ListNodeOfListOfBipoint.hxx>
-#endif
  
 
 #define Item TopOpeBRep_Bipoint

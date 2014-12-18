@@ -6,22 +6,12 @@
 #ifndef _DsgPrs_OffsetPresentation_HeaderFile
 #define _DsgPrs_OffsetPresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_Drawer;
 class TCollection_ExtendedString;
@@ -29,26 +19,28 @@ class gp_Pnt;
 class gp_Dir;
 
 
-//! A framework to define display of offsets. <br>
-class DsgPrs_OffsetPresentation  {
+//! A framework to define display of offsets.
+class DsgPrs_OffsetPresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines the display of elements showing offset shapes. <br>
-//! These include the two points of attachment <br>
-//! AttachmentPoint1 and AttachmentPoint1, the two <br>
-//! directions aDirection and aDirection2, and the offset point OffsetPoint. <br>
-//! These arguments are added to the presentation <br>
-//! object aPresentation. Their display attributes are <br>
-//! defined by the attribute manager aDrawer. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const TCollection_ExtendedString& aText,const gp_Pnt& AttachmentPoint1,const gp_Pnt& AttachmentPoint2,const gp_Dir& aDirection,const gp_Dir& aDirection2,const gp_Pnt& OffsetPoint) ;
-  //! draws the representation of axes alignement Constraint <br>
-//!          between the point AttachmentPoint1 and the <br>
-//!          point AttachmentPoint2, along direction <br>
-//!          aDirection, using the offset point OffsetPoint. <br>
-  Standard_EXPORT   static  void AddAxes(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const TCollection_ExtendedString& aText,const gp_Pnt& AttachmentPoint1,const gp_Pnt& AttachmentPoint2,const gp_Dir& aDirection,const gp_Dir& aDirection2,const gp_Pnt& OffsetPoint) ;
-
+  
+  //! Defines the display of elements showing offset shapes.
+  //! These include the two points of attachment
+  //! AttachmentPoint1 and AttachmentPoint1, the two
+  //! directions aDirection and aDirection2, and the offset point OffsetPoint.
+  //! These arguments are added to the presentation
+  //! object aPresentation. Their display attributes are
+  //! defined by the attribute manager aDrawer.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const TCollection_ExtendedString& aText, const gp_Pnt& AttachmentPoint1, const gp_Pnt& AttachmentPoint2, const gp_Dir& aDirection, const gp_Dir& aDirection2, const gp_Pnt& OffsetPoint) ;
+  
+  //! draws the representation of axes alignement Constraint
+  //! between the point AttachmentPoint1 and the
+  //! point AttachmentPoint2, along direction
+  //! aDirection, using the offset point OffsetPoint.
+  Standard_EXPORT static   void AddAxes (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const TCollection_ExtendedString& aText, const gp_Pnt& AttachmentPoint1, const gp_Pnt& AttachmentPoint2, const gp_Dir& aDirection, const gp_Dir& aDirection2, const gp_Pnt& OffsetPoint) ;
 
 
 
@@ -71,7 +63,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DsgPrs_OffsetPresentation_HeaderFile

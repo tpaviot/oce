@@ -6,53 +6,41 @@
 #ifndef _StepBasic_MeasureWithUnit_HeaderFile
 #define _StepBasic_MeasureWithUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_MeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_MeasureWithUnit.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_MeasureValueMember_HeaderFile
 #include <Handle_StepBasic_MeasureValueMember.hxx>
-#endif
-#ifndef _StepBasic_Unit_HeaderFile
 #include <StepBasic_Unit.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class StepBasic_MeasureValueMember;
 class StepBasic_Unit;
 
 
 
-class StepBasic_MeasureWithUnit : public MMgt_TShared {
+class StepBasic_MeasureWithUnit : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a MeasureWithUnit <br>
-  Standard_EXPORT   StepBasic_MeasureWithUnit();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_MeasureValueMember)& aValueComponent,const StepBasic_Unit& aUnitComponent) ;
+  //! Returns a MeasureWithUnit
+  Standard_EXPORT StepBasic_MeasureWithUnit();
   
-  Standard_EXPORT     void SetValueComponent(const Standard_Real aValueComponent) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_MeasureValueMember)& aValueComponent, const StepBasic_Unit& aUnitComponent) ;
   
-  Standard_EXPORT     Standard_Real ValueComponent() const;
+  Standard_EXPORT   void SetValueComponent (const Standard_Real aValueComponent) ;
   
-  Standard_EXPORT     Handle_StepBasic_MeasureValueMember ValueComponentMember() const;
+  Standard_EXPORT   Standard_Real ValueComponent()  const;
   
-  Standard_EXPORT     void SetValueComponentMember(const Handle(StepBasic_MeasureValueMember)& val) ;
+  Standard_EXPORT   Handle(StepBasic_MeasureValueMember) ValueComponentMember()  const;
   
-  Standard_EXPORT     void SetUnitComponent(const StepBasic_Unit& aUnitComponent) ;
+  Standard_EXPORT   void SetValueComponentMember (const Handle(StepBasic_MeasureValueMember)& val) ;
   
-  Standard_EXPORT     StepBasic_Unit UnitComponent() const;
+  Standard_EXPORT   void SetUnitComponent (const StepBasic_Unit& aUnitComponent) ;
+  
+  Standard_EXPORT   StepBasic_Unit UnitComponent()  const;
 
 
 
@@ -67,8 +55,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_MeasureValueMember valueComponent;
-StepBasic_Unit unitComponent;
+  Handle(StepBasic_MeasureValueMember) valueComponent;
+  StepBasic_Unit unitComponent;
 
 
 };
@@ -77,7 +65,6 @@ StepBasic_Unit unitComponent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_MeasureWithUnit_HeaderFile

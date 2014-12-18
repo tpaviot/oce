@@ -16,7 +16,7 @@
 
 class Polygon3D from PBRep inherits CurveRepresentation from PBRep
 
-	---Purpose: 
+	---Purpose: Representation by a 3D polygon.
 
 uses
     Polygon3D           from PPoly,
@@ -28,7 +28,7 @@ is
     Create(P: Polygon3D from PPoly;
     	   L: Location  from PTopLoc) 
     	---Purpose:
-    returns mutable Polygon3D from PBRep;
+    returns Polygon3D from PBRep;
         
     IsPolygon3D(me) returns Boolean
     	---Purpose: Returns True.

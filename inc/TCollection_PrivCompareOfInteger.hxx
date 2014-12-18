@@ -6,37 +6,27 @@
 #ifndef _TCollection_PrivCompareOfInteger_HeaderFile
 #define _TCollection_PrivCompareOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
 
-class TCollection_PrivCompareOfInteger  {
+class TCollection_PrivCompareOfInteger 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  Standard_Boolean IsLower(const Standard_Integer& Left,const Standard_Integer& Right) const;
+  Standard_EXPORT virtual   Standard_Boolean IsLower (const Standard_Integer& Left, const Standard_Integer& Right)  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsGreater(const Standard_Integer& Left,const Standard_Integer& Right) const;
+  Standard_EXPORT virtual   Standard_Boolean IsGreater (const Standard_Integer& Left, const Standard_Integer& Right)  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsEqual(const Standard_Integer& Left,const Standard_Integer& Right) const;
-
+  Standard_EXPORT virtual   Standard_Boolean IsEqual (const Standard_Integer& Left, const Standard_Integer& Right)  const;
 
 
 
@@ -59,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TCollection_PrivCompareOfInteger_HeaderFile

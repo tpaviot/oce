@@ -6,72 +6,64 @@
 #ifndef _StlAPI_Writer_HeaderFile
 #define _StlAPI_Writer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_StlMesh_Mesh_HeaderFile
 #include <Handle_StlMesh_Mesh.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class StlMesh_Mesh;
 class TopoDS_Shape;
 
 
-//! This class creates and writes <br>
-//! STL files from Open CASCADE shapes. An STL file can be <br>
-//! written to an existing STL file or to a new one.. <br>
-class StlAPI_Writer  {
+//! This class creates and writes
+//! STL files from Open CASCADE shapes. An STL file can be
+//! written to an existing STL file or to a new one..
+class StlAPI_Writer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a writer object with <br>
-//! default parameters: ASCIIMode, RelativeMode, SetCoefficent, <br>
-//! SetDeflection. These parameters may be modified. <br>
-  Standard_EXPORT   StlAPI_Writer();
-  //! Sets the deflection of the meshing algorithm. <br>
-//!    Deflection is used, only if relative mode is false <br>
-  Standard_EXPORT     void SetDeflection(const Standard_Real aDeflection) ;
-  //! Sets the coeffiecient for computation of deflection through <br>
-//!          relative size of shape. Default value = 0.001 <br>
-  Standard_EXPORT     void SetCoefficient(const Standard_Real aCoefficient) ;
-  //! Returns the address to the <br>
-//! flag defining the relative mode for writing the file. <br>
-//! This address may be used to either read or change the flag. <br>
-//! If the mode returns True (default value), the <br>
-//! deflection is calculated from the relative size of the <br>
-//! shape. If the mode returns False, the user defined deflection is used. <br>
-//! Example <br>
-//! Read: <br>
-//! Standard_Boolean val = Writer.RelativeMode( ); <br>
-//! Modify: <br>
-//! Writer.RelativeMode( ) = Standard_True; <br>
-  Standard_EXPORT     Standard_Boolean& RelativeMode() ;
-  //! Returns the address to the <br>
-//! flag defining the mode for writing the file. This address <br>
-//! may be used to either read or change the flag. <br>
-//! If the mode returns True (default value) the generated <br>
-//! file is an ASCII file. If the mode returns False, the <br>
-//! generated file is a binary file. <br>
-  Standard_EXPORT     Standard_Boolean& ASCIIMode() ;
-  //! Converts a given shape to STL format and writes it to file with a given filename. <br>
-  Standard_EXPORT     void Write(const TopoDS_Shape& aShape,const Standard_CString aFileName,const Standard_Boolean InParallel = Standard_False) ;
-
+  
+  //! Creates a writer object with
+  //! default parameters: ASCIIMode, RelativeMode, SetCoefficent,
+  //! SetDeflection. These parameters may be modified.
+  Standard_EXPORT StlAPI_Writer();
+  
+  //! Sets the deflection of the meshing algorithm.
+  //! Deflection is used, only if relative mode is false
+  Standard_EXPORT   void SetDeflection (const Standard_Real aDeflection) ;
+  
+  //! Sets the coeffiecient for computation of deflection through
+  //! relative size of shape. Default value = 0.001
+  Standard_EXPORT   void SetCoefficient (const Standard_Real aCoefficient) ;
+  
+  //! Returns the address to the
+  //! flag defining the relative mode for writing the file.
+  //! This address may be used to either read or change the flag.
+  //! If the mode returns True (default value), the
+  //! deflection is calculated from the relative size of the
+  //! shape. If the mode returns False, the user defined deflection is used.
+  //! Example
+  //! Read:
+  //! Standard_Boolean val = Writer.RelativeMode( );
+  //! Modify:
+  //! Writer.RelativeMode( ) = Standard_True;
+  Standard_EXPORT   Standard_Boolean& RelativeMode() ;
+  
+  //! Returns the address to the
+  //! flag defining the mode for writing the file. This address
+  //! may be used to either read or change the flag.
+  //! If the mode returns True (default value) the generated
+  //! file is an ASCII file. If the mode returns False, the
+  //! generated file is a binary file.
+  Standard_EXPORT   Standard_Boolean& ASCIIMode() ;
+  
+  //! Converts a given shape to STL format and writes it to file with a given filename.
+  Standard_EXPORT   void Write (const TopoDS_Shape& aShape, const Standard_CString aFileName, const Standard_Boolean InParallel = Standard_False) ;
 
 
 
@@ -86,11 +78,11 @@ private:
 
 
 
-Standard_Boolean theRelativeMode;
-Standard_Boolean theASCIIMode;
-Standard_Real theDeflection;
-Standard_Real theCoefficient;
-Handle_StlMesh_Mesh theStlMesh;
+  Standard_Boolean theRelativeMode;
+  Standard_Boolean theASCIIMode;
+  Standard_Real theDeflection;
+  Standard_Real theCoefficient;
+  Handle(StlMesh_Mesh) theStlMesh;
 
 
 };
@@ -99,7 +91,6 @@ Handle_StlMesh_Mesh theStlMesh;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StlAPI_Writer_HeaderFile

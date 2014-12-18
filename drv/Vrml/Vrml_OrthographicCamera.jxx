@@ -1,9 +1,3 @@
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Vrml_SFRotation_HeaderFile
 #include <Vrml_SFRotation.hxx>
-#endif
-#ifndef _Vrml_OrthographicCamera_HeaderFile
 #include <Vrml_OrthographicCamera.hxx>
-#endif

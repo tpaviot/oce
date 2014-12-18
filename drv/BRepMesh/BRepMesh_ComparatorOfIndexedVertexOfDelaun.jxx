@@ -1,9 +1,0 @@
-#ifndef _BRepMesh_DataStructureOfDelaun_HeaderFile
-#include <BRepMesh_DataStructureOfDelaun.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
-#include <gp_XY.hxx>
-#endif
-#ifndef _BRepMesh_ComparatorOfIndexedVertexOfDelaun_HeaderFile
-#include <BRepMesh_ComparatorOfIndexedVertexOfDelaun.hxx>
-#endif

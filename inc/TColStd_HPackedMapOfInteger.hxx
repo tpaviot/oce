@@ -6,40 +6,29 @@
 #ifndef _TColStd_HPackedMapOfInteger_HeaderFile
 #define _TColStd_HPackedMapOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_HPackedMapOfInteger_HeaderFile
 #include <Handle_TColStd_HPackedMapOfInteger.hxx>
-#endif
 
-#ifndef _TColStd_PackedMapOfInteger_HeaderFile
 #include <TColStd_PackedMapOfInteger.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
-//! Extension of TColStd_PackedMapOfInteger class to be manipulated by handle. <br>
-class TColStd_HPackedMapOfInteger : public MMgt_TShared {
+//! Extension of TColStd_PackedMapOfInteger class to be manipulated by handle.
+class TColStd_HPackedMapOfInteger : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   TColStd_HPackedMapOfInteger(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TColStd_HPackedMapOfInteger(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT   TColStd_HPackedMapOfInteger(const TColStd_PackedMapOfInteger& theOther);
+  Standard_EXPORT TColStd_HPackedMapOfInteger(const TColStd_PackedMapOfInteger& theOther);
   
-       const TColStd_PackedMapOfInteger& Map() const;
+     const  TColStd_PackedMapOfInteger& Map()  const;
   
-        TColStd_PackedMapOfInteger& ChangeMap() ;
+      TColStd_PackedMapOfInteger& ChangeMap() ;
 
 
 
@@ -54,7 +43,7 @@ protected:
 private: 
 
 
-TColStd_PackedMapOfInteger myMap;
+  TColStd_PackedMapOfInteger myMap;
 
 
 };
@@ -64,7 +53,6 @@ TColStd_PackedMapOfInteger myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_HPackedMapOfInteger_HeaderFile

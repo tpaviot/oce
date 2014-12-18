@@ -6,37 +6,17 @@
 #ifndef _BRep_PointRepresentation_HeaderFile
 #define _BRep_PointRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRep_PointRepresentation_HeaderFile
 #include <Handle_BRep_PointRepresentation.hxx>
-#endif
 
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
 class Standard_DomainError;
 class TopLoc_Location;
 class Geom_Curve;
@@ -44,48 +24,55 @@ class Geom2d_Curve;
 class Geom_Surface;
 
 
-//! Root  class     for   the points  representations. <br>
-//!          Contains a location and a parameter. <br>
-class BRep_PointRepresentation : public MMgt_TShared {
+//! Root  class     for   the points  representations.
+//! Contains a location and a parameter.
+class BRep_PointRepresentation : public MMgt_TShared
+{
 
 public:
 
-  //! A point on a 3d curve. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPointOnCurve() const;
-  //! A point on a 2d curve on a surface. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPointOnCurveOnSurface() const;
-  //! A point on a surface. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPointOnSurface() const;
-  //! A point on the curve <C>. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPointOnCurve(const Handle(Geom_Curve)& C,const TopLoc_Location& L) const;
-  //! A point on the 2d curve <PC> on the surface <S>. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPointOnCurveOnSurface(const Handle(Geom2d_Curve)& PC,const Handle(Geom_Surface)& S,const TopLoc_Location& L) const;
-  //! A point on the surface <S>. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPointOnSurface(const Handle(Geom_Surface)& S,const TopLoc_Location& L) const;
   
-       const TopLoc_Location& Location() const;
+  //! A point on a 3d curve.
+  Standard_EXPORT virtual   Standard_Boolean IsPointOnCurve()  const;
   
-        void Location(const TopLoc_Location& L) ;
+  //! A point on a 2d curve on a surface.
+  Standard_EXPORT virtual   Standard_Boolean IsPointOnCurveOnSurface()  const;
   
-        Standard_Real Parameter() const;
+  //! A point on a surface.
+  Standard_EXPORT virtual   Standard_Boolean IsPointOnSurface()  const;
   
-        void Parameter(const Standard_Real P) ;
+  //! A point on the curve <C>.
+  Standard_EXPORT virtual   Standard_Boolean IsPointOnCurve (const Handle(Geom_Curve)& C, const TopLoc_Location& L)  const;
   
-  Standard_EXPORT   virtual  Standard_Real Parameter2() const;
+  //! A point on the 2d curve <PC> on the surface <S>.
+  Standard_EXPORT virtual   Standard_Boolean IsPointOnCurveOnSurface (const Handle(Geom2d_Curve)& PC, const Handle(Geom_Surface)& S, const TopLoc_Location& L)  const;
   
-  Standard_EXPORT   virtual  void Parameter2(const Standard_Real P) ;
+  //! A point on the surface <S>.
+  Standard_EXPORT virtual   Standard_Boolean IsPointOnSurface (const Handle(Geom_Surface)& S, const TopLoc_Location& L)  const;
   
-  Standard_EXPORT   virtual const Handle_Geom_Curve& Curve() const;
+     const  TopLoc_Location& Location()  const;
   
-  Standard_EXPORT   virtual  void Curve(const Handle(Geom_Curve)& C) ;
+      void Location (const TopLoc_Location& L) ;
   
-  Standard_EXPORT   virtual const Handle_Geom2d_Curve& PCurve() const;
+      Standard_Real Parameter()  const;
   
-  Standard_EXPORT   virtual  void PCurve(const Handle(Geom2d_Curve)& C) ;
+      void Parameter (const Standard_Real P) ;
   
-  Standard_EXPORT   virtual const Handle_Geom_Surface& Surface() const;
+  Standard_EXPORT virtual   Standard_Real Parameter2()  const;
   
-  Standard_EXPORT   virtual  void Surface(const Handle(Geom_Surface)& S) ;
+  Standard_EXPORT virtual   void Parameter2 (const Standard_Real P) ;
+  
+  Standard_EXPORT virtual  const  Handle(Geom_Curve)& Curve()  const;
+  
+  Standard_EXPORT virtual   void Curve (const Handle(Geom_Curve)& C) ;
+  
+  Standard_EXPORT virtual  const  Handle(Geom2d_Curve)& PCurve()  const;
+  
+  Standard_EXPORT virtual   void PCurve (const Handle(Geom2d_Curve)& C) ;
+  
+  Standard_EXPORT virtual  const  Handle(Geom_Surface)& Surface()  const;
+  
+  Standard_EXPORT virtual   void Surface (const Handle(Geom_Surface)& S) ;
 
 
 
@@ -95,15 +82,15 @@ public:
 protected:
 
   
-  Standard_EXPORT   BRep_PointRepresentation(const Standard_Real P,const TopLoc_Location& L);
+  Standard_EXPORT BRep_PointRepresentation(const Standard_Real P, const TopLoc_Location& L);
 
 
 
 private: 
 
 
-TopLoc_Location myLocation;
-Standard_Real myParameter;
+  TopLoc_Location myLocation;
+  Standard_Real myParameter;
 
 
 };
@@ -113,7 +100,6 @@ Standard_Real myParameter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_PointRepresentation_HeaderFile

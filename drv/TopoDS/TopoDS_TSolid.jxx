@@ -1,6 +1,2 @@
-#ifndef _TopoDS_TShape_HeaderFile
 #include <TopoDS_TShape.hxx>
-#endif
-#ifndef _TopoDS_TSolid_HeaderFile
 #include <TopoDS_TSolid.hxx>
-#endif

@@ -6,31 +6,15 @@
 #ifndef _TColStd_HSequenceOfHExtendedString_HeaderFile
 #define _TColStd_HSequenceOfHExtendedString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfHExtendedString_HeaderFile
 #include <Handle_TColStd_HSequenceOfHExtendedString.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfHExtendedString_HeaderFile
 #include <TColStd_SequenceOfHExtendedString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TCollection_HExtendedString_HeaderFile
 #include <Handle_TCollection_HExtendedString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TCollection_HExtendedString;
@@ -38,56 +22,57 @@ class TColStd_SequenceOfHExtendedString;
 
 
 
-class TColStd_HSequenceOfHExtendedString : public MMgt_TShared {
+class TColStd_HSequenceOfHExtendedString : public MMgt_TShared
+{
 
 public:
 
   
-      TColStd_HSequenceOfHExtendedString();
+    TColStd_HSequenceOfHExtendedString();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(TCollection_HExtendedString)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(TCollection_HExtendedString)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(TColStd_HSequenceOfHExtendedString)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(TColStd_HSequenceOfHExtendedString)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TCollection_HExtendedString)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(TCollection_HExtendedString)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TColStd_HSequenceOfHExtendedString)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(TColStd_HSequenceOfHExtendedString)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(TCollection_HExtendedString)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(TCollection_HExtendedString)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(TColStd_HSequenceOfHExtendedString)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(TColStd_HSequenceOfHExtendedString)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(TCollection_HExtendedString)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(TCollection_HExtendedString)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(TColStd_HSequenceOfHExtendedString)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(TColStd_HSequenceOfHExtendedString)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_TColStd_HSequenceOfHExtendedString Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(TColStd_HSequenceOfHExtendedString) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(TCollection_HExtendedString)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(TCollection_HExtendedString)& anItem) ;
   
-  Standard_EXPORT    const Handle_TCollection_HExtendedString& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(TCollection_HExtendedString)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_TCollection_HExtendedString& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(TCollection_HExtendedString)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const TColStd_SequenceOfHExtendedString& Sequence() const;
+     const  TColStd_SequenceOfHExtendedString& Sequence()  const;
   
-        TColStd_SequenceOfHExtendedString& ChangeSequence() ;
+      TColStd_SequenceOfHExtendedString& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_TColStd_HSequenceOfHExtendedString ShallowCopy() const;
+  Standard_EXPORT   Handle(TColStd_HSequenceOfHExtendedString) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-TColStd_SequenceOfHExtendedString mySequence;
+  TColStd_SequenceOfHExtendedString mySequence;
 
 
 };
 
-#define Item Handle_TCollection_HExtendedString
+#define Item Handle(TCollection_HExtendedString)
 #define Item_hxx <TCollection_HExtendedString.hxx>
 #define TheSequence TColStd_SequenceOfHExtendedString
 #define TheSequence_hxx <TColStd_SequenceOfHExtendedString.hxx>
@@ -128,11 +113,10 @@ TColStd_SequenceOfHExtendedString mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_TColStd_HSequenceOfHExtendedString ShallowCopy(const Handle_TColStd_HSequenceOfHExtendedString& me) {
+inline Handle(TColStd_HSequenceOfHExtendedString) ShallowCopy(const Handle(TColStd_HSequenceOfHExtendedString)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _TColStd_HSequenceOfHExtendedString_HeaderFile

@@ -6,38 +6,27 @@
 #ifndef _Draw_SequenceNodeOfSequenceOfDrawable3D_HeaderFile
 #define _Draw_SequenceNodeOfSequenceOfDrawable3D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Draw_SequenceNodeOfSequenceOfDrawable3D_HeaderFile
 #include <Handle_Draw_SequenceNodeOfSequenceOfDrawable3D.hxx>
-#endif
 
-#ifndef _Handle_Draw_Drawable3D_HeaderFile
 #include <Handle_Draw_Drawable3D.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Draw_Drawable3D;
 class Draw_SequenceOfDrawable3D;
 
 
 
-class Draw_SequenceNodeOfSequenceOfDrawable3D : public TCollection_SeqNode {
+class Draw_SequenceNodeOfSequenceOfDrawable3D : public TCollection_SeqNode
+{
 
 public:
 
   
-      Draw_SequenceNodeOfSequenceOfDrawable3D(const Handle(Draw_Drawable3D)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Draw_SequenceNodeOfSequenceOfDrawable3D(const Handle(Draw_Drawable3D)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Draw_Drawable3D& Value() const;
+      Handle(Draw_Drawable3D)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Draw_Drawable3D myValue;
+  Handle(Draw_Drawable3D) myValue;
 
 
 };
 
-#define SeqItem Handle_Draw_Drawable3D
+#define SeqItem Handle(Draw_Drawable3D)
 #define SeqItem_hxx <Draw_Drawable3D.hxx>
 #define TCollection_SequenceNode Draw_SequenceNodeOfSequenceOfDrawable3D
 #define TCollection_SequenceNode_hxx <Draw_SequenceNodeOfSequenceOfDrawable3D.hxx>
@@ -78,7 +67,6 @@ Handle_Draw_Drawable3D myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draw_SequenceNodeOfSequenceOfDrawable3D_HeaderFile

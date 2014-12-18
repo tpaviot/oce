@@ -6,22 +6,15 @@
 #ifndef _Handle_HeaderSection_HeaderRecognizer_HeaderFile
 #define _Handle_HeaderSection_HeaderRecognizer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepData_FileRecognizer_HeaderFile
 #include <Handle_StepData_FileRecognizer.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepData_FileRecognizer);
 class HeaderSection_HeaderRecognizer;
 
-DEFINE_STANDARD_HANDLE(HeaderSection_HeaderRecognizer,StepData_FileRecognizer)
+DEFINE_STANDARD_HANDLE(HeaderSection_HeaderRecognizer, StepData_FileRecognizer)
 
-#endif
+#endif // _Handle_HeaderSection_HeaderRecognizer_HeaderFile

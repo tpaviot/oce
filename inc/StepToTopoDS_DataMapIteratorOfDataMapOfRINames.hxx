@@ -6,22 +6,12 @@
 #ifndef _StepToTopoDS_DataMapIteratorOfDataMapOfRINames_HeaderFile
 #define _StepToTopoDS_DataMapIteratorOfDataMapOfRINames_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames_HeaderFile
 #include <Handle_StepToTopoDS_DataMapNodeOfDataMapOfRINames.hxx>
-#endif
 class Standard_NoSuchObject;
 class TCollection_AsciiString;
 class TopoDS_Shape;
@@ -30,22 +20,22 @@ class StepToTopoDS_DataMapNodeOfDataMapOfRINames;
 
 
 
-class StepToTopoDS_DataMapIteratorOfDataMapOfRINames  : public TCollection_BasicMapIterator {
+class StepToTopoDS_DataMapIteratorOfDataMapOfRINames  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepToTopoDS_DataMapIteratorOfDataMapOfRINames();
+  Standard_EXPORT StepToTopoDS_DataMapIteratorOfDataMapOfRINames();
   
-  Standard_EXPORT   StepToTopoDS_DataMapIteratorOfDataMapOfRINames(const StepToTopoDS_DataMapOfRINames& aMap);
+  Standard_EXPORT StepToTopoDS_DataMapIteratorOfDataMapOfRINames(const StepToTopoDS_DataMapOfRINames& aMap);
   
-  Standard_EXPORT     void Initialize(const StepToTopoDS_DataMapOfRINames& aMap) ;
+  Standard_EXPORT   void Initialize (const StepToTopoDS_DataMapOfRINames& aMap) ;
   
-  Standard_EXPORT    const TCollection_AsciiString& Key() const;
+  Standard_EXPORT  const  TCollection_AsciiString& Key()  const;
   
-  Standard_EXPORT    const TopoDS_Shape& Value() const;
-
+  Standard_EXPORT  const  TopoDS_Shape& Value()  const;
 
 
 
@@ -68,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_DataMapIteratorOfDataMapOfRINames_HeaderFile

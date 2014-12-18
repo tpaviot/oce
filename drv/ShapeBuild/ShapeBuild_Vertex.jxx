@@ -1,9 +1,3 @@
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _ShapeBuild_Vertex_HeaderFile
 #include <ShapeBuild_Vertex.hxx>
-#endif

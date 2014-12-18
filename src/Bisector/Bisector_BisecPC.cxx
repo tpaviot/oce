@@ -427,7 +427,7 @@ void Bisector_BisecPC::Values(const Standard_Real    U,
 //purpose  :
 //=============================================================================
 // Unused :
-#ifdef DEB_CUR
+#ifdef OCCT_DEBUG_CUR
 static Standard_Real Curvature (const Handle(Geom2d_Curve)& C,
 				      Standard_Real         U,
 				      Standard_Real         Tol)
@@ -488,7 +488,7 @@ Standard_Real Bisector_BisecPC::Distance (const Standard_Real U) const
   else {    
     Standard_Real A  = 0.5*SquareMagPPC/Prosca;
     Standard_Real Dist = A*A*NorNor;
-#ifdef DEB_CUR
+#ifdef OCCT_DEBUG_CUR
     //----------------------------------------
     // Test Curvature if the curve is concave.
     //----------------------------------------
@@ -794,7 +794,7 @@ static void Indent(const Standard_Integer Offset) {
 //function : Init
 // purpose : 
 //=============================================================================
-void Bisector_BisecPC::Init (const Handle_Geom2d_Curve&    Curve, 
+void Bisector_BisecPC::Init (const Handle(Geom2d_Curve)&    Curve, 
 			     const gp_Pnt2d&               Point, 
 			     const Standard_Real           Sign, 
 			     const TColStd_SequenceOfReal& StartIntervals, 

@@ -1,15 +1,5 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Units_QuantitiesSequence_HeaderFile
 #include <Units_QuantitiesSequence.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Units_Dimensions_HeaderFile
 #include <Units_Dimensions.hxx>
-#endif
-#ifndef _Units_UnitsDictionary_HeaderFile
 #include <Units_UnitsDictionary.hxx>
-#endif

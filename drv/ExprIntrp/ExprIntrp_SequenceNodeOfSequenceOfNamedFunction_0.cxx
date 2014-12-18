@@ -5,16 +5,10 @@
 
 #include <ExprIntrp_SequenceNodeOfSequenceOfNamedFunction.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Expr_NamedFunction_HeaderFile
 #include <Expr_NamedFunction.hxx>
-#endif
-#ifndef _ExprIntrp_SequenceOfNamedFunction_HeaderFile
 #include <ExprIntrp_SequenceOfNamedFunction.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(ExprIntrp_SequenceNodeOfSequenceOfNamedFunction,Standard_Tran
 IMPLEMENT_STANDARD_RTTI(ExprIntrp_SequenceNodeOfSequenceOfNamedFunction)
 
 
-#define SeqItem Handle_Expr_NamedFunction
+#define SeqItem Handle(Expr_NamedFunction)
 #define SeqItem_hxx <Expr_NamedFunction.hxx>
 #define TCollection_SequenceNode ExprIntrp_SequenceNodeOfSequenceOfNamedFunction
 #define TCollection_SequenceNode_hxx <ExprIntrp_SequenceNodeOfSequenceOfNamedFunction.hxx>

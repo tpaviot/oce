@@ -5,19 +5,11 @@
 
 #include <PColStd_VArrayNodeOfFieldOfHArray1OfPersistent.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _PColStd_FieldOfHArray1OfPersistent_HeaderFile
 #include <PColStd_FieldOfHArray1OfPersistent.hxx>
-#endif
-#ifndef _PColStd_VArrayTNodeOfFieldOfHArray1OfPersistent_HeaderFile
 #include <PColStd_VArrayTNodeOfFieldOfHArray1OfPersistent.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(PColStd_VArrayNodeOfFieldOfHArray1OfPersistent,Standard_Persi
 IMPLEMENT_STANDARD_RTTI(PColStd_VArrayNodeOfFieldOfHArray1OfPersistent)
 
 
-#define Item Handle_Standard_Persistent
+#define Item Handle(Standard_Persistent)
 #define Item_hxx <Standard_Persistent.hxx>
 #define DBC_VArrayNode PColStd_VArrayNodeOfFieldOfHArray1OfPersistent
 #define DBC_VArrayNode_hxx <PColStd_VArrayNodeOfFieldOfHArray1OfPersistent.hxx>

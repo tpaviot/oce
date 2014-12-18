@@ -6,72 +6,65 @@
 #ifndef _StepFEA_SymmetricTensor43d_HeaderFile
 #define _StepFEA_SymmetricTensor43d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepData_SelectMember_HeaderFile
 #include <Handle_StepData_SelectMember.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
 class Standard_Transient;
 class StepData_SelectMember;
 class TColStd_HArray1OfReal;
 
 
-//! Representation of STEP SELECT type SymmetricTensor43d <br>
-class StepFEA_SymmetricTensor43d  : public StepData_SelectType {
+//! Representation of STEP SELECT type SymmetricTensor43d
+class StepFEA_SymmetricTensor43d  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_SymmetricTensor43d();
-  //! return 0 <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Recognizes a items of select member CurveElementFreedomMember <br>
-//!          1 -> AnisotropicSymmetricTensor43d <br>
-//!          2 -> FeaIsotropicSymmetricTensor43d <br>
-//!          3 -> FeaIsoOrthotropicSymmetricTensor43d <br>
-//!          4 -> FeaTransverseIsotropicSymmetricTensor43d <br>
-//!          5 -> FeaColumnNormalisedOrthotropicSymmetricTensor43d <br>
-//!          6 -> FeaColumnNormalisedMonoclinicSymmetricTensor43d <br>
-//!          0 else <br>
-  Standard_EXPORT   virtual  Standard_Integer CaseMem(const Handle(StepData_SelectMember)& ent) const;
   
-  Standard_EXPORT   virtual  Handle_StepData_SelectMember NewMember() const;
-  //! Returns Value as AnisotropicSymmetricTensor43d (or Null if another type) <br>
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal AnisotropicSymmetricTensor43d() const;
+  //! Empty constructor
+  Standard_EXPORT StepFEA_SymmetricTensor43d();
   
-  Standard_EXPORT     void SetFeaIsotropicSymmetricTensor43d(const Handle(TColStd_HArray1OfReal)& val) ;
-  //! Returns Value as FeaIsotropicSymmetricTensor43d (or Null if another type) <br>
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal FeaIsotropicSymmetricTensor43d() const;
-  //! Returns Value as FeaIsoOrthotropicSymmetricTensor43d (or Null if another type) <br>
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal FeaIsoOrthotropicSymmetricTensor43d() const;
-  //! Returns Value as FeaTransverseIsotropicSymmetricTensor43d (or Null if another type) <br>
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal FeaTransverseIsotropicSymmetricTensor43d() const;
-  //! Returns Value as FeaColumnNormalisedOrthotropicSymmetricTensor43d (or Null if another type) <br>
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal FeaColumnNormalisedOrthotropicSymmetricTensor43d() const;
-  //! Returns Value as FeaColumnNormalisedMonoclinicSymmetricTensor43d (or Null if another type) <br>
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal FeaColumnNormalisedMonoclinicSymmetricTensor43d() const;
-
+  //! return 0
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Recognizes a items of select member CurveElementFreedomMember
+  //! 1 -> AnisotropicSymmetricTensor43d
+  //! 2 -> FeaIsotropicSymmetricTensor43d
+  //! 3 -> FeaIsoOrthotropicSymmetricTensor43d
+  //! 4 -> FeaTransverseIsotropicSymmetricTensor43d
+  //! 5 -> FeaColumnNormalisedOrthotropicSymmetricTensor43d
+  //! 6 -> FeaColumnNormalisedMonoclinicSymmetricTensor43d
+  //! 0 else
+  Standard_EXPORT virtual   Standard_Integer CaseMem (const Handle(StepData_SelectMember)& ent)  const;
+  
+  Standard_EXPORT virtual   Handle(StepData_SelectMember) NewMember()  const;
+  
+  //! Returns Value as AnisotropicSymmetricTensor43d (or Null if another type)
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) AnisotropicSymmetricTensor43d()  const;
+  
+  Standard_EXPORT   void SetFeaIsotropicSymmetricTensor43d (const Handle(TColStd_HArray1OfReal)& val) ;
+  
+  //! Returns Value as FeaIsotropicSymmetricTensor43d (or Null if another type)
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) FeaIsotropicSymmetricTensor43d()  const;
+  
+  //! Returns Value as FeaIsoOrthotropicSymmetricTensor43d (or Null if another type)
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) FeaIsoOrthotropicSymmetricTensor43d()  const;
+  
+  //! Returns Value as FeaTransverseIsotropicSymmetricTensor43d (or Null if another type)
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) FeaTransverseIsotropicSymmetricTensor43d()  const;
+  
+  //! Returns Value as FeaColumnNormalisedOrthotropicSymmetricTensor43d (or Null if another type)
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) FeaColumnNormalisedOrthotropicSymmetricTensor43d()  const;
+  
+  //! Returns Value as FeaColumnNormalisedMonoclinicSymmetricTensor43d (or Null if another type)
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) FeaColumnNormalisedMonoclinicSymmetricTensor43d()  const;
 
 
 
@@ -94,7 +87,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_SymmetricTensor43d_HeaderFile

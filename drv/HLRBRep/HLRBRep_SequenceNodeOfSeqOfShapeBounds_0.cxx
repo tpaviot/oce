@@ -5,16 +5,10 @@
 
 #include <HLRBRep_SequenceNodeOfSeqOfShapeBounds.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _HLRBRep_ShapeBounds_HeaderFile
 #include <HLRBRep_ShapeBounds.hxx>
-#endif
-#ifndef _HLRBRep_SeqOfShapeBounds_HeaderFile
 #include <HLRBRep_SeqOfShapeBounds.hxx>
-#endif
 
  
 

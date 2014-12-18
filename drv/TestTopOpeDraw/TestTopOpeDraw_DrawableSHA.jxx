@@ -1,21 +1,7 @@
-#ifndef _Draw_Text3D_HeaderFile
 #include <Draw_Text3D.hxx>
-#endif
-#ifndef _Draw_Marker3D_HeaderFile
 #include <Draw_Marker3D.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Draw_Color_HeaderFile
 #include <Draw_Color.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Draw_Display_HeaderFile
 #include <Draw_Display.hxx>
-#endif
-#ifndef _TestTopOpeDraw_DrawableSHA_HeaderFile
 #include <TestTopOpeDraw_DrawableSHA.hxx>
-#endif

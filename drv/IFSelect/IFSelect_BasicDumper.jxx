@@ -1,12 +1,4 @@
-#ifndef _IFSelect_SessionFile_HeaderFile
 #include <IFSelect_SessionFile.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _IFSelect_BasicDumper_HeaderFile
 #include <IFSelect_BasicDumper.hxx>
-#endif

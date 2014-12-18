@@ -1,12 +1,4 @@
-#ifndef _TFunction_HArray1OfDataMapOfGUIDDriver_HeaderFile
 #include <TFunction_HArray1OfDataMapOfGUIDDriver.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TFunction_Driver_HeaderFile
 #include <TFunction_Driver.hxx>
-#endif
-#ifndef _TFunction_DriverTable_HeaderFile
 #include <TFunction_DriverTable.hxx>
-#endif

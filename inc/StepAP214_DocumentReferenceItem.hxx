@@ -6,52 +6,22 @@
 #ifndef _StepAP214_DocumentReferenceItem_HeaderFile
 #define _StepAP214_DocumentReferenceItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_Approval_HeaderFile
 #include <Handle_StepBasic_Approval.hxx>
-#endif
-#ifndef _Handle_StepRepr_DescriptiveRepresentationItem_HeaderFile
 #include <Handle_StepRepr_DescriptiveRepresentationItem.hxx>
-#endif
-#ifndef _Handle_StepRepr_MaterialDesignation_HeaderFile
 #include <Handle_StepRepr_MaterialDesignation.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _Handle_StepRepr_PropertyDefinition_HeaderFile
 #include <Handle_StepRepr_PropertyDefinition.hxx>
-#endif
-#ifndef _Handle_StepRepr_Representation_HeaderFile
 #include <Handle_StepRepr_Representation.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspectRelationship_HeaderFile
 #include <Handle_StepRepr_ShapeAspectRelationship.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_Approval;
 class StepRepr_DescriptiveRepresentationItem;
@@ -65,34 +35,45 @@ class StepRepr_ShapeAspectRelationship;
 
 
 
-class StepAP214_DocumentReferenceItem  : public StepData_SelectType {
+class StepAP214_DocumentReferenceItem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a DocumentReferenceItem SelectType <br>
-  Standard_EXPORT   StepAP214_DocumentReferenceItem();
-  //! Recognizes a DocumentReferenceItem Kind Entity that is : <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a Approval (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_Approval Approval() const;
-  //! returns Value as a  (Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_DescriptiveRepresentationItem DescriptiveRepresentationItem() const;
-  //! returns Value as a MaterialDesignation (Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_MaterialDesignation MaterialDesignation() const;
-  //! returns Value as a ProductDefinition (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinition ProductDefinition() const;
-  //! returns Value as aProductDefinitionRelationship (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionRelationship ProductDefinitionRelationship() const;
-  //! returns Value as a PropertyDefinition (Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_PropertyDefinition PropertyDefinition() const;
-  //! returns Value as a Representation (Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_Representation Representation() const;
-  //! returns Value as a ShapeAspect (Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ShapeAspect ShapeAspect() const;
-  //! returns Value as a ShapeAspectRelationship (Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ShapeAspectRelationship ShapeAspectRelationship() const;
-
+  
+  //! Returns a DocumentReferenceItem SelectType
+  Standard_EXPORT StepAP214_DocumentReferenceItem();
+  
+  //! Recognizes a DocumentReferenceItem Kind Entity that is :
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a Approval (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_Approval) Approval()  const;
+  
+  //! returns Value as a  (Null if another type)
+  Standard_EXPORT   Handle(StepRepr_DescriptiveRepresentationItem) DescriptiveRepresentationItem()  const;
+  
+  //! returns Value as a MaterialDesignation (Null if another type)
+  Standard_EXPORT   Handle(StepRepr_MaterialDesignation) MaterialDesignation()  const;
+  
+  //! returns Value as a ProductDefinition (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinition) ProductDefinition()  const;
+  
+  //! returns Value as aProductDefinitionRelationship (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionRelationship) ProductDefinitionRelationship()  const;
+  
+  //! returns Value as a PropertyDefinition (Null if another type)
+  Standard_EXPORT   Handle(StepRepr_PropertyDefinition) PropertyDefinition()  const;
+  
+  //! returns Value as a Representation (Null if another type)
+  Standard_EXPORT   Handle(StepRepr_Representation) Representation()  const;
+  
+  //! returns Value as a ShapeAspect (Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ShapeAspect) ShapeAspect()  const;
+  
+  //! returns Value as a ShapeAspectRelationship (Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ShapeAspectRelationship) ShapeAspectRelationship()  const;
 
 
 
@@ -115,7 +96,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_DocumentReferenceItem_HeaderFile

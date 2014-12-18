@@ -1,3 +1,1 @@
-#ifndef _StepElement_CurveElementFreedomMember_HeaderFile
 #include <StepElement_CurveElementFreedomMember.hxx>
-#endif

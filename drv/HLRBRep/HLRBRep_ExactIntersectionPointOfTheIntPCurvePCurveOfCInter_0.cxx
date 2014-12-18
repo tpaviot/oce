@@ -5,21 +5,11 @@
 
 #include <HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx>
 
-#ifndef _HLRBRep_CurveTool_HeaderFile
 #include <HLRBRep_CurveTool.hxx>
-#endif
-#ifndef _HLRBRep_TheProjPCurOfCInter_HeaderFile
 #include <HLRBRep_TheProjPCurOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_TheIntPCurvePCurveOfCInter_HeaderFile
 #include <HLRBRep_TheIntPCurvePCurveOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_HeaderFile
 #include <HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_HeaderFile
 #include <HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx>
-#endif
  
 
 #define TheCurve Standard_Address

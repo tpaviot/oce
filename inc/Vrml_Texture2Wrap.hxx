@@ -6,14 +6,13 @@
 #ifndef _Vrml_Texture2Wrap_HeaderFile
 #define _Vrml_Texture2Wrap_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Vrml_Texture2Wrap {
+
+enum Vrml_Texture2Wrap
+{
 Vrml_REPEAT,
 Vrml_CLAMP
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Vrml_Texture2Wrap_HeaderFile

@@ -6,37 +6,17 @@
 #ifndef _BRepClass3d_SolidPassiveClassifier_HeaderFile
 #define _BRepClass3d_SolidPassiveClassifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _BRepClass3d_Intersector3d_HeaderFile
 #include <BRepClass3d_Intersector3d.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class Standard_DomainError;
 class BRepClass3d_Intersector3d;
 class gp_Lin;
@@ -44,26 +24,26 @@ class TopoDS_Face;
 
 
 
-class BRepClass3d_SolidPassiveClassifier  {
+class BRepClass3d_SolidPassiveClassifier 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepClass3d_SolidPassiveClassifier();
+  Standard_EXPORT BRepClass3d_SolidPassiveClassifier();
   
-  Standard_EXPORT     void Reset(const gp_Lin& L,const Standard_Real P,const Standard_Real Tol) ;
+  Standard_EXPORT   void Reset (const gp_Lin& L, const Standard_Real P, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Compare(const TopoDS_Face& F,const TopAbs_Orientation Or) ;
+  Standard_EXPORT   void Compare (const TopoDS_Face& F, const TopAbs_Orientation Or) ;
   
-        Standard_Real Parameter() const;
+      Standard_Real Parameter()  const;
   
-  Standard_EXPORT     Standard_Boolean HasIntersection() const;
+  Standard_EXPORT   Standard_Boolean HasIntersection()  const;
   
-        BRepClass3d_Intersector3d& Intersector() ;
+      BRepClass3d_Intersector3d& Intersector() ;
   
-        TopAbs_State State() const;
-
+      TopAbs_State State()  const;
 
 
 
@@ -78,14 +58,14 @@ private:
 
 
 
-Standard_Boolean isSet;
-TopoDS_Face myFace;
-gp_Lin myLin;
-Standard_Real myParam;
-Standard_Real myTolerance;
-TopAbs_State myState;
-Standard_Boolean hasIntersect;
-BRepClass3d_Intersector3d myIntersector;
+  Standard_Boolean isSet;
+  TopoDS_Face myFace;
+  gp_Lin myLin;
+  Standard_Real myParam;
+  Standard_Real myTolerance;
+  TopAbs_State myState;
+  Standard_Boolean hasIntersect;
+  BRepClass3d_Intersector3d myIntersector;
 
 
 };
@@ -103,7 +83,6 @@ BRepClass3d_Intersector3d myIntersector;
 #undef TopClass_Classifier3d_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepClass3d_SolidPassiveClassifier_HeaderFile

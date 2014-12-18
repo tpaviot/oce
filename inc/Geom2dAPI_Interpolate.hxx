@@ -6,37 +6,17 @@
 #ifndef _Geom2dAPI_Interpolate_HeaderFile
 #define _Geom2dAPI_Interpolate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfVec2d_HeaderFile
 #include <Handle_TColgp_HArray1OfVec2d.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfBoolean_HeaderFile
 #include <Handle_TColStd_HArray1OfBoolean.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
 class TColgp_HArray1OfPnt2d;
 class Geom2d_BSplineCurve;
 class TColgp_HArray1OfVec2d;
@@ -48,63 +28,71 @@ class gp_Vec2d;
 class TColgp_Array1OfVec2d;
 
 
-//! This  class  is  used  to  interpolate a  BsplineCurve <br>
-//! passing   through  an  array  of  points,  with  a  C2 <br>
-//! Continuity if tangency is not requested at the point. <br>
-//! If tangency is requested at the point the continuity will <br>
-//! be C1.  If Perodicity is requested the curve will be closed <br>
-//! and the junction will be the first point given. The curve will than be only C1 <br>
-//! The curve is defined by a table of points through which it passes, and if required <br>
-//! by a parallel table of reals which gives the value of the parameter of each point through <br>
-//!  which the resulting BSpline curve passes, and by vectors tangential to these points. <br>
-//! An Interpolate object provides a framework for: defining the constraints of the BSpline curve, <br>
-//! -   implementing the interpolation algorithm, and consulting the results. <br>
-class Geom2dAPI_Interpolate  {
+//! This  class  is  used  to  interpolate a  BsplineCurve
+//! passing   through  an  array  of  points,  with  a  C2
+//! Continuity if tangency is not requested at the point.
+//! If tangency is requested at the point the continuity will
+//! be C1.  If Perodicity is requested the curve will be closed
+//! and the junction will be the first point given. The curve will than be only C1
+//! The curve is defined by a table of points through which it passes, and if required
+//! by a parallel table of reals which gives the value of the parameter of each point through
+//! which the resulting BSpline curve passes, and by vectors tangential to these points.
+//! An Interpolate object provides a framework for: defining the constraints of the BSpline curve,
+//! -   implementing the interpolation algorithm, and consulting the results.
+class Geom2dAPI_Interpolate 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Tolerance is to check if the points are not too close to one an other <br>
-//! It is also used to check if the tangent vector is not too small. <br>
-//! There should be at least 2 points <br>
-//! if PeriodicFlag is True then the curve will be periodic. <br>
-  Standard_EXPORT   Geom2dAPI_Interpolate(const Handle(TColgp_HArray1OfPnt2d)& Points,const Standard_Boolean PeriodicFlag,const Standard_Real Tolerance);
-  //! if PeriodicFlag is True then the curve will be periodic <br>
-//!  Warning: <br>
-//!  There should be as many parameters as there are points <br>
-//!  except if PeriodicFlag is True : then there should be one more <br>
-//!  parameter to close the curve <br>
-  Standard_EXPORT   Geom2dAPI_Interpolate(const Handle(TColgp_HArray1OfPnt2d)& Points,const Handle(TColStd_HArray1OfReal)& Parameters,const Standard_Boolean PeriodicFlag,const Standard_Real Tolerance);
-  //! Assigns this constrained BSpline curve to be <br>
-//! tangential to vectors InitialTangent and FinalTangent <br>
-//!   at its first and last points respectively (i.e. <br>
-//!   the first and last points of the table of <br>
-//!   points through which the curve passes, as <br>
-//!   defined at the time of initialization). <br>
-  Standard_EXPORT     void Load(const gp_Vec2d& InitialTangent,const gp_Vec2d& FinalTangent) ;
-  //!  Assigns this constrained BSpline curve to be <br>
-//! tangential to vectors defined in the table Tangents, <br>
-//!   which is parallel to the table of points <br>
-//!   through which the curve passes, as <br>
-//!   defined at the time of initialization. Vectors <br>
-//!   in the table Tangents are defined only if <br>
-//!   the flag given in the parallel table <br>
-//!   TangentFlags is true: only these vectors <br>
-//!   are set as tangency constraints. <br>
-  Standard_EXPORT     void Load(const TColgp_Array1OfVec2d& Tangents,const Handle(TColStd_HArray1OfBoolean)& TangentFlags) ;
-  //! Clears all tangency constraints on this <br>
-//! constrained BSpline curve (as initialized by the function Load). <br>
-  Standard_EXPORT     void ClearTangents() ;
-  //! Computes the constrained BSpline curve. Use the function IsDone to verify that the <br>
-//! computation is successful, and then the function Curve to obtain the result. <br>
-  Standard_EXPORT     void Perform() ;
-  //! Returns the computed BSpline curve. Raises  StdFail_NotDone if the interpolation fails. <br>
-  Standard_EXPORT    const Handle_Geom2d_BSplineCurve& Curve() const;
+  
+  //! Tolerance is to check if the points are not too close to one an other
+  //! It is also used to check if the tangent vector is not too small.
+  //! There should be at least 2 points
+  //! if PeriodicFlag is True then the curve will be periodic.
+  Standard_EXPORT Geom2dAPI_Interpolate(const Handle(TColgp_HArray1OfPnt2d)& Points, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
+  
+  //! if PeriodicFlag is True then the curve will be periodic
+  //! Warning:
+  //! There should be as many parameters as there are points
+  //! except if PeriodicFlag is True : then there should be one more
+  //! parameter to close the curve
+  Standard_EXPORT Geom2dAPI_Interpolate(const Handle(TColgp_HArray1OfPnt2d)& Points, const Handle(TColStd_HArray1OfReal)& Parameters, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
+  
+  //! Assigns this constrained BSpline curve to be
+  //! tangential to vectors InitialTangent and FinalTangent
+  //! at its first and last points respectively (i.e.
+  //! the first and last points of the table of
+  //! points through which the curve passes, as
+  //! defined at the time of initialization).
+  Standard_EXPORT   void Load (const gp_Vec2d& InitialTangent, const gp_Vec2d& FinalTangent) ;
+  
+  //! Assigns this constrained BSpline curve to be
+  //! tangential to vectors defined in the table Tangents,
+  //! which is parallel to the table of points
+  //! through which the curve passes, as
+  //! defined at the time of initialization. Vectors
+  //! in the table Tangents are defined only if
+  //! the flag given in the parallel table
+  //! TangentFlags is true: only these vectors
+  //! are set as tangency constraints.
+  Standard_EXPORT   void Load (const TColgp_Array1OfVec2d& Tangents, const Handle(TColStd_HArray1OfBoolean)& TangentFlags) ;
+  
+  //! Clears all tangency constraints on this
+  //! constrained BSpline curve (as initialized by the function Load).
+  Standard_EXPORT   void ClearTangents() ;
+  
+  //! Computes the constrained BSpline curve. Use the function IsDone to verify that the
+  //! computation is successful, and then the function Curve to obtain the result.
+  Standard_EXPORT   void Perform() ;
+  
+  //! Returns the computed BSpline curve. Raises  StdFail_NotDone if the interpolation fails.
+  Standard_EXPORT  const  Handle(Geom2d_BSplineCurve)& Curve()  const;
 Standard_EXPORT operator Handle(Geom2d_BSplineCurve)() const;
-  //! Returns true if the constrained BSpline curve is successfully constructed. <br>
-//! Note: in this case, the result is given by the function Curve. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-
+  
+  //! Returns true if the constrained BSpline curve is successfully constructed.
+  //! Note: in this case, the result is given by the function Curve.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
 
 
 
@@ -117,21 +105,23 @@ protected:
 
 private:
 
-  //! Interpolates in a non periodic fashion <br>
-  Standard_EXPORT     void PerformNonPeriodic() ;
-  //! Interpolates in a C1 periodic fashion <br>
-  Standard_EXPORT     void PerformPeriodic() ;
+  
+  //! Interpolates in a non periodic fashion
+  Standard_EXPORT   void PerformNonPeriodic() ;
+  
+  //! Interpolates in a C1 periodic fashion
+  Standard_EXPORT   void PerformPeriodic() ;
 
 
-Standard_Real myTolerance;
-Handle_TColgp_HArray1OfPnt2d myPoints;
-Standard_Boolean myIsDone;
-Handle_Geom2d_BSplineCurve myCurve;
-Handle_TColgp_HArray1OfVec2d myTangents;
-Handle_TColStd_HArray1OfBoolean myTangentFlags;
-Handle_TColStd_HArray1OfReal myParameters;
-Standard_Boolean myPeriodic;
-Standard_Boolean myTangentRequest;
+  Standard_Real myTolerance;
+  Handle(TColgp_HArray1OfPnt2d) myPoints;
+  Standard_Boolean myIsDone;
+  Handle(Geom2d_BSplineCurve) myCurve;
+  Handle(TColgp_HArray1OfVec2d) myTangents;
+  Handle(TColStd_HArray1OfBoolean) myTangentFlags;
+  Handle(TColStd_HArray1OfReal) myParameters;
+  Standard_Boolean myPeriodic;
+  Standard_Boolean myTangentRequest;
 
 
 };
@@ -140,7 +130,6 @@ Standard_Boolean myTangentRequest;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dAPI_Interpolate_HeaderFile

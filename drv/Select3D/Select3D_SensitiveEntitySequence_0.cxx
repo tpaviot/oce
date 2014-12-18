@@ -5,21 +5,13 @@
 
 #include <Select3D_SensitiveEntitySequence.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Select3D_SequenceNodeOfSensitiveEntitySequence_HeaderFile
 #include <Select3D_SequenceNodeOfSensitiveEntitySequence.hxx>
-#endif
  
 
-#define SeqItem Handle_Select3D_SensitiveEntity
+#define SeqItem Handle(Select3D_SensitiveEntity)
 #define SeqItem_hxx <Select3D_SensitiveEntity.hxx>
 #define TCollection_SequenceNode Select3D_SequenceNodeOfSensitiveEntitySequence
 #define TCollection_SequenceNode_hxx <Select3D_SequenceNodeOfSensitiveEntitySequence.hxx>

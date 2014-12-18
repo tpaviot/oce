@@ -6,37 +6,17 @@
 #ifndef _HLRAlgo_PolyData_HeaderFile
 #define _HLRAlgo_PolyData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_PolyData_HeaderFile
 #include <Handle_HLRAlgo_PolyData.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfXYZ_HeaderFile
 #include <Handle_TColgp_HArray1OfXYZ.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_HArray1OfTData_HeaderFile
 #include <Handle_HLRAlgo_HArray1OfTData.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_HArray1OfPHDat_HeaderFile
 #include <Handle_HLRAlgo_HArray1OfPHDat.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TColgp_HArray1OfXYZ;
 class HLRAlgo_HArray1OfTData;
 class HLRAlgo_HArray1OfPHDat;
@@ -46,37 +26,39 @@ class HLRAlgo_Array1OfPHDat;
 class HLRAlgo_EdgeStatus;
 
 
-
-class HLRAlgo_PolyData : public MMgt_TShared {
+//! Data structure of a set of Triangles.
+class HLRAlgo_PolyData : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   HLRAlgo_PolyData();
+  Standard_EXPORT HLRAlgo_PolyData();
   
-  Standard_EXPORT     void HNodes(const Handle(TColgp_HArray1OfXYZ)& HNodes) ;
+  Standard_EXPORT   void HNodes (const Handle(TColgp_HArray1OfXYZ)& HNodes) ;
   
-  Standard_EXPORT     void HTData(const Handle(HLRAlgo_HArray1OfTData)& HTData) ;
+  Standard_EXPORT   void HTData (const Handle(HLRAlgo_HArray1OfTData)& HTData) ;
   
-  Standard_EXPORT     void HPHDat(const Handle(HLRAlgo_HArray1OfPHDat)& HPHDat) ;
+  Standard_EXPORT   void HPHDat (const Handle(HLRAlgo_HArray1OfPHDat)& HPHDat) ;
   
-        void FaceIndex(const Standard_Integer I) ;
+      void FaceIndex (const Standard_Integer I) ;
   
-        Standard_Integer FaceIndex() const;
+      Standard_Integer FaceIndex()  const;
   
-        TColgp_Array1OfXYZ& Nodes() const;
+      TColgp_Array1OfXYZ& Nodes()  const;
   
-        HLRAlgo_Array1OfTData& TData() const;
+      HLRAlgo_Array1OfTData& TData()  const;
   
-        HLRAlgo_Array1OfPHDat& PHDat() const;
+      HLRAlgo_Array1OfPHDat& PHDat()  const;
   
-  Standard_EXPORT     void UpdateGlobalMinMax(const Standard_Address ToTMinMax) ;
+  Standard_EXPORT   void UpdateGlobalMinMax (const Standard_Address ToTMinMax) ;
   
-        Standard_Boolean Hiding() const;
-  //! process hiding between <Pt1> and <Pt2>. <br>
-  Standard_EXPORT     void HideByPolyData(const Standard_Address Coordinates,const Standard_Address RealPtr,const Standard_Address Indices,const Standard_Boolean HidingShell,HLRAlgo_EdgeStatus& status) ;
+      Standard_Boolean Hiding()  const;
   
-        Standard_Address Indices() ;
+  //! process hiding between <Pt1> and <Pt2>.
+  Standard_EXPORT   void HideByPolyData (const Standard_Address Coordinates, const Standard_Address RealPtr, const Standard_Address Indices, const Standard_Boolean HidingShell, HLRAlgo_EdgeStatus& status) ;
+  
+      Standard_Address Indices() ;
 
 
 
@@ -90,13 +72,14 @@ protected:
 
 private: 
 
-  //! evident. <br>
-  Standard_EXPORT     void HideByOneTriangle(const Standard_Address Coordinates,const Standard_Address RealPtr,const Standard_Boolean Crossing,const Standard_Boolean HideBefore,const Standard_Integer TrFlags,HLRAlgo_EdgeStatus& status) ;
+  
+  //! evident.
+  Standard_EXPORT   void HideByOneTriangle (const Standard_Address Coordinates, const Standard_Address RealPtr, const Standard_Boolean Crossing, const Standard_Boolean HideBefore, const Standard_Integer TrFlags, HLRAlgo_EdgeStatus& status) ;
 
-Standard_Integer myIndices[3];
-Handle_TColgp_HArray1OfXYZ myHNodes;
-Handle_HLRAlgo_HArray1OfTData myHTData;
-Handle_HLRAlgo_HArray1OfPHDat myHPHDat;
+  Standard_Integer myIndices[3];
+  Handle(TColgp_HArray1OfXYZ) myHNodes;
+  Handle(HLRAlgo_HArray1OfTData) myHTData;
+  Handle(HLRAlgo_HArray1OfPHDat) myHPHDat;
 
 
 };
@@ -106,7 +89,6 @@ Handle_HLRAlgo_HArray1OfPHDat myHPHDat;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_PolyData_HeaderFile

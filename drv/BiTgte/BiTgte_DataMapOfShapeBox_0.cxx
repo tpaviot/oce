@@ -5,27 +5,13 @@
 
 #include <BiTgte_DataMapOfShapeBox.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BiTgte_DataMapNodeOfDataMapOfShapeBox_HeaderFile
 #include <BiTgte_DataMapNodeOfDataMapOfShapeBox.hxx>
-#endif
-#ifndef _BiTgte_DataMapIteratorOfDataMapOfShapeBox_HeaderFile
 #include <BiTgte_DataMapIteratorOfDataMapOfShapeBox.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

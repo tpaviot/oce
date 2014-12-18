@@ -6,37 +6,17 @@
 #ifndef _Standard_Type_HeaderFile
 #define _Standard_Type_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_KindOfType_HeaderFile
 #include <Standard_KindOfType.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_TypeMismatch;
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
@@ -44,85 +24,91 @@ class Standard_AncestorIterator;
 
 
 
-//!   The class <Type> provides services to find out information <br>
-//!   about a type defined in CDL. <br>
-//! <br>
-//!   Note that multiple inheritance is not supported by the moment; <br>
-//!   the array of ancestors accepted by constructors is assumed to <br>
-//!   represent hierarchy of ancestors up to the root. <br>
-//!   However, only first element is actually used by SubType method, <br>
-//!   higher level ancestors are requested recursively. <br>
-//! <br>
-//!  Warning: <br>
-//!   The information given by <Type> is about the type from which <br>
-//!   it is created and not about the <Type> itself. <br>
-//! <br>
-class Standard_Type : public Standard_Transient {
+//! The class <Type> provides services to find out information
+//! about a type defined in CDL.
+//!
+//! Note that multiple inheritance is not supported by the moment;
+//! the array of ancestors accepted by constructors is assumed to
+//! represent hierarchy of ancestors up to the root.
+//! However, only first element is actually used by SubType method,
+//! higher level ancestors are requested recursively.
+//!
+//! Warning:
+//! The information given by <Type> is about the type from which
+//! it is created and not about the <Type> itself.
+class Standard_Type : public Standard_Transient
+{
 
 public:
 
   
-//!   Returns the type name of <me>. <br>
-  Standard_EXPORT     Standard_CString Name() const;
+
+  //! Returns the type name of <me>.
+  Standard_EXPORT   Standard_CString Name()  const;
   
-//!   Returns the size of <me> in bytes. <br>
-  Standard_EXPORT     Standard_Integer Size() const;
+
+  //! Returns the size of <me> in bytes.
+  Standard_EXPORT   Standard_Integer Size()  const;
   
-//!   The constructor for a imported type. <br>
-  Standard_EXPORT   Standard_Type(const Standard_CString aName,const Standard_Integer aSize);
+
+  //! The constructor for a imported type.
+  Standard_EXPORT Standard_Type(const Standard_CString aName, const Standard_Integer aSize);
   
-//!   The constructor for a primitive. <br>
-  Standard_EXPORT   Standard_Type(const Standard_CString aName,const Standard_Integer aSize,const Standard_Integer aNumberOfParent,const Standard_Address aAncestors);
+
+  //! The constructor for a primitive.
+  Standard_EXPORT Standard_Type(const Standard_CString aName, const Standard_Integer aSize, const Standard_Integer aNumberOfParent, const Standard_Address aAncestors);
   
-//!   The constructor for an enumeration. <br>
-  Standard_EXPORT   Standard_Type(const Standard_CString aName,const Standard_Integer aSize,const Standard_Integer aNumberOfElement,const Standard_Integer aNumberOfParent,const Standard_Address anAncestors,const Standard_Address aElements);
+
+  //! The constructor for an enumeration.
+  Standard_EXPORT Standard_Type(const Standard_CString aName, const Standard_Integer aSize, const Standard_Integer aNumberOfElement, const Standard_Integer aNumberOfParent, const Standard_Address anAncestors, const Standard_Address aElements);
   
-//!   The constructor for a class. <br>
-  Standard_EXPORT   Standard_Type(const Standard_CString aName,const Standard_Integer aSize,const Standard_Integer aNumberOfParent,const Standard_Address anAncestors,const Standard_Address aFields);
+
+  //! The constructor for a class.
+  Standard_EXPORT Standard_Type(const Standard_CString aName, const Standard_Integer aSize, const Standard_Integer aNumberOfParent, const Standard_Address anAncestors, const Standard_Address aFields);
   
-//!   Returns "True", if <me> is the same as <aOther>, <br>
-//!   or inherits from <aOther>. <br>
-//!   Note that multiple inheritance is not supported. <br>
-  Standard_EXPORT     Standard_Boolean SubType(const Handle(Standard_Type)& aOther) const;
+
+  //! Returns "True", if <me> is the same as <aOther>,
+  //! or inherits from <aOther>.
+  //! Note that multiple inheritance is not supported.
+  Standard_EXPORT   Standard_Boolean SubType (const Handle(Standard_Type)& aOther)  const;
   
-//!   Returns "True", if <me> or one of its ancestors has the name <br>
-//!   equal to theName. <br>
-//!   Note that multiple inheritance is not supported. <br>
-  Standard_EXPORT     Standard_Boolean SubType(const Standard_CString theName) const;
+
+  //! Returns "True", if <me> or one of its ancestors has the name
+  //! equal to theName.
+  //! Note that multiple inheritance is not supported.
+  Standard_EXPORT   Standard_Boolean SubType (const Standard_CString theName)  const;
   
-//!   Returns "True", if the type is imported. <br>
-  Standard_EXPORT     Standard_Boolean IsImported() const;
+
+  //! Returns "True", if the type is imported.
+  Standard_EXPORT   Standard_Boolean IsImported()  const;
   
-//!   Returns "True", if the type is a primitive. <br>
-  Standard_EXPORT     Standard_Boolean IsPrimitive() const;
+
+  //! Returns "True", if the type is a primitive.
+  Standard_EXPORT   Standard_Boolean IsPrimitive()  const;
   
-//!   Returns "True", if the type is an "Enumeration". <br>
-  Standard_EXPORT     Standard_Boolean IsEnumeration() const;
+
+  //! Returns "True", if the type is an "Enumeration".
+  Standard_EXPORT   Standard_Boolean IsEnumeration()  const;
   
-//!   Returns "True", if the type is a "Class". <br>
-  Standard_EXPORT     Standard_Boolean IsClass() const;
+
+  //! Returns "True", if the type is a "Class".
+  Standard_EXPORT   Standard_Boolean IsClass()  const;
   
-//!   Returns the number of direct parents of the class. <br>
-//! <br>
-  Standard_EXPORT     Standard_Integer NumberOfParent() const;
+
+  //! Returns the number of direct parents of the class.
+  Standard_EXPORT   Standard_Integer NumberOfParent()  const;
   
-//!   Returns the number of ancestors of the class. <br>
-//! <br>
-  Standard_EXPORT     Standard_Integer NumberOfAncestor() const;
+
+  //! Returns the number of ancestors of the class.
+  Standard_EXPORT   Standard_Integer NumberOfAncestor()  const;
   
-//!   Prints the Information about type. <br>
-  Standard_EXPORT     void ShallowDump() const;
-  
-//!   Prints the Information about type. <br>
-  Standard_EXPORT     void ShallowDump(Standard_OStream& S) const;
-  
-//!   Prints on the stream <s> the name of Type. <br>
-//!  Warning: <br>
-//!   The operator "OStream& operator<< (Standard_OStream&, <br>
-//!                                      Handle(Standard_Type)&)" <br>
-//!   is implemented. (This operator uses the method Print) <br>
-//! <br>
-  Standard_EXPORT     void Print(Standard_OStream& s) const;
+
+  //! Prints on the stream <s> the name of Type.
+  //! Warning:
+  //! The operator "OStream& operator<< (Standard_OStream&,
+  //! Handle(Standard_Type)&)"
+  //! is implemented. (This operator uses the method Print)
+  Standard_EXPORT   void Print (Standard_OStream& s)  const;
 Standard_EXPORT     void operator<<(Standard_OStream& s) const  {  Print(s); }  
 
 
@@ -139,20 +125,21 @@ protected:
 private: 
 
   
-//!   Returns the address of the ancestors array. It can be used only by <br>
-//!   AncestorIterator. <br>
-  Standard_EXPORT     Standard_Address Ancestors() const;
-  
-//!    Just for inline. <br>
-//! <br>
-        void InLineDummy() const;
 
-Standard_CString myName;
-Standard_Integer mySize;
-Standard_KindOfType myKind;
-Standard_Integer myNumberOfParent;
-Standard_Integer myNumberOfAncestor;
-Standard_Address myAncestors;
+  //! Returns the address of the ancestors array. It can be used only by
+  //! AncestorIterator.
+  Standard_EXPORT   Standard_Address Ancestors()  const;
+  
+
+  //! Just for inline.
+      void InLineDummy()  const;
+
+  Standard_CString myName;
+  Standard_Integer mySize;
+  Standard_KindOfType myKind;
+  Standard_Integer myNumberOfParent;
+  Standard_Integer myNumberOfAncestor;
+  Standard_Address myAncestors;
 
 
 };
@@ -162,15 +149,6 @@ Standard_Address myAncestors;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_Standard_Type& me) {
- me->ShallowDump();
-}
-
-inline void ShallowDump(const Handle_Standard_Type& me,Standard_OStream& S) {
- me->ShallowDump(S);
-}
 
 
-
-#endif
+#endif // _Standard_Type_HeaderFile

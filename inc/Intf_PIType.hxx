@@ -6,17 +6,16 @@
 #ifndef _Intf_PIType_HeaderFile
 #define _Intf_PIType_HeaderFile
 
-//! Describes the different intersection  point types for this <br>
-//!          application. <br>
-enum Intf_PIType {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Describes the different intersection  point types for this
+//! application.
+enum Intf_PIType
+{
 Intf_EXTERNAL,
 Intf_FACE,
 Intf_EDGE,
 Intf_VERTEX
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Intf_PIType_HeaderFile

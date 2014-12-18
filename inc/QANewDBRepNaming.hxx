@@ -6,32 +6,26 @@
 #ifndef _QANewDBRepNaming_HeaderFile
 #define _QANewDBRepNaming_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-class Draw_Interpretor;
+#include <Draw_Interpretor.hxx>
 
 
-//! To test topological naming <br>
-class QANewDBRepNaming  {
+//! To test topological naming
+class QANewDBRepNaming 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& Di) ;
+  Standard_EXPORT static   void AllCommands (Draw_Interpretor& Di) ;
   
-  Standard_EXPORT   static  void PrimitiveCommands(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void PrimitiveCommands (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void FeatureCommands(Draw_Interpretor& DI) ;
-
+  Standard_EXPORT static   void FeatureCommands (Draw_Interpretor& DI) ;
 
 
 
@@ -54,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewDBRepNaming_HeaderFile

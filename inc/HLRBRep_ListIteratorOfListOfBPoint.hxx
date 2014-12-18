@@ -6,25 +6,13 @@
 #ifndef _HLRBRep_ListIteratorOfListOfBPoint_HeaderFile
 #define _HLRBRep_ListIteratorOfListOfBPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_HLRBRep_ListNodeOfListOfBPoint_HeaderFile
 #include <Handle_HLRBRep_ListNodeOfListOfBPoint.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class HLRBRep_ListOfBPoint;
@@ -33,27 +21,27 @@ class HLRBRep_ListNodeOfListOfBPoint;
 
 
 
-class HLRBRep_ListIteratorOfListOfBPoint  {
+class HLRBRep_ListIteratorOfListOfBPoint 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRBRep_ListIteratorOfListOfBPoint();
+  Standard_EXPORT HLRBRep_ListIteratorOfListOfBPoint();
   
-  Standard_EXPORT   HLRBRep_ListIteratorOfListOfBPoint(const HLRBRep_ListOfBPoint& L);
+  Standard_EXPORT HLRBRep_ListIteratorOfListOfBPoint(const HLRBRep_ListOfBPoint& L);
   
-  Standard_EXPORT     void Initialize(const HLRBRep_ListOfBPoint& L) ;
+  Standard_EXPORT   void Initialize (const HLRBRep_ListOfBPoint& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     HLRBRep_BiPoint& Value() const;
+  Standard_EXPORT   HLRBRep_BiPoint& Value()  const;
 
 
 friend class HLRBRep_ListOfBPoint;
-
 
 
 protected:
@@ -66,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -97,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_ListIteratorOfListOfBPoint_HeaderFile

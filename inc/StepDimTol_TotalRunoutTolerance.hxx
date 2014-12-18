@@ -6,28 +6,22 @@
 #ifndef _StepDimTol_TotalRunoutTolerance_HeaderFile
 #define _StepDimTol_TotalRunoutTolerance_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepDimTol_TotalRunoutTolerance_HeaderFile
 #include <Handle_StepDimTol_TotalRunoutTolerance.hxx>
-#endif
 
-#ifndef _StepDimTol_GeometricToleranceWithDatumReference_HeaderFile
 #include <StepDimTol_GeometricToleranceWithDatumReference.hxx>
-#endif
 
 
-//! Representation of STEP entity TotalRunoutTolerance <br>
-class StepDimTol_TotalRunoutTolerance : public StepDimTol_GeometricToleranceWithDatumReference {
+//! Representation of STEP entity TotalRunoutTolerance
+class StepDimTol_TotalRunoutTolerance : public StepDimTol_GeometricToleranceWithDatumReference
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepDimTol_TotalRunoutTolerance();
+  
+  //! Empty constructor
+  Standard_EXPORT StepDimTol_TotalRunoutTolerance();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepDimTol_TotalRunoutTolerance_HeaderFile

@@ -6,38 +6,27 @@
 #ifndef _Hatch_SequenceNodeOfSequenceOfLine_HeaderFile
 #define _Hatch_SequenceNodeOfSequenceOfLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Hatch_SequenceNodeOfSequenceOfLine_HeaderFile
 #include <Handle_Hatch_SequenceNodeOfSequenceOfLine.hxx>
-#endif
 
-#ifndef _Hatch_Line_HeaderFile
 #include <Hatch_Line.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Hatch_Line;
 class Hatch_SequenceOfLine;
 
 
 
-class Hatch_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
+class Hatch_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode
+{
 
 public:
 
   
-      Hatch_SequenceNodeOfSequenceOfLine(const Hatch_Line& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Hatch_SequenceNodeOfSequenceOfLine(const Hatch_Line& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Hatch_Line& Value() const;
+      Hatch_Line& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Hatch_Line myValue;
+  Hatch_Line myValue;
 
 
 };
@@ -78,7 +67,6 @@ Hatch_Line myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Hatch_SequenceNodeOfSequenceOfLine_HeaderFile

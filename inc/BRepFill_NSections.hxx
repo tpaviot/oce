@@ -6,49 +6,21 @@
 #ifndef _BRepFill_NSections_HeaderFile
 #define _BRepFill_NSections_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_NSections_HeaderFile
 #include <Handle_BRepFill_NSections.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
-#endif
-#ifndef _GeomFill_SequenceOfTrsf_HeaderFile
 #include <GeomFill_SequenceOfTrsf.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _Handle_TopTools_HArray2OfShape_HeaderFile
 #include <Handle_TopTools_HArray2OfShape.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
-#ifndef _BRepFill_SectionLaw_HeaderFile
 #include <BRepFill_SectionLaw.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_GeomFill_SectionLaw_HeaderFile
 #include <Handle_GeomFill_SectionLaw.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopTools_HArray2OfShape;
 class Geom_BSplineSurface;
 class TopTools_SequenceOfShape;
@@ -59,30 +31,35 @@ class TopoDS_Vertex;
 class TopoDS_Shape;
 
 
-//! Build Section Law, with N Sections <br>
-//! <br>
-class BRepFill_NSections : public BRepFill_SectionLaw {
+//! Build Section Law, with N Sections
+class BRepFill_NSections : public BRepFill_SectionLaw
+{
 
 public:
 
-  //! Construct <br>
-  Standard_EXPORT   BRepFill_NSections(const TopTools_SequenceOfShape& S,const Standard_Boolean Build = Standard_True);
-  //! Construct <br>
-  Standard_EXPORT   BRepFill_NSections(const TopTools_SequenceOfShape& S,const GeomFill_SequenceOfTrsf& Trsfs,const TColStd_SequenceOfReal& P,const Standard_Real VF,const Standard_Real VL,const Standard_Boolean Build = Standard_True);
-  //! Say if the input shape is a  vertex. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsVertex() const;
-  //! Say if the Law is  Constant. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsConstant() const;
-  //! Give the law build on a concatened section <br>
-  Standard_EXPORT   virtual  Handle_GeomFill_SectionLaw ConcatenedLaw() const;
   
-  Standard_EXPORT   virtual  GeomAbs_Shape Continuity(const Standard_Integer Index,const Standard_Real TolAngular) const;
+  //! Construct
+  Standard_EXPORT BRepFill_NSections(const TopTools_SequenceOfShape& S, const Standard_Boolean Build = Standard_True);
   
-  Standard_EXPORT   virtual  Standard_Real VertexTol(const Standard_Integer Index,const Standard_Real Param) const;
+  //! Construct
+  Standard_EXPORT BRepFill_NSections(const TopTools_SequenceOfShape& S, const GeomFill_SequenceOfTrsf& Trsfs, const TColStd_SequenceOfReal& P, const Standard_Real VF, const Standard_Real VL, const Standard_Boolean Build = Standard_True);
   
-  Standard_EXPORT   virtual  TopoDS_Vertex Vertex(const Standard_Integer Index,const Standard_Real Param) const;
+  //! Say if the input shape is a  vertex.
+  Standard_EXPORT virtual   Standard_Boolean IsVertex()  const;
   
-  Standard_EXPORT   virtual  void D0(const Standard_Real Param,TopoDS_Shape& S) ;
+  //! Say if the Law is  Constant.
+  Standard_EXPORT virtual   Standard_Boolean IsConstant()  const;
+  
+  //! Give the law build on a concatened section
+  Standard_EXPORT virtual   Handle(GeomFill_SectionLaw) ConcatenedLaw()  const;
+  
+  Standard_EXPORT virtual   GeomAbs_Shape Continuity (const Standard_Integer Index, const Standard_Real TolAngular)  const;
+  
+  Standard_EXPORT virtual   Standard_Real VertexTol (const Standard_Integer Index, const Standard_Real Param)  const;
+  
+  Standard_EXPORT virtual   TopoDS_Vertex Vertex (const Standard_Integer Index, const Standard_Real Param)  const;
+  
+  Standard_EXPORT virtual   void D0 (const Standard_Real Param, TopoDS_Shape& S) ;
 
 
 
@@ -97,15 +74,15 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void Init(const TColStd_SequenceOfReal& P,const Standard_Boolean B) ;
+  Standard_EXPORT   void Init (const TColStd_SequenceOfReal& P, const Standard_Boolean B) ;
 
-Standard_Real VFirst;
-Standard_Real VLast;
-TopTools_SequenceOfShape myShapes;
-GeomFill_SequenceOfTrsf myTrsfs;
-TColStd_SequenceOfReal myParams;
-Handle_TopTools_HArray2OfShape myEdges;
-Handle_Geom_BSplineSurface mySurface;
+  Standard_Real VFirst;
+  Standard_Real VLast;
+  TopTools_SequenceOfShape myShapes;
+  GeomFill_SequenceOfTrsf myTrsfs;
+  TColStd_SequenceOfReal myParams;
+  Handle(TopTools_HArray2OfShape) myEdges;
+  Handle(Geom_BSplineSurface) mySurface;
 
 
 };
@@ -114,7 +91,6 @@ Handle_Geom_BSplineSurface mySurface;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_NSections_HeaderFile

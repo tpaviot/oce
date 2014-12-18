@@ -6,40 +6,32 @@
 #ifndef _Graphic3d_Texture1Dmanual_HeaderFile
 #define _Graphic3d_Texture1Dmanual_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Texture1Dmanual_HeaderFile
 #include <Handle_Graphic3d_Texture1Dmanual.hxx>
-#endif
 
-#ifndef _Graphic3d_Texture1D_HeaderFile
 #include <Graphic3d_Texture1D.hxx>
-#endif
-#ifndef _Graphic3d_NameOfTexture1D_HeaderFile
 #include <Graphic3d_NameOfTexture1D.hxx>
-#endif
-#ifndef _Image_PixMap_Handle_HeaderFile
 #include <Image_PixMap_Handle.hxx>
-#endif
 class TCollection_AsciiString;
 
 
-//! This class provides the implementation of a manual 1D texture. <br>
-//! you MUST provides texture coordinates on your facets if you want to see your texture. <br>
-class Graphic3d_Texture1Dmanual : public Graphic3d_Texture1D {
+//! This class provides the implementation of a manual 1D texture.
+//! you MUST provides texture coordinates on your facets if you want to see your texture.
+class Graphic3d_Texture1Dmanual : public Graphic3d_Texture1D
+{
 
 public:
 
-  //! Creates a texture from the file FileName. <br>
-  Standard_EXPORT   Graphic3d_Texture1Dmanual(const TCollection_AsciiString& theFileName);
-  //! Create a texture from a predefined texture name set. <br>
-  Standard_EXPORT   Graphic3d_Texture1Dmanual(const Graphic3d_NameOfTexture1D theNOT);
-  //! Creates a texture from the pixmap. <br>
-  Standard_EXPORT   Graphic3d_Texture1Dmanual(const Image_PixMap_Handle& thePixMap);
+  
+  //! Creates a texture from the file FileName.
+  Standard_EXPORT Graphic3d_Texture1Dmanual(const TCollection_AsciiString& theFileName);
+  
+  //! Create a texture from a predefined texture name set.
+  Standard_EXPORT Graphic3d_Texture1Dmanual(const Graphic3d_NameOfTexture1D theNOT);
+  
+  //! Creates a texture from the pixmap.
+  Standard_EXPORT Graphic3d_Texture1Dmanual(const Image_PixMap_Handle& thePixMap);
 
 
 
@@ -62,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_Texture1Dmanual_HeaderFile

@@ -5,22 +5,12 @@
 
 #include <TopOpeBRepDS_DataMapNodeOfMapOfPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_PointData_HeaderFile
 #include <TopOpeBRepDS_PointData.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_MapOfPoint_HeaderFile
 #include <TopOpeBRepDS_MapOfPoint.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfMapOfPoint_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfMapOfPoint.hxx>
-#endif
 
  
 

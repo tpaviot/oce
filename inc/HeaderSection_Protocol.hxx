@@ -6,43 +6,31 @@
 #ifndef _HeaderSection_Protocol_HeaderFile
 #define _HeaderSection_Protocol_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HeaderSection_Protocol_HeaderFile
 #include <Handle_HeaderSection_Protocol.hxx>
-#endif
 
-#ifndef _StepData_Protocol_HeaderFile
 #include <StepData_Protocol.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class Standard_Type;
 
 
-//! Protocol for HeaderSection Entities <br>
-//!           It requires HeaderSection as a Resource <br>
-class HeaderSection_Protocol : public StepData_Protocol {
+//! Protocol for HeaderSection Entities
+//! It requires HeaderSection as a Resource
+class HeaderSection_Protocol : public StepData_Protocol
+{
 
 public:
 
   
-  Standard_EXPORT   HeaderSection_Protocol();
-  //!Returns a Case Number for each of the HeaderSection Entities <br>
-  Standard_EXPORT   virtual  Standard_Integer TypeNumber(const Handle(Standard_Type)& atype) const;
+  Standard_EXPORT HeaderSection_Protocol();
   
-  Standard_EXPORT   virtual  Standard_CString SchemaName() const;
+  //! Returns a Case Number for each of the HeaderSection Entities
+  Standard_EXPORT virtual   Standard_Integer TypeNumber (const Handle(Standard_Type)& atype)  const;
+  
+  Standard_EXPORT virtual   Standard_CString SchemaName()  const;
 
 
 
@@ -65,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HeaderSection_Protocol_HeaderFile

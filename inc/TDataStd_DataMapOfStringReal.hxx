@@ -6,34 +6,16 @@
 #ifndef _TDataStd_DataMapOfStringReal_HeaderFile
 #define _TDataStd_DataMapOfStringReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TDataStd_DataMapNodeOfDataMapOfStringReal_HeaderFile
 #include <Handle_TDataStd_DataMapNodeOfDataMapOfStringReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TCollection_ExtendedString;
@@ -42,50 +24,50 @@ class TDataStd_DataMapIteratorOfDataMapOfStringReal;
 
 
 
-class TDataStd_DataMapOfStringReal  : public TCollection_BasicMap {
+class TDataStd_DataMapOfStringReal  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDataStd_DataMapOfStringReal(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TDataStd_DataMapOfStringReal(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TDataStd_DataMapOfStringReal& Assign(const TDataStd_DataMapOfStringReal& Other) ;
-    TDataStd_DataMapOfStringReal& operator =(const TDataStd_DataMapOfStringReal& Other) 
+  Standard_EXPORT   TDataStd_DataMapOfStringReal& Assign (const TDataStd_DataMapOfStringReal& Other) ;
+  TDataStd_DataMapOfStringReal& operator = (const TDataStd_DataMapOfStringReal& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDataStd_DataMapOfStringReal()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const TCollection_ExtendedString& K,const Standard_Real& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const TCollection_ExtendedString& K, const Standard_Real& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const TCollection_ExtendedString& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const TCollection_ExtendedString& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const TCollection_ExtendedString& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const TCollection_ExtendedString& K) ;
   
-  Standard_EXPORT    const Standard_Real& Find(const TCollection_ExtendedString& K) const;
-   const Standard_Real& operator()(const TCollection_ExtendedString& K) const
+  Standard_EXPORT  const  Standard_Real& Find (const TCollection_ExtendedString& K)  const;
+ const  Standard_Real& operator() (const TCollection_ExtendedString& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Standard_Real& ChangeFind(const TCollection_ExtendedString& K) ;
-    Standard_Real& operator()(const TCollection_ExtendedString& K) 
+  Standard_EXPORT   Standard_Real& ChangeFind (const TCollection_ExtendedString& K) ;
+  Standard_Real& operator() (const TCollection_ExtendedString& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const TCollection_ExtendedString& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const TCollection_ExtendedString& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const TCollection_ExtendedString& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const TCollection_ExtendedString& K) ;
 
 
 
@@ -99,7 +81,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   TDataStd_DataMapOfStringReal(const TDataStd_DataMapOfStringReal& Other);
+  Standard_EXPORT TDataStd_DataMapOfStringReal(const TDataStd_DataMapOfStringReal& Other);
 
 
 
@@ -110,7 +92,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_DataMapOfStringReal_HeaderFile

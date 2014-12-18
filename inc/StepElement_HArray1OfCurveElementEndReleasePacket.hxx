@@ -6,28 +6,14 @@
 #ifndef _StepElement_HArray1OfCurveElementEndReleasePacket_HeaderFile
 #define _StepElement_HArray1OfCurveElementEndReleasePacket_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_HArray1OfCurveElementEndReleasePacket_HeaderFile
 #include <Handle_StepElement_HArray1OfCurveElementEndReleasePacket.hxx>
-#endif
 
-#ifndef _StepElement_Array1OfCurveElementEndReleasePacket_HeaderFile
 #include <StepElement_Array1OfCurveElementEndReleasePacket.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepElement_CurveElementEndReleasePacket_HeaderFile
 #include <Handle_StepElement_CurveElementEndReleasePacket.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepElement_Array1OfCurveElementEndReleasePacket;
 
 
 
-class StepElement_HArray1OfCurveElementEndReleasePacket : public MMgt_TShared {
+class StepElement_HArray1OfCurveElementEndReleasePacket : public MMgt_TShared
+{
 
 public:
 
   
-      StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer Low,const Standard_Integer Up);
+    StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_CurveElementEndReleasePacket)& V);
+    StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepElement_CurveElementEndReleasePacket)& V);
   
-        void Init(const Handle(StepElement_CurveElementEndReleasePacket)& V) ;
+      void Init (const Handle(StepElement_CurveElementEndReleasePacket)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepElement_CurveElementEndReleasePacket)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepElement_CurveElementEndReleasePacket)& Value) ;
   
-       const Handle_StepElement_CurveElementEndReleasePacket& Value(const Standard_Integer Index) const;
+     const  Handle(StepElement_CurveElementEndReleasePacket)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepElement_CurveElementEndReleasePacket& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepElement_CurveElementEndReleasePacket)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepElement_Array1OfCurveElementEndReleasePacket& Array1() const;
+     const  StepElement_Array1OfCurveElementEndReleasePacket& Array1()  const;
   
-        StepElement_Array1OfCurveElementEndReleasePacket& ChangeArray1() ;
+      StepElement_Array1OfCurveElementEndReleasePacket& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepElement_Array1OfCurveElementEndReleasePacket myArray;
+  StepElement_Array1OfCurveElementEndReleasePacket myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepElement_CurveElementEndReleasePacket
+#define ItemHArray1 Handle(StepElement_CurveElementEndReleasePacket)
 #define ItemHArray1_hxx <StepElement_CurveElementEndReleasePacket.hxx>
 #define TheArray1 StepElement_Array1OfCurveElementEndReleasePacket
 #define TheArray1_hxx <StepElement_Array1OfCurveElementEndReleasePacket.hxx>
@@ -103,7 +90,6 @@ StepElement_Array1OfCurveElementEndReleasePacket myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_HArray1OfCurveElementEndReleasePacket_HeaderFile

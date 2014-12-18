@@ -6,46 +6,33 @@
 #ifndef _TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape_HeaderFile
 #define _TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape_HeaderFile
 #include <Handle_TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_OrientedShapeMapHasher;
 class TopTools_IndexedMapOfOrientedShape;
 
 
 
-class TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public TCollection_MapNode {
+class TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape(const TopoDS_Shape& K1,const Standard_Integer K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape(const TopoDS_Shape& K1, const Standard_Integer K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        TopoDS_Shape& Key1() const;
+      TopoDS_Shape& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -60,9 +47,9 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey1;
-Standard_Integer myKey2;
-TCollection_MapNodePtr myNext2;
+  TopoDS_Shape myKey1;
+  Standard_Integer myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -92,7 +79,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape_HeaderFile

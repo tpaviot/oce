@@ -6,28 +6,14 @@
 #ifndef _XCAFDoc_Datum_HeaderFile
 #define _XCAFDoc_Datum_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_Datum_HeaderFile
 #include <Handle_XCAFDoc_Datum.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
 class TCollection_HAsciiString;
 class Standard_GUID;
 class TDF_Label;
@@ -35,33 +21,34 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
-class XCAFDoc_Datum : public TDF_Attribute {
+//! attribute to store datum
+class XCAFDoc_Datum : public TDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   XCAFDoc_Datum();
+  Standard_EXPORT XCAFDoc_Datum();
   
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT   static  Handle_XCAFDoc_Datum Set(const TDF_Label& label,const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Handle(TCollection_HAsciiString)& anIdentification) ;
+  Standard_EXPORT static   Handle(XCAFDoc_Datum) Set (const TDF_Label& label, const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Handle(TCollection_HAsciiString)& anIdentification) ;
   
-  Standard_EXPORT     void Set(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Handle(TCollection_HAsciiString)& anIdentification) ;
+  Standard_EXPORT   void Set (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Handle(TCollection_HAsciiString)& anIdentification) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString GetName() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) GetName()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString GetDescription() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) GetDescription()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString GetIdentification() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) GetIdentification()  const;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
 
 
 
@@ -76,9 +63,9 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString myName;
-Handle_TCollection_HAsciiString myDescription;
-Handle_TCollection_HAsciiString myIdentification;
+  Handle(TCollection_HAsciiString) myName;
+  Handle(TCollection_HAsciiString) myDescription;
+  Handle(TCollection_HAsciiString) myIdentification;
 
 
 };
@@ -87,7 +74,6 @@ Handle_TCollection_HAsciiString myIdentification;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFDoc_Datum_HeaderFile

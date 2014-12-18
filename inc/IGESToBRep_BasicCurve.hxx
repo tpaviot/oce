@@ -6,64 +6,26 @@
 #ifndef _IGESToBRep_BasicCurve_HeaderFile
 #define _IGESToBRep_BasicCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _IGESToBRep_CurveAndSurface_HeaderFile
 #include <IGESToBRep_CurveAndSurface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Handle_IGESGeom_BSplineCurve_HeaderFile
 #include <Handle_IGESGeom_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_IGESGeom_CircularArc_HeaderFile
 #include <Handle_IGESGeom_CircularArc.hxx>
-#endif
-#ifndef _Handle_IGESGeom_ConicArc_HeaderFile
 #include <Handle_IGESGeom_ConicArc.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineCurve_HeaderFile
 #include <Handle_Geom_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_IGESGeom_CopiousData_HeaderFile
 #include <Handle_IGESGeom_CopiousData.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Line_HeaderFile
 #include <Handle_IGESGeom_Line.hxx>
-#endif
-#ifndef _Handle_IGESGeom_SplineCurve_HeaderFile
 #include <Handle_IGESGeom_SplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
-#endif
-#ifndef _Handle_IGESGeom_TransformationMatrix_HeaderFile
 #include <Handle_IGESGeom_TransformationMatrix.hxx>
-#endif
 class IGESToBRep_CurveAndSurface;
 class Geom_Curve;
 class IGESData_IGESEntity;
@@ -80,68 +42,73 @@ class Geom_Transformation;
 class IGESGeom_TransformationMatrix;
 
 
-//! Provides methods to transfer basic geometric curves entities <br>
-//!           from IGES to CASCADE. <br>
-//!           These can be : <br>
-//!           * Circular arc <br>
-//!           * Conic arc <br>
-//!           * Spline curve <br>
-//!           * BSpline curve <br>
-//!           * Line <br>
-//!           * Copious data <br>
-//!           * Point <br>
-//!           * Transformation matrix <br>
-class IGESToBRep_BasicCurve  : public IGESToBRep_CurveAndSurface {
+//! Provides methods to transfer basic geometric curves entities
+//! from IGES to CASCADE.
+//! These can be :
+//! * Circular arc
+//! * Conic arc
+//! * Spline curve
+//! * BSpline curve
+//! * Line
+//! * Copious data
+//! * Point
+//! * Transformation matrix
+class IGESToBRep_BasicCurve  : public IGESToBRep_CurveAndSurface
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates  a tool BasicCurve  ready  to  run, with <br>
-//!         epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the <br>
-//!         optimization of  the continuity to False. <br>
-  Standard_EXPORT   IGESToBRep_BasicCurve();
-  //! Creates a tool BasicCurve ready to run and sets its <br>
-//!         fields as CS's. <br>
-  Standard_EXPORT   IGESToBRep_BasicCurve(const IGESToBRep_CurveAndSurface& CS);
-  //! Creates a tool BasicCurve ready to run. <br>
-  Standard_EXPORT   IGESToBRep_BasicCurve(const Standard_Real eps,const Standard_Real epsGeom,const Standard_Real epsCoeff,const Standard_Boolean mode,const Standard_Boolean modeapprox,const Standard_Boolean optimized);
-  //!  Transfert  a  IGESEntity which  answer True  to  the <br>
-//!         member : IGESToBRep::IsBasicCurve(IGESEntity).  If this <br>
-//!         Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_Geom_Curve TransferBasicCurve(const Handle(IGESData_IGESEntity)& start) ;
-  //!  Transfert  a  IGESEntity which  answer True  to  the <br>
-//!         member : IGESToBRep::IsBasicCurve(IGESEntity). <br>
-//!         The IGESEntity must be a curve UV and its associed TRSF must <br>
-//!         be planar .If this Entity could not be converted, this member <br>
-//!         returns a NullEntity. <br>
-  Standard_EXPORT     Handle_Geom2d_Curve Transfer2dBasicCurve(const Handle(IGESData_IGESEntity)& start) ;
   
-  Standard_EXPORT     Handle_Geom_Curve TransferBSplineCurve(const Handle(IGESGeom_BSplineCurve)& start) ;
+  //! Creates  a tool BasicCurve  ready  to  run, with
+  //! epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
+  //! optimization of  the continuity to False.
+  Standard_EXPORT IGESToBRep_BasicCurve();
   
-  Standard_EXPORT     Handle_Geom2d_Curve Transfer2dBSplineCurve(const Handle(IGESGeom_BSplineCurve)& start) ;
+  //! Creates a tool BasicCurve ready to run and sets its
+  //! fields as CS's.
+  Standard_EXPORT IGESToBRep_BasicCurve(const IGESToBRep_CurveAndSurface& CS);
   
-  Standard_EXPORT     Handle_Geom_Curve TransferCircularArc(const Handle(IGESGeom_CircularArc)& start) ;
+  //! Creates a tool BasicCurve ready to run.
+  Standard_EXPORT IGESToBRep_BasicCurve(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
   
-  Standard_EXPORT     Handle_Geom2d_Curve Transfer2dCircularArc(const Handle(IGESGeom_CircularArc)& start) ;
+  //! Transfert  a  IGESEntity which  answer True  to  the
+  //! member : IGESToBRep::IsBasicCurve(IGESEntity).  If this
+  //! Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(Geom_Curve) TransferBasicCurve (const Handle(IGESData_IGESEntity)& start) ;
   
-  Standard_EXPORT     Handle_Geom_Curve TransferConicArc(const Handle(IGESGeom_ConicArc)& start) ;
+  //! Transfert  a  IGESEntity which  answer True  to  the
+  //! member : IGESToBRep::IsBasicCurve(IGESEntity).
+  //! The IGESEntity must be a curve UV and its associed TRSF must
+  //! be planar .If this Entity could not be converted, this member
+  //! returns a NullEntity.
+  Standard_EXPORT   Handle(Geom2d_Curve) Transfer2dBasicCurve (const Handle(IGESData_IGESEntity)& start) ;
   
-  Standard_EXPORT     Handle_Geom2d_Curve Transfer2dConicArc(const Handle(IGESGeom_ConicArc)& start) ;
+  Standard_EXPORT   Handle(Geom_Curve) TransferBSplineCurve (const Handle(IGESGeom_BSplineCurve)& start) ;
   
-  Standard_EXPORT     Handle_Geom_BSplineCurve TransferCopiousData(const Handle(IGESGeom_CopiousData)& start) ;
+  Standard_EXPORT   Handle(Geom2d_Curve) Transfer2dBSplineCurve (const Handle(IGESGeom_BSplineCurve)& start) ;
   
-  Standard_EXPORT     Handle_Geom2d_BSplineCurve Transfer2dCopiousData(const Handle(IGESGeom_CopiousData)& start) ;
+  Standard_EXPORT   Handle(Geom_Curve) TransferCircularArc (const Handle(IGESGeom_CircularArc)& start) ;
   
-  Standard_EXPORT     Handle_Geom_Curve TransferLine(const Handle(IGESGeom_Line)& start) ;
+  Standard_EXPORT   Handle(Geom2d_Curve) Transfer2dCircularArc (const Handle(IGESGeom_CircularArc)& start) ;
   
-  Standard_EXPORT     Handle_Geom2d_Curve Transfer2dLine(const Handle(IGESGeom_Line)& start) ;
+  Standard_EXPORT   Handle(Geom_Curve) TransferConicArc (const Handle(IGESGeom_ConicArc)& start) ;
   
-  Standard_EXPORT     Handle_Geom_BSplineCurve TransferSplineCurve(const Handle(IGESGeom_SplineCurve)& start) ;
+  Standard_EXPORT   Handle(Geom2d_Curve) Transfer2dConicArc (const Handle(IGESGeom_ConicArc)& start) ;
   
-  Standard_EXPORT     Handle_Geom2d_BSplineCurve Transfer2dSplineCurve(const Handle(IGESGeom_SplineCurve)& start) ;
+  Standard_EXPORT   Handle(Geom_BSplineCurve) TransferCopiousData (const Handle(IGESGeom_CopiousData)& start) ;
   
-  Standard_EXPORT     Handle_Geom_Transformation TransferTransformation(const Handle(IGESGeom_TransformationMatrix)& start) ;
-
+  Standard_EXPORT   Handle(Geom2d_BSplineCurve) Transfer2dCopiousData (const Handle(IGESGeom_CopiousData)& start) ;
+  
+  Standard_EXPORT   Handle(Geom_Curve) TransferLine (const Handle(IGESGeom_Line)& start) ;
+  
+  Standard_EXPORT   Handle(Geom2d_Curve) Transfer2dLine (const Handle(IGESGeom_Line)& start) ;
+  
+  Standard_EXPORT   Handle(Geom_BSplineCurve) TransferSplineCurve (const Handle(IGESGeom_SplineCurve)& start) ;
+  
+  Standard_EXPORT   Handle(Geom2d_BSplineCurve) Transfer2dSplineCurve (const Handle(IGESGeom_SplineCurve)& start) ;
+  
+  Standard_EXPORT   Handle(Geom_Transformation) TransferTransformation (const Handle(IGESGeom_TransformationMatrix)& start) ;
 
 
 
@@ -164,7 +131,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESToBRep_BasicCurve_HeaderFile

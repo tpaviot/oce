@@ -5,28 +5,14 @@
 
 #include <IGESDefs_HArray1OfTabularData.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESDefs_TabularData_HeaderFile
 #include <IGESDefs_TabularData.hxx>
-#endif
-#ifndef _IGESDefs_Array1OfTabularData_HeaderFile
 #include <IGESDefs_Array1OfTabularData.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESDefs_HArray1OfTabularData,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESDefs_HArray1OfTabularData)
 
 
-#define ItemHArray1 Handle_IGESDefs_TabularData
+#define ItemHArray1 Handle(IGESDefs_TabularData)
 #define ItemHArray1_hxx <IGESDefs_TabularData.hxx>
 #define TheArray1 IGESDefs_Array1OfTabularData
 #define TheArray1_hxx <IGESDefs_Array1OfTabularData.hxx>

@@ -1,15 +1,5 @@
-#ifndef _StepShape_BrepWithVoids_HeaderFile
 #include <StepShape_BrepWithVoids.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _TopoDS_Solid_HeaderFile
 #include <TopoDS_Solid.hxx>
-#endif
-#ifndef _Transfer_FinderProcess_HeaderFile
 #include <Transfer_FinderProcess.hxx>
-#endif
-#ifndef _TopoDSToStep_MakeBrepWithVoids_HeaderFile
 #include <TopoDSToStep_MakeBrepWithVoids.hxx>
-#endif

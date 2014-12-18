@@ -5,26 +5,16 @@
 
 #include <TDF_DataMapIteratorOfAttributeDataMap.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _TDF_AttributeDataMap_HeaderFile
 #include <TDF_AttributeDataMap.hxx>
-#endif
-#ifndef _TDF_DataMapNodeOfAttributeDataMap_HeaderFile
 #include <TDF_DataMapNodeOfAttributeDataMap.hxx>
-#endif
  
 
-#define TheKey Handle_TDF_Attribute
+#define TheKey Handle(TDF_Attribute)
 #define TheKey_hxx <TDF_Attribute.hxx>
-#define TheItem Handle_TDF_Attribute
+#define TheItem Handle(TDF_Attribute)
 #define TheItem_hxx <TDF_Attribute.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

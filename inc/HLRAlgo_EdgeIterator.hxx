@@ -6,62 +6,49 @@
 #ifndef _HLRAlgo_EdgeIterator_HeaderFile
 #define _HLRAlgo_EdgeIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class HLRAlgo_EdgeStatus;
 
 
 
-class HLRAlgo_EdgeIterator  {
+class HLRAlgo_EdgeIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Iterator  on the  visible or  hidden  parts of  an <br>
-//!          edge. <br>
-  Standard_EXPORT   HLRAlgo_EdgeIterator();
   
-  Standard_EXPORT     void InitHidden(const HLRAlgo_EdgeStatus& status) ;
+  //! Iterator  on the  visible or  hidden  parts of  an
+  //! edge.
+  Standard_EXPORT HLRAlgo_EdgeIterator();
   
-        Standard_Boolean MoreHidden() const;
+  Standard_EXPORT   void InitHidden (const HLRAlgo_EdgeStatus& status) ;
   
-  Standard_EXPORT     void NextHidden() ;
-  //! Returns the bounds and the tolerances <br>
-//!          of the current Hidden Interval <br>
-        void Hidden(Standard_Real& Start,Standard_ShortReal& TolStart,Standard_Real& End,Standard_ShortReal& TolEnd) const;
+      Standard_Boolean MoreHidden()  const;
   
-        void InitVisible(const HLRAlgo_EdgeStatus& status) ;
+  Standard_EXPORT   void NextHidden() ;
   
-        Standard_Boolean MoreVisible() const;
+  //! Returns the bounds and the tolerances
+  //! of the current Hidden Interval
+      void Hidden (Standard_Real& Start, Standard_ShortReal& TolStart, Standard_Real& End, Standard_ShortReal& TolEnd)  const;
   
-        void NextVisible() ;
-  //! Returns the bounds and the tolerances <br>
-//!          of the current Visible Interval <br>
-        void Visible(Standard_Real& Start,Standard_ShortReal& TolStart,Standard_Real& End,Standard_ShortReal& TolEnd) ;
-
+      void InitVisible (const HLRAlgo_EdgeStatus& status) ;
+  
+      Standard_Boolean MoreVisible()  const;
+  
+      void NextVisible() ;
+  
+  //! Returns the bounds and the tolerances
+  //! of the current Visible Interval
+      void Visible (Standard_Real& Start, Standard_ShortReal& TolStart, Standard_Real& End, Standard_ShortReal& TolEnd) ;
 
 
 
@@ -76,16 +63,16 @@ private:
 
 
 
-Standard_Integer myNbVis;
-Standard_Integer myNbHid;
-Standard_Address EVis;
-Standard_Address EHid;
-Standard_Integer iVis;
-Standard_Integer iHid;
-Standard_Real myHidStart;
-Standard_Real myHidEnd;
-Standard_ShortReal myHidTolStart;
-Standard_ShortReal myHidTolEnd;
+  Standard_Integer myNbVis;
+  Standard_Integer myNbHid;
+  Standard_Address EVis;
+  Standard_Address EHid;
+  Standard_Integer iVis;
+  Standard_Integer iHid;
+  Standard_Real myHidStart;
+  Standard_Real myHidEnd;
+  Standard_ShortReal myHidTolStart;
+  Standard_ShortReal myHidTolEnd;
 
 
 };
@@ -95,7 +82,6 @@ Standard_ShortReal myHidTolEnd;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_EdgeIterator_HeaderFile

@@ -1,12 +1,4 @@
-#ifndef _StepGeom_Axis1Placement_HeaderFile
 #include <StepGeom_Axis1Placement.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepGeom_CurveBoundedSurface_HeaderFile
 #include <StepGeom_CurveBoundedSurface.hxx>
-#endif
-#ifndef _StepShape_RevolvedAreaSolid_HeaderFile
 #include <StepShape_RevolvedAreaSolid.hxx>
-#endif
