@@ -110,10 +110,18 @@ void Extrema_ExtPS::TreatSolution (const Extrema_POnSurf& PS,
   Standard_Real U, V;
   PS.Parameter(U, V);
   if (myS->IsUPeriodic()) {
-    U = ElCLib::InPeriod(U, myuinf, myuinf+myS->UPeriod());
+    Standard_Real Uupper = myuinf+myS->UPeriod();
+    if(U>(myuinf-mytolu) && U < myuinf) U = myuinf;
+    else if(U < (Uupper+mytolu) && U > Uupper) U = Uupper;
+    else
+    U = ElCLib::InPeriod(U, myuinf, myuinf+myS->UPeriod());  
   }
   if (myS->IsVPeriodic()) {
-    V = ElCLib::InPeriod(V, myvinf, myvinf+myS->VPeriod());
+    Standard_Real Vupper = myvinf+myS->VPeriod();
+    if(V>(myvinf-mytolv) && V < myvinf) V = myvinf;
+    else if(V < (Vupper+mytolv) && V > Vupper) V = Vupper;
+    else
+    V = ElCLib::InPeriod(V, myvinf, myvinf+myS->VPeriod());   
   }
   if ((myuinf-U) <= mytolu && (U-myusup) <= mytolu &&
       (myvinf-V) <= mytolv && (V-myvsup) <= mytolv) {

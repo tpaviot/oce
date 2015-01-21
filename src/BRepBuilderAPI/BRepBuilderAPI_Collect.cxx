@@ -210,9 +210,18 @@ void BRepBuilderAPI_Collect::Add (const TopoDS_Shape& SI,
   BuildBack (myGen, GenBack);   // Vraiment pas optimum a Revoir
   BuildBack (myMod, ModBack);
   
-  Update (myMod,myGen,ModBack,GenBack,SI,MKS,TopAbs_FACE);
-  Update (myMod,myGen,ModBack,GenBack,SI,MKS,TopAbs_EDGE);
-  Update (myMod,myGen,ModBack,GenBack,SI,MKS,TopAbs_VERTEX);
+  TopAbs_ShapeEnum type = SI.ShapeType();
+  Update (myMod,myGen,ModBack,GenBack,SI,MKS,type);
+  if(type < TopAbs_SHELL)
+    Update (myMod,myGen,ModBack,GenBack,SI,MKS,TopAbs_SHELL);
+  if(type < TopAbs_FACE)
+    Update (myMod,myGen,ModBack,GenBack,SI,MKS,TopAbs_FACE);
+  if(type < TopAbs_WIRE)
+    Update (myMod,myGen,ModBack,GenBack,SI,MKS,TopAbs_WIRE);
+  if(type < TopAbs_EDGE)
+    Update (myMod,myGen,ModBack,GenBack,SI,MKS,TopAbs_EDGE);
+  if(type < TopAbs_VERTEX)
+    Update (myMod,myGen,ModBack,GenBack,SI,MKS,TopAbs_VERTEX);
 
 #ifdef OCCT_DEBUG
   if (Affich) {
