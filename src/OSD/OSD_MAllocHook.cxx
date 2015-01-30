@@ -52,7 +52,7 @@ namespace {
       // otherwise compiler does not leave a place for break point
       debug_counter++;
   }
-};
+}
 
 //=======================================================================
 //function : GetCallback

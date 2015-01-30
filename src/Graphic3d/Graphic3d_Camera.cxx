@@ -41,7 +41,7 @@ namespace
 
   // minimum camera distance
   static const Standard_Real MIN_DISTANCE = Pow (0.1, ShortRealDigits() - 2);
-};
+}
 
 // =======================================================================
 // function : Graphic3d_Camera

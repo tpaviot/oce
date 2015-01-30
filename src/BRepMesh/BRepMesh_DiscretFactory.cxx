@@ -58,7 +58,7 @@ namespace
   #endif
 #endif
   }
-};
+}
 
 //=======================================================================
 //function : BRepMesh_DiscretFactory

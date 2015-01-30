@@ -83,7 +83,7 @@ namespace
     return theVec;
   }
 
-};
+}
 
 IMPLEMENT_STANDARD_HANDLE (OpenGl_TextFormatter, Standard_Transient)
 IMPLEMENT_STANDARD_RTTIEXT(OpenGl_TextFormatter, Standard_Transient)

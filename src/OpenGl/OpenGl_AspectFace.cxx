@@ -44,7 +44,7 @@ namespace
   };
 
   static const TCollection_AsciiString THE_EMPTY_KEY;
-};
+}
 
 // =======================================================================
 // function : convertMaterial
