@@ -1,4 +1,4 @@
-Version 0.17 - ???
+Version 0.17 - February 2015
 
 This version is not binary compatible with OCE 0.16, OCE_ABI_SOVERSION
 was incremented.
@@ -8,6 +8,9 @@ was incremented.
 * Build system changes
   - Remove OCE_DISABLE_BSPLINE_MESHER option, OCCT improved meshing
     in recent releases.
+
+Users who contributed to this release:
+  Denis Barbier, Mario Lang, blobfish, QbProg
 
 Version 0.16.1 - November 2014
 
