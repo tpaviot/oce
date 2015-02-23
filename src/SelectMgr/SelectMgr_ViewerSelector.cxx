@@ -74,7 +74,7 @@ namespace
       DepthMax = Min (DepthMax, theOther.DepthMax);
     }
   };
-};
+}
 
 //==================================================
 // Function: Initialize

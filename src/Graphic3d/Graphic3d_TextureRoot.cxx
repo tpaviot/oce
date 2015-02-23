@@ -33,7 +33,7 @@
 namespace
 {
   static volatile Standard_Integer THE_TEXTURE_COUNTER = 0;
-};
+}
 
 // =======================================================================
 // function : TexturesFolder

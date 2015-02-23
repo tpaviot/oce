@@ -109,7 +109,7 @@ namespace
     return TCollection_AsciiString ("AIS_CurContext_")
          + TCollection_AsciiString (Standard_Atomic_Increment (&THE_AIS_INDEX_CUR));
   }
-};
+}
 
 //=======================================================================
 //function : AIS_InteractiveContext

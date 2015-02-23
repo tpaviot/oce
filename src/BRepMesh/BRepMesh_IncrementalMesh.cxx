@@ -63,7 +63,7 @@ namespace
   //! Default flag to control parallelization for BRepMesh_IncrementalMesh
   //! tool returned for Mesh Factory
   static Standard_Boolean IS_IN_PARALLEL = Standard_False;
-};
+}
 
 IMPLEMENT_STANDARD_HANDLE (BRepMesh_IncrementalMesh, BRepMesh_DiscretRoot)
 IMPLEMENT_STANDARD_RTTIEXT(BRepMesh_IncrementalMesh, BRepMesh_DiscretRoot)
