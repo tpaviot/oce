@@ -159,7 +159,6 @@ public:
       Standard_Real Magnitude()  const;
   
   //! Computes the square magnitude of this vector.
-  //! Adds two vectors
       Standard_Real SquareMagnitude()  const;
   
       void Add (const gp_Vec& Other) ;
@@ -183,7 +182,6 @@ public:
 }
   
   //! Subtracts two vectors
-  //! Multiplies a vector by a scalar
       gp_Vec Subtracted (const gp_Vec& Right)  const;
     gp_Vec operator - (const gp_Vec& Right)  const
 {
@@ -197,7 +195,6 @@ public:
 }
   
   //! Multiplies a vector by a scalar
-  //! Divides a vector by a scalar
       gp_Vec Multiplied (const Standard_Real Scalar)  const;
     gp_Vec operator * (const Standard_Real Scalar)  const
 {
