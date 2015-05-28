@@ -325,7 +325,14 @@ if(OCE_DRAW AND NOT OCE_VISUALISATION)
 endif(OCE_DRAW AND NOT OCE_VISUALISATION)
 
 if(OCE_VISUALISATION AND OCE_WITH_VTK)
-	find_package(VTK REQUIRED)
+	find_package(VTK COMPONENTS
+		vtkCommonCore
+		vtkInteractionStyle
+		vtkIOExport
+		vtkIOLegacy
+		vtkRenderingFreeTypeOpenGL
+		vtkRenderingOpenGL
+		)
 endif()
 
 set(INSTALL_STDRESOURCE_FILES)
