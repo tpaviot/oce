@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKV3d"
-	ProjectGUID="{B4C76738-159C-06C0-0FD6-C0E94B146A7F}"
+	ProjectGUID="{064A8BB0-02D6-0803-0046-1D4D87CCE87C}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -534,12 +534,6 @@
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_ListOfShortReal_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_MapIteratorOfMapOfStructure_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_MapOfStructure_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_MaterialDefinitionError_0.cxx">
 				</File>
 				<File
@@ -550,9 +544,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfStructure_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_StdMapNodeOfMapOfStructure_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_StructureDefinitionError_0.cxx">
@@ -680,6 +671,9 @@
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Vertex.cxx">
 				</File>
+				<File
+					RelativePath="..\..\..\src\Graphic3d\Graphic3d_ViewAffinity.cxx">
+				</File>
 			</Filter>
 			<Filter
 				Name="Visual3d"
@@ -764,31 +758,10 @@
 				Name="Select3D"
 				>
 				<File
-					RelativePath="..\..\..\drv\Select3D\Select3D_ListIteratorOfListOfSensitiveTriangle_0.cxx">
+					RelativePath="..\..\..\src\Select3D\Select3D_BVHPrimitiveContent.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Select3D\Select3D_ListIteratorOfListOfSensitive_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Select3D\Select3D_ListNodeOfListOfSensitiveTriangle_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Select3D\Select3D_ListNodeOfListOfSensitive_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Select3D\Select3D_ListOfSensitiveTriangle_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Select3D\Select3D_ListOfSensitive_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Select3D\Select3D_SensitiveEntitySequence_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Select3D\Select3D_SequenceNodeOfSensitiveEntitySequence_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Select3D\Select3D_Projector.cxx">
+					RelativePath="..\..\..\src\Select3D\Select3D_InteriorSensitivePointSet.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Select3D\Select3D_SensitiveBox.cxx">
@@ -816,6 +789,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Select3D\Select3D_SensitiveSegment.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Select3D\Select3D_SensitiveSet.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Select3D\Select3D_SensitiveTriangle.cxx">
@@ -962,31 +938,13 @@
 				Name="SelectMgr"
 				>
 				<File
-					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfSelectionActivation_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfObjectSelectors_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfSelectionActivation_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfIntegerSensitive_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfObjectSelectors_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfSelectionActivation_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion_0.cxx">
@@ -1016,9 +974,6 @@
 					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfOwner_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfSelection_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfSelector_0.cxx">
 				</File>
 				<File
@@ -1028,13 +983,13 @@
 					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfOwner_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfSelection_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfSelector_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\SelectMgr\SelectMgr_AndFilter.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\SelectMgr\SelectMgr_BaseFrustum.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\SelectMgr\SelectMgr_CompositionFilter.cxx">
@@ -1046,10 +1001,22 @@
 					RelativePath="..\..\..\src\SelectMgr\SelectMgr_Filter.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\SelectMgr\SelectMgr_FrustumBuilder.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\SelectMgr\SelectMgr_OrFilter.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\SelectMgr\SelectMgr_RectangularFrustum.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\SelectMgr\SelectMgr_SelectableObject.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\SelectMgr\SelectMgr_SelectableObjectSet.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\SelectMgr\SelectMgr_SelectingVolumeManager.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\SelectMgr\SelectMgr_Selection.cxx">
@@ -1058,7 +1025,19 @@
 					RelativePath="..\..\..\src\SelectMgr\SelectMgr_SelectionManager.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\SelectMgr\SelectMgr_SensitiveEntity.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\SelectMgr\SelectMgr_SensitiveEntitySet.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\SelectMgr\SelectMgr_SortCriterion.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\SelectMgr\SelectMgr_TriangularFrustum.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\SelectMgr\SelectMgr_TriangularFrustumSet.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\SelectMgr\SelectMgr_ViewerSelector.cxx">
@@ -1210,9 +1189,6 @@
 					RelativePath="..\..\..\src\AIS\AIS_DimensionOwner.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\AIS\AIS_Drawer.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\AIS\AIS_EllipseRadiusDimension.cxx">
 				</File>
 				<File
@@ -1319,6 +1295,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\AIS\AIS_TangentRelation.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\AIS\AIS_TextLabel.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\AIS\AIS_TexturedShape.cxx">

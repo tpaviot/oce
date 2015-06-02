@@ -21,6 +21,7 @@
 #include <Standard_Boolean.hxx>
 #include <BOPCol_IndexedDataMapOfShapeListOfShape.hxx>
 class TopoDS_Shape;
+class TopTools_ListOfShape;
 class BOPAlgo_PaveFiller;
 
 
@@ -43,6 +44,10 @@ Standard_EXPORT virtual ~BOPAlgo_BOP();
   
   //! Adds Tool argument of the operation
   Standard_EXPORT virtual   void AddTool (const TopoDS_Shape& theShape) ;
+  
+  Standard_EXPORT virtual   void SetTools (const TopTools_ListOfShape& theShapes) ;
+  
+  Standard_EXPORT virtual   void SetTools (const BOPCol_ListOfShape& theShapes) ;
   
   Standard_EXPORT   void SetOperation (const BOPAlgo_Operation theOperation) ;
   

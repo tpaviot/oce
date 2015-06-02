@@ -22,6 +22,8 @@
 #include <Handle_Geom_Curve.hxx>
 #include <Handle_Geom2d_Curve.hxx>
 #include <gp_Pnt.hxx>
+#include <Handle_IntPatch_RLine.hxx>
+#include <GeomInt_VectorOfReal.hxx>
 #include <Handle_Adaptor3d_TopolTool.hxx>
 class GeomAdaptor_HSurface;
 class StdFail_NotDone;
@@ -30,6 +32,8 @@ class Geom_Surface;
 class Geom_Curve;
 class Geom2d_Curve;
 class gp_Pnt2d;
+class IntPatch_RLine;
+class Bnd_Box2d;
 class Adaptor3d_TopolTool;
 
 
@@ -89,6 +93,17 @@ public:
   Standard_EXPORT   void SetTolFixTangents (const Standard_Real aTolCheck, const Standard_Real aTolAngCheck) ;
   
   Standard_EXPORT   void TolFixTangents (Standard_Real& aTolCheck, Standard_Real& aTolAngCheck) ;
+  
+  //! converts RLine to Geom(2d)_Curve.
+  Standard_EXPORT static   void TreatRLine (const Handle(IntPatch_RLine)& theRL, const Handle(GeomAdaptor_HSurface)& theHS1, const Handle(GeomAdaptor_HSurface)& theHS2, Handle(Geom_Curve)& theC3d, Handle(Geom2d_Curve)& theC2d1, Handle(Geom2d_Curve)& theC2d2, Standard_Real& theTolReached) ;
+  
+  //! creates 2D-curve on given surface from given 3D-curve
+  Standard_EXPORT static   void BuildPCurves (const Standard_Real f, const Standard_Real l, Standard_Real& Tol, const Handle(Geom_Surface)& S, const Handle(Geom_Curve)& C, Handle(Geom2d_Curve)& C2d) ;
+  
+  //! puts into theArrayOfParameters the parameters of intersection
+  //! points of given theC2d1 and theC2d2 curves with the boundaries
+  //! of the source surface.
+  Standard_EXPORT static   void TrimILineOnSurfBoundaries (const Handle(Geom2d_Curve)& theC2d1, const Handle(Geom2d_Curve)& theC2d2, const Bnd_Box2d& theBound1, const Bnd_Box2d& theBound2, GeomInt_VectorOfReal& theArrayOfParameters) ;
 
 
 

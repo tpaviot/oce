@@ -17,14 +17,18 @@
 #include <Handle_Graphic3d_AspectMarker3d.hxx>
 #include <Handle_Graphic3d_AspectFillArea3d.hxx>
 #include <Graphic3d_MapOfStructure.hxx>
+#include <Graphic3d_MapOfObject.hxx>
 #include <Aspect_GenId.hxx>
 #include <Handle_Graphic3d_GraphicDriver.hxx>
 #include <MMgt_TShared.hxx>
 #include <Handle_Graphic3d_Structure.hxx>
+#include <Graphic3d_ZLayerId.hxx>
 #include <Graphic3d_ZLayerSettings.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_Graphic3d_DataStructureManager.hxx>
 #include <Aspect_TypeOfHighlightMethod.hxx>
+#include <Graphic3d_ViewAffinity.hxx>
+#include <Handle_Standard_Transient.hxx>
 class Graphic3d_AspectLine3d;
 class Graphic3d_AspectText3d;
 class Graphic3d_AspectMarker3d;
@@ -32,10 +36,10 @@ class Graphic3d_AspectFillArea3d;
 class Graphic3d_GraphicDriver;
 class Graphic3d_InitialisationError;
 class Graphic3d_Structure;
-class Graphic3d_MapOfStructure;
 class TColStd_SequenceOfInteger;
 class Graphic3d_DataStructureManager;
 class TColStd_Array2OfReal;
+class Standard_Transient;
 
 
 //! This class allows the definition of a manager to
@@ -43,7 +47,7 @@ class TColStd_Array2OfReal;
 //! It allows them to be globally manipulated.
 //! It defines the global attributes.
 //! Keywords: Structure, Structure Manager, Update Mode,
-//! Destroy, Highlight, Visible, Detectable
+//! Destroy, Highlight, Visible
 class Graphic3d_StructureManager : public MMgt_TShared
 {
 
@@ -101,10 +105,6 @@ public:
   //! in a visualiser <me>.
   Standard_EXPORT   void HighlightedStructures (Graphic3d_MapOfStructure& SG)  const;
   
-  //! Returns the set of detectable structures
-  //! in a visualiser <me>.
-  Standard_EXPORT   void PickStructures (Graphic3d_MapOfStructure& SG)  const;
-  
   //! Returns the values of the current default attributes.
   Standard_EXPORT   Handle(Graphic3d_AspectFillArea3d) FillArea3dAspect()  const;
   
@@ -135,29 +135,25 @@ public:
   //! Change Z layer for structure. The z layer mechanism allows
   //! to display structures in higher layers in overlay of structures in
   //! lower layers.
-  Standard_EXPORT virtual   void ChangeZLayer (const Handle(Graphic3d_Structure)& theStructure, const Standard_Integer theLayerId)  = 0;
-  
-  //! Get Z layer ID assigned to structure. If the structure
-  //! has no layer ID (deleted from graphic driver), the method returns -1.
-  Standard_EXPORT virtual   Standard_Integer GetZLayer (const Handle(Graphic3d_Structure)& theStructure)  const = 0;
+  Standard_EXPORT virtual   void ChangeZLayer (const Handle(Graphic3d_Structure)& theStructure, const Graphic3d_ZLayerId theLayerId)  = 0;
   
   //! Sets the settings for a single Z layer for all managed views.
-  Standard_EXPORT virtual   void SetZLayerSettings (const Standard_Integer theLayerId, const Graphic3d_ZLayerSettings& theSettings)  = 0;
+  Standard_EXPORT virtual   void SetZLayerSettings (const Graphic3d_ZLayerId theLayerId, const Graphic3d_ZLayerSettings& theSettings)  = 0;
   
   //! Returns the settings of a single Z layer.
-  Standard_EXPORT virtual   Graphic3d_ZLayerSettings ZLayerSettings (const Standard_Integer theLayerId)  = 0;
+  Standard_EXPORT virtual   Graphic3d_ZLayerSettings ZLayerSettings (const Graphic3d_ZLayerId theLayerId)  = 0;
   
   //! Add a new top-level Z layer and get its ID as
   //! <theLayerId> value. The method returns Standard_False if the layer
   //! can not be created. The z layer mechanism allows to display
   //! structures in higher layers in overlay of structures in lower layers.
-  Standard_EXPORT virtual   Standard_Boolean AddZLayer (Standard_Integer& theLayerId)  = 0;
+  Standard_EXPORT virtual   Standard_Boolean AddZLayer (Graphic3d_ZLayerId& theLayerId)  = 0;
   
   //! Remove Z layer with ID <theLayerId>. Method returns
   //! Standard_False if the layer can not be removed or doesn't exists.
   //! By default, there is always a default bottom-level layer that can't
   //! be removed.
-  Standard_EXPORT virtual   Standard_Boolean RemoveZLayer (const Standard_Integer theLayerId)  = 0;
+  Standard_EXPORT virtual   Standard_Boolean RemoveZLayer (const Graphic3d_ZLayerId theLayerId)  = 0;
   
   //! Return all Z layer ids in sequence ordered by level
   //! from lowest layer to highest. The first layer ID in sequence is
@@ -218,6 +214,12 @@ public:
   
   //! Recomputes all structures from theStructures.
   Standard_EXPORT   void RecomputeStructures (const Graphic3d_MapOfStructure& theStructures) ;
+  
+  Standard_EXPORT   Handle(Graphic3d_ViewAffinity) RegisterObject (const Handle(Standard_Transient)& theObject) ;
+  
+  Standard_EXPORT   void UnregisterObject (const Handle(Standard_Transient)& theObject) ;
+  
+  Standard_EXPORT   Handle(Graphic3d_ViewAffinity) ObjectAffinity (const Handle(Standard_Transient)& theObject)  const;
 
 friend class Graphic3d_Structure;
 
@@ -248,8 +250,8 @@ protected:
   Handle(Graphic3d_AspectMarker3d) MyAspectMarker3d;
   Handle(Graphic3d_AspectFillArea3d) MyAspectFillArea3d;
   Graphic3d_MapOfStructure MyDisplayedStructure;
+  Graphic3d_MapOfObject myRegisteredObjects;
   Graphic3d_MapOfStructure MyHighlightedStructure;
-  Graphic3d_MapOfStructure MyPickStructure;
   Aspect_GenId MyStructGenId;
   Handle(Graphic3d_GraphicDriver) MyGraphicDriver;
 
@@ -257,14 +259,8 @@ protected:
 private: 
 
   
-  //! Sets detectable the structure <AStructure>.
-  Standard_EXPORT   void Detectable (const Handle(Graphic3d_Structure)& AStructure) ;
-  
   //! Frees the identifieur <AnId>.
   Standard_EXPORT   void Remove (const Standard_Integer AnId) ;
-  
-  //! Sets no detectable the structure <AStructure>.
-  Standard_EXPORT   void Undetectable (const Handle(Graphic3d_Structure)& AStructure) ;
 
 
 

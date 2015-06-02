@@ -37,10 +37,6 @@ public:
   //! Creates a point from an intersection point.
   Standard_EXPORT HatchGen_PointOnHatching(const IntRes2d_IntersectionPoint& Point);
   
-  //! linux porting
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~HatchGen_PointOnHatching(){Delete();}
-  
   //! Adds a point on element to the point.
   Standard_EXPORT   void AddPoint (const HatchGen_PointOnElement& Point, const Standard_Real Confusion) ;
   

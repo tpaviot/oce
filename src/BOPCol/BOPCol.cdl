@@ -14,16 +14,17 @@
 
 package BOPCol 
 
-	---Purpose:  
-    	-- The package contains collection classes 
-	-- that are used by  
-    	-- partition and  boolean operation algorithms     
+ ---Purpose:  
+     -- The package contains collection classes 
+     -- that are used by  
+     -- partition and  boolean operation algorithms     
 uses 
     TCollection
  
 is 
     imported BaseAllocator from BOPCol; 
     imported DataMapOfShapeInteger from BOPCol; 
+    imported DataMapOfShapeReal from BOPCol; 
     imported MapOfInteger from BOPCol; 
     imported ListOfInteger from BOPCol; 
     imported PInteger from BOPCol; 
@@ -36,7 +37,6 @@ is
     imported DataMapOfShapeAddress from BOPCol;   
     imported DataMapOfTransientAddress from BOPCol;   
     imported PListOfInteger from BOPCol;  
-    imported VectorOfInteger from BOPCol;  
     imported MapOfShape from BOPCol;  
     imported DataMapOfShapeShape from BOPCol;  
     imported DataMapOfShapeListOfShape from BOPCol;  

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKService"
-	ProjectGUID="{1800482B-05C5-1136-03FA-CF63D7A3C05C}"
+	ProjectGUID="{C9441D69-05AB-12E2-09DA-1A2212B2D0EC}"
 	>
 	<Platforms>
 		<Platform
@@ -427,37 +427,6 @@
 				Name="Aspect"
 				>
 				<File
-					RelativePath="..\..\..\drv\Aspect\Aspect_Array1OfEdge_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Aspect\Aspect_AspectFillAreaDefinitionError_0.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
@@ -644,37 +613,6 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Aspect\Aspect_EdgeDefinitionError_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Aspect\Aspect_GraphicDeviceDefinitionError_0.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
@@ -831,37 +769,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Aspect\Aspect_WindowError_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\Aspect\Aspect.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
@@ -1109,37 +1016,6 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\..\src\Aspect\Aspect_Edge.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath="..\..\..\src\Aspect\Aspect_GenId.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
@@ -1303,286 +1179,7 @@
 				Name="SelectBasics"
 				>
 				<File
-					RelativePath="..\..\..\drv\SelectBasics\SelectBasics_ListIteratorOfListOfBox2d_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\SelectBasics\SelectBasics_ListIteratorOfListOfSensitive_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\SelectBasics\SelectBasics_ListNodeOfListOfBox2d_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\SelectBasics\SelectBasics_ListNodeOfListOfSensitive_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\SelectBasics\SelectBasics_ListOfBox2d_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\SelectBasics\SelectBasics_ListOfSensitive_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\SelectBasics\SelectBasics_SequenceNodeOfSequenceOfOwner_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\SelectBasics\SelectBasics_SequenceOfOwner_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath="..\..\..\src\SelectBasics\SelectBasics.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\SelectBasics\SelectBasics_BasicTool.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
@@ -1645,37 +1242,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\SelectBasics\SelectBasics_SensitiveEntity.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\SelectBasics\SelectBasics_SortAlgo.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool

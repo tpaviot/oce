@@ -64,6 +64,5 @@ libTKXSDRAW_la_SOURCES = \
 @top_srcdir@/src/XSDRAWSTLVRML/XSDRAWSTLVRML.cxx \
 @top_srcdir@/src/XSDRAWSTLVRML/XSDRAWSTLVRML_DataSource.cxx \
 @top_srcdir@/src/XSDRAWSTLVRML/XSDRAWSTLVRML_DataSource3D.cxx \
-@top_srcdir@/src/XSDRAWSTLVRML/XSDRAWSTLVRML_DrawableMesh.cxx \
-@top_srcdir@/src/XSDRAWSTLVRML/XSDRAWSTLVRML_ToVRML.cxx
+@top_srcdir@/src/XSDRAWSTLVRML/XSDRAWSTLVRML_DrawableMesh.cxx
 

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKXSDRAW"
-	ProjectGUID="{A3E0C22F-0C39-0BD6-0AEF-9D0E8B25E8D1}"
+	ProjectGUID="{E320F0A8-1155-0265-0156-72C1B80C2D50}"
 	>
 	<Platforms>
 		<Platform
@@ -482,9 +482,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_DrawableMesh.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_ToVRML.cxx">
 				</File>
 			</Filter>
 

@@ -73,12 +73,14 @@ libTKTopTest_la_SOURCES = \
 @top_srcdir@/drv/TestTopOpeTools/TestTopOpeTools_Array1OfMesure_0.cxx \
 @top_srcdir@/drv/TestTopOpeTools/TestTopOpeTools_HArray1OfMesure_0.cxx \
 @top_srcdir@/src/BOPTest/BOPTest.cxx \
+@top_srcdir@/src/BOPTest/BOPTest_APICommands.cxx \
 @top_srcdir@/src/BOPTest/BOPTest_BOPCommands.cxx \
 @top_srcdir@/src/BOPTest/BOPTest_CheckCommands.cxx \
 @top_srcdir@/src/BOPTest/BOPTest_DrawableShape.cxx \
 @top_srcdir@/src/BOPTest/BOPTest_LowCommands.cxx \
 @top_srcdir@/src/BOPTest/BOPTest_ObjCommands.cxx \
 @top_srcdir@/src/BOPTest/BOPTest_Objects.cxx \
+@top_srcdir@/src/BOPTest/BOPTest_OptionCommands.cxx \
 @top_srcdir@/src/BOPTest/BOPTest_PartitionCommands.cxx \
 @top_srcdir@/src/BOPTest/BOPTest_TolerCommands.cxx \
 @top_srcdir@/src/BRepTest/BRepTest.cxx \

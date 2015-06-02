@@ -10,8 +10,9 @@
 #include <Standard_DefineHandle.hxx>
 #include <Handle_Graphic3d_Structure.hxx>
 
-#include <Graphic3d_CStructure_Handle.hxx>
+#include <Graphic3d_CStructure.hxx>
 #include <TColStd_SequenceOfAddress.hxx>
+#include <Graphic3d_IndexedMapOfAddress.hxx>
 #include <Quantity_Color.hxx>
 #include <Aspect_TypeOfHighlightMethod.hxx>
 #include <Graphic3d_StructureManagerPtr.hxx>
@@ -21,6 +22,7 @@
 #include <Handle_Graphic3d_StructureManager.hxx>
 #include <Standard_Boolean.hxx>
 #include <Standard_Integer.hxx>
+#include <Graphic3d_ZLayerId.hxx>
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
 #include <Handle_Graphic3d_AspectLine3d.hxx>
 #include <Handle_Graphic3d_AspectFillArea3d.hxx>
@@ -31,6 +33,7 @@
 #include <Graphic3d_SequenceOfGroup.hxx>
 #include <Handle_Graphic3d_Group.hxx>
 #include <Graphic3d_TypeOfConnection.hxx>
+#include <Graphic3d_MapOfStructure.hxx>
 #include <Graphic3d_TypeOfComposition.hxx>
 #include <Graphic3d_TransModeFlags.hxx>
 #include <Graphic3d_BndBox4f.hxx>
@@ -49,7 +52,6 @@ class Graphic3d_AspectMarker3d;
 class Graphic3d_DataStructureManager;
 class TColStd_Array2OfReal;
 class Bnd_Box;
-class Graphic3d_MapOfStructure;
 class gp_Pnt;
 class Graphic3d_Vector;
 
@@ -97,25 +99,8 @@ public:
   Destroy();
 }
   
-  //! Displays the structure <me> in all the views of
-  //! the visualiser.
+  //! Displays the structure <me> in all the views of the visualiser.
   Standard_EXPORT virtual   void Display() ;
-  
-  //! Displays the structure <me> in all the views of
-  //! the visualiser, while modifying its current priority.
-  //! Note: Display Priorities
-  //! Structure display priorities control the order in which
-  //! structures are redrawn.   When you display a
-  //! structure, you specify its priority. The lower the value,
-  //! the lower the display priority. When the display is
-  //! regenerated, the structures with the lowest priority
-  //! are drawn first. For structures with the same display
-  //! priority, the order in which they were displayed
-  //! determines the drawing order. Open CASCADE
-  //! supports 11 structure display priorities, 0 to 10.
-  //! Warning: Raises PriorityDefinitionError if <Priority> is
-  //! greater than 10 or a negative value.
-  Standard_EXPORT   void Display (const Standard_Integer Priority) ;
   
   //! Returns the current display priority for the
   //! structure <me>.
@@ -125,15 +110,10 @@ public:
   //! of the visualiser.
   Standard_EXPORT virtual   void Erase() ;
   
-  //! Highlights the structure <me> in all the
-  //! views of the visualiser, using the following methods:
-  //!
-  //! TOHM_COLOR		= drawn in the highlight color
-  //! (default white)
-  //! TOHM_BLINK		= blinking
-  //! TOHM_BOUNDBOX	= enclosed by the boundary box
-  //! (default white)
-  Standard_EXPORT   void Highlight (const Aspect_TypeOfHighlightMethod Method) ;
+  //! Highlights the structure <me> in all the views of the visualiser, using the following methods:
+  //! TOHM_COLOR    = drawn in the highlight color
+  //! TOHM_BOUNDBOX = enclosed by the boundary box
+  Standard_EXPORT   void Highlight (const Aspect_TypeOfHighlightMethod theMethod, const Quantity_Color& theColor, const Standard_Boolean theToUpdateMgr = Standard_True) ;
   
   //! Suppress the structure <me>.
   //! It will be erased at the next screen update.
@@ -144,10 +124,6 @@ public:
   //! Computes axis-aligned bounding box of a structure.
   //! Category: Methods to modify the class definition
   Standard_EXPORT   void CalculateBoundBox() ;
-  
-  //! Modifies the highlight color for the Highlight method
-  //! with the highlight method TOHM_COLOR or TOHM_BOUNDBOX.
-  Standard_EXPORT   void SetHighlightColor (const Quantity_Color& AColor) ;
   
   //! If <theToSet> is Standard_True then <me> is infinite and
   //! the MinMaxValues method method return :
@@ -182,11 +158,11 @@ public:
   //! allows to display structures presented in higher layers in overlay
   //! of structures in lower layers by switching off z buffer depth
   //! test between layers
-  Standard_EXPORT   void SetZLayer (const Standard_Integer theLayerId) ;
+  Standard_EXPORT   void SetZLayer (const Graphic3d_ZLayerId theLayerId) ;
   
   //! Get Z layer ID of displayed structure. The method
   //! returns -1 if the structure has no ID (deleted from graphic driver).
-  Standard_EXPORT   Standard_Integer GetZLayer()  const;
+  Standard_EXPORT   Graphic3d_ZLayerId GetZLayer()  const;
   
   //! Changes a sequence of clip planes slicing the structure on rendering.
   //! @param thePlanes [in] the set of clip planes.
@@ -195,12 +171,6 @@ public:
   //! Get clip planes slicing the structure on rendering.
   //! @return set of clip planes.
   Standard_EXPORT  const  Graphic3d_SequenceOfHClipPlane& GetClipPlanes()  const;
-  
-  //! Modifies the detectability indicator to Standard_True
-  //! or Standard_False for the structure <me>.
-  //! The default value at the definition of <me> is
-  //! Standard_True.
-  Standard_EXPORT   void SetPick (const Standard_Boolean AValue) ;
   
   //! Modifies the default attributes for lines
   //! in the structure <me>.
@@ -307,9 +277,6 @@ public:
   
   //! Returns the highlight indicator for the structure <me>.
   Standard_EXPORT virtual   Standard_Boolean IsHighlighted()  const;
-  
-  //! Returns the detectability indicator for the structure <me>.
-  Standard_EXPORT   Standard_Boolean IsSelectable()  const;
   
   //! Returns Standard_True if the structure <me> is rotated.
   //! <=> The transformation != Identity, != Scale, != Translation.
@@ -514,7 +481,7 @@ public:
   Standard_EXPORT static   Graphic3d_Vertex Transforms (const TColStd_Array2OfReal& ATrsf, const Graphic3d_Vertex& Coord) ;
   
   //! Returns the low-level structure
-     const  Graphic3d_CStructure_Handle& CStructure()  const;
+     const  Handle(Graphic3d_CStructure)& CStructure()  const;
 
 friend class Graphic3d_Group;
 
@@ -526,6 +493,18 @@ protected:
   
   //! Transforms boundaries with <theTrsf> transformation.
   Standard_EXPORT static   void TransformBoundaries (const TColStd_Array2OfReal& theTrsf, Standard_Real& theXMin, Standard_Real& theYMin, Standard_Real& theZMin, Standard_Real& theXMax, Standard_Real& theYMax, Standard_Real& theZMax) ;
+  
+  //! Appends new descendant structure.
+  Standard_EXPORT   Standard_Boolean AppendDescendant (const Standard_Address theDescendant) ;
+  
+  //! Removes the given descendant structure.
+  Standard_EXPORT   Standard_Boolean RemoveDescendant (const Standard_Address theDescendant) ;
+  
+  //! Appends new ancestor structure.
+  Standard_EXPORT   Standard_Boolean AppendAncestor (const Standard_Address theAncestor) ;
+  
+  //! Removes the given ancestor structure.
+  Standard_EXPORT   Standard_Boolean RemoveAncestor (const Standard_Address theAncestor) ;
 
   Graphic3d_StructureManagerPtr myStructureManager;
   Graphic3d_StructureManagerPtr myFirstStructureManager;
@@ -546,7 +525,7 @@ private:
   Standard_EXPORT   void GroupsWithFacet (const Standard_Integer ADelta) ;
   
   //! Returns the extreme coordinates found in the structure <me> without transformation applied.
-  Standard_EXPORT   Graphic3d_BndBox4f minMaxCoord (const Standard_Boolean theToIgnoreInfiniteFlag = Standard_False)  const;
+  Standard_EXPORT   Graphic3d_BndBox4f minMaxCoord()  const;
   
   //! Gets untransformed bounding box from structure.
   Standard_EXPORT   void getBox (Graphic3d_BndBox4d& theBox, const Standard_Boolean theToIgnoreInfiniteFlag = Standard_False)  const;
@@ -564,9 +543,11 @@ private:
   //! Updates the c structure associated to <me>.
   Standard_EXPORT   void UpdateStructure (const Handle(Graphic3d_AspectLine3d)& CTXL, const Handle(Graphic3d_AspectText3d)& CTXT, const Handle(Graphic3d_AspectMarker3d)& CTXM, const Handle(Graphic3d_AspectFillArea3d)& CTXF) ;
 
-  Graphic3d_CStructure_Handle myCStructure;
+  Handle(Graphic3d_CStructure) myCStructure;
   TColStd_SequenceOfAddress myAncestors;
   TColStd_SequenceOfAddress myDescendants;
+  Graphic3d_IndexedMapOfAddress myAncestorMap;
+  Graphic3d_IndexedMapOfAddress myDescendantMap;
   Quantity_Color myHighlightColor;
   Aspect_TypeOfHighlightMethod myHighlightMethod;
   Standard_Address myOwner;

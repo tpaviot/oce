@@ -16,8 +16,9 @@
 #include <Blend_SequenceOfPoint.hxx>
 #include <Handle_Adaptor3d_HSurface.hxx>
 #include <Handle_Adaptor3d_TopolTool.hxx>
-#include <Standard_Real.hxx>
+#include <Handle_ChFiDS_HElSpine.hxx>
 #include <Standard_Boolean.hxx>
+#include <Standard_Real.hxx>
 #include <Handle_Adaptor3d_HVertex.hxx>
 #include <Handle_Adaptor2d_HCurve2d.hxx>
 #include <Handle_Adaptor3d_HCurve.hxx>
@@ -27,6 +28,7 @@
 class BRepBlend_Line;
 class Adaptor3d_HSurface;
 class Adaptor3d_TopolTool;
+class ChFiDS_HElSpine;
 class StdFail_NotDone;
 class Adaptor3d_HVertex;
 class Adaptor2d_HCurve2d;
@@ -41,6 +43,7 @@ class BRepBlend_Extremity;
 class Blend_Point;
 class Blend_Function;
 class Blend_FuncInv;
+class gp_Pnt;
 class gp_Pnt2d;
 class IntSurf_Transition;
 
@@ -53,7 +56,7 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT BRepBlend_Walking(const Handle(Adaptor3d_HSurface)& Surf1, const Handle(Adaptor3d_HSurface)& Surf2, const Handle(Adaptor3d_TopolTool)& Domain1, const Handle(Adaptor3d_TopolTool)& Domain2);
+  Standard_EXPORT BRepBlend_Walking(const Handle(Adaptor3d_HSurface)& Surf1, const Handle(Adaptor3d_HSurface)& Surf2, const Handle(Adaptor3d_TopolTool)& Domain1, const Handle(Adaptor3d_TopolTool)& Domain2, const Handle(ChFiDS_HElSpine)& HGuide);
   
   Standard_EXPORT   void SetDomainsToRecadre (const Handle(Adaptor3d_TopolTool)& RecDomain1, const Handle(Adaptor3d_TopolTool)& RecDomain2) ;
   
@@ -101,6 +104,8 @@ private:
   
   Standard_EXPORT   void InternalPerform (Blend_Function& F, Blend_FuncInv& FInv, const Standard_Real Bound) ;
   
+  Standard_EXPORT   Standard_Boolean CorrectExtremityOnOneRst (const Standard_Integer IndexOfRst, const Standard_Real theU, const Standard_Real theV, const Standard_Real theParam, const gp_Pnt& thePntOnRst, Standard_Real& NewU, Standard_Real& NewV, gp_Pnt& NewPoint, Standard_Real& NewParam)  const;
+  
   Standard_EXPORT   Standard_Integer ArcToRecadre (const Standard_Boolean OnFirst, const math_Vector& Sol, const Standard_Integer PrevIndex, gp_Pnt2d& lpt2d, gp_Pnt2d& pt2d, Standard_Real& ponarc) ;
   
   Standard_EXPORT   Standard_Boolean Recadre (Blend_FuncInv& FInv, const Standard_Boolean OnFirst, const math_Vector& Sol, math_Vector& Solrst, Standard_Integer& Indexsol, Standard_Boolean& IsVtx, Handle(Adaptor3d_HVertex)& Vtx, const Standard_Real Extrap = 0.0) ;
@@ -126,6 +131,10 @@ private:
   Handle(Adaptor3d_TopolTool) domain2;
   Handle(Adaptor3d_TopolTool) recdomain1;
   Handle(Adaptor3d_TopolTool) recdomain2;
+  Handle(ChFiDS_HElSpine) hguide;
+  Standard_Boolean ToCorrectOnRst1;
+  Standard_Boolean ToCorrectOnRst2;
+  Standard_Real CorrectedParam;
   Standard_Real tolesp;
   Standard_Real tolgui;
   Standard_Real pasmax;

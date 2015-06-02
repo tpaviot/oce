@@ -30,7 +30,7 @@
 #include <ElCLib.hxx>
 #include <Geom_Surface.hxx>
 #include <BRep_Tool.hxx>
-#include <math_RealRandom.hxx>
+#include <math_BullardGenerator.hxx>
 #include <BRepTopAdaptor_FClass2d.hxx>
 
 static
@@ -98,7 +98,7 @@ void BRepClass3d_SClassifier::PerformInfinitePoint(BRepClass3d_SolidExplorer& aS
   gp_Pnt aPoint;
   gp_Dir aDN;
 
-  math_RealRandom RandomGenerator(0.1, 0.9);
+  math_BullardGenerator aRandomGenerator;
   myFace.Nullify();
   myState=2;
 
@@ -114,10 +114,10 @@ void BRepClass3d_SClassifier::PerformInfinitePoint(BRepClass3d_SolidExplorer& aS
       TopoDS_Face MinFace = aF;
       for (;;)
       {
-        aParam = RandomGenerator.Next();
-	bFound = aSE.FindAPointInTheFace(aF, aPoint, aU, aV, aParam);
-	if (!bFound)
-	  return;
+        aParam = 0.1 + 0.8 * aRandomGenerator.NextReal(); // random number in range [0.1, 0.9]
+        bFound = aSE.FindAPointInTheFace(aF, aPoint, aU, aV, aParam);
+        if (!bFound)
+          return;
 
         if (!FaceNormal(aF, aU, aV, aDN))
           continue;
@@ -309,7 +309,7 @@ void BRepClass3d_SClassifier::Perform(BRepClass3d_SolidExplorer& SolidExplorer,
 	      if(Intersector3d.IsDone()) { 
 		Standard_Integer i;
 		for (i=1; i <= Intersector3d.NbPnt(); i++) { 
-		  if(Abs(Intersector3d.WParameter(i)) < Abs(parmin)) {
+		  if(Abs(Intersector3d.WParameter(i)) < Abs(parmin) - Precision::PConfusion()) {
  
 		    parmin = Intersector3d.WParameter(i);
 		    //  Modified by skv - Thu Sep  4 12:46:32 2003 OCC578 Begin

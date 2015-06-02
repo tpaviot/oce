@@ -15,6 +15,8 @@
 #include <TopAbs_State.hxx>
 #include <Standard_Real.hxx>
 #include <Handle_Geom_Curve.hxx>
+#include <Handle_Geom2d_Curve.hxx>
+#include <Handle_Geom_Surface.hxx>
 class TopoDS_Vertex;
 class TopoDS_Wire;
 class TopoDS_Face;
@@ -30,6 +32,8 @@ class Bnd_Box;
 class IntTools_Range;
 class gp_Lin;
 class gp_Pln;
+class Geom2d_Curve;
+class Geom_Surface;
 
 
 
@@ -145,6 +149,11 @@ public:
   Standard_EXPORT static   Standard_Boolean IsInRange (const IntTools_Range& theRRef, const IntTools_Range& theR, const Standard_Real theTol) ;
   
   Standard_EXPORT static   Standard_Integer SegPln (const gp_Lin& theLin, const Standard_Real theTLin1, const Standard_Real theTLin2, const Standard_Real theTolLin, const gp_Pln& thePln, const Standard_Real theTolPln, gp_Pnt& theP, Standard_Real& theT, Standard_Real& theTolP, Standard_Real& theTmin, Standard_Real& theTmax) ;
+  
+
+  //! Computes the max distance between points
+  //! taken from 3D and 2D curves by the same parameter
+  Standard_EXPORT static   Standard_Boolean ComputeTolerance (const Handle(Geom_Curve)& theCurve3D, const Handle(Geom2d_Curve)& theCurve2D, const Handle(Geom_Surface)& theSurf, const Standard_Real theFirst, const Standard_Real theLast, Standard_Real& theMaxDist, Standard_Real& theMaxPar) ;
 
 
 

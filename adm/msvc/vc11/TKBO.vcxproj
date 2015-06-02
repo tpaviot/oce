@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{10F6DF5B-190B-050C-13CD-B783A122C8A0}</ProjectGuid>
+    <ProjectGuid>{4D590FD1-1738-1231-0F5A-0B7E3E8D1FA6}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -376,9 +376,11 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_TopolTool.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI.cxx">
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Algo.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_BooleanOperation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_BuilderAlgo.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Check.cxx">
     </ClCompile>
@@ -499,6 +501,8 @@
     <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools2D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools2D_1.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools3D.cxx">
     </ClCompile>

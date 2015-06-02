@@ -45,6 +45,10 @@
 #include <BRep_Tool.hxx>
 #include <BRepTools.hxx>
 //
+#include <Bnd_Box.hxx>
+//
+#include <BRepBndLib.hxx>
+//
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
 
@@ -451,7 +455,7 @@ void BOPAlgo_BuilderFace::PerformLoops()
 void BOPAlgo_BuilderFace::PerformAreas()
 {
   Standard_Boolean bIsGrowth, bIsHole;
-  Standard_Integer k, aNbHoles, aNbDMISB, m, aNbMSH, aNbInOutMap;;
+  Standard_Integer k, aNbS, aNbHoles, aNbDMISB, m, aNbMSH, aNbInOutMap;
   Standard_Real aTol;
   TopLoc_Location aLoc;
   Handle(Geom_Surface) aS;
@@ -469,11 +473,23 @@ void BOPAlgo_BuilderFace::PerformAreas()
   NCollection_UBTreeFiller <Standard_Integer, Bnd_Box2d> aTreeFiller(aBBTree);
   //
   myErrorStatus=0;
+  aNbHoles=0;
   //
   aTol=BRep_Tool::Tolerance(myFace);
   aS=BRep_Tool::Surface(myFace, aLoc);
   //
   myAreas.Clear();
+  //
+  if (myLoops.IsEmpty()) {
+    if (myContext->IsInfiniteFace(myFace)) {
+      aBB.MakeFace(aFace, aS, aLoc, aTol);
+      if (BRep_Tool::NaturalRestriction(myFace)) {
+        aBB.NaturalRestriction(aFace, Standard_True);
+      }
+      myAreas.Append(aFace); 
+    }
+    return;
+  }
   //
   // 1. Growthes and Holes -> aDMISB: [Index/ShapeBox2D]
   aIt1.Initialize(myLoops);
@@ -498,8 +514,8 @@ void BOPAlgo_BuilderFace::PerformAreas()
       bIsHole=aClsf.IsHole();
       if (bIsHole) {
         BOPTools::MapShapes(aWire, TopAbs_EDGE, aMHE);
-          //
-          bIsHole=Standard_True;
+        //
+        bIsHole=Standard_True;
       }
       else {
         bIsHole=Standard_False;
@@ -525,6 +541,7 @@ void BOPAlgo_BuilderFace::PerformAreas()
     if (bIsHole) {
       const Bnd_Box2d& aBox2D=aSB2D.Box2D();
       aTreeFiller.Add(k, aBox2D);
+      ++aNbHoles;
     }
   }
   //
@@ -546,7 +563,10 @@ void BOPAlgo_BuilderFace::PerformAreas()
     aSelector.Clear();
     aSelector.SetBox(aBox2DF);
     //
-    aNbHoles=aBBTree.Select(aSelector);
+    aNbS = aBBTree.Select(aSelector);
+    if (!aNbS) {
+      continue;
+    }
     //
     const BOPCol_ListOfInteger& aLI=aSelector.Indices();
     //
@@ -572,7 +592,7 @@ void BOPAlgo_BuilderFace::PerformAreas()
     }
   }// for (m=1; m<=aNbDMISB; ++m)
   //
-  // 5. Map [Face/Holes] -> aMSH 
+  // 5.1 Map [Face/Holes] -> aMSH 
   aNbInOutMap=aInOutMap.Extent();
   for (m=1; m<=aNbInOutMap; ++m) {
     const TopoDS_Shape& aHole=aInOutMap.FindKey(m);
@@ -586,6 +606,41 @@ void BOPAlgo_BuilderFace::PerformAreas()
       BOPCol_ListOfShape aLH;
       aLH.Append(aHole);
       aMSH.Add(aF, aLH);
+    }
+  }
+  //
+  // 5.2. Add unused holes to the original face
+  if (aNbHoles != aNbInOutMap) {
+    Bnd_Box aBoxF;
+    BRepBndLib::Add(myFace, aBoxF);
+    if (aBoxF.IsOpenXmin() || aBoxF.IsOpenXmax() ||
+        aBoxF.IsOpenYmin() || aBoxF.IsOpenYmax() ||
+        aBoxF.IsOpenZmin() || aBoxF.IsOpenZmax()) {
+      //
+      BOPCol_ListOfShape anUnUsedHoles;
+      for (m = 1; m <= aNbDMISB; ++m) {
+        const BOPAlgo_ShapeBox2D& aSB2D=aDMISB.FindFromIndex(m);
+        if (aSB2D.IsHole()) {
+          const TopoDS_Shape& aHole = aSB2D.Shape();
+          if (!aInOutMap.Contains(aHole)) {
+            anUnUsedHoles.Append(aHole);
+          }
+        }
+      }
+      //
+      if (anUnUsedHoles.Extent()) {
+        TopoDS_Face aFace;
+        aBB.MakeFace(aFace, aS, aLoc, aTol);
+        aMSH.Add(aFace, anUnUsedHoles);
+        //
+        BOPAlgo_ShapeBox2D aSB2D;
+        //
+        aSB2D.SetShape(aFace);
+        aSB2D.SetIsHole(Standard_False);
+        //
+        aDMISB.Add(aNbDMISB, aSB2D);
+        ++aNbDMISB;
+      }
     }
   }
   //

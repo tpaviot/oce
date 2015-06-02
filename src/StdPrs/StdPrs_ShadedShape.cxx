@@ -33,6 +33,7 @@
 #include <Precision.hxx>
 #include <Prs3d.hxx>
 #include <Prs3d_Drawer.hxx>
+#include <Prs3d_IsoAspect.hxx>
 #include <Prs3d_LineAspect.hxx>
 #include <Prs3d_Presentation.hxx>
 #include <Prs3d_ShadingAspect.hxx>
@@ -40,6 +41,7 @@
 #include <Poly_PolygonOnTriangulation.hxx>
 #include <Poly_Triangulation.hxx>
 #include <StdPrs_ToolShadedShape.hxx>
+#include <StdPrs_WFDeflectionShape.hxx>
 #include <StdPrs_WFShape.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
@@ -72,7 +74,7 @@ namespace
     if (!aShapeIter.More())
     {
       // compound contains no shaded elements at all
-      StdPrs_WFShape::Add (thePrs, theShape, theDrawer);
+      StdPrs_WFDeflectionShape::Add (thePrs, theShape, theDrawer);
       return;
     }
 
@@ -101,7 +103,43 @@ namespace
     }
     if (hasElement)
     {
-      StdPrs_WFShape::Add (thePrs, aCompoundWF, theDrawer);
+      StdPrs_WFDeflectionShape::Add (thePrs, aCompoundWF, theDrawer);
+    }
+  }
+
+  //! Computes special wireframe presentation for faces without triangulation.
+  void wireframeNoTriangFacesFromShape (const Handle(Prs3d_Presentation)& thePrs,
+                                        const TopoDS_Shape&               theShape,
+                                        const Handle(Prs3d_Drawer)&       theDrawer)
+  {
+    TopoDS_Compound aCompoundWF;
+    BRep_Builder aBuilder;
+    aBuilder.MakeCompound (aCompoundWF);
+    TopLoc_Location aLoc;
+    Standard_Boolean hasElement = Standard_False;
+
+    for (TopExp_Explorer aShapeIter(theShape, TopAbs_FACE); aShapeIter.More(); aShapeIter.Next())
+    {
+      const TopoDS_Face& aFace = TopoDS::Face (aShapeIter.Current());
+      const Handle(Poly_Triangulation) aTriang = BRep_Tool::Triangulation (aFace, aLoc);
+      if (aTriang.IsNull())
+      {
+        hasElement = Standard_True;
+        aBuilder.Add (aCompoundWF, aFace);
+      }
+    }
+
+    if (hasElement)
+    {
+      Standard_Integer aPrevUIsoNb = theDrawer->UIsoAspect()->Number();
+      Standard_Integer aPrevVIsoNb = theDrawer->VIsoAspect()->Number();
+      theDrawer->UIsoAspect()->SetNumber (5);
+      theDrawer->VIsoAspect()->SetNumber (5);
+
+      StdPrs_WFDeflectionShape::Add (thePrs, aCompoundWF, theDrawer);
+
+      theDrawer->UIsoAspect()->SetNumber (aPrevUIsoNb);
+      theDrawer->VIsoAspect()->SetNumber (aPrevVIsoNb);
     }
   }
 
@@ -235,56 +273,6 @@ namespace
       }
     }
     return anArray;
-  }
-
-  //! Searches closed and unclosed subshapes in shape structure
-  //! and puts them into two compounds for separate processing of closed and unclosed sub-shapes.
-  static void exploreSolids (const TopoDS_Shape& theShape,
-                             const BRep_Builder& theBuilder,
-                             TopoDS_Compound&    theCompoundForClosed,
-                             TopoDS_Compound&    theCompoundForOpened)
-  {
-    if (theShape.IsNull())
-    {
-      return;
-    }
-
-    switch (theShape.ShapeType())
-    {
-      case TopAbs_COMPOUND:
-      case TopAbs_COMPSOLID:
-      {
-        for (TopoDS_Iterator anIter (theShape); anIter.More(); anIter.Next())
-        {
-          exploreSolids (anIter.Value(), theBuilder, theCompoundForClosed, theCompoundForOpened);
-        }
-        return;
-      }
-      case TopAbs_SOLID:
-      {
-        for (TopoDS_Iterator anIter (theShape); anIter.More(); anIter.Next())
-        {
-          const TopoDS_Shape& aSubShape   = anIter.Value();
-          const Standard_Boolean isClosed = aSubShape.ShapeType() == TopAbs_SHELL &&
-                                            BRep_Tool::IsClosed (aSubShape) &&
-                                            StdPrs_ToolShadedShape::IsTriangulated (aSubShape);
-          theBuilder.Add (isClosed ? theCompoundForClosed : theCompoundForOpened, aSubShape);
-        }
-        return;
-      }
-      case TopAbs_SHELL:
-      case TopAbs_FACE:
-      {
-        theBuilder.Add (theCompoundForOpened, theShape);
-        return;
-      }
-      case TopAbs_WIRE:
-      case TopAbs_EDGE:
-      case TopAbs_VERTEX:
-      case TopAbs_SHAPE:
-      default:
-        return;
-    }
   }
 
   //! Prepare shaded presentation for specified shape
@@ -436,17 +424,77 @@ namespace
 };
 
 // =======================================================================
+// function : ExploreSolids
+// purpose  :
+// =======================================================================
+void StdPrs_ShadedShape::ExploreSolids (const TopoDS_Shape&    theShape,
+                                        const BRep_Builder&    theBuilder,
+                                        TopoDS_Compound&       theClosed,
+                                        TopoDS_Compound&       theOpened,
+                                        const Standard_Boolean theIgnore1DSubShape)
+{
+  if (theShape.IsNull())
+  {
+    return;
+  }
+
+  switch (theShape.ShapeType())
+  {
+    case TopAbs_COMPOUND:
+    case TopAbs_COMPSOLID:
+    {
+      for (TopoDS_Iterator anIter (theShape); anIter.More(); anIter.Next())
+      {
+        ExploreSolids (anIter.Value(), theBuilder, theClosed, theOpened, theIgnore1DSubShape);
+      }
+      return;
+    }
+    case TopAbs_SOLID:
+    {
+      for (TopoDS_Iterator anIter (theShape); anIter.More(); anIter.Next())
+      {
+        const TopoDS_Shape& aSubShape   = anIter.Value();
+        const Standard_Boolean isClosed = aSubShape.ShapeType() == TopAbs_SHELL &&
+                                          BRep_Tool::IsClosed (aSubShape)       &&
+                                          StdPrs_ToolShadedShape::IsTriangulated (aSubShape);
+        theBuilder.Add (isClosed ? theClosed : theOpened, aSubShape);
+      }
+      return;
+    }
+    case TopAbs_SHELL:
+    case TopAbs_FACE:
+    {
+      theBuilder.Add (theOpened, theShape);
+      return;
+    }
+    case TopAbs_WIRE:
+    case TopAbs_EDGE:
+    case TopAbs_VERTEX:
+    {
+      if (!theIgnore1DSubShape)
+      {
+        theBuilder.Add (theOpened, theShape);
+      }
+      return;
+    }
+    case TopAbs_SHAPE:
+    default:
+      return;
+  }
+}
+
+// =======================================================================
 // function : Add
 // purpose  :
 // =======================================================================
 void StdPrs_ShadedShape::Add (const Handle(Prs3d_Presentation)& thePrs,
                               const TopoDS_Shape&               theShape,
                               const Handle(Prs3d_Drawer)&       theDrawer,
-                              const Standard_Boolean            theToExploreSolids)
+                              const StdPrs_Volume               theVolume)
 {
   gp_Pnt2d aDummy;
   StdPrs_ShadedShape::Add (thePrs, theShape, theDrawer,
-                           Standard_False, aDummy, aDummy, aDummy, theToExploreSolids);
+                           Standard_False, aDummy, aDummy, aDummy, theVolume);
 }
 
 // =======================================================================
@@ -484,7 +532,7 @@ void StdPrs_ShadedShape::Add (const Handle (Prs3d_Presentation)& thePrs,
                               const gp_Pnt2d&                    theUVOrigin,
                               const gp_Pnt2d&                    theUVRepeat,
                               const gp_Pnt2d&                    theUVScale,
-                              const Standard_Boolean             theToExploreSolids)
+                              const StdPrs_Volume                theVolume)
 {
   if (theShape.IsNull())
   {
@@ -494,8 +542,15 @@ void StdPrs_ShadedShape::Add (const Handle (Prs3d_Presentation)& thePrs,
   // add wireframe presentation for isolated edges and vertices
   wireframeFromShape (thePrs, theShape, theDrawer);
 
-  // Triangulation completeness is important for "open-closed" analysis - perform tessellation beforehand
-  Tessellate (theShape, theDrawer);
+  // Use automatic re-triangulation with deflection-check logic only if this feature is enable
+  if (theDrawer->IsAutoTriangulation())
+  {
+    // Triangulation completeness is important for "open-closed" analysis - perform tessellation beforehand
+    Tessellate (theShape, theDrawer);
+  }
+
+  // add special wireframe presentation for faces without triangulation
+  wireframeNoTriangFacesFromShape (thePrs, theShape, theDrawer);
 
   // The shape types listed below need advanced analysis as potentially containing
   // both closed and open parts. Solids are also included, because they might
@@ -503,14 +558,14 @@ void StdPrs_ShadedShape::Add (const Handle (Prs3d_Presentation)& thePrs,
   if ((theShape.ShapeType() == TopAbs_COMPOUND
     || theShape.ShapeType() == TopAbs_COMPSOLID
     || theShape.ShapeType() == TopAbs_SOLID)
-   &&  theToExploreSolids)
+   &&  theVolume == StdPrs_Volume_Autodetection)
   {
     // collect two compounds: for opened and closed (solid) sub-shapes
     TopoDS_Compound anOpened, aClosed;
     BRep_Builder aBuilder;
     aBuilder.MakeCompound (aClosed);
     aBuilder.MakeCompound (anOpened);
-    exploreSolids (theShape, aBuilder, aClosed, anOpened);
+    ExploreSolids (theShape, aBuilder, aClosed, anOpened, Standard_True);
 
     TopoDS_Iterator aShapeIter (aClosed);
     if (aShapeIter.More())
@@ -528,12 +583,13 @@ void StdPrs_ShadedShape::Add (const Handle (Prs3d_Presentation)& thePrs,
   }
   else
   {
+    // if the shape type is not compound, composolid or solid, use autodetection back-facing filled
     shadeFromShape (theShape, thePrs, theDrawer,
                     theHasTexels, theUVOrigin, theUVRepeat, theUVScale,
-                    StdPrs_ToolShadedShape::IsClosed (theShape));
+                    (theVolume == StdPrs_Volume_Closed ? Standard_True : Standard_False));
   }
 
-  if (theDrawer->IsFaceBoundaryDraw())
+  if (theDrawer->FaceBoundaryDraw())
   {
     computeFaceBoundaries (theShape, thePrs, theDrawer);
   }

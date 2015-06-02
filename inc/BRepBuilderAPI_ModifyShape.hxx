@@ -55,7 +55,7 @@ public:
   //! transformation has been applied. Raises NoSuchObject from Standard
   //! if S is not the initial shape or a sub-shape
   //! of the initial shape.
-  Standard_EXPORT virtual  const  TopoDS_Shape& ModifiedShape (const TopoDS_Shape& S)  const;
+  Standard_EXPORT virtual   TopoDS_Shape ModifiedShape (const TopoDS_Shape& S)  const;
 
 
 

@@ -434,6 +434,15 @@ public:
   Standard_EXPORT   Standard_Boolean IsCN (const Standard_Integer N)  const;
   
 
+  //! Check if curve has at least G1 continuity in interval [theTf, theTl]
+  //! Returns true if IsCN(1)
+  //! or
+  //! angle betweem "left" and "right" first derivatives at
+  //! knots with C0 continuity is less then theAngTol
+  //! only knots in interval [theTf, theTl] is checked
+  Standard_EXPORT   Standard_Boolean IsG1 (const Standard_Real theTf, const Standard_Real theTl, const Standard_Real theAngTol)  const;
+  
+
   //! Returns true if the distance between the first point and the
   //! last point of the curve is lower or equal to Resolution
   //! from package gp.

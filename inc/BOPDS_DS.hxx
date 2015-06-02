@@ -31,6 +31,8 @@
 #include <BOPDS_VectorOfInterfEZ.hxx>
 #include <BOPDS_VectorOfInterfFZ.hxx>
 #include <BOPDS_VectorOfInterfZZ.hxx>
+#include <Standard_Real.hxx>
+#include <BOPCol_DataMapOfIntegerReal.hxx>
 #include <Standard_Boolean.hxx>
 #include <BOPDS_ListOfPaveBlock.hxx>
 #include <Handle_BOPDS_PaveBlock.hxx>
@@ -39,7 +41,6 @@
 #include <BOPCol_MapOfInteger.hxx>
 #include <BOPCol_ListOfInteger.hxx>
 #include <BOPDS_ListOfPave.hxx>
-#include <Standard_Real.hxx>
 class BOPDS_IndexRange;
 class BOPDS_ShapeInfo;
 class TopoDS_Shape;
@@ -431,6 +432,15 @@ Standard_EXPORT virtual ~BOPDS_DS();
 
   //! Updates tolerance of the sub-shapes of the shape with index <theIndex>.
   Standard_EXPORT   void UpdateEdgeTolerance (const Standard_Integer theIndex, const Standard_Real theTolerance) ;
+  
+  //! Sets the extended tolerance
+      void SetFuzzyValue (const Standard_Real theFuzz) ;
+  
+  //! Returns the extended tolerance
+      Standard_Real FuzzyValue()  const;
+  
+  //! Reverts the tolerance values of unchanged entities to default values.
+  Standard_EXPORT   void SetDefaultTolerances() ;
 
 
 
@@ -477,6 +487,8 @@ protected:
   BOPDS_VectorOfInterfEZ myInterfEZ;
   BOPDS_VectorOfInterfFZ myInterfFZ;
   BOPDS_VectorOfInterfZZ myInterfZZ;
+  Standard_Real myFuzzyValue;
+  BOPCol_DataMapOfIntegerReal myToleranceMap;
 
 
 private:

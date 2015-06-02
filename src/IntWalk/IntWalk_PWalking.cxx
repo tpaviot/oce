@@ -593,7 +593,6 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
   //xf
 
   Standard_Integer NbPasOKConseq=0;
-  Standard_Real pasMaxSV[4], aTmp;
   TColStd_Array1OfReal Param(1,4);
   IntImp_ConstIsoparametric ChoixIso;
   //xt
@@ -644,14 +643,13 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
   //
   for (Standard_Integer i=1; i<=4; ++i)
   {
-    aTmp=ParDep(i);
     Param(i)=ParDep(i);
   }
   //-- reproduce steps uv connected to surfaces Caro1 and Caro2
   //-- pasuv[] and pasSav[] are modified during the marching
   for(Standard_Integer i = 0; i < 4; ++i)
   {
-    pasMaxSV[i] = pasSav[i] = pasuv[i] = pasInit[i]; 
+    pasSav[i] = pasuv[i] = pasInit[i];
   }
 
   //-- calculate the first solution point
@@ -712,6 +710,11 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
   Standard_Integer LevelOfPointConfondu = 0; 
   Standard_Integer LevelOfIterWithoutAppend = -1;
   //
+
+  const Standard_Real aTol[4] = { Epsilon(u1max - u1min),
+                                  Epsilon(v1max - v1min),
+                                  Epsilon(u2max - u2min),
+                                  Epsilon(v2max - v2min)};
   Arrive = Standard_False;
   while(!Arrive) //010
   {
@@ -794,8 +797,23 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
 
       if (myIntersectionOn2S.IsDone() && !myIntersectionOn2S.IsEmpty())
       {
+        //If we go along any surface boundary then it is possible 
+        //to find "outboundaried" point.
+        //Nevertheless, if this deflection is quite small, we will be
+        //able to adjust this point to the boundary.
+
         Standard_Real aNewPnt[4], anAbsParamDist[4];
         myIntersectionOn2S.Point().Parameters(aNewPnt[0], aNewPnt[1], aNewPnt[2], aNewPnt[3]);
+        const Standard_Real aParMin[4] = {u1min, v1min, u2min, v2min};
+        const Standard_Real aParMax[4] = {u1max, v1max, u2max, v2max};
+
+        for(Standard_Integer i = 0; i < 4; i++)
+        {
+          if(Abs(aNewPnt[i] - aParMin[i]) < aTol[i])
+            aNewPnt[i] = aParMin[i];
+          else if(Abs(aNewPnt[i] - aParMax[i]) < aTol[i])
+            aNewPnt[i] = aParMax[i];
+        }
 
         if (aNewPnt[0] < u1min || aNewPnt[0] > u1max ||
             aNewPnt[1] < v1min || aNewPnt[1] > v1max ||
@@ -804,6 +822,11 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
         {
           break; // Out of borders, handle this later.
         }
+
+        myIntersectionOn2S.ChangePoint().SetValue(aNewPnt[0],
+                                                  aNewPnt[1],
+                                                  aNewPnt[2],
+                                                  aNewPnt[3]);
 
         anAbsParamDist[0] = Abs(Param(1) - dP1 - aNewPnt[0]);
         anAbsParamDist[1] = Abs(Param(2) - dP2 - aNewPnt[1]);
@@ -1005,28 +1028,18 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
 
             if(LevelOfIterWithoutAppend > 5)
             {
-              if(pasSav[0]<pasInit[0])
+              for (Standard_Integer i = 0; i < 4; i++)
               {
-                pasInit[0]-=(pasInit[0]-pasSav[0])*0.25;
-                LevelOfIterWithoutAppend=0;
-              }
+                if (pasSav[i] > pasInit[i])
+                  continue;
 
-              if(pasSav[1]<pasInit[1])
-              {
-                pasInit[1]-=(pasInit[1]-pasSav[1])*0.25;
-                LevelOfIterWithoutAppend=0;
-              }
+                const Standard_Real aDelta = (pasInit[i]-pasSav[i])*0.25;
 
-              if(pasSav[2]<pasInit[2])
-              {
-                pasInit[2]-=(pasInit[2]-pasSav[2])*0.25;
-                LevelOfIterWithoutAppend=0;
-              }
-
-              if(pasSav[3]<pasInit[3])
-              {
-                pasInit[3]-=(pasInit[3]-pasSav[3])*0.25;
-                LevelOfIterWithoutAppend=0;
+                if(aDelta > Epsilon(pasInit[i]))
+                {
+                  pasInit[i] -= aDelta;
+                  LevelOfIterWithoutAppend=0;
+                }
               }
             }
 
@@ -1328,6 +1341,27 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
                       bFlag2=u2 >= Um2-aTol2D && v2 >= Vm2-aTol2D && u2 <= UM2+aTol2D && v2 <= VM2+aTol2D;
                       if (bFlag1 && bFlag2)
                       {
+                        if (line->NbPoints() > 1)
+                        {
+                          IntSurf_PntOn2S prevprevPoint = line->Value(line->NbPoints()-1);
+                          Standard_Real ppU1, ppV1, ppU2, ppV2;
+                          prevprevPoint.Parameters(ppU1, ppV1, ppU2, ppV2);
+                          Standard_Real pU1, pV1, pU2, pV2;
+                          previousPointSave.Parameters(pU1, pV1, pU2, pV2);
+                          gp_Vec2d V1onS1(gp_Pnt2d(ppU1, ppV1), gp_Pnt2d(pU1, pV1));
+                          gp_Vec2d V2onS1(gp_Pnt2d(pU1, pV1), gp_Pnt2d(u1, v1));
+                          gp_Vec2d V1onS2(gp_Pnt2d(ppU2, ppV2), gp_Pnt2d(pU2, pV2));
+                          gp_Vec2d V2onS2(gp_Pnt2d(pU2, pV2), gp_Pnt2d(u2, v2));
+
+                          const Standard_Real aDot1 = V1onS1 * V2onS1;
+                          const Standard_Real aDot2 = V1onS2 * V2onS2;
+
+                          if ((aDot1 < 0.0) || (aDot2 < 0.0))
+                          {
+                            Arrive = Standard_True;
+                            break;
+                          }
+                        }
                         /*
                         if(u1 <= UM1  && u2 <= UM2 && v1 <= VM1 &&
                         v2 <= VM2  && u1 >= Um1 && u2 >= Um2 &&
@@ -1358,6 +1392,9 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
 
                         if (previoustg)
                         {
+                          //There are three consecutive points:
+                          //previousPointSave -> ParamPnt -> curPnt.
+
                           Standard_Real prevU1, prevV1, prevU2, prevV2;
                           previousPointSave.Parameters(prevU1, prevV1, prevU2, prevV2);
                           gp_Pnt2d prevPntOnS1(prevU1, prevV1), prevPntOnS2(prevU2, prevV2);
@@ -1367,14 +1404,105 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
                           gp_Vec2d PrevToParamOnS2(prevPntOnS2, ParamPntOnS2);
                           gp_Vec2d PrevToCurOnS2(prevPntOnS2, curPntOnS2);
                           Standard_Real MaxAngle = 3*M_PI/4;
+                          Standard_Real anAngleS1 = 0.0, anAngleS2 = 0.0;
+                          const Standard_Real aSQMParS1 = PrevToParamOnS1.SquareMagnitude();
+                          const Standard_Real aSQMParS2 = PrevToParamOnS2.SquareMagnitude();
+                          const Standard_Real aSQMCurS1 = PrevToCurOnS1.SquareMagnitude();
+                          const Standard_Real aSQMCurS2 = PrevToCurOnS2.SquareMagnitude();
 
-                          if (Abs(PrevToParamOnS1.Angle(PrevToCurOnS1)) > MaxAngle &&
-                            Abs(PrevToParamOnS2.Angle(PrevToCurOnS2)) > MaxAngle)
+                          if(aSQMCurS1 < gp::Resolution())
+                          {
+                            //We came back to the one of previos point.
+                            //Therefore, we must break;
+
+                            anAngleS1 = M_PI;
+                          }
+                          else if(aSQMParS1 < gp::Resolution())
+                          {
+                            //We are walking along tangent zone.
+                            //It should be continued.
+                            anAngleS1 = 0.0;
+                          }
+                          else
+                          {
+                            anAngleS1 = Abs(PrevToParamOnS1.Angle(PrevToCurOnS1));
+                          }
+
+                          if(aSQMCurS2 < gp::Resolution())
+                          {
+                            //We came back to the one of previos point.
+                            //Therefore, we must break;
+
+                            anAngleS2 = M_PI;
+                          }
+                          else if(aSQMParS2 < gp::Resolution())
+                          {
+                            //We are walking along tangent zone.
+                            //It should be continued;
+                            anAngleS2 = 0.0;
+                          }
+                          else
+                          {
+                            anAngleS2 = Abs(PrevToParamOnS2.Angle(PrevToCurOnS2));
+                          }
+
+                          if ((anAngleS1 > MaxAngle) && (anAngleS2 > MaxAngle))
                           {
                             Arrive = Standard_True;
                             break;
                           }
-                        }
+
+                          {
+                            //Check singularity.
+                            //I.e. check if we are walking along direction, which does not
+                            //result in comming to any point (i.e. derivative 
+                            //3D-intersection curve along this direction is equal to 0).
+                            //A sphere with direction {dU=1, dV=0} from point
+                            //(U=0, V=M_PI/2) can be considered as example for
+                            //this case (we cannot find another 3D-point if we go thus).
+
+                            //Direction chosen along 1st and 2nd surface correspondingly
+                            const gp_Vec2d  aDirS1(prevPntOnS1, curPntOnS1),
+                                            aDirS2(prevPntOnS2, curPntOnS2);
+
+                            gp_Pnt aPtemp;
+                            gp_Vec aDuS1, aDvS1, aDuS2, aDvS2;
+
+                            myIntersectionOn2S.Function().AuxillarSurface1()->
+                                  D1(curPntOnS1.X(), curPntOnS1.Y(), aPtemp, aDuS1, aDvS1);
+                            myIntersectionOn2S.Function().AuxillarSurface2()->
+                                  D1(curPntOnS2.X(), curPntOnS2.Y(), aPtemp, aDuS2, aDvS2);
+
+                            //Derivative WLine along (it is vector-function indeed)
+                            //directions chosen
+                            //(https://en.wikipedia.org/wiki/Directional_derivative#Variation_using_only_direction_of_vector).
+                            //F1 - on the 1st surface, F2 - on the 2nd surface.
+                            //x, y, z - coordinates of derivative vector.
+                            const Standard_Real aF1x =  aDuS1.X()*aDirS1.X() + 
+                                                        aDvS1.X()*aDirS1.Y();
+                            const Standard_Real aF1y =  aDuS1.Y()*aDirS1.X() +
+                                                        aDvS1.Y()*aDirS1.Y();
+                            const Standard_Real aF1z =  aDuS1.Z()*aDirS1.X() +
+                                                        aDvS1.Z()*aDirS1.Y();
+                            const Standard_Real aF2x =  aDuS2.X()*aDirS2.X() +
+                                                        aDvS2.X()*aDirS2.Y();
+                            const Standard_Real aF2y =  aDuS2.Y()*aDirS2.X() +
+                                                        aDvS2.Y()*aDirS2.Y();
+                            const Standard_Real aF2z =  aDuS2.Z()*aDirS2.X() +
+                                                        aDvS2.Z()*aDirS2.Y();
+
+                            const Standard_Real aF1 = aF1x*aF1x + aF1y*aF1y + aF1z*aF1z;
+                            const Standard_Real aF2 = aF2x*aF2x + aF2y*aF2y + aF2z*aF2z;
+
+                            if((aF1 < gp::Resolution()) && (aF2 < gp::Resolution()))
+                            {
+                              //All derivative are equal to 0. Therefore, there is
+                              //no point in going along direction chosen.
+                              Arrive = Standard_True;
+                              break;
+                            }
+                          }
+                        }//if (previoustg) cond.
 
                         ////////////////////////////////////////
                         AddAPoint(line,previousPoint);

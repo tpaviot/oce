@@ -12,11 +12,11 @@
 
 #include <Standard_Real.hxx>
 #include <math_Vector.hxx>
-#include <Standard_Integer.hxx>
 #include <TColStd_SequenceOfReal.hxx>
 #include <Standard_Address.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_TColgp_HArray1OfPnt2d.hxx>
+#include <Standard_Integer.hxx>
 class StdFail_InfiniteSolutions;
 class StdFail_NotDone;
 class Standard_OutOfRange;
@@ -72,7 +72,6 @@ private:
   Standard_Real myCurveMinTol;
   math_Vector myLowBorder;
   math_Vector myUppBorder;
-  Standard_Integer mySolCount;
   TColStd_SequenceOfReal myPoints1;
   TColStd_SequenceOfReal myPoints2;
   Standard_Address myC[2];

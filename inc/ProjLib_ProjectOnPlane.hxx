@@ -94,14 +94,14 @@ public:
   //! If necessary,  breaks the  curve in  intervals  of
   //! continuity  <S>.    And  returns   the number   of
   //! intervals.
-  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S) ;
+  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
   
   //! Stores in <T> the  parameters bounding the intervals
   //! of continuity <S>.
   //!
   //! The array must provide  enough room to  accomodate
   //! for the parameters. i.e. T.Length() > NbIntervals()
-  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S) ;
+  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
   
   //! Returns    a  curve equivalent   of  <me>  between
   //! parameters <First>  and <Last>. <Tol>  is used  to

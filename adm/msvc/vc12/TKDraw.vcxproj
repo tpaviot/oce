@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6A180F75-1825-05B3-07D6-AA280F2C10ED}</ProjectGuid>
+    <ProjectGuid>{C1954182-11D6-07AB-0438-2294D85A1771}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -317,6 +317,8 @@
     <ClCompile Include="..\..\..\src\Draw\Draw_UnitCommands.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Draw\Draw_VariableCommands.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Draw\Draw_View.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Draw\Draw_Viewer.cxx">
     </ClCompile>

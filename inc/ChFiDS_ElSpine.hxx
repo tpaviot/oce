@@ -13,6 +13,7 @@
 #include <GeomAdaptor_Curve.hxx>
 #include <gp_Pnt.hxx>
 #include <gp_Vec.hxx>
+#include <TColgp_SequenceOfAx1.hxx>
 #include <Handle_ChFiDS_SurfData.hxx>
 #include <Standard_Real.hxx>
 #include <Standard_Boolean.hxx>
@@ -32,6 +33,7 @@ class TColStd_Array1OfReal;
 class Adaptor3d_HCurve;
 class gp_Pnt;
 class gp_Vec;
+class gp_Ax1;
 class Geom_Curve;
 class gp_Lin;
 class gp_Circ;
@@ -56,11 +58,15 @@ public:
   
   Standard_EXPORT virtual   Standard_Real LastParameter()  const;
   
+  Standard_EXPORT   Standard_Real GetSavedFirstParameter()  const;
+  
+  Standard_EXPORT   Standard_Real GetSavedLastParameter()  const;
+  
   Standard_EXPORT   GeomAbs_Shape Continuity()  const;
   
-  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S) ;
+  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
   
-  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S) ;
+  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
   
   //! Returns    a  curve equivalent   of  <me>  between
   //! parameters <First>  and <Last>. <Tol>  is used  to
@@ -91,15 +97,25 @@ public:
   
   Standard_EXPORT   void LastParameter (const Standard_Real P) ;
   
+  Standard_EXPORT   void SaveFirstParameter() ;
+  
+  Standard_EXPORT   void SaveLastParameter() ;
+  
   Standard_EXPORT   void SetOrigin (const Standard_Real O) ;
   
   Standard_EXPORT   void FirstPointAndTgt (gp_Pnt& P, gp_Vec& T)  const;
   
   Standard_EXPORT   void LastPointAndTgt (gp_Pnt& P, gp_Vec& T)  const;
   
+  Standard_EXPORT   Standard_Integer NbVertices()  const;
+  
+  Standard_EXPORT  const  gp_Ax1& VertexWithTangent (const Standard_Integer Index)  const;
+  
   Standard_EXPORT   void SetFirstPointAndTgt (const gp_Pnt& P, const gp_Vec& T) ;
   
   Standard_EXPORT   void SetLastPointAndTgt (const gp_Pnt& P, const gp_Vec& T) ;
+  
+  Standard_EXPORT   void AddVertexWithTangent (const gp_Ax1& anAx1) ;
   
   Standard_EXPORT   void SetCurve (const Handle(Geom_Curve)& C) ;
   
@@ -143,12 +159,15 @@ private:
   gp_Pnt ptlast;
   gp_Vec tgfirst;
   gp_Vec tglast;
+  TColgp_SequenceOfAx1 VerticesWithTangents;
   Handle(ChFiDS_SurfData) previous;
   Handle(ChFiDS_SurfData) next;
   Standard_Real pfirst;
   Standard_Real plast;
   Standard_Real period;
   Standard_Boolean periodic;
+  Standard_Real pfirstsav;
+  Standard_Real plastsav;
 
 
 };

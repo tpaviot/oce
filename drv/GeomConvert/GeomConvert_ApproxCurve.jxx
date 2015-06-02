@@ -1,5 +1,6 @@
-#include <Geom_Curve.hxx>
 #include <Geom_BSplineCurve.hxx>
 #include <Standard_OutOfRange.hxx>
 #include <Standard_ConstructionError.hxx>
+#include <Geom_Curve.hxx>
+#include <Adaptor3d_HCurve.hxx>
 #include <GeomConvert_ApproxCurve.hxx>

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKPShape"
-	ProjectGUID="{4C72FF41-1535-0093-0A9C-A401745B9A4A}"
+	ProjectGUID="{05012EA9-1871-09B8-0292-D2389F837933}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

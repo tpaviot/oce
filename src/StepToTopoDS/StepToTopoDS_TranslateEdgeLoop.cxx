@@ -88,6 +88,8 @@
 #include <ShapeAlgo_ToolContainer.hxx>
 #include <XSAlgo.hxx>
 #include <XSAlgo_AlgoContainer.hxx>
+#include <ElCLib.hxx>
+#include <Standard_ErrorHandler.hxx>
 
 // ============================================================================
 // Method  : RemoveSinglePCurve
@@ -163,6 +165,17 @@ static void CheckPCurves (TopoDS_Wire& aWire, const TopoDS_Face& aFace,
       B.Range(myEdge, aFace, w1, cl);      
       w2 = cf;
     }
+
+    if (w1 > w2 && mySurf->IsUPeriodic())
+    {
+      Standard_Real u1,u2,v1,v2;
+      mySurf->Bounds(u1,u2,v1,v2);
+      ElCLib::AdjustPeriodic(u1, u2, 
+        Min(Abs(w2-w1)/2,Precision::PConfusion()), 
+        w1, w2);
+      B.Range(myEdge, aFace, w1, w2);   
+    }
+
     
     // advanced check
     XSAlgo::AlgoContainer()->CheckPCurve (myEdge, aFace, preci, sbwd->IsSeam(i) );
@@ -307,10 +320,24 @@ void StepToTopoDS_TranslateEdgeLoop::Init(const Handle(StepShape_FaceBound)& Fac
 //    }
     Handle(Geom_Curve) C1;
     if (!C.IsNull()) {
-      C1 = Handle(Geom_Curve)::DownCast (TP->FindTransient(C));
-      if (C1.IsNull()) {
-        if (StepToGeom_MakeCurve::Convert(C,C1))
-          TP->BindTransient (C,C1);
+      try
+      {
+        OCC_CATCH_SIGNALS
+        C1 = Handle(Geom_Curve)::DownCast (TP->FindTransient(C));
+        if (C1.IsNull()) {
+          if (StepToGeom_MakeCurve::Convert(C,C1))
+            TP->BindTransient (C,C1);
+          else
+            TP->AddWarning(C,"Could not convert a curve. Curve definition is incorrect");
+        }
+      }
+      catch (Standard_Failure)
+      {
+        TP->AddFail(C,"Exeption was raised. Curve geometry definition is incorrect");
+#ifdef OCCT_DEBUG
+  cout << "Warning: StepToTopoDS_TranslateEdgeLoop: Exception: ";
+  Standard_Failure::Caught()->Print(cout); cout << endl;
+#endif
       }
     }
 

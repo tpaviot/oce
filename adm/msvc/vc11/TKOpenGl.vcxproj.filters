@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{0C2C00B1-1461-1812-04F6-BD56DE9212F1}</UniqueIdentifier>
+      <UniqueIdentifier>{1CCA46D2-039A-0058-0B72-147D492D823C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\OpenGl">
-      <UniqueIdentifier>{19C77DF7-03D3-067D-0AB5-342ACFE686E9}</UniqueIdentifier>
+      <UniqueIdentifier>{C15DDADF-156F-18F1-037F-F37681E915CB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,6 +28,9 @@
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_BVHTreeSelector.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_BackgroundArray.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_CappingAlgo.cxx">
@@ -111,9 +114,6 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PrinterContext.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PriorityList.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Quadric.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
@@ -180,6 +180,9 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View_2.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View_Raytrace.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Window.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
@@ -190,9 +193,6 @@
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_5.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_Raytrace.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_telem_util.cxx">

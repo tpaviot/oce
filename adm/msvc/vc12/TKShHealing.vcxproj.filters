@@ -2,37 +2,37 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{A39CA5B8-00A2-03BF-1222-988FC105CC4F}</UniqueIdentifier>
+      <UniqueIdentifier>{3E046D89-12F7-0DB1-10FB-F16525279B17}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeBuild">
-      <UniqueIdentifier>{A883AEC5-0447-1348-003F-A2DF22E74CB0}</UniqueIdentifier>
+      <UniqueIdentifier>{3726FCAE-05B6-0541-134B-E92BA9318483}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeExtend">
-      <UniqueIdentifier>{5BE3E62C-14EE-0793-1452-61175D44FD3A}</UniqueIdentifier>
+      <UniqueIdentifier>{F2D45B45-106D-0C4B-0208-373DF4C47E15}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeConstruct">
-      <UniqueIdentifier>{4CF8D296-1166-11F6-1161-DDC68C163FEF}</UniqueIdentifier>
+      <UniqueIdentifier>{31A3745E-0076-04D3-068A-AAE85E7D7D68}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeCustom">
-      <UniqueIdentifier>{BF6F3D12-08FD-1359-0D22-43857FF1842B}</UniqueIdentifier>
+      <UniqueIdentifier>{B45454B0-0A8C-0956-1723-DB10D42DE0B0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeAnalysis">
-      <UniqueIdentifier>{1C4E9E76-0B5D-049D-0F92-D74103ED60B4}</UniqueIdentifier>
+      <UniqueIdentifier>{FA44717A-01A9-185F-0788-FF9E3CED7E5F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeFix">
-      <UniqueIdentifier>{67E92F5F-10A2-03BC-02FC-9412C15B40CA}</UniqueIdentifier>
+      <UniqueIdentifier>{03A1E9C7-00CD-1955-144E-778E1C130E91}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeUpgrade">
-      <UniqueIdentifier>{FA9315DC-02AF-0EC5-1552-7725F65D7098}</UniqueIdentifier>
+      <UniqueIdentifier>{215DF019-1401-0976-111B-F650821FA8A3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeAlgo">
-      <UniqueIdentifier>{8B3A04A8-0DF0-190C-120C-72BBEC8FA923}</UniqueIdentifier>
+      <UniqueIdentifier>{786EA0BA-08FF-10C8-0C44-2072B149F8E5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeProcess">
-      <UniqueIdentifier>{A952C3E7-1046-0B12-0CA7-28137F180D7E}</UniqueIdentifier>
+      <UniqueIdentifier>{73C01584-0D41-168F-0A48-72146B9AB803}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ShapeProcessAPI">
-      <UniqueIdentifier>{1E0A54D3-0DA3-031A-0E36-2FB0E907BF40}</UniqueIdentifier>
+      <UniqueIdentifier>{A6F12BA2-0704-0D18-0799-19F087FE3DFE}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +124,9 @@
       <Filter>Source files\ShapeCustom</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ShapeCustom\ShapeCustom_DirectModification.cxx">
+      <Filter>Source files\ShapeCustom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ShapeCustom\ShapeCustom_Modification.cxx">
       <Filter>Source files\ShapeCustom</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ShapeCustom\ShapeCustom_RestrictionParameters.cxx">
@@ -247,6 +250,9 @@
       <Filter>Source files\ShapeFix</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ShapeFix\ShapeFix_FixSmallFace.cxx">
+      <Filter>Source files\ShapeFix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ShapeFix\ShapeFix_FixSmallSolid.cxx">
       <Filter>Source files\ShapeFix</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\ShapeFix\ShapeFix_FreeBounds.cxx">

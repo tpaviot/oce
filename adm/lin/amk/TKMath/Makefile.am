@@ -154,6 +154,7 @@ libTKMath_la_SOURCES = \
 @top_srcdir@/drv/TColgp/TColgp_HSequenceOfXYZ_0.cxx \
 @top_srcdir@/drv/TColgp/TColgp_HSequenceOfXY_0.cxx \
 @top_srcdir@/drv/TColgp/TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d_0.cxx \
+@top_srcdir@/drv/TColgp/TColgp_SequenceNodeOfSequenceOfAx1_0.cxx \
 @top_srcdir@/drv/TColgp/TColgp_SequenceNodeOfSequenceOfDir2d_0.cxx \
 @top_srcdir@/drv/TColgp/TColgp_SequenceNodeOfSequenceOfDir_0.cxx \
 @top_srcdir@/drv/TColgp/TColgp_SequenceNodeOfSequenceOfPnt2d_0.cxx \
@@ -163,6 +164,7 @@ libTKMath_la_SOURCES = \
 @top_srcdir@/drv/TColgp/TColgp_SequenceNodeOfSequenceOfXYZ_0.cxx \
 @top_srcdir@/drv/TColgp/TColgp_SequenceNodeOfSequenceOfXY_0.cxx \
 @top_srcdir@/drv/TColgp/TColgp_SequenceOfArray1OfPnt2d_0.cxx \
+@top_srcdir@/drv/TColgp/TColgp_SequenceOfAx1_0.cxx \
 @top_srcdir@/drv/TColgp/TColgp_SequenceOfDir2d_0.cxx \
 @top_srcdir@/drv/TColgp/TColgp_SequenceOfDir_0.cxx \
 @top_srcdir@/drv/TColgp/TColgp_SequenceOfPnt2d_0.cxx \
@@ -367,7 +369,6 @@ libTKMath_la_SOURCES = \
 @top_srcdir@/src/math/math_GaussSingleIntegration.cxx \
 @top_srcdir@/src/math/math_GlobOptMin.cxx \
 @top_srcdir@/src/math/math_Householder.cxx \
-@top_srcdir@/src/math/math_IntegerRandom.cxx \
 @top_srcdir@/src/math/math_IntegerVector.cxx \
 @top_srcdir@/src/math/math_Jacobi.cxx \
 @top_srcdir@/src/math/math_Kronrod.cxx \
@@ -383,7 +384,6 @@ libTKMath_la_SOURCES = \
 @top_srcdir@/src/math/math_PSO.cxx \
 @top_srcdir@/src/math/math_PSOParticlesPool.cxx \
 @top_srcdir@/src/math/math_Powell.cxx \
-@top_srcdir@/src/math/math_RealRandom.cxx \
 @top_srcdir@/src/math/math_Recipes.cxx \
 @top_srcdir@/src/math/math_SVD.cxx \
 @top_srcdir@/src/math/math_TrigonometricFunctionRoots.cxx \

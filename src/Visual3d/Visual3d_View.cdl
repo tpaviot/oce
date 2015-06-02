@@ -23,9 +23,6 @@
 --              22-09-98: BGN; S3989 (anciennement S3819)
 --                             TypeOfTriedron* from Aspect(et pas Visual3d)
 --		02-12-98: S4062. Ajout des layers.
---		13-09-99: GG; GER61454 Adds LightLimit() and PlaneLimit() methods
---		10-11-99: GG; Add PRO19603 Redraw( area ) method
---		14-01-00: GG; Add IMP140100 ViewManager() method
 --		THA  - 17/08/00 Thomas HARTL <t-hartl@muenchen.matra-dtv.fr>
 --				-> Add Print methods (works only under Windows).-
 --		GG - RIC120302 Add NEW SetWindow method.
@@ -83,8 +80,9 @@ uses
     Structure               from Graphic3d,
     SequenceOfStructure     from Graphic3d,
     MapOfStructure          from Graphic3d,
-    Camera_Handle           from Graphic3d,
+    Camera           from Graphic3d,
 
+    ZLayerId                from Graphic3d,
     ZLayerSettings          from Graphic3d,
 
     ContextView             from Visual3d,
@@ -106,7 +104,9 @@ uses
     FontAspect              from Font,
     AsciiString             from TCollection,
     ExtendedString          from TCollection,
-    CGraduatedTrihedron     from Graphic3d,
+    GraduatedTrihedron      from Graphic3d,
+    NMapOfTransient         from Graphic3d,
+    TypeOfStructure         from Graphic3d,
 
     PixMap                  from Image,
     Box                     from Bnd
@@ -514,88 +514,14 @@ is
     ---Category: Graduated trihedron
     ------------------------------------------
 
-    GetGraduatedTrihedron(me;
-                          -- Names of axes --
-                          xname, yname, zname : out ExtendedString from TCollection;
-                          -- Draw names --
-                          xdrawname, ydrawname, zdrawname : out Boolean from Standard;
-                          -- Draw values --
-                          xdrawvalues, ydrawvalues, zdrawvalues : out Boolean from Standard;
-                          -- Draw grid --
-                          drawgrid : out Boolean from Standard;
-                          -- Draw axes --
-                          drawaxes : out Boolean from Standard;
-                          -- Number of splits along axes --
-                          nbx, nby, nbz : out Integer from Standard;
-                          -- Offset for drawing values --
-                          xoffset, yoffset, zoffset : out Integer from Standard;
-                          -- Offset for drawing names of axes --
-                          xaxisoffset, yaxisoffset, zaxisoffset : out Integer from Standard;
-                          -- Draw tickmarks --
-                          xdrawtickmarks, ydrawtickmarks, zdrawtickmarks : out Boolean from Standard;
-                          -- Length of tickmarks --
-                          xtickmarklength, ytickmarklength, ztickmarklength : out Integer from Standard;
-                          -- Grid color --
-                          gridcolor : out Color from Quantity;
-                          -- Colors of axis names --
-                          xnamecolor, ynamecolor, znamecolor : out Color from Quantity;
-                          -- Colors of axis and values --
-                          xcolor, ycolor, zcolor : out Color from Quantity;
-                          -- Name of font for names of axes --
-                          fontOfNames : out AsciiString from TCollection;
-                          -- Style of names of axes --
-                          styleOfNames : out FontAspect from Font;
-                          -- Size of names of axes --
-                          sizeOfNames : out Integer from Standard;
-                          -- Name of font for values --
-                          fontOfValues : out AsciiString from TCollection;
-                          -- Style of values --
-                          styleOfValues : out FontAspect from Font;
-                          -- Size of values --
-                          sizeOfValues : out Integer from Standard)
-    returns Boolean from Standard
+    GetGraduatedTrihedron (me)
+    returns GraduatedTrihedron from Graphic3d
     is static;
-    ---Purpose: Returns data of a graduated trihedron if displayed (return value is True)
+    ---Purpose: Returns data of a graduated trihedron
+    ---C++: return const&
 
     GraduatedTrihedronDisplay(me : mutable;
-                              -- Names of axes --
-                              xname, yname, zname : ExtendedString from TCollection;
-                              -- Draw names --
-                              xdrawname, ydrawname, zdrawname : Boolean from Standard;
-                              -- Draw values --
-                              xdrawvalues, ydrawvalues, zdrawvalues : Boolean from Standard;
-                              -- Draw grid --
-                              drawgrid : Boolean from Standard;
-                              -- Draw axes --
-                              drawaxes : Boolean from Standard;
-                              -- Number of splits along axes --
-                              nbx, nby, nbz : Integer from Standard;
-                              -- Offset for drawing values --
-                              xoffset, yoffset, zoffset : Integer from Standard;
-                              -- Offset for drawing names of axes --
-                              xaxisoffset, yaxisoffset, zaxisoffset : Integer from Standard;
-                              -- Draw tickmarks --
-                              xdrawtickmarks, ydrawtickmarks, zdrawtickmarks : Boolean from Standard;
-                              -- Length of tickmarks --
-                              xtickmarklength, ytickmarklength, ztickmarklength : Integer from Standard;
-                              -- Grid color --
-                              gridcolor : Color from Quantity;
-                              -- Colors of axis names --
-                              xnamecolor, ynamecolor, znamecolor : Color from Quantity;
-                              -- Colors of axis and values --
-                              xcolor, ycolor, zcolor : Color from Quantity;
-                              -- Name of font for names of axes --
-                              fontOfNames : AsciiString from TCollection;
-                              -- Style of names of axes --
-                              styleOfNames : FontAspect from Font;
-                              -- Size of names of axes --
-                              sizeOfNames : Integer from Standard;
-                              -- Name of font for values --
-                              fontOfValues : AsciiString from TCollection;
-                              -- Style of values --
-                              styleOfValues : FontAspect from Font;
-                              -- Size of values --
-                              sizeOfValues : Integer from Standard)
+                              theTrigedronData: in GraduatedTrihedron from Graphic3d)
     ---Purpose: Displays a graduated trihedron.
     is static;
 
@@ -709,20 +635,20 @@ is
 	--	    3d coordinates <AX>, <AY>, <AZ>.
 
     DefaultCamera (me)
-        returns Camera_Handle from Graphic3d
+        returns Camera from Graphic3d
         is static;
     ---Level: Public
     ---Purpose: @return the default camera of <me>.
     ---C++: return const &
 
     Camera (me)
-        returns Camera_Handle from Graphic3d
+        returns Camera from Graphic3d
         is static;
     ---Level: Public
     ---Purpose: @return the camera of <me>.
     ---C++: return const &
 
-    SetCamera (me : mutable; theCamera : Camera_Handle from Graphic3d) is static;
+    SetCamera (me : mutable; theCamera : Camera from Graphic3d) is static;
     ---Level: Public
     ---Purpose: Set camera object to provide orientation and projection matrices
     -- for graphic driver.
@@ -752,14 +678,12 @@ is
 	-- Category: Private methods
 	----------------------------
 
-	AcceptDisplay ( me;
-			AStructure	: Structure from Graphic3d )
-		returns TypeOfAnswer from Visual3d
-		is static private;
-	---Level: Internal
-	---Purpose: Is it possible to display the structure
-	--	    <AStructure> in the view <me> ?
-	---Category: Private methods
+  acceptDisplay ( me;
+                  theStructType : TypeOfStructure from Graphic3d )
+  returns TypeOfAnswer from Visual3d
+  is static private;
+  ---Level: Internal
+  ---Purpose: Is it possible to display the structure in the view?
 
 	ReCompute ( me	: mutable;
 		    AStructure	: Structure from Graphic3d );
@@ -787,13 +711,13 @@ is
 
 
         SetZLayerSettings ( me          : mutable;
-                            theLayerId  : Integer from Standard;
+                            theLayerId  : ZLayerId       from Graphic3d;
                             theSettings : ZLayerSettings from Graphic3d )
           is static private;
         ---Purpose: Sets the settings for a single Z layer of specified view.
 
         AddZLayer ( me         : mutable;
-                    theLayerId : Integer from Standard )
+                    theLayerId : ZLayerId from Graphic3d )
           is static private;
         ---Purpose: Add a new top-level Z layer to the view with ID
         -- <theLayerId>. The z layer mechanism allows to display
@@ -803,13 +727,13 @@ is
         -- display of graphics in all views.
 
         RemoveZLayer ( me         : mutable;
-                       theLayerId : Integer from Standard )
+                       theLayerId : ZLayerId from Graphic3d )
           is static private;
         ---Purpose: Remove z layer from the view by its ID.
 
         ChangeZLayer ( me           : mutable;
                        theStructure : Structure from Graphic3d;
-                       theLayerId   : Integer from Standard )
+                       theLayerId   : ZLayerId  from Graphic3d )
            is static private;
         ---Purpose: Change Z layer of already displayed structure in the view.
 
@@ -1045,15 +969,6 @@ is
         -- or insufficient memory.
 	--  Warning: Works only under Windows.
 
-	SetTransparency ( me : mutable;
-		AFlag : Boolean from Standard )
-		is static;
-	---Level: Advanced
-	---Purpose: if <AFlag> is Standard_True then the transparency
-	--	    is managed in the view <me>.
-	--	    Default Standard_False
-	---Category: Internal methods
-
 	ZBufferIsActivated ( me )
 		returns Boolean from Standard
 		is static;
@@ -1164,6 +1079,16 @@ is
     -- In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer).
     -- Notice however that results may differ a lot and do not contain some elements.
 
+    HiddenObjects (me) returns NMapOfTransient from Graphic3d is static;
+    ---C++: return const &
+    ---Level: Public
+    ---Purpose: Returns map of objects hidden within this specific view (not viewer-wise).
+
+    ChangeHiddenObjects (me : mutable) returns NMapOfTransient from Graphic3d is static;
+    ---C++: return &
+    ---Level: Public
+    ---Purpose: Returns map of objects hidden within this specific view (not viewer-wise).
+
 fields
 
   -- the ViewManager associated with the view
@@ -1196,14 +1121,16 @@ fields
   myStructsDisplayed    : MapOfStructure from Graphic3d;
   myImmediateStructures : MapOfStructure from Graphic3d;
 
-  MyGTrihedron     : CGraduatedTrihedron from Graphic3d;
+  myGTrihedron     : GraduatedTrihedron from Graphic3d;
 
-  myDefaultCamera  : Camera_Handle from Graphic3d;
+  myDefaultCamera  : Camera from Graphic3d;
 
   myAutoZFitIsOn          : Boolean from Standard;
   myAutoZFitScaleFactor   : Real from Standard;
 
   myStructuresUpdated     : Boolean from Standard;
+
+  myHiddenObjects : NMapOfTransient from Graphic3d;
 
 friends
 

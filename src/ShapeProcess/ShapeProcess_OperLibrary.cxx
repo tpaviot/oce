@@ -52,6 +52,7 @@
 #include <ShapeFix_Face.hxx>
 #include <ShapeFix_Wire.hxx>
 #include <ShapeFix_FixSmallFace.hxx>
+#include <ShapeFix_FixSmallSolid.hxx>
 #include <ShapeFix_Wireframe.hxx>
 #include <ShapeFix.hxx>
 #include <ShapeFix_SplitCommonVertex.hxx>
@@ -66,7 +67,8 @@
 TopoDS_Shape ShapeProcess_OperLibrary::ApplyModifier (const TopoDS_Shape &S, 
                                                       const Handle(ShapeProcess_ShapeContext)& context,
                                                       const Handle(BRepTools_Modification) &M,
-                                                      TopTools_DataMapOfShapeShape &map)
+                                                      TopTools_DataMapOfShapeShape &map,
+                                                      const Handle(ShapeExtend_MsgRegistrator) &msg)
 {
   // protect against INTERNAL/EXTERNAL shapes
   TopoDS_Shape SF = S.Oriented(TopAbs_FORWARD);
@@ -101,7 +103,7 @@ TopoDS_Shape ShapeProcess_OperLibrary::ApplyModifier (const TopoDS_Shape &S,
 
   // Modify the shape
   BRepTools_Modifier MD(SF,M);
-  context->RecordModification ( SF, MD );
+  context->RecordModification ( SF, MD, msg );
   return MD.ModifiedShape(SF).Oriented(S.Orientation());
 }
 
@@ -116,10 +118,15 @@ static Standard_Boolean directfaces (const Handle(ShapeProcess_Context)& context
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   Handle(ShapeCustom_DirectModification) DM = new ShapeCustom_DirectModification;
+  DM->SetMsgRegistrator( msg );
   TopTools_DataMapOfShapeShape map;
-  TopoDS_Shape res = ShapeProcess_OperLibrary::ApplyModifier ( ctx->Result(), ctx, DM, map );
-  ctx->RecordModification ( map );
+  TopoDS_Shape res = ShapeProcess_OperLibrary::ApplyModifier ( ctx->Result(), ctx, DM, map, msg );
+  ctx->RecordModification ( map, msg );
   ctx->SetResult ( res );
   return Standard_True;
 }
@@ -127,17 +134,29 @@ static Standard_Boolean directfaces (const Handle(ShapeProcess_Context)& context
 
 //=======================================================================
 //function : sameparam
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 static Standard_Boolean sameparam (const Handle(ShapeProcess_Context)& context)
 {
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
-  ShapeFix::SameParameter ( ctx->Result(), 
-			    ctx->IntegerVal ( "Force", Standard_False ),
-			    ctx->RealVal ( "Tolerance3d", Precision::Confusion() /* -1 */) ); 
-  // WARNING: no update of context yet!
+
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
+  ShapeFix::SameParameter ( ctx->Result(),
+                            ctx->IntegerVal ( "Force", Standard_False ),
+                            ctx->RealVal ( "Tolerance3d", Precision::Confusion() /* -1 */),
+                            NULL, msg );
+
+  if ( !msg.IsNull() )
+  {
+    // WARNING: not FULL update of context yet!
+    Handle(ShapeBuild_ReShape) reshape = new ShapeBuild_ReShape;
+    ctx->RecordModification( reshape, msg );
+  }
   return Standard_True;
 }
 
@@ -174,25 +193,30 @@ static Standard_Boolean settol (const Handle(ShapeProcess_Context)& context)
 
 //=======================================================================
 //function : splitangle
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 static Standard_Boolean splitangle (const Handle(ShapeProcess_Context)& context)
 {
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
-  
+
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   ShapeUpgrade_ShapeDivideAngle SDA ( ctx->RealVal ( "Angle", 2*M_PI ), ctx->Result() );
   SDA.SetMaxTolerance ( ctx->RealVal ( "MaxTolerance", 1. ) );
-  
+  SDA.SetMsgRegistrator ( msg );
+
   if ( ! SDA.Perform() && SDA.Status (ShapeExtend_FAIL) ) {
 #ifdef OCCT_DEBUG
     cout<<"ShapeDivideAngle failed"<<endl;
 #endif
     return Standard_False;
   }
-  
-  ctx->RecordModification ( SDA.GetContext() );
+
+  ctx->RecordModification ( SDA.GetContext(), msg );
   ctx->SetResult ( SDA.Result() );
   return Standard_True;
 }
@@ -207,6 +231,10 @@ static Standard_Boolean bsplinerestriction (const Handle(ShapeProcess_Context)& 
 {
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
+
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
 
   Standard_Boolean ModeSurf  = ctx->IntegerVal ( "SurfaceMode", Standard_True );
   Standard_Boolean ModeC3d   = ctx->IntegerVal ( "Curve3dMode", Standard_True );
@@ -248,9 +276,10 @@ static Standard_Boolean bsplinerestriction (const Handle(ShapeProcess_Context)& 
     new ShapeCustom_BSplineRestriction ( ModeSurf, ModeC3d, ModeC2d,
 					 aTol3d, aTol2d, aCont3d, aCont2d,
 					 aMaxDeg, aMaxSeg, ModeDeg, Rational, aParameters );
+  LD->SetMsgRegistrator( msg );
   TopTools_DataMapOfShapeShape map;
-  TopoDS_Shape res = ShapeProcess_OperLibrary::ApplyModifier ( ctx->Result(), ctx, LD, map );
-  ctx->RecordModification ( map );
+  TopoDS_Shape res = ShapeProcess_OperLibrary::ApplyModifier ( ctx->Result(), ctx, LD, map, msg );
+  ctx->RecordModification ( map, msg );
   ctx->SetResult ( res );
   return Standard_True;
 }
@@ -266,11 +295,15 @@ static Standard_Boolean torevol (const Handle(ShapeProcess_Context)& context)
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
-  Handle(ShapeCustom_ConvertToRevolution) CR =
-    new ShapeCustom_ConvertToRevolution();
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
+  Handle(ShapeCustom_ConvertToRevolution) CR = new ShapeCustom_ConvertToRevolution();
+  CR->SetMsgRegistrator( msg );
   TopTools_DataMapOfShapeShape map;
-  TopoDS_Shape res = ShapeProcess_OperLibrary::ApplyModifier ( ctx->Result(), ctx, CR, map );
-  ctx->RecordModification ( map );
+  TopoDS_Shape res = ShapeProcess_OperLibrary::ApplyModifier ( ctx->Result(), ctx, CR, map, msg );
+  ctx->RecordModification ( map, msg );
   ctx->SetResult ( res );
   return Standard_True;
 }
@@ -286,10 +319,15 @@ static Standard_Boolean swepttoelem (const Handle(ShapeProcess_Context)& context
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   Handle(ShapeCustom_SweptToElementary) SE = new ShapeCustom_SweptToElementary();
+  SE->SetMsgRegistrator( msg );
   TopTools_DataMapOfShapeShape map;
-  TopoDS_Shape res = ShapeProcess_OperLibrary::ApplyModifier ( ctx->Result(), ctx, SE, map );
-  ctx->RecordModification ( map );
+  TopoDS_Shape res = ShapeProcess_OperLibrary::ApplyModifier ( ctx->Result(), ctx, SE, map, msg );
+  ctx->RecordModification ( map, msg );
   ctx->SetResult ( res );
   return Standard_True;
 }
@@ -305,6 +343,10 @@ static Standard_Boolean shapetobezier (const Handle(ShapeProcess_Context)& conte
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   Standard_Boolean ModeC3d        = ctx->BooleanVal ( "Curve3dMode",        Standard_False );
   Standard_Boolean ModeC2d        = ctx->BooleanVal ( "Curve2dMode",        Standard_False );
   Standard_Boolean ModeSurf       = ctx->BooleanVal ( "SurfaceMode",        Standard_False );
@@ -318,6 +360,7 @@ static Standard_Boolean shapetobezier (const Handle(ShapeProcess_Context)& conte
   Standard_Boolean BSplineMode    = ctx->BooleanVal ( "BSplineMode",        Standard_True );
 
   ShapeUpgrade_ShapeConvertToBezier SCB (ctx->Result());
+  SCB.SetMsgRegistrator( msg );
   SCB.SetSurfaceSegmentMode(SegmentMode);
   SCB.SetSurfaceConversion (ModeSurf);
   SCB.Set2dConversion (ModeC2d);
@@ -348,7 +391,7 @@ static Standard_Boolean shapetobezier (const Handle(ShapeProcess_Context)& conte
     return Standard_False;
   }
 
-  ctx->RecordModification ( SCB.GetContext() );
+  ctx->RecordModification ( SCB.GetContext(), msg );
   ctx->SetResult ( SCB.Result() );
   return Standard_True;
 }
@@ -364,6 +407,10 @@ static Standard_Boolean converttobspline (const Handle(ShapeProcess_Context)& co
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   Standard_Boolean extrMode   = ctx->BooleanVal ( "LinearExtrusionMode", Standard_True );
   Standard_Boolean revolMode  = ctx->BooleanVal ( "RevolutionMode",      Standard_True ); 
   Standard_Boolean offsetMode = ctx->BooleanVal ( "OffsetMode",          Standard_True );
@@ -372,10 +419,11 @@ static Standard_Boolean converttobspline (const Handle(ShapeProcess_Context)& co
   CBspl->SetExtrusionMode(extrMode);
   CBspl->SetRevolutionMode(revolMode);
   CBspl->SetOffsetMode(offsetMode);
+  CBspl->SetMsgRegistrator( msg );
     
   TopTools_DataMapOfShapeShape map;
-  TopoDS_Shape res = ShapeProcess_OperLibrary::ApplyModifier ( ctx->Result(), ctx, CBspl, map );
-  ctx->RecordModification ( map );
+  TopoDS_Shape res = ShapeProcess_OperLibrary::ApplyModifier( ctx->Result(), ctx, CBspl, map, msg );
+  ctx->RecordModification ( map, msg );
   ctx->SetResult ( res );
   return Standard_True;
 }
@@ -391,6 +439,10 @@ static Standard_Boolean splitcontinuity (const Handle(ShapeProcess_Context)& con
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   Standard_Real aTol = ctx->RealVal ( "Tolerance3d", 1.e-7 );
   Standard_Real aTol2D = ctx->RealVal ( "Tolerance2d", 1.e-9 );
   GeomAbs_Shape aCrvCont = ctx->ContinuityVal ( "CurveContinuity",   GeomAbs_C1 );
@@ -402,7 +454,9 @@ static Standard_Boolean splitcontinuity (const Handle(ShapeProcess_Context)& con
   tool.SetPCurveCriterion(aCrv2dCont);
   tool.SetTolerance(aTol);
   tool.SetTolerance2d(aTol2D);
-  
+
+  tool.SetMsgRegistrator( msg );
+    
   Standard_Real maxTol;
   if ( ctx->GetReal ( "MaxTolerance", maxTol ) ) tool.SetMaxTolerance(maxTol);
   
@@ -413,7 +467,7 @@ static Standard_Boolean splitcontinuity (const Handle(ShapeProcess_Context)& con
     return Standard_False; 
   }
   
-  ctx->RecordModification ( tool.GetContext() );
+  ctx->RecordModification ( tool.GetContext(), msg );
   ctx->SetResult ( tool.Result() );
   return Standard_True;
 }
@@ -429,7 +483,12 @@ static Standard_Boolean splitclosedfaces (const Handle(ShapeProcess_Context)& co
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   ShapeUpgrade_ShapeDivideClosed tool ( ctx->Result() );
+  tool.SetMsgRegistrator( msg );
 
   Standard_Real closeTol;
   if ( ctx->GetReal ( "CloseTolerance", closeTol ) ) tool.SetPrecision(closeTol);
@@ -450,7 +509,7 @@ static Standard_Boolean splitclosedfaces (const Handle(ShapeProcess_Context)& co
     return Standard_False; 
   }
   
-  ctx->RecordModification ( tool.GetContext() );
+  ctx->RecordModification ( tool.GetContext(), msg );
   ctx->SetResult ( tool.Result() );
   return Standard_True;
 }
@@ -466,10 +525,15 @@ static Standard_Boolean fixfacesize (const Handle(ShapeProcess_Context)& context
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   Handle(ShapeBuild_ReShape) reshape = new ShapeBuild_ReShape;
   ShapeFix_FixSmallFace FSC;
   FSC.SetContext(reshape);
   FSC.Init(ctx->Result());
+  FSC.SetMsgRegistrator ( msg );
 
   Standard_Real aTol;
   if ( ctx->GetReal ( "Tolerance", aTol ) ) FSC.SetPrecision (aTol);
@@ -478,7 +542,7 @@ static Standard_Boolean fixfacesize (const Handle(ShapeProcess_Context)& context
   TopoDS_Shape newsh = FSC.Shape();
 
   if ( newsh != ctx->Result() ) {
-    ctx->RecordModification ( reshape );
+    ctx->RecordModification ( reshape, msg );
     ctx->SetResult ( newsh );
   }
 
@@ -496,19 +560,71 @@ static Standard_Boolean fixwgaps (const Handle(ShapeProcess_Context)& context)
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   Standard_Real aTol3d = ctx->RealVal ( "Tolerance3d", Precision::Confusion() );
 
   Handle(ShapeBuild_ReShape) reshape = new ShapeBuild_ReShape;
   Handle(ShapeFix_Wireframe) sfwf = new ShapeFix_Wireframe(ctx->Result());
+  sfwf->SetMsgRegistrator( msg );
   sfwf->SetContext(reshape);
   sfwf->SetPrecision(aTol3d);
   sfwf->FixWireGaps();
   TopoDS_Shape result = sfwf->Shape();
 
   if ( result != ctx->Result() ) {
-    ctx->RecordModification ( reshape );
+    ctx->RecordModification ( reshape, msg );
     ctx->SetResult ( result );
   }
+  return Standard_True;
+}
+
+//=======================================================================
+//function : dropsmallsolids
+//purpose  : 
+//=======================================================================
+
+static Standard_Boolean dropsmallsolids (const Handle(ShapeProcess_Context)& context)
+{
+  Handle(ShapeProcess_ShapeContext) ctx =
+    Handle(ShapeProcess_ShapeContext)::DownCast (context);
+  if (ctx.IsNull()) return Standard_False;
+
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
+  ShapeFix_FixSmallSolid FSS;
+  FSS.SetMsgRegistrator( msg );
+
+  Standard_Real aThreshold;
+  Standard_Integer aMode;
+  if (ctx->GetInteger ("FixMode", aMode))
+    FSS.SetFixMode (aMode);
+  if (ctx->GetReal ("VolumeThreshold", aThreshold))
+    FSS.SetVolumeThreshold (aThreshold);
+  if (ctx->GetReal ("WidthFactorThreshold", aThreshold))
+    FSS.SetWidthFactorThreshold (aThreshold);
+
+  Standard_Boolean aMerge = Standard_False;
+  ctx->GetBoolean ("MergeSolids", aMerge);
+
+  Handle(ShapeBuild_ReShape) aReShape = new ShapeBuild_ReShape;
+
+  TopoDS_Shape aResult;
+  if (aMerge)
+    aResult = FSS.Merge  (ctx->Result(), aReShape);
+  else
+    aResult = FSS.Remove (ctx->Result(), aReShape);
+
+  if (aResult != ctx->Result())
+  {
+    ctx->RecordModification (aReShape, msg);
+    ctx->SetResult (aResult);
+  }
+
   return Standard_True;
 }
 
@@ -549,15 +665,20 @@ static Standard_Boolean mergesmalledges (const Handle(ShapeProcess_Context)& con
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   Standard_Real aTol3d = ctx->RealVal ( "Tolerance3d", Precision::Confusion() );
 
   Handle(ShapeBuild_ReShape) reshape = new ShapeBuild_ReShape;
   ShapeFix_Wireframe ShapeFixWireframe(ctx->Result());
   ShapeFixWireframe.SetContext(reshape);
   ShapeFixWireframe.SetPrecision(aTol3d);
+  ShapeFixWireframe.SetMsgRegistrator( msg );
   
   if ( ShapeFixWireframe.FixSmallEdges() ) {
-    ctx->RecordModification ( reshape );
+    ctx->RecordModification ( reshape, msg );
   }
   return Standard_True;
 }
@@ -578,9 +699,9 @@ static Standard_Boolean fixshape (const Handle(ShapeProcess_Context)& context)
   if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
   
   Handle(ShapeFix_Shape) sfs = new ShapeFix_Shape;
-  sfs->SetMsgRegistrator ( msg );
   Handle(ShapeFix_Face) sff  = Handle(ShapeFix_Face)::DownCast(sfs->FixFaceTool());
   Handle(ShapeFix_Wire) sfw  = Handle(ShapeFix_Wire)::DownCast(sfs->FixWireTool());
+  sfs->SetMsgRegistrator( msg );
   
   sfs->SetPrecision    ( ctx->RealVal ( "Tolerance3d",    Precision::Confusion() ) );
   sfs->SetMinTolerance ( ctx->RealVal ( "MinTolerance3d", Precision::Confusion() ) );
@@ -641,7 +762,9 @@ static Standard_Boolean fixshape (const Handle(ShapeProcess_Context)& context)
     return Standard_False;
 
   TopoDS_Shape result = sfs->Shape();
-  if ( result != ctx->Result() ) {
+  if (( result != ctx->Result() ) ||
+      ( !msg.IsNull() && !msg->MapShape().IsEmpty()))
+  {
     ctx->RecordModification ( sfs->Context(), msg );
     ctx->SetResult ( result );
   }
@@ -660,10 +783,15 @@ static Standard_Boolean spltclosededges (const Handle(ShapeProcess_Context)& con
     Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   Standard_Integer nbSplits = ctx->IntegerVal ( "NbSplitPoints", 1 );
 
   ShapeUpgrade_ShapeDivideClosedEdges tool (ctx->Result());
   tool.SetNbSplitPoints(nbSplits);
+  tool.SetMsgRegistrator( msg );
   
   if ( ! tool.Perform() && tool.Status (ShapeExtend_FAIL) ) { 
 #ifdef OCCT_DEBUG
@@ -672,7 +800,7 @@ static Standard_Boolean spltclosededges (const Handle(ShapeProcess_Context)& con
     return Standard_False; 
   }
   
-  ctx->RecordModification ( tool.GetContext() );
+  ctx->RecordModification ( tool.GetContext(), msg );
   ctx->SetResult ( tool.Result() );
   return Standard_True;
 }
@@ -689,16 +817,22 @@ static Standard_Boolean splitcommonvertex (const Handle(ShapeProcess_Context)& c
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
 
+  // activate message mechanism if it is supported by context
+  Handle(ShapeExtend_MsgRegistrator) msg;
+  if ( ! ctx->Messages().IsNull() ) msg = new ShapeExtend_MsgRegistrator;
+
   Handle(ShapeBuild_ReShape) reshape = new ShapeBuild_ReShape;
   ShapeFix_SplitCommonVertex SCV;
   SCV.SetContext(reshape);
   SCV.Init(ctx->Result());
 
+  SCV.SetMsgRegistrator( msg );
+
   SCV.Perform();
   TopoDS_Shape newsh = SCV.Shape();
 
   if ( newsh != ctx->Result() ) {
-    ctx->RecordModification ( reshape );
+    ctx->RecordModification ( reshape, msg );
     ctx->SetResult ( newsh );
   }
 
@@ -735,6 +869,7 @@ void ShapeProcess_OperLibrary::Init ()
   ShapeProcess::RegisterOperator ( "SplitClosedFaces",      new ShapeProcess_UOperator ( splitclosedfaces ) );
   ShapeProcess::RegisterOperator ( "FixWireGaps",           new ShapeProcess_UOperator ( fixwgaps ) );
   ShapeProcess::RegisterOperator ( "FixFaceSize",           new ShapeProcess_UOperator ( fixfacesize ) );
+  ShapeProcess::RegisterOperator ( "DropSmallSolids",       new ShapeProcess_UOperator ( dropsmallsolids ) );
   ShapeProcess::RegisterOperator ( "DropSmallEdges",        new ShapeProcess_UOperator ( mergesmalledges ) );
   ShapeProcess::RegisterOperator ( "FixShape",              new ShapeProcess_UOperator ( fixshape ) );
   ShapeProcess::RegisterOperator ( "SplitClosedEdges",      new ShapeProcess_UOperator ( spltclosededges ) );

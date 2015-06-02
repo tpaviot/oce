@@ -11,11 +11,10 @@
 #include <Standard_Macro.hxx>
 
 #include <Quantity_NameOfColor.hxx>
-#include <Handle_Prs3d_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 #include <AIS_TypeOfAttribute.hxx>
 #include <Standard_Real.hxx>
 #include <Aspect_TypeOfLine.hxx>
-class Prs3d_Drawer;
 class Quantity_Color;
 class Graphic3d_MaterialAspect;
 

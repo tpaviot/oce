@@ -29,7 +29,7 @@ public:
   
   //! Returns returns ColorScale from V3d.
   //! Returns View from V3d.
-  Standard_EXPORT V3d_ColorScale(const Handle(V3d_LayerMgr)& aMgr);
+  Standard_EXPORT V3d_ColorScale(const Handle(V3d_LayerMgr)& theMgr);
   
   Standard_EXPORT   void Display() ;
   
@@ -37,15 +37,15 @@ public:
   
   Standard_EXPORT   Standard_Boolean IsDisplayed()  const;
   
-  Standard_EXPORT virtual   void PaintRect (const Standard_Integer X, const Standard_Integer Y, const Standard_Integer W, const Standard_Integer H, const Quantity_Color& aColor, const Standard_Boolean aFilled = Standard_False) ;
+  Standard_EXPORT virtual   void PaintRect (const Standard_Integer theX, const Standard_Integer theY, const Standard_Integer theWidth, const Standard_Integer theHeight, const Quantity_Color& theColor, const Standard_Boolean theFilled = Standard_False) ;
   
-  Standard_EXPORT virtual   void PaintText (const TCollection_ExtendedString& aText, const Standard_Integer X, const Standard_Integer Y, const Quantity_Color& aColor) ;
+  Standard_EXPORT virtual   void PaintText (const TCollection_ExtendedString& theText, const Standard_Integer theX, const Standard_Integer theY, const Quantity_Color& theColor) ;
   
-  Standard_EXPORT virtual   Standard_Integer TextWidth (const TCollection_ExtendedString& aText)  const;
+  Standard_EXPORT virtual   Standard_Integer TextWidth (const TCollection_ExtendedString& theText)  const;
   
-  Standard_EXPORT virtual   Standard_Integer TextHeight (const TCollection_ExtendedString& aText)  const;
+  Standard_EXPORT virtual   Standard_Integer TextHeight (const TCollection_ExtendedString& theText)  const;
   
-  Standard_EXPORT   void TextSize (const TCollection_ExtendedString& AText, const Standard_Integer AHeight, Standard_Integer& AWidth, Standard_Integer& AnAscent, Standard_Integer& ADescent)  const;
+  Standard_EXPORT   void TextSize (const TCollection_ExtendedString& theText, const Standard_Integer theHeight, Standard_Integer& theWidth, Standard_Integer& theAscent, Standard_Integer& theDescent)  const;
   
   Standard_EXPORT   void DrawScale() ;
 

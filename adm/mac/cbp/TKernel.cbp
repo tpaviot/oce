@@ -155,6 +155,7 @@
 		<Unit filename="../../../src/OSD/OSD_MAllocHook.cxx" />
 		<Unit filename="../../../src/OSD/OSD_MemInfo.cxx" />
 		<Unit filename="../../../src/OSD/OSD_OpenFile.cxx" />
+		<Unit filename="../../../src/OSD/OSD_Parallel.cxx" />
 		<Unit filename="../../../src/OSD/OSD_Path.cxx" />
 		<Unit filename="../../../src/OSD/OSD_PerfMeter.cxx" />
 		<Unit filename="../../../src/OSD/OSD_Printer.cxx" />

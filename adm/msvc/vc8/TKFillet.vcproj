@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKFillet"
-	ProjectGUID="{9C7A9733-0DFF-0DDD-0BF5-1BE1FD91E82F}"
+	ProjectGUID="{CDF354C2-0FE1-00D2-0719-D790B85E2283}"
 	>
 	<Platforms>
 		<Platform

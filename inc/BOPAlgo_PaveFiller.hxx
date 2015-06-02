@@ -15,6 +15,7 @@
 #include <BOPDS_PIterator.hxx>
 #include <Handle_IntTools_Context.hxx>
 #include <BOPAlgo_SectionAttribute.hxx>
+#include <Standard_Real.hxx>
 #include <BOPAlgo_Algo.hxx>
 #include <BOPCol_BaseAllocator.hxx>
 #include <Handle_BOPDS_PaveBlock.hxx>
@@ -23,7 +24,6 @@
 #include <BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks.hxx>
 #include <Standard_Boolean.hxx>
 #include <BOPCol_MapOfInteger.hxx>
-#include <Standard_Real.hxx>
 #include <BOPCol_DataMapOfIntegerReal.hxx>
 #include <BOPDS_IndexedMapOfPaveBlock.hxx>
 #include <BOPCol_ListOfInteger.hxx>
@@ -37,6 +37,7 @@
 #include <BOPDS_VectorOfCurve.hxx>
 class IntTools_Context;
 class BOPDS_DS;
+class TopTools_ListOfShape;
 class BOPAlgo_SectionAttribute;
 class BOPDS_PaveBlock;
 class TopoDS_Vertex;
@@ -65,14 +66,23 @@ Standard_EXPORT virtual ~BOPAlgo_PaveFiller();
   
   Standard_EXPORT  const  BOPDS_PIterator& Iterator() ;
   
+  Standard_EXPORT   void SetArguments (const BOPCol_ListOfShape& theLS) ;
+  
+  Standard_EXPORT   void SetArguments (const TopTools_ListOfShape& theLS) ;
+  
   Standard_EXPORT  const  BOPCol_ListOfShape& Arguments()  const;
-Standard_EXPORT void SetArguments(const BOPCol_ListOfShape& theLS);
   
   Standard_EXPORT   Handle(IntTools_Context) Context() ;
   
   Standard_EXPORT   void SetSectionAttribute (const BOPAlgo_SectionAttribute& theSecAttr) ;
   
   Standard_EXPORT virtual   void Perform() ;
+  
+  //! Sets the additional tolerance
+  Standard_EXPORT   void SetFuzzyValue (const Standard_Real theFuzz) ;
+  
+  //! Returns the additional tolerance
+  Standard_EXPORT   Standard_Real FuzzyValue()  const;
 
 
 
@@ -230,7 +240,7 @@ protected:
   
 
   //! Updates the information about faces
-  Standard_EXPORT   void UpdateFaceInfo (BOPDS_DataMapOfPaveBlockListOfPaveBlock& theDME) ;
+  Standard_EXPORT   void UpdateFaceInfo (BOPDS_DataMapOfPaveBlockListOfPaveBlock& theDME, const BOPCol_DataMapOfIntegerInteger& theDMV) ;
   
 
   //! Updates tolerance of vertex with index <nV>
@@ -263,6 +273,7 @@ protected:
   BOPDS_PIterator myIterator;
   Handle(IntTools_Context) myContext;
   BOPAlgo_SectionAttribute mySectionAttribute;
+  Standard_Real myFuzzyValue;
 
 
 private:

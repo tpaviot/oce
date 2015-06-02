@@ -132,6 +132,15 @@ public:
 
 protected:
 
+  
+  //! Try to approximate 3D curve by Geom2d_Line
+  //! or Geom2d_BsplineCurve with degree 1 with specified tolerance.
+  //! points - points obtained from 3d curve.
+  //! params - parameters corresponding points on 3d curves
+  //! points2d - 2d points lies on line in parametric space
+  //! theTol - tolerance used for compare initial points 3d and
+  //! 3d points obtained from line lying in parameric space of surface
+  Standard_EXPORT   Handle(Geom2d_Curve) getLine (const TColgp_Array1OfPnt& points, const TColStd_Array1OfReal& params, TColgp_Array1OfPnt2d& points2d, const Standard_Real theTol, Standard_Boolean& IsRecompute)  const;
 
   Handle(ShapeAnalysis_Surface) mySurf;
   Standard_Real myPreci;

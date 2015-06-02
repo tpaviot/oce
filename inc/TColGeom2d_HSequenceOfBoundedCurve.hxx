@@ -71,8 +71,6 @@ public:
      const  TColGeom2d_SequenceOfBoundedCurve& Sequence()  const;
   
       TColGeom2d_SequenceOfBoundedCurve& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TColGeom2d_HSequenceOfBoundedCurve) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TColGeom2d_HSequenceOfBoundedCurve) ShallowCopy(const Handle(TColGeom2d_HSequenceOfBoundedCurve)& me) {
- return me->ShallowCopy();
-}
 
 
 

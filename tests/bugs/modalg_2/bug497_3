@@ -1,3 +1,5 @@
+puts "TODO OCC25735 ALL: Faulty shapes in variables faulty_1 to"
+
 puts "========="
 puts " OCC497 "
 puts "(case 3)"
@@ -15,5 +17,5 @@ checkshape a_2
 
 bcut result a_1 a_2
 
-set square 1773.6
+set square 2471.48
 set 2dviewer 0

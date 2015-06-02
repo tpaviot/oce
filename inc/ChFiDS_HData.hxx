@@ -71,8 +71,6 @@ public:
      const  ChFiDS_SequenceOfSurfData& Sequence()  const;
   
       ChFiDS_SequenceOfSurfData& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(ChFiDS_HData) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(ChFiDS_HData) ShallowCopy(const Handle(ChFiDS_HData)& me) {
- return me->ShallowCopy();
-}
 
 
 

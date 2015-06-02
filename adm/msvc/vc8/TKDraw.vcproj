@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKDraw"
-	ProjectGUID="{B1CE9F67-048D-13C8-1706-08E68E589787}"
+	ProjectGUID="{3756D6B2-1431-1728-1320-444A32631E65}"
 	>
 	<Platforms>
 		<Platform
@@ -533,6 +533,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Draw\Draw_VariableCommands.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Draw\Draw_View.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Draw\Draw_Viewer.cxx">

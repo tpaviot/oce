@@ -12,4 +12,6 @@
 #include <TopoDS_Vertex.hxx>
 #include <gp_Pnt2d.hxx>
 #include <IntTools_Curve.hxx>
+#include <Bnd_Box.hxx>
+#include <TopoDS_Shape.hxx>
 #include <IntTools_Context.hxx>

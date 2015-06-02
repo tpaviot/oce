@@ -13,10 +13,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#define XTRACE
-
-
-
 //-Version      
 
 //-Design       Declaration of variables specific to managers
@@ -39,40 +35,8 @@ static Standard_Integer StructureManager_CurrentId = 0;
 #include <Graphic3d_Structure.pxx>
 #include <Graphic3d_MapIteratorOfMapOfStructure.hxx>
 
-//-Aliases
-
-//-Global data definitions
-
-//      -- l'identifieur du manager
-//      MyId                    :       Standard_Integer;
-
-//      -- le mode de mise a jour de l'affichage
-//      MyUpdateMode            :       TypeOfUpdate;
-
-//      -- les differents contextes de primitives
-//      MyAspectLine3d          :       AspectLine3d;
-//      MyAspectText3d          :       AspectText3d;
-//      MyAspectMarker3d        :       AspectMarker3d;
-//      MyAspectFillArea3d      :       AspectFillArea3d;
-
-//      -- les structures affichees
-//      MyDisplayedStructure    :       SequenceOfStructure;
-
-//      -- les structures mises en evidence
-//      MyHighlightedStructure  :       SequenceOfStructure;
-
-//      -- les structures detectables
-//      MyPickStructure         :       SequenceOfStructure;
-
-//      -- le generateur d'identificateurs de structures
-//      MyStructGenId           :       GenId;
-
-//-Constructors
-
-Graphic3d_StructureManager::Graphic3d_StructureManager (const Handle(Graphic3d_GraphicDriver)& theDriver):
-MyDisplayedStructure (),
-MyHighlightedStructure (),
-MyPickStructure () {
+Graphic3d_StructureManager::Graphic3d_StructureManager (const Handle(Graphic3d_GraphicDriver)& theDriver)
+{
 
 Standard_Real Coef;
 Standard_Integer i;
@@ -129,14 +93,8 @@ Standard_Integer Limit  = Graphic3d_StructureManager::Limit ();
 
 void Graphic3d_StructureManager::Destroy () {
 
-#ifdef TRACE
-        cout << "Graphic3d_StructureManager::Destroy (" << MyId << ")\n";
-        cout << flush;
-#endif
-
         MyDisplayedStructure.Clear ();
         MyHighlightedStructure.Clear ();
-        MyPickStructure.Clear ();
         StructureManager_ArrayId[MyId]  = 0;
 
 }
@@ -214,24 +172,8 @@ Handle(Graphic3d_AspectFillArea3d) Graphic3d_StructureManager::FillArea3dAspect 
 
 void Graphic3d_StructureManager::Remove (const Standard_Integer AnId) {
 
-#ifdef TRACE
-        cout << "Graphic3d_StructureManager::Remove " << AnId << "\n" << flush;
-#endif
-
         MyStructGenId.Free (AnId);
 
-}
-
-void Graphic3d_StructureManager::Detectable (const Handle(Graphic3d_Structure)& AStructure) {
-
-  MyPickStructure.Add(AStructure);
-
-}
-
-void Graphic3d_StructureManager::Undetectable (const Handle(Graphic3d_Structure)& AStructure) {
-
-  MyPickStructure.Remove(AStructure);
- 
 }
 
 void Graphic3d_StructureManager::DisplayedStructures (Graphic3d_MapOfStructure& SG) const {
@@ -265,20 +207,9 @@ void Graphic3d_StructureManager::HighlightedStructures (Graphic3d_MapOfStructure
 
 }
 
-void Graphic3d_StructureManager::PickStructures (Graphic3d_MapOfStructure& SG) const {
-
-  SG.Assign(MyPickStructure);
-
-}
-
 Standard_Integer Graphic3d_StructureManager::NewIdentification () {
 
 Standard_Integer Id     = MyStructGenId.Next ();
-
-#ifdef TRACE
-        cout << "Graphic3d_StructureManager::NewIdentification " << Id << "\n";
-        cout << flush;
-#endif
 
         return Id;
 
@@ -357,4 +288,29 @@ void Graphic3d_StructureManager::RecomputeStructures (const Graphic3d_MapOfStruc
     aStruct->Clear();
     aStruct->Compute();
   }
+}
+
+Handle(Graphic3d_ViewAffinity) Graphic3d_StructureManager::RegisterObject (const Handle(Standard_Transient)& theObject)
+{
+  Handle(Graphic3d_ViewAffinity) aResult;
+  if (myRegisteredObjects.Find (theObject.operator->(), aResult))
+  {
+    return aResult;
+  }
+
+  aResult = new Graphic3d_ViewAffinity();
+  myRegisteredObjects.Bind (theObject.operator->(), aResult);
+  return aResult;
+}
+
+void Graphic3d_StructureManager::UnregisterObject (const Handle(Standard_Transient)& theObject)
+{
+  myRegisteredObjects.UnBind (theObject.operator->());
+}
+
+Handle(Graphic3d_ViewAffinity) Graphic3d_StructureManager::ObjectAffinity (const Handle(Standard_Transient)& theObject) const
+{
+  Handle(Graphic3d_ViewAffinity) aResult;
+  myRegisteredObjects.Find (theObject.operator->(), aResult);
+  return aResult;
 }

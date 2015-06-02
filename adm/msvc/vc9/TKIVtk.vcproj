@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKIVtk"
-	ProjectGUID="{A3156B4D-1077-1470-0582-203BAB2D7C8B}"
+	ProjectGUID="{60E76E0F-0EE2-157A-1715-A1807BFA11B7}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

@@ -16,12 +16,11 @@
 #include <AIS_InteractiveObject.hxx>
 #include <PrsMgr_PresentationManager3d.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-#include <Handle_SelectMgr_Selection.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <Standard_Real.hxx>
 class Poly_Triangulation;
 class TColStd_HArray1OfInteger;
 class Prs3d_Presentation;
-class SelectMgr_Selection;
 
 
 //! Interactive object that draws data from  Poly_Triangulation, optionally with colors associated

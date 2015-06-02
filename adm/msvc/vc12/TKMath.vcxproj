@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{EC9F2CFC-1704-0F89-05DA-631F26923819}</ProjectGuid>
+    <ProjectGuid>{24457244-110A-11B7-0BEA-12499D9F184F}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -314,8 +314,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Householder.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\math\math_IntegerRandom.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_IntegerVector.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Jacobi.cxx">
@@ -345,8 +343,6 @@
     <ClCompile Include="..\..\..\src\math\math_PSOParticlesPool.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Powell.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\math\math_RealRandom.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Recipes.cxx">
     </ClCompile>
@@ -670,6 +666,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d_0.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfAx1_0.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfDir2d_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfDir_0.cxx">
@@ -687,6 +685,8 @@
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfXY_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceOfArray1OfPnt2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceOfAx1_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceOfDir2d_0.cxx">
     </ClCompile>

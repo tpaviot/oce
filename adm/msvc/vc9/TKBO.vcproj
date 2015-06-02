@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBO"
-	ProjectGUID="{1B194ED1-1464-045C-14FC-E861D96FF63B}"
+	ProjectGUID="{ABFA68EC-07FC-1421-097D-FF593F3C38A2}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -615,10 +615,13 @@
 				Name="BRepAlgoAPI"
 				>
 				<File
-					RelativePath="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI.cxx">
+					RelativePath="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Algo.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_BooleanOperation.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_BuilderAlgo.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Check.cxx">
@@ -815,6 +818,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BOPTools\BOPTools_AlgoTools2D.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTools\BOPTools_AlgoTools2D_1.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BOPTools\BOPTools_AlgoTools3D.cxx">

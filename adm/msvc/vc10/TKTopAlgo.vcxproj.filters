@@ -2,55 +2,55 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{D7C03A98-0317-1480-051D-7B26E636D31B}</UniqueIdentifier>
+      <UniqueIdentifier>{B17F87F2-0998-0FC9-0508-1A6174F42686}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntCurvesFace">
-      <UniqueIdentifier>{5DC50393-087A-1815-07D5-2D47219904A7}</UniqueIdentifier>
+      <UniqueIdentifier>{0D43166A-0A18-08EE-1756-8080C7869E9D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MAT">
-      <UniqueIdentifier>{008F891C-1347-108F-14BD-E89DF1D967D7}</UniqueIdentifier>
+      <UniqueIdentifier>{1783D97D-07F5-0123-00A4-BDE864E4282F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MAT2d">
-      <UniqueIdentifier>{308463D4-10C6-0F18-13FB-DCCB48A6237F}</UniqueIdentifier>
+      <UniqueIdentifier>{0A5340DD-041E-0811-1802-081623E587A6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Bisector">
-      <UniqueIdentifier>{64965E3C-0BF6-054B-0A7A-492F21B534B4}</UniqueIdentifier>
+      <UniqueIdentifier>{2CDFC261-0B73-0BA6-02D1-89DBA2B268F4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepMAT2d">
-      <UniqueIdentifier>{971752D7-0C59-043B-031B-7A4AFCD0F78F}</UniqueIdentifier>
+      <UniqueIdentifier>{0899B0EA-11D6-07C1-1087-55A8F8C832FA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepCheck">
-      <UniqueIdentifier>{2D007B57-02AE-13C4-1020-463C461F53D0}</UniqueIdentifier>
+      <UniqueIdentifier>{8ADEE0B2-09EB-197B-0365-F43F1F5C1905}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepBndLib">
-      <UniqueIdentifier>{B7A8DC4A-100B-101B-0D32-941181094CC3}</UniqueIdentifier>
+      <UniqueIdentifier>{6EBDEA17-0A0D-09BD-1365-DFFC803A7916}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepExtrema">
-      <UniqueIdentifier>{8E9F7548-0C42-06D3-0D7E-27066615269E}</UniqueIdentifier>
+      <UniqueIdentifier>{E3B96C8A-12BA-162D-0035-90194A6C555B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepClass">
-      <UniqueIdentifier>{9A8A18EE-13D5-13C1-16FC-4F8194C43660}</UniqueIdentifier>
+      <UniqueIdentifier>{5805973D-185B-18C7-0027-2A298C0DAC0D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepClass3d">
-      <UniqueIdentifier>{CE0189BC-132B-051A-09B8-4F6C6E57CA3A}</UniqueIdentifier>
+      <UniqueIdentifier>{9AC99F12-18C2-15D5-0125-E12C2D1B731F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepLib">
-      <UniqueIdentifier>{9DE30C4A-1795-1001-150E-48F9A6FE1907}</UniqueIdentifier>
+      <UniqueIdentifier>{231DB857-0063-08E4-02F3-3641A50FCA35}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepGProp">
-      <UniqueIdentifier>{1D37CC63-06E8-1840-100A-78264418629B}</UniqueIdentifier>
+      <UniqueIdentifier>{A491EC26-0650-08FE-0227-1E06D3522EB6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepIntCurveSurface">
-      <UniqueIdentifier>{F1C7CEB7-0EA6-04D2-05D0-9F0B6EA77E42}</UniqueIdentifier>
+      <UniqueIdentifier>{78B9A98E-0697-0359-0827-EA98B3CF24C1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepTopAdaptor">
-      <UniqueIdentifier>{524E93FA-196C-0E3C-07CE-34716601038C}</UniqueIdentifier>
+      <UniqueIdentifier>{761CA805-18CB-08E0-0BE4-0FE70307A219}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepBuilderAPI">
-      <UniqueIdentifier>{8FEB3459-0607-0FD1-07A5-71C3C5EBF4B2}</UniqueIdentifier>
+      <UniqueIdentifier>{232EEAED-00CB-104A-0182-AA100601FE5B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepApprox">
-      <UniqueIdentifier>{0E055E38-0406-1603-0129-C3B670FE9862}</UniqueIdentifier>
+      <UniqueIdentifier>{E233F6EC-1629-0EC6-0DE4-E732208BDFA5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -357,6 +357,9 @@
     <ClCompile Include="..\..\..\src\BRepCheck\BRepCheck_Shell.cxx">
       <Filter>Source files\BRepCheck</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepCheck\BRepCheck_Solid.cxx">
+      <Filter>Source files\BRepCheck</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\BRepCheck\BRepCheck_Vertex.cxx">
       <Filter>Source files\BRepCheck</Filter>
     </ClCompile>
@@ -391,6 +394,12 @@
       <Filter>Source files\BRepExtrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepExtrema\BRepExtrema_Poly.cxx">
+      <Filter>Source files\BRepExtrema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepExtrema\BRepExtrema_ShapeProximity.cxx">
+      <Filter>Source files\BRepExtrema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepExtrema\BRepExtrema_TriangleSet.cxx">
       <Filter>Source files\BRepExtrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepClass\BRepClass_FClass2dOfFClassifier_0.cxx">
@@ -442,6 +451,9 @@
       <Filter>Source files\BRepClass3d</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepLib\BRepLib.cxx">
+      <Filter>Source files\BRepLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepLib\BRepLib_CheckCurveOnSurface.cxx">
       <Filter>Source files\BRepLib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepLib\BRepLib_Command.cxx">
@@ -498,6 +510,9 @@
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Face.cxx">
       <Filter>Source files\BRepGProp</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Gauss.cxx">
+      <Filter>Source files\BRepGProp</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Sinert.cxx">
       <Filter>Source files\BRepGProp</Filter>
     </ClCompile>
@@ -547,6 +562,9 @@
       <Filter>Source files\BRepBuilderAPI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_Copy.cxx">
+      <Filter>Source files\BRepBuilderAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_FastSewing.cxx">
       <Filter>Source files\BRepBuilderAPI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_FindPlane.cxx">

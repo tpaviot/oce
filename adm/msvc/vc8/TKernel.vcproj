@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKernel"
-	ProjectGUID="{5292B861-070C-0971-0393-4F0FB4900404}"
+	ProjectGUID="{8F647C70-15C4-0B30-15AB-83D055E27E40}"
 	>
 	<Platforms>
 		<Platform
@@ -580,6 +580,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_OpenFile.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OSD\OSD_Parallel.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_Path.cxx">

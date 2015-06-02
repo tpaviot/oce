@@ -66,7 +66,6 @@
 
 #include <AIS_GraphicTool.hxx>
 #include <AIS_InteractiveContext.hxx>
-#include <AIS_Drawer.hxx>
 #include <HLRBRep.hxx>
 #include <Precision.hxx>
 
@@ -94,10 +93,9 @@ static Standard_Boolean IsInList(const TColStd_ListOfInteger& LL, const Standard
 AIS_Shape::
 AIS_Shape(const TopoDS_Shape& shap):
 AIS_InteractiveObject(PrsMgr_TOP_ProjectorDependant),
-myshape(shap),
-myCompBB(Standard_True),
 myInitAng(0.)
 {
+  Set (shap);
   myFirstCompute = Standard_True;
   SetHilightMode(0);
   myDrawer->SetShadingAspectGlobal(Standard_False);
@@ -167,13 +165,16 @@ void AIS_Shape::Compute(const Handle(PrsMgr_PresentationManager3d)& /*aPresentat
   }
   case 1:
     {
-      Standard_Real anAnglePrev, anAngleNew, aCoeffPrev, aCoeffNew;
-      Standard_Boolean isOwnDeviationAngle       = OwnDeviationAngle      (anAngleNew, anAnglePrev);
-      Standard_Boolean isOwnDeviationCoefficient = OwnDeviationCoefficient(aCoeffNew,  aCoeffPrev);
-      if ((isOwnDeviationAngle       && Abs (anAngleNew - anAnglePrev) > Precision::Angular())
-       || (isOwnDeviationCoefficient && Abs (aCoeffNew  - aCoeffPrev)  > Precision::Confusion()))
+      if (myDrawer->IsAutoTriangulation())
       {
-        BRepTools::Clean (myshape);
+        Standard_Real anAnglePrev, anAngleNew, aCoeffPrev, aCoeffNew;
+        Standard_Boolean isOwnDeviationAngle       = OwnDeviationAngle      (anAngleNew, anAnglePrev);
+        Standard_Boolean isOwnDeviationCoefficient = OwnDeviationCoefficient(aCoeffNew,  aCoeffPrev);
+        if ((isOwnDeviationAngle       && Abs (anAngleNew - anAnglePrev) > Precision::Angular())
+         || (isOwnDeviationCoefficient && Abs (aCoeffNew  - aCoeffPrev)  > Precision::Confusion()))
+        {
+          BRepTools::Clean (myshape);
+        }
       }
 
       //shading only on face...
@@ -254,27 +255,25 @@ void AIS_Shape::Compute(const Handle(Prs3d_Projector)& aProjector,
   }
 
   Handle (Prs3d_Drawer) defdrawer = GetContext()->DefaultDrawer();
-  if (defdrawer->DrawHiddenLine()) 
+  if (defdrawer->DrawHiddenLine())
     {myDrawer->EnableDrawHiddenLine();}
   else {myDrawer->DisableDrawHiddenLine();}
 
   Aspect_TypeOfDeflection prevdef = defdrawer->TypeOfDeflection();
   defdrawer->SetTypeOfDeflection(Aspect_TOD_RELATIVE);
 
-// coefficients for calculation
-
-  Standard_Real prevangle, newangle ,prevcoeff,newcoeff ; 
-  Standard_Boolean isOwnHLRDeviationAngle = OwnHLRDeviationAngle(newangle,prevangle);
-  Standard_Boolean isOwnHLRDeviationCoefficient = OwnHLRDeviationCoefficient(newcoeff,prevcoeff);
-  if (((Abs (newangle - prevangle) > Precision::Angular()) && isOwnHLRDeviationAngle) ||
-      ((Abs (newcoeff - prevcoeff) > Precision::Confusion()) && isOwnHLRDeviationCoefficient)) {
-#ifdef OCCT_DEBUG
-      cout << "AIS_Shape : compute"<<endl;
-      cout << "newangle  : " << newangle << " # de " << "prevangl  : " << prevangle << " OU "<<endl;
-      cout << "newcoeff  : " << newcoeff << " # de " << "prevcoeff : " << prevcoeff << endl;
-#endif
+  if (myDrawer->IsAutoTriangulation())
+  {
+    // coefficients for calculation
+    Standard_Real aPrevAngle, aNewAngle, aPrevCoeff, aNewCoeff;
+    Standard_Boolean isOwnHLRDeviationAngle = OwnHLRDeviationAngle (aNewAngle, aPrevAngle);
+    Standard_Boolean isOwnHLRDeviationCoefficient = OwnHLRDeviationCoefficient (aNewCoeff, aPrevCoeff);
+    if (((Abs (aNewAngle - aPrevAngle) > Precision::Angular()) && isOwnHLRDeviationAngle) ||
+        ((Abs (aNewCoeff - aPrevCoeff) > Precision::Confusion()) && isOwnHLRDeviationCoefficient))
+    {
       BRepTools::Clean(SH);
     }
+  }
   
   {
     try {
@@ -383,7 +382,6 @@ void AIS_Shape::ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,
 // POP protection against crash in low layers
 
   Standard_Real aDeflection = Prs3d::GetDeflection(shape, myDrawer);
-  Standard_Boolean autoTriangulation = Standard_True;
   try {  
     OCC_CATCH_SIGNALS
     StdSelect_BRepSelectionTool::Load(aSelection,
@@ -392,10 +390,11 @@ void AIS_Shape::ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,
                                       TypOfSel,
                                       aDeflection,
                                       myDrawer->HLRAngle(),
-                                      autoTriangulation); 
+                                      myDrawer->IsAutoTriangulation());
   } catch ( Standard_Failure ) {
 //    cout << "a Shape should be incorrect : A Selection on the Bnd  is activated   "<<endl;
     if ( aMode == 0 ) {
+      aSelection->Clear();
       Bnd_Box B = BoundingBox();
       Handle(StdSelect_BRepOwner) aOwner = new StdSelect_BRepOwner(shape,this);
       Handle(Select3D_SensitiveBox) aSensitiveBox = new Select3D_SensitiveBox(aOwner,B);
@@ -440,28 +439,40 @@ void AIS_Shape::SetColor(const Quantity_NameOfColor aCol)
 //purpose  :
 //=======================================================================
 
-void AIS_Shape::setColor (const Handle(AIS_Drawer)& theDrawer,
-                          const Quantity_Color&     theColor) const
+void AIS_Shape::setColor (const Handle(Prs3d_Drawer)& theDrawer,
+                          const Quantity_Color&       theColor) const
 {
-  if (!theDrawer->HasShadingAspect())
+  if (!theDrawer->HasOwnShadingAspect())
   {
     theDrawer->SetShadingAspect (new Prs3d_ShadingAspect());
-    *theDrawer->ShadingAspect()->Aspect() = *theDrawer->Link()->ShadingAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->ShadingAspect()->Aspect() = *theDrawer->Link()->ShadingAspect()->Aspect();
+    }
   }
-  if (!theDrawer->HasLineAspect())
+  if (!theDrawer->HasOwnLineAspect())
   {
     theDrawer->SetLineAspect (new Prs3d_LineAspect (Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.0));
-    *theDrawer->LineAspect()->Aspect() = *theDrawer->Link()->LineAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->LineAspect()->Aspect() = *theDrawer->Link()->LineAspect()->Aspect();
+    }
   }
-  if (!theDrawer->HasWireAspect())
+  if (!theDrawer->HasOwnWireAspect())
   {
     theDrawer->SetWireAspect (new Prs3d_LineAspect (Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.0));
-    *theDrawer->WireAspect()->Aspect() = *theDrawer->Link()->WireAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->WireAspect()->Aspect() = *theDrawer->Link()->WireAspect()->Aspect();
+    }
   }
-  if (!theDrawer->HasPointAspect())
+  if (!theDrawer->HasOwnPointAspect())
   {
     theDrawer->SetPointAspect (new Prs3d_PointAspect (Aspect_TOM_POINT, Quantity_NOC_BLACK, 1.0));
-    *theDrawer->PointAspect()->Aspect() = *theDrawer->Link()->PointAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->PointAspect()->Aspect() = *theDrawer->Link()->PointAspect()->Aspect();
+    }
   }
   // disable dedicated line aspects
   theDrawer->SetFreeBoundaryAspect  (theDrawer->LineAspect());
@@ -559,26 +570,53 @@ void AIS_Shape::UnsetColor()
   }
   else
   {
-    Quantity_Color aColor;
-    AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_Line,   aColor);
+    Quantity_Color aColor = Quantity_NOC_YELLOW;
+    if (myDrawer->HasLink())
+    {
+      AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_Line,   aColor);
+    }
     myDrawer->LineAspect()->SetColor (aColor);
-    AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_Wire,   aColor);
+    aColor = Quantity_NOC_RED;
+    if (myDrawer->HasLink())
+    {
+      AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_Wire,   aColor);
+    }
     myDrawer->WireAspect()->SetColor (aColor);
-    AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_Free,   aColor);
+    aColor = Quantity_NOC_GREEN;
+    if (myDrawer->HasLink())
+    {
+      AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_Free,   aColor);
+    }
     myDrawer->FreeBoundaryAspect()->SetColor (aColor);
-    AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_UnFree, aColor);
+    aColor = Quantity_NOC_YELLOW;
+    if (myDrawer->HasLink())
+    {
+      AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_UnFree, aColor);
+    }
     myDrawer->UnFreeBoundaryAspect()->SetColor (aColor);
-    AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_Seen,   aColor);
+    if (myDrawer->HasLink())
+    {
+      AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_Seen,   aColor);
+    }
     myDrawer->SeenLineAspect()->SetColor (aColor);
   }
 
   if (HasMaterial()
    || IsTransparent())
   {
-    Graphic3d_MaterialAspect mat = AIS_GraphicTool::GetMaterial(HasMaterial()? myDrawer : myDrawer->Link());
+    Graphic3d_MaterialAspect aDefaultMat (Graphic3d_NOM_BRASS);
+    Graphic3d_MaterialAspect mat = aDefaultMat;
+    if (HasMaterial() || myDrawer->HasLink())
+    {
+      mat = AIS_GraphicTool::GetMaterial(HasMaterial()? myDrawer : myDrawer->Link());
+    }
     if (HasMaterial())
     {
-      Quantity_Color aColor = myDrawer->Link()->ShadingAspect()->Color (myCurrentFacingModel);
+      Quantity_Color aColor = aDefaultMat.AmbientColor();
+      if (myDrawer->HasLink())
+      {
+        aColor = myDrawer->Link()->ShadingAspect()->Color (myCurrentFacingModel);
+      }
       mat.SetColor (aColor);
     }
     if (IsTransparent())
@@ -638,18 +676,24 @@ void AIS_Shape::UnsetColor()
 //purpose  :
 //=======================================================================
 
-void AIS_Shape::setWidth (const Handle(AIS_Drawer)& theDrawer,
-                          const Standard_Real       theLineWidth) const
+void AIS_Shape::setWidth (const Handle(Prs3d_Drawer)& theDrawer,
+                          const Standard_Real         theLineWidth) const
 {
-  if (!theDrawer->HasLineAspect())
+  if (!theDrawer->HasOwnLineAspect())
   {
     theDrawer->SetLineAspect (new Prs3d_LineAspect (Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.0));
-    *theDrawer->LineAspect()->Aspect() = *theDrawer->Link()->LineAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->LineAspect()->Aspect() = *theDrawer->Link()->LineAspect()->Aspect();
+    }
   }
-  if (!theDrawer->HasWireAspect())
+  if (!theDrawer->HasOwnWireAspect())
   {
     theDrawer->SetWireAspect (new Prs3d_LineAspect (Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.0));
-    *theDrawer->WireAspect()->Aspect() = *theDrawer->Link()->WireAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->WireAspect()->Aspect() = *theDrawer->Link()->WireAspect()->Aspect();
+    }
   }
   // disable dedicated line aspects
   theDrawer->SetFreeBoundaryAspect  (theDrawer->LineAspect());
@@ -701,13 +745,50 @@ void AIS_Shape::UnsetWidth()
   }
   else
   {
-    myDrawer->LineAspect()          ->SetWidth (AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_Line));
-    myDrawer->WireAspect()          ->SetWidth (AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_Wire));
-    myDrawer->FreeBoundaryAspect()  ->SetWidth (AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_Free));
-    myDrawer->UnFreeBoundaryAspect()->SetWidth (AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_UnFree));
-    myDrawer->SeenLineAspect()      ->SetWidth (AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_Seen));
+    myDrawer->LineAspect()          ->SetWidth (myDrawer->HasLink() ?
+      AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_Line) : 1.);
+    myDrawer->WireAspect()          ->SetWidth (myDrawer->HasLink() ?
+      AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_Wire) : 1.);
+    myDrawer->FreeBoundaryAspect()  ->SetWidth (myDrawer->HasLink() ?
+      AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_Free) : 1.);
+    myDrawer->UnFreeBoundaryAspect()->SetWidth (myDrawer->HasLink() ?
+      AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_UnFree) : 1.);
+    myDrawer->SeenLineAspect()      ->SetWidth (myDrawer->HasLink() ?
+      AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_Seen) : 1.);
   }
   LoadRecomputable (AIS_WireFrame);
+}
+
+//=======================================================================
+//function : setMaterial
+//purpose  :
+//=======================================================================
+
+void AIS_Shape::setMaterial (const Handle(Prs3d_Drawer)&     theDrawer,
+                             const Graphic3d_MaterialAspect& theMaterial,
+                             const Standard_Boolean          theToKeepColor,
+                             const Standard_Boolean          theToKeepTransp) const
+{
+  const Quantity_Color aColor  = theDrawer->ShadingAspect()->Material     (myCurrentFacingModel).Color();
+  const Standard_Real  aTransp = theDrawer->ShadingAspect()->Transparency (myCurrentFacingModel);
+  if (!theDrawer->HasOwnShadingAspect())
+  {
+    theDrawer->SetShadingAspect (new Prs3d_ShadingAspect());
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->ShadingAspect()->Aspect() = *theDrawer->Link()->ShadingAspect()->Aspect();
+    }
+  }
+  theDrawer->ShadingAspect()->SetMaterial (theMaterial, myCurrentFacingModel);
+
+  if (theToKeepColor)
+  {
+    theDrawer->ShadingAspect()->SetColor (aColor, myCurrentFacingModel);
+  }
+  if (theToKeepTransp)
+  {
+    theDrawer->ShadingAspect()->SetTransparency (aTransp, myCurrentFacingModel);
+  }
 }
 
 //=======================================================================
@@ -727,19 +808,8 @@ void AIS_Shape::SetMaterial(const Graphic3d_NameOfMaterial aMat)
 
 void AIS_Shape::SetMaterial (const Graphic3d_MaterialAspect& theMat)
 {
-  if (!myDrawer->HasShadingAspect())
-  {
-    myDrawer->SetShadingAspect (new Prs3d_ShadingAspect());
-    *myDrawer->ShadingAspect()->Aspect() = *myDrawer->Link()->ShadingAspect()->Aspect();
-  }
+  setMaterial (myDrawer, theMat, HasColor(), IsTransparent());
   hasOwnMaterial = Standard_True;
-
-  myDrawer->ShadingAspect()->SetMaterial (theMat, myCurrentFacingModel);
-  if (HasColor())
-  {
-    myDrawer->ShadingAspect()->SetColor (myOwnColor, myCurrentFacingModel);
-  }
-  myDrawer->ShadingAspect()->SetTransparency (myTransparency, myCurrentFacingModel);
 
   // modify shading presentation without re-computation
   const PrsMgr_Presentations&        aPrsList  = Presentations();
@@ -787,8 +857,11 @@ void AIS_Shape::UnsetMaterial()
   if (HasColor()
    || IsTransparent())
   {
-    myDrawer->ShadingAspect()->SetMaterial (myDrawer->Link()->ShadingAspect()->Material (myCurrentFacingModel),
-                                            myCurrentFacingModel);
+    if(myDrawer->HasLink())
+    {
+      myDrawer->ShadingAspect()->SetMaterial (myDrawer->Link()->ShadingAspect()->Material (myCurrentFacingModel),
+                                              myCurrentFacingModel);
+    }
     if (HasColor())
     {
       myDrawer->ShadingAspect()->SetColor        (myOwnColor,     myCurrentFacingModel);
@@ -833,13 +906,16 @@ void AIS_Shape::UnsetMaterial()
 //purpose  :
 //=======================================================================
 
-void AIS_Shape::setTransparency (const Handle(AIS_Drawer)& theDrawer,
-                                 const Standard_Real       theValue) const
+void AIS_Shape::setTransparency (const Handle(Prs3d_Drawer)& theDrawer,
+                                 const Standard_Real         theValue) const
 {
-  if (!theDrawer->HasShadingAspect())
+  if (!theDrawer->HasOwnShadingAspect())
   {
     theDrawer->SetShadingAspect (new Prs3d_ShadingAspect());
-    *theDrawer->ShadingAspect()->Aspect() = *theDrawer->Link()->ShadingAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->ShadingAspect()->Aspect() = *theDrawer->Link()->ShadingAspect()->Aspect();
+    }
   }
 
   // override transparency
@@ -892,7 +968,7 @@ void AIS_Shape::SetTransparency (const Standard_Real theValue)
 void AIS_Shape::UnsetTransparency()
 {
   myTransparency = 0.0;
-  if (!myDrawer->HasShadingAspect())
+  if (!myDrawer->HasOwnShadingAspect())
   {
     return;
   }
@@ -978,7 +1054,7 @@ const Bnd_Box& AIS_Shape::BoundingBox()
 
 Standard_Boolean AIS_Shape::SetOwnDeviationCoefficient ()
 {
-  Standard_Boolean itSet = myDrawer->IsOwnDeviationCoefficient();
+  Standard_Boolean itSet = myDrawer->HasOwnDeviationCoefficient();
   if(itSet)  myDrawer->SetDeviationCoefficient();
   return itSet;
 }
@@ -991,7 +1067,7 @@ Standard_Boolean AIS_Shape::SetOwnDeviationCoefficient ()
 
 Standard_Boolean AIS_Shape::SetOwnHLRDeviationCoefficient ()
 {
-  Standard_Boolean itSet = myDrawer->IsOwnHLRDeviationCoefficient();
+  Standard_Boolean itSet = myDrawer->HasOwnHLRDeviationCoefficient();
   if(itSet)  myDrawer->SetHLRDeviationCoefficient();
   return itSet;
 
@@ -1005,7 +1081,7 @@ Standard_Boolean AIS_Shape::SetOwnHLRDeviationCoefficient ()
 
 Standard_Boolean AIS_Shape::SetOwnDeviationAngle ()
 {
-  Standard_Boolean itSet = myDrawer->IsOwnDeviationAngle();
+  Standard_Boolean itSet = myDrawer->HasOwnDeviationAngle();
   if(itSet)  myDrawer->SetDeviationAngle();
   return itSet;
 
@@ -1019,7 +1095,7 @@ Standard_Boolean AIS_Shape::SetOwnDeviationAngle ()
 
 Standard_Boolean AIS_Shape::SetOwnHLRDeviationAngle ()
 {
-  Standard_Boolean itSet = myDrawer->IsOwnHLRDeviationAngle();
+  Standard_Boolean itSet = myDrawer->HasOwnHLRDeviationAngle();
   if(itSet)  myDrawer->SetHLRAngle();
   return itSet;
 
@@ -1120,7 +1196,7 @@ Standard_Boolean AIS_Shape::OwnDeviationCoefficient ( Standard_Real &  aCoeffici
 {
   aCoefficient = myDrawer->DeviationCoefficient();
   aPreviousCoefficient = myDrawer->PreviousDeviationCoefficient ();
-  return myDrawer->IsOwnDeviationCoefficient() ;
+  return myDrawer->HasOwnDeviationCoefficient() ;
 }
 
 //=======================================================================
@@ -1133,7 +1209,7 @@ Standard_Boolean AIS_Shape::OwnHLRDeviationCoefficient ( Standard_Real & aCoeffi
 {
   aCoefficient = myDrawer->HLRDeviationCoefficient();
   aPreviousCoefficient = myDrawer->PreviousHLRDeviationCoefficient ();
-  return myDrawer->IsOwnHLRDeviationCoefficient();
+  return myDrawer->HasOwnHLRDeviationCoefficient();
 
 }
 
@@ -1147,7 +1223,7 @@ Standard_Boolean AIS_Shape::OwnDeviationAngle ( Standard_Real &  anAngle,
 {
   anAngle = myDrawer->DeviationAngle();
   aPreviousAngle = myDrawer->PreviousDeviationAngle (); 
-  return myDrawer->IsOwnDeviationAngle();
+  return myDrawer->HasOwnDeviationAngle();
 }
 
 //=======================================================================
@@ -1160,5 +1236,5 @@ Standard_Boolean AIS_Shape::OwnHLRDeviationAngle ( Standard_Real &  anAngle,
 {
   anAngle = myDrawer->HLRAngle();
   aPreviousAngle = myDrawer->PreviousHLRDeviationAngle (); 
-  return myDrawer->IsOwnHLRDeviationAngle();
+  return myDrawer->HasOwnHLRDeviationAngle();
 }

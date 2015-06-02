@@ -1,3 +1,0 @@
-#include <Bnd_Box2d.hxx>
-#include <Bnd_HArray1OfBox2d.hxx>
-#include <SelectBasics_SortAlgo.hxx>

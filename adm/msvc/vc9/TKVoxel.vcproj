@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKVoxel"
-	ProjectGUID="{3D26E87C-0CF7-15A5-0B11-6E431FF8AB02}"
+	ProjectGUID="{57C5CE67-10F7-1615-1414-D20DC586037F}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

@@ -170,9 +170,7 @@ public:
   //! asked for copy by the user of CopyTool, not by copying
   //! another Entity)
   Standard_EXPORT   Interface_EntityIterator RootResult (const Standard_Boolean withreports = Standard_False)  const;
-  
-  Standard_EXPORT virtual   void Destroy() ;
-Standard_EXPORT virtual ~Interface_CopyTool() { Destroy(); }
+  Standard_EXPORT virtual ~Interface_CopyTool();
 
 
 

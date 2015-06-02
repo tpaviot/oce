@@ -59,6 +59,8 @@ public:
     static   GeomInt_TheMultiLineOfWLApprox MakeMLBetween (const GeomInt_TheMultiLineOfWLApprox& ML, const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer NbPMin) ;
   
     static   Approx_Status WhatStatus (const GeomInt_TheMultiLineOfWLApprox& ML, const Standard_Integer I1, const Standard_Integer I2) ;
+  
+  Standard_EXPORT static   void Dump (const GeomInt_TheMultiLineOfWLApprox& ML) ;
 
 
 

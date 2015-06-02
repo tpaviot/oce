@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBRep"
-	ProjectGUID="{315AD5C4-111E-0283-0733-BDB0417EAAF8}"
+	ProjectGUID="{93298628-0701-1222-16CD-6CE1A351AEB5}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

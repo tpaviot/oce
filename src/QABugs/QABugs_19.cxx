@@ -22,6 +22,7 @@
 #include <V3d_View.hxx>
 #include <TopoDS_Shape.hxx>
 #include <AIS_InteractiveContext.hxx>
+#include <AIS_LocalContext.hxx>
 #include <AIS_TexturedShape.hxx>
 #include <Image_PixMap.hxx>
 #include <Image_Color.hxx>
@@ -39,8 +40,9 @@
 #include <cstdio>
 #include <cmath>
 #include <iostream>
-#include <OSD_PerfMeter.hxx>
 #include <OSD_Timer.hxx>
+#include <OSD_Parallel.hxx>
+#include <OSD_PerfMeter.hxx>
 #include <BRepPrimAPI_MakeBox.hxx>
 #include <BRepPrimAPI_MakeSphere.hxx>
 #include <BRepAlgo_Cut.hxx>
@@ -49,6 +51,7 @@
 #include <TCollection_HAsciiString.hxx>
 #include <GeomFill_Trihedron.hxx>
 #include <BRepOffsetAPI_MakePipe.hxx>
+#include <Standard_Atomic.hxx>
 
 #include <Standard_Version.hxx>
 
@@ -156,33 +159,23 @@ static Standard_Integer OCC23237 (Draw_Interpretor& di, Standard_Integer /*argc*
   return 0;
 }
 
-#ifdef HAVE_TBB
-
-#include <Standard_Atomic.hxx>
-#include <tbb/blocked_range.h>
-#include <tbb/parallel_for.h>
-
 class IncrementerDecrementer
 {
 public:
     IncrementerDecrementer (Standard_Integer* theVal, Standard_Boolean thePositive) : myVal (theVal), myPositive (thePositive)
     {}
-    void operator() (const tbb::blocked_range<size_t>& r) const
+    void operator() (const size_t) const
     {
-        if (myPositive)
-            for (size_t i = r.begin(); i != r.end(); ++i)
-                Standard_Atomic_Increment (myVal);
-        else
-            for (size_t i = r.begin(); i != r.end(); ++i)
-                Standard_Atomic_Decrement (myVal);
+      if ( myPositive )
+        Standard_Atomic_Increment(myVal);
+      else
+        Standard_Atomic_Decrement(myVal);
     }
 private:
     Standard_Integer*   myVal;
-    Standard_Boolean   myPositive;
+    Standard_Boolean    myPositive;
 };
-#endif
 
-#ifdef HAVE_TBB
 static Standard_Integer OCC22980 (Draw_Interpretor& di, Standard_Integer /*argc*/, const char ** /*argv*/)
 {
   int aSum = 0;
@@ -200,25 +193,15 @@ static Standard_Integer OCC22980 (Draw_Interpretor& di, Standard_Integer /*argc*
   const int N = 1 << 24; //big enough to ensure concurrency
 
   //increment
-  tbb::parallel_for (tbb::blocked_range<size_t> (0, N), IncrementerDecrementer (&aSum, true));
+  OSD_Parallel::For(0, N, IncrementerDecrementer (&aSum, true));
   QCOMPARE (aSum, N);
 
   //decrement
-  tbb::parallel_for (tbb::blocked_range<size_t> (0, N), IncrementerDecrementer (&aSum, false));
+  OSD_Parallel::For(0, N, IncrementerDecrementer (&aSum, false));
   QCOMPARE (aSum, 0);
 
   return 0;
 }
-
-#else /* HAVE_TBB */
-
-static Standard_Integer OCC22980 (Draw_Interpretor& di, Standard_Integer /*argc*/, const char **argv)
-{
-  di << "Test skipped: command " << argv[0] << " requires TBB library\n";
-  return 0;
-}
-
-#endif /* HAVE_TBB */
 
 #include <TDocStd_Application.hxx>
 #include <XCAFApp_Application.hxx>
@@ -329,7 +312,7 @@ static Standard_Boolean OCC23774Test(const TopoDS_Face& grossPlateFace, const To
     di << "Not Done1 " << "\n";
     return Standard_False;
   }
-  const TopoDS_Shape& step1ModifiedShape = transformer1.ModifiedShape(originalWire);
+  TopoDS_Shape step1ModifiedShape = transformer1.ModifiedShape(originalWire);
   
   BRepExtrema_DistShapeShape distShapeShape1(grossPlateFace,step1ModifiedShape,Extrema_ExtFlag_MIN);
   if(!distShapeShape1.IsDone())
@@ -347,7 +330,7 @@ static Standard_Boolean OCC23774Test(const TopoDS_Face& grossPlateFace, const To
     di << "Not Done1 \n";
     return Standard_False;
   }
-  const TopoDS_Shape& step2ModifiedShape = transformer1.ModifiedShape(step1ModifiedShape);
+  TopoDS_Shape step2ModifiedShape = transformer1.ModifiedShape(step1ModifiedShape);
 
   //This is identity matrix for values but for type is gp_Rotation ?!
   gp_Trsf2d mirror11 = mirror1;
@@ -395,102 +378,148 @@ static Standard_Integer OCC23774(Draw_Interpretor& di, Standard_Integer n, const
 #include <Geom_BSplineSurface.hxx>
 #include <Draw.hxx>
 #include <OSD_Thread.hxx>
-static void GeomConvertTest (Draw_Interpretor& di, Standard_Integer theTargetNbUPoles, Standard_CString theFileName)
-{
-	Handle(Geom_Surface) aSurf = DrawTrSurf::GetSurface(theFileName);
-	GeomConvert_ApproxSurface aGAS (aSurf, 1e-4, GeomAbs_C1, GeomAbs_C1, 9, 9, 100, 1);
-	if (!aGAS.IsDone()) {
-		di << "ApproxSurface is not done!" << "\n";
-		return;
-	}
-	const Handle(Geom_BSplineSurface)& aBSurf = aGAS.Surface();
-	if (aBSurf.IsNull()) {
-		di << "BSplineSurface is not created!" << "\n";
-		return;
-	}
-	di << "Number of UPoles:" << aBSurf->NbUPoles() << "\n";
-	QCOMPARE (aBSurf->NbUPoles(), theTargetNbUPoles);
-}
 
-struct aData {
-	Draw_Interpretor* di;
-	Standard_Integer nbupoles;
-	Standard_CString filename;
+struct GeomConvertTest_Data
+{
+  Standard_Integer nbupoles;
+  Handle(Geom_Surface) surf;
 };
 
-Standard_EXPORT Standard_Address convert(Standard_Address data)
+static Standard_Address GeomConvertTest (Standard_Address data)
 {
-	aData* info = (aData*) data;
-	GeomConvertTest(*(info->di),info->nbupoles,info->filename);
-	return NULL;
+  GeomConvertTest_Data* info = (GeomConvertTest_Data*)data;
+
+  GeomConvert_ApproxSurface aGAS (info->surf, 1e-4, GeomAbs_C1, GeomAbs_C1, 9, 9, 100, 1);
+  if (!aGAS.IsDone()) {
+    cout << "Error: ApproxSurface is not done!" << endl;
+    return Standard_False;
+  }
+  const Handle(Geom_BSplineSurface)& aBSurf = aGAS.Surface();
+  if (aBSurf.IsNull()) {
+    cout << "Error: BSplineSurface is not created!" << endl;
+    return Standard_False;
+  }
+  cout << "Number of UPoles:" << aBSurf->NbUPoles();
+  if (aBSurf->NbUPoles() == info->nbupoles)
+  {
+    cout << ": OK" << endl;
+    return data; // any non-null pointer
+  }
+  else
+  {
+    cout << ": Error, must be " << info->nbupoles << endl;
+    return 0;
+  }
 }
 
 static Standard_Integer OCC23952sweep (Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
 {
-	if (argc != 3) {
-		di << "Usage: " << argv[0] << " invalid number of arguments" << "\n";
-		return 1;
-	}
-	struct aData aStorage;
-	aStorage.di = &di;
-	aStorage.nbupoles = Draw::Atoi(argv[1]); 
-	aStorage.filename = argv[2];
+  if (argc != 3) {
+    cout << "Error: invalid number of arguments" << endl;
+    return 1;
+  }
 
-	OSD_Thread aThread1(convert);
-	aThread1.Run(&aStorage);
-	GeomConvertTest(di,aStorage.nbupoles,aStorage.filename);
-	cout << "result of thread: " << aThread1.Wait() << endl;
+  struct GeomConvertTest_Data aStorage;
+  aStorage.nbupoles = Draw::Atoi(argv[1]); 
+  aStorage.surf = DrawTrSurf::GetSurface(argv[2]);
+  if (aStorage.surf.IsNull())
+  {
+    cout << "Error: " << argv[2] << " is not a DRAW surface!" << endl;
+    return 0;
+  }
 
-	return 0;
+  // start conversion in several threads
+  const int NBTHREADS = 100;
+  OSD_Thread aThread[NBTHREADS];
+  for (int i=0; i < NBTHREADS; i++)
+  { 
+    aThread[i].SetFunction (GeomConvertTest);
+    if (!aThread[i].Run(&aStorage))
+      di << "Error: Cannot start thread << " << i << "\n";
+  }
+
+  // check results
+  for (int i=0; i < NBTHREADS; i++)
+  { 
+    Standard_Address aResult = 0;
+    if (!aThread[i].Wait(aResult))
+      di << "Error: Failed waiting for thread << " << i << "\n";
+    if (!aResult) 
+      di << "Error: wrong number of poles in thread " << i << "!\n";
+  }
+
+  return 0;
 }
 
 #include <GeomInt_IntSS.hxx>
-static void GeomIntSSTest (Draw_Interpretor& di, Standard_Integer theNbSol, Standard_CString theFileName1, Standard_CString theFileName2)
+
+struct GeomIntSSTest_Data
 {
-	Handle(Geom_Surface) aSurf1 = DrawTrSurf::GetSurface(theFileName1);
-	Handle(Geom_Surface) aSurf2 = DrawTrSurf::GetSurface(theFileName2);
-	GeomInt_IntSS anInter;
-	anInter.Perform(aSurf1, aSurf2, Precision::Confusion(), Standard_True);
-	if (!anInter.IsDone()) {
-		di << "An intersection is not done!" << "\n";
-		return;
-	}
-
-	di << "Number of Lines:" << anInter.NbLines() << "\n";
-	QCOMPARE (anInter.NbLines(), theNbSol);
-}
-
-struct aNewData {
-	Draw_Interpretor* di;
-	Standard_Integer nbsol;
-	Standard_CString filename1;
-	Standard_CString filename2;
+  Standard_Integer nbsol;
+  Handle(Geom_Surface) surf1, surf2;
 };
-Standard_EXPORT Standard_Address convert_inter(Standard_Address data)
+
+static Standard_Address GeomIntSSTest (Standard_Address data)
 {
-	aNewData* info = (aNewData*) data;
-	GeomIntSSTest(*(info->di),info->nbsol,info->filename1,info->filename2);
-	return NULL;
+  GeomIntSSTest_Data* info = (GeomIntSSTest_Data*)data;
+  GeomInt_IntSS anInter;
+  anInter.Perform (info->surf1, info->surf2, Precision::Confusion(), Standard_True);
+  if (!anInter.IsDone()) {
+    cout << "An intersection is not done!" << endl;
+    return 0;
+  }
+
+  cout << "Number of Lines:" << anInter.NbLines();
+  if (anInter.NbLines() == info->nbsol)
+  {
+    cout << ": OK" << endl;
+    return data; // any non-null pointer
+  }
+  else
+  {
+    cout << ": Error, must be " << info->nbsol << endl;
+    return 0;
+  }
 }
 
 static Standard_Integer OCC23952intersect (Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
 {
-	if (argc != 4) {
-		di << "Usage: " << argv[0] << " invalid number of arguments" << "\n";
-		return 1;
-	}
-	struct aNewData aStorage;
-	aStorage.di = &di;
-	aStorage.nbsol = Draw::Atoi(argv[1]); 
-	aStorage.filename1 = argv[2];
-	aStorage.filename2 = argv[3];
+  if (argc != 4) {
+    cout << "Error: invalid number of arguments" << endl;
+    return 1;
+  }
 
-	OSD_Thread aThread1(convert_inter);
-	aThread1.Run(&aStorage);
-	GeomIntSSTest(di,aStorage.nbsol,aStorage.filename1,aStorage.filename2);
-	cout << "result of thread: " << aThread1.Wait() << endl;
+  struct GeomIntSSTest_Data aStorage;
+  aStorage.nbsol = Draw::Atoi(argv[1]); 
+  aStorage.surf1 = DrawTrSurf::GetSurface(argv[2]);
+  aStorage.surf2 = DrawTrSurf::GetSurface(argv[3]);
+  if (aStorage.surf1.IsNull() || aStorage.surf2.IsNull())
+  {
+    cout << "Error: Either " << argv[2] << " or " << argv[3] << " is not a DRAW surface!" << endl;
+    return 0;
+  }
 
-	return 0;
+  // start conversion in several threads
+  const int NBTHREADS = 100;
+  OSD_Thread aThread[NBTHREADS];
+  for (int i=0; i < NBTHREADS; i++)
+  { 
+    aThread[i].SetFunction (GeomIntSSTest);
+    if (!aThread[i].Run(&aStorage))
+      di << "Error: Cannot start thread << " << i << "\n";
+  }
+
+  // check results
+  for (int i=0; i < NBTHREADS; i++)
+  { 
+    Standard_Address aResult = 0;
+    if (!aThread[i].Wait(aResult))
+      di << "Error: Failed waiting for thread << " << i << "\n";
+    if (!aResult) 
+      di << "Error: wrong number of intersections in thread " << i << "!\n"; 
+  }
+
+  return 0;
 }
 
 #include <Geom_SurfaceOfRevolution.hxx> 
@@ -1774,7 +1803,7 @@ struct QABugs_NHandleClass
 #include <STEPCAFControl_Writer.hxx>
 static Standard_Integer OCC23951 (Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
 {
-  if (argc != 1) {
+  if (argc != 2) {
     di << "Usage: " << argv[0] << " invalid number of arguments" << "\n";
     return 1;
   }
@@ -1796,7 +1825,7 @@ static Standard_Integer OCC23951 (Draw_Interpretor& di, Standard_Integer argc, c
     return 1;
   }
 
-  writer.Write("test_box.step");
+  writer.Write(argv[1]);
   return 0;
 }
 
@@ -2219,11 +2248,11 @@ static TopoDS_Shape CreateTestShape (int& theShapeNb)
 #include <TNaming_Builder.hxx>
 static Standard_Integer OCC24931 (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
 {
-  if (argc != 1) {
+  if (argc != 2) {
     di << "Usage: " << argv[0] << " invalid number of arguments"<<"\n";
     return 1;
   }
-  TCollection_ExtendedString aFileName ("testdocument.xml");
+  TCollection_ExtendedString aFileName (argv[1]);
   PCDM_StoreStatus aSStatus  = PCDM_SS_Failure;
 
   Handle(TDocStd_Application) anApp = new AppStd_Application;
@@ -2902,6 +2931,92 @@ static Standard_Integer OCC25340 (Draw_Interpretor& /*theDI*/,
   return 0;
 }
 
+//=======================================================================
+//function : OCC24826
+//purpose  :
+//=======================================================================
+class ParallelTest_Saxpy
+{
+public:
+  typedef NCollection_Array1<Standard_Real> Vector;
+
+  //! Constructor
+  ParallelTest_Saxpy(const Vector& theX, Vector& theY, Standard_Real theScalar)
+  : myX(theX),
+    myY(theY),
+    myScalar(theScalar)
+  {
+  }
+
+  //! Dummy calculation
+  void operator() (const Standard_Integer theIndex) const
+  {
+    myY(theIndex) = myScalar * myX(theIndex) + myY(theIndex);
+  }
+
+private:
+  ParallelTest_Saxpy( const ParallelTest_Saxpy& );
+  ParallelTest_Saxpy& operator =( ParallelTest_Saxpy& );
+
+private:
+  const Vector&       myX;
+  Vector&             myY;
+  const Standard_Real myScalar;
+};
+
+//---------------------------------------------------------------------
+static Standard_Integer OCC24826(Draw_Interpretor& theDI,
+                                 Standard_Integer  trheArgc,
+                                 const char**      theArgv)
+{
+  if ( trheArgc != 2 )
+  {
+    theDI << "Usage: "
+          << theArgv[0]
+          << " vec_length\n";
+    return 1;
+  }
+
+  // Generate data;
+  Standard_Integer aLength = Draw::Atoi(theArgv[1]);
+
+  NCollection_Array1<Standard_Real> aX (0, aLength - 1);
+  NCollection_Array1<Standard_Real> anY(0, aLength - 1);
+
+  for ( Standard_Integer i = 0; i < aLength; ++i )
+  {
+    aX(i) = anY(i) = (Standard_Real) i;
+  }
+
+  OSD_Timer aTimer;
+
+  aTimer.Start();
+
+  //! Serial proccesing
+  for ( Standard_Integer i = 0; i < aLength; ++i )
+  {
+    anY(i) = 1e-6 * aX(i) + anY(i);
+  }
+
+  aTimer.Stop();
+  cout << "Processing time (sequential mode):\n";
+  aTimer.Show();
+
+  const ParallelTest_Saxpy aFunctor(aX, anY, 1e-6);
+
+  aTimer.Reset();
+  aTimer.Start();
+
+  // Parallel processing
+  OSD_Parallel::For(0, aLength, aFunctor);
+
+  aTimer.Stop();
+  cout << "Processing time (parallel mode):\n";
+  aTimer.Show();
+
+  return 0;
+}
+
 /*****************************************************************************/
 
 #include <GeomAPI_IntSS.hxx>
@@ -3126,6 +3241,631 @@ static Standard_Integer OCC25446 (Draw_Interpretor& theDI,
   return 0;
 }
 
+//====================================================
+// Auxiliary functor class for the command OCC25545;
+// it gets access to a vertex with the given index and
+// checks that X coordinate of the point is equal to index;
+// if it is not so then a data race is reported.
+//====================================================
+struct OCC25545_Functor
+{
+  OCC25545_Functor(const std::vector<TopoDS_Shape>& theShapeVec)
+    : myShapeVec(&theShapeVec),
+      myIsRaceDetected(0)
+  {}
+
+  void operator()(size_t i) const
+  {
+    if (!myIsRaceDetected) {
+      const TopoDS_Vertex& aV = TopoDS::Vertex (myShapeVec->at(i));
+      gp_Pnt aP = BRep_Tool::Pnt (aV);
+      if (aP.X () != static_cast<double> (i)) {
+        Standard_Atomic_Increment(&myIsRaceDetected);
+      }
+    }
+  }
+
+  const std::vector<TopoDS_Shape>* myShapeVec;
+  mutable volatile int myIsRaceDetected;
+};
+
+//=======================================================================
+//function : OCC25545
+//purpose  : Tests data race when concurrently accessing TopLoc_Location::Transformation()
+//=======================================================================
+#ifdef HAVE_TBB
+static Standard_Integer OCC25545 (Draw_Interpretor& di, 
+                                  Standard_Integer, 
+                                  const char **)
+{
+  // Place vertices in a vector, giving the i-th vertex the
+  // transformation that translates it on the vector (i,0,0) from the origin.
+  size_t n = 1000;
+  std::vector<TopoDS_Shape> aShapeVec (n);
+  std::vector<TopLoc_Location> aLocVec (n);
+  TopoDS_Shape aShape = BRepBuilderAPI_MakeVertex (gp::Origin ());
+  aShapeVec[0] = aShape;
+  for (size_t i = 1; i < n; ++i) {
+    gp_Trsf aT;
+    aT.SetTranslation (gp_Vec (1, 0, 0));
+    aLocVec[i] = aLocVec[i - 1] * aT;
+    aShapeVec[i] = aShape.Moved (aLocVec[i]);
+  }
+
+  // Evaluator function will access vertices geometry
+  // concurrently
+  OCC25545_Functor aFunc(aShapeVec);
+
+  //concurrently process
+  tbb::parallel_for (size_t (0), n, aFunc, tbb::simple_partitioner ());
+  QVERIFY (!aFunc.myIsRaceDetected);
+  return 0;
+}
+#else
+static Standard_Integer OCC25545 (Draw_Interpretor&, 
+                                  Standard_Integer, 
+                                  const char **argv)
+{
+  cout << "Test skipped: command " << argv[0] << " requires TBB library" << endl;
+  return 0;
+}
+#endif
+
+//=======================================================================
+//function : OCC25547
+//purpose  :
+//=======================================================================
+#include <BRepMesh_GeomTool.hxx>
+#include <BRepAdaptor_Curve.hxx>
+#include <Geom_TrimmedCurve.hxx>
+#include <BRepBuilderAPI_MakeFace.hxx>
+#include <BRepAdaptor_HSurface.hxx>
+#include <BRepAdaptor_Surface.hxx>
+static Standard_Integer OCC25547(
+  Draw_Interpretor& theDI, 
+  Standard_Integer  /*argc*/, 
+  const char **     /*argv*/)
+{
+  // The general aim of this test is to prevent linkage errors due to missed
+  // Standard_EXPORT attribute for static methods.
+
+  // However, start checking the main functionality at first.
+  const Standard_Real aFirstP = 0., aLastP = M_PI;
+  Handle(Geom_Circle) aCircle = new Geom_Circle(gp_Ax2(gp::Origin(), gp::DZ()), 10);
+  Handle(Geom_TrimmedCurve) aHalf = new Geom_TrimmedCurve(aCircle, aFirstP, aLastP);
+  TopoDS_Edge aEdge = BRepBuilderAPI_MakeEdge(aHalf);
+  BRepAdaptor_Curve aAdaptor(aEdge);
+  BRepMesh_GeomTool aGeomTool(aAdaptor, aFirstP, aLastP, 0.1, 0.5);
+
+  if (aGeomTool.NbPoints() == 0)
+  {
+    theDI << "Error. BRepMesh_GeomTool failed to discretize an arc.\n";
+    return 1;
+  }
+
+  // Test static methods.
+  TopoDS_Face aFace = BRepBuilderAPI_MakeFace(gp_Pln(gp::Origin(), gp::DZ()));
+  BRepAdaptor_Surface aSurf(aFace);
+  Handle(BRepAdaptor_HSurface) aHSurf = new BRepAdaptor_HSurface(aSurf);
+
+  gp_Pnt aPnt;
+  gp_Dir aNormal;
+  if (!BRepMesh_GeomTool::Normal(aHSurf, 10., 10., aPnt, aNormal))
+  {
+    theDI << "Error. BRepMesh_GeomTool failed to take a normal of surface.\n";
+    return 1;
+  }
+
+  gp_XY aRefPnts[4] = {
+    gp_XY(-10., -10.), gp_XY(10., 10.), 
+    gp_XY(-10., 10.), gp_XY(10., -10.)
+  };
+
+  gp_Pnt2d aIntPnt;
+  Standard_Real aParams[2];
+  BRepMesh_GeomTool::IntFlag aIntFlag = BRepMesh_GeomTool::IntLinLin(
+    aRefPnts[0], aRefPnts[1], aRefPnts[2], aRefPnts[3], 
+    aIntPnt.ChangeCoord(), aParams);
+
+  Standard_Real aDiff = aIntPnt.Distance(gp::Origin2d());
+  if (aIntFlag != BRepMesh_GeomTool::Cross || aDiff > Precision::PConfusion())
+  {
+    theDI << "Error. BRepMesh_GeomTool failed to intersect two lines.\n";
+    return 1;
+  }
+
+  aIntFlag = BRepMesh_GeomTool::IntSegSeg(
+    aRefPnts[0], aRefPnts[1], aRefPnts[2], aRefPnts[3], 
+    Standard_False, Standard_False, aIntPnt);
+
+  aDiff = aIntPnt.Distance(gp::Origin2d());
+  if (aIntFlag != BRepMesh_GeomTool::Cross || aDiff > Precision::PConfusion())
+  {
+    theDI << "Error. BRepMesh_GeomTool failed to intersect two segments.\n";
+    return 1;
+  }
+
+
+  theDI << "Test complete\n";
+  return 0;
+}
+
+static Standard_Integer OCC26139 (Draw_Interpretor& theDI,
+                                  Standard_Integer  argc,
+                                  const char **     argv)
+{
+
+  Handle(AIS_InteractiveContext) aCtx = ViewerTest::GetAISContext();
+  if (aCtx.IsNull())
+  {
+    theDI << "Use 'vinit' command before " << argv[0] << "\n";
+    return 1;
+  }
+
+  Standard_Integer aBoxGridSize = 100;
+  Standard_Integer aCompGridSize = 3;
+  Standard_Real aBoxSize = 5.0;
+
+  if (argc > 1)
+  {
+    for (Standard_Integer anArgIdx = 1; anArgIdx < argc; ++anArgIdx)
+    {
+      TCollection_AsciiString anArg (argv[anArgIdx]);
+      anArg.LowerCase();
+      if (anArg == "-boxgrid")
+      {
+        aBoxGridSize = Draw::Atoi (argv[++anArgIdx]);
+      }
+      else if (anArg == "-compgrid")
+      {
+        aCompGridSize = Draw::Atoi (argv[++anArgIdx]);
+      }
+      else if (anArg == "-boxsize")
+      {
+        aBoxSize = Draw::Atof (argv[++anArgIdx]);
+      }
+    }
+  }
+
+  NCollection_List<Handle(AIS_Shape)> aCompounds;
+  for (Standard_Integer aCompGridX = 0; aCompGridX < aCompGridSize; ++aCompGridX)
+  {
+    for (Standard_Integer aCompGridY = 0; aCompGridY < aCompGridSize; ++aCompGridY)
+    {
+      BRep_Builder aBuilder;
+      TopoDS_Compound aComp;
+      aBuilder.MakeCompound (aComp);
+      for (Standard_Integer aBoxGridX = 0; aBoxGridX < aBoxGridSize; ++aBoxGridX)
+      {
+        for (Standard_Integer aBoxGridY = 0; aBoxGridY < aBoxGridSize; ++aBoxGridY)
+        {
+          BRepPrimAPI_MakeBox aBox (gp_Pnt (aBoxGridX * aBoxSize, aBoxGridY * aBoxSize, 0.0),
+                                    aBoxSize, aBoxSize, aBoxSize);
+          aBuilder.Add (aComp, aBox.Shape());
+        }
+      }
+      gp_Trsf aTrsf;
+      aTrsf.SetTranslation (gp_Vec (aBoxGridSize * aBoxSize * aCompGridX,
+                                    aBoxGridSize * aBoxSize * aCompGridY,
+                                    0.0));
+      TopLoc_Location aLoc (aTrsf);
+      aComp.Located (aLoc);
+      aCompounds.Append (new AIS_Shape (aComp));
+    }
+  }
+
+  OSD_Timer aTimer;
+  for (NCollection_List<Handle(AIS_Shape)>::Iterator aCompIter (aCompounds); aCompIter.More(); aCompIter.Next())
+  {
+    aTimer.Start();
+    aCtx->Display (aCompIter.Value(), Standard_False);
+    aTimer.Stop();
+    theDI << "Display time: " << aTimer.ElapsedTime() << "\n";
+    aTimer.Reset();
+  }
+
+  aTimer.Reset();
+  aTimer.Start();
+  for (NCollection_List<Handle(AIS_Shape)>::Iterator aCompIter (aCompounds); aCompIter.More(); aCompIter.Next())
+  {
+    aCtx->Remove (aCompIter.Value(), Standard_False);
+  }
+  aTimer.Stop();
+  theDI << "Remove time: " << aTimer.ElapsedTime() << "\n";
+
+  return 0;
+}
+
+#include <TColStd_DataMapIteratorOfDataMapOfIntegerInteger.hxx>
+#include <TColStd_DataMapOfIntegerInteger.hxx>
+#include <OSD.hxx>
+#include <ShapeFix_Wire.hxx>
+#include <ShapeExtend_Status.hxx>
+#ifdef WNT
+#define EXCEPTION ...
+#else
+#define EXCEPTION Standard_Failure
+#endif
+
+static ShapeExtend_Status getStatusGap(const Handle(ShapeFix_Wire)&   theFix,
+                                       const Standard_Boolean theIs3d)
+{
+	for (Standard_Integer i=ShapeExtend_OK; i<=ShapeExtend_FAIL; i++)
+	{
+		Standard_Boolean isFound;
+		if (theIs3d)
+			isFound = theFix->StatusGaps3d( (ShapeExtend_Status) i );
+		else
+			isFound = theFix->StatusGaps2d( (ShapeExtend_Status) i );
+		if (isFound) return ShapeExtend_Status(i);
+	}
+	return ShapeExtend_OK;
+}
+
+//===================
+//function : OCC24881
+//purpose  : 
+//===================
+static Standard_Integer OCC24881 (Draw_Interpretor& di, Standard_Integer narg , const char** a)
+{
+  if (narg < 2) {
+    di<<"Usage: "<<a[0]<<" invalid number of arguments"<<"\n";
+    return 1;
+  }
+//    cout <<"FileName1: " << argv[1] <<endl;
+
+  TopoDS_Shape aShape = DBRep::Get (a[1]);
+
+    OSD::SetSignal();
+    Handle(ShapeFix_Wire) aWireFix = new ShapeFix_Wire;
+
+    // map FixStatus - NbSuchStatuses
+    TColStd_DataMapOfIntegerInteger aStatusNbDMap;
+    Standard_Integer nbFixed=0, nbOk=0;
+
+//Begin: STEP 7
+    ShapeExtend_Status aStatus=ShapeExtend_OK;
+    try {
+	TopExp_Explorer aFaceExplorer(aShape, TopAbs_FACE);
+	for (; aFaceExplorer.More(); aFaceExplorer.Next())
+	{
+		TopoDS_Shape aFace = aFaceExplorer.Current();
+		// loop on wires
+		TopoDS_Iterator aWireItr(aFace);
+		for (; aWireItr.More(); aWireItr.Next() )
+		{
+			Standard_Boolean wasOk = Standard_False;
+			TopoDS_Wire aSrcWire = TopoDS::Wire(aWireItr.Value());
+
+			aWireFix->Load (aSrcWire);
+			aWireFix->SetFace (TopoDS::Face(aFace));
+			aWireFix->FixReorder(); //correct order is a prerequisite
+			// fix 3d
+			if (!aWireFix->FixGaps3d())
+			{
+				// not fixed, why?
+				aStatus = getStatusGap(aWireFix, Standard_True);
+				if (aStatus == ShapeExtend_OK)
+					wasOk = Standard_True;
+				else
+				{
+					// keep 3d fail status
+					if (aStatusNbDMap.IsBound (aStatus))
+						aStatusNbDMap(aStatus)++;
+					else
+						aStatusNbDMap.Bind(aStatus,1);
+					continue;
+				}
+			}
+
+			// fix 2d
+			if (aWireFix->FixGaps2d())
+				nbFixed++;
+			else
+			{
+				aStatus = getStatusGap(aWireFix, Standard_False);
+				if (aStatus == ShapeExtend_OK)
+				{
+					if (wasOk)
+					{
+						nbOk++;
+						continue;
+					}
+					else
+						nbFixed++;
+				}
+				else
+				{
+					// keep 2d fail status
+					Standard_Integer aStatus2d = aStatus + ShapeExtend_FAIL;
+					if (aStatusNbDMap.IsBound (aStatus2d))
+						aStatusNbDMap(aStatus2d)++;
+					else
+						aStatusNbDMap.Bind(aStatus2d,1);
+					continue;
+				}
+			}
+		}
+	}
+//End: STEP 7
+     } catch (EXCEPTION) {
+       di << "Exception is raised = " <<aStatus << "\n";
+       return 1;
+
+     }
+// report what is done
+
+	if (nbFixed)
+	{
+		di <<"Fix_FillGaps_Fixed: nbFixed = "<<nbFixed <<"\n";
+
+	}    
+	if (nbOk)
+	{
+		di << "Fix_FillGaps_NothingToDo" <<"\n";
+
+	}
+	TColStd_DataMapIteratorOfDataMapOfIntegerInteger aStatusItr(aStatusNbDMap);
+	for (; aStatusItr.More(); aStatusItr.Next()) 
+	{
+		switch ((ShapeExtend_Status) aStatusItr.Key()) 
+		{
+			// treat 3d status
+			case ShapeExtend_FAIL1:
+			di <<"Fix_FillGaps_3dNoCurveFail, nb failed = ";
+			break;
+			case ShapeExtend_FAIL2:
+			di <<"Fix_FillGaps_3dSomeGapsFail, nb failed = ";
+			break;
+			default:
+			// treat 2d status
+			switch ((ShapeExtend_Status) (aStatusItr.Key() - ShapeExtend_FAIL)) 
+			{
+				case ShapeExtend_FAIL1:
+				di <<"Fix_FillGaps_2dNoPCurveFail, nb failed = ";
+				break;
+				case ShapeExtend_FAIL2:
+				di <<"Fix_FillGaps_2dSomeGapsFail, nb failed = ";
+				break;
+				default:
+				break;
+			}
+		}
+		di <<aStatusItr.Value()<< "\n";
+	}
+	di << ("__________________________________") <<"\n";
+
+  return 0;
+}
+
+//=======================================================================
+//function : OCC26172
+//purpose  :
+//=======================================================================
+static Standard_Integer OCC26172 (Draw_Interpretor& theDI, Standard_Integer theArgNb, const char** theArgVec)
+{
+  if (theArgNb != 1)
+  {
+    std::cerr << "Error: wrong number of arguments! See usage:\n";
+    theDI.PrintHelp (theArgVec[0]);
+    return 1;
+  }
+
+  Handle(AIS_InteractiveContext) anAISContext = ViewerTest::GetAISContext();
+  if(anAISContext.IsNull())
+  {
+    std::cerr << "Error: no active view. Please call vinit.\n";
+    return 1;
+  }
+
+  gp_Pnt aStart (100, 100, 100);
+  gp_Pnt anEnd (300, 400, 600);
+  BRepBuilderAPI_MakeEdge anEdgeBuilder (aStart, anEnd);
+  TopoDS_Edge anEdge = anEdgeBuilder.Edge();
+  Handle(AIS_Shape) aTestAISShape = new AIS_Shape (anEdge);
+  anAISContext->Display (aTestAISShape);
+
+  // 2. activate it in selection modes
+  TColStd_SequenceOfInteger aModes;
+  aModes.Append (AIS_Shape::SelectionMode ((TopAbs_ShapeEnum) TopAbs_VERTEX));
+  aModes.Append (AIS_Shape::SelectionMode ((TopAbs_ShapeEnum) TopAbs_EDGE));
+
+  anAISContext->OpenLocalContext();
+  anAISContext->Deactivate (aTestAISShape);
+  anAISContext->Load (aTestAISShape, -1, true);
+  for (Standard_Integer anIt = 1; anIt <= aModes.Length(); ++anIt)
+  {
+    anAISContext->Activate (aTestAISShape, aModes (anIt));
+  }
+
+  // select entities in vertex selection mode
+  Handle(SelectMgr_Selection) aSelection = aTestAISShape->Selection (aModes (1));
+  for (aSelection->Init(); aSelection->More(); aSelection->Next())
+  {
+    Handle(SelectBasics_SensitiveEntity) anEntity = aSelection->Sensitive()->BaseSensitive();
+    if (anEntity.IsNull())
+    {
+      continue;
+    }
+
+    Handle(SelectMgr_EntityOwner) anOwner =
+      Handle(SelectMgr_EntityOwner)::DownCast (anEntity->OwnerId());
+
+    if (anOwner.IsNull())
+    {
+      continue;
+    }
+
+    anAISContext->LocalContext()->AddOrRemoveSelected (anOwner);
+  }
+
+  // select entities in edge selection mode
+  aSelection = aTestAISShape->Selection (aModes (2));
+  for (aSelection->Init(); aSelection->More(); aSelection->Next())
+  {
+    Handle(SelectBasics_SensitiveEntity) anEntity = aSelection->Sensitive()->BaseSensitive();
+    if (anEntity.IsNull())
+    {
+      continue;
+    }
+
+    Handle(SelectMgr_EntityOwner) anOwner =
+      Handle(SelectMgr_EntityOwner)::DownCast (anEntity->OwnerId());
+
+    if (anOwner.IsNull())
+    {
+      continue;
+    }
+
+    anAISContext->LocalContext()->AddOrRemoveSelected (anOwner);
+  }
+
+  // deactivate vertex mode and check clearing of outdated selection
+  anAISContext->Deactivate (aTestAISShape, aModes (1));
+  anAISContext->LocalContext()->ClearOutdatedSelection (aTestAISShape, true);
+
+  return 0;
+}
+
+#include <IntTools_Context.hxx>
+#include <GeomAPI_ProjectPointOnSurf.hxx>
+
+//=======================================================================
+//function : xprojponf
+//purpose  : 
+//=======================================================================
+Standard_Integer xprojponf (Draw_Interpretor& di, 
+                            Standard_Integer n, 
+                            const char** a)
+{
+  if (n!=3) {
+    di<<" use xprojponf p f \n";
+    return 0;
+  }
+  // 
+  gp_Pnt aP, aPS;
+  TopoDS_Shape aS;
+  TopoDS_Face aF;
+  Handle(IntTools_Context) aCtx;
+  //
+  DrawTrSurf::GetPoint(a[1], aP);
+  aS=DBRep::Get(a[2]);
+  //
+  if (aS.IsNull()) {
+    di<<" null shape is not allowed\n";
+    return 0;
+  }
+  //
+  if (aS.ShapeType()!=TopAbs_FACE) {
+    di << a[2] << " not a face\n";
+    return 0;
+  }
+  //
+  aCtx=new IntTools_Context;
+  //
+  aF=TopoDS::Face(aS);
+  GeomAPI_ProjectPointOnSurf& aPPS=aCtx->ProjPS(aF);
+  //
+  aPPS.Perform(aP);
+  if (!aPPS.IsDone()) {
+    di<<" projection failed\n";
+    return 0;
+  }
+  //
+  aPS=aPPS.NearestPoint();
+  di<< " point px " << aPS.X() << " " << aPS.Y() << " " <<  aPS.Z() << "\n";
+  //
+  return 0;
+}
+
+//=======================================================================
+//function : OCC25547
+//purpose  :
+//=======================================================================
+#include <BRepMesh_CircleTool.hxx>
+
+static Standard_Boolean inspect_point(const gp_XY&        thePoint,
+                                      const gp_XY&        theCenter,
+                                      const Standard_Real theRadius)
+{
+  static Standard_Real aPrecision   = Precision::PConfusion();
+  static Standard_Real aSqPrecision = aPrecision * aPrecision;
+  const gp_XY aDistVec = thePoint - theCenter;
+  if (aDistVec.SquareModulus() - (theRadius * theRadius) < aSqPrecision)
+    return Standard_True;
+  else
+    return Standard_False;
+}
+
+static Standard_Integer OCC24923(
+  Draw_Interpretor& theDI, 
+  Standard_Integer  argc, 
+  const char **     argv)
+{
+  srand(static_cast<unsigned int>(time(NULL)));
+
+  const Standard_Real    aMaxDeviation = (argc > 1) ? Draw::Atof(argv[1]) : 0.01;
+  const Standard_Integer aPointsNb     = 10000000;
+  const Standard_Real    aMinAngle     = 5 * M_PI / 180.;
+  static Standard_Real   aSqPrecision  = Precision::PConfusion() * Precision::PConfusion();
+
+  Standard_Integer aFailedNb = 0;
+  for (Standard_Integer i = 0; i < aPointsNb; ++i)
+  {
+    gp_XY p[3];
+    for (Standard_Integer j = 0; j < 3; ++j)
+      p[j].SetCoord(((Standard_Real)rand())/RAND_MAX, ((Standard_Real)rand())/RAND_MAX);
+
+    // Check that points do not compose degenerated triangle.
+    gp_XY aVec1 = p[1] - p[0];
+    gp_XY aVec2 = p[2] - p[0];
+    if (aVec1.SquareModulus() > aSqPrecision && 
+        aVec2.SquareModulus() > aSqPrecision &&
+        (aVec1 ^ aVec2) > aMinAngle)
+    {
+      gp_XY aCenter;
+      Standard_Real aRadius;
+      if (BRepMesh_CircleTool::MakeCircle(p[0], p[1], p[2], aCenter, aRadius))
+      {
+        if (!inspect_point(p[0], aCenter, aRadius) || 
+            !inspect_point(p[1], aCenter, aRadius) || 
+            !inspect_point(p[2], aCenter, aRadius))
+        {
+         /* theDI << "Missed: " <<
+            "p1=(" << p1.X() << ", " << p1.Y() << "), " <<
+            "p2=(" << p2.X() << ", " << p2.Y() << "), " <<
+            "p3=(" << p3.X() << ", " << p3.Y() << "), " <<
+            "c=(" << aCenter.X() << ", " << aCenter.Y() << "), " <<
+            "r=" << aRadius << "\n";*/
+            
+          ++aFailedNb;
+        }
+
+        continue;
+      }
+    }
+
+    // Ensure that aPointsNb suitable for tests are generated
+    --i;
+  }
+
+  const Standard_Real aDeviation = 
+    1. - (Standard_Real)(aPointsNb - aFailedNb) / (Standard_Real)aPointsNb;
+
+  theDI << "Number of failed cases: " << aFailedNb << " (Total " << aPointsNb << ")\n";
+  if (aDeviation > aMaxDeviation)
+  {
+    theDI << "Failed. Number of incorrect results is too huge: " << 
+      aDeviation * 100 << "% (Max " << aMaxDeviation * 100 << "%)" << "\n";
+    return 1;
+  }
+
+  theDI << "Deviation of incorrect results is: " <<
+    aDeviation * 100 << "% (Max " << aMaxDeviation * 100 << "%)" << "\n";
+  theDI << "Test completed\n";
+  return 0;
+}
+
 void QABugs::Commands_19(Draw_Interpretor& theCommands) {
   const char *group = "QABugs";
 
@@ -3168,8 +3908,8 @@ void QABugs::Commands_19(Draw_Interpretor& theCommands) {
   theCommands.Add ("OCC24755", "OCC24755", __FILE__, OCC24755, group);
   theCommands.Add ("OCC24834", "OCC24834", __FILE__, OCC24834, group);
   theCommands.Add ("OCC24889", "OCC24889", __FILE__, OCC24889, group);
-  theCommands.Add ("OCC23951", "OCC23951", __FILE__, OCC23951, group);
-  theCommands.Add ("OCC24931", "OCC24931", __FILE__, OCC24931, group);
+  theCommands.Add ("OCC23951", "OCC23951 path to saved step file", __FILE__, OCC23951, group);
+  theCommands.Add ("OCC24931", "OCC24931 path to saved xml file", __FILE__, OCC24931, group);
   theCommands.Add ("OCC24945", "OCC24945", __FILE__, OCC24945, group);
   theCommands.Add ("OCC23950", "OCC23950 step_file", __FILE__, OCC23950, group);
   theCommands.Add ("OCC25004", "OCC25004", __FILE__, OCC25004, group);
@@ -3179,6 +3919,7 @@ void QABugs::Commands_19(Draw_Interpretor& theCommands) {
                    __FILE__, OCC24925, group);
   theCommands.Add ("OCC23010", "OCC23010 STEP_file", __FILE__, OCC23010, group);
   theCommands.Add ("OCC25043", "OCC25043 shape", __FILE__, OCC25043, group);
+  theCommands.Add ("OCC24826,", "This test performs simple saxpy test.\n Usage: OCC24826 length", __FILE__, OCC24826, group);
   theCommands.Add ("OCC24606", "OCC24606 : Tests ::FitAll for V3d view ('vfit' is for NIS view)", __FILE__, OCC24606, group);
   theCommands.Add ("OCC25202", "OCC25202 res shape numF1 face1 numF2 face2", __FILE__, OCC25202, group);
   theCommands.Add ("OCC7570", "OCC7570 shape", __FILE__, OCC7570, group);
@@ -3187,5 +3928,15 @@ void QABugs::Commands_19(Draw_Interpretor& theCommands) {
   theCommands.Add ("OCC25348", "OCC25348", __FILE__, OCC25348, group);
   theCommands.Add ("OCC25413", "OCC25413 shape", __FILE__, OCC25413, group);
   theCommands.Add ("OCC25446", "OCC25446 res b1 b2 op", __FILE__, OCC25446, group);
+  theCommands.Add ("OCC25545", 
+                   "no args; tests data race when concurrently accessing \n"
+                   "\t\tTopLoc_Location::Transformation()",
+                   __FILE__, OCC25545, group);
+  theCommands.Add ("OCC25547", "OCC25547", __FILE__, OCC25547, group);
+  theCommands.Add ("OCC24881", "OCC24881 shape", __FILE__, OCC24881, group);
+  theCommands.Add ("OCC26172", "OCC26172", __FILE__, OCC26172, group);
+  theCommands.Add ("xprojponf", "xprojponf p f", __FILE__, xprojponf, group);
+  theCommands.Add ("OCC24923", "OCC24923", __FILE__, OCC24923, group);
+  theCommands.Add ("OCC26139", "OCC26139 [-boxsize value] [-boxgrid value] [-compgrid value]", __FILE__, OCC26139, group);
   return;
 }

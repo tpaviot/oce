@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT([OpenCASCADE], [6.8.0])
+AC_INIT([OpenCASCADE], [6.9.0])
 AC_CONFIG_AUX_DIR(make)
 AM_INIT_AUTOMAKE([foreign])
 AC_CANONICAL_HOST
@@ -779,24 +779,20 @@ AC_ARG_WITH([vtk-include],
 
 if test "xno$vtk_inc" = "xno"; then
   # user specified --without-vtk-lib
+  HAVE_VTK=no
   HAVE_VTK_INC=no
-  DISABLE_VTK_REASON="(--with-vtk-include=DIR option was not defined)"
+  DISABLE_VTK_REASON_INC="(--with-vtk-include=DIR option was not defined)"
 else
   CSF_VTK_INCLUDES=""
   AC_LANG([C++])
   HAVE_VTK_INC=yes
   if test ! -d $vtk_inc; then
-    DISABLE_VTK_REASON="($vtk_inc directory does not exists)"
+    DISABLE_VTK_REASON_INC="($vtk_inc directory does not exists)"
     AC_MSG_ERROR([$vtk_inc directory does not exists])
-  elif test ! -f $vtk_inc/vtkVersion.h; then
-    DISABLE_VTK_REASON="(vtk headers are not found in $vtk_inc)"
-    AC_MSG_ERROR([vtk headers are not found in $vtk_inc])
   elif test "x$vtk_inc" != "x"; then
      CPPFLAGS="-I$vtk_inc $CPPFLAGS";
   else
-     HAVE_VTK_INC=no
-     DISABLE_VTK_REASON="(--with-vtk-include=DIR option was not defined)"
-     AC_MSG_NOTICE("--with-vtk-include=DIR option was not defined")
+     AC_MSG_NOTICE("--with-vtk-include key is not defined")
   fi
 fi
 
@@ -1021,9 +1017,7 @@ AC_ARG_WITH([vtk-library],
 if test "xno" = "xno$vtk_lib"; then
 # user specified --without-vtk
   HAVE_VTK=no
-  if test "x$DISABLE_VTK_REASON" = "x" ; then
-    DISABLE_VTK_REASON="(--with-vtk-library=DIR option was not defined)"
-  fi
+  DISABLE_VTK_REASON_LIB="(--with-vtk-library=DIR option was not defined)"
 else
   CSF_VTK_LIB=""
   HAVE_VTK=yes
@@ -1031,25 +1025,39 @@ else
   #CPP_FLAGS="-I$vtk $CPPFLAGS"
   #AC_CHECK_HEADER( [Vtk/vtkConfigure.h], [HAVE_VTK_INC=yes], [HAVE_VTK_INC=no] )
   if test "x$HAVE_VTK_INC" = "xyes"; then
-    if test ! -d $vtk_lib; then
-      DISABLE_VTK_REASON="($vtk_lib directory does not exist)"
+    if test ! -d $vtk; then
+      DISABLE_VTK_REASON_LIB="($vtk_lib directory does not exist)"
       AC_MSG_ERROR([$vtk_lib directory does not exist])
-    elif test ! -f $vtk_lib/libvtkCommonCore-6.1.so; then
-      DISABLE_VTK_REASON="(vtk libraries are not found in $vtk_lib)"
-      AC_MSG_ERROR([vtk libraries are not found in $vtk_lib])
-    elif test "x$vtk_lib" != "x" -a "x$vtk_inc" != "x"; then
-      CSF_VTK_LIB="-L$vtk_lib -lvtkCommonCore-6.1 -lvtkCommonDataModel-6.1 -lvtkCommonExecutionModel-6.1 -lvtkCommonMath-6.1 -lvtkCommonTransforms-6.1 "
-      CSF_VTK_LIB="${CSF_VTK_LIB} -lvtkRenderingCore-6.1 -lvtkRenderingOpenGL-6.1  -lvtkFiltersGeneral-6.1 -lvtkIOCore-6.1 -lvtkIOImage-6.1 -lvtkImagingCore-6.1 -lvtkInteractionStyle-6.1 "
-      CSF_OPT_INC="$vtk_inc:${CSF_OPT_INC}"
-      CSF_OPT_LIB="$vtk_lib:${CSF_OPT_LIB}"
-      CSF_OPT_INCLUDES="${CSF_OPT_INCLUDES} -I$vtk_inc -DHAVE_VTK"
-    else
-      HAVE_VTK=no
-      AC_MSG_NOTICE("--with-vtk-library=DIR option was not defined")
-      DISABLE_VTK_REASON="(--with-vtk-library=DIR option was not defined)"
+    elif test "x$vtk_lib" != "x"; then
+      LDFLAGS="-L$vtk_lib $LDFLAGS"
     fi
   else
     HAVE_VTK=no
+  fi
+  
+  if test "x$HAVE_VTK" = "xyes"; then
+    if test "x$vtk_inc" != "x"; then
+      CSF_VTK_INCLUDES=""
+      CSF_OPT_INCLUDES="${CSF_OPT_INCLUDES} -I$vtk_inc -DHAVE_VTK"
+    else
+      HAVE_VTK=no
+    fi
+    if test "x$vtk_lib" != "x"; then
+      CSF_VTK_LIB="-L$vtk_lib -lvtkCommonCore-6.1 -lvtkCommonDataModel-6.1 -lvtkCommonExecutionModel-6.1 -lvtkCommonMath-6.1 -lvtkCommonTransforms-6.1 "
+      CSF_VTK_LIB="${CSF_VTK_LIB} -lvtkRenderingCore-6.1 -lvtkRenderingOpenGL-6.1  -lvtkFiltersGeneral-6.1 -lvtkIOCore-6.1 -lvtkIOImage-6.1 -lvtkImagingCore-6.1 -lvtkInteractionStyle-6.1 "
+    else
+      HAVE_VTK=no
+    fi
+
+    if test "x$HAVE_VTK" = "xyes"; then
+      CSF_OPT_INC="$vtk_inc:${CSF_OPT_INC}"
+      CSF_OPT_LIB="$vtk_lib:${CSF_OPT_LIB}"
+    else
+      DISABLE_VTK_REASON="(VTK was not found)"
+    fi
+  else
+    AC_MSG_NOTICE("Specify --with-vtk-library to enable VTK support")
+    DISABLE_VTK_REASON_LIB="(VTK libraries were not found)"
   fi
 fi
 
@@ -1153,11 +1161,11 @@ if test "xyes" = "x$ENABLE_VIS"; then
     DISABLE_VIS_REASON="(FREETYPE not found)"
     ENABLE_VIS=no
   fi
-#  if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$HAVE_VTK"; then
-#    AC_MSG_NOTICE([Disabling Visualization: VTK not found])
-#    DISABLE_VIS_REASON="(VTK not found)"
-#    ENABLE_VIS=no
-#  fi
+  if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$HAVE_VTK"; then
+    AC_MSG_NOTICE([Disabling Visualization: VTK not found])
+    DISABLE_VIS_REASON="(VTK not found)"
+    ENABLE_VIS=no
+  fi
 else
   DISABLE_VIS_REASON="(Disabled)"
 fi

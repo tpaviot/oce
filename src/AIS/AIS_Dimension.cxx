@@ -50,8 +50,6 @@
 #include <SelectMgr_EntityOwner.hxx>
 #include <SelectMgr_Selection.hxx>
 #include <SelectMgr_SequenceOfOwner.hxx>
-#include <Select3D_ListIteratorOfListOfSensitive.hxx>
-#include <Select3D_ListOfSensitive.hxx>
 #include <Select3D_SensitiveCircle.hxx>
 #include <Select3D_SensitiveGroup.hxx>
 #include <Select3D_SensitiveCurve.hxx>
@@ -98,16 +96,18 @@ namespace
 //purpose  : 
 //=======================================================================
 AIS_Dimension::AIS_Dimension (const AIS_KindOfDimension theType)
-: AIS_InteractiveObject(),
-  myCustomValue (0.0),
-  myIsValueCustom (Standard_False),
-  mySpecialSymbol (' '),
+: AIS_InteractiveObject  (),
+  mySelToleranceForText2d(0.0),
+  myCustomValue          (0.0),
+  myIsValueCustom        (Standard_False),
+  myIsTextPositionFixed  (Standard_False), 
+  mySpecialSymbol        (' '),
   myDisplaySpecialSymbol (AIS_DSS_No),
-  myGeometryType (GeometryType_UndefShapes),
-  myIsPlaneCustom (Standard_False),
-  myFlyout (0.0),
-  myIsGeometryValid (Standard_False),
-  myKindOfDimension (theType)
+  myGeometryType         (GeometryType_UndefShapes),
+  myIsPlaneCustom        (Standard_False),
+  myFlyout               (0.0),
+  myIsGeometryValid      (Standard_False),
+  myKindOfDimension      (theType)
 {
 }
 

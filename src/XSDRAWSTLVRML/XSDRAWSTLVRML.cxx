@@ -74,8 +74,6 @@
 #include <TColStd_Array1OfReal.hxx>
 #include <Bnd_Box.hxx>
 
-#include <XSDRAWSTLVRML_ToVRML.hxx>
-
 // avoid warnings on 'extern "C"' functions returning C++ classes
 #ifdef WNT
 #pragma warning(4:4190)
@@ -92,21 +90,25 @@ extern Standard_Boolean VDisplayAISObject (const TCollection_AsciiString& theNam
 static Standard_Integer writestl
 (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
 {
-  if (argc < 3 || argc > 5) {
+  if (argc < 3 || argc > 4) {
     di << "Use: " << argv[0]
-    << " shape file [ascii/binary (0/1) : 1 by default] [InParallel (0/1) : 0 by default]" << "\n";
+    << " shape file [ascii/binary (0/1) : 1 by default]" << "\n";
   } else {
     TopoDS_Shape aShape = DBRep::Get(argv[1]);
     Standard_Boolean isASCIIMode = Standard_False;
-    Standard_Boolean isInParallel = Standard_False;
-    if (argc > 3) {
+    if (argc == 4) {
       isASCIIMode = (Draw::Atoi(argv[3]) == 0);
-      if (argc > 4)
-        isInParallel = (Draw::Atoi(argv[4]) == 1);
     }
     StlAPI_Writer aWriter;
     aWriter.ASCIIMode() = isASCIIMode;
-    aWriter.Write (aShape, argv[2], isInParallel);
+    StlAPI_ErrorStatus aStatus = aWriter.Write (aShape, argv[2]);
+
+    switch (aStatus)
+    {
+    case StlAPI_MeshIsEmpty: di << "** Error **: Mesh is empty. Please, compute triangulation before."; break;
+    case StlAPI_CannotOpenFile: di << "** Error **: Cannot create/open a file with the passed name."; break;
+    case StlAPI_StatusOK: default: break;
+    }
   }
   return 0;
 }
@@ -126,21 +128,41 @@ static Standard_Integer readstl
 static Standard_Integer writevrml
 (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
 {
-  if (argc<3) di << "wrong number of parameters"    << "\n";
-  else {
-    TopoDS_Shape aShape = DBRep::Get(argv[1]);
-    //     VrmlAPI_Writer writer;
-    //     writer.SetTransparencyToMaterial(writer.GetFrontMaterial(),0.0);
-    //      Quantity_Color color;
-    //      color.SetValues(Quantity_NOC_GOLD);
-    //      Handle(Quantity_HArray1OfColor) Col = new Quantity_HArray1OfColor(1,1);
-    //      Col->SetValue(1,color);
-    //      writer.SetDiffuseColorToMaterial(writer.GetFrontMaterial(),Col);
-    //      writer.SetRepresentation(VrmlAPI_ShadedRepresentation);
-    //      writer.SetDeflection(0.01);
-    //      writer.Write(shape, argv[2]);
-    VrmlAPI::Write(aShape, argv[2]);
+  if (argc < 3 || argc > 5) 
+  {
+    di << "wrong number of parameters" << "\n";
+    return 0;
   }
+
+  TopoDS_Shape aShape = DBRep::Get(argv[1]);
+
+  // Get the optional parameters
+  Standard_Integer aVersion = 2;
+  Standard_Integer aType = 1;
+  if (argc >= 4)
+  {
+    aVersion = Draw::Atoi(argv[3]);
+    if (argc == 5)
+      aType = Draw::Atoi(argv[4]);
+  }
+
+  // Bound parameters
+  aVersion = Max(1, aVersion);
+  aVersion = Min(2, aVersion);
+  aType = Max(0, aType);
+  aType = Min(2, aType);
+
+  VrmlAPI_Writer writer;
+
+  switch (aType)
+  {
+  case 0: writer.SetRepresentation(VrmlAPI_ShadedRepresentation); break;
+  case 1: writer.SetRepresentation(VrmlAPI_WireFrameRepresentation); break;
+  case 2: writer.SetRepresentation(VrmlAPI_BothRepresentation); break;
+  }
+
+  writer.Write(aShape, argv[2], aVersion);
+
   return 0;
 }
 
@@ -227,45 +249,6 @@ static Standard_Integer loadvrml
   }
   return 0;
 }
-
-//=======================================================================
-//function : storevrml
-//purpose  :
-//=======================================================================
-
-static Standard_Integer storevrml
-(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
-{
-  if (argc < 4) {
-    di << "wrong number of parameters"    << "\n";
-    di << "use: storevrml shape file defl type_of_conversion (0, 1, 2)"    << "\n";
-  }
-  else {
-    TopoDS_Shape aShape = DBRep::Get(argv[1]);
-    Standard_Real aDefl = Draw::Atof(argv[3]);
-    Standard_Integer aType = 1;
-    if(argc > 4) aType = Draw::Atoi(argv[4]);
-    aType = Max(0, aType);
-    aType = Min(2, aType);
-
-    Standard_Boolean anExtFace = Standard_False;
-    if(aType == 0 || aType == 2) anExtFace = Standard_True;
-    Standard_Boolean anExtEdge = Standard_False;
-    if(aType == 1 || aType == 2) anExtEdge = Standard_True;
-
-    VrmlData_Scene aScene;
-    VrmlData_ShapeConvert aConv(aScene);
-    aConv.AddShape(aShape);
-    aConv.Convert(anExtFace, anExtEdge, aDefl);
-
-    filebuf aFoc;
-    ostream outStream (&aFoc);
-    if (aFoc.open (argv[2], ios::out))
-      outStream << aScene;
-  }
-  return 0;
-}
-
 
 //-----------------------------------------------------------------------------
 static Standard_Integer createmesh
@@ -487,6 +470,36 @@ static Standard_Integer shrink
   }
   return 0;
 }
+
+//-----------------------------------------------------------------------------
+static Standard_Integer closed (Draw_Interpretor& theDI, Standard_Integer theArgc, const char** theArgv)
+{
+  if (theArgc < 3)
+  {
+    theDI << "Wrong number of parameters." << "\n";
+  }
+  else
+  {
+    Handle(MeshVS_Mesh) aMesh = getMesh (theArgv[1], theDI);
+    if (!aMesh.IsNull())
+    {
+      Standard_Integer aFlag = Draw::Atoi (theArgv[2]);
+      aMesh->GetDrawer()->SetBoolean (MeshVS_DA_SupressBackFaces, aFlag);
+
+      Handle( AIS_InteractiveContext ) aContext = ViewerTest::GetAISContext();
+      if (aContext.IsNull())
+      {
+        theDI << "The context is null" << "\n";
+      }
+      else
+      {
+        aContext->Redisplay (aMesh);
+      }
+    }
+  }
+  return 0;
+}
+
 //-----------------------------------------------------------------------------
 
 static Standard_Integer mdisplay
@@ -1163,26 +1176,6 @@ static Standard_Integer mesh_edge_width( Draw_Interpretor& di,
   return 0;
 }
 
-//=======================================================================
-//function : tovrml
-//purpose  : 
-//=======================================================================
-
-static Standard_Integer tovrml(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
-{
-  if ( argc < 3 )
-  {
-    di << "Wrong number of parameters" << "\n";
-    di << "Use : tovrml <shape name> <file name>" << "\n";
-    return 0;
-  }
-  XSDRAWSTLVRML_ToVRML aVrml;
-  TopoDS_Shape aShape = DBRep::Get (argv[1]);
-  const char* aFilename = argv[2];
-  if (!aVrml.Write (aShape,aFilename)) return 1;
-  return 0;
-}
-
 //-----------------------------------------------------------------------------
 
 static Standard_Integer meshinfo(Draw_Interpretor& di,
@@ -1222,12 +1215,10 @@ void  XSDRAWSTLVRML::InitCommands (Draw_Interpretor& theCommands)
   const char* g = "XSTEP-STL/VRML";  // Step transfer file commands
   //XSDRAW::LoadDraw(theCommands);
 
-  theCommands.Add ("writevrml", "shape file",__FILE__,writevrml,g);
-  theCommands.Add ("tovrml",    "shape file",__FILE__, tovrml, g);
+  theCommands.Add ("writevrml", "shape file [version VRML#1.0/VRML#2.0 (1/2): 2 by default] [representation shaded/wireframe/both (0/1/2): 1 by default]",__FILE__,writevrml,g);
   theCommands.Add ("writestl",  "shape file [ascii/binary (0/1) : 1 by default] [InParallel (0/1) : 0 by default]",__FILE__,writestl,g);
   theCommands.Add ("readstl",   "shape file",__FILE__,readstl,g);
   theCommands.Add ("loadvrml" , "shape file",__FILE__,loadvrml,g);
-  theCommands.Add ("storevrml" , "shape file defl [type]",__FILE__,storevrml,g);
 
   theCommands.Add ("meshfromstl",     "creates MeshVS_Mesh from STL file",            __FILE__, createmesh,      g );
   theCommands.Add ("mesh3delem",      "creates 3d element mesh to test",              __FILE__, create3d,        g );
@@ -1235,6 +1226,7 @@ void  XSDRAWSTLVRML::InitCommands (Draw_Interpretor& theCommands)
   theCommands.Add ("meshlinkcolor",   "change MeshVS_Mesh line color",                __FILE__, linecolor,       g );
   theCommands.Add ("meshmat",         "change MeshVS_Mesh material and transparency", __FILE__, meshmat,         g );
   theCommands.Add ("meshshrcoef",     "change MeshVS_Mesh shrink coeff",              __FILE__, shrink,          g );
+  theCommands.Add ("meshclosed",      "meshclosed meshname (0/1) \nChange MeshVS_Mesh drawing mode. 0 - not closed object, 1 - closed object", __FILE__, closed, g);
   theCommands.Add ("meshshow",        "display MeshVS_Mesh object",                   __FILE__, mdisplay,        g );
   theCommands.Add ("meshhide",        "erase MeshVS_Mesh object",                     __FILE__, merase,          g );
   theCommands.Add ("meshhidesel",     "hide selected entities",                       __FILE__, hidesel,         g );

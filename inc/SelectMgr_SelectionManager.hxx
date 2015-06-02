@@ -13,14 +13,12 @@
 #include <TColStd_MapOfTransient.hxx>
 #include <SelectMgr_DataMapOfObjectSelectors.hxx>
 #include <MMgt_TShared.hxx>
-#include <Handle_SelectMgr_ViewerSelector.hxx>
+#include <SelectMgr_ViewerSelector.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_SelectMgr_SelectableObject.hxx>
 #include <Standard_Integer.hxx>
 #include <SelectMgr_TypeOfUpdate.hxx>
-class SelectMgr_ViewerSelector;
 class SelectMgr_SelectableObject;
-class TCollection_AsciiString;
 
 
 //! A framework to manage selection from the point of
@@ -37,120 +35,76 @@ public:
   //! Constructs an empty selection manager object.
   Standard_EXPORT SelectMgr_SelectionManager();
   
-  //! Adds the viewer selector aSelector to this framework.
-  Standard_EXPORT   void Add (const Handle(SelectMgr_ViewerSelector)& aSelector) ;
+  //! Adds the viewer selector theSelector to the list of known items.
+  Standard_EXPORT   void Add (const Handle(SelectMgr_ViewerSelector)& theSelector) ;
   
-  Standard_EXPORT   void Remove (const Handle(SelectMgr_ViewerSelector)& aSelector) ;
+  //! Removes viewer selector theSelector from the list of known items.
+  Standard_EXPORT   void Remove (const Handle(SelectMgr_ViewerSelector)& theSelector) ;
   
-
-  //! Returns true if this framework contains the viewer selector aSelector.
-  Standard_EXPORT   Standard_Boolean Contains (const Handle(SelectMgr_ViewerSelector)& aSelector)  const;
+  //! Returns true if the manager contains the viewer selector theSelector in a list of known items.
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(SelectMgr_ViewerSelector)& theSelector)  const;
   
-  //! Returns true if this framework contains the
-  //! selectable object aSelectableObject.
-  Standard_EXPORT   Standard_Boolean Contains (const Handle(SelectMgr_SelectableObject)& aSelectableObject)  const;
+  //! Returns true if the manager contains the selectable object theObject.
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(SelectMgr_SelectableObject)& theObject)  const;
   
-  //! Loads and computes one  mode of
-  //! selection if  <aMode> notequal -1 ;
-  //! if  <anObject> already has a
-  //! selection with this mode, it's emptied and the sensitive
-  //! entities are computed  for this mode else one  Selection
-  //! is created with this mode before computing.
-  Standard_EXPORT   void Load (const Handle(SelectMgr_SelectableObject)& anObject, const Standard_Integer aMode = -1) ;
+  //! Loads and computes selection mode theMode (if it is not equal to -1) in global context and adds selectable
+  //! object to BVH tree. If the object theObject has an already calculated selection with mode theMode and it was removed,
+  //! the selection will be recalculated.
+  Standard_EXPORT   void Load (const Handle(SelectMgr_SelectableObject)& theObject, const Standard_Integer theMode = -1) ;
   
-  //! Local    object  available for
-  //! <aSelector> Only.  the sensitive entities for  selection
-  //! of mode <aMode> are computed if <aMode> not equal -1.
-  //! if <aMode> =-1 oc compute is done
-  Standard_EXPORT   void Load (const Handle(SelectMgr_SelectableObject)& anObject, const Handle(SelectMgr_ViewerSelector)& aSelector, const Standard_Integer aMode = -1) ;
+  //! Loads and computes selection mode theMode (if it is not equal to -1) and adds selectable object to BVH tree.
+  //! Does not perform check of existance of theObject in global context before addition, but adds theSelector to local context.
+  Standard_EXPORT   void Load (const Handle(SelectMgr_SelectableObject)& theObject, const Handle(SelectMgr_ViewerSelector)& theSelector, const Standard_Integer theMode = -1) ;
   
-  //! removes the object from All the ViewerSelectors where it was;
-  Standard_EXPORT   void Remove (const Handle(SelectMgr_SelectableObject)& anObject) ;
+  //! Removes selectable object theObject from all viewer selectors it was added to previously, removes it from all contexts
+  //! and clears all computed selections of theObject.
+  Standard_EXPORT   void Remove (const Handle(SelectMgr_SelectableObject)& theObject) ;
   
-  //! removes the object from aSelector;
-  Standard_EXPORT   void Remove (const Handle(SelectMgr_SelectableObject)& anObject, const Handle(SelectMgr_ViewerSelector)& aSelector) ;
+  //! Removes theObject from theSelector, does not clear selections and unbind theObject from context maps.
+  Standard_EXPORT   void Remove (const Handle(SelectMgr_SelectableObject)& theObject, const Handle(SelectMgr_ViewerSelector)& theSelector) ;
   
-  //! Activates the selection mode aMode in a selector
-  //! for the selectable object anObject.
-  Standard_EXPORT   void Activate (const Handle(SelectMgr_SelectableObject)& anObject, const Standard_Integer aMode = 0, const Standard_Boolean AutomaticProj = Standard_True) ;
+  //! Activates the selection mode theMode in the selector theSelector for the selectable object anObject.
+  //! By default, theMode is equal to 0. If theSelector is set to default (NULL), the selection with the mode theMode
+  //! will be activated in all the viewers available.
+  Standard_EXPORT   void Activate (const Handle(SelectMgr_SelectableObject)& theObject, const Standard_Integer theMode = 0, const Handle(SelectMgr_ViewerSelector)& theSelector = NULL) ;
   
-  //! Activates the selection mode aMode in the selector
-  //! aSelector for the selectable object anObject.
-  Standard_EXPORT   void Activate (const Handle(SelectMgr_SelectableObject)& anObject, const Standard_Integer aMode, const Handle(SelectMgr_ViewerSelector)& aSelector, const Standard_Boolean AutomaticProj = Standard_True) ;
+  //! Deactivates mode theMode of theObject in theSelector. If theMode value is set to default (-1), all
+  //! avtive selection modes will be deactivated. Likewise, if theSelector value is set to default (NULL), theMode
+  //! will be deactivated in all viewer selectors.
+  Standard_EXPORT   void Deactivate (const Handle(SelectMgr_SelectableObject)& theObject, const Standard_Integer theMode = -1, const Handle(SelectMgr_ViewerSelector)& theSelector = NULL) ;
   
-  //! Deactivate all the activated modes in any
-  //! Selector for <anObject>
-  Standard_EXPORT   void Deactivate (const Handle(SelectMgr_SelectableObject)& anObject) ;
+  //! Returns true if the selection with theMode is active for the selectable object theObject and selector theSelector.
+  //! If all parameters are set to default values, it returns it there is any active selection in any known viewer selector for
+  //! object theObject.
+  Standard_EXPORT   Standard_Boolean IsActivated (const Handle(SelectMgr_SelectableObject)& theObject, const Standard_Integer theMode = -1, const Handle(SelectMgr_ViewerSelector)& theSelector = NULL)  const;
   
-  //! Deactivates the Mode <aMode> in every Selector where
-  //! it was activated
-  Standard_EXPORT   void Deactivate (const Handle(SelectMgr_SelectableObject)& anObject, const Standard_Integer aMode) ;
+  //! Removes sensitive entities from all viewer selectors
+  //! after method Clear() was called to the selection they belonged to
+  //! or it was recomputed somehow.
+  Standard_EXPORT   void ClearSelectionStructures (const Handle(SelectMgr_SelectableObject)& theObj, const Standard_Integer theMode = -1, const Handle(SelectMgr_ViewerSelector)& theSelector = NULL) ;
   
-  //! Deactivates the selection mode aMode in the
-  //! selector aSelector for the selectable object anObject.
-  Standard_EXPORT   void Deactivate (const Handle(SelectMgr_SelectableObject)& anObject, const Standard_Integer aMode, const Handle(SelectMgr_ViewerSelector)& aSelector) ;
+  //! Re-adds newely calculated sensitive  entities of recomputed selection
+  //! defined by mode theMode to all viewer selectors contained that selection.
+  Standard_EXPORT   void RestoreSelectionStructures (const Handle(SelectMgr_SelectableObject)& theObj, const Standard_Integer theMode = -1, const Handle(SelectMgr_ViewerSelector)& theSelector = NULL) ;
   
-  //! Deactivates all selection modes in the selector
-  //! aSelector for the selectable object anObject.
-  Standard_EXPORT   void Deactivate (const Handle(SelectMgr_SelectableObject)& anObject, const Handle(SelectMgr_ViewerSelector)& aSelector) ;
+  //! Recomputes activated selections of theObject for all known viewer selectors according to theMode specified.
+  //! If theMode is set to default (-1), then all activated selections will be recomputed. If theIsForce is set to true,
+  //! then selection mode theMode for object theObject will be recomputed regardless of its activation status.
+  Standard_EXPORT   void RecomputeSelection (const Handle(SelectMgr_SelectableObject)& theObject, const Standard_Boolean theIsForce = Standard_False, const Standard_Integer theMode = -1) ;
   
-  //! Ensures that no object in the selector aSelector will be active.
-  Standard_EXPORT   void Sleep (const Handle(SelectMgr_ViewerSelector)& aSelector) ;
+  //! Updates all selections of theObject in all viewer selectors according to its current update status.
+  //! If theIsForce is set to true, the call is equal to recomputation.
+  Standard_EXPORT   void Update (const Handle(SelectMgr_SelectableObject)& theObject, const Standard_Boolean theIsForce = Standard_True) ;
   
-  //! the objet is temporarily deactivated everywhere it was activated.
-  Standard_EXPORT   void Sleep (const Handle(SelectMgr_SelectableObject)& anObject) ;
+  //! Updates all selections of theObject in specified viewer selector according to its current update status.
+  //! If theIsForce is set to true, the call is equal to recomputation.
+  Standard_EXPORT   void Update (const Handle(SelectMgr_SelectableObject)& theObject, const Handle(SelectMgr_ViewerSelector)& theSelector, const Standard_Boolean theIsForce = Standard_True) ;
   
-  //! Different from Deactivate; this method
-  //! deactivates the activated modes of an object,
-  //! but just for a time; when the Awake Method is called
-  //! the sleeping modes are reactivated.
-  Standard_EXPORT   void Sleep (const Handle(SelectMgr_SelectableObject)& anObject, const Handle(SelectMgr_ViewerSelector)& aSelector) ;
+  //! Sets type of update of all selections of theObject to the given theType.
+  Standard_EXPORT   void SetUpdateMode (const Handle(SelectMgr_SelectableObject)& theObject, const SelectMgr_TypeOfUpdate theType) ;
   
-  //! activates all the deactivated objects in a selector.
-  Standard_EXPORT   void Awake (const Handle(SelectMgr_ViewerSelector)& aSelector, const Standard_Boolean AutomaticProj = Standard_True) ;
-  
-  Standard_EXPORT   void Awake (const Handle(SelectMgr_SelectableObject)& anObject, const Standard_Boolean AutomaticProj = Standard_True) ;
-  
-  //! activates all the deactivated modes
-  //! of an object in a selector
-  Standard_EXPORT   void Awake (const Handle(SelectMgr_SelectableObject)& anObject, const Handle(SelectMgr_ViewerSelector)& aSelector, const Standard_Boolean AutomaticProj = Standard_True) ;
-  
-  //! Returns true if the selection is active for the selectable object anObject.
-  Standard_EXPORT   Standard_Boolean IsActivated (const Handle(SelectMgr_SelectableObject)& anObject)  const;
-  
-  //! Returns true if the selection mode aMode is active for the selectable object anObject.
-  Standard_EXPORT   Standard_Boolean IsActivated (const Handle(SelectMgr_SelectableObject)& anObject, const Standard_Integer aMode)  const;
-  
-  //! Returns true if the selection mode aMode is active for the selectable
-  //! object anObject in the viewer selector aSelector.
-  Standard_EXPORT   Standard_Boolean IsActivated (const Handle(SelectMgr_SelectableObject)& anObject, const Handle(SelectMgr_ViewerSelector)& aSelector, const Standard_Integer aMode)  const;
-  
-  //! computes Selections in <anIObj> if they are
-  //! activated in at least one Selector.
-  //! puts a recompute flag in each selection which is not active.
-  //! if <aMode>=-1 all the selection modes will have to be
-  //! recomputed.
-  //! if <ForceUpdate>  = True, all selections are recomputed,
-  //! even if they are not active.
-  Standard_EXPORT   void RecomputeSelection (const Handle(SelectMgr_SelectableObject)& anIObj, const Standard_Boolean ForceUpdate = Standard_False, const Standard_Integer aMode = -1) ;
-  
-  //! updates the selectionModes of <anObject>
-  //! According to
-  //! . the stored type of update in each selection
-  //! mode,
-  //! . the activation status of each selection mode
-  //! if <ForceUpdate> == True Recompute
-  Standard_EXPORT   void Update (const Handle(SelectMgr_SelectableObject)& anObject, const Standard_Boolean ForceUpdate = Standard_True) ;
-  
-  Standard_EXPORT   void Update (const Handle(SelectMgr_SelectableObject)& anObject, const Handle(SelectMgr_ViewerSelector)& aSelector, const Standard_Boolean ForceUpdate = Standard_True) ;
-  
-  Standard_EXPORT   void SetUpdateMode (const Handle(SelectMgr_SelectableObject)& anObject, const SelectMgr_TypeOfUpdate aType) ;
-  
-  Standard_EXPORT   void SetUpdateMode (const Handle(SelectMgr_SelectableObject)& anObject, const Standard_Integer aSelMode, const SelectMgr_TypeOfUpdate aType) ;
-  
-  Standard_EXPORT   TCollection_AsciiString Status()  const;
-  
-  Standard_EXPORT   TCollection_AsciiString Status (const Handle(SelectMgr_SelectableObject)& anObject)  const;
+  //! Sets type of update of selection with theMode of theObject to the given theType.
+  Standard_EXPORT   void SetUpdateMode (const Handle(SelectMgr_SelectableObject)& theObject, const Standard_Integer theMode, const SelectMgr_TypeOfUpdate theType) ;
 
 
 
@@ -165,11 +119,18 @@ protected:
 private: 
 
   
-  Standard_EXPORT   void LoadMode (const Handle(SelectMgr_SelectableObject)& anObject, const Standard_Integer aMode) ;
+  //! Loads and creates selection structures for object theObject with mode theMode in specified
+  //! viewer selector theSelector. If theSelector is set to default value (NULL), the selection mode
+  //! created will be added to all known viewer selectors.
+  Standard_EXPORT   void loadMode (const Handle(SelectMgr_SelectableObject)& theObject, const Standard_Integer theMode, const Handle(SelectMgr_ViewerSelector)& theSelector = NULL) ;
+  
+  //! Internal function that marks 1st level BVH of the object theObj as
+  //! outdated.
+  Standard_EXPORT   void rebuildSelectionStructures (const Handle(SelectMgr_ViewerSelector)& theSelector = NULL) ;
 
-  TColStd_MapOfTransient myselectors;
-  TColStd_MapOfTransient myglobal;
-  SelectMgr_DataMapOfObjectSelectors mylocal;
+  TColStd_MapOfTransient mySelectors;
+  TColStd_MapOfTransient myGlobal;
+  SelectMgr_DataMapOfObjectSelectors myLocal;
 
 
 };

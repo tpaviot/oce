@@ -88,6 +88,9 @@ public:
   //! Creates a point on two curves.
   Standard_EXPORT   void SetValue (const gp_Pnt& Pt1, const gp_Pnt& Pt2, const Standard_Real Param, const Standard_Real PC1, const Standard_Real PC2) ;
   
+  //! Changes parameter on existing point
+      void SetParameter (const Standard_Real Param) ;
+  
       Standard_Real Parameter()  const;
   
   //! Returns Standard_True if it was not possible to compute

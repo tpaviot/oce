@@ -147,6 +147,8 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
   myBgColor.rgb[1] = theCWindow.Background.g;
   myBgColor.rgb[2] = theCWindow.Background.b;
 
+  Standard_Boolean isCoreProfile = Standard_False;
+
 #if defined(HAVE_EGL) || defined(__ANDROID__)
   EGLDisplay anEglDisplay = (EGLDisplay )theDriver->getRawGlDisplay();
   EGLContext anEglContext = (EGLContext )theDriver->getRawGlContext();
@@ -185,7 +187,7 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
     }
   }
 
-  myGlContext->Init ((Aspect_Drawable )anEglSurf, (Aspect_Display )anEglDisplay, (Aspect_RenderingContext )anEglContext);
+  myGlContext->Init ((Aspect_Drawable )anEglSurf, (Aspect_Display )anEglDisplay, (Aspect_RenderingContext )anEglContext, isCoreProfile);
 #elif defined(_WIN32)
   (void )theDriver;
   HWND  aWindow   = (HWND )theCWindow.XWindow;
@@ -210,6 +212,7 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
   int aPixelFrmtId = ChoosePixelFormat (aWindowDC, &aPixelFrmt);
 
   // in case of failure try without stereo if any
+  const Standard_Boolean hasStereo = aPixelFrmtId != 0 && theCaps->contextStereo;
   if (aPixelFrmtId == 0 && theCaps->contextStereo)
   {
     TCollection_ExtendedString aMsg ("OpenGl_Window::CreateWindow: "
@@ -248,7 +251,7 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
     HWND  aWinTmp     = NULL;
     HDC   aDevCtxTmp  = NULL;
     HGLRC aRendCtxTmp = NULL;
-    if ((!theCaps->contextDebug && !theCaps->contextNoAccel)
+    if ((!theCaps->contextDebug && !theCaps->contextNoAccel && theCaps->contextCompatible)
      || RegisterClassW (&aClass) == 0)
     {
       aClass.lpszClassName = NULL;
@@ -308,7 +311,7 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
         WGL_DRAW_TO_WINDOW_ARB, GL_TRUE,
         WGL_SUPPORT_OPENGL_ARB, GL_TRUE,
         WGL_DOUBLE_BUFFER_ARB,  GL_TRUE,
-        WGL_STEREO_ARB,         theCaps->contextStereo ? GL_TRUE : GL_FALSE,
+        WGL_STEREO_ARB,         hasStereo ? GL_TRUE : GL_FALSE,
         WGL_PIXEL_TYPE_ARB,     WGL_TYPE_RGBA_ARB,
         //WGL_SAMPLE_BUFFERS_ARB, 1,
         //WGL_SAMPLES_ARB,        8,
@@ -336,18 +339,56 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
     // create GL context with extra options
     if (aCreateCtxProc != NULL)
     {
-      // Beware! NVIDIA drivers reject context creation when WGL_CONTEXT_PROFILE_MASK_ARB are specified
-      // but not WGL_CONTEXT_MAJOR_VERSION_ARB/WGL_CONTEXT_MINOR_VERSION_ARB.
-      int aCtxAttribs[] =
+      if (!theCaps->contextCompatible)
       {
-        //WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
-        //WGL_CONTEXT_MINOR_VERSION_ARB, 2,
-        //WGL_CONTEXT_PROFILE_MASK_ARB,  WGL_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB, //WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
-        WGL_CONTEXT_FLAGS_ARB,         theCaps->contextDebug ? WGL_CONTEXT_DEBUG_BIT_ARB : 0,
-        0, 0
-      };
+        int aCoreCtxAttribs[] =
+        {
+          WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
+          WGL_CONTEXT_MINOR_VERSION_ARB, 2,
+          WGL_CONTEXT_PROFILE_MASK_ARB,  WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
+          WGL_CONTEXT_FLAGS_ARB,         theCaps->contextDebug ? WGL_CONTEXT_DEBUG_BIT_ARB : 0,
+          0, 0
+        };
 
-      aGContext = aCreateCtxProc (aWindowDC, aSlaveCtx, aCtxAttribs);
+        // Try to create the core profile of highest OpenGL version supported by OCCT
+        // (this will be done automatically by some drivers when requesting 3.2,
+        //  but some will not (e.g. AMD Catalyst) since WGL_ARB_create_context_profile specification allows both implementations).
+        for (int aLowVer4 = 5; aLowVer4 >= 0 && aGContext == NULL; --aLowVer4)
+        {
+          aCoreCtxAttribs[1] = 4;
+          aCoreCtxAttribs[3] = aLowVer4;
+          aGContext = aCreateCtxProc (aWindowDC, aSlaveCtx, aCoreCtxAttribs);
+        }
+        for (int aLowVer3 = 3; aLowVer3 >= 2 && aGContext == NULL; --aLowVer3)
+        {
+          aCoreCtxAttribs[1] = 3;
+          aCoreCtxAttribs[3] = aLowVer3;
+          aGContext = aCreateCtxProc (aWindowDC, aSlaveCtx, aCoreCtxAttribs);
+        }
+        isCoreProfile = aGContext != NULL;
+      }
+
+      if (aGContext == NULL)
+      {
+        int aCtxAttribs[] =
+        {
+          // Beware! NVIDIA drivers reject context creation when WGL_CONTEXT_PROFILE_MASK_ARB are specified
+          // but not WGL_CONTEXT_MAJOR_VERSION_ARB/WGL_CONTEXT_MINOR_VERSION_ARB.
+          //WGL_CONTEXT_PROFILE_MASK_ARB,  WGL_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB,
+          WGL_CONTEXT_FLAGS_ARB,         theCaps->contextDebug ? WGL_CONTEXT_DEBUG_BIT_ARB : 0,
+          0, 0
+        };
+        isCoreProfile = Standard_False;
+        aGContext = aCreateCtxProc (aWindowDC, aSlaveCtx, aCtxAttribs);
+
+        if (aGContext != NULL
+        && !theCaps->contextCompatible)
+        {
+          TCollection_ExtendedString aMsg("OpenGl_Window::CreateWindow: core profile creation failed.");
+          myGlContext->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB, GL_DEBUG_TYPE_PORTABILITY_ARB, 0, GL_DEBUG_SEVERITY_LOW_ARB, aMsg);
+        }
+      }
+
       if (aGContext != NULL)
       {
         aSlaveCtx = NULL;
@@ -396,7 +437,7 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
     return;
   }
 
-  myGlContext->Init ((Aspect_Handle )aWindow, (Aspect_Handle )aWindowDC, (Aspect_RenderingContext )aGContext);
+  myGlContext->Init ((Aspect_Handle )aWindow, (Aspect_Handle )aWindowDC, (Aspect_RenderingContext )aGContext, isCoreProfile);
 #else
   Window aParent = (Window )theCWindow.XWindow;
   Window aWindow = 0;
@@ -418,11 +459,97 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
     aVis = XGetVisualInfo (aDisp, aVisInfoMask, &aVisInfo, &aNbItems);
   }
 
+#if defined(__linux) || defined(Linux) || defined(__APPLE__)
+  if (aVis != NULL)
+  {
+    // check Visual for OpenGl context's parameters compatibility
+    int isGl = 0, isDoubleBuffer = 0, isRGBA = 0, isStereo = 0;
+    int aDepthSize = 0, aStencilSize = 0;
+
+    if (glXGetConfig (aDisp, aVis, GLX_USE_GL, &isGl) != 0)
+      isGl = 0;
+
+    if (glXGetConfig (aDisp, aVis, GLX_RGBA, &isRGBA) != 0)
+      isRGBA = 0;
+
+    if (glXGetConfig (aDisp, aVis, GLX_DOUBLEBUFFER, &isDoubleBuffer) != 0)
+      isDoubleBuffer = 0;
+
+    if (glXGetConfig (aDisp, aVis, GLX_STEREO, &isStereo) != 0)
+      isStereo = 0;
+
+    if (glXGetConfig (aDisp, aVis, GLX_DEPTH_SIZE, &aDepthSize) != 0)
+      aDepthSize = 0;
+
+    if (glXGetConfig (aDisp, aVis, GLX_STENCIL_SIZE, &aStencilSize) != 0)
+      aStencilSize = 0;
+
+    if (!isGl)
+    {
+      XFree (aVis);
+      aVis = NULL;
+      if (myOwnGContext)
+      {
+        TCollection_ExtendedString aMsg ("OpenGl_Window::CreateWindow: window Visual does not support GL rendering!");
+        myGlContext->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+                                  GL_DEBUG_TYPE_OTHER_ARB,
+                                  0, GL_DEBUG_SEVERITY_HIGH_ARB, aMsg);
+      }
+    }
+    else
+    {
+      TCollection_ExtendedString aList;
+      if (aDepthSize < 1)
+      {
+        if (!aList.IsEmpty()) aList += ", ";
+        aList += "no depth buffer";
+      }
+      if (aStencilSize < 1)
+      {
+        if (!aList.IsEmpty()) aList += ", ";
+        aList += "no stencil buffer";
+      }
+      if (isRGBA == 0)
+      {
+        if (!aList.IsEmpty()) aList += ", ";
+        aList += "no RGBA color buffer";
+      }
+      if (isDoubleBuffer == 0)
+      {
+        if (!aList.IsEmpty()) aList += ", ";
+        aList += "no Double Buffer";
+      }
+      if (theCaps->contextStereo && isStereo == 0)
+      {
+        if (!aList.IsEmpty()) aList += ", ";
+        aList += "no Quad Buffer";
+      }
+      if (!theCaps->contextStereo && isStereo == 1)
+      {
+        if (!aList.IsEmpty()) aList += ", ";
+        aList += "extra Quad Buffer";
+      }
+      if (!aList.IsEmpty())
+      {
+        TCollection_ExtendedString aMsg = TCollection_ExtendedString ("OpenGl_Window::CreateWindow: window Visual is incomplete: ") + aList;
+        if (myOwnGContext)
+        {
+          XFree (aVis);
+          aVis = NULL;
+        }
+        myGlContext->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+                                  GL_DEBUG_TYPE_OTHER_ARB,
+                                  0, GL_DEBUG_SEVERITY_MEDIUM_ARB, aMsg);
+      }
+    }
+  }
+#endif
+
   if (!myOwnGContext)
   {
-    if (aVis != NULL)
+    if (aVis == NULL)
     {
-      Aspect_GraphicDeviceDefinitionError::Raise ("OpenGl_Window::CreateWindow: XGetVisualInfo failed.");
+      Aspect_GraphicDeviceDefinitionError::Raise ("OpenGl_Window::CreateWindow: XGetVisualInfo is unable to choose needed configuration in existing OpenGL context. ");
       return;
     }
 
@@ -430,41 +557,6 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
   }
   else
   {
-  #if defined(__linux) || defined(Linux) || defined(__APPLE__)
-    if (aVis != NULL)
-    {
-      // check Visual for OpenGl context's parameters compability
-      int isGl = 0, isDoubleBuffer = 0, isRGBA = 0, isStereo = 0;
-      int aDepthSize = 0, aStencilSize = 0;
-
-      if (glXGetConfig (aDisp, aVis, GLX_USE_GL, &isGl) != 0)
-        isGl = 0;
-
-      if (glXGetConfig (aDisp, aVis, GLX_RGBA, &isRGBA) != 0)
-        isRGBA = 0;
-
-      if (glXGetConfig (aDisp, aVis, GLX_DOUBLEBUFFER, &isDoubleBuffer) != 0)
-        isDoubleBuffer = 0;
-
-      if (glXGetConfig (aDisp, aVis, GLX_STEREO, &isStereo) != 0)
-        isStereo = 0;
-
-      if (glXGetConfig (aDisp, aVis, GLX_DEPTH_SIZE, &aDepthSize) != 0)
-        aDepthSize = 0;
-
-      if (glXGetConfig (aDisp, aVis, GLX_STENCIL_SIZE, &aStencilSize) != 0)
-        aStencilSize = 0;
-
-      if (!isGl || !aDepthSize || !isRGBA  || !aStencilSize ||
-          (isDoubleBuffer ? 1 : 0) != 1 ||
-          (isStereo       ? 1 : 0) != (theCaps->contextStereo ? 1 : 0))
-      {
-        XFree (aVis);
-        aVis = NULL;
-      }
-    }
-  #endif
-
     if (aVis == NULL)
     {
       int anIter = 0;
@@ -515,6 +607,13 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
       {
         Aspect_GraphicDeviceDefinitionError::Raise ("OpenGl_Window::CreateWindow: glXChooseVisual failed.");
         return;
+      }
+      else
+      {
+        TCollection_ExtendedString aMsg ("OpenGl_Window::CreateWindow: child window has been created with better Visual.");
+        myGlContext->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+                                  GL_DEBUG_TYPE_OTHER_ARB,
+                                  0, GL_DEBUG_SEVERITY_MEDIUM_ARB, aMsg);
       }
     }
 
@@ -570,7 +669,7 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
     }
   }
 
-  myGlContext->Init ((Aspect_Drawable )aWindow, (Aspect_Display )aDisp, (Aspect_RenderingContext )aGContext);
+  myGlContext->Init ((Aspect_Drawable )aWindow, (Aspect_Display )aDisp, (Aspect_RenderingContext )aGContext, isCoreProfile);
 #endif
   myGlContext->Share (theShareCtx);
 
@@ -759,11 +858,15 @@ void OpenGl_Window::Init()
   myHeight = aNewHeight;
 #endif
 
+  glDisable (GL_DITHER);
   glDisable (GL_SCISSOR_TEST);
   glViewport (0, 0, myWidth, myHeight);
 #if !defined(GL_ES_VERSION_2_0)
-  glMatrixMode (GL_MODELVIEW);
   glDrawBuffer (GL_BACK);
+  if (myGlContext->core11 != NULL)
+  {
+    glMatrixMode (GL_MODELVIEW);
+  }
 #endif
 }
 
@@ -793,6 +896,7 @@ void OpenGl_Window::DisableFeatures() const
   * (Omit as much of this as possible, when you know in advance
   * that the OpenGL state will already be set correctly.)
   */
+  glDisable(GL_DITHER);
   glDisable(GL_BLEND);
   glDisable(GL_DEPTH_TEST);
   glDisable(GL_TEXTURE_2D);
@@ -848,27 +952,5 @@ void OpenGl_Window::DisableFeatures() const
       glDisable(GL_TEXTURE_3D_EXT);
 #endif
   }
-#endif
-}
-
-// =======================================================================
-// function : MakeFrontBufCurrent
-// purpose  : TelMakeFrontBufCurrent
-// =======================================================================
-void OpenGl_Window::MakeFrontBufCurrent() const
-{
-#if !defined(GL_ES_VERSION_2_0)
-  glDrawBuffer (GL_FRONT);
-#endif
-}
-
-// =======================================================================
-// function : MakeBackBufCurrent
-// purpose  : TelMakeBackBufCurrent
-// =======================================================================
-void OpenGl_Window::MakeBackBufCurrent() const
-{
-#if !defined(GL_ES_VERSION_2_0)
-  glDrawBuffer (GL_BACK);
 #endif
 }

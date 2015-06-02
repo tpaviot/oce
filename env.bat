@@ -5,7 +5,7 @@ rem - first argument specifies version of Visual Studio (vc8, vc9, vc10, vc12 or
 rem - second argument specifies architecture (win32 or win64),
 rem - third argument specifies build mode (Debug or Release)
 rem Default options are:
-rem   vc9 win32 Release
+rem   vc10 win64 Release
 
 set "SCRIPTROOT=%~dp0"
 set "SCRIPTROOT=%SCRIPTROOT:~0,-1%"
@@ -16,13 +16,14 @@ if     ["%CASROOT%"] == [""] set "CASROOT=%SCRIPTROOT%"
 rem ----- Reset values to defaults -----
 set "CASDEB="
 set "VCVER=vc10"
-set "ARCH=32"
+set "ARCH=64"
 set "VCVARS="
 set "HAVE_TBB=false"
-set "HAVE_VTK=false"
+set "HAVE_OPENCL=false"
 set "HAVE_FREEIMAGE=false"
 set "HAVE_GL2PS=false"
 set "HAVE_OPENCL=false"
+set "HAVE_VTK=false"
 set "CSF_OPT_INC="
 set "CSF_OPT_LIB32="
 set "CSF_OPT_LIB64="
@@ -65,6 +66,7 @@ if ["%HAVE_OPENCL%"]    == ["true"] set "CSF_DEFINES=HAVE_OPENCL;%CSF_DEFINES%"
 if ["%HAVE_GL2PS%"]     == ["true"] set "CSF_DEFINES=HAVE_GL2PS;%CSF_DEFINES%"
 if ["%HAVE_FREEIMAGE%"] == ["true"] set "CSF_DEFINES=HAVE_FREEIMAGE;%CSF_DEFINES%"
 if ["%HAVE_VTK%"]       == ["true"] set "CSF_DEFINES=HAVE_VTK;%CSF_DEFINES%"
+
 rem Eliminate VS warning
 if ["%CSF_DEFINES%"]  == [""] set "CSF_DEFINES=;"
 
@@ -123,7 +125,6 @@ set "CSF_PluginDefaults=%CASROOT%\src\StdResource"
 set "CSF_XCAFDefaults=%CASROOT%\src\StdResource"
 set "CSF_TObjDefaults=%CASROOT%\src\StdResource"
 set "CSF_StandardLiteDefaults=%CASROOT%\src\StdResource"
-
 set "CSF_UnitsLexicon=%CASROOT%\src\UnitsAPI\Lexi_Expr.dat"
 set "CSF_UnitsDefinition=%CASROOT%\src\UnitsAPI\Units.dat"
 set "CSF_IGESDefaults=%CASROOT%\src\XSTEPResource"

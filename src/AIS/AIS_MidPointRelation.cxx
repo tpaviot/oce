@@ -20,7 +20,6 @@
 #include <Precision.hxx>
 
 #include <AIS.hxx>
-#include <AIS_Drawer.hxx>
 
 #include <gce_MakeLin.hxx>
 #include <ElCLib.hxx>
@@ -39,6 +38,7 @@
 #include <Geom_TrimmedCurve.hxx>
 
 #include <SelectMgr_EntityOwner.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <Select3D_SensitiveSegment.hxx>
 #include <Select3D_SensitiveCurve.hxx>
 

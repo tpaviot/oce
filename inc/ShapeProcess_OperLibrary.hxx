@@ -12,10 +12,12 @@
 
 #include <Handle_ShapeProcess_ShapeContext.hxx>
 #include <Handle_BRepTools_Modification.hxx>
+#include <Handle_ShapeExtend_MsgRegistrator.hxx>
 class TopoDS_Shape;
 class ShapeProcess_ShapeContext;
 class BRepTools_Modification;
 class TopTools_DataMapOfShapeShape;
+class ShapeExtend_MsgRegistrator;
 
 
 //! Provides a set of following operators
@@ -48,7 +50,7 @@ public:
   
   //! Applies BRepTools_Modification to a shape,
   //! taking into account sharing of components of compounds.
-  Standard_EXPORT static   TopoDS_Shape ApplyModifier (const TopoDS_Shape& S, const Handle(ShapeProcess_ShapeContext)& context, const Handle(BRepTools_Modification)& M, TopTools_DataMapOfShapeShape& map) ;
+  Standard_EXPORT static   TopoDS_Shape ApplyModifier (const TopoDS_Shape& S, const Handle(ShapeProcess_ShapeContext)& context, const Handle(BRepTools_Modification)& M, TopTools_DataMapOfShapeShape& map, const Handle(ShapeExtend_MsgRegistrator)& msg = 0) ;
 
 
 

@@ -35,8 +35,6 @@ IMPLEMENT_STANDARD_RTTIEXT(OpenGl_View,MMgt_TShared)
 
 /*----------------------------------------------------------------------*/
 
-static const OPENGL_BG_TEXTURE myDefaultBgTexture = { 0, 0, 0, Aspect_FM_CENTERED };
-static const OPENGL_BG_GRADIENT myDefaultBgGradient = { {{ 0.F, 0.F, 0.F, 1.F }}, {{ 0.F, 0.F, 0.F, 1.F }}, Aspect_GFM_NONE };
 static const Tmatrix3 myDefaultMatrix = { { 1.F, 0.F, 0.F, 0.F }, { 0.F, 1.F, 0.F, 0.F }, { 0.F, 0.F, 1.F, 0.F }, { 0.F, 0.F, 0.F, 1.F } };
 static const OPENGL_ZCLIP myDefaultZClip = { { Standard_True, 0.F }, { Standard_True, 1.F } };
 
@@ -54,10 +52,8 @@ static const GLdouble THE_IDENTITY_MATRIX[4][4] =
 
 OpenGl_View::OpenGl_View (const CALL_DEF_VIEWCONTEXT &AContext,
                           OpenGl_StateCounter*       theCounter)
-: mySurfaceDetail(Visual3d_TOD_NONE),
+: mySurfaceDetail(Visual3d_TOD_ALL),
   myBackfacing(0),
-  myBgTexture(myDefaultBgTexture),
-  myBgGradient(myDefaultBgGradient),
   //shield_indicator = TOn,
   //shield_colour = { { 0.F, 0.F, 0.F, 1.F } },
   //border_indicator = TOff,
@@ -66,8 +62,8 @@ OpenGl_View::OpenGl_View (const CALL_DEF_VIEWCONTEXT &AContext,
   myZClip(myDefaultZClip),
   myCamera(AContext.Camera),
   myFog(myDefaultFog),
-  myTrihedron(NULL),
-  myGraduatedTrihedron(NULL),
+  myToShowTrihedron (false),
+  myToShowGradTrihedron (false),
   myVisualization(AContext.Visualization),
   myShadingModel ((Visual3d_TypeOfModel )AContext.Model),
   myAntiAliasing(Standard_False),
@@ -76,42 +72,55 @@ OpenGl_View::OpenGl_View (const CALL_DEF_VIEWCONTEXT &AContext,
   myProjectionState (0),
   myModelViewState (0),
   myStateCounter (theCounter),
-  myLastLightSourceState (0, 0)
+  myLastLightSourceState (0, 0),
+  myTextureParams   (new OpenGl_AspectFace()),
+  myBgGradientArray (new OpenGl_BackgroundArray (Graphic3d_TOB_GRADIENT)),
+  myBgTextureArray  (new OpenGl_BackgroundArray (Graphic3d_TOB_TEXTURE)),
+  // ray-tracing fields initialization
+  myRaytraceInitStatus (OpenGl_RT_NONE),
+  myIsRaytraceDataValid (Standard_False),
+  myIsRaytraceWarnTextures (Standard_False),
+  myToUpdateEnvironmentMap (Standard_False),
+  myLayersModificationStatus (0)
 {
   myCurrLightSourceState = myStateCounter->Increment();
-  myModificationState = 1; // initial state
 }
 
 /*----------------------------------------------------------------------*/
 
-OpenGl_View::~OpenGl_View ()
+OpenGl_View::~OpenGl_View()
 {
   ReleaseGlResources (NULL); // ensure ReleaseGlResources() was called within valid context
-  OpenGl_Element::Destroy (NULL, myTrihedron);
-  OpenGl_Element::Destroy (NULL, myGraduatedTrihedron);
+  OpenGl_Element::Destroy (NULL, myBgGradientArray);
+  OpenGl_Element::Destroy (NULL, myBgTextureArray);
+  OpenGl_Element::Destroy (NULL, myTextureParams);
 }
 
 void OpenGl_View::ReleaseGlResources (const Handle(OpenGl_Context)& theCtx)
 {
-  if (myTrihedron != NULL)
-  {
-    myTrihedron->Release (theCtx.operator->());
-  }
-  if (myGraduatedTrihedron != NULL)
-  {
-    myGraduatedTrihedron->Release (theCtx.operator->());
-  }
+  myTrihedron         .Release (theCtx.operator->());
+  myGraduatedTrihedron.Release (theCtx.operator->());
 
   if (!myTextureEnv.IsNull())
   {
     theCtx->DelayedRelease (myTextureEnv);
     myTextureEnv.Nullify();
   }
-  if (myBgTexture.TexId != 0)
+
+  if (myTextureParams != NULL)
   {
-    glDeleteTextures (1, (GLuint*)&(myBgTexture.TexId));
-    myBgTexture.TexId = 0;
+    myTextureParams->Release (theCtx.operator->());
   }
+  if (myBgGradientArray != NULL)
+  {
+    myBgGradientArray->Release (theCtx.operator->());
+  }
+  if (myBgTextureArray != NULL)
+  {
+    myBgTextureArray->Release (theCtx.operator->());
+  }
+
+  releaseRaytraceResources (theCtx);
 }
 
 void OpenGl_View::SetTextureEnv (const Handle(OpenGl_Context)&       theCtx,
@@ -133,14 +142,14 @@ void OpenGl_View::SetTextureEnv (const Handle(OpenGl_Context)&       theCtx,
   if (!anImage.IsNull())
     myTextureEnv->Init (theCtx, *anImage.operator->(), theTexture->Type());
 
-  myModificationState++;
+  myToUpdateEnvironmentMap = Standard_True;
 }
 
 void OpenGl_View::SetSurfaceDetail (const Visual3d_TypeOfSurfaceDetail theMode)
 {
   mySurfaceDetail = theMode;
 
-  myModificationState++;
+  myToUpdateEnvironmentMap = Standard_True;
 }
 
 // =======================================================================
@@ -212,37 +221,41 @@ void OpenGl_View::SetFog (const Graphic3d_CView& theCView,
 
 /*----------------------------------------------------------------------*/
 
-void OpenGl_View::TriedronDisplay (const Handle(OpenGl_Context)&       theCtx,
-                                   const Aspect_TypeOfTriedronPosition thePosition,
+void OpenGl_View::TriedronDisplay (const Aspect_TypeOfTriedronPosition thePosition,
                                    const Quantity_NameOfColor          theColor,
                                    const Standard_Real                 theScale,
                                    const Standard_Boolean              theAsWireframe)
 {
-  OpenGl_Element::Destroy (theCtx.operator->(), myTrihedron);
-  myTrihedron = new OpenGl_Trihedron (thePosition, theColor, theScale, theAsWireframe);
+  myToShowTrihedron = true;
+  myTrihedron.SetWireframe   (theAsWireframe);
+  myTrihedron.SetPosition    (thePosition);
+  myTrihedron.SetScale       (theScale);
+  myTrihedron.SetLabelsColor (theColor);
 }
 
 /*----------------------------------------------------------------------*/
 
 void OpenGl_View::TriedronErase (const Handle(OpenGl_Context)& theCtx)
 {
-  OpenGl_Element::Destroy (theCtx.operator->(), myTrihedron);
+  myToShowTrihedron = false;
+  myTrihedron.Release (theCtx.operator->());
 }
 
 /*----------------------------------------------------------------------*/
 
-void OpenGl_View::GraduatedTrihedronDisplay (const Handle(OpenGl_Context)&        theCtx,
-                                             const Graphic3d_CGraduatedTrihedron& theData)
+void OpenGl_View::GraduatedTrihedronDisplay (const Handle(OpenGl_Context)&       theCtx,
+                                             const Graphic3d_GraduatedTrihedron& theData)
 {
-  OpenGl_Element::Destroy (theCtx.operator->(), myGraduatedTrihedron);
-  myGraduatedTrihedron = new OpenGl_GraduatedTrihedron (theData);
+  myToShowGradTrihedron = true;
+  myGraduatedTrihedron.SetValues (theCtx, theData);
 }
 
 /*----------------------------------------------------------------------*/
 
 void OpenGl_View::GraduatedTrihedronErase (const Handle(OpenGl_Context)& theCtx)
 {
-  OpenGl_Element::Destroy (theCtx.operator->(), myGraduatedTrihedron);
+  myToShowGradTrihedron = false;
+  myGraduatedTrihedron.Release (theCtx.operator->());
 }
 
 /*----------------------------------------------------------------------*/
@@ -256,6 +269,7 @@ void OpenGl_View::EndTransformPersistence(const Handle(OpenGl_Context)& theCtx)
     theCtx->ProjectionState.Pop();
 
     theCtx->ApplyProjectionMatrix();
+    theCtx->ApplyWorldViewMatrix();
 
     myIsTransPers = Standard_False;
   }
@@ -265,7 +279,9 @@ void OpenGl_View::EndTransformPersistence(const Handle(OpenGl_Context)& theCtx)
 
 //transform_persistence_begin
 const TEL_TRANSFORM_PERSISTENCE* OpenGl_View::BeginTransformPersistence (const Handle(OpenGl_Context)& theCtx,
-                                                                         const TEL_TRANSFORM_PERSISTENCE* theTransPers)
+                                                                         const TEL_TRANSFORM_PERSISTENCE* theTransPers,
+                                                                         Standard_Integer theWidth,
+                                                                         Standard_Integer theHeight)
 {
   const TEL_TRANSFORM_PERSISTENCE* aTransPersPrev = myTransPers;
   myTransPers = theTransPers;
@@ -283,6 +299,7 @@ const TEL_TRANSFORM_PERSISTENCE* OpenGl_View::BeginTransformPersistence (const H
 
   const GLdouble aViewportW = (GLdouble )aViewport[2];
   const GLdouble aViewportH = (GLdouble )aViewport[3];
+
   if (myIsTransPers)
   {
     // pop matrix stack - it will be overridden later
@@ -292,6 +309,56 @@ const TEL_TRANSFORM_PERSISTENCE* OpenGl_View::BeginTransformPersistence (const H
   else
   {
     myIsTransPers = Standard_True;
+  }
+
+  if (theTransPers->mode & TPF_2D)
+  {
+    GLfloat aLeft   = -static_cast<GLfloat> (theWidth  / 2);
+    GLfloat aRight  =  static_cast<GLfloat> (theWidth  / 2);
+    GLfloat aBottom = -static_cast<GLfloat> (theHeight / 2);
+    GLfloat aTop    =  static_cast<GLfloat> (theHeight / 2);
+    GLfloat aGap    =  static_cast<GLfloat> (theTransPers->pointZ);
+    if (theTransPers->pointX > 0)
+    {
+      aLeft  -= static_cast<GLfloat> (theWidth / 2) - aGap;
+      aRight -= static_cast<GLfloat> (theWidth / 2) - aGap;
+    }
+    else if (theTransPers->pointX < 0)
+    {
+      aLeft  += static_cast<GLfloat> (theWidth / 2) - aGap;
+      aRight += static_cast<GLfloat> (theWidth / 2) - aGap;
+    }
+    if (theTransPers->pointY > 0)
+    {
+      aBottom -= static_cast<GLfloat> (theHeight / 2) - aGap;
+      aTop    -= static_cast<GLfloat> (theHeight / 2) - aGap;
+    }
+    else if (theTransPers->pointY < 0)
+    {
+      aBottom += static_cast<GLfloat> (theHeight / 2) - aGap;
+      aTop    += static_cast<GLfloat> (theHeight / 2) - aGap;
+    }
+    if (theTransPers->mode == TPF_2D_ISTOPDOWN)
+    {
+      const GLfloat aTemp = aTop;
+      aTop    = aBottom;
+      aBottom = aTemp;
+    }
+
+    OpenGl_Mat4 aProjectMat;
+    OpenGl_Utils::Ortho2D<Standard_ShortReal> (aProjectMat,
+                                               aLeft, aRight,
+                                               aBottom, aTop);
+
+    theCtx->WorldViewState.Push();
+    theCtx->ProjectionState.Push();
+
+    theCtx->WorldViewState.SetIdentity();
+    theCtx->ProjectionState.SetCurrent (aProjectMat);
+
+    theCtx->ApplyWorldViewMatrix();
+    theCtx->ApplyProjectionMatrix();
+    return aTransPersPrev;
   }
 
   // push matrices into stack and reset them
@@ -308,7 +375,7 @@ const TEL_TRANSFORM_PERSISTENCE* OpenGl_View::BeginTransformPersistence (const H
                                           aModelMatrix,
                                           aProjMatrix,
                                           aViewport,
-                                          aWinZ,
+                                          aWinX,
                                           aWinY,
                                           aWinZ);
   }
@@ -433,13 +500,3 @@ const TEL_TRANSFORM_PERSISTENCE* OpenGl_View::BeginTransformPersistence (const H
   theCtx->ApplyProjectionMatrix();
   return aTransPersPrev;
 }
-
-/*----------------------------------------------------------------------*/
-
-void OpenGl_View::GetMatrices (OpenGl_Mat4& theOrientation,
-                               OpenGl_Mat4& theViewMapping) const
-{
-  theViewMapping = myCamera->ProjectionMatrixF();
-  theOrientation = myCamera->OrientationMatrixF();
-}
-/*----------------------------------------------------------------------*/

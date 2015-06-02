@@ -36,12 +36,7 @@ public:
   //! time of the current thread only; otherwise CPU of the
   //! process (all threads, and completed children) is measured.
   Standard_EXPORT OSD_Chronometer(const Standard_Boolean ThisThreadOnly = Standard_False);
-  
-  Standard_EXPORT virtual   void Destroy() ;
-~OSD_Chronometer()
-{
-  Destroy();
-}
+  Standard_EXPORT virtual ~OSD_Chronometer();
   
   //! Stops and Reinitializes the Chronometer.
   Standard_EXPORT virtual   void Reset() ;
@@ -56,20 +51,20 @@ public:
   //! Shows the current CPU user and system time on the
   //! standard output stream <cout>.
   //! The chronometer can be running (laps Time) or stopped.
-  Standard_EXPORT virtual   void Show() ;
+  Standard_EXPORT virtual   void Show()  const;
   
   //! Shows the current CPU user and system time on the output
   //! stream <os>.
   //! The chronometer can be running (laps Time) or stopped.
-  Standard_EXPORT virtual   void Show (Standard_OStream& os) ;
+  Standard_EXPORT virtual   void Show (Standard_OStream& os)  const;
   
   //! Returns the current CPU user time in a variable.
   //! The chronometer can be running (laps Time) or stopped.
-  Standard_EXPORT   void Show (Standard_Real& UserSeconds) ;
+  Standard_EXPORT   void Show (Standard_Real& theUserSeconds)  const;
   
   //! Returns the current CPU user and system time in variables.
   //! The chronometer can be running (laps Time) or stopped.
-  Standard_EXPORT   void Show (Standard_Real& UserSeconds, Standard_Real& SystemSeconds) ;
+  Standard_EXPORT   void Show (Standard_Real& theUserSeconds, Standard_Real& theSystemSeconds)  const;
   
   //! Returns CPU time (user and system) consumed by the current
   //! process since its start, in seconds. The actual precision of

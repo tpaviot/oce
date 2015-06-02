@@ -10,21 +10,19 @@
 #include <Standard_DefineAlloc.hxx>
 #include <Standard_Macro.hxx>
 
-#include <Handle_SelectMgr_Selection.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <Standard_Real.hxx>
 #include <Standard_Boolean.hxx>
 #include <Standard_Integer.hxx>
 #include <Handle_SelectMgr_SelectableObject.hxx>
 #include <Handle_StdSelect_BRepOwner.hxx>
-#include <Handle_Select3D_SensitiveEntity.hxx>
-class SelectMgr_Selection;
+#include <Select3D_SensitiveEntity.hxx>
+#include <Select3D_EntitySequence.hxx>
 class TopoDS_Shape;
 class SelectMgr_SelectableObject;
 class StdSelect_BRepOwner;
-class Select3D_SensitiveEntity;
 class TopoDS_Face;
-class Select3D_ListOfSensitive;
 
 
 //! Tool to create specific selections (sets of primitives)
@@ -108,7 +106,7 @@ public:
   //! appends   to <OutList>   the  3D
   //! sensitive entities  created  for  selection of <aFace>
   //! if<InteriorFlag> =  False  the face  will  be sensitive only on its boundary
-  Standard_EXPORT static   Standard_Boolean GetSensitiveForFace (const TopoDS_Face& aFace, const Handle(StdSelect_BRepOwner)& anOwner, Select3D_ListOfSensitive& OutList, const Standard_Boolean AutoTriangulation = Standard_True, const Standard_Integer NbPOnEdge = 9, const Standard_Real MaxiParam = 500, const Standard_Boolean InteriorFlag = Standard_True) ;
+  Standard_EXPORT static   Standard_Boolean GetSensitiveForFace (const TopoDS_Face& aFace, const Handle(StdSelect_BRepOwner)& anOwner, Select3D_EntitySequence& OutList, const Standard_Boolean AutoTriangulation = Standard_True, const Standard_Integer NbPOnEdge = 9, const Standard_Real MaxiParam = 500, const Standard_Boolean InteriorFlag = Standard_True) ;
 
 
 
@@ -121,6 +119,11 @@ protected:
 
 private:
 
+  
+  //! Traverses the selection given and pre-builds BVH trees for heavyweight
+  //! sensitive entities containing more than BVH_PRIMITIVE_LIMIT (defined in .cxx file)
+  //! sub-elements
+  Standard_EXPORT static   void preBuildBVH (const Handle(SelectMgr_Selection)& theSelection) ;
   
   Standard_EXPORT static   void GetEdgeSensitive (const TopoDS_Shape& aShape, const Handle(StdSelect_BRepOwner)& anOwner, const Handle(SelectMgr_Selection)& aSelection, const Standard_Real theDeflection, const Standard_Real theDeflectionAngle, const Standard_Integer NbPOnEdge, const Standard_Real MaximalParameter, Handle(Select3D_SensitiveEntity)& aSensitive) ;
 

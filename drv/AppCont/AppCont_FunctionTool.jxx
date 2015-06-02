@@ -1,6 +1,0 @@
-#include <AppCont_Function.hxx>
-#include <TColgp_Array1OfPnt.hxx>
-#include <TColgp_Array1OfVec.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
-#include <TColgp_Array1OfVec2d.hxx>
-#include <AppCont_FunctionTool.hxx>

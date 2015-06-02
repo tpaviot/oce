@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKNIS"
-	ProjectGUID="{D07FEE97-0EFE-098E-0FF7-DF79A1AA7268}"
+	ProjectGUID="{C7EB1821-12D5-066C-0C5E-1C43AB9EBC3B}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

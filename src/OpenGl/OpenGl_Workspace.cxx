@@ -14,6 +14,7 @@
 // commercial license or contractual agreement.
 
 #include <OpenGl_GlCore15.hxx>
+#include <OpenGl_ArbFBO.hxx>
 
 #include <InterfaceGraphic.hxx>
 
@@ -26,6 +27,7 @@
 #include <OpenGl_FrameBuffer.hxx>
 #include <OpenGl_Structure.hxx>
 #include <OpenGl_Sampler.hxx>
+#include <OpenGl_ShaderManager.hxx>
 #include <OpenGl_Texture.hxx>
 #include <OpenGl_Utils.hxx>
 #include <OpenGl_View.hxx>
@@ -144,19 +146,13 @@ OpenGl_Workspace::OpenGl_Workspace (const Handle(OpenGl_GraphicDriver)& theDrive
   NamedStatus (0),
   HighlightColor (&THE_WHITE_COLOR),
   //
-  myComputeInitStatus (OpenGl_RT_NONE),
-  myIsRaytraceDataValid (Standard_False),
-  myIsRaytraceWarnTextures (Standard_False),
-  myViewModificationStatus (0),
-  myLayersModificationStatus (0),
+  myHasFboBlit (Standard_True),
   //
-  myRaytraceFilter       (new OpenGl_RaytraceFilter()),
-  myToRedrawGL           (Standard_True),
+  myViewId               (-1),
   myAntiAliasingMode     (3),
   myTransientDrawToFront (Standard_True),
   myBackBufferRestored   (Standard_False),
   myIsImmediateDrawn     (Standard_False),
-  myUseTransparency (Standard_False),
   myUseZBuffer (Standard_False),
   myUseDepthTest (Standard_True),
   myUseGLLight (Standard_True),
@@ -180,6 +176,10 @@ OpenGl_Workspace::OpenGl_Workspace (const Handle(OpenGl_GraphicDriver)& theDrive
   PolygonOffset_applied (THE_DEFAULT_POFFSET)
 {
   myGlContext->core11fwd->glPixelStorei (GL_UNPACK_ALIGNMENT, 1);
+  myMainSceneFbos[0]      = new OpenGl_FrameBuffer();
+  myMainSceneFbos[1]      = new OpenGl_FrameBuffer();
+  myImmediateSceneFbos[0] = new OpenGl_FrameBuffer();
+  myImmediateSceneFbos[1] = new OpenGl_FrameBuffer();
 
   if (!myGlContext->GetResource ("OpenGl_LineAttributes", myLineAttribs))
   {
@@ -192,13 +192,17 @@ OpenGl_Workspace::OpenGl_Workspace (const Handle(OpenGl_GraphicDriver)& theDrive
   // General initialization of the context
 
 #if !defined(GL_ES_VERSION_2_0)
-  // Eviter d'avoir les faces mal orientees en noir.
-  // Pourrait etre utiliser pour detecter les problemes d'orientation
-  glLightModeli ((GLenum )GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
+  if (myGlContext->core11 != NULL)
+  {
+    // Eviter d'avoir les faces mal orientees en noir.
+    // Pourrait etre utiliser pour detecter les problemes d'orientation
+    glLightModeli ((GLenum )GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
 
-  // Optimisation pour le Fog et l'antialiasing
-  glHint (GL_FOG_HINT,            GL_FASTEST);
-  glHint (GL_POINT_SMOOTH_HINT,   GL_FASTEST);
+    // Optimisation pour le Fog et l'antialiasing
+    glHint (GL_FOG_HINT,            GL_FASTEST);
+    glHint (GL_POINT_SMOOTH_HINT,   GL_FASTEST);
+  }
+
   glHint (GL_LINE_SMOOTH_HINT,    GL_FASTEST);
   glHint (GL_POLYGON_SMOOTH_HINT, GL_FASTEST);
 #endif
@@ -223,6 +227,16 @@ Standard_Boolean OpenGl_Workspace::SetImmediateModeDrawToFront (const Standard_B
   return aPrevMode;
 }
 
+inline void nullifyGlResource (Handle(OpenGl_Resource)&      theResource,
+                               const Handle(OpenGl_Context)& theCtx)
+{
+  if (!theResource.IsNull())
+  {
+    theResource->Release (theCtx.operator->());
+    theResource.Nullify();
+  }
+}
+
 // =======================================================================
 // function : ~OpenGl_Workspace
 // purpose  :
@@ -235,7 +249,12 @@ OpenGl_Workspace::~OpenGl_Workspace()
     myGlContext->ReleaseResource ("OpenGl_LineAttributes", Standard_True);
   }
 
-  ReleaseRaytraceResources();
+  nullifyGlResource (myMainSceneFbos[0],      myGlContext);
+  nullifyGlResource (myMainSceneFbos[1],      myGlContext);
+  nullifyGlResource (myImmediateSceneFbos[0], myGlContext);
+  nullifyGlResource (myImmediateSceneFbos[1], myGlContext);
+
+  myFullScreenQuad.Release (myGlContext.operator->());
 }
 
 // =======================================================================
@@ -255,21 +274,14 @@ Standard_Boolean OpenGl_Workspace::Activate()
   return Standard_True;
 }
 
-// =======================================================================
-// function : UseTransparency
-// purpose  : call_togl_transparency
-// =======================================================================
-void OpenGl_Workspace::UseTransparency (const Standard_Boolean theFlag)
-{
-  myUseTransparency = theFlag;
-}
-
 //=======================================================================
 //function : ResetAppliedAspect
 //purpose  : Sets default values of GL parameters in accordance with default aspects
 //=======================================================================
 void OpenGl_Workspace::ResetAppliedAspect()
 {
+  myGlContext->BindDefaultVao();
+
   NamedStatus           = !myTextureBound.IsNull() ? OPENGL_NS_TEXTURE : 0;
   HighlightColor        = &THE_WHITE_COLOR;
   AspectLine_set        = &myDefaultAspectLine;
@@ -302,13 +314,22 @@ Handle(OpenGl_Texture) OpenGl_Workspace::DisableTexture()
     return myTextureBound;
   }
 
+  const Handle(OpenGl_Sampler)& aSampler = myGlContext->TextureSampler();
+  if (!aSampler.IsNull())
+  {
+    aSampler->Unbind (*myGlContext);
+  }
+
 #if !defined(GL_ES_VERSION_2_0)
   // reset texture matrix because some code may expect it is identity
-  GLint aMatrixMode = GL_TEXTURE;
-  glGetIntegerv (GL_MATRIX_MODE, &aMatrixMode);
-  glMatrixMode (GL_TEXTURE);
-  glLoadIdentity();
-  glMatrixMode (aMatrixMode);
+  if (myGlContext->core11 != NULL)
+  {
+    GLint aMatrixMode = GL_TEXTURE;
+    glGetIntegerv (GL_MATRIX_MODE, &aMatrixMode);
+    glMatrixMode (GL_TEXTURE);
+    glLoadIdentity();
+    glMatrixMode (aMatrixMode);
+  }
 #endif
 
   myTextureBound->Unbind (myGlContext);
@@ -317,28 +338,33 @@ Handle(OpenGl_Texture) OpenGl_Workspace::DisableTexture()
   #if !defined(GL_ES_VERSION_2_0)
     case GL_TEXTURE_1D:
     {
-
-      if (myTextureBound->GetParams()->GenMode() != GL_NONE)
+      if (myGlContext->core11 != NULL)
       {
-        glDisable (GL_TEXTURE_GEN_S);
+        if (myTextureBound->GetParams()->GenMode() != GL_NONE)
+        {
+          glDisable (GL_TEXTURE_GEN_S);
+        }
+        glDisable (GL_TEXTURE_1D);
       }
-      glDisable (GL_TEXTURE_1D);
       break;
     }
   #endif
     case GL_TEXTURE_2D:
     {
     #if !defined(GL_ES_VERSION_2_0)
-      if (myTextureBound->GetParams()->GenMode() != GL_NONE)
+      if (myGlContext->core11 != NULL)
       {
-        glDisable (GL_TEXTURE_GEN_S);
-        glDisable (GL_TEXTURE_GEN_T);
-        if (myTextureBound->GetParams()->GenMode() == Graphic3d_TOTM_SPRITE)
+        if (myTextureBound->GetParams()->GenMode() != GL_NONE)
         {
-          glDisable (GL_POINT_SPRITE);
+          glDisable (GL_TEXTURE_GEN_S);
+          glDisable (GL_TEXTURE_GEN_T);
+          if (myTextureBound->GetParams()->GenMode() == Graphic3d_TOTM_SPRITE)
+          {
+            glDisable (GL_POINT_SPRITE);
+          }
         }
+        glDisable (GL_TEXTURE_2D);
       }
-      glDisable (GL_TEXTURE_2D);
     #endif
       break;
     }
@@ -365,80 +391,91 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
 
 #if !defined(GL_ES_VERSION_2_0)
   GLint aMatrixMode = GL_TEXTURE;
-  glGetIntegerv (GL_MATRIX_MODE, &aMatrixMode);
-
-  // setup texture matrix
-  glMatrixMode (GL_TEXTURE);
-  OpenGl_Mat4 aTextureMat;
-  const Graphic3d_Vec2& aScale = aParams->Scale();
-  const Graphic3d_Vec2& aTrans = aParams->Translation();
-  OpenGl_Utils::Scale     (aTextureMat,  aScale.x(),  aScale.y(), 1.0f);
-  OpenGl_Utils::Translate (aTextureMat, -aTrans.x(), -aTrans.y(), 0.0f);
-  OpenGl_Utils::Rotate    (aTextureMat, -aParams->Rotation(), 0.0f, 0.0f, 1.0f);
-  glLoadMatrixf (aTextureMat);
-
-  // setup generation of texture coordinates
-  switch (aParams->GenMode())
+  if (myGlContext->core11 != NULL)
   {
-    case Graphic3d_TOTM_OBJECT:
+    glGetIntegerv (GL_MATRIX_MODE, &aMatrixMode);
+
+    // setup texture matrix
+    glMatrixMode (GL_TEXTURE);
+    OpenGl_Mat4 aTextureMat;
+    const Graphic3d_Vec2& aScale = aParams->Scale();
+    const Graphic3d_Vec2& aTrans = aParams->Translation();
+    OpenGl_Utils::Scale     (aTextureMat,  aScale.x(),  aScale.y(), 1.0f);
+    OpenGl_Utils::Translate (aTextureMat, -aTrans.x(), -aTrans.y(), 0.0f);
+    OpenGl_Utils::Rotate    (aTextureMat, -aParams->Rotation(), 0.0f, 0.0f, 1.0f);
+    glLoadMatrixf (aTextureMat);
+
+    GLint anEnvMode = GL_MODULATE; // lighting mode
+    if (!aParams->IsModulate())
     {
-      glTexGeni  (GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
-      glTexGenfv (GL_S, GL_OBJECT_PLANE,     aParams->GenPlaneS().GetData());
-      if (theTexture->GetTarget() != GL_TEXTURE_1D)
+      anEnvMode = GL_DECAL;
+      if (theTexture->GetFormat() == GL_ALPHA
+       || theTexture->GetFormat() == GL_LUMINANCE)
       {
-        glTexGeni  (GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
-        glTexGenfv (GL_T, GL_OBJECT_PLANE,     aParams->GenPlaneT().GetData());
+        anEnvMode = GL_REPLACE;
       }
-      break;
     }
-    case Graphic3d_TOTM_SPHERE:
+
+    // setup generation of texture coordinates
+    switch (aParams->GenMode())
     {
-      glTexGeni (GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
-      if (theTexture->GetTarget() != GL_TEXTURE_1D)
+      case Graphic3d_TOTM_OBJECT:
       {
-        glTexGeni (GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+        glTexGeni  (GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+        glTexGenfv (GL_S, GL_OBJECT_PLANE,     aParams->GenPlaneS().GetData());
+        if (theTexture->GetTarget() != GL_TEXTURE_1D)
+        {
+          glTexGeni  (GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+          glTexGenfv (GL_T, GL_OBJECT_PLANE,     aParams->GenPlaneT().GetData());
+        }
+        break;
       }
-      break;
-    }
-    case Graphic3d_TOTM_EYE:
-    {
-      myGlContext->WorldViewState.Push();
-
-      myGlContext->WorldViewState.SetIdentity();
-      myGlContext->ApplyWorldViewMatrix();
-
-      glTexGeni  (GL_S, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
-      glTexGenfv (GL_S, GL_EYE_PLANE,        aParams->GenPlaneS().GetData());
-
-      if (theTexture->GetTarget() != GL_TEXTURE_1D)
+      case Graphic3d_TOTM_SPHERE:
       {
-        glTexGeni  (GL_T, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
-        glTexGenfv (GL_T, GL_EYE_PLANE,        aParams->GenPlaneT().GetData());
+        glTexGeni (GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+        if (theTexture->GetTarget() != GL_TEXTURE_1D)
+        {
+          glTexGeni (GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+        }
+        break;
       }
-
-      myGlContext->WorldViewState.Pop();
-
-      break;
-    }
-    case Graphic3d_TOTM_SPRITE:
-    {
-      if (GetGlContext()->core20 != NULL)
+      case Graphic3d_TOTM_EYE:
       {
-        glEnable  (GL_POINT_SPRITE);
-        glTexEnvi (GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE);
-        glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-        GetGlContext()->core15->glPointParameteri (GL_POINT_SPRITE_COORD_ORIGIN, GL_LOWER_LEFT);
-      }
-      break;
-    }
-    case Graphic3d_TOTM_MANUAL:
-    default: break;
-  }
+        myGlContext->WorldViewState.Push();
 
-  // setup lighting
-  if (aParams->GenMode() != Graphic3d_TOTM_SPRITE)
-  {
-    glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, aParams->IsModulate() ? GL_MODULATE : GL_DECAL);
+        myGlContext->WorldViewState.SetIdentity();
+        myGlContext->ApplyWorldViewMatrix();
+
+        glTexGeni  (GL_S, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
+        glTexGenfv (GL_S, GL_EYE_PLANE,        aParams->GenPlaneS().GetData());
+
+        if (theTexture->GetTarget() != GL_TEXTURE_1D)
+        {
+          glTexGeni  (GL_T, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
+          glTexGenfv (GL_T, GL_EYE_PLANE,        aParams->GenPlaneT().GetData());
+        }
+
+        myGlContext->WorldViewState.Pop();
+
+        break;
+      }
+      case Graphic3d_TOTM_SPRITE:
+      {
+        if (GetGlContext()->core20fwd != NULL)
+        {
+          glEnable  (GL_POINT_SPRITE);
+          glTexEnvi (GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE);
+          anEnvMode = GL_REPLACE;
+          GetGlContext()->core15->glPointParameteri (GL_POINT_SPRITE_COORD_ORIGIN, GL_LOWER_LEFT);
+        }
+        break;
+      }
+      case Graphic3d_TOTM_MANUAL:
+      default: break;
+    }
+
+    // setup lighting
+    glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, anEnvMode);
   }
 #endif
 
@@ -551,23 +588,29 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
   #if !defined(GL_ES_VERSION_2_0)
     case GL_TEXTURE_1D:
     {
-      if (aParams->GenMode() != Graphic3d_TOTM_MANUAL)
+      if (myGlContext->core11 != NULL)
       {
-        glEnable (GL_TEXTURE_GEN_S);
+        if (aParams->GenMode() != Graphic3d_TOTM_MANUAL)
+        {
+          glEnable (GL_TEXTURE_GEN_S);
+        }
+        glEnable (GL_TEXTURE_1D);
       }
-      glEnable (GL_TEXTURE_1D);
       break;
     }
   #endif
     case GL_TEXTURE_2D:
     {
     #if !defined(GL_ES_VERSION_2_0)
-      if (aParams->GenMode() != Graphic3d_TOTM_MANUAL)
+      if (myGlContext->core11 != NULL)
       {
-        glEnable (GL_TEXTURE_GEN_S);
-        glEnable (GL_TEXTURE_GEN_T);
+        if (aParams->GenMode() != Graphic3d_TOTM_MANUAL)
+        {
+          glEnable (GL_TEXTURE_GEN_S);
+          glEnable (GL_TEXTURE_GEN_T);
+        }
+        glEnable (GL_TEXTURE_2D);
       }
-      glEnable (GL_TEXTURE_2D);
     #endif
       break;
     }
@@ -575,7 +618,10 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
   }
 
 #if !defined(GL_ES_VERSION_2_0)
-  glMatrixMode (aMatrixMode); // turn back active matrix
+  if (myGlContext->core11 != NULL)
+  {
+    glMatrixMode (aMatrixMode); // turn back active matrix
+  }
 #endif
   theTexture->SetParams (aParams);
 }
@@ -617,6 +663,211 @@ Handle(OpenGl_Texture) OpenGl_Workspace::EnableTexture (const Handle(OpenGl_Text
 }
 
 // =======================================================================
+// function : bindDefaultFbo
+// purpose  :
+// =======================================================================
+void OpenGl_Workspace::bindDefaultFbo (OpenGl_FrameBuffer* theCustomFbo)
+{
+  OpenGl_FrameBuffer* anFbo = (theCustomFbo != NULL && theCustomFbo->IsValid())
+                            ?  theCustomFbo
+                            : (!myGlContext->DefaultFrameBuffer().IsNull()
+                             && myGlContext->DefaultFrameBuffer()->IsValid()
+                              ? myGlContext->DefaultFrameBuffer().operator->()
+                              : NULL);
+  if (anFbo != NULL)
+  {
+    anFbo->BindBuffer (myGlContext);
+  }
+  else
+  {
+  #if !defined(GL_ES_VERSION_2_0)
+    myGlContext->SetReadDrawBuffer (GL_BACK);
+  #else
+    if (myGlContext->arbFBO != NULL)
+    {
+      myGlContext->arbFBO->glBindFramebuffer (GL_FRAMEBUFFER, OpenGl_FrameBuffer::NO_FRAMEBUFFER);
+    }
+  #endif
+  }
+  myGlContext->core11fwd->glViewport (0, 0, myWidth, myHeight);
+}
+
+// =======================================================================
+// function : blitBuffers
+// purpose  :
+// =======================================================================
+bool OpenGl_Workspace::blitBuffers (OpenGl_FrameBuffer* theReadFbo,
+                                    OpenGl_FrameBuffer* theDrawFbo)
+{
+  if (theReadFbo == NULL)
+  {
+    return false;
+  }
+
+  // clear destination before blitting
+  if (theDrawFbo != NULL
+  &&  theDrawFbo->IsValid())
+  {
+    theDrawFbo->BindBuffer (myGlContext);
+  }
+  else
+  {
+    myGlContext->arbFBO->glBindFramebuffer (GL_FRAMEBUFFER, OpenGl_FrameBuffer::NO_FRAMEBUFFER);
+  }
+#if !defined(GL_ES_VERSION_2_0)
+  myGlContext->core20fwd->glClearDepth  (1.0);
+#else
+  myGlContext->core20fwd->glClearDepthf (1.0f);
+#endif
+  myGlContext->core20fwd->glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
+/*#if !defined(GL_ES_VERSION_2_0)
+  if (myGlContext->arbFBOBlit != NULL)
+  {
+    theReadFbo->BindReadBuffer (myGlContext);
+    if (theDrawFbo != NULL
+     && theDrawFbo->IsValid())
+    {
+      theDrawFbo->BindDrawBuffer (myGlContext);
+    }
+    else
+    {
+      myGlContext->arbFBO->glBindFramebuffer (GL_DRAW_FRAMEBUFFER, OpenGl_FrameBuffer::NO_FRAMEBUFFER);
+    }
+    // we don't copy stencil buffer here... does it matter for performance?
+    myGlContext->arbFBOBlit->glBlitFramebuffer (0, 0, theReadFbo->GetVPSizeX(), theReadFbo->GetVPSizeY(),
+                                                0, 0, theReadFbo->GetVPSizeX(), theReadFbo->GetVPSizeY(),
+                                                GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT, GL_NEAREST);
+
+    if (theDrawFbo != NULL
+      && theDrawFbo->IsValid())
+    {
+      theDrawFbo->BindBuffer (myGlContext);
+    }
+    else
+    {
+      myGlContext->arbFBO->glBindFramebuffer (GL_FRAMEBUFFER, OpenGl_FrameBuffer::NO_FRAMEBUFFER);
+    }
+  }
+  else
+#endif*/
+  {
+    myGlContext->core20fwd->glDepthFunc (GL_ALWAYS);
+    myGlContext->core20fwd->glDepthMask (GL_TRUE);
+    myGlContext->core20fwd->glEnable (GL_DEPTH_TEST);
+
+    DisableTexture();
+    if (!myFullScreenQuad.IsValid())
+    {
+      OpenGl_Vec4 aQuad[4] =
+      {
+        OpenGl_Vec4( 1.0f, -1.0f, 1.0f, 0.0f),
+        OpenGl_Vec4( 1.0f,  1.0f, 1.0f, 1.0f),
+        OpenGl_Vec4(-1.0f, -1.0f, 0.0f, 0.0f),
+        OpenGl_Vec4(-1.0f,  1.0f, 0.0f, 1.0f)
+      };
+      myFullScreenQuad.Init (myGlContext, 4, 4, aQuad[0].GetData());
+    }
+
+    const Handle(OpenGl_ShaderManager)& aManager = myGlContext->ShaderManager();
+    if (myFullScreenQuad.IsValid()
+     && aManager->BindFboBlitProgram())
+    {
+      theReadFbo->ColorTexture()       ->Bind   (myGlContext, GL_TEXTURE0 + 0);
+      theReadFbo->DepthStencilTexture()->Bind   (myGlContext, GL_TEXTURE0 + 1);
+      myFullScreenQuad.BindVertexAttrib (myGlContext, Graphic3d_TOA_POS);
+
+      myGlContext->core20fwd->glDrawArrays (GL_TRIANGLE_STRIP, 0, 4);
+
+      myFullScreenQuad.UnbindVertexAttrib (myGlContext, Graphic3d_TOA_POS);
+      theReadFbo->DepthStencilTexture()->Unbind (myGlContext, GL_TEXTURE0 + 1);
+      theReadFbo->ColorTexture()       ->Unbind (myGlContext, GL_TEXTURE0 + 0);
+    }
+    else
+    {
+      TCollection_ExtendedString aMsg = TCollection_ExtendedString()
+        + "Error! FBO blitting has failed";
+      myGlContext->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+                                GL_DEBUG_TYPE_ERROR_ARB,
+                                0,
+                                GL_DEBUG_SEVERITY_HIGH_ARB,
+                                aMsg);
+      myHasFboBlit = Standard_False;
+      theReadFbo->Release (myGlContext.operator->());
+      return true;
+    }
+  }
+  return true;
+}
+
+// =======================================================================
+// function : drawStereoPair
+// purpose  :
+// =======================================================================
+void OpenGl_Workspace::drawStereoPair()
+{
+  OpenGl_FrameBuffer* aPair[2] =
+  {
+    myImmediateSceneFbos[0]->IsValid() ? myImmediateSceneFbos[0].operator->() : NULL,
+    myImmediateSceneFbos[1]->IsValid() ? myImmediateSceneFbos[1].operator->() : NULL
+  };
+  if (aPair[0] == NULL
+   || aPair[1] == NULL)
+  {
+    aPair[0] = myMainSceneFbos[0]->IsValid() ? myMainSceneFbos[0].operator->() : NULL;
+    aPair[1] = myMainSceneFbos[1]->IsValid() ? myMainSceneFbos[1].operator->() : NULL;
+  }
+
+  if (aPair[0] == NULL
+   || aPair[1] == NULL)
+  {
+    return;
+  }
+
+  myGlContext->core20fwd->glDepthFunc (GL_ALWAYS);
+  myGlContext->core20fwd->glDepthMask (GL_TRUE);
+  myGlContext->core20fwd->glEnable (GL_DEPTH_TEST);
+
+  DisableTexture();
+  if (!myFullScreenQuad.IsValid())
+  {
+    OpenGl_Vec4 aQuad[4] =
+    {
+      OpenGl_Vec4( 1.0f, -1.0f, 1.0f, 0.0f),
+      OpenGl_Vec4( 1.0f,  1.0f, 1.0f, 1.0f),
+      OpenGl_Vec4(-1.0f, -1.0f, 0.0f, 0.0f),
+      OpenGl_Vec4(-1.0f,  1.0f, 0.0f, 1.0f)
+    };
+    myFullScreenQuad.Init (myGlContext, 4, 4, aQuad[0].GetData());
+  }
+
+  const Handle(OpenGl_ShaderManager)& aManager = myGlContext->ShaderManager();
+  if (myFullScreenQuad.IsValid()
+   && aManager->BindAnaglyphProgram())
+  {
+    aPair[0]->ColorTexture()->Bind (myGlContext, GL_TEXTURE0 + 0);
+    aPair[1]->ColorTexture()->Bind (myGlContext, GL_TEXTURE0 + 1);
+    myFullScreenQuad.BindVertexAttrib (myGlContext, 0);
+
+    myGlContext->core20fwd->glDrawArrays (GL_TRIANGLE_STRIP, 0, 4);
+
+    myFullScreenQuad.UnbindVertexAttrib (myGlContext, 0);
+    aPair[1]->ColorTexture()->Unbind (myGlContext, GL_TEXTURE0 + 1);
+    aPair[0]->ColorTexture()->Unbind (myGlContext, GL_TEXTURE0 + 0);
+  }
+  else
+  {
+    TCollection_ExtendedString aMsg = TCollection_ExtendedString()
+      + "Error! Anaglyph has failed";
+    myGlContext->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+                              GL_DEBUG_TYPE_ERROR_ARB,
+                              0,
+                              GL_DEBUG_SEVERITY_HIGH_ARB,
+                              aMsg);
+  }
+}
+
+// =======================================================================
 // function : Redraw
 // purpose  :
 // =======================================================================
@@ -633,97 +884,148 @@ void OpenGl_Workspace::Redraw (const Graphic3d_CView& theCView,
   myIsCullingEnabled = theCView.IsCullingEnabled;
 
   // release pending GL resources
-  Handle(OpenGl_Context) aGlCtx = GetGlContext();
-  aGlCtx->ReleaseDelayed();
+  myGlContext->ReleaseDelayed();
 
   // fetch OpenGl context state
-  aGlCtx->FetchState();
+  myGlContext->FetchState();
 
-  Tint toSwap = (aGlCtx->IsRender() && !aGlCtx->caps->buffersNoSwap) ? 1 : 0; // swap buffers
   OpenGl_FrameBuffer* aFrameBuffer = (OpenGl_FrameBuffer* )theCView.ptrFBO;
-  if (aFrameBuffer != NULL)
+  bool toSwap = myGlContext->IsRender()
+            && !myGlContext->caps->buffersNoSwap
+            &&  aFrameBuffer == NULL;
+
+  Standard_Integer aSizeX = aFrameBuffer != NULL ? aFrameBuffer->GetVPSizeX() : myWidth;
+  Standard_Integer aSizeY = aFrameBuffer != NULL ? aFrameBuffer->GetVPSizeY() : myHeight;
+
+  if ( aFrameBuffer == NULL
+   && !myGlContext->DefaultFrameBuffer().IsNull()
+   &&  myGlContext->DefaultFrameBuffer()->IsValid())
   {
-    aFrameBuffer->SetupViewport (aGlCtx);
-    toSwap = 0; // no need to swap buffers
+    aFrameBuffer = myGlContext->DefaultFrameBuffer().operator->();
+  }
+
+  if (myHasFboBlit
+   && myTransientDrawToFront)
+  {
+    if (myMainSceneFbos[0]->GetVPSizeX() != aSizeX
+     || myMainSceneFbos[0]->GetVPSizeY() != aSizeY)
+    {
+      // prepare FBOs containing main scene
+      // for further blitting and rendering immediate presentations on top
+      if (myGlContext->core20fwd != NULL)
+      {
+        myMainSceneFbos[0]->Init (myGlContext, aSizeX, aSizeY);
+      }
+    }
   }
   else
   {
-    aGlCtx->core11fwd->glViewport (0, 0, myWidth, myHeight);
+    myMainSceneFbos     [0]->Release (myGlContext.operator->());
+    myMainSceneFbos     [1]->Release (myGlContext.operator->());
+    myImmediateSceneFbos[0]->Release (myGlContext.operator->());
+    myImmediateSceneFbos[1]->Release (myGlContext.operator->());
+    myMainSceneFbos     [0]->ChangeViewport (0, 0);
+    myMainSceneFbos     [1]->ChangeViewport (0, 0);
+    myImmediateSceneFbos[0]->ChangeViewport (0, 0);
+    myImmediateSceneFbos[1]->ChangeViewport (0, 0);
   }
 
-  myToRedrawGL = Standard_True;
-  if (theCView.RenderParams.Method == Graphic3d_RM_RAYTRACING
-   && myComputeInitStatus != OpenGl_RT_FAIL)
+  // draw entire frame using normal OpenGL pipeline
+  const Handle(Graphic3d_Camera)& aCamera      = myView->Camera();
+  Graphic3d_Camera::Projection    aProjectType = aCamera->ProjectionType();
+  if (aProjectType == Graphic3d_Camera::Projection_Stereo)
   {
-    if (UpdateRaytraceGeometry (OpenGl_GUM_CHECK) && myIsRaytraceDataValid)
+    if (aFrameBuffer != NULL
+    || !myGlContext->IsRender())
     {
-      myToRedrawGL = Standard_False;
-
-      // Only non-raytracable structures should be rendered in OpenGL mode.
-      Handle(OpenGl_RenderFilter) aRenderFilter = GetRenderFilter();
-      myRaytraceFilter->SetPrevRenderFilter (aRenderFilter);
-      SetRenderFilter (myRaytraceFilter);
-
-      Standard_Integer aSizeX = aFrameBuffer != NULL ? aFrameBuffer->GetVPSizeX() : myWidth;
-      Standard_Integer aSizeY = aFrameBuffer != NULL ? aFrameBuffer->GetVPSizeY() : myHeight;
-
-      if (myOpenGlFBO.IsNull())
+      // implicitly switch to mono camera for image dump
+      aProjectType = Graphic3d_Camera::Projection_Perspective;
+    }
+    else if (myMainSceneFbos[0]->IsValid())
+    {
+      myMainSceneFbos[1]->InitLazy (myGlContext, aSizeX, aSizeY);
+      if (!myMainSceneFbos[1]->IsValid())
       {
-        myOpenGlFBO = new OpenGl_FrameBuffer();
+        // no enough memory?
+        aProjectType = Graphic3d_Camera::Projection_Perspective;
       }
-      if (myOpenGlFBO->GetVPSizeX() != aSizeX
-       || myOpenGlFBO->GetVPSizeY() != aSizeY)
+      else if (!myGlContext->HasStereoBuffers())
       {
-        myOpenGlFBO->Init (aGlCtx, aSizeX, aSizeY);
+        myImmediateSceneFbos[0]->InitLazy (myGlContext, aSizeX, aSizeY);
+        myImmediateSceneFbos[1]->InitLazy (myGlContext, aSizeX, aSizeY);
+        if (!myImmediateSceneFbos[0]->IsValid()
+         || !myImmediateSceneFbos[1]->IsValid())
+        {
+          aProjectType = Graphic3d_Camera::Projection_Perspective;
+        }
       }
-
-      // OverLayer and UnderLayer shouldn't be drawn by OpenGL.
-      // They will be drawn during ray-tracing.
-      Aspect_CLayer2d anEmptyCLayer;
-      anEmptyCLayer.ptrLayer = NULL;
-
-      myOpenGlFBO->BindBuffer (aGlCtx);
-      redraw1 (theCView, anEmptyCLayer, anEmptyCLayer, 0);
-      myOpenGlFBO->UnbindBuffer (aGlCtx);
-
-      const Standard_Boolean isImmediate = !myView->ImmediateStructures().IsEmpty();
-      Raytrace (theCView, aSizeX, aSizeY, isImmediate ? 0 : toSwap,
-                theCOverLayer, theCUnderLayer, aFrameBuffer);
-
-      if (isImmediate)
-      {
-        RedrawImmediate (theCView, theCUnderLayer, theCOverLayer, Standard_True);
-      }
-
-      SetRenderFilter (aRenderFilter);
-
-      theCView.WasRedrawnGL = Standard_False;
     }
   }
 
-  if (myToRedrawGL)
+  if (aProjectType == Graphic3d_Camera::Projection_Stereo)
   {
-    // draw entire frame using normal OpenGL pipeline
-    if (aFrameBuffer != NULL)
+    OpenGl_FrameBuffer* aMainFbos[2] =
     {
-      aFrameBuffer->BindBuffer (aGlCtx);
+      myMainSceneFbos[0]->IsValid() ? myMainSceneFbos[0].operator->() : NULL,
+      myMainSceneFbos[1]->IsValid() ? myMainSceneFbos[1].operator->() : NULL
+    };
+    OpenGl_FrameBuffer* anImmFbos[2] =
+    {
+      myImmediateSceneFbos[0]->IsValid() ? myImmediateSceneFbos[0].operator->() : NULL,
+      myImmediateSceneFbos[1]->IsValid() ? myImmediateSceneFbos[1].operator->() : NULL
+    };
+
+  #if !defined(GL_ES_VERSION_2_0)
+    myGlContext->SetReadDrawBuffer (GL_BACK_LEFT);
+  #endif
+    redraw1 (theCView, theCUnderLayer, theCOverLayer,
+             aMainFbos[0], Graphic3d_Camera::Projection_MonoLeftEye);
+    myBackBufferRestored = Standard_True;
+    myIsImmediateDrawn   = Standard_False;
+  #if !defined(GL_ES_VERSION_2_0)
+    myGlContext->SetReadDrawBuffer (GL_BACK_LEFT);
+  #endif
+    if (!redrawImmediate (theCView, theCOverLayer, theCUnderLayer, aMainFbos[0], aProjectType, anImmFbos[0]))
+    {
+      toSwap = false;
     }
 
-    const Standard_Boolean isImmediate = !myView->ImmediateStructures().IsEmpty();
-    redraw1 (theCView, theCUnderLayer, theCOverLayer, isImmediate ? 0 : toSwap);
-    if (isImmediate)
+  #if !defined(GL_ES_VERSION_2_0)
+    myGlContext->SetReadDrawBuffer (GL_BACK_RIGHT);
+  #endif
+    redraw1 (theCView, theCUnderLayer, theCOverLayer,
+             aMainFbos[1], Graphic3d_Camera::Projection_MonoRightEye);
+    myBackBufferRestored = Standard_True;
+    myIsImmediateDrawn   = Standard_False;
+    if (!redrawImmediate (theCView, theCOverLayer, theCUnderLayer, aMainFbos[1], aProjectType, anImmFbos[1]))
     {
-      RedrawImmediate (theCView, theCUnderLayer, theCOverLayer, Standard_True);
+      toSwap = false;
     }
 
-    theCView.WasRedrawnGL = Standard_True;
+    if (anImmFbos[0] != NULL)
+    {
+      bindDefaultFbo (aFrameBuffer);
+      drawStereoPair();
+    }
   }
-
-  if (aFrameBuffer != NULL)
+  else
   {
-    aFrameBuffer->UnbindBuffer (aGlCtx);
-    // move back original viewport
-    aGlCtx->core11fwd->glViewport (0, 0, myWidth, myHeight);
+    OpenGl_FrameBuffer* aMainFbo = myMainSceneFbos[0]->IsValid() ? myMainSceneFbos[0].operator->() : NULL;
+  #if !defined(GL_ES_VERSION_2_0)
+    if (aMainFbo     == NULL
+     && aFrameBuffer == NULL)
+    {
+      myGlContext->SetReadDrawBuffer (GL_BACK);
+    }
+  #endif
+    redraw1 (theCView, theCUnderLayer, theCOverLayer,
+             aMainFbo != NULL ? aMainFbo : aFrameBuffer, aProjectType);
+    myBackBufferRestored = Standard_True;
+    myIsImmediateDrawn   = Standard_False;
+    if (!redrawImmediate (theCView, theCOverLayer, theCUnderLayer, aMainFbo, aProjectType, aFrameBuffer))
+    {
+      toSwap = false;
+    }
   }
 
 #if defined(_WIN32) && defined(HAVE_VIDEOCAPTURE)
@@ -744,22 +1046,50 @@ void OpenGl_Workspace::Redraw (const Graphic3d_CView& theCView,
   }
 #endif
 
+  // bind default FBO
+  bindDefaultFbo();
+
+  // Swap the buffers
+  if (toSwap)
+  {
+    GetGlContext()->SwapBuffers();
+    if (!myMainSceneFbos[0]->IsValid())
+    {
+      myBackBufferRestored = Standard_False;
+    }
+  }
+  else
+  {
+    myGlContext->core11fwd->glFlush();
+  }
+
   // reset render mode state
-  aGlCtx->FetchState();
+  myGlContext->FetchState();
 }
 
 // =======================================================================
 // function : redraw1
 // purpose  :
 // =======================================================================
-void OpenGl_Workspace::redraw1 (const Graphic3d_CView& theCView,
-                                const Aspect_CLayer2d& theCUnderLayer,
-                                const Aspect_CLayer2d& theCOverLayer,
-                                const int              theToSwap)
+void OpenGl_Workspace::redraw1 (const Graphic3d_CView&               theCView,
+                                const Aspect_CLayer2d&               theCUnderLayer,
+                                const Aspect_CLayer2d&               theCOverLayer,
+                                OpenGl_FrameBuffer*                  theReadDrawFbo,
+                                const Graphic3d_Camera::Projection   theProjection)
 {
   if (myView.IsNull())
   {
     return;
+  }
+
+  if (theReadDrawFbo != NULL)
+  {
+    theReadDrawFbo->BindBuffer    (myGlContext);
+    theReadDrawFbo->SetupViewport (myGlContext);
+  }
+  else
+  {
+    myGlContext->core11fwd->glViewport (0, 0, myWidth, myHeight);
   }
 
   // request reset of material
@@ -791,43 +1121,21 @@ void OpenGl_Workspace::redraw1 (const Graphic3d_CView& theCView,
     glDisable (GL_DEPTH_TEST);
   }
 
-  if (!ToRedrawGL())
+  if (NamedStatus & OPENGL_NS_WHITEBACK)
   {
-    // set background to black
-    glClearColor (0.0f, 0.0f, 0.0f, 0.0f);
-    toClear |= GL_DEPTH_BUFFER_BIT; //
+    // set background to white
+    glClearColor (1.0f, 1.0f, 1.0f, 1.0f);
+    toClear |= GL_DEPTH_BUFFER_BIT;
   }
   else
   {
-    if (NamedStatus & OPENGL_NS_WHITEBACK)
-    {
-        // set background to white
-      glClearColor (1.0f, 1.0f, 1.0f, 1.0f);
-      toClear |= GL_DEPTH_BUFFER_BIT;
-    }
-    else
-    {
-      glClearColor (myBgColor.rgb[0], myBgColor.rgb[1], myBgColor.rgb[2], 0.0f);
-    }
+    glClearColor (myBgColor.rgb[0], myBgColor.rgb[1], myBgColor.rgb[2], 0.0f);
   }
+
   glClear (toClear);
 
   Handle(OpenGl_Workspace) aWS (this);
-  myView->Render (myPrintContext, aWS, theCView, theCUnderLayer, theCOverLayer);
-
-  // swap the buffers
-  if (theToSwap)
-  {
-    GetGlContext()->SwapBuffers();
-    myBackBufferRestored = Standard_False;
-    myIsImmediateDrawn   = Standard_False;
-  }
-  else
-  {
-    glFlush(); //
-    myBackBufferRestored = Standard_True;//
-    myIsImmediateDrawn   = Standard_False;//
-  }
+  myView->Render (myPrintContext, aWS, theReadDrawFbo, theProjection, theCView, theCUnderLayer, theCOverLayer, Standard_False);
 }
 
 // =======================================================================
@@ -853,19 +1161,40 @@ void OpenGl_Workspace::copyBackToFront()
 
   DisableFeatures();
 
-  glDrawBuffer (GL_FRONT);
-  glReadBuffer (GL_BACK);
+  switch (myGlContext->DrawBuffer())
+  {
+    case GL_BACK_LEFT:
+    {
+      myGlContext->SetReadBuffer (GL_BACK_LEFT);
+      myGlContext->SetDrawBuffer (GL_FRONT_LEFT);
+      break;
+    }
+    case GL_BACK_RIGHT:
+    {
+      myGlContext->SetReadBuffer (GL_BACK_RIGHT);
+      myGlContext->SetDrawBuffer (GL_FRONT_RIGHT);
+      break;
+    }
+    default:
+    {
+      myGlContext->SetReadBuffer (GL_BACK);
+      myGlContext->SetDrawBuffer (GL_FRONT);
+      break;
+    }
+  }
 
   glRasterPos2i (0, 0);
   glCopyPixels  (0, 0, myWidth + 1, myHeight + 1, GL_COLOR);
+  //glCopyPixels  (0, 0, myWidth + 1, myHeight + 1, GL_DEPTH);
 
   EnableFeatures();
 
   myGlContext->WorldViewState.Pop();
   myGlContext->ProjectionState.Pop();
   myGlContext->ApplyProjectionMatrix();
-  glDrawBuffer (GL_BACK);
 
+  // read/write from front buffer now
+  myGlContext->SetReadBuffer (myGlContext->DrawBuffer());
 #endif
   myIsImmediateDrawn = Standard_False;
 }
@@ -884,9 +1213,10 @@ void OpenGl_Workspace::DisplayCallback (const Graphic3d_CView& theCView,
 
   Aspect_GraphicCallbackStruct aCallData;
   aCallData.reason    = theReason;
-  aCallData.glContext = GetGlContext();
+  aCallData.glContext = myGlContext;
   aCallData.wsID      = theCView.WsId;
   aCallData.viewID    = theCView.ViewId;
+  aCallData.IsCoreProfile = (myGlContext->core11 == NULL);
   theCView.GDisplayCB (theCView.DefWindow.XWindow, theCView.GClientData, &aCallData);
 }
 
@@ -896,49 +1226,170 @@ void OpenGl_Workspace::DisplayCallback (const Graphic3d_CView& theCView,
 // =======================================================================
 void OpenGl_Workspace::RedrawImmediate (const Graphic3d_CView& theCView,
                                         const Aspect_CLayer2d& theCUnderLayer,
-                                        const Aspect_CLayer2d& theCOverLayer,
-                                        const Standard_Boolean theToForce)
+                                        const Aspect_CLayer2d& theCOverLayer)
 {
-  if (!Activate())
+  const Handle(Graphic3d_Camera)& aCamera      = myView->Camera();
+  Graphic3d_Camera::Projection    aProjectType = aCamera->ProjectionType();
+  OpenGl_FrameBuffer* aFrameBuffer = (OpenGl_FrameBuffer* )theCView.ptrFBO;
+  if ( aFrameBuffer == NULL
+   && !myGlContext->DefaultFrameBuffer().IsNull()
+   &&  myGlContext->DefaultFrameBuffer()->IsValid())
+  {
+    aFrameBuffer = myGlContext->DefaultFrameBuffer().operator->();
+  }
+
+  if (aProjectType == Graphic3d_Camera::Projection_Stereo)
+  {
+    if (aFrameBuffer != NULL)
+    {
+      // implicitly switch to mono camera for image dump
+      aProjectType = Graphic3d_Camera::Projection_Perspective;
+    }
+    else if (myMainSceneFbos[0]->IsValid()
+         && !myMainSceneFbos[1]->IsValid())
+    {
+      aProjectType = Graphic3d_Camera::Projection_Perspective;
+    }
+  }
+
+  if (!myTransientDrawToFront
+   || !myBackBufferRestored
+   || (myGlContext->caps->buffersNoSwap && !myMainSceneFbos[0]->IsValid()))
+  {
+    Redraw (theCView, theCUnderLayer, theCOverLayer);
+    return;
+  }
+  else if (!Activate())
   {
     return;
   }
 
-  GLboolean isDoubleBuffer = GL_FALSE;
-#if !defined(GL_ES_VERSION_2_0)
-  glGetBooleanv (GL_DOUBLEBUFFER, &isDoubleBuffer);
-#endif
-  if (myView->ImmediateStructures().IsEmpty())
+  bool toSwap = false;
+  if (aProjectType == Graphic3d_Camera::Projection_Stereo)
   {
-    if (theToForce
-     || !myIsImmediateDrawn)
+    OpenGl_FrameBuffer* aMainFbos[2] =
     {
-      myIsImmediateDrawn = Standard_False;
-      return;
-    }
+      myMainSceneFbos[0]->IsValid() ? myMainSceneFbos[0].operator->() : NULL,
+      myMainSceneFbos[1]->IsValid() ? myMainSceneFbos[1].operator->() : NULL
+    };
+    OpenGl_FrameBuffer* anImmFbos[2] =
+    {
+      myImmediateSceneFbos[0]->IsValid() ? myImmediateSceneFbos[0].operator->() : NULL,
+      myImmediateSceneFbos[1]->IsValid() ? myImmediateSceneFbos[1].operator->() : NULL
+    };
 
-    if (myBackBufferRestored
-     && isDoubleBuffer)
+    if (myGlContext->arbFBO != NULL)
     {
+      myGlContext->arbFBO->glBindFramebuffer (GL_FRAMEBUFFER, OpenGl_FrameBuffer::NO_FRAMEBUFFER);
+    }
+  #if !defined(GL_ES_VERSION_2_0)
+    if (anImmFbos[0] == NULL)
+    {
+      myGlContext->SetReadDrawBuffer (GL_BACK_LEFT);
+    }
+  #endif
+    toSwap = redrawImmediate (theCView, theCUnderLayer, theCOverLayer,
+                              aMainFbos[0],
+                              Graphic3d_Camera::Projection_MonoLeftEye,
+                              anImmFbos[0],
+                              Standard_True) || toSwap;
+
+    if (myGlContext->arbFBO != NULL)
+    {
+      myGlContext->arbFBO->glBindFramebuffer (GL_FRAMEBUFFER, OpenGl_FrameBuffer::NO_FRAMEBUFFER);
+    }
+  #if !defined(GL_ES_VERSION_2_0)
+    if (anImmFbos[1] == NULL)
+    {
+      myGlContext->SetReadDrawBuffer (GL_BACK_RIGHT);
+    }
+  #endif
+    toSwap = redrawImmediate (theCView, theCUnderLayer, theCOverLayer,
+                              aMainFbos[1],
+                              Graphic3d_Camera::Projection_MonoRightEye,
+                              anImmFbos[1],
+                              Standard_True) || toSwap;
+    if (anImmFbos[0] != NULL)
+    {
+      bindDefaultFbo (aFrameBuffer);
+      drawStereoPair();
+    }
+  }
+  else
+  {
+    OpenGl_FrameBuffer* aMainFbo = myMainSceneFbos[0]->IsValid() ? myMainSceneFbos[0].operator->() : NULL;
+  #if !defined(GL_ES_VERSION_2_0)
+    if (aMainFbo == NULL)
+    {
+      myGlContext->SetReadDrawBuffer (GL_BACK);
+    }
+  #endif
+    toSwap = redrawImmediate (theCView, theCUnderLayer, theCOverLayer,
+                              aMainFbo,
+                              aProjectType,
+                              aFrameBuffer,
+                              Standard_True) || toSwap;
+  }
+
+  // bind default FBO
+  bindDefaultFbo();
+
+  if (toSwap
+  && !myGlContext->caps->buffersNoSwap)
+  {
+    myGlContext->SwapBuffers();
+  }
+  else
+  {
+    myGlContext->core11fwd->glFlush();
+  }
+}
+
+// =======================================================================
+// function : redrawImmediate
+// purpose  :
+// =======================================================================
+bool OpenGl_Workspace::redrawImmediate (const Graphic3d_CView& theCView,
+                                        const Aspect_CLayer2d& theCUnderLayer,
+                                        const Aspect_CLayer2d& theCOverLayer,
+                                        OpenGl_FrameBuffer*    theReadFbo,
+                                        const Graphic3d_Camera::Projection theProjection,
+                                        OpenGl_FrameBuffer*    theDrawFbo,
+                                        const Standard_Boolean theIsPartialUpdate)
+{
+  GLboolean toCopyBackToFront = GL_FALSE;
+  if (!myTransientDrawToFront)
+  {
+    myBackBufferRestored = Standard_False;
+  }
+  else if (theReadFbo != NULL
+        && theReadFbo->IsValid()
+        && myGlContext->IsRender())
+  {
+    if (!blitBuffers (theReadFbo, theDrawFbo))
+    {
+      return true;
+    }
+  }
+  else if (theDrawFbo == NULL)
+  {
+  #if !defined(GL_ES_VERSION_2_0)
+    myGlContext->core11fwd->glGetBooleanv (GL_DOUBLEBUFFER, &toCopyBackToFront);
+  #endif
+    if (toCopyBackToFront)
+    {
+      if (!myView->HasImmediateStructures()
+       && !theIsPartialUpdate)
+      {
+        // prefer Swap Buffers within Redraw in compatibility mode (without FBO)
+        return true;
+      }
       copyBackToFront();
-      glFlush();
     }
     else
     {
-      Redraw (theCView, theCUnderLayer, theCOverLayer);
+      myBackBufferRestored = Standard_False;
     }
-    return;
-  }
-
-  if (isDoubleBuffer && myTransientDrawToFront)
-  {
-    if (!myBackBufferRestored)
-    {
-      Redraw (theCView, theCUnderLayer, theCOverLayer);
-      return;
-    }
-    copyBackToFront();
-    MakeFrontBufCurrent();
   }
   else
   {
@@ -946,23 +1397,67 @@ void OpenGl_Workspace::RedrawImmediate (const Graphic3d_CView& theCView,
   }
   myIsImmediateDrawn = Standard_True;
 
-  NamedStatus |= OPENGL_NS_IMMEDIATE;
-  ///glDisable (GL_LIGHTING);
-  glDisable (GL_DEPTH_TEST);
-
   Handle(OpenGl_Workspace) aWS (this);
+
+  if (myUseZBuffer)
+  {
+    glDepthFunc (GL_LEQUAL);
+    glDepthMask (GL_TRUE);
+    if (myUseDepthTest)
+    {
+      glEnable (GL_DEPTH_TEST);
+    }
+    else
+    {
+      glDisable (GL_DEPTH_TEST);
+    }
+
+  #if !defined(GL_ES_VERSION_2_0)
+    glClearDepth (1.0);
+  #else
+    glClearDepthf (1.0f);
+  #endif
+  }
+  else
+  {
+    glDisable (GL_DEPTH_TEST);
+  }
+
+  myView->Render (myPrintContext, aWS, theDrawFbo, theProjection,
+                  theCView, theCUnderLayer, theCOverLayer, Standard_True);
+  if (!myView->ImmediateStructures().IsEmpty())
+  {
+    glDisable (GL_DEPTH_TEST);
+  }
   for (OpenGl_SequenceOfStructure::Iterator anIter (myView->ImmediateStructures());
        anIter.More(); anIter.Next())
   {
     const OpenGl_Structure* aStructure = anIter.Value();
+    if (!aStructure->IsVisible())
+    {
+      continue;
+    }
+
     aStructure->Render (aWS);
   }
 
-  NamedStatus &= ~OPENGL_NS_IMMEDIATE;
+  return !toCopyBackToFront;
+}
 
-  if (isDoubleBuffer && myTransientDrawToFront)
+IMPLEMENT_STANDARD_HANDLE (OpenGl_RaytraceFilter, OpenGl_RenderFilter)
+IMPLEMENT_STANDARD_RTTIEXT(OpenGl_RaytraceFilter, OpenGl_RenderFilter)
+
+// =======================================================================
+// function : CanRender
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_RaytraceFilter::CanRender (const OpenGl_Element* theElement)
+{
+  Standard_Boolean aPrevFilterResult = Standard_True;
+  if (!myPrevRenderFilter.IsNull())
   {
-    glFlush();
-    MakeBackBufCurrent();
+    aPrevFilterResult = myPrevRenderFilter->CanRender (theElement);
   }
+  return aPrevFilterResult &&
+    !OpenGl_Raytrace::IsRaytracedElement (theElement);
 }

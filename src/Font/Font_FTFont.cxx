@@ -26,11 +26,11 @@ IMPLEMENT_STANDARD_RTTIEXT(Font_FTFont, Standard_Transient)
 // purpose  :
 // =======================================================================
 Font_FTFont::Font_FTFont (const Handle(Font_FTLibrary)& theFTLib)
-: myFTLib (theFTLib),
-  myFTFace (NULL),
-  myPointSize (0),
-  myLoadFlags (FT_LOAD_NO_HINTING | FT_LOAD_TARGET_NORMAL),
-  myUChar (0)
+: myFTLib      (theFTLib),
+  myFTFace     (NULL),
+  myPointSize  (0U),
+  myLoadFlags  (FT_LOAD_NO_HINTING | FT_LOAD_TARGET_NORMAL),
+  myUChar      (0U)
 {
   if (myFTLib.IsNull())
   {
@@ -160,11 +160,11 @@ bool Font_FTFont::RenderGlyph (const Standard_Utf32Char theUChar)
 
   FT_Bitmap aBitmap = myFTFace->glyph->bitmap;
   if (aBitmap.pixel_mode != FT_PIXEL_MODE_GRAY
-   || aBitmap.buffer == NULL || aBitmap.width <= 0 || aBitmap.rows <= 0)
+   || aBitmap.buffer == NULL || aBitmap.width == 0 || aBitmap.rows == 0)
   {
     return false;
   }
-  if (!myGlyphImg.InitWrapper (Image_PixMap::ImgGray, aBitmap.buffer,
+  if (!myGlyphImg.InitWrapper (Image_PixMap::ImgAlpha, aBitmap.buffer,
                                aBitmap.width, aBitmap.rows, Abs (aBitmap.pitch)))
   {
     return false;

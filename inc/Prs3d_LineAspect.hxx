@@ -42,6 +42,8 @@ public:
   
   Standard_EXPORT Prs3d_LineAspect(const Quantity_Color& aColor, const Aspect_TypeOfLine aType, const Standard_Real aWidth);
   
+  Standard_EXPORT Prs3d_LineAspect(const Handle(Graphic3d_AspectLine3d)& theAspect);
+  
   Standard_EXPORT   void SetColor (const Quantity_Color& aColor) ;
   
   //! Sets the line color defined at the time of construction.
@@ -60,6 +62,8 @@ public:
   //! Returns the line aspect. This is defined as the set of
   //! color, type and thickness attributes.
   Standard_EXPORT   Handle(Graphic3d_AspectLine3d) Aspect()  const;
+  
+  Standard_EXPORT   void SetAspect (const Handle(Graphic3d_AspectLine3d)& theAspect) ;
 
 
 

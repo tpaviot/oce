@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKMath"
-	ProjectGUID="{F7DE6532-1216-02B0-1635-8C49FC4D6B44}"
+	ProjectGUID="{CEBE0E41-0294-0018-03CE-9A428E878B68}"
 	>
 	<Platforms>
 		<Platform
@@ -529,9 +529,6 @@
 					RelativePath="..\..\..\src\math\math_Householder.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\math\math_IntegerRandom.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\math\math_IntegerVector.cxx">
 				</File>
 				<File
@@ -575,9 +572,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\math\math_Powell.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\math\math_RealRandom.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\math\math_Recipes.cxx">
@@ -1119,6 +1113,9 @@
 					RelativePath="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d_0.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfAx1_0.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfDir2d_0.cxx">
 				</File>
 				<File
@@ -1144,6 +1141,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColgp\TColgp_SequenceOfArray1OfPnt2d_0.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\drv\TColgp\TColgp_SequenceOfAx1_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColgp\TColgp_SequenceOfDir2d_0.cxx">

@@ -71,8 +71,6 @@ public:
      const  Units_TksSequence& Sequence()  const;
   
       Units_TksSequence& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(Units_TokensSequence) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(Units_TokensSequence) ShallowCopy(const Handle(Units_TokensSequence)& me) {
- return me->ShallowCopy();
-}
 
 
 

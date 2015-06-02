@@ -27,6 +27,8 @@
 
 ChFiDS_ElSpine::ChFiDS_ElSpine():periodic(0)
 {
+  pfirstsav = Precision::Infinite();
+  plastsav  = Precision::Infinite();
 }
 
 
@@ -52,6 +54,26 @@ Standard_Real ChFiDS_ElSpine::LastParameter() const
 }
 
 //=======================================================================
+//function : GetSavedFirstParameter
+//purpose  : 
+//=======================================================================
+
+Standard_Real ChFiDS_ElSpine::GetSavedFirstParameter() const
+{
+  return pfirstsav;
+}
+
+//=======================================================================
+//function : GetSavedLastParameter
+//purpose  : 
+//=======================================================================
+
+Standard_Real ChFiDS_ElSpine::GetSavedLastParameter() const
+{
+  return plastsav;
+}
+
+//=======================================================================
 //function : Continuity
 //purpose  : 
 //=======================================================================
@@ -66,7 +88,7 @@ GeomAbs_Shape ChFiDS_ElSpine::Continuity() const
 //purpose  : 
 //=======================================================================
 
-Standard_Integer ChFiDS_ElSpine::NbIntervals(const GeomAbs_Shape S) 
+Standard_Integer ChFiDS_ElSpine::NbIntervals(const GeomAbs_Shape S) const
 {
   return curve.NbIntervals(S);
 }
@@ -76,7 +98,7 @@ Standard_Integer ChFiDS_ElSpine::NbIntervals(const GeomAbs_Shape S)
 //purpose  : 
 //=======================================================================
 
-void ChFiDS_ElSpine::Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) 
+void ChFiDS_ElSpine::Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const
 {
   curve.Intervals(T,S);
 }
@@ -229,6 +251,26 @@ void ChFiDS_ElSpine::LastParameter(const Standard_Real P)
   plast = P;
 }
 
+//=======================================================================
+//function : SaveFirstParameter
+//purpose  : 
+//=======================================================================
+
+void ChFiDS_ElSpine::SaveFirstParameter()
+{
+  pfirstsav = pfirst;
+}
+
+//=======================================================================
+//function : SaveLastParameter
+//purpose  : 
+//=======================================================================
+
+void ChFiDS_ElSpine::SaveLastParameter()
+{
+  plastsav = plast;
+}
+
 
 //=======================================================================
 //function : SetOrigin
@@ -270,6 +312,16 @@ void ChFiDS_ElSpine::SetLastPointAndTgt(const gp_Pnt& P,
 }
 
 //=======================================================================
+//function : AddVertexWithTangent
+//purpose  : 
+//=======================================================================
+
+void ChFiDS_ElSpine::AddVertexWithTangent(const gp_Ax1& anAx1)
+{
+  VerticesWithTangents.Append(anAx1);
+}
+
+//=======================================================================
 //function : FirstPointAndTgt
 //purpose  : 
 //=======================================================================
@@ -291,6 +343,26 @@ void ChFiDS_ElSpine::LastPointAndTgt(gp_Pnt& P,
 {
   P = ptlast;
   T = tglast;
+}
+
+//=======================================================================
+//function : NbVertices
+//purpose  : 
+//=======================================================================
+
+Standard_Integer ChFiDS_ElSpine::NbVertices() const
+{
+  return VerticesWithTangents.Length();
+}
+
+//=======================================================================
+//function : VertexWithTangent
+//purpose  : 
+//=======================================================================
+
+const gp_Ax1& ChFiDS_ElSpine::VertexWithTangent(const Standard_Integer Index) const
+{
+  return VerticesWithTangents(Index);
 }
 
 //=======================================================================

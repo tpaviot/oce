@@ -307,7 +307,7 @@ public:
   //!
   //! Raises if N < 0 and if the matrix of the transformation not
   //! inversible.
-      gp_Trsf Powered (const Standard_Integer N) ;
+      gp_Trsf Powered (const Standard_Integer N)  const;
   
       void Transforms (Standard_Real& X, Standard_Real& Y, Standard_Real& Z)  const;
   

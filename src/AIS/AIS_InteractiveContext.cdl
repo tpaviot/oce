@@ -18,20 +18,8 @@
 --   rob : Dec 17 1997 -> Update Method Added + Use in Deviation Angle...
 --   rob : Feb 05 1998 -> UpdateOnlySelection, UpdateOnlyPrs
 --         Apr 02 1998 -> Select Methods has been added a boolean updateviewer.
---   GG  :  GER61351 17/11/1999 Change SetColor() with a compatible i
---	    Quantity_Color instead the restricted NameOfColor.
---          Add SetCurrentFacingModel() methods
---   GG  : IMP140200 Add SetSelectedAspect() method
---   GG  : 25/05/00 BUC60688 Add SetSensitivity() methods 
 --   VSV : 22/05/01 Add Selection by polygon
 --   SAV :  Add DisplayFromCollector() method
---   ZSV : IMP160701 Add InitDetected(),MoreDetected(),NextDetected(),
---	   	         DetectedCurrentShape(),DetectedCurrentObject()
---			 methods
---   GG  : IMP051001 Add SetZDetection() and ZDetection() methods
---   SAV : OCC172 : Delete() redefined to remove selection objects from
---                  the static map.
---   SAN : OCC4895 22/03/04 High-level interface for controlling polygon offsets
 --   SLN : SetToHilightSelected method added
 
 
@@ -111,7 +99,6 @@ uses
     MapOfInteractive      from AIS,
     InteractiveObject     from AIS,
     DisplayMode           from AIS,
-    Drawer                from AIS,
     NameOfMaterial        from Graphic3d,
     --NameOfPhysicalMaterial  from Graphic3d,
     Filter                from SelectMgr,
@@ -172,30 +159,31 @@ is
     	-- local context without selection, use the syntax below,
     	-- setting aSelectionMode to -1.
 
-    Display(me                 : mutable;
-    	    anIobj             : InteractiveObject from AIS;
-    	    amode              : Integer from Standard ;
-	    aSelectionMode     : Integer from Standard ;
-    	    updateviewer       : Boolean from Standard = Standard_True;
-    	    allowdecomposition : Boolean from Standard = Standard_True);
+    Display (me                      : mutable;
+             theIObj                 : InteractiveObject from AIS;
+             theDispMode             : Integer from Standard;
+             theSelectionMode        : Integer from Standard;
+             theToUpdateViewer       : Boolean from Standard = Standard_True;
+             theToAllowDecomposition : Boolean from Standard = Standard_True;
+             theDispStatus           : DisplayStatus from AIS = AIS_DS_None);
     	---Purpose: Controls the choice between the using the display
     	-- and selection modes of open local context which you
     	-- have defined and activating those available by default.
     	-- If no Local Context is opened. and the Interactive
-    	-- Object aniobj has no display mode of its own, the
-    	-- default display mode, 0, is used. Likewise, if aniobj
+    	-- Object theIObj has no display mode of its own, the
+    	-- default display mode, 0, is used. Likewise, if theIObj
     	-- has no selection mode of its own, the default one, 0, is used.
-    	-- If a local context is open and if updateviewer equals
+    	-- If a local context is open and if theToUpdateViewer equals
     	-- Standard_False, the presentation of the Interactive
     	-- Object activates the selection mode; the object is
     	-- displayed but no viewer will be updated.
-    	-- If aSelectionMode equals -1, anIobj will not be
+    	-- If theSelectionMode equals -1, theIObj will not be
     	-- activated: it will be displayed but will not be selectable.
     	-- Use this if you want to view the object in open local
     	-- context without selection. Note: This option is only
     	-- available in Local Context.
-    	-- If allowDecomposition equals true, anIObj can have
-    	-- subshapes detected by selection mechanisms. anIObj
+    	-- If theToAllowDecomposition equals true, theIObj can have
+    	-- subshapes detected by selection mechanisms. theIObj
     	-- must be able to give a shape selection modes which
     	-- fit the AIS_Shape selection modes:
     	-- -   vertices: 1
@@ -268,15 +256,6 @@ is
 -- inWhichLocal gives the local context in which anIObj
 -- is displayed. By default, the index -1 refers to the last
 -- Local Context opened.
- 
-    Clear(me : mutable;
-    	  aniobj         : InteractiveObject from AIS;
-	  updateviewer   : Boolean from Standard = Standard_True);
----Purpose: Removes the interactive object aniobj from all viewers.
--- If a local context is open and if updateviewer equals
--- Standard_False, the presentation of the Interactive
--- Object activates the selection mode; the object is
--- displayed but no viewer will be updated.
 
     ClearPrs( me           :mutable;
     	      aniobj       : InteractiveObject from AIS;
@@ -354,22 +333,14 @@ is
     SetZLayer( me         : mutable;
                theIObj    : InteractiveObject from AIS;
                theLayerId : Integer from Standard );
-    ---Purpose: Set Z layer id for interactive object. The layer can be
-    -- specified for displayed object only. The Z layers can be used to display
-    -- temporarily presentations of some object in front of the other objects
-    -- in the scene. The ids for Z layers are generated by V3d_Viewer.
-    -- Note that Z layers differ from under-/overlayer in V3d_View:
-    -- under-/overlayer are intended for specific 2D drawings that appear
-    -- behind/in front of all 3D presentations, while SetZLayer() method
-    -- applies to regular 3D presentations and does not imply any specific
-    -- drawing methods.
+    ---Purpose: Set Z layer id for interactive object.
+    -- The Z layers can be used to display temporarily presentations of some object in front of the other objects in the scene.
+    -- The ids for Z layers are generated by V3d_Viewer.
 
     GetZLayer( me;
                theIObj : InteractiveObject from AIS )
       returns Integer from Standard;
     ---Purpose: Get Z layer id set for displayed interactive object.
-    -- If the object doesn't exists in context or has no computed presentations,
-    -- the method returns -1.
 
     Redisplay(me     : mutable;
     	      aniobj : InteractiveObject from AIS;
@@ -456,43 +427,17 @@ is
 ---Purpose:
 -- Removes selection mode from Interactive Objects.
 -- aMode provides the selection mode index of the entity aniobj.
-    
-    SetSensitivityMode(me    : mutable;
-                       aMode : SensitivityMode from StdSelect) is static;
-    ---Level: Public
-    ---Purpose: Sets the selection sensitivity mode. SM_WINDOW mode
-    -- uses the specified pixel tolerance to compute the sensitivity
-    -- value, SM_VIEW mode allows to define the sensitivity manually.
-
-    SensitivityMode(me) returns SensitivityMode from StdSelect;
-    ---Level: Public
-    ---Purpose: Returns the selection sensitivity mode.
-
-    SetSensitivity(me:mutable;
-			aPrecision: Real from Standard);
-    ---Level: Public
-    ---Purpose: Sets the sensitivity aPrecision
--- according to the view size for the current context or local
--- context if any is activated. 
---   Sets the sensitivity aPrecision in pixels for the current context
--- or local context if any is activated. By default, this
--- sensitivity is equal to 4 pixels.
---   When a local context is open, the defined sensitivity applies to
--- this local context instead of the main context.
-
-    Sensitivity (me) returns Real from Standard;
-    ---Level: Public 
-    ---Purpose: Returns the selection sensitivity value.
 
     SetPixelTolerance(me:mutable;
-			aPrecision: Integer from Standard = 4);
+			aPrecision: Real from Standard = 2.0);
     ---Level: Public
-    ---Purpose: Define the current selection pixel sensitivity
-    --		for this context or local context if any one is activated.
+    ---Purpose: Disables the mechanism of adaptive tolerance calculation in SelectMgr_ViewerSelector and
+    --          sets the given tolerance for ALL sensitive entities activated. For more information, see
+    --          SelectMgr_ViewerSelector documentation
     --  Warning: When a local context is open the sensitivity is apply on it 
     --          instead on the main context.
 
-    PixelTolerance(me) returns Integer from Standard;
+    PixelTolerance(me) returns Real from Standard;
     ---Level: Public 
     ---Purpose: Returns the pixel tolerance.
 
@@ -635,7 +580,7 @@ is
 
     SetLocalAttributes(me      : mutable; 
     	    	       aniobj  : InteractiveObject from AIS;
-    	    	       aDrawer : Drawer from AIS;
+    	    	       aDrawer : Drawer from Prs3d;
     	     updateviewer : Boolean from Standard = Standard_True); 
 --- Purpose:
 -- Sets the attributes of the interactive object aniobj by
@@ -974,7 +919,7 @@ is
 -- deviate from a tangent to a   curve. If this limit is
 -- reached, a new triangle is begun.
 -- This deviation is absolute and is set through
--- AIS_Drawer::SetMaximalChordialDeviation. The
+-- Prs3d_Drawer::SetMaximalChordialDeviation. The
 -- default value is 0.001.
 -- In drawing shapes, however, you are allowed to ask
 -- for a relative deviation. This deviation will be:
@@ -1697,9 +1642,10 @@ is
     ZDetection(me) returns Boolean;
     ---Purpose: Retrieves the Z detection state.
 
-    Activate(me     : mutable;
-    	     anIobj : InteractiveObject from AIS;
-    	     aMode  : Integer from Standard = 0);
+    Activate(me         : mutable;
+             anIobj     : InteractiveObject from AIS;
+             aMode      : Integer from Standard = 0;
+             theIsForce : Boolean from Standard = Standard_False);
     ---Purpose: Activates the selection mode aMode whose index is
 -- given, for the given interactive entity anIobj.
 
@@ -1976,10 +1922,10 @@ is
     ---C++: inline
     ---C++: return const &
 
-    MainSelector(me) returns any ViewerSelector3d from StdSelect;
+    MainSelector(me) returns ViewerSelector3d from StdSelect;
     ---C++: inline
     ---C++: return const &
-    LocalSelector(me) returns any ViewerSelector3d from StdSelect;
+    LocalSelector(me) returns ViewerSelector3d from StdSelect;
 
     PurgeDisplay(me:mutable) 
     returns Integer from Standard;
@@ -1991,12 +1937,6 @@ is
 
 
     HighestIndex(me)  returns  Integer  from  Standard;
-
-    DisplayActiveAreas(me:mutable;aView:View from V3d) ;
-
-    ClearActiveAreas (me   :mutable;
-    	    	aView: View from V3d) is static;
-    ---Level: Internal 
     
     DisplayActiveSensitive(me:mutable;aView : View from V3d) is static; 
     
@@ -2005,9 +1945,6 @@ is
 
 
     DisplayActiveSensitive(me:mutable;
-    	    	           anObject: InteractiveObject from AIS;
-			   aView   : View from V3d) is static;
-    DisplayActiveAreas(me:mutable;
     	    	           anObject: InteractiveObject from AIS;
 			   aView   : View from V3d) is static;
 
@@ -2039,12 +1976,43 @@ is
     ---Purpose: returns if possible,
     --          the first local context where the object is seen
 
+    RebuildSelectionStructs (me : mutable);
+    ---Purpose: Rebuilds 1st level of BVH selection forcibly
+    SetViewAffinity (me           : mutable;
+                     theIObj      : InteractiveObject from AIS;
+                     theView      : View from V3d;
+                     theIsVisible : Boolean from Standard) is static;
+    ---Purpose: setup object visibility in specified view,
+    -- has no effect if object is not disaplyed in this context.
+
+    Disconnect (me                 : mutable;
+                theAssembly        : InteractiveObject from AIS;
+                theObjToDisconnect : InteractiveObject from AIS = NULL)
+      is static;
+    ---Purpose: Disconnects theObjToDisconnect from theAssembly and removes dependent selection structures
+
+    ObjectsForView (me;
+                    theListOfIO        : in out ListOfInteractive from AIS;
+                    theView            : View from V3d;
+                    theIsVisibleInView : Boolean from Standard;
+                    theStatus          : DisplayStatus from AIS = AIS_DS_None) is static;
+    ---Purpose: Query objects visible or hidden in specified view due to affinity mask.
 
     InitAttributes(me:mutable) is static private;
 
 
     PurgeViewer(me:mutable;Vwr:Viewer from V3d) 
     returns Integer from Standard is static private;
+
+    redisplayPrsModes (me                : mutable;
+                       theIObj           : InteractiveObject from AIS;
+                       theToUpdateViewer : Boolean from Standard = Standard_True) is static private;
+   ---Purpose: UNKNOWN
+
+    redisplayPrsRecModes (me                : mutable;
+                          theIObj           : InteractiveObject from AIS;
+                          theToUpdateViewer : Boolean from Standard = Standard_True) is static private;
+   ---Purpose: UNKNOWN
 
 fields
 

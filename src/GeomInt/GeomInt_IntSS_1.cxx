@@ -14,7 +14,11 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
+#include <algorithm>
+
 #include <GeomInt_IntSS.ixx>
+
+#include <GeomInt.hxx>
 
 #include <Precision.hxx>
 #include <gp_Pnt.hxx>
@@ -75,13 +79,23 @@
 #include <GeomInt_WLApprox.hxx>
 #include <Extrema_ExtPS.hxx>
 
-static
-  void BuildPCurves (Standard_Real f,
-		     Standard_Real l,
-		     Standard_Real& Tol,
-		     const Handle (Geom_Surface)& S,
-		     const Handle (Geom_Curve)&   C,
-		     Handle (Geom2d_Curve)& C2d);
+#include <GeomAdaptor_HSurface.hxx>
+#include <gp_Lin2d.hxx>
+#include <Geom2d_Line.hxx>
+#include <IntPatch_RLine.hxx>
+#include <Geom2dAdaptor.hxx>
+#include <Adaptor2d_HCurve2d.hxx>
+#include <Approx_CurveOnSurface.hxx>
+#include <GeomAdaptor.hxx>
+#include <GeomProjLib.hxx>
+#include <TColStd_Array1OfReal.hxx>
+#include <TColgp_Array1OfPnt2d.hxx>
+#include <TColStd_Array1OfInteger.hxx>
+#include <Geom2d_BSplineCurve.hxx>
+#include <Geom2dAdaptor_Curve.hxx>
+#include <IntRes2d_IntersectionPoint.hxx>
+#include <IntRes2d_IntersectionSegment.hxx>
+#include <Geom2dInt_GInter.hxx>
 
 static
   void Parameters(const Handle(GeomAdaptor_HSurface)& HS1,
@@ -144,20 +158,6 @@ static
 static
   void GetQuadric(const Handle(GeomAdaptor_HSurface)& HS1,
 		  IntSurf_Quadric& quad1);
-
-static
-    void TreatRLine(const Handle(IntPatch_RLine)& theRL, 
-                    const Handle(GeomAdaptor_HSurface)& theHS1, 
-                    const Handle(GeomAdaptor_HSurface)& theHS2, 
-                    const Standard_Boolean theApprox1, 
-                    const Standard_Boolean theApprox2, 
-                    Handle(Geom_Curve)& theC3d,
-                    Handle(Geom2d_Curve)& theC2d1, 
-                    Handle(Geom2d_Curve)& theC2d2, 
-                    Standard_Real& theTolReached);
-
-//
-
 
 class ProjectPointOnSurf
 {
@@ -251,13 +251,13 @@ Standard_Real ProjectPointOnSurf::LowerDistance() const
 //function : MakeCurve
 //purpose  : 
 //=======================================================================
-  void GeomInt_IntSS::MakeCurve(const Standard_Integer Index,
-				const Handle(Adaptor3d_TopolTool) & dom1,
-				const Handle(Adaptor3d_TopolTool) & dom2,
-				const Standard_Real Tol,
-				const Standard_Boolean Approx,
-				const Standard_Boolean ApproxS1,
-				const Standard_Boolean ApproxS2)
+void GeomInt_IntSS::MakeCurve(const Standard_Integer Index,
+			      const Handle(Adaptor3d_TopolTool) & dom1,
+			      const Handle(Adaptor3d_TopolTool) & dom2,
+			      const Standard_Real Tol,
+			      const Standard_Boolean Approx,
+			      const Standard_Boolean ApproxS1,
+			      const Standard_Boolean ApproxS2)
 
 {
   Standard_Boolean myApprox1, myApprox2, myApprox;
@@ -1036,91 +1036,87 @@ Standard_Real ProjectPointOnSurf::LowerDistance() const
       default: break;
       }
 
-      if(!isAnalS1 || !isAnalS2)
+      Handle(IntPatch_RLine) RL = 
+        Handle(IntPatch_RLine)::DownCast(L);
+      Handle(Geom_Curve) aC3d;
+      Handle(Geom2d_Curve) aC2d1, aC2d2;
+      Standard_Real aTolReached;
+      TreatRLine(RL, myHS1, myHS2, aC3d,
+                  aC2d1, aC2d2, aTolReached);
+
+      if(aC3d.IsNull())
+        break;
+
+      Bnd_Box2d aBox1, aBox2;
+
+      const Standard_Real aU1f = myHS1->FirstUParameter(),
+                          aV1f = myHS1->FirstVParameter(),
+                          aU1l = myHS1->LastUParameter(),
+                          aV1l = myHS1->LastVParameter();
+      const Standard_Real aU2f = myHS2->FirstUParameter(),
+                          aV2f = myHS2->FirstVParameter(),
+                          aU2l = myHS2->LastUParameter(),
+                          aV2l = myHS2->LastVParameter();
+
+      aBox1.Add(gp_Pnt2d(aU1f, aV1f));
+      aBox1.Add(gp_Pnt2d(aU1l, aV1l));
+      aBox2.Add(gp_Pnt2d(aU2f, aV2f));
+      aBox2.Add(gp_Pnt2d(aU2l, aV2l));
+
+      GeomInt_VectorOfReal anArrayOfParameters;
+
+      //We consider here that the intersection line is same-parameter-line
+      anArrayOfParameters.Append(aC3d->FirstParameter());
+      anArrayOfParameters.Append(aC3d->LastParameter());
+
+      TrimILineOnSurfBoundaries(aC2d1, aC2d2, aBox1, aBox2, anArrayOfParameters);
+
+      const Standard_Integer aNbIntersSolutionsm1 = anArrayOfParameters.Length() - 1;
+
+      //Trim RLine found.
+      for(Standard_Integer anInd = 0; anInd < aNbIntersSolutionsm1; anInd++)
       {
-        Handle(IntPatch_RLine) RL = 
-          Handle(IntPatch_RLine)::DownCast(L);
-        Handle(Geom_Curve) aC3d;
-        Handle(Geom2d_Curve) aC2d1, aC2d2;
-        Standard_Real aTolReached;
-        TreatRLine(RL, myHS1, myHS2, myApprox1, myApprox2, aC3d,
-          aC2d1, aC2d2, aTolReached);
-        sline.Append(aC3d);
-        slineS1.Append(aC2d1);
-        slineS2.Append(aC2d2);
+        const Standard_Real aParF = anArrayOfParameters(anInd),
+                            aParL = anArrayOfParameters(anInd+1);
+
+        if((aParL - aParF) <= Precision::PConfusion())
+          continue;
+
+        const Standard_Real aPar = 0.5*(aParF + aParL);
+        gp_Pnt2d aPt;
+
+        Handle(Geom2d_Curve) aCurv2d1, aCurv2d2;
+        if(!aC2d1.IsNull())
+        {
+          aC2d1->D0(aPar, aPt);
+
+          if(aBox1.IsOut(aPt))
+            continue;
+
+          if(myApprox1)
+            aCurv2d1 = new Geom2d_TrimmedCurve(aC2d1, aParF, aParL);
+        }
+
+        if(!aC2d2.IsNull())
+        {
+          aC2d2->D0(aPar, aPt);
+
+          if(aBox2.IsOut(aPt))
+            continue;
+
+          if(myApprox2)
+            aCurv2d2 = new Geom2d_TrimmedCurve(aC2d2, aParF, aParL);
+        }
+
+        Handle(Geom_Curve) aCurv3d = new Geom_TrimmedCurve(aC3d, aParF, aParL);
+
+        sline.Append(aCurv3d);
+        slineS1.Append(aCurv2d1);
+        slineS2.Append(aCurv2d2);
       }
     }
     break;
-
   }
-}
-//
-//=======================================================================
-//function : AdjustUPeriodic
-//purpose  : 
-//=======================================================================
-void TreatRLine(const Handle(IntPatch_RLine)& theRL, 
-                const Handle(GeomAdaptor_HSurface)& theHS1, 
-                const Handle(GeomAdaptor_HSurface)& theHS2, 
-                const Standard_Boolean theApprox1, 
-                const Standard_Boolean theApprox2, 
-                Handle(Geom_Curve)& theC3d,
-                Handle(Geom2d_Curve)& theC2d1, 
-                Handle(Geom2d_Curve)& theC2d2, 
-                Standard_Real& theTolReached)
-{
-  Handle(GeomAdaptor_HSurface) aGAHS;
-  Handle(Adaptor2d_HCurve2d) anAHC2d;
-  Standard_Real tf, tl;
-  gp_Lin2d aL;
-  // It is assumed that 2d curve is 2d line (rectangular surface domain)
-  if(theRL->IsArcOnS1())
-  {
-    aGAHS = theHS1;
-    anAHC2d = theRL->ArcOnS1();
-    theRL->ParamOnS1(tf, tl);
-    theC2d1 = Geom2dAdaptor::MakeCurve(theRL->ArcOnS1()->Curve2d());
-  }
-  else if (theRL->IsArcOnS2())
-  {
-    aGAHS = theHS2;
-    anAHC2d = theRL->ArcOnS2();
-    theRL->ParamOnS2(tf, tl);
-    theC2d2 = Geom2dAdaptor::MakeCurve(theRL->ArcOnS2()->Curve2d());
-  }
-  else
-  {
-    return;
-  }
-  //
-  //To provide sameparameter it is necessary to get 3d curve as
-  //approximation of curve on surface.
-  Standard_Integer aMaxDeg = 8;
-  Standard_Integer aMaxSeg = 1000;
-  Approx_CurveOnSurface anApp(anAHC2d, aGAHS, tf, tl, Precision::Confusion(),
-                              GeomAbs_C1, aMaxDeg, aMaxSeg, 
-                              Standard_True, Standard_False);
-  if(anApp.HasResult())
-  {
-    theC3d = anApp.Curve3d();
-    theTolReached = anApp.MaxError3d();
-    Standard_Real aTol = Precision::Confusion();
-    if(theRL->IsArcOnS1() && theApprox2)
-    {
-      Handle(Geom_Surface) aS = GeomAdaptor::MakeSurface(theHS1->Surface());
-      BuildPCurves (tf, tl, aTol, 
-                    aS, theC3d, theC2d2);
-    }
-    if(theRL->IsArcOnS2() && theApprox1)
-    {
-      Handle(Geom_Surface) aS = GeomAdaptor::MakeSurface(theHS2->Surface());
-      BuildPCurves (tf, tl, aTol, 
-                    aS, theC3d, theC2d1);
-    }
-    theTolReached = Max(theTolReached, aTol);
-  }
-  //
-
 }
 //
 //=======================================================================
@@ -1166,53 +1162,6 @@ void TreatRLine(const Handle(IntPatch_RLine)& theRL,
   }
 }
 //
-//
-//=======================================================================
-//function : BuildPCurves
-//purpose  : 
-//=======================================================================
- void BuildPCurves (Standard_Real f, Standard_Real l,
-                    Standard_Real& Tol,
-                    const Handle(Geom_Surface)& S,
-                    const Handle(Geom_Curve)& C,
-                    Handle(Geom2d_Curve)& C2d)
-{
-  if (C2d.IsNull())
-  {
-    C2d = GeomProjLib::Curve2d(C,f,l,S,Tol);
-    if (S->IsUPeriodic())
-    {
-      Standard_Real umin,umax,vmin,vmax;
-      S->Bounds(umin,umax,vmin,vmax);
-      // Recadre dans le domaine UV de la face
-      const Standard_Real period = S->UPeriod();
-      gp_Pnt2d Pf=C2d->Value(f);
-      //
-      Standard_Real U0=Pf.X();
-      //
-      const Standard_Real aEpsilon=Epsilon(10.);//1.77e-15 
-      if (fabs(U0)<aEpsilon)
-        U0=0.;
-      if (fabs(U0-period)<aEpsilon)
-        U0=period;
-      //
-      const Standard_Real aEps=Precision::PConfusion();//1.e-9
-      Standard_Real du=0.;
-      while(U0 <(umin-aEps)) { 
-        U0+=period;
-        du+=period;
-      }
-      while(U0>(umax+aEps)) { 
-        U0-=period;
-        du-=period;
-      }
-      if (du!=0.) {
-        gp_Vec2d T1(du, 0.);
-        C2d->Translate(T1);
-      }
-    }
-  }
-}
 //
 //=======================================================================
 //function : GetQuadric
@@ -2106,26 +2055,370 @@ Standard_Boolean FindPoint(const gp_Pnt2d&     theFirstPoint,
   return Standard_False;
 }
 
-/*
-static
-  void DumpWLine (const Handle(IntPatch_WLine)& theWLine);
 //=======================================================================
-//function : DumpWLine
+//function : ParametersOfNearestPointOnSurface
 //purpose  : 
 //=======================================================================
-  void DumpWLine (const Handle(IntPatch_WLine)& theWLine)
+static Standard_Boolean ParametersOfNearestPointOnSurface(const Extrema_ExtPS theExtr,
+                                                          Standard_Real& theU,
+                                                          Standard_Real& theV)
 {
-  Standard_Integer i, nbp;
-  Standard_Real u1,v1,u2,v2;
-  //
-  nbp=theWLine->NbPnts();
-  printf(" nbp=%d\n", nbp);
-  for(i=1;i<=nbp;i++) {
-    const IntSurf_PntOn2S& aPoint = theWLine->Point(i);
-    const gp_Pnt& aP=aPoint.Value();
-    aPoint.Parameters(u1,v1,u2,v2);
-    printf("point i%d %lf %lf %lf [ %lf %lf ] [ %lf %lf ]\n", 
-	   i, aP.X(), aP.Y(), aP.Z(), u1, v1, u2, v2);
+  if(!theExtr.IsDone() || !theExtr.NbExt())
+    return Standard_False;
+
+  Standard_Integer anIndex = 1;
+  Standard_Real aMinSQDist = theExtr.SquareDistance(anIndex);
+  for(Standard_Integer i = 2; i <= theExtr.NbExt(); i++)
+  {
+    Standard_Real aSQD = theExtr.SquareDistance(i);
+    if (aSQD < aMinSQDist)
+    {
+      aMinSQDist = aSQD;
+      anIndex = i;
+    }
+  }
+
+  theExtr.Point(anIndex).Parameter(theU, theV);
+
+  return Standard_True;
+}
+
+//=======================================================================
+//function : GetSegmentBoundary
+//purpose  : 
+//=======================================================================
+static void GetSegmentBoundary( const IntRes2d_IntersectionSegment& theSegm,
+                                const Handle(Geom2d_Curve)& theCurve,
+                                GeomInt_VectorOfReal& theArrayOfParameters)
+{
+  Standard_Real aU1 = theCurve->FirstParameter(), aU2 = theCurve->LastParameter();
+
+  if(theSegm.HasFirstPoint())
+  {
+    const IntRes2d_IntersectionPoint& anIPF = theSegm.FirstPoint();
+    aU1 = anIPF.ParamOnFirst();
+  }
+
+  if(theSegm.HasLastPoint())
+  {
+    const IntRes2d_IntersectionPoint& anIPL = theSegm.LastPoint();
+    aU2 = anIPL.ParamOnFirst();
+  }
+
+  theArrayOfParameters.Append(aU1);
+  theArrayOfParameters.Append(aU2);
+}
+
+//=======================================================================
+//function : IntersectCurveAndBoundary
+//purpose  : 
+//=======================================================================
+static void IntersectCurveAndBoundary(const Handle(Geom2d_Curve)& theC2d,
+                                      const Handle(Geom2d_Curve)* const theArrBounds,
+                                      const Standard_Integer theNumberOfCurves,
+                                      const Standard_Real theTol,
+                                      GeomInt_VectorOfReal& theArrayOfParameters)
+{
+  if(theC2d.IsNull())
+    return;
+
+  Geom2dAdaptor_Curve anAC1(theC2d);
+  for(Standard_Integer aCurID = 0; aCurID < theNumberOfCurves; aCurID++)
+  {
+    if(theArrBounds[aCurID].IsNull())
+      continue;
+
+    Geom2dAdaptor_Curve anAC2(theArrBounds[aCurID]);
+    Geom2dInt_GInter anIntCC2d(anAC1, anAC2, theTol, theTol);
+
+    if(!anIntCC2d.IsDone() || anIntCC2d.IsEmpty())
+      continue;
+
+    for (Standard_Integer aPntID = 1; aPntID <= anIntCC2d.NbPoints(); aPntID++)
+    {
+      const Standard_Real aParam = anIntCC2d.Point(aPntID).ParamOnFirst();
+      theArrayOfParameters.Append(aParam);
+    }
+
+    for (Standard_Integer aSegmID = 1; aSegmID <= anIntCC2d.NbSegments(); aSegmID++)
+    {
+      GetSegmentBoundary(anIntCC2d.Segment(aSegmID), theC2d, theArrayOfParameters);
+    }
   }
 }
-*/
+
+//=======================================================================
+//function : TreatRLine
+//purpose  : Approx of Restriction line
+//=======================================================================
+void GeomInt_IntSS::TreatRLine(const Handle(IntPatch_RLine)& theRL, 
+                const Handle(GeomAdaptor_HSurface)& theHS1, 
+                const Handle(GeomAdaptor_HSurface)& theHS2, 
+                Handle(Geom_Curve)& theC3d,
+                Handle(Geom2d_Curve)& theC2d1, 
+                Handle(Geom2d_Curve)& theC2d2, 
+                Standard_Real& theTolReached)
+{
+  Handle(GeomAdaptor_HSurface) aGAHS;
+  Handle(Adaptor2d_HCurve2d) anAHC2d;
+  Standard_Real tf, tl;
+  gp_Lin2d aL;
+  // It is assumed that 2d curve is 2d line (rectangular surface domain)
+  if(theRL->IsArcOnS1())
+  {
+    aGAHS = theHS1;
+    anAHC2d = theRL->ArcOnS1();
+    theRL->ParamOnS1(tf, tl);
+    theC2d1 = Geom2dAdaptor::MakeCurve(anAHC2d->Curve2d());
+  }
+  else if (theRL->IsArcOnS2())
+  {
+    aGAHS = theHS2;
+    anAHC2d = theRL->ArcOnS2();
+    theRL->ParamOnS2(tf, tl);
+    theC2d2 = Geom2dAdaptor::MakeCurve(anAHC2d->Curve2d());
+  }
+  else
+  {
+    return;
+  }
+  //
+  //To provide sameparameter it is necessary to get 3d curve as
+  //approximation of curve on surface.
+  Standard_Integer aMaxDeg = 8;
+  Standard_Integer aMaxSeg = 1000;
+  Approx_CurveOnSurface anApp(anAHC2d, aGAHS, tf, tl, Precision::Confusion(),
+                              GeomAbs_C1, aMaxDeg, aMaxSeg, 
+                              Standard_True, Standard_False);
+  if(!anApp.HasResult())
+    return;
+
+  theC3d = anApp.Curve3d();
+  theTolReached = anApp.MaxError3d();
+  Standard_Real aTol = Precision::Confusion();
+  if(theRL->IsArcOnS1())
+  {
+    Handle(Geom_Surface) aS = GeomAdaptor::MakeSurface(theHS2->Surface());
+    BuildPCurves (tf, tl, aTol, 
+                  aS, theC3d, theC2d2);
+  }
+  if(theRL->IsArcOnS2())
+  {
+    Handle(Geom_Surface) aS = GeomAdaptor::MakeSurface(theHS1->Surface());
+    BuildPCurves (tf, tl, aTol, 
+                  aS, theC3d, theC2d1);
+  }
+  theTolReached = Max(theTolReached, aTol);
+}
+
+//=======================================================================
+//function : BuildPCurves
+//purpose  : 
+//=======================================================================
+void GeomInt_IntSS::BuildPCurves (Standard_Real f,
+                                  Standard_Real l,
+                                  Standard_Real& Tol,
+                                  const Handle (Geom_Surface)& S,
+                                  const Handle (Geom_Curve)&   C,
+                                  Handle (Geom2d_Curve)& C2d)
+{
+  if (!C2d.IsNull()) {
+    return;
+  }
+  //
+  Standard_Real umin,umax,vmin,vmax;
+  // 
+  S->Bounds(umin, umax, vmin, vmax);
+  // in class ProjLib_Function the range of parameters is shrank by 1.e-09
+  if((l - f) > 2.e-09) {
+    C2d = GeomProjLib::Curve2d(C,f,l,S,umin,umax,vmin,vmax,Tol);
+    //
+    if (C2d.IsNull()) {
+      // proj. a circle that goes through the pole on a sphere to the sphere     
+      Tol += Precision::Confusion();
+      C2d = GeomProjLib::Curve2d(C,f,l,S,Tol);
+    }
+  }
+  else {
+    if((l - f) > Epsilon(Abs(f)))
+    {
+      //The domain of C2d is [Epsilon(Abs(f)), 2.e-09]
+      //On this small range C2d can be considered as segment 
+      //of line.
+
+      Standard_Real aU=0., aV=0.;
+      GeomAdaptor_Surface anAS;
+      anAS.Load(S);
+      Extrema_ExtPS anExtr;
+      const gp_Pnt aP3d1 = C->Value(f);
+      const gp_Pnt aP3d2 = C->Value(l);
+
+      anExtr.SetAlgo(Extrema_ExtAlgo_Grad);
+      anExtr.Initialize(anAS, umin, umax, vmin, vmax,
+                                Precision::Confusion(), Precision::Confusion());
+      anExtr.Perform(aP3d1);
+
+      if(ParametersOfNearestPointOnSurface(anExtr, aU, aV))
+      {
+        const gp_Pnt2d aP2d1(aU, aV);
+
+        anExtr.Perform(aP3d2);
+
+        if(ParametersOfNearestPointOnSurface(anExtr, aU, aV))
+        {
+          const gp_Pnt2d aP2d2(aU, aV);
+
+          if(aP2d1.Distance(aP2d2) > gp::Resolution())
+          {
+            TColgp_Array1OfPnt2d poles(1,2);
+            TColStd_Array1OfReal knots(1,2);
+            TColStd_Array1OfInteger mults(1,2);
+            poles(1) = aP2d1;
+            poles(2) = aP2d2;
+            knots(1) = f;
+            knots(2) = l;
+            mults(1) = mults(2) = 2;
+
+            C2d = new Geom2d_BSplineCurve(poles,knots,mults,1);
+
+            //Check same parameter in middle point .begin
+            const gp_Pnt PMid(C->Value(0.5*(f+l)));
+            const gp_Pnt2d pmidcurve2d(0.5*(aP2d1.XY() + aP2d2.XY()));
+            const gp_Pnt aPC(anAS.Value(pmidcurve2d.X(), pmidcurve2d.Y()));
+            const Standard_Real aDist = PMid.Distance(aPC);
+            Tol = Max(aDist, Tol);
+            //Check same parameter in middle point .end
+          }
+        }
+      }
+    }
+  }
+  //
+  if (S->IsUPeriodic() && !C2d.IsNull()) {
+    // Recadre dans le domaine UV de la face
+    Standard_Real aTm, U0, aEps, period, du, U0x;
+    Standard_Boolean bAdjust;
+    //
+    aEps = Precision::PConfusion();
+    period = S->UPeriod();
+    //
+    aTm = .5*(f + l);
+    gp_Pnt2d pm = C2d->Value(aTm);
+    U0 = pm.X();
+    //
+    bAdjust = 
+      GeomInt::AdjustPeriodic(U0, umin, umax, period, U0x, du, aEps);
+    if (bAdjust) {
+      gp_Vec2d T1(du, 0.);
+      C2d->Translate(T1);
+    }
+  }
+}
+
+//=======================================================================
+//function : TrimILineOnSurfBoundaries
+//purpose  : This function finds intersection points of given curves with
+//            surface boundaries and fills theArrayOfParameters by parameters
+//            along the given curves corresponding of these points.
+//=======================================================================
+void GeomInt_IntSS::TrimILineOnSurfBoundaries(const Handle(Geom2d_Curve)& theC2d1,
+                                              const Handle(Geom2d_Curve)& theC2d2,
+                                              const Bnd_Box2d& theBound1,
+                                              const Bnd_Box2d& theBound2,
+                                              GeomInt_VectorOfReal& theArrayOfParameters)
+{
+  //Rectangular boundaries of two surfaces: [0]:U=Ufirst, [1]:U=Ulast,
+  //                                        [2]:V=Vfirst, [3]:V=Vlast 
+  const Standard_Integer aNumberOfCurves = 4;
+  Handle(Geom2d_Curve) aCurS1Bounds[aNumberOfCurves];
+  Handle(Geom2d_Curve) aCurS2Bounds[aNumberOfCurves];
+
+  Standard_Real aU1f=0.0, aV1f=0.0, aU1l=0.0, aV1l=0.0;
+  Standard_Real aU2f=0.0, aV2f=0.0, aU2l=0.0, aV2l=0.0;
+
+  theBound1.Get(aU1f, aV1f, aU1l, aV1l);
+  theBound2.Get(aU2f, aV2f, aU2l, aV2l);
+
+  Standard_Real aDelta = aV1l-aV1f;
+  if(Abs(aDelta) > RealSmall())
+  {
+    if(!Precision::IsInfinite(aU1f))
+    {
+      aCurS1Bounds[0] = new Geom2d_Line(gp_Pnt2d(aU1f, aV1f), gp_Dir2d(0.0, 1.0));
+
+      if(!Precision::IsInfinite(aDelta))
+        aCurS1Bounds[0] = new Geom2d_TrimmedCurve(aCurS1Bounds[0], 0, aDelta);
+    }
+
+    if(!Precision::IsInfinite(aU1l))
+    {
+      aCurS1Bounds[1] = new Geom2d_Line(gp_Pnt2d(aU1l, aV1f), gp_Dir2d(0.0, 1.0));
+      if(!Precision::IsInfinite(aDelta))
+        aCurS1Bounds[1] = new Geom2d_TrimmedCurve(aCurS1Bounds[1], 0, aDelta);
+    }
+  }
+
+  aDelta = aU1l-aU1f;
+  if(Abs(aDelta) > RealSmall())
+  {
+    if(!Precision::IsInfinite(aV1f))
+    {
+      aCurS1Bounds[2] = new Geom2d_Line(gp_Pnt2d(aU1f, aV1f), gp_Dir2d(1.0, 0.0));
+      if(!Precision::IsInfinite(aDelta))
+        aCurS1Bounds[2] = new Geom2d_TrimmedCurve(aCurS1Bounds[2], 0, aDelta);
+    }
+
+    if(!Precision::IsInfinite(aV1l))
+    {
+      aCurS1Bounds[3] = new Geom2d_Line(gp_Pnt2d(aU1l, aV1l), gp_Dir2d(1.0, 0.0));
+      if(!Precision::IsInfinite(aDelta))
+        aCurS1Bounds[3] = new Geom2d_TrimmedCurve(aCurS1Bounds[3], 0, aDelta);
+    }
+  }
+
+  aDelta = aV2l-aV2f;
+  if(Abs(aDelta) > RealSmall())
+  {
+    if(!Precision::IsInfinite(aU2f))
+    {
+      aCurS2Bounds[0] = new Geom2d_Line(gp_Pnt2d(aU2f, aV2f), gp_Dir2d(0.0, 1.0));
+      if(!Precision::IsInfinite(aDelta))
+        aCurS2Bounds[0] = new Geom2d_TrimmedCurve(aCurS2Bounds[0], 0, aDelta);
+    }
+
+    if(!Precision::IsInfinite(aU2l))
+    {
+      aCurS2Bounds[1] = new Geom2d_Line(gp_Pnt2d(aU2l, aV2f), gp_Dir2d(0.0, 1.0));
+      if(!Precision::IsInfinite(aDelta))
+        aCurS2Bounds[1] = new Geom2d_TrimmedCurve(aCurS2Bounds[1], 0, aDelta);
+    }
+  }
+
+  aDelta = aU2l-aU2f;
+  if(Abs(aDelta) > RealSmall())
+  {
+    if(!Precision::IsInfinite(aV2f))
+    {
+      aCurS2Bounds[2] = new Geom2d_Line(gp_Pnt2d(aU2f, aV2f), gp_Dir2d(1.0, 0.0));
+      if(!Precision::IsInfinite(aDelta))
+        aCurS2Bounds[2] = new Geom2d_TrimmedCurve(aCurS2Bounds[2], 0, aDelta);
+    }
+
+    if(!Precision::IsInfinite(aV2l))
+    {
+      aCurS2Bounds[3] = new Geom2d_Line(gp_Pnt2d(aU2l, aV2l), gp_Dir2d(1.0, 0.0));
+      if(!Precision::IsInfinite(aDelta))
+        aCurS2Bounds[3] = new Geom2d_TrimmedCurve(aCurS2Bounds[3], 0, aDelta);
+    }
+  }
+
+  const Standard_Real anIntTol = 10.0*Precision::Confusion();
+
+  IntersectCurveAndBoundary(theC2d1, aCurS1Bounds,
+                        aNumberOfCurves, anIntTol, theArrayOfParameters);
+
+  IntersectCurveAndBoundary(theC2d2, aCurS2Bounds,
+                        aNumberOfCurves, anIntTol, theArrayOfParameters);
+
+  std::sort(theArrayOfParameters.begin(), theArrayOfParameters.end());
+}

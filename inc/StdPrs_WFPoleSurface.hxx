@@ -12,10 +12,9 @@
 
 #include <Prs3d_Root.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-#include <Handle_Prs3d_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 class Prs3d_Presentation;
 class Adaptor3d_Surface;
-class Prs3d_Drawer;
 
 
 //! Computes the presentation of surfaces by drawing a

@@ -10,8 +10,8 @@
 #include <Standard_DefineHandle.hxx>
 #include <Handle_Graphic3d_AspectMarker3d.hxx>
 
-#include <Graphic3d_MarkerImage_Handle.hxx>
-#include <Graphic3d_ShaderProgram_Handle.hxx>
+#include <Graphic3d_MarkerImage.hxx>
+#include <Graphic3d_ShaderProgram.hxx>
 #include <Aspect_AspectMarker.hxx>
 #include <Aspect_TypeOfMarker.hxx>
 #include <Standard_Real.hxx>
@@ -55,17 +55,17 @@ public:
   //! Returns marker's image texture.
   //! Could be null handle if marker aspect has been initialized as
   //! default type of marker.
-  Standard_EXPORT  const  Graphic3d_MarkerImage_Handle& GetMarkerImage()  const;
+  Standard_EXPORT  const  Handle(Graphic3d_MarkerImage)& GetMarkerImage()  const;
   
   //! Set marker's image texture.
-  Standard_EXPORT   void SetMarkerImage (const Graphic3d_MarkerImage_Handle& theImage) ;
+  Standard_EXPORT   void SetMarkerImage (const Handle(Graphic3d_MarkerImage)& theImage) ;
   
   Standard_EXPORT   void SetBitMap (const Standard_Integer theWidth, const Standard_Integer theHeight, const Handle(TColStd_HArray1OfByte)& theTexture) ;
   
   //! Sets up OpenGL/GLSL shader program.
-  Standard_EXPORT   void SetShaderProgram (const Graphic3d_ShaderProgram_Handle& theProgram) ;
+  Standard_EXPORT   void SetShaderProgram (const Handle(Graphic3d_ShaderProgram)& theProgram) ;
   
-  Standard_EXPORT  const  Graphic3d_ShaderProgram_Handle& ShaderProgram()  const;
+  Standard_EXPORT  const  Handle(Graphic3d_ShaderProgram)& ShaderProgram()  const;
 
 
 
@@ -75,13 +75,13 @@ public:
 protected:
 
 
-  Graphic3d_MarkerImage_Handle myMarkerImage;
+  Handle(Graphic3d_MarkerImage) myMarkerImage;
 
 
 private: 
 
 
-  Graphic3d_ShaderProgram_Handle MyShaderProgram;
+  Handle(Graphic3d_ShaderProgram) MyShaderProgram;
 
 
 };

@@ -59,9 +59,7 @@ public:
   //! Points will be initialized with SetPoint and SetPoint2d.
   //! NbPoints is the total number of Points.
   Standard_EXPORT AppParCurves_MultiPoint(const TColgp_Array1OfPnt& tabP, const TColgp_Array1OfPnt2d& tabP2d);
-  
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~AppParCurves_MultiPoint(){Delete();}
+  Standard_EXPORT virtual ~AppParCurves_MultiPoint();
   
   //! the 3d Point of range Index of this MultiPoint is
   //! set to <Point>.

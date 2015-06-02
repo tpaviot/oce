@@ -18,7 +18,7 @@
 #include <Bnd_Box.hxx>
 #include <Standard_Real.hxx>
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#include <IntPatch_Line.hxx>
+#include <IntPatch_PointLine.hxx>
 #include <IntSurf_TypeTrans.hxx>
 #include <IntSurf_Situation.hxx>
 class IntSurf_LineOn2S;
@@ -33,7 +33,7 @@ class gp_Pnt;
 
 //! Definition of set of points as a result of the intersection
 //! between 2 parametrised patches.
-class IntPatch_WLine : public IntPatch_Line
+class IntPatch_WLine : public IntPatch_PointLine
 {
 
 public:
@@ -137,6 +137,12 @@ public:
   Standard_EXPORT   Standard_Boolean HasArcOnS2()  const;
   
   Standard_EXPORT  const  Handle(Adaptor2d_HCurve2d)& GetArcOnS2()  const;
+  
+  Standard_EXPORT   void ClearVertexes() ;
+  
+  Standard_EXPORT   void RemoveVertex (const Standard_Integer theIndex) ;
+  
+  Standard_EXPORT   void InsertVertexBefore (const Standard_Integer theIndex, const IntPatch_Point& thePnt) ;
   
   Standard_EXPORT   void Dump()  const;
 

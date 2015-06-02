@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{EEC6E784-16A6-0CB3-1901-D85EC535F948}</UniqueIdentifier>
+      <UniqueIdentifier>{77E1FFB9-068A-15F2-0CF0-F843941CD49D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QABugs">
-      <UniqueIdentifier>{81195E2A-0ADD-0A6B-13CF-133C98EF2660}</UniqueIdentifier>
+      <UniqueIdentifier>{CAB88221-0153-0B54-0923-CC6572184EF6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QADNaming">
-      <UniqueIdentifier>{C0714F84-1781-1143-06F4-78F38CBD9309}</UniqueIdentifier>
+      <UniqueIdentifier>{E8317540-0B8E-0E9F-0198-52707C570A31}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QADraw">
-      <UniqueIdentifier>{006E35A4-15F2-0D65-11C0-6E187D09E0D2}</UniqueIdentifier>
+      <UniqueIdentifier>{5E1D4B4D-18FC-0195-0B31-8763AEA164FE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANCollection">
-      <UniqueIdentifier>{8718C2B6-0A1B-0683-158C-CBBCE8DF28E1}</UniqueIdentifier>
+      <UniqueIdentifier>{ED6525D8-06BC-1137-0B0A-5F1243A82136}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewBRepNaming">
-      <UniqueIdentifier>{F4EF9D79-06BA-10C6-155F-BA189CA5CA73}</UniqueIdentifier>
+      <UniqueIdentifier>{1C9771D1-13D9-11CB-14B4-7879586687D4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewDBRepNaming">
-      <UniqueIdentifier>{8E6E690F-055D-1719-185A-B6C92A50F73A}</UniqueIdentifier>
+      <UniqueIdentifier>{5F7317B7-07E3-0C15-1170-5B78CA575381}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewModTopOpe">
-      <UniqueIdentifier>{97302F8D-184E-05A3-0347-5B30FAEC92B6}</UniqueIdentifier>
+      <UniqueIdentifier>{2B599D60-11A6-0EDE-0A74-C979FC67C49F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

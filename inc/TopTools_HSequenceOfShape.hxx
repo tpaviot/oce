@@ -70,8 +70,6 @@ public:
      const  TopTools_SequenceOfShape& Sequence()  const;
   
       TopTools_SequenceOfShape& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TopTools_HSequenceOfShape) ShallowCopy()  const;
 
 
 
@@ -111,10 +109,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TopTools_HSequenceOfShape) ShallowCopy(const Handle(TopTools_HSequenceOfShape)& me) {
- return me->ShallowCopy();
-}
 
 
 

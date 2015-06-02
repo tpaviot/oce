@@ -61,9 +61,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~Adaptor3d_Surface(){Delete();}
-  
   Standard_EXPORT virtual   Standard_Real FirstUParameter()  const;
   
   Standard_EXPORT virtual   Standard_Real LastUParameter()  const;
@@ -201,6 +198,7 @@ Standard_EXPORT virtual ~Adaptor3d_Surface(){Delete();}
   Standard_EXPORT virtual   Handle(Adaptor3d_HSurface) BasisSurface()  const;
   
   Standard_EXPORT virtual   Standard_Real OffsetValue()  const;
+  Standard_EXPORT virtual ~Adaptor3d_Surface();
 
 
 

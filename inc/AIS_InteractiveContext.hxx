@@ -14,26 +14,24 @@
 #include <Handle_SelectMgr_SelectionManager.hxx>
 #include <PrsMgr_PresentationManager3d.hxx>
 #include <Handle_V3d_Viewer.hxx>
-#include <Handle_StdSelect_ViewerSelector3d.hxx>
+#include <StdSelect_ViewerSelector3d.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <Handle_AIS_InteractiveObject.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_SelectMgr_OrFilter.hxx>
-#include <Handle_Prs3d_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Standard_Integer.hxx>
 #include <AIS_DataMapOfILC.hxx>
 #include <Handle_V3d_View.hxx>
 #include <AIS_SequenceOfInteractive.hxx>
 #include <MMgt_TShared.hxx>
+#include <AIS_DisplayStatus.hxx>
 #include <AIS_KindOfInteractive.hxx>
-#include <StdSelect_SensitivityMode.hxx>
 #include <Standard_Real.hxx>
 #include <Aspect_TypeOfFacingModel.hxx>
 #include <Graphic3d_NameOfMaterial.hxx>
-#include <Handle_AIS_Drawer.hxx>
 #include <Standard_ShortReal.hxx>
-#include <AIS_DisplayStatus.hxx>
 #include <AIS_DisplayMode.hxx>
 #include <Handle_Prs3d_LineAspect.hxx>
 #include <AIS_TypeOfIso.hxx>
@@ -49,15 +47,12 @@
 #include <Handle_AIS_LocalContext.hxx>
 class SelectMgr_SelectionManager;
 class V3d_Viewer;
-class StdSelect_ViewerSelector3d;
 class AIS_InteractiveObject;
 class SelectMgr_OrFilter;
-class Prs3d_Drawer;
 class V3d_View;
 class AIS_LocalContext;
 class TopLoc_Location;
 class Quantity_Color;
-class AIS_Drawer;
 class TColStd_ListOfInteger;
 class TCollection_ExtendedString;
 class Prs3d_LineAspect;
@@ -164,26 +159,26 @@ public:
   //! and selection modes of open local context which you
   //! have defined and activating those available by default.
   //! If no Local Context is opened. and the Interactive
-  //! Object aniobj has no display mode of its own, the
-  //! default display mode, 0, is used. Likewise, if aniobj
+  //! Object theIObj has no display mode of its own, the
+  //! default display mode, 0, is used. Likewise, if theIObj
   //! has no selection mode of its own, the default one, 0, is used.
-  //! If a local context is open and if updateviewer equals
+  //! If a local context is open and if theToUpdateViewer equals
   //! Standard_False, the presentation of the Interactive
   //! Object activates the selection mode; the object is
   //! displayed but no viewer will be updated.
-  //! If aSelectionMode equals -1, anIobj will not be
+  //! If theSelectionMode equals -1, theIObj will not be
   //! activated: it will be displayed but will not be selectable.
   //! Use this if you want to view the object in open local
   //! context without selection. Note: This option is only
   //! available in Local Context.
-  //! If allowDecomposition equals true, anIObj can have
-  //! subshapes detected by selection mechanisms. anIObj
+  //! If theToAllowDecomposition equals true, theIObj can have
+  //! subshapes detected by selection mechanisms. theIObj
   //! must be able to give a shape selection modes which
   //! fit the AIS_Shape selection modes:
   //! -   vertices: 1
   //! -   edges: 2
   //! -   wires: 3.
-  Standard_EXPORT   void Display (const Handle(AIS_InteractiveObject)& anIobj, const Standard_Integer amode, const Standard_Integer aSelectionMode, const Standard_Boolean updateviewer = Standard_True, const Standard_Boolean allowdecomposition = Standard_True) ;
+  Standard_EXPORT   void Display (const Handle(AIS_InteractiveObject)& theIObj, const Standard_Integer theDispMode, const Standard_Integer theSelectionMode, const Standard_Boolean theToUpdateViewer = Standard_True, const Standard_Boolean theToAllowDecomposition = Standard_True, const AIS_DisplayStatus theDispStatus = AIS_DS_None) ;
   
   //! Allows you to load the Interactive Object aniobj
   //! with a given selection mode SelectionMode, and/or
@@ -238,13 +233,6 @@ public:
   //! is displayed. By default, the index -1 refers to the last
   //! Local Context opened.
   Standard_EXPORT   Standard_Boolean KeepTemporary (const Handle(AIS_InteractiveObject)& anIObj, const Standard_Integer InWhichLocal = -1) ;
-  
-  //! Removes the interactive object aniobj from all viewers.
-  //! If a local context is open and if updateviewer equals
-  //! Standard_False, the presentation of the Interactive
-  //! Object activates the selection mode; the object is
-  //! displayed but no viewer will be updated.
-  Standard_EXPORT   void Clear (const Handle(AIS_InteractiveObject)& aniobj, const Standard_Boolean updateviewer = Standard_True) ;
   
   //! Empties the graphic presentation of the mode
   //! indexed by aMode.
@@ -303,20 +291,12 @@ public:
   //! presentation of the entity anIobj.
   Standard_EXPORT   void SetDisplayPriority (const Handle(AIS_InteractiveObject)& anIobj, const Standard_Integer aPriority) ;
   
-  //! Set Z layer id for interactive object. The layer can be
-  //! specified for displayed object only. The Z layers can be used to display
-  //! temporarily presentations of some object in front of the other objects
-  //! in the scene. The ids for Z layers are generated by V3d_Viewer.
-  //! Note that Z layers differ from under-/overlayer in V3d_View:
-  //! under-/overlayer are intended for specific 2D drawings that appear
-  //! behind/in front of all 3D presentations, while SetZLayer() method
-  //! applies to regular 3D presentations and does not imply any specific
-  //! drawing methods.
+  //! Set Z layer id for interactive object.
+  //! The Z layers can be used to display temporarily presentations of some object in front of the other objects in the scene.
+  //! The ids for Z layers are generated by V3d_Viewer.
   Standard_EXPORT   void SetZLayer (const Handle(AIS_InteractiveObject)& theIObj, const Standard_Integer theLayerId) ;
   
   //! Get Z layer id set for displayed interactive object.
-  //! If the object doesn't exists in context or has no computed presentations,
-  //! the method returns -1.
   Standard_EXPORT   Standard_Integer GetZLayer (const Handle(AIS_InteractiveObject)& theIObj)  const;
   
   //! Recomputes the seen parts presentation of the entity
@@ -382,35 +362,15 @@ public:
   //! aMode provides the selection mode index of the entity aniobj.
   Standard_EXPORT   void UnsetSelectionMode (const Handle(AIS_InteractiveObject)& aniobj) ;
   
-  //! Sets the selection sensitivity mode. SM_WINDOW mode
-  //! uses the specified pixel tolerance to compute the sensitivity
-  //! value, SM_VIEW mode allows to define the sensitivity manually.
-  Standard_EXPORT   void SetSensitivityMode (const StdSelect_SensitivityMode aMode) ;
-  
-  //! Returns the selection sensitivity mode.
-  Standard_EXPORT   StdSelect_SensitivityMode SensitivityMode()  const;
-  
-  //! Sets the sensitivity aPrecision
-  //! according to the view size for the current context or local
-  //! context if any is activated.
-  //! Sets the sensitivity aPrecision in pixels for the current context
-  //! or local context if any is activated. By default, this
-  //! sensitivity is equal to 4 pixels.
-  //! When a local context is open, the defined sensitivity applies to
-  //! this local context instead of the main context.
-  Standard_EXPORT   void SetSensitivity (const Standard_Real aPrecision) ;
-  
-  //! Returns the selection sensitivity value.
-  Standard_EXPORT   Standard_Real Sensitivity()  const;
-  
-  //! Define the current selection pixel sensitivity
-  //! for this context or local context if any one is activated.
+  //! Disables the mechanism of adaptive tolerance calculation in SelectMgr_ViewerSelector and
+  //! sets the given tolerance for ALL sensitive entities activated. For more information, see
+  //! SelectMgr_ViewerSelector documentation
   //! Warning: When a local context is open the sensitivity is apply on it
   //! instead on the main context.
-  Standard_EXPORT   void SetPixelTolerance (const Standard_Integer aPrecision = 4) ;
+  Standard_EXPORT   void SetPixelTolerance (const Standard_Real aPrecision = 2.0) ;
   
   //! Returns the pixel tolerance.
-  Standard_EXPORT   Standard_Integer PixelTolerance()  const;
+  Standard_EXPORT   Standard_Real PixelTolerance()  const;
   
   //! Puts the location aLocation on the initial graphic
   //! representation and the selection for the entity aniobj.
@@ -519,7 +479,7 @@ public:
   //! Standard_False, the presentation of the Interactive
   //! Object activates the selection mode; the object is
   //! displayed but no viewer will be updated.
-  Standard_EXPORT   void SetLocalAttributes (const Handle(AIS_InteractiveObject)& aniobj, const Handle(AIS_Drawer)& aDrawer, const Standard_Boolean updateviewer = Standard_True) ;
+  Standard_EXPORT   void SetLocalAttributes (const Handle(AIS_InteractiveObject)& aniobj, const Handle(Prs3d_Drawer)& aDrawer, const Standard_Boolean updateviewer = Standard_True) ;
   
 
   //! Removes the settings for local attributes of the entity
@@ -774,7 +734,7 @@ public:
   //! deviate from a tangent to a   curve. If this limit is
   //! reached, a new triangle is begun.
   //! This deviation is absolute and is set through
-  //! AIS_Drawer::SetMaximalChordialDeviation. The
+  //! Prs3d_Drawer::SetMaximalChordialDeviation. The
   //! default value is 0.001.
   //! In drawing shapes, however, you are allowed to ask
   //! for a relative deviation. This deviation will be:
@@ -1379,7 +1339,7 @@ public:
   
   //! Activates the selection mode aMode whose index is
   //! given, for the given interactive entity anIobj.
-  Standard_EXPORT   void Activate (const Handle(AIS_InteractiveObject)& anIobj, const Standard_Integer aMode = 0) ;
+  Standard_EXPORT   void Activate (const Handle(AIS_InteractiveObject)& anIobj, const Standard_Integer aMode = 0, const Standard_Boolean theIsForce = Standard_False) ;
   
   //! Deactivates all the activated selection modes
   //! of an object.
@@ -1592,21 +1552,28 @@ public:
   
   Standard_EXPORT   Standard_Integer HighestIndex()  const;
   
-  Standard_EXPORT   void DisplayActiveAreas (const Handle(V3d_View)& aView) ;
-  
-  Standard_EXPORT   void ClearActiveAreas (const Handle(V3d_View)& aView) ;
-  
   Standard_EXPORT   void DisplayActiveSensitive (const Handle(V3d_View)& aView) ;
   
   Standard_EXPORT   void ClearActiveSensitive (const Handle(V3d_View)& aView) ;
   
   Standard_EXPORT   void DisplayActiveSensitive (const Handle(AIS_InteractiveObject)& anObject, const Handle(V3d_View)& aView) ;
   
-  Standard_EXPORT   void DisplayActiveAreas (const Handle(AIS_InteractiveObject)& anObject, const Handle(V3d_View)& aView) ;
-  
   //! returns if possible,
   //! the first local context where the object is seen
   Standard_EXPORT   Standard_Boolean IsInLocal (const Handle(AIS_InteractiveObject)& anObject, Standard_Integer& TheIndex)  const;
+  
+  //! Rebuilds 1st level of BVH selection forcibly
+  Standard_EXPORT   void RebuildSelectionStructs() ;
+  
+  //! setup object visibility in specified view,
+  //! has no effect if object is not disaplyed in this context.
+  Standard_EXPORT   void SetViewAffinity (const Handle(AIS_InteractiveObject)& theIObj, const Handle(V3d_View)& theView, const Standard_Boolean theIsVisible) ;
+  
+  //! Disconnects theObjToDisconnect from theAssembly and removes dependent selection structures
+  Standard_EXPORT   void Disconnect (const Handle(AIS_InteractiveObject)& theAssembly, const Handle(AIS_InteractiveObject)& theObjToDisconnect = NULL) ;
+  
+  //! Query objects visible or hidden in specified view due to affinity mask.
+  Standard_EXPORT   void ObjectsForView (AIS_ListOfInteractive& theListOfIO, const Handle(V3d_View)& theView, const Standard_Boolean theIsVisibleInView, const AIS_DisplayStatus theStatus = AIS_DS_None)  const;
 
 
 friend class AIS_LocalContext;
@@ -1633,6 +1600,12 @@ private:
   Standard_EXPORT   void InitAttributes() ;
   
   Standard_EXPORT   Standard_Integer PurgeViewer (const Handle(V3d_Viewer)& Vwr) ;
+  
+  //! UNKNOWN
+  Standard_EXPORT   void redisplayPrsModes (const Handle(AIS_InteractiveObject)& theIObj, const Standard_Boolean theToUpdateViewer = Standard_True) ;
+  
+  //! UNKNOWN
+  Standard_EXPORT   void redisplayPrsRecModes (const Handle(AIS_InteractiveObject)& theIObj, const Standard_Boolean theToUpdateViewer = Standard_True) ;
 
   AIS_DataMapOfIOStatus myObjects;
   Handle(SelectMgr_SelectionManager) mgrSelector;

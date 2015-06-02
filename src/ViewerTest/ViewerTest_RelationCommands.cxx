@@ -52,7 +52,6 @@
 #include <IntAna_IntConicQuad.hxx>
 #include <IntAna_Quadric.hxx>
 #include <Precision.hxx>
-#include <Select3D_Projector.hxx>
 #include <StdSelect.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <TCollection_ExtendedString.hxx>
@@ -90,8 +89,6 @@ extern Handle(AIS_InteractiveContext)& TheAISContext ();
 static gp_Pnt Get3DPointAtMousePosition()
 {
   Handle(V3d_View) aView = ViewerTest::CurrentView();
-  static Select3D_Projector aProjector;
-  aProjector.SetView (aView);
 
   Standard_Real xv,yv,zv;
   aView->Proj (xv,yv,zv);
@@ -325,20 +322,24 @@ static int ParseDimensionParams (Standard_Integer  theArgNum,
     }
     else if (aParam.IsEqual ("-arrow"))
     {
-      do
-      {
-        anIt++;
-        TCollection_AsciiString aParam (theArgVec[anIt]);
-        aParam.LowerCase();
+      TCollection_AsciiString aParam (theArgVec[++anIt]);
+      aParam.LowerCase();
 
-        if (aParam == "external") { theAspect->SetArrowOrientation (Prs3d_DAO_External); }
-        if (aParam == "internal") { theAspect->SetArrowOrientation (Prs3d_DAO_Internal); }
-        if (aParam == "fit")      { theAspect->SetArrowOrientation (Prs3d_DAO_Fit); }
-        if (aParam.IsRealValue()) { theAspect->ArrowAspect()->SetLength (Draw::Atof (aParam.ToCString())); }
-      }
-      while (anIt + 1 < theArgNum && theArgVec[anIt + 1][0] != '-');
+      if (aParam == "external") { theAspect->SetArrowOrientation (Prs3d_DAO_External); }
+      if (aParam == "internal") { theAspect->SetArrowOrientation (Prs3d_DAO_Internal); }
+      if (aParam == "fit")      { theAspect->SetArrowOrientation (Prs3d_DAO_Fit); }
     }
-    else if (aParam.IsEqual ("-arrowangle"))
+    else if (aParam.IsEqual ("-arrowlength") || aParam.IsEqual ("-arlen"))
+    {
+      TCollection_AsciiString aValue (theArgVec[++anIt]);
+      if (!aValue.IsRealValue())
+      {
+        std::cerr << "Error: arrow lenght should be float degree value.\n";
+        return 1;
+      }
+      theAspect->ArrowAspect()->SetLength (Draw::Atof (aValue.ToCString()));
+    }
+    else if (aParam.IsEqual ("-arrowangle") || aParam.IsEqual ("-arangle"))
     {
       TCollection_AsciiString aValue (theArgVec[++anIt]);
       if (!aValue.IsRealValue())
@@ -542,25 +543,53 @@ static int VDimBuilder (Draw_Interpretor& /*theDi*/,
         TopoDS_Edge anEdge = TopoDS::Edge ((Handle(AIS_Shape)::DownCast(aShapes.First()))->Shape());
         TopoDS_Vertex aFirst, aSecond;
         TopExp::Vertices (anEdge, aFirst, aSecond);
-        aWorkingPlane.SetLocation (BRep_Tool::Pnt(aFirst));
         aDim = new AIS_LengthDimension (anEdge, aWorkingPlane);
+
+        // Move standard plane (XOY, YOZ or ZOX) to the first point to make it working for dimension
+        aWorkingPlane.SetLocation (Handle(AIS_LengthDimension)::DownCast (aDim)->FirstPoint());
       }
       else if (aShapes.Extent() == 2)
       {
-        if (aShapes.First()->Type() == AIS_KOI_Shape && aShapes.Last()->Type() == AIS_KOI_Shape)
-          aDim = new AIS_LengthDimension ((Handle(AIS_Shape)::DownCast(aShapes.First ()))->Shape(),
-          (Handle(AIS_Shape)::DownCast(aShapes.Last ()))->Shape(),
-          aWorkingPlane);
-        else// AIS_Point
+        TopoDS_Shape aShape1, aShape2;
+
+        // Getting shapes
+        if (aShapes.First()->DynamicType() == STANDARD_TYPE (AIS_Point))
         {
-          Handle(AIS_Point) aPoint1 = Handle(AIS_Point)::DownCast(aShapes.First ());
-          Handle(AIS_Point) aPoint2 = Handle(AIS_Point)::DownCast(aShapes.Last ());
-          // Adjust working plane
-          aWorkingPlane.SetLocation (BRep_Tool::Pnt(aPoint1->Vertex()));
-          aDim = new AIS_LengthDimension (aPoint1->Component()->Pnt(),
-            aPoint2->Component()->Pnt(),
-            aWorkingPlane);
+          Handle(AIS_Point) aPoint1 = Handle(AIS_Point)::DownCast (aShapes.First ());
+          aShape1 = aPoint1->Vertex();
         }
+        else if (aShapes.First()->Type() == AIS_KOI_Shape)
+        {
+          aShape1 = (Handle(AIS_Shape)::DownCast (aShapes.First()))->Shape();
+        }
+
+        if (aShapes.Last()->DynamicType() == STANDARD_TYPE (AIS_Point))
+        {
+          Handle(AIS_Point) aPoint2 = Handle(AIS_Point)::DownCast (aShapes.Last ());
+          aShape2 = aPoint2->Vertex();
+        }
+        else if (aShapes.Last()->Type() == AIS_KOI_Shape)
+        {
+          aShape2 = (Handle(AIS_Shape)::DownCast (aShapes.Last()))->Shape();
+        }
+
+        if (aShape1.IsNull() || aShape2.IsNull())
+        {
+          std::cerr << theArgs[0] << ": wrong shape type.\n";
+          return 1;
+        }
+
+        // Adjust working plane
+        if (aShape1.ShapeType() == TopAbs_VERTEX)
+        {
+          aWorkingPlane.SetLocation (BRep_Tool::Pnt (TopoDS::Vertex (aShape1)));
+        }
+        else if (aShape2.ShapeType() == TopAbs_VERTEX)
+        {
+          aWorkingPlane.SetLocation (BRep_Tool::Pnt (TopoDS::Vertex (aShape2)));
+        }
+
+        aDim = new AIS_LengthDimension (aShape1, aShape2, aWorkingPlane);
       }
       else
       {
@@ -688,7 +717,7 @@ static int VDimBuilder (Draw_Interpretor& /*theDi*/,
   if (!aDim->IsValid())
   {
     std::cerr << theArgs[0] << ":dimension geometry is invalid, " << aDimType.ToCString()
-      << " dimension can't be build on input shapes.\n";
+      << " dimension can't be built on input shapes.\n";
     return 1;
   }
 
@@ -2743,10 +2772,11 @@ void ViewerTest::RelationCommands(Draw_Interpretor& theCommands)
 
   theCommands.Add("vdimension",
       "vdimension name {-angle|-length|-radius|-diameter} -shapes shape1 [shape2 [shape3]]\n"
-      "[-text 3d|2d,wf|sh|wireframe|shading,Size]\n"
-      "[-label left|right|hcenter|hfit,top|bottom|vcenter|vfit]\n"
-      "[-arrow external|internal|fit,Length(int)]\n"
-      "[-arrowangle ArrowAngle(degrees)]\n"
+      "[-text 3d|2d wf|sh|wireframe|shading IntegerSize]\n"
+      "[-label left|right|hcenter|hfit top|bottom|vcenter|vfit]\n"
+      "[-arrow external|internal|fit]\n"
+      "[{-arrowlength|-arlen} RealArrowLength]\n"
+      "[{-arrowangle|-arangle} ArrowAngle(degrees)]\n"
       "[-plane xoy|yoz|zox]\n"
       "[-flyout FloatValue -extension FloatValue]\n"
       "[-value CustomNumberValue]\n"
@@ -2759,10 +2789,11 @@ void ViewerTest::RelationCommands(Draw_Interpretor& theCommands)
 
   theCommands.Add("vdimparam",
     "vdimparam name"
-    "[-text 3d|2d,wf|sh|wireframe|shading,Size]\n"
-    "[-label left|right|hcenter|hfit,top|bottom|vcenter|vfit]\n"
-    "[-arrow external|internal|fit,Length(int)]\n"
-    "[-arrowangle ArrowAngle(degrees)]\n"
+    "[-text 3d|2d wf|sh|wireframe|shading IntegerSize]\n"
+    "[-label left|right|hcenter|hfit top|bottom|vcenter|vfit]\n"
+    "[-arrow external|internal|fit]\n"
+    "[{-arrowlength|-arlen} RealArrowLength]\n"
+    "[{-arrowangle|-arangle} ArrowAngle(degrees)]\n"
     "[-plane xoy|yoz|zox]\n"
     "[-flyout FloatValue -extension FloatValue]\n"
     "[-value CustomNumberValue]\n"

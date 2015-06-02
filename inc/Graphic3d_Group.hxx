@@ -32,9 +32,9 @@
 #include <Graphic3d_HorizontalTextAlignment.hxx>
 #include <Graphic3d_VerticalTextAlignment.hxx>
 #include <Graphic3d_TypeOfPrimitiveArray.hxx>
-#include <Graphic3d_IndexBuffer_Handle.hxx>
-#include <Graphic3d_Buffer_Handle.hxx>
-#include <Graphic3d_BoundBuffer_Handle.hxx>
+#include <Graphic3d_IndexBuffer.hxx>
+#include <Graphic3d_Buffer.hxx>
+#include <Graphic3d_BoundBuffer.hxx>
 #include <Handle_Graphic3d_ArrayOfPrimitives.hxx>
 #include <Standard_Address.hxx>
 #include <Graphic3d_GroupAspect.hxx>
@@ -209,7 +209,7 @@ public:
   Standard_EXPORT   void Text (const TCollection_ExtendedString& AText, const Graphic3d_Vertex& APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True) ;
   
   //! Adds an array of primitives for display
-  Standard_EXPORT virtual   void AddPrimitiveArray (const Graphic3d_TypeOfPrimitiveArray theType, const Graphic3d_IndexBuffer_Handle& theIndices, const Graphic3d_Buffer_Handle& theAttribs, const Graphic3d_BoundBuffer_Handle& theBounds, const Standard_Boolean theToEvalMinMax = Standard_True) ;
+  Standard_EXPORT virtual   void AddPrimitiveArray (const Graphic3d_TypeOfPrimitiveArray theType, const Handle(Graphic3d_IndexBuffer)& theIndices, const Handle(Graphic3d_Buffer)& theAttribs, const Handle(Graphic3d_BoundBuffer)& theBounds, const Standard_Boolean theToEvalMinMax = Standard_True) ;
   
   //! Adds an array of primitives for display
   Standard_EXPORT   void AddPrimitiveArray (const Handle(Graphic3d_ArrayOfPrimitives)& thePrim, const Standard_Boolean theToEvalMinMax = Standard_True) ;

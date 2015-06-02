@@ -15,12 +15,16 @@
 #include <Handle_Geom2d_Curve.hxx>
 #include <Handle_Geom_Curve.hxx>
 #include <BOPCol_ListOfShape.hxx>
+#include <Standard_Integer.hxx>
+#include <Handle_IntTools_Context.hxx>
 class TopoDS_Edge;
 class TopoDS_Face;
 class gp_Vec;
 class Geom2d_Curve;
 class Geom_Curve;
+class BRepAdaptor_Surface;
 class ProjLib_ProjectedCurve;
+class IntTools_Context;
 
 
 
@@ -84,6 +88,11 @@ public:
   Standard_EXPORT static   void AdjustPCurveOnFace (const TopoDS_Face& aF, const Standard_Real aT1, const Standard_Real aT2, const Handle(Geom2d_Curve)& aC2D, Handle(Geom2d_Curve)& aC2DA) ;
   
 
+  //! Adjust P-Curve <aC2D> (3D-curve <C3D>) on surface <aF> .
+  //! [aT1,  aT2] - range to adjust
+  Standard_EXPORT static   void AdjustPCurveOnFace (const BRepAdaptor_Surface& aF, const Standard_Real aT1, const Standard_Real aT2, const Handle(Geom2d_Curve)& aC2D, Handle(Geom2d_Curve)& aC2DA) ;
+  
+
   //! Compute intermediate  value in  between [aFirst, aLast] .
   Standard_EXPORT static   Standard_Real IntermediatePoint (const Standard_Real aFirst, const Standard_Real aLast) ;
   
@@ -119,6 +128,12 @@ public:
 
   //! Make empty  P-Curve <aC> of relevant to <PC> type
   Standard_EXPORT static   void MakePCurveOfType (const ProjLib_ProjectedCurve& PC, Handle(Geom2d_Curve)& aC) ;
+  
+
+  //! Attach P-Curve from the edge <aEold> on surface <aF>
+  //! to the edge <aEnew>
+  //! Returns 0 in case of success
+  Standard_EXPORT static   Standard_Integer AttachExistingPCurve (const TopoDS_Edge& aEold, const TopoDS_Edge& aEnew, const TopoDS_Face& aF, const Handle(IntTools_Context)& aCtx) ;
 
 
 

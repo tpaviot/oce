@@ -119,7 +119,7 @@ void OpenGl_Workspace::updateMaterial (const int theFlag)
       NamedStatus |= OPENGL_NS_2NDPASSNEED;
     }
 
-    if (myUseTransparency && aProps->trans != 1.0f)
+    if (aProps->trans != 1.0f)
     {
       // render transparent
       myMatTmp.Diffuse.a() = aProps->trans;
@@ -150,11 +150,14 @@ void OpenGl_Workspace::updateMaterial (const int theFlag)
   if (NamedStatus & OPENGL_NS_RESMAT)
   {
   #if !defined(GL_ES_VERSION_2_0)
-    glMaterialfv (aFace, GL_AMBIENT,   myMatTmp.Ambient.GetData());
-    glMaterialfv (aFace, GL_DIFFUSE,   myMatTmp.Diffuse.GetData());
-    glMaterialfv (aFace, GL_SPECULAR,  myMatTmp.Specular.GetData());
-    glMaterialfv (aFace, GL_EMISSION,  myMatTmp.Emission.GetData());
-    glMaterialf  (aFace, GL_SHININESS, myMatTmp.Shine());
+    if (myGlContext->core11 != NULL)
+    {
+      myGlContext->core11->glMaterialfv (aFace, GL_AMBIENT,   myMatTmp.Ambient.GetData());
+      myGlContext->core11->glMaterialfv (aFace, GL_DIFFUSE,   myMatTmp.Diffuse.GetData());
+      myGlContext->core11->glMaterialfv (aFace, GL_SPECULAR,  myMatTmp.Specular.GetData());
+      myGlContext->core11->glMaterialfv (aFace, GL_EMISSION,  myMatTmp.Emission.GetData());
+      myGlContext->core11->glMaterialf  (aFace, GL_SHININESS, myMatTmp.Shine());
+    }
   #endif
 
     if (theFlag == TEL_FRONT_MATERIAL)
@@ -176,34 +179,37 @@ void OpenGl_Workspace::updateMaterial (const int theFlag)
                          ? myMatFront
                          : myMatBack;
 #if !defined(GL_ES_VERSION_2_0)
-  if (myMatTmp.Ambient.r() != anOld.Ambient.r()
-   || myMatTmp.Ambient.g() != anOld.Ambient.g()
-   || myMatTmp.Ambient.b() != anOld.Ambient.b())
+  if (myGlContext->core11 != NULL)
   {
-    glMaterialfv (aFace, GL_AMBIENT, myMatTmp.Ambient.GetData());
-  }
-  if (myMatTmp.Diffuse.r() != anOld.Diffuse.r()
-   || myMatTmp.Diffuse.g() != anOld.Diffuse.g()
-   || myMatTmp.Diffuse.b() != anOld.Diffuse.b()
-   || fabs (myMatTmp.Diffuse.a() - anOld.Diffuse.a()) > 0.01f)
-  {
-    glMaterialfv (aFace, GL_DIFFUSE, myMatTmp.Diffuse.GetData());
-  }
-  if (myMatTmp.Specular.r() != anOld.Specular.r()
-   || myMatTmp.Specular.g() != anOld.Specular.g()
-   || myMatTmp.Specular.b() != anOld.Specular.b())
-  {
-    glMaterialfv (aFace, GL_SPECULAR, myMatTmp.Specular.GetData());
-  }
-  if (myMatTmp.Emission.r() != anOld.Emission.r()
-   || myMatTmp.Emission.g() != anOld.Emission.g()
-   || myMatTmp.Emission.b() != anOld.Emission.b())
-  {
-    glMaterialfv (aFace, GL_EMISSION, myMatTmp.Emission.GetData());
-  }
-  if (myMatTmp.Shine() != anOld.Shine())
-  {
-    glMaterialf (aFace, GL_SHININESS, myMatTmp.Shine());
+    if (myMatTmp.Ambient.r() != anOld.Ambient.r()
+     || myMatTmp.Ambient.g() != anOld.Ambient.g()
+     || myMatTmp.Ambient.b() != anOld.Ambient.b())
+    {
+      myGlContext->core11->glMaterialfv (aFace, GL_AMBIENT, myMatTmp.Ambient.GetData());
+    }
+    if (myMatTmp.Diffuse.r() != anOld.Diffuse.r()
+     || myMatTmp.Diffuse.g() != anOld.Diffuse.g()
+     || myMatTmp.Diffuse.b() != anOld.Diffuse.b()
+     || fabs (myMatTmp.Diffuse.a() - anOld.Diffuse.a()) > 0.01f)
+    {
+      myGlContext->core11->glMaterialfv (aFace, GL_DIFFUSE, myMatTmp.Diffuse.GetData());
+    }
+    if (myMatTmp.Specular.r() != anOld.Specular.r()
+     || myMatTmp.Specular.g() != anOld.Specular.g()
+     || myMatTmp.Specular.b() != anOld.Specular.b())
+    {
+      myGlContext->core11->glMaterialfv (aFace, GL_SPECULAR, myMatTmp.Specular.GetData());
+    }
+    if (myMatTmp.Emission.r() != anOld.Emission.r()
+     || myMatTmp.Emission.g() != anOld.Emission.g()
+     || myMatTmp.Emission.b() != anOld.Emission.b())
+    {
+      myGlContext->core11->glMaterialfv (aFace, GL_EMISSION, myMatTmp.Emission.GetData());
+    }
+    if (myMatTmp.Shine() != anOld.Shine())
+    {
+      myGlContext->core11->glMaterialf (aFace, GL_SHININESS, myMatTmp.Shine());
+    }
   }
 #endif
   anOld = myMatTmp;
@@ -251,69 +257,11 @@ const OpenGl_AspectText * OpenGl_Workspace::SetAspectText(const OpenGl_AspectTex
 
 /*----------------------------------------------------------------------*/
 
-const OpenGl_Matrix * OpenGl_Workspace::SetViewMatrix (const OpenGl_Matrix *AMatrix)
-{
-  const OpenGl_Matrix *ViewMatrix_old = ViewMatrix_applied;
-  ViewMatrix_applied = AMatrix;
-
-  // Update model-view matrix with new view matrix
-  UpdateModelViewMatrix();
-
-  return ViewMatrix_old;
-}
-
-/*----------------------------------------------------------------------*/
-
-const OpenGl_Matrix * OpenGl_Workspace::SetStructureMatrix (const OpenGl_Matrix *AMatrix, bool aRevert)
-{
-  const OpenGl_Matrix *StructureMatrix_old = StructureMatrix_applied;
-  StructureMatrix_applied = AMatrix;
-
-  OpenGl_Matrix lmat;
-  OpenGl_Transposemat3( &lmat, AMatrix );
-
-  // Update model-view matrix with new structure matrix
-  UpdateModelViewMatrix();
-
-  if (!myGlContext->ShaderManager()->IsEmpty())
-  {
-    if (aRevert)
-    {
-      myGlContext->ShaderManager()->RevertModelWorldStateTo (OpenGl_Mat4::Map (*lmat.mat));
-    }
-    else
-    {
-      myGlContext->ShaderManager()->UpdateModelWorldStateTo (OpenGl_Mat4::Map (*lmat.mat));
-    }
-  }
-
-  return StructureMatrix_old;
-}
-
-/*----------------------------------------------------------------------*/
-
-const void OpenGl_Workspace::UpdateModelViewMatrix()
-{
-  OpenGl_Matrix aStructureMatT;
-  OpenGl_Transposemat3( &aStructureMatT, StructureMatrix_applied);
-  OpenGl_Multiplymat3 (&myModelViewMatrix, &aStructureMatT, ViewMatrix_applied);
-#if !defined(GL_ES_VERSION_2_0)
-  glMatrixMode (GL_MODELVIEW);
-  glLoadMatrixf ((const GLfloat* )&myModelViewMatrix.mat);
-#endif
-}
-
-/*----------------------------------------------------------------------*/
-
 const OpenGl_AspectLine * OpenGl_Workspace::AspectLine(const Standard_Boolean WithApply)
 {
   if ( WithApply && (AspectLine_set != AspectLine_applied) )
   {
-    const GLfloat* anRgb = AspectLine_set->Color().rgb;
-  #if !defined(GL_ES_VERSION_2_0)
-    glColor3fv(anRgb);
-  #endif
-
+    myGlContext->SetColor4fv (*(const OpenGl_Vec4* )AspectLine_set->Color().rgb);
     if ( !AspectLine_applied || (AspectLine_set->Type() != AspectLine_applied->Type() ) )
     {
       myLineAttribs->SetTypeOfLine (AspectLine_set->Type());
@@ -349,7 +297,7 @@ const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean th
                              ? TelCullNone
                              : (TelCullMode )AspectFace_set->CullingMode();
     if (aCullingMode != TelCullNone
-     && myUseTransparency && !(NamedStatus & OPENGL_NS_2NDPASSDO))
+     && !(NamedStatus & OPENGL_NS_2NDPASSDO))
     {
       // disable culling in case of translucent shading aspect
       if (AspectFace_set->IntFront().trans != 1.0f)
@@ -411,7 +359,10 @@ const OpenGl_AspectFace* OpenGl_Workspace::AspectFace (const Standard_Boolean th
       case Aspect_IS_HIDDENLINE:
       {
         glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
-        glDisable (GL_POLYGON_STIPPLE);
+        if (myGlContext->core11 != NULL)
+        {
+          glDisable (GL_POLYGON_STIPPLE);
+        }
         break;
       }
       case Aspect_IS_POINT:

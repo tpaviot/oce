@@ -16,20 +16,21 @@
 #ifndef _AIS_ColoredShape_HeaderFile
 #define _AIS_ColoredShape_HeaderFile
 
-#include <AIS_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 #include <AIS_Shape.hxx>
 
 #include <NCollection_DataMap.hxx>
 #include <NCollection_IndexedDataMap.hxx>
 #include <TopTools_ShapeMapHasher.hxx>
 #include <TopoDS_Compound.hxx>
+#include <StdPrs_Volume.hxx>
 
 //! Customizable properties.
-class AIS_ColoredDrawer : public AIS_Drawer
+class AIS_ColoredDrawer : public Prs3d_Drawer
 {
 public:
 
-  AIS_ColoredDrawer (const Handle(AIS_Drawer)& theLink)
+  AIS_ColoredDrawer (const Handle(Prs3d_Drawer)& theLink)
   : myIsHidden    (Standard_False),
     myHasOwnColor (Standard_False),
     myHasOwnWidth (Standard_False)
@@ -57,7 +58,7 @@ public:
 
 };
 
-DEFINE_STANDARD_HANDLE(AIS_ColoredDrawer, AIS_Drawer)
+DEFINE_STANDARD_HANDLE(AIS_ColoredDrawer, Prs3d_Drawer)
 
 //! Presentation of the shape with customizable sub-shapes properties.
 class AIS_ColoredShape : public AIS_Shape
@@ -104,6 +105,9 @@ public: //! @name global aspects
   //! Sets transparency value.
   Standard_EXPORT virtual void SetTransparency (const Standard_Real theValue) Standard_OVERRIDE;
 
+  //! Sets the material aspect.
+  Standard_EXPORT virtual void SetMaterial (const Graphic3d_MaterialAspect& theAspect) Standard_OVERRIDE;
+
 protected: //! @name override presentation computation
 
   Standard_EXPORT virtual void Compute (const Handle(PrsMgr_PresentationManager3d)& thePrsMgr,
@@ -133,6 +137,37 @@ protected:
   Standard_EXPORT static void dispatchColors (const TopoDS_Shape&        theBaseShape,
                                               const DataMapOfShapeColor& theKeyshapeColorMap,
                                               DataMapOfShapeCompd*       theTypeKeyshapeDrawshapeArray);
+
+protected:
+
+  //! Add shape to presentation
+  //! @param thePrs         the presentation
+  //! @param theDispatched  the shapes map with unique attributes
+  //! @param theMode        display mode
+  //! @param theVolume      how to interpret theDispatched shapes - as Closed volumes, as Open volumes
+  //!                       or to perform Autodetection
+  Standard_EXPORT void addShapesWithCustomProps (const Handle(Prs3d_Presentation)& thePrs,
+                                                 DataMapOfShapeCompd*              theDispatched,
+                                                 const Standard_Integer            theMode,
+                                                 const StdPrs_Volume               theVolume);
+
+  //! Check all shapes from myShapeColorsfor visibility
+  Standard_EXPORT Standard_Boolean isShapeEntirelyVisible() const;
+
+  //! Check a shape with unique attributes for visibility of all 2d subshape
+  Standard_EXPORT Standard_Boolean isShapeEntirelyVisible (DataMapOfShapeCompd* theDispatched) const;
+
+  //! Resolve (parse) theKeyShape into subshapes, search in they for theBaseShape,
+  //! bind all resolved subshapes with theOriginKeyShape and store all binds in theSubshapeKeyshapeMap
+  //! @param theSubshapeKeyshapeMap        shapes map: resolved and found theBaseShape subshape -> theOriginKeyShape 
+  //! @param theBaseShape                  a shape to be sought
+  //! @param theBaseKey                    a shape to be resolved (parse) into smaller (in topological sense)
+  //!                                      subshapes for new bind cycle
+  //! @param theOriginKeyShape             the key to be used for undetailed shapes (default colors)
+  Standard_EXPORT static void bindSubShapes (DataMapOfShapeShape& theSubshapeKeyshapeMap,
+                                             const TopoDS_Shape&  theBaseShape,
+                                             const TopoDS_Shape&  theKeyShape,
+                                             const TopoDS_Shape&  theOriginKeyShape);
 
 protected:
 

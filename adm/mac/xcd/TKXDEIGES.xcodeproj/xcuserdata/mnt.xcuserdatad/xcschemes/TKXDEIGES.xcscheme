@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "06D9173E1934145F1605113E"
+               BlueprintIdentifier = "0B8A07630B0C00860121124A"
                BuildableName = "libTKXDEIGES.dylib"
                BlueprintName = "TKXDEIGES"
                ReferencedContainer = "container:TKXDEIGES.xcodeproj">

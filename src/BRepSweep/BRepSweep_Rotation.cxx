@@ -201,14 +201,7 @@ TopoDS_Shape  BRepSweep_Rotation::MakeEmptyDirectingEdge
     Handle(Geom_Circle) GC = new Geom_Circle(Axis,O.Distance(P));
     Standard_Real tol = BRep_Tool::Tolerance(TopoDS::Vertex(aGenV));
     myBuilder.Builder().MakeEdge(E, GC, tol);
-
-    gp_Pnt PLast = GC->Value(myAng);
-    if(PLast.SquareDistance(P) > tol*tol) E.Closed(Standard_False);
-
   }
-
-    
-
   return E;
 }
 
@@ -442,8 +435,17 @@ void  BRepSweep_Rotation::SetGeneratingPCurve
   if (AS.GetType()==GeomAbs_Plane){
     gp_Pln pln = AS.Plane();
     gp_Ax3 ax3 = pln.Position();
-    Handle(Geom_Line) GL = Handle(Geom_Line)::DownCast
-      (BRep_Tool::Curve(TopoDS::Edge(aNewEdge),Loc,First,Last));
+    Handle(Geom_Curve) aC = BRep_Tool::Curve(TopoDS::Edge(aNewEdge),Loc,First,Last);
+    Handle(Geom_Line) GL = Handle(Geom_Line)::DownCast(aC);
+    if (GL.IsNull()) {
+      Handle(Geom_TrimmedCurve) aTrimmedCurve = Handle(Geom_TrimmedCurve)::DownCast(aC);
+      if (!aTrimmedCurve.IsNull()) {
+        GL = Handle(Geom_Line)::DownCast(aTrimmedCurve->BasisCurve());
+        if (GL.IsNull()) {
+            Standard_ConstructionError::Raise("BRepSweep_Rotation::SetGeneratingPCurve");
+        }
+      }
+    }
     gp_Lin gl = GL->Lin();
     gl.Transform(Loc.Transformation());
     point = gl.Location();
@@ -829,7 +831,17 @@ Standard_Boolean  BRepSweep_Rotation::HasShape
 {
   if(aDirS.Type()==TopAbs_EDGE&&
      aGenS.ShapeType()==TopAbs_EDGE){
-    return !IsInvariant(aGenS);
+    // Verify that the edge has entrails
+    const TopoDS_Edge& anEdge = TopoDS::Edge(aGenS);
+    Standard_Boolean hasGeom = !BRep_Tool::Degenerated(anEdge);
+    if (hasGeom)
+    { // The edge is not degenerated. Check if it has no curve
+      Standard_Real aPFirst, aPLast;
+      TopLoc_Location aLoc;
+      Handle(Geom_Curve) aCurve = BRep_Tool::Curve(anEdge, aLoc, aPFirst, aPLast);
+      hasGeom = !aCurve.IsNull();
+    }
+    return hasGeom && !IsInvariant(aGenS);
   }
   else{
     return Standard_True;
@@ -850,8 +862,7 @@ Standard_Boolean  BRepSweep_Rotation::IsInvariant
     Standard_Real First,Last;
     Handle(Geom_Curve) 
       C = BRep_Tool::Curve(TopoDS::Edge(aGenS),Loc,First,Last);
-    Handle(Standard_Type) TheType = C->DynamicType();
-    if ( TheType == STANDARD_TYPE(Geom_Line)) {
+    if (C.IsNull() || C->DynamicType() == STANDARD_TYPE(Geom_Line)) {
       TopoDS_Vertex V1, V2;
       TopExp::Vertices(TopoDS::Edge(aGenS), V1, V2);
       return ( IsInvariant(V1) && IsInvariant(V2));

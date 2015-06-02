@@ -129,6 +129,9 @@
   Standard_Boolean ChronBuild  = Standard_False;
   Standard_Integer NbAE        = 0;
   Standard_Integer NbAF        = 0;  
+  Standard_Integer NVP        = 0;  
+  Standard_Integer NVM        = 0;  
+  Standard_Integer NVN        = 0;  
   static OSD_Chronometer  Clock;
   char name[100];
 
@@ -884,7 +887,7 @@ static void TrimEdge (TopoDS_Edge&                  NE,
   Standard_Real aSameParTol = Precision::Confusion();
   
   TopoDS_Vertex V1,V2;
-  Standard_Real U;
+  Standard_Real U = 0.;
   Standard_Real UMin =  Precision::Infinite();
   Standard_Real UMax = -UMin;
 

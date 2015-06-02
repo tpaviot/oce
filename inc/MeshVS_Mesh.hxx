@@ -23,7 +23,7 @@
 #include <PrsMgr_PresentationManager3d.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
 #include <Standard_Integer.hxx>
-#include <Handle_SelectMgr_Selection.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Standard_CString.hxx>
 class MeshVS_PrsBuilder;
@@ -32,7 +32,6 @@ class MeshVS_DataSource;
 class MeshVS_Drawer;
 class SelectMgr_EntityOwner;
 class Prs3d_Presentation;
-class SelectMgr_Selection;
 class SelectMgr_SequenceOfOwner;
 class MeshVS_DataMapOfIntegerOwner;
 

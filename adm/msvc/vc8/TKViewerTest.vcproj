@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKViewerTest"
-	ProjectGUID="{C02FB367-0B1D-0D75-18F7-9727DEBA9D28}"
+	ProjectGUID="{9BE2BD74-0592-0370-0247-3DFD6EC97BDD}"
 	>
 	<Platforms>
 		<Platform

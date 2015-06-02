@@ -11,6 +11,7 @@
 #include <Handle_StdSelect_Shape.hxx>
 
 #include <TopoDS_Shape.hxx>
+#include <Prs3d_Drawer.hxx>
 #include <PrsMgr_PresentableObject.hxx>
 #include <PrsMgr_PresentationManager3d.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
@@ -30,7 +31,7 @@ class StdSelect_Shape : public PrsMgr_PresentableObject
 public:
 
   
-  Standard_EXPORT StdSelect_Shape(const TopoDS_Shape& Sh);
+  Standard_EXPORT StdSelect_Shape(const TopoDS_Shape& theShape, const Handle(Prs3d_Drawer)& theDrawer);
   
   Standard_EXPORT   void Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager, const Handle(Prs3d_Presentation)& aPresentation, const Standard_Integer aMode = 0) ;
   
@@ -63,6 +64,7 @@ private:
   Standard_EXPORT   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Prs3d_Presentation)& aPresentation) ;
 
   TopoDS_Shape mysh;
+  Handle(Prs3d_Drawer) myDrawer;
 
 
 };

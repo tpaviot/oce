@@ -80,6 +80,8 @@ Standard_Boolean isTangentFaces(const TopoDS_Edge &theEdge,
   if (BRep_Tool::Continuity( theEdge, theFace1, theFace2 ) != GeomAbs_C0)
     return Standard_True;
 
+  Standard_Real TolC0 = Max(0.001, 1.5*BRep_Tool::Tolerance(theEdge));
+
   Standard_Real aFirst;
   Standard_Real aLast;
     
@@ -120,7 +122,7 @@ Standard_Boolean isTangentFaces(const TopoDS_Edge &theEdge,
 
     LocalAnalysis_SurfaceContinuity aCont(aC2d1,  aC2d2,  aPar,
 					  aSurf1, aSurf2, GeomAbs_G1,
-					  0.001, 0.001, 0.1, 0.1, 0.1);
+					  0.001, TolC0, 0.1, 0.1, 0.1);
     if (!aCont.IsDone())
       {
 	nbNotDone++;
@@ -545,9 +547,7 @@ void ChFi3d_Builder::PerformExtremity (const Handle(ChFiDS_Spine)& Spine)
 	Ec = TopoDS::Edge(It.Value());
 	Standard_Boolean bonedge = !BRep_Tool::Degenerated(Ec);
 	if(bonedge){
-	  TopoDS_Vertex v1,v2;
-	  TopExp::Vertices(Ec,v1,v2);
-	  Standard_Boolean eclosed = v1.IsSame(v2);
+	  Standard_Boolean eclosed = BRep_Tool::IsClosed(Ec);
 	  Standard_Integer nboc = 0;
 	  for(j = 0; j <= i && bonedge; j++){ 
 	    if(!eclosed) bonedge = !Ec.IsSame(E[j]); 

@@ -88,7 +88,7 @@ public:
   Standard_EXPORT virtual  const  TopTools_ListOfShape& Modified (const TopoDS_Shape& S) ;
   
   //! Returns the modified shape corresponding to <S>.
-  Standard_EXPORT virtual  const  TopoDS_Shape& ModifiedShape (const TopoDS_Shape& S)  const;
+  Standard_EXPORT virtual   TopoDS_Shape ModifiedShape (const TopoDS_Shape& S)  const;
 
 
 

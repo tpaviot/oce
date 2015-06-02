@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{92426944-0828-0761-0312-53B005493FEC}</ProjectGuid>
+    <ProjectGuid>{2F6796D3-1904-06B5-05B8-88CF51E2EE66}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -446,6 +446,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepCheck\BRepCheck_Shell.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepCheck\BRepCheck_Solid.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\BRepCheck\BRepCheck_Vertex.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepCheck\BRepCheck_Wire.cxx">
@@ -469,6 +471,10 @@
     <ClCompile Include="..\..\..\src\BRepExtrema\BRepExtrema_ExtPF.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepExtrema\BRepExtrema_Poly.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepExtrema\BRepExtrema_ShapeProximity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepExtrema\BRepExtrema_TriangleSet.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepClass\BRepClass_FClass2dOfFClassifier_0.cxx">
     </ClCompile>
@@ -503,6 +509,8 @@
     <ClCompile Include="..\..\..\src\BRepClass3d\BRepClass3d_SolidExplorer.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepLib\BRepLib.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepLib\BRepLib_CheckCurveOnSurface.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepLib\BRepLib_Command.cxx">
     </ClCompile>
@@ -540,6 +548,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Face.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Gauss.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_Sinert.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepGProp\BRepGProp_TFunction.cxx">
@@ -573,6 +583,8 @@
     <ClCompile Include="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_Command.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_Copy.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_FastSewing.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_FindPlane.cxx">
     </ClCompile>

@@ -40,7 +40,6 @@
 #include <BRepAdaptor_Curve.hxx>
 #include <StdSelect_ShapeTypeFilter.hxx>
 #include <AIS.hxx>
-#include <AIS_Drawer.hxx>
 #include <AIS_ColoredShape.hxx>
 #include <AIS_InteractiveObject.hxx>
 #include <AIS_Trihedron.hxx>
@@ -55,15 +54,17 @@
 #include <Aspect_Window.hxx>
 #include <Graphic3d_AspectFillArea3d.hxx>
 #include <Graphic3d_AspectLine3d.hxx>
+#include <Graphic3d_CStructure.hxx>
 #include <Graphic3d_TextureRoot.hxx>
 #include <Image_AlienPixMap.hxx>
+#include <Prs3d_Drawer.hxx>
 #include <Prs3d_ShadingAspect.hxx>
 #include <Prs3d_IsoAspect.hxx>
+#include <Prs3d_PointAspect.hxx>
 #include <Select3D_SensitiveWire.hxx>
 #include <SelectMgr_EntityOwner.hxx>
 #include <StdSelect_BRepOwner.hxx>
 #include <StdSelect_ViewerSelector3d.hxx>
-#include <Select3D_Projector.hxx>
 #include <TopTools_MapOfShape.hxx>
 #include <ViewerTest_AutoUpdater.hxx>
 
@@ -89,8 +90,9 @@ extern int ViewerMainLoop(Standard_Integer argc, const char** argv);
 
 #include <Graphic3d_NameOfMaterial.hxx>
 
-#define DEFAULT_COLOR    Quantity_NOC_GOLDENROD
-#define DEFAULT_MATERIAL Graphic3d_NOM_BRASS
+#define DEFAULT_COLOR              Quantity_NOC_GOLDENROD
+#define DEFAULT_FREEBOUNDARY_COLOR Quantity_NOC_GREEN
+#define DEFAULT_MATERIAL           Graphic3d_NOM_BRASS
 
 //=======================================================================
 //function : GetColorFromName
@@ -102,6 +104,56 @@ Quantity_NameOfColor ViewerTest::GetColorFromName (const Standard_CString theNam
   Quantity_NameOfColor aColor = DEFAULT_COLOR;
   Quantity_Color::ColorFromName (theName, aColor);
   return aColor;
+}
+
+//=======================================================================
+//function : ParseColor
+//purpose  :
+//=======================================================================
+
+Standard_Integer ViewerTest::ParseColor (Standard_Integer  theArgNb,
+                                         const char**      theArgVec,
+                                         Quantity_Color&   theColor)
+{
+  Quantity_NameOfColor aColor = Quantity_NOC_BLACK;
+  if (theArgNb >= 1
+   && Quantity_Color::ColorFromName (theArgVec[0], aColor))
+  {
+    theColor = aColor;
+    return 1;
+  }
+  else if (theArgNb >= 3)
+  {
+    const TCollection_AsciiString anRgbStr[3] =
+    {
+      theArgVec[0],
+      theArgVec[1],
+      theArgVec[2]
+    };
+    if (!anRgbStr[0].IsRealValue()
+     || !anRgbStr[1].IsRealValue()
+     || !anRgbStr[2].IsRealValue())
+    {
+      return 0;
+    }
+
+    Graphic3d_Vec4d anRgb;
+    anRgb.x() = anRgbStr[0].RealValue();
+    anRgb.y() = anRgbStr[1].RealValue();
+    anRgb.z() = anRgbStr[2].RealValue();
+    if (anRgb.x() < 0.0 || anRgb.x() > 1.0
+     || anRgb.y() < 0.0 || anRgb.y() > 1.0
+     || anRgb.z() < 0.0 || anRgb.z() > 1.0)
+    {
+      std::cout << "Error: RGB color values should be within range 0..1!\n";
+      return 0;
+    }
+
+    theColor.SetValues (anRgb.x(), anRgb.y(), anRgb.z(), Quantity_TOC_RGB);
+    return 3;
+  }
+
+  return 0;
 }
 
 //=======================================================================
@@ -205,24 +257,20 @@ Standard_EXPORT ViewerTest_DoubleMapOfInteractiveAndName& GetMapOfAIS(){
   return TheMap;
 }
 
-
-//==============================================================================
-//function : VDisplayAISObject
-//purpose  : register interactive object in the map of AIS objects;
-//           if other object with such name already registered, it will be kept
-//           or replaced depending on value of <theReplaceIfExists>,
-//           if "true" - the old object will be cleared from AIS context;
-//           returns Standard_True if <theAISObj> registered in map;
-//==============================================================================
-Standard_EXPORT Standard_Boolean VDisplayAISObject (const TCollection_AsciiString& theName,
-                                                    const Handle(AIS_InteractiveObject)& theAISObj,
-                                                    Standard_Boolean theReplaceIfExists = Standard_True)
+//=======================================================================
+//function : Display
+//purpose  :
+//=======================================================================
+Standard_Boolean ViewerTest::Display (const TCollection_AsciiString&       theName,
+                                      const Handle(AIS_InteractiveObject)& theObject,
+                                      const Standard_Boolean               theToUpdate,
+                                      const Standard_Boolean               theReplaceIfExists)
 {
   ViewerTest_DoubleMapOfInteractiveAndName& aMap = GetMapOfAIS();
-  Handle(AIS_InteractiveContext) aContextAIS = ViewerTest::GetAISContext();
-  if (aContextAIS.IsNull())
+  Handle(AIS_InteractiveContext) aCtx = ViewerTest::GetAISContext();
+  if (aCtx.IsNull())
   {
-    std::cout << "AIS context is not available.\n";
+    std::cout << "Error: AIS context is not available.\n";
     return Standard_False;
   }
 
@@ -230,36 +278,40 @@ Standard_EXPORT Standard_Boolean VDisplayAISObject (const TCollection_AsciiStrin
   {
     if (!theReplaceIfExists)
     {
-      std::cout << "Other interactive object has been already "
-                << "registered with name: " << theName << ".\n"
+      std::cout << "Error: other interactive object has been already registered with name: " << theName << ".\n"
                 << "Please use another name.\n";
       return Standard_False;
     }
 
-    // stop displaying object
-    Handle(AIS_InteractiveObject) anOldObj =
-       Handle(AIS_InteractiveObject)::DownCast (aMap.Find2 (theName));
-
+    Handle(AIS_InteractiveObject) anOldObj = Handle(AIS_InteractiveObject)::DownCast (aMap.Find2 (theName));
     if (!anOldObj.IsNull())
-      aContextAIS->Clear (anOldObj, Standard_True);
-
-    // remove name and old object from map
+    {
+      aCtx->Remove (anOldObj, Standard_True);
+    }
     aMap.UnBind2 (theName);
   }
 
-  if (theAISObj.IsNull())
+  if (theObject.IsNull())
   {
-    // object with specified name already unbound
+    // object with specified name has been already unbound
     return Standard_True;
   }
 
-  // unbind AIS object if was bound with another name
-  aMap.UnBind1 (theAISObj);
+  // unbind AIS object if it was bound with another name
+  aMap.UnBind1 (theObject);
 
   // can be registered without rebinding
-  aMap.Bind (theAISObj, theName);
-  aContextAIS->Display (theAISObj, Standard_True);
+  aMap.Bind (theObject, theName);
+  aCtx->Display (theObject, theToUpdate);
   return Standard_True;
+}
+
+//! Alias for ViewerTest::Display(), compatibility with old code.
+Standard_EXPORT Standard_Boolean VDisplayAISObject (const TCollection_AsciiString&       theName,
+                                                    const Handle(AIS_InteractiveObject)& theObject,
+                                                    Standard_Boolean theReplaceIfExists = Standard_True)
+{
+  return ViewerTest::Display (theName, theObject, Standard_True, theReplaceIfExists);
 }
 
 static TColStd_MapOfInteger theactivatedmodes(8);
@@ -442,6 +494,7 @@ void ViewerTest::Clear()
       }
       it.Next();
     }
+    TheAISContext()->RebuildSelectionStructs();
     TheAISContext()->UpdateCurrentViewer();
 //    TheNISContext()->UpdateViews();
     GetMapOfAIS().Clear();
@@ -593,7 +646,7 @@ static int visos (Draw_Interpretor& di, Standard_Integer argc, const char** argv
       if (anObj->IsKind(STANDARD_TYPE(AIS_InteractiveObject))) {
         const Handle(AIS_InteractiveObject) aShape =
         Handle(AIS_InteractiveObject)::DownCast (anObj);
-        Handle(AIS_Drawer) CurDrawer = aShape->Attributes();
+        Handle(Prs3d_Drawer) CurDrawer = aShape->Attributes();
         Handle(Prs3d_IsoAspect) aUIso = CurDrawer->UIsoAspect();
         Handle(Prs3d_IsoAspect) aVIso = CurDrawer->VIsoAspect();
 
@@ -622,51 +675,6 @@ static int visos (Draw_Interpretor& di, Standard_Integer argc, const char** argv
   return 0;
 }
 
-//==============================================================================
-//function : VDispAreas,VDispSensitive,...
-//purpose  :
-//==============================================================================
-static Standard_Integer VDispAreas (Draw_Interpretor& ,
-                                    Standard_Integer  theArgNb,
-                                    Standard_CString* )
-{
-  if (theArgNb > 1)
-  {
-    std::cout << "Error: wrong syntax!\n";
-    return 1;
-  }
-
-  Handle(AIS_InteractiveContext) aCtx;
-  Handle(V3d_View)               aView;
-  if (!getCtxAndView (aCtx, aView))
-  {
-    return 1;
-  }
-
-  aCtx->DisplayActiveAreas (aView);
-  return 0;
-}
-static Standard_Integer VClearAreas (Draw_Interpretor& ,
-                                     Standard_Integer  theArgNb,
-                                     Standard_CString* )
-{
-  if (theArgNb > 1)
-  {
-    std::cout << "Error: wrong syntax!\n";
-    return 1;
-  }
-
-  Handle(AIS_InteractiveContext) aCtx;
-  Handle(V3d_View)               aView;
-  if (!getCtxAndView (aCtx, aView))
-  {
-    return 1;
-  }
-
-  aCtx->ClearActiveAreas (aView);
-  return 0;
-
-}
 static Standard_Integer VDispSensi (Draw_Interpretor& ,
                                     Standard_Integer  theArgNb,
                                     Standard_CString* )
@@ -732,17 +740,16 @@ static int VDir (Draw_Interpretor& theDI,
 
 //==============================================================================
 //function : VSelPrecision
-//purpose  : To set the selection precision mode and tolerance value
-//Draw arg : Selection precision mode (0 for window, 1 for view) and tolerance
-//           value (integer number of pixel for window mode, double value of
-//           sensitivity for view mode). Without arguments the function just
-//           prints the current precision mode and the corresponding tolerance.
+//purpose  : To set the selection tolerance value
+//Draw arg : Selection tolerance value (real value determining the width and
+//           height of selecting frustum bases). Without arguments the function
+//           just prints current tolerance.
 //==============================================================================
 static int VSelPrecision(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
 {
-  if( argc > 3 )
+  if( argc > 2 )
   {
-    di << "Use: " << argv[0] << " [precision_mode [tolerance_value]]\n";
+    di << "Wrong parameters! Must be: " << argv[0] << " [-unset] [tolerance]\n";
     return 1;
   }
 
@@ -752,38 +759,23 @@ static int VSelPrecision(Draw_Interpretor& di, Standard_Integer argc, const char
 
   if( argc == 1 )
   {
-    StdSelect_SensitivityMode aMode = aContext->SensitivityMode();
-    if( aMode == StdSelect_SM_WINDOW )
-    {
-      Standard_Integer aPixelTolerance = aContext->PixelTolerance();
-      di << "Precision mode  : 0 (window)\n";
-      di << "Pixel tolerance : " << aPixelTolerance << "\n";
-    }
-    else if( aMode == StdSelect_SM_VIEW )
-    {
-      Standard_Real aSensitivity = aContext->Sensitivity();
-      di << "Precision mode : 1 (view)\n";
-      di << "Sensitivity    : " << aSensitivity << "\n";
-    }
+    Standard_Real aPixelTolerance = aContext->PixelTolerance();
+    di << "Pixel tolerance : " << aPixelTolerance << "\n";
   }
-  else if( argc > 1 )
+  else if (argc == 2)
   {
-    StdSelect_SensitivityMode aMode = ( StdSelect_SensitivityMode )Draw::Atoi( argv[1] );
-    aContext->SetSensitivityMode( aMode );
-    if( argc > 2 )
+    TCollection_AsciiString anArg = TCollection_AsciiString (argv[1]);
+    anArg.LowerCase();
+    if (anArg == "-unset")
     {
-      if( aMode == StdSelect_SM_WINDOW )
-      {
-        Standard_Integer aPixelTolerance = Draw::Atoi( argv[2] );
-        aContext->SetPixelTolerance( aPixelTolerance );
-      }
-      else if( aMode == StdSelect_SM_VIEW )
-      {
-        Standard_Real aSensitivity = Draw::Atof( argv[2] );
-        aContext->SetSensitivity( aSensitivity );
-      }
+      aContext->SetPixelTolerance (-1.0);
+    }
+    else
+    {
+      aContext->SetPixelTolerance (anArg.RealValue());
     }
   }
+
   return 0;
 }
 
@@ -1376,6 +1368,9 @@ static int VSetInteriorStyle (Draw_Interpretor& theDI,
 //! Auxiliary structure for VAspects
 struct ViewerTest_AspectsChangeSet
 {
+  Standard_Integer         ToSetVisibility;
+  Standard_Integer         Visibility;
+
   Standard_Integer         ToSetColor;
   Quantity_Color           Color;
 
@@ -1391,30 +1386,52 @@ struct ViewerTest_AspectsChangeSet
 
   NCollection_Sequence<TopoDS_Shape> SubShapes;
 
+  Standard_Integer         ToSetShowFreeBoundary;
+  Standard_Integer         ToSetFreeBoundaryWidth;
+  Standard_Real            FreeBoundaryWidth;
+  Standard_Integer         ToSetFreeBoundaryColor;
+  Quantity_Color           FreeBoundaryColor;
+
   //! Empty constructor
   ViewerTest_AspectsChangeSet()
-  : ToSetColor        (0),
+  : ToSetVisibility   (0),
+    Visibility        (1),
+    ToSetColor        (0),
     Color             (DEFAULT_COLOR),
     ToSetLineWidth    (0),
     LineWidth         (1.0),
     ToSetTransparency (0),
     Transparency      (0.0),
     ToSetMaterial     (0),
-    Material (Graphic3d_NOM_DEFAULT) {}
+    Material          (Graphic3d_NOM_DEFAULT),
+    ToSetShowFreeBoundary  (0),
+    ToSetFreeBoundaryWidth (0),
+    FreeBoundaryWidth      (1.0),
+    ToSetFreeBoundaryColor (0),
+    FreeBoundaryColor      (DEFAULT_FREEBOUNDARY_COLOR) {}
 
   //! @return true if no changes have been requested
   Standard_Boolean IsEmpty() const
   {
-    return ToSetLineWidth    == 0
-        && ToSetTransparency == 0
-        && ToSetColor        == 0
-        && ToSetMaterial     == 0;
+    return ToSetVisibility        == 0
+        && ToSetLineWidth         == 0
+        && ToSetTransparency      == 0
+        && ToSetColor             == 0
+        && ToSetMaterial          == 0
+        && ToSetShowFreeBoundary  == 0
+        && ToSetFreeBoundaryColor == 0
+        && ToSetFreeBoundaryWidth == 0;
   }
 
   //! @return true if properties are valid
   Standard_Boolean Validate (const Standard_Boolean theIsSubPart) const
   {
     Standard_Boolean isOk = Standard_True;
+    if (Visibility != 0 && Visibility != 1)
+    {
+      std::cout << "Error: the visibility should be equal to 0 or 1 (0 - invisible; 1 - visible) (specified " << Visibility << ")\n";
+      isOk = Standard_False;
+    }
     if (LineWidth <= 0.0
      || LineWidth >  10.0)
     {
@@ -1437,6 +1454,12 @@ struct ViewerTest_AspectsChangeSet
      && Material == Graphic3d_NOM_DEFAULT)
     {
       std::cout << "Error: unknown material " << MatName << ".\n";
+      isOk = Standard_False;
+    }
+    if (FreeBoundaryWidth <= 0.0
+     || FreeBoundaryWidth >  10.0)
+    {
+      std::cout << "Error: the free boundary width should be within [1; 10] range (specified " << FreeBoundaryWidth << ")\n";
       isOk = Standard_False;
     }
     return isOk;
@@ -1462,6 +1485,7 @@ static Standard_Integer VAspects (Draw_Interpretor& /*theDI*/,
   }
 
   Standard_Integer anArgIter = 1;
+  Standard_Boolean isDefaults = Standard_False;
   NCollection_Sequence<TCollection_AsciiString> aNames;
   for (; anArgIter < theArgNb; ++anArgIter)
   {
@@ -1477,8 +1501,19 @@ static Standard_Integer VAspects (Draw_Interpretor& /*theDI*/,
     }
     else
     {
+      if (anArg == "-defaults")
+      {
+        isDefaults = Standard_True;
+        ++anArgIter;
+      }
       break;
     }
+  }
+
+  if (!aNames.IsEmpty() && isDefaults)
+  {
+    std::cout << "Error: wrong syntax. If -defaults is used there should not be any objects' names!\n";
+    return 1;
   }
 
   NCollection_Sequence<ViewerTest_AspectsChangeSet> aChanges;
@@ -1639,6 +1674,18 @@ static Standard_Integer VAspects (Draw_Interpretor& /*theDI*/,
         aChangeSet->Transparency = 0.0;
       }
     }
+    else if (anArg == "-setvis"
+          || anArg == "-setvisibility")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cout << "Error: wrong syntax at " << anArg << "\n";
+        return 1;
+      }
+
+      aChangeSet->ToSetVisibility = 1;
+      aChangeSet->Visibility = Draw::Atoi (theArgVec[anArgIter]);
+    }
     else if (anArg == "-setalpha")
     {
       if (++anArgIter >= theArgNb)
@@ -1746,6 +1793,12 @@ static Standard_Integer VAspects (Draw_Interpretor& /*theDI*/,
     else if (anArg == "-subshape"
           || anArg == "-subshapes")
     {
+      if (isDefaults)
+      {
+        std::cout << "Error: wrong syntax. -subshapes can not be used together with -defaults call!\n";
+        return 1;
+      }
+
       if (aNames.IsEmpty())
       {
         std::cout << "Error: main objects should specified explicitly when -subshapes is used!\n";
@@ -1779,8 +1832,110 @@ static Standard_Integer VAspects (Draw_Interpretor& /*theDI*/,
         return 1;
       }
     }
+    else if (anArg == "-freeboundary"
+          || anArg == "-fb")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cout << "Error: wrong syntax at " << anArg << "\n";
+        return 1;
+      }
+      TCollection_AsciiString aValue (theArgVec[anArgIter]);
+      aValue.LowerCase();
+      if (aValue == "on"
+       || aValue == "1")
+      {
+        aChangeSet->ToSetShowFreeBoundary = 1;
+      }
+      else if (aValue == "off"
+            || aValue == "0")
+      {
+        aChangeSet->ToSetShowFreeBoundary = -1;
+      }
+      else
+      {
+        std::cout << "Error: wrong syntax at " << anArg << "\n";
+        return 1;
+      }
+    }
+    else if (anArg == "-setfreeboundarywidth"
+          || anArg == "-setfbwidth")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cout << "Error: wrong syntax at " << anArg << "\n";
+        return 1;
+      }
+      aChangeSet->ToSetFreeBoundaryWidth = 1;
+      aChangeSet->FreeBoundaryWidth = Draw::Atof (theArgVec[anArgIter]);
+    }
+    else if (anArg == "-unsetfreeboundarywidth"
+          || anArg == "-unsetfbwidth")
+    {
+      aChangeSet->ToSetFreeBoundaryWidth = -1;
+      aChangeSet->FreeBoundaryWidth = 1.0;
+    }
+    else if (anArg == "-setfreeboundarycolor"
+          || anArg == "-setfbcolor")
+    {
+      Standard_Integer aNbComps  = 0;
+      Standard_Integer aCompIter = anArgIter + 1;
+      for (; aCompIter < theArgNb; ++aCompIter, ++aNbComps)
+      {
+        if (theArgVec[aCompIter][0] == '-')
+        {
+          break;
+        }
+      }
+      switch (aNbComps)
+      {
+        case 1:
+        {
+          Quantity_NameOfColor aColor = Quantity_NOC_BLACK;
+          Standard_CString     aName  = theArgVec[anArgIter + 1];
+          if (!Quantity_Color::ColorFromName (aName, aColor))
+          {
+            std::cout << "Error: unknown free boundary color name '" << aName << "'\n";
+            return 1;
+          }
+          aChangeSet->FreeBoundaryColor = aColor;
+          break;
+        }
+        case 3:
+        {
+          Graphic3d_Vec3d anRgb;
+          anRgb.x() = Draw::Atof (theArgVec[anArgIter + 1]);
+          anRgb.y() = Draw::Atof (theArgVec[anArgIter + 2]);
+          anRgb.z() = Draw::Atof (theArgVec[anArgIter + 3]);
+          if (anRgb.x() < 0.0 || anRgb.x() > 1.0
+           || anRgb.y() < 0.0 || anRgb.y() > 1.0
+           || anRgb.z() < 0.0 || anRgb.z() > 1.0)
+          {
+            std::cout << "Error: free boundary RGB color values should be within range 0..1!\n";
+            return 1;
+          }
+          aChangeSet->FreeBoundaryColor.SetValues (anRgb.x(), anRgb.y(), anRgb.z(), Quantity_TOC_RGB);
+          break;
+        }
+        default:
+        {
+          std::cout << "Error: wrong syntax at " << anArg << "\n";
+          return 1;
+        }
+      }
+      aChangeSet->ToSetFreeBoundaryColor = 1;
+      anArgIter += aNbComps;
+    }
+    else if (anArg == "-unsetfreeboundarycolor"
+          || anArg == "-unsetfbcolor")
+    {
+      aChangeSet->ToSetFreeBoundaryColor = -1;
+      aChangeSet->FreeBoundaryColor = DEFAULT_FREEBOUNDARY_COLOR;
+    }
     else if (anArg == "-unset")
     {
+      aChangeSet->ToSetVisibility = 1;
+      aChangeSet->Visibility = 1;
       aChangeSet->ToSetLineWidth = -1;
       aChangeSet->LineWidth = 1.0;
       aChangeSet->ToSetTransparency = -1;
@@ -1789,6 +1944,11 @@ static Standard_Integer VAspects (Draw_Interpretor& /*theDI*/,
       aChangeSet->Color = DEFAULT_COLOR;
       aChangeSet->ToSetMaterial = -1;
       aChangeSet->Material = Graphic3d_NOM_DEFAULT;
+      aChangeSet->ToSetShowFreeBoundary = -1;
+      aChangeSet->ToSetFreeBoundaryColor = -1;
+      aChangeSet->FreeBoundaryColor = DEFAULT_FREEBOUNDARY_COLOR;
+      aChangeSet->ToSetFreeBoundaryWidth = -1;
+      aChangeSet->FreeBoundaryWidth = 1.0;
     }
     else
     {
@@ -1812,13 +1972,75 @@ static Standard_Integer VAspects (Draw_Interpretor& /*theDI*/,
   {
     aCtx->CloseLocalContext();
   }
+
+  // special case for -defaults parameter.
+  // all changed values will be set to DefaultDrawer.
+  if (isDefaults)
+  {
+    const Handle(Prs3d_Drawer)& aDrawer = aCtx->DefaultDrawer();
+
+    if (aChangeSet->ToSetLineWidth != 0)
+    {
+      aDrawer->LineAspect()->SetWidth (aChangeSet->LineWidth);
+      aDrawer->WireAspect()->SetWidth (aChangeSet->LineWidth);
+      aDrawer->UnFreeBoundaryAspect()->SetWidth (aChangeSet->LineWidth);
+      aDrawer->SeenLineAspect()->SetWidth (aChangeSet->LineWidth);
+    }
+    if (aChangeSet->ToSetColor != 0)
+    {
+      aDrawer->ShadingAspect()->SetColor        (aChangeSet->Color);
+      aDrawer->LineAspect()->SetColor           (aChangeSet->Color);
+      aDrawer->UnFreeBoundaryAspect()->SetColor (aChangeSet->Color);
+      aDrawer->SeenLineAspect()->SetColor       (aChangeSet->Color);
+      aDrawer->WireAspect()->SetColor           (aChangeSet->Color);
+      aDrawer->PointAspect()->SetColor          (aChangeSet->Color);
+    }
+    if (aChangeSet->ToSetTransparency != 0)
+    {
+      aDrawer->ShadingAspect()->SetTransparency (aChangeSet->Transparency);
+    }
+    if (aChangeSet->ToSetMaterial != 0)
+    {
+      aDrawer->ShadingAspect()->SetMaterial (aChangeSet->Material);
+    }
+    if (aChangeSet->ToSetShowFreeBoundary == 1)
+    {
+      aDrawer->SetFreeBoundaryDraw (Standard_True);
+    }
+    else if (aChangeSet->ToSetShowFreeBoundary == -1)
+    {
+      aDrawer->SetFreeBoundaryDraw (Standard_False);
+    }
+    if (aChangeSet->ToSetFreeBoundaryWidth != 0)
+    {
+      aDrawer->FreeBoundaryAspect()->SetWidth (aChangeSet->FreeBoundaryWidth);
+    }
+    if (aChangeSet->ToSetFreeBoundaryColor != 0)
+    {
+      aDrawer->FreeBoundaryAspect()->SetColor (aChangeSet->FreeBoundaryColor);
+    }
+
+    // redisplay all objects in context
+    for (ViewTest_PrsIter aPrsIter (aNames); aPrsIter.More(); aPrsIter.Next())
+    {
+      Handle(AIS_InteractiveObject)  aPrs = aPrsIter.Current();
+      if (!aPrs.IsNull())
+      {
+        aCtx->Redisplay (aPrs, Standard_False);
+      }
+    }
+    return 0;
+  }
+
   for (ViewTest_PrsIter aPrsIter (aNames); aPrsIter.More(); aPrsIter.Next())
   {
-    const TCollection_AsciiString& aName = aPrsIter.CurrentName();
-    Handle(AIS_InteractiveObject)  aPrs  = aPrsIter.Current();
+    const TCollection_AsciiString& aName   = aPrsIter.CurrentName();
+    Handle(AIS_InteractiveObject)  aPrs    = aPrsIter.Current();
+    Handle(Prs3d_Drawer)           aDrawer = aPrs->Attributes();
     Handle(AIS_ColoredShape) aColoredPrs;
     Standard_Boolean toDisplay = Standard_False;
-    if (aChanges.Length() > 1)
+    Standard_Boolean toRedisplay = Standard_False;
+    if (aChanges.Length() > 1 || aChangeSet->ToSetVisibility == 1)
     {
       Handle(AIS_Shape) aShapePrs = Handle(AIS_Shape)::DownCast (aPrs);
       if (aShapePrs.IsNull())
@@ -1843,7 +2065,12 @@ static Standard_Integer VAspects (Draw_Interpretor& /*theDI*/,
     {
       NCollection_Sequence<ViewerTest_AspectsChangeSet>::Iterator aChangesIter (aChanges);
       aChangeSet = &aChangesIter.ChangeValue();
-      if (aChangeSet->ToSetMaterial == 1)
+      if (aChangeSet->ToSetVisibility == 1)
+      {
+        Handle(AIS_ColoredDrawer) aColDrawer = aColoredPrs->CustomAspects (aColoredPrs->Shape());
+        aColDrawer->SetHidden (aChangeSet->Visibility == 0);
+      }
+      else if (aChangeSet->ToSetMaterial == 1)
       {
         aCtx->SetMaterial (aPrs, aChangeSet->Material, Standard_False);
       }
@@ -1875,6 +2102,37 @@ static Standard_Integer VAspects (Draw_Interpretor& /*theDI*/,
       {
         aCtx->UnsetWidth (aPrs, Standard_False);
       }
+      if (!aDrawer.IsNull())
+      {
+        if (aChangeSet->ToSetShowFreeBoundary == 1)
+        {
+          aDrawer->SetFreeBoundaryDraw (Standard_True);
+          toRedisplay = Standard_True;
+        }
+        else if (aChangeSet->ToSetShowFreeBoundary == -1)
+        {
+          aDrawer->SetFreeBoundaryDraw (Standard_False);
+          toRedisplay = Standard_True;
+        }
+        if (aChangeSet->ToSetFreeBoundaryWidth != 0)
+        {
+          Handle(Prs3d_LineAspect) aBoundaryAspect =
+              new Prs3d_LineAspect (Quantity_NOC_RED, Aspect_TOL_SOLID, 1.0);
+          *aBoundaryAspect->Aspect() = *aDrawer->FreeBoundaryAspect()->Aspect();
+          aBoundaryAspect->SetWidth (aChangeSet->FreeBoundaryWidth);
+          aDrawer->SetFreeBoundaryAspect (aBoundaryAspect);
+          toRedisplay = Standard_True;
+        }
+        if (aChangeSet->ToSetFreeBoundaryColor != 0)
+        {
+          Handle(Prs3d_LineAspect) aBoundaryAspect =
+              new Prs3d_LineAspect (Quantity_NOC_RED, Aspect_TOL_SOLID, 1.0);
+          *aBoundaryAspect->Aspect() = *aDrawer->FreeBoundaryAspect()->Aspect();
+          aBoundaryAspect->SetColor (aChangeSet->FreeBoundaryColor);
+          aDrawer->SetFreeBoundaryAspect (aBoundaryAspect);
+          toRedisplay = Standard_True;
+        }
+      }
 
       for (aChangesIter.Next(); aChangesIter.More(); aChangesIter.Next())
       {
@@ -1883,6 +2141,11 @@ static Standard_Integer VAspects (Draw_Interpretor& /*theDI*/,
              aSubShapeIter.More(); aSubShapeIter.Next())
         {
           const TopoDS_Shape& aSubShape = aSubShapeIter.Value();
+          if (aChangeSet->ToSetVisibility == 1)
+          {
+            Handle(AIS_ColoredDrawer) aCurColDrawer = aColoredPrs->CustomAspects (aSubShape);
+            aCurColDrawer->SetHidden (aChangeSet->Visibility == 0);
+          }
           if (aChangeSet->ToSetColor == 1)
           {
             aColoredPrs->SetCustomColor (aSubShape, aChangeSet->Color);
@@ -1902,9 +2165,13 @@ static Standard_Integer VAspects (Draw_Interpretor& /*theDI*/,
       {
         aCtx->Display (aPrs, Standard_False);
       }
+      if (toRedisplay)
+      {
+        aCtx->Redisplay (aPrs, Standard_False);
+      }
       else if (!aColoredPrs.IsNull())
       {
-        aColoredPrs->Redisplay();
+        aCtx->Redisplay (aColoredPrs, Standard_False);
       }
     }
     else
@@ -2223,8 +2490,9 @@ int VErase (Draw_Interpretor& theDI,
             Standard_Integer  theArgNb,
             const char**      theArgVec)
 {
-  const Handle(AIS_InteractiveContext)& aCtx = ViewerTest::GetAISContext();
-  ViewerTest_AutoUpdater anUpdateTool (aCtx, ViewerTest::CurrentView());
+  const Handle(AIS_InteractiveContext)& aCtx  = ViewerTest::GetAISContext();
+  const Handle(V3d_View)&               aView = ViewerTest::CurrentView();
+  ViewerTest_AutoUpdater anUpdateTool (aCtx, aView);
   if (aCtx.IsNull())
   {
     std::cerr << "Error: no active view!\n";
@@ -2234,7 +2502,8 @@ int VErase (Draw_Interpretor& theDI,
   const Standard_Boolean toEraseAll = TCollection_AsciiString (theArgNb > 0 ? theArgVec[0] : "") == "veraseall";
 
   Standard_Integer anArgIter = 1;
-  Standard_Boolean toEraseLocal = Standard_False;
+  Standard_Boolean toEraseLocal  = Standard_False;
+  Standard_Boolean toEraseInView = Standard_False;
   TColStd_SequenceOfAsciiString aNamesOfEraseIO;
   for (; anArgIter < theArgNb; ++anArgIter)
   {
@@ -2247,6 +2516,11 @@ int VErase (Draw_Interpretor& theDI,
     else if (anArgCase == "-local")
     {
       toEraseLocal = Standard_True;
+    }
+    else if (anArgCase == "-view"
+          || anArgCase == "-inview")
+    {
+      toEraseInView = Standard_True;
     }
     else
     {
@@ -2286,7 +2560,14 @@ int VErase (Draw_Interpretor& theDI,
       theDI << aName.ToCString() << " ";
       if (!anIO.IsNull())
       {
-        aCtx->Erase (anIO, Standard_False);
+        if (toEraseInView)
+        {
+          aCtx->SetViewAffinity (anIO, aView, Standard_False);
+        }
+        else
+        {
+          aCtx->Erase (anIO, Standard_False);
+        }
       }
       else
       {
@@ -2309,7 +2590,14 @@ int VErase (Draw_Interpretor& theDI,
        && aCtx->IsCurrent (anIO))
       {
         theDI << anIter.Key2().ToCString() << " ";
-        aCtx->Erase (anIO, Standard_False);
+        if (toEraseInView)
+        {
+          aCtx->SetViewAffinity (anIO, aView, Standard_False);
+        }
+        else
+        {
+          aCtx->Erase (anIO, Standard_False);
+        }
       }
     }
   }
@@ -2322,7 +2610,14 @@ int VErase (Draw_Interpretor& theDI,
       const Handle(AIS_InteractiveObject) anIO = Handle(AIS_InteractiveObject)::DownCast (anIter.Key1());
       if (!anIO.IsNull())
       {
-        aCtx->Erase (anIO, Standard_False);
+        if (toEraseInView)
+        {
+          aCtx->SetViewAffinity (anIO, aView, Standard_False);
+        }
+        else
+        {
+          aCtx->Erase (anIO, Standard_False);
+        }
       }
       else
       {
@@ -2473,7 +2768,11 @@ inline void bndPresentation (Draw_Interpretor&                  theDI,
     }
     case BndAction_Show:
     {
-      thePrs->Presentation()->BoundBox();
+      Handle(Graphic3d_Structure) aPrs = thePrs->Presentation();
+      aPrs->CStructure()->HighlightColor.r = 0.988235f;
+      aPrs->CStructure()->HighlightColor.g = 0.988235f;
+      aPrs->CStructure()->HighlightColor.b = 0.988235f;
+      aPrs->CStructure()->HighlightWithBndBox (aPrs, Standard_True);
       break;
     }
     case BndAction_Print:
@@ -2751,7 +3050,7 @@ Standard_Integer VTexture (Draw_Interpretor& theDi, Standard_Integer theArgsNb, 
   }
   else
   {
-    anAISContext->Clear (anIO, Standard_False);
+    anAISContext->Remove (anIO, Standard_False);
     aTexturedIO = new AIS_TexturedShape (DBRep::Get (theArgv[1]));
     GetMapOfAIS().UnBind1 (anIO);
     GetMapOfAIS().UnBind2 (aShapeName);
@@ -2881,6 +3180,42 @@ Standard_Integer VTexture (Draw_Interpretor& theDi, Standard_Integer theArgsNb, 
   return 0;
 }
 
+//! Auxiliary method to parse transformation persistence flags
+inline Standard_Boolean parseTrsfPersFlag (const TCollection_AsciiString& theFlagString,
+                                           Standard_Integer&              theFlags)
+{
+  if (theFlagString == "pan")
+  {
+    theFlags |= Graphic3d_TMF_PanPers;
+  }
+  else if (theFlagString == "zoom")
+  {
+    theFlags |= Graphic3d_TMF_ZoomPers;
+  }
+  else if (theFlagString == "rotate")
+  {
+    theFlags |= Graphic3d_TMF_RotatePers;
+  }
+  else if (theFlagString == "trihedron")
+  {
+    theFlags = Graphic3d_TMF_TriedronPers;
+  }
+  else if (theFlagString == "full")
+  {
+    theFlags = Graphic3d_TMF_FullPers;
+  }
+  else if (theFlagString == "none")
+  {
+    theFlags = Graphic3d_TMF_None;
+  }
+  else
+  {
+    return Standard_False;
+  }
+
+  return Standard_True;
+}
+
 //==============================================================================
 //function : VDisplay2
 //author   : ege
@@ -2905,9 +3240,19 @@ static int VDisplay2 (Draw_Interpretor& theDI,
 
   // Parse input arguments
   ViewerTest_AutoUpdater anUpdateTool (aCtx, ViewerTest::CurrentView());
-  Standard_Integer isMutable = -1;
-  Standard_Boolean toDisplayLocal = Standard_False;
+  Standard_Integer   isMutable      = -1;
+  Graphic3d_ZLayerId aZLayer        = Graphic3d_ZLayerId_UNKNOWN;
+  Standard_Boolean   toDisplayLocal = Standard_False;
+  Standard_Boolean   toReDisplay    = Standard_False;
+  Standard_Integer   isSelectable   = -1;
+  Standard_Integer   anObjDispMode  = -2;
+  Standard_Integer   anObjHighMode  = -2;
+  Standard_Boolean   toSetTrsfPers  = Standard_False;
+  Graphic3d_TransModeFlags aTrsfPersFlags = Graphic3d_TMF_None;
+  gp_Pnt aTPPosition;
   TColStd_SequenceOfAsciiString aNamesOfDisplayIO;
+  AIS_DisplayStatus aDispStatus = AIS_DS_None;
+  Standard_Integer toDisplayInView = Standard_False;
   for (Standard_Integer anArgIter = 1; anArgIter < theArgNb; ++anArgIter)
   {
     const TCollection_AsciiString aName     = theArgVec[anArgIter];
@@ -2921,9 +3266,170 @@ static int VDisplay2 (Draw_Interpretor& theDI,
     {
       isMutable = 1;
     }
+    else if (aNameCase == "-neutral")
+    {
+      aDispStatus = AIS_DS_Displayed;
+    }
+    else if (aNameCase == "-immediate"
+          || aNameCase == "-top")
+    {
+      aZLayer = Graphic3d_ZLayerId_Top;
+    }
+    else if (aNameCase == "-topmost")
+    {
+      aZLayer = Graphic3d_ZLayerId_Topmost;
+    }
+    else if (aNameCase == "-osd"
+          || aNameCase == "-toposd"
+          || aNameCase == "-overlay")
+    {
+      aZLayer = Graphic3d_ZLayerId_TopOSD;
+    }
+    else if (aNameCase == "-botosd"
+          || aNameCase == "-underlay")
+    {
+      aZLayer = Graphic3d_ZLayerId_BotOSD;
+    }
+    else if (aNameCase == "-select"
+          || aNameCase == "-selectable")
+    {
+      isSelectable = 1;
+    }
+    else if (aNameCase == "-noselect"
+          || aNameCase == "-noselection")
+    {
+      isSelectable = 0;
+    }
+    else if (aNameCase == "-dispmode"
+          || aNameCase == "-displaymode")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Error: wrong syntax at " << aName << ".\n";
+        return 1;
+      }
+
+      anObjDispMode = Draw::Atoi (theArgVec [anArgIter]);
+    }
+    else if (aNameCase == "-highmode"
+          || aNameCase == "-highlightmode")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Error: wrong syntax at " << aName << ".\n";
+        return 1;
+      }
+
+      anObjHighMode = Draw::Atoi (theArgVec [anArgIter]);
+    }
+    else if (aNameCase == "-3d")
+    {
+      toSetTrsfPers  = Standard_True;
+      aTrsfPersFlags = Graphic3d_TMF_None;
+    }
+    else if (aNameCase == "-2d")
+    {
+      toSetTrsfPers  = Standard_True;
+      aTrsfPersFlags = Graphic3d_TMF_2d;
+    }
+    else if (aNameCase == "-2dtopdown")
+    {
+      toSetTrsfPers  = Standard_True;
+      aTrsfPersFlags = Graphic3d_TMF_2d | Graphic3d_TMF_2d_IsTopDown;
+    }
+    else if (aNameCase == "-trsfpers"
+          || aNameCase == "-pers")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Error: wrong syntax at " << aName << ".\n";
+        return 1;
+      }
+
+      toSetTrsfPers  = Standard_True;
+      aTrsfPersFlags = Graphic3d_TMF_None;
+      TCollection_AsciiString aPersFlags (theArgVec [anArgIter]);
+      aPersFlags.LowerCase();
+      for (Standard_Integer aParserPos = aPersFlags.Search ("|");; aParserPos = aPersFlags.Search ("|"))
+      {
+        if (aParserPos == -1)
+        {
+          if (!parseTrsfPersFlag (aPersFlags, aTrsfPersFlags))
+          {
+            std::cerr << "Error: wrong transform persistence flags " << theArgVec [anArgIter] << ".\n";
+            return 1;
+          }
+          break;
+        }
+
+        TCollection_AsciiString anOtherFlags = aPersFlags.Split (aParserPos - 1);
+        if (!parseTrsfPersFlag (aPersFlags, aTrsfPersFlags))
+        {
+          std::cerr << "Error: wrong transform persistence flags " << theArgVec [anArgIter] << ".\n";
+          return 1;
+        }
+        aPersFlags = anOtherFlags;
+      }
+    }
+    else if (aNameCase == "-trsfperspos"
+          || aNameCase == "-perspos")
+    {
+      if (anArgIter + 2 >= theArgNb)
+      {
+        std::cerr << "Error: wrong syntax at " << aName << ".\n";
+        return 1;
+      }
+
+      TCollection_AsciiString aX (theArgVec[++anArgIter]);
+      TCollection_AsciiString aY (theArgVec[++anArgIter]);
+      TCollection_AsciiString aZ = "0";
+      if (!aX.IsIntegerValue()
+       || !aY.IsIntegerValue())
+      {
+        std::cerr << "Error: wrong syntax at " << aName << ".\n";
+        return 1;
+      }
+      if (anArgIter + 1 < theArgNb)
+      {
+        TCollection_AsciiString aTemp = theArgVec[anArgIter + 1];
+        if (aTemp.IsIntegerValue())
+        {
+          aZ = aTemp;
+          ++anArgIter;
+        }
+      }
+      aTPPosition.SetCoord (aX.IntegerValue(), aY.IntegerValue(), aZ.IntegerValue());
+    }
+    else if (aNameCase == "-layer")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Error: wrong syntax at " << aName << ".\n";
+        return 1;
+      }
+
+      TCollection_AsciiString aValue (theArgVec[anArgIter]);
+      if (!aValue.IsIntegerValue())
+      {
+        std::cerr << "Error: wrong syntax at " << aName << ".\n";
+        return 1;
+      }
+
+      aZLayer = aValue.IntegerValue();
+    }
+    else if (aNameCase == "-view"
+          || aNameCase == "-inview")
+    {
+      toDisplayInView = Standard_True;
+    }
     else if (aNameCase == "-local")
     {
+      aDispStatus = AIS_DS_Temporary;
       toDisplayLocal = Standard_True;
+    }
+    else if (aNameCase == "-redisplay")
+    {
+      toReDisplay = Standard_True;
     }
     else
     {
@@ -2962,8 +3468,54 @@ static int VDisplay2 (Draw_Interpretor& theDI,
         {
           aShape->SetMutable (isMutable == 1);
         }
-        GetMapOfAIS().Bind (aShape, aName);
-        aCtx->Display (aShape, Standard_False);
+        if (aZLayer != Graphic3d_ZLayerId_UNKNOWN)
+        {
+          aShape->SetZLayer (aZLayer);
+        }
+        if (toSetTrsfPers)
+        {
+          aShape->SetTransformPersistence (aTrsfPersFlags, aTPPosition);
+        }
+        if (anObjDispMode != -2)
+        {
+          aShape->SetDisplayMode (anObjDispMode);
+        }
+        if (anObjHighMode != -2)
+        {
+          aShape->SetHilightMode (anObjHighMode);
+        }
+        if (!toDisplayLocal)
+          GetMapOfAIS().Bind (aShape, aName);
+
+        Standard_Integer aDispMode = aShape->HasDisplayMode()
+                                   ? aShape->DisplayMode()
+                                   : (aShape->AcceptDisplayMode (aCtx->DisplayMode())
+                                    ? aCtx->DisplayMode()
+                                    : 0);
+        Standard_Integer aSelMode = -1;
+        if ( isSelectable ==  1
+         || (isSelectable == -1
+          && aCtx->GetAutoActivateSelection()
+          && aShape->GetTransformPersistenceMode() == 0))
+        {
+          aSelMode = aShape->HasSelectionMode() ? aShape->SelectionMode() : -1;
+        }
+
+        aCtx->Display (aShape, aDispMode, aSelMode,
+                       Standard_False, aShape->AcceptShapeDecomposition(),
+                       aDispStatus);
+        if (toDisplayInView)
+        {
+          for (aCtx->CurrentViewer()->InitDefinedViews(); aCtx->CurrentViewer()->MoreDefinedViews(); aCtx->CurrentViewer()->NextDefinedViews())
+          {
+            aCtx->SetViewAffinity (aShape, aCtx->CurrentViewer()->DefinedView(), Standard_False);
+          }
+          aCtx->SetViewAffinity (aShape, ViewerTest::CurrentView(), Standard_True);
+        }
+      }
+      else
+      {
+        std::cerr << "Error: object with name '" << aName << "' does not exist!\n";
       }
       continue;
     }
@@ -2976,6 +3528,35 @@ static int VDisplay2 (Draw_Interpretor& theDI,
       {
         aShape->SetMutable (isMutable == 1);
       }
+      if (aZLayer != Graphic3d_ZLayerId_UNKNOWN)
+      {
+        aShape->SetZLayer (aZLayer);
+      }
+      if (toSetTrsfPers)
+      {
+        aShape->SetTransformPersistence (aTrsfPersFlags, aTPPosition);
+      }
+      if (anObjDispMode != -2)
+      {
+        aShape->SetDisplayMode (anObjDispMode);
+      }
+      if (anObjHighMode != -2)
+      {
+        aShape->SetHilightMode (anObjHighMode);
+      }
+      Standard_Integer aDispMode = aShape->HasDisplayMode()
+                                  ? aShape->DisplayMode()
+                                  : (aShape->AcceptDisplayMode (aCtx->DisplayMode())
+                                  ? aCtx->DisplayMode()
+                                  : 0);
+      Standard_Integer aSelMode = -1;
+      if ( isSelectable ==  1
+       || (isSelectable == -1
+        && aCtx->GetAutoActivateSelection()
+        && aShape->GetTransformPersistenceMode() == 0))
+      {
+        aSelMode = aShape->HasSelectionMode() ? aShape->SelectionMode() : -1;
+      }
 
       if (aShape->Type() == AIS_KOI_Datum)
       {
@@ -2984,17 +3565,34 @@ static int VDisplay2 (Draw_Interpretor& theDI,
       else
       {
         theDI << "Display " << aName.ToCString() << "\n";
-        // get the Shape from a name
-        TopoDS_Shape aNewShape = GetShapeFromName (aName.ToCString());
 
         // update the Shape in the AIS_Shape
+        TopoDS_Shape      aNewShape = GetShapeFromName (aName.ToCString());
         Handle(AIS_Shape) aShapePrs = Handle(AIS_Shape)::DownCast(aShape);
         if (!aShapePrs.IsNull())
         {
+          if (!aShapePrs->Shape().IsEqual (aNewShape))
+          {
+            toReDisplay = Standard_True;
+          }
           aShapePrs->Set (aNewShape);
         }
-        aCtx->Redisplay (aShape, Standard_False);
-        aCtx->Display   (aShape, Standard_False);
+        if (toReDisplay)
+        {
+          aCtx->Redisplay (aShape, Standard_False);
+        }
+
+        if (aSelMode == -1)
+        {
+          aCtx->Erase (aShape);
+        }
+        aCtx->Display (aShape, aDispMode, aSelMode,
+                       Standard_False, aShape->AcceptShapeDecomposition(),
+                       aDispStatus);
+        if (toDisplayInView)
+        {
+          aCtx->SetViewAffinity (aShape, ViewerTest::CurrentView(), Standard_True);
+        }
       }
     }
     else if (anObj->IsKind (STANDARD_TYPE (NIS_InteractiveObject)))
@@ -3644,30 +4242,56 @@ static Standard_Integer VState (Draw_Interpretor& theDI,
     return 1;
   }
 
-  TCollection_AsciiString anOption (theArgNb >= 2 ? theArgVec[1] : "");
-  anOption.LowerCase();
-  if (anOption == "-detectedEntities"
-   || anOption == "-entities")
+  Standard_Boolean toPrintEntities = Standard_False;
+  Standard_Boolean toCheckSelected = Standard_False;
+
+  for (Standard_Integer anArgIdx = 1; anArgIdx < theArgNb; ++anArgIdx)
+  {
+    TCollection_AsciiString anOption (theArgVec[anArgIdx]);
+    anOption.LowerCase();
+    if (anOption == "-detectedentities"
+      || anOption == "-entities")
+    {
+      toPrintEntities = Standard_True;
+    }
+    else if (anOption == "-hasselected")
+    {
+      toCheckSelected = Standard_True;
+    }
+  }
+
+  if (toCheckSelected)
+  {
+    aCtx->InitSelected();
+    TCollection_AsciiString hasSelected (static_cast<Standard_Integer> (aCtx->HasSelectedShape()));
+    theDI << "Check if context has selected shape: " << hasSelected << "\n";
+
+    return 0;
+  }
+
+  if (toPrintEntities)
   {
     theDI << "Detected entities:\n";
     Handle(StdSelect_ViewerSelector3d) aSelector = aCtx->HasOpenedContext() ? aCtx->LocalSelector() : aCtx->MainSelector();
-    for (aSelector->Init(); aSelector->More(); aSelector->Next())
+    for (aSelector->InitDetected(); aSelector->MoreDetected(); aSelector->NextDetected())
     {
-      Handle(SelectBasics_SensitiveEntity) anEntity = aSelector->Primitive (0);
-      Standard_Real aMatchDMin  = 0.0;
-      Standard_Real aMatchDepth = Precision::Infinite();
-      anEntity->Matches (aSelector->LastPickingArguments(), aMatchDMin, aMatchDepth);
-
+      const Handle(SelectBasics_SensitiveEntity)& anEntity = aSelector->DetectedEntity();
       Handle(SelectMgr_EntityOwner) anOwner    = Handle(SelectMgr_EntityOwner)::DownCast (anEntity->OwnerId());
       Handle(AIS_InteractiveObject) anObj      = Handle(AIS_InteractiveObject)::DownCast (anOwner->Selectable());
-
-      const gp_Lin aLine = aSelector->LastPickingArguments().PickLine();
-      const gp_Pnt aPnt  = aLine.Location().Translated (gp_Vec (aLine.Direction()) * aMatchDepth);
+      SelectMgr_SelectingVolumeManager aMgr = anObj->HasTransformation() ? aSelector->GetManager().Transform (anObj->InversedTransformation())
+                                                                         : aSelector->GetManager();
+      SelectBasics_PickResult aResult;
+      anEntity->Matches (aMgr, aResult);
+      NCollection_Vec3<Standard_Real> aDetectedPnt = aMgr.DetectedPoint (aResult.Depth());
 
       TCollection_AsciiString aName = GetMapOfAIS().Find1 (anObj);
       aName.LeftJustify (20, ' ');
       char anInfoStr[512];
-      Sprintf (anInfoStr, " Depth: %+.3f Distance: %+.3f Point: %+.3f %+.3f %+.3f", aMatchDepth, aMatchDMin, aPnt.X(), aPnt.Y(), aPnt.Z());
+      Sprintf (anInfoStr,
+               " Depth: %+.3f Distance: %+.3f Point: %+.3f %+.3f %+.3f",
+               aResult.Depth(),
+               aResult.DistToGeomCenter(),
+               aDetectedPnt.x(), aDetectedPnt.y(), aDetectedPnt.z());
       theDI << "  " << aName
             << anInfoStr
             << " (" << anEntity->DynamicType()->Name() << ")"
@@ -4304,73 +4928,6 @@ static int VDisplayType(Draw_Interpretor& , Standard_Integer argc, const char** 
   return 0;
 }
 
-//==============================================================================
-//function : VSetTransMode
-//purpose  :
-//Draw arg : vsettransmode shape flag1 [flag2] [flag3] [X Y Z]
-//==============================================================================
-
-static int VSetTransMode ( Draw_Interpretor& di, Standard_Integer argc, const char** argv ) {
-  // Verification des arguments
-  if ( a3DView().IsNull() ) {
-    ViewerTest::ViewerInit();
-    di << "La commande vinit n'a pas ete appele avant" << "\n";
-  }
-
-  if ( argc < 3 || argc > 8 ) {
-    di << argv[0] << " Invalid number of arguments" << "\n";
-    return 1;
-  }
-
-  TCollection_AsciiString shapeName;
-  shapeName = argv[1];
-  Standard_Integer persFlag1 = Draw::Atoi(argv[2]);
-  Standard_Integer persFlag2 = 0;
-  Standard_Integer persFlag3 = 0;
-  gp_Pnt origin = gp_Pnt( 0.0, 0.0, 0.0 );
-  if ( argc == 4 || argc == 5 || argc == 7 || argc == 8 ) {
-    persFlag2 = Draw::Atoi(argv[3]);
-  }
-  if ( argc == 5 || argc == 8 ) {
-    persFlag3 = Draw::Atoi(argv[4]);
-  }
-  if ( argc >= 6 ) {
-    origin.SetX( Draw::Atof(argv[argc - 3]) );
-    origin.SetY( Draw::Atof(argv[argc - 2]) );
-    origin.SetZ( Draw::Atof(argv[argc - 1]) );
-  }
-
-  Standard_Boolean IsBound = GetMapOfAIS().IsBound2(shapeName);
-  Handle(Standard_Transient) anObj;
-  if ( IsBound ) {
-    anObj = GetMapOfAIS().Find2(shapeName);
-    if ( anObj->IsKind(STANDARD_TYPE(AIS_InteractiveObject)) ) {
-      Handle(AIS_InteractiveObject) aShape = Handle(AIS_InteractiveObject)::DownCast(anObj);
-      aShape->SetTransformPersistence( (persFlag1 | persFlag2 | persFlag3), origin );
-      if ( persFlag1 == 0 && persFlag2 == 0 && persFlag3 == 0 ) {
-        di << argv[0] << " All persistence modifiers were removed" << "\n";
-      }
-    } else {
-      di << argv[0] << " Wrong object type" << "\n";
-      return 1;
-    }
-  } else { // Create the AIS_Shape from a name
-    const Handle(AIS_InteractiveObject) aShape = GetAISShapeFromName((const char* )shapeName.ToCString());
-    if ( !aShape.IsNull() ) {
-      GetMapOfAIS().Bind( aShape, shapeName );
-      aShape->SetTransformPersistence( (persFlag1 | persFlag2 | persFlag3), origin );
-      TheAISContext()->Display( aShape, Standard_False );
-    } else {
-      di << argv[0] << " Object not found" << "\n";
-      return 1;
-    }
-  }
-
-  // Upadate the screen and redraw the view
-  TheAISContext()->UpdateCurrentViewer();
-  return 0;
-}
-
 static Standard_Integer vr(Draw_Interpretor& , Standard_Integer , const char** a)
 {
   ifstream s(a[1]);
@@ -4381,6 +4938,129 @@ static Standard_Integer vr(Draw_Interpretor& , Standard_Integer , const char** a
   Handle(AIS_InteractiveContext) Ctx = ViewerTest::GetAISContext();
   Handle(AIS_Shape) ais = new AIS_Shape(shape);
   Ctx->Display(ais);
+  return 0;
+}
+
+//==============================================================================
+//function : VLoadSelection
+//purpose  : Adds given objects to map of AIS and loads selection primitives for them
+//==============================================================================
+static Standard_Integer VLoadSelection (Draw_Interpretor& /*theDi*/,
+                                        Standard_Integer theArgNb,
+                                        const char** theArgVec)
+{
+  if (theArgNb < 2)
+  {
+    std::cerr << theArgVec[0] << "Error: wrong number of arguments.\n";
+    return 1;
+  }
+
+  Handle(AIS_InteractiveContext) aCtx = ViewerTest::GetAISContext();
+  if (aCtx.IsNull())
+  {
+    ViewerTest::ViewerInit();
+    aCtx = ViewerTest::GetAISContext();
+  }
+
+  // Parse input arguments
+  TColStd_SequenceOfAsciiString aNamesOfIO;
+  Standard_Boolean isLocal = Standard_False;
+  for (Standard_Integer anArgIter = 1; anArgIter < theArgNb; ++anArgIter)
+  {
+    const TCollection_AsciiString aName     = theArgVec[anArgIter];
+    TCollection_AsciiString       aNameCase = aName;
+    aNameCase.LowerCase();
+    if (aNameCase == "-local")
+    {
+      isLocal = Standard_True;
+    }
+    else
+    {
+      aNamesOfIO.Append (aName);
+    }
+  }
+
+  if (aNamesOfIO.IsEmpty())
+  {
+    std::cerr << theArgVec[0] << "Error: wrong number of arguments.\n";
+    return 1;
+  }
+
+  // Prepare context
+  if (isLocal && !aCtx->HasOpenedContext())
+  {
+    aCtx->OpenLocalContext (Standard_False);
+  }
+  else if (!isLocal && aCtx->HasOpenedContext())
+  {
+    aCtx->CloseAllContexts (Standard_False);
+  }
+
+  // Load selection of interactive objects
+  for (Standard_Integer anIter = 1; anIter <= aNamesOfIO.Length(); ++anIter)
+  {
+    const TCollection_AsciiString& aName = aNamesOfIO.Value (anIter);
+
+    const Handle(AIS_InteractiveObject)& aShape = GetMapOfAIS().IsBound2 (aName) ?
+      Handle(AIS_InteractiveObject)::DownCast (GetMapOfAIS().Find2 (aName)) : GetAISShapeFromName (aName.ToCString());
+
+    if (!aShape.IsNull())
+    {
+      if (!GetMapOfAIS().IsBound2 (aName))
+      {
+        GetMapOfAIS().Bind (aShape, aName);
+      }
+
+      aCtx->Load (aShape, -1, Standard_False);
+      aCtx->Activate (aShape, aShape->SelectionMode(), Standard_True);
+    }
+  }
+
+  return 0;
+}
+
+//==============================================================================
+//function : VAutoActivateSelection
+//purpose  : Activates or deactivates auto computation of selection
+//==============================================================================
+static int VAutoActivateSelection (Draw_Interpretor& theDi,
+                                   Standard_Integer theArgNb,
+                                   const char** theArgVec)
+{
+
+  if (theArgNb > 2)
+  {
+    std::cerr << theArgVec[0] << "Error: wrong number of arguments.\n";
+    return 1;
+  }
+
+  Handle(AIS_InteractiveContext) aCtx = ViewerTest::GetAISContext();
+  if (aCtx.IsNull())
+  {
+    ViewerTest::ViewerInit();
+    aCtx = ViewerTest::GetAISContext();
+  }
+
+  if (theArgNb == 1)
+  {
+    TCollection_AsciiString aSelActivationString;
+    if (aCtx->GetAutoActivateSelection())
+    {
+      aSelActivationString.Copy ("ON");
+    }
+    else
+    {
+      aSelActivationString.Copy ("OFF");
+    }
+
+    theDi << "Auto activation of selection is: " << aSelActivationString << "\n";
+  }
+  else
+  {
+    Standard_Boolean toActivate = Draw::Atoi (theArgVec[1]);
+    aCtx->SetAutoActivateSelection (toActivate);
+  }
+
   return 0;
 }
 
@@ -4407,13 +5087,22 @@ void ViewerTest::Commands(Draw_Interpretor& theCommands)
       __FILE__, visos, group);
 
   theCommands.Add("vdisplay",
-      "vdisplay [-noupdate|-update] [-local] [-mutable] name1 [name2] ... [name n]"
+              "vdisplay [-noupdate|-update] [-local] [-mutable] [-overlay|-underlay]"
+      "\n\t\t:          [-trsfPers flags] [-trsfPersPos X Y [Z]] [-3d|-2d|-2dTopDown]"
+      "\n\t\t:          [-dispMode mode] [-highMode mode]"
+      "\n\t\t:          name1 [name2] ... [name n]"
       "\n\t\t: Displays named objects."
       "\n\t\t: Option -local enables displaying of objects in local"
       "\n\t\t: selection context. Local selection context will be opened"
       "\n\t\t: if there is not any."
-      "\n\t\t: Option -noupdate suppresses viewer redraw call."
-      "\n\t\t: Option -mutable enables optimizations for mutable objects.",
+      "\n\t\t:  -noupdate    suppresses viewer redraw call."
+      "\n\t\t:  -mutable     enables optimizations for mutable objects."
+      "\n\t\t:  -overlay     draws objects in overlay."
+      "\n\t\t:  -underlay    draws objects in underlay."
+      "\n\t\t:  -selectable|-noselect controls selection of objects."
+      "\n\t\t:  -trsfPers    sets a transform persistence flags."
+      "\n\t\t:  -trsfPersPos sets an anchor point for transform persistence."
+      "\n\t\t:  -2d|-2dTopDown displays object in screen coordinates.",
       __FILE__, VDisplay2, group);
 
   theCommands.Add ("vupdate",
@@ -4515,15 +5204,23 @@ void ViewerTest::Commands(Draw_Interpretor& theCommands)
 		  __FILE__,VSubInt,group);
 
   theCommands.Add("vaspects",
-              "vaspects [-noupdate|-update] [name1 [name2 [...]]]"
+              "vaspects [-noupdate|-update] [name1 [name2 [...]] | -defaults]"
+      "\n\t\t:          [-setvisibility 0|1]"
       "\n\t\t:          [-setcolor ColorName] [-setcolor R G B] [-unsetcolor]"
       "\n\t\t:          [-setmaterial MatName] [-unsetmaterial]"
       "\n\t\t:          [-settransparency Transp] [-unsettransparency]"
       "\n\t\t:          [-setwidth LineWidth] [-unsetwidth]"
+      "\n\t\t:          [-freeBoundary {off/on | 0/1}]"
+      "\n\t\t:          [-setFreeBoundaryWidth Width] [-unsetFreeBoundaryWidth]"
+      "\n\t\t:          [-setFreeBoundaryColor {ColorName | R G B}] [-unsetFreeBoundaryColor]"
       "\n\t\t:          [-subshapes subname1 [subname2 [...]]]"
       "\n\t\t: Manage presentation properties of all, selected or named objects."
       "\n\t\t: When -subshapes is specified than following properties will be"
-      "\n\t\t: assigned to specified sub-shapes.",
+      "\n\t\t: assigned to specified sub-shapes."
+      "\n\t\t: When -defaults is specified than presentation properties will be"
+      "\n\t\t: assigned to all objects that have not their own specified properties"
+      "\n\t\t: and to all objects to be displayed in the future."
+      "\n\t\t: If -defaults is used there should not be any objects' names and -subshapes specifier.",
 		  __FILE__,VAspects,group);
 
   theCommands.Add("vsetcolor",
@@ -4576,14 +5273,6 @@ void ViewerTest::Commands(Draw_Interpretor& theCommands)
       "\n\t\t: Where style is: 0 = EMPTY, 1 = HOLLOW, 2 = HATCH, 3 = SOLID, 4 = HIDDENLINE.",
 		  __FILE__,VSetInteriorStyle,group);
 
-  theCommands.Add("vardis",
-		  "vardis          : display activeareas",
-		  __FILE__,VDispAreas,group);
-
-  theCommands.Add("varera",
-		  "varera           : erase activeareas",
-		  __FILE__,VClearAreas,group);
-
   theCommands.Add("vsensdis",
 		  "vardisp           : display active entities",
 		  __FILE__,VDispSensi,group);
@@ -4592,7 +5281,9 @@ void ViewerTest::Commands(Draw_Interpretor& theCommands)
 		  __FILE__,VClearSensi,group);
 
   theCommands.Add("vselprecision",
-		  "vselprecision : vselprecision [precision_mode [tolerance_value]]",
+		  "vselprecision [-unset] [tolerance_value]"
+                  "\n\t\t  Manages selection precision or prints current value if no parameter is passed."
+                  "\n\t\t  -unset - restores default selection tolerance behavior, based on individual entity tolerance",
 		  __FILE__,VSelPrecision,group);
 
   theCommands.Add("vperf",
@@ -4664,9 +5355,10 @@ void ViewerTest::Commands(Draw_Interpretor& theCommands)
 		  __FILE__,VActivatedMode,group);
 
   theCommands.Add("vstate",
-      "vstate [-entities] [name1] ... [nameN]"
+      "vstate [-entities] [-hasSelected] [name1] ... [nameN]"
       "\n\t\t: Reports show/hidden state for selected or named objects"
-      "\n\t\t:   -entities - print low-level information about detected entities",
+      "\n\t\t:   -entities - print low-level information about detected entities"
+      "\n\t\t:   -hasSelected - prints 1 if context has selected shape and 0 otherwise",
 		  __FILE__,VState,group);
 
   theCommands.Add("vpickshapes",
@@ -4677,15 +5369,23 @@ void ViewerTest::Commands(Draw_Interpretor& theCommands)
 		  "vtypes : list of known types and signatures in AIS - To be Used in vpickobject command for selection with filters",
 		  VIOTypes,group);
 
-  theCommands.Add("vsettransmode",
-		  "vsettransmode   : vsettransmode shape flag1 [flag2] [flag3] [X Y Z]",
-		  __FILE__,VSetTransMode,group);
-
   theCommands.Add("vr", "vr : reading of the shape",
 		  __FILE__,vr, group);
 
   theCommands.Add("vpickselected", "vpickselected [name]: extract selected shape.",
     __FILE__, VPickSelected, group);
+
+  theCommands.Add ("vloadselection",
+    "vloadselection [-context] [name1] ... [nameN] : allows to load selection"
+    "\n\t\t: primitives for the shapes with names given without displaying them."
+    "\n\t\t:   -local - open local context before selection computation",
+    __FILE__, VLoadSelection, group);
+
+  theCommands.Add ("vautoactivatesel",
+    "vautoactivatesel [0|1] : manage or display the option to automatically"
+    "\n\t\t: activate selection for newly displayed objects"
+    "\n\t\t:   [0|1] - turn off | on auto activation of selection",
+    __FILE__, VAutoActivateSelection, group);
 
 }
 

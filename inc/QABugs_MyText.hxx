@@ -16,14 +16,13 @@
 #include <Standard_CString.hxx>
 #include <Standard_Real.hxx>
 #include <AIS_InteractiveObject.hxx>
-#include <Standard_Integer.hxx>
 #include <PrsMgr_PresentationManager3d.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-#include <Handle_SelectMgr_Selection.hxx>
+#include <Standard_Integer.hxx>
+#include <SelectMgr_Selection.hxx>
 class TCollection_ExtendedString;
 class gp_Pnt;
 class Prs3d_Presentation;
-class SelectMgr_Selection;
 
 
 
@@ -44,8 +43,6 @@ public:
 
 protected:
 
-  
-  Standard_EXPORT virtual   Standard_Integer NbPossibleSelection()  const;
   
   Standard_EXPORT virtual   void Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager, const Handle(Prs3d_Presentation)& aPresentation, const Standard_Integer aMode = 0) ;
   

@@ -122,9 +122,9 @@ GeomAbs_Shape Geom2dAdaptor_Curve::LocalContinuity(const Standard_Real U1,
 //=======================================================================
 
 Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()
- : myTypeCurve(GeomAbs_OtherCurve),
-   myFirst(0.),
-   myLast(0.)
+: myTypeCurve(GeomAbs_OtherCurve),
+  myFirst    (0.0),
+  myLast     (0.0)
 {
 }
 
@@ -133,9 +133,12 @@ Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()
 //purpose  : 
 //=======================================================================
 
-Geom2dAdaptor_Curve::Geom2dAdaptor_Curve(const Handle(Geom2d_Curve)& C) 
+Geom2dAdaptor_Curve::Geom2dAdaptor_Curve(const Handle(Geom2d_Curve)& theCrv)
+: myTypeCurve(GeomAbs_OtherCurve),
+  myFirst    (0.0),
+  myLast     (0.0)
 {
-  Load(C);
+  Load(theCrv);
 }
 
 //=======================================================================
@@ -143,11 +146,14 @@ Geom2dAdaptor_Curve::Geom2dAdaptor_Curve(const Handle(Geom2d_Curve)& C)
 //purpose  : 
 //=======================================================================
 
-Geom2dAdaptor_Curve::Geom2dAdaptor_Curve(const Handle(Geom2d_Curve)& C,
-					 const Standard_Real UFirst,
-					 const Standard_Real ULast) 
+Geom2dAdaptor_Curve::Geom2dAdaptor_Curve(const Handle(Geom2d_Curve)& theCrv,
+                                         const Standard_Real theUFirst,
+                                         const Standard_Real theULast)
+: myTypeCurve(GeomAbs_OtherCurve),
+  myFirst    (theUFirst),
+  myLast     (theULast)
 {
-  Load(C,UFirst,ULast);
+  Load(theCrv, theUFirst, theULast);
 }
 
 
@@ -214,12 +220,15 @@ GeomAbs_Shape Geom2dAdaptor_Curve::Continuity() const
   }
   else if (myCurve->IsKind(STANDARD_TYPE(Geom2d_OffsetCurve))){
     GeomAbs_Shape S = 
-      (*((Handle(Geom2d_OffsetCurve)*)&myCurve))->BasisCurve()->Continuity(); 
+      (*((Handle(Geom2d_OffsetCurve)*)&myCurve))->GetBasisCurveContinuity(); 
     switch(S){
     case GeomAbs_CN: return GeomAbs_CN;
     case GeomAbs_C3: return GeomAbs_C2;
     case GeomAbs_C2: return GeomAbs_C1;
     case GeomAbs_C1: return GeomAbs_C0;  
+    case GeomAbs_G1: return GeomAbs_G1;
+    case GeomAbs_G2: return GeomAbs_G2;
+
     default:
       Standard_NoSuchObject::Raise("Geom2dAdaptor_Curve::Continuity");
     }

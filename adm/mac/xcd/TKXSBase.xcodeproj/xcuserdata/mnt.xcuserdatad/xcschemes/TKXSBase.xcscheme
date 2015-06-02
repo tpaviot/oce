@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0EBC0CD30C0517530A59142C"
+               BlueprintIdentifier = "0D4D122B110D136F00D30032"
                BuildableName = "libTKXSBase.dylib"
                BlueprintName = "TKXSBase"
                ReferencedContainer = "container:TKXSBase.xcodeproj">

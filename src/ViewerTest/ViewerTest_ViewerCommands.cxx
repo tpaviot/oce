@@ -16,7 +16,6 @@
 
 #include <OpenGl_GlCore20.hxx>
 #include <AIS_Shape.hxx>
-#include <AIS_Drawer.hxx>
 #include <AIS_InteractiveObject.hxx>
 #include <AIS_ListOfInteractive.hxx>
 #include <AIS_ListIteratorOfListOfInteractive.hxx>
@@ -24,6 +23,7 @@
 #include <Graphic3d_AspectMarker3d.hxx>
 #include <Graphic3d_ExportFormat.hxx>
 #include <Graphic3d_NameOfTextureEnv.hxx>
+#include <Graphic3d_GraduatedTrihedron.hxx>
 #include <Graphic3d_TextureEnv.hxx>
 #include <Graphic3d_TextureParams.hxx>
 #include <Graphic3d_TypeOfTextureFilter.hxx>
@@ -36,6 +36,7 @@
 #include <Visual3d_View.hxx>
 #include <Visual3d_ViewManager.hxx>
 #include <V3d_AmbientLight.hxx>
+#include <V3d_ColorScale.hxx>
 #include <V3d_DirectionalLight.hxx>
 #include <V3d_LayerMgr.hxx>
 #include <V3d_LayerMgrPointer.hxx>
@@ -72,6 +73,7 @@
 #include <NCollection_DataMap.hxx>
 #include <Graphic3d_Texture2Dmanual.hxx>
 #include <Prs3d_ShadingAspect.hxx>
+#include <Prs3d_Drawer.hxx>
 
 #ifdef WNT
 #undef DrawText
@@ -891,7 +893,7 @@ static int VHLR (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
         {
           continue;
         }
-        aShape->Redisplay();
+        ViewerTest::GetAISContext()->Redisplay (aShape, Standard_False);
       }
     }
   }
@@ -937,7 +939,7 @@ static int VHLRType (Draw_Interpretor& di, Standard_Integer argc, const char** a
       if (aShape->TypeOfHLR() != aTypeOfHLR)
         aShape->SetTypeOfHLR (aTypeOfHLR);
       if (MyHLRIsOn)
-        aShape->Redisplay();
+        ViewerTest::GetAISContext()->Redisplay (aShape, Standard_False);
     }
     ViewerTest::CurrentView()->Update();
     return 0;
@@ -960,7 +962,7 @@ static int VHLRType (Draw_Interpretor& di, Standard_Integer argc, const char** a
         continue;
       anAISObject->SetTypeOfHLR (aTypeOfHLR);
       if (MyHLRIsOn)
-        anAISObject->Redisplay();
+        ViewerTest::GetAISContext()->Redisplay (anAISObject, Standard_False);
     }
     ViewerTest::CurrentView()->Update();
   }
@@ -1384,7 +1386,7 @@ void VT_ProcessKeyPress (const char* buf_ret)
           aShape->SetTypeOfHLR (Prs3d_TOH_Algo);
         else
           aShape->SetTypeOfHLR (Prs3d_TOH_PolyAlgo);
-        aShape->Redisplay();
+        aContext->Redisplay (aShape, Standard_False);
       }
     }
     else
@@ -1398,7 +1400,7 @@ void VT_ProcessKeyPress (const char* buf_ret)
           aShape->SetTypeOfHLR (Prs3d_TOH_Algo);
         else
           aShape->SetTypeOfHLR (Prs3d_TOH_PolyAlgo);
-        aShape->Redisplay();
+        aContext->Redisplay (aShape, Standard_False);
       }
     }
 
@@ -1604,13 +1606,13 @@ void VT_ProcessButton1Release (Standard_Boolean theIsShift)
     Handle(ViewerTest_EventManager) EM = ViewerTest::CurrentEventManager();
     if (theIsShift)
     {
-      EM->ShiftSelect (Min (X_ButtonPress, X_Motion), Max (Y_ButtonPress, Y_Motion),
-                       Max (X_ButtonPress, X_Motion), Min (Y_ButtonPress, Y_Motion));
+      EM->ShiftSelect (X_ButtonPress, Y_ButtonPress,
+                       X_Motion, Y_Motion);
     }
     else
     {
-      EM->Select (Min (X_ButtonPress, X_Motion), Max (Y_ButtonPress, Y_Motion),
-                  Max (X_ButtonPress, X_Motion), Min (Y_ButtonPress, Y_Motion));
+      EM->Select (X_ButtonPress, Y_ButtonPress,
+                  X_Motion, Y_Motion);
     }
   }
 }
@@ -1654,29 +1656,24 @@ void ProcessZClipMotion()
 {
   Handle(V3d_View)  a3DView = ViewerTest::CurrentView();
   if ( Abs(X_Motion - X_ButtonPress) > 2 ) {
-    static Standard_Real CurZPos = 0.;
 
     //Quantity_Length VDX, VDY;
     //a3DView->Size(VDX,VDY);
     //Standard_Real VDZ = a3DView->ZSize();
     //printf("View size (%lf,%lf,%lf)\n", VDX, VDY, VDZ);
 
-    Quantity_Length dx = a3DView->Convert(X_Motion - X_ButtonPress);
+    Quantity_Length aDx = a3DView->Convert(X_Motion - X_ButtonPress);
 
     // Front = Depth + width/2.
-    Standard_Real D = 0.5;
-    Standard_Real W = 0.1;
+    Standard_Real aDepth = 0.5;
+    Standard_Real aWidth = 0.1;
+    a3DView->ZClipping(aDepth,aWidth);
 
-    CurZPos += (dx);
-
-    D += CurZPos;
+    aDepth += aDx;
 
     //printf("dx %lf Depth %lf Width %lf\n", dx, D, W);
 
-    a3DView->SetZClippingType(V3d_OFF);
-    a3DView->SetZClippingDepth(D);
-    a3DView->SetZClippingWidth(W);
-    a3DView->SetZClippingType(V3d_FRONT);
+    a3DView->SetZClippingDepth(aDepth);
 
     a3DView->Redraw();
 
@@ -2012,6 +2009,16 @@ static LRESULT WINAPI ViewerWindowProc( HWND hwnd,
         if (wParam == VK_DELETE)
         {
           c[0] = THE_KEY_DELETE;
+        }
+        // comma
+        else if (wParam == VK_OEM_COMMA)
+        {
+          c[0] = ',';
+        }
+        // dot
+        else if (wParam == VK_OEM_PERIOD)
+        {
+          c[0] = '.';
         }
         VT_ProcessKeyPress (c);
       }
@@ -2845,93 +2852,228 @@ static int VScale(Draw_Interpretor& di, Standard_Integer argc, const char** argv
   return 0;
 }
 //==============================================================================
-//function : VTestZBuffTrihedron
-//purpose  : Displays a V3d_ZBUFFER'ed or V3d_WIREFRAME'd trihedron
+//function : VZBuffTrihedron
+//purpose  :
 //==============================================================================
 
-static int VTestZBuffTrihedron(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+static int VZBuffTrihedron (Draw_Interpretor& /*theDI*/,
+                            Standard_Integer  theArgNb,
+                            const char**      theArgVec)
 {
-  Handle(V3d_View) V3dView = ViewerTest::CurrentView();
-  if ( V3dView.IsNull() ) return 1;
-
-  V3dView->ZBufferTriedronSetup();
-
-  if ( argc == 1 ) {
-    // Set up default trihedron parameters
-    V3dView->TriedronDisplay( Aspect_TOTP_LEFT_LOWER, Quantity_NOC_WHITE, 0.1, V3d_ZBUFFER );
-  } else
-  if ( argc == 7 )
+  Handle(V3d_View) aView = ViewerTest::CurrentView();
+  if (aView.IsNull())
   {
-    Aspect_TypeOfTriedronPosition aPosition = Aspect_TOTP_LEFT_LOWER;
-    const char* aPosType = argv[1];
-
-    if ( strcmp(aPosType, "center") == 0 )
-    {
-      aPosition = Aspect_TOTP_CENTER;
-    } else
-    if (strcmp(aPosType, "left_lower") == 0)
-    {
-      aPosition = Aspect_TOTP_LEFT_LOWER;
-    } else
-    if (strcmp(aPosType, "left_upper") == 0)
-    {
-      aPosition = Aspect_TOTP_LEFT_UPPER;
-    } else
-    if (strcmp(aPosType, "right_lower") == 0)
-    {
-      aPosition = Aspect_TOTP_RIGHT_LOWER;
-    } else
-    if (strcmp(aPosType, "right_upper") == 0)
-    {
-      aPosition = Aspect_TOTP_RIGHT_UPPER;
-    } else
-    {
-      di << argv[1] << " Invalid type of alignment"  << "\n";
-      di << "Must be one of [ center, left_lower,"   << "\n";
-      di << "left_upper, right_lower, right_upper ]" << "\n";
-      return 1;
-    }
-
-    Standard_Real R = Draw::Atof(argv[2])/255.;
-    Standard_Real G = Draw::Atof(argv[3])/255.;
-    Standard_Real B = Draw::Atof(argv[4])/255.;
-    Quantity_Color aColor(R, G, B, Quantity_TOC_RGB);
-
-    Standard_Real aScale = Draw::Atof(argv[5]);
-
-    if( aScale <= 0.0 )
-    {
-      di << argv[5] << " Invalid value. Must be > 0" << "\n";
-      return 1;
-    }
-
-    V3d_TypeOfVisualization aPresentation = V3d_ZBUFFER;
-    const char* aPresType = argv[6];
-
-    if ( strcmp(aPresType, "wireframe") == 0 )
-    {
-      aPresentation = V3d_WIREFRAME;
-    } else
-    if (strcmp(aPresType, "zbuffer") == 0)
-    {
-      aPresentation = V3d_ZBUFFER;
-    } else
-    {
-      di << argv[6] << " Invalid type of visualization" << "\n";
-      di << "Must be one of [ wireframe, zbuffer ]"     << "\n";
-      return 1;
-    }
-
-    V3dView->TriedronDisplay( aPosition, aColor.Name(), aScale, aPresentation );
-
-  } else
-  {
-    di << argv[0] << " Invalid number of arguments" << "\n";
+    std::cout << "Error: no active viewer!\n";
     return 1;
   }
 
-  V3dView->View()->ZFitAll();
+  ViewerTest_AutoUpdater anUpdateTool (ViewerTest::GetAISContext(), aView);
 
+  Aspect_TypeOfTriedronPosition aPosition     = Aspect_TOTP_LEFT_LOWER;
+  V3d_TypeOfVisualization       aVisType      = V3d_ZBUFFER;
+  Quantity_Color                aLabelsColor  = Quantity_NOC_WHITE;
+  Quantity_Color                anArrowColorX = Quantity_NOC_RED;
+  Quantity_Color                anArrowColorY = Quantity_NOC_GREEN;
+  Quantity_Color                anArrowColorZ = Quantity_NOC_BLUE1;
+  Standard_Real                 aScale        = 0.1;
+  Standard_Real                 aSizeRatio    = 0.8;
+  Standard_Real                 anArrowDiam   = 0.05;
+  Standard_Integer              aNbFacets     = 12;
+  for (Standard_Integer anArgIter = 1; anArgIter < theArgNb; ++anArgIter)
+  {
+    Standard_CString        anArg = theArgVec[anArgIter];
+    TCollection_AsciiString aFlag (anArg);
+    aFlag.LowerCase();
+    if (anUpdateTool.parseRedrawMode (aFlag))
+    {
+      continue;
+    }
+    else if (aFlag == "-on")
+    {
+      continue;
+    }
+    else if (aFlag == "-off")
+    {
+      aView->TriedronErase();
+      return 0;
+    }
+    else if (aFlag == "-pos"
+          || aFlag == "-position"
+          || aFlag == "-corner")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+
+      TCollection_AsciiString aPosName (theArgVec[anArgIter]);
+      aPosName.LowerCase();
+      if (aPosName == "center")
+      {
+        aPosition = Aspect_TOTP_CENTER;
+      }
+      else if (aPosName == "left_lower"
+            || aPosName == "lower_left"
+            || aPosName == "leftlower"
+            || aPosName == "lowerleft")
+      {
+        aPosition = Aspect_TOTP_LEFT_LOWER;
+      }
+      else if (aPosName == "left_upper"
+            || aPosName == "upper_left"
+            || aPosName == "leftupper"
+            || aPosName == "upperleft")
+      {
+        aPosition = Aspect_TOTP_LEFT_UPPER;
+      }
+      else if (aPosName == "right_lower"
+            || aPosName == "lower_right"
+            || aPosName == "rightlower"
+            || aPosName == "lowerright")
+      {
+        aPosition = Aspect_TOTP_RIGHT_LOWER;
+      }
+      else if (aPosName == "right_upper"
+            || aPosName == "upper_right"
+            || aPosName == "rightupper"
+            || aPosName == "upperright")
+      {
+        aPosition = Aspect_TOTP_RIGHT_UPPER;
+      }
+      else
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "' - unknown position '" << aPosName << "'\n";
+        return 1;
+      }
+    }
+    else if (aFlag == "-type")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+
+      TCollection_AsciiString aTypeName (theArgVec[anArgIter]);
+      aTypeName.LowerCase();
+      if (aTypeName == "wireframe"
+       || aTypeName == "wire")
+      {
+        aVisType = V3d_WIREFRAME;
+      }
+      else if (aTypeName == "zbuffer"
+            || aTypeName == "shaded")
+      {
+        aVisType = V3d_ZBUFFER;
+      }
+      else
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "' - unknown type '" << aTypeName << "'\n";
+      }
+    }
+    else if (aFlag == "-scale")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+
+      aScale = Draw::Atof (theArgVec[anArgIter]);
+    }
+    else if (aFlag == "-size"
+          || aFlag == "-sizeratio")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+
+      aSizeRatio = Draw::Atof (theArgVec[anArgIter]);
+    }
+    else if (aFlag == "-arrowdiam"
+          || aFlag == "-arrowdiameter")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+
+      anArrowDiam = Draw::Atof (theArgVec[anArgIter]);
+    }
+    else if (aFlag == "-nbfacets")
+    {
+      if (++anArgIter >= theArgNb)
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+
+      aNbFacets = Draw::Atoi (theArgVec[anArgIter]);
+    }
+    else if (aFlag == "-colorlabel"
+          || aFlag == "-colorlabels")
+    {
+      Standard_Integer aNbParsed = ViewerTest::ParseColor (theArgNb  - anArgIter - 1,
+                                                           theArgVec + anArgIter + 1,
+                                                           aLabelsColor);
+      if (aNbParsed == 0)
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+      anArgIter += aNbParsed;
+    }
+    else if (aFlag == "-colorarrowx")
+    {
+      Standard_Integer aNbParsed = ViewerTest::ParseColor (theArgNb  - anArgIter - 1,
+                                                           theArgVec + anArgIter + 1,
+                                                           anArrowColorX);
+      if (aNbParsed == 0)
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+      anArgIter += aNbParsed;
+    }
+    else if (aFlag == "-colorarrowy")
+    {
+      Standard_Integer aNbParsed = ViewerTest::ParseColor (theArgNb  - anArgIter - 1,
+                                                           theArgVec + anArgIter + 1,
+                                                           anArrowColorY);
+      if (aNbParsed == 0)
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+      anArgIter += aNbParsed;
+    }
+    else if (aFlag == "-colorarrowz")
+    {
+      Standard_Integer aNbParsed = ViewerTest::ParseColor (theArgNb  - anArgIter - 1,
+                                                           theArgVec + anArgIter + 1,
+                                                           anArrowColorZ);
+      if (aNbParsed == 0)
+      {
+        std::cerr << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+      anArgIter += aNbParsed;
+    }
+    else
+    {
+      std::cerr << "Error: wrong syntax at '" << anArg << "'\n";
+      return 1;
+    }
+  }
+
+  aView->ZBufferTriedronSetup (anArrowColorX.Name(), anArrowColorY.Name(), anArrowColorZ.Name(),
+                               aSizeRatio, anArrowDiam, aNbFacets);
+  aView->TriedronDisplay (aPosition, aLabelsColor.Name(), aScale, aVisType);
+  aView->View()->ZFitAll();
   return 0;
 }
 
@@ -2940,22 +3082,84 @@ static int VTestZBuffTrihedron(Draw_Interpretor& di, Standard_Integer argc, cons
 //purpose  : Camera Rotating
 //==============================================================================
 
-static int VRotate( Draw_Interpretor& di, Standard_Integer argc, const char** argv ) {
-  Handle(V3d_View) V3dView = ViewerTest::CurrentView();
-  if ( V3dView.IsNull() ) {
+static int VRotate (Draw_Interpretor& /*theDi*/, Standard_Integer theArgNb, const char** theArgVec)
+{
+  Handle(V3d_View) aView = ViewerTest::CurrentView();
+  if (aView.IsNull())
+  {
+    std::cout << "No active view!\n";
     return 1;
   }
 
-  if ( argc == 4 ) {
-    V3dView->Rotate( Draw::Atof(argv[1]), Draw::Atof(argv[2]), Draw::Atof(argv[3]) );
-    return 0;
-  } else if ( argc == 7 ) {
-    V3dView->Rotate( Draw::Atof(argv[1]), Draw::Atof(argv[2]), Draw::Atof(argv[3]), Draw::Atof(argv[4]), Draw::Atof(argv[5]), Draw::Atof(argv[6]) );
-    return 0;
-  } else {
-    di << argv[0] << " Invalid number of arguments" << "\n";
-    return 1;
+  Standard_Boolean hasFlags = Standard_False;
+  for (Standard_Integer anArgIter = 1; anArgIter < theArgNb; ++anArgIter)
+  {
+    Standard_CString        anArg (theArgVec[anArgIter]);
+    TCollection_AsciiString aFlag (anArg);
+    aFlag.LowerCase();
+    if (aFlag == "-mousestart"
+     || aFlag == "-mousefrom")
+    {
+      hasFlags = Standard_True;
+      if (anArgIter + 2 >= theArgNb)
+      {
+        std::cout << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+
+      Standard_Integer anX = Draw::Atoi (theArgVec[++anArgIter]);
+      Standard_Integer anY = Draw::Atoi (theArgVec[++anArgIter]);
+      aView->StartRotation (anX, anY);
+    }
+    else if (aFlag == "-mousemove")
+    {
+      hasFlags = Standard_True;
+      if (anArgIter + 2 >= theArgNb)
+      {
+        std::cout << "Error: wrong syntax at '" << anArg << "'\n";
+        return 1;
+      }
+
+      Standard_Integer anX = Draw::Atoi (theArgVec[++anArgIter]);
+      Standard_Integer anY = Draw::Atoi (theArgVec[++anArgIter]);
+      aView->Rotation (anX, anY);
+    }
+    else if (theArgNb != 4
+          && theArgNb != 7)
+    {
+      std::cout << "Error: wrong syntax at '" << anArg << "'\n";
+      return 1;
+    }
   }
+
+  if (hasFlags)
+  {
+    return 0;
+  }
+  else if (theArgNb == 4)
+  {
+    Standard_Real anAX = Draw::Atof (theArgVec[1]);
+    Standard_Real anAY = Draw::Atof (theArgVec[2]);
+    Standard_Real anAZ = Draw::Atof (theArgVec[3]);
+    aView->Rotate (anAX, anAY, anAZ);
+    return 0;
+  }
+  else if (theArgNb == 7)
+  {
+    Standard_Real anAX = Draw::Atof (theArgVec[1]);
+    Standard_Real anAY = Draw::Atof (theArgVec[2]);
+    Standard_Real anAZ = Draw::Atof (theArgVec[3]);
+
+    Standard_Real anX = Draw::Atof (theArgVec[4]);
+    Standard_Real anY = Draw::Atof (theArgVec[5]);
+    Standard_Real anZ = Draw::Atof (theArgVec[6]);
+
+    aView->Rotate (anAX, anAY, anAZ, anX, anY, anZ);
+    return 0;
+  }
+
+  std::cout << "Error: Invalid number of arguments\n";
+  return 1;
 }
 
 //==============================================================================
@@ -3001,6 +3205,29 @@ static int VPan( Draw_Interpretor& di, Standard_Integer argc, const char** argv 
   }
 }
 
+//==============================================================================
+//function : VPlace
+//purpose  : Place the point (in pixels) at the center of the window
+//==============================================================================
+static int VPlace (Draw_Interpretor& /*theDi*/, Standard_Integer theArgNb, const char** theArgs)
+{
+  Handle(V3d_View) aView = ViewerTest::CurrentView();
+  if (aView.IsNull())
+  {
+    std::cerr << theArgs[0] << "Error: no active view." << std::endl;
+    return 1;
+  }
+
+  if (theArgNb != 3)
+  {
+    std::cerr << theArgs[0] << "Error: invalid number of arguments." << std::endl;
+    return 1;
+  }
+
+  aView->Place (Draw::Atoi (theArgs[1]), Draw::Atoi (theArgs[2]), aView->Scale());
+
+  return 0;
+}
 
 //==============================================================================
 //function : VExport
@@ -3090,165 +3317,798 @@ static int VExport(Draw_Interpretor& di, Standard_Integer argc, const char** arg
 //function : VColorScale
 //purpose  : representation color scale
 //==============================================================================
-#include <V3d_ColorScale.hxx>
 
-static int VColorScale (Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
+static Standard_Boolean checkColor (const TCollection_AsciiString& theRed,
+                                    const TCollection_AsciiString& theGreen,
+                                    const TCollection_AsciiString& theBlue,
+                                                    Standard_Real& theRedValue,
+                                                    Standard_Real& theGreenValue,
+                                                    Standard_Real& theBlueValue)
 {
-  if ( argc != 1 && argc != 4 && argc != 5 && argc != 6 && argc != 8 )
+  if (!theRed.IsRealValue()
+   || !theGreen.IsRealValue()
+   || !theBlue.IsRealValue())
   {
-    di << "Usage : " << argv[0] << " [RangeMin = 0 RangeMax = 100 Intervals = 10 HeightFont = 16 Position = Right X = 0 Y = 0]  " << "\n";
-    return 1;
+    std::cout << "Error: RGB color values should be real!\n";
+    return Standard_True;
   }
+  theRedValue = theRed    .RealValue();
+  theGreenValue = theGreen.RealValue();
+  theBlueValue = theBlue  .RealValue();
+  if (theRedValue < 0.0 || theRedValue > 1.0
+   || theGreenValue < 0.0 || theGreenValue > 1.0
+   || theBlueValue < 0.0 || theBlueValue > 1.0)
+  {
+    std::cout << "Error: RGB color values should be within range 0..1!\n";
+    return Standard_True;
+  }
+  return Standard_False;
+}
 
+static int VColorScale (Draw_Interpretor& theDI,
+                        Standard_Integer  theArgNb,
+                        const char**      theArgVec)
+{
   Handle(AIS_InteractiveContext) aContext = ViewerTest::GetAISContext();
-  if(aContext.IsNull()) {
-    di << argv[0] << " ERROR : use 'vinit' command before " << "\n";
-    return -1;
-  }
-
-  Standard_Real minRange = 0. , maxRange = 100. ;
-
-  Standard_Integer numIntervals = 10 ;
-  Standard_Integer textHeight = 16;
-  Aspect_TypeOfColorScalePosition position = Aspect_TOCSP_RIGHT;
-  Standard_Real X = 0., Y = 0. ;
-
-  if ( argc < 9 )
+  Handle(V3d_View)               aView    = ViewerTest::CurrentView();
+  if (aContext.IsNull())
   {
-     if( argc > 3 )
-     {
-       minRange = Draw::Atof( argv[1] );
-       maxRange = Draw::Atof( argv[2] );
-       numIntervals = Draw::Atoi( argv[3] );
-     }
-     if ( argc > 4 )
-       textHeight = Draw::Atoi( argv[4] );
-     if ( argc > 5 )
-       position = (Aspect_TypeOfColorScalePosition)Draw::Atoi( argv[5] );
-     if ( argc > 7 )
-     {
-       X = Draw::Atof( argv[6] );
-       Y = Draw::Atof( argv[7] );
-     }
-  }
-  Handle(V3d_View) curView = ViewerTest::CurrentView( );
-  if ( curView.IsNull( ) )
+    std::cout << "Error: no active view!\n";
     return 1;
-  Handle(Aspect_ColorScale) aCSV = curView->ColorScale( );
-  Handle(V3d_ColorScale) aCS = ( Handle( V3d_ColorScale )::DownCast( aCSV ) );
-  if( ! aCS.IsNull( ) )
-  {
-    aCS->SetPosition( X , Y );
-    aCS->SetHeight( 0.95) ;
-    aCS->SetTextHeight( textHeight );
-    aCS->SetRange( minRange , maxRange );
-    aCS->SetNumberOfIntervals( numIntervals );
-    aCS->SetLabelPosition( position );
-    if( !curView->ColorScaleIsDisplayed() )
-      curView->ColorScaleDisplay( );
   }
+
+  Handle(V3d_ColorScale) aCS = Handle(V3d_ColorScale)::DownCast (aView->ColorScale());
+  if (aCS.IsNull())
+  {
+    std::cout << "Error: color scale is undefined!\n";
+    return 1;
+  }
+
+  Standard_Real                   aMinRange    = aCS->GetMin();
+  Standard_Real                   aMaxRange    = aCS->GetMax();
+  Standard_Integer                aNbIntervals = aCS->GetNumberOfIntervals();
+  Standard_Integer                aTextHeight  = aCS->GetTextHeight();
+  Aspect_TypeOfColorScalePosition aLabPosition = aCS->GetLabelPosition();
+  gp_XY                           aPos (aCS->GetXPosition(), aCS->GetYPosition());
+
+  ViewerTest_AutoUpdater anUpdateTool (aContext, aView);
+
+  if (theArgNb <= 1)
+  {
+    theDI << "Current color scale parameters:\n"
+          << "Min range: " << aMinRange << "\n"
+          << "Max range: " << aMaxRange << "\n"
+          << "Number of intervals: " << aNbIntervals << "\n"
+          << "Text height: " << aTextHeight << "\n"
+          << "Color scale position: " << aPos.X() <<" "<< aPos.Y()<< "\n"
+          << "Color scale title: " << aCS->GetTitle() << "\n"
+          << "Label position: ";
+    switch (aLabPosition)
+    {
+      case Aspect_TOCSP_NONE:
+        theDI << "None\n";
+        break;
+      case Aspect_TOCSP_LEFT:
+        theDI << "Left\n";
+        break;
+      case Aspect_TOCSP_RIGHT:
+        theDI << "Right\n";
+        break;
+      case Aspect_TOCSP_CENTER:
+        theDI << "Center\n";
+        break;
+    }
+    return 0;
+  }
+  Standard_CString        aFirstArg = theArgVec[1];
+  TCollection_AsciiString aFlag (aFirstArg);
+  aFlag.LowerCase();
+  if (aFlag == "-hide" ||
+      aFlag == "-erase")
+  {
+    if (theArgNb > 2)
+    {
+      std::cout << "Error: wrong syntax at argument '" << theArgVec[1] << "'!\n";
+      return 1;
+    }
+    if (!aView->ColorScaleIsDisplayed())
+    {
+      std::cout << "Error: color scale is not displayed!\n";
+      return 1;
+   }
+    else
+    {
+      aView->ColorScaleErase();
+      return 0;
+    }
+  }
+  else if (aFlag == "-show" ||
+           aFlag == "-display")
+  {
+    if (theArgNb > 2)
+    {
+      std::cout << "Error: wrong syntax at argument '" << theArgVec[1] << "'!\n";
+      return 1;
+    }
+    aView->ColorScaleDisplay();
+    return 0;
+  }
+
+  for (Standard_Integer anArgIter = 1; anArgIter < theArgNb; ++anArgIter)
+  {
+    Standard_CString        anArg = theArgVec[anArgIter];
+    TCollection_AsciiString aFlag (anArg);
+    aFlag.LowerCase();
+    if (anUpdateTool.parseRedrawMode (aFlag))
+    {
+      continue;
+    }
+    else if (aFlag == "-range")
+    {
+      if (anArgIter + 3 >= theArgNb)
+      {
+        std::cout << "Error: wrong syntax at argument '" << anArg << "'!\n";
+        return 1;
+      }
+
+      TCollection_AsciiString anArg1 (theArgVec[++anArgIter]);
+      TCollection_AsciiString anArg2 (theArgVec[++anArgIter]);
+      TCollection_AsciiString anArg3 (theArgVec[++anArgIter]);
+      if (!anArg1.IsRealValue())
+      {
+        std::cout << "Error: the minRange value should be real!\n";
+        return 1;
+      }
+      else if (!anArg2.IsRealValue())
+      {
+        std::cout << "Error: the maxRange value should be real!\n";
+        return 1;
+      }
+      else if (!anArg3.IsIntegerValue())
+      {
+        std::cout << "Error: the number of intervals should be integer!\n";
+        return 1;
+      }
+
+      aMinRange    = anArg1.RealValue();
+      aMaxRange    = anArg2.RealValue();
+      aNbIntervals = anArg3.IntegerValue();
+    }
+    else if (aFlag == "-font")
+    {
+      if (anArgIter + 1 >= theArgNb)
+      {
+        std::cout << "Error: wrong syntax at argument '" << anArg << "'!\n";
+        return 1;
+      }
+      TCollection_AsciiString anArg (theArgVec[anArgIter + 1]);
+      if (!anArg.IsIntegerValue())
+      {
+        std::cout << "Error: HeightFont value should be integer!\n";
+        return 1;
+      }
+
+      aTextHeight = anArg.IntegerValue();
+      anArgIter += 1;
+    }
+    else if (aFlag == "-textpos")
+    {
+      if (anArgIter + 1 >= theArgNb)
+      {
+        std::cout << "Error: wrong syntax at argument '" << anArg << "'!\n";
+        return 1;
+      }
+      TCollection_AsciiString anArg (theArgVec[++anArgIter]);
+      anArg.LowerCase();
+      if (anArg == "none")
+      {
+        aLabPosition = Aspect_TOCSP_NONE;
+      }
+      else if (anArg == "left")
+      {
+        aLabPosition = Aspect_TOCSP_LEFT;
+      }
+      else if (anArg == "right")
+      {
+        aLabPosition = Aspect_TOCSP_RIGHT;
+      }
+      else if (anArg == "center")
+      {
+        aLabPosition = Aspect_TOCSP_CENTER;
+      }
+      else
+      {
+        std::cout << "Error: unknown position '" << anArg << "'!\n";
+        return 1;
+      }
+    }
+    else if (aFlag == "-xy")
+    {
+      if (anArgIter + 2 >= theArgNb)
+      {
+        std::cout << "Error: wrong syntax at argument '" << anArg << "'!\n";
+        return 1;
+      }
+
+      TCollection_AsciiString aX (theArgVec[++anArgIter]);
+      TCollection_AsciiString aY (theArgVec[++anArgIter]);
+      if (!aX.IsRealValue()
+       || !aY.IsRealValue())
+      {
+        std::cout << "Error: coordinates should be real values!\n";
+        return 1;
+      }
+
+      aPos.SetCoord (aX.RealValue(), aY.RealValue());
+    }
+    else if (aFlag == "-color")
+    {
+      if (aCS->GetColorType() != Aspect_TOCSD_USER)
+      {
+        std::cout << "Error: wrong color type! Call -colors before to set user-specified colors!\n";
+        return 1;
+      }
+
+      Quantity_NameOfColor aColorName;
+      if (anArgIter + 4 >= theArgNb)
+      {
+        if (anArgIter + 2 >= theArgNb)
+        {
+          std::cout << "Error: wrong syntax at argument '" << anArg << "'!\n";
+          return 1;
+        }
+        else if (!Quantity_Color::ColorFromName (theArgVec[anArgIter + 2], aColorName))
+        {
+          std::cout << "Error: wrong color name: '" << theArgVec[anArgIter + 2] << "' !\n";
+          return 1;
+        }
+      }
+
+      TCollection_AsciiString anInd (theArgVec[anArgIter + 1]);
+      if (!anInd.IsIntegerValue())
+      {
+        std::cout << "Error: Index value should be integer!\n";
+        return 1;
+      }
+
+      Standard_Integer anIndex = anInd.IntegerValue();
+      if (anIndex < 0
+       || anIndex > aNbIntervals - 1)
+      {
+        std::cout << "Error: Index value should be within range 0..." << (aNbIntervals - 1) <<"!\n";
+        return 1;
+      }
+
+      if (Quantity_Color::ColorFromName (theArgVec[anArgIter + 2], aColorName))
+      {
+        aCS->SetColor    (Quantity_Color (aColorName), anIndex);
+        aCS->SetColorType(Aspect_TOCSD_USER);
+        anArgIter += 2;
+        continue;
+      }
+
+      TCollection_AsciiString aRed   (theArgVec[anArgIter + 2]);
+      TCollection_AsciiString aGreen (theArgVec[anArgIter + 3]);
+      TCollection_AsciiString aBlue  (theArgVec[anArgIter + 4]);
+      Standard_Real aRedValue,aGreenValue, aBlueValue;
+      if(checkColor (aRed, aGreen, aBlue, aRedValue, aGreenValue, aBlueValue))
+      {
+        return 1;
+      }
+      aCS->SetColor     (Quantity_Color (aRedValue, aGreenValue, aBlueValue, Quantity_TOC_RGB), anIndex);
+      aCS->SetColorType (Aspect_TOCSD_USER);
+      anArgIter += 4;
+    }
+    else if (aFlag == "-label")
+    {
+      if (aCS->GetColorType() != Aspect_TOCSD_USER)
+      {
+        std::cout << "Error: wrong label type! Call -labels before to set user-specified labels!\n";
+        return 1;
+      }
+      else if (anArgIter + 2 >= theArgNb)
+      {
+        std::cout << "Error: wrong syntax at argument '" << anArg << "'!\n";
+        return 1;
+      }
+
+      Standard_Integer anIndex = Draw::Atoi (theArgVec[anArgIter + 1]);
+      if (anIndex < 0
+       || anIndex > aNbIntervals)
+      {
+        std::cout << "Error: Index value should be within range 0..." << aNbIntervals <<"!\n";
+        return 1;
+      }
+
+      TCollection_ExtendedString aText (theArgVec[anArgIter + 2]);
+      aCS->SetLabel     (aText, anIndex);
+      aCS->SetLabelType (Aspect_TOCSD_USER);
+      anArgIter += 2;
+    }
+    else if (aFlag == "-colors")
+    {
+      Aspect_SequenceOfColor aSeq;
+      if (anArgIter + aNbIntervals + 1 > theArgNb)
+      {
+        std::cout << "Error: not enough arguments! You should provide color names or RGB color values for every interval of the "
+                  << aNbIntervals << " intervals\n";
+        return 1;
+      }
+
+      Standard_Integer aColorIter = anArgIter + 1;
+      while (aColorIter < theArgNb)
+      {
+        if (theArgVec[aColorIter][0] == '-')
+        {
+          break;
+        }
+
+        else if (theArgVec[aColorIter][0] >= 97
+              && theArgVec[aColorIter][0] <= 122)
+        {
+          Quantity_NameOfColor aColorName;
+          if (!Quantity_Color::ColorFromName (theArgVec[aColorIter], aColorName))
+          {
+            std::cout << "Error: wrong color name: " << theArgVec[aColorIter] << " !\n";
+            return 1;
+          }
+          aSeq.Append (Quantity_Color (aColorName));
+          aColorIter++;
+          anArgIter++;
+        }
+        else
+        {
+          TCollection_AsciiString aRed   (theArgVec[aColorIter]);
+          TCollection_AsciiString aGreen (theArgVec[aColorIter + 1]);
+          TCollection_AsciiString aBlue  (theArgVec[aColorIter + 2]);
+          Standard_Real aRedValue,aGreenValue, aBlueValue;
+          if (checkColor (aRed, aGreen, aBlue, aRedValue, aGreenValue, aBlueValue))
+          {
+            return 1;
+          }
+          aSeq.Append (Quantity_Color (aRedValue, aGreenValue, aBlueValue, Quantity_TOC_RGB));
+          aColorIter += 3;
+          anArgIter += 3;
+        }
+      }
+      if (aSeq.Length() < aNbIntervals)
+      {
+        std::cout << "Error: not enough arguments! You should provide color names or RGB color values for every interval of the "
+                  << aNbIntervals << " intervals\n";
+        return 1;
+      }
+
+      aCS->SetColors    (aSeq);
+      aCS->SetColorType (Aspect_TOCSD_USER);
+    }
+    else if (aFlag == "-labels")
+    {
+      if (anArgIter + aNbIntervals + 1 >= theArgNb)
+      {
+        std::cout << "Error: not enough arguments! You should provide " << (aNbIntervals + 1)
+                  << " text labels for " << aNbIntervals << " intervals.\n";
+        return 1;
+      }
+
+      TColStd_SequenceOfExtendedString aSeq;
+      for (int aLabelIter = anArgIter + 1; aLabelIter <= anArgIter + aNbIntervals + 1; aLabelIter += 1)
+      {
+        aSeq.Append (TCollection_ExtendedString (theArgVec[aLabelIter]));
+      }
+      aCS->SetLabels (aSeq);
+      aCS->SetLabelType (Aspect_TOCSD_USER);
+      anArgIter += aSeq.Length();
+    }
+    else if (aFlag == "-title")
+    {
+      if (anArgIter + 1 >= theArgNb)
+      {
+        std::cout << "Error: wrong syntax at argument '" << anArg << "'!\n";
+        return 1;
+      }
+
+      Standard_Boolean isTwoArgs = Standard_False;
+      if (anArgIter + 2 < theArgNb)
+      {
+        TCollection_AsciiString aSecondArg (theArgVec[anArgIter + 2]);
+        aSecondArg.LowerCase();
+        if (aSecondArg == "none")
+        {
+          aCS->SetTitlePosition (Aspect_TOCSP_NONE);
+          isTwoArgs = Standard_True;
+        }
+        else if (aSecondArg == "left")
+        {
+          aCS->SetTitlePosition (Aspect_TOCSP_LEFT);
+          isTwoArgs = Standard_True;
+        }
+        else if (aSecondArg == "right")
+        {
+          aCS->SetTitlePosition (Aspect_TOCSP_RIGHT);
+          isTwoArgs = Standard_True;
+        }
+        else if (aSecondArg == "center")
+        {
+          aCS->SetTitlePosition (Aspect_TOCSP_CENTER);
+          isTwoArgs = Standard_True;
+        }
+      }
+
+      aCS->SetTitle (theArgVec[anArgIter + 1]);
+      if (isTwoArgs)
+      {
+        anArgIter += 1;
+      }
+      anArgIter += 1;
+    }
+    else if (aFlag == "-demoversion"
+          || aFlag == "-demo")
+    {
+      aPos.SetCoord (0.0, 0.0);
+      aTextHeight  = 16;
+      aMinRange    = 0.0;
+      aMaxRange    = 100;
+      aNbIntervals = 10;
+      aLabPosition = Aspect_TOCSP_RIGHT;
+      aCS->SetColorType(Aspect_TOCSD_AUTO);
+      aCS->SetLabelType(Aspect_TOCSD_AUTO);
+    }
+    else
+    {
+      std::cout << "Error: wrong syntax at " << anArg << " - unknown argument!\n";
+      return 1;
+    }
+  }
+
+  aCS->SetPosition          (aPos.X(), aPos.Y());
+  aCS->SetHeight            (0.95);
+  aCS->SetTextHeight        (aTextHeight);
+  aCS->SetRange             (aMinRange, aMaxRange);
+  aCS->SetNumberOfIntervals (aNbIntervals);
+  aCS->SetLabelPosition     (aLabPosition);
+
+  if (!aView->ColorScaleIsDisplayed())
+  {
+    aView->ColorScaleDisplay();
+  }
+
   return 0;
 }
 
 //==============================================================================
 //function : VGraduatedTrihedron
-//purpose  : Displays a graduated trihedron
+//purpose  : Displays or hides a graduated trihedron
 //==============================================================================
-
-static void AddMultibyteString (TCollection_ExtendedString &name, const char *arg)
+static Standard_Boolean GetColor (const TCollection_AsciiString& theValue,
+                                  Quantity_Color& theColor)
 {
-  const char *str = arg;
-  while (*str)
+  Quantity_NameOfColor aColorName;
+  TCollection_AsciiString aVal = theValue;
+  aVal.UpperCase();
+  if (!Quantity_Color::ColorFromName (aVal.ToCString(), aColorName))
   {
-    unsigned short c1 = *str++;
-    unsigned short c2 = *str++;
-    if (!c1 || !c2) break;
-    name += (Standard_ExtCharacter)((c1 << 8) | c2);
+    return Standard_False;
   }
+  theColor = Quantity_Color (aColorName);
+  return Standard_True;
 }
 
-static int VGraduatedTrihedron(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+static int VGraduatedTrihedron (Draw_Interpretor& /*theDi*/, Standard_Integer theArgNum, const char** theArgs)
 {
-  // Check arguments
-  if (argc != 2 && argc < 5)
+  if (theArgNum < 2)
   {
-    di<<"Error: "<<argv[0]<<" - invalid number of arguments\n";
-    di<<"Usage: type help "<<argv[0]<<"\n";
-    return 1; //TCL_ERROR
+    std::cout << theArgs[0] << " error: wrong number of parameters. Type 'help"
+              << theArgs[0] <<"' for more information.\n";
+    return 1;  //TCL_ERROR
   }
 
-  Handle(V3d_View) aV3dView = ViewerTest::CurrentView();
-
-  // Create 3D view if it doesn't exist
-  if ( aV3dView.IsNull() )
+  NCollection_DataMap<TCollection_AsciiString, Handle(TColStd_HSequenceOfAsciiString)> aMapOfArgs;
+  TCollection_AsciiString aParseKey;
+  for (Standard_Integer anArgIt = 1; anArgIt < theArgNum; ++anArgIt)
   {
-    ViewerTest::ViewerInit();
-    aV3dView = ViewerTest::CurrentView();
-    if( aV3dView.IsNull() )
+    TCollection_AsciiString anArg (theArgs [anArgIt]);
+
+    if (anArg.Value (1) == '-' && !anArg.IsRealValue())
     {
-      di << "Error: Cannot create a 3D view\n";
-      return 1; //TCL_ERROR
+      aParseKey = anArg;
+      aParseKey.Remove (1);
+      aParseKey.LowerCase();
+      aMapOfArgs.Bind (aParseKey, new TColStd_HSequenceOfAsciiString);
+      continue;
     }
+
+    if (aParseKey.IsEmpty())
+    {
+      continue;
+    }
+
+    aMapOfArgs(aParseKey)->Append (anArg);
   }
 
-  // Erase (==0) or display (!=0)
-  const int display = Draw::Atoi(argv[1]);
-
-  if (display)
+  // Check parameters
+  for (NCollection_DataMap<TCollection_AsciiString, Handle(TColStd_HSequenceOfAsciiString)>::Iterator aMapIt (aMapOfArgs);
+       aMapIt.More(); aMapIt.Next())
   {
-    // Text font
-    TCollection_AsciiString font;
-    if (argc < 6)
-      font.AssignCat("Courier");
-    else
-      font.AssignCat(argv[5]);
+    const TCollection_AsciiString& aKey = aMapIt.Key();
+    const Handle(TColStd_HSequenceOfAsciiString)& anArgs = aMapIt.Value();
 
-    // Text is multibyte
-    const Standard_Boolean isMultibyte = (argc < 7)? Standard_False : (Draw::Atoi(argv[6]) != 0);
-
-    // Set axis names
-    TCollection_ExtendedString xname, yname, zname;
-    if (argc >= 5)
+    // Bool key, without arguments
+    if ((aKey.IsEqual ("on") || aKey.IsEqual ("off"))
+        && anArgs->IsEmpty())
     {
-      if (isMultibyte)
-      {
-        AddMultibyteString(xname, argv[2]);
-        AddMultibyteString(yname, argv[3]);
-        AddMultibyteString(zname, argv[4]);
-      }
-      else
-      {
-        xname += argv[2];
-        yname += argv[3];
-        zname += argv[4];
-      }
-    }
-    else
-    {
-      xname += "X (mm)";
-      yname += "Y (mm)";
-      zname += "Z (mm)";
+      continue;
     }
 
-    aV3dView->GraduatedTrihedronDisplay(xname, yname, zname,
-                                        Standard_True/*xdrawname*/, Standard_True/*ydrawname*/, Standard_True/*zdrawname*/,
-                                        Standard_True/*xdrawvalues*/, Standard_True/*ydrawvalues*/, Standard_True/*zdrawvalues*/,
-                                        Standard_True/*drawgrid*/,
-                                        Standard_True/*drawaxes*/,
-                                        5/*nbx*/, 5/*nby*/, 5/*nbz*/,
-                                        10/*xoffset*/, 10/*yoffset*/, 10/*zoffset*/,
-                                        30/*xaxisoffset*/, 30/*yaxisoffset*/, 30/*zaxisoffset*/,
-                                        Standard_True/*xdrawtickmarks*/, Standard_True/*ydrawtickmarks*/, Standard_True/*zdrawtickmarks*/,
-                                        10/*xtickmarklength*/, 10/*ytickmarklength*/, 10/*ztickmarklength*/,
-                                        Quantity_NOC_WHITE/*gridcolor*/,
-                                        Quantity_NOC_RED/*xnamecolor*/,Quantity_NOC_GREEN/*ynamecolor*/,Quantity_NOC_BLUE1/*znamecolor*/,
-                                        Quantity_NOC_RED/*xcolor*/,Quantity_NOC_GREEN/*ycolor*/,Quantity_NOC_BLUE1/*zcolor*/,font);
+    // One argument
+    if ( (aKey.IsEqual ("xname") || aKey.IsEqual ("yname") || aKey.IsEqual ("zname"))
+          && anArgs->Length() == 1)
+    {
+      continue;
+    }
+
+    // On/off arguments
+    if ((aKey.IsEqual ("xdrawname") || aKey.IsEqual ("ydrawname") || aKey.IsEqual ("zdrawname")
+        || aKey.IsEqual ("xdrawticks") || aKey.IsEqual ("ydrawticks") || aKey.IsEqual ("zdrawticks")
+        || aKey.IsEqual ("xdrawvalues") || aKey.IsEqual ("ydrawvalues") || aKey.IsEqual ("zdrawvalues")
+        || aKey.IsEqual ("drawgrid") || aKey.IsEqual ("drawaxes"))
+        && anArgs->Length() == 1 && (anArgs->Value(1).IsEqual ("on") || anArgs->Value(1).IsEqual ("off")))
+    {
+      continue;
+    }
+
+    // One string argument
+    if ( (aKey.IsEqual ("xnamecolor") || aKey.IsEqual ("ynamecolor") || aKey.IsEqual ("znamecolor")
+          || aKey.IsEqual ("xcolor") || aKey.IsEqual ("ycolor") || aKey.IsEqual ("zcolor"))
+          && anArgs->Length() == 1 && !anArgs->Value(1).IsIntegerValue() && !anArgs->Value(1).IsRealValue())
+    {
+      continue;
+    }
+
+    // One integer argument
+    if ( (aKey.IsEqual ("xticks") || aKey.IsEqual ("yticks") || aKey.IsEqual ("zticks")
+          || aKey.IsEqual ("xticklength") || aKey.IsEqual ("yticklength") || aKey.IsEqual ("zticklength")
+          || aKey.IsEqual ("xnameoffset") || aKey.IsEqual ("ynameoffset") || aKey.IsEqual ("znameoffset")
+          || aKey.IsEqual ("xvaluesoffset") || aKey.IsEqual ("yvaluesoffset") || aKey.IsEqual ("zvaluesoffset"))
+         && anArgs->Length() == 1 && anArgs->Value(1).IsIntegerValue())
+    {
+      continue;
+    }
+
+    // One real argument
+    if ( aKey.IsEqual ("arrowlength")
+         && anArgs->Length() == 1 && (anArgs->Value(1).IsIntegerValue() || anArgs->Value(1).IsRealValue()))
+    {
+      continue;
+    }
+
+    // Two string arguments
+    if ( (aKey.IsEqual ("namefont") || aKey.IsEqual ("valuesfont"))
+         && anArgs->Length() == 1 && !anArgs->Value(1).IsIntegerValue() && !anArgs->Value(1).IsRealValue())
+    {
+      continue;
+    }
+
+    TCollection_AsciiString aLowerKey;
+    aLowerKey  = "-";
+    aLowerKey += aKey;
+    aLowerKey.LowerCase();
+    std::cout << theArgs[0] << ": " << aLowerKey << " is unknown option, or the arguments are unacceptable.\n";
+    std::cout << "Type help for more information.\n";
+    return 1;
+  }
+
+  Handle(AIS_InteractiveContext) anAISContext = ViewerTest::GetAISContext();
+  if (anAISContext.IsNull())
+  {
+    std::cout << theArgs[0] << ": " << " please use 'vinit' command to initialize view.\n";
+    return 1;
+  }
+
+  Standard_Boolean toDisplay = Standard_True;
+  Quantity_Color aColor;
+  Graphic3d_GraduatedTrihedron aTrihedronData;
+  // Process parameters
+  Handle(TColStd_HSequenceOfAsciiString) aValues;
+  if (aMapOfArgs.Find ("off", aValues))
+  {
+    toDisplay = Standard_False;
+  }
+
+  // AXES NAMES
+  if (aMapOfArgs.Find ("xname", aValues))
+  {
+    aTrihedronData.ChangeXAxisAspect().SetName (aValues->Value(1));
+  }
+  if (aMapOfArgs.Find ("yname", aValues))
+  {
+    aTrihedronData.ChangeYAxisAspect().SetName (aValues->Value(1));
+  }
+  if (aMapOfArgs.Find ("zname", aValues))
+  {
+    aTrihedronData.ChangeZAxisAspect().SetName (aValues->Value(1));
+  }
+  if (aMapOfArgs.Find ("xdrawname", aValues))
+  {
+    aTrihedronData.ChangeXAxisAspect().SetDrawName (aValues->Value(1).IsEqual ("on"));
+  }
+  if (aMapOfArgs.Find ("ydrawname", aValues))
+  {
+    aTrihedronData.ChangeYAxisAspect().SetDrawName (aValues->Value(1).IsEqual ("on"));
+  }
+  if (aMapOfArgs.Find ("zdrawname", aValues))
+  {
+    aTrihedronData.ChangeZAxisAspect().SetDrawName (aValues->Value(1).IsEqual ("on"));
+  }
+  if (aMapOfArgs.Find ("xnameoffset", aValues))
+  {
+    aTrihedronData.ChangeXAxisAspect().SetNameOffset (aValues->Value(1).IntegerValue());
+  }
+  if (aMapOfArgs.Find ("ynameoffset", aValues))
+  {
+    aTrihedronData.ChangeYAxisAspect().SetNameOffset (aValues->Value(1).IntegerValue());
+  }
+  if (aMapOfArgs.Find ("znameoffset", aValues))
+  {
+    aTrihedronData.ChangeZAxisAspect().SetNameOffset (aValues->Value(1).IntegerValue());
+  }
+
+  // COLORS
+  if (aMapOfArgs.Find ("xnamecolor", aValues))
+  {
+    if (!GetColor (aValues->Value(1), aColor))
+    {
+      std::cout << theArgs[0] << "error: -xnamecolor wrong color name.\n";
+      return 1;
+    }
+    aTrihedronData.ChangeXAxisAspect().SetNameColor (aColor);
+  }
+  if (aMapOfArgs.Find ("ynamecolor", aValues))
+  {
+    if (!GetColor (aValues->Value(1), aColor))
+    {
+      std::cout << theArgs[0] << "error: -ynamecolor wrong color name.\n";
+      return 1;
+    }
+    aTrihedronData.ChangeYAxisAspect().SetNameColor (aColor);
+  }
+  if (aMapOfArgs.Find ("znamecolor", aValues))
+  {
+    if (!GetColor (aValues->Value(1), aColor))
+    {
+      std::cout << theArgs[0] << "error: -znamecolor wrong color name.\n";
+      return 1;
+    }
+    aTrihedronData.ChangeZAxisAspect().SetNameColor (aColor);
+  }
+  if (aMapOfArgs.Find ("xcolor", aValues))
+  {
+    if (!GetColor (aValues->Value(1), aColor))
+    {
+      std::cout << theArgs[0] << "error: -xcolor wrong color name.\n";
+      return 1;
+    }
+    aTrihedronData.ChangeXAxisAspect().SetColor (aColor);
+  }
+  if (aMapOfArgs.Find ("ycolor", aValues))
+  {
+    if (!GetColor (aValues->Value(1), aColor))
+    {
+      std::cout << theArgs[0] << "error: -ycolor wrong color name.\n";
+      return 1;
+    }
+    aTrihedronData.ChangeYAxisAspect().SetColor (aColor);
+  }
+  if (aMapOfArgs.Find ("zcolor", aValues))
+  {
+    if (!GetColor (aValues->Value(1), aColor))
+    {
+      std::cout << theArgs[0] << "error: -zcolor wrong color name.\n";
+      return 1;
+    }
+    aTrihedronData.ChangeZAxisAspect().SetColor (aColor);
+  }
+
+  // TICKMARKS
+  if (aMapOfArgs.Find ("xticks", aValues))
+  {
+    aTrihedronData.ChangeXAxisAspect().SetTickmarksNumber (aValues->Value(1).IntegerValue());
+  }
+  if (aMapOfArgs.Find ("yticks", aValues))
+  {
+    aTrihedronData.ChangeYAxisAspect().SetTickmarksNumber (aValues->Value(1).IntegerValue());
+  }
+  if (aMapOfArgs.Find ("zticks", aValues))
+  {
+    aTrihedronData.ChangeZAxisAspect().SetTickmarksNumber (aValues->Value(1).IntegerValue());
+  }
+  if (aMapOfArgs.Find ("xticklength", aValues))
+  {
+    aTrihedronData.ChangeXAxisAspect().SetTickmarksLength (aValues->Value(1).IntegerValue());
+  }
+  if (aMapOfArgs.Find ("yticklength", aValues))
+  {
+    aTrihedronData.ChangeYAxisAspect().SetTickmarksLength (aValues->Value(1).IntegerValue());
+  }
+  if (aMapOfArgs.Find ("zticklength", aValues))
+  {
+    aTrihedronData.ChangeZAxisAspect().SetTickmarksLength (aValues->Value(1).IntegerValue());
+  }
+  if (aMapOfArgs.Find ("xdrawticks", aValues))
+  {
+    aTrihedronData.ChangeXAxisAspect().SetDrawTickmarks (aValues->Value(1).IsEqual ("on"));
+  }
+  if (aMapOfArgs.Find ("ydrawticks", aValues))
+  {
+    aTrihedronData.ChangeYAxisAspect().SetDrawTickmarks (aValues->Value(1).IsEqual ("on"));
+  }
+  if (aMapOfArgs.Find ("zdrawticks", aValues))
+  {
+    aTrihedronData.ChangeZAxisAspect().SetDrawTickmarks (aValues->Value(1).IsEqual ("on"));
+  }
+
+  // VALUES
+  if (aMapOfArgs.Find ("xdrawvalues", aValues))
+  {
+    aTrihedronData.ChangeXAxisAspect().SetDrawValues (aValues->Value(1).IsEqual ("on"));
+  }
+  if (aMapOfArgs.Find ("ydrawvalues", aValues))
+  {
+    aTrihedronData.ChangeYAxisAspect().SetDrawValues (aValues->Value(1).IsEqual ("on"));
+  }
+  if (aMapOfArgs.Find ("zdrawvalues", aValues))
+  {
+    aTrihedronData.ChangeZAxisAspect().SetDrawValues (aValues->Value(1).IsEqual ("on"));
+  }
+  if (aMapOfArgs.Find ("xvaluesoffset", aValues))
+  {
+    aTrihedronData.ChangeXAxisAspect().SetValuesOffset (aValues->Value(1).IntegerValue());
+  }
+  if (aMapOfArgs.Find ("yvaluesoffset", aValues))
+  {
+    aTrihedronData.ChangeYAxisAspect().SetValuesOffset (aValues->Value(1).IntegerValue());
+  }
+  if (aMapOfArgs.Find ("zvaluesoffset", aValues))
+  {
+    aTrihedronData.ChangeZAxisAspect().SetValuesOffset (aValues->Value(1).IntegerValue());
+  }
+
+  // ARROWS
+  if (aMapOfArgs.Find ("arrowlength", aValues))
+  {
+    aTrihedronData.SetArrowsLength ((Standard_ShortReal) aValues->Value(1).RealValue());
+  }
+
+  // FONTS
+  if (aMapOfArgs.Find ("namefont", aValues))
+  {
+    aTrihedronData.SetNamesFont (aValues->Value(1));
+  }
+  if (aMapOfArgs.Find ("valuesfont", aValues))
+  {
+    aTrihedronData.SetValuesFont (aValues->Value(1));
+  }
+
+  if (aMapOfArgs.Find ("drawgrid", aValues))
+  {
+    aTrihedronData.SetDrawGrid (aValues->Value(1).IsEqual ("on"));
+  }
+  if (aMapOfArgs.Find ("drawaxes", aValues))
+  {
+    aTrihedronData.SetDrawAxes (aValues->Value(1).IsEqual ("on"));
+  }
+
+  // The final step: display of erase trihedron
+  if (toDisplay)
+  {
+    ViewerTest::CurrentView()->GraduatedTrihedronDisplay (aTrihedronData);
   }
   else
-    aV3dView->GraduatedTrihedronErase();
+  {
+    ViewerTest::CurrentView()->GraduatedTrihedronErase();
+  }
 
   ViewerTest::GetAISContext()->UpdateCurrentViewer();
-  aV3dView->Redraw();
+  ViewerTest::CurrentView()->Redraw();
 
   return 0;
 }
@@ -3482,6 +4342,18 @@ static int VZLayer (Draw_Interpretor& di, Standard_Integer argc, const char** ar
     {
       di << "Impossible to remove the z layer or invalid id!\n";
       return 1;
+    }
+
+    for (ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName anObjIter (GetMapOfAIS());
+         anObjIter.More(); anObjIter.Next())
+    {
+      Handle(PrsMgr_PresentableObject) aPrs = Handle(PrsMgr_PresentableObject)::DownCast (anObjIter.Key1());
+      if (aPrs.IsNull()
+       || aPrs->ZLayer() != aDelId)
+      {
+        continue;
+      }
+      aPrs->SetZLayer (Graphic3d_ZLayerId_Default);
     }
 
     di << "Z layer " << aDelId << " has been removed\n";
@@ -4060,6 +4932,221 @@ static int VGrid (Draw_Interpretor& /*theDI*/,
 }
 
 //==============================================================================
+//function : VPriviledgedPlane
+//purpose  :
+//==============================================================================
+
+static int VPriviledgedPlane (Draw_Interpretor& theDI,
+                              Standard_Integer  theArgNb,
+                              const char**      theArgVec)
+{
+  if (theArgNb != 1 && theArgNb != 7 && theArgNb != 10)
+  {
+    std::cerr << "Error: wrong number of arguments! See usage:\n";
+    theDI.PrintHelp (theArgVec[0]);
+    return 1;
+  }
+
+  // get the active viewer
+  Handle(V3d_Viewer) aViewer = ViewerTest::GetViewerFromContext();
+  if (aViewer.IsNull())
+  {
+    std::cerr << "Error: no active viewer. Please call vinit.\n";
+    return 1;
+  }
+
+  if (theArgNb == 1)
+  {
+    gp_Ax3 aPriviledgedPlane = aViewer->PrivilegedPlane();
+    const gp_Pnt& anOrig = aPriviledgedPlane.Location();
+    const gp_Dir& aNorm = aPriviledgedPlane.Direction();
+    const gp_Dir& aXDir = aPriviledgedPlane.XDirection();
+    theDI << "Origin: " << anOrig.X() << " " << anOrig.Y() << " " << anOrig.Z() << " "
+          << "Normal: " << aNorm.X() << " " << aNorm.Y() << " " << aNorm.Z() << " "
+          << "X-dir: "  << aXDir.X() << " " << aXDir.Y() << " " << aXDir.Z() << "\n";
+    return 0;
+  }
+
+  Standard_Integer anArgIdx = 1;
+  Standard_Real anOrigX = Draw::Atof (theArgVec[anArgIdx++]);
+  Standard_Real anOrigY = Draw::Atof (theArgVec[anArgIdx++]);
+  Standard_Real anOrigZ = Draw::Atof (theArgVec[anArgIdx++]);
+  Standard_Real aNormX  = Draw::Atof (theArgVec[anArgIdx++]);
+  Standard_Real aNormY  = Draw::Atof (theArgVec[anArgIdx++]);
+  Standard_Real aNormZ  = Draw::Atof (theArgVec[anArgIdx++]);
+
+  gp_Ax3 aPriviledgedPlane;
+  gp_Pnt anOrig (anOrigX, anOrigY, anOrigZ);
+  gp_Dir aNorm (aNormX, aNormY, aNormZ);
+  if (theArgNb > 7)
+  {
+    Standard_Real aXDirX = Draw::Atof (theArgVec[anArgIdx++]);
+    Standard_Real aXDirY = Draw::Atof (theArgVec[anArgIdx++]);
+    Standard_Real aXDirZ = Draw::Atof (theArgVec[anArgIdx++]);
+    gp_Dir aXDir (aXDirX, aXDirY, aXDirZ);
+    aPriviledgedPlane = gp_Ax3 (anOrig, aNorm, aXDir);
+  }
+  else
+  {
+    aPriviledgedPlane = gp_Ax3 (anOrig, aNorm);
+  }
+
+  aViewer->SetPrivilegedPlane (aPriviledgedPlane);
+
+  return 0;
+}
+
+//==============================================================================
+//function : VConvert
+//purpose  :
+//==============================================================================
+
+static int VConvert (Draw_Interpretor& theDI,
+                     Standard_Integer  theArgNb,
+                     const char**      theArgVec)
+{
+  // get the active view
+  Handle(V3d_View) aView = ViewerTest::CurrentView();
+  if (aView.IsNull())
+  {
+    std::cerr << "Error: no active view. Please call vinit.\n";
+    return 1;
+  }
+
+  enum { Model, Ray, View, Window, Grid } aMode = Model;
+
+  // access coordinate arguments
+  TColStd_SequenceOfReal aCoord;
+  Standard_Integer anArgIdx = 1;
+  for (; anArgIdx < 4 && anArgIdx < theArgNb; ++anArgIdx)
+  {
+    TCollection_AsciiString anArg (theArgVec[anArgIdx]);
+    if (!anArg.IsRealValue())
+    {
+      break;
+    }
+    aCoord.Append (anArg.RealValue());
+  }
+
+  // non-numeric argument too early
+  if (aCoord.IsEmpty())
+  {
+    std::cerr << "Error: wrong number of arguments! See usage:\n";
+    theDI.PrintHelp (theArgVec[0]);
+    return 1;
+  }
+
+  // collect all other arguments and options
+  for (; anArgIdx < theArgNb; ++anArgIdx)
+  {
+    TCollection_AsciiString anArg (theArgVec[anArgIdx]);
+    anArg.LowerCase();
+    if      (anArg == "window") aMode = Window;
+    else if (anArg == "view")   aMode = View;
+    else if (anArg == "grid")   aMode = Grid;
+    else if (anArg == "ray")    aMode = Ray;
+    else
+    {
+      std::cerr << "Error: wrong argument " << anArg << "! See usage:\n";
+      theDI.PrintHelp (theArgVec[0]);
+      return 1;
+    }
+  }
+
+  // complete input checks
+  if ((aCoord.Length() == 1 && theArgNb > 3) ||
+      (aCoord.Length() == 2 && theArgNb > 4) ||
+      (aCoord.Length() == 3 && theArgNb > 5))
+  {
+    std::cerr << "Error: wrong number of arguments! See usage:\n";
+    theDI.PrintHelp (theArgVec[0]);
+    return 1;
+  }
+
+  Standard_Real aXYZ[6] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+  Standard_Integer aXYp[2] = {0, 0};
+
+  // convert one-dimensional coordinate
+  if (aCoord.Length() == 1)
+  {
+    switch (aMode)
+    {
+      case View   : theDI << "View Vv: "   << aView->Convert ((Standard_Integer) aCoord (1)); return 0;
+      case Window : theDI << "Window Vp: " << aView->Convert ((Quantity_Length) aCoord (1));  return 0;
+      default:
+        std::cerr << "Error: wrong arguments! See usage:\n";
+        theDI.PrintHelp (theArgVec[0]);
+        return 1;
+    }
+  }
+
+  // convert 2D coordinates from projection or view reference space
+  if (aCoord.Length() == 2)
+  {
+    switch (aMode)
+    {
+      case Model :
+        aView->Convert ((Standard_Integer) aCoord (1), (Standard_Integer) aCoord (2), aXYZ[0], aXYZ[1], aXYZ[2]);
+        theDI << "Model X,Y,Z: " << aXYZ[0] << " " << aXYZ[1] << " " << aXYZ[2] << "\n";
+        return 0;
+
+      case View :
+        aView->Convert ((Standard_Integer) aCoord (1), (Standard_Integer) aCoord (2), aXYZ[0], aXYZ[1]);
+        theDI << "View Xv,Yv: " << aXYZ[0] << " " << aXYZ[1] << "\n";
+        return 0;
+
+      case Window :
+        aView->Convert ((V3d_Coordinate) aCoord (1), (V3d_Coordinate) aCoord (2), aXYp[0], aXYp[1]);
+        theDI << "Window Xp,Yp: " << aXYp[0] << " " << aXYp[1] << "\n";
+        return 0;
+
+      case Grid :
+        aView->Convert ((Standard_Integer) aCoord (1), (Standard_Integer) aCoord (2), aXYZ[0], aXYZ[1], aXYZ[2]);
+        aView->ConvertToGrid (aXYZ[0], aXYZ[1], aXYZ[2], aXYZ[3], aXYZ[4], aXYZ[5]);
+        theDI << "Model X,Y,Z: " << aXYZ[3] << " " << aXYZ[4] << " " << aXYZ[5] << "\n";
+        return 0;
+
+      case Ray :
+        aView->ConvertWithProj ((Standard_Integer) aCoord (1),
+                                (Standard_Integer) aCoord (2),
+                                aXYZ[0], aXYZ[1], aXYZ[2],
+                                aXYZ[3], aXYZ[4], aXYZ[5]);
+        theDI << "Model DX,DY,DZ: " << aXYZ[3] << " " << aXYZ[4] << " " << aXYZ[5] << "\n";
+        return 0;
+
+      default:
+        std::cerr << "Error: wrong arguments! See usage:\n";
+        theDI.PrintHelp (theArgVec[0]);
+        return 1;
+    }
+  }
+
+  // convert 3D coordinates from view reference space
+  else if (aCoord.Length() == 3)
+  {
+    switch (aMode)
+    {
+      case Window :
+        aView->Convert (aCoord (1), aCoord (2), aCoord (3), aXYp[0], aXYp[1]);
+        theDI << "Window Xp,Yp: " << aXYp[0] << " " << aXYp[1] << "\n";
+        return 0;
+
+      case Grid :
+        aView->ConvertToGrid (aCoord (1), aCoord (2), aCoord (3), aXYZ[0], aXYZ[1], aXYZ[2]);
+        theDI << "Model X,Y,Z: " << aXYZ[0] << " " << aXYZ[1] << " " << aXYZ[2] << "\n";
+        return 0;
+
+      default:
+        std::cerr << "Error: wrong arguments! See usage:\n";
+        theDI.PrintHelp (theArgVec[0]);
+        return 1;
+    }
+  }
+
+  return 0;
+}
+
+//==============================================================================
 //function : VFps
 //purpose  :
 //==============================================================================
@@ -4124,30 +5211,128 @@ static int VGlDebug (Draw_Interpretor& theDI,
   {
     aDriver = Handle(OpenGl_GraphicDriver)::DownCast (aView->Viewer()->Driver());
   }
+  OpenGl_Caps* aDefCaps = &ViewerTest_myDefaultCaps;
+  OpenGl_Caps* aCaps    = !aDriver.IsNull() ? &aDriver->ChangeOptions() : NULL;
+
   if (theArgNb < 2)
   {
-    if (aDriver.IsNull())
+    TCollection_AsciiString aDebActive, aSyncActive;
+    if (aCaps == NULL)
     {
-      std::cerr << "No active view. Please call vinit.\n";
-      return 0;
+      aCaps = aDefCaps;
+    }
+    else
+    {
+      Standard_Boolean isActive = OpenGl_Context::CheckExtension ((const char* )::glGetString (GL_EXTENSIONS),
+                                                                  "GL_ARB_debug_output");
+      aDebActive = isActive ? " (active)" : " (inactive)";
+      if (isActive)
+      {
+        // GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB
+        aSyncActive = ::glIsEnabled (0x8242) == GL_TRUE ? " (active)" : " (inactive)";
+      }
     }
 
-    Standard_Boolean isActive = OpenGl_Context::CheckExtension ((const char* )glGetString (GL_EXTENSIONS),
-                                                                "GL_ARB_debug_output");
-    std::cout << "Active graphic driver: debug " << (isActive ? "ON" : "OFF") << "\n";
-    theDI << (isActive ? "1" : "0");
+    theDI << "debug:   " << (aCaps->contextDebug      ? "1" : "0") << aDebActive  << "\n"
+          << "sync:    " << (aCaps->contextSyncDebug  ? "1" : "0") << aSyncActive << "\n"
+          << "glslWarn:" << (aCaps->glslWarnings      ? "1" : "0") << "\n"
+          << "extraMsg:" << (aCaps->suppressExtraMsg  ? "0" : "1") << "\n";
     return 0;
   }
 
-  const Standard_Boolean toEnableDebug = Draw::Atoi (theArgVec[1]) != 0;
-  ViewerTest_myDefaultCaps.contextDebug = toEnableDebug;
-  ViewerTest_myDefaultCaps.glslWarnings = toEnableDebug;
-  if (aDriver.IsNull())
+  for (Standard_Integer anArgIter = 1; anArgIter < theArgNb; ++anArgIter)
   {
-    return 0;
+    Standard_CString        anArg     = theArgVec[anArgIter];
+    TCollection_AsciiString anArgCase (anArg);
+    anArgCase.LowerCase();
+    Standard_Boolean toEnableDebug = Standard_True;
+    if (anArgCase == "-glsl"
+     || anArgCase == "-glslwarn"
+     || anArgCase == "-glslwarns"
+     || anArgCase == "-glslwarnings")
+    {
+      Standard_Boolean toShowWarns = Standard_True;
+      if (++anArgIter < theArgNb
+      && !parseOnOff (theArgVec[anArgIter], toShowWarns))
+      {
+        --anArgIter;
+      }
+      aDefCaps->glslWarnings = toShowWarns;
+      if (aCaps != NULL)
+      {
+        aCaps->glslWarnings = toShowWarns;
+      }
+    }
+    else if (anArgCase == "-extra"
+          || anArgCase == "-extramsg"
+          || anArgCase == "-extramessages")
+    {
+      Standard_Boolean toShow = Standard_True;
+      if (++anArgIter < theArgNb
+      && !parseOnOff (theArgVec[anArgIter], toShow))
+      {
+        --anArgIter;
+      }
+      aDefCaps->suppressExtraMsg = !toShow;
+      if (aCaps != NULL)
+      {
+        aCaps->suppressExtraMsg = !toShow;
+      }
+    }
+    else if (anArgCase == "-noextra"
+          || anArgCase == "-noextramsg"
+          || anArgCase == "-noextramessages")
+    {
+      Standard_Boolean toSuppress = Standard_True;
+      if (++anArgIter < theArgNb
+      && !parseOnOff (theArgVec[anArgIter], toSuppress))
+      {
+        --anArgIter;
+      }
+      aDefCaps->suppressExtraMsg = toSuppress;
+      if (aCaps != NULL)
+      {
+        aCaps->suppressExtraMsg = toSuppress;
+      }
+    }
+    else if (anArgCase == "-sync")
+    {
+      Standard_Boolean toSync = Standard_True;
+      if (++anArgIter < theArgNb
+      && !parseOnOff (theArgVec[anArgIter], toSync))
+      {
+        --anArgIter;
+      }
+      aDefCaps->contextSyncDebug = toSync;
+      if (toSync)
+      {
+        aDefCaps->contextDebug = Standard_True;
+      }
+    }
+    else if (anArgCase == "-debug")
+    {
+      if (++anArgIter < theArgNb
+      && !parseOnOff (theArgVec[anArgIter], toEnableDebug))
+      {
+        --anArgIter;
+      }
+      aDefCaps->contextDebug = toEnableDebug;
+    }
+    else if (parseOnOff (anArg, toEnableDebug)
+          && (anArgIter + 1 == theArgNb))
+    {
+      // simple alias to turn on almost everything
+      aDefCaps->contextDebug     = toEnableDebug;
+      aDefCaps->contextSyncDebug = toEnableDebug;
+      aDefCaps->glslWarnings     = toEnableDebug;
+    }
+    else
+    {
+      std::cout << "Error: wrong syntax at '" << anArg << "'\n";
+      return 1;
+    }
   }
 
-  aDriver->ChangeOptions().glslWarnings = toEnableDebug;
   return 0;
 }
 
@@ -4217,6 +5402,7 @@ static int VCaps (Draw_Interpretor& theDI,
     theDI << "Sprites: " << (aCaps->pntSpritesDisable ? "0" : "1") << "\n";
     theDI << "SoftMode:" << (aCaps->contextNoAccel    ? "1" : "0") << "\n";
     theDI << "FFP:     " << (aCaps->ffpEnable         ? "1" : "0") << "\n";
+    theDI << "Compatible:" << (aCaps->contextCompatible ? "1" : "0") << "\n";
     return 0;
   }
 
@@ -4281,6 +5467,38 @@ static int VCaps (Draw_Interpretor& theDI,
         --anArgIter;
       }
       aCaps->contextNoAccel = !toEnable;
+    }
+    else if (anArgCase == "-compat"
+          || anArgCase == "-compatprofile"
+          || anArgCase == "-compatible"
+          || anArgCase == "-compatibleprofile")
+    {
+      Standard_Boolean toEnable = Standard_True;
+      if (++anArgIter < theArgNb
+      && !parseOnOff (theArgVec[anArgIter], toEnable))
+      {
+        --anArgIter;
+      }
+      aCaps->contextCompatible = toEnable;
+      if (!aCaps->contextCompatible)
+      {
+        aCaps->ffpEnable = Standard_False;
+      }
+    }
+    else if (anArgCase == "-core"
+          || anArgCase == "-coreprofile")
+    {
+      Standard_Boolean toEnable = Standard_True;
+      if (++anArgIter < theArgNb
+      && !parseOnOff (theArgVec[anArgIter], toEnable))
+      {
+        --anArgIter;
+      }
+      aCaps->contextCompatible = !toEnable;
+      if (!aCaps->contextCompatible)
+      {
+        aCaps->ffpEnable = Standard_False;
+      }
     }
     else
     {
@@ -4516,7 +5734,7 @@ static int VDiffImage (Draw_Interpretor& theDI, Standard_Integer theArgNb, const
   theDI << aDiffColorsNb << "\n";
 
   // save image of difference
-  if (aDiffImagePath != NULL)
+  if (aDiffColorsNb >0 && aDiffImagePath != NULL)
   {
     aComparer.SaveDiffImage (aDiffImagePath);
   }
@@ -4549,34 +5767,48 @@ static Standard_Integer VSelect (Draw_Interpretor& di,
     di << "use 'vinit' command before " << argv[0] << "\n";
     return 1;
   }
-  const Standard_Boolean isShiftSelection = (argc>3 && !(argc%2) && (atoi(argv[argc-1])==1));
+
+  const Standard_Boolean isShiftSelection = (argc > 3 && !(argc % 2) && (atoi (argv[argc - 1]) == 1));
+  Standard_Integer aCoordsNb = isShiftSelection ? argc - 2 : argc - 1;
+  TCollection_AsciiString anArg;
+  anArg = isShiftSelection ? argv[argc - 3] : argv[argc - 2];
+  anArg.LowerCase();
+  if (anArg == "-allowoverlap")
+  {
+    Standard_Boolean isValidated = isShiftSelection ? argc == 8
+      : argc == 7;
+    if (!isValidated)
+    {
+      di << "Wrong number of arguments! -allowoverlap key is applied only for rectangle selection";
+      return 1;
+    }
+
+    Standard_Integer isToAllow = isShiftSelection ? Draw::Atoi(argv[argc - 2]) : Draw::Atoi(argv[argc - 1]);
+    myAIScontext->MainSelector()->AllowOverlapDetection((Standard_Boolean)isToAllow);
+    aCoordsNb -= 2;
+  }
+
   Handle(ViewerTest_EventManager) aCurrentEventManager = ViewerTest::CurrentEventManager();
   aCurrentEventManager->MoveTo(atoi(argv[1]),atoi(argv[2]));
-  if(argc <= 4)
+  if(aCoordsNb == 2)
   {
     if(isShiftSelection)
       aCurrentEventManager->ShiftSelect();
     else
       aCurrentEventManager->Select();
   }
-  else if(argc <= 6)
+  else if(aCoordsNb == 4)
   {
     if(isShiftSelection)
-      aCurrentEventManager->ShiftSelect(atoi(argv[1]),atoi(argv[2]),atoi(argv[3]),atoi(argv[4]));
+      aCurrentEventManager->ShiftSelect (atoi (argv[1]), atoi (argv[2]), atoi (argv[3]), atoi (argv[4]), Standard_False);
     else
-      aCurrentEventManager->Select(atoi(argv[1]),atoi(argv[2]),atoi(argv[3]),atoi(argv[4]));
+      aCurrentEventManager->Select (atoi (argv[1]), atoi (argv[2]), atoi (argv[3]), atoi (argv[4]), Standard_False);
   }
   else
   {
-    Standard_Integer anUpper = 0;
+    TColgp_Array1OfPnt2d aPolyline (1,aCoordsNb / 2);
 
-    if(isShiftSelection)
-      anUpper = (argc-1)/2;
-    else
-      anUpper = argc/2;
-    TColgp_Array1OfPnt2d aPolyline(1,anUpper);
-
-    for(Standard_Integer i=1;i<=anUpper;++i)
+    for(Standard_Integer i=1;i<=aCoordsNb / 2;++i)
       aPolyline.SetValue(i,gp_Pnt2d(atoi(argv[2*i-1]),atoi(argv[2*i])));
 
     if(isShiftSelection)
@@ -6114,44 +7346,74 @@ static int VDefaults (Draw_Interpretor& theDi,
             << "AbsoluteDeflection: " << aDefParams->MaximalChordialDeviation() << "\n";
     }
     theDi << "AngularDeflection:  " << (180.0 * aDefParams->HLRAngle() / M_PI) << "\n";
+    theDi << "AutoTriangulation:  " << (aDefParams->IsAutoTriangulation() ? "on" : "off") << "\n";
     return 0;
   }
 
   for (Standard_Integer anArgIter = 1; anArgIter < theArgsNb; ++anArgIter)
   {
     TCollection_AsciiString anArg (theArgVec[anArgIter]);
-    TCollection_AsciiString aKey, aValue;
-    if (!ViewerTest::SplitParameter (anArg, aKey, aValue)
-     || aValue.IsEmpty())
+    anArg.UpperCase();
+    if (anArg == "-ABSDEFL"
+     || anArg == "-ABSOLUTEDEFLECTION"
+     || anArg == "-DEFL"
+     || anArg == "-DEFLECTION")
     {
-      std::cerr << "Error, wrong syntax at: '" << anArg.ToCString() << "'!\n";
-      return 1;
-    }
-
-    aKey.UpperCase();
-    if (aKey == "ABSDEFL"
-     || aKey == "ABSOLUTEDEFLECTION"
-     || aKey == "DEFL"
-     || aKey == "DEFLECTION")
-    {
+      if (++anArgIter >= theArgsNb)
+      {
+        std::cout << "Error: wrong syntax at " << anArg << "\n";
+        return 1;
+      }
       aDefParams->SetTypeOfDeflection         (Aspect_TOD_ABSOLUTE);
-      aDefParams->SetMaximalChordialDeviation (aValue.RealValue());
+      aDefParams->SetMaximalChordialDeviation (Draw::Atof (theArgVec[anArgIter]));
     }
-    else if (aKey == "RELDEFL"
-          || aKey == "RELATIVEDEFLECTION"
-          || aKey == "DEVCOEFF"
-          || aKey == "DEVIATIONCOEFF"
-          || aKey == "DEVIATIONCOEFFICIENT")
+    else if (anArg == "-RELDEFL"
+          || anArg == "-RELATIVEDEFLECTION"
+          || anArg == "-DEVCOEFF"
+          || anArg == "-DEVIATIONCOEFF"
+          || anArg == "-DEVIATIONCOEFFICIENT")
     {
+      if (++anArgIter >= theArgsNb)
+      {
+        std::cout << "Error: wrong syntax at " << anArg << "\n";
+        return 1;
+      }
       aDefParams->SetTypeOfDeflection     (Aspect_TOD_RELATIVE);
-      aDefParams->SetDeviationCoefficient (aValue.RealValue());
+      aDefParams->SetDeviationCoefficient (Draw::Atof (theArgVec[anArgIter]));
     }
-    else if (aKey == "ANGDEFL"
-          || aKey == "ANGULARDEFL"
-          || aKey == "ANGULARDEFLECTION")
+    else if (anArg == "-ANGDEFL"
+          || anArg == "-ANGULARDEFL"
+          || anArg == "-ANGULARDEFLECTION")
     {
+      if (++anArgIter >= theArgsNb)
+      {
+        std::cout << "Error: wrong syntax at " << anArg << "\n";
+        return 1;
+      }
       // currently HLRDeviationAngle is used instead of DeviationAngle in most places
-      aDefParams->SetHLRAngle (M_PI * aValue.RealValue() / 180.0);
+      aDefParams->SetHLRAngle (M_PI * Draw::Atof (theArgVec[anArgIter]) / 180.0);
+    }
+    if (anArg == "-AUTOTR"
+     || anArg == "-AUTOTRIANG"
+     || anArg == "-AUTOTRIANGULATION")
+    {
+      if (++anArgIter >= theArgsNb)
+      {
+        std::cout << "Error: wrong syntax at " << anArg << "\n";
+        return 1;
+      }
+      TCollection_AsciiString aValue (theArgVec[anArgIter]);
+      aValue.LowerCase();
+      if (aValue == "on"
+       || aValue == "1")
+      {
+        aDefParams->SetAutoTriangulation (Standard_True);
+      }
+      else if (aValue == "off"
+            || aValue == "0")
+      {
+        aDefParams->SetAutoTriangulation (Standard_False);
+      }
     }
     else
     {
@@ -7199,12 +8461,19 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
     "vscale          : vscale X Y Z",
     __FILE__,VScale,group);
   theCommands.Add("vzbufftrihedron",
-    "vzbufftrihedron [center|left_lower|left_upper|right_lower|right_upper"
-    " textR=255 textG=255 textB=255 scale=0.1 wireframe|zbuffer]"
-    " : Displays a V3d_ZBUFFER'ed or V3d_WIREFRAME'd trihedron",
-    __FILE__,VTestZBuffTrihedron,group);
+            "vzbufftrihedron [{-on|-off}=-on] [-type {wireframe|zbuffer}=zbuffer]"
+    "\n\t\t:       [-position center|left_lower|left_upper|right_lower|right_upper]"
+    "\n\t\t:       [-scale value=0.1] [-size value=0.8] [-arrowDiam value=0.05]"
+    "\n\t\t:       [-colorArrowX color=RED] [-colorArrowY color=GREEN] [-colorArrowZ color=BLUE]"
+    "\n\t\t:       [-nbfacets value=12] [-colorLabels color=WHITE]"
+    "\n\t\t: Displays a trihedron",
+    __FILE__,VZBuffTrihedron,group);
   theCommands.Add("vrotate",
-    "vrotate         : vrotate AX AY AZ [X Y Z]",
+    "vrotate [[-mouseStart X Y] [-mouseMove X Y]]|[AX AY AZ [X Y Z]]"
+    "\n                : Option -mouseStart starts rotation according to the mouse position"
+    "\n                : Option -mouseMove continues rotation with angle computed"
+    "\n                : from last and new mouse position."
+    "\n                : vrotate AX AY AZ [X Y Z]",
     __FILE__,VRotate,group);
   theCommands.Add("vzoom",
     "vzoom           : vzoom coef",
@@ -7218,10 +8487,45 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
     " : notice that EMF format requires patched gl2ps",
     __FILE__,VExport,group);
   theCommands.Add("vcolorscale",
-    "vcolorscale     : vcolorscale [RangeMin = 0 RangeMax = 100 Intervals = 10 HeightFont = 16 Position = 2 X = 0 Y = 0]: draw color scale",
+    "vcolorscale     : vcolorscale [-range RangeMin = 0 RangeMax = 100 Intervals = 10 -font HeightFont = 16  -textpos "
+    "Position = left -xy X = 0 Y = 0] [-noupdate|-update]: draw color scale\n"
+    "-demo/-demoversion draw a demoversion of color scale.\n"
+    "-show/display display color scale.\n"
+    "-hide/erase erase color scale.\n"
+    "Please note that -show/-hide option must be the first argument!\n"
+    "-color Index R G B: set color for indexed interval\n"
+    "-color Index ColorName: set color for indexed interval\n"
+    "-colors R G B R G B ...: set colors for all intervals\n"
+    "-colors ColorName1 ColorName2 ...: set colors for all intervals\n"
+    "-colors supports both color names and rgb values in one call\n"
+    "-label Index Text: set label for indexed interval\n"
+    "-labels Text Text Text ...: set labels for all intervals\n"
+    "-title Title [Position]: set the title for color scale with certain position. Default position = center;\n"
+    "Available text positions: left, right, center, none;\n",
     __FILE__,VColorScale,group);
   theCommands.Add("vgraduatedtrihedron",
-    "vgraduatedtrihedron : 1/0 (display/erase) [Xname Yname Zname [Font [isMultibyte]]]",
+    "vgraduatedtrihedron : -on/-off [-xname Name] [-yname Name] [-zname Name] [-arrowlength Value]\n"
+    "\t[-namefont Name] [-valuesfont Name]\n"
+    "\t[-xdrawname on/off] [-ydrawname on/off] [-zdrawname on/off]\n"
+    "\t[-xnameoffset IntVal] [-ynameoffset IntVal] [-znameoffset IntVal]"
+    "\t[-xnamecolor Color] [-ynamecolor Color] [-znamecolor Color]\n"
+    "\t[-xdrawvalues on/off] [-ydrawvalues on/off] [-zdrawvalues on/off]\n"
+    "\t[-xvaluesoffset IntVal] [-yvaluesoffset IntVal] [-zvaluesoffset IntVal]"
+    "\t[-xcolor Color] [-ycolor Color] [-zcolor Color]\n"
+    "\t[-xdrawticks on/off] [-ydrawticks on/off] [-zdrawticks on/off]\n"
+    "\t[-xticks Number] [-yticks Number] [-zticks Number]\n"
+    "\t[-xticklength IntVal] [-yticklength IntVal] [-zticklength IntVal]\n"
+    "\t[-drawgrid on/off] [-drawaxes on/off]\n"
+    " - Displays or erases graduated trihedron"
+    " - xname, yname, zname - names of axes, default: X, Y, Z\n"
+    " - namefont - font of axes names. Default: Arial\n"
+    " - xnameoffset, ynameoffset, znameoffset - offset of name from values or tickmarks or axis. Default: 30\n"
+    " - xnamecolor, ynamecolor, znamecolor - colors of axes names\n"
+    " - xvaluesoffset, yvaluesoffset, zvaluesoffset - offset of values from tickmarks or axis. Default: 10\n"
+    " - valuesfont - font of axes values. Default: Arial\n"
+    " - xcolor, ycolor, zcolor - color of axis and values\n"
+    " - xticks, yticks, xzicks - number of tickmark on axes. Default: 5\n"
+    " - xticklength, yticklength, xzicklength - length of tickmark on axes. Default: 10\n",
     __FILE__,VGraduatedTrihedron,group);
   theCommands.Add("vprintview" ,
     "vprintview : width height filename [algo=0] [tile_width tile_height] : Test print algorithm: algo = 0 - stretch, algo = 1 - tile",
@@ -7258,13 +8562,46 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
     " : Mode - rectangular or circular"
     " : Type - lines or points",
     __FILE__, VGrid, group);
+  theCommands.Add ("vpriviledgedplane",
+    "vpriviledgedplane [Ox Oy Oz Nx Ny Nz [Xx Xy Xz]]"
+    "\n\t\t:   Ox, Oy, Oz - plane origin"
+    "\n\t\t:   Nx, Ny, Nz - plane normal direction"
+    "\n\t\t:   Xx, Xy, Xz - plane x-reference axis direction"
+    "\n\t\t: Sets or prints viewer's priviledged plane geometry.",
+    __FILE__, VPriviledgedPlane, group);
+  theCommands.Add ("vconvert",
+    "vconvert v [Mode={window|view}]"
+    "\n\t\t: vconvert x y [Mode={window|view|grid|ray}]"
+    "\n\t\t: vconvert x y z [Mode={window|grid}]"
+    "\n\t\t:   window - convert to window coordinates, pixels"
+    "\n\t\t:   view   - convert to view projection plane"
+    "\n\t\t:   grid   - convert to model coordinates, given on grid"
+    "\n\t\t:   ray    - convert projection ray to model coordiantes"
+    "\n\t\t: - vconvert v window : convert view to window;"
+    "\n\t\t: - vconvert v view   : convert window to view;"
+    "\n\t\t: - vconvert x y window : convert view to window;"
+    "\n\t\t: - vconvert x y view : convert window to view;"
+    "\n\t\t: - vconvert x y : convert window to model;"
+    "\n\t\t: - vconvert x y grid : convert window to model using grid;"
+    "\n\t\t: - vconvert x y ray : convert window projection line to model;"
+    "\n\t\t: - vconvert x y z window : convert model to window;"
+    "\n\t\t: - vconvert x y z grid : convert view to model using grid;"
+    "\n\t\t: Converts the given coordinates to window/view/model space.",
+    __FILE__, VConvert, group);
   theCommands.Add ("vfps",
     "vfps [framesNb=100] : estimate average frame rate for active view",
     __FILE__, VFps, group);
   theCommands.Add ("vgldebug",
-    "vgldebug [{0|1}] : request debug GL context, should be called before vinit\n"
-    "                : this function is implemented only for Windows\n"
-    "                : GL_ARB_debug_output extension should be exported by OpenGL driver!",
+            "vgldebug [-sync {0|1}] [-debug {0|1}] [-glslWarn {0|1}]"
+    "\n\t\t:          [-extraMsg {0|1}] [{0|1}]"
+    "\n\t\t: Request debug GL context. Should be called BEFORE vinit."
+    "\n\t\t: Debug context can be requested only on Windows"
+    "\n\t\t: with GL_ARB_debug_output extension implemented by GL driver!"
+    "\n\t\t:  -sync     - request synchronized debug GL context"
+    "\n\t\t:  -glslWarn - log GLSL compiler/linker warnings,"
+    "\n\t\t:              which are suppressed by default,"
+    "\n\t\t:  -extraMsg - log extra diagnostic messages from GL context,"
+    "\n\t\t:              which are suppressed by default",
     __FILE__, VGlDebug, group);
   theCommands.Add ("vvbo",
     "vvbo [{0|1}] : turn VBO usage On/Off; affects only newly displayed objects",
@@ -7274,15 +8611,18 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
     __FILE__, VStereo, group);
   theCommands.Add ("vcaps",
             "vcaps [-vbo {0|1}] [-sprites {0|1}] [-ffp {0|1}]"
+    "\n\t\t:       [-compatibleContext {0|1}]"
     "\n\t\t:       [-softMode {0|1}] [-noupdate|-update]"
     "\n\t\t: Modify particular graphic driver options:"
     "\n\t\t:  FFP      - use fixed-function pipeline instead of"
     "\n\t\t:             built-in GLSL programs"
+    "\n\t\t:            (requires compatible profile)"
     "\n\t\t:  VBO      - use Vertex Buffer Object (copy vertex"
     "\n\t\t:             arrays to GPU memory)"
     "\n\t\t:  sprite   - use textured sprites instead of bitmaps"
-    "\n\t\t:  softMode - use software OpenGL implementation,"
-    "\n\t\t:             should be set BEFORE viewer creation"
+    "\n\t\t: Context creation options:"
+    "\n\t\t:  softMode          - software OpenGL implementation"
+    "\n\t\t:  compatibleProfile - backward-compatible profile"
     "\n\t\t: Unlike vrenderparams, these parameters control alternative"
     "\n\t\t: rendering paths producing the same visual result when"
     "\n\t\t: possible."
@@ -7300,12 +8640,14 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
     "diffimage     : diffimage imageFile1 imageFile2 toleranceOfColor(0..1) blackWhite(1|0) borderFilter(1|0) [diffImageFile]",
     __FILE__, VDiffImage, group);
   theCommands.Add ("vselect",
-    "vselect x1 y1 [x2 y2 [x3 y3 ... xn yn]] [shift_selection = 0|1]\n"
+    "vselect x1 y1 [x2 y2 [x3 y3 ... xn yn]] [-allowoverlap 0|1] [shift_selection = 0|1]\n"
     "- emulates different types of selection:\n"
     "- 1) single click selection\n"
     "- 2) selection with rectangle having corners at pixel positions (x1,y1) and (x2,y2)\n"
     "- 3) selection with polygon having corners in pixel positions (x1,y1), (x2,y2),...,(xn,yn)\n"
-    "- 4) any of these selections with shift button pressed",
+    "- 4) -allowoverlap determines will partially included objects be selected in rectangular selection"
+    " (partial inclusion - overlap - is not allowed by default)\n"
+    "- 5) any of these selections with shift button pressed",
     __FILE__, VSelect, group);
   theCommands.Add ("vmoveto",
     "vmoveto x y"
@@ -7445,8 +8787,11 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
     "  this command sets texture details mode for the specified view.\n"
     , __FILE__, VSetTextureMode, group);
   theCommands.Add("vdefaults",
-    "vdefaults [absDefl=value] [devCoeff=value] [angDefl=value]",
-    __FILE__, VDefaults, group);
+               "vdefaults [-absDefl value]"
+       "\n\t\t:           [-devCoeff value]"
+       "\n\t\t:           [-angDefl value]"
+       "\n\t\t:           [-autoTriang {off/on | 0/1}]"
+    , __FILE__, VDefaults, group);
   theCommands.Add("vlight",
     "tool to manage light sources, without arguments shows list of lights."
     "\n    Main commands: "
@@ -7496,8 +8841,10 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
     "vhighlightselected [0|1] or vhighlightselected [on|off]: enables/disables highlighting of selected objects.\n"
     "Without arguments it shows if highlighting of selected objects is enabled now.",
     __FILE__,VHighlightSelected,group);
-
-
+  theCommands.Add ("vplace",
+            "vplace dx dy"
+    "\n\t\t: Places the point (in pixels) at the center of the window",
+    __FILE__, VPlace, group);
   theCommands.Add("vxrotate",
     "vxrotate",
     __FILE__,VXRotate,group);

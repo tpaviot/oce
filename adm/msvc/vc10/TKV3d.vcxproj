@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C275DE0C-1587-0E64-02E8-80512E51DEC3}</ProjectGuid>
+    <ProjectGuid>{09BA0789-157C-036F-0E20-7149C8A2F57E}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -320,10 +320,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListOfShortReal_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MapIteratorOfMapOfStructure_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MapOfStructure_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MaterialDefinitionError_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_PriorityDefinitionError_0.cxx">
@@ -331,8 +327,6 @@
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfStructure_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfStructure_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_StdMapNodeOfMapOfStructure_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_StructureDefinitionError_0.cxx">
     </ClCompile>
@@ -418,6 +412,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Vertex.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ViewAffinity.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ClipDefinitionError_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ContextPickDefinitionError_0.cxx">
@@ -468,23 +464,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ViewManager.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListIteratorOfListOfSensitiveTriangle_0.cxx">
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_BVHPrimitiveContent.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListIteratorOfListOfSensitive_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListNodeOfListOfSensitiveTriangle_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListNodeOfListOfSensitive_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListOfSensitiveTriangle_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListOfSensitive_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_SensitiveEntitySequence_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_SequenceNodeOfSensitiveEntitySequence_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Select3D\Select3D_Projector.cxx">
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_InteriorSensitivePointSet.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveBox.cxx">
     </ClCompile>
@@ -503,6 +485,8 @@
     <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitivePoly.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveSegment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveSet.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveTriangle.cxx">
     </ClCompile>
@@ -592,23 +576,11 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFSurface.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfSelectionActivation_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfObjectSelectors_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfSelectionActivation_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfIntegerSensitive_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfObjectSelectors_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfSelectionActivation_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion_0.cxx">
     </ClCompile>
@@ -628,19 +600,17 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfOwner_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfSelection_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfSelector_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfFilter_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfOwner_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfSelection_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfSelector_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_AndFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_BaseFrustum.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_CompositionFilter.cxx">
     </ClCompile>
@@ -648,15 +618,31 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_Filter.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_FrustumBuilder.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_OrFilter.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_RectangularFrustum.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectableObject.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectableObjectSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectingVolumeManager.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_Selection.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectionManager.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SensitiveEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SensitiveEntitySet.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SortCriterion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_TriangularFrustum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_TriangularFrustumSet.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_ViewerSelector.cxx">
     </ClCompile>
@@ -752,8 +738,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_DimensionOwner.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\AIS\AIS_Drawer.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_EllipseRadiusDimension.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_EqualDistanceRelation.cxx">
@@ -825,6 +809,8 @@
     <ClCompile Include="..\..\..\src\AIS\AIS_SymmetricRelation.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_TangentRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TextLabel.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_TexturedShape.cxx">
     </ClCompile>

@@ -212,6 +212,7 @@
 		<Unit filename="../../../src/BRepCheck/BRepCheck_Face.cxx" />
 		<Unit filename="../../../src/BRepCheck/BRepCheck_Result.cxx" />
 		<Unit filename="../../../src/BRepCheck/BRepCheck_Shell.cxx" />
+		<Unit filename="../../../src/BRepCheck/BRepCheck_Solid.cxx" />
 		<Unit filename="../../../src/BRepCheck/BRepCheck_Vertex.cxx" />
 		<Unit filename="../../../src/BRepCheck/BRepCheck_Wire.cxx" />
 		<Unit filename="../../../src/BRepBndLib/BRepBndLib.cxx" />
@@ -224,6 +225,8 @@
 		<Unit filename="../../../src/BRepExtrema/BRepExtrema_ExtPC.cxx" />
 		<Unit filename="../../../src/BRepExtrema/BRepExtrema_ExtPF.cxx" />
 		<Unit filename="../../../src/BRepExtrema/BRepExtrema_Poly.cxx" />
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_ShapeProximity.cxx" />
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_TriangleSet.cxx" />
 		<Unit filename="../../../drv/BRepClass/BRepClass_FClass2dOfFClassifier_0.cxx" />
 		<Unit filename="../../../drv/BRepClass/BRepClass_FClassifier_0.cxx" />
 		<Unit filename="../../../drv/BRepClass/BRepClass_FacePassiveClassifier_0.cxx" />
@@ -241,6 +244,7 @@
 		<Unit filename="../../../src/BRepClass3d/BRepClass3d_SolidClassifier.cxx" />
 		<Unit filename="../../../src/BRepClass3d/BRepClass3d_SolidExplorer.cxx" />
 		<Unit filename="../../../src/BRepLib/BRepLib.cxx" />
+		<Unit filename="../../../src/BRepLib/BRepLib_CheckCurveOnSurface.cxx" />
 		<Unit filename="../../../src/BRepLib/BRepLib_Command.cxx" />
 		<Unit filename="../../../src/BRepLib/BRepLib_FindSurface.cxx" />
 		<Unit filename="../../../src/BRepLib/BRepLib_FuseEdges.cxx" />
@@ -259,6 +263,7 @@
 		<Unit filename="../../../src/BRepGProp/BRepGProp_Domain.cxx" />
 		<Unit filename="../../../src/BRepGProp/BRepGProp_EdgeTool.cxx" />
 		<Unit filename="../../../src/BRepGProp/BRepGProp_Face.cxx" />
+		<Unit filename="../../../src/BRepGProp/BRepGProp_Gauss.cxx" />
 		<Unit filename="../../../src/BRepGProp/BRepGProp_Sinert.cxx" />
 		<Unit filename="../../../src/BRepGProp/BRepGProp_TFunction.cxx" />
 		<Unit filename="../../../src/BRepGProp/BRepGProp_UFunction.cxx" />
@@ -276,6 +281,7 @@
 		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_Collect.cxx" />
 		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_Command.cxx" />
 		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_Copy.cxx" />
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_FastSewing.cxx" />
 		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_FindPlane.cxx" />
 		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_GTransform.cxx" />
 		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_MakeEdge.cxx" />

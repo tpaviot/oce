@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{D3E58388-010A-0BFE-122A-697F3E20E61F}</UniqueIdentifier>
+      <UniqueIdentifier>{CDB384EC-0CCE-0E8F-05D3-259CDD5DB0D8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PDF">
-      <UniqueIdentifier>{E43C6053-11C6-0EB0-12E1-59F88ECD3FA2}</UniqueIdentifier>
+      <UniqueIdentifier>{0539B5C0-1253-113C-0856-E717D5CDD2A6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PDataStd">
-      <UniqueIdentifier>{0CD6D7DE-0B2D-0155-1528-BFCD443D6AD4}</UniqueIdentifier>
+      <UniqueIdentifier>{C0C37AB6-01DC-1405-012B-EC4C0071CB5A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PFunction">
-      <UniqueIdentifier>{30BC53B9-179E-01F9-0876-D746965B5A30}</UniqueIdentifier>
+      <UniqueIdentifier>{DDB6417E-1529-14F2-186B-9BE33B63483D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PDocStd">
-      <UniqueIdentifier>{7E2E8732-018C-0035-15ED-E39EDCD27DF8}</UniqueIdentifier>
+      <UniqueIdentifier>{1BB18212-14CE-085C-065A-5A4324EE31CD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MDF">
-      <UniqueIdentifier>{4C55EDE9-1306-12AB-0BB2-82C6F4D3E04F}</UniqueIdentifier>
+      <UniqueIdentifier>{07CAD599-14EA-0E95-0ABD-18612B936842}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MDataStd">
-      <UniqueIdentifier>{2B96C37B-125F-154B-07ED-B050C3866F15}</UniqueIdentifier>
+      <UniqueIdentifier>{A1C7EA24-0A00-0777-1931-B632CFC1BA8E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MFunction">
-      <UniqueIdentifier>{E6E519EC-0083-150F-0200-F4B9A8C8D372}</UniqueIdentifier>
+      <UniqueIdentifier>{BEC7B052-0BB9-0608-063B-8DC8575BD97A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MDocStd">
-      <UniqueIdentifier>{B1E4D8D2-175A-0E9F-0E7A-1C9053475983}</UniqueIdentifier>
+      <UniqueIdentifier>{22DDE621-004E-06F2-18E1-1470E5FFEC47}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

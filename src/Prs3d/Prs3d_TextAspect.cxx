@@ -14,10 +14,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#define GER61351    //GG_171199     Enable to set an object RGB color
-//              instead a restricted object NameOfColor.
-
-
 #include <Prs3d_TextAspect.ixx>
 #include <Quantity_Color.hxx>
 #include <Font_NameOfFont.hxx>
@@ -36,11 +32,20 @@ Prs3d_TextAspect::Prs3d_TextAspect ()
                                              0.);
 }
 
-#ifdef GER61351
+Prs3d_TextAspect::Prs3d_TextAspect( const Handle( Graphic3d_AspectText3d )& theAspect )
+: myAngle(0.),
+  myHeight(16.),
+  myHorizontalJustification(Graphic3d_HTA_LEFT),
+  myVerticalJustification(Graphic3d_VTA_BOTTOM),
+  myOrientation(Graphic3d_TP_RIGHT)
+{
+  myTextAspect = theAspect;
+}
+
+
 void Prs3d_TextAspect::SetColor(const Quantity_Color &aColor) {
   myTextAspect->SetColor(aColor);
 }
-#endif
 
 void Prs3d_TextAspect::SetColor(const Quantity_NameOfColor aColor) {
   myTextAspect->SetColor(Quantity_Color(aColor));
@@ -92,4 +97,9 @@ Graphic3d_TextPath Prs3d_TextAspect::Orientation () const {return myOrientation;
 
 Handle(Graphic3d_AspectText3d) Prs3d_TextAspect::Aspect() const {
   return myTextAspect;
+}
+
+void Prs3d_TextAspect::SetAspect( const Handle( Graphic3d_AspectText3d )& theAspect )
+{
+  myTextAspect = theAspect;
 }

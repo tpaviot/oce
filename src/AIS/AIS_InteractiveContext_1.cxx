@@ -14,19 +14,9 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#define UKI60826	//GG_161199	Use the requested selection color instead of default
-
-#define	IMP280200	//GG Don't returns a NULL shape in SelectedShape()
-//			method when the current selected is a shape !
-
-#define BUC60814	//GG_300101	Idem UKI60826
-
-#define OCC138          //VTN Avoding infinit loop in AddOrRemoveCurrentObject method.
-
-#define OCC9657
-
 #include <AIS_InteractiveContext.jxx>
 #include <SelectMgr_EntityOwner.hxx>
+#include <StdSelect_ViewerSelector3d.hxx>
 #include <AIS_Selection.hxx>
 #include <AIS_StatusOfDetection.hxx>
 #include <AIS_StatusOfPick.hxx>
@@ -43,6 +33,7 @@
 #include <V3d_SpotLight.hxx>
 #include <V3d_DirectionalLight.hxx>
 #include <V3d_AmbientLight.hxx>
+#include <Visual3d_View.hxx>
 
 #include <TColStd_ListIteratorOfListOfInteger.hxx>
 #include <SelectMgr_Selection.hxx>
@@ -50,10 +41,8 @@
 
 #include <Prs3d_Presentation.hxx>
 
-#ifdef OCC9657
 #include <AIS_MapOfInteractive.hxx>
 #include <AIS_MapIteratorOfMapOfInteractive.hxx>
-#endif
 
 //=======================================================================
 //function : MoveTo
@@ -84,7 +73,7 @@ AIS_StatusOfDetection AIS_InteractiveContext::MoveTo (const Standard_Integer  th
   AIS_StatusOfDetection aStatus        = AIS_SOD_Nothing;
   Standard_Boolean      toUpdateViewer = Standard_False;
 
-  // allonzy
+  myFilters->SetDisabledObjects (theView->View()->HiddenObjects());
   myMainSel->Pick (theXPix, theYPix, theView);
 
   // filling of myAISDetectedSeq sequence storing information about detected AIS objects
@@ -531,11 +520,7 @@ void AIS_InteractiveContext::SetCurrentObject(const Handle(AIS_InteractiveObject
     Standard_Boolean HasHiCol;
     if(IsHilighted(anIObj,HasHiCol,HiCol)){
       if(HasHiCol && HiCol!= mySelectionColor) {
-#ifdef UKI60826
 	HilightWithColor(anIObj,mySelectionColor,updateviewer);
-#else
-	Hilight(anIObj,updateviewer);
-#endif
       }
     }
     return;
@@ -568,19 +553,11 @@ void AIS_InteractiveContext::SetCurrentObject(const Handle(AIS_InteractiveObject
     Standard_Boolean HasHiCol;
     if(IsHilighted(anIObj,HasHiCol,HiCol)){
       if(HasHiCol && HiCol!= mySelectionColor) {
-#ifdef UKI60826
 	  HilightWithColor(anIObj,mySelectionColor,Standard_False);
-#else
-	  Hilight(anIObj,Standard_False);
-#endif
       }
     }
     else{
-#ifdef UKI60826
 	HilightWithColor(anIObj,mySelectionColor,Standard_False);
-#else
-      Hilight(anIObj,Standard_False);
-#endif
     }
     if (updateviewer) 
       UpdateCurrentViewer();
@@ -613,11 +590,7 @@ AddOrRemoveCurrentObject(const Handle(AIS_InteractiveObject)& anIObj,
     Standard_Integer mod = (SelStat==AIS_SS_Added) ? 1 : 0;
     anIObj->State(mod);
     if(mod==1)
-#ifdef BUC60814
       HilightWithColor(anIObj,mySelectionColor,Standard_False);
-#else
-      Hilight(anIObj,Standard_False);
-#endif
     else 
       Unhilight(anIObj,Standard_False);
     
@@ -745,11 +718,7 @@ void AIS_InteractiveContext::HilightCurrents(const Standard_Boolean updateviewer
   while (sel->More()) {
     TR = sel->Value();
     IO = *((Handle(AIS_InteractiveObject)*)&TR);
-#ifdef BUC60814
     HilightWithColor(IO,mySelectionColor,Standard_False);
-#else
-    Hilight(IO,Standard_False);
-#endif
     sel->Next();
   }
   if(updateviewer) 
@@ -818,11 +787,7 @@ void AIS_InteractiveContext::HilightSelected(const Standard_Boolean updateviewer
     while (sel->More()) {
       TR = sel->Value();
       IO = *((Handle(AIS_InteractiveObject)*)&TR);
-#ifdef BUC60814
       HilightWithColor(IO,mySelectionColor,Standard_False);
-#else
-      Hilight(IO,Standard_False);
-#endif
       sel->Next();
     }
   }
@@ -1039,16 +1004,12 @@ void AIS_InteractiveContext::NextSelected()
 Standard_Boolean AIS_InteractiveContext::HasSelectedShape() const 
 {
   if(!HasOpenedContext()) {
-#ifdef IMP280200
     Handle(AIS_Shape) shape = 
 	Handle(AIS_Shape)::DownCast(SelectedInteractive());
     if( !shape.IsNull() ) return Standard_True;
-#endif
     return Standard_False;
   }
-  return myLocalContexts(myCurLocalIndex)->HasShape();
-  
-  
+  return myLocalContexts(myCurLocalIndex)->HasSelectedShape();
 }
 
 //=======================================================================
@@ -1064,7 +1025,9 @@ TopoDS_Shape AIS_InteractiveContext::SelectedShape() const
     Handle(AIS_Shape) aShape = Handle(AIS_Shape)::DownCast (SelectedInteractive());
     if (!aShape.IsNull())
     {
-      aResShape = aShape->Shape().Located (TopLoc_Location (SelectedInteractive()->Transformation()) * aShape->Shape().Location());
+      TopLoc_Location aLocTrsf = SelectedInteractive()->Transformation().Form() == gp_Identity ?
+                                 TopLoc_Location() : TopLoc_Location (SelectedInteractive()->Transformation());
+      aResShape = aShape->Shape().Located (aLocTrsf * aShape->Shape().Location());
     }
 
     return aResShape;
@@ -1088,6 +1051,8 @@ Handle(AIS_InteractiveObject) AIS_InteractiveContext::Interactive() const
 Handle(AIS_InteractiveObject) AIS_InteractiveContext::SelectedInteractive() const 
 {
   if(!HasOpenedContext()){
+    if (AIS_Selection::Selection(myCurrentName.ToCString())->Extent() == 0)
+      return NULL;
     Handle(Standard_Transient) TR  =AIS_Selection::Selection(myCurrentName.ToCString())->Value();
     Handle(AIS_InteractiveObject) IO = *((Handle(AIS_InteractiveObject)*)&TR);
     return IO;}
@@ -1134,11 +1099,11 @@ void AIS_InteractiveContext::EntityOwners(SelectMgr_IndexedMapOfOwner& theOwners
     if ( !theIObj->HasSelection( aMode ) )
       continue;
 
-    Handle(SelectMgr_Selection) aSel = theIObj->Selection( aMode );
+    Handle(SelectMgr_Selection) aSel = theIObj->Selection(aMode);
 
     for ( aSel->Init(); aSel->More(); aSel->Next() )
     {
-      Handle(SelectBasics_SensitiveEntity) aEntity = aSel->Sensitive();
+      Handle(SelectBasics_SensitiveEntity) aEntity = aSel->Sensitive()->BaseSensitive();
       if ( aEntity.IsNull() )
 	continue;
 

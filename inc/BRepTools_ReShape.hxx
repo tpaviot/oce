@@ -40,28 +40,28 @@ public:
   Standard_EXPORT BRepTools_ReShape();
   
   //! Clears all substitutions requests
-  Standard_EXPORT   void Clear() ;
+  Standard_EXPORT virtual   void Clear() ;
   
   //! Sets a request to Remove a Shape
   //! If <oriented> is True, only for a shape with the SAME
   //! orientation. Else, whatever the orientation
-  Standard_EXPORT   void Remove (const TopoDS_Shape& shape, const Standard_Boolean oriented = Standard_False) ;
+  Standard_EXPORT virtual   void Remove (const TopoDS_Shape& shape, const Standard_Boolean oriented = Standard_False) ;
   
   //! Sets a request to Replace a Shape by a new one
   //! If <oriented> is True, only if the orientation is the same
   //! Else, whatever the orientation, and the new shape takes the
   //! same orientation as <newshape> if the replaced one has the
   //! same as <shape>, else it is reversed
-  Standard_EXPORT   void Replace (const TopoDS_Shape& shape, const TopoDS_Shape& newshape, const Standard_Boolean oriented = Standard_False) ;
+  Standard_EXPORT virtual   void Replace (const TopoDS_Shape& shape, const TopoDS_Shape& newshape, const Standard_Boolean oriented = Standard_False) ;
   
   //! Tells if a shape is recorded for Replace/Remove
-  Standard_EXPORT   Standard_Boolean IsRecorded (const TopoDS_Shape& shape)  const;
+  Standard_EXPORT virtual   Standard_Boolean IsRecorded (const TopoDS_Shape& shape)  const;
   
   //! Returns the new value for an individual shape
   //! If not recorded, returns the original shape itself
   //! If to be Removed, returns a Null Shape
   //! Else, returns the replacing item
-  Standard_EXPORT   TopoDS_Shape Value (const TopoDS_Shape& shape)  const;
+  Standard_EXPORT virtual   TopoDS_Shape Value (const TopoDS_Shape& shape)  const;
   
   //! Returns a complete substitution status for a shape
   //! 0  : not recorded,   <newsh> = original <shape>
@@ -104,11 +104,11 @@ public:
   
   //! Returns (modifiable) the flag which defines whether Location of shape take into account
   //! during replacing shapes.
-  Standard_EXPORT   Standard_Boolean& ModeConsiderLocation() ;
+  Standard_EXPORT virtual   Standard_Boolean& ModeConsiderLocation() ;
   
   //! Returns (modifiable) the flag which defines whether Orientation of shape take into account
   //! during replacing shapes.
-  Standard_EXPORT   Standard_Boolean& ModeConsiderOrientation() ;
+  Standard_EXPORT virtual   Standard_Boolean& ModeConsiderOrientation() ;
 
 
 

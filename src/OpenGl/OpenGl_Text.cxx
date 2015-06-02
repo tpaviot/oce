@@ -19,7 +19,6 @@
 #include <OpenGl_ShaderManager.hxx>
 #include <OpenGl_ShaderProgram.hxx>
 #include <OpenGl_ShaderStates.hxx>
-#include <OpenGl_Sampler.hxx>
 #include <OpenGl_Text.hxx>
 #include <OpenGl_Utils.hxx>
 #include <OpenGl_Workspace.hxx>
@@ -382,27 +381,12 @@ void OpenGl_Text::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
   const OpenGl_AspectText*      aTextAspect  = theWorkspace->AspectText (Standard_True);
   const Handle(OpenGl_Texture)  aPrevTexture = theWorkspace->DisableTexture();
   const Handle(OpenGl_Context)& aCtx         = theWorkspace->GetGlContext();
-  const Handle(OpenGl_Sampler)& aSampler     = aCtx->TextureSampler();
-  if (!aSampler.IsNull())
+
+  // Bind custom shader program or generate default version
+  if (aCtx->core20fwd != NULL)
   {
-    aSampler->Unbind (*aCtx);
-  }
-
-  if (aCtx->IsGlGreaterEqual (2, 0))
-  {
-    const Handle(OpenGl_ShaderProgram)& aProgram = aTextAspect->ShaderProgramRes (aCtx);
-    aCtx->BindProgram (aProgram);
-    if (!aProgram.IsNull())
-    {
-      aProgram->ApplyVariables (aCtx);
-
-      const OpenGl_MaterialState* aMaterialState = aCtx->ShaderManager()->MaterialState (aProgram);
-
-      if (aMaterialState == NULL || aMaterialState->Aspect() != aTextAspect)
-        aCtx->ShaderManager()->UpdateMaterialStateTo (aProgram, aTextAspect);
-
-      aCtx->ShaderManager()->PushState (aProgram);
-    }
+    aCtx->ShaderManager()->BindProgram (
+      aTextAspect, aTextAspect->ShaderProgramRes (aCtx));
   }
 
   // use highlight color or colors from aspect
@@ -424,13 +408,15 @@ void OpenGl_Text::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
   }
 
   // restore aspects
-  if (!aSampler.IsNull())
-  {
-    aSampler->Bind (*aCtx);
-  }
   if (!aPrevTexture.IsNull())
   {
     theWorkspace->EnableTexture (aPrevTexture);
+  }
+
+  // restore Z buffer settings
+  if (theWorkspace->UseZBuffer() && theWorkspace->UseDepthTest())
+  {
+    glEnable (GL_DEPTH_TEST);
   }
 }
 
@@ -454,9 +440,6 @@ void OpenGl_Text::setupMatrix (const Handle(OpenGl_PrinterContext)& thePrintCtx,
                                const OpenGl_AspectText&             theTextAspect,
                                const OpenGl_Vec3                    theDVec) const
 {
-  // setup matrix
-#if !defined(GL_ES_VERSION_2_0)
-
   OpenGl_Mat4d aModViewMat;
 
   if (myIs2d)
@@ -505,7 +488,12 @@ void OpenGl_Text::setupMatrix (const Handle(OpenGl_PrinterContext)& thePrintCtx,
 
   theCtx->WorldViewState.SetCurrent<Standard_Real> (aModViewMat);
   theCtx->ApplyWorldViewMatrix();
-#endif
+
+  if (!theCtx->ActiveProgram().IsNull())
+  {
+    // Upload updated state to shader program
+    theCtx->ShaderManager()->PushState (theCtx->ActiveProgram());
+  }
 }
 
 // =======================================================================
@@ -548,7 +536,7 @@ void OpenGl_Text::drawText (const Handle(OpenGl_PrinterContext)& ,
 
     glDrawArrays (GL_TRIANGLES, 0, GLsizei(aVerts->GetElemsNb()));
 
-    aVerts->UnbindAttribute (theCtx, Graphic3d_TOA_UV);
+    aTCrds->UnbindAttribute (theCtx, Graphic3d_TOA_UV);
     aVerts->UnbindAttribute (theCtx, Graphic3d_TOA_POS);
   }
   glBindTexture (GL_TEXTURE_2D, 0);
@@ -588,32 +576,47 @@ Handle(OpenGl_Font) OpenGl_Text::FindFont (const Handle(OpenGl_Context)& theCtx,
     const Handle(TCollection_HAsciiString) aFontName = new TCollection_HAsciiString (theAspect.FontName());
     const Font_FontAspect anAspect = (theAspect.FontAspect() != Font_FA_Undefined) ? theAspect.FontAspect() : Font_FA_Regular;
     Handle(Font_SystemFont) aRequestedFont = aFontMgr->FindFont (aFontName, anAspect, theHeight);
-    if (aRequestedFont.IsNull())
+    Handle(Font_FTFont) aFontFt;
+    if (!aRequestedFont.IsNull())
     {
-      return aFont;
+      aFontFt = new Font_FTFont (NULL);
+      if (aFontFt->Init (aRequestedFont->FontPath()->ToCString(), theHeight))
+      {
+        aFont = new OpenGl_Font (aFontFt, theKey);
+        if (!aFont->Init (theCtx))
+        {
+          TCollection_ExtendedString aMsg;
+          aMsg += "Font '";
+          aMsg += theAspect.FontName();
+          aMsg += "' - initialization of GL resources has failed!";
+          theCtx->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB, GL_DEBUG_TYPE_ERROR_ARB, 0, GL_DEBUG_SEVERITY_HIGH_ARB, aMsg);
+          aFontFt.Nullify();
+          aFont = new OpenGl_Font (aFontFt, theKey);
+        }
+      }
+      else
+      {
+        TCollection_ExtendedString aMsg;
+        aMsg += "Font '";
+        aMsg += theAspect.FontName();
+        aMsg += "' is broken or has incompatible format! File path: ";
+        aMsg += aRequestedFont->FontPath()->ToCString();
+        theCtx->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB, GL_DEBUG_TYPE_ERROR_ARB, 0, GL_DEBUG_SEVERITY_HIGH_ARB, aMsg);
+        aFontFt.Nullify();
+        aFont = new OpenGl_Font (aFontFt, theKey);
+      }
+    }
+    else
+    {
+      TCollection_ExtendedString aMsg;
+      aMsg += "Font '";
+      aMsg += theAspect.FontName();
+      aMsg += "' is not found in the system!";
+      theCtx->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB, GL_DEBUG_TYPE_ERROR_ARB, 0, GL_DEBUG_SEVERITY_HIGH_ARB, aMsg);
+      aFont = new OpenGl_Font (aFontFt, theKey);
     }
 
-    Handle(Font_FTFont) aFontFt = new Font_FTFont (NULL);
-    if (!aFontFt->Init (aRequestedFont->FontPath()->ToCString(), theHeight))
-    {
-      return aFont;
-    }
-
-    Handle(OpenGl_Context) aCtx = theCtx;
-  #if !defined(GL_ES_VERSION_2_0)
-    glPushAttrib (GL_TEXTURE_BIT);
-  #endif
-    aFont = new OpenGl_Font (aFontFt, theKey);
-    if (!aFont->Init (aCtx))
-    {
-      //glPopAttrib();
-      //return aFont; // out of resources?
-    }
-  #if !defined(GL_ES_VERSION_2_0)
-    glPopAttrib(); // texture bit
-  #endif
-
-    aCtx->ShareResource (theKey, aFont);
+    theCtx->ShareResource (theKey, aFont);
   }
   return aFont;
 }
@@ -644,10 +647,10 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
   if (myFont.IsNull())
   {
     myFont = FindFont (theCtx, theTextAspect, myParams.Height, aFontKey);
-    if (myFont.IsNull())
-    {
-      return;
-    }
+  }
+  if (!myFont->WasInitialized())
+  {
+    return;
   }
 
   if (myTextures.IsEmpty())
@@ -672,7 +675,6 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
 
   theCtx->WorldViewState.Push();
 
-#if !defined(GL_ES_VERSION_2_0)
   myModelMatrix.Convert (theCtx->WorldViewState.Current() * theCtx->ModelWorldState.Current());
 
   if (!myIs2d)
@@ -722,9 +724,12 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
   }
   myExportHeight = (float )myFont->FTFont()->PointSize() / myExportHeight;
 
-  // push enabled flags to the stack
-  glPushAttrib (GL_ENABLE_BIT);
-  glDisable (GL_LIGHTING);
+#if !defined(GL_ES_VERSION_2_0)
+  if (theCtx->core11 != NULL)
+  {
+    glDisable (GL_LIGHTING);
+  }
+#endif
 
   // setup depth test
   if (!myIs2d
@@ -737,61 +742,66 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
     glDisable (GL_DEPTH_TEST);
   }
 
-  // setup alpha test
-  GLint aTexEnvParam = GL_REPLACE;
-  glGetTexEnviv (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, &aTexEnvParam);
-  if (aTexEnvParam != GL_REPLACE)
-  {
-    glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-  }
-  glAlphaFunc (GL_GEQUAL, 0.285f);
-  glEnable (GL_ALPHA_TEST);
-
-  // setup blending
-  glEnable (GL_BLEND);
-  glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // GL_ONE
-
-  // activate texture unit
-  glDisable (GL_TEXTURE_1D);
-  glEnable  (GL_TEXTURE_2D);
   if (theCtx->core15fwd != NULL)
   {
     theCtx->core15fwd->glActiveTexture (GL_TEXTURE0);
   }
+#if !defined(GL_ES_VERSION_2_0)
+  // setup alpha test
+  glAlphaFunc (GL_GEQUAL, 0.285f);
+  glEnable (GL_ALPHA_TEST);
 
-  // unbind current OpenGL sampler
-  const Handle(OpenGl_Sampler)& aSampler = theCtx->TextureSampler();
-  if (!aSampler.IsNull() && aSampler->IsValid())
+  // activate texture unit
+  GLint aTexEnvParam = GL_REPLACE;
+  if (theCtx->core11 != NULL)
   {
-    aSampler->Unbind (*theCtx);
+    glDisable (GL_TEXTURE_1D);
+    glEnable  (GL_TEXTURE_2D);
+    glGetTexEnviv (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, &aTexEnvParam);
+    if (aTexEnvParam != GL_REPLACE)
+    {
+      glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+    }
   }
+#endif
+
+  // setup blending
+  glEnable (GL_BLEND);
+  glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
   // extra drawings
   switch (theTextAspect.DisplayType())
   {
     case Aspect_TODT_BLEND:
     {
+    #if !defined(GL_ES_VERSION_2_0)
       glEnable  (GL_COLOR_LOGIC_OP);
       glLogicOp (GL_XOR);
+    #endif
       break;
     }
     case Aspect_TODT_SUBTITLE:
     {
-      theCtx->core11->glColor3fv (theColorSubs.rgb);
-      setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (0.0f, 0.0f, 0.00001f));
+    #if !defined(GL_ES_VERSION_2_0)
+      if (theCtx->core11 != NULL)
+      {
+        theCtx->core11->glColor3fv (theColorSubs.rgb);
+        setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (0.0f, 0.0f, 0.00001f));
 
-      glBindTexture (GL_TEXTURE_2D, 0);
-      glBegin (GL_QUADS);
-      glVertex2f (myBndBox.Left,  myBndBox.Top);
-      glVertex2f (myBndBox.Right, myBndBox.Top);
-      glVertex2f (myBndBox.Right, myBndBox.Bottom);
-      glVertex2f (myBndBox.Left,  myBndBox.Bottom);
-      glEnd();
+        glBindTexture (GL_TEXTURE_2D, 0);
+        glBegin (GL_QUADS);
+        glVertex2f (myBndBox.Left,  myBndBox.Top);
+        glVertex2f (myBndBox.Right, myBndBox.Top);
+        glVertex2f (myBndBox.Right, myBndBox.Bottom);
+        glVertex2f (myBndBox.Left,  myBndBox.Bottom);
+        glEnd();
+      }
+    #endif
       break;
     }
     case Aspect_TODT_DEKALE:
     {
-      theCtx->core11->glColor3fv  (theColorSubs.rgb);
+      theCtx->SetColor4fv (*(const OpenGl_Vec4* )theColorSubs.rgb);
       setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (+1.0f, +1.0f, 0.00001f));
       drawText    (thePrintCtx, theCtx, theTextAspect);
       setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (-1.0f, -1.0f, 0.00001f));
@@ -810,23 +820,33 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
   }
 
   // main draw call
-  theCtx->core11->glColor3fv (theColorText.rgb);
+  theCtx->SetColor4fv (*(const OpenGl_Vec4* )theColorText.rgb);
   setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (0.0f, 0.0f, 0.0f));
   drawText    (thePrintCtx, theCtx, theTextAspect);
 
-  glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, aTexEnvParam);
+#if !defined(GL_ES_VERSION_2_0)
+  if (theCtx->core11 != NULL)
+  {
+    glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, aTexEnvParam);
+  }
+#endif
 
   if (theTextAspect.DisplayType() == Aspect_TODT_DIMENSION)
   {
     setupMatrix (thePrintCtx, theCtx, theTextAspect, OpenGl_Vec3 (0.0f, 0.0f, 0.00001f));
 
     glDisable (GL_BLEND);
-    glDisable (GL_TEXTURE_2D);
-    glDisable (GL_ALPHA_TEST);
     if (!myIs2d)
     {
       glDisable (GL_DEPTH_TEST);
     }
+  #if !defined(GL_ES_VERSION_2_0)
+    if (theCtx->core11 != NULL)
+    {
+      glDisable (GL_TEXTURE_2D);
+      glDisable (GL_ALPHA_TEST);
+    }
+  #endif
     glColorMask (GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
 
     glClear (GL_STENCIL_BUFFER_BIT);
@@ -834,32 +854,32 @@ void OpenGl_Text::render (const Handle(OpenGl_PrinterContext)& thePrintCtx,
     glStencilFunc (GL_ALWAYS, 1, 0xFF);
     glStencilOp (GL_KEEP, GL_KEEP, GL_REPLACE);
 
-    glBegin (GL_QUADS);
-    glVertex2f (myBndBox.Left,  myBndBox.Top);
-    glVertex2f (myBndBox.Right, myBndBox.Top);
-    glVertex2f (myBndBox.Right, myBndBox.Bottom);
-    glVertex2f (myBndBox.Left,  myBndBox.Bottom);
-    glEnd();
+  #if !defined(GL_ES_VERSION_2_0)
+    if (theCtx->core11 != NULL)
+    {
+      glBegin (GL_QUADS);
+      glVertex2f (myBndBox.Left,  myBndBox.Top);
+      glVertex2f (myBndBox.Right, myBndBox.Top);
+      glVertex2f (myBndBox.Right, myBndBox.Bottom);
+      glVertex2f (myBndBox.Left,  myBndBox.Bottom);
+      glEnd();
+    }
+  #endif
 
     glStencilFunc (GL_ALWAYS, 0, 0xFF);
-    // glPopAttrib() will reset state for us
-    //glDisable (GL_STENCIL_TEST);
-    //if (!myIs2d) glEnable (GL_DEPTH_TEST);
 
     glColorMask (GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
   }
 
-  // revert OpenGL state
-  glPopAttrib(); // enable bit
+  // reset OpenGL state
+  glDisable (GL_BLEND);
+  glDisable (GL_STENCIL_TEST);
+#if !defined(GL_ES_VERSION_2_0)
+  glDisable (GL_ALPHA_TEST);
+  glDisable (GL_COLOR_LOGIC_OP);
+#endif
 
   // model view matrix was modified
   theCtx->WorldViewState.Pop();
   theCtx->ApplyModelViewMatrix();
-
-  // revert custom OpenGL sampler
-  if (!aSampler.IsNull() && aSampler->IsValid())
-  {
-    aSampler->Bind (*theCtx);
-  }
-#endif
 }

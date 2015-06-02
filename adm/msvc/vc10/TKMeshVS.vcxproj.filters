@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{9A147F7B-1537-185B-1520-7D963F131C81}</UniqueIdentifier>
+      <UniqueIdentifier>{A61A104F-08A2-1169-0376-08C2AA243AEB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MeshVS">
-      <UniqueIdentifier>{B497C3F5-1494-110F-14AB-F4D69132CD28}</UniqueIdentifier>
+      <UniqueIdentifier>{9832FE33-10DC-17F4-03AC-86A6771ADA2E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

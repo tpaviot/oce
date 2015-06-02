@@ -85,7 +85,7 @@ static Standard_Integer addpcurve(Draw_Interpretor& , Standard_Integer n, const 
 // transform
 //=======================================================================
 
-static Standard_Integer transform(Draw_Interpretor& di,Standard_Integer n,const char** a)
+static Standard_Integer transform(Draw_Interpretor& ,Standard_Integer n,const char** a)
 {
   if (n <= 1) return 1;
 
@@ -138,7 +138,10 @@ static Standard_Integer transform(Draw_Interpretor& di,Standard_Integer n,const 
     for (Standard_Integer i = 1; i < last; i++) {
       TopoDS_Shape S = DBRep::Get(a[i]);
       if (S.IsNull())
-        di << a[i] << " is not a valid shape\n";
+      {
+        std::cerr << "Error: " << a[i] << " is not a valid shape\n";
+        return 1;
+      }
       else
         DBRep::Set(a[i],S.Located(L));
     }
@@ -148,7 +151,8 @@ static Standard_Integer transform(Draw_Interpretor& di,Standard_Integer n,const 
     for (Standard_Integer i = 1; i < last; i++) {
       TopoDS_Shape S = DBRep::Get(a[i]);
       if (S.IsNull()) {
-        di << a[i] << " is not a valid shape\n";
+        std::cerr << "Error: " << a[i] << " is not a valid shape\n";
+        return 1;
       }
       else {
         trf.Perform(S);

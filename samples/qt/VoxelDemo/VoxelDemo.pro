@@ -5,13 +5,13 @@ TARGET = VoxelDemo
 
 SAMPLESROOT = $$(CASROOT)/samples/qt
 
-HEADERS   = $${SAMPLESROOT}/voxeldemo/src/*.h
+HEADERS   = $${SAMPLESROOT}/voxeldemo/inc/*.h
 
 SOURCES   = $${SAMPLESROOT}/voxeldemo/src/*.cxx \
             $${SAMPLESROOT}/voxeldemo/src/*.cpp
 
 
-INCLUDEPATH += $$quote($${SAMPLESROOT}/voxeldemo/src)
+INCLUDEPATH += $$quote($${SAMPLESROOT}/voxeldemo/inc)
 
 DEFINES = CSFDB
 
@@ -162,4 +162,4 @@ LIBS += -lTKernel -lPTKernel -lTKMath -lTKService -lTKV3d \
         -lTKBRep -lTKGeomBase -lTKPShape -lTKTopAlgo -lTKPrim \
         -lTKBool -lTKVoxel -lTKOpenGl \
 
-
+QMAKE_CXXFLAGS            = -Zc:wchar_t 

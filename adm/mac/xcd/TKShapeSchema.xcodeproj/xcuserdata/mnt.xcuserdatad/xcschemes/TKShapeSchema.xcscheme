@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "074A161A02D9138A10160892"
+               BlueprintIdentifier = "045903C919560209081906BF"
                BuildableName = "libTKShapeSchema.dylib"
                BlueprintName = "TKShapeSchema"
                ReferencedContainer = "container:TKShapeSchema.xcodeproj">

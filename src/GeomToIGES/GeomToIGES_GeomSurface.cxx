@@ -90,6 +90,10 @@
 
 #include <Precision.hxx>
 
+#include <ShapeAnalysis.hxx>
+#include <Standard_Failure.hxx>
+#include <Standard_ErrorHandler.hxx>
+
 #include <TColgp_HArray2OfXYZ.hxx>
 #include <TColStd_HArray1OfReal.hxx>
 #include <TColStd_HArray2OfReal.hxx>
@@ -244,29 +248,90 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface(const Handle
   
   Standard_Boolean PeriodU = start->IsUPeriodic();
   Standard_Boolean PeriodV = start->IsVPeriodic();
-  if (PeriodU || PeriodV) {
-    mysurface = Handle(Geom_BSplineSurface)::DownCast(start->Copy());
+  mysurface = Handle(Geom_BSplineSurface)::DownCast(start->Copy());
 
-    //szv#10:PRO19566:05Oct99
-    Standard_Boolean workaround = !(mysurface->IsURational() || mysurface->IsVRational());
-    if (workaround) mysurface->SetWeight(1,1,0.3);
+  Standard_Real Umin = Udeb, Umax = Ufin, Vmin = Vdeb, Vmax = Vfin;
+  Standard_Real U0,U1,V0,V1;
+  Standard_Real uShift = 0, vShift = 0;
+  mysurface->Bounds(U0,U1,V0,V1);
 
-    if ( PeriodU ) mysurface->SetUNotPeriodic();
-    if ( PeriodV ) mysurface->SetVNotPeriodic();
-
-    //szv#10:PRO19566:05Oct99
-    if (workaround) mysurface->SetWeight(1,1,1.);
+  // cut segment from periodic surfaces for syncronization of pcurves ranges
+  // and surface bounds (issue 26138)
+  if (!PeriodU) {
+    if (Umin < U0)
+      Umin = U0;
+    if (U1 < Umax)
+      Umax = U1;
   }
   else {
-    mysurface = start;
+    if (Abs(Umin - U0) < Precision::PConfusion())
+      Umin = U0;
+    if (Abs(Umax - U1) < Precision::PConfusion())
+      Umax = U1;
+    uShift = ShapeAnalysis::AdjustToPeriod(Umin, U0, U1);
+    Umin += uShift;
+    Umax += uShift;
+  }
+  if (!PeriodV) {
+    if (Vmin < V0)
+      Vmin = V0;
+    if (V1 < Vmax)
+      Vmax = V1;
+  }
+  else {
+    if (Abs(Vmin - V0) < Precision::PConfusion())
+      Vmin = V0;
+    if (Abs(Vmax - V1) < Precision::PConfusion())
+      Vmax = V1;
+    vShift = ShapeAnalysis::AdjustToPeriod(Vmin, V0, V1);
+    Vmin += vShift;
+    Vmax += vShift;
+  }
+  if ( Abs(uShift) > Precision::PConfusion() || Abs(vShift) > Precision::PConfusion()) {
+    Standard_Boolean isNeedSegment = Standard_True;
+    isNeedSegment = Abs(Umax-Umin) > Precision::PConfusion() && 
+                    Abs(Vmax-Vmin) > Precision::PConfusion();
+    Standard_Real uMaxShift = 0, vMaxShift = 0;
+    uMaxShift = ShapeAnalysis::AdjustToPeriod(Ufin, U0, U1);
+    vMaxShift = ShapeAnalysis::AdjustToPeriod(Vfin, V0, V1);
+    isNeedSegment &= 
+      (PeriodU && Abs(uShift - uMaxShift) > Precision::PConfusion()) ||
+      (PeriodV && Abs(vShift - vMaxShift) > Precision::PConfusion());           
+    if (isNeedSegment) {
+      try {
+        OCC_CATCH_SIGNALS
+        Handle(Geom_BSplineSurface) bspl = Handle(Geom_BSplineSurface)::DownCast ( start->Copy() );
+        if ( ! bspl.IsNull() ) {
+          bspl->CheckAndSegment(Umin, Umax, Vmin, Vmax);
+          if ((U1 - U0) - (Umax - Umin) > Precision::PConfusion())
+            PeriodU = Standard_False;
+          if ((V1 - V0) - (Vmax - Vmin) > Precision::PConfusion())
+            PeriodV = Standard_False;
+	        mysurface = bspl;
+        }
+      }
+      catch ( Standard_Failure ) {
+        #ifdef DEB
+        cout << "Warning: GeomToIGES_GeomSurface: can't trim bspline" << endl;
+        cout << "Warning: Exception in Segment(): " ;
+        Standard_Failure::Caught()->Print(cout);
+        #endif
+    }
+    }
+  }
+
+  //unperiodize surface to get neccessary for IGES standard number of knots and mults
+  if ( mysurface->IsUPeriodic() ) {
+    mysurface->SetUNotPeriodic();
+  }
+  if ( mysurface->IsVPeriodic() ) {
+    mysurface->SetVNotPeriodic();
   }
  
   Standard_Integer DegU = mysurface->UDegree();
   Standard_Integer DegV = mysurface->VDegree();
   Standard_Boolean CloseU = mysurface->IsUClosed();
   Standard_Boolean CloseV = mysurface->IsVClosed();
-  //Standard_Boolean PeriodU = start->IsUPeriodic();
-  //Standard_Boolean PeriodV = start->IsVPeriodic();
   Standard_Boolean RationU = mysurface->IsURational();
   Standard_Boolean RationV = mysurface->IsVRational();
   Standard_Integer NbUPoles = mysurface->NbUPoles();
@@ -348,18 +413,6 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface(const Handle
     UIndex++;
     VIndex = Poles->LowerCol();
   }
-      
-  // mjm le 9/10/97 mise en place d`une protection
-  Standard_Real U1,U2,V1,V2;
-  Standard_Real Umin = Udeb;
-  Standard_Real Umax = Ufin;
-  Standard_Real Vmin = Vdeb;
-  Standard_Real Vmax = Vfin;
-  mysurface->Bounds(U1,U2,V1,V2);
-  if ( U1 > Umin ) Umin = U1;
-  if ( V1 > Vmin ) Vmin = V1;
-  if ( U2 < Umax ) Umax = U2;
-  if ( V2 < Vmax ) Vmax = V2;
 
   BSpline-> Init (IndexU, IndexV, DegU, DegV, CloseU, CloseV, Polynom, PeriodU, 
 		  PeriodV, KnotsU, KnotsV, Weights, Poles, Umin, Umax, Vmin, Vmax);
@@ -506,8 +559,8 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface(const Handle
     Standard_Real A,B,C,D;
     start->Coefficients(A,B,C,D);
     D = -D;// because of difference in Geom_Plane class and Type 108
-    gp_XYZ anAttach = start->Location().XYZ();
-    aPlane->Init(A,B,C,D,0,anAttach,0);
+    gp_XYZ anAttach = start->Location().XYZ().Divided( GetUnit() );
+    aPlane->Init (A, B, C, D / GetUnit(), 0, anAttach, 0);
     res = aPlane;
     return res;
   }
@@ -604,7 +657,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface
   //#30 rln 19.10.98 IGES axis = reversed CAS.CADE axis
   //Axis->Init(gp_XYZ(0.0, 0.0, 0.0), gp_XYZ(0.0, 0.0, 1.0/GetUnit()));
   //Surf->Init (Axis, Generatrix, U1, U2);
-  Axis->Init(gp_XYZ (0, 0, 1. / GetUnit()), gp_XYZ (0, 0, 0));  
+  Axis->Init(gp_XYZ (0, 0, 1.), gp_XYZ (0, 0, 0));  
   Surf->Init (Axis, Generatrix, 2 * M_PI - U2, 2 * M_PI - U1);
 
 
@@ -682,7 +735,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface
   //#30 rln 19.10.98 IGES axis = reversed CAS.CADE axis
   //Axis->Init(gp_XYZ(0.0, 0.0, 0.0), gp_XYZ(0.0, 0.0, 1.0/GetUnit()));
   //Surf->Init (Axis, Generatrix, U1, U2);
-  Axis->Init(gp_XYZ (0, 0, 1. / GetUnit()), gp_XYZ (0, 0, 0));  
+  Axis->Init(gp_XYZ (0, 0, 1.), gp_XYZ (0, 0, 0));  
   Surf->Init (Axis, Generatrix, 2 * M_PI - U2, 2 * M_PI - U1);
 
 
@@ -754,7 +807,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface
   Handle(IGESGeom_Line) Axis = new IGESGeom_Line;
   //#30 rln 19.10.98 IGES axis = reversed CAS.CADE axis
   //Axis->Init(gp_XYZ(0.0, 0.0, 0.0), gp_XYZ(0.0, 0.0, 1.0/GetUnit()));
-  Axis->Init(gp_XYZ (0, 0, 1. / GetUnit()), gp_XYZ (0, 0, 0));  
+  Axis->Init(gp_XYZ (0, 0, 1.), gp_XYZ (0, 0, 0));  
 
   if ( Gen->IsKind(STANDARD_TYPE(IGESGeom_CircularArc))) {
     //#30 rln 19.10.98 Surf->Init (Axis, Gen, U1, U2);
@@ -820,7 +873,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface
   Handle(IGESGeom_Line) Axis = new IGESGeom_Line;
   //#30 rln 19.10.98 IGES axis = reversed CAS.CADE axis
   //Axis->Init(gp_XYZ(0.0, 0.0, 0.0), gp_XYZ(0.0, 0.0, 1.0/GetUnit()));
-  Axis->Init(gp_XYZ (0, 0, 1. / GetUnit()), gp_XYZ (0, 0, 0));  
+  Axis->Init(gp_XYZ (0, 0, 1.), gp_XYZ (0, 0, 0));  
 
 //:l6 abv: CTS22022: writing full tori:  if ( Gen->IsKind(STANDARD_TYPE(IGESGeom_CircularArc))) {
     //#30 rln 19.10.98 Surf->Init (Axis, Gen, U1, U2);
@@ -1087,22 +1140,19 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferPlaneSurface(const H
 
   Handle(IGESSolid_PlaneSurface) Plsurf = new IGESSolid_PlaneSurface;
   GeomToIGES_GeomPoint GP(*this);
-  GeomToIGES_GeomVector GV(*this);
 
-  gp_Pln Pln = start->Pln();
+  gp_Pln aPln = start->Pln();
 
-  Handle(Geom_CartesianPoint) mypoint = new Geom_CartesianPoint(Pln.Location()); 
+  Handle(Geom_CartesianPoint) mypoint = new Geom_CartesianPoint (aPln.Location()); 
   Handle(IGESGeom_Point) aLocation = GP.TransferPoint(mypoint);
 
-  gp_Ax1 Axe = Pln.Axis();
-  Handle(Geom_Direction) mydir = new Geom_Direction(Axe.Direction()); 
-  Handle(IGESGeom_Direction) aNormal = GV.TransferVector(mydir);
+  Handle(IGESGeom_Direction) aNormal = new IGESGeom_Direction;
+  aNormal->Init (aPln.Axis().Direction().XYZ());
 
-  gp_Ax1 XAxe = Pln.XAxis();
-  Handle(Geom_Direction) rdir = new Geom_Direction(XAxe.Direction()); 
-  Handle(IGESGeom_Direction) refdir = GV.TransferVector(rdir);
+  Handle(IGESGeom_Direction) aRefDir = new IGESGeom_Direction;
+  aRefDir->Init (aPln.XAxis().Direction().XYZ());
 
-  Plsurf->Init (aLocation, aNormal, refdir);
+  Plsurf->Init (aLocation, aNormal, aRefDir);
   res = Plsurf;
   return res;
 
@@ -1128,24 +1178,21 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferCylindricalSurface(c
 
   Handle(IGESSolid_CylindricalSurface) CylSurf = new IGESSolid_CylindricalSurface;
   GeomToIGES_GeomPoint GP(*this);
-  GeomToIGES_GeomVector GV(*this);
 
-  gp_Cylinder Cyl = start->Cylinder();
+  gp_Cylinder aCyl = start->Cylinder();
 
-  Handle(Geom_CartesianPoint) mypoint = new Geom_CartesianPoint(Cyl.Location()); 
+  Handle(Geom_CartesianPoint) mypoint = new Geom_CartesianPoint (aCyl.Location()); 
   Handle(IGESGeom_Point) aLocation = GP.TransferPoint(mypoint);
 
-  gp_Ax1 Axe = Cyl.Axis();
-  Handle(Geom_Direction) mydir = new Geom_Direction(Axe.Direction()); 
-  Handle(IGESGeom_Direction) Axis = GV.TransferVector(mydir);
+  Handle(IGESGeom_Direction) anAxis = new IGESGeom_Direction;
+  anAxis->Init (aCyl.Axis().Direction().XYZ());
 
-  gp_Ax1 XAxe = Cyl.XAxis();
-  Handle(Geom_Direction) rdir = new Geom_Direction(XAxe.Direction()); 
-  Handle(IGESGeom_Direction) refdir = GV.TransferVector(rdir);
+  Handle(IGESGeom_Direction) aRefDir = new IGESGeom_Direction;
+  aRefDir->Init (aCyl.XAxis().Direction().XYZ());
 
-  Standard_Real radius = Cyl.Radius();
-  
-  CylSurf->Init (aLocation, Axis, radius, refdir);
+  Standard_Real aRadius = aCyl.Radius() / GetUnit();
+
+  CylSurf->Init (aLocation, anAxis, aRadius, aRefDir);
   res = CylSurf;
   return res;
 }
@@ -1171,10 +1218,9 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferConicalSurface(const
 
   Handle(IGESSolid_ConicalSurface) ConSurf = new IGESSolid_ConicalSurface;
   GeomToIGES_GeomPoint GP(*this);
-  GeomToIGES_GeomVector GV(*this);
 
   gp_Cone Con = start->Cone();
-  Standard_Real radius = Con.RefRadius();
+  Standard_Real aRadius = Con.RefRadius() / GetUnit();
   Standard_Real angle  = Con.SemiAngle();
   gp_Ax1 Axe = Con.Axis();
   gp_Ax1 XAxe = Con.XAxis();
@@ -1189,13 +1235,13 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferConicalSurface(const
   }
   Handle(IGESGeom_Point) aLocation = GP.TransferPoint(mypoint);
 
-  Handle(Geom_Direction) mydir = new Geom_Direction(Axe.Direction()); 
-  Handle(IGESGeom_Direction) Axis = GV.TransferVector(mydir);
+  Handle(IGESGeom_Direction) anAxis = new IGESGeom_Direction;
+  anAxis->Init (Axe.Direction().XYZ());
 
-  Handle(Geom_Direction) rdir = new Geom_Direction(XDir);//XAxe.Direction()); 
-  Handle(IGESGeom_Direction) refdir = GV.TransferVector(rdir);
+  Handle(IGESGeom_Direction) aRefDir = new IGESGeom_Direction;
+  aRefDir->Init (XDir.XYZ());
 
-  ConSurf->Init (aLocation, Axis, radius, angle*180./M_PI, refdir);
+  ConSurf->Init (aLocation, anAxis, aRadius, angle*180./M_PI, aRefDir);
   res = ConSurf;
   return res;
 }
@@ -1221,24 +1267,21 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSphericalSurface(con
 
   Handle(IGESSolid_SphericalSurface) SphSurf = new IGESSolid_SphericalSurface;
   GeomToIGES_GeomPoint GP(*this);
-  GeomToIGES_GeomVector GV(*this);
 
-  gp_Sphere Sph = start->Sphere();
+  gp_Sphere aSph = start->Sphere();
 
-  Handle(Geom_CartesianPoint) mypoint = new Geom_CartesianPoint(Sph.Location()); 
+  Handle(Geom_CartesianPoint) mypoint = new Geom_CartesianPoint(aSph.Location()); 
   Handle(IGESGeom_Point) aLocation = GP.TransferPoint(mypoint);
 
-  gp_Ax1 Axe = Sph.Position().Axis(); 
-  Handle(Geom_Direction) mydir = new Geom_Direction(Axe.Direction()); 
-  Handle(IGESGeom_Direction) Axis = GV.TransferVector(mydir);
+  Handle(IGESGeom_Direction) anAxis = new IGESGeom_Direction;
+  anAxis->Init (aSph.Position().Axis().Direction().XYZ());
 
-  gp_Ax1 XAxe = Sph.XAxis();
-  Handle(Geom_Direction) rdir = new Geom_Direction(XAxe.Direction()); 
-  Handle(IGESGeom_Direction) refdir = GV.TransferVector(rdir);
+  Handle(IGESGeom_Direction) aRefDir = new IGESGeom_Direction;
+  aRefDir->Init (aSph.XAxis().Direction().XYZ());
 
-  Standard_Real radius = Sph.Radius();
+  Standard_Real aRadius = aSph.Radius() / GetUnit();
   
-  SphSurf->Init (aLocation, radius, Axis, refdir);
+  SphSurf->Init (aLocation, aRadius, anAxis, aRefDir);
   res = SphSurf;
   return res;
 }
@@ -1258,25 +1301,22 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferToroidalSurface(cons
 
   Handle(IGESSolid_ToroidalSurface) TorSurf = new IGESSolid_ToroidalSurface;
   GeomToIGES_GeomPoint GP(*this);
-  GeomToIGES_GeomVector GV(*this);
 
-  gp_Torus Tor = start->Torus();
+  gp_Torus aTor = start->Torus();
 
-  Handle(Geom_CartesianPoint) mypoint = new Geom_CartesianPoint(Tor.Location()); 
+  Handle(Geom_CartesianPoint) mypoint = new Geom_CartesianPoint (aTor.Location()); 
   Handle(IGESGeom_Point) aLocation = GP.TransferPoint(mypoint);
 
-  gp_Ax1 Axe = Tor.Axis(); 
-  Handle(Geom_Direction) mydir = new Geom_Direction(Axe.Direction()); 
-  Handle(IGESGeom_Direction) Axis = GV.TransferVector(mydir);
+  Handle(IGESGeom_Direction) anAxis = new IGESGeom_Direction;
+  anAxis->Init (aTor.Axis().Direction().XYZ());
 
-  gp_Ax1 XAxe = Tor.XAxis();
-  Handle(Geom_Direction) rdir = new Geom_Direction(XAxe.Direction()); 
-  Handle(IGESGeom_Direction) refdir = GV.TransferVector(rdir);
+  Handle(IGESGeom_Direction) aRefDir = new IGESGeom_Direction;
+  aRefDir->Init (aTor.XAxis().Direction().XYZ());
 
-  Standard_Real major = Tor.MajorRadius();
-  Standard_Real minor = Tor.MinorRadius();
+  Standard_Real aMajor = aTor.MajorRadius() / GetUnit();
+  Standard_Real aMinor = aTor.MinorRadius() / GetUnit();
   
-  TorSurf->Init (aLocation, Axis, major, minor, refdir);
+  TorSurf->Init (aLocation, anAxis, aMajor, aMinor, aRefDir);
   res = TorSurf;
   return res;
 }

@@ -60,10 +60,9 @@ Handle_OpenGl_Window.hxx
 OpenGl_Window.hxx
 OpenGl_Window.cxx
 OpenGl_Window_1.mm
-OpenGl_PriorityList.hxx
-OpenGl_PriorityList.cxx
 OpenGl_AVIWriter.hxx
 OpenGl_AVIWriter.cxx
+Handle_OpenGl_FrameBuffer.hxx
 OpenGl_FrameBuffer.hxx
 OpenGl_FrameBuffer.cxx
 OpenGl_Texture.cxx
@@ -109,6 +108,7 @@ OpenGl_GlCore43.hxx
 OpenGl_GlCore44.hxx
 OpenGl_LayerList.cxx
 OpenGl_LayerList.hxx
+OpenGl_LayerFilter.hxx
 OpenGl_IndexBuffer.hxx
 OpenGl_IndexBuffer.cxx
 OpenGl_Layer.cxx
@@ -141,12 +141,13 @@ OpenGl_ShaderManager.hxx
 OpenGl_ShaderManager.cxx
 OpenGl_ShaderStates.hxx
 OpenGl_ShaderStates.cxx
+OpenGl_SequenceOfStructure.hxx
 Handle_OpenGl_ShaderObject.hxx
 Handle_OpenGl_ShaderProgram.hxx
 Handle_OpenGl_ShaderManager.hxx
 OpenGl_SceneGeometry.hxx
 OpenGl_SceneGeometry.cxx
-OpenGl_Workspace_Raytrace.cxx
+OpenGl_View_Raytrace.cxx
 OpenGl_Flipper.hxx
 OpenGl_Flipper.cxx
 OpenGl_BVHTreeSelector.hxx
@@ -166,3 +167,5 @@ OpenGl_Disk.hxx
 OpenGl_Disk.cxx
 OpenGl_Sphere.hxx
 OpenGl_Sphere.cxx
+OpenGl_BackgroundArray.hxx
+OpenGl_BackgroundArray.cxx

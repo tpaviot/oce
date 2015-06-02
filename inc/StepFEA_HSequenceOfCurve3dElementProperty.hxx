@@ -71,8 +71,6 @@ public:
      const  StepFEA_SequenceOfCurve3dElementProperty& Sequence()  const;
   
       StepFEA_SequenceOfCurve3dElementProperty& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(StepFEA_HSequenceOfCurve3dElementProperty) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(StepFEA_HSequenceOfCurve3dElementProperty) ShallowCopy(const Handle(StepFEA_HSequenceOfCurve3dElementProperty)& me) {
- return me->ShallowCopy();
-}
 
 
 

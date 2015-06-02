@@ -13,10 +13,10 @@
 #include <Handle_Geom_Curve.hxx>
 #include <gp_Dir.hxx>
 #include <Standard_Real.hxx>
-#include <Geom_Curve.hxx>
 #include <GeomAbs_Shape.hxx>
-#include <Standard_Integer.hxx>
+#include <Geom_Curve.hxx>
 #include <Standard_Boolean.hxx>
+#include <Standard_Integer.hxx>
 #include <Handle_Geom_Geometry.hxx>
 class Geom_Curve;
 class Standard_ConstructionError;
@@ -87,6 +87,8 @@ public:
   //! at this point, the corresponding point on the offset curve is
   //! in the direction of the vector-product N = V ^ T   where
   //! N is a unitary vector.
+  //! If isNotCheckC0 = TRUE checking if basis curve has C0-continuity
+  //! is not made.
   //! Warnings :
   //! In this package the entities are not shared. The OffsetCurve is
   //! built with a copy of the curve C. So when C is modified the
@@ -95,7 +97,7 @@ public:
   //! Raised if the basis curve C is not at least C1.
   //! Warnings :
   //! No check is done to know if ||V^T|| != 0.0 at any point.
-  Standard_EXPORT Geom_OffsetCurve(const Handle(Geom_Curve)& C, const Standard_Real Offset, const gp_Dir& V);
+  Standard_EXPORT Geom_OffsetCurve(const Handle(Geom_Curve)& C, const Standard_Real Offset, const gp_Dir& V, const Standard_Boolean isNotCheckC0 = Standard_False);
   
   //! Changes the orientation of this offset curve.
   //! As a result:
@@ -111,10 +113,13 @@ public:
   //! the point of parameter U on this offset curve.
   Standard_EXPORT   Standard_Real ReversedParameter (const Standard_Real U)  const;
   
-  //! Changes this offset curve by assigning C as the basis curve from which it is built.
+  //! Changes this offset curve by assigning C
+  //! as the basis curve from which it is built.
+  //! If isNotCheckC0 = TRUE checking if basis curve
+  //! has C0-continuity is not made.
   //! Exceptions
   //! Standard_ConstructionError if the curve C is not at least "C1" continuous.
-  Standard_EXPORT   void SetBasisCurve (const Handle(Geom_Curve)& C) ;
+  Standard_EXPORT   void SetBasisCurve (const Handle(Geom_Curve)& C, const Standard_Boolean isNotCheckC0 = Standard_False) ;
   
   //! Changes this offset curve by assigning V as the
   //! reference vector used to compute the offset direction.
@@ -278,6 +283,9 @@ public:
   
   //! Creates a new object which is a copy of this offset curve.
   Standard_EXPORT   Handle(Geom_Geometry) Copy()  const;
+  
+  //! Returns continuity of the basis curve.
+  Standard_EXPORT   GeomAbs_Shape GetBasisCurveContinuity()  const;
 
 
 
@@ -295,6 +303,7 @@ private:
   Handle(Geom_Curve) basisCurve;
   gp_Dir direction;
   Standard_Real offsetValue;
+  GeomAbs_Shape myBasisCurveContinuity;
 
 
 };

@@ -50,42 +50,33 @@ public:
   //! constructor.
   Standard_EXPORT math_FunctionSetRoot(math_FunctionSetWithDerivatives& F, const Standard_Integer NbIterations = 100);
   
-  //! is used to improve the root of the function F
-  //! from the initial guess StartingPoint.
-  //! The maximum number of iterations allowed is given by
-  //! NbIterations.
-  //! In this case, the solution is found when:
-  //! abs(Xi - Xi-1)(j) <= Tolerance(j) for all unknowns.
-  Standard_EXPORT math_FunctionSetRoot(math_FunctionSetWithDerivatives& F, const math_Vector& StartingPoint, const math_Vector& Tolerance, const Standard_Integer NbIterations = 100);
-  
-  //! is used to improve the root of the function F
-  //! from the initial guess StartingPoint.
-  //! The maximum number of iterations allowed is given
-  //! by NbIterations.
-  //! In this case, the solution is found when:
-  //! abs(Xi - Xi-1) <= Tolerance for all unknowns.
-  Standard_EXPORT math_FunctionSetRoot(math_FunctionSetWithDerivatives& F, const math_Vector& StartingPoint, const math_Vector& Tolerance, const math_Vector& infBound, const math_Vector& supBound, const Standard_Integer NbIterations = 100, const Standard_Boolean theStopOnDivergent = Standard_False);
-  
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~math_FunctionSetRoot(){Delete();}
+  //! Destructor alias.
+  Standard_EXPORT   void Delete()  const;
+  Standard_EXPORT virtual ~math_FunctionSetRoot();
   
   //! Initializes the tolerance values.
   Standard_EXPORT   void SetTolerance (const math_Vector& Tolerance) ;
   
-  //! Improves the root of function F from the initial guess
-  //! StartingPoint. infBound and supBound may be given to constrain the solution.
-  //! Warning
-  //! This method is called when computation of the solution is
-  //! not performed by the constructors.
-  Standard_EXPORT   void Perform (math_FunctionSetWithDerivatives& F, const math_Vector& StartingPoint, const math_Vector& infBound, const math_Vector& supBound, const Standard_Boolean theStopOnDivergent = Standard_False) ;
-  
   //! This routine is called at the end of each iteration
   //! to check if the solution was found. It can be redefined
-  //! in a sub-class to implement a specific test to stop the
-  //! iterations.
-  //! In this case, the solution is found when:
-  //! abs(Xi - Xi-1) <= Tolerance for all unknowns.
-  Standard_EXPORT virtual   Standard_Boolean IsSolutionReached (math_FunctionSetWithDerivatives& F) ;
+  //! in a sub-class to implement a specific test to stop the iterations.
+  //! In this case, the solution is found when: abs(Xi - Xi-1) <= Tolerance
+  //! for all unknowns.
+    virtual   Standard_Boolean IsSolutionReached (math_FunctionSetWithDerivatives& F) ;
+  
+
+  //! Improves the root of function from the initial guess point.
+  //! The infinum and supremum may be given to constrain the solution.
+  //! In this case, the solution is found when: abs(Xi - Xi-1)(j) <= Tolerance(j)
+  //! for all unknowns.
+  Standard_EXPORT   void Perform (math_FunctionSetWithDerivatives& theFunction, const math_Vector& theStartingPoint, const Standard_Boolean theStopOnDivergent = Standard_False) ;
+  
+
+  //! Improves the root of function from the initial guess point.
+  //! The infinum and supremum may be given to constrain the solution.
+  //! In this case, the solution is found when: abs(Xi - Xi-1) <= Tolerance
+  //! for all unknowns.
+  Standard_EXPORT   void Perform (math_FunctionSetWithDerivatives& theFunction, const math_Vector& theStartingPoint, const math_Vector& theInfBound, const math_Vector& theSupBound, const Standard_Boolean theStopOnDivergent = Standard_False) ;
   
 
   //! Returns true if the computations are successful, otherwise returns false.

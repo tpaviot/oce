@@ -53,6 +53,7 @@
 #include <Geom2d_TrimmedCurve.hxx>
 #include <ElCLib.hxx>
 #include <GeomLib.hxx>
+#include <Extrema_ExtPC.hxx>
 
 //=======================================================================
 //function : IsoIsDeg
@@ -331,6 +332,7 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
   Standard_Real LastPar  = C->LastParameter();
   GeomAbs_SurfaceType SType = mySurface->GetType();
   GeomAbs_CurveType   CType = myCurve->GetType();
+  Standard_Boolean isAnalyticalSurf = Standard_True;
 
   switch (SType)
   {
@@ -383,6 +385,7 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
     case GeomAbs_BezierSurface:
     case GeomAbs_BSplineSurface:
       {
+        isAnalyticalSurf = Standard_False;
         Standard_Boolean IsTrimmed[2] = {Standard_False, Standard_False};
         Standard_Integer SingularCase[2];
         Standard_Real f, l, dt;
@@ -430,34 +433,38 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 
         Handle(Geom2d_BSplineCurve) aRes = polar.BSpline();
 
-        if(IsTrimmed[0] || IsTrimmed[1])
+        if (!aRes.IsNull())
         {
-          if(IsTrimmed[0])
+          if( (IsTrimmed[0] || IsTrimmed[1]))
           {
-            //Add segment before start of curve
-            f = myCurve->FirstParameter();
-            ExtendC2d(aRes, f, -dt, U1, U2, V1, V2, 0, SingularCase[0]);
+            if(IsTrimmed[0])
+            {
+              //Add segment before start of curve
+              f = myCurve->FirstParameter();
+              ExtendC2d(aRes, f, -dt, U1, U2, V1, V2, 0, SingularCase[0]);
+            }
+            if(IsTrimmed[1])
+            {
+              //Add segment after end of curve
+              l = myCurve->LastParameter();
+              ExtendC2d(aRes, l,  dt, U1, U2, V1, V2, 1, SingularCase[1]);
+            }
+            Handle(Geom2d_Curve) NewCurve2d;
+            GeomLib::SameRange(Precision::PConfusion(), aRes,
+              aRes->FirstParameter(), aRes->LastParameter(),
+              FirstPar, LastPar, NewCurve2d);
+            aRes = Handle(Geom2d_BSplineCurve)::DownCast(NewCurve2d);
           }
-          if(IsTrimmed[1])
-          {
-            //Add segment after end of curve
-            l = myCurve->LastParameter();
-            ExtendC2d(aRes, l,  dt, U1, U2, V1, V2, 1, SingularCase[1]);
-          }
-          Handle(Geom2d_Curve) NewCurve2d;
-          GeomLib::SameRange(Precision::PConfusion(), aRes,
-                             aRes->FirstParameter(), aRes->LastParameter(),
-                             FirstPar, LastPar, NewCurve2d);
-          aRes = Handle(Geom2d_BSplineCurve)::DownCast(NewCurve2d);
+          myResult.SetBSpline(aRes);
+          myResult.Done();
+          myResult.SetType(GeomAbs_BSplineCurve);
         }
-        myResult.SetBSpline(aRes);
-        myResult.Done();
-        myResult.SetType(GeomAbs_BSplineCurve);
       }
       break;
 
     default:
       {
+        isAnalyticalSurf = Standard_False;
         Standard_Boolean IsTrimmed[2] = {Standard_False, Standard_False};
         Standard_Real Vsingular[2] = {0.0 , 0.0}; //for surfaces of revolution
         Standard_Real f = 0.0, l = 0.0, dt = 0.0;
@@ -482,7 +489,16 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
             IsTrimmed[0] = Standard_True;
             f = f + dt;
             myCurve = myCurve->Trim(f, l, Precision::Confusion());
-            Vsingular[0] = ElCLib::Parameter(L, P);
+            // Searching the parameter on the basis curve for surface of revolution
+            Extrema_ExtPC anExtr(P, mySurface->BasisCurve()->Curve(), myTolerance);
+            if (anExtr.IsDone())
+            {
+              Standard_Integer anIndex = 1;
+              while (!anExtr.IsMin(anIndex) && anIndex < anExtr.NbExt()) anIndex++;
+              Vsingular[0] = anExtr.Point(anIndex).Parameter();
+            }
+            else
+              Vsingular[0] = ElCLib::Parameter(L, P);
             //SingularCase[0] = 3;
           }
 
@@ -492,12 +508,21 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
             IsTrimmed[1] = Standard_True;
             l = l - dt;
             myCurve = myCurve->Trim(f, l, Precision::Confusion());
-            Vsingular[1] = ElCLib::Parameter(L, P);
+            // Searching the parameter on the basis curve for surface of revolution
+            Extrema_ExtPC anExtr(P, mySurface->BasisCurve()->Curve(), myTolerance);
+            if (anExtr.IsDone())
+            {
+              Standard_Integer anIndex = 1;
+              while (!anExtr.IsMin(anIndex) && anIndex < anExtr.NbExt()) anIndex++;
+              Vsingular[1] = anExtr.Point(anIndex).Parameter();
+            }
+            else
+              Vsingular[1] = ElCLib::Parameter(L, P);
             //SingularCase[1] = 4;
           }
         }
 
-        ProjLib_CompProjectedCurve Projector(mySurface,myCurve, myTolerance, myTolerance);
+        ProjLib_CompProjectedCurve Projector(mySurface,myCurve, myTolerance, myTolerance, 100 * myTolerance);
         Handle(ProjLib_HCompProjectedCurve) HProjector = new ProjLib_HCompProjectedCurve();
         HProjector->Set(Projector);
 
@@ -512,7 +537,7 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
         }
         else 
         {
-          StdFail_NotDone::Raise("ProjLib CompProjectedCurve Not Done");
+          return;
         }
         // Approximons cette courbe algorithmique.
         Standard_Boolean Only3d = Standard_False;
@@ -527,39 +552,44 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 
         Handle(Geom2d_BSplineCurve) aRes = appr.Curve2d();
 
-        if(IsTrimmed[0] || IsTrimmed[1])
+        if (!aRes.IsNull())
         {
-          // Treatment only for surface of revolution
-          Standard_Real u1, u2, v1, v2;
-          u1 = mySurface->FirstUParameter();
-          u2 = mySurface->LastUParameter();
-          v1 = mySurface->FirstVParameter();
-          v2 = mySurface->LastVParameter();
+          if(IsTrimmed[0] || IsTrimmed[1])
+          {
+            // Treatment only for surface of revolution
+            Standard_Real u1, u2, v1, v2;
+            u1 = mySurface->FirstUParameter();
+            u2 = mySurface->LastUParameter();
+            v1 = mySurface->FirstVParameter();
+            v2 = mySurface->LastVParameter();
 
-          if(IsTrimmed[0])
-          {
-            //Add segment before start of curve
-            ExtendC2d(aRes, f, -dt, u1, u2, Vsingular[0], v2, 0, 3);
+            if(IsTrimmed[0])
+            {
+              //Add segment before start of curve
+              ExtendC2d(aRes, f, -dt, u1, u2, Vsingular[0], v2, 0, 3);
+            }
+            if(IsTrimmed[1])
+            {
+              //Add segment after end of curve
+              ExtendC2d(aRes, l,  dt, u1, u2, v1, Vsingular[1], 1, 4);
+            }
+            Handle(Geom2d_Curve) NewCurve2d;
+            GeomLib::SameRange(Precision::PConfusion(), aRes,
+              aRes->FirstParameter(), aRes->LastParameter(),
+              FirstPar, LastPar, NewCurve2d);
+            aRes = Handle(Geom2d_BSplineCurve)::DownCast(NewCurve2d);
           }
-          if(IsTrimmed[1])
-          {
-            //Add segment after end of curve
-            ExtendC2d(aRes, l,  dt, u1, u2, v1, Vsingular[1], 1, 4);
-          }
-          Handle(Geom2d_Curve) NewCurve2d;
-          GeomLib::SameRange(Precision::PConfusion(), aRes,
-                             aRes->FirstParameter(), aRes->LastParameter(),
-                             FirstPar, LastPar, NewCurve2d);
-          aRes = Handle(Geom2d_BSplineCurve)::DownCast(NewCurve2d);
+
+          myResult.SetBSpline(aRes);
+          myResult.Done();
+          myResult.SetType(GeomAbs_BSplineCurve);
         }
-
-        myResult.SetBSpline(aRes);
-        myResult.Done();
-        myResult.SetType(GeomAbs_BSplineCurve);
       }
   }
-  if ( !myResult.IsDone()) 
+
+  if ( !myResult.IsDone() && isAnalyticalSurf)
   {
+    // Use advanced analytical projector if base analytical projection failed.
     ProjLib_ComputeApprox Comp( myCurve, mySurface, myTolerance);
     myResult.Done();
 
@@ -583,8 +613,7 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
     }
     myTolerance = Comp.Tolerance();
   }
-
-  else
+  else if (myResult.IsDone())
   {
     // On remet arbitrairement la tol atteinte a une valeur
     // petite en attendant mieux. dub lbo 11/03/97

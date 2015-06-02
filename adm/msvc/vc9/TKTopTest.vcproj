@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKTopTest"
-	ProjectGUID="{B647A641-042E-0DD7-0E15-0C5DE7E9113C}"
+	ProjectGUID="{405D37DA-0D9A-00D3-0248-EBB9FCFF6046}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -713,6 +713,9 @@
 					RelativePath="..\..\..\src\BOPTest\BOPTest.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\BOPTest\BOPTest_APICommands.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\BOPTest\BOPTest_BOPCommands.cxx">
 				</File>
 				<File
@@ -729,6 +732,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BOPTest\BOPTest_Objects.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTest\BOPTest_OptionCommands.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BOPTest\BOPTest_PartitionCommands.cxx">

@@ -25,7 +25,8 @@
 #include <OpenGl_ArbFBO.hxx>
 #include <OpenGl_ExtGS.hxx>
 #include <OpenGl_ArbTexBindless.hxx>
-#include <OpenGl_GlCore20.hxx>
+#include <OpenGl_GlCore44.hxx>
+#include <OpenGl_FrameBuffer.hxx>
 #include <OpenGl_Sampler.hxx>
 #include <OpenGl_ShaderManager.hxx>
 
@@ -82,9 +83,11 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
   caps   (!theCaps.IsNull() ? theCaps : new OpenGl_Caps()),
 #if defined(GL_ES_VERSION_2_0)
   hasHighp   (Standard_False),
+  hasUintIndex(Standard_False),
   hasTexRGBA8(Standard_False),
 #else
   hasHighp   (Standard_True),
+  hasUintIndex(Standard_True),
   hasTexRGBA8(Standard_True),
 #endif
   arbNPTW  (Standard_False),
@@ -95,6 +98,7 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
   arbIns (NULL),
   arbDbg (NULL),
   arbFBO (NULL),
+  arbFBOBlit (NULL),
   extGS  (NULL),
   extBgra(Standard_False),
   extAnis(Standard_False),
@@ -121,9 +125,21 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
 #else
   myRenderMode (0),
 #endif
-  myDrawBuffer (0)
+  myReadBuffer (0),
+  myDrawBuffer (0),
+  myDefaultVao (0),
+  myIsGlDebugCtx (Standard_False)
 {
-#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
+  // system-dependent fields
+#if defined(HAVE_EGL)
+  myDisplay  = (Aspect_Display          )EGL_NO_DISPLAY;
+  myWindow   = (Aspect_Drawable         )EGL_NO_SURFACE;
+  myGContext = (Aspect_RenderingContext )EGL_NO_CONTEXT;
+#elif defined(_WIN32)
+  myWindow   = NULL;
+  myWindowDC = NULL;
+  myGContext = NULL;
+#elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
   // Vendors can not extend functionality on this system
   // and developers are limited to OpenGL support provided by Mac OS X SDK.
   // We retrieve function pointers from system library
@@ -133,8 +149,19 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
   // Notice that GL version / extension availability checks are required
   // because function pointers may be available but not functionality itself
   // (depends on renderer).
+#if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
+  myGContext    = NULL;
+  myGlLibHandle = dlopen ("/System/Library/Frameworks/OpenGLES.framework/OpenGLES", RTLD_LAZY);
+#else
+  myGContext    = NULL;
   myGlLibHandle = dlopen ("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", RTLD_LAZY);
 #endif
+#else
+  myDisplay =  NULL;
+  myWindow   = 0;
+  myGContext = 0;
+#endif
+
   memset (myFuncs.operator->(), 0, sizeof(OpenGl_GlFunctions));
   myShaderManager = new OpenGl_ShaderManager (this);
 }
@@ -148,6 +175,24 @@ OpenGl_Context::~OpenGl_Context()
   // release clean up queue
   ReleaseDelayed();
 
+#if !defined(GL_ES_VERSION_2_0)
+  // release default VAO
+  if (myDefaultVao != 0
+   && IsValid()
+   && core32 != NULL)
+  {
+    core32->glDeleteVertexArrays (1, &myDefaultVao);
+  }
+  myDefaultVao = 0;
+#endif
+
+  // release default FBO
+  if (!myDefaultFbo.IsNull())
+  {
+    myDefaultFbo->Release (this);
+    myDefaultFbo.Nullify();
+  }
+
   // release shared resources if any
   if (((const Handle(Standard_Transient)& )mySharedResources)->GetRefCount() <= 1)
   {
@@ -156,6 +201,13 @@ OpenGl_Context::~OpenGl_Context()
          anIter.More(); anIter.Next())
     {
       anIter.Value()->Release (this);
+    }
+
+    // release delayed resources added during deletion of shared resources
+    while (!myUnusedResources->IsEmpty())
+    {
+      myUnusedResources->First()->Release (this);
+      myUnusedResources->RemoveFirst();
     }
   }
   else
@@ -173,7 +225,7 @@ OpenGl_Context::~OpenGl_Context()
 
 #if !defined(GL_ES_VERSION_2_0)
   if (arbDbg != NULL
-   && caps->contextDebug
+   && myIsGlDebugCtx
    && IsValid())
   {
     // reset callback
@@ -183,6 +235,7 @@ OpenGl_Context::~OpenGl_Context()
     {
       arbDbg->glDebugMessageCallbackARB (NULL, NULL);
     }
+    myIsGlDebugCtx = Standard_False;
   }
 #endif
 }
@@ -202,6 +255,13 @@ void OpenGl_Context::forcedRelease()
   mySharedResources->Clear();
   myShaderManager->clear();
   myShaderManager->SetContext (NULL);
+
+  // release delayed resources added during deletion of shared resources
+  while (!myUnusedResources->IsEmpty())
+  {
+    myUnusedResources->First()->Release (this);
+    myUnusedResources->RemoveFirst();
+  }
 }
 
 // =======================================================================
@@ -231,93 +291,58 @@ Standard_Integer OpenGl_Context::MaxClipPlanes() const
   return myMaxClipPlanes;
 }
 
+#if !defined(GL_ES_VERSION_2_0)
+inline Standard_Integer stereoToMonoBuffer (const Standard_Integer theBuffer)
+{
+  switch (theBuffer)
+  {
+    case GL_BACK_LEFT:
+    case GL_BACK_RIGHT:
+      return GL_BACK;
+    case GL_FRONT_LEFT:
+    case GL_FRONT_RIGHT:
+      return GL_FRONT;
+    default:
+      return theBuffer;
+  }
+}
+#endif
+
 // =======================================================================
-// function : SetDrawBufferLeft
+// function : SetReadBuffer
 // purpose  :
 // =======================================================================
-void OpenGl_Context::SetDrawBufferLeft()
+void OpenGl_Context::SetReadBuffer (const Standard_Integer theReadBuffer)
 {
 #if !defined(GL_ES_VERSION_2_0)
-  switch (myDrawBuffer)
+  myReadBuffer = !myIsStereoBuffers ? stereoToMonoBuffer (theReadBuffer) : theReadBuffer;
+  if (myReadBuffer < GL_COLOR_ATTACHMENT0
+   && arbFBO != NULL)
   {
-    case GL_BACK_RIGHT :
-    case GL_BACK :
-      glDrawBuffer (GL_BACK_LEFT);
-      myDrawBuffer = GL_BACK_LEFT;
-      break;
-
-    case GL_FRONT_RIGHT :
-    case GL_FRONT :
-      glDrawBuffer (GL_FRONT_LEFT);
-      myDrawBuffer = GL_FRONT_LEFT;
-      break;
-
-    case GL_FRONT_AND_BACK :
-    case GL_RIGHT :
-      glDrawBuffer (GL_LEFT);
-      myDrawBuffer = GL_LEFT;
-      break;
+    arbFBO->glBindFramebuffer (GL_FRAMEBUFFER, OpenGl_FrameBuffer::NO_FRAMEBUFFER);
   }
+  ::glReadBuffer (myReadBuffer);
+#else
+  (void )theReadBuffer;
 #endif
 }
 
 // =======================================================================
-// function : SetDrawBufferRight
+// function : SetDrawBuffer
 // purpose  :
 // =======================================================================
-void OpenGl_Context::SetDrawBufferRight()
+void OpenGl_Context::SetDrawBuffer (const Standard_Integer theDrawBuffer)
 {
 #if !defined(GL_ES_VERSION_2_0)
-  switch (myDrawBuffer)
+  myDrawBuffer = !myIsStereoBuffers ? stereoToMonoBuffer (theDrawBuffer) : theDrawBuffer;
+  if (myDrawBuffer < GL_COLOR_ATTACHMENT0
+   && arbFBO != NULL)
   {
-    case GL_BACK_LEFT :
-    case GL_BACK :
-      glDrawBuffer (GL_BACK_RIGHT);
-      myDrawBuffer = GL_BACK_RIGHT;
-      break;
-
-    case GL_FRONT_LEFT :
-    case GL_FRONT :
-      glDrawBuffer (GL_FRONT_RIGHT);
-      myDrawBuffer = GL_FRONT_RIGHT;
-      break;
-
-    case GL_FRONT_AND_BACK :
-    case GL_LEFT :
-      glDrawBuffer (GL_RIGHT);
-      myDrawBuffer = GL_RIGHT;
-      break;
+    arbFBO->glBindFramebuffer (GL_FRAMEBUFFER, OpenGl_FrameBuffer::NO_FRAMEBUFFER);
   }
-#endif
-}
-
-// =======================================================================
-// function : SetDrawBufferMono
-// purpose  :
-// =======================================================================
-void OpenGl_Context::SetDrawBufferMono()
-{
-#if !defined(GL_ES_VERSION_2_0)
-  switch (myDrawBuffer)
-  {
-    case GL_BACK_LEFT :
-    case GL_BACK_RIGHT :
-      glDrawBuffer (GL_BACK);
-      myDrawBuffer = GL_BACK;
-      break;
-
-    case GL_FRONT_LEFT :
-    case GL_FRONT_RIGHT :
-      glDrawBuffer (GL_FRONT);
-      myDrawBuffer = GL_FRONT;
-      break;
-
-    case GL_LEFT :
-    case GL_RIGHT :
-      glDrawBuffer (GL_FRONT_AND_BACK);
-      myDrawBuffer = GL_FRONT_AND_BACK;
-      break;
-  }
+  ::glDrawBuffer (myDrawBuffer);
+#else
+  (void )theDrawBuffer;
 #endif
 }
 
@@ -329,10 +354,14 @@ void OpenGl_Context::FetchState()
 {
 #if !defined(GL_ES_VERSION_2_0)
   // cache feedback mode state
-  glGetIntegerv (GL_RENDER_MODE, &myRenderMode);
+  if (core11 != NULL)
+  {
+    ::glGetIntegerv (GL_RENDER_MODE, &myRenderMode);
+  }
 
-  // cache draw buffer state
-  glGetIntegerv (GL_DRAW_BUFFER, &myDrawBuffer);
+  // cache buffers state
+  ::glGetIntegerv (GL_READ_BUFFER, &myReadBuffer);
+  ::glGetIntegerv (GL_DRAW_BUFFER, &myDrawBuffer);
 #endif
 }
 
@@ -521,23 +550,28 @@ Standard_Boolean OpenGl_Context::CheckExtension (const char* theExtName) const
     return Standard_False;
   }
 
+#if !defined(GL_ES_VERSION_2_0)
   // available since OpenGL 3.0
   // and the ONLY way to check extensions with OpenGL 3.1+ core profile
-  /**if (IsGlGreaterEqual (3, 0))
+  if (IsGlGreaterEqual (3, 0)
+   && myFuncs->glGetStringi != NULL)
   {
     GLint anExtNb = 0;
-    glGetIntegerv (GL_NUM_EXTENSIONS, &anExtNb);
+    ::glGetIntegerv (GL_NUM_EXTENSIONS, &anExtNb);
+    const size_t anExtNameLen = strlen (theExtName);
     for (GLint anIter = 0; anIter < anExtNb; ++anIter)
     {
-      const char* anExtension = (const char* )core30->glGetStringi (GL_EXTENSIONS, (GLuint )anIter);
-      if (anExtension[anExtNameLen] == '\0' &&
-          strncmp (anExtension, theExtName, anExtNameLen) == 0)
+      const char* anExtension = (const char* )myFuncs->glGetStringi (GL_EXTENSIONS, (GLuint )anIter);
+      const size_t aTestExtNameLen = strlen (anExtension);
+      if (aTestExtNameLen == anExtNameLen
+       && strncmp (anExtension, theExtName, anExtNameLen) == 0)
       {
         return Standard_True;
       }
     }
     return Standard_False;
-  }*/
+  }
+#endif
 
   // use old way with huge string for all extensions
   const char* anExtString = (const char* )glGetString (GL_EXTENSIONS);
@@ -584,7 +618,7 @@ Standard_Boolean OpenGl_Context::CheckExtension (const char* theExtString,
 // function : Init
 // purpose  :
 // =======================================================================
-Standard_Boolean OpenGl_Context::Init()
+Standard_Boolean OpenGl_Context::Init (const Standard_Boolean theIsCoreProfile)
 {
   if (myIsInitialized)
   {
@@ -608,7 +642,7 @@ Standard_Boolean OpenGl_Context::Init()
     return Standard_False;
   }
 
-  init();
+  init (theIsCoreProfile);
   myIsInitialized = Standard_True;
   return Standard_True;
 }
@@ -622,17 +656,28 @@ Standard_Boolean OpenGl_Context::Init()
 #if defined(HAVE_EGL)
 Standard_Boolean OpenGl_Context::Init (const Aspect_Drawable         theEglSurface,
                                        const Aspect_Display          theEglDisplay,
-                                       const Aspect_RenderingContext theEglContext)
+                                       const Aspect_RenderingContext theEglContext,
+                                       const Standard_Boolean        theIsCoreProfile)
 #elif defined(_WIN32)
 Standard_Boolean OpenGl_Context::Init (const Aspect_Handle           theWindow,
                                        const Aspect_Handle           theWindowDC,
-                                       const Aspect_RenderingContext theGContext)
+                                       const Aspect_RenderingContext theGContext,
+                                       const Standard_Boolean        theIsCoreProfile)
 #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-Standard_Boolean OpenGl_Context::Init (const void*                   theGContext)
+
+#if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
+Standard_Boolean OpenGl_Context::Init (EAGLContext*                  theGContext,
+                                       const Standard_Boolean        theIsCoreProfile)
+#else
+Standard_Boolean OpenGl_Context::Init (NSOpenGLContext*              theGContext,
+                                       const Standard_Boolean        theIsCoreProfile)
+#endif
+
 #else
 Standard_Boolean OpenGl_Context::Init (const Aspect_Drawable         theWindow,
                                        const Aspect_Display          theDisplay,
-                                       const Aspect_RenderingContext theGContext)
+                                       const Aspect_RenderingContext theGContext,
+                                       const Standard_Boolean        theIsCoreProfile)
 #endif
 {
   Standard_ProgramError_Raise_if (myIsInitialized, "OpenGl_Context::Init() should be called only once!");
@@ -645,7 +690,7 @@ Standard_Boolean OpenGl_Context::Init (const Aspect_Drawable         theWindow,
   myGContext = theGContext;
   myWindowDC = theWindowDC;
 #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-  myGContext = (void* )theGContext;
+  myGContext = theGContext;
 #else
   myWindow   = theWindow;
   myGContext = theGContext;
@@ -656,7 +701,7 @@ Standard_Boolean OpenGl_Context::Init (const Aspect_Drawable         theWindow,
     return Standard_False;
   }
 
-  init();
+  init (theIsCoreProfile);
   myIsInitialized = Standard_True;
   return Standard_True;
 }
@@ -674,14 +719,15 @@ void OpenGl_Context::ResetErrors()
 }
 
 // =======================================================================
-// function : readGlVersion
+// function : ReadGlVersion
 // purpose  :
 // =======================================================================
-void OpenGl_Context::readGlVersion()
+void OpenGl_Context::ReadGlVersion (Standard_Integer& theGlVerMajor,
+                                    Standard_Integer& theGlVerMinor)
 {
   // reset values
-  myGlVerMajor = 0;
-  myGlVerMinor = 0;
+  theGlVerMajor = 0;
+  theGlVerMinor = 0;
 
 #ifdef GL_MAJOR_VERSION
   // available since OpenGL 3.0 and OpenGL 3.0 ES
@@ -693,13 +739,20 @@ void OpenGl_Context::readGlVersion()
   // This happens on some renderers like e.g. Cygwin MESA.
   // Thus checking additionally if GL has put anything to
   // the output variables.
-  if (glGetError() == GL_NO_ERROR && aMajor != 0 && aMinor != 0)
+  if (::glGetError() == GL_NO_ERROR && aMajor != 0 && aMinor != 0)
   {
-    myGlVerMajor = aMajor;
-    myGlVerMinor = aMinor;
+    theGlVerMajor = aMajor;
+    theGlVerMinor = aMinor;
     return;
   }
-  ResetErrors();
+  for (GLenum anErr = ::glGetError(), aPrevErr = GL_NO_ERROR;; aPrevErr = anErr, anErr = ::glGetError())
+  {
+    if (anErr == GL_NO_ERROR
+     || anErr == aPrevErr)
+    {
+      break;
+    }
+  }
 #endif
 
   // Read version string.
@@ -755,13 +808,13 @@ void OpenGl_Context::readGlVersion()
   aMinorStr[aMinIter] = '\0';
 
   // read numbers
-  myGlVerMajor = atoi (aMajorStr);
-  myGlVerMinor = atoi (aMinorStr);
+  theGlVerMajor = atoi (aMajorStr);
+  theGlVerMinor = atoi (aMinorStr);
 
-  if (myGlVerMajor <= 0)
+  if (theGlVerMajor <= 0)
   {
-    myGlVerMajor = 0;
-    myGlVerMinor = 0;
+    theGlVerMajor = 0;
+    theGlVerMinor = 0;
   }
 }
 
@@ -815,7 +868,14 @@ void OpenGl_Context::PushMessage (const unsigned int theSource,
                                   const unsigned int theSeverity,
                                   const TCollection_ExtendedString& theMessage)
 {
-  //OpenGl_Context* aCtx = (OpenGl_Context* )theUserParam;
+  if (caps->suppressExtraMsg
+   && theSource >= GL_DEBUG_SOURCE_API_ARB
+   && theSource <= GL_DEBUG_SOURCE_OTHER_ARB
+   && myFilters[theSource - GL_DEBUG_SOURCE_API_ARB].Contains (theId))
+  {
+    return;
+  }
+
   Standard_CString& aSrc = (theSource >= GL_DEBUG_SOURCE_API_ARB
                         && theSource <= GL_DEBUG_SOURCE_OTHER_ARB)
                          ? THE_DBGMSG_SOURCES[theSource - GL_DEBUG_SOURCE_API_ARB]
@@ -846,15 +906,102 @@ void OpenGl_Context::PushMessage (const unsigned int theSource,
 }
 
 // =======================================================================
+// function : ExcludeMessage
+// purpose  :
+// ======================================================================
+Standard_Boolean OpenGl_Context::ExcludeMessage (const unsigned int theSource,
+                                                 const unsigned int theId)
+{
+  return theSource >= GL_DEBUG_SOURCE_API_ARB
+      && theSource <= GL_DEBUG_SOURCE_OTHER_ARB
+      && myFilters[theSource - GL_DEBUG_SOURCE_API_ARB].Add (theId);
+}
+
+// =======================================================================
+// function : IncludeMessage
+// purpose  :
+// ======================================================================
+Standard_Boolean OpenGl_Context::IncludeMessage (const unsigned int theSource,
+                                                 const unsigned int theId)
+{
+  return theSource >= GL_DEBUG_SOURCE_API_ARB
+      && theSource <= GL_DEBUG_SOURCE_OTHER_ARB
+      && myFilters[theSource - GL_DEBUG_SOURCE_API_ARB].Remove (theId);
+}
+
+// =======================================================================
+// function : checkWrongVersion
+// purpose  :
+// ======================================================================
+void OpenGl_Context::checkWrongVersion (const Standard_Integer theGlVerMajor,
+                                        const Standard_Integer theGlVerMinor)
+{
+  if (!IsGlGreaterEqual (theGlVerMajor, theGlVerMinor))
+  {
+    return;
+  }
+
+  TCollection_ExtendedString aMsg = TCollection_ExtendedString()
+    + "Error! OpenGL context reports version "
+    + myGlVerMajor  + "." + myGlVerMinor
+    + " but does not export required functions for "
+    + theGlVerMajor + "." + theGlVerMinor;
+  PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+               GL_DEBUG_TYPE_ERROR_ARB,
+               0,
+               GL_DEBUG_SEVERITY_HIGH_ARB,
+               aMsg);
+}
+
+// =======================================================================
 // function : init
 // purpose  :
 // =======================================================================
-void OpenGl_Context::init()
+void OpenGl_Context::init (const Standard_Boolean theIsCoreProfile)
 {
   // read version
-  readGlVersion();
+  myGlVerMajor = 0;
+  myGlVerMinor = 0;
+  ReadGlVersion (myGlVerMajor, myGlVerMinor);
+  myVendor = (const char* )::glGetString (GL_VENDOR);
 
-  core11     = (OpenGl_GlCore11*    )(&(*myFuncs));
+#if defined(GL_ES_VERSION_2_0)
+  (void )theIsCoreProfile;
+  const bool isCoreProfile = false;
+#else
+
+  if (myVendor.Search ("NVIDIA") != -1)
+  {
+    // Buffer detailed info: Buffer object 1 (bound to GL_ARRAY_BUFFER_ARB, usage hint is GL_STATIC_DRAW)
+    // will use VIDEO memory as the source for buffer object operations.
+    ExcludeMessage (GL_DEBUG_SOURCE_API_ARB, 131185);
+  }
+  if (IsGlGreaterEqual (3, 0))
+  {
+    // retrieve auxiliary function in advance
+    FindProc ("glGetStringi", myFuncs->glGetStringi);
+  }
+
+  bool isCoreProfile = false;
+  if (IsGlGreaterEqual (3, 2))
+  {
+    isCoreProfile = (theIsCoreProfile == Standard_True);
+
+    // detect Core profile
+    if (isCoreProfile)
+    {
+      GLint aProfile = 0;
+      ::glGetIntegerv (GL_CONTEXT_PROFILE_MASK, &aProfile);
+      isCoreProfile = (aProfile & GL_CONTEXT_CORE_PROFILE_BIT) != 0;
+    }
+  }
+#endif
+
+  core11     = NULL;
+  if (!isCoreProfile)
+  {
+    core11 = (OpenGl_GlCore11* )(&(*myFuncs));
+  }
   core11fwd  = (OpenGl_GlCore11Fwd* )(&(*myFuncs));
   core15     = NULL;
   core15fwd  = NULL;
@@ -877,7 +1024,9 @@ void OpenGl_Context::init()
   arbIns     = NULL;
   arbDbg     = NULL;
   arbFBO     = NULL;
+  arbFBOBlit = NULL;
   extGS      = NULL;
+  myDefaultVao = 0;
 
 #if defined(GL_ES_VERSION_2_0)
 
@@ -902,14 +1051,21 @@ void OpenGl_Context::init()
     core20    = (OpenGl_GlCore20*    )(&(*myFuncs));
     core20fwd = (OpenGl_GlCore20Fwd* )(&(*myFuncs));
     core15fwd = (OpenGl_GlCore15Fwd* )(&(*myFuncs));
-    arbFBO    = (OpenGl_ArbFBO* )(&(*myFuncs));
+    arbFBO    = (OpenGl_ArbFBO*      )(&(*myFuncs));
+  }
+  if (IsGlGreaterEqual (3, 0)
+   && FindProc ("glBlitFramebuffer", myFuncs->glBlitFramebuffer))
+  {
+    arbFBOBlit = (OpenGl_ArbFBOBlit* )(&(*myFuncs));
   }
 
-  hasHighp = CheckExtension ("OES_fragment_precision_high");
+  hasUintIndex = IsGlGreaterEqual (3, 0)
+              || CheckExtension ("GL_OES_element_index_uint");
+  hasHighp     = CheckExtension ("GL_OES_fragment_precision_high");
   GLint aRange[2] = {0, 0};
-  GLint aPrec [2] = {0, 0};
-  ::glGetShaderPrecisionFormat (GL_FRAGMENT_SHADER, GL_HIGH_FLOAT, aRange, aPrec);
-  if (aPrec[1] != 0)
+  GLint aPrec     = 0;
+  ::glGetShaderPrecisionFormat (GL_FRAGMENT_SHADER, GL_HIGH_FLOAT, aRange, &aPrec);
+  if (aPrec != 0)
   {
     hasHighp = Standard_True;
   }
@@ -963,7 +1119,7 @@ void OpenGl_Context::init()
   //! Make record shorter to retrieve function pointer using variable with same name
   #define FindProcShort(theFunc) FindProc(#theFunc, myFuncs->theFunc)
 
-    // retrieve platform-dependent extensions
+  // retrieve platform-dependent extensions
 #if defined(_WIN32) && !defined(HAVE_EGL)
   if (FindProcShort (wglGetExtensionsStringARB))
   {
@@ -1009,10 +1165,12 @@ void OpenGl_Context::init()
      && caps->contextDebug)
     {
       // setup default callback
+      myIsGlDebugCtx = Standard_True;
       arbDbg->glDebugMessageCallbackARB (debugCallbackWrap, this);
-    #ifdef OCCT_DEBUG
-      glEnable (GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB);
-    #endif
+      if (caps->contextSyncDebug)
+      {
+        ::glEnable (GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB);
+      }
     }
   }
 
@@ -1035,7 +1193,11 @@ void OpenGl_Context::init()
        && FindProcShort (glCompressedTexSubImage3D)
        && FindProcShort (glCompressedTexSubImage2D)
        && FindProcShort (glCompressedTexSubImage1D)
-       && FindProcShort (glGetCompressedTexImage)
+       && FindProcShort (glGetCompressedTexImage);
+
+  if (!isCoreProfile)
+  {
+    has13 = has13
        && FindProcShort (glClientActiveTexture)
        && FindProcShort (glMultiTexCoord1d)
        && FindProcShort (glMultiTexCoord1dv)
@@ -1073,6 +1235,7 @@ void OpenGl_Context::init()
        && FindProcShort (glLoadTransposeMatrixd)
        && FindProcShort (glMultTransposeMatrixf)
        && FindProcShort (glMultTransposeMatrixd);
+  }
 
   // load OpenGL 1.4 new functions
   has14 = IsGlGreaterEqual (1, 4)
@@ -1668,10 +1831,7 @@ void OpenGl_Context::init()
   const bool hasTextureStorage = (IsGlGreaterEqual (4, 2) || CheckExtension ("GL_ARB_texture_storage"))
        && FindProcShort (glTexStorage1D)
        && FindProcShort (glTexStorage2D)
-       && FindProcShort (glTexStorage3D)
-       && FindProcShort (glTextureStorage1DEXT)
-       && FindProcShort (glTextureStorage2DEXT)
-       && FindProcShort (glTextureStorage3DEXT);
+       && FindProcShort (glTexStorage3D);
 
   has42 = IsGlGreaterEqual (4, 2)
        && hasBaseInstance
@@ -1762,7 +1922,8 @@ void OpenGl_Context::init()
   // initialize FBO extension (ARB)
   if (hasFBO)
   {
-    arbFBO = (OpenGl_ArbFBO* )(&(*myFuncs));
+    arbFBO     = (OpenGl_ArbFBO*     )(&(*myFuncs));
+    arbFBOBlit = (OpenGl_ArbFBOBlit* )(&(*myFuncs));
     extPDS = Standard_True; // extension for EXT, but part of ARB
   }
 
@@ -1797,43 +1958,74 @@ void OpenGl_Context::init()
 
   if (!has12)
   {
+    checkWrongVersion (1, 2);
     myGlVerMajor = 1;
     myGlVerMinor = 1;
     return;
   }
   else if (!has13)
   {
+    checkWrongVersion (1, 3);
     myGlVerMajor = 1;
     myGlVerMinor = 2;
     return;
   }
   else if (!has14)
   {
+    checkWrongVersion (1, 4);
     myGlVerMajor = 1;
     myGlVerMinor = 3;
     return;
   }
   else if (!has15)
   {
+    checkWrongVersion (1, 5);
     myGlVerMajor = 1;
     myGlVerMinor = 4;
     return;
   }
-  core15    = (OpenGl_GlCore15*    )(&(*myFuncs));
+  if (!isCoreProfile)
+  {
+    core15 = (OpenGl_GlCore15* )(&(*myFuncs));
+  }
   core15fwd = (OpenGl_GlCore15Fwd* )(&(*myFuncs));
 
   if (!has20)
   {
+    checkWrongVersion (2, 0);
     myGlVerMajor = 1;
     myGlVerMinor = 5;
     return;
   }
 
-  core20    = (OpenGl_GlCore20*    )(&(*myFuncs));
+  const char* aGlslVer = (const char* )::glGetString (GL_SHADING_LANGUAGE_VERSION);
+  if (aGlslVer == NULL
+  || *aGlslVer == '\0')
+  {
+    // broken context has been detected
+    TCollection_ExtendedString aMsg = TCollection_ExtendedString()
+      + "Error! OpenGL context reports version "
+      + myGlVerMajor  + "." + myGlVerMinor
+      + " but reports wrong GLSL version";
+    PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+                 GL_DEBUG_TYPE_ERROR_ARB,
+                 0,
+                 GL_DEBUG_SEVERITY_HIGH_ARB,
+                 aMsg);
+    myGlVerMajor = 1;
+    myGlVerMinor = 5;
+    return;
+  }
+
+  if (!isCoreProfile)
+  {
+    core20  = (OpenGl_GlCore20*    )(&(*myFuncs));
+  }
   core20fwd = (OpenGl_GlCore20Fwd* )(&(*myFuncs));
 
   if (!has21)
   {
+    checkWrongVersion (2, 1);
     myGlVerMajor = 2;
     myGlVerMinor = 0;
     return;
@@ -1841,6 +2033,7 @@ void OpenGl_Context::init()
 
   if (!has30)
   {
+    checkWrongVersion (3, 0);
     myGlVerMajor = 2;
     myGlVerMinor = 1;
     return;
@@ -1848,6 +2041,7 @@ void OpenGl_Context::init()
 
   if (!has31)
   {
+    checkWrongVersion (3, 1);
     myGlVerMajor = 3;
     myGlVerMinor = 0;
     return;
@@ -1857,21 +2051,33 @@ void OpenGl_Context::init()
 
   if (!has32)
   {
+    checkWrongVersion (3, 2);
     myGlVerMajor = 3;
     myGlVerMinor = 1;
     return;
   }
-  core32     = (OpenGl_GlCore32*     )(&(*myFuncs));
-  core32back = (OpenGl_GlCore32Back* )(&(*myFuncs));
+  core32 = (OpenGl_GlCore32* )(&(*myFuncs));
+  if (isCoreProfile)
+  {
+    core32->glGenVertexArrays (1, &myDefaultVao);
+  }
+  else
+  {
+    core32back = (OpenGl_GlCore32Back* )(&(*myFuncs));
+  }
 
   if (!has33)
   {
+    checkWrongVersion (3, 3);
     myGlVerMajor = 3;
     myGlVerMinor = 2;
     return;
   }
-  core33     = (OpenGl_GlCore33*     )(&(*myFuncs));
-  core33back = (OpenGl_GlCore33Back* )(&(*myFuncs));
+  core33 = (OpenGl_GlCore33* )(&(*myFuncs));
+  if (!isCoreProfile)
+  {
+    core33back = (OpenGl_GlCore33Back* )(&(*myFuncs));
+  }
 
   // initialize sampler object
   myTexSampler = new OpenGl_Sampler();
@@ -1879,6 +2085,7 @@ void OpenGl_Context::init()
 
   if (!has40)
   {
+    checkWrongVersion (4, 0);
     myGlVerMajor = 3;
     myGlVerMinor = 3;
     return;
@@ -1887,39 +2094,55 @@ void OpenGl_Context::init()
 
   if (!has41)
   {
+    checkWrongVersion (4, 1);
     myGlVerMajor = 4;
     myGlVerMinor = 0;
     return;
   }
-  core41     = (OpenGl_GlCore41*     )(&(*myFuncs));
-  core41back = (OpenGl_GlCore41Back* )(&(*myFuncs));
+  core41 = (OpenGl_GlCore41* )(&(*myFuncs));
+  if (!isCoreProfile)
+  {
+    core41back = (OpenGl_GlCore41Back* )(&(*myFuncs));
+  }
 
   if(!has42)
   {
+    checkWrongVersion (4, 2);
     myGlVerMajor = 4;
     myGlVerMinor = 1;
     return;
   }
-  core42     = (OpenGl_GlCore42*     )(&(*myFuncs));
-  core42back = (OpenGl_GlCore42Back* )(&(*myFuncs));
-
-  if(!has43)
+  core42 = (OpenGl_GlCore42* )(&(*myFuncs));
+  if (!isCoreProfile)
   {
+    core42back = (OpenGl_GlCore42Back* )(&(*myFuncs));
+  }
+
+  if (!has43)
+  {
+    checkWrongVersion (4, 3);
     myGlVerMajor = 4;
     myGlVerMinor = 2;
     return;
   }
-  core43     = (OpenGl_GlCore43*     )(&(*myFuncs));
-  core43back = (OpenGl_GlCore43Back* )(&(*myFuncs));
+  core43 = (OpenGl_GlCore43* )(&(*myFuncs));
+  if (!isCoreProfile)
+  {
+    core43back = (OpenGl_GlCore43Back* )(&(*myFuncs));
+  }
 
   if (!has44)
   {
+    checkWrongVersion (4, 4);
     myGlVerMajor = 4;
     myGlVerMinor = 3;
     return;
   }
-  core44     = (OpenGl_GlCore44*     )(&(*myFuncs));
-  core44back = (OpenGl_GlCore44Back* )(&(*myFuncs));
+  core44 = (OpenGl_GlCore44* )(&(*myFuncs));
+  if (!isCoreProfile)
+  {
+    core44back = (OpenGl_GlCore44Back* )(&(*myFuncs));
+  }
 #endif
 }
 
@@ -2140,6 +2363,34 @@ Standard_Boolean OpenGl_Context::BindProgram (const Handle(OpenGl_ShaderProgram)
   myActiveProgram = theProgram;
   core20fwd->glUseProgram (theProgram->ProgramId());
   return Standard_True;
+}
+
+// =======================================================================
+// function : BindDefaultVao
+// purpose  :
+// =======================================================================
+void OpenGl_Context::BindDefaultVao()
+{
+#if !defined(GL_ES_VERSION_2_0)
+  if (myDefaultVao == 0
+   || core32 == NULL)
+  {
+    return;
+  }
+
+  core32->glBindVertexArray (myDefaultVao);
+#endif
+}
+
+// =======================================================================
+// function : SetDefaultFrameBuffer
+// purpose  :
+// =======================================================================
+Handle(OpenGl_FrameBuffer) OpenGl_Context::SetDefaultFrameBuffer (const Handle(OpenGl_FrameBuffer)& theFbo)
+{
+  Handle(OpenGl_FrameBuffer) aFbo = myDefaultFbo;
+  myDefaultFbo = theFbo;
+  return aFbo;
 }
 
 // =======================================================================

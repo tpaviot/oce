@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBinXCAF"
-	ProjectGUID="{6414A4F8-1500-1716-0E3B-1BA528F81F1B}"
+	ProjectGUID="{ED3A0237-08B1-0FAE-11C7-53506AC49FF1}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

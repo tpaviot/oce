@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="PTKernel"
-	ProjectGUID="{BB0883F2-176B-03D6-174E-96C677BFCC2A}"
+	ProjectGUID="{6E315896-06DA-11FD-1317-BA69CB7793ED}"
 	>
 	<Platforms>
 		<Platform

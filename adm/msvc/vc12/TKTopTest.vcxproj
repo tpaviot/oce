@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0B427703-0397-07A8-030E-07D11C31BA1C}</ProjectGuid>
+    <ProjectGuid>{B9225D07-1531-0888-0729-7E486DC4F40D}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -420,6 +420,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTest\BOPTest.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTest\BOPTest_APICommands.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTest\BOPTest_BOPCommands.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTest\BOPTest_CheckCommands.cxx">
@@ -431,6 +433,8 @@
     <ClCompile Include="..\..\..\src\BOPTest\BOPTest_ObjCommands.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTest\BOPTest_Objects.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTest\BOPTest_OptionCommands.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTest\BOPTest_PartitionCommands.cxx">
     </ClCompile>

@@ -16,7 +16,7 @@
 #ifndef _OpenGl_ShaderManager_HeaderFile
 #define _OpenGl_ShaderManager_HeaderFile
 
-#include <Graphic3d_ShaderProgram_Handle.hxx>
+#include <Graphic3d_ShaderProgram.hxx>
 
 #include <NCollection_DataMap.hxx>
 #include <NCollection_Sequence.hxx>
@@ -87,7 +87,7 @@ public:
       return bindProgramWithState (theCustomProgram, theAspect);
     }
 
-    const Standard_Integer        aBits    = getProgramBits (theTexture, theHasVertColor);
+    const Standard_Integer        aBits    = getProgramBits (theTexture, theHasVertColor, Standard_True);
     Handle(OpenGl_ShaderProgram)& aProgram = getStdProgram (theToLightOn, aBits);
     return bindProgramWithState (aProgram, theAspect);
   }
@@ -145,6 +145,28 @@ public:
     return bindProgramWithState (myFontProgram, theAspect);
   }
 
+  //! Bind program for FBO blit operation.
+  Standard_Boolean BindFboBlitProgram()
+  {
+    if (myBlitProgram.IsNull())
+    {
+      prepareStdProgramFboBlit();
+    }
+    return !myBlitProgram.IsNull()
+         && myContext->BindProgram (myBlitProgram);
+  }
+
+  //! Bind program for rendering Anaglyph image.
+  Standard_Boolean BindAnaglyphProgram()
+  {
+    if (myAnaglyphProgram.IsNull())
+    {
+      prepareStdProgramAnaglyph();
+    }
+    return !myAnaglyphProgram.IsNull()
+         && myContext->BindProgram (myAnaglyphProgram);
+  }
+
 public:
 
   //! Returns current state of OCCT light sources.
@@ -164,9 +186,6 @@ public:
   //! Updates state of OCCT projection transform.
   Standard_EXPORT void UpdateProjectionStateTo (const OpenGl_Mat4& theProjectionMatrix);
 
-  //! Reverts state of OCCT projection transform.
-  Standard_EXPORT void RevertProjectionStateTo (const OpenGl_Mat4& theProjectionMatrix);
-
   //! Pushes current state of OCCT projection transform to specified program.
   Standard_EXPORT void PushProjectionState (const Handle(OpenGl_ShaderProgram)& theProgram) const;
 
@@ -178,9 +197,6 @@ public:
   //! Updates state of OCCT model-world transform.
   Standard_EXPORT void UpdateModelWorldStateTo (const OpenGl_Mat4& theModelWorldMatrix);
 
-  //! Reverts state of OCCT model-world transform.
-  Standard_EXPORT void RevertModelWorldStateTo (const OpenGl_Mat4& theModelWorldMatrix);
-
   //! Pushes current state of OCCT model-world transform to specified program.
   Standard_EXPORT void PushModelWorldState (const Handle(OpenGl_ShaderProgram)& theProgram) const;
 
@@ -191,9 +207,6 @@ public:
 
   //! Updates state of OCCT world-view transform.
   Standard_EXPORT void UpdateWorldViewStateTo (const OpenGl_Mat4& theWorldViewMatrix);
-
-  //! Reverts state of OCCT world-view transform.
-  Standard_EXPORT void RevertWorldViewStateTo (const OpenGl_Mat4& theWorldViewMatrix);
 
   //! Pushes current state of OCCT world-view transform to specified program.
   Standard_EXPORT void PushWorldViewState (const Handle(OpenGl_ShaderProgram)& theProgram) const;
@@ -223,6 +236,14 @@ public:
 
   //! Returns current state of OCCT material for specified program.
   Standard_EXPORT const OpenGl_MaterialState* MaterialState (const Handle(OpenGl_ShaderProgram)& theProgram) const;
+
+public:
+
+  //! Returns current state of OCCT surface detail.
+  Standard_EXPORT const OpenGl_SurfaceDetailState& SurfaceDetailState() const;
+
+  //! Updates state of OCCT surface detail.
+  Standard_EXPORT void UpdateSurfaceDetailStateTo (const Visual3d_TypeOfSurfaceDetail theDetail);
 
 public:
 
@@ -257,17 +278,23 @@ protected:
 
   //! Define program bits.
   Standard_Integer getProgramBits (const Handle(OpenGl_Texture)& theTexture,
-                                   const Standard_Boolean        theHasVertColor)
+                                   const Standard_Boolean        theHasVertColor,
+                                   const Standard_Boolean        theEnableEnvMap = Standard_False)
+
   {
     Standard_Integer aBits = 0;
     if (myContext->Clipping().IsClippingOrCappingOn())
     {
       aBits |= OpenGl_PO_ClipPlanes;
     }
-    if (!theTexture.IsNull())
+    if (theEnableEnvMap && mySurfaceDetailState.Detail() == Visual3d_TOD_ENVIRONMENT)
     {
-      // GL_RED to be handled
-      aBits |= theTexture->GetFormat() == GL_ALPHA ? OpenGl_PO_TextureA : OpenGl_PO_TextureRGB;
+      // Environment map overwrites material texture
+      aBits |= OpenGl_PO_TextureEnv;
+    }
+    else if (!theTexture.IsNull())
+    {
+      aBits |= theTexture->IsAlpha() ? OpenGl_PO_TextureA : OpenGl_PO_TextureRGB;
     }
     if (theHasVertColor)
     {
@@ -280,7 +307,9 @@ protected:
   Handle(OpenGl_ShaderProgram)& getStdProgram (const Standard_Boolean theToLightOn,
                                                const Standard_Integer theBits)
   {
-    if (theToLightOn)
+    // If environment map is enabled lighting calculations are
+    // not needed (in accordance with default OCCT behaviour)
+    if (theToLightOn && (theBits & OpenGl_PO_TextureEnv) == 0)
     {
       Handle(OpenGl_ShaderProgram)& aProgram = myLightPrograms->ChangeValue (theBits);
       if (aProgram.IsNull())
@@ -300,6 +329,9 @@ protected:
 
   //! Prepare standard GLSL program for textured font.
   Standard_EXPORT Standard_Boolean prepareStdProgramFont();
+
+  //! Prepare standard GLSL program for FBO blit operation.
+  Standard_EXPORT Standard_Boolean prepareStdProgramFboBlit();
 
   //! Prepare standard GLSL program without lighting.
   Standard_EXPORT Standard_Boolean prepareStdProgramFlat (Handle(OpenGl_ShaderProgram)& theProgram,
@@ -323,7 +355,8 @@ protected:
                                                            const Standard_Integer        theBits);
 
   //! Define computeLighting GLSL function depending on current lights configuration
-  Standard_EXPORT TCollection_AsciiString stdComputeLighting();
+  //! @param theHasVertColor flag to use getVertColor() instead of Ambient and Diffuse components of active material
+  Standard_EXPORT TCollection_AsciiString stdComputeLighting (const Standard_Boolean theHasVertColor);
 
   //! Bind specified program to current context and apply state.
   Standard_EXPORT Standard_Boolean bindProgramWithState (const Handle(OpenGl_ShaderProgram)& theProgram,
@@ -332,6 +365,9 @@ protected:
   //! Set pointer myLightPrograms to active lighting programs set from myMapOfLightPrograms
   Standard_EXPORT void switchLightPrograms();
 
+  //! Prepare standard GLSL program for Anaglyph image.
+  Standard_EXPORT Standard_Boolean prepareStdProgramAnaglyph();
+
 protected:
 
   Visual3d_TypeOfModel               myShadingModel;       //!< lighting shading model
@@ -339,7 +375,10 @@ protected:
   Handle(OpenGl_SetOfShaderPrograms) myLightPrograms;      //!< pointer to active lighting programs matrix
   OpenGl_SetOfShaderPrograms         myFlatPrograms;       //!< programs matrix without  lighting
   Handle(OpenGl_ShaderProgram)       myFontProgram;        //!< standard program for textured text
+  Handle(OpenGl_ShaderProgram)       myBlitProgram;        //!< standard program for FBO blit emulation
   OpenGl_MapOfShaderPrograms         myMapOfLightPrograms; //!< map of lighting programs depending on shading model and lights configuration
+
+  Handle(OpenGl_ShaderProgram)       myAnaglyphProgram;    //!< standard program for Anaglyph image
 
   OpenGl_Context*                    myContext;            //!< OpenGL context
 
@@ -349,8 +388,9 @@ protected:
   OpenGl_ProjectionState             myProjectionState;    //!< State of OCCT projection  transformation
   OpenGl_ModelWorldState             myModelWorldState;    //!< State of OCCT model-world transformation
   OpenGl_WorldViewState              myWorldViewState;     //!< State of OCCT world-view  transformation
-  OpenGl_LightSourceState            myClippingState;      //!< State of OCCT clipping planes
+  OpenGl_ClippingState               myClippingState;      //!< State of OCCT clipping planes
   OpenGl_LightSourceState            myLightSourceState;   //!< State of OCCT light sources
+  OpenGl_SurfaceDetailState          mySurfaceDetailState; //!< State of OCCT surface detail
 
 private:
 

@@ -69,8 +69,6 @@ public:
      const  TColStd_SequenceOfInteger& Sequence()  const;
   
       TColStd_SequenceOfInteger& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TColStd_HSequenceOfInteger) ShallowCopy()  const;
 
 
 
@@ -110,10 +108,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TColStd_HSequenceOfInteger) ShallowCopy(const Handle(TColStd_HSequenceOfInteger)& me) {
- return me->ShallowCopy();
-}
 
 
 

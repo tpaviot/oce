@@ -179,43 +179,6 @@ static void UpdateEdge (const TopoDS_Edge& E,
   B.UpdateEdge(E,NC1,NC2,F,Tol);
 }
 
-//=======================================================================
-//function : Range3d
-//purpose  : Set the range only on the 3d curve 
-//           waitint that BRep_Builder does it !!
-//=======================================================================
-
-static void Range3d (const TopoDS_Edge&  E, 
-		     const Standard_Real First, 
-		     const Standard_Real Last) 
-{
-  //  set the range to all the representations
-  const Handle(BRep_TEdge)& TE = *((Handle(BRep_TEdge)*) &E.TShape());
-  
-  BRep_ListOfCurveRepresentation& lcr = TE->ChangeCurves();
-  BRep_ListIteratorOfListOfCurveRepresentation itcr(lcr);
-  Handle(BRep_GCurve) GC;
-  
-  while (itcr.More()) {
-    GC = Handle(BRep_GCurve)::DownCast(itcr.Value());
-    if (!GC.IsNull()) {
-      if (GC->IsCurve3D()) {
-	GC->SetRange(First,Last);
-	// Set the closedness flag to the correct value.
-	Handle(Geom_Curve) C = GC->Curve3D();
-	if ( !C.IsNull() ) {
-	  Standard_Boolean closed = 
-	    C->Value(First).IsEqual(C->Value(Last),BRep_Tool::Tolerance(E));
-	  TE->Closed(closed);
-	}
-      }
-    }
-    itcr.Next();
-  }
-
-  TE->Modified(Standard_True);
-}
-
 
 //=======================================================================
 //function : ComputeCurve3d
@@ -562,7 +525,6 @@ void BRepOffset_Offset::Init(const TopoDS_Face&                  Face,
   Standard_Boolean VminDegen = Standard_False;
   Standard_Boolean VmaxDegen = Standard_False;
   Standard_Boolean UisoDegen = Standard_False;
-  Standard_Boolean VisoDegen = Standard_False;
   gp_Pnt MinApex, MaxApex;
   Standard_Boolean HasSingularity = Standard_False;
   Standard_Real uf1, uf2, vf1, vf2, fpar, lpar;
@@ -589,9 +551,7 @@ void BRepOffset_Offset::Init(const TopoDS_Face&                  Face,
           gp_Pnt2d lp2d = aCurve->Value(lpar);
           if (Abs(fp2d.X() - lp2d.X()) <= Precision::PConfusion())
             UisoDegen = Standard_True;
-          else
-            VisoDegen = Standard_True;
-          
+
 	  if (DegEdges.Length() == 2)
 	    {
               if (UisoDegen)
@@ -1165,12 +1125,11 @@ void BRepOffset_Offset::Init(const TopoDS_Edge&     Path,
 
   // mise a same range de la nouvelle pcurve.
   if ( !C1is3D && !C1Denerated)
-  myBuilder.SameRange    (Edge1,Standard_False);
-  if ( !C1is3D && !C1Denerated) 
-    Range3d(Edge1,U1,U2);
-  myBuilder.Range       (Edge1,myFace,U1,U2); 
-    Range3d(Edge1,U1,U2);
-  myBuilder.Range       (Edge1,myFace,U1,U2);
+  {
+    myBuilder.SameRange    (Edge1,Standard_False);
+    myBuilder.Range(Edge1,U1,U2, Standard_True);
+  }
+  myBuilder.Range(Edge1,myFace,U1,U2);
   BRepLib::SameRange(Edge1);
   
   // mise a sameparameter pour les KPart
@@ -1206,7 +1165,8 @@ void BRepOffset_Offset::Init(const TopoDS_Edge&     Path,
 
   // mise a same range de la nouvelle pcurve.
   myBuilder.SameRange    (Edge2,Standard_False);
-  if ( !C2is3D && !C2Denerated) Range3d(Edge2,U1,U2);
+  if ( !C2is3D && !C2Denerated)
+    myBuilder.Range(Edge2, U1, U2, Standard_True);
   myBuilder.Range(Edge2,myFace,U1,U2);
   BRepLib::SameRange(Edge2);
   
@@ -1445,6 +1405,7 @@ void BRepOffset_Offset::Init(const TopoDS_Vertex&        Vertex,
     for (it.Initialize(LEdge); it.More(); it.Next()) {
       sprintf(name,"EOnSph_%d_%d",NbOFFSET,NbEdges++);
 #ifdef DRAW
+      const TopoDS_Shape& CurE = it.Value();
       DBRep::Set(name, CurE);
 #endif
     }

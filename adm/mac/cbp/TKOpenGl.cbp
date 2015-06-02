@@ -95,6 +95,7 @@
 		<Unit filename="../../../src/OpenGl/OpenGl_AspectText.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_BVHClipPrimitiveSet.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_BVHTreeSelector.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_BackgroundArray.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_CappingAlgo.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_CappingPlaneResource.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Caps.cxx" />
@@ -126,7 +127,6 @@
 		<Unit filename="../../../src/OpenGl/OpenGl_PointSprite.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_PrimitiveArray.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_PrinterContext.cxx" />
-		<Unit filename="../../../src/OpenGl/OpenGl_PriorityList.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Quadric.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_RenderFilter.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Resource.cxx" />
@@ -149,6 +149,7 @@
 		<Unit filename="../../../src/OpenGl/OpenGl_VertexBufferCompat.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_View.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_View_2.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_View_Raytrace.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Window.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Window_1.mm">
 			<Option compile="1" />
@@ -157,7 +158,6 @@
 		<Unit filename="../../../src/OpenGl/OpenGl_Workspace.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Workspace_2.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Workspace_5.cxx" />
-		<Unit filename="../../../src/OpenGl/OpenGl_Workspace_Raytrace.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_telem_util.cxx" />
 	</Project>
 </CodeBlocks_project_file>

@@ -2,40 +2,40 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{4A9F5B62-07BA-168F-00EA-15ED67951CD4}</UniqueIdentifier>
+      <UniqueIdentifier>{12B3088A-01CA-1483-0684-56C8CA98860F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\V3d">
-      <UniqueIdentifier>{97B38588-118A-02C4-1463-5D7852865D87}</UniqueIdentifier>
+      <UniqueIdentifier>{896A1269-186F-011C-1897-70F91DF2E860}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Graphic3d">
-      <UniqueIdentifier>{66551B55-0CD4-1326-0A25-7E9304E6078F}</UniqueIdentifier>
+      <UniqueIdentifier>{7612CF0C-0470-14FC-02E4-EF5F234F16B3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Visual3d">
-      <UniqueIdentifier>{FA55DA41-0C3D-0447-02AD-FC9006538F73}</UniqueIdentifier>
+      <UniqueIdentifier>{5B763EAB-0E20-0D54-0403-B6F162A1975B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Select3D">
-      <UniqueIdentifier>{EEC93D1D-1186-128A-077E-14828885EDD8}</UniqueIdentifier>
+      <UniqueIdentifier>{D80555F4-0B4B-0167-0AD3-E3E2FA4AA636}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Prs3d">
-      <UniqueIdentifier>{C2415064-024F-0865-0810-27E105264EF1}</UniqueIdentifier>
+      <UniqueIdentifier>{E6531395-0119-0028-1370-8D29809FBE61}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdPrs">
-      <UniqueIdentifier>{08BFADC6-0E8B-054F-01EF-66E4E03C642F}</UniqueIdentifier>
+      <UniqueIdentifier>{8BE6168A-1585-0AF3-0910-A658EE189A1C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SelectMgr">
-      <UniqueIdentifier>{D57C0BDC-085A-16BB-0FBA-1AC35F10B256}</UniqueIdentifier>
+      <UniqueIdentifier>{2DBDF5D1-06C2-00DB-1208-144E5D24E3B7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PrsMgr">
-      <UniqueIdentifier>{2C68A888-10D7-0161-0841-C688C83E1554}</UniqueIdentifier>
+      <UniqueIdentifier>{E20F3FE5-0E8B-1296-163E-170C11196059}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AIS">
-      <UniqueIdentifier>{EA723CEF-068F-0BFC-083C-053FF5A9F066}</UniqueIdentifier>
+      <UniqueIdentifier>{04915EFE-0D4B-1228-072D-E5C6CF5F6A8D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DsgPrs">
-      <UniqueIdentifier>{E5C6BA65-09D1-185E-0A5F-ED53860694D7}</UniqueIdentifier>
+      <UniqueIdentifier>{4C860D8F-0A0A-0EFA-14C6-17EF766A3F83}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdSelect">
-      <UniqueIdentifier>{15C8E993-01D4-0052-0DE1-E17C57AA5277}</UniqueIdentifier>
+      <UniqueIdentifier>{6FE993B4-0159-056E-126F-1E463B94FBC3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -153,12 +153,6 @@
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListOfShortReal_0.cxx">
       <Filter>Source files\Graphic3d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MapIteratorOfMapOfStructure_0.cxx">
-      <Filter>Source files\Graphic3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MapOfStructure_0.cxx">
-      <Filter>Source files\Graphic3d</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MaterialDefinitionError_0.cxx">
       <Filter>Source files\Graphic3d</Filter>
     </ClCompile>
@@ -169,9 +163,6 @@
       <Filter>Source files\Graphic3d</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfStructure_0.cxx">
-      <Filter>Source files\Graphic3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_StdMapNodeOfMapOfStructure_0.cxx">
       <Filter>Source files\Graphic3d</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_StructureDefinitionError_0.cxx">
@@ -300,6 +291,9 @@
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Vertex.cxx">
       <Filter>Source files\Graphic3d</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ViewAffinity.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ClipDefinitionError_0.cxx">
       <Filter>Source files\Visual3d</Filter>
     </ClCompile>
@@ -375,31 +369,10 @@
     <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ViewManager.cxx">
       <Filter>Source files\Visual3d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListIteratorOfListOfSensitiveTriangle_0.cxx">
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_BVHPrimitiveContent.cxx">
       <Filter>Source files\Select3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListIteratorOfListOfSensitive_0.cxx">
-      <Filter>Source files\Select3D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListNodeOfListOfSensitiveTriangle_0.cxx">
-      <Filter>Source files\Select3D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListNodeOfListOfSensitive_0.cxx">
-      <Filter>Source files\Select3D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListOfSensitiveTriangle_0.cxx">
-      <Filter>Source files\Select3D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListOfSensitive_0.cxx">
-      <Filter>Source files\Select3D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_SensitiveEntitySequence_0.cxx">
-      <Filter>Source files\Select3D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Select3D\Select3D_SequenceNodeOfSensitiveEntitySequence_0.cxx">
-      <Filter>Source files\Select3D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Select3D\Select3D_Projector.cxx">
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_InteriorSensitivePointSet.cxx">
       <Filter>Source files\Select3D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveBox.cxx">
@@ -427,6 +400,9 @@
       <Filter>Source files\Select3D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveSegment.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveSet.cxx">
       <Filter>Source files\Select3D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveTriangle.cxx">
@@ -561,31 +537,13 @@
     <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFSurface.cxx">
       <Filter>Source files\StdPrs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive_0.cxx">
-      <Filter>Source files\SelectMgr</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors_0.cxx">
-      <Filter>Source files\SelectMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfSelectionActivation_0.cxx">
-      <Filter>Source files\SelectMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive_0.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfObjectSelectors_0.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfSelectionActivation_0.cxx">
-      <Filter>Source files\SelectMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfIntegerSensitive_0.cxx">
-      <Filter>Source files\SelectMgr</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfObjectSelectors_0.cxx">
-      <Filter>Source files\SelectMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfSelectionActivation_0.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion_0.cxx">
@@ -615,9 +573,6 @@
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfOwner_0.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfSelection_0.cxx">
-      <Filter>Source files\SelectMgr</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfSelector_0.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
@@ -627,13 +582,13 @@
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfOwner_0.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfSelection_0.cxx">
-      <Filter>Source files\SelectMgr</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfSelector_0.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_AndFilter.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_BaseFrustum.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_CompositionFilter.cxx">
@@ -645,10 +600,22 @@
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_Filter.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_FrustumBuilder.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_OrFilter.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_RectangularFrustum.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectableObject.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectableObjectSet.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectingVolumeManager.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_Selection.cxx">
@@ -657,7 +624,19 @@
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectionManager.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SensitiveEntity.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SensitiveEntitySet.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SortCriterion.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_TriangularFrustum.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_TriangularFrustumSet.cxx">
       <Filter>Source files\SelectMgr</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_ViewerSelector.cxx">
@@ -801,9 +780,6 @@
     <ClCompile Include="..\..\..\src\AIS\AIS_DimensionOwner.cxx">
       <Filter>Source files\AIS</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\AIS\AIS_Drawer.cxx">
-      <Filter>Source files\AIS</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_EllipseRadiusDimension.cxx">
       <Filter>Source files\AIS</Filter>
     </ClCompile>
@@ -910,6 +886,9 @@
       <Filter>Source files\AIS</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_TangentRelation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TextLabel.cxx">
       <Filter>Source files\AIS</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\AIS\AIS_TexturedShape.cxx">

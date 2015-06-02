@@ -40,11 +40,20 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
+  //! Creates an empty Basic Editor which should be initialized via Init() method.
+  Standard_EXPORT IGESData_BasicEditor();
+  
   //! Creates a Basic Editor, with a new IGESModel, ready to run
   Standard_EXPORT IGESData_BasicEditor(const Handle(IGESData_Protocol)& protocol);
   
   //! Creates a Basic Editor for IGES Data, ready to run
   Standard_EXPORT IGESData_BasicEditor(const Handle(IGESData_IGESModel)& model, const Handle(IGESData_Protocol)& protocol);
+  
+  //! Initialize a Basic Editor, with a new IGESModel, ready to run
+  Standard_EXPORT   void Init (const Handle(IGESData_Protocol)& protocol) ;
+  
+  //! Initialize a Basic Editor for IGES Data, ready to run
+  Standard_EXPORT   void Init (const Handle(IGESData_IGESModel)& model, const Handle(IGESData_Protocol)& protocol) ;
   
   //! Returns the designated model
   Standard_EXPORT   Handle(IGESData_IGESModel) Model()  const;

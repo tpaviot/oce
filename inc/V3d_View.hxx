@@ -13,7 +13,7 @@
 #include <Standard_Real.hxx>
 #include <gp_Dir.hxx>
 #include <gp_Pnt.hxx>
-#include <Graphic3d_Camera_Handle.hxx>
+#include <Graphic3d_Camera.hxx>
 #include <V3d_ViewerPointer.hxx>
 #include <V3d_ListOfTransient.hxx>
 #include <Handle_Visual3d_View.hxx>
@@ -56,10 +56,7 @@
 #include <Handle_V3d_Light.hxx>
 #include <Aspect_TypeOfTriedronPosition.hxx>
 #include <Aspect_TypeOfTriedronEcho.hxx>
-#include <Font_FontAspect.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <Quantity_Color.hxx>
-#include <TCollection_AsciiString.hxx>
+#include <Graphic3d_GraduatedTrihedron.hxx>
 #include <Handle_Aspect_ColorScale.hxx>
 #include <Quantity_PlaneAngle.hxx>
 #include <V3d_TypeOfAxe.hxx>
@@ -73,7 +70,7 @@
 #include <Image_PixMap.hxx>
 #include <V3d_StereoDumpOptions.hxx>
 #include <V3d_TypeOfBackfacingModel.hxx>
-#include <Graphic3d_ClipPlane_Handle.hxx>
+#include <Graphic3d_ClipPlane.hxx>
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
 #include <Graphic3d_RenderingParams.hxx>
 class Visual3d_View;
@@ -90,8 +87,6 @@ class V3d_Viewer;
 class Quantity_Color;
 class Graphic3d_TextureEnv;
 class V3d_Light;
-class TCollection_ExtendedString;
-class TCollection_AsciiString;
 class Aspect_ColorScale;
 class Aspect_GradientBackground;
 class gp_Dir;
@@ -308,9 +303,6 @@ public:
   //! Returns TRUE when the light is active in this view.
   Standard_EXPORT   Standard_Boolean IsActiveLight (const Handle(V3d_Light)& aLight)  const;
   
-  //! Activate/Deactivate the transparency in this view.
-  Standard_EXPORT   void SetTransparency (const Standard_Boolean AnActivity = Standard_False) ;
-  
   //! sets the immediate update mode and returns the previous one.
   Standard_EXPORT   Standard_Boolean SetImmediateUpdate (const Standard_Boolean theImmediateUpdate) ;
   
@@ -334,10 +326,10 @@ public:
   Standard_EXPORT   void TriedronEcho (const Aspect_TypeOfTriedronEcho AType = Aspect_TOTE_NONE) ;
   
   //! Returns data of a graduated trihedron.
-  Standard_EXPORT   void GetGraduatedTrihedron (TCollection_ExtendedString& xname, TCollection_ExtendedString& yname, TCollection_ExtendedString& zname, Standard_Boolean& xdrawname, Standard_Boolean& ydrawname, Standard_Boolean& zdrawname, Standard_Boolean& xdrawvalues, Standard_Boolean& ydrawvalues, Standard_Boolean& zdrawvalues, Standard_Boolean& drawgrid, Standard_Boolean& drawaxes, Standard_Integer& nbx, Standard_Integer& nby, Standard_Integer& nbz, Standard_Integer& xoffset, Standard_Integer& yoffset, Standard_Integer& zoffset, Standard_Integer& xaxisoffset, Standard_Integer& yaxisoffset, Standard_Integer& zaxisoffset, Standard_Boolean& xdrawtickmarks, Standard_Boolean& ydrawtickmarks, Standard_Boolean& zdrawtickmarks, Standard_Integer& xtickmarklength, Standard_Integer& ytickmarklength, Standard_Integer& ztickmarklength, Quantity_Color& gridcolor, Quantity_Color& xnamecolor, Quantity_Color& ynamecolor, Quantity_Color& znamecolor, Quantity_Color& xcolor, Quantity_Color& ycolor, Quantity_Color& zcolor, TCollection_AsciiString& fontOfNames, Font_FontAspect& styleOfNames, Standard_Integer& sizeOfNames, TCollection_AsciiString& fontOfValues, Font_FontAspect& styleOfValues, Standard_Integer& sizeOfValues)  const;
+  Standard_EXPORT  const  Graphic3d_GraduatedTrihedron& GetGraduatedTrihedron()  const;
   
   //! Displays a graduated trihedron.
-  Standard_EXPORT   void GraduatedTrihedronDisplay (const TCollection_ExtendedString& xname = "X", const TCollection_ExtendedString& yname = "Y", const TCollection_ExtendedString& zname = "Z", const Standard_Boolean xdrawname = Standard_True, const Standard_Boolean ydrawname = Standard_True, const Standard_Boolean zdrawname = Standard_True, const Standard_Boolean xdrawvalues = Standard_True, const Standard_Boolean ydrawvalues = Standard_True, const Standard_Boolean zdrawvalues = Standard_True, const Standard_Boolean drawgrid = Standard_True, const Standard_Boolean drawaxes = Standard_True, const Standard_Integer nbx = 3, const Standard_Integer nby = 3, const Standard_Integer nbz = 3, const Standard_Integer xoffset = 10, const Standard_Integer yoffset = 10, const Standard_Integer zoffset = 10, const Standard_Integer xaxisoffset = 30, const Standard_Integer yaxisoffset = 30, const Standard_Integer zaxisoffset = 30, const Standard_Boolean xdrawtickmarks = Standard_True, const Standard_Boolean ydrawtickmarks = Standard_True, const Standard_Boolean zdrawtickmarks = Standard_True, const Standard_Integer xtickmarklength = 10, const Standard_Integer ytickmarklength = 10, const Standard_Integer ztickmarklength = 10, const Quantity_Color& gridcolor = Quantity_NOC_WHITE, const Quantity_Color& xnamecolor = Quantity_NOC_RED, const Quantity_Color& ynamecolor = Quantity_NOC_GREEN, const Quantity_Color& znamecolor = Quantity_NOC_BLUE1, const Quantity_Color& xcolor = Quantity_NOC_RED, const Quantity_Color& ycolor = Quantity_NOC_GREEN, const Quantity_Color& zcolor = Quantity_NOC_BLUE1, const TCollection_AsciiString& fontOfNames = "Arial", const Font_FontAspect styleOfNames = Font_FA_Bold, const Standard_Integer sizeOfNames = 12, const TCollection_AsciiString& fontOfValues = "Arial", const Font_FontAspect styleOfValues = Font_FA_Regular, const Standard_Integer sizeOfValues = 12) ;
+  Standard_EXPORT   void GraduatedTrihedronDisplay (const Graphic3d_GraduatedTrihedron& theTrigedronData) ;
   
   //! Erases a graduated trihedron from the view.
   Standard_EXPORT   void GraduatedTrihedronErase() ;
@@ -704,9 +696,6 @@ public:
   
   Standard_EXPORT   Handle(Graphic3d_TextureEnv) TextureEnv()  const;
   
-  //! Returns the transparency activity.
-  Standard_EXPORT   Standard_Boolean Transparency()  const;
-  
   //! Returns the current visualisation mode.
   Standard_EXPORT   V3d_TypeOfVisualization Visualization()  const;
   
@@ -913,11 +902,11 @@ public:
   //! by PlaneLimit method of associated Visual3d_View. Please be aware that the planes
   //! which exceed the limit are ignored during rendering.
   //! @param thePlane [in] the clip plane to be added to view.
-  Standard_EXPORT virtual   void AddClipPlane (const Graphic3d_ClipPlane_Handle& thePlane) ;
+  Standard_EXPORT virtual   void AddClipPlane (const Handle(Graphic3d_ClipPlane)& thePlane) ;
   
   //! Removes clip plane from the view.
   //! @param thePlane [in] the clip plane to be removed from view.
-  Standard_EXPORT virtual   void RemoveClipPlane (const Graphic3d_ClipPlane_Handle& thePlane) ;
+  Standard_EXPORT virtual   void RemoveClipPlane (const Handle(Graphic3d_ClipPlane)& thePlane) ;
   
   //! Sets sequence of clip planes to the view. The planes that have been set
   //! before are removed from the view. The composition of clip planes
@@ -933,12 +922,12 @@ public:
   Standard_EXPORT  const  Graphic3d_SequenceOfHClipPlane& GetClipPlanes()  const;
   
   //! Change camera used by view.
-  Standard_EXPORT   void SetCamera (const Graphic3d_Camera_Handle& theCamera) ;
+  Standard_EXPORT   void SetCamera (const Handle(Graphic3d_Camera)& theCamera) ;
   
   //! Returns camera object of the view.
   //! @return: handle to camera object, or NULL if 3D view does not use
   //! the camera approach.
-  Standard_EXPORT  const  Graphic3d_Camera_Handle& Camera()  const;
+  Standard_EXPORT  const  Handle(Graphic3d_Camera)& Camera()  const;
   
   //! Returns current rendering parameters and effect settings.
   Standard_EXPORT  const  Graphic3d_RenderingParams& RenderingParams()  const;
@@ -995,16 +984,16 @@ protected:
   //! we see the whole line on rotation, otherwise only the
   //! center of camera is adjusted.
   //! @return TRUE if the fit all operation can be done.
-  Standard_EXPORT   Standard_Boolean FitMinMax (const Graphic3d_Camera_Handle& theCamera, const Bnd_Box& theBox, const Standard_Real theMargin, const Standard_Real theResolution = 0.0, const Standard_Boolean theToEnlargeIfLine = Standard_True)  const;
+  Standard_EXPORT   Standard_Boolean FitMinMax (const Handle(Graphic3d_Camera)& theCamera, const Bnd_Box& theBox, const Standard_Real theMargin, const Standard_Real theResolution = 0.0, const Standard_Boolean theToEnlargeIfLine = Standard_True)  const;
   
   //! Scales camera to fit the view frame of defined width and height
   //! keeping the aspect. For orthogonal camera the method changes scale,
   //! for perspective adjusts Eye location about the Center point.
   //! @param theSizeXv [in] size of viewport frame on "x" axis.
   //! @param theSizeYv [in] size of viewport frame on "y" axis.
-  Standard_EXPORT   void Scale (const Graphic3d_Camera_Handle& theCamera, const Standard_Real theSizeXv, const Standard_Real theSizeYv)  const;
+  Standard_EXPORT   void Scale (const Handle(Graphic3d_Camera)& theCamera, const Standard_Real theSizeXv, const Standard_Real theSizeYv)  const;
   
-  Standard_EXPORT   void Translate (const Graphic3d_Camera_Handle& theCamera, const Standard_Real theDXv, const Standard_Real theDYv)  const;
+  Standard_EXPORT   void Translate (const Handle(Graphic3d_Camera)& theCamera, const Standard_Real theDXv, const Standard_Real theDYv)  const;
 
   Standard_Real myOldMouseX;
   Standard_Real myOldMouseY;
@@ -1012,7 +1001,7 @@ protected:
   gp_Pnt myCamStartOpEye;
   Standard_Real myCamStartOpBnd[6];
   gp_Pnt myCamStartOpCenter;
-  Graphic3d_Camera_Handle myCamera;
+  Handle(Graphic3d_Camera) myCamera;
   Handle(Visual3d_View) MyView;
   Standard_Boolean myImmediateUpdate;
 
@@ -1042,7 +1031,7 @@ private:
   
   //! Returns the Objects number and the gravity center
   //! of ALL viewable points in the view
-  Standard_EXPORT   Standard_Integer Gravity (V3d_Coordinate& X, V3d_Coordinate& Y, V3d_Coordinate& Z)  const;
+  Standard_EXPORT   void Gravity (V3d_Coordinate& X, V3d_Coordinate& Y, V3d_Coordinate& Z)  const;
   
   Standard_EXPORT   void Init() ;
   
@@ -1075,13 +1064,11 @@ private:
   TColStd_Array2OfReal MyTrsf;
   Handle(Graphic3d_Structure) MyGridEchoStructure;
   Handle(Graphic3d_Group) MyGridEchoGroup;
-  Standard_Boolean MyTransparencyFlag;
   Graphic3d_Vector myXscreenAxis;
   Graphic3d_Vector myYscreenAxis;
   Graphic3d_Vector myZscreenAxis;
   Graphic3d_Vector myViewAxis;
   Graphic3d_Vertex myGravityReferencePoint;
-  gp_Pnt myCamProjectionShift;
 
 
 };

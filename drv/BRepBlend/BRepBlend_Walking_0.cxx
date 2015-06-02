@@ -8,6 +8,7 @@
 #include <BRepBlend_Line.hxx>
 #include <Adaptor3d_HSurface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
+#include <ChFiDS_HElSpine.hxx>
 #include <StdFail_NotDone.hxx>
 #include <Adaptor3d_HVertex.hxx>
 #include <Adaptor2d_HCurve2d.hxx>
@@ -22,6 +23,7 @@
 #include <Blend_Point.hxx>
 #include <Blend_Function.hxx>
 #include <Blend_FuncInv.hxx>
+#include <gp_Pnt.hxx>
 #include <gp_Pnt2d.hxx>
 #include <IntSurf_Transition.hxx>
  

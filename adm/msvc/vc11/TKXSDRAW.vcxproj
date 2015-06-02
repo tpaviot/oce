@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{AD30B3D5-12E8-023E-04A9-DB21025412F3}</ProjectGuid>
+    <ProjectGuid>{D8B1A4C7-0F62-0BF7-0229-24BB2F7D3D83}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -275,8 +275,6 @@
     <ClCompile Include="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_DataSource3D.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_DrawableMesh.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_ToVRML.cxx">
     </ClCompile>
 
   </ItemGroup>

@@ -81,6 +81,7 @@
 #include <BRepAdaptor_Surface.hxx>
 #include <Bnd_Box.hxx>
 #include <BRepBndLib.hxx>
+#include <BRepLib.hxx>
 
 
 //epa Memory leaks test
@@ -127,9 +128,17 @@ static Standard_Integer incrementalmesh(Draw_Interpretor& di, Standard_Integer n
 Builds triangular mesh for the shape\n\
 usage: incmesh Shape LinearDeflection [options]\n\
 options:\n\
-        -a val          angular deflection in deg (default ~28.64 deg = 0.5 rad)\n\
+        -a val          angular deflection in deg\n\
+                        (default ~28.64 deg = 0.5 rad)\n\n\
+        -min            minimum size parameter limiting size of triangle's\n\
+                        edges to prevent sinking into amplification in case\n\
+                        of distorted curves and surfaces\n\n\
         -relative       notifies that relative deflection is used\n\
-                        (switched off by default)\n\
+                        (switched off by default)\n\n\
+        -int_vert_off   disables insertion of internal vertices into mesh\n\
+                        (enabled by default)\n\
+        -surf_def_off   disables control of deflection of mesh from real\n\
+                        surface (enabled by default)\n\
         -parallel       enables parallel execution (switched off by default)\n";
     return 0;
   }
@@ -141,10 +150,13 @@ options:\n\
     return 0;
   }
 
-  Standard_Real aLinDeflection  = Max(Draw::Atof(argv[2]), Precision::Confusion());
-  Standard_Real aAngDeflection  = 0.5;
-  Standard_Boolean isRelative   = Standard_False;
-  Standard_Boolean isInParallel = Standard_False;
+  Standard_Real aLinDeflection     = Max(Draw::Atof(argv[2]), Precision::Confusion());
+  Standard_Real aAngDeflection     = 0.5;
+  Standard_Real aMinSize           = Precision::Confusion();
+  Standard_Boolean isRelative      = Standard_False;
+  Standard_Boolean isInParallel    = Standard_False;
+  Standard_Boolean isIntVertices   = Standard_True;
+  Standard_Boolean isControlSurDef = Standard_True;
 
   if (nbarg > 3)
   {
@@ -160,11 +172,17 @@ options:\n\
         isRelative = Standard_True;
       else if (aOpt == "-parallel")
         isInParallel = Standard_True;
+      else if (aOpt == "-int_vert_off")
+        isIntVertices = Standard_False;
+      else if (aOpt == "-surf_def_off")
+        isControlSurDef = Standard_False;
       else if (i < nbarg)
       {
         Standard_Real aVal = Draw::Atof(argv[i++]);
         if (aOpt == "-a")
           aAngDeflection = aVal * M_PI / 180.;
+        else if (aOpt == "-min")
+          aMinSize = aVal;
         else
           --i;
       }
@@ -174,8 +192,16 @@ options:\n\
   di << "Incremental Mesh, multi-threading "
      << (isInParallel ? "ON" : "OFF") << "\n";
 
-  BRepMesh_IncrementalMesh aMesher(aShape, aLinDeflection, isRelative, 
-    aAngDeflection, isInParallel);
+  BRepMesh_IncrementalMesh aMesher;
+  aMesher.SetShape     (aShape);
+  aMesher.SetDeflection(aLinDeflection);
+  aMesher.SetRelative  (isRelative);
+  aMesher.SetAngle     (aAngDeflection);
+  aMesher.SetParallel  (isInParallel);
+  aMesher.SetMinSize   (aMinSize);
+  aMesher.SetInternalVerticesMode(isIntVertices);
+  aMesher.SetControlSurfaceDeflection(isControlSurDef);
+  aMesher.Perform();
 
   di << "Meshing statuses: ";
   Standard_Integer statusFlags = aMesher.GetStatusFlags();
@@ -1565,6 +1591,31 @@ Standard_Integer triedgepoints(Draw_Interpretor& di, Standard_Integer nbarg, con
 }
 
 //=======================================================================
+//function : correctnormals
+//purpose  : Corrects normals in shape triangulation nodes (...)
+//=======================================================================
+Standard_Integer correctnormals (Draw_Interpretor& theDI, 
+                            Standard_Integer /*theNArg*/, 
+                            const char** theArgVal)
+{
+  TopoDS_Shape S = DBRep::Get(theArgVal[1]);
+
+  //Use "correctnormals shape"
+
+  
+  if(!BRepLib::EnsureNormalConsistency(S))
+  {
+    theDI << "Normals have not been changed!\n";
+  }
+  else
+  {
+    theDI << "Some corrections in source shape have been made!\n";
+  }
+
+  return 0;
+}
+
+//=======================================================================
 void  MeshTest::Commands(Draw_Interpretor& theCommands)
 //=======================================================================
 {
@@ -1597,6 +1648,8 @@ void  MeshTest::Commands(Draw_Interpretor& theCommands)
   theCommands.Add("wavefront","wavefront name",__FILE__, wavefront, g);
   theCommands.Add("onetriangulation","onetriangulation name",__FILE__, onetriangulation, g);
   theCommands.Add("triepoints", "triepoints shape1 [shape2 ...]",__FILE__, triedgepoints, g);
+
+  theCommands.Add("correctnormals", "correctnormals shape",__FILE__, correctnormals, g);
 
 #if 0
   theCommands.Add("extrema","extrema ",__FILE__, extrema, g);

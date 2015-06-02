@@ -46,33 +46,22 @@ libTKService_la_LIBADD = $(CSF_OPT_LIBS) \
 $(STLPort_LIB) $(CSF_OpenGlLibs_LIB) $(CSF_XwLibs_LIB) $(CSF_dpsLibs_LIB) $(CSF_XmuLibs_LIB) $(CSF_objc_LIB) $(CSF_Appkit_LIB) $(CSF_IOKit_LIB) $(CSF_FreeImagePlus_LIB) $(CSF_FREETYPE_LIB) 
 
 libTKService_la_SOURCES = \
-@top_srcdir@/drv/Aspect/Aspect_Array1OfEdge_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_AspectFillAreaDefinitionError_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_AspectLineDefinitionError_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_AspectMarkerDefinitionError_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_BadAccess_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_DisplayConnectionDefinitionError_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_DriverDefinitionError_0.cxx \
-@top_srcdir@/drv/Aspect/Aspect_EdgeDefinitionError_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_GraphicDeviceDefinitionError_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_IdentDefinitionError_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_SequenceNodeOfSequenceOfColor_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_SequenceOfColor_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_WindowDefinitionError_0.cxx \
 @top_srcdir@/drv/Aspect/Aspect_WindowError_0.cxx \
-@top_srcdir@/drv/SelectBasics/SelectBasics_ListIteratorOfListOfBox2d_0.cxx \
-@top_srcdir@/drv/SelectBasics/SelectBasics_ListIteratorOfListOfSensitive_0.cxx \
-@top_srcdir@/drv/SelectBasics/SelectBasics_ListNodeOfListOfBox2d_0.cxx \
-@top_srcdir@/drv/SelectBasics/SelectBasics_ListNodeOfListOfSensitive_0.cxx \
-@top_srcdir@/drv/SelectBasics/SelectBasics_ListOfBox2d_0.cxx \
-@top_srcdir@/drv/SelectBasics/SelectBasics_ListOfSensitive_0.cxx \
-@top_srcdir@/drv/SelectBasics/SelectBasics_SequenceNodeOfSequenceOfOwner_0.cxx \
-@top_srcdir@/drv/SelectBasics/SelectBasics_SequenceOfOwner_0.cxx \
 @top_srcdir@/drv/TColQuantity/TColQuantity_Array1OfLength_0.cxx \
 @top_srcdir@/drv/TColQuantity/TColQuantity_Array2OfLength_0.cxx \
 @top_srcdir@/drv/TColQuantity/TColQuantity_HArray1OfLength_0.cxx \
 @top_srcdir@/drv/TColQuantity/TColQuantity_HArray2OfLength_0.cxx \
-@top_srcdir@/src/Aspect/Aspect.cxx \
 @top_srcdir@/src/Aspect/Aspect_AspectFillArea.cxx \
 @top_srcdir@/src/Aspect/Aspect_AspectLine.cxx \
 @top_srcdir@/src/Aspect/Aspect_AspectMarker.cxx \
@@ -80,7 +69,6 @@ libTKService_la_SOURCES = \
 @top_srcdir@/src/Aspect/Aspect_CircularGrid.cxx \
 @top_srcdir@/src/Aspect/Aspect_ColorScale.cxx \
 @top_srcdir@/src/Aspect/Aspect_DisplayConnection.cxx \
-@top_srcdir@/src/Aspect/Aspect_Edge.cxx \
 @top_srcdir@/src/Aspect/Aspect_GenId.cxx \
 @top_srcdir@/src/Aspect/Aspect_GradientBackground.cxx \
 @top_srcdir@/src/Aspect/Aspect_Grid.cxx \
@@ -95,9 +83,7 @@ libTKService_la_SOURCES = \
 @top_srcdir@/src/Image/Image_Diff.cxx \
 @top_srcdir@/src/Image/Image_PixMap.cxx \
 @top_srcdir@/src/SelectBasics/SelectBasics.cxx \
-@top_srcdir@/src/SelectBasics/SelectBasics_BasicTool.cxx \
 @top_srcdir@/src/SelectBasics/SelectBasics_EntityOwner.cxx \
 @top_srcdir@/src/SelectBasics/SelectBasics_SensitiveEntity.cxx \
-@top_srcdir@/src/SelectBasics/SelectBasics_SortAlgo.cxx \
 @top_srcdir@/src/Xw/Xw_Window.cxx
 

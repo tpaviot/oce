@@ -7,6 +7,8 @@ puts ""
 ## After command sew in DRAW on attached shape free wires are disappeared.
 ####################################################
 
+puts "TODO OCC25593 ALL: Faulty shapes in variables faulty_1 to faulty_4"
+
 restore [locate_data_file OCC714.brep] a 
 checkshape a
 
@@ -28,6 +30,10 @@ if { $ve1 != $ve2 || $ed1 != $ed2 || $we1 != $we2} {
 } else {
     puts "OK OCC714: SEWING operation was made PROPERLY"
 }
+
+checkmaxtol result 0.00016588397833094108
+checknbshapes result -shell 1
+checkfreebounds result 0
 
 set square 12917.1
 set 2dviewer 0

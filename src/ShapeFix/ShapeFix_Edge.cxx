@@ -315,41 +315,6 @@ static Handle(Geom2d_Curve) TranslatePCurve (const Handle(Geom_Surface)& aSurf,
 }
 
 //=======================================================================
-//static : Range3d 
-//purpose  : contournement du Range de BRep_Builder pour ne pas affecter
-//           les ranges des pcurves.
-//=======================================================================
-
-static void Range3d (const TopoDS_Edge& E, 
-		     const Standard_Real First, const Standard_Real Last,
-		     const Standard_Real myPrecision) 
-{
-  //  set the range to all the representations
-  const Handle(BRep_TEdge)& TE = *((Handle(BRep_TEdge)*) &E.TShape());
-  
-  BRep_ListOfCurveRepresentation& lcr = TE->ChangeCurves();
-  BRep_ListIteratorOfListOfCurveRepresentation itcr(lcr);
-  Handle(BRep_GCurve) GC;
-  
-  while (itcr.More()) {
-    GC = Handle(BRep_GCurve)::DownCast(itcr.Value());
-    if (!GC.IsNull()) {
-      if (GC->IsCurve3D()) {
-	GC->SetRange(First,Last);
-	// Set the closedness flag to the correct value.
-	Handle(Geom_Curve) C = GC->Curve3D();
-	if ( !C.IsNull() ) {
-	  Standard_Boolean closed = C->Value(First).IsEqual(C->Value(Last),myPrecision);
-	  TE->Closed(closed);
-	}
-      }
-    }
-    itcr.Next();
-  }
-
-  TE->Modified(Standard_True);
-}
-//=======================================================================
 //function : SameRange (Temp)
 //purpose  : 
 //=======================================================================
@@ -526,18 +491,6 @@ Standard_Boolean ShapeFix_Edge::FixAddPCurve (const TopoDS_Edge& edge,
 
 //    step = 2;
 
-    // adding by skl 28.03.2003 for usung Line instead of BSpline
-    Standard_Real fp=0.,lp=0.;
-    Standard_Boolean isLine=Standard_False;
-    if(c2d->IsKind(STANDARD_TYPE(Geom2d_TrimmedCurve))) {
-      Handle(Geom2d_TrimmedCurve) tc = Handle(Geom2d_TrimmedCurve)::DownCast(c2d);
-      if(tc->BasisCurve()->IsKind(STANDARD_TYPE(Geom2d_Line))) {
-        fp = tc->FirstParameter();
-        lp = tc->LastParameter();
-        isLine = Standard_True;
-      }
-    }
-
     if (isSeam) {
       // On ne sait pas laquelle est Forward. Au PIF. La geometrie Forward
       // sera mise a jour dans ComputeWire
@@ -573,19 +526,13 @@ Standard_Boolean ShapeFix_Edge::FixAddPCurve (const TopoDS_Edge& edge,
       B.UpdateEdge (edge,c2d,surf,location, 0.); //#82 rln 16.03.99: preci
     }
 
-    if ( isLine ) {
-      B.Range(edge,surf,location,fp,lp);
-      B.SameParameter(edge,Standard_False);
-      B.SameRange(edge,Standard_False);
-    }
-
     //  Conclusion
 //    step = 3;
     if ( myProjector->Status ( ShapeExtend_DONE3 ) ) {
       Standard_Real G3dCFirst = c3d->FirstParameter();
       Standard_Real G3dCLast  = c3d->LastParameter();
       B.UpdateEdge(edge, c3d, 0.);
-      Range3d(edge, G3dCFirst, G3dCLast, 0.);
+      B.Range(edge, G3dCFirst, G3dCLast, Standard_True);
     }
   }   // end try
   catch(Standard_Failure) {

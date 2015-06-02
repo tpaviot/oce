@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKShapeSchema"
-	ProjectGUID="{0F1ED84B-0A20-0B29-1283-BFB81FD13821}"
+	ProjectGUID="{064AB161-174C-1616-0BA6-3FC86C7F5941}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

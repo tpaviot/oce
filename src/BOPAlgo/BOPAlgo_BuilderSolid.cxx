@@ -20,6 +20,7 @@
 #include <NCollection_List.hxx>
 #include <NCollection_DataMap.hxx>
 #include <NCollection_UBTreeFiller.hxx>
+#include <NCollection_IncAllocator.hxx>
 //
 #include <gp_Pnt2d.hxx>
 #include <gp_Pln.hxx>
@@ -62,7 +63,7 @@
 #include <BOPCol_BoxBndTree.hxx>
 #include <BOPCol_ListOfInteger.hxx>
 #include <BOPCol_NCVector.hxx>
-#include <BOPCol_TBB.hxx>
+#include <BOPCol_Parallel.hxx>
 //
 #include <BOPTools.hxx>
 #include <BOPTools_CoupleOfShape.hxx>
@@ -72,6 +73,7 @@
 #include <IntTools_Context.hxx>
 //
 #include <BOPAlgo_ShellSplitter.hxx>
+
 
 static
   Standard_Boolean IsGrowthShell(const TopoDS_Shape& ,
@@ -247,13 +249,13 @@ class BOPAlgo_FaceSolid : public BOPAlgo_Algo {
 typedef BOPCol_NCVector
   <BOPAlgo_FaceSolid> BOPAlgo_VectorOfFaceSolid; 
 //
-typedef BOPCol_TBBContextFunctor 
+typedef BOPCol_ContextFunctor 
   <BOPAlgo_FaceSolid,
   BOPAlgo_VectorOfFaceSolid,
   Handle(IntTools_Context), 
   IntTools_Context> BOPAlgo_FaceSolidFunctor;
 //
-typedef BOPCol_TBBContextCnt 
+typedef BOPCol_ContextCnt 
   <BOPAlgo_FaceSolidFunctor,
   BOPAlgo_VectorOfFaceSolid,
   Handle(IntTools_Context)> BOPAlgo_FaceSolidCnt;
@@ -450,15 +452,28 @@ void BOPAlgo_BuilderSolid::PerformLoops()
   BOPCol_ListIteratorOfListOfShape aIt;
   TopoDS_Iterator aItS;
   BOPCol_MapIteratorOfMapOfOrientedShape aItM;
-  BOPAlgo_ShellSplitter aSSp;
+  Handle(NCollection_BaseAllocator) aAlr;
   // 
   myErrorStatus=0;
   myLoops.Clear();
   //
+  aAlr=new NCollection_IncAllocator();
+  BOPAlgo_ShellSplitter aSSp(aAlr);
+  //
   // 1. Shells Usual
   aIt.Initialize (myShapes);
   for (; aIt.More(); aIt.Next()) {
-    const TopoDS_Shape& aF=aIt.Value();
+    const TopoDS_Face& aF=*((TopoDS_Face*)&aIt.Value());
+    if (myContext->IsInfiniteFace(aF)) {
+      TopoDS_Shell aSh;
+      BRep_Builder aBB;
+      //
+      aBB.MakeShell(aSh);
+      aBB.Add(aSh, aF);
+      myLoops.Append(aSh);
+      continue;
+    }
+    //
     if (!myShapesToAvoid.Contains(aF)) {
       aSSp.AddStartElement(aF);
     }
@@ -480,7 +495,6 @@ void BOPAlgo_BuilderSolid::PerformLoops()
   //=================================================
   //
   // 2. Post Treatment
-  Standard_Integer aNbFA;
   BRep_Builder aBB;
   BOPCol_MapOfOrientedShape AddedFacesMap;
   BOPCol_IndexedDataMapOfShapeListOfShape aEFMap;
@@ -507,9 +521,11 @@ void BOPAlgo_BuilderSolid::PerformLoops()
   // c. add all edges that are not processed to myShapesToAvoid
   aIt.Initialize (myShapes);
   for (; aIt.More(); aIt.Next()) {
-    const TopoDS_Shape& aF=aIt.Value();
-    if (!aMP.Contains(aF)) {
-      myShapesToAvoid.Add(aF);
+    const TopoDS_Face& aF=*((TopoDS_Face*)&aIt.Value());
+    if (!myContext->IsInfiniteFace(aF)) {
+      if (!aMP.Contains(aF)) {
+        myShapesToAvoid.Add(aF);
+      }
     }
   }
   //=================================================
@@ -519,8 +535,6 @@ void BOPAlgo_BuilderSolid::PerformLoops()
   //
   aEFMap.Clear();
   AddedFacesMap.Clear();
-  //
-  aNbFA=myShapesToAvoid.Extent();
   //
   aItM.Initialize(myShapesToAvoid);
   for (; aItM.More(); aItM.Next()) {
@@ -538,17 +552,18 @@ void BOPAlgo_BuilderSolid::PerformLoops()
     }
     //
     // make a new shell
+    TopExp_Explorer aExp;
     TopoDS_Shell aShell;
     aBB.MakeShell(aShell);
     aBB.Add(aShell, aFF);
     //
-    TopoDS_Iterator aItAddedF (aShell);
-    for (; aItAddedF.More(); aItAddedF.Next()) {
-      const TopoDS_Face& aF = (*(TopoDS_Face*)(&aItAddedF.Value()));
+    aItS.Initialize(aShell);
+    for (; aItS.More(); aItS.Next()) {
+      const TopoDS_Face& aF = (*(TopoDS_Face*)(&aItS.Value()));
       //
-      TopExp_Explorer aEdgeExp(aF, TopAbs_EDGE);
-      for (; aEdgeExp.More(); aEdgeExp.Next()) {
-        const TopoDS_Edge& aE = (*(TopoDS_Edge*)(&aEdgeExp.Current()));
+      aExp.Init(aF, TopAbs_EDGE);
+      for (; aExp.More(); aExp.Next()) {
+        const TopoDS_Edge& aE = (*(TopoDS_Edge*)(&aExp.Current()));
         const BOPCol_ListOfShape& aLF=aEFMap.FindFromKey(aE);
         aIt.Initialize(aLF);
         for (; aIt.More(); aIt.Next()) { 
@@ -570,7 +585,7 @@ void BOPAlgo_BuilderSolid::PerformLoops()
 void BOPAlgo_BuilderSolid::PerformAreas()
 {
   Standard_Boolean bIsGrowth, bIsHole;
-  Standard_Integer k,aNbHoles;
+  Standard_Integer k;
   BRep_Builder aBB; 
   BOPCol_ListIteratorOfListOfShape aItLS;
   BOPCol_ListOfShape aNewSolids, aHoleShells; 
@@ -669,7 +684,7 @@ void BOPAlgo_BuilderSolid::PerformAreas()
     aSelector.Clear();
     aSelector.SetBox(aBoxSolid);
     //
-    aNbHoles=aBBTree.Select(aSelector);
+    aBBTree.Select(aSelector);
     //
     const BOPCol_ListOfInteger& aLI=aSelector.Indices();
     //
@@ -684,8 +699,8 @@ void BOPAlgo_BuilderSolid::PerformAreas()
       }
       //
       if (aInOutMap.IsBound (aHole)){
-        const TopoDS_Shape& aHole2=aInOutMap(aHole);
-        if (IsInside(aHole, aHole2, myContext)) {
+        const TopoDS_Shape& aSolidWas=aInOutMap(aHole);
+        if (IsInside(aSolid, aSolidWas, myContext)) {
           aInOutMap.UnBind(aHole);
           aInOutMap.Bind (aHole, aSolid);
         }
@@ -767,7 +782,7 @@ void BOPAlgo_BuilderSolid::PerformInternalShapes()
   }
   // 
   Standard_Boolean bIsInternalFace;
-  Standard_Integer k, aNbVFS, aNbSLF, aNbVFP, aNbF, aNbA;
+  Standard_Integer k, aNbVFS, aNbSLF, aNbVFP, aNbA;
   BRep_Builder aBB;
   TopoDS_Iterator aIt;
   TopExp_Explorer aExp;
@@ -856,7 +871,7 @@ void BOPAlgo_BuilderSolid::PerformInternalShapes()
     aSelector.Clear();
     aSelector.SetBox(aBox);
     //
-    aNbF=aBBTree.Select(aSelector);
+    aBBTree.Select(aSelector);
     //
     const BOPCol_ListOfInteger& aLI=aSelector.Indices();
     aItLI.Initialize(aLI);

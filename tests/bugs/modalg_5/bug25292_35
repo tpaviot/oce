@@ -6,7 +6,16 @@ puts ""
 # Face/Face intersection algorithm gives different results for different order of the arguments
 #######################################################################
 
+puts "##############################"
+puts "#!!!Search \"Attention\" keyword on this web-page for additional checking!!!"
+puts "##############################"
+puts ""
+puts ""
+
 # intersect command for trimmed surfaces
+
+#This value must be equal to the analogical value in bug25292_35 and bug25292_36 of "bugs modalg_5" testgrid. 
+set GoodNbCurv 2
 
 restore [locate_data_file bug25292_f1.brep] f1
 restore [locate_data_file bug25292_f2.brep] f2
@@ -21,10 +30,63 @@ trimv s1t s1 19.1600000005 19.6600000005
 trim s2t s2 0. 1.570796326795 -275 275
 
 ###################
-intersect k s1t s2t
+intersect res s1t s2t
 ###################
 
-if { [info exist k_2] } {
+set che [whatis res]
+set ind [string first "3d curve" $che]
+if {${ind} >= 0} {
+  #Only variable "res" exists
+  
+  copy res res_1
+}
+
+set ic 1
+set AllowRepeate 1
+while { $AllowRepeate != 0 } {
+  set che [whatis res_$ic]
+  set ind [string first "3d curve" $che]
+  if {${ind} < 0} {
+    set AllowRepeate 0
+  } else {
+    set le [length res_$ic]
+    regexp "The length res_$ic is +(\[-0-9.+eE\]+)" ${le} full ll
+    
+    if { $ll < 1.0e-7 } {
+      puts "Error: Curve is too small!"
+    }
+    
+    bounds res_$ic U1 U2
+    
+    if {[dval U2-U1] < 1.0e-9} {
+      puts "Error: Wrong curve's range!"
+    }
+    
+    dlog reset
+    dlog on
+    xdistcs res_$ic s1 U1 U2 10
+    set Log1 [dlog get]
+    set List1 [split ${Log1} {TD= \t\n}]
+    set Tolerance 1.0e-7
+    set Limit_Tol 1.0e-7
+    set D_good 0.
+    checkList ${List1} ${Tolerance} ${D_good} ${Limit_Tol}
+    
+    dlog reset
+    dlog on
+    xdistcs res_$ic s2 U1 U2 10
+    set Log1 [dlog get]
+    set List1 [split ${Log1} {TD= \t\n}]
+    set Tolerance 1.0e-7
+    set Limit_Tol 1.0e-7
+    set D_good 0.
+    checkList ${List1} ${Tolerance} ${D_good} ${Limit_Tol}
+    
+    incr ic
+  }
+}
+  
+if {[expr {$ic - 1}] == $GoodNbCurv} {
   puts "OK: Curve Number is good!"
 } else {
   puts "Error: Curve Number is bad!"

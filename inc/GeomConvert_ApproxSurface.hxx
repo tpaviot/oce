@@ -10,16 +10,18 @@
 #include <Standard_DefineAlloc.hxx>
 #include <Standard_Macro.hxx>
 
-#include <Handle_Geom_Surface.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_Geom_BSplineSurface.hxx>
 #include <Standard_Real.hxx>
+#include <Handle_Geom_Surface.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <Standard_Integer.hxx>
+#include <Handle_Adaptor3d_HSurface.hxx>
 #include <Standard_OStream.hxx>
-class Geom_Surface;
 class Geom_BSplineSurface;
 class Standard_OutOfRange;
+class Geom_Surface;
+class Adaptor3d_HSurface;
 
 
 //! A framework to convert a surface to a BSpline
@@ -44,6 +46,19 @@ public:
   //! allowed in the resulting BSpline curve
   //! -   the index of precision PrecisCode.
   Standard_EXPORT GeomConvert_ApproxSurface(const Handle(Geom_Surface)& Surf, const Standard_Real Tol3d, const GeomAbs_Shape UContinuity, const GeomAbs_Shape VContinuity, const Standard_Integer MaxDegU, const Standard_Integer MaxDegV, const Standard_Integer MaxSegments, const Standard_Integer PrecisCode);
+  
+  //! Constructs a surface approximation framework defined by
+  //! -   the Surf
+  //! -   the tolerance value Tol3d
+  //! -   the degree of continuity UContinuity, VContinuity
+  //! in the directions of the U and V parameters
+  //! -   the highest degree MaxDegU, MaxDegV which
+  //! the polynomial defining the BSpline curve may
+  //! have in the directions of the U and V parameters
+  //! -   the maximum number of segments MaxSegments
+  //! allowed in the resulting BSpline curve
+  //! -   the index of precision PrecisCode.
+  Standard_EXPORT GeomConvert_ApproxSurface(const Handle(Adaptor3d_HSurface)& Surf, const Standard_Real Tol3d, const GeomAbs_Shape UContinuity, const GeomAbs_Shape VContinuity, const Standard_Integer MaxDegU, const Standard_Integer MaxDegV, const Standard_Integer MaxSegments, const Standard_Integer PrecisCode);
   
   //! Returns the BSpline surface resulting from the approximation algorithm.
   Standard_EXPORT   Handle(Geom_BSplineSurface) Surface()  const;
@@ -76,9 +91,11 @@ protected:
 
 private:
 
+  
+  //! Converts a surface to B-spline
+  Standard_EXPORT   void Approximate (const Handle(Adaptor3d_HSurface)& theSurf, const Standard_Real theTol3d, const GeomAbs_Shape theUContinuity, const GeomAbs_Shape theVContinuity, const Standard_Integer theMaxDegU, const Standard_Integer theMaxDegV, const Standard_Integer theMaxSegments, const Standard_Integer thePrecisCode) ;
 
 
-  Handle(Geom_Surface) mySurf;
   Standard_Boolean myIsDone;
   Standard_Boolean myHasResult;
   Handle(Geom_BSplineSurface) myBSplSurf;

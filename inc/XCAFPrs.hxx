@@ -11,13 +11,9 @@
 #include <Standard_Macro.hxx>
 
 #include <Standard_Boolean.hxx>
-#include <TopAbs_ShapeEnum.hxx>
 class TDF_Label;
 class TopLoc_Location;
 class XCAFPrs_DataMapOfShapeStyle;
-class TopoDS_Shape;
-class XCAFPrs_DataMapOfStyleShape;
-class XCAFPrs_Style;
 class XCAFPrs_Driver;
 class XCAFPrs_Style;
 class XCAFPrs_DataMapOfShapeStyle;
@@ -46,18 +42,6 @@ public:
   //! The location <loc> is for internal use, it
   //! should be Null location for external call
   Standard_EXPORT static   void CollectStyleSettings (const TDF_Label& L, const TopLoc_Location& loc, XCAFPrs_DataMapOfShapeStyle& settings) ;
-  
-  //! Iterates on shape (recursively) and splits it
-  //! on parts each of which has its own style
-  //! (basing on settings collected by CollectStyleSettings())
-  //! The DefStyle is default style applied to a shape if
-  //! no specific style assignment is applied to it
-  //! If force is True, the <shape> is added to a map
-  //! even if no styles are redefined for it or its
-  //! subshapes
-  //! The context is for internal use, it indicates
-  //! the type of the shape to which <shape> belongs
-  Standard_EXPORT static   Standard_Boolean DispatchStyles (const TopoDS_Shape& shape, const XCAFPrs_DataMapOfShapeStyle& settings, XCAFPrs_DataMapOfStyleShape& items, const XCAFPrs_Style& DefStyle, const Standard_Boolean force = Standard_True, const TopAbs_ShapeEnum context = TopAbs_SHAPE) ;
   
   //! Set ViewNameMode for indicate display names or not.
   Standard_EXPORT static   void SetViewNameMode (const Standard_Boolean viewNameMode) ;

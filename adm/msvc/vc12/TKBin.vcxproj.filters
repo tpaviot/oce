@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{45DEFE83-0212-04B7-1909-BEE457813C59}</UniqueIdentifier>
+      <UniqueIdentifier>{F1504C1C-1609-030C-180E-731B0DF509CA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinDrivers">
-      <UniqueIdentifier>{A11B3890-193C-0783-094E-E0FB4C9267A6}</UniqueIdentifier>
+      <UniqueIdentifier>{55DDFDA6-04D6-0C8C-0591-846774A3F58D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinMDataXtd">
-      <UniqueIdentifier>{D2FE9124-12A7-0671-140A-D68CC3B3699D}</UniqueIdentifier>
+      <UniqueIdentifier>{4E26E16D-1852-0BD1-08AF-D040843BB639}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinMPrsStd">
-      <UniqueIdentifier>{DAD74B36-0098-0173-08AC-B1A1BCF15FD9}</UniqueIdentifier>
+      <UniqueIdentifier>{3869BDFA-10D2-08AE-12AD-A7CBB42EA72B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinMNaming">
-      <UniqueIdentifier>{CBADE400-0600-088E-0D0D-65F79260C432}</UniqueIdentifier>
+      <UniqueIdentifier>{E12D7C97-082F-113F-179F-9F006BD49C34}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

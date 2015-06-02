@@ -26,6 +26,7 @@
 #include <BRep_Builder.hxx>
 
 #include <BOPTools_AlgoTools.hxx>
+#include <TopTools_ListIteratorOfListOfShape.hxx>
 
 //=======================================================================
 //function : 
@@ -42,7 +43,8 @@ BOPAlgo_Builder::BOPAlgo_Builder()
   myImages(100, myAllocator),
   myShapesSD(100, myAllocator),
   mySplits(100, myAllocator),
-  myOrigins(100, myAllocator)
+  myOrigins(100, myAllocator),
+  myFuzzyValue(0.)
 {
 }
 //=======================================================================
@@ -61,7 +63,8 @@ BOPAlgo_Builder::BOPAlgo_Builder
   myImages(100, myAllocator), 
   myShapesSD(100, myAllocator),
   mySplits(100, myAllocator),
-  myOrigins(100, myAllocator)
+  myOrigins(100, myAllocator),
+  myFuzzyValue(0.)
 {
 }
 //=======================================================================
@@ -104,9 +107,27 @@ void BOPAlgo_Builder::AddArgument(const TopoDS_Shape& theShape)
 //function : SetArguments
 //purpose  : 
 //=======================================================================
+void BOPAlgo_Builder::SetArguments(const TopTools_ListOfShape& theShapes)
+{
+  TopTools_ListIteratorOfListOfShape aIt;
+  //
+  myArguments.Clear();
+  //
+  aIt.Initialize(theShapes);
+  for (; aIt.More(); aIt.Next()) {
+    const TopoDS_Shape& aS = aIt.Value();
+    AddArgument(aS);
+  }
+}
+//=======================================================================
+//function : SetArguments
+//purpose  : 
+//=======================================================================
 void BOPAlgo_Builder::SetArguments(const BOPCol_ListOfShape& theShapes)
 {
   BOPCol_ListIteratorOfListOfShape aIt;
+  //
+  myArguments.Clear();
   //
   aIt.Initialize(theShapes);
   for (; aIt.More(); aIt.Next()) {
@@ -170,6 +191,22 @@ BOPAlgo_PPaveFiller BOPAlgo_Builder::PPaveFiller()
 BOPDS_PDS BOPAlgo_Builder::PDS()
 {
   return myDS;
+}
+//=======================================================================
+//function : SetFuzzyValue
+//purpose  : 
+//=======================================================================
+void BOPAlgo_Builder::SetFuzzyValue(const Standard_Real theFuzz)
+{
+  myFuzzyValue = (theFuzz < 0.) ? 0. : theFuzz;
+}
+//=======================================================================
+//function : FuzzyValue
+//purpose  : 
+//=======================================================================
+Standard_Real BOPAlgo_Builder::FuzzyValue() const
+{
+  return myFuzzyValue;
 }
 //=======================================================================
 // function: CheckData
@@ -236,6 +273,8 @@ void BOPAlgo_Builder::Perform()
   //
   pPF->SetArguments(myArguments);
   pPF->SetRunParallel(myRunParallel);
+  pPF->SetProgressIndicator(myProgressIndicator);
+  pPF->SetFuzzyValue(myFuzzyValue);
   //
   pPF->Perform();
   //

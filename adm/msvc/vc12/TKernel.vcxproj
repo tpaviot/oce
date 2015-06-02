@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{79C4EAE6-175B-0773-0406-606C2C5DDF42}</ProjectGuid>
+    <ProjectGuid>{133180D1-0609-048B-0FD7-2508B85F8D08}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -343,6 +343,8 @@
     <ClCompile Include="..\..\..\src\OSD\OSD_MemInfo.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_OpenFile.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Parallel.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Path.cxx">
     </ClCompile>

@@ -87,10 +87,11 @@ private:
 
   TopoDS_Face myFace;
   TopTools_ListOfShape myConstEdges;
+  TopTools_ListOfShape myEdges;
   TopTools_DataMapOfShapeListOfShape myVerOnEdges;
   TopTools_ListOfShape myNewWires;
   TopTools_ListOfShape myNewFaces;
-  TopTools_DataMapOfShapeListOfShape myNewEdges;
+  TopTools_DataMapOfShapeListOfShape myCutEdges;
   TopTools_DataMapOfShapeShape myVerticesForSubstitute;
 
 

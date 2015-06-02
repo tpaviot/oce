@@ -70,8 +70,6 @@ public:
      const  TColgp_SequenceOfDir& Sequence()  const;
   
       TColgp_SequenceOfDir& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TColgp_HSequenceOfDir) ShallowCopy()  const;
 
 
 
@@ -111,10 +109,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TColgp_HSequenceOfDir) ShallowCopy(const Handle(TColgp_HSequenceOfDir)& me) {
- return me->ShallowCopy();
-}
 
 
 

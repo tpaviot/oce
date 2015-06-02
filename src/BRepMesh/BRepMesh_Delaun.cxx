@@ -75,10 +75,9 @@ namespace {
 //function : BRepMesh_Delaun
 //purpose  : Creates the triangulation with an empty Mesh data structure
 //=======================================================================
-BRepMesh_Delaun::BRepMesh_Delaun(
-  BRepMesh::Array1OfVertexOfDelaun& theVertices)
-  : myCircles(theVertices.Length(), new NCollection_IncAllocator(
-    BRepMesh::MEMORY_BLOCK_SIZE_HUGE))
+BRepMesh_Delaun::BRepMesh_Delaun(BRepMesh::Array1OfVertexOfDelaun& theVertices)
+: myCircles (theVertices.Length(), new NCollection_IncAllocator(
+             BRepMesh::MEMORY_BLOCK_SIZE_HUGE))
 {
   if ( theVertices.Length() > 2 )
   {
@@ -96,9 +95,9 @@ BRepMesh_Delaun::BRepMesh_Delaun(
 BRepMesh_Delaun::BRepMesh_Delaun(
   const Handle( BRepMesh_DataStructureOfDelaun )& theOldMesh,
   BRepMesh::Array1OfVertexOfDelaun&               theVertices)
- : myCircles( theVertices.Length(), theOldMesh->Allocator() )
+: myMeshData( theOldMesh ),
+  myCircles ( theVertices.Length(), theOldMesh->Allocator() )
 {
-  myMeshData = theOldMesh;
   if ( theVertices.Length() > 2 )
     Init( theVertices );
 }
@@ -110,9 +109,9 @@ BRepMesh_Delaun::BRepMesh_Delaun(
 BRepMesh_Delaun::BRepMesh_Delaun(
   const Handle( BRepMesh_DataStructureOfDelaun )& theOldMesh, 
   BRepMesh::Array1OfInteger&                      theVertexIndices)
- : myCircles( theVertexIndices.Length(), theOldMesh->Allocator() )
+: myMeshData( theOldMesh ),
+  myCircles ( theVertexIndices.Length(), theOldMesh->Allocator() )
 {
-  myMeshData = theOldMesh;
   if ( theVertexIndices.Length() > 2 )
   {
     Bnd_Box2d aBox;
@@ -1702,7 +1701,41 @@ void BRepMesh_Delaun::meshPolygon(BRepMesh::SequenceOfInteger& thePolygon,
     }
   }
 
-  meshSimplePolygon( thePolygon, thePolyBoxes );
+  BRepMesh::SequenceOfInteger* aPolygon1   = &thePolygon;
+  BRepMesh::SequenceOfBndB2d*  aPolyBoxes1 = &thePolyBoxes;
+
+  BRepMesh::HSequenceOfInteger aPolygon2   = new BRepMesh::SequenceOfInteger;
+  BRepMesh::HSequenceOfBndB2d  aPolyBoxes2 = new BRepMesh::SequenceOfBndB2d;
+
+  NCollection_Sequence<BRepMesh::HSequenceOfInteger> aPolyStack;
+  NCollection_Sequence<BRepMesh::HSequenceOfBndB2d>  aPolyBoxStack;
+  for (;;)
+  {
+    decomposeSimplePolygon(*aPolygon1, *aPolyBoxes1, *aPolygon2, *aPolyBoxes2);
+    if (!aPolygon2->IsEmpty())
+    {
+      aPolyStack.Append(aPolygon2);
+      aPolyBoxStack.Append(aPolyBoxes2);
+      
+      aPolygon2   = new BRepMesh::SequenceOfInteger;
+      aPolyBoxes2 = new BRepMesh::SequenceOfBndB2d;
+    }
+
+    if (aPolygon1->IsEmpty())
+    {
+      if (!aPolyStack.IsEmpty() && aPolygon1 == &(*aPolyStack.First()))
+      {
+        aPolyStack.Remove(1);
+        aPolyBoxStack.Remove(1);
+      }
+
+      if (aPolyStack.IsEmpty())
+        return;
+
+      aPolygon1   = &(*aPolyStack.ChangeFirst());
+      aPolyBoxes1 = &(*aPolyBoxStack.ChangeFirst());
+    }
+  }
 }
 
 //=======================================================================
@@ -1747,18 +1780,21 @@ inline Standard_Boolean BRepMesh_Delaun::meshElementaryPolygon(
 
 //=======================================================================
 //function : meshSimplePolygon
-//purpose  : Triangulatiion of a closed simple polygon (polygon without 
-//           glued edges and loops) described by the list of indexes of 
-//           its edges in the structure.
-//           (negative index means reversed edge)
+//purpose  : 
 //=======================================================================
-void BRepMesh_Delaun::meshSimplePolygon(BRepMesh::SequenceOfInteger& thePolygon,
-                                        BRepMesh::SequenceOfBndB2d&  thePolyBoxes )
+void BRepMesh_Delaun::decomposeSimplePolygon(
+  BRepMesh::SequenceOfInteger& thePolygon,
+  BRepMesh::SequenceOfBndB2d&  thePolyBoxes,
+  BRepMesh::SequenceOfInteger& thePolygonCut,
+  BRepMesh::SequenceOfBndB2d&  thePolyBoxesCut)
 {
   // Check is the given polygon elementary
   if ( meshElementaryPolygon( thePolygon ) )
+  {
+    thePolygon.Clear();
+    thePolyBoxes.Clear();
     return;
-
+  }
 
   // Polygon contains more than 3 links
   Standard_Integer aFirstEdgeInfo = thePolygon(1);
@@ -1775,7 +1811,11 @@ void BRepMesh_Delaun::meshSimplePolygon(BRepMesh::SequenceOfInteger& thePolygon,
 
   Standard_Real aRefEdgeLen = aRefEdgeDir.Magnitude();
   if ( aRefEdgeLen < Precision )
+  {
+    thePolygon.Clear();
+    thePolyBoxes.Clear();
     return;
+  }
 
   aRefEdgeDir /= aRefEdgeLen;
 
@@ -1866,7 +1906,11 @@ void BRepMesh_Delaun::meshSimplePolygon(BRepMesh::SequenceOfInteger& thePolygon,
   }
 
   if ( aUsedLinkId == 0 )
+  {
+    thePolygon.Clear();
+    thePolyBoxes.Clear();
     return;
+  }
 
 
   BRepMesh_Edge aNewEdges[2] = {
@@ -1894,19 +1938,14 @@ void BRepMesh_Delaun::meshSimplePolygon(BRepMesh::SequenceOfInteger& thePolygon,
   // polygon.
   if ( aUsedLinkId < aPolyLen )
   {
-    BRepMesh::SequenceOfInteger aRightPolygon;
-    thePolygon.Split( aUsedLinkId, aRightPolygon );
-    aRightPolygon.Prepend( -aNewEdgesInfo[2] );
-
-    BRepMesh::SequenceOfBndB2d aRightPolyBoxes;
-    thePolyBoxes.Split( aUsedLinkId, aRightPolyBoxes );
+    thePolygon.Split(aUsedLinkId, thePolygonCut);
+    thePolygonCut.Prepend( -aNewEdgesInfo[2] );
+    thePolyBoxes.Split(aUsedLinkId, thePolyBoxesCut);
 
     Bnd_B2d aBox;
     aBox.Add( aRefVertices[0] );
     aBox.Add( aRefVertices[2] );
-    aRightPolyBoxes.Prepend( aBox );
-
-    meshSimplePolygon( aRightPolygon, aRightPolyBoxes );
+    thePolyBoxesCut.Prepend( aBox );
   }
   else
   {
@@ -1923,8 +1962,6 @@ void BRepMesh_Delaun::meshSimplePolygon(BRepMesh::SequenceOfInteger& thePolygon,
     aBox.Add( aRefVertices[2] );
 
     thePolyBoxes.SetValue( 1, aBox );
-
-    meshSimplePolygon( thePolygon, thePolyBoxes );
   }
 }
 

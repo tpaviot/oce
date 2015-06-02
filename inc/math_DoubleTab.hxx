@@ -66,9 +66,7 @@ private:
 
 
   Standard_Address Addr;
-  Standard_Address AddrBuf[32];
-  Standard_Real Buf[512];
-  Standard_Boolean isAddrAllocated;
+  Standard_Real Buf[16];
   Standard_Boolean isAllocated;
   Standard_Integer LowR;
   Standard_Integer UppR;

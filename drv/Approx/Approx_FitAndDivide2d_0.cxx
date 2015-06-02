@@ -5,18 +5,11 @@
 
 #include <Approx_FitAndDivide2d.hxx>
 
-#include <AppCont_Function2d.hxx>
-#include <AppCont_FunctionTool2d.hxx>
-#include <Approx_MyLeastSquareOfFitAndDivide2d.hxx>
 #include <AppParCurves_MultiCurve.hxx>
  
 
-#define MultiLine AppCont_Function2d
-#define MultiLine_hxx <AppCont_Function2d.hxx>
-#define LineTool AppCont_FunctionTool2d
-#define LineTool_hxx <AppCont_FunctionTool2d.hxx>
-#define Approx_MyLeastSquare Approx_MyLeastSquareOfFitAndDivide2d
-#define Approx_MyLeastSquare_hxx <Approx_MyLeastSquareOfFitAndDivide2d.hxx>
+#define MultiLine AppCont_Function
+#define MultiLine_hxx <AppCont_Function.hxx>
 #define Approx_ComputeCLine Approx_FitAndDivide2d
 #define Approx_ComputeCLine_hxx <Approx_FitAndDivide2d.hxx>
 #include <Approx_ComputeCLine.gxx>

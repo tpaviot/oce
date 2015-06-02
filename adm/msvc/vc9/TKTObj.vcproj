@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKTObj"
-	ProjectGUID="{F1A8A807-018F-0CC5-0D40-22D160E00F57}"
+	ProjectGUID="{CBDBA75C-107E-0EF1-0D75-3D11052897CD}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

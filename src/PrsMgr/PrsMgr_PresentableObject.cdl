@@ -23,10 +23,6 @@
 --                               ->Insert Locations Methods...
 --              Rob (16/12/97) -> Get the list of modes to be updated
 --                             -> Flags all the Prs to be updated...                 
---              GG IMP020200   -> Presentations() method become protected
---                              and no more private.
---              SAN (22/03/04) -> OCC4895 High-level interface for controlling 
---                              polygon offsets: Fill() made protected virtual.
 
 deferred class PresentableObject from PrsMgr inherits TShared from MMgt
 
@@ -61,14 +57,13 @@ uses
     Transformation         from Geom,
     ListOfInteger          from TColStd,
     Location               from TopLoc, 
-    ClipPlane_Handle       from Graphic3d,
+    ClipPlane              from Graphic3d,
     SequenceOfHClipPlane   from Graphic3d,
-    --   ABD 29/10/04  Transform Persistence of Presentation( pan, zoom, rotate )
     TransModeFlags         from Graphic3d, 
     Pnt                    from gp,
     Trsf                   from gp, 
-    CTransPersStruct       from  Graphic3d      
-    --   ABD 29/10/04  Transform Persistence of Presentation( pan, zoom, rotate )
+    CTransPersStruct       from  Graphic3d,
+    ZLayerId from Graphic3d
 
 raises
     NotImplemented from Standard
@@ -179,7 +174,7 @@ is
    -- -   combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_ZoomPers);
    -- -   combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_RotatePers);
    -- -   combination (Graphic3d_TMF_ZoomPers | Graphic3d_TMF_RotatePers).
-   -- If Graphic3d_TMF_TriedronPers persistence mode selected APoint coordinates X and Y means:
+   -- If Graphic3d_TMF_TriedronPers or Graphic3d_TMF_2d persistence mode selected APoint coordinates X and Y means:
    -- -   X = 0.0, Y = 0.0 - center of view window;
    -- -   X > 0.0, Y > 0.0 - right upper corner of view window;
    -- -   X > 0.0, Y < 0.0 - right lower corner of view window;
@@ -239,6 +234,10 @@ is
    Transformation(me) returns any Trsf from gp;
    ---C++: inline
    ---C++: return const&
+
+   InversedTransformation(me) returns any Trsf from gp;
+   ---C++: inline
+   ---C++: return const&
    
    ResetTransformation(me:mutable)  is virtual;
    ---Purpose: resets local transformation to identity.
@@ -246,24 +245,18 @@ is
    UpdateTransformation(me:mutable) is virtual;
     
    UpdateTransformation(me:mutable;P : Presentation from Prs3d) is virtual;
-    
-   SetZLayer ( me         : mutable;
-               thePrsMgr  : PresentationManager from PrsMgr;
-               theLayerId : Integer from Standard )
-     is virtual;
-   ---Purpose: Set Z layer ID and update all presentations of
-   -- the presentable object. The layer can be set only for displayed object.
-   -- If all object presentations are removed, the layer ID will be set to 
-   -- default value when computing presentation. The layers mechanism allows
-   -- drawing objects in higher layers in overlay of objects in lower layers.
-    
-   GetZLayer ( me;
-               thePrsMgr  : PresentationManager from PrsMgr )
-     returns Integer from Standard is static;
-   ---Purpose: Get ID of Z layer. If no presentations of object is displayed,
-   -- and layer ID is unavailable, the -1 value is returned.
 
-   AddClipPlane (me : mutable; thePlane : ClipPlane_Handle from Graphic3d) is virtual;
+   SetZLayer ( me         : mutable;
+               theLayerId : ZLayerId from Graphic3d )
+     is virtual;
+   ---Purpose: Set Z layer ID and update all presentations of the presentable object.
+   -- The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
+
+   ZLayer ( me )
+     returns ZLayerId from Graphic3d is static;
+   ---Purpose: Get ID of Z layer.
+
+   AddClipPlane (me : mutable; thePlane : ClipPlane from Graphic3d) is virtual;
    ---Purpose: Adds clip plane for graphical clipping for all display mode
    -- presentations. The composition of clip planes truncates the rendering
    -- space to convex volume. Please be aware that number of supported
@@ -273,7 +266,7 @@ is
    -- to predict the maximum possible number of object clipping planes.
    -- @param thePlane [in] the clip plane to be appended to map of clip planes.
 
-   RemoveClipPlane (me : mutable; thePlane : ClipPlane_Handle from Graphic3d) is virtual;
+   RemoveClipPlane (me : mutable; thePlane : ClipPlane from Graphic3d) is virtual;
    ---Purpose: Removes previously added clip plane.
    -- @param thePlane [in] the clip plane to be removed from map of clip planes.
 
@@ -333,7 +326,7 @@ fields
     myClipPlanes : SequenceOfHClipPlane from Graphic3d is protected;
     myTransformPersistence  :  CTransPersStruct  from  Graphic3d;
     myIsMutable : Boolean from Standard is protected;
-
+    myZLayer    : ZLayerId from Graphic3d is protected;
 
     myHasOwnPresentations : Boolean from Standard is protected; -- shows if object should have own presentations.
 
@@ -341,6 +334,7 @@ fields
  
     myLocalTransformation : Trsf from gp;     -- Own transformation of presentable object.
     myTransformation : Trsf from gp;          -- Combined transformation of presentable object.
+    myInvTransformation : Trsf from gp;       -- Inverted combined transformation of presentable object.
     myCombinedParentTransform : Trsf from gp; -- Combined transformation of presentable object excepting local transformation.
 
     myChildren : ListOfPresentableObjects from PrsMgr; -- Child objects in scene hierarchy.

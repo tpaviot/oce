@@ -15,6 +15,7 @@
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
 #include <Graphic3d_CTransPersStruct.hxx>
 #include <Standard_Boolean.hxx>
+#include <Graphic3d_ZLayerId.hxx>
 #include <PrsMgr_PresentableObjectPointer.hxx>
 #include <gp_Trsf.hxx>
 #include <PrsMgr_ListOfPresentableObjects.hxx>
@@ -30,7 +31,7 @@
 #include <Handle_PrsMgr_PresentationManager.hxx>
 #include <Handle_PrsMgr_Presentation.hxx>
 #include <Graphic3d_TransModeFlags.hxx>
-#include <Graphic3d_ClipPlane_Handle.hxx>
+#include <Graphic3d_ClipPlane.hxx>
 class Standard_NotImplemented;
 class PrsMgr_Presentation;
 class PrsMgr_PresentationManager;
@@ -84,7 +85,7 @@ public:
   //! -   combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_ZoomPers);
   //! -   combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_RotatePers);
   //! -   combination (Graphic3d_TMF_ZoomPers | Graphic3d_TMF_RotatePers).
-  //! If Graphic3d_TMF_TriedronPers persistence mode selected APoint coordinates X and Y means:
+  //! If Graphic3d_TMF_TriedronPers or Graphic3d_TMF_2d persistence mode selected APoint coordinates X and Y means:
   //! -   X = 0.0, Y = 0.0 - center of view window;
   //! -   X > 0.0, Y > 0.0 - right upper corner of view window;
   //! -   X > 0.0, Y < 0.0 - right lower corner of view window;
@@ -124,6 +125,8 @@ public:
   
      const  gp_Trsf& Transformation()  const;
   
+     const  gp_Trsf& InversedTransformation()  const;
+  
   //! resets local transformation to identity.
   Standard_EXPORT virtual   void ResetTransformation() ;
   
@@ -131,16 +134,12 @@ public:
   
   Standard_EXPORT virtual   void UpdateTransformation (const Handle(Prs3d_Presentation)& P) ;
   
-  //! Set Z layer ID and update all presentations of
-  //! the presentable object. The layer can be set only for displayed object.
-  //! If all object presentations are removed, the layer ID will be set to
-  //! default value when computing presentation. The layers mechanism allows
-  //! drawing objects in higher layers in overlay of objects in lower layers.
-  Standard_EXPORT virtual   void SetZLayer (const Handle(PrsMgr_PresentationManager)& thePrsMgr, const Standard_Integer theLayerId) ;
+  //! Set Z layer ID and update all presentations of the presentable object.
+  //! The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
+  Standard_EXPORT virtual   void SetZLayer (const Graphic3d_ZLayerId theLayerId) ;
   
-  //! Get ID of Z layer. If no presentations of object is displayed,
-  //! and layer ID is unavailable, the -1 value is returned.
-  Standard_EXPORT   Standard_Integer GetZLayer (const Handle(PrsMgr_PresentationManager)& thePrsMgr)  const;
+  //! Get ID of Z layer.
+  Standard_EXPORT   Graphic3d_ZLayerId ZLayer()  const;
   
   //! Adds clip plane for graphical clipping for all display mode
   //! presentations. The composition of clip planes truncates the rendering
@@ -150,11 +149,11 @@ public:
   //! is shown: the number of these planes should be substracted from limit
   //! to predict the maximum possible number of object clipping planes.
   //! @param thePlane [in] the clip plane to be appended to map of clip planes.
-  Standard_EXPORT virtual   void AddClipPlane (const Graphic3d_ClipPlane_Handle& thePlane) ;
+  Standard_EXPORT virtual   void AddClipPlane (const Handle(Graphic3d_ClipPlane)& thePlane) ;
   
   //! Removes previously added clip plane.
   //! @param thePlane [in] the clip plane to be removed from map of clip planes.
-  Standard_EXPORT virtual   void RemoveClipPlane (const Graphic3d_ClipPlane_Handle& thePlane) ;
+  Standard_EXPORT virtual   void RemoveClipPlane (const Handle(Graphic3d_ClipPlane)& thePlane) ;
   
   //! Set clip planes for graphical clipping for all display mode presentations.
   //! The composition of clip planes truncates the rendering space to convex
@@ -270,6 +269,7 @@ Standard_EXPORT virtual ~PrsMgr_PresentableObject();
   PrsMgr_TypeOfPresentation3d myTypeOfPresentation3d;
   Graphic3d_SequenceOfHClipPlane myClipPlanes;
   Standard_Boolean myIsMutable;
+  Graphic3d_ZLayerId myZLayer;
   Standard_Boolean myHasOwnPresentations;
 
 
@@ -280,6 +280,7 @@ private:
   PrsMgr_PresentableObjectPointer myParent;
   gp_Trsf myLocalTransformation;
   gp_Trsf myTransformation;
+  gp_Trsf myInvTransformation;
   gp_Trsf myCombinedParentTransform;
   PrsMgr_ListOfPresentableObjects myChildren;
 

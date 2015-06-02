@@ -16,25 +16,10 @@
 #include <OpenGl_ArbFBO.hxx>
 
 #include <Standard_Assert.hxx>
+#include <TCollection_ExtendedString.hxx>
 
 IMPLEMENT_STANDARD_HANDLE (OpenGl_FrameBuffer, OpenGl_Resource)
 IMPLEMENT_STANDARD_RTTIEXT(OpenGl_FrameBuffer, OpenGl_Resource)
-
-static inline bool isOddNumber (const GLsizei theNumber)
-{
-  return theNumber & 0x01;
-}
-
-static inline GLsizei getEvenNumber (const GLsizei theNumber)
-{
-  return isOddNumber (theNumber) ? (theNumber + 1) : theNumber;
-}
-
-//! Notice - 0 is not power of two here
-static inline bool isPowerOfTwo (const GLsizei theNumber)
-{
-  return !(theNumber & (theNumber - 1));
-}
 
 // =======================================================================
 // function : OpenGl_FrameBuffer
@@ -45,6 +30,9 @@ OpenGl_FrameBuffer::OpenGl_FrameBuffer (GLint theTextureFormat)
   myVPSizeY (0),
   myTextFormat (theTextureFormat),
   myGlFBufferId (NO_FRAMEBUFFER),
+  myGlColorRBufferId (NO_RENDERBUFFER),
+  myGlDepthRBufferId (NO_RENDERBUFFER),
+  myIsOwnBuffer  (false),
   myColorTexture (new OpenGl_Texture()),
   myDepthStencilTexture (new OpenGl_Texture())
 {
@@ -81,10 +69,32 @@ Standard_Boolean OpenGl_FrameBuffer::Init (const Handle(OpenGl_Context)& theGlCo
   myVPSizeY = theViewportSizeY;
 
   // Create the textures (will be used as color buffer and depth-stencil buffer)
-  if (!initTrashTextures (theGlContext))
+  if (!myColorTexture->Init (theGlContext, myTextFormat,
+                             GL_RGBA, GL_UNSIGNED_BYTE,
+                             myVPSizeX, myVPSizeY, Graphic3d_TOT_2D))
   {
     Release (theGlContext.operator->());
     return Standard_False;
+  }
+
+  // extensions (GL_OES_packed_depth_stencil, GL_OES_depth_texture) + GL version might be used to determine supported formats
+  // instead of just trying to create such texture
+  if (!myDepthStencilTexture->Init (theGlContext, GL_DEPTH24_STENCIL8,
+                                    GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8,
+                                    myVPSizeX, myVPSizeY, Graphic3d_TOT_2D))
+  {
+    TCollection_ExtendedString aMsg = TCollection_ExtendedString()
+      + "Warning! Depth textures are not supported by hardware!";
+    theGlContext->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+                               GL_DEBUG_TYPE_PORTABILITY_ARB,
+                               0,
+                               GL_DEBUG_SEVERITY_HIGH_ARB,
+                               aMsg);
+
+    theGlContext->arbFBO->glGenRenderbuffers (1, &myGlDepthRBufferId);
+    theGlContext->arbFBO->glBindRenderbuffer (GL_RENDERBUFFER, myGlDepthRBufferId);
+    theGlContext->arbFBO->glRenderbufferStorage (GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, myVPSizeX, myVPSizeY);
+    theGlContext->arbFBO->glBindRenderbuffer (GL_RENDERBUFFER, NO_RENDERBUFFER);
   }
 
   // Build FBO and setup it as texture
@@ -92,15 +102,23 @@ Standard_Boolean OpenGl_FrameBuffer::Init (const Handle(OpenGl_Context)& theGlCo
   theGlContext->arbFBO->glBindFramebuffer (GL_FRAMEBUFFER, myGlFBufferId);
   theGlContext->arbFBO->glFramebufferTexture2D (GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
                                                 GL_TEXTURE_2D, myColorTexture->TextureId(), 0);
-#ifdef GL_DEPTH_STENCIL_ATTACHMENT
-  theGlContext->arbFBO->glFramebufferTexture2D (GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT,
-                                                GL_TEXTURE_2D, myDepthStencilTexture->TextureId(), 0);
-#else
-  theGlContext->arbFBO->glFramebufferTexture2D (GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
-                                                GL_TEXTURE_2D, myDepthStencilTexture->TextureId(), 0);
-  theGlContext->arbFBO->glFramebufferTexture2D (GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT,
-                                                GL_TEXTURE_2D, myDepthStencilTexture->TextureId(), 0);
-#endif
+  if (myDepthStencilTexture->IsValid())
+  {
+  #ifdef GL_DEPTH_STENCIL_ATTACHMENT
+    theGlContext->arbFBO->glFramebufferTexture2D (GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT,
+                                                  GL_TEXTURE_2D, myDepthStencilTexture->TextureId(), 0);
+  #else
+    theGlContext->arbFBO->glFramebufferTexture2D (GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
+                                                  GL_TEXTURE_2D, myDepthStencilTexture->TextureId(), 0);
+    theGlContext->arbFBO->glFramebufferTexture2D (GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT,
+                                                  GL_TEXTURE_2D, myDepthStencilTexture->TextureId(), 0);
+  #endif
+  }
+  else if (myGlDepthRBufferId != NO_RENDERBUFFER)
+  {
+    theGlContext->arbFBO->glFramebufferRenderbuffer (GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
+                                                     GL_RENDERBUFFER, myGlDepthRBufferId);
+  }
   if (theGlContext->arbFBO->glCheckFramebufferStatus (GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
   {
     Release (theGlContext.operator->());
@@ -109,6 +127,160 @@ Standard_Boolean OpenGl_FrameBuffer::Init (const Handle(OpenGl_Context)& theGlCo
 
   UnbindBuffer (theGlContext);
   return Standard_True;
+}
+
+// =======================================================================
+// function : Init
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_FrameBuffer::InitLazy (const Handle(OpenGl_Context)& theGlContext,
+                                               const GLsizei                 theViewportSizeX,
+                                               const GLsizei                 theViewportSizeY)
+{
+  if (myVPSizeX == theViewportSizeX
+   && myVPSizeY == theViewportSizeY)
+  {
+    return IsValid();
+  }
+
+  return Init (theGlContext, theViewportSizeX, theViewportSizeY);
+}
+
+// =======================================================================
+// function : InitWithRB
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_FrameBuffer::InitWithRB (const Handle(OpenGl_Context)& theGlCtx,
+                                                 const GLsizei                 theViewportSizeX,
+                                                 const GLsizei                 theViewportSizeY,
+                                                 const GLuint                  theColorRBufferFromWindow)
+{
+  if (theGlCtx->arbFBO == NULL)
+  {
+    return Standard_False;
+  }
+
+  // clean up previous state
+  Release (theGlCtx.operator->());
+
+  // setup viewport sizes as is
+  myVPSizeX = theViewportSizeX;
+  myVPSizeY = theViewportSizeY;
+
+  // Create the render-buffers
+  if (theColorRBufferFromWindow != NO_RENDERBUFFER)
+  {
+    myGlColorRBufferId = theColorRBufferFromWindow;
+  }
+  else
+  {
+    theGlCtx->arbFBO->glGenRenderbuffers (1, &myGlColorRBufferId);
+    theGlCtx->arbFBO->glBindRenderbuffer (GL_RENDERBUFFER, myGlColorRBufferId);
+    theGlCtx->arbFBO->glRenderbufferStorage (GL_RENDERBUFFER, GL_RGBA8, myVPSizeX, myVPSizeY);
+  }
+
+  theGlCtx->arbFBO->glGenRenderbuffers (1, &myGlDepthRBufferId);
+  theGlCtx->arbFBO->glBindRenderbuffer (GL_RENDERBUFFER, myGlDepthRBufferId);
+  theGlCtx->arbFBO->glRenderbufferStorage (GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, myVPSizeX, myVPSizeY);
+
+  theGlCtx->arbFBO->glBindRenderbuffer (GL_RENDERBUFFER, NO_RENDERBUFFER);
+
+  // create FBO
+  theGlCtx->arbFBO->glGenFramebuffers (1, &myGlFBufferId);
+  theGlCtx->arbFBO->glBindFramebuffer (GL_FRAMEBUFFER, myGlFBufferId);
+  theGlCtx->arbFBO->glFramebufferRenderbuffer (GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+                                               GL_RENDERBUFFER, myGlColorRBufferId);
+#ifdef GL_DEPTH_STENCIL_ATTACHMENT
+  theGlCtx->arbFBO->glFramebufferRenderbuffer (GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT,
+                                               GL_RENDERBUFFER, myGlDepthRBufferId);
+#else
+  theGlCtx->arbFBO->glFramebufferRenderbuffer (GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
+                                               GL_RENDERBUFFER, myGlDepthRBufferId);
+  theGlCtx->arbFBO->glFramebufferRenderbuffer (GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT,
+                                               GL_RENDERBUFFER, myGlDepthRBufferId);
+#endif
+  if (theGlCtx->arbFBO->glCheckFramebufferStatus (GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+  {
+    UnbindBuffer (theGlCtx);
+    Release (theGlCtx.operator->());
+    return Standard_False;
+  }
+
+  UnbindBuffer (theGlCtx);
+  return Standard_True;
+}
+
+// =======================================================================
+// function : InitWrapper
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_FrameBuffer::InitWrapper (const Handle(OpenGl_Context)& theGlCtx)
+{
+  if (theGlCtx->arbFBO == NULL)
+  {
+    return Standard_False;
+  }
+
+  // clean up previous state
+  Release (theGlCtx.operator->());
+
+  GLint anFbo = GLint(NO_FRAMEBUFFER);
+  ::glGetIntegerv (GL_FRAMEBUFFER_BINDING, &anFbo);
+  if (anFbo == GLint(NO_FRAMEBUFFER))
+  {
+    return Standard_False;
+  }
+
+  GLint aColorType = 0;
+  GLint aColorId   = 0;
+  GLint aDepthType = 0;
+  GLint aDepthId   = 0;
+  theGlCtx->arbFBO->glGetFramebufferAttachmentParameteriv (GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &aColorType);
+  theGlCtx->arbFBO->glGetFramebufferAttachmentParameteriv (GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,  GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &aDepthType);
+
+  myGlFBufferId = GLuint(anFbo);
+  myIsOwnBuffer = false;
+  if (aColorType == GL_RENDERBUFFER)
+  {
+    theGlCtx->arbFBO->glGetFramebufferAttachmentParameteriv (GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME, &aColorId);
+    myGlColorRBufferId = aColorId;
+  }
+  else if (aColorType != GL_NONE)
+  {
+    TCollection_ExtendedString aMsg = "OpenGl_FrameBuffer::InitWrapper(), color attachment of unsupported type has been skipped!";
+    theGlCtx->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+                           GL_DEBUG_TYPE_ERROR_ARB,
+                           0,
+                           GL_DEBUG_SEVERITY_HIGH_ARB,
+                           aMsg);
+  }
+
+  if (aDepthType == GL_RENDERBUFFER)
+  {
+    theGlCtx->arbFBO->glGetFramebufferAttachmentParameteriv (GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,  GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME, &aDepthId);
+    myGlDepthRBufferId = aDepthId;
+  }
+  else if (aDepthType != GL_NONE)
+  {
+    TCollection_ExtendedString aMsg = "OpenGl_FrameBuffer::InitWrapper(), depth attachment of unsupported type has been skipped!";
+    theGlCtx->PushMessage (GL_DEBUG_SOURCE_APPLICATION_ARB,
+                           GL_DEBUG_TYPE_ERROR_ARB,
+                           0,
+                           GL_DEBUG_SEVERITY_HIGH_ARB,
+                           aMsg);
+  }
+
+  // retrieve dimensions
+  GLuint aRBuffer = myGlColorRBufferId != NO_RENDERBUFFER ? myGlColorRBufferId : myGlDepthRBufferId;
+  if (aRBuffer != NO_RENDERBUFFER)
+  {
+    theGlCtx->arbFBO->glBindRenderbuffer (GL_RENDERBUFFER, aRBuffer);
+    theGlCtx->arbFBO->glGetRenderbufferParameteriv (GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH,  &myVPSizeX);
+    theGlCtx->arbFBO->glGetRenderbufferParameteriv (GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &myVPSizeY);
+    theGlCtx->arbFBO->glBindRenderbuffer (GL_RENDERBUFFER, NO_RENDERBUFFER);
+  }
+
+  return aRBuffer != NO_RENDERBUFFER;
 }
 
 // =======================================================================
@@ -122,29 +294,27 @@ void OpenGl_FrameBuffer::Release (OpenGl_Context* theGlCtx)
     // application can not handle this case by exception - this is bug in code
     Standard_ASSERT_RETURN (theGlCtx != NULL,
       "OpenGl_FrameBuffer destroyed without GL context! Possible GPU memory leakage...",);
-    if (theGlCtx->IsValid())
+    if (theGlCtx->IsValid()
+     && myIsOwnBuffer)
     {
       theGlCtx->arbFBO->glDeleteFramebuffers (1, &myGlFBufferId);
+      if (myGlColorRBufferId != NO_RENDERBUFFER)
+      {
+        theGlCtx->arbFBO->glDeleteRenderbuffers (1, &myGlColorRBufferId);
+      }
+      if (myGlDepthRBufferId != NO_RENDERBUFFER)
+      {
+        theGlCtx->arbFBO->glDeleteRenderbuffers (1, &myGlDepthRBufferId);
+      }
     }
-    myGlFBufferId = NO_FRAMEBUFFER;
+    myGlFBufferId      = NO_FRAMEBUFFER;
+    myGlColorRBufferId = NO_RENDERBUFFER;
+    myGlDepthRBufferId = NO_RENDERBUFFER;
+    myIsOwnBuffer      = false;
   }
 
   myColorTexture->Release (theGlCtx);
   myDepthStencilTexture->Release (theGlCtx);
-}
-
-// =======================================================================
-// function : initTrashTexture
-// purpose  :
-// =======================================================================
-Standard_Boolean OpenGl_FrameBuffer::initTrashTextures (const Handle(OpenGl_Context)& theGlContext)
-{
-  return    myColorTexture->Init (theGlContext, myTextFormat,
-                                  GL_RGBA, GL_UNSIGNED_BYTE,
-                                  myVPSizeX, myVPSizeY, Graphic3d_TOT_2D)
-  && myDepthStencilTexture->Init (theGlContext, GL_DEPTH24_STENCIL8,
-                                  GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8,
-                                  myVPSizeX, myVPSizeY, Graphic3d_TOT_2D);
 }
 
 // =======================================================================
@@ -177,10 +347,36 @@ void OpenGl_FrameBuffer::BindBuffer (const Handle(OpenGl_Context)& theGlCtx)
 }
 
 // =======================================================================
+// function : BindDrawBuffer
+// purpose  :
+// =======================================================================
+void OpenGl_FrameBuffer::BindDrawBuffer (const Handle(OpenGl_Context)& theGlCtx)
+{
+  theGlCtx->arbFBO->glBindFramebuffer (GL_DRAW_FRAMEBUFFER, myGlFBufferId);
+}
+
+// =======================================================================
+// function : BindReadBuffer
+// purpose  :
+// =======================================================================
+void OpenGl_FrameBuffer::BindReadBuffer (const Handle(OpenGl_Context)& theGlCtx)
+{
+  theGlCtx->arbFBO->glBindFramebuffer (GL_READ_FRAMEBUFFER, myGlFBufferId);
+}
+
+// =======================================================================
 // function : UnbindBuffer
 // purpose  :
 // =======================================================================
 void OpenGl_FrameBuffer::UnbindBuffer (const Handle(OpenGl_Context)& theGlCtx)
 {
-  theGlCtx->arbFBO->glBindFramebuffer (GL_FRAMEBUFFER, NO_FRAMEBUFFER);
+  if (!theGlCtx->DefaultFrameBuffer().IsNull()
+   &&  theGlCtx->DefaultFrameBuffer().operator->() != this)
+  {
+    theGlCtx->DefaultFrameBuffer()->BindBuffer (theGlCtx);
+  }
+  else
+  {
+    theGlCtx->arbFBO->glBindFramebuffer (GL_FRAMEBUFFER, NO_FRAMEBUFFER);
+  }
 }

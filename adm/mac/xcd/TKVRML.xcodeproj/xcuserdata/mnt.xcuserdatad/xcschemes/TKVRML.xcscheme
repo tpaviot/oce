@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "140E18FA035F17370D840CA4"
+               BlueprintIdentifier = "107B0A4806FC15D709CA0713"
                BuildableName = "libTKVRML.dylib"
                BlueprintName = "TKVRML"
                ReferencedContainer = "container:TKVRML.xcodeproj">

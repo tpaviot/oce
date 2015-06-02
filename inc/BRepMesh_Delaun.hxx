@@ -105,6 +105,12 @@ public:
     return myMeshData->GetElement (theIndex);
   }
 
+  //! Returns tool used to build mesh consistent to Delaunay criteria.
+  inline const BRepMesh_CircleTool& Circles() const
+  {
+    return myCircles;
+  }
+
   //! Test is the given triangle contains the given vertex.
   //! If theEdgeOn != 0 the vertex lies onto the edge index
   //! returned through this parameter.
@@ -190,11 +196,20 @@ private:
                     BRepMesh::SequenceOfBndB2d&  thePolyBoxes,
                     BRepMesh::HMapOfInteger      theSkipped = NULL);
 
-  //! Triangulatiion of a closed simple polygon (polygon without glued edges and loops)
-  //! described by the list of indexes of its edges in the structure.
-  //! (negative index means reversed edge)
-  void meshSimplePolygon (BRepMesh::SequenceOfInteger& thePolygon,
-                          BRepMesh::SequenceOfBndB2d&  thePolyBoxes);
+  //! Decomposes the given closed simple polygon (polygon without glued edges 
+  //! and loops) on two simpler ones by adding new link at the most thin part 
+  //! in respect to end point of the first link.
+  //! In case if source polygon consists of three links, creates new triangle 
+  //! and clears source container.
+  //! @param thePolygon source polygon to be decomposed (first part of decomposition).
+  //! @param thePolyBoxes bounding boxes corresponded to source polygon's links.
+  //! @param thePolygonCut product of decomposition of source polygon (second part of decomposition).
+  //! @param thePolyBoxesCut bounding boxes corresponded to resulting polygon's links.
+  void decomposeSimplePolygon (
+    BRepMesh::SequenceOfInteger& thePolygon,
+    BRepMesh::SequenceOfBndB2d&  thePolyBoxes,
+    BRepMesh::SequenceOfInteger& thePolygonCut,
+    BRepMesh::SequenceOfBndB2d&  thePolyBoxesCut);
 
   //! Triangulation of closed polygon containing only three edges.
   inline Standard_Boolean meshElementaryPolygon (const BRepMesh::SequenceOfInteger& thePolygon);

@@ -107,6 +107,7 @@ libTKShHealing_la_SOURCES = \
 @top_srcdir@/src/ShapeCustom/ShapeCustom_Curve.cxx \
 @top_srcdir@/src/ShapeCustom/ShapeCustom_Curve2d.cxx \
 @top_srcdir@/src/ShapeCustom/ShapeCustom_DirectModification.cxx \
+@top_srcdir@/src/ShapeCustom/ShapeCustom_Modification.cxx \
 @top_srcdir@/src/ShapeCustom/ShapeCustom_RestrictionParameters.cxx \
 @top_srcdir@/src/ShapeCustom/ShapeCustom_Surface.cxx \
 @top_srcdir@/src/ShapeCustom/ShapeCustom_SweptToElementary.cxx \
@@ -126,6 +127,7 @@ libTKShHealing_la_SOURCES = \
 @top_srcdir@/src/ShapeFix/ShapeFix_Face.cxx \
 @top_srcdir@/src/ShapeFix/ShapeFix_FaceConnect.cxx \
 @top_srcdir@/src/ShapeFix/ShapeFix_FixSmallFace.cxx \
+@top_srcdir@/src/ShapeFix/ShapeFix_FixSmallSolid.cxx \
 @top_srcdir@/src/ShapeFix/ShapeFix_FreeBounds.cxx \
 @top_srcdir@/src/ShapeFix/ShapeFix_IntersectionTool.cxx \
 @top_srcdir@/src/ShapeFix/ShapeFix_Root.cxx \

@@ -15,6 +15,7 @@
 
 #include <typeinfo>
 
+#include <Graphic3d_TextureParams.hxx>
 #include <OpenGl_AspectFace.hxx>
 #include <OpenGl_AspectLine.hxx>
 #include <OpenGl_AspectMarker.hxx>
@@ -35,6 +36,12 @@ namespace
 {
 
 #define EOL "\n"
+
+//! Definition of VertColor varying.
+const char THE_VARY_TexCoord_OUT[] =
+  EOL"THE_SHADER_OUT vec2 TexCoord;";
+const char THE_VARY_TexCoord_IN[] =
+  EOL"THE_SHADER_IN  vec2 TexCoord;";
 
 //! Auxiliary function to transform normal
 const char THE_FUNC_transformNormal[] =
@@ -227,6 +234,8 @@ void OpenGl_ShaderManager::clear()
   myFlatPrograms = OpenGl_SetOfShaderPrograms();
   myMapOfLightPrograms.Clear();
   myFontProgram.Nullify();
+  myBlitProgram.Nullify();
+  myAnaglyphProgram.Nullify();
   switchLightPrograms();
 }
 
@@ -408,36 +417,6 @@ void OpenGl_ShaderManager::UpdateWorldViewStateTo (const OpenGl_Mat4& theWorldVi
 {
   myWorldViewState.Set (theWorldViewMatrix);
   myWorldViewState.Update();
-}
-
-// =======================================================================
-// function : RevertProjectionStateTo
-// purpose  : Reverts state of OCCT projection transform
-// =======================================================================
-void OpenGl_ShaderManager::RevertProjectionStateTo (const OpenGl_Mat4& theProjectionMatrix)
-{
-  myProjectionState.Set (theProjectionMatrix);
-  myProjectionState.Revert();
-}
-
-// =======================================================================
-// function : RevertModelWorldStateTo
-// purpose  : Reverts state of OCCT model-world transform
-// =======================================================================
-void OpenGl_ShaderManager::RevertModelWorldStateTo (const OpenGl_Mat4& theModelWorldMatrix)
-{
-  myModelWorldState.Set (theModelWorldMatrix);
-  myModelWorldState.Revert();
-}
-
-// =======================================================================
-// function : RevertWorldViewStateTo
-// purpose  : Reverts state of OCCT world-view transform
-// =======================================================================
-void OpenGl_ShaderManager::RevertWorldViewStateTo (const OpenGl_Mat4& theWorldViewMatrix)
-{
-  myWorldViewState.Set (theWorldViewMatrix);
-  myWorldViewState.Revert();
 }
 
 // =======================================================================
@@ -832,6 +811,25 @@ const OpenGl_MaterialState* OpenGl_ShaderManager::MaterialState (const Handle(Op
   return &myMaterialStates.Find (theProgram);
 }
 
+// =======================================================================
+// function : SurfaceDetailState
+// purpose  : Returns current state of OCCT surface detail
+// =======================================================================
+const OpenGl_SurfaceDetailState& OpenGl_ShaderManager::SurfaceDetailState() const
+{
+  return mySurfaceDetailState;
+}
+
+// =======================================================================
+// function : UpdateSurfaceDetailStateTo
+// purpose  : Updates state of OCCT surface detail
+// =======================================================================
+void OpenGl_ShaderManager::UpdateSurfaceDetailStateTo (const Visual3d_TypeOfSurfaceDetail theDetail)
+{
+  mySurfaceDetailState.Set (theDetail);
+  mySurfaceDetailState.Update();
+}
+
 namespace
 {
 
@@ -866,7 +864,9 @@ static void PushAspectFace (const Handle(OpenGl_Context)&       theCtx,
       continue;
     }
 
-    aParams.Init (anIndex == 0 ? theAspect->IntFront() : theAspect->IntBack());
+    aParams.Init (anIndex == 0 || theAspect->DistinguishingMode() != TOn
+                ? theAspect->IntFront()
+                : theAspect->IntBack());
     theProgram->SetUniform (theCtx, aLoc, OpenGl_Material::NbOfVec4(),
                             aParams.Packed());
   }
@@ -1001,7 +1001,7 @@ void OpenGl_ShaderManager::PushMaterialState (const Handle(OpenGl_ShaderProgram)
 }
 
 // =======================================================================
-// function : PushWorldViewState
+// function : PushState
 // purpose  : Pushes state of OCCT graphics parameters to the program
 // =======================================================================
 void OpenGl_ShaderManager::PushState (const Handle(OpenGl_ShaderProgram)& theProgram) const
@@ -1021,22 +1021,40 @@ void OpenGl_ShaderManager::PushState (const Handle(OpenGl_ShaderProgram)& thePro
 Standard_Boolean OpenGl_ShaderManager::prepareStdProgramFont()
 {
   Handle(Graphic3d_ShaderProgram) aProgramSrc = new Graphic3d_ShaderProgram();
-  TCollection_AsciiString aSrcVert =
-      EOL"void main()"
-      EOL"{"
-      EOL"  gl_Position = occProjectionMatrix * occWorldViewMatrix * occModelWorldMatrix * occVertex;"
-      EOL"}";
+  TCollection_AsciiString aSrcVert = TCollection_AsciiString()
+     + THE_VARY_TexCoord_OUT
+     + EOL"void main()"
+       EOL"{"
+       EOL"  TexCoord = occTexCoord.st;"
+       EOL"  gl_Position = occProjectionMatrix * occWorldViewMatrix * occModelWorldMatrix * occVertex;"
+       EOL"}";
 
-  TCollection_AsciiString aSrcFrag =
-      EOL"float getAlpha(void) { return texture2D(occActiveSampler, gl_PointCoord).a; }"
-      EOL"void main()"
-      EOL"{"
-      EOL"  vec4 aColor = occColor;"
-      EOL"  aColor.a *= getAlpha();"
-      EOL"  if (aColor.a <= 0.285) discard;"
-      EOL"  gl_FragColor = aColor;"
-      EOL"}";
+  TCollection_AsciiString
+    aSrcGetAlpha = EOL"float getAlpha(void) { return occTexture2D(occActiveSampler, TexCoord.st).a; }";
+#if !defined(GL_ES_VERSION_2_0)
+  if (myContext->core11 == NULL)
+  {
+    aSrcGetAlpha = EOL"float getAlpha(void) { return occTexture2D(occActiveSampler, TexCoord.st).r; }";
+  }
+#endif
 
+  TCollection_AsciiString aSrcFrag = TCollection_AsciiString() +
+     + THE_VARY_TexCoord_IN
+     + aSrcGetAlpha
+     + EOL"void main()"
+       EOL"{"
+       EOL"  vec4 aColor = occColor;"
+       EOL"  aColor.a *= getAlpha();"
+       EOL"  if (aColor.a <= 0.285) discard;"
+       EOL"  occFragColor = aColor;"
+       EOL"}";
+
+#if !defined(GL_ES_VERSION_2_0)
+  if (myContext->core32 != NULL)
+  {
+    aProgramSrc->SetHeader ("#version 150");
+  }
+#endif
   aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_VERTEX,   aSrcVert));
   aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_FRAGMENT, aSrcFrag));
   TCollection_AsciiString aKey;
@@ -1049,6 +1067,73 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramFont()
 }
 
 // =======================================================================
+// function : prepareStdProgramFboBlit
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_ShaderManager::prepareStdProgramFboBlit()
+{
+  Handle(Graphic3d_ShaderProgram) aProgramSrc = new Graphic3d_ShaderProgram();
+  TCollection_AsciiString aSrcVert =
+      EOL"THE_SHADER_OUT vec2 TexCoord;"
+      EOL"void main()"
+      EOL"{"
+      EOL"  TexCoord    = occVertex.zw;"
+      EOL"  gl_Position = vec4(occVertex.x, occVertex.y, 0.0, 1.0);"
+      EOL"}";
+
+  TCollection_AsciiString aSrcFrag =
+      EOL"uniform sampler2D uColorSampler;"
+      EOL"uniform sampler2D uDepthSampler;"
+      EOL
+      EOL"THE_SHADER_IN vec2 TexCoord;"
+      EOL
+      EOL"void main()"
+      EOL"{"
+      EOL"  gl_FragDepth = occTexture2D (uDepthSampler, TexCoord).r;"
+      EOL"  occFragColor = occTexture2D (uColorSampler, TexCoord);"
+      EOL"}";
+
+#if defined(GL_ES_VERSION_2_0)
+  if (myContext->IsGlGreaterEqual (3, 0))
+  {
+    aProgramSrc->SetHeader ("#version 300 es");
+  }
+  else
+  {
+    // there is no way to draw into depth buffer
+    aSrcFrag =
+      EOL"uniform sampler2D uColorSampler;"
+      EOL
+      EOL"THE_SHADER_IN vec2 TexCoord;"
+      EOL
+      EOL"void main()"
+      EOL"{"
+      EOL"  occFragColor = occTexture2D (uColorSampler, TexCoord);"
+      EOL"}";
+  }
+#else
+  if (myContext->core32 != NULL)
+  {
+    aProgramSrc->SetHeader ("#version 150");
+  }
+#endif
+  aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_VERTEX,   aSrcVert));
+  aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_FRAGMENT, aSrcFrag));
+  TCollection_AsciiString aKey;
+  if (!Create (aProgramSrc, aKey, myBlitProgram))
+  {
+    myBlitProgram = new OpenGl_ShaderProgram(); // just mark as invalid
+    return Standard_False;
+  }
+
+  myContext->BindProgram (myBlitProgram);
+  myBlitProgram->SetSampler (myContext, "uColorSampler", 0);
+  myBlitProgram->SetSampler (myContext, "uDepthSampler", 1);
+  myContext->BindProgram (NULL);
+  return Standard_True;
+}
+
+// =======================================================================
 // function : prepareStdProgramFlat
 // purpose  :
 // =======================================================================
@@ -1056,9 +1141,9 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramFlat (Handle(OpenGl_Shad
                                                               const Standard_Integer        theBits)
 {
   Handle(Graphic3d_ShaderProgram) aProgramSrc = new Graphic3d_ShaderProgram();
-  TCollection_AsciiString aSrcVert, aSrcVertExtraOut, aSrcVertExtraMain, aSrcFrag, aSrcFragExtraOut, aSrcFragExtraMain;
+  TCollection_AsciiString aSrcVert, aSrcVertExtraOut, aSrcVertExtraMain, aSrcVertExtraFunc, aSrcFrag, aSrcFragExtraOut, aSrcFragExtraMain;
   TCollection_AsciiString aSrcFragGetColor     = EOL"vec4 getColor(void) { return occColor; }";
-  TCollection_AsciiString aSrcFragMainGetColor = EOL"  gl_FragColor = getColor();";
+  TCollection_AsciiString aSrcFragMainGetColor = EOL"  occFragColor = getColor();";
   if ((theBits & OpenGl_PO_Point) != 0)
   {
   #if defined(GL_ES_VERSION_2_0)
@@ -1066,9 +1151,17 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramFlat (Handle(OpenGl_Shad
   #endif
     if ((theBits & OpenGl_PO_TextureA) != 0)
     {
-      aSrcFragGetColor =
-        EOL"float getAlpha(void) { return texture2D(occActiveSampler, gl_PointCoord).a; }"
-        EOL"vec4  getColor(void)"
+      TCollection_AsciiString
+        aSrcGetAlpha = EOL"float getAlpha(void) { return occTexture2D(occActiveSampler, gl_PointCoord).a; }";
+    #if !defined(GL_ES_VERSION_2_0)
+      if (myContext->core11 == NULL)
+      {
+        aSrcGetAlpha = EOL"float getAlpha(void) { return occTexture2D(occActiveSampler, gl_PointCoord).r; }";
+      }
+    #endif
+
+      aSrcFragGetColor = aSrcGetAlpha
+      + EOL"vec4  getColor(void)"
         EOL"{"
         EOL"  vec4 aColor = occColor;"
         EOL"  aColor.a *= getAlpha();"
@@ -1078,33 +1171,63 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramFlat (Handle(OpenGl_Shad
       aSrcFragMainGetColor =
         EOL"  vec4 aColor = getColor();"
         EOL"  if (aColor.a <= 0.1) discard;"
-        EOL"  gl_FragColor = aColor;";
+        EOL"  occFragColor = aColor;";
     }
     else if ((theBits & OpenGl_PO_TextureRGB) != 0)
     {
       aSrcFragGetColor =
-        EOL"vec4 getColor(void) { return texture2D(occActiveSampler, gl_PointCoord); }";
+        EOL"vec4 getColor(void) { return occTexture2D(occActiveSampler, gl_PointCoord); }";
       aSrcFragMainGetColor =
         EOL"  vec4 aColor = getColor();"
         EOL"  if (aColor.a <= 0.1) discard;"
-        EOL"  gl_FragColor = aColor;";
+        EOL"  occFragColor = aColor;";
+    }
+  }
+  else
+  {
+    if ((theBits & OpenGl_PO_TextureRGB) != 0)
+    {
+      aSrcVertExtraOut  += THE_VARY_TexCoord_OUT;
+      aSrcFragExtraOut  += THE_VARY_TexCoord_IN;
+      aSrcVertExtraMain +=
+        EOL"  TexCoord = occTexCoord.st;";
+
+      aSrcFragGetColor =
+        EOL"vec4 getColor(void) { return occTexture2D(occActiveSampler, TexCoord.st); }";
+    }
+    else if ((theBits & OpenGl_PO_TextureEnv) != 0)
+    {
+      aSrcVertExtraOut += THE_VARY_TexCoord_OUT;
+      aSrcFragExtraOut += THE_VARY_TexCoord_IN;
+
+      aSrcVertExtraFunc = THE_FUNC_transformNormal;
+
+      aSrcVertExtraMain +=
+        EOL"  vec4 aPosition = occWorldViewMatrix * occModelWorldMatrix * occVertex;"
+        EOL"  vec3 aNormal   = transformNormal (occNormal);"
+        EOL"  vec3 aReflect  = reflect (normalize (aPosition.xyz), aNormal);"
+        EOL"  aReflect.z += 1.0;"
+        EOL"  TexCoord = aReflect.xy * inversesqrt (dot (aReflect, aReflect)) * 0.5 + vec2 (0.5);";
+
+      aSrcFragGetColor =
+        EOL"vec4 getColor(void) { return occTexture2D (occActiveSampler, TexCoord.st); }";
     }
   }
   if ((theBits & OpenGl_PO_VertColor) != 0)
   {
-    aSrcVertExtraOut  += EOL"varying vec4 VertColor;";
+    aSrcVertExtraOut  += EOL"THE_SHADER_OUT vec4 VertColor;";
     aSrcVertExtraMain += EOL"  VertColor = occVertColor;";
-    aSrcFragExtraOut  += EOL"varying vec4 VertColor;";
+    aSrcFragExtraOut  += EOL"THE_SHADER_IN  vec4 VertColor;";
     aSrcFragGetColor  =  EOL"vec4 getColor(void) { return VertColor; }";
   }
   if ((theBits & OpenGl_PO_ClipPlanes) != 0)
   {
-    const char THE_POS_VARY[] =
-      EOL"varying vec4 PositionWorld;"
-      EOL"varying vec4 Position;";
-
-    aSrcVertExtraOut  += THE_POS_VARY;
-    aSrcFragExtraOut  += THE_POS_VARY;
+    aSrcVertExtraOut +=
+      EOL"THE_SHADER_OUT vec4 PositionWorld;"
+      EOL"THE_SHADER_OUT vec4 Position;";
+    aSrcFragExtraOut +=
+      EOL"THE_SHADER_IN  vec4 PositionWorld;"
+      EOL"THE_SHADER_IN  vec4 Position;";
     aSrcVertExtraMain +=
       EOL"  PositionWorld = occModelWorldMatrix * occVertex;"
       EOL"  Position      = occWorldViewMatrix * PositionWorld;";
@@ -1112,7 +1235,8 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramFlat (Handle(OpenGl_Shad
   }
 
   aSrcVert =
-      aSrcVertExtraOut
+      aSrcVertExtraFunc
+    + aSrcVertExtraOut
     + EOL"void main()"
       EOL"{"
     + aSrcVertExtraMain
@@ -1128,6 +1252,12 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramFlat (Handle(OpenGl_Shad
     + aSrcFragMainGetColor
     + EOL"}";
 
+#if !defined(GL_ES_VERSION_2_0)
+  if (myContext->core32 != NULL)
+  {
+    aProgramSrc->SetHeader ("#version 150");
+  }
+#endif
   aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_VERTEX,   aSrcVert));
   aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_FRAGMENT, aSrcFrag));
 
@@ -1144,7 +1274,7 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramFlat (Handle(OpenGl_Shad
 // function : stdComputeLighting
 // purpose  :
 // =======================================================================
-TCollection_AsciiString OpenGl_ShaderManager::stdComputeLighting()
+TCollection_AsciiString OpenGl_ShaderManager::stdComputeLighting (const Standard_Boolean theHasVertColor)
 {
   bool aLightsMap[Visual3d_TOLS_SPOT + 1] = { false, false, false, false };
   TCollection_AsciiString aLightsFunc, aLightsLoop;
@@ -1187,6 +1317,14 @@ TCollection_AsciiString OpenGl_ShaderManager::stdComputeLighting()
     }
   }
 
+  TCollection_AsciiString aGetMatAmbient = "theIsFront ? occFrontMaterial_Ambient()  : occBackMaterial_Ambient();";
+  TCollection_AsciiString aGetMatDiffuse = "theIsFront ? occFrontMaterial_Diffuse()  : occBackMaterial_Diffuse();";
+  if (theHasVertColor)
+  {
+    aGetMatAmbient = "getVertColor();";
+    aGetMatDiffuse = "getVertColor();";
+  }
+
   return TCollection_AsciiString()
     + THE_FUNC_lightDef
     + aLightsFunc
@@ -1201,9 +1339,9 @@ TCollection_AsciiString OpenGl_ShaderManager::stdComputeLighting()
       EOL"  Specular = vec3 (0.0);"
       EOL"  vec3 aPoint = thePoint.xyz / thePoint.w;"
     + aLightsLoop
-    + EOL"  vec4 aMaterialAmbient  = theIsFront ? occFrontMaterial_Ambient()  : occBackMaterial_Ambient();"
-      EOL"  vec4 aMaterialDiffuse  = theIsFront ? occFrontMaterial_Diffuse()  : occBackMaterial_Diffuse();"
-      EOL"  vec4 aMaterialSpecular = theIsFront ? occFrontMaterial_Specular() : occBackMaterial_Specular();"
+    + EOL"  vec4 aMaterialAmbient  = " + aGetMatAmbient
+    + EOL"  vec4 aMaterialDiffuse  = " + aGetMatDiffuse
+    + EOL"  vec4 aMaterialSpecular = theIsFront ? occFrontMaterial_Specular() : occBackMaterial_Specular();"
       EOL"  vec4 aMaterialEmission = theIsFront ? occFrontMaterial_Emission() : occBackMaterial_Emission();"
       EOL"  return vec4 (Ambient,  1.0) * aMaterialAmbient"
       EOL"       + vec4 (Diffuse,  1.0) * aMaterialDiffuse"
@@ -1220,35 +1358,70 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramGouraud (Handle(OpenGl_S
                                                                  const Standard_Integer        theBits)
 {
   Handle(Graphic3d_ShaderProgram) aProgramSrc = new Graphic3d_ShaderProgram();
-  TCollection_AsciiString aSrcVert, aSrcVertExtraOut, aSrcVertExtraMain, aSrcFrag, aSrcFragExtraOut, aSrcFragExtraMain;
+  TCollection_AsciiString aSrcVert, aSrcVertColor, aSrcVertExtraOut, aSrcVertExtraMain, aSrcFrag, aSrcFragExtraOut, aSrcFragExtraMain;
+  TCollection_AsciiString aSrcFragGetColor = EOL"vec4 getColor(void) { return gl_FrontFacing ? FrontColor : BackColor; }";
   if ((theBits & OpenGl_PO_Point) != 0)
   {
   #if defined(GL_ES_VERSION_2_0)
     aSrcVertExtraMain += EOL"  gl_PointSize = occPointSize;";
   #endif
   }
+  if ((theBits & OpenGl_PO_VertColor) != 0)
+  {
+    aSrcVertColor = EOL"vec4 getVertColor(void) { return occVertColor; }";
+  }
+  if ((theBits & OpenGl_PO_Point) != 0)
+  {
+    if ((theBits & OpenGl_PO_TextureRGB) != 0)
+    {
+      aSrcFragGetColor =
+        EOL"vec4 getColor(void)"
+        EOL"{"
+        EOL"  vec4 aColor = gl_FrontFacing ? FrontColor : BackColor;"
+        EOL"  return occTexture2D(occActiveSampler, gl_PointCoord) * aColor;"
+        EOL"}";
+    }
+  }
+  else
+  {
+    if ((theBits & OpenGl_PO_TextureRGB) != 0)
+    {
+      aSrcVertExtraOut  += THE_VARY_TexCoord_OUT;
+      aSrcFragExtraOut  += THE_VARY_TexCoord_IN;
+      aSrcVertExtraMain +=
+        EOL"  TexCoord = occTexCoord.st;";
+
+      aSrcFragGetColor =
+        EOL"vec4 getColor(void)"
+        EOL"{"
+        EOL"  vec4 aColor = gl_FrontFacing ? FrontColor : BackColor;"
+        EOL"  return occTexture2D(occActiveSampler, TexCoord.st) * aColor;"
+        EOL"}";
+    }
+  }
   if ((theBits & OpenGl_PO_ClipPlanes) != 0)
   {
-    const char THE_POS_VARY[] =
-      EOL"varying vec4 PositionWorld;"
-      EOL"varying vec4 Position;";
-
-    aSrcVertExtraOut  += THE_POS_VARY;
-    aSrcFragExtraOut  += THE_POS_VARY;
+    aSrcVertExtraOut +=
+      EOL"THE_SHADER_OUT vec4 PositionWorld;"
+      EOL"THE_SHADER_OUT vec4 Position;";
+    aSrcFragExtraOut +=
+      EOL"THE_SHADER_IN  vec4 PositionWorld;"
+      EOL"THE_SHADER_IN  vec4 Position;";
     aSrcVertExtraMain +=
       EOL"  PositionWorld = aPositionWorld;"
       EOL"  Position      = aPosition;";
     aSrcFragExtraMain += THE_FRAG_CLIP_PLANES;
   }
 
-  const TCollection_AsciiString aLights = stdComputeLighting();
+  const TCollection_AsciiString aLights = stdComputeLighting ((theBits & OpenGl_PO_VertColor) != 0);
   aSrcVert = TCollection_AsciiString()
     + THE_FUNC_transformNormal
     + EOL
+    + aSrcVertColor
     + aLights
     + EOL
-      EOL"varying vec4 FrontColor;"
-      EOL"varying vec4 BackColor;"
+      EOL"THE_SHADER_OUT vec4 FrontColor;"
+      EOL"THE_SHADER_OUT vec4 BackColor;"
       EOL
     + aSrcVertExtraOut
     + EOL"void main()"
@@ -1264,15 +1437,22 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramGouraud (Handle(OpenGl_S
       EOL"}";
 
   aSrcFrag = TCollection_AsciiString()
-    + EOL"varying vec4 FrontColor;"
-      EOL"varying vec4 BackColor;"
+    + EOL"THE_SHADER_IN vec4 FrontColor;"
+      EOL"THE_SHADER_IN vec4 BackColor;"
     + aSrcFragExtraOut
+    + aSrcFragGetColor
     + EOL"void main()"
       EOL"{"
     + aSrcFragExtraMain
-    + EOL"  gl_FragColor = gl_FrontFacing ? FrontColor : BackColor;"
+    + EOL"  occFragColor = getColor();"
       EOL"}";
 
+#if !defined(GL_ES_VERSION_2_0)
+  if (myContext->core32 != NULL)
+  {
+    aProgramSrc->SetHeader ("#version 150");
+  }
+#endif
   aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_VERTEX,   aSrcVert));
   aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_FRAGMENT, aSrcFrag));
   TCollection_AsciiString aKey;
@@ -1291,14 +1471,55 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramGouraud (Handle(OpenGl_S
 Standard_Boolean OpenGl_ShaderManager::prepareStdProgramPhong (Handle(OpenGl_ShaderProgram)& theProgram,
                                                                const Standard_Integer        theBits)
 {
+  #define thePhongCompLight "computeLighting (normalize (Normal), normalize (View), Position, gl_FrontFacing)"
+
   Handle(Graphic3d_ShaderProgram) aProgramSrc = new Graphic3d_ShaderProgram();
-  TCollection_AsciiString aSrcVert, aSrcVertExtraOut, aSrcVertExtraMain, aSrcFrag, aSrcFragExtraMain;
+  TCollection_AsciiString aSrcVert, aSrcVertExtraOut, aSrcVertExtraMain, aSrcFrag, aSrcFragExtraOut, aSrcFragGetVertColor, aSrcFragExtraMain;
+  TCollection_AsciiString aSrcFragGetColor = EOL"vec4 getColor(void) { return " thePhongCompLight "; }";
   if ((theBits & OpenGl_PO_Point) != 0)
   {
   #if defined(GL_ES_VERSION_2_0)
     aSrcVertExtraMain += EOL"  gl_PointSize = occPointSize;";
   #endif
   }
+  if ((theBits & OpenGl_PO_VertColor) != 0)
+  {
+    aSrcVertExtraOut    += EOL"THE_SHADER_OUT vec4 VertColor;";
+    aSrcVertExtraMain   += EOL"  VertColor = occVertColor;";
+    aSrcFragGetVertColor = EOL"THE_SHADER_IN  vec4 VertColor;"
+                           EOL"vec4 getVertColor(void) { return VertColor; }";
+  }
+
+  if ((theBits & OpenGl_PO_Point) != 0)
+  {
+    if ((theBits & OpenGl_PO_TextureRGB) != 0)
+    {
+      aSrcFragGetColor =
+        EOL"vec4 getColor(void)"
+        EOL"{"
+        EOL"  vec4 aColor = " thePhongCompLight ";"
+        EOL"  return occTexture2D(occActiveSampler, gl_PointCoord) * aColor;"
+        EOL"}";
+    }
+  }
+  else
+  {
+    if ((theBits & OpenGl_PO_TextureRGB) != 0)
+    {
+      aSrcVertExtraOut  += THE_VARY_TexCoord_OUT;
+      aSrcFragExtraOut  += THE_VARY_TexCoord_IN;
+      aSrcVertExtraMain +=
+        EOL"  TexCoord = occTexCoord.st;";
+
+      aSrcFragGetColor =
+        EOL"vec4 getColor(void)"
+        EOL"{"
+        EOL"  vec4 aColor = " thePhongCompLight ";"
+        EOL"  return occTexture2D(occActiveSampler, TexCoord.st) * aColor;"
+        EOL"}";
+    }
+  }
+
   if ((theBits & OpenGl_PO_ClipPlanes) != 0)
   {
     aSrcFragExtraMain += THE_FRAG_CLIP_PLANES;
@@ -1307,10 +1528,10 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramPhong (Handle(OpenGl_Sha
   aSrcVert = TCollection_AsciiString()
     + THE_FUNC_transformNormal
     + EOL
-      EOL"varying vec4 PositionWorld;"
-      EOL"varying vec4 Position;"
-      EOL"varying vec3 Normal;"
-      EOL"varying vec3 View;"
+      EOL"THE_SHADER_OUT vec4 PositionWorld;"
+      EOL"THE_SHADER_OUT vec4 Position;"
+      EOL"THE_SHADER_OUT vec3 Normal;"
+      EOL"THE_SHADER_OUT vec3 View;"
       EOL
     + aSrcVertExtraOut
     + EOL"void main()"
@@ -1323,21 +1544,30 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramPhong (Handle(OpenGl_Sha
     + EOL"  gl_Position = occProjectionMatrix * occWorldViewMatrix * occModelWorldMatrix * occVertex;"
       EOL"}";
 
-  const TCollection_AsciiString aLights = stdComputeLighting();
+  const TCollection_AsciiString aLights = stdComputeLighting ((theBits & OpenGl_PO_VertColor) != 0);
   aSrcFrag = TCollection_AsciiString()
-    + EOL"varying vec4 PositionWorld;"
-      EOL"varying vec4 Position;"
-      EOL"varying vec3 Normal;"
-      EOL"varying vec3 View;"
+    + EOL"THE_SHADER_IN vec4 PositionWorld;"
+      EOL"THE_SHADER_IN vec4 Position;"
+      EOL"THE_SHADER_IN vec3 Normal;"
+      EOL"THE_SHADER_IN vec3 View;"
     + EOL
+    + aSrcFragExtraOut
+    + aSrcFragGetVertColor
     + aLights
+    + aSrcFragGetColor
     + EOL
       EOL"void main()"
       EOL"{"
     + aSrcFragExtraMain
-    + EOL"  gl_FragColor = computeLighting (normalize (Normal), normalize (View), Position, gl_FrontFacing);"
+    + EOL"  occFragColor = getColor();"
       EOL"}";
 
+#if !defined(GL_ES_VERSION_2_0)
+  if (myContext->core32 != NULL)
+  {
+    aProgramSrc->SetHeader ("#version 150");
+  }
+#endif
   aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_VERTEX,   aSrcVert));
   aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_FRAGMENT, aSrcFrag));
   TCollection_AsciiString aKey;
@@ -1346,6 +1576,60 @@ Standard_Boolean OpenGl_ShaderManager::prepareStdProgramPhong (Handle(OpenGl_Sha
     theProgram = new OpenGl_ShaderProgram(); // just mark as invalid
     return Standard_False;
   }
+  return Standard_True;
+}
+
+// =======================================================================
+// function : prepareStdProgramAnaglyph
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_ShaderManager::prepareStdProgramAnaglyph()
+{
+  Handle(Graphic3d_ShaderProgram) aProgramSrc = new Graphic3d_ShaderProgram();
+  TCollection_AsciiString aSrcVert =
+      EOL"THE_SHADER_OUT vec2 TexCoord;"
+      EOL"void main()"
+      EOL"{"
+      EOL"  TexCoord    = occVertex.zw;"
+      EOL"  gl_Position = vec4(occVertex.x, occVertex.y, 0.0, 1.0);"
+      EOL"}";
+
+  TCollection_AsciiString aSrcFrag =
+      EOL"uniform sampler2D uLeftSampler;"
+      EOL"uniform sampler2D uRightSampler;"
+      EOL
+      EOL"THE_SHADER_IN vec2 TexCoord;"
+      EOL
+      EOL"void main()"
+      EOL"{"
+      EOL"  vec4 aColorL = occTexture2D (uLeftSampler,  TexCoord);"
+      EOL"  vec4 aColorR = occTexture2D (uRightSampler, TexCoord);"
+      EOL"  aColorL.b = 0.0;"
+      EOL"  aColorL.g = 0.0;"
+      EOL"  aColorR.r = 0.0;"
+      EOL"  occFragColor = aColorL + aColorR;"
+      EOL"}";
+
+#if !defined(GL_ES_VERSION_2_0)
+  if (myContext->core32 != NULL)
+  {
+    aProgramSrc->SetHeader ("#version 150");
+  }
+#endif
+
+  aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_VERTEX,   aSrcVert));
+  aProgramSrc->AttachShader (Graphic3d_ShaderObject::CreateFromSource (Graphic3d_TOS_FRAGMENT, aSrcFrag));
+  TCollection_AsciiString aKey;
+  if (!Create (aProgramSrc, aKey, myAnaglyphProgram))
+  {
+    myAnaglyphProgram = new OpenGl_ShaderProgram(); // just mark as invalid
+    return Standard_False;
+  }
+
+  myContext->BindProgram (myAnaglyphProgram);
+  myAnaglyphProgram->SetSampler (myContext, "uLeftSampler",  0);
+  myAnaglyphProgram->SetSampler (myContext, "uRightSampler", 1);
+  myContext->BindProgram (NULL);
   return Standard_True;
 }
 

@@ -160,8 +160,9 @@
 		<Unit filename="../../../src/IntTools/IntTools_SurfaceRangeSampleMapHasher.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_Tools.cxx" />
 		<Unit filename="../../../src/IntTools/IntTools_TopolTool.cxx" />
-		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI.cxx" />
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Algo.cxx" />
 		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_BooleanOperation.cxx" />
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_BuilderAlgo.cxx" />
 		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Check.cxx" />
 		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Common.cxx" />
 		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Cut.cxx" />
@@ -222,6 +223,7 @@
 		<Unit filename="../../../src/BOPTools/BOPTools.cxx" />
 		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools.cxx" />
 		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools2D.cxx" />
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools2D_1.cxx" />
 		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools3D.cxx" />
 		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools_1.cxx" />
 		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools_2.cxx" />

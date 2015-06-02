@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKSTL"
-	ProjectGUID="{1F0FDE64-1303-0131-1641-3EF20B84D09D}"
+	ProjectGUID="{73F5275E-0AA8-1918-0A1A-5804077096EE}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

@@ -47,7 +47,7 @@
 #include <BOPCol_IndexedDataMapOfShapeBox.hxx>
 #include <BOPCol_BoxBndTree.hxx>
 #include <BOPCol_NCVector.hxx>
-#include <BOPCol_TBB.hxx>
+#include <BOPCol_Parallel.hxx>
 //
 #include <IntTools_Context.hxx>
 #include <IntTools_ShrunkRange.hxx>
@@ -116,11 +116,11 @@ class BOPAlgo_EdgeEdge :
 typedef BOPCol_NCVector
   <BOPAlgo_EdgeEdge> BOPAlgo_VectorOfEdgeEdge; 
 //
-typedef BOPCol_TBBFunctor 
+typedef BOPCol_Functor 
   <BOPAlgo_EdgeEdge,
   BOPAlgo_VectorOfEdgeEdge> BOPAlgo_EdgeEdgeFunctor;
 //
-typedef BOPCol_TBBCnt 
+typedef BOPCol_Cnt 
   <BOPAlgo_EdgeEdgeFunctor,
   BOPAlgo_VectorOfEdgeEdge> BOPAlgo_EdgeEdgeCnt;
 //
@@ -163,11 +163,11 @@ class BOPAlgo_TNV : public BOPCol_BoxBndTreeSelector{
 typedef BOPCol_NCVector
   <BOPAlgo_TNV> BOPAlgo_VectorOfTNV; 
 //
-typedef BOPCol_TBBFunctor 
+typedef BOPCol_Functor 
   <BOPAlgo_TNV,
   BOPAlgo_VectorOfTNV> BOPAlgo_TNVFunctor;
 //
-typedef BOPCol_TBBCnt 
+typedef BOPCol_Cnt 
   <BOPAlgo_TNVFunctor,
   BOPAlgo_VectorOfTNV> BOPAlgo_TNVCnt;
 /////////////////////////////////////////////////////////////////////////
@@ -254,13 +254,13 @@ class BOPAlgo_PVE {
 typedef BOPCol_NCVector
   <BOPAlgo_PVE> BOPAlgo_VectorOfPVE; 
 //
-typedef BOPCol_TBBContextFunctor 
+typedef BOPCol_ContextFunctor 
   <BOPAlgo_PVE,
   BOPAlgo_VectorOfPVE,
   Handle(IntTools_Context), 
   IntTools_Context> BOPAlgo_PVEFunctor;
 //
-typedef BOPCol_TBBContextCnt 
+typedef BOPCol_ContextCnt 
   <BOPAlgo_PVEFunctor,
   BOPAlgo_VectorOfPVE,
   Handle(IntTools_Context)> BOPAlgo_PVECnt;
@@ -298,9 +298,7 @@ void BOPAlgo_PaveFiller::PerformEE()
   BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks aMVCPB(100, aAllocator);
   //
   BOPDS_VectorOfInterfEE& aEEs=myDS->InterfEE();
-  aEEs.SetStartSize(iSize);
   aEEs.SetIncrement(iSize);
-  aEEs.Init();
   //
   for (; myIterator->More(); myIterator->Next()) {
     myIterator->Value(nE1, nE2, bJustAdd);
@@ -489,10 +487,10 @@ void BOPAlgo_PaveFiller::PerformEE()
               continue;
             }
           }
-          
+          //
           // 1
-          iX=aEEs.Append()-1;
-          BOPDS_InterfEE& aEE=aEEs(iX);
+          BOPDS_InterfEE& aEE=aEEs.Append1();
+          iX=aEEs.Extent()-1;
           aEE.SetIndices(nE1, nE2);
           aEE.SetCommonPart(aCPart);
           // 2
@@ -517,8 +515,8 @@ void BOPAlgo_PaveFiller::PerformEE()
             break;
           }
           // 1
-          iX=aEEs.Append()-1;
-          BOPDS_InterfEE& aEE=aEEs(iX);
+          BOPDS_InterfEE& aEE=aEEs.Append1();
+          iX=aEEs.Extent()-1;
           aEE.SetIndices(nE1, nE2);
           aEE.SetCommonPart(aCPart);
           // 2
@@ -536,6 +534,20 @@ void BOPAlgo_PaveFiller::PerformEE()
   //=========================================
   // post treatment
   //=========================================
+  {
+    Standard_Integer aNbV;
+    Handle(BOPDS_PaveBlock) aPB1, aPB2;
+    //
+    aNbV=aMVCPB.Extent();
+    for (i=1; i<=aNbV; ++i) {
+      const BOPDS_CoupleOfPaveBlocks& aCPB=aMVCPB.FindFromIndex(i);
+      aCPB.PaveBlocks(aPB1, aPB2); 
+      //
+      aMPBToUpdate.Remove(aPB1);
+      aMPBToUpdate.Remove(aPB2);
+    }
+  }
+  //
   aItPB.Initialize(aMPBToUpdate);
   for (; aItPB.More(); aItPB.Next()) {
     Handle(BOPDS_PaveBlock) aPB=aItPB.Value();
@@ -911,7 +923,7 @@ void BOPAlgo_PaveFiller::ForceInterfVE(const Standard_Integer nV,
   aNbPnt = aProjector.NbPoints();
   if (aNbPnt) {
     Standard_Real aT, aDist;
-    Standard_Integer i;
+    //Standard_Integer i;
     BRep_Builder aBB;
     BOPDS_Pave aPave;
     //
@@ -919,12 +931,8 @@ void BOPAlgo_PaveFiller::ForceInterfVE(const Standard_Integer nV,
     aT=aProjector.LowerDistanceParameter();
     //
     BOPDS_VectorOfInterfVE& aVEs=myDS->InterfVE();
-    if (aVEs.Extent() == 0) {
-      aVEs.Init();
-    }
-    //
-    i=aVEs.Append()-1;
-    BOPDS_InterfVE& aVE=aVEs(i);
+    aVEs.SetIncrement(10);
+    BOPDS_InterfVE& aVE=aVEs.Append1();
     aVE.SetIndices(nV, nE);
     aVE.SetParameter(aT);
     //

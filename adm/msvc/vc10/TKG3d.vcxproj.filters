@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{2CA91ED1-1460-0ABC-0DBE-7A74B1834921}</UniqueIdentifier>
+      <UniqueIdentifier>{937FF6CB-0BA1-08A8-08A7-FA7AB18CFF95}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom">
-      <UniqueIdentifier>{362AD1D3-0997-08A6-09A2-B42CE3EEF6BA}</UniqueIdentifier>
+      <UniqueIdentifier>{DF9D548D-0E77-0278-0CC1-52E003F119F3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColGeom">
-      <UniqueIdentifier>{8834FED4-0EA2-0340-0714-6C3802D13280}</UniqueIdentifier>
+      <UniqueIdentifier>{DEDAF61F-0F84-1572-051B-1A0B93EDEED2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomAdaptor">
-      <UniqueIdentifier>{4A9D00E8-1595-024C-0085-02C1D3031931}</UniqueIdentifier>
+      <UniqueIdentifier>{DA29C75E-0277-0399-008B-A2CA1180397F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AdvApprox">
-      <UniqueIdentifier>{6AEDD1D2-1944-1274-08F8-EF881BD0C0CA}</UniqueIdentifier>
+      <UniqueIdentifier>{3ECE70B6-0351-1159-1065-EA891ACF1E6F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomLProp">
-      <UniqueIdentifier>{212231F4-189E-0960-11D1-B66DD3E43A0F}</UniqueIdentifier>
+      <UniqueIdentifier>{D7151BEA-0F34-08E8-0872-52D412E0F2A0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Adaptor3d">
-      <UniqueIdentifier>{9FE2888D-0ACB-0121-008F-2F7590CF62E2}</UniqueIdentifier>
+      <UniqueIdentifier>{5911E8FA-0527-0881-0D2B-AF8DB27FB1E1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LProp3d">
-      <UniqueIdentifier>{650114B2-0BE2-1896-016F-2E2AB9F705F0}</UniqueIdentifier>
+      <UniqueIdentifier>{775ED64F-0751-178D-03A2-BBF029944870}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopAbs">
-      <UniqueIdentifier>{A6D63653-12DD-0B38-0D8C-81BE890446E5}</UniqueIdentifier>
+      <UniqueIdentifier>{1FD02259-0510-11C0-1442-6BA5D754D34A}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

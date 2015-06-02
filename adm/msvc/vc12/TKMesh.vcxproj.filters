@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{856C2887-0E49-0362-110D-3B0315476A48}</UniqueIdentifier>
+      <UniqueIdentifier>{37A9A586-0C27-03BB-02EF-65632750C3CE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepMesh">
-      <UniqueIdentifier>{92AC7FC7-076D-0C90-03E7-9D96990A464F}</UniqueIdentifier>
+      <UniqueIdentifier>{67253DEB-0811-1940-08F1-8EF864559EC2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

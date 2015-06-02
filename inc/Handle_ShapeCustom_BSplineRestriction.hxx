@@ -8,13 +8,13 @@
 
 #include <Standard.hxx>
 #include <Standard_DefineHandle.hxx>
-#include <Handle_BRepTools_Modification.hxx>
+#include <Handle_ShapeCustom_Modification.hxx>
 
 class Standard_Transient;
 class Handle(Standard_Type);
-class Handle(BRepTools_Modification);
+class Handle(ShapeCustom_Modification);
 class ShapeCustom_BSplineRestriction;
 
-DEFINE_STANDARD_HANDLE(ShapeCustom_BSplineRestriction, BRepTools_Modification)
+DEFINE_STANDARD_HANDLE(ShapeCustom_BSplineRestriction, ShapeCustom_Modification)
 
 #endif // _Handle_ShapeCustom_BSplineRestriction_HeaderFile

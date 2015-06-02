@@ -21,6 +21,7 @@
 #include <Aspect_Display.hxx>
 #include <Aspect_RenderingContext.hxx>
 #include <Handle_OpenGl_Context.hxx>
+#include <Handle_OpenGl_FrameBuffer.hxx>
 #include <Handle_OpenGl_Sampler.hxx>
 #include <Handle_OpenGl_ShaderManager.hxx>
 #include <Handle_OpenGl_ShaderProgram.hxx>
@@ -34,17 +35,35 @@
 #include <OpenGl_Resource.hxx>
 #include <Standard_Transient.hxx>
 #include <TCollection_AsciiString.hxx>
-#include <Handle_OpenGl_Context.hxx>
+#include <TColStd_PackedMapOfInteger.hxx>
 #include <OpenGl_Clipping.hxx>
 #include <OpenGl_GlCore11.hxx>
 #include <OpenGl_Utils.hxx>
 
 //! Forward declarations
+#if defined(__APPLE__)
+  #import <TargetConditionals.h>
+  #if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
+    #ifdef __OBJC__
+      @class EAGLContext;
+    #else
+      struct EAGLContext;
+    #endif
+  #else
+    #ifdef __OBJC__
+      @class NSOpenGLContext;
+    #else
+      struct NSOpenGLContext;
+    #endif
+  #endif
+#endif
+
 struct OpenGl_GlFunctions;
 struct OpenGl_ArbTBO;
 struct OpenGl_ArbIns;
 struct OpenGl_ArbDbg;
 struct OpenGl_ArbFBO;
+struct OpenGl_ArbFBOBlit;
 struct OpenGl_ExtGS;
 struct OpenGl_ArbTexBindless;
 
@@ -109,9 +128,8 @@ typedef OpenGl_TmplCore44<OpenGl_GlCore43>     OpenGl_GlCore44;
 
 //! This class generalize access to the GL context and available extensions.
 //!
-//! Functions are grouped into structures and accessed as fields.
-//! You should check the group for NULL before usage (if group is not NULL
-//! then all functions are available):
+//! Functions related to specific OpenGL version or extension are grouped into structures which can be accessed as fields of this class.
+//! The most simple way to check that required functionality is available - is NULL check for the group:
 //! @code
 //!   if (myContext->core20 != NULL)
 //!   {
@@ -124,9 +142,24 @@ typedef OpenGl_TmplCore44<OpenGl_GlCore43>     OpenGl_GlCore44;
 //!   }
 //! @endcode
 //!
-//! Current implementation provide access to OpenGL core functionality up to 2.0 version
-//! (core12, core13, core14, core15, fields core20).
-//! within several extensions (arbTBO, arbFBO, etc.).
+//! Current implementation provide access to OpenGL core functionality up to 4.4 version (core12, core13, core14, core15, fields core20)
+//! as well as several extensions (arbTBO, arbFBO, etc.).
+//!
+//! OpenGL context might be initialized in Core Profile. In this case deprecated functionality become unavailable.
+//! To make code easily adaptable to wide range of OpenGL versions, function sets related to each version has two kinds of suffixes:
+//!  - "back" for version 3.2+.
+//!     Represents function set for Backward-Compatible Profile.
+//!     Function sets without this suffix represents core profile.
+//!  - "fwd"  for version 3.0-.
+//!     Represents non-deprecated function set of earlier OpenGL versions, which are still available within OpenGL 3.2 Core Profile.
+//!     Function sets without this suffix represents complete list of functions related to specific OpenGL version.
+//!
+//! To select which core** function set should be used in specific case:
+//!  - Determine the minimal OpenGL version required for implemented functionality and use it to access all functions.
+//!    For example, if algorithm requires OpenGL 2.1+, it is better to write core20fwd->glEnable() rather than core11fwd->glEnable() for uniformity.
+//!  - If functionality will work within Core Profile, use function sets with appropriate suffix.
+//!  - Validate minimal requirements at initialization/creation time and omit checks within code where algorithm should be already initialized.
+//!    Properly escape code incompatible with Core Profile. The simplest way to check Core Profile is "if (core11 == NULL)".
 //!
 //! Simplified extensions classification:
 //!  - prefixed with NV, AMD, ATI are vendor-specific (however may be provided by other vendors in some cases);
@@ -137,9 +170,8 @@ typedef OpenGl_TmplCore44<OpenGl_GlCore43>     OpenGl_GlCore44;
 //! In this case developer should be careful because different specification may differ
 //! in aspects (like enumeration values and error-handling).
 //!
-//! Notice that some systems provide mechanisms to simultaneously incorporate with GL contexts
-//! with different capabilities. Thats why OpenGl_Context should be initialized and used
-//! for each GL context individually.
+//! Notice that some systems provide mechanisms to simultaneously incorporate with GL contexts with different capabilities.
+//! For this reason OpenGl_Context should be initialized and used for each GL context independently.
 class OpenGl_Context : public Standard_Transient
 {
 public:
@@ -178,7 +210,7 @@ public:
 
   //! Initialize class from currently bound OpenGL context. Method should be called only once.
   //! @return false if no GL context is bound to the current thread
-  Standard_EXPORT Standard_Boolean Init();
+  Standard_EXPORT Standard_Boolean Init (const Standard_Boolean theIsCoreProfile = Standard_False);
 
   //! @return true if this context is valid (has been initialized)
   inline Standard_Boolean IsValid() const
@@ -191,13 +223,15 @@ public:
   //! @return false if OpenGL context can not be bound to specified surface
   Standard_EXPORT Standard_Boolean Init (const Aspect_Drawable         theEglSurface,
                                          const Aspect_Display          theEglDisplay,
-                                         const Aspect_RenderingContext theEglContext);
+                                         const Aspect_RenderingContext theEglContext,
+                                         const Standard_Boolean        theIsCoreProfile = Standard_False);
 #elif defined(_WIN32)
   //! Initialize class from specified window and rendering context. Method should be called only once.
   //! @return false if OpenGL context can not be bound to specified window
   Standard_EXPORT Standard_Boolean Init (const Aspect_Handle           theWindow,
                                          const Aspect_Handle           theWindowDC,
-                                         const Aspect_RenderingContext theGContext);
+                                         const Aspect_RenderingContext theGContext,
+                                         const Standard_Boolean        theIsCoreProfile = Standard_False);
 
   //! @return the window handle (HWND) currently bound to this OpenGL context
   inline Aspect_Handle Window() const
@@ -206,14 +240,25 @@ public:
   }
 
 #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
+  #if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
+
+  //! Initialize class from specified OpenGL ES context (EAGLContext). Method should be called only once.
+  Standard_EXPORT Standard_Boolean Init (EAGLContext*                  theGContext,
+                                         const Standard_Boolean        theIsCoreProfile = Standard_False);
+  #else
+
   //! Initialize class from specified OpenGL context (NSOpenGLContext). Method should be called only once.
-  Standard_EXPORT Standard_Boolean Init (const void*                   theGContext);
+  Standard_EXPORT Standard_Boolean Init (NSOpenGLContext*              theGContext,
+                                         const Standard_Boolean        theIsCoreProfile = Standard_False);
+  #endif
 #else
+
   //! Initialize class from specified window and rendering context. Method should be called only once.
   //! @return false if OpenGL context can not be bound to specified window
   Standard_EXPORT Standard_Boolean Init (const Aspect_Drawable         theWindow,
                                          const Aspect_Display          theDisplay,
-                                         const Aspect_RenderingContext theGContext);
+                                         const Aspect_RenderingContext theGContext,
+                                         const Standard_Boolean        theIsCoreProfile = Standard_False);
 
   //! @return the window handle (GLXDrawable) currently bound to this OpenGL context
   inline Aspect_Drawable Window() const
@@ -221,6 +266,10 @@ public:
     return myWindow;
   }
 #endif
+
+  //! Read OpenGL version information from active context.
+  Standard_EXPORT static void ReadGlVersion (Standard_Integer& theGlVerMajor,
+                                             Standard_Integer& theGlVerMinor);
 
   //! Check if theExtName extension is supported by active GL context.
   Standard_EXPORT Standard_Boolean CheckExtension (const char* theExtName) const;
@@ -417,7 +466,13 @@ public:
                                     const unsigned int theSeverity,
                                     const TCollection_ExtendedString& theMessage);
 
+  //! Adds a filter for messages with theId and theSource (GL_DEBUG_SOURCE_)
+  Standard_EXPORT Standard_Boolean ExcludeMessage (const unsigned int theSource,
+                                                   const unsigned int theId);
 
+  //! Removes a filter for messages with theId and theSource (GL_DEBUG_SOURCE_)
+  Standard_EXPORT Standard_Boolean IncludeMessage (const unsigned int theSource,
+                                                   const unsigned int theId);
 
   //! @return true if OpenGl context supports left and
   //! right rendering buffers.
@@ -432,20 +487,24 @@ public:
 
 public: //! @name methods to alter or retrieve current state
 
-  //! Switch to left stereographic rendering buffer.
-  //! This method can be used to keep unchanged choise
-  //! of front/back/both buffer rendering.
-  Standard_EXPORT void SetDrawBufferLeft();
+  //! Return active read buffer.
+  Standard_Integer ReadBuffer() { return myReadBuffer; }
 
-  //! Switch to right stereographic rendering buffer.
-  //! This method can be used to keep unchanged choise
-  //! of front/back/both buffer rendering.
-  Standard_EXPORT void SetDrawBufferRight();
+  //! Switch read buffer, wrapper for ::glReadBuffer().
+  Standard_EXPORT void SetReadBuffer (const Standard_Integer theReadBuffer);
 
-  //! Switch to non-stereographic rendering buffer.
-  //! This method can be used to keep unchanged choise
-  //! of front/back/both buffer rendering.
-  Standard_EXPORT void SetDrawBufferMono();
+  //! Return active draw buffer.
+  Standard_Integer DrawBuffer() { return myDrawBuffer; }
+
+  //! Switch draw buffer, wrapper for ::glDrawBuffer().
+  Standard_EXPORT void SetDrawBuffer (const Standard_Integer theDrawBuffer);
+
+  //! Switch read/draw buffers.
+  void SetReadDrawBuffer (const Standard_Integer theBuffer)
+  {
+    SetReadBuffer (theBuffer);
+    SetDrawBuffer (theBuffer);
+  }
 
   //! Fetch OpenGl context state. This class tracks value of several OpenGl
   //! state variables. Consulting the cached values is quicker than
@@ -476,16 +535,39 @@ public: //! @name methods to alter or retrieve current state
   //! Setup point size.
   Standard_EXPORT void SetPointSize (const Standard_ShortReal theSize);
 
+  //! Bind default Vertex Array Object
+  Standard_EXPORT void BindDefaultVao();
+
+  //! Default Frame Buffer Object.
+  const Handle(OpenGl_FrameBuffer)& DefaultFrameBuffer() const
+  {
+    return myDefaultFbo;
+  }
+
+  //! Setup new Default Frame Buffer Object and return previously set.
+  //! This call doesn't change Active FBO!
+  Standard_EXPORT Handle(OpenGl_FrameBuffer) SetDefaultFrameBuffer (const Handle(OpenGl_FrameBuffer)& theFbo);
+
+  //! Return debug context initialization state.
+  Standard_Boolean IsDebugContext() const
+  {
+    return myIsGlDebugCtx;
+  }
+
 private:
 
   //! Wrapper to system function to retrieve GL function pointer by name.
   Standard_EXPORT void* findProc (const char* theFuncName);
 
-  //! Read OpenGL version information from active context.
-  Standard_EXPORT void readGlVersion();
+  //! Print error if not all functions have been exported by context for reported version.
+  //! Note that this will never happen when using GLX, since returned functions can not be validated.
+  //! @param theGlVerMajor the OpenGL major version with missing functions
+  //! @param theGlVerMinor the OpenGL minor version with missing functions
+  Standard_EXPORT void checkWrongVersion (const Standard_Integer theGlVerMajor,
+                                          const Standard_Integer theGlVerMinor);
 
   //! Private initialization function that should be called only once.
-  Standard_EXPORT void init();
+  Standard_EXPORT void init (const Standard_Boolean theIsCoreProfile);
 
 public: //! @name core profiles
 
@@ -513,6 +595,7 @@ public: //! @name core profiles
 public: //! @name extensions
 
   Standard_Boolean       hasHighp;       //!< highp in GLSL ES fragment shader is supported
+  Standard_Boolean       hasUintIndex;   //!< GLuint for index buffer is supported (always available on desktop; on OpenGL ES - since 3.0 or as extension GL_OES_element_index_uint)
   Standard_Boolean       hasTexRGBA8;    //!< always available on desktop; on OpenGL ES - since 3.0 or as extension GL_OES_rgb8_rgba8
   Standard_Boolean       arbNPTW;        //!< GL_ARB_texture_non_power_of_two
   Standard_Boolean       arbTexRG;       //!< GL_ARB_texture_rg
@@ -522,6 +605,7 @@ public: //! @name extensions
   OpenGl_ArbIns*         arbIns;         //!< GL_ARB_draw_instanced
   OpenGl_ArbDbg*         arbDbg;         //!< GL_ARB_debug_output
   OpenGl_ArbFBO*         arbFBO;         //!< GL_ARB_framebuffer_object
+  OpenGl_ArbFBOBlit*     arbFBOBlit;     //!< glBlitFramebuffer function, moved out from OpenGl_ArbFBO structure for compatibility with OpenGL ES 2.0
   OpenGl_ExtGS*          extGS;          //!< GL_EXT_geometry_shader4
   Standard_Boolean       extBgra;        //!< GL_EXT_bgra or GL_EXT_texture_format_BGRA8888 on OpenGL ES
   Standard_Boolean       extAnis;        //!< GL_EXT_texture_filter_anisotropic
@@ -540,7 +624,11 @@ private: // system-dependent fields
   Aspect_Handle           myWindowDC; //!< Device Descriptor handle : HDC
   Aspect_RenderingContext myGContext; //!< Rendering Context handle : HGLRC
 #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-  void*                   myGContext; //!< Rendering Context handle : NSOpenGLContext
+  #if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
+  EAGLContext*            myGContext;    //!< Rendering Context handle
+  #else
+  NSOpenGLContext*        myGContext; //!< Rendering Context handle
+  #endif
 #else
   Aspect_Drawable         myWindow;   //!< window handle (owner of GL context) : GLXDrawable
   Aspect_Display          myDisplay;  //!< connection to the X-server : Display*
@@ -582,8 +670,14 @@ private: //! @name fields tracking current state
 
   Handle(OpenGl_ShaderProgram) myActiveProgram; //!< currently active GLSL program
   Handle(OpenGl_Sampler)       myTexSampler;    //!< currently active sampler object
+  Handle(OpenGl_FrameBuffer)   myDefaultFbo;    //!< default Frame Buffer Object
   Standard_Integer             myRenderMode;    //!< value for active rendering mode
+  Standard_Integer             myReadBuffer;    //!< current read buffer
   Standard_Integer             myDrawBuffer;    //!< current draw buffer
+  unsigned int                 myDefaultVao;    //!< default Vertex Array Object
+  Standard_Boolean             myIsGlDebugCtx;  //!< debug context initialization state
+  TCollection_AsciiString      myVendor;        //!< Graphics Driver's vendor
+  TColStd_PackedMapOfInteger   myFilters[6];    //!< messages suppressing filter (for sources from GL_DEBUG_SOURCE_API_ARB to GL_DEBUG_SOURCE_OTHER_ARB)
 
 public:
 

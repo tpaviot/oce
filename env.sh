@@ -15,7 +15,6 @@ fi
 # Reset values
 export CASDEB=""
 export HAVE_TBB="false";
-export HAVE_OPENCL="false";
 export HAVE_FREEIMAGE="false";
 export HAVE_GL2PS="false";
 export HAVE_VTK="false";
@@ -84,9 +83,6 @@ export CSF_OPT_CMPL=""
 if [ "$HAVE_TBB" == "true" ]; then
   export CSF_OPT_CMPL="${CSF_OPT_CMPL} -DHAVE_TBB"
 fi
-if [ "$HAVE_OPENCL" == "true" ]; then
-  export CSF_OPT_CMPL="${CSF_OPT_CMPL} -DHAVE_OPENCL"
-fi
 if [ "$HAVE_FREEIMAGE" == "true" ]; then
   export CSF_OPT_CMPL="${CSF_OPT_CMPL} -DHAVE_FREEIMAGE"
 fi
@@ -134,7 +130,6 @@ for anItem in ${aPartiesLibsDeb[*]}
 do
   OPT_LINKER_OPTIONS_DEB="${OPT_LINKER_OPTIONS_DEB} -L${anItem}"
 done
-
 OPT_LINKER_OPTIONS=""
 for anItem in ${aPartiesLibs[*]}
 do
@@ -155,9 +150,14 @@ else
 fi
 
 
-BIN_PATH="${CASBIN}/bin${CASDEB}"
-LIBS_PATH="${CASBIN}/lib${CASDEB}"
-if [ "${TARGET}" == "xcd" ]; then
+
+
+BIN_PATH=""
+LIBS_PATH=""
+if [ "${TARGET}" == "cbp" ]; then
+  BIN_PATH="${CASBIN}/bin${CASDEB}"
+  LIBS_PATH="${CASBIN}/lib${CASDEB}"
+elif [ "${TARGET}" == "xcd" ]; then
   [[ "${CASDEB}" == "d" ]] && BIN_PATH="${CASBIN}/Debug" || BIN_PATH="${CASBIN}/Release"
   LIBS_PATH="$BIN_PATH"
 fi
@@ -182,6 +182,11 @@ export CSF_PluginDefaults="${CASROOT}/src/StdResource"
 export CSF_XCAFDefaults="${CASROOT}/src/StdResource"
 export CSF_TObjDefaults="${CASROOT}/src/StdResource"
 export CSF_StandardLiteDefaults="${CASROOT}/src/StdResource"
+if [ "$WOKSTATION" == "mac" ]; then
+  export CSF_GraphicShr="libTKOpenGl.dylib"
+else
+  export CSF_GraphicShr="libTKOpenGl.so"
+fi
 export CSF_UnitsLexicon="${CASROOT}/src/UnitsAPI/Lexi_Expr.dat"
 export CSF_UnitsDefinition="${CASROOT}/src/UnitsAPI/Units.dat"
 export CSF_IGESDefaults="${CASROOT}/src/XSTEPResource"
@@ -197,3 +202,4 @@ fi
 if [ -e "${aScriptPath}/src/DrawResourcesProducts" ]; then
   export CSF_DrawPluginProductsDefaults="${aScriptPath}/src/DrawResourcesProducts"
 fi
+

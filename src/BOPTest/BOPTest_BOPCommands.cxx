@@ -17,35 +17,43 @@
 
 #include <stdio.h>
 
+#include <TCollection_AsciiString.hxx>
+
 #include <DBRep.hxx>
+#include <DrawTrSurf.hxx>
+#include <Draw_Color.hxx>
+#include <Draw.hxx>
 
 #include <NCollection_BaseAllocator.hxx>
 #include <NCollection_IncAllocator.hxx>
 
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Compound.hxx>
+#include <TopoDS_Iterator.hxx>
+//
 #include <BRep_Builder.hxx>
+
+#include <IntTools_FaceFace.hxx>
+#include <IntTools_Curve.hxx>
+
+#include <BOPCol_ListOfShape.hxx>
+
+#include <BOPDS_DS.hxx>
 
 #include <BOPAlgo_PaveFiller.hxx>
 #include <BOPAlgo_Operation.hxx>
 #include <BOPAlgo_BOP.hxx>
 #include <BOPAlgo_MakerVolume.hxx>
-#include <BOPDS_DS.hxx>
-#include <BOPTest_DrawableShape.hxx>
-#include <BOPCol_ListOfShape.hxx>
+#include <BOPAlgo_Section.hxx>
 
-#include <TCollection_AsciiString.hxx>
-#include <IntTools_FaceFace.hxx>
-#include <IntTools_Curve.hxx>
-#include <DrawTrSurf.hxx>
-#include <Draw_Color.hxx>
-#include <Draw.hxx>
 #include <BRepAlgoAPI_BooleanOperation.hxx>
 #include <BRepAlgoAPI_Common.hxx>
 #include <BRepAlgoAPI_Fuse.hxx>
 #include <BRepAlgoAPI_Cut.hxx>
 #include <BRepAlgoAPI_Section.hxx>
-#include <BOPAlgo_Section.hxx>
+
+#include <BOPTest_DrawableShape.hxx>
+#include <BOPTest_Objects.hxx>
 
 //
 static BOPAlgo_PaveFiller* pPF=NULL;
@@ -56,6 +64,7 @@ static
                           Standard_Integer n,
                           const char** a,
                           const BOPAlgo_Operation aOp);
+//
 static
   Standard_Integer bsmt (Draw_Interpretor& di, 
                        Standard_Integer n, 
@@ -77,9 +86,6 @@ static Standard_Integer bcommon   (Draw_Interpretor&, Standard_Integer, const ch
 //
 static Standard_Integer bopcurves (Draw_Interpretor&, Standard_Integer, const char**);
 static Standard_Integer bopnews   (Draw_Interpretor&, Standard_Integer, const char**);
-//
-static Standard_Integer bparallelmode(Draw_Interpretor&, Standard_Integer, const char**);
-//
 static Standard_Integer mkvolume   (Draw_Interpretor&, Standard_Integer, const char**);
 
 //=======================================================================
@@ -92,43 +98,48 @@ static Standard_Integer mkvolume   (Draw_Interpretor&, Standard_Integer, const c
   if (done) return;
   done = Standard_True;
   // Chapter's name
-  const char* g = "BOP commands";
+  const char* g = "BOPTest commands";
   // Commands
   
-  theCommands.Add("bop"       , "use bop s1 s2"   , __FILE__, bop, g);
-  theCommands.Add("bopcommon" , "use bopcommon r" , __FILE__, bopcommon, g);
-  theCommands.Add("bopfuse"   , "use bopfuse r"   , __FILE__,bopfuse, g);
-  theCommands.Add("bopcut"    , "use bopcut"      , __FILE__,bopcut, g);
-  theCommands.Add("boptuc"    , "use boptuc"      , __FILE__,boptuc, g);
-  theCommands.Add("bopsection", "use bopsection"  , __FILE__,bopsection, g);
+  theCommands.Add("bop"       , "use bop s1 s2" , __FILE__, bop, g);
+  theCommands.Add("bopcommon" , "use bopcommon r"     , __FILE__, bopcommon, g);
+  theCommands.Add("bopfuse"   , "use bopfuse r"       , __FILE__,bopfuse, g);
+  theCommands.Add("bopcut"    , "use bopcut r"        , __FILE__,bopcut, g);
+  theCommands.Add("boptuc"    , "use boptuc r"        , __FILE__,boptuc, g);
+  theCommands.Add("bopsection", "use bopsection r"    , __FILE__,bopsection, g);
   //
   theCommands.Add("bcommon" , "use bcommon r s1 s2" , __FILE__,bcommon, g);
   theCommands.Add("bfuse"   , "use bfuse r s1 s2"   , __FILE__,bfuse, g);
   theCommands.Add("bcut"    , "use bcut r s1 s2"    , __FILE__,bcut, g);
   theCommands.Add("btuc"    , "use btuc r s1 s2"    , __FILE__,btuc, g);
-  theCommands.Add("bsection", "Use >bsection r s1 s2 [-n2d/-n2d1/-n2d2] [-na]", 
+  theCommands.Add("bsection", "use bsection r s1 s2 [-n2d/-n2d1/-n2d2] [-na]", 
                                                       __FILE__, bsection, g);
   //
-  theCommands.Add("bopcurves", "use  bopcurves F1 F2 [-2d]", __FILE__, bopcurves, g);
-  theCommands.Add("bopnews", "use  bopnews -v[e,f]"  , __FILE__, bopnews, g);
-  theCommands.Add("bparallelmode", "bparallelmode [1/0] : show / set parallel mode for boolean operations", __FILE__, bparallelmode, g);
-  theCommands.Add("mkvolume", "make solids from set of shapes.\nmkvolume r b1 b2 ... [-ni (do not intersect)] [-s (run in non parallel mode)]", __FILE__, mkvolume , g);
+  theCommands.Add("bopcurves", "use bopcurves F1 F2 [-2d/-2d1/-2d2]",
+                                                      __FILE__, bopcurves, g);
+  theCommands.Add("bopnews"  , "use  bopnews -v[e,f]"      , __FILE__, bopnews, g);
+  theCommands.Add("mkvolume", "make solids from set of shapes.\nmkvolume r b1 b2 ... [-c] [-ni]", 
+                  __FILE__, mkvolume , g);
 }
 
 //=======================================================================
 //function : bop
 //purpose  : 
 //=======================================================================
-Standard_Integer bop (Draw_Interpretor& di, Standard_Integer n, const char** a)
+Standard_Integer bop(Draw_Interpretor& di, 
+                     Standard_Integer n, 
+                     const char** a)
 {
   char buf[32];
+  Standard_Boolean bRunParallel;
   Standard_Integer iErr;
+  Standard_Real aTol;
   TopoDS_Shape aS1, aS2;
   BOPCol_ListOfShape aLC;
   //
-  if (n!=3) {
-    di << " use bop Shape1 Shape2\n";
-    return 1;
+  if (n != 3) {
+    di << " use bop s1 s2 \n";
+    return 0;
   }
   //
   aS1=DBRep::Get(a[1]);
@@ -136,8 +147,11 @@ Standard_Integer bop (Draw_Interpretor& di, Standard_Integer n, const char** a)
   //
   if (aS1.IsNull() || aS2.IsNull()) {
     di << " null shapes are not allowed \n";
-    return 1;
+    return 0;
   }
+  //
+  aTol=BOPTest_Objects::FuzzyValue();
+  bRunParallel=BOPTest_Objects::RunParallel();
   //
   aLC.Append(aS1);
   aLC.Append(aS2);
@@ -150,6 +164,8 @@ Standard_Integer bop (Draw_Interpretor& di, Standard_Integer n, const char** a)
   pPF=new BOPAlgo_PaveFiller(aAL);
   //
   pPF->SetArguments(aLC);
+  pPF->SetFuzzyValue(aTol);
+  pPF->SetRunParallel(bRunParallel);
   //
   pPF->Perform();
   iErr=pPF->ErrorStatus();
@@ -165,7 +181,9 @@ Standard_Integer bop (Draw_Interpretor& di, Standard_Integer n, const char** a)
 //function : bopcommon
 //purpose  : 
 //=======================================================================
-Standard_Integer bopcommon (Draw_Interpretor& di, Standard_Integer n, const char** a)
+Standard_Integer bopcommon (Draw_Interpretor& di, 
+                            Standard_Integer n, 
+                            const char** a)
 {
   return bopsmt(di, n, a, BOPAlgo_COMMON);
 }
@@ -173,7 +191,9 @@ Standard_Integer bopcommon (Draw_Interpretor& di, Standard_Integer n, const char
 //function : bopfuse
 //purpose  : 
 //=======================================================================
-Standard_Integer bopfuse(Draw_Interpretor& di, Standard_Integer n, const char** a)
+Standard_Integer bopfuse(Draw_Interpretor& di, 
+                         Standard_Integer n, 
+                         const char** a)
 {
   return bopsmt(di, n, a, BOPAlgo_FUSE);
 }
@@ -181,7 +201,9 @@ Standard_Integer bopfuse(Draw_Interpretor& di, Standard_Integer n, const char** 
 //function : bopcut
 //purpose  : 
 //=======================================================================
-Standard_Integer bopcut(Draw_Interpretor& di, Standard_Integer n, const char** a)
+Standard_Integer bopcut(Draw_Interpretor& di, 
+                        Standard_Integer n, 
+                        const char** a)
 {
   return bopsmt(di, n, a, BOPAlgo_CUT);
 }
@@ -189,7 +211,9 @@ Standard_Integer bopcut(Draw_Interpretor& di, Standard_Integer n, const char** a
 //function : boptuc
 //purpose  : 
 //=======================================================================
-Standard_Integer boptuc(Draw_Interpretor& di, Standard_Integer n, const char** a)
+Standard_Integer boptuc(Draw_Interpretor& di, 
+                        Standard_Integer n, 
+                        const char** a)
 {
   return bopsmt(di, n, a, BOPAlgo_CUT21);
 }
@@ -218,6 +242,7 @@ Standard_Integer bopsmt(Draw_Interpretor& di,
   }
   //
   char buf[64];
+  Standard_Boolean bRunParallel;
   Standard_Integer aNb, iErr;
   BOPAlgo_BOP aBOP;
   //
@@ -228,6 +253,8 @@ Standard_Integer bopsmt(Draw_Interpretor& di,
     di << buf;
     return 0;
   }
+  // 
+  bRunParallel=BOPTest_Objects::RunParallel();
   //
   const TopoDS_Shape& aS1=aLC.First();
   const TopoDS_Shape& aS2=aLC.Last();
@@ -235,6 +262,7 @@ Standard_Integer bopsmt(Draw_Interpretor& di,
   aBOP.AddArgument(aS1);
   aBOP.AddTool(aS2);
   aBOP.SetOperation(aOp);
+  aBOP.SetRunParallel (bRunParallel);
   //
   aBOP.PerformWithFiller(*pPF);
   iErr=aBOP.ErrorStatus();
@@ -257,10 +285,12 @@ Standard_Integer bopsmt(Draw_Interpretor& di,
 //function : bopsection
 //purpose  : 
 //=======================================================================
-Standard_Integer bopsection(Draw_Interpretor& di, Standard_Integer n, const char** a)
+Standard_Integer bopsection(Draw_Interpretor& di, 
+                            Standard_Integer n, 
+                            const char** a)
 {
   if (n<2) {
-    di << " use bopsmt r\n";
+    di << " use bopsection r\n";
     return 0;
   }
   //
@@ -275,6 +305,7 @@ Standard_Integer bopsection(Draw_Interpretor& di, Standard_Integer n, const char
   }
   //
   char buf[64];
+  Standard_Boolean bRunParallel;
   Standard_Integer aNb, iErr;
   BOPAlgo_Section aBOP;
   //
@@ -286,11 +317,14 @@ Standard_Integer bopsection(Draw_Interpretor& di, Standard_Integer n, const char
     return 0;
   }
   //
+  bRunParallel=BOPTest_Objects::RunParallel();
+  //
   const TopoDS_Shape& aS1=aLC.First();
   const TopoDS_Shape& aS2=aLC.Last();
   //
   aBOP.AddArgument(aS1);
   aBOP.AddArgument(aS2);
+  aBOP.SetRunParallel (bRunParallel);
   //
   aBOP.PerformWithFiller(*pPF);
   iErr=aBOP.ErrorStatus();
@@ -313,7 +347,9 @@ Standard_Integer bopsection(Draw_Interpretor& di, Standard_Integer n, const char
 //function : bcommon
 //purpose  : 
 //=======================================================================
-Standard_Integer bcommon (Draw_Interpretor& di, Standard_Integer n, const char** a)
+Standard_Integer bcommon (Draw_Interpretor& di, 
+                          Standard_Integer n, 
+                          const char** a)
 {
   return bsmt(di, n, a, BOPAlgo_COMMON);
 }
@@ -321,7 +357,9 @@ Standard_Integer bcommon (Draw_Interpretor& di, Standard_Integer n, const char**
 //function : bfuse
 //purpose  : 
 //=======================================================================
-Standard_Integer bfuse (Draw_Interpretor& di, Standard_Integer n, const char** a)
+Standard_Integer bfuse (Draw_Interpretor& di, 
+                        Standard_Integer n, 
+                        const char** a)
 {
   return bsmt(di, n, a, BOPAlgo_FUSE);
 }
@@ -329,7 +367,9 @@ Standard_Integer bfuse (Draw_Interpretor& di, Standard_Integer n, const char** a
 //function : bcut
 //purpose  : 
 //=======================================================================
-Standard_Integer bcut (Draw_Interpretor& di, Standard_Integer n, const char** a)
+Standard_Integer bcut (Draw_Interpretor& di, 
+                       Standard_Integer n, 
+                       const char** a)
 {
   return bsmt(di, n, a, BOPAlgo_CUT);
 }
@@ -337,7 +377,9 @@ Standard_Integer bcut (Draw_Interpretor& di, Standard_Integer n, const char** a)
 //function : btuc
 //purpose  : 
 //=======================================================================
-Standard_Integer btuc (Draw_Interpretor& di, Standard_Integer n, const char** a)
+Standard_Integer btuc (Draw_Interpretor& di, 
+                       Standard_Integer n, 
+                       const char** a)
 {
   return bsmt(di, n, a, BOPAlgo_CUT21);
 }
@@ -349,103 +391,71 @@ Standard_Integer  bsection(Draw_Interpretor& di,
                            Standard_Integer n, 
                            const char** a)
 {
-  const char* usage = " Usage: bsection Result s1 s2 [-n2d/-n2d1/-n2d2] [-na]\n";
   if (n < 4) {
-    di << usage;
-    return 1;
+    di << "use bsection r s1 s2 [-n2d/-n2d1/-n2d2] [-na] [tol]\n";
+    return 0;
   }
-
-  TopoDS_Shape aS1 = DBRep::Get(a[2]);
-  TopoDS_Shape aS2 = DBRep::Get(a[3]);
-  
+  //
+  TopoDS_Shape aS1, aS2;
+  //
+  aS1=DBRep::Get(a[2]);
+  aS2=DBRep::Get(a[3]);
   if (aS1.IsNull() || aS2.IsNull()) {
     di << " Null shapes are not allowed \n";
-    return 1;
+    return 0;
   }
-
-  Standard_Boolean bApp, bPC1, bPC2;
+  // 
+  char buf[80];
+  Standard_Boolean bRunParallel, bApp, bPC1, bPC2;
+  Standard_Integer i, iErr;
+  Standard_Real aTol;
   //
   bApp = Standard_True;
   bPC1 = Standard_True;
   bPC2 = Standard_True;
-  
-  Standard_Boolean isbadparameter = Standard_False;
-  
-  if(n > 4) {
-    const char* key1 = a[4];
-    const char* key2 = (n > 5) ? a[5] : NULL;
-    const char* pcurveconf = NULL;
-
-    if (key1 && 
-        (!strcasecmp(key1,"-n2d") || 
-         !strcasecmp(key1,"-n2d1") || 
-         !strcasecmp(key1,"-n2d2"))) {
-      pcurveconf = key1;
+  aTol = BOPTest_Objects::FuzzyValue(); 
+  bRunParallel = BOPTest_Objects::RunParallel();
+  //
+  for (i = 4; i < n; ++i) {
+    if (!strcmp(a[i], "-n2d")) {
+      bPC1 = Standard_False;
+      bPC2 = Standard_False;
     }
-    else {
-      if (!strcasecmp(key1,"-na")) {
-        bApp = Standard_False;
-      }
-      else {
-        isbadparameter = Standard_True;
-      }
+    else if (!strcmp(a[i], "-n2d1")) {
+      bPC1 = Standard_False;
     }
-    if (key2) {
-      if(!strcasecmp(key2,"-na")) {
-        bApp = Standard_False;
-      }
-      else {
-        isbadparameter = Standard_True;
-      }
+    else if (!strcmp(a[i], "-n2d2")) {
+      bPC2 = Standard_False;
     }
-
-    if(!isbadparameter && pcurveconf) {      
-      if (!strcasecmp(pcurveconf, "-n2d1")) {
-        bPC1 = Standard_False;
-      }
-      else {
-        if (!strcasecmp(pcurveconf, "-n2d2")) {
-          bPC2 = Standard_False;
-        }
-        else {
-          if (!strcasecmp(pcurveconf, "-n2d")) {
-            bPC1 = Standard_False;
-            bPC2 = Standard_False;
-          }
-        }
-      }
+    else if (!strcmp(a[i], "-na")) {
+      bApp = Standard_False;
     }
   }
-      
-  if(!isbadparameter) {
-    Standard_Integer iErr;
-    char buf[80];
-    //
-    BRepAlgoAPI_Section aSec(aS1, aS2, Standard_False);
-    aSec.Approximation(bApp);
-    aSec.ComputePCurveOn1(bPC1);
-    aSec.ComputePCurveOn2(bPC2);
-    //
-    aSec.Build();
-    iErr=aSec.ErrorStatus();
-    if (!aSec.IsDone()) {
-      Sprintf(buf, " ErrorStatus : %d\n",  iErr);
-      di << buf;
-      return 0;
-    }
-    //
-    const TopoDS_Shape& aR=aSec.Shape();
-    if (aR.IsNull()) {
-      di << " null shape\n";
-      return 0;
-    }
-    DBRep::Set(a[1], aR);
+  //
+  BRepAlgoAPI_Section aSec(aS1, aS2, Standard_False);
+  //
+  aSec.Approximation(bApp);
+  aSec.ComputePCurveOn1(bPC1);
+  aSec.ComputePCurveOn2(bPC2);
+  //
+  aSec.SetFuzzyValue(aTol);
+  aSec.SetRunParallel(bRunParallel);
+  //
+  aSec.Build();
+  iErr=aSec.ErrorStatus();
+  if (!aSec.IsDone()) {
+    Sprintf(buf, " ErrorStatus : %d\n",  iErr);
+    di << buf;
     return 0;
   }
-  else {
-    di << usage;
-    return 1;
+  //
+  const TopoDS_Shape& aR=aSec.Shape();
+  if (aR.IsNull()) {
+    di << " null shape\n";
+    return 0;
   }
+  DBRep::Set(a[1], aR);
+  return 0;
 }
 //=======================================================================
 //function : bsmt
@@ -457,13 +467,15 @@ Standard_Integer bsmt (Draw_Interpretor& di,
                        const BOPAlgo_Operation aOp)
 {
   char buf[32];
+  Standard_Boolean bRunParallel;
   Standard_Integer iErr;
   TopoDS_Shape aS1, aS2;
   BOPCol_ListOfShape aLC;
+  Standard_Real aTol;
   //
-  if (n!=4) {
+  if (n != 4) {
     di << " use bx r s1 s2\n";
-    return 1;
+    return 0;
   }
   //
   aS1=DBRep::Get(a[2]);
@@ -471,15 +483,22 @@ Standard_Integer bsmt (Draw_Interpretor& di,
   //
   if (aS1.IsNull() || aS2.IsNull()) {
     di << " null shapes are not allowed \n";
-    return 1;
+    return 0;
   }
   aLC.Append(aS1);
   aLC.Append(aS2);
+  // 
+  aTol=BOPTest_Objects::FuzzyValue();
+  bRunParallel = BOPTest_Objects::RunParallel();
   //
   Handle(NCollection_BaseAllocator)aAL=new NCollection_IncAllocator;
+  //
+  //---------------------------------------------------------------
   BOPAlgo_PaveFiller aPF(aAL);
   //
   aPF.SetArguments(aLC);
+  aPF.SetFuzzyValue(aTol); 
+  aPF.SetRunParallel(bRunParallel);
   //
   aPF.Perform();
   iErr=aPF.ErrorStatus();
@@ -489,36 +508,31 @@ Standard_Integer bsmt (Draw_Interpretor& di,
     return 0;
   }
   //
-  BRepAlgoAPI_BooleanOperation* pBuilder=NULL;
-  // 
-  if (aOp==BOPAlgo_COMMON) {
-    pBuilder=new BRepAlgoAPI_Common(aS1, aS2, aPF);
-  }
-  else if (aOp==BOPAlgo_FUSE) {
-    pBuilder=new BRepAlgoAPI_Fuse(aS1, aS2, aPF);
-  }
-  else if (aOp==BOPAlgo_CUT) {
-    pBuilder=new BRepAlgoAPI_Cut (aS1, aS2, aPF);
-  }
-  else if (aOp==BOPAlgo_CUT21) {
-    pBuilder=new BRepAlgoAPI_Cut(aS1, aS2, aPF, Standard_False);
-  }
+  //---------------------------------------------------------------
+  BOPAlgo_BOP aBOP(aAL);
   //
-  iErr = pBuilder->ErrorStatus();
-  if (!pBuilder->IsDone()) {
+  aBOP.AddArgument(aS1);
+  aBOP.AddTool(aS2);
+  aBOP.SetOperation(aOp);
+  aBOP.SetRunParallel(bRunParallel);
+  // 
+  aBOP.PerformWithFiller(aPF);
+  //
+  iErr=aBOP.ErrorStatus();
+  if (iErr) {
     Sprintf(buf, " ErrorStatus : %d\n",  iErr);
     di << buf;
     return 0;
   }
-  const TopoDS_Shape& aR=pBuilder->Shape();
+  const TopoDS_Shape& aR=aBOP.Shape();
   if (aR.IsNull()) {
     di << " null shape\n";
     return 0;
   }
+  //
   DBRep::Set(a[1], aR);
   return 0;
 }
-
 //=======================================================================
 //function : bopnews
 //purpose  : 
@@ -590,7 +604,6 @@ Standard_Integer bopnews (Draw_Interpretor& di,
   //
   return 0;
 }
-
 //=======================================================================
 //function : bopcurves
 //purpose  : 
@@ -600,19 +613,19 @@ Standard_Integer bopcurves (Draw_Interpretor& di,
                             const char** a)
 {
   if (n<3) {
-    di << " use bopcurves F1 F2 [-2d]\n";
+    di << " use bopcurves F1 F2 [-2d/-2d1/-2d2]\n";
     return 1;
   }
-
+  //
   TopoDS_Shape S1 = DBRep::Get(a[1]);
   TopoDS_Shape S2 = DBRep::Get(a[2]);
   TopAbs_ShapeEnum aType;
-
+  //
   if (S1.IsNull() || S2.IsNull()) {
     di << " Null shapes is not allowed \n";
     return 1;
   }
-
+  //
   aType=S1.ShapeType();
   if (aType != TopAbs_FACE) {
     di << " Type mismatch F1\n";
@@ -623,48 +636,52 @@ Standard_Integer bopcurves (Draw_Interpretor& di,
     di << " Type mismatch F2\n";
     return 1;
   }
-
-
+  //
   const TopoDS_Face& aF1=*(TopoDS_Face*)(&S1);
   const TopoDS_Face& aF2=*(TopoDS_Face*)(&S2);
-
-  Standard_Boolean aToApproxC3d, aToApproxC2dOnS1, aToApproxC2dOnS2, anIsDone, bMake2dCurves;
+  //
+  Standard_Boolean aToApproxC3d, aToApproxC2dOnS1, aToApproxC2dOnS2, anIsDone;
   Standard_Integer i, aNbCurves;
   Standard_Real anAppTol, aTolR;
   TCollection_AsciiString aNm("c_");
-
-  bMake2dCurves = Standard_False;
+  //
+  anAppTol = 0.0000001;
+  aToApproxC3d = Standard_True;
+  aToApproxC2dOnS1 = Standard_False;
+  aToApproxC2dOnS2 = Standard_False;
+  //
   if (n > 3) {
     if (!strcasecmp(a[3],"-2d")) {
-      bMake2dCurves = Standard_True;
-    } else {
-      di << "Wrong key. To build 2d curves use: bopcurves F1 F2 -2d \n";
+      aToApproxC2dOnS1 = Standard_True;
+      aToApproxC2dOnS2 = Standard_True;
+    } 
+    else if (!strcasecmp(a[3],"-2d1")) {
+      aToApproxC2dOnS1 = Standard_True;
+    }
+    else if (!strcasecmp(a[3],"-2d2")) {
+      aToApproxC2dOnS2 = Standard_True;
+    }
+    else {
+      di << "Wrong key. To build 2d curves use: bopcurves F1 F2 -2d/-2d1/-2d2 \n";
       return 1;
     }
   }
   //
-
-  aToApproxC3d = Standard_True;
-  aToApproxC2dOnS1 = bMake2dCurves;
-  aToApproxC2dOnS2 = bMake2dCurves;
-  anAppTol=0.0000001;
-
-
   IntTools_FaceFace aFF;
-  
+  //
   aFF.SetParameters (aToApproxC3d,
                      aToApproxC2dOnS1,
                      aToApproxC2dOnS2,
                      anAppTol);
-  
+  //
   aFF.Perform (aF1, aF2);
-  
+  //
   anIsDone=aFF.IsDone();
   if (!anIsDone) {
     di << " anIsDone=" << (Standard_Integer) anIsDone << "\n";
     return 1;
   }
-
+  //
   aFF.PrepareLines3D(Standard_False);
   const IntTools_SequenceOfCurves& aSCs=aFF.Lines();
 
@@ -700,144 +717,114 @@ Standard_Integer bopcurves (Draw_Interpretor& di,
     DrawTrSurf::Set(nameC, aC3D);
     di << nameC << " ";
     //
-    if (bMake2dCurves) {
-      Handle(Geom2d_Curve) aPC1 = anIC.FirstCurve2d();
-      Handle(Geom2d_Curve) aPC2 = anIC.SecondCurve2d();
+    Handle(Geom2d_Curve) aPC1 = anIC.FirstCurve2d();
+    Handle(Geom2d_Curve) aPC2 = anIC.SecondCurve2d();
+    //
+    if (!aPC1.IsNull() || !aPC2.IsNull()) {
+      di << "(";
       //
-      if (aPC1.IsNull() && aPC2.IsNull()) {
-        di << " \n has Null 2d curves# " << i << "\n";
-        continue;
-      }
-      //
-      if (aPC1.IsNull()) {
-        TCollection_AsciiString pc2N("c2d2_"), pc2Nx;
-        pc2Nx = pc2N + anIndx;
-        Standard_CString nameC2d2 = pc2Nx.ToCString();
-        //
-        DrawTrSurf::Set(nameC2d2, aPC2);
-        di << "(" << nameC2d2 << ") ";
-        di << " \n Null first 2d curve of the curve #" << i << "\n";
-        continue;
-      } else {
+      if (!aPC1.IsNull()) {
         TCollection_AsciiString pc1N("c2d1_"), pc1Nx;
         pc1Nx = pc1N + anIndx;
         Standard_CString nameC2d1 = pc1Nx.ToCString();
         //
         DrawTrSurf::Set(nameC2d1, aPC1);
-        di << "(" << nameC2d1;
+        di << nameC2d1;
       }
       //
-      if (aPC2.IsNull()) {
-        di << ") \n Null second 2d curve of the curve #" << i << "\n";
-        continue;
-      } else {
+      if (!aPC2.IsNull()) {
         TCollection_AsciiString pc2N("c2d2_"), pc2Nx;
         pc2Nx = pc2N + anIndx;
         Standard_CString nameC2d2 = pc2Nx.ToCString();
         //
         DrawTrSurf::Set(nameC2d2, aPC2);
-        di << ", " << nameC2d2 << ") ";
+        //
+        if (!aPC1.IsNull()) {
+          di << ", ";
+        }
+        di << nameC2d2;
       }
+      di << ") ";
     }
   }
-
+  //
   di << "\n";
-  
   return 0;
 }
-
-//=======================================================================
-//function : bparallelmode
-//purpose  : 
-//=======================================================================
-Standard_Integer bparallelmode(Draw_Interpretor& di, Standard_Integer n, const char** a)
-{
-  if (n == 2)
-  {
-    Standard_Boolean isParallelOn = Draw::Atoi (a[1]) == 1;
-    if (isParallelOn == 1)
-    {
-      BOPAlgo_Algo::SetParallelMode(Standard_True);
-      di << "Parallel mode for boolean operations has been enabled";
-    }
-    else
-    {
-      BOPAlgo_Algo::SetParallelMode(Standard_False);
-      di << "Parallel mode for boolean operations has been disabled";
-    }
-  }
-  else
-  {
-    di << "Parallel mode state for boolean operations: "
-       << (BOPAlgo_Algo::GetParallelMode()? "enabled" : "disabled");
-  }
-
-  return 0;
-}
-
 //=======================================================================
 //function : mkvolume
 //purpose  : 
 //=======================================================================
 Standard_Integer mkvolume(Draw_Interpretor& di, Standard_Integer n, const char** a) 
 {
-  const char* usage = "Usage: mkvolume r b1 b2 ... [-ni (do not intersect)] [-s (run in non parallel mode)]\n";
   if (n < 3) {
-    di << usage;
+    di << "Usage: mkvolume r b1 b2 ... [-c] [-ni]\n";
+    di << "Options:\n";
+    di << " -c  - use this option if the arguments are compounds\n";
+    di << "       containing shapes that should be interfered;\n";
+    di << " -ni - use this option if the arguments should not be interfered;\n";
     return 1;
   }
   //
-  Standard_Boolean bToIntersect, bRunParallel;
-  Standard_Integer i, aNb;
+  const char* usage = "Type mkvolume without arguments for the usage of the command.\n";
   //
-  aNb = n;
-  bToIntersect = Standard_True;
-  bRunParallel = Standard_True;
-  //
-  if (!strcmp(a[n-1], "-ni")) {
-    bToIntersect = Standard_False;
-    aNb = n-1;
-  } 
-  else if (!strcmp(a[n-1], "-s")) {
-    bRunParallel = Standard_False;
-    aNb = n-1;
-  }
-  if (n > 3) {
-    if (!strcmp(a[n-2], "-ni")) {
-      bToIntersect = Standard_False;
-      aNb = n-2;
-    } 
-    else if (!strcmp(a[n-2], "-s")) {
-      bRunParallel = Standard_False;
-      aNb = n-2;
-    }
-  }
-  //
-  if (aNb < 3) {
-    di << "no shapes to process.\n";
-    di << usage;
-    return 1;
-  }
-  //
-  BOPCol_ListOfShape aLS;
+  Standard_Boolean bToIntersect, bRunParallel, bCompounds;
+  Standard_Integer i;
+  Standard_Real aTol;
   TopoDS_Shape aS;
-  for (i = 2; i < aNb; ++i) {
+  BOPCol_ListOfShape aLS;
+  //
+  aTol = BOPTest_Objects::FuzzyValue();
+  bRunParallel = BOPTest_Objects::RunParallel();
+  //
+  bToIntersect = Standard_True;
+  bCompounds = Standard_False;
+  //
+  for (i = 2; i < n; ++i) {
     aS = DBRep::Get(a[i]);
     if (!aS.IsNull()) {
       aLS.Append(aS);
     }
+    else {
+      if (!strcmp(a[i], "-c")) {
+        bCompounds = Standard_True;
+      }
+      else if (!strcmp(a[i], "-ni")) {
+        bToIntersect = Standard_False;
+      }
+    }
   }
   //
   if (aLS.IsEmpty()) {
-    di << "no shapes to process.\n";
+    di << "No shapes to process.\n";
     di << usage;
     return 1;
+  }
+  //
+  // treat list of arguments for the case of compounds
+  if (bToIntersect && bCompounds) {
+    BOPCol_ListOfShape aLSx;
+    BOPCol_ListIteratorOfListOfShape aItLS;
+    //
+    aItLS.Initialize(aLS);
+    for (; aItLS.More(); aItLS.Next()) {
+      const TopoDS_Shape& aSx = aItLS.Value();
+      TopoDS_Iterator aItS(aSx);
+      for (; aItS.More(); aItS.Next()) {
+        const TopoDS_Shape& aSxS = aItS.Value();
+        aLSx.Append(aSxS);
+      }
+    }
+    //
+    aLS.Clear();
+    aLS.Assign(aLSx);
   }
   //
   BOPAlgo_MakerVolume aMV;
   aMV.SetArguments(aLS);
   aMV.SetIntersect(bToIntersect);
   aMV.SetRunParallel(bRunParallel);
+  aMV.SetFuzzyValue(aTol);
   //
   aMV.Perform();
   if (aMV.ErrorStatus()) {
@@ -851,4 +838,3 @@ Standard_Integer mkvolume(Draw_Interpretor& di, Standard_Integer n, const char**
   //
   return 0;
 }
-

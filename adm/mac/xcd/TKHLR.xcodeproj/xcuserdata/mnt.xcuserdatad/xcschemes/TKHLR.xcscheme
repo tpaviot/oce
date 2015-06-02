@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "19330D550F4207031448046B"
+               BlueprintIdentifier = "0F2E00C10F9100A70BFC0FB6"
                BuildableName = "libTKHLR.dylib"
                BlueprintName = "TKHLR"
                ReferencedContainer = "container:TKHLR.xcodeproj">

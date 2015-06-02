@@ -12,9 +12,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#define OCC9026     //AEL Additional method to optimize performance
-//of the FindSelectedOwnerFromShape() method.
-
 inline Standard_Real SelectMgr_ViewerSelector::Sensitivity() const
 {
   return mytolerance;
@@ -35,14 +32,22 @@ inline void SelectMgr_ViewerSelector::SetPickClosest (const Standard_Boolean pre
   preferclosest = preferClosest;
 }
 
-inline const SelectBasics_PickArgs& SelectMgr_ViewerSelector::LastPickingArguments() const
+inline void SelectMgr_ViewerSelector::InitDetected()
 {
-  return myLastPickArgs;
+  myDetectedIter.Initialize (myMapOfDetected);
 }
 
-#ifdef OCC9026
-inline const SelectMgr_DataMapOfIntegerSensitive& SelectMgr_ViewerSelector::Primitives() const
+inline void SelectMgr_ViewerSelector::NextDetected()
 {
-  return myentities;
+  myDetectedIter.Next();
 }
-#endif
+
+inline Standard_Boolean SelectMgr_ViewerSelector::MoreDetected()
+{
+  return myDetectedIter.More();
+}
+
+inline SelectMgr_SelectingVolumeManager& SelectMgr_ViewerSelector::GetManager()
+{
+  return mySelectingVolumeMgr;
+}

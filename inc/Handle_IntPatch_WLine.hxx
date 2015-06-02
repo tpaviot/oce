@@ -8,13 +8,13 @@
 
 #include <Standard.hxx>
 #include <Standard_DefineHandle.hxx>
-#include <Handle_IntPatch_Line.hxx>
+#include <Handle_IntPatch_PointLine.hxx>
 
 class Standard_Transient;
 class Handle(Standard_Type);
-class Handle(IntPatch_Line);
+class Handle(IntPatch_PointLine);
 class IntPatch_WLine;
 
-DEFINE_STANDARD_HANDLE(IntPatch_WLine, IntPatch_Line)
+DEFINE_STANDARD_HANDLE(IntPatch_WLine, IntPatch_PointLine)
 
 #endif // _Handle_IntPatch_WLine_HeaderFile

@@ -31,27 +31,101 @@ set _test_case_regexp {^CASE\s+([\w.-]+)\s+([\w.-]+)\s+([\w.-]+)\s*:\s*([\w]+)(.
 # Basic command to run indicated test case in DRAW
 help test {
   Run specified test case
-  Use: test group grid casename [echo=0]
-  - If echo is set to 0 (default), log is stored in memory and only summary
-    is output (the log can be obtained with command "dlog get")
-  - If echo is set to 1 or "-echo", all commands and results are echoed 
-    immediately, but log is not saved and summary is not produced
+  Use: test group grid casename [options...]
+  Allowed options are:
+  -echo: all commands and results are echoed immediately,
+         but log is not saved and summary is not produced
+         It is also possible to use "1" instead of "-echo"
+         If echo is OFF, log is stored in memory and only summary
+         is output (the log can be obtained with command "dlog get")
+  -outfile filename: set log file (should be non-existing),
+         it is possible to save log file in text file or
+         in html file(with snapshot), for that "filename"
+         should have ".html" extension
+  -overwrite: force writing log in existing file
+  -beep: play sound signal at the end of the test
+  -errors: show all lines from the log report that are recognized as errors
+         This key will be ignored if the "-echo" key is already set.
 }
-proc test {group grid casename {echo 0}} {
+proc test {group grid casename {args {}}} {
+    # set default values of arguments
+    set echo 0
+    set errors 0
+    set logfile ""
+    set overwrite 0
+    set signal 0
+
     # get test case paths (will raise error if input is invalid)
     _get_test $group $grid $casename dir gridname casefile
 
-    # if echo specified as "-echo", convert it to bool
-    if { "$echo" == "-echo" } { set echo t }
+    # check arguments
+    for {set narg 0} {$narg < [llength $args]} {incr narg} {
+        set arg [lindex $args $narg]
+        # if echo specified as "-echo", convert it to bool
+        if { $arg == "-echo" || $arg == "1" } {
+          set echo t
+          continue
+        }
 
+        # output log file
+        if { $arg == "-outfile" } {
+          incr narg
+          if { $narg < [llength $args] && ! [regexp {^-} [lindex $args $narg]] } {
+            set logfile [lindex $args $narg]
+          } else {
+            error "Option -outfile requires argument"
+          }
+          continue
+        }
+
+        # allow overwrite existing log
+        if { $arg == "-overwrite" } {
+          set overwrite 1
+          continue
+        }
+
+        # sound signal at the end of the test
+        if { $arg == "-beep" } {
+          set signal t
+          continue
+        }
+
+        # if errors specified as "-errors", convert it to bool
+        if { $arg == "-errors" } {
+          set errors t
+          continue
+        }
+
+        # unsupported option
+        error "Error: unsupported option \"$arg\""
+    }
     # run test
     uplevel _run_test $dir $group $gridname $casefile $echo 
 
     # check log
-    if { ! $echo } {
-        _check_log $dir $group $gridname $casename [dlog get]
+    if { !$echo } {
+        _check_log $dir $group $gridname $casename $errors [dlog get] summary html_log
+
+        # create log file
+        if { ! $overwrite && [file isfile $logfile] } {
+            error "Error: Specified log file \"$logfile\" exists; please remove it before running test or use -overwrite option"
+        }
+        if {$logfile != ""} {
+          if {[file extension $logfile] == ".html"} {
+            if {[regexp {vdump ([^\s\n]+)} $html_log dump snapshot]} {
+              catch {file copy -force $snapshot [file rootname $logfile][file extension $snapshot]}
+            }
+            _log_html $logfile $html_log "Test $group $grid $casename"
+          } else {
+            _log_save $logfile "[dlog get]\n$summary" "Test $group $grid $casename"
+          }
+        }
     }
 
+    # play sound signal at the end of test
+    if {$signal} {
+      puts "\7\7\7\7"
+    }
     return
 }
 
@@ -65,6 +139,7 @@ help testgrid {
   -outdir dirname: set log directory (should be empty or non-existing)
   -overwrite: force writing logs in existing non-empty directory
   -xml filename: write XML report for Jenkins (in JUnit-like format)
+  -beep: play sound signal at the end of the tests
   Groups, grids, and test cases to be executed can be specified by list of file 
   masks, separated by spaces or comma; default is all (*).
 }
@@ -87,6 +162,7 @@ proc testgrid {args} {
     set logdir ""
     set overwrite 0
     set xmlfile ""
+    set signal 0
     for {set narg 0} {$narg < [llength $args]} {incr narg} {
 	set arg [lindex $args $narg]
 
@@ -138,6 +214,12 @@ proc testgrid {args} {
 	    if { $xmlfile == "" } {
 		set xmlfile TESTS-summary.xml
 	    }
+	    continue
+	}
+
+	# sound signal at the end of the test
+	if { $arg == "-beep" } {
+	    set signal t
 	    continue
 	}
 
@@ -288,6 +370,8 @@ proc testgrid {args} {
     }
     if { [llength $tests_list] < 1 } {
 	error "Error: no tests are found, check you input arguments and variable CSF_TestScriptsPath!"
+    } else {
+      puts "Running tests (total [llength $tests_list] test cases)..."
     }
 
     ######################################################
@@ -438,7 +522,10 @@ proc testgrid {args} {
 	_log_xml_summary $logdir $xmlfile $log 0
 	puts "XML summary is saved to $xmlfile"
     }
-
+    # play sound signal at the end of test
+    if {$signal} {
+      puts "\7\7\7\7"
+    }
     return
 }
 
@@ -864,7 +951,7 @@ proc _run_test {scriptsdir group gridname casefile echo} {
     # start timer
     uplevel dchrono _timer reset
     uplevel dchrono _timer start
-    catch {uplevel meminfo w} membase
+    catch {uplevel meminfo h} membase
 
     # enable commands logging; switch to old-style mode if dlog command is not present
     set dlog_exists 1
@@ -894,6 +981,7 @@ proc _run_test {scriptsdir group gridname casefile echo} {
     }
 
     # evaluate test case 
+    set tmp_imagedir 0
     if [catch {
         # set variables identifying test case
 	uplevel set casename [file tail $casefile]
@@ -918,6 +1006,7 @@ proc _run_test {scriptsdir group gridname casefile echo} {
             }
 
             uplevel set imagedir \"$imagedir\"
+            set tmp_imagedir 1
 	}
 
 	# execute test scripts 
@@ -961,28 +1050,33 @@ proc _run_test {scriptsdir group gridname casefile echo} {
 
     # add memory and timing info
     set stats ""
-    if { ! [catch {uplevel meminfo w} memuse] } {
-        set stats "MEMORY DELTA: [expr ($memuse - $membase) / 1024] KiB\n"
+    if { ! [catch {uplevel meminfo h} memuse] } {
+        append stats "MEMORY DELTA: [expr ($memuse - $membase) / 1024] KiB\n"
     }
     uplevel dchrono _timer stop
     set time [uplevel dchrono _timer show]
-    if [regexp -nocase {CPU user time:[ \t]*([0-9.e-]+)} $time res cpu] {
-	set stats "${stats}TOTAL CPU TIME: $cpu sec\n"
+    if { [regexp -nocase {CPU user time:[ \t]*([0-9.e-]+)} $time res cpu_usr] } {
+	append stats "TOTAL CPU TIME: $cpu_usr sec\n"
     }
     if { $dlog_exists && ! $echo } {
 	dlog add $stats
     } else {
 	puts $stats
     }
+
+    # unset global vars
+    uplevel unset casename groupname gridname dirname
+    if { $tmp_imagedir } { uplevel unset imagedir test_image }
 }
 
 # Internal procedure to check log of test execution and decide if it passed or failed
-proc _check_log {dir group gridname casename log {_summary {}} {_html_log {}}} {
+proc _check_log {dir group gridname casename errors log {_summary {}} {_html_log {}}} {
     global env
     if { $_summary != "" } { upvar $_summary summary }
     if { $_html_log != "" } { upvar $_html_log html_log }
     set summary {}
     set html_log {}
+    set errors_log {}
 
 if [catch {
 
@@ -1002,7 +1096,7 @@ if [catch {
 		continue 
 	    }
 	    set status [string trim $status]
-	    if { $comment != "" } { set status "$status ([string trim $comment])" }
+	    if { $comment != "" } { append status " ([string trim $comment])" }
 	    set rexp [regsub -all {\\b} $rexp {\\y}] ;# convert regexp from Perl to Tcl style
 	    lappend badwords [list $status $rexp]
 	}
@@ -1076,6 +1170,9 @@ if [catch {
 		# if it is not in todo, define status
 		if { ! $is_known } {
 		    set stat [lindex $bw 0 0]
+		    if {$errors} {
+		      lappend errors_log $line
+		    }
 		    lappend html_log [_html_highlight $stat $line]
 		    if { $status == "" && $stat != "OK" && ! [regexp -nocase {^IGNOR} $stat] } {
 			set status [lindex $bw 0]
@@ -1130,6 +1227,11 @@ if [catch {
     # put final message
     _log_and_puts summary "CASE $group $gridname $casename: $status"
     set summary [join $summary "\n"]
+    if {$errors} {
+      foreach error $errors_log {
+        _log_and_puts summary "  $error"
+      }
+    }
     set html_log "[_html_highlight [lindex $status 0] $summary]\n[join $html_log \n]"
 }
 
@@ -1145,9 +1247,9 @@ proc _log_and_puts {logvar message} {
 # Auxiliary procedure to log result on single test case
 proc _log_test_case {output logdir dir group grid casename logvar} {
     upvar $logvar log
-
+    set show_errors 0
     # check result and make HTML log
-    _check_log $dir $group $grid $casename $output summary html_log
+    _check_log $dir $group $grid $casename $show_errors $output summary html_log
     lappend log $summary
 
     # save log to file
@@ -1509,7 +1611,7 @@ proc _log_xml_summary {logdir filename log include_cout} {
 	} else {
 	    while { [gets $fdlog logline] >= 0 } {
 		if { $include_cout } {
-        	    set testout "$testout$logline\n"
+        	    append testout "$logline\n"
 		}
 		if [regexp -nocase {TOTAL CPU TIME:\s*([\d.]+)\s*sec} $logline res cpu] {
 		    set add_cpu " time=\"$cpu\""
@@ -1524,21 +1626,21 @@ proc _log_xml_summary {logdir filename log include_cout} {
 
 	# record test case with its output and status
 	# Mapping is: SKIPPED, BAD, and OK to OK, all other to failure
-	set testcases "$testcases\n  <testcase name=\"$casename\"$add_cpu status=\"$result\">\n"
-	set testcases "$testcases\n    <system-out>\n$testout    </system-out>"
+	append testcases "\n  <testcase name=\"$casename\"$add_cpu status=\"$result\">\n"
+	append testcases "\n    <system-out>\n$testout    </system-out>"
 	if { $result != "OK" } {
 	    if { [regexp -nocase {^SKIP} $result] } {
 		incr nberr
-		set testcases "$testcases\n    <error name=\"$result\" message=\"$message\"/>"
+		append testcases "\n    <error name=\"$result\" message=\"$message\"/>"
 	    } elseif { [regexp -nocase {^BAD} $result] } {
 		incr nbskip
-		set testcases "$testcases\n    <skipped>$message</skipped>"
+		append testcases "\n    <skipped>$message</skipped>"
 	    } else {
 		incr nbfail
-		set testcases "$testcases\n    <failure name=\"$result\" message=\"$message\"/>"
+		append testcases "\n    <failure name=\"$result\" message=\"$message\"/>"
 	    }
 	}
-	set testcases "$testcases\n  </testcase>"
+	append testcases "\n  </testcase>"
     }
 
     # write last test suite
@@ -1645,6 +1747,11 @@ proc _diff_img_name {dir1 dir2 casepath imgfile} {
     return [file join $dir1 $casepath "diff-[file tail $dir2]-$imgfile"]
 }
 
+# auxiliary procedure to produce string comparing two values
+proc _diff_show_ratio {value1 value2} {
+    return "$value1 / $value2 \[[format "%+5.2f%%" [expr 100 * ($value1 - $value2) / double($value2)]]\]"
+}
+
 # Procedure to compare results of two runs of test cases
 proc _test_diff {dir1 dir2 basename status verbose _logvar {_statvar ""}} {
     upvar $_logvar log
@@ -1689,6 +1796,10 @@ proc _test_diff {dir1 dir2 basename status verbose _logvar {_statvar ""}} {
             if { [llength $in1] > 0 } { _log_and_puts log "Only in $path1: $in1" }
             if { [llength $in2] > 0 } { _log_and_puts log "Only in $path2: $in2" }
         }
+        set gcpu1 0
+        set gcpu2 0
+        set gmem1 0
+        set gmem2 0
         foreach logfile $common {
             # load two logs
 	    set log1 [_read_file [file join $dir1 $basename $logfile]]
@@ -1720,10 +1831,12 @@ proc _test_diff {dir1 dir2 basename status verbose _logvar {_statvar ""}} {
 	         [regexp {TOTAL CPU TIME:\s*([\d.]+)} $log2 res1 cpu2] } {
                 set stat(cpu1) [expr $stat(cpu1) + $cpu1]
                 set stat(cpu2) [expr $stat(cpu2) + $cpu2]
+                set gcpu1 [expr $gcpu1 + $cpu1]
+                set gcpu2 [expr $gcpu2 + $cpu2]
 
                 # compare CPU times with 10% precision (but not less 0.5 sec)
 	        if { [expr abs ($cpu1 - $cpu2) > 0.5 + 0.05 * abs ($cpu1 + $cpu2)] } {
-	            _log_and_puts log "CPU [split $basename /] $casename: $cpu1 / $cpu2"
+	            _log_and_puts log "CPU [split $basename /] $casename: [_diff_show_ratio $cpu1 $cpu2]"
                 }
 	    }
 
@@ -1734,16 +1847,18 @@ proc _test_diff {dir1 dir2 basename status verbose _logvar {_statvar ""}} {
 	         [regexp {MEMORY DELTA:\s*([\d.]+)} $log2 res1 mem2] } {
                 set stat(mem1) [expr $stat(mem1) + $mem1]
                 set stat(mem2) [expr $stat(mem2) + $mem2]
+                set gmem1 [expr $gmem1 + $mem1]
+                set gmem2 [expr $gmem2 + $mem2]
 
                 # compare memory usage with 10% precision (but not less 16 KiB)
 	        if { [expr abs ($mem1 - $mem2) > 16 + 0.05 * abs ($mem1 + $mem2)] } {
-	            _log_and_puts log "MEMORY [split $basename /] $casename: $mem1 / $mem2"
+	            _log_and_puts log "MEMORY [split $basename /] $casename: [_diff_show_ratio $mem1 $mem2]"
                 }
 	    }
 
             # check images
-            set imglist1 [glob -directory $path1 -types f -tails -nocomplain $casename*.{png,gif}]
-            set imglist2 [glob -directory $path2 -types f -tails -nocomplain $casename*.{png,gif}]
+            set imglist1 [glob -directory $path1 -types f -tails -nocomplain ${casename}.{png,gif} ${casename}-*.{png,gif} ${casename}_*.{png,gif}]
+            set imglist2 [glob -directory $path2 -types f -tails -nocomplain ${casename}.{png,gif} ${casename}-*.{png,gif} ${casename}_*.{png,gif}]
             _list_diff $imglist1 $imglist2 imgin1 imgin2 imgcommon
             if { "$verbose" > 1 } {
                 if { [llength $imgin1] > 0 } { _log_and_puts log "Only in $path1: $imgin1" }
@@ -1764,11 +1879,19 @@ proc _test_diff {dir1 dir2 basename status verbose _logvar {_statvar ""}} {
                 }
             }
 	}
+        
+        # report CPU and memory difference in group if it is greater than 10%
+        if { [expr abs ($gcpu1 - $gcpu2) > 0.5 + 0.005 * abs ($gcpu1 + $gcpu2)] } {
+            _log_and_puts log "CPU [split $basename /]: [_diff_show_ratio $gcpu1 $gcpu2]"
+        }
+	if { [expr abs ($gmem1 - $gmem2) > 16 + 0.005 * abs ($gmem1 + $gmem2)] } {
+	    _log_and_puts log "MEMORY [split $basename /]: [_diff_show_ratio $gmem1 $gmem2]"
+        }
     }
 
     if { "$_statvar" == "" } {
-        _log_and_puts log "Total MEMORY difference: $stat(mem1) / $stat(mem2)"
-        _log_and_puts log "Total CPU difference: $stat(cpu1) / $stat(cpu2)"
+        _log_and_puts log "Total MEMORY difference: [_diff_show_ratio $stat(mem1) $stat(mem2)]"
+        _log_and_puts log "Total CPU difference: [_diff_show_ratio $stat(cpu1) $stat(cpu2)]"
     }
 }
 
@@ -1784,15 +1907,24 @@ proc _log_html_diff {file log dir1 dir2} {
     
     # print header
     puts $fd "<html><head><title>Diff $dir1 vs. $dir2</title></head><body>"
-    puts $fd "<h1>Comparison of test results: $dir1 vs. $dir2</h1>"
+    puts $fd "<h1>Comparison of test results:</h1>"
+    puts $fd "<h2>Version A - $dir1</h2>"
+    puts $fd "<h2>Version B - $dir2</h2>"
 
     # print log body, trying to add HTML links to script files on lines like
     # "Executing <filename>..."
     puts $fd "<pre>"
     set logpath [file split [file normalize $file]]
     foreach line $log {
-        puts $fd $line
+        # put a line; highlight considerable (>5%) deviations of CPU and memory
+        if { [regexp "\[\\\[](\[0-9.e+-]+)%\[\]]" $line res value] && 
+             [expr abs($value)] > 5 } {
+            puts $fd "<table><tr><td bgcolor=\"[expr $value > 0 ? \"red\" : \"lightgreen\"]\">$line</td></tr></table>"
+        } else {
+            puts $fd $line
+        }
 
+        # add images
         if { [regexp {IMAGE[ \t]+([^:]+):[ \t]+([A-Za-z0-9_.-]+)} $line res case img] } {
             if { [catch {eval file join "" [lrange $case 0 end-1]} gridpath] } {
                # note: special handler for the case if test grid directoried are compared directly
@@ -1808,7 +1940,7 @@ proc _log_html_diff {file log dir1 dir2} {
                 set imgd "N/A"
             }
 
-            puts $fd "<table><tr><th>[file tail $dir1]</th><th>[file tail $dir2]</th><th>Different pixels</th></tr>"
+            puts $fd "<table><tr><th><abbr title=\"$dir1\">Version A</abbr></th><th><abbr title=\"$dir2\">Version B</abbr></th><th>Different pixels</th></tr>"
             puts $fd "<tr><td>$img1</td><td>$img2</td><td>$imgd</td></tr></table>"
         }
     }
@@ -2025,4 +2157,146 @@ proc _testgrid_process_jobs {worker {nb_ok 0}} {
         }
     }
     catch {tpool::suspend $worker}
+}
+
+help checkcolor {
+  Check pixel color.
+  Use: checkcolor x y red green blue
+  x y - pixel coordinates
+  red green blue - expected pixel color (values from 0 to 1)
+  Function check color with tolerance (5x5 area)
+}
+# Procedure to check color using command vreadpixel with tolerance
+proc checkcolor { coord_x coord_y rd_get gr_get bl_get } {
+    puts "Coordinate x = $coord_x"
+    puts "Coordinate y = $coord_y"
+    puts "RED color of RGB is $rd_get"
+    puts "GREEN color of RGB is $gr_get"
+    puts "BLUE color of RGB is $bl_get"
+
+    if { $coord_x <= 1 || $coord_y <= 1 } {
+      puts "Error : minimal coordinate is x = 2, y = 2. But we have x = $coord_x y = $coord_y"
+      return -1
+    }
+
+    set color ""
+    catch { [set color "[vreadpixel ${coord_x} ${coord_y} rgb]"] }
+    if {"$color" == ""} {
+      puts "Error : Pixel coordinates (${position_x}; ${position_y}) are out of view"
+    }
+    set rd [lindex $color 0]
+    set gr [lindex $color 1]
+    set bl [lindex $color 2]
+    set rd_int [expr int($rd * 1.e+05)]
+    set gr_int [expr int($gr * 1.e+05)]
+    set bl_int [expr int($bl * 1.e+05)]
+    set rd_ch [expr int($rd_get * 1.e+05)]
+    set gr_ch [expr int($gr_get * 1.e+05)]
+    set bl_ch [expr int($bl_get * 1.e+05)]
+
+    if { $rd_ch != 0 } {
+      set tol_rd [expr abs($rd_ch - $rd_int)/$rd_ch]
+    } else {
+      set tol_rd $rd_int
+    }
+    if { $gr_ch != 0 } {
+      set tol_gr [expr abs($gr_ch - $gr_int)/$gr_ch]
+    } else {
+      set tol_gr $gr_int
+    }
+    if { $bl_ch != 0 } {
+      set tol_bl [expr abs($bl_ch - $bl_int)/$bl_ch]
+    } else {
+      set tol_bl $bl_int
+    }
+
+    set status 0
+    if { $tol_rd > 0.2 } {
+      puts "Warning : RED light of additive color model RGB is invalid"
+      set status 1
+    }
+    if { $tol_gr > 0.2 } {
+      puts "Warning : GREEN light of additive color model RGB is invalid"
+      set status 1
+    }
+    if { $tol_bl > 0.2 } {
+      puts "Warning : BLUE light of additive color model RGB is invalid"
+      set status 1
+    }
+
+    if { $status != 0 } {
+      puts "Warning : Colors of default coordinate are not equal"
+    }
+
+    global stat
+    if { $tol_rd > 0.2 || $tol_gr > 0.2 || $tol_bl > 0.2 } {
+      set info [_checkpoint $coord_x $coord_y $rd_ch $gr_ch $bl_ch]
+      set stat [lindex $info end]
+      if { ${stat} != 1 } {
+          puts "Error : Colors are not equal in default coordinate and in the near coordinates too"
+          return $stat
+      } else {
+          puts "Point with valid color was found"
+          return $stat
+      }
+    } else {
+      set stat 1
+    }
+}
+
+# Procedure to check color in the point near default coordinate
+proc _checkpoint {coord_x coord_y rd_ch gr_ch bl_ch} {
+    set x_start [expr ${coord_x} - 2]
+    set y_start [expr ${coord_y} - 2]
+    set mistake 0
+    set i 0
+    while { $mistake != 1 && $i <= 5 } {
+      set j 0
+      while { $mistake != 1 && $j <= 5 } {
+          set position_x [expr ${x_start} + $j]
+          set position_y [expr ${y_start} + $i]
+          puts $position_x
+          puts $position_y
+
+          set color ""
+          catch { [set color "[vreadpixel ${position_x} ${position_y} rgb]"] }
+          if {"$color" == ""} {
+            puts "Warning : Pixel coordinates (${position_x}; ${position_y}) are out of view"
+            incr j
+            continue
+          }
+          set rd [lindex $color 0]
+          set gr [lindex $color 1]
+          set bl [lindex $color 2]
+          set rd_int [expr int($rd * 1.e+05)]
+          set gr_int [expr int($gr * 1.e+05)]
+          set bl_int [expr int($bl * 1.e+05)]
+
+          if { $rd_ch != 0 } {
+            set tol_rd [expr abs($rd_ch - $rd_int)/$rd_ch]
+          } else {
+            set tol_rd $rd_int
+          }
+          if { $gr_ch != 0 } {
+            set tol_gr [expr abs($gr_ch - $gr_int)/$gr_ch]
+          } else {
+            set tol_gr $gr_int
+          }
+          if { $bl_ch != 0 } {
+            set tol_bl [expr abs($bl_ch - $bl_int)/$bl_ch]
+          } else {
+            set tol_bl $bl_int
+          }
+
+          if { $tol_rd > 0.2 || $tol_gr > 0.2 || $tol_bl > 0.2 } {
+            puts "Warning : Point with true color was not found near default coordinates"
+            set mistake 0
+          } else {
+            set mistake 1
+          }
+          incr j
+      }
+      incr i
+    }
+    return $mistake
 }

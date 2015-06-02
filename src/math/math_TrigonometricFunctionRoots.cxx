@@ -29,9 +29,11 @@
 #include <Standard_OutOfRange.hxx>
 #include <math_FunctionWithDerivative.hxx>
 #include <math_NewtonFunctionRoot.hxx>
+#include <Precision.hxx>
 
 
-class MyTrigoFunction: public math_FunctionWithDerivative {
+class MyTrigoFunction: public math_FunctionWithDerivative
+{
   Standard_Real AA;
   Standard_Real BB;
   Standard_Real CC;
@@ -39,21 +41,19 @@ class MyTrigoFunction: public math_FunctionWithDerivative {
   Standard_Real EE;
 
  public:
-  MyTrigoFunction(const Standard_Real A, const Standard_Real B, const Standard_Real C, const Standard_Real D, 
-	     const Standard_Real E);
+  MyTrigoFunction(const Standard_Real A,
+                  const Standard_Real B,
+                  const Standard_Real C,
+                  const Standard_Real D,
+                  const Standard_Real E)
+  : AA(A), BB(B), CC(C), DD(D), EE(E)
+  {
+  }
+
   Standard_Boolean Value(const Standard_Real X, Standard_Real& F);
   Standard_Boolean Derivative(const Standard_Real X, Standard_Real& D);
   Standard_Boolean Values(const Standard_Real X, Standard_Real& F, Standard_Real& D);
 };
-
- MyTrigoFunction::MyTrigoFunction(const Standard_Real A, const Standard_Real B, const Standard_Real C,
-			const Standard_Real D, const Standard_Real E) {
-   AA = A;
-   BB = B;
-   CC = C; 
-   DD = D; 
-   EE = E;
- }
 
  Standard_Boolean MyTrigoFunction::Value(const Standard_Real X, Standard_Real& F) {
    Standard_Real CN= cos(X), SN = sin(X);
@@ -86,37 +86,52 @@ class MyTrigoFunction: public math_FunctionWithDerivative {
  }
 
 
-math_TrigonometricFunctionRoots::math_TrigonometricFunctionRoots(const Standard_Real D,
-                         const Standard_Real E,
-			 const Standard_Real InfBound,
-			 const Standard_Real SupBound): Sol(1, 4) {
-
-  Standard_Real A = 0.0, B = 0.0, C = 0.0;
-  Perform(A, B, C, D, E, InfBound, SupBound);			   
+math_TrigonometricFunctionRoots::math_TrigonometricFunctionRoots
+                                (const Standard_Real theD,
+                                 const Standard_Real theE,
+                                 const Standard_Real theInfBound,
+                                 const Standard_Real theSupBound)
+: NbSol         (-1),
+  Sol           (1, 4),
+  InfiniteStatus(Standard_False),
+  Done          (Standard_False)
+{
+  const Standard_Real A(0.0), B(0.0), C(0.0);
+  Perform(A, B, C, theD, theE, theInfBound, theSupBound);
 }
 
 
-math_TrigonometricFunctionRoots::math_TrigonometricFunctionRoots(const Standard_Real C,
-                         const Standard_Real D,
-                         const Standard_Real E,
-			 const Standard_Real InfBound,
-			 const Standard_Real SupBound): Sol(1, 4) {
-
-  Standard_Real A =0.0, B = 0.0;
-  Perform(A, B, C, D, E, InfBound, SupBound);			   
+math_TrigonometricFunctionRoots::math_TrigonometricFunctionRoots
+                                (const Standard_Real theC,
+                                 const Standard_Real theD,
+                                 const Standard_Real theE,
+                                 const Standard_Real theInfBound,
+                                 const Standard_Real theSupBound)
+: NbSol         (-1),
+  Sol           (1, 4),
+  InfiniteStatus(Standard_False),
+  Done          (Standard_False)
+{
+  const Standard_Real A(0.0), B(0.0);
+  Perform(A, B, theC, theD, theE, theInfBound, theSupBound);
 }
 
 
 
-math_TrigonometricFunctionRoots::math_TrigonometricFunctionRoots(const Standard_Real A,
-			 const Standard_Real B,
-			 const Standard_Real C,
-                         const Standard_Real D,
-                         const Standard_Real E,
-			 const Standard_Real InfBound,
-			 const Standard_Real SupBound): Sol(1, 4) {
- 
-  Perform(A, B, C, D, E, InfBound, SupBound);
+math_TrigonometricFunctionRoots::math_TrigonometricFunctionRoots
+                                (const Standard_Real theA,
+                                 const Standard_Real theB,
+                                 const Standard_Real theC,
+                                 const Standard_Real theD,
+                                 const Standard_Real theE,
+                                 const Standard_Real theInfBound,
+                                 const Standard_Real theSupBound)
+: NbSol         (-1),
+  Sol           (1, 4),
+  InfiniteStatus(Standard_False),
+  Done          (Standard_False)
+{
+  Perform(theA, theB, theC, theD, theE, theInfBound, theSupBound);
 }
 
 void math_TrigonometricFunctionRoots::Perform(const Standard_Real A, 
@@ -164,97 +179,207 @@ void math_TrigonometricFunctionRoots::Perform(const Standard_Real A,
   if ((Abs(A) <= Eps) && (Abs(B) <= Eps)) {
     if (Abs(C) <= Eps) {
       if (Abs(D) <= Eps) {
-	if (Abs(E) <= Eps) {
-	  InfiniteStatus = Standard_True;   // infinite de solutions.
-	  return;
-	}
-	else {
-	  NbSol = 0;
-	  return;
-	}
+        if (Abs(E) <= Eps) {
+          InfiniteStatus = Standard_True;   // infinite de solutions.
+          return;
+        }
+        else {
+          NbSol = 0;
+          return;
+        }
       }
       else { 
-// Equation du type d*sin(x) + e = 0
-// =================================	
-	NbSol = 0;
-	AA = -E/D;
-	if (Abs(AA) > 1.) {
-	  return;
-	}
+        // Equation du type d*sin(x) + e = 0
+        // =================================	
+        NbSol = 0;
+        AA = -E/D;
+        if (Abs(AA) > 1.) {
+          return;
+        }
 
-	Zer(1) = ASin(AA);
-	Zer(2) = M_PI - Zer(1);
-	NZer = 2;
-	for (i = 1; i <= NZer; i++) {
-	  if (Zer(i) <= -Eps) {
-	    Zer(i) = Depi - Abs(Zer(i));
-	  }
-	  // On rend les solutions entre InfBound et SupBound:
-	  // =================================================
-	  Zer(i) += IntegerPart(Mod)*Depi;
-	  X = Zer(i)-MyBorneInf;
-	  if ((X > (-Epsilon(Delta))) && (X < Delta+ Epsilon(Delta))) {
-	    NbSol++;
-	    Sol(NbSol) = Zer(i);
-	  }
-	}
+        Zer(1) = ASin(AA);
+        Zer(2) = M_PI - Zer(1);
+        NZer = 2;
+        for (i = 1; i <= NZer; i++) {
+          if (Zer(i) <= -Eps) {
+            Zer(i) = Depi - Abs(Zer(i));
+          }
+          // On rend les solutions entre InfBound et SupBound:
+          // =================================================
+          Zer(i) += IntegerPart(Mod)*Depi;
+          X = Zer(i)-MyBorneInf;
+          if ((X > (-Epsilon(Delta))) && (X < Delta+ Epsilon(Delta))) {
+            NbSol++;
+            Sol(NbSol) = Zer(i);
+          }
+        }
       }
       return;
     }
     else if (Abs(D) <= Eps)  {
 
-// Equation du premier degre de la forme c*cos(x) + e = 0
-// ======================================================	  
+      // Equation du premier degre de la forme c*cos(x) + e = 0
+      // ======================================================	  
       NbSol = 0;
       AA = -E/C;
       if (Abs(AA) >1.) {
-	return;
+        return;
       }
       Zer(1) = ACos(AA);
       Zer(2) = -Zer(1);
       NZer = 2;
 
       for (i = 1; i <= NZer; i++) {
-	if (Zer(i) <= -Eps) {
-	  Zer(i) = Depi-Abs(Zer(i));
-	}
-	// On rend les solutions entre InfBound et SupBound:
-	// =================================================
-	Zer(i) += IntegerPart(Mod)*2.*M_PI;
-	X = Zer(i)-MyBorneInf;
-	if ((X >= (-Epsilon(Delta))) && (X <= Delta+ Epsilon(Delta))) {
-	  NbSol++;
-	  Sol(NbSol) = Zer(i);
-	}
+        if (Zer(i) <= -Eps) {
+          Zer(i) = Depi - Abs(Zer(i));
+        }
+        // On rend les solutions entre InfBound et SupBound:
+        // =================================================
+        Zer(i) += IntegerPart(Mod)*2.*M_PI;
+        X = Zer(i)-MyBorneInf;
+        if ((X >= (-Epsilon(Delta))) && (X <= Delta+ Epsilon(Delta))) {
+          NbSol++;
+          Sol(NbSol) = Zer(i);
+        }
       }
       return;
     }
     else {
 
-// Equation du second degre:
-// =========================
+      // Equation du second degre:
+      // =========================
       AA = E - C;
       BB = 2.0*D;
       CC = E + C;
 
       math_DirectPolynomialRoots Resol(AA, BB, CC);
       if (!Resol.IsDone()) {
-	Done = Standard_False;
-	return;
+        Done = Standard_False;
+        return;
       }
       else if(!Resol.InfiniteRoots()) {
-	NZer = Resol.NbSolutions();
-	for (i = 1; i <= NZer; i++) {
-	  Zer(i) = Resol.Value(i);
-	}
+        NZer = Resol.NbSolutions();
+        for (i = 1; i <= NZer; i++) {
+          Zer(i) = Resol.Value(i);
+        }
       }
       else if (Resol.InfiniteRoots()) {
-	InfiniteStatus = Standard_True;
-	return;
+        InfiniteStatus = Standard_True;
+        return;
       }
     }
   }
   else {
+    // Two additional analytical cases.
+    if ((Abs(A) <= Eps) && 
+        (Abs(E) <= Eps))
+    {
+      if (Abs(C) <= Eps)
+      {
+        // 2 * B * sin * cos + D * sin = 0
+        NZer = 2;
+        Zer(1) = 0.0;
+        Zer(2) = M_PI;
+
+        AA = -D/(B * 2);
+        if (Abs(AA) <= 1.0 + Precision::PConfusion())
+        {
+          NZer = 4;
+          if (AA >= 1.0)
+          {
+            Zer(3)= 0.0;
+            Zer(4)= 0.0;
+          }
+          else if (AA <= -1.0)
+          {
+            Zer(3)= M_PI;
+            Zer(4)= M_PI;
+          }
+          else
+          {
+            Zer(3)= ACos(AA);
+            Zer(4) = Depi - Zer(3);
+          }
+        }
+
+        NbSol = 0;
+        for (i = 1; i <= NZer; i++) 
+        {
+          if (Zer(i) <= MyBorneInf - Eps)
+          {
+            Zer(i) += Depi;
+          }
+          // On rend les solutions entre InfBound et SupBound:
+          // =================================================
+          Zer(i) += IntegerPart(Mod)*2.*M_PI;
+          X = Zer(i)-MyBorneInf;
+          if ((X >= (-Precision::PConfusion())) && 
+              (X <= Delta + Precision::PConfusion()))
+          {
+            if (Zer(i) < InfBound)
+              Zer(i) = InfBound;
+            if (Zer(i) > SupBound)
+              Zer(i) = SupBound;
+            NbSol++;
+            Sol(NbSol) = Zer(i);
+          }
+        }
+        return;
+      }
+      if (Abs(D) <= Eps)
+      {
+        // 2 * B * sin * cos + C * cos = 0
+        NZer = 2;
+        Zer(1) = M_PI / 2.0;
+        Zer(2) = M_PI * 3.0 / 2.0;
+
+        AA = -C/(B * 2);
+        if (Abs(AA) <= 1.0 + Precision::PConfusion())
+        {
+          NZer = 4;
+          if (AA >= 1.0)
+          {
+            Zer(3) = M_PI / 2.0;
+            Zer(4) = M_PI / 2.0;
+          }
+          else if (AA <= -1.0)
+          {
+            
+            Zer(3) = M_PI * 3.0 / 2.0;
+            Zer(4) = M_PI * 3.0 / 2.0;
+          }
+          else
+          {
+            Zer(3)= ASin(AA);
+            Zer(4) = M_PI - Zer(3);
+          }
+        }
+
+        NbSol = 0;
+        for (i = 1; i <= NZer; i++) 
+        {
+          if (Zer(i) <= MyBorneInf - Eps)
+          {
+            Zer(i) += Depi;
+          }
+          // On rend les solutions entre InfBound et SupBound:
+          // =================================================
+          Zer(i) += IntegerPart(Mod)*2.*M_PI;
+          X = Zer(i)-MyBorneInf;
+          if ((X >= (-Precision::PConfusion())) && 
+              (X <= Delta + Precision::PConfusion()))
+          {
+            if (Zer(i) < InfBound)
+              Zer(i) = InfBound;
+            if (Zer(i) > SupBound)
+              Zer(i) = SupBound;
+            NbSol++;
+            Sol(NbSol) = Zer(i);
+          }
+        }
+        return;
+      }
+    }
 
 // Equation du 4 ieme degre
 // ========================

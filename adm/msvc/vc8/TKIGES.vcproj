@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKIGES"
-	ProjectGUID="{64493C40-116A-024A-0215-15B712A61661}"
+	ProjectGUID="{A6F571E3-15C0-15FC-0563-1432CB12DA9A}"
 	>
 	<Platforms>
 		<Platform

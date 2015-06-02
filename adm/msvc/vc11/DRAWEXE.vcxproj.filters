@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{2F3886E2-14F8-0263-08C9-FF7B960AED45}</UniqueIdentifier>
+      <UniqueIdentifier>{C360325E-03AD-0795-0D7A-54FE9816C25B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DRAWEXE">
-      <UniqueIdentifier>{5F5D725E-0573-0A1D-0B2D-383B16AF5F86}</UniqueIdentifier>
+      <UniqueIdentifier>{31EA0D0F-07C4-06E5-14DB-D8E7A14F0327}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

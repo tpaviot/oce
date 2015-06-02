@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="FWOSPlugin"
-	ProjectGUID="{F980FD88-1131-0355-0CA1-14B266CC7D76}"
+	ProjectGUID="{3096105C-0174-0F15-0120-15013B03E8D7}"
 	>
 	<Platforms>
 		<Platform
