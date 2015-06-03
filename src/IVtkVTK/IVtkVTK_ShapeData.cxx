@@ -35,17 +35,19 @@ IMPLEMENT_STANDARD_RTTIEXT(IVtkVTK_ShapeData, IVtk_IShapeData)
 // Purpose  : 
 //================================================================
 IVtkVTK_ShapeData::IVtkVTK_ShapeData()
- : myPolyData( vtkPolyData::New() )
+ : myPolyData( vtkSmartPointer<vtkPolyData>::New() )
 {
   myPolyData->Allocate();
-  myPolyData->SetPoints (vtkPoints::New());
+  vtkPoints* points = vtkPoints::New();
+  myPolyData->SetPoints (points);
+  points->Delete();
 
-  mySubShapeIDs = vtkIdTypeArray::New();
+  mySubShapeIDs = vtkSmartPointer<vtkIdTypeArray>::New();
   mySubShapeIDs->SetName (IVtkVTK_ShapeData::ARRNAME_SUBSHAPE_IDS);
   mySubShapeIDs->SetNumberOfComponents (1);
   myPolyData->GetCellData()->AddArray (mySubShapeIDs);
 
-  myMeshTypes = vtkIdTypeArray::New();
+  myMeshTypes = vtkSmartPointer<vtkIdTypeArray>::New();
   myMeshTypes->SetName (IVtkVTK_ShapeData::ARRNAME_MESH_TYPES);
   myMeshTypes->SetNumberOfComponents (1);
   myPolyData->GetCellData()->AddArray (myMeshTypes);
