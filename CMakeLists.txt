@@ -265,6 +265,14 @@ if(MSVC_IDE)
 	endif (NOT DEFINED OCE_USE_MSVC_EXPRESS)
 	option( OCE_USE_MSVC_EXPRESS "Use a Visual C++ express IDE"
 		${OCE_USE_MSVC_EXPRESS} )
+
+	if(NOT OCE_USE_MSVC_EXPRESS)
+		#Use solution folders.
+		set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+		set(USE_SOLUTION_FOLDERS TRUE)
+	else( NOT OCE_USE_MSVC_EXPRESS)
+		set_property(GLOBAL PROPERTY USE_FOLDERS OFF)
+	endif( NOT OCE_USE_MSVC_EXPRESS)
 endif(MSVC_IDE)
 
 set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_RELEASE NDEBUG)
@@ -812,16 +820,6 @@ if (MSVC)
 	add_definitions("/D_CRT_SECURE_NO_WARNINGS")
 	add_definitions("/D_CRT_NONSTDC_NO_WARNINGS")
 endif(MSVC)
-
-if(MSVC_IDE)
-	if(NOT OCE_USE_MSVC_EXPRESS)
-		#Use solution folders.
-		set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-		set(USE_SOLUTION_FOLDERS TRUE)
-	else( NOT OCE_USE_MSVC_EXPRESS)
-		set_property(GLOBAL PROPERTY USE_FOLDERS OFF)
-	endif( NOT OCE_USE_MSVC_EXPRESS)
-endif(MSVC_IDE)
 
 # Libraries are installed by default in /usr/local/lib on UNIX
 # based platforms and c:/OCE-VERSION/Win[32|64]/lib on windows based
