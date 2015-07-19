@@ -111,11 +111,6 @@ else()
 	endif(OCE_NO_LIBRARY_VERSION)
 endif()
 
-if(MSVC OR MINGW)
-	option_with_default( OCE_USE_BUNDLE "Use OCE Windows Bundle that has been built and installed" OFF )
-	option_with_default( OCE_USE_BUNDLE_SOURCE "Use OCE Windows Bundle source and incorporate into current project" OFF )
-endif(MSVC OR MINGW)
-
 if(BORLAND)
 	option_with_default( OCE_INSTALL_TDS_FILES "Instal TDS files (debug informations)" ON )
 endif(BORLAND)
@@ -334,6 +329,19 @@ if(OCE_DRAW AND NOT OCE_VISUALISATION)
 	set(OCE_VISUALISATION ON CACHE BOOL "Build visualisation component" FORCE)
 endif(OCE_DRAW AND NOT OCE_VISUALISATION)
 
+# oce-win-bundle handling for MSVC and MINGW
+if(MSVC OR MINGW)
+  if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/oce-win-bundle/oce-bundle-root.empty")
+      MESSAGE("Using oce-win-bundle checkout")
+      option_with_default( OCE_USE_BUNDLE "Use OCE Windows Bundle that has been built and installed" ON )
+      
+      if(OCE_USE_BUNDLE)
+          ADD_SUBDIRECTORY(oce-win-bundle)
+          SET(OCE_SKIP_FIND_LIBRARIES TRUE)
+      ENDIF()
+  endif()
+endif(MSVC OR MINGW)
+
 if(OCE_VISUALISATION AND OCE_WITH_VTK)
 	find_package(VTK REQUIRED)
 endif()
@@ -402,10 +410,6 @@ if(OCE_MULTITHREAD_LIBRARY STREQUAL "OPENMP")
 	find_package(OpenMP)
 endif(OCE_MULTITHREAD_LIBRARY STREQUAL "OPENMP")
 
-if (OCE_USE_BUNDLE OR OCE_USE_BUNDLE_SOURCE)
-	find_path(OCE_BUNDLE_ROOT_PATH oce-bundle-root.empty "Path for the OCE-win-bundle")
-endif(OCE_USE_BUNDLE OR OCE_USE_BUNDLE_SOURCE)
-
 if(OCE_VISU_DEP AND NOT OCE_DISABLE_TKSERVICE_FONT)
 	set(OCE_REQUIRES_FREETYPE TRUE)
 endif()
@@ -417,18 +421,14 @@ if(OCE_VISU_DEP)
 	endif (NOT (WIN32 OR (APPLE AND OCE_OSX_USE_COCOA)))
 endif(OCE_VISU_DEP)
 
-if(OCE_REQUIRES_FREETYPE)
+if(OCE_REQUIRES_FREETYPE AND NOT OCE_SKIP_FIND_LIBRARIES)
 	## TKService requires FreeType
-	if(NOT OCE_USE_BUNDLE AND NOT OCE_USE_BUNDLE_SOURCE)
-		find_package(Freetype REQUIRED)
-	else (NOT OCE_USE_BUNDLE AND NOT OCE_USE_BUNDLE_SOURCE)
-		find_library(FREETYPE_LIBRARY freetype)
-	endif(NOT OCE_USE_BUNDLE AND NOT OCE_USE_BUNDLE_SOURCE)
-
+	find_package(Freetype REQUIRED)
+	
 	if(CMAKE_CONFIGURATION_TYPES OR NMAKE)
 		find_library(FREETYPE_LIBRARY_DEBUG freetyped "Location of freetype debug library")
 	endif(CMAKE_CONFIGURATION_TYPES OR NMAKE)
-endif(OCE_REQUIRES_FREETYPE)
+endif()
 
 if(OCE_VISUALISATION)
 	if(OCE_WITH_FREEIMAGE)
@@ -548,34 +548,6 @@ if(OCE_DRAW)
 		src/DrawResources/lamp.ico
 		src/TObj/TObj.msg )
 endif(OCE_DRAW)
-
-if (OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
-	message("Using previously built and installed OCE Bundle")
-	if (OCE_VISU_DEP)
-		if(OCE_REQUIRES_FREETYPE)
-			set(FREETYPE_INCLUDE_DIR_freetype2 ${OCE_BUNDLE_ROOT_PATH}/include/freetype CACHE PATH "" FORCE)
-			set(FREETYPE_INCLUDE_DIR_ft2build ${OCE_BUNDLE_ROOT_PATH}/include/freetype CACHE PATH "" FORCE)
-			set(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR_freetype2} ${FREETYPE_INCLUDE_DIR_ft2build})
-			set(FREETYPE_LIBRARY ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARIES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetyped.lib CACHE FILEPATH "" FORCE)
-		endif(OCE_REQUIRES_FREETYPE)
-
-		if(OCE_WITH_GL2PS)
-			set(GL2PS_LIBRARY ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2ps.lib CACHE FILEPATH "" FORCE)
-			set(GL2PS_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2psd.lib CACHE FILEPATH "" FORCE)
-			set(GL2PS_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/include/gl2ps CACHE PATH "" FORCE)
-		endif(OCE_WITH_GL2PS)
-
-		if(OCE_WITH_FREEIMAGE)
-			set(FREEIMAGE_LIBRARY ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImage.lib CACHE FILEPATH "" FORCE)
-			set(FREEIMAGE_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImaged.lib CACHE FILEPATH "" FORCE)
-			set(FREEIMAGEPLUS_LIBRARY ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImagePlus.lib CACHE FILEPATH "" FORCE)
-			set(FREEIMAGEPLUS_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImagePlusd.lib CACHE FILEPATH "" FORCE)
-			set(FREEIMAGE_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/include/FreeImage CACHE PATH "" FORCE)
-		endif(OCE_WITH_FREEIMAGE)
-	endif (OCE_VISU_DEP)
-endif(OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/build_inc
 	${CMAKE_CURRENT_SOURCE_DIR}/inc)
@@ -831,94 +803,6 @@ else(WIN32)
 	set(_PSUFFIX "")
 endif(WIN32)
 
-# If OCE_USE_BUNDLE_SOURCE, then we need to add oce-win-bundle and set variables
-# so the oce build can find the various headers and libraries.
-if (OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
-	# Embed oce-win-bundle project into this CMake project
-	message("Using OCE Bundle in same CMake project")
-	add_subdirectory( ${OCE_BUNDLE_ROOT_PATH} ${CMAKE_BINARY_DIR}/oce-win-bundle )
-
-	# The installation directory of the bundle must match the one of OCE
-	set(OCE_WIN_BUNDLE_INSTALL_DIR ${OCE_INSTALL_PREFIX} CACHE PATH "" FORCE)
-	
-	# Look for includes in bundle source directory.
-	# Put oce-win-bundle libraries and dlls in same place OCE libraries and dlls are going,
-	# and set variables to point OCE to them.
-	if (OCE_VISUALISATION OR OCE_VISU_DEP)
-		if(OCE_REQUIRES_FREETYPE)
-			set(FREETYPE_INCLUDE_DIR_freetype2 ${OCE_BUNDLE_ROOT_PATH}/libs/freetype CACHE PATH "" FORCE)
-			set(FREETYPE_INCLUDE_DIR_ft2build ${OCE_BUNDLE_ROOT_PATH}/libs/freetype/include CACHE PATH "" FORCE)
-			set(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR_freetype2} ${FREETYPE_INCLUDE_DIR_ft2build})
-		endif(OCE_REQUIRES_FREETYPE)
-
-		get_target_property(FREETYPE_ARCHIVE_OUTPUT_DIRECTORY freetype ARCHIVE_OUTPUT_DIRECTORY)
-		
-		if(MINGW)
-			# The archive output directory is set for MinGW, since the new methodology (see statement above)
-			# seems not to work with the MinGw generator
-			set(FREETYPE_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
-		
-			set(FREETYPE_LIBRARY ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libfreetype.dll.a CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARIES ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libfreetype.dll.a CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARY_DEBUG ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libfreetype.dll.a CACHE FILEPATH "" FORCE)
-		else(MINGW)
-			set(FREETYPE_LIBRARY ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/freetype.lib CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARIES ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/freetype.lib CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARY_DEBUG ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/freetyped.lib CACHE FILEPATH "" FORCE)
-		endif(MINGW)
-
-		if(OCE_WITH_GL2PS)
-			get_target_property(GL2PS_ARCHIVE_OUTPUT_DIRECTORY gl2ps ARCHIVE_OUTPUT_DIRECTORY)
-			
-			if(MINGW)
-				# The archive output directory is set for MinGW, since the new methodology (see statement above)
-				# seems not to work with the MinGw generator
-				set(GL2PS_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
-				
-				set(GL2PS_LIBRARY ${GL2PS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libgl2ps.dll.a CACHE FILEPATH "" FORCE)
-				set(GL2PS_LIBRARY_DEBUG ${GL2PS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libgl2ps.dll.a CACHE FILEPATH "" FORCE)
-			else(MINGW)
-				set(GL2PS_LIBRARY ${GL2PS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gl2ps.lib CACHE FILEPATH "" FORCE)
-				set(GL2PS_LIBRARY_DEBUG ${GL2PS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gl2psd.lib CACHE FILEPATH "" FORCE)
-			endif(MINGW)
-			
-			set(GL2PS_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/libs/gl2ps CACHE PATH "" FORCE)
-		endif(OCE_WITH_GL2PS)
-
-		if(OCE_WITH_FREEIMAGE)
-			get_target_property(FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY FreeImage ARCHIVE_OUTPUT_DIRECTORY)
-
-			if(MINGW)
-				# The archive output directory is set for MinGW, since the new methodology (see statement above)
-				# seems not to work with the MinGw generator
-				set(FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
-				
-				set(FREEIMAGE_LIBRARY ${FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImage.dll.a CACHE FILEPATH "" FORCE)
-				set(FREEIMAGE_LIBRARY_DEBUG ${FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImage.dll.a CACHE FILEPATH "" FORCE)
-			else(MINGW)
-				set(FREEIMAGE_LIBRARY ${FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/FreeImage.lib CACHE FILEPATH "" FORCE)
-				set(FREEIMAGE_LIBRARY_DEBUG ${FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/FreeImaged.lib CACHE FILEPATH "" FORCE)
-			endif(MINGW)
-
-			get_target_property(FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY FreeImagePlus ARCHIVE_OUTPUT_DIRECTORY)
-
-			if(MINGW)
-				# The archive output directory is set for MinGW, since the new methodology (see statement above)
-				# seems not to work with the MinGw generator
-				set(FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
-				
-				set(FREEIMAGEPLUS_LIBRARY ${FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImagePlus.dll.a CACHE FILEPATH "" FORCE)
-				set(FREEIMAGEPLUS_LIBRARY_DEBUG ${FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImagePlus.dll.a CACHE FILEPATH "" FORCE)
-			else(MINGW)
-				set(FREEIMAGEPLUS_LIBRARY ${FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/FreeImagePlus.lib CACHE FILEPATH "" FORCE)
-				set(FREEIMAGEPLUS_LIBRARY_DEBUG ${FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/FreeImagePlusd.lib CACHE FILEPATH "" FORCE)
-			endif(MINGW)
-
-			set(FREEIMAGE_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/libs/FreeImage/Source ${OCE_BUNDLE_ROOT_PATH}/libs/FreeImage/Wrapper/FreeImagePlus CACHE PATH "" FORCE)
-		endif(OCE_WITH_FREEIMAGE)
-	endif (OCE_VISUALISATION OR OCE_VISU_DEP)
-endif(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
-
 # Binaries
 if(NOT DEFINED OCE_INSTALL_BIN_DIR)
 	set(OCE_INSTALL_BIN_DIR ${_PSUFFIX}bin)
@@ -1141,16 +1025,6 @@ install(FILES ${PROJECT_BINARY_DIR}/OCEConfig.cmake ${PROJECT_BINARY_DIR}/OCECon
 	DESTINATION ${OCE_INSTALL_CMAKE_DATA_DIR} COMPONENT Development )
 
 install(EXPORT OCE-libraries DESTINATION ${OCE_INSTALL_CMAKE_DATA_DIR} COMPONENT Development)
-
-if(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
-	# Add dependencies between OCE and oce-win-bundle
-  if(OCE_WITH_FREEIMAGE)
-    add_dependencies( TKService FreeImage )
-  endif()
-  if (OCE_VISUALISATION)
-    add_dependencies( TKOpenGl freetype gl2ps )
-  endif()
-endif(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 
 ############
 # PostBuild Step
