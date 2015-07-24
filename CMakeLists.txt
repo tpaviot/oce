@@ -1030,8 +1030,8 @@ install(EXPORT OCE-libraries DESTINATION ${OCE_INSTALL_CMAKE_DATA_DIR} COMPONENT
 # PostBuild Step
 ############
 # In win32, dependent libraries are required to run tests.
-
-if(MSVC AND OCE_TESTING)
+# Todo this works only with the bundle, all other libraries are not copied.
+if(MSVC AND OCE_TESTING AND OCE_USE_BUNDLE)
 
 		# Try to find TCL .dll filename
 		if (OCE_DRAW)
@@ -1043,92 +1043,26 @@ if(MSVC AND OCE_TESTING)
 		add_custom_target(PostBuild ALL ${CMAKE_COMMAND} -E echo Copying dependent files DEPENDS ALL)
 
 		if ( CMAKE_CONFIGURATION_TYPES )
+			SET(MY_CMAKE_CONFIGURATION_TYPES ${CMAKE_CONFIGURATION_TYPES})
+		else()
+			SET(MY_CMAKE_CONFIGURATION_TYPES ${CMAKE_BUILD_TYPE})
+		endif()
 
-			# This loop copies the DLLs in each configuration binary dir.
-			foreach (config ${CMAKE_CONFIGURATION_TYPES})
-				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM )
-
-				if (OCE_DRAW)
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-				endif()
-
-				# With USE_BUNDLE_SOURCE, the dll's referenced below are already in the
-				# correct locations.
-				if(NOT OCE_USE_BUNDLE_SOURCE)
-					set(TMP_SRCDIR ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/)
-					set(TMP_DESTDIR ${LIBRARY_OUTPUT_PATH}/${config})
-					string(REGEX REPLACE "/" "\\\\" TMP_SRCDIR ${TMP_SRCDIR})
-					string(REGEX REPLACE "/" "\\\\" TMP_DESTDIR ${TMP_DESTDIR})
-					set (TMP_FILELIST FreeImage gl2ps freetype FreeImagePlus)
-
-					if (${config} MATCHES "Debug")
-						set(TMP_SUFFIX "d")
-					else ()
-						set(TMP_SUFFIX)
-					endif()
-
-					foreach (TMP_FILE ${TMP_FILELIST} )
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND xcopy /Y ${TMP_SRCDIR}${TMP_FILE}${TMP_SUFFIX}.dll ${TMP_DESTDIR} VERBATIM )
-					endforeach()
-				endif()
-
-				# Switch between bin and bind dirs
-				if (${config} MATCHES "Debug")
-
-					# Install TBB libraries
-					if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-
-					if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-				else ()
-
-					# Install TBB libraries
-					if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-
-					if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-				endif()
-			endforeach()
-		else (CMAKE_CONFIGURATION_TYPES )
-			# Nmake support : just one configuration
-			add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory ${LIBRARY_OUTPUT_PATH}/ VERBATIM )
-
+		# This loop copies the DLLs in each configuration binary dir.
+		foreach (config ${MY_CMAKE_CONFIGURATION_TYPES})
+			set(my_dir "")
+			if(CMAKE_CONFIGURATION_TYPES)
+				set(my_dir "${config}/")
+			endif()
+			add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory ${LIBRARY_OUTPUT_PATH}/${my_dir} VERBATIM )
+			
 			if (OCE_DRAW)
-				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll ${LIBRARY_OUTPUT_PATH}/ VERBATIM)
+				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll ${LIBRARY_OUTPUT_PATH}/${my_dir} VERBATIM)
 			endif()
 
-			if (${CMAKE_BUILD_TYPE} MATCHES "Debug")
-				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/ ${LIBRARY_OUTPUT_PATH} VERBATIM )
+		endforeach()
 
-				# Install TBB libraries
-				if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-				endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-
-				if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-				endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-			else ()
-				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/ ${LIBRARY_OUTPUT_PATH}/ VERBATIM )
-
-				# Install TBB libraries
-				if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-				endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-
-				if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-				endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-			endif()
-		endif (CMAKE_CONFIGURATION_TYPES)
-
-endif(MSVC AND OCE_TESTING)
+endif(MSVC AND OCE_TESTING AND OCE_USE_BUNDLE)
 
 ##############
 # Bundle AUTOINSTALL
