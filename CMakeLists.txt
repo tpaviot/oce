@@ -785,6 +785,9 @@ if(MINGW)
 	# For the file Message_MsgFile.cxx of TKernel we must additionally set the __TCollection_DLL define to resolve the needed HashCode() method
 	set_source_files_properties("src/Message/Message_MsgFile.cxx" PROPERTIES COMPILE_FLAGS "-D__Message_DLL -D__TCollection_DLL")
 	message(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
+	
+	# Define high enough WIN32 version
+	add_definitions("-D_WIN32_WINNT=0x0501")
 endif(MINGW)
 
 # DISABLE SECURE CRT WARNINGS AND OTHER MS CRT SPECIFC THINGS
