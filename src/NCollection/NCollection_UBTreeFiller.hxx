@@ -25,6 +25,15 @@
 #define rand_r(x) rand()
 #endif
 
+// MinGw defines rand_r in stdlib.h only in newer versions and only if _POSIX
+// or _POSIX_THREAD_SAFE_FUNCTIONS is defined. Therefore we paste the
+// definition from MinGw64 with g++ 5.1.0 here.
+#if defined(__MINGW64__)
+  #ifndef rand_r
+  #define rand_r(__seed) (__seed == __seed ? rand () : rand ())
+  #endif
+#endif
+
 /**
  * This class is used to fill an UBTree in a random order.
  * The quality of a tree is much better (from the point of view of
