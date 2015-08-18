@@ -46,7 +46,7 @@
 #include <StepAP203_HArray1OfApprovedItem.hxx>
 #include <StepBasic_ProductCategory.hxx>
 
-#ifdef __BORLANDC__
+#if defined(__BORLANDC__) || (defined(_MSC_VER) && _MSC_VER >= 1900)
 # define timezone _timezone
 #endif
 
