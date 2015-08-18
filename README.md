@@ -10,17 +10,11 @@ Official OCCT documentation and sources are available at
   http://www.opencascade.org/
 
 We use the following online resources:
-  * Sources
-       https://github.com/tpaviot/oce
-  * Binaries
-       oce < 0.14: http://code.google.com/p/oce-binaries/downloads/
-       oce >= 0.14: Google Drive at http://bit.ly/1kvDoTN
-  * Bug tracker
-       https://github.com/tpaviot/oce/issues
-  * Mailing list
-       http://groups.google.com/group/oce-dev/about
-  * Travic-CI
-       https://travis-ci.org/tpaviot/oce
+  * [Sources](https://github.com/tpaviot/oce)
+  * [Releases](https://github.com/tpaviot/oce/releases)
+  * [Bug tracker](https://github.com/tpaviot/oce/issues)
+  * [Mailing list](http://groups.google.com/group/oce-dev/about)
+  * [Travic-CI](https://travis-ci.org/tpaviot/oce)
 
 Just ask @tpaviot (tpaviot@gmail.com) or @dbarbier (bouzim@gmail.com) for a
 request regarding write access to the repository.
