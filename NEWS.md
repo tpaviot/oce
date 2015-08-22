@@ -1,4 +1,4 @@
-Version 0.17 - March 2015
+### Version 0.17 - March 2015
 
 This version is not binary compatible with OCE 0.16, OCE_ABI_SOVERSION
 was incremented.
@@ -12,7 +12,7 @@ was incremented.
 Users who contributed to this release:
   Denis Barbier, Mario Lang, blobfish, QbProg
 
-Version 0.16.1 - November 2014
+### Version 0.16.1 - November 2014
 
 This version is binary compatible with 0CE 0.16.
 
@@ -27,7 +27,7 @@ This version is binary compatible with 0CE 0.16.
 Users who contributed to this release:
   Denis Barbier, Jacob Abel, Benjamin Bihler
 
-Version 0.16 - July 2014
+### Version 0.16 - July 2014
 
 This version is not binary compatible with OCE 0.15, OCE_ABI_SOVERSION
 was incremented.
@@ -60,7 +60,7 @@ Users who contributed to this release:
   Denis Barbier, Jacob Abel, David Sankel, Jerome Robert, Johannes Obermayr,
   Conrad Poelman, Peter Lama, He Yuqi, Thomas Paviot
 
-Version 0.15 - February 2014
+### Version 0.15 - February 2014
 
 This version is not binary compatible with OCE 0.14.1, OCE_ABI_SOVERSION
 was incremented.
@@ -89,7 +89,7 @@ Users who contributed to this release:
   Denis Barbier, Thomas Paviot, QbProg, Fotios Sioutis, Johannes Obermayr,
   Jacob Abel, Benjamin Bihler
 
-Version 0.14.1 - January 2014
+### Version 0.14.1 - January 2014
 
 This version is binary compatible with 0CE 0.14.
 
@@ -99,7 +99,7 @@ Users who contributed to this release:
   Denis Barbier
 
 
-Version 0.14 - December 2013
+### Version 0.14 - December 2013
 
 This version is binary compatible with 0CE 0.13.
 
@@ -131,7 +131,7 @@ Users who contributed to this release:
   Thomas Paviot, David Sankel, Fotios Sioutis, Daniel Somer
 
 
-Version 0.13 - September 2013
+### Version 0.13 - September 2013
 
 This version is not binary compatible with OCE 0.12, OCE_ABI_SOVERSION
 was incremented.
@@ -166,7 +166,7 @@ Users who contributed to this release:
   Thomas Paviot, QbProg, Jake, Fotios Sioutis, Denis Barbier, David Sankel
 
 
-Version 0.12 - March 2013
+### Version 0.12 - March 2013
 
 This version is not binary compatible with OCE 0.11.x, OCE_ABI_SOVERSION
 was incremented.
@@ -196,7 +196,7 @@ Users who contributed to this release:
   Thomas Paviot, rainman110, Richard Shaw
 
 
-Version 0.11 - December 2012
+### Version 0.11 - December 2012
 
 This version is not binary compatible with OCE 0.10.x, OCE_ABI_SOVERSION
 was incremented.
@@ -219,7 +219,7 @@ Users who contributed to this release: Denis Barbier, Johannes Obermayr,
 Massimo Del Fedele, QbProg, Thomas Paviot,salajkav-dlubalcz
 
 
-Version 0.10 - June 2012
+### Version 0.10 - June 2012
 
 This version is not binary compatible with OCE 0.9.x, OCE_ABI_SOVERSION 
 was incremented.
@@ -247,14 +247,14 @@ Users who contributed to this release:
   QbProg, Thomas Paviot.
 
 
-Version 0.9.1 - January 2012
+### Version 0.9.1 - January 2012
 
 This is a bugfix release.
 
 * Fixed regressions in the TKOpenGl toolkit.
 
 
-Version 0.9.0 - January 2012
+### Version 0.9.0 - January 2012
 
 * Upgraded to OCCT 6.5.2
   http://www.opencascade.com/pub/doc/Release_Notes_6.5.2.pdf
@@ -288,7 +288,7 @@ Users who contributed to this release:
   Massimo Del Fedele, Simon Floery, Thomas Paviot.
 
 
-Version 0.8.0 - December 2011
+### Version 0.8.0 - December 2011
 
 * Added more unit tests 
 
@@ -327,7 +327,7 @@ Users who contributed to this release:
   Denis Barbier,Fotios Sioutis,Thomas Paviot,QbProg
 
 
-Version 0.7.0 - October 2011
+### Version 0.7.0 - October 2011
 
 * Updated build and install instructions
 
@@ -370,7 +370,7 @@ Version 0.7.0 - October 2011
 Users who contributed to this release:
   Denis Barbier,He Yuqi,Jerome Robert,QbProg,Thomas Paviot
 
-Version 0.6.0 - September 2011
+### Version 0.6.0 - September 2011
 
  *   Cmake 2.8 is explicitly required to build OCE.
 
@@ -418,7 +418,7 @@ Users who contributed to this release:
   Denis Barbier, Thomas Paviot, Hugues Delorme, QbProg,
   Matthew Dempsky, Massimo Del Fedele
 
-Version 0.5.0 - August 2011
+### Version 0.5.0 - August 2011
 
 This released integrated OCCT 6.5.1, continued on the warning cleanup, and
 fixed some bugs. This a ABI breaking release, due to the warning fixes
@@ -451,7 +451,7 @@ Users who contributed to this release:
      Thomas Paviot, Denis Barbier, QbProg, Hugues Delorme, Muellni,
      Philippe Carret
 
-Version 0.4.0 - July 2011
+### Version 0.4.0 - July 2011
 
 This release focused on improving code quality and the cmake build system.
 
@@ -480,7 +480,7 @@ This release focused on improving code quality and the cmake build system.
 Users who contributed to this release:
      Thomas Paviot , Mark Pictor, Muellni,Denis Barbier, Hugh Sorby, QbProg
 
-Version 0.3.0 - June 2011
+### Version 0.3.0 - June 2011
 
   * Make CMake work with MSVC.  This generator is special,
     it generates both Debug and Release configurations.
@@ -535,7 +535,7 @@ Version 0.3.0 - June 2011
     files for now, this IDE is not supported by CMake.
     [Thomas Paviot]
 
-Version 0.2.0 - May 2011
+### Version 0.2.0 - May 2011
 
   * Add CMake build files, based on the opencascade-cmake project
       http://code.google.com/p/opencascade-cmake/
@@ -560,7 +560,7 @@ Version 0.2.0 - May 2011
     everything works without having to set environment variables.
     [Denis Barbier]
 
-Version 0.1.0 - April 2011
+### Version 0.1.0 - April 2011
 
   * Import OCC 6.5.0
     [Thomas Paviot]
@@ -637,4 +637,3 @@ Version 0.1.0 - April 2011
 
   * Rename config.h into oce-config.h.
     [Denis Barbier]
-
