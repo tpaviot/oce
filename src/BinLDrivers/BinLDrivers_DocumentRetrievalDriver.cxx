@@ -181,6 +181,8 @@ void BinLDrivers_DocumentRetrievalDriver::Read
   // Open the file stream
 #ifdef _MSC_VER
   ifstream anIS ((const wchar_t*) theFileName.ToExtString(), ios::in | ios::binary);
+#elif (defined(__MINGW32__) || defined(__MINGW64__))
+  ifstream anIS (aFileName.ToCString(), ios::in | ios::binary);
 #else
   ifstream anIS (aFileName.ToCString());
 #endif
