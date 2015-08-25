@@ -69,7 +69,8 @@ message(STATUS "Build ${BIT}bit")
 
 if(NOT CMAKE_CONFIGURATION_TYPES)
 	if(CMAKE_BUILD_TYPE STREQUAL "")
-		set( CMAKE_BUILD_TYPE "Release" CACHE INTERNAL "Build type, immutable" FORCE )
+		set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the build type." FORCE)
+		set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Release" "Debug" "RelWithDebInfo" "MinSizeRel")
 	endif(CMAKE_BUILD_TYPE STREQUAL "")
 endif(NOT CMAKE_CONFIGURATION_TYPES)
 
