@@ -34,6 +34,8 @@
 #include <NCollection_Vector.hxx>
 
 #include <algorithm>
+#include <vector>
+#include <memory>
 
 const Standard_Real AngDeviation1Deg  = M_PI/180.;
 const Standard_Real AngDeviation90Deg = 90 * AngDeviation1Deg;
@@ -1752,180 +1754,229 @@ inline Standard_Boolean BRepMesh_Delaun::meshElementaryPolygon(
 //           its edges in the structure.
 //           (negative index means reversed edge)
 //=======================================================================
-void BRepMesh_Delaun::meshSimplePolygon(BRepMesh::SequenceOfInteger& thePolygon,
-                                        BRepMesh::SequenceOfBndB2d&  thePolyBoxes )
+void BRepMesh_Delaun::meshSimplePolygon(BRepMesh::SequenceOfInteger& inputPolygon,
+                                        BRepMesh::SequenceOfBndB2d&  inputPolyBoxes )
 {
   // Check is the given polygon elementary
-  if ( meshElementaryPolygon( thePolygon ) )
+  if ( meshElementaryPolygon( inputPolygon ) )
     return;
 
+  std::vector<std::unique_ptr<BRepMesh::SequenceOfInteger>>   apTempPolygons;
+  std::vector<std::unique_ptr<BRepMesh::SequenceOfBndB2d>>    apTempPolyBoxes;
 
-  // Polygon contains more than 3 links
-  Standard_Integer aFirstEdgeInfo = thePolygon(1);
-  const BRepMesh_Edge& aFirstEdge = GetEdge( Abs( aFirstEdgeInfo ) );
-
-  Standard_Integer aNodes[3];
-  getOrientedNodes( aFirstEdge, aFirstEdgeInfo > 0, aNodes );
-  
-  gp_Pnt2d aRefVertices[3];
-  aRefVertices[0] = GetVertex( aNodes[0] ).Coord();
-  aRefVertices[1] = GetVertex( aNodes[1] ).Coord();
-
-  gp_Vec2d aRefEdgeDir( aRefVertices[0], aRefVertices[1] );
-
-  Standard_Real aRefEdgeLen = aRefEdgeDir.Magnitude();
-  if ( aRefEdgeLen < Precision )
-    return;
-
-  aRefEdgeDir /= aRefEdgeLen;
-
-  // Find a point with minimum distance respect
-  // the end of reference link
-  Standard_Integer aUsedLinkId = 0;
-  Standard_Real    aOptAngle   = 0.0;
-  Standard_Real    aMinDist    = RealLast();
-  Standard_Integer aPivotNode  = aNodes[1];
-  Standard_Integer aPolyLen    = thePolygon.Length();
-  for ( Standard_Integer aLinkIt = 3; aLinkIt <= aPolyLen; ++aLinkIt )
+  while ( true ) // Start infinite loop
   {
-    Standard_Integer aLinkInfo = thePolygon( aLinkIt );
-    const BRepMesh_Edge& aNextEdge = GetEdge( Abs( aLinkInfo ) );
+    BRepMesh::SequenceOfInteger&  thePolygon    = apTempPolygons.empty() ? inputPolygon : *apTempPolygons.back();
+    BRepMesh::SequenceOfBndB2d&   thePolyBoxes  = apTempPolyBoxes.empty() ? inputPolyBoxes : *apTempPolyBoxes.back();
 
-    aPivotNode = aLinkInfo > 0 ? 
-      aNextEdge.FirstNode() : 
-      aNextEdge.LastNode();
+    // Polygon contains more than 3 links
+    Standard_Integer aFirstEdgeInfo = thePolygon(1);
+    const BRepMesh_Edge& aFirstEdge = GetEdge( Abs( aFirstEdgeInfo ) );
 
-    gp_Pnt2d aPivotVertex = GetVertex( aPivotNode ).Coord();
-    gp_Vec2d aDistanceDir( aRefVertices[1], aPivotVertex );
+    Standard_Integer aNodes[3];
+    getOrientedNodes( aFirstEdge, aFirstEdgeInfo > 0, aNodes );
+    
+    gp_Pnt2d aRefVertices[3];
+    aRefVertices[0] = GetVertex( aNodes[0] ).Coord();
+    aRefVertices[1] = GetVertex( aNodes[1] ).Coord();
 
-    Standard_Real aDist     = aRefEdgeDir ^ aDistanceDir;
-    Standard_Real aAngle    = Abs( aRefEdgeDir.Angle(aDistanceDir) );
-    Standard_Real anAbsDist = Abs( aDist );
-    if (anAbsDist < Precision || aDist < 0.)
-      continue;
+    gp_Vec2d aRefEdgeDir( aRefVertices[0], aRefVertices[1] );
 
-    if ( ( anAbsDist >= aMinDist                             ) &&
-         ( aAngle <= aOptAngle || aAngle > AngDeviation90Deg ) )
+    Standard_Real aRefEdgeLen = aRefEdgeDir.Magnitude();
+    if ( aRefEdgeLen < Precision )
+      return;
+
+    aRefEdgeDir /= aRefEdgeLen;
+
+    // Find a point with minimum distance respect
+    // the end of reference link
+    Standard_Integer aUsedLinkId = 0;
+    Standard_Real    aOptAngle   = 0.0;
+    Standard_Real    aMinDist    = RealLast();
+    Standard_Integer aPivotNode  = aNodes[1];
+    Standard_Integer aPolyLen    = thePolygon.Length();
+    for ( Standard_Integer aLinkIt = 3; aLinkIt <= aPolyLen; ++aLinkIt )
     {
-      continue;
-    }
+      Standard_Integer aLinkInfo = thePolygon( aLinkIt );
+      const BRepMesh_Edge& aNextEdge = GetEdge( Abs( aLinkInfo ) );
 
-    // Check is the test link crosses the polygon boudaries
-    Standard_Boolean isIntersect = Standard_False;
-    for ( Standard_Integer aRefLinkNodeIt = 0; aRefLinkNodeIt < 2; ++aRefLinkNodeIt )
-    {
-      const Standard_Integer& aLinkFirstNode   = aNodes[aRefLinkNodeIt];
-      const gp_Pnt2d&         aLinkFirstVertex = aRefVertices[aRefLinkNodeIt];
+      aPivotNode = aLinkInfo > 0 ? 
+        aNextEdge.FirstNode() : 
+        aNextEdge.LastNode();
 
-      Bnd_B2d aBox;
-      aBox.Add( aLinkFirstVertex );
-      aBox.Add( aPivotVertex );
+      gp_Pnt2d aPivotVertex = GetVertex( aPivotNode ).Coord();
+      gp_Vec2d aDistanceDir( aRefVertices[1], aPivotVertex );
 
-      BRepMesh_Edge aCheckLink( aLinkFirstNode, aPivotNode, BRepMesh_Free );
+      Standard_Real aDist     = aRefEdgeDir ^ aDistanceDir;
+      Standard_Real aAngle    = Abs( aRefEdgeDir.Angle(aDistanceDir) );
+      Standard_Real anAbsDist = Abs( aDist );
+      if (anAbsDist < Precision || aDist < 0.)
+        continue;
 
-      Standard_Integer aCheckLinkIt = 2;
-      for ( ; aCheckLinkIt <= aPolyLen; ++aCheckLinkIt )
+      if ( ( anAbsDist >= aMinDist                             ) &&
+           ( aAngle <= aOptAngle || aAngle > AngDeviation90Deg ) )
       {
-        if( aCheckLinkIt == aLinkIt )
-          continue;
-        
-        if ( !aBox.IsOut( thePolyBoxes.Value( aCheckLinkIt ) ) )
-        {
-          const BRepMesh_Edge& aPolyLink = 
-            GetEdge( Abs( thePolygon( aCheckLinkIt ) ) );
-
-          if ( aCheckLink.IsEqual( aPolyLink ) )
-            continue;
-
-          // intersection is possible...                  
-          gp_Pnt2d anIntPnt;
-          BRepMesh_GeomTool::IntFlag aIntFlag = intSegSeg( aCheckLink, aPolyLink, 
-            Standard_False, Standard_False, anIntPnt );
-
-          if( aIntFlag != BRepMesh_GeomTool::NoIntersection )
-          {
-            isIntersect = Standard_True;
-            break;
-          }
-        }
+        continue;
       }
 
-      if ( isIntersect )
-        break;
+      // Check is the test link crosses the polygon boudaries
+      Standard_Boolean isIntersect = Standard_False;
+      for ( Standard_Integer aRefLinkNodeIt = 0; aRefLinkNodeIt < 2; ++aRefLinkNodeIt )
+      {
+        const Standard_Integer& aLinkFirstNode   = aNodes[aRefLinkNodeIt];
+        const gp_Pnt2d&         aLinkFirstVertex = aRefVertices[aRefLinkNodeIt];
+
+        Bnd_B2d aBox;
+        aBox.Add( aLinkFirstVertex );
+        aBox.Add( aPivotVertex );
+
+        BRepMesh_Edge aCheckLink( aLinkFirstNode, aPivotNode, BRepMesh_Free );
+
+        Standard_Integer aCheckLinkIt = 2;
+        for ( ; aCheckLinkIt <= aPolyLen; ++aCheckLinkIt )
+        {
+          if( aCheckLinkIt == aLinkIt )
+            continue;
+          
+          if ( !aBox.IsOut( thePolyBoxes.Value( aCheckLinkIt ) ) )
+          {
+            const BRepMesh_Edge& aPolyLink = 
+              GetEdge( Abs( thePolygon( aCheckLinkIt ) ) );
+
+            if ( aCheckLink.IsEqual( aPolyLink ) )
+              continue;
+
+            // intersection is possible...                  
+            gp_Pnt2d anIntPnt;
+            BRepMesh_GeomTool::IntFlag aIntFlag = intSegSeg( aCheckLink, aPolyLink, 
+              Standard_False, Standard_False, anIntPnt );
+
+            if( aIntFlag != BRepMesh_GeomTool::NoIntersection )
+            {
+              isIntersect = Standard_True;
+              break;
+            }
+          }
+        }
+
+        if ( isIntersect )
+          break;
+      }
+
+      if( isIntersect )
+        continue;
+
+
+      aOptAngle       = aAngle;
+      aMinDist        = anAbsDist;
+      aNodes[2]       = aPivotNode;
+      aRefVertices[2] = aPivotVertex;
+      aUsedLinkId     = aLinkIt;
     }
 
-    if( isIntersect )
+    if ( aUsedLinkId == 0 )
+      return;
+
+
+    BRepMesh_Edge aNewEdges[2] = {
+      BRepMesh_Edge( aNodes[1], aNodes[2], BRepMesh_Free ),
+      BRepMesh_Edge( aNodes[2], aNodes[0], BRepMesh_Free ) };
+
+    Standard_Integer aNewEdgesInfo[3] = {
+      aFirstEdgeInfo,
+      myMeshData->AddLink( aNewEdges[0] ),
+      myMeshData->AddLink( aNewEdges[1] ) };
+
+
+    Standard_Integer anEdges[3];
+    Standard_Boolean anEdgesOri[3];
+    for ( Standard_Integer aTriEdgeIt = 0; aTriEdgeIt < 3; ++aTriEdgeIt )
+    {
+      const Standard_Integer& anEdgeInfo = aNewEdgesInfo[aTriEdgeIt];
+      anEdges[aTriEdgeIt]    = Abs( anEdgeInfo );
+      anEdgesOri[aTriEdgeIt] = anEdgeInfo > 0;
+    }
+    addTriangle( anEdges, anEdgesOri, aNodes );
+
+    if ( aUsedLinkId < aPolyLen && aUsedLinkId <= 3 )
+    {
+      BRepMesh::SequenceOfInteger*  pRightPolygon    = new BRepMesh::SequenceOfInteger();
+      BRepMesh::SequenceOfBndB2d*   pRightPolyBoxes  = new BRepMesh::SequenceOfBndB2d();
+
+      apTempPolygons.emplace_back( pRightPolygon  );
+      apTempPolyBoxes.emplace_back( pRightPolyBoxes );
+
+      thePolygon.Split( aUsedLinkId, *pRightPolygon );
+      pRightPolygon->Prepend( -aNewEdgesInfo[2] );
+
+      thePolyBoxes.Split( aUsedLinkId, *pRightPolyBoxes );
+
+      Bnd_B2d aBox;
+      aBox.Add( aRefVertices[0] );
+      aBox.Add( aRefVertices[2] );
+      pRightPolyBoxes->Prepend( aBox );
+
       continue;
+    }
+    else if ( aUsedLinkId == aPolyLen && aUsedLinkId > 3 )
+    {
+      thePolygon.Remove  ( aPolyLen );
+      thePolyBoxes.Remove( aPolyLen );
 
+      thePolygon.SetValue( 1, -aNewEdgesInfo[1] );
 
-    aOptAngle       = aAngle;
-    aMinDist        = anAbsDist;
-    aNodes[2]       = aPivotNode;
-    aRefVertices[2] = aPivotVertex;
-    aUsedLinkId     = aLinkIt;
-  }
+      Bnd_B2d aBox;
+      aBox.Add( aRefVertices[1] );
+      aBox.Add( aRefVertices[2] );
 
-  if ( aUsedLinkId == 0 )
-    return;
+      thePolyBoxes.SetValue( 1, aBox );
 
+      continue;
+    }
+    else
+    {
+      // Create triangle and split the source polygon on two 
+      // parts (if possible) and mesh each part as independent
+      // polygon.
+      if ( aUsedLinkId < aPolyLen )
+      {
+        BRepMesh::SequenceOfInteger aRightPolygon;
+        thePolygon.Split( aUsedLinkId, aRightPolygon );
+        aRightPolygon.Prepend( -aNewEdgesInfo[2] );
 
-  BRepMesh_Edge aNewEdges[2] = {
-    BRepMesh_Edge( aNodes[1], aNodes[2], BRepMesh_Free ),
-    BRepMesh_Edge( aNodes[2], aNodes[0], BRepMesh_Free ) };
+        BRepMesh::SequenceOfBndB2d aRightPolyBoxes;
+        thePolyBoxes.Split( aUsedLinkId, aRightPolyBoxes );
 
-  Standard_Integer aNewEdgesInfo[3] = {
-    aFirstEdgeInfo,
-    myMeshData->AddLink( aNewEdges[0] ),
-    myMeshData->AddLink( aNewEdges[1] ) };
+        Bnd_B2d aBox;
+        aBox.Add( aRefVertices[0] );
+        aBox.Add( aRefVertices[2] );
+        aRightPolyBoxes.Prepend( aBox );
 
+        meshSimplePolygon( aRightPolygon, aRightPolyBoxes );
+      }
+      else
+      {
+        thePolygon.Remove  ( aPolyLen );
+        thePolyBoxes.Remove( aPolyLen );
+      }
 
-  Standard_Integer anEdges[3];
-  Standard_Boolean anEdgesOri[3];
-  for ( Standard_Integer aTriEdgeIt = 0; aTriEdgeIt < 3; ++aTriEdgeIt )
-  {
-    const Standard_Integer& anEdgeInfo = aNewEdgesInfo[aTriEdgeIt];
-    anEdges[aTriEdgeIt]    = Abs( anEdgeInfo );
-    anEdgesOri[aTriEdgeIt] = anEdgeInfo > 0;
-  }
-  addTriangle( anEdges, anEdgesOri, aNodes );
+      if ( aUsedLinkId > 3 )
+      {
+        thePolygon.SetValue( 1, -aNewEdgesInfo[1] );
 
-  // Create triangle and split the source polygon on two 
-  // parts (if possible) and mesh each part as independent
-  // polygon.
-  if ( aUsedLinkId < aPolyLen )
-  {
-    BRepMesh::SequenceOfInteger aRightPolygon;
-    thePolygon.Split( aUsedLinkId, aRightPolygon );
-    aRightPolygon.Prepend( -aNewEdgesInfo[2] );
+        Bnd_B2d aBox;
+        aBox.Add( aRefVertices[1] );
+        aBox.Add( aRefVertices[2] );
 
-    BRepMesh::SequenceOfBndB2d aRightPolyBoxes;
-    thePolyBoxes.Split( aUsedLinkId, aRightPolyBoxes );
+        thePolyBoxes.SetValue( 1, aBox );
 
-    Bnd_B2d aBox;
-    aBox.Add( aRefVertices[0] );
-    aBox.Add( aRefVertices[2] );
-    aRightPolyBoxes.Prepend( aBox );
+        meshSimplePolygon( thePolygon, thePolyBoxes );
+      }
 
-    meshSimplePolygon( aRightPolygon, aRightPolyBoxes );
-  }
-  else
-  {
-    thePolygon.Remove  ( aPolyLen );
-    thePolyBoxes.Remove( aPolyLen );
-  }
+      break;
+    }
 
-  if ( aUsedLinkId > 3 )
-  {
-    thePolygon.SetValue( 1, -aNewEdgesInfo[1] );
-
-    Bnd_B2d aBox;
-    aBox.Add( aRefVertices[1] );
-    aBox.Add( aRefVertices[2] );
-
-    thePolyBoxes.SetValue( 1, aBox );
-
-    meshSimplePolygon( thePolygon, thePolyBoxes );
-  }
+  } // end infinite loop
 }
 
 //=======================================================================
