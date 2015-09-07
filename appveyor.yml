@@ -1,0 +1,78 @@
+version: oce-0.17.1-dev.{build}
+
+environment:
+  oce_version: 0.17.1-dev
+  matrix:
+    - generator: "MSYS Makefiles"
+      Compiler: MinGW-gcc-4.8.1
+      ARCH: "Win32"
+    - generator: "MSYS Makefiles"
+      ARCH: "i686"
+      Compiler: MinGW-gcc-4.9.3
+    - generator: "MSYS Makefiles"
+      ARCH: "Win64"
+      Compiler: MinGW64-gcc-5.2.0
+    - generator: "Visual Studio 12"
+      ARCH: "Win32"
+      Compiler: "MSVC2013"
+    - generator: "Visual Studio 12 Win64"
+      ARCH: "Win64"
+      Compiler: "MSVC2013"
+    - generator: "Visual Studio 14"
+      ARCH: "Win32"
+      Compiler: "MSVC2015"
+    - generator: "Visual Studio 14 Win64"
+      ARCH: "Win64"
+      Compiler: "MSVC2015"
+
+cache:
+  - i686-4.9.3-release-posix-dwarf-rt_v4-rev1.7z
+  - x86_64-5.2.0-release-posix-seh-rt_v4-rev0.7z
+
+configuration:
+  #- Debug
+  - RelWithDebInfo
+
+branches:
+  only:
+    - master
+    - /^review/
+
+shallow_clone: true 
+
+# scripts that are called at very beginning, before repo cloning
+init:
+
+before_build:
+
+# scripts that run after cloning repository
+install:
+  - cmd: CALL FetchBundle.bat
+  #- cmd: git clone -q --branch=master https://github.com/QbProg/oce-win-bundle.git C:\projects\oce-win-bundle
+
+build_script:
+  - cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/make-oce-msys.sh)
+      else (CALL C:\projects\oce\appveyor-scripts\make-oce-msvc.bat)
+
+after_build:
+  - cmd: 7z a oce-%oce_version%.%ARCH%.%Compiler%.zip C:\oce-%oce_version% > nul
+  - cmd: dir oce-%oce_version%.%ARCH%.%Compiler%.zip
+
+artifacts:
+  - path: oce-%oce_version%.%ARCH%.%Compiler%.zip
+
+test: off  # to avoid discovering tests
+
+#
+# The following section automatically uploads artifacts
+# whenever a tag is created on the master branch.
+#
+deploy:
+  - provider: GitHub
+    auth_token:
+      secure: +HE8jHwECbKpIVHeydBVMBskoHh//glZWNo9oCLPvOtLiY3MAO75zPISuwPD/ctW
+    artifact: oce-%oce_version%.%ARCH%.%Compiler%.zip
+    draft: true
+    on:
+      branch: master
+      appveyor_repo_tag: true
