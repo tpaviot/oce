@@ -38,7 +38,7 @@ configuration:
 branches:
   only:
     - master
-    - review/*
+    - /^review/
 
 shallow_clone: true 
 
