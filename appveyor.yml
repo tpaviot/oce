@@ -43,8 +43,8 @@ branches:
 shallow_clone: true 
 
 cache:
-  - i686-4.9.3-release-win32-sjlj-rt_v4-rev0.7z
-  - x86_64-5.1.0-release-win32-seh-rt_v4-rev0.7z
+#  - i686-4.9.3-release-win32-sjlj-rt_v4-rev0.7z
+#  - x86_64-5.1.0-release-win32-seh-rt_v4-rev0.7z
 
 # scripts that are called at very beginning, before repo cloning
 init:
