@@ -3,6 +3,15 @@ version: oce-0.17.1-dev.{build}
 environment:
   oce_version: 0.17.1-dev
   matrix:
+    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-4.8.1 32 bit that comes with appveyor
+      Arch: Win32
+      Compiler: MinGW-gcc-4.8.1
+    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-4.9.3 32 bit
+      Arch: i686
+      Compiler: MinGW-gcc-4.9.3
+    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-5.1.0 64 bit
+      Arch: Win64
+      Compiler: MinGW64-gcc-5.1.0
     - generator: "Visual Studio 12"
       Arch: Win32
       Compiler: MSVC2013
@@ -13,22 +22,13 @@ environment:
       Arch: Win32
       Compiler: MSVC2015
     - generator: "Visual Studio 14 Win64"
-      Arch : Win64
+      Arch: Win64
       Compiler: MSVC2015
-    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-5.1.0 64 bit
-      Arch : Win64
-      Compiler: MinGW64-gcc-5.1.0
-    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-4.9.3 32 bit
-      Arch: i686
-      Compiler: MinGW-gcc-4.9.3
-    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-4.8.1 32 bit that comes with appveyor
-      Arch : Win32
-      Compiler: MinGW-gcc-4.8.1
 
 matrix:
   allow_failures:
     - generator: "MSYS Makefiles"
-      Arch : Win32
+      Arch: Win32
       Compiler: MinGW-gcc-4.8.1
 
 configuration:
