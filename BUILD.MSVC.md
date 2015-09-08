@@ -12,8 +12,6 @@
 
     2.2.2. Using OCE - BUNDLE
 
-    2.2.3. Using OCE - BUNDLE in-source build
-
 3. Extracting the sources
 
 4. Configuring
@@ -91,24 +89,21 @@ If you choose build the libraries, make sure you compile them in debug and relea
 #### 2.2.2. Using OCE - BUNDLE
       
 The bundle will let you compile all the libraries required by oce in one simple step.
-You can also download precompiled binaries of the bundle if you use VC2008 or VC2010.
 
-If you choose to use the bundle, make sure you have extracted or INSTALLed it to a specific folder,
-one time for 32bit binaries, and in a different folder for 64bit binaries (always debug+release). 
-Actually bundle 32/64 binaries are split, and will be provided together in OCE-0.4
+If you choose to use the bundle, make sure you have extracted it in the "oce-win-bundle" subfolder
+of your oce source tree.
+To do this, you could just download the sources manually from the oce-win-bundle github repository or 
+invoke the FetchBundle.bat file using one of these two options:
+> FetchBundle.bat 
+  downloads the development version of the bundle from github and clones it in the oce-win-bundle subdir.
+> FetchBundle.bat <version>
+  downloads a specific tag of the bundle from github and clones it in the oce-win-bundle subdir.
+  Use this version if you want to compile a specific OCE version. For instance
+>  FetchBundle.bat 0.17.0 
+  downloads the correct bundle version to be used with OCE.        
 
-If you want to rebuild the bundle from sources, follow the instructions at 
-http://www.github.com/QbProg/oce-win-bundle
-
-In this example we will extract the precompiled bundle in C:\oce-win-bundle-win32\
-        
-#### 2.2.3. Using OCE - BUNDLE in source
-
-Starting from version 0.12 the bundle can be built along OCE, in the same
-cmake build configuration.
-Use the OCE_USE_BUNDLE_SOURCE variable to enable this behavior.
-
-In this case, just make sure to have the bundle source code extracted somewhere.
+NOTE : the bundle will compile with the same options as OCE. So if you compile OCE statically, the bundle
+libraries will be compiled statically, if you compile OCE dynamically the bundle libraries will be compiled dynamically.
     
 ## 3. Extracting the sources
     
@@ -172,19 +167,9 @@ starting with TCL_ and TK (eventually available in the "Advanced" section of cma
      
 - Enable the OCE_USE_BUNDLE option
 - Press Configure
-- Set OCE_BUNDLE_ROOT_PATH to point to the oce-win-bundle installation directory. For example C:/oce-win-bundle-win32/
-- Configure again
-
-It should automatically set all the library paths. Some of them will appear in red, but the CONFIGURE
-phase will end successfully at this time. You should check this in the output window at the bottom of
-cmake-gui.
-    
-#### 4.5.3. In-source OCE bundle
-     
-- Enable the OCE_USE_BUNDLE_SOURCE option
+- Enable the OCE_USE_BUNDLE option. This option is automatically enabled if the oce-win-bundle subdir is present in the 
+   directory structure.
 - Press Configure
-- Set OCE_BUNDLE_ROOT_PATH to point the *source* directory of the oce-win-bundle
-- Configure again
 
 The libraries will be built in the OCE solution and will be available in the binaries directory.
          
