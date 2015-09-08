@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 cd `dirname "$0"`/..
+echo "$Arch"
 if [ "$Arch" = "Win32" ]; then
   echo 'C:\MinGW\ /MinGW' > /etc/fstab
 elif [ "$Arch" = "i686" ]; then
