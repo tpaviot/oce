@@ -63,7 +63,7 @@
 
 extern Draw_Viewer dout;
 
-static char* ColorNames[MAXCOLOR] = {
+static const char* ColorNames[MAXCOLOR] = {
   "White","Red","Green","Blue","Cyan","Gold","Magenta",
   "Maroon","Orange","Pink","Salmon","Violet","Yellow","Khaki","Coral"
   };
