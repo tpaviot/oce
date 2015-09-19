@@ -273,6 +273,9 @@ if(MSVC_IDE)
 	else( NOT OCE_USE_MSVC_EXPRESS)
 		set_property(GLOBAL PROPERTY USE_FOLDERS OFF)
 	endif( NOT OCE_USE_MSVC_EXPRESS)
+
+	option( OCE_USE_STATIC_MSVC_RUNTIME "Use static version of the MSVC run-time library" OFF )
+	mark_as_advanced( OCE_USE_STATIC_MSVC_RUNTIME )
 endif(MSVC_IDE)
 
 set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_RELEASE NDEBUG)
@@ -799,6 +802,23 @@ endif(MINGW)
 if (MSVC)
 	add_definitions("/D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4800")
+
+	if(OCE_USE_STATIC_MSVC_RUNTIME)
+		message("Warning: OCE_USE_STATIC_MSVC_RUNTIME option can lead to deployment/maintenance issues. Use it when building
+		an application executable that uses OCE, not when building redistributable OCE library for others
+		to use. See the related discussion at https://github.com/tpaviot/oce/pull/577.")
+
+		foreach(flag CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE CMAKE_CXX_FLAGS_MINSIZEREL
+				CMAKE_CXX_FLAGS_RELWITHDEBINFO CMAKE_C_FLAGS CMAKE_C_FLAGS_DEBUG CMAKE_C_FLAGS_RELEASE
+				CMAKE_C_FLAGS_MINSIZEREL CMAKE_C_FLAGS_RELWITHDEBINFO)
+			if(${flag} MATCHES "/MD")
+				STRING(REGEX REPLACE "/MD" "/MT" ${flag} "${${flag}}")
+			endif()
+			if(${flag} MATCHES "/MDd")
+				STRING(REGEX REPLACE "/MDd" "/MTd" ${flag} "${${flag}}")
+			endif()
+		endforeach()
+	endif()
 endif(MSVC)
 
 # Libraries are installed by default in /usr/local/lib on UNIX
