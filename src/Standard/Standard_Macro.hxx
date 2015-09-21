@@ -41,20 +41,7 @@
 #define WNT
 #endif
 
-# if defined(_WIN32) && !defined(HAVE_NO_DLL)
-
-#  ifndef Standard_EXPORT
-#   define Standard_EXPORT __declspec( dllexport )
-// For global variables :
-#   define Standard_EXPORTEXTERN __declspec( dllexport ) extern
-#   define Standard_EXPORTEXTERNC extern "C" __declspec( dllexport )
-#  endif  /* Standard_EXPORT */
-
-#  ifndef Standard_IMPORT
-#   define Standard_IMPORT __declspec( dllimport ) extern
-#   define Standard_IMPORTC extern "C" __declspec( dllimport )
-#  endif  /* Standard_IMPORT */
-
+# if defined(_WIN32)
 // We must be careful including windows.h: it is really poisonous stuff!
 // The most annoying are #defines of many identifiers that you could use in 
 // normal code without knowing that Windows has its own knowledge of them...
@@ -96,6 +83,21 @@
 #ifndef NOIME
 #define NOIME NOIME
 #endif
+#endif
+
+# if defined(_WIN32) && !defined(HAVE_NO_DLL)
+
+#  ifndef Standard_EXPORT
+#   define Standard_EXPORT __declspec( dllexport )
+// For global variables :
+#   define Standard_EXPORTEXTERN __declspec( dllexport ) extern
+#   define Standard_EXPORTEXTERNC extern "C" __declspec( dllexport )
+#  endif  /* Standard_EXPORT */
+
+#  ifndef Standard_IMPORT
+#   define Standard_IMPORT __declspec( dllimport ) extern
+#   define Standard_IMPORTC extern "C" __declspec( dllimport )
+#  endif  /* Standard_IMPORT */
 
 # else  /* WNT */
 

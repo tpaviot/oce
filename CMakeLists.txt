@@ -82,6 +82,10 @@ if(MSVC)
 	option_with_default( OCE_MULTITHREADED_BUILD "Multithreaded build (/MP Option)" ON )
 endif(MSVC)
 
+if(MINGW)
+	option_with_default( OCE_INSTALL_PRIVATE_SAMEDIR "Install private DLLs in the same binary directory" OFF )
+endif(MINGW)
+
 ############################
 # Library name definitions #
 ############################
@@ -111,19 +115,14 @@ else()
 	endif(OCE_NO_LIBRARY_VERSION)
 endif()
 
-if(MSVC OR MINGW)
-	option_with_default( OCE_USE_BUNDLE "Use OCE Windows Bundle that has been built and installed" OFF )
-	option_with_default( OCE_USE_BUNDLE_SOURCE "Use OCE Windows Bundle source and incorporate into current project" OFF )
-endif(MSVC OR MINGW)
-
 if(BORLAND)
 	option_with_default( OCE_INSTALL_TDS_FILES "Instal TDS files (debug informations)" ON )
 endif(BORLAND)
 
-if(OCE_USE_BUNDLE OR OCE_USE_BUNDLE_SOURCE)
-	option_with_default( OCE_BUNDLE_AUTOINSTALL "Autoinstall bundle DLLs" ON )
-	mark_as_advanced(OCE_BUNDLE_AUTOINSTALL)
-endif(OCE_USE_BUNDLE OR OCE_USE_BUNDLE_SOURCE)
+if(WIN32)
+	option_with_default( OCE_AUTOINSTALL_DEPENDENT_LIBS "Autoinstall dependent DLLs" ON )
+	mark_as_advanced(OCE_AUTOINSTALL_DEPENDENT_LIBS)
+endif()
 
 if ((MSVC AND NOT NMAKE) OR CMAKE_COMPILER_IS_GNUCXX)
 	set(OCE_COMPILER_SUPPORTS_PCH TRUE)
@@ -156,8 +155,10 @@ option_with_default( OCE_WITH_FREEIMAGE "Build with FreeImage" OFF )
 option_with_default( OCE_WITH_VTK "Build with VTK" OFF )
 option_with_default( OCE_DISABLE_TKSERVICE_FONT "Disable TKService Font (only without Visualization)" OFF )
 mark_as_advanced(OCE_DISABLE_TKSERVICE_FONT)
-option_with_default( OCE_BUILD_TKERNEL_WITH_INSTALL_RPATH "Build TKernel with install RPATH" ON )
-mark_as_advanced(OCE_BUILD_TKERNEL_WITH_INSTALL_RPATH)
+if(NOT WIN32)
+  option_with_default( OCE_BUILD_TKERNEL_WITH_INSTALL_RPATH "Build TKernel with install RPATH" ON )
+  mark_as_advanced(OCE_BUILD_TKERNEL_WITH_INSTALL_RPATH)
+endif()
 option_with_default( OCE_EXTRA_WARNINGS "Enable Maximum Warnings Level" OFF )
 mark_as_advanced(OCE_EXTRA_WARNINGS)
 if( NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.8 )
@@ -263,6 +264,14 @@ if(MSVC_IDE)
 	endif (NOT DEFINED OCE_USE_MSVC_EXPRESS)
 	option( OCE_USE_MSVC_EXPRESS "Use a Visual C++ express IDE"
 		${OCE_USE_MSVC_EXPRESS} )
+
+	if(NOT OCE_USE_MSVC_EXPRESS)
+		#Use solution folders.
+		set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+		set(USE_SOLUTION_FOLDERS TRUE)
+	else( NOT OCE_USE_MSVC_EXPRESS)
+		set_property(GLOBAL PROPERTY USE_FOLDERS OFF)
+	endif( NOT OCE_USE_MSVC_EXPRESS)
 endif(MSVC_IDE)
 
 set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_RELEASE NDEBUG)
@@ -324,6 +333,19 @@ if(OCE_DRAW AND NOT OCE_VISUALISATION)
 	set(OCE_VISUALISATION ON CACHE BOOL "Build visualisation component" FORCE)
 endif(OCE_DRAW AND NOT OCE_VISUALISATION)
 
+# oce-win-bundle handling for MSVC and MINGW
+if(MSVC OR MINGW)
+  if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/oce-win-bundle/oce-bundle-root.empty")
+      MESSAGE("Using oce-win-bundle checkout")
+      option_with_default( OCE_USE_BUNDLE "Use OCE Windows Bundle that has been built and installed" ON )
+      
+      if(OCE_USE_BUNDLE)
+          ADD_SUBDIRECTORY(oce-win-bundle)
+          SET(OCE_SKIP_FIND_LIBRARIES TRUE)
+      ENDIF()
+  endif()
+endif(MSVC OR MINGW)
+
 if(OCE_VISUALISATION AND OCE_WITH_VTK)
 	find_package(VTK REQUIRED)
 endif()
@@ -362,6 +384,12 @@ if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB")
 				elseif(MSVC10)
 					set(TBB_BIN_DIR "${TBB_ROOT}/bin/${TBB_ARCH}/vc10")
 					set(TBB_LIB_DIR "${TBB_ROOT}/lib/${TBB_ARCH}/vc10")
+				elseif(MSVC11)
+					set(TBB_BIN_DIR "${TBB_ROOT}/bin/${TBB_ARCH}/vc11")
+					set(TBB_LIB_DIR "${TBB_ROOT}/lib/${TBB_ARCH}/vc11")
+				elseif(MSVC12)
+					set(TBB_BIN_DIR "${TBB_ROOT}/bin/${TBB_ARCH}/vc12")
+					set(TBB_LIB_DIR "${TBB_ROOT}/lib/${TBB_ARCH}/vc12")
 				endif()
 			else(OCE_BUILD_SHARED_LIB)
 				set(TBB_LIB_DIR "${TBB_ROOT}/lib/${TBB_ARCH}/vc_mt")
@@ -386,10 +414,6 @@ if(OCE_MULTITHREAD_LIBRARY STREQUAL "OPENMP")
 	find_package(OpenMP)
 endif(OCE_MULTITHREAD_LIBRARY STREQUAL "OPENMP")
 
-if (OCE_USE_BUNDLE OR OCE_USE_BUNDLE_SOURCE)
-	find_path(OCE_BUNDLE_ROOT_PATH oce-bundle-root.empty "Path for the OCE-win-bundle")
-endif(OCE_USE_BUNDLE OR OCE_USE_BUNDLE_SOURCE)
-
 if(OCE_VISU_DEP AND NOT OCE_DISABLE_TKSERVICE_FONT)
 	set(OCE_REQUIRES_FREETYPE TRUE)
 endif()
@@ -401,18 +425,14 @@ if(OCE_VISU_DEP)
 	endif (NOT (WIN32 OR (APPLE AND OCE_OSX_USE_COCOA)))
 endif(OCE_VISU_DEP)
 
-if(OCE_REQUIRES_FREETYPE)
+if(OCE_REQUIRES_FREETYPE AND NOT OCE_SKIP_FIND_LIBRARIES)
 	## TKService requires FreeType
-	if(NOT OCE_USE_BUNDLE AND NOT OCE_USE_BUNDLE_SOURCE)
-		find_package(Freetype REQUIRED)
-	else (NOT OCE_USE_BUNDLE AND NOT OCE_USE_BUNDLE_SOURCE)
-		find_library(FREETYPE_LIBRARY freetype)
-	endif(NOT OCE_USE_BUNDLE AND NOT OCE_USE_BUNDLE_SOURCE)
-
+	find_package(Freetype REQUIRED)
+	
 	if(CMAKE_CONFIGURATION_TYPES OR NMAKE)
 		find_library(FREETYPE_LIBRARY_DEBUG freetyped "Location of freetype debug library")
 	endif(CMAKE_CONFIGURATION_TYPES OR NMAKE)
-endif(OCE_REQUIRES_FREETYPE)
+endif()
 
 if(OCE_VISUALISATION)
 	if(OCE_WITH_FREEIMAGE)
@@ -532,34 +552,6 @@ if(OCE_DRAW)
 		src/DrawResources/lamp.ico
 		src/TObj/TObj.msg )
 endif(OCE_DRAW)
-
-if (OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
-	message("Using previously built and installed OCE Bundle")
-	if (OCE_VISU_DEP)
-		if(OCE_REQUIRES_FREETYPE)
-			set(FREETYPE_INCLUDE_DIR_freetype2 ${OCE_BUNDLE_ROOT_PATH}/include/freetype CACHE PATH "" FORCE)
-			set(FREETYPE_INCLUDE_DIR_ft2build ${OCE_BUNDLE_ROOT_PATH}/include/freetype CACHE PATH "" FORCE)
-			set(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR_freetype2} ${FREETYPE_INCLUDE_DIR_ft2build})
-			set(FREETYPE_LIBRARY ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARIES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetyped.lib CACHE FILEPATH "" FORCE)
-		endif(OCE_REQUIRES_FREETYPE)
-
-		if(OCE_WITH_GL2PS)
-			set(GL2PS_LIBRARY ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2ps.lib CACHE FILEPATH "" FORCE)
-			set(GL2PS_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2psd.lib CACHE FILEPATH "" FORCE)
-			set(GL2PS_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/include/gl2ps CACHE PATH "" FORCE)
-		endif(OCE_WITH_GL2PS)
-
-		if(OCE_WITH_FREEIMAGE)
-			set(FREEIMAGE_LIBRARY ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImage.lib CACHE FILEPATH "" FORCE)
-			set(FREEIMAGE_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImaged.lib CACHE FILEPATH "" FORCE)
-			set(FREEIMAGEPLUS_LIBRARY ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImagePlus.lib CACHE FILEPATH "" FORCE)
-			set(FREEIMAGEPLUS_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImagePlusd.lib CACHE FILEPATH "" FORCE)
-			set(FREEIMAGE_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/include/FreeImage CACHE PATH "" FORCE)
-		endif(OCE_WITH_FREEIMAGE)
-	endif (OCE_VISU_DEP)
-endif(OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/build_inc
 	${CMAKE_CURRENT_SOURCE_DIR}/inc)
@@ -797,6 +789,9 @@ if(MINGW)
 	# For the file Message_MsgFile.cxx of TKernel we must additionally set the __TCollection_DLL define to resolve the needed HashCode() method
 	set_source_files_properties("src/Message/Message_MsgFile.cxx" PROPERTIES COMPILE_FLAGS "-D__Message_DLL -D__TCollection_DLL")
 	message(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
+	
+	# Define high enough WIN32 version
+	add_definitions("-D_WIN32_WINNT=0x0501")
 endif(MINGW)
 
 # DISABLE SECURE CRT WARNINGS AND OTHER MS CRT SPECIFC THINGS
@@ -804,16 +799,6 @@ if (MSVC)
 	add_definitions("/D_CRT_SECURE_NO_WARNINGS")
 	add_definitions("/D_CRT_NONSTDC_NO_WARNINGS")
 endif(MSVC)
-
-if(MSVC_IDE)
-	if(NOT OCE_USE_MSVC_EXPRESS)
-		#Use solution folders.
-		set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-		set(USE_SOLUTION_FOLDERS TRUE)
-	else( NOT OCE_USE_MSVC_EXPRESS)
-		set_property(GLOBAL PROPERTY USE_FOLDERS OFF)
-	endif( NOT OCE_USE_MSVC_EXPRESS)
-endif(MSVC_IDE)
 
 # Libraries are installed by default in /usr/local/lib on UNIX
 # based platforms and c:/OCE-VERSION/Win[32|64]/lib on windows based
@@ -825,94 +810,6 @@ else(WIN32)
 	set(_PSUFFIX "")
 endif(WIN32)
 
-# If OCE_USE_BUNDLE_SOURCE, then we need to add oce-win-bundle and set variables
-# so the oce build can find the various headers and libraries.
-if (OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
-	# Embed oce-win-bundle project into this CMake project
-	message("Using OCE Bundle in same CMake project")
-	add_subdirectory( ${OCE_BUNDLE_ROOT_PATH} ${CMAKE_BINARY_DIR}/oce-win-bundle )
-
-	# The installation directory of the bundle must match the one of OCE
-	set(OCE_WIN_BUNDLE_INSTALL_DIR ${OCE_INSTALL_PREFIX} CACHE PATH "" FORCE)
-	
-	# Look for includes in bundle source directory.
-	# Put oce-win-bundle libraries and dlls in same place OCE libraries and dlls are going,
-	# and set variables to point OCE to them.
-	if (OCE_VISUALISATION OR OCE_VISU_DEP)
-		if(OCE_REQUIRES_FREETYPE)
-			set(FREETYPE_INCLUDE_DIR_freetype2 ${OCE_BUNDLE_ROOT_PATH}/libs/freetype CACHE PATH "" FORCE)
-			set(FREETYPE_INCLUDE_DIR_ft2build ${OCE_BUNDLE_ROOT_PATH}/libs/freetype/include CACHE PATH "" FORCE)
-			set(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR_freetype2} ${FREETYPE_INCLUDE_DIR_ft2build})
-		endif(OCE_REQUIRES_FREETYPE)
-
-		get_target_property(FREETYPE_ARCHIVE_OUTPUT_DIRECTORY freetype ARCHIVE_OUTPUT_DIRECTORY)
-		
-		if(MINGW)
-			# The archive output directory is set for MinGW, since the new methodology (see statement above)
-			# seems not to work with the MinGw generator
-			set(FREETYPE_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
-		
-			set(FREETYPE_LIBRARY ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libfreetype.dll.a CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARIES ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libfreetype.dll.a CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARY_DEBUG ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libfreetype.dll.a CACHE FILEPATH "" FORCE)
-		else(MINGW)
-			set(FREETYPE_LIBRARY ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/freetype.lib CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARIES ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/freetype.lib CACHE FILEPATH "" FORCE)
-			set(FREETYPE_LIBRARY_DEBUG ${FREETYPE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/freetyped.lib CACHE FILEPATH "" FORCE)
-		endif(MINGW)
-
-		if(OCE_WITH_GL2PS)
-			get_target_property(GL2PS_ARCHIVE_OUTPUT_DIRECTORY gl2ps ARCHIVE_OUTPUT_DIRECTORY)
-			
-			if(MINGW)
-				# The archive output directory is set for MinGW, since the new methodology (see statement above)
-				# seems not to work with the MinGw generator
-				set(GL2PS_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
-				
-				set(GL2PS_LIBRARY ${GL2PS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libgl2ps.dll.a CACHE FILEPATH "" FORCE)
-				set(GL2PS_LIBRARY_DEBUG ${GL2PS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libgl2ps.dll.a CACHE FILEPATH "" FORCE)
-			else(MINGW)
-				set(GL2PS_LIBRARY ${GL2PS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gl2ps.lib CACHE FILEPATH "" FORCE)
-				set(GL2PS_LIBRARY_DEBUG ${GL2PS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gl2psd.lib CACHE FILEPATH "" FORCE)
-			endif(MINGW)
-			
-			set(GL2PS_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/libs/gl2ps CACHE PATH "" FORCE)
-		endif(OCE_WITH_GL2PS)
-
-		if(OCE_WITH_FREEIMAGE)
-			get_target_property(FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY FreeImage ARCHIVE_OUTPUT_DIRECTORY)
-
-			if(MINGW)
-				# The archive output directory is set for MinGW, since the new methodology (see statement above)
-				# seems not to work with the MinGw generator
-				set(FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
-				
-				set(FREEIMAGE_LIBRARY ${FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImage.dll.a CACHE FILEPATH "" FORCE)
-				set(FREEIMAGE_LIBRARY_DEBUG ${FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImage.dll.a CACHE FILEPATH "" FORCE)
-			else(MINGW)
-				set(FREEIMAGE_LIBRARY ${FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/FreeImage.lib CACHE FILEPATH "" FORCE)
-				set(FREEIMAGE_LIBRARY_DEBUG ${FREEIMAGE_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/FreeImaged.lib CACHE FILEPATH "" FORCE)
-			endif(MINGW)
-
-			get_target_property(FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY FreeImagePlus ARCHIVE_OUTPUT_DIRECTORY)
-
-			if(MINGW)
-				# The archive output directory is set for MinGW, since the new methodology (see statement above)
-				# seems not to work with the MinGw generator
-				set(FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH})
-				
-				set(FREEIMAGEPLUS_LIBRARY ${FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImagePlus.dll.a CACHE FILEPATH "" FORCE)
-				set(FREEIMAGEPLUS_LIBRARY_DEBUG ${FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/libFreeImagePlus.dll.a CACHE FILEPATH "" FORCE)
-			else(MINGW)
-				set(FREEIMAGEPLUS_LIBRARY ${FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/FreeImagePlus.lib CACHE FILEPATH "" FORCE)
-				set(FREEIMAGEPLUS_LIBRARY_DEBUG ${FREEIMAGEPLUS_ARCHIVE_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/FreeImagePlusd.lib CACHE FILEPATH "" FORCE)
-			endif(MINGW)
-
-			set(FREEIMAGE_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/libs/FreeImage/Source ${OCE_BUNDLE_ROOT_PATH}/libs/FreeImage/Wrapper/FreeImagePlus CACHE PATH "" FORCE)
-		endif(OCE_WITH_FREEIMAGE)
-	endif (OCE_VISUALISATION OR OCE_VISU_DEP)
-endif(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
-
 # Binaries
 if(NOT DEFINED OCE_INSTALL_BIN_DIR)
 	set(OCE_INSTALL_BIN_DIR ${_PSUFFIX}bin)
@@ -923,7 +820,7 @@ if(NOT DEFINED OCE_INSTALL_LIB_DIR)
 	set(OCE_INSTALL_LIB_DIR ${_PSUFFIX}lib${LIB_SUFFIX})
 endif(NOT DEFINED OCE_INSTALL_LIB_DIR)
 
-if(MSVC)
+if(MSVC OR (MINGW AND OCE_INSTALL_PRIVATE_SAMEDIR))
 	if(NOT DEFINED OCE_INSTALL_PACKAGE_LIB_DIR)
 		set(OCE_INSTALL_PACKAGE_LIB_DIR ${OCE_INSTALL_LIB_DIR})
 	endif(NOT DEFINED OCE_INSTALL_PACKAGE_LIB_DIR)
@@ -931,7 +828,7 @@ else(MSVC)
 	if(NOT DEFINED OCE_INSTALL_PACKAGE_LIB_DIR)
 		set(OCE_INSTALL_PACKAGE_LIB_DIR ${OCE_INSTALL_LIB_DIR}/oce-${OCE_VERSION})
 	endif(NOT DEFINED OCE_INSTALL_PACKAGE_LIB_DIR)
-endif(MSVC)
+endif()
 
 # RPATHS
 if(IS_ABSOLUTE ${OCE_INSTALL_LIB_DIR})
@@ -1136,22 +1033,12 @@ install(FILES ${PROJECT_BINARY_DIR}/OCEConfig.cmake ${PROJECT_BINARY_DIR}/OCECon
 
 install(EXPORT OCE-libraries DESTINATION ${OCE_INSTALL_CMAKE_DATA_DIR} COMPONENT Development)
 
-if(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
-	# Add dependencies between OCE and oce-win-bundle
-  if(OCE_WITH_FREEIMAGE)
-    add_dependencies( TKService FreeImage )
-  endif()
-  if (OCE_VISUALISATION)
-    add_dependencies( TKOpenGl freetype gl2ps )
-  endif()
-endif(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
-
 ############
 # PostBuild Step
 ############
 # In win32, dependent libraries are required to run tests.
-
-if(MSVC AND OCE_TESTING)
+# Todo this works only with the bundle, all other libraries are not copied.
+if(MSVC AND OCE_TESTING AND OCE_USE_BUNDLE)
 
 		# Try to find TCL .dll filename
 		if (OCE_DRAW)
@@ -1163,157 +1050,143 @@ if(MSVC AND OCE_TESTING)
 		add_custom_target(PostBuild ALL ${CMAKE_COMMAND} -E echo Copying dependent files DEPENDS ALL)
 
 		if ( CMAKE_CONFIGURATION_TYPES )
+			SET(MY_CMAKE_CONFIGURATION_TYPES ${CMAKE_CONFIGURATION_TYPES})
+		else()
+			SET(MY_CMAKE_CONFIGURATION_TYPES ${CMAKE_BUILD_TYPE})
+		endif()
 
-			# This loop copies the DLLs in each configuration binary dir.
-			foreach (config ${CMAKE_CONFIGURATION_TYPES})
-				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM )
-
-				if (OCE_DRAW)
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-				endif()
-
-				# With USE_BUNDLE_SOURCE, the dll's referenced below are already in the
-				# correct locations.
-				if(NOT OCE_USE_BUNDLE_SOURCE)
-					set(TMP_SRCDIR ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/)
-					set(TMP_DESTDIR ${LIBRARY_OUTPUT_PATH}/${config})
-					string(REGEX REPLACE "/" "\\\\" TMP_SRCDIR ${TMP_SRCDIR})
-					string(REGEX REPLACE "/" "\\\\" TMP_DESTDIR ${TMP_DESTDIR})
-					set (TMP_FILELIST FreeImage gl2ps freetype FreeImagePlus)
-
-					if (${config} MATCHES "Debug")
-						set(TMP_SUFFIX "d")
-					else ()
-						set(TMP_SUFFIX)
-					endif()
-
-					foreach (TMP_FILE ${TMP_FILELIST} )
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND xcopy /Y ${TMP_SRCDIR}${TMP_FILE}${TMP_SUFFIX}.dll ${TMP_DESTDIR} VERBATIM )
-					endforeach()
-				endif()
-
-				# Switch between bin and bind dirs
-				if (${config} MATCHES "Debug")
-
-					# Install TBB libraries
-					if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-
-					if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-				else ()
-
-					# Install TBB libraries
-					if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-
-					if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-				endif()
-			endforeach()
-		else (CMAKE_CONFIGURATION_TYPES )
-			# Nmake support : just one configuration
-			add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory ${LIBRARY_OUTPUT_PATH}/ VERBATIM )
-
+		# This loop copies the DLLs in each configuration binary dir.
+		foreach (config ${MY_CMAKE_CONFIGURATION_TYPES})
+			set(my_dir "")
+			if(CMAKE_CONFIGURATION_TYPES)
+				set(my_dir "${config}/")
+			endif()
+			add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory ${LIBRARY_OUTPUT_PATH}/${my_dir} VERBATIM )
+			
 			if (OCE_DRAW)
-				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll ${LIBRARY_OUTPUT_PATH}/ VERBATIM)
+				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll ${LIBRARY_OUTPUT_PATH}/${my_dir} VERBATIM)
 			endif()
 
-			if (${CMAKE_BUILD_TYPE} MATCHES "Debug")
-				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/ ${LIBRARY_OUTPUT_PATH} VERBATIM )
+		endforeach()
 
-				# Install TBB libraries
-				if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-				endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-
-				if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-				endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-			else ()
-				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/ ${LIBRARY_OUTPUT_PATH}/ VERBATIM )
-
-				# Install TBB libraries
-				if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-				endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-
-				if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-				endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-			endif()
-		endif (CMAKE_CONFIGURATION_TYPES)
-
-endif(MSVC AND OCE_TESTING)
+endif(MSVC AND OCE_TESTING AND OCE_USE_BUNDLE)
 
 ##############
 # Bundle AUTOINSTALL
 ##############
 
-if (OCE_BUNDLE_AUTOINSTALL AND NOT OCE_USE_BUNDLE_SOURCE)
+if (OCE_AUTOINSTALL_DEPENDENT_LIBS)
+	# Note : these installs are optional because in multi-configuration types these may include
+	# generator expressions and the EXISTS check fails in that case.
+
+	IF(MINGW)
+		if(OCE_BUILD_SHARED_LIB)
+			SET(OCE_LIB_EXTENSION "dll.a")
+		else()
+			SET(OCE_LIB_EXTENSION "a")
+		endif()
+	ELSE()
+		SET(OCE_LIB_EXTENSION "lib")
+	ENDIF()
+
 	if (OCE_VISU_DEP AND OCE_REQUIRES_FREETYPE)
-	  if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetyped.dll)
-        install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetyped.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
-      endif()
-      if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetype.dll)
-        install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetype.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
-      endif()
-      
-	  install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetyped.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug)
-      install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
-    
+		get_filename_component(FREETYPE_BIN_DIR ${FREETYPE_LIBRARY} PATH)
+		if (CMAKE_CONFIGURATION_OPTIONS)
+          get_filename_component(FREETYPE_BIN_DIR_DBG ${FREETYPE_LIBRARY_DEBUG} PATH)
+        else()
+          set(FREETYPE_BIN_DIR_DBG ${FREETYPE_BIN_DIR})
+        endif()
+		install(FILES ${FREETYPE_BIN_DIR_DBG}/${CMAKE_SHARED_LIBRARY_PREFIX}freetyped.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug OPTIONAL)
+    	install(FILES ${FREETYPE_BIN_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}freetype.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+    	install(FILES ${FREETYPE_BIN_DIR_DBG}/${CMAKE_STATIC_LIBRARY_PREFIX}freetyped.${OCE_LIB_EXTENSION} DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+    	install(FILES ${FREETYPE_BIN_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}freetype.${OCE_LIB_EXTENSION} DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+    	if(OCE_INSTALL_PDB_FILES)
+	    	install(FILES ${FREETYPE_BIN_DIR_DBG}/freetyped.pdb DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+			install(FILES ${FREETYPE_BIN_DIR}/freetype.pdb DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+		endif()
 	endif(OCE_VISU_DEP AND OCE_REQUIRES_FREETYPE)
 
-	if (OCE_VISU_DEP AND OCE_WITH_GL2PS )
-	    if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/gl2psd.dll)
-		   install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/gl2psd.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
-	    endif()
-		if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/gl2ps.dll)
-		   install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/gl2ps.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
+	if (OCE_VISU_DEP AND OCE_WITH_GL2PS)
+		get_filename_component(GL2PS_BIN_DIR ${GL2PS_LIBRARY} PATH)
+		get_filename_component(GL2PS_BIN_DIR_DBG ${GL2PS_LIBRARY_DEBUG} PATH)
+		install(FILES ${GL2PS_BIN_DIR_DBG}/${CMAKE_SHARED_LIBRARY_PREFIX}gl2psd.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug OPTIONAL)
+    	install(FILES ${GL2PS_BIN_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}gl2ps.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+    	install(FILES ${GL2PS_BIN_DIR_DBG}/${CMAKE_STATIC_LIBRARY_PREFIX}gl2psd.${OCE_LIB_EXTENSION} DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+    	install(FILES ${GL2PS_BIN_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}gl2ps.${OCE_LIB_EXTENSION} DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+    	if(OCE_INSTALL_PDB_FILES)
+	    	install(FILES ${GL2PS_BIN_DIR_DBG}/gl2psd.pdb DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+			install(FILES ${GL2PS_BIN_DIR}/gl2ps.pdb DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
 		endif()
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2psd.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug)
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2ps.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
 	endif(OCE_VISU_DEP AND OCE_WITH_GL2PS)
 
 	if (OCE_VISU_DEP AND OCE_WITH_FREEIMAGE)
-		if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImaged.dll)
-			install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImaged.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
-			install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImagePlusd.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
+		get_filename_component(FREEIMAGE_BIN_DIR ${FREEIMAGE_LIBRARY} PATH)
+		get_filename_component(FREEIMAGE_BIN_DIR_DBG ${FREEIMAGE_LIBRARY_DEBUG} PATH)
+		get_filename_component(FREEIMAGEPLUS_BIN_DIR ${FREEIMAGE_LIBRARY} PATH)
+		get_filename_component(FREEIMAGEPLUS_BIN_DIR_DBG ${FREEIMAGE_LIBRARY_DEBUG} PATH)
+		install(FILES ${FREEIMAGE_BIN_DIR_DBG}/${CMAKE_SHARED_LIBRARY_PREFIX}freeimaged.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug OPTIONAL)
+    	install(FILES ${FREEIMAGE_BIN_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}freeimage.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+    	install(FILES ${FREEIMAGE_BIN_DIR_DBG}/${CMAKE_STATIC_LIBRARY_PREFIX}freeimaged.${OCE_LIB_EXTENSION} DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+    	install(FILES ${FREEIMAGE_BIN_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}freeimage.${OCE_LIB_EXTENSION} DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+		install(FILES ${FREEIMAGEPLUS_BIN_DIR_DBG}/${CMAKE_SHARED_LIBRARY_PREFIX}freeimageplusd.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug OPTIONAL)
+    	install(FILES ${FREEIMAGEPLUS_BIN_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}freeimageplus.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+    	install(FILES ${FREEIMAGEPLUS_BIN_DIR_DBG}/${CMAKE_STATIC_LIBRARY_PREFIX}freeimageplusd.${OCE_LIB_EXTENSION} DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+    	install(FILES ${FREEIMAGEPLUS_BIN_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}freeimageplus.${OCE_LIB_EXTENSION} DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+
+    	if(OCE_INSTALL_PDB_FILES)
+	    	install(FILES ${FREEIMAGE_BIN_DIR_DBG}/freeimaged.pdb DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+			install(FILES ${FREEIMAGE_BIN_DIR}/freeimage.pdb DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+			install(FILES ${FREEIMAGEPLUS_BIN_DIR_DBG}/freeimageplusd.pdb DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+			install(FILES ${FREEIMAGEPLUS_BIN_DIR}/freeimageplus.pdb DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
 		endif()
-		if (EXISTS ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImage.dll)
-			install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImage.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
-			install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FreeImagePlus.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
-		endif()
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImaged.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug)
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImagePlusd.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug)
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImage.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
-		install(FILES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/FreeImagePlus.lib DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
-		
 	endif(OCE_VISU_DEP AND OCE_WITH_FREEIMAGE)
 
 	# Install TCL
 	if (OCE_DRAW)
 		get_filename_component(TCL_BIN_DIR ${TCL_TCLSH} PATH)
 		get_filename_component(TCL_LIB_NAME_DIR ${TCL_LIBRARY} NAME_WE)
-		install(FILES ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug )
-		install(FILES ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel )
+		install(FILES ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug OPTIONAL)
+		install(FILES ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
 	endif(OCE_DRAW)
 
 	# Install TBB libraries
-	if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-		install(FILES "${TBB_BIN_DIR}/tbb.dll" DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
-		install(FILES "${TBB_BIN_DIR}/tbb_debug.dll" DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
-	endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
+	if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB")
+		IF(NOT DEFINED TBB_BIN_DIR)
+			get_filename_component(TBB_BIN_DIR ${TBB_LIBRARY} PATH)
+			get_filename_component(TBB_BIN_DIR_DBG ${TBB_LIBRARY_DEBUG} PATH)
+		ENDIF()
+		if(NOT OCE_BUILD_SHARED_LIB)
+			set(tbb_prefix "_static")
+		endif()
+		install(FILES "${TBB_BIN_DIR}/tbb${tbb_prefix}.dll" DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+		install(FILES "${TBB_BIN_DIR}/tbb${tbb_prefix}.${OCE_LIB_EXTENSION}" DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+		install(FILES "${TBB_BIN_DIR_DBG}/tbb_debug${tbb_prefix}.dll" DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug OPTIONAL)
+		install(FILES "${TBB_BIN_DIR_DBG}/tbb_debug${tbb_prefix}.${OCE_LIB_EXTENSION}" DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+		if(OCE_INSTALL_PDB_FILES)
+			install(FILES "${TBB_BIN_DIR_DBG}/tbb_debug${tbb_prefix}.pdb" DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+			install(FILES "${TBB_BIN_DIR}/tbb${tbb_prefix}.pdb" DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+		endif()
+	endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB")
 
-	if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-		install(FILES "${TBB_BIN_DIR}/tbbmalloc.dll" DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
-		install(FILES "${TBB_BIN_DIR}/tbbmalloc_debug.dll" DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
-	endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-endif(OCE_BUNDLE_AUTOINSTALL AND NOT OCE_USE_BUNDLE_SOURCE)
+	if(OCE_TBB_MALLOC_SUPPORT)
+		if(NOT DEFINED TBB_BIN_DIR)
+			get_filename_component(TBB_MALLOC_BIN_DIR ${TBB_MALLOC_LIBRARY} PATH)
+			get_filename_component(TBB_MALLOC_BIN_DIR_DBG ${TBB_MALLOC_LIBRARY_DEBUG} PATH)
+		else()
+			SET(TBB_MALLOC_BIN_DIR ${TBB_BIN_DIR})
+			SET(TBB_MALLOC_BIN_DIR_DBG ${TBB_BIN_DIR})
+		endif()
+
+		install(FILES "${TBB_MALLOC_BIN_DIR}/tbbmalloc.dll" DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+		install(FILES "${TBB_MALLOC_BIN_DIR_DBG}/tbbmalloc_debug.dll" DESTINATION ${OCE_INSTALL_BIN_DIR} CONFIGURATIONS Debug OPTIONAL)
+		install(FILES "${TBB_MALLOC_BIN_DIR}/tbbmalloc.${OCE_LIB_EXTENSION}" DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+		install(FILES "${TBB_MALLOC_BIN_DIR_DBG}/tbbmalloc_debug.${OCE_LIB_EXTENSION}" DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+		if(OCE_INSTALL_PDB_FILES)
+			install(FILES "${TBB_MALLOC_BIN_DIR_DBG}/tbbmalloc_debug.pdb" DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Debug OPTIONAL)
+			install(FILES "${TBB_MALLOC_BIN_DIR}/tbbmalloc.pdb" DESTINATION ${OCE_INSTALL_LIB_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel OPTIONAL)
+		endif()
+	endif(OCE_TBB_MALLOC_SUPPORT)
+endif(OCE_AUTOINSTALL_DEPENDENT_LIBS)
 
 
 ###############
@@ -1465,3 +1338,8 @@ configure_file(
 
 add_custom_target(uninstall
     COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+
+# Final bundle step for dependencies
+if(OCE_USE_BUNDLE)
+	include(oce-win-bundle/depends.cmake)
+endif()
