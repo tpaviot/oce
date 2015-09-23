@@ -56,6 +56,11 @@
 #include <NCollection_Map.hxx>
 #include <NCollection_Vector.hxx>
 
+#if defined(__MINGW32__)
+  #ifndef alloca
+  #define alloca __builtin_alloca 
+  #endif
+#endif
 //================================================================
 // Function : Constructor MeshVS_MeshPrsBuilder
 // Purpose  :
