@@ -28,7 +28,7 @@
 // MinGw defines rand_r in stdlib.h only in newer versions and only if _POSIX
 // or _POSIX_THREAD_SAFE_FUNCTIONS is defined. Therefore we paste the
 // definition from MinGw64 with g++ 5.1.0 here.
-#if defined(__MINGW64__)
+#if defined(__MINGW64__) || defined(__MINGW32__)
   #ifndef rand_r
   #define rand_r(__seed) (__seed == __seed ? rand () : rand ())
   #endif
