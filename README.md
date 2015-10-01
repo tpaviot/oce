@@ -5,6 +5,8 @@ Appveyor:
 
 ## About
 
+[![Join the chat at https://gitter.im/tpaviot/oce](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tpaviot/oce?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 oce is a C++ 3D modeling library. It can be used to develop CAD/CAM softwares, for instance [FreeCad](http://www.freecadweb.org/) or [IfcOpenShell](http://www.ifcopenshell.org/).
 
 oce stands for **o**pencascade **c**ommunity **e**dition. This project aims at gathering patches/ changes/ improvements from the OCC community over the latest release (currently OCCT 6.8.0). Official OCCT documentation and sources are available at http://www.opencascade.org/, you can also theck their development portal at http://dev.opencascade.org. 
