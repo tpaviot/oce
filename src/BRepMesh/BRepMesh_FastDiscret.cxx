@@ -172,8 +172,20 @@ void BRepMesh_FastDiscret::Perform(const TopoDS_Shape& theShape)
     Add(aFace);
     aFaces.push_back(aFace);
   }
-
+  
+#if defined(_OPENMP)
+  if (myInParallel)
+  {
+    int i, n = aFaces.size();
+#pragma omp parallel for private(i)
+    for (i = 0; i < n; ++i)
+      Process(aFaces[i]);
+  }
+  else
+    OSD_Parallel::ForEach(aFaces.begin(), aFaces.end(), *this, !myInParallel);
+#else
   OSD_Parallel::ForEach(aFaces.begin(), aFaces.end(), *this, !myInParallel);
+#endif
 }
 
 

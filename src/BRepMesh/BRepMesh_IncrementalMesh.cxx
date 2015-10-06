@@ -217,10 +217,21 @@ void BRepMesh_IncrementalMesh::update()
   NCollection_Vector<TopoDS_Face>::Iterator aFaceIt(myFaces);
   for (; aFaceIt.More(); aFaceIt.Next())
     update(aFaceIt.Value());
-
-  // Mesh faces
+  
+#if defined(_OPENMP)
+  if (myInParallel)
+  {
+    int i, n = myFaces.Size();
+#pragma omp parallel for private(i)
+    for (i = 0; i < n; ++i)
+      myMesh->Process(myFaces(i));
+  }
+  else
+    OSD_Parallel::ForEach(myFaces.begin(), myFaces.end(), *myMesh, !myInParallel);
+#else
   OSD_Parallel::ForEach(myFaces.begin(), myFaces.end(), *myMesh, !myInParallel);
-
+#endif
+  
   commit();
   clear();
 }
