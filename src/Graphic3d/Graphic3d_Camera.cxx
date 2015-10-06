@@ -59,7 +59,7 @@ namespace
     Standard_Real aExp = Floor (aLogRadix);
     return FLT_EPSILON * Pow (FLT_RADIX, aExp);
   };
-};
+}
 
 // =======================================================================
 // function : Graphic3d_Camera

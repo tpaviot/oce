@@ -38,7 +38,7 @@ namespace
         return AIS_Dimension::ComputeMode_All;
     }
   }
-};
+}
 
 //=======================================================================
 //function : Constructor

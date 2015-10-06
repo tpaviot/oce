@@ -50,7 +50,7 @@ namespace
   static const GLfloat THE_DEFAULT_SPOT_EXPONENT = 0.0f;
   static const GLfloat THE_DEFAULT_SPOT_CUTOFF   = 180.0f;
 
-};
+}
 
 extern void InitLayerProp (const int theListId); //szvgl: defined in OpenGl_GraphicDriver_Layer.cxx
 

@@ -93,7 +93,7 @@ static const Font_FontMgr_FontAliasMapNode Font_FontMgr_MapOfFontsAliases[] =
       NULL
     };
 
-  };
+  }
 
 #else
 
@@ -166,7 +166,7 @@ static const Font_FontMgr_FontAliasMapNode Font_FontMgr_MapOfFontsAliases[] =
       }
     }
 
-  };
+  }
 
 #endif
 

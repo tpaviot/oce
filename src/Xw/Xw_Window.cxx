@@ -36,7 +36,7 @@ namespace
     None
   };
 
-};
+}
 
 IMPLEMENT_STANDARD_HANDLE (Xw_Window, Aspect_Window)
 IMPLEMENT_STANDARD_RTTIEXT(Xw_Window, Aspect_Window)
