@@ -17,6 +17,13 @@
 #include <Handle_PTopoDS_HShape.hxx>
 #include <Standard_Integer.hxx>
 #include <Standard_Persistent.hxx>
+
+// The Convex method can conflict with Convex defined as an integer
+// in X.h
+#ifdef Convex
+#undef Convex
+#endif
+
 class PTopoDS_HArray1OfHShape;
 class PTopoDS_HShape;
 

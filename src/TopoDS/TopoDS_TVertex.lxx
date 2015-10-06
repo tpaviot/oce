@@ -14,6 +14,12 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
+// The Convex function can conflict with Convex defined as an integer
+// in X.h
+#ifdef Convex
+#undef Convex
+#endif
+
 //=======================================================================
 //function : TopoDS_TVertex
 //purpose  : 

@@ -16,6 +16,13 @@
 #include <Standard_Boolean.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <Standard_Integer.hxx>
+
+// The Convex method can conflict with Convex defined as an integer
+// in X.h
+#ifdef Convex
+#undef Convex
+#endif
+
 class TopoDS_TShape;
 class Standard_NullObject;
 class Standard_DomainError;
