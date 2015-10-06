@@ -238,7 +238,7 @@ static TCollection_AsciiString nulword;
     char ligne[100];
     if (!lefic) std::cout << theprompt.ToCString();
     ligne[0] = '\0';
-    fgets(ligne,100,fic);
+    if (fgets(ligne,100,fic) == NULL) break;
     if (feof(fic)) break;
     if (ligne[0] == '\0') continue;
 //    On interprete cette commande

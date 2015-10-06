@@ -114,7 +114,7 @@ static int deja = 0;
   Standard_Boolean header = Standard_False;
   for(;;) {
     ligne[0] = '\0';
-    fgets(ligne,200,lefic);
+    if (fgets(ligne,200,lefic) == NULL) break;
     if (feof(lefic)) break;
     if (ligne[0] == '\0') continue;
 //  D abord ligne initiale ?

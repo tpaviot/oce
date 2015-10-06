@@ -492,7 +492,8 @@ Handle(StlMesh_Mesh) RWStl::ReadAscii (const OSD_Path& thePath,
     gp_XYZ aN (Atof(x), Atof(y), Atof(z));
 
     // skip the keywords "outer loop"
-    fscanf(file,"%*s %*s");
+    if (0 != fscanf(file,"%*s %*s"))
+      break;
 
     // reading vertex
     if (3 != fscanf(file,"%*s %80s %80s %80s\n", x, y, z))
@@ -513,10 +514,12 @@ Handle(StlMesh_Mesh) RWStl::ReadAscii (const OSD_Path& thePath,
     ReadMesh->AddTriangle (i1, i2, i3, aN.X(), aN.Y(), aN.Z());
 
     // skip the keywords "endloop"
-    fscanf(file,"%*s");
+    if (0 != fscanf(file,"%*s"))
+      break;
 
     // skip the keywords "endfacet"
-    fscanf(file,"%*s");
+    if (0 != fscanf(file,"%*s"))
+      break;
 
     // update progress only per 1k triangles
     if (++iTri % IND_THRESHOLD == 0)

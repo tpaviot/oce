@@ -23,6 +23,9 @@
 #include <TCollection_AsciiString.hxx>
 #include <OSD_OpenFile.hxx>
 
+#define CATCH_FREAD_1_ERR(stmt) if (1 != (stmt)) { fclose(f); return Standard_False; }
+#define CATCH_FGETS_ERR(stmt) if (NULL == (stmt)) { fclose(f); return Standard_False; }
+
 Voxel_Reader::Voxel_Reader():myBoolVoxels(0),myColorVoxels(0),myFloatVoxels(0)
 {
 
@@ -39,8 +42,10 @@ Standard_Boolean Voxel_Reader::Read(const TCollection_ExtendedString& file)
   Standard_Byte type; // 0 - bool, 1 - color, 2 - float
   Voxel_VoxelFileFormat format;
   Standard_Character svoxels[9], sformat[9], stype[9];
-  fscanf(f, "%8s %8s %8s\n", svoxels, sformat, stype);
-  fclose(f);
+  int strings_read = fscanf(f, "%8s %8s %8s\n", svoxels, sformat, stype);
+  fclose(f); // close file before aborting on error
+  if (3 != strings_read)
+    return Standard_False;
 
   // Take format, type of voxels.
   // Voxels
@@ -147,7 +152,7 @@ Standard_Boolean Voxel_Reader::ReadBoolAsciiVoxels(const TCollection_ExtendedStr
   Standard_Character line[65], sx[33], sy[33], sz[33];
 
   // Header: skip it
-  fgets(line, 64, f);
+  CATCH_FGETS_ERR( fgets(line, 64, f) );
   
   // Location, size, number of splits
   Standard_Integer nbx = 0, nby = 0, nbz = 0;
@@ -183,7 +188,7 @@ Standard_Boolean Voxel_Reader::ReadBoolAsciiVoxels(const TCollection_ExtendedStr
     Standard_Integer i1 = 0, i2 = 0, value = 0;
     while (!feof(f))
     {
-      fgets(line, 64, f);
+      CATCH_FGETS_ERR( fgets(line, 64, f) );
       if (has_slice(line))
       {
 	if (sscanf(line, "%d %d %d\n", &i1, &i2, &value) != 3)
@@ -224,8 +229,8 @@ Standard_Boolean Voxel_Reader::ReadColorAsciiVoxels(const TCollection_ExtendedSt
   Standard_Character line[65], sx[33], sy[33], sz[33];
 
   // Header: skip it
-  fgets(line, 64, f);
-  
+  CATCH_FGETS_ERR( fgets(line, 64, f) );
+
   // Location, size, number of splits
   Standard_Integer nbx = 0, nby = 0, nbz = 0;
   Standard_Real x = 0.0, y = 0.0, z = 0.0, xlen = 0.0, ylen = 0.0, zlen = 0.0;
@@ -260,7 +265,7 @@ Standard_Boolean Voxel_Reader::ReadColorAsciiVoxels(const TCollection_ExtendedSt
     Standard_Integer i1 = 0, i2 = 0, value = 0;
     while (!feof(f))
     {
-      fgets(line, 64, f);
+      CATCH_FGETS_ERR( fgets(line, 64, f) );
       if (has_slice(line))
       {
 	if (sscanf(line, "%d %d %d\n", &i1, &i2, &value) != 3)
@@ -301,7 +306,7 @@ Standard_Boolean Voxel_Reader::ReadFloatAsciiVoxels(const TCollection_ExtendedSt
   Standard_Character line[65], sx[33], sy[33], sz[33];
 
   // Header: skip it
-  fgets(line, 64, f);
+  CATCH_FGETS_ERR( fgets(line, 64, f) );
   
   // Location, size, number of splits
   Standard_Integer nbx = 0, nby = 0, nbz = 0;
@@ -338,7 +343,7 @@ Standard_Boolean Voxel_Reader::ReadFloatAsciiVoxels(const TCollection_ExtendedSt
     Standard_ShortReal value = 0.0;
     while (!feof(f))
     {
-      fgets(line, 64, f);
+      CATCH_FGETS_ERR( fgets(line, 64, f) );
       if (has_slice(line))
       {
 	if (sscanf(line, "%d %d %64s\n", &i1, &i2, line) != 3)
@@ -380,20 +385,20 @@ Standard_Boolean Voxel_Reader::ReadBoolBinaryVoxels(const TCollection_ExtendedSt
 
   // Header: skip it
   Standard_Character line[65];
-  fgets(line, 64, f);
+  CATCH_FGETS_ERR( fgets(line, 64, f) );
   
   // Location, size, number of splits
   Standard_Integer nbx = 0, nby = 0, nbz = 0;
   Standard_Real x = 0.0, y = 0.0, z = 0.0, xlen = 0.0, ylen = 0.0, zlen = 0.0;
-  fread(&x, sizeof(Standard_Real), 1, f);
-  fread(&y, sizeof(Standard_Real), 1, f);
-  fread(&z, sizeof(Standard_Real), 1, f);
-  fread(&xlen, sizeof(Standard_Real), 1, f);
-  fread(&ylen, sizeof(Standard_Real), 1, f);
-  fread(&zlen, sizeof(Standard_Real), 1, f);
-  fread(&nbx, sizeof(Standard_Integer), 1, f);
-  fread(&nby, sizeof(Standard_Integer), 1, f);
-  fread(&nbz, sizeof(Standard_Integer), 1, f);
+  CATCH_FREAD_1_ERR( fread(&x, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&y, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&z, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&xlen, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&ylen, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&zlen, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&nbx, sizeof(Standard_Integer), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&nby, sizeof(Standard_Integer), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&nbz, sizeof(Standard_Integer), 1, f) );
 
   // Allocate the voxels
   myBoolVoxels = (Standard_Address) new Voxel_BoolDS(x, y, z, xlen, ylen, zlen, nbx, nby, nbz);
@@ -408,9 +413,9 @@ Standard_Boolean Voxel_Reader::ReadBoolBinaryVoxels(const TCollection_ExtendedSt
     Standard_Integer i1 = 0, i2 = 0, value = 0;
     while (!feof(f))
     {
-      fread(&i1, sizeof(Standard_Integer), 1, f);
-      fread(&i2, sizeof(Standard_Integer), 1, f);
-      fread(&value, sizeof(Standard_Byte), 1, f);
+      CATCH_FREAD_1_ERR( fread(&i1, sizeof(Standard_Integer), 1, f) );
+      CATCH_FREAD_1_ERR( fread(&i2, sizeof(Standard_Integer), 1, f) );
+      CATCH_FREAD_1_ERR( fread(&value, sizeof(Standard_Byte), 1, f) );
 
       // Set value
       if (!((Standard_Byte**)((Voxel_DS*)myBoolVoxels)->myData)[i1])
@@ -435,20 +440,20 @@ Standard_Boolean Voxel_Reader::ReadColorBinaryVoxels(const TCollection_ExtendedS
 
   // Header: skip it
   Standard_Character line[65];
-  fgets(line, 64, f);
+  CATCH_FGETS_ERR( fgets(line, 64, f) );
   
   // Location, size, number of splits
   Standard_Integer nbx = 0, nby = 0, nbz = 0;
   Standard_Real x = 0.0, y = 0.0, z = 0.0, xlen = 0.0, ylen = 0.0, zlen = 0.0;
-  fread(&x, sizeof(Standard_Real), 1, f);
-  fread(&y, sizeof(Standard_Real), 1, f);
-  fread(&z, sizeof(Standard_Real), 1, f);
-  fread(&xlen, sizeof(Standard_Real), 1, f);
-  fread(&ylen, sizeof(Standard_Real), 1, f);
-  fread(&zlen, sizeof(Standard_Real), 1, f);
-  fread(&nbx, sizeof(Standard_Integer), 1, f);
-  fread(&nby, sizeof(Standard_Integer), 1, f);
-  fread(&nbz, sizeof(Standard_Integer), 1, f);
+  CATCH_FREAD_1_ERR( fread(&x, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&y, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&z, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&xlen, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&ylen, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&zlen, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&nbx, sizeof(Standard_Integer), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&nby, sizeof(Standard_Integer), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&nbz, sizeof(Standard_Integer), 1, f) );
 
   // Allocate the voxels
   myColorVoxels = (Standard_Address) new Voxel_ColorDS(x, y, z, xlen, ylen, zlen, nbx, nby, nbz);
@@ -463,9 +468,9 @@ Standard_Boolean Voxel_Reader::ReadColorBinaryVoxels(const TCollection_ExtendedS
     Standard_Integer i1 = 0, i2 = 0, value = 0;
     while (!feof(f))
     {
-      fread(&i1, sizeof(Standard_Integer), 1, f);
-      fread(&i2, sizeof(Standard_Integer), 1, f);
-      fread(&value, sizeof(Standard_Byte), 1, f);
+      CATCH_FREAD_1_ERR( fread(&i1, sizeof(Standard_Integer), 1, f) );
+      CATCH_FREAD_1_ERR( fread(&i2, sizeof(Standard_Integer), 1, f) );
+      CATCH_FREAD_1_ERR( fread(&value, sizeof(Standard_Byte), 1, f) );
 
       // Set value
       if (!((Standard_Byte**)((Voxel_DS*)myColorVoxels)->myData)[i1])
@@ -490,20 +495,20 @@ Standard_Boolean Voxel_Reader::ReadFloatBinaryVoxels(const TCollection_ExtendedS
 
   // Header: skip it
   Standard_Character line[65];
-  fgets(line, 64, f);
+  CATCH_FGETS_ERR( fgets(line, 64, f) );
   
   // Location, size, number of splits
   Standard_Integer nbx = 0, nby = 0, nbz = 0;
   Standard_Real x = 0.0, y = 0.0, z = 0.0, xlen = 0.0, ylen = 0.0, zlen = 0.0;
-  fread(&x, sizeof(Standard_Real), 1, f);
-  fread(&y, sizeof(Standard_Real), 1, f);
-  fread(&z, sizeof(Standard_Real), 1, f);
-  fread(&xlen, sizeof(Standard_Real), 1, f);
-  fread(&ylen, sizeof(Standard_Real), 1, f);
-  fread(&zlen, sizeof(Standard_Real), 1, f);
-  fread(&nbx, sizeof(Standard_Integer), 1, f);
-  fread(&nby, sizeof(Standard_Integer), 1, f);
-  fread(&nbz, sizeof(Standard_Integer), 1, f);
+  CATCH_FREAD_1_ERR( fread(&x, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&y, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&z, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&xlen, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&ylen, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&zlen, sizeof(Standard_Real), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&nbx, sizeof(Standard_Integer), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&nby, sizeof(Standard_Integer), 1, f) );
+  CATCH_FREAD_1_ERR( fread(&nbz, sizeof(Standard_Integer), 1, f) );
 
   // Allocate the voxels
   myFloatVoxels = (Standard_Address) new Voxel_FloatDS(x, y, z, xlen, ylen, zlen, nbx, nby, nbz);
@@ -519,9 +524,9 @@ Standard_Boolean Voxel_Reader::ReadFloatBinaryVoxels(const TCollection_ExtendedS
     Standard_ShortReal value = 0.0;
     while (!feof(f))
     {
-      fread(&i1, sizeof(Standard_Integer), 1, f);
-      fread(&i2, sizeof(Standard_Integer), 1, f);
-      fread(&value, sizeof(Standard_ShortReal), 1, f);
+      CATCH_FREAD_1_ERR( fread(&i1, sizeof(Standard_Integer), 1, f) );
+      CATCH_FREAD_1_ERR( fread(&i2, sizeof(Standard_Integer), 1, f) );
+      CATCH_FREAD_1_ERR( fread(&value, sizeof(Standard_ShortReal), 1, f) );
 
       // Set value
       if (!((Standard_ShortReal**)((Voxel_DS*)myFloatVoxels)->myData)[i1])

@@ -159,7 +159,8 @@ void FSD_BinaryFile::ReadChar(TCollection_AsciiString& buffer, const Standard_Si
   buffer.Clear();
 
   while (!IsEnd() && (ccount < rsize)) {
-    fread(&c, sizeof(char),1, myStream);
+    if (1 != fread(&c, sizeof(char),1, myStream))
+      break;
     buffer += c;
     ccount++;
   }
