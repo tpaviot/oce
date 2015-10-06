@@ -459,7 +459,7 @@ Standard_Integer VARSTOPOARGS(TestTopOpe_BOOP& PT,Standard_Integer& na,const cha
     else if (!strcmp(thea,"-c")) {
       suppressarg(na,a,ia);
       if (ia < na) {
-	VT.SetClear((Standard_Boolean)Draw::Atoi(a[ia]));
+	VT.SetClear(0!=Draw::Atoi(a[ia]));
 	suppressarg(na,a,ia);
       }
       else VT.SetClear(Standard_True);

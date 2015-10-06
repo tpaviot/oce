@@ -534,7 +534,7 @@ static Standard_Integer setsweep(Draw_Interpretor& di,
           Standard_Integer CurvilinearEquivalence = Draw::Atoi(a[3]);
           Standard_Integer KeepContact = Draw::Atoi(a[4]);
           Sweep->SetMode(TopoDS::Wire(Guide),
-                         CurvilinearEquivalence,
+                         0 != CurvilinearEquivalence,
                          (BRepFill_TypeOfContact)KeepContact);
 	}
     }

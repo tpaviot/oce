@@ -38,7 +38,7 @@ static Standard_Integer sortcompound (Draw_Interpretor& di, Standard_Integer arg
   if (argc < 4) {
     ShapeExtend_Explorer sbx;
     for (int i = 0; i < 2; i ++) {
-      TopAbs_ShapeEnum ts = sbx.ShapeType(Shape,i);
+      TopAbs_ShapeEnum ts = sbx.ShapeType(Shape,0 != i);
       //cout<<"   Type "<<(i ? " (via Compound) : " : "(True) : ");
       if (i == 0) {
 	di<<"   Type "<<"(True) : ";

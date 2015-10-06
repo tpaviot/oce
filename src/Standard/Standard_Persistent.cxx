@@ -67,7 +67,7 @@ Standard_Persistent& Standard_Persistent::operator=(const Standard_Persistent& )
 Standard_Boolean Standard_Persistent::IsInstance(const Handle(Standard_Type)
 						&AType) const
 {
-  return (Standard_Boolean) (AType ==  DynamicType());
+  return (AType ==  DynamicType());
 }
 
 //

@@ -68,7 +68,7 @@ Standard_Boolean BinMDataStd_IntegerArrayDriver::Paste
     if (! (theSource >> aDeltaValue))
       return Standard_False;
     else
-      aDelta = (Standard_Boolean)aDeltaValue;
+      aDelta = (0 != aDeltaValue);
   }
 #ifdef OCCT_DEBUG
   else if(BinMDataStd::DocumentVersion() == -1)

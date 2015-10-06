@@ -273,7 +273,7 @@ static Standard_Integer fastdiscret(Draw_Interpretor& di, Standard_Integer nbarg
   const Standard_Real d = Draw::Atof(argv[2]);
 
   Standard_Boolean WithShare = Standard_True;
-  if (nbarg > 3) WithShare = Draw::Atoi(argv[3]);
+  if (nbarg > 3) WithShare = (0 != Draw::Atoi(argv[3]));
 
   Bnd_Box B;
   BRepBndLib::Add(S,B);

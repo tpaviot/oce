@@ -70,7 +70,7 @@ void MDataStd_BooleanListRetrievalDriver::Paste(const Handle(PDF_Attribute)& Sou
     Standard_Integer i, lower = S->Lower(), upper = S->Upper();
      if(upper > 0)
       for (i = lower; i <= upper; i++) {
-        T->Append(S->Value(i));
+        T->Append(0 != S->Value(i));
      }
   }
 }

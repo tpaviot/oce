@@ -369,7 +369,7 @@ fields
         -- shape.
 
     myLastVPison0 : Boolean;-- only for walking.
-    mykeptVPnbr : Boolean;  -- number of current line's VP kept 
+    mykeptVPnbr : Integer;  -- number of current line's VP kept
     	    
     -- curve on current line
     myDSCIndex : Integer;

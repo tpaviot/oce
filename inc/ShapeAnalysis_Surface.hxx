@@ -339,7 +339,7 @@ private:
   
   Standard_EXPORT   void ComputeBoxes() ;
   
-  Standard_EXPORT   Standard_Boolean SurfaceNewton (const gp_Pnt2d& p2dPrev, const gp_Pnt& P3D, const Standard_Real preci, gp_Pnt2d& sol) ;
+  Standard_EXPORT   Standard_Integer SurfaceNewton (const gp_Pnt2d& p2dPrev, const gp_Pnt& P3D, const Standard_Real preci, gp_Pnt2d& sol) ;
   
   Standard_EXPORT   void SortSingularities() ;
 

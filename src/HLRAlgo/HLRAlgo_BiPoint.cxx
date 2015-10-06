@@ -107,7 +107,7 @@ HLRAlgo_BiPoint::HLRAlgo_BiPoint (const Standard_Real X1,
 				  const Standard_Real YT2,
 				  const Standard_Real ZT2,
 				  const Standard_Integer Index,
-				  const Standard_Boolean flag)
+				  const Standard_Integer flag)
 {
   PntX1 = X1;
   PntY1 = Y1;
@@ -200,7 +200,7 @@ HLRAlgo_BiPoint::HLRAlgo_BiPoint (const Standard_Real X1,
 				  const Standard_Integer i1,
 				  const Standard_Integer i1p1,
 				  const Standard_Integer i1p2,
-				  const Standard_Boolean flag)
+				  const Standard_Integer flag)
 {
   PntX1 = X1;
   PntY1 = Y1;
@@ -303,7 +303,7 @@ HLRAlgo_BiPoint::HLRAlgo_BiPoint (const Standard_Real X1,
 				  const Standard_Integer i2,
 				  const Standard_Integer i2p1,
 				  const Standard_Integer i2p2,
-				  const Standard_Boolean flag)
+				  const Standard_Integer flag)
 {
   PntX1 = X1;
   PntY1 = Y1;

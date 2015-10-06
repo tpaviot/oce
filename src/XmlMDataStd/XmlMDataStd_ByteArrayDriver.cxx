@@ -123,7 +123,7 @@ Standard_Boolean XmlMDataStd_ByteArrayDriver::Paste(const XmlObjMgt_Persistent& 
 	return Standard_False;
       } 
     else
-      aDelta = (Standard_Boolean)aDeltaValue;
+      aDelta = (0 != aDeltaValue);
   }
 #ifdef OCCT_DEBUG
   else if(XmlMDataStd::DocumentVersion() == -1)

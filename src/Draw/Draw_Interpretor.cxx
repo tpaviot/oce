@@ -544,7 +544,7 @@ Standard_Boolean Draw_Interpretor::Complete(const Standard_CString line)
   Standard_PCharacter pLine;
   //
   pLine=(Standard_PCharacter)line;
-  return Tcl_CommandComplete(pLine);
+  return 0 != Tcl_CommandComplete(pLine);
 }
 
 //=======================================================================

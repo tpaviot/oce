@@ -55,7 +55,7 @@ public:
   
   //! Returns True (count is easy to know) and count is the minimum
   //! value between  length of input list and CountValue
-  Standard_EXPORT virtual   Standard_Boolean PacketsCount (const Interface_Graph& G, Standard_Integer& count)  const;
+  Standard_EXPORT virtual   Standard_Integer PacketsCount (const Interface_Graph& G, Standard_Integer& count)  const;
   
   //! Computes the list of produced Packets. It defines Packets in
   //! order to have <Count> Packets, except if the input count of

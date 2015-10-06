@@ -204,6 +204,6 @@ void BinLDrivers_DocumentSection::ReadTOC
 #endif
     theSection.myValue[0] = (Standard_Size)aValue[0];
     theSection.myValue[1] = (Standard_Size)aValue[1];
-    theSection.myIsPostRead = (Standard_Boolean)aValue[2];
+    theSection.myIsPostRead = (0 != aValue[2]);
   }
 }

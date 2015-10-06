@@ -272,7 +272,7 @@ is
 	      Forward         : Boolean from Standard;
               RecOnS1,RecOnS2 : Boolean from Standard;
               Soldep          : Vector from math;
-              Intf,Intl       : in out Boolean from Standard)
+              Intf,Intl       : in out Integer from Standard)
     returns  Boolean
     is deferred protected;	
 
@@ -518,7 +518,7 @@ is
                 Forward         : Boolean from Standard;
                 RecOnS1,RecOnS2 : Boolean from Standard;
                 Soldep          : in  out  Vector from math;
-                Intf,Intl       : in out Boolean from Standard; 
+                Intf,Intl       : in out Integer from Standard;
                 Surf1,Surf2     : in  out  HSurface from BRepAdaptor)
     is protected;
      
@@ -539,7 +539,7 @@ is
                 Forward         : Boolean from Standard;
                 RecOnS1,RecOnS2 : Boolean from Standard;
                 Soldep          : Vector from math;
-                Intf,Intl       : in out Boolean from Standard)
+                Intf,Intl       : in out Integer from Standard)
     returns  Boolean
     is deferred protected;	
     ---Purpose: Method, implemented in the inheritants, calculating
@@ -656,7 +656,7 @@ is
     
     PerformTwoCornerbyInter(me    : in out ; 
                             Index : Integer from Standard)
-    returns Integer	    
+    returns Boolean
     is static;
 
     PerformTwoCorner(me    : in out ; 
@@ -798,7 +798,7 @@ is
                 Inside,Appro    : Boolean from Standard;
                 Forward         : Boolean from Standard;
                 Soldep          : Vector from math;
-                Intf,Intl       : in out Boolean from Standard;
+                Intf,Intl       : in out Integer from Standard;
                 Gd1,Gd2,Gf1,Gf2 : out Boolean from Standard;
                 RecOnS1         : Boolean from Standard = Standard_False; 
                 RecOnS2         : Boolean from Standard = Standard_False)

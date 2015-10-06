@@ -288,7 +288,7 @@ static Standard_Boolean FUN_ProjectPoint(const gp_Pnt& P1,
   if ( C2.IsNull() ) {
     return Standard_False;
   }
-  Standard_Real res = Standard_False;
+  Standard_Boolean res = Standard_False;
   
   GeomAPI_ProjectPointOnCurve mydist(P1,C2,FC2,LC2);
   if ( mydist.Extrema().IsDone() ) {
@@ -300,7 +300,7 @@ static Standard_Boolean FUN_ProjectPoint(const gp_Pnt& P1,
 //#ifdef OCCT_DEBUG
 //  return res; // BUG ???
 //#else
-  return (Standard_Boolean ) res ;
+  return res ;
 //#endif
 
 }

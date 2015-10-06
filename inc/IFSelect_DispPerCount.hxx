@@ -52,7 +52,7 @@ public:
   
   //! Returns True (count is easy to know) and count is computed
   //! from length of input list (RootResult from Final Selection)
-  Standard_EXPORT virtual   Standard_Boolean PacketsCount (const Interface_Graph& G, Standard_Integer& count)  const;
+  Standard_EXPORT virtual   Standard_Integer PacketsCount (const Interface_Graph& G, Standard_Integer& count)  const;
   
   //! Computes the list of produced Packets. It defines Packets in
   //! order to have at most <Count> Entities per Packet, Entities

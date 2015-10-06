@@ -14,10 +14,10 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#define EMskRg1Line  ((Standard_Boolean)1)
-#define EMskRgNLine  ((Standard_Boolean)2)
-#define EMskOutLine  ((Standard_Boolean)4)
-#define EMskIntLine  ((Standard_Boolean)8)
+#define EMskRg1Line    0x01u
+#define EMskRgNLine    0x02u
+#define EMskOutLine    0x04u
+#define EMskIntLine    0x08u
 
 //=======================================================================
 //function : P1

@@ -199,7 +199,7 @@ is
 		  Forward         : Boolean from Standard;
 	          RecOnS1,RecOnS2 : Boolean from Standard;
 		  Soldep          : Vector from math;
-    	    	  Intf,Intl       : in out Boolean from Standard) 
+    	    	  Intf,Intl       : in out Integer from Standard)
 	returns  Boolean
     	is protected;
 
@@ -309,7 +309,7 @@ is
                 Forward         : Boolean from Standard;
                 RecOnS1,RecOnS2 : Boolean from Standard;
                 Soldep          : Vector from math;
-                Intf,Intl       : in out Boolean from Standard)
+                Intf,Intl       : in out Integer from Standard)
     returns  Boolean
     is redefined;	
     ---Purpose: Methode, implemented in inheritants, calculates

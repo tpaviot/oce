@@ -330,7 +330,7 @@ static Standard_Integer CONTROL(Draw_Interpretor& theCommands,
 				Standard_Integer narg, const char** a)
 {
   if (narg >= 2) {
-    WithControl = strcmp("0",a[1]);
+    WithControl = (0 != strcmp("0",a[1]));
   }
   if (WithControl) {
     theCommands << "Mode avec controle";
@@ -947,7 +947,7 @@ Standard_Integer offsetparameter(Draw_Interpretor& di,
   if ( n < 4 ) return 1;
   
   TheTolerance = Draw::Atof(a[1]);
-  TheInter     = strcmp(a[2],"p");
+  TheInter     = (0 != strcmp(a[2],"p"));
   
   if      ( !strcmp(a[3],"a")) TheJoin = GeomAbs_Arc;
   else if ( !strcmp(a[3],"i")) TheJoin = GeomAbs_Intersection;

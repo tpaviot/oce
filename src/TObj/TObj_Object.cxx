@@ -1396,7 +1396,7 @@ void TObj_Object::SetFlags(const Standard_Integer theMask)
 Standard_Boolean TObj_Object::TestFlags(const Standard_Integer theMask) const
 {
   Standard_Integer aFlags = getInteger(DataTag_Flags);
-  return aFlags & theMask;
+  return 0 != (aFlags & theMask);
 }
 
 //=======================================================================

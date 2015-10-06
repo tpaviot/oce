@@ -121,7 +121,7 @@ fields
     myEnd         : Real      from Standard;
     myTolStart    : ShortReal from Standard;
     myTolEnd      : ShortReal from Standard;
-    myFlags       : Boolean   from Standard;
+    myFlags       : Integer   from Standard;
     myVisibles    : Intervals from Intrv;
 
 end EdgeStatus;

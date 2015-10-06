@@ -79,8 +79,8 @@ void BRepToIGES_BREntity::Init()
 {  
   TheMap = new Transfer_FinderProcess();
   TheUnitFactor = 1.;
-  myConvSurface = Interface_Static::IVal("write.convertsurface.mode");
-  myPCurveMode = Interface_Static::IVal("write.surfacecurve.mode");
+  myConvSurface = (0 != Interface_Static::IVal("write.convertsurface.mode"));
+  myPCurveMode = (0 != Interface_Static::IVal("write.surfacecurve.mode"));
 }
 
 //=======================================================================

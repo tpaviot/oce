@@ -51,7 +51,7 @@ IFSelect_DispPerCount::IFSelect_DispPerCount ()    {  }
   return Standard_True;
 }
 
-    Standard_Boolean  IFSelect_DispPerCount::PacketsCount
+    Standard_Integer  IFSelect_DispPerCount::PacketsCount
   (const Interface_Graph& G, Standard_Integer& /*count*/) const 
       {  return 1 + G.Size() / CountValue();  }
 

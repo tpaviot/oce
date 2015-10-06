@@ -19,10 +19,10 @@
 #endif
 #include <HLRAlgo_PolyData.ixx>
 
-#define EMskGrALin1  ((Standard_Boolean)   8)
-#define EMskGrALin2  ((Standard_Boolean)  16)
-#define EMskGrALin3  ((Standard_Boolean)  32)
-#define FMskHiding   ((Standard_Boolean) 256)
+#define EMskGrALin1  0x008u
+#define EMskGrALin2  0x010u
+#define EMskGrALin3  0x020u
+#define FMskHiding   0x100u
 
 #define FIndex  myIndices[0]
 #define MinFac  myIndices[1]
@@ -31,15 +31,7 @@
 #define TriNode1   ((Standard_Integer*)TriIndices)[0]
 #define TriNode2   ((Standard_Integer*)TriIndices)[1]
 #define TriNode3   ((Standard_Integer*)TriIndices)[2]
-#define TriFlags   ((Standard_Boolean*)TriIndices)[3]
-
-#define Crossing   ((Standard_Boolean*)BooleanPtr)[0]
-#define HideBefore ((Standard_Boolean*)BooleanPtr)[1]
-#define TrFlags    ((Standard_Boolean*)BooleanPtr)[2]
-
-#define Crosi      BooleanPtr[0]
-#define HdBef      BooleanPtr[1]
-#define TFlag      BooleanPtr[2]
+#define TriFlags   ((Standard_Integer*)TriIndices)[3]
 
 #define PntX1  ((Standard_Real*)Coordinates)[ 0]
 #define PntY1  ((Standard_Real*)Coordinates)[ 1]
@@ -195,7 +187,8 @@ void HLRAlgo_PolyData::HideByPolyData (const Standard_Address Coordinates,
     HLRAlgo_Array1OfPHDat& PHDat = myHPHDat->ChangeArray1();
     const HLRAlgo_Array1OfTData& TData = myHTData->Array1();
     Standard_Real d1,d2;
-    Standard_Boolean NotConnex,BooleanPtr[3];
+    Standard_Boolean NotConnex,Crosi, HdBef = Standard_False;
+    Standard_Integer TFlag;
     Standard_Address PlanPtr,MinMaxPtr,TriIndices;
     Standard_Integer h,h2 = PHDat.Upper();
     HLRAlgo_PolyHidingData* PH = &(PHDat(1));
@@ -246,8 +239,7 @@ void HLRAlgo_PolyData::HideByPolyData (const Standard_Address Coordinates,
 	      YV3 = P3.Y();
 	      HideByOneTriangle(Coordinates,
 				RealPtr,
-				&BooleanPtr,
-				PlanPtr,
+				Crosi, HdBef, TFlag,
 				status);
 	    }
 	  }
@@ -269,8 +261,7 @@ void HLRAlgo_PolyData::HideByPolyData (const Standard_Address Coordinates,
 	      YV3 = P3.Y();
 	      HideByOneTriangle(Coordinates,
 				RealPtr,
-				&BooleanPtr,
-				PlanPtr,
+				Crosi, HdBef, TFlag,
 				status);
 	    }
 	    else {
@@ -288,8 +279,7 @@ void HLRAlgo_PolyData::HideByPolyData (const Standard_Address Coordinates,
 	      YV3 = P3.Y();
 	      HideByOneTriangle(Coordinates,
 				RealPtr,
-				&BooleanPtr,
-				PlanPtr,
+				Crosi, HdBef, TFlag,
 				status);
 	    }
 	  }
@@ -308,8 +298,7 @@ void HLRAlgo_PolyData::HideByPolyData (const Standard_Address Coordinates,
 	    YV3 = P3.Y();
 	    HideByOneTriangle(Coordinates,
 			      RealPtr,
-			      &BooleanPtr,
-			      PlanPtr,
+			      Crosi, HdBef, TFlag,
 			      status);
 	  }
 	}
@@ -327,8 +316,7 @@ void HLRAlgo_PolyData::HideByPolyData (const Standard_Address Coordinates,
 void HLRAlgo_PolyData::
 HideByOneTriangle (const Standard_Address Coordinates,
 		   const Standard_Address RealPtr,
-		   const Standard_Address BooleanPtr,
-		   const Standard_Address ,
+		   const Standard_Boolean Crossing, const Standard_Boolean HideBefore, const Standard_Integer TrFlags,
 		   HLRAlgo_EdgeStatus& status)
 {
   Standard_Boolean o[2],m[2];
@@ -433,7 +421,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
 	if (m[l]) {
 	  OutSideP = Standard_True;
 
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];
@@ -452,7 +440,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
       for (l = 0; l <= npi; l++) {
 	if (m[l]) {
 	  OutSideP = Standard_True;
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];
@@ -578,7 +566,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
       for (l = 0; l <= npi; l++) {
 	if (m[l]) {
 	  OutSideP = Standard_True;
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];
@@ -597,7 +585,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
       for (l = 0; l <= npi; l++) {
 	if (m[l]) {
 	  OutSideP = Standard_True;
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];
@@ -723,7 +711,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
       for (l = 0; l <= npi; l++) {
 	if (m[l]) {
 	  OutSideP = Standard_True;
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];
@@ -742,7 +730,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
       for (l = 0; l <= npi; l++) {
 	if (m[l]) {
 	  OutSideP = Standard_True;
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];

@@ -124,7 +124,7 @@ private:
 
 
 
-  Standard_Boolean myFlags;
+  Standard_Integer myFlags;
   Handle(HLRAlgo_WiresBlock) myWires;
   HLRBRep_Surface myGeometry;
   Standard_Real mySize;

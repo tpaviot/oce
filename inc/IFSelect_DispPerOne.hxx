@@ -38,7 +38,7 @@ public:
   
   //! Returns True (count is easy to know) and count is the length
   //! of the input list (RootResult from FinalSelection)
-  Standard_EXPORT virtual   Standard_Boolean PacketsCount (const Interface_Graph& G, Standard_Integer& count)  const;
+  Standard_EXPORT virtual   Standard_Integer PacketsCount (const Interface_Graph& G, Standard_Integer& count)  const;
   
   //! Returns the list of produced Packets. It defines one Packet
   //! per Entity given by RootResult from the Final Selection.

@@ -626,7 +626,7 @@ static Standard_Integer DDataStd_SetIntArrayTest (Draw_Interpretor& di,
   Standard_Integer isDelta = Draw::Atoi(arg[3]);
   Standard_Integer From = Draw::Atoi(arg[4]), To = Draw::Atoi( arg[5] ), j;
   di << "Array of Standard_Integer with bounds from = " << From  << " to = " << To  << "\n";
-  Handle(TDataStd_IntegerArray) A = TDataStd_IntegerArray::Set(label, From, To, isDelta);
+  Handle(TDataStd_IntegerArray) A = TDataStd_IntegerArray::Set(label, From, To, 0 != isDelta);
   
   j = 6;
   Standard_Integer k = 100;
@@ -655,7 +655,7 @@ static Standard_Integer DDataStd_SetRealArray (Draw_Interpretor& di,
  
   Standard_Integer From = Draw::Atoi(arg[4]), To = Draw::Atoi( arg[5] ), j;
   di << " Array of Standard_Real with bounds from = " << From  << " to = " << To  << "\n";
-  Handle(TDataStd_RealArray) A = TDataStd_RealArray::Set(label, From, To, isDelta);
+  Handle(TDataStd_RealArray) A = TDataStd_RealArray::Set(label, From, To, 0 != isDelta);
   
   if (nb > 6) {
     j = 6;
@@ -843,7 +843,7 @@ static Standard_Integer DDataStd_SetVariable (Draw_Interpretor& di,
     const char* aUnits = arg[4];
     aV->Unit(Standard_CString(aUnits));
 
-    aV->Constant(Standard_Boolean(Draw::Atoi(arg[3])));
+    aV->Constant(0 != Draw::Atoi(arg[3]));
     return 0; 
   }
 
@@ -1047,7 +1047,7 @@ static Standard_Integer DDataStd_SetExtStringArray (Draw_Interpretor& di,
 
   Standard_Integer From = Draw::Atoi(arg[4]), To = Draw::Atoi( arg[5] ), j;
   di << "Array of ExtString with bounds from = " << From  << " to = " << To  << "\n";
-  Handle(TDataStd_ExtStringArray) A = TDataStd_ExtStringArray::Set(label, From, To, isDelta);
+  Handle(TDataStd_ExtStringArray) A = TDataStd_ExtStringArray::Set(label, From, To, 0 != isDelta);
   
   if (nb > 6) {
     j = 6;
@@ -1343,7 +1343,7 @@ static Standard_Integer DDataStd_SetByteArray (Draw_Interpretor& di,
     Standard_Integer isDelta = Draw::Atoi(arg[3]);
     Standard_Integer From = Draw::Atoi(arg[4]), To = Draw::Atoi( arg[5] ), j;
     di << "Array of Standard_Byte with bounds from = " << From  << " to = " << To  << "\n";
-    Handle(TDataStd_ByteArray) A = TDataStd_ByteArray::Set(label, From, To, isDelta);
+    Handle(TDataStd_ByteArray) A = TDataStd_ByteArray::Set(label, From, To, 0 != isDelta);
     
     if (nb > 6) {
       j = 6;
@@ -2064,7 +2064,7 @@ static Standard_Integer DDataStd_SetIntPackedMap (Draw_Interpretor& di,
     Standard_Integer aNum = nb - 4;
     Handle(TDataStd_IntPackedMap) anAtt;
     if(!aLabel.FindAttribute(TDataStd_IntPackedMap::GetID(), anAtt))
-      anAtt = TDataStd_IntPackedMap::Set(aLabel, isDelta);
+      anAtt = TDataStd_IntPackedMap::Set(aLabel, 0 != isDelta);
     if(anAtt.IsNull()) {
       di << "IntPackedMap attribute is not found or not set"  << "\n";
       return 1;}
@@ -2264,7 +2264,7 @@ static Standard_Integer DDataStd_SetIntPHugeMap (Draw_Interpretor& di,
     Standard_Integer aNum = Draw::Atoi(arg[4]);
     Handle(TDataStd_IntPackedMap) anAtt;
     if(!aLabel.FindAttribute(TDataStd_IntPackedMap::GetID(), anAtt))
-      anAtt = TDataStd_IntPackedMap::Set(aLabel, isDelta);
+      anAtt = TDataStd_IntPackedMap::Set(aLabel, 0 != isDelta);
     if(anAtt.IsNull()) {
       di << "IntPackedMap attribute is not found or not set"  << "\n";
       return 1;}

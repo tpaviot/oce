@@ -54,7 +54,7 @@ public:
   Standard_EXPORT   TopoDS_Solid SolidFromShell (const TopoDS_Shell& shell) ;
   
   //! Returns the status of the last Fix.
-  Standard_EXPORT   Standard_Boolean Status (const ShapeExtend_Status status)  const;
+  Standard_EXPORT   Standard_Integer Status (const ShapeExtend_Status status)  const;
   
   //! Returns resulting solid.
   Standard_EXPORT   TopoDS_Shape Solid()  const;

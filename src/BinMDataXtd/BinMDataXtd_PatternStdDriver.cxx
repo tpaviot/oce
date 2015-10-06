@@ -65,7 +65,7 @@ Standard_Boolean BinMDataXtd_PatternStdDriver::Paste
   if (! (theSource >> revFlags))
     return Standard_False;
   aP->Axis1Reversed( revFlags & 1 );
-  aP->Axis2Reversed( revFlags & 2 );
+  aP->Axis2Reversed( 0 != (revFlags & 2) );
 
   Handle(TNaming_NamedShape) TNS;
   Standard_Integer aNb;

@@ -70,7 +70,7 @@ private:
   gp_Pnt2d myP1;
   gp_Pnt2d myP2;
   TopoDS_Shape myShape;
-  Standard_Boolean myFlags;
+  Standard_Integer myFlags;
 
 
 };

@@ -185,7 +185,7 @@ static Standard_Boolean GetFreeEdges(const TopoDS_Shape& aShape,TopTools_MapOfSh
       else  MapEdges.Remove(edge);
     }
   }
-  return (MapEdges.Extent());
+  return (!MapEdges.IsEmpty());
 }
 //=======================================================================
 // function : GetShells
@@ -662,7 +662,7 @@ static void GlueClosedCandidate(TopTools_SequenceOfShape& OpenShells,
       for(Standard_Integer j1 = i+1 ; j1 <= OpenShells.Length();j1++ )  {
         if(!MapOtherShells.IsBound(OpenShells.Value(j1))) continue;
         addShell = OpenShells.Value(j1);
-        isReversed = MapOtherShells.Find(addShell);
+        isReversed = (0 != MapOtherShells.Find(addShell));
         OpenShells.Remove(j1);
         break;
       }

@@ -936,8 +936,8 @@ void BRepMesh_FastDiscretFace::insertInternalVerticesBSpline(
           }
 
           gp_Dir N1(0, 0, 1), N2(0, 0, 1);
-          Standard_Boolean aSt1 = GeomLib::NormEstim(aBSpline, aStPnt1, aPrecision, N1);
-          Standard_Boolean aSt2 = GeomLib::NormEstim(aBSpline, aStPnt2, aPrecision, N2);
+          Standard_Integer aSt1 = GeomLib::NormEstim(aBSpline, aStPnt1, aPrecision, N1);
+          Standard_Integer aSt2 = GeomLib::NormEstim(aBSpline, aStPnt2, aPrecision, N2);
 
           Standard_Real aAngle = N2.Angle(N1);
           if (aSt1 < 1 && aSt2 < 1 && aAngle > myAngle)

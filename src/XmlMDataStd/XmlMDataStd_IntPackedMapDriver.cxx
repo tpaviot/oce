@@ -114,7 +114,7 @@ Standard_Boolean XmlMDataStd_IntPackedMapDriver::Paste
 	    return Standard_False;
 	  } 
 	else
-	  aDelta = (Standard_Boolean)aDeltaValue;
+	  aDelta = (0 != aDeltaValue);
       }
 #ifdef OCCT_DEBUG
       else if(XmlMDataStd::DocumentVersion() == -1)

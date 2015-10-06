@@ -68,7 +68,7 @@ Standard_Boolean BinMDataStd_ByteArrayDriver::Paste(const BinObjMgt_Persistent& 
     if (! (theSource >> aDeltaValue))
       return Standard_False;
     else
-      aDelta = (Standard_Boolean)aDeltaValue;
+      aDelta = (0 != aDeltaValue);
   }
   anAtt->SetDelta(aDelta);
   return Standard_True;

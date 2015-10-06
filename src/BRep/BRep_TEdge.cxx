@@ -70,7 +70,7 @@ BRep_TEdge::BRep_TEdge() :
 
  Standard_Boolean  BRep_TEdge::SameRange()const 
 {
-  return myFlags & RangeMask;
+  return 0 != (myFlags & RangeMask);
 }
 
 
@@ -93,7 +93,7 @@ BRep_TEdge::BRep_TEdge() :
 
  Standard_Boolean  BRep_TEdge::Degenerated()const 
 {
-  return myFlags & DegeneratedMask;
+  return 0 != (myFlags & DegeneratedMask);
 }
 
 

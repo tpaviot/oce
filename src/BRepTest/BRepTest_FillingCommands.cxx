@@ -668,7 +668,7 @@ static Standard_Integer fillingparam( Draw_Interpretor & di, Standard_Integer n,
 	  Degree      = Draw::Atoi( a[2] );
 	  NbPtsOnCur  = Draw::Atoi( a[3] );
 	  NbIter      = Draw::Atoi( a[4] );
-	  Anisotropie = Draw::Atoi( a[5] );
+	  Anisotropie = (0 != Draw::Atoi( a[5] ));
 	}
       else if (strcmp( flag, "-c" ) == 0 && n == 6)
 	{

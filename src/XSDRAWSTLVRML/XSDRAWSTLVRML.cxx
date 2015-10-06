@@ -852,7 +852,7 @@ static Standard_Integer meshcolors( Draw_Interpretor& di,
                  aViewer->ActiveView()->SetSurfaceDetail(V3d_TEX_ALL);
           }
 
-          aMesh->GetDrawer()->SetBoolean ( MeshVS_DA_ColorReflection, Standard_Boolean(aReflection) );
+          aMesh->GetDrawer()->SetBoolean ( MeshVS_DA_ColorReflection, 0 != aReflection );
 
           anIC->Redisplay( aMesh );
         }

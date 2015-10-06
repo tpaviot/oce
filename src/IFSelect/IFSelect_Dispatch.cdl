@@ -93,7 +93,7 @@ is
     --           input Graph
     --           This the starting step for an Evaluation (Packets - Remainder)
 
-    PacketsCount (me; G : Graph; count : out Integer) returns Boolean  is virtual;
+    PacketsCount (me; G : Graph; count : out Integer) returns Integer  is virtual;
     ---Purpose : Returns True if Count of Packets is actually known, and the
     --           value of the count in argument "count". Returns False if
     --           this count is unknown. Input is given as a Graph.

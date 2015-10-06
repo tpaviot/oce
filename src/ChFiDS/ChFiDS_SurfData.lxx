@@ -52,7 +52,8 @@ inline Standard_Integer  ChFiDS_SurfData::IndexOfC1() const
 
 inline void ChFiDS_SurfData::SetIndexOfC1(const Standard_Integer Index)
 {
-  indexOfC1 = isoncurv1 = Index;
+  indexOfC1 = Index;
+  isoncurv1 = (0 != Index);
 }
 
 //=======================================================================
@@ -93,7 +94,8 @@ inline Standard_Integer  ChFiDS_SurfData::IndexOfC2() const
 
 inline void ChFiDS_SurfData::SetIndexOfC2(const Standard_Integer Index)
 {
-  indexOfC2 = isoncurv2 = Index;
+  indexOfC2 = Index;
+  isoncurv2 = (0 != Index);
 }
 
 //=======================================================================

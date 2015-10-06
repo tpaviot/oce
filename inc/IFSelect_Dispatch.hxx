@@ -103,7 +103,7 @@ public:
   //! of complete evaluation made by method Packets), it is
   //! preferable to answer "unknown" by returning False
   //! Default answer if False. Can be redefined.
-  Standard_EXPORT virtual   Standard_Boolean PacketsCount (const Interface_Graph& G, Standard_Integer& count)  const;
+  Standard_EXPORT virtual   Standard_Integer PacketsCount (const Interface_Graph& G, Standard_Integer& count)  const;
   
   //! Returns the list of produced Packets into argument <pack>.
   //! Each Packet corresponds to a Part, the Entities listed are the

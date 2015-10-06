@@ -126,6 +126,6 @@ Standard_IStream& BinTools::GetExtChar(Standard_IStream& IS, Standard_ExtCharact
 
 Standard_IStream& BinTools::GetBool(Standard_IStream& IS, Standard_Boolean& aValue)
 {
-  aValue = (Standard_Boolean)IS.get();
+  aValue = (0 != IS.get());
   return IS;
 }

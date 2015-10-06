@@ -766,7 +766,7 @@ Standard_Boolean OpenGl_Workspace::Print
   NamedStatus &= ~OPENGL_NS_WHITEBACK;
 
   myPrintContext.Nullify();
-  return (Standard_Boolean) isDone;
+  return isDone;
 
 #else // not _WIN32
   myPrintContext.Nullify();

@@ -202,7 +202,7 @@ is
     is static;
 
 fields
-    myFlags     : Boolean    from Standard;
+    myFlags     : Integer    from Standard;
     myHideCount : Integer    from Standard;
     myVSta      : Integer    from Standard;
     myVEnd      : Integer    from Standard;

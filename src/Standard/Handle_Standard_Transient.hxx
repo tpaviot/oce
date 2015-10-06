@@ -140,13 +140,13 @@ public:
   }
 
   //! Check for equality
-  int operator==(const Handle(Standard_Transient)& right) const
+  Standard_Boolean operator==(const Handle(Standard_Transient)& right) const
   {
     return entity == right.entity;
   }
 
   //! Check for equality
-  int operator==(const Standard_Transient *right) const
+  Standard_Boolean operator==(const Standard_Transient *right) const
   {
     return entity == right;
   }

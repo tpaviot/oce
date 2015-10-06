@@ -81,7 +81,7 @@ is
 
  fields
       TheIterator  : File;     -- The iterator item
-      myFlag       : Integer; 
+      myFlag       : Boolean;
       myMask       : AsciiString;
       myPlace      : AsciiString;
       myDescr      : Address ;      -- unused by Windows NT code

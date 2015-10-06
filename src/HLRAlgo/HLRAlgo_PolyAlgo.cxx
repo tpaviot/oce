@@ -24,15 +24,15 @@
 #include <HLRAlgo_BiPoint.hxx>
 #include <Precision.hxx>
 
-#define EMskGrALin1  ((Standard_Boolean)   8)
-#define EMskGrALin2  ((Standard_Boolean)  16)
-#define EMskGrALin3  ((Standard_Boolean)  32)
-#define FMskHiding   ((Standard_Boolean) 256)
+#define EMskGrALin1  0x008u
+#define EMskGrALin2  0x010u
+#define EMskGrALin3  0x020u
+#define FMskHiding   0x100u
 
 #define TriNode1 ((Standard_Integer*)TriIndices)[0]
 #define TriNode2 ((Standard_Integer*)TriIndices)[1]
 #define TriNode3 ((Standard_Integer*)TriIndices)[2]
-#define TriFlags ((Standard_Boolean*)TriIndices)[3]
+#define TriFlags ((Standard_Integer*)TriIndices)[3]
 
 #define XV1          myRealPtr[0]
 #define XV2          myRealPtr[1]

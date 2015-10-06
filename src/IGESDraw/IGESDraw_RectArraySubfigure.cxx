@@ -115,7 +115,7 @@ IGESDraw_RectArraySubfigure::IGESDraw_RectArraySubfigure ()    {  }
 
     Standard_Boolean IGESDraw_RectArraySubfigure::DoDontFlag () const
 {
-  return (theDoDontFlag);
+  return (0 != theDoDontFlag);
 }
 
     Standard_Boolean IGESDraw_RectArraySubfigure::PositionNum
@@ -125,14 +125,14 @@ IGESDraw_RectArraySubfigure::IGESDraw_RectArraySubfigure ()    {  }
   //          else Search Index in to the Array. If 'Index' found in the
   //          array return theDoDontFlag else return !theDoDontFlag.
 
-  if (thePositions.IsNull())   return theDoDontFlag;
+  if (thePositions.IsNull())   return 0 != theDoDontFlag;
 
   Standard_Integer I;
   Standard_Integer up  = thePositions->Upper();
   for (I = 1; I <= up; I++) {
-    if (thePositions->Value(I) == Index)   return theDoDontFlag;
+    if (thePositions->Value(I) == Index)   return 0 != theDoDontFlag;
   }
-  return (! theDoDontFlag);
+  return (0 == theDoDontFlag);
 }
 
     Standard_Integer IGESDraw_RectArraySubfigure::ListPosition

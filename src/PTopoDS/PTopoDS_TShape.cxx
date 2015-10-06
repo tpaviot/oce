@@ -47,7 +47,7 @@ PTopoDS_TShape::PTopoDS_TShape() : myFlags(0)
 
 Standard_Boolean  PTopoDS_TShape::Modified() const 
 {
-  return myFlags & ModifiedMask;
+  return 0 != (myFlags & ModifiedMask);
 }
 
 //=======================================================================
@@ -68,7 +68,7 @@ void  PTopoDS_TShape::Modified(const Standard_Boolean M)
 
 Standard_Boolean  PTopoDS_TShape::Checked() const 
 {
-  return myFlags & CheckedMask;
+  return 0 != (myFlags & CheckedMask);
 }
 
 //=======================================================================
@@ -89,7 +89,7 @@ void  PTopoDS_TShape::Checked(const Standard_Boolean M)
 
 Standard_Boolean  PTopoDS_TShape::Orientable() const 
 {
-  return myFlags & OrientableMask;
+  return 0 != (myFlags & OrientableMask);
 }
 
 //=======================================================================
@@ -110,7 +110,7 @@ void  PTopoDS_TShape::Orientable(const Standard_Boolean M)
 
 Standard_Boolean  PTopoDS_TShape::Closed() const 
 {
-  return myFlags & ClosedMask;
+  return 0 != (myFlags & ClosedMask);
 }
 
 //=======================================================================
@@ -131,7 +131,7 @@ void  PTopoDS_TShape::Closed(const Standard_Boolean M)
 
 Standard_Boolean  PTopoDS_TShape::Infinite() const 
 {
-  return myFlags & InfiniteMask;
+  return 0 != (myFlags & InfiniteMask);
 }
 
 //=======================================================================
@@ -152,7 +152,7 @@ void  PTopoDS_TShape::Infinite(const Standard_Boolean M)
 
 Standard_Boolean  PTopoDS_TShape::Convex() const 
 {
-  return myFlags & ConvexMask;
+  return 0 != (myFlags & ConvexMask);
 }
 
 //=======================================================================

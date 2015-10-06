@@ -608,8 +608,8 @@ ChFi3d_FilBuilder::SimulSurf(Handle(ChFiDS_SurfData)&            Data,
 			     const Standard_Boolean              RecOnS1,
 			     const Standard_Boolean              RecOnS2,
 			     const math_Vector&                  Soldep,
-			     Standard_Boolean&                   intf,
-			     Standard_Boolean&                   intl)
+			     Standard_Integer&                   intf,
+			     Standard_Integer&                   intl)
 {
   Handle(ChFiDS_FilSpine) fsp = Handle(ChFiDS_FilSpine)::DownCast(Spine);
   if(fsp.IsNull()) Standard_ConstructionError::Raise
@@ -698,7 +698,7 @@ ChFi3d_FilBuilder::SimulSurf(Handle(ChFiDS_SurfData)&            Data,
     if(cp1.IsOnArc()){
       TopoDS_Face F1 = S1->ChangeSurface().Face();
       TopoDS_Face bid;
-      ok = intf = !SearchFace(Spine,cp1,F1,bid);
+      intf = ok = !SearchFace(Spine,cp1,F1,bid);
     }
     const ChFiDS_CommonPoint& cp2 = Data->VertexFirstOnS2();
     if(cp2.IsOnArc() && !ok){
@@ -713,7 +713,7 @@ ChFi3d_FilBuilder::SimulSurf(Handle(ChFiDS_SurfData)&            Data,
     if(cp1.IsOnArc()){
       TopoDS_Face F1 = S1->ChangeSurface().Face();
       TopoDS_Face bid;
-      ok = intl = !SearchFace(Spine,cp1,F1,bid);
+      intl = ok = !SearchFace(Spine,cp1,F1,bid);
     }
     const ChFiDS_CommonPoint& cp2 = Data->VertexLastOnS2();
     if(cp2.IsOnArc() && !ok){
@@ -1237,8 +1237,8 @@ ChFi3d_FilBuilder::PerformSurf(ChFiDS_SequenceOfSurfData&          SeqData,
 			       const Standard_Boolean              RecOnS1,
 			       const Standard_Boolean              RecOnS2,
 			       const math_Vector&                  Soldep,
-			       Standard_Boolean&                   intf,
-			       Standard_Boolean&                   intl)
+			       Standard_Integer&                   intf,
+			       Standard_Integer&                   intl)
 {
 #ifdef OCCT_DEBUG
   OSD_Chronometer ch;

@@ -481,7 +481,7 @@ Standard_Boolean Voxel_FastConverter::FillInVolume(const Standard_Byte inner,
 	  }
 	  if (volume && !surface)
 	  {
-	    (myIsBool == 1) ? ((Voxel_BoolDS*)myVoxels)->Set(ix, iy, iz, inner) : 
+	    (myIsBool == 1) ? ((Voxel_BoolDS*)myVoxels)->Set(ix, iy, iz, 0 != inner) : 
 	      ((Voxel_ColorDS*)myVoxels)->Set(ix, iy, iz, inner);
 	  }
 	  prev_surface = surface;
@@ -518,7 +518,7 @@ Standard_Boolean Voxel_FastConverter::FillInVolume(const Standard_Byte inner,
 	  }
 	  if (volume && prev_surface == surface && next_surface)
 	  {
-	    (myIsBool == 1) ? ((Voxel_BoolDS*)myVoxels)->Set(ix, iy, iz, inner) : 
+	    (myIsBool == 1) ? ((Voxel_BoolDS*)myVoxels)->Set(ix, iy, iz, 0 != inner) : 
 	      ((Voxel_ColorDS*)myVoxels)->Set(ix, iy, iz, inner);
 	  }
 	  prev_surface = surface;

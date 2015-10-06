@@ -1040,7 +1040,7 @@ static Standard_Integer bsplineprof(Draw_Interpretor& di,
   not_done = 1 ;
   while (not_done) {
 
-    dout.Select(id,X,Y,b,wait);
+    dout.Select(id,X,Y,b,0 != wait);
     Standard_Real z = dout.Zoom(id);
     a_point.SetCoord(1,(Standard_Real)X /z) ;
     a_point.SetCoord(2,(Standard_Real)Y /z) ;
