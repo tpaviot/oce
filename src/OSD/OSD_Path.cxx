@@ -356,6 +356,7 @@ OSD_Path::OSD_Path(const TCollection_AsciiString& aDependentName,
 #ifdef OCCT_DEBUG
        cout << " WARNING WARNING : OSD Path for an Unknown SYSTEM : " << (Standard_Integer)todo << endl;
 #endif 
+     UnixExtract(aDependentName,myNode,myUserName,myPassword,myTrek,myName,myExtension);
      break ;
  } 
 }
