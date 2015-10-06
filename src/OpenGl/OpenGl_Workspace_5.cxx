@@ -28,11 +28,6 @@
 /* OCC22218 NOTE: project dependency on gl2ps is specified by macro */
 #ifdef HAVE_GL2PS
   #include <gl2ps.h>
-  /* OCC22216 NOTE: linker dependency can be switched off by undefining macro.
-     Pragma comment for gl2ps.lib is defined only here. */
-  #ifdef _MSC_VER
-  #pragma comment( lib, "gl2ps.lib" )
-  #endif
 #endif
 
 #include <Aspect_PolygonOffsetMode.hxx>

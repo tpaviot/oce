@@ -15,10 +15,6 @@
 
 #ifdef HAVE_FREEIMAGE
   #include <FreeImage.h>
-
-  #ifdef _MSC_VER
-    #pragma comment( lib, "FreeImage.lib" )
-  #endif
 #endif
 
 #include <Image_AlienPixMap.hxx>
