@@ -28,4 +28,6 @@
  typedef unsigned long Aspect_Handle;
 #endif /* WNT */
 
+#define OCE_NULL_Aspect_Handle ((Aspect_Handle)NULL)
+
 #endif /* _Aspect_Handle_HeaderFile */
