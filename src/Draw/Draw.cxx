@@ -503,6 +503,14 @@ void Draw::Load(Draw_Interpretor& theDI, const TCollection_AsciiString& theKey,
     }
 
     TCollection_AsciiString aPluginLibrary("");
+    
+#ifdef OCE_LIBRARY_PREFIX
+    // Assemble library name according to the variables defined by CMAKE
+    aPluginLibrary += OCE_LIBRARY_PREFIX;
+    aPluginLibrary += aPluginResource->Value(theKey.ToCString());
+    aPluginLibrary += OCE_LIBRARY_DEBUG_POSTFIX;
+    aPluginLibrary += OCE_LIBRARY_EXTENSION;
+#else
 #ifndef WNT
     aPluginLibrary += "lib";
 #endif
@@ -520,6 +528,8 @@ void Draw::Load(Draw_Interpretor& theDI, const TCollection_AsciiString& theKey,
 #else
     aPluginLibrary += ".so";
 #endif
+#endif
+
     OSD_SharedLibrary aSharedLibrary(aPluginLibrary.ToCString());
     if(!aSharedLibrary.DlOpen(OSD_RTLD_LAZY)) {
       TCollection_AsciiString error(aSharedLibrary.DlError());

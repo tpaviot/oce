@@ -35,7 +35,7 @@
 #  endif
 # endif  /* OSDAPI */
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
+#if defined(__CYGWIN32__)
 #define _TINT int
 #endif
 

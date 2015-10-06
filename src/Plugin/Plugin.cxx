@@ -61,6 +61,14 @@ Handle(Standard_Transient) Plugin::Load (const Standard_GUID& aGUID,
     }
     
     TCollection_AsciiString thePluginLibrary("");
+
+#ifdef OCE_LIBRARY_PREFIX
+    // Assemble library name according to the variables defined by CMAKE
+    thePluginLibrary += OCE_LIBRARY_PREFIX;
+    thePluginLibrary += PluginResource->Value(theResource.ToCString());
+    thePluginLibrary += OCE_LIBRARY_DEBUG_POSTFIX;
+    thePluginLibrary += OCE_LIBRARY_EXTENSION;
+#else
 #ifndef WNT
     thePluginLibrary += "lib";
 #endif
@@ -77,7 +85,9 @@ Handle(Standard_Transient) Plugin::Load (const Standard_GUID& aGUID,
     thePluginLibrary += ".sl";
 #else
     thePluginLibrary += ".so";
-#endif  
+#endif
+#endif
+
     OSD_SharedLibrary theSharedLibrary(thePluginLibrary.ToCString());
     if(!theSharedLibrary.DlOpen(OSD_RTLD_LAZY)) {
       TCollection_AsciiString error(theSharedLibrary.DlError());
