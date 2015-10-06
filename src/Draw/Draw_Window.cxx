@@ -1052,7 +1052,7 @@ void Run_Appli(Standard_Boolean (*interprete) (const char*))
       FD_ZERO(&readset);
       FD_SET(0,&readset);
       FD_SET(count,&readset);
-#ifdef HPUX
+#if defined(HPUX) || defined(__hpux)
       numfd = select(count+1,(Integer*)&readset,NULL,NULL,NULL);
 #else
       numfd = select(count+1,&readset,NULL,NULL,NULL);

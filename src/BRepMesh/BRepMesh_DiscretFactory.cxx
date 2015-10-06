@@ -39,7 +39,7 @@ namespace
     theLibName += ".dll";
   #elif __APPLE__
     theLibName += ".dylib";
-  #elif defined (HPUX) || defined(_hpux)
+  #elif defined (HPUX) || defined(__hpux)
     theLibName += ".sl";
   #else
     theLibName += ".so";

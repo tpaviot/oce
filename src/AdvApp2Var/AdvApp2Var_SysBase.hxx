@@ -20,7 +20,11 @@
 #if _MSC_VER
 #include <stddef.h>
 #else
+#if defined(__hpux) && !defined(__GNUC__)
+#include <inttypes.h>
+#else
 #include <stdint.h>
+#endif
 #endif
 
 class AdvApp2Var_SysBase {

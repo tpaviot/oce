@@ -365,37 +365,6 @@ static void SegvHandler(const int theSignal,
   exit(SIGSEGV);
 }
 
-#elif defined (_hpux) || defined(HPUX)
-// Not ACTIVE ? SA_SIGINFO is defined on SUN, OSF, SGI and HP (and Linux) !
-// pour version 09.07
-
-static void SegvHandler(const int theSignal,
-                        siginfo_t *ip,
-                        const Standard_Address theContext)
-{
-  unsigned long Space  ;
-  unsigned long Offset ;
-  char Msg[100] ;
-
-  if ( theContext != NULL ) {
-    Space = ((struct sigcontext *)theContext)->sc_sl.sl_ss.ss_cr20 ;
-    Offset = ((struct sigcontext *)theContext)->sc_sl.sl_ss.ss_cr21 ;
-//    cout << "Wrong address = " << hex(Offset) << endl ;
-    {
-      sprintf(Msg,"SIGSEGV 'segmentation violation' detected. Address %lx",Offset) ;
-      OSD_SIGSEGV::Jump(Msg);
-//    scp->sc_pcoq_head = scp->sc_pcoq_tail ;       Permettrait de continuer a
-//    scp->sc_pcoq_tail = scp->sc_pcoq_tail + 0x4 ; l'intruction suivant le segv.
-    }
-  }
-#ifdef OCCT_DEBUG
-  else {
-    cout << "Wrong undefined address." << endl ;
-  }
-#endif
-  exit(SIGSEGV);
-}
-
 #endif
 
 //============================================================================

@@ -881,7 +881,7 @@ static Standard_Integer grid (Draw_Interpretor& , Standard_Integer NbArg, const 
       return 1 ;
   }
 
-#ifdef HPUX
+#if defined(HPUX) || defined(__hpux)
   const char *temp = "grid";
 #else
   char temp1[] = "grid";

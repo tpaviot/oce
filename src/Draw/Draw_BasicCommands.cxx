@@ -55,7 +55,9 @@ static clock_t CPU_CURRENT; // cpu time already used at last
 #include <unistd.h>
 
 #if defined (__hpux) || defined ( HPUX )
+#ifndef RLIM_INFINITY
 #define RLIM_INFINITY   0x7fffffff
+#endif
 #define	RLIMIT_CPU	0
 #endif
 

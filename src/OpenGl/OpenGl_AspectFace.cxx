@@ -444,7 +444,11 @@ void OpenGl_AspectFace::Resources::BuildTexture (const Handle(OpenGl_Context)&  
 
   if (!theTexture.IsNull())
   {
+#ifdef __hpux
+    if (TextureId.IsEmpty() || !theCtx->GetResource(TextureId, Texture))
+#else
     if (TextureId.IsEmpty() || !theCtx->GetResource<Handle(OpenGl_Texture)> (TextureId, Texture))
+#endif
     {
       Texture = new OpenGl_Texture (theTexture->GetParams());
       Handle(Image_PixMap) anImage = theTexture->GetImage();

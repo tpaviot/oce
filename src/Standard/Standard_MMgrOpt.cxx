@@ -121,7 +121,7 @@ extern "C" int getpagesize() ;
    So, BLOCK_SHIFT is formed as macro for support on other possible platforms.
 */
 
-#if defined(IRIX) || defined(SOLARIS)
+#if defined(IRIX) || defined(SOLARIS) || defined(__hpux)
 #define BLOCK_SHIFT 2
 #else
 #define BLOCK_SHIFT 1
@@ -247,7 +247,7 @@ void Standard_MMgrOpt::Initialize()
       perror("ERR_MEMRY_FAIL");
 #endif
     
-#if defined(IRIX) || defined(__sgi) || defined(SOLARIS) || defined(__sun) || defined(LIN) || defined(linux) || defined(__FreeBSD__) || defined(__ANDROID__)
+#if defined(IRIX) || defined(__sgi) || defined(SOLARIS) || defined(__sun) || defined(LIN) || defined(linux) || defined(__FreeBSD__) || defined(__ANDROID__) || defined(__hpux)
     if ((myMMap = open ("/dev/zero", O_RDWR)) < 0) {
       if ((myMMap = open ("/dev/null", O_RDWR)) < 0){
         myMMap = 0;

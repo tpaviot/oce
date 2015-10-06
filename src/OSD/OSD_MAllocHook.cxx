@@ -19,7 +19,11 @@
 #if !defined __STDC_LIMIT_MACROS
 #define __STDC_LIMIT_MACROS
 #endif
+#if defined(__hpux) && !defined(__GNUC__)
+#include <inttypes.h>
+#else
 #include <stdint.h>
+#endif
 #endif
 
 #include <set>

@@ -33,7 +33,7 @@ struct FSD_FileHeader {
 };
 
 #ifndef DO_INVERSE
-#if defined ( SOLARIS ) || defined ( IRIX )
+#if defined ( SOLARIS ) || defined ( IRIX ) || defined(__hpux)
 #define DO_INVERSE 1
 #else
 #define DO_INVERSE 0

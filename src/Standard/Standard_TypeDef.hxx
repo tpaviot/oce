@@ -25,7 +25,11 @@
   typedef unsigned __int32  uint32_t;
   typedef unsigned __int64  uint64_t;
 #else
+#if defined(__hpux) && !defined(__GNUC__)
+  #include <inttypes.h>
+#else
   #include <stdint.h>
+#endif
 #endif
 
 #if(defined(_MSC_VER) && (_MSC_VER < 1800))

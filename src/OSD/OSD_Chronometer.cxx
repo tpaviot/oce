@@ -94,7 +94,11 @@ void OSD_Chronometer::GetThreadCPU (Standard_Real& theUserSeconds,
 #elif (defined(_POSIX_TIMERS) && defined(_POSIX_THREAD_CPUTIME)) || defined(__ANDROID__)
   // on Linux, only user times are available for threads via clock_gettime()
   struct timespec t;
+#if defined(__hpux) && !defined(CLOCK_THREAD_CPUTIME_ID)
+  if (!clock_gettime (CLOCK_VIRTUAL, &t))
+#else
   if (!clock_gettime (CLOCK_THREAD_CPUTIME_ID, &t))
+#endif
   {
     theUserSeconds = t.tv_sec + 0.000000001 * t.tv_nsec;
   }
