@@ -64,7 +64,7 @@
 #include <GeomAdaptor_HSurface.hxx>
 #include <IntCurveSurface_IntersectionPoint.hxx>
 
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning ( disable : 4101 )
 #endif
 
@@ -1551,6 +1551,6 @@ Standard_Integer AdaptiveDiscret (const Standard_Integer iDiscret,
 }
 
 
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning ( default : 4101 )
 #endif
