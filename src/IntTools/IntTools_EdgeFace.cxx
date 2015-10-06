@@ -719,9 +719,8 @@ void IntTools_EdgeFace::AddDerivativePoints
       anArray1OfRange(n+i).SetLast (aFSeq(i));
     }
     
-    IntTools_QuickSortRange aQuickSortRange;
     IntTools_CompareRange aComparator;
-    aQuickSortRange.Sort (anArray1OfRange, aComparator);
+    IntTools_QuickSortRange::Sort (anArray1OfRange, aComparator);
     
     // filling the  output arrays
     myArgsArray.Resize(k);
