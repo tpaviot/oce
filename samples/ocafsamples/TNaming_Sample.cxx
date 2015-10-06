@@ -50,7 +50,7 @@
 // This sample contains template for typical actions with OCAF Topologigal Naming services
 // =======================================================================================
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 
 #define Box1POS          1
 #define Box2POS          2

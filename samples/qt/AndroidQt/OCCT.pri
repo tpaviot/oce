@@ -8,7 +8,7 @@ QMAKE_CFLAGS   += -fexceptions -Wno-ignored-qualifiers
 QMAKE_CXXFLAGS += -fexceptions -Wno-ignored-qualifiers
 
 CONFIG(debug,debug|release) {
-  DEFINES += DEB
+  DEFINES += OCCT_DEBUG
 }
 
 occt_lib_subpath = libs/armeabi-v7a
