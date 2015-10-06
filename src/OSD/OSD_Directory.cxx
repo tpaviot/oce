@@ -61,16 +61,17 @@ OSD_Directory OSD_Directory::BuildTemporary(){
 OSD_Protection          Protect;
 OSD_Directory           aDirectoryToReturn;
 Standard_Integer        internal_prot;
-Standard_CString        name = tmpnam(NULL);
-TCollection_AsciiString aString (name);
+char dirfmt[] = "/tmp/oceXXXXXX";
 
  internal_prot = Protect.Internal();
 
- umask ( 0 );
- mkdir (name, (mode_t)internal_prot);
+ umask ( (mode_t)(~internal_prot) ); // indirectly impose internal_prot on mkdtemp call
+ char *name = mkdtemp(dirfmt);
+ umask(0); // reset umask
  unlink(name);//Destroys link but directory still exists while 
               //current process lives.
 
+ TCollection_AsciiString aString (name);
  aDirectoryToReturn.SetPath ( aString );
  return aDirectoryToReturn;
 
