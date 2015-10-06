@@ -26,7 +26,7 @@
 #include <OpenGl_ShaderManager.hxx>
 #include <OpenGl_ArbTexBindless.hxx>
 
-#ifdef __BORLANDC__
+#if defined(__BORLANDC__) || defined(__MINGW32__)
 #include <malloc.h>
 #endif
 
@@ -1083,7 +1083,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20fwd->glUniformMatrix4fv (theLocation, 1, GL_FALSE, theTranspose ? theValue.Transposed() : theValue);
+  theCtx->core20fwd->glUniformMatrix4fv (theLocation, 1, GL_FALSE, theTranspose ? theValue.Transposed().GetData() : theValue.GetData());
   return Standard_True;
 }
 

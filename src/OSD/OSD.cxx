@@ -16,7 +16,9 @@
 #include <Standard_Stream.hxx>
 #include <stdio.h>
 #include <math.h>
-#if defined(isfinite)
+#ifdef WNT
+# define finite _finite
+#elif defined(isfinite)
 # define finite isfinite
 #endif
 
@@ -74,7 +76,6 @@ Standard_Boolean OSD::CStringToReal(const Standard_CString aString,
 # define _DEXPLEN	             11
 # define _IEEE		              1
 # define DMAXEXP	             ((1 << _DEXPLEN - 1) - 1 + _IEEE)
-# define finite                      _finite
 # define SLEEP(NSEC)                 Sleep(1000*(NSEC))
 #else
 # define SLEEP(NSEC)                 sleep(NSEC)

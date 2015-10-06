@@ -68,7 +68,7 @@ TopoDS_Shape BRepAlgo_Tool::Deboucle3D(const TopoDS_Shape& S,
       // iterate on sub-shapes and add non-empty.
       TopoDS_Iterator it(S);
       TopoDS_Shape SubShape;
-      Standard_Boolean NbSub = 0;
+      Standard_Boolean NbSub = Standard_False;
       BRep_Builder B;
       if (S.ShapeType() == TopAbs_COMPOUND) {
 	B.MakeCompound(TopoDS::Compound(SS));
@@ -81,10 +81,10 @@ TopoDS_Shape BRepAlgo_Tool::Deboucle3D(const TopoDS_Shape& S,
 	SubShape = Deboucle3D(CurS,Boundary);
 	if ( !SubShape.IsNull()) {
 	  B.Add(SS, SubShape);
-	  NbSub++;
+	  NbSub = Standard_True;
 	}
       }
-      if (NbSub == 0)
+      if (!NbSub)
         {
 #ifdef OCCT_DEBUG
         cout << "No subhape in shape!" << endl;

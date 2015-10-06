@@ -18,6 +18,7 @@
 #include <Standard_Integer.hxx>
 #include <Handle_IntPatch_Line.hxx>
 #include <Handle_IntSurf_LineOn2S.hxx>
+#include <IntPatch_Polyhedron.hxx>
 class Standard_OutOfRange;
 class StdFail_NotDone;
 class Adaptor3d_HSurface;

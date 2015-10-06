@@ -85,7 +85,6 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
   core43back (NULL),
   core44     (NULL),
   core44back (NULL),
-  caps   (!theCaps.IsNull() ? theCaps : new OpenGl_Caps()),
 #if defined(GL_ES_VERSION_2_0)
   hasHighp   (Standard_False),
   hasUintIndex(Standard_False),
@@ -135,6 +134,11 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
   myDefaultVao (0),
   myIsGlDebugCtx (Standard_False)
 {
+  if (!theCaps.IsNull())
+    caps = theCaps;
+  else
+    caps = new OpenGl_Caps();
+  
   // system-dependent fields
 #if defined(HAVE_EGL)
   myDisplay  = (Aspect_Display          )EGL_NO_DISPLAY;
@@ -898,7 +902,7 @@ static void APIENTRY debugCallbackWrap(unsigned int theSource,
                                        unsigned int theSeverity,
                                        int          /*theLength*/,
                                        const char*  theMessage,
-                                       void*  theUserParam)
+                                       const void*  theUserParam)
 {
   OpenGl_Context* aCtx = (OpenGl_Context* )theUserParam;
   aCtx->PushMessage (theSource, theType, theId, theSeverity, theMessage);
@@ -2548,7 +2552,7 @@ void OpenGl_Context::ApplyModelWorldMatrix()
   if (core11 != NULL)
   {
     core11->glMatrixMode (GL_MODELVIEW);
-    core11->glLoadMatrixf (ModelWorldState.Current());
+    core11->glLoadMatrixf (ModelWorldState.Current().GetData());
   }
 #endif
 
@@ -2568,7 +2572,7 @@ void OpenGl_Context::ApplyWorldViewMatrix()
   if (core11 != NULL)
   {
     core11->glMatrixMode (GL_MODELVIEW);
-    core11->glLoadMatrixf (WorldViewState.Current());
+    core11->glLoadMatrixf (WorldViewState.Current().GetData());
   }
 #endif
 

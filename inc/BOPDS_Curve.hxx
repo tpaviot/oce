@@ -17,6 +17,7 @@
 #include <Bnd_Box.hxx>
 #include <Handle_BOPDS_PaveBlock.hxx>
 #include <Standard_Boolean.hxx>
+#include <BOPDS_PaveBlock.hxx>
 class IntTools_Curve;
 class Bnd_Box;
 class BOPDS_PaveBlock;

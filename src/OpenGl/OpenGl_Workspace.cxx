@@ -409,7 +409,7 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
     OpenGl_Utils::Scale     (aTextureMat,  aScale.x(),  aScale.y(), 1.0f);
     OpenGl_Utils::Translate (aTextureMat, -aTrans.x(), -aTrans.y(), 0.0f);
     OpenGl_Utils::Rotate    (aTextureMat, -aParams->Rotation(), 0.0f, 0.0f, 1.0f);
-    glLoadMatrixf (aTextureMat);
+    glLoadMatrixf (aTextureMat.GetData());
 
     GLint anEnvMode = GL_MODULATE; // lighting mode
     if (!aParams->IsModulate())

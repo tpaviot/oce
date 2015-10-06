@@ -13,6 +13,8 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
+#include "oce-config.h"
+
 /*======================================================================
 // 
 // Purpose:   Defines macros identifying current version of Open CASCADE

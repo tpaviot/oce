@@ -27,6 +27,8 @@
 #ifndef _Standard_Atomic_HeaderFile
 #define _Standard_Atomic_HeaderFile
 
+#include <Standard_Macro.hxx>
+
 //! Increments atomically integer variable pointed by theValue
 //! and returns resulting incremented value.
 inline int Standard_Atomic_Increment (volatile int* theValue);

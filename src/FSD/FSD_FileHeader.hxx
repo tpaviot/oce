@@ -33,10 +33,19 @@ struct FSD_FileHeader {
 };
 
 #ifndef DO_INVERSE
+# ifdef HAVE_CONFIG_H
+#  include <oce-config.h>
+#  ifdef WORDS_BIGENDIAN
+#   define DO_INVERSE 1
+#  else
+#   define DO_INVERSE 0
+#  endif
+# else
 #if defined ( SOLARIS ) || defined ( IRIX ) || defined(__hpux)
 #define DO_INVERSE 1
 #else
 #define DO_INVERSE 0
+#endif
 #endif
 #endif
 

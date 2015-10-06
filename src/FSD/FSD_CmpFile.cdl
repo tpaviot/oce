@@ -319,7 +319,6 @@ is
 
     MagicNumber(myclass)
     	returns CString from Standard is private;
-    ---C++: return const
     
     RaiseError(me: in out ; theFailure: Type from Standard) is private;
         

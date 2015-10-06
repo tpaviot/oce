@@ -233,7 +233,7 @@ Handle(TCollection_HAsciiString) TObj_Model::GetFile() const
   TCollection_AsciiString aPath (aDoc->GetPath());
   return !aPath.IsEmpty()
        ? new TCollection_HAsciiString (aPath)
-       : Handle(TCollection_HAsciiString)();
+       : new TCollection_HAsciiString ();
 }
 
 //=======================================================================

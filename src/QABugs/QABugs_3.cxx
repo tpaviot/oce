@@ -1010,7 +1010,10 @@ static Standard_Integer coordload (Draw_Interpretor& theDi,
   }
 
   BRepBuilderAPI_MakeFace aMakeFace (aMakeWire.Wire());
-  DBRep::Set (theArgVec[1], aMakeFace.IsDone() ? aMakeFace.Face() : TopoDS_Face());
+  TopoDS_Face aFace;
+  if (aMakeFace.IsDone())
+    aFace = aMakeFace.Face();
+  DBRep::Set (theArgVec[1], aFace);
   return 0;
 }
 

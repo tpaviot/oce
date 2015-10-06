@@ -938,9 +938,6 @@
 /* Define to 1 if you have the <X11/extensions/transovl.h> header file. */
 /* #undef HAVE_X11_EXTENSIONS_TRANSOVL_H */
 
-/* Define to 1 if you have the <Xmu/Editres.h> header file. */
-/* #undef HAVE_XMU_EDITRES_H */
-
 /* Define to 1 if your C compiler doesn't accept -c and -o together. */
 /* #undef NO_MINUS_C_MINUS_O */
 
@@ -1285,9 +1282,6 @@
 
 /* Define to 1 if you have the <X11/extensions/transovl.h> header file. */
 /* #undef HAVE_X11_EXTENSIONS_TRANSOVL_H */
-
-/* Define to 1 if you have the <Xmu/Editres.h> header file. */
-/* #undef HAVE_XMU_EDITRES_H */
 
 /* Define to 1 if your C compiler doesn't accept -c and -o together. */
 /* #undef NO_MINUS_C_MINUS_O */
@@ -1784,9 +1778,6 @@
 
 /* Define to 1 if you have the <X11/extensions/transovl.h> header file. */
 /* #undef HAVE_X11_EXTENSIONS_TRANSOVL_H */
-
-/* Define to 1 if you have the <Xmu/Editres.h> header file. */
-#define HAVE_XMU_EDITRES_H 1
 
 /* Define to 1 if your C compiler doesn't accept -c and -o together. */
 /* #undef NO_MINUS_C_MINUS_O */

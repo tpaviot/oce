@@ -31,8 +31,7 @@ TEST(gpTestSuite, testGCC42gp_Trsf)
     T.SetValues(
         1.0, 0.0, 0.0, 0.0,
         0.0, 1.0, 0.0, 0.0,
-        0.0, 0.0, 1.0, 0.0,
-        1.e-6, 1.e-6);
+        0.0, 0.0, 1.0, 0.0);
     ASSERT_EQ(1.0,T.Value(1,1));
     ASSERT_EQ(1.0,T.Value(2,2));
     ASSERT_EQ(1.0,T.Value(3,3));

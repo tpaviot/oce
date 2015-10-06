@@ -161,14 +161,14 @@ public:
   friend NCollection_Vec3 operator+ (const NCollection_Vec3& theLeft,
                                      const NCollection_Vec3& theRight)
   {
-    NCollection_Vec3 aSumm = NCollection_Vec3 (theLeft);
+    NCollection_Vec3 aSumm = NCollection_Vec3<Element_t> (theLeft);
     return aSumm += theRight;
   }
 
   //! Unary -.
   NCollection_Vec3 operator-() const
   {
-    return NCollection_Vec3 (-x(), -y(), -z());
+    return NCollection_Vec3<Element_t> (-x(), -y(), -z());
   }
 
   //! Compute per-component subtraction.
@@ -349,19 +349,19 @@ public:
   //! Constuct DX unit vector.
   static NCollection_Vec3 DX()
   {
-    return NCollection_Vec3 (Element_t(1), Element_t(0), Element_t(0));
+    return NCollection_Vec3<Element_t> (Element_t(1), Element_t(0), Element_t(0));
   }
 
   //! Constuct DY unit vector.
   static NCollection_Vec3 DY()
   {
-    return NCollection_Vec3 (Element_t(0), Element_t(1), Element_t(0));
+    return NCollection_Vec3<Element_t> (Element_t(0), Element_t(1), Element_t(0));
   }
 
   //! Constuct DZ unit vector.
   static NCollection_Vec3 DZ()
   {
-    return NCollection_Vec3 (Element_t(0), Element_t(0), Element_t(1));
+    return NCollection_Vec3<Element_t> (Element_t(0), Element_t(0), Element_t(1));
   }
 
 private:

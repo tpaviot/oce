@@ -17,6 +17,6 @@
 
   @uses "CSF.edl" ;
 
-  @string %CMPLRS_CXX_Options += " " %CSF_TCL_INCLUDE;
+  @string %CMPLRS_CXX_Options += " " %CSF_TCL_INCLUDE " " %CSF_FREETYPE_INCLUDES " ";
 
 @endif;
