@@ -1,0 +1,66 @@
+language: cpp
+compiler:
+  - gcc
+  - clang
+env:
+  - RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
+matrix:
+  include:
+  - compiler: gcc
+    env: RUN_TESTS=true
+  - compiler: clang
+    env: RUN_TESTS=true
+  - compiler: gcc
+    env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=OFF
+  - compiler: gcc
+    env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=OFF
+  - compiler: gcc
+    env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+  - compiler: gcc
+    env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=ON
+  - compiler: gcc
+    env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=OPENMP
+  - compiler: gcc
+    env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=TBB
+  exclude:
+  - env: RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
+  allow_failures:
+    - compiler: gcc
+      env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    - compiler: gcc
+      env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=OFF
+
+before_install:
+  - sudo apt-get install tcl8.5-dev tk8.5-dev libgl2ps-dev libfreeimage-dev libtbb-dev
+#  Needed to run OCCT tests in parallel
+  - sudo apt-get install tclthread
+#  Is this needed to run OCCT tests?
+  - sudo apt-get install libgl1-mesa-dri
+#  Postprocess OCCT tests output
+  - sudo apt-get install xsltproc
+before_script:
+#  Remove OCCT tests which are going to be skipped
+#  because of missing data files.  We must use -name
+#  to filter out 'begin' or 'end' files.
+  - find tests -type f -name '[A-Z][0-9]' -o -name 'Z[A-Z][0-9]' -o -name 'bu[gc]*' | xargs grep -l locate_data_file /dev/null | xargs rm -f
+  - rm -rf tests/chamfer tests/de tests/mesh tests/perf/*_mesh_*
+  - mkdir cmake-build
+  - cd cmake-build
+#  Depth is necessary, otherwise DRAWEXE exits with this message:
+#    Tcl Exception: ** Exception ** 0x7fee03adb307 : Aspect_WindowDefinitionError: Xw_Window, couldn't find compatible Visual (RGBA, double-buffered)
+script: xvfb-run -s "-screen 0 1024x768x16" ../.travis.build.sh
+after_script:
+  - test ! -r occt/summary.xml || xsltproc --param duration 1 ../.travis.xsl occt/summary.xml
+  - if [ -r occt/summary.xml ]; then
+        xsltproc ../.travis.xsl occt/summary.xml > occt/summary.failed;
+        if [ -s occt/summary.failed ]; then
+            echo "FAILED TESTS:";
+            cat occt/summary.failed;
+            for file in $(cat occt/summary.failed); do head -n -1 occt/$file.{tcl,log}; done;
+        fi;
+    fi
+branches:
+  only:
+    - master
+    - /^review/
+
