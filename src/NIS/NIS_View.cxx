@@ -296,8 +296,8 @@ int NIS_View::MyCallback (Aspect_Drawable                /* Window ID */,
       glDeleteLists (anIterM.Key(), 5);
 #else
       glDeleteLists (anIterM.Key(), 1);
-    }
 #endif
+    }
   thisView->myExListId.Clear();
 
   for (anIter = thisView->myContexts; anIter.More(); anIter.Next())

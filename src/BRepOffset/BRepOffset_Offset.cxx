@@ -1479,7 +1479,7 @@ void BRepOffset_Offset::Init(const TopoDS_Vertex&        Vertex,
   TopoDS_Wire W;
   myBuilder.MakeWire(W);
   
-#ifdef DRAW
+#if defined(DEB) && defined(DRAW)
   // POP pour NT
   //  char name[100];
   if (Affich) {
@@ -1500,12 +1500,15 @@ void BRepOffset_Offset::Init(const TopoDS_Vertex&        Vertex,
     C = new Geom_TrimmedCurve(C, f, l);
     C->Transform(Loc.Transformation());
 
+#ifdef DEB
 #ifdef DRAW
     if ( Affich) {
       sprintf(name,"CURVE_%d_%d",NbOFFSET,CO);
       DrawTrSurf::Set(name, C);
       CO++;
     }
+#endif
+    delete[] name;
 #endif
 
     Handle(Geom2d_Curve) PCurve = GeomProjLib::Curve2d(C, S);
