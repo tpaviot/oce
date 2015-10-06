@@ -14,7 +14,7 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#define EMaskOrient     0x0000fu
+#define EMaskOrient_FD  0x0000fu
 #define FMaskSelected   0x00010u
 #define FMaskBack       0x00020u
 #define FMaskSide       0x00040u
@@ -298,7 +298,7 @@ inline void HLRBRep_FaceData::Size(const Standard_Real S)
 //=======================================================================
 
 inline TopAbs_Orientation HLRBRep_FaceData::Orientation() const
-{ return ((TopAbs_Orientation)(myFlags & EMaskOrient)); }
+{ return ((TopAbs_Orientation)(myFlags & EMaskOrient_FD)); }
 
 //=======================================================================
 //function : Orientation
@@ -307,8 +307,8 @@ inline TopAbs_Orientation HLRBRep_FaceData::Orientation() const
 
 inline void HLRBRep_FaceData::Orientation(const TopAbs_Orientation O)
 {
-  myFlags &= ~EMaskOrient;
-  myFlags |= (0 != (O & EMaskOrient));
+  myFlags &= ~EMaskOrient_FD;
+  myFlags |= (0 != (O & EMaskOrient_FD));
 }
 
 //=======================================================================
