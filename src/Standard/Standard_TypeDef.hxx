@@ -51,6 +51,10 @@
   #include <inttypes.h>
 #endif
 
+#if defined(__BORLANDC__)
+using std::size_t;
+#endif
+
 #define Standard_False false
 #define Standard_True  true
 

@@ -65,7 +65,7 @@ public:
 
 #ifdef HAVE_XLOCALE_H
   typedef  locale_t clocale_t;
-#elif defined(_WIN32)
+#elif defined(_WIN32) && !defined(__BORLANDC__)
   typedef _locale_t clocale_t;
 #else
   typedef void*     clocale_t;
@@ -78,7 +78,7 @@ public:
 private:
 
   void* myPrevLocale;       //!< previous locale, platform-dependent pointer!
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(__BORLANDC__)
   int   myPrevTLocaleState; //!< previous thread-locale state, MSVCRT-specific
 #endif
 

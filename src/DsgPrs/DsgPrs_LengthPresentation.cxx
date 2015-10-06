@@ -55,7 +55,7 @@ void DsgPrs_LengthPresentation::Add (const Handle(Prs3d_Presentation)& aPresenta
   gp_Lin L2 (AttachmentPoint2,aDirection);
   gp_Pnt Proj1 = ElCLib::Value(ElCLib::Parameter(L1,OffsetPoint),L1);
   gp_Pnt Proj2 = ElCLib::Value(ElCLib::Parameter(L2,OffsetPoint),L2);
-  gp_Lin L3 = Proj1.IsEqual(Proj2,Precision::Confusion())? gp_Lin(Proj1,aDirection) : gce_MakeLin(Proj1,Proj2);
+  gp_Lin L3 = Proj1.IsEqual(Proj2,Precision::Confusion())? gp_Lin(Proj1,aDirection) : (gp_Lin) gce_MakeLin(Proj1,Proj2);
   Standard_Real parmin,parmax,parcur;
   parmin = ElCLib::Parameter(L3,Proj1);
   parmax = parmin;
@@ -211,7 +211,7 @@ void DsgPrs_LengthPresentation::Add (const Handle(Prs3d_Presentation)& aPresenta
   gp_Lin L2 (AttachmentPoint2,aDirection);
   gp_Pnt Proj1 = ElCLib::Value(ElCLib::Parameter(L1,OffsetPoint),L1);
   gp_Pnt Proj2 = ElCLib::Value(ElCLib::Parameter(L2,OffsetPoint),L2);
-  gp_Lin L3 = Proj1.IsEqual(Proj2,Precision::Confusion())? gp_Lin(Proj1,aDirection) : gce_MakeLin(Proj1,Proj2);
+  gp_Lin L3 = Proj1.IsEqual(Proj2,Precision::Confusion())? gp_Lin(Proj1,aDirection) : (gp_Lin) gce_MakeLin(Proj1,Proj2);
   Standard_Real parmin,parmax,parcur;
   parmin = ElCLib::Parameter(L3,Proj1);
   parmax = parmin;

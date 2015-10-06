@@ -26,6 +26,10 @@
 #include <OpenGl_ShaderManager.hxx>
 #include <OpenGl_ArbTexBindless.hxx>
 
+#ifdef __BORLANDC__
+#include <malloc.h>
+#endif
+
 IMPLEMENT_STANDARD_HANDLE (OpenGl_ShaderProgram, OpenGl_Resource)
 IMPLEMENT_STANDARD_RTTIEXT(OpenGl_ShaderProgram, OpenGl_Resource)
 

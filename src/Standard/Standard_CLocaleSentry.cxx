@@ -21,6 +21,10 @@
 
 #if !defined(__ANDROID__)
 
+#if defined(__BORLANDC__)
+#include <mem.h>
+#endif
+
 namespace
 {
 
@@ -32,7 +36,7 @@ namespace
     CLocalePtr()
     #ifdef HAVE_XLOCALE_H
     : myLocale (newlocale (LC_ALL_MASK, "C", NULL))
-    #elif defined(_WIN32)
+    #elif defined(_WIN32) && !defined(__BORLANDC__)
     : myLocale (_create_locale (LC_ALL, "C"))
     #else
     : myLocale (NULL)
@@ -43,7 +47,7 @@ namespace
     {
     #ifdef HAVE_XLOCALE_H
       freelocale (myLocale);
-    #elif defined(_WIN32)
+    #elif defined(_WIN32) && !defined(__BORLANDC__)
       _free_locale (myLocale);
     #endif
     }

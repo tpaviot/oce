@@ -20,6 +20,10 @@
 
 #include <oce-config.h>
 
+#ifdef __BORLANDC__
+#define OCE_IS_DUPLICATE_UINT32_T
+#endif
+
 // ===============
 // Inline methods
 // ===============

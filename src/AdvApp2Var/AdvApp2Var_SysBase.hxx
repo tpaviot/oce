@@ -110,8 +110,14 @@ private:
      multi-threaded execution). Previous number of 1000 was excessive but
      tolerable when used for static memory.
   */
+#ifdef __BORLANDC__
+public:
+#endif
   static const int MAX_ALLOC_NB = 32;
-  
+#ifdef __BORLANDC__
+private:
+#endif
+
   enum {
     static_allocation = 0, /* indicates static allocation, currently not used */
     heap_allocation   = 1  /* indicates heap allocation */

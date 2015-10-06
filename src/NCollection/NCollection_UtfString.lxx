@@ -17,8 +17,8 @@
 // function : strGetAdvance
 // purpose  : Compute advance for specified string.
 // =======================================================================
-template<typename TypeTo> template<typename TypeFrom> inline
-void NCollection_UtfString<TypeTo>::strGetAdvance (const TypeFrom*        theStringUtf,
+template<typename Type> template<typename TypeFrom> inline
+void NCollection_UtfString<Type>::strGetAdvance (const TypeFrom*        theStringUtf,
                                                    const Standard_Integer theLengthMax,
                                                    Standard_Integer&      theSizeBytes,
                                                    Standard_Integer&      theLength)
@@ -27,7 +27,7 @@ void NCollection_UtfString<TypeTo>::strGetAdvance (const TypeFrom*        theStr
   theLength    = 0;
   NCollection_UtfIterator<TypeFrom> anIter (theStringUtf);
   const Standard_Integer aLengthMax = (theLengthMax > 0) ? theLengthMax : IntegerLast();
-  switch (sizeof(TypeTo))
+  switch (sizeof(Type))
   {
     case sizeof(Standard_Utf8Char):
     {

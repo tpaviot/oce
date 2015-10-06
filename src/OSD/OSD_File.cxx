@@ -841,7 +841,7 @@ Standard_Boolean OSD_File::IsExecutable()
 #define _int64 int64_t
 #endif
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(__BORLANDC__)
 #pragma comment( lib, "WSOCK32.LIB"  )
 #pragma comment( lib, "WINSPOOL.LIB" )
 #endif
