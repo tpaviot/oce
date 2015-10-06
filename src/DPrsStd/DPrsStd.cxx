@@ -74,6 +74,11 @@ static Standard_Boolean FoundCAFPlugin () {
   Standard_Boolean hasPlugin = Standard_False; 
   TCollection_AsciiString PluginName ;
   if ( !plugin ) { 
+#ifdef OCE_INSTALL_DATA_DIR
+    if ( !casroot ) {
+      casroot = OCE_INSTALL_DATA_DIR;
+    }
+#endif
     if ( casroot ) {
       PluginName = TCollection_AsciiString (casroot);
       PluginName+="/src/StdResource" ;

@@ -26,6 +26,10 @@
 #include <OSD_File.hxx>
 #include <Standard_Atomic.hxx>
 
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
+
 namespace
 {
   static volatile Standard_Integer THE_TEXTURE_COUNTER = 0;
@@ -48,6 +52,11 @@ TCollection_AsciiString Graphic3d_TextureRoot::TexturesFolder()
     {
       OSD_Environment aCasRootEnv ("CASROOT");
       VarName = aCasRootEnv.Value();
+#ifdef OCE_INSTALL_DATA_DIR
+      if (VarName.IsEmpty())  {
+        VarName = OCE_INSTALL_DATA_DIR;
+      }
+#endif
       if (!VarName.IsEmpty())
       {
         VarName += "/src/Textures";

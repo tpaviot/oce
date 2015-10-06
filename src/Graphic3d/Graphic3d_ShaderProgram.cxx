@@ -24,6 +24,10 @@
 #include <OSD_File.hxx>
 #include <OSD_Path.hxx>
 
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
+
 namespace
 {
   static volatile Standard_Integer THE_PROGRAM_OBJECT_COUNTER = 0;
@@ -49,6 +53,11 @@ const TCollection_AsciiString& Graphic3d_ShaderProgram::ShadersFolder()
     {
       OSD_Environment aCasRootEnv ("CASROOT");
       THE_SHADERS_FOLDER = aCasRootEnv.Value();
+#ifdef OCE_INSTALL_DATA_DIR
+      if (THE_SHADERS_FOLDER.IsEmpty())  {
+        THE_SHADERS_FOLDER = OCE_INSTALL_DATA_DIR;
+      }
+#endif
       if (!THE_SHADERS_FOLDER.IsEmpty())
       {
         THE_SHADERS_FOLDER += "/src/Shaders";

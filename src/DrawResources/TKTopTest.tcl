@@ -12,5 +12,5 @@
 # commercial license or contractual agreement.
 
 set Draw_GEOMETRY 1
-source $env(CASROOT)/src/DrawResources/CURVES.tcl
-source $env(CASROOT)/src/DrawResources/SURFACES.tcl
+source [file dirname [info script]]/CURVES.tcl
+source [file dirname [info script]]/SURFACES.tcl
