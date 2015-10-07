@@ -56,6 +56,7 @@ OpenGl_Texture::OpenGl_Texture (const Handle(Graphic3d_TextureParams)& theParams
   mySizeY (0),
   myTextFormat (GL_RGBA),
   myHasMipmaps (Standard_False),
+  myIsAlpha    (false),
   myParams     (theParams)
 {
   if (myParams.IsNull())
@@ -143,7 +144,7 @@ void OpenGl_Texture::Release (OpenGl_Context* theGlCtx)
 void OpenGl_Texture::Bind (const Handle(OpenGl_Context)& theCtx,
                            const GLenum theTextureUnit) const
 {
-  if (theCtx->IsGlGreaterEqual (1, 5))
+  if (theCtx->core15fwd != NULL)
   {
     theCtx->core15fwd->glActiveTexture (theTextureUnit);
   }
@@ -157,7 +158,7 @@ void OpenGl_Texture::Bind (const Handle(OpenGl_Context)& theCtx,
 void OpenGl_Texture::Unbind (const Handle(OpenGl_Context)& theCtx,
                              const GLenum theTextureUnit) const
 {
-  if (theCtx->IsGlGreaterEqual (1, 5))
+  if (theCtx->core15fwd != NULL)
   {
     theCtx->core15fwd->glActiveTexture (theTextureUnit);
   }
@@ -181,14 +182,37 @@ bool OpenGl_Texture::GetDataFormat (const Handle(OpenGl_Context)& theCtx,
   {
     case Image_PixMap::ImgGrayF:
     {
-      theTextFormat = GL_ALPHA8; // GL_R8, GL_R32F
-      thePixelFormat = GL_ALPHA; // GL_RED
-      theDataType    = GL_FLOAT;
+      if (theCtx->core11 == NULL)
+      {
+        theTextFormat  = GL_R8;  // GL_R32F
+        thePixelFormat = GL_RED;
+      }
+      else
+      {
+        theTextFormat  = GL_LUMINANCE8;
+        thePixelFormat = GL_LUMINANCE;
+      }
+      theDataType = GL_FLOAT;
+      return true;
+    }
+    case Image_PixMap::ImgAlphaF:
+    {
+      if (theCtx->core11 == NULL)
+      {
+        theTextFormat  = GL_R8;  // GL_R32F
+        thePixelFormat = GL_RED;
+      }
+      else
+      {
+        theTextFormat  = GL_ALPHA8;
+        thePixelFormat = GL_ALPHA;
+      }
+      theDataType = GL_FLOAT;
       return true;
     }
     case Image_PixMap::ImgRGBAF:
     {
-      theTextFormat = GL_RGBA8; // GL_RGBA32F
+      theTextFormat  = GL_RGBA8; // GL_RGBA32F
       thePixelFormat = GL_RGBA;
       theDataType    = GL_FLOAT;
       return true;
@@ -206,7 +230,7 @@ bool OpenGl_Texture::GetDataFormat (const Handle(OpenGl_Context)& theCtx,
     }
     case Image_PixMap::ImgRGBF:
     {
-      theTextFormat = GL_RGB8; // GL_RGB32F
+      theTextFormat  = GL_RGB8; // GL_RGB32F
       thePixelFormat = GL_RGB;
       theDataType    = GL_FLOAT;
       return true;
@@ -282,16 +306,40 @@ bool OpenGl_Texture::GetDataFormat (const Handle(OpenGl_Context)& theCtx,
     }
     case Image_PixMap::ImgGray:
     {
-      theTextFormat = GL_ALPHA8; // GL_R8
-      thePixelFormat = GL_ALPHA; // GL_RED
-      theDataType    = GL_UNSIGNED_BYTE;
+      if (theCtx->core11 == NULL)
+      {
+        theTextFormat  = GL_R8;
+        thePixelFormat = GL_RED;
+      }
+      else
+      {
+        theTextFormat  = GL_LUMINANCE8;
+        thePixelFormat = GL_LUMINANCE;
+      }
+      theDataType = GL_UNSIGNED_BYTE;
       return true;
     }
-    default:
+    case Image_PixMap::ImgAlpha:
+    {
+      if (theCtx->core11 == NULL)
+      {
+        theTextFormat  = GL_R8;
+        thePixelFormat = GL_RED;
+      }
+      else
+      {
+        theTextFormat  = GL_ALPHA8;
+        thePixelFormat = GL_ALPHA;
+      }
+      theDataType = GL_UNSIGNED_BYTE;
+      return true;
+    }
+    case Image_PixMap::ImgUNKNOWN:
     {
       return false;
     }
   }
+  return false;
 }
 
 // =======================================================================
@@ -312,6 +360,17 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
     Release (theCtx.operator->());
     return false;
   }
+
+  if (theImage != NULL)
+  {
+    myIsAlpha = theImage->Format() == Image_PixMap::ImgAlpha
+             || theImage->Format() == Image_PixMap::ImgAlphaF;
+  }
+  else
+  {
+    myIsAlpha = thePixelFormat == GL_ALPHA;
+  }
+
   myHasMipmaps             = Standard_False;
   myTextFormat             = thePixelFormat;
 #if !defined(GL_ES_VERSION_2_0)
@@ -331,6 +390,8 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
   const bool    toForceP2  = !theCtx->IsGlGreaterEqual (3, 0) && !theCtx->arbNPTW;
   const GLsizei aWidthOut  = toForceP2 ? OpenGl_Context::GetPowerOfTwo (aWidth,  aMaxSize) : Min (aWidth,  aMaxSize);
   const GLsizei aHeightOut = toForceP2 ? OpenGl_Context::GetPowerOfTwo (aHeight, aMaxSize) : Min (aHeight, aMaxSize);
+  const GLenum  aFilter    = (myParams->Filter() == Graphic3d_TOTF_NEAREST) ? GL_NEAREST : GL_LINEAR;
+  const GLenum  aWrapMode  = myParams->IsRepeat() ? GL_REPEAT : theCtx->TextureWrapClamp();
 
 #if !defined(GL_ES_VERSION_2_0)
   GLint aTestWidth  = 0;
@@ -360,8 +421,9 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
     #if !defined(GL_ES_VERSION_2_0)
       myTarget = GL_TEXTURE_1D;
       Bind (theCtx);
-      glTexParameteri (GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-      glTexParameteri (GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+      glTexParameteri (GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, aFilter);
+      glTexParameteri (GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, aFilter);
+      glTexParameteri (GL_TEXTURE_1D, GL_TEXTURE_WRAP_S,     aWrapMode);
 
       Image_PixMap aCopy;
       if (aDataPtr != NULL)
@@ -421,8 +483,10 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
     {
       myTarget = GL_TEXTURE_2D;
       Bind (theCtx);
-      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, aFilter);
+      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, aFilter);
+      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,     aWrapMode);
+      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,     aWrapMode);
 
       Image_PixMap aCopy;
       if (aDataPtr != NULL)
@@ -489,9 +553,23 @@ bool OpenGl_Texture::Init (const Handle(OpenGl_Context)& theCtx,
     {
       myTarget     = GL_TEXTURE_2D;
       myHasMipmaps = Standard_True;
+
+      GLenum aFilterMin = aFilter;
+      aFilterMin = GL_NEAREST_MIPMAP_NEAREST;
+      if (myParams->Filter() == Graphic3d_TOTF_BILINEAR)
+      {
+        aFilterMin = GL_LINEAR_MIPMAP_NEAREST;
+      }
+      else if (myParams->Filter() == Graphic3d_TOTF_TRILINEAR)
+      {
+        aFilterMin = GL_LINEAR_MIPMAP_LINEAR;
+      }
+
       Bind (theCtx);
-      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, aFilterMin);
+      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, aFilter);
+      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,     aWrapMode);
+      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,     aWrapMode);
 
       if (theCtx->arbFBO != NULL
        && aWidth == aWidthOut && aHeight == aHeightOut)
@@ -608,21 +686,16 @@ bool OpenGl_Texture::InitRectangle (const Handle(OpenGl_Context)& theCtx,
 #if !defined(GL_ES_VERSION_2_0)
   myTarget = GL_TEXTURE_RECTANGLE;
 
-  const GLsizei aSizeX = Min (theCtx->MaxTextureSize(), theSizeX);
-  const GLsizei aSizeY = Min (theCtx->MaxTextureSize(), theSizeY);
+  const GLsizei aSizeX    = Min (theCtx->MaxTextureSize(), theSizeX);
+  const GLsizei aSizeY    = Min (theCtx->MaxTextureSize(), theSizeY);
+  const GLenum  aFilter   = (myParams->Filter() == Graphic3d_TOTF_NEAREST) ? GL_NEAREST : GL_LINEAR;
+  const GLenum  aWrapMode = myParams->IsRepeat() ? GL_REPEAT : theCtx->TextureWrapClamp();
 
   Bind (theCtx);
-
-  if (myParams->Filter() == Graphic3d_TOTF_NEAREST)
-  {
-    glTexParameteri (myTarget, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri (myTarget, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-  }
-  else
-  {
-    glTexParameteri (myTarget, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri (myTarget, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  }
+  glTexParameteri (myTarget, GL_TEXTURE_MIN_FILTER, aFilter);
+  glTexParameteri (myTarget, GL_TEXTURE_MAG_FILTER, aFilter);
+  glTexParameteri (myTarget, GL_TEXTURE_WRAP_S,     aWrapMode);
+  glTexParameteri (myTarget, GL_TEXTURE_WRAP_T,     aWrapMode);
 
   const GLint anIntFormat = theFormat.Internal();
   myTextFormat = theFormat.Format();

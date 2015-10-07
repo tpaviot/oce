@@ -958,26 +958,12 @@ void LocOpe_SplitShape::AddOpenWire(const TopoDS_Wire& W,
     
     // modifs JAG 97.05.28
 
-    TopAbs_Orientation orfila=TopAbs_FORWARD;
-
-    for (exp.Init(FaceRef.Oriented(TopAbs_FORWARD),TopAbs_WIRE); 
-         exp.More(); exp.Next()) {
-      const TopoDS_Wire& wir = TopoDS::Wire(exp.Current());
-      if (wir.IsSame(wfirst)) {
-        orfila = exp.Current().Orientation();
-        break;
-      }
-    }
-    
-    //newW1.Oriented(orfila);
-    //newW2.Oriented(orfila);
-    
     B.Add(newF1,newW1);
     //BRepTools::Write(newF1, "k:/queries/WrongBOP/NewF1.brep");
     B.Add(newF2,newW2);
     //BRepTools::Write(newF2, "k:/queries/WrongBOP/NewF2.brep");
     
-    for (exp.ReInit(); exp.More(); exp.Next()) {
+    for (exp.Init(FaceRef.Oriented(TopAbs_FORWARD),TopAbs_WIRE); exp.More(); exp.Next()) {
       const TopoDS_Wire& wir = TopoDS::Wire(exp.Current());
       if (!wir.IsSame(wfirst)) {
         if (IsInside(newF1, wir)) {
@@ -1233,7 +1219,9 @@ Standard_Boolean LocOpe_SplitShape::Rebuild(const TopoDS_Shape& S)
         B.Add(result,itr.Value().Oriented(orient));
       }
     }
-    result.Closed (BRep_Tool::IsClosed(result));
+    // Assign "Closed" flag for Wires and Shells only
+    if (result.ShapeType() == TopAbs_WIRE || result.ShapeType() == TopAbs_SHELL)
+      result.Closed (BRep_Tool::IsClosed(result));
     myMap(S).Append(result);
   }
   else {
@@ -1466,7 +1454,7 @@ static void ChoixUV(const TopoDS_Edge& Last,
       ang = -M_PI;
     }
 
-    if ((dist < tol)  && (ang > angmax)) {
+    if ((dist - tol < Epsilon(1.0))  && (ang > angmax)) {
       imin = index;
       angmax = ang;
     }

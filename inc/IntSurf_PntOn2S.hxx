@@ -60,6 +60,11 @@ public:
   
   //! Returns the parameters of the point on both surfaces.
       void Parameters (Standard_Real& U1, Standard_Real& V1, Standard_Real& U2, Standard_Real& V2)  const;
+  
+  //! Returns TRUE if 2D- and 3D-coordinates of theOterPoint are equal to
+  //! corresponding coordinates of me (with given tolerance).
+  //! If theTol2D == 0.0 we will compare 3D-points only.
+  Standard_EXPORT   Standard_Boolean IsSame (const IntSurf_PntOn2S& theOterPoint, const Standard_Real theTol3D = 0.0, const Standard_Real theTol2D = 0.0)  const;
 
 
 

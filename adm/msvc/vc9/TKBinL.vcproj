@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBinL"
-	ProjectGUID="{AA12DA2B-1492-0692-0E5B-723BB7AE76E4}"
+	ProjectGUID="{999A5446-160D-02AD-0D82-F702C8D7C48F}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

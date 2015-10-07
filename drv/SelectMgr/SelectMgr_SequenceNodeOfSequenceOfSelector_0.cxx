@@ -7,7 +7,6 @@
 
 #include <Standard_Type.hxx>
 
-#include <SelectMgr_ViewerSelector.hxx>
 #include <SelectMgr_SequenceOfSelector.hxx>
 
  

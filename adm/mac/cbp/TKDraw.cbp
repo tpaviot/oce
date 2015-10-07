@@ -138,6 +138,7 @@
 		<Unit filename="../../../src/Draw/Draw_Text3D.cxx" />
 		<Unit filename="../../../src/Draw/Draw_UnitCommands.cxx" />
 		<Unit filename="../../../src/Draw/Draw_VariableCommands.cxx" />
+		<Unit filename="../../../src/Draw/Draw_View.cxx" />
 		<Unit filename="../../../src/Draw/Draw_Viewer.cxx" />
 		<Unit filename="../../../src/Draw/Draw_Window.cxx" />
 		<Unit filename="../../../src/Draw/Draw_Window_1.mm">

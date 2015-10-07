@@ -36,7 +36,7 @@ if { [info exists env(DRAWHOME) ] } {
 
 # load standard DRAW scripts
 if { [file isdirectory $dir] } { 
-  foreach script {StandardCommands.tcl Geometry.tcl StandardViews.tcl TestCommands.tcl} {
+  foreach script {StandardCommands.tcl Geometry.tcl StandardViews.tcl TestCommands.tcl CheckCommands.tcl} {
     if [file exist [file join $dir $script]] {
       source [file join $dir $script]
     } else {
@@ -87,7 +87,7 @@ if { [file readable $draw_appli_init_file] } {
 
 # on Windows, set special handler to update automatically environment variables
 # in C subsystem when Tcl environment changes (see Mantis issue #23197)
-if { $tcl_platform(platform) == "windows" && ! [catch {dgetenv PATH} res] } {
+if { $tcl_platform(platform) == "windows" && ! [catch {dgetenv PATH}] } {
     proc _update_c_env {envenv var op} { 
         global env
         if { $op == "unset" } {

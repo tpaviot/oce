@@ -34,6 +34,12 @@
 #include <BOPDS_ShapeInfo.hxx>
 
 #include <BOPTools_AlgoTools.hxx>
+#include <BRep_Builder.hxx>
+#include <BRep_Tool.hxx>
+#include <IntTools_Context.hxx>
+#include <TopAbs_ShapeEnum.hxx>
+#include <TopoDS_Iterator.hxx>
+#include <TopoDS_Shape.hxx>
 
 //=======================================================================
 //function : FillImagesVertices
@@ -143,19 +149,19 @@
     aType=aS.ShapeType();
     if (aType==theType) {
       if (myImages.IsBound(aS)){
-	const BOPCol_ListOfShape& aLSIm=myImages.Find(aS);
-	aItIm.Initialize(aLSIm);
-	for (; aItIm.More(); aItIm.Next()) {
-	  const TopoDS_Shape& aSIm=aItIm.Value();
-	  if (aM.Add(aSIm)) {
-	    aBB.Add(myShape, aSIm);
-	  }
-	}
+        const BOPCol_ListOfShape& aLSIm=myImages.Find(aS);
+        aItIm.Initialize(aLSIm);
+        for (; aItIm.More(); aItIm.Next()) {
+          const TopoDS_Shape& aSIm=aItIm.Value();
+          if (aM.Add(aSIm)) {
+            aBB.Add(myShape, aSIm);
+          }
+        }
       }
       else {
-	if (aM.Add(aS)) {
-	  aBB.Add(myShape, aS);
-	}
+        if (aM.Add(aS)) {
+          aBB.Add(myShape, aS);
+        }
       }
     }
   }
@@ -241,6 +247,8 @@
     }
   }
   //
+  aCIm.Closed(BRep_Tool::IsClosed(aCIm));
+  //
   BOPCol_ListOfShape aLSIm(myAllocator);
   aLSIm.Append(aCIm);
   myImages.Bind(theS, aLSIm); 
@@ -288,9 +296,9 @@
       const BOPCol_ListOfShape& aLFIm=myImages.Find(aSX);
       aItIm.Initialize(aLFIm);
       for (; aItIm.More(); aItIm.Next()) {
-	TopoDS_Shape aSXIm=aItIm.Value();
-	aSXIm.Orientation(aOrX);
-	aBB.Add(aCIm, aSXIm);
+        TopoDS_Shape aSXIm=aItIm.Value();
+        aSXIm.Orientation(aOrX);
+        aBB.Add(aCIm, aSXIm);
       }
     }
     else {

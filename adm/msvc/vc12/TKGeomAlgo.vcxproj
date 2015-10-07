@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{23AC8891-02DE-0A26-0290-FA94AA366062}</ProjectGuid>
+    <ProjectGuid>{A7F8BF8B-0EB2-04C9-0336-D8EB2B378FFB}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -473,6 +473,8 @@
     <ClCompile Include="..\..\..\src\IntPatch\IntPatch_LineConstructor.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntPatch\IntPatch_Point.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_PointLine.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntPatch\IntPatch_PolyArc.cxx">
     </ClCompile>

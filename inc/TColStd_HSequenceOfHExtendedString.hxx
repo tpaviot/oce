@@ -71,8 +71,6 @@ public:
      const  TColStd_SequenceOfHExtendedString& Sequence()  const;
   
       TColStd_SequenceOfHExtendedString& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TColStd_HSequenceOfHExtendedString) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TColStd_HSequenceOfHExtendedString) ShallowCopy(const Handle(TColStd_HSequenceOfHExtendedString)& me) {
- return me->ShallowCopy();
-}
 
 
 

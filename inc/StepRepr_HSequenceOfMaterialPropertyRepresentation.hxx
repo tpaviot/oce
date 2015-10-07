@@ -71,8 +71,6 @@ public:
      const  StepRepr_SequenceOfMaterialPropertyRepresentation& Sequence()  const;
   
       StepRepr_SequenceOfMaterialPropertyRepresentation& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(StepRepr_HSequenceOfMaterialPropertyRepresentation) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(StepRepr_HSequenceOfMaterialPropertyRepresentation) ShallowCopy(const Handle(StepRepr_HSequenceOfMaterialPropertyRepresentation)& me) {
- return me->ShallowCopy();
-}
 
 
 

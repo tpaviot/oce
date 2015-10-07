@@ -17,9 +17,7 @@
 #include <Standard_Integer.hxx>
 #include <Standard_Real.hxx>
 #include <AppParCurves_Constraint.hxx>
-class AppCont_Function;
-class AppCont_FunctionTool;
-class Approx_MyLeastSquareOfFitAndDivide;
+#include <AppCont_Function.hxx>
 class AppParCurves_MultiCurve;
 
 

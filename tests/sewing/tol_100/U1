@@ -1,1 +1,8 @@
 restore [locate_data_file ma-test5.rle] a
+
+sewing result $tol a
+
+checkmaxtol result 1.14347452525616
+checknbshapes result -shell 1
+checkfreebounds result 0
+checkfaults result a 0

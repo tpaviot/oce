@@ -71,8 +71,6 @@ public:
      const  IFSelect_TSeqOfSelection& Sequence()  const;
   
       IFSelect_TSeqOfSelection& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(IFSelect_HSeqOfSelection) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(IFSelect_HSeqOfSelection) ShallowCopy(const Handle(IFSelect_HSeqOfSelection)& me) {
- return me->ShallowCopy();
-}
 
 
 

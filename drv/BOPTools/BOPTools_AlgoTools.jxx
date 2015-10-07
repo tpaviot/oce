@@ -8,7 +8,4 @@
 #include <TopoDS_Solid.hxx>
 #include <IntTools_Range.hxx>
 #include <TopoDS_Shell.hxx>
-#include <Geom_Curve.hxx>
-#include <Geom2d_Curve.hxx>
-#include <Geom_Surface.hxx>
 #include <BOPTools_AlgoTools.hxx>

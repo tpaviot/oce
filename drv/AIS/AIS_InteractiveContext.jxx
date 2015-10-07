@@ -1,14 +1,11 @@
 #include <SelectMgr_SelectionManager.hxx>
 #include <V3d_Viewer.hxx>
-#include <StdSelect_ViewerSelector3d.hxx>
 #include <AIS_InteractiveObject.hxx>
 #include <SelectMgr_OrFilter.hxx>
-#include <Prs3d_Drawer.hxx>
 #include <V3d_View.hxx>
 #include <AIS_LocalContext.hxx>
 #include <TopLoc_Location.hxx>
 #include <Quantity_Color.hxx>
-#include <AIS_Drawer.hxx>
 #include <TColStd_ListOfInteger.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <Prs3d_LineAspect.hxx>
@@ -16,7 +13,6 @@
 #include <TColgp_Array1OfPnt2d.hxx>
 #include <TopoDS_Shape.hxx>
 #include <SelectMgr_EntityOwner.hxx>
-#include <SelectMgr_IndexedMapOfOwner.hxx>
 #include <Standard_Transient.hxx>
 #include <SelectMgr_Filter.hxx>
 #include <SelectMgr_ListOfFilter.hxx>

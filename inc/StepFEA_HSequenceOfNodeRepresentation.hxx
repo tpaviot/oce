@@ -71,8 +71,6 @@ public:
      const  StepFEA_SequenceOfNodeRepresentation& Sequence()  const;
   
       StepFEA_SequenceOfNodeRepresentation& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(StepFEA_HSequenceOfNodeRepresentation) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(StepFEA_HSequenceOfNodeRepresentation) ShallowCopy(const Handle(StepFEA_HSequenceOfNodeRepresentation)& me) {
- return me->ShallowCopy();
-}
 
 
 

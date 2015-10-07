@@ -22,9 +22,9 @@ class Adaptor3d_HSurface;
 class TColStd_Array1OfReal;
 
 
-//! the main   algorithm.  Algorythm   outputs are
-//! lines  and  points like   discribe   in the last
-//! paragraph.  The Algorythm provides direct acces to
+//! the main   algorithm.  Algorithm   outputs are
+//! lines  and  points like   describe   in the last
+//! paragraph.  The Algorithm provides direct access to
 //! the elements of those   lines  and points. Other
 //! classes  of this package  are for internal use and
 //! only concern the algorithmic part.

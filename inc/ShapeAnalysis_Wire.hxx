@@ -36,6 +36,7 @@ class TopoDS_Shape;
 class TopTools_IndexedMapOfShape;
 class TopTools_DataMapOfShapeListOfShape;
 class TopTools_MapOfShape;
+class TopoDS_Edge;
 
 
 //! This class provides analysis of a wire to be compliant to
@@ -410,8 +411,8 @@ public:
   //! Detects a notch
   Standard_EXPORT   Standard_Boolean CheckNotchedEdges (const Standard_Integer num, Standard_Integer& shortNum, Standard_Real& param, const Standard_Real Tolerance = 0.0) ;
   
-  //! Checks if wire has parametric area less than prec2d.
-  Standard_EXPORT   Standard_Boolean CheckSmallArea (const Standard_Real prec2d = 0) ;
+  //! Checks if wire has parametric area less than precision.
+  Standard_EXPORT   Standard_Boolean CheckSmallArea (const TopoDS_Wire& theWire, const Standard_Boolean theIsOuterWire) ;
   
   //! Checks with what orientation <shape> (wire or edge) can be
   //! connected to the wire.
@@ -454,6 +455,8 @@ public:
   //! Checks existance of loop on wire and return vertices wich are loop vertices
   //! (vertices belonging to a few pairs of edges)
   Standard_EXPORT   Standard_Boolean CheckLoop (TopTools_IndexedMapOfShape& aMapLoopVertices, TopTools_DataMapOfShapeListOfShape& aMapVertexEdges, TopTools_MapOfShape& aMapSmallEdges, TopTools_MapOfShape& aMapSeemEdges) ;
+  
+  Standard_EXPORT   Standard_Boolean CheckTail (const TopoDS_Edge& theEdge1, const TopoDS_Edge& theEdge2, const Standard_Real theMaxSine, const Standard_Real theMaxWidth, const Standard_Real theMaxTolerance, TopoDS_Edge& theEdge11, TopoDS_Edge& theEdge12, TopoDS_Edge& theEdge21, TopoDS_Edge& theEdge22) ;
   
       Standard_Boolean StatusOrder (const ShapeExtend_Status Status)  const;
   

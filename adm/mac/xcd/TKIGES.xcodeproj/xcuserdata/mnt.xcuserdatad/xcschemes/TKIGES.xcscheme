@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0145185516E106560F1A074F"
+               BlueprintIdentifier = "0F4E07880014125A0FDF0568"
                BuildableName = "libTKIGES.dylib"
                BlueprintName = "TKIGES"
                ReferencedContainer = "container:TKIGES.xcodeproj">

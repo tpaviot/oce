@@ -71,8 +71,6 @@ public:
      const  ShapeAnalysis_SequenceOfFreeBounds& Sequence()  const;
   
       ShapeAnalysis_SequenceOfFreeBounds& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(ShapeAnalysis_HSequenceOfFreeBounds) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(ShapeAnalysis_HSequenceOfFreeBounds) ShallowCopy(const Handle(ShapeAnalysis_HSequenceOfFreeBounds)& me) {
- return me->ShallowCopy();
-}
 
 
 

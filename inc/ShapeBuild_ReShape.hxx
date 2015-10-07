@@ -85,7 +85,7 @@ public:
   //! DONE3: some subshapes replaced
   //! DONE4: some subshapes removed
   //! FAIL1: some replacements not done because of bad type of subshape
-  Standard_EXPORT   Standard_Boolean Status (const ShapeExtend_Status status)  const;
+  Standard_EXPORT virtual   Standard_Boolean Status (const ShapeExtend_Status status)  const;
 
 
 

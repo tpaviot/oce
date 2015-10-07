@@ -11,12 +11,11 @@
 #include <Standard_Macro.hxx>
 
 #include <TCollection_BaseSequence.hxx>
-#include <Handle_SelectMgr_ViewerSelector.hxx>
+#include <SelectMgr_ViewerSelector.hxx>
 #include <Handle_SelectMgr_SequenceNodeOfSequenceOfSelector.hxx>
 #include <Standard_Integer.hxx>
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
-class SelectMgr_ViewerSelector;
 class SelectMgr_SequenceNodeOfSequenceOfSelector;
 
 

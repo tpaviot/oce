@@ -13,9 +13,11 @@
 #include <Standard_Boolean.hxx>
 #include <Standard_Real.hxx>
 #include <Handle_Message_ProgressIndicator.hxx>
+#include <Handle_ShapeExtend_BasicMsgRegistrator.hxx>
 #include <Handle_ShapeBuild_ReShape.hxx>
 class TopoDS_Shape;
 class Message_ProgressIndicator;
+class ShapeExtend_BasicMsgRegistrator;
 class ShapeBuild_ReShape;
 class ShapeFix_Root;
 class ShapeFix_EdgeProjAux;
@@ -23,6 +25,7 @@ class ShapeFix_Edge;
 class ShapeFix_Wire;
 class ShapeFix_Face;
 class ShapeFix_FixSmallFace;
+class ShapeFix_FixSmallSolid;
 class ShapeFix_WireVertex;
 class ShapeFix_Wireframe;
 class ShapeFix_FreeBounds;
@@ -68,7 +71,7 @@ public:
   //! been processed. The passed progress indicator allows user
   //! to consult the current progress stage and abort algorithm
   //! if needed.
-  Standard_EXPORT static   Standard_Boolean SameParameter (const TopoDS_Shape& shape, const Standard_Boolean enforce, const Standard_Real preci = 0.0, const Handle(Message_ProgressIndicator)& theProgress = 0) ;
+  Standard_EXPORT static   Standard_Boolean SameParameter (const TopoDS_Shape& shape, const Standard_Boolean enforce, const Standard_Real preci = 0.0, const Handle(Message_ProgressIndicator)& theProgress = 0, const Handle(ShapeExtend_BasicMsgRegistrator)& theMsgReg = 0) ;
   
   //! Runs EncodeRegularity from BRepLib taking into account
   //! shared components of assemblies, so that each component
@@ -105,6 +108,7 @@ friend class ShapeFix_Edge;
 friend class ShapeFix_Wire;
 friend class ShapeFix_Face;
 friend class ShapeFix_FixSmallFace;
+friend class ShapeFix_FixSmallSolid;
 friend class ShapeFix_WireVertex;
 friend class ShapeFix_Wireframe;
 friend class ShapeFix_FreeBounds;

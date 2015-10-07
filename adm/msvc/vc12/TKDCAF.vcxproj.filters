@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{C6C5076B-1842-0061-09A2-D65148725B38}</UniqueIdentifier>
+      <UniqueIdentifier>{ADE6F6B1-0011-05AC-0674-67E87FD0FAFB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DDF">
-      <UniqueIdentifier>{C2DD26A4-1296-0C54-1970-89AFC372677E}</UniqueIdentifier>
+      <UniqueIdentifier>{0D8BB995-0189-01CC-0B99-AFEF648DBBB9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DDocStd">
-      <UniqueIdentifier>{E892DD00-0F85-0CE8-0DF0-010551041213}</UniqueIdentifier>
+      <UniqueIdentifier>{1F720B87-0BE1-15EF-01BC-5B8D70A2EFBE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DNaming">
-      <UniqueIdentifier>{3E9DEA6F-1818-0A95-0438-3D3EB9E1062B}</UniqueIdentifier>
+      <UniqueIdentifier>{29B6C329-053C-00AB-01CE-5CCE8EFCFD08}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DDataStd">
-      <UniqueIdentifier>{5C275B61-1009-045D-0821-3E54761B3384}</UniqueIdentifier>
+      <UniqueIdentifier>{48281CE4-0EF7-0604-09F0-177E6C6D2313}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DPrsStd">
-      <UniqueIdentifier>{D346A86C-076B-0E90-191F-18BB76BB4EE6}</UniqueIdentifier>
+      <UniqueIdentifier>{19C2F984-0381-0087-0705-CCFA383F7BA9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DrawDim">
-      <UniqueIdentifier>{39004424-0FD2-10A7-0262-860BC96FD38C}</UniqueIdentifier>
+      <UniqueIdentifier>{CFA8E3B5-02F7-0414-0ADD-AC90D959CDC9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

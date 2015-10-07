@@ -5,18 +5,11 @@
 
 #include <BRepFill_ComputeCLine.hxx>
 
-#include <BRepFill_MultiLine.hxx>
-#include <BRepFill_MultiLineTool.hxx>
-#include <BRepFill_MyLeastSquareOfComputeCLine.hxx>
 #include <AppParCurves_MultiCurve.hxx>
  
 
 #define MultiLine BRepFill_MultiLine
 #define MultiLine_hxx <BRepFill_MultiLine.hxx>
-#define LineTool BRepFill_MultiLineTool
-#define LineTool_hxx <BRepFill_MultiLineTool.hxx>
-#define Approx_MyLeastSquare BRepFill_MyLeastSquareOfComputeCLine
-#define Approx_MyLeastSquare_hxx <BRepFill_MyLeastSquareOfComputeCLine.hxx>
 #define Approx_ComputeCLine BRepFill_ComputeCLine
 #define Approx_ComputeCLine_hxx <BRepFill_ComputeCLine.hxx>
 #include <Approx_ComputeCLine.gxx>

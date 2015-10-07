@@ -13,7 +13,6 @@
 #include <AIS_PToContext.hxx>
 #include <Handle_Standard_Transient.hxx>
 #include <TColStd_ListOfTransient.hxx>
-#include <Handle_AIS_Drawer.hxx>
 #include <Standard_Real.hxx>
 #include <Quantity_Color.hxx>
 #include <Graphic3d_NameOfMaterial.hxx>
@@ -30,7 +29,6 @@
 #include <Handle_Prs3d_BasicAspect.hxx>
 #include <Standard_ShortReal.hxx>
 class Standard_Transient;
-class AIS_Drawer;
 class AIS_InteractiveContext;
 class Quantity_Color;
 class TColStd_ListOfTransient;
@@ -38,6 +36,7 @@ class Graphic3d_MaterialAspect;
 class TColStd_ListOfInteger;
 class Prs3d_Presentation;
 class Prs3d_BasicAspect;
+class Bnd_Box;
 
 
 
@@ -168,6 +167,10 @@ public:
   
   //! Updates the active presentation; if <AllModes> = Standard_True
   //! all the presentations inside are recomputed.
+  //! IMPORTANT: It is preferable to call Redisplay method of
+  //! corresponding AIS_InteractiveContext instance for cases when it
+  //! is accessible. This method just redirects call to myCTXPtr,
+  //! so this class field must be up to date for proper result.
   Standard_EXPORT   void Redisplay (const Standard_Boolean AllModes = Standard_False) ;
   
   //! Sets the infinite state flag aFlage.
@@ -420,12 +423,6 @@ public:
   //! Removes the transparency setting. The object is opaque by default.
   Standard_EXPORT virtual   void UnsetTransparency() ;
   
-  //! Initializes the drawing tool aDrawer.
-  Standard_EXPORT virtual   void SetAttributes (const Handle(AIS_Drawer)& aDrawer) ;
-  
-  //! Returns the attributes settings.
-     const  Handle(AIS_Drawer)& Attributes()  const;
-  
   //! Clears settings provided by the drawing tool aDrawer.
   Standard_EXPORT virtual   void UnsetAttributes() ;
   
@@ -480,6 +477,9 @@ public:
   
   //! Retrieves current polygon offsets settings from <myDrawer>.
   Standard_EXPORT virtual   void PolygonOffsets (Standard_Integer& aMode, Standard_ShortReal& aFactor, Standard_ShortReal& aUnits)  const;
+  
+  //! Returns bounding box of object correspondingly to its current display mode.
+  Standard_EXPORT virtual   void BoundingBox (Bnd_Box& theBndBox) ;
 
 
 friend class AIS_InteractiveContext;
@@ -494,7 +494,6 @@ protected:
   //! may have a presentation dependant of the view of Display
   Standard_EXPORT AIS_InteractiveObject(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
 
-  Handle(AIS_Drawer) myDrawer;
   Standard_Real myTransparency;
   Quantity_Color myOwnColor;
   Graphic3d_NameOfMaterial myOwnMaterial;

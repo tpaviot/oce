@@ -23,7 +23,7 @@ class TDF_Label;
 class TNaming_MapOfNamedShape;
 class TDF_LabelList;
 class TNaming_UsedShapes;
-class TopTools_MapOfShape;
+class TopTools_IndexedMapOfShape;
 
 
 //! A tool to get information on the topology of a
@@ -169,7 +169,7 @@ private:
   //! of the first apparition of <aShape>.
   Standard_EXPORT static   TDF_Label Label (const Handle(TNaming_UsedShapes)& Shapes, const TopoDS_Shape& aShape, Standard_Integer& TransDef) ;
   
-  Standard_EXPORT static   void FirstOlds (const Handle(TNaming_UsedShapes)& Shapes, const TopoDS_Shape& S, TNaming_OldShapeIterator& it, TopTools_MapOfShape& MS, TDF_LabelList& Labels) ;
+  Standard_EXPORT static   void FirstOlds (const Handle(TNaming_UsedShapes)& Shapes, const TopoDS_Shape& S, TNaming_OldShapeIterator& it, TopTools_IndexedMapOfShape& MS, TDF_LabelList& Labels) ;
 
 
 

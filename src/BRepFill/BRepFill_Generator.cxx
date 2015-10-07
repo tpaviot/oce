@@ -61,7 +61,7 @@
 
 #include <BRepTools_WireExplorer.hxx>
 #include <BRepTools.hxx>
-
+#include <Standard_NullObject.hxx>
 
 
 //=======================================================================
@@ -96,6 +96,8 @@ Standard_Integer DetectKPart(const TopoDS_Edge& Edge1,
   }
   else {
     curv1 = BRep_Tool::Curve(Edge1, loc, first1, last1);
+    if (curv1.IsNull())
+      Standard_NullObject::Raise("Null 3D curve in edge");
     curv1 = 
       Handle(Geom_Curve)::DownCast(curv1->Transformed(loc.Transformation()));
     ff = first1;
@@ -161,6 +163,8 @@ Standard_Integer DetectKPart(const TopoDS_Edge& Edge1,
     }
     else {
       curv = BRep_Tool::Curve(Edge2, loc, first2, last2);
+      if (curv.IsNull())
+        Standard_NullObject::Raise("Null 3D curve in edge");
       curv = 
 	Handle(Geom_Curve)::DownCast(curv->Transformed(loc.Transformation()));
       ff = first2;
@@ -339,6 +343,8 @@ void CreateKPart(const TopoDS_Edge& Edge1,const TopoDS_Edge& Edge2,
   }
   else {
     C1 = BRep_Tool::Curve(Edge1, loc, a1, b1);
+    if (C1.IsNull())
+      Standard_NullObject::Raise("Null 3D curve in edge");
     C1 = Handle(Geom_Curve)::DownCast(C1->Transformed(loc.Transformation()));
     aa = a1;
     bb = b1;
@@ -362,6 +368,8 @@ void CreateKPart(const TopoDS_Edge& Edge1,const TopoDS_Edge& Edge2,
   }
   else {
     C2 = BRep_Tool::Curve(Edge2, loc, a1, b1);
+    if (C2.IsNull())
+      Standard_NullObject::Raise("Null 3D curve in edge");
     C2 = Handle(Geom_Curve)::DownCast(C2->Transformed(loc.Transformation()));
     if (Edge2.Orientation() == TopAbs_REVERSED) {
       C2->Reverse();
@@ -390,14 +398,20 @@ void CreateKPart(const TopoDS_Edge& Edge1,const TopoDS_Edge& Edge2,
   BW1.MakeWire(newW1);
   BW2.MakeWire(newW2);
 
+  GeomAdaptor_Curve aC1Adaptor;
+  if (!C1.IsNull())
+    aC1Adaptor.Load(C1);
+  GeomAdaptor_Curve aC2Adaptor;
+  if (!C2.IsNull())
+    aC2Adaptor.Load(C2);
 
   // calculate the surface
   Handle(Geom_Surface) surface;
   Standard_Real V, Rad;
   if (IType==1) {
     // cylindrical surface
-    gp_Circ c1 = (Handle(Geom_Circle)::DownCast(C1))->Circ();
-    gp_Circ c2 = (Handle(Geom_Circle)::DownCast(C2))->Circ();
+    gp_Circ c1 = aC1Adaptor.Circle();
+    gp_Circ c2 = aC2Adaptor.Circle();
     gp_Ax3 Ac1 = c1.Position();
     V = gp_Vec( c1.Location(),c2.Location()).Dot(gp_Vec(Ac1.Direction()));
     if ( V < 0.) {
@@ -411,7 +425,7 @@ void CreateKPart(const TopoDS_Edge& Edge1,const TopoDS_Edge& Edge2,
   }
   else if (IType==2) {
     // conical surface
-    gp_Circ k1 = (Handle(Geom_Circle)::DownCast(C1))->Circ();
+    gp_Circ k1 = aC1Adaptor.Circle();
     gp_Ax3 Ak1 = k1.Position();
     if (degen2) {
       V = gp_Vec( k1.Location(),BRep_Tool::Pnt(v2f))
@@ -419,7 +433,7 @@ void CreateKPart(const TopoDS_Edge& Edge1,const TopoDS_Edge& Edge2,
       Rad = - k1.Radius();
     }
     else {
-      gp_Circ k2 = (Handle(Geom_Circle)::DownCast(C2))->Circ();
+      gp_Circ k2 = aC2Adaptor.Circle();
       V = gp_Vec( k1.Location(),k2.Location()).Dot(gp_Vec(Ak1.Direction()));
       Rad = k2.Radius() - k1.Radius();
     }
@@ -437,7 +451,7 @@ void CreateKPart(const TopoDS_Edge& Edge1,const TopoDS_Edge& Edge2,
   }
   else if (IType==-2) {
     // conical surface with the top at the beginning (degen1 is true)
-    gp_Circ k2 = (Handle(Geom_Circle)::DownCast(C2))->Circ();
+    gp_Circ k2 = aC2Adaptor.Circle();
     gp_Ax3 Ak2 = k2.Position();
     Ak2.SetLocation(BRep_Tool::Pnt(v1f));
     V = gp_Vec(BRep_Tool::Pnt(v1f),k2.Location())
@@ -461,15 +475,15 @@ void CreateKPart(const TopoDS_Edge& Edge1,const TopoDS_Edge& Edge2,
     // surface plane
     gp_Lin L1, L2, aLine;
     if (!degen1)
-      {
-	L1 = (Handle(Geom_Line)::DownCast(C1))->Lin();
-	aLine = L1;
-      }
+    {
+      L1 = aC1Adaptor.Line();
+      aLine = L1;
+    }
     if (!degen2)
-      {
-	L2 = (Handle(Geom_Line)::DownCast(C2))->Lin();
-	aLine = L2;
-      }
+    {
+      L2 = aC2Adaptor.Line();
+      aLine = L2;
+    }
 
     gp_Pnt P1 = (degen1)? BRep_Tool::Pnt(v1f) : L1.Location();
     gp_Pnt P2 = (degen2)? BRep_Tool::Pnt(v2f) : L2.Location();
@@ -612,8 +626,8 @@ void BRepFill_Generator::Perform()
 	Edge2 = TopoDS::Edge(ex2.Current());
       }
 
-      Standard_Boolean Periodic
-	= (Edge1.Closed() || degen1) && (Edge2.Closed() || degen2);
+      Standard_Boolean Periodic = (BRep_Tool::IsClosed(Edge1) || degen1) &&
+                                  (BRep_Tool::IsClosed(Edge2) || degen2);
       // ATTENTION : a non-punctual wire should not 
       //             contain a punctual edge
       if (!wPoint1) ex1.Next();
@@ -640,13 +654,7 @@ void BRepFill_Generator::Perform()
 	  Vf_toMap = V1f;
 	  Vl_toMap = V1l;
 	}
-      
-      if(Periodic) {
-	Standard_Boolean E1IsReallyClosed = BRepTools::Compare(V1f,V1l);
-	Standard_Boolean E2IsReallyClosed = BRepTools::Compare(V2f,V2l);
-	Periodic 
-	  = (E1IsReallyClosed || degen1) && (E2IsReallyClosed || degen2);
-      }
+
       // processing of KPart
       Standard_Integer IType = DetectKPart(Edge1,Edge2);
       if (IType==0) {
@@ -663,6 +671,8 @@ void BRepFill_Generator::Perform()
 	}
 	else {
 	  C1 = BRep_Tool::Curve(Edge1,L1,f1,l1);
+          if (C1.IsNull())
+            Standard_NullObject::Raise("Null 3D curve in edge");
 	}
 	if (degen2) {
 	  Extremities(1) = BRep_Tool::Pnt(V2l);
@@ -671,6 +681,8 @@ void BRepFill_Generator::Perform()
 	}
 	else {
 	  C2 = BRep_Tool::Curve(Edge2,L2,f2,l2);
+          if (C2.IsNull())
+            Standard_NullObject::Raise("Null 3D curve in edge");
 	}
 	
 	// compute the location

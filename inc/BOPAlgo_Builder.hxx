@@ -18,14 +18,15 @@
 #include <Standard_Integer.hxx>
 #include <BOPCol_DataMapOfShapeListOfShape.hxx>
 #include <BOPCol_DataMapOfShapeShape.hxx>
+#include <Standard_Real.hxx>
 #include <BOPAlgo_BuilderShape.hxx>
 #include <BOPCol_BaseAllocator.hxx>
 #include <Standard_Boolean.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 class IntTools_Context;
 class TopoDS_Shape;
-class BOPAlgo_PaveFiller;
 class TopTools_ListOfShape;
+class BOPAlgo_PaveFiller;
 
 
 
@@ -49,7 +50,9 @@ Standard_EXPORT virtual ~BOPAlgo_Builder();
   
   Standard_EXPORT virtual   void AddArgument (const TopoDS_Shape& theShape) ;
   
-  Standard_EXPORT virtual   void SetArguments (const BOPCol_ListOfShape& theShapes) ;
+  Standard_EXPORT   void SetArguments (const TopTools_ListOfShape& theLS) ;
+  
+  Standard_EXPORT virtual   void SetArguments (const BOPCol_ListOfShape& theLS) ;
   
   Standard_EXPORT  const  BOPCol_ListOfShape& Arguments()  const;
   
@@ -80,6 +83,12 @@ Standard_EXPORT virtual ~BOPAlgo_Builder();
   
   //! Returns mySplits.
   Standard_EXPORT  const  BOPCol_DataMapOfShapeListOfShape& Splits()  const;
+  
+  //! Sets the additional tolerance
+  Standard_EXPORT   void SetFuzzyValue (const Standard_Real theFuzz) ;
+  
+  //! Returns the additional tolerance
+  Standard_EXPORT   Standard_Real FuzzyValue()  const;
 
 
 
@@ -143,6 +152,7 @@ protected:
   BOPCol_DataMapOfShapeShape myShapesSD;
   BOPCol_DataMapOfShapeListOfShape mySplits;
   BOPCol_DataMapOfShapeShape myOrigins;
+  Standard_Real myFuzzyValue;
 
 
 private:

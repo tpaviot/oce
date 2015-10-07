@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3B9AE543-0388-0416-109C-10517954E418}</ProjectGuid>
+    <ProjectGuid>{158BCCA8-03E9-0749-0D0F-1EC25B69FD8E}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -312,8 +312,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Householder.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\math\math_IntegerRandom.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_IntegerVector.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Jacobi.cxx">
@@ -323,8 +321,6 @@
     <ClCompile Include="..\..\..\src\math\math_KronrodSingleIntegration.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Matrix.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\math\math_Memory.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_MultipleVarFunction.cxx">
     </ClCompile>
@@ -343,8 +339,6 @@
     <ClCompile Include="..\..\..\src\math\math_PSOParticlesPool.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Powell.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\math\math_RealRandom.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Recipes.cxx">
     </ClCompile>
@@ -668,6 +662,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d_0.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfAx1_0.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfDir2d_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfDir_0.cxx">
@@ -685,6 +681,8 @@
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfXY_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceOfArray1OfPnt2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceOfAx1_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceOfDir2d_0.cxx">
     </ClCompile>

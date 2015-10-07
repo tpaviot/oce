@@ -19,8 +19,6 @@
 
 #include <Precision.hxx>
 
-#include <NCollection_IncAllocator.hxx>
-
 #include <gp_Pnt2d.hxx>
 #include <gp_Lin2d.hxx>
 #include <ElCLib.hxx>
@@ -62,10 +60,10 @@ static
 //function : ProcessDE
 //purpose  : 
 //=======================================================================
-  void BOPAlgo_PaveFiller::ProcessDE()
+void BOPAlgo_PaveFiller::ProcessDE()
 {
   Standard_Integer nF, aNb, nE, nV, nVSD, aNbPB;
-  Handle(NCollection_IncAllocator) aAllocator;
+  Handle(NCollection_BaseAllocator) aAllocator;
   Handle(BOPDS_PaveBlock) aPBD;
   BOPCol_ListIteratorOfListOfInteger aItLI;
   //
@@ -74,7 +72,8 @@ static
   // 1. Find degnerated edges
   //-----------------------------------------------------scope f
   //
-  aAllocator=new NCollection_IncAllocator();
+  aAllocator=
+    NCollection_BaseAllocator::CommonBaseAllocator();
   BOPDS_ListOfPaveBlock aLPBOut(aAllocator);
   //
   aNb=myDS->NbSourceShapes();
@@ -142,15 +141,14 @@ static
                                           const Standard_Integer nF,
                                           BOPDS_ListOfPaveBlock& aLPBOut)
 {
-  Standard_Integer nV1, nV2;
-  BOPDS_MapIteratorOfMapOfPaveBlock aItMPB;
+  Standard_Integer i, aNbPBOn, aNbPBIn, aNbPBSc, nV1, nV2;
   //
   const BOPDS_FaceInfo& aFI=myDS->ChangeFaceInfo(nF);
   // In
   const BOPDS_IndexedMapOfPaveBlock& aMPBIn=aFI.PaveBlocksIn();
-  aItMPB.Initialize(aMPBIn);
-  for(; aItMPB.More(); aItMPB.Next()) {
-    const Handle(BOPDS_PaveBlock)& aPB=aItMPB.Value();
+  aNbPBIn = aMPBIn.Extent();
+  for (i = 1; i <= aNbPBIn; ++i) {
+    const Handle(BOPDS_PaveBlock)& aPB = aMPBIn(i);
     aPB->Indices(nV1, nV2);
     if (nV==nV1 || nV==nV2) {
       aLPBOut.Append(aPB);
@@ -158,9 +156,9 @@ static
   }
   // On
   const BOPDS_IndexedMapOfPaveBlock& aMPBOn=aFI.PaveBlocksOn();
-  aItMPB.Initialize(aMPBOn);
-  for(; aItMPB.More(); aItMPB.Next()) {
-    const Handle(BOPDS_PaveBlock)& aPB=aItMPB.Value();
+  aNbPBOn = aMPBOn.Extent();
+  for (i = 1; i <= aNbPBOn; ++i) {
+    const Handle(BOPDS_PaveBlock)& aPB = aMPBOn(i);
     aPB->Indices(nV1, nV2);
     if (nV==nV1 || nV==nV2) {
       aLPBOut.Append(aPB);
@@ -168,9 +166,9 @@ static
   }
   // Sections
   const BOPDS_IndexedMapOfPaveBlock& aMPBSc=aFI.PaveBlocksSc();
-  aItMPB.Initialize(aMPBSc);
-  for(; aItMPB.More(); aItMPB.Next()) {
-    const Handle(BOPDS_PaveBlock)& aPB=aItMPB.Value();
+  aNbPBSc = aMPBSc.Extent();
+  for (i = 1; i <= aNbPBSc; ++i) {
+    const Handle(BOPDS_PaveBlock)& aPB = aMPBSc(i);
     aPB->Indices(nV1, nV2);
     if (nV==nV1 || nV==nV2) {
       aLPBOut.Append(aPB);
@@ -244,7 +242,7 @@ static
                                      const Handle(BOPDS_PaveBlock)& aPBD)
 {
   Standard_Boolean bXDir, bIsDone;
-  Standard_Integer nE, aNbPoints, j;
+  Standard_Integer nE, aNbPoints, j, anInd;
   Standard_Real aTD1, aTD2, aT1, aT2, aTolInter, aX, aDT;
   Standard_Real aTolCmp;
   gp_Pnt2d aP2d1, aP2d2, aP2D;
@@ -329,7 +327,7 @@ static
         continue; 
       }
       //
-      if (aPBD->ContainsParameter(aX, aDT)) {
+      if (aPBD->ContainsParameter(aX, aDT, anInd)) {
         continue;
       }
       aPave.SetParameter(aX);

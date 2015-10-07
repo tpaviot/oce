@@ -69,6 +69,8 @@
 #include <TopExp.hxx>
 
 #include <Message_ProgressSentry.hxx>
+#include <Message_Msg.hxx>
+#include <ShapeExtend_BasicMsgRegistrator.hxx>
 
 //=======================================================================
 //function : SameParameter
@@ -78,7 +80,8 @@
 Standard_Boolean ShapeFix::SameParameter(const TopoDS_Shape& shape,
                                          const Standard_Boolean enforce,
                                          const Standard_Real preci,
-                                         const Handle(Message_ProgressIndicator)& theProgress)
+                                         const Handle(Message_ProgressIndicator)& theProgress,
+                                         const Handle(ShapeExtend_BasicMsgRegistrator)& theMsgReg)
 {
   // Calculate number of edges
   Standard_Integer aNbEdges = 0;
@@ -98,6 +101,7 @@ Standard_Boolean ShapeFix::SameParameter(const TopoDS_Shape& shape,
   Standard_Boolean iatol = (tol > 0);
   Handle(ShapeFix_Edge) sfe = new ShapeFix_Edge;
   TopExp_Explorer ex(shape,TopAbs_EDGE);
+  Message_Msg doneMsg("FixEdge.SameParameter.MSG0");
 
   // Start progress scope (no need to check if progress exists -- it is safe)
   Message_ProgressSentry aPSentry(theProgress, "Fixing same parameter problem", 0, 2, 1);
@@ -134,6 +138,10 @@ Standard_Boolean ShapeFix::SameParameter(const TopoDS_Shape& shape,
           status = Standard_False;
           B.SameRange (E,Standard_False);
           B.SameParameter (E,Standard_False);
+        }
+        else if ( !theMsgReg.IsNull() && !sfe->Status( ShapeExtend_OK ) )
+        {
+          theMsgReg->Send( E, doneMsg, Message_Warning );
         }
 
         // Complete step in current progress scope
@@ -280,17 +288,17 @@ TopoDS_Shape ShapeFix::RemoveSmallEdges (TopoDS_Shape& Shape,
   Handle(ShapeFix_Shape) sfs = new ShapeFix_Shape;
   sfs->Init(Shape);
   sfs->SetPrecision(Tolerance);
-  Handle(ShapeFix_Face)::DownCast(sfs->FixFaceTool())->FixMissingSeamMode() = Standard_False;
-  Handle(ShapeFix_Face)::DownCast(sfs->FixFaceTool())->FixOrientationMode() = Standard_False;
-  Handle(ShapeFix_Face)::DownCast(sfs->FixFaceTool())->FixSmallAreaWireMode() = Standard_False;
+  sfs->FixFaceTool()->FixMissingSeamMode() = Standard_False;
+  sfs->FixFaceTool()->FixOrientationMode() = Standard_False;
+  sfs->FixFaceTool()->FixSmallAreaWireMode() = Standard_False;
   sfs->FixWireTool()->ModifyTopologyMode() = Standard_True;
   //sfs.FixWireTool().FixReorderMode() = Standard_False;
   sfs->FixWireTool()->FixConnectedMode() = Standard_False;
   sfs->FixWireTool()->FixEdgeCurvesMode() = Standard_False;
   sfs->FixWireTool()->FixDegeneratedMode() = Standard_False;
-  Handle(ShapeFix_Wire)::DownCast(sfs->FixWireTool())->FixSelfIntersectionMode() = Standard_False; 
-  Handle(ShapeFix_Wire)::DownCast(sfs->FixWireTool())->FixLackingMode() = Standard_False; 
-  Handle(ShapeFix_Wire)::DownCast(sfs->FixWireTool())->FixSmallMode() = Standard_True;
+  sfs->FixWireTool()->FixSelfIntersectionMode() = Standard_False; 
+  sfs->FixWireTool()->FixLackingMode() = Standard_False; 
+  sfs->FixWireTool()->FixSmallMode() = Standard_True;
   sfs->Perform();
   TopoDS_Shape result = sfs->Shape();
   context = sfs->Context();

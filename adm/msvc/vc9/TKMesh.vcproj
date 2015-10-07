@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKMesh"
-	ProjectGUID="{0F21A2D6-02B3-0F9A-1400-B4BA8B432A33}"
+	ProjectGUID="{0D2E5215-0441-13BE-0791-74360185991E}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

@@ -466,7 +466,6 @@
 			<Depends filename="TKGeomAlgo.cbp" />
 			<Depends filename="TKPrim.cbp" />
 			<Depends filename="TKBool.cbp" />
-			<Depends filename="TKOffset.cbp" />
 			<Depends filename="TKXSBase.cbp" />
 		</Project>
 		<Project filename="TKSTEPAttr.cbp" >

@@ -1421,7 +1421,7 @@ Handle(Image_PixMap) MergeImages (const Handle(Image_PixMap)& theImage1,
   const Standard_Integer aMaxHeight = Max (aHeight1,  aHeight2);
   const Standard_Integer aSize      = Max (aMaxWidth, aMaxHeight);
 
-  aResultImage->InitZero (Image_PixMap::ImgGray, aSize, aSize);
+  aResultImage->InitZero (Image_PixMap::ImgAlpha, aSize, aSize);
 
   if (!theImage1.IsNull())
   {
@@ -1641,7 +1641,7 @@ void OpenGl_AspectMarker::Resources::BuildSprites (const Handle(OpenGl_Context)&
   }
 
   if (!theCtx.IsNull()
-   &&  theCtx->IsGlGreaterEqual (2, 0)
+   &&  theCtx->core20fwd != NULL
    && !theCtx->caps->pntSpritesDisable)
   {
     // Creating texture resource for using it with point sprites
@@ -1714,8 +1714,8 @@ void OpenGl_AspectMarker::Resources::BuildSprites (const Handle(OpenGl_Context)&
           const Standard_Integer aSize = Max (aWidth + 2, aHeight + 2); // includes extra margin
           anImage  = new Image_PixMap();
           anImageA = new Image_PixMap();
-          anImage ->InitZero (Image_PixMap::ImgBGRA, aSize, aSize);
-          anImageA->InitZero (Image_PixMap::ImgGray, aSize, aSize);
+          anImage ->InitZero (Image_PixMap::ImgBGRA,  aSize, aSize);
+          anImageA->InitZero (Image_PixMap::ImgAlpha, aSize, aSize);
 
           // we draw a set of circles
           Image_ColorBGRA aColor32;
@@ -1910,7 +1910,7 @@ void OpenGl_AspectMarker::Resources::BuildSprites (const Handle(OpenGl_Context)&
 void OpenGl_AspectMarker::Resources::BuildShader (const Handle(OpenGl_Context)&          theCtx,
                                                   const Handle(Graphic3d_ShaderProgram)& theShader)
 {
-  if (!theCtx->IsGlGreaterEqual (2, 0))
+  if (theCtx->core20fwd == NULL)
   {
     return;
   }

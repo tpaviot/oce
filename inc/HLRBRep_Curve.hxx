@@ -111,14 +111,14 @@ public:
   //! If necessary,  breaks the  curve in  intervals  of
   //! continuity  <S>.    And  returns   the number   of
   //! intervals.
-      Standard_Integer NbIntervals (const GeomAbs_Shape S) ;
+      Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
   
   //! Stores in <T> the  parameters bounding the intervals
   //! of continuity <S>.
   //!
   //! The array must provide  enough room to  accomodate
   //! for the parameters. i.e. T.Length() > NbIntervals()
-      void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S) ;
+      void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
   
       Standard_Boolean IsClosed()  const;
   

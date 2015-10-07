@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{F72081E7-1001-048F-0795-559A5E09BA86}</UniqueIdentifier>
+      <UniqueIdentifier>{9902F6F9-08FD-0AC6-1811-AFDF6673C7D8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRep">
-      <UniqueIdentifier>{B4C5E5F2-0EF9-0F95-0328-77E38AFBBA67}</UniqueIdentifier>
+      <UniqueIdentifier>{456760A8-11D4-0828-09C2-D08EC04C0BC7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepDS">
-      <UniqueIdentifier>{8ACC7E17-096A-15FB-0E98-0FB009EE403D}</UniqueIdentifier>
+      <UniqueIdentifier>{994140B8-0C23-185C-0021-FC7DB8A1DA4F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepBuild">
-      <UniqueIdentifier>{BB9CAA12-00BD-04D4-0FC4-1E1510F8EF59}</UniqueIdentifier>
+      <UniqueIdentifier>{03AC2671-09C4-145D-1912-3C9F10EEF983}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepTool">
-      <UniqueIdentifier>{29DF6F60-0E4C-0FD6-0766-7CED72C8FB02}</UniqueIdentifier>
+      <UniqueIdentifier>{3F317B4C-137A-029E-0B48-2F262B72F2FF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAlgo">
-      <UniqueIdentifier>{D746DCB6-0283-0071-1184-9C73BE72DF92}</UniqueIdentifier>
+      <UniqueIdentifier>{AF568E35-0734-1256-155F-E823C5847CD4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepFill">
-      <UniqueIdentifier>{B40731F4-0F6F-0B4F-045F-E924D6717526}</UniqueIdentifier>
+      <UniqueIdentifier>{1F4DD8A2-12BD-1493-0233-B43DA13A1B07}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepProj">
-      <UniqueIdentifier>{C224FE70-08A4-03BA-0ECE-7CB4A136DDC5}</UniqueIdentifier>
+      <UniqueIdentifier>{C49CFFE1-10D7-1039-1016-F542D5F6D986}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1104,9 +1104,6 @@
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_ListOfOffsetWire_0.cxx">
       <Filter>Source files\BRepFill</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_MyLeastSquareOfComputeCLine_0.cxx">
-      <Filter>Source files\BRepFill</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder_0.cxx">
       <Filter>Source files\BRepFill</Filter>
     </ClCompile>
@@ -1171,9 +1168,6 @@
       <Filter>Source files\BRepFill</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepFill\BRepFill_MultiLine.cxx">
-      <Filter>Source files\BRepFill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_MultiLineTool.cxx">
       <Filter>Source files\BRepFill</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepFill\BRepFill_NSections.cxx">

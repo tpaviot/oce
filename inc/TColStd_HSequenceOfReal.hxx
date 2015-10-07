@@ -70,8 +70,6 @@ public:
      const  TColStd_SequenceOfReal& Sequence()  const;
   
       TColStd_SequenceOfReal& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TColStd_HSequenceOfReal) ShallowCopy()  const;
 
 
 
@@ -111,10 +109,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TColStd_HSequenceOfReal) ShallowCopy(const Handle(TColStd_HSequenceOfReal)& me) {
- return me->ShallowCopy();
-}
 
 
 

@@ -129,6 +129,9 @@ public:
   //! Insert a ExtendedString at position <where>.
   Standard_EXPORT   void Insert (const Standard_Integer where, const TCollection_ExtendedString& what) ;
   
+  //! Returns True if this string contains no characters.
+      Standard_Boolean IsEmpty()  const;
+  
   //! Returns true if the characters in this extended
   //! string are identical to the characters in the other extended string.
   //! Note that this method is an alias of operator ==

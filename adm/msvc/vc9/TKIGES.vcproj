@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKIGES"
-	ProjectGUID="{5C08AE53-076A-0052-0668-7A1419BD9F19}"
+	ProjectGUID="{FF7C9544-13A2-0BFA-11C7-6DB5649FEBBE}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -80,7 +80,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKTopAlgo.lib TKShHealing.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKPrim.lib TKBool.lib TKOffset.lib TKXSBase.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKTopAlgo.lib TKShHealing.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKPrim.lib TKBool.lib TKXSBase.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKIGES.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -180,7 +180,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKTopAlgo.lib TKShHealing.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKPrim.lib TKBool.lib TKOffset.lib TKXSBase.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKTopAlgo.lib TKShHealing.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKPrim.lib TKBool.lib TKXSBase.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKIGES.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -275,7 +275,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKTopAlgo.lib TKShHealing.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKPrim.lib TKBool.lib TKOffset.lib TKXSBase.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKTopAlgo.lib TKShHealing.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKPrim.lib TKBool.lib TKXSBase.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKIGES.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -372,7 +372,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKTopAlgo.lib TKShHealing.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKPrim.lib TKBool.lib TKOffset.lib TKXSBase.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKTopAlgo.lib TKShHealing.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKPrim.lib TKBool.lib TKXSBase.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKIGES.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

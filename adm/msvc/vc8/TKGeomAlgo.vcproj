@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKGeomAlgo"
-	ProjectGUID="{31D8B768-1981-162D-0316-9902676CE5A2}"
+	ProjectGUID="{0351AE0E-022B-0228-0A47-62A10A3AB5FB}"
 	>
 	<Platforms>
 		<Platform
@@ -795,6 +795,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\IntPatch\IntPatch_Point.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\IntPatch\IntPatch_PointLine.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\IntPatch\IntPatch_PolyArc.cxx">

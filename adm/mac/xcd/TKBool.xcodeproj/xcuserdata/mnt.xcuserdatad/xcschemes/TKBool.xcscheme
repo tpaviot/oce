@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "114E0222095505D907161861"
+               BlueprintIdentifier = "139C018416D708FB073306A0"
                BuildableName = "libTKBool.dylib"
                BlueprintName = "TKBool"
                ReferencedContainer = "container:TKBool.xcodeproj">

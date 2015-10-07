@@ -81,7 +81,6 @@ libTKBool_la_SOURCES = \
 @top_srcdir@/drv/BRepFill/BRepFill_ListIteratorOfListOfOffsetWire_0.cxx \
 @top_srcdir@/drv/BRepFill/BRepFill_ListNodeOfListOfOffsetWire_0.cxx \
 @top_srcdir@/drv/BRepFill/BRepFill_ListOfOffsetWire_0.cxx \
-@top_srcdir@/drv/BRepFill/BRepFill_MyLeastSquareOfComputeCLine_0.cxx \
 @top_srcdir@/drv/BRepFill/BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder_0.cxx \
 @top_srcdir@/drv/BRepFill/BRepFill_SequenceNodeOfSequenceOfFaceAndOrder_0.cxx \
 @top_srcdir@/drv/BRepFill/BRepFill_SequenceNodeOfSequenceOfSection_0.cxx \
@@ -216,7 +215,6 @@ libTKBool_la_SOURCES = \
 @top_srcdir@/src/BRepFill/BRepFill_Generator.cxx \
 @top_srcdir@/src/BRepFill/BRepFill_LocationLaw.cxx \
 @top_srcdir@/src/BRepFill/BRepFill_MultiLine.cxx \
-@top_srcdir@/src/BRepFill/BRepFill_MultiLineTool.cxx \
 @top_srcdir@/src/BRepFill/BRepFill_NSections.cxx \
 @top_srcdir@/src/BRepFill/BRepFill_OffsetAncestors.cxx \
 @top_srcdir@/src/BRepFill/BRepFill_OffsetWire.cxx \

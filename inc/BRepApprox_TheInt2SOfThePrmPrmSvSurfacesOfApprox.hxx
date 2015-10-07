@@ -64,6 +64,8 @@ public:
      const  gp_Dir2d& DirectionOnS2()  const;
   
       BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox& Function() ;
+  
+      IntSurf_PntOn2S& ChangePoint() ;
 
 
 

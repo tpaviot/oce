@@ -60,14 +60,8 @@ public:
   
   Standard_EXPORT   TopoDS_Shape FixSplitFace (const TopoDS_Shape& S) ;
   
-  //! Split faces by splitting vertices
-  Standard_EXPORT   TopoDS_Shape SplitFaces() ;
-  
   //! Compute data for face splitting.
   Standard_EXPORT   Standard_Boolean SplitOneFace (TopoDS_Face& F, TopoDS_Compound& theSplittedFaces) ;
-  
-  //! Remove small faces from compound.
-  Standard_EXPORT   TopoDS_Shape RemoveSmallFaces() ;
   
   Standard_EXPORT   TopoDS_Face FixFace (const TopoDS_Face& F) ;
   

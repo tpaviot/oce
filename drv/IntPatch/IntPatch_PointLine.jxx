@@ -1,0 +1,4 @@
+#include <Standard_DomainError.hxx>
+#include <Standard_OutOfRange.hxx>
+#include <IntSurf_PntOn2S.hxx>
+#include <IntPatch_PointLine.hxx>

@@ -130,6 +130,7 @@
 		<Unit filename="../../../src/ShapeCustom/ShapeCustom_Curve.cxx" />
 		<Unit filename="../../../src/ShapeCustom/ShapeCustom_Curve2d.cxx" />
 		<Unit filename="../../../src/ShapeCustom/ShapeCustom_DirectModification.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_Modification.cxx" />
 		<Unit filename="../../../src/ShapeCustom/ShapeCustom_RestrictionParameters.cxx" />
 		<Unit filename="../../../src/ShapeCustom/ShapeCustom_Surface.cxx" />
 		<Unit filename="../../../src/ShapeCustom/ShapeCustom_SweptToElementary.cxx" />
@@ -171,6 +172,7 @@
 		<Unit filename="../../../src/ShapeFix/ShapeFix_Face.cxx" />
 		<Unit filename="../../../src/ShapeFix/ShapeFix_FaceConnect.cxx" />
 		<Unit filename="../../../src/ShapeFix/ShapeFix_FixSmallFace.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_FixSmallSolid.cxx" />
 		<Unit filename="../../../src/ShapeFix/ShapeFix_FreeBounds.cxx" />
 		<Unit filename="../../../src/ShapeFix/ShapeFix_IntersectionTool.cxx" />
 		<Unit filename="../../../src/ShapeFix/ShapeFix_Root.cxx" />

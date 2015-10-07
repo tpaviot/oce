@@ -14,10 +14,6 @@
 -- Alternatively, this file may be used under the terms of Open CASCADE
 -- commercial license or contractual agreement.
 
---   GG  : GER61351 17/11/1999 Change SetColor() with a compatible Quantity_Color instead
---				       the restricted NameOfColor.
-
-
 class PointAspect from Prs3d inherits BasicAspect from Prs3d
  
     	---Purpose: This  class  defines  attributes for the points
@@ -26,12 +22,12 @@ class PointAspect from Prs3d inherits BasicAspect from Prs3d
 
 uses 
 
-    AspectMarker3d 	from Graphic3d,
-    NameOfColor 	from Quantity,
-    Color 		from Quantity,
-    TypeOfMarker 	from Aspect,
-    HArray1OfByte   	from TColStd,
-    MarkerImage_Handle from Graphic3d
+    AspectMarker3d from Graphic3d,
+    NameOfColor 	 from Quantity,
+    Color 		     from Quantity,
+    TypeOfMarker 	 from Aspect,
+    HArray1OfByte  from TColStd,
+    MarkerImage    from Graphic3d
 
 
 is
@@ -54,6 +50,8 @@ is
              returns PointAspect from Prs3d;
     	---Purpose: defines only the urer defined marker point.
 
+    Create( theAspect : AspectMarker3d from Graphic3d )
+    returns PointAspect from Prs3d;
 	     
     SetColor (me: mutable; aColor: Color from Quantity) is static;
  
@@ -74,6 +72,8 @@ is
     
     Aspect(me) returns AspectMarker3d from Graphic3d 
     is static;
+
+    SetAspect( me: mutable; theAspect: AspectMarker3d from Graphic3d );
     
     GetTextureSize (me:mutable; AWidth     : out Integer from Standard;
 		    	    	    AHeight    : out Integer from Standard);
@@ -81,7 +81,7 @@ is
     	---Purpose: Returns marker's texture size.		    
 
     GetTexture (me:mutable)
-         returns MarkerImage_Handle from Graphic3d;
+         returns MarkerImage from Graphic3d;
     	---Level: Public
     	---Purpose: Returns marker's texture. 
     	---C++: return const &

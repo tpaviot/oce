@@ -14,8 +14,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-//GER61351		//GG_171199     Enable to set an object RGB color instead a restricted object NameOfColor.
-
 #include <AIS_Axis.ixx>
 #include <Aspect_TypeOfLine.hxx>
 #include <Prs3d_Drawer.hxx>
@@ -25,6 +23,7 @@
 #include <Graphic3d_Structure.hxx>
 #include <TColgp_Array1OfPnt.hxx>
 #include <SelectMgr_EntityOwner.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <SelectBasics_EntityOwner.hxx>
 #include <Select3D_SensitiveSegment.hxx>
 #include <StdPrs_Curve.hxx>
@@ -34,7 +33,6 @@
 #include <gp_Ax2.hxx>
 #include <Geom_Line.hxx>
 #include <GeomAdaptor_Curve.hxx>
-#include <AIS_Drawer.hxx>
 #include <DsgPrs_XYZAxisPresentation.hxx>
 #include <UnitsAPI.hxx>
 

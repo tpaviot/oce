@@ -40,24 +40,15 @@ public:
   //! It has to be used if F(Bx) is known.
   Standard_EXPORT math_BrentMinimum(const Standard_Real TolX, const Standard_Real Fbx, const Standard_Integer NbIterations = 100, const Standard_Real ZEPS = 1.0e-12);
   
-
-  //! Given a bracketing triplet of abscissae Ax, Bx, Cx
-  //! (such as Bx is between Ax and Cx, F(Bx) is
-  //! less than both F(Bx) and F(Cx)) the Brent minimization is done
-  //! on the function F.
-  //! The tolerance required on F is given by Tolerance.
-  //! The solution is found when :
-  //! abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
-  //! The maximum number of iterations allowed is given by NbIterations.
-  Standard_EXPORT math_BrentMinimum(math_Function& F, const Standard_Real Ax, const Standard_Real Bx, const Standard_Real Cx, const Standard_Real TolX, const Standard_Integer NbIterations = 100, const Standard_Real ZEPS = 1.0e-12);
+  //! Destructor alias.
+      void Delete()  const;
+  Standard_EXPORT virtual ~math_BrentMinimum();
   
 
   //! Brent minimization is performed on function F from a given
   //! bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is
   //! between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx))
-  //! Warning
-  //! The initialization constructors must have been called
-  //! before the call to the Perform method.
+  //! The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
   Standard_EXPORT   void Perform (math_Function& F, const Standard_Real Ax, const Standard_Real Bx, const Standard_Real Cx) ;
   
 
@@ -65,7 +56,7 @@ public:
   //! solution is found.
   //! It can be redefined in a sub-class to implement a specific test to
   //! stop the iterations.
-  Standard_EXPORT virtual   Standard_Boolean IsSolutionReached (math_Function& F) ;
+    virtual   Standard_Boolean IsSolutionReached (math_Function& theFunction) ;
   
   //! Returns true if the computations are successful, otherwise returns false.
       Standard_Boolean IsDone()  const;

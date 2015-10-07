@@ -20,7 +20,7 @@
 
 #include <GeomAbs_SurfaceType.hxx>
 #include <GeomAbs_CurveType.hxx>
-#include <AppCont_Function2d.hxx>
+#include <AppCont_Function.hxx>
 #include <Convert_CompBezierCurves2dToBSplineCurve2d.hxx>
 #include <ElSLib.hxx>
 #include <ElCLib.hxx>
@@ -120,7 +120,9 @@ static gp_Pnt2d Function_Value(const Standard_Real U,
 
   if ( UCouture) {
     if(S < U1 || S > U2)
-      S = ElCLib::InPeriod(S, U1, U2);
+    {
+        S = ElCLib::InPeriod(S, U1, U2);
+    }
   }
  
   if ( VCouture) {
@@ -135,7 +137,7 @@ static gp_Pnt2d Function_Value(const Standard_Real U,
     if(T < V1 || T > V2)
       T = ElCLib::InPeriod(T, V1, V2);
   }
-  
+
   return gp_Pnt2d(S, T);
 }
 //=======================================================================
@@ -514,9 +516,11 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       }
       //
       ElSLib::Parameters(SP, P, UU, V1);
-      Standard_Real UUmi = Min(Min(U1,UU),Min(UU,U2));
-      Standard_Real UUma = Max(Max(U1,UU),Max(UU,U2));
-      Standard_Boolean reCalc = ((UUmi >= 0. && UUmi <= M_PI) && (UUma >= 0. && UUma <= M_PI));
+      //+This fragment was the reason of bug # 26008.
+      //+It has been deleted on April, 03 2015.
+      //Standard_Real UUmi = Min(Min(U1,UU),Min(UU,U2));
+      //Standard_Real UUma = Max(Max(U1,UU),Max(UU,U2));
+      //Standard_Boolean reCalc = ((UUmi >= 0. && UUmi <= M_PI) && (UUma >= 0. && UUma <= M_PI));
       // box+sphere <<
       P2 = myCurve->Value(W1+M_PI/8);
       ElSLib::Parameters(SP,P2,U2,V2);
@@ -583,15 +587,18 @@ static void Function_SetUVBounds(Standard_Real& myU1,
 
       // box+sphere >>
       myV1 = -1.e+100; myV2 = 1.e+100;
-      Standard_Real UU1 = myU1, UU2 = myU2;
-      if((Abs(UU1) <= (2.*M_PI) && Abs(UU2) <= (2.*M_PI)) && NbSolutions == 1 && reCalc) {
-        gp_Pnt Center = Circle.Location();
-        Standard_Real U,V;
-        ElSLib::SphereParameters(gp_Ax3(gp::XOY()),1,Center, U, V);
-        myU1 = U-M_PI;
-        myU1 = Min(UU1,myU1);
-        myU2 = myU1 + 2.*M_PI;
-      }
+      
+      //+This fragment was the reason of bug # 26008.
+      //+It has been deleted on April, 03 2015.
+      //Standard_Real UU1 = myU1, UU2 = myU2;
+      //if((Abs(UU1) <= (2.*M_PI) && Abs(UU2) <= (2.*M_PI)) && NbSolutions == 1 && reCalc) {
+      //  gp_Pnt Center = Circle.Location();
+      //  Standard_Real U,V;
+      //  ElSLib::SphereParameters(gp_Ax3(gp::XOY()),1,Center, U, V);
+      //  myU1 = U-M_PI;
+      //  myU1 = Min(UU1,myU1);
+      //  myU2 = myU1 + 2.*M_PI;
+      //}
       // box+sphere <<
 
     }//if ( myCurve->GetType() == GeomAbs_Circle)
@@ -755,39 +762,86 @@ static void Function_SetUVBounds(Standard_Real& myU1,
 //classn : ProjLib_Function
 //purpose  : 
 //=======================================================================
-class ProjLib_Function : public AppCont_Function2d
+class ProjLib_Function : public AppCont_Function
 {
   Handle(Adaptor3d_HCurve)   myCurve;
   Handle(Adaptor3d_HSurface) mySurface;
-
+  Standard_Boolean myIsPeriodic[2];
+  Standard_Real myPeriod[2];
   public :
 
   Standard_Real    myU1,myU2,myV1,myV2;
   Standard_Boolean UCouture,VCouture;
-  
+
   ProjLib_Function(const Handle(Adaptor3d_HCurve)&   C, 
-		   const Handle(Adaptor3d_HSurface)& S) :
-  myCurve(C), mySurface(S),
+                   const Handle(Adaptor3d_HSurface)& S)
+: myCurve(C),
+  mySurface(S),
   myU1(0.0),
   myU2(0.0),
   myV1(0.0),
   myV2(0.0),
   UCouture(Standard_False),
   VCouture(Standard_False)
-    {Function_SetUVBounds(myU1,myU2,myV1,myV2,UCouture,VCouture,myCurve,mySurface);}
-  
+  {
+    myNbPnt = 0;
+    myNbPnt2d = 1;
+    Function_SetUVBounds(myU1,myU2,myV1,myV2,UCouture,VCouture,myCurve,mySurface);
+    myIsPeriodic[0] = mySurface->IsUPeriodic();
+    myIsPeriodic[1] = mySurface->IsVPeriodic();
+
+    if (myIsPeriodic[0])
+      myPeriod[0] = mySurface->UPeriod();
+    else
+      myPeriod[0] = 0.0;
+
+    if (myIsPeriodic[1])
+      myPeriod[1] = mySurface->VPeriod();
+    else
+      myPeriod[1] = 0.0;
+  }
+
+  void PeriodInformation(const Standard_Integer theDimIdx,
+                         Standard_Boolean& IsPeriodic,
+                         Standard_Real& thePeriod) const
+  {
+    IsPeriodic = myIsPeriodic[theDimIdx - 1];
+    thePeriod = myPeriod[theDimIdx - 1];
+  }
+
   Standard_Real FirstParameter() const
-    {return (myCurve->FirstParameter() + 1.e-9);}
-  
+  {
+    return (myCurve->FirstParameter());
+  }
+
   Standard_Real LastParameter() const
-    {return (myCurve->LastParameter() -1.e-9);}
-  
-  
-  gp_Pnt2d Value(const Standard_Real t) const
-    {return Function_Value(t,myCurve,mySurface,myU1,myU2,myV1,myV2,UCouture,VCouture);}
-  
-  Standard_Boolean D1(const Standard_Real t, gp_Pnt2d& P, gp_Vec2d& V) const
-    {return Function_D1(t,P,V,myCurve,mySurface,myU1,myU2,myV1,myV2,UCouture,VCouture);}
+  {
+    return (myCurve->LastParameter());
+  }
+
+  Standard_Boolean Value(const Standard_Real   theT,
+                         NCollection_Array1<gp_Pnt2d>& thePnt2d,
+                         NCollection_Array1<gp_Pnt>&   /*thePnt*/) const
+  {
+    thePnt2d(1) = Function_Value(theT, myCurve, mySurface, myU1, myU2, myV1, myV2, UCouture, VCouture);
+    return Standard_True;
+  }
+
+  gp_Pnt2d Value(const Standard_Real   theT) const
+  {
+    return Function_Value(theT, myCurve, mySurface, myU1, myU2, myV1, myV2, UCouture, VCouture);
+  }
+
+  Standard_Boolean D1(const Standard_Real   theT,
+                      NCollection_Array1<gp_Vec2d>& theVec2d,
+                      NCollection_Array1<gp_Vec>&   /*theVec*/) const
+  {
+    gp_Pnt2d aPnt2d;
+    gp_Vec2d aVec2d;
+    Standard_Boolean isOk = Function_D1(theT, aPnt2d,aVec2d, myCurve, mySurface, myU1, myU2, myV1, myV2, UCouture, VCouture);
+    theVec2d(1) = aVec2d;
+    return isOk;
+  }
 };
 
 //=======================================================================
@@ -890,30 +944,30 @@ ProjLib_ComputeApprox::ProjLib_ComputeApprox
     ProjLib_Function F( C, S);
 
 #ifdef OCCT_DEBUG
-    if ( AffichValue) {
-      Standard_Integer Nb = 20;
-      Standard_Real U1, U2, dU, U;
-      U1 = F.FirstParameter();
-      U2 = F.LastParameter();
-      dU = ( U2 - U1) / Nb;
-      TColStd_Array1OfInteger Mults(1,Nb+1);
-      TColStd_Array1OfReal    Knots(1,Nb+1);
-      TColgp_Array1OfPnt2d    Poles(1,Nb+1);
-      for ( Standard_Integer i = 1; i <= Nb+1; i++) {
-	      U = U1 + (i-1)*dU;
-	      Poles(i) = F.Value(U);
-	      Knots(i) = i;
-	      Mults(i) = 1;
-      }
-      Mults(1)    = 2;
-      Mults(Nb+1) = 2;
-#ifdef DRAW
-// POP pour NT
-      char* ResultName = "Result";
-      DrawTrSurf::Set(ResultName,new Geom2d_BSplineCurve(Poles,Knots,Mults,1));
-//      DrawTrSurf::Set("Result",new Geom2d_BSplineCurve(Poles,Knots,Mults,1));
-#endif
-    }
+    //if ( AffichValue) {
+    //  Standard_Integer Nb = 20;
+    //  Standard_Real U1, U2, dU, U;
+    //  U1 = F.FirstParameter();
+    //  U2 = F.LastParameter();
+    //  dU = ( U2 - U1) / Nb;
+    //  TColStd_Array1OfInteger Mults(1,Nb+1);
+    //  TColStd_Array1OfReal    Knots(1,Nb+1);
+    //  TColgp_Array1OfPnt2d    Poles(1,Nb+1);
+    //  for ( Standard_Integer i = 1; i <= Nb+1; i++) {
+    //   U = U1 + (i-1)*dU;
+    //   Poles(i) = F.Value(U);
+    //   cout << "i = " << i << ": U = " << U << 
+    //      ", p(" << Poles(i).X() << ", " << Poles(i).Y() << ");" << endl;
+    //   Knots(i) = i;
+    //   Mults(i) = 1;
+    //  }
+    //  Mults(1)    = 2;
+    //  Mults(Nb+1) = 2;
+
+    //2D-curve for showing in DRAW
+    //  Handle(Geom2d_Curve) aCC = new Geom2d_BSplineCurve(Poles,Knots,Mults,1);
+    //  AffichValue = Standard_False;
+    //}
 #endif    
 
 //-----------
@@ -947,65 +1001,44 @@ ProjLib_ComputeApprox::ProjLib_ComputeApprox
             
 	      Conv.AddCurve(Poles2d);
       }
-    
-    //mise a jour des fields de ProjLib_Approx
+
+      //mise a jour des fields de ProjLib_Approx
       Conv.Perform();
-    
       NbPoles    = Conv.NbPoles();
       NbKnots    = Conv.NbKnots();
 
-      //7626
       if(NbPoles <= 0 || NbPoles > 100000)
-	      return;
+        return;
       if(NbKnots <= 0 || NbKnots > 100000)
-	      return;
+        return;
 
       TColgp_Array1OfPnt2d    NewPoles(1,NbPoles);
       TColStd_Array1OfReal    NewKnots(1,NbKnots);
       TColStd_Array1OfInteger NewMults(1,NbKnots);
-    
+
       Conv.KnotsAndMults(NewKnots,NewMults);
       Conv.Poles(NewPoles);
-    
+
       BSplCLib::Reparametrize(C->FirstParameter(),
-			      C->LastParameter(),
-			      NewKnots);
-    
+                              C->LastParameter(),
+                              NewKnots);
+
+      /*cout << endl;
+      for (int i = 1; i <= NbPoles; i++)
+      {
+        cout << NewPoles.Value(i).X() << " " << NewPoles.Value(i).Y() << endl;
+      }
+      cout << endl; */
+
       // il faut recadrer les poles de debut et de fin:
       // ( Car pour les problemes de couture, on a du ouvrir l`intervalle
       // de definition de la courbe.)
       // On choisit de calculer ces poles par prolongement de la courbe
       // approximee.
-    
-      gp_Pnt2d P;
-      Standard_Real U;
-    
-      U = C->FirstParameter() - 1.e-9;
-      BSplCLib::D0(U, 
-		   0, 
-		   Conv.Degree(), 
-		   Standard_False,
-		   NewPoles, 
-		   BSplCLib::NoWeights(), 
-		   NewKnots, 
-		   NewMults,
-		   P);
-      NewPoles.SetValue(1,P);
-      U = C->LastParameter() + 1.e-9;
-      BSplCLib::D0(U, 
-		   0, 
-		   Conv.Degree(), 
-		   Standard_False,
-		   NewPoles, 
-		   BSplCLib::NoWeights(), 
-		   NewKnots, 
-		   NewMults,
-		   P);
-      NewPoles.SetValue(NbPoles,P);
       myBSpline = new Geom2d_BSplineCurve (NewPoles,
-					   NewKnots,
-					   NewMults,
-					   Conv.Degree());
+                                           NewKnots,
+                                           NewMults,
+                                           Conv.Degree());
     }
     else {
       Standard_Integer NbCurves = Fit.NbMultiCurves();

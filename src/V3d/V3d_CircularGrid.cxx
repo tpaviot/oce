@@ -19,22 +19,8 @@
  
      VERSION HISTORY  :
      --------------------------------
-      IMP230300: GG The color fields and methods have moved in Aspect_Grid
-
 
 ************************************************************************/
-
-#define IMP200100       //GG
-//			-> Compute the case Aspect_GDM_None
-//                      -> Initialize the grid size according to the
-//                        viewer default size.
-
-#define IMP200300       //GG
-//                      -> Recompute the grid when any graphic parameter is
-//                        modified.
-
-#define IMP300300	//GG
-//			-> Draw circles with 2 colors (tenth and normal colors)
 
 /*----------------------------------------------------------------------*/
 /*
@@ -96,7 +82,8 @@ void V3d_CircularGrid::SetColors (const Quantity_Color& aColor, const Quantity_C
 
 void V3d_CircularGrid::Display ()
 {
-  myStructure->Display (1);
+  myStructure->SetDisplayPriority (1);
+  myStructure->Display();
 }
 
 void V3d_CircularGrid::Erase () const

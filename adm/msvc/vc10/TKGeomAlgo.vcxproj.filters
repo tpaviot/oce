@@ -2,106 +2,106 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{42C11DA9-0156-0C6C-0FA5-EB601BF2BBC2}</UniqueIdentifier>
+      <UniqueIdentifier>{8E3515E3-0A07-0091-131F-AD9F1AA88AC6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Hatch">
-      <UniqueIdentifier>{04DB46DD-0971-095C-0C6A-C2170F77ECA3}</UniqueIdentifier>
+      <UniqueIdentifier>{2F087C7D-00E6-04FC-07D3-D016A17DD738}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomInt">
-      <UniqueIdentifier>{50E36C98-09EA-0CBF-1113-937856C1957C}</UniqueIdentifier>
+      <UniqueIdentifier>{BCD84141-14B7-156E-0BEE-F77C6B098605}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntStart">
-      <UniqueIdentifier>{3D07758B-081D-0547-135C-AB83DE5E9FA9}</UniqueIdentifier>
+      <UniqueIdentifier>{3DEC3D56-029F-05BA-14E7-6F18E0CA3504}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntWalk">
-      <UniqueIdentifier>{4424F3BD-1439-004E-00FB-AF826499A4D3}</UniqueIdentifier>
+      <UniqueIdentifier>{5ECFDEBA-14DA-0036-1214-60B9051305D1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntImp">
-      <UniqueIdentifier>{142A642E-185E-192E-1103-E9E93DCFD05F}</UniqueIdentifier>
+      <UniqueIdentifier>{E2E59C35-0259-0B8F-0B84-ABA656358387}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntCurveSurface">
-      <UniqueIdentifier>{7918AC44-07AF-0C92-14F1-045E88DA3D7F}</UniqueIdentifier>
+      <UniqueIdentifier>{4E3DB82B-0F3E-105B-07B4-C1C58D90E4C9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntSurf">
-      <UniqueIdentifier>{FB86D495-1818-0091-11ED-C450CE951DE8}</UniqueIdentifier>
+      <UniqueIdentifier>{9C836557-0DCF-0FAA-0442-09C9668556F2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntPatch">
-      <UniqueIdentifier>{DE932988-0BFE-0A29-1727-D3CECEAE5DC9}</UniqueIdentifier>
+      <UniqueIdentifier>{0F346473-1802-0BDF-02FC-6045686CBC5F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dInt">
-      <UniqueIdentifier>{8F6B463C-0866-1336-05ED-100584DA3646}</UniqueIdentifier>
+      <UniqueIdentifier>{C314AE58-1145-0BC4-0D7D-FFE832E5661D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntImpParGen">
-      <UniqueIdentifier>{2137556B-1253-0C56-0148-76C10279AB2B}</UniqueIdentifier>
+      <UniqueIdentifier>{930D5AE5-0AD1-07D8-05CD-26AE858BA481}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntRes2d">
-      <UniqueIdentifier>{D4A7C8F5-182D-00DC-1643-3F048040A5FE}</UniqueIdentifier>
+      <UniqueIdentifier>{DD45BFB0-0F28-15F9-1538-A868966A5A72}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntCurve">
-      <UniqueIdentifier>{51EF5833-13E7-083B-0860-2A5D3D4F6B0F}</UniqueIdentifier>
+      <UniqueIdentifier>{58115ADD-0191-1983-1117-023D18F92800}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopTrans">
-      <UniqueIdentifier>{FDDF63D5-154C-0433-0E73-27CCD3F8401C}</UniqueIdentifier>
+      <UniqueIdentifier>{B14EDE1B-1710-14D2-02D0-237B457212FC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Intf">
-      <UniqueIdentifier>{3912AAAF-03B5-0210-0199-BC08D6E85787}</UniqueIdentifier>
+      <UniqueIdentifier>{3C80FBE3-0E22-1227-1103-F5FDA7E0133C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ApproxInt">
-      <UniqueIdentifier>{CA608828-1814-0238-1669-6A370E44AA19}</UniqueIdentifier>
+      <UniqueIdentifier>{0F062375-0234-0D69-0ABC-4F9C3097432C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GccAna">
-      <UniqueIdentifier>{FB517F6A-0EEB-1643-0D4D-036D41F9CA83}</UniqueIdentifier>
+      <UniqueIdentifier>{BB08C6F3-02FC-18F2-1347-223110C31C46}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GccEnt">
-      <UniqueIdentifier>{5E6B446D-0810-0E0C-1951-23BF0AD353A7}</UniqueIdentifier>
+      <UniqueIdentifier>{75751755-175B-1352-0C9F-5ECAB84F07A8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GccInt">
-      <UniqueIdentifier>{190DE19D-0E61-09FA-1524-2FFA74E3E4A4}</UniqueIdentifier>
+      <UniqueIdentifier>{7FE6DD90-1748-0EC7-0D53-A30ACF1ACB09}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HatchGen">
-      <UniqueIdentifier>{B7E829FE-005A-03E1-1630-0B2E0FFD097B}</UniqueIdentifier>
+      <UniqueIdentifier>{07D3017A-105A-1899-0CB1-EA8FCB86847E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dHatch">
-      <UniqueIdentifier>{79887E7F-0915-18F9-0630-8EA8DAEFA5F0}</UniqueIdentifier>
+      <UniqueIdentifier>{6479CCE7-03FB-0D93-06E4-ADA710B32361}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Law">
-      <UniqueIdentifier>{774AB6CC-04D8-0196-0BA3-BF45836CAAB6}</UniqueIdentifier>
+      <UniqueIdentifier>{D7BAC3E2-0115-0DBA-0D6D-B200342B8470}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AppBlend">
-      <UniqueIdentifier>{3BD07E4F-1711-12F5-0550-E69275995033}</UniqueIdentifier>
+      <UniqueIdentifier>{0404565B-0EB3-14A6-0800-954C0CB3E944}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Plate">
-      <UniqueIdentifier>{604516F5-0CEA-11FA-145E-9DB54EEA3690}</UniqueIdentifier>
+      <UniqueIdentifier>{978128AA-0182-0B60-0FAB-635BE6267A10}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomPlate">
-      <UniqueIdentifier>{A43BE5B5-0D9D-1071-0600-5691ED8694A2}</UniqueIdentifier>
+      <UniqueIdentifier>{17CEC6B0-1357-0C27-0975-54921B443CBC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LocalAnalysis">
-      <UniqueIdentifier>{88319847-1790-1363-0D34-9237BE89C54B}</UniqueIdentifier>
+      <UniqueIdentifier>{EF5D578D-0073-09B0-15E4-96C05C2EF403}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomAPI">
-      <UniqueIdentifier>{F7FF50B9-14A7-0BA8-05F5-E2DCC80CFA01}</UniqueIdentifier>
+      <UniqueIdentifier>{9623D430-1548-1338-119A-42C573B10E7D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomFill">
-      <UniqueIdentifier>{F19640DB-172E-0D9E-0D42-C78AB0626746}</UniqueIdentifier>
+      <UniqueIdentifier>{2E3BAB34-0E61-0169-132B-57A833E3CD45}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dAPI">
-      <UniqueIdentifier>{6A32B5B2-0D87-00F3-13FC-7548B2F7C44E}</UniqueIdentifier>
+      <UniqueIdentifier>{B98B3786-1550-1430-197A-481C242FB475}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dGcc">
-      <UniqueIdentifier>{790B073C-10A0-06B8-0033-42CD44B26B18}</UniqueIdentifier>
+      <UniqueIdentifier>{F08586CC-18D6-1099-1357-0393C5DA71B3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FairCurve">
-      <UniqueIdentifier>{94F79400-10A4-164C-1419-657047AE4898}</UniqueIdentifier>
+      <UniqueIdentifier>{5EA55CBB-05C6-0FE0-080D-7DBAEC7B053C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\NLPlate">
-      <UniqueIdentifier>{202B6990-00F9-13A9-179B-8E2645727EDC}</UniqueIdentifier>
+      <UniqueIdentifier>{94DECE9A-043E-0D55-0E3E-2A029F1242F7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntPolyh">
-      <UniqueIdentifier>{E6B9F47B-0B72-1218-0C2C-C677C3E0D7EB}</UniqueIdentifier>
+      <UniqueIdentifier>{EAA5C422-1417-1149-0D4F-3F4A8A36C0B7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopClass">
-      <UniqueIdentifier>{7FBEAF2B-04B2-0C1F-02D8-87FA9754EE09}</UniqueIdentifier>
+      <UniqueIdentifier>{A6676BEC-12F1-0A80-1589-8653C8E681B0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -445,6 +445,9 @@
       <Filter>Source files\IntPatch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntPatch\IntPatch_Point.cxx">
+      <Filter>Source files\IntPatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_PointLine.cxx">
       <Filter>Source files\IntPatch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntPatch\IntPatch_PolyArc.cxx">

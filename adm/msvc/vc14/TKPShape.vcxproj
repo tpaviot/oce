@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D23F4A03-05FB-069A-0404-9C0CDC107EEA}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc14\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc14\obj\TKPShape\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc14\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc14\objd\TKPShape\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc14\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc14\obj\TKPShape\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc14\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc14\objd\TKPShape\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc14\bin\TKPShape.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc14\obj\TKPShape/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc14\obj\TKPShape/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc14\obj\TKPShape/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;PTKernel.lib;TKBRep.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc14\bin\TKPShape.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc14\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc14\bin\TKPShape.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc14\lib\TKPShape.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc14\bind\TKPShape.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc14\objd\TKPShape/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc14\objd\TKPShape/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc14\objd\TKPShape/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;PTKernel.lib;TKBRep.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc14\bind\TKPShape.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc14\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc14\bind\TKPShape.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc14\libd\TKPShape.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc14\bin\TKPShape.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc14\obj\TKPShape/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc14\obj\TKPShape/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc14\obj\TKPShape/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;PTKernel.lib;TKBRep.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc14\bin\TKPShape.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc14\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc14\bin\TKPShape.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc14\lib\TKPShape.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc14\bind\TKPShape.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc14\objd\TKPShape/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc14\objd\TKPShape/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc14\objd\TKPShape/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;PTKernel.lib;TKBRep.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc14\bind\TKPShape.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc14\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc14\bind\TKPShape.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc14\libd\TKPShape.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_Curve3D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_CurveOn2Surfaces.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_CurveOnClosedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_CurveOnSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_CurveRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_GCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_PointOnCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_PointOnCurveOnSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_PointOnSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_PointRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_PointsOnSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_Polygon3D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_PolygonOnClosedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_PolygonOnClosedTriangulation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_PolygonOnSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_PolygonOnTriangulation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_TEdge.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_TEdge1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_TFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_TFace1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_TVertex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PBRep\PBRep_TVertex1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTopoDS\PTopoDS_FieldOfHArray1OfHShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTopoDS\PTopoDS_FieldOfHArray1OfShape1_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTopoDS\PTopoDS_HArray1OfHShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTopoDS\PTopoDS_HArray1OfShape1_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTopoDS\PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTopoDS\PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTopoDS\PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTopoDS\PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_CompSolid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_Compound.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_Edge.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_Face.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_HShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_Shape1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_Shell.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_Solid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TCompSolid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TCompSolid1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TCompound.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TCompound1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TEdge.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TEdge1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TFace1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TShape1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TShell.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TShell1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TSolid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TSolid1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TVertex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TVertex1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TWire.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_TWire1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_Vertex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopoDS\PTopoDS_Wire.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Axis1Placement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Axis2Placement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_AxisPlacement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_BSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_BSplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_BezierCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_BezierSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_BoundedCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_BoundedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_CartesianPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Circle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Conic.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_ConicalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Curve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_CylindricalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Direction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_ElementarySurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Ellipse.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Geometry.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Hyperbola.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Line.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_OffsetCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_OffsetSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Parabola.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Plane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Point.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_RectangularTrimmedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_SphericalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Surface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_SurfaceOfLinearExtrusion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_SurfaceOfRevolution.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_SweptSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_ToroidalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Transformation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_TrimmedCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_Vector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom\PGeom_VectorWithMagnitude.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_AxisPlacement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_BSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_BezierCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_BoundedCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_CartesianPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Circle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Conic.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Curve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Direction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Ellipse.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Geometry.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Hyperbola.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Line.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_OffsetCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Parabola.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Point.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Transformation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_TrimmedCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_Vector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PGeom2d\PGeom2d_VectorWithMagnitude.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PPoly\PPoly_FieldOfHArray1OfTriangle_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PPoly\PPoly_HArray1OfTriangle_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PPoly\PPoly_VArrayNodeOfFieldOfHArray1OfTriangle_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PPoly\PPoly_VArrayTNodeOfFieldOfHArray1OfTriangle_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PPoly\PPoly_Polygon2D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PPoly\PPoly_Polygon3D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PPoly\PPoly_PolygonOnTriangulation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PPoly\PPoly_Triangle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PPoly\PPoly_Triangulation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray1OfCirc2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray1OfDir2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray1OfDir_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray1OfLin2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray1OfPnt2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray1OfPnt_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray1OfVec2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray1OfVec_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray1OfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray1OfXY_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray2OfCirc2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray2OfDir2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray2OfDir_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray2OfLin2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray2OfPnt2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray2OfPnt_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray2OfVec2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray2OfVec_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray2OfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_FieldOfHArray2OfXY_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray1OfCirc2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray1OfDir2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray1OfDir_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray1OfLin2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray1OfPnt2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray1OfPnt_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray1OfVec2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray1OfVec_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray1OfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray1OfXY_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray2OfCirc2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray2OfDir2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray2OfDir_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray2OfLin2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray2OfPnt2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray2OfPnt_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray2OfVec2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray2OfVec_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray2OfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HArray2OfXY_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HSequenceOfDir_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HSequenceOfPnt_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HSequenceOfVec_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_HSequenceOfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_SeqExplorerOfHSequenceOfDir_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_SeqExplorerOfHSequenceOfPnt_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_SeqExplorerOfHSequenceOfVec_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_SeqExplorerOfHSequenceOfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_SeqNodeOfHSequenceOfDir_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_SeqNodeOfHSequenceOfPnt_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_SeqNodeOfHSequenceOfVec_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_SeqNodeOfHSequenceOfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray1OfCirc2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray1OfDir2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray1OfDir_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray1OfLin2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray1OfPnt2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray1OfPnt_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray1OfVec2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray1OfVec_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray1OfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray1OfXY_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray2OfCirc2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray2OfDir2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray2OfDir_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray2OfLin2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray2OfPnt_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray2OfVec2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray2OfVec_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray2OfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayNodeOfFieldOfHArray2OfXY_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray1OfCirc2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray1OfDir2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray1OfDir_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray1OfLin2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray1OfPnt2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray1OfPnt_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray1OfVec2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray1OfVec_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray1OfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray1OfXY_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray2OfDir2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray2OfDir_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray2OfLin2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray2OfPnt2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray2OfPnt_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray2OfVec2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray2OfVec_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray2OfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColgp\PColgp_VArrayTNodeOfFieldOfHArray2OfXY_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopLoc\PTopLoc_Datum3D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopLoc\PTopLoc_ItemLocation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PTopLoc\PTopLoc_Location.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MgtBRep\MgtBRep.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MgtBRep\MgtBRep_TranslateTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MgtBRep\MgtBRep_TranslateTool1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MgtGeom\MgtGeom.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MgtGeom2d\MgtGeom2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MgtPoly\MgtPoly.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MgtTopLoc\MgtTopLoc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MgtTopoDS\MgtTopoDS.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MgtTopoDS\MgtTopoDS_TranslateTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MgtTopoDS\MgtTopoDS_TranslateTool1.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKPShape.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

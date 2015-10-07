@@ -165,6 +165,7 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/src/BRepBuilderAPI/BRepBuilderAPI_Collect.cxx \
 @top_srcdir@/src/BRepBuilderAPI/BRepBuilderAPI_Command.cxx \
 @top_srcdir@/src/BRepBuilderAPI/BRepBuilderAPI_Copy.cxx \
+@top_srcdir@/src/BRepBuilderAPI/BRepBuilderAPI_FastSewing.cxx \
 @top_srcdir@/src/BRepBuilderAPI/BRepBuilderAPI_FindPlane.cxx \
 @top_srcdir@/src/BRepBuilderAPI/BRepBuilderAPI_GTransform.cxx \
 @top_srcdir@/src/BRepBuilderAPI/BRepBuilderAPI_MakeEdge.cxx \
@@ -186,6 +187,7 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/src/BRepCheck/BRepCheck_Face.cxx \
 @top_srcdir@/src/BRepCheck/BRepCheck_Result.cxx \
 @top_srcdir@/src/BRepCheck/BRepCheck_Shell.cxx \
+@top_srcdir@/src/BRepCheck/BRepCheck_Solid.cxx \
 @top_srcdir@/src/BRepCheck/BRepCheck_Vertex.cxx \
 @top_srcdir@/src/BRepCheck/BRepCheck_Wire.cxx \
 @top_srcdir@/src/BRepClass/BRepClass_Edge.cxx \
@@ -204,12 +206,17 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/src/BRepExtrema/BRepExtrema_ExtFF.cxx \
 @top_srcdir@/src/BRepExtrema/BRepExtrema_ExtPC.cxx \
 @top_srcdir@/src/BRepExtrema/BRepExtrema_ExtPF.cxx \
+@top_srcdir@/src/BRepExtrema/BRepExtrema_OverlapTool.cxx \
 @top_srcdir@/src/BRepExtrema/BRepExtrema_Poly.cxx \
+@top_srcdir@/src/BRepExtrema/BRepExtrema_SelfIntersection.cxx \
+@top_srcdir@/src/BRepExtrema/BRepExtrema_ShapeProximity.cxx \
+@top_srcdir@/src/BRepExtrema/BRepExtrema_TriangleSet.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp_Cinert.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp_Domain.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp_EdgeTool.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp_Face.cxx \
+@top_srcdir@/src/BRepGProp/BRepGProp_Gauss.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp_Sinert.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp_TFunction.cxx \
 @top_srcdir@/src/BRepGProp/BRepGProp_UFunction.cxx \
@@ -217,6 +224,7 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/src/BRepGProp/BRepGProp_VinertGK.cxx \
 @top_srcdir@/src/BRepIntCurveSurface/BRepIntCurveSurface_Inter.cxx \
 @top_srcdir@/src/BRepLib/BRepLib.cxx \
+@top_srcdir@/src/BRepLib/BRepLib_CheckCurveOnSurface.cxx \
 @top_srcdir@/src/BRepLib/BRepLib_Command.cxx \
 @top_srcdir@/src/BRepLib/BRepLib_FindSurface.cxx \
 @top_srcdir@/src/BRepLib/BRepLib_FuseEdges.cxx \

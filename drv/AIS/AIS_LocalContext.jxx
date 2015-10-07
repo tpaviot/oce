@@ -1,11 +1,9 @@
 #include <AIS_InteractiveContext.hxx>
 #include <SelectMgr_SelectionManager.hxx>
-#include <StdSelect_ViewerSelector3d.hxx>
 #include <SelectMgr_OrFilter.hxx>
 #include <SelectMgr_Filter.hxx>
 #include <AIS_InteractiveObject.hxx>
 #include <TCollection_AsciiString.hxx>
-#include <Select3D_Projector.hxx>
 #include <TColStd_ListOfInteger.hxx>
 #include <SelectMgr_ListOfFilter.hxx>
 #include <V3d_View.hxx>

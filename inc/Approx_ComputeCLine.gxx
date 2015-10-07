@@ -19,7 +19,7 @@
 
 
 #include <Approx_ParametrizationType.hxx>
-#include Approx_MyLeastSquare_hxx
+#include <AppCont_LeastSquare.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <AppParCurves_Constraint.hxx>
 #include <Approx_Status.hxx>
@@ -89,15 +89,17 @@ void Approx_ComputeCLine::Perform(const MultiLine& Line)
   Standard_Boolean Finish = Standard_False, 
           begin = Standard_True, Ok = Standard_False;
   Standard_Real thetol3d = Precision::Confusion(), thetol2d = Precision::Confusion();
-  UFirst = LineTool::FirstParameter(Line);
-  ULast  = LineTool::LastParameter(Line);
+  UFirst = Line.FirstParameter();
+  ULast  = Line.LastParameter();
   Standard_Real TolU = (ULast-UFirst)*1.e-05;
   Standard_Real myfirstU = UFirst; 
   Standard_Real mylastU = ULast;
 
-  if (!mycut) {
+  if (!mycut)
+  {
     alldone = Compute(Line, UFirst, ULast, thetol3d, thetol2d);
-    if (!alldone) {
+    if (!alldone) 
+    {
       tolreached = Standard_False;
       myfirstparam.Append(UFirst);
       mylastparam.Append(ULast);
@@ -106,70 +108,79 @@ void Approx_ComputeCLine::Perform(const MultiLine& Line)
       Tolers2d.Append(currenttol2d);
     }
   }
-  else {
+  else 
+  {
 
     // previous decision to be taken if we get worse with next cut (eap)
     AppParCurves_MultiCurve KeptMultiCurve;
     Standard_Real KeptUfirst = 0., KeptUlast = 0., KeptT3d = RealLast(), KeptT2d = 0.;
-    Standard_Integer NbWorseDecis = 0, NbAllowedBadDecis = 10;
 
-    while (!Finish) {
+    while (!Finish) 
+    {
       
       // Gestion du decoupage de la multiline pour approximer:
-      if (!begin) {
-	if (Ok) {
-	  // Calcul de la partie a approximer.
-	  myfirstU = mylastU;
-	  mylastU  = ULast;
-	  if (Abs(ULast-myfirstU) <= RealEpsilon()) {
-	    Finish = Standard_True;
-	    alldone = Standard_True;
-	    return;
-	  }
-	  KeptT3d = RealLast(); KeptT2d = 0; 
-	  NbWorseDecis = 0;
-	}
-	else {
-	  // keep best decison
-	  if ((thetol3d + thetol2d) < (KeptT3d + KeptT2d)) {
-	    KeptMultiCurve = TheMultiCurve;
-	    KeptUfirst     = myfirstU;
-	    KeptUlast      = mylastU;
-	    KeptT3d        = thetol3d;
-	    KeptT2d        = thetol2d;
-	  }
-	  
-	  // cut an interval
-	  mylastU = (myfirstU + mylastU)/2;
-	}
+      if (!begin) 
+      {
+        if (Ok) 
+        {
+          // Calcul de la partie a approximer.
+          myfirstU = mylastU;
+          mylastU  = ULast;
+          if (Abs(ULast-myfirstU) <= RealEpsilon())
+          {
+            Finish = Standard_True;
+            alldone = Standard_True;
+            return;
+          }
+          KeptT3d = RealLast(); KeptT2d = 0;
+          KeptUfirst = myfirstU;
+          KeptUlast = mylastU;
+        }
+        else
+        {
+          // keep best decison
+          if ((thetol3d + thetol2d) < (KeptT3d + KeptT2d))
+          {
+            KeptMultiCurve = TheMultiCurve;
+            KeptUfirst     = myfirstU;
+            KeptUlast      = mylastU;
+            KeptT3d        = thetol3d;
+            KeptT2d        = thetol2d;
+          }
+
+          // cut an interval
+          mylastU = (myfirstU + mylastU)/2;
+        }
       }
 
-      if (Abs(myfirstU-mylastU) <= TolU) /*break;*/ // pour ne pas planter
-	NbAllowedBadDecis /= 2;                     // la station.
-      
       // Calcul des parametres sur ce nouvel intervalle.
       Ok = Compute(Line, myfirstU, mylastU, thetol3d, thetol2d);
 
       //cout << myfirstU << " - " << mylastU << "  tol : " << thetol3d << " " << thetol2d << endl;
 
       // is new decision better?
-      if ( !Ok && (thetol3d + thetol2d) > (KeptT3d + KeptT2d) )
+      if (!Ok && Abs(myfirstU-mylastU) <= TolU)
       {
-	NbWorseDecis++;
+          Ok = Standard_True; // stop interval cutting, approx the rest part
 
-	if (NbWorseDecis > NbAllowedBadDecis) {
-	  
-	  Ok = Standard_True; // stop interval cutting, approx the rest part
-	  mylastU = KeptUlast;
-	  
-	  tolreached = Standard_False; // helas
-	  myMultiCurves.Append(KeptMultiCurve);
-	  Tolers3d.Append     (KeptT3d);
-	  Tolers2d.Append     (KeptT2d);
-	  myfirstparam.Append (KeptUfirst);
-	  mylastparam.Append  (KeptUlast);
-	}
-      }
+          if ((thetol3d + thetol2d) < (KeptT3d + KeptT2d))
+          {
+            KeptMultiCurve = TheMultiCurve;
+            KeptUfirst     = myfirstU;
+            KeptUlast      = mylastU;
+            KeptT3d        = thetol3d;
+            KeptT2d        = thetol2d;
+          }
+
+          mylastU = KeptUlast;
+
+          tolreached = Standard_False; // helas
+          myMultiCurves.Append(KeptMultiCurve);
+          Tolers3d.Append     (KeptT3d);
+          Tolers2d.Append     (KeptT2d);
+          myfirstparam.Append (KeptUfirst);
+          mylastparam.Append  (KeptUlast);
+        }
 
       begin = Standard_False;
     } // while (!Finish)
@@ -218,8 +229,7 @@ Standard_Boolean Approx_ComputeCLine::Compute(const MultiLine& Line,
   for (deg = mydegremin; deg <= mydegremax; deg++) {
 
     AppParCurves_MultiCurve mySCU(deg+1);
-    Approx_MyLeastSquare LSquare(Line, Ufirst, Ulast, myfirstC, mylastC, 
-			         deg, NbPoints);
+    AppCont_LeastSquare LSquare(Line, Ufirst, Ulast, myfirstC, mylastC, deg, NbPoints);
     mydone = LSquare.IsDone();
     if (mydone) {
       LSquare.Error(Fv, TheTol3d, TheTol2d);

@@ -65,18 +65,20 @@ public:
   //! Warning: The trimmed curve is built from a copy of curve C.
   //! Therefore, when C is modified, the trimmed curve
   //! is not modified.
-  //! - If the basis curve is periodic, the bounds of the
-  //! trimmed curve may be different from U1 and U2
+  //! - If the basis curve is periodic and theAdjustPeriodic is True,
+  //! the bounds of the trimmed curve may be different from U1 and U2
   //! if the parametric origin of the basis curve is within
   //! the arc of the trimmed curve. In this case, the
   //! modified parameter will be equal to U1 or U2
   //! plus or minus the period.
+  //! When theAdjustPeriodic is False, parameters U1 and U2 will be
+  //! the same, without adjustment into the first period.
   //! Exceptions
   //! Standard_ConstructionError if:
   //! - C is not periodic and U1 or U2 is outside the
   //! bounds of C, or
   //! - U1 is equal to U2.
-  Standard_EXPORT Geom_TrimmedCurve(const Handle(Geom_Curve)& C, const Standard_Real U1, const Standard_Real U2, const Standard_Boolean Sense = Standard_True);
+  Standard_EXPORT Geom_TrimmedCurve(const Handle(Geom_Curve)& C, const Standard_Real U1, const Standard_Real U2, const Standard_Boolean Sense = Standard_True, const Standard_Boolean theAdjustPeriodic = Standard_True);
   
   //! Changes the orientation of this trimmed curve.
   //! As a result:
@@ -104,17 +106,19 @@ public:
   //! has the same orientation as the basis curve if Sense
   //! is true (default value) or the opposite orientation if Sense is false.
   //! Warning
-  //! If the basis curve is periodic, the bounds of the
-  //! trimmed curve may be different from U1 and U2 if the
+  //! If the basis curve is periodic and theAdjustPeriodic is True,
+  //! the bounds of the trimmed curve may be different from U1 and U2 if the
   //! parametric origin of the basis curve is within the arc of
   //! the trimmed curve. In this case, the modified
   //! parameter will be equal to U1 or U2 plus or minus the period.
+  //! When theAdjustPeriodic is False, parameters U1 and U2 will be
+  //! the same, without adjustment into the first period.
   //! Exceptions
   //! Standard_ConstructionError if:
   //! - the basis curve is not periodic, and either U1 or U2
   //! are outside the bounds of the basis curve, or
   //! - U1 is equal to U2.
-  Standard_EXPORT   void SetTrim (const Standard_Real U1, const Standard_Real U2, const Standard_Boolean Sense = Standard_True) ;
+  Standard_EXPORT   void SetTrim (const Standard_Real U1, const Standard_Real U2, const Standard_Boolean Sense = Standard_True, const Standard_Boolean theAdjustPeriodic = Standard_True) ;
   
   //! Returns the basis curve.
   //! Warning

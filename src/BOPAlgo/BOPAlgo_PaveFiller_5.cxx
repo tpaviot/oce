@@ -17,8 +17,6 @@
 
 #include <BOPAlgo_PaveFiller.ixx>
 
-#include <NCollection_IncAllocator.hxx>
-//
 #include <GeomAPI_ProjectPointOnSurf.hxx>
 //
 #include <Bnd_Box.hxx>
@@ -38,7 +36,7 @@
 //
 #include <BOPCol_MapOfInteger.hxx>
 #include <BOPCol_NCVector.hxx>
-#include <BOPCol_TBB.hxx>
+#include <BOPCol_Parallel.hxx>
 //
 #include <IntTools_Context.hxx>
 #include <IntTools_Tools.hxx>
@@ -119,13 +117,13 @@ class BOPAlgo_EdgeFace :
 //=======================================================================
 typedef BOPCol_NCVector<BOPAlgo_EdgeFace> BOPAlgo_VectorOfEdgeFace; 
 //
-typedef BOPCol_TBBContextFunctor 
+typedef BOPCol_ContextFunctor 
   <BOPAlgo_EdgeFace,
   BOPAlgo_VectorOfEdgeFace,
   Handle(IntTools_Context), 
   IntTools_Context> BOPAlgo_EdgeFaceFunctor;
 //
-typedef BOPCol_TBBContextCnt 
+typedef BOPCol_ContextCnt 
   <BOPAlgo_EdgeFaceFunctor,
   BOPAlgo_VectorOfEdgeFace,
   Handle(IntTools_Context)> BOPAlgo_EdgeFaceCnt;
@@ -152,15 +150,15 @@ void BOPAlgo_PaveFiller::PerformEF()
   Standard_Integer nE, nF, aDiscretize, i, aNbCPrts, iX, nV[2];
   Standard_Integer aNbEdgeFace, k;
   Standard_Real aTolE, aTolF, aTS1, aTS2, aT1, aT2, aDeflection;
-  Handle(NCollection_IncAllocator) aAllocator;
+  Handle(NCollection_BaseAllocator) aAllocator;
   TopAbs_ShapeEnum aType;
   BOPDS_ListIteratorOfListOfPaveBlock aIt;
   BOPAlgo_VectorOfEdgeFace aVEdgeFace; 
   BRep_Builder aBB;
   //-----------------------------------------------------scope f
   //
-  ////aAllocator=new NCollection_IncAllocator();
-  
+  aAllocator=NCollection_BaseAllocator::CommonBaseAllocator();
+  //
   BOPCol_MapOfInteger aMIEFC(100, aAllocator);
   BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks aMVCPB(100, aAllocator);
   BOPDS_IndexedDataMapOfPaveBlockListOfInteger aMPBLI(100, aAllocator);
@@ -169,9 +167,7 @@ void BOPAlgo_PaveFiller::PerformEF()
   aDeflection=0.01;
   //
   BOPDS_VectorOfInterfEF& aEFs=myDS->InterfEF();
-  aEFs.SetStartSize(iSize);
   aEFs.SetIncrement(iSize);
-  aEFs.Init();
   //
   for (; myIterator->More(); myIterator->Next()) {
     myIterator->Value(nE, nF, bJustAdd);
@@ -267,7 +263,6 @@ void BOPAlgo_PaveFiller::PerformEF()
     aPB->Indices(nV[0], nV[1]);
     //
     BOPDS_FaceInfo& aFI=myDS->ChangeFaceInfo(nF);
-    ////const BOPDS_IndexedMapOfPaveBlock& aMPBF=aFI.PaveBlocksOn();
     const BOPCol_MapOfInteger& aMIFOn=aFI.VerticesOn();
     const BOPCol_MapOfInteger& aMIFIn=aFI.VerticesIn();
     //~~~
@@ -298,14 +293,16 @@ void BOPAlgo_PaveFiller::PerformEF()
             bV[0]=CheckFacePaves(nV[0], aMIFOn, aMIFIn);
             bV[1]=CheckFacePaves(nV[1], aMIFOn, aMIFIn);
             if (bV[0] && bV[1]) {
-              iX=aEFs.Append()-1;
               IntTools_CommonPrt aCP = aCPart;
               aCP.SetType(TopAbs_EDGE);
-              BOPDS_InterfEF& aEF=aEFs(iX);
+              BOPDS_InterfEF& aEF=aEFs.Append1();
+              iX=aEFs.Extent()-1;
               aEF.SetIndices(nE, nF);
               aEF.SetCommonPart(aCP);
               myDS->AddInterf(nE, nF);
-              // 3          
+              //
+              aMIEFC.Add(nF);
+              //           
               BOPAlgo_Tools::FillMap(aPB, nF, aMPBLI, aAllocator);
               break;
             }
@@ -333,18 +330,19 @@ void BOPAlgo_PaveFiller::PerformEF()
             }
             //
             const gp_Pnt& aPnew = BRep_Tool::Pnt(aVnew);
-            if (!myContext->IsValidPointForFace(aPnew, 
-                                                aF, 
-                                                aTolE+aTolF)) {
+            Standard_Real aTolV = BRep_Tool::Tolerance(aVnew);
+            aTolV = Max(aTolV, Max(aTolE, aTolF));
+            //
+            if (!myContext->IsPointInFace(aPnew, aF, aTolV)) {
               continue;
             }
             //
-            aBB.UpdateVertex(aVnew, aTolE);
+            aBB.UpdateVertex(aVnew, aTolV);
             //
             aMIEFC.Add(nF);
             // 1
-            iX=aEFs.Append()-1;
-            BOPDS_InterfEF& aEF=aEFs(iX);
+            BOPDS_InterfEF& aEF=aEFs.Append1();
+            iX=aEFs.Extent()-1;
             aEF.SetIndices(nE, nF);
             aEF.SetCommonPart(aCPart);
             // 2
@@ -362,8 +360,8 @@ void BOPAlgo_PaveFiller::PerformEF()
           aMIEFC.Add(nF);
           //
           // 1
-          iX=aEFs.Append()-1;
-          BOPDS_InterfEF& aEF=aEFs(iX);
+          BOPDS_InterfEF& aEF=aEFs.Append1();
+          iX=aEFs.Extent()-1;
           aEF.SetIndices(nE, nF);
           //
           bV[0]=CheckFacePaves(nV[0], aMIFOn, aMIFIn);
@@ -636,16 +634,12 @@ Standard_Boolean BOPAlgo_PaveFiller::ForceInterfVF
   gp_Pnt2d aP2d(U, V);
   bRet = myContext->IsPointInFace (aF, aP2d);
   if (bRet) {
-    Standard_Integer i;
+    //Standard_Integer i;
     BRep_Builder aBB;
     //
     BOPDS_VectorOfInterfVF& aVFs=myDS->InterfVF();
-    if (aVFs.Extent() == 0) {
-      aVFs.Init();
-    }
-    //
-    i=aVFs.Append()-1;
-    BOPDS_InterfVF& aVF=aVFs(i);
+    aVFs.SetIncrement(10);
+    BOPDS_InterfVF& aVF=aVFs.Append1();
     aVF.SetIndices(nV, nF);
     aVF.SetUV(U, V);
     //

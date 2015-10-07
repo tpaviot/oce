@@ -101,6 +101,10 @@ public:
   //! False. If True, drops small wires.
       Standard_Integer& FixSmallAreaWireMode() ;
   
+  //! Returns (modifiable) the remove face with small area, by default
+  //! False. If True, drops faces with small outer wires.
+      Standard_Integer& RemoveSmallAreaFaceMode() ;
+  
   //! Returns (modifiable) the fix intersecting wires mode
   //! by default True.
       Standard_Integer& FixIntersectingWiresMode() ;
@@ -188,7 +192,7 @@ public:
   //! 100*Precision::PConfusion(). Removes these wires if they are internal.
   //! Returns : True if at least one small wire removed,
   //! False if does nothing.
-  Standard_EXPORT   Standard_Boolean FixSmallAreaWire() ;
+  Standard_EXPORT   Standard_Boolean FixSmallAreaWire (const Standard_Boolean theIsRemoveSmallFace) ;
   
   //! Detects if wire has a loop and fixes this situation by splitting on the few parts.
   //! if wire has a loops and it was splitted Status was set to value ShapeExtend_DONE6.
@@ -258,6 +262,7 @@ private:
   Standard_Integer myFixAddNaturalBoundMode;
   Standard_Integer myFixMissingSeamMode;
   Standard_Integer myFixSmallAreaWireMode;
+  Standard_Integer myRemoveSmallAreaFaceMode;
   Standard_Integer myFixLoopWiresMode;
   Standard_Integer myFixIntersectingWiresMode;
   Standard_Integer myFixSplitFaceMode;

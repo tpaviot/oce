@@ -21,9 +21,6 @@
 #include <TopAbs_State.hxx>
 #include <BOPCol_IndexedMapOfShape.hxx>
 #include <BOPCol_BaseAllocator.hxx>
-#include <Handle_Geom_Curve.hxx>
-#include <Handle_Geom2d_Curve.hxx>
-#include <Handle_Geom_Surface.hxx>
 class TopoDS_Vertex;
 class gp_Pnt;
 class IntTools_Curve;
@@ -34,9 +31,6 @@ class IntTools_Context;
 class TopoDS_Solid;
 class IntTools_Range;
 class TopoDS_Shell;
-class Geom_Curve;
-class Geom2d_Curve;
-class Geom_Surface;
 
 
 
@@ -266,11 +260,6 @@ public:
   
   //! Returns true if the solid <theSolid> is inverted
   Standard_EXPORT static   Standard_Boolean IsInvertedSolid (const TopoDS_Solid& theSolid) ;
-  
-
-  //! Computes the max distance between points
-  //! taken from 3D and 2D curves by the same parameter
-  Standard_EXPORT static   Standard_Boolean ComputeTolerance (const Handle(Geom_Curve)& theCurve3D, const Handle(Geom2d_Curve)& theCurve2D, const Handle(Geom_Surface)& theSurf, Standard_Real& theMaxDist, Standard_Real& theMaxPar) ;
   
 
   //! Computes the necessary value of the tolerance for the edge

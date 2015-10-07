@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0F6815FE0E4406EB032417DF"
+               BlueprintIdentifier = "0193132211C70119033402BC"
                BuildableName = "libTKShHealing.dylib"
                BlueprintName = "TKShHealing"
                ReferencedContainer = "container:TKShHealing.xcodeproj">

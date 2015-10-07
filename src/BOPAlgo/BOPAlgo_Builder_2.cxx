@@ -17,8 +17,6 @@
 
 #include <BOPAlgo_Builder.ixx>
 //
-#include <NCollection_IncAllocator.hxx>
-//
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Edge.hxx>
@@ -36,7 +34,7 @@
 #include <BOPCol_DataMapOfIntegerListOfShape.hxx>
 #include <BOPCol_DataMapOfShapeShape.hxx>
 #include <BOPCol_NCVector.hxx>
-#include <BOPCol_TBB.hxx>
+#include <BOPCol_Parallel.hxx>
 //
 #include <IntTools_Context.hxx>
 //
@@ -68,11 +66,11 @@ static
   void FillMap(const TopoDS_Shape& aS1,
                const TopoDS_Shape& aS2,
                BOPCol_IndexedDataMapOfShapeListOfShape& aDMSLS,
-               Handle(NCollection_IncAllocator)& aAllocator);
+               Handle(NCollection_BaseAllocator)& aAllocator);
 static
   void MakeBlocksCnx(const BOPCol_IndexedDataMapOfShapeListOfShape& aMILI,
                      BOPCol_DataMapOfIntegerListOfShape& aMBlocks,
-                     Handle(NCollection_IncAllocator)& aAllocator);
+                     Handle(NCollection_BaseAllocator)& aAllocator);
 //
 typedef BOPCol_NCVector<TopoDS_Shape> BOPAlgo_VectorOfShape;
 //
@@ -138,13 +136,13 @@ class BOPAlgo_PairOfShapeBoolean : public BOPAlgo_Algo {
 typedef BOPCol_NCVector<BOPAlgo_PairOfShapeBoolean> \
   BOPAlgo_VectorOfPairOfShapeBoolean;
 //
-typedef BOPCol_TBBContextFunctor 
+typedef BOPCol_ContextFunctor 
   <BOPAlgo_PairOfShapeBoolean,
   BOPAlgo_VectorOfPairOfShapeBoolean,
   Handle(IntTools_Context), 
   IntTools_Context> BOPCol_BuilderSDFaceFunctor;
 //
-typedef BOPCol_TBBContextCnt 
+typedef BOPCol_ContextCnt 
   <BOPCol_BuilderSDFaceFunctor,
   BOPAlgo_VectorOfPairOfShapeBoolean,
   Handle(IntTools_Context)> BOPAlgo_BuilderSDFaceCnt;
@@ -154,11 +152,11 @@ typedef BOPCol_TBBContextCnt
 //
 typedef BOPCol_NCVector<BOPAlgo_BuilderFace> BOPAlgo_VectorOfBuilderFace;
 //
-typedef BOPCol_TBBFunctor 
+typedef BOPCol_Functor 
   <BOPAlgo_BuilderFace,
   BOPAlgo_VectorOfBuilderFace> BOPAlgo_BuilderFaceFunctor;
 //
-typedef BOPCol_TBBCnt 
+typedef BOPCol_Cnt 
   <BOPAlgo_BuilderFaceFunctor,
   BOPAlgo_VectorOfBuilderFace> BOPAlgo_BuilderFaceCnt;
 //
@@ -223,13 +221,13 @@ class BOPAlgo_VFI : public BOPAlgo_Algo {
 //
 typedef BOPCol_NCVector<BOPAlgo_VFI> BOPAlgo_VectorOfVFI; 
 //
-typedef BOPCol_TBBContextFunctor 
+typedef BOPCol_ContextFunctor 
   <BOPAlgo_VFI,
   BOPAlgo_VectorOfVFI,
   Handle(IntTools_Context), 
   IntTools_Context> BOPAlgo_VFIFunctor;
 //
-typedef BOPCol_TBBContextCnt 
+typedef BOPCol_ContextCnt 
   <BOPAlgo_VFIFunctor,
   BOPAlgo_VectorOfVFI,
   Handle(IntTools_Context)> BOPAlgo_VFICnt;
@@ -264,13 +262,13 @@ void BOPAlgo_Builder::BuildSplitFaces()
   BOPCol_MapOfShape aMFence;
   Handle(NCollection_BaseAllocator) aAllocator;
   BOPCol_ListOfShape aLFIm(myAllocator);
-  BOPCol_MapIteratorOfMapOfShape aItMS;
   BOPAlgo_VectorOfBuilderFace aVBF;
   //
   myErrorStatus=0;
   //
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~scope f
-  aAllocator=new NCollection_IncAllocator();
+  aAllocator=
+    NCollection_BaseAllocator::CommonBaseAllocator();
   //
   BOPCol_ListOfShape aLE(aAllocator);
   BOPCol_MapOfShape aMDE(100, aAllocator);
@@ -444,7 +442,6 @@ void BOPAlgo_Builder::BuildSplitFaces()
     mySplits.Bind(aF, aLFIm); 
   }// for (k=0; k<aNbBF; ++k) {
   //
-  aAllocator.Nullify();
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~scope t
 }
 //=======================================================================
@@ -455,7 +452,7 @@ void BOPAlgo_Builder::FillSameDomainFaces()
 {
   Standard_Boolean bFlag;
   Standard_Integer i, j, k, aNbFFs, aNbCurves, aNbPoints, nF1, nF2, aNbS;
-  Handle(NCollection_IncAllocator) aAllocator;
+  Handle(NCollection_BaseAllocator) aAllocator;
   BOPCol_ListIteratorOfListOfShape aItF;
   BOPCol_MapOfShape aMFence;
   BOPAlgo_IndexedDataMapOfSetInteger aIDMSS;
@@ -604,7 +601,8 @@ void BOPAlgo_Builder::FillSameDomainFaces()
   //================================================================
   BOPAlgo_BuilderSDFaceCnt::Perform(myRunParallel, aVPSB, myContext);
   //================================================================
-  aAllocator=new NCollection_IncAllocator();
+  aAllocator=
+    NCollection_BaseAllocator::CommonBaseAllocator();
   BOPCol_IndexedDataMapOfShapeListOfShape aDMSLS(100, aAllocator);
   BOPCol_DataMapOfIntegerListOfShape aMBlocks(100, aAllocator);
   //
@@ -648,7 +646,6 @@ void BOPAlgo_Builder::FillSameDomainFaces()
   }
   aMBlocks.Clear();
   aDMSLS.Clear();
-  aAllocator.Nullify();
 }
 //=======================================================================
 // function: FillImagesFaces1
@@ -754,7 +751,7 @@ void BOPAlgo_Builder::FillImagesFaces1()
 //=======================================================================
 void MakeBlocksCnx(const BOPCol_IndexedDataMapOfShapeListOfShape& aMILI,
                    BOPCol_DataMapOfIntegerListOfShape& aMBlocks,
-                   Handle(NCollection_IncAllocator)& aAllocator)
+                   Handle(NCollection_BaseAllocator)& aAllocator)
 {
   Standard_Integer aNbV, aNbVS, aNbVP, aNbEC, k, i, j;
   BOPCol_ListIteratorOfListOfShape aItLI;
@@ -836,7 +833,7 @@ void MakeBlocksCnx(const BOPCol_IndexedDataMapOfShapeListOfShape& aMILI,
 void FillMap(const TopoDS_Shape& aS1,
              const TopoDS_Shape& aS2,
              BOPCol_IndexedDataMapOfShapeListOfShape& aDMSLS,
-             Handle(NCollection_IncAllocator)& aAllocator)
+             Handle(NCollection_BaseAllocator)& aAllocator)
 {
   if (aDMSLS.Contains(aS1)) {
     BOPCol_ListOfShape& aLS=aDMSLS.ChangeFromKey(aS1);
@@ -866,27 +863,27 @@ Standard_Boolean HasPaveBlocksOnIn(const BOPDS_FaceInfo& aFI1,
                                    const BOPDS_FaceInfo& aFI2)
 {
   Standard_Boolean bRet;
-  BOPDS_MapIteratorOfMapOfPaveBlock aItMPB;
+  Standard_Integer i, aNbPB;
   //
   bRet=Standard_False;
-  const BOPDS_IndexedMapOfPaveBlock& aMPBOn1=aFI1.PaveBlocksOn();
-  const BOPDS_IndexedMapOfPaveBlock& aMPBIn1=aFI1.PaveBlocksIn();
+  const BOPDS_IndexedMapOfPaveBlock& aMPBOn1 = aFI1.PaveBlocksOn();
+  const BOPDS_IndexedMapOfPaveBlock& aMPBIn1 = aFI1.PaveBlocksIn();
   //
-  const BOPDS_IndexedMapOfPaveBlock& aMPBOn2=aFI2.PaveBlocksOn();
-  aItMPB.Initialize(aMPBOn2);
-  for (; aItMPB.More(); aItMPB.Next()) {
-    const Handle(BOPDS_PaveBlock)& aPB=aItMPB.Value();
-    bRet=aMPBOn1.Contains(aPB) || aMPBIn1.Contains(aPB);
+  const BOPDS_IndexedMapOfPaveBlock& aMPBOn2 = aFI2.PaveBlocksOn();
+  aNbPB = aMPBOn2.Extent();
+  for (i = 1; i <= aNbPB; ++i) {
+    const Handle(BOPDS_PaveBlock)& aPB = aMPBOn2(i);
+    bRet = aMPBOn1.Contains(aPB) || aMPBIn1.Contains(aPB);
     if (bRet) {
       return bRet;
     }
   }
   //
-  const BOPDS_IndexedMapOfPaveBlock& aMPBIn2=aFI2.PaveBlocksIn();
-  aItMPB.Initialize(aMPBIn2);
-  for (; aItMPB.More(); aItMPB.Next()) {
-    const Handle(BOPDS_PaveBlock)& aPB=aItMPB.Value();
-    bRet=aMPBOn1.Contains(aPB) || aMPBIn1.Contains(aPB);
+  const BOPDS_IndexedMapOfPaveBlock& aMPBIn2 = aFI2.PaveBlocksIn();
+  aNbPB = aMPBIn2.Extent();
+  for (i = 1; i <= aNbPB; ++i) {
+    const Handle(BOPDS_PaveBlock)& aPB = aMPBIn2(i);
+    bRet = aMPBOn1.Contains(aPB) || aMPBIn1.Contains(aPB);
     if (bRet) {
       return bRet;
     }

@@ -475,6 +475,7 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/src/IntPatch/IntPatch_Line.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_LineConstructor.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_Point.cxx \
+@top_srcdir@/src/IntPatch/IntPatch_PointLine.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_PolyArc.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_PolyLine.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_Polygo.cxx \

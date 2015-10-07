@@ -17,7 +17,7 @@
 #include <Quantity_NameOfColor.hxx>
 #include <Standard_Integer.hxx>
 #include <Handle_TColStd_HArray1OfByte.hxx>
-#include <Graphic3d_MarkerImage_Handle.hxx>
+#include <Graphic3d_MarkerImage.hxx>
 class Graphic3d_AspectMarker3d;
 class Quantity_Color;
 class TColStd_HArray1OfByte;
@@ -39,6 +39,8 @@ public:
   //! defines only the urer defined marker point.
   Standard_EXPORT Prs3d_PointAspect(const Quantity_Color& AColor, const Standard_Integer AWidth, const Standard_Integer AHeight, const Handle(TColStd_HArray1OfByte)& ATexture);
   
+  Standard_EXPORT Prs3d_PointAspect(const Handle(Graphic3d_AspectMarker3d)& theAspect);
+  
   Standard_EXPORT   void SetColor (const Quantity_Color& aColor) ;
   
   //! defines the color to be used when drawing a point.
@@ -55,11 +57,13 @@ public:
   
   Standard_EXPORT   Handle(Graphic3d_AspectMarker3d) Aspect()  const;
   
+  Standard_EXPORT   void SetAspect (const Handle(Graphic3d_AspectMarker3d)& theAspect) ;
+  
   //! Returns marker's texture size.
   Standard_EXPORT   void GetTextureSize (Standard_Integer& AWidth, Standard_Integer& AHeight) ;
   
   //! Returns marker's texture.
-  Standard_EXPORT  const  Graphic3d_MarkerImage_Handle& GetTexture() ;
+  Standard_EXPORT  const  Handle(Graphic3d_MarkerImage)& GetTexture() ;
 
 
 

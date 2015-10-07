@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{1FC22320-0D5D-01C9-096D-42840CEB6447}</UniqueIdentifier>
+      <UniqueIdentifier>{CE34B07E-0B67-0BBC-0DE1-868258D7820A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XDEDRAW">
-      <UniqueIdentifier>{047E190F-0C77-1834-0222-69A108CB1B9C}</UniqueIdentifier>
+      <UniqueIdentifier>{9A791D18-095F-07A8-17B7-B006F8999ECE}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

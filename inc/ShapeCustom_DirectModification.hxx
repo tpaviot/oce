@@ -10,7 +10,7 @@
 #include <Standard_DefineHandle.hxx>
 #include <Handle_ShapeCustom_DirectModification.hxx>
 
-#include <BRepTools_Modification.hxx>
+#include <ShapeCustom_Modification.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_Geom_Surface.hxx>
 #include <Standard_Real.hxx>
@@ -30,7 +30,7 @@ class Geom2d_Curve;
 //! implements a modification for the BRepTools
 //! Modifier algortihm. Will redress indirect
 //! surfaces.
-class ShapeCustom_DirectModification : public BRepTools_Modification
+class ShapeCustom_DirectModification : public ShapeCustom_Modification
 {
 
 public:

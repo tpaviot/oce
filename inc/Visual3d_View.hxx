@@ -20,9 +20,10 @@
 #include <Aspect_Background.hxx>
 #include <Aspect_GradientBackground.hxx>
 #include <Graphic3d_MapOfStructure.hxx>
-#include <Graphic3d_CGraduatedTrihedron.hxx>
-#include <Graphic3d_Camera_Handle.hxx>
+#include <Graphic3d_GraduatedTrihedron.hxx>
+#include <Graphic3d_Camera.hxx>
 #include <Standard_Real.hxx>
+#include <Graphic3d_NMapOfTransient.hxx>
 #include <Graphic3d_DataStructureManager.hxx>
 #include <Handle_Visual3d_ViewManager.hxx>
 #include <Standard_Integer.hxx>
@@ -38,9 +39,10 @@
 #include <Quantity_NameOfColor.hxx>
 #include <Aspect_TypeOfTriedronPosition.hxx>
 #include <Aspect_TypeOfTriedronEcho.hxx>
-#include <Font_FontAspect.hxx>
 #include <Visual3d_TypeOfAnswer.hxx>
+#include <Graphic3d_TypeOfStructure.hxx>
 #include <Handle_Graphic3d_Structure.hxx>
+#include <Graphic3d_ZLayerId.hxx>
 #include <Graphic3d_ZLayerSettings.hxx>
 #include <Aspect_TypeOfHighlightMethod.hxx>
 #include <Aspect_Handle.hxx>
@@ -59,10 +61,6 @@ class Visual3d_Layer;
 class Aspect_Background;
 class Aspect_GradientBackground;
 class Visual3d_ContextView;
-class TCollection_ExtendedString;
-class Quantity_Color;
-class TCollection_AsciiString;
-class Graphic3d_MapOfStructure;
 class Bnd_Box;
 class Graphic3d_Structure;
 class TColStd_Array2OfReal;
@@ -330,11 +328,11 @@ public:
   //! Highlights the echo zone of the Triedron.
   Standard_EXPORT   void TriedronEcho (const Aspect_TypeOfTriedronEcho AType = Aspect_TOTE_NONE) ;
   
-  //! Returns data of a graduated trihedron if displayed (return value is True)
-  Standard_EXPORT   Standard_Boolean GetGraduatedTrihedron (TCollection_ExtendedString& xname, TCollection_ExtendedString& yname, TCollection_ExtendedString& zname, Standard_Boolean& xdrawname, Standard_Boolean& ydrawname, Standard_Boolean& zdrawname, Standard_Boolean& xdrawvalues, Standard_Boolean& ydrawvalues, Standard_Boolean& zdrawvalues, Standard_Boolean& drawgrid, Standard_Boolean& drawaxes, Standard_Integer& nbx, Standard_Integer& nby, Standard_Integer& nbz, Standard_Integer& xoffset, Standard_Integer& yoffset, Standard_Integer& zoffset, Standard_Integer& xaxisoffset, Standard_Integer& yaxisoffset, Standard_Integer& zaxisoffset, Standard_Boolean& xdrawtickmarks, Standard_Boolean& ydrawtickmarks, Standard_Boolean& zdrawtickmarks, Standard_Integer& xtickmarklength, Standard_Integer& ytickmarklength, Standard_Integer& ztickmarklength, Quantity_Color& gridcolor, Quantity_Color& xnamecolor, Quantity_Color& ynamecolor, Quantity_Color& znamecolor, Quantity_Color& xcolor, Quantity_Color& ycolor, Quantity_Color& zcolor, TCollection_AsciiString& fontOfNames, Font_FontAspect& styleOfNames, Standard_Integer& sizeOfNames, TCollection_AsciiString& fontOfValues, Font_FontAspect& styleOfValues, Standard_Integer& sizeOfValues)  const;
+  //! Returns data of a graduated trihedron
+  Standard_EXPORT  const  Graphic3d_GraduatedTrihedron& GetGraduatedTrihedron()  const;
   
   //! Displays a graduated trihedron.
-  Standard_EXPORT   void GraduatedTrihedronDisplay (const TCollection_ExtendedString& xname, const TCollection_ExtendedString& yname, const TCollection_ExtendedString& zname, const Standard_Boolean xdrawname, const Standard_Boolean ydrawname, const Standard_Boolean zdrawname, const Standard_Boolean xdrawvalues, const Standard_Boolean ydrawvalues, const Standard_Boolean zdrawvalues, const Standard_Boolean drawgrid, const Standard_Boolean drawaxes, const Standard_Integer nbx, const Standard_Integer nby, const Standard_Integer nbz, const Standard_Integer xoffset, const Standard_Integer yoffset, const Standard_Integer zoffset, const Standard_Integer xaxisoffset, const Standard_Integer yaxisoffset, const Standard_Integer zaxisoffset, const Standard_Boolean xdrawtickmarks, const Standard_Boolean ydrawtickmarks, const Standard_Boolean zdrawtickmarks, const Standard_Integer xtickmarklength, const Standard_Integer ytickmarklength, const Standard_Integer ztickmarklength, const Quantity_Color& gridcolor, const Quantity_Color& xnamecolor, const Quantity_Color& ynamecolor, const Quantity_Color& znamecolor, const Quantity_Color& xcolor, const Quantity_Color& ycolor, const Quantity_Color& zcolor, const TCollection_AsciiString& fontOfNames, const Font_FontAspect styleOfNames, const Standard_Integer sizeOfNames, const TCollection_AsciiString& fontOfValues, const Font_FontAspect styleOfValues, const Standard_Integer sizeOfValues) ;
+  Standard_EXPORT   void GraduatedTrihedronDisplay (const Graphic3d_GraduatedTrihedron& theTrigedronData) ;
   
   //! Erases a graduated trihedron from the view.
   Standard_EXPORT   void GraduatedTrihedronErase() ;
@@ -396,14 +394,14 @@ public:
   Standard_EXPORT   void Projects (const Standard_Real AX, const Standard_Real AY, const Standard_Real AZ, Standard_Real& APX, Standard_Real& APY, Standard_Real& APZ)  const;
   
   //! @return the default camera of <me>.
-  Standard_EXPORT  const  Graphic3d_Camera_Handle& DefaultCamera()  const;
+  Standard_EXPORT  const  Handle(Graphic3d_Camera)& DefaultCamera()  const;
   
   //! @return the camera of <me>.
-  Standard_EXPORT  const  Graphic3d_Camera_Handle& Camera()  const;
+  Standard_EXPORT  const  Handle(Graphic3d_Camera)& Camera()  const;
   
   //! Set camera object to provide orientation and projection matrices
   //! for graphic driver.
-  Standard_EXPORT   void SetCamera (const Graphic3d_Camera_Handle& theCamera) ;
+  Standard_EXPORT   void SetCamera (const Handle(Graphic3d_Camera)& theCamera) ;
   
   //! Returns the window associated to the view <me>.
   //! Warning: Raises ViewDefinitionError if the associated
@@ -478,11 +476,6 @@ public:
   //! Warning: Works only under Windows.
   Standard_EXPORT   Standard_Boolean Print (const Aspect_Handle hPrnDC, const Standard_Boolean showBackground, const Standard_CString filename, const Aspect_PrintAlgo printAlgorithm = Aspect_PA_STRETCH, const Standard_Real theScaleFactor = 1.0)  const;
   
-  //! if <AFlag> is Standard_True then the transparency
-  //! is managed in the view <me>.
-  //! Default Standard_False
-  Standard_EXPORT   void SetTransparency (const Standard_Boolean AFlag) ;
-  
   //! Returns Standard_True if the ZBuffer is activated
   //! in the view <me> and Standard_False if not.
   Standard_EXPORT   Standard_Boolean ZBufferIsActivated()  const;
@@ -540,6 +533,12 @@ public:
   //! In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer).
   //! Notice however that results may differ a lot and do not contain some elements.
   Standard_EXPORT   Standard_Boolean Export (const Standard_CString theFileName, const Graphic3d_ExportFormat theFormat, const Graphic3d_SortType theSortType = Graphic3d_ST_BSP_Tree, const Standard_Real thePrecision = 0.005, const Standard_Address theProgressBarFunc = NULL, const Standard_Address theProgressObject = NULL)  const;
+  
+  //! Returns map of objects hidden within this specific view (not viewer-wise).
+  Standard_EXPORT  const  Handle(Graphic3d_NMapOfTransient)& HiddenObjects()  const;
+  
+  //! Returns map of objects hidden within this specific view (not viewer-wise).
+  Standard_EXPORT   Handle(Graphic3d_NMapOfTransient)& ChangeHiddenObjects() ;
 
 friend class Visual3d_ViewManager;
 
@@ -554,9 +553,8 @@ protected:
 private: 
 
   
-  //! Is it possible to display the structure
-  //! <AStructure> in the view <me> ?
-  Standard_EXPORT   Visual3d_TypeOfAnswer AcceptDisplay (const Handle(Graphic3d_Structure)& AStructure)  const;
+  //! Is it possible to display the structure in the view?
+  Standard_EXPORT   Visual3d_TypeOfAnswer acceptDisplay (const Graphic3d_TypeOfStructure theStructType)  const;
   
   //! Computes the new presentation of the
   //! Structures displayed in <me> with the type
@@ -567,7 +565,7 @@ private:
   Standard_EXPORT   void ChangeDisplayPriority (const Handle(Graphic3d_Structure)& AStructure, const Standard_Integer OldPriority, const Standard_Integer NewPriority) ;
   
   //! Sets the settings for a single Z layer of specified view.
-  Standard_EXPORT   void SetZLayerSettings (const Standard_Integer theLayerId, const Graphic3d_ZLayerSettings& theSettings) ;
+  Standard_EXPORT   void SetZLayerSettings (const Graphic3d_ZLayerId theLayerId, const Graphic3d_ZLayerSettings& theSettings) ;
   
   //! Add a new top-level Z layer to the view with ID
   //! <theLayerId>. The z layer mechanism allows to display
@@ -575,13 +573,13 @@ private:
   //! The layers in a particular view should be managed centrally
   //! by its view manager so to avoid IDs mismatching and provide correct
   //! display of graphics in all views.
-  Standard_EXPORT   void AddZLayer (const Standard_Integer theLayerId) ;
+  Standard_EXPORT   void AddZLayer (const Graphic3d_ZLayerId theLayerId) ;
   
   //! Remove z layer from the view by its ID.
-  Standard_EXPORT   void RemoveZLayer (const Standard_Integer theLayerId) ;
+  Standard_EXPORT   void RemoveZLayer (const Graphic3d_ZLayerId theLayerId) ;
   
   //! Change Z layer of already displayed structure in the view.
-  Standard_EXPORT   void ChangeZLayer (const Handle(Graphic3d_Structure)& theStructure, const Standard_Integer theLayerId) ;
+  Standard_EXPORT   void ChangeZLayer (const Handle(Graphic3d_Structure)& theStructure, const Graphic3d_ZLayerId theLayerId) ;
   
   //! Clears the structure <AStructure> to the view <me>.
   Standard_EXPORT   void Clear (const Handle(Graphic3d_Structure)& AStructure, const Standard_Boolean WithDestruction) ;
@@ -655,11 +653,12 @@ private:
   Aspect_GradientBackground MyGradientBackground;
   Graphic3d_MapOfStructure myStructsDisplayed;
   Graphic3d_MapOfStructure myImmediateStructures;
-  Graphic3d_CGraduatedTrihedron MyGTrihedron;
-  Graphic3d_Camera_Handle myDefaultCamera;
+  Graphic3d_GraduatedTrihedron myGTrihedron;
+  Handle(Graphic3d_Camera) myDefaultCamera;
   Standard_Boolean myAutoZFitIsOn;
   Standard_Real myAutoZFitScaleFactor;
   Standard_Boolean myStructuresUpdated;
+  Handle(Graphic3d_NMapOfTransient) myHiddenObjects;
 
 
 };

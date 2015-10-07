@@ -71,8 +71,6 @@ public:
      const  Visual3d_SequenceOfView& Sequence()  const;
   
       Visual3d_SequenceOfView& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(Visual3d_HSequenceOfView) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(Visual3d_HSequenceOfView) ShallowCopy(const Handle(Visual3d_HSequenceOfView)& me) {
- return me->ShallowCopy();
-}
 
 
 

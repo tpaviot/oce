@@ -2,31 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{14FA1602-01D8-02BD-1134-BEAD0B52D06F}</UniqueIdentifier>
+      <UniqueIdentifier>{48257C99-18C5-1610-1442-463E6EACB121}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Aspect">
-      <UniqueIdentifier>{F2496D9B-11E7-068E-1026-51078EC732AD}</UniqueIdentifier>
+      <UniqueIdentifier>{A10F366E-0F77-0244-0FD6-E7C6E0B1B42E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SelectBasics">
-      <UniqueIdentifier>{D0068345-06D2-170B-0E64-61991789F550}</UniqueIdentifier>
+      <UniqueIdentifier>{AC72D5EA-0608-1298-1844-74F3B82CDA31}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Image">
-      <UniqueIdentifier>{4860B23C-1869-050F-0F7B-9CF250E8A113}</UniqueIdentifier>
+      <UniqueIdentifier>{A90393F2-17F1-0B06-023F-DE541A638334}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\WNT">
-      <UniqueIdentifier>{A712753A-1724-0E16-1162-2981D20A148A}</UniqueIdentifier>
+      <UniqueIdentifier>{3ACDAF99-1319-1237-03C3-DED7330271ED}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColQuantity">
-      <UniqueIdentifier>{CA80F83D-1871-08B0-14DE-D5893F25C8AA}</UniqueIdentifier>
+      <UniqueIdentifier>{85823362-0872-0D58-13E0-03BC2C37013A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Font">
-      <UniqueIdentifier>{991F55ED-105C-1222-043B-8B4E96D499BB}</UniqueIdentifier>
+      <UniqueIdentifier>{318D9D24-16DC-03D7-1847-4516BFD85BE4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\drv\Aspect\Aspect_Array1OfEdge_0.cxx">
-      <Filter>Source files\Aspect</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Aspect\Aspect_AspectFillAreaDefinitionError_0.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
@@ -45,9 +42,6 @@
     <ClCompile Include="..\..\..\drv\Aspect\Aspect_DriverDefinitionError_0.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Aspect\Aspect_EdgeDefinitionError_0.cxx">
-      <Filter>Source files\Aspect</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Aspect\Aspect_GraphicDeviceDefinitionError_0.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
@@ -64,9 +58,6 @@
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Aspect\Aspect_WindowError_0.cxx">
-      <Filter>Source files\Aspect</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Aspect\Aspect.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Aspect\Aspect_AspectFillArea.cxx">
@@ -90,9 +81,6 @@
     <ClCompile Include="..\..\..\src\Aspect\Aspect_DisplayConnection.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Aspect\Aspect_Edge.cxx">
-      <Filter>Source files\Aspect</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Aspect\Aspect_GenId.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
@@ -108,43 +96,13 @@
     <ClCompile Include="..\..\..\src\Aspect\Aspect_Window.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListIteratorOfListOfBox2d_0.cxx">
-      <Filter>Source files\SelectBasics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListIteratorOfListOfSensitive_0.cxx">
-      <Filter>Source files\SelectBasics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListNodeOfListOfBox2d_0.cxx">
-      <Filter>Source files\SelectBasics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListNodeOfListOfSensitive_0.cxx">
-      <Filter>Source files\SelectBasics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListOfBox2d_0.cxx">
-      <Filter>Source files\SelectBasics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListOfSensitive_0.cxx">
-      <Filter>Source files\SelectBasics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_SequenceNodeOfSequenceOfOwner_0.cxx">
-      <Filter>Source files\SelectBasics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_SequenceOfOwner_0.cxx">
-      <Filter>Source files\SelectBasics</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics.cxx">
-      <Filter>Source files\SelectBasics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics_BasicTool.cxx">
       <Filter>Source files\SelectBasics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics_EntityOwner.cxx">
       <Filter>Source files\SelectBasics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics_SensitiveEntity.cxx">
-      <Filter>Source files\SelectBasics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics_SortAlgo.cxx">
       <Filter>Source files\SelectBasics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Image\Image_AlienPixMap.cxx">

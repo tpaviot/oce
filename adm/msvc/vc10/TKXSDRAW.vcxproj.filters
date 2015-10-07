@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{1B89C61F-191F-0231-0F6C-C10EC5B0CF64}</UniqueIdentifier>
+      <UniqueIdentifier>{E51518DC-0AFC-0D70-02CF-6BB2E8AEB31A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAW">
-      <UniqueIdentifier>{FFCDE042-07FD-128F-012A-972939136BD9}</UniqueIdentifier>
+      <UniqueIdentifier>{70725CD6-0DDD-0EFF-0580-A287AE79EE61}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAWIGES">
-      <UniqueIdentifier>{0D77B362-03BA-097B-1447-DDB9D6D39FEB}</UniqueIdentifier>
+      <UniqueIdentifier>{115F0B77-09A4-028A-0037-77DA2592CBFF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAWSTEP">
-      <UniqueIdentifier>{A8222425-0251-07F3-00C0-BF31433B5233}</UniqueIdentifier>
+      <UniqueIdentifier>{8ED8CBF3-071E-1206-166A-214E3795FE7B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAWSTLVRML">
-      <UniqueIdentifier>{91A3D3C9-154C-08CB-168A-08751D40E967}</UniqueIdentifier>
+      <UniqueIdentifier>{767EADA7-0B8F-007E-0F4C-B532DD1E83F3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -61,9 +61,6 @@
       <Filter>Source files\XSDRAWSTLVRML</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_DrawableMesh.cxx">
-      <Filter>Source files\XSDRAWSTLVRML</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\XSDRAWSTLVRML\XSDRAWSTLVRML_ToVRML.cxx">
       <Filter>Source files\XSDRAWSTLVRML</Filter>
     </ClCompile>
   </ItemGroup>

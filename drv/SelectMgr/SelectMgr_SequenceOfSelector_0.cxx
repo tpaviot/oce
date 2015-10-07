@@ -7,7 +7,6 @@
 
 #include <Standard_NoSuchObject.hxx>
 #include <Standard_OutOfRange.hxx>
-#include <SelectMgr_ViewerSelector.hxx>
 #include <SelectMgr_SequenceNodeOfSequenceOfSelector.hxx>
  
 

@@ -27,7 +27,7 @@ void OpenGl_GraphicDriver::ActivateView (const Graphic3d_CView& ACView)
 {
   const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
   if (aCView)
-    aCView->WS->SetActiveView(aCView->View);
+    aCView->WS->SetActiveView(aCView->View, ACView.ViewId);
 }
 
 void OpenGl_GraphicDriver::AntiAliasing (const Graphic3d_CView& ACView, const Standard_Boolean AFlag)
@@ -77,7 +77,7 @@ void OpenGl_GraphicDriver::DeactivateView (const Graphic3d_CView& ACView)
   if (aCView)
   {
     const Handle(OpenGl_View) aDummyView;
-    aCView->WS->SetActiveView(aDummyView);
+    aCView->WS->SetActiveView (aDummyView, -1);
   }
 }
 
@@ -266,6 +266,15 @@ inline bool getDataFormat (const Image_PixMap& theData,
       thePixelFormat = GL_BGRA;
       theDataType    = GL_FLOAT;
       return true;
+  #else
+    case Image_PixMap::ImgGray:
+    case Image_PixMap::ImgGrayF:
+    case Image_PixMap::ImgBGR:
+    case Image_PixMap::ImgBGRA:
+    case Image_PixMap::ImgBGR32:
+    case Image_PixMap::ImgBGRF:
+    case Image_PixMap::ImgBGRAF:
+      return false;
   #endif
     case Image_PixMap::ImgRGB:
       thePixelFormat = GL_RGB;
@@ -284,9 +293,13 @@ inline bool getDataFormat (const Image_PixMap& theData,
       thePixelFormat = GL_RGBA;
       theDataType    = GL_FLOAT;
       return true;
-    default:
+    case Image_PixMap::ImgAlpha:
+    case Image_PixMap::ImgAlphaF:
+      return false; // GL_ALPHA is no more supported in core context
+    case Image_PixMap::ImgUNKNOWN:
       return false;
   }
+  return false;
 }
 
 Standard_Boolean OpenGl_GraphicDriver::BufferDump (const Graphic3d_CView&      theCView,
@@ -295,6 +308,13 @@ Standard_Boolean OpenGl_GraphicDriver::BufferDump (const Graphic3d_CView&      t
 {
   const OpenGl_CView* aCView = (const OpenGl_CView* )theCView.ptrView;
   return (aCView != NULL) && aCView->WS->BufferDump ((OpenGl_FrameBuffer* )theCView.ptrFBO, theImage, theBufferType);
+}
+
+//! Compute aligned number greater or equal to specified one
+inline Standard_Size getAligned (const Standard_Size theNumber,
+                                 const Standard_Size theAlignment)
+{
+  return theNumber + theAlignment - 1 - (theNumber - 1) % theAlignment;
 }
 
 Standard_Boolean OpenGl_Workspace::BufferDump (OpenGl_FrameBuffer*         theFBOPtr,
@@ -335,14 +355,30 @@ Standard_Boolean OpenGl_Workspace::BufferDump (OpenGl_FrameBuffer*         theFB
   // setup alignment
   const GLint anAligment   = Min (GLint(theImage.MaxRowAligmentBytes()), 8); // limit to 8 bytes for OpenGL
   glPixelStorei (GL_PACK_ALIGNMENT, anAligment);
+  bool isBatchCopy = !theImage.IsTopDown();
 
+  const GLint   anExtraBytes       = GLint(theImage.RowExtraBytes());
+  GLint         aPixelsWidth       = GLint(theImage.SizeRowBytes() / theImage.SizePixelBytes());
+  Standard_Size aSizeRowBytesEstim = getAligned (theImage.SizePixelBytes() * aPixelsWidth, anAligment);
+  if (anExtraBytes < anAligment)
+  {
+    aPixelsWidth = 0;
+  }
+  else if (aSizeRowBytesEstim != theImage.SizeRowBytes())
+  {
+    aPixelsWidth = 0;
+    isBatchCopy  = false;
+  }
 #if !defined(GL_ES_VERSION_2_0)
-  const GLint anExtraBytes = (GLint )theImage.RowExtraBytes();
-  const GLint aPixelsWidth = GLint(theImage.SizeRowBytes() / theImage.SizePixelBytes());
-  glPixelStorei (GL_PACK_ROW_LENGTH, (anExtraBytes >= anAligment) ? aPixelsWidth : 0);
+  glPixelStorei (GL_PACK_ROW_LENGTH, aPixelsWidth);
+#else
+  if (aPixelsWidth != 0)
+  {
+    isBatchCopy = false;
+  }
 #endif
 
-  if (theImage.IsTopDown())
+  if (!isBatchCopy)
   {
     // copy row by row
     for (Standard_Size aRow = 0; aRow < theImage.SizeY(); ++aRow)
@@ -377,37 +413,40 @@ Standard_Boolean OpenGl_Workspace::BufferDump (OpenGl_FrameBuffer*         theFB
 
 void OpenGl_GraphicDriver::RemoveView (const Graphic3d_CView& theCView)
 {
-  Handle(OpenGl_Context)   aCtx = GetSharedContext();
-  Handle(OpenGl_View)      aView;
-  Handle(OpenGl_Workspace) aWindow;
-  if (myMapOfWS.Find (theCView.WsId, aWindow))
+  Handle(OpenGl_Context) aCtx   = GetSharedContext();
+  OpenGl_CView*          aCView = (OpenGl_CView* )theCView.ptrView;
+  if (aCView == NULL
+   || aCView->View.IsNull()
+   || aCView->WS.IsNull())
   {
-    myMapOfWS.UnBind (theCView.WsId);
-  }
-  if (!aWindow.IsNull())
-  {
-    if (aWindow->GetGlContext()->MakeCurrent())
-    {
-      aCtx = aWindow->GetGlContext();
-    }
-    else
-    {
-      // try to hijack another context if any
-      const Handle(OpenGl_Context)& anOtherCtx = GetSharedContext();
-      if (!anOtherCtx.IsNull()
-       && anOtherCtx != aWindow->GetGlContext())
-      {
-        aCtx = anOtherCtx;
-        aCtx->MakeCurrent();
-      }
-    }
-  }
-  if (myMapOfView.Find (theCView.ViewId, aView))
-  {
-    aView->ReleaseGlResources (aCtx);
-    myMapOfView.UnBind (theCView.ViewId);
+    return;
   }
 
+  Handle(OpenGl_View)      aView   = aCView->View;
+  Handle(OpenGl_Workspace) aWindow = aCView->WS;
+  if (!myMapOfWS  .Remove (aWindow)
+   || !myMapOfView.Remove (aView))
+  {
+    return;
+  }
+
+  if (aWindow->GetGlContext()->MakeCurrent())
+  {
+    aCtx = aWindow->GetGlContext();
+  }
+  else
+  {
+    // try to hijack another context if any
+    const Handle(OpenGl_Context)& anOtherCtx = GetSharedContext();
+    if (!anOtherCtx.IsNull()
+      && anOtherCtx != aWindow->GetGlContext())
+    {
+      aCtx = anOtherCtx;
+      aCtx->MakeCurrent();
+    }
+  }
+
+  aView->ReleaseGlResources (aCtx);
   if (myMapOfWS.IsEmpty())
   {
     // The last view removed but some objects still present.
@@ -422,7 +461,6 @@ void OpenGl_GraphicDriver::RemoveView (const Graphic3d_CView& theCView)
     myDeviceLostFlag = !myMapOfStructure.IsEmpty();
   }
 
-  OpenGl_CView* aCView = (OpenGl_CView* )theCView.ptrView;
   delete aCView;
   ((Graphic3d_CView *)&theCView)->ptrView = NULL;
 
@@ -470,13 +508,6 @@ void OpenGl_GraphicDriver::SetVisualisation (const Graphic3d_CView& ACView)
   }
 }
 
-void OpenGl_GraphicDriver::Transparency (const Graphic3d_CView& ACView, const Standard_Boolean AFlag)
-{
-  const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
-  if (aCView)
-    aCView->WS->UseTransparency(AFlag);
-}
-
 // =======================================================================
 // function : InvalidateBVHData
 // purpose  :
@@ -493,34 +524,30 @@ void OpenGl_GraphicDriver::InvalidateBVHData (Graphic3d_CView& theCView, const S
 Standard_Boolean OpenGl_GraphicDriver::View (Graphic3d_CView& theCView)
 {
   Handle(OpenGl_Context) aShareCtx = GetSharedContext();
-  if (myMapOfView.IsBound (theCView.ViewId))
+  OpenGl_CView*          aCView = (OpenGl_CView* )theCView.ptrView;
+  if (aCView != NULL
+   && myMapOfView.Contains (aCView->View))
   {
-    OpenGl_CView* aCView = (OpenGl_CView* )theCView.ptrView;
-    if (!myMapOfWS.IsBound (theCView.WsId)
-     || aCView == NULL)
-    {
-      return Standard_False;
-    }
-
-    Handle(OpenGl_Workspace) aWS = new OpenGl_Workspace (this, theCView.DefWindow, theCView.GContext, myCaps, aShareCtx);
+    Handle(OpenGl_Workspace) anOldWS = aCView->WS;
+    Handle(OpenGl_Workspace) aWS     = new OpenGl_Workspace (this, theCView.DefWindow, theCView.GContext, myCaps, aShareCtx);
     aCView->WS = aWS;
-    aWS->SetActiveView (aCView->View);
+    aWS->SetActiveView (aCView->View, theCView.ViewId);
 
-    myMapOfWS.UnBind (theCView.WsId);
-    myMapOfWS.Bind   (theCView.WsId, aWS);
+    myMapOfWS.Remove (anOldWS);
+    myMapOfWS.Add    (aWS);
     return Standard_True;
   }
 
   Handle(OpenGl_Workspace) aWS       = new OpenGl_Workspace (this, theCView.DefWindow, theCView.GContext, myCaps, aShareCtx);
   Handle(OpenGl_View)      aView     = new OpenGl_View (theCView.Context, &myStateCounter);
-  myMapOfWS  .Bind (theCView.WsId,   aWS);
-  myMapOfView.Bind (theCView.ViewId, aView);
+  myMapOfWS  .Add (aWS);
+  myMapOfView.Add (aView);
 
-  OpenGl_CView* aCView = new OpenGl_CView();
+  aCView = new OpenGl_CView();
   aCView->View = aView;
   aCView->WS   = aWS;
   theCView.ptrView = aCView;
-  aWS->SetActiveView (aCView->View);
+  aWS->SetActiveView (aCView->View, theCView.ViewId);
 
   return Standard_True;
 }
@@ -537,8 +564,8 @@ void OpenGl_GraphicDriver::SetBackFacingModel (const Graphic3d_CView& ACView)
 //purpose  :
 //=======================================================================
 
-void OpenGl_GraphicDriver::AddZLayer (const Graphic3d_CView& theCView,
-                                      const Standard_Integer theLayerId)
+void OpenGl_GraphicDriver::AddZLayer (const Graphic3d_CView&   theCView,
+                                      const Graphic3d_ZLayerId theLayerId)
 {
   const OpenGl_CView *aCView = (const OpenGl_CView *)theCView.ptrView;
   if (aCView)
@@ -549,8 +576,8 @@ void OpenGl_GraphicDriver::AddZLayer (const Graphic3d_CView& theCView,
 //function : RemoveZLayer
 //purpose  :
 //=======================================================================
-void OpenGl_GraphicDriver::RemoveZLayer (const Graphic3d_CView& theCView,
-                                         const Standard_Integer theLayerId)
+void OpenGl_GraphicDriver::RemoveZLayer (const Graphic3d_CView&   theCView,
+                                         const Graphic3d_ZLayerId theLayerId)
 {
   const OpenGl_CView* aCView = (const OpenGl_CView *)theCView.ptrView;
   if (aCView)
@@ -561,8 +588,8 @@ void OpenGl_GraphicDriver::RemoveZLayer (const Graphic3d_CView& theCView,
 //function : SetZLayerSettings
 //purpose  :
 //=======================================================================
-Standard_EXPORT void OpenGl_GraphicDriver::SetZLayerSettings (const Graphic3d_CView& theCView,
-                                                              const Standard_Integer theLayerId,
+Standard_EXPORT void OpenGl_GraphicDriver::SetZLayerSettings (const Graphic3d_CView&          theCView,
+                                                              const Graphic3d_ZLayerId        theLayerId,
                                                               const Graphic3d_ZLayerSettings& theSettings)
 {
   const OpenGl_CView* aCView = (const OpenGl_CView* )theCView.ptrView;

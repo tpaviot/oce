@@ -22,9 +22,37 @@
 //function : BRepAlgoAPI_Cut
 //purpose  : 
 //=======================================================================
-  BRepAlgoAPI_Cut::BRepAlgoAPI_Cut(const TopoDS_Shape& S1, 
-                                   const TopoDS_Shape& S2)
-: BRepAlgoAPI_BooleanOperation(S1, S2, BOPAlgo_CUT)
+BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()
+:
+  BRepAlgoAPI_BooleanOperation()
+{
+  myOperation=BOPAlgo_CUT;
+}
+//=======================================================================
+//function : BRepAlgoAPI_Cut
+//purpose  : 
+//=======================================================================
+BRepAlgoAPI_Cut::BRepAlgoAPI_Cut(const BOPAlgo_PaveFiller& aPF)
+:
+  BRepAlgoAPI_BooleanOperation(aPF)
+{
+  myOperation=BOPAlgo_CUT;
+}
+//=======================================================================
+//function : ~BRepAlgoAPI_Cut
+//purpose  : 
+//=======================================================================
+BRepAlgoAPI_Cut::~BRepAlgoAPI_Cut()
+{
+}
+//=======================================================================
+//function : BRepAlgoAPI_Cut
+//purpose  : 
+//=======================================================================
+BRepAlgoAPI_Cut::BRepAlgoAPI_Cut(const TopoDS_Shape& S1, 
+                                 const TopoDS_Shape& S2)
+:
+  BRepAlgoAPI_BooleanOperation(S1, S2, BOPAlgo_CUT)
 {
   BRepAlgoAPI_BooleanOperation* pBO=
     (BRepAlgoAPI_BooleanOperation*) (void*) this;
@@ -34,11 +62,13 @@
 //function : BRepAlgoAPI_Cut
 //purpose  : 
 //=======================================================================
-  BRepAlgoAPI_Cut::BRepAlgoAPI_Cut(const TopoDS_Shape& S1, 
-                                   const TopoDS_Shape& S2,
-                                   const BOPAlgo_PaveFiller& aDSF,
-                                   const Standard_Boolean bFWD)
-: BRepAlgoAPI_BooleanOperation(S1, S2, aDSF, (bFWD) ? BOPAlgo_CUT : BOPAlgo_CUT21)
+BRepAlgoAPI_Cut::BRepAlgoAPI_Cut(const TopoDS_Shape& S1, 
+                                 const TopoDS_Shape& S2,
+                                 const BOPAlgo_PaveFiller& aDSF,
+                                 const Standard_Boolean bFWD)
+: 
+  BRepAlgoAPI_BooleanOperation(S1, S2, aDSF, 
+                               (bFWD) ? BOPAlgo_CUT : BOPAlgo_CUT21)
 {
   BRepAlgoAPI_BooleanOperation* pBO=
     (BRepAlgoAPI_BooleanOperation*) (void*) this;

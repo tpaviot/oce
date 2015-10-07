@@ -172,6 +172,12 @@ public:
   Standard_EXPORT   void SetEnlargeZone (Standard_Boolean& EnlargeZone) ;
   
   Standard_EXPORT   Standard_Boolean GetEnlargeZone()  const;
+  
+  //! returns FlecheMin
+  Standard_EXPORT   Standard_Real GetMinDeflection (const Standard_Integer SurfID)  const;
+  
+  //! returns FlecheMax
+  Standard_EXPORT   Standard_Real GetMaxDeflection (const Standard_Integer SurfID)  const;
 
 
 

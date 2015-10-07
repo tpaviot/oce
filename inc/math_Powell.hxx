@@ -33,34 +33,26 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
+  //! Constructor. Initialize new entity.
+  Standard_EXPORT math_Powell(const math_MultipleVarFunction& theFunction, const Standard_Real theTolerance, const Standard_Integer theNbIterations = 200, const Standard_Real theZEPS = 1.0e-12);
+  
+  //! Destructor alias
+      void Delete()  const;
+  Standard_EXPORT virtual ~math_Powell();
+  
 
   //! Computes Powell minimization on the function F given
-  //! StartingPoint, and an initial matrix StartingDirection
-  //! whose columns contain the initial set of directions. The
-  //! solution F = Fi is found when 2.0 * abs(Fi - Fi-1) =
-  //! <Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS). The maximum
-  //! number of iterations allowed is given by NbIterations.
-  Standard_EXPORT math_Powell(math_MultipleVarFunction& F, const math_Vector& StartingPoint, const math_Matrix& StartingDirections, const Standard_Real Tolerance, const Standard_Integer NbIterations = 200, const Standard_Real ZEPS = 1.0e-12);
-  
-  //! is used in a sub-class to initialize correctly all the fields
-  //! of this class.
-  Standard_EXPORT math_Powell(math_MultipleVarFunction& F, const Standard_Real Tolerance, const Standard_Integer NbIterations = 200, const Standard_Real ZEPS = 1.0e-12);
-  
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~math_Powell(){Delete();}
-  
-  //! Use this method after a call to the initialization constructor
-  //! to compute the minimum of function F.
-  //! Warning
-  //! The initialization constructor must have been called before
-  //! the Perform method is called.
-  Standard_EXPORT   void Perform (math_MultipleVarFunction& F, const math_Vector& StartingPoint, const math_Matrix& StartingDirections) ;
+  //! theStartingPoint, and an initial matrix theStartingDirection
+  //! whose columns contain the initial set of directions.
+  //! The solution F = Fi is found when:
+  //! 2.0 * abs(Fi - Fi-1) =< Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
+  Standard_EXPORT   void Perform (math_MultipleVarFunction& theFunction, const math_Vector& theStartingPoint, const math_Matrix& theStartingDirections) ;
   
 
-  //! solution F = Fi is found when :
+  //! Solution F = Fi is found when:
   //! 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS.
   //! The maximum number of iterations allowed is given by NbIterations.
-  Standard_EXPORT virtual   Standard_Boolean IsSolutionReached (math_MultipleVarFunction& F) ;
+    virtual   Standard_Boolean IsSolutionReached (math_MultipleVarFunction& theFunction) ;
   
   //! Returns true if the computations are successful, otherwise returns false.
       Standard_Boolean IsDone()  const;

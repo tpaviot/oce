@@ -34,6 +34,7 @@ libTKOpenGl_la_SOURCES = \
 @top_srcdir@/src/OpenGl/OpenGl_AspectText.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_BVHClipPrimitiveSet.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_BVHTreeSelector.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_BackgroundArray.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_CappingAlgo.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_CappingPlaneResource.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Caps.cxx \
@@ -61,7 +62,6 @@ libTKOpenGl_la_SOURCES = \
 @top_srcdir@/src/OpenGl/OpenGl_PointSprite.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_PrimitiveArray.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_PrinterContext.cxx \
-@top_srcdir@/src/OpenGl/OpenGl_PriorityList.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Quadric.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_RenderFilter.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Resource.cxx \
@@ -84,10 +84,10 @@ libTKOpenGl_la_SOURCES = \
 @top_srcdir@/src/OpenGl/OpenGl_VertexBufferCompat.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_View.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_View_2.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_View_Raytrace.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Window.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Workspace.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Workspace_2.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Workspace_5.cxx \
-@top_srcdir@/src/OpenGl/OpenGl_Workspace_Raytrace.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_telem_util.cxx
 

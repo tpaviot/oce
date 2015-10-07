@@ -70,8 +70,6 @@ public:
      const  GeomFill_SequenceOfAx2& Sequence()  const;
   
       GeomFill_SequenceOfAx2& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(GeomFill_HSequenceOfAx2) ShallowCopy()  const;
 
 
 
@@ -111,10 +109,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(GeomFill_HSequenceOfAx2) ShallowCopy(const Handle(GeomFill_HSequenceOfAx2)& me) {
- return me->ShallowCopy();
-}
 
 
 

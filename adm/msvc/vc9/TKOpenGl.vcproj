@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKOpenGl"
-	ProjectGUID="{5BF8008F-03ED-0CD3-0B4C-008343A9B087}"
+	ProjectGUID="{B349B7BA-140E-0307-05ED-AFE40FA5A9A7}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -437,6 +437,9 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_BVHTreeSelector.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_BackgroundArray.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_CappingAlgo.cxx">
 				</File>
 				<File
@@ -518,9 +521,6 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_PrinterContext.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_PriorityList.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Quadric.cxx">
 				</File>
 				<File
@@ -587,6 +587,9 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_View_2.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_View_Raytrace.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Window.cxx">
 				</File>
 				<File
@@ -597,9 +600,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_5.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_Raytrace.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_telem_util.cxx">

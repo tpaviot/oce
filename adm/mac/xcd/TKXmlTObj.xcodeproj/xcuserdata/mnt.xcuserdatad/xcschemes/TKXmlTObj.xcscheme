@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "17000288095B06ED1899015F"
+               BlueprintIdentifier = "0F4F12150D51051014B50B71"
                BuildableName = "libTKXmlTObj.dylib"
                BlueprintName = "TKXmlTObj"
                ReferencedContainer = "container:TKXmlTObj.xcodeproj">

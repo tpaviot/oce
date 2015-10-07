@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0F3E1343180318BD0346081C"
+               BlueprintIdentifier = "00490CEA0AEF07B31966130A"
                BuildableName = "libTKService.dylib"
                BlueprintName = "TKService"
                ReferencedContainer = "container:TKService.xcodeproj">

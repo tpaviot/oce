@@ -158,7 +158,8 @@ public:
   //! Returns true if the extra paves contain the pave
   //! with given value of the parameter <thePrm>
   //! <theTol>  - the value of the tolerance to compare
-  Standard_EXPORT   Standard_Boolean ContainsParameter (const Standard_Real thePrm, const Standard_Real theTol)  const;
+  //! <theInd>  - index of the found pave
+  Standard_EXPORT   Standard_Boolean ContainsParameter (const Standard_Real thePrm, const Standard_Real theTol, Standard_Integer& theInd)  const;
   
 
   //! Modifier

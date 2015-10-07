@@ -1,5 +1,6 @@
 #include <IntTools_Context.hxx>
 #include <BOPDS_DS.hxx>
+#include <TopTools_ListOfShape.hxx>
 #include <BOPAlgo_SectionAttribute.hxx>
 #include <BOPDS_PaveBlock.hxx>
 #include <TopoDS_Vertex.hxx>

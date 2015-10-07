@@ -258,6 +258,7 @@
 		<Unit filename="../../../src/IntPatch/IntPatch_Line.cxx" />
 		<Unit filename="../../../src/IntPatch/IntPatch_LineConstructor.cxx" />
 		<Unit filename="../../../src/IntPatch/IntPatch_Point.cxx" />
+		<Unit filename="../../../src/IntPatch/IntPatch_PointLine.cxx" />
 		<Unit filename="../../../src/IntPatch/IntPatch_PolyArc.cxx" />
 		<Unit filename="../../../src/IntPatch/IntPatch_PolyLine.cxx" />
 		<Unit filename="../../../src/IntPatch/IntPatch_Polygo.cxx" />

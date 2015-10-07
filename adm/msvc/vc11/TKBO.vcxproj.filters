@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{4F6CB4E6-13B7-1094-093A-DC1402A5A5CC}</UniqueIdentifier>
+      <UniqueIdentifier>{5A81367D-1841-000F-03A0-69E78AE01EFB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntTools">
-      <UniqueIdentifier>{28348609-0EAC-14B2-0FF0-E4362BA04495}</UniqueIdentifier>
+      <UniqueIdentifier>{11F7DAEA-11F1-014C-0A08-65B717D77979}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAlgoAPI">
-      <UniqueIdentifier>{F6CBF75C-0DDE-0D14-17DB-C38D6C79EAE1}</UniqueIdentifier>
+      <UniqueIdentifier>{67F8E760-10E4-0924-0BC8-7547C5BAE07D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPCol">
-      <UniqueIdentifier>{2B7E7027-0006-1661-187F-2F990BE8CD61}</UniqueIdentifier>
+      <UniqueIdentifier>{E86C7762-14CF-17D9-0FCF-872BE051C005}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPDS">
-      <UniqueIdentifier>{03C3C022-0763-0F31-105A-52347EF46EA0}</UniqueIdentifier>
+      <UniqueIdentifier>{15B79CFC-1058-076A-1779-B71989EDA170}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPAlgo">
-      <UniqueIdentifier>{8ACBE3F4-0346-139B-0A53-904DB5DDAD07}</UniqueIdentifier>
+      <UniqueIdentifier>{01D07051-021B-09D4-0D55-BD3086BCDCFB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPTools">
-      <UniqueIdentifier>{8AE69C72-0D0B-11D4-031A-08512206B005}</UniqueIdentifier>
+      <UniqueIdentifier>{4FE7384D-0F12-14D6-0E99-862A383DE944}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -219,10 +219,13 @@
     <ClCompile Include="..\..\..\src\IntTools\IntTools_TopolTool.cxx">
       <Filter>Source files\IntTools</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI.cxx">
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Algo.cxx">
       <Filter>Source files\BRepAlgoAPI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_BooleanOperation.cxx">
+      <Filter>Source files\BRepAlgoAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_BuilderAlgo.cxx">
       <Filter>Source files\BRepAlgoAPI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Check.cxx">
@@ -403,6 +406,9 @@
       <Filter>Source files\BOPTools</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools2D.cxx">
+      <Filter>Source files\BOPTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools2D_1.cxx">
       <Filter>Source files\BOPTools</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTools\BOPTools_AlgoTools3D.cxx">

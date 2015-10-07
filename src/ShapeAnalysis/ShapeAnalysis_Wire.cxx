@@ -41,6 +41,7 @@
 #include <GeomAdaptor_HSurface.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
 #include <Geom2dInt_GInter.hxx>
+#include <GProp_GProps.hxx>
 #include <IntRes2d_Domain.hxx>
 #include <IntRes2d_Transition.hxx>
 #include <IntRes2d_IntersectionPoint.hxx>
@@ -48,9 +49,11 @@
 
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Vertex.hxx>
+#include <BRepGProp.hxx>
 #include <BRep_Builder.hxx>
 #include <BRep_Tool.hxx>
 #include <BRepTools.hxx>
+#include <BRepBuilderAPI_MakeFace.hxx>
 
 #include <ShapeExtend.hxx>
 #include <ShapeAnalysis.hxx>
@@ -66,12 +69,18 @@
 #include <Bnd_Box2d.hxx>
 
 //szvsh addition
+#include <BRepGProp.hxx>
+#include <GCPnts_AbscissaPoint.hxx>
 #include <Geom2dAdaptor_HCurve.hxx>
+#include <GeomAdaptor_Curve.hxx>
+#include <GProp_GProps.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
 #include <TColgp_SequenceOfPnt.hxx>
 #include <ShapeAnalysis_Surface.hxx>
 #include <TopoDS_Wire.hxx>
 #include <ShapeAnalysis.hxx>
+#include <ShapeAnalysis_TransferParametersProj.hxx>
+#include <ShapeBuild_Edge.hxx>
 #include <Geom_Plane.hxx>
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
 #include <TopoDS_Iterator.hxx>
@@ -1705,46 +1714,103 @@ Standard_Boolean ShapeAnalysis_Wire::CheckNotchedEdges(const Standard_Integer nu
 //function : CheckSmallArea
 //purpose  : 
 //=======================================================================
-
-Standard_Boolean ShapeAnalysis_Wire::CheckSmallArea(const Standard_Real prec2d)
+Standard_Boolean ShapeAnalysis_Wire::CheckSmallArea(const TopoDS_Wire& theWire,
+                                                    const Standard_Boolean theIsOuterWire)
 {
   myStatus = ShapeExtend::EncodeStatus (ShapeExtend_FAIL1);
-  Standard_Integer NbEdges = myWire->NbEdges();
-  if ( !IsReady() || NbEdges <1 ) return Standard_False;
+  const Standard_Integer aNbControl = 23;
+  const Standard_Integer NbEdges    = myWire->NbEdges();
+  if ( !IsReady() || NbEdges < 1 )
+    return Standard_False;
   myStatus = ShapeExtend::EncodeStatus (ShapeExtend_OK);
-  
-  Standard_Integer NbControl=23;
-  Standard_Real area=0;
-  gp_XY prev, cont;
-  for (Standard_Integer nbe = 1; nbe <= NbEdges; nbe++) {
-    Standard_Real First, Last;
-    Handle(Geom2d_Curve) c2d;
-    ShapeAnalysis_Edge sae;
-    if (!sae.PCurve(myWire->Edge(nbe),myFace,c2d,First,Last)) {
+
+  Standard_Real aF, aL, aLength(0.0);
+  const Standard_Real anInv = 1.0 / static_cast<Standard_Real>(aNbControl - 1);
+  gp_XY aCenter2d(0., 0.);
+
+  // try to find mid point for closed contour
+  Handle(Geom2d_Curve) aCurve2d;
+  for (Standard_Integer j = 1; j <= NbEdges; ++j)
+  {
+    const ShapeAnalysis_Edge anAnalyzer;
+    if (!anAnalyzer.PCurve(myWire->Edge(j),myFace,aCurve2d,aF,aL))
+    {
       myStatus = ShapeExtend::EncodeStatus (ShapeExtend_FAIL2);
       return Standard_False;
     }
-    
-    Standard_Integer ibeg = 0;
-    if( nbe == 1 ) {
-      gp_Pnt2d pntIni = c2d->Value(First);
-      prev = pntIni.XY();
-      cont = prev;
-      ibeg = 1;
-    }
-    for ( Standard_Integer i = ibeg; i < NbControl; i++) {
-      Standard_Real prm = ((NbControl-1-i)*First + i*Last)/(NbControl-1);
-      gp_Pnt2d pntCurr = c2d->Value(prm);
-      gp_XY curr = pntCurr.XY();
-      area += curr ^ prev;
-      prev = curr;
+
+    for (Standard_Integer i = 1; i < aNbControl; ++i)
+    {
+      const Standard_Real aV = anInv * ((aNbControl - 1 - i) * aF+ i * aL);
+      aCenter2d += aCurve2d->Value(aV).XY();
     }
   }
-  area +=  cont ^ prev;
-  if ( Abs(area) < 2*prec2d*prec2d ) {
-    myStatus = ShapeExtend::EncodeStatus (ShapeExtend_DONE1);
-    return Standard_True;
+  aCenter2d *= 1.0 / static_cast<Standard_Real>(NbEdges * (aNbControl - 1));
+
+  // check approximated area in 3D
+  gp_Pnt aPnt3d;
+  gp_XYZ aPrev3d, aCross(0., 0., 0.);
+  gp_XYZ aCenter(mySurf->Value(aCenter2d.X(), aCenter2d.Y()).XYZ());
+
+  Handle(Geom_Curve) aCurve3d;
+  for (Standard_Integer j = 1; j <= NbEdges; ++j)
+  {
+    const ShapeAnalysis_Edge anAnalizer;
+    if (!anAnalizer.Curve3d(myWire->Edge(j), aCurve3d, aF, aL))
+    {
+      myStatus = ShapeExtend::EncodeStatus (ShapeExtend_FAIL2);
+      return Standard_False;
+    }
+
+    Standard_Integer aBegin = 0;
+    if (j == 1)
+    {
+      aBegin  = 1;
+      aPnt3d  = aCurve3d->Value(aF);
+      aPrev3d = aPnt3d.XYZ() - aCenter;
+    }
+    for (Standard_Integer i = aBegin; i < aNbControl; ++i)
+    {
+      const Standard_Real anU =
+        anInv * ( (aNbControl - 1 - i) * aF + i * aL );
+      const gp_Pnt  aPnt      = aCurve3d->Value(anU);
+      const gp_XYZ& aCurrent  = aPnt.XYZ();
+      const gp_XYZ  aVec      = aCurrent - aCenter;
+
+      aCross  += aPrev3d ^ aVec;
+      aLength += aPnt3d.Distance(aPnt);
+
+      aPnt3d  = aPnt;
+      aPrev3d = aVec;
+    }
   }
+
+  Standard_Real aTolerance = aLength * myPrecision;
+  if ( aCross.Modulus() < aTolerance )
+  {
+    // check real area in 3D
+    GProp_GProps aProps;
+    GProp_GProps aLProps;
+    if (theIsOuterWire)
+    {
+      BRepGProp::SurfaceProperties(myFace, aProps);
+      BRepGProp::LinearProperties(myFace, aLProps);
+    }
+    else
+    {
+      BRepBuilderAPI_MakeFace aFace(mySurf->Surface(), theWire);
+      BRepGProp::SurfaceProperties(aFace.Face(), aProps);
+      BRepGProp::LinearProperties(aFace.Face(), aLProps);
+    }
+
+    Standard_Real aNewTolerance = aLProps.Mass() * myPrecision;
+    if ( aProps.Mass() < 0.5 * aNewTolerance )
+    {
+      myStatus = ShapeExtend::EncodeStatus (ShapeExtend_DONE1);
+      return Standard_True;
+    }
+  }
+
   return Standard_False;
 }
 
@@ -1900,4 +1966,284 @@ Standard_Boolean isMultiVertex(const TopTools_ListOfShape& alshape,
     return Standard_True;
   }
   return Standard_False;
+}
+
+//=======================================================================
+//function : Project
+//purpose  :
+//=======================================================================
+static Standard_Real Project(
+  const Handle(Geom_Curve)& theCurve,
+  const Standard_Real theFirstParameter,
+  const Standard_Real theLastParameter,
+  const gp_Pnt& thePoint,
+  const Standard_Real thePrecision,
+  Standard_Real& theParameter,
+  gp_Pnt& theProjection)
+{
+  const Standard_Real aDist = ShapeAnalysis_Curve().Project(theCurve, thePoint,
+    thePrecision, theProjection, theParameter, theFirstParameter,
+    theLastParameter);
+  if (theParameter >= theFirstParameter && theParameter <= theLastParameter)
+  {
+    return aDist;
+  }
+
+  const Standard_Real aParams[] = {theFirstParameter, theLastParameter};
+  const gp_Pnt aPrjs[] =
+    {theCurve->Value(aParams[0]), theCurve->Value(aParams[1])};
+  const Standard_Real aDists[] =
+    {thePoint.Distance(aPrjs[0]), thePoint.Distance(aPrjs[1])};
+  const Standard_Integer aPI = (aDists[0] <= aDists[1]) ? 0 : 1;
+  theParameter = aParams[aPI];
+  theProjection = aPrjs[aPI];
+  return aDists[aPI];
+}
+
+//=======================================================================
+//function : CheckTail
+//purpose  :
+//=======================================================================
+Standard_Boolean ShapeAnalysis_Wire::CheckTail(
+  const TopoDS_Edge& theEdge1,
+  const TopoDS_Edge& theEdge2,
+  const Standard_Real theMaxSine,
+  const Standard_Real theMaxWidth,
+  const Standard_Real theMaxTolerance,
+  TopoDS_Edge& theEdge11,
+  TopoDS_Edge& theEdge12,
+  TopoDS_Edge& theEdge21,
+  TopoDS_Edge& theEdge22)
+{
+  const TopoDS_Edge aEs[] = {theEdge1, theEdge2};
+  if (!IsReady() || BRep_Tool::Degenerated(aEs[0]) ||
+    BRep_Tool::Degenerated(aEs[1]))
+  {
+    return Standard_False;
+  }
+
+  // Check the distance between the edge common ends.
+  const Standard_Real aTol2 = theMaxWidth + 0.5 * Precision::Confusion();
+  const Standard_Real aTol3 = theMaxWidth + Precision::Confusion();
+  const Standard_Real aTol4 = theMaxWidth + 1.5 * Precision::Confusion();
+  const Standard_Real aSqTol2 = aTol2 * aTol2;
+  const Standard_Real aSqTol3 = aTol3 * aTol3;
+  Handle(Geom_Curve) aCs[2];
+  Standard_Real aLs[2][2];
+  Standard_Integer aVIs[2];
+  gp_Pnt aVPs[2];
+  {
+    for (Standard_Integer aEI = 0; aEI < 2; ++aEI)
+    {
+      if (!ShapeAnalysis_Edge().Curve3d(
+        aEs[aEI], aCs[aEI], aLs[aEI][0], aLs[aEI][1], Standard_False))
+      {
+        return Standard_False;
+      }
+
+      aVIs[aEI] = (aEs[aEI].Orientation() == TopAbs_REVERSED) ? aEI : 1 - aEI;
+      aVPs[aEI] = aCs[aEI]->Value(aLs[aEI][aVIs[aEI]]);
+    }
+    if (aVPs[0].SquareDistance(aVPs[1]) > aSqTol2)
+    {
+      return Standard_False;
+    }
+  }
+
+  // Check the angle between the edges.
+  if (theMaxSine >= 0)
+  {
+    const Standard_Real aSqMaxSine = theMaxSine * theMaxSine;
+    gp_XYZ aDs[2];
+    Standard_Integer aReverse = 0;
+    for (Standard_Integer aEI = 0; aEI < 2; ++aEI)
+    {
+      GeomAdaptor_Curve aCA(aCs[aEI]);
+      if (GCPnts_AbscissaPoint::Length(aCA, aLs[aEI][0], aLs[aEI][1],
+        0.25 * Precision::Confusion()) < 0.5 * Precision::Confusion())
+      {
+        return Standard_False;
+      }
+
+      GCPnts_AbscissaPoint aAP(0.25 * Precision::Confusion(), aCA,
+        0.5 * Precision::Confusion() * (1 - 2 * aVIs[aEI]),
+        aLs[aEI][aVIs[aEI]]);
+      if (!aAP.IsDone())
+      {
+        return Standard_False;
+      }
+
+      gp_XYZ aPs[2];
+      aPs[aVIs[aEI]] = aVPs[aEI].XYZ();
+      aPs[1 - aVIs[aEI]] = aCs[aEI]->Value(aAP.Parameter()).XYZ();
+      aDs[aEI] = aPs[1] - aPs[0];
+      const Standard_Real aDN = aDs[aEI].Modulus();
+      if (aDN < 0.1 * Precision::Confusion())
+      {
+        return Standard_False;
+      }
+
+      aDs[aEI] *= 1 / aDN;
+      aReverse ^= aVIs[aEI];
+    }
+    if (aReverse)
+    {
+      aDs[0].Reverse();
+    }
+    if (aDs[0] * aDs[1] < 0 || aDs[0].CrossSquareMagnitude(aDs[1]) > aSqMaxSine)
+    {
+      return Standard_False;
+    }
+  }
+
+  // Calculate the tail bounds.
+  gp_Pnt aPs[2], aPrjs[2];
+  Standard_Real aParams1[2], aParams2[2];
+  Standard_Real aDists[2];
+  Standard_Boolean isWholes[] = {Standard_True, Standard_True};
+  for (Standard_Integer aEI = 0; aEI < 2; ++aEI)
+  {
+    Standard_Real aParam1 = aLs[aEI][aVIs[aEI]];
+    aParams1[aEI] = aLs[aEI][1 - aVIs[aEI]];
+    aCs[aEI]->D0(aParams1[aEI], aPs[aEI]);
+    aDists[aEI] = Project(aCs[1 - aEI], aLs[1 - aEI][0], aLs[1 - aEI][1],
+      aPs[aEI], 0.25 * Precision::Confusion(), aParams2[aEI], aPrjs[aEI]);
+    if (aDists[aEI] <= aTol2)
+    {
+      continue;
+    }
+
+    isWholes[aEI] = Standard_False;
+    for (;;)
+    {
+      const Standard_Real aParam = (aParam1 + aParams1[aEI]) * 0.5;
+      aCs[aEI]->D0(aParam, aPs[aEI]);
+      const Standard_Real aDist = Project(aCs[1 - aEI], aLs[1 - aEI][0],
+        aLs[1 - aEI][1], aPs[aEI], 0.25 * Precision::Confusion(), aParams2[aEI],
+        aPrjs[aEI]);
+      if (aDist <= aTol2)
+      {
+        aParam1 = aParam;
+      }
+      else
+      {
+        aParams1[aEI] = aParam;
+        if (aDist <= aTol3)
+        {
+          break;
+        }
+      }
+    }
+  }
+
+  // Check the tail bounds.
+  for (Standard_Integer aEI = 0; aEI < 2; ++aEI)
+  {
+    const Standard_Real aParam1 = aLs[aEI][aVIs[aEI]];
+    const Standard_Real aParam2 = aParams1[aEI];
+    const Standard_Real aStepL = (aParam2 - aParam1) / 23;
+    for (Standard_Integer aStepN = 1; aStepN < 23; ++aStepN)
+    {
+      Standard_Real aParam = aParam1 + aStepN * aStepL;
+      gp_Pnt aP = aCs[aEI]->Value(aParam), aPrj;
+      if (Project(aCs[1 - aEI], aLs[1 - aEI][0], aLs[1 - aEI][1], aP,
+        0.25 * Precision::Confusion(), aParam, aPrj) > aTol4)
+      {
+        return Standard_False;
+      }
+    }
+  }
+
+  // Check whether both edges must be removed.
+  if (isWholes[0] && isWholes[1] && aPs[0].SquareDistance(aPs[1]) <= aSqTol3)
+  {
+    theEdge11 = theEdge1;
+    theEdge21 = theEdge2;
+    return Standard_True;
+  }
+
+  // Cut and remove the edges.
+  Standard_Integer aFI = 0;
+  if (isWholes[0] || isWholes[1])
+  {
+    // Determine an edge to remove and the other one to cut.
+    aFI = isWholes[0] ? 0 : 1;
+    if (aDists[1 - aFI] < aDists[aFI] && isWholes[1 - aFI])
+    {
+      aFI = 1 - aFI;
+    }
+  }
+  Standard_Real aParams[2];
+  aParams[aFI] = aParams1[aFI];
+  aParams[1 - aFI] = aParams2[aFI];
+
+  // Correct the cut for the parametrization tolerance.
+  TopoDS_Edge* aEParts[][2] =
+    {{&theEdge11, &theEdge12}, {&theEdge21, &theEdge22}};
+  Standard_Integer aResults[] = {1, 1};
+  for (Standard_Integer aEI = 0; aEI < 2; ++aEI)
+  {
+    if (Abs(aParams[aEI] - aLs[aEI][1 - aVIs[aEI]]) <= Precision::PConfusion())
+    {
+      aResults[aEI] = 2;
+      *aEParts[aEI][0] = aEs[aEI];
+    }
+    else if (Abs(aParams[aEI] - aLs[aEI][aVIs[aEI]]) <= Precision::PConfusion())
+    {
+      aResults[aEI] = 0;
+    }
+  }
+
+  // Correct the cut for the distance tolerance.
+  for (Standard_Integer aEI = 0; aEI < 2; ++aEI)
+  {
+    if (aResults[aEI] != 1)
+    {
+      continue;
+    }
+
+    // Create the parts of the edge.
+    TopoDS_Edge aFE = TopoDS::Edge(aEs[aEI].Oriented(TopAbs_FORWARD));
+    ShapeAnalysis_TransferParametersProj aSATPP(aFE, TopoDS_Face());
+    aSATPP.SetMaxTolerance(theMaxTolerance);
+    TopoDS_Vertex aSplitV;
+    BRep_Builder().MakeVertex(
+      aSplitV, aCs[aEI]->Value(aParams[aEI]), Precision::Confusion());
+    TopoDS_Edge aEParts2[] = {
+      ShapeBuild_Edge().CopyReplaceVertices(aFE, TopoDS_Vertex(),
+        TopoDS::Vertex(aSplitV.Oriented(TopAbs_REVERSED))),
+      ShapeBuild_Edge().CopyReplaceVertices(aFE, aSplitV, TopoDS_Vertex())};
+    ShapeBuild_Edge().CopyPCurves(aEParts2[0], aFE);
+    ShapeBuild_Edge().CopyPCurves(aEParts2[1], aFE);
+    BRep_Builder().SameRange(aEParts2[0], Standard_False);
+    BRep_Builder().SameRange(aEParts2[1], Standard_False);
+    BRep_Builder().SameParameter(aEParts2[0], Standard_False);
+    BRep_Builder().SameParameter(aEParts2[1], Standard_False);
+    aSATPP.TransferRange(
+      aEParts2[0], aLs[aEI][0], aParams[aEI], Standard_False);
+    aSATPP.TransferRange(
+      aEParts2[1], aParams[aEI], aLs[aEI][1], Standard_False);
+    GProp_GProps aLinProps;
+    BRepGProp::LinearProperties(aEParts2[1 - aVIs[aEI]], aLinProps);
+    if (aLinProps.Mass() <= Precision::Confusion())
+    {
+      aResults[aEI] = 2;
+      *aEParts[aEI][0] = aEs[aEI];
+    }
+    else
+    {
+      BRepGProp::LinearProperties(aEParts2[aVIs[aEI]], aLinProps);
+      if (aLinProps.Mass() <= Precision::Confusion())
+      {
+        aResults[aEI] = 0;
+      }
+      else
+      {
+        *aEParts[aEI][0] = aEParts2[0];
+        *aEParts[aEI][1] = aEParts2[1];
+      }
+    }
+  }
+
+  return aResults[0] + aResults[1] != 0;
 }

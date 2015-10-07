@@ -10,19 +10,15 @@
 #include <Standard_DefineAlloc.hxx>
 #include <Standard_Macro.hxx>
 
-#include <Standard_Real.hxx>
-#include <Standard_Boolean.hxx>
 #include <Handle_StlMesh_Mesh.hxx>
 class TopoDS_Shape;
 class StlMesh_Mesh;
 
 
 //! The  package   Algorithm  for Meshing   implements
-//! facilities to compute  the Mesh data-structure, as
-//! defined in package StlMesh, from a shape of package
-//! TopoDS.  The triangulation  is  computed  with the
-//! Delaunay      algorithm   implemented in   package
-//! BRepMesh.  The  result   is  stored  in  the  mesh
+//! facilities to retrieve the Mesh data-structure from a shape of package
+//! TopoDS.  The triangulation  should be computed before.
+//! The  result   is  stored  in  the  mesh
 //! data-structure Mesh from package StlMesh.
 class StlTransfer 
 {
@@ -31,7 +27,8 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT static   void BuildIncrementalMesh (const TopoDS_Shape& Shape, const Standard_Real Deflection, const Standard_Boolean InParallel, const Handle(StlMesh_Mesh)& Mesh) ;
+  //! Retrieve a Mesh data-structure from the Shape, convert and store it into the Mesh.
+  Standard_EXPORT static   void RetrieveMesh (const TopoDS_Shape& Shape, const Handle(StlMesh_Mesh)& Mesh) ;
 
 
 

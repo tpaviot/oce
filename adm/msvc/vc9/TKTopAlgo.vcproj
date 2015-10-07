@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKTopAlgo"
-	ProjectGUID="{B3B4C9F2-0AFE-1831-1497-DE0141245670}"
+	ProjectGUID="{93D5F40C-08ED-11DE-091D-B0C628A191E3}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -739,6 +739,9 @@
 					RelativePath="..\..\..\src\BRepCheck\BRepCheck_Shell.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\BRepCheck\BRepCheck_Solid.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\BRepCheck\BRepCheck_Vertex.cxx">
 				</File>
 				<File
@@ -780,7 +783,19 @@
 					RelativePath="..\..\..\src\BRepExtrema\BRepExtrema_ExtPF.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\BRepExtrema\BRepExtrema_OverlapTool.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\BRepExtrema\BRepExtrema_Poly.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepExtrema\BRepExtrema_SelfIntersection.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepExtrema\BRepExtrema_ShapeProximity.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepExtrema\BRepExtrema_TriangleSet.cxx">
 				</File>
 			</Filter>
 			<Filter
@@ -846,6 +861,9 @@
 					RelativePath="..\..\..\src\BRepLib\BRepLib.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\BRepLib\BRepLib_CheckCurveOnSurface.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\BRepLib\BRepLib_Command.cxx">
 				</File>
 				<File
@@ -902,6 +920,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepGProp\BRepGProp_Face.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepGProp\BRepGProp_Gauss.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepGProp\BRepGProp_Sinert.cxx">
@@ -965,6 +986,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_Copy.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_FastSewing.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepBuilderAPI\BRepBuilderAPI_FindPlane.cxx">

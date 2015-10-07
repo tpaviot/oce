@@ -32,35 +32,25 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  //! Computes FRPR minimization function F from input vector
-  //! StartingPoint. The solution F = Fi is found when 2.0 *
-  //! abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) +
-  //! ZEPS). The maximum number of iterations allowed is given
-  //! by NbIterations.
-  Standard_EXPORT math_FRPR(math_MultipleVarFunctionWithGradient& F, const math_Vector& StartingPoint, const Standard_Real Tolerance, const Standard_Integer NbIterations = 200, const Standard_Real ZEPS = 1.0e-12);
-  
-  //! Purpose
+
   //! Initializes the computation of the minimum of F.
-  //! Warning
-  //! A call to the Perform method must be made after this
-  //! initialization to compute the minimum of the function.
-  Standard_EXPORT math_FRPR(math_MultipleVarFunctionWithGradient& F, const Standard_Real Tolerance, const Standard_Integer NbIterations = 200, const Standard_Real ZEPS = 1.0e-12);
+  //! Warning: constructor does not perform computations.
+  Standard_EXPORT math_FRPR(const math_MultipleVarFunctionWithGradient& theFunction, const Standard_Real theTolerance, const Standard_Integer theNbIterations = 200, const Standard_Real theZEPS = 1.0e-12);
   
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~math_FRPR(){Delete();}
-  
-  //! Use this method after a call to the initialization constructor
-  //! to compute the minimum of function F.
-  //! Warning
-  //! The initialization constructor must have been called before
-  //! the Perform method is called
-  Standard_EXPORT   void Perform (math_MultipleVarFunctionWithGradient& F, const math_Vector& StartingPoint) ;
+  //! Destructor alias.
+  Standard_EXPORT   void Delete()  const;
+  Standard_EXPORT virtual ~math_FRPR();
   
 
-  //! The solution F = Fi is found when :
+  //! The solution F = Fi is found when
+  //! 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
+  Standard_EXPORT   void Perform (math_MultipleVarFunctionWithGradient& theFunction, const math_Vector& theStartingPoint) ;
+  
+
+  //! The solution F = Fi is found when:
   //! 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS.
   //! The maximum number of iterations allowed is given by NbIterations.
-  Standard_EXPORT virtual   Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient& F) ;
+    virtual   Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient& theFunction) ;
   
   //! Returns true if the computations are successful, otherwise returns false.
       Standard_Boolean IsDone()  const;

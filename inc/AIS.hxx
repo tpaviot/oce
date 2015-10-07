@@ -18,7 +18,7 @@
 #include <Handle_Geom_Surface.hxx>
 #include <AIS_KindOfSurface.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-#include <Handle_AIS_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Aspect_TypeOfLine.hxx>
 #include <Aspect_TypeOfMarker.hxx>
@@ -36,9 +36,7 @@ class gp_Dir;
 class Bnd_Box;
 class gp_Elips;
 class Prs3d_Presentation;
-class AIS_Drawer;
 class AIS_Triangulation;
-class AIS_Drawer;
 class AIS_InteractiveContext;
 class AIS_GraphicTool;
 class AIS_LocalContext;
@@ -327,9 +325,9 @@ public:
   //! computes  length  of  ellipse  arc  in  parametric  units
   Standard_EXPORT static   Standard_Real DistanceFromApex (const gp_Elips& elips, const gp_Pnt& Apex, const Standard_Real par) ;
   
-  Standard_EXPORT static   void ComputeProjEdgePresentation (const Handle(Prs3d_Presentation)& aPres, const Handle(AIS_Drawer)& aDrawer, const TopoDS_Edge& anEdge, const Handle(Geom_Curve)& ProjCurve, const gp_Pnt& FirstP, const gp_Pnt& LastP, const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE, const Standard_Real aWidth = 2, const Aspect_TypeOfLine aProjTOL = Aspect_TOL_DASH, const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT) ;
+  Standard_EXPORT static   void ComputeProjEdgePresentation (const Handle(Prs3d_Presentation)& aPres, const Handle(Prs3d_Drawer)& aDrawer, const TopoDS_Edge& anEdge, const Handle(Geom_Curve)& ProjCurve, const gp_Pnt& FirstP, const gp_Pnt& LastP, const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE, const Standard_Real aWidth = 2, const Aspect_TypeOfLine aProjTOL = Aspect_TOL_DASH, const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT) ;
   
-  Standard_EXPORT static   void ComputeProjVertexPresentation (const Handle(Prs3d_Presentation)& aPres, const Handle(AIS_Drawer)& aDrawer, const TopoDS_Vertex& aVertex, const gp_Pnt& ProjPoint, const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE, const Standard_Real aWidth = 2, const Aspect_TypeOfMarker aProjTOM = Aspect_TOM_PLUS, const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT) ;
+  Standard_EXPORT static   void ComputeProjVertexPresentation (const Handle(Prs3d_Presentation)& aPres, const Handle(Prs3d_Drawer)& aDrawer, const TopoDS_Vertex& aVertex, const gp_Pnt& ProjPoint, const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE, const Standard_Real aWidth = 2, const Aspect_TypeOfMarker aProjTOM = Aspect_TOM_PLUS, const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT) ;
 
 
 
@@ -346,7 +344,6 @@ private:
 
 
 friend class AIS_Triangulation;
-friend class AIS_Drawer;
 friend class AIS_InteractiveContext;
 friend class AIS_GraphicTool;
 friend class AIS_LocalContext;

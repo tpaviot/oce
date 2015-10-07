@@ -2,58 +2,58 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{3597D188-17A6-104E-08A5-AEA064A41EB7}</UniqueIdentifier>
+      <UniqueIdentifier>{181E2236-067D-1861-176E-AA2A7BCB1D2D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\math">
-      <UniqueIdentifier>{DCA1055C-10CB-1809-05EA-99242814E147}</UniqueIdentifier>
+      <UniqueIdentifier>{E8810BE7-0430-188D-1352-92C4048316B5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ElCLib">
-      <UniqueIdentifier>{D20DCC18-0E62-14D6-09EB-46D9FA90EB50}</UniqueIdentifier>
+      <UniqueIdentifier>{47C86A1B-1167-0D8B-1758-6AE5A60AFC2B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ElSLib">
-      <UniqueIdentifier>{4906D205-0395-085E-1512-5F437E4840E2}</UniqueIdentifier>
+      <UniqueIdentifier>{319EE06B-1507-0967-1706-736FF9BC854A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BSplCLib">
-      <UniqueIdentifier>{9BC2E8F1-0675-12DD-087C-C05B109AA1E1}</UniqueIdentifier>
+      <UniqueIdentifier>{D2E4A1DA-0601-11AE-018C-527EF70DADAF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BSplSLib">
-      <UniqueIdentifier>{F9E52543-0262-17A3-081B-0451A18B39A7}</UniqueIdentifier>
+      <UniqueIdentifier>{05D23E12-176B-1605-0DB1-1E02F1532060}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PLib">
-      <UniqueIdentifier>{763A1A0E-09F4-1815-046D-53776CC57910}</UniqueIdentifier>
+      <UniqueIdentifier>{72B528ED-0492-1454-09A0-0AEBB6F9146B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Precision">
-      <UniqueIdentifier>{8F0CE919-0733-0C88-0C82-39C3D0669271}</UniqueIdentifier>
+      <UniqueIdentifier>{AB9A05D0-09F3-0F70-175E-F69B1D41BA8C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Poly">
-      <UniqueIdentifier>{187908BB-1622-029C-0551-F1C976E17E28}</UniqueIdentifier>
+      <UniqueIdentifier>{3E50F343-00EF-0180-1732-DD62A777CC21}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CSLib">
-      <UniqueIdentifier>{2192CEA2-12EF-10B3-065A-A527C4D5CD4C}</UniqueIdentifier>
+      <UniqueIdentifier>{FAA0D285-0355-0C8B-05DC-B61C58FF0A99}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Convert">
-      <UniqueIdentifier>{993A8B9D-09F7-04F1-1766-7A14DCEF9061}</UniqueIdentifier>
+      <UniqueIdentifier>{10F69C4A-1954-1560-04A2-F9C46ECF2642}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Bnd">
-      <UniqueIdentifier>{EFE02506-141B-157F-173B-27757891327E}</UniqueIdentifier>
+      <UniqueIdentifier>{D8F818A8-077D-0F6B-12BD-BA3263421B16}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BVH">
-      <UniqueIdentifier>{89F941D4-0967-043C-0B17-1BA926FE3C6B}</UniqueIdentifier>
+      <UniqueIdentifier>{005DB1A0-1236-005B-0EDD-5350A9D48E14}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\gp">
-      <UniqueIdentifier>{30AC6418-08A7-0765-0717-A66557473E5F}</UniqueIdentifier>
+      <UniqueIdentifier>{BBF09BDB-0145-0A97-10BD-F7487FB8CAF8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColgp">
-      <UniqueIdentifier>{4FD23157-183F-10D6-0777-5F8BEEDBEEDE}</UniqueIdentifier>
+      <UniqueIdentifier>{156E8350-1961-08E7-11EB-4FB7E7B2BA09}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopLoc">
-      <UniqueIdentifier>{1F531CE8-0357-171E-0E0A-135A468BE5B6}</UniqueIdentifier>
+      <UniqueIdentifier>{D3A747E8-0C1E-0E51-18CD-4A5A22638A89}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Expr">
-      <UniqueIdentifier>{963572F8-0F34-035A-06D8-46FCB37885DE}</UniqueIdentifier>
+      <UniqueIdentifier>{1C630ACA-14F8-03E5-1302-FECB84E383A1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ExprIntrp">
-      <UniqueIdentifier>{9CE8F168-001F-07AD-1080-E3C01056683A}</UniqueIdentifier>
+      <UniqueIdentifier>{D6D50673-1423-1985-0786-00008B23E4C3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -159,9 +159,6 @@
     <ClCompile Include="..\..\..\src\math\math_Householder.cxx">
       <Filter>Source files\math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\math\math_IntegerRandom.cxx">
-      <Filter>Source files\math</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_IntegerVector.cxx">
       <Filter>Source files\math</Filter>
     </ClCompile>
@@ -175,9 +172,6 @@
       <Filter>Source files\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Matrix.cxx">
-      <Filter>Source files\math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\math\math_Memory.cxx">
       <Filter>Source files\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_MultipleVarFunction.cxx">
@@ -205,9 +199,6 @@
       <Filter>Source files\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Powell.cxx">
-      <Filter>Source files\math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\math\math_RealRandom.cxx">
       <Filter>Source files\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\math\math_Recipes.cxx">
@@ -693,6 +684,9 @@
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d_0.cxx">
       <Filter>Source files\TColgp</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfAx1_0.cxx">
+      <Filter>Source files\TColgp</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceNodeOfSequenceOfDir2d_0.cxx">
       <Filter>Source files\TColgp</Filter>
     </ClCompile>
@@ -718,6 +712,9 @@
       <Filter>Source files\TColgp</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceOfArray1OfPnt2d_0.cxx">
+      <Filter>Source files\TColgp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceOfAx1_0.cxx">
       <Filter>Source files\TColgp</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColgp\TColgp_SequenceOfDir2d_0.cxx">

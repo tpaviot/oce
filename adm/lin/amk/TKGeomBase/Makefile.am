@@ -77,8 +77,6 @@ libTKGeomBase_la_SOURCES = \
 @top_srcdir@/drv/AdvApp2Var/AdvApp2Var_SequenceOfPatch_0.cxx \
 @top_srcdir@/drv/AdvApp2Var/AdvApp2Var_SequenceOfStrip_0.cxx \
 @top_srcdir@/drv/AdvApp2Var/AdvApp2Var_Strip_0.cxx \
-@top_srcdir@/drv/AppCont/AppCont_FitFunction2d_0.cxx \
-@top_srcdir@/drv/AppCont/AppCont_FitFunction_0.cxx \
 @top_srcdir@/drv/AppDef/AppDef_Array1OfMultiPointConstraint_0.cxx \
 @top_srcdir@/drv/AppDef/AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_0.cxx \
 @top_srcdir@/drv/AppDef/AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_0.cxx \
@@ -123,8 +121,6 @@ libTKGeomBase_la_SOURCES = \
 @top_srcdir@/drv/Approx/Approx_FitAndDivide_0.cxx \
 @top_srcdir@/drv/Approx/Approx_HArray1OfAdHSurface_0.cxx \
 @top_srcdir@/drv/Approx/Approx_HArray1OfGTrsf2d_0.cxx \
-@top_srcdir@/drv/Approx/Approx_MyLeastSquareOfFitAndDivide2d_0.cxx \
-@top_srcdir@/drv/Approx/Approx_MyLeastSquareOfFitAndDivide_0.cxx \
 @top_srcdir@/drv/Approx/Approx_SequenceNodeOfSequenceOfHArray1OfReal_0.cxx \
 @top_srcdir@/drv/Approx/Approx_SequenceOfHArray1OfReal_0.cxx \
 @top_srcdir@/drv/Extrema/Extrema_Array1OfPOnCurv2d_0.cxx \
@@ -138,8 +134,6 @@ libTKGeomBase_la_SOURCES = \
 @top_srcdir@/drv/Extrema/Extrema_CCLocFOfLocECC_0.cxx \
 @top_srcdir@/drv/Extrema/Extrema_ECC2d_0.cxx \
 @top_srcdir@/drv/Extrema/Extrema_ECC_0.cxx \
-@top_srcdir@/drv/Extrema/Extrema_ELCC2d_0.cxx \
-@top_srcdir@/drv/Extrema/Extrema_ELCC_0.cxx \
 @top_srcdir@/drv/Extrema/Extrema_ELPCOfLocateExtPC2d_0.cxx \
 @top_srcdir@/drv/Extrema/Extrema_ELPCOfLocateExtPC_0.cxx \
 @top_srcdir@/drv/Extrema/Extrema_EPCOfELPCOfLocateExtPC2d_0.cxx \
@@ -233,10 +227,7 @@ libTKGeomBase_la_SOURCES = \
 @top_srcdir@/src/AppCont/AppCont_ContMatrices_2.cxx \
 @top_srcdir@/src/AppCont/AppCont_ContMatrices_3.cxx \
 @top_srcdir@/src/AppCont/AppCont_ContMatrices_4.cxx \
-@top_srcdir@/src/AppCont/AppCont_Function.cxx \
-@top_srcdir@/src/AppCont/AppCont_Function2d.cxx \
-@top_srcdir@/src/AppCont/AppCont_FunctionTool.cxx \
-@top_srcdir@/src/AppCont/AppCont_FunctionTool2d.cxx \
+@top_srcdir@/src/AppCont/AppCont_LeastSquare.cxx \
 @top_srcdir@/src/AppDef/AppDef_LinearCriteria.cxx \
 @top_srcdir@/src/AppDef/AppDef_MultiLine.cxx \
 @top_srcdir@/src/AppDef/AppDef_MultiPointConstraint.cxx \

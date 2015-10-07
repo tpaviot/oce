@@ -42,12 +42,11 @@
 #include <gp_Ax2.hxx>
 #include <Graphic3d_CView.hxx>
 #include <Graphic3d_CStructure.hxx>
-#include <Graphic3d_CPick.hxx>
 #include <Graphic3d_TextPath.hxx>
 #include <Graphic3d_HorizontalTextAlignment.hxx>
 #include <Graphic3d_VerticalTextAlignment.hxx>
 #include <Graphic3d_CUserDraw.hxx>
-#include <Graphic3d_CGraduatedTrihedron.hxx>
+#include <Graphic3d_GraduatedTrihedron.hxx>
 #include <Graphic3d_TypeOfComposition.hxx>
 #include <Graphic3d_ExportFormat.hxx>
 #include <Graphic3d_SortType.hxx>
@@ -64,7 +63,6 @@ class TColStd_HArray1OfByte;
 class Graphic3d_Vector;
 class Quantity_Color;
 class Graphic3d_Vertex;
-class Aspect_Array1OfEdge;
 class TCollection_ExtendedString;
 class Image_PixMap;
 class TColStd_HArray1OfReal;
@@ -123,18 +121,18 @@ public:
 
 public: // Methods for graphical structures
 
-  Standard_EXPORT void DisplayStructure (const Graphic3d_CView& theCView,
-                                         Graphic3d_CStructure&  theCStructure,
-                                         const Standard_Integer thePriority);
-  Standard_EXPORT void EraseStructure (const Graphic3d_CView& theCView,
-                                       Graphic3d_CStructure&  theCStructure);
+  Standard_EXPORT void DisplayStructure (const Graphic3d_CView&             theCView,
+                                         const Handle(Graphic3d_Structure)& theStructure,
+                                         const Standard_Integer             thePriority);
+  Standard_EXPORT void EraseStructure (const Graphic3d_CView&             theCView,
+                                       const Handle(Graphic3d_Structure)& theStructure);
   Standard_EXPORT void RemoveStructure (Handle(Graphic3d_CStructure)& theCStructure);
   Standard_EXPORT Handle(Graphic3d_CStructure) Structure (const Handle(Graphic3d_StructureManager)& theManager);
 
   Standard_EXPORT Standard_Boolean SetImmediateModeDrawToFront (const Graphic3d_CView& theCView,
                                                                 const Standard_Boolean theDrawToFrontBuffer);
-  Standard_EXPORT void DisplayImmediateStructure (const Graphic3d_CView&      theCView,
-                                                  const Graphic3d_CStructure& theCStructure);
+  Standard_EXPORT void DisplayImmediateStructure (const Graphic3d_CView&             theCView,
+                                                  const Handle(Graphic3d_Structure)& theStructure);
   Standard_EXPORT void EraseImmediateStructure (const Graphic3d_CView&      theCView,
                                                 const Graphic3d_CStructure& theCStructure);
 
@@ -167,16 +165,40 @@ public:
   Standard_EXPORT void SetClipPlanes (const Graphic3d_CView& theCView);
   Standard_EXPORT void SetCamera (const Graphic3d_CView& theCView);
   Standard_EXPORT void SetVisualisation (const Graphic3d_CView& ACView);
-  Standard_EXPORT void Transparency (const Graphic3d_CView& ACView, const Standard_Boolean AFlag);
   Standard_EXPORT Standard_Boolean View (Graphic3d_CView& ACView);
   Standard_EXPORT void Environment (const Graphic3d_CView& ACView);
-  Standard_EXPORT void ZBufferTriedronSetup (const Quantity_NameOfColor XColor = Quantity_NOC_RED, const Quantity_NameOfColor YColor = Quantity_NOC_GREEN, const Quantity_NameOfColor ZColor = Quantity_NOC_BLUE1, const Standard_Real SizeRatio = 0.8, const Standard_Real AxisDiametr = 0.05, const Standard_Integer NbFacettes = 12);
+  Standard_EXPORT void ZBufferTriedronSetup (const Graphic3d_CView& theCView,
+                                             const Quantity_NameOfColor XColor = Quantity_NOC_RED,
+                                             const Quantity_NameOfColor YColor = Quantity_NOC_GREEN,
+                                             const Quantity_NameOfColor ZColor = Quantity_NOC_BLUE1,
+                                             const Standard_Real SizeRatio = 0.8,
+                                             const Standard_Real AxisDiametr = 0.05,
+                                             const Standard_Integer NbFacettes = 12);
   Standard_EXPORT void TriedronDisplay (const Graphic3d_CView& ACView, const Aspect_TypeOfTriedronPosition APosition = Aspect_TOTP_CENTER, const Quantity_NameOfColor AColor = Quantity_NOC_WHITE, const Standard_Real AScale = 0.02, const Standard_Boolean AsWireframe = Standard_True);
   Standard_EXPORT void TriedronErase (const Graphic3d_CView& ACView);
   Standard_EXPORT void TriedronEcho (const Graphic3d_CView& ACView, const Aspect_TypeOfTriedronEcho AType = Aspect_TOTE_NONE);
-  Standard_EXPORT void GraduatedTrihedronDisplay (const Graphic3d_CView& view, const Graphic3d_CGraduatedTrihedron& cubic);
-  Standard_EXPORT void GraduatedTrihedronErase (const Graphic3d_CView& view);
-  Standard_EXPORT void GraduatedTrihedronMinMaxValues (const Standard_ShortReal xmin, const Standard_ShortReal ymin, const Standard_ShortReal zmin, const Standard_ShortReal xmax, const Standard_ShortReal ymax, const Standard_ShortReal zmax);
+
+  //! Displays Graduated trihedron
+  //! @param theView [in] the graphic view
+  //! @param theCubic [in] Graduated Trihedon parameters.
+  //! @sa OpenGl_GraduatedTrihedron
+  //! @sa Graphic3d_GraduatedTrihedron
+  Standard_EXPORT void GraduatedTrihedronDisplay (const Graphic3d_CView& theView, const Graphic3d_GraduatedTrihedron& theCubic);
+
+  //! Erases Graduated Trihedron from the view.
+  //! theView [in] graphic view
+  //! @sa OpenGl_GraduatedTrihedron
+  Standard_EXPORT void GraduatedTrihedronErase (const Graphic3d_CView& theView);
+
+  //! Sets minimum and maximum points of scene bounding box for Graduated Trihedron
+  //! stored in graphic view object. 
+  //! @param theView [in] current graphic view
+  //! @param theMin [in] the minimum point of scene.
+  //! @param theMax [in] the maximum point of scene.
+  //! @sa OpenGl_GraduatedTrihedron
+  Standard_EXPORT void GraduatedTrihedronMinMaxValues (const Graphic3d_CView& theView,
+                                                       const Graphic3d_Vec3 theMin, const Graphic3d_Vec3 theMax);
+
   Standard_EXPORT void Layer (Aspect_CLayer2d& ACLayer);
   Standard_EXPORT void RemoveLayer (const Aspect_CLayer2d& ACLayer);
   Standard_EXPORT void BeginLayer (const Aspect_CLayer2d& ACLayer);
@@ -261,39 +283,29 @@ public:
 
   //! Add a new top-level z layer with ID theLayerId for the view. Z layers allow drawing structures in higher layers in foreground of structures in lower layers.
   //! To add a structure to desired layer on display it is necessary to set the layer index for the structure.
-  Standard_EXPORT void AddZLayer (const Graphic3d_CView& theCView,
-                                  const Standard_Integer theLayerId);
+  Standard_EXPORT void AddZLayer (const Graphic3d_CView&   theCView,
+                                  const Graphic3d_ZLayerId theLayerId);
 
   //! Remove Z layer from the specified view.
   //! All structures displayed at the moment in layer will be displayed in default layer (the bottom-level z layer).
   //! To unset layer index from associated structures use method UnsetZLayer (...).
-  Standard_EXPORT void RemoveZLayer (const Graphic3d_CView& theCView,
-                                     const Standard_Integer theLayerId);
+  Standard_EXPORT void RemoveZLayer (const Graphic3d_CView&   theCView,
+                                     const Graphic3d_ZLayerId theLayerId);
 
   //! Unset Z layer ID for all structures.
   //! The structure indexes will be set to default layer (the bottom-level z layer with ID = 0).
-  Standard_EXPORT void UnsetZLayer (const Standard_Integer theLayerId);
-
-  //! Change Z layer of a structure.
-  //! The new z layer ID will be used to define the associated layer for structure on display.
-  //! It is recommended to take care of redisplaying the structures already presented in view with previously set layer index.
-  //! This is usually done by viewer manager. Z layers allow drawing structures in higher layers in foreground of structures in lower layers.
-  Standard_EXPORT void ChangeZLayer (const Graphic3d_CStructure& theCStructure,
-                                     const Standard_Integer      theLayerId);
+  Standard_EXPORT void UnsetZLayer (const Graphic3d_ZLayerId theLayerId);
 
   //! Change Z layer of a structure already presented in view.
   //! It is recommended to update z layer of already displayed structures with this method before setting new z layer index to the structure.
   //! This is usually done by viewer manager.
   Standard_EXPORT void ChangeZLayer (const Graphic3d_CStructure& theCStructure,
                                      const Graphic3d_CView&      theCView,
-                                     const Standard_Integer      theNewLayerId);
-
-  //! Get Z layer ID of the structure. If the structure doesn't exists in graphic driver, the method returns -1.
-  Standard_EXPORT Standard_Integer GetZLayer (const Graphic3d_CStructure& theCStructure) const;
+                                     const Graphic3d_ZLayerId    theNewLayerId);
 
   //! Sets the settings for a single Z layer of specified view.
-  Standard_EXPORT void SetZLayerSettings (const Graphic3d_CView& theCView,
-                                          const Standard_Integer theLayerId,
+  Standard_EXPORT void SetZLayerSettings (const Graphic3d_CView&          theCView,
+                                          const Graphic3d_ZLayerId        theLayerId,
                                           const Graphic3d_ZLayerSettings& theSettings);
 
   //! Changes priority of a structure within its Z layer for the specified view.
@@ -361,8 +373,8 @@ private:
 #endif
 
   Handle(OpenGl_Caps)                                             myCaps;
-  NCollection_DataMap<Standard_Integer, Handle(OpenGl_View)>      myMapOfView;
-  NCollection_DataMap<Standard_Integer, Handle(OpenGl_Workspace)> myMapOfWS;
+  NCollection_Map<Handle(OpenGl_View)>                            myMapOfView;
+  NCollection_Map<Handle(OpenGl_Workspace)>                       myMapOfWS;
   NCollection_DataMap<Standard_Integer, OpenGl_Structure*>        myMapOfStructure;
   mutable Handle(OpenGl_PrinterContext)                           myPrintContext;
   OpenGl_UserDrawCallback_t                                       myUserDrawCallback;

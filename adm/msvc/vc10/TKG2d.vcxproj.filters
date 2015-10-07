@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{D4E838FD-0059-089E-130A-46C5684A4279}</UniqueIdentifier>
+      <UniqueIdentifier>{7FDD90FA-124F-0D67-10B1-CDE692DC84E3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2d">
-      <UniqueIdentifier>{524F873E-1848-08FB-056A-0B3A7B2C8F6C}</UniqueIdentifier>
+      <UniqueIdentifier>{98592A70-0B39-08CA-12FF-5BFF06C3E39C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LProp">
-      <UniqueIdentifier>{7C0756DC-159F-008E-045B-8D01725A0373}</UniqueIdentifier>
+      <UniqueIdentifier>{9436F55A-174F-16C2-0C38-42E020887BFD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColGeom2d">
-      <UniqueIdentifier>{98810C64-0C8F-13FD-1363-F1C791651B3B}</UniqueIdentifier>
+      <UniqueIdentifier>{843D10AC-0209-17B8-0E11-F54D39A0E3EE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Adaptor2d">
-      <UniqueIdentifier>{DEE2982E-0954-161A-0F76-F9671CE07F90}</UniqueIdentifier>
+      <UniqueIdentifier>{D45A13D6-13DC-1595-0857-E82EAF50EFEF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dLProp">
-      <UniqueIdentifier>{D6FC3784-0B00-06D0-026D-22F47AE08A2C}</UniqueIdentifier>
+      <UniqueIdentifier>{B84E3B01-0B19-0114-11E9-636CB5760954}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dAdaptor">
-      <UniqueIdentifier>{8F565566-15FC-0655-03A8-5F548DA828F9}</UniqueIdentifier>
+      <UniqueIdentifier>{5EAA25AF-0447-12CA-0D7C-995BA44F71EF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GProp">
-      <UniqueIdentifier>{1A1F5E20-1426-159D-18F9-DB6BC8814A2C}</UniqueIdentifier>
+      <UniqueIdentifier>{C1029509-129C-1868-05ED-F9FB9AF57B8F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

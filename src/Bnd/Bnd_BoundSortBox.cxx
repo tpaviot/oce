@@ -123,7 +123,10 @@ static long unsigned _P2[32] = { 1,2,4,8,  16,32,64,128,  256,512,1024,2048,
 				 1048576,2097152,4194304,8388608,
 				 16777216,33554432,67108864,134217728,
 				 268435456,536870912,1073741824,2147483648U};
-class BSB_T3Bits { //-- size is power of 2 > 4
+
+//-- size is power of 2 > 4
+class BSB_T3Bits
+{
 public:
 
   Standard_Integer _DECAL;
@@ -162,26 +165,36 @@ public:
   Standard_Integer NbAxisZ(const Standard_Integer i) {   return(axisZ[0][i]);   }
   
   inline Standard_Integer GrilleInteger(Standard_Integer ix,
-					Standard_Integer iy,
-					Standard_Integer iz) { 
+                                        Standard_Integer iy,
+                                        Standard_Integer iz)
+  {
     Standard_Integer tz = iz<<_DECAL2;
     Standard_Integer ty = iy<<_DECAL;
     Standard_Integer t  = ix;
-    t|=ty; t|=tz;
+    t|=ty;
+    t|=tz;
     return(t);
   }
-  
+
   inline void IntegerGrille(Standard_Integer t,
-			    Standard_Integer &ix,
-			    Standard_Integer &iy,
-			    Standard_Integer &iz) { 
+                            Standard_Integer &ix,
+                            Standard_Integer &iy,
+                            Standard_Integer &iz)
+  {
     ix = t & _BASEM1; t>>=_DECAL;
     iy = t & _BASEM1; t>>=_DECAL;
     iz = t;
   }
+
+private:
+
+  BSB_T3Bits (const BSB_T3Bits&);
+  BSB_T3Bits& operator= (const BSB_T3Bits&);
 };
+
 //=======================================================================
-BSB_T3Bits::~BSB_T3Bits() { 
+BSB_T3Bits::~BSB_T3Bits()
+{
   if(p) { delete [] p; p=0; } 
 #if DEBUG
   printf("\n BASE:%d\n",_BASE);
@@ -636,11 +649,10 @@ const TColStd_ListOfInteger& Bnd_BoundSortBox::Compare (const Bnd_Box& theBox)
   //-- Rejection with the table of bits
   Standard_Boolean touch = Standard_True;
   touch = Standard_False;
-  Standard_Real _Xmin,_Ymin,_Zmin,_Xmax,_Ymax,_Zmax;
+  Standard_Real _Xmax,_Ymax,_Zmax;
   BSB_T3Bits* Map = (BSB_T3Bits *)TabBits;
   Standard_Real xmin, ymin, zmin, xmax, ymax, zmax;
   _Xmax=Map->Xmax; _Ymax=Map->Ymax; _Zmax=Map->Zmax;
-  _Xmin=Map->Xmin; _Ymin=Map->Ymin; _Zmin=Map->Zmin;
   theBox.Get(xmin, ymin, zmin, xmax, ymax, zmax);
   Standard_Integer i0,i1,j0,j1,k0,k1;
   if(xmin>Xmin) i0=(Standard_Integer )((xmin-Xmin)*deltaX)-1; else  i0=1;

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKOffset"
-	ProjectGUID="{F7C748B3-0B04-097F-0426-FE3E44AA053B}"
+	ProjectGUID="{AA8A3775-0E2B-01B7-066F-2FE3BF114378}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

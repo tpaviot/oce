@@ -65,7 +65,6 @@ libTKIGES_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKGeomAlgo/libTKGeomAlgo.la \
 ../TKPrim/libTKPrim.la \
 ../TKBool/libTKBool.la \
-../TKOffset/libTKOffset.la \
 ../TKXSBase/libTKXSBase.la \
 $(STLPort_LIB) 
 

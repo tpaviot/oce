@@ -65,6 +65,8 @@ public:
      const  gp_Dir2d& DirectionOnS2()  const;
   
       IntWalk_TheFunctionOfTheInt2S& Function() ;
+  
+      IntSurf_PntOn2S& ChangePoint() ;
 
 
 

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKSTEPBase"
-	ProjectGUID="{419F2423-15C8-0284-16A3-D50DDA80880D}"
+	ProjectGUID="{072FFB5D-0658-0096-0236-72B5D2FF282E}"
 	>
 	<Platforms>
 		<Platform

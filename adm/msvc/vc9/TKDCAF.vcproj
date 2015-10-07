@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKDCAF"
-	ProjectGUID="{159AEFA6-1385-13A6-0D3B-231BC2F39481}"
+	ProjectGUID="{91E3FD70-04E8-1867-094B-B0E269E09C7A}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

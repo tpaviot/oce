@@ -86,6 +86,14 @@ public:
   //! Returns the Z coordinate
       Standard_Real Z()  const;
   
+  //! Returns a const ptr to coordinates location.
+  //! Is useful for algorithms, but DOES NOT PERFORM ANY CHECKS!
+  Standard_EXPORT  const  Standard_Real* GetData()  const;
+  
+  //! Returns a ptr to coordinates location.
+  //! Is useful for algorithms, but DOES NOT PERFORM ANY CHECKS!
+  Standard_EXPORT   Standard_Real* ChangeData() ;
+  
   //! computes Sqrt (X*X + Y*Y + Z*Z) where X, Y and Z are the three coordinates of this XYZ object.
       Standard_Real Modulus()  const;
   

@@ -17,45 +17,108 @@
 
 #include <OpenGl_GlCore11.hxx>
 
+#include <Graphic3d_ArrayOfSegments.hxx>
+#include <Graphic3d_ArrayOfPolylines.hxx>
 #include <OpenGl_View.hxx>
 #include <OpenGl_Workspace.hxx>
+#include <Precision.hxx>
 
-static const OpenGl_TextParam THE_LABEL_PARAMS =
+namespace
 {
-  16, Graphic3d_HTA_LEFT, Graphic3d_VTA_BOTTOM
-};
+  static const OpenGl_TextParam THE_LABEL_PARAMS =
+  {
+    16, Graphic3d_HTA_LEFT, Graphic3d_VTA_BOTTOM
+  };
+}
 
-static const CALL_DEF_CONTEXTLINE myDefaultContextLine =
+// =======================================================================
+// function : resetTransformations
+// purpose  :
+// =======================================================================
+void OpenGl_Trihedron::resetTransformations (const Handle(OpenGl_Workspace)& theWorkspace) const
 {
-  1, //IsDef
-  1, //IsSet
-  { 1.F, 1.F, 1.F }, //Color
-  Aspect_TOL_SOLID, //LineType
-  1.F //Width
-};
+  const Handle(OpenGl_Context)& aContext = theWorkspace->GetGlContext();
+  const Handle(OpenGl_View)& aView    = theWorkspace->ActiveView();
+  GLdouble anU = 1.0;
+  GLdouble aV = 1.0;
+  if (aView->Height() < aView->Width())
+  {
+    aV = aView->Width() / aView->Height();
+  }
+  else
+  {
+    anU = aView->Height() / aView->Width();
+  }
 
-static const CALL_DEF_CONTEXTTEXT myDefaultContextText =
-{
-  1, //IsDef
-  1, //IsSet
-  "Courier", //Font
-  0.3F, //Space
-  1.0F, //Expan
-  { 1.F, 1.F, 1.F }, //Color
-  Aspect_TOST_NORMAL, //Style
-  Aspect_TODT_NORMAL, //DisplayType
-  { 1.F, 1.F, 1.F }, //ColorSubTitle
-  0, //TextZoomable
-  0.F, //TextAngle
-  Font_FA_Regular //TextFontAspect
-};
+  // Reading the transformation matrices and projection of sight
+  // to cancel translations (last columns of matrices).
+  OpenGl_Mat4d aModelMatrix;
+  OpenGl_Mat4d aProjMatrix;
+  aModelMatrix.Convert (aContext->WorldViewState.Current());
 
-static TEL_COLOUR theXColor = {{ 1.F, 0.F, 0.F, 0.6F }};
-static TEL_COLOUR theYColor = {{ 0.F, 1.F, 0.F, 0.6F }};
-static TEL_COLOUR theZColor = {{ 0.F, 0.F, 1.F, 0.6F }};
-static float theRatio = 0.8f;
-static float theDiameter = 0.05f;
-static int   theNbFacettes = 12;
+  // Cancel the translation that can be assigned to the view
+  aModelMatrix.ChangeValue (0, 3) = 0.0;
+  aModelMatrix.ChangeValue (1, 3) = 0.0;
+  aModelMatrix.ChangeValue (2, 3) = 0.0;
+
+  aProjMatrix.ChangeValue (0, 0) = 2.0 / anU;
+  aProjMatrix.ChangeValue (1, 0) = 0.0;
+  aProjMatrix.ChangeValue (2, 0) = 0.0;
+  aProjMatrix.ChangeValue (3, 0) = 0.0;
+
+  aProjMatrix.ChangeValue (0, 1) = 0.0;
+  aProjMatrix.ChangeValue (1, 1) = 2.0 / aV;
+  aProjMatrix.ChangeValue (2, 1) = 0.0;
+  aProjMatrix.ChangeValue (3, 1) = 0.0;
+
+  aProjMatrix.ChangeValue (0, 2) = 0.0;
+  aProjMatrix.ChangeValue (1, 2) = 0.0;
+  aProjMatrix.ChangeValue (2, 2) = -2.0 * 0.01;
+  aProjMatrix.ChangeValue (3, 2) = 0.0;
+
+  aProjMatrix.ChangeValue (0, 3) = 0.0;
+  aProjMatrix.ChangeValue (1, 3) = 0.0;
+  aProjMatrix.ChangeValue (2, 3) = 0.0;
+  aProjMatrix.ChangeValue (3, 3) = 1.0;
+
+  // Define trihedron position in the view
+  switch (myPos)
+  {
+    case Aspect_TOTP_LEFT_LOWER:
+    {
+      OpenGl_Utils::Translate (aProjMatrix,
+        -0.5 * anU + myScale, -0.5 * aV + myScale, 0.0);
+      break;
+    }
+    case Aspect_TOTP_LEFT_UPPER:
+    {
+      OpenGl_Utils::Translate (aProjMatrix,
+        -0.5 * anU + myScale, 0.5 * aV - myScale - myScale / 3.0, 0.0);
+      break;
+    }
+    case Aspect_TOTP_RIGHT_LOWER:
+    {
+      OpenGl_Utils::Translate (aProjMatrix,
+        0.5 * anU - myScale - myScale / 3.0, -0.5 * aV + myScale, 0.0);
+      break;
+    }
+    case Aspect_TOTP_RIGHT_UPPER:
+    {
+      OpenGl_Utils::Translate (aProjMatrix,
+        0.5 * anU - myScale - myScale / 3.0, 0.5 * aV - myScale - myScale / 3.0, 0.0);
+      break;
+    }
+    //case Aspect_TOTP_CENTER:
+    default:
+      break;
+  }
+
+  aContext->ProjectionState.SetCurrent<Standard_Real> (aProjMatrix);
+  aContext->ApplyProjectionMatrix();
+
+  aContext->WorldViewState.SetCurrent<Standard_Real> (aModelMatrix);
+  aContext->ApplyWorldViewMatrix();
+}
 
 // =======================================================================
 // function : redraw
@@ -63,220 +126,187 @@ static int   theNbFacettes = 12;
 // =======================================================================
 void OpenGl_Trihedron::redraw (const Handle(OpenGl_Workspace)& theWorkspace) const
 {
-#if !defined(GL_ES_VERSION_2_0)
-  const Standard_Real U = theWorkspace->ActiveView()->Height();
-  const Standard_Real V = theWorkspace->ActiveView()->Width();
-
-  Handle(OpenGl_Context) aContext = theWorkspace->GetGlContext();
-
-  /* la taille des axes est 1 proportion (fixee a l'init du triedre) */
-  /* de la dimension la plus petite de la window.                    */
-  const GLdouble L = ( U < V ? U : V ) * myScale;
-
-  /*
-  * On inhibe les translations; on conserve les autres transformations.
-  */
-
+  const Handle(OpenGl_Context)& aContext = theWorkspace->GetGlContext();
   aContext->WorldViewState.Push();
   aContext->ProjectionState.Push();
 
-  /* on lit les matrices de transformation et de projection de la vue */
-  /* pour annuler les translations (dernieres colonnes des matrices). */
+  resetTransformations (theWorkspace);
+
+  // Set trihedron size parameters
+  GLdouble aScale = myScale;
+  aScale *= myRatio;
+  const Standard_Real aLineRatio = 0.75;
+  const GLdouble aLineLength = aScale * aLineRatio;
+  const GLdouble aConeDiametr     = aScale * myDiameter;
+  const GLdouble aConeLength      = aScale * (1.0 - aLineRatio);
+  const GLdouble aRayon = aScale / 30.0;
+
+  // Create primitive line here for changing length
+  if (!myLine.IsInitialized())
+  {
+    Handle(Graphic3d_ArrayOfSegments) aGraphicArray = new Graphic3d_ArrayOfSegments (2);
+    aGraphicArray->AddVertex (0.0, 0.0, 0.0);
+    aGraphicArray->AddVertex (0.0, 0.0, aLineLength);
+    myLine.InitBuffers (aContext, Graphic3d_TOPA_SEGMENTS, aGraphicArray->Indices(),
+                        aGraphicArray->Attributes(),
+                        aGraphicArray->Bounds());
+  }
+
+  if (!myCircle.IsInitialized())
+  {
+    const Standard_Integer THE_CIRCLE_SERMENTS_NB = 24;
+    Handle(Graphic3d_ArrayOfPolylines) anCircleArray = new Graphic3d_ArrayOfPolylines (THE_CIRCLE_SERMENTS_NB + 2);
+
+    const Standard_Real THE_CIRCLE_SEGMENT_ANGLE = 2.0 * M_PI / THE_CIRCLE_SERMENTS_NB;
+    for (Standard_Integer anIt = THE_CIRCLE_SERMENTS_NB; anIt >= 0; --anIt)
+    {
+      anCircleArray->AddVertex (aRayon * sin (anIt * THE_CIRCLE_SEGMENT_ANGLE),
+                                aRayon * cos (anIt * THE_CIRCLE_SEGMENT_ANGLE), 0.0);
+    }
+    anCircleArray->AddVertex (aRayon * sin (THE_CIRCLE_SERMENTS_NB * THE_CIRCLE_SEGMENT_ANGLE),
+                              aRayon * cos (THE_CIRCLE_SERMENTS_NB * THE_CIRCLE_SEGMENT_ANGLE), 0.0);
+
+    myCircle.InitBuffers (aContext, Graphic3d_TOPA_POLYLINES, anCircleArray->Indices(),
+                          anCircleArray->Attributes(), anCircleArray->Bounds());
+  }
+
+  if (!myDisk.IsInitialized())
+  {
+    myDisk.Init (0.0, static_cast<GLfloat> (aConeDiametr), myNbFacettes, 1);
+  }
+
+  if (!myCone.IsInitialized())
+  {
+    myCone.Init (static_cast<GLfloat> (aConeDiametr), 0.0f, static_cast<GLfloat> (aConeLength), myNbFacettes, 1);
+  }
+
+  OpenGl_AspectFace anAspectX;
+  OpenGl_AspectFace anAspectY;
+  OpenGl_AspectFace anAspectZ;
+  OpenGl_AspectLine anAspectLine;
+  memcpy (anAspectX.ChangeIntFront().matcol.rgb, myXColor.GetData(), sizeof (TEL_COLOUR));
+  memcpy (anAspectY.ChangeIntFront().matcol.rgb, myYColor.GetData(), sizeof (TEL_COLOUR));
+  memcpy (anAspectZ.ChangeIntFront().matcol.rgb, myZColor.GetData(), sizeof (TEL_COLOUR));
   OpenGl_Mat4d aModelMatrix;
   aModelMatrix.Convert (aContext->WorldViewState.Current());
+  OpenGl_Mat4d aModelViewX (aModelMatrix);
+  OpenGl_Mat4d aModelViewY (aModelMatrix);
+  OpenGl_Mat4d aModelViewZ (aModelMatrix);
 
-  OpenGl_Mat4d aProjMatrix;
+  // Set line aspect
+  const OpenGl_AspectLine* aCurrentAspectLine = theWorkspace->AspectLine (Standard_True);
+  CALL_DEF_CONTEXTLINE aLineAspect = {1, 1, { 1.F, 1.F, 1.F },  aCurrentAspectLine->Type(), aCurrentAspectLine->Width()};
+  aLineAspect.Color.r = myZColor.r();
+  aLineAspect.Color.g = myZColor.g();
+  aLineAspect.Color.b = myZColor.b();
+  anAspectLine.SetAspect (aLineAspect);
 
-  /* on annule la translation qui peut etre affectee a la vue */
-  aModelMatrix.ChangeValue (0, 3) = 0.0;
-  aModelMatrix.ChangeValue (1, 3) = 0.0;
-  aModelMatrix.ChangeValue (2, 3) = 0.0;
-
-  aProjMatrix.ChangeValue (0, 0) = 2.0 / U;
-  aProjMatrix.ChangeValue (1, 0) = 0.0;
-  aProjMatrix.ChangeValue (2, 0) = 0.0;
-  aProjMatrix.ChangeValue (3, 0) = 0.0;
-
-  aProjMatrix.ChangeValue (0, 1) = 0.0;
-  aProjMatrix.ChangeValue (1, 1) = 2.0 / V;
-  aProjMatrix.ChangeValue (2, 1) = 0.0;
-  aProjMatrix.ChangeValue (3, 1) = 0.0;
-
-  aProjMatrix.ChangeValue (0, 2) = 0.0;
-  aProjMatrix.ChangeValue (1, 2) = 0.0;
-  aProjMatrix.ChangeValue (2, 2) = -2.0 * 1e-7;
-  aProjMatrix.ChangeValue (3, 2) = 0.0; 
-   
-  aProjMatrix.ChangeValue (0, 3) = 0.0;
-  aProjMatrix.ChangeValue (1, 3) = 0.0;
-  aProjMatrix.ChangeValue (2, 3) = 0.0;
-  aProjMatrix.ChangeValue (3, 3) = 1.0;
-
-  /*
-  * Positionnement de l'origine du triedre selon le choix de l'init
-  */
-
-  /* on fait uniquement une translation de l'origine du Triedre */
-
-  switch (myPos)
+  // Disable depth test and face culling
+  GLboolean wasDepthMaskEnabled = GL_FALSE;
+  GLint aDepthFuncBack = 0, aCullFaceModeBack = GL_BACK;
+  const GLboolean wasDepthEnabled    = aContext->core11fwd->glIsEnabled (GL_DEPTH_TEST);
+  const GLboolean wasCullFaceEnabled = aContext->core11fwd->glIsEnabled (GL_CULL_FACE);
+  aContext->core11fwd->glGetIntegerv (GL_DEPTH_FUNC,      &aDepthFuncBack);
+  aContext->core11fwd->glGetIntegerv (GL_CULL_FACE_MODE,  &aCullFaceModeBack);
+  aContext->core11fwd->glGetBooleanv (GL_DEPTH_WRITEMASK, &wasDepthMaskEnabled);
+  if (!wasDepthEnabled)
   {
-    case Aspect_TOTP_LEFT_LOWER :
-    {
-      OpenGl_Utils::Translate (aProjMatrix,
-        -0.5 * U + L, -0.5 * V + L, 0.0);
-    }
-    break;
-
-    case Aspect_TOTP_LEFT_UPPER :
-    {
-      OpenGl_Utils::Translate (aProjMatrix,
-        -0.5 * U + L, 0.5 * V - L - L/3.0, 0.0);
-    }
-    break;
-
-    case Aspect_TOTP_RIGHT_LOWER :
-    {
-      OpenGl_Utils::Translate (aProjMatrix,
-        0.5 * U - L - L/3.0, -0.5 * V + L, 0.0);
-    }
-    break;
-
-    case Aspect_TOTP_RIGHT_UPPER :
-    {
-      OpenGl_Utils::Translate (aProjMatrix,
-        0.5 * U - L - L/3.0, 0.5 * V - L - L/3.0, 0.0);
-    }
-    break;
-
-    //case Aspect_TOTP_CENTER :
-    default :
-      break;
+    aContext->core11fwd->glEnable (GL_DEPTH_TEST);
+    aContext->core11fwd->glClear (GL_DEPTH_BUFFER_BIT);
+  }
+  if (!wasDepthMaskEnabled)
+  {
+    aContext->core11fwd->glDepthMask (GL_TRUE);
+  }
+  aContext->core11fwd->glCullFace (GL_BACK);
+  if (!wasCullFaceEnabled)
+  {
+    aContext->core11fwd->glEnable (GL_CULL_FACE);
   }
 
-  aContext->ProjectionState.SetCurrent<Standard_Real> (aProjMatrix);
-  aContext->WorldViewState.SetCurrent<Standard_Real> (aModelMatrix);
-  aContext->ApplyProjectionMatrix();
+  // Origin
+  myCircle.Render (theWorkspace);
+
+  // Z axis
+  const OpenGl_AspectFace* anOldAspectFace = theWorkspace->SetAspectFace(&anAspectZ);
+  theWorkspace->SetAspectLine (&anAspectLine);
+  myLine.Render (theWorkspace);
+  OpenGl_Utils::Translate (aModelViewZ, 0.0, 0.0, aLineLength);
+  aContext->WorldViewState.SetCurrent<Standard_Real>(aModelViewZ);
+  aContext->ApplyWorldViewMatrix();
+  myDisk.Render (theWorkspace);
+  myCone.Render (theWorkspace);
+
+  // X axis
+  theWorkspace->SetAspectFace (&anAspectX);
+  OpenGl_Utils::Rotate (aModelViewX, 90.0, 0.0, aScale, 0.0);
+  aContext->WorldViewState.SetCurrent<Standard_Real> (aModelViewX);
   aContext->ApplyWorldViewMatrix();
 
-  /*
-  * Creation du triedre
-  */
+  aLineAspect.Color.r = myXColor.r();
+  aLineAspect.Color.g = myXColor.g();
+  aLineAspect.Color.b = myXColor.b();
+  anAspectLine.SetAspect (aLineAspect);
+  theWorkspace->SetAspectLine (&anAspectLine);
+  myLine.Render (theWorkspace);
+  OpenGl_Utils::Translate (aModelViewX, 0.0, 0.0, aLineLength);
+  aContext->WorldViewState.SetCurrent<Standard_Real> (aModelViewX);
+  aContext->ApplyWorldViewMatrix();
+  myDisk.Render (theWorkspace);
+  myCone.Render (theWorkspace);
 
-  /* Fotis Sioutis 2007-11-14 15:06
-  I have also seen in previous posts that the view trihedron in V3d_WIREFRAME mode
-  changes colors depending on the state of the view. This behaviour can be easily
-  corrected by altering call_triedron_redraw function in OpenGl_triedron.c of TKOpengl.
-  The only change needed is to erase glDisable(GL_LIGHTING) that is called before the
-  Axis name drawing and move this function call just before the initial axis drawing.
-  Below is the code portion with the modification.I don't know if this is considered to
-  be a bug but anyway i believe it might help some of you out there.*/
-  glDisable(GL_LIGHTING);
+  // Y axis
+  theWorkspace->SetAspectFace (&anAspectY);
+  OpenGl_Utils::Rotate (aModelViewY, -90.0, aScale, 0.0, 0.0);
+  aContext->WorldViewState.SetCurrent<Standard_Real> (aModelViewY);
+  aContext->ApplyWorldViewMatrix();
 
-  /* Position de l'origine */
-  const GLdouble TriedronOrigin[3] = { 0.0, 0.0, 0.0 };
+  aLineAspect.Color.r = myYColor.r();
+  aLineAspect.Color.g = myYColor.g();
+  aLineAspect.Color.b = myYColor.b();
+  anAspectLine.SetAspect (aLineAspect);
+  theWorkspace->SetAspectLine (&anAspectLine);
+  myLine.Render (theWorkspace);
+  OpenGl_Utils::Translate (aModelViewY, 0.0, 0.0, aLineLength);
+  aContext->WorldViewState.SetCurrent<Standard_Real> (aModelViewY);
+  aContext->ApplyWorldViewMatrix();
+  myDisk.Render (theWorkspace);
+  myCone.Render (theWorkspace);
 
-  /* Position des Axes */
-  GLdouble TriedronAxeX[3] = { 1.0, 0.0, 0.0 };
-  GLdouble TriedronAxeY[3] = { 0.0, 1.0, 0.0 };
-  GLdouble TriedronAxeZ[3] = { 0.0, 0.0, 1.0 };
-  TriedronAxeX[0] = L ;
-  TriedronAxeY[1] = L ;
-  TriedronAxeZ[2] = L ;
+  // Restore aspects
+  theWorkspace->SetAspectFace (anOldAspectFace);
 
-  /* dessin des axes */
-  glBegin(GL_LINES);
-  glVertex3dv( TriedronOrigin );
-  glVertex3dv( TriedronAxeX );
-
-  glVertex3dv( TriedronOrigin );
-  glVertex3dv( TriedronAxeY );
-
-  glVertex3dv( TriedronOrigin );
-  glVertex3dv( TriedronAxeZ );
-  glEnd();
-
-  /* fleches au bout des axes (= cones de la couleur demandee) */
-  const GLdouble l = 0.75*L; /* distance a l'origine */
-  const GLdouble rayon = L/30. ; /* rayon de la base du cone */
-  const int NbFacettes = 12; /* le cone sera compose de 12 facettes triangulaires */
-  const double Angle = 2. * M_PI/ NbFacettes;
-
-  int      ii;
-  GLdouble TriedronCoord[3] = { 1.0, 0.0, 0.0 };
-
-  /* solution FILAIRE des cones au bout des axes : une seule ligne */
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  /* (la couleur est deja initialisee dans AspectLine) */
-  /* FIN de la solution FILAIRE CHOISIE pour les cones des axes */
-
-  /* fleche en X */
-  glBegin(GL_TRIANGLE_FAN);
-  glVertex3dv( TriedronAxeX );
-  TriedronCoord[0] = l;
-  ii = NbFacettes;
-  while (ii >= 0 ) {
-    TriedronCoord[1] = rayon * sin(ii * Angle);
-    TriedronCoord[2] = rayon * cos(ii * Angle);
-    glVertex3dv( TriedronCoord );
-    ii--;
+  if (!wasDepthEnabled)
+  {
+    aContext->core11fwd->glDisable (GL_DEPTH_TEST);
   }
-  glEnd();
-
-  /* fleche en Y */
-  glBegin(GL_TRIANGLE_FAN);
-  glVertex3dv( TriedronAxeY );
-  TriedronCoord[1] = l;
-  ii = NbFacettes;
-  while (ii >= 0 ) {
-    TriedronCoord[0] = rayon * cos(ii * Angle);
-    TriedronCoord[2] = rayon * sin(ii * Angle);
-    glVertex3dv( TriedronCoord );
-    ii--;
+  if (!wasDepthMaskEnabled)
+  {
+    aContext->core11fwd->glDepthMask (GL_FALSE);
   }
-  glEnd();
-
-  /* fleche en Z */
-  glBegin(GL_TRIANGLE_FAN);
-  glVertex3dv( TriedronAxeZ );
-  TriedronCoord[2] = l;
-  ii = NbFacettes;
-  while (ii >= 0 ) {
-    TriedronCoord[0] = rayon * sin(ii * Angle);
-    TriedronCoord[1] = rayon * cos(ii * Angle);
-    glVertex3dv( TriedronCoord );
-    ii--;
+  if (!wasCullFaceEnabled)
+  {
+    aContext->core11fwd->glDisable (GL_CULL_FACE);
   }
-  glEnd();
+  aContext->core11fwd->glCullFace (aCullFaceModeBack);
 
-  /* dessin de l'origine */
-  TriedronCoord[2] = 0.0 ;
-  ii = 24 ;
-  const double Angle1 = 2. * M_PI/ ii;
-  glBegin(GL_LINE_LOOP);
-  while (ii >= 0 ) {
-    TriedronCoord[0] = rayon * sin(ii * Angle1);
-    TriedronCoord[1] = rayon * cos(ii * Angle1);
-    glVertex3dv( TriedronCoord );
-    ii--;
-  }
-  glEnd();
+  // Always write the text
+  aContext->core11fwd->glDepthFunc (GL_ALWAYS);
 
-  // draw axes labels
-  myLabelX.SetPosition (OpenGl_Vec3(float(L + rayon),    0.0f,                   float(-rayon)));
-  myLabelY.SetPosition (OpenGl_Vec3(float(rayon),        float(L + 3.0 * rayon), float(2.0 * rayon)));
-  myLabelZ.SetPosition (OpenGl_Vec3(float(-2.0 * rayon), float(0.5 * rayon),     float(L + 3.0 * rayon)));
+  // Render labels
+  myLabelX.SetPosition (OpenGl_Vec3 (float (aScale + 2.0 * aRayon), 0.0f, float (-aRayon)));
+  myLabelY.SetPosition (OpenGl_Vec3 (float (aRayon), float (aScale + 3.0 * aRayon), float (2.0 * aRayon)));
+  myLabelZ.SetPosition (OpenGl_Vec3 (float (-2.0 * aRayon), float (0.5 * aRayon), float (aScale + 3.0 * aRayon)));
+  aContext->WorldViewState.SetCurrent<Standard_Real> (aModelMatrix);
+  aContext->ApplyWorldViewMatrix();
   myLabelX.Render (theWorkspace);
   myLabelY.Render (theWorkspace);
   myLabelZ.Render (theWorkspace);
 
-  /*
-  * restauration du contexte des matrices
-  */
-
+  aContext->core11fwd->glDepthFunc (aDepthFuncBack);
   aContext->WorldViewState.Pop();
   aContext->ProjectionState.Pop();
   aContext->ApplyProjectionMatrix();
-#endif
 }
 
 // =======================================================================
@@ -285,87 +315,13 @@ void OpenGl_Trihedron::redraw (const Handle(OpenGl_Workspace)& theWorkspace) con
 // =======================================================================
 void OpenGl_Trihedron::redrawZBuffer (const Handle(OpenGl_Workspace)& theWorkspace) const
 {
-  Handle(OpenGl_Context)     aContext = theWorkspace->GetGlContext();
-  const Handle(OpenGl_View)& aView    = theWorkspace->ActiveView();
-
-  OpenGl_Mat4d aModelMatrix, aProjMatrix;
+  Handle(OpenGl_Context) aContext = theWorkspace->GetGlContext();
   aContext->WorldViewState.Push();
   aContext->ProjectionState.Push();
-  aModelMatrix.Convert (aContext->WorldViewState.Current());
 
-  GLdouble U = 1.0;
-  GLdouble V = 1.0;
-  if (aView->Height() < aView->Width())
-  {
-    V = aView->Width() / aView->Height();
-  }
-  else
-  {
-    U = aView->Height() / aView->Width();
-  }
+  resetTransformations (theWorkspace);
 
-  GLdouble aScale = myScale;
-
-  // Annulate translation matrix
-  aModelMatrix.ChangeValue (0, 3) = 0.0;
-  aModelMatrix.ChangeValue (1, 3) = 0.0;
-  aModelMatrix.ChangeValue (2, 3) = 0.0;
-
-  aProjMatrix.ChangeValue (0, 0) = 2.0 / U;
-  aProjMatrix.ChangeValue (1, 0) = 0.0;
-  aProjMatrix.ChangeValue (2, 0) = 0.0;
-  aProjMatrix.ChangeValue (3, 0) = 0.0;
-
-  aProjMatrix.ChangeValue (0, 1) = 0.0;
-  aProjMatrix.ChangeValue (1, 1) = 2.0 / V;
-  aProjMatrix.ChangeValue (2, 1) = 0.0;
-  aProjMatrix.ChangeValue (3, 1) = 0.0;
-
-  aProjMatrix.ChangeValue (0, 2) = 0.0;
-  aProjMatrix.ChangeValue (1, 2) = 0.0;
-  aProjMatrix.ChangeValue (2, 2) = -2.0 * 1e-2;
-  aProjMatrix.ChangeValue (3, 2) = 0.0;
-
-  aProjMatrix.ChangeValue (0, 3) = 0.0;
-  aProjMatrix.ChangeValue (1, 3) = 0.0;
-  aProjMatrix.ChangeValue (2, 3) = 0.0;
-  aProjMatrix.ChangeValue (3, 3) = 1.0;
-
-  // Define position in the view
-  switch (myPos)
-  {
-    case Aspect_TOTP_LEFT_LOWER:
-    {
-      OpenGl_Utils::Translate<Standard_Real> (aProjMatrix,
-        -0.5 * U + aScale, -0.5 * V + aScale, 0.0);
-      break;
-    }
-    case Aspect_TOTP_LEFT_UPPER:
-    {
-      OpenGl_Utils::Translate<Standard_Real> (aProjMatrix,
-        -0.5 * U + aScale, 0.5 * V - aScale - aScale / 3.0, 0.0);
-      break;
-    }
-    case Aspect_TOTP_RIGHT_LOWER:
-    {
-      OpenGl_Utils::Translate<Standard_Real> (aProjMatrix,
-        0.5 * U - aScale - aScale / 3.0, -0.5 * V + aScale, 0.0);
-      break;
-    }
-    case Aspect_TOTP_RIGHT_UPPER:
-    {
-      OpenGl_Utils::Translate<Standard_Real> (aProjMatrix,
-        0.5 * U - aScale - aScale / 3.0, 0.5 * V - aScale - aScale / 3.0, 0.0);
-      break;
-    }
-    //case Aspect_TOTP_CENTER:
-    default:
-      break;
-  }
-  aScale *= myRatio;
-
-  aContext->ProjectionState.SetCurrent<Standard_Real> (aProjMatrix);
-  aContext->ApplyProjectionMatrix();
+  const GLdouble aScale = myScale * myRatio;
 
   const OpenGl_AspectLine* anAspectLine = theWorkspace->AspectLine (Standard_True);
   const TEL_COLOUR&        aLineColor   = anAspectLine->Color();
@@ -380,24 +336,24 @@ void OpenGl_Trihedron::redrawZBuffer (const Handle(OpenGl_Workspace)& theWorkspa
   // Position des Axes
   GLdouble aTriedronAxeX[3] = { aScale, 0.0,    0.0 };
   GLdouble aTriedronAxeY[3] = { 0.0,    aScale, 0.0 };
-  if (!myDisk.IsDefined())
+  if (!myDisk.IsInitialized())
   {
     myDisk.Init (static_cast<GLfloat> (aCylinderDiametr),
                  static_cast<GLfloat> (aConeDiametr),
                  myNbFacettes, 1);
   }
 
-  if (!mySphere.IsDefined())
+  if (!mySphere.IsInitialized())
   {
     mySphere.Init (static_cast<GLfloat> (aCylinderDiametr * 2.0), myNbFacettes, myNbFacettes);
   }
 
-  if (!myCone.IsDefined())
+  if (!myCone.IsInitialized())
   {
     myCone.Init (static_cast<GLfloat> (aConeDiametr), 0.0f, static_cast<GLfloat> (aConeLength), myNbFacettes, 1);
   }
 
-  if (!myCylinder.IsDefined())
+  if (!myCylinder.IsInitialized())
   {
     myCylinder.Init (static_cast<GLfloat> (aCylinderDiametr),
                      static_cast<GLfloat> (aCylinderDiametr),
@@ -431,10 +387,13 @@ void OpenGl_Trihedron::redrawZBuffer (const Handle(OpenGl_Workspace)& theWorkspa
   OpenGl_AspectFace anAspectX;
   OpenGl_AspectFace anAspectY;
   OpenGl_AspectFace anAspectZ;
-  memcpy (anAspectX.ChangeIntFront().matcol.rgb,   myXColor.rgb, sizeof (TEL_COLOUR));
-  memcpy (anAspectY.ChangeIntFront().matcol.rgb,   myYColor.rgb, sizeof (TEL_COLOUR));
-  memcpy (anAspectZ.ChangeIntFront().matcol.rgb,   myZColor.rgb, sizeof (TEL_COLOUR));
-  memcpy (anAspectC.ChangeIntFront().matcol.rgb, aLineColor.rgb, sizeof (TEL_COLOUR));
+  memcpy (anAspectX.ChangeIntFront().matcol.rgb, myXColor.GetData(), sizeof (TEL_COLOUR));
+  memcpy (anAspectY.ChangeIntFront().matcol.rgb, myYColor.GetData(), sizeof (TEL_COLOUR));
+  memcpy (anAspectZ.ChangeIntFront().matcol.rgb, myZColor.GetData(), sizeof (TEL_COLOUR));
+  memcpy (anAspectC.ChangeIntFront().matcol.rgb, aLineColor.rgb,     sizeof (TEL_COLOUR));
+
+  OpenGl_Mat4d aModelMatrix;
+  aModelMatrix.Convert (aContext->WorldViewState.Current());
   for (Standard_Integer aPass = 0; aPass < 2; ++aPass)
   {
     OpenGl_Mat4d aModelViewX (aModelMatrix);
@@ -524,40 +483,26 @@ void OpenGl_Trihedron::redrawZBuffer (const Handle(OpenGl_Workspace)& theWorkspa
 // function : OpenGl_Trihedron
 // purpose  :
 // =======================================================================
-OpenGl_Trihedron::OpenGl_Trihedron (const Aspect_TypeOfTriedronPosition thePosition,
-                                    const Quantity_NameOfColor          theColor,
-                                    const Standard_Real                 theScale,
-                                    const Standard_Boolean              theAsWireframe)
-: myPos (thePosition),
-  myScale (theScale),
-  myIsWireframe (theAsWireframe),
+OpenGl_Trihedron::OpenGl_Trihedron()
+: myPos (Aspect_TOTP_LEFT_LOWER),
+  myScale (1.0),
+  myIsWireframe (Standard_False),
+  myXColor (1.0f, 0.0f, 0.0f, 0.6f),
+  myYColor (0.0f, 1.0f, 0.0f, 0.6f),
+  myZColor (0.0f, 0.0f, 1.0f, 0.6f),
+  myRatio      (0.8f),
+  myDiameter   (0.05f),
+  myNbFacettes (12),
   myLabelX ("X", OpenGl_Vec3(1.0f, 0.0f, 0.0f), THE_LABEL_PARAMS),
   myLabelY ("Y", OpenGl_Vec3(0.0f, 1.0f, 0.0f), THE_LABEL_PARAMS),
-  myLabelZ ("Z", OpenGl_Vec3(0.0f, 0.0f, 1.0f), THE_LABEL_PARAMS)
+  myLabelZ ("Z", OpenGl_Vec3(0.0f, 0.0f, 1.0f), THE_LABEL_PARAMS),
+  myLine   (NULL), // do not register arrays UID - trihedron is not intended to be drawn by Ray Tracing engine
+  myCircle (NULL)
 {
-  Standard_Real R,G,B;
-  Quantity_Color aColor (theColor);
-  aColor.Values (R, G, B, Quantity_TOC_RGB);
-
-  CALL_DEF_CONTEXTLINE aLineAspect = myDefaultContextLine;
-  aLineAspect.Color.r = (float)R;
-  aLineAspect.Color.g = (float)G;
-  aLineAspect.Color.b = (float)B;
-  myAspectLine.SetAspect (aLineAspect);
-
-  CALL_DEF_CONTEXTTEXT aTextAspect = myDefaultContextText;
-  aTextAspect.Color.r = (float)R;
-  aTextAspect.Color.g = (float)G;
-  aTextAspect.Color.b = (float)B;
-  myAspectText.SetAspect (aTextAspect);
-
-  myXColor = theXColor;
-  myYColor = theYColor;
-  myZColor = theZColor;
-
-  myRatio = theRatio;
-  myDiameter = theDiameter;
-  myNbFacettes = theNbFacettes;
+  const TEL_COLOUR aWhiteColor = {{ 1.0f, 1.0f, 1.0f, 1.0f }};
+  myAspectLine.ChangeColor()    = aWhiteColor;
+  myAspectText.ChangeColor()    = aWhiteColor;
+  myAspectText.ChangeFontName() = "Courier";
 }
 
 // =======================================================================
@@ -566,6 +511,7 @@ OpenGl_Trihedron::OpenGl_Trihedron (const Aspect_TypeOfTriedronPosition thePosit
 // =======================================================================
 OpenGl_Trihedron::~OpenGl_Trihedron()
 {
+  //
 }
 
 // =======================================================================
@@ -583,6 +529,98 @@ void OpenGl_Trihedron::Release (OpenGl_Context* theCtx)
   myDisk    .Release (theCtx);
   mySphere  .Release (theCtx);
   myCylinder.Release (theCtx);
+  myLine.Release (theCtx);
+  myCircle.Release (theCtx);
+}
+
+// =======================================================================
+// function : invalidate
+// purpose  :
+// =======================================================================
+void OpenGl_Trihedron::invalidate()
+{
+  myCone    .Invalidate();
+  myDisk    .Invalidate();
+  mySphere  .Invalidate();
+  myCylinder.Invalidate();
+  myLine    .Invalidate();
+  myCircle  .Invalidate();
+}
+
+// =======================================================================
+// function : SetScale
+// purpose  :
+// =======================================================================
+void OpenGl_Trihedron::SetScale (const Standard_Real theScale)
+{
+  if (Abs (myScale - theScale) > Precision::Confusion())
+  {
+    invalidate();
+  }
+  myScale = theScale;
+}
+
+// =======================================================================
+// function : SetSizeRatio
+// purpose  :
+// =======================================================================
+void OpenGl_Trihedron::SetSizeRatio (const Standard_Real theRatio)
+{
+  if (Abs (Standard_Real(myRatio) - theRatio) > Precision::Confusion())
+  {
+    invalidate();
+  }
+  myRatio = float(theRatio);
+}
+
+// =======================================================================
+// function : SetArrowDiameter
+// purpose  :
+// =======================================================================
+void OpenGl_Trihedron::SetArrowDiameter (const Standard_Real theDiam)
+{
+  if (Abs (Standard_Real(myDiameter) - theDiam) > Precision::Confusion())
+  {
+    invalidate();
+  }
+  myDiameter = float(theDiam);
+}
+
+// =======================================================================
+// function : SetNbFacets
+// purpose  :
+// =======================================================================
+void OpenGl_Trihedron::SetNbFacets (const Standard_Integer theNbFacets)
+{
+  if (Abs (myNbFacettes - theNbFacets) > 0)
+  {
+    invalidate();
+  }
+  myNbFacettes = theNbFacets;
+}
+
+// =======================================================================
+// function : SetLabelsColor
+// purpose  :
+// =======================================================================
+void OpenGl_Trihedron::SetLabelsColor (const Quantity_Color& theColor)
+{
+  myAspectText.ChangeColor().rgb[0] = float(theColor.Red());
+  myAspectText.ChangeColor().rgb[1] = float(theColor.Green());
+  myAspectText.ChangeColor().rgb[2] = float(theColor.Blue());
+}
+
+// =======================================================================
+// function : SetArrowsColors
+// purpose  :
+// =======================================================================
+void OpenGl_Trihedron::SetArrowsColors (const Quantity_Color& theColorX,
+                                        const Quantity_Color& theColorY,
+                                        const Quantity_Color& theColorZ)
+{
+  myXColor = OpenGl_Vec4 (float(theColorX.Red()), float(theColorX.Green()), float(theColorX.Blue()), 0.6f);
+  myYColor = OpenGl_Vec4 (float(theColorY.Red()), float(theColorY.Green()), float(theColorY.Blue()), 0.6f);
+  myZColor = OpenGl_Vec4 (float(theColorZ.Red()), float(theColorZ.Green()), float(theColorZ.Blue()), 0.6f);
 }
 
 // =======================================================================
@@ -606,9 +644,8 @@ void OpenGl_Trihedron::Render (const Handle(OpenGl_Workspace)& theWorkspace) con
   }
 
   const Handle(OpenGl_Texture) aPrevTexture = theWorkspace->DisableTexture();
-
-  /* affichage du Triedre Non Zoomable */
   theWorkspace->ActiveView()->EndTransformPersistence (theWorkspace->GetGlContext());
+  theWorkspace->GetGlContext()->ApplyModelViewMatrix();
 
   if (myIsWireframe)
   {
@@ -627,31 +664,4 @@ void OpenGl_Trihedron::Render (const Handle(OpenGl_Workspace)& theWorkspace) con
 
   theWorkspace->SetAspectText (aPrevAspectText);
   theWorkspace->SetAspectLine (aPrevAspectLine);
-}
-
-/*----------------------------------------------------------------------*/
-//call_ztriedron_setup
-void OpenGl_Trihedron::Setup (const Quantity_NameOfColor XColor, const Quantity_NameOfColor YColor, const Quantity_NameOfColor ZColor,
-                             const Standard_Real SizeRatio, const Standard_Real AxisDiametr, const Standard_Integer NbFacettes)
-{
-  Standard_Real R,G,B;
-
-  Quantity_Color(XColor).Values(R, G, B, Quantity_TOC_RGB);
-  theXColor.rgb[0] = float (R);
-  theXColor.rgb[1] = float (G);
-  theXColor.rgb[2] = float (B);
-
-  Quantity_Color(YColor).Values(R, G, B, Quantity_TOC_RGB);
-  theYColor.rgb[0] = float (R);
-  theYColor.rgb[1] = float (G);
-  theYColor.rgb[2] = float (B);
-
-  Quantity_Color(ZColor).Values(R, G, B, Quantity_TOC_RGB);
-  theZColor.rgb[0] = float (R);
-  theZColor.rgb[1] = float (G);
-  theZColor.rgb[2] = float (B);
-
-  theRatio = float (SizeRatio);
-  theDiameter = float (AxisDiametr);
-  theNbFacettes = NbFacettes;
 }

@@ -14,8 +14,8 @@
 #include <Handle_ShapeAnalysis_Wire.hxx>
 #include <Standard_Boolean.hxx>
 #include <Standard_Integer.hxx>
-#include <ShapeFix_Root.hxx>
 #include <Standard_Real.hxx>
+#include <ShapeFix_Root.hxx>
 #include <Handle_ShapeExtend_WireData.hxx>
 #include <Handle_Geom_Surface.hxx>
 #include <TopoDS_Wire.hxx>
@@ -73,8 +73,10 @@ class ShapeAnalysis_WireOrder;
 //! a) Wire (ether TopoDS_Wire or ShapeExtend_Wire)
 //! b) Face or surface
 //! c) Precision
+//! d) Maximal tail angle and width
 //! This can be done either by calling corresponding methods
-//! (LoadWire, SetFace or SetSurface, and SetPrecision), or
+//! (LoadWire, SetFace or SetSurface, SetPrecision, SetMaxTailAngle
+//! and SetMaxTailWidth), or
 //! by loading already filled ShapeAnalisis_Wire with method Load
 class ShapeFix_Wire : public ShapeFix_Root
 {
@@ -122,6 +124,12 @@ public:
   
   //! Set working precision (to root and to analyzer)
   Standard_EXPORT virtual   void SetPrecision (const Standard_Real prec) ;
+  
+  //! Sets the maximal allowed angle of the tails in radians.
+  Standard_EXPORT   void SetMaxTailAngle (const Standard_Real theMaxTailAngle) ;
+  
+  //! Sets the maximal allowed width of the tails.
+  Standard_EXPORT   void SetMaxTailWidth (const Standard_Real theMaxTailWidth) ;
   
   //! Tells if the wire is loaded
       Standard_Boolean IsLoaded()  const;
@@ -230,6 +238,8 @@ public:
   //! 1 method will be called
   //! 0 method will not be called
       Standard_Integer& FixNonAdjacentIntersectingEdgesMode() ;
+  
+      Standard_Integer& FixTailMode() ;
   
   //! This method performs all the available fixes.
   //! If some fix is turned on or off explicitly by the Fix..Mode() flag,
@@ -387,6 +397,8 @@ public:
   //! If convert is True, converts pcurves to bsplines to bend.
   Standard_EXPORT   Standard_Boolean FixGap2d (const Standard_Integer num, const Standard_Boolean convert = Standard_False) ;
   
+  Standard_EXPORT   Standard_Boolean FixTails() ;
+  
       Standard_Boolean StatusReorder (const ShapeExtend_Status status)  const;
   
       Standard_Boolean StatusSmall (const ShapeExtend_Status status)  const;
@@ -416,6 +428,8 @@ public:
   //! DONE: some problem(s) was(were) detected and successfully fixed
   //! FAIL: some problem(s) cannot be fixed
       Standard_Boolean StatusRemovedSegment()  const;
+  
+      Standard_Boolean StatusFixTails (const ShapeExtend_Status status)  const;
   
   //! Queries the status of last call to methods Fix... of
   //! advanced level
@@ -461,6 +475,7 @@ protected:
   Standard_Integer myFixSelfIntersectingEdgeMode;
   Standard_Integer myFixIntersectingEdgesMode;
   Standard_Integer myFixNonAdjacentIntersectingEdgesMode;
+  Standard_Integer myFixTailMode;
   Standard_Integer myRemoveLoopMode;
   Standard_Integer myFixReorderMode;
   Standard_Integer myFixSmallMode;
@@ -484,6 +499,9 @@ protected:
   Standard_Integer myStatusGaps2d;
   Standard_Boolean myStatusRemovedSegment;
   Standard_Integer myStatusNotches;
+  Standard_Integer myStatusFixTails;
+  Standard_Real myMaxTailAngleSine;
+  Standard_Real myMaxTailWidth;
 
 
 private: 

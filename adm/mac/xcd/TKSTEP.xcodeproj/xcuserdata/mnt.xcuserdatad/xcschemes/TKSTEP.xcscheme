@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0683151B012617FA1120181D"
+               BlueprintIdentifier = "0E5215A8060508D20DCB011E"
                BuildableName = "libTKSTEP.dylib"
                BlueprintName = "TKSTEP"
                ReferencedContainer = "container:TKSTEP.xcodeproj">

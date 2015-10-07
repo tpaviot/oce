@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{6891BB53-1336-0DBD-00B9-42DE821E667C}</UniqueIdentifier>
+      <UniqueIdentifier>{1CC4F84C-1712-013D-0820-A700CC25599E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlDrivers">
-      <UniqueIdentifier>{DA8F5F1F-0C11-18BF-028D-0A34EF197581}</UniqueIdentifier>
+      <UniqueIdentifier>{1EB705E8-07DE-0785-0EBC-1E614483F705}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlMDataXtd">
-      <UniqueIdentifier>{7182DFE4-02CE-1419-0989-6202BAA1277C}</UniqueIdentifier>
+      <UniqueIdentifier>{CE811EB7-0E02-0287-087E-C099A2A666DC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlMNaming">
-      <UniqueIdentifier>{27738E51-1538-1843-0DC1-574BE7383188}</UniqueIdentifier>
+      <UniqueIdentifier>{AB29A713-05F3-076A-0784-018BEB890862}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XmlMPrsStd">
-      <UniqueIdentifier>{3C080B73-083F-1742-045E-E5D8C3F9F469}</UniqueIdentifier>
+      <UniqueIdentifier>{857B07C5-0F7D-137B-125E-9F6F2038A873}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

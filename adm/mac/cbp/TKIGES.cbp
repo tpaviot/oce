@@ -113,7 +113,6 @@
 			<Add library="TKGeomAlgo" />
 			<Add library="TKPrim" />
 			<Add library="TKBool" />
-			<Add library="TKOffset" />
 			<Add library="TKXSBase" />
 			<Add library="dl" />
 			<Add library="tbb" />

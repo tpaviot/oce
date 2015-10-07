@@ -10,7 +10,7 @@
 #include <Standard_DefineHandle.hxx>
 #include <Handle_Graphic3d_AspectLine3d.hxx>
 
-#include <Graphic3d_ShaderProgram_Handle.hxx>
+#include <Graphic3d_ShaderProgram.hxx>
 #include <Aspect_AspectLine.hxx>
 #include <Aspect_TypeOfLine.hxx>
 #include <Standard_Real.hxx>
@@ -44,9 +44,9 @@ public:
   Standard_EXPORT Graphic3d_AspectLine3d(const Quantity_Color& AColor, const Aspect_TypeOfLine AType, const Standard_Real AWidth);
   
   //! Sets up OpenGL/GLSL shader program.
-  Standard_EXPORT   void SetShaderProgram (const Graphic3d_ShaderProgram_Handle& theProgram) ;
+  Standard_EXPORT   void SetShaderProgram (const Handle(Graphic3d_ShaderProgram)& theProgram) ;
   
-  Standard_EXPORT  const  Graphic3d_ShaderProgram_Handle& ShaderProgram()  const;
+  Standard_EXPORT  const  Handle(Graphic3d_ShaderProgram)& ShaderProgram()  const;
 
 
 
@@ -61,7 +61,7 @@ protected:
 private: 
 
 
-  Graphic3d_ShaderProgram_Handle MyShaderProgram;
+  Handle(Graphic3d_ShaderProgram) MyShaderProgram;
 
 
 };

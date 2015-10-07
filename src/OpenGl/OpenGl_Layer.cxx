@@ -14,24 +14,278 @@
 // commercial license or contractual agreement.
 
 #include <OpenGl_Layer.hxx>
-#include <OpenGl_Workspace.hxx>
-#include <OpenGl_GlCore11.hxx>
 
-//=======================================================================
-//function : OpenGl_Layer
-//purpose  : 
-//=======================================================================
+#include <OpenGl_BVHTreeSelector.hxx>
+#include <OpenGl_Structure.hxx>
+#include <OpenGl_View.hxx>
+#include <OpenGl_Workspace.hxx>
+
+// =======================================================================
+// function : OpenGl_PriorityList
+// purpose  :
+// =======================================================================
 OpenGl_Layer::OpenGl_Layer (const Standard_Integer theNbPriorities)
-  : myPriorityList (theNbPriorities)
+: myArray (0, theNbPriorities - 1),
+  myNbStructures (0),
+  myBVHIsLeftChildQueuedFirst (Standard_True),
+  myIsBVHPrimitivesNeedsReset (Standard_False)
 {
   //
 }
 
+// =======================================================================
+// function : ~OpenGl_Layer
+// purpose  :
+// =======================================================================
+OpenGl_Layer::~OpenGl_Layer()
+{
+  //
+}
+
+// =======================================================================
+// function : Add
+// purpose  :
+// =======================================================================
+void OpenGl_Layer::Add (const OpenGl_Structure* theStruct,
+                        const Standard_Integer  thePriority,
+                        Standard_Boolean        isForChangePriority)
+{
+  const Standard_Integer anIndex = Min (Max (thePriority, 0), myArray.Length() - 1);
+  if (theStruct == NULL)
+  {
+    return;
+  }
+
+  myArray (anIndex).Add (theStruct);
+  if (theStruct->IsAlwaysRendered())
+  {
+    theStruct->MarkAsNotCulled();
+  }
+  else if (!isForChangePriority)
+  {
+    myBVHPrimitives.Add (theStruct);
+  }
+  ++myNbStructures;
+}
+
+// =======================================================================
+// function : Remove
+// purpose  :
+// =======================================================================
+bool OpenGl_Layer::Remove (const OpenGl_Structure* theStruct,
+                           Standard_Integer&       thePriority,
+                           Standard_Boolean        isForChangePriority)
+{
+  if (theStruct == NULL)
+  {
+    thePriority = -1;
+    return false;
+  }
+
+  const Standard_Integer aNbPriorities = myArray.Length();
+  for (Standard_Integer aPriorityIter = 0; aPriorityIter < aNbPriorities; ++aPriorityIter)
+  {
+    OpenGl_IndexedMapOfStructure& aStructures = myArray (aPriorityIter);
+
+    const Standard_Integer anIndex = aStructures.FindIndex (theStruct);
+    if (anIndex != 0)
+    {
+      aStructures.Swap (anIndex, aStructures.Size());
+      aStructures.RemoveLast();
+
+      if (!theStruct->IsAlwaysRendered()
+       && !isForChangePriority)
+      {
+        myBVHPrimitives.Remove (theStruct);
+      }
+      --myNbStructures;
+      thePriority = aPriorityIter;
+      return true;
+    }
+  }
+
+  thePriority = -1;
+  return false;
+}
+
+// =======================================================================
+// function : InvalidateBVHData
+// purpose  :
+// =======================================================================
+void OpenGl_Layer::InvalidateBVHData()
+{
+  myIsBVHPrimitivesNeedsReset = Standard_True;
+}
+
+// =======================================================================
+// function : renderAll
+// purpose  :
+// =======================================================================
+void OpenGl_Layer::renderAll (const Handle(OpenGl_Workspace)& theWorkspace) const
+{
+  const Standard_Integer aNbPriorities = myArray.Length();
+  const Standard_Integer aViewId       = theWorkspace->ActiveViewId();
+  for (Standard_Integer aPriorityIter = 0; aPriorityIter < aNbPriorities; ++aPriorityIter)
+  {
+    const OpenGl_IndexedMapOfStructure& aStructures = myArray (aPriorityIter);
+    for (Standard_Integer aStructIdx = 1; aStructIdx <= aStructures.Size(); ++aStructIdx)
+    {
+      const OpenGl_Structure* aStruct = aStructures.FindKey (aStructIdx);
+      if (!aStruct->IsVisible())
+      {
+        continue;
+      }
+      else if (!aStruct->ViewAffinity.IsNull()
+            && !aStruct->ViewAffinity->IsVisible (aViewId))
+      {
+        continue;
+      }
+
+      aStruct->Render (theWorkspace);
+    }
+  }
+}
+
+// =======================================================================
+// function : renderTraverse
+// purpose  :
+// =======================================================================
+void OpenGl_Layer::renderTraverse (const Handle(OpenGl_Workspace)& theWorkspace) const
+{
+  if (myIsBVHPrimitivesNeedsReset)
+  {
+    myBVHPrimitives.Assign (myArray);
+    myIsBVHPrimitivesNeedsReset = Standard_False;
+  }
+
+  OpenGl_BVHTreeSelector& aSelector = theWorkspace->ActiveView()->BVHTreeSelector();
+  traverse (aSelector);
+
+  const Standard_Integer aNbPriorities = myArray.Length();
+  const Standard_Integer aViewId       = theWorkspace->ActiveViewId();
+  for (Standard_Integer aPriorityIter = 0; aPriorityIter < aNbPriorities; ++aPriorityIter)
+  {
+    const OpenGl_IndexedMapOfStructure& aStructures = myArray (aPriorityIter);
+    for (Standard_Integer aStructIdx = 1; aStructIdx <= aStructures.Size(); ++aStructIdx)
+    {
+      const OpenGl_Structure* aStruct = aStructures.FindKey (aStructIdx);
+      if (!aStruct->IsVisible()
+        || aStruct->IsCulled())
+      {
+        continue;
+      }
+      else if (!aStruct->ViewAffinity.IsNull()
+            && !aStruct->ViewAffinity->IsVisible (aViewId))
+      {
+        continue;
+      }
+
+      aStruct->Render (theWorkspace);
+      aStruct->ResetCullingStatus();
+    }
+  }
+}
+
+// =======================================================================
+// function : traverse
+// purpose  :
+// =======================================================================
+void OpenGl_Layer::traverse (OpenGl_BVHTreeSelector& theSelector) const
+{
+  // handle a case when all objects are infinite
+  if (myBVHPrimitives.Size() == 0)
+    return;
+
+  const NCollection_Handle<BVH_Tree<Standard_ShortReal, 4> >& aBVHTree = myBVHPrimitives.BVH();
+
+  Standard_Integer aNode = 0; // a root node
+  theSelector.CacheClipPtsProjections();
+  if (!theSelector.Intersect (aBVHTree->MinPoint (0),
+                              aBVHTree->MaxPoint (0)))
+  {
+    return;
+  }
+
+  Standard_Integer aStack[32];
+  Standard_Integer aHead = -1;
+  for (;;)
+  {
+    if (!aBVHTree->IsOuter (aNode))
+    {
+      const Standard_Integer aLeftChildIdx  = aBVHTree->LeftChild  (aNode);
+      const Standard_Integer aRightChildIdx = aBVHTree->RightChild (aNode);
+      const Standard_Boolean isLeftChildIn  = theSelector.Intersect (aBVHTree->MinPoint (aLeftChildIdx),
+                                                                     aBVHTree->MaxPoint (aLeftChildIdx));
+      const Standard_Boolean isRightChildIn = theSelector.Intersect (aBVHTree->MinPoint (aRightChildIdx),
+                                                                     aBVHTree->MaxPoint (aRightChildIdx));
+      if (isLeftChildIn
+       && isRightChildIn)
+      {
+        aNode = myBVHIsLeftChildQueuedFirst ? aLeftChildIdx : aRightChildIdx;
+        aStack[++aHead] = myBVHIsLeftChildQueuedFirst ? aRightChildIdx : aLeftChildIdx;
+        myBVHIsLeftChildQueuedFirst = !myBVHIsLeftChildQueuedFirst;
+      }
+      else if (isLeftChildIn
+            || isRightChildIn)
+      {
+        aNode = isLeftChildIn ? aLeftChildIdx : aRightChildIdx;
+      }
+      else
+      {
+        if (aHead < 0)
+        {
+          return;
+        }
+
+        aNode = aStack[aHead--];
+      }
+    }
+    else
+    {
+      Standard_Integer aIdx = aBVHTree->BegPrimitive (aNode);
+      myBVHPrimitives.GetStructureById (aIdx)->MarkAsNotCulled();
+      if (aHead < 0)
+      {
+        return;
+      }
+
+      aNode = aStack[aHead--];
+    }
+  }
+}
+
+// =======================================================================
+// function : Append
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_Layer::Append (const OpenGl_Layer& theOther)
+{
+  // the source priority list shouldn't have more priorities
+  const Standard_Integer aNbPriorities = theOther.NbPriorities();
+  if (aNbPriorities > NbPriorities())
+  {
+    return Standard_False;
+  }
+
+  // add all structures to destination priority list
+  for (Standard_Integer aPriorityIter = 0; aPriorityIter < aNbPriorities; ++aPriorityIter)
+  {
+    const OpenGl_IndexedMapOfStructure& aStructures = theOther.myArray (aPriorityIter);
+    for (Standard_Integer aStructIdx = 1; aStructIdx <= aStructures.Size(); ++aStructIdx)
+    {
+      Add (aStructures.FindKey (aStructIdx), aPriorityIter);
+    }
+  }
+
+  return Standard_True;
+}
+
 //=======================================================================
 //function : Render
-//purpose  : 
+//purpose  :
 //=======================================================================
-void OpenGl_Layer::Render (const Handle(OpenGl_Workspace) &theWorkspace, const OpenGl_GlobalLayerSettings& theDefaultSettings) const
+void OpenGl_Layer::Render (const Handle(OpenGl_Workspace)&   theWorkspace,
+                           const OpenGl_GlobalLayerSettings& theDefaultSettings) const
 {
   TEL_POFFSET_PARAM anAppliedOffsetParams = theWorkspace->AppliedPolygonOffset();
 
@@ -67,17 +321,10 @@ void OpenGl_Layer::Render (const Handle(OpenGl_Workspace) &theWorkspace, const O
   }
 
   // handle depth write
-  if (IsSettingEnabled (Graphic3d_ZLayerDepthWrite))
-  {
-    glDepthMask (GL_TRUE);
-  }
-  else
-  {
-    glDepthMask (GL_FALSE);
-  }
+  glDepthMask (IsSettingEnabled (Graphic3d_ZLayerDepthWrite) ? GL_TRUE : GL_FALSE);
 
   // render priority list
-  myPriorityList.Render (theWorkspace);
+  theWorkspace->IsCullingEnabled() ? renderTraverse (theWorkspace) : renderAll (theWorkspace);
 
   // always restore polygon offset between layers rendering
   theWorkspace->SetPolygonOffset (anAppliedOffsetParams.mode,

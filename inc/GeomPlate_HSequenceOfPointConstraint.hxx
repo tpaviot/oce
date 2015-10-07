@@ -71,8 +71,6 @@ public:
      const  GeomPlate_SequenceOfPointConstraint& Sequence()  const;
   
       GeomPlate_SequenceOfPointConstraint& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(GeomPlate_HSequenceOfPointConstraint) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(GeomPlate_HSequenceOfPointConstraint) ShallowCopy(const Handle(GeomPlate_HSequenceOfPointConstraint)& me) {
- return me->ShallowCopy();
-}
 
 
 

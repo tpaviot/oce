@@ -37,7 +37,7 @@ endif
 ModelingAlgorithms:
 	cd $(top_builddir)/adm/lin/amk && $(MAKE) $(AM_MAKEFLAGS) ModelingAlgorithms
 
-Visualization_PKGS = Textures
+Visualization_PKGS = Textures  Shaders
 
 if ENABLE_VIS
   Visualization_DIRS = $(Visualization_PKGS)

@@ -10,15 +10,8 @@
 #include <Standard_DefineAlloc.hxx>
 #include <Standard_Macro.hxx>
 
-#include <Handle_Select3D_Projector.hxx>
-#include <Handle_V3d_View.hxx>
-#include <Handle_SelectMgr_Selection.hxx>
-#include <Handle_Prs3d_Drawer.hxx>
-class Select3D_Projector;
-class V3d_View;
-class SelectMgr_Selection;
-class Prs3d_Drawer;
-class StdSelect_ViewerSelector3d;
+#include <SelectMgr_Selection.hxx>
+#include <Prs3d_Drawer.hxx>
 class StdSelect_BRepSelectionTool;
 class StdSelect_BRepOwner;
 class StdSelect_EdgeFilter;
@@ -57,9 +50,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  //! Returns the 3D projector for the view aView.
-  Standard_EXPORT static   Handle(Select3D_Projector) GetProjector (const Handle(V3d_View)& aView) ;
-  
   //! puts The same drawer in every BRepOwner Of SensitivePrimitive
   //! Used Only for hilight Of BRepOwner...
   Standard_EXPORT static   void SetDrawerForBRepOwner (const Handle(SelectMgr_Selection)& aSelection, const Handle(Prs3d_Drawer)& aDrawer) ;
@@ -78,7 +68,6 @@ private:
 
 
 
-friend class StdSelect_ViewerSelector3d;
 friend class StdSelect_BRepSelectionTool;
 friend class StdSelect_BRepOwner;
 friend class StdSelect_EdgeFilter;

@@ -71,8 +71,6 @@ public:
      const  Transfer_SequenceOfFinder& Sequence()  const;
   
       Transfer_SequenceOfFinder& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(Transfer_HSequenceOfFinder) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(Transfer_HSequenceOfFinder) ShallowCopy(const Handle(Transfer_HSequenceOfFinder)& me) {
- return me->ShallowCopy();
-}
 
 
 

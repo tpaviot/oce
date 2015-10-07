@@ -215,7 +215,7 @@ public:
   //! + 2 * Degree
   Standard_EXPORT static   Standard_Integer KnotSequenceLength (const TColStd_Array1OfInteger& Mults, const Standard_Integer Degree, const Standard_Boolean Periodic) ;
   
-  Standard_EXPORT static   void KnotSequence (const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Mults, TColStd_Array1OfReal& KnotSeq) ;
+  Standard_EXPORT static   void KnotSequence (const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Mults, TColStd_Array1OfReal& KnotSeq, const Standard_Boolean Periodic = Standard_False) ;
   
   //! Computes  the  sequence   of knots KnotSeq  with
   //! repetition  of the  knots  of multiplicity  greater
@@ -691,7 +691,7 @@ public:
   //! value of Nth derivative of first non vanishing
   //! Bspline function which has Index FirstNonZeroBsplineIndex
   //! if N <= DerivativeOrder + 1
-  Standard_EXPORT static   Standard_Integer EvalBsplineBasis (const Standard_Integer Side, const Standard_Integer DerivativeOrder, const Standard_Integer Order, const TColStd_Array1OfReal& FlatKnots, const Standard_Real Parameter, Standard_Integer& FirstNonZeroBsplineIndex, math_Matrix& BsplineBasis) ;
+  Standard_EXPORT static   Standard_Integer EvalBsplineBasis (const Standard_Integer Side, const Standard_Integer DerivativeOrder, const Standard_Integer Order, const TColStd_Array1OfReal& FlatKnots, const Standard_Real Parameter, Standard_Integer& FirstNonZeroBsplineIndex, math_Matrix& BsplineBasis, const Standard_Boolean isPeriodic = Standard_False) ;
   
   //! This Builds   a fully  blown   Matrix of
   //! (ni)

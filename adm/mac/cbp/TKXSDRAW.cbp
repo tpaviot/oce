@@ -132,6 +132,5 @@
 		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_DataSource.cxx" />
 		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_DataSource3D.cxx" />
 		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_DrawableMesh.cxx" />
-		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_ToVRML.cxx" />
 	</Project>
 </CodeBlocks_project_file>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{0205B63C-1363-07C6-054D-CD2D846747FC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\DBC">
+      <UniqueIdentifier>{A6FEEEEA-0011-0F55-0544-ACD6973C817F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\PCollection">
+      <UniqueIdentifier>{59EB3BE6-07D2-1599-1805-07D04AFBCF37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\PColStd">
+      <UniqueIdentifier>{E161EEBE-0A47-0A40-1910-F648E32B66F8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\PMMgt">
+      <UniqueIdentifier>{7532BE15-0782-1119-10C0-CAB02AF3BE53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\PShort">
+      <UniqueIdentifier>{543D2BE7-1480-0A63-14F1-4EE6A80938E2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\PStandard">
+      <UniqueIdentifier>{75979B43-03E9-099A-1443-1DA4AB2600AB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\PTColStd">
+      <UniqueIdentifier>{F5E6EFC0-03C0-063B-097D-8DBECBE93EBE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\ObjMgt">
+      <UniqueIdentifier>{166AFCCC-0E46-1769-03B9-046B2E189987}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayNodeOfVArrayOfCharacter_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayNodeOfVArrayOfExtCharacter_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayNodeOfVArrayOfInteger_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayNodeOfVArrayOfReal_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayOfCharacter_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayOfExtCharacter_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayOfInteger_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayOfReal_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayTNodeOfVArrayOfCharacter_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayTNodeOfVArrayOfExtCharacter_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayTNodeOfVArrayOfInteger_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DBC\DBC_VArrayTNodeOfVArrayOfReal_0.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DBC\DBC_BaseArray.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DBC\DBC_DBVArray.cxx">
+      <Filter>Source files\DBC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PCollection\PCollection_HAsciiString.cxx">
+      <Filter>Source files\PCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PCollection\PCollection_HExtendedString.cxx">
+      <Filter>Source files\PCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_FieldOfHArray1OfExtendedString_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_FieldOfHArray1OfInteger_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_FieldOfHArray1OfPersistent_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_FieldOfHArray1OfReal_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_FieldOfHArray2OfInteger_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_FieldOfHArray2OfPersistent_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_FieldOfHArray2OfReal_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HArray1OfExtendedString_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HArray1OfInteger_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HArray1OfPersistent_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HArray1OfReal_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HArray2OfInteger_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HArray2OfPersistent_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_HArray2OfReal_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayNodeOfFieldOfHArray1OfInteger_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayNodeOfFieldOfHArray1OfPersistent_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayNodeOfFieldOfHArray1OfReal_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayNodeOfFieldOfHArray2OfInteger_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayNodeOfFieldOfHArray2OfPersistent_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayNodeOfFieldOfHArray2OfReal_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayTNodeOfFieldOfHArray1OfInteger_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayTNodeOfFieldOfHArray1OfPersistent_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayTNodeOfFieldOfHArray1OfReal_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayTNodeOfFieldOfHArray2OfInteger_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PColStd\PColStd_VArrayTNodeOfFieldOfHArray2OfReal_0.cxx">
+      <Filter>Source files\PColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PMMgt\PMMgt_PManaged.cxx">
+      <Filter>Source files\PMMgt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PShort\PShort_FieldOfHArray1OfShortReal_0.cxx">
+      <Filter>Source files\PShort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PShort\PShort_FieldOfHArray2OfShortReal_0.cxx">
+      <Filter>Source files\PShort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PShort\PShort_HArray1OfShortReal_0.cxx">
+      <Filter>Source files\PShort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PShort\PShort_HArray2OfShortReal_0.cxx">
+      <Filter>Source files\PShort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PShort\PShort_HSequenceOfShortReal_0.cxx">
+      <Filter>Source files\PShort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PShort\PShort_SeqExplorerOfHSequenceOfShortReal_0.cxx">
+      <Filter>Source files\PShort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PShort\PShort_SeqNodeOfHSequenceOfShortReal_0.cxx">
+      <Filter>Source files\PShort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PShort\PShort_VArrayNodeOfFieldOfHArray1OfShortReal_0.cxx">
+      <Filter>Source files\PShort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PShort\PShort_VArrayNodeOfFieldOfHArray2OfShortReal_0.cxx">
+      <Filter>Source files\PShort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PShort\PShort_VArrayTNodeOfFieldOfHArray1OfShortReal_0.cxx">
+      <Filter>Source files\PShort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PShort\PShort_VArrayTNodeOfFieldOfHArray2OfShortReal_0.cxx">
+      <Filter>Source files\PShort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PStandard\PStandard_ArrayNode.cxx">
+      <Filter>Source files\PStandard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTColStd\PTColStd_DataMapIteratorOfPersistentTransientMap_0.cxx">
+      <Filter>Source files\PTColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTColStd\PTColStd_DataMapIteratorOfTransientPersistentMap_0.cxx">
+      <Filter>Source files\PTColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTColStd\PTColStd_DataMapNodeOfPersistentTransientMap_0.cxx">
+      <Filter>Source files\PTColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTColStd\PTColStd_DataMapNodeOfTransientPersistentMap_0.cxx">
+      <Filter>Source files\PTColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTColStd\PTColStd_DoubleMapIteratorOfDoubleMapOfTransientPersistent_0.cxx">
+      <Filter>Source files\PTColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTColStd\PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent_0.cxx">
+      <Filter>Source files\PTColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTColStd\PTColStd_DoubleMapOfTransientPersistent_0.cxx">
+      <Filter>Source files\PTColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTColStd\PTColStd_MapPersistentHasher_0.cxx">
+      <Filter>Source files\PTColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTColStd\PTColStd_PersistentTransientMap_0.cxx">
+      <Filter>Source files\PTColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PTColStd\PTColStd_TransientPersistentMap_0.cxx">
+      <Filter>Source files\PTColStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ObjMgt\ObjMgt_PSeqOfExtRef_0.cxx">
+      <Filter>Source files\ObjMgt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ObjMgt\ObjMgt_SeqExplorerOfPSeqOfExtRef_0.cxx">
+      <Filter>Source files\ObjMgt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ObjMgt\ObjMgt_SeqNodeOfPSeqOfExtRef_0.cxx">
+      <Filter>Source files\ObjMgt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ObjMgt\ObjMgt_ExternRef.cxx">
+      <Filter>Source files\ObjMgt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ObjMgt\ObjMgt_ExternShareable.cxx">
+      <Filter>Source files\ObjMgt</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PTKernel.rc" />  </ItemGroup>
+</Project>

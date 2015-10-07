@@ -15,23 +15,43 @@
 // commercial license or contractual agreement.
 
 #include <SelectBasics_SensitiveEntity.ixx>
+#include <TColStd_HArray1OfBoolean.hxx>
 
+//=======================================================================
+// function : SelectBasics_SensitiveEntity
+// purpose  : Creates new empty sensitive entity instance
+//=======================================================================
+SelectBasics_SensitiveEntity::SelectBasics_SensitiveEntity (const Handle(SelectBasics_EntityOwner)& theOwnerId,
+                                                            const Standard_Integer theSensFactor)
+: myOwnerId (theOwnerId),
+  mySFactor (theSensFactor) {}
 
+//=======================================================================
+// function : Set
+// purpose  : Sets owner of the entity
+//=======================================================================
+void SelectBasics_SensitiveEntity::Set (const Handle(SelectBasics_EntityOwner)& theOwnerId)
+{
+  myOwnerId = theOwnerId;
+}
 
-//==================================
-//function : Initialize
-//purpose  : 
-//==================================
-SelectBasics_SensitiveEntity
-::SelectBasics_SensitiveEntity(const Handle(SelectBasics_EntityOwner)& OwnerId,
-			       const Standard_ShortReal aFactor):
-myOwnerId(OwnerId),
-mySFactor(aFactor)
-{}
+//=======================================================================
+// function : OwnerId
+// purpose  : Returns pointer to owner of the entity
+//=======================================================================
+const Handle(SelectBasics_EntityOwner)& SelectBasics_SensitiveEntity::OwnerId() const
+{
+  return myOwnerId;
+}
 
+//=======================================================================
+// function : SetSensitivityFactor
+// purpose  : Allows to manage sensitivity of a particular entity
+//=======================================================================
+void SelectBasics_SensitiveEntity::SetSensitivityFactor (const Standard_Integer theNewSens)
+{
+  Standard_ASSERT_RAISE (theNewSens > 0,
+    "Error! Selection sensitivity have positive value.");
 
-void SelectBasics_SensitiveEntity
-::Set (const Handle(SelectBasics_EntityOwner)& TheOwnerId) { myOwnerId = TheOwnerId;}
-
-const Handle(SelectBasics_EntityOwner)&  SelectBasics_SensitiveEntity
-::OwnerId() const {return myOwnerId;}
+  mySFactor = theNewSens;
+}

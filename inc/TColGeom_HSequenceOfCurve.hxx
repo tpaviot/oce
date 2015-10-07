@@ -71,8 +71,6 @@ public:
      const  TColGeom_SequenceOfCurve& Sequence()  const;
   
       TColGeom_SequenceOfCurve& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TColGeom_HSequenceOfCurve) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TColGeom_HSequenceOfCurve) ShallowCopy(const Handle(TColGeom_HSequenceOfCurve)& me) {
- return me->ShallowCopy();
-}
 
 
 

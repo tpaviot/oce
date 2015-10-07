@@ -13,6 +13,7 @@
 #include <Handle_Geom2d_TrimmedCurve.hxx>
 #include <Handle_Geom2d_Curve.hxx>
 #include <Standard_Real.hxx>
+#include <GeomAbs_JoinType.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_Geom2d_Point.hxx>
 class Geom2d_TrimmedCurve;
@@ -55,7 +56,7 @@ public:
   //! <Cu1> and <Cu2>.
   //! <oncurve> is True if the point <P> is common to <Cu1>
   //! and <Cu2>.
-  Standard_EXPORT   void Perform (const Handle(Geom2d_Curve)& Cu1, const Handle(Geom2d_Curve)& Cu2, const gp_Pnt2d& P, const gp_Vec2d& V1, const gp_Vec2d& V2, const Standard_Real Sense, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True) ;
+  Standard_EXPORT   void Perform (const Handle(Geom2d_Curve)& Cu1, const Handle(Geom2d_Curve)& Cu2, const gp_Pnt2d& P, const gp_Vec2d& V1, const gp_Vec2d& V2, const Standard_Real Sense, const GeomAbs_JoinType ajointype, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True) ;
   
   //! Performs  the bisecting line  between the  curve
   //! <Cu1> and the point <Pnt>.

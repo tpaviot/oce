@@ -12,14 +12,18 @@
 
 #include <Handle_ShapeUpgrade_FaceDivide.hxx>
 #include <Handle_ShapeBuild_ReShape.hxx>
+#include <Handle_ShapeExtend_BasicMsgRegistrator.hxx>
 #include <TopoDS_Shape.hxx>
 #include <Standard_Real.hxx>
 #include <Standard_Boolean.hxx>
 #include <Standard_Integer.hxx>
+#include <Message_Gravity.hxx>
 #include <ShapeExtend_Status.hxx>
 class ShapeUpgrade_FaceDivide;
 class ShapeBuild_ReShape;
+class ShapeExtend_BasicMsgRegistrator;
 class TopoDS_Shape;
+class Message_Msg;
 
 
 //! Divides a all faces in shell with given criteria Shell.
@@ -71,6 +75,16 @@ Standard_EXPORT virtual ~ShapeUpgrade_ShapeDivide(){Delete();}
   //! during next call(s) to Perform(shape,Standard_False)
   Standard_EXPORT   void SetContext (const Handle(ShapeBuild_ReShape)& context) ;
   
+  //! Sets message registrator
+  Standard_EXPORT virtual   void SetMsgRegistrator (const Handle(ShapeExtend_BasicMsgRegistrator)& msgreg) ;
+  
+  //! Returns message registrator
+  Standard_EXPORT   Handle(ShapeExtend_BasicMsgRegistrator) MsgRegistrator()  const;
+  
+  //! Sends a message to be attached to the shape.
+  //! Calls corresponding message of message registrator.
+  Standard_EXPORT   void SendMsg (const TopoDS_Shape& shape, const Message_Msg& message, const Message_Gravity gravity = Message_Info)  const;
+  
   //! Queries the status of last call to Perform
   //! OK   : no splitting was done (or no call to Perform)
   //! DONE1: some edges were splitted
@@ -95,9 +109,17 @@ protected:
   
   //! Returns the tool for splitting faces.
   Standard_EXPORT virtual   Handle(ShapeUpgrade_FaceDivide) GetSplitFaceTool()  const;
+  
+  Standard_EXPORT virtual   Message_Msg GetFaceMsg()  const;
+  
+  Standard_EXPORT virtual   Message_Msg GetWireMsg()  const;
+  
+  //! Returns a message decsribing modification of a shape.
+  Standard_EXPORT virtual   Message_Msg GetEdgeMsg()  const;
 
 
   Handle(ShapeBuild_ReShape) myContext;
+  Handle(ShapeExtend_BasicMsgRegistrator) myMsgReg;
   TopoDS_Shape myShape;
   TopoDS_Shape myResult;
   Standard_Real myPrecision;

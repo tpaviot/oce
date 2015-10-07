@@ -17,10 +17,8 @@
 #define _OpenGl_NamedStatus_Header
 
 // Dynamic fields
-#define OPENGL_NS_HIDE         (1<<0)
 #define OPENGL_NS_HIGHLIGHT    (1<<1)
 #define OPENGL_NS_RESMAT       (1<<2)
-#define OPENGL_NS_IMMEDIATE    (1<<3)
 #define OPENGL_NS_TEXTURE      (1<<4)
 #define OPENGL_NS_ANTIALIASING (1<<5)
 #define OPENGL_NS_2NDPASSNEED  (1<<6)

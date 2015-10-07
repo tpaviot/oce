@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "12DE0336186613010BD80A9E"
+               BlueprintIdentifier = "0C2D004D032E06160C6E0DFF"
                BuildableName = "libTKPShape.dylib"
                BlueprintName = "TKPShape"
                ReferencedContainer = "container:TKPShape.xcodeproj">

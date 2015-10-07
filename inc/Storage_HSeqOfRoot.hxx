@@ -71,8 +71,6 @@ public:
      const  Storage_SeqOfRoot& Sequence()  const;
   
       Storage_SeqOfRoot& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(Storage_HSeqOfRoot) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(Storage_HSeqOfRoot) ShallowCopy(const Handle(Storage_HSeqOfRoot)& me) {
- return me->ShallowCopy();
-}
 
 
 

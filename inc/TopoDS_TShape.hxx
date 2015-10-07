@@ -39,7 +39,7 @@ class TopoDS_ListOfShape;
 //! - Modified   : Has been modified.
 //! - Checked    : Has been checked.
 //! - Orientable : Can be oriented.
-//! - Closed     : Is closed.
+//! - Closed     : Is closed (note that only Wires and Shells may be closed).
 //! - Infinite   : Is infinite.
 //! - Convex     : Is convex.
 //!

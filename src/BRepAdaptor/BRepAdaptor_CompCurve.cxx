@@ -28,22 +28,48 @@
 #include <TopExp.hxx>
 
 BRepAdaptor_CompCurve::BRepAdaptor_CompCurve()
+: TFirst  (0.0),
+  TLast   (0.0),
+  PTol    (0.0),
+  myPeriod(0.0),
+  CurIndex(-1),
+  Forward (Standard_False),
+  IsbyAC  (Standard_False),
+  Periodic(Standard_False)
 {
 }
 
-BRepAdaptor_CompCurve::BRepAdaptor_CompCurve(const TopoDS_Wire& W,
-					     const Standard_Boolean AC)
+BRepAdaptor_CompCurve::BRepAdaptor_CompCurve(const TopoDS_Wire&     theWire,
+                                             const Standard_Boolean theIsAC)
+: myWire  (theWire),
+  TFirst  (0.0),
+  TLast   (0.0),
+  PTol    (0.0),
+  myPeriod(0.0),
+  CurIndex(-1),
+  Forward (Standard_False),
+  IsbyAC  (theIsAC),
+  Periodic(Standard_False)
 {
-  Initialize(W, AC);
+  Initialize(theWire, theIsAC);
 }
 
-BRepAdaptor_CompCurve::BRepAdaptor_CompCurve(const TopoDS_Wire& W,
-					     const Standard_Boolean AC,
-					     const Standard_Real First,
-					     const Standard_Real Last,
-					     const Standard_Real Tol)
+BRepAdaptor_CompCurve::BRepAdaptor_CompCurve(const TopoDS_Wire& theWire,
+                                             const Standard_Boolean theIsAC,
+                                             const Standard_Real theFirst,
+                                             const Standard_Real theLast,
+                                             const Standard_Real theTolerance)
+: myWire  (theWire),
+  TFirst  (theFirst),
+  TLast   (theLast),
+  PTol    (theTolerance),
+  myPeriod(0.0),
+  CurIndex(-1),
+  Forward (Standard_False),
+  IsbyAC  (theIsAC),
+  Periodic(Standard_False)
 {
-  Initialize(W, AC, First, Last, Tol);
+  Initialize(theWire, theIsAC, theFirst, theLast, theTolerance);
 }
 
  void BRepAdaptor_CompCurve::Initialize(const TopoDS_Wire& W,
@@ -200,7 +226,7 @@ const TopoDS_Wire& BRepAdaptor_CompCurve::Wire() const
   return myCurves->Value(1).Continuity();
 }
 
- Standard_Integer BRepAdaptor_CompCurve::NbIntervals(const GeomAbs_Shape S)
+ Standard_Integer BRepAdaptor_CompCurve::NbIntervals(const GeomAbs_Shape S) const
 {
   Standard_Integer NbInt, ii;
   for (ii=1, NbInt=0; ii<=myCurves->Length(); ii++)
@@ -210,7 +236,7 @@ const TopoDS_Wire& BRepAdaptor_CompCurve::Wire() const
 }
 
  void BRepAdaptor_CompCurve::Intervals(TColStd_Array1OfReal& T,
-				       const GeomAbs_Shape S)
+                                       const GeomAbs_Shape S) const
 {
   Standard_Integer ii, jj, kk, n;
   Standard_Real f, F, delta;

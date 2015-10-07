@@ -42,6 +42,8 @@
 #include <TopTools_SequenceOfShape.hxx>
 #include <Precision.hxx>
 #include <Draw_ProgressIndicator.hxx>
+#include <NCollection_Vector.hxx>
+#include <BRepBuilderAPI_FastSewing.hxx>
 
 #ifdef _WIN32
 //#define strcasecmp strcmp Already defined
@@ -178,7 +180,7 @@ static Standard_Integer mksurface(Draw_Interpretor& , Standard_Integer n, const 
 // mkplane
 //=======================================================================
 
-static Standard_Integer mkplane(Draw_Interpretor& , Standard_Integer n, const char** a)
+static Standard_Integer mkplane(Draw_Interpretor& theDI, Standard_Integer n, const char** a)
 {
   if (n < 3) return 1;
 
@@ -190,9 +192,30 @@ static Standard_Integer mkplane(Draw_Interpretor& , Standard_Integer n, const ch
     OnlyPlane =  !strcmp(a[3],"1");
   }
 
-  TopoDS_Face F = BRepBuilderAPI_MakeFace(TopoDS::Wire(S), OnlyPlane);
+  BRepBuilderAPI_MakeFace aMF(TopoDS::Wire(S), OnlyPlane);
 
-  DBRep::Set(a[1],F);
+  switch(aMF.Error())
+  {
+  case BRepBuilderAPI_FaceDone:
+    DBRep::Set(a[1],aMF.Face());
+    break;
+  case BRepLib_NoFace:
+    theDI << "Error. mkplane has been finished with \"No Face\" status.\n";
+    break;
+  case BRepLib_NotPlanar:
+    theDI << "Error. mkplane has been finished with \"Not Planar\" status.\n";
+    break;
+  case BRepLib_CurveProjectionFailed:
+    theDI << "Error. mkplane has been finished with \"Fail in projection curve\" status.\n";
+    break;
+  case BRepLib_ParametersOutOfRange:
+    theDI << "Error. mkplane has been finished with \"Parameters are out of range\" status.\n";
+    break;
+  default:
+    theDI << "Error. Undefined status. Please check the code.\n";
+    break;
+  }
+
   return 0;
 }
 
@@ -405,6 +428,66 @@ static Standard_Integer sewing (Draw_Interpretor& theDi,
 }
 
 //=======================================================================
+//function : fastsewing
+//purpose  : 
+//=======================================================================
+Standard_Integer fastsewing (Draw_Interpretor& theDI, 
+                            Standard_Integer theNArg, 
+                            const char** theArgVal)
+{
+  if(theNArg < 3)
+  {
+    //                0         1       2     3         4
+    theDI << "Use: fastsewing result [-tol <value>] <list_of_faces>\n";
+    return 1;
+  }
+
+  BRepBuilderAPI_FastSewing aFS;
+
+  Standard_Integer aStartIndex = 2;
+
+  if(!strcmp(theArgVal[aStartIndex], "-tol"))
+  {
+    aFS.SetTolerance(Draw::Atof (theArgVal[aStartIndex+1]));
+    aStartIndex = 4;
+  }
+
+  for(Standard_Integer i = aStartIndex; i < theNArg; i++)
+  {
+    TopoDS_Shape aS = DBRep::Get(theArgVal[i]);
+    
+    if(!aFS.Add(aS))
+    {
+      theDI << "Face is not added. See statuses.\n";
+    }
+  }
+
+  BRepBuilderAPI_FastSewing::FS_VARStatuses aStatus = aFS.GetStatuses();
+
+  if(aStatus)
+  {
+    theDI << "Error: There are some problems while adding (" <<
+                        (static_cast<Standard_Integer>(aStatus)) << ")\n";
+    aFS.GetStatuses(&cout);
+  }
+
+  aFS.Perform();
+
+  aStatus = aFS.GetStatuses();
+
+  if(aStatus)
+  {
+    theDI << "Error: There are some problems while performing (" <<
+                        (static_cast<Standard_Integer>(aStatus)) << ")\n";
+    aFS.GetStatuses(&cout);
+  }
+
+  DBRep::Set(theArgVal[1], aFS.GetResult());
+
+  return 0;
+}
+
+//=======================================================================
 // continuity
 //=======================================================================
 
@@ -508,5 +591,8 @@ void  BRepTest::SurfaceCommands(Draw_Interpretor& theCommands)
   theCommands.Add("encoderegularity", 
 		  "encoderegularity shape [tolerance (in degree)]",
 		  __FILE__,encoderegularity, g);
+
+  theCommands.Add ("fastsewing", "fastsewing result [-tol <value>] <list_of_faces>", 
+                                                __FILE__, fastsewing, g);
 }
 

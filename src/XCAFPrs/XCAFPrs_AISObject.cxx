@@ -16,11 +16,12 @@
 #include <XCAFPrs_AISObject.hxx>
 
 #include <AIS_DisplayMode.hxx>
+#include <BRep_Builder.hxx>
 #include <BRepBndLib.hxx>
 #include <gp_Pnt.hxx>
 #include <Graphic3d_AspectFillArea3d.hxx>
 #include <Graphic3d_AspectLine3d.hxx>
-#include <Handle_AIS_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 #include <Prs3d_DimensionAspect.hxx>
 #include <Prs3d_IsoAspect.hxx>
 #include <Prs3d_LineAspect.hxx>
@@ -151,11 +152,40 @@ void XCAFPrs_AISObject::Compute (const Handle(PrsMgr_PresentationManager3d)& the
 
   SetColors (myDrawer, aColorCurv, aColorSurf);
 
-  // Set colors etc. for current shape according to style
-  for (XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle anIter( aSettings ); anIter.More(); anIter.Next())
+  // collect sub-shapes with the same style into compounds
+  BRep_Builder aBuilder;
+  NCollection_DataMap<XCAFPrs_Style, TopoDS_Compound, XCAFPrs_Style> aStyleGroups;
+  for (XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle aStyledShapeIter (aSettings);
+       aStyledShapeIter.More(); aStyledShapeIter.Next())
   {
-    Handle(AIS_ColoredDrawer) aDrawer = CustomAspects (anIter.Key());
-    const XCAFPrs_Style& aStyle = anIter.Value();
+    TopoDS_Compound aComp;
+    if (aStyleGroups.Find (aStyledShapeIter.Value(), aComp))
+    {
+      aBuilder.Add (aComp, aStyledShapeIter.Key());
+      continue;
+    }
+
+    aBuilder.MakeCompound (aComp);
+    aBuilder.Add (aComp, aStyledShapeIter.Key());
+    aStyleGroups.Bind (aStyledShapeIter.Value(), aComp);
+  }
+  aSettings.Clear();
+
+  // assign custom aspects
+  for (NCollection_DataMap<XCAFPrs_Style, TopoDS_Compound, XCAFPrs_Style>::Iterator aStyleGroupIter (aStyleGroups);
+       aStyleGroupIter.More(); aStyleGroupIter.Next())
+  {
+    const TopoDS_Compound& aComp = aStyleGroupIter.Value();
+    TopoDS_Iterator aShapeIter (aComp);
+    TopoDS_Shape aShape = aShapeIter.Value();
+    aShapeIter.Next();
+    if (aShapeIter.More())
+    {
+      aShape = aComp;
+    }
+
+    Handle(AIS_ColoredDrawer) aDrawer = CustomAspects (aShape);
+    const XCAFPrs_Style& aStyle = aStyleGroupIter.Key();
     aDrawer->SetHidden (!aStyle.IsVisible());
 
     aColorCurv = aStyle.IsSetColorCurv() ? aStyle.GetColorCurv() : aDefStyle.GetColorCurv();
@@ -163,6 +193,7 @@ void XCAFPrs_AISObject::Compute (const Handle(PrsMgr_PresentationManager3d)& the
 
     SetColors (aDrawer, aColorCurv, aColorSurf);
   }
+  aStyleGroups.Clear();
 
   AIS_ColoredShape::Compute (thePresentationManager, thePrs, theMode);
 
@@ -178,46 +209,67 @@ void XCAFPrs_AISObject::Compute (const Handle(PrsMgr_PresentationManager3d)& the
 //function : SetColors
 //purpose  :
 //=======================================================================
-void XCAFPrs_AISObject::SetColors (const Handle(AIS_Drawer)& theDrawer,
-                                   const Quantity_Color&     theColorCurv,
-                                   const Quantity_Color&     theColorSurf)
+void XCAFPrs_AISObject::SetColors (const Handle(Prs3d_Drawer)& theDrawer,
+                                   const Quantity_Color&       theColorCurv,
+                                   const Quantity_Color&       theColorSurf)
 {
-  if (!theDrawer->HasShadingAspect())
+  if (!theDrawer->HasOwnShadingAspect())
   {
     theDrawer->SetShadingAspect (new Prs3d_ShadingAspect());
-    *theDrawer->ShadingAspect()->Aspect() = *theDrawer->Link()->ShadingAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->ShadingAspect()->Aspect() = *theDrawer->Link()->ShadingAspect()->Aspect();
+    }
   }
-  if (!theDrawer->HasLineAspect())
+  if (!theDrawer->HasOwnLineAspect())
   {
     theDrawer->SetLineAspect (new Prs3d_LineAspect (Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.0));
-    *theDrawer->LineAspect()->Aspect() = *theDrawer->Link()->LineAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->LineAspect()->Aspect() = *theDrawer->Link()->LineAspect()->Aspect();
+    }
   }
-  if (!theDrawer->HasWireAspect())
+  if (!theDrawer->HasOwnWireAspect())
   {
     theDrawer->SetWireAspect (new Prs3d_LineAspect (Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.0));
-    *theDrawer->WireAspect()->Aspect() = *theDrawer->Link()->WireAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->WireAspect()->Aspect() = *theDrawer->Link()->WireAspect()->Aspect();
+    }
   }
-  if (!theDrawer->HasUIsoAspect())
+  if (!theDrawer->HasOwnUIsoAspect())
   {
     theDrawer->SetUIsoAspect (new Prs3d_IsoAspect (Quantity_NOC_GRAY75, Aspect_TOL_SOLID, 0.5, 1));
-    *theDrawer->UIsoAspect()->Aspect() = *theDrawer->Link()->UIsoAspect()->Aspect();
-    theDrawer->UIsoAspect()->SetNumber (theDrawer->Link()->UIsoAspect()->Number());
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->UIsoAspect()->Aspect() = *theDrawer->Link()->UIsoAspect()->Aspect();
+      theDrawer->UIsoAspect()->SetNumber (theDrawer->Link()->UIsoAspect()->Number());
+    }
   }
-  if (!theDrawer->HasVIsoAspect())
+  if (!theDrawer->HasOwnVIsoAspect())
   {
     theDrawer->SetVIsoAspect (new Prs3d_IsoAspect (Quantity_NOC_GRAY75, Aspect_TOL_SOLID, 0.5, 1));
-    *theDrawer->VIsoAspect()->Aspect() = *theDrawer->Link()->VIsoAspect()->Aspect();
-    theDrawer->VIsoAspect()->SetNumber (theDrawer->Link()->VIsoAspect()->Number());
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->VIsoAspect()->Aspect() = *theDrawer->Link()->VIsoAspect()->Aspect();
+      theDrawer->VIsoAspect()->SetNumber (theDrawer->Link()->VIsoAspect()->Number());
+    }
   }
-  if (!theDrawer->HasFreeBoundaryAspect())
+  if (!theDrawer->HasOwnFreeBoundaryAspect())
   {
     theDrawer->SetFreeBoundaryAspect (new Prs3d_LineAspect (Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.0));
-    *theDrawer->FreeBoundaryAspect()->Aspect() = *theDrawer->Link()->FreeBoundaryAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->FreeBoundaryAspect()->Aspect() = *theDrawer->Link()->FreeBoundaryAspect()->Aspect();
+    }
   }
-  if (!theDrawer->HasUnFreeBoundaryAspect())
+  if (!theDrawer->HasOwnUnFreeBoundaryAspect())
   {
     theDrawer->SetUnFreeBoundaryAspect (new Prs3d_LineAspect (Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.0));
-    *theDrawer->UnFreeBoundaryAspect()->Aspect() = *theDrawer->Link()->UnFreeBoundaryAspect()->Aspect();
+    if (theDrawer->HasLink())
+    {
+      *theDrawer->UnFreeBoundaryAspect()->Aspect() = *theDrawer->Link()->UnFreeBoundaryAspect()->Aspect();
+    }
   }
 
   theDrawer->UnFreeBoundaryAspect()->SetColor (theColorCurv);

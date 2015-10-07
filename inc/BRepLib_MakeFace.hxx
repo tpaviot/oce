@@ -15,6 +15,7 @@
 #include <Handle_Geom_Surface.hxx>
 #include <Standard_Real.hxx>
 #include <Standard_Boolean.hxx>
+#include <Handle_Geom_Curve.hxx>
 class StdFail_NotDone;
 class TopoDS_Face;
 class gp_Pln;
@@ -24,6 +25,7 @@ class gp_Sphere;
 class gp_Torus;
 class Geom_Surface;
 class TopoDS_Wire;
+class Geom_Curve;
 
 
 //! Provides methods to build faces.
@@ -152,6 +154,13 @@ public:
   //! Returns the new face.
   Standard_EXPORT  const  TopoDS_Face& Face()  const;
 Standard_EXPORT operator TopoDS_Face() const;
+  
+  //! Checks the specified curve is degenerated
+  //! according to specified tolerance.
+  //! Returns <theActTol> less than <theMaxTol>, which shows
+  //! actual tolerance to decide the curve is degenerated.
+  //! Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell.
+  Standard_EXPORT static   Standard_Boolean IsDegenerated (const Handle(Geom_Curve)& theCurve, const Standard_Real theMaxTol, Standard_Real& theActTol) ;
 
 
 

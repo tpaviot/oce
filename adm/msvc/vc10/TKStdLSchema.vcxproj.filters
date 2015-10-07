@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{5119A486-18E0-0811-1662-3C19068EFAE2}</UniqueIdentifier>
+      <UniqueIdentifier>{BC1413EC-0ED5-04D5-15CF-9F41CD992628}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdLSchema">
-      <UniqueIdentifier>{F948C091-10AF-1581-1712-D2227FD6EF74}</UniqueIdentifier>
+      <UniqueIdentifier>{98465BF3-168C-0799-05BA-F374F1827E4B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdLDrivers">
-      <UniqueIdentifier>{02DDEEA3-0BAE-034A-158B-486E9152F760}</UniqueIdentifier>
+      <UniqueIdentifier>{316E2FE3-0BDF-0F11-046A-5D1B35A54CDE}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

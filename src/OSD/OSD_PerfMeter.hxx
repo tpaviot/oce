@@ -59,7 +59,12 @@ public:
   void Flush() const { perf_close_imeter(myIMeter); }
 
   //! Assures stopping upon destruction
-  virtual ~OSD_PerfMeter() { if (myIMeter >= 0) Stop(); }
+  ~OSD_PerfMeter() { if (myIMeter >= 0) Stop(); }
+
+private:
+
+  OSD_PerfMeter(const OSD_PerfMeter&);
+  OSD_PerfMeter& operator= (const OSD_PerfMeter&);
 
 protected:
 

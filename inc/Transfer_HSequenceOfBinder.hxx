@@ -71,8 +71,6 @@ public:
      const  Transfer_SequenceOfBinder& Sequence()  const;
   
       Transfer_SequenceOfBinder& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(Transfer_HSequenceOfBinder) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(Transfer_HSequenceOfBinder) ShallowCopy(const Handle(Transfer_HSequenceOfBinder)& me) {
- return me->ShallowCopy();
-}
 
 
 

@@ -10,56 +10,59 @@
 #include <Standard_DefineAlloc.hxx>
 #include <Standard_Macro.hxx>
 
-#include <TopoDS_Shape.hxx>
-#include <Standard_Boolean.hxx>
+#include <TopTools_ListOfShape.hxx>
 #include <BOPAlgo_Operation.hxx>
-#include <Standard_Integer.hxx>
-#include <BOPAlgo_PPaveFiller.hxx>
-#include <BOPAlgo_PBuilder.hxx>
+#include <Standard_Boolean.hxx>
 #include <TopTools_DataMapOfShapeShape.hxx>
-#include <BRepBuilderAPI_MakeShape.hxx>
-class TopoDS_Shape;
+#include <BRepAlgoAPI_BuilderAlgo.hxx>
 class BOPAlgo_PaveFiller;
+class TopoDS_Shape;
 class TopTools_ListOfShape;
+
 
 
 //! The abstract class BooleanOperation is the root
 //! class of Boolean Operations (see Overview).
 //! Boolean Operations algorithm is divided onto two parts.
-//! -      The first one is computing interference between arguments.
-//! -      The second one is building the result of operation.
-//! The BooleanOperation class provides execution of both parts
-//! of the Boolean Operations algorithm. The second part
-//! (building the result) depends on given type of the Boolean
-//! Operation (see Constructor).
-class BRepAlgoAPI_BooleanOperation  : public BRepBuilderAPI_MakeShape
+//! - The first one is computing interference between arguments.
+//! - The second one is building the result of operation.
+//! The class BooleanOperation provides API level of both parts
+class BRepAlgoAPI_BooleanOperation  : public BRepAlgoAPI_BuilderAlgo
 {
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  //! Sets the type of Boolean operation to perform
-  //! It can be BOPAlgo_SECTION
-  //! BOPAlgo_COMMON
-  //! BOPAlgo_FUSE
-  //! BOPAlgo_CUT
-  //! BOPAlgo_CUT21
-  Standard_EXPORT   void SetOperation (const BOPAlgo_Operation anOp) ;
-  
-  //! Provides the algorithm of Boolean Operations
-  //! -      Filling interference Data Structure (if it is necessary)
-  //! -      Building the result of the operation.
-  Standard_EXPORT virtual   void Build() ;
-  
-  //! Returns the first shape involved in this Boolean operation.
+  //! Returns the first argument involved in this Boolean operation.
+  //! Obsolete
   Standard_EXPORT  const  TopoDS_Shape& Shape1()  const;
   
-  //! Returns the second shape involved in this Boolean operation.
+  //! Returns the second argument involved in this Boolean operation.
+  //! Obsolete
   Standard_EXPORT  const  TopoDS_Shape& Shape2()  const;
   
-  //! Returns the type of Boolean Operation that has been performed.
+  //! Sets the tools
+  Standard_EXPORT   void SetTools (const TopTools_ListOfShape& theLS) ;
+  
+  //! Gets the tools
+  Standard_EXPORT  const  TopTools_ListOfShape& Tools()  const;
+  
+  //! Sets the type of Boolean operation
+  Standard_EXPORT   void SetOperation (const BOPAlgo_Operation anOp) ;
+  
+  //! Returns the type of Boolean Operation
   Standard_EXPORT   BOPAlgo_Operation Operation()  const;
+Standard_EXPORT virtual ~BRepAlgoAPI_BooleanOperation();
+  
+  //! Performs the algorithm
+  //! Filling interference Data Structure (if it is necessary)
+  //! Building the result of the operation.
+  Standard_EXPORT virtual   void Build() ;
+  
+  //! Returns True if there was no errors occured
+  //! obsolete
+  Standard_EXPORT   Standard_Boolean BuilderCanWork()  const;
   
   //! Returns the flag of edge refining
   Standard_EXPORT   Standard_Boolean FuseEdges()  const;
@@ -67,19 +70,10 @@ public:
   //! Fuse C1 edges
   Standard_EXPORT   void RefineEdges() ;
   
-  Standard_EXPORT   Standard_Boolean BuilderCanWork()  const;
-  
-  //! Returns the error status of operation.
-  //! 0 - Ok
-  //! 1 - The Object is created but Nothing is Done
-  //! 2 - Null source shapes is not allowed
-  //! 3 - Check types of the arguments
-  //! 4 - Can not allocate memory for the DSFiller
-  //! 5 - The Builder can not work with such types of arguments
-  //! 6 - Unknown operation is not allowed
-  //! 7 - Can not allocate memory for the Builder
-  //! > 100 - See the Builder's  ErrorStatus
-  Standard_EXPORT   Standard_Integer ErrorStatus()  const;
+  //! Returns a list of section edges.
+  //! The edges represent the result of intersection between arguments of
+  //! Boolean Operation. They are computed during operation execution.
+  Standard_EXPORT  const  TopTools_ListOfShape& SectionEdges() ;
   
   //! Returns the list  of shapes modified from the shape <S>.
   Standard_EXPORT virtual  const  TopTools_ListOfShape& Modified (const TopoDS_Shape& aS) ;
@@ -103,14 +97,6 @@ public:
   //! Returns true if there is at least one deleted shape.
   //! For use in BRepNaming.
   Standard_EXPORT virtual   Standard_Boolean HasDeleted()  const;
-  
-  Standard_EXPORT   void Destroy() ;
-Standard_EXPORT virtual ~BRepAlgoAPI_BooleanOperation(){Destroy();}
-  
-  //! Returns a list of section edges.
-  //! The edges represent the result of intersection between arguments of
-  //! Boolean Operation. They are computed during operation execution.
-  Standard_EXPORT  const  TopTools_ListOfShape& SectionEdges() ;
 
 
 
@@ -118,33 +104,44 @@ Standard_EXPORT virtual ~BRepAlgoAPI_BooleanOperation(){Destroy();}
 protected:
 
   
-  //! Prepares the operations for S1 and S2.
+  //! Empty constructor
+  Standard_EXPORT BRepAlgoAPI_BooleanOperation();
+  
+  //! Empty constructor
+  //! <PF> - PaveFiller object that is carried out
+  Standard_EXPORT BRepAlgoAPI_BooleanOperation(const BOPAlgo_PaveFiller& PF);
+  
+  //! Constructor with two arguments
+  //! <S1>, <S2>  -arguments
+  //! <anOperation> - the type of the operation
+  //! Obsolete
   Standard_EXPORT BRepAlgoAPI_BooleanOperation(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_Operation anOperation);
   
-  //! Prepares the operations for S1 and S2.
-  Standard_EXPORT BRepAlgoAPI_BooleanOperation(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& aDSF, const BOPAlgo_Operation anOperation);
+  //! Constructor with two arguments
+  //! <S1>, <S2>  -arguments
+  //! <anOperation> - the type of the operation
+  //! <PF> - PaveFiller object that is carried out
+  //! Obsolete
+  Standard_EXPORT BRepAlgoAPI_BooleanOperation(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& PF, const BOPAlgo_Operation anOperation);
   
-  Standard_EXPORT   Standard_Boolean PrepareFiller() ;
-
-
-  TopoDS_Shape myS1;
-  TopoDS_Shape myS2;
-  Standard_Boolean myBuilderCanWork;
-  BOPAlgo_Operation myOperation;
-  Standard_Integer myErrorStatus;
-  BOPAlgo_PPaveFiller myDSFiller;
-  BOPAlgo_PBuilder myBuilder;
-
-
-private:
-
+  Standard_EXPORT virtual   void Clear() ;
+  
+  Standard_EXPORT virtual   void SetAttributes() ;
   
   //! Returns the list  of shapes generated from the shape <S>.
   //! For use in BRepNaming.
   Standard_EXPORT  const  TopTools_ListOfShape& RefinedList (const TopTools_ListOfShape& theL) ;
 
 
-  Standard_Integer myEntryType;
+  TopTools_ListOfShape myTools;
+  BOPAlgo_Operation myOperation;
+  Standard_Boolean myBuilderCanWork;
+
+
+private:
+
+
+
   Standard_Boolean myFuseEdges;
   TopTools_DataMapOfShapeShape myModifFaces;
   TopTools_DataMapOfShapeShape myEdgeMap;

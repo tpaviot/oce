@@ -68,9 +68,7 @@ public:
   //! containing the same number of MultiPoint.
   //! Each MultiPoint must have NbCurves Poles.
   Standard_EXPORT AppParCurves_MultiCurve(const AppParCurves_Array1OfMultiPoint& tabMU);
-  
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~AppParCurves_MultiCurve(){Delete();}
+  Standard_EXPORT virtual ~AppParCurves_MultiCurve();
   
   //! The number of poles of the MultiCurve
   //! will be set to <nbPoles>.

@@ -1,0 +1,4 @@
+#include <ShapeExtend_BasicMsgRegistrator.hxx>
+#include <TopoDS_Shape.hxx>
+#include <Message_Msg.hxx>
+#include <ShapeCustom_Modification.hxx>

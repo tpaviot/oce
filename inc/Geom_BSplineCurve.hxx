@@ -434,6 +434,15 @@ public:
   Standard_EXPORT   Standard_Boolean IsCN (const Standard_Integer N)  const;
   
 
+  //! Check if curve has at least G1 continuity in interval [theTf, theTl]
+  //! Returns true if IsCN(1)
+  //! or
+  //! angle betweem "left" and "right" first derivatives at
+  //! knots with C0 continuity is less then theAngTol
+  //! only knots in interval [theTf, theTl] is checked
+  Standard_EXPORT   Standard_Boolean IsG1 (const Standard_Real theTf, const Standard_Real theTl, const Standard_Real theAngTol)  const;
+  
+
   //! Returns true if the distance between the first point and the
   //! last point of the curve is lower or equal to Resolution
   //! from package gp.
@@ -596,6 +605,13 @@ public:
   //! Raised if the length of K is not equal to the number of knots.
   Standard_EXPORT   void Knots (TColStd_Array1OfReal& K)  const;
   
+  //! returns the knot values of the B-spline curve;
+  //! Warning
+  //! A knot with a multiplicity greater than 1 is not
+  //! repeated in the knot table. The Multiplicity function
+  //! can be used to obtain the multiplicity of each knot.
+  Standard_EXPORT  const  TColStd_Array1OfReal& Knots()  const;
+  
   //! Returns K, the knots sequence of this BSpline curve.
   //! In this sequence, knots with a multiplicity greater than 1 are repeated.
   //! In the case of a non-periodic curve the length of the
@@ -650,6 +666,10 @@ public:
   //! the appropriate length.Returns the knots sequence.
   Standard_EXPORT   void KnotSequence (TColStd_Array1OfReal& K)  const;
   
+  //! returns the knots of the B-spline curve.
+  //! Knots with multiplicit greater than 1 are repeated
+  Standard_EXPORT  const  TColStd_Array1OfReal& KnotSequence()  const;
+  
 
   //! Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
   //! If all the knots differ by a positive constant from the
@@ -702,6 +722,9 @@ public:
   //! Raised if the length of M is not equal to NbKnots.
   Standard_EXPORT   void Multiplicities (TColStd_Array1OfInteger& M)  const;
   
+  //! returns the multiplicity of the knots of the curve.
+  Standard_EXPORT  const  TColStd_Array1OfInteger& Multiplicities()  const;
+  
 
   //! Returns the number of knots. This method returns the number of
   //! knot without repetition of multiple knots.
@@ -719,6 +742,9 @@ public:
   //! Raised if the length of P is not equal to the number of poles.
   Standard_EXPORT   void Poles (TColgp_Array1OfPnt& P)  const;
   
+  //! Returns the poles of the B-spline curve;
+  Standard_EXPORT  const  TColgp_Array1OfPnt& Poles()  const;
+  
 
   //! Returns the start point of the curve.
   //! Warnings :
@@ -734,6 +760,9 @@ public:
   //!
   //! Raised if the length of W is not equal to NbPoles.
   Standard_EXPORT   void Weights (TColStd_Array1OfReal& W)  const;
+  
+  //! Returns the weights of the B-spline curve;
+  Standard_EXPORT  const  TColStd_Array1OfReal& Weights()  const;
   
   //! Applies the transformation T to this BSpline curve.
   Standard_EXPORT   void Transform (const gp_Trsf& T) ;

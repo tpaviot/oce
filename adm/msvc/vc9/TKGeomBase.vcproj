@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKGeomBase"
-	ProjectGUID="{B389A6D1-06D6-0BF3-0356-4129FE2BFE02}"
+	ProjectGUID="{85A71C69-06A4-13F0-0E66-BC0E53508DE2}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -543,12 +543,6 @@
 					RelativePath="..\..\..\drv\Approx\Approx_HArray1OfGTrsf2d_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Approx\Approx_MyLeastSquareOfFitAndDivide2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Approx\Approx_MyLeastSquareOfFitAndDivide_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Approx\Approx_SequenceNodeOfSequenceOfHArray1OfReal_0.cxx">
 				</File>
 				<File
@@ -693,12 +687,6 @@
 				Name="AppCont"
 				>
 				<File
-					RelativePath="..\..\..\drv\AppCont\AppCont_FitFunction2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\AppCont\AppCont_FitFunction_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\AppCont\AppCont_ContMatrices.cxx">
 				</File>
 				<File
@@ -714,16 +702,7 @@
 					RelativePath="..\..\..\src\AppCont\AppCont_ContMatrices_4.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\AppCont\AppCont_Function.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\AppCont\AppCont_Function2d.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\AppCont\AppCont_FunctionTool.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\AppCont\AppCont_FunctionTool2d.cxx">
+					RelativePath="..\..\..\src\AppCont\AppCont_LeastSquare.cxx">
 				</File>
 			</Filter>
 			<Filter
@@ -761,12 +740,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_ECC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_ELCC2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Extrema\Extrema_ELCC_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_ELPCOfLocateExtPC2d_0.cxx">

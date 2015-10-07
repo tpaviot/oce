@@ -79,6 +79,9 @@ public:
   //! Use the Build function to construct the shape.
   Standard_EXPORT   void AddVertex (const TopoDS_Vertex& aVertex) ;
   
+  //! Sets/unsets the option to
+  //! compute origin and orientation on wires to avoid twisted results
+  //! and update wires to have same number of edges.
   Standard_EXPORT   void CheckCompatibility (const Standard_Boolean check = Standard_True) ;
   
   //! Define the approximation algorithm

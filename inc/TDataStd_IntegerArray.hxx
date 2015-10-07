@@ -42,6 +42,7 @@ public:
   //! Finds or creates on the <label> an integer array attribute
   //! with the specified <lower> and <upper> boundaries.
   //! If <isDelta> == False, DefaultDeltaOnModification is used.
+  //! If <isDelta> == True, DeltaOnModification of the current attribute is used.
   //! If attribute is already set, all input parameters are refused and the found
   //! attribute is returned.
   Standard_EXPORT static   Handle(TDataStd_IntegerArray) Set (const TDF_Label& label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False) ;

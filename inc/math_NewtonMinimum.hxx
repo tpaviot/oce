@@ -30,39 +30,26 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  //! -- Given the  starting   point  StartingPoint,
-  //! The tolerance  required on  the  solution is given  by
-  //! Tolerance.
-  //! Iteration are  stopped if
-  //! (!WithSingularity)  and H(F(Xi)) is not definite
-  //! positive  (if the smaller eigenvalue of H < Convexity)
-  //! or IsConverged() returns True for 2 successives Iterations.
-  //! Warning: Obsolete Constructor (because IsConverged can not be redefined
-  //! with this. )
-  Standard_EXPORT math_NewtonMinimum(math_MultipleVarFunctionWithHessian& F, const math_Vector& StartingPoint, const Standard_Real Tolerance = 1.0e-7, const Standard_Integer NbIterations = 40, const Standard_Real Convexity = 1.0e-6, const Standard_Boolean WithSingularity = Standard_True);
-  
 
-  //! The tolerance  required on  the  solution is given  by
-  //! Tolerance.
-  //! Iteration are  stopped if
-  //! (!WithSingularity)  and H(F(Xi)) is not definite
-  //! positive  (if the smaller eigenvalue of H < Convexity)
+  //! The tolerance required on the solution is given by Tolerance.
+  //! Iteration are  stopped if (!WithSingularity) and H(F(Xi)) is not definite
+  //! positive (if the smaller eigenvalue of H < Convexity)
   //! or IsConverged() returns True for 2 successives Iterations.
-  //! Warning: This constructor do not computation
-  Standard_EXPORT math_NewtonMinimum(math_MultipleVarFunctionWithHessian& F, const Standard_Real Tolerance = 1.0e-7, const Standard_Integer NbIterations = 40, const Standard_Real Convexity = 1.0e-6, const Standard_Boolean WithSingularity = Standard_True);
-  
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~math_NewtonMinimum(){Delete();}
+  //! Warning: This constructor does not perform computation.
+  Standard_EXPORT math_NewtonMinimum(const math_MultipleVarFunctionWithHessian& theFunction, const Standard_Real theTolerance = 1.0e-7, const Standard_Integer theNbIterations = 40, const Standard_Real theConvexity = 1.0e-6, const Standard_Boolean theWithSingularity = Standard_True);
   
   //! Search the solution.
-  Standard_EXPORT   void Perform (math_MultipleVarFunctionWithHessian& F, const math_Vector& StartingPoint) ;
+  Standard_EXPORT   void Perform (math_MultipleVarFunctionWithHessian& theFunction, const math_Vector& theStartingPoint) ;
   
-  //! This method is  called    at the end  of   each
-  //! iteration to  check the convergence :
-  //! || Xi+1 - Xi || < Tolerance
-  //! or || F(Xi+1) - F(Xi)|| < Tolerance * || F(Xi) ||
-  //! It can be  redefined in a sub-class to implement a specific  test.
-  Standard_EXPORT virtual   Standard_Boolean IsConverged()  const;
+  //! Destructor alias.
+      void Delete()  const;
+  Standard_EXPORT virtual ~math_NewtonMinimum();
+  
+
+  //! This method is called at the end of each iteration to check the convergence:
+  //! || Xi+1 - Xi || < Tolerance or || F(Xi+1) - F(Xi)|| < Tolerance * || F(Xi) ||
+  //! It can be redefined in a sub-class to implement a specific test.
+    virtual   Standard_Boolean IsConverged()  const;
   
   //! Tests if an error has occured.
       Standard_Boolean IsDone()  const;
@@ -79,6 +66,9 @@ Standard_EXPORT virtual ~math_NewtonMinimum(){Delete();}
   //! Exception DimensionError is raised if the range of Loc is not
   //! equal to the range of the StartingPoint.
       void Location (math_Vector& Loc)  const;
+  
+  //! Set boundaries.
+  Standard_EXPORT   void SetBoundary (const math_Vector& theLeftBorder, const math_Vector& theRightBorder) ;
   
   //! returns the value of the minimum.
   //! Exception NotDone is raised if the minimum was not found.
@@ -124,6 +114,9 @@ protected:
   Standard_Integer nbiter;
   Standard_Boolean NoConvexTreatement;
   Standard_Boolean Convex;
+  Standard_Boolean myIsBoundsDefined;
+  math_Vector myLeft;
+  math_Vector myRight;
 
 
 private:

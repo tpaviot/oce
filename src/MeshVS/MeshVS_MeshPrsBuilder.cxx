@@ -326,10 +326,6 @@ void MeshVS_MeshPrsBuilder::BuildElements( const Handle(Prs3d_Presentation)& Prs
     aEdgeSegments = new Graphic3d_ArrayOfSegments (aNbEdgePrimitives * 2);
   }
 
-  Standard_Integer howMany = 1;
-  if ( IsOverlapControl )
-    howMany = 2;
-
   TColStd_PackedMapOfInteger aCustomElements;
 
   Quantity_Color       anOldEdgeColor;
@@ -1064,6 +1060,13 @@ void MeshVS_MeshPrsBuilder::DrawArrays( const Handle(Prs3d_Presentation)& Prs,
 
   theFillAsp->Values( aStyle, anIntColor, aBackColor, anEdgeColor, aType, aWidth );
 
+  Standard_Boolean isSupressBackFaces = Standard_False;
+  Handle(MeshVS_Drawer) aDrawer = GetDrawer();
+  if (!aDrawer.IsNull())
+  {
+    aDrawer->GetBoolean (MeshVS_DA_SupressBackFaces, isSupressBackFaces);
+  }
+
   if ( IsPolygons && theFillAsp->FrontMaterial().Transparency()<0.01 )
   {
     Prs3d_Root::NewGroup ( Prs );
@@ -1079,26 +1082,21 @@ void MeshVS_MeshPrsBuilder::DrawArrays( const Handle(Prs3d_Presentation)& Prs,
     else
       theFillAsp->SetDistinguishOff();
 
+    aGroup->SetClosed (isSupressBackFaces);
+    Handle(Graphic3d_AspectFillArea3d) aFillAsp = new Graphic3d_AspectFillArea3d (*(theFillAsp.operator->()));
+    if (isSupressBackFaces)
+    {
+      aFillAsp->SuppressBackFace();
+    }
+    aGroup->SetPrimitivesAspect (aFillAsp);
+
     if( IsFacePolygons )
     {
-      aGroup->SetPrimitivesAspect ( theFillAsp );
       aGroup->AddPrimitiveArray ( thePolygons );
     }
 
     if( IsVolumePolygons )
     {
-      Handle( Graphic3d_AspectFillArea3d ) aCullFillAsp = 
-          new Graphic3d_AspectFillArea3d( *( theFillAsp.operator->() ) );
-
-      Standard_Boolean isSupressBackFaces = Standard_False;
-      Handle( MeshVS_Drawer ) aDrawer = GetDrawer();
-      if (!aDrawer.IsNull())
-        aDrawer->GetBoolean  ( MeshVS_DA_SupressBackFaces, isSupressBackFaces );
-
-      if (isSupressBackFaces)
-        aCullFillAsp->SuppressBackFace();
-
-      aGroup->SetPrimitivesAspect ( aCullFillAsp );
       aGroup->AddPrimitiveArray ( theVolumesInShad );
     }
   }
@@ -1149,26 +1147,21 @@ void MeshVS_MeshPrsBuilder::DrawArrays( const Handle(Prs3d_Presentation)& Prs,
     else
       theFillAsp->SetDistinguishOff();
 
+    aGroup->SetClosed (isSupressBackFaces);
+    Handle(Graphic3d_AspectFillArea3d) aFillAsp = new Graphic3d_AspectFillArea3d (*(theFillAsp.operator->()));
+    if (isSupressBackFaces)
+    {
+      aFillAsp->SuppressBackFace();
+    }
+    aGroup->SetPrimitivesAspect (aFillAsp);
+
     if( IsFacePolygons )
     {
-      aGroup->SetPrimitivesAspect ( theFillAsp );
       aGroup->AddPrimitiveArray ( thePolygons );
     }
 
     if( IsVolumePolygons )
     {
-      Handle( Graphic3d_AspectFillArea3d ) aCullFillAsp = 
-          new Graphic3d_AspectFillArea3d( *( theFillAsp.operator->() ) );
-
-      Standard_Boolean isSupressBackFaces = Standard_False;
-      Handle( MeshVS_Drawer ) aDrawer = GetDrawer();
-      if (!aDrawer.IsNull())
-        aDrawer->GetBoolean  ( MeshVS_DA_SupressBackFaces, isSupressBackFaces );
-
-      if (isSupressBackFaces)
-        aCullFillAsp->SuppressBackFace();
-
-      aGroup->SetPrimitivesAspect ( aCullFillAsp );
       aGroup->AddPrimitiveArray ( theVolumesInShad );
     }
   }

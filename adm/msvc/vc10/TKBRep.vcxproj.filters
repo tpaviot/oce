@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{B1DC288E-06C3-040F-0B94-D2021B886E53}</UniqueIdentifier>
+      <UniqueIdentifier>{BAEE97A8-1116-05EB-0A08-971855BE852A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopoDS">
-      <UniqueIdentifier>{031736FE-1693-00CE-0E8E-A1F998098ACB}</UniqueIdentifier>
+      <UniqueIdentifier>{1898AE2C-18E3-1340-16C1-2D2D21EDF68C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopExp">
-      <UniqueIdentifier>{7727658B-17AE-1112-0EE3-134349A6AD42}</UniqueIdentifier>
+      <UniqueIdentifier>{D568790B-1895-18C9-07B0-30A245ED7085}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopTools">
-      <UniqueIdentifier>{B8F37917-154F-1869-05BE-D68DF60248C9}</UniqueIdentifier>
+      <UniqueIdentifier>{76595F9E-036E-014D-1588-E7DDA588B402}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRep">
-      <UniqueIdentifier>{F8AEB279-063D-18D0-16A6-A6F8F1219DBA}</UniqueIdentifier>
+      <UniqueIdentifier>{E1F84C47-0CBA-0837-14F8-F92D510E2908}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepLProp">
-      <UniqueIdentifier>{FA59E692-048A-115C-077B-5D2FE2F2DF3E}</UniqueIdentifier>
+      <UniqueIdentifier>{A7E4DDEA-0F55-1815-10BA-B68A061FCEDA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAdaptor">
-      <UniqueIdentifier>{1E6BBA93-071F-0356-0DDD-8B9D97172CFD}</UniqueIdentifier>
+      <UniqueIdentifier>{457E9767-180E-16A4-03EF-77AB9BA360D7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepTools">
-      <UniqueIdentifier>{8AB5E3CA-106A-06D6-0B15-F0FCB65F13C6}</UniqueIdentifier>
+      <UniqueIdentifier>{2B0227F9-173E-0F67-1162-FF0C6D88F330}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinTools">
-      <UniqueIdentifier>{0B348FAA-141A-00AC-00F1-57BB73D3ADF9}</UniqueIdentifier>
+      <UniqueIdentifier>{15DB413E-0073-0055-1407-2B8C4004D25A}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

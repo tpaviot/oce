@@ -33,6 +33,7 @@
 #include <BSplCLib.hxx>
 #include <BSplCLib_KnotDistribution.hxx>
 #include <BSplCLib_MultDistribution.hxx>
+#include <Precision.hxx>
 #include <Standard_NotImplemented.hxx>
 #include <Standard_ConstructionError.hxx>
 #include <Standard_OutOfRange.hxx>
@@ -686,7 +687,7 @@ void Geom2d_BSplineCurve::Segment(const Standard_Real aU1,
   Standard_DomainError_Raise_if ( aU2 < aU1, "Geom2d_BSplineCurve::Segment");
   //
   Standard_Real AbsUMax = Max(Abs(FirstParameter()),Abs(LastParameter()));
-  Standard_Real Eps = Epsilon(AbsUMax);
+  Standard_Real Eps = Max (Epsilon(AbsUMax), Precision::PConfusion());
   Standard_Real NewU1, NewU2;
   Standard_Real U, DU=0;
   Standard_Integer i, k, index;
@@ -1326,12 +1327,15 @@ void Geom2d_BSplineCurve::ValidateCache(const Standard_Real  Parameter)
   //
   // check if the degree did not change
   //
-  if (cachepoles->Upper() < deg + 1) {
+  if (cachepoles->Upper() < deg + 1)
     cachepoles = new TColgp_HArray1OfPnt2d(1,deg + 1);
-    if (rational) {
-      cacheweights  = new TColStd_HArray1OfReal(1,deg + 1);
-    }
+  if (rational)
+  {
+    if (cacheweights.IsNull() || cacheweights->Upper() < deg + 1)
+     cacheweights  = new TColStd_HArray1OfReal(1,deg + 1);
   }
+  else if (!cacheweights.IsNull())
+    cacheweights.Nullify();
 
   BSplCLib::LocateParameter(deg,
 			    (flatknots->Array1()),

@@ -64,6 +64,7 @@ uses
     Shape     from TopoDS,
     Wire      from TopoDS,
     Face      from TopoDS,
+    Edge      from TopoDS,
     SequenceOfIntersectionPoint from IntRes2d,
     SequenceOfPnt               from TColgp,
     SequenceOfReal              from TColStd,
@@ -490,9 +491,9 @@ is
     	    	    	    	    Tolerance: Real = 0.0) returns Boolean;
     	---Purpose: Detects a notch
 
-    CheckSmallArea (me: mutable; prec2d : Real = 0)
+    CheckSmallArea (me: mutable; theWire : Wire from TopoDS; theIsOuterWire : Boolean)
     returns Boolean;
-    	---Purpose: Checks if wire has parametric area less than prec2d.
+    	---Purpose: Checks if wire has parametric area less than precision.
 		 
     CheckShapeConnect (me : mutable; shape : Shape from TopoDS; prec: Real = 0.0)
     returns Boolean;
@@ -545,6 +546,17 @@ is
     	    	    	     aMapSeemEdges : out MapOfShape from TopTools) returns Boolean;
     	---Purpose: Checks existance of loop on wire and return vertices wich are loop vertices 
 -- (vertices belonging to a few pairs of edges)
+
+    CheckTail(me : mutable;
+      theEdge1: in Edge from TopoDS;
+      theEdge2: in Edge from TopoDS;
+      theMaxSine: in Real;
+      theMaxWidth: in Real;
+      theMaxTolerance: in Real;
+      theEdge11: out Edge from TopoDS;
+      theEdge12: out Edge from TopoDS;
+      theEdge21: out Edge from TopoDS;
+      theEdge22: out Edge from TopoDS) returns Boolean;
 	
     	
     	---Status after checking :

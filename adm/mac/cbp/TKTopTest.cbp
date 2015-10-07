@@ -217,12 +217,15 @@
 		<Unit filename="../../../src/DrawFairCurve/DrawFairCurve_Batten.cxx" />
 		<Unit filename="../../../src/DrawFairCurve/DrawFairCurve_MinimalVariation.cxx" />
 		<Unit filename="../../../src/BOPTest/BOPTest.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_APICommands.cxx" />
 		<Unit filename="../../../src/BOPTest/BOPTest_BOPCommands.cxx" />
 		<Unit filename="../../../src/BOPTest/BOPTest_CheckCommands.cxx" />
 		<Unit filename="../../../src/BOPTest/BOPTest_DrawableShape.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_HistoryCommands.cxx" />
 		<Unit filename="../../../src/BOPTest/BOPTest_LowCommands.cxx" />
 		<Unit filename="../../../src/BOPTest/BOPTest_ObjCommands.cxx" />
 		<Unit filename="../../../src/BOPTest/BOPTest_Objects.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_OptionCommands.cxx" />
 		<Unit filename="../../../src/BOPTest/BOPTest_PartitionCommands.cxx" />
 		<Unit filename="../../../src/BOPTest/BOPTest_TolerCommands.cxx" />
 		<Unit filename="../../../src/SWDRAW/SWDRAW.cxx" />

@@ -10,25 +10,28 @@
 #include <Standard_DefineHandle.hxx>
 #include <Handle_PrsMgr_PresentationManager.hxx>
 
-#include <Handle_Graphic3d_StructureManager.hxx>
+#include <Handle_Visual3d_ViewManager.hxx>
 #include <Standard_Integer.hxx>
 #include <PrsMgr_ListOfPresentations.hxx>
 #include <Handle_V3d_View.hxx>
+#include <Quantity_Color.hxx>
 #include <MMgt_TShared.hxx>
 #include <Handle_PrsMgr_PresentableObject.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Handle_Geom_Transformation.hxx>
+#include <Handle_Graphic3d_StructureManager.hxx>
 #include <Graphic3d_NameOfMaterial.hxx>
 #include <Handle_Prs3d_ShadingAspect.hxx>
 #include <Handle_PrsMgr_Presentation.hxx>
-class Graphic3d_StructureManager;
+class Visual3d_ViewManager;
 class V3d_View;
 class Standard_NoSuchObject;
 class PrsMgr_PresentableObject;
 class Prs3d_Presentation;
 class Geom_Transformation;
+class Graphic3d_StructureManager;
 class Prs3d_ShadingAspect;
 class PrsMgr_Presentation;
 
@@ -45,7 +48,7 @@ public:
   
 
   //! Creates a framework to manage displays and graphic entities with the 3D view theStructureManager.
-  Standard_EXPORT PrsMgr_PresentationManager(const Handle(Graphic3d_StructureManager)& theStructureManager);
+  Standard_EXPORT PrsMgr_PresentationManager(const Handle(Visual3d_ViewManager)& theStructureManager);
   
   //! Displays the presentation of the object in the given Presentation manager with the given mode.
   //! The mode should be enumerated by the object which inherits PresentableObject.
@@ -118,7 +121,7 @@ public:
   //! Highlights the graphic object thePrsObject in the color theColor.
   //! thePrsObject has the display mode theMode;
   //! this has the default value of 0, that is, the wireframe display mode.
-  Standard_EXPORT   void Color (const Handle(PrsMgr_PresentableObject)& thePrsObject, const Quantity_NameOfColor theColor = Quantity_NOC_YELLOW, const Standard_Integer theMode = 0) ;
+  Standard_EXPORT   void Color (const Handle(PrsMgr_PresentableObject)& thePrsObject, const Quantity_NameOfColor theColor = Quantity_NOC_YELLOW, const Standard_Integer theMode = 0, const Handle(PrsMgr_PresentableObject)& theSelObj = NULL) ;
   
   //! highlights the boundbox of the presentation
   Standard_EXPORT   void BoundBox (const Handle(PrsMgr_PresentableObject)& thePrsObject, const Standard_Integer theMode = 0) ;
@@ -143,8 +146,10 @@ public:
   //! presentable object thePrsObject in this framework, thePrsObject having the display mode theMode.
   Standard_EXPORT   Standard_Boolean HasPresentation (const Handle(PrsMgr_PresentableObject)& thePrsObject, const Standard_Integer theMode = 0)  const;
   
-  //! Returns the presentation Presentation of the presentable object thePrsObject in this framework. thePrsObject has the display mode theMode.
-  Standard_EXPORT   Handle(PrsMgr_Presentation) Presentation (const Handle(PrsMgr_PresentableObject)& thePrsObject, const Standard_Integer theMode = 0)  const;
+  //! Returns the presentation Presentation of the presentable object thePrsObject in this framework.
+  //! When theToCreate is true - automatically creates presentation for specified mode when not exist.
+  //! Optional argument theSelObj specifies parent decomposed object to inherit its view affinity.
+  Standard_EXPORT   Handle(PrsMgr_Presentation) Presentation (const Handle(PrsMgr_PresentableObject)& thePrsObject, const Standard_Integer theMode = 0, const Standard_Boolean theToCreate = Standard_False, const Handle(PrsMgr_PresentableObject)& theSelObj = NULL)  const;
 
 
 
@@ -154,17 +159,14 @@ public:
 protected:
 
   
-  //! Adds a presentation of the presentable object thePrsObject to this framework.
-  //! thePrsObject has the display mode theMode.
-  Standard_EXPORT   void AddPresentation (const Handle(PrsMgr_PresentableObject)& thePrsObject, const Standard_Integer theMode = 0) ;
-  
   //! Removes a presentation of the presentable object thePrsObject to this framework. thePrsObject has the display mode theMode.
-  Standard_EXPORT   void RemovePresentation (const Handle(PrsMgr_PresentableObject)& thePrsObject, const Standard_Integer theMode = 0) ;
+  Standard_EXPORT   Standard_Boolean RemovePresentation (const Handle(PrsMgr_PresentableObject)& thePrsObject, const Standard_Integer theMode = 0) ;
 
-  Handle(Graphic3d_StructureManager) myStructureManager;
+  Handle(Visual3d_ViewManager) myStructureManager;
   Standard_Integer myImmediateModeOn;
   PrsMgr_ListOfPresentations myImmediateList;
   Handle(V3d_View) myImmediateView;
+  Quantity_Color mySelectionColor;
 
 
 private: 

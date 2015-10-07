@@ -103,11 +103,6 @@ extern void ChFi3d_InitChron(OSD_Chronometer& ch);
 extern void ChFi3d_ResultChron(OSD_Chronometer & ch, Standard_Real& time);
 #endif
 
-//  Modified by Sergey KHROMOV - Fri Dec 21 17:08:19 2001 Begin
-Standard_Boolean isTangentFaces(const TopoDS_Edge &theEdge,
-				const TopoDS_Face &theFace1,
-				const TopoDS_Face &theFace2);
-//  Modified by Sergey KHROMOV - Fri Dec 21 17:08:19 2001 End
 
 //===================================================================
 //   Definition by a plane   
@@ -244,7 +239,7 @@ static Standard_Boolean BonVoisin(const gp_Pnt& Point,
 //  Modified by Sergey KHROMOV - Fri Dec 21 17:12:48 2001 Begin
 // 	    Standard_Boolean istg = 
 // 	      BRep_Tool::Continuity(ecur,ff,F) != GeomAbs_C0;
- 	    Standard_Boolean istg = isTangentFaces(ecur,ff,F);
+ 	    Standard_Boolean istg = ChFi3d_isTangentFaces(ecur,ff,F);
 //  Modified by Sergey KHROMOV - Fri Dec 21 17:12:51 2001 End
 	    if((!issame || (issame && isreallyclosed)) && istg) {
 	      found = 1;
@@ -450,7 +445,7 @@ Standard_Boolean IsG1(const ChFiDS_Map&         TheMap,
       FVoi = TopoDS::Face(It.Value());
 //  Modified by Sergey KHROMOV - Fri Dec 21 17:09:32 2001 Begin
 //    if (BRep_Tool::Continuity(E,FRef,FVoi) != GeomAbs_C0) {
-      if (isTangentFaces(E,FRef,FVoi)) {
+      if (ChFi3d_isTangentFaces(E,FRef,FVoi)) {
 //  Modified by Sergey KHROMOV - Fri Dec 21 17:09:33 2001 End
 	return Standard_True;
       }
@@ -470,7 +465,7 @@ Standard_Boolean IsG1(const ChFiDS_Map&         TheMap,
 	FVoi = FRef;
 //  Modified by Sergey KHROMOV - Fri Dec 21 17:15:12 2001 Begin
 // 	if (BRep_Tool::Continuity(E,FRef,FRef) >= GeomAbs_G1) {	  
-	if (isTangentFaces(E,FRef,FRef)) {
+	if (ChFi3d_isTangentFaces(E,FRef,FRef)) {
 //  Modified by Sergey KHROMOV - Fri Dec 21 17:15:16 2001 End
 	  return Standard_True;
 	}
@@ -1862,10 +1857,13 @@ void ChFi3d_Builder::PerformSetOfSurfOnElSpine
   Standard_Real wl = Guide.LastParameter();
   Standard_Real locfleche = (wl - wf) * fleche;
   Standard_Real wfsav = wf, wlsav = wl;
-  //Now the ElSpine is artificially extended to help rsnld.
-  Standard_Real prab = 0.01;
-  Guide.FirstParameter(wf-prab*(wl-wf));
-  Guide.LastParameter (wl+prab*(wl-wf));
+  if (!Guide.IsPeriodic())
+  {
+    //Now the ElSpine is artificially extended to help rsnld.
+    Standard_Real prab = 0.01;
+    Guide.FirstParameter(wf-prab*(wl-wf));
+    Guide.LastParameter (wl+prab*(wl-wf));
+  }
   Handle(ChFiDS_Spine)&  Spine = Stripe->ChangeSpine();
   Standard_Integer ii, nbed = Spine->NbEdges();
   Standard_Real lastedlastp = Spine->LastParameter(nbed);
@@ -1920,7 +1918,9 @@ void ChFi3d_Builder::PerformSetOfSurfOnElSpine
     Last = wf;
     if(Guide.IsPeriodic()) {
       Last = First - Guide.Period();
+      Guide.SaveFirstParameter();
       Guide.FirstParameter(Last);
+      Guide.SaveLastParameter();
       Guide.LastParameter (First * 1.1);//Extension to help rsnld.
     }
   }

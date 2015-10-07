@@ -14,6 +14,7 @@
 #include <Bisector_Curve.hxx>
 #include <Handle_Geom2d_Curve.hxx>
 #include <Standard_Real.hxx>
+#include <GeomAbs_JoinType.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_Geom2d_Point.hxx>
 #include <Handle_GccInt_Bisec.hxx>
@@ -47,7 +48,7 @@ public:
   //! <Cu1> and <Cu2>.
   //! <oncurve> is True if the point <P> is common to <Cu1>
   //! and <Cu2>.
-  Standard_EXPORT   void Perform (const Handle(Geom2d_Curve)& Cu1, const Handle(Geom2d_Curve)& Cu2, const gp_Pnt2d& P, const gp_Vec2d& V1, const gp_Vec2d& V2, const Standard_Real Sense, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True) ;
+  Standard_EXPORT   void Perform (const Handle(Geom2d_Curve)& Cu1, const Handle(Geom2d_Curve)& Cu2, const gp_Pnt2d& P, const gp_Vec2d& V1, const gp_Vec2d& V2, const Standard_Real Sense, const GeomAbs_JoinType jointype, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True) ;
   
   //! Performs  the bisecting line  between the  curve
   //! <Cu1> and the point <Pnt>.
@@ -147,7 +148,7 @@ private:
   
   //! Returns the distance between the point <P> and
   //! the bisecting <Bis>.
-  Standard_EXPORT   Standard_Real Distance (const gp_Pnt2d& P, const Handle(GccInt_Bisec)& Bis, const gp_Vec2d& V1, const gp_Vec2d& V2, const Standard_Real Sense, Standard_Real& U, Standard_Boolean& sense, Standard_Boolean& ok) ;
+  Standard_EXPORT   Standard_Real Distance (const gp_Pnt2d& P, const Handle(GccInt_Bisec)& Bis, const gp_Vec2d& V1, const gp_Vec2d& V2, const gp_Vec2d& VecRef, const Standard_Real Sense, Standard_Real& U, Standard_Boolean& sense, Standard_Boolean& ok, const Standard_Boolean IsBisecOfTwoLines = Standard_False) ;
 
   Handle(Geom2d_TrimmedCurve) thebisector;
 

@@ -83,6 +83,18 @@ public:
   
   //! Returns the list of closing faces stores by AddFace
   Standard_EXPORT  const  TopTools_IndexedMapOfShape& ClosingFaces()  const;
+  
+  //! Makes pre analysis of possibility offset perform. Use method Error() to get more information.
+  //! Finds first error. List of checks:
+  //! 1) Check for existence object with non-null offset.
+  //! 2) Check for connectivity in offset shell.
+  //! 3) Check continuity of input surfaces.
+  //! 4) Check for normals existence on grid.
+  //! @return 1 if possible make computations and 0 if not possible.
+  Standard_EXPORT   Standard_Boolean CheckInputData() ;
+  
+  //! Return bad shape, which obtained in CheckInputData.
+  Standard_EXPORT  const  TopoDS_Shape& GetBadShape()  const;
 
 
 
@@ -152,6 +164,8 @@ private:
   Standard_Boolean myDone;
   BRepOffset_Error myError;
   BRepOffset_MakeLoops myMakeLoops;
+  TopoDS_Shape myBadShape;
+  Standard_Boolean myIsPerformSewing;
 
 
 };

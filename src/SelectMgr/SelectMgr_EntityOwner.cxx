@@ -55,11 +55,8 @@ void SelectMgr_EntityOwner::Set(const Handle(SelectMgr_SelectableObject)& aSO)
 }
 
 Standard_Boolean SelectMgr_EntityOwner::HasSelectable() const
-{  
-  Handle(Standard_Transient) aNull;
-  if(mySelectable != aNull.operator->()){
-    if(!Selectable().IsNull()) return Standard_True;}
-  return Standard_False;
+{
+  return mySelectable != NULL;
 }
 
 Handle(SelectMgr_SelectableObject) SelectMgr_EntityOwner::Selectable() const
@@ -129,7 +126,7 @@ void SelectMgr_EntityOwner::SetLocation(const TopLoc_Location&)
 
 TopLoc_Location SelectMgr_EntityOwner::Location() const
 {
-  return !HasSelectable() ? TopLoc_Location() : TopLoc_Location(mySelectable->Transformation());
+  return !HasLocation() ? TopLoc_Location() : TopLoc_Location(mySelectable->Transformation());
 }
 
 void SelectMgr_EntityOwner::ResetLocation()
@@ -153,8 +150,7 @@ Standard_Boolean SelectMgr_EntityOwner::IsForcedHilight () const
 //function : SetZLayer
 //purpose  :
 //=======================================================================
-void SelectMgr_EntityOwner::SetZLayer 
-  (const Handle(PrsMgr_PresentationManager)&,
-   const Standard_Integer)
+void SelectMgr_EntityOwner::SetZLayer (const Standard_Integer )
 {
+  //
 }

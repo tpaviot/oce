@@ -26,20 +26,7 @@
 #include <NCollection_IndexedDataMap.hxx>
 #include <Standard_Assert.hxx>
 #include <OSD_Timer.hxx>
-
-#ifdef HAVE_TBB
-  // On Windows, function TryEnterCriticalSection has appeared in Windows NT
-  // and is surrounded by #ifdef in MS VC++ 7.1 headers.
-  // Thus to use it we need to define appropriate macro saying that we will
-  // run on Windows NT 4.0 at least
-  #if ((defined(_WIN32) || defined(__WIN32__)) && !defined(_WIN32_WINNT))
-    #define _WIN32_WINNT 0x0501
-  #endif
-
-  #include <tbb/tbb.h>
-  #include <tbb/parallel_for.h>
-#endif
-
+#include <OSD_Parallel.hxx>
 #include <algorithm>
 #include <list>
 #include <set>
@@ -343,8 +330,6 @@ Standard_Boolean TestSort()
   return aResult;
 }
 
-#ifdef HAVE_TBB
-
 template <typename T>
 struct Invoker
 {
@@ -355,19 +340,19 @@ struct Invoker
 };
 
 //=======================================================================
-//function : TestTBB
+//function : TestParallel
 //purpose  :
 //=======================================================================
 template<class CollectionType, class StlType>
-Standard_Boolean TestTBB()
+Standard_Boolean TestParallel()
 {
   StlType* aVector (NULL);
   CollectionType* aCollec (NULL);
 
   CollectionFiller<CollectionType, StlType>::Perform (&aVector, &aCollec);
 
-  tbb::parallel_for_each (aVector->begin(), aVector->end(), Invoker<typename StlType::value_type>());
-  tbb::parallel_for_each (aCollec->begin(), aCollec->end(), Invoker<typename CollectionType::value_type>());
+  OSD_Parallel::ForEach(aVector->begin(), aVector->end(), Invoker<typename StlType::value_type>());
+  OSD_Parallel::ForEach(aCollec->begin(), aCollec->end(), Invoker<typename CollectionType::value_type>());
 
   typename StlType::iterator aVecIter = aVector->begin();
   typename CollectionType::iterator aColIter = aCollec->begin();
@@ -392,18 +377,18 @@ Standard_Boolean TestTBB()
 }
 
 //=======================================================================
-//function : TestDataMapTBB
+//function : TestDataMapParallel
 //purpose  :
 //=======================================================================
 template<class CollectionType, class T>
-Standard_Boolean TestDataMapTBB()
+Standard_Boolean TestDataMapParallel()
 {
   CollectionType* aCollec1 (NULL);
   CollectionType* aCollec2 (NULL);
 
   MapFiller<CollectionType, T>::Perform (&aCollec1, &aCollec2);
 
-  tbb::parallel_for_each (aCollec1->begin(), aCollec1->end(), Invoker<T>());
+  OSD_Parallel::ForEach(aCollec1->begin(), aCollec1->end(), Invoker<T>());
 
   // create OCCT-style iterator
   typename CollectionType::Iterator aOccIter (*aCollec2);
@@ -429,8 +414,6 @@ Standard_Boolean TestDataMapTBB()
 
   return aResult;
 }
-
-#endif
 
 //=======================================================================
 //function : TestMapIteration
@@ -605,17 +588,13 @@ static Standard_Integer QANListStlIterator (Draw_Interpretor&, Standard_Integer,
   std::cout << "NCollection_List<double> Replace:               " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-#ifdef HAVE_TBB
-
-  aResult = TestTBB<NCollection_List<int>, std::list<int> >();
-  std::cout << "NCollection_List<int> TBB:                      " <<
+  aResult = TestParallel< NCollection_List<int>, std::list<int> >();
+  std::cout << "NCollection_List<int> Parallel:                 " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-  aResult = TestTBB<NCollection_List<double>, std::list<double> >();
-  std::cout << "NCollection_List<double> TBB:                   " <<
+  aResult = TestParallel<NCollection_List<double>, std::list<double> >();
+  std::cout << "NCollection_List<double> Parallel:              " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
-
-#endif
 
   return 0;
 }
@@ -682,17 +661,13 @@ static Standard_Integer QANDataMapStlIterator (Draw_Interpretor&, Standard_Integ
   std::cout << "NCollection_DataMap<double> Iteration:          " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-#ifdef HAVE_TBB
-  
-  aResult = TestDataMapTBB<NCollection_DataMap<Standard_Integer, Standard_Integer>, Standard_Integer>();
-  std::cout << "NCollection_DataMap<int> TBB:                   " <<
+  aResult = TestDataMapParallel<NCollection_DataMap<Standard_Integer, Standard_Integer>, Standard_Integer>();
+  std::cout << "NCollection_DataMap<int> Parallel:              " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-  aResult = TestDataMapTBB<NCollection_DataMap<Standard_Real, Standard_Real>, Standard_Real>();
-  std::cout << "NCollection_DataMap<double> TBB:                " <<
+  aResult = TestDataMapParallel<NCollection_DataMap<Standard_Real, Standard_Real>, Standard_Real>();
+  std::cout << "NCollection_DataMap<double> Parallel:           " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
-
-#endif
 
   return 0;
 }
@@ -716,17 +691,13 @@ static Standard_Integer QANIndexedDataMapStlIterator (Draw_Interpretor&, Standar
   std::cout << "NCollection_IndexedDataMap<double> Iteration:   " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-#ifdef HAVE_TBB
-
-  aResult = TestDataMapTBB<NCollection_IndexedDataMap<Standard_Integer, Standard_Integer>, Standard_Integer>();
-  std::cout << "NCollection_IndexedDataMap<int> TBB:            " <<
+  aResult = TestDataMapParallel<NCollection_IndexedDataMap<Standard_Integer, Standard_Integer>, Standard_Integer>();
+  std::cout << "NCollection_IndexedDataMap<int> Parallel:       " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-  aResult = TestDataMapTBB<NCollection_IndexedDataMap<Standard_Real, Standard_Real>, Standard_Real>();
-  std::cout << "NCollection_IndexedDataMap<double> TBB:         " <<
+  aResult = TestDataMapParallel<NCollection_IndexedDataMap<Standard_Real, Standard_Real>, Standard_Real>();
+  std::cout << "NCollection_IndexedDataMap<double> Parallel:    " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
-
-#endif
 
   return 0;
 }
@@ -774,17 +745,13 @@ static Standard_Integer QANSequenceStlIterator (Draw_Interpretor&, Standard_Inte
   std::cout << "NCollection_Sequence<double> Reverse:           " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-#ifdef HAVE_TBB
-
-  aResult = TestTBB<NCollection_Sequence<int>, std::list<int> >();
-  std::cout << "NCollection_Sequence<int> TBB:                  " <<
+  aResult = TestParallel<NCollection_Sequence<int>, std::list<int> >();
+  std::cout << "NCollection_Sequence<int> Parallel:             " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-  aResult = TestTBB<NCollection_Sequence<double>, std::list<double> >();
-  std::cout << "NCollection_Sequence<double> TBB:               " <<
+  aResult = TestParallel<NCollection_Sequence<double>, std::list<double> >();
+  std::cout << "NCollection_Sequence<double> Parallel:          " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
-
-#endif
 
   return 0;
 }
@@ -841,17 +808,13 @@ static Standard_Integer QANVectorStlIterator (Draw_Interpretor&, Standard_Intege
   std::cout << "NCollection_Vector<double> Sort:                " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-#ifdef HAVE_TBB
-
-  aResult = TestTBB<NCollection_Vector<int>, std::vector<int> >();
-  std::cout << "NCollection_Vector<int> TBB:                    " <<
+  aResult = TestParallel<NCollection_Vector<int>, std::vector<int> >();
+  std::cout << "NCollection_Vector<int> Parallel:               " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-  aResult = TestTBB<NCollection_Vector<double>, std::vector<double> >();
-  std::cout << "NCollection_Vector<double> TBB:                 " <<
+  aResult = TestParallel<NCollection_Vector<double>, std::vector<double> >();
+  std::cout << "NCollection_Vector<double> Parallel:            " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
-
-#endif
 
   return 0;
 }
@@ -908,17 +871,13 @@ static Standard_Integer QANArray1StlIterator (Draw_Interpretor&, Standard_Intege
   std::cout << "NCollection_Array1<double> Sort:                " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-#ifdef HAVE_TBB
-
-  aResult = TestTBB<NCollection_Array1<int>, std::vector<int> >();
-  std::cout << "NCollection_Array1<int> TBB:                    " <<
+  aResult = TestParallel<NCollection_Array1<int>, std::vector<int> >();
+  std::cout << "NCollection_Array1<int> Parallel:               " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
 
-  aResult = TestTBB<NCollection_Array1<double>, std::vector<double> >();
-  std::cout << "NCollection_Array1<double> TBB:                 " <<
+  aResult = TestParallel<NCollection_Array1<double>, std::vector<double> >();
+  std::cout << "NCollection_Array1<double> Parallel:            " <<
     (aResult ? "SUCCESS" : "FAIL") << std::endl;
-
-#endif
 
   return 0;
 }
@@ -947,7 +906,7 @@ static Standard_Integer QANTestStlIterators (
 //purpose  :
 //=======================================================================
 template<class CollectionType, class StlType>
-void TestPerformanceRandomIterator()
+void TestPerformanceRandomIterator(Draw_Interpretor& di)
 {
   OSD_Timer aTimer;
 
@@ -986,12 +945,12 @@ void TestPerformanceRandomIterator()
 
     Standard_Real aOccTime = aTimer.ElapsedTime();
 
-    std::cout << aSize << "\t" << aStlTime << "\t" <<
-      aOccTime << "\t" << aOccTime / aStlTime << std::endl;
+    di << aSize << "\t" << aStlTime << "\t" <<
+      aOccTime << "\t" << aOccTime / aStlTime << "\n";
 
     // check that result is the same
     if ( ! std::equal (aVector->begin(), aVector->end(), aCollec->begin()) )
-      std::cout << "Error: sequences are not the same at the end!" << std::endl;
+      di << "Error: sequences are not the same at the end!" << "\n";
 
     delete aVector;
     delete aCollec;
@@ -1003,7 +962,7 @@ void TestPerformanceRandomIterator()
 //purpose  :
 //=======================================================================
 template<class CollectionType, class StlType>
-void TestPerformanceForwardIterator()
+void TestPerformanceForwardIterator(Draw_Interpretor& di)
 {
   OSD_Timer aTimer;
 
@@ -1038,12 +997,12 @@ void TestPerformanceForwardIterator()
 
     Standard_Real aOccTime = aTimer.ElapsedTime();
 
-    std::cout << aSize << "\t" << aStlTime << "\t" <<
-      aOccTime << "\t" << aOccTime / aStlTime << std::endl;
+    di << aSize << "\t" << aStlTime << "\t" <<
+      aOccTime << "\t" << aOccTime / aStlTime << "\n";
 
     // check that result is the same
     if ( ! std::equal (aVector->begin(), aVector->end(), aCollec->begin()) )
-      std::cout << "Error: sequences are not the same at the end!" << std::endl;
+      di << "Error: sequences are not the same at the end!" << "\n";
 
     delete aVector;
     delete aCollec;
@@ -1055,7 +1014,7 @@ void TestPerformanceForwardIterator()
 //purpose  :
 //=======================================================================
 template<class CollectionType, class StlType>
-void TestPerformanceBidirIterator()
+void TestPerformanceBidirIterator(Draw_Interpretor& di)
 {
   OSD_Timer aTimer;
 
@@ -1090,12 +1049,12 @@ void TestPerformanceBidirIterator()
 
     Standard_Real aOccTime = aTimer.ElapsedTime();
 
-    std::cout << aSize << "\t" << aStlTime << "\t" <<
-      aOccTime << "\t" << aOccTime / aStlTime << std::endl;
+    di << aSize << "\t" << aStlTime << "\t" <<
+      aOccTime << "\t" << aOccTime / aStlTime << "\n";
 
     // check that result is the same
     if ( ! std::equal (aVector->begin(), aVector->end(), aCollec->begin()) )
-      std::cout << "Error: sequences are not the same at the end!" << std::endl;
+      di << "Error: sequences are not the same at the end!" << "\n";
 
     delete aVector;
     delete aCollec;
@@ -1107,7 +1066,7 @@ void TestPerformanceBidirIterator()
 //purpose  :
 //=======================================================================
 template<class CollectionType, class T>
-void TestPerformanceMapAccess()
+void TestPerformanceMapAccess(Draw_Interpretor& di)
 {
   OSD_Timer aTimer;
 
@@ -1166,8 +1125,8 @@ void TestPerformanceMapAccess()
 
     if (aResult)
     {
-      std::cout << aSize << "\t" << aStlTime << "\t" <<
-        aOccTime << "\t" << (aStlTime > 1e-16 ? aOccTime / aStlTime : -1) << std::endl;
+      di << aSize << "\t" << aStlTime << "\t" <<
+        aOccTime << "\t" << (aStlTime > 1e-16 ? aOccTime / aStlTime : -1) << "\n";
     }
 
     delete aCollec;
@@ -1178,41 +1137,222 @@ void TestPerformanceMapAccess()
 //function : QANTestNCollectionPerformance
 //purpose  :
 //=======================================================================
-static Standard_Integer QANTestNCollectionPerformance (
-  Draw_Interpretor& /*theInterpretor*/, Standard_Integer, const char**)
+static Standard_Integer QANTestNCollectionPerformance (Draw_Interpretor& di, Standard_Integer, const char**)
 {
-  std::cout.precision (8);
+  di << "Testing performance (Size | STL time | OCCT time | STL/OCCT boost)" << "\n";
 
-  std::cout << "Testing performance (Size | STL time | OCCT time | STL/OCCT boost)\n";
+  di << "\n" << "std::vector vs NCollection_Array1 (sort):" << "\n\n";
+  TestPerformanceRandomIterator<NCollection_Array1<double>, std::vector<double> >(di);
 
-  std::cout << std::endl << "std::vector vs NCollection_Array1 (sort):\n" << std::endl;
-  TestPerformanceRandomIterator<NCollection_Array1<double>, std::vector<double> >();
+  di << "\n" << "std::vector vs NCollection_Vector (sort):" << "\n\n";
+  TestPerformanceRandomIterator<NCollection_Vector<double>, std::vector<double> >(di);
 
-  std::cout << std::endl << "std::vector vs NCollection_Vector (sort):\n" << std::endl;
-  TestPerformanceRandomIterator<NCollection_Vector<double>, std::vector<double> >();
+  di << "\n" << "std::vector vs NCollection_Array1 (replace):" << "\n\n";
+  TestPerformanceForwardIterator<NCollection_Array1<double>, std::vector<double> >(di);
 
-  std::cout << std::endl << "std::vector vs NCollection_Array1 (replace):\n" << std::endl;
-  TestPerformanceForwardIterator<NCollection_Array1<double>, std::vector<double> >();
+  di << "\n" << "std::vector vs NCollection_Vector (replace):" << "\n\n";
+  TestPerformanceForwardIterator<NCollection_Vector<double>, std::vector<double> >(di);
 
-  std::cout << std::endl << "std::vector vs NCollection_Vector (replace):\n" << std::endl;
-  TestPerformanceForwardIterator<NCollection_Vector<double>, std::vector<double> >();
+  di << "\n" << "std::list vs NCollection_List (replace):" << "\n\n";
+  TestPerformanceForwardIterator<NCollection_List<double>, std::list<double> >(di);
 
-  std::cout << std::endl << "std::list vs NCollection_List (replace):\n" << std::endl;
-  TestPerformanceForwardIterator<NCollection_List<double>, std::list<double> >();
+  di << "\n" << "std::list vs NCollection_Sequence (replace):" << "\n\n";
+  TestPerformanceForwardIterator<NCollection_Sequence<double>, std::list<double> >(di);
 
-  std::cout << std::endl << "std::list vs NCollection_Sequence (replace):\n" << std::endl;
-  TestPerformanceForwardIterator<NCollection_Sequence<double>, std::list<double> >();
+  di << "\n" << "std::list vs NCollection_Sequence (reverse):" << "\n\n";
+  TestPerformanceBidirIterator<NCollection_Sequence<double>, std::list<double> >(di);
 
-  std::cout << std::endl << "std::list vs NCollection_Sequence (reverse):\n" << std::endl;
-  TestPerformanceBidirIterator<NCollection_Sequence<double>, std::list<double> >();
+  di << "\n" << "std::set vs NCollection_Map (search):" << "\n\n";
+  TestPerformanceMapAccess<NCollection_Map<int>, int>(di);
 
-  std::cout << std::endl << "std::set vs NCollection_Map (search):\n" << std::endl;
-  TestPerformanceMapAccess<NCollection_Map<int>, int>();
+  di << "\n" << "std::set vs NCollection_IndexedMap (search):" << "\n\n";
+  TestPerformanceMapAccess<NCollection_IndexedMap<int>, int>(di);
 
-  std::cout << std::endl << "std::set vs NCollection_IndexedMap (search):\n" << std::endl;
-  TestPerformanceMapAccess<NCollection_IndexedMap<int>, int>();
+  return 0;
+}
 
-  std::cout.unsetf (std::ios::floatfield);
+//=======================================================================
+//function : QANTestNCollectionIndexedMap
+//purpose  :
+//=======================================================================
+static Standard_Integer QANTestNCollectionIndexedMap (Draw_Interpretor& di, Standard_Integer, const char**)
+{
+  OSD_Timer aTimer;
+
+  std::vector<Standard_Integer>            aIndxs;
+  std::vector<Standard_Integer>            aItems;
+  NCollection_IndexedMap<Standard_Integer> aIndxMap;
+
+  const Standard_Integer aNbItems = 1000000;
+
+  srand (1);
+  for (Standard_Integer anId = 1; anId <= aNbItems; ++anId)
+  {
+    const Standard_Integer aVal = anId * 2;
+
+    aIndxs.push_back (anId);
+    aItems.push_back (aVal);
+
+    aIndxMap.Add  (aVal);
+  }
+
+  aTimer.Start();
+  for (Standard_Integer anId = 0; anId < aNbItems; ++anId)
+  {
+    if (aIndxMap.FindIndex (aItems[anId]) != aIndxs[anId])
+    {
+      std::cout << "failed FindIndex\n";
+    }
+
+    if (aIndxMap.FindKey (aIndxs[anId]) != aItems[anId])
+    {
+      std::cout << "failed FindKey\n";
+    }
+  }
+  aTimer.Stop();
+
+  const Standard_Real aTime1 = aTimer.ElapsedTime();
+
+  aTimer.Reset();
+  aTimer.Start();
+  for (Standard_Integer anId = 0; anId < aNbItems / 30; ++anId)
+  {
+    const Standard_Integer anId2 = Min (aNbItems - 1,
+      static_cast<Standard_Integer> (rand() / float (RAND_MAX) * aNbItems));
+
+    aIndxMap.Swap (aIndxs[anId], aIndxs[anId2]);
+
+    std::swap (aIndxs[anId], aIndxs[anId2]);
+  }
+  aTimer.Stop();
+
+  const Standard_Real aTime2 = aTimer.ElapsedTime();
+
+  aTimer.Reset();
+  aTimer.Start();
+  for (Standard_Integer anId = 0; anId < aNbItems; ++anId)
+  {
+    if (aIndxMap.FindIndex (aItems[anId]) != aIndxs[anId])
+    {
+      std::cout << "failed FindIndex\n";
+    }
+
+    if (aIndxMap.FindKey (aIndxs[anId]) != aItems[anId])
+    {
+      std::cout << "failed FindKey\n";
+    }
+  }
+  aTimer.Stop();
+
+  const Standard_Real aTime3 = aTimer.ElapsedTime();
+
+  aTimer.Reset();
+  aTimer.Start();
+  for (Standard_Integer anId = 0; anId < aNbItems; ++anId)
+  {
+    aIndxMap.RemoveLast();
+  }
+  aTimer.Stop();
+
+  const Standard_Real aTime4 = aTimer.ElapsedTime();
+
+  di << "Search time 1: " << aTime1 << "\n"
+     << "Swapping time: " << aTime2 << "\n"
+     << "Search time 2: " << aTime3 << "\n"
+     << "Remove   time: " << aTime4 << "\n";
+
+  return 0;
+}
+
+//=======================================================================
+//function : QANTestNCollectionIndexedDataMap
+//purpose  :
+//=======================================================================
+static Standard_Integer QANTestNCollectionIndexedDataMap (Draw_Interpretor& di, Standard_Integer, const char**)
+{
+  OSD_Timer aTimer;
+
+  std::vector<Standard_Integer>                                  aIndxs;
+  std::vector<Standard_Integer>                                  aItems;
+  NCollection_IndexedDataMap<Standard_Integer, Standard_Integer> aIndxMap;
+
+  const Standard_Integer aNbItems = 1000000;
+
+  srand (1);
+  for (Standard_Integer anId = 1; anId <= aNbItems; ++anId)
+  {
+    const Standard_Integer aVal = anId * 2;
+
+    aIndxs.push_back (anId);
+    aItems.push_back (aVal);
+
+    aIndxMap.Add  (aVal, aVal * 2);
+  }
+
+  aTimer.Start();
+  for (Standard_Integer anId = 0; anId < aNbItems; ++anId)
+  {
+    if (aIndxMap.FindIndex (aItems[anId]) != aIndxs[anId])
+    {
+      std::cout << "failed FindIndex\n";
+    }
+
+    if (aIndxMap.FindKey (aIndxs[anId]) != aItems[anId])
+    {
+      std::cout << "failed FindKey\n";
+    }
+  }
+  aTimer.Stop();
+
+  const Standard_Real aTime1 = aTimer.ElapsedTime();
+
+  aTimer.Reset();
+  aTimer.Start();
+  for (Standard_Integer anId = 0; anId < aNbItems / 30; ++anId)
+  {
+    const Standard_Integer anId2 = Min (aNbItems - 1,
+      static_cast<Standard_Integer> (rand() / float (RAND_MAX) * aNbItems));
+
+    aIndxMap.Swap (aIndxs[anId], aIndxs[anId2]);
+
+    std::swap (aIndxs[anId], aIndxs[anId2]);
+  }
+  aTimer.Stop();
+
+  const Standard_Real aTime2 = aTimer.ElapsedTime();
+
+  aTimer.Reset();
+  aTimer.Start();
+  for (Standard_Integer anId = 0; anId < aNbItems; ++anId)
+  {
+    if (aIndxMap.FindIndex (aItems[anId]) != aIndxs[anId])
+    {
+      std::cout << "failed FindIndex\n";
+    }
+
+    if (aIndxMap.FindKey (aIndxs[anId]) != aItems[anId])
+    {
+      std::cout << "failed FindKey\n";
+    }
+  }
+  aTimer.Stop();
+
+  const Standard_Real aTime3 = aTimer.ElapsedTime();
+
+  aTimer.Reset();
+  aTimer.Start();
+  for (Standard_Integer anId = 0; anId < aNbItems; ++anId)
+  {
+    aIndxMap.RemoveLast();
+  }
+  aTimer.Stop();
+
+  const Standard_Real aTime4 = aTimer.ElapsedTime();
+
+  di << "Search time 1: " << aTime1 << "\n"
+     << "Swapping time: " << aTime2 << "\n"
+     << "Search time 2: " << aTime3 << "\n"
+     << "Remove   time: " << aTime4 << "\n";
 
   return 0;
 }
@@ -1283,6 +1423,18 @@ void QANCollection::CommandsStl (Draw_Interpretor& theCommands)
                    "QANTestNCollectionPerformance",
                    __FILE__,
                    QANTestNCollectionPerformance,
+                   aGroup);
+
+  theCommands.Add ("QANTestNCollectionIndexedMap",
+                   "QANTestNCollectionIndexedMap",
+                   __FILE__,
+                   QANTestNCollectionIndexedMap,
+                   aGroup);
+
+  theCommands.Add ("QANTestNCollectionIndexedDataMap",
+                   "QANTestNCollectionIndexedDataMap",
+                   __FILE__,
+                   QANTestNCollectionIndexedDataMap,
                    aGroup);
 
   return;

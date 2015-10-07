@@ -2,73 +2,73 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{DC59CFB8-107E-195F-17C6-978B03277349}</UniqueIdentifier>
+      <UniqueIdentifier>{768FBB4D-0788-078D-0341-2BCFFB636B6A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ProjLib">
-      <UniqueIdentifier>{01D3C15F-1194-0734-0A6A-272BDCB07CB2}</UniqueIdentifier>
+      <UniqueIdentifier>{2123D77B-11A4-140E-142A-92133E2D72B8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomProjLib">
-      <UniqueIdentifier>{CAACD5E1-13A0-11CD-16CC-0F3A4FBD2877}</UniqueIdentifier>
+      <UniqueIdentifier>{C693405E-14FF-0F33-1289-BCCC5E0D6DC2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GCPnts">
-      <UniqueIdentifier>{ABAD6BC0-087C-021E-052B-3214A5E9703A}</UniqueIdentifier>
+      <UniqueIdentifier>{A109BE48-15B5-14CC-09ED-38B61F3CC1DA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CPnts">
-      <UniqueIdentifier>{C7013AC2-0942-0314-17E6-B9F2C4F14729}</UniqueIdentifier>
+      <UniqueIdentifier>{DAE148DF-0547-08EA-17A9-5E43CBB4DCB8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Approx">
-      <UniqueIdentifier>{76E93BAC-14F5-05D3-0D47-CD6D2DBAD3ED}</UniqueIdentifier>
+      <UniqueIdentifier>{06DFFDA5-16DF-0AC5-0CDD-554700A87E4E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AppParCurves">
-      <UniqueIdentifier>{AFA04544-073C-08FA-0A1D-09A6718E679C}</UniqueIdentifier>
+      <UniqueIdentifier>{FC571FBB-1544-030E-0ADB-7DBD3C12CD2A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FEmTool">
-      <UniqueIdentifier>{345EA5F3-0C63-1355-14F1-DF8573B25785}</UniqueIdentifier>
+      <UniqueIdentifier>{5BB336C5-10FE-155E-00C4-1377E925965A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AppCont">
-      <UniqueIdentifier>{900DD867-0923-075B-0E81-EDC4FA1F2215}</UniqueIdentifier>
+      <UniqueIdentifier>{B1F2E3BC-0974-0EE7-035F-4AC2E340E58B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Extrema">
-      <UniqueIdentifier>{F6924CEF-10D6-1924-15D9-857CA8BB0004}</UniqueIdentifier>
+      <UniqueIdentifier>{9E2C3246-17A3-0B6C-0DE4-979A380DD3DC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntAna">
-      <UniqueIdentifier>{FE0EAD77-06D5-1277-0306-A52AC79BAE3C}</UniqueIdentifier>
+      <UniqueIdentifier>{D028A661-1691-085D-1080-AC674BB17A9B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntAna2d">
-      <UniqueIdentifier>{CBF1C326-0D12-0AA5-0526-CA965854A855}</UniqueIdentifier>
+      <UniqueIdentifier>{E86D0964-09E7-1856-065A-7AFE9FE2AF56}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomConvert">
-      <UniqueIdentifier>{F79D09E6-1931-0C44-097B-A251C7A6F00A}</UniqueIdentifier>
+      <UniqueIdentifier>{65502CE7-096E-1038-186D-206BB9806430}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AdvApp2Var">
-      <UniqueIdentifier>{D94E81BB-1128-152C-010D-B15D6169CC42}</UniqueIdentifier>
+      <UniqueIdentifier>{31C480A5-1219-1566-0A71-2934041604A4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomLib">
-      <UniqueIdentifier>{E118DC42-043B-168E-0281-4D688809ED30}</UniqueIdentifier>
+      <UniqueIdentifier>{8ADF5854-03E6-0F70-0713-5990A9285960}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dConvert">
-      <UniqueIdentifier>{B31D9F85-1148-0E7A-01FB-C3B4D7958FA5}</UniqueIdentifier>
+      <UniqueIdentifier>{03D5332A-0483-01DA-15FB-C688521FE6DE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Hermit">
-      <UniqueIdentifier>{09B28E5A-182F-0576-0283-AC0C6160D803}</UniqueIdentifier>
+      <UniqueIdentifier>{6E3982C8-03DD-160D-1786-5725033EE821}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BndLib">
-      <UniqueIdentifier>{05BE9702-08C8-170B-0C54-3456E534F4CE}</UniqueIdentifier>
+      <UniqueIdentifier>{F9FC4D62-07E5-0BE7-1301-21FE0CADFCC7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AppDef">
-      <UniqueIdentifier>{B4030DA3-0E45-051A-025D-CE89DEBD872A}</UniqueIdentifier>
+      <UniqueIdentifier>{AE6F3770-02B5-061B-1024-DF40EB1F05C6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomTools">
-      <UniqueIdentifier>{F508047E-0F08-0CA6-0B5C-56009D426D22}</UniqueIdentifier>
+      <UniqueIdentifier>{B411EB70-0394-0758-1553-1AB740F4CF6B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GC">
-      <UniqueIdentifier>{0B071DD0-0B6A-0CA5-051E-CC2AA0027366}</UniqueIdentifier>
+      <UniqueIdentifier>{5D9703A6-0A2D-10E8-0A92-DDC3CB614F20}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GCE2d">
-      <UniqueIdentifier>{E64BCE37-02E0-195C-11D3-7EB5E8D89F6B}</UniqueIdentifier>
+      <UniqueIdentifier>{91F4F386-10D1-0E02-07EC-AA1A68ABBC57}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\gce">
-      <UniqueIdentifier>{CA51BA9B-0104-096B-1769-8B37ADF46516}</UniqueIdentifier>
+      <UniqueIdentifier>{DA276384-0982-1192-034E-A22F49CE9749}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -181,12 +181,6 @@
       <Filter>Source files\Approx</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Approx\Approx_HArray1OfGTrsf2d_0.cxx">
-      <Filter>Source files\Approx</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Approx\Approx_MyLeastSquareOfFitAndDivide2d_0.cxx">
-      <Filter>Source files\Approx</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Approx\Approx_MyLeastSquareOfFitAndDivide_0.cxx">
       <Filter>Source files\Approx</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Approx\Approx_SequenceNodeOfSequenceOfHArray1OfReal_0.cxx">
@@ -321,12 +315,6 @@
     <ClCompile Include="..\..\..\src\FEmTool\FEmTool_SparseMatrix.cxx">
       <Filter>Source files\FEmTool</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\AppCont\AppCont_FitFunction2d_0.cxx">
-      <Filter>Source files\AppCont</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\AppCont\AppCont_FitFunction_0.cxx">
-      <Filter>Source files\AppCont</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\AppCont\AppCont_ContMatrices.cxx">
       <Filter>Source files\AppCont</Filter>
     </ClCompile>
@@ -342,16 +330,7 @@
     <ClCompile Include="..\..\..\src\AppCont\AppCont_ContMatrices_4.cxx">
       <Filter>Source files\AppCont</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\AppCont\AppCont_Function.cxx">
-      <Filter>Source files\AppCont</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AppCont\AppCont_Function2d.cxx">
-      <Filter>Source files\AppCont</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AppCont\AppCont_FunctionTool.cxx">
-      <Filter>Source files\AppCont</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\AppCont\AppCont_FunctionTool2d.cxx">
+    <ClCompile Include="..\..\..\src\AppCont\AppCont_LeastSquare.cxx">
       <Filter>Source files\AppCont</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_Array1OfPOnCurv2d_0.cxx">
@@ -385,12 +364,6 @@
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_ECC_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELCC2d_0.cxx">
-      <Filter>Source files\Extrema</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELCC_0.cxx">
       <Filter>Source files\Extrema</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_ELPCOfLocateExtPC2d_0.cxx">

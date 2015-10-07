@@ -14,8 +14,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-//GER61351	//GG_171199     Enable to set an object RGB color instead a restricted object NameOfColor.
-
 #include <AIS_Line.ixx>
 #include <Aspect_TypeOfLine.hxx>
 #include <Prs3d_Drawer.hxx>
@@ -25,11 +23,11 @@
 #include <Graphic3d_Structure.hxx>
 #include <TColgp_Array1OfPnt.hxx>
 #include <SelectMgr_EntityOwner.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <Select3D_SensitiveSegment.hxx>
 #include <StdPrs_Curve.hxx>
 #include <Geom_Line.hxx>
 #include <GeomAdaptor_Curve.hxx>
-#include <AIS_Drawer.hxx>
 #include <GC_MakeSegment.hxx>
 #include <Geom_Line.hxx>
 #include <Quantity_Color.hxx>
@@ -135,13 +133,21 @@ void AIS_Line::Compute(const Handle(Prs3d_Projector)& aProjector, const Handle(G
 //purpose  : 
 //=======================================================================
 
-void AIS_Line::ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,
-				const Standard_Integer)
+void AIS_Line::ComputeSelection(const Handle(SelectMgr_Selection)& theSelection,
+                                const Standard_Integer             theMode)
 {
+  // Do not support selection modes different from 0 currently
+  if (theMode)
+    return;
 
-  if (!myLineIsSegment) ComputeInfiniteLineSelection(aSelection);
-  else ComputeSegmentLineSelection(aSelection);
-
+  if (!myLineIsSegment)
+  {
+    ComputeInfiniteLineSelection(theSelection);
+  }
+  else
+  {
+    ComputeSegmentLineSelection(theSelection);
+  }
 }
 
 
@@ -161,9 +167,10 @@ void AIS_Line::SetColor(const Quantity_Color &aCol)
   myOwnColor=aCol;
 
   Standard_Real WW = HasWidth()? myOwnWidth:
-                                 AIS_GraphicTool::GetLineWidth(myDrawer->Link(),AIS_TOA_Line);
+                                 myDrawer->HasLink() ?
+                                 AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_Line) : 1.;
 
-  if (!myDrawer->HasLineAspect ())
+  if (!myDrawer->HasOwnLineAspect ())
     myDrawer->SetLineAspect (new Prs3d_LineAspect(aCol,Aspect_TOL_SOLID,WW));
   else
     myDrawer->LineAspect()->SetColor(aCol);
@@ -182,9 +189,9 @@ void AIS_Line::UnsetColor()
 
   if (!HasWidth()) myDrawer->SetLineAspect(NullAsp);
   else{
-    Quantity_Color CC;
+    Quantity_Color CC = Quantity_NOC_YELLOW;
     if( HasColor() ) CC = myOwnColor;
-    else AIS_GraphicTool::GetLineColor(myDrawer->Link(),AIS_TOA_Line,CC);
+    else if (myDrawer->HasLink()) AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_Line, CC);
     myDrawer->LineAspect()->SetColor(CC);
     myOwnColor = CC;
  }
@@ -198,11 +205,11 @@ void AIS_Line::SetWidth(const Standard_Real aValue)
 {
   myOwnWidth=aValue;
 
-  if (!myDrawer->HasLineAspect ()) {
-    Quantity_Color CC;
+  if (!myDrawer->HasOwnLineAspect ()) {
+    Quantity_Color CC = Quantity_NOC_YELLOW;
     if( HasColor() ) CC = myOwnColor;
-    else AIS_GraphicTool::GetLineColor(myDrawer->Link(),AIS_TOA_Line,CC);
-    myDrawer->SetLineAspect (new Prs3d_LineAspect(CC,Aspect_TOL_SOLID,aValue));
+    else if(myDrawer->HasLink()) AIS_GraphicTool::GetLineColor (myDrawer->Link(), AIS_TOA_Line, CC);
+    myDrawer->SetLineAspect (new Prs3d_LineAspect (CC, Aspect_TOL_SOLID, aValue));
   } else
     myDrawer->LineAspect()->SetWidth(aValue);
 }
@@ -218,7 +225,8 @@ void AIS_Line::UnsetWidth()
 
   if (!HasColor()) myDrawer->SetLineAspect(NullAsp);
   else{
-   Standard_Real WW = AIS_GraphicTool::GetLineWidth(myDrawer->Link(),AIS_TOA_Line);
+   Standard_Real WW = myDrawer->HasLink() ?
+     AIS_GraphicTool::GetLineWidth (myDrawer->Link(), AIS_TOA_Line) : 1.;
    myDrawer->LineAspect()->SetWidth(WW);
    myOwnWidth = WW;
   }

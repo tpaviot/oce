@@ -40,6 +40,7 @@
 #include <DrawTrSurf.hxx>
 
 #include <BOPTools_AlgoTools2D.hxx>
+#include <IntTools_FClass2d.hxx>
 
 static
   void PrintState (Draw_Interpretor& aDI,
@@ -58,6 +59,7 @@ static
 
 static  Standard_Integer bclassify   (Draw_Interpretor& , Standard_Integer , const char** );
 static  Standard_Integer b2dclassify (Draw_Interpretor& , Standard_Integer , const char** );
+static  Standard_Integer b2dclassifx (Draw_Interpretor& , Standard_Integer , const char** );
 static  Standard_Integer bhaspc      (Draw_Interpretor& , Standard_Integer , const char** );
 
 //=======================================================================
@@ -70,49 +72,53 @@ static  Standard_Integer bhaspc      (Draw_Interpretor& , Standard_Integer , con
   if (done) return;
   done = Standard_True;
   // Chapter's name
-  const char* g = "CCR commands";
-  theCommands.Add("bclassify"    , "Use >bclassify Solid Point [Tolerance=1.e-7]",
+  const char* g = "BOPTest commands";
+  theCommands.Add("bclassify"    , "use bclassify Solid Point [Tolerance=1.e-7]",
                   __FILE__, bclassify   , g);
-  theCommands.Add("b2dclassify"  , "Use >bclassify Face Point2d [Tol2D=Tol(Face)] ",
+  theCommands.Add("b2dclassify"  , "use b2dclassify Face Point2d [Tol] ",
                   __FILE__, b2dclassify , g);
-  theCommands.Add("bhaspc"       , "Use >bhaspc Edge Face [do]",
+  theCommands.Add("b2dclassifx"  , "use b2dclassifx Face Point2d [Tol] ",
+                  __FILE__, b2dclassifx , g);
+  theCommands.Add("bhaspc"       , "use bhaspc Edge Face [do]",
                   __FILE__, bhaspc      , g);
 }
 
+
+//
 //=======================================================================
-//function : bclassify
+//function : b2dclassifx
 //purpose  : 
 //=======================================================================
-Standard_Integer bclassify (Draw_Interpretor& theDI,
-                            Standard_Integer  theArgNb,
-                            const char**      theArgVec)
+Standard_Integer b2dclassifx (Draw_Interpretor& theDI,
+                              Standard_Integer  theArgNb,
+                              const char**      theArgVec)
 {
-  if (theArgNb < 3)
-  {
-    theDI << " Use >bclassify Solid Point [Tolerance=1.e-7]\n";
+  if (theArgNb < 3)  {
+    theDI << " use b2dclassifx Face Point2d [Tol]\n";
     return 1;
   }
 
   TopoDS_Shape aS = DBRep::Get (theArgVec[1]);
-  if (aS.IsNull())
-  {
+  if (aS.IsNull())  {
     theDI << " Null Shape is not allowed here\n";
     return 1;
   }
-  else if (aS.ShapeType() != TopAbs_SOLID)
-  {
-    theDI << " Shape type must be SOLID\n";
+  else if (aS.ShapeType() != TopAbs_FACE)  {
+    theDI << " Shape type must be FACE\n";
     return 1;
   }
-
-  gp_Pnt aP (8., 9., 10.);
-  DrawTrSurf::GetPoint (theArgVec[2], aP);
-  const Standard_Real aTol = (theArgNb == 4) ? Draw::Atof (theArgVec[3]) : 1.e-7; //Precision::Confusion();
-
-  BRepClass3d_SolidClassifier aSC (aS);
-  aSC.Perform (aP,aTol);
-
-  PrintState (theDI, aSC.State());
+  TopAbs_State aState;
+  gp_Pnt2d aP (8., 9.);
+  //
+  DrawTrSurf::GetPoint2d (theArgVec[2], aP);
+  const TopoDS_Face&  aF   = TopoDS::Face(aS);
+  const Standard_Real aTol = (theArgNb == 4) ? 
+    Draw::Atof (theArgVec[3]) : BRep_Tool::Tolerance (aF);
+  //
+  IntTools_FClass2d aClassifier(aF, aTol);
+  aState=aClassifier.Perform(aP);
+  PrintState (theDI, aState);
+  //
   return 0;
 }
 //
@@ -124,33 +130,67 @@ Standard_Integer b2dclassify (Draw_Interpretor& theDI,
                               Standard_Integer  theArgNb,
                               const char**      theArgVec)
 {
-  if (theArgNb < 3)
-  {
-    theDI << " Use >bclassify Face Point2d [Tol2D=Tol(Face)]\n";
+  if (theArgNb < 3)  {
+    theDI << " use b2dclassify Face Point2d [Tol]\n";
     return 1;
   }
 
   TopoDS_Shape aS = DBRep::Get (theArgVec[1]);
-  if (aS.IsNull())
-  {
+  if (aS.IsNull())  {
     theDI << " Null Shape is not allowed here\n";
     return 1;
   }
-  else if (aS.ShapeType() != TopAbs_FACE)
-  {
+  else if (aS.ShapeType() != TopAbs_FACE)  {
     theDI << " Shape type must be FACE\n";
     return 1;
   }
-
+  //
   gp_Pnt2d aP (8., 9.);
+  //
   DrawTrSurf::GetPoint2d (theArgVec[2], aP);
   const TopoDS_Face&  aF   = TopoDS::Face(aS);
-  const Standard_Real aTol = (theArgNb == 4) ? Draw::Atof (theArgVec[3]) : BRep_Tool::Tolerance (aF);
-
+  const Standard_Real aTol = (theArgNb == 4) ? 
+    Draw::Atof (theArgVec[3]) : BRep_Tool::Tolerance (aF);
+  
   BRepClass_FaceClassifier aClassifier;
   aClassifier.Perform(aF, aP, aTol);
-
   PrintState (theDI, aClassifier.State());
+  //
+  return 0;
+}
+
+//=======================================================================
+//function : bclassify
+//purpose  : 
+//=======================================================================
+Standard_Integer bclassify (Draw_Interpretor& theDI,
+                            Standard_Integer  theArgNb,
+                            const char**      theArgVec)
+{
+  if (theArgNb < 3)  {
+    theDI << " use bclassify Solid Point [Tolerance=1.e-7]\n";
+    return 1;
+  }
+
+  TopoDS_Shape aS = DBRep::Get (theArgVec[1]);
+  if (aS.IsNull())  {
+    theDI << " Null Shape is not allowed\n";
+    return 1;
+  }
+  else if (aS.ShapeType() != TopAbs_SOLID)  {
+    theDI << " Shape type must be SOLID\n";
+    return 1;
+  }
+
+  gp_Pnt aP (8., 9., 10.);
+  DrawTrSurf::GetPoint (theArgVec[2], aP);
+  const Standard_Real aTol = (theArgNb == 4) ? 
+    Draw::Atof (theArgVec[3]) : 1.e-7;
+
+  BRepClass3d_SolidClassifier aSC (aS);
+  aSC.Perform (aP,aTol);
+
+  PrintState (theDI, aSC.State());
   return 0;
 }
 
@@ -158,10 +198,12 @@ Standard_Integer b2dclassify (Draw_Interpretor& theDI,
 //function : bhaspc
 //purpose  : 
 //=======================================================================
-Standard_Integer bhaspc (Draw_Interpretor& di, Standard_Integer n, const char** a)
+Standard_Integer bhaspc (Draw_Interpretor& di, 
+                         Standard_Integer n, 
+                         const char** a)
 {
   if (n<3) {
-    di << " Use bhaspc> Edge Face [do]\n";
+    di << " use bhaspc Edge Face [do]\n";
     return 1;
   }
 
@@ -198,7 +240,6 @@ Standard_Integer bhaspc (Draw_Interpretor& di, Standard_Integer n, const char** 
 
   return 0;
 }
-
 //=======================================================================
 //function : PrintState
 //purpose  :
@@ -206,16 +247,22 @@ Standard_Integer bhaspc (Draw_Interpretor& di, Standard_Integer n, const char** 
 void PrintState (Draw_Interpretor&   theDI,
                  const TopAbs_State& theState)
 {
-  switch (theState)
-  {
-    case TopAbs_IN:       theDI << "The point is IN shape\n";      return;
-    case TopAbs_OUT:      theDI << "The point is OUT of shape\n";  return;
-    case TopAbs_ON:       theDI << "The point is ON shape\n";      return;
-    case TopAbs_UNKNOWN:
-    default:              theDI << "The point is UNKNOWN shape\n"; return;
+  switch (theState) {
+   case TopAbs_IN:       
+    theDI << "The point is IN shape\n";      
+    break;
+   case TopAbs_OUT:  
+    theDI << "The point is OUT of shape\n";  
+    break;
+   case TopAbs_ON: 
+    theDI << "The point is ON shape\n";      
+    break;
+   case TopAbs_UNKNOWN:
+   default:              
+    theDI << "The point is UNKNOWN shape\n"; 
+    break;
   }
 }
-
 //=======================================================================
 //function : CurveOnSurface
 //purpose  : 

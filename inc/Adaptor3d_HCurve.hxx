@@ -63,14 +63,14 @@ public:
   
       GeomAbs_Shape Continuity()  const;
   
-      Standard_Integer NbIntervals (const GeomAbs_Shape S) ;
+      Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
   
   //! Stores in <T> the  parameters bounding the intervals
   //! of continuity <S>.
   //!
   //! The array must provide  enough room to  accomodate
   //! for the parameters. i.e. T.Length() > NbIntervals()
-      void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S) ;
+      void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
   
   //! Returns    a  curve equivalent   of  <me>  between
   //! parameters <First>  and <Last>. <Tol>  is used  to

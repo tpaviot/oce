@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{63790E3A-1912-0241-0200-B8CC76778FC4}</UniqueIdentifier>
+      <UniqueIdentifier>{A05B5A7C-0C0E-04AC-10B1-A94C3CCC2C4F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepVisual">
-      <UniqueIdentifier>{7FA096E0-02EF-0EB2-0C9F-D96FED434BB6}</UniqueIdentifier>
+      <UniqueIdentifier>{7104CAFF-080B-0491-074D-2E0A7EB2FBBA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepVisual">
-      <UniqueIdentifier>{1FB1F7DD-1286-182A-07F1-A962AF8E0A7B}</UniqueIdentifier>
+      <UniqueIdentifier>{ACA89A07-11C0-1929-167C-92144470B826}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepDimTol">
-      <UniqueIdentifier>{524D8886-04F5-1143-1448-844BF997D502}</UniqueIdentifier>
+      <UniqueIdentifier>{49D87422-0BBA-141F-0CC2-4EBA1E9D3B88}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepDimTol">
-      <UniqueIdentifier>{2181614B-0E56-056C-068C-C87C2E50E3B3}</UniqueIdentifier>
+      <UniqueIdentifier>{AF67C76C-0811-12DC-167F-03C42B43E392}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

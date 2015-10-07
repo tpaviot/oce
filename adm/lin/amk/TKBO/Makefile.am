@@ -136,6 +136,7 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/BOPTools/BOPTools.cxx \
 @top_srcdir@/src/BOPTools/BOPTools_AlgoTools.cxx \
 @top_srcdir@/src/BOPTools/BOPTools_AlgoTools2D.cxx \
+@top_srcdir@/src/BOPTools/BOPTools_AlgoTools2D_1.cxx \
 @top_srcdir@/src/BOPTools/BOPTools_AlgoTools3D.cxx \
 @top_srcdir@/src/BOPTools/BOPTools_AlgoTools_1.cxx \
 @top_srcdir@/src/BOPTools/BOPTools_AlgoTools_2.cxx \
@@ -143,8 +144,9 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/BOPTools/BOPTools_Set.cxx \
 @top_srcdir@/src/BOPTools/BOPTools_SetMapHasher.cxx \
 @top_srcdir@/src/BOPTools/BOPTools_ShapeSet.cxx \
-@top_srcdir@/src/BRepAlgoAPI/BRepAlgoAPI.cxx \
+@top_srcdir@/src/BRepAlgoAPI/BRepAlgoAPI_Algo.cxx \
 @top_srcdir@/src/BRepAlgoAPI/BRepAlgoAPI_BooleanOperation.cxx \
+@top_srcdir@/src/BRepAlgoAPI/BRepAlgoAPI_BuilderAlgo.cxx \
 @top_srcdir@/src/BRepAlgoAPI/BRepAlgoAPI_Check.cxx \
 @top_srcdir@/src/BRepAlgoAPI/BRepAlgoAPI_Common.cxx \
 @top_srcdir@/src/BRepAlgoAPI/BRepAlgoAPI_Cut.cxx \

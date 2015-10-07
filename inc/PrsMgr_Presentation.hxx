@@ -17,7 +17,7 @@
 #include <Standard_Integer.hxx>
 #include <MMgt_TShared.hxx>
 #include <Handle_PrsMgr_PresentableObject.hxx>
-#include <Quantity_NameOfColor.hxx>
+#include <Aspect_TypeOfHighlightMethod.hxx>
 #include <Handle_Geom_Transformation.hxx>
 #include <Quantity_Length.hxx>
 #include <Handle_Prs3d_ShadingAspect.hxx>
@@ -28,6 +28,7 @@
 class PrsMgr_PresentationManager;
 class PrsMgr_Prs;
 class PrsMgr_PresentableObject;
+class Quantity_Color;
 class Geom_Transformation;
 class Prs3d_ShadingAspect;
 class Prs3d_Presentation;
@@ -76,40 +77,36 @@ private:
   
   Standard_EXPORT PrsMgr_Presentation(const Handle(PrsMgr_PresentationManager)& thePresentationManager, const Handle(PrsMgr_PresentableObject)& thePresentableObject);
   
-  Standard_EXPORT virtual   void Display() ;
+  Standard_EXPORT   void Display() ;
   
   //! Displays myStructure.
-  Standard_EXPORT   void Display (const Standard_Boolean theIsHighlight) ;
+  Standard_EXPORT   void display (const Standard_Boolean theIsHighlight) ;
   
-  Standard_EXPORT virtual   void Erase() ;
+  Standard_EXPORT   void Erase() ;
   
-  Standard_EXPORT virtual   void SetVisible (const Standard_Boolean theValue) ;
+  Standard_EXPORT   void SetVisible (const Standard_Boolean theValue) ;
   
-  Standard_EXPORT virtual   void Highlight() ;
+  Standard_EXPORT   void Highlight (const Aspect_TypeOfHighlightMethod theMethod, const Quantity_Color& theColor) ;
   
-  Standard_EXPORT virtual   void Unhighlight()  const;
+  Standard_EXPORT   void Unhighlight()  const;
   
-  Standard_EXPORT virtual   Standard_Boolean IsHighlighted()  const;
+  Standard_EXPORT   Standard_Boolean IsHighlighted()  const;
   
-  Standard_EXPORT virtual   Standard_Boolean IsDisplayed()  const;
+  Standard_EXPORT   Standard_Boolean IsDisplayed()  const;
   
-  Standard_EXPORT virtual   Standard_Integer DisplayPriority()  const;
+  Standard_EXPORT   Standard_Integer DisplayPriority()  const;
   
-  Standard_EXPORT virtual   void SetDisplayPriority (const Standard_Integer aNewPrior) ;
+  Standard_EXPORT   void SetDisplayPriority (const Standard_Integer aNewPrior) ;
   
   //! Set Z layer ID for the presentation
-  Standard_EXPORT virtual   void SetZLayer (const Standard_Integer theLayerId) ;
+  Standard_EXPORT   void SetZLayer (const Standard_Integer theLayerId) ;
   
   //! Get Z layer ID for the presentation
-  Standard_EXPORT virtual   Standard_Integer GetZLayer()  const;
+  Standard_EXPORT   Standard_Integer GetZLayer()  const;
   
   //! removes the whole content of the presentation.
   //! Does not remove the other connected presentations.
-  Standard_EXPORT virtual   void Clear() ;
-  
-  Standard_EXPORT virtual   void Color (const Quantity_NameOfColor theColor) ;
-  
-  Standard_EXPORT   void BoundBox()  const;
+  Standard_EXPORT   void Clear() ;
   
   Standard_EXPORT   void Connect (const Handle(PrsMgr_Presentation)& theOther)  const;
   

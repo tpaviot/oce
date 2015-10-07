@@ -71,8 +71,6 @@ public:
      const  StepElement_SequenceOfSurfaceElementPurposeMember& Sequence()  const;
   
       StepElement_SequenceOfSurfaceElementPurposeMember& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(StepElement_HSequenceOfSurfaceElementPurposeMember) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(StepElement_HSequenceOfSurfaceElementPurposeMember) ShallowCopy(const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& me) {
- return me->ShallowCopy();
-}
 
 
 

@@ -24,7 +24,9 @@ uses
     ShapeEnum from TopAbs,  
     Vertex from TopoDS,
     Face from TopoDS, 
-    Edge from TopoDS,
+    Edge from TopoDS,  
+        
+    ListOfShape from TopTools,
      
     BaseAllocator from BOPCol, 
     ListOfShape from BOPCol, 
@@ -81,10 +83,15 @@ is
       returns PIterator from BOPDS;  
     ---C++:return const & 
      
+    SetArguments(me:out; 
+            theLS:ListOfShape from BOPCol);   
+            
+    SetArguments(me:out; 
+            theLS:ListOfShape from TopTools);  
+
     Arguments(me) 
       returns ListOfShape from BOPCol; 
     ---C++: return const & 
-    ---C++: alias "Standard_EXPORT void SetArguments(const BOPCol_ListOfShape& theLS);" 
 
     Context(me:out) 
       returns Context from IntTools;  
@@ -127,7 +134,6 @@ is
     PerformFF(me:out) 
       is virtual protected;
      
-    --modified by NIZNHY-PKV Fri Sep 12 07:05:37 2014f 
     PerformVZ(me:out) 
       is virtual protected; 
        --Purpose: Computes Vertex/Solid interferences 
@@ -142,7 +148,10 @@ is
     PerformZZ(me:out) 
       is virtual protected;  
       --Purpose: Computes Solid/Solid interferences  
-    --modified by NIZNHY-PKV Fri Sep 12 07:05:45 2014t 
+  
+    PerformSZ(me:out; 
+        aTS:ShapeEnum from TopAbs) 
+      is virtual protected;
  
     TreatVerticesEE(me:out) 
       is protected; 
@@ -235,7 +244,7 @@ is
         theF2: Face from TopoDS;  
         theTolR3D:Real from Standard; 
         theNC:out Curve from BOPDS;  
-        theMVB:out MapOfInteger from BOPCol) 
+        theLBV:out ListOfInteger from BOPCol) 
       is protected; 
 
     IsExistingPaveBlock(me:out; 
@@ -362,9 +371,9 @@ is
     ProcessExistingPaveBlocks(me:out; 
         theInt     : Integer from Standard; 
         theMPBOnIn : IndexedMapOfPaveBlock from BOPDS; 
+        theDMBV    : DataMapOfIntegerListOfInteger from BOPCol; 
         theMSCPB   : out IndexedDataMapOfShapeCoupleOfPaveBlocks from BOPDS; 
         theMVI     : out DataMapOfShapeInteger from BOPCol; 
-        theMVB     : MapOfInteger from BOPCol; 
         theMPB     : out MapOfPaveBlock from BOPDS)
       is  protected; 
     ---Purpose:       
@@ -397,11 +406,12 @@ is
     -- is closed 3D-curve  
      
     PreparePostTreatFF(me:out; 
-        aInt   : Integer from Standard; 
+        aInt   : Integer from Standard;
+        aCur   : Integer from Standard;
         aPB    : PaveBlock from BOPDS;  
         aMSCPB : out IndexedDataMapOfShapeCoupleOfPaveBlocks from BOPDS; 
         aMVI   : out DataMapOfShapeInteger from BOPCol; 
-        aVC    : out VectorOfCurve from BOPDS)
+        aLPB   : out ListOfPaveBlock from BOPDS)
       is protected; 
     ---Purpose: 
     -- Keeps data for post treatment 
@@ -413,7 +423,8 @@ is
     -- state information 
 
     UpdateFaceInfo(me:out;
-        theDME:out DataMapOfPaveBlockListOfPaveBlock from BOPDS) 
+        theDME:out DataMapOfPaveBlockListOfPaveBlock from BOPDS; 
+        theDMV: DataMapOfIntegerInteger from BOPCol) 
       is protected; 
     ---Purpose: 
     -- Updates the information about faces
@@ -463,12 +474,20 @@ is
     ---Purpose: 
     -- Updates pave blocks which have the paves with indices contained  
     -- in the map <theDMI>.
-        
+
+    SetFuzzyValue(me:out; 
+        theFuzz : Real from Standard);
+    ---Purpose: Sets the additional tolerance
+
+    FuzzyValue(me)
+    returns Real from Standard;
+    ---Purpose: Returns the additional tolerance 
+
 fields  
     myArguments   : ListOfShape from BOPCol is protected;  
     myDS          : PDS from BOPDS is protected; 
     myIterator    : PIterator from BOPDS is protected; 
     myContext     : Context from IntTools is protected;   
     mySectionAttribute : SectionAttribute from BOPAlgo is protected;
-
+    myFuzzyValue  : Real from Standard is protected;
 end PaveFiller;

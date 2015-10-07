@@ -36,9 +36,6 @@ public:
   //! are attempted to be canonized in simple types
   Standard_EXPORT BRepSweep_Translation(const TopoDS_Shape& S, const Sweep_NumShape& N, const TopLoc_Location& L, const gp_Vec& V, const Standard_Boolean C, const Standard_Boolean Canonize = Standard_True);
   
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~BRepSweep_Translation(){Delete() ; }
-  
   //! Builds the vertex addressed by [aGenV,aDirV], with its
   //! geometric part, but without subcomponents.
   Standard_EXPORT   TopoDS_Shape MakeEmptyVertex (const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirV) ;

@@ -25,9 +25,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~ApproxInt_SvSurfaces(){Delete() ; }
-  
   //! returns True if Tg,Tguv1 Tguv2 can be computed.
   Standard_EXPORT virtual   Standard_Boolean Compute (Standard_Real& u1, Standard_Real& v1, Standard_Real& u2, Standard_Real& v2, gp_Pnt& Pt, gp_Vec& Tg, gp_Vec2d& Tguv1, gp_Vec2d& Tguv2)  = 0;
   
@@ -38,6 +35,7 @@ Standard_EXPORT virtual ~ApproxInt_SvSurfaces(){Delete() ; }
   Standard_EXPORT virtual   Standard_Boolean TangencyOnSurf1 (const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec2d& Tg)  = 0;
   
   Standard_EXPORT virtual   Standard_Boolean TangencyOnSurf2 (const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec2d& Tg)  = 0;
+  Standard_EXPORT virtual ~ApproxInt_SvSurfaces();
 
 
 

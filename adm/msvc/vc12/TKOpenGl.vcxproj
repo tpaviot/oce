@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{BD742D81-1294-0092-0654-16ACF2B45E12}</ProjectGuid>
+    <ProjectGuid>{18589345-0050-13AA-0046-A52E1273CC2E}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -260,6 +260,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_BVHTreeSelector.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_BackgroundArray.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_CappingAlgo.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_CappingPlaneResource.cxx">
@@ -314,8 +316,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PrinterContext.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PriorityList.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Quadric.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_RenderFilter.cxx">
@@ -360,6 +360,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View_2.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View_Raytrace.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Window.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace.cxx">
@@ -367,8 +369,6 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_2.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_5.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_Raytrace.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_telem_util.cxx">
     </ClCompile>

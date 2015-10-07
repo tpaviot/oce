@@ -15,7 +15,7 @@
 #include <Graphic3d_MaterialAspect.hxx>
 #include <Standard_Integer.hxx>
 #include <Standard_ShortReal.hxx>
-#include <Graphic3d_ShaderProgram_Handle.hxx>
+#include <Graphic3d_ShaderProgram.hxx>
 #include <Aspect_AspectFillArea.hxx>
 #include <Aspect_InteriorStyle.hxx>
 #include <Aspect_TypeOfLine.hxx>
@@ -128,7 +128,7 @@ public:
   Standard_EXPORT   void SetPolygonOffsets (const Standard_Integer aMode, const Standard_ShortReal aFactor = 1.0, const Standard_ShortReal aUnits = 0.0) ;
   
   //! Sets up OpenGL/GLSL shader program.
-  Standard_EXPORT   void SetShaderProgram (const Graphic3d_ShaderProgram_Handle& theProgram) ;
+  Standard_EXPORT   void SetShaderProgram (const Handle(Graphic3d_ShaderProgram)& theProgram) ;
   
   //! Returns the Back Face Removal status.
   //! Standard_True if SuppressBackFace is activated.
@@ -154,7 +154,7 @@ public:
   //! Returns current polygon offsets settings.
   Standard_EXPORT   void PolygonOffsets (Standard_Integer& aMode, Standard_ShortReal& aFactor, Standard_ShortReal& aUnits)  const;
   
-  Standard_EXPORT  const  Graphic3d_ShaderProgram_Handle& ShaderProgram()  const;
+  Standard_EXPORT  const  Handle(Graphic3d_ShaderProgram)& ShaderProgram()  const;
 
 
 
@@ -179,7 +179,7 @@ private:
   Standard_Integer MyPolygonOffsetMode;
   Standard_ShortReal MyPolygonOffsetFactor;
   Standard_ShortReal MyPolygonOffsetUnits;
-  Graphic3d_ShaderProgram_Handle MyShaderProgram;
+  Handle(Graphic3d_ShaderProgram) MyShaderProgram;
 
 
 };

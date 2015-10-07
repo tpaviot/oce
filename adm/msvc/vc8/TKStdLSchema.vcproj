@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKStdLSchema"
-	ProjectGUID="{20127009-17CD-0083-0ED9-B33B29F12D37}"
+	ProjectGUID="{D64AEC1D-01EC-10B4-143B-FCBE623739E0}"
 	>
 	<Platforms>
 		<Platform

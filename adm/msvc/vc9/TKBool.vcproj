@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBool"
-	ProjectGUID="{3FB3F0D3-0546-1917-1597-FCA8BEAA85BE}"
+	ProjectGUID="{11227A0E-15D9-061A-17A6-7690F526F3BC}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -1513,9 +1513,6 @@
 					RelativePath="..\..\..\drv\BRepFill\BRepFill_ListOfOffsetWire_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\BRepFill\BRepFill_MyLeastSquareOfComputeCLine_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\BRepFill\BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder_0.cxx">
 				</File>
 				<File
@@ -1580,9 +1577,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepFill\BRepFill_MultiLine.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BRepFill\BRepFill_MultiLineTool.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepFill\BRepFill_NSections.cxx">

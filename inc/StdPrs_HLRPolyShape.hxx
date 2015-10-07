@@ -12,11 +12,10 @@
 
 #include <Prs3d_Root.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-#include <Handle_Prs3d_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 #include <Handle_Prs3d_Projector.hxx>
 class Prs3d_Presentation;
 class TopoDS_Shape;
-class Prs3d_Drawer;
 class Prs3d_Projector;
 
 

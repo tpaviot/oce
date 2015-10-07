@@ -26,7 +26,6 @@
 
 #include <OpenGl_Group.hxx>
 #include <OpenGl_Matrix.hxx>
-#include <OpenGl_NamedStatus.hxx>
 #include <OpenGl_Vec.hxx>
 #include <OpenGl_Workspace.hxx>
 
@@ -67,7 +66,7 @@ public:
   Standard_EXPORT OpenGl_Structure (const Handle(Graphic3d_StructureManager)& theManager);
 
   //! Setup structure graphic state
-  Standard_EXPORT virtual void UpdateNamedStatus();
+  Standard_EXPORT virtual void OnVisibilityChanged() Standard_OVERRIDE;
 
   //! Clear graphic data
   Standard_EXPORT virtual void Clear();
@@ -129,15 +128,7 @@ public:
 
   void clearHighlightColor (const Handle(OpenGl_Context)& theGlCtx);
 
-  Standard_Boolean IsVisible() const { return !(myNamedStatus & OPENGL_NS_HIDE); }
-
   Standard_EXPORT void Clear (const Handle(OpenGl_Context)& theGlCtx);
-
-  //! Set z layer ID to display the structure in specified layer
-  Standard_EXPORT void SetZLayer (const Standard_Integer theLayerIndex);
-
-  //! Get z layer ID
-  Standard_EXPORT Standard_Integer GetZLayer() const;
 
   //! Renders groups of structure without applying any attributes (i.e. transform, material etc).
   virtual void RenderGeometry  (const Handle(OpenGl_Workspace)& theWorkspace) const;
@@ -184,8 +175,8 @@ public:
   //! and will lead to broken visualization due to loosed data.
   Standard_EXPORT void ReleaseGlResources (const Handle(OpenGl_Context)& theGlCtx);
 
-  //! Returns list of connected OpenGL structures.
-  const OpenGl_ListOfStructure& ConnectedStructures() const { return myConnected; }
+  //! Returns instanced OpenGL structure.
+  const OpenGl_Structure* InstancedStructure() const { return myInstancedStructure; }
 
   //! Returns OpenGL face aspect.
   const OpenGl_AspectFace* AspectFace() const { return myAspectFace; }
@@ -203,29 +194,14 @@ public:
   void ResetModificationState() const { myModificationState = 0; }
 
   //! Is the structure ray-tracable (contains ray-tracable elements)?
-  Standard_Boolean IsRaytracable() const { return myIsRaytracable; }
+  Standard_Boolean IsRaytracable() const;
 
 protected:
 
   Standard_EXPORT virtual ~OpenGl_Structure();
 
-  //! Registers ancestor connected structure (for updating ray-tracing state).
-  void RegisterAncestorStructure (const OpenGl_Structure* theStructure) const;
-
-  //! Unregisters ancestor connected structure (for updating ray-tracing state).
-  void UnregisterAncestorStructure (const OpenGl_Structure* theStructure) const;
-
-  //! Unregisters structure from ancestor structure (for updating ray-tracing state).
-  void UnregisterFromAncestorStructure() const;
-
-  //! Updates modification state for structure and its parents.
-  void UpdateStateWithAncestorStructures() const;
-
   //! Updates ray-tracable status for structure and its parents.
-  void UpdateRaytracableWithAncestorStructures() const;
-
-  //! Sets ray-tracable status for structure and its parents.
-  void SetRaytracableWithAncestorStructures() const;
+  void UpdateStateIfRaytracable (const Standard_Boolean toCheck = Standard_True) const;
 
 protected:
 
@@ -239,18 +215,14 @@ protected:
   Handle(OpenGl_Group)       myHighlightBox;
   TEL_COLOUR*                myHighlightColor;
 
-  int                        myNamedStatus;
-  int                        myZLayer;
+  OpenGl_Structure*          myInstancedStructure;
 
-  OpenGl_ListOfStructure           myConnected;
+  mutable Standard_Boolean   myIsRaytracable;
+  mutable Standard_Size      myModificationState;
 
-  mutable OpenGl_ListOfStructure   myAncestorStructures;
-  mutable Standard_Boolean         myIsRaytracable;
-  mutable Standard_Size            myModificationState;
+  mutable Standard_Boolean   myIsCulled; //!< A status specifying is structure needs to be rendered after BVH tree traverse.
 
-  mutable Standard_Boolean         myIsCulled; //!< A status specifying is structure needs to be rendered after BVH tree traverse.
-
-  Standard_Boolean                 myIsMirrored; //!< Used to tell OpenGl to interpret polygons in clockwise order.
+  Standard_Boolean           myIsMirrored; //!< Used to tell OpenGl to interpret polygons in clockwise order.
 
 public:
 

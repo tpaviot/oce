@@ -27,9 +27,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~math_MultipleVarFunctionWithGradient(){Delete();}
-  
   //! Returns the number of variables of the function.
   Standard_EXPORT virtual   Standard_Integer NbVariables()  const = 0;
   

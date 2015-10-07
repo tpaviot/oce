@@ -41,9 +41,7 @@ public:
   //! Creates an array which  is the copy of the given
   //! argument.
   Standard_EXPORT DBC_BaseArray(const DBC_BaseArray& BaseArray);
-  
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~DBC_BaseArray(){Delete();}
+  Standard_EXPORT virtual ~DBC_BaseArray();
   
       Standard_Integer Length()  const;
   

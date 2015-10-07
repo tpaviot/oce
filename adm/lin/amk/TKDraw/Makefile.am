@@ -90,6 +90,7 @@ libTKDraw_la_SOURCES = \
 @top_srcdir@/src/Draw/Draw_Text3D.cxx \
 @top_srcdir@/src/Draw/Draw_UnitCommands.cxx \
 @top_srcdir@/src/Draw/Draw_VariableCommands.cxx \
+@top_srcdir@/src/Draw/Draw_View.cxx \
 @top_srcdir@/src/Draw/Draw_Viewer.cxx \
 @top_srcdir@/src/Draw/Draw_Window.cxx \
 @top_srcdir@/src/Draw/MainWindow.cxx \

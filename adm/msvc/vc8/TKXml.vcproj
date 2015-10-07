@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKXml"
-	ProjectGUID="{6541B73B-016A-0046-0E57-1565BFCAE655}"
+	ProjectGUID="{E4A0F0A0-05B4-0333-1365-3EF1BC708F1B}"
 	>
 	<Platforms>
 		<Platform

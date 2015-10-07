@@ -116,6 +116,8 @@ protected:
   Standard_EXPORT   void MakeCurve (const Standard_Integer Index, const Handle(Adaptor3d_TopolTool)& D1, const Handle(Adaptor3d_TopolTool)& D2) ;
   
   Standard_EXPORT   void ComputeTolReached3d() ;
+  
+  Standard_EXPORT   Standard_Real ComputeTolerance() ;
 
 
 

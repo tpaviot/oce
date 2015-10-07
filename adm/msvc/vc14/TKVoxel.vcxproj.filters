@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{B79DDF0D-036B-10FE-0D52-29676E457096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Voxel">
+      <UniqueIdentifier>{E289878B-052F-05BE-050A-5B0EA91F9833}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_BoolDS.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_BooleanOperation.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_CollisionDetection.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_ColorDS.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_DS.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_FastConverter.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_FloatDS.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_OctBoolDS.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_Prs.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_ROctBoolDS.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_Reader.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_Selector.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_SplitData.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Voxel\Voxel_Writer.cxx">
+      <Filter>Source files\Voxel</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKVoxel.rc" />  </ItemGroup>
+</Project>

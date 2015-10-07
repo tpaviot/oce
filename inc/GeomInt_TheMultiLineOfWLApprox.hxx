@@ -59,6 +59,8 @@ public:
   Standard_EXPORT   Standard_Boolean Tangency (const Standard_Integer MPointIndex, TColgp_Array1OfVec& tabV, TColgp_Array1OfVec2d& tabV2d)  const;
   
   Standard_EXPORT   GeomInt_TheMultiLineOfWLApprox MakeMLBetween (const Standard_Integer Low, const Standard_Integer High, const Standard_Integer NbPointsToInsert)  const;
+  
+  Standard_EXPORT   void Dump()  const;
 
 
 

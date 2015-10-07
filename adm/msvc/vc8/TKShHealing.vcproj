@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKShHealing"
-	ProjectGUID="{07F1B138-006B-0EE6-025A-26C1F186D724}"
+	ProjectGUID="{C3997A59-048A-059D-0B7A-D69CD7D323B1}"
 	>
 	<Platforms>
 		<Platform
@@ -529,6 +529,9 @@
 					RelativePath="..\..\..\src\ShapeCustom\ShapeCustom_DirectModification.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\ShapeCustom\ShapeCustom_Modification.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\ShapeCustom\ShapeCustom_RestrictionParameters.cxx">
 				</File>
 				<File
@@ -658,6 +661,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\ShapeFix\ShapeFix_FixSmallFace.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\ShapeFix\ShapeFix_FixSmallSolid.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\ShapeFix\ShapeFix_FreeBounds.cxx">

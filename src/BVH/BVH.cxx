@@ -15,12 +15,17 @@
 
 #include <BVH_Geometry.hxx>
 #include <BVH_Triangulation.hxx>
+#include <BVH_DistanceField.hxx>
 #include <BVH_LinearBuilder.hxx>
 #include <BVH_BinnedBuilder.hxx>
 #include <BVH_SweepPlaneBuilder.hxx>
 #include <BVH_SpatialMedianBuilder.hxx>
 
 // Specific instantiations of struct templates to avoid compilation warnings
+
+template class NCollection_Vec2<Standard_Real>;
+template class NCollection_Vec3<Standard_Real>;
+template class NCollection_Vec4<Standard_Real>;
 
 template class BVH_Box<Standard_Real, 2>;
 template class BVH_Box<Standard_Real, 3>;
@@ -123,6 +128,12 @@ template class BVH_Triangulation<Standard_Real, 4>;
 template class BVH_Triangulation<Standard_ShortReal, 2>;
 template class BVH_Triangulation<Standard_ShortReal, 3>;
 template class BVH_Triangulation<Standard_ShortReal, 4>;
+
+template class BVH_DistanceField<Standard_Real, 3>;
+template class BVH_DistanceField<Standard_Real, 4>;
+
+template class BVH_DistanceField<Standard_ShortReal, 3>;
+template class BVH_DistanceField<Standard_ShortReal, 4>;
 
 template class BVH_Transform<Standard_Real, 4>;
 template class BVH_Transform<Standard_ShortReal, 4>;

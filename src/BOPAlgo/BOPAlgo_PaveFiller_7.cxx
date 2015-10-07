@@ -17,8 +17,6 @@
 
 #include <BOPAlgo_PaveFiller.ixx>
 
-#include <NCollection_IncAllocator.hxx>
-
 #include <Geom_RectangularTrimmedSurface.hxx>
 #include <Geom_Plane.hxx>
 #include <Geom_Surface.hxx>
@@ -41,7 +39,7 @@
 #include <Geom2d_Curve.hxx>
 
 #include <BOPCol_NCVector.hxx>
-#include <BOPCol_TBB.hxx>
+#include <BOPCol_Parallel.hxx>
 #include <BOPCol_MapOfShape.hxx>
 
 #include <BOPDS_VectorOfListOfPaveBlock.hxx>
@@ -62,6 +60,16 @@
 
 #include <BOPTools_AlgoTools.hxx>
 #include <BOPTools_AlgoTools2D.hxx>
+
+#include <BRep_Builder.hxx>
+#include <BRepBndLib.hxx>
+#include <TopExp.hxx>
+#include <TopExp_Explorer.hxx>
+#include <Geom2d_Curve.hxx>
+#include <Geom_Curve.hxx>
+#include <Geom_Surface.hxx>
+#include <Geom_Plane.hxx>
+#include <Geom_RectangularTrimmedSurface.hxx>
 
 static
   Standard_Boolean IsBasedOnPlane(const TopoDS_Face& aF);
@@ -153,11 +161,11 @@ class BOPAlgo_SplitEdge : public BOPAlgo_Algo  {
 typedef BOPCol_NCVector
   <BOPAlgo_SplitEdge> BOPAlgo_VectorOfSplitEdge; 
 //
-typedef BOPCol_TBBFunctor 
+typedef BOPCol_Functor 
   <BOPAlgo_SplitEdge,
   BOPAlgo_VectorOfSplitEdge> BOPAlgo_SplitEdgeFunctor;
 //
-typedef BOPCol_TBBCnt 
+typedef BOPCol_Cnt 
   <BOPAlgo_SplitEdgeFunctor,
   BOPAlgo_VectorOfSplitEdge> BOPAlgo_SplitEdgeCnt;
 //
@@ -202,9 +210,47 @@ class BOPAlgo_MPC : public BOPAlgo_Algo  {
     return myFlag;
   }
   //
+  void SetData(const TopoDS_Edge& aEz,
+               const TopoDS_Vertex& aV1,
+               const Standard_Real aT1,
+               const TopoDS_Vertex& aV2,
+               const Standard_Real aT2) {
+    myEz=aEz;
+    myV1=aV1;
+    myT1=aT1;
+    myV2=aV2;
+    myT2=aT2;
+  }
+  //
+  void SetContext(const Handle(IntTools_Context)& aContext) {
+    myContext=aContext;
+  }
+  //
+  const Handle(IntTools_Context)& Context()const {
+    return myContext;
+  }
+  //
   virtual void Perform() {
-    BOPAlgo_Algo::UserBreak();
-    BOPTools_AlgoTools2D::BuildPCurveForEdgeOnFace(myE, myF);
+    Standard_Integer iErr;
+    //
+    iErr=1;
+    if (!myEz.IsNull()) {
+      TopoDS_Edge aSpz;
+      //
+      BOPTools_AlgoTools::MakeSplitEdge(myEz,myV1, myT1, 
+                                        myV2, myT2, aSpz);
+      //
+      iErr=
+        BOPTools_AlgoTools2D::AttachExistingPCurve(aSpz, 
+                                                   myE, 
+                                                   myF, 
+                                                   myContext);
+    }
+    //
+    if (iErr) { 
+      BOPTools_AlgoTools2D::BuildPCurveForEdgeOnFace(myE, myF);
+    }
+    // 
     if (myFlag) {
       UpdateVertices(myE, myF);
     }
@@ -214,19 +260,29 @@ class BOPAlgo_MPC : public BOPAlgo_Algo  {
   Standard_Boolean myFlag;
   TopoDS_Edge myE;
   TopoDS_Face myF;
+  TopoDS_Edge myEz;
+  TopoDS_Vertex myV1;
+  Standard_Real myT1;
+  TopoDS_Vertex myV2;
+  Standard_Real myT2;
+  //
+  Handle(IntTools_Context) myContext;
 };
 //
 //=======================================================================
 typedef BOPCol_NCVector
   <BOPAlgo_MPC> BOPAlgo_VectorOfMPC; 
 //
-typedef BOPCol_TBBFunctor 
+typedef BOPCol_ContextFunctor 
   <BOPAlgo_MPC,
-  BOPAlgo_VectorOfMPC> BOPAlgo_MPCFunctor;
+  BOPAlgo_VectorOfMPC,
+  Handle(IntTools_Context), 
+  IntTools_Context> BOPAlgo_MPCFunctor;
 //
-typedef BOPCol_TBBCnt 
+typedef BOPCol_ContextCnt 
   <BOPAlgo_MPCFunctor,
-  BOPAlgo_VectorOfMPC> BOPAlgo_MPCCnt;
+  BOPAlgo_VectorOfMPC,
+  Handle(IntTools_Context)> BOPAlgo_MPCCnt;
 //
 //=======================================================================
 //class    : BOPAlgo_BPC
@@ -248,23 +304,38 @@ class BOPAlgo_BPC {
     myE=aE;
   }
   //
+  const TopoDS_Edge& GetEdge() const {
+    return myE;
+  }
+  const TopoDS_Face& GetFace() const {
+    return myF;
+  }
+  const Handle_Geom2d_Curve& GetCurve2d() const {
+    return myCurve;
+  }
+  Standard_Boolean IsToUpdate() const {
+    return myToUpdate;
+  }
+  //
   void Perform() {
-    BOPTools_AlgoTools2D::BuildPCurveForEdgeOnPlane (myE, myF);
+    BOPTools_AlgoTools2D::BuildPCurveForEdgeOnPlane (myE, myF, myCurve, myToUpdate);
   };
   //
  protected:
   TopoDS_Edge myE;
   TopoDS_Face myF;
+  Handle_Geom2d_Curve myCurve;
+  Standard_Boolean myToUpdate;
 };
 //=======================================================================
 typedef BOPCol_NCVector
   <BOPAlgo_BPC> BOPAlgo_VectorOfBPC; 
 //
-typedef BOPCol_TBBFunctor 
+typedef BOPCol_Functor 
   <BOPAlgo_BPC,
   BOPAlgo_VectorOfBPC> BOPAlgo_BPCFunctor;
 //
-typedef BOPCol_TBBCnt 
+typedef BOPCol_Cnt 
   <BOPAlgo_BPCFunctor,
   BOPAlgo_VectorOfBPC> BOPAlgo_BPCCnt;
 //
@@ -422,10 +493,10 @@ Standard_Integer BOPAlgo_PaveFiller::SplitEdge(const Standard_Integer nE,
 //=======================================================================
 void BOPAlgo_PaveFiller::MakePCurves()
 {
-  
-  Standard_Integer i, nF1, nF2, aNbC, k, nE, aNbFF, aNbFI;
+  Standard_Boolean bHasPC;
+  Standard_Integer i, nF1, nF2, aNbC, k, nE, aNbFF, aNbFI, nEx;
+  Standard_Integer j, aNbPBIn, aNbPBOn;
   BOPDS_ListIteratorOfListOfPaveBlock aItLPB;
-  BOPDS_MapIteratorOfMapOfPaveBlock aItMPB;
   TopoDS_Face aF1F, aF2F;
   BOPAlgo_VectorOfMPC aVMPC;
   //
@@ -443,9 +514,9 @@ void BOPAlgo_PaveFiller::MakePCurves()
     aF1F.Orientation(TopAbs_FORWARD);
     // In
     const BOPDS_IndexedMapOfPaveBlock& aMPBIn=aFI.PaveBlocksIn();
-    aItMPB.Initialize(aMPBIn);
-    for(; aItMPB.More(); aItMPB.Next()) {
-      const Handle(BOPDS_PaveBlock)& aPB=aItMPB.Value();
+    aNbPBIn = aMPBIn.Extent();
+    for (j = 1; j <= aNbPBIn; ++j) {
+      const Handle(BOPDS_PaveBlock)& aPB = aMPBIn(j);
       nE=aPB->Edge();
       const TopoDS_Edge& aE=(*(TopoDS_Edge *)(&myDS->Shape(nE)));
       //
@@ -457,18 +528,67 @@ void BOPAlgo_PaveFiller::MakePCurves()
     //
     // On
     const BOPDS_IndexedMapOfPaveBlock& aMPBOn=aFI.PaveBlocksOn();
-    aItMPB.Initialize(aMPBOn);
-    for(; aItMPB.More(); aItMPB.Next()) {
-      const Handle(BOPDS_PaveBlock)& aPB=aItMPB.Value();
-      if (myDS->IsCommonBlockOnEdge(aPB)) {
-        nE=aPB->Edge();
-        const TopoDS_Edge& aE=(*(TopoDS_Edge *)(&myDS->Shape(nE)));
-        //
-        BOPAlgo_MPC& aMPC=aVMPC.Append1();
-        aMPC.SetEdge(aE);
-        aMPC.SetFace(aF1F);
-        aMPC.SetProgressIndicator(myProgressIndicator);
+    aNbPBOn = aMPBOn.Extent();
+    for (j = 1; j <= aNbPBOn; ++j) {
+      const Handle(BOPDS_PaveBlock)& aPB = aMPBOn(j);
+      nE=aPB->Edge();
+      const TopoDS_Edge& aE=(*(TopoDS_Edge *)(&myDS->Shape(nE)));
+      bHasPC=BOPTools_AlgoTools2D::HasCurveOnSurface (aE, aF1F);
+      if (bHasPC) {
+        continue;
       }
+      //
+      Handle(BOPDS_CommonBlock) aCB=myDS->CommonBlock(aPB);
+      if (!aCB) {
+        continue;
+      }
+      //
+      const BOPDS_ListOfPaveBlock& aLPB=aCB->PaveBlocks();
+      if (aLPB.Extent()<2) {
+        continue;
+      }
+      //
+      BOPAlgo_MPC& aMPC=aVMPC.Append1();
+      //
+      aItLPB.Initialize(aLPB);
+      for(; aItLPB.More(); aItLPB.Next()) {
+        const Handle(BOPDS_PaveBlock)& aPBx=aItLPB.Value();
+        if (aPBx==aPB) {
+          continue;
+        }
+        //
+        nEx=aPBx->OriginalEdge();
+        const TopoDS_Edge& aEx=(*(TopoDS_Edge *)(&myDS->Shape(nEx))); 
+        bHasPC=BOPTools_AlgoTools2D::HasCurveOnSurface (aEx, aF1F);
+        if (!bHasPC) {
+          continue;
+        }
+        //
+        Standard_Integer nV1x, nV2x;
+        Standard_Real aT1x, aT2x;
+        TopoDS_Vertex aV1x, aV2x;
+        TopoDS_Edge aEz;
+        //
+        aEz=aEx;
+        aEz.Orientation(TopAbs_FORWARD);
+        //
+        aPBx->Indices(nV1x, nV2x);
+        aPBx->Range(aT1x, aT2x);
+        //
+        aV1x=(*(TopoDS_Vertex *)(&myDS->Shape(nV1x)));
+        aV1x.Orientation(TopAbs_FORWARD); 
+        //
+        aV2x=(*(TopoDS_Vertex *)(&myDS->Shape(nV2x)));
+        aV2x.Orientation(TopAbs_REVERSED); 
+        //
+        aMPC.SetData(aEz, aV1x, aT1x, aV2x, aT2x);
+        //
+        break;
+      }
+      //
+      aMPC.SetEdge(aE);
+      aMPC.SetFace(aF1F);
+      aMPC.SetProgressIndicator(myProgressIndicator);
     }
   }// for (i=0; i<aNbFI; ++i) {
   //
@@ -519,7 +639,7 @@ void BOPAlgo_PaveFiller::MakePCurves()
   }//if (bPCurveOnS1 || bPCurveOnS2 ) {
   //
   //======================================================
-  BOPAlgo_MPCCnt::Perform(myRunParallel, aVMPC);
+  BOPAlgo_MPCCnt::Perform(myRunParallel, aVMPC, myContext);
   //======================================================
 }
 //=======================================================================
@@ -618,10 +738,9 @@ void BOPAlgo_PaveFiller::Prepare()
     TopAbs_FACE
   };
   Standard_Boolean bJustAdd, bIsBasedOnPlane;
-  Standard_Integer i, aNb, n1, nF;
+  Standard_Integer i, aNb, n1, nF, aNbF;
   TopExp_Explorer aExp;
-  BOPCol_MapOfShape aMF;
-  BOPCol_MapIteratorOfMapOfShape aItMF;
+  BOPCol_IndexedMapOfShape aMF;
   //
   myErrorStatus=0;
   //
@@ -639,15 +758,16 @@ void BOPAlgo_PaveFiller::Prepare()
     }
   }
   //
-  if (aMF.IsEmpty()) {
+  aNbF = aMF.Extent();
+  if (!aNbF) {
     return;
   }
   //
+  // Build pcurves of edges on planes; first collect pairs edge-face.
   BOPAlgo_VectorOfBPC aVBPC;
   //
-  aItMF.Initialize(aMF);
-  for (; aItMF.More(); aItMF.Next()) {
-    const TopoDS_Face& aF=*((TopoDS_Face *)&aItMF.Key());
+  for (i = 1; i <= aNbF; ++i) {
+    const TopoDS_Face& aF = *(TopoDS_Face*)&aMF(i);
     aExp.Init(aF, aType[1]);
     for (; aExp.More(); aExp.Next()) {
       const TopoDS_Edge& aE=*((TopoDS_Edge *)&aExp.Current());
@@ -660,6 +780,17 @@ void BOPAlgo_PaveFiller::Prepare()
   //======================================================
   BOPAlgo_BPCCnt::Perform(myRunParallel, aVBPC);
   //======================================================
+
+  // pcurves are built, and now update edges
+  BRep_Builder aBB;
+  TopoDS_Edge E;
+  for (i = 0; i < aVBPC.Extent(); i++) {
+    const BOPAlgo_BPC& aBPC=aVBPC(i);
+    if (aBPC.IsToUpdate()) {
+      Standard_Real aTolE = BRep_Tool::Tolerance(aBPC.GetEdge());
+      aBB.UpdateEdge(aBPC.GetEdge(), aBPC.GetCurve2d(), aBPC.GetFace(), aTolE);
+    }
+  }
 }
 //=======================================================================
 //function : IsBasedOnPlane

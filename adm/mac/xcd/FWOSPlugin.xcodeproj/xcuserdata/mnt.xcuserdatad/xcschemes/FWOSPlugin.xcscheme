@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1708005B0E42185E13B10997"
+               BlueprintIdentifier = "02520B070B3302A5129D0BCD"
                BuildableName = "libFWOSPlugin.dylib"
                BlueprintName = "FWOSPlugin"
                ReferencedContainer = "container:FWOSPlugin.xcodeproj">

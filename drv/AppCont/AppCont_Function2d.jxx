@@ -1,3 +1,0 @@
-#include <gp_Pnt2d.hxx>
-#include <gp_Vec2d.hxx>
-#include <AppCont_Function2d.hxx>

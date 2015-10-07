@@ -12,7 +12,7 @@
 
 #include <Handle_IntTools_Context.hxx>
 #include <BOPCol_ListOfShape.hxx>
-#include <BOPCol_MapOfOrientedShape.hxx>
+#include <BOPCol_IndexedMapOfOrientedShape.hxx>
 #include <BOPAlgo_Algo.hxx>
 #include <BOPCol_BaseAllocator.hxx>
 class IntTools_Context;
@@ -61,7 +61,7 @@ Standard_EXPORT virtual ~BOPAlgo_BuilderArea();
   BOPCol_ListOfShape myLoops;
   BOPCol_ListOfShape myLoopsInternal;
   BOPCol_ListOfShape myAreas;
-  BOPCol_MapOfOrientedShape myShapesToAvoid;
+  BOPCol_IndexedMapOfOrientedShape myShapesToAvoid;
 
 
 private:

@@ -25,6 +25,7 @@
 #include <Graphic3d_StructureManager.hxx>
 #include <Graphic3d_Texture2Dmanual.hxx>
 #include <Precision.hxx>
+#include <Prs3d.hxx>
 #include <Prs3d_LineAspect.hxx>
 #include <Prs3d_IsoAspect.hxx>
 #include <Prs3d_Presentation.hxx>
@@ -35,14 +36,13 @@
 #include <StdPrs_ShadedShape.hxx>
 #include <StdPrs_ToolShadedShape.hxx>
 #include <StdPrs_WFDeflectionShape.hxx>
-#include <StdPrs_WFShape.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Iterator.hxx>
 
-IMPLEMENT_STANDARD_HANDLE (AIS_ColoredDrawer, AIS_Drawer)
-IMPLEMENT_STANDARD_RTTIEXT(AIS_ColoredDrawer, AIS_Drawer)
+IMPLEMENT_STANDARD_HANDLE (AIS_ColoredDrawer, Prs3d_Drawer)
+IMPLEMENT_STANDARD_RTTIEXT(AIS_ColoredDrawer, Prs3d_Drawer)
 
 IMPLEMENT_STANDARD_HANDLE (AIS_ColoredShape, AIS_Shape)
 IMPLEMENT_STANDARD_RTTIEXT(AIS_ColoredShape, AIS_Shape)
@@ -203,15 +203,15 @@ void AIS_ColoredShape::SetColor (const Quantity_Color&  theColor)
       continue;
     }
 
-    if (aDrawer->HasShadingAspect())
+    if (aDrawer->HasOwnShadingAspect())
     {
       aDrawer->ShadingAspect()->SetColor (theColor, myCurrentFacingModel);
     }
-    if (aDrawer->HasLineAspect())
+    if (aDrawer->HasOwnLineAspect())
     {
       aDrawer->LineAspect()->SetColor (theColor);
     }
-    if (aDrawer->HasWireAspect())
+    if (aDrawer->HasOwnWireAspect())
     {
       aDrawer->WireAspect()->SetColor (theColor);
     }
@@ -237,11 +237,11 @@ void AIS_ColoredShape::SetWidth (const Standard_Real    theLineWidth)
       continue;
     }
 
-    if (aDrawer->HasLineAspect())
+    if (aDrawer->HasOwnLineAspect())
     {
       aDrawer->LineAspect()->SetWidth (theLineWidth);
     }
-    if (aDrawer->HasWireAspect())
+    if (aDrawer->HasOwnWireAspect())
     {
       aDrawer->WireAspect()->SetWidth (theLineWidth);
     }
@@ -261,10 +261,32 @@ void AIS_ColoredShape::SetTransparency (const Standard_Real theValue)
   LoadRecomputable (AIS_Shaded);
   for (DataMapOfShapeColor::Iterator anIter (myShapeColors); anIter.More(); anIter.Next())
   {
-    const Handle(AIS_Drawer)& aDrawer = anIter.Value();
-    if (aDrawer->HasShadingAspect())
+    const Handle(Prs3d_Drawer)& aDrawer = anIter.Value();
+    if (aDrawer->HasOwnShadingAspect())
     {
       aDrawer->ShadingAspect()->SetTransparency (theValue, myCurrentFacingModel);
+    }
+  }
+}
+
+//=======================================================================
+//function : SetMaterial
+//purpose  :
+//=======================================================================
+
+void AIS_ColoredShape::SetMaterial (const Graphic3d_MaterialAspect& theMaterial)
+{
+  setMaterial (myDrawer, theMaterial, HasColor(), IsTransparent());
+  //myOwnMaterial = theMaterial;
+  hasOwnMaterial = Standard_True;
+  LoadRecomputable (AIS_Shaded);
+  for (DataMapOfShapeColor::Iterator anIter (myShapeColors); anIter.More(); anIter.Next())
+  {
+    const Handle(AIS_ColoredDrawer)& aDrawer = anIter.Value();
+    //if (aDrawer->HasOwnMaterial()) continue;
+    if (aDrawer->HasOwnShadingAspect())
+    {
+      setMaterial (aDrawer, theMaterial, aDrawer->HasOwnColor(), Standard_False); // aDrawer->IsTransparent()
     }
   }
 }
@@ -283,36 +305,90 @@ void AIS_ColoredShape::Compute (const Handle(PrsMgr_PresentationManager3d)& ,
     thePrs->SetInfiniteState (Standard_True);
   }
 
-  const Standard_Boolean isClosed = StdPrs_ToolShadedShape::IsClosed (myshape);
   if (theMode == AIS_Shaded)
   {
-    // compute mesh for entire shape beforehand to ensure consistency and optimizations (parallelization)
-    Standard_Real anAnglePrev, anAngleNew, aCoeffPrev, aCoeffNew;
-    Standard_Boolean isOwnDeviationAngle       = OwnDeviationAngle      (anAngleNew, anAnglePrev);
-    Standard_Boolean isOwnDeviationCoefficient = OwnDeviationCoefficient(aCoeffNew,  aCoeffPrev);
-    if ((isOwnDeviationAngle       && Abs (anAngleNew - anAnglePrev) > Precision::Angular())
-     || (isOwnDeviationCoefficient && Abs (aCoeffNew  - aCoeffPrev)  > Precision::Confusion()))
+    if (myDrawer->IsAutoTriangulation())
     {
-      BRepTools::Clean (myshape);
+      // compute mesh for entire shape beforehand to ensure consistency and optimizations (parallelization)
+      Standard_Real anAnglePrev, anAngleNew, aCoeffPrev, aCoeffNew;
+      Standard_Boolean isOwnDeviationAngle       = OwnDeviationAngle      (anAngleNew, anAnglePrev);
+      Standard_Boolean isOwnDeviationCoefficient = OwnDeviationCoefficient(aCoeffNew,  aCoeffPrev);
+      if ((isOwnDeviationAngle       && Abs (anAngleNew - anAnglePrev) > Precision::Angular())
+       || (isOwnDeviationCoefficient && Abs (aCoeffNew  - aCoeffPrev)  > Precision::Confusion()))
+      {
+        BRepTools::Clean (myshape);
+      }
+      // After this call if type of deflection is relative
+      // computed deflection coefficient is stored as absolute.
+      StdPrs_ShadedShape::Tessellate (myshape, myDrawer);
     }
-    StdPrs_ShadedShape::Tessellate (myshape, myDrawer);
+  }
+  else // WireFrame mode
+  {
+    // After this call if type of deflection is relative
+    // computed deflection coefficient is stored as absolute.
+    Prs3d::GetDeflection (myshape, myDrawer);
   }
 
-  // 1) myShapeColors + myshape --> array[TopAbs_ShapeEnum] of map of color-to-compound
-  DataMapOfShapeCompd aTypeKeyshapeDrawshapeArray[(size_t )TopAbs_SHAPE];
-  dispatchColors (myshape, myShapeColors, aTypeKeyshapeDrawshapeArray);
+  TopoDS_Compound anOpened, aClosed;
+  BRep_Builder aBuilder;
+  aBuilder.MakeCompound (aClosed);
+  aBuilder.MakeCompound (anOpened);
+  if (theMode == AIS_Shaded && myshape.ShapeType() <= TopAbs_SOLID)
+  {
+    StdPrs_ShadedShape::ExploreSolids (myshape, aBuilder, aClosed, anOpened, Standard_False);
+  }
+  else
+  {
+    aBuilder.Add (anOpened, myshape);
+  }
 
-  // 2) finally add appropriate presentations (1 color -- 1 compound) according to theMode
+  // myShapeColors + anOpened --> array[TopAbs_ShapeEnum] of map of color-to-compound
+  DataMapOfShapeCompd aDispatchedOpened [(size_t)TopAbs_SHAPE];
+  dispatchColors (anOpened, myShapeColors, aDispatchedOpened);
+  addShapesWithCustomProps (thePrs, aDispatchedOpened, theMode, StdPrs_Volume_Opened);
+
+  if (theMode == AIS_Shaded)
+  {
+    if (isShapeEntirelyVisible())
+    {
+      // myShapeColors + aClosed --> array[TopAbs_ShapeEnum] of map of color-to-compound
+      DataMapOfShapeCompd aDispatchedClosed [(size_t)TopAbs_SHAPE];
+      dispatchColors (aClosed, myShapeColors, aDispatchedClosed);
+      addShapesWithCustomProps (thePrs, aDispatchedClosed, theMode, StdPrs_Volume_Closed);
+    }
+    else
+    {
+      for (TopoDS_Iterator aSolidIter (aClosed); aSolidIter.More(); aSolidIter.Next())
+      {
+        DataMapOfShapeCompd aDispatchedClosed [(size_t)TopAbs_SHAPE];
+        dispatchColors (aSolidIter.Value(), myShapeColors, aDispatchedClosed);
+        addShapesWithCustomProps (thePrs, aDispatchedClosed, theMode,
+                                  isShapeEntirelyVisible (aDispatchedClosed) ? StdPrs_Volume_Closed : StdPrs_Volume_Opened);
+      }
+    }
+  }
+}
+
+//=======================================================================
+//function : addShapesWithCustomProps
+//purpose  :
+//=======================================================================
+void AIS_ColoredShape::addShapesWithCustomProps (const Handle(Prs3d_Presentation)& thePrs,
+                                                 DataMapOfShapeCompd*              theDispatched,
+                                                 const Standard_Integer            theMode,
+                                                 const StdPrs_Volume               theVolume)
+{
   Handle(AIS_ColoredDrawer) aCustomDrawer;
   for (size_t aShType = 0; aShType < (size_t )TopAbs_SHAPE; ++aShType)
   {
-    DataMapOfShapeCompd& aKeyshapeDrawshapeMap = aTypeKeyshapeDrawshapeArray[aShType];
+    DataMapOfShapeCompd& aKeyshapeDrawshapeMap = theDispatched[aShType];
     for (DataMapOfShapeCompd::Iterator aMapIter (aKeyshapeDrawshapeMap);
          aMapIter.More(); aMapIter.Next())
     {
       const TopoDS_Shape&    aShapeKey  = aMapIter.Key();   // key shape with detailed color or a base shape
       const TopoDS_Compound& aShapeDraw = aMapIter.Value(); // compound of subshapes with <aShType> type
-      Handle(AIS_Drawer)     aDrawer;
+      Handle(Prs3d_Drawer) aDrawer;
       if (myShapeColors.Find (aShapeKey, aCustomDrawer))
       {
         aDrawer = aCustomDrawer;
@@ -326,34 +402,26 @@ void AIS_ColoredShape::Compute (const Handle(PrsMgr_PresentationManager3d)& ,
         aDrawer = myDrawer;
       }
 
+      // It is supposed that absolute deflection contains previously computed relative deflection
+      // (if deflection type is relative).
+      // In case of CustomDrawer it is taken from Link().
+      Aspect_TypeOfDeflection aPrevType = aDrawer->TypeOfDeflection();
+      aDrawer->SetTypeOfDeflection (Aspect_TOD_ABSOLUTE);
+
       // Draw each kind of subshapes and personal-colored shapes in a separate group
       // since it's necessary to set transparency/material for all subshapes
       // without affecting their unique colors
-      Handle(Graphic3d_Group) aCurrGroup = Prs3d_Root::NewGroup (thePrs);
-      switch (theMode)
+      if (theMode == AIS_Shaded
+       && aShapeDraw.ShapeType() <= TopAbs_FACE
+       && !IsInfinite())
       {
-        default:
-        case AIS_Shaded:
-        {
-          if ((Standard_Integer )aShapeDraw.ShapeType() <= TopAbs_FACE
-           && !IsInfinite())
-          {
-            StdPrs_ShadedShape::Add (thePrs, aShapeDraw, aDrawer);
-
-            aDrawer->SetShadingAspectGlobal (Standard_False);
-            Handle(Graphic3d_AspectFillArea3d) anAsp = aDrawer->ShadingAspect()->Aspect();
-            isClosed ? anAsp->SuppressBackFace() : anAsp->AllowBackFace();
-            aCurrGroup->SetGroupPrimitivesAspect (anAsp);
-            break;
-          }
-          // compute wire-frame otherwise
-        }
-        case AIS_WireFrame:
-        {
-          StdPrs_WFDeflectionShape::Add (thePrs, aShapeDraw, aDrawer);
-          break;
-        }
+        StdPrs_ShadedShape::Add (thePrs, aShapeDraw, aDrawer, theVolume);
       }
+      else
+      {
+        StdPrs_WFDeflectionShape::Add (thePrs, aShapeDraw, aDrawer);
+      }
+      aDrawer->SetTypeOfDeflection (aPrevType);
     }
   }
 }
@@ -425,6 +493,31 @@ Standard_Boolean AIS_ColoredShape::dispatchColors (const TopoDS_Shape&        th
   return isOverriden || isSubOverride;
 }
 
+//! Function to check if specified compound is sub-shape of another one
+inline Standard_Boolean isFirstCmpContainSecondOne (const TopoDS_Shape& theFirstCmp,
+                                                    const TopoDS_Shape& theSecondCmp)
+{
+  if (theFirstCmp.ShapeType()  != TopAbs_COMPOUND
+   || theSecondCmp.ShapeType() != TopAbs_COMPOUND)
+  {
+    return Standard_False;
+  }
+
+  for (TopoDS_Iterator aFirstCmpIter (theFirstCmp); aFirstCmpIter.More(); aFirstCmpIter.Next())
+  {
+    if (aFirstCmpIter.Value().ShapeType() != TopAbs_COMPOUND)
+    {
+      continue;
+    }
+    else if (aFirstCmpIter.Value() == theSecondCmp
+          || isFirstCmpContainSecondOne (aFirstCmpIter.Value(), theSecondCmp))
+    {
+      return Standard_True;
+    }
+  }
+  return Standard_False;
+}
+
 //=======================================================================
 //function : dispatchColors
 //purpose  :
@@ -438,32 +531,11 @@ void AIS_ColoredShape::dispatchColors (const TopoDS_Shape&        theBaseShape,
   // This needed when colored shape is not part of <theBaseShape>
   // (but subshapes are) and actually container for subshapes.
   DataMapOfShapeShape aSubshapeKeyshapeMap;
-  for (DataMapOfShapeColor::Iterator anIt (theKeyshapeColorMap);
-       anIt.More(); anIt.Next())
+  for (DataMapOfShapeColor::Iterator aKeyShapeIter (theKeyshapeColorMap);
+       aKeyShapeIter.More(); aKeyShapeIter.Next())
   {
-    const TopoDS_Shape&   aSh = anIt.Key();
-    TopAbs_ShapeEnum    aType = aSh.ShapeType();
-    TopAbs_ShapeEnum aSubType = (aType == TopAbs_SOLID || aType == TopAbs_SHELL)
-                              ? TopAbs_FACE
-                              : (aType == TopAbs_WIRE ? TopAbs_EDGE : TopAbs_SHAPE);
-    switch (aSubType)
-    {
-      case TopAbs_SHAPE:
-      {
-        aSubshapeKeyshapeMap.Bind (aSh, aSh);
-        break;
-      }
-      default:
-      {
-        for (TopExp_Explorer anExp (aSh, aSubType); anExp.More(); anExp.Next())
-        {
-          if (!aSubshapeKeyshapeMap.IsBound (anExp.Current()))
-          {
-            aSubshapeKeyshapeMap.Bind (anExp.Current(), aSh);
-          }
-        }
-      }
-    }
+    const TopoDS_Shape& aKeyShape = aKeyShapeIter.Key();
+    bindSubShapes (aSubshapeKeyshapeMap, theBaseShape, aKeyShape, aKeyShape);
   }
 
   // Fill the array of maps per shape type
@@ -471,3 +543,101 @@ void AIS_ColoredShape::dispatchColors (const TopoDS_Shape&        theBaseShape,
                   aSubshapeKeyshapeMap, TopAbs_SHAPE,
                   theTypeKeyshapeDrawshapeArray);
 }
+
+//=======================================================================
+//function : isShapeEntirelyVisible
+//purpose  :
+//=======================================================================
+Standard_Boolean AIS_ColoredShape::isShapeEntirelyVisible (DataMapOfShapeCompd* theDispatched) const
+{
+  Handle(AIS_ColoredDrawer) aCustomDrawer;
+  for (size_t aShType = (size_t )TopAbs_COMPOUND; aShType <= (size_t )TopAbs_FACE; ++aShType)
+  {
+    const DataMapOfShapeCompd& aKeyshapeDrawshapeMap = theDispatched[aShType];
+    for (DataMapOfShapeCompd::Iterator aMapIter (aKeyshapeDrawshapeMap); aMapIter.More(); aMapIter.Next())
+    {
+      if (myShapeColors.Find (aMapIter.Key(), aCustomDrawer)
+      && !aCustomDrawer.IsNull()
+      &&  aCustomDrawer->IsHidden())
+      {
+        return Standard_False;
+      }
+    }
+  }
+  return Standard_True;
+}
+
+//=======================================================================
+//function : isShapeEntirelyVisible
+//purpose  :
+//=======================================================================
+Standard_Boolean AIS_ColoredShape::isShapeEntirelyVisible() const
+{
+  for (DataMapOfShapeColor::Iterator aMapIter (myShapeColors); aMapIter.More(); aMapIter.Next())
+  {
+    if (aMapIter.Value()->IsHidden())
+    {
+      return Standard_False;
+    }
+  }
+  return Standard_True;
+}
+
+//=======================================================================
+//function : bindSubShapes
+//purpose  :
+//=======================================================================
+void AIS_ColoredShape::bindSubShapes (DataMapOfShapeShape& theSubshapeKeyshapeMap,
+                                      const TopoDS_Shape&  theBaseShape,
+                                      const TopoDS_Shape&  theShapeWithColor,
+                                      const TopoDS_Shape&  theColorKeyShape)
+{
+  TopAbs_ShapeEnum aShapeWithColorType = theShapeWithColor.ShapeType();
+  if (aShapeWithColorType == TopAbs_COMPOUND)
+  {
+    if (isFirstCmpContainSecondOne (theBaseShape, theShapeWithColor))
+    {
+      if (!theSubshapeKeyshapeMap.IsBound (theShapeWithColor))
+      {
+        theSubshapeKeyshapeMap.Bind (theShapeWithColor, theColorKeyShape);
+      }
+    }
+    else
+    {
+      for (TopoDS_Iterator aSubShapeIter (theShapeWithColor); aSubShapeIter.More(); aSubShapeIter.Next())
+      {
+        bindSubShapes (theSubshapeKeyshapeMap, theBaseShape, aSubShapeIter.Value(), theColorKeyShape);
+      }
+    }
+  }
+  else if (aShapeWithColorType == TopAbs_SOLID || aShapeWithColorType == TopAbs_SHELL)
+  {
+    for (TopExp_Explorer anExp (theShapeWithColor, TopAbs_FACE); anExp.More(); anExp.Next())
+    {
+      if (!theSubshapeKeyshapeMap.IsBound (anExp.Current()))
+      {
+        theSubshapeKeyshapeMap.Bind (anExp.Current(), theColorKeyShape);
+      }
+    }
+  }
+  else if (aShapeWithColorType == TopAbs_WIRE)
+  {
+    for (TopExp_Explorer anExp (theShapeWithColor, TopAbs_EDGE); anExp.More(); anExp.Next())
+    {
+      if (!theSubshapeKeyshapeMap.IsBound (anExp.Current()))
+      {
+        theSubshapeKeyshapeMap.Bind (anExp.Current(), theColorKeyShape);
+      }
+    }
+  }
+  else
+  {
+    // bind single face, edge and vertex
+    // force rebind if required due to the color of single shape has
+    // higher priority than the color of "compound" shape (wire is a
+    // compound of edges, shell is a compound of faces) that contains
+    // this single shape.
+    theSubshapeKeyshapeMap.Bind (theShapeWithColor, theColorKeyShape);
+  }
+}
+

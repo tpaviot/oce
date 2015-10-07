@@ -2,46 +2,46 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{2AD30B48-0E32-06BC-0B79-DA47367955BF}</UniqueIdentifier>
+      <UniqueIdentifier>{5B61A156-0108-104B-173E-82E376238666}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PBRep">
-      <UniqueIdentifier>{EC92BE89-064C-0772-0063-B7F41EFC0A8F}</UniqueIdentifier>
+      <UniqueIdentifier>{4CB706D8-0203-164B-0DBA-2B7058DCBB23}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PTopoDS">
-      <UniqueIdentifier>{196AB27A-01AF-0A17-0CE2-550BD57BD1BC}</UniqueIdentifier>
+      <UniqueIdentifier>{82189D01-0FE0-17FC-10A5-0BD133D3846C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PGeom">
-      <UniqueIdentifier>{06A57B85-09D6-09E1-0E22-EB8602AB112A}</UniqueIdentifier>
+      <UniqueIdentifier>{9B0F80E1-079F-0B2B-07FC-507C08FF0F20}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PGeom2d">
-      <UniqueIdentifier>{F41298BF-0A57-00C6-0C22-624132A662D8}</UniqueIdentifier>
+      <UniqueIdentifier>{3A3C72B5-0ABD-0366-0B9C-9B64C8F5C3D0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PPoly">
-      <UniqueIdentifier>{A3858139-0A19-16DD-0153-D2D6C9134B79}</UniqueIdentifier>
+      <UniqueIdentifier>{0ACBC13C-0C51-1873-0289-8C7305D3737F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PColgp">
-      <UniqueIdentifier>{BFFA19FB-0468-1658-0714-62C32AFB23A1}</UniqueIdentifier>
+      <UniqueIdentifier>{43BD3A03-041B-058A-02E0-E8A44A7A0E55}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PTopLoc">
-      <UniqueIdentifier>{E02111B9-1761-0D8B-17F3-301626FE4FC4}</UniqueIdentifier>
+      <UniqueIdentifier>{4304BFBE-11F8-12C3-10D4-129B93A3D9AD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtBRep">
-      <UniqueIdentifier>{26DE4B7C-186A-101D-1423-A4AC983F6AFB}</UniqueIdentifier>
+      <UniqueIdentifier>{2802B9DC-00AE-1878-1056-C38155602828}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtGeom">
-      <UniqueIdentifier>{88B9B1E5-01E6-0617-129A-22B8F19BF27E}</UniqueIdentifier>
+      <UniqueIdentifier>{EC715E00-0963-132B-0958-30E619528C06}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtGeom2d">
-      <UniqueIdentifier>{4D536FEA-013B-08AE-089A-2EBEE6F6F4CC}</UniqueIdentifier>
+      <UniqueIdentifier>{670C3DC5-0EFB-13C9-0736-A56591AF43A5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtPoly">
-      <UniqueIdentifier>{41BA9BE4-072C-0650-092B-71698CC87D1F}</UniqueIdentifier>
+      <UniqueIdentifier>{8238C405-073F-07CD-0135-39084D50247B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtTopLoc">
-      <UniqueIdentifier>{8EA4111B-178C-0D2E-0CA7-0FF519A45E31}</UniqueIdentifier>
+      <UniqueIdentifier>{8B0B808A-109D-103D-1312-61380AA61FE6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MgtTopoDS">
-      <UniqueIdentifier>{23F6459F-0219-076D-05F6-0348EDA8FE2F}</UniqueIdentifier>
+      <UniqueIdentifier>{783D9411-0630-0015-016D-FC02E82300A0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

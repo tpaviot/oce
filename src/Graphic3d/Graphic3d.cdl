@@ -35,7 +35,6 @@
 --              and derivated used for model presentation.
 --                       Required: enumeration TypeOfPrimitive;
 --                  imported PrimitiveArray; class PrimitiveList.
---      17-12-01 : GG ; IMP171201 : Add material name UserDefined
 --              Thanks to Stephane ROUTELOUS
 --              20-01-2009 : ABD Integration support of system fonts (using FTGL and FreeType)
 -- Objective    :   Specifications definitives
@@ -344,6 +343,11 @@ is
     -- - RM_RASTERIZATION: enables OpenGL rasterization mode;
     -- - RM_RAYTRACING: enables GPU ray-tracing mode.
 
+    enumeration TypeOfBackground is
+      TOB_NONE, TOB_GRADIENT, TOB_TEXTURE
+    end TypeOfBackground;
+     ---Purpose: Describes type of view background.
+
     ---------------------------
     -- Category: Imported types
     ---------------------------
@@ -351,12 +355,9 @@ is
     imported BndBox4f;
     ---Purpose: Redefines BVH_Box<Standard_ShortReal, 4> for AABB representation
     ---Category: Imported types
-    imported Buffer;
-    imported Buffer_Handle;
-    imported BoundBuffer;
-    imported BoundBuffer_Handle;
-    imported IndexBuffer;
-    imported IndexBuffer_Handle;
+    imported transient class Buffer;
+    imported transient class BoundBuffer;
+    imported transient class IndexBuffer;
 
     imported BndBox4d;
     imported BufferType;
@@ -378,17 +379,12 @@ is
     imported CAspectLine;
     imported CAspectText;
 
-    imported CStructure;
+    imported transient class CStructure;
     ---Category: Imported types
 
     pointer CStructurePtr to CStructure from Graphic3d;
 
-    imported CStructure_Handle;
-
     imported CLight;
-    ---Category: Imported types
-
-    imported CPick;
     ---Category: Imported types
 
     imported CPlane;
@@ -404,22 +400,20 @@ is
     ---Purpose: Describes rendering parameters and effects.
     ---Category: Imported types
 
-    imported CGraduatedTrihedron;
+    imported GraduatedTrihedron;
     ---Category: Imported types
 
-    imported ClipPlane;
+    imported transient class ClipPlane;
     ---Category: Imported types
 
-    imported ClipPlane_Handle;
 
     imported CTexture;
 
     imported CTransPersStruct;
     imported TransModeFlags;
     
-    imported MarkerImage;
-    imported MarkerImage_Handle;
-    imported Camera_Handle;
+    imported transient class MarkerImage;
+    imported transient class Camera;
 
     primitive PtrFrameBuffer;
     primitive Vec2;
@@ -428,7 +422,8 @@ is
     imported  Mat4;
     imported  Mat4d;
 
-    imported ZLayerSettings;
+    imported  ZLayerSettings;
+    primitive ZLayerId;
 
     --------------------
     -- Category: Classes
@@ -493,19 +488,19 @@ is
     imported Vertex;
     ---Category: Classes
 
+    imported transient class ViewAffinity;
+    imported MapOfObject;
+    imported transient class NMapOfTransient;
+
+    imported MapOfStructure;
+    imported IndexedMapOfAddress;
+    imported SequenceOfDisplayedStructures;
+
     ---------------------------------
     -- Category: Instantiated classes
     ---------------------------------
 
     imported SequenceOfGroup;
-
-    ---Category: Instantiated classes
-
-    class MapOfStructure instantiates
-            Map from TCollection (Structure from Graphic3d,MapTransientHasher from TColStd);
-
-
-    ---Category: Instantiated classes
 
     class SequenceOfStructure instantiates
             Sequence from TCollection
@@ -537,7 +532,7 @@ is
     imported NListOfHAsciiString;
     ---Category: Instantiated classes
 
-    imported ShaderProgram_Handle;
+    imported transient class ShaderProgram;
     ---Category: Instantiated classes
 
     imported SequenceOfHClipPlane;

@@ -11,9 +11,8 @@
 #include <Standard_Macro.hxx>
 
 #include <Handle_Prs3d_Presentation.hxx>
-#include <Handle_Prs3d_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 class Prs3d_Presentation;
-class Prs3d_Drawer;
 class TCollection_ExtendedString;
 class gp_Pnt;
 class gp_Ax2;

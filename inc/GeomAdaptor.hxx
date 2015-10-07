@@ -12,6 +12,7 @@
 
 #include <Handle_Geom_Curve.hxx>
 #include <Handle_Geom_Surface.hxx>
+#include <Standard_Boolean.hxx>
 class Geom_Curve;
 class Adaptor3d_Curve;
 class Geom_Surface;
@@ -41,7 +42,9 @@ public:
   
   //! Build a Geom_Surface using the informations from the
   //! Surface from Adaptor3d
-  Standard_EXPORT static   Handle(Geom_Surface) MakeSurface (const Adaptor3d_Surface& S) ;
+  //! @param theS - Surface adaptor to convert.
+  //! @param theTrimFlag - True if perform trim surface values by adaptor and false otherwise.
+  Standard_EXPORT static   Handle(Geom_Surface) MakeSurface (const Adaptor3d_Surface& S, const Standard_Boolean theTrimFlag = Standard_True) ;
 
 
 

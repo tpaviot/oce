@@ -10,13 +10,13 @@
 #include <Standard_DefineAlloc.hxx>
 #include <Standard_Macro.hxx>
 
+#include <Standard_Boolean.hxx>
 #include <Standard_Real.hxx>
 #include <math_Vector.hxx>
-#include <Standard_Integer.hxx>
 #include <TColStd_SequenceOfReal.hxx>
 #include <Standard_Address.hxx>
-#include <Standard_Boolean.hxx>
 #include <Handle_TColgp_HArray1OfPnt.hxx>
+#include <Standard_Integer.hxx>
 class StdFail_InfiniteSolutions;
 class StdFail_NotDone;
 class Standard_OutOfRange;
@@ -50,6 +50,8 @@ public:
   
   Standard_EXPORT   Standard_Boolean IsDone()  const;
   
+  Standard_EXPORT   Standard_Boolean IsParallel()  const;
+  
   Standard_EXPORT   Standard_Integer NbExt()  const;
   
   Standard_EXPORT   Standard_Real SquareDistance (const Standard_Integer N = 1)  const;
@@ -69,10 +71,10 @@ private:
 
 
 
+  Standard_Boolean myParallel;
   Standard_Real myCurveMinTol;
   math_Vector myLowBorder;
   math_Vector myUppBorder;
-  Standard_Integer mySolCount;
   TColStd_SequenceOfReal myPoints1;
   TColStd_SequenceOfReal myPoints2;
   Standard_Address myC[2];
