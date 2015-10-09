@@ -20,7 +20,7 @@
 project(OCE)
 
 set(OCE_VERSION_MAJOR 0)
-set(OCE_VERSION_MINOR 17)
+set(OCE_VERSION_MINOR 18)
 # OCE_VERSION_PATCH is used for bugfixes releases only
 # (uncomment following line)
 # set(OCE_VERSION_PATCH 1)
