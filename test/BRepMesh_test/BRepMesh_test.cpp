@@ -1,5 +1,6 @@
 #include <BRepTools.hxx>
 #include <BRep_Tool.hxx>
+#include <TopoDS.hxx>
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Face.hxx>
 #include <BRep_Builder.hxx>
@@ -59,7 +60,7 @@ TEST(BRepMeshTestSuite, testMeshTorus)
    	    BRepBuilderAPI_NurbsConvert converter;
 	    converter.Perform(primTorus);
         ASSERT_TRUE(converter.IsDone());
-	    const TopoDS_Face & nurbsTorus = (const TopoDS_Face &)converter.ModifiedShape(primTorus);
+	    TopoDS_Face nurbsTorus = TopoDS::Face(converter.ModifiedShape(primTorus));
 	    ASSERT_NE(nbTriangle(nurbsTorus),0);
    	}
 }
