@@ -796,7 +796,7 @@ void  BinTools_ShapeSet::ReadGeometry(const TopAbs_ShapeEnum T,
 	TopLoc_Location L;
 	Standard_Boolean aNewF = (myFormatNb > 2) ? Standard_True : Standard_False;
 #ifdef OCCT_DEBUG
-	gp_Pnt aPnt = gp_Pnt(X,Y,Z);
+	gp_Pnt aPnt; aPnt = gp_Pnt(X,Y,Z);
 #endif
 	do {
 	  if(aNewF) {

@@ -470,7 +470,7 @@ static Standard_Boolean EdgeIntersectOnWire (const gp_Pnt& P1,
       }
     }
 #ifdef OCCT_DEBUG
-    gp_Pnt Psol = 
+    gp_Pnt Psol; Psol = 
 #endif
       DSS.PointOnShape2(isol);
     // is the solution a new vertex ?

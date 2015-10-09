@@ -1095,6 +1095,8 @@ static Standard_Integer Debou(Draw_Interpretor& theCommands,
   else {
     return 1;
   }
+  
+  (void)Fuse; //warning suppression
 
   for ( newnarg = 4; newnarg < narg; newnarg++) {
     if (a[newnarg][0] == '@') {

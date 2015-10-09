@@ -4673,13 +4673,13 @@ V3d_TextItem::V3d_TextItem (const TCollection_AsciiString& theText,
                             const Aspect_TypeOfDisplayText& theTypeOfDisplay,
                             const Handle(Visual3d_Layer)& theLayer)
  : myX1 (theX1), myY1 (theY1),
-   myHeight (theHeight),
    myText (theText),
-   myFontName (theFontName),
+   myHeight (theHeight),
+   myLayer (theLayer),
    myColor (theColor),
    mySubtitleColor (theSubtitleColor),
    myType (theTypeOfDisplay),
-   myLayer (theLayer)
+   myFontName (theFontName)
 {
   if (!myLayer.IsNull ())
     myLayer->AddLayerItem (this);
@@ -4721,10 +4721,10 @@ public:
 private:
 
   Standard_Real       myX1, myY1, myX2, myY2;
-  V3d_LayerMgrPointer myLayerMgr;
-  Aspect_TypeOfLine   myType;
   Standard_Real       myWidth;
   Standard_Real       myTransparency;
+  Aspect_TypeOfLine   myType;
+  V3d_LayerMgrPointer myLayerMgr;
 };
 
 IMPLEMENT_STANDARD_HANDLE(V3d_LineItem, Visual3d_LayerItem)

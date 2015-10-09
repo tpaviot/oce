@@ -681,6 +681,14 @@ void Blend_Walking::InternalPerform(Blend_Function& Func,
 	Arrive = Standard_True;
       }
       break;
+      
+    case Blend_Backward :
+      {
+#ifdef OCCT_DEBUG
+	cout << "Unhandled condition: Blend_Backward" << endl;
+#endif
+      }
+      break;
 #ifndef OCCT_DEBUG
     default:
       break;

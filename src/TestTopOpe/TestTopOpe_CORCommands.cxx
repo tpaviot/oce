@@ -813,7 +813,7 @@ static Standard_Integer normal(Draw_Interpretor& di, Standard_Integer n, const c
   Standard_Real dist=0.; gp_Pnt2d uv; Standard_Boolean ok = FUN_tool_projPonF(p,f,uv,dist);
   if (!ok) {di<<"projection failed"<<"\n"; return 1;}
 #ifdef OCCT_DEBUG
-  gp_Vec ngf =
+  gp_Vec ngf; ngf =
 #endif
                FUN_tool_nggeomF(uv,f);
   TCollection_AsciiString aa("ngS"); 

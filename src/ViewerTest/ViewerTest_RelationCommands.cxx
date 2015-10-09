@@ -869,6 +869,7 @@ static int VDiameterDimBuilder(Draw_Interpretor& di, Standard_Integer argc, cons
 
   gp_Circ aCircle = aCurve.Circle();
   aRadius = 2.0 * aCircle.Radius();
+  (void)aRadius; //warning suppression.
 
   // Construction of the diameter dimension.
   TheAISContext()->CloseLocalContext (aCurrentIndex);
@@ -1687,7 +1688,7 @@ static int VLenghtDimension(Draw_Interpretor& di, Standard_Integer argc, const c
       gp_Pnt A=BRep_Tool::Pnt(aVertex1);
 
 #ifdef OCCT_DEBUG
-      gp_Pnt C = BRep_Tool::Pnt(aVertex2);
+      gp_Pnt C; C = BRep_Tool::Pnt(aVertex2);
 #endif
 
       gp_Pnt aProjB = aDeltaVertexFace.Point(1);
@@ -2649,6 +2650,7 @@ static int VMoveDim (Draw_Interpretor& theDi, Standard_Integer theArgNum, const 
     // Open local context and get its index for recovery.
     TheAISContext()->OpenLocalContext();
     aCurrentIndex = TheAISContext()->IndexOfCurrentLocal();
+    (void)aCurrentIndex; //warning suppression
 
     // Loop that will be handle picking.
     Standard_Integer anArgNum = 5;

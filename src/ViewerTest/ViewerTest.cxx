@@ -4567,7 +4567,7 @@ Standard_Boolean  ViewerTest::PickObjects(Handle(TColStd_HArray1OfTransient)& ar
   while(NbPickGood<NbToReach && NbPickFail <= MaxPick){
     while(ViewerMainLoop(argccc,argvvv)){}
     Standard_Integer NbStored = TheAISContext()->NbSelected();
-    if((unsigned int ) NbStored != NbPickGood)
+    if(NbStored != NbPickGood)
       NbPickGood= NbStored;
     else
       NbPickFail++;
@@ -4576,7 +4576,7 @@ Standard_Boolean  ViewerTest::PickObjects(Handle(TColStd_HArray1OfTransient)& ar
 
   // step3 get result.
 
-  if((unsigned int ) NbPickFail >= NbToReach) return Standard_False;
+  if(NbPickFail >= NbToReach) return Standard_False;
 
   Standard_Integer i(0);
   for(TheAISContext()->InitSelected();
@@ -4740,7 +4740,7 @@ Standard_Boolean ViewerTest::PickShapes (const TopAbs_ShapeEnum TheType,
   while(NbPickGood<NbToReach && NbPickFail <= MaxPick){
     while(ViewerMainLoop(argccc,argvvv)){}
     Standard_Integer NbStored = TheAISContext()->NbSelected();
-    if((unsigned int ) NbStored != NbPickGood)
+    if(NbStored != NbPickGood)
       NbPickGood= NbStored;
     else
       NbPickFail++;
@@ -4749,7 +4749,7 @@ Standard_Boolean ViewerTest::PickShapes (const TopAbs_ShapeEnum TheType,
 
   // step3 get result.
 
-  if((unsigned int ) NbPickFail >= NbToReach) return Standard_False;
+  if(NbPickFail >= NbToReach) return Standard_False;
 
   Standard_Integer i(0);
   for(TheAISContext()->InitSelected();TheAISContext()->MoreSelected();TheAISContext()->NextSelected()){

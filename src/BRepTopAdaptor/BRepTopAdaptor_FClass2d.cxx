@@ -192,7 +192,7 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
 	      //-- Try to remote the first point of the current edge 
 	      //-- from the last saved point
 #ifdef OCCT_DEBUG
-	      gp_Pnt2d Pnt2dDebutEdgeCourant=
+	      gp_Pnt2d Pnt2dDebutEdgeCourant; Pnt2dDebutEdgeCourant = //split statements for warning suppression.
 #endif
 	      C.Value(u);
 

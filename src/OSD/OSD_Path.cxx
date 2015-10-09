@@ -1417,8 +1417,9 @@ static void __fastcall _remove_dup ( TCollection_AsciiString& str ) {
 // =======================================================================
 // function : Analyse_VMS
 // purpose  :
+// inline to silence warning
 // =======================================================================
-static Standard_Boolean Analyse_VMS (const TCollection_AsciiString& theName)
+inline static Standard_Boolean Analyse_VMS (const TCollection_AsciiString& theName)
 {
   if (theName.Search ("/")  != -1
    || theName.Search ("@")  != -1
@@ -1433,8 +1434,9 @@ static Standard_Boolean Analyse_VMS (const TCollection_AsciiString& theName)
 // =======================================================================
 // function : Analyse_DOS
 // purpose  :
+// inline to silence warning
 // =======================================================================
-static Standard_Boolean Analyse_DOS(const TCollection_AsciiString& theName)
+inline static Standard_Boolean Analyse_DOS(const TCollection_AsciiString& theName)
 {
   if (theName.Search ("/")  != -1
    || theName.Search (":")  != -1
@@ -1454,8 +1456,9 @@ static Standard_Boolean Analyse_DOS(const TCollection_AsciiString& theName)
 // =======================================================================
 // function : Analyse_MACOS
 // purpose  :
+// inline to silence warning
 // =======================================================================
-static Standard_Boolean Analyse_MACOS (const TCollection_AsciiString& theName)
+inline static Standard_Boolean Analyse_MACOS (const TCollection_AsciiString& theName)
 {
   return theName.Search(":") == -1 ? theName.Length() <= 31 : Standard_True;
 }

@@ -1020,25 +1020,23 @@ void GeomInt_IntSS::MakeCurve(const Standard_Integer Index,
     {
       GeomAbs_SurfaceType typS1 = myHS1->Surface().GetType();
       GeomAbs_SurfaceType typS2 = myHS2->Surface().GetType();
-      Standard_Boolean isAnalS1 = Standard_False;
       switch (typS1)
       {
       case GeomAbs_Plane:
       case GeomAbs_Cylinder:
       case GeomAbs_Sphere:
       case GeomAbs_Cone: 
-      case GeomAbs_Torus: isAnalS1 = Standard_True; break;
+      case GeomAbs_Torus:
       default: break;
       }
 
-      Standard_Integer isAnalS2 = Standard_False;
       switch (typS2)
       {
       case GeomAbs_Plane:
       case GeomAbs_Cylinder:
       case GeomAbs_Sphere:
       case GeomAbs_Cone: 
-      case GeomAbs_Torus: isAnalS2 = Standard_True; break;
+      case GeomAbs_Torus:
       default: break;
       }
 
