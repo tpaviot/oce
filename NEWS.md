@@ -1,3 +1,35 @@
+### Version 0.17.1 - January 2016
+
+This version is binary compatible with 0CE 0.17.
+
+* Mingw64 (5.2.0) and Mingw32 (4.8.1, 4.9.3) fixes
+
+* OCE_USE_STATIC_MSVC_RUNTIME advanced option to use static version of the
+MSVC run-time library
+
+* Revert change in HLR inverted flag
+
+* Fix nmake build
+
+* Patch from setting correct tolerance.
+
+* Replace gp_Ax1 reference with direct value. Fixes #559
+
+* VS2015 fix
+
+* Fix for static building on MSVC
+
+* New oce-win-bundle handling
+
+* ppc64le fix
+
+* Build OCE and run tests on appveyor.com service.
+
+Users who contributed to this release:
+  Jacob Abel, Ali Kämäräinen, Denis Barbier, Benjamin Bilher,
+  Rajeev Jain, Sergio L. Pascual, Thomas Paviot, QbProg,
+  Jeremy Wright
+
 ### Version 0.17 - March 2015
 
 This version is not binary compatible with OCE 0.16, OCE_ABI_SOVERSION
