@@ -547,7 +547,7 @@ GeomAbs_SurfaceType Adaptor3d_SurfaceOfRevolution::GetType() const
   //
   switch ( myBasisCurve->GetType()) {
   case GeomAbs_Line:    {
-    const gp_Ax1& Axe = (myBasisCurve->Line()).Position();
+    const gp_Ax1 Axe = (myBasisCurve->Line()).Position();
     
     if (myAxis.IsParallel(Axe, TolAng)) {
       bRet=GeomAbs_Cylinder;
