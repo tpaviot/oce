@@ -1,5 +1,7 @@
-Travis-CI Build Status :
+Travis-CI:
 [![Build Status](https://travis-ci.org/tpaviot/oce.png?branch=master)](https://travis-ci.org/tpaviot/oce)
+Appveyor:
+[![Build Status](https://ci.appveyor.com/api/projects/status/wq74bifo9lojmxsj?svg=true)](https://ci.appveyor.com/project/tpaviot/oce)
 
 ## About
 
@@ -55,6 +57,8 @@ We use the following online resources:
        http://groups.google.com/group/oce-dev/about
   * Travic-CI
        https://travis-ci.org/tpaviot/oce
+  * Appveyor
+       https://ci.appveyor.com/project/tpaviot/oce
 
 Just ask @tpaviot (tpaviot@gmail.com) or @dbarbier (bouzim@gmail.com) for a
 request regarding write access to the repository.
