@@ -48,16 +48,16 @@ rerun cmake after modifying this file.
 
 Here are default flags on Unix:
 
- OCE_BUILD_SHARED_LIB        ON
- OCE_DATAEXCHANGE            ON
- OCE_DRAW                    OFF
- OCE_INSTALL_PREFIX          /usr/local
- OCE_MODEL                   ON
- OCE_MULTITHREAD_LIBRARY     NONE
- OCE_OCAF                    ON
- OCE_VISUALISATION           ON
- OCE_WITH_FREEIMAGE          OFF
- OCE_WITH_GL2PS              OFF
+    OCE_BUILD_SHARED_LIB        ON
+    OCE_DATAEXCHANGE            ON
+    OCE_DRAW                    OFF
+    OCE_INSTALL_PREFIX          /usr/local
+    OCE_MODEL                   ON
+    OCE_MULTITHREAD_LIBRARY     NONE
+    OCE_OCAF                    ON
+    OCE_VISUALISATION           ON
+    OCE_WITH_FREEIMAGE          OFF
+    OCE_WITH_GL2PS              OFF
 
 In order to modify installation path and build DRAWEXE, one
 can run these commands:
