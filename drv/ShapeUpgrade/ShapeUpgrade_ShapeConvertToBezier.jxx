@@ -1,3 +1,4 @@
 #include <TopoDS_Shape.hxx>
 #include <ShapeUpgrade_FaceDivide.hxx>
+#include <Message_Msg.hxx>
 #include <ShapeUpgrade_ShapeConvertToBezier.hxx>

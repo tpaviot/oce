@@ -19,7 +19,6 @@
 #include <AIS_OffsetDimension.ixx>
 
 #include <AIS.hxx>
-#include <AIS_Drawer.hxx>
 #include <BRepBuilderAPI_Transform.hxx>
 #include <BRepAdaptor_Surface.hxx>
 #include <BRep_Tool.hxx>
@@ -36,6 +35,7 @@
 #include <Select3D_SensitiveBox.hxx>
 #include <Select3D_SensitiveSegment.hxx>
 #include <SelectMgr_EntityOwner.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <StdPrs_WFDeflectionShape.hxx>
 #include <TColStd_Array2OfReal.hxx>
 #include <TCollection_ExtendedString.hxx>

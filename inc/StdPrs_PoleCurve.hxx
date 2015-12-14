@@ -12,13 +12,12 @@
 
 #include <Prs3d_Root.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-#include <Handle_Prs3d_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 #include <Standard_Boolean.hxx>
 #include <Quantity_Length.hxx>
 #include <Standard_Integer.hxx>
 class Prs3d_Presentation;
 class Adaptor3d_Curve;
-class Prs3d_Drawer;
 
 
 //! A framework to provide display of Bezier or BSpline curves

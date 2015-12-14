@@ -21,6 +21,7 @@
 #include <Extrema_ExtFlag.hxx>
 #include <Extrema_ExtAlgo.hxx>
 #include <Handle_TColStd_HArray1OfReal.hxx>
+#include <Extrema_POnSurfParams.hxx>
 class Extrema_HArray2OfPOnSurfParams;
 class Bnd_HArray1OfSphere;
 class TColStd_HArray1OfReal;
@@ -121,6 +122,9 @@ private:
   
   //! Creation of grid of parametric points
   Standard_EXPORT   void BuildGrid (const gp_Pnt& thePoint) ;
+  
+  //! Compute new edge parameters.
+  Standard_EXPORT  const  Extrema_POnSurfParams& ComputeEdgeParameters (const Standard_Boolean IsUEdge, const Extrema_POnSurfParams& theParam0, const Extrema_POnSurfParams& theParam1, const gp_Pnt& thePoints, const Standard_Real theDiffTol) ;
 
 
   Standard_Boolean myDone;
@@ -143,6 +147,9 @@ private:
   Handle(TColStd_HArray1OfReal) myUParams;
   Handle(TColStd_HArray1OfReal) myVParams;
   Handle(Extrema_HArray2OfPOnSurfParams) myFacePntParams;
+  Handle(Extrema_HArray2OfPOnSurfParams) myUEdgePntParams;
+  Handle(Extrema_HArray2OfPOnSurfParams) myVEdgePntParams;
+  Extrema_POnSurfParams myGridParam;
 
 
 };

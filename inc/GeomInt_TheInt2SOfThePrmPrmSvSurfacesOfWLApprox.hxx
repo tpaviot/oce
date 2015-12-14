@@ -65,6 +65,8 @@ public:
      const  gp_Dir2d& DirectionOnS2()  const;
   
       GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox& Function() ;
+  
+      IntSurf_PntOn2S& ChangePoint() ;
 
 
 

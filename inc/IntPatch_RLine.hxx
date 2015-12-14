@@ -16,7 +16,7 @@
 #include <Handle_IntSurf_LineOn2S.hxx>
 #include <Standard_Integer.hxx>
 #include <IntPatch_SequenceOfPoint.hxx>
-#include <IntPatch_Line.hxx>
+#include <IntPatch_PointLine.hxx>
 #include <IntSurf_TypeTrans.hxx>
 #include <IntSurf_Situation.hxx>
 class Adaptor2d_HCurve2d;
@@ -29,7 +29,7 @@ class IntSurf_PntOn2S;
 
 //! Implementation of an intersection line described by a
 //! restriction line on one of the surfaces.
-class IntPatch_RLine : public IntPatch_Line
+class IntPatch_RLine : public IntPatch_PointLine
 {
 
 public:

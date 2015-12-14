@@ -37,6 +37,7 @@ BRepCheck_IntersectingWires,
 BRepCheck_InvalidImbricationOfWires,
 BRepCheck_EmptyShell,
 BRepCheck_RedundantFace,
+BRepCheck_InvalidImbricationOfShells,
 BRepCheck_UnorientableShape,
 BRepCheck_NotClosed,
 BRepCheck_NotConnected,
@@ -45,6 +46,7 @@ BRepCheck_BadOrientation,
 BRepCheck_BadOrientationOfSubshape,
 BRepCheck_InvalidPolygonOnTriangulation,
 BRepCheck_InvalidToleranceValue,
+BRepCheck_EnclosedRegion,
 BRepCheck_CheckFail
 };
 

@@ -10,9 +10,9 @@
 #include <Standard_DefineHandle.hxx>
 #include <Handle_Graphic3d_ArrayOfPrimitives.hxx>
 
-#include <Graphic3d_IndexBuffer_Handle.hxx>
-#include <Graphic3d_Buffer_Handle.hxx>
-#include <Graphic3d_BoundBuffer_Handle.hxx>
+#include <Graphic3d_IndexBuffer.hxx>
+#include <Graphic3d_Buffer.hxx>
+#include <Graphic3d_BoundBuffer.hxx>
 #include <Graphic3d_TypeOfPrimitiveArray.hxx>
 #include <Standard_Integer.hxx>
 #include <Standard_Byte.hxx>
@@ -62,6 +62,7 @@ public:
   //! Adds a vertice in the array.
   //! returns the actual vertex number.
       Standard_Integer AddVertex (const gp_Pnt& aVertice) ;
+Standard_Integer AddVertex (const Graphic3d_Vec3& theVertex);
   
   //! Adds a vertice in the array.
   //! returns the actual vertex number.
@@ -224,13 +225,13 @@ public:
       void SetBoundColor (const Standard_Integer anIndex, const Standard_Real R, const Standard_Real G, const Standard_Real B) ;
   
   //! Returns optional index buffer.
-     const  Graphic3d_IndexBuffer_Handle& Indices()  const;
+     const  Handle(Graphic3d_IndexBuffer)& Indices()  const;
   
   //! Returns vertex attributes buffer (colors, normals, texture coordinates).
-     const  Graphic3d_Buffer_Handle& Attributes()  const;
+     const  Handle(Graphic3d_Buffer)& Attributes()  const;
   
   //! Returns optional bounds buffer.
-     const  Graphic3d_BoundBuffer_Handle& Bounds()  const;
+     const  Handle(Graphic3d_BoundBuffer)& Bounds()  const;
   
   //! Returns the type of this primitive
       Graphic3d_TypeOfPrimitiveArray Type()  const;
@@ -343,9 +344,9 @@ private:
   
   Standard_EXPORT   void ComputeVNormals (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
 
-  Graphic3d_IndexBuffer_Handle myIndices;
-  Graphic3d_Buffer_Handle myAttribs;
-  Graphic3d_BoundBuffer_Handle myBounds;
+  Handle(Graphic3d_IndexBuffer) myIndices;
+  Handle(Graphic3d_Buffer) myAttribs;
+  Handle(Graphic3d_BoundBuffer) myBounds;
   Graphic3d_TypeOfPrimitiveArray myType;
   Standard_Integer myMaxBounds;
   Standard_Integer myMaxVertexs;

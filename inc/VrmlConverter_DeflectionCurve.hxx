@@ -13,8 +13,11 @@
 #include <Standard_OStream.hxx>
 #include <Handle_VrmlConverter_Drawer.hxx>
 #include <Standard_Real.hxx>
+#include <Handle_TColStd_HArray1OfReal.hxx>
+#include <Standard_Integer.hxx>
 class Adaptor3d_Curve;
 class VrmlConverter_Drawer;
+class TColStd_HArray1OfReal;
 
 
 //! DeflectionCurve    -  computes the presentation of
@@ -63,6 +66,10 @@ public:
   //! The drawing will be limited between the points of parameter
   //! U1 and U2.
   Standard_EXPORT static   void Add (Standard_OStream& anOStream, Adaptor3d_Curve& aCurve, const Standard_Real U1, const Standard_Real U2, const Standard_Real aDeflection) ;
+  
+  //! adds to the OStream the drawing of the curve aCurve with
+  //! the array of parameters to retrieve points on curve.
+  Standard_EXPORT static   void Add (Standard_OStream& anOStream, const Adaptor3d_Curve& aCurve, const Handle(TColStd_HArray1OfReal)& aParams, const Standard_Integer aNbNodes, const Handle(VrmlConverter_Drawer)& aDrawer) ;
 
 
 

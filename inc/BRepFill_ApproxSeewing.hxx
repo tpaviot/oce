@@ -17,7 +17,6 @@
 class Geom_Curve;
 class Geom2d_Curve;
 class StdFail_NotDone;
-class BRepFill_MultiLine;
 
 
 //! Evaluate the 3dCurve  and the PCurves described in

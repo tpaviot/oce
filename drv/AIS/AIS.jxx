@@ -12,5 +12,4 @@
 #include <Bnd_Box.hxx>
 #include <gp_Elips.hxx>
 #include <Prs3d_Presentation.hxx>
-#include <AIS_Drawer.hxx>
 #include <AIS.hxx>

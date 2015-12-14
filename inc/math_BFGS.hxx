@@ -32,27 +32,22 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-
-  //! Given the starting point StartingPoint,
-  //! the Broyden-Fletcher-Goldfarb-Shanno variant of Davidson-Fletcher-Powell
-  //! minimization is done on the function F.
-  //! The tolerance required on F is given by Tolerance.
-  //! The solution F = Fi is found when :
-  //! 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
-  //! The maximum number of iterations allowed is given by NbIterations.
-  Standard_EXPORT math_BFGS(math_MultipleVarFunctionWithGradient& F, const math_Vector& StartingPoint, const Standard_Real Tolerance = 1.0e-8, const Standard_Integer NbIterations = 200, const Standard_Real ZEPS = 1.0e-12);
-  
-  //! Initializes the computation of the minimum of F.
-  //! Warning
+  //! Initializes the computation of the minimum of a function with
+  //! NbVariables.
+  //! Tolerance, ZEPS and NbIterations are described in the method Perform.
+  //! Warning:
   //! A call to the Perform method must be made after this
   //! initialization to effectively compute the minimum of the
   //! function F.
-  Standard_EXPORT math_BFGS(math_MultipleVarFunctionWithGradient& F, const Standard_Real Tolerance = 1.0e-8, const Standard_Integer NbIterations = 200, const Standard_Real ZEPS = 1.0e-12);
+  Standard_EXPORT math_BFGS(const Standard_Integer NbVariables, const Standard_Real Tolerance = 1.0e-8, const Standard_Integer NbIterations = 200, const Standard_Real ZEPS = 1.0e-12);
+Standard_EXPORT virtual ~math_BFGS();
   
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~math_BFGS(){Delete() ; }
-  
-  //! Is used internally by the constructors.
+  //! Given the starting point StartingPoint,
+  //! minimization is done on the function F.
+  //! The solution F = Fi is found when :
+  //! 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
+  //! Tolerance, ZEPS and maximum number of iterations are given
+  //! in the constructor.
   Standard_EXPORT   void Perform (math_MultipleVarFunctionWithGradient& F, const math_Vector& StartingPoint) ;
   
 

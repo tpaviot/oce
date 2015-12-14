@@ -13,7 +13,7 @@
 #include <Handle_TNaming_NamedShape.hxx>
 class TDF_LabelMap;
 class TNaming_NamedShape;
-class TopTools_MapOfShape;
+class TopTools_IndexedMapOfShape;
 class TDF_Label;
 class TopoDS_Shape;
 
@@ -26,9 +26,9 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT static   void CurrentShape (const TDF_LabelMap& Valid, const TDF_LabelMap& Forbiden, const Handle(TNaming_NamedShape)& NS, TopTools_MapOfShape& MS) ;
+  Standard_EXPORT static   void CurrentShape (const TDF_LabelMap& Valid, const TDF_LabelMap& Forbiden, const Handle(TNaming_NamedShape)& NS, TopTools_IndexedMapOfShape& MS) ;
   
-  Standard_EXPORT static   void CurrentShapeFromShape (const TDF_LabelMap& Valid, const TDF_LabelMap& Forbiden, const TDF_Label& Acces, const TopoDS_Shape& S, TopTools_MapOfShape& MS) ;
+  Standard_EXPORT static   void CurrentShapeFromShape (const TDF_LabelMap& Valid, const TDF_LabelMap& Forbiden, const TDF_Label& Acces, const TopoDS_Shape& S, TopTools_IndexedMapOfShape& MS) ;
   
   Standard_EXPORT static   void BuildDescendants (const Handle(TNaming_NamedShape)& NS, TDF_LabelMap& Labels) ;
 

@@ -14,12 +14,15 @@
 #include <Standard_Boolean.hxx>
 #include <BOPAlgo_Operation.hxx>
 #include <BOPAlgo_ListOfCheckResult.hxx>
+#include <Standard_Real.hxx>
+#include <BOPCol_DataMapOfShapeReal.hxx>
+#include <BOPAlgo_Algo.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 class TopoDS_Shape;
 
 
 //! check the validity of argument(s) for Boolean Operations
-class BOPAlgo_ArgumentAnalyzer 
+class BOPAlgo_ArgumentAnalyzer  : public BOPAlgo_Algo
 {
 public:
 
@@ -28,6 +31,7 @@ public:
   
   //! empty constructor
   Standard_EXPORT BOPAlgo_ArgumentAnalyzer();
+Standard_EXPORT virtual ~BOPAlgo_ArgumentAnalyzer();
   
   //! sets object shape
   Standard_EXPORT   void SetShape1 (const TopoDS_Shape& TheShape) ;
@@ -91,6 +95,12 @@ public:
   
   //! returns a result of test
   Standard_EXPORT  const  BOPAlgo_ListOfCheckResult& GetCheckResult()  const;
+  
+  //! Sets the additional tolerance
+      void SetFuzzyValue (const Standard_Real theFuzz) ;
+  
+  //! Returns the additional tolerance
+      Standard_Real FuzzyValue()  const;
 
 
 
@@ -120,6 +130,12 @@ protected:
   Standard_EXPORT   void TestContinuity() ;
   
   Standard_EXPORT   void TestCurveOnSurface() ;
+  
+  //! Updates the shapes tolerance values.
+  Standard_EXPORT   void UpdateTolerances() ;
+  
+  //! Reverts the tolerance values for all entities to default values.
+  Standard_EXPORT   void SetDefaultTolerances() ;
 
 
 
@@ -144,6 +160,8 @@ private:
   Standard_Boolean myEmpty1;
   Standard_Boolean myEmpty2;
   BOPAlgo_ListOfCheckResult myResult;
+  Standard_Real myFuzzyValue;
+  BOPCol_DataMapOfShapeReal myToleranceMap;
 
 
 };

@@ -10,6 +10,7 @@
 #include <Standard_DefineAlloc.hxx>
 #include <Standard_Macro.hxx>
 
+#include <StlAPI_ErrorStatus.hxx>
 #include <Standard_CString.hxx>
 #include <Standard_Boolean.hxx>
 class TopoDS_Shape;
@@ -28,7 +29,7 @@ public:
   //! Convert and write shape to STL format.
   //! file is written in binary if aAsciiMode is False
   //! otherwise it is written in Ascii (by default)
-  Standard_EXPORT static   void Write (const TopoDS_Shape& aShape, const Standard_CString aFile, const Standard_Boolean aAsciiMode = Standard_True) ;
+  Standard_EXPORT static   StlAPI_ErrorStatus Write (const TopoDS_Shape& aShape, const Standard_CString aFile, const Standard_Boolean aAsciiMode = Standard_True) ;
   
   //! Create a shape from a STL format.
   Standard_EXPORT static   void Read (TopoDS_Shape& aShape, const Standard_CString aFile) ;

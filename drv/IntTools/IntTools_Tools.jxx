@@ -13,4 +13,6 @@
 #include <IntTools_Range.hxx>
 #include <gp_Lin.hxx>
 #include <gp_Pln.hxx>
+#include <Geom2d_Curve.hxx>
+#include <Geom_Surface.hxx>
 #include <IntTools_Tools.hxx>

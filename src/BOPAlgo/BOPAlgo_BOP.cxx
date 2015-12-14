@@ -38,20 +38,17 @@
 #include <BOPAlgo_BuilderSolid.hxx>
 
 #include <BRep_Tool.hxx>
-#include <NCollection_IncAllocator.hxx>
 //
 #include <BOPTools_Set.hxx>
 #include <BOPTools_SetMapHasher.hxx>
 #include <NCollection_DataMap.hxx>
+#include <TopTools_ListIteratorOfListOfShape.hxx>
 
-typedef NCollection_DataMap  
-  <BOPTools_Set, 
-  TopoDS_Shape, 
-  BOPTools_SetMapHasher> BOPTools_DataMapOfSetShape; 
+typedef NCollection_IndexedDataMap
+  <BOPTools_Set,
+  TopoDS_Shape,
+  BOPTools_SetMapHasher> BOPTools_IndexedDataMapOfSetShape;
 //
-typedef BOPTools_DataMapOfSetShape::Iterator 
-  BOPTools_DataMapIteratorOfDataMapOfSetShape; 
-
 static
   TopAbs_ShapeEnum TypeToExplore(const Standard_Integer theDim);
 
@@ -126,6 +123,36 @@ void BOPAlgo_BOP::AddTool(const TopoDS_Shape& theShape)
 {
   if (myMapTools.Add(theShape)) {
     myTools.Append(theShape);
+  }
+}
+//=======================================================================
+//function : SetTools
+//purpose  : 
+//=======================================================================
+void BOPAlgo_BOP::SetTools(const TopTools_ListOfShape& theShapes)
+{
+  TopTools_ListIteratorOfListOfShape aIt;
+  //
+  myTools.Clear();
+  aIt.Initialize(theShapes);
+  for (; aIt.More(); aIt.Next()) {
+    const TopoDS_Shape& aS = aIt.Value();
+    AddTool(aS);
+  }
+}
+//=======================================================================
+//function : SetTools
+//purpose  : 
+//=======================================================================
+void BOPAlgo_BOP::SetTools(const BOPCol_ListOfShape& theShapes)
+{
+  BOPCol_ListIteratorOfListOfShape aIt;
+  //
+  myTools.Clear();
+  aIt.Initialize(theShapes);
+  for (; aIt.More(); aIt.Next()) {
+    const TopoDS_Shape& aS = aIt.Value();
+    AddTool(aS);
   }
 }
 //=======================================================================
@@ -333,7 +360,8 @@ void BOPAlgo_BOP::Perform()
     }
   }
   //
-  aAllocator=new NCollection_IncAllocator;
+  aAllocator=
+    NCollection_BaseAllocator::CommonBaseAllocator();
   BOPCol_ListOfShape aLS(aAllocator);
   //
   aItLS.Initialize(myArguments);
@@ -350,6 +378,9 @@ void BOPAlgo_BOP::Perform()
   //
   pPF=new BOPAlgo_PaveFiller(aAllocator);
   pPF->SetArguments(aLS);
+  pPF->SetRunParallel(myRunParallel);
+  pPF->SetProgressIndicator(myProgressIndicator);
+  pPF->SetFuzzyValue(myFuzzyValue);
   //
   pPF->Perform();
   //
@@ -501,7 +532,7 @@ void BOPAlgo_BOP::BuildRC()
   BOPCol_ListIteratorOfListOfShape aItLS, aItIm; 
   Standard_Boolean bHasInterf;
   Standard_Integer iX;
-  BOPTools_DataMapOfSetShape aDMSTS;
+  BOPTools_IndexedDataMapOfSetShape aDMSTS;
   //
   myErrorStatus=0;
   //
@@ -561,7 +592,7 @@ void BOPAlgo_BOP::BuildRC()
             //
             aST.Add(aSIm, TopAbs_FACE);
             //
-            aDMSTS.Bind(aST, aSIm);
+            aDMSTS.Add(aST, aSIm);
           }
         }
       }
@@ -626,8 +657,8 @@ void BOPAlgo_BOP::BuildRC()
                //
                aST.Add(aSIm, TopAbs_FACE);
                //
-               if (aDMSTS.IsBound(aST)) {
-                 const TopoDS_Shape& aSImA=aDMSTS.Find(aST);
+               if (aDMSTS.Contains(aST)) {
+                 const TopoDS_Shape& aSImA=aDMSTS.FindFromKey(aST);
                  aBB.Add(aC, aSImA);
                }
              }
@@ -640,7 +671,7 @@ void BOPAlgo_BOP::BuildRC()
               //
               aST.Add(aSIm, TopAbs_FACE);
               //
-              bIsBound=aDMSTS.IsBound(aST); 
+              bIsBound=aDMSTS.Contains(aST); 
             }
             //
             if (!bIsBound) {
@@ -807,8 +838,7 @@ void BOPAlgo_BOP::BuildSolid()
   BOPCol_ListOfShape aSFS;
   BOPAlgo_BuilderSolid aSB; 
   BOPCol_MapOfShape aMSA, aMZ;
-  BOPTools_DataMapOfSetShape aDMSTS;
-  BOPTools_DataMapIteratorOfDataMapOfSetShape aItDMSTS;
+  BOPTools_IndexedDataMapOfSetShape aDMSTS;
   //
   myErrorStatus=0;
   //
@@ -864,8 +894,8 @@ void BOPAlgo_BOP::BuildSolid()
         //
         aST.Add(aSx, TopAbs_FACE);
         //
-        if (!aDMSTS.IsBound(aST)) {
-          aDMSTS.Bind(aST, aSx);
+        if (!aDMSTS.Contains(aST)) {
+          aDMSTS.Add(aST, aSx);
         }
         
         continue; 
@@ -962,9 +992,9 @@ void BOPAlgo_BOP::BuildSolid()
     aBB.Add(aRC, aSR);
   }
   //
-  aItDMSTS.Initialize(aDMSTS);
-  for (; aItDMSTS.More(); aItDMSTS.Next()) {
-    const TopoDS_Shape& aSx=aItDMSTS.Value();
+  aNbSx = aDMSTS.Extent();
+  for (i = 1; i <= aNbSx; ++i) {
+    const TopoDS_Shape& aSx = aDMSTS(i);
     aBB.Add(aRC, aSx);
   }
   //

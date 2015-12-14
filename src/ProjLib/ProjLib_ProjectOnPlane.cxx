@@ -251,14 +251,19 @@ class ProjLib_OnPlane : public AppCont_Function
   Handle(Adaptor3d_HCurve) myCurve;
   gp_Ax3 myPlane;
   gp_Dir myDirection;
-  
-  public :
-  
+
+public :
+
   ProjLib_OnPlane(const Handle(Adaptor3d_HCurve)& C, 
-		  const gp_Ax3& Pl, 
-		  const gp_Dir& D) 
-    : myCurve(C), myPlane(Pl), myDirection(D)
-      {}
+                  const gp_Ax3& Pl, 
+                  const gp_Dir& D) 
+: myCurve(C),
+  myPlane(Pl),
+  myDirection(D)
+  {
+    myNbPnt = 1;
+    myNbPnt2d = 0;
+  }
 
   Standard_Real FirstParameter() const
     {return myCurve->FirstParameter();}
@@ -266,11 +271,21 @@ class ProjLib_OnPlane : public AppCont_Function
   Standard_Real LastParameter() const
     {return myCurve->LastParameter();}
 
-  gp_Pnt Value( const Standard_Real t) const
-    {return OnPlane_Value(t,myCurve,myPlane,myDirection);}
+    Standard_Boolean Value(const Standard_Real   theT,
+                           NCollection_Array1<gp_Pnt2d>& /*thePnt2d*/,
+                           NCollection_Array1<gp_Pnt>&   thePnt) const
+    {
+      thePnt(1) = OnPlane_Value(theT, myCurve, myPlane, myDirection);
+      return Standard_True;
+    }
   
-  Standard_Boolean D1(const Standard_Real t, gp_Pnt& P, gp_Vec& V) const
-    {return OnPlane_D1(t,P,V,myCurve,myPlane,myDirection);}
+  Standard_Boolean D1(const Standard_Real   theT,
+                      NCollection_Array1<gp_Vec2d>& /*theVec2d*/,
+                      NCollection_Array1<gp_Vec>&   theVec) const
+  {
+    gp_Pnt aDummyPnt;
+    return OnPlane_D1(theT, aDummyPnt, theVec(1),myCurve,myPlane,myDirection);
+  }
 };
 
 
@@ -928,7 +943,7 @@ GeomAbs_Shape ProjLib_ProjectOnPlane::Continuity() const
 //purpose  : 
 //=======================================================================
 
-Standard_Integer ProjLib_ProjectOnPlane::NbIntervals(const GeomAbs_Shape S) 
+Standard_Integer ProjLib_ProjectOnPlane::NbIntervals(const GeomAbs_Shape S) const
 {
   return myCurve->NbIntervals(S) ;
 }
@@ -940,7 +955,7 @@ Standard_Integer ProjLib_ProjectOnPlane::NbIntervals(const GeomAbs_Shape S)
 //=======================================================================
 
 void ProjLib_ProjectOnPlane::Intervals(TColStd_Array1OfReal& T, 
-				       const GeomAbs_Shape S) 
+                                       const GeomAbs_Shape S) const
 {
   myCurve->Intervals(T,S) ;
 }

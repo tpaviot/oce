@@ -16,6 +16,7 @@
 #include <OpenGl_Font.hxx>
 
 #include <OpenGl_Context.hxx>
+#include <Graphic3d_TextureParams.hxx>
 #include <Standard_Assert.hxx>
 #include <TCollection_ExtendedString.hxx>
 
@@ -61,13 +62,16 @@ void OpenGl_Font::Release (OpenGl_Context* theCtx)
     return;
   }
 
-  // application can not handle this case by exception - this is bug in code
-  Standard_ASSERT_RETURN (theCtx != NULL,
-    "OpenGl_Font destroyed without GL context! Possible GPU memory leakage...",);
-
   for (Standard_Integer anIter = 0; anIter < myTextures.Length(); ++anIter)
   {
     Handle(OpenGl_Texture)& aTexture = myTextures.ChangeValue (anIter);
+    if (aTexture->IsValid())
+    {
+      // application can not handle this case by exception - this is bug in code
+      Standard_ASSERT_RETURN (theCtx != NULL,
+        "OpenGl_Font destroyed without GL context! Possible GPU memory leakage...",);
+    }
+
     aTexture->Release (theCtx);
     aTexture.Nullify();
   }
@@ -93,7 +97,12 @@ bool OpenGl_Font::Init (const Handle(OpenGl_Context)& theCtx)
   myTileSizeY   = myFont->GlyphMaxSizeY();
 
   myLastTileId = -1;
-  return createTexture (theCtx);
+  if (!createTexture (theCtx))
+  {
+    Release (theCtx.operator->());
+    return false;
+  }
+  return true;
 }
 
 // =======================================================================
@@ -113,11 +122,17 @@ bool OpenGl_Font::createTexture (const Handle(OpenGl_Context)& theCtx)
   memset (&myLastTilePx, 0, sizeof(myLastTilePx));
   myLastTilePx.Bottom = myTileSizeY;
 
-  myTextures.Append (new OpenGl_Texture());
+  Handle(Graphic3d_TextureParams) aParams = new Graphic3d_TextureParams();
+  aParams->SetModulate    (Standard_False);
+  aParams->SetRepeat      (Standard_False);
+  aParams->SetFilter      (Graphic3d_TOTF_BILINEAR);
+  aParams->SetAnisoFilter (Graphic3d_LOTA_OFF);
+
+  myTextures.Append (new OpenGl_Texture (aParams));
   Handle(OpenGl_Texture)& aTexture = myTextures.ChangeLast();
 
   Image_PixMap aBlackImg;
-  if (!aBlackImg.InitZero (Image_PixMap::ImgGray, Standard_Size(aTextureSizeX), Standard_Size(aTextureSizeY))
+  if (!aBlackImg.InitZero (Image_PixMap::ImgAlpha, Standard_Size(aTextureSizeX), Standard_Size(aTextureSizeY))
    || !aTexture->Init (theCtx, aBlackImg, Graphic3d_TOT_2D)) // myTextureFormat
   {
     TCollection_ExtendedString aMsg;
@@ -130,10 +145,6 @@ bool OpenGl_Font::createTexture (const Handle(OpenGl_Context)& theCtx)
     return false;
   }
 
-  aTexture->Bind (theCtx);
-  glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, theCtx->TextureWrapClamp());
-  glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, theCtx->TextureWrapClamp());
-  aTexture->Unbind (theCtx);
   return true;
 }
 
@@ -150,6 +161,11 @@ bool OpenGl_Font::renderGlyph (const Handle(OpenGl_Context)& theCtx,
   }
 
   Handle(OpenGl_Texture)& aTexture = myTextures.ChangeLast();
+  if (aTexture.IsNull()
+  || !aTexture->IsValid())
+  {
+    return false;
+  }
 
   const Image_PixMap& anImg = myFont->GlyphImage();
   const Standard_Integer aTileId = myLastTileId + 1;
@@ -181,7 +197,7 @@ bool OpenGl_Font::renderGlyph (const Handle(OpenGl_Context)& theCtx,
 
   glTexSubImage2D (GL_TEXTURE_2D, 0,
                    myLastTilePx.Left, myLastTilePx.Top, (GLsizei )anImg.SizeX(), (GLsizei )anImg.SizeY(),
-                   GL_ALPHA, GL_UNSIGNED_BYTE, anImg.Data());
+                   aTexture->GetFormat(), GL_UNSIGNED_BYTE, anImg.Data());
 
   OpenGl_Font::Tile aTile;
   aTile.uv.Left   = GLfloat(myLastTilePx.Left)                / GLfloat(aTexture->SizeX());

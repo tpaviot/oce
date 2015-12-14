@@ -30,22 +30,26 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
+  //! Constructor.
+  //! @param theXTolerance - algorithm tolerance.
+  Standard_EXPORT math_BissecNewton(const Standard_Real theXTolerance);
+  
 
   //! A combination of Newton-Raphson and bissection methods is done to find
-  //! the root of the function F between the bounds Bound1 and Bound2.
+  //! the root of the function F between the bounds Bound1 and Bound2
   //! on the function F.
   //! The tolerance required on the root is given by TolX.
-  //! The solution is found when :
+  //! The solution is found when:
   //! abs(Xi - Xi-1) <= TolX and F(Xi) * F(Xi-1) <= 0
   //! The maximum number of iterations allowed is given by NbIterations.
-  Standard_EXPORT math_BissecNewton(math_FunctionWithDerivative& F, const Standard_Real Bound1, const Standard_Real Bound2, const Standard_Real TolX, const Standard_Integer NbIterations = 100);
+  Standard_EXPORT   void Perform (math_FunctionWithDerivative& F, const Standard_Real Bound1, const Standard_Real Bound2, const Standard_Integer NbIterations = 100) ;
   
 
   //! This method is called at the end of each iteration to check if the
   //! solution has been found.
   //! It can be redefined in a sub-class to implement a specific test to
   //! stop the iterations.
-  Standard_EXPORT virtual   Standard_Boolean IsSolutionReached (math_FunctionWithDerivative& F) ;
+    virtual   Standard_Boolean IsSolutionReached (math_FunctionWithDerivative& theFunction) ;
   
   //! Tests is the root has been successfully found.
       Standard_Boolean IsDone()  const;
@@ -66,14 +70,16 @@ public:
   //! of the object.
   //! Is used to redifine the operator <<.
   Standard_EXPORT   void Dump (Standard_OStream& o)  const;
+  
+  //! Destructor alias.
+      void Delete()  const;
+  Standard_EXPORT virtual ~math_BissecNewton();
 
 
 
 
 protected:
 
-  
-  Standard_EXPORT   void Perform (math_FunctionWithDerivative& F, const Standard_Real Bound1, const Standard_Real Bound2, const Standard_Integer NbIterations) ;
 
 
   math_Status TheStatus;

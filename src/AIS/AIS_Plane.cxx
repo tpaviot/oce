@@ -14,9 +14,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#define GER61351		//GG_171199     Enable to set an object RGB color
-//						  instead a restricted object NameOfColor.
-
 #include <AIS_Plane.ixx>
 
 #include <TColgp_Array1OfPnt.hxx>
@@ -55,8 +52,6 @@
 #include <StdPrs_ShadedShape.hxx>
 
 #include <Poly_Triangulation.hxx>
-
-#include <AIS_Drawer.hxx>
 
 #include <TCollection_AsciiString.hxx>
 
@@ -378,10 +373,10 @@ void AIS_Plane::SetSize(const Standard_Real aXLength,
   DA = myDrawer->DatumAspect();
 
   Standard_Boolean yenavaitPA(Standard_True),yenavaitDA(Standard_True);
-  if(myDrawer->Link()->PlaneAspect() == PA){
+  if(myDrawer->HasLink() && myDrawer->Link()->PlaneAspect() == PA){
     yenavaitPA = Standard_False;
     PA = new Prs3d_PlaneAspect();}
-  if(myDrawer->Link()->DatumAspect() == DA){
+  if(myDrawer->HasLink() && myDrawer->Link()->DatumAspect() == DA){
     yenavaitDA = Standard_False;
     DA = new Prs3d_DatumAspect();
   }
@@ -409,13 +404,16 @@ void AIS_Plane::UnsetSize()
 {
   
   if(!myHasOwnSize) return;
-  if(!hasOwnColor){
-    myDrawer->PlaneAspect().Nullify();
-    myDrawer->DatumAspect().Nullify();
+  if(!hasOwnColor)
+  {
+    myDrawer->SetPlaneAspect (Handle(Prs3d_PlaneAspect)());
+    myDrawer->SetDatumAspect (Handle(Prs3d_DatumAspect)());
   }
   else{
-    const Handle(Prs3d_PlaneAspect)& PA = myDrawer->Link()->PlaneAspect();
-    const Handle(Prs3d_DatumAspect)& DA = myDrawer->Link()->DatumAspect();
+    const Handle(Prs3d_PlaneAspect) PA = myDrawer->HasLink() ? myDrawer->Link()->PlaneAspect() :
+                                                               new Prs3d_PlaneAspect();
+    const Handle(Prs3d_DatumAspect) DA = myDrawer->HasLink() ? myDrawer->Link()->DatumAspect() :
+                                                               new Prs3d_DatumAspect();
 
     myDrawer->PlaneAspect()->SetPlaneLength(PA->PlaneXLength(),PA->PlaneYLength());
     myDrawer->DatumAspect()->SetAxisLength(DA->FirstAxisLength(),
@@ -449,13 +447,11 @@ Standard_Boolean AIS_Plane::Size(Standard_Real& X,Standard_Real& Y) const
 
 
 void AIS_Plane::SetColor(const Quantity_NameOfColor aCol)
-#ifdef GER61351
 {
   SetColor(Quantity_Color(aCol));
 }
 
 void AIS_Plane::SetColor(const Quantity_Color &aCol)
-#endif
 {
   // if the plane already has its proper size, there is an already created planeaspect 
 //  Standard_Boolean yenadeja = hasOwnColor || myHasOwnSize;
@@ -466,10 +462,10 @@ void AIS_Plane::SetColor(const Quantity_Color &aCol)
   DA = myDrawer->DatumAspect();
 
   Standard_Boolean yenavaitPA(Standard_True),yenavaitDA(Standard_True);
-  if(myDrawer->Link()->PlaneAspect() == PA){
+  if(myDrawer->HasLink() && myDrawer->Link()->PlaneAspect() == PA){
     yenavaitPA = Standard_False;
     PA = new Prs3d_PlaneAspect();}
-  if(myDrawer->Link()->DatumAspect() == DA){
+  if(myDrawer->HasLink() && myDrawer->Link()->DatumAspect() == DA){
     yenavaitDA = Standard_False;
     DA = new Prs3d_DatumAspect();
   }
@@ -496,12 +492,14 @@ void AIS_Plane::SetColor(const Quantity_Color &aCol)
 void AIS_Plane::UnsetColor()
 {
   if(!hasOwnColor) return;
-  if(!myHasOwnSize){
-    myDrawer->PlaneAspect().Nullify();
-    myDrawer->DatumAspect().Nullify();
+  if(!myHasOwnSize)
+  {
+    myDrawer->SetPlaneAspect (Handle(Prs3d_PlaneAspect)());
+    myDrawer->SetDatumAspect (Handle(Prs3d_DatumAspect)());
   }
   else{
-    const Handle(Prs3d_PlaneAspect)& PA = myDrawer->Link()->PlaneAspect();
+    const Handle(Prs3d_PlaneAspect) PA = myDrawer->HasLink() ? myDrawer->Link()->PlaneAspect() :
+                                                               new Prs3d_PlaneAspect();
 //    const Handle(Prs3d_DatumAspect)& DA = myDrawer->Link()->DatumAspect();
     Quantity_Color C;Aspect_TypeOfLine T;Standard_Real W;
     PA->EdgesAspect()->Aspect()->Values(C,T,W);

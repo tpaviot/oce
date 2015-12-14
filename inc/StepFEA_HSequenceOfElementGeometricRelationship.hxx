@@ -71,8 +71,6 @@ public:
      const  StepFEA_SequenceOfElementGeometricRelationship& Sequence()  const;
   
       StepFEA_SequenceOfElementGeometricRelationship& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(StepFEA_HSequenceOfElementGeometricRelationship) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(StepFEA_HSequenceOfElementGeometricRelationship) ShallowCopy(const Handle(StepFEA_HSequenceOfElementGeometricRelationship)& me) {
- return me->ShallowCopy();
-}
 
 
 

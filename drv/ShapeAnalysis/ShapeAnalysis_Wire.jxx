@@ -14,4 +14,5 @@
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
 #include <TopTools_MapOfShape.hxx>
+#include <TopoDS_Edge.hxx>
 #include <ShapeAnalysis_Wire.hxx>

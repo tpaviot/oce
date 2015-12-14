@@ -10,10 +10,9 @@
 #include <Standard_DefineHandle.hxx>
 #include <Handle_SelectMgr_SequenceNodeOfSequenceOfSelector.hxx>
 
-#include <Handle_SelectMgr_ViewerSelector.hxx>
+#include <SelectMgr_ViewerSelector.hxx>
 #include <TCollection_SeqNode.hxx>
 #include <TCollection_SeqNodePtr.hxx>
-class SelectMgr_ViewerSelector;
 class SelectMgr_SequenceOfSelector;
 
 

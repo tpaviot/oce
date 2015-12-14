@@ -71,8 +71,6 @@ public:
      const  StepFEA_SequenceOfElementRepresentation& Sequence()  const;
   
       StepFEA_SequenceOfElementRepresentation& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(StepFEA_HSequenceOfElementRepresentation) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(StepFEA_HSequenceOfElementRepresentation) ShallowCopy(const Handle(StepFEA_HSequenceOfElementRepresentation)& me) {
- return me->ShallowCopy();
-}
 
 
 

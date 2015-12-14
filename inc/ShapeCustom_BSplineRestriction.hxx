@@ -15,7 +15,7 @@
 #include <Standard_Real.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_ShapeCustom_RestrictionParameters.hxx>
-#include <BRepTools_Modification.hxx>
+#include <ShapeCustom_Modification.hxx>
 #include <Handle_Geom_Surface.hxx>
 #include <Handle_Geom_Curve.hxx>
 #include <Handle_Geom2d_Curve.hxx>
@@ -33,7 +33,7 @@ class gp_Pnt;
 //! this tool intended for aproximation surfaces, curves and pcurves with
 //! specified degree , max number of segments, tolerance 2d, tolerance 3d. Specified
 //! continuity can be reduced if approximation with specified continuity was not done.
-class ShapeCustom_BSplineRestriction : public BRepTools_Modification
+class ShapeCustom_BSplineRestriction : public ShapeCustom_Modification
 {
 
 public:

@@ -14,14 +14,6 @@
 -- Alternatively, this file may be used under the terms of Open CASCADE
 -- commercial license or contractual agreement.
 
---   GG  :  GER61351 17/11/1999 Change SetColor() with a compatible 
---              Quantity_Color instead the restricted NameOfColor.
---          Add SetCurrentFacingModel() methods
---   GG :   IMP140100 Add HasPresentation() and Presentation() methods
---                    Add SetAspect() method
---   SAN :  OCC4895 22/03/04 High-level interface for controlling polygon offsets
-
-
 deferred class InteractiveObject from AIS inherits SelectableObject from SelectMgr
 
         ---Purpose: 
@@ -61,7 +53,6 @@ uses
     Box                  from Bnd,
     NameOfMaterial       from Graphic3d,
     MaterialAspect       from Graphic3d,
-    Drawer               from AIS,
     PToContext           from AIS,
     TypeOfPresentation3d from PrsMgr,
     InteractiveContext   from AIS,
@@ -182,9 +173,13 @@ is
     	-- be implemented when the main mode is not mode 0.
 
 
-    Redisplay (me:mutable; AllModes:Boolean from Standard =Standard_False); 
-    	---Purpose: Updates the active presentation; if <AllModes> = Standard_True
-    	--          all the presentations inside are recomputed. 
+    Redisplay (me:mutable; AllModes:Boolean from Standard =Standard_False);
+       ---Purpose: Updates the active presentation; if <AllModes> = Standard_True
+       --          all the presentations inside are recomputed.
+       --          IMPORTANT: It is preferable to call Redisplay method of
+       --          corresponding AIS_InteractiveContext instance for cases when it
+       --          is accessible. This method just redirects call to myCTXPtr,
+       --          so this class field must be up to date for proper result.
     
 
     SetInfiniteState(me:mutable;aFlag:Boolean from Standard = Standard_True);
@@ -493,16 +488,8 @@ is
         
     UnsetTransparency(me:mutable) is virtual;   
     	---Purpose: Removes the transparency setting. The object is opaque by default.
-    
-    SetAttributes(me:mutable; aDrawer: Drawer from AIS) is virtual; 
-    	---Purpose: Initializes the drawing tool aDrawer.
-    
-    Attributes(me) returns any Drawer from AIS;
-    	---C++: return const&
-    	---C++:  inline
-    	---Purpose: Returns the attributes settings.
-        
-    UnsetAttributes(me:mutable) is virtual;
+
+    UnsetAttributes(me:mutable) is redefined virtual;
 	---Purpose: Clears settings provided by the drawing tool aDrawer.
 
             ---Category: information about Prs to be recomputed
@@ -594,6 +581,12 @@ is
     	---Purpose: Retrieves current polygon offsets settings from <myDrawer>.
     	---Category: Inquire methods
 
+    BoundingBox (me : mutable;
+                 theBndBox : out Box from Bnd)
+        is redefined;
+       ---Level: Public
+       ---Purpose: Returns bounding box of object correspondingly to its current display mode.
+
 fields
 
     myCTXPtr : PToContext from AIS;
@@ -605,9 +598,7 @@ fields
 
     -- The Information Fields
 
-    myDrawer            : Drawer  from AIS is protected ;
     myTransparency      : Real    from Standard is protected;
- -- GER61351   myOwnColor          : NameOfColor from Quantity is protected;
     myOwnColor          : Color from Quantity is protected;
     myOwnMaterial       : NameOfMaterial from Graphic3d is protected;
     ---myOwnMaterial       : NameOfPhysicalMaterial from Graphic3d is protected;

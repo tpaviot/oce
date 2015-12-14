@@ -35,24 +35,26 @@
 //purpose  : 
 //=======================================================================
 
-Adaptor3d_IsoCurve::Adaptor3d_IsoCurve() :
-       myIso(GeomAbs_NoneIso),
-	   myFirst ( 0. ),
-	   myLast ( 0. ),
-	   myParameter ( 0. )
-{}
+Adaptor3d_IsoCurve::Adaptor3d_IsoCurve()
+: myIso      (GeomAbs_NoneIso),
+  myFirst    (0.0),
+  myLast     (0.0),
+  myParameter(0.0)
+{
+}
 
 //=======================================================================
 //function : Adaptor3d_IsoCurve
 //purpose  : 
 //=======================================================================
 
-Adaptor3d_IsoCurve::Adaptor3d_IsoCurve(const Handle(Adaptor3d_HSurface)& S) :
-	   myFirst ( 0. ),
-	   myLast ( 0. ),
-	   myParameter ( 0. )
+Adaptor3d_IsoCurve::Adaptor3d_IsoCurve(const Handle(Adaptor3d_HSurface)& S)
+: mySurface  (S),
+  myIso      (GeomAbs_NoneIso),
+  myFirst    (0.0),
+  myLast     (0.0),
+  myParameter(0.0)
 {
-  Load(S);
 }
 
 //=======================================================================
@@ -61,11 +63,15 @@ Adaptor3d_IsoCurve::Adaptor3d_IsoCurve(const Handle(Adaptor3d_HSurface)& S) :
 //=======================================================================
 
 Adaptor3d_IsoCurve::Adaptor3d_IsoCurve(const Handle(Adaptor3d_HSurface)& S,
-				   const GeomAbs_IsoType Iso,
-				   const Standard_Real Param) 
+                                       const GeomAbs_IsoType theIso,
+                                       const Standard_Real theParam)
+: mySurface  (S),
+  myIso      (GeomAbs_NoneIso),
+  myFirst    (0.0),
+  myLast     (0.0),
+  myParameter(0.0)
 {
-  Load(S);
-  Load(Iso,Param);
+  Load(theIso, theParam);
 }
 
 //=======================================================================
@@ -73,14 +79,18 @@ Adaptor3d_IsoCurve::Adaptor3d_IsoCurve(const Handle(Adaptor3d_HSurface)& S,
 //purpose  : 
 //=======================================================================
 
-Adaptor3d_IsoCurve::Adaptor3d_IsoCurve(const Handle(Adaptor3d_HSurface)& S,
-				   const GeomAbs_IsoType Iso,
-				   const Standard_Real Param,
-				   const Standard_Real WFirst,
-				   const Standard_Real WLast)
+Adaptor3d_IsoCurve::Adaptor3d_IsoCurve(const Handle(Adaptor3d_HSurface)& theS,
+                                       const GeomAbs_IsoType theIso,
+                                       const Standard_Real theParam,
+                                       const Standard_Real theWFirst,
+                                       const Standard_Real theWLast)
+: mySurface  (theS),
+  myIso      (theIso),
+  myFirst    (theWFirst),
+  myLast     (theWLast),
+  myParameter(theParam)
 {
-  Load(S);
-  Load(Iso,Param,WFirst,WLast);
+  Load(theIso, theParam, theWFirst, theWLast);
 }
 
 //=======================================================================
@@ -219,7 +229,7 @@ GeomAbs_Shape Adaptor3d_IsoCurve::Continuity() const
 //purpose  : 
 //=======================================================================
 
-Standard_Integer Adaptor3d_IsoCurve::NbIntervals(const GeomAbs_Shape S)  
+Standard_Integer Adaptor3d_IsoCurve::NbIntervals(const GeomAbs_Shape S) const
 {
   if (myIso == GeomAbs_NoneIso) Standard_NoSuchObject::Raise();
   Standard_Boolean UIso =  (myIso == GeomAbs_IsoU);
@@ -250,7 +260,7 @@ Standard_Integer Adaptor3d_IsoCurve::NbIntervals(const GeomAbs_Shape S)
 //=======================================================================
 
 void Adaptor3d_IsoCurve::Intervals(TColStd_Array1OfReal& TI,
-				 const GeomAbs_Shape S)  
+                                   const GeomAbs_Shape S) const
 {
   if (myIso == GeomAbs_NoneIso) Standard_NoSuchObject::Raise();
   Standard_Boolean UIso =  (myIso == GeomAbs_IsoU);
@@ -756,14 +766,15 @@ gp_Circ Adaptor3d_IsoCurve::Circle() const
   case GeomAbs_SurfaceOfRevolution: 
     {
       if (myIso == GeomAbs_IsoV) {
-	gp_Ax1 Ax1 = mySurface->AxeOfRevolution();
-	gp_Vec DX(Ax1.Location(), Value(0));
-        if(DX.IsParallel(Ax1.Direction(),Precision::Angular())) {
-          return gp_Circ(gp_Ax2(Value(0), Ax1.Direction()),0);
+        const gp_Pnt aVal0 = Value (0.0);
+        gp_Ax1 Ax1 = mySurface->AxeOfRevolution();
+        if (gp_Lin (Ax1).Contains (aVal0, Precision::Confusion())) {
+          return gp_Circ(gp_Ax2(aVal0, Ax1.Direction()),0);
         }
         else {
+          gp_Vec DX(Ax1.Location(), aVal0);
           axes = gp_Ax3(Ax1.Location(), Ax1.Direction(), DX);
-          computeHR(axes,Value(0),h,radius);
+          computeHR(axes,aVal0,h,radius);
           gp_Vec VT = axes.Direction();
           axes.Translate(VT * h);
           return gp_Circ(axes.Ax2(),radius);

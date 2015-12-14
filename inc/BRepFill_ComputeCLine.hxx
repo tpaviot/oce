@@ -17,9 +17,7 @@
 #include <Standard_Integer.hxx>
 #include <Standard_Real.hxx>
 #include <AppParCurves_Constraint.hxx>
-class BRepFill_MultiLine;
-class BRepFill_MultiLineTool;
-class BRepFill_MyLeastSquareOfComputeCLine;
+#include <BRepFill_MultiLine.hxx>
 class AppParCurves_MultiCurve;
 
 

@@ -70,8 +70,6 @@ public:
      const  TColStd_SequenceOfAsciiString& Sequence()  const;
   
       TColStd_SequenceOfAsciiString& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TColStd_HSequenceOfAsciiString) ShallowCopy()  const;
 
 
 
@@ -111,10 +109,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TColStd_HSequenceOfAsciiString) ShallowCopy(const Handle(TColStd_HSequenceOfAsciiString)& me) {
- return me->ShallowCopy();
-}
 
 
 

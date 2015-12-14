@@ -70,8 +70,6 @@ public:
      const  TShort_SequenceOfShortReal& Sequence()  const;
   
       TShort_SequenceOfShortReal& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TShort_HSequenceOfShortReal) ShallowCopy()  const;
 
 
 
@@ -111,10 +109,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TShort_HSequenceOfShortReal) ShallowCopy(const Handle(TShort_HSequenceOfShortReal)& me) {
- return me->ShallowCopy();
-}
 
 
 

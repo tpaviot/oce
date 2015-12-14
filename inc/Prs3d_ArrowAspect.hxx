@@ -39,6 +39,8 @@ public:
   //! sides at the angle anAngle from each other.
   Standard_EXPORT Prs3d_ArrowAspect(const Quantity_PlaneAngle anAngle, const Quantity_Length aLength);
   
+  Standard_EXPORT Prs3d_ArrowAspect(const Handle(Graphic3d_AspectLine3d)& theAspect);
+  
   //! defines the angle of the arrows.
   Standard_EXPORT   void SetAngle (const Quantity_PlaneAngle anAngle) ;
   
@@ -56,6 +58,8 @@ public:
   Standard_EXPORT   void SetColor (const Quantity_NameOfColor aColor) ;
   
   Standard_EXPORT   Handle(Graphic3d_AspectLine3d) Aspect()  const;
+  
+  Standard_EXPORT   void SetAspect (const Handle(Graphic3d_AspectLine3d)& theAspect) ;
 
 
 

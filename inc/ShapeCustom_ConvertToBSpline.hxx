@@ -11,7 +11,7 @@
 #include <Handle_ShapeCustom_ConvertToBSpline.hxx>
 
 #include <Standard_Boolean.hxx>
-#include <BRepTools_Modification.hxx>
+#include <ShapeCustom_Modification.hxx>
 #include <Handle_Geom_Surface.hxx>
 #include <Standard_Real.hxx>
 #include <Handle_Geom_Curve.hxx>
@@ -32,7 +32,7 @@ class Geom2d_Curve;
 //! Linear Exctrusion, Revolution and Offset
 //! surfaces into BSpline Surface according to
 //! flags.
-class ShapeCustom_ConvertToBSpline : public BRepTools_Modification
+class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification
 {
 
 public:

@@ -22,20 +22,18 @@
 #include <Handle_Prs3d_Presentation.hxx>
 #include <Handle_Prs3d_Projector.hxx>
 #include <Handle_Geom_Transformation.hxx>
-#include <Handle_SelectMgr_Selection.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Graphic3d_NameOfMaterial.hxx>
 #include <TopAbs_ShapeEnum.hxx>
-#include <Handle_AIS_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 class TopoDS_Shape;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
-class SelectMgr_Selection;
 class Quantity_Color;
 class Graphic3d_MaterialAspect;
 class Bnd_Box;
-class AIS_Drawer;
 
 
 //! A framework to manage presentation and selection of shapes.
@@ -56,7 +54,7 @@ class AIS_Drawer;
 //! an inheriting shape class. These services allow you to
 //! select one type of shape interactive object for higher
 //! precision drawing. When you do this, the
-//! AIS_Drawer::IsOwn... functions corresponding to the
+//! Prs3d_Drawer::IsOwn... functions corresponding to the
 //! above deviation angle and coefficient functions return
 //! true indicating that there is a local setting available
 //! for the specific object.
@@ -100,7 +98,7 @@ public:
   //! Sets a local value for deviation coefficient for this specific shape.
   Standard_EXPORT   void SetOwnDeviationCoefficient (const Standard_Real aCoefficient) ;
   
-  //! sets myOwnHLRDeviationCoefficient field in AIS_Drawer &
+  //! sets myOwnHLRDeviationCoefficient field in Prs3d_Drawer &
   //! recomputes presentation
   Standard_EXPORT   void SetOwnHLRDeviationCoefficient (const Standard_Real aCoefficient) ;
   
@@ -111,14 +109,14 @@ public:
   //! gives back the angle initial value put by the User.
   Standard_EXPORT   Standard_Real UserAngle()  const;
   
-  //! sets myOwnDeviationAngle field in AIS_Drawer & recomputes presentation
+  //! sets myOwnDeviationAngle field in Prs3d_Drawer & recomputes presentation
   Standard_EXPORT   void SetOwnDeviationAngle (const Standard_Real anAngle) ;
   
   //! this compute a new Angle and Deviation from the value anAngle for HLR
   //! and set the values stored in myDrawer for with these that become local to the shape
   Standard_EXPORT   void SetHLRAngleAndDeviation (const Standard_Real anAngle) ;
   
-  //! sets myOwnHLRDeviationAngle field in AIS_Drawer & recomputes presentation
+  //! sets myOwnHLRDeviationAngle field in Prs3d_Drawer & recomputes presentation
   Standard_EXPORT   void SetOwnHLRDeviationAngle (const Standard_Real anAngle) ;
   
   //! Returns true and the values of the deviation
@@ -153,16 +151,16 @@ public:
   //! Sets the color aColor in the reconstructed
   //! compound shape. Acts via the Drawer methods below on the appearance of:
   //! -   free boundaries:
-  //! AIS_Drawer_FreeBoundaryAspect,
-  //! -   isos: AIS_Drawer_UIsoAspect,
-  //! AIS_Drawer_VIsoAspect,
+  //! Prs3d_Drawer_FreeBoundaryAspect,
+  //! -   isos: Prs3d_Drawer_UIsoAspect,
+  //! Prs3dDrawer_VIsoAspect,
   //! -   shared boundaries:
-  //! AIS_Drawer_UnFreeBoundaryAspect,
-  //! -   shading: AIS_Drawer_ShadingAspect,
+  //! Prs3d_Drawer_UnFreeBoundaryAspect,
+  //! -   shading: Prs3d_Drawer_ShadingAspect,
   //! -   visible line color in hidden line mode:
-  //! AIS_Drawer_SeenLineAspect
+  //! Prs3d_Drawer_SeenLineAspect
   //! -   hidden line color in hidden line mode:
-  //! AIS_Drawer_HiddenLineAspect.
+  //! Prs3d_Drawer_HiddenLineAspect.
   Standard_EXPORT virtual   void SetColor (const Quantity_NameOfColor aColor) ;
   
   Standard_EXPORT virtual   void SetColor (const Quantity_Color& aColor) ;
@@ -171,6 +169,8 @@ public:
   Standard_EXPORT virtual   void UnsetColor() ;
   
   //! Sets the value aValue for line width in the reconstructed compound shape.
+  //! Changes line aspects for lines-only presentation modes like Wireframe and Bounding Box.
+  //! Doesn't change face boundary line aspect.
   Standard_EXPORT virtual   void SetWidth (const Standard_Real aValue) ;
   
   //! Removes the setting for line width in the reconstructed compound shape.
@@ -246,11 +246,13 @@ protected:
   
   Standard_EXPORT   void LoadRecomputable (const Standard_Integer TheMode) ;
   
-  Standard_EXPORT   void setColor (const Handle(AIS_Drawer)& theDrawer, const Quantity_Color& theColor)  const;
+  Standard_EXPORT   void setColor (const Handle(Prs3d_Drawer)& theDrawer, const Quantity_Color& theColor)  const;
   
-  Standard_EXPORT   void setWidth (const Handle(AIS_Drawer)& theDrawer, const Standard_Real theWidth)  const;
+  Standard_EXPORT   void setWidth (const Handle(Prs3d_Drawer)& theDrawer, const Standard_Real theWidth)  const;
   
-  Standard_EXPORT   void setTransparency (const Handle(AIS_Drawer)& theDrawer, const Standard_Real theValue)  const;
+  Standard_EXPORT   void setTransparency (const Handle(Prs3d_Drawer)& theDrawer, const Standard_Real theValue)  const;
+  
+  Standard_EXPORT   void setMaterial (const Handle(Prs3d_Drawer)& theDrawer, const Graphic3d_MaterialAspect& theMaterial, const Standard_Boolean theToKeepColor, const Standard_Boolean theToKeepTransp)  const;
 
   TopoDS_Shape myshape;
   Bnd_Box myBB;

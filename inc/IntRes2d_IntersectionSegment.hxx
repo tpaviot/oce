@@ -40,7 +40,7 @@ public:
   //! Creates an infinite segment of intersection.
     IntRes2d_IntersectionSegment(const Standard_Boolean Oppos);
   
-  //! Returns TRUE if the intersection segment has got
+  //! Returns FALSE if the intersection segment has got
   //! the same orientation on both curves.
       Standard_Boolean IsOpposite()  const;
   

@@ -35,9 +35,7 @@ public:
 
   
   Standard_EXPORT GeomFill_Profiler();
-  
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~GeomFill_Profiler(){Delete() ; }
+  Standard_EXPORT virtual ~GeomFill_Profiler();
   
   Standard_EXPORT   void AddCurve (const Handle(Geom_Curve)& Curve) ;
   

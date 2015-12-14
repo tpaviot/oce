@@ -70,8 +70,6 @@ public:
      const  TColgp_SequenceOfVec2d& Sequence()  const;
   
       TColgp_SequenceOfVec2d& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TColgp_HSequenceOfVec2d) ShallowCopy()  const;
 
 
 
@@ -111,10 +109,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TColgp_HSequenceOfVec2d) ShallowCopy(const Handle(TColgp_HSequenceOfVec2d)& me) {
- return me->ShallowCopy();
-}
 
 
 

@@ -59,6 +59,8 @@ public:
     static   BRepApprox_TheMultiLineOfApprox MakeMLBetween (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer NbPMin) ;
   
     static   Approx_Status WhatStatus (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer I1, const Standard_Integer I2) ;
+  
+  Standard_EXPORT static   void Dump (const BRepApprox_TheMultiLineOfApprox& ML) ;
 
 
 

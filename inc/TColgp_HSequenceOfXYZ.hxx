@@ -70,8 +70,6 @@ public:
      const  TColgp_SequenceOfXYZ& Sequence()  const;
   
       TColgp_SequenceOfXYZ& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TColgp_HSequenceOfXYZ) ShallowCopy()  const;
 
 
 
@@ -111,10 +109,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TColgp_HSequenceOfXYZ) ShallowCopy(const Handle(TColgp_HSequenceOfXYZ)& me) {
- return me->ShallowCopy();
-}
 
 
 

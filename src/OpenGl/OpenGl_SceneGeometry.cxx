@@ -13,17 +13,8 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_TBB
-  // On Windows, function TryEnterCriticalSection has appeared in Windows NT
-  // and is surrounded by #ifdef in MS VC++ 7.1 headers.
-  // Thus to use it we need to define appropriate macro saying that we will
-  // run on Windows NT 4.0 at least
-  #if defined(_WIN32) && !defined(_WIN32_WINNT)
-    #define _WIN32_WINNT 0x0501
-  #endif
-
-  #include <tbb/tbb.h>
-#endif
+#include <Standard_Assert.hxx>
+#include <OSD_Parallel.hxx>
 
 #include <OpenGl_SceneGeometry.hxx>
 
@@ -208,8 +199,6 @@ void OpenGl_RaytraceGeometry::Clear()
   Materials.swap (anEmptyMaterials);
 }
 
-#ifdef HAVE_TBB
-
 struct OpenGL_BVHParallelBuilder
 {
   BVH_ObjectSet<Standard_ShortReal, 3>* Set;
@@ -220,22 +209,15 @@ struct OpenGL_BVHParallelBuilder
     //
   }
 
-  void operator() (const tbb::blocked_range<size_t>& theRange) const
+  void operator() (const Standard_Integer theObjectIdx) const
   {
-    for (size_t anObjectIdx = theRange.begin(); anObjectIdx != theRange.end(); ++anObjectIdx)
-    {
-      OpenGl_TriangleSet* aTriangleSet = dynamic_cast<OpenGl_TriangleSet*> (
-        Set->Objects().ChangeValue (static_cast<Standard_Integer> (anObjectIdx)).operator->());
+    OpenGl_TriangleSet* aTriangleSet = dynamic_cast<OpenGl_TriangleSet*> (
+      Set->Objects().ChangeValue (static_cast<Standard_Integer> (theObjectIdx)).operator->());
 
-      if (aTriangleSet != NULL)
-      {
-        aTriangleSet->BVH();
-      }
-    }
+    if (aTriangleSet != NULL)
+      aTriangleSet->BVH();
   }
 };
-
-#endif
 
 // =======================================================================
 // function : ProcessAcceleration
@@ -254,12 +236,7 @@ Standard_Boolean OpenGl_RaytraceGeometry::ProcessAcceleration()
   aTimer.Start();
 #endif
 
-#ifdef HAVE_TBB
-  // If Intel TBB is available, perform the preliminary
-  // construction of bottom-level scene BVHs
-  tbb::parallel_for (tbb::blocked_range<size_t> (0, Size()),
-    OpenGL_BVHParallelBuilder (this));
-#endif
+  OSD_Parallel::For(0, Size(), OpenGL_BVHParallelBuilder(this));
 
   myBottomLevelTreeDepth = 0;
 
@@ -305,7 +282,7 @@ Standard_Boolean OpenGl_RaytraceGeometry::ProcessAcceleration()
 
   Standard_Integer aVerticesOffset = 0;
   Standard_Integer aElementsOffset = 0;
-  Standard_Integer aBVHNodesOffset = 0;
+  Standard_Integer aBVHNodesOffset = BVH()->Length();
 
   for (Standard_Integer aNodeIdx = 0; aNodeIdx < aBVH->Length(); ++aNodeIdx)
   {
@@ -539,10 +516,9 @@ namespace OpenGl_Raytrace
   // function : IsRaytracedGroup
   // purpose  : Checks to see if the group contains ray-trace geometry
   // =======================================================================
-  Standard_Boolean IsRaytracedGroup (const OpenGl_Group *theGroup)
+  Standard_Boolean IsRaytracedGroup (const OpenGl_Group* theGroup)
   {
-    const OpenGl_ElementNode* aNode;
-    for (aNode = theGroup->FirstNode(); aNode != NULL; aNode = aNode->next)
+    for (const OpenGl_ElementNode* aNode = theGroup->FirstNode(); aNode != NULL; aNode = aNode->next)
     {
       if (IsRaytracedElement (aNode))
       {
@@ -558,17 +534,12 @@ namespace OpenGl_Raytrace
   // =======================================================================
   Standard_Boolean IsRaytracedStructure (const OpenGl_Structure* theStructure)
   {
-    for (OpenGl_Structure::GroupIterator aGroupIter (theStructure->DrawGroups());
-         aGroupIter.More(); aGroupIter.Next())
+    for (OpenGl_Structure::GroupIterator anIter (theStructure->DrawGroups()); anIter.More(); anIter.Next())
     {
-      if (aGroupIter.Value()->IsRaytracable())
+      if (anIter.Value()->IsRaytracable())
+      {
         return Standard_True;
-    }
-    for (OpenGl_ListOfStructure::Iterator anIts (theStructure->ConnectedStructures());
-         anIts.More(); anIts.Next())
-    {
-      if (IsRaytracedStructure (anIts.Value()))
-        return Standard_True;
+      }
     }
     return Standard_False;
   }

@@ -110,7 +110,7 @@ OpenGl_GraphicDriver::~OpenGl_GraphicDriver()
 void OpenGl_GraphicDriver::ReleaseContext()
 {
   Handle(OpenGl_Context) aCtxShared;
-  for (NCollection_DataMap<Standard_Integer, Handle(OpenGl_Workspace)>::Iterator aWindowIter (myMapOfWS);
+  for (NCollection_Map<Handle(OpenGl_Workspace)>::Iterator aWindowIter (myMapOfWS);
        aWindowIter.More(); aWindowIter.Next())
   {
     const Handle(OpenGl_Workspace)& aWindow = aWindowIter.ChangeValue();
@@ -126,7 +126,7 @@ void OpenGl_GraphicDriver::ReleaseContext()
   {
     aCtxShared->MakeCurrent();
   }
-  for (NCollection_DataMap<Standard_Integer, Handle(OpenGl_View)>::Iterator aViewIter (myMapOfView);
+  for (NCollection_Map<Handle(OpenGl_View)>::Iterator aViewIter (myMapOfView);
        aViewIter.More(); aViewIter.Next())
   {
     const Handle(OpenGl_View)& aView = aViewIter.ChangeValue();
@@ -142,7 +142,7 @@ void OpenGl_GraphicDriver::ReleaseContext()
   myTempText->Release (aCtxShared.operator->());
   myDeviceLostFlag = myDeviceLostFlag || !myMapOfStructure.IsEmpty();
 
-  for (NCollection_DataMap<Standard_Integer, Handle(OpenGl_Workspace)>::Iterator aWindowIter (myMapOfWS);
+  for (NCollection_Map<Handle(OpenGl_Workspace)>::Iterator aWindowIter (myMapOfWS);
        aWindowIter.More(); aWindowIter.Next())
   {
     const Handle(OpenGl_Workspace)& aWindow = aWindowIter.ChangeValue();
@@ -373,7 +373,7 @@ const Handle(OpenGl_Context)& OpenGl_GraphicDriver::GetSharedContext() const
     return TheNullGlCtx;
   }
 
-  NCollection_DataMap<Standard_Integer, Handle(OpenGl_Workspace)>::Iterator anIter (myMapOfWS);
+  NCollection_Map<Handle(OpenGl_Workspace)>::Iterator anIter (myMapOfWS);
   return anIter.Value()->GetGlContext();
 }
 
@@ -419,17 +419,16 @@ Standard_Boolean OpenGl_GraphicDriver::SetImmediateModeDrawToFront (const Graphi
 // function : DisplayImmediateStructure
 // purpose  :
 // =======================================================================
-void OpenGl_GraphicDriver::DisplayImmediateStructure (const Graphic3d_CView&      theCView,
-                                                      const Graphic3d_CStructure& theCStructure)
+void OpenGl_GraphicDriver::DisplayImmediateStructure (const Graphic3d_CView&             theCView,
+                                                      const Handle(Graphic3d_Structure)& theStructure)
 {
-  OpenGl_CView*     aCView     = (OpenGl_CView*     )theCView.ptrView;
-  OpenGl_Structure* aStructure = (OpenGl_Structure* )&theCStructure;
+  OpenGl_CView* aCView = (OpenGl_CView* )theCView.ptrView;
   if (aCView == NULL)
   {
     return;
   }
 
-  aCView->View->DisplayImmediateStructure (aStructure);
+  aCView->View->DisplayImmediateStructure (theStructure);
 }
 
 // =======================================================================
@@ -493,14 +492,25 @@ Standard_Boolean OpenGl_GraphicDriver::Print (const Graphic3d_CView& theCView,
 // function : ZBufferTriedronSetup
 // purpose  :
 // =======================================================================
-void OpenGl_GraphicDriver::ZBufferTriedronSetup (const Quantity_NameOfColor theXColor,
+void OpenGl_GraphicDriver::ZBufferTriedronSetup (const Graphic3d_CView&     theCView,
+                                                 const Quantity_NameOfColor theXColor,
                                                  const Quantity_NameOfColor theYColor,
                                                  const Quantity_NameOfColor theZColor,
                                                  const Standard_Real        theSizeRatio,
                                                  const Standard_Real        theAxisDiametr,
-                                                 const Standard_Integer     theNbFacettes)
+                                                 const Standard_Integer     theNbFacets)
 {
-  OpenGl_Trihedron::Setup (theXColor, theYColor, theZColor, theSizeRatio, theAxisDiametr, theNbFacettes);
+  const OpenGl_CView* aCView = (const OpenGl_CView* )theCView.ptrView;
+  if (aCView == NULL)
+  {
+    return;
+  }
+
+  OpenGl_Trihedron& aTrih = aCView->View->ChangeTrihedron();
+  aTrih.SetArrowsColors  (theXColor, theYColor, theZColor);
+  aTrih.SetSizeRatio     (theSizeRatio);
+  aTrih.SetNbFacets      (theNbFacets);
+  aTrih.SetArrowDiameter (theAxisDiametr);
 }
 
 // =======================================================================
@@ -516,7 +526,7 @@ void OpenGl_GraphicDriver::TriedronDisplay (const Graphic3d_CView&              
   const OpenGl_CView* aCView = (const OpenGl_CView* )theCView.ptrView;
   if (aCView != NULL)
   {
-    aCView->View->TriedronDisplay (aCView->WS->GetGlContext(), thePosition, theColor, theScale, theAsWireframe);
+    aCView->View->TriedronDisplay (thePosition, theColor, theScale, theAsWireframe);
   }
 }
 
@@ -607,7 +617,7 @@ void OpenGl_GraphicDriver::SetBgGradientStyle (const Graphic3d_CView&          t
 // purpose  :
 // =======================================================================
 void OpenGl_GraphicDriver::GraduatedTrihedronDisplay (const Graphic3d_CView&               theCView,
-                                                      const Graphic3d_CGraduatedTrihedron& theCubic)
+                                                      const Graphic3d_GraduatedTrihedron& theCubic)
 {
   const OpenGl_CView* aCView = (const OpenGl_CView* )theCView.ptrView;
   if (aCView != NULL)
@@ -633,12 +643,13 @@ void OpenGl_GraphicDriver::GraduatedTrihedronErase (const Graphic3d_CView& theCV
 // function : GraduatedTrihedronMinMaxValues
 // purpose  :
 // =======================================================================
-void OpenGl_GraphicDriver::GraduatedTrihedronMinMaxValues (const Standard_ShortReal theMinX,
-                                                           const Standard_ShortReal theMinY,
-                                                           const Standard_ShortReal theMinZ,
-                                                           const Standard_ShortReal theMaxX,
-                                                           const Standard_ShortReal theMaxY,
-                                                           const Standard_ShortReal theMaxZ)
+void OpenGl_GraphicDriver::GraduatedTrihedronMinMaxValues (const Graphic3d_CView& theView,
+                                                           const Graphic3d_Vec3   theMin,
+                                                           const Graphic3d_Vec3   theMax)
 {
-  OpenGl_GraduatedTrihedron::SetMinMax (theMinX, theMinY, theMinZ, theMaxX, theMaxY, theMaxZ);
+  const OpenGl_CView* aCView = (const OpenGl_CView* )theView.ptrView;
+  if (aCView != NULL)
+  {
+    aCView->View->ChangeGraduatedTrihedron().SetMinMax (theMin, theMax);
+  }
 }

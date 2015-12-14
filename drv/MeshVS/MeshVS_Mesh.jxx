@@ -4,7 +4,6 @@
 #include <MeshVS_Drawer.hxx>
 #include <SelectMgr_EntityOwner.hxx>
 #include <Prs3d_Presentation.hxx>
-#include <SelectMgr_Selection.hxx>
 #include <SelectMgr_SequenceOfOwner.hxx>
 #include <MeshVS_DataMapOfIntegerOwner.hxx>
 #include <MeshVS_Mesh.hxx>

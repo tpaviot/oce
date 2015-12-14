@@ -1,3 +1,4 @@
 #include <Adaptor3d_Curve.hxx>
 #include <VrmlConverter_Drawer.hxx>
+#include <TColStd_HArray1OfReal.hxx>
 #include <VrmlConverter_DeflectionCurve.hxx>

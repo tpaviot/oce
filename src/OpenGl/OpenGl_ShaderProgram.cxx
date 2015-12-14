@@ -159,6 +159,10 @@ Standard_Boolean OpenGl_ShaderProgram::Initialize (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
+  TCollection_AsciiString aHeader = !myProxy.IsNull() && !myProxy->Header().IsEmpty()
+                                  ? (myProxy->Header() + "\n")
+                                  : TCollection_AsciiString();
+
   TCollection_AsciiString aDeclarations;
   aDeclFile.Open (OSD_ReadOnly, OSD_Protection());
   aDeclFile.Read (aDeclarations, (int)aDeclFile.Size());
@@ -220,7 +224,7 @@ Standard_Boolean OpenGl_ShaderProgram::Initialize (const Handle(OpenGl_Context)&
     {
       case Graphic3d_TOS_VERTEX:
       {
-        aSource = TCollection_AsciiString ("#define VERTEX_SHADER\n") + aSource;
+        aSource = aHeader + TCollection_AsciiString ("#define VERTEX_SHADER\n") + aSource;
         break;
       }
       case Graphic3d_TOS_FRAGMENT:
@@ -228,8 +232,12 @@ Standard_Boolean OpenGl_ShaderProgram::Initialize (const Handle(OpenGl_Context)&
       #if defined(GL_ES_VERSION_2_0)
         TCollection_AsciiString aPrefix (theCtx->hasHighp
                                        ? "precision highp float;\n"
-                                       : "precision mediump float;\n");
-        aSource = aPrefix + aSource;
+                                         "precision highp int;\n"
+                                       : "precision mediump float;\n"
+                                         "precision mediump int;\n");
+        aSource = aHeader + aPrefix + aSource;
+      #else
+        aSource = aHeader + aSource;
       #endif
         break;
       }
@@ -354,7 +362,7 @@ Standard_Boolean OpenGl_ShaderProgram::AttachShader (const Handle(OpenGl_Context
   }
 
   myShaderObjects.Append (theShader);
-  theCtx->core20->glAttachShader (myProgramID, theShader->myShaderID);
+  theCtx->core20fwd->glAttachShader (myProgramID, theShader->myShaderID);
   return Standard_True;
 }
 
@@ -388,7 +396,7 @@ Standard_Boolean OpenGl_ShaderProgram::DetachShader (const Handle(OpenGl_Context
     return Standard_False;
   }
 
-  theCtx->core20->glDetachShader (myProgramID, theShader->myShaderID);
+  theCtx->core20fwd->glDetachShader (myProgramID, theShader->myShaderID);
   return Standard_True;
 }
 
@@ -404,8 +412,8 @@ Standard_Boolean OpenGl_ShaderProgram::Link (const Handle(OpenGl_Context)& theCt
   }
 
   GLint aStatus = GL_FALSE;
-  theCtx->core20->glLinkProgram (myProgramID);
-  theCtx->core20->glGetProgramiv (myProgramID, GL_LINK_STATUS, &aStatus);
+  theCtx->core20fwd->glLinkProgram (myProgramID);
+  theCtx->core20fwd->glGetProgramiv (myProgramID, GL_LINK_STATUS, &aStatus);
   if (aStatus == GL_FALSE)
   {
     return Standard_False;
@@ -431,12 +439,12 @@ Standard_Boolean OpenGl_ShaderProgram::FetchInfoLog (const Handle(OpenGl_Context
   }
 
   GLint aLength = 0;
-  theCtx->core20->glGetProgramiv (myProgramID, GL_INFO_LOG_LENGTH, &aLength);
+  theCtx->core20fwd->glGetProgramiv (myProgramID, GL_INFO_LOG_LENGTH, &aLength);
   if (aLength > 0)
   {
     GLchar* aLog = (GLchar*) alloca (aLength);
     memset (aLog, 0, aLength);
-    theCtx->core20->glGetProgramInfoLog (myProgramID, aLength, NULL, aLog);
+    theCtx->core20fwd->glGetProgramInfoLog (myProgramID, aLength, NULL, aLog);
     theOutput = aLog;
   }
   return Standard_True;
@@ -496,7 +504,7 @@ GLint OpenGl_ShaderProgram::GetUniformLocation (const Handle(OpenGl_Context)& th
                                                 const GLchar*                 theName) const
 {
   return myProgramID != NO_PROGRAM
-       ? theCtx->core20->glGetUniformLocation (myProgramID, theName)
+       ? theCtx->core20fwd->glGetUniformLocation (myProgramID, theName)
        : INVALID_LOCATION;
 }
 
@@ -508,7 +516,7 @@ GLint OpenGl_ShaderProgram::GetAttributeLocation (const Handle(OpenGl_Context)& 
                                                   const GLchar*                 theName) const
 {
   return myProgramID != NO_PROGRAM
-       ? theCtx->core20->glGetAttribLocation (myProgramID, theName)
+       ? theCtx->core20fwd->glGetAttribLocation (myProgramID, theName)
        : INVALID_LOCATION;
 }
 
@@ -549,7 +557,7 @@ Standard_Boolean OpenGl_ShaderProgram::GetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glGetUniformiv (myProgramID, theLocation, theValue);
+  theCtx->core20fwd->glGetUniformiv (myProgramID, theLocation, theValue);
   return Standard_True;
 }
 
@@ -577,7 +585,7 @@ Standard_Boolean OpenGl_ShaderProgram::GetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glGetUniformfv (myProgramID, theLocation, theValue);
+  theCtx->core20fwd->glGetUniformfv (myProgramID, theLocation, theValue);
   return Standard_True;
 }
 
@@ -605,7 +613,7 @@ Standard_Boolean OpenGl_ShaderProgram::GetAttribute (const Handle(OpenGl_Context
     return Standard_False;
   }
 
-  theCtx->core20->glGetVertexAttribiv (theIndex, GL_CURRENT_VERTEX_ATTRIB, theValue);
+  theCtx->core20fwd->glGetVertexAttribiv (theIndex, GL_CURRENT_VERTEX_ATTRIB, theValue);
   return Standard_True;
 }
 
@@ -633,7 +641,7 @@ Standard_Boolean OpenGl_ShaderProgram::GetAttribute (const Handle(OpenGl_Context
     return Standard_False;
   }
 
-  theCtx->core20->glGetVertexAttribfv (theIndex, GL_CURRENT_VERTEX_ATTRIB, theValue);
+  theCtx->core20fwd->glGetVertexAttribfv (theIndex, GL_CURRENT_VERTEX_ATTRIB, theValue);
   return Standard_True;
 }
 
@@ -648,7 +656,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetAttributeName (const Handle(OpenGl_Con
   theCtx->core20fwd->glBindAttribLocation (myProgramID, theIndex, theName);
   return Standard_True;
 }
-  
+
 // =======================================================================
 // function : SetAttribute
 // purpose  :
@@ -785,7 +793,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform1i (theLocation, theValue);
+  theCtx->core20fwd->glUniform1i (theLocation, theValue);
   return Standard_True;
 }
 
@@ -877,7 +885,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform1f (theLocation, theValue);
+  theCtx->core20fwd->glUniform1f (theLocation, theValue);
   return Standard_True;
 }
 
@@ -905,7 +913,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform2iv (theLocation, 1, theValue);
+  theCtx->core20fwd->glUniform2iv (theLocation, 1, theValue);
   return Standard_True;
 }
 
@@ -933,7 +941,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform3iv (theLocation, 1, theValue);
+  theCtx->core20fwd->glUniform3iv (theLocation, 1, theValue);
   return Standard_True;
 }
 
@@ -961,7 +969,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform4iv (theLocation, 1, theValue);
+  theCtx->core20fwd->glUniform4iv (theLocation, 1, theValue);
   return Standard_True;
 }
 
@@ -989,7 +997,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform2fv (theLocation, 1, theValue);
+  theCtx->core20fwd->glUniform2fv (theLocation, 1, theValue);
   return Standard_True;
 }
 
@@ -1017,7 +1025,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform3fv (theLocation, 1, theValue);
+  theCtx->core20fwd->glUniform3fv (theLocation, 1, theValue);
   return Standard_True;
 }
 
@@ -1045,7 +1053,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform4fv (theLocation, 1, theValue);
+  theCtx->core20fwd->glUniform4fv (theLocation, 1, theValue);
   return Standard_True;
 }
 
@@ -1075,7 +1083,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniformMatrix4fv (theLocation, 1, GL_FALSE, theTranspose ? theValue.Transposed().GetData() : theValue.GetData());
+  theCtx->core20fwd->glUniformMatrix4fv (theLocation, 1, GL_FALSE, theTranspose ? theValue.Transposed().GetData() : theValue.GetData());
   return Standard_True;
 }
 
@@ -1117,7 +1125,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform1fv (theLocation, theCount, theData);
+  theCtx->core20fwd->glUniform1fv (theLocation, theCount, theData);
   return Standard_True;
 }
 
@@ -1135,7 +1143,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform2fv (theLocation, theCount, theData[0].GetData());
+  theCtx->core20fwd->glUniform2fv (theLocation, theCount, theData[0].GetData());
   return Standard_True;
 }
 
@@ -1153,7 +1161,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform3fv (theLocation, theCount, theData[0].GetData());
+  theCtx->core20fwd->glUniform3fv (theLocation, theCount, theData[0].GetData());
   return Standard_True;
 }
 
@@ -1171,7 +1179,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform4fv (theLocation, theCount, theData[0].GetData());
+  theCtx->core20fwd->glUniform4fv (theLocation, theCount, theData[0].GetData());
   return Standard_True;
 }
 
@@ -1189,7 +1197,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform1iv (theLocation, theCount, theData);
+  theCtx->core20fwd->glUniform1iv (theLocation, theCount, theData);
   return Standard_True;
 }
 
@@ -1207,7 +1215,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform2iv (theLocation, theCount, theData[0].GetData());
+  theCtx->core20fwd->glUniform2iv (theLocation, theCount, theData[0].GetData());
   return Standard_True;
 }
 
@@ -1225,7 +1233,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform3iv (theLocation, theCount, theData[0].GetData());
+  theCtx->core20fwd->glUniform3iv (theLocation, theCount, theData[0].GetData());
   return Standard_True;
 }
 
@@ -1243,7 +1251,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform4iv (theLocation, theCount, theData[0].GetData());
+  theCtx->core20fwd->glUniform4iv (theLocation, theCount, theData[0].GetData());
   return Standard_True;
 }
 
@@ -1271,7 +1279,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetSampler (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniform1i (theLocation, theTextureUnit);
+  theCtx->core20fwd->glUniform1i (theLocation, theTextureUnit);
   return Standard_True;
 }
 
@@ -1282,9 +1290,9 @@ Standard_Boolean OpenGl_ShaderProgram::SetSampler (const Handle(OpenGl_Context)&
 Standard_Boolean OpenGl_ShaderProgram::Create (const Handle(OpenGl_Context)& theCtx)
 {
   if (myProgramID == NO_PROGRAM
-   && theCtx->core20 != NULL)
+   && theCtx->core20fwd != NULL)
   {
-    myProgramID = theCtx->core20->glCreateProgram();
+    myProgramID = theCtx->core20fwd->glCreateProgram();
   }
 
   return myProgramID != NO_PROGRAM;
@@ -1313,10 +1321,10 @@ void OpenGl_ShaderProgram::Release (OpenGl_Context* theCtx)
     }
   }
 
-  if (theCtx->core20 != NULL
+  if (theCtx->core20fwd != NULL
    && theCtx->IsValid())
   {
-    theCtx->core20->glDeleteProgram (myProgramID);
+    theCtx->core20fwd->glDeleteProgram (myProgramID);
   }
 
   myProgramID = NO_PROGRAM;

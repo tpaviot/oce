@@ -13,6 +13,8 @@
 #include <BOPDS_PDS.hxx>
 #include <BOPCol_ListOfShape.hxx>
 #include <BOPAlgo_PBuilder.hxx>
+#include <Standard_Boolean.hxx>
+#include <Standard_Real.hxx>
 class BOPAlgo_PaveFiller;
 class BOPAlgo_Builder;
 class BOPAlgo_BOP;
@@ -48,6 +50,14 @@ public:
   Standard_EXPORT static   void SetBuilder (const BOPAlgo_PBuilder& theBuilder) ;
   
   Standard_EXPORT static   void SetBuilderDefault() ;
+  
+  Standard_EXPORT static   void SetRunParallel (const Standard_Boolean theFlag) ;
+  
+  Standard_EXPORT static   Standard_Boolean RunParallel() ;
+  
+  Standard_EXPORT static   void SetFuzzyValue (const Standard_Real theValue) ;
+  
+  Standard_EXPORT static   Standard_Real FuzzyValue() ;
 
 
 

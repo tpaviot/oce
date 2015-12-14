@@ -40,9 +40,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~BRepSweep_Trsf(){Delete() ; }
-  
   //! ends  the  construction  of the   swept  primitive
   //! calling the virtual geometric functions that can't
   //! be called in the initialize.

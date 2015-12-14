@@ -71,8 +71,6 @@ public:
      const  MoniTool_SequenceOfElement& Sequence()  const;
   
       MoniTool_SequenceOfElement& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(MoniTool_HSequenceOfElement) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(MoniTool_HSequenceOfElement) ShallowCopy(const Handle(MoniTool_HSequenceOfElement)& me) {
- return me->ShallowCopy();
-}
 
 
 

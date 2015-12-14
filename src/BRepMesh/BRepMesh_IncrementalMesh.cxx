@@ -16,10 +16,10 @@
 
 #include <BRepMesh_IncrementalMesh.hxx>
 
+#include <OSD_Parallel.hxx>
 #include <Precision.hxx>
 #include <Standard_ErrorHandler.hxx>
 
-#include <BRepMesh_FaceChecker.hxx>
 #include <BRepMesh_ShapeTool.hxx>
 #include <BRepMesh_Edge.hxx>
 #include <BRepMesh_PluginMacro.hxx>
@@ -53,11 +53,6 @@
 
 #include <GCPnts_TangentialDeflection.hxx>
 
-#ifdef HAVE_TBB
-  // paralleling using Intel TBB
-  #include <tbb/parallel_for_each.h>
-#endif
-
 namespace
 {
   //! Default flag to control parallelization for BRepMesh_IncrementalMesh
@@ -73,8 +68,11 @@ IMPLEMENT_STANDARD_RTTIEXT(BRepMesh_IncrementalMesh, BRepMesh_DiscretRoot)
 //purpose  : 
 //=======================================================================
 BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()
-: myRelative (Standard_False),
-  myInParallel (Standard_False)
+: myRelative  (Standard_False),
+  myInParallel(Standard_False),
+  myMinSize   (Precision::Confusion()),
+  myInternalVerticesMode(Standard_True),
+  myIsControlSurfaceDeflection(Standard_True)
 {
 }
 
@@ -89,7 +87,10 @@ BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh(
   const Standard_Real    theAngDeflection,
   const Standard_Boolean isInParallel)
   : myRelative  (isRelative),
-    myInParallel(isInParallel)
+    myInParallel(isInParallel),
+    myMinSize   (Precision::Confusion()),
+    myInternalVerticesMode(Standard_True),
+    myIsControlSurfaceDeflection(Standard_True)
 {
   myDeflection  = theLinDeflection;
   myAngle       = theAngDeflection;
@@ -112,7 +113,7 @@ BRepMesh_IncrementalMesh::~BRepMesh_IncrementalMesh()
 //=======================================================================
 void BRepMesh_IncrementalMesh::clear()
 {
-  myEmptyEdges.Clear();
+  myEdges.Clear();
   myEdgeDeflection.Clear();
   myFaces.Clear();
   myMesh.Nullify();
@@ -130,8 +131,7 @@ void BRepMesh_IncrementalMesh::init()
   setDone();
   clear();
 
-  if (!isCorrectPolyData())
-    BRepTools::Clean(myShape);
+  collectFaces();
 
   Bnd_Box aBox;
   BRepBndLib::Add(myShape, aBox, Standard_False);
@@ -144,44 +144,12 @@ void BRepMesh_IncrementalMesh::init()
 
   BRepMesh_ShapeTool::BoxMaxDimension(aBox, myMaxShapeSize);
 
-  myMesh = new BRepMesh_FastDiscret(myDeflection, myAngle, aBox,
-    Standard_True, Standard_True, myRelative, Standard_True, myInParallel);
+  myMesh = new BRepMesh_FastDiscret(myDeflection, 
+    myAngle, aBox, Standard_True, Standard_True, 
+    myRelative, Standard_True, myInParallel, myMinSize,
+    myInternalVerticesMode, myIsControlSurfaceDeflection);
 
   myMesh->InitSharedFaces(myShape);
-}
-
-//=======================================================================
-//function : isCorrectPolyData
-//purpose  : 
-//=======================================================================
-Standard_Boolean BRepMesh_IncrementalMesh::isCorrectPolyData()
-{
-  collectFaces();
-
-  BRepMesh_FaceChecker aFaceChecker(myInParallel);
-
-#if defined(HAVE_TBB) || defined(_OPENMP)
-  if (myInParallel)
-  {
-    // check faces in parallel threads using TBB
-#ifdef HAVE_TBB
-    tbb::parallel_for_each(myFaces.begin(), myFaces.end(), aFaceChecker);
-#else
-    int i, n = myFaces.Size();
-#pragma omp parallel for private(i)
-    for (i = 0; i < n; ++i)
-      aFaceChecker(myFaces(i));
-#endif
-  }
-  else
-#endif
-  {
-    NCollection_Vector<TopoDS_Face>::Iterator aFaceIt(myFaces);
-    for (; aFaceIt.More(); aFaceIt.Next())
-      aFaceChecker(aFaceIt.Value());
-  }
-
-  return aFaceChecker.IsValid();
 }
 
 //=======================================================================
@@ -249,27 +217,21 @@ void BRepMesh_IncrementalMesh::update()
   NCollection_Vector<TopoDS_Face>::Iterator aFaceIt(myFaces);
   for (; aFaceIt.More(); aFaceIt.Next())
     update(aFaceIt.Value());
-
-  // Mesh faces
-#if defined(HAVE_TBB) || defined(_OPENMP)
+  
+#if defined(_OPENMP)
   if (myInParallel)
   {
-#ifdef HAVE_TBB
-    tbb::parallel_for_each(myFaces.begin(), myFaces.end(), *myMesh);
-#else
     int i, n = myFaces.Size();
 #pragma omp parallel for private(i)
     for (i = 0; i < n; ++i)
       myMesh->Process(myFaces(i));
-#endif
   }
   else
+    OSD_Parallel::ForEach(myFaces.begin(), myFaces.end(), *myMesh, !myInParallel);
+#else
+  OSD_Parallel::ForEach(myFaces.begin(), myFaces.end(), *myMesh, !myInParallel);
 #endif
-  {
-    for (aFaceIt.Init(myFaces); aFaceIt.More(); aFaceIt.Next())
-      myMesh->Process(aFaceIt.Value());
-  }
-
+  
   commit();
   clear();
 }
@@ -295,7 +257,8 @@ void BRepMesh_IncrementalMesh::discretizeFreeEdges()
 
     BRepAdaptor_Curve aCurve(aEdge);
     GCPnts_TangentialDeflection aDiscret(aCurve, aCurve.FirstParameter(),
-      aCurve.LastParameter(), myAngle, aEdgeDeflection, 2);
+      aCurve.LastParameter(), myAngle, aEdgeDeflection, 2, 
+      Precision::PConfusion(), myMinSize);
 
     Standard_Integer aNodesNb = aDiscret.NbPoints();
     TColgp_Array1OfPnt   aNodes  (1, aNodesNb);
@@ -367,35 +330,46 @@ Standard_Real BRepMesh_IncrementalMesh::faceDeflection(
 //=======================================================================
 void BRepMesh_IncrementalMesh::update(const TopoDS_Edge& theEdge)
 {
-  Standard_Integer aPolyIndex   = 1;
+  if (!myEdges.IsBound(theEdge))
+    myEdges.Bind(theEdge, BRepMesh::DMapOfTriangulationBool());
+
   Standard_Real aEdgeDeflection = edgeDeflection(theEdge);
-  Handle(Poly_PolygonOnTriangulation) aPolygon;
-  do
+  // Check that triangulation relies to face of the given shape.
+  const TopTools_IndexedDataMapOfShapeListOfShape& aMapOfSharedFaces = 
+    myMesh->SharedFaces();
+
+  const TopTools_ListOfShape& aSharedFaces = 
+    aMapOfSharedFaces.FindFromKey(theEdge);
+
+  TopTools_ListIteratorOfListOfShape aSharedFaceIt(aSharedFaces);
+  for (; aSharedFaceIt.More(); aSharedFaceIt.Next())
   {
     TopLoc_Location aLoc;
-    Handle(Poly_Triangulation) aTriangulation;
-    BRep_Tool::PolygonOnTriangulation(theEdge, aPolygon, 
-      aTriangulation, aLoc, aPolyIndex++);
+    const TopoDS_Face& aFace = TopoDS::Face(aSharedFaceIt.Value());
+    const Handle(Poly_Triangulation)& aFaceTriangulation = 
+      BRep_Tool::Triangulation(aFace, aLoc);
 
-    if (!aTriangulation.IsNull() && !aPolygon.IsNull())
+    if (aFaceTriangulation.IsNull())
+      continue;
+
+    Standard_Boolean isConsistent = Standard_False;
+    const Handle(Poly_PolygonOnTriangulation)& aPolygon =
+      BRep_Tool::PolygonOnTriangulation(theEdge, aFaceTriangulation, aLoc);
+
+    if (!aPolygon.IsNull())
     {
-      if (aPolygon->Deflection() < 1.1 * aEdgeDeflection &&
-          aPolygon->HasParameters())
-      {
-        continue;
-      }
+      isConsistent = aPolygon->Deflection() < 1.1 * aEdgeDeflection &&
+        aPolygon->HasParameters();
 
-      myModified = Standard_True;
-      BRepMesh_ShapeTool::NullifyEdge(theEdge, aTriangulation, aLoc);
+      if (!isConsistent)
+      {
+        myModified = Standard_True;
+        BRepMesh_ShapeTool::NullifyEdge(theEdge, aFaceTriangulation, aLoc);
+      }
     }
 
-    if (!myEmptyEdges.IsBound(theEdge))
-      myEmptyEdges.Bind(theEdge, BRepMesh::MapOfTriangulation());
-
-    if (!aTriangulation.IsNull())
-      myEmptyEdges(theEdge).Add(aTriangulation);
+    myEdges(theEdge).Bind(aFaceTriangulation, isConsistent);
   }
-  while (!aPolygon.IsNull());
 }
 
 //=======================================================================
@@ -407,7 +381,7 @@ Standard_Boolean BRepMesh_IncrementalMesh::toBeMeshed(
   const Standard_Boolean isWithCheck)
 {
   TopLoc_Location aLoc;
-  Handle(Poly_Triangulation) aTriangulation = 
+  const Handle(Poly_Triangulation)& aTriangulation = 
     BRep_Tool::Triangulation(theFace, aLoc);
 
   if (aTriangulation.IsNull())
@@ -423,15 +397,33 @@ Standard_Boolean BRepMesh_IncrementalMesh::toBeMeshed(
       for (; aEdgeIt.More() && isEdgesConsistent; aEdgeIt.Next())
       {
         const TopoDS_Edge& aEdge = TopoDS::Edge(aEdgeIt.Current());
-        if (!myEmptyEdges.IsBound(aEdge))
+        if (!myEdges.IsBound(aEdge))
           continue;
 
-        BRepMesh::MapOfTriangulation& aTriMap = myEmptyEdges(aEdge);
-        isEdgesConsistent &= !aTriMap.IsEmpty() && !aTriMap.Contains(aTriangulation);
+        BRepMesh::DMapOfTriangulationBool& aTriMap = myEdges(aEdge);
+        isEdgesConsistent &= aTriMap.IsBound(aTriangulation) &&
+          aTriMap(aTriangulation);
       }
 
       if (isEdgesConsistent)
-        return Standard_False;
+      {
+        // #25080: check that indices of links forming triangles are in range.
+        Standard_Boolean isTriangulationConsistent = Standard_True;
+        const Standard_Integer aNodesNb = aTriangulation->NbNodes();
+        const Poly_Array1OfTriangle& aTriangles = aTriangulation->Triangles();
+        Standard_Integer i = aTriangles.Lower();
+        for (; i <= aTriangles.Upper() && isTriangulationConsistent; ++i)
+        {
+          const Poly_Triangle& aTriangle = aTriangles(i);
+          Standard_Integer n[3];
+          aTriangle.Get(n[0], n[1], n[2]);
+          for (Standard_Integer j = 0; j < 3 && isTriangulationConsistent; ++j)
+            isTriangulationConsistent = (n[j] >= 1 && n[j] <= aNodesNb);
+        }
+
+        if (isTriangulationConsistent)
+          return Standard_False;
+      }
     }
   }
 
@@ -524,7 +516,7 @@ void BRepMesh_IncrementalMesh::commitEdges(const TopoDS_Face& theFace)
     return;
   }
 
-  TopLoc_Location            aLoc = aFace.Location();
+  TopLoc_Location aLoc;
   Handle(Poly_Triangulation) aTriangulation = BRep_Tool::Triangulation(aFace, aLoc);
 
   if (aTriangulation.IsNull())

@@ -116,6 +116,10 @@ public:
   //! Returns (modifiable) the mode for applying
   //! ShapeFix::FixVertexPosition before all fixes, by default False.
       Standard_Integer& FixVertexPositionMode() ;
+  
+  //! Returns (modifiable) the mode for fixing tolerances of vertices on whole shape
+  //! after performing all fixes
+      Standard_Integer& FixVertexTolMode() ;
 
 
 
@@ -139,6 +143,7 @@ protected:
   Standard_Integer myFixWireMode;
   Standard_Integer myFixSameParameterMode;
   Standard_Integer myFixVertexPositionMode;
+  Standard_Integer myFixVertexTolMode;
   Standard_Integer myStatus;
 
 

@@ -43,15 +43,15 @@ public:
   //! Shows both the elapsed time and CPU time on the standard output
   //! stream <cout>.The chronometer can be running (Lap Time) or
   //! stopped.
-  Standard_EXPORT virtual   void Show() ;
+  Standard_EXPORT virtual   void Show()  const;
   
   //! Shows both the elapsed time and CPU  time on the
   //! output stream <OS>.
-  Standard_EXPORT virtual   void Show (Standard_OStream& os) ;
+  Standard_EXPORT virtual   void Show (Standard_OStream& os)  const;
   
   //! returns both the elapsed time(seconds,minutes,hours)
   //! and CPU  time.
-  Standard_EXPORT   void Show (Standard_Real& seconds, Standard_Integer& minutes, Standard_Integer& hours, Standard_Real& CPUtime) ;
+  Standard_EXPORT   void Show (Standard_Real& theSeconds, Standard_Integer& theMinutes, Standard_Integer& theHours, Standard_Real& theCPUtime)  const;
   
   //! Stops the Timer.
   Standard_EXPORT virtual   void Stop() ;
@@ -61,7 +61,7 @@ public:
   Standard_EXPORT virtual   void Start() ;
   
   //! Returns elapsed time in seconds.
-  Standard_EXPORT   Standard_Real ElapsedTime() ;
+  Standard_EXPORT   Standard_Real ElapsedTime()  const;
 
 
 

@@ -1,0 +1,3 @@
+#include <Message_ProgressIndicator.hxx>
+#include <TopoDS_Shape.hxx>
+#include <BRepAlgoAPI_Algo.hxx>

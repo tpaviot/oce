@@ -13,7 +13,6 @@
 #include <TopLoc_SListOfItemLocation.hxx>
 #include <TopLoc_ItemLocation.hxx>
 #include <MMgt_TShared.hxx>
-#include <Standard_Integer.hxx>
 class TopLoc_ItemLocation;
 class TopLoc_SListOfItemLocation;
 
@@ -26,8 +25,6 @@ public:
 
   
     TopLoc_SListNodeOfItemLocation(const TopLoc_ItemLocation& I, const TopLoc_SListOfItemLocation& aTail);
-  
-      Standard_Integer& Count()  const;
   
       TopLoc_SListOfItemLocation& Tail()  const;
   

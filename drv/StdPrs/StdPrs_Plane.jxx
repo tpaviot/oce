@@ -1,4 +1,3 @@
 #include <Prs3d_Presentation.hxx>
 #include <Adaptor3d_Surface.hxx>
-#include <Prs3d_Drawer.hxx>
 #include <StdPrs_Plane.hxx>

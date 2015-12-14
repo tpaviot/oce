@@ -33,6 +33,10 @@ public:
   //! Returns the 3d point.
      const  gp_Pnt& Value()  const;
   
+  //! Sets the params of current POnSurf instance.
+  //! (e.g. to the point to be projected).
+      void SetParameters (const Standard_Real theU, const Standard_Real theV, const gp_Pnt& thePnt) ;
+  
   //! Returns the parameter values on the surface.
       void Parameter (Standard_Real& U, Standard_Real& V)  const;
 

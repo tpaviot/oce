@@ -11,12 +11,12 @@
 #include <Handle_Graphic3d_GraphicDriver.hxx>
 
 #include <Standard_Integer.hxx>
-#include <Aspect_DisplayConnection_Handle.hxx>
+#include <Aspect_DisplayConnection.hxx>
 #include <Standard_Boolean.hxx>
 #include <MMgt_TShared.hxx>
 #include <Graphic3d_CView.hxx>
+#include <Handle_Graphic3d_Structure.hxx>
 #include <Graphic3d_CStructure.hxx>
-#include <Graphic3d_CStructure_Handle.hxx>
 #include <Handle_Graphic3d_StructureManager.hxx>
 #include <Aspect_GradientFillMethod.hxx>
 #include <Standard_CString.hxx>
@@ -27,7 +27,8 @@
 #include <Standard_Real.hxx>
 #include <Aspect_TypeOfTriedronPosition.hxx>
 #include <Aspect_TypeOfTriedronEcho.hxx>
-#include <Graphic3d_CGraduatedTrihedron.hxx>
+#include <Graphic3d_GraduatedTrihedron.hxx>
+#include <Graphic3d_Vec3.hxx>
 #include <Standard_ShortReal.hxx>
 #include <Standard_Address.hxx>
 #include <Graphic3d_PtrFrameBuffer.hxx>
@@ -37,10 +38,11 @@
 #include <Aspect_PrintAlgo.hxx>
 #include <Graphic3d_ExportFormat.hxx>
 #include <Graphic3d_SortType.hxx>
+#include <Graphic3d_ZLayerId.hxx>
 #include <Graphic3d_ZLayerSettings.hxx>
 #include <Graphic3d_CLight.hxx>
-#include <Graphic3d_CPick.hxx>
 class Graphic3d_TransformError;
+class Graphic3d_Structure;
 class Graphic3d_StructureManager;
 class Quantity_Color;
 class TCollection_AsciiString;
@@ -65,16 +67,16 @@ public:
   Standard_EXPORT virtual   Standard_Integer InquireViewLimit()  = 0;
   
   //! call_togl_displaystructure
-  Standard_EXPORT virtual   void DisplayStructure (const Graphic3d_CView& theCView, Graphic3d_CStructure& theCStructure, const Standard_Integer thePriority)  = 0;
+  Standard_EXPORT virtual   void DisplayStructure (const Graphic3d_CView& theCView, const Handle(Graphic3d_Structure)& theStructure, const Standard_Integer thePriority)  = 0;
   
   //! call_togl_erasestructure
-  Standard_EXPORT virtual   void EraseStructure (const Graphic3d_CView& theCView, Graphic3d_CStructure& theCStructure)  = 0;
+  Standard_EXPORT virtual   void EraseStructure (const Graphic3d_CView& theCView, const Handle(Graphic3d_Structure)& theStructure)  = 0;
   
   //! call_togl_removestructure
-  Standard_EXPORT virtual   void RemoveStructure (Graphic3d_CStructure_Handle& theCStructure)  = 0;
+  Standard_EXPORT virtual   void RemoveStructure (Handle(Graphic3d_CStructure)& theCStructure)  = 0;
   
   //! Creates new empty graphic structure
-  Standard_EXPORT virtual   Graphic3d_CStructure_Handle Structure (const Handle(Graphic3d_StructureManager)& theManager)  = 0;
+  Standard_EXPORT virtual   Handle(Graphic3d_CStructure) Structure (const Handle(Graphic3d_StructureManager)& theManager)  = 0;
   
   //! call_togl_activateview
   Standard_EXPORT virtual   void ActivateView (const Graphic3d_CView& ACView)  = 0;
@@ -130,9 +132,6 @@ public:
   //! call_togl_setvisualisation
   Standard_EXPORT virtual   void SetVisualisation (const Graphic3d_CView& ACView)  = 0;
   
-  //! call_togl_transparency
-  Standard_EXPORT virtual   void Transparency (const Graphic3d_CView& ACView, const Standard_Boolean AFlag)  = 0;
-  
   //! call_togl_view
   Standard_EXPORT virtual   Standard_Boolean View (Graphic3d_CView& ACView)  = 0;
   
@@ -145,7 +144,7 @@ public:
   Standard_EXPORT virtual   Standard_Boolean MemoryInfo (Standard_Size& theFreeBytes, TCollection_AsciiString& theInfo)  const = 0;
   
   //! call_togl_ztriedron_setup
-  Standard_EXPORT virtual   void ZBufferTriedronSetup (const Quantity_NameOfColor XColor = Quantity_NOC_RED, const Quantity_NameOfColor YColor = Quantity_NOC_GREEN, const Quantity_NameOfColor ZColor = Quantity_NOC_BLUE1, const Standard_Real SizeRatio = 0.8, const Standard_Real AxisDiametr = 0.05, const Standard_Integer NbFacettes = 12)  = 0;
+  Standard_EXPORT virtual   void ZBufferTriedronSetup (const Graphic3d_CView& theCView, const Quantity_NameOfColor XColor = Quantity_NOC_RED, const Quantity_NameOfColor YColor = Quantity_NOC_GREEN, const Quantity_NameOfColor ZColor = Quantity_NOC_BLUE1, const Standard_Real SizeRatio = 0.8, const Standard_Real AxisDiametr = 0.05, const Standard_Integer NbFacettes = 12)  = 0;
   
   //! call_togl_triedron_display
   Standard_EXPORT virtual   void TriedronDisplay (const Graphic3d_CView& ACView, const Aspect_TypeOfTriedronPosition APosition = Aspect_TOTP_CENTER, const Quantity_NameOfColor AColor = Quantity_NOC_WHITE, const Standard_Real AScale = 0.02, const Standard_Boolean AsWireframe = Standard_True)  = 0;
@@ -157,13 +156,17 @@ public:
   Standard_EXPORT virtual   void TriedronEcho (const Graphic3d_CView& ACView, const Aspect_TypeOfTriedronEcho AType = Aspect_TOTE_NONE)  = 0;
   
   //! call_togl_graduatedtrihedron_display
-  Standard_EXPORT virtual   void GraduatedTrihedronDisplay (const Graphic3d_CView& view, const Graphic3d_CGraduatedTrihedron& cubic)  = 0;
+  Standard_EXPORT virtual   void GraduatedTrihedronDisplay (const Graphic3d_CView& theView, const Graphic3d_GraduatedTrihedron& theCubic)  = 0;
   
   //! call_togl_graduatedtrihedron_erase
-  Standard_EXPORT virtual   void GraduatedTrihedronErase (const Graphic3d_CView& view)  = 0;
+  Standard_EXPORT virtual   void GraduatedTrihedronErase (const Graphic3d_CView& theView)  = 0;
   
-  //! call_togl_graduatedtrihedron_minmaxvalues
-  Standard_EXPORT virtual   void GraduatedTrihedronMinMaxValues (const Standard_ShortReal xmin, const Standard_ShortReal ymin, const Standard_ShortReal zmin, const Standard_ShortReal xmax, const Standard_ShortReal ymax, const Standard_ShortReal zmax)  = 0;
+  //! Sets minimum and maximum points of scene bounding box for Graduated Trihedron
+  //! stored in graphic view object.
+  //! @param theView [in] current graphic view
+  //! @param theMin [in] the minimum point of scene.
+  //! @param theMax [in] the maximum point of scene.
+  Standard_EXPORT virtual   void GraduatedTrihedronMinMaxValues (const Graphic3d_CView& theView, const Graphic3d_Vec3 theMin, const Graphic3d_Vec3 theMax)  = 0;
   
   //! @param theDrawToFrontBuffer Advanced option to modify rendering mode:
   //! 1. TRUE.  Drawing immediate mode structures directly to the front buffer over the scene image.
@@ -179,10 +182,10 @@ public:
   Standard_EXPORT virtual   Standard_Boolean SetImmediateModeDrawToFront (const Graphic3d_CView& theCView, const Standard_Boolean theDrawToFrontBuffer)  = 0;
   
   //! Display structure in immediate mode on top of general presentation
-  Standard_EXPORT virtual   void DisplayImmediateStructure (const Graphic3d_CView& theCView, const Graphic3d_CStructure& theCStructure)  = 0;
-  
+  Standard_EXPORT virtual   void DisplayImmediateStructure (const Graphic3d_CView& theCView, const Handle(Graphic3d_Structure)& theStructure)  = 0;
+
   //! Erases immediate structure
-  Standard_EXPORT virtual   void EraseImmediateStructure (const Graphic3d_CView& theCView, const Graphic3d_CStructure& theCStructure)  = 0;
+  Standard_EXPORT virtual void EraseImmediateStructure (const Graphic3d_CView& theCView, const Graphic3d_CStructure& theCStructure) = 0;
   
   //! call_togl_layer2d
   Standard_EXPORT virtual   void Layer (Aspect_CLayer2d& ACLayer)  = 0;
@@ -316,44 +319,33 @@ public:
   //! in foreground of structures in lower layers. To add a structure
   //! to desired layer on display it is necessary to set the layer
   //! ID for the structure.
-  Standard_EXPORT virtual   void AddZLayer (const Graphic3d_CView& theCView, const Standard_Integer theLayerId)  = 0;
+  Standard_EXPORT virtual   void AddZLayer (const Graphic3d_CView& theCView, const Graphic3d_ZLayerId theLayerId)  = 0;
   
   //! Remove Z layer from the specified view. All structures
   //! displayed at the moment in layer will be displayed in default layer
   //! ( the bottom-level z layer ). To unset layer ID from associated
   //! structures use method UnsetZLayer (...).
-  Standard_EXPORT virtual   void RemoveZLayer (const Graphic3d_CView& theCView, const Standard_Integer theLayerId)  = 0;
+  Standard_EXPORT virtual   void RemoveZLayer (const Graphic3d_CView& theCView, const Graphic3d_ZLayerId theLayerId)  = 0;
   
   //! Unset Z layer ID for all structures. The structure
   //! indexes will be set to default layer ( the bottom-level z layer
   //! with ID = 0 ).
-  Standard_EXPORT virtual   void UnsetZLayer (const Standard_Integer theLayerId)  = 0;
-  
-  //! Change Z layer of a structure. The new z layer ID will
-  //! be used to define the associated layer for structure on display.
-  Standard_EXPORT virtual   void ChangeZLayer (const Graphic3d_CStructure& theCStructure, const Standard_Integer theLayerId)  = 0;
-  
+  Standard_EXPORT virtual   void UnsetZLayer (const Graphic3d_ZLayerId theLayerId)  = 0;
+
   //! Change Z layer of a structure already presented in view.
-  Standard_EXPORT virtual   void ChangeZLayer (const Graphic3d_CStructure& theCStructure, const Graphic3d_CView& theCView, const Standard_Integer theNewLayerId)  = 0;
-  
-  //! Get Z layer ID of structure. If the structure doesn't
-  //! exists in graphic driver, the method returns -1.
-  Standard_EXPORT virtual   Standard_Integer GetZLayer (const Graphic3d_CStructure& theCStructure)  const = 0;
+  Standard_EXPORT virtual void ChangeZLayer (const Graphic3d_CStructure& theCStructure, const Graphic3d_CView& theCView, const Graphic3d_ZLayerId theNewLayerId) = 0;
   
   //! Sets the settings for a single Z layer of specified view.
-  Standard_EXPORT virtual   void SetZLayerSettings (const Graphic3d_CView& theCView, const Standard_Integer theLayerId, const Graphic3d_ZLayerSettings& theSettings)  = 0;
-  
-  //! Changes the priority of a structure within its Z layer
-  //! in the specified view.
-  Standard_EXPORT virtual   void ChangePriority (const Graphic3d_CStructure& theCStructure, const Graphic3d_CView& theCView, const Standard_Integer theNewPriority)  = 0;
+  Standard_EXPORT virtual   void SetZLayerSettings (const Graphic3d_CView& theCView, const Graphic3d_ZLayerId theLayerId, const Graphic3d_ZLayerSettings& theSettings)  = 0;
+
+  //! Changes the priority of a structure within its Z layer in the specified view.
+  Standard_EXPORT virtual void ChangePriority (const Graphic3d_CStructure& theCStructure, const Graphic3d_CView& theCView, const Standard_Integer theNewPriority) = 0;
   
   Standard_EXPORT   void PrintBoolean (const Standard_CString AComment, const Standard_Boolean AValue)  const;
   
   Standard_EXPORT   void PrintCLight (const Graphic3d_CLight& ACLight, const Standard_Integer AField)  const;
-  
-  Standard_EXPORT   void PrintCPick (const Graphic3d_CPick& ACPick, const Standard_Integer AField)  const;
-  
-  Standard_EXPORT   void PrintCStructure (const Graphic3d_CStructure& ACStructure, const Standard_Integer AField)  const;
+
+  Standard_EXPORT void PrintCStructure (const Graphic3d_CStructure& ACStructure, const Standard_Integer AField) const;
   
   Standard_EXPORT   void PrintCView (const Graphic3d_CView& ACView, const Standard_Integer AField)  const;
   
@@ -374,7 +366,7 @@ public:
   Standard_EXPORT   Standard_Integer Trace()  const;
   
   //! returns Handle to display connection
-  Standard_EXPORT  const  Aspect_DisplayConnection_Handle& GetDisplayConnection()  const;
+  Standard_EXPORT  const  Handle(Aspect_DisplayConnection)& GetDisplayConnection()  const;
   
   Standard_EXPORT   Standard_Boolean IsDeviceLost()  const;
   
@@ -389,10 +381,10 @@ protected:
 
   
   //! Initialises the Driver
-  Standard_EXPORT Graphic3d_GraphicDriver(const Aspect_DisplayConnection_Handle& theDisp);
+  Standard_EXPORT Graphic3d_GraphicDriver(const Handle(Aspect_DisplayConnection)& theDisp);
 
   Standard_Integer MyTraceLevel;
-  Aspect_DisplayConnection_Handle myDisplayConnection;
+  Handle(Aspect_DisplayConnection) myDisplayConnection;
   Standard_Boolean myDeviceLostFlag;
 
 

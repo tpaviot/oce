@@ -13,6 +13,7 @@
 
 IMPLEMENT_STANDARD_TYPE(ShapeCustom_BSplineRestriction)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()
+  STANDARD_TYPE(ShapeCustom_Modification),
   STANDARD_TYPE(BRepTools_Modification),
   STANDARD_TYPE(MMgt_TShared),
   STANDARD_TYPE(Standard_Transient),

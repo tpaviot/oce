@@ -26,9 +26,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~math_FunctionWithDerivative(){Delete();}
-  
   //! Computes the value <F>of the function for the variable <X>.
   //! Returns True if the calculation were successfully done,
   //! False otherwise.
@@ -45,6 +42,7 @@ Standard_EXPORT virtual ~math_FunctionWithDerivative(){Delete();}
   //! Returns True if the calculation were successfully done,
   //! False otherwise.
   Standard_EXPORT virtual   Standard_Boolean Values (const Standard_Real X, Standard_Real& F, Standard_Real& D)  = 0;
+  Standard_EXPORT virtual ~math_FunctionWithDerivative();
 
 
 

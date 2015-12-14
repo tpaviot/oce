@@ -175,10 +175,6 @@ Standard_Boolean ChFi3d_Builder::PerformTwoCornerbyInter(const Standard_Integer 
 
   Standard_Boolean isfirst1 = (Sens1 == 1);
   Standard_Boolean isfirst2 = (Sens2 == 1);
-/*#ifdef OCCT_DEBUG
-  Standard_Boolean evolcoin = ((Stat1 == ChFiDS_OnSame && Stat2 == ChFiDS_OnDiff) || 
-			       (Stat2 == ChFiDS_OnSame && Stat1 == ChFiDS_OnDiff));
-#endif*/
   Standard_Boolean  OkinterCC,Okvisavis,SameSide;
   Standard_Integer IFaCo1,IFaCo2;
   Standard_Real UIntPC1,UIntPC2;

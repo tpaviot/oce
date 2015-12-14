@@ -496,6 +496,10 @@ static Standard_Boolean InitialPoint(const gp_Pnt& Point,
 //=======================================================================
 
 ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()
+: myNbCurves(0),
+  myTolU    (0.0),
+  myTolV    (0.0),
+  myMaxDist (0.0)
 {
 }
 
@@ -504,15 +508,19 @@ ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()
 //purpose  : 
 //=======================================================================
 
-ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve(
-  const Handle(Adaptor3d_HSurface)& S,
-  const Handle(Adaptor3d_HCurve)& C, 
-  const Standard_Real TolU, 
-  const Standard_Real TolV) 
-  : mySurface(S), myCurve(C), myNbCurves(0), myTolU(TolU), myTolV(TolV), 
-  myMaxDist(-1)
+ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve
+                           (const Handle(Adaptor3d_HSurface)& theSurface,
+                            const Handle(Adaptor3d_HCurve)&   theCurve,
+                            const Standard_Real               theTolU,
+                            const Standard_Real               theTolV)
+: mySurface (theSurface),
+  myCurve   (theCurve),
+  myNbCurves(0),
+  mySequence(new ProjLib_HSequenceOfHSequenceOfPnt()),
+  myTolU    (theTolU),
+  myTolV    (theTolV),
+  myMaxDist (-1.0)
 {
-  mySequence = new ProjLib_HSequenceOfHSequenceOfPnt();
   Init();
 }
 
@@ -521,16 +529,20 @@ ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve(
 //purpose  : 
 //=======================================================================
 
-ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve(
-  const Handle(Adaptor3d_HSurface)& S,
-  const Handle(Adaptor3d_HCurve)& C, 
-  const Standard_Real TolU, 
-  const Standard_Real TolV, 
-  const Standard_Real MaxDist) 
-  : mySurface(S), myCurve(C), myNbCurves(0), myTolU(TolU), myTolV(TolV), 
-  myMaxDist(MaxDist)
+ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve
+                           (const Handle(Adaptor3d_HSurface)& theSurface,
+                            const Handle(Adaptor3d_HCurve)&   theCurve,
+                            const Standard_Real               theTolU,
+                            const Standard_Real               theTolV,
+                            const Standard_Real               theMaxDist)
+: mySurface (theSurface),
+  myCurve   (theCurve),
+  myNbCurves(0),
+  mySequence(new ProjLib_HSequenceOfHSequenceOfPnt()),
+  myTolU    (theTolU),
+  myTolV    (theTolV),
+  myMaxDist (theMaxDist)
 {
-  mySequence = new ProjLib_HSequenceOfHSequenceOfPnt();
   Init();
 }
 
@@ -548,7 +560,6 @@ void ProjLib_CompProjectedCurve::Init()
   Standard_Boolean FromLastU=Standard_False;
 
   //new part (to discard far solutions)
-  //Method Extrema_ExtCS gives wrong result(ex. sphere and segment orthogonal to it)
   Standard_Real TolC = Precision::Confusion(), TolS = Precision::Confusion();
   Extrema_ExtCS CExt(myCurve->Curve(),
     mySurface->Surface(),
@@ -558,21 +569,27 @@ void ProjLib_CompProjectedCurve::Init()
   {
     // Search for the minimum solution
     Nend = CExt.NbExt();
-    if(myMaxDist > 0) 
+    if(myMaxDist > 0 &&
+       // Avoid usage of extrema result that can be wrong for extrusion
+       mySurface->GetType() != GeomAbs_SurfaceOfExtrusion)
     {
       Standard_Real min_val2;
       min_val2 = CExt.SquareDistance(1);
       for(i = 2; i <= Nend; i++)
-        if (CExt.SquareDistance(i) < min_val2) min_val2 = CExt.SquareDistance(i);  
-      if(min_val2 > myMaxDist * myMaxDist) return;
+        if (CExt.SquareDistance(i) < min_val2) min_val2 = CExt.SquareDistance(i);
+      if (min_val2 > myMaxDist * myMaxDist)
+        return;
     }
   }
   // end of new part
 
-  Standard_Real FirstU, LastU, Step, DecStep, SearchStep, WalkStep, t;
+  Standard_Real FirstU, LastU, Step, SearchStep, WalkStep, t;
 
   FirstU = myCurve->FirstParameter();
   LastU  = myCurve->LastParameter();
+  const Standard_Real GlobalMinStep = 1.e-4;
+  //<GlobalMinStep> is sufficiently small to provide solving from initial point
+  //and, on the other hand, it is sufficiently large to avoid too close solutions.
   const Standard_Real MinStep = 0.01*(LastU - FirstU), 
     MaxStep = 0.1*(LastU - FirstU);
   SearchStep = 10*MinStep;
@@ -655,30 +672,36 @@ void ProjLib_CompProjectedCurve::Init()
         // as initial point for aPrjPS, so we switch them
         gp_Vec2d D;
 
-        if((Abs(U - Uinf) < mySurface->UResolution(Precision::PConfusion())) &&
-          mySurface->IsUPeriodic())
-        { 
-          d1(t, U, V, D, myCurve, mySurface);
-          if (D.X() < 0) U = Usup;
-        }
-        else if((Abs(U - Usup) < mySurface->UResolution(Precision::PConfusion())) &&
-          mySurface->IsUPeriodic())
+        if ((mySurface->IsUPeriodic() &&
+            Abs(Usup - Uinf - mySurface->UPeriod()) < Precision::Confusion()) ||
+            (mySurface->IsVPeriodic() && 
+            Abs(Vsup - Vinf - mySurface->VPeriod()) < Precision::Confusion()))
         {
-          d1(t, U, V, D, myCurve, mySurface);
-          if (D.X() > 0) U = Uinf;
-        }
+          if((Abs(U - Uinf) < mySurface->UResolution(Precision::PConfusion())) &&
+            mySurface->IsUPeriodic())
+          { 
+            d1(t, U, V, D, myCurve, mySurface);
+            if (D.X() < 0 ) U = Usup;
+          }
+          else if((Abs(U - Usup) < mySurface->UResolution(Precision::PConfusion())) &&
+            mySurface->IsUPeriodic())
+          {
+            d1(t, U, V, D, myCurve, mySurface);
+            if (D.X() > 0) U = Uinf;
+          }
 
-        if((Abs(V - Vinf) < mySurface->VResolution(Precision::PConfusion())) && 
-          mySurface->IsVPeriodic()) 
-        {
-          d1(t, U, V, D, myCurve, mySurface);
-          if (D.Y() < 0) V = Vsup;
-        }
-        else if((Abs(V - Vsup) <= mySurface->VResolution(Precision::PConfusion())) &&
-          mySurface->IsVPeriodic())
-        {
-          d1(t, U, V, D, myCurve, mySurface);
-          if (D.Y() > 0) V = Vinf;
+          if((Abs(V - Vinf) < mySurface->VResolution(Precision::PConfusion())) && 
+            mySurface->IsVPeriodic()) 
+          {
+            d1(t, U, V, D, myCurve, mySurface);
+            if (D.Y() < 0) V = Vsup;
+          }
+          else if((Abs(V - Vsup) <= mySurface->VResolution(Precision::PConfusion())) &&
+            mySurface->IsVPeriodic())
+          {
+            d1(t, U, V, D, myCurve, mySurface);
+            if (D.Y() > 0) V = Vinf;
+          }
         }
 
 
@@ -751,27 +774,31 @@ void ProjLib_CompProjectedCurve::Init()
     else WalkStep = Min(MaxStep, Max(MinStep, 0.1*MagnD1/MagnD2));
 
     Step = WalkStep;
-    DecStep = Step;;
 
     t = Triple.X() + Step;
     if (t > LastU) t = LastU;
-
+    Standard_Real prevStep = Step;
+    Standard_Real U0, V0;
+    gp_Pnt2d aLowBorder(mySurface->FirstUParameter(),mySurface->FirstVParameter());
+    gp_Pnt2d aUppBorder(mySurface->LastUParameter(), mySurface->LastVParameter());
+    gp_Pnt2d aTol(myTolU, myTolV);
     //Here we are trying to prolong continuous part
     while (t <= LastU && new_part) 
     {
-      Standard_Real U0, V0;
 
-      U0 = Triple.Y();
-      V0 = Triple.Z();
+      U0 = Triple.Y() + (Step / prevStep) * (Triple.Y() - prevTriple.Y());
+      V0 = Triple.Z() + (Step / prevStep) * (Triple.Z() - prevTriple.Z());
+      // adjust U0 to be in [mySurface->FirstUParameter(),mySurface->LastUParameter()]
+      U0 = Min(Max(U0, aLowBorder.X()), aUppBorder.X()); 
+      // adjust V0 to be in [mySurface->FirstVParameter(),mySurface->LastVParameter()]
+      V0 = Min(Max(V0, aLowBorder.Y()), aUppBorder.Y()); 
 
-      aPrjPS.Perform(t, U0, V0, gp_Pnt2d(myTolU, myTolV), 
-        gp_Pnt2d(mySurface->FirstUParameter(),mySurface->FirstVParameter()), 
-        gp_Pnt2d(mySurface->LastUParameter(), mySurface->LastVParameter()), 
-        FuncTol, Standard_True);
+
+      aPrjPS.Perform(t, U0, V0, aTol,
+                     aLowBorder, aUppBorder, FuncTol, Standard_True);
       if(!aPrjPS.IsDone()) 
       {
-
-        if (DecStep <= MinStep) 
+        if (Step <= GlobalMinStep)
         {
           //Search for exact boundary point
           Tol = Min(myTolU, myTolV);
@@ -800,18 +827,19 @@ void ProjLib_CompProjectedCurve::Init()
             Step =Step+LastU-t;
             t = LastU;
           }
-          DecStep=Step;
           new_part = Standard_False;
         }
         else 
         {
           // decrease step
-          DecStep=DecStep / 2.;
-          Step = Max (MinStep , DecStep);
+          Standard_Real SaveStep = Step;
+          Step /= 2.;
           t = Triple .X() + Step;
           if (t > (LastU-MinStep/4) ) 
           { 
             Step =Step+LastU-t;
+            if (Abs(Step - SaveStep) <= Precision::PConfusion())
+              Step = GlobalMinStep; //to avoid looping
             t = LastU;
           }
         }
@@ -819,8 +847,26 @@ void ProjLib_CompProjectedCurve::Init()
       // Go further
       else 
       {
-        prevTriple = Triple; 
+        prevTriple = Triple;
+        prevStep = Step;
         Triple = gp_Pnt(t, aPrjPS.Solution().X(), aPrjPS.Solution().Y());
+
+        if (mySurface->GetType() == GeomAbs_SurfaceOfRevolution &&
+           (Abs (Triple.Z() - mySurface->FirstVParameter()) < Precision::Confusion() ||
+            Abs (Triple.Z() - mySurface->LastVParameter() ) < Precision::Confusion() ))
+        {
+          // Go out from possible attraktor.
+
+          Standard_Real U,V;
+          InitialPoint(myCurve->Value(t), t, myCurve, mySurface, myTolU, myTolV, U, V);
+          if (Abs (Abs(U - Triple.Y()) - mySurface->UPeriod()) < Precision::Confusion())
+          {
+            // Handle period jump.
+            U = Triple.Y();
+          }
+          Triple.SetY(U);
+          Triple.SetZ(V);
+        }
 
         if((Triple.X() - mySequence->Value(myNbCurves)->Value(mySequence->Value(myNbCurves)->Length()).X()) > 1.e-10)
           mySequence->Value(myNbCurves)->Append(Triple);
@@ -836,11 +882,10 @@ void ProjLib_CompProjectedCurve::Init()
         Step = WalkStep;
         t += Step;
         if (t > (LastU-MinStep/2) ) 
-        { 
+        {
           Step =Step+LastU-t;
           t = LastU;
         }	
-        DecStep=Step;
       }
     }
   }
@@ -1182,8 +1227,28 @@ void ProjLib_CompProjectedCurve::D0(const Standard_Real U,gp_Pnt2d& P) const
   aPrjPS.Perform(U, U0, V0, gp_Pnt2d(myTolU, myTolV), 
     gp_Pnt2d(mySurface->FirstUParameter(), mySurface->FirstVParameter()), 
     gp_Pnt2d(mySurface->LastUParameter(), mySurface->LastVParameter()));
-  P = aPrjPS.Solution();
-
+  if (aPrjPS.IsDone())
+    P = aPrjPS.Solution();
+  else
+  {
+    gp_Pnt thePoint = myCurve->Value(U);
+    Extrema_ExtPS aExtPS(thePoint, mySurface->Surface(), myTolU, myTolV);
+    if (aExtPS.IsDone() && aExtPS.NbExt()) 
+    {
+      Standard_Integer i, Nend, imin = 1;
+      // Search for the nearest solution which is also a normal projection
+      Nend = aExtPS.NbExt();
+      for(i = 2; i <= Nend; i++)
+        if (aExtPS.SquareDistance(i) < aExtPS.SquareDistance(imin))
+          imin = i;
+      const Extrema_POnSurf& POnS = aExtPS.Point(imin);
+      Standard_Real ParU,ParV;
+      POnS.Parameter(ParU, ParV);
+      P.SetCoord(ParU, ParV);
+    }
+    else
+      P.SetCoord(U0,V0);
+  }
 }
 //=======================================================================
 //function : D1

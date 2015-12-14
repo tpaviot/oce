@@ -1,5 +1,6 @@
 #D3---------------------------------------------
 puts "TODO OCC22803 All:Faulty shapes in variables faulty_1 to faulty_6"
+puts "TODO OCC22803 Linux Windows: Error : The area of the resulting shape is"
 
 plane pt 0 0 0 1 0 0
 ptorus pt pt 9 7
@@ -9,4 +10,4 @@ bfuse f pt p2
 nexplode f f
 depouille result f 0 0 1 f_4 1 0 0 25 0 0 1
 
-set square 2558.48
+set square 2046.52

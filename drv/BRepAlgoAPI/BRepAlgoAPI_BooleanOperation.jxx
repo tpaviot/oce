@@ -1,4 +1,4 @@
-#include <TopoDS_Shape.hxx>
 #include <BOPAlgo_PaveFiller.hxx>
+#include <TopoDS_Shape.hxx>
 #include <TopTools_ListOfShape.hxx>
 #include <BRepAlgoAPI_BooleanOperation.hxx>

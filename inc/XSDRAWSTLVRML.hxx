@@ -16,7 +16,6 @@ class XSDRAWSTLVRML_DataSource3D;
 class XSDRAWSTLVRML_DrawableMesh;
 class XSDRAWSTLVRML_ElemNodesMap;
 class XSDRAWSTLVRML_CoordsMap;
-class XSDRAWSTLVRML_ToVRML;
 class XSDRAWSTLVRML_DataMapNodeOfElemNodesMap;
 class XSDRAWSTLVRML_DataMapIteratorOfElemNodesMap;
 class XSDRAWSTLVRML_DataMapNodeOfCoordsMap;
@@ -31,7 +30,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  //! A utility which writes a Shape to VRML format
   //! Inits commands for writing to STL and VRML formats
   Standard_EXPORT static   void InitCommands (Draw_Interpretor& theCommands) ;
   
@@ -57,7 +55,6 @@ friend class XSDRAWSTLVRML_DataSource3D;
 friend class XSDRAWSTLVRML_DrawableMesh;
 friend class XSDRAWSTLVRML_ElemNodesMap;
 friend class XSDRAWSTLVRML_CoordsMap;
-friend class XSDRAWSTLVRML_ToVRML;
 friend class XSDRAWSTLVRML_DataMapNodeOfElemNodesMap;
 friend class XSDRAWSTLVRML_DataMapIteratorOfElemNodesMap;
 friend class XSDRAWSTLVRML_DataMapNodeOfCoordsMap;

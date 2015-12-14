@@ -14,10 +14,6 @@
 -- Alternatively, this file may be used under the terms of Open CASCADE
 -- commercial license or contractual agreement.
 
---   GG  : GER61351 17/11/1999 Change SetColor() with a compatible Quantity_Color instead
---				       the restricted NameOfColor.
-
-
 class LineAspect from Prs3d inherits BasicAspect from Prs3d
     	---Purpose: A framework for defining how a line will be displayed
     	-- in a presentation. Aspects of line display include
@@ -53,6 +49,9 @@ is
 	    aType: TypeOfLine from Aspect;
     	    aWidth: Real from Standard)
 	    returns LineAspect from Prs3d;
+
+    Create( theAspect: AspectLine3d from Graphic3d )
+    returns LineAspect from Prs3d;
 	    
     SetColor (me: mutable; aColor: Color from Quantity) is static;
 
@@ -76,6 +75,8 @@ is
     is static;
     	--- Purpose: Returns the line aspect. This is defined as the set of
     	-- color, type and thickness attributes.
+
+    SetAspect( me: mutable; theAspect: AspectLine3d from Graphic3d );
             
 fields
 

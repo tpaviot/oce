@@ -43,14 +43,14 @@ public:
   
   //! Returns  the number  of  intervals for  continuity
   //! <S>. May be one if Continuity(me) >= <S>
-  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S) ;
+  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
   
   //! Stores in <T> the  parameters bounding the intervals
   //! of continuity <S>.
   //!
   //! The array must provide  enough room to  accomodate
   //! for the parameters. i.e. T.Length() > NbIntervals()
-  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S) ;
+  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
   
   //! Computes the point of parameter U on the curve.
   Standard_EXPORT   gp_Pnt Value (const Standard_Real U)  const;

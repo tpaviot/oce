@@ -35,9 +35,9 @@ public:
 
   
   //! Calculate color according passed value; returns true if value is in range or false, if isn't
-  Standard_EXPORT   Standard_Boolean FindColor (const Standard_Real Value, Quantity_Color& Color)  const;
+  Standard_EXPORT   Standard_Boolean FindColor (const Standard_Real theValue, Quantity_Color& theColor)  const;
   
-  Standard_EXPORT static   Standard_Boolean FindColor (const Standard_Real Value, const Standard_Real Min, const Standard_Real Max, const Standard_Integer ColorsCount, Quantity_Color& Color) ;
+  Standard_EXPORT static   Standard_Boolean FindColor (const Standard_Real theValue, const Standard_Real theMin, const Standard_Real theMax, const Standard_Integer theColorsCount, Quantity_Color& theColor) ;
   
   //! Returns minimal value of color scale;
   Standard_EXPORT   Standard_Real GetMin()  const;
@@ -46,7 +46,7 @@ public:
   Standard_EXPORT   Standard_Real GetMax()  const;
   
   //! Returns minimal and maximal values of color scale;
-  Standard_EXPORT   void GetRange (Standard_Real& aMin, Standard_Real& aMax)  const;
+  Standard_EXPORT   void GetRange (Standard_Real& theMin, Standard_Real& theMax)  const;
   
   //! Returns the type of labels;
   //! Aspect_TOCSD_AUTO - labels as boundary values for intervals
@@ -71,17 +71,17 @@ public:
   
   //! Returns the user specified label with index <anIndex>.
   //! Returns empty string if label not defined.
-  Standard_EXPORT   TCollection_ExtendedString GetLabel (const Standard_Integer anIndex)  const;
+  Standard_EXPORT   TCollection_ExtendedString GetLabel (const Standard_Integer theIndex)  const;
   
   //! Returns the user specified color from color map with index <anIndex>.
   //! Returns default color if index out of range in color map.
-  Standard_EXPORT   Quantity_Color GetColor (const Standard_Integer anIndex)  const;
+  Standard_EXPORT   Quantity_Color GetColor (const Standard_Integer theIndex)  const;
   
   //! Returns the user specified labels.
-  Standard_EXPORT   void GetLabels (TColStd_SequenceOfExtendedString& aLabels)  const;
+  Standard_EXPORT   void GetLabels (TColStd_SequenceOfExtendedString& theLabels)  const;
   
   //! Returns the user specified colors.
-  Standard_EXPORT   void GetColors (Aspect_SequenceOfColor& aColors)  const;
+  Standard_EXPORT   void GetColors (Aspect_SequenceOfColor& theColors)  const;
   
   //! Returns the position of labels concerning color filled rectangles.
   Standard_EXPORT   Aspect_TypeOfColorScalePosition GetLabelPosition()  const;
@@ -96,59 +96,59 @@ public:
   Standard_EXPORT   Standard_Boolean IsLabelAtBorder()  const;
   
   //! Sets the minimal value of color scale.
-  Standard_EXPORT   void SetMin (const Standard_Real aMin) ;
+  Standard_EXPORT   void SetMin (const Standard_Real theMin) ;
   
   //! Sets the maximal value of color scale.
-  Standard_EXPORT   void SetMax (const Standard_Real aMax) ;
+  Standard_EXPORT   void SetMax (const Standard_Real theMax) ;
   
   //! Sets the minimal and maximal value of color scale.
-  Standard_EXPORT   void SetRange (const Standard_Real aMin, const Standard_Real aMax) ;
+  Standard_EXPORT   void SetRange (const Standard_Real theMin, const Standard_Real theMax) ;
   
   //! Sets the type of labels.
   //! Aspect_TOCSD_AUTO - labels as boundary values for intervals
   //! Aspect_TOCSD_USER - user specified label is used
-  Standard_EXPORT   void SetLabelType (const Aspect_TypeOfColorScaleData aType) ;
+  Standard_EXPORT   void SetLabelType (const Aspect_TypeOfColorScaleData theType) ;
   
   //! Sets the type of colors.
   //! Aspect_TOCSD_AUTO - value between Red and Blue
   //! Aspect_TOCSD_USER - user specified color from color map
-  Standard_EXPORT   void SetColorType (const Aspect_TypeOfColorScaleData aType) ;
+  Standard_EXPORT   void SetColorType (const Aspect_TypeOfColorScaleData theType) ;
   
   //! Sets the number of color scale intervals.
-  Standard_EXPORT   void SetNumberOfIntervals (const Standard_Integer aNum) ;
+  Standard_EXPORT   void SetNumberOfIntervals (const Standard_Integer theNum) ;
   
   //! Sets the color scale title string.
-  Standard_EXPORT   void SetTitle (const TCollection_ExtendedString& aTitle) ;
+  Standard_EXPORT   void SetTitle (const TCollection_ExtendedString& theTitle) ;
   
   //! Sets the color scale auto label format specification.
-  Standard_EXPORT   void SetFormat (const TCollection_AsciiString& aFormat) ;
+  Standard_EXPORT   void SetFormat (const TCollection_AsciiString& theFormat) ;
   
   //! Sets the color scale label at index. Index started from 1.
-  Standard_EXPORT   void SetLabel (const TCollection_ExtendedString& aLabel, const Standard_Integer anIndex = -1) ;
+  Standard_EXPORT   void SetLabel (const TCollection_ExtendedString& theLabel, const Standard_Integer anIndex = -1) ;
   
   //! Sets the color scale color at index. Index started from 1.
-  Standard_EXPORT   void SetColor (const Quantity_Color& aColor, const Standard_Integer anIndex = -1) ;
+  Standard_EXPORT   void SetColor (const Quantity_Color& theColor, const Standard_Integer theIndex = -1) ;
   
   //! Sets the color scale labels.
-  Standard_EXPORT   void SetLabels (const TColStd_SequenceOfExtendedString& aSeq) ;
+  Standard_EXPORT   void SetLabels (const TColStd_SequenceOfExtendedString& theSeq) ;
   
   //! Sets the color scale colors.
-  Standard_EXPORT   void SetColors (const Aspect_SequenceOfColor& aSeq) ;
+  Standard_EXPORT   void SetColors (const Aspect_SequenceOfColor& theSeq) ;
   
   //! Sets the color scale labels position concerning color filled rectangles.
-  Standard_EXPORT   void SetLabelPosition (const Aspect_TypeOfColorScalePosition aPos) ;
+  Standard_EXPORT   void SetLabelPosition (const Aspect_TypeOfColorScalePosition thePos) ;
   
   //! Sets the color scale title position.
-  Standard_EXPORT   void SetTitlePosition (const Aspect_TypeOfColorScalePosition aPos) ;
+  Standard_EXPORT   void SetTitlePosition (const Aspect_TypeOfColorScalePosition thePos) ;
   
   //! Sets true if the labels and colors used in reversed order.
-  Standard_EXPORT   void SetReversed (const Standard_Boolean aReverse) ;
+  Standard_EXPORT   void SetReversed (const Standard_Boolean theReverse) ;
   
   //! Sets true if the labels placed at border of color filled rectangles.
-  Standard_EXPORT   void SetLabelAtBorder (const Standard_Boolean anOn) ;
+  Standard_EXPORT   void SetLabelAtBorder (const Standard_Boolean theOn) ;
   
   //! Returns the size of color scale.
-  Standard_EXPORT   void GetSize (Standard_Real& aWidth, Standard_Real& aHeight)  const;
+  Standard_EXPORT   void GetSize (Standard_Real& theWidth, Standard_Real& theHeight)  const;
   
   //! Returns the width of color scale.
   Standard_EXPORT   Standard_Real GetWidth()  const;
@@ -157,16 +157,16 @@ public:
   Standard_EXPORT   Standard_Real GetHeight()  const;
   
   //! Sets the size of color scale.
-  Standard_EXPORT   void SetSize (const Standard_Real aWidth, const Standard_Real aHeight) ;
+  Standard_EXPORT   void SetSize (const Standard_Real theWidth, const Standard_Real theHeight) ;
   
   //! Sets the width of color scale.
-  Standard_EXPORT   void SetWidth (const Standard_Real aWidth) ;
+  Standard_EXPORT   void SetWidth (const Standard_Real theWidth) ;
   
   //! Sets the height of color scale.
-  Standard_EXPORT   void SetHeight (const Standard_Real aHeight) ;
+  Standard_EXPORT   void SetHeight (const Standard_Real theHeight) ;
   
   //! Returns the position of color scale.
-  Standard_EXPORT   void GetPosition (Standard_Real& aX, Standard_Real& aY)  const;
+  Standard_EXPORT   void GetPosition (Standard_Real& theX, Standard_Real& theY)  const;
   
   //! Returns the X position of color scale.
   Standard_EXPORT   Standard_Real GetXPosition()  const;
@@ -175,25 +175,43 @@ public:
   Standard_EXPORT   Standard_Real GetYPosition()  const;
   
   //! Sets the position of color scale.
-  Standard_EXPORT   void SetPosition (const Standard_Real aX, const Standard_Real aY) ;
+  Standard_EXPORT   void SetPosition (const Standard_Real theX, const Standard_Real theY) ;
   
   //! Sets the X position of color scale.
-  Standard_EXPORT   void SetXPosition (const Standard_Real aX) ;
+  Standard_EXPORT   void SetXPosition (const Standard_Real theX) ;
   
   //! Sets the Y position of color scale.
-  Standard_EXPORT   void SetYPosition (const Standard_Real aY) ;
+  Standard_EXPORT   void SetYPosition (const Standard_Real theY) ;
   
+  //! Returns the height of text of color scale.
   Standard_EXPORT   Standard_Integer GetTextHeight()  const;
   
-  Standard_EXPORT   void SetTextHeight (const Standard_Integer aHeigh) ;
+  //! Sets the height of text of color scale.
+  Standard_EXPORT   void SetTextHeight (const Standard_Integer theHeight) ;
   
-  Standard_EXPORT virtual   void PaintRect (const Standard_Integer X, const Standard_Integer Y, const Standard_Integer W, const Standard_Integer H, const Quantity_Color& aColor, const Standard_Boolean aFilled = Standard_False)  = 0;
+  //! Draws a rectangle.
+  //! @param theX [in] the X coordinate of rectangle position.
+  //! @param theY [in] the Y coordinate of rectangle position.
+  //! @param theWidth [in] the width of rectangle.
+  //! @param theHeight [in] the height of rectangle.
+  //! @param theColor [in] the color of rectangle.
+  //! @param theFilled [in] defines if rectangle must be filled.
+  Standard_EXPORT virtual   void PaintRect (const Standard_Integer theX, const Standard_Integer theY, const Standard_Integer theWidth, const Standard_Integer theHeight, const Quantity_Color& theColor, const Standard_Boolean theFilled = Standard_False)  = 0;
   
-  Standard_EXPORT virtual   void PaintText (const TCollection_ExtendedString& aText, const Standard_Integer X, const Standard_Integer Y, const Quantity_Color& aColor)  = 0;
+  //! Draws a text.
+  //! @param theText [in] the text to draw.
+  //! @param theX [in] the X coordinate of text position.
+  //! @param theY [in] the Y coordinate of text position.
+  //! @param theColor [in] the color of text.
+  Standard_EXPORT virtual   void PaintText (const TCollection_ExtendedString& theText, const Standard_Integer theX, const Standard_Integer theY, const Quantity_Color& theColor)  = 0;
   
-  Standard_EXPORT virtual   Standard_Integer TextWidth (const TCollection_ExtendedString& aText)  const = 0;
+  //! Returns the width of text.
+  //! @param theText [in] the text of which to calculate width.
+  Standard_EXPORT virtual   Standard_Integer TextWidth (const TCollection_ExtendedString& theText)  const = 0;
   
-  Standard_EXPORT virtual   Standard_Integer TextHeight (const TCollection_ExtendedString& aText)  const = 0;
+  //! Returns the height of text.
+  //! @param theText [in] the text of which to calculate height.
+  Standard_EXPORT virtual   Standard_Integer TextHeight (const TCollection_ExtendedString& theText)  const = 0;
 
 
 
@@ -203,13 +221,24 @@ public:
 protected:
 
   
+  //! Default constructor.
   Standard_EXPORT Aspect_ColorScale();
   
-  Standard_EXPORT   void SizeHint (Standard_Integer& aWidth, Standard_Integer& aHeight)  const;
+  //! Returns the size of color scale.
+  //! @param theWidth [out] the width of color scale.
+  //! @param theHeight [out] the height of color scale.
+  Standard_EXPORT   void SizeHint (Standard_Integer& theWidth, Standard_Integer& theHeight)  const;
   
+  //! updates color scale parameters.
   Standard_EXPORT virtual   void UpdateColorScale() ;
   
-  Standard_EXPORT   void DrawScale (const Quantity_Color& aBgColor, const Standard_Integer X, const Standard_Integer Y, const Standard_Integer W, const Standard_Integer H) ;
+  //! Draws color scale.
+  //! @param theBgColor [in] background color
+  //! @param theX [in] the X coordinate of color scale position.
+  //! @param theY [in] the Y coordinate of color scale position.
+  //! @param theWidth [in] the width of color scale.
+  //! @param theHeight [in] the height of color scale.
+  Standard_EXPORT   void DrawScale (const Quantity_Color& theBgColor, const Standard_Integer theX, const Standard_Integer theY, const Standard_Integer theWidth, const Standard_Integer theHeight) ;
   
   Standard_EXPORT virtual   Standard_Boolean BeginPaint() ;
   
@@ -220,15 +249,17 @@ protected:
 private: 
 
   
+  //! Returns the format of text.
   Standard_EXPORT   TCollection_AsciiString Format()  const;
   
-  Standard_EXPORT   TCollection_ExtendedString GetCurrentLabel (const Standard_Integer anIndex)  const;
+  //! Returns the value of given interval.
+  Standard_EXPORT   Standard_Real GetNumber (const Standard_Integer theIndex)  const;
   
-  Standard_EXPORT   Quantity_Color GetCurrentColor (const Standard_Integer anIndex)  const;
-  
-  Standard_EXPORT   Standard_Real GetNumber (const Standard_Integer anIndex)  const;
-  
-  Standard_EXPORT static   Standard_Integer HueFromValue (const Standard_Integer aValue, const Standard_Integer aMin, const Standard_Integer aMax) ;
+  //! Returns the color's hue for the given value in the given interval.
+  //! @param theValue [in] the current value of interval.
+  //! @param theMin [in] the min value of interval.
+  //! @param theMax [in] the max value of interval.
+  Standard_EXPORT static   Standard_Integer HueFromValue (const Standard_Integer theValue, const Standard_Integer theMin, const Standard_Integer theMax) ;
 
   Standard_Real myMin;
   Standard_Real myMax;

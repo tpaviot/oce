@@ -35,6 +35,8 @@ public:
   //! Constructs an empty framework to display shading.
   Standard_EXPORT Prs3d_ShadingAspect();
   
+  Standard_EXPORT Prs3d_ShadingAspect(const Handle(Graphic3d_AspectFillArea3d)& theAspect);
+  
   //! Change the polygons interior color and material ambient color.
   Standard_EXPORT   void SetColor (const Quantity_Color& aColor, const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE) ;
   
@@ -50,20 +52,19 @@ public:
   //! Warning : aValue must be in the range 0,1. 0 is the default (NO transparent)
   Standard_EXPORT   void SetTransparency (const Standard_Real aValue, const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE) ;
   
-  //! Change the polygons aspect properties.
-  Standard_EXPORT   void SetAspect (const Handle(Graphic3d_AspectFillArea3d)& Asp) ;
-  
   //! Returns the polygons color.
-  Standard_EXPORT   Quantity_Color Color (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE)  const;
+  Standard_EXPORT  const  Quantity_Color& Color (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE)  const;
   
   //! Returns the polygons material aspect.
-  Standard_EXPORT   Graphic3d_MaterialAspect Material (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE)  const;
+  Standard_EXPORT  const  Graphic3d_MaterialAspect& Material (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE)  const;
   
   //! Returns the polygons transparency value.
   Standard_EXPORT   Standard_Real Transparency (const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE)  const;
   
   //! Returns the polygons aspect properties.
   Standard_EXPORT   Handle(Graphic3d_AspectFillArea3d) Aspect()  const;
+  
+  Standard_EXPORT   void SetAspect (const Handle(Graphic3d_AspectFillArea3d)& theAspect) ;
 
 
 
