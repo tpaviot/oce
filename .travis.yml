@@ -31,6 +31,7 @@ matrix:
       env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=OFF
 
 before_install:
+  - sudo apt-get update -q
   - sudo apt-get install tcl8.5-dev tk8.5-dev libgl2ps-dev libfreeimage-dev libtbb-dev
 #  Needed to run OCCT tests in parallel
   - sudo apt-get install tclthread
