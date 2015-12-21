@@ -731,8 +731,8 @@ if( OCE_EXTRA_WARNINGS)
 endif(OCE_EXTRA_WARNINGS)
 
 if(OCE_MULTITHREADED_BUILD)
-   if(MSVC)
-      add_definitions("/MP")
+   if(MSVC AND NOT NMAKE) # /MP is useless in nmake
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
    endif()
 endif()
 
@@ -795,10 +795,10 @@ if(MINGW)
 	add_definitions("-D_WIN32_WINNT=0x0501")
 endif(MINGW)
 
-# DISABLE SECURE CRT WARNINGS AND OTHER MS CRT SPECIFC THINGS
+# Disable secure CRT warnings and other MSVCRT specific things; disable bool conversion warning
 if (MSVC)
-	add_definitions("/D_CRT_SECURE_NO_WARNINGS")
-	add_definitions("/D_CRT_NONSTDC_NO_WARNINGS")
+	add_definitions("/D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4800")
 endif(MSVC)
 
 # Libraries are installed by default in /usr/local/lib on UNIX
