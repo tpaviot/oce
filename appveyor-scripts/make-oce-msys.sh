@@ -2,7 +2,7 @@
 set -e
 cd `dirname "$0"`/..
 if [ "$ARCH" = Win32 ]; then
-  echo 'C:\MinGW\ /MinGW' > /etc/fstab
+  PATH=$PATH:/c/MinGW/bin
 elif [ "$ARCH" = i686 ]; then 
   f=i686-4.9.3-release-posix-dwarf-rt_v4-rev1.7z
   if ! [ -e $f ]; then
