@@ -1,7 +1,7 @@
 Travis-CI:
 [![Build Status](https://travis-ci.org/tpaviot/oce.png?branch=master)](https://travis-ci.org/tpaviot/oce)
 Appveyor:
-[![Build Status](https://ci.appveyor.com/api/projects/status/wq74bifo9lojmxsj?svg=true)](https://ci.appveyor.com/project/tpaviot/oce)
+[![Build status](https://ci.appveyor.com/api/projects/status/ff5s1jjpao8kf2c4?svg=true)](https://ci.appveyor.com/project/tpaviot/oce)
 
 ## About
 
