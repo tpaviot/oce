@@ -7,9 +7,9 @@ env:
 matrix:
   include:
   - compiler: gcc
-    env: RUN_TESTS=true
+    env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
   - compiler: clang
-    env: RUN_TESTS=true
+    env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
   - compiler: gcc
     env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=OFF
   - compiler: gcc
@@ -19,16 +19,16 @@ matrix:
   - compiler: gcc
     env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=ON
   - compiler: gcc
-    env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=OPENMP
+    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=OPENMP
   - compiler: gcc
-    env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=TBB
+    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=TBB
   exclude:
   - env: RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
   allow_failures:
     - compiler: gcc
-      env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
-    - compiler: gcc
-      env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=OFF
+      env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    - compiler: clang
+      env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
 
 before_install:
   - sudo apt-get update -q
