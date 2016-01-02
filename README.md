@@ -1,11 +1,9 @@
-Travis-CI:
 [![Build Status](https://travis-ci.org/tpaviot/oce.png?branch=master)](https://travis-ci.org/tpaviot/oce)
 Appveyor:
 [![Build status](https://ci.appveyor.com/api/projects/status/ff5s1jjpao8kf2c4?svg=true)](https://ci.appveyor.com/project/tpaviot/oce)
+[![Join the chat at https://gitter.im/tpaviot/oce](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tpaviot/oce?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## About
-
-[![Join the chat at https://gitter.im/tpaviot/oce](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tpaviot/oce?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 oce is a C++ 3D modeling library. It can be used to develop CAD/CAM softwares, for instance [FreeCad](http://www.freecadweb.org/) or [IfcOpenShell](http://www.ifcopenshell.org/).
 
@@ -15,7 +13,7 @@ oce stands for **o**pencascade **c**ommunity **e**dition. This project aims at g
 
 You can download source code as well as precompiled binaries for windows at:
 
-**[oce-0.17](https://github.com/tpaviot/oce/releases/tag/OCE-0.17)** (March 2015)
+**[oce-0.17.1](https://github.com/tpaviot/oce/releases/tag/OCE-0.17.1)** (January 2016)
 
 ## OCE history
 
@@ -23,6 +21,7 @@ Below are listed all the oce release since the beginning of the project, the OCC
 
 | OCE release number | ABI Change | OCE release date | OCCT version |
 | ------------- | ------------- |  ------------- |------------- |
+| [0.17.1](https://github.com/tpaviot/oce/releases/tag/OCE-0.17.1)  | No | January 2016 | 6.8.0 |
 | [0.17](https://github.com/tpaviot/oce/releases/tag/OCE-0.17)  | Yes | March 2015 | 6.8.0 |
 | [0.16.1](https://github.com/tpaviot/oce/releases/tag/OCE-0.16.1) | No | November 2014 | 6.7.1 |
 | [0.16](https://github.com/tpaviot/oce/releases/tag/OCE-0.16) | Yes | July 2014 | 6.7.1 |
