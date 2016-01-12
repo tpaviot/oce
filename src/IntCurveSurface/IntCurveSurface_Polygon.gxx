@@ -106,11 +106,13 @@ void IntCurveSurface_Polygon::Init(const TheCurve&        C) {
       gp_Pnt Pm=TheCurveTool::Value(C,u);
       gp_Pnt P1=ThePnts.Value(i);
       gp_Pnt P2=ThePnts.Value(i+1);
-      gp_Lin L(P1,gp_Dir(gp_Vec(P1,P2)));
-      Standard_Real t=L.Distance(Pm);
-      
-      if(t>TheDeflection) {
-	TheDeflection = t;
+      if (P1.Distance(P2) > gp::Resolution()) {
+        gp_Lin L(P1,gp_Dir(gp_Vec(P1,P2)));
+        Standard_Real t=L.Distance(Pm);
+
+        if(t>TheDeflection) {
+          TheDeflection = t;
+        }
       }
       u+=du;
       i++;
