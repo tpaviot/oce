@@ -92,7 +92,7 @@ Standard_Boolean BSplCLib::RemoveKnot
  TColStd_Array1OfInteger&       NewMults,
  const Standard_Real            Tolerance) 
 {
-  Standard_Boolean rational = &Weights  != NULL;
+  Standard_Boolean rational = !IS_NULL_REF(Weights);
   Standard_Integer dim;
   dim = Dimension_gen;
   if (rational) dim++;
@@ -133,7 +133,7 @@ void BSplCLib::InsertKnots
  const Standard_Real            Epsilon,
  const Standard_Boolean         Add) 
 {
-  Standard_Boolean rational = &Weights  != NULL;
+  Standard_Boolean rational = !IS_NULL_REF(Weights);
   Standard_Integer dim;
   dim = Dimension_gen;
   if (rational) dim++;
@@ -222,7 +222,7 @@ void BSplCLib::IncreaseDegree
  TColStd_Array1OfReal&           NewKnots,
  TColStd_Array1OfInteger&        NewMults) 
 {
-  Standard_Boolean rational = &Weights  != NULL;
+  Standard_Boolean rational = !IS_NULL_REF(Weights);
   Standard_Integer dim;
   dim = Dimension_gen;
   if (rational) dim++;
@@ -256,7 +256,7 @@ void  BSplCLib::Unperiodize
  Array1OfPoints&          NewPoles,
  TColStd_Array1OfReal&    NewWeights)
 {
-  Standard_Boolean rational = &Weights  != NULL;
+  Standard_Boolean rational = !IS_NULL_REF(Weights);
   Standard_Integer dim;
   dim = Dimension_gen;
   if (rational) dim++;
@@ -292,7 +292,7 @@ void BSplCLib::Trimming(const Standard_Integer         Degree,
 			Array1OfPoints&          NewPoles,
 			TColStd_Array1OfReal&    NewWeights)
 {
-  Standard_Boolean rational = &Weights  != NULL;
+  Standard_Boolean rational = !IS_NULL_REF(Weights);
   Standard_Integer dim;
   dim = Dimension_gen;
   if (rational) dim++;
@@ -339,7 +339,7 @@ void  BSplCLib::BuildEval(const Standard_Integer         Degree,
   Standard_Integer PUpper = Poles.Upper();
   Standard_Integer i;
   Standard_Integer ip = PLower + Index - 1;
-  if (&Weights == NULL) {
+  if (IS_NULL_REF(Weights)) {
     for (i = 0; i <= Degree; i++) {
       ip++;
       if (ip > PUpper) ip = PLower;
@@ -384,13 +384,13 @@ static void PrepareEval
 
   // make the knots
   BSplCLib::BuildKnots(Degree,index,Periodic,Knots,Mults,*dc.knots);
-  if (&Mults == NULL)
+  if (IS_NULL_REF(Mults))
     index -= Knots.Lower() + Degree;
   else
     index = BSplCLib::PoleIndex(Degree,index,Periodic,Mults);
   
   // check truly rational
-  rational = (&Weights != NULL);
+  rational = (!IS_NULL_REF(Weights));
   if (rational) {
     Standard_Integer WLower = Weights.Lower() + index;
     rational = BSplCLib::IsRational(Weights, WLower, WLower + Degree);
@@ -741,7 +741,7 @@ void  BSplCLib::CacheD0(const Standard_Real                  Parameter,
 		       Degree * Dimension_gen,
 		       PArray[0],
 		       myPoint[0]) ;
-  if (&WeightsArray != NULL) {
+  if (!IS_NULL_REF(WeightsArray)) {
     Standard_Real *
       WArray = (Standard_Real *) &WeightsArray(WeightsArray.Lower()) ;
     PLib::NoDerivativeEvalPolynomial(NewParameter,
@@ -798,7 +798,7 @@ void  BSplCLib::CacheD1(const Standard_Real                  Parameter,
 
   ModifyCoords (LocalPDerivatives + Dimension_gen, /= SpanLenght);
   
-  if (&WeightsArray != NULL) {
+  if (!IS_NULL_REF(WeightsArray)) {
     Standard_Real *
       WArray = (Standard_Real *) &WeightsArray(WeightsArray.Lower()) ;
     PLib::EvalPolynomial(NewParameter,
@@ -878,7 +878,7 @@ void  BSplCLib::CacheD2(const Standard_Real                  Parameter,
     Index += Dimension_gen;
   }
 
-  if (&WeightsArray != NULL) {
+  if (!IS_NULL_REF(WeightsArray)) {
     Standard_Real *
       WArray = (Standard_Real *) &WeightsArray(WeightsArray.Lower()) ;
     
@@ -971,7 +971,7 @@ void  BSplCLib::CacheD3(const Standard_Real                  Parameter,
     Index  += Dimension_gen;
   }
   
-  if (&WeightsArray != NULL) {
+  if (!IS_NULL_REF(WeightsArray)) {
     Standard_Real *
       WArray = (Standard_Real *) &WeightsArray(WeightsArray.Lower()) ;
     
@@ -1081,7 +1081,7 @@ void BSplCLib::BuildCache
       LocalValue *= SpanDomain / (Standard_Real) ii ;
     }
 
-    if (&Weights != NULL) { 
+    if (!IS_NULL_REF(Weights)) {
       for (ii = 1 ; ii <= Degree + 1 ; ii++)
 	CacheWeights(ii) = 0.0e0 ;
       CacheWeights(1) = 1.0e0 ;

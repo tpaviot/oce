@@ -343,6 +343,6 @@ friend class PLib_DoubleJacobiPolynomial;
 
 
 
-
+#define IS_NULL_REF(ref) ((reinterpret_cast<size_t>(&ref) & 0xFFFFFF) == 0)
 
 #endif // _PLib_HeaderFile
