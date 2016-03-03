@@ -68,7 +68,7 @@ void BSplSLib::PolesCoefficients (const TColgp_Array2OfPnt& Poles,
 			 biduflatknots,bidvflatknots,
 			 Poles,Weights,
 			 CPoles,CWeights);
-    if (&Weights == NULL) {
+    if (IS_NULL_REF(Weights)) {
       
       for (ii = 1; ii <= uclas; ii++) {
 	
