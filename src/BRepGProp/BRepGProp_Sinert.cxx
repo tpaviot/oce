@@ -810,8 +810,8 @@ static void Compute(BRepGProp_Face& S, BRepGProp_Domain& D, const gp_Pnt& loc, S
     Iyy = FuncAdd(Iyy, FuncMul(CIyy, lr));
     Izz = FuncAdd(Izz, FuncMul(CIzz, lr));
     Ixy = FuncAdd(Ixy, FuncMul(CIxy, lr));
-    Ixz = FuncAdd(Iyz, FuncMul(CIxz, lr));
-    Iyz = FuncAdd(Ixz, FuncMul(CIyz, lr));
+    Ixz = FuncAdd(Ixz, FuncMul(CIxz, lr));
+    Iyz = FuncAdd(Iyz, FuncMul(CIyz, lr));
     D.Next();
   }
 
