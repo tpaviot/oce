@@ -1,3 +1,25 @@
+### Version 0.17.2 - May 2016
+
+This version is binary compatible with 0CE 0.17 and OCE 0.17.1
+
+* Fix VTK6.2 support
+
+* Fixed typo in BRepGProp_Sinert wich leads to wrong inertia matrix
+computationOCE_USE_STATIC_MSVC_RUNTIME advanced option to use static version of the
+
+* Workaround clang optimizations for null references
+
+* IntCurveSurface_Polygon::Init() improvement
+
+* Check distance between points before line creation
+
+* Replace obsolete vtkFloatingPointType typedef/define with double
+
+* Fixed crash on OS X due to clang compiler errors
+
+Users who contributed to this release:
+  Jacob Abel, Julien Finet, Thomas Paviot, Martin Siggel
+
 ### Version 0.17.1 - January 2016
 
 This version is binary compatible with 0CE 0.17.
