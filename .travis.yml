@@ -13,11 +13,7 @@ matrix:
   - compiler: gcc
     env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=OFF
   - compiler: gcc
-    env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=OFF
-  - compiler: gcc
     env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
-  - compiler: gcc
-    env: OCE_USE_PCH=OFF OCE_COPY_HEADERS_BUILD=ON
   - compiler: gcc
     env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=OPENMP
   - compiler: gcc
