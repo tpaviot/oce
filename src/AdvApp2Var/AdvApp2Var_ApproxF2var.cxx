@@ -19,8 +19,16 @@
 #include <AdvApp2Var_Data.hxx>
 #include <AdvApp2Var_ApproxF2var.hxx>
 
+// Workaround a clang compiler bug which creates
+// invalid instructions on OS X. This workaround
+// was proposed by Roman Lygin.
+#ifdef __clang__
+  #define NO_INLINE __attribute__ ((noinline))
+#else
+  #define NO_INLINE
+#endif
 
-static
+NO_INLINE static
 int mmjacpt_(const integer *ndimen,
 	     const integer *ncoefu, 
 	     const integer *ncoefv, 
@@ -32,7 +40,7 @@ int mmjacpt_(const integer *ndimen,
 
 
 
-static
+NO_INLINE static
 int mma2ce2_(integer *numdec, 
 	     integer *ndimen, 
 	     integer *nbsesp, 
@@ -67,7 +75,7 @@ int mma2ce2_(integer *numdec,
 	     integer *itydec, 
 	     integer *iercod);
 
-static
+NO_INLINE static
 int mma2cfu_(integer *ndujac, 
 	     integer *nbpntu, 
 	     integer *nbpntv, 
@@ -79,7 +87,7 @@ int mma2cfu_(integer *ndujac,
 	     doublereal *chpair, 
 	     doublereal *chimpr);
 
-static
+NO_INLINE static
 int mma2cfv_(integer *ndvjac, 
 	     integer *mindgu,
 	     integer *maxdgu, 
@@ -89,7 +97,7 @@ int mma2cfv_(integer *ndvjac,
 	     doublereal *chimpr, 
 	     doublereal *patjac);
 
-static
+NO_INLINE static
 int mma2er1_(integer *ndjacu, 
 	     integer *ndjacv, 
 	     integer *ndimen, 
@@ -105,7 +113,7 @@ int mma2er1_(integer *ndjacu,
 	     doublereal *vecerr, 
 	     doublereal *erreur);
 
-static
+NO_INLINE static
 int mma2er2_(integer *ndjacu, 
 	     integer *ndjacv,
 	     integer *ndimen, 
@@ -124,7 +132,7 @@ int mma2er2_(integer *ndjacu,
 	     integer *newdgu, 
 	     integer *newdgv);
 
-static
+NO_INLINE static
 int mma2moy_(integer *ndgumx, 
 	     integer *ndgvmx, 
 	     integer *ndimen, 
@@ -137,7 +145,7 @@ int mma2moy_(integer *ndgumx,
 	     doublereal *patjac, 
 	     doublereal *errmoy);
 
-static
+NO_INLINE static
 int mma2ds2_(integer *ndimen, 
 	     doublereal *uintfn, 
 	     doublereal *vintfn, 
@@ -158,7 +166,7 @@ int mma2ds2_(integer *ndimen,
 
 
 
-static
+NO_INLINE static
 int mma1fdi_(integer *ndimen, 
 	     doublereal *uvfonc, 
 	     const AdvApp2Var_EvaluatorFunc2Var& foncnp,
@@ -175,7 +183,7 @@ int mma1fdi_(integer *ndimen,
 	     doublereal *contr2, 
 	     integer *iercod);
 
-static
+NO_INLINE static
 int mma1cdi_(integer *ndimen, 
 	     integer *nbroot, 
 	     doublereal *rootlg, 
@@ -187,7 +195,7 @@ int mma1cdi_(integer *ndimen,
 	     doublereal *fpntab, 
 	     doublereal *hermit, 
 	     integer *iercod);
-static
+NO_INLINE static
 int mma1jak_(integer *ndimen, 
 	     integer *nbroot, 
 	     integer *iordre,
@@ -197,7 +205,7 @@ int mma1jak_(integer *ndimen,
 	     doublereal *cgauss, 
 	     doublereal *crvjac, 
 	     integer *iercod);
-static
+NO_INLINE static
 int mma1cnt_(integer *ndimen, 
 	     integer *iordre, 
 	     doublereal *contr1, 
@@ -206,7 +214,7 @@ int mma1cnt_(integer *ndimen,
 	     integer *ndgjac, 
 	     doublereal *crvjac);
 
-static
+NO_INLINE static
 int mma1fer_(integer *ndimen, 
 	     integer *nbsesp, 
 	     integer *ndimse, 
@@ -221,7 +229,7 @@ int mma1fer_(integer *ndimen,
 	     integer *ncoeff, 
 	     integer *iercod);
 
-static
+NO_INLINE static
 int mma1noc_(doublereal *dfuvin, 
 	     integer *ndimen, 
 	     integer *iordre, 
@@ -232,7 +240,7 @@ int mma1noc_(doublereal *dfuvin,
 	     doublereal *cntout);
 
 
-static
+NO_INLINE static
   int mmmapcoe_(integer *ndim, 
 		integer *ndgjac, 
 		integer *iordre, 
@@ -242,7 +250,7 @@ static
 		doublereal *gsstab, 
 		doublereal *crvjac);
 
-static
+NO_INLINE static
   int mmaperm_(integer *ncofmx, 
 	       integer *ndim, 
 	       integer *ncoeff, 
