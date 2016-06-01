@@ -351,7 +351,14 @@ if(MSVC OR MINGW)
 endif(MSVC OR MINGW)
 
 if(OCE_VISUALISATION AND OCE_WITH_VTK)
-	find_package(VTK REQUIRED)
+	find_package(VTK COMPONENTS
+		vtkCommonCore
+		vtkInteractionStyle
+		vtkIOExport
+		vtkIOLegacy
+		vtkRenderingFreeTypeOpenGL
+		vtkRenderingOpenGL
+		)
 endif()
 
 set(INSTALL_STDRESOURCE_FILES)
