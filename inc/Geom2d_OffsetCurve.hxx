@@ -12,10 +12,10 @@
 
 #include <Handle_Geom2d_Curve.hxx>
 #include <Standard_Real.hxx>
-#include <Geom2d_Curve.hxx>
 #include <GeomAbs_Shape.hxx>
-#include <Standard_Integer.hxx>
+#include <Geom2d_Curve.hxx>
 #include <Standard_Boolean.hxx>
+#include <Standard_Integer.hxx>
 #include <Handle_Geom2d_Geometry.hxx>
 class Geom2d_Curve;
 class Standard_ConstructionError;
@@ -85,13 +85,16 @@ public:
   //! the offset value is measured is indicated by this
   //! normal vector if Offset is positive, or in the inverse
   //! sense if Offset is negative.
+  //! If isNotCheckC0 = TRUE checking if basis curve has C0-continuity
+  //! is not made.
   //! Warnings :
   //! In this package the entities are not shared. The OffsetCurve is
   //! built with a copy of the curve C. So when C is modified the
   //! OffsetCurve is not modified
-  //! Warning!  ConstructionError  raised if the basis curve C is not at least C1.
+  //! Warning!  if isNotCheckC0 = false,
+  //! ConstructionError  raised if the basis curve C is not at least C1.
   //! No check is done to know if ||V^Z|| != 0.0 at any point.
-  Standard_EXPORT Geom2d_OffsetCurve(const Handle(Geom2d_Curve)& C, const Standard_Real Offset);
+  Standard_EXPORT Geom2d_OffsetCurve(const Handle(Geom2d_Curve)& C, const Standard_Real Offset, const Standard_Boolean isNotCheckC0 = Standard_False);
   
   //! Changes the direction of parametrization of <me>.
   //! As a result:
@@ -109,9 +112,12 @@ public:
   
   //! Changes this offset curve by assigning C as the
   //! basis curve from which it is built.
+  //! If isNotCheckC0 = TRUE checking if basis curve has C0-continuity
+  //! is not made.
   //! Exceptions
+  //! if isNotCheckC0 = false,
   //! Standard_ConstructionError if the curve C is not at least "C1" continuous.
-  Standard_EXPORT   void SetBasisCurve (const Handle(Geom2d_Curve)& C) ;
+  Standard_EXPORT   void SetBasisCurve (const Handle(Geom2d_Curve)& C, const Standard_Boolean isNotCheckC0 = Standard_False) ;
   
   //! Changes this offset curve by assigning D as the offset value.
   Standard_EXPORT   void SetOffsetValue (const Standard_Real D) ;
@@ -275,6 +281,9 @@ public:
   
   //! Creates a new object, which is a copy of this offset curve.
   Standard_EXPORT   Handle(Geom2d_Geometry) Copy()  const;
+  
+  //! Returns continuity of the basis curve.
+  Standard_EXPORT   GeomAbs_Shape GetBasisCurveContinuity()  const;
 
 
 
@@ -291,6 +300,7 @@ private:
 
   Handle(Geom2d_Curve) basisCurve;
   Standard_Real offsetValue;
+  GeomAbs_Shape myBasisCurveContinuity;
 
 
 };

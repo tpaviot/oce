@@ -72,15 +72,10 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT virtual   void Delete() ;
-~BRepSweep_NumLinearRegularSweep()
-{
-  Delete();
-}
-  
   //! Builds the vertex addressed by [aGenV,aDirV], with its
   //! geometric part, but without subcomponents.
   Standard_EXPORT virtual   TopoDS_Shape MakeEmptyVertex (const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirV)  = 0;
+  Standard_EXPORT virtual ~BRepSweep_NumLinearRegularSweep();
   
   //! Builds the edge addressed by [aGenV,aDirE], with its
   //! geometric part, but without subcomponents.

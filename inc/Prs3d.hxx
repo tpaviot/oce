@@ -13,10 +13,9 @@
 #include <Standard_Boolean.hxx>
 #include <Quantity_Length.hxx>
 #include <Standard_Real.hxx>
-#include <Handle_Prs3d_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 class gp_Pnt;
 class TopoDS_Shape;
-class Prs3d_Drawer;
 class Prs3d_Presentation;
 class Prs3d_BasicAspect;
 class Prs3d_PointAspect;
@@ -28,7 +27,6 @@ class Prs3d_ArrowAspect;
 class Prs3d_PlaneAspect;
 class Prs3d_DimensionAspect;
 class Prs3d_DatumAspect;
-class Prs3d_Drawer;
 class Prs3d_Projector;
 class Prs3d_PlaneSet;
 class Prs3d_Root;
@@ -68,6 +66,8 @@ public:
   //! deviation coefficient from theDrawer and the shape's bounding box;</li>
   //! <li><b>Aspect_TOD_ABSOLUTE</b>: the maximal chordial deviation from theDrawer is returned.</li>
   //! </ul>
+  //! In case of the type of deflection in theDrawer computed relative deflection for shape
+  //! is stored as absolute deflection. It is necessary to use it later on for sub-shapes.
   //! This function should always be used to compute the deflection value for building
   //! discrete representations of the shape (triangualtion, wireframe) to avoid incosistencies
   //! between different representations of the shape and undesirable visual artifacts.
@@ -98,7 +98,6 @@ friend class Prs3d_ArrowAspect;
 friend class Prs3d_PlaneAspect;
 friend class Prs3d_DimensionAspect;
 friend class Prs3d_DatumAspect;
-friend class Prs3d_Drawer;
 friend class Prs3d_Projector;
 friend class Prs3d_PlaneSet;
 friend class Prs3d_Root;

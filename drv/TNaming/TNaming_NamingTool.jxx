@@ -1,6 +1,6 @@
 #include <TDF_LabelMap.hxx>
 #include <TNaming_NamedShape.hxx>
-#include <TopTools_MapOfShape.hxx>
+#include <TopTools_IndexedMapOfShape.hxx>
 #include <TDF_Label.hxx>
 #include <TopoDS_Shape.hxx>
 #include <TNaming_NamingTool.hxx>

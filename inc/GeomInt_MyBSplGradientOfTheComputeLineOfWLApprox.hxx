@@ -75,6 +75,7 @@ private:
   Standard_Real MError2d;
   Standard_Real mylambda1;
   Standard_Real mylambda2;
+  Standard_Boolean myIsLambdaDefined;
   Standard_Boolean Done;
 
 

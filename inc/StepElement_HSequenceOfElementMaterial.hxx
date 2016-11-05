@@ -71,8 +71,6 @@ public:
      const  StepElement_SequenceOfElementMaterial& Sequence()  const;
   
       StepElement_SequenceOfElementMaterial& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(StepElement_HSequenceOfElementMaterial) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(StepElement_HSequenceOfElementMaterial) ShallowCopy(const Handle(StepElement_HSequenceOfElementMaterial)& me) {
- return me->ShallowCopy();
-}
 
 
 

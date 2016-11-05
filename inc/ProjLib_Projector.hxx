@@ -46,9 +46,7 @@ public:
   
   //! Sets the type to OtherCurve
   Standard_EXPORT ProjLib_Projector();
-  
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~ProjLib_Projector(){Delete() ; }
+  Standard_EXPORT virtual ~ProjLib_Projector();
   
   Standard_EXPORT   Standard_Boolean IsDone()  const;
   

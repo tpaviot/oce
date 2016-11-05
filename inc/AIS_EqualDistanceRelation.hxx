@@ -19,8 +19,8 @@
 #include <Standard_Integer.hxx>
 #include <Handle_Prs3d_Projector.hxx>
 #include <Handle_Geom_Transformation.hxx>
-#include <Handle_SelectMgr_Selection.hxx>
-#include <Handle_AIS_Drawer.hxx>
+#include <SelectMgr_Selection.hxx>
+#include <Prs3d_Drawer.hxx>
 #include <Standard_Real.hxx>
 #include <Standard_Boolean.hxx>
 #include <DsgPrs_ArrowSide.hxx>
@@ -30,8 +30,6 @@ class Geom_Plane;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
-class SelectMgr_Selection;
-class AIS_Drawer;
 class TopoDS_Edge;
 class Bnd_Box;
 class gp_Pnt;
@@ -88,15 +86,15 @@ public:
   //! Computes the location of an intreval between
   //! between two edges. FirstAttach , SecondAttach
   //! are the returned extreme points of the interval.
-  Standard_EXPORT static   void ComputeTwoEdgesLength (const Handle(Prs3d_Presentation)& aPresentation, const Handle(AIS_Drawer)& aDrawer, const Standard_Real ArrowSize, const TopoDS_Edge& FirstEdge, const TopoDS_Edge& SecondEdge, const Handle(Geom_Plane)& Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box& BndBox, gp_Pnt& Position, gp_Pnt& FirstAttach, gp_Pnt& SecondAttach, gp_Pnt& FirstExtreme, gp_Pnt& SecondExtreme, DsgPrs_ArrowSide& SymbolPrs) ;
+  Standard_EXPORT static   void ComputeTwoEdgesLength (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const Standard_Real ArrowSize, const TopoDS_Edge& FirstEdge, const TopoDS_Edge& SecondEdge, const Handle(Geom_Plane)& Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box& BndBox, gp_Pnt& Position, gp_Pnt& FirstAttach, gp_Pnt& SecondAttach, gp_Pnt& FirstExtreme, gp_Pnt& SecondExtreme, DsgPrs_ArrowSide& SymbolPrs) ;
   
   //! Computes the interval position between two vertexs. FirstAttach,
   //! SecondAttach are the returned extreme points of the interval.
-  Standard_EXPORT static   void ComputeTwoVerticesLength (const Handle(Prs3d_Presentation)& aPresentation, const Handle(AIS_Drawer)& aDrawer, const Standard_Real ArrowSize, const TopoDS_Vertex& FirstVertex, const TopoDS_Vertex& SecondVertex, const Handle(Geom_Plane)& Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box& BndBox, const AIS_TypeOfDist TypeDist, gp_Pnt& Position, gp_Pnt& FirstAttach, gp_Pnt& SecondAttach, gp_Pnt& FirstExtreme, gp_Pnt& SecondExtreme, DsgPrs_ArrowSide& SymbolPrs) ;
+  Standard_EXPORT static   void ComputeTwoVerticesLength (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const Standard_Real ArrowSize, const TopoDS_Vertex& FirstVertex, const TopoDS_Vertex& SecondVertex, const Handle(Geom_Plane)& Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box& BndBox, const AIS_TypeOfDist TypeDist, gp_Pnt& Position, gp_Pnt& FirstAttach, gp_Pnt& SecondAttach, gp_Pnt& FirstExtreme, gp_Pnt& SecondExtreme, DsgPrs_ArrowSide& SymbolPrs) ;
   
   //! Compute the interval location between a vertex and an edge. Edge may be
   //! a line or a circle.
-  Standard_EXPORT static   void ComputeOneEdgeOneVertexLength (const Handle(Prs3d_Presentation)& aPresentation, const Handle(AIS_Drawer)& aDrawer, const Standard_Real ArrowSize, const TopoDS_Shape& FirstShape, const TopoDS_Shape& SecondShape, const Handle(Geom_Plane)& Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box& BndBox, gp_Pnt& Position, gp_Pnt& FirstAttach, gp_Pnt& SecondAttach, gp_Pnt& FirstExtreme, gp_Pnt& SecondExtreme, DsgPrs_ArrowSide& SymbolPrs) ;
+  Standard_EXPORT static   void ComputeOneEdgeOneVertexLength (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const Standard_Real ArrowSize, const TopoDS_Shape& FirstShape, const TopoDS_Shape& SecondShape, const Handle(Geom_Plane)& Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box& BndBox, gp_Pnt& Position, gp_Pnt& FirstAttach, gp_Pnt& SecondAttach, gp_Pnt& FirstExtreme, gp_Pnt& SecondExtreme, DsgPrs_ArrowSide& SymbolPrs) ;
 
 
 

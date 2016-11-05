@@ -11,22 +11,24 @@
 #include <Handle_SelectMgr_SelectableObject.hxx>
 
 #include <SelectMgr_SequenceOfSelection.hxx>
+#include <Prs3d_Drawer.hxx>
+#include <Handle_SelectMgr_EntityOwner.hxx>
 #include <Standard_Integer.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
 #include <PrsMgr_PresentableObject.hxx>
 #include <PrsMgr_TypeOfPresentation3d.hxx>
-#include <Handle_SelectMgr_Selection.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <PrsMgr_PresentationManager3d.hxx>
 #include <Quantity_NameOfColor.hxx>
-#include <Handle_SelectMgr_EntityOwner.hxx>
-#include <Handle_PrsMgr_PresentationManager.hxx>
+#include <Graphic3d_ZLayerId.hxx>
+#include <SelectMgr_IndexedMapOfOwner.hxx>
+class SelectMgr_EntityOwner;
 class Prs3d_Presentation;
 class Standard_NotImplemented;
-class SelectMgr_Selection;
+class SelectMgr_SelectionManager;
 class SelectMgr_SequenceOfOwner;
-class SelectMgr_EntityOwner;
-class PrsMgr_PresentationManager;
+class Bnd_Box;
 
 
 //! A framework to supply the structure of the object to be
@@ -54,16 +56,17 @@ public:
   //! which enriches the list of signatures and types.
   Standard_EXPORT virtual   void ComputeSelection (const Handle(SelectMgr_Selection)& aSelection, const Standard_Integer aMode)  = 0;
   
-  //! defines the number of different modes of selection
-  //! (or decomposition) for an Object.
-  Standard_EXPORT virtual   Standard_Integer NbPossibleSelection()  const;
+  //! Re-computes the sensitive primitives for all modes. IMPORTANT: Do not use
+  //! this method to update selection primitives except implementing custom selection manager!
+  //! This method does not take into account necessary BVH updates, but may invalidate the pointers
+  //! it refers to. TO UPDATE SELECTION properly from outside classes, use method UpdateSelection.
+  Standard_EXPORT   void RecomputePrimitives() ;
   
-  //! re-computes the sensitive primitives for all modes
-  Standard_EXPORT   void UpdateSelection() ;
-  
-  //! re-computes the sensitive primitives which correspond to
-  //! the <amode>th selection mode.
-  Standard_EXPORT   void UpdateSelection (const Standard_Integer aMode) ;
+  //! Re-computes the sensitive primitives which correspond to the <theMode>th selection mode.
+  //! IMPORTANT: Do not use this method to update selection primitives except implementing custom selection manager!
+  //! selection manager! This method does not take into account necessary BVH updates, but may invalidate
+  //! the pointers it refers to. TO UPDATE SELECTION properly from outside classes, use method UpdateSelection.
+  Standard_EXPORT   void RecomputePrimitives (const Standard_Integer theMode) ;
   
   //! Adds the selection aSelection with the selection mode
   //! index aMode to this framework.
@@ -131,14 +134,52 @@ public:
   
   Standard_EXPORT   Handle(Prs3d_Presentation) GetSelectPresentation (const Handle(PrsMgr_PresentationManager3d)& TheMgr) ;
   
-  //! Set Z layer ID and update all presentations of
-  //! the selectable object. The layer can be set only for displayed object.
-  //! If all object presentations are removed, the layer ID will be set to
-  //! default value when computing presentation. The layers mechanism allows
-  //! drawing objects in higher layers in overlay of objects in lower layers.
-  Standard_EXPORT virtual   void SetZLayer (const Handle(PrsMgr_PresentationManager)& thePrsMgr, const Standard_Integer theLayerId) ;
+  //! Set Z layer ID and update all presentations of the selectable object.
+  //! The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
+  Standard_EXPORT virtual   void SetZLayer (const Graphic3d_ZLayerId theLayerId) ;
+  
+  //! Sets update status FULL to selections of the object. Must be used as the only method of UpdateSelection
+  //! from outer classes to prevent BVH structures from being outdated.
+  Standard_EXPORT   void UpdateSelection (const Standard_Integer theMode = -1) ;
+  
+  //! Returns bounding box of selectable object
+  //! by storing its minimum and maximum 3d coordinates
+  //! to output parameters
+  Standard_EXPORT virtual   void BoundingBox (Bnd_Box& theBndBox)  = 0;
+  
+  //! Initializes the drawing tool theDrawer.
+  Standard_EXPORT virtual   void SetAttributes (const Handle(Prs3d_Drawer)& theDrawer) ;
+  
+  //! Returns the attributes settings.
+     const  Handle(Prs3d_Drawer)& Attributes()  const;
+  
+  //! Clears settings provided by the drawing tool theDrawer.
+  Standard_EXPORT virtual   void UnsetAttributes() ;
+  
+  //! Initializes the hilight drawing tool theDrawer.
+  Standard_EXPORT virtual   void SetHilightAttributes (const Handle(Prs3d_Drawer)& theDrawer) ;
+  
+  //! Returns the hilight attributes settings.
+     const  Handle(Prs3d_Drawer)& HilightAttributes()  const;
+  
+  //! Clears settings provided by the hilight drawing tool theDrawer.
+  Standard_EXPORT virtual   void UnsetHilightAttributes() ;
+  
+  //! Initializes theDrawer by default hilight settings.
+  Standard_EXPORT static   void InitDefaultHilightAttributes (const Handle(Prs3d_Drawer)& theDrawer) ;
+  
+  //! Sets common entity owner for assembly sensitive object entities
+  Standard_EXPORT   void SetAssemblyOwner (const Handle(SelectMgr_EntityOwner)& theOwner, const Standard_Integer theMode = -1) ;
+  
+  //! Returns common entity owner if the object is an assembly
+  Standard_EXPORT  const  Handle(SelectMgr_EntityOwner)& GetAssemblyOwner()  const;
+  
+  //! Returns a bounding box of sensitive entities with the owners given
+  //! if they are a part of activated selection
+  Standard_EXPORT   Bnd_Box BndBoxOfSelected (Handle(SelectMgr_IndexedMapOfOwner)& theOwners) ;
 
 
+friend class SelectMgr_SelectionManager;
 
 
   DEFINE_STANDARD_RTTI(SelectMgr_SelectableObject)
@@ -149,6 +190,9 @@ protected:
   Standard_EXPORT SelectMgr_SelectableObject(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
 
   SelectMgr_SequenceOfSelection myselections;
+  Handle(Prs3d_Drawer) myDrawer;
+  Handle(Prs3d_Drawer) myHilightDrawer;
+  Handle(SelectMgr_EntityOwner) myAssemblyOwner;
 
 
 private: 

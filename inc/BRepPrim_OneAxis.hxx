@@ -69,12 +69,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT virtual   void Delete() ;
-~BRepPrim_OneAxis()
-{
-  Delete();
-}
-  
   //! The MeridianOffset is added  to the  parameters on
   //! the meridian curve and  to  the  V values  of  the
   //! pcurves. This is  used for the sphere for example,
@@ -266,6 +260,7 @@ public:
   
   //! Returns the vertex (angle,VMax)
   Standard_EXPORT  const  TopoDS_Vertex& BottomEndVertex() ;
+  Standard_EXPORT virtual ~BRepPrim_OneAxis();
 
 
 

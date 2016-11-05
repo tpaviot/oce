@@ -115,13 +115,13 @@ Standard_Integer DNaming_Line3DDriver::Execute(TFunction_Logbook& theLog) const
     if(!aNS1->IsEmpty()) {
       aShape1 = aNS1->Get();
       gp_Pnt aDebPoint = BRep_Tool::Pnt(TopoDS::Vertex(aShape1));
-      //	cout << aCounter << " X = " <<  aDebPoint.X() << " Y = " <<  aDebPoint.Y() << " Z = " <<  aDebPoint.Z() << endl;
+      cout << aCounter << " X = " <<  aDebPoint.X() << " Y = " <<  aDebPoint.Y() << " Z = " <<  aDebPoint.Z() << endl;
     } else
       cout << " Line3DDriver:: NS1 is empty" << endl;
     if(!aNS2->IsEmpty()) {
       aShape2 = aNS2->Get();
       gp_Pnt aDebPoint = BRep_Tool::Pnt(TopoDS::Vertex(aShape2));
-      //      cout << aCounter+1 << " X = " <<  aDebPoint.X() << " Y = " <<  aDebPoint.Y() << " Z = " <<  aDebPoint.Z() << endl;
+      cout << aCounter+1 << " X = " <<  aDebPoint.X() << " Y = " <<  aDebPoint.Y() << " Z = " <<  aDebPoint.Z() << endl;
     } else
       cout << " Line3DDriver:: NS2 is empty" << endl;
 #endif

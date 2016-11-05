@@ -17,7 +17,6 @@
 
 #include <BOPAlgo_PaveFiller.ixx>
 
-#include <NCollection_IncAllocator.hxx>
 #include <NCollection_BaseAllocator.hxx>
 
 #include <Bnd_Box.hxx>
@@ -44,9 +43,8 @@
   void BOPAlgo_PaveFiller::PerformVV() 
 {
   Standard_Boolean bWithSubShape;
-  Standard_Integer n1, n2, iFlag, nX, n, aSize, i, j, iX, k, aNbBlocks;
-  Handle(NCollection_IncAllocator) aAllocator;
-  BOPCol_DataMapIteratorOfDataMapOfIntegerListOfInteger aItMILI;
+  Standard_Integer n1, n2, iFlag, nX, n, aSize, i, j, k, aNbBlocks;
+  Handle(NCollection_BaseAllocator) aAllocator;
   BOPCol_ListIteratorOfListOfInteger aItLI, aItLI2;
   TopoDS_Vertex aVn;
   BOPDS_ShapeInfo aSIn;
@@ -62,12 +60,11 @@
   aSIn.SetShapeType(TopAbs_VERTEX);
   
   BOPDS_VectorOfInterfVV& aVVs=myDS->InterfVV();
-  aVVs.SetStartSize(aSize);
   aVVs.SetIncrement(aSize);
-  aVVs.Init();
   //
   //-----------------------------------------------------scope f
-  aAllocator=new NCollection_IncAllocator();
+  aAllocator=
+    NCollection_BaseAllocator::CommonBaseAllocator();
   BOPCol_IndexedDataMapOfIntegerListOfInteger aMILI(100, aAllocator);
   BOPCol_DataMapOfIntegerListOfInteger aMBlocks(100, aAllocator);
   BOPCol_ListOfShape aLV(aAllocator);
@@ -123,8 +120,8 @@
           n2=aItLI2.Value();
           //
           myDS->AddInterf(n1, n2);
-          iX=aVVs.Append()-1;
-          BOPDS_InterfVV& aVV=aVVs(iX);
+          BOPDS_InterfVV& aVV=aVVs.Append1();
+          //
           aVV.SetIndices(n1, n2);
           aVV.SetIndexNew(n);
         }
@@ -136,5 +133,4 @@
   aLV.Clear();
   aMBlocks.Clear();
   aMILI.Clear();
-  aAllocator.Nullify();
 }

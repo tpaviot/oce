@@ -34,6 +34,8 @@ public:
   //! Constructs an empty framework for defining display attributes of text.
   Standard_EXPORT Prs3d_TextAspect();
   
+  Standard_EXPORT Prs3d_TextAspect(const Handle(Graphic3d_AspectText3d)& theAspect);
+  
   Standard_EXPORT   void SetColor (const Quantity_Color& aColor) ;
   
   //! Sets the color of the type used in text display.
@@ -102,6 +104,8 @@ public:
   //! -   height/width ratio, that is, the expansion factor, and
   //! -   space between characters.
   Standard_EXPORT   Handle(Graphic3d_AspectText3d) Aspect()  const;
+  
+  Standard_EXPORT   void SetAspect (const Handle(Graphic3d_AspectText3d)& theAspect) ;
 
 
 

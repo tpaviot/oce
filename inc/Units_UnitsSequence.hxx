@@ -71,8 +71,6 @@ public:
      const  Units_UtsSequence& Sequence()  const;
   
       Units_UtsSequence& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(Units_UnitsSequence) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(Units_UnitsSequence) ShallowCopy(const Handle(Units_UnitsSequence)& me) {
- return me->ShallowCopy();
-}
 
 
 

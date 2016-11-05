@@ -321,8 +321,8 @@ Standard_Boolean ChFiKPart_MakeChamfer(TopOpeBRepDS_DataStructure& DStr,
 				       const Standard_Real /*lu*/,
 				       const TopAbs_Orientation Or1,
 				       const TopAbs_Orientation Or2,
-				       const Standard_Real Dis1,
-				       const Standard_Real Dis2,
+				       const Standard_Real dis1,
+				       const Standard_Real dis2,
 				       const gp_Lin& Spine, 
 				       const Standard_Real First, 
 				       const TopAbs_Orientation Ofpl,
@@ -333,12 +333,6 @@ Standard_Boolean ChFiKPart_MakeChamfer(TopOpeBRepDS_DataStructure& DStr,
   // intersection of 2 surfaces we are
   //        _|_          Ofpl is orientation of the plane face allowing
   //         |4          to determine the side of the material
-
-
-  Standard_Real dis1=Dis1, dis2=Dis2; 
-  if (!plandab){
-      dis1 = Dis2;
-      dis2 = Dis1;}
 
   gp_Pnt OrSpine = ElCLib::Value(First,Spine);
   gp_Pnt POnCyl, POnPln, OrCyl;
@@ -353,15 +347,11 @@ Standard_Boolean ChFiKPart_MakeChamfer(TopOpeBRepDS_DataStructure& DStr,
   gp_Ax3 AxCyl = Cyl.Position();
   // OrCyl is the point on axis of cylinder in the plane normal to the
   // axis containing OrSpine
-  gp_Pnt Loc = AxCyl.Location();
-  gp_Vec LocSp(Loc, OrSpine);
-  gp_XYZ temp = AxCyl.Direction().XYZ();
-  temp = temp.Multiplied(LocSp.XYZ().Multiplied(temp) );
-  OrCyl.SetXYZ( (Loc.XYZ()).Added(temp) );
-//  gp_XYZ temp = AxCyl.Direction().XYZ();
-//  temp = temp.Multiplied( OrSpine.XYZ().Multiplied(temp) );
-//  OrCyl.SetXYZ( (AxCyl.Location().XYZ()).Added(temp) );
-
+  // Project <OrSpine> onto <AxCyl>
+  gp_XYZ AxLoc = AxCyl.Location().XYZ(); //aLine.Location().XYZ();
+  gp_XYZ AxDir = AxCyl.Direction().XYZ();
+  Standard_Real Parameter = (OrSpine.XYZ() - AxLoc) * AxDir;
+  OrCyl.SetXYZ( AxLoc + Parameter * AxDir );
  
   //construction of POnPln
   gp_Vec VecTranslPln,tmp;

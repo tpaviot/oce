@@ -20,7 +20,6 @@
 
 #include <AIS.hxx>
 #include <AIS_Shape.hxx>
-#include <AIS_Drawer.hxx>
 
 #include <BRep_Tool.hxx>
 
@@ -41,6 +40,7 @@
 #include <Select3D_SensitiveCurve.hxx>
 #include <Select3D_SensitiveSegment.hxx>
 #include <SelectMgr_EntityOwner.hxx>
+#include <SelectMgr_Selection.hxx>
 
 #include <TColStd_ListIteratorOfListOfTransient.hxx>
 

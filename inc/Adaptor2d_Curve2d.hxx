@@ -48,9 +48,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~Adaptor2d_Curve2d(){Delete();}
-  
   Standard_EXPORT virtual   Standard_Real FirstParameter()  const;
   
   Standard_EXPORT virtual   Standard_Real LastParameter()  const;
@@ -147,6 +144,7 @@ Standard_EXPORT virtual ~Adaptor2d_Curve2d(){Delete();}
   Standard_EXPORT virtual   Handle(Geom2d_BezierCurve) Bezier()  const;
   
   Standard_EXPORT virtual   Handle(Geom2d_BSplineCurve) BSpline()  const;
+  Standard_EXPORT virtual ~Adaptor2d_Curve2d();
 
 
 

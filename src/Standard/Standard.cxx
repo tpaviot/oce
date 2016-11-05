@@ -68,16 +68,19 @@
 //           used to construct appropriate memory manager according
 //           to environment settings, and to ensure destruction upon exit
 //=======================================================================
-
-static Standard_MMgrRoot* GetMMgr();
-
-class Standard_MMgrFactory {
- public:
-  Standard_MMgrFactory();
+class Standard_MMgrFactory
+{
+public:
+  static Standard_MMgrRoot* GetMMgr();
   ~Standard_MMgrFactory();
- private:
+
+private:
+  Standard_MMgrFactory();
+  Standard_MMgrFactory (const Standard_MMgrFactory&);
+  Standard_MMgrFactory& operator= (const Standard_MMgrFactory&);
+
+private:
   Standard_MMgrRoot* myFMMgr;
-  friend Standard_MMgrRoot* GetMMgr();
 };
 
 //=======================================================================
@@ -182,11 +185,8 @@ Standard_MMgrFactory::Standard_MMgrFactory()
 
 Standard_MMgrFactory::~Standard_MMgrFactory()
 {
-  if (  myFMMgr ) {
+  if (  myFMMgr )
     myFMMgr->Purge(Standard_True);
-//  delete myFMMgr;
-//  myFMMgr = 0;  
-  }
 }
 
 //=======================================================================
@@ -230,8 +230,7 @@ Standard_MMgrFactory::~Standard_MMgrFactory()
 // be counting calls to Allocate() and Free()...
 //
 //=======================================================================
-
-static Standard_MMgrRoot* GetMMgr()
+Standard_MMgrRoot* Standard_MMgrFactory::GetMMgr()
 {
   static Standard_MMgrFactory aFactory;
   return aFactory.myFMMgr;
@@ -244,7 +243,7 @@ static Standard_MMgrRoot* GetMMgr()
 
 Standard_Address Standard::Allocate(const Standard_Size size)
 {
-  return GetMMgr()->Allocate(size);
+  return Standard_MMgrFactory::GetMMgr()->Allocate(size);
 }
 
 //=======================================================================
@@ -254,7 +253,7 @@ Standard_Address Standard::Allocate(const Standard_Size size)
 
 void Standard::Free (Standard_Address theStorage)
 {
-  GetMMgr()->Free(theStorage);
+  Standard_MMgrFactory::GetMMgr()->Free(theStorage);
 }
 
 //=======================================================================
@@ -265,7 +264,7 @@ void Standard::Free (Standard_Address theStorage)
 Standard_Address Standard::Reallocate (Standard_Address theStorage,
 				       const Standard_Size theSize)
 {
-  return GetMMgr()->Reallocate (theStorage, theSize);
+  return Standard_MMgrFactory::GetMMgr()->Reallocate (theStorage, theSize);
 }
 
 //=======================================================================
@@ -275,7 +274,7 @@ Standard_Address Standard::Reallocate (Standard_Address theStorage,
 
 Standard_Integer Standard::Purge()
 {
-  return GetMMgr()->Purge();
+  return Standard_MMgrFactory::GetMMgr()->Purge();
 }
 
 //=======================================================================

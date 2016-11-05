@@ -148,15 +148,15 @@ static struct zestat {
   nbitc,  // nb items cycle en cours
   numst,  // n0 etape en cours / cycle
   numitem; // nb items deja passes / etape courante
-} stat_;
+} TheStat;
 
 
     void  Interface_STAT::Start
   (const Standard_Integer items, const Standard_Integer cycles) const
 {
   statact = *this;
-  statact.Description (stat_.nbph,stat_.otal,stat_.itle);
-  stat_.oldph = stat_.phw = 0.;  stat_.numph = 0;
+  statact.Description (TheStat.nbph, TheStat.otal, TheStat.itle);
+  TheStat.oldph = TheStat.phw = 0.;  TheStat.numph = 0;
   NextPhase (items,cycles);
 }
 
@@ -171,68 +171,68 @@ static struct zestat {
   (const Standard_Integer items, const Standard_Integer cycles)
 {
 //  On cumule la phase precedente au total, on efface les donnees "locales"
-  stat_.numcyc  = stat_.numst = stat_.olditp = 0;  stat_.oldst = stat_.stw = 0.;
-  if (stat_.numph >= stat_.nbph) {  End();  return;  }
+	TheStat.numcyc  = TheStat.numst = TheStat.olditp = 0;  TheStat.oldst = TheStat.stw = 0.;
+  if (TheStat.numph >= TheStat.nbph) {  End();  return;  }
 
-  stat_.numph ++;  stat_.oldph += stat_.phw;   // cumule sur cette phase
-  stat_.nbitp = items;  stat_.nbcyc = cycles;
-  statact.Phase(stat_.numph, stat_.n0,stat_.n1,stat_.phw,stat_.name);
-  stat_.otph = (stat_.n1 > 1 ? statact.Step (stat_.n0) : 1.);
+  TheStat.numph ++;  TheStat.oldph += TheStat.phw;   // cumule sur cette phase
+  TheStat.nbitp = items;  TheStat.nbcyc = cycles;
+  statact.Phase(TheStat.numph, TheStat.n0, TheStat.n1, TheStat.phw, TheStat.name);
+  TheStat.otph = (TheStat.n1 > 1 ? statact.Step (TheStat.n0) : 1.);
 //   si un seul cycle, on le demarre; sinon, attendre NextCycle
-  stat_.nbitc = 0;
+  TheStat.nbitc = 0;
   if (cycles == 1) NextCycle (items);
 }
 
     void  Interface_STAT::SetPhase
   (const Standard_Integer items, const Standard_Integer cycles)
-      {  stat_.nbitp = items;  stat_.nbcyc = cycles;  }
+      {  TheStat.nbitp = items;  TheStat.nbcyc = cycles;  }
 
     void  Interface_STAT::NextCycle (const Standard_Integer items)
 {
 //  cumul de ce cycle sur les cycles deja passes, raz etapes
-  stat_.numcyc ++;  stat_.olditp += stat_.nbitc;
-//  if (stat_.olditem > stat_.nbitp) return;
-  stat_.numst = 1;
-  stat_.oldst = 0.;
-  stat_.stw   = (stat_.n1 > 1 ? statact.Step(stat_.n0 + 1) : stat_.otph);
-  stat_.nbitc = items;  stat_.numitem = 0;
+  TheStat.numcyc ++;  TheStat.olditp += TheStat.nbitc;
+//  if (stat.olditem > stat.nbitp) return;
+  TheStat.numst = 1;
+  TheStat.oldst = 0.;
+  TheStat.stw   = (TheStat.n1 > 1 ? statact.Step(TheStat.n0 + 1) : TheStat.otph);
+  TheStat.nbitc = items;  TheStat.numitem = 0;
 }
 
     void  Interface_STAT::NextStep ()
 {
-  if (stat_.numst >= stat_.n1) return;
-  stat_.numst ++;  stat_.oldst += stat_.stw;
-  stat_.numitem = 0;
-  stat_.stw = statact.Step (stat_.n0 + stat_.numst);
+  if (TheStat.numst >= TheStat.n1) return;
+  TheStat.numst ++;  TheStat.oldst += TheStat.stw;
+  TheStat.numitem = 0;
+  TheStat.stw = statact.Step (TheStat.n0 + TheStat.numst);
 }
 
     void  Interface_STAT::NextItem (const Standard_Integer nbitems)
-      {  stat_.numitem += nbitems;  }
+      {  TheStat.numitem += nbitems;  }
 
     void  Interface_STAT::End ()
-{  stat_.oldph = stat_.otal;  stat_.phw = stat_.stw = 0.;  stat_.itle = stat_.name = voidname;  }
+{  TheStat.oldph = TheStat.otal;  TheStat.phw = TheStat.stw = 0.;  TheStat.itle = TheStat.name = voidname;  }
 
 // ###########  QUERY  ############
 
     Standard_CString  Interface_STAT::Where   (const Standard_Boolean phase)
-      {  return (phase ? stat_.name : stat_.itle);  }
+      {  return (phase ? TheStat.name : TheStat.itle);  }
 
     Standard_Integer  Interface_STAT::Percent (const Standard_Boolean phase)
 {
-  if (stat_.numitem > stat_.nbitc) stat_.numitem = stat_.nbitc;
+  if (TheStat.numitem > TheStat.nbitc) TheStat.numitem = TheStat.nbitc;
 //  on compte les items deja passes
   Standard_Real enphase =
-    stat_.olditp  * stat_.otph  +  // cycles complets passes
-    stat_.nbitc   * stat_.oldst +  // cycle courant, etapes completes passees
-    stat_.numitem * stat_.stw;     // etape courante
+    TheStat.olditp  * TheStat.otph  +  // cycles complets passes
+    TheStat.nbitc   * TheStat.oldst +  // cycle courant, etapes completes passees
+    TheStat.numitem * TheStat.stw;     // etape courante
 //  proportion pour cette phase
-  Standard_Real prophase = enphase / (stat_.nbitp * stat_.otph);
+  Standard_Real prophase = enphase / (TheStat.nbitp * TheStat.otph);
   Standard_Integer res = Standard_Integer (prophase*100.);
   if (phase) return res;
 
 //  voila pour cette phase
 //  comptage dans les phases
-  Standard_Real encours = (stat_.oldph + stat_.phw * prophase) / stat_.otal;
+  Standard_Real encours = (TheStat.oldph + TheStat.phw * prophase) / TheStat.otal;
   res = Standard_Integer (encours * 100.);
   return res;
 }

@@ -4,14 +4,19 @@ puts "================"
 puts ""
 
 restore [locate_data_file OCC26.brep] a 
-explode a
-checkshape a_1
-checkshape a_2
 
-bfuse result a_1 a_2
+explode a
+
+settolerance a_1 0.000301
+settolerance a_2 0.000301
+
+bclearobjects
+bcleartools
+baddobjects a_1
+baddtools a_2
+
+bfillds
+bbop result 1
 
 set square 41539.9
 set 2dviewer 0
-
-
-

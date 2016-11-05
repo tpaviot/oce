@@ -36,50 +36,38 @@ public:
 
   
 
+  //! Initialize correctly all the fields of this class.
+  //! The range (1, F.NbVariables()) must be especially respected for
+  //! all vectors and matrix declarations.
+  Standard_EXPORT math_NewtonFunctionSetRoot(math_FunctionSetWithDerivatives& theFunction, const math_Vector& theXTolerance, const Standard_Real theFTolerance, const Standard_Integer tehNbIterations = 100);
+  
+
   //! This constructor should be used in a sub-class to initialize
   //! correctly all the fields of this class.
   //! The range (1, F.NbVariables()) must be especially respected for
   //! all vectors and matrix declarations.
-  Standard_EXPORT math_NewtonFunctionSetRoot(math_FunctionSetWithDerivatives& F, const math_Vector& XTol, const Standard_Real FTol, const Standard_Integer NbIterations = 100);
+  //! The method SetTolerance must be called before performing the algorithm.
+  Standard_EXPORT math_NewtonFunctionSetRoot(math_FunctionSetWithDerivatives& theFunction, const Standard_Real theFTolerance, const Standard_Integer theNbIterations = 100);
   
-
-  //! This constructor should be used in a sub-class to initialize
-  //! correctly all the fields of this class.
-  //! The range (1, F.NbVariables()) must be especially respected for
-  //! all vectors and matrix declarations.
-  //! The method SetTolerance must be called before performing the
-  //! algorithm.
-  Standard_EXPORT math_NewtonFunctionSetRoot(math_FunctionSetWithDerivatives& F, const Standard_Real FTol, const Standard_Integer NbIterations = 100);
-  
-
-  //! The Newton method is done to improve the root of the function F
-  //! from the initial guess StartingPoint.
-  //! The tolerance required on the root is given by Tolerance.
-  //! The solution is found when :
-  //! abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;
-  //! The maximum number of iterations allowed is given by NbIterations.
-  Standard_EXPORT math_NewtonFunctionSetRoot(math_FunctionSetWithDerivatives& F, const math_Vector& StartingPoint, const math_Vector& XTol, const Standard_Real FTol, const Standard_Integer NbIterations = 100);
-  
-
-  //! The Newton method is done to improve the root of the function F
-  //! from the initial guess StartingPoint.
-  //! The tolerance required on the root is given by Tolerance.
-  //! The solution is found when :
-  //! abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;
-  //! The maximum number of iterations allowed is given by NbIterations.
-  Standard_EXPORT math_NewtonFunctionSetRoot(math_FunctionSetWithDerivatives& F, const math_Vector& StartingPoint, const math_Vector& InfBound, const math_Vector& SupBound, const math_Vector& XTol, const Standard_Real FTol, const Standard_Integer NbIterations = 100);
-  
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~math_NewtonFunctionSetRoot(){Delete();}
+  //! Destructor alias.
+  Standard_EXPORT   void Delete()  const;
+  Standard_EXPORT virtual ~math_NewtonFunctionSetRoot();
   
   //! Initializes the tolerance values for the unknowns.
   Standard_EXPORT   void SetTolerance (const math_Vector& XTol) ;
   
-  //! Improves the root of function F from the initial guess
-  //! StartingPoint. infBound and supBound may be given, to constrain the solution.
-  //! Warning
-  //! This method must be called when the solution is not computed by the constructors.
-  Standard_EXPORT   void Perform (math_FunctionSetWithDerivatives& F, const math_Vector& StartingPoint, const math_Vector& InfBound, const math_Vector& SupBound) ;
+
+  //! The Newton method is done to improve the root of the function
+  //! from the initial guess point. The solution is found when:
+  //! abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;
+  Standard_EXPORT   void Perform (math_FunctionSetWithDerivatives& theFunction, const math_Vector& theStartingPoint) ;
+  
+
+  //! The Newton method is done to improve the root of the function
+  //! from the initial guess point. Bounds may be given, to constrain the solution.
+  //! The solution is found when:
+  //! abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;
+  Standard_EXPORT   void Perform (math_FunctionSetWithDerivatives& theFunction, const math_Vector& theStartingPoint, const math_Vector& theInfBound, const math_Vector& theSupBound) ;
   
 
   //! This method is called at the end of each iteration to check if the
@@ -87,7 +75,7 @@ Standard_EXPORT virtual ~math_NewtonFunctionSetRoot(){Delete();}
   //! Vectors DeltaX, Fvalues and Jacobian Matrix are consistent with the
   //! possible solution Vector Sol and can be inspected to decide whether
   //! the solution is reached or not.
-  Standard_EXPORT virtual   Standard_Boolean IsSolutionReached (math_FunctionSetWithDerivatives& F) ;
+    virtual   Standard_Boolean IsSolutionReached (math_FunctionSetWithDerivatives& F) ;
   
   //! Returns true if the computations are successful, otherwise returns false.
       Standard_Boolean IsDone()  const;

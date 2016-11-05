@@ -1,7 +1,7 @@
+#include <SelectMgr_EntityOwner.hxx>
 #include <Prs3d_Presentation.hxx>
 #include <Standard_NotImplemented.hxx>
-#include <SelectMgr_Selection.hxx>
+#include <SelectMgr_SelectionManager.hxx>
 #include <SelectMgr_SequenceOfOwner.hxx>
-#include <SelectMgr_EntityOwner.hxx>
-#include <PrsMgr_PresentationManager.hxx>
+#include <Bnd_Box.hxx>
 #include <SelectMgr_SelectableObject.hxx>

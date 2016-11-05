@@ -48,9 +48,10 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  //! If S is Solid or Shell, returns True if it has no free boundaries (edges).
+  //! If S is Shell, returns True if it has no free boundaries (edges).
   //! If S is Wire, returns True if it has no free ends (vertices).
-  //! (Internal and External sub-shepes are ignored in this check.)
+  //! (Internal and External sub-shepes are ignored in these checks)
+  //! If S is Edge, returns True if its vertices are the same.
   //! For other shape types returns S.Closed().
   Standard_EXPORT static   Standard_Boolean IsClosed (const TopoDS_Shape& S) ;
   
@@ -163,7 +164,7 @@ public:
   
   //! Returns  True  if <E> has two arrays of indices in
   //! the triangulation <T>.
-  Standard_EXPORT static   Standard_Boolean IsClosed (const TopoDS_Edge& E, const Handle(Poly_Triangulation)& T) ;
+  Standard_EXPORT static   Standard_Boolean IsClosed (const TopoDS_Edge& E, const Handle(Poly_Triangulation)& T, const TopLoc_Location& L) ;
   
   //! Returns the tolerance for <E>.
   Standard_EXPORT static   Standard_Real Tolerance (const TopoDS_Edge& E) ;

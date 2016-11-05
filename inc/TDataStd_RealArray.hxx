@@ -40,10 +40,12 @@ public:
   //! Returns the GUID for arrays of reals.
   Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  //! Finds or creates on the <label> a real array attribute
-  //! with the specified <lower> and <upper> boundaries.
-  //! If attribute is already set, all input parameters are refused and the found
-  //! attribute is returned.
+  //! Finds or creates on the <label> a real array attribute with
+  //! the specified <lower> and <upper> boundaries.
+  //! If <isDelta> == False, DefaultDeltaOnModification is used.
+  //! If <isDelta> == True, DeltaOnModification of the current attribute is used.
+  //! If attribute is already set, input parameter <isDelta> is refused and the found
+  //! attribute returned.
   Standard_EXPORT static   Handle(TDataStd_RealArray) Set (const TDF_Label& label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False) ;
   
   //! Initialize the inner array with bounds from <lower> to <upper>

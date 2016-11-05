@@ -71,8 +71,6 @@ public:
      const  StepRepr_SequenceOfRepresentationItem& Sequence()  const;
   
       StepRepr_SequenceOfRepresentationItem& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(StepRepr_HSequenceOfRepresentationItem) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(StepRepr_HSequenceOfRepresentationItem) ShallowCopy(const Handle(StepRepr_HSequenceOfRepresentationItem)& me) {
- return me->ShallowCopy();
-}
 
 
 

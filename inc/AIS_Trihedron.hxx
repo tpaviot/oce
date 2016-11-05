@@ -25,7 +25,7 @@
 #include <Handle_Prs3d_Presentation.hxx>
 #include <Handle_Prs3d_Projector.hxx>
 #include <Handle_Geom_Transformation.hxx>
-#include <Handle_SelectMgr_Selection.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <AIS_KindOfInteractive.hxx>
 class Geom_Axis2Placement;
 class AIS_InteractiveObject;
@@ -37,7 +37,6 @@ class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
 class gp_Trsf;
-class SelectMgr_Selection;
 class Quantity_Color;
 class TColgp_Array1OfPnt;
 
@@ -56,7 +55,7 @@ class TColgp_Array1OfPnt;
 //! dimensions, you must temporarily recover the Drawer.
 //! From inside it, you take the aspect in which the values
 //! for length are stocked. For trihedra, this is
-//! AIS_Drawer_FirstAxisAspect. You change the
+//! Prs3d_Drawer_FirstAxisAspect. You change the
 //! values inside this Aspect and recalculate the presentation.
 //! If you want to use extended selection modes, different than 0,
 //! you should take care of removing of the shapes from the interactive

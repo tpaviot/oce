@@ -140,10 +140,11 @@ static void GetMiddlePoint(const TopoDS_Shape& aShape, gp_Pnt& pmid)
 //purpose  : 
 //=======================================================================
 static void CollectSolids(const TopTools_SequenceOfShape& aSeqShells , 
-                          TopTools_DataMapOfShapeListOfShape& aMapShellHoles,
+                          TopTools_IndexedDataMapOfShapeListOfShape& anIndexedMapShellHoles,
                           TopTools_DataMapOfShapeInteger& theMapStatus)
 {
   TopTools_MapOfShape aMapHoles;
+  TopTools_DataMapOfShapeListOfShape aMapShellHoles;
   for ( Standard_Integer i1 = 1; i1 <= aSeqShells.Length(); i1++ ) {
     TopoDS_Shell aShell1 = TopoDS::Shell(aSeqShells.Value(i1));
     TopTools_ListOfShape lshells;
@@ -244,8 +245,15 @@ static void CollectSolids(const TopTools_SequenceOfShape& aSeqShells ,
     }
   }
   for(TopTools_MapIteratorOfMapOfShape aIterHoles(aMapHoles);aIterHoles.More(); aIterHoles.Next())
-    aMapShellHoles.UnBind(aIterHoles.Key());
-    
+    aMapShellHoles.UnBind (aIterHoles.Key());
+
+  for (Standard_Integer i = 1; i <= aSeqShells.Length(); ++i) {
+    const TopoDS_Shape& aShell1 = aSeqShells.Value (i);
+    if (aMapShellHoles.IsBound (aShell1)) {
+      const TopTools_ListOfShape& ls = aMapShellHoles.Find (aShell1);
+      anIndexedMapShellHoles.Add (aShell1, ls);
+    }
+  }
 }
 //=======================================================================
 //function : CreateSolids
@@ -260,14 +268,13 @@ static Standard_Boolean CreateSolids(const TopoDS_Shape aShape,TopTools_IndexedM
   for(TopExp_Explorer aExpShell(aShape,TopAbs_SHELL); aExpShell.More(); aExpShell.Next()) {
     aSeqShells.Append(aExpShell.Current());
   }
-  TopTools_DataMapOfShapeListOfShape aMapShellHoles;
+  TopTools_IndexedDataMapOfShapeListOfShape aMapShellHoles;
   TopTools_DataMapOfShapeInteger aMapStatus;
   CollectSolids(aSeqShells,aMapShellHoles,aMapStatus);
   TopTools_IndexedDataMapOfShapeShape ShellSolid;
-  TopTools_DataMapIteratorOfDataMapOfShapeListOfShape aItShellHoles( aMapShellHoles);
   //Defines correct orientation of shells
-  for(; aItShellHoles.More();aItShellHoles.Next()) {
-    TopoDS_Shell aShell = TopoDS::Shell(aItShellHoles.Key());
+  for (Standard_Integer i = 1; i <= aMapShellHoles.Extent(); ++i) {
+    TopoDS_Shell aShell = TopoDS::Shell(aMapShellHoles.FindKey(i));
     TopExp_Explorer aExpEdges(aShell,TopAbs_EDGE);
     if(!BRep_Tool::IsClosed(aShell) || !aExpEdges.More()) {
       ShellSolid.Add(aShell,aShell);
@@ -311,7 +318,7 @@ static Standard_Boolean CreateSolids(const TopoDS_Shape aShape,TopTools_IndexedM
     aSolid = aTmpSolid;
   }
     
-    const TopTools_ListOfShape& lHoles = aItShellHoles.Value();
+    const TopTools_ListOfShape& lHoles = aMapShellHoles (i);
     for(TopTools_ListIteratorOfListOfShape lItHoles(lHoles); lItHoles.More();lItHoles.Next()) {
       TopoDS_Shell aShellHole = TopoDS::Shell(lItHoles.Value());
       if(aMapStatus.IsBound(aShellHole)) {
@@ -343,13 +350,30 @@ static Standard_Boolean CreateSolids(const TopoDS_Shape aShape,TopTools_IndexedM
     BRep_Builder aB;
     aB.MakeCompSolid(aCompSolid);
     isDone = (aShape.ShapeType() != TopAbs_COMPSOLID || isDone);
+    Standard_Integer nbSol = 0;
+
     for(TopTools_ListIteratorOfListOfShape lItSh(lshells);lItSh.More(); lItSh.Next()) {
       if(ShellSolid.Contains(lItSh.Value())) {
-        for(TopExp_Explorer aExpSol(ShellSolid.FindFromKey(lItSh.Value()),TopAbs_SOLID);aExpSol.More(); aExpSol.Next())
+        const TopoDS_Shape& aShape = ShellSolid.FindFromKey(lItSh.Value());
+        TopExp_Explorer aExpSol(aShape, TopAbs_SOLID);
+       
+        for(;aExpSol.More(); aExpSol.Next())
+        {
           aB.Add(aCompSolid,aExpSol.Current());
-        ShellSolid.ChangeFromKey(lItSh.Value()) = aCompSolid;
+          nbSol++;
+        }
+      
       }
     }
+    if(nbSol >1)
+    {
+      for(TopTools_ListIteratorOfListOfShape lItSh1(lshells);lItSh1.More(); lItSh1.Next()) 
+      {
+        if(ShellSolid.Contains(lItSh1.Value())) 
+          ShellSolid.ChangeFromKey(lItSh1.Value()) = aCompSolid;
+      }
+    }
+    
   }
   for(Standard_Integer kk =1 ; kk <= ShellSolid.Extent();kk++)
     if(!aMapSolids.Contains(ShellSolid.FindFromIndex(kk)))
@@ -432,23 +456,23 @@ Standard_Boolean ShapeFix_Solid::Perform(const Handle(Message_ProgressIndicator)
     }
       
     if(isClosed || myCreateOpenSolidMode) {
-      if(BRep_Tool::IsClosed(tmpShape)) {
-        TopoDS_Iterator itersh(tmpShape);
-        TopoDS_Shell aShell;
-        if(itersh.More() && itersh.Value().ShapeType() == TopAbs_SHELL)
-          aShell = TopoDS::Shell(itersh.Value());
-        if(!aShell.IsNull()) {
-          TopoDS_Solid aSol = SolidFromShell(aShell);
-          if(ShapeExtend::DecodeStatus(myStatus,ShapeExtend_DONE2)) {
-            SendWarning (Message_Msg ("FixAdvSolid.FixOrientation.MSG20"));// Orientaion of shell was corrected.
-            Context()->Replace(tmpShape,aSol);
-            tmpShape = aSol;
-          }
+      TopoDS_Iterator itersh(tmpShape);
+      TopoDS_Shell aShell;
+      if(itersh.More() && itersh.Value().ShapeType() == TopAbs_SHELL)
+        aShell = TopoDS::Shell(itersh.Value());
+      if(!aShell.IsNull()) {
+        TopoDS_Solid aSol = SolidFromShell(aShell);
+        if(ShapeExtend::DecodeStatus(myStatus,ShapeExtend_DONE2)) {
+          SendWarning (Message_Msg ("FixAdvSolid.FixOrientation.MSG20"));// Orientaion of shell was corrected.
+          Context()->Replace(tmpShape,aSol);
+          tmpShape = aSol;
         }
       }
       mySolid  = TopoDS::Solid(tmpShape);
     }
     else {
+      status = Standard_True;
+      myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE3 );
       TopoDS_Iterator aIt(tmpShape,Standard_False);
       Context()->Replace(tmpShape,aIt.Value());
       SendFail (Message_Msg ("FixAdvSolid.FixShell.MSG10")); // Solid can not be created from open shell. 

@@ -12,11 +12,10 @@
 
 #include <AIS_InteractiveObject.hxx>
 #include <PrsMgr_TypeOfPresentation3d.hxx>
-#include <Handle_SelectMgr_Selection.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <Standard_Integer.hxx>
 #include <PrsMgr_PresentationManager3d.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-class SelectMgr_Selection;
 class Prs3d_Presentation;
 
 

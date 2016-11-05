@@ -87,6 +87,11 @@ public:
   //! Sets the new value of an ExtString resource.
   //! If the resource does not exist, it is created.
   Standard_EXPORT virtual   void SetResource (const Standard_CString aResourceName, const Standard_ExtString aValue) ;
+  
+  //! Gets the resource file full path by its name.
+  //! If corresponding environment variable is not set
+  //! or file doesn't exist returns empty string.
+  Standard_EXPORT static   void GetResourcePath (TCollection_AsciiString& aPath, const Standard_CString aName, const Standard_Boolean isUserDefaults) ;
 
 
 
@@ -101,7 +106,7 @@ protected:
 private: 
 
   
-  Standard_EXPORT   void Load (TCollection_AsciiString& aDirectory, TCollection_AsciiString& aName, Resource_DataMapOfAsciiStringAsciiString& aMap) ;
+  Standard_EXPORT   void Load (TCollection_AsciiString& aPath, Resource_DataMapOfAsciiStringAsciiString& aMap) ;
 
   TCollection_AsciiString myName;
   Resource_DataMapOfAsciiStringAsciiString myRefMap;

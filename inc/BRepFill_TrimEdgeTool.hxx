@@ -17,6 +17,7 @@
 #include <Bisector_Bisec.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
 #include <Handle_Geom2d_Geometry.hxx>
+#include <GeomAbs_JoinType.hxx>
 class Geom2d_Curve;
 class Bisector_Bisec;
 class Geom2d_Geometry;
@@ -37,7 +38,7 @@ public:
   
   Standard_EXPORT BRepFill_TrimEdgeTool(const Bisector_Bisec& Bisec, const Handle(Geom2d_Geometry)& S1, const Handle(Geom2d_Geometry)& S2, const Standard_Real Offset);
   
-  Standard_EXPORT   void IntersectWith (const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, TColgp_SequenceOfPnt& Params) ;
+  Standard_EXPORT   void IntersectWith (const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, const GeomAbs_JoinType theJoinType, TColgp_SequenceOfPnt& Params) ;
   
   Standard_EXPORT   void AddOrConfuse (const Standard_Boolean Start, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, TColgp_SequenceOfPnt& Params)  const;
   

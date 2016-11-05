@@ -14,9 +14,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#define GER61351		//GG_171199     Enable to set an object RGB color
-//						  instead a restricted object NameOfColor.
-
 #include <AIS_Point.ixx>
 #include <Aspect_TypeOfLine.hxx>
 #include <Prs3d_Drawer.hxx>
@@ -32,7 +29,6 @@
 #include <StdPrs_Point.hxx>
 #include <Geom_Point.hxx>
 #include <BRepBuilderAPI_MakeVertex.hxx>
-#include <AIS_Drawer.hxx>
 
 #include <AIS_InteractiveContext.hxx>
 //=======================================================================
@@ -130,13 +126,11 @@ void AIS_Point::ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,
 //=======================================================================
 
 void AIS_Point::SetColor(const Quantity_NameOfColor aCol)
-#ifdef GER61351
 {
   SetColor(Quantity_Color(aCol));
 }
 
 void AIS_Point::SetColor(const Quantity_Color &aCol)
-#endif
 {
   hasOwnColor=Standard_True;
   myOwnColor=aCol;
@@ -214,15 +208,12 @@ AcceptDisplayMode(const Standard_Integer aMode) const
 void AIS_Point::UpdatePointValues()
 {
 
-  if(!hasOwnColor && myOwnWidth==0.0 && !myHasTOM){
-    myDrawer->PointAspect().Nullify();
+  if(!hasOwnColor && myOwnWidth==0.0 && !myHasTOM)
+  {
+    myDrawer->SetPointAspect (Handle(Prs3d_PointAspect)());
     return;
   }
-#ifdef GER61351
   Quantity_Color aCol;
-#else
-  Quantity_NameOfColor aCol;
-#endif 
   Quantity_Color QCO;
   Aspect_TypeOfMarker  aTOM;
   Standard_Real        aScale;
@@ -241,7 +232,7 @@ void AIS_Point::UpdatePointValues()
   if(myHasTOM) aTOM = myTOM;
   
   
-  if(myDrawer->HasPointAspect()){
+  if(myDrawer->HasOwnPointAspect()){
     // CLE
     // const Handle(Prs3d_PointAspect) PA =  myDrawer->PointAspect();
     Handle(Prs3d_PointAspect) PA =  myDrawer->PointAspect();

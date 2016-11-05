@@ -7,5 +7,5 @@
 #include <TNaming_MapOfNamedShape.hxx>
 #include <TDF_LabelList.hxx>
 #include <TNaming_UsedShapes.hxx>
-#include <TopTools_MapOfShape.hxx>
+#include <TopTools_IndexedMapOfShape.hxx>
 #include <TNaming_Tool.hxx>

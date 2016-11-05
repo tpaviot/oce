@@ -71,8 +71,6 @@ public:
      const  TransferBRep_SequenceOfTransferResultInfo& Sequence()  const;
   
       TransferBRep_SequenceOfTransferResultInfo& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TransferBRep_HSequenceOfTransferResultInfo) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TransferBRep_HSequenceOfTransferResultInfo) ShallowCopy(const Handle(TransferBRep_HSequenceOfTransferResultInfo)& me) {
- return me->ShallowCopy();
-}
 
 
 

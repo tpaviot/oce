@@ -1,4 +1,3 @@
 #include <gp_Pnt.hxx>
 #include <TopoDS_Shape.hxx>
-#include <Prs3d_Drawer.hxx>
 #include <Prs3d.hxx>

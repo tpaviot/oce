@@ -71,8 +71,6 @@ public:
      const  Graphic3d_SequenceOfStructure& Sequence()  const;
   
       Graphic3d_SequenceOfStructure& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(Graphic3d_HSequenceOfStructure) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(Graphic3d_HSequenceOfStructure) ShallowCopy(const Handle(Graphic3d_HSequenceOfStructure)& me) {
- return me->ShallowCopy();
-}
 
 
 

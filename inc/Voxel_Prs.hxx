@@ -19,14 +19,13 @@
 #include <Standard_Integer.hxx>
 #include <PrsMgr_PresentationManager3d.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-#include <Handle_SelectMgr_Selection.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <Standard_Boolean.hxx>
 #include <Standard_Byte.hxx>
 class Poly_Triangulation;
 class Quantity_Color;
 class Quantity_HArray1OfColor;
 class Prs3d_Presentation;
-class SelectMgr_Selection;
 
 
 //! Interactive object for voxels.

@@ -1,5 +1,5 @@
 // Copyright (c) 1997-1999 Matra Datavision
-// Copyright (c) 1999-2014 OPEN CASCADE SAS
+// Copyright (c) 1999-2015 OPEN CASCADE SAS
 //
 // This file is part of Open CASCADE Technology software library.
 //
@@ -13,6 +13,3 @@
 // commercial license or contractual agreement.
 
 #include <math_MultipleVarFunctionWithGradient.ixx>
-
-void math_MultipleVarFunctionWithGradient::Delete()
-{}

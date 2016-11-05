@@ -10,6 +10,7 @@
 #include <Standard_DefineHandle.hxx>
 #include <Handle_SelectMgr_OrFilter.hxx>
 
+#include <Graphic3d_NMapOfTransient.hxx>
 #include <SelectMgr_CompositionFilter.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_SelectMgr_EntityOwner.hxx>
@@ -28,6 +29,9 @@ public:
   Standard_EXPORT SelectMgr_OrFilter();
   
   Standard_EXPORT   Standard_Boolean IsOk (const Handle(SelectMgr_EntityOwner)& anobj)  const;
+  
+  //! Disable selection of specified objects.
+  Standard_EXPORT   void SetDisabledObjects (const Handle(Graphic3d_NMapOfTransient)& theObjects) ;
 
 
 
@@ -42,6 +46,7 @@ protected:
 private: 
 
 
+  Handle(Graphic3d_NMapOfTransient) myDisabledObjects;
 
 
 };

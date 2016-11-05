@@ -18,6 +18,7 @@
 #include <Quantity_Length.hxx>
 #include <Handle_Quantity_HArray1OfColor.hxx>
 #include <Standard_CString.hxx>
+#include <Standard_Integer.hxx>
 class VrmlConverter_Drawer;
 class VrmlConverter_Projector;
 class Vrml_Material;
@@ -96,14 +97,22 @@ public:
   Standard_EXPORT   Handle(Vrml_Material) GetUnfreeBoundsMaterial()  const;
   
   //! Converts the shape aShape to
-  //! VRML format and writes it to the file identified by aFile.
-  Standard_EXPORT   void Write (const TopoDS_Shape& aShape, const Standard_CString aFile)  const;
+  //! VRML format of the passed version and writes it to the file identified by aFile.
+  Standard_EXPORT   void Write (const TopoDS_Shape& aShape, const Standard_CString aFile, const Standard_Integer aVersion = 2)  const;
 
 
 
 
 protected:
 
+  
+  //! Converts the shape aShape to VRML format of version 1.0 and writes it
+  //! to the file identified by aFileName using default parameters.
+  Standard_EXPORT   void write_v1 (const TopoDS_Shape& aShape, const Standard_CString aFileName)  const;
+  
+  //! Converts the shape aShape to VRML format of version 2.0 and writes it
+  //! to the file identified by aFileName using default parameters.
+  Standard_EXPORT   void write_v2 (const TopoDS_Shape& aShape, const Standard_CString aFileName)  const;
 
 
 

@@ -33,6 +33,7 @@ class BRepLib_MakeShell;
 class BRepLib_MakeSolid;
 class BRepLib_FindSurface;
 class BRepLib_FuseEdges;
+class BRepLib_CheckCurveOnSurface;
 
 
 //! The BRepLib package provides general utilities for
@@ -49,6 +50,9 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
+
+  //! Computes the max distance between edge
+  //! and its 2d representation on the face.
   //! Sets the default precision.  The current Precision
   //! is returned.
   Standard_EXPORT static   void Precision (const Standard_Real P) ;
@@ -159,6 +163,12 @@ public:
   //! complexity       of       their      surfaces
   //! (other,Torus,Sphere,Cone,Cylinder,Plane)
   Standard_EXPORT static   void ReverseSortFaces (const TopoDS_Shape& S, TopTools_ListOfShape& LF) ;
+  
+  //! Corrects the normals in Poly_Triangulation of faces,
+  //! in such way that normals at nodes lying along smooth
+  //! edges have the same value on both adjacent triangulations.
+  //! Returns TRUE if any correction is done.
+  Standard_EXPORT static   Standard_Boolean EnsureNormalConsistency (const TopoDS_Shape& S, const Standard_Real theAngTol = 0.001, const Standard_Boolean ForceComputeNormals = Standard_False) ;
 
 
 
@@ -186,6 +196,7 @@ friend class BRepLib_MakeShell;
 friend class BRepLib_MakeSolid;
 friend class BRepLib_FindSurface;
 friend class BRepLib_FuseEdges;
+friend class BRepLib_CheckCurveOnSurface;
 
 };
 

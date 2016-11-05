@@ -22,6 +22,8 @@
 #include <Standard_Boolean.hxx>
 #include <InterfaceGraphic.hxx>
 
+#include <Handle_OpenGl_FrameBuffer.hxx>
+
 //! Class implements FrameBuffer Object (FBO) resource
 //! intended for off-screen rendering.
 class OpenGl_FrameBuffer : public OpenGl_Resource
@@ -30,7 +32,8 @@ class OpenGl_FrameBuffer : public OpenGl_Resource
 public:
 
   //! Helpful constants
-  static const GLuint NO_FRAMEBUFFER = 0;
+  static const GLuint NO_FRAMEBUFFER  = 0;
+  static const GLuint NO_RENDERBUFFER = 0;
 
 public:
 
@@ -85,6 +88,26 @@ public:
                                          const GLsizei                 theViewportSizeX,
                                          const GLsizei                 theViewportSizeY);
 
+  //! (Re-)initialize FBO with specified dimensions.
+  Standard_EXPORT Standard_Boolean InitLazy (const Handle(OpenGl_Context)& theGlCtx,
+                                             const GLsizei                 theViewportSizeX,
+                                             const GLsizei                 theViewportSizeY);
+
+  //! (Re-)initialize FBO with specified dimensions.
+  //! The Render Buffer Objects will be used for Color, Depth and Stencil attachments (as opposite to textures).
+  //! @param theGlCtx         currently bound OpenGL context
+  //! @param theViewportSizeX required viewport size, the actual dimensions of FBO might be greater
+  //! @param theViewportSizeY required viewport size, the actual dimensions of FBO might be greater
+  //! @param theColorRBufferFromWindow when specified - should be ID of already initialized RB object, which will be released within this class
+  Standard_EXPORT Standard_Boolean InitWithRB (const Handle(OpenGl_Context)& theGlCtx,
+                                               const GLsizei                 theViewportSizeX,
+                                               const GLsizei                 theViewportSizeY,
+                                               const GLuint                  theColorRBufferFromWindow = 0);
+
+  //! Initialize class from currently bound FBO.
+  //! Retrieved OpenGL objects will not be destroyed on Release.
+  Standard_EXPORT Standard_Boolean InitWrapper (const Handle(OpenGl_Context)& theGlCtx);
+
   //! Setup viewport to render into FBO
   Standard_EXPORT void SetupViewport (const Handle(OpenGl_Context)& theGlCtx);
 
@@ -92,8 +115,14 @@ public:
   Standard_EXPORT void ChangeViewport (const GLsizei theVPSizeX,
                                        const GLsizei theVPSizeY);
 
-  //! Bind frame buffer (to render into the texture).
+  //! Bind frame buffer for drawing and reading (to render into the texture).
   Standard_EXPORT virtual void BindBuffer (const Handle(OpenGl_Context)& theGlCtx);
+
+  //! Bind frame buffer for drawing GL_DRAW_FRAMEBUFFER (to render into the texture).
+  Standard_EXPORT virtual void BindDrawBuffer (const Handle(OpenGl_Context)& theGlCtx);
+
+  //! Bind frame buffer for reading GL_READ_FRAMEBUFFER
+  Standard_EXPORT virtual void BindReadBuffer (const Handle(OpenGl_Context)& theGlCtx);
 
   //! Unbind frame buffer.
   Standard_EXPORT virtual void UnbindBuffer (const Handle(OpenGl_Context)& theGlCtx);
@@ -110,10 +139,19 @@ public:
     return myDepthStencilTexture;
   }
 
-protected:
+  //! Returns the color Render Buffer.
+  GLuint ColorRenderBuffer() const
+  {
+    return myGlColorRBufferId;
+  }
 
-  //! Generate textures with undefined data
-  Standard_Boolean initTrashTextures (const Handle(OpenGl_Context)& theGlContext);
+  //! Returns the depth Render Buffer.
+  GLuint DepthStencilRenderBuffer() const
+  {
+    return myGlDepthRBufferId;
+  }
+
+protected:
 
   Standard_Boolean isValidFrameBuffer() const
   {
@@ -126,6 +164,9 @@ protected:
   GLsizei                myVPSizeY;             //!< viewport height (should be <= texture height)
   GLint                  myTextFormat;          //!< GL_RGB, GL_RGBA,...
   GLuint                 myGlFBufferId;         //!< FBO object ID
+  GLuint                 myGlColorRBufferId;    //!< color         Render Buffer object (alternative to myColorTexture)
+  GLuint                 myGlDepthRBufferId;    //!< depth-stencil Render Buffer object (alternative to myDepthStencilTexture)
+  bool                   myIsOwnBuffer;         //!< flag indicating that FBO should be deallocated by this class
   Handle(OpenGl_Texture) myColorTexture;        //!< color texture object
   Handle(OpenGl_Texture) myDepthStencilTexture; //!< depth-stencil texture object
 
@@ -134,7 +175,5 @@ public:
   DEFINE_STANDARD_RTTI(OpenGl_FrameBuffer) // Type definition
 
 };
-
-DEFINE_STANDARD_HANDLE(OpenGl_FrameBuffer, OpenGl_Resource)
 
 #endif // OPENGL_FRAME_BUFFER_H

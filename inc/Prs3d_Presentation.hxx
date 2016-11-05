@@ -15,7 +15,6 @@
 #include <Standard_Boolean.hxx>
 #include <Handle_Graphic3d_Structure.hxx>
 #include <Handle_Graphic3d_DataStructureManager.hxx>
-#include <Quantity_NameOfColor.hxx>
 #include <Handle_Prs3d_ShadingAspect.hxx>
 #include <Handle_Geom_Transformation.hxx>
 #include <Quantity_Length.hxx>
@@ -63,21 +62,7 @@ public:
   //! Returns the new Structure defined for the new visualization
   Standard_EXPORT virtual   void Compute (const Handle(Graphic3d_DataStructureManager)& aProjector, const TColStd_Array2OfReal& AMatrix, Handle(Graphic3d_Structure)& aStructure) ;
   
-  //! displays the whole content of the presentation in white.
-  Standard_EXPORT   void Highlight() ;
-  
-  //! displays the whole content of the presentation in the specified color.
-  Standard_EXPORT   void Color (const Quantity_NameOfColor aColor) ;
-  
-  Standard_EXPORT   void BoundBox() ;
-  
-  //! marks the structure <me> representing wired structure needed for
-  //! highlight only so it won't be added to BVH tree.
-  Standard_EXPORT virtual   void SetIsForHighlight (const Standard_Boolean isForHighlight) ;
-  
   Standard_EXPORT   void SetShadingAspect (const Handle(Prs3d_ShadingAspect)& aShadingAspect) ;
-  
-  Standard_EXPORT   Standard_Boolean IsPickable()  const;
   
   Standard_EXPORT   void Transform (const Handle(Geom_Transformation)& aTransformation) ;
   
@@ -94,10 +79,6 @@ public:
   Standard_EXPORT   void Remove (const Handle(Prs3d_Presentation)& aPresentation) ;
   
   Standard_EXPORT   void RemoveAll() ;
-  
-  Standard_EXPORT   void SetPickable() ;
-  
-  Standard_EXPORT   void SetUnPickable() ;
 
 
 friend class Prs3d_Root;

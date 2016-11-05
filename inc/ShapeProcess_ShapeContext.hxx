@@ -81,7 +81,7 @@ public:
   //! result to a new one
   Standard_EXPORT   void SetResult (const TopoDS_Shape& S) ;
   
-  Standard_EXPORT   void RecordModification (const TopTools_DataMapOfShapeShape& repl) ;
+  Standard_EXPORT   void RecordModification (const TopTools_DataMapOfShapeShape& repl, const Handle(ShapeExtend_MsgRegistrator)& msg = 0) ;
   
   Standard_EXPORT   void RecordModification (const Handle(ShapeBuild_ReShape)& repl, const Handle(ShapeExtend_MsgRegistrator)& msg) ;
   
@@ -97,7 +97,7 @@ public:
   //! either by call to SetResult(), or by another call to
   //! RecordModification() which contains mapping of current
   //! result to a new one explicitly
-  Standard_EXPORT   void RecordModification (const TopoDS_Shape& sh, const BRepTools_Modifier& repl) ;
+  Standard_EXPORT   void RecordModification (const TopoDS_Shape& sh, const BRepTools_Modifier& repl, const Handle(ShapeExtend_MsgRegistrator)& msg = 0) ;
   
   //! Record a message for shape S
   //! Shape S should be one of subshapes of original shape

@@ -164,16 +164,14 @@ void Graphic3d_Structure::Remove()
   // of ancestors of this structure and in the list of ancestors
   // of descendants of the same structure.
 
-  const Standard_Integer aNbDesc = myDescendants.Length();
-  for (Standard_Integer aStructIter = 1; aStructIter <= aNbDesc; ++aStructIter)
+  for (Standard_Integer aStructIdx = 1, aNbDesc = myDescendants.Size(); aStructIdx <= aNbDesc; ++aStructIdx)
   {
-    ((Graphic3d_Structure *)(myDescendants.ChangeValue (aStructIter)))->Remove (APtr, Graphic3d_TOC_ANCESTOR);
+    ((Graphic3d_Structure *)myDescendants.FindKey (aStructIdx))->Remove (APtr, Graphic3d_TOC_ANCESTOR);
   }
 
-  const Standard_Integer aNbAnces = myAncestors.Length();
-  for (Standard_Integer aStructIter = 1; aStructIter <= aNbAnces; ++aStructIter)
+  for (Standard_Integer aStructIdx = 1, aNbAnces = myAncestors.Size(); aStructIdx <= aNbAnces; ++aStructIdx)
   {
-    ((Graphic3d_Structure *)(myAncestors.ChangeValue (aStructIter)))->Remove (APtr, Graphic3d_TOC_DESCENDANT);
+    ((Graphic3d_Structure *)myAncestors.FindKey (aStructIdx))->Remove (APtr, Graphic3d_TOC_DESCENDANT);
   }
 
   // Destruction of me in the graphic library
@@ -203,7 +201,11 @@ void Graphic3d_Structure::Display()
     myStructureManager->Display (this);
   }
 
-  myCStructure->visible = 1;
+  if (myCStructure->visible != 1)
+  {
+    myCStructure->visible = 1;
+    myCStructure->OnVisibilityChanged();
+  }
 }
 
 //=============================================================================
@@ -213,25 +215,6 @@ void Graphic3d_Structure::Display()
 void Graphic3d_Structure::SetIsForHighlight (const Standard_Boolean isForHighlight)
 {
   myCStructure->IsForHighlight = isForHighlight;
-}
-
-//=============================================================================
-//function : Display
-//purpose  :
-//=============================================================================
-void Graphic3d_Structure::Display (const Standard_Integer thePriority)
-{
-  if (IsDeleted()) return;
-
-  SetDisplayPriority (thePriority);
-
-  if (!myCStructure->stick)
-  {
-    myCStructure->stick = 1;
-    myStructureManager->Display (this);
-  }
-
-  myCStructure->visible = 1;
 }
 
 //=============================================================================
@@ -312,12 +295,16 @@ void Graphic3d_Structure::Erase()
 //function : Highlight
 //purpose  :
 //=============================================================================
-void Graphic3d_Structure::Highlight (const Aspect_TypeOfHighlightMethod theMethod)
+void Graphic3d_Structure::Highlight (const Aspect_TypeOfHighlightMethod theMethod,
+                                     const Quantity_Color&              theColor,
+                                     const Standard_Boolean             theToUpdateMgr)
 {
   if (IsDeleted())
   {
     return;
   }
+
+  myHighlightColor = theColor;
 
   // Highlight on already Highlighted structure.
   if (myCStructure->highlight)
@@ -340,47 +327,18 @@ void Graphic3d_Structure::Highlight (const Aspect_TypeOfHighlightMethod theMetho
   SetDisplayPriority (Structure_MAX_PRIORITY - 1);
 
   GraphicHighlight (theMethod);
+
+  if (!theToUpdateMgr)
+  {
+    return;
+  }
+
   if (myCStructure->stick)
   {
     myStructureManager->Highlight (this, theMethod);
   }
 
   Update();
-}
-
-//=============================================================================
-//function : SetHighlightColor
-//purpose  :
-//=============================================================================
-void Graphic3d_Structure::SetHighlightColor (const Quantity_Color& theColor)
-{
-  if (IsDeleted())
-  {
-    return;
-  }
-
-  if (!myCStructure->highlight)
-  {
-    myHighlightColor = theColor;
-    return;
-  }
-
-  // Change highlight color on already Highlighted structure.
-  Aspect_TypeOfUpdate anUpdateMode  = myStructureManager->UpdateMode();
-  if (anUpdateMode == Aspect_TOU_WAIT)
-  {
-    UnHighlight();
-  }
-  else
-  {
-    // To avoid call of method : Update()
-    // Not useful and can be costly.
-    myStructureManager->SetUpdateMode (Aspect_TOU_WAIT);
-    UnHighlight();
-    myStructureManager->SetUpdateMode (anUpdateMode);
-  }
-  myHighlightColor = theColor;
-  Highlight (myHighlightMethod);
 }
 
 //=============================================================================
@@ -391,30 +349,14 @@ void Graphic3d_Structure::SetVisible (const Standard_Boolean theValue)
 {
   if (IsDeleted()) return;
 
-  myCStructure->visible = theValue ? 1 : 0;
-  myCStructure->UpdateNamedStatus();
-  Update();
-}
-
-//=============================================================================
-//function : SetPick
-//purpose  :
-//=============================================================================
-void Graphic3d_Structure::SetPick (const Standard_Boolean theValue)
-{
-  if (IsDeleted ()) return;
-
-  myCStructure->pick = theValue ? 1 : 0;
-  myCStructure->UpdateNamedStatus();
-
-  if (theValue)
+  const unsigned isVisible = theValue ? 1 : 0;
+  if (myCStructure->visible == isVisible)
   {
-    myStructureManager->Detectable (this);
+    return;
   }
-  else
-  {
-    myStructureManager->Undetectable (this);
-  }
+
+  myCStructure->visible = isVisible;
+  myCStructure->OnVisibilityChanged();
   Update();
 }
 
@@ -472,15 +414,6 @@ Standard_Boolean Graphic3d_Structure::IsDeleted() const
 Standard_Boolean Graphic3d_Structure::IsHighlighted() const
 {
   return myCStructure->highlight ? Standard_True : Standard_False;
-}
-
-//=============================================================================
-//function : IsSelectable
-//purpose  :
-//=============================================================================
-Standard_Boolean Graphic3d_Structure::IsSelectable() const
-{
-  return myCStructure->pick ? Standard_True : Standard_False;
 }
 
 //=============================================================================
@@ -544,10 +477,9 @@ Standard_Boolean Graphic3d_Structure::ContainsFacet() const
   }
 
   // stop at the first descendant containing at least one facet
-  const Standard_Integer aNbDesc = myDescendants.Length();
-  for (Standard_Integer aStructIter = 1; aStructIter <= aNbDesc; ++aStructIter)
+  for (Graphic3d_IndexedMapOfAddress::Iterator anIter (myDescendants); anIter.More(); anIter.Next())
   {
-    if (((const Graphic3d_Structure *)(myDescendants.Value (aStructIter)))->ContainsFacet())
+    if (((const Graphic3d_Structure *)anIter.Value())->ContainsFacet())
     {
       return Standard_True;
     }
@@ -579,10 +511,9 @@ Standard_Boolean Graphic3d_Structure::IsEmpty() const
   }
 
   // stop at the first non-empty descendant
-  const Standard_Integer aNbDesc = myDescendants.Length();
-  for (Standard_Integer aDescIter = 1; aDescIter <= aNbDesc; ++aDescIter)
+  for (Graphic3d_IndexedMapOfAddress::Iterator anIter (myDescendants); anIter.More(); anIter.Next())
   {
-    if (!((const Graphic3d_Structure* )(myDescendants.Value (aDescIter)))->IsEmpty())
+    if (!((const Graphic3d_Structure* )anIter.Value())->IsEmpty())
     {
       return Standard_False;
     }
@@ -1339,10 +1270,9 @@ Standard_Boolean Graphic3d_Structure::AcceptConnection (const Handle(Graphic3d_S
 //=============================================================================
 void Graphic3d_Structure::Ancestors (Graphic3d_MapOfStructure& theSet) const
 {
-  const Standard_Integer aNbAnces = myAncestors.Length ();
-  for (Standard_Integer anIter = 1; anIter <= aNbAnces; ++anIter)
+  for (Graphic3d_IndexedMapOfAddress::Iterator anIter (myAncestors); anIter.More(); anIter.Next())
   {
-    theSet.Add ((Graphic3d_Structure* )(myAncestors.Value (anIter)));
+    theSet.Add ((Graphic3d_Structure* )anIter.Value());
   }
 }
 
@@ -1370,11 +1300,66 @@ Standard_Address Graphic3d_Structure::Owner() const
 //=============================================================================
 void Graphic3d_Structure::Descendants (Graphic3d_MapOfStructure& theSet) const
 {
-  const Standard_Integer aNbDesc = myDescendants.Length ();
-  for (Standard_Integer anIter = 1; anIter <= aNbDesc; ++anIter)
+  for (Graphic3d_IndexedMapOfAddress::Iterator anIter (myDescendants); anIter.More(); anIter.Next())
   {
-    theSet.Add ((Graphic3d_Structure* )(myDescendants.Value (anIter)));
+    theSet.Add ((Graphic3d_Structure* )anIter.Value());
   }
+}
+
+//=============================================================================
+//function : AppendAncestor
+//purpose  :
+//=============================================================================
+Standard_Boolean Graphic3d_Structure::AppendAncestor (const Standard_Address theAncestor)
+{
+  const Standard_Integer aSize = myAncestors.Size();
+
+  return myAncestors.Add (theAncestor) > aSize; // new object
+}
+
+//=============================================================================
+//function : AppendDescendant
+//purpose  :
+//=============================================================================
+Standard_Boolean Graphic3d_Structure::AppendDescendant (const Standard_Address theDescendant)
+{
+  const Standard_Integer aSize = myDescendants.Size();
+
+  return myDescendants.Add (theDescendant) > aSize; // new object
+}
+
+//=============================================================================
+//function : RemoveAncestor
+//purpose  :
+//=============================================================================
+Standard_Boolean Graphic3d_Structure::RemoveAncestor (const Standard_Address theAncestor)
+{
+  const Standard_Integer anIndex = myAncestors.FindIndex (theAncestor);
+
+  if (anIndex != 0)
+  {
+    myAncestors.Swap (anIndex, myAncestors.Size());
+    myAncestors.RemoveLast();
+  }
+
+  return anIndex != 0; // object was found
+}
+
+//=============================================================================
+//function : RemoveDescendant
+//purpose  :
+//=============================================================================
+Standard_Boolean Graphic3d_Structure::RemoveDescendant (const Standard_Address theDescendant)
+{
+  const Standard_Integer anIndex = myDescendants.FindIndex (theDescendant);
+
+  if (anIndex != 0)
+  {
+    myDescendants.Swap (anIndex, myDescendants.Size());
+    myDescendants.RemoveLast();
+  }
+
+  return anIndex != 0; // object was found
 }
 
 //=============================================================================
@@ -1385,7 +1370,10 @@ void Graphic3d_Structure::Connect (const Handle(Graphic3d_Structure)& theStructu
                                    const Graphic3d_TypeOfConnection   theType,
                                    const Standard_Boolean             theWithCheck)
 {
-  if (IsDeleted()) return;
+  if (IsDeleted())
+  {
+    return;
+  }
 
   // cycle detection
   if (theWithCheck
@@ -1394,47 +1382,34 @@ void Graphic3d_Structure::Connect (const Handle(Graphic3d_Structure)& theStructu
     return;
   }
 
-  switch (theType)
+  const Standard_Address aStructure = theStructure.operator->();
+
+  if (theType == Graphic3d_TOC_DESCENDANT)
   {
-    case Graphic3d_TOC_DESCENDANT:
+    if (!AppendDescendant (aStructure))
     {
-      const Standard_Integer aNbDesc = myDescendants.Length();
-      for (Standard_Integer anIter = 1; anIter <= aNbDesc; ++anIter)
-      {
-        if (myDescendants.Value (anIter) == theStructure.operator->())
-        {
-          return;
-        }
-      }
-
-      myDescendants.Append (theStructure.operator->());
-      CalculateBoundBox();
-      theStructure->Connect (this, Graphic3d_TOC_ANCESTOR);
-
-      GraphicConnect (theStructure);
-      myStructureManager->Connect (this, theStructure);
-
-      Update();
       return;
     }
-    case Graphic3d_TOC_ANCESTOR:
+
+    CalculateBoundBox();
+    theStructure->Connect (this, Graphic3d_TOC_ANCESTOR);
+
+    GraphicConnect (theStructure);
+    myStructureManager->Connect (this, theStructure);
+
+    Update();
+  }
+  else // Graphic3d_TOC_ANCESTOR
+  {
+    if (!AppendAncestor (aStructure))
     {
-      const Standard_Integer aNbAnces = myAncestors.Length();
-      for (Standard_Integer anIter = 1; anIter <= aNbAnces; ++anIter)
-      {
-        if (myAncestors.Value (anIter) == theStructure.operator->())
-        {
-          return;
-        }
-      }
-
-      myAncestors.Append (theStructure.operator->());
-      CalculateBoundBox();
-      theStructure->Connect (this, Graphic3d_TOC_DESCENDANT);
-
-      // myGraphicDriver->Connect is called in case if connection between parent and child
       return;
     }
+
+    CalculateBoundBox();
+    theStructure->Connect (this, Graphic3d_TOC_DESCENDANT);
+
+    // myStructureManager->Connect is called in case if connection between parent and child
   }
 }
 
@@ -1444,37 +1419,29 @@ void Graphic3d_Structure::Connect (const Handle(Graphic3d_Structure)& theStructu
 //=============================================================================
 void Graphic3d_Structure::Disconnect (const Handle(Graphic3d_Structure)& theStructure)
 {
-  if (IsDeleted()) return;
-
-  const Standard_Integer aNbDesc = myDescendants.Length();
-  for (Standard_Integer anIter = 1; anIter <= aNbDesc; ++anIter)
+  if (IsDeleted())
   {
-    if (myDescendants.Value (anIter) == theStructure.operator->())
-    {
-      myDescendants.Remove (anIter);
-      theStructure->Disconnect (this);
-
-      GraphicDisconnect (theStructure);
-      myStructureManager->Disconnect (this, theStructure);
-
-      CalculateBoundBox();
-
-      Update();
-      return;
-    }
+    return;
   }
 
-  const Standard_Integer aNbAnces = myAncestors.Length();
-  for (Standard_Integer anIter = 1; anIter <= aNbAnces; ++anIter)
+  const Standard_Address aStructure = theStructure.operator->();
+
+  if (RemoveDescendant (aStructure))
   {
-    if (myAncestors.Value (anIter) == theStructure.operator->())
-    {
-      myAncestors.Remove (anIter);
-      theStructure->Disconnect (this);
-      CalculateBoundBox();
-      // no call of myGraphicDriver->Disconnect in case of an ancestor
-      return;
-    }
+    theStructure->Disconnect (this);
+
+    GraphicDisconnect (theStructure);
+    myStructureManager->Disconnect (this, theStructure);
+
+    CalculateBoundBox();
+    Update();
+  }
+  else if (RemoveAncestor (aStructure))
+  {
+    theStructure->Disconnect (this);
+    CalculateBoundBox();
+
+    // no call of myStructureManager->Disconnect in case of an ancestor
   }
 }
 
@@ -1490,27 +1457,25 @@ void Graphic3d_Structure::DisconnectAll (const Graphic3d_TypeOfConnection theTyp
   {
     case Graphic3d_TOC_DESCENDANT:
     {
-      const Standard_Integer aLength = myDescendants.Length();
-      for (Standard_Integer anIter = 1; anIter <= aLength; ++anIter)
+      for (Standard_Integer anIdx = 1, aLength = myDescendants.Size(); anIdx <= aLength; ++anIdx)
       {
         // Value (1) instead of Value (i) as myDescendants
         // is modified by :
         // Graphic3d_Structure::Disconnect (AStructure)
         // that takes AStructure from myDescendants
-        ((Graphic3d_Structure* )(myDescendants.Value (1)))->Disconnect (this);
+        ((Graphic3d_Structure* )(myDescendants.FindKey (1)))->Disconnect (this);
       }
       break;
     }
     case Graphic3d_TOC_ANCESTOR:
     {
-      const Standard_Integer aLength = myAncestors.Length();
-      for (Standard_Integer anIter = 1; anIter <= aLength; ++anIter)
+      for (Standard_Integer anIdx = 1, aLength = myAncestors.Size(); anIdx <= aLength; ++anIdx)
       {
         // Value (1) instead of Value (i) as myAncestors
         // is modified by :
         // Graphic3d_Structure::Disconnect (AStructure)
         // that takes AStructure from myAncestors
-        ((Graphic3d_Structure* )(myAncestors.Value (1)))->Disconnect (this);
+        ((Graphic3d_Structure* )(myAncestors.FindKey (1)))->Disconnect (this);
       }
       break;
     }
@@ -1542,8 +1507,8 @@ void Graphic3d_Structure::SetTransform (const TColStd_Array2OfReal&       theMat
   TColStd_Array2OfReal aMatrix44 (0, 3, 0, 3);
 
   // Assign the new transformation in an array [0..3][0..3]
-  // Avoid problemes if the user has defined matrice [1..4][1..4]
-  //                                              or [3..6][-1..2] !!
+  // Avoid problems if the user has defined matrix [1..4][1..4]
+  //                                            or [3..6][-1..2] !!
   Standard_Integer lr = theMatrix.LowerRow();
   Standard_Integer ur = theMatrix.UpperRow();
   Standard_Integer lc = theMatrix.LowerCol();
@@ -1745,34 +1710,13 @@ gp_Pnt Graphic3d_Structure::TransformPersistencePoint() const
 void Graphic3d_Structure::Remove (const Standard_Address           thePtr,
                                   const Graphic3d_TypeOfConnection theType)
 {
-  switch (theType)
+  if (theType == Graphic3d_TOC_DESCENDANT)
   {
-    case Graphic3d_TOC_DESCENDANT:
-    {
-      const Standard_Integer aNbDesc = myDescendants.Length();
-      for (Standard_Integer anIter = 1; anIter <= aNbDesc; ++anIter)
-      {
-        if (myDescendants.Value (anIter) == thePtr)
-        {
-          myDescendants.Remove (anIter);
-          return;
-        }
-      }
-      break;
-    }
-    case Graphic3d_TOC_ANCESTOR:
-    {
-      const Standard_Integer aNbAncestors = myAncestors.Length();
-      for (Standard_Integer anIter = 1; anIter <= aNbAncestors; ++anIter)
-      {
-        if (myAncestors.Value (anIter) == thePtr)
-        {
-          myAncestors.Remove (anIter);
-          return;
-        }
-      }
-      break;
-    }
+    RemoveDescendant (thePtr);
+  }
+  else
+  {
+    RemoveAncestor (thePtr);
   }
 }
 
@@ -1814,21 +1758,12 @@ Handle(Graphic3d_StructureManager) Graphic3d_Structure::StructureManager() const
 //function : minMaxCoord
 //purpose  :
 //=============================================================================
-Graphic3d_BndBox4f Graphic3d_Structure::minMaxCoord (const Standard_Boolean theToIgnoreInfiniteFlag) const
+Graphic3d_BndBox4f Graphic3d_Structure::minMaxCoord() const
 {
   Graphic3d_BndBox4f aBnd;
   for (Graphic3d_SequenceOfGroup::Iterator aGroupIter (myCStructure->Groups()); aGroupIter.More(); aGroupIter.Next())
   {
-    if (!theToIgnoreInfiniteFlag)
-    {
-      aBnd.Combine (aGroupIter.Value()->BoundingBox());
-    }
-    else
-    {
-      Graphic3d_BndBox4f aValidBnd (aGroupIter.Value()->BoundingBox().CornerMin(),
-                                    aGroupIter.Value()->BoundingBox().CornerMax());
-      aBnd.Combine (aValidBnd);
-    }
+    aBnd.Combine (aGroupIter.Value()->BoundingBox());
   }
   return aBnd;
 }
@@ -1840,7 +1775,7 @@ Graphic3d_BndBox4f Graphic3d_Structure::minMaxCoord (const Standard_Boolean theT
 void Graphic3d_Structure::getBox (Graphic3d_BndBox4d&    theBox,
                                   const Standard_Boolean theToIgnoreInfiniteFlag) const
 {
-  Graphic3d_BndBox4f aBoxF = minMaxCoord (theToIgnoreInfiniteFlag);
+  Graphic3d_BndBox4f aBoxF = minMaxCoord();
   if (aBoxF.IsValid())
   {
     theBox = Graphic3d_BndBox4d (Graphic3d_Vec4d ((Standard_Real )aBoxF.CornerMin().x(),
@@ -1880,9 +1815,9 @@ void Graphic3d_Structure::addTransformed (Graphic3d_BndBox4d&    theBox,
   Graphic3d_BndBox4d aCombinedBox, aBox;
   getBox (aCombinedBox, theToIgnoreInfiniteFlag);
 
-  for (Standard_Integer aStructIt = 1; aStructIt <= myDescendants.Length(); ++aStructIt)
+  for (Graphic3d_IndexedMapOfAddress::Iterator anIter (myDescendants); anIter.More(); anIter.Next())
   {
-    const Graphic3d_Structure* aStruct = (const Graphic3d_Structure* )myDescendants.Value (aStructIt);
+    const Graphic3d_Structure* aStruct = (const Graphic3d_Structure* )anIter.Value();
     aStruct->getBox (aBox, theToIgnoreInfiniteFlag);
     aCombinedBox.Combine (aBox);
   }
@@ -2281,7 +2216,6 @@ void Graphic3d_Structure::GraphicHighlight (const Aspect_TypeOfHighlightMethod t
     {
       myHighlightColor.Values (anRGB[0], anRGB[1], anRGB[2], Quantity_TOC_RGB);
       myCStructure->HighlightWithColor (Graphic3d_Vec3 (float (anRGB[0]), float (anRGB[1]), float (anRGB[2])), Standard_True);
-      myCStructure->UpdateNamedStatus();
       break;
     }
     case Aspect_TOHM_BOUNDBOX:
@@ -2323,11 +2257,9 @@ void Graphic3d_Structure::GraphicUnHighlight()
   {
     case Aspect_TOHM_COLOR:
       myCStructure->HighlightWithColor (Graphic3d_Vec3 (0.0f, 0.0f, 0.0f), Standard_False);
-      myCStructure->UpdateNamedStatus();
       break;
     case Aspect_TOHM_BOUNDBOX:
       myCStructure->HighlightWithBndBox (this, Standard_False);
-      myCStructure->UpdateNamedStatus();
       break;
   }
 }
@@ -2381,22 +2313,23 @@ Standard_Boolean Graphic3d_Structure::HLRValidation() const
 //function : SetZLayer
 //purpose  :
 //=======================================================================
-void Graphic3d_Structure::SetZLayer (const Standard_Integer theLayerId)
+void Graphic3d_Structure::SetZLayer (const Graphic3d_ZLayerId theLayerId)
 {
   // if the structure is not displayed, unable to change its display layer
   if (IsDeleted ())
     return;
 
   myStructureManager->ChangeZLayer (this, theLayerId);
+  myCStructure->SetZLayer (theLayerId);
 }
 
 //=======================================================================
 //function : GetZLayer
 //purpose  :
 //=======================================================================
-Standard_Integer Graphic3d_Structure::GetZLayer () const
+Graphic3d_ZLayerId Graphic3d_Structure::GetZLayer() const
 {
-  return myStructureManager->GetZLayer (this);
+  return myCStructure->ZLayer();
 }
 
 //=======================================================================

@@ -41,6 +41,7 @@
 #include <Geom_Curve.hxx>
 #include <Geom_BSplineSurface.hxx>
 #include <GeomAdaptor_HSurface.hxx>
+#include <GProp_GProps.hxx>
 
 #include <TopoDS.hxx>
 #include <TopoDS_Edge.hxx>
@@ -51,6 +52,7 @@
 #include <TopExp_Explorer.hxx>
 #include <TopTools_SequenceOfShape.hxx>
 
+#include <BRepGProp.hxx>
 #include <BRep_Tool.hxx>
 #include <BRep_Builder.hxx>
 #include <BRepTopAdaptor_FClass2d.hxx>
@@ -164,6 +166,7 @@ void ShapeFix_Face::ClearModes()
   myFixAddNaturalBoundMode   = -1;
   myFixMissingSeamMode       = -1;
   myFixSmallAreaWireMode     = -1;
+  myRemoveSmallAreaFaceMode  = -1;
   myFixIntersectingWiresMode = -1;
   myFixLoopWiresMode         = -1;
   myFixSplitFaceMode         = -1;
@@ -460,6 +463,7 @@ Standard_Boolean ShapeFix_Face::Perform()
                theAdvFixWire->StatusConnected(ShapeExtend_DONE) ||
                theAdvFixWire->StatusEdgeCurves(ShapeExtend_DONE) ||
                theAdvFixWire->StatusNotches(ShapeExtend_DONE) ||  // CR0024983
+               theAdvFixWire->StatusFixTails(ShapeExtend_DONE) ||
                theAdvFixWire->StatusDegenerated(ShapeExtend_DONE) ||
                theAdvFixWire->StatusClosed(ShapeExtend_DONE));
         TopoDS_Wire w = theAdvFixWire->Wire();
@@ -559,9 +563,10 @@ Standard_Boolean ShapeFix_Face::Perform()
         }
 	if ( theAdvFixWire->Perform() ) {
           isfixReorder =  theAdvFixWire->StatusReorder(ShapeExtend_DONE);
-	  fixed = (theAdvFixWire->StatusLacking(ShapeExtend_DONE) ||
-                   theAdvFixWire->StatusSelfIntersection(ShapeExtend_DONE) ||
-                   theAdvFixWire->StatusNotches(ShapeExtend_DONE));  //Standard_True; 
+          fixed = (theAdvFixWire->StatusLacking(ShapeExtend_DONE) ||
+            theAdvFixWire->StatusSelfIntersection(ShapeExtend_DONE) ||
+            theAdvFixWire->StatusNotches(ShapeExtend_DONE) ||
+            theAdvFixWire->StatusFixTails(ShapeExtend_DONE));
 	  TopoDS_Wire w = theAdvFixWire->Wire();
           if(fixed) {
             if ( ! Context().IsNull() ) Context()->Replace ( wire, w );
@@ -685,13 +690,14 @@ Standard_Boolean ShapeFix_Face::Perform()
     myFace = TopoDS::Face ( exp.Current() );
 
     // fix small-area wires
-    if ( NeedFix ( myFixSmallAreaWireMode, Standard_False ) ) {
-      if ( FixSmallAreaWire() )
-	myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE4 );
+    if ( NeedFix ( myFixSmallAreaWireMode, Standard_False ) )
+    {
+      const Standard_Boolean isRemoveFace = NeedFix( myRemoveSmallAreaFaceMode, Standard_False );
+      if ( FixSmallAreaWire( isRemoveFace ) )
+        myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE4 );
     }
   }
-  
-    
+
   if ( ! Context().IsNull() ) {
     if(Status ( ShapeExtend_DONE ) && !isReplaced && !aInitFace.IsSame(savShape))
     {
@@ -1278,6 +1284,16 @@ Standard_Boolean ShapeFix_Face::FixOrientation(TopTools_DataMapOfShapeListOfShap
                   found = (staout != clas.Perform (unp1,Standard_False));
                 }
               }
+              // Additional check of diagonal steps for toroidal surfaces
+              if (!found && uclosed && vclosed)
+              {
+                for (Standard_Real dX = -1.0; dX <= 1.0 && !found; dX += 2.0)
+                  for (Standard_Real dY = -1.0; dY <= 1.0 && !found; dY += 2.0)
+                  {
+                    unp1.SetCoord(unp.X() + uRange * dX, unp.Y() + vRange * dY);
+                    found = (staout != clas.Perform(unp1, Standard_False));
+                  }
+              }
             }
             if(found) {
               if(stb==TopAbs_IN) stb = TopAbs_OUT;
@@ -1644,52 +1660,73 @@ Standard_Boolean ShapeFix_Face::FixMissingSeam()
     ws.Append ( w2 );
   }
   
+  // Check consistency of orientations of the two wires that need to be connected by a seam
+  Standard_Real uf=SUF, vf=SVF;  
+  Standard_Integer coord = ( ismodeu ? 1 : 0 );
+  Standard_Integer isneg = ( ismodeu ? ismodeu : -ismodev );
+  Standard_Real period = ( ismodeu ? URange : VRange );
+  TopoDS_Shape S;
+  Standard_Real m1[2][2], m2[2][2];
+  S = myFace.EmptyCopied();
+  B.Add ( S, w1 );
+  ShapeAnalysis::GetFaceUVBounds (TopoDS::Face(S), m1[0][0], m1[0][1], m1[1][0], m1[1][1]);
+  S = myFace.EmptyCopied();
+  B.Add ( S, w2 );
+  ShapeAnalysis::GetFaceUVBounds (TopoDS::Face(S), m2[0][0], m2[0][1], m2[1][0], m2[1][1]);
+   
+  // For the case when surface is closed only in one direction it is necesary to check
+  // validity of orientation of the open wires in parametric space. 
+  // In case of U closed surface wire with minimal V coordinate should be directed in positive direction by U
+  // In case of V closed surface wire with minimal U coordinate should be directed in negative direction by V
+  if (!vclosed || !uclosed)
+  {
+    Standard_Real deltaOther = 0.5 * (m2[coord][0] + m2[coord][1]) - 0.5 * (m1[coord][0] + m1[coord][1]);
+    if (deltaOther  * isneg < 0)
+    {
+      w1.Reverse();
+      w2.Reverse();
+    }
+  }
+
   // sort original wires
   Handle(ShapeFix_Wire) sfw = new ShapeFix_Wire;
   sfw->SetFace ( myFace );
   sfw->SetPrecision ( Precision() );
-
   Handle(ShapeExtend_WireData) wd1 = new ShapeExtend_WireData ( w1 );
   Handle(ShapeExtend_WireData) wd2 = new ShapeExtend_WireData ( w2 );
-
-  // sorting
-//  Standard_Boolean degenerated = ( secondDeg != firstDeg );
-//  if ( ! degenerated ) {
-    sfw->Load ( wd1 );
-    sfw->FixReorder();
-//  }
+  sfw->Load ( wd1 );
+  sfw->FixReorder();
   sfw->Load ( wd2 );
   sfw->FixReorder();
-
+  TopoDS_Wire w11 = wd1->Wire();
+  TopoDS_Wire w21 = wd2->Wire();
+ 
   //:abv 29.08.01: reconstruct face taking into account reversing
   TopoDS_Shape dummy = myFace.EmptyCopied();
   TopoDS_Face tmpF = TopoDS::Face ( dummy );
   tmpF.Orientation ( TopAbs_FORWARD );
   for ( i=1; i <= ws.Length(); i++ ) {
     TopoDS_Wire wire = TopoDS::Wire ( ws.Value(i) );
-    if ( wire.IsSame ( w1 ) ) wire = w1;
-    else if ( wire.IsSame ( w2 ) ) wire = w2;
+    if ( wire.IsSame ( w1 ) ) wire = w11;
+    else if ( wire.IsSame ( w2 ) ) wire = w21;
+    else
+    {
+      // other wires (not boundary) are considered as holes; make sure to have them oriented accordingly
+      TopoDS_Shape curface = tmpF.EmptyCopied();
+      B.Add(curface,wire);
+      curface.Orientation ( myFace.Orientation() );
+      if( ShapeAnalysis::IsOuterBound(TopoDS::Face(curface)))
+        wire.Reverse();
+    }
     B.Add ( tmpF, wire );
   }
+ 
   tmpF.Orientation ( myFace.Orientation() );
-  
-  Standard_Real uf=SUF, vf=SVF;
-  
+
   // A special kind of FixShifted is necessary for torus-like
   // surfaces to adjust wires by period ALONG the missing SEAM direction
   // tr9_r0501-ug.stp #187640
   if ( uclosed && vclosed ) {
-    Standard_Integer coord = ( ismodeu ? 1 : 0 );
-    Standard_Integer isneg = ( ismodeu ? ismodeu : -ismodev );
-    Standard_Real period = ( ismodeu ? URange : VRange );
-    TopoDS_Shape S;
-    Standard_Real m1[2][2], m2[2][2];
-    S = tmpF.EmptyCopied();
-    B.Add ( S, w1 );
-    ShapeAnalysis::GetFaceUVBounds (TopoDS::Face(S), m1[0][0], m1[0][1], m1[1][0], m1[1][1]);
-    S = tmpF.EmptyCopied();
-    B.Add ( S, w2 );
-    ShapeAnalysis::GetFaceUVBounds (TopoDS::Face(S), m2[0][0], m2[0][1], m2[1][0], m2[1][1]);
     Standard_Real shiftw2 = 
       ShapeAnalysis::AdjustByPeriod ( 0.5 * ( m2[coord][0] + m2[coord][1] ),
                                       0.5 * ( m1[coord][0] + m1[coord][1]  +
@@ -1701,9 +1738,10 @@ Standard_Boolean ShapeFix_Face::FixMissingSeam()
       if(it.Value().ShapeType() != TopAbs_WIRE)
         continue;
       TopoDS_Wire w = TopoDS::Wire ( it.Value() );
-      if ( w == w1 ) continue;
+      if ( w == w11 ) continue;
       Standard_Real shift;
-      if ( w == w2 ) shift = shiftw2;
+      if ( w == w21 ) shift = shiftw2;
+
       else {
 	S = tmpF.EmptyCopied();
 	B.Add ( S, w );
@@ -1840,51 +1878,69 @@ Standard_Boolean ShapeFix_Face::FixMissingSeam()
 //function : FixSmallAreaWire
 //purpose  : 
 //=======================================================================
-
 //%14 pdn 24.02.99 PRO10109, USA60293 fix wire on face with small area.
-Standard_Boolean ShapeFix_Face::FixSmallAreaWire() 
+Standard_Boolean ShapeFix_Face::FixSmallAreaWire(const Standard_Boolean theIsRemoveSmallFace)
 {
-  if ( ! Context().IsNull() ) {
-    TopoDS_Shape S = Context()->Apply ( myFace );
-    myFace = TopoDS::Face ( S );
+  if ( !Context().IsNull() )
+  {
+    TopoDS_Shape aShape = Context()->Apply(myFace);
+    myFace = TopoDS::Face(aShape);
   }
-  
-  //smh#8
-  TopoDS_Shape emptyCopied = myFace.EmptyCopied();
-  TopoDS_Face face = TopoDS::Face (emptyCopied);
+
+  BRep_Builder aBuilder;
   Standard_Integer nbRemoved = 0, nbWires = 0;
-  BRep_Builder B;
-  Standard_Real prec = ::Precision::PConfusion()*100;
-  for (TopoDS_Iterator wi (myFace, Standard_False); wi.More(); wi.Next()) {
-    if(wi.Value().ShapeType() != TopAbs_WIRE && 
-       (wi.Value().Orientation() != TopAbs_FORWARD && wi.Value().Orientation() != TopAbs_REVERSED))
-        continue;
-    TopoDS_Wire wire = TopoDS::Wire ( wi.Value() );
-    Handle(ShapeAnalysis_Wire) saw = new ShapeAnalysis_Wire(wire,myFace,prec);
-    if ( saw->CheckSmallArea(prec) )
+
+  TopoDS_Shape anEmptyCopy = myFace.EmptyCopied();
+  TopoDS_Face  aFace = TopoDS::Face(anEmptyCopy);
+
+  const TopoDS_Wire   anOuterWire  = BRepTools::OuterWire(myFace);
+  const Standard_Real aTolerance3d = ShapeFix_Root::Precision();
+  for (TopoDS_Iterator aWIt(myFace, Standard_False); aWIt.More(); aWIt.Next())
+  {
+    const TopoDS_Shape& aShape = aWIt.Value();
+    if ( aShape.ShapeType()   != TopAbs_WIRE    &&
+         aShape.Orientation() != TopAbs_FORWARD &&
+         aShape.Orientation() != TopAbs_REVERSED )
     {
-      SendWarning ( wire, Message_Msg ("FixAdvFace.FixSmallAreaWire.MSG0") );// Null area wire detected, wire skipped
-      nbRemoved++;
+      continue;
+    }
+
+    const TopoDS_Wire&         aWire       = TopoDS::Wire(aShape);
+    const Standard_Boolean     isOuterWire = anOuterWire.IsEqual(aWire);
+    Handle(ShapeAnalysis_Wire) anAnalyzer  = new ShapeAnalysis_Wire(aWire, myFace, aTolerance3d);
+    if ( anAnalyzer->CheckSmallArea(aWire, isOuterWire) )
+    {
+      // Null area wire detected, wire skipped
+      SendWarning(aWire, Message_Msg("FixAdvFace.FixSmallAreaWire.MSG0"));
+      ++nbRemoved;
     }
     else
     {
-      B.Add(face,wire);
-      nbWires++;
+      aBuilder.Add(aFace, aWire);
+      ++nbWires;
     }
   }
-  if ( nbRemoved <=0 ) return Standard_False;
-  
-  if ( nbWires <=0 ) {
+
+  if ( nbRemoved <= 0 )
+    return Standard_False;
+
+  if ( nbWires <= 0 )
+  {
 #ifdef OCCT_DEBUG
     cout << "Warning: ShapeFix_Face: All wires on a face have small area; left untouched" << endl;
 #endif
+    if ( theIsRemoveSmallFace && !Context().IsNull() )
+      Context()->Remove(myFace);
+
     return Standard_False;
   }
 #ifdef OCCT_DEBUG
   cout << "Warning: ShapeFix_Face: " << nbRemoved << " small area wire(s) removed" << endl;
 #endif
-  if ( ! Context().IsNull() ) Context()->Replace ( myFace, face );
-  myFace = face;
+  if ( !Context().IsNull() )
+    Context()->Replace(myFace, aFace);
+
+  myFace = aFace;
   return Standard_True;
 }
 //=======================================================================

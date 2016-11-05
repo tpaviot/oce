@@ -32,6 +32,7 @@
 #include <gp_Trsf.hxx>
 #include <gp_Trsf2d.hxx>
 
+#include <Geom_BSplineSurface.hxx>
 #include <Geom_CartesianPoint.hxx>
 #include <Geom_ConicalSurface.hxx>
 #include <Geom_Curve.hxx>
@@ -63,6 +64,8 @@
 #include <Interface_Macros.hxx>
 
 #include <Precision.hxx>
+
+#include <ShapeAnalysis.hxx>
 
 #include <TColStd_HSequenceOfTransient.hxx>
 
@@ -390,6 +393,25 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRWire ::TransferEdge (const TopoDS_Edge&
     }
     else Curve2d = Handle(Geom2d_Curve)::DownCast(Curve2d->Copy());
 
+    //shift pcurves on periodic BSpline surfaces (issue 26138)
+    if (Surf->IsKind(STANDARD_TYPE(Geom_BSplineSurface))) {
+      Handle(Geom_BSplineSurface) aBSpline = Handle(Geom_BSplineSurface)::DownCast(Surf);
+      Standard_Real uShift = 0., vShift = 0.;
+      Standard_Real U0, U1, V0, V1;
+      Surf->Bounds(U0, U1, V0, V1);
+      if (aBSpline->IsUPeriodic() && Abs(Ufirst - U0) > Precision::PConfusion()) {
+        uShift = ShapeAnalysis::AdjustToPeriod(Ufirst, U0, U1);
+      }
+      if (aBSpline->IsVPeriodic() && Abs(Vfirst - V0) > Precision::PConfusion()) {
+        vShift = ShapeAnalysis::AdjustToPeriod(Vfirst, V0, V1);
+      }
+      if (Abs(uShift) > Precision::PConfusion() || Abs(vShift) > Precision::PConfusion()) {
+        gp_Trsf2d TR;
+        TR.SetTranslation(gp_Pnt2d(0.,0.),gp_Pnt2d(uShift,vShift));
+        Curve2d = Handle(Geom2d_Curve)::DownCast(Curve2d->Transformed(TR));
+      }
+    }
+
     if (!analyticMode&&((Surf->IsKind(STANDARD_TYPE(Geom_CylindricalSurface)))  ||
 			(Surf->IsKind(STANDARD_TYPE(Geom_ConicalSurface)))      ||
 			(Surf->IsKind(STANDARD_TYPE(Geom_SphericalSurface))))) {
@@ -525,8 +547,8 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRWire ::TransferWire
 	AddWarning(mywire, "an Edge is a null entity");
       }
       else {
-	ent = TransferEdge(E, Standard_False);
-	if (!ent.IsNull()) Seq->Append(ent);
+	      ent = TransferEdge(E, Standard_False);
+	      if (!ent.IsNull()) Seq->Append(ent);
       }
     }
   }
@@ -537,7 +559,7 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRWire ::TransferWire
   Standard_Integer nbedges = Seq->Length();
   Handle(IGESData_HArray1OfIGESEntity) Tab;
   if ( nbedges == 1 ) {
-    res = ent;
+    res = GetCasted(IGESData_IGESEntity, Seq->Value(1));
   }
   else if ( nbedges >= 2) {
     Tab =  new IGESData_HArray1OfIGESEntity(1,nbedges);

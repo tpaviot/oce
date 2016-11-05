@@ -26,6 +26,7 @@ FromSTEP.FixShape.FixOrientationMode		: -1
 FromSTEP.FixShape.FixAddNaturalBoundMode	: -1
 FromSTEP.FixShape.FixMissingSeamMode		: -1
 FromSTEP.FixShape.FixSmallAreaWireMode		: -1
+FromSTEP.FixShape.RemoveSmallAreaFaceMode	: -1
 FromSTEP.FixShape.FixIntersectingWiresMode	: -1
 FromSTEP.FixShape.FixLoopWiresMode              : -1
 FromSTEP.FixShape.FixSplitFaceMode              : -1
@@ -51,6 +52,9 @@ FromSTEP.FixShape.FixSeamMode			: -1
 FromSTEP.FixShape.FixShiftedMode		: -1
 FromSTEP.FixShape.FixEdgeSameParameterMode	:  0
 FromSTEP.FixShape.FixNotchedEdgesMode 		: -1
+FromSTEP.FixShape.FixTailMode : 0
+FromSTEP.FixShape.MaxTailAngle : 0
+FromSTEP.FixShape.MaxTailWidth : -1
 FromSTEP.FixShape.FixSelfIntersectingEdgeMode	: -1
 FromSTEP.FixShape.FixIntersectingEdgesMode	: -1
 FromSTEP.FixShape.FixNonAdjacentIntersectingEdgesMode : -1

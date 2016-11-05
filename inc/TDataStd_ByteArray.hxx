@@ -40,10 +40,11 @@ public:
   //! Returns an ID for array.
   Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  //! Finds or creates an attribute with the array.
+  //! Finds or creates an attribute with the array on the specified label.
   //! If <isDelta> == False, DefaultDeltaOnModification is used.
-  //! If attribute is already set, all input parameters are refused
-  //! and the found attribute is returned.
+  //! If <isDelta> == True, DeltaOnModification of the current attribute is used.
+  //! If attribute is already set, all input parameters are refused and the found
+  //! attribute is returned.
   Standard_EXPORT static   Handle(TDataStd_ByteArray) Set (const TDF_Label& label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False) ;
   
   //! Initialize the inner array with bounds from <lower> to <upper>

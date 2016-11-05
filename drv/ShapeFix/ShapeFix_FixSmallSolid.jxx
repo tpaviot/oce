@@ -1,0 +1,3 @@
+#include <TopoDS_Shape.hxx>
+#include <ShapeBuild_ReShape.hxx>
+#include <ShapeFix_FixSmallSolid.hxx>

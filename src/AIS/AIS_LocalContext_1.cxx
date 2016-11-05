@@ -18,58 +18,6 @@
 //              - use of optimisation in SelectMgr_ViewerSelector
 //              -> Best management in detected entities...
 
-#define BUC60569 	//GG_051199 Enable to select the local context 
-//			in any case and especially in multi selection mode.
-//			Note that right now when an hilighted owner is selected
-//			this owner is unhilighted,this permits to see the selection!
-//		 	Principle : an owner can have 3 state :
-//			1 : The owner is selected and no more highlightable
-//			0 : The owner is NOT selected
-//			-1: The owner is selected but stay highlightable (NEW)
-
-// IMP230600	//GG Add protection on selection methodes
-//			when nothing is selected
-
-#define BUC60726        //GG_040900 When nothing is detected, 
-//			Clear the last temporary stuff in any case
-
-#define BUC60765	//GG_121000 Avoid to raise when the same selection 
-//			is attached to several local context.
-
-#define BUC60771	//GG_261000	Avoid to crash after closing a view
-//			containing a selected entity and creating a new one.
-
-#define BUC60774	//GG_261000	Returns right select status on
-//			bounding-box selection type.
-
-#define BUC60818	//GG_300101	Enable detection even if
-//			SetAutomaticHilight(FALSE) has been used.
-
-#define IMP300101       //GG Enable to use polygon highlighting
-
-#define BUC60876	//GG_050401 Clear selection always even
-//			if the current highlight mode is not 0.
-
-#define BUC60953        //SAV_060701 For Select optimization. Selection by rectangle case.
-// for single selection no optimization done.
-
-#define IMP120701	//SZV made a shape valid for selection
-//			when required.
-
-#define IMP160701       //SZV Add InitDetected(),MoreDetected(),NextDetected(),
-//                       DetectedCurrentShape(),DetectedCurrentObject()
-//                       methods
-
-#define OCC138          //VTN Avoding infinit loop in AddOrRemoveSelected method.
-
-#define OCC189          //SAV: 18/03/02 AIS_Selection::Objects() returns ListOfTransient
-// instead of array.
-
-#define USE_MAP         //san : 18/04/03 USE_MAP - additional datamap is used to speed up access 
-//to certain owners in AIS_Selection::myresult list  
-
-#define OCC9026		//AEL Performance optimization of the FindSelectedOwnerFromShape() method.
-
 #include <AIS_LocalContext.jxx>
 #include <StdSelect_BRepOwner.hxx>
 #include <TColStd_ListOfInteger.hxx>
@@ -80,17 +28,15 @@
 #include <Prs3d_Drawer.hxx>
 #include <Prs3d_ShadingAspect.hxx>
 #include <AIS_LocalStatus.hxx>
-#include <StdPrs_WFShape.hxx>
 #include <Graphic3d_ArrayOfTriangles.hxx>
 #include <Graphic3d_Group.hxx>
 #include <Select3D_SensitiveTriangulation.hxx>
+#include <StdSelect_ViewerSelector3d.hxx>
 #include <SelectBasics_SensitiveEntity.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <NCollection_Map.hxx>
+#include <Visual3d_View.hxx>
 
-#ifdef OCC9026
-#include <SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive.hxx>
-#endif
 #include <SelectMgr_Selection.hxx>
 #include <SelectMgr_SequenceOfOwner.hxx>
 #include <OSD_Environment.hxx>
@@ -98,10 +44,7 @@
 #include <Geom_Transformation.hxx>
 #include <AIS_Selection.hxx>
 #include <Aspect_Grid.hxx>
-#ifdef IMP120701
 #include <AIS_Shape.hxx>
-#endif
-
 
 static Standard_Integer GetHiMod(const Handle(AIS_InteractiveObject)& IO)
 {
@@ -128,6 +71,7 @@ AIS_StatusOfDetection AIS_LocalContext::MoveTo (const Standard_Integer  theXpix,
 
   myCurDetected = 0;
   myDetectedSeq.Clear();
+  myFilters->SetDisabledObjects (theView->View()->HiddenObjects());
   myMainVS->Pick (theXpix, theYpix, theView);
 
   const Standard_Integer aDetectedNb = myMainVS->NbPicked();
@@ -151,9 +95,10 @@ AIS_StatusOfDetection AIS_LocalContext::MoveTo (const Standard_Integer  theXpix,
   // result of courses..
   if (aDetectedNb == 0 || myDetectedSeq.IsEmpty())
   {
-    if (mylastindex != 0 && mylastindex <= myMapOfOwner.Extent())
+    if (mylastindex != 0 && mylastindex <= myMapOfOwner->Extent())
     {
-      Unhilight (myMapOfOwner (mylastindex), theView);
+      myMainPM->ClearImmediateDraw();
+      Unhilight (myMapOfOwner->FindKey (mylastindex), theView);
       if (theToRedrawImmediate)
       {
         theView->RedrawImmediate();
@@ -203,7 +148,7 @@ AIS_StatusOfPick AIS_LocalContext::Select (const Standard_Boolean toUpdateViewer
     return (AIS_Selection::Extent() == 0) ? AIS_SOP_NothingSelected : AIS_SOP_Removed;
   }
 
-  const Handle(SelectMgr_EntityOwner)& anOwner = myMapOfOwner (aDetIndex);
+  const Handle(SelectMgr_EntityOwner)& anOwner = myMapOfOwner->FindKey (aDetIndex);
 
   ClearSelected (Standard_False);
 
@@ -369,13 +314,14 @@ AIS_StatusOfPick AIS_LocalContext::ShiftSelect (const Standard_Boolean toUpdateV
   {
     AIS_Selection::SetCurrentSelection (mySelName.ToCString());
     Standard_Integer aSelNum = AIS_Selection::Extent();
-    const Handle(SelectMgr_EntityOwner)& anOwner = myMapOfOwner (aDetIndex);
+    const Handle(SelectMgr_EntityOwner)& anOwner = myMapOfOwner->FindKey (aDetIndex);
     Standard_Boolean toSelect = anOwner->IsSelected() ? Standard_False : Standard_True;
     AIS_Selection::Select (anOwner);
     anOwner->SetSelected (toSelect);
 
     if(myAutoHilight)
     {
+      myMainPM->ClearImmediateDraw();
       const Handle(V3d_Viewer)& aViewer = myCTX->CurrentViewer();
       for (aViewer->InitActiveViews(); aViewer->MoreActiveViews(); aViewer->NextActiveViews())
       {
@@ -395,12 +341,10 @@ AIS_StatusOfPick AIS_LocalContext::ShiftSelect (const Standard_Boolean toUpdateV
       }
     } 
 
-#ifdef BUC60774
     Standard_Integer NS = AIS_Selection::Extent();
     if( NS == 1 ) return AIS_SOP_OneSelected;
     else if( NS > 1 ) return AIS_SOP_SeveralSelected;
     return aSelNum == 0 ? AIS_SOP_NothingSelected : AIS_SOP_Removed;
-#endif
   }
   return AIS_SOP_Error;
 }
@@ -545,7 +489,6 @@ void AIS_LocalContext::Unhilight (const Handle(SelectMgr_EntityOwner)& theOwner,
     return;
   }
 
-  myMainPM->ClearImmediateDraw();
   const Standard_Integer aHilightMode = GetHiMod (Handle(AIS_InteractiveObject)::DownCast (theOwner->Selectable()));
   if (IsSelected (theOwner))
   {
@@ -566,12 +509,8 @@ void AIS_LocalContext::Unhilight (const Handle(SelectMgr_EntityOwner)& theOwner,
 //=======================================================================
 void AIS_LocalContext::HilightPicked(const Standard_Boolean updateviewer)
 {
-  Standard_Boolean updMain(Standard_False);
-
   Handle(AIS_Selection) Sel = AIS_Selection::Selection(mySelName.ToCString());
-#ifdef BUC60765
   if( Sel.IsNull() ) return;
-#endif
 
   typedef NCollection_DataMap <Handle(SelectMgr_SelectableObject), NCollection_Handle<SelectMgr_SequenceOfOwner> > SelectMgr_DataMapOfObjectOwners;
   SelectMgr_DataMapOfObjectOwners aMap;
@@ -579,18 +518,11 @@ void AIS_LocalContext::HilightPicked(const Standard_Boolean updateviewer)
   Handle (PrsMgr_PresentationManager3d) PM = myMainPM;
   
   // to avoid problems when there is a loop searching for selected objects...
-#if !defined OCC189 && !defined USE_MAP
-  const TColStd_Array1OfTransient& Obj = Sel->Objects()->Array1();
-  for(Standard_Integer i =Obj.Lower();i<=Sel->NbStored();i++)
-  {
-    const Handle(Standard_Transient)& Tr = Obj(i);
-#else
   const AIS_NListTransient& Obj = Sel->Objects();
   AIS_NListTransient::Iterator anIter( Obj );
   for(; anIter.More(); anIter.Next())
   {
     const Handle(Standard_Transient)& Tr = anIter.Value();
-#endif
     if(!Tr.IsNull()){
       const Handle(SelectMgr_EntityOwner)& Ownr =
         *((const Handle(SelectMgr_EntityOwner)*) &Tr);
@@ -600,13 +532,8 @@ void AIS_LocalContext::HilightPicked(const Standard_Boolean updateviewer)
 	if(BROwnr.IsNull() || !BROwnr->ComesFromDecomposition()){
 	  Handle(SelectMgr_SelectableObject) SO  = Ownr->Selectable();
 	  IO = *((Handle(AIS_InteractiveObject)*)&SO);
-	  updMain = Standard_True;
 	}
-	else
-	  updMain = Standard_True;
       }
-      else
-	updMain = Standard_True;
       Handle(SelectMgr_SelectableObject) SO = Ownr->Selectable();
       Standard_Integer HM = GetHiMod(*((Handle(AIS_InteractiveObject)*)&SO));
       if ( Ownr->IsAutoHilight() )
@@ -641,48 +568,28 @@ void AIS_LocalContext::UnhilightPicked (const Standard_Boolean updateviewer)
 {
   myMainPM->ClearImmediateDraw();
 
-  Standard_Boolean updMain(Standard_False);
-
   Handle(AIS_Selection) Sel = AIS_Selection::Selection(mySelName.ToCString());
-#ifdef BUC60765
   if( Sel.IsNull() ) return;
-#endif
   Handle (PrsMgr_PresentationManager3d) PM = myMainPM;
   NCollection_Map<Handle(SelectMgr_SelectableObject)> anObjMap;
   
-#if !defined OCC189 && !defined USE_MAP  
-  const TColStd_Array1OfTransient& Obj = Sel->Objects()->Array1();
-  for(Standard_Integer i =Obj.Lower();i<=Sel->NbStored();i++){
-    const Handle(Standard_Transient)& Tr = Obj(i);
-#else
   const AIS_NListTransient& Obj = Sel->Objects();
   AIS_NListTransient::Iterator anIter( Obj );
   for(; anIter.More(); anIter.Next()){
     const Handle(Standard_Transient)& Tr = anIter.Value();
-#endif
     if(!Tr.IsNull()){
       const Handle(SelectMgr_EntityOwner)& Ownr =
         *((const Handle(SelectMgr_EntityOwner)*) &Tr);
       Standard_Integer HM(0);
       if(Ownr->HasSelectable()){
-#ifdef BUC60876
 	Handle(SelectMgr_SelectableObject) SO  = Ownr->Selectable();
 	Handle(AIS_InteractiveObject) IO = *((Handle(AIS_InteractiveObject)*)&SO);
         anObjMap.Add (IO);
 
         HM = GetHiMod(IO);
-#endif
 	Handle(StdSelect_BRepOwner) BROwnr = Handle(StdSelect_BRepOwner)::DownCast(Ownr);
 	if(BROwnr.IsNull() || !BROwnr->ComesFromDecomposition()){
-#ifndef BUC60876
-	  Handle(SelectMgr_SelectableObject) SO  = Ownr->Selectable();
-	  Handle(AIS_InteractiveObject) IO = *((Handle(AIS_InteractiveObject)*)&SO);
-	  HM = GetHiMod(IO);
-#endif
-	  updMain = Standard_True;
 	}
-	else
-	  updMain = Standard_True;
       }
       Ownr->Unhilight(PM,HM);
     }
@@ -695,14 +602,8 @@ void AIS_LocalContext::UnhilightPicked (const Standard_Boolean updateviewer)
       anIter1.Key()->ClearSelected();
   }
 
-  if(updateviewer){
-#ifdef BUC60774
+  if(updateviewer)
     myCTX->CurrentViewer()->Update();
-#else
-    if(updMain) myCTX->CurrentViewer()->Update();
-#endif
-  }
-  
 }
 
 //=======================================================================
@@ -772,6 +673,28 @@ HasShape() const
   return (hasshape&&comes);
 }
 
+//================================================================
+// Function : HasSelectedShape
+// Purpose  : Checks if there is a selected shape regardless of its decomposition status
+//================================================================
+Standard_Boolean AIS_LocalContext::HasSelectedShape() const
+{
+  if (AIS_Selection::CurrentSelection()->Extent() == 0)
+    return Standard_False;
+
+  Handle(Standard_Transient) aCurSelection = AIS_Selection::CurrentSelection()->Value();
+  if (aCurSelection.IsNull())
+    return Standard_False;
+
+  Handle(SelectMgr_EntityOwner) anOwner = Handle(SelectMgr_EntityOwner)::DownCast (aCurSelection);
+  Handle(StdSelect_BRepOwner) aBrepOwner = Handle(StdSelect_BRepOwner)::DownCast (anOwner);
+  if (aBrepOwner.IsNull())
+  {
+    return Standard_False;
+  }
+  return aBrepOwner->HasShape();
+}
+
 //==================================================
 // Function: 
 // Purpose :
@@ -785,6 +708,7 @@ TopoDS_Shape AIS_LocalContext::SelectedShape() const
   {
     return TopoDS_Shape();
   }
+
   return aBRO->Shape().Located (aBRO->Location() * aBRO->Shape().Location());
 }
 
@@ -897,16 +821,10 @@ void AIS_LocalContext::ClearSelected (const Standard_Boolean updateviewer)
   AIS_Selection::SetCurrentSelection(mySelName.ToCString());
 
   Handle(AIS_Selection) Sel = AIS_Selection::CurrentSelection();
-#if !defined OCC189 && !defined USE_MAP   
-  const TColStd_Array1OfTransient& Obj = Sel->Objects()->Array1();
-  for(Standard_Integer i =Obj.Lower();i<=Sel->NbStored();i++){
-    const Handle(Standard_Transient)& Tr = Obj(i);
-#else
   const AIS_NListTransient& Obj = Sel->Objects();
   AIS_NListTransient::Iterator anIter( Obj );
   for(; anIter.More(); anIter.Next()){
     const Handle(Standard_Transient)& Tr = anIter.Value();
-#endif
     if(!Tr.IsNull())
     {
       (*((const Handle(SelectMgr_EntityOwner)*)&Tr))->SetSelected (Standard_False);
@@ -937,7 +855,7 @@ void AIS_LocalContext::ClearOutdatedSelection (const Handle(AIS_InteractiveObjec
       continue;
     }
 
-    if (toClearDeactivated && !mySM->IsActivated (theIO, myMainVS, aMode))
+    if (toClearDeactivated && !mySM->IsActivated(theIO, aMode, myMainVS))
     {
       continue;
     }
@@ -945,7 +863,7 @@ void AIS_LocalContext::ClearOutdatedSelection (const Handle(AIS_InteractiveObjec
     Handle(SelectMgr_Selection) aSelection = theIO->Selection(aMode);
     for (aSelection->Init(); aSelection->More(); aSelection->Next())
     {
-      Handle(SelectBasics_SensitiveEntity) anEntity = aSelection->Sensitive();
+      Handle(SelectBasics_SensitiveEntity) anEntity = aSelection->Sensitive()->BaseSensitive();
       if (anEntity.IsNull())
       {
         continue;
@@ -987,7 +905,7 @@ void AIS_LocalContext::ClearOutdatedSelection (const Handle(AIS_InteractiveObjec
 
   Standard_Boolean isAISRemainsDetected = Standard_False;
 
-  // 3. Remove entity owners from AIS_Selection
+  // 3. AIS_Selection : remove entity owners from AIS_Selection
   const Handle(V3d_Viewer)& aViewer = myCTX->CurrentViewer();
   Handle(AIS_Selection) aSelection = AIS_Selection::Selection (mySelName.ToCString());
   AIS_NListTransient::Iterator anIter (aSelection->Objects());
@@ -1004,26 +922,27 @@ void AIS_LocalContext::ClearOutdatedSelection (const Handle(AIS_InteractiveObjec
     {
       isAISRemainsDetected = Standard_True;
     }
-
-    aRemoveEntites.Append (anOwner);
-    anOwner->SetSelected (Standard_False);
-    for (aViewer->InitActiveViews(); aViewer->MoreActiveViews(); aViewer->NextActiveViews())
+    else
     {
-      Unhilight (anOwner, aViewer->ActiveView());
+      aRemoveEntites.Append (anOwner);
+      anOwner->SetSelected (Standard_False);
+      for (aViewer->InitActiveViews(); aViewer->MoreActiveViews(); aViewer->NextActiveViews())
+      {
+        Unhilight (anOwner, aViewer->ActiveView());
+      }
     }
   }
-
   AIS_NListTransient::Iterator anIterRemove (aRemoveEntites);
   for (; anIterRemove.More(); anIterRemove.Next())
   {
     aSelection->Select (anIterRemove.Value());
   }
 
-  // 4. Remove entity owners from myMapOfOwner
+  // 4. AIS_LocalContext - myMapOfOwner : remove entity owners from myMapOfOwner
   SelectMgr_IndexedMapOfOwner anOwnersToKeep;
-  for (Standard_Integer anIdx = 1; anIdx <= myMapOfOwner.Extent(); anIdx++)
+  for (Standard_Integer anIdx = 1; anIdx <= myMapOfOwner->Extent(); anIdx++)
   {
-    Handle(SelectMgr_EntityOwner) anOwner = myMapOfOwner (anIdx);
+    Handle(SelectMgr_EntityOwner) anOwner = myMapOfOwner->FindKey (anIdx);
     if (anOwner.IsNull())
     {
       continue;
@@ -1041,9 +960,13 @@ void AIS_LocalContext::ClearOutdatedSelection (const Handle(AIS_InteractiveObjec
       }
     }
   }
-  myMapOfOwner.Clear();
-  myMapOfOwner.Assign (anOwnersToKeep);
-  mylastindex = myMapOfOwner.FindIndex (aLastPicked);
+  myMapOfOwner->Clear();
+  myMapOfOwner->Assign (anOwnersToKeep);
+  mylastindex = myMapOfOwner->FindIndex (aLastPicked);
+  if (!IsValidIndex (mylastindex))
+  {
+    myMainPM->ClearImmediateDraw();
+  }
 
   if (!isAISRemainsDetected)
   {
@@ -1090,7 +1013,7 @@ void AIS_LocalContext::SetSelected(const Handle(AIS_InteractiveObject)& anIObj,
       const Handle(SelectMgr_Selection)& SIOBJ = anIObj->Selection(0);
       SIOBJ->Init();
       if(SIOBJ->More()){
-	Handle(SelectBasics_EntityOwner) BO = SIOBJ->Sensitive()->OwnerId();
+        Handle(SelectBasics_EntityOwner) BO = SIOBJ->Sensitive()->BaseSensitive()->OwnerId();
 	EO = *((Handle(SelectMgr_EntityOwner)*)&BO);
       }
     }
@@ -1127,10 +1050,9 @@ void AIS_LocalContext::AddOrRemoveSelected(const Handle(AIS_InteractiveObject)& 
     {
       const Handle(SelectMgr_Selection)& SIOBJ = anIObj->Selection(0);
       SIOBJ->Init();
-      if(SIOBJ->More())
-      {
-        Handle(SelectBasics_EntityOwner) BO = SIOBJ->Sensitive()->OwnerId();
-        EO = *((Handle(SelectMgr_EntityOwner)*)&BO);
+      if(SIOBJ->More()){
+        Handle(SelectBasics_EntityOwner) BO = SIOBJ->Sensitive()->BaseSensitive()->OwnerId();
+	EO = *((Handle(SelectMgr_EntityOwner)*)&BO);
       }
     }
     if(EO.IsNull())
@@ -1197,6 +1119,7 @@ void AIS_LocalContext::manageDetected (const Handle(SelectMgr_EntityOwner)& theP
 {
   if (thePickOwner.IsNull())
   {
+    myMainPM->ClearImmediateDraw();
     if (theToRedrawImmediate)
     {
       theView->RedrawImmediate();
@@ -1236,9 +1159,9 @@ void AIS_LocalContext::manageDetected (const Handle(SelectMgr_EntityOwner)& theP
   //
   //=======================================================================================================
 
-  const Standard_Integer aNewIndex = myMapOfOwner.Contains  (thePickOwner)
-                                   ? myMapOfOwner.FindIndex (thePickOwner)
-                                   : myMapOfOwner.Add       (thePickOwner);
+  const Standard_Integer aNewIndex = myMapOfOwner->Contains  (thePickOwner)
+                                   ? myMapOfOwner->FindIndex (thePickOwner)
+                                   : myMapOfOwner->Add       (thePickOwner);
 
   // For the advanced mesh selection mode the owner indices comparison
   // is not effective because in that case only one owner manage the
@@ -1248,10 +1171,11 @@ void AIS_LocalContext::manageDetected (const Handle(SelectMgr_EntityOwner)& theP
   if (aNewIndex != mylastindex
    || thePickOwner->IsForcedHilight())
   {
+    myMainPM->ClearImmediateDraw();
     if (mylastindex != 0
-     && mylastindex <= myMapOfOwner.Extent())
+     && mylastindex <= myMapOfOwner->Extent())
     {
-      const Handle(SelectMgr_EntityOwner)& aLastOwner = myMapOfOwner (mylastindex);
+      const Handle(SelectMgr_EntityOwner)& aLastOwner = myMapOfOwner->FindKey (mylastindex);
       Unhilight (aLastOwner, theView);
     }
 
@@ -1270,7 +1194,7 @@ void AIS_LocalContext::manageDetected (const Handle(SelectMgr_EntityOwner)& theP
     mylastindex = aNewIndex;
   }
 
-  if (mylastindex)
+  if (mylastindex != 0)
   {
     mylastgood = mylastindex;
   }
@@ -1298,7 +1222,7 @@ AIS_LocalContext::DetectedShape() const
   static TopoDS_Shape bidsh;
   if(mylastindex != 0)
   {
-    Handle(StdSelect_BRepOwner) BROwnr = Handle(StdSelect_BRepOwner)::DownCast(myMapOfOwner(mylastindex));
+    Handle(StdSelect_BRepOwner) BROwnr = Handle(StdSelect_BRepOwner)::DownCast(myMapOfOwner->FindKey (mylastindex));
     if(BROwnr.IsNull()) return bidsh;
     return BROwnr->Shape();
   }
@@ -1315,7 +1239,7 @@ AIS_LocalContext::DetectedInteractive() const
 {
   Handle(AIS_InteractiveObject) Iobj;
   if(IsValidIndex(mylastindex)){
-    Handle(SelectMgr_SelectableObject) SO = myMapOfOwner.FindKey(mylastindex)->Selectable();
+    Handle(SelectMgr_SelectableObject) SO = myMapOfOwner->FindKey(mylastindex)->Selectable();
     Iobj = *((Handle(AIS_InteractiveObject)*) &SO);
   }
   return Iobj;
@@ -1328,7 +1252,7 @@ Handle(SelectMgr_EntityOwner) AIS_LocalContext::DetectedOwner() const
 {
   Handle(SelectMgr_EntityOwner) bid;
   if(!IsValidIndex(mylastindex)) return bid;
-  return myMapOfOwner.FindKey(mylastindex);
+  return myMapOfOwner->FindKey(mylastindex);
 }
 
 
@@ -1339,34 +1263,13 @@ Handle(SelectMgr_EntityOwner) AIS_LocalContext::DetectedOwner() const
 
 Standard_Boolean AIS_LocalContext::ComesFromDecomposition(const Standard_Integer PickedIndex) const 
 {
-  const Handle(SelectMgr_EntityOwner)& OWN = myMapOfOwner.FindKey(PickedIndex);
+  const Handle(SelectMgr_EntityOwner)& OWN = myMapOfOwner->FindKey(PickedIndex);
   Handle(SelectMgr_SelectableObject) aSel  = OWN->Selectable();
   if (myActiveObjects.IsBound (aSel)) { // debug of jmi
     const Handle(AIS_LocalStatus)& Stat      = myActiveObjects(aSel);    
     return Stat->Decomposed();
   }
   return Standard_False;
-}
-
-
-//=======================================================================
-//function : DisplayAreas
-//purpose  : 
-//=======================================================================
-
-void AIS_LocalContext::DisplayAreas(const Handle(V3d_View)& aviou)
-{
-    myMainVS->DisplayAreas(aviou);
-}
-
-//=======================================================================
-//function : ClearAreas
-//purpose  : 
-//=======================================================================
-
-void AIS_LocalContext::ClearAreas(const Handle(V3d_View)& aviou)
-{
-    myMainVS->ClearAreas(aviou);
 }
 
 //=======================================================================
@@ -1397,7 +1300,7 @@ void AIS_LocalContext::ClearSensitive(const Handle(V3d_View)& aviou)
 Standard_Boolean AIS_LocalContext::IsShape(const Standard_Integer Index) const
 {
   
-  if(Handle(StdSelect_BRepOwner)::DownCast(myMapOfOwner.FindKey(Index)).IsNull())
+  if(Handle(StdSelect_BRepOwner)::DownCast(myMapOfOwner->FindKey(Index)).IsNull())
     return Standard_False;
   return 
     ComesFromDecomposition(Index);
@@ -1406,12 +1309,10 @@ Standard_Boolean AIS_LocalContext::IsShape(const Standard_Integer Index) const
 Standard_Boolean AIS_LocalContext::IsValidForSelection(const Handle(AIS_InteractiveObject)& anIObj) const 
 {
 
-#ifdef IMP120701
   // Shape was not transfered from AIS_Shape to EntityOwner
   Handle(AIS_Shape) shape = Handle(AIS_Shape)::DownCast(anIObj);
   if( !shape.IsNull() ) 
     return myFilters->IsOk(new StdSelect_BRepOwner(shape->Shape(),shape));
-#endif
   return myFilters->IsOk(new SelectMgr_EntityOwner(anIObj));
 }
 
@@ -1455,9 +1356,10 @@ Standard_Integer AIS_LocalContext::HilightPreviousDetected (const Handle(V3d_Vie
     return 0;
   }
 
+  const Standard_Integer aLen = myDetectedSeq.Length();
   if (--myCurDetected < 1)
   {
-    myCurDetected = 1;
+    myCurDetected = aLen;
   }
   Handle(SelectMgr_EntityOwner) anOwner = myMainVS->Picked (myDetectedSeq (myCurDetected));
   if (anOwner.IsNull())
@@ -1481,12 +1383,12 @@ Standard_Boolean AIS_LocalContext::UnhilightLastDetected (const Handle(V3d_View)
   }
 
   myMainPM->BeginImmediateDraw();
-  const Handle(SelectMgr_EntityOwner)& anOwner = myMapOfOwner (mylastindex);
+  const Handle(SelectMgr_EntityOwner)& anOwner = myMapOfOwner->FindKey (mylastindex);
   const Standard_Integer aHilightMode = anOwner->HasSelectable()
                                       ? GetHiMod (Handle(AIS_InteractiveObject)::DownCast (anOwner->Selectable()))
                                       : 0;
 
-  myMapOfOwner (mylastindex)->Unhilight (myMainPM, aHilightMode);
+  myMapOfOwner->FindKey (mylastindex)->Unhilight (myMainPM, aHilightMode);
   myMainPM->EndImmediateDraw (theView);
   mylastindex = 0;
   return Standard_True;
@@ -1511,16 +1413,10 @@ Handle(SelectMgr_EntityOwner) AIS_LocalContext::FindSelectedOwnerFromIO
     return EO;
   }
   Standard_Boolean found(Standard_False);
-#if !defined OCC189 && !defined USE_MAP     
-  const TColStd_Array1OfTransient& Obj = Sel->Objects()->Array1();
-  for(Standard_Integer i =Obj.Lower();i<=Sel->NbStored();i++){
-    const Handle(Standard_Transient)& Tr = Obj(i);
-#else
   const AIS_NListTransient& Obj = Sel->Objects();
   AIS_NListTransient::Iterator anIter( Obj );
   for(; anIter.More(); anIter.Next()){
     const Handle(Standard_Transient)& Tr = anIter.Value();
-#endif
     if(!Tr.IsNull()){
       EO = *((Handle(SelectMgr_EntityOwner)*)&Tr);
       if(EO->HasSelectable()){
@@ -1544,11 +1440,7 @@ Handle(SelectMgr_EntityOwner) AIS_LocalContext::FindSelectedOwnerFromIO
 //=======================================================================
 Handle(SelectMgr_EntityOwner) AIS_LocalContext::FindSelectedOwnerFromShape(const TopoDS_Shape& sh) const 
 {
-#ifdef OCC9026
   Handle(SelectMgr_EntityOwner) EO, bid;
-#else
-  Handle(SelectMgr_EntityOwner) EO;
-#endif
   if (sh.IsNull()) return EO;
   
   Handle(AIS_Selection) Sel = AIS_Selection::Selection(mySelName.ToCString());
@@ -1561,11 +1453,12 @@ Handle(SelectMgr_EntityOwner) AIS_LocalContext::FindSelectedOwnerFromShape(const
   
   Standard_Boolean found(Standard_False);
 
-#ifdef OCC9026
   if (!found) {
-    SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive aSensitiveIt (myMainVS->Primitives());
-    for (; aSensitiveIt.More(); aSensitiveIt.Next()) {
-      EO = Handle(SelectMgr_EntityOwner)::DownCast (aSensitiveIt.Value()->OwnerId());
+    NCollection_List<Handle(SelectBasics_EntityOwner)> anActiveOwners;
+    myMainVS->ActiveOwners (anActiveOwners);
+    for (NCollection_List<Handle(SelectBasics_EntityOwner)>::Iterator anOwnersIt (anActiveOwners); anOwnersIt.More(); anOwnersIt.Next())
+    {
+      EO = Handle(SelectMgr_EntityOwner)::DownCast (anOwnersIt.Value());
       Handle(StdSelect_BRepOwner) BROwnr = Handle(StdSelect_BRepOwner)::DownCast(EO);
       if (!BROwnr.IsNull() && BROwnr->HasShape() && BROwnr->Shape() == sh) {
 	 found = Standard_True;
@@ -1573,33 +1466,11 @@ Handle(SelectMgr_EntityOwner) AIS_LocalContext::FindSelectedOwnerFromShape(const
       }
     }
   }
-#else
-#if !defined OCC189 && !defined USE_MAP   
-  const TColStd_Array1OfTransient& Obj = Sel->Objects()->Array1();
-  for(Standard_Integer i =Obj.Lower();i<=Sel->NbStored();i++){
-    const Handle(Standard_Transient)& Tr = Obj(i);
-#else
-  const AIS_NListTransient& Obj = Sel->Objects();
-  AIS_NListTransient::Iterator anIter( Obj );
-  for(; anIter.More(); anIter.Next()){
-    const Handle(Standard_Transient)& Tr = anIter.Value();
-#endif
-    if(!Tr.IsNull()){
-      
-      EO = *((Handle(SelectMgr_EntityOwner)*)&Tr);
-      if(EO->HasShape())
-	if ( EO->Shape() == sh)
-	  found =Standard_True;
-          break;
-    }
-  }
-#endif
 
   if(found)  return EO;
   return bid;
 }
 
-#ifdef IMP160701
 //=======================================================================
 //function : AIS_LocalContext::InitDetected
 //purpose  :
@@ -1652,4 +1523,3 @@ Handle(AIS_InteractiveObject) AIS_LocalContext::DetectedCurrentObject() const
 {
   return MoreDetected() ? myAISDetectedSeq(myAISCurDetected) : NULL;
 }
-#endif

@@ -14,9 +14,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#define BUC60915        //GG 05/06/01 Enable to compute the requested arrow size
-//                      if any in all dimensions.
-
 #include <Standard_NotImplemented.hxx>
 
 #include <AIS_EqualRadiusRelation.ixx>
@@ -29,13 +26,14 @@
 #include <Geom_Circle.hxx>
 #include <ElCLib.hxx>
 #include <SelectMgr_EntityOwner.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <Select3D_SensitiveSegment.hxx>
 #include <Select3D_SensitiveBox.hxx>
 #include <Precision.hxx>
 #include <GeomAPI_ProjectPointOnSurf.hxx>
 #include <Prs3d_DimensionAspect.hxx>
 #include <Prs3d_ArrowAspect.hxx>
-#include <AIS_Drawer.hxx>
+#include <Prs3d_Drawer.hxx>
 
 //=======================================================================
 //function : AIS_EqualRadiusRelation
@@ -131,9 +129,7 @@ void AIS_EqualRadiusRelation::Compute( const Handle( PrsMgr_PresentationManager3
 	}
     }
   }
-#ifdef BUC60915
   if( !myArrowSizeIsDefined )
-#endif
     myArrowSize = (Min(myFirstCenter.Distance(myFirstPoint),
 		     mySecondCenter.Distance(mySecondPoint)))*0.05;
   

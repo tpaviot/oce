@@ -5,13 +5,13 @@ TARGET = VoxelDemo
 
 SAMPLESROOT = $$(CASROOT)/samples/qt
 
-HEADERS   = $${SAMPLESROOT}/voxeldemo/src/*.h
+HEADERS   = $${SAMPLESROOT}/voxeldemo/inc/*.h
 
 SOURCES   = $${SAMPLESROOT}/voxeldemo/src/*.cxx \
             $${SAMPLESROOT}/voxeldemo/src/*.cpp
 
 
-INCLUDEPATH += $$quote($${SAMPLESROOT}/voxeldemo/src)
+INCLUDEPATH += $$quote($${SAMPLESROOT}/voxeldemo/inc)
 
 DEFINES = CSFDB
 
@@ -79,6 +79,11 @@ win32 {
 		OBJECTS_DIR = ./win32/vc11/objd
 		MOC_DIR = ./win32/vc11/srcd
 	    }
+	    contains(QMAKE_COMPILER_DEFINES, _MSC_VER=1800) {
+		DESTDIR = ./win32/vc12/bind
+		OBJECTS_DIR = ./win32/vc12/objd
+		MOC_DIR = ./win32/vc12/srcd
+	    }
 	} else {
 		LIBS = -L$(CSF_OPT_LIB64D)
 		contains(QMAKE_COMPILER_DEFINES, _MSC_VER=1400) {
@@ -100,6 +105,11 @@ win32 {
 		DESTDIR = ./win64/vc11/bind
 		OBJECTS_DIR = ./win64/vc11/objd
 		MOC_DIR = ./win64/vc11/srcd
+	    }
+	    contains(QMAKE_COMPILER_DEFINES, _MSC_VER=1800) {
+		DESTDIR = ./win64/vc12/bind
+		OBJECTS_DIR = ./win64/vc12/objd
+		MOC_DIR = ./win64/vc12/srcd
 	    }
 	}
     } else {
@@ -131,6 +141,11 @@ win32 {
 		OBJECTS_DIR = ./win32/vc11/obj
 		MOC_DIR = ./win32/vc11/src
 	    }
+	    contains(QMAKE_COMPILER_DEFINES, _MSC_VER=1800) {
+		DESTDIR = ./win32/vc12/bin
+		OBJECTS_DIR = ./win32/vc12/obj
+		MOC_DIR = ./win32/vc12/src
+	    }
 	} else {
 		LIBS = -L$(CSF_OPT_LIB64)
 		contains(QMAKE_COMPILER_DEFINES, _MSC_VER=1400) {
@@ -153,6 +168,11 @@ win32 {
 		OBJECTS_DIR = ./win64/vc11/obj
 		MOC_DIR = ./win64/vc11/src
 	    }
+	    contains(QMAKE_COMPILER_DEFINES, _MSC_VER=1800) {
+		DESTDIR = ./win64/vc12/bin
+		OBJECTS_DIR = ./win64/vc12/obj
+		MOC_DIR = ./win64/vc12/src
+	    }
 	}
     }
     DEFINES +=WNT WIN32 NO_COMMONSAMPLE_EXPORTS NO_IESAMPLE_EXPORTS
@@ -162,4 +182,4 @@ LIBS += -lTKernel -lPTKernel -lTKMath -lTKService -lTKV3d \
         -lTKBRep -lTKGeomBase -lTKPShape -lTKTopAlgo -lTKPrim \
         -lTKBool -lTKVoxel -lTKOpenGl \
 
-
+QMAKE_CXXFLAGS            = -Zc:wchar_t 

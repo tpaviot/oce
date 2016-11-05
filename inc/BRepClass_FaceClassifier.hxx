@@ -42,10 +42,6 @@ public:
   Standard_EXPORT   void Perform (const TopoDS_Face& F, const gp_Pnt2d& P, const Standard_Real Tol) ;
   
   //! Creates an algorithm to classify the Point  P with
-  //! Tolerance <T> on the face described by <F>.
-  Standard_EXPORT BRepClass_FaceClassifier(BRepClass_FaceExplorer& F, const gp_Pnt& P, const Standard_Real Tol);
-  
-  //! Creates an algorithm to classify the Point  P with
   //! Tolerance <T> on the face <F>.
   Standard_EXPORT BRepClass_FaceClassifier(const TopoDS_Face& F, const gp_Pnt& P, const Standard_Real Tol);
   

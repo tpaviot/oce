@@ -50,9 +50,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~Adaptor3d_Curve(){Delete();}
-  
   Standard_EXPORT virtual   Standard_Real FirstParameter()  const;
   
   Standard_EXPORT virtual   Standard_Real LastParameter()  const;
@@ -61,14 +58,14 @@ Standard_EXPORT virtual ~Adaptor3d_Curve(){Delete();}
   
   //! Returns  the number  of  intervals for  continuity
   //! <S>. May be one if Continuity(me) >= <S>
-  Standard_EXPORT virtual   Standard_Integer NbIntervals (const GeomAbs_Shape S) ;
+  Standard_EXPORT virtual   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
   
   //! Stores in <T> the  parameters bounding the intervals
   //! of continuity <S>.
   //!
   //! The array must provide  enough room to  accomodate
   //! for the parameters. i.e. T.Length() > NbIntervals()
-  Standard_EXPORT virtual   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S) ;
+  Standard_EXPORT virtual   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
   
   //! Returns    a  curve equivalent   of  <me>  between
   //! parameters <First>  and <Last>. <Tol>  is used  to
@@ -146,6 +143,7 @@ Standard_EXPORT virtual ~Adaptor3d_Curve(){Delete();}
   Standard_EXPORT virtual   Handle(Geom_BezierCurve) Bezier()  const;
   
   Standard_EXPORT virtual   Handle(Geom_BSplineCurve) BSpline()  const;
+  Standard_EXPORT virtual ~Adaptor3d_Curve();
 
 
 

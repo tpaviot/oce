@@ -71,8 +71,6 @@ public:
      const  Geom_SequenceOfBSplineSurface& Sequence()  const;
   
       Geom_SequenceOfBSplineSurface& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(Geom_HSequenceOfBSplineSurface) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(Geom_HSequenceOfBSplineSurface) ShallowCopy(const Handle(Geom_HSequenceOfBSplineSurface)& me) {
- return me->ShallowCopy();
-}
 
 
 

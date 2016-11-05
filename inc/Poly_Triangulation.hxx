@@ -81,6 +81,9 @@ public:
   //! constructed triangulation.
   Standard_EXPORT Poly_Triangulation(const TColgp_Array1OfPnt& Nodes, const TColgp_Array1OfPnt2d& UVNodes, const Poly_Array1OfTriangle& Triangles);
   
+  //! Creates full copy of current triangulation.
+  Standard_EXPORT   Handle(Poly_Triangulation) Copy()  const;
+  
   //! Returns the deflection of this triangulation.
   Standard_EXPORT   Standard_Real Deflection()  const;
   

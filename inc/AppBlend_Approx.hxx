@@ -31,9 +31,6 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT virtual   void Delete() ;
-Standard_EXPORT virtual ~AppBlend_Approx(){Delete() ; }
-  
   Standard_EXPORT virtual   Standard_Boolean IsDone()  const = 0;
   
   Standard_EXPORT virtual   void SurfShape (Standard_Integer& UDegree, Standard_Integer& VDegree, Standard_Integer& NbUPoles, Standard_Integer& NbVPoles, Standard_Integer& NbUKnots, Standard_Integer& NbVKnots)  const = 0;
@@ -73,6 +70,7 @@ Standard_EXPORT virtual ~AppBlend_Approx(){Delete() ; }
   Standard_EXPORT virtual   void TolReached (Standard_Real& Tol3d, Standard_Real& Tol2d)  const = 0;
   
   Standard_EXPORT virtual   Standard_Real TolCurveOnSurf (const Standard_Integer Index)  const = 0;
+  Standard_EXPORT virtual ~AppBlend_Approx();
 
 
 

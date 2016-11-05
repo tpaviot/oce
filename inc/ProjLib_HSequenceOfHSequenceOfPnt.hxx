@@ -71,8 +71,6 @@ public:
      const  ProjLib_SequenceOfHSequenceOfPnt& Sequence()  const;
   
       ProjLib_SequenceOfHSequenceOfPnt& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(ProjLib_HSequenceOfHSequenceOfPnt) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(ProjLib_HSequenceOfHSequenceOfPnt) ShallowCopy(const Handle(ProjLib_HSequenceOfHSequenceOfPnt)& me) {
- return me->ShallowCopy();
-}
 
 
 

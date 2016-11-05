@@ -71,8 +71,6 @@ public:
      const  Interface_SequenceOfCheck& Sequence()  const;
   
       Interface_SequenceOfCheck& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(Interface_HSequenceOfCheck) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(Interface_HSequenceOfCheck) ShallowCopy(const Handle(Interface_HSequenceOfCheck)& me) {
- return me->ShallowCopy();
-}
 
 
 

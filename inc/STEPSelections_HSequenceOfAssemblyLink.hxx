@@ -71,8 +71,6 @@ public:
      const  STEPSelections_SequenceOfAssemblyLink& Sequence()  const;
   
       STEPSelections_SequenceOfAssemblyLink& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(STEPSelections_HSequenceOfAssemblyLink) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(STEPSelections_HSequenceOfAssemblyLink) ShallowCopy(const Handle(STEPSelections_HSequenceOfAssemblyLink)& me) {
- return me->ShallowCopy();
-}
 
 
 
