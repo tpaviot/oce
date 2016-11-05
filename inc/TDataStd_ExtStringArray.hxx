@@ -43,10 +43,11 @@ public:
   Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
   //! Finds, or creates, an ExtStringArray attribute with <lower>
-  //! and <upper> bounds.  The ExtStringArray  attribute is returned.
+  //! and <upper> bounds on the specified label.
   //! If <isDelta> == False, DefaultDeltaOnModification is used.
-  //! If attribute is already set, all input parameters are refused
-  //! and the found attribute is returned.
+  //! If <isDelta> == True, DeltaOnModification of the current attribute is used.
+  //! If attribute is already set, all input parameters are refused and the found
+  //! attribute is returned.
   Standard_EXPORT static   Handle(TDataStd_ExtStringArray) Set (const TDF_Label& label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False) ;
   
   //! Initializes the inner array with bounds from <lower> to <upper>

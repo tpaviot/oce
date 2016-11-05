@@ -30,7 +30,8 @@
 
 #include <Bnd_Box.hxx>
 
-DEFINE_STANDARD_HANDLE (Graphic3d_Camera, Standard_Transient)
+//! Forward declaration
+class Handle(Graphic3d_Camera);
 
 //! Camera class provides object-oriented approach to setting up projection
 //! and orientation properties of 3D view.
@@ -89,7 +90,7 @@ public:
   //! Enumerates supported monographic projections.
   //! - Projection_Orthographic : orthographic projection.
   //! - Projection_Perspective  : perspective projection.
-  //! - Projection_Stere        : stereographic projection.
+  //! - Projection_Stereo       : stereographic projection.
   //! - Projection_MonoLeftEye  : mono projection for stereo left eye.
   //! - Projection_MonoRightEye : mono projection for stereo right eye.
   enum Projection
@@ -621,5 +622,7 @@ public:
   DEFINE_STANDARD_RTTI(Graphic3d_Camera);
 
 };
+
+DEFINE_STANDARD_HANDLE (Graphic3d_Camera, Standard_Transient)
 
 #endif

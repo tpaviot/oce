@@ -19,6 +19,8 @@
 
 #include <Image_AlienPixMap.hxx>
 #include <gp.hxx>
+#include <Message.hxx>
+#include <Message_Messenger.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <OSD_OpenFile.hxx>
@@ -75,6 +77,7 @@ namespace
     switch (theFormat)
     {
       case Image_PixMap::ImgGrayF:
+      case Image_PixMap::ImgAlphaF:
         return FIT_FLOAT;
       case Image_PixMap::ImgRGBAF:
         return FIT_RGBAF;
@@ -87,6 +90,7 @@ namespace
       case Image_PixMap::ImgRGB:
       case Image_PixMap::ImgBGR:
       case Image_PixMap::ImgGray:
+      case Image_PixMap::ImgAlpha:
         return FIT_BITMAP;
       default:
         return FIT_UNKNOWN;
@@ -257,7 +261,10 @@ bool Image_AlienPixMap::Load (const TCollection_AsciiString& theImagePath)
   }
   if ((aFIF == FIF_UNKNOWN) || !FreeImage_FIFSupportsReading (aFIF))
   {
-    // unsupported image format
+    TCollection_AsciiString aMessage = "Error: image file '";
+    aMessage.AssignCat (theImagePath);
+    aMessage.AssignCat ("' has unsupported file format.");
+    ::Message::DefaultMessenger()->Send (aMessage, Message_Fail);
     return false;
   }
 
@@ -280,6 +287,10 @@ bool Image_AlienPixMap::Load (const TCollection_AsciiString& theImagePath)
 #endif
   if (anImage == NULL)
   {
+    TCollection_AsciiString aMessage = "Error: image file '";
+    aMessage.AssignCat (theImagePath);
+    aMessage.AssignCat ("' is missing or invalid.");
+    ::Message::DefaultMessenger()->Send (aMessage, Message_Fail);
     return false;
   }
 
@@ -289,6 +300,10 @@ bool Image_AlienPixMap::Load (const TCollection_AsciiString& theImagePath)
   if (aFormat == Image_PixMap::ImgUNKNOWN)
   {
     //anImage = FreeImage_ConvertTo24Bits (anImage);
+    TCollection_AsciiString aMessage = "Error: image file '";
+    aMessage.AssignCat (theImagePath);
+    aMessage.AssignCat ("' has unsupported pixel format.");
+    ::Message::DefaultMessenger()->Send (aMessage, Message_Fail);
     return false;
   }
 
@@ -445,7 +460,8 @@ bool Image_AlienPixMap::Save (const TCollection_AsciiString& theFileName)
     }
     case FIF_EXR:
     {
-      if (Format() == Image_PixMap::ImgGray)
+      if (Format() == Image_PixMap::ImgGray
+       || Format() == Image_PixMap::ImgAlpha)
       {
         anImageToDump = FreeImage_ConvertToType (myLibImage, FIT_FLOAT);
       }

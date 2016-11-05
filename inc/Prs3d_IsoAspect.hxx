@@ -20,7 +20,7 @@ class Quantity_Color;
 
 //! A framework to define the display attributes of isoparameters.
 //! This framework can be used to modify the default
-//! setting for isoparameters in AIS_Drawer.
+//! setting for isoparameters in Prs3d_Drawer.
 class Prs3d_IsoAspect : public Prs3d_LineAspect
 {
 

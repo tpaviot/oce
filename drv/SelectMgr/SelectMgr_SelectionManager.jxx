@@ -1,4 +1,2 @@
-#include <SelectMgr_ViewerSelector.hxx>
 #include <SelectMgr_SelectableObject.hxx>
-#include <TCollection_AsciiString.hxx>
 #include <SelectMgr_SelectionManager.hxx>

@@ -14,12 +14,14 @@
 #include <Standard_Boolean.hxx>
 #include <Handle_Geom_Surface.hxx>
 #include <Standard_Real.hxx>
+#include <Handle_Poly_Triangulation.hxx>
 #include <Handle_Geom_Curve.hxx>
 #include <Handle_Geom2d_Curve.hxx>
 #include <GeomAbs_Shape.hxx>
 class TopoDS_Face;
 class Geom_Surface;
 class TopLoc_Location;
+class Poly_Triangulation;
 class TopoDS_Edge;
 class Geom_Curve;
 class TopoDS_Vertex;
@@ -49,6 +51,11 @@ public:
   //! false, and the values of S, L, Tol, RevWires and
   //! RevFace are not significant.
   Standard_EXPORT virtual   Standard_Boolean NewSurface (const TopoDS_Face& F, Handle(Geom_Surface)& S, TopLoc_Location& L, Standard_Real& Tol, Standard_Boolean& RevWires, Standard_Boolean& RevFace)  = 0;
+  
+  //! Returns true if the face has been modified according to changed triangulation.
+  //! If the face has been modified:
+  //! - T is a new triangulation on the face
+  Standard_EXPORT virtual   Standard_Boolean NewTriangulation (const TopoDS_Face& F, Handle(Poly_Triangulation)& T) ;
   
   //! Returns true if the edge, E, has been modified.
   //! If the edge has been modified:

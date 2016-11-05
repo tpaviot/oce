@@ -14,13 +14,6 @@
 -- Alternatively, this file may be used under the terms of Open CASCADE
 -- commercial license or contractual agreement.
 
---   GG  : GER61351 17/11/1999 Change SetColor() with a compatible Quantity_Color instead
---				       the restricted NameOfColor.
---			  Parameters the color model rule (not especially the front & back side)
---			  Add the SetTransparency() method.
---			  Add the Color(),Material() and Transparency() methods
-
-
 class ShadingAspect from Prs3d inherits BasicAspect from Prs3d
     	---Purpose: A framework to define the display of shading.
     	-- The attributes which make up this definition include:
@@ -41,6 +34,9 @@ uses
 is
     Create
     	---Purpose: Constructs an empty framework to display shading.
+    returns ShadingAspect from Prs3d;
+
+    Create( theAspect: AspectFillArea3d from Graphic3d )
     returns ShadingAspect from Prs3d;
     
     SetColor (me: mutable; aColor: Color from Quantity;
@@ -68,16 +64,15 @@ is
     	--- Purpose: Change the polygons transparency value.
     	--  Warning : aValue must be in the range 0,1. 0 is the default (NO transparent)
 
-    SetAspect(me:mutable; Asp : AspectFillArea3d from Graphic3d);
-    	--- Purpose: Change the polygons aspect properties.
-
     Color (me; aModel: TypeOfFacingModel from Aspect = Aspect_TOFM_FRONT_SIDE) 
     returns Color from Quantity is static;
     	--- Purpose: Returns the polygons color.
+    	---C++: return const &
 
     Material (me; aModel: TypeOfFacingModel from Aspect = Aspect_TOFM_FRONT_SIDE) 
     returns MaterialAspect from Graphic3d is static;
     	--- Purpose: Returns the polygons material aspect.
+    	---C++: return const &
 
     Transparency (me; aModel: TypeOfFacingModel from Aspect = Aspect_TOFM_FRONT_SIDE) 
     returns Real from Standard is static;
@@ -85,6 +80,8 @@ is
 
     Aspect (me) returns AspectFillArea3d from Graphic3d;
     	--- Purpose: Returns the polygons aspect properties.
+
+    SetAspect( me: mutable; theAspect: AspectFillArea3d from Graphic3d );
     
 fields
 

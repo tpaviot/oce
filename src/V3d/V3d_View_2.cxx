@@ -21,16 +21,12 @@
      --------------------------------
       00-09-92 : GG  ; Creation.
       24-12-97 : FMN ; Suppression de GEOMLITE
-      21-02-00 : GG  ; Add Transparency() method
       23-11-00 : GG  ; Add IsActiveLight() and IsActivePlane() methods
 
 ************************************************************************/
 
-#define GER61454	//GG 13-09-99 Activates model clipping planes
 //		Use myView->PlaneLimit() instead Visual3d_ClipPlane::Limit()
 //		Use myView->LightLimit() instead Visual3d_Light::Limit()
-
-
 
 /*----------------------------------------------------------------------*/
 /*
@@ -40,7 +36,6 @@
 #include <V3d_View.jxx>
 #include <Visual3d_View.hxx>
 #include <Visual3d_Light.hxx>
-#include <V3d_Static.hxx>
 #include <V3d.hxx>
 
 /*----------------------------------------------------------------------*/
@@ -48,13 +43,8 @@
 void V3d_View::SetLightOn( const Handle(V3d_Light)& TheLight ) {
 
   if( !MyActiveLights.Contains(TheLight)){
-#ifdef GER61454
     V3d_BadValue_Raise_if( MyActiveLights.Extent() >= MyView->LightLimit(),
 			  "too many lights");
-#else
-//    V3d_BadValue_Raise_if( MyActiveLights.Extent() >= Visual3d_Light::Limit(),
-//			  "too many lights");
-#endif
     MyActiveLights.Append(TheLight) ;
     MyViewContext.SetLightOn(TheLight->Light());
     MyView->SetContext(MyViewContext);
@@ -102,18 +92,6 @@ void V3d_View::SetLightOff( ) {
 
 }
 
-void V3d_View::SetTransparency(const Standard_Boolean AnActivity) {
-
-  MyTransparencyFlag = AnActivity;
-  MyView->SetTransparency(AnActivity);
-}
-
-
-Standard_Boolean V3d_View::Transparency() const {
-
-  return MyTransparencyFlag;
-}
-
 void V3d_View::InitActiveLights() {
 myActiveLightsIterator.Initialize(MyActiveLights);
 }
@@ -128,12 +106,7 @@ Handle(V3d_Light) V3d_View::ActiveLight() const {
 
 Standard_Boolean V3d_View::IfMoreLights() const {
 
-#ifdef GER61454
         return MyActiveLights.Extent() < MyView->LightLimit();
-#else
-//	return MyActiveLights.Extent() < Visual3d_Light::Limit();
-	return MyActiveLights.Extent();
-#endif
 }
 
 //=======================================================================

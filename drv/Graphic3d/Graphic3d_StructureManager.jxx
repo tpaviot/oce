@@ -5,8 +5,8 @@
 #include <Graphic3d_GraphicDriver.hxx>
 #include <Graphic3d_InitialisationError.hxx>
 #include <Graphic3d_Structure.hxx>
-#include <Graphic3d_MapOfStructure.hxx>
 #include <TColStd_SequenceOfInteger.hxx>
 #include <Graphic3d_DataStructureManager.hxx>
 #include <TColStd_Array2OfReal.hxx>
+#include <Standard_Transient.hxx>
 #include <Graphic3d_StructureManager.hxx>

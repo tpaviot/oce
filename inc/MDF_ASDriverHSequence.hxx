@@ -71,8 +71,6 @@ public:
      const  MDF_ASDriverSequence& Sequence()  const;
   
       MDF_ASDriverSequence& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(MDF_ASDriverHSequence) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(MDF_ASDriverHSequence) ShallowCopy(const Handle(MDF_ASDriverHSequence)& me) {
- return me->ShallowCopy();
-}
 
 
 

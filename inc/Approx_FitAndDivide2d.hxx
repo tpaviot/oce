@@ -17,9 +17,7 @@
 #include <Standard_Integer.hxx>
 #include <Standard_Real.hxx>
 #include <AppParCurves_Constraint.hxx>
-class AppCont_Function2d;
-class AppCont_FunctionTool2d;
-class Approx_MyLeastSquareOfFitAndDivide2d;
+#include <AppCont_Function.hxx>
 class AppParCurves_MultiCurve;
 
 
@@ -31,11 +29,11 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT Approx_FitAndDivide2d(const AppCont_Function2d& Line, const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-5, const Standard_Real Tolerance2d = 1.0e-5, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
+  Standard_EXPORT Approx_FitAndDivide2d(const AppCont_Function& Line, const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-5, const Standard_Real Tolerance2d = 1.0e-5, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
   
   Standard_EXPORT Approx_FitAndDivide2d(const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-05, const Standard_Real Tolerance2d = 1.0e-05, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
   
-  Standard_EXPORT   void Perform (const AppCont_Function2d& Line) ;
+  Standard_EXPORT   void Perform (const AppCont_Function& Line) ;
   
   Standard_EXPORT   void SetDegrees (const Standard_Integer degreemin, const Standard_Integer degreemax) ;
   
@@ -67,7 +65,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   Standard_Boolean Compute (const AppCont_Function2d& Line, const Standard_Real Ufirst, const Standard_Real Ulast, Standard_Real& TheTol3d, Standard_Real& TheTol2d) ;
+  Standard_EXPORT   Standard_Boolean Compute (const AppCont_Function& Line, const Standard_Real Ufirst, const Standard_Real Ulast, Standard_Real& TheTol3d, Standard_Real& TheTol2d) ;
 
 
   AppParCurves_SequenceOfMultiCurve myMultiCurves;

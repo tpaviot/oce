@@ -247,7 +247,7 @@ GeomFill_GuideTrihedronAC::GeomFill_GuideTrihedronAC(const Handle(Adaptor3d_HCur
 
 //derivee seconde du triedre
 #ifdef OCCT_DEBUG
-  gp_Vec DTDN = DTo.Crossed(DNormal);
+  gp_Vec DTDN; DTDN = DTo.Crossed(DNormal); //2 statements for warning suppresion.
 #else
   DTo.Crossed(DNormal);
 #endif

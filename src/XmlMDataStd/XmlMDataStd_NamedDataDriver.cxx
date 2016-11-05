@@ -53,8 +53,6 @@ IMPLEMENT_DOMSTRING (Value,     "value")
 
 #include <stdio.h>
 
-#define OCC6010
-
 #ifdef WNT
 #define EXCEPTION ...
 #else
@@ -749,14 +747,10 @@ void XmlMDataStd_NamedDataDriver::Paste(const Handle(TDF_Attribute)& theSource,
       TCollection_AsciiString aValueStr2;
       Standard_Integer j = anArr1.Lower();
       for(;;) {
-#ifndef OCC6010
-	aValueStr2 += TCollection_AsciiString(anArr1.Value(j));
-#else
 	char aValueChar[32];
 	Sprintf(aValueChar, "%.15g", anArr1.Value(j));
 	TCollection_AsciiString aValueStr(aValueChar);
 	aValueStr2 += aValueStr;
-#endif
 	if (j >= anArr1.Upper()) break;
 	aValueStr2 += ' ';
 	j++;

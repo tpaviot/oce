@@ -10,7 +10,7 @@
 #include <Standard_DefineHandle.hxx>
 #include <Handle_ShapeCustom_SweptToElementary.hxx>
 
-#include <BRepTools_Modification.hxx>
+#include <ShapeCustom_Modification.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_Geom_Surface.hxx>
 #include <Standard_Real.hxx>
@@ -30,7 +30,7 @@ class Geom2d_Curve;
 //! implements a modification for the BRepTools
 //! Modifier algortihm. Converts all elementary
 //! surfaces into surfaces of revolution.
-class ShapeCustom_SweptToElementary : public BRepTools_Modification
+class ShapeCustom_SweptToElementary : public ShapeCustom_Modification
 {
 
 public:

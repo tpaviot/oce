@@ -35,8 +35,6 @@ public:
   
   Standard_EXPORT HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter(const Standard_Address& Curve, const Standard_Integer NbPnt, const IntRes2d_Domain& Domain, const Standard_Real Tol);
   
-  Standard_EXPORT HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter(const Standard_Address& Curve, const Standard_Integer NbPnt, const IntRes2d_Domain& Domain, const Standard_Real Tol, const Bnd_Box2d& OtherBox);
-  
   Standard_EXPORT   void ComputeWithBox (const Standard_Address& Curve, const Bnd_Box2d& OtherBox) ;
   
     virtual   Standard_Real DeflectionOverEstimation()  const;

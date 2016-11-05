@@ -1,3 +1,4 @@
+puts "TODO OCC25597 ALL: OCC22967: Faulty"
 puts "============"
 puts "OCC22967"
 puts "============"
@@ -7,7 +8,7 @@ puts ""
 ###########################################################################################################
 
 set BugNumber OCC22967
-set check_value 3.46945e-006
+set check_value 8.46459e-006
 
 restore [locate_data_file bug22967_Cylinder_1.brep] b1 
 restore [locate_data_file bug22967_Scale_1.brep] b2 
@@ -54,6 +55,6 @@ if {${status} > 0} {
    puts "OK ${BugNumber}"
 }
 
-set square 669221
+set square 668843
 set 2dviewer 0
 

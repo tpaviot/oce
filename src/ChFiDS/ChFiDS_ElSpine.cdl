@@ -26,9 +26,11 @@ uses
     Elips        from gp,  
     Hypr         from gp,  
     Parab        from gp,   
+    Ax1          from gp,
     BezierCurve  from Geom,  
     BSplineCurve from Geom, 
     Array1OfReal from TColStd,
+    SequenceOfAx1 from TColgp,
     SurfData     from ChFiDS,
     Shape        from GeomAbs,
     CurveType    from GeomAbs,
@@ -50,13 +52,17 @@ is
     LastParameter(me) returns Real from Standard
     is redefined;
     
+    GetSavedFirstParameter(me) returns Real from Standard;
+    
+    GetSavedLastParameter(me)  returns Real from Standard;
+    
     Continuity(me) returns Shape from GeomAbs
     is redefined static;
 
-    NbIntervals(me: in out; S : Shape from GeomAbs) 
+    NbIntervals(me; S : Shape from GeomAbs) 
     returns Integer is redefined static;
 
-    Intervals(me: in out; 
+    Intervals(me; 
     	      T : in out Array1OfReal from TColStd; 
     	      S : Shape from GeomAbs)
     is redefined static;
@@ -102,15 +108,27 @@ is
 
     LastParameter(me : in out; P : Real from Standard);
 
+    SaveFirstParameter(me : in out);
+
+    SaveLastParameter(me : in out);
+
     SetOrigin(me : in out; O : Real from Standard);
 
     FirstPointAndTgt(me; P : out Pnt from gp; T : out Vec from gp);
 
     LastPointAndTgt(me; P : out Pnt from gp; T : out Vec from gp);
 
+    NbVertices(me) returns Integer from Standard;
+
+    VertexWithTangent(me; Index : Integer from Standard)
+    returns Ax1 from gp;
+    ---C++: return const &
+
     SetFirstPointAndTgt(me : in out; P : Pnt from gp; T : Vec from gp);
 
     SetLastPointAndTgt(me : in out; P : Pnt from gp; T : Vec from gp);
+    
+    AddVertexWithTangent(me : in out; anAx1 : Ax1 from gp);
 
     SetCurve(me : in out; C : Curve from Geom);
 
@@ -179,6 +197,7 @@ ptfirst   : Pnt      from gp;
 ptlast    : Pnt      from gp;
 tgfirst   : Vec      from gp;
 tglast    : Vec      from gp;
+VerticesWithTangents : SequenceOfAx1 from TColgp;
 
 previous  : SurfData from ChFiDS;
 next      : SurfData from ChFiDS; 
@@ -188,5 +207,7 @@ plast     : Real     from Standard;
 period    : Real     from Standard;
 periodic  : Boolean  from Standard; 
 
+pfirstsav : Real     from Standard;
+plastsav  : Real     from Standard;
 
 end ElSpine;

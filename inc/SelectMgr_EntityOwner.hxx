@@ -18,6 +18,7 @@
 #include <Handle_PrsMgr_PresentationManager.hxx>
 #include <PrsMgr_PresentationManager3d.hxx>
 #include <Quantity_NameOfColor.hxx>
+#include <Graphic3d_ZLayerId.hxx>
 class Standard_NoSuchObject;
 class SelectMgr_SelectableObject;
 class PrsMgr_PresentationManager;
@@ -116,7 +117,7 @@ public:
   Standard_EXPORT virtual   Standard_Boolean IsForcedHilight()  const;
   
   //! Set Z layer ID and update all presentations.
-  Standard_EXPORT virtual   void SetZLayer (const Handle(PrsMgr_PresentationManager)& thePrsMgr, const Standard_Integer theLayerId) ;
+  Standard_EXPORT virtual   void SetZLayer (const Graphic3d_ZLayerId theLayerId) ;
 
 
 

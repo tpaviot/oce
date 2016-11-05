@@ -73,6 +73,7 @@ void BSplCLib::Hunt (const Array1OfReal& XX,
 {
   // replaced by simple dichotomy (RLE)
   Ilc = XX.Lower();
+  if (XX.Length() <= 1) return;
   const Standard_Real *px = &XX(Ilc);
   px -= Ilc;
 
@@ -228,6 +229,18 @@ void BSplCLib::LocateParameter
  const Standard_Real         UFirst,
  const Standard_Real         ULast)
 {
+  /*
+  Let Knots are distributed as follows (the array is sorted in ascending order):
+    
+      K1, K1,..., K1, K1, K2, K2,..., K2, K2,..., Kn, Kn,..., Kn
+           M1 times             M2 times             Mn times
+
+  NbKnots = sum(M1+M2+...+Mn)
+  If U <= K1 then KnotIndex should be equal to M1.
+  If U >= Kn then KnotIndex should be equal to NbKnots-Mn-1.
+  If Ki <= U < K(i+1) then KnotIndex should be equal to sum (M1+M2+...+Mi).
+  */
+
   Standard_Integer First,Last;
   if (FromK1 < ToK2) {
     First = FromK1;
@@ -251,10 +264,12 @@ void BSplCLib::LocateParameter
   
   BSplCLib::Hunt (Knots, NewU, KnotIndex);
   
-  Standard_Real Eps = Epsilon(U);
   Standard_Real val;
-  if (Eps < 0) Eps = - Eps;
-  Standard_Integer KLower = Knots.Lower();
+  const Standard_Integer  KLower = Knots.Lower(),
+                          KUpper = Knots.Upper();
+
+  const Standard_Real Eps = Epsilon(Min(Abs(Knots(KUpper)), Abs(U)));
+
   const Standard_Real *knots = &Knots(KLower);
   knots -= KLower;
   if ( KnotIndex < Knots.Upper()) {
@@ -274,6 +289,10 @@ void BSplCLib::LocateParameter
 
     while (val <= Eps) {
       KnotIndex++;
+
+      if(KnotIndex >= Knots.Upper())
+        break;
+
       K1 = K2;
       K2 = knots[KnotIndex + 1];
       val = K2 - K1;
@@ -430,9 +449,10 @@ Standard_Integer BSplCLib::KnotSequenceLength
 void BSplCLib::KnotSequence 
 (const TColStd_Array1OfReal&    Knots,
  const TColStd_Array1OfInteger& Mults,
- TColStd_Array1OfReal&          KnotSeq)
+ TColStd_Array1OfReal&          KnotSeq,
+ const Standard_Boolean         Periodic)
 {
-  BSplCLib::KnotSequence(Knots,Mults,0,Standard_False,KnotSeq);
+  BSplCLib::KnotSequence(Knots,Mults,0,Periodic,KnotSeq);
 }
 
 //=======================================================================
@@ -1175,7 +1195,8 @@ void  BSplCLib::Bohm(const Standard_Real U,
       
       for (j = Degm1; j >= i; j--) {
 	jDmi--;
-	*pole -= *tbis; *pole /= (knot[jDmi] - knot[j]);
+	*pole -= *tbis;
+  *pole = (knot[jDmi] == knot[j]) ? 0.0 :  *pole / (knot[jDmi] - knot[j]);
 	pole--;
 	tbis--;
       }
@@ -1219,7 +1240,7 @@ void  BSplCLib::Bohm(const Standard_Real U,
       
       for (j = Degm1; j >= i; j--) {
 	jDmi--;
-	coef   = 1. / (knot[jDmi] - knot[j]);
+	coef   = (knot[jDmi] == knot[j]) ? 0.0 : 1. / (knot[jDmi] - knot[j]);
 	*pole -= *tbis; *pole *= coef; pole++; tbis++;
 	*pole -= *tbis; *pole *= coef;
 	pole  -= 3;
@@ -1267,7 +1288,7 @@ void  BSplCLib::Bohm(const Standard_Real U,
       
       for (j = Degm1; j >= i; j--) {
 	jDmi--;
-	coef   = 1. / (knot[jDmi] - knot[j]);
+	coef   = (knot[jDmi] == knot[j]) ? 0.0 : 1. / (knot[jDmi] - knot[j]);
 	*pole -= *tbis; *pole *= coef; pole++; tbis++;
 	*pole -= *tbis; *pole *= coef; pole++; tbis++;
 	*pole -= *tbis; *pole *= coef;
@@ -1318,7 +1339,7 @@ void  BSplCLib::Bohm(const Standard_Real U,
       
       for (j = Degm1; j >= i; j--) {
 	jDmi--;
-	coef   = 1. / (knot[jDmi] - knot[j]);
+	coef   = (knot[jDmi]  == knot[j]) ? 0.0 : 1. /(knot[jDmi] - knot[j]) ;
 	*pole -= *tbis; *pole *= coef; pole++; tbis++;
 	*pole -= *tbis; *pole *= coef; pole++; tbis++;
 	*pole -= *tbis; *pole *= coef; pole++; tbis++;
@@ -1374,7 +1395,7 @@ void  BSplCLib::Bohm(const Standard_Real U,
 	
 	for (j = Degm1; j >= i; j--) {
 	  jDmi--;
-	  coef = 1. / (knot[jDmi] - knot[j]);
+	  coef = (knot[jDmi] == knot[j]) ? 0.0 : 1. / (knot[jDmi] - knot[j]);
 	  
 	  for (k = 0; k < Dimension; k++) {
 	    *pole -= *tbis; *pole *= coef; pole++; tbis++;
@@ -1697,8 +1718,8 @@ Standard_Boolean  BSplCLib::PrepareInsertKnots
   {
     //gka for case when segments was produced on full period only one knot
     //was added in the end of curve
-    if(fabs(adeltaK1) <= Precision::PConfusion() && 
-      fabs(adeltaK2) <= Precision::PConfusion())
+    if(fabs(adeltaK1) <= gp::Resolution() && 
+       fabs(adeltaK2) <= gp::Resolution())
       ak++;
   }
   
@@ -3019,14 +3040,16 @@ void  BSplCLib::Interpolate(const Standard_Integer         Degree,
                            InterpolationMatrix,
                            UpperBandWidth,
                            LowerBandWidth) ;
-  Standard_OutOfRange_Raise_if (ErrorCode != 0, "BSplCLib::Interpolate") ;
+  if(ErrorCode)
+    Standard_OutOfRange::Raise("BSplCLib::Interpolate");
 
   ErrorCode =
   BSplCLib::FactorBandedMatrix(InterpolationMatrix,
                            UpperBandWidth,
                            LowerBandWidth,
                            InversionProblem) ;
-  Standard_OutOfRange_Raise_if (ErrorCode != 0, "BSplCLib::Interpolate") ;
+  if(ErrorCode)
+    Standard_OutOfRange::Raise("BSplCLib::Interpolate");
 
   ErrorCode  =
   BSplCLib::SolveBandedSystem(InterpolationMatrix,
@@ -3034,9 +3057,9 @@ void  BSplCLib::Interpolate(const Standard_Integer         Degree,
                               LowerBandWidth,
 			      ArrayDimension,
                               Poles) ;
-
-  Standard_OutOfRange_Raise_if (ErrorCode != 0,"BSplCLib::Interpolate")  ;
-} 
+  if(ErrorCode)
+    Standard_OutOfRange::Raise("BSplCLib::Interpolate");
+}
 
 //=======================================================================
 //function : Interpolate
@@ -3066,14 +3089,16 @@ void  BSplCLib::Interpolate(const Standard_Integer         Degree,
                            InterpolationMatrix,
                            UpperBandWidth,
                            LowerBandWidth) ;
-  Standard_OutOfRange_Raise_if (ErrorCode != 0, "BSplCLib::Interpolate") ;
+  if(ErrorCode)
+    Standard_OutOfRange::Raise("BSplCLib::Interpolate");
 
   ErrorCode =
   BSplCLib::FactorBandedMatrix(InterpolationMatrix,
                            UpperBandWidth,
                            LowerBandWidth,
                            InversionProblem) ;
-  Standard_OutOfRange_Raise_if (ErrorCode != 0, "BSplCLib::Interpolate") ;
+  if(ErrorCode)
+    Standard_OutOfRange::Raise("BSplCLib::Interpolate");
 
   ErrorCode  =
   BSplCLib::SolveBandedSystem(InterpolationMatrix,
@@ -3083,8 +3108,8 @@ void  BSplCLib::Interpolate(const Standard_Integer         Degree,
 			      ArrayDimension,
                               Poles,
 			      Weights) ;
-
-  Standard_OutOfRange_Raise_if (ErrorCode != 0,"BSplCLib::Interpolate")  ;
+  if(ErrorCode)
+    Standard_OutOfRange::Raise("BSplCLib::Interpolate");
 }
 
 //=======================================================================

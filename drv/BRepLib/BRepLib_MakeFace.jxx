@@ -7,4 +7,5 @@
 #include <gp_Torus.hxx>
 #include <Geom_Surface.hxx>
 #include <TopoDS_Wire.hxx>
+#include <Geom_Curve.hxx>
 #include <BRepLib_MakeFace.hxx>

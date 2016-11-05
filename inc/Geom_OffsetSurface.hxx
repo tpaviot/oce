@@ -13,8 +13,8 @@
 #include <Handle_Geom_Surface.hxx>
 #include <Standard_Real.hxx>
 #include <Geom_OsculatingSurface.hxx>
-#include <Geom_Surface.hxx>
 #include <GeomAbs_Shape.hxx>
+#include <Geom_Surface.hxx>
 #include <Standard_Boolean.hxx>
 #include <Standard_Integer.hxx>
 #include <Handle_Geom_Curve.hxx>
@@ -75,6 +75,8 @@ public:
   //! which the offset value is measured is indicated by
   //! this normal vector if Offset is positive, or is the
   //! inverse sense if Offset is negative.
+  //! If isNotCheckC0 = TRUE checking if basis surface has C0-continuity
+  //! is not made.
   //! Warnings :
   //! - The offset surface is built with a copy of the
   //! surface S. Therefore, when S is modified the
@@ -85,16 +87,18 @@ public:
   //! Warnings :
   //! No check is done to verify that a unique normal direction is
   //! defined at any point of the basis surface S.
-  Standard_EXPORT Geom_OffsetSurface(const Handle(Geom_Surface)& S, const Standard_Real Offset);
+  Standard_EXPORT Geom_OffsetSurface(const Handle(Geom_Surface)& S, const Standard_Real Offset, const Standard_Boolean isNotCheckC0 = Standard_False);
   
   //! Raised if S is not at least C1.
   //! Warnings :
   //! No check is done to verify that a unique normal direction is
   //! defined at any point of the basis surface S.
+  //! If isNotCheckC0 = TRUE checking if basis surface has C0-continuity
+  //! is not made.
   //! Exceptions
   //! Standard_ConstructionError if the surface S is not
   //! at least "C1" continuous.
-  Standard_EXPORT   void SetBasisSurface (const Handle(Geom_Surface)& S) ;
+  Standard_EXPORT   void SetBasisSurface (const Handle(Geom_Surface)& S, const Standard_Boolean isNotCheckC0 = Standard_False) ;
   
   //! Changes this offset surface by assigning D as the offset value.
   Standard_EXPORT   void SetOffsetValue (const Standard_Real D) ;
@@ -370,6 +374,9 @@ public:
   //! collinear to DS/DV .  If IsOpposite == Standard_True
   //! these vectors have opposite direction.
   Standard_EXPORT   Standard_Boolean VOsculatingSurface (const Standard_Real U, const Standard_Real V, Standard_Boolean& IsOpposite, Handle(Geom_BSplineSurface)& VOsculSurf)  const;
+  
+  //! Returns continuity of the basis surface.
+  Standard_EXPORT   GeomAbs_Shape GetBasisSurfContinuity()  const;
 
 
 
@@ -412,6 +419,7 @@ private:
   Handle(Geom_Surface) equivSurf;
   Standard_Real offsetValue;
   Geom_OsculatingSurface myOscSurf;
+  GeomAbs_Shape myBasisSurfContinuity;
 
 
 };

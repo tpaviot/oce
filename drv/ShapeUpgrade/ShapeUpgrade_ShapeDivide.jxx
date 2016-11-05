@@ -1,4 +1,6 @@
 #include <ShapeUpgrade_FaceDivide.hxx>
 #include <ShapeBuild_ReShape.hxx>
+#include <ShapeExtend_BasicMsgRegistrator.hxx>
 #include <TopoDS_Shape.hxx>
+#include <Message_Msg.hxx>
 #include <ShapeUpgrade_ShapeDivide.hxx>

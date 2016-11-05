@@ -13,6 +13,8 @@
 #include <TopoDS_Shape.hxx>
 #include <BOPAlgo_PArgumentAnalyzer.hxx>
 #include <BOPAlgo_ListOfCheckResult.hxx>
+#include <Standard_Real.hxx>
+#include <BRepAlgoAPI_Algo.hxx>
 #include <Standard_Boolean.hxx>
 #include <BOPAlgo_Operation.hxx>
 class TopoDS_Shape;
@@ -34,7 +36,7 @@ class TopoDS_Shape;
 //! aCh.SetData(theS1, theS2, BOPAlgo_FUSE, Standard_False);
 //! aCh.Perform();
 //! Standard_Boolean bV=aCh.IsValid();
-class BRepAlgoAPI_Check 
+class BRepAlgoAPI_Check  : public BRepAlgoAPI_Algo
 {
 public:
 
@@ -87,6 +89,12 @@ Standard_EXPORT virtual ~BRepAlgoAPI_Check();
   
   //! Returns faulty shapes.
   Standard_EXPORT  const  BOPAlgo_ListOfCheckResult& Result() ;
+  
+  //! Sets the additional tolerance
+  Standard_EXPORT   void SetFuzzyValue (const Standard_Real theFuzz) ;
+  
+  //! Returns the additional tolerance
+  Standard_EXPORT   Standard_Real FuzzyValue()  const;
 
 
 
@@ -102,6 +110,7 @@ protected:
   TopoDS_Shape myS2;
   BOPAlgo_PArgumentAnalyzer myAnalyzer;
   BOPAlgo_ListOfCheckResult myResult;
+  Standard_Real myFuzzyValue;
 
 
 private:

@@ -10,16 +10,18 @@
 #include <Standard_DefineAlloc.hxx>
 #include <Standard_Macro.hxx>
 
-#include <Handle_Geom2d_Curve.hxx>
 #include <Standard_Boolean.hxx>
 #include <Handle_Geom2d_BSplineCurve.hxx>
 #include <Standard_Real.hxx>
+#include <Handle_Geom2d_Curve.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <Standard_Integer.hxx>
+#include <Handle_Adaptor2d_HCurve2d.hxx>
 #include <Standard_OStream.hxx>
-class Geom2d_Curve;
 class Geom2d_BSplineCurve;
 class Standard_OutOfRange;
+class Geom2d_Curve;
+class Adaptor2d_HCurve2d;
 
 
 //! A framework to convert a 2D curve to a BSpline.
@@ -39,6 +41,15 @@ public:
   //! -   the highest degree MaxDegree which the
   //! polynomial defining the BSpline is allowed to have.
   Standard_EXPORT Geom2dConvert_ApproxCurve(const Handle(Geom2d_Curve)& Curve, const Standard_Real Tol2d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
+  
+  //! Constructs an approximation framework defined by
+  //! -   the 2D conic Curve
+  //! -   the tolerance value Tol2d
+  //! -   the degree of continuity Order
+  //! -   the maximum number of segments allowed MaxSegments
+  //! -   the highest degree MaxDegree which the
+  //! polynomial defining the BSpline is allowed to have.
+  Standard_EXPORT Geom2dConvert_ApproxCurve(const Handle(Adaptor2d_HCurve2d)& Curve, const Standard_Real Tol2d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
   
   //! Returns the 2D BSpline curve resulting from the
   //! approximation algorithm.
@@ -72,9 +83,11 @@ protected:
 
 private:
 
+  
+  //! Converts a curve to B-spline
+  Standard_EXPORT   void Approximate (const Handle(Adaptor2d_HCurve2d)& theCurve, const Standard_Real theTol3d, const GeomAbs_Shape theOrder, const Standard_Integer theMaxSegments, const Standard_Integer theMaxDegree) ;
 
 
-  Handle(Geom2d_Curve) myCurve;
   Standard_Boolean myIsDone;
   Standard_Boolean myHasResult;
   Handle(Geom2d_BSplineCurve) myBSplCurve;

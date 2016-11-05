@@ -42,15 +42,15 @@ uses
 
     PixMap              from Image,
 
-    Array1OfEdge        from Aspect,
     CLayer2d            from Aspect,
     TypeOfTriedronEcho  from Aspect,
     TypeOfTriedronPosition  from Aspect,
     Handle              from Aspect,
     Display             from Aspect,
     PrintAlgo           from Aspect,
-    DisplayConnection_Handle from Aspect,
+    DisplayConnection   from Aspect,
 
+    ZLayerId            from Graphic3d,
     ZLayerSettings      from Graphic3d,
 
     AspectLine3d        from Graphic3d,
@@ -61,10 +61,8 @@ uses
     CBitFields20        from Graphic3d,
     Group               from Graphic3d,
     CLight              from Graphic3d,
-    CPick               from Graphic3d,
     CPlane              from Graphic3d,
     CStructure          from Graphic3d,
-    CStructure_Handle   from Graphic3d,
     CView               from Graphic3d,
     BufferType          from Graphic3d,
     Structure           from Graphic3d,
@@ -87,8 +85,9 @@ uses
     CUserDraw           from Graphic3d,
     NListOfHAsciiString from Graphic3d,
     FontAspect          from Font,
-    CGraduatedTrihedron from Graphic3d,
+    GraduatedTrihedron  from Graphic3d,
     ClipPlane           from Graphic3d,
+    Vec3                from Graphic3d,
     Ax2                 from gp
 
 raises
@@ -96,7 +95,7 @@ raises
     TransformError      from Graphic3d
 
 is
-    Initialize (theDisp : DisplayConnection_Handle from Aspect)
+    Initialize (theDisp : DisplayConnection from Aspect)
     returns GraphicDriver from Graphic3d;
     ---Level: Public
     ---Purpose: Initialises the Driver
@@ -124,27 +123,27 @@ is
     -- Category: Structure management methods
     -----------------------------------------
 
-    DisplayStructure ( me            : mutable;
-                       theCView      : CView from Graphic3d;
-                       theCStructure : in out CStructure from Graphic3d;
-                       thePriority   : Integer from Standard )
+    DisplayStructure ( me           : mutable;
+                       theCView     : CView from Graphic3d;
+                       theStructure : Structure from Graphic3d;
+                       thePriority  : Integer from Standard )
         is deferred;
     ---Purpose: call_togl_displaystructure
 
-    EraseStructure ( me            : mutable;
-                     theCView      : CView from Graphic3d;
-                     theCStructure : in out CStructure from Graphic3d )
+    EraseStructure ( me           : mutable;
+                     theCView     : CView from Graphic3d;
+                     theStructure : Structure from Graphic3d )
         is deferred;
     ---Purpose: call_togl_erasestructure
 
     RemoveStructure ( me            : mutable;
-                      theCStructure : in out CStructure_Handle from Graphic3d )
+                      theCStructure : in out CStructure from Graphic3d )
         is deferred;
     ---Purpose: call_togl_removestructure
 
     Structure (me : mutable;
                theManager : StructureManager from Graphic3d)
-        returns CStructure_Handle from Graphic3d
+        returns CStructure from Graphic3d
         is deferred;
     ---Purpose: Creates new empty graphic structure
 
@@ -261,12 +260,6 @@ is
         is deferred;
     ---Purpose: call_togl_setvisualisation
 
-    Transparency ( me       : mutable;
-                   ACView   : CView from Graphic3d;
-                   AFlag    : Boolean from Standard )
-        is deferred;
-    ---Purpose: call_togl_transparency
-
     View ( me   : mutable;
            ACView   : in out CView from Graphic3d )
         returns Boolean from Standard
@@ -299,6 +292,7 @@ is
     ----------------------------------------
 
     ZBufferTriedronSetup ( me          : mutable;
+                           theCView    : CView from Graphic3d;
                            XColor      : NameOfColor from Quantity = Quantity_NOC_RED;
                            YColor      : NameOfColor from Quantity = Quantity_NOC_GREEN;
                            ZColor      : NameOfColor from Quantity = Quantity_NOC_BLUE1;
@@ -335,24 +329,26 @@ is
     ---------------------------------
 
     GraduatedTrihedronDisplay(me : mutable;
-                              view : CView from Graphic3d;
-                              cubic : CGraduatedTrihedron from Graphic3d)
+                              theView : CView from Graphic3d;
+                              theCubic : GraduatedTrihedron from Graphic3d)
     ---Purpose: call_togl_graduatedtrihedron_display
     is deferred;
 
     GraduatedTrihedronErase(me : mutable;
-                            view : CView from Graphic3d)
+                            theView : CView from Graphic3d)
     ---Purpose: call_togl_graduatedtrihedron_erase
     is deferred;
 
-    GraduatedTrihedronMinMaxValues(me : mutable;
-                                   xmin : ShortReal from Standard;
-                                   ymin : ShortReal from Standard;
-                                   zmin : ShortReal from Standard;
-                                   xmax : ShortReal from Standard;
-                                   ymax : ShortReal from Standard;
-                                   zmax : ShortReal from Standard)
-    ---Purpose: call_togl_graduatedtrihedron_minmaxvalues
+    GraduatedTrihedronMinMaxValues (me : mutable;
+                                    theView : CView from Graphic3d;
+                                    theMin : Vec3 from Graphic3d;
+                                    theMax : Vec3 from Graphic3d)
+    ---Purpose: Sets minimum and maximum points of scene bounding box for Graduated Trihedron
+    -- stored in graphic view object.
+    -- @param theView [in] current graphic view
+    -- @param theMin [in] the minimum point of scene.
+    -- @param theMax [in] the maximum point of scene.
+
     is deferred;
 
     ----------------------------------
@@ -376,17 +372,15 @@ is
     --    But it works in any case and is especially useful for view dump because the dump image is read from the back buffer.
     -- @return previous mode.
 
-    DisplayImmediateStructure ( me            : mutable;
-                                theCView      : CView      from Graphic3d;
-                                theCStructure : CStructure from Graphic3d )
+    DisplayImmediateStructure ( me           : mutable;
+                                theCView     : CView      from Graphic3d;
+                                theStructure : Structure from Graphic3d )
     is deferred;
     ---Purpose: Display structure in immediate mode on top of general presentation
 
-    EraseImmediateStructure ( me            : mutable;
-                              theCView      : CView      from Graphic3d;
-                              theCStructure : CStructure from Graphic3d )
-    is deferred;
-    ---Purpose: Erases immediate structure
+    ---C++: alias "
+  //! Erases immediate structure
+  Standard_EXPORT virtual void EraseImmediateStructure (const Graphic3d_CView& theCView, const Graphic3d_CStructure& theCStructure) = 0;"
 
     -------------------------------
     -- Category: Layer mode methods
@@ -636,7 +630,7 @@ is
 
     AddZLayer( me         : mutable;
                theCView   : CView from Graphic3d;
-               theLayerId : Integer from Standard )
+               theLayerId : ZLayerId from Graphic3d )
         is deferred;
         ---Purpose: Add a new top-level z layer with ID <theLayerId> for
         -- the view. Z layers allow drawing structures in higher layers
@@ -646,7 +640,7 @@ is
 
     RemoveZLayer( me         : mutable;
                   theCView   : CView from Graphic3d;
-                  theLayerId : Integer from Standard )
+                  theLayerId : ZLayerId from Graphic3d )
         is deferred;
         ---Purpose: Remove Z layer from the specified view. All structures
         -- displayed at the moment in layer will be displayed in default layer
@@ -654,46 +648,26 @@ is
         -- structures use method UnsetZLayer (...).
 
     UnsetZLayer( me         : mutable;
-                 theLayerId : Integer from Standard ) 
+                 theLayerId : ZLayerId from Graphic3d )
         is deferred;
         ---Purpose: Unset Z layer ID for all structures. The structure
         -- indexes will be set to default layer ( the bottom-level z layer
         -- with ID = 0 ).
 
-    ChangeZLayer( me            : mutable;
-                  theCStructure : CStructure from Graphic3d;
-                  theLayerId    : Integer from Standard )
-        is deferred;
-        ---Purpose: Change Z layer of a structure. The new z layer ID will
-        -- be used to define the associated layer for structure on display.
-
-    ChangeZLayer( me            : mutable;
-                  theCStructure : CStructure from Graphic3d;
-                  theCView      : CView from Graphic3d;
-                  theNewLayerId : Integer from Standard )
-        is deferred;
-        ---Purpose: Change Z layer of a structure already presented in view.
-
-    GetZLayer( me;
-               theCStructure : CStructure from Graphic3d )
-        returns Integer from Standard is deferred;
-        ---Purpose: Get Z layer ID of structure. If the structure doesn't
-        -- exists in graphic driver, the method returns -1.
+    ---C++: alias "
+  //! Change Z layer of a structure already presented in view.
+  Standard_EXPORT virtual void ChangeZLayer (const Graphic3d_CStructure& theCStructure, const Graphic3d_CView& theCView, const Graphic3d_ZLayerId theNewLayerId) = 0;"
 
     SetZLayerSettings( me          : mutable;
                        theCView    : CView from Graphic3d;
-                       theLayerId  : Integer from Standard;
+                       theLayerId  : ZLayerId from Graphic3d;
                        theSettings : ZLayerSettings from Graphic3d)
         is deferred;
         ---Purpose:  Sets the settings for a single Z layer of specified view.
 
-    ChangePriority( me             : mutable;
-                    theCStructure  : CStructure from Graphic3d;
-                    theCView       : CView from Graphic3d;
-                    theNewPriority : Integer from Standard )
-        is deferred;
-        ---Purpose: Changes the priority of a structure within its Z layer
-        -- in the specified view.
+    ---C++: alias "
+  //! Changes the priority of a structure within its Z layer in the specified view.
+  Standard_EXPORT virtual void ChangePriority (const Graphic3d_CStructure& theCStructure, const Graphic3d_CView& theCView, const Standard_Integer theNewPriority) = 0;"
 
     -----------------------------
     -- Category: Internal methods
@@ -707,13 +681,8 @@ is
                   ACLight   : CLight from Graphic3d;
                   AField    : Integer from Standard );
 
-    PrintCPick ( me;
-                 ACPick    : CPick from Graphic3d;
-                 AField    : Integer from Standard );
-
-    PrintCStructure ( me;
-                      ACStructure   : CStructure from Graphic3d;
-                      AField    : Integer from Standard );
+    ---C++: alias "
+  Standard_EXPORT void PrintCStructure (const Graphic3d_CStructure& ACStructure, const Standard_Integer AField) const;"
 
     PrintCView ( me;
                  ACView : CView from Graphic3d;
@@ -752,7 +721,7 @@ is
         is static;
 
     GetDisplayConnection (me)
-       returns DisplayConnection_Handle from Aspect;
+       returns DisplayConnection from Aspect;
     ---C++: return const &
 
     ---Purpose: returns Handle to display connection
@@ -767,7 +736,7 @@ is
 fields
 
     MyTraceLevel       : Integer from Standard is protected;
-    myDisplayConnection: DisplayConnection_Handle from Aspect is protected;
+    myDisplayConnection: DisplayConnection from Aspect is protected;
     myDeviceLostFlag   : Boolean from Standard is protected;
 
 end GraphicDriver from Graphic3d;

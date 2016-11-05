@@ -1,6 +1,7 @@
 #include <PrsMgr_PresentationManager.hxx>
 #include <PrsMgr_Prs.hxx>
 #include <PrsMgr_PresentableObject.hxx>
+#include <Quantity_Color.hxx>
 #include <Geom_Transformation.hxx>
 #include <Prs3d_ShadingAspect.hxx>
 #include <Prs3d_Presentation.hxx>

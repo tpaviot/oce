@@ -17,7 +17,7 @@
 #include <Aspect_TypeOfDisplayText.hxx>
 #include <Standard_Boolean.hxx>
 #include <Font_FontAspect.hxx>
-#include <Graphic3d_ShaderProgram_Handle.hxx>
+#include <Graphic3d_ShaderProgram.hxx>
 #include <MMgt_TShared.hxx>
 #include <Standard_CString.hxx>
 class Graphic3d_AspectTextDefinitionError;
@@ -112,7 +112,7 @@ public:
   Standard_EXPORT   Font_FontAspect GetTextFontAspect()  const;
   
   //! Sets up OpenGL/GLSL shader program.
-  Standard_EXPORT   void SetShaderProgram (const Graphic3d_ShaderProgram_Handle& theProgram) ;
+  Standard_EXPORT   void SetShaderProgram (const Handle(Graphic3d_ShaderProgram)& theProgram) ;
   
   //! Returns the current values of the group <me>.
   Standard_EXPORT   void Values (Quantity_Color& AColor, Standard_CString& AFont, Standard_Real& AnExpansionFactor, Standard_Real& ASpace)  const;
@@ -126,7 +126,7 @@ public:
   //! Returns the current values of the group <me>.
   Standard_EXPORT   void Values (Quantity_Color& AColor, Standard_CString& AFont, Standard_Real& AnExpansionFactor, Standard_Real& ASpace, Aspect_TypeOfStyleText& AStyle, Aspect_TypeOfDisplayText& ADisplayType, Quantity_Color& AColorSubTitle, Standard_Boolean& ATextZoomable, Standard_Real& ATextAngle, Font_FontAspect& ATextFontAspect)  const;
   
-  Standard_EXPORT  const  Graphic3d_ShaderProgram_Handle& ShaderProgram()  const;
+  Standard_EXPORT  const  Handle(Graphic3d_ShaderProgram)& ShaderProgram()  const;
 
 
 
@@ -151,7 +151,7 @@ private:
   Standard_Boolean MyTextZoomable;
   Standard_Real MyTextAngle;
   Font_FontAspect MyTextFontAspect;
-  Graphic3d_ShaderProgram_Handle MyShaderProgram;
+  Handle(Graphic3d_ShaderProgram) MyShaderProgram;
 
 
 };

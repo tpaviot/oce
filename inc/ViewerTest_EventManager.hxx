@@ -14,6 +14,7 @@
 #include <Handle_V3d_View.hxx>
 #include <Standard_Integer.hxx>
 #include <MMgt_TShared.hxx>
+#include <Standard_Boolean.hxx>
 class AIS_InteractiveContext;
 class V3d_View;
 class TColgp_Array1OfPnt2d;
@@ -35,9 +36,9 @@ public:
   
   Standard_EXPORT virtual   void ShiftSelect() ;
   
-  Standard_EXPORT virtual   void Select (const Standard_Integer xmin, const Standard_Integer ymin, const Standard_Integer xmax, const Standard_Integer ymax) ;
+  Standard_EXPORT virtual   void Select (const Standard_Integer theXPressed, const Standard_Integer theYPressed, const Standard_Integer theXMotion, const Standard_Integer theYMotion, const Standard_Boolean theIsAutoAllowOverlap = Standard_True) ;
   
-  Standard_EXPORT virtual   void ShiftSelect (const Standard_Integer xmin, const Standard_Integer ymin, const Standard_Integer xmax, const Standard_Integer ymax) ;
+  Standard_EXPORT virtual   void ShiftSelect (const Standard_Integer theXPressed, const Standard_Integer theYPressed, const Standard_Integer theXMotion, const Standard_Integer theYMotion, const Standard_Boolean theIsAutoAllowOverlap = Standard_True) ;
   
   Standard_EXPORT virtual   void Select (const TColgp_Array1OfPnt2d& thePolyline) ;
   

@@ -70,8 +70,6 @@ public:
      const  Contap_TheSequenceOfPoint& Sequence()  const;
   
       Contap_TheSequenceOfPoint& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(Contap_TheHSequenceOfPoint) ShallowCopy()  const;
 
 
 
@@ -111,10 +109,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(Contap_TheHSequenceOfPoint) ShallowCopy(const Handle(Contap_TheHSequenceOfPoint)& me) {
- return me->ShallowCopy();
-}
 
 
 

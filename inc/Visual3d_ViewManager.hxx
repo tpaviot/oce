@@ -23,6 +23,7 @@
 #include <Standard_Integer.hxx>
 #include <Handle_Visual3d_View.hxx>
 #include <Handle_Graphic3d_Structure.hxx>
+#include <Graphic3d_ZLayerId.hxx>
 #include <Graphic3d_ZLayerSettings.hxx>
 #include <Aspect_TypeOfHighlightMethod.hxx>
 #include <Handle_Aspect_Window.hxx>
@@ -32,9 +33,9 @@ class Visual3d_Layer;
 class Graphic3d_GraphicDriver;
 class Visual3d_View;
 class Visual3d_HSequenceOfView;
+class Visual3d_SequenceOfView;
 class Graphic3d_Structure;
 class TColStd_SequenceOfInteger;
-class Aspect_GenId;
 class TColStd_Array2OfReal;
 class Aspect_Window;
 class Graphic3d_DataStructureManager;
@@ -43,7 +44,6 @@ class Graphic3d_DataStructureManager;
 //! This class allows the definition of a manager to
 //! which the views are associated.
 //! It allows them to be globally manipulated.
-//! It activates the pick.
 class Visual3d_ViewManager : public Graphic3d_StructureManager
 {
 
@@ -96,7 +96,7 @@ public:
   Standard_EXPORT   Handle(Visual3d_HSequenceOfView) ActivatedView()  const;
   
   //! Returns the group of views defined in the visualiser <me>.
-  Standard_EXPORT   Handle(Visual3d_HSequenceOfView) DefinedView()  const;
+  Standard_EXPORT  const  Visual3d_SequenceOfView& DefinedViews()  const;
   
   //! Returns the theoretical maximum number of
   //! definable views in the view manager <me>.
@@ -126,28 +126,25 @@ public:
   //! Change Z layer for structure. The layer mechanism allows
   //! to display structures in higher layers in overlay of structures in
   //! lower layers.
-  Standard_EXPORT   void ChangeZLayer (const Handle(Graphic3d_Structure)& theStructure, const Standard_Integer theLayerId) ;
-  
-  //! Get Z layer ID assigned for the structure.
-  Standard_EXPORT   Standard_Integer GetZLayer (const Handle(Graphic3d_Structure)& theStructure)  const;
+  Standard_EXPORT   void ChangeZLayer (const Handle(Graphic3d_Structure)& theStructure, const Graphic3d_ZLayerId theLayerId) ;
   
   //! Sets the settings for a single Z layer for all managed views.
-  Standard_EXPORT   void SetZLayerSettings (const Standard_Integer theLayerId, const Graphic3d_ZLayerSettings& theSettings) ;
+  Standard_EXPORT   void SetZLayerSettings (const Graphic3d_ZLayerId theLayerId, const Graphic3d_ZLayerSettings& theSettings) ;
   
   //! Returns the settings of a single Z layer.
-  Standard_EXPORT   Graphic3d_ZLayerSettings ZLayerSettings (const Standard_Integer theLayerId) ;
+  Standard_EXPORT   Graphic3d_ZLayerSettings ZLayerSettings (const Graphic3d_ZLayerId theLayerId) ;
   
   //! Add a new top-level Z layer and get its ID as
   //! <theLayerId> value. The method returns Standard_False if the layer
   //! can not be created. The layer mechanism allows to display
   //! structures in higher layers in overlay of structures in lower layers.
-  Standard_EXPORT   Standard_Boolean AddZLayer (Standard_Integer& theLayerId) ;
+  Standard_EXPORT   Standard_Boolean AddZLayer (Graphic3d_ZLayerId& theLayerId) ;
   
   //! Remove Z layer with ID <theLayerId>. Method returns
   //! Standard_False if the layer can not be removed or doesn't exists.
   //! By default, there are always default bottom-level layer that can't
   //! be removed.
-  Standard_EXPORT   Standard_Boolean RemoveZLayer (const Standard_Integer theLayerId) ;
+  Standard_EXPORT   Standard_Boolean RemoveZLayer (const Graphic3d_ZLayerId theLayerId) ;
   
   //! Return all Z layer ids in sequence ordered by overlay level
   //! from lowest layer to highest ( foreground ). The first layer ID
@@ -200,16 +197,6 @@ public:
   //! if <AStructure> is displayed in <AProjector> and TOS_COMPUTED.
   Standard_EXPORT   void ReCompute (const Handle(Graphic3d_Structure)& AStructure, const Handle(Graphic3d_DataStructureManager)& AProjector) ;
   
-  //! Returns Standard_True if the transparency
-  //! is activated in all activated views.
-  //! Default Standard_False
-  Standard_EXPORT   Standard_Boolean Transparency()  const;
-  
-  //! if <AFlag> is Standard_True then the transparency
-  //! is managed.
-  //! Default Standard_False
-  Standard_EXPORT   void SetTransparency (const Standard_Boolean AFlag) ;
-  
   //! Returns Standard_True if the zbuffer activity
   //! is managed automatically.
   //! Default Standard_False
@@ -228,9 +215,6 @@ friend class Visual3d_Layer;
 
 protected:
 
-  
-  //! Returns global instance of z layer ids generator.
-  Standard_EXPORT static   Aspect_GenId& getZLayerGenId() ;
 
 
 
@@ -251,7 +235,7 @@ private:
   Aspect_GenId MyViewGenId;
   Handle(Graphic3d_GraphicDriver) MyGraphicDriver;
   Standard_Boolean MyZBufferAuto;
-  Standard_Boolean MyTransparency;
+  Aspect_GenId myZLayerGenId;
   TColStd_MapOfInteger myLayerIds;
   TColStd_SequenceOfInteger myLayerSeq;
   Visual3d_MapOfZLayerSettings myMapOfZLayerSettings;

@@ -28,13 +28,20 @@
 //=======================================================================
 
 ProjLib_Projector::ProjLib_Projector()
-{}
+{
+  isDone = Standard_False;
+  myType = GeomAbs_BSplineCurve;
+}
 
 
 //=======================================================================
-void ProjLib_Projector::Delete()
-{}
+//function : ~ProjLib_Projector
+//purpose  :  Destructor
+//=======================================================================
 
+ProjLib_Projector::~ProjLib_Projector()
+{
+}
 
 
 //=======================================================================

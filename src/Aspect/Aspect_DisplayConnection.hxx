@@ -15,14 +15,13 @@
 #define _Aspect_DisplayConnection_H__
 
 #include <Standard_Transient.hxx>
-#include <Aspect_DisplayConnection_Handle.hxx>
 #include <Aspect_XAtom.hxx>
 
 #include <TCollection_AsciiString.hxx>
 #include <NCollection_DataMap.hxx>
 
 #if !defined(_WIN32) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX)) && !defined(__ANDROID__)
-  #include <X11/Xlib.h>
+  #include <InterfaceGraphic.hxx>
 #endif
 
 //! This class creates and provides connection with X server.
@@ -80,5 +79,7 @@ public:
   DEFINE_STANDARD_RTTI(Aspect_DisplayConnection) // Type definition
 
 };
+
+DEFINE_STANDARD_HANDLE (Aspect_DisplayConnection, Standard_Transient)
 
 #endif // _Aspect_DisplayConnection_H__

@@ -1433,42 +1433,8 @@ OSD_KindFile OSD_File :: KindOfFile () const {
  return retVal;
 
 }  // end OSD_File :: KindOfFile
-#define PRO13792
-#ifndef PRO13792
 
-OSD_File OSD_File :: BuildTemporary () {
 
- OSD_Protection          prt;
- OSD_File                retVal;
-
-#ifdef VAC
- char tmpbuf [MAX_PATH];
- if (GetTempPath (MAX_PATH, tmpbuf) == 0)
- {
-    perror ("ERROR in GetTempPath");
-    exit (10);
- }
- char tmpbuf2 [MAX_PATH];
- if (GetTempFileName (tmpbuf, NULL, 0, tmpbuf2) == 0)
- {
-    perror ("ERROR in GetTempFileName");
-    exit (10);
- }
- TCollection_AsciiString fileName (  tmpbuf2  );
-#else
- TCollection_AsciiString fileName (  _ttmpnam ( NULL )  );
-#endif
-
- OSD_Path                filePath ( fileName );
-
- retVal.SetPath ( filePath );
- retVal.Build   ( OSD_ReadWrite, prt );
-
- return retVal;
-
-}  // end OSD_File :: BuildTemporary
-
-#else   // PRO13792
 
 //-------------------------------------------------debutpri???980424
 
@@ -1551,8 +1517,6 @@ OSD_File OSD_File :: BuildTemporary () {
  return retVal;
 
 }  // end OSD_File :: BuildTemporary
-
-#endif // PRO13792
 
 //-------------------------------------------------finpri???980424
 

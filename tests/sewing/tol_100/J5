@@ -1,4 +1,12 @@
+puts "TODO ?OCC24592 ALL: Error: Max tolerance"
+puts "TODO ?OCC24592 ALL: Error : Number of faults is"
+puts "TODO ?OCC24592 ALL: Error : Number of free edges is"
+
 restore [locate_data_file CIN902_intcqhmr.rle] a
-puts "TODO ?#23150 ALL: Error : Number of faults is"
-puts "TODO #24592 ALL: Error : Number of free edges is"
-set nbFreeEdges ""
+
+sewing result $tol a
+
+checkmaxtol result 197.67876466299327
+checknbshapes result -shell 1
+checkfreebounds result 21
+checkfaults result a 7

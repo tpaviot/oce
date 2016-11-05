@@ -71,8 +71,6 @@ public:
      const  TColStd_SequenceOfTransient& Sequence()  const;
   
       TColStd_SequenceOfTransient& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(TColStd_HSequenceOfTransient) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(TColStd_HSequenceOfTransient) ShallowCopy(const Handle(TColStd_HSequenceOfTransient)& me) {
- return me->ShallowCopy();
-}
 
 
 

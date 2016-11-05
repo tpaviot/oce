@@ -16,6 +16,7 @@
 #include <Handle_ShapeUpgrade_FaceDivide.hxx>
 class TopoDS_Shape;
 class ShapeUpgrade_FaceDivide;
+class Message_Msg;
 
 
 //! API class for performing conversion of 3D, 2D curves to bezier curves
@@ -108,6 +109,13 @@ protected:
   
   //! Returns the tool for dividing faces.
   Standard_EXPORT virtual   Handle(ShapeUpgrade_FaceDivide) GetSplitFaceTool()  const;
+  
+  Standard_EXPORT virtual   Message_Msg GetFaceMsg()  const;
+  
+  Standard_EXPORT virtual   Message_Msg GetWireMsg()  const;
+  
+  //! Returns a message decsribing modification of a shape.
+  Standard_EXPORT virtual   Message_Msg GetEdgeMsg()  const;
 
 
 

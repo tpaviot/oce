@@ -25,7 +25,7 @@
 #include <Handle_Prs3d_Presentation.hxx>
 #include <Handle_Prs3d_Projector.hxx>
 #include <Handle_Geom_Transformation.hxx>
-#include <Handle_SelectMgr_Selection.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <Quantity_NameOfColor.hxx>
 class Geom_Plane;
 class Geom_Axis2Placement;
@@ -34,7 +34,6 @@ class AIS_InteractiveContext;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
-class SelectMgr_Selection;
 class Quantity_Color;
 
 
@@ -145,7 +144,7 @@ public:
       Select3D_TypeOfSensitivity TypeOfSensitivity()  const;
   
   //! Sets the type of sensitivity for the plane.
-      void SetTypeOfSensitivity (const Select3D_TypeOfSensitivity theTypeOfSensitivity) ;
+      void SetTypeOfSensitivity (const Select3D_TypeOfSensitivity& theTypeOfSensitivity) ;
   
   //! computes the presentation according to a point of view
   //! given by <aProjector>.

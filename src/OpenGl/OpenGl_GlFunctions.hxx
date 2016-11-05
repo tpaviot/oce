@@ -39,14 +39,25 @@
 #define GLX_GLXEXT_LEGACY
 
 // include main OpenGL header provided with system
-#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-  #include <OpenGL/gl.h>
-  #include <OpenGL/glu.h>
+#if defined(__APPLE__)
+  #import <TargetConditionals.h>
+  #if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
+    #include <OpenGLES/ES2/gl.h>
+  #elif(!defined(MACOSX_USE_GLX))
+    #include <OpenGL/gl.h>
+    #include <OpenGL/glu.h>
+  #endif
   #define __X_GL_H // prevent chaotic gl.h inclusions to avoid compile errors
 #elif defined(HAVE_GLES2) || defined(__ANDROID__)
   #include <GLES2/gl2.h>
   //#include <GLES3/gl3.h>
+#else
+  #include <GL/gl.h>
+  #include <GL/glu.h>
+#endif
 
+#if defined(GL_ES_VERSION_2_0)
+  // define items to unify code paths with desktop OpenGL
   typedef double GLdouble;
   typedef double GLclampd;
   typedef uint64_t GLuint64;
@@ -61,6 +72,7 @@
   // in core since OpenGL ES 3.0, extension GL_OES_rgb8_rgba8
   #define GL_RGB8  0x8051
   #define GL_RGBA8 0x8058
+  #define GL_LUMINANCE8 0x8040
   // GL_EXT_texture_format_BGRA8888
   #define GL_BGRA_EXT 0x80E1 // same as GL_BGRA on desktop
 
@@ -96,6 +108,9 @@
   #define GL_UNSIGNED_INT_24_8              0x84FA
   #define GL_DEPTH24_STENCIL8               0x88F0
 
+  #define GL_READ_FRAMEBUFFER               0x8CA8
+  #define GL_DRAW_FRAMEBUFFER               0x8CA9
+
   // GL_EXT_texture_filter_anisotropic
   #define GL_TEXTURE_MAX_ANISOTROPY_EXT     0x84FE
   #define GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT 0x84FF
@@ -126,9 +141,6 @@
 
   // GL_EXT_texture_buffer for OpenGL ES 3.1+
   #define GL_TEXTURE_BUFFER_ARB             0x8C2A
-#else
-  #include <GL/gl.h>
-  #include <GL/glu.h>
 #endif
 
 #if defined(__ANDROID__)
@@ -687,6 +699,11 @@ public: //! @name OpenGL ES 2.0
   {
     ::glVertexAttribPointer (index, size, type, normalized, stride, pointer);
   }
+
+public: //! @name OpenGL ES 3.0
+
+  typedef void (*glBlitFramebuffer_t)(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+  glBlitFramebuffer_t glBlitFramebuffer;
 
 #else // OpenGL ES vs. desktop
 
@@ -1313,9 +1330,6 @@ public: //! @name GL_ARB_texture_storage (added to OpenGL 4.2 core)
   PFNGLTEXSTORAGE1DPROC                                glTexStorage1D;
   PFNGLTEXSTORAGE2DPROC                                glTexStorage2D;
   PFNGLTEXSTORAGE3DPROC                                glTexStorage3D;
-  PFNGLTEXTURESTORAGE1DEXTPROC                         glTextureStorage1DEXT;
-  PFNGLTEXTURESTORAGE2DEXTPROC                         glTextureStorage2DEXT;
-  PFNGLTEXTURESTORAGE3DEXTPROC                         glTextureStorage3DEXT;
 
 public: //! @name OpenGL 4.2
 

@@ -23,10 +23,9 @@ vdisplay b
 vfit
 vtop
 
-vmoveto 199 200
-checkcolor 199 200 0 1 1
-
-if { $stat != 1 } {
+vaspects -setwidth 5
+vmoveto 200 200
+if { "[vreadpixel 200 200 rgb name]" != "CYAN1"  } {
   puts "Error : The box is not selectable!"
 }
 
@@ -34,9 +33,7 @@ puts "Testing box selection over the plane in axonometry projection:"
 vaxo
 vfit
 
-vmoveto 199 200
-checkcolor 199 200 0 1 1
-
-if { $stat != 1 } {
+vmoveto 200 200
+if { "[vreadpixel 199 200 rgb name]" != "CYAN1"  } {
   puts "Error : The box is not selectable!"
 }

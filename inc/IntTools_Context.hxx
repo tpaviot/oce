@@ -14,9 +14,9 @@
 #include <BOPCol_DataMapOfShapeAddress.hxx>
 #include <BOPCol_DataMapOfTransientAddress.hxx>
 #include <Standard_Integer.hxx>
+#include <Standard_Real.hxx>
 #include <MMgt_TShared.hxx>
 #include <Handle_Geom_Curve.hxx>
-#include <Standard_Real.hxx>
 #include <TopAbs_State.hxx>
 #include <Standard_Boolean.hxx>
 class IntTools_FClass2d;
@@ -33,6 +33,8 @@ class gp_Pnt;
 class TopoDS_Vertex;
 class gp_Pnt2d;
 class IntTools_Curve;
+class Bnd_Box;
+class TopoDS_Shape;
 
 
 
@@ -134,6 +136,12 @@ Standard_EXPORT virtual  ~IntTools_Context();
   
 
   //! Returns true if the point aP2D is
+  //! inside the boundaries of the face aF,
+  //! otherwise returns false
+  Standard_EXPORT   Standard_Boolean IsPointInFace (const gp_Pnt& aP3D, const TopoDS_Face& aF, const Standard_Real aTol) ;
+  
+
+  //! Returns true if the point aP2D is
   //! inside or on the boundaries of aF
   Standard_EXPORT   Standard_Boolean IsPointInOnFace (const TopoDS_Face& aF, const gp_Pnt2d& aP2D) ;
   
@@ -184,6 +192,17 @@ Standard_EXPORT virtual  ~IntTools_Context();
   //! Returns false if projection algorithm failed
   //! other wiese returns true.
   Standard_EXPORT   Standard_Boolean ProjectPointOnEdge (const gp_Pnt& aP, const TopoDS_Edge& aE, Standard_Real& aT) ;
+  
+  Standard_EXPORT   Bnd_Box& BndBox (const TopoDS_Shape& theS) ;
+  
+  //! Returns true if the solid <theFace> has
+  //! infinite bounds
+  Standard_EXPORT   Standard_Boolean IsInfiniteFace (const TopoDS_Face& theFace) ;
+  
+  //! Sets tolerance to be used for projection of point on surface.
+  //! Clears map of already cached projectors in order to maintain
+  //! correct value for all projectors
+  Standard_EXPORT   void SetPOnSProjectionTolerance (const Standard_Real theValue) ;
 
 
 
@@ -201,11 +220,16 @@ protected:
   BOPCol_DataMapOfTransientAddress myProjPTMap;
   BOPCol_DataMapOfShapeAddress myHatcherMap;
   BOPCol_DataMapOfShapeAddress myProjSDataMap;
+  BOPCol_DataMapOfShapeAddress myBndBoxDataMap;
   Standard_Integer myCreateFlag;
+  Standard_Real myPOnSTolerance;
 
 
 private: 
 
+  
+  //! Clears map of already cached projectors.
+  Standard_EXPORT   void clearCachedPOnSProjectors() ;
 
 
 

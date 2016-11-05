@@ -24,13 +24,11 @@
 #include <TopoDS_Compound.hxx>
 #include <BRep_Builder.hxx>
 #include <TopTools_MapOfShape.hxx>
+#include <TopTools_IndexedMapOfShape.hxx>
 #include <TopTools_MapIteratorOfMapOfShape.hxx>
 
 #include <Standard_NoSuchObject.hxx>
 
-#define BUC60862
-
-#ifdef BUC60862
 #include <TNaming_Naming.hxx>
 #include <TNaming_ListOfNamedShape.hxx>
 #include <TDF_AttributeMap.hxx>
@@ -39,7 +37,6 @@
 #include <TDF_ChildIterator.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TNaming_ListIteratorOfListOfNamedShape.hxx>
-#endif
 
 //=======================================================================
 //function : LastModif 
@@ -48,7 +45,7 @@
 
 static void LastModif(      TNaming_NewShapeIterator& it,
 		      const TopoDS_Shape&             S,
-		            TopTools_MapOfShape&      MS,
+		            TopTools_IndexedMapOfShape& MS,
 		      const TDF_LabelMap&             Updated,
 		            TDF_LabelList&            Deleted)
 { 
@@ -83,7 +80,7 @@ static void LastModif(      TNaming_NewShapeIterator& it,
 //=======================================================================
 
 static void LastModif(TNaming_NewShapeIterator& it,
-		      TopTools_MapOfShape&      MS,
+		      TopTools_IndexedMapOfShape& MS,
 		      const TopoDS_Shape&       S,
 		      TDF_LabelList&            Deleted)
 {
@@ -115,19 +112,18 @@ static void LastModif(TNaming_NewShapeIterator& it,
 //purpose  : 
 //=======================================================================
 
-static TopoDS_Shape MakeShape (const TopTools_MapOfShape& MS) 
+static TopoDS_Shape MakeShape (const TopTools_IndexedMapOfShape& MS) 
 {  
   if (!MS.IsEmpty ()) {
-    TopTools_MapIteratorOfMapOfShape it(MS);
     if (MS.Extent() == 1) {
-      return it.Key();
+      return MS (1);
     }
     else {
       TopoDS_Compound C;
       BRep_Builder B;
       B.MakeCompound(C);
-      for (; it.More(); it.Next()){ 
-	B.Add(C,it.Key());
+      for (Standard_Integer anItMS = 1; anItMS <= MS.Extent(); ++anItMS) {
+        B.Add (C, MS (anItMS));
       }
       return C;
     }
@@ -142,7 +138,7 @@ static TopoDS_Shape MakeShape (const TopTools_MapOfShape& MS)
 TopoDS_Shape TNaming_Tool::GetShape(const Handle(TNaming_NamedShape)& NS)
 {  
   TNaming_Iterator itL (NS);
-  TopTools_MapOfShape  MS;
+  TopTools_IndexedMapOfShape MS;
   if(NS->Evolution() == TNaming_SELECTED) {
     for (; itL.More(); itL.Next()) {
       if(!itL.NewShape().IsNull()) {
@@ -194,7 +190,7 @@ TopoDS_Shape TNaming_Tool::GetShape(const Handle(TNaming_NamedShape)& NS)
 TopoDS_Shape TNaming_Tool::OriginalShape (const Handle(TNaming_NamedShape)& NS)
 {
   TNaming_Iterator itL (NS);
-  TopTools_MapOfShape  MS;
+  TopTools_IndexedMapOfShape MS;
   for (; itL.More(); itL.Next()) {
     MS.Add(itL.OldShape());
   }
@@ -202,22 +198,13 @@ TopoDS_Shape TNaming_Tool::OriginalShape (const Handle(TNaming_NamedShape)& NS)
 }  
 
 //=======================================================================
-static void ApplyOrientation (TopTools_MapOfShape& MS, 
+static void ApplyOrientation (TopTools_IndexedMapOfShape& MS, 
 			      const TopAbs_Orientation OrientationToApply)
 {
- if (!MS.IsEmpty ()) {
-   TopTools_MapOfShape aMS;
-   aMS.Assign(MS);
-   TopTools_MapIteratorOfMapOfShape it(aMS);
-   for (; it.More(); it.Next()) {
-     if(it.Key().Orientation() != OrientationToApply) {
-       TopoDS_Shape aS = it.Key();
-       MS.Remove(aS);
-       aS.Orientation(OrientationToApply);
-       MS.Add(aS);
-     }  
-   }
- }
+  for (Standard_Integer anItMS = 1; anItMS <= MS.Extent(); ++anItMS)
+  {
+    MS.Substitute (anItMS, MS (anItMS).Oriented (OrientationToApply));
+  }
 }
 
 //=======================================================================
@@ -227,7 +214,7 @@ static void ApplyOrientation (TopTools_MapOfShape& MS,
 
 TopoDS_Shape TNaming_Tool::CurrentShape(const Handle(TNaming_NamedShape)& Att)
 { 
-  TopTools_MapOfShape MS;
+  TopTools_IndexedMapOfShape MS;
   TDF_LabelList Deleted;
 
   TNaming_Iterator itL (Att);
@@ -269,11 +256,11 @@ TopoDS_Shape TNaming_Tool::CurrentShape(const Handle(TNaming_NamedShape)& Att)
     }
     else {
 //      LastModif(it, MS, S, Deleted);
-      TopTools_MapOfShape MS2;  // to be optimized later
+      TopTools_IndexedMapOfShape MS2;  // to be optimized later
       LastModif(it, MS2, S, Deleted);
       if (YaOrientationToApply) ApplyOrientation (MS2, OrientationToApply);
-      for (TopTools_MapIteratorOfMapOfShape itMS2(MS2); itMS2.More();itMS2.Next()) 
-	MS.Add(itMS2.Key());
+      for (Standard_Integer anItMS2 = 1; anItMS2 <= MS2.Extent(); ++anItMS2)
+        MS.Add (MS2 (anItMS2));
     }
   }
   return MakeShape (MS);
@@ -288,7 +275,7 @@ TopoDS_Shape TNaming_Tool::CurrentShape(const Handle(TNaming_NamedShape)& Att,
 {  
   TDF_Label Lab = Att->Label();
 
-  TopTools_MapOfShape MS;
+  TopTools_IndexedMapOfShape MS;
   TDF_LabelList Deleted;
   
   if (!Updated.Contains(Lab)) {
@@ -334,11 +321,11 @@ TopoDS_Shape TNaming_Tool::CurrentShape(const Handle(TNaming_NamedShape)& Att,
     }
     else {
 //      LastModif(it, S, MS, Updated, Deleted);
-      TopTools_MapOfShape MS2; // to be optimized later
+      TopTools_IndexedMapOfShape MS2; // to be optimized later
       LastModif(it, S, MS2, Updated, Deleted);
       if (YaOrientationToApply) ApplyOrientation (MS2, OrientationToApply);
-      for (TopTools_MapIteratorOfMapOfShape itMS2(MS2); itMS2.More();itMS2.Next()) 
-	MS.Add(itMS2.Key());
+      for (Standard_Integer anItMS2 = 1; anItMS2 <= MS2.Extent(); ++anItMS2)
+        MS.Add(MS2 (anItMS2));
     }
   }
   return MakeShape (MS);
@@ -380,7 +367,7 @@ Handle(TNaming_NamedShape) TNaming_Tool::CurrentNamedShape(const Handle(TNaming_
 //=======================================================================
 
 static void FindModifUntil (TNaming_NewShapeIterator&         it,
-			    TopTools_MapOfShape&              MS,
+			    TopTools_IndexedMapOfShape& MS,
 			    const Handle(TNaming_NamedShape)& Context)
 { 
   for (; it.More(); it.Next()) {
@@ -404,7 +391,7 @@ TopoDS_Shape TNaming_Tool::GeneratedShape(const TopoDS_Shape&               S,
 					  const Handle(TNaming_NamedShape)& Generation)
 
 {  
-  TopTools_MapOfShape MS;
+  TopTools_IndexedMapOfShape MS;
   Handle(TNaming_UsedShapes) US;
   Generation->Label().Root().FindAttribute(TNaming_UsedShapes::GetID(),US);
   
@@ -427,7 +414,7 @@ TopoDS_Shape TNaming_Tool::GeneratedShape(const TopoDS_Shape&               S,
 void TNaming_Tool::FirstOlds (const Handle(TNaming_UsedShapes)& US,
 			      const TopoDS_Shape&         S,
 			      TNaming_OldShapeIterator&  it,
-			      TopTools_MapOfShape&       MS,
+			      TopTools_IndexedMapOfShape& MS,
 			      TDF_LabelList&          Labels) 
 {  
   Standard_Integer TransDef;
@@ -466,7 +453,7 @@ TopoDS_Shape TNaming_Tool::InitialShape(const TopoDS_Shape&  S,
 
   Standard_Integer Transdef;
   Label(US,S,Transdef); 
-  TopTools_MapOfShape MS;
+  TopTools_IndexedMapOfShape MS;
   TNaming_OldShapeIterator it(S,Transdef,US);
   if (!it.More()) {
     return S;
@@ -555,7 +542,6 @@ void TNamingTool_Write (const TopoDS_Shape& S,
 #endif
 
 
-#ifdef BUC60862
 //=======================================================================
 //function : FindShape
 //purpose  : ANaming
@@ -677,4 +663,3 @@ void TNaming_Tool::FindShape(const TDF_LabelMap&               Valid,
 #endif
       
 }
-#endif

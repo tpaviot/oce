@@ -71,8 +71,6 @@ public:
      const  GeomPlate_SequenceOfCurveConstraint& Sequence()  const;
   
       GeomPlate_SequenceOfCurveConstraint& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(GeomPlate_HSequenceOfCurveConstraint) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(GeomPlate_HSequenceOfCurveConstraint) ShallowCopy(const Handle(GeomPlate_HSequenceOfCurveConstraint)& me) {
- return me->ShallowCopy();
-}
 
 
 

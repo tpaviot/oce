@@ -52,14 +52,14 @@ public:
   
   //! Returns  the number  of  intervals for  continuity
   //! <S>. May be one if Continuity(myclass) >= <S>
-    static   Standard_Integer NbIntervals (BRepAdaptor_Curve& C, const GeomAbs_Shape S) ;
+    static   Standard_Integer NbIntervals (const BRepAdaptor_Curve& C, const GeomAbs_Shape S) ;
   
   //! Stores in <T> the  parameters bounding the intervals
   //! of continuity <S>.
   //!
   //! The array must provide  enough room to  accomodate
   //! for the parameters. i.e. T.Length() > NbIntervals()
-    static   void Intervals (BRepAdaptor_Curve& C, TColStd_Array1OfReal& T, const GeomAbs_Shape S) ;
+    static   void Intervals (const BRepAdaptor_Curve& C, TColStd_Array1OfReal& T, const GeomAbs_Shape S) ;
   
     static   Standard_Boolean IsClosed (const BRepAdaptor_Curve& C) ;
   

@@ -1,5 +1,6 @@
 #include <Prs3d_Presentation.hxx>
 #include <TopoDS_Shape.hxx>
-#include <Prs3d_Drawer.hxx>
 #include <gp_Pnt2d.hxx>
+#include <BRep_Builder.hxx>
+#include <TopoDS_Compound.hxx>
 #include <StdPrs_ShadedShape.hxx>

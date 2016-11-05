@@ -1,6 +1,0 @@
-#include <SelectBasics_EntityOwner.hxx>
-#include <gp_Pnt.hxx>
-#include <Select3D_Projector.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
-#include <Bnd_Box2d.hxx>
-#include <MeshVS_SensitiveSegment.hxx>

@@ -32,9 +32,6 @@ class TopLoc_ItemLocation;
 //! SListOfItemLocation Iterator;
 //! for (Iterator = S; Iterator.More(); Iterator.Next())
 //! X = Iterator.Value();
-//!
-//! Memory usage  is  automatically managed for  SListOfItemLocations
-//! (using reference counts).
 class TopLoc_SListOfItemLocation 
 {
 public:
@@ -43,13 +40,13 @@ public:
 
   
   //! Creates an empty List.
-  Standard_EXPORT TopLoc_SListOfItemLocation();
+    TopLoc_SListOfItemLocation();
   
   //! Creates a List with <anItem> as value  and <aTail> as tail.
   Standard_EXPORT TopLoc_SListOfItemLocation(const TopLoc_ItemLocation& anItem, const TopLoc_SListOfItemLocation& aTail);
   
   //! Creates a list from an other one. The lists  are shared.
-  Standard_EXPORT TopLoc_SListOfItemLocation(const TopLoc_SListOfItemLocation& Other);
+    TopLoc_SListOfItemLocation(const TopLoc_SListOfItemLocation& Other);
   
   //! Sets  a list  from  an  other  one. The  lists are
   //! shared. The list itself is returned.
@@ -62,7 +59,7 @@ public:
       Standard_Boolean IsEmpty()  const;
   
   //! Sets the list to be empty.
-  Standard_EXPORT   void Clear() ;
+      void Clear() ;
 ~TopLoc_SListOfItemLocation()
 {
   Clear();
@@ -72,43 +69,16 @@ public:
   //! raised  if the list is empty.
   Standard_EXPORT  const  TopLoc_ItemLocation& Value()  const;
   
-  //! Returns the current value of the list. An error is
-  //! raised if the  list  is empty.   This value may be
-  //! modified.   A   method modifying the  value can be
-  //! called. The value will be modified in the list.
-  Standard_EXPORT   TopLoc_ItemLocation& ChangeValue() ;
-  
-  //! Changes the current value in the list. An error is
-  //! raised if the list is empty.
-  Standard_EXPORT   void SetValue (const TopLoc_ItemLocation& anItem) ;
-  
   //! Returns the current tail of  the list. On an empty
   //! list the tail is the list itself.
   Standard_EXPORT  const  TopLoc_SListOfItemLocation& Tail()  const;
-  
-  //! Returns the current  tail of the list.   This tail
-  //! may be modified.  A method modifying the  tail can
-  //! be called. The tail will be modified in the list.
-  Standard_EXPORT   TopLoc_SListOfItemLocation& ChangeTail() ;
-  
-  //! Changes the current tail  in the list. On an empty
-  //! list SetTail is Assign.
-  Standard_EXPORT   void SetTail (const TopLoc_SListOfItemLocation& aList) ;
   
   //! Replaces the list by a list with <anItem> as Value
   //! and the  list <me> as  tail.
       void Construct (const TopLoc_ItemLocation& anItem) ;
   
-  //! Returns a new list  with  <anItem> as Value an the
-  //! list <me> as tail.
-      TopLoc_SListOfItemLocation Constructed (const TopLoc_ItemLocation& anItem)  const;
-  
   //! Replaces the list <me> by its tail.
       void ToTail() ;
-  
-  //! Sets  the iterator  to iterate   on the content of
-  //! <aList>. This is Assign().
-      void Initialize (const TopLoc_SListOfItemLocation& aList) ;
   
   //! Returns True if the iterator  has a current value.
   //! This is !IsEmpty()

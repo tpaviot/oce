@@ -71,8 +71,6 @@ public:
      const  StepElement_SequenceOfCurveElementSectionDefinition& Sequence()  const;
   
       StepElement_SequenceOfCurveElementSectionDefinition& ChangeSequence() ;
-  
-  Standard_EXPORT   Handle(StepElement_HSequenceOfCurveElementSectionDefinition) ShallowCopy()  const;
 
 
 
@@ -112,10 +110,6 @@ private:
 #undef Handle_TCollection_HSequence
 #undef TCollection_HSequence_Type_
 
-
-inline Handle(StepElement_HSequenceOfCurveElementSectionDefinition) ShallowCopy(const Handle(StepElement_HSequenceOfCurveElementSectionDefinition)& me) {
- return me->ShallowCopy();
-}
 
 
 

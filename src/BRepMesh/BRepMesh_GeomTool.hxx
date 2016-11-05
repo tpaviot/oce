@@ -21,6 +21,7 @@
 #include <GeomAbs_IsoType.hxx>
 #include <Handle_BRepAdaptor_HSurface.hxx>
 #include <TopoDS_Edge.hxx>
+#include <Precision.hxx>
 
 class BRepAdaptor_Curve;
 class BRepAdaptor_HSurface;
@@ -28,7 +29,11 @@ class gp_Pnt;
 class gp_Pnt2d;
 class gp_Dir;
 
-//! Tool class intended to obtain parameters based on shape geometry.
+//! Tool class accumulating common geometrical functions as well as 
+//! functionality using shape geometry to produce data necessary for 
+//! tessellation.
+//! General aim is to calculate discretization points for the given
+//! curve or iso curve of surface according to the specified parameters.
 class BRepMesh_GeomTool
 {
 public:
@@ -61,7 +66,8 @@ public:
                                     const Standard_Real      theLastParam,
                                     const Standard_Real      theLinDeflection,
                                     const Standard_Real      theAngDeflection,
-                                    const Standard_Integer   theMinPointsNb = 2);
+                                    const Standard_Integer   theMinPointsNb = 2,
+                                    const Standard_Real      theMinSize = Precision::Confusion());
   
   //! Constructor.
   //! Initiates discretization of geometric curve corresponding 
@@ -81,7 +87,8 @@ public:
                                     const Standard_Real                 theLastParam,
                                     const Standard_Real                 theLinDeflection,
                                     const Standard_Real                 theAngDeflection,
-                                    const Standard_Integer              theMinPointsNb = 2);
+                                    const Standard_Integer              theMinPointsNb = 2,
+                                    const Standard_Real                 theMinSize = Precision::Confusion());
 
   //! Adds point to already calculated points (or replaces existing).
   //! @param thePoint point to be added.
@@ -131,17 +138,20 @@ public:
   
 public: //! @name static API
 
-  //! @param theSurface surface the nomal should be found for.
+  //! Computes normal to the given surface at the specified
+  //! position in parametric space.
+  //! @param theSurface surface the normal should be found for.
   //! @param theParamU U parameter in parametric space of the surface.
   //! @param theParamV V parameter in parametric space of the surface.
   //! @param[out] thePoint 3d point corresponding to the given parameters.
   //! @param[out] theNormal normal vector at the point specified by the parameters.
   //! @return FALSE if the normal can not be computed, TRUE elsewhere.
-  static Standard_Boolean Normal(const Handle(BRepAdaptor_HSurface)& theSurface,
-                                 const Standard_Real                 theParamU,
-                                 const Standard_Real                 theParamV,
-                                 gp_Pnt&                             thePoint,
-                                 gp_Dir&                             theNormal);
+  Standard_EXPORT static Standard_Boolean Normal(
+    const Handle(BRepAdaptor_HSurface)& theSurface,
+    const Standard_Real                 theParamU,
+    const Standard_Real                 theParamV,
+    gp_Pnt&                             thePoint,
+    gp_Dir&                             theNormal);
 
   //! Checks intersection between two lines defined by two points.
   //! @param theStartPnt1 start point of first line.
@@ -152,12 +162,13 @@ public: //! @name static API
   //! @param[out] theParamOnSegment parameters of intersection point 
   //! corresponding to first and second segment.
   //! @return status of intersection check.
-  static IntFlag IntLinLin(const gp_XY&  theStartPnt1,
-                           const gp_XY&  theEndPnt1,
-                           const gp_XY&  theStartPnt2,
-                           const gp_XY&  theEndPnt2,
-                           gp_XY&        theIntPnt,
-                           Standard_Real (&theParamOnSegment)[2]);
+  Standard_EXPORT static IntFlag IntLinLin(
+    const gp_XY&  theStartPnt1,
+    const gp_XY&  theEndPnt1,
+    const gp_XY&  theStartPnt2,
+    const gp_XY&  theEndPnt2,
+    gp_XY&        theIntPnt,
+    Standard_Real (&theParamOnSegment)[2]);
 
   //! Checks intersection between the two segments. 
   //! Checks that intersection point lies within ranges of both segments.
@@ -173,13 +184,14 @@ public: //! @name static API
   //! if FALSE returns NoIntersection flag.
   //! @param[out] theIntPnt point of intersection.
   //! @return status of intersection check.
-  static IntFlag IntSegSeg(const gp_XY&           theStartPnt1,
-                           const gp_XY&           theEndPnt1,
-                           const gp_XY&           theStartPnt2,
-                           const gp_XY&           theEndPnt2,
-                           const Standard_Boolean isConsiderEndPointTouch,
-                           const Standard_Boolean isConsiderPointOnSegment,
-                           gp_Pnt2d&              theIntPnt);
+  Standard_EXPORT static IntFlag IntSegSeg(
+    const gp_XY&           theStartPnt1,
+    const gp_XY&           theEndPnt1,
+    const gp_XY&           theStartPnt2,
+    const gp_XY&           theEndPnt2,
+    const Standard_Boolean isConsiderEndPointTouch,
+    const Standard_Boolean isConsiderPointOnSegment,
+    gp_Pnt2d&              theIntPnt);
 
 private:
 

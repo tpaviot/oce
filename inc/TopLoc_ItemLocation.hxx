@@ -12,10 +12,10 @@
 
 #include <Handle_TopLoc_Datum3D.hxx>
 #include <Standard_Integer.hxx>
-#include <TopLoc_TrsfPtr.hxx>
-#include <Standard_Boolean.hxx>
+#include <gp_Trsf.hxx>
 class TopLoc_Datum3D;
 class TopLoc_Location;
+class TopLoc_SListOfItemLocation;
 
 
 //! An ItemLocation is an elementary coordinate system
@@ -37,24 +37,11 @@ public:
   
   //! Sets the elementary Datum to <D>
   //! Sets the exponent to <P>
-  Standard_EXPORT TopLoc_ItemLocation(const Handle(TopLoc_Datum3D)& D, const Standard_Integer P, const Standard_Boolean fromTrsf = Standard_False);
-  
-  Standard_EXPORT TopLoc_ItemLocation(const TopLoc_ItemLocation& anOther);
-  
-  Standard_EXPORT   TopLoc_ItemLocation& Assign (const TopLoc_ItemLocation& anOther) ;
-  TopLoc_ItemLocation& operator= (const TopLoc_ItemLocation& anOther) 
-{
-  return Assign(anOther);
-}
-  
-  Standard_EXPORT   void Destroy() ;
-~TopLoc_ItemLocation()
-{
-  Destroy();
-}
+  Standard_EXPORT TopLoc_ItemLocation(const Handle(TopLoc_Datum3D)& D, const Standard_Integer P);
 
 
 friend class TopLoc_Location;
+friend class TopLoc_SListOfItemLocation;
 
 
 protected:
@@ -69,7 +56,7 @@ private:
 
   Handle(TopLoc_Datum3D) myDatum;
   Standard_Integer myPower;
-  TopLoc_TrsfPtr myTrsf;
+  gp_Trsf myTrsf;
 
 
 };

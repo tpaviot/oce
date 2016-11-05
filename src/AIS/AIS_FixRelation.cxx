@@ -14,9 +14,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#define BUC60915        //GG 05/06/01 Enable to compute the requested arrow size
-//                      if any in all dimensions.
-
 #include <Standard_NotImplemented.hxx>
 
 #include <AIS_FixRelation.ixx>
@@ -26,6 +23,7 @@
 #include <TopAbs_ShapeEnum.hxx>
 
 #include <SelectMgr_EntityOwner.hxx>
+#include <SelectMgr_Selection.hxx>
 #include <Select3D_SensitiveSegment.hxx>
 
 #include <BRep_Tool.hxx>
@@ -110,11 +108,7 @@ AIS_FixRelation::AIS_FixRelation(const TopoDS_Shape& aShape,
   myFShape = aShape;
   myPlane = aPlane;
   myPosition = aPosition;
-#ifdef BUC60915
   SetArrowSize( anArrowSize );
-#else
-  myArrowSize = anArrowSize;
-#endif
   myAutomaticPosition = Standard_False;
 }
 
@@ -147,11 +141,7 @@ AIS_FixRelation::AIS_FixRelation(
   myFShape = aShape;
   myPlane = aPlane;
   myPosition = aPosition;
-#ifdef BUC60915
   SetArrowSize( anArrowSize );
-#else
-  myArrowSize = anArrowSize;
-#endif
   myAutomaticPosition = Standard_False;
 }
 
@@ -200,9 +190,7 @@ void AIS_FixRelation::Compute(const Handle(PrsMgr_PresentationManager3d)&,
   
   // calculate presentation
   // definition of the symbol size
-#ifdef BUC60915
   if( !myArrowSizeIsDefined )
-#endif
     myArrowSize = 5.;
 
     //creation of the presentation

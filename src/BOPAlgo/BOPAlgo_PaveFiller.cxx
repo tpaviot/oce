@@ -25,6 +25,7 @@
 #include <IntTools_Context.hxx>
 #include <BOPDS_DS.hxx>
 #include <BOPDS_Iterator.hxx>
+#include <TopTools_ListIteratorOfListOfShape.hxx>
 
 
 //=======================================================================
@@ -33,7 +34,8 @@
 //=======================================================================
 BOPAlgo_PaveFiller::BOPAlgo_PaveFiller()
 :
-  BOPAlgo_Algo()
+  BOPAlgo_Algo(),
+  myFuzzyValue(0.)
 {
   myDS=NULL;
   myIterator=NULL;
@@ -45,7 +47,8 @@ BOPAlgo_PaveFiller::BOPAlgo_PaveFiller()
 BOPAlgo_PaveFiller::BOPAlgo_PaveFiller
   (const Handle(NCollection_BaseAllocator)& theAllocator)
 :
-  BOPAlgo_Algo(theAllocator)
+  BOPAlgo_Algo(theAllocator),
+  myFuzzyValue(0.)
 {
   myDS=NULL;
   myIterator=NULL;
@@ -110,6 +113,21 @@ void BOPAlgo_PaveFiller::SetSectionAttribute
 //function : SetArguments
 //purpose  : 
 //=======================================================================
+void BOPAlgo_PaveFiller::SetArguments(const TopTools_ListOfShape& theLS)
+{
+  TopTools_ListIteratorOfListOfShape aItLS;
+  //
+  myArguments.Clear();
+  aItLS.Initialize(theLS);
+  for (; aItLS.More(); aItLS.Next()) {
+    const TopoDS_Shape& aS=aItLS.Value();
+    myArguments.Append(aS);
+  }
+}
+//=======================================================================
+//function : SetArguments
+//purpose  : 
+//=======================================================================
 void BOPAlgo_PaveFiller::SetArguments(const BOPCol_ListOfShape& theLS)
 {
   myArguments=theLS;
@@ -121,6 +139,22 @@ void BOPAlgo_PaveFiller::SetArguments(const BOPCol_ListOfShape& theLS)
 const BOPCol_ListOfShape& BOPAlgo_PaveFiller::Arguments()const
 {
   return myArguments;
+}
+//=======================================================================
+//function : SetFuzzyValue
+//purpose  : 
+//=======================================================================
+void BOPAlgo_PaveFiller::SetFuzzyValue(const Standard_Real theFuzz)
+{
+  myFuzzyValue = (theFuzz < 0.) ? 0. : theFuzz;
+}
+//=======================================================================
+//function : FuzzyValue
+//purpose  : 
+//=======================================================================
+Standard_Real BOPAlgo_PaveFiller::FuzzyValue() const
+{
+  return myFuzzyValue;
 }
 //=======================================================================
 // function: Init
@@ -141,6 +175,7 @@ void BOPAlgo_PaveFiller::Init()
   // 1.myDS 
   myDS=new BOPDS_DS(myAllocator);
   myDS->SetArguments(myArguments);
+  myDS->SetFuzzyValue(myFuzzyValue);
   myDS->Init();
   //
   // 2.myIterator 
@@ -170,6 +205,8 @@ void BOPAlgo_PaveFiller::Perform()
   catch (Standard_Failure) {
     myErrorStatus=11;
   } 
+  //
+  myDS->SetDefaultTolerances();
 }
 //=======================================================================
 // function: PerformInternal
@@ -244,7 +281,6 @@ void BOPAlgo_PaveFiller::PerformInternal()
     return; 
   }
   //
-  //modified by NIZNHY-PKV Fri Sep 12 07:06:50 2014f
   // 03
   PerformVZ();
   if (myErrorStatus) {
@@ -265,5 +301,4 @@ void BOPAlgo_PaveFiller::PerformInternal()
   if (myErrorStatus) {
     return;
   }
-  //modified by NIZNHY-PKV Fri Sep 12 07:06:52 2014t
 } 

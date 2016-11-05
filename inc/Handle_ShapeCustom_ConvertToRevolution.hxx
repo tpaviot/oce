@@ -8,13 +8,13 @@
 
 #include <Standard.hxx>
 #include <Standard_DefineHandle.hxx>
-#include <Handle_BRepTools_Modification.hxx>
+#include <Handle_ShapeCustom_Modification.hxx>
 
 class Standard_Transient;
 class Handle(Standard_Type);
-class Handle(BRepTools_Modification);
+class Handle(ShapeCustom_Modification);
 class ShapeCustom_ConvertToRevolution;
 
-DEFINE_STANDARD_HANDLE(ShapeCustom_ConvertToRevolution, BRepTools_Modification)
+DEFINE_STANDARD_HANDLE(ShapeCustom_ConvertToRevolution, ShapeCustom_Modification)
 
 #endif // _Handle_ShapeCustom_ConvertToRevolution_HeaderFile

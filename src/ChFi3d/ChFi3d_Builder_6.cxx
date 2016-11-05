@@ -684,6 +684,24 @@ Standard_Boolean ChFi3d_Builder::StoreData(Handle(ChFiDS_SurfData)& Data,
   if (length2 >  Precision::Confusion())
     GeomLib::ExtendSurfByLength(Surf,length2,1,Standard_False,Standard_True);
 
+  //Correction of surface on extremities
+  if (length1 <= Precision::Confusion())
+  {
+    gp_Pnt P11, P21;
+    P11 = lin->StartPointOnFirst().Value();
+    P21 = lin->StartPointOnSecond().Value();
+    Surf->SetPole(1, 1, P11);
+    Surf->SetPole(Surf->NbUPoles(), 1, P21);
+  }
+  if (length2 <= Precision::Confusion())
+  {
+    gp_Pnt P12, P22;
+    P12 = lin->EndPointOnFirst().Value();
+    P22 = lin->EndPointOnSecond().Value();
+    Surf->SetPole(1, Surf->NbVPoles(), P12);
+    Surf->SetPole(Surf->NbUPoles(), Surf->NbVPoles(), P22);
+  }
+
   Data->ChangeSurf(DStr.AddSurface(TopOpeBRepDS_Surface(Surf,tolget3d)));
 
 #ifdef DRAW
@@ -1475,7 +1493,7 @@ Standard_Boolean ChFi3d_Builder::ComputeData
   Standard_Real TolGuide=tolguide, TolEsp = tolesp;
   Standard_Integer nbptmin = 4;
 
-  BRepBlend_Walking TheWalk(S1,S2,I1,I2);
+  BRepBlend_Walking TheWalk(S1,S2,I1,I2,HGuide);
 
   //Start of removal, 2D path controls 
   //that qui s'accomodent mal des surfaces a parametrages non homogenes
@@ -2068,7 +2086,7 @@ Standard_Boolean ChFi3d_Builder::SimulData
  const Standard_Boolean RecOnS1,
  const Standard_Boolean RecOnS2)
 {
-  BRepBlend_Walking TheWalk(S1,S2,I1,I2);
+  BRepBlend_Walking TheWalk(S1,S2,I1,I2,HGuide);
   TheWalk.Check2d(Standard_False);
   
   Standard_Real MS = MaxStep;

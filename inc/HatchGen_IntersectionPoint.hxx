@@ -69,6 +69,7 @@ public:
   
   //! Dump of the point on element.
   Standard_EXPORT virtual   void Dump (const Standard_Integer Index = 0)  const = 0;
+  Standard_EXPORT virtual ~HatchGen_IntersectionPoint();
 
 
 
