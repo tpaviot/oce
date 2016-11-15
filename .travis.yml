@@ -36,6 +36,10 @@ before_install:
 #  Postprocess OCCT tests output
   - sudo apt-get install xsltproc
 before_script:
+#  Initialize xvfb server
+#  Depth is necessary, otherwise DRAWEXE exits with this message:
+#    Tcl Exception: ** Exception ** 0x7fee03adb307 : Aspect_WindowDefinitionError: Xw_Window, couldn't find compatible Visual (RGBA, double-buffered)
+  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x16"
 #  Remove OCCT tests which are going to be skipped
 #  because of missing data files.  We must use -name
 #  to filter out 'begin' or 'end' files.
@@ -43,9 +47,7 @@ before_script:
   - rm -rf tests/chamfer tests/de tests/mesh tests/perf/*_mesh_*
   - mkdir cmake-build
   - cd cmake-build
-#  Depth is necessary, otherwise DRAWEXE exits with this message:
-#    Tcl Exception: ** Exception ** 0x7fee03adb307 : Aspect_WindowDefinitionError: Xw_Window, couldn't find compatible Visual (RGBA, double-buffered)
-script: xvfb-run -s "-screen 0 1024x768x16" ../.travis.build.sh
+script: sh ../.travis.build.sh
 after_script:
   - test ! -r occt/summary.xml || xsltproc --param duration 1 ../.travis.xsl occt/summary.xml
   - if [ -r occt/summary.xml ]; then
