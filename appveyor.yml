@@ -1,17 +1,14 @@
-version: oce-0.17.1-dev.{build}
+version: oce-0.18-dev.{build}
 
 environment:
-  oce_version: 0.17.1-dev
+  oce_version: 0.18-dev
   matrix:
-    - generator: "MSYS Makefiles"
-      Compiler: MinGW-gcc-4.8.1
-      ARCH: "Win32"
     - generator: "MSYS Makefiles"
       ARCH: "i686"
       Compiler: MinGW-gcc-4.9.3
     - generator: "MSYS Makefiles"
       ARCH: "Win64"
-      Compiler: MinGW64-gcc-5.2.0
+      Compiler: MinGW64-gcc-5.4.0
     - generator: "Visual Studio 12"
       ARCH: "Win32"
       Compiler: "MSVC2013"
@@ -27,11 +24,10 @@ environment:
 
 cache:
   - i686-4.9.3-release-posix-dwarf-rt_v4-rev1.7z
-  - x86_64-5.2.0-release-posix-seh-rt_v4-rev0.7z
+  - x86_64-5.4.0-release-posix-seh-rt_v5-rev0.7z
 
 configuration:
-  #- Debug
-  - RelWithDebInfo
+  - Release
 
 branches:
   only:
@@ -48,7 +44,6 @@ before_build:
 # scripts that run after cloning repository
 install:
   - cmd: CALL FetchBundle.bat
-  #- cmd: git clone -q --branch=master https://github.com/QbProg/oce-win-bundle.git C:\projects\oce-win-bundle
 
 build_script:
   - cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/make-oce-msys.sh)
@@ -62,17 +57,3 @@ artifacts:
   - path: oce-%oce_version%.%ARCH%.%Compiler%.zip
 
 test: off  # to avoid discovering tests
-
-#
-# The following section automatically uploads artifacts
-# whenever a tag is created on the master branch.
-#
-deploy:
-  - provider: GitHub
-    auth_token:
-      secure: +HE8jHwECbKpIVHeydBVMBskoHh//glZWNo9oCLPvOtLiY3MAO75zPISuwPD/ctW
-    artifact: oce-%oce_version%.%ARCH%.%Compiler%.zip
-    draft: true
-    on:
-      branch: master
-      appveyor_repo_tag: true
