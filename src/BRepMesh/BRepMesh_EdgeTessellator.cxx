@@ -136,6 +136,11 @@ BRepMesh_EdgeTessellator::BRepMesh_EdgeTessellator(
         continue;
       }
 
+      if (aCurve2d.IsNull())
+      {
+        continue;
+      }
+
       aNodesNb = myTool->NbPoints();
       TColStd_Array1OfReal aParamArray(1, aNodesNb);
       for (Standard_Integer i = 1; i <= aNodesNb; ++i)
