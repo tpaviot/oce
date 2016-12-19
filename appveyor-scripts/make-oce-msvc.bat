@@ -10,3 +10,4 @@ cmake -DOCE_VISUALISATION:BOOL=ON -DOCE_DATAEXCHANGE:BOOL=ON -DOCE_OCAF:BOOL=ON 
       -G "%generator%" ..
 msbuild /m:4 /verbosity:quiet /p:Configuration=%configuration% oce.sln
 msbuild /m:4 /verbosity:quiet /p:Configuration=%configuration% INSTALL.vcxproj
+cd ..
