@@ -455,9 +455,6 @@ typedef struct _error_table {
 
                } ERROR_TABLE;
 
-static int      fPrefix     = 1;
-static ostream* errorStream = &cerr;
-
 static ERROR_TABLE commErrorTable [] = {
 
  { ERROR_INVALID_FUNCTION,      ERR_INVAL       },
@@ -571,14 +568,9 @@ OSD_Error :: OSD_Error () :
 
 void OSD_Error :: Perror () {
 
-  if (errorStream == NULL)
-    return;
-
  Standard_Character buff[ 32 ];
  Standard_CString   ptr;
 
- if ( fPrefix ) {
- 
   lstrcpy (  buff, "Error ( "  );
 
   switch ( myCode ) {
@@ -651,12 +643,9 @@ void OSD_Error :: Perror () {
 
   lstrcat ( buff, ptr );
   lstrcat (  buff, " )"  );
-  ( *errorStream ) << buff;
+  std::cerr << buff;
  
- }  // end if ( fPrefix . . . )
-
- TCollection_ExtendedString aMessageW(myMessage);
- ( *errorStream ) << L": " << (const wchar_t*)aMessageW.ToExtString () << endl << flush;
+ std::cerr << myMessage.ToCString() << std::endl << std::flush;
 
 }  // end OSD_Error :: Perror
 
@@ -739,41 +728,10 @@ Standard_Boolean OSD_Error :: Failed () const {
 
 }  // end OSD_Error :: Failed
 
-void OSD_Error :: Reset () {
-
- myErrno = ERROR_SUCCESS; 
- if (errorStream != NULL)
- {
-   ( *errorStream ).clear ();
-   ( *errorStream ).seekp ( 0 );
-   ( *errorStream ).clear ();
- }
-
+void OSD_Error :: Reset ()
+{
+  myErrno = ERROR_SUCCESS;
 }  // end OSD_Error :: Reset
-
-void SetErrorStream ( ostream* errStream ) {
-
- errorStream = errStream;
-
-}  // end SetErrorStream
-
-void EnablePrefix ( int fEnable ) {
-
- fPrefix = fEnable;
-
-}  // end EnablePrefix
-
-int ErrorPrefix ( void ) {
-
- return fPrefix;
-
-}  // end ErrorPrefix
-
-ostream* ErrorStream ( void ) {
-
- return errorStream;
-
-}  // end ErrorStream
 
 static Standard_Integer _get_comm_error ( DWORD dwCode ) {
 
