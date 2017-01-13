@@ -31,12 +31,12 @@ cmake -DOCE_VISUALISATION:BOOL=ON \
       -DOCE_WITH_FREEIMAGE:BOOL=OFF \
       -DOCE_TESTING:BOOL=ON \
       -DOCE_COPY_HEADERS_BUILD:BOOL=ON \
-      -DOCE_INSTALL_PREFIX=C:\\oce-0.18-dev \
+      -DOCE_INSTALL_PREFIX=C:\\oce-0.18 \
       -G'MSYS Makefiles' ..
 mingw32-make -j4
 mingw32-make install > /dev/null
 #
 # Finally run tests
 #
-export PATH=$PATH:/c/MinGW/bin:/c/oce-0.18-dev/$ARCH/bin:/c/MinGW/bin:
+export PATH=$PATH:/c/MinGW/bin:/c/oce-0.18/$ARCH/bin:/c/MinGW/bin:
 mingw32-make test

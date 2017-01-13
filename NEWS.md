@@ -1,3 +1,21 @@
+### Version 0.18 - January 2017
+
+This version is not binary compatible with OCE 0.17.x, OCE_ABI_SOVERSION
+was incremented.
+
+* Upgraded to OCCT 6.9.1
+  http://www.opencascade.com/pub/doc/Release_Notes_6.7.0.pdf
+* Support VTK OpenGL2 backend
+
+* 0027385: assertion in static initializer in a Windows GUI application
+
+* Removed outdated OpenCL option
+
+*  Fix null pointer access in BRepMesh_EdgeTessellator
+
+Users who contributed to this release:
+  blobfish, Florian Chevassu, Julien Finet, Thomas Paviot
+
 ### Version 0.17.2 - May 2016
 
 This version is binary compatible with 0CE 0.17 and OCE 0.17.1
