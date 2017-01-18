@@ -6,45 +6,60 @@ env:
   - RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
 matrix:
   include:
-  - compiler: gcc
+  - os: linux
+    compiler: gcc
     env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
-  - compiler: clang
+  - os: linux
+    compiler: clang
     env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
-  - compiler: gcc
+  - os: linux
+    compiler: gcc
     env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=OFF
-  - compiler: gcc
+  - os: linux
+    compiler: gcc
     env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
-  - compiler: gcc
+  - os: linux
+    compiler: gcc
     env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=OPENMP
-  - compiler: gcc
+  - os: linux
+    compiler: gcc
     env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=TBB
   exclude:
   - env: RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
   allow_failures:
-    - compiler: gcc
-      env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
-    - compiler: clang
-      env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    - os: osx
+      compiler: clang
+      env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+
 
 before_install:
-  - sudo apt-get update -q
-  - sudo apt-get install tcl8.5-dev tk8.5-dev libgl2ps-dev libfreeimage-dev libtbb-dev
-#  Needed to run OCCT tests in parallel
-  - sudo apt-get install tclthread
-#  Is this needed to run OCCT tests?
-  - sudo apt-get install libgl1-mesa-dri
-#  Postprocess OCCT tests output
-  - sudo apt-get install xsltproc
+  # osx
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        brew update;
+        brew install freetype;
+        brew install freeimage;
+        brew install gl2ps;
+    fi
+  # linux
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        sudo apt-get update -q;
+        sudo apt-get install tcl8.5-dev tk8.5-dev libgl2ps-dev libfreeimage-dev libtbb-dev;
+        sudo apt-get install tclthread;
+        sudo apt-get install libgl1-mesa-dri;
+        sudo apt-get install xsltproc;
+    fi
 before_script:
 #  Initialize xvfb server
 #  Depth is necessary, otherwise DRAWEXE exits with this message:
 #    Tcl Exception: ** Exception ** 0x7fee03adb307 : Aspect_WindowDefinitionError: Xw_Window, couldn't find compatible Visual (RGBA, double-buffered)
-  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x16"
 #  Remove OCCT tests which are going to be skipped
 #  because of missing data files.  We must use -name
 #  to filter out 'begin' or 'end' files.
-  - find tests -type f -name '[A-Z][0-9]' -o -name 'Z[A-Z][0-9]' -o -name 'bu[gc]*' | xargs grep -l locate_data_file /dev/null | xargs rm -f
-  - rm -rf tests/chamfer tests/de tests/mesh tests/perf/*_mesh_*
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x16";
+        find tests -type f -name '[A-Z][0-9]' -o -name 'Z[A-Z][0-9]' -o -name 'bu[gc]*' | xargs grep -l locate_data_file /dev/null | xargs rm -f;
+        rm -rf tests/chamfer tests/de tests/mesh tests/perf/*_mesh_*;
+    fi
   - mkdir cmake-build
   - cd cmake-build
 script: sh ../.travis.build.sh
@@ -62,4 +77,3 @@ branches:
   only:
     - master
     - /^review/
-
