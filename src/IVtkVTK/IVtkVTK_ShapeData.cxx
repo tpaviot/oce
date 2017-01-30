@@ -20,6 +20,7 @@
 #include <vtkIdTypeArray.h>
 #include <vtkPoints.h>
 #include <vtkPolyData.h>
+#include <vtkVersion.h>
 
 const char* const IVtkVTK_ShapeData::ARRNAME_SUBSHAPE_IDS = "SUBSHAPE_IDS";
 
@@ -82,9 +83,16 @@ void IVtkVTK_ShapeData::InsertVertex (const IVtk_IdType theShapeID,
   vtkIdType aPointIdVTK = thePointId;
   myPolyData->InsertNextCell (VTK_VERTEX, 1, &aPointIdVTK);
   const vtkIdType aShapeIDVTK = theShapeID;
-  mySubShapeIDs->InsertNextTupleValue (&aShapeIDVTK);
   const vtkIdType aType = theMeshType;
+
+  // Since VTK 7.1, InsertNextTupleValue is deprecated in favor of InsertNextTypedTuple.
+#if (VTK_MAJOR_VERSION == 7 && VTK_MINOR_VERSION >= 1) ||  VTK_MAJOR_VERSION > 7
+  mySubShapeIDs->InsertNextTypedTuple (&aShapeIDVTK);
+  myMeshTypes->InsertNextTypedTuple (&aType);
+#else
+  mySubShapeIDs->InsertNextTupleValue (&aShapeIDVTK);
   myMeshTypes->InsertNextTupleValue (&aType);
+#endif
 }
 
 //================================================================
@@ -99,9 +107,16 @@ void IVtkVTK_ShapeData::InsertLine (const IVtk_IdType   theShapeID,
   vtkIdType aPoints[2] = { thePointId1, thePointId2 };
   myPolyData->InsertNextCell (VTK_LINE, 2, aPoints);
   const vtkIdType aShapeIDVTK = theShapeID;
-  mySubShapeIDs->InsertNextTupleValue (&aShapeIDVTK);
   const vtkIdType aType = theMeshType;
+
+  // Since VTK 7.1, InsertNextTupleValue is deprecated in favor of InsertNextTypedTuple.
+#if (VTK_MAJOR_VERSION == 7 && VTK_MINOR_VERSION >= 1) ||  VTK_MAJOR_VERSION > 7
+  mySubShapeIDs->InsertNextTypedTuple (&aShapeIDVTK);
+  myMeshTypes->InsertNextTypedTuple (&aType);
+#else
+  mySubShapeIDs->InsertNextTupleValue (&aShapeIDVTK);
   myMeshTypes->InsertNextTupleValue (&aType);
+#endif
 }
 
 //================================================================
@@ -126,9 +141,16 @@ void IVtkVTK_ShapeData::InsertLine (const IVtk_IdType       theShapeID,
 
     myPolyData->InsertNextCell (VTK_POLY_LINE, anIdList);
     const vtkIdType aShapeIDVTK = theShapeID;
-    mySubShapeIDs->InsertNextTupleValue (&aShapeIDVTK);
     const vtkIdType aType = theMeshType;
+
+    // Since VTK 7.1, InsertNextTupleValue is deprecated in favor of InsertNextTypedTuple.
+#if (VTK_MAJOR_VERSION == 7 && VTK_MINOR_VERSION >= 1) ||  VTK_MAJOR_VERSION > 7
+    mySubShapeIDs->InsertNextTypedTuple (&aShapeIDVTK);
+    myMeshTypes->InsertNextTypedTuple (&aType);
+#else
+    mySubShapeIDs->InsertNextTupleValue (&aShapeIDVTK);
     myMeshTypes->InsertNextTupleValue (&aType);
+#endif
     anIdList->Delete();
   }
 }
@@ -146,7 +168,14 @@ void IVtkVTK_ShapeData::InsertTriangle (const IVtk_IdType   theShapeID,
   vtkIdType aPoints[3] = { thePointId1, thePointId2, thePointId3 };
   myPolyData->InsertNextCell (VTK_TRIANGLE, 3, aPoints);
   const vtkIdType aShapeIDVTK = theShapeID;
-  mySubShapeIDs->InsertNextTupleValue (&aShapeIDVTK);
   const vtkIdType aType = theMeshType;
+
+  // Since VTK 7.1, InsertNextTupleValue is deprecated in favor of InsertNextTypedTuple.
+#if (VTK_MAJOR_VERSION == 7 && VTK_MINOR_VERSION >= 1) ||  VTK_MAJOR_VERSION > 7
+  mySubShapeIDs->InsertNextTypedTuple (&aShapeIDVTK);
+  myMeshTypes->InsertNextTypedTuple (&aType);
+#else
+  mySubShapeIDs->InsertNextTupleValue (&aShapeIDVTK);
   myMeshTypes->InsertNextTupleValue (&aType);
+#endif
 }
