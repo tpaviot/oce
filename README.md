@@ -31,19 +31,19 @@ Below are listed all the oce release since the beginning of the project, the OCC
 | [0.14.1](https://github.com/tpaviot/oce/releases/tag/OCE-0.14.1) | No | January 2014 | 6.6.0 |
 | [0.14](https://github.com/tpaviot/oce/releases/tag/OCE-0.14) | No | December 2013 | 6.6.0 |
 | [0.13](https://github.com/tpaviot/oce/releases/tag/OCE-0.13) | Yes | September 2013 | 6.6.0 |
-| [0.12](https://code.google.com/p/oce-binaries/downloads/list) | Yes | March 2013 | 6.5.2 |
-| [0.11](https://code.google.com/p/oce-binaries/downloads/list)| Yes | December 2012 | 6.5.4 |
-| 0.10 | Yes | June 2012 | 6.5.3 |
-| 0.9.1 | No | January 2012 | 6.5.2 |
-| 0.9.0 | No | January 2012 | 6.5.2 |
-| 0.8.0 | No | December 2011 | 6.5.1 |
-| 0.7.0 | No | October 2011 | 6.5.1 |
-| 0.6.0 | No | September 2011 | 6.5.1 |
-| 0.5.0 | No | August 2011 | 6.5.1 |
-| 0.4.0 | No | July 2011 | 6.5.0 |
-| 0.3.0 | No | June 2011 | 6.5.0 |
-| 0.2.0 | No | May 2011 | 6.5.0 |
-| 0.1.0 |  First public release | April 2011 | 6.5.0 |
+| [0.12](https://github.com/tpaviot/oce/releases/tag/OCE-0.12) | Yes | March 2013 | 6.5.4 |
+| [0.11](https://github.com/tpaviot/oce/releases/tag/OCE-0.11) | Yes | December 2012 | 6.5.4 |
+| [0.10](https://github.com/tpaviot/oce/releases/tag/OCE-0.10) | Yes | June 2012 | 6.5.3 |
+| [0.9.1](https://github.com/tpaviot/oce/releases/tag/OCE-0.9.1) | No | January 2012 | 6.5.2 |
+| [0.9.0](https://github.com/tpaviot/oce/releases/tag/OCE-0.9.0) | No | January 2012 | 6.5.2 |
+| [0.8.0](https://github.com/tpaviot/oce/releases/tag/OCE-0.8.0) | No | December 2011 | 6.5.1 |
+| [0.7.0](https://github.com/tpaviot/oce/releases/tag/OCE-0.7.0) | No | October 2011 | 6.5.1 |
+| [0.6.0](https://github.com/tpaviot/oce/releases/tag/OCE-0.6.0) | No | September 2011 | 6.5.1 |
+| [0.5.0](https://github.com/tpaviot/oce/releases/tag/OCE-0.5.0) | No | August 2011 | 6.5.1 |
+| [0.4.0](https://github.com/tpaviot/oce/releases/tag/OCE-0.4.0) | No | July 2011 | 6.5.0 |
+| [0.3.0](https://github.com/tpaviot/oce/releases/tag/OCE-0.3.0) | No | June 2011 | 6.5.0 |
+| [0.2.0](https://github.com/tpaviot/oce/releases/tag/OCE-0.2.0) | No | May 2011 | 6.5.0 |
+| [0.1.0](https://github.com/tpaviot/oce/releases/tag/OCE-0.1.0) |  First public release | April 2011 | 6.5.0 |
 
 ## OCE community
 
