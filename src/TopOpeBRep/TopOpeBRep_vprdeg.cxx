@@ -1136,7 +1136,7 @@ Standard_Boolean TopOpeBRep_FacesFiller::ProcessVPondgE
   Standard_Boolean hasOOEi=Standard_False; TopoDS_Edge OOEi; Standard_Real parOOEi; 
   TopOpeBRepDS_Transition T1ondg, T2ondg; 
   Standard_Integer rankdg=0, Iiondg=0; 
-  Standard_Real par1ondg, par2ondg;  
+  Standard_Real par1ondg=0., par2ondg=0.;  
   Standard_Boolean hasdgdata = !myDataforDegenEd.IsEmpty();
   if (!hasdgdata) {
     return Standard_False; 

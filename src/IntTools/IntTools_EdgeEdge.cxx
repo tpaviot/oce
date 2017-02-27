@@ -686,7 +686,7 @@ void IntTools_EdgeEdge::FindBestSolution(const Standard_Real aT11,
 {
   Standard_Integer i, aNbS, iErr;
   Standard_Real aDMin, aD, aCrit, aRes1;
-  Standard_Real aT1x, aT2x, aT1p, aT2p;
+  Standard_Real aT1x, aT2x, aT1p=0., aT2p=0.;
   GeomAPI_ProjectPointOnCurve aProj;
   IntTools_SequenceOfRanges aSeg1;
   //
