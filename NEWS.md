@@ -1,3 +1,14 @@
+### Version 0.17.3 - March 2017
+
+This version is binary compatible with OCE 0.17, OCE 0.17.1 and OCE 0.17.2
+
+* Fixed gcc "uninitialized variable" compilation warnings
+
+* Fixed debug library paths for gl2ps/freeimage/tbb
+
+Users who contributed to this release:
+  Thomas Paviot
+
 ### Version 0.17.2 - May 2016
 
 This version is binary compatible with 0CE 0.17 and OCE 0.17.1

@@ -1,7 +1,7 @@
-version: oce-0.17.1-dev.{build}
+version: oce-0.17.3.{build}
 
 environment:
-  oce_version: 0.17.1-dev
+  oce_version: 0.17.3
   matrix:
     - generator: "MSYS Makefiles"
       Compiler: MinGW-gcc-4.8.1
