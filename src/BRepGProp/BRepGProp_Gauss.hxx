@@ -14,6 +14,8 @@
 #ifndef _BRepGProp_Gauss_HeaderFile
 #define _BRepGProp_Gauss_HeaderFile
 
+#include <BRepGProp_Face.hxx>
+#include <BRepGProp_Domain.hxx>
 #include <NCollection_Handle.hxx>
 #include <NCollection_Array1.hxx>
 
