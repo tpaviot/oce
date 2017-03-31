@@ -18,7 +18,7 @@
 
 typedef Standard_Integer MeshVS_DisplayModeFlags;
 
-enum
+enum MeshVS_DisplayModeFlags_Enum
 {
   MeshVS_DMF_WireFrame             = 0x0001,
   MeshVS_DMF_Shading               = 0x0002,

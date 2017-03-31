@@ -127,7 +127,7 @@ private:
   void cacheVertexProjections (SelectMgr_RectangularFrustum* theFrustum);
 
 private:
-  enum { LeftTopNear, LeftTopFar,
+  enum Position_Enum { LeftTopNear, LeftTopFar,
          LeftBottomNear, LeftBottomFar,
          RightTopNear, RightTopFar,
          RightBottomNear, RightBottomFar };

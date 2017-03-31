@@ -55,7 +55,7 @@ class NIS_Triangulated : public NIS_InteractiveObject
    * e.g., Triangulation+Line. Line and Segments are not mixable, their mix is
    * treated as Line only.
    */
-  enum {
+  enum PresentationType {
     Type_None          =  0,
     Type_Loop          =  1,  //!< modifier to Line
     Type_Line          =  2,

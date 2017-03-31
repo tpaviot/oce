@@ -122,7 +122,7 @@ public:
 private:
 #endif
 
-  enum {
+  enum alloctype_enum {
     static_allocation = 0, /* indicates static allocation, currently not used */
     heap_allocation   = 1  /* indicates heap allocation */
   };

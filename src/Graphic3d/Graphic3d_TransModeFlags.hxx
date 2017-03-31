@@ -18,7 +18,7 @@
 
 typedef Standard_Integer Graphic3d_TransModeFlags;
 
-enum {
+enum Graphic3d_TransModeFlags_Enum {
   Graphic3d_TMF_None               = 0x0000,
   Graphic3d_TMF_PanPers            = 0x0001,
   Graphic3d_TMF_ZoomPers           = 0x0002,

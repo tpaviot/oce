@@ -31,7 +31,7 @@ class TDF_Label;
 
 #define KEEP_LOCAL_ROOT
 
-enum {
+enum TDF_LabelNodeMsk_Enum {
   TDF_LabelNodeImportMsk = (int) 0x80000000, // Because the sign bit (HP).
   TDF_LabelNodeAttModMsk = 0x40000000,
   TDF_LabelNodeMayModMsk = 0x20000000,
