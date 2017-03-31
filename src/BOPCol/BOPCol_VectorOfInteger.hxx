@@ -15,8 +15,4 @@
 #ifndef BOPCol_VectorOfInteger_HeaderFile
 #define BOPCol_VectorOfInteger_HeaderFile
 
-#include <BOPCol_Array1.hxx>
-
-typedef BOPCol_Array1<Standard_Integer> BOPDS_VectorOfInteger;
-
 #endif
