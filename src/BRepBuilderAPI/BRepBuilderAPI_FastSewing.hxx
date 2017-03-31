@@ -301,6 +301,6 @@ private:
   FS_VARStatuses myStatusList;
 };
 
-#endif // _BRepBuilderAPI_FastSewing_HeaderFile
-
 DEFINE_STANDARD_HANDLE(BRepBuilderAPI_FastSewing, Standard_Transient)
+
+#endif // _BRepBuilderAPI_FastSewing_HeaderFile
