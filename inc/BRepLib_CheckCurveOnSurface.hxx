@@ -10,8 +10,8 @@
 #include <Standard_DefineAlloc.hxx>
 #include <Standard_Macro.hxx>
 
-#include <Handle_Geom_Curve.hxx>
-#include <Handle_Geom2d_Curve.hxx>
+#include <Geom_Curve.hxx>
+#include <Geom2d_Curve.hxx>
 #include <Handle_Geom_Surface.hxx>
 #include <Standard_Real.hxx>
 #include <Standard_Integer.hxx>
