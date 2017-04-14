@@ -968,7 +968,15 @@ void IVtkOCC_ShapeMesher::addShadedFace (const TopoDS_Face& theFace,
   Standard_Integer aN1, aN2, aN3;
   for (anI = 1; anI <= aNbTriangles; anI++)
   {
-    aTriangles(anI).Get (aN1, aN2, aN3); // get indexes of triangle's points
+    // get indexes of triangle's points
+    if (theFace.Orientation() == TopAbs_REVERSED)
+    {
+      aTriangles(anI).Get(aN1, aN3, aN2);
+    }
+    else
+    {
+      aTriangles(anI).Get(aN1, aN2, aN3);
+    }
     // Insert new triangle on these points into output shape data.
     myShapeData->InsertTriangle (
       theShapeId, aPointIds(aN1), aPointIds(aN2), aPointIds(aN3), MT_ShadedFace);
