@@ -22,6 +22,9 @@
 /* Define to 1 if the localtime_r function is available. */
 #cmakedefine HAVE_LOCALTIME_R 1
 
+/* Define to 1 if the clock_gettime function is available in libc. */
+#cmakedefine HAVE_CLOCK_GETTIME 1
+
 /* Define to 1 if the posix_memalign function is available. */
 #cmakedefine HAVE_POSIX_MEMALIGN 1
 

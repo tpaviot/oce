@@ -51,7 +51,7 @@
   #include <mach/mach.h>
 #endif
 
-#if defined(__APPLE__) && defined(__MACH__)
+#if defined(__APPLE__) && !defined(HAVE_CLOCK_GETTIME)
 #include "gettime_osx.h"
 #endif
 
