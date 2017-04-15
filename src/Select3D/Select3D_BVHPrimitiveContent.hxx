@@ -17,6 +17,7 @@
 #define _Select3D_BVHPrimitiveContent_Header
 
 #include <BVH_PrimitiveSet.hxx>
+#include <Select3D_SensitiveSet.hxx>
 
 class Select3D_SensitiveSet;
 
