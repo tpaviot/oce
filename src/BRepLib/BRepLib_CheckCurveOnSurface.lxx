@@ -93,6 +93,14 @@ inline Standard_Boolean BRepLib_CheckCurveOnSurface::IsDone() const
   return (myErrorStatus == 0);
 }
 
+//function : ErrorStatus
+//purpose  :
+//=======================================================================
+inline Standard_Integer BRepLib_CheckCurveOnSurface::ErrorStatus() const
+{
+  return myErrorStatus;
+}
+
 //=======================================================================
 //function : MaxDistance
 //purpose  : 
