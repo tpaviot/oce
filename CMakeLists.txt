@@ -537,7 +537,7 @@ if(OCE_DATAEXCHANGE)
 		src/XSTEPResource/STEP)
 endif(OCE_DATAEXCHANGE)
 
-if(OCE_VISUALIZATION)
+if(OCE_VISUALISATION)
 	set(INSTALL_RESOURCE_FILES ${INSTALL_RESOURCE_FILES}
 		src/Shaders/Declarations.glsl
 		src/Shaders/DeclarationsImpl.glsl
@@ -548,7 +548,7 @@ if(OCE_VISUALIZATION)
 		src/Shaders/RaytraceBase.vs
 		src/Shaders/RaytraceRender.fs
 		src/Shaders/RaytraceSmooth.fs)
-endif(OCE_VISUALIZATION)
+endif(OCE_VISUALISATION)
 
 if(OCE_DRAW)
 	if (APPLE AND NOT OCE_OSX_USE_COCOA)
