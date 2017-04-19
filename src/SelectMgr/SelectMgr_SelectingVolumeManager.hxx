@@ -152,7 +152,7 @@ public:
   Standard_EXPORT gp_Pnt GetFarPnt() const;
 
 private:
-  enum { Frustum, FrustumSet, VolumeTypesNb };       //!< Defines the amount of available selecting volumes
+  enum Selecting_Volumes_Enum { Frustum, FrustumSet, VolumeTypesNb };       //!< Defines the amount of available selecting volumes
 
   NCollection_Handle<SelectMgr_BaseFrustum> mySelectingVolumes[VolumeTypesNb];      //!< Array of selecting volumes
   Standard_Boolean                          myToAllowOverlap;      //!< Defines if partially overlapped entities will me detected or not

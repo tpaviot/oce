@@ -21,7 +21,7 @@ typedef Standard_Integer Graphic3d_ZLayerId;
 //! This enumeration defines the list of predefined layers, which can not be removed (but settings can be overridden).
 //! Custom layers might be added with positive index (>= 1) if standard list is insufficient for application needs;
 //! these layers will be displayed on top of predefined ones.
-enum
+enum Graphic3d_ZLayerId_Enum
 {
   Graphic3d_ZLayerId_UNKNOWN = -1, //!< identifier for invalid ZLayer
   Graphic3d_ZLayerId_Default =  0, //!< default Z-layer for main presentations

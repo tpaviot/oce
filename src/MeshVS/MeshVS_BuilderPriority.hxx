@@ -18,7 +18,7 @@
 
 typedef Standard_Integer MeshVS_BuilderPriority;
 
-enum
+enum MeshVS_BuilderPriority_Enum
 {
   MeshVS_BP_Mesh       =  5,
   MeshVS_BP_NodalColor = 10,
