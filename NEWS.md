@@ -1,3 +1,43 @@
+### Version 0.18.1 - May 2017
+
+This version is binary compatible with OCE 0.18
+
+* Added missing ErrorStatus function in BRepLib_CheckCurveOnSurface
+
+* Install Shaders directory to resource folder
+
+* Fix normals of generated VTK polydata
+
+* prevent DRAWEXE from being added to OCE_LIBRARIES (issue #660)
+
+* Fix warnings with VTK 7.1
+
+* Fix missin include and other minor header issues
+
+* Fix clockget_time detection on osx
+
+Users who contributed to this release:
+  Luis Manuel Alvarez Tapia, @cfcohen, Florian Chevassu, Thomas Paviot,
+  Janus Weil, Simon Wells
+
+### Version 0.18 - January 2017
+
+This version is not binary compatible with OCE 0.17.x, OCE_ABI_SOVERSION
+was incremented.
+
+* Upgraded to OCCT 6.9.1
+  http://www.opencascade.com/pub/doc/Release_Notes_6.7.0.pdf
+* Support VTK OpenGL2 backend
+
+* 0027385: assertion in static initializer in a Windows GUI application
+
+* Removed outdated OpenCL option
+
+*  Fix null pointer access in BRepMesh_EdgeTessellator
+
+Users who contributed to this release:
+  blobfish, Florian Chevassu, Julien Finet, Thomas Paviot
+
 ### Version 0.18 - January 2017
 
 This version is not binary compatible with OCE 0.17.x, OCE_ABI_SOVERSION
