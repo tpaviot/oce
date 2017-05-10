@@ -24,6 +24,9 @@ matrix:
   - os: linux
     compiler: gcc
     env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=TBB
+  - os: osx
+    compiler: clang
+    env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
   exclude:
   - env: RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
   allow_failures:
