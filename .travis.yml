@@ -27,10 +27,18 @@ matrix:
   - os: osx
     compiler: clang
     env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+  - os: osx
+    osx_image: xcode8.3
+    compiler: clang
+    env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
   exclude:
   - env: RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
   allow_failures:
     - os: osx
+      compiler: clang
+      env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    - os: osx
+      osx_image: xcode8.3
       compiler: clang
       env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
 
