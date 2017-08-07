@@ -9,9 +9,11 @@ matrix:
   - os: linux
     compiler: gcc
     env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    dist: trusty
   - os: linux
     compiler: clang
     env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    dist: trusty
   - os: linux
     compiler: gcc
     env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=OFF
