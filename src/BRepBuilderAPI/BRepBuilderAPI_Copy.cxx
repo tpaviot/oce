@@ -25,8 +25,6 @@
 #include <gp_Pnt.hxx>
 #include <Poly_Triangulation.hxx>
 
-namespace {
-
 //! Tool class implementing necessary functionality for copying geometry
 class BRepBuilderAPI_Copy_Modification : public BRepTools_Modification 
 {
@@ -146,8 +144,6 @@ private:
 DEFINE_STANDARD_HANDLE(BRepBuilderAPI_Copy_Modification, BRepTools_Modification)
 IMPLEMENT_STANDARD_HANDLE(BRepBuilderAPI_Copy_Modification, BRepTools_Modification)
 IMPLEMENT_STANDARD_RTTIEXT(BRepBuilderAPI_Copy_Modification, BRepTools_Modification)
-
-} // anonymous namespace
 
 //=======================================================================
 //function : BRepBuilderAPI_Copy
