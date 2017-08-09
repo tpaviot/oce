@@ -55,11 +55,14 @@ before_install:
     fi
   # linux
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
         sudo apt-get update -q;
         sudo apt-get install tcl8.5-dev tk8.5-dev libgl2ps-dev libfreeimage-dev libtbb-dev;
         sudo apt-get install tclthread;
         sudo apt-get install libgl1-mesa-dri;
         sudo apt-get install xsltproc;
+        sudo apt-get install -qq gcc-5 g++-5;
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5;     
     fi
 before_script:
 #  Initialize xvfb server
