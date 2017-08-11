@@ -1,3 +1,16 @@
+### Version 0.18.2 - August 2017
+
+This version is binary compatible with OCE 0.18.x
+
+* Fix issue of raise exception when sweep along with cornered line
+
+* osx ifx: Visualization, Font_FontMgr - do not look for fonts.dir on OS X
+
+* fix external linkage error in BRepBuilderAPI_Copy
+
+Users who contributed to this release:
+  @heropan (yingxiong_pan@sina.cn), Martin Müllenhaupt, Thomas Paviot
+
 ### Version 0.18.1 - May 2017
 
 This version is binary compatible with OCE 0.18
@@ -26,7 +39,7 @@ This version is not binary compatible with OCE 0.17.x, OCE_ABI_SOVERSION
 was incremented.
 
 * Upgraded to OCCT 6.9.1
-  http://www.opencascade.com/pub/doc/Release_Notes_6.7.0.pdf
+  https://www.opencascade.com/sites/default/files/documents/Release_Notes_6.9.1.pdf
 * Support VTK OpenGL2 backend
 
 * 0027385: assertion in static initializer in a Windows GUI application
