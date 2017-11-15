@@ -692,7 +692,7 @@ endif()
 #######################################################
 # Check platforms - Define specific compilation flags #
 #######################################################
-if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	set(CLANG TRUE)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
 	set(INTEL TRUE)
