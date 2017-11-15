@@ -35,7 +35,6 @@
 #define  VKNOTS   (vknots->Array1())
 #define  UFKNOTS  (ufknots->Array1())
 #define  VFKNOTS  (vfknots->Array1())
-#define  FMULTS   (BSplCLib::NoMults())
 
 typedef Geom_SurfaceOfRevolution         SurfaceOfRevolution;
 typedef Handle(Geom_SurfaceOfRevolution) Handle(SurfaceOfRevolution);

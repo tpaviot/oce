@@ -586,9 +586,9 @@ Standard_Boolean  Geom_OsculatingSurface::BuildOsculatingSurface
       UFlatKnots,
       VFlatKnots,
       NewPoles,
-      BSplSLib::NoWeights(),
+      NULL,
       cachepoles,
-      BSplSLib::NoWeights());
+      NULL);
     Standard_Integer m, n, index;
     TColgp_Array2OfPnt OscCoeff(1,OscUNumCoeff , 1, OscVNumCoeff);
 
@@ -606,7 +606,7 @@ Standard_Boolean  Geom_OsculatingSurface::BuildOsculatingSurface
           for(m = 1; m <= vdeg; m++)
             OscCoeff(n,m) = cachepoles(m+1,n) ;
       }
-      if (IsVNegative) PLib::VTrimming(-1,0,OscCoeff,PLib::NoWeights2());
+      if (IsVNegative) PLib::VTrimming(-1,0,OscCoeff,NULL);
 
       index=1;
       for(n = 1; n <= udeg + 1; n++) 
@@ -632,7 +632,7 @@ Standard_Boolean  Geom_OsculatingSurface::BuildOsculatingSurface
           for(m = 1; m <= vdeg + 1; m++)
             OscCoeff(n,m) = cachepoles(m,n+1);
       }
-      if (IsUNegative) PLib::UTrimming(-1,0,OscCoeff,PLib::NoWeights2());
+      if (IsUNegative) PLib::UTrimming(-1,0,OscCoeff,NULL);
       index=1;
       for(n = 1; n <= udeg; n++) 
         for(m = 1; m <= vdeg + 1; m++)

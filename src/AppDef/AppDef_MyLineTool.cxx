@@ -20,6 +20,7 @@
 #include <gp_Pnt2d.hxx>
 #include <gp_Vec.hxx>
 #include <gp_Vec2d.hxx>
+#include <Standard_NotImplemented.hxx>
 
 Standard_Integer AppDef_MyLineTool::FirstPoint(const AppDef_MultiLine&)
 {
@@ -138,6 +139,8 @@ AppDef_MultiLine& AppDef_MyLineTool::MakeMLBetween(const AppDef_MultiLine&,
 						   const Standard_Integer ,
 						   const Standard_Integer )
 {
+  Standard_NotImplemented::Raise("AppDef_MyLineTool::MakeMLBetween");
+  Standard_UNREACHABLE;
   return *((AppDef_MultiLine*) 0);
 }
 

@@ -13,13 +13,3 @@
 //
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
-
-inline TColStd_Array1OfReal& PLib::NoWeights()
-{
-  return (*((TColStd_Array1OfReal*) NULL ));
-}
-
-inline TColStd_Array2OfReal& PLib::NoWeights2()
-{
-  return (*((TColStd_Array2OfReal*) NULL ));
-}
