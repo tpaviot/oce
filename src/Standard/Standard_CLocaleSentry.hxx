@@ -28,11 +28,6 @@
   #if defined(__APPLE__)
     #define HAVE_XLOCALE_H
   #endif
-
-  //! We check _GNU_SOURCE for glibc extensions here and it is always defined by g++ compiler.
-  #if defined(_GNU_SOURCE) && !defined(__ANDROID__)
-    #define HAVE_XLOCALE_H
-  #endif
 #endif // ifndef HAVE_LOCALE_H
 
 #ifdef HAVE_XLOCALE_H

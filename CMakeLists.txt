@@ -692,7 +692,7 @@ endif()
 #######################################################
 # Check platforms - Define specific compilation flags #
 #######################################################
-if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	set(CLANG TRUE)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
 	set(INTEL TRUE)
@@ -733,6 +733,10 @@ else(UNIX)
 endif(UNIX)
 # TODO: better detection of different Unices (Linux, Solaris etc.)
 # TODO: add CXX compiler flags for each platform
+
+if(CLANG)
+  add_definitions("-Werror=null-dereference")
+endif(CLANG)
 
 # Enable Extra warnings for each compiler
 if( OCE_EXTRA_WARNINGS)

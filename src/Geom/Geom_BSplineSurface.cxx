@@ -406,18 +406,18 @@ void Geom_BSplineSurface::IncreaseDegree (const Standard_Integer UDegree,
       
       BSplSLib::IncreaseDegree
 	(Standard_True, udeg, UDegree, uperiodic,
-	 poles->Array2(),weights->Array2(),
+	 poles->Array2(),&weights->Array2(),
 	 uknots->Array1(),umults->Array1(),
-	 npoles->ChangeArray2(),nweights->ChangeArray2(),
+	 npoles->ChangeArray2(),&nweights->ChangeArray2(),
 	 nknots->ChangeArray1(),nmults->ChangeArray1());
     }
     else {
 
       BSplSLib::IncreaseDegree
 	(Standard_True, udeg, UDegree, uperiodic,
-	 poles->Array2(),BSplSLib::NoWeights(),
+	 poles->Array2(),NULL,
 	 uknots->Array1(),umults->Array1(),
-	 npoles->ChangeArray2(),*((TColStd_Array2OfReal*) NULL),
+	 npoles->ChangeArray2(),NULL,
 	 nknots->ChangeArray1(),nmults->ChangeArray1());
     }
     udeg    = UDegree;
@@ -458,18 +458,18 @@ void Geom_BSplineSurface::IncreaseDegree (const Standard_Integer UDegree,
       
       BSplSLib::IncreaseDegree
 	(Standard_False, vdeg, VDegree, vperiodic,
-	 poles->Array2(),weights->Array2(),
+	 poles->Array2(),&weights->Array2(),
 	 vknots->Array1(),vmults->Array1(),
-	 npoles->ChangeArray2(),nweights->ChangeArray2(),
+	 npoles->ChangeArray2(),&nweights->ChangeArray2(),
 	 nknots->ChangeArray1(),nmults->ChangeArray1());
     }
     else {
 
       BSplSLib::IncreaseDegree
 	(Standard_False, vdeg, VDegree, vperiodic,
-	 poles->Array2(),BSplSLib::NoWeights(),
+	 poles->Array2(),NULL,
 	 vknots->Array1(),vmults->Array1(),
-	 npoles->ChangeArray2(),*((TColStd_Array2OfReal*) NULL),
+	 npoles->ChangeArray2(),NULL,
 	 nknots->ChangeArray1(),nmults->ChangeArray1());
     }
     vdeg    = VDegree;
@@ -1406,7 +1406,7 @@ void Geom_BSplineSurface::ValidateCache(const Standard_Real  Uparameter,
 
   BSplCLib::LocateParameter(udeg,
 			    (ufknots->Array1()),
-			    (BSplCLib::NoMults()),
+			    NULL,
 			    Uparameter,
 			    uperiodic,
 			    LocalIndex,
@@ -1440,7 +1440,7 @@ void Geom_BSplineSurface::ValidateCache(const Standard_Real  Uparameter,
   LocalIndex = 0 ;   
   BSplCLib::LocateParameter(vdeg,
 			    (vfknots->Array1()),
-			    (BSplCLib::NoMults()),
+			    NULL,
 			    Vparameter,
 			    vperiodic,
 			    LocalIndex,
@@ -1488,9 +1488,9 @@ void Geom_BSplineSurface::ValidateCache(const Standard_Real  Uparameter,
 			 (ufknots->Array1()),
 			 (vfknots->Array1()),
 			 poles->Array2(),
-		         weights->Array2(),
+		         &weights->Array2(),
 		         cachepoles->ChangeArray2(),
-		         cacheweights->ChangeArray2()) ;
+		         &cacheweights->ChangeArray2()) ;
   }
   else {
     BSplSLib::BuildCache(uparameter_11,
@@ -1506,9 +1506,9 @@ void Geom_BSplineSurface::ValidateCache(const Standard_Real  Uparameter,
 			 (ufknots->Array1()),
 			 (vfknots->Array1()),
 			 poles->Array2(),
-			 *((TColStd_Array2OfReal*) NULL),
+			 NULL,
 			 cachepoles->ChangeArray2(),
-			 *((TColStd_Array2OfReal*) NULL)) ;
+			 NULL) ;
   }
   validcache = 1 ;
 }

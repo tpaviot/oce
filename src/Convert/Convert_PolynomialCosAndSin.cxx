@@ -41,7 +41,7 @@ static Standard_Real Locate(const Standard_Real Angfin,
   while (Abs(umax-umin)>= Utol) {
     Standard_Real ptest = (umax+umin)/2.;
     gp_Pnt2d valP;
-    BSplCLib::D0(ptest,TPoles,BSplCLib::NoWeights(),valP);
+    BSplCLib::D0(ptest,TPoles,NULL,valP);
     Standard_Real theta = ATan2(valP.Y(),valP.X());
     if (theta < 0.) {
       theta +=2.*M_PI;
@@ -156,13 +156,13 @@ void BuildPolynomialCosAndSin
 		     the_knots,
 		     the_mults,
 		     TPoles,
-		     BSplCLib::NoWeights(),
+		     NULL,
 		     trim_min,
 		     trim_max,
 		     the_new_knots,
 		     the_new_mults,
 		     NewTPoles,
-		     BSplCLib::NoWeights());
+		     NULL);
 
   // readjustment is obviously redundant
   Standard_Real SinD = Sin(Delta), CosD = Cos(Delta);

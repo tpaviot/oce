@@ -91,11 +91,11 @@ FairCurve_Batten::FairCurve_Batten(const gp_Pnt2d& P1,
     
   BSplCLib::IncreaseDegree (1, Degree, Standard_False,
                             Ipoles->Array1(),
-			    BSplCLib::NoWeights(),
+			    NULL,
 			    Iknots->Array1(), 
 			    Imults->Array1(), 
 			    Npoles->ChangeArray1(),
-			    Nweight->ChangeArray1(),
+			    &Nweight->ChangeArray1(),
 			    Nknots->ChangeArray1(),
 			    Nmults->ChangeArray1() );
 
@@ -271,8 +271,8 @@ Standard_Boolean FairCurve_Batten::Compute(const gp_Vec2d& DeltaP1,
       Interpolation(ii).SetXY(AuxXY);
   }
 // Conversion into BSpline of the same structure as the current batten.
-  PLib::CoefficientsPoles( Interpolation, PLib::NoWeights(), 
-                           HermitePoles,  PLib::NoWeights() ); 
+  PLib::CoefficientsPoles( Interpolation, NULL, 
+                           HermitePoles,  NULL ); 
 
   mults.Init(L);
 

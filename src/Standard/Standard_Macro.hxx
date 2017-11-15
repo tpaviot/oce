@@ -33,6 +33,12 @@
   #define Standard_OVERRIDE
 #endif
 
+#ifdef __GNUC__
+# define Standard_UNREACHABLE __builtin_unreachable()
+#else
+# define Standard_UNREACHABLE
+#endif
+
 //======================================================
 // Windows-specific definitions
 //======================================================

@@ -228,8 +228,8 @@ Standard_Boolean FairCurve_MinimalVariation::Compute(const gp_Vec2d& DeltaP1,
       Interpolation(ii).SetXY(AuxXY);
   }
 // Conversion into BSpline of the same structure as the current batten.
-  PLib::CoefficientsPoles(Interpolation,  PLib::NoWeights(), 
-                          HermitePoles,  PLib::NoWeights()); 
+  PLib::CoefficientsPoles(Interpolation,  NULL, 
+                          HermitePoles,  NULL); 
 
   mults.Init(L);
 
