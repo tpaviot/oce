@@ -133,6 +133,7 @@ void  BRep_PointRepresentation::Parameter2(const Standard_Real )
 const Handle(Geom_Curve)&  BRep_PointRepresentation::Curve()const 
 {
   Standard_DomainError::Raise("BRep_PointRepresentation");
+  Standard_UNREACHABLE;
     return *((Handle(Geom_Curve)*) NULL);
 }
 
@@ -156,6 +157,7 @@ void  BRep_PointRepresentation::Curve(const Handle(Geom_Curve)& )
 const Handle(Geom2d_Curve)&  BRep_PointRepresentation::PCurve()const 
 {
   Standard_DomainError::Raise("BRep_PointRepresentation");
+  Standard_UNREACHABLE;
     return *((Handle(Geom2d_Curve)*) NULL);
 }
 
@@ -179,6 +181,7 @@ void  BRep_PointRepresentation::PCurve(const Handle(Geom2d_Curve)& )
 const Handle(Geom_Surface)&  BRep_PointRepresentation::Surface()const 
 {
   Standard_DomainError::Raise("BRep_PointRepresentation");
+  Standard_UNREACHABLE;
     return *((Handle(Geom_Surface)*) NULL);
 }
 

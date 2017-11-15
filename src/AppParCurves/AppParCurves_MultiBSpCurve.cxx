@@ -164,8 +164,8 @@ void AppParCurves_MultiBSpCurve::Value (const Standard_Integer CuIndex,
   TColgp_Array1OfPnt TabPoles(1, tabPoint->Length());
   Curve(CuIndex, TabPoles);
 
-  BSplCLib::D0(U,0,myDegree,Standard_False,TabPoles,BSplCLib::NoWeights(),
-	       myknots->Array1(),mymults->Array1(),Pt);
+  BSplCLib::D0(U,0,myDegree,Standard_False,TabPoles,NULL,
+	       myknots->Array1(),&mymults->Array1(),Pt);
 }
 
 
@@ -184,8 +184,8 @@ void AppParCurves_MultiBSpCurve::Value (const Standard_Integer CuIndex,
   TColgp_Array1OfPnt2d TabPoles(1, tabPoint->Length());
   Curve(CuIndex, TabPoles);
   
-  BSplCLib::D0(U,0,myDegree,Standard_False,TabPoles,BSplCLib::NoWeights(),
-	       myknots->Array1(),mymults->Array1(),Pt);
+  BSplCLib::D0(U,0,myDegree,Standard_False,TabPoles,NULL,
+	       myknots->Array1(),&mymults->Array1(),Pt);
 }
 
 
@@ -203,8 +203,8 @@ void AppParCurves_MultiBSpCurve::D1 (const Standard_Integer CuIndex,
   TColgp_Array1OfPnt TabPoles(1, tabPoint->Length());
   Curve(CuIndex, TabPoles);
 
-  BSplCLib::D1(U,0,myDegree,Standard_False,TabPoles,BSplCLib::NoWeights(),
-	       myknots->Array1(),mymults->Array1(),Pt,V1);
+  BSplCLib::D1(U,0,myDegree,Standard_False,TabPoles,NULL,
+	       myknots->Array1(),&mymults->Array1(),Pt,V1);
 }
 
 
@@ -225,8 +225,8 @@ void AppParCurves_MultiBSpCurve::D2 (const Standard_Integer CuIndex,
   TColgp_Array1OfPnt TabPoles(1, tabPoint->Length());
   Curve(CuIndex, TabPoles);
 
-  BSplCLib::D2(U,0,myDegree,Standard_False,TabPoles,BSplCLib::NoWeights(),
-	       myknots->Array1(),mymults->Array1(),Pt,V1,V2);
+  BSplCLib::D2(U,0,myDegree,Standard_False,TabPoles,NULL,
+	       myknots->Array1(),&mymults->Array1(),Pt,V1,V2);
 }
 
 
@@ -244,8 +244,8 @@ void AppParCurves_MultiBSpCurve::D1 (const Standard_Integer CuIndex,
   TColgp_Array1OfPnt2d TabPoles(1, tabPoint->Length());
   Curve(CuIndex, TabPoles);
 
-  BSplCLib::D1(U,0,myDegree,Standard_False,TabPoles,BSplCLib::NoWeights(),
-	       myknots->Array1(),mymults->Array1(),Pt,V1);
+  BSplCLib::D1(U,0,myDegree,Standard_False,TabPoles,NULL,
+	       myknots->Array1(),&mymults->Array1(),Pt,V1);
 }
 
 
@@ -266,8 +266,8 @@ void AppParCurves_MultiBSpCurve::D2 (const Standard_Integer CuIndex,
   TColgp_Array1OfPnt2d TabPoles(1, tabPoint->Length());
   Curve(CuIndex, TabPoles);
 
-  BSplCLib::D2(U,0,myDegree,Standard_False,TabPoles,BSplCLib::NoWeights(),
-	       myknots->Array1(),mymults->Array1(),Pt,V1,V2);
+  BSplCLib::D2(U,0,myDegree,Standard_False,TabPoles,NULL,
+	       myknots->Array1(),&mymults->Array1(),Pt,V1,V2);
 }
 
 

@@ -346,8 +346,8 @@ static void CurveHermite (const TopOpeBRepDS_DataStructure& DStr,
       ExtraCoeffs(jj).ChangeCoord() += MatCoefs(ii,jj)*Cont(ii);
     }
   }
-  PLib::CoefficientsPoles(ExtraCoeffs,  PLib::NoWeights(),
-                          ExtrapPoles,  PLib::NoWeights());
+  PLib::CoefficientsPoles(ExtraCoeffs,  NULL,
+                          ExtrapPoles,  NULL);
   Handle(Geom_BezierCurve) Bezier = new (Geom_BezierCurve) (ExtrapPoles);
   BRepLib_MakeEdge Bedge (Bezier);
   TopoDS_Edge edg =Bedge. Edge();

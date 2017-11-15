@@ -40,7 +40,6 @@
 #define  VKNOTS   (vknots->Array1())
 #define  UFKNOTS  (ufknots->Array1())
 #define  VFKNOTS  (vfknots->Array1())
-#define  FMULTS   (BSplCLib::NoMults())
 
 typedef Geom_SurfaceOfLinearExtrusion         SurfaceOfLinearExtrusion;
 typedef Handle(Geom_SurfaceOfLinearExtrusion) Handle(SurfaceOfLinearExtrusion);

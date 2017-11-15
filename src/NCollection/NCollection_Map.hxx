@@ -100,6 +100,7 @@ class NCollection_Map : public NCollection_BaseMap
     TheKeyType& ChangeValue(void) const
     {  
       Standard_ImmutableObject::Raise("NCollection_Map::Iterator::ChangeValue");
+      Standard_UNREACHABLE;
       return * (TheKeyType *) NULL; // For compiler
     }
     //! Key

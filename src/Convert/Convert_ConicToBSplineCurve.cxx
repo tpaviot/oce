@@ -186,9 +186,9 @@ void CosAndSinRationalC1(Standard_Real Parameter,
 	      EvalDegree,
 	      Standard_False,
 	      EvalPoles,
-	      BSplCLib::NoWeights(),
+	      NULL,
 	      EvalKnots,
-	      EvalMults,
+	      &EvalMults,
 	      a_point) ;
  Result[0] = a_point.Coord(1) ;
  Result[1] = a_point.Coord(2) ;
@@ -745,9 +745,9 @@ void Convert_ConicToBSplineCurve::BuildCosAndSin(
 		    temp_degree,
 		    Standard_False,
 		    temp_cos_ptr->Array1(),
-		    temp_denominator_ptr->Array1(),
+		    &temp_denominator_ptr->Array1(),
 		    temp_knots_ptr->Array1(),
-		    temp_mults_ptr->Array1(),
+		    &temp_mults_ptr->Array1(),
 		    value1) ;
 
        BSplCLib::D0(param,
@@ -755,18 +755,18 @@ void Convert_ConicToBSplineCurve::BuildCosAndSin(
 		    temp_degree,
 		    Standard_False,
 		    temp_sin_ptr->Array1(),
-		    temp_denominator_ptr->Array1(),
+		    &temp_denominator_ptr->Array1(),
 		    temp_knots_ptr->Array1(),
-		    temp_mults_ptr->Array1(),
+		    &temp_mults_ptr->Array1(),
 		    value2) ;
        BSplCLib::D0(param,
 		    0,
 		    temp_degree,
 		    Standard_False,
 		    temp_denominator_ptr->Array1(),
-		    BSplCLib::NoWeights(),
+		    NULL,
 		    temp_knots_ptr->Array1(),
-		    temp_mults_ptr->Array1(),
+		    &temp_mults_ptr->Array1(),
 		    value3) ;
      contact_order_array(ii) = 0 ;
      

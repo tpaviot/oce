@@ -110,7 +110,7 @@ Standard_Integer  IGESConvGeom::SplineCurveFromIGES
 
 
     TColgp_Array1OfPnt bzpoles(0, degree);
-    PLib::CoefficientsPoles(coeff,PLib::NoWeights(),bzpoles,PLib::NoWeights());
+    PLib::CoefficientsPoles(coeff,NULL,bzpoles,NULL);
 
     // C0 test.
     // Not to check the first pole of the first segment.
@@ -331,7 +331,7 @@ Standard_Integer  IGESConvGeom::SplineSurfaceFromIGES
     ParamU = ParamU * deltaU(USeg);
   }  
   TColgp_Array2OfPnt BzPole(1, DegreeU+1, 1, DegreeV+1);
-  PLib::CoefficientsPoles(Coef,PLib::NoWeights2(),BzPole,PLib::NoWeights2());
+  PLib::CoefficientsPoles(Coef,NULL,BzPole,NULL);
   
   iBs = BsPole.LowerRow();
   jBs = BsPole.LowerCol();
@@ -368,7 +368,7 @@ Standard_Integer  IGESConvGeom::SplineSurfaceFromIGES
       }
       ParamU = ParamU * deltaU(USeg);
     }
-    PLib::CoefficientsPoles(Coef,PLib::NoWeights2(),BzPole,PLib::NoWeights2());
+    PLib::CoefficientsPoles(Coef,NULL,BzPole,NULL);
 
     //  C0 check and correction for poles lying on isoparametrics U=0 & V=0
     Standard_Integer  iBs = BsPole.LowerRow() + (USeg-1)*DegreeU;
@@ -428,7 +428,7 @@ Standard_Integer  IGESConvGeom::SplineSurfaceFromIGES
       }
       ParamU = ParamU * deltaU(USeg);
     }
-    PLib::CoefficientsPoles(Coef,PLib::NoWeights2(),BzPole,PLib::NoWeights2());
+    PLib::CoefficientsPoles(Coef,NULL,BzPole,NULL);
 
     //  C0 check and correction for poles lying on isoparametrics U=0 & V=0
     iBs = BsPole.LowerRow();
@@ -486,7 +486,7 @@ Standard_Integer  IGESConvGeom::SplineSurfaceFromIGES
 	}
 	ParamU = ParamU * deltaU(USeg);
       }
-      PLib::CoefficientsPoles(Coef,PLib::NoWeights2(),BzPole,PLib::NoWeights2());
+      PLib::CoefficientsPoles(Coef,NULL,BzPole,NULL);
 
       //  C0 check and correction for poles lying on isoparametrics U=0 & V=0
       iBs = (USeg-1)*DegreeU + BsPole.LowerRow();

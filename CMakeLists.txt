@@ -735,6 +735,10 @@ endif(UNIX)
 # TODO: better detection of different Unices (Linux, Solaris etc.)
 # TODO: add CXX compiler flags for each platform
 
+if(CLANG)
+  add_definitions("-Werror=null-dereference")
+endif(CLANG)
+
 # Enable Extra warnings for each compiler
 if( OCE_EXTRA_WARNINGS)
 	if(MSVC)
