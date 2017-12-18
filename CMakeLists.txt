@@ -616,6 +616,7 @@ if (NOT WIN32)
 	# compilation anywhere in OCE
 	include(CheckIncludeFile)
 	check_include_file(strings.h HAVE_STRINGS_H)
+	check_include_file(xlocale.h HAVE_XLOCALE_H)
 	include(CheckIncludeFileCXX)
 	check_include_file_cxx(mm_malloc.h HAVE_MM_MALLOC_H)
 	check_include_file_cxx(atomic.h OCE_HAVE_ATOMIC_H)
