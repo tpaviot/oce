@@ -11,13 +11,13 @@ oce stands for **o**pencascade **c**ommunity **e**dition. This project aims at g
 
 ## Download latest release
 
-You can download source code as well as precompiled binaries for windows at:
+You can download source code as well as precompiled binaries for Windows at:
 
 **[oce-0.18.2](https://github.com/tpaviot/oce/releases/tag/OCE-0.18.2)** (August 2017)
 
 ## OCE history
 
-Below are listed all the oce release since the beginning of the project, the OCCT matching version, as well as ABI Change if any (an ABI change means that OCE binaries are not compatible with previous ones).
+Below are listed all the oce releases since the beginning of the project, the matching OCCT version, as well as ABI Change if any (an ABI change means that OCE binaries are not compatible with previous ones).
 
 | OCE release number | ABI Change | OCE release date | OCCT version |
 | ------------- | ------------- |  ------------- |------------- |
@@ -58,13 +58,12 @@ We use the following online resources:
        https://github.com/tpaviot/oce/issues
   * Mailing list
        http://groups.google.com/group/oce-dev/about
-  * Travic-CI
+  * Travis-CI
        https://travis-ci.org/tpaviot/oce
   * Appveyor
        https://ci.appveyor.com/project/tpaviot/oce
 
-Just ask @tpaviot (tpaviot@gmail.com) for a request regarding write access
-to the repository.
+To request write access to the repository, just ask @tpaviot (tpaviot@gmail.com).
 
 ## Get the source and compile
  
@@ -72,7 +71,7 @@ to the repository.
 ``` bash
 $ git clone git://github.com/tpaviot/oce.git
 ```
-  * Stay to date with latests developements:
+  * Stay to date with latest developements:
 
 ``` bash
 $ cd oce
@@ -80,7 +79,7 @@ $ git pull
 ```
   * Compile:
 
-Read [BUILD.Unix.md](BUILD.Unix.md) file for instructions on compiling for Unix (for both Linux and MacOSX users).Windows users should read [BUILD.MINGWw64.md](BUILD.MINGWw64.md) if they use Mingw or [BUILD.MSVC.md](BUILD.MSVC.md) if they prefer MSVC compiler.
+Read the [BUILD.Unix.md](BUILD.Unix.md) file for instructions on compiling for Unix (for both Linux and MacOSX users). Windows users should read [BUILD.MINGWw64.md](BUILD.MINGWw64.md) if they use Mingw or [BUILD.MSVC.md](BUILD.MSVC.md) if they prefer MSVC compiler.
 
 ## License
 
