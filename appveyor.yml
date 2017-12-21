@@ -1,7 +1,7 @@
-version: oce-0.18.2.{build}
+version: oce-0.18.3.{build}
 
 environment:
-  oce_version: 0.18.2
+  oce_version: 0.18.3
   matrix:
     - generator: "MSYS Makefiles"
       ARCH: "i686"
