@@ -20,6 +20,14 @@
 
 #include <locale.h>
 
+#ifndef HAVE_XLOCALE_H
+//! "xlocale.h" available in Mac OS X and glibc (Linux) for a long time as an extension
+//! and become part of POSIX since '2008.
+  #if defined(__APPLE__)
+    #define HAVE_XLOCALE_H
+  #endif
+#endif // ifndef HAVE_LOCALE_H
+
 #ifdef HAVE_XLOCALE_H
   #include <xlocale.h>
 #endif
