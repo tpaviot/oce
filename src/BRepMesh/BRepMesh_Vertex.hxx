@@ -18,6 +18,7 @@
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
 #include <Standard_Macro.hxx>
+#include <Precision.hxx>
 #include <gp_XY.hxx>
 #include <BRepMesh_DegreeOfFreedom.hxx>
 
