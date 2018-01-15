@@ -1,0 +1,390 @@
+// Created on: 1995-07-18
+// Created by: Modelistation
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2014 OPEN CASCADE SAS
+//
+// This file is part of Open CASCADE Technology software library.
+//
+// This library is free software; you can redistribute it and/or modify it under
+// the terms of the GNU Lesser General Public License version 2.1 as published
+// by the Free Software Foundation, with special exception defined in the file
+// OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+// distribution for complete text of the license and disclaimer of any warranty.
+//
+// Alternatively, this file may be used under the terms of Open CASCADE
+// commercial license or contractual agreement.
+
+#include <algorithm>
+
+#include <Extrema_GlobOptFuncCC.hxx>
+#include <math_GlobOptMin.hxx>
+#include <Standard_NullObject.hxx>
+#include <Standard_OutOfRange.hxx>
+#include <StdFail_NotDone.hxx>
+#include <TColStd_Array1OfReal.hxx>
+#include <Precision.hxx>
+#include <NCollection_Vector.hxx>
+#include <NCollection_CellFilter.hxx>
+
+// Comparator, used in std::sort.
+static Standard_Boolean comp(const gp_XY& theA,
+                             const gp_XY& theB)
+{
+  if (theA.X() < theB.X())
+  {
+    return Standard_True;
+  }
+  else
+  {
+    if (theA.X() == theB.X())
+    {
+      if (theA.Y() <= theB.Y())
+        return Standard_True;
+    }
+  }
+
+  return Standard_False;
+}
+
+class Extrema_CCPointsInspector : public NCollection_CellFilter_InspectorXY
+{
+public:
+  typedef gp_XY Target;
+  //! Constructor; remembers the tolerance
+  Extrema_CCPointsInspector (const Standard_Real theTol)
+  {
+    myTol = theTol * theTol;
+    myIsFind = Standard_False;
+  }
+
+  void ClearFind()
+  {
+    myIsFind = Standard_False;
+  }
+
+  Standard_Boolean isFind()
+  {
+    return myIsFind;
+  }
+
+  //! Set current point to search for coincidence
+  void SetCurrent (const gp_XY& theCurPnt) 
+  { 
+    myCurrent = theCurPnt;
+  }
+
+  //! Implementation of inspection method
+  NCollection_CellFilter_Action Inspect (const Target& theObject)
+  {
+    gp_XY aPt = myCurrent.Subtracted(theObject);
+    const Standard_Real aSQDist = aPt.SquareModulus();
+    if(aSQDist < myTol)
+    {
+      myIsFind = Standard_True;
+    }
+
+    return CellFilter_Keep;
+  }
+
+private:
+  Standard_Real myTol;
+  gp_XY myCurrent;
+  Standard_Boolean myIsFind;
+};
+
+//=======================================================================
+//function : Extrema_GenExtCC
+//purpose  : 
+//=======================================================================
+Extrema_GenExtCC::Extrema_GenExtCC()
+: myParallel(Standard_False),
+  myCurveMinTol(Precision::PConfusion()),
+  myLowBorder(1,2),
+  myUppBorder(1,2),
+  myDone(Standard_False)
+{
+  myC[0] = myC[1] = 0;
+}
+
+//=======================================================================
+//function : Extrema_GenExtCC
+//purpose  : 
+//=======================================================================
+Extrema_GenExtCC::Extrema_GenExtCC(const Curve1& C1,
+                                   const Curve2& C2)
+: myParallel(Standard_False),
+  myCurveMinTol(Precision::PConfusion()),
+  myLowBorder(1,2),
+  myUppBorder(1,2),
+  myDone(Standard_False)
+{
+  myC[0] = (Standard_Address)&C1;
+  myC[1] = (Standard_Address)&C2;
+  myLowBorder(1) = C1.FirstParameter();
+  myLowBorder(2) = C2.FirstParameter();
+  myUppBorder(1) = C1.LastParameter();
+  myUppBorder(2) = C2.LastParameter();
+}
+
+//=======================================================================
+//function : Extrema_GenExtCC
+//purpose  : 
+//=======================================================================
+Extrema_GenExtCC::Extrema_GenExtCC(const Curve1& C1,
+                                   const Curve2& C2,
+                                   const Standard_Real Uinf,
+                                   const Standard_Real Usup,
+                                   const Standard_Real Vinf,
+                                   const Standard_Real Vsup)
+: myParallel(Standard_False),
+  myCurveMinTol(Precision::PConfusion()),
+  myLowBorder(1,2),
+  myUppBorder(1,2),
+  myDone(Standard_False)
+{
+  myC[0] = (Standard_Address)&C1;
+  myC[1] = (Standard_Address)&C2;
+  myLowBorder(1) = Uinf;
+  myLowBorder(2) = Vinf;
+  myUppBorder(1) = Usup;
+  myUppBorder(2) = Vsup;
+}
+
+//=======================================================================
+//function : SetParams
+//purpose  : 
+//=======================================================================
+void Extrema_GenExtCC::SetParams(const Curve1& C1,
+                                 const Curve2& C2,
+                                 const Standard_Real Uinf,
+                                 const Standard_Real Usup,
+                                 const Standard_Real Vinf,
+                                 const Standard_Real Vsup)
+{
+  myC[0] = (Standard_Address)&C1;
+  myC[1] = (Standard_Address)&C2;
+  myLowBorder(1) = Uinf;
+  myLowBorder(2) = Vinf;
+  myUppBorder(1) = Usup;
+  myUppBorder(2) = Vsup;
+}
+
+//=======================================================================
+//function : SetTolerance
+//purpose  : 
+//=======================================================================
+void Extrema_GenExtCC::SetTolerance(Standard_Real theTol)
+{
+  myCurveMinTol = theTol;
+}
+
+//=======================================================================
+//function : Perform
+//purpose  : 
+//=======================================================================
+void Extrema_GenExtCC::Perform()
+{
+  myDone = Standard_False;
+  myParallel = Standard_False;
+
+  Curve1 &C1 = *(Curve1*)myC[0];
+  Curve2 &C2 = *(Curve2*)myC[1];
+
+  Standard_Integer aNbInter[2];
+  aNbInter[0] = C1.NbIntervals(GeomAbs_C2);
+  aNbInter[1] = C2.NbIntervals(GeomAbs_C2);
+  TColStd_Array1OfReal anIntervals1(1, aNbInter[0] + 1);
+  TColStd_Array1OfReal anIntervals2(1, aNbInter[1] + 1);
+  C1.Intervals(anIntervals1, GeomAbs_C2);
+  C2.Intervals(anIntervals2, GeomAbs_C2);
+
+  Extrema_GlobOptFuncCCC2 aFunc (C1, C2);
+  math_GlobOptMin aFinder(&aFunc, myLowBorder, myUppBorder);
+  Standard_Real aDiscTol = 1.0e-2;
+  Standard_Real aValueTol = 1.0e-2;
+  Standard_Real aSameTol = myCurveMinTol / (aDiscTol);
+  aFinder.SetTol(aDiscTol, aSameTol);
+
+  // Size computed to have cell index inside of int32 value.
+  const Standard_Real aCellSize = Max(anIntervals1.Upper() - anIntervals1.Lower(),
+                                      anIntervals2.Upper() - anIntervals2.Lower())
+                                  * Precision::PConfusion() / (2.0 * Sqrt(2.0));
+  Extrema_CCPointsInspector anInspector(Precision::PConfusion());
+  NCollection_CellFilter<Extrema_CCPointsInspector> aFilter(aCellSize);
+  NCollection_Vector<gp_XY> aPnts;
+
+  Standard_Integer i,j,k;
+  math_Vector aFirstBorderInterval(1,2);
+  math_Vector aSecondBorderInterval(1,2);
+  Standard_Real aF = RealLast(); // Best functional value.
+  Standard_Real aCurrF = RealLast(); // Current functional value computed on current interval.
+  for(i = 1; i <= aNbInter[0]; i++)
+  {
+    for(j = 1; j <= aNbInter[1]; j++)
+    {
+      aFirstBorderInterval(1) = anIntervals1(i);
+      aFirstBorderInterval(2) = anIntervals2(j); 
+      aSecondBorderInterval(1) = anIntervals1(i + 1);
+      aSecondBorderInterval(2) = anIntervals2(j + 1);
+
+      aFinder.SetLocalParams(aFirstBorderInterval, aSecondBorderInterval);
+      aFinder.Perform();
+
+      // Check that solution found on current interval is not worse than previous.
+      aCurrF = aFinder.GetF();
+      if (aCurrF >= aF + aSameTol * aValueTol)
+      {
+        continue;
+      }
+
+      // Clean previously computed solution if current one is better.
+      if (aCurrF > aF - aSameTol * aValueTol)
+      {
+        if (aCurrF < aF)
+          aF = aCurrF;
+      }
+      else
+      {
+        aF = aCurrF;
+        aFilter.Reset(aCellSize);
+        aPnts.Clear();
+      }
+
+      // Save found solutions avoiding repetitions.
+      math_Vector sol(1,2);
+      for(k = 1; k <= aFinder.NbExtrema(); k++)
+      {
+        aFinder.Points(k, sol);
+        gp_XY aPnt2d(sol(1), sol(2));
+
+        gp_XY aXYmin = anInspector.Shift(aPnt2d, -aCellSize);
+        gp_XY aXYmax = anInspector.Shift(aPnt2d,  aCellSize);
+
+        anInspector.ClearFind();
+        anInspector.SetCurrent(aPnt2d);
+        aFilter.Inspect(aXYmin, aXYmax, anInspector);
+        if (!anInspector.isFind())
+        {
+          // Point is out of close cells, add new one.
+          aFilter.Add(aPnt2d, aPnt2d);
+          aPnts.Append(gp_XY(sol(1), sol(2)));
+        }
+      }
+    }
+  }
+
+  if (aPnts.Size() == 0)
+  {
+    // No solutions.
+    myDone = Standard_False;
+    return;
+  }
+
+  // Check for infinity solutions case, for this:
+  // Sort points lexicographically and check midpoint between each two neighboring points.
+  // If all midpoints functional value is acceptable
+  // then set myParallel flag to true and return one soulution.
+  std::sort(aPnts.begin(), aPnts.end(), comp);
+  Standard_Boolean isParallel = Standard_False;
+  Standard_Real aVal = 0.0;
+  math_Vector aVec(1,2, 0.0);
+
+  // Avoid mark parallel case when have duplicates out of tolerance.
+  // Bad conditioned task: bug25635_1, bug23706_10, bug23706_13.
+  const Standard_Integer aMinNbInfSol = 100;
+  if (aPnts.Size() >= aMinNbInfSol)
+  {
+    isParallel = Standard_True;
+    for(Standard_Integer anIdx = aPnts.Lower(); anIdx <= aPnts.Upper() - 1; anIdx++)
+    {
+      const gp_XY& aCurrent = aPnts(anIdx);
+      const gp_XY& aNext    = aPnts(anIdx + 1);
+
+      aVec(1) = (aCurrent.X() + aNext.X()) * 0.5;
+      aVec(2) = (aCurrent.Y() + aNext.Y()) * 0.5;
+
+      aFunc.Value(aVec, aVal);
+
+      if (Abs(aVal - aF) > Precision::Confusion())
+      {
+        isParallel = Standard_False;
+        break;
+      }
+    }
+  }
+
+  if (isParallel)
+  {
+    const gp_XY& aCurrent = aPnts.First();
+    myPoints1.Append(aCurrent.X());
+    myPoints2.Append(aCurrent.Y());
+    myParallel = Standard_True;
+  }
+  else
+  {
+    for(Standard_Integer anIdx = aPnts.Lower(); anIdx <= aPnts.Upper(); anIdx++)
+    {
+      const gp_XY& aCurrent = aPnts(anIdx);
+      myPoints1.Append(aCurrent.X());
+      myPoints2.Append(aCurrent.Y());
+    }
+  }
+
+  myDone = Standard_True;
+}
+
+//=======================================================================
+//function : IsDone
+//purpose  : 
+//=======================================================================
+Standard_Boolean Extrema_GenExtCC::IsDone() const 
+{
+  return myDone; 
+}
+
+//=======================================================================
+//function : IsParallel
+//purpose  : 
+//=======================================================================
+Standard_Boolean Extrema_GenExtCC::IsParallel() const 
+{
+  return myParallel; 
+}
+
+//=======================================================================
+//function : NbExt
+//purpose  : 
+//=======================================================================
+Standard_Integer Extrema_GenExtCC::NbExt() const
+{
+  StdFail_NotDone_Raise_if (!myDone, "Extrema_GenExtCC::NbExt()")
+
+  return myPoints1.Length();
+}
+
+//=======================================================================
+//function : SquareDistance
+//purpose  : 
+//=======================================================================
+Standard_Real Extrema_GenExtCC::SquareDistance(const Standard_Integer N) const
+{
+  StdFail_NotDone_Raise_if (!myDone, "Extrema_GenExtCC::SquareDistance()")
+  Standard_OutOfRange_Raise_if ((N < 1 || N > NbExt()), "Extrema_GenExtCC::SquareDistance()")
+
+  return Tool1::Value(*((Curve1*)myC[0]), myPoints1(N)).SquareDistance(Tool2::Value(*((Curve2*)myC[1]), myPoints2(N)));
+}
+
+//=======================================================================
+//function : Points
+//purpose  : 
+//=======================================================================
+void Extrema_GenExtCC::Points(const Standard_Integer N,
+                              POnC& P1,
+                              POnC& P2) const
+{
+  StdFail_NotDone_Raise_if (!myDone, "Extrema_GenExtCC::Points()")
+  Standard_OutOfRange_Raise_if ((N < 1 || N > NbExt()), "Extrema_GenExtCC::Points()")
+
+  P1.SetValues(myPoints1(N), Tool1::Value(*((Curve1*)myC[0]), myPoints1(N)));
+  P2.SetValues(myPoints2(N), Tool2::Value(*((Curve2*)myC[1]), myPoints2(N)));
+}
