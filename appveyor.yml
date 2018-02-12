@@ -3,12 +3,18 @@ version: oce-0.18.3.{build}
 environment:
   oce_version: 0.18.3
   matrix:
-    - generator: "MSYS Makefiles"
+    - generator: "MinGW Makefiles"
       ARCH: "i686"
-      Compiler: MinGW-gcc-4.9.3
-    - generator: "MSYS Makefiles"
+      Compiler: MinGW-gcc-5.3.0
+      BINDIR: C:\MinGW\bin
+    - generator: "MinGW Makefiles"
       ARCH: "Win64"
-      Compiler: MinGW64-gcc-5.4.0
+      Compiler: MinGW64-gcc-6.3.0
+      BINDIR: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
+    - generator: "MinGW Makefiles"
+      ARCH: "Win64"
+      Compiler: MinGW64-gcc-7.2.0
+      BINDIR: C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
     - generator: "Visual Studio 12"
       ARCH: "Win32"
       Compiler: "MSVC2013"
@@ -21,10 +27,6 @@ environment:
     - generator: "Visual Studio 14 Win64"
       ARCH: "Win64"
       Compiler: "MSVC2015"
-
-cache:
-  - i686-4.9.3-release-posix-dwarf-rt_v4-rev1.7z
-  - x86_64-5.4.0-release-posix-seh-rt_v5-rev0.7z
 
 configuration:
   - Release
@@ -46,7 +48,9 @@ install:
   - cmd: CALL FetchBundle.bat
 
 build_script:
-  - cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/make-oce-msys.sh)
+  - if "%generator%"=="MinGW Makefiles" (set "PATH=%PATH:C:\Program Files\Git\usr\bin;=%")
+  - if not "%BINDIR%"=="" (set "PATH=%PATH%;%BINDIR%")
+  - if "%generator%" == "MinGW Makefiles" (CALL C:\projects\oce\appveyor-scripts\make-oce-msys.bat)
       else (CALL C:\projects\oce\appveyor-scripts\make-oce-msvc.bat)
 
 after_build:
