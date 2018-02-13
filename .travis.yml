@@ -61,8 +61,14 @@ matrix:
     dist: trusty
   - os: linux
     compiler: clang
-    env: RUN_TESTS=true OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON MATRIX_EVAL=""
+    env: RUN_TESTS=true OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON MATRIX_EVAL="CC=clang-4.0 && CXX=clang++-4.0"
     dist: trusty
+    addons:
+      apt:
+        sources:
+          - llvm-toolchain-trusty-4.0
+        packages:
+          - clang-4.0
   - os: linux
     compiler: gcc
     env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF MATRIX_EVAL=""
