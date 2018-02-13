@@ -1,5 +1,0 @@
-#include <Geom_Curve.hxx>
-#include <TopOpeBRepDS_Interference.hxx>
-#include <TopoDS_Shape.hxx>
-#include <Geom2d_Curve.hxx>
-#include <TopOpeBRepDS_Curve.hxx>

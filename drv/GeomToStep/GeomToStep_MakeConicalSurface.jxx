@@ -1,4 +1,0 @@
-#include <StepGeom_ConicalSurface.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_ConicalSurface.hxx>
-#include <GeomToStep_MakeConicalSurface.hxx>

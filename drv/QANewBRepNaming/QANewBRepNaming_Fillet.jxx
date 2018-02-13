@@ -1,4 +1,0 @@
-#include <TDF_Label.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepFilletAPI_MakeFillet.hxx>
-#include <QANewBRepNaming_Fillet.hxx>

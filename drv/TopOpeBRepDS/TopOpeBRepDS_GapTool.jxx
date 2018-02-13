@@ -1,6 +1,0 @@
-#include <TopOpeBRepDS_HDataStructure.hxx>
-#include <TopOpeBRepDS_ListOfInterference.hxx>
-#include <TopOpeBRepDS_Interference.hxx>
-#include <TopOpeBRepDS_Curve.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopOpeBRepDS_GapTool.hxx>

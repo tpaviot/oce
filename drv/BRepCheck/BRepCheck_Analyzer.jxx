@@ -1,5 +1,0 @@
-#include <Standard_NullObject.hxx>
-#include <Standard_NoSuchObject.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepCheck_Result.hxx>
-#include <BRepCheck_Analyzer.hxx>

@@ -1,5 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <SelectMgr_SelectableObject.hxx>
-#include <StdSelect_BRepOwner.hxx>
-#include <TopoDS_Face.hxx>
-#include <StdSelect_BRepSelectionTool.hxx>

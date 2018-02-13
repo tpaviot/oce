@@ -1,4 +1,0 @@
-#include <StepElement_HArray1OfCurveElementSectionDefinition.hxx>
-#include <StepFEA_CurveElementLocation.hxx>
-#include <StepBasic_EulerAngles.hxx>
-#include <StepFEA_CurveElementIntervalLinearlyVarying.hxx>

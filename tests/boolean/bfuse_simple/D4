@@ -1,6 +1,0 @@
-psphere s 1
-box b 1 1 1
-
-bfuse result b s
-
-set square 14.6394

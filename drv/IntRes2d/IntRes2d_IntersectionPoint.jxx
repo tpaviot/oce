@@ -1,3 +1,0 @@
-#include <gp_Pnt2d.hxx>
-#include <IntRes2d_Transition.hxx>
-#include <IntRes2d_IntersectionPoint.hxx>

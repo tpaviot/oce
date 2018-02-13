@@ -1,3 +1,0 @@
-#include <StepShape_HArray1OfEdge.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_ConnectedEdgeSet.hxx>

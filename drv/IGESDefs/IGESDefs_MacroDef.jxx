@@ -1,4 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <Interface_HArray1OfHAsciiString.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESDefs_MacroDef.hxx>

@@ -1,2 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <DrawDim_PlanarDimension.hxx>

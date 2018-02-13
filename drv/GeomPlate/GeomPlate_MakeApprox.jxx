@@ -1,4 +1,0 @@
-#include <GeomPlate_Surface.hxx>
-#include <Geom_BSplineSurface.hxx>
-#include <AdvApp2Var_Criterion.hxx>
-#include <GeomPlate_MakeApprox.hxx>

@@ -1,4 +1,0 @@
-#include <Standard_DimensionError.hxx>
-#include <Standard_RangeError.hxx>
-#include <math_Matrix.hxx>
-#include <GeomFill_Tensor.hxx>

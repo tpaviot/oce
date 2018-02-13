@@ -1,6 +1,0 @@
-#include <TDF_Data.hxx>
-#include <Draw_Display.hxx>
-#include <Draw_Drawable3D.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <TDF_Label.hxx>
-#include <DDF_Browser.hxx>

@@ -1,4 +1,0 @@
-#include <WNT_WClass.hxx>
-#include <Aspect_WindowDefinitionError.hxx>
-#include <Aspect_WindowError.hxx>
-#include <WNT_Window.hxx>

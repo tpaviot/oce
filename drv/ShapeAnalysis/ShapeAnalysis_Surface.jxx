@@ -1,9 +1,0 @@
-#include <Geom_Surface.hxx>
-#include <GeomAdaptor_HSurface.hxx>
-#include <Geom_Curve.hxx>
-#include <gp_Pnt2d.hxx>
-#include <gp_Pnt.hxx>
-#include <TColgp_Array1OfPnt.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
-#include <Bnd_Box.hxx>
-#include <ShapeAnalysis_Surface.hxx>

@@ -1,3 +1,0 @@
-#include <StepGeom_CurveBoundedSurface.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_SweptAreaSolid.hxx>

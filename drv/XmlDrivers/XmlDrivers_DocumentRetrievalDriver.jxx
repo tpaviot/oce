@@ -1,4 +1,0 @@
-#include <XmlMDF_ADriverTable.hxx>
-#include <CDM_MessageDriver.hxx>
-#include <XmlMDF_ADriver.hxx>
-#include <XmlDrivers_DocumentRetrievalDriver.hxx>

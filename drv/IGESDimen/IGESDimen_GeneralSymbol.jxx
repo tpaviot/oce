@@ -1,7 +1,0 @@
-#include <IGESDimen_GeneralNote.hxx>
-#include <IGESData_HArray1OfIGESEntity.hxx>
-#include <IGESDimen_HArray1OfLeaderArrow.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <IGESDimen_LeaderArrow.hxx>
-#include <IGESDimen_GeneralSymbol.hxx>

@@ -1,3 +1,0 @@
-#include <StepGeom_CartesianTransformationOperator2d.hxx>
-#include <gp_Trsf2d.hxx>
-#include <StepToGeom_MakeTransformation2d.hxx>

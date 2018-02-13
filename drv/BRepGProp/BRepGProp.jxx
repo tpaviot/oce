@@ -1,4 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <GProp_GProps.hxx>
-#include <gp_Pln.hxx>
-#include <BRepGProp.hxx>

@@ -1,3 +1,0 @@
-#include <Interface_Graph.hxx>
-#include <IFGraph_StrongComponants.hxx>
-#include <IFGraph_SCRoots.hxx>

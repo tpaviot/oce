@@ -1,9 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <TColStd_HArray1OfInteger.hxx>
-#include <TColStd_HArray1OfTransient.hxx>
-#include <Standard_DimensionMismatch.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <Standard_NullObject.hxx>
-#include <Standard_Transient.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <IGESDefs_GenericData.hxx>

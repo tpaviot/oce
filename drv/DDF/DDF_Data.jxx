@@ -1,4 +1,0 @@
-#include <TDF_Data.hxx>
-#include <Draw_Display.hxx>
-#include <Draw_Drawable3D.hxx>
-#include <DDF_Data.hxx>

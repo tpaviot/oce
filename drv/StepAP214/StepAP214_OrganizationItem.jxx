@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepAP214_AppliedOrganizationAssignment.hxx>
-#include <StepBasic_Approval.hxx>
-#include <StepAP214_OrganizationItem.hxx>

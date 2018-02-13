@@ -1,4 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <Bnd_Box.hxx>
-#include <Voxel_BoolDS.hxx>
-#include <Voxel_CollisionDetection.hxx>

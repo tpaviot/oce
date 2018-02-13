@@ -1,4 +1,0 @@
-#include <StepAP214_HArray1OfAutoDesignGroupedItem.hxx>
-#include <StepBasic_Group.hxx>
-#include <StepAP214_AutoDesignGroupedItem.hxx>
-#include <StepAP214_AutoDesignGroupAssignment.hxx>

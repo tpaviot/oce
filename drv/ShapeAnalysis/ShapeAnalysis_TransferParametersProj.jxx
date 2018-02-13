@@ -1,7 +1,0 @@
-#include <Geom_Curve.hxx>
-#include <Geom2d_Curve.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Face.hxx>
-#include <TColStd_HSequenceOfReal.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <ShapeAnalysis_TransferParametersProj.hxx>

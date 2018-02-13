@@ -1,8 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <gp_Pnt.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <ShapeAnalysis_DataMapOfShapeListOfReal.hxx>
-#include <TopoDS_Compound.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <ShapeAnalysis_CheckSmallFace.hxx>

@@ -1,4 +1,0 @@
-#include <StepGeom_SurfaceOfRevolution.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_SurfaceOfRevolution.hxx>
-#include <GeomToStep_MakeSurfaceOfRevolution.hxx>

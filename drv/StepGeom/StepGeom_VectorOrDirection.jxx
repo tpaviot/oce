@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepGeom_Vector.hxx>
-#include <StepGeom_Direction.hxx>
-#include <StepGeom_VectorOrDirection.hxx>

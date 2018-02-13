@@ -1,5 +1,0 @@
-#include <Standard_NumericError.hxx>
-#include <Expr_GeneralExpression.hxx>
-#include <Expr_GeneralRelation.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <Expr_Equal.hxx>

@@ -1,7 +1,0 @@
-#include <Standard_NullObject.hxx>
-#include <TDF_Label.hxx>
-#include <QANewModTopOpe_Glue.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TDF_LabelMap.hxx>
-#include <TopTools_DataMapOfShapeInteger.hxx>
-#include <QANewBRepNaming_Gluing.hxx>

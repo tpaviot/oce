@@ -1,4 +1,0 @@
-#include <TopoDS_Wire.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopOpeBRepBuild_WireToFace.hxx>

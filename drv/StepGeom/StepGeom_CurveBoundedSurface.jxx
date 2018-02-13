@@ -1,4 +1,0 @@
-#include <StepGeom_Surface.hxx>
-#include <StepGeom_HArray1OfSurfaceBoundary.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_CurveBoundedSurface.hxx>

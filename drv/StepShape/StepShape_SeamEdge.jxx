@@ -1,4 +1,0 @@
-#include <StepGeom_Pcurve.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_Edge.hxx>
-#include <StepShape_SeamEdge.hxx>

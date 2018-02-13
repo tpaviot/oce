@@ -1,5 +1,0 @@
-#include <Geom_Surface.hxx>
-#include <NLPlate_HGPPConstraint.hxx>
-#include <gp_XYZ.hxx>
-#include <gp_XY.hxx>
-#include <NLPlate_NLPlate.hxx>

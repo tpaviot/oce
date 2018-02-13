@@ -1,6 +1,0 @@
-#include <StepGeom_CompositeCurve.hxx>
-#include <Transfer_TransientProcess.hxx>
-#include <StepGeom_Surface.hxx>
-#include <Geom_Surface.hxx>
-#include <TopoDS_Wire.hxx>
-#include <StepToTopoDS_TranslateCompositeCurve.hxx>

@@ -1,4 +1,0 @@
-#include <TCollection_ExtendedString.hxx>
-#include <CDM_MetaData.hxx>
-#include <CDM_Document.hxx>
-#include <CDF_FWOSDriver.hxx>

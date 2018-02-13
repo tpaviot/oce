@@ -1,3 +1,0 @@
-#include <StepGeom_ToroidalSurface.hxx>
-#include <Geom_ToroidalSurface.hxx>
-#include <StepToGeom_MakeToroidalSurface.hxx>

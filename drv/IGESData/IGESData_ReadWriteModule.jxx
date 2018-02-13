@@ -1,9 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <Interface_FileReaderData.hxx>
-#include <Interface_Check.hxx>
-#include <Standard_Transient.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <IGESData_IGESReaderData.hxx>
-#include <IGESData_ParamReader.hxx>
-#include <IGESData_IGESWriter.hxx>
-#include <IGESData_ReadWriteModule.hxx>

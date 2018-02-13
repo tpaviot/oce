@@ -1,4 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <Law_Function.hxx>
-#include <Law_Linear.hxx>

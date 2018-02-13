@@ -1,2 +1,0 @@
-#include <TopoDS_TShape.hxx>
-#include <TopoDS_TFace.hxx>

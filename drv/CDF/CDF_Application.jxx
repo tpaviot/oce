@@ -1,9 +1,0 @@
-#include <Standard_NoSuchObject.hxx>
-#include <CDF_Session.hxx>
-#include <Standard_GUID.hxx>
-#include <CDM_Document.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TColStd_SequenceOfExtendedString.hxx>
-#include <PCDM_Reader.hxx>
-#include <CDM_MetaData.hxx>
-#include <CDF_Application.hxx>

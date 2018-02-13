@@ -1,7 +1,0 @@
-#include <PTopLoc_Datum3D.hxx>
-#include <TopLoc_Datum3D.hxx>
-#include <PTColStd_TransientPersistentMap.hxx>
-#include <PTColStd_PersistentTransientMap.hxx>
-#include <PTopLoc_Location.hxx>
-#include <TopLoc_Location.hxx>
-#include <MgtTopLoc.hxx>

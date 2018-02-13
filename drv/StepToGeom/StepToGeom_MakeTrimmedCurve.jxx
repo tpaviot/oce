@@ -1,3 +1,0 @@
-#include <StepGeom_TrimmedCurve.hxx>
-#include <Geom_TrimmedCurve.hxx>
-#include <StepToGeom_MakeTrimmedCurve.hxx>

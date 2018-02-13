@@ -1,9 +1,0 @@
-catch { vfit }
-if { ![info exists subgroup] || $subgroup != "mesh" } {
-  if { ![info exists to_dump_screen] && [ catch { vdump $imagedir/${test_image}.png } catch_result ] } {
-    puts $catch_result
-  }
-}
-catch { vglinfo }
-
-puts "TEST COMPLETED"

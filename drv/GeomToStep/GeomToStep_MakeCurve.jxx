@@ -1,5 +1,0 @@
-#include <StepGeom_Curve.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_Curve.hxx>
-#include <Geom2d_Curve.hxx>
-#include <GeomToStep_MakeCurve.hxx>

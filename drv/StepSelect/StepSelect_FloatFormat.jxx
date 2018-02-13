@@ -1,4 +1,0 @@
-#include <TCollection_AsciiString.hxx>
-#include <IFSelect_ContextWrite.hxx>
-#include <StepData_StepWriter.hxx>
-#include <StepSelect_FloatFormat.hxx>

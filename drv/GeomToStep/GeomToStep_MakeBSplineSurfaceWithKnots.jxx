@@ -1,4 +1,0 @@
-#include <StepGeom_BSplineSurfaceWithKnots.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_BSplineSurface.hxx>
-#include <GeomToStep_MakeBSplineSurfaceWithKnots.hxx>

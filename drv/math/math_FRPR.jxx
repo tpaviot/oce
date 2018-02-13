@@ -1,4 +1,0 @@
-#include <Standard_DimensionError.hxx>
-#include <StdFail_NotDone.hxx>
-#include <math_MultipleVarFunctionWithGradient.hxx>
-#include <math_FRPR.hxx>

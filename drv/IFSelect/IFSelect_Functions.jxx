@@ -1,5 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <IFSelect_WorkSession.hxx>
-#include <TColStd_HSequenceOfTransient.hxx>
-#include <IFSelect_Dispatch.hxx>
-#include <IFSelect_Functions.hxx>

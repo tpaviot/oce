@@ -1,5 +1,0 @@
-#include <TopTools_ListOfShape.hxx>
-#include <BRepAlgo_AsDes.hxx>
-#include <BRepAlgo_Image.hxx>
-#include <BRepOffset_Analyse.hxx>
-#include <BRepOffset_MakeLoops.hxx>

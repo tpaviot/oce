@@ -1,5 +1,0 @@
-#include <Geom_TrimmedCurve.hxx>
-#include <StdFail_NotDone.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Lin.hxx>
-#include <GC_MakeSegment.hxx>

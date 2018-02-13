@@ -1,5 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <StepFEA_HArray1OfCurveElementInterval.hxx>
-#include <StepFEA_HArray1OfCurveElementEndOffset.hxx>
-#include <StepFEA_HArray1OfCurveElementEndRelease.hxx>
-#include <StepFEA_Curve3dElementProperty.hxx>

@@ -1,3 +1,0 @@
-#include <TColStd_HArray1OfReal.hxx>
-#include <gp_Vec.hxx>
-#include <Vrml_LOD.hxx>

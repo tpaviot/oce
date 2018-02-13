@@ -1,4 +1,0 @@
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Face.hxx>
-#include <TColStd_HSequenceOfReal.hxx>
-#include <ShapeAnalysis_TransferParameters.hxx>

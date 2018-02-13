@@ -1,3 +1,0 @@
-#include <StepGeom_Axis2Placement3d.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_RightAngularWedge.hxx>

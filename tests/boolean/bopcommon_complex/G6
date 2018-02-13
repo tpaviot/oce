@@ -1,7 +1,0 @@
-restore [locate_data_file a106] a
-restore [locate_data_file a157] b
-
-bop a b
-bopcommon result
-
-set square 4826.73

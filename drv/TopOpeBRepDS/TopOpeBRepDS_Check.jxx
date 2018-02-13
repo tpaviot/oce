@@ -1,5 +1,0 @@
-#include <TopOpeBRepDS_HDataStructure.hxx>
-#include <TopOpeBRepDS_ListOfInterference.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopOpeBRepDS_DataMapOfCheckStatus.hxx>
-#include <TopOpeBRepDS_Check.hxx>

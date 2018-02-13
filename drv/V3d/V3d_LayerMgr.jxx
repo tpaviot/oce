@@ -1,6 +1,0 @@
-#include <Visual3d_Layer.hxx>
-#include <V3d_ColorScale.hxx>
-#include <V3d_ColorScaleLayerItem.hxx>
-#include <V3d_View.hxx>
-#include <Aspect_ColorScale.hxx>
-#include <V3d_LayerMgr.hxx>

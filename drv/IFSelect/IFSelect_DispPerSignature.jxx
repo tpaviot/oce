@@ -1,6 +1,0 @@
-#include <IFSelect_SignCounter.hxx>
-#include <Interface_InterfaceError.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <Interface_Graph.hxx>
-#include <IFGraph_SubPartsIterator.hxx>
-#include <IFSelect_DispPerSignature.hxx>

@@ -1,4 +1,0 @@
-#include <gp_Lin.hxx>
-#include <TopoDS_Face.hxx>
-#include <IntCurveSurface_IntersectionPoint.hxx>
-#include <TopClass_Intersection3d.hxx>

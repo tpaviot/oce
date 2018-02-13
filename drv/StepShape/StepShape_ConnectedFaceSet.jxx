@@ -1,4 +1,0 @@
-#include <StepShape_HArray1OfFace.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_Face.hxx>
-#include <StepShape_ConnectedFaceSet.hxx>

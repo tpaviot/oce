@@ -1,3 +1,0 @@
-#include <SelectMgr_SelectableObject.hxx>
-#include <PrsMgr_PresentationManager.hxx>
-#include <AIS_DimensionOwner.hxx>

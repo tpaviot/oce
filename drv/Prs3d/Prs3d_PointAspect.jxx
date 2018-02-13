@@ -1,4 +1,0 @@
-#include <Graphic3d_AspectMarker3d.hxx>
-#include <Quantity_Color.hxx>
-#include <TColStd_HArray1OfByte.hxx>
-#include <Prs3d_PointAspect.hxx>

@@ -1,4 +1,0 @@
-#include <TopoDS_Vertex.hxx>
-#include <ChFiDS_Stripe.hxx>
-#include <ChFiDS_ListOfStripe.hxx>
-#include <ChFiDS_StripeMap.hxx>

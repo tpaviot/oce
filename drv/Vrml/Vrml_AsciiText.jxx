@@ -1,2 +1,0 @@
-#include <TColStd_HArray1OfAsciiString.hxx>
-#include <Vrml_AsciiText.hxx>

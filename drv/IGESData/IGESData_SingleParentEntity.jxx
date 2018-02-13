@@ -1,3 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <IGESData_SingleParentEntity.hxx>

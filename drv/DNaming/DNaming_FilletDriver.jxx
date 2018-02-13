@@ -1,5 +1,0 @@
-#include <TFunction_Logbook.hxx>
-#include <TDF_Label.hxx>
-#include <BRepFilletAPI_MakeFillet.hxx>
-#include <TopoDS_Shape.hxx>
-#include <DNaming_FilletDriver.hxx>

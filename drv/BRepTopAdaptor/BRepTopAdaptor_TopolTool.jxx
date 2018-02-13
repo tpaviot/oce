@@ -1,8 +1,0 @@
-#include <BRepAdaptor_HCurve2d.hxx>
-#include <Standard_DomainError.hxx>
-#include <Adaptor3d_HSurface.hxx>
-#include <Adaptor2d_HCurve2d.hxx>
-#include <Adaptor3d_HVertex.hxx>
-#include <gp_Pnt2d.hxx>
-#include <gp_Pnt.hxx>
-#include <BRepTopAdaptor_TopolTool.hxx>

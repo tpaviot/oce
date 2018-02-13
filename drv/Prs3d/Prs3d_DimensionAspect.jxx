@@ -1,6 +1,0 @@
-#include <Prs3d_LineAspect.hxx>
-#include <Prs3d_TextAspect.hxx>
-#include <Prs3d_ArrowAspect.hxx>
-#include <Quantity_Color.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <Prs3d_DimensionAspect.hxx>

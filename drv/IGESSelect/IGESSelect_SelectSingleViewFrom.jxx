@@ -1,5 +1,0 @@
-#include <Interface_InterfaceError.hxx>
-#include <Interface_EntityIterator.hxx>
-#include <Interface_Graph.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <IGESSelect_SelectSingleViewFrom.hxx>

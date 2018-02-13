@@ -1,3 +1,0 @@
-set TheFileName a.brep
-set bug_area "OCC22687"
-set nbfreenodes(All) 3.5

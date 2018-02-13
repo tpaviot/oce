@@ -1,3 +1,0 @@
-#include <Geom2dAdaptor_Curve.hxx>
-#include <gp_Pnt2d.hxx>
-#include <Geom2dGcc_FunctionTanCuPnt.hxx>

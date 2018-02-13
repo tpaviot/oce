@@ -1,5 +1,0 @@
-#include <StepGeom_Conic.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_Conic.hxx>
-#include <Geom2d_Conic.hxx>
-#include <GeomToStep_MakeConic.hxx>

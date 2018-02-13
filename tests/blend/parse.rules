@@ -1,2 +1,0 @@
-FAILED /\bFaulty\b/ bad shape
-IGNORE /^Tcl Exception: tolerance ang : [\d.-]+/ blend failure - test will be failed as incomplete

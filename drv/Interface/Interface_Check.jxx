@@ -1,7 +1,0 @@
-#include <TColStd_HSequenceOfHAsciiString.hxx>
-#include <Standard_Transient.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <Message_Msg.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <Message_Messenger.hxx>
-#include <Interface_Check.hxx>

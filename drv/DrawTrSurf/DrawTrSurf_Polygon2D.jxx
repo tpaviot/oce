@@ -1,4 +1,0 @@
-#include <Poly_Polygon2D.hxx>
-#include <Draw_Display.hxx>
-#include <Draw_Drawable3D.hxx>
-#include <DrawTrSurf_Polygon2D.hxx>

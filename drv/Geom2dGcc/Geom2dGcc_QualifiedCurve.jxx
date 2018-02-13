@@ -1,2 +1,0 @@
-#include <Geom2dAdaptor_Curve.hxx>
-#include <Geom2dGcc_QualifiedCurve.hxx>

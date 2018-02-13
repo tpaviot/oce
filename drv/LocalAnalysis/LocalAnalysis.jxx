@@ -1,3 +1,0 @@
-#include <LocalAnalysis_SurfaceContinuity.hxx>
-#include <LocalAnalysis_CurveContinuity.hxx>
-#include <LocalAnalysis.hxx>

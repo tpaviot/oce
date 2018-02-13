@@ -1,6 +1,0 @@
-#include <Adaptor3d_HSurfaceOfRevolution.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <gp_Pnt.hxx>
-#include <Extrema_POnSurf.hxx>
-#include <Extrema_ExtPRevS.hxx>

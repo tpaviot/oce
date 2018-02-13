@@ -1,3 +1,0 @@
-#include <StepRepr_Representation.hxx>
-#include <StepRepr_RepresentedDefinition.hxx>
-#include <StepRepr_PropertyDefinitionRepresentation.hxx>

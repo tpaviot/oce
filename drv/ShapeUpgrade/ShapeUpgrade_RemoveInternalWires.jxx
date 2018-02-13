@@ -1,3 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopTools_SequenceOfShape.hxx>
-#include <ShapeUpgrade_RemoveInternalWires.hxx>

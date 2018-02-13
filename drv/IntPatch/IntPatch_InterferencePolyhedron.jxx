@@ -1,3 +1,0 @@
-#include <IntPatch_Polyhedron.hxx>
-#include <Intf_TangentZone.hxx>
-#include <IntPatch_InterferencePolyhedron.hxx>

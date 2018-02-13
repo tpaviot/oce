@@ -1,4 +1,0 @@
-#include <StepShape_ConnectedFaceSet.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_ClosedShell.hxx>
-#include <StepShape_ManifoldSolidBrep.hxx>

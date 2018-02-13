@@ -1,4 +1,0 @@
-#include <TFunction_Logbook.hxx>
-#include <TDF_Label.hxx>
-#include <BRepPrimAPI_MakeSphere.hxx>
-#include <DNaming_SphereDriver.hxx>

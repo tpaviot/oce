@@ -1,6 +1,0 @@
-#include <BRepToIGES_BREntity.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Shell.hxx>
-#include <TopoDS_Face.hxx>
-#include <BRepToIGES_BRShell.hxx>

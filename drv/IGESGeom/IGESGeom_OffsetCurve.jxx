@@ -1,4 +1,0 @@
-#include <IGESData_IGESEntity.hxx>
-#include <gp_XYZ.hxx>
-#include <gp_Vec.hxx>
-#include <IGESGeom_OffsetCurve.hxx>

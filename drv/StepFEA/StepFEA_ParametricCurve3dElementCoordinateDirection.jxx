@@ -1,3 +1,0 @@
-#include <StepGeom_Direction.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepFEA_ParametricCurve3dElementCoordinateDirection.hxx>

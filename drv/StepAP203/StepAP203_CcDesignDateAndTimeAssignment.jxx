@@ -1,4 +1,0 @@
-#include <StepAP203_HArray1OfDateTimeItem.hxx>
-#include <StepBasic_DateAndTime.hxx>
-#include <StepBasic_DateTimeRole.hxx>
-#include <StepAP203_CcDesignDateAndTimeAssignment.hxx>

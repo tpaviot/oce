@@ -1,4 +1,0 @@
-#include <Geom_RectangularTrimmedSurface.hxx>
-#include <StdFail_NotDone.hxx>
-#include <gp_Pnt.hxx>
-#include <GC_MakeTrimmedCone.hxx>

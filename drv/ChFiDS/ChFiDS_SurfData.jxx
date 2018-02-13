@@ -1,5 +1,0 @@
-#include <MMgt_TShared.hxx>
-#include <ChFiDS_FaceInterference.hxx>
-#include <ChFiDS_CommonPoint.hxx>
-#include <gp_Pnt2d.hxx>
-#include <ChFiDS_SurfData.hxx>

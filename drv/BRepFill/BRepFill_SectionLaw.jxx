@@ -1,7 +1,0 @@
-#include <GeomFill_HArray1OfSectionLaw.hxx>
-#include <GeomFill_SectionLaw.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Wire.hxx>
-#include <TopoDS_Edge.hxx>
-#include <BRepFill_SectionLaw.hxx>

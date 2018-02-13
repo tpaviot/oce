@@ -1,6 +1,0 @@
-#include <Standard_TypeMismatch.hxx>
-#include <TopoDS_Shape.hxx>
-#include <PTopoDS_HShape.hxx>
-#include <PTColStd_TransientPersistentMap.hxx>
-#include <PTColStd_PersistentTransientMap.hxx>
-#include <MgtTopoDS_TranslateTool.hxx>

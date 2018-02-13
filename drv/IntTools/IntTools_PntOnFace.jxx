@@ -1,3 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <gp_Pnt.hxx>
-#include <IntTools_PntOnFace.hxx>

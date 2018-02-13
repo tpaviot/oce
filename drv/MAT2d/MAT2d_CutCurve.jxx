@@ -1,4 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <Geom2d_Curve.hxx>
-#include <Geom2d_TrimmedCurve.hxx>
-#include <MAT2d_CutCurve.hxx>

@@ -1,3 +1,0 @@
-#include <PTopoDS_HArray1OfHShape.hxx>
-#include <PTopoDS_HShape.hxx>
-#include <PTopoDS_TShape.hxx>

@@ -1,3 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <gp_Circ2d.hxx>
-#include <Convert_CircleToBSplineCurve.hxx>

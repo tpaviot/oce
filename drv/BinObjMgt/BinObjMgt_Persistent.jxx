@@ -1,6 +1,0 @@
-#include <TCollection_AsciiString.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TDF_Label.hxx>
-#include <Standard_GUID.hxx>
-#include <TDF_Data.hxx>
-#include <BinObjMgt_Persistent.hxx>

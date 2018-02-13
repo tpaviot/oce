@@ -1,4 +1,0 @@
-#include <StepGeom_HArray2OfCartesianPoint.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_CartesianPoint.hxx>
-#include <StepGeom_BSplineSurface.hxx>

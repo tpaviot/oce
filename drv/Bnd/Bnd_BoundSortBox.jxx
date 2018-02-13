@@ -1,7 +1,0 @@
-#include <Bnd_HArray1OfBox.hxx>
-#include <Standard_NullValue.hxx>
-#include <Standard_MultiplyDefined.hxx>
-#include <Bnd_Box.hxx>
-#include <TColStd_ListOfInteger.hxx>
-#include <gp_Pln.hxx>
-#include <Bnd_BoundSortBox.hxx>

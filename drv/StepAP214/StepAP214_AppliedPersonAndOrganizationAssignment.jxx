@@ -1,5 +1,0 @@
-#include <StepAP214_HArray1OfPersonAndOrganizationItem.hxx>
-#include <StepBasic_PersonAndOrganization.hxx>
-#include <StepBasic_PersonAndOrganizationRole.hxx>
-#include <StepAP214_PersonAndOrganizationItem.hxx>
-#include <StepAP214_AppliedPersonAndOrganizationAssignment.hxx>

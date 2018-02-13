@@ -1,4 +1,0 @@
-#include <Message_ProgressIndicator.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <Geom2d_Curve.hxx>
-#include <GeomTools_Curve2dSet.hxx>

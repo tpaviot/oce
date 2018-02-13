@@ -1,3 +1,0 @@
-#include <StepGeom_Direction.hxx>
-#include <Geom_Direction.hxx>
-#include <StepToGeom_MakeDirection.hxx>

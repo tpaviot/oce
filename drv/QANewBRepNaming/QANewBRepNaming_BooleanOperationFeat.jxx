@@ -1,4 +1,0 @@
-#include <TDF_Label.hxx>
-#include <BRepAlgoAPI_BooleanOperation.hxx>
-#include <TopoDS_Shape.hxx>
-#include <QANewBRepNaming_BooleanOperationFeat.hxx>

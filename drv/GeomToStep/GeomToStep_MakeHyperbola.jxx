@@ -1,5 +1,0 @@
-#include <StepGeom_Hyperbola.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom2d_Hyperbola.hxx>
-#include <Geom_Hyperbola.hxx>
-#include <GeomToStep_MakeHyperbola.hxx>

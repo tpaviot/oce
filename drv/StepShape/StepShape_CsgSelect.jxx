@@ -1,3 +1,0 @@
-#include <StepShape_BooleanResult.hxx>
-#include <StepShape_CsgPrimitive.hxx>
-#include <StepShape_CsgSelect.hxx>

@@ -1,6 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <StdFail_NotDone.hxx>
-#include <gp_Circ2d.hxx>
-#include <gp_Lin2d.hxx>
-#include <GccInt_Bisec.hxx>
-#include <GccAna_CircLin2dBisec.hxx>

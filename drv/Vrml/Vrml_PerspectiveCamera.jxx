@@ -1,3 +1,0 @@
-#include <gp_Vec.hxx>
-#include <Vrml_SFRotation.hxx>
-#include <Vrml_PerspectiveCamera.hxx>

@@ -1,4 +1,0 @@
-#include <StepGeom_Surface.hxx>
-#include <StepGeom_CartesianTransformationOperator3d.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_SurfaceReplica.hxx>

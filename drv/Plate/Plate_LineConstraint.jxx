@@ -1,4 +1,0 @@
-#include <gp_XY.hxx>
-#include <gp_Lin.hxx>
-#include <Plate_LinearScalarConstraint.hxx>
-#include <Plate_LineConstraint.hxx>

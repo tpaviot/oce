@@ -1,5 +1,0 @@
-#include <TFunction_Logbook.hxx>
-#include <TDF_Label.hxx>
-#include <TopoDS_Wire.hxx>
-#include <TopTools_Array1OfShape.hxx>
-#include <DNaming_Line3DDriver.hxx>

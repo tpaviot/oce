@@ -1,4 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <StepVisual_HArray1OfFillStyleSelect.hxx>
-#include <StepVisual_FillStyleSelect.hxx>
-#include <StepVisual_FillAreaStyle.hxx>

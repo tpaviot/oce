@@ -1,5 +1,0 @@
-#include <BRepCheck_ListOfStatus.hxx>
-#include <TopoDS_Wire.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Edge.hxx>
-#include <BRepCheck.hxx>

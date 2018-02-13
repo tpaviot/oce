@@ -1,4 +1,0 @@
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <TopoDS_Face.hxx>
-#include <ChFi2d.hxx>

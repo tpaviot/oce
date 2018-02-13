@@ -1,4 +1,0 @@
-#include <StepRepr_HArray1OfRepresentationItem.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepRepr_RepresentationItem.hxx>
-#include <StepRepr_CompoundRepresentationItem.hxx>

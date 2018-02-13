@@ -1,6 +1,0 @@
-#include <IGESData_IGESEntity.hxx>
-#include <TColStd_HArray1OfInteger.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <gp_XYZ.hxx>
-#include <gp_Pnt.hxx>
-#include <IGESDraw_CircArraySubfigure.hxx>

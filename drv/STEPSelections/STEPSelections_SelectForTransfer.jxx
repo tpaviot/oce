@@ -1,4 +1,0 @@
-#include <XSControl_TransferReader.hxx>
-#include <Interface_EntityIterator.hxx>
-#include <Interface_Graph.hxx>
-#include <STEPSelections_SelectForTransfer.hxx>

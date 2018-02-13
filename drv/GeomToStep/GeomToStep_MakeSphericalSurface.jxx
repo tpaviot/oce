@@ -1,4 +1,0 @@
-#include <StepGeom_SphericalSurface.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_SphericalSurface.hxx>
-#include <GeomToStep_MakeSphericalSurface.hxx>

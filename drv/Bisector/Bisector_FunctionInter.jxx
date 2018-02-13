@@ -1,3 +1,0 @@
-#include <Geom2d_Curve.hxx>
-#include <Bisector_Curve.hxx>
-#include <Bisector_FunctionInter.hxx>

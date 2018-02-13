@@ -1,5 +1,0 @@
-#include <IGESData_IGESEntity.hxx>
-#include <IGESGeom_HArray1OfBoundary.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESGeom_Boundary.hxx>
-#include <IGESGeom_BoundedSurface.hxx>

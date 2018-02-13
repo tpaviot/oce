@@ -1,3 +1,0 @@
-#include <TopOpeBRepBuild_BlockBuilder.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopOpeBRepBuild_ShellFaceClassifier.hxx>

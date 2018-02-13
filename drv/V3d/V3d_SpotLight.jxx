@@ -1,5 +1,0 @@
-#include <V3d_BadValue.hxx>
-#include <V3d_Viewer.hxx>
-#include <V3d_View.hxx>
-#include <Graphic3d_Group.hxx>
-#include <V3d_SpotLight.hxx>

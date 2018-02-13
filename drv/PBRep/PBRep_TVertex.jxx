@@ -1,3 +1,0 @@
-#include <PBRep_PointRepresentation.hxx>
-#include <gp_Pnt.hxx>
-#include <PBRep_TVertex.hxx>

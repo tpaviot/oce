@@ -1,3 +1,0 @@
-#include <StepGeom_Point.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_Sphere.hxx>

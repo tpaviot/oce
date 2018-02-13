@@ -1,5 +1,0 @@
-#include <Graphic3d_Vector.hxx>
-#include <Graphic3d_Group.hxx>
-#include <V3d_View.hxx>
-#include <V3d_Viewer.hxx>
-#include <V3d.hxx>

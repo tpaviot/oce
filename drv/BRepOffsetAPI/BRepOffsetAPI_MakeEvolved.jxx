@@ -1,6 +1,0 @@
-#include <TopoDS_Wire.hxx>
-#include <TopoDS_Face.hxx>
-#include <BRepFill_Evolved.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepOffsetAPI_MakeEvolved.hxx>

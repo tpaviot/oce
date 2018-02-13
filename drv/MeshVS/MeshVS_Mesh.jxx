@@ -1,9 +1,0 @@
-#include <MeshVS_PrsBuilder.hxx>
-#include <TColStd_HPackedMapOfInteger.hxx>
-#include <MeshVS_DataSource.hxx>
-#include <MeshVS_Drawer.hxx>
-#include <SelectMgr_EntityOwner.hxx>
-#include <Prs3d_Presentation.hxx>
-#include <SelectMgr_SequenceOfOwner.hxx>
-#include <MeshVS_DataMapOfIntegerOwner.hxx>
-#include <MeshVS_Mesh.hxx>

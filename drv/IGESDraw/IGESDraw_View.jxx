@@ -1,6 +1,0 @@
-#include <IGESGeom_Plane.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESData_ViewKindEntity.hxx>
-#include <IGESData_TransfEntity.hxx>
-#include <gp_XYZ.hxx>
-#include <IGESDraw_View.hxx>

@@ -1,4 +1,0 @@
-#include <Geom2d_Curve.hxx>
-#include <Geom_Curve.hxx>
-#include <gp_Pln.hxx>
-#include <GeomAPI.hxx>

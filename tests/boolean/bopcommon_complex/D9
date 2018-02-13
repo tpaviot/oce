@@ -1,9 +1,0 @@
-cpulimit 1500
-
-restore [locate_data_file OCC228.brep] sh
-explode sh
-
-bop sh_2 sh_1
-bopcommon result
-
-set square 66231.3

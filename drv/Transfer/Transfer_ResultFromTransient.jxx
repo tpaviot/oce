@@ -1,7 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <Transfer_Binder.hxx>
-#include <TColStd_HSequenceOfTransient.hxx>
-#include <Interface_Check.hxx>
-#include <TColStd_IndexedMapOfTransient.hxx>
-#include <Transfer_TransientProcess.hxx>
-#include <Transfer_ResultFromTransient.hxx>

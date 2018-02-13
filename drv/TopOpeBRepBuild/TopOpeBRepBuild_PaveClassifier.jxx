@@ -1,3 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopOpeBRepBuild_Loop.hxx>
-#include <TopOpeBRepBuild_PaveClassifier.hxx>

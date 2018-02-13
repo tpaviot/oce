@@ -1,3 +1,0 @@
-#include <GeomFill_CoonsAlgPatch.hxx>
-#include <gp_Vec.hxx>
-#include <GeomFill_TgtOnCoons.hxx>

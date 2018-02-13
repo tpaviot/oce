@@ -1,3 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <SelectMgr_EntityOwner.hxx>
-#include <AIS_C0RegularityFilter.hxx>

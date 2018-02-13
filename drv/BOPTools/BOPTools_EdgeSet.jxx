@@ -1,3 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Edge.hxx>
-#include <BOPTools_EdgeSet.hxx>

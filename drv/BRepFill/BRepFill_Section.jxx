@@ -1,4 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <TopoDS_Wire.hxx>
-#include <BRepFill_Section.hxx>

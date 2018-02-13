@@ -1,4 +1,0 @@
-#include <StepVisual_CurveStyle.hxx>
-#include <StepVisual_HArray1OfDirectionCountSelect.hxx>
-#include <StepVisual_DirectionCountSelect.hxx>
-#include <StepVisual_SurfaceStyleParameterLine.hxx>

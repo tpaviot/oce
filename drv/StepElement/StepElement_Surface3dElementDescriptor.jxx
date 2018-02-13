@@ -1,3 +1,0 @@
-#include <StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepElement_Surface3dElementDescriptor.hxx>

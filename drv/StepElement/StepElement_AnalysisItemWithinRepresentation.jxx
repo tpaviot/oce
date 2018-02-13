@@ -1,4 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <StepRepr_RepresentationItem.hxx>
-#include <StepRepr_Representation.hxx>
-#include <StepElement_AnalysisItemWithinRepresentation.hxx>

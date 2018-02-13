@@ -1,3 +1,0 @@
-#include <StepGeom_TrimmedCurve.hxx>
-#include <Geom2d_BSplineCurve.hxx>
-#include <StepToGeom_MakeTrimmedCurve2d.hxx>

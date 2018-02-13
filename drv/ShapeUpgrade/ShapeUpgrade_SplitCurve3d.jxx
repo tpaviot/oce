@@ -1,3 +1,0 @@
-#include <Geom_Curve.hxx>
-#include <TColGeom_HArray1OfCurve.hxx>
-#include <ShapeUpgrade_SplitCurve3d.hxx>

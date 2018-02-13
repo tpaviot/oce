@@ -1,3 +1,0 @@
-#include <BRep_ListOfCurveRepresentation.hxx>
-#include <TopoDS_TShape.hxx>
-#include <BRep_TEdge.hxx>

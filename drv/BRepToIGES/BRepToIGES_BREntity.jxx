@@ -1,6 +1,0 @@
-#include <IGESData_IGESModel.hxx>
-#include <Transfer_FinderProcess.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <TopoDS_Shape.hxx>
-#include <Standard_Transient.hxx>
-#include <BRepToIGES_BREntity.hxx>

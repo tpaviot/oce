@@ -1,4 +1,0 @@
-#include <TDF_Label.hxx>
-#include <TFunction_Logbook.hxx>
-#include <TDF_LabelList.hxx>
-#include <TFunction_Driver.hxx>

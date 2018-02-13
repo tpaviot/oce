@@ -1,5 +1,0 @@
-#include <StepAP214_HArray1OfAutoDesignDateAndTimeItem.hxx>
-#include <StepBasic_DateAndTime.hxx>
-#include <StepBasic_DateTimeRole.hxx>
-#include <StepAP214_AutoDesignDateAndTimeItem.hxx>
-#include <StepAP214_AutoDesignNominalDateAndTimeAssignment.hxx>

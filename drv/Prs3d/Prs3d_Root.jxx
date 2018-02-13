@@ -1,3 +1,0 @@
-#include <Graphic3d_Group.hxx>
-#include <Prs3d_Presentation.hxx>
-#include <Prs3d_Root.hxx>

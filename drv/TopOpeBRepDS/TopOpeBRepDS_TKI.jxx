@@ -1,4 +1,0 @@
-#include <TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx>
-#include <TopOpeBRepDS_ListOfInterference.hxx>
-#include <TopOpeBRepDS_Interference.hxx>
-#include <TopOpeBRepDS_TKI.hxx>

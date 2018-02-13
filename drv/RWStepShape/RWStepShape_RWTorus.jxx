@@ -1,6 +1,0 @@
-#include <StepData_StepReaderData.hxx>
-#include <Interface_Check.hxx>
-#include <StepShape_Torus.hxx>
-#include <StepData_StepWriter.hxx>
-#include <Interface_EntityIterator.hxx>
-#include <RWStepShape_RWTorus.hxx>

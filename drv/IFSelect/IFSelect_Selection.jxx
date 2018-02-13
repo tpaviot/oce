@@ -1,6 +1,0 @@
-#include <Interface_InterfaceError.hxx>
-#include <Interface_EntityIterator.hxx>
-#include <Interface_Graph.hxx>
-#include <IFSelect_SelectionIterator.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <IFSelect_Selection.hxx>

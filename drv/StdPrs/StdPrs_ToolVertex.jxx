@@ -1,2 +1,0 @@
-#include <TopoDS_Vertex.hxx>
-#include <StdPrs_ToolVertex.hxx>

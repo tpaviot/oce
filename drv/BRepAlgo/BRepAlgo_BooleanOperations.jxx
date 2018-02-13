@@ -1,6 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopOpeBRepDS_HDataStructure.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopOpeBRepBuild_HBuilder.hxx>
-#include <BRepAlgo_DSAccess.hxx>
-#include <BRepAlgo_BooleanOperations.hxx>

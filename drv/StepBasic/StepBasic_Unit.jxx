@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepBasic_NamedUnit.hxx>
-#include <StepBasic_DerivedUnit.hxx>
-#include <StepBasic_Unit.hxx>

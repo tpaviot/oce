@@ -1,6 +1,0 @@
-#include <Interface_HArray1OfHAsciiString.hxx>
-#include <TColStd_HArray1OfReal.hxx>
-#include <Standard_DimensionMismatch.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <IGESDefs_UnitsData.hxx>

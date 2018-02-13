@@ -1,6 +1,0 @@
-#include <CDM_MessageDriver.hxx>
-#include <Standard_Type.hxx>
-#include <TDF_Attribute.hxx>
-#include <PDF_Attribute.hxx>
-#include <MDF_RRelocationTable.hxx>
-#include <MXCAFDoc_DimTolToolRetrievalDriver.hxx>

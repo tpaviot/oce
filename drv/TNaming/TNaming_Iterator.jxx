@@ -1,8 +1,0 @@
-#include <Standard_NoMoreObject.hxx>
-#include <Standard_NoSuchObject.hxx>
-#include <TNaming_NewShapeIterator.hxx>
-#include <TNaming_OldShapeIterator.hxx>
-#include <TNaming_NamedShape.hxx>
-#include <TDF_Label.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TNaming_Iterator.hxx>

@@ -1,2 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <ShapeFix_SplitCommonVertex.hxx>

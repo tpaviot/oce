@@ -1,6 +1,0 @@
-#include <Geom_Surface.hxx>
-#include <Geom_HSequenceOfBSplineSurface.hxx>
-#include <TColStd_HSequenceOfInteger.hxx>
-#include <Geom_BSplineSurface.hxx>
-#include <Geom_SequenceOfBSplineSurface.hxx>
-#include <Geom_OsculatingSurface.hxx>

@@ -1,5 +1,0 @@
-#include <StepShape_HArray1OfOrientedClosedShell.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_ClosedShell.hxx>
-#include <StepShape_OrientedClosedShell.hxx>
-#include <StepShape_BrepWithVoids.hxx>

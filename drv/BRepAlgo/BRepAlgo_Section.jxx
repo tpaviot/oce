@@ -1,4 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <gp_Pln.hxx>
-#include <Geom_Surface.hxx>
-#include <BRepAlgo_Section.hxx>

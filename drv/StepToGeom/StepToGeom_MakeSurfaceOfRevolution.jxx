@@ -1,3 +1,0 @@
-#include <StepGeom_SurfaceOfRevolution.hxx>
-#include <Geom_SurfaceOfRevolution.hxx>
-#include <StepToGeom_MakeSurfaceOfRevolution.hxx>

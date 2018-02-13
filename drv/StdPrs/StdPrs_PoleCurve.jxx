@@ -1,3 +1,0 @@
-#include <Prs3d_Presentation.hxx>
-#include <Adaptor3d_Curve.hxx>
-#include <StdPrs_PoleCurve.hxx>

@@ -1,4 +1,0 @@
-#include <BRepAdaptor_Surface.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Vec.hxx>
-#include <BRepLProp_SurfaceTool.hxx>

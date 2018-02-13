@@ -1,4 +1,0 @@
-#include <gp_Lin2d.hxx>
-#include <BRepClass_Edge.hxx>
-#include <gp_Dir2d.hxx>
-#include <BRepClass_Intersector.hxx>

@@ -1,4 +1,0 @@
-#include <StepGeom_CylindricalSurface.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_CylindricalSurface.hxx>
-#include <GeomToStep_MakeCylindricalSurface.hxx>

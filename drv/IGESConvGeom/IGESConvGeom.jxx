@@ -1,6 +1,0 @@
-#include <IGESGeom_SplineCurve.hxx>
-#include <Geom_BSplineCurve.hxx>
-#include <Geom2d_BSplineCurve.hxx>
-#include <IGESGeom_SplineSurface.hxx>
-#include <Geom_BSplineSurface.hxx>
-#include <IGESConvGeom.hxx>

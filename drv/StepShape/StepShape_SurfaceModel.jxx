@@ -1,3 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepShape_ShellBasedSurfaceModel.hxx>
-#include <StepShape_SurfaceModel.hxx>

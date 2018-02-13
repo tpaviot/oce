@@ -1,6 +1,0 @@
-#include <TopoDS_Wire.hxx>
-#include <TopoDS_Face.hxx>
-#include <ShapeExtend_WireData.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <ShapeAnalysis.hxx>

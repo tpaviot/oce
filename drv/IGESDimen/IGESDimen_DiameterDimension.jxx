@@ -1,5 +1,0 @@
-#include <IGESDimen_GeneralNote.hxx>
-#include <IGESDimen_LeaderArrow.hxx>
-#include <gp_XY.hxx>
-#include <gp_Pnt2d.hxx>
-#include <IGESDimen_DiameterDimension.hxx>

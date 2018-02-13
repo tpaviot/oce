@@ -1,5 +1,0 @@
-#include <IGESData_IGESModel.hxx>
-#include <IGESToBRep_Actor.hxx>
-#include <Transfer_TransientProcess.hxx>
-#include <TopoDS_Shape.hxx>
-#include <IGESToBRep_Reader.hxx>

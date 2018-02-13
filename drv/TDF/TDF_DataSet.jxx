@@ -1,6 +1,0 @@
-#include <TDF_Label.hxx>
-#include <TDF_LabelMap.hxx>
-#include <TDF_Attribute.hxx>
-#include <TDF_AttributeMap.hxx>
-#include <TDF_LabelList.hxx>
-#include <TDF_DataSet.hxx>

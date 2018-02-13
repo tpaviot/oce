@@ -1,6 +1,0 @@
-#include <StepGeom_Circle.hxx>
-#include <StdFail_NotDone.hxx>
-#include <gp_Circ.hxx>
-#include <Geom_Circle.hxx>
-#include <Geom2d_Circle.hxx>
-#include <GeomToStep_MakeCircle.hxx>

@@ -1,4 +1,0 @@
-#include <Standard_ConstructionError.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <BRepAlgo_Image.hxx>

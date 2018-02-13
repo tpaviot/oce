@@ -1,5 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <BRepFill_OffsetWire.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepFill_OffsetAncestors.hxx>

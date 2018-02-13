@@ -1,6 +1,0 @@
-#include <TColStd_HArray1OfInteger.hxx>
-#include <TColgp_HSequenceOfXYZ.hxx>
-#include <Standard_TypeMismatch.hxx>
-#include <gp_XYZ.hxx>
-#include <gp_XY.hxx>
-#include <ShapeAnalysis_WireOrder.hxx>

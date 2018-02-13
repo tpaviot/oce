@@ -1,7 +1,0 @@
-#include <TopTools_HSequenceOfShape.hxx>
-#include <TColStd_HSequenceOfInteger.hxx>
-#include <TopoDS_Wire.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Face.hxx>
-#include <ShapeExtend_WireData.hxx>

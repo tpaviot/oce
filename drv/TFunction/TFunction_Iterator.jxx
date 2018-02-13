@@ -1,4 +1,0 @@
-#include <TFunction_Scope.hxx>
-#include <TDF_Label.hxx>
-#include <TDF_LabelList.hxx>
-#include <TFunction_Iterator.hxx>

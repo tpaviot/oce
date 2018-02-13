@@ -1,4 +1,0 @@
-#include <StepGeom_Axis2Placement3d.hxx>
-#include <StepVisual_ViewVolume.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepVisual_CameraModelD3.hxx>

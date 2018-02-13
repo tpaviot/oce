@@ -1,3 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <Draw_Color.hxx>
-#include <DBRep_Face.hxx>

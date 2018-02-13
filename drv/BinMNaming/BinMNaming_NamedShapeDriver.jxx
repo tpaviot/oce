@@ -1,5 +1,0 @@
-#include <CDM_MessageDriver.hxx>
-#include <TDF_Attribute.hxx>
-#include <BinObjMgt_Persistent.hxx>
-#include <BinTools_LocationSet.hxx>
-#include <BinMNaming_NamedShapeDriver.hxx>

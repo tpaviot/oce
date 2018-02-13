@@ -1,3 +1,0 @@
-#include <Geom2d_Curve.hxx>
-#include <LProp_CurAndInf.hxx>
-#include <Geom2dLProp_NumericCurInf2d.hxx>

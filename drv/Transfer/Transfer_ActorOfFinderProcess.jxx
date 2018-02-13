@@ -1,6 +1,0 @@
-#include <Transfer_Binder.hxx>
-#include <Transfer_Finder.hxx>
-#include <Transfer_ProcessForFinder.hxx>
-#include <Transfer_FinderProcess.hxx>
-#include <Standard_Transient.hxx>
-#include <Transfer_ActorOfFinderProcess.hxx>

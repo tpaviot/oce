@@ -1,7 +1,0 @@
-#include <CDM_Reference.hxx>
-#include <CDM_MetaData.hxx>
-#include <CDM_Document.hxx>
-#include <Resource_Manager.hxx>
-#include <CDM_MessageDriver.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <CDM_Application.hxx>

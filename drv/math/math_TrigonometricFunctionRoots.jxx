@@ -1,4 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <Standard_RangeError.hxx>
-#include <math_TrigonometricFunctionRoots.hxx>

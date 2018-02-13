@@ -1,5 +1,0 @@
-#include <TopOpeBRepDS_Transition.hxx>
-#include <TopOpeBRep_VPointInter.hxx>
-#include <TopOpeBRep_LineInter.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopOpeBRep_FFTransitionTool.hxx>

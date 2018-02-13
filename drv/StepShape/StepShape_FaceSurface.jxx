@@ -1,4 +1,0 @@
-#include <StepGeom_Surface.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_HArray1OfFaceBound.hxx>
-#include <StepShape_FaceSurface.hxx>

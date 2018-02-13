@@ -1,5 +1,0 @@
-#include <Standard_ConstructionError.hxx>
-#include <Standard_NullObject.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <TopOpeBRepTool_PurgeInternalEdges.hxx>

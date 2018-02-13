@@ -1,6 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <VrmlConverter_Drawer.hxx>
-#include <TopoDS_Face.hxx>
-#include <Poly_Connect.hxx>
-#include <TColgp_Array1OfDir.hxx>
-#include <VrmlConverter_ShadedShape.hxx>

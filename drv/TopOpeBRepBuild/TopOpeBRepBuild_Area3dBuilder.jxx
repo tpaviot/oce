@@ -1,3 +1,0 @@
-#include <TopOpeBRepBuild_LoopSet.hxx>
-#include <TopOpeBRepBuild_LoopClassifier.hxx>
-#include <TopOpeBRepBuild_Area3dBuilder.hxx>

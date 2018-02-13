@@ -1,7 +1,0 @@
-#include <Standard_NegativeValue.hxx>
-#include <Standard_NullValue.hxx>
-#include <Standard_NoSuchObject.hxx>
-#include <gp_XYZ.hxx>
-#include <StlMesh_SequenceOfMeshTriangle.hxx>
-#include <TColgp_SequenceOfXYZ.hxx>
-#include <StlMesh_Mesh.hxx>

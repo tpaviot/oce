@@ -1,5 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <Standard_NoMoreObject.hxx>
-#include <TopoDS_Edge.hxx>
-#include <gp_Pnt.hxx>
-#include <Draft_VertexInfo.hxx>

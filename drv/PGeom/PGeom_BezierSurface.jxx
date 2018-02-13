@@ -1,3 +1,0 @@
-#include <PColgp_HArray2OfPnt.hxx>
-#include <PColStd_HArray2OfReal.hxx>
-#include <PGeom_BezierSurface.hxx>

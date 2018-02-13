@@ -1,5 +1,0 @@
-#include <TDF_Label.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TDF_TagSource.hxx>
-#include <TDF_LabelMap.hxx>
-#include <QANewBRepNaming_ImportShape.hxx>

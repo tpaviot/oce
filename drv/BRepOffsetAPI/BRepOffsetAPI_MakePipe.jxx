@@ -1,4 +1,0 @@
-#include <TopoDS_Wire.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepFill_Pipe.hxx>
-#include <BRepOffsetAPI_MakePipe.hxx>

@@ -1,6 +1,0 @@
-#include <StepData_StepReaderData.hxx>
-#include <Interface_Check.hxx>
-#include <StepFEA_FeaShellBendingStiffness.hxx>
-#include <StepData_StepWriter.hxx>
-#include <Interface_EntityIterator.hxx>
-#include <RWStepFEA_RWFeaShellBendingStiffness.hxx>

@@ -1,7 +1,0 @@
-#include <ShapeExtend_MsgRegistrator.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <ShapeBuild_ReShape.hxx>
-#include <BRepTools_Modifier.hxx>
-#include <Message_Msg.hxx>
-#include <ShapeProcess_ShapeContext.hxx>

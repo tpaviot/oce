@@ -1,4 +1,0 @@
-#include <TColgp_HArray1OfXYZ.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <gp_Pnt.hxx>
-#include <IGESSolid_VertexList.hxx>

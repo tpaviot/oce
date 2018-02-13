@@ -1,8 +1,0 @@
-#include <gp_Circ2d.hxx>
-#include <gp_Lin2d.hxx>
-#include <gp_Parab2d.hxx>
-#include <gp_Hypr2d.hxx>
-#include <gp_Elips2d.hxx>
-#include <gp_XY.hxx>
-#include <gp_Ax2d.hxx>
-#include <IntAna2d_Conic.hxx>

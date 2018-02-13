@@ -1,3 +1,0 @@
-#include <Interface_Protocol.hxx>
-#include <Standard_Type.hxx>
-#include <IGESGeom_Protocol.hxx>

@@ -1,6 +1,0 @@
-#include <Interface_InterfaceModel.hxx>
-#include <Interface_InterfaceError.hxx>
-#include <Standard_Transient.hxx>
-#include <TColStd_HSequenceOfTransient.hxx>
-#include <Interface_EntityIterator.hxx>
-#include <IFSelect_PacketList.hxx>

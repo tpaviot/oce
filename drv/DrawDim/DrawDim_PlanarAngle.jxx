@@ -1,4 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Shape.hxx>
-#include <Draw_Display.hxx>
-#include <DrawDim_PlanarAngle.hxx>

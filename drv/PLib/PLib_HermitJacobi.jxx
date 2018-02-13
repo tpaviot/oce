@@ -1,4 +1,0 @@
-#include <PLib_JacobiPolynomial.hxx>
-#include <Standard_ConstructionError.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <PLib_HermitJacobi.hxx>

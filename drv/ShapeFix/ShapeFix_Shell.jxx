@@ -1,7 +1,0 @@
-#include <ShapeFix_Face.hxx>
-#include <TopoDS_Shell.hxx>
-#include <Message_ProgressIndicator.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Compound.hxx>
-#include <ShapeExtend_BasicMsgRegistrator.hxx>
-#include <ShapeFix_Shell.hxx>

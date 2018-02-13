@@ -1,6 +1,0 @@
-#include <IGESSelect_ViewSorter.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <Interface_Graph.hxx>
-#include <IFGraph_SubPartsIterator.hxx>
-#include <Interface_EntityIterator.hxx>
-#include <IGESSelect_DispPerSingleView.hxx>

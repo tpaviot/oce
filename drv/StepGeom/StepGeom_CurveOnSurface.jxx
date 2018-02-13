@@ -1,5 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepGeom_Pcurve.hxx>
-#include <StepGeom_SurfaceCurve.hxx>
-#include <StepGeom_CompositeCurveOnSurface.hxx>
-#include <StepGeom_CurveOnSurface.hxx>

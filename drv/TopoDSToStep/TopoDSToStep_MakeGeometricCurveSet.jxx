@@ -1,5 +1,0 @@
-#include <StepShape_GeometricCurveSet.hxx>
-#include <StdFail_NotDone.hxx>
-#include <TopoDS_Shape.hxx>
-#include <Transfer_FinderProcess.hxx>
-#include <TopoDSToStep_MakeGeometricCurveSet.hxx>

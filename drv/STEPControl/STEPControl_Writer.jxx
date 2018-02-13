@@ -1,4 +1,0 @@
-#include <XSControl_WorkSession.hxx>
-#include <StepData_StepModel.hxx>
-#include <TopoDS_Shape.hxx>
-#include <STEPControl_Writer.hxx>

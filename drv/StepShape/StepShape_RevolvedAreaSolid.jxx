@@ -1,4 +1,0 @@
-#include <StepGeom_Axis1Placement.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_CurveBoundedSurface.hxx>
-#include <StepShape_RevolvedAreaSolid.hxx>

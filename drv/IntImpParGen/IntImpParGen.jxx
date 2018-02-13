@@ -1,5 +1,0 @@
-#include <gp_Vec2d.hxx>
-#include <IntRes2d_Transition.hxx>
-#include <IntRes2d_Domain.hxx>
-#include <gp_Pnt2d.hxx>
-#include <IntImpParGen.hxx>

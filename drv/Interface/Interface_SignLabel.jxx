@@ -1,3 +1,0 @@
-#include <TCollection_AsciiString.hxx>
-#include <Standard_Transient.hxx>
-#include <Interface_SignLabel.hxx>

@@ -1,6 +1,0 @@
-#include <StepData_Protocol.hxx>
-#include <Interface_InterfaceError.hxx>
-#include <Interface_Protocol.hxx>
-#include <Standard_Transient.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <StepSelect_StepType.hxx>

@@ -1,4 +1,0 @@
-#include <TCollection_AsciiString.hxx>
-#include <IFSelect_ContextWrite.hxx>
-#include <IGESData_IGESWriter.hxx>
-#include <IGESSelect_FloatFormat.hxx>

@@ -1,3 +1,0 @@
-#include <Standard_Type.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TransferBRep_ShapeInfo.hxx>

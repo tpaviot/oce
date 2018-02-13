@@ -1,4 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <StepBasic_ProductDefinitionFormation.hxx>
-#include <StepBasic_ProductDefinitionContext.hxx>
-#include <StepBasic_ProductDefinition.hxx>

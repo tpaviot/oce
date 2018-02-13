@@ -1,5 +1,0 @@
-#include <Draw_Drawable3D.hxx>
-#include <TDF_Label.hxx>
-#include <TDataXtd_Constraint.hxx>
-#include <TopoDS_Shape.hxx>
-#include <DDataStd_DrawDriver.hxx>

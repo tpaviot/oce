@@ -1,4 +1,0 @@
-#include <Graphic3d_TextureParams.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <OSD_Path.hxx>
-#include <Graphic3d_TextureRoot.hxx>

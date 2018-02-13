@@ -1,6 +1,0 @@
-#include <Resource_Manager.hxx>
-#include <Standard_NoSuchObject.hxx>
-#include <TDocStd_Document.hxx>
-#include <TColStd_SequenceOfExtendedString.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TDocStd_Application.hxx>

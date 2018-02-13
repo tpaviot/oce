@@ -1,4 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <Blend_Point.hxx>
-#include <BRepBlend_Extremity.hxx>
-#include <BRepBlend_Line.hxx>

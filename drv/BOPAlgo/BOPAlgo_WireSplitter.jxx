@@ -1,4 +1,0 @@
-#include <BOPAlgo_WireEdgeSet.hxx>
-#include <TopoDS_Wire.hxx>
-#include <TopoDS_Face.hxx>
-#include <BOPAlgo_WireSplitter.hxx>

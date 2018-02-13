@@ -1,5 +1,0 @@
-#include <IGESData_IGESEntity.hxx>
-#include <IGESGeom_CurveOnSurface.hxx>
-#include <IGESGeom_HArray1OfCurveOnSurface.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESGeom_TrimmedSurface.hxx>

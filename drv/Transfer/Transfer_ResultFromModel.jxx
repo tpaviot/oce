@@ -1,7 +1,0 @@
-#include <Interface_InterfaceModel.hxx>
-#include <Transfer_ResultFromTransient.hxx>
-#include <Transfer_TransientProcess.hxx>
-#include <Standard_Transient.hxx>
-#include <TColStd_HSequenceOfTransient.hxx>
-#include <Interface_CheckIterator.hxx>
-#include <Transfer_ResultFromModel.hxx>

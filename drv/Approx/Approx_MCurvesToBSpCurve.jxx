@@ -1,4 +1,0 @@
-#include <AppParCurves_MultiCurve.hxx>
-#include <AppParCurves_SequenceOfMultiCurve.hxx>
-#include <AppParCurves_MultiBSpCurve.hxx>
-#include <Approx_MCurvesToBSpCurve.hxx>

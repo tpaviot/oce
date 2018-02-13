@@ -1,7 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <Interface_Graph.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <Interface_GeneralLib.hxx>
-#include <Interface_Protocol.hxx>
-#include <Interface_GTool.hxx>
-#include <Interface_HGraph.hxx>

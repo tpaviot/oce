@@ -1,5 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <Standard_DomainError.hxx>
-#include <gp_Pln.hxx>
-#include <gp_Pnt.hxx>
-#include <IntAna_Int3Pln.hxx>

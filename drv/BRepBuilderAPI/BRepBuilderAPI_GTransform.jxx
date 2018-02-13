@@ -1,5 +1,0 @@
-#include <Standard_NoSuchObject.hxx>
-#include <gp_GTrsf.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <BRepBuilderAPI_GTransform.hxx>

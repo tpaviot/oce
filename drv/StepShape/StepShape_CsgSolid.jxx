@@ -1,3 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_CsgSelect.hxx>
-#include <StepShape_CsgSolid.hxx>

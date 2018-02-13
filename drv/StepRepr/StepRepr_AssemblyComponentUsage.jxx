@@ -1,3 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <StepBasic_ProductDefinition.hxx>
-#include <StepRepr_AssemblyComponentUsage.hxx>

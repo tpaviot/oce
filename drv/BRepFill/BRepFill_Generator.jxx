@@ -1,6 +1,0 @@
-#include <TopoDS_Wire.hxx>
-#include <TopoDS_Shell.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepFill_Generator.hxx>

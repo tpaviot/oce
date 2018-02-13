@@ -1,2 +1,0 @@
-#include <Geom_Curve.hxx>
-#include <ShapeUpgrade_SplitCurve3dContinuity.hxx>

@@ -1,6 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <Standard_ConstructionError.hxx>
-#include <gp_Vec.hxx>
-#include <GeomFill_TrihedronLaw.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <GeomFill_DraftTrihedron.hxx>

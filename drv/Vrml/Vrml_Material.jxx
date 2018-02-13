@@ -1,3 +1,0 @@
-#include <Quantity_HArray1OfColor.hxx>
-#include <TColStd_HArray1OfReal.hxx>
-#include <Vrml_Material.hxx>

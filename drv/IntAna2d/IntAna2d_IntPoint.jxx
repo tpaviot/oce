@@ -1,3 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <gp_Pnt2d.hxx>
-#include <IntAna2d_IntPoint.hxx>

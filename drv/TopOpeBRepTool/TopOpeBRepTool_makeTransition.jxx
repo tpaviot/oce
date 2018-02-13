@@ -1,4 +1,0 @@
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Face.hxx>
-#include <gp_Pnt2d.hxx>
-#include <TopOpeBRepTool_makeTransition.hxx>

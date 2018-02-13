@@ -1,4 +1,0 @@
-#include <StepGeom_BoundedSurface.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_BoundedSurface.hxx>
-#include <GeomToStep_MakeBoundedSurface.hxx>

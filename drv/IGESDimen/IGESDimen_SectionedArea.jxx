@@ -1,6 +1,0 @@
-#include <IGESData_IGESEntity.hxx>
-#include <IGESData_HArray1OfIGESEntity.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <gp_XYZ.hxx>
-#include <gp_Pnt.hxx>
-#include <IGESDimen_SectionedArea.hxx>

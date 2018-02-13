@@ -1,5 +1,0 @@
-#include <Interface_InterfaceModel.hxx>
-#include <Standard_Transient.hxx>
-#include <Transfer_Binder.hxx>
-#include <Transfer_TransientProcess.hxx>
-#include <IGESToBRep_Actor.hxx>

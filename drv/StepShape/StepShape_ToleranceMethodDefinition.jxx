@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepShape_ToleranceValue.hxx>
-#include <StepShape_LimitsAndFits.hxx>
-#include <StepShape_ToleranceMethodDefinition.hxx>

@@ -1,5 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepGeom_Point.hxx>
-#include <StepGeom_Curve.hxx>
-#include <StepGeom_Surface.hxx>
-#include <StepShape_GeometricSetSelect.hxx>

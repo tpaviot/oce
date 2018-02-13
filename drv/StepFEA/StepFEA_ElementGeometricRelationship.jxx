@@ -1,4 +1,0 @@
-#include <StepElement_AnalysisItemWithinRepresentation.hxx>
-#include <StepFEA_ElementOrElementGroup.hxx>
-#include <StepElement_ElementAspect.hxx>
-#include <StepFEA_ElementGeometricRelationship.hxx>

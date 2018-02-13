@@ -1,5 +1,0 @@
-#include <HLRBRep_Algo.hxx>
-#include <Draw_Display.hxx>
-#include <HLRBRep_Data.hxx>
-#include <HLRBRep_EdgeData.hxx>
-#include <HLRTest_DrawableEdgeTool.hxx>

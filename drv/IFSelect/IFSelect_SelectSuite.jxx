@@ -1,7 +1,0 @@
-#include <Interface_InterfaceError.hxx>
-#include <IFSelect_Selection.hxx>
-#include <IFSelect_SelectDeduct.hxx>
-#include <Interface_EntityIterator.hxx>
-#include <Interface_Graph.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <IFSelect_SelectSuite.hxx>

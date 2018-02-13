@@ -1,3 +1,0 @@
-#include <StepShape_ShapeDefinitionRepresentation.hxx>
-#include <STEPSelections_HSequenceOfAssemblyLink.hxx>
-#include <STEPSelections_AssemblyComponent.hxx>

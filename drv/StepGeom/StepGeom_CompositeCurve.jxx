@@ -1,4 +1,0 @@
-#include <StepGeom_HArray1OfCompositeCurveSegment.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_CompositeCurveSegment.hxx>
-#include <StepGeom_CompositeCurve.hxx>

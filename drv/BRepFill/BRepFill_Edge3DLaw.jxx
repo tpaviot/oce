@@ -1,3 +1,0 @@
-#include <TopoDS_Wire.hxx>
-#include <GeomFill_LocationLaw.hxx>
-#include <BRepFill_Edge3DLaw.hxx>

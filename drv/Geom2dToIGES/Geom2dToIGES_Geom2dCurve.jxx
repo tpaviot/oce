@@ -1,4 +1,0 @@
-#include <Geom2dToIGES_Geom2dEntity.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <Geom2d_Curve.hxx>
-#include <Geom2dToIGES_Geom2dCurve.hxx>

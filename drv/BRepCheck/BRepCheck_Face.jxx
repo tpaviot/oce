@@ -1,3 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepCheck_Face.hxx>

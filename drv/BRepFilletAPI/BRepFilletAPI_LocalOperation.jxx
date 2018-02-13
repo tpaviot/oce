@@ -1,4 +1,0 @@
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <ChFiDS_SecHArray1.hxx>
-#include <BRepFilletAPI_LocalOperation.hxx>

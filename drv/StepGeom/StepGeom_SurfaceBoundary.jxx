@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepGeom_BoundaryCurve.hxx>
-#include <StepGeom_DegeneratePcurve.hxx>
-#include <StepGeom_SurfaceBoundary.hxx>

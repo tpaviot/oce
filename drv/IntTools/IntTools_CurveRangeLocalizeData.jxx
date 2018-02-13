@@ -1,4 +1,0 @@
-#include <IntTools_CurveRangeSample.hxx>
-#include <Bnd_Box.hxx>
-#include <IntTools_ListOfCurveRangeSample.hxx>
-#include <IntTools_CurveRangeLocalizeData.hxx>

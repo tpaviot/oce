@@ -1,7 +1,0 @@
-#include <Geom_Line.hxx>
-#include <Geom_Point.hxx>
-#include <Prs3d_Presentation.hxx>
-#include <Prs3d_Projector.hxx>
-#include <Geom_Transformation.hxx>
-#include <Quantity_Color.hxx>
-#include <AIS_Line.hxx>

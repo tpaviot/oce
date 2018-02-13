@@ -1,3 +1,0 @@
-#include <Hatch_Hatcher.hxx>
-#include <gp_Lin2d.hxx>
-#include <Hatch_Line.hxx>

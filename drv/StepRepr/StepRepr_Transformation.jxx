@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepRepr_ItemDefinedTransformation.hxx>
-#include <StepRepr_FunctionallyDefinedTransformation.hxx>
-#include <StepRepr_Transformation.hxx>

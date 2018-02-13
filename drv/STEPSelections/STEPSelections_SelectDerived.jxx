@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <STEPSelections_SelectDerived.hxx>

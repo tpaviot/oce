@@ -1,7 +1,0 @@
-#include <StepData_FileRecognizer.hxx>
-#include <StepData_StepReaderData.hxx>
-#include <StepData_Protocol.hxx>
-#include <Interface_Check.hxx>
-#include <Standard_Transient.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <StepData_StepReaderTool.hxx>

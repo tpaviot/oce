@@ -1,3 +1,0 @@
-#include <BRepAdaptor_HSurface.hxx>
-#include <VrmlConverter_Drawer.hxx>
-#include <VrmlConverter_WFRestrictedFace.hxx>

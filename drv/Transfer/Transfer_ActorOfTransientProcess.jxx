@@ -1,5 +1,0 @@
-#include <Transfer_Binder.hxx>
-#include <Standard_Transient.hxx>
-#include <Transfer_ProcessForTransient.hxx>
-#include <Transfer_TransientProcess.hxx>
-#include <Transfer_ActorOfTransientProcess.hxx>

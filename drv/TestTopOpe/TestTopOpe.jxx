@@ -1,4 +1,0 @@
-#include <TopOpeBRepBuild_HBuilder.hxx>
-#include <TopOpeBRepDS_HDataStructure.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TestTopOpe.hxx>

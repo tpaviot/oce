@@ -1,3 +1,0 @@
-#include <TopoDS_Edge.hxx>
-#include <HLRBRep_Curve.hxx>
-#include <HLRBRep.hxx>

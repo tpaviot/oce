@@ -1,3 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <IGESSelect_IGESTypeForm.hxx>

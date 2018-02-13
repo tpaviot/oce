@@ -1,3 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Edge.hxx>
-#include <BRepGProp_Domain.hxx>

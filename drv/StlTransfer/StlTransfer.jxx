@@ -1,3 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <StlMesh_Mesh.hxx>
-#include <StlTransfer.hxx>

@@ -1,4 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <StepVisual_HArray1OfLayeredItem.hxx>
-#include <StepVisual_LayeredItem.hxx>
-#include <StepVisual_PresentationLayerAssignment.hxx>

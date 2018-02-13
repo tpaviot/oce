@@ -1,3 +1,0 @@
-#include <StepGeom_Plane.hxx>
-#include <Geom_Plane.hxx>
-#include <StepToGeom_MakePlane.hxx>

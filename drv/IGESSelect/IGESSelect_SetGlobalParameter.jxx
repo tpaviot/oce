@@ -1,6 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <IFSelect_ContextModif.hxx>
-#include <IGESData_IGESModel.hxx>
-#include <Interface_CopyTool.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <IGESSelect_SetGlobalParameter.hxx>

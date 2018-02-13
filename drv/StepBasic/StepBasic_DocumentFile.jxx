@@ -1,4 +1,0 @@
-#include <StepBasic_CharacterizedObject.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepBasic_DocumentType.hxx>
-#include <StepBasic_DocumentFile.hxx>

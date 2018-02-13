@@ -1,3 +1,0 @@
-#include <StepGeom_Curve.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_PointOnCurve.hxx>

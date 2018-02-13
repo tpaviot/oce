@@ -1,3 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <IntRes2d_IntersectionPoint.hxx>
-#include <IntRes2d_IntersectionSegment.hxx>

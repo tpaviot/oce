@@ -1,4 +1,0 @@
-#include <StepGeom_GeometricRepresentationContext.hxx>
-#include <StepRepr_ParametricRepresentationContext.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_GeometricRepresentationContextAndParametricRepresentationContext.hxx>

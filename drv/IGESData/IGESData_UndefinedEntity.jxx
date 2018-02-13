@@ -1,7 +1,0 @@
-#include <Interface_UndefinedContent.hxx>
-#include <IGESData_IGESReaderData.hxx>
-#include <IGESData_DirPart.hxx>
-#include <Interface_Check.hxx>
-#include <IGESData_ParamReader.hxx>
-#include <IGESData_IGESWriter.hxx>
-#include <IGESData_UndefinedEntity.hxx>

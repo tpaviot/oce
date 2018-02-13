@@ -1,4 +1,0 @@
-#include <BOPAlgo_PaveFiller.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BOPAlgo_Section.hxx>

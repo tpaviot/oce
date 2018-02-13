@@ -1,5 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <Message_ProgressIndicator.hxx>
-#include <ShapeExtend_BasicMsgRegistrator.hxx>
-#include <ShapeBuild_ReShape.hxx>
-#include <ShapeFix.hxx>

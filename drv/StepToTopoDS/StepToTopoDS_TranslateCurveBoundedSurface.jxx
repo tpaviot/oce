@@ -1,4 +1,0 @@
-#include <StepGeom_CurveBoundedSurface.hxx>
-#include <Transfer_TransientProcess.hxx>
-#include <TopoDS_Face.hxx>
-#include <StepToTopoDS_TranslateCurveBoundedSurface.hxx>

@@ -1,7 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <TopTools_DataMapOfShapeInteger.hxx>
-#include <TopTools_IndexedMapOfOrientedShape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <TopoDS_Solid.hxx>
-#include <TopOpeBRepTool.hxx>

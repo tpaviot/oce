@@ -1,4 +1,0 @@
-#include <Graphic3d_AspectFillArea3d.hxx>
-#include <Quantity_Color.hxx>
-#include <Graphic3d_MaterialAspect.hxx>
-#include <Prs3d_ShadingAspect.hxx>

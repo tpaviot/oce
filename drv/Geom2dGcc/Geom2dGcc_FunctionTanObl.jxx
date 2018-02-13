@@ -1,3 +1,0 @@
-#include <Geom2dAdaptor_Curve.hxx>
-#include <gp_Dir2d.hxx>
-#include <Geom2dGcc_FunctionTanObl.hxx>

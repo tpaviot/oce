@@ -1,4 +1,0 @@
-#include <StepRepr_DataEnvironment.hxx>
-#include <StepRepr_RepresentedDefinition.hxx>
-#include <StepRepr_Representation.hxx>
-#include <StepRepr_MaterialPropertyRepresentation.hxx>

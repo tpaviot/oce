@@ -1,3 +1,0 @@
-#include <StepElement_CurveElementSectionDefinition.hxx>
-#include <StepElement_AnalysisItemWithinRepresentation.hxx>
-#include <StepFEA_FeaCurveSectionGeometricRelationship.hxx>

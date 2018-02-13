@@ -1,5 +1,0 @@
-#include <TFunction_Logbook.hxx>
-#include <TDF_Label.hxx>
-#include <BRepAlgoAPI_BooleanOperation.hxx>
-#include <TFunction_Function.hxx>
-#include <DNaming_BooleanOperationDriver.hxx>

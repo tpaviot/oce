@@ -1,7 +1,0 @@
-#include <Geom_Surface.hxx>
-#include <IGESData_IGESModel.hxx>
-#include <Transfer_TransientProcess.hxx>
-#include <TopoDS_Shape.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <Message_Msg.hxx>
-#include <IGESToBRep_CurveAndSurface.hxx>

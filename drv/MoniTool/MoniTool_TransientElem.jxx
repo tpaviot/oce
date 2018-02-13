@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <MoniTool_Element.hxx>
-#include <Standard_Type.hxx>
-#include <MoniTool_TransientElem.hxx>

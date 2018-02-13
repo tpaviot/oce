@@ -1,5 +1,0 @@
-#include <StepGeom_Curve.hxx>
-#include <StepGeom_HArray1OfPcurveOrSurface.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_PcurveOrSurface.hxx>
-#include <StepGeom_SurfaceCurve.hxx>

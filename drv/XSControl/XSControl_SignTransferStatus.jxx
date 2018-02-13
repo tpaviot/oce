@@ -1,5 +1,0 @@
-#include <XSControl_TransferReader.hxx>
-#include <Transfer_TransientProcess.hxx>
-#include <Standard_Transient.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <XSControl_SignTransferStatus.hxx>

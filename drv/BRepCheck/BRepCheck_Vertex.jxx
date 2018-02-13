@@ -1,3 +1,0 @@
-#include <TopoDS_Vertex.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepCheck_Vertex.hxx>

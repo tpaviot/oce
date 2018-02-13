@@ -1,3 +1,0 @@
-#include <StepFEA_FeaModel.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepFEA_FeaGroup.hxx>

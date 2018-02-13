@@ -1,5 +1,0 @@
-#include <StepAP214_HArray1OfOrganizationItem.hxx>
-#include <StepBasic_Organization.hxx>
-#include <StepBasic_OrganizationRole.hxx>
-#include <StepAP214_OrganizationItem.hxx>
-#include <StepAP214_AppliedOrganizationAssignment.hxx>

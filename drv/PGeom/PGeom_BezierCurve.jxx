@@ -1,3 +1,0 @@
-#include <PColgp_HArray1OfPnt.hxx>
-#include <PColStd_HArray1OfReal.hxx>
-#include <PGeom_BezierCurve.hxx>

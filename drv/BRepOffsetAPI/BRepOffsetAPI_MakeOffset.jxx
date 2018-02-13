@@ -1,6 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Wire.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepOffsetAPI_MakeOffset.hxx>

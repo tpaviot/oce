@@ -1,3 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <TColStd_HArray1OfReal.hxx>
-#include <StepFEA_SymmetricTensor42d.hxx>

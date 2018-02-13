@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <Message_Msg.hxx>
-#include <TopoDS_Shape.hxx>
-#include <ShapeExtend_BasicMsgRegistrator.hxx>

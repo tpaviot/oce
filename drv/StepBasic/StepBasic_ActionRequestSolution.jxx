@@ -1,3 +1,0 @@
-#include <StepBasic_ActionMethod.hxx>
-#include <StepBasic_VersionedActionRequest.hxx>
-#include <StepBasic_ActionRequestSolution.hxx>

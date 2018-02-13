@@ -1,6 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <IGESData_HArray1OfIGESEntity.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <Standard_Transient.hxx>
-#include <IGESBasic_SubfigureDef.hxx>

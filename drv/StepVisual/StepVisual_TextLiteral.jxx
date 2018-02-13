@@ -1,4 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_Axis2Placement.hxx>
-#include <StepVisual_FontSelect.hxx>
-#include <StepVisual_TextLiteral.hxx>

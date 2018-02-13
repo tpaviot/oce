@@ -1,6 +1,0 @@
-#include <Quantity_Color.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <TColStd_SequenceOfExtendedString.hxx>
-#include <Aspect_SequenceOfColor.hxx>
-#include <Aspect_ColorScale.hxx>

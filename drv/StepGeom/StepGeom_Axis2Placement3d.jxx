@@ -1,4 +1,0 @@
-#include <StepGeom_Direction.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_CartesianPoint.hxx>
-#include <StepGeom_Axis2Placement3d.hxx>

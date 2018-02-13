@@ -1,6 +1,0 @@
-#include <Geom2d_Curve.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <Standard_NullObject.hxx>
-#include <gp_Pnt2d.hxx>
-#include <Geom2dInt_GInter.hxx>
-#include <Geom2dAPI_InterCurveCurve.hxx>

@@ -1,6 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <Message_Msg.hxx>
-#include <TopoDS_Shape.hxx>
-#include <ShapeExtend_DataMapOfTransientListOfMsg.hxx>
-#include <ShapeExtend_DataMapOfShapeListOfMsg.hxx>
-#include <ShapeExtend_MsgRegistrator.hxx>

@@ -1,7 +1,0 @@
-restore [locate_data_file a106] a
-restore [locate_data_file b106] b
-
-bop a b
-bopcut result
-
-set square 9519.3

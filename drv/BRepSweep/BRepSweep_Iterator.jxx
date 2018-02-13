@@ -1,4 +1,0 @@
-#include <Standard_NoMoreObject.hxx>
-#include <Standard_NoSuchObject.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepSweep_Iterator.hxx>

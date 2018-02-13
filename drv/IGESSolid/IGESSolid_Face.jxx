@@ -1,5 +1,0 @@
-#include <IGESData_IGESEntity.hxx>
-#include <IGESSolid_HArray1OfLoop.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESSolid_Loop.hxx>
-#include <IGESSolid_Face.hxx>

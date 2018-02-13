@@ -1,2 +1,0 @@
-#include <StepElement_CurveElementFreedom.hxx>
-#include <StepElement_CurveElementEndReleasePacket.hxx>

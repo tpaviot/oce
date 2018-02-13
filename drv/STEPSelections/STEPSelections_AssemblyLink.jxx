@@ -1,4 +1,0 @@
-#include <StepRepr_NextAssemblyUsageOccurrence.hxx>
-#include <Standard_Transient.hxx>
-#include <STEPSelections_AssemblyComponent.hxx>
-#include <STEPSelections_AssemblyLink.hxx>

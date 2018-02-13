@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepBasic_Document.hxx>
-#include <StepBasic_PhysicallyModeledProductDefinition.hxx>
-#include <StepAP214_AutoDesignOrganizationItem.hxx>

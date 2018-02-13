@@ -1,4 +1,0 @@
-#include <TopoDS_Shell.hxx>
-#include <TopoDS_Solid.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopOpeBRepBuild_ShellToSolid.hxx>

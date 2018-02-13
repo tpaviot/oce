@@ -1,5 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Compound.hxx>
-#include <ShapeFix_FixSmallFace.hxx>

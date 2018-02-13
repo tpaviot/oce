@@ -1,6 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_Curve.hxx>
-#include <gp_Pnt.hxx>
-#include <Extrema_ExtCC.hxx>
-#include <GeomAPI_ExtremaCurveCurve.hxx>

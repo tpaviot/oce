@@ -1,5 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <Interface_ParamSet.hxx>
-#include <Interface_Check.hxx>
-#include <gp_XYZ.hxx>
-#include <IGESData_GlobalSection.hxx>

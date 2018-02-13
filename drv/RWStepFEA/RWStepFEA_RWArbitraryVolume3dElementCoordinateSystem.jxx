@@ -1,6 +1,0 @@
-#include <StepData_StepReaderData.hxx>
-#include <Interface_Check.hxx>
-#include <StepFEA_ArbitraryVolume3dElementCoordinateSystem.hxx>
-#include <StepData_StepWriter.hxx>
-#include <Interface_EntityIterator.hxx>
-#include <RWStepFEA_RWArbitraryVolume3dElementCoordinateSystem.hxx>

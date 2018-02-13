@@ -1,5 +1,0 @@
-#include <ShapeUpgrade_SplitSurface.hxx>
-#include <ShapeUpgrade_WireDivide.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Shape.hxx>
-#include <ShapeUpgrade_FaceDivide.hxx>

@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepShape_PrecisionQualifier.hxx>
-#include <StepShape_TypeQualifier.hxx>
-#include <StepShape_ValueQualifier.hxx>

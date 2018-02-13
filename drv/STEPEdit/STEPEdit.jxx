@@ -1,5 +1,0 @@
-#include <Interface_Protocol.hxx>
-#include <StepData_StepModel.hxx>
-#include <IFSelect_Signature.hxx>
-#include <IFSelect_SelectSignature.hxx>
-#include <STEPEdit.hxx>

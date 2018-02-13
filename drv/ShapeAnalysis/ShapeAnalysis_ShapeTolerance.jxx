@@ -1,3 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopTools_HSequenceOfShape.hxx>
-#include <ShapeAnalysis_ShapeTolerance.hxx>

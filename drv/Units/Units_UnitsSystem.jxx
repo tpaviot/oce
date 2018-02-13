@@ -1,6 +1,0 @@
-#include <Units_QuantitiesSequence.hxx>
-#include <TColStd_HSequenceOfInteger.hxx>
-#include <Units_NoSuchUnit.hxx>
-#include <Units_NoSuchType.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <Units_UnitsSystem.hxx>

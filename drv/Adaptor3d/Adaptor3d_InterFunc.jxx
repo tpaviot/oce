@@ -1,3 +1,0 @@
-#include <Adaptor2d_HCurve2d.hxx>
-#include <Standard_ConstructionError.hxx>
-#include <Adaptor3d_InterFunc.hxx>

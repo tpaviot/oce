@@ -1,4 +1,0 @@
-#include <StepRepr_ConfigurationDesign.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepBasic_ProductDefinitionRelationship.hxx>
-#include <StepRepr_ConfigurationEffectivity.hxx>

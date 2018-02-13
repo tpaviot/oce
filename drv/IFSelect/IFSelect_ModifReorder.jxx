@@ -1,6 +1,0 @@
-#include <IFSelect_ContextModif.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <Interface_Protocol.hxx>
-#include <Interface_CopyTool.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <IFSelect_ModifReorder.hxx>

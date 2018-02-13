@@ -1,5 +1,0 @@
-#include <IGESAppli_Node.hxx>
-#include <IGESDefs_HArray1OfTabularData.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESDefs_TabularData.hxx>
-#include <IGESAppli_NodalConstraint.hxx>

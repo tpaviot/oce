@@ -1,3 +1,0 @@
-#include <IntSurf_Quadric.hxx>
-#include <gp_Vec.hxx>
-#include <IntSurf_QuadricTool.hxx>

@@ -1,4 +1,0 @@
-#include <HLRAlgo_InterferenceList.hxx>
-#include <HLRAlgo_Interference.hxx>
-#include <HLRBRep_EdgeInterferenceTool.hxx>
-#include <HLRBRep_EdgeIList.hxx>

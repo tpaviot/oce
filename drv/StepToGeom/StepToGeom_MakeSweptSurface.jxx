@@ -1,3 +1,0 @@
-#include <StepGeom_SweptSurface.hxx>
-#include <Geom_SweptSurface.hxx>
-#include <StepToGeom_MakeSweptSurface.hxx>

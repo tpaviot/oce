@@ -1,3 +1,0 @@
-#include <Prs3d_Presentation.hxx>
-#include <TopoDS_Shape.hxx>
-#include <DsgPrs_ShapeDirPresentation.hxx>

@@ -1,4 +1,0 @@
-#include <TopOpeBRepTool_HBoxTool.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopOpeBRep_EdgesIntersector.hxx>
-#include <TopOpeBRep_ShapeIntersector2d.hxx>

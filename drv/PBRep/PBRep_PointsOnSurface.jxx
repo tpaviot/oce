@@ -1,3 +1,0 @@
-#include <PGeom_Surface.hxx>
-#include <PTopLoc_Location.hxx>
-#include <PBRep_PointsOnSurface.hxx>

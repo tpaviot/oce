@@ -1,4 +1,0 @@
-#include <PDataStd_Real.hxx>
-#include <PDF_HAttributeArray1.hxx>
-#include <PNaming_NamedShape.hxx>
-#include <PDataXtd_Constraint.hxx>

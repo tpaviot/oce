@@ -1,3 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <gp_Torus.hxx>
-#include <Convert_TorusToBSplineSurface.hxx>

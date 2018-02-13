@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepShape_DimensionalLocation.hxx>
-#include <StepShape_DimensionalSize.hxx>
-#include <StepShape_DimensionalCharacteristic.hxx>

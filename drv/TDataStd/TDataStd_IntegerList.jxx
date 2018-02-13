@@ -1,6 +1,0 @@
-#include <Standard_GUID.hxx>
-#include <TDF_Label.hxx>
-#include <TColStd_ListOfInteger.hxx>
-#include <TDF_Attribute.hxx>
-#include <TDF_RelocationTable.hxx>
-#include <TDataStd_IntegerList.hxx>

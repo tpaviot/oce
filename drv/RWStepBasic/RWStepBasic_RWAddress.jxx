@@ -1,5 +1,0 @@
-#include <StepData_StepReaderData.hxx>
-#include <Interface_Check.hxx>
-#include <StepBasic_Address.hxx>
-#include <StepData_StepWriter.hxx>
-#include <RWStepBasic_RWAddress.hxx>

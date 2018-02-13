@@ -1,4 +1,0 @@
-#include <CDM_Document.hxx>
-#include <CDM_Application.hxx>
-#include <CDM_MetaData.hxx>
-#include <CDM_Reference.hxx>

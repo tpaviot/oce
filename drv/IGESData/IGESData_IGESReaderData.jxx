@@ -1,7 +1,0 @@
-#include <TColStd_HSequenceOfHAsciiString.hxx>
-#include <Interface_ParamSet.hxx>
-#include <Interface_Check.hxx>
-#include <IGESData_GlobalSection.hxx>
-#include <IGESData_DirPart.hxx>
-#include <IGESData_IGESType.hxx>
-#include <IGESData_IGESReaderData.hxx>

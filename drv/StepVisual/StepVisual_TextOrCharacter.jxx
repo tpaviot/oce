@@ -1,5 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepVisual_AnnotationText.hxx>
-#include <StepVisual_CompositeText.hxx>
-#include <StepVisual_TextLiteral.hxx>
-#include <StepVisual_TextOrCharacter.hxx>

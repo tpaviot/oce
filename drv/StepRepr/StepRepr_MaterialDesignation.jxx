@@ -1,3 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <StepRepr_CharacterizedDefinition.hxx>
-#include <StepRepr_MaterialDesignation.hxx>

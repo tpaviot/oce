@@ -1,7 +1,0 @@
-#include <IGESToBRep_AlgoContainer.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TColStd_HSequenceOfTransient.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Face.hxx>
-#include <IGESToBRep.hxx>

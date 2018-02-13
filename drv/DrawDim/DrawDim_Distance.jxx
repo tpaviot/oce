@@ -1,3 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <Draw_Display.hxx>
-#include <DrawDim_Distance.hxx>

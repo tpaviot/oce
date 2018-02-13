@@ -1,4 +1,0 @@
-#include <TDF_Label.hxx>
-#include <BRepPrimAPI_MakePrism.hxx>
-#include <TopoDS_Shape.hxx>
-#include <QANewBRepNaming_Prism.hxx>

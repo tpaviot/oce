@@ -1,4 +1,0 @@
-#include <gp_Pnt2d.hxx>
-#include <gp_Trsf2d.hxx>
-#include <Geom2d_Geometry.hxx>
-#include <Geom2d_CartesianPoint.hxx>

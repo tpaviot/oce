@@ -1,7 +1,0 @@
-#include <StepGeom_Line.hxx>
-#include <StdFail_NotDone.hxx>
-#include <gp_Lin.hxx>
-#include <gp_Lin2d.hxx>
-#include <Geom_Line.hxx>
-#include <Geom2d_Line.hxx>
-#include <GeomToStep_MakeLine.hxx>

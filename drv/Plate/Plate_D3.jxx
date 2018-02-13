@@ -1,4 +1,0 @@
-#include <Plate_GtoCConstraint.hxx>
-#include <Plate_FreeGtoCConstraint.hxx>
-#include <gp_XYZ.hxx>
-#include <Plate_D3.hxx>

@@ -1,4 +1,0 @@
-#include <AIS_InteractiveContext.hxx>
-#include <V3d_View.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
-#include <ViewerTest_EventManager.hxx>

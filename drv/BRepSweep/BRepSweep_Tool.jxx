@@ -1,3 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepSweep_Tool.hxx>

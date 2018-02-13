@@ -1,3 +1,0 @@
-#include <TopoDS_Vertex.hxx>
-#include <gp_Pnt.hxx>
-#include <ShapeBuild_Vertex.hxx>

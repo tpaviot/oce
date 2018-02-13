@@ -1,4 +1,0 @@
-#include <StlMesh_Mesh.hxx>
-#include <OSD_Path.hxx>
-#include <Message_ProgressIndicator.hxx>
-#include <RWStl.hxx>

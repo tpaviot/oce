@@ -1,4 +1,0 @@
-#include <Standard_ConstructionError.hxx>
-#include <Adaptor3d_HCurveOnSurface.hxx>
-#include <Adaptor3d_HCurve.hxx>
-#include <BRepFill_CurveConstraint.hxx>

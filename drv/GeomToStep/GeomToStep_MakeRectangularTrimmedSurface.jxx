@@ -1,4 +1,0 @@
-#include <StepGeom_RectangularTrimmedSurface.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_RectangularTrimmedSurface.hxx>
-#include <GeomToStep_MakeRectangularTrimmedSurface.hxx>

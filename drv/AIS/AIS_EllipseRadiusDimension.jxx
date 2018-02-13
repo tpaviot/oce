@@ -1,5 +1,0 @@
-#include <Geom_OffsetCurve.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <Geom_Surface.hxx>
-#include <AIS_EllipseRadiusDimension.hxx>

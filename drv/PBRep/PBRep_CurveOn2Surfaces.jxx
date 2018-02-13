@@ -1,4 +1,0 @@
-#include <PGeom_Surface.hxx>
-#include <Standard_NullObject.hxx>
-#include <PTopLoc_Location.hxx>
-#include <PBRep_CurveOn2Surfaces.hxx>

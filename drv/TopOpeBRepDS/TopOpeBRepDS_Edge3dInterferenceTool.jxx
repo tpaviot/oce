@@ -1,3 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopOpeBRepDS_Interference.hxx>
-#include <TopOpeBRepDS_Edge3dInterferenceTool.hxx>

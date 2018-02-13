@@ -1,5 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <Intf_SectionPoint.hxx>
-#include <Intf_SectionLine.hxx>
-#include <Intf_TangentZone.hxx>
-#include <Intf_Interference.hxx>

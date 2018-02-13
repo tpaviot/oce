@@ -1,6 +1,0 @@
-#include <TDF_Label.hxx>
-#include <Standard_GUID.hxx>
-#include <TDF_Attribute.hxx>
-#include <TDF_RelocationTable.hxx>
-#include <TDF_DataSet.hxx>
-#include <TDataStd_UAttribute.hxx>

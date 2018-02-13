@@ -1,3 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Compound.hxx>
-#include <QANewModTopOpe.hxx>

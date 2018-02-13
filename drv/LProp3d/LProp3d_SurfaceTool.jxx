@@ -1,4 +1,0 @@
-#include <Adaptor3d_HSurface.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Vec.hxx>
-#include <LProp3d_SurfaceTool.hxx>

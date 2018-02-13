@@ -1,3 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <IFSelect_SessionPilot.hxx>
-#include <IFSelect_Act.hxx>

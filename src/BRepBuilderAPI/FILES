@@ -1,5 +1,0 @@
-BRepBuilderAPI_VertexInspector.hxx
-BRepBuilderAPI_CellFilter.hxx
-BRepBuilderAPI_BndBoxTreeSelector.hxx
-BRepBuilderAPI_FastSewing.hxx
-BRepBuilderAPI_FastSewing.cxx

@@ -1,4 +1,0 @@
-#include <StepBasic_HArray1OfApproval.hxx>
-#include <StepBasic_SecurityClassification.hxx>
-#include <StepBasic_Approval.hxx>
-#include <StepAP214_AutoDesignSecurityClassificationAssignment.hxx>

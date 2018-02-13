@@ -1,4 +1,0 @@
-#include <StepAP214_HArray1OfApprovalItem.hxx>
-#include <StepBasic_Approval.hxx>
-#include <StepAP214_ApprovalItem.hxx>
-#include <StepAP214_AppliedApprovalAssignment.hxx>

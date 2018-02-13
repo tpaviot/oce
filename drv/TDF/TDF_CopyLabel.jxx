@@ -1,6 +1,0 @@
-#include <TDF_RelocationTable.hxx>
-#include <TDF_Label.hxx>
-#include <TDF_IDFilter.hxx>
-#include <TDF_AttributeMap.hxx>
-#include <TDF_DataSet.hxx>
-#include <TDF_CopyLabel.hxx>

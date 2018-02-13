@@ -1,2 +1,0 @@
-#include <TopoDS_Edge.hxx>
-#include <ShapeUpgrade_ClosedEdgeDivide.hxx>

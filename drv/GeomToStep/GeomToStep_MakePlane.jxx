@@ -1,5 +1,0 @@
-#include <StepGeom_Plane.hxx>
-#include <StdFail_NotDone.hxx>
-#include <gp_Pln.hxx>
-#include <Geom_Plane.hxx>
-#include <GeomToStep_MakePlane.hxx>

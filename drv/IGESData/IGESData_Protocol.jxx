@@ -1,5 +1,0 @@
-#include <Interface_Protocol.hxx>
-#include <Standard_Type.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <Standard_Transient.hxx>
-#include <IGESData_Protocol.hxx>

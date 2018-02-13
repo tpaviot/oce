@@ -1,5 +1,0 @@
-#include <Poly_Triangulation.hxx>
-#include <Poly_Polygon3D.hxx>
-#include <Poly_Polygon2D.hxx>
-#include <gp_XY.hxx>
-#include <Poly.hxx>

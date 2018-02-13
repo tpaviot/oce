@@ -1,3 +1,0 @@
-#include <IntCurve_PConic.hxx>
-#include <gp_Pnt2d.hxx>
-#include <IntCurve_ProjectOnPConicTool.hxx>

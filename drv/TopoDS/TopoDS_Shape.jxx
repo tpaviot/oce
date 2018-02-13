@@ -1,6 +1,0 @@
-#include <TopoDS_TShape.hxx>
-#include <Standard_NullObject.hxx>
-#include <Standard_DomainError.hxx>
-#include <Standard_TypeMismatch.hxx>
-#include <TopLoc_Location.hxx>
-#include <TopoDS_Shape.hxx>

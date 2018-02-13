@@ -1,4 +1,0 @@
-#include <IGESData_Protocol.hxx>
-#include <IGESData_FileProtocol.hxx>
-#include <Interface_Protocol.hxx>
-#include <IGESData_FileProtocol.hxx>

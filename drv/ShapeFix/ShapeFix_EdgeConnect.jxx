@@ -1,3 +1,0 @@
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Shape.hxx>
-#include <ShapeFix_EdgeConnect.hxx>

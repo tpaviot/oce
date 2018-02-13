@@ -1,4 +1,0 @@
-#include <MeshVS_DataSource.hxx>
-#include <TColStd_HPackedMapOfInteger.hxx>
-#include <PrsMgr_PresentationManager.hxx>
-#include <MeshVS_MeshOwner.hxx>

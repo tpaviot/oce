@@ -1,8 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <IGESData_HArray1OfIGESEntity.hxx>
-#include <IGESGraph_TextDisplayTemplate.hxx>
-#include <IGESDraw_HArray1OfConnectPoint.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <IGESDraw_ConnectPoint.hxx>
-#include <IGESDraw_NetworkSubfigureDef.hxx>

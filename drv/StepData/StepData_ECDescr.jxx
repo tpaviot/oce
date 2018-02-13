@@ -1,4 +1,0 @@
-#include <StepData_ESDescr.hxx>
-#include <TColStd_HSequenceOfAsciiString.hxx>
-#include <StepData_Described.hxx>
-#include <StepData_ECDescr.hxx>

@@ -1,6 +1,0 @@
-#include <Standard_NoMoreObject.hxx>
-#include <TDF_Transaction.hxx>
-#include <TDF_LabelNode.hxx>
-#include <TDF_Delta.hxx>
-#include <TDF_Label.hxx>
-#include <TDF_Data.hxx>

@@ -1,4 +1,0 @@
-#include <StepVisual_HArray1OfTextOrCharacter.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepVisual_TextOrCharacter.hxx>
-#include <StepVisual_CompositeText.hxx>

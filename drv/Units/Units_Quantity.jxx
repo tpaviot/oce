@@ -1,4 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <Units_Dimensions.hxx>
-#include <Units_UnitsSequence.hxx>
-#include <Units_Quantity.hxx>

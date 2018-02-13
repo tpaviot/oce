@@ -1,3 +1,0 @@
-#include <gp_Circ2d.hxx>
-#include <Geom2dAdaptor_Curve.hxx>
-#include <Geom2dGcc_FunctionTanCirCu.hxx>

@@ -1,5 +1,0 @@
-#include <StepData_StepReaderData.hxx>
-#include <Interface_Check.hxx>
-#include <StepShape_Loop.hxx>
-#include <StepData_StepWriter.hxx>
-#include <RWStepShape_RWLoop.hxx>

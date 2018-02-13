@@ -1,4 +1,0 @@
-#include <TDF_Label.hxx>
-#include <TopLoc_Location.hxx>
-#include <XCAFPrs_DataMapOfShapeStyle.hxx>
-#include <XCAFPrs.hxx>

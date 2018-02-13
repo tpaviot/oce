@@ -1,3 +1,0 @@
-#include <TopoDS_Wire.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepFill_EdgeOnSurfLaw.hxx>

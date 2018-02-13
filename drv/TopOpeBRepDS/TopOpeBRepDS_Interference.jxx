@@ -1,3 +1,0 @@
-#include <TopOpeBRepDS_Transition.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <TopOpeBRepDS_Interference.hxx>

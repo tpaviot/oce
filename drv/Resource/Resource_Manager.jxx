@@ -1,6 +1,0 @@
-#include <Standard_TypeMismatch.hxx>
-#include <Resource_NoSuchResource.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <Resource_DataMapOfAsciiStringAsciiString.hxx>
-#include <Resource_Manager.hxx>

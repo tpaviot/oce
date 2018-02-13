@@ -1,4 +1,0 @@
-#include <StepShape_HArray1OfOrientedEdge.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_OrientedEdge.hxx>
-#include <StepShape_EdgeLoop.hxx>

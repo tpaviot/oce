@@ -1,3 +1,0 @@
-#include <TDF_Label.hxx>
-#include <BRepPrimAPI_MakeSphere.hxx>
-#include <QANewBRepNaming_Sphere.hxx>

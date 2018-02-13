@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepData_SelectMember.hxx>
-#include <StepVisual_MarkerMember.hxx>
-#include <StepVisual_MarkerSelect.hxx>

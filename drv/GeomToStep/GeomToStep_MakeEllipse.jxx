@@ -1,6 +1,0 @@
-#include <StepGeom_Ellipse.hxx>
-#include <StdFail_NotDone.hxx>
-#include <gp_Elips.hxx>
-#include <Geom_Ellipse.hxx>
-#include <Geom2d_Ellipse.hxx>
-#include <GeomToStep_MakeEllipse.hxx>

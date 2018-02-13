@@ -1,7 +1,0 @@
-#include <Geom_RectangularTrimmedSurface.hxx>
-#include <StdFail_NotDone.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Circ.hxx>
-#include <gp_Ax1.hxx>
-#include <gp_Cylinder.hxx>
-#include <GC_MakeTrimmedCylinder.hxx>

@@ -1,7 +1,0 @@
-#include <TDataStd_HLabelArray1.hxx>
-#include <Standard_GUID.hxx>
-#include <TDF_Label.hxx>
-#include <TDF_Attribute.hxx>
-#include <TDF_RelocationTable.hxx>
-#include <TDF_DataSet.hxx>
-#include <TDataStd_ReferenceArray.hxx>

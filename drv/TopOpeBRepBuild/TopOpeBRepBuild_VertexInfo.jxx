@@ -1,5 +1,0 @@
-#include <TopoDS_Vertex.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopTools_IndexedMapOfOrientedShape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopOpeBRepBuild_VertexInfo.hxx>

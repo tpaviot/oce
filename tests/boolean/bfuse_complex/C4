@@ -1,6 +1,0 @@
-restore [locate_data_file box.brep] b
-restore [locate_data_file c2.brep] c
-
-bfuse result b c
-
-set square 131766

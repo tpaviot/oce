@@ -1,4 +1,0 @@
-#include <XSControl_WorkSession.hxx>
-#include <TDocStd_Document.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <IGESCAFControl_Reader.hxx>

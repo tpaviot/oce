@@ -1,8 +1,0 @@
-#include <XmlMDF_ADriverTable.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <PCDM_Document.hxx>
-#include <CDM_Document.hxx>
-#include <CDM_Application.hxx>
-#include <CDM_MessageDriver.hxx>
-#include <XmlMDF_ADriver.hxx>
-#include <XmlLDrivers_DocumentRetrievalDriver.hxx>

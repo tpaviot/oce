@@ -1,4 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopoDS_Face.hxx>
-#include <BRepFeat_Builder.hxx>

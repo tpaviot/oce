@@ -1,5 +1,0 @@
-if { "[vviewlist]" != "" } {
-    vdump $imagedir/${test_image}.png
-}
-
-puts "TEST COMPLETED" 

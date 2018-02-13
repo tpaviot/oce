@@ -1,4 +1,0 @@
-#include <TFunction_Logbook.hxx>
-#include <TDF_Label.hxx>
-#include <BRepPrimAPI_MakeBox.hxx>
-#include <DNaming_BoxDriver.hxx>

@@ -1,5 +1,0 @@
-#include <Standard_ConstructionError.hxx>
-#include <gp_Ax1.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Ax3.hxx>
-#include <Geom_ElementarySurface.hxx>

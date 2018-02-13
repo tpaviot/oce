@@ -1,3 +1,0 @@
-#include <BRepAdaptor_Surface.hxx>
-#include <TopoDS_Edge.hxx>
-#include <ChFi3d.hxx>

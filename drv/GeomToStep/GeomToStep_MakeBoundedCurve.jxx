@@ -1,5 +1,0 @@
-#include <StepGeom_BoundedCurve.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_BoundedCurve.hxx>
-#include <Geom2d_BoundedCurve.hxx>
-#include <GeomToStep_MakeBoundedCurve.hxx>

@@ -1,5 +1,0 @@
-#include <BRepClass_FaceExplorer.hxx>
-#include <gp_Pnt2d.hxx>
-#include <TopoDS_Face.hxx>
-#include <gp_Pnt.hxx>
-#include <BRepClass_FaceClassifier.hxx>

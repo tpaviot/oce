@@ -1,3 +1,0 @@
-#include <TopTools_Array1OfShape.hxx>
-#include <HLRAlgo_Projector.hxx>
-#include <VrmlConverter_Projector.hxx>

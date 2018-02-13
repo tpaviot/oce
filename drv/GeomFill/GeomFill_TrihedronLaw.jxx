@@ -1,6 +1,0 @@
-#include <Adaptor3d_HCurve.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <Standard_NotImplemented.hxx>
-#include <gp_Vec.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <GeomFill_TrihedronLaw.hxx>

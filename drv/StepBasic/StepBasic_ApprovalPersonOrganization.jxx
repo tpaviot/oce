@@ -1,4 +1,0 @@
-#include <StepBasic_Approval.hxx>
-#include <StepBasic_ApprovalRole.hxx>
-#include <StepBasic_PersonOrganizationSelect.hxx>
-#include <StepBasic_ApprovalPersonOrganization.hxx>

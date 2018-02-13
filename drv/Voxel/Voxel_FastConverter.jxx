@@ -1,7 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <Voxel_BoolDS.hxx>
-#include <Voxel_ColorDS.hxx>
-#include <Voxel_ROctBoolDS.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Pln.hxx>
-#include <Voxel_FastConverter.hxx>

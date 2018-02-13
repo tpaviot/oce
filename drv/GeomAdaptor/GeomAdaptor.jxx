@@ -1,5 +1,0 @@
-#include <Geom_Curve.hxx>
-#include <Adaptor3d_Curve.hxx>
-#include <Geom_Surface.hxx>
-#include <Adaptor3d_Surface.hxx>
-#include <GeomAdaptor.hxx>

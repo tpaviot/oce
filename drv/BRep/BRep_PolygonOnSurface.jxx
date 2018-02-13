@@ -1,6 +1,0 @@
-#include <Poly_Polygon2D.hxx>
-#include <Geom_Surface.hxx>
-#include <Standard_DomainError.hxx>
-#include <TopLoc_Location.hxx>
-#include <BRep_CurveRepresentation.hxx>
-#include <BRep_PolygonOnSurface.hxx>

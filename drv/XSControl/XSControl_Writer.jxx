@@ -1,4 +1,0 @@
-#include <XSControl_WorkSession.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <TopoDS_Shape.hxx>
-#include <XSControl_Writer.hxx>

@@ -1,4 +1,0 @@
-#include <StepGeom_HArray2OfSurfacePatch.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_SurfacePatch.hxx>
-#include <StepGeom_RectangularCompositeSurface.hxx>

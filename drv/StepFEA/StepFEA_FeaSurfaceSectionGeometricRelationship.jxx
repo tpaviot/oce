@@ -1,3 +1,0 @@
-#include <StepElement_SurfaceSection.hxx>
-#include <StepElement_AnalysisItemWithinRepresentation.hxx>
-#include <StepFEA_FeaSurfaceSectionGeometricRelationship.hxx>

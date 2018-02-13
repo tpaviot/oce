@@ -1,5 +1,0 @@
-#include <GeomToIGES_GeomEntity.hxx>
-#include <IGESGeom_Point.hxx>
-#include <Geom_Point.hxx>
-#include <Geom_CartesianPoint.hxx>
-#include <GeomToIGES_GeomPoint.hxx>

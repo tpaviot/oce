@@ -1,6 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <StdFail_NotDone.hxx>
-#include <gp_Pnt.hxx>
-#include <Geom_Surface.hxx>
-#include <Extrema_ExtPS.hxx>
-#include <GeomAPI_ProjectPointOnSurf.hxx>

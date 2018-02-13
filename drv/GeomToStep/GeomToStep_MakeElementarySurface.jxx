@@ -1,4 +1,0 @@
-#include <StepGeom_ElementarySurface.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_ElementarySurface.hxx>
-#include <GeomToStep_MakeElementarySurface.hxx>

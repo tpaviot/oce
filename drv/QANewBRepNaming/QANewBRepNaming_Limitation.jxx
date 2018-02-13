@@ -1,3 +1,0 @@
-#include <TDF_Label.hxx>
-#include <QANewModTopOpe_Limitation.hxx>
-#include <QANewBRepNaming_Limitation.hxx>

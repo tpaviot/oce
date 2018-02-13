@@ -1,4 +1,0 @@
-#include <StepData_HArray1OfField.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <StepData_Field.hxx>
-#include <StepData_FieldListD.hxx>

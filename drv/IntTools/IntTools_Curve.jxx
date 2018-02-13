@@ -1,4 +1,0 @@
-#include <Geom_Curve.hxx>
-#include <Geom2d_Curve.hxx>
-#include <gp_Pnt.hxx>
-#include <IntTools_Curve.hxx>

@@ -1,3 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <Geom2d_Curve.hxx>
-#include <BinTools_Curve2dSet.hxx>

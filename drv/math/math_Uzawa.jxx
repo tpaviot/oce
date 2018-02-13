@@ -1,4 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <Standard_ConstructionError.hxx>
-#include <math_Matrix.hxx>
-#include <math_Uzawa.hxx>

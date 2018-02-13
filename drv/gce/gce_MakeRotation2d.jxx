@@ -1,3 +1,0 @@
-#include <gp_Pnt2d.hxx>
-#include <gp_Trsf2d.hxx>
-#include <gce_MakeRotation2d.hxx>

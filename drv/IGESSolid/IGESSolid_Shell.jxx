@@ -1,6 +1,0 @@
-#include <IGESSolid_HArray1OfFace.hxx>
-#include <TColStd_HArray1OfInteger.hxx>
-#include <Standard_DimensionMismatch.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESSolid_Face.hxx>
-#include <IGESSolid_Shell.hxx>

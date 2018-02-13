@@ -1,5 +1,0 @@
-#include <TColStd_HArray1OfReal.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Vec.hxx>
-#include <IGESGeom_CopiousData.hxx>

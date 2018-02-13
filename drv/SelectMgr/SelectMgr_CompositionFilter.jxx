@@ -1,3 +1,0 @@
-#include <SelectMgr_Filter.hxx>
-#include <SelectMgr_ListOfFilter.hxx>
-#include <SelectMgr_CompositionFilter.hxx>

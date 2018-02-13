@@ -1,7 +1,0 @@
-#include <BRepToIGES_BREntity.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Solid.hxx>
-#include <TopoDS_CompSolid.hxx>
-#include <TopoDS_Compound.hxx>
-#include <BRepToIGES_BRSolid.hxx>

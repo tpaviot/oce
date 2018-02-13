@@ -1,3 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IntPatch_Line.hxx>

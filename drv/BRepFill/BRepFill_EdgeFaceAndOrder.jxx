@@ -1,4 +1,0 @@
-#include <BRepFill_Filling.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Face.hxx>
-#include <BRepFill_EdgeFaceAndOrder.hxx>

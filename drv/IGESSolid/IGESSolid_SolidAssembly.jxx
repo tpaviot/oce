@@ -1,7 +1,0 @@
-#include <IGESData_HArray1OfIGESEntity.hxx>
-#include <IGESGeom_HArray1OfTransformationMatrix.hxx>
-#include <Standard_DimensionMismatch.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESData_IGESEntity.hxx>
-#include <IGESGeom_TransformationMatrix.hxx>
-#include <IGESSolid_SolidAssembly.hxx>

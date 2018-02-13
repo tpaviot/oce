@@ -1,7 +1,0 @@
-#include <StepVisual_HArray1OfStyleContextSelect.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepVisual_HArray1OfPresentationStyleAssignment.hxx>
-#include <StepRepr_RepresentationItem.hxx>
-#include <StepVisual_StyledItem.hxx>
-#include <StepVisual_StyleContextSelect.hxx>
-#include <StepVisual_ContextDependentOverRidingStyledItem.hxx>

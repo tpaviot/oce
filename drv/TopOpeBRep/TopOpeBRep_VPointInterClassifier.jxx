@@ -1,4 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopOpeBRep_VPointInter.hxx>
-#include <TopOpeBRep_PointClassifier.hxx>
-#include <TopOpeBRep_VPointInterClassifier.hxx>

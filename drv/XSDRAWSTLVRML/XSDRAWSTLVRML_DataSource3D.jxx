@@ -1,7 +1,0 @@
-#include <TColStd_HArray1OfInteger.hxx>
-#include <TColStd_HArray2OfReal.hxx>
-#include <TColStd_HArray2OfInteger.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <MeshVS_HArray1OfSequenceOfInteger.hxx>
-#include <TColStd_Array1OfInteger.hxx>
-#include <XSDRAWSTLVRML_DataSource3D.hxx>

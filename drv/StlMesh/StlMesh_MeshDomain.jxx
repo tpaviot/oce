@@ -1,5 +1,0 @@
-#include <Standard_NegativeValue.hxx>
-#include <Standard_NullValue.hxx>
-#include <StlMesh_SequenceOfMeshTriangle.hxx>
-#include <TColgp_SequenceOfXYZ.hxx>
-#include <StlMesh_MeshDomain.hxx>

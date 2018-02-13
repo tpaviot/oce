@@ -1,4 +1,0 @@
-#include <MAT_BasicElt.hxx>
-#include <MAT_Node.hxx>
-#include <Standard_DomainError.hxx>
-#include <MAT_Arc.hxx>

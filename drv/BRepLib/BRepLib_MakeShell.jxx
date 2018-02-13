@@ -1,4 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <Geom_Surface.hxx>
-#include <TopoDS_Shell.hxx>
-#include <BRepLib_MakeShell.hxx>

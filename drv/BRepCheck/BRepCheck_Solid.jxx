@@ -1,3 +1,0 @@
-#include <TopoDS_Solid.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepCheck_Solid.hxx>

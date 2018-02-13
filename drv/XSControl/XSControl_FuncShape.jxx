@@ -1,4 +1,0 @@
-#include <XSControl_WorkSession.hxx>
-#include <TopTools_HSequenceOfShape.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <XSControl_FuncShape.hxx>

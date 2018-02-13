@@ -1,3 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <math_Function.hxx>
-#include <math_GaussSingleIntegration.hxx>

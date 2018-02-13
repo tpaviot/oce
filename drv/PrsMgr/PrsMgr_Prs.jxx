@@ -1,5 +1,0 @@
-#include <Graphic3d_StructureManager.hxx>
-#include <Graphic3d_Structure.hxx>
-#include <Graphic3d_DataStructureManager.hxx>
-#include <TColStd_Array2OfReal.hxx>
-#include <PrsMgr_Prs.hxx>

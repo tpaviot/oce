@@ -1,4 +1,0 @@
-#include <gp_XYZ.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Dir.hxx>
-#include <IGESSolid_Ellipsoid.hxx>

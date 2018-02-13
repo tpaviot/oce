@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepDimTol_GeometricTolerance.hxx>
-#include <StepShape_PlusMinusTolerance.hxx>
-#include <StepDimTol_ShapeToleranceSelect.hxx>

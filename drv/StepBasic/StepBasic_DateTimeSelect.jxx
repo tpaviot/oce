@@ -1,5 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepBasic_Date.hxx>
-#include <StepBasic_LocalTime.hxx>
-#include <StepBasic_DateAndTime.hxx>
-#include <StepBasic_DateTimeSelect.hxx>

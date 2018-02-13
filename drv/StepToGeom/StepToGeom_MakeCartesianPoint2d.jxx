@@ -1,3 +1,0 @@
-#include <StepGeom_CartesianPoint.hxx>
-#include <Geom2d_CartesianPoint.hxx>
-#include <StepToGeom_MakeCartesianPoint2d.hxx>

@@ -1,6 +1,0 @@
-#include <Interface_InterfaceModel.hxx>
-#include <Transfer_TransientMapper.hxx>
-#include <Standard_Transient.hxx>
-#include <Transfer_Finder.hxx>
-#include <Message_Messenger.hxx>
-#include <Transfer_FinderProcess.hxx>

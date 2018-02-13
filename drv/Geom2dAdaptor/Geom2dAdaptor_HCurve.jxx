@@ -1,4 +1,0 @@
-#include <Standard_ConstructionError.hxx>
-#include <Geom2dAdaptor_Curve.hxx>
-#include <Geom2d_Curve.hxx>
-#include <Geom2dAdaptor_HCurve.hxx>

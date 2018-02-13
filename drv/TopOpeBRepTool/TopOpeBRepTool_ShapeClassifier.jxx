@@ -1,6 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopOpeBRepTool_SolidClassifier.hxx>
-#include <gp_Pnt2d.hxx>
-#include <gp_Pnt.hxx>
-#include <TopOpeBRepTool_ShapeClassifier.hxx>

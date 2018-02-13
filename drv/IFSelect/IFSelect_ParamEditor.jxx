@@ -1,8 +1,0 @@
-#include <Interface_TypedValue.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <IFSelect_EditForm.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <Standard_Transient.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <TColStd_HSequenceOfHAsciiString.hxx>
-#include <IFSelect_ParamEditor.hxx>

@@ -1,4 +1,0 @@
-#include <PTopLoc_ItemLocation.hxx>
-#include <Standard_NoSuchObject.hxx>
-#include <PTopLoc_Datum3D.hxx>
-#include <PTopLoc_Location.hxx>

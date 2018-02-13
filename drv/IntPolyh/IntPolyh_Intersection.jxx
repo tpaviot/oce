@@ -1,3 +1,0 @@
-#include <Adaptor3d_HSurface.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <IntPolyh_Intersection.hxx>

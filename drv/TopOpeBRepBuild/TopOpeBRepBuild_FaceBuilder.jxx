@@ -1,6 +1,0 @@
-#include <TopOpeBRepBuild_WireEdgeSet.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopTools_IndexedDataMapOfShapeShape.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
-#include <TopOpeBRepBuild_ShapeSet.hxx>
-#include <TopOpeBRepBuild_FaceBuilder.hxx>

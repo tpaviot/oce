@@ -1,7 +1,0 @@
-#include <AIS_InteractiveContext.hxx>
-#include <Standard_GUID.hxx>
-#include <TDF_Label.hxx>
-#include <V3d_Viewer.hxx>
-#include <TDF_Attribute.hxx>
-#include <TDF_RelocationTable.hxx>
-#include <TPrsStd_AISViewer.hxx>

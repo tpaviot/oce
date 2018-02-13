@@ -1,5 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopOpeBRepDS_Interference.hxx>
-#include <TopOpeBRepDS_Curve.hxx>
-#include <gp_Pnt.hxx>
-#include <TopOpeBRepDS_FaceInterferenceTool.hxx>

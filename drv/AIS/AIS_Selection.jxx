@@ -1,5 +1,0 @@
-#include <Standard_NoSuchObject.hxx>
-#include <Standard_MultiplyDefined.hxx>
-#include <Standard_TypeMismatch.hxx>
-#include <Standard_Transient.hxx>
-#include <AIS_Selection.hxx>

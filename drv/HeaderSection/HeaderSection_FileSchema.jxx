@@ -1,3 +1,0 @@
-#include <Interface_HArray1OfHAsciiString.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <HeaderSection_FileSchema.hxx>

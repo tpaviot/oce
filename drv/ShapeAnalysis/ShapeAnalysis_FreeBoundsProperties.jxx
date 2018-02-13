@@ -1,5 +1,0 @@
-#include <ShapeAnalysis_HSequenceOfFreeBounds.hxx>
-#include <TopoDS_Shape.hxx>
-#include <ShapeAnalysis_FreeBoundData.hxx>
-#include <TopoDS_Wire.hxx>
-#include <ShapeAnalysis_FreeBoundsProperties.hxx>

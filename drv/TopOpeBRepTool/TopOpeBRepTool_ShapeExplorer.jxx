@@ -1,2 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopOpeBRepTool_ShapeExplorer.hxx>

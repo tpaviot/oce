@@ -1,6 +1,0 @@
-#include <StdSelect_Shape.hxx>
-#include <TopoDS_Shape.hxx>
-#include <SelectMgr_SelectableObject.hxx>
-#include <PrsMgr_PresentationManager.hxx>
-#include <TopLoc_Location.hxx>
-#include <StdSelect_BRepOwner.hxx>

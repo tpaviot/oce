@@ -1,6 +1,0 @@
-#include <Dico_DictionaryOfTransient.hxx>
-#include <MoniTool_Option.hxx>
-#include <TColStd_HSequenceOfAsciiString.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <Standard_Transient.hxx>
-#include <MoniTool_Profile.hxx>

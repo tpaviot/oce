@@ -1,4 +1,0 @@
-#include <StepBasic_ExternalSource.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepBasic_IdentificationRole.hxx>
-#include <StepBasic_ExternalIdentificationAssignment.hxx>

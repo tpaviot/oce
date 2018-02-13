@@ -1,6 +1,0 @@
-#include <Resource_Manager.hxx>
-#include <TColStd_HSequenceOfHAsciiString.hxx>
-#include <Message_Messenger.hxx>
-#include <Message_ProgressIndicator.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <ShapeProcess_Context.hxx>

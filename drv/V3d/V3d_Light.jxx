@@ -1,8 +1,0 @@
-#include <Visual3d_Light.hxx>
-#include <Graphic3d_Structure.hxx>
-#include <V3d_BadValue.hxx>
-#include <V3d_Light.hxx>
-#include <V3d_Viewer.hxx>
-#include <Quantity_Color.hxx>
-#include <V3d_View.hxx>
-#include <V3d_Light.hxx>

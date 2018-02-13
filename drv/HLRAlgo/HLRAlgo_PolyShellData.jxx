@@ -1,4 +1,0 @@
-#include <TColStd_HArray1OfTransient.hxx>
-#include <TColStd_Array1OfTransient.hxx>
-#include <HLRAlgo_ListOfBPoint.hxx>
-#include <HLRAlgo_PolyShellData.hxx>

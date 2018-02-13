@@ -1,4 +1,0 @@
-#include <IGESSolid_BooleanTree.hxx>
-#include <gp_XYZ.hxx>
-#include <gp_Pnt.hxx>
-#include <IGESSolid_SelectedComponent.hxx>

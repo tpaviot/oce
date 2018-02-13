@@ -1,5 +1,0 @@
-#include <Geom2d_TrimmedCurve.hxx>
-#include <StdFail_NotDone.hxx>
-#include <gp_Hypr2d.hxx>
-#include <gp_Pnt2d.hxx>
-#include <GCE2d_MakeArcOfHyperbola.hxx>

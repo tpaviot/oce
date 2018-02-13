@@ -1,3 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <gp_Elips2d.hxx>
-#include <Convert_EllipseToBSplineCurve.hxx>

@@ -1,4 +1,0 @@
-#include <ShapeProcess_ShapeContext.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <ShapeProcessAPI_ApplySequence.hxx>

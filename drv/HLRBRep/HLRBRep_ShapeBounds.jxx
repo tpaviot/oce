@@ -1,3 +1,0 @@
-#include <HLRTopoBRep_OutLiner.hxx>
-#include <MMgt_TShared.hxx>
-#include <HLRBRep_ShapeBounds.hxx>

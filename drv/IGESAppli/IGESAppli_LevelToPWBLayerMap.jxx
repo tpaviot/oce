@@ -1,6 +1,0 @@
-#include <TColStd_HArray1OfInteger.hxx>
-#include <Interface_HArray1OfHAsciiString.hxx>
-#include <Standard_DimensionMismatch.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <IGESAppli_LevelToPWBLayerMap.hxx>

@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepBasic_ProductDefinitionRelationship.hxx>
-#include <StepBasic_ProductDefinition.hxx>
-#include <StepAP214_PresentedItemSelect.hxx>

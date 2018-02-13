@@ -1,4 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopTools_MapOfShape.hxx>
-#include <TopTools_HSequenceOfShape.hxx>
-#include <QANewModTopOpe_ReShaper.hxx>

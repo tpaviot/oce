@@ -1,7 +1,0 @@
-#include <TColgp_HSequenceOfXY.hxx>
-#include <StdFail_UndefinedDerivative.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Vec.hxx>
-#include <gp_Dir2d.hxx>
-#include <IntSurf_PathPoint.hxx>

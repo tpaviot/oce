@@ -1,7 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepBasic_GeneralProperty.hxx>
-#include <StepRepr_PropertyDefinition.hxx>
-#include <StepRepr_PropertyDefinitionRelationship.hxx>
-#include <StepRepr_ShapeAspect.hxx>
-#include <StepRepr_ShapeAspectRelationship.hxx>
-#include <StepRepr_RepresentedDefinition.hxx>

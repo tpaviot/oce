@@ -1,8 +1,0 @@
-#include <TCollection_AsciiString.hxx>
-#include <Storage_Data.hxx>
-#include <CDM_Document.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <CDM_MessageDriver.hxx>
-#include <PCDM_SequenceOfReference.hxx>
-#include <TColStd_SequenceOfExtendedString.hxx>
-#include <PCDM_ReadWriter_1.hxx>

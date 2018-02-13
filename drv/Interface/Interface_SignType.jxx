@@ -1,4 +1,0 @@
-#include <TCollection_AsciiString.hxx>
-#include <Standard_Transient.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <Interface_SignType.hxx>

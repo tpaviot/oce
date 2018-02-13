@@ -1,6 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <Standard_TypeMismatch.hxx>
-#include <Standard_Type.hxx>
-#include <StepData_PDescr.hxx>
-#include <StepData_SelectMember.hxx>
-#include <StepData_SelectType.hxx>

@@ -1,6 +1,0 @@
-#include <TopOpeBRepDS_Point.hxx>
-#include <TopOpeBRep_VPointInter.hxx>
-#include <TopOpeBRep_Point2d.hxx>
-#include <TopOpeBRep_FaceEdgeIntersector.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopOpeBRep_PointGeomTool.hxx>

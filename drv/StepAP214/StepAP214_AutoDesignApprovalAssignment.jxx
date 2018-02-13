@@ -1,4 +1,0 @@
-#include <StepAP214_HArray1OfAutoDesignGeneralOrgItem.hxx>
-#include <StepBasic_Approval.hxx>
-#include <StepAP214_AutoDesignGeneralOrgItem.hxx>
-#include <StepAP214_AutoDesignApprovalAssignment.hxx>

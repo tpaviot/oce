@@ -1,6 +1,0 @@
-#include <StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx>
-#include <StepRepr_GlobalUnitAssignedContext.hxx>
-#include <StepBasic_NamedUnit.hxx>
-#include <StepRepr_GlobalUncertaintyAssignedContext.hxx>
-#include <StepBasic_SiUnit.hxx>
-#include <STEPConstruct_UnitContext.hxx>

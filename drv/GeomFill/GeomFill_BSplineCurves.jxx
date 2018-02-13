@@ -1,4 +1,0 @@
-#include <Geom_BSplineSurface.hxx>
-#include <Standard_ConstructionError.hxx>
-#include <Geom_BSplineCurve.hxx>
-#include <GeomFill_BSplineCurves.hxx>

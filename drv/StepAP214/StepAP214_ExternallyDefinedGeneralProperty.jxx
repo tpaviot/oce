@@ -1,5 +1,0 @@
-#include <StepBasic_ExternallyDefinedItem.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepBasic_SourceItem.hxx>
-#include <StepBasic_ExternalSource.hxx>
-#include <StepAP214_ExternallyDefinedGeneralProperty.hxx>

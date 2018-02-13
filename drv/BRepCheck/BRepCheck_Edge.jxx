@@ -1,5 +1,0 @@
-#include <BRep_CurveRepresentation.hxx>
-#include <Adaptor3d_HCurve.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepCheck_Edge.hxx>

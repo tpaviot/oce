@@ -1,5 +1,0 @@
-#include <CDM_MessageDriver.hxx>
-#include <TDF_Attribute.hxx>
-#include <XmlObjMgt_Persistent.hxx>
-#include <TopLoc_Location.hxx>
-#include <XmlMXCAFDoc_LocationDriver.hxx>

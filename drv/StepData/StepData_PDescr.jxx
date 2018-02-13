@@ -1,6 +1,0 @@
-#include <StepData_PDescr.hxx>
-#include <Standard_Type.hxx>
-#include <StepData_EDescr.hxx>
-#include <StepData_Field.hxx>
-#include <Interface_Check.hxx>
-#include <StepData_PDescr.hxx>

@@ -1,4 +1,0 @@
-#include <TopOpeBRepBuild_HBuilder.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <BRepAlgo_BooleanOperation.hxx>

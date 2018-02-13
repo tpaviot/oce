@@ -1,3 +1,0 @@
-#include <StepGeom_Axis1Placement.hxx>
-#include <Geom_Axis1Placement.hxx>
-#include <StepToGeom_MakeAxis1Placement.hxx>

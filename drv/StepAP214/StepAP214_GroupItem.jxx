@@ -1,3 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepGeom_GeometricRepresentationItem.hxx>
-#include <StepAP214_GroupItem.hxx>

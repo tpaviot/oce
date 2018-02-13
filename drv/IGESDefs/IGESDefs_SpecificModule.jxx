@@ -1,4 +1,0 @@
-#include <IGESData_IGESEntity.hxx>
-#include <IGESData_IGESDumper.hxx>
-#include <Message_Messenger.hxx>
-#include <IGESDefs_SpecificModule.hxx>

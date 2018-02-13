@@ -1,4 +1,0 @@
-#include <Adaptor3d_HCurve.hxx>
-#include <Adaptor3d_HSurface.hxx>
-#include <Geom_BSplineCurve.hxx>
-#include <ProjLib_ProjectOnSurface.hxx>

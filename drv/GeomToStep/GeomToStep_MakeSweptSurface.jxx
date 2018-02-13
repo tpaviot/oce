@@ -1,4 +1,0 @@
-#include <StepGeom_SweptSurface.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_SweptSurface.hxx>
-#include <GeomToStep_MakeSweptSurface.hxx>

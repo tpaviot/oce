@@ -1,5 +1,0 @@
-#include <StepGeom_Polyline.hxx>
-#include <StdFail_NotDone.hxx>
-#include <TColgp_Array1OfPnt.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
-#include <GeomToStep_MakePolyline.hxx>

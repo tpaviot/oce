@@ -1,5 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Solid.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopOpeBRepBuild_ShellFaceSet.hxx>

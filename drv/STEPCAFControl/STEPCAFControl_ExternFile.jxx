@@ -1,4 +1,0 @@
-#include <XSControl_WorkSession.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <TDF_Label.hxx>
-#include <STEPCAFControl_ExternFile.hxx>

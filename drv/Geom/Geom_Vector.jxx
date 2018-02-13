@@ -1,5 +1,0 @@
-#include <Standard_ConstructionError.hxx>
-#include <Standard_DomainError.hxx>
-#include <gp_VectorWithNullMagnitude.hxx>
-#include <gp_Vec.hxx>
-#include <Geom_Vector.hxx>

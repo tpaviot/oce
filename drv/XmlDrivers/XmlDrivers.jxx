@@ -1,5 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <Standard_GUID.hxx>
-#include <XmlMDF_ADriverTable.hxx>
-#include <CDM_MessageDriver.hxx>
-#include <XmlDrivers.hxx>

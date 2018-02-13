@@ -1,5 +1,0 @@
-#include <Standard_NotImplemented.hxx>
-#include <Standard_DomainError.hxx>
-#include <TColStd_HArray2OfInteger.hxx>
-#include <math_Matrix.hxx>
-#include <FEmTool_LinearTension.hxx>

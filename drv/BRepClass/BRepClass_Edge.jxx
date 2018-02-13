@@ -1,3 +1,0 @@
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Face.hxx>
-#include <BRepClass_Edge.hxx>

@@ -1,3 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <StepBasic_ProductCategory.hxx>
-#include <StepBasic_ProductCategoryRelationship.hxx>

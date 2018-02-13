@@ -1,9 +1,0 @@
-#include <Geom_Line.hxx>
-#include <Geom_Axis2Placement.hxx>
-#include <Prs3d_LineAspect.hxx>
-#include <Geom_Axis1Placement.hxx>
-#include <Prs3d_Presentation.hxx>
-#include <Prs3d_Projector.hxx>
-#include <Geom_Transformation.hxx>
-#include <Quantity_Color.hxx>
-#include <AIS_Axis.hxx>

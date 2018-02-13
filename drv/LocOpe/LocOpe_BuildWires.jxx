@@ -1,4 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <LocOpe_WiresOnShape.hxx>
-#include <LocOpe_BuildWires.hxx>

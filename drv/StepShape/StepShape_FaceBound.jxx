@@ -1,3 +1,0 @@
-#include <StepShape_Loop.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_FaceBound.hxx>

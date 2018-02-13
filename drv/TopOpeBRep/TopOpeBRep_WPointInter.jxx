@@ -1,4 +1,0 @@
-#include <IntSurf_PntOn2S.hxx>
-#include <gp_Pnt2d.hxx>
-#include <gp_Pnt.hxx>
-#include <TopOpeBRep_WPointInter.hxx>

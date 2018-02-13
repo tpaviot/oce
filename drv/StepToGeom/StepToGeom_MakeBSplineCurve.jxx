@@ -1,3 +1,0 @@
-#include <StepGeom_BSplineCurve.hxx>
-#include <Geom_BSplineCurve.hxx>
-#include <StepToGeom_MakeBSplineCurve.hxx>

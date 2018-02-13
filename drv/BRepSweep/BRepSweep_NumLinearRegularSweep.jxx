@@ -1,8 +1,0 @@
-#include <Standard_NoMoreObject.hxx>
-#include <Standard_NoSuchObject.hxx>
-#include <Standard_RangeError.hxx>
-#include <Standard_DomainError.hxx>
-#include <BRepSweep_Builder.hxx>
-#include <TopoDS_Shape.hxx>
-#include <Sweep_NumShape.hxx>
-#include <BRepSweep_NumLinearRegularSweep.hxx>

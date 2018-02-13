@@ -1,4 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <IntRes2d_IntersectionPoint.hxx>
-#include <HatchGen_PointOnElement.hxx>
-#include <HatchGen_PointOnHatching.hxx>

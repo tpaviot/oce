@@ -1,3 +1,0 @@
-#include <PColStd_HArray1OfReal.hxx>
-#include <PCollection_HAsciiString.hxx>
-#include <PXCAFDoc_DimTol.hxx>

@@ -1,3 +1,0 @@
-#include <gp_Pnt2d.hxx>
-#include <gp_Vec2d.hxx>
-#include <HLRBRep_CLPropsATool.hxx>

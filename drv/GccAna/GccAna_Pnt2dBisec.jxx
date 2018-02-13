@@ -1,4 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <gp_Pnt2d.hxx>
-#include <gp_Lin2d.hxx>
-#include <GccAna_Pnt2dBisec.hxx>

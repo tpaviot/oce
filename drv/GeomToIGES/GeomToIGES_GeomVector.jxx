@@ -1,6 +1,0 @@
-#include <GeomToIGES_GeomEntity.hxx>
-#include <IGESGeom_Direction.hxx>
-#include <Geom_Vector.hxx>
-#include <Geom_VectorWithMagnitude.hxx>
-#include <Geom_Direction.hxx>
-#include <GeomToIGES_GeomVector.hxx>

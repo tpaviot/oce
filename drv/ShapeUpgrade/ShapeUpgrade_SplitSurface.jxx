@@ -1,4 +1,0 @@
-#include <TColStd_HSequenceOfReal.hxx>
-#include <Geom_Surface.hxx>
-#include <ShapeExtend_CompositeSurface.hxx>
-#include <ShapeUpgrade_SplitSurface.hxx>

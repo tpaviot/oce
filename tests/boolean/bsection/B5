@@ -1,5 +1,0 @@
-restore [locate_data_file CIN001_a15.rle] a
-restore [locate_data_file CIN001_b15.rle] b
-bsection result a b
-
-set length 530.82

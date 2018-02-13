@@ -1,3 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <AdvApprox_PrefAndRec.hxx>

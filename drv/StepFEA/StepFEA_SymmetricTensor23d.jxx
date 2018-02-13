@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepData_SelectMember.hxx>
-#include <TColStd_HArray1OfReal.hxx>
-#include <StepFEA_SymmetricTensor23d.hxx>

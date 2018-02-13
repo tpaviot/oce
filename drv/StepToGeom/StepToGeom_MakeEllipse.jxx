@@ -1,3 +1,0 @@
-#include <StepGeom_Ellipse.hxx>
-#include <Geom_Ellipse.hxx>
-#include <StepToGeom_MakeEllipse.hxx>

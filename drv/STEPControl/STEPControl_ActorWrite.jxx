@@ -1,9 +1,0 @@
-#include <Transfer_Finder.hxx>
-#include <Transfer_Binder.hxx>
-#include <Transfer_FinderProcess.hxx>
-#include <StepShape_ShapeDefinitionRepresentation.hxx>
-#include <StepGeom_Axis2Placement3d.hxx>
-#include <TopTools_HSequenceOfShape.hxx>
-#include <TopoDS_Shape.hxx>
-#include <StepShape_NonManifoldSurfaceShapeRepresentation.hxx>
-#include <STEPControl_ActorWrite.hxx>

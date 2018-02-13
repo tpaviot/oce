@@ -1,7 +1,0 @@
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <gp_XY.hxx>
-#include <Law_Function.hxx>
-#include <Law_Composite.hxx>
-#include <ChFiDS_HElSpine.hxx>
-#include <ChFiDS_FilSpine.hxx>

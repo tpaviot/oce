@@ -1,5 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <BRepClass3d_SolidExplorer.hxx>
-#include <gp_Pnt.hxx>
-#include <TopoDS_Face.hxx>
-#include <BRepClass3d_SClassifier.hxx>

@@ -1,4 +1,0 @@
-#include <gp_XY.hxx>
-#include <Plate_D1.hxx>
-#include <Plate_D2.hxx>
-#include <NLPlate_HPG2Constraint.hxx>

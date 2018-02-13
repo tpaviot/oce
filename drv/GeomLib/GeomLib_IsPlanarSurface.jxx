@@ -1,4 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <Geom_Surface.hxx>
-#include <gp_Pln.hxx>
-#include <GeomLib_IsPlanarSurface.hxx>

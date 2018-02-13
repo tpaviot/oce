@@ -1,7 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepOffset_Offset.hxx>

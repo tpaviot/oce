@@ -1,4 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <StepData_Field.hxx>
-#include <Interface_EntityIterator.hxx>
-#include <StepData_FieldList.hxx>

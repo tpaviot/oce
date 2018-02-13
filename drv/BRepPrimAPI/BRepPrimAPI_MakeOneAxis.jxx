@@ -1,5 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Shell.hxx>
-#include <TopoDS_Solid.hxx>
-#include <BRepPrimAPI_MakeOneAxis.hxx>

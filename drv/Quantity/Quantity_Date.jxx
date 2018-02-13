@@ -1,4 +1,0 @@
-#include <Quantity_DateDefinitionError.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <Quantity_Period.hxx>
-#include <Quantity_Date.hxx>

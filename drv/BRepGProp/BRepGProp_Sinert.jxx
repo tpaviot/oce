@@ -1,4 +1,0 @@
-#include <BRepGProp_Face.hxx>
-#include <gp_Pnt.hxx>
-#include <BRepGProp_Domain.hxx>
-#include <BRepGProp_Sinert.hxx>

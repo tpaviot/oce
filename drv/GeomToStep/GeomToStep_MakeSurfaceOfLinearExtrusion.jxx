@@ -1,4 +1,0 @@
-#include <StepGeom_SurfaceOfLinearExtrusion.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Geom_SurfaceOfLinearExtrusion.hxx>
-#include <GeomToStep_MakeSurfaceOfLinearExtrusion.hxx>

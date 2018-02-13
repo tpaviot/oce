@@ -1,3 +1,0 @@
-#include <StepGeom_Curve.hxx>
-#include <Geom2d_Curve.hxx>
-#include <StepToGeom_MakeCurve2d.hxx>

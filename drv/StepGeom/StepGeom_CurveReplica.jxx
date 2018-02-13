@@ -1,4 +1,0 @@
-#include <StepGeom_Curve.hxx>
-#include <StepGeom_CartesianTransformationOperator.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_CurveReplica.hxx>

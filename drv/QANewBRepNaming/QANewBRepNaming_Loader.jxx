@@ -1,7 +1,0 @@
-#include <BRepBuilderAPI_MakeShape.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TNaming_Builder.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <TDF_Label.hxx>
-#include <TopTools_MapOfShape.hxx>
-#include <QANewBRepNaming_Loader.hxx>

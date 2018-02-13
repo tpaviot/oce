@@ -1,5 +1,0 @@
-#include <Geom_BSplineCurve.hxx>
-#include <TColGeom_HSequenceOfBoundedCurve.hxx>
-#include <Geom2d_BSplineCurve.hxx>
-#include <TColGeom2d_HSequenceOfBoundedCurve.hxx>
-#include <ShapeUpgrade.hxx>

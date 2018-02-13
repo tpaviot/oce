@@ -1,7 +1,0 @@
-#include <Standard_ConstructionError.hxx>
-#include <Standard_NoSuchObject.hxx>
-#include <StdFail_NotDone.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <BRepOffsetAPI_NormalProjection.hxx>

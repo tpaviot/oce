@@ -1,5 +1,0 @@
-#include <Poly_PolygonOnTriangulation.hxx>
-#include <Poly_Triangulation.hxx>
-#include <TopLoc_Location.hxx>
-#include <BRep_CurveRepresentation.hxx>
-#include <BRep_PolygonOnClosedTriangulation.hxx>

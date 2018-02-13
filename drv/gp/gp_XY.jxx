@@ -1,4 +1,0 @@
-#include <Standard_ConstructionError.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <gp_Mat2d.hxx>
-#include <gp_XY.hxx>

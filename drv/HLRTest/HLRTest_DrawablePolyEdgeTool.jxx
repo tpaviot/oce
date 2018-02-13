@@ -1,3 +1,0 @@
-#include <HLRBRep_PolyAlgo.hxx>
-#include <Draw_Display.hxx>
-#include <HLRTest_DrawablePolyEdgeTool.hxx>

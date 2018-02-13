@@ -1,3 +1,0 @@
-#include <Graphic3d_AspectText3d.hxx>
-#include <Quantity_Color.hxx>
-#include <Prs3d_TextAspect.hxx>

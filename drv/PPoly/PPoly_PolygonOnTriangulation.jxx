@@ -1,4 +1,0 @@
-#include <PColStd_HArray1OfInteger.hxx>
-#include <PColStd_HArray1OfReal.hxx>
-#include <Standard_NullObject.hxx>
-#include <PPoly_PolygonOnTriangulation.hxx>

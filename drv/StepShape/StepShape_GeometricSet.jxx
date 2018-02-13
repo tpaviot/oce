@@ -1,4 +1,0 @@
-#include <StepShape_HArray1OfGeometricSetSelect.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_GeometricSetSelect.hxx>
-#include <StepShape_GeometricSet.hxx>

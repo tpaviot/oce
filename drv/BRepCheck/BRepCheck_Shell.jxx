@@ -1,4 +1,0 @@
-#include <TopoDS_Shell.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <BRepCheck_Shell.hxx>

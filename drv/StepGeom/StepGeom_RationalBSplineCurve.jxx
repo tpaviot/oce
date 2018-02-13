@@ -1,4 +1,0 @@
-#include <TColStd_HArray1OfReal.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepGeom_HArray1OfCartesianPoint.hxx>
-#include <StepGeom_RationalBSplineCurve.hxx>

@@ -1,4 +1,0 @@
-#include <Standard_NullObject.hxx>
-#include <Standard_NegativeValue.hxx>
-#include <Standard_DimensionMismatch.hxx>
-#include <DBC_BaseArray.hxx>

@@ -1,6 +1,0 @@
-#include <Geom_TrimmedCurve.hxx>
-#include <StdFail_NotDone.hxx>
-#include <gp_Circ.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Vec.hxx>
-#include <GC_MakeArcOfCircle.hxx>

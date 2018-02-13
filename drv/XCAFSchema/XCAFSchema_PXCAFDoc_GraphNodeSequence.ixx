@@ -1,8 +1,0 @@
-#include <XCAFSchema_Standard_Persistent.ixx>
-#ifndef _XCAFSchema_PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile
-#include <XCAFSchema_PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>
-#endif
-#ifndef _XCAFSchema_PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile
-#include <XCAFSchema_PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>
-#endif
-

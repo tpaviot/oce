@@ -1,7 +1,0 @@
-#include <XSControl_WorkSession.hxx>
-#include <StepData_StepModel.hxx>
-#include <TColStd_SequenceOfAsciiString.hxx>
-#include <StepRepr_RepresentationContext.hxx>
-#include <TColStd_Array1OfAsciiString.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <STEPControl_Reader.hxx>

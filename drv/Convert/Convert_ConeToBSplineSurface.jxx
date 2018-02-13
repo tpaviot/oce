@@ -1,3 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <gp_Cone.hxx>
-#include <Convert_ConeToBSplineSurface.hxx>

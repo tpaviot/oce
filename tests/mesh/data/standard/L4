@@ -1,4 +1,0 @@
-set TheFileName shading_103.brep
-if { [string compare $command "shading"] == 0 } {
-   set bug_area "OCC22687"
-}

@@ -1,4 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <StdFail_UndefinedDerivative.hxx>
-#include <IntSurf_PathPoint.hxx>
-#include <IntSurf_PathPointTool.hxx>

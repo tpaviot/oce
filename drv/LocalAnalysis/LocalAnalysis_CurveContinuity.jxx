@@ -1,4 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <Geom_Curve.hxx>
-#include <GeomLProp_CLProps.hxx>
-#include <LocalAnalysis_CurveContinuity.hxx>

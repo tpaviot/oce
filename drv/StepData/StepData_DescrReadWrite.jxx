@@ -1,8 +1,0 @@
-#include <StepData_Protocol.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <TColStd_SequenceOfAsciiString.hxx>
-#include <StepData_StepReaderData.hxx>
-#include <Interface_Check.hxx>
-#include <Standard_Transient.hxx>
-#include <StepData_StepWriter.hxx>
-#include <StepData_DescrReadWrite.hxx>

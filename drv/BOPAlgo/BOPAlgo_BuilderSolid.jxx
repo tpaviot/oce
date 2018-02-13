@@ -1,2 +1,0 @@
-#include <TopoDS_Solid.hxx>
-#include <BOPAlgo_BuilderSolid.hxx>

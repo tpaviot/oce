@@ -1,5 +1,0 @@
-#include <TColgp_SequenceOfXY.hxx>
-#include <TColgp_SequenceOfXYZ.hxx>
-#include <AdvApp2Var_Patch.hxx>
-#include <AdvApp2Var_Context.hxx>
-#include <GeomPlate_PlateG0Criterion.hxx>

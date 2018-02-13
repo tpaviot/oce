@@ -1,4 +1,0 @@
-#include <Geom2d_BSplineCurve.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <GeomLib_Check2dBSplineCurve.hxx>

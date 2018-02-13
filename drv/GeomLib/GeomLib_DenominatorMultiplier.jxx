@@ -1,5 +1,0 @@
-#include <Geom_BSplineSurface.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <Standard_ConstructionError.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <GeomLib_DenominatorMultiplier.hxx>

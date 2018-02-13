@@ -1,5 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <gp_Ax2.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Elips.hxx>
-#include <gce_MakeElips.hxx>

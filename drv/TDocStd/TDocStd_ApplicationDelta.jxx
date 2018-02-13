@@ -1,3 +1,0 @@
-#include <TDocStd_SequenceOfDocument.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TDocStd_ApplicationDelta.hxx>

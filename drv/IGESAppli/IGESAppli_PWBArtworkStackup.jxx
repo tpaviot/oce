@@ -1,4 +1,0 @@
-#include <TCollection_HAsciiString.hxx>
-#include <TColStd_HArray1OfInteger.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IGESAppli_PWBArtworkStackup.hxx>

@@ -1,4 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <Standard_Transient.hxx>
-#include <Interface_EntityIterator.hxx>
-#include <IFSelect_SelectInList.hxx>

@@ -1,8 +1,0 @@
-#include <TColStd_HArray1OfReal.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <Standard_ConstructionError.hxx>
-#include <GeomFill_TrihedronLaw.hxx>
-#include <Adaptor3d_HCurve.hxx>
-#include <gp_Vec.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <GeomFill_Frenet.hxx>

@@ -1,3 +1,0 @@
-#include <MeshVS_Mesh.hxx>
-#include <Draw_Display.hxx>
-#include <XSDRAWSTLVRML_DrawableMesh.hxx>

@@ -1,4 +1,0 @@
-#include <PGeom_Curve.hxx>
-#include <gp_Dir.hxx>
-#include <gp_Pnt.hxx>
-#include <PGeom_SurfaceOfRevolution.hxx>

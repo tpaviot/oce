@@ -1,4 +1,0 @@
-#include <StepBasic_HArray1OfOrganization.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepBasic_Organization.hxx>
-#include <StepBasic_OrganizationalAddress.hxx>

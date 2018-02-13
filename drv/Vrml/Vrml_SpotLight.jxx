@@ -1,3 +1,0 @@
-#include <Quantity_Color.hxx>
-#include <gp_Vec.hxx>
-#include <Vrml_SpotLight.hxx>

@@ -1,3 +1,0 @@
-#include <Bisector_PointOnBis.hxx>
-#include <gp_Trsf2d.hxx>
-#include <Bisector_PolyBis.hxx>

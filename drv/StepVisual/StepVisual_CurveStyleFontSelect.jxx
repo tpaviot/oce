@@ -1,5 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepVisual_CurveStyleFont.hxx>
-#include <StepVisual_PreDefinedCurveFont.hxx>
-#include <StepVisual_ExternallyDefinedCurveFont.hxx>
-#include <StepVisual_CurveStyleFontSelect.hxx>

@@ -1,4 +1,0 @@
-#include <StdFail_NotDone.hxx>
-#include <Standard_DimensionError.hxx>
-#include <math_Matrix.hxx>
-#include <math_SVD.hxx>

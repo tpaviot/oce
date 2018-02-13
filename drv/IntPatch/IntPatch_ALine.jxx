@@ -1,7 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <Standard_OutOfRange.hxx>
-#include <IntAna_Curve.hxx>
-#include <IntPatch_Point.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Vec.hxx>
-#include <IntPatch_ALine.hxx>

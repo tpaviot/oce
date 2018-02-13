@@ -1,4 +1,0 @@
-#include <TopoDS_Wire.hxx>
-#include <TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopOpeBRepBuild_Tools2d.hxx>

@@ -1,5 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TColStd_IndexedDataMapOfTransientTransient.hxx>
-#include <TNaming_TranslateTool.hxx>
-#include <TopLoc_Location.hxx>
-#include <TNaming_CopyShape.hxx>

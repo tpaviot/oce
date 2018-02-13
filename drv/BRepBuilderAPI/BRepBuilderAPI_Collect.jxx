@@ -1,4 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <BRepBuilderAPI_MakeShape.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <BRepBuilderAPI_Collect.hxx>

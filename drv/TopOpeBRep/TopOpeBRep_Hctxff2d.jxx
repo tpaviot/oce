@@ -1,3 +1,0 @@
-#include <BRepAdaptor_HSurface.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopOpeBRep_Hctxff2d.hxx>

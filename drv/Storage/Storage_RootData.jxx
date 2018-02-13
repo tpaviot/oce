@@ -1,7 +1,0 @@
-#include <Standard_NoSuchObject.hxx>
-#include <Storage_Schema.hxx>
-#include <Storage_Root.hxx>
-#include <Storage_HSeqOfRoot.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <Standard_Persistent.hxx>
-#include <Storage_RootData.hxx>

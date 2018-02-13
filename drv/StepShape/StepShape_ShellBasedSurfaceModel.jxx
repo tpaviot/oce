@@ -1,4 +1,0 @@
-#include <StepShape_HArray1OfShell.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_Shell.hxx>
-#include <StepShape_ShellBasedSurfaceModel.hxx>

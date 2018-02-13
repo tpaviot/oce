@@ -1,3 +1,0 @@
-#include <ShapeFix_Shape.hxx>
-#include <ShapeFix_EdgeProjAux.hxx>
-#include <ShapeAlgo_ToolContainer.hxx>

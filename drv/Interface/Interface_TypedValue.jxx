@@ -1,7 +1,0 @@
-#include <Standard_Type.hxx>
-#include <TColStd_HArray1OfAsciiString.hxx>
-#include <Dico_DictionaryOfInteger.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <Standard_Transient.hxx>
-#include <Interface_InterfaceError.hxx>
-#include <Interface_TypedValue.hxx>

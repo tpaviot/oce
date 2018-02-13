@@ -1,7 +1,0 @@
-#include <TNaming_NamedShape.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TDF_Label.hxx>
-#include <TNaming_ListOfNamedShape.hxx>
-#include <TDF_LabelMap.hxx>
-#include <TDF_RelocationTable.hxx>
-#include <TNaming_Name.hxx>

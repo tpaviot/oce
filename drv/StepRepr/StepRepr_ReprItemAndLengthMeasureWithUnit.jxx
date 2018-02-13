@@ -1,5 +1,0 @@
-#include <StepBasic_LengthMeasureWithUnit.hxx>
-#include <StepRepr_MeasureRepresentationItem.hxx>
-#include <StepBasic_MeasureWithUnit.hxx>
-#include <StepRepr_RepresentationItem.hxx>
-#include <StepRepr_ReprItemAndLengthMeasureWithUnit.hxx>

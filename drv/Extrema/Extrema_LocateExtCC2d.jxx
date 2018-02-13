@@ -1,5 +1,0 @@
-#include <Standard_DomainError.hxx>
-#include <StdFail_NotDone.hxx>
-#include <Adaptor2d_Curve2d.hxx>
-#include <Extrema_POnCurv2d.hxx>
-#include <Extrema_LocateExtCC2d.hxx>

@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepVisual_PreDefinedTextFont.hxx>
-#include <StepVisual_ExternallyDefinedTextFont.hxx>
-#include <StepVisual_FontSelect.hxx>

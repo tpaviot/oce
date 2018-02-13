@@ -1,7 +1,0 @@
-#include <Standard_ConstructionError.hxx>
-#include <Standard_NullObject.hxx>
-#include <OSD_OSDError.hxx>
-#include <Standard_NumericError.hxx>
-#include <Standard_ProgramError.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <OSD_Path.hxx>

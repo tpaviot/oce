@@ -1,6 +1,0 @@
-#include <TDataXtd_Constraint.hxx>
-#include <AIS_InteractiveObject.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TopoDS_Shape.hxx>
-#include <Geom_Geometry.hxx>
-#include <TPrsStd_ConstraintTools.hxx>

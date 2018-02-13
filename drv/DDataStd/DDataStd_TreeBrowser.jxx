@@ -1,6 +1,0 @@
-#include <TDF_Label.hxx>
-#include <Draw_Display.hxx>
-#include <Draw_Drawable3D.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <TDataStd_TreeNode.hxx>
-#include <DDataStd_TreeBrowser.hxx>

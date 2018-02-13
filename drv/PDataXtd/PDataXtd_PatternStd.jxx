@@ -1,4 +1,0 @@
-#include <PNaming_NamedShape.hxx>
-#include <PDataStd_Real.hxx>
-#include <PDataStd_Integer.hxx>
-#include <PDataXtd_PatternStd.hxx>

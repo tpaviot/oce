@@ -1,6 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <BRepBlend_Line.hxx>
-#include <Blend_SurfRstFunction.hxx>
-#include <Blend_AppFunction.hxx>
-#include <Blend_Point.hxx>
-#include <BRepBlend_AppFuncRst.hxx>

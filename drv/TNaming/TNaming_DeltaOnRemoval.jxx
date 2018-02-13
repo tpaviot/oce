@@ -1,3 +1,0 @@
-#include <TNaming_DeltaOnModification.hxx>
-#include <TNaming_NamedShape.hxx>
-#include <TNaming_DeltaOnRemoval.hxx>

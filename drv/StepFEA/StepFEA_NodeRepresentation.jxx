@@ -1,5 +1,0 @@
-#include <StepFEA_FeaModel.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepRepr_HArray1OfRepresentationItem.hxx>
-#include <StepRepr_RepresentationContext.hxx>
-#include <StepFEA_NodeRepresentation.hxx>

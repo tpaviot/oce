@@ -1,5 +1,0 @@
-#include <IntTools_Context.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <BOPAlgo_PaveFiller.hxx>
-#include <BOPAlgo_Builder.hxx>

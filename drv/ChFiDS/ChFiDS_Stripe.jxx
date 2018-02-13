@@ -1,4 +1,0 @@
-#include <ChFiDS_Spine.hxx>
-#include <ChFiDS_HData.hxx>
-#include <Geom2d_Curve.hxx>
-#include <ChFiDS_Stripe.hxx>

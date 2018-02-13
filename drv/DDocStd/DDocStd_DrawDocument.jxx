@@ -1,4 +1,0 @@
-#include <TDocStd_Document.hxx>
-#include <Draw_Display.hxx>
-#include <Draw_Drawable3D.hxx>
-#include <DDocStd_DrawDocument.hxx>

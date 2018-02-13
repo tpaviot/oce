@@ -1,3 +1,0 @@
-#include <Standard_OutOfRange.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <Graphic3d_TextureEnv.hxx>

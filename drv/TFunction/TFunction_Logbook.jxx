@@ -1,3 +1,0 @@
-#include <TDF_Label.hxx>
-#include <TDF_LabelMap.hxx>
-#include <TFunction_Logbook.hxx>

@@ -1,2 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <StlAPI_Reader.hxx>

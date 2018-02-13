@@ -1,5 +1,0 @@
-#include <Standard_NoSuchObject.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <TopoDS_Shape.hxx>
-#include <BRepTools_Quilt.hxx>

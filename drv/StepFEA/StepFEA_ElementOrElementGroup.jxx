@@ -1,4 +1,0 @@
-#include <Standard_Transient.hxx>
-#include <StepFEA_ElementRepresentation.hxx>
-#include <StepFEA_ElementGroup.hxx>
-#include <StepFEA_ElementOrElementGroup.hxx>

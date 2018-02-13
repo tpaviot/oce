@@ -1,4 +1,0 @@
-#include <PPoly_Polygon2D.hxx>
-#include <PGeom_Surface.hxx>
-#include <PTopLoc_Location.hxx>
-#include <PBRep_PolygonOnClosedSurface.hxx>

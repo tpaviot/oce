@@ -1,4 +1,0 @@
-#include <MAT2d_SequenceOfSequenceOfGeometry.hxx>
-#include <MAT2d_SequenceOfConnexion.hxx>
-#include <MAT2d_Connexion.hxx>
-#include <MAT2d_MiniPath.hxx>

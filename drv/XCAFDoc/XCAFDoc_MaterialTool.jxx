@@ -1,8 +1,0 @@
-#include <XCAFDoc_ShapeTool.hxx>
-#include <TDF_Label.hxx>
-#include <Standard_GUID.hxx>
-#include <TDF_LabelSequence.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <TDF_Attribute.hxx>
-#include <TDF_RelocationTable.hxx>
-#include <XCAFDoc_MaterialTool.hxx>

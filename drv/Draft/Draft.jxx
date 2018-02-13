@@ -1,3 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <gp_Dir.hxx>
-#include <Draft.hxx>

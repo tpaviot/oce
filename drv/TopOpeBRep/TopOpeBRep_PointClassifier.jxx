@@ -1,5 +1,0 @@
-#include <BRepTopAdaptor_TopolTool.hxx>
-#include <BRepAdaptor_HSurface.hxx>
-#include <TopoDS_Face.hxx>
-#include <gp_Pnt2d.hxx>
-#include <TopOpeBRep_PointClassifier.hxx>

@@ -1,8 +1,0 @@
-#include <Standard_NoSuchObject.hxx>
-#include <TopOpeBRepDS_BuildTool.hxx>
-#include <TopOpeBRepDS_HDataStructure.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TColStd_ListOfInteger.hxx>
-#include <TopOpeBRepBuild_Builder.hxx>
-#include <TopOpeBRepBuild_HBuilder.hxx>

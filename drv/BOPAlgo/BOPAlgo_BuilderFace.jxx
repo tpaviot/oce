@@ -1,2 +1,0 @@
-#include <TopoDS_Face.hxx>
-#include <BOPAlgo_BuilderFace.hxx>

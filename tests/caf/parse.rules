@@ -1,4 +1,0 @@
-FAILED /\binvalid\b/ error
-FAILED /\bFailed\b/ error
-FAILED /\bfailed\b/ error
-IGNORE /^\s*DPrsStd_AISColor\s*:\s*Error\b/ ignore presentation K2 error message

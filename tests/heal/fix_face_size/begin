@@ -1,2 +1,0 @@
-set env(CSF_MDTVDefaults) [file dirname [info script]]/../data
-puts $env(CSF_MDTVDefaults)

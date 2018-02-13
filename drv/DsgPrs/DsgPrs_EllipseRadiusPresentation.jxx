@@ -1,6 +1,0 @@
-#include <Prs3d_Presentation.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Elips.hxx>
-#include <Geom_OffsetCurve.hxx>
-#include <DsgPrs_EllipseRadiusPresentation.hxx>

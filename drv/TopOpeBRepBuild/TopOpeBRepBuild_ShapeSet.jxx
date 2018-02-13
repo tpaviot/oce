@@ -1,4 +1,0 @@
-#include <TopoDS_Shape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TCollection_AsciiString.hxx>
-#include <TopOpeBRepBuild_ShapeSet.hxx>

@@ -1,3 +1,0 @@
-#include <StepGeom_Axis1Placement.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <StepShape_Torus.hxx>
