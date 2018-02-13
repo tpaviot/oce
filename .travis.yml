@@ -7,9 +7,6 @@ compiler:
 cache:
  apt: true
 
-env:
-  - RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
-
 addons:
   apt:
     sources:
@@ -17,21 +14,16 @@ addons:
     packages:
       - tcl8.5-dev
       - tk8.5-dev
-      - libgl2ps-dev
-      - libfreeimage-dev
-      - libtbb-dev
       - tclthread
       - libgl1-mesa-dri
       - xsltproc
-      - g++-5
-      - g++-6
-      - g++-7
+      - libxi-dev
 
 matrix:
   include:
   - os: linux
     compiler: gcc
-    env: MATRIX_EVAL="CC=gcc-5 && CXX=g++-5" RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    env: MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
     dist: trusty
     addons:
       apt:
@@ -39,9 +31,10 @@ matrix:
           - ubuntu-toolchain-r-test
         packages:
           - g++-5
+          - libxi-dev
   - os: linux
     compiler: gcc
-    env: MATRIX_EVAL="CC=gcc-6 && CXX=g++-6" RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    env: MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
     dist: trusty
     addons:
       apt:
@@ -49,19 +42,21 @@ matrix:
           - ubuntu-toolchain-r-test
         packages:
           - g++-6
+          - libxi-dev
   - os: linux
     compiler: gcc
-    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
     addons:
       apt:
         sources:
           - ubuntu-toolchain-r-test
         packages:
           - g++-7
+          - libxi-dev
     dist: trusty
   - os: linux
     compiler: clang
-    env: RUN_TESTS=true OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON MATRIX_EVAL="CC=clang-4.0 && CXX=clang++-4.0"
+    env: MATRIX_EVAL="CC=clang-4.0 && CXX=clang++-4.0"
     dist: trusty
     addons:
       apt:
@@ -69,51 +64,65 @@ matrix:
           - llvm-toolchain-trusty-4.0
         packages:
           - clang-4.0
+          - libxi-dev
   - os: linux
     compiler: gcc
-    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF MATRIX_EVAL=""
   - os: linux
     compiler: gcc
-    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON MATRIX_EVAL=""
+    env: BUILD_USE_PCH=OFF
   - os: linux
     compiler: gcc
-    env: OCE_MULTITHREAD_LIBRARY=OPENMP OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON MATRIX_EVAL=""
+    env: BUILD_Inspector=ON
   - os: linux
     compiler: gcc
-    env: OCE_MULTITHREAD_LIBRARY=TBB OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON MATRIX_EVAL=""
+    env: USE_GL2PS=ON
+    addons:
+      apt:
+        packages:
+          - libgl2ps-dev
+          - libxi-dev
+  - os: linux
+    compiler: gcc
+    env: USE_FREEIMAGE=ON
+    addons:
+      apt:
+        packages:
+          - libfreeimage-dev
+          - libxi-dev
+  - os: linux
+    compiler: gcc
+    env: USE_TBB=ON
+    addons:
+      apt:
+        packages:
+          - libtbb-dev
+          - libxi-dev
+  - os: linux
+    compiler: gcc
+    env: USE_FFMPEG=ON
+    addons:
+      apt:
+        packages:
+          - ffmpeg
+          - libxi-dev
   - os: osx
     compiler: clang
-    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
+  - os: osx
+    compiler: clang
+    env: BUILD_USE_PCH=OFF
   - os: osx
     osx_image: xcode8.3
     compiler: clang
-    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
   - os: osx
     osx_image: xcode9.2
     compiler: clang
-    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
   - os: osx
     osx_image: xcode9.3beta
     compiler: clang
-    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
   exclude:
-  - env: RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
+  - env: RUN_TESTS=false BUILD_USE_PCH=ON 
   allow_failures:
     - os: osx
-      compiler: clang
-      env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
-    - os: osx
-      osx_image: xcode8.3
-      compiler: clang
-      env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
-    - os: osx
-      osx_image: xcode9.2
-      compiler: clang
-      env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
-    - os: osx
-      osx_image: xcode9.3beta
-      compiler: clang
-      env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
 
 before_install:
   # osx
