@@ -1,0 +1,7 @@
+<map id="StepSelect_StepType" name="StepSelect_StepType">
+<area shape="rect" id="node6" href="$class_s_t_e_p_selections___select_derived.html" title="STEPSelections_SelectDerived" alt="" coords="5,379,208,405"/>
+<area shape="rect" id="node2" href="$class_i_f_select___signature.html" title="Signature provides the basic service used by the classes SelectSignature and Counter (i..." alt="" coords="41,229,173,256"/>
+<area shape="rect" id="node3" href="$class_interface___sign_type.html" title="Provides the basic service to get a type name, according to a norm It can be used for other classes (..." alt="" coords="41,155,173,181"/>
+<area shape="rect" id="node4" href="$class_moni_tool___sign_text.html" title="Provides the basic service to get a text which identifies an object in a context It can be used for o..." alt="" coords="41,80,173,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="39,5,174,32"/>
+</map>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKLCAF" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../lin/cbp/lib/libTKLCAF.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../lin/cbp/libd/libTKLCAF.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/libd" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKCDF" />
+			<Add library="TKernel" />
+		</Linker>
+		<Unit filename="../../../src/TDF/TDF.cxx" />
+		<Unit filename="../../../src/TDF/TDF_Attribute.cxx" />
+		<Unit filename="../../../src/TDF/TDF_AttributeDelta.cxx" />
+		<Unit filename="../../../src/TDF/TDF_AttributeIterator.cxx" />
+		<Unit filename="../../../src/TDF/TDF_ChildIDIterator.cxx" />
+		<Unit filename="../../../src/TDF/TDF_ChildIterator.cxx" />
+		<Unit filename="../../../src/TDF/TDF_ClosureMode.cxx" />
+		<Unit filename="../../../src/TDF/TDF_ClosureTool.cxx" />
+		<Unit filename="../../../src/TDF/TDF_ComparisonTool.cxx" />
+		<Unit filename="../../../src/TDF/TDF_CopyLabel.cxx" />
+		<Unit filename="../../../src/TDF/TDF_CopyTool.cxx" />
+		<Unit filename="../../../src/TDF/TDF_Data.cxx" />
+		<Unit filename="../../../src/TDF/TDF_DataSet.cxx" />
+		<Unit filename="../../../src/TDF/TDF_DefaultDeltaOnModification.cxx" />
+		<Unit filename="../../../src/TDF/TDF_DefaultDeltaOnRemoval.cxx" />
+		<Unit filename="../../../src/TDF/TDF_Delta.cxx" />
+		<Unit filename="../../../src/TDF/TDF_DeltaOnAddition.cxx" />
+		<Unit filename="../../../src/TDF/TDF_DeltaOnForget.cxx" />
+		<Unit filename="../../../src/TDF/TDF_DeltaOnModification.cxx" />
+		<Unit filename="../../../src/TDF/TDF_DeltaOnRemoval.cxx" />
+		<Unit filename="../../../src/TDF/TDF_DeltaOnResume.cxx" />
+		<Unit filename="../../../src/TDF/TDF_IDFilter.cxx" />
+		<Unit filename="../../../src/TDF/TDF_Label.cxx" />
+		<Unit filename="../../../src/TDF/TDF_LabelNode.cxx" />
+		<Unit filename="../../../src/TDF/TDF_Reference.cxx" />
+		<Unit filename="../../../src/TDF/TDF_RelocationTable.cxx" />
+		<Unit filename="../../../src/TDF/TDF_TagSource.cxx" />
+		<Unit filename="../../../src/TDF/TDF_Tool.cxx" />
+		<Unit filename="../../../src/TDF/TDF_Transaction.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_AsciiString.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_BooleanArray.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_BooleanList.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_ByteArray.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_ChildNodeIterator.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_Comment.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_Current.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_DeltaOnModificationOfByteArray.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_DeltaOnModificationOfExtStringArray.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_DeltaOnModificationOfIntArray.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_DeltaOnModificationOfIntPackedMap.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_DeltaOnModificationOfRealArray.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_Directory.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_Expression.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_ExtStringArray.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_ExtStringList.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringByte.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringHArray1OfInteger.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringHArray1OfReal.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringInteger.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringReal.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringString.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_IntPackedMap.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_Integer.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_IntegerArray.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_IntegerList.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_Name.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_NamedData.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_NoteBook.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_Real.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_RealArray.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_RealList.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_ReferenceArray.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_ReferenceList.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_Relation.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_Tick.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_TreeNode.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_UAttribute.cxx" />
+		<Unit filename="../../../src/TDataStd/TDataStd_Variable.cxx" />
+		<Unit filename="../../../src/TFunction/TFunction_Driver.cxx" />
+		<Unit filename="../../../src/TFunction/TFunction_DriverTable.cxx" />
+		<Unit filename="../../../src/TFunction/TFunction_Function.cxx" />
+		<Unit filename="../../../src/TFunction/TFunction_GraphNode.cxx" />
+		<Unit filename="../../../src/TFunction/TFunction_IFunction.cxx" />
+		<Unit filename="../../../src/TFunction/TFunction_Iterator.cxx" />
+		<Unit filename="../../../src/TFunction/TFunction_Logbook.cxx" />
+		<Unit filename="../../../src/TFunction/TFunction_Scope.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_Application.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_ApplicationDelta.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_CompoundDelta.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_Context.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_Document.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_Modified.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_MultiTransactionManager.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_Owner.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_PathParser.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_XLink.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_XLinkIterator.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_XLinkRoot.cxx" />
+		<Unit filename="../../../src/TDocStd/TDocStd_XLinkTool.cxx" />
+		<Unit filename="../../../src/AppStdL/AppStdL_Application.cxx" />
+	</Project>
+</CodeBlocks_project_file>

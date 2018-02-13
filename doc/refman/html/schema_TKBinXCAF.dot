@@ -1,0 +1,27 @@
+digraph schema_TKBinXCAF
+{
+	TKBinXCAF [ URL = "toolkit_tkbinxcaf.html", shape = box ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKBinXCAF -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKXCAF [ URL = "toolkit_tkxcaf.html" , shape = box ]
+	TKBinXCAF -> TKXCAF [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKBinXCAF -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKBinXCAF -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKBinL [ URL = "toolkit_tkbinl.html" , shape = box ]
+	TKBinXCAF -> TKBinL [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKBinXCAF -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKCAF [ URL = "toolkit_tkcaf.html" , shape = box ]
+	TKBinXCAF -> TKCAF [ color = "midnightblue", style = "solid" ]
+	TKCDF [ URL = "toolkit_tkcdf.html" , shape = box ]
+	TKBinXCAF -> TKCDF [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKBinXCAF -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKLCAF [ URL = "toolkit_tklcaf.html" , shape = box ]
+	TKBinXCAF -> TKLCAF [ color = "midnightblue", style = "solid" ]
+	TKBin [ URL = "toolkit_tkbin.html" , shape = box ]
+	TKBinXCAF -> TKBin [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

@@ -1,0 +1,12 @@
+<map id="StepBasic_ConversionBasedUnit" name="StepBasic_ConversionBasedUnit">
+<area shape="rect" id="node4" href="$class_step_basic___conversion_based_unit_and_area_unit.html" title="StepBasic_ConversionBased\lUnitAndAreaUnit" alt="" coords="649,5,839,47"/>
+<area shape="rect" id="node5" href="$class_step_basic___conversion_based_unit_and_length_unit.html" title="StepBasic_ConversionBased\lUnitAndLengthUnit" alt="" coords="649,71,839,112"/>
+<area shape="rect" id="node6" href="$class_step_basic___conversion_based_unit_and_mass_unit.html" title="StepBasic_ConversionBased\lUnitAndMassUnit" alt="" coords="649,136,839,177"/>
+<area shape="rect" id="node7" href="$class_step_basic___conversion_based_unit_and_plane_angle_unit.html" title="StepBasic_ConversionBased\lUnitAndPlaneAngleUnit" alt="" coords="649,201,839,243"/>
+<area shape="rect" id="node8" href="$class_step_basic___conversion_based_unit_and_ratio_unit.html" title="StepBasic_ConversionBased\lUnitAndRatioUnit" alt="" coords="649,267,839,308"/>
+<area shape="rect" id="node9" href="$class_step_basic___conversion_based_unit_and_solid_angle_unit.html" title="StepBasic_ConversionBased\lUnitAndSolidAngleUnit" alt="" coords="649,332,839,373"/>
+<area shape="rect" id="node10" href="$class_step_basic___conversion_based_unit_and_time_unit.html" title="StepBasic_ConversionBased\lUnitAndTimeUnit" alt="" coords="649,397,839,439"/>
+<area shape="rect" id="node11" href="$class_step_basic___conversion_based_unit_and_volume_unit.html" title="StepBasic_ConversionBased\lUnitAndVolumeUnit" alt="" coords="649,463,839,504"/>
+<area shape="rect" id="node2" href="$class_step_basic___named_unit.html" title="StepBasic_NamedUnit" alt="" coords="188,242,341,269"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,242,140,269"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="IGESData_LineFontEntity" name="IGESData_LineFontEntity">
+<area shape="rect" id="node4" href="$class_i_g_e_s_graph___line_font_def_pattern.html" title="defines IGESLineFontDefPattern, Type &lt;304&gt; Form &lt;2&gt; in package IGESGraph " alt="" coords="5,229,212,256"/>
+<area shape="rect" id="node5" href="$class_i_g_e_s_graph___line_font_def_template.html" title="defines IGESLineFontDefTemplate, Type &lt;304&gt; Form &lt;1&gt; in package IGESGraph " alt="" coords="236,229,453,256"/>
+<area shape="rect" id="node2" href="$class_i_g_e_s_data___i_g_e_s_entity.html" title="defines root of IGES Entity definition, including Directory Part, lists of (optionnal) Properties and..." alt="" coords="150,80,302,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="159,5,293,32"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="Transfer_Binder" name="Transfer_Binder">
+<area shape="rect" id="node3" href="$class_transfer___multiple_binder.html" title="Allows direct binding between a starting Object and the Result of its transfer, when it can be made o..." alt="" coords="379,5,536,32"/>
+<area shape="rect" id="node4" href="$class_transfer___simple_binder_of_transient.html" title="An adapted instantiation of SimpleBinder for Transient Result, i.e. ResultType can be computed from t..." alt="" coords="348,56,567,83"/>
+<area shape="rect" id="node6" href="$class_transfer___transient_list_binder.html" title="This binder binds several (a list of) Transients with a starting entity, when this entity itself corr..." alt="" coords="364,107,551,133"/>
+<area shape="rect" id="node7" href="$class_transfer___void_binder.html" title="a VoidBinder is used to bind a starting item with a status, error or warning messages, but no result It is interpreted by TransferProcess, which admits a VoidBinder to be over&#45;written, and copies its check to the new Binder " alt="" coords="388,157,527,184"/>
+<area shape="rect" id="node8" href="$class_transfer_b_rep___binder_of_shape.html" title="Allows direct binding between a starting Object and the Result of its transfer when it is Unique..." alt="" coords="360,208,555,235"/>
+<area shape="rect" id="node10" href="$class_transfer_b_rep___shape_list_binder.html" title="This binder binds several (a list of) shapes with a starting entity, when this entity itself correspo..." alt="" coords="356,259,559,285"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,132,140,159"/>
+<area shape="rect" id="node5" href="$class_transfer___binder_of_transient_integer.html" title="This type of Binder allows to attach as result, besides a Transient Object, an Integer Value..." alt="" coords="616,49,795,90"/>
+<area shape="rect" id="node9" href="$class_transfer_b_rep___shape_binder.html" title="A ShapeBinder is a BinderOfShape with some additional services to cast the Result under various kinds..." alt="" coords="615,208,796,235"/>
+</map>

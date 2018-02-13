@@ -1,0 +1,7 @@
+<map id="StdLPersistent_Value::Comment" name="StdLPersistent_Value::Comment">
+<area shape="rect" id="node3" href="$struct_std_obj_mgt___attribute_1_1_single_ref.html" title="StdObjMgt_Attribute\l\&lt; AttribClass \&gt;::SingleRef" alt="" coords="38,437,211,479"/>
+<area shape="rect" id="node4" href="$class_std_obj_mgt___attribute_1_1_simple.html" title="StdObjMgt_Attribute\l\&lt; Transient \&gt;::Simple\l\&lt; Handle\&lt; StdObjMgt_Persistent \&gt; \&gt;" alt="" coords="5,333,244,389"/>
+<area shape="rect" id="node5" href="$class_std_obj_mgt___attribute_1_1_static.html" title="StdObjMgt_Attribute\l\&lt; Transient \&gt;::Static" alt="" coords="54,244,195,285"/>
+<area shape="rect" id="node7" href="$class_std_obj_mgt___persistent.html" title="Root class for a temporary persistent object that reads data from a file and then creates transient o..." alt="" coords="49,80,200,107"/>
+<area shape="rect" id="node8" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="57,5,192,32"/>
+</map>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Visualization">
+         <FileRef
+            location = "group:TKService.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKV3d.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKOpenGl.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKMeshVS.xcodeproj">
+         </FileRef>
+   </Group>
+</Workspace>

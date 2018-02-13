@@ -1,0 +1,6 @@
+<map id="StepBasic_DocumentReference" name="StepBasic_DocumentReference">
+<area shape="rect" id="node3" href="$class_step_a_p203___cc_design_specification_reference.html" title="Representation of STEP entity CcDesignSpecificationReference. " alt="" coords="443,5,668,47"/>
+<area shape="rect" id="node4" href="$class_step_a_p214___applied_document_reference.html" title="StepAP214_AppliedDocument\lReference" alt="" coords="457,71,654,112"/>
+<area shape="rect" id="node5" href="$class_step_a_p214___auto_design_document_reference.html" title="StepAP214_AutoDesignDocument\lReference" alt="" coords="445,136,666,177"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,78,140,105"/>
+</map>

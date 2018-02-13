@@ -1,0 +1,12 @@
+digraph schema_Visualization
+{
+	TKService [ URL = "toolkit_tkservice.html" ]
+	TKV3d [ URL = "toolkit_tkv3d.html" ]
+	TKService -> TKV3d [ dir = "back", color = "midnightblue", style = "solid" ]
+	TKOpenGl [ URL = "toolkit_tkopengl.html" ]
+	TKService -> TKOpenGl [ dir = "back", color = "midnightblue", style = "solid" ]
+	TKV3d -> TKOpenGl [ dir = "back", color = "midnightblue", style = "solid" ]
+	TKMeshVS [ URL = "toolkit_tkmeshvs.html" ]
+	TKV3d -> TKMeshVS [ dir = "back", color = "midnightblue", style = "solid" ]
+	TKService -> TKMeshVS [ dir = "back", color = "midnightblue", style = "solid" ]
+}

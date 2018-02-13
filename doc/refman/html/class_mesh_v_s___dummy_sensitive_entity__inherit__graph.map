@@ -1,0 +1,4 @@
+<map id="MeshVS_DummySensitiveEntity" name="MeshVS_DummySensitiveEntity">
+<area shape="rect" id="node2" href="$class_select_basics___sensitive_entity.html" title="root class; the inheriting classes will be able to give sensitive Areas for the dynamic selection alg..." alt="" coords="15,80,207,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="43,5,178,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ChFiDS_Spine" name="ChFiDS_Spine">
+<area shape="rect" id="node3" href="$class_ch_fi_d_s___chamf_spine.html" title="Provides data specific to chamfers distances on each of faces. " alt="" coords="5,155,149,181"/>
+<area shape="rect" id="node4" href="$class_ch_fi_d_s___fil_spine.html" title="Provides data specific to the fillets &#45; vector or rule of evolution (C2). " alt="" coords="174,155,295,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="89,5,223,32"/>
+</map>

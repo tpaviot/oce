@@ -1,0 +1,13 @@
+<map id="ShapeFix_Root" name="ShapeFix_Root">
+<area shape="rect" id="node3" href="$class_shape_fix___compose_shell.html" title="This class is intended to create a shell from the composite surface (grid of surfaces) and set of wir..." alt="" coords="363,5,531,32"/>
+<area shape="rect" id="node4" href="$class_shape_fix___face.html" title="This operator allows to perform various fixes on face and its wires: fixes provided by ShapeFix_Wire..." alt="" coords="390,56,503,83"/>
+<area shape="rect" id="node5" href="$class_shape_fix___fix_small_face.html" title="Fixing face with small size. " alt="" coords="365,107,529,133"/>
+<area shape="rect" id="node6" href="$class_shape_fix___fix_small_solid.html" title="Fixing solids with small size. " alt="" coords="365,157,529,184"/>
+<area shape="rect" id="node7" href="$class_shape_fix___shape.html" title="Fixing shape in general. " alt="" coords="386,208,507,235"/>
+<area shape="rect" id="node8" href="$class_shape_fix___shell.html" title="Fixing orientation of faces in shell. " alt="" coords="390,259,503,285"/>
+<area shape="rect" id="node9" href="$class_shape_fix___solid.html" title="Provides method to build a solid from a shells and orients them in order to have a valid solid with f..." alt="" coords="390,309,503,336"/>
+<area shape="rect" id="node10" href="$class_shape_fix___split_common_vertex.html" title="Two wires have common vertex &#45; this case is valid in BRep model and isn&#39;t valid in STEP =&gt; before wri..." alt="" coords="347,360,547,387"/>
+<area shape="rect" id="node11" href="$class_shape_fix___wire.html" title="This class provides a set of tools for repairing a wire. " alt="" coords="391,411,502,437"/>
+<area shape="rect" id="node12" href="$class_shape_fix___wireframe.html" title="Provides methods for fixing wireframe of shape. " alt="" coords="375,461,518,488"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,233,140,260"/>
+</map>

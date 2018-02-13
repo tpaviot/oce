@@ -1,0 +1,22 @@
+<map id="math_MultipleVarFunctionWithGradient" name="math_MultipleVarFunctionWithGradient">
+<area shape="rect" id="node3" href="$class_app_def___b_sp_par_function_of_my_b_spl_gradient_of_b_spline_compute.html" title="AppDef_BSpParFunctionOfMy\lBSplGradientOfBSplineCompute" alt="" coords="466,5,675,47"/>
+<area shape="rect" id="node4" href="$class_app_def___par_function_of_my_gradientbis_of_b_spline_compute.html" title="AppDef_ParFunctionOfMyGradientbis\lOfBSplineCompute" alt="" coords="451,71,690,112"/>
+<area shape="rect" id="node5" href="$class_app_def___par_function_of_my_gradient_of_compute.html" title="AppDef_ParFunctionOfMyGradient\lOfCompute" alt="" coords="460,136,681,177"/>
+<area shape="rect" id="node6" href="$class_app_def___par_function_of_the_gradient.html" title="AppDef_ParFunctionOfTheGradient" alt="" coords="459,202,683,229"/>
+<area shape="rect" id="node7" href="$class_app_def___the_function.html" title="AppDef_TheFunction" alt="" coords="499,253,642,279"/>
+<area shape="rect" id="node8" href="$class_b_rep_approx___b_sp_par_function_of_my_b_spl_gradient_of_the_compute_line_of_approx.html" title="BRepApprox_BSpParFunction\lOfMyBSplGradientOfTheComputeLine\lOfApprox" alt="" coords="451,303,691,359"/>
+<area shape="rect" id="node9" href="$class_b_rep_approx___par_function_of_my_gradientbis_of_the_compute_line_of_approx.html" title="BRepApprox_ParFunctionOf\lMyGradientbisOfTheComputeLine\lOfApprox" alt="" coords="463,383,679,439"/>
+<area shape="rect" id="node10" href="$class_b_rep_approx___par_function_of_my_gradient_of_the_compute_line_bezier_of_approx.html" title="BRepApprox_ParFunctionOf\lMyGradientOfTheComputeLineBezier\lOfApprox" alt="" coords="453,463,689,519"/>
+<area shape="rect" id="node11" href="$class_extrema___func_p_s_dist.html" title="Functional for search of extremum of the square Euclidean distance between point P and surface S..." alt="" coords="497,543,645,570"/>
+<area shape="rect" id="node12" href="$class_extrema___glob_opt_func_c_c_c1.html" title="This class implements function which calculate Eucluidean distance between point on curve and point o..." alt="" coords="476,594,665,621"/>
+<area shape="rect" id="node13" href="$class_geom_int___b_sp_par_function_of_my_b_spl_gradient_of_the_compute_line_of_w_l_approx.html" title="GeomInt_BSpParFunctionOf\lMyBSplGradientOfTheComputeLine\lOfWLApprox" alt="" coords="457,645,684,701"/>
+<area shape="rect" id="node14" href="$class_geom_int___par_function_of_my_gradientbis_of_the_compute_line_of_w_l_approx.html" title="GeomInt_ParFunctionOfMyGradientbis\lOfTheComputeLineOfWLApprox" alt="" coords="448,725,693,767"/>
+<area shape="rect" id="node15" href="$class_geom_int___par_function_of_my_gradient_of_the_compute_line_bezier_of_w_l_approx.html" title="GeomInt_ParFunctionOfMyGradient\lOfTheComputeLineBezierOfWLApprox" alt="" coords="449,791,692,832"/>
+<area shape="rect" id="node16" href="$classmath___multiple_var_function_with_hessian.html" title="math_MultipleVarFunction\lWithHessian" alt="" coords="484,856,657,897"/>
+<area shape="rect" id="node2" href="$classmath___multiple_var_function.html" title="Describes the virtual functions associated with a multiple variable function. " alt="" coords="5,438,179,465"/>
+<area shape="rect" id="node17" href="$class_extrema___glob_opt_func_c_c_c2.html" title="This class implements function which calculate Eucluidean distance between point on curve and point o..." alt="" coords="741,813,931,839"/>
+<area shape="rect" id="node18" href="$class_extrema___glob_opt_func_c_s.html" title="This class implements function which calculate square Eucluidean distance between point on curve and ..." alt="" coords="749,863,923,890"/>
+<area shape="rect" id="node19" href="$class_fair_curve___energy.html" title="necessary methodes to compute the energy of an FairCurve. " alt="" coords="774,914,898,941"/>
+<area shape="rect" id="node20" href="$class_fair_curve___energy_of_batten.html" title="Energy Criterium to minimize in Batten. " alt="" coords="979,889,1153,915"/>
+<area shape="rect" id="node21" href="$class_fair_curve___energy_of_m_v_c.html" title="Energy Criterium to minimize in MinimalVariationCurve. " alt="" coords="983,939,1149,966"/>
+</map>

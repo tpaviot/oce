@@ -1,0 +1,10 @@
+<map id="StepShape_ConnectedFaceSet" name="StepShape_ConnectedFaceSet">
+<area shape="rect" id="node5" href="$class_step_shape___closed_shell.html" title="StepShape_ClosedShell" alt="" coords="15,304,178,331"/>
+<area shape="rect" id="node7" href="$class_step_shape___connected_face_sub_set.html" title="Representation of STEP entity ConnectedFaceSubSet. " alt="" coords="202,304,429,331"/>
+<area shape="rect" id="node8" href="$class_step_shape___open_shell.html" title="StepShape_OpenShell" alt="" coords="453,304,607,331"/>
+<area shape="rect" id="node2" href="$class_step_shape___topological_representation_item.html" title="StepShape_TopologicalRepresentationItem" alt="" coords="180,155,451,181"/>
+<area shape="rect" id="node3" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="218,80,413,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="248,5,383,32"/>
+<area shape="rect" id="node6" href="$class_step_shape___oriented_closed_shell.html" title="StepShape_OrientedClosed\lShell" alt="" coords="5,379,188,420"/>
+<area shape="rect" id="node9" href="$class_step_shape___oriented_open_shell.html" title="StepShape_OrientedOpenShell" alt="" coords="429,386,631,413"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="StepData_SelectReal" name="StepData_SelectReal">
+<area shape="rect" id="node4" href="$class_step_basic___measure_value_member.html" title="for Select MeasureValue, i.e. : length_measure,time_measure,plane_angle_measure, solid_angle_measure..." alt="" coords="5,229,224,256"/>
+<area shape="rect" id="node5" href="$class_step_basic___size_member.html" title="For immediate members of SizeSelect, i.e. : ParameterValue (a Real) " alt="" coords="248,229,411,256"/>
+<area shape="rect" id="node6" href="$class_step_geom___trimming_member.html" title="For immediate members of TrimmingSelect, i.e. : ParameterValue (a Real) " alt="" coords="435,229,626,256"/>
+<area shape="rect" id="node2" href="$class_step_data___select_member.html" title="The general form for a Select Member. A Select Member can, either define a value of a basic type (suc..." alt="" coords="246,80,413,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="262,5,397,32"/>
+</map>

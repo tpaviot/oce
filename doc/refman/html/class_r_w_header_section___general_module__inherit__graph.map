@@ -1,0 +1,5 @@
+<map id="RWHeaderSection_GeneralModule" name="RWHeaderSection_GeneralModule">
+<area shape="rect" id="node2" href="$class_step_data___general_module.html" title="Specific features for General Services adapted to STEP. " alt="" coords="31,155,202,181"/>
+<area shape="rect" id="node3" href="$class_interface___general_module.html" title="This class defines general services, which must be provided for each type of Entity (i..." alt="" coords="34,80,199,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="49,5,184,32"/>
+</map>

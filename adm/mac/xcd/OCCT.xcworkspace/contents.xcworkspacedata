@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "OCCT">
+      <Group
+         location = "container:"
+         name = "FoundationClasses">
+         <FileRef
+            location = "group:TKernel.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKMath.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "ModelingData">
+         <FileRef
+            location = "group:TKG2d.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKG3d.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKGeomBase.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBRep.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "ModelingAlgorithms">
+         <FileRef
+            location = "group:TKGeomAlgo.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKTopAlgo.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKPrim.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKHLR.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKMesh.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKShHealing.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXMesh.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBO.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBool.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKFillet.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKFeat.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKOffset.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Visualization">
+         <FileRef
+            location = "group:TKService.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKV3d.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKOpenGl.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKMeshVS.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "ApplicationFramework">
+         <FileRef
+            location = "group:TKCDF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKLCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBinL.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXmlL.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKStdL.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKTObj.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKVCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBin.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXml.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKStd.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBinTObj.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXmlTObj.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "DataExchange">
+         <FileRef
+            location = "group:TKVRML.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKSTL.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXSBase.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXmlXCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBinXCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKSTEPBase.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKIGES.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKSTEPAttr.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKSTEP209.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXDEIGES.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKSTEP.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXDESTEP.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Draw">
+         <FileRef
+            location = "group:TKDraw.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKTopTest.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKViewerTest.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXSDRAW.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKDCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXDEDRAW.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKTObjDRAW.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKQADraw.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:DRAWEXE.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+</Workspace>

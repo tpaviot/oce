@@ -1,0 +1,14 @@
+puts "================"
+puts "OCC19"
+puts "================"
+puts ""
+
+restore [locate_data_file OCC19.brep] result
+checkshape result
+
+tclean result
+incmesh result .9
+triangles result
+
+checktrinfo result -tri 91 -nod 93
+checkview -display result -3d -path ${imagedir}/${test_image}.png

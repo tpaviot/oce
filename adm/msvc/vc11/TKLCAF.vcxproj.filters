@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{86C0FA0E-16E0-0CCA-01CB-9346AD054429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TDF">
+      <UniqueIdentifier>{BDEC110D-1253-01A4-011A-609A3E2E8ACC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TDataStd">
+      <UniqueIdentifier>{9A96C5A2-095B-087B-0185-86FC2C15D708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TFunction">
+      <UniqueIdentifier>{D85C9FBA-17AB-051D-079F-8316502E1D06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TDocStd">
+      <UniqueIdentifier>{738FAD7D-07C9-0291-02DF-4EAA62943E74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\AppStdL">
+      <UniqueIdentifier>{905C0708-17FD-038E-0323-CC6C61DF92BF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\TDF\TDF.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_Attribute.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_AttributeDelta.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_AttributeIterator.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_ChildIDIterator.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_ChildIterator.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_ClosureMode.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_ClosureTool.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_ComparisonTool.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_CopyLabel.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_CopyTool.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_Data.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_DataSet.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_DefaultDeltaOnModification.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_DefaultDeltaOnRemoval.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_Delta.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_DeltaOnAddition.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_DeltaOnForget.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_DeltaOnModification.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_DeltaOnRemoval.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_DeltaOnResume.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_IDFilter.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_Label.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_LabelNode.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_Reference.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_RelocationTable.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_TagSource.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_Tool.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDF\TDF_Transaction.cxx">
+      <Filter>Source files\TDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_AsciiString.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_BooleanArray.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_BooleanList.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_ByteArray.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_ChildNodeIterator.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_Comment.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_Current.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_DeltaOnModificationOfByteArray.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_DeltaOnModificationOfExtStringArray.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_DeltaOnModificationOfIntArray.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_DeltaOnModificationOfIntPackedMap.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_DeltaOnModificationOfRealArray.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_Directory.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_Expression.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_ExtStringArray.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_ExtStringList.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_HDataMapOfStringByte.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_HDataMapOfStringHArray1OfInteger.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_HDataMapOfStringHArray1OfReal.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_HDataMapOfStringInteger.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_HDataMapOfStringReal.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_HDataMapOfStringString.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_IntPackedMap.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_Integer.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_IntegerArray.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_IntegerList.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_Name.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_NamedData.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_NoteBook.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_Real.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_RealArray.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_RealList.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_ReferenceArray.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_ReferenceList.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_Relation.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_Tick.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_TreeNode.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_UAttribute.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDataStd\TDataStd_Variable.cxx">
+      <Filter>Source files\TDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TFunction\TFunction_Driver.cxx">
+      <Filter>Source files\TFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TFunction\TFunction_DriverTable.cxx">
+      <Filter>Source files\TFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TFunction\TFunction_Function.cxx">
+      <Filter>Source files\TFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TFunction\TFunction_GraphNode.cxx">
+      <Filter>Source files\TFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TFunction\TFunction_IFunction.cxx">
+      <Filter>Source files\TFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TFunction\TFunction_Iterator.cxx">
+      <Filter>Source files\TFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TFunction\TFunction_Logbook.cxx">
+      <Filter>Source files\TFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TFunction\TFunction_Scope.cxx">
+      <Filter>Source files\TFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_Application.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_ApplicationDelta.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_CompoundDelta.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_Context.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_Document.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_Modified.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_MultiTransactionManager.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_Owner.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_PathParser.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_XLink.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_XLinkIterator.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_XLinkRoot.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TDocStd\TDocStd_XLinkTool.cxx">
+      <Filter>Source files\TDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AppStdL\AppStdL_Application.cxx">
+      <Filter>Source files\AppStdL</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKLCAF.rc" />  </ItemGroup>
+</Project>

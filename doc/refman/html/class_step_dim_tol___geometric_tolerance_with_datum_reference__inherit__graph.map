@@ -1,0 +1,12 @@
+<map id="StepDimTol_GeometricToleranceWithDatumReference" name="StepDimTol_GeometricToleranceWithDatumReference">
+<area shape="rect" id="node4" href="$class_step_dim_tol___angularity_tolerance.html" title="Representation of STEP entity AngularityTolerance. " alt="" coords="713,5,924,32"/>
+<area shape="rect" id="node5" href="$class_step_dim_tol___circular_runout_tolerance.html" title="Representation of STEP entity CircularRunoutTolerance. " alt="" coords="728,57,909,98"/>
+<area shape="rect" id="node6" href="$class_step_dim_tol___coaxiality_tolerance.html" title="Representation of STEP entity CoaxialityTolerance. " alt="" coords="714,123,923,149"/>
+<area shape="rect" id="node7" href="$class_step_dim_tol___concentricity_tolerance.html" title="Representation of STEP entity ConcentricityTolerance. " alt="" coords="733,174,905,215"/>
+<area shape="rect" id="node8" href="$class_step_dim_tol___parallelism_tolerance.html" title="Representation of STEP entity ParallelismTolerance. " alt="" coords="711,240,927,267"/>
+<area shape="rect" id="node9" href="$class_step_dim_tol___perpendicularity_tolerance.html" title="Representation of STEP entity PerpendicularityTolerance. " alt="" coords="724,291,913,333"/>
+<area shape="rect" id="node10" href="$class_step_dim_tol___symmetry_tolerance.html" title="Representation of STEP entity SymmetryTolerance. " alt="" coords="713,357,925,384"/>
+<area shape="rect" id="node11" href="$class_step_dim_tol___total_runout_tolerance.html" title="Representation of STEP entity TotalRunoutTolerance. " alt="" coords="708,408,929,435"/>
+<area shape="rect" id="node2" href="$class_step_dim_tol___geometric_tolerance.html" title="Representation of STEP entity GeometricTolerance. " alt="" coords="188,211,400,237"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,211,140,237"/>
+</map>

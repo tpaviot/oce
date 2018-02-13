@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{5A5675DE-0AE3-10E1-0993-BBD7663AA255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepAP214">
+      <UniqueIdentifier>{77B2FC98-14EE-168C-14C2-2BEF125CA6A1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\RWStepAP214">
+      <UniqueIdentifier>{BFAFE8FB-10BE-13D2-180A-F4757D4D99F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepAP203">
+      <UniqueIdentifier>{B582B2F9-0AD0-101D-00F5-0BB33B23F5E6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\RWStepAP203">
+      <UniqueIdentifier>{E4D857E3-14D7-0948-1297-DACE2B15873C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STEPConstruct">
+      <UniqueIdentifier>{61AF2B13-1875-01F2-0A3E-959E2CC3643C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STEPEdit">
+      <UniqueIdentifier>{E9ADE4B9-0F2B-096C-116D-B5AF1FFC430E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\GeomToStep">
+      <UniqueIdentifier>{964EB090-10D0-1240-0979-99C1F38C625F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepToGeom">
+      <UniqueIdentifier>{8E6EA500-0E17-121B-1596-E62F31244BDD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepToTopoDS">
+      <UniqueIdentifier>{F0B5F013-1006-0F3E-14A0-FE4D7E91A5DC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TopoDSToStep">
+      <UniqueIdentifier>{204E687F-0751-08F2-0006-7573E60C361A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STEPControl">
+      <UniqueIdentifier>{B40E04A0-13AE-103D-0CBA-BF5D8A961E47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STEPSelections">
+      <UniqueIdentifier>{9E083E62-1964-07D0-1724-71BB7ECC7674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepAP209">
+      <UniqueIdentifier>{74E83E43-0AF8-1357-0217-34E951C1D0BE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\RWStepAP242">
+      <UniqueIdentifier>{6F7390E0-0D8D-0D50-0001-BC473EE96A99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepAP242">
+      <UniqueIdentifier>{5592FA02-14A4-0DC9-014B-47A84E7AD402}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedApprovalAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedDateAndTimeAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedDateAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedDocumentReference.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedExternalIdentificationAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedGroupAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedOrganizationAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedPersonAndOrganizationAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedPresentedItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedSecurityClassificationAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_ApprovalItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignActualDateAndTimeAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignActualDateAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignApprovalAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignDateAndPersonAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignDateAndPersonItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignDateAndTimeItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignDatedItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignDocumentReference.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignGeneralOrgItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignGroupAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignGroupedItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignNominalDateAndTimeAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignNominalDateAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignOrganizationAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignOrganizationItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignPersonAndOrganizationAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignPresentedItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignPresentedItemSelect.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignReferencingItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignSecurityClassificationAssignment.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_Class.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_DateAndTimeItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_DateItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_DocumentReferenceItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_ExternalIdentificationItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_ExternallyDefinedClass.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_ExternallyDefinedGeneralProperty.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_GroupItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_OrganizationItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_PersonAndOrganizationItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_PresentedItemSelect.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_Protocol.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_RepItemGroup.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_SecurityClassificationItem.cxx">
+      <Filter>Source files\StepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_GeneralModule.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedApprovalAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedDateAndTimeAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedDateAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedDocumentReference.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedExternalIdentificationAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedGroupAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedOrganizationAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedPersonAndOrganizationAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedPresentedItem.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedSecurityClassificationAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignActualDateAndTimeAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignActualDateAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignApprovalAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignDateAndPersonAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignDocumentReference.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignGroupAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignNominalDateAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignOrganizationAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignPresentedItem.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignSecurityClassificationAssignment.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWClass.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWExternallyDefinedClass.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWExternallyDefinedGeneralProperty.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWRepItemGroup.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_ReadWriteModule.cxx">
+      <Filter>Source files\RWStepAP214</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_ApprovedItem.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignApproval.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignCertification.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignContract.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignDateAndTimeAssignment.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignPersonAndOrganizationAssignment.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignSecurityClassification.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignSpecificationReference.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CertifiedItem.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_Change.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_ChangeRequest.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_ChangeRequestItem.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_ClassifiedItem.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_ContractedItem.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_DateTimeItem.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_PersonOrganizationItem.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_SpecifiedItem.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_StartRequest.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_StartRequestItem.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_StartWork.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_WorkItem.cxx">
+      <Filter>Source files\StepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignApproval.cxx">
+      <Filter>Source files\RWStepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignCertification.cxx">
+      <Filter>Source files\RWStepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignContract.cxx">
+      <Filter>Source files\RWStepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignDateAndTimeAssignment.cxx">
+      <Filter>Source files\RWStepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignPersonAndOrganizationAssignment.cxx">
+      <Filter>Source files\RWStepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignSecurityClassification.cxx">
+      <Filter>Source files\RWStepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignSpecificationReference.cxx">
+      <Filter>Source files\RWStepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWChange.cxx">
+      <Filter>Source files\RWStepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWChangeRequest.cxx">
+      <Filter>Source files\RWStepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWStartRequest.cxx">
+      <Filter>Source files\RWStepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWStartWork.cxx">
+      <Filter>Source files\RWStepAP203</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct.cxx">
+      <Filter>Source files\STEPConstruct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_AP203Context.cxx">
+      <Filter>Source files\STEPConstruct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_Assembly.cxx">
+      <Filter>Source files\STEPConstruct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_ContextTool.cxx">
+      <Filter>Source files\STEPConstruct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_ExternRefs.cxx">
+      <Filter>Source files\STEPConstruct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_Part.cxx">
+      <Filter>Source files\STEPConstruct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_PointHasher.cxx">
+      <Filter>Source files\STEPConstruct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_Styles.cxx">
+      <Filter>Source files\STEPConstruct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_Tool.cxx">
+      <Filter>Source files\STEPConstruct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_UnitContext.cxx">
+      <Filter>Source files\STEPConstruct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_ValidationProps.cxx">
+      <Filter>Source files\STEPConstruct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPEdit\STEPEdit.cxx">
+      <Filter>Source files\STEPEdit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPEdit\STEPEdit_EditContext.cxx">
+      <Filter>Source files\STEPEdit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPEdit\STEPEdit_EditSDR.cxx">
+      <Filter>Source files\STEPEdit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeAxis1Placement.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeAxis2Placement2d.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeAxis2Placement3d.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBSplineCurveWithKnots.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBSplineSurfaceWithKnots.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBoundedCurve.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBoundedSurface.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeCartesianPoint.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeCircle.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeConic.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeConicalSurface.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeCurve.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeCylindricalSurface.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeDirection.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeElementarySurface.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeEllipse.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeHyperbola.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeLine.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeParabola.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakePlane.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakePolyline.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeRectangularTrimmedSurface.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeSphericalSurface.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeSurface.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeSurfaceOfLinearExtrusion.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeSurfaceOfRevolution.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeSweptSurface.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeToroidalSurface.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeVector.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_Root.cxx">
+      <Filter>Source files\GeomToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToGeom\StepToGeom.cxx">
+      <Filter>Source files\StepToGeom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_Builder.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_CartesianPointHasher.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_GeometricTool.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_MakeTransformed.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_NMTool.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_PointPair.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_PointPairHasher.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_Root.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_Tool.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateCompositeCurve.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateCurveBoundedSurface.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateEdge.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateEdgeLoop.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateFace.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslatePolyLoop.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateShell.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateVertex.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateVertexLoop.cxx">
+      <Filter>Source files\StepToTopoDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_Builder.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_FacetedTool.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeBrepWithVoids.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeFacetedBrep.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeFacetedBrepAndBrepWithVoids.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeGeometricCurveSet.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeManifoldSolidBrep.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeShellBasedSurfaceModel.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeStepEdge.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeStepFace.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeStepVertex.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeStepWire.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_Root.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_Tool.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_WireframeBuilder.cxx">
+      <Filter>Source files\TopoDSToStep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPControl\STEPControl_ActorRead.cxx">
+      <Filter>Source files\STEPControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPControl\STEPControl_ActorWrite.cxx">
+      <Filter>Source files\STEPControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPControl\STEPControl_Controller.cxx">
+      <Filter>Source files\STEPControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPControl\STEPControl_Reader.cxx">
+      <Filter>Source files\STEPControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPControl\STEPControl_Writer.cxx">
+      <Filter>Source files\STEPControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_AssemblyComponent.cxx">
+      <Filter>Source files\STEPSelections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_AssemblyExplorer.cxx">
+      <Filter>Source files\STEPSelections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_AssemblyLink.cxx">
+      <Filter>Source files\STEPSelections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_Counter.cxx">
+      <Filter>Source files\STEPSelections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectAssembly.cxx">
+      <Filter>Source files\STEPSelections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectDerived.cxx">
+      <Filter>Source files\STEPSelections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectFaces.cxx">
+      <Filter>Source files\STEPSelections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectForTransfer.cxx">
+      <Filter>Source files\STEPSelections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectGSCurves.cxx">
+      <Filter>Source files\STEPSelections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectInstances.cxx">
+      <Filter>Source files\STEPSelections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP209\StepAP209_Construct.cxx">
+      <Filter>Source files\StepAP209</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP242\RWStepAP242_RWDraughtingModelItemAssociation.cxx">
+      <Filter>Source files\RWStepAP242</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP242\RWStepAP242_RWGeometricItemSpecificUsage.cxx">
+      <Filter>Source files\RWStepAP242</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP242\RWStepAP242_RWIdAttribute.cxx">
+      <Filter>Source files\RWStepAP242</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP242\RWStepAP242_RWItemIdentifiedRepresentationUsage.cxx">
+      <Filter>Source files\RWStepAP242</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_DraughtingModelItemAssociation.cxx">
+      <Filter>Source files\StepAP242</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_GeometricItemSpecificUsage.cxx">
+      <Filter>Source files\StepAP242</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_IdAttribute.cxx">
+      <Filter>Source files\StepAP242</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_IdAttributeSelect.cxx">
+      <Filter>Source files\StepAP242</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_ItemIdentifiedRepresentationUsage.cxx">
+      <Filter>Source files\StepAP242</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_ItemIdentifiedRepresentationUsageDefinition.cxx">
+      <Filter>Source files\StepAP242</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKSTEP.rc" />  </ItemGroup>
+</Project>

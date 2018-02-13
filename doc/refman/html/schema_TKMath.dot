@@ -1,0 +1,6 @@
+digraph schema_TKMath
+{
+	TKMath [ URL = "toolkit_tkmath.html", shape = box ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKMath -> TKernel [ color = "midnightblue", style = "solid" ]
+}

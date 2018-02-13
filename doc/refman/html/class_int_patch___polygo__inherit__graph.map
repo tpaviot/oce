@@ -1,0 +1,5 @@
+<map id="IntPatch_Polygo" name="IntPatch_Polygo">
+<area shape="rect" id="node3" href="$class_int_patch___poly_arc.html" title="IntPatch_PolyArc" alt="" coords="5,155,128,181"/>
+<area shape="rect" id="node4" href="$class_int_patch___poly_line.html" title="IntPatch_PolyLine" alt="" coords="153,155,279,181"/>
+<area shape="rect" id="node2" href="$class_intf___polygon2d.html" title="Describes the necessary polygon information to compute the interferences. " alt="" coords="88,5,195,32"/>
+</map>

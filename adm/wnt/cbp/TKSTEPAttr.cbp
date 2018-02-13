@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKSTEPAttr" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKSTEPAttr" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__StepVisual_DLL" />
+					<Add option="-D__RWStepVisual_DLL" />
+					<Add option="-D__StepDimTol_DLL" />
+					<Add option="-D__RWStepDimTol_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKSTEPAttr_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKSTEPAttr" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__StepVisual_DLL" />
+					<Add option="-D__RWStepVisual_DLL" />
+					<Add option="-D__StepDimTol_DLL" />
+					<Add option="-D__RWStepDimTol_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKSTEPAttr_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKernel" />
+			<Add library="TKXSBase" />
+			<Add library="TKSTEPBase" />
+		</Linker>
+		<Unit filename="../../../src/StepVisual/StepVisual_AnnotationCurveOccurrence.cxx" />
+		<Unit filename="../../../src/StepVisual/StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_AnnotationFillArea.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_AnnotationFillAreaOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_AnnotationOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_AnnotationPlane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_AnnotationPlaneElement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_AnnotationText.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_AnnotationTextOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_AreaInSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_AreaOrView.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_BackgroundColour.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_BoxCharacteristicSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraImage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraImage2dWithScale.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraImage3dWithScale.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraModelD2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraModelD3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraModelD3MultiClipping.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraModelD3MultiClippingInterectionSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraModelD3MultiClippingIntersection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraModelD3MultiClippingUnion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraModelD3MultiClippingUnionSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CameraUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_Colour.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_ColourRgb.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_ColourSpecification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CompositeText.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CompositeTextWithExtent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_ContextDependentInvisibility.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_ContextDependentOverRidingStyledItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CoordinatesList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CurveStyle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CurveStyleFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CurveStyleFontPattern.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_CurveStyleFontSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_DirectionCountSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_DraughtingAnnotationOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_DraughtingCallout.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_DraughtingCalloutElement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_DraughtingModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_DraughtingPreDefinedColour.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_DraughtingPreDefinedCurveFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_ExternallyDefinedCurveFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_ExternallyDefinedTextFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_FillAreaStyle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_FillAreaStyleColour.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_FillStyleSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_FontSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_Invisibility.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_InvisibilityContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_InvisibleItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_LayeredItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_MarkerMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_MarkerSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_MechanicalDesignGeometricPresentationArea.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_MechanicalDesignGeometricPresentationRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_NullStyleMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_OverRidingStyledItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PlanarBox.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PlanarExtent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PointStyle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PreDefinedColour.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PreDefinedCurveFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PreDefinedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PreDefinedTextFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationArea.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationLayerAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationLayerUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationRepresentationSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationSize.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationSizeAssignmentSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationStyleAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationStyleByContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationStyleSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentationView.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_PresentedItemRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_StyleContextSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_StyledItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_StyledItemTarget.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_SurfaceSideStyle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_SurfaceStyleBoundary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_SurfaceStyleControlGrid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_SurfaceStyleElementSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_SurfaceStyleFillArea.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_SurfaceStyleParameterLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_SurfaceStyleSegmentationCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_SurfaceStyleSilhouette.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_SurfaceStyleUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_Template.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_TemplateInstance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_TessellatedAnnotationOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_TessellatedCurveSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_TessellatedGeometricSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_TessellatedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_TextLiteral.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_TextOrCharacter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_TextStyle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_TextStyleForDefinedFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_TextStyleWithBoxCharacteristics.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepVisual/StepVisual_ViewVolume.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWAnnotationCurveOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWAnnotationFillArea.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWAnnotationFillAreaOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWAnnotationOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWAnnotationPlane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWAreaInSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWBackgroundColour.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCameraImage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCameraModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCameraModelD2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCameraModelD3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCameraModelD3MultiClipping.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCameraModelD3MultiClippingIntersection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCameraModelD3MultiClippingUnion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCameraUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWColour.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWColourRgb.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWColourSpecification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCompositeText.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCompositeTextWithExtent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWContextDependentInvisibility.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWContextDependentOverRidingStyledItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCoordinatesList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCurveStyle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCurveStyleFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWCurveStyleFontPattern.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWDraughtingCallout.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWDraughtingModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWDraughtingPreDefinedColour.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWDraughtingPreDefinedCurveFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWExternallyDefinedCurveFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWFillAreaStyle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWFillAreaStyleColour.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWInvisibility.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWMechanicalDesignGeometricPresentationArea.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWOverRidingStyledItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPlanarBox.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPlanarExtent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPointStyle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPreDefinedColour.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPreDefinedCurveFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPreDefinedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPresentationArea.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPresentationLayerAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPresentationLayerUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPresentationRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPresentationSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPresentationSize.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPresentationStyleAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPresentationStyleByContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPresentationView.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWPresentedItemRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWStyledItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWSurfaceSideStyle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWSurfaceStyleBoundary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWSurfaceStyleControlGrid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWSurfaceStyleFillArea.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWSurfaceStyleParameterLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWSurfaceStyleSegmentationCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWSurfaceStyleSilhouette.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWSurfaceStyleUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWTemplate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWTemplateInstance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWTessellatedAnnotationOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWTessellatedCurveSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWTessellatedGeometricSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWTessellatedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWTextLiteral.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWTextStyle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWTextStyleForDefinedFont.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWTextStyleWithBoxCharacteristics.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepVisual/RWStepVisual_RWViewVolume.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_AngularityTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_CircularRunoutTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_CoaxialityTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_CommonDatum.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_ConcentricityTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_CylindricityTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_Datum.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_DatumFeature.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_DatumOrCommonDatum.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_DatumReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_DatumReferenceCompartment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_DatumReferenceElement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_DatumReferenceModifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_DatumReferenceModifierWithValue.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_DatumSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_DatumSystemOrReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_DatumTarget.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_FlatnessTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeneralDatumReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeoTolAndGeoTolWthDatRef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeoTolAndGeoTolWthMaxTol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeoTolAndGeoTolWthMod.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeometricTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeometricToleranceRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeometricToleranceTarget.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeometricToleranceWithDatumReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeometricToleranceWithDefinedAreaUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeometricToleranceWithDefinedUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeometricToleranceWithMaximumTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_GeometricToleranceWithModifiers.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_LineProfileTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_ModifiedGeometricTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_NonUniformZoneDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_ParallelismTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_PerpendicularityTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_PlacedDatumTargetFeature.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_PositionTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_ProjectedZoneDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_RoundnessTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_RunoutZoneDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_RunoutZoneOrientation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_ShapeToleranceSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_SimpleDatumReferenceModifierMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_StraightnessTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_SurfaceProfileTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_SymmetryTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_ToleranceZone.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_ToleranceZoneDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_ToleranceZoneForm.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_ToleranceZoneTarget.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_TotalRunoutTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepDimTol/StepDimTol_UnequallyDisposedGeometricTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWAngularityTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWCircularRunoutTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWCoaxialityTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWCommonDatum.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWConcentricityTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWCylindricityTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWDatum.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWDatumFeature.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWDatumReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWDatumReferenceCompartment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWDatumReferenceElement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWDatumReferenceModifierWithValue.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWDatumSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWDatumTarget.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWFlatnessTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeneralDatumReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeoTolAndGeoTolWthDatRef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMod.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeoTolAndGeoTolWthMaxTol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeoTolAndGeoTolWthMod.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeometricTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeometricToleranceRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeometricToleranceWithDatumReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeometricToleranceWithDefinedAreaUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeometricToleranceWithDefinedUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeometricToleranceWithMaximumTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWGeometricToleranceWithModifiers.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWLineProfileTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWModifiedGeometricTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWNonUniformZoneDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWParallelismTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWPerpendicularityTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWPlacedDatumTargetFeature.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWPositionTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWProjectedZoneDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWRoundnessTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWRunoutZoneDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWRunoutZoneOrientation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWStraightnessTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWSurfaceProfileTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWSymmetryTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWToleranceZone.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWToleranceZoneDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWToleranceZoneForm.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWTotalRunoutTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepDimTol/RWStepDimTol_RWUnequallyDisposedGeometricTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

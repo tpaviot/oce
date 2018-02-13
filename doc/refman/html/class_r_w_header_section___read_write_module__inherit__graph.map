@@ -1,0 +1,5 @@
+<map id="RWHeaderSection_ReadWriteModule" name="RWHeaderSection_ReadWriteModule">
+<area shape="rect" id="node2" href="$class_step_data___read_write_module.html" title="Defines basic File Access Module (Recognize, Read, Write) That is : ReaderModule (Recognize &amp; Read) +..." alt="" coords="11,155,197,181"/>
+<area shape="rect" id="node3" href="$class_interface___reader_module.html" title="Defines unitary operations required to read an Entity from a File (see FileReaderData, FileReaderTool), under control of a FileReaderTool. The initial creation is performed by a GeneralModule (set in GeneralLib). Then, which remains is Loading data from the FileReaderData to the Entity. " alt="" coords="23,80,185,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="37,5,171,32"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="IFSelect_SelectExplore" name="IFSelect_SelectExplore">
+<area shape="rect" id="node5" href="$class_i_f_select___select_signed_shared.html" title="In the graph, explore the Shareds of the input entities, until it encounters some which match a given..." alt="" coords="795,5,989,32"/>
+<area shape="rect" id="node6" href="$class_i_f_select___select_signed_sharing.html" title="In the graph, explore the sharings of the input entities, until it encounters some which match a give..." alt="" coords="793,56,991,83"/>
+<area shape="rect" id="node7" href="$class_i_g_e_s_select___select_basic_geom.html" title="This selection returns the basic geometric elements contained in an IGES Entity Intended to run a &quot;qu..." alt="" coords="791,107,993,133"/>
+<area shape="rect" id="node8" href="$class_i_g_e_s_select___select_bypass_group.html" title="Selects a list built as follows : Groups are entities type 402, forms 1,7,14,15 (Group, Ordered or not, &quot;WithoutBackPointer&quot; or not) " alt="" coords="785,157,999,184"/>
+<area shape="rect" id="node9" href="$class_i_g_e_s_select___select_bypass_subfigure.html" title="Selects a list built as follows : Subfigures correspond to. " alt="" coords="776,208,1008,235"/>
+<area shape="rect" id="node10" href="$class_i_g_e_s_select___select_faces.html" title="This selection returns the faces contained in an IGES Entity or itself if it is a Face Face means : ..." alt="" coords="807,259,977,285"/>
+<area shape="rect" id="node11" href="$class_i_g_e_s_select___select_p_curves.html" title="This Selection returns the pcurves which lie on a face In two modes : global (i.e. a CompositeCurve is not explored) or basic (all the basic curves are listed) " alt="" coords="801,309,983,336"/>
+<area shape="rect" id="node12" href="$class_s_t_e_p_selections___select_assembly.html" title="STEPSelections_SelectAssembly" alt="" coords="783,360,1001,387"/>
+<area shape="rect" id="node13" href="$class_s_t_e_p_selections___select_faces.html" title="This selection returns &quot;STEP faces&quot;. " alt="" coords="793,411,991,437"/>
+<area shape="rect" id="node14" href="$class_s_t_e_p_selections___select_g_s_curves.html" title="This selection returns &quot;curves in the geometric_set (except composite curves)&quot;. " alt="" coords="783,461,1001,488"/>
+<area shape="rect" id="node15" href="$class_s_t_e_p_selections___select_instances.html" title="STEPSelections_SelectInstances" alt="" coords="783,512,1001,539"/>
+<area shape="rect" id="node16" href="$class_x_s_control___connected_shapes.html" title="From a TopoDS_Shape, or from the entity which has produced it, searches for the shapes, and the entities which have produced them in last transfer, which are adjacent to it by VERTICES. " alt="" coords="796,563,988,589"/>
+<area shape="rect" id="node2" href="$class_i_f_select___select_deduct.html" title="A SelectDeduct determines a list of Entities from an Input Selection, by a computation : Output list ..." alt="" coords="367,284,521,311"/>
+<area shape="rect" id="node3" href="$class_i_f_select___selection.html" title="A Selection allows to define a set of Interface Entities. Entities to be put on an output file should..." alt="" coords="188,284,319,311"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,284,140,311"/>
+</map>

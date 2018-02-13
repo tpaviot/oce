@@ -1,0 +1,5 @@
+<map id="Select3D_SensitiveTriangle" name="Select3D_SensitiveTriangle">
+<area shape="rect" id="node2" href="$class_select3_d___sensitive_entity.html" title="Abstract framework to define 3D sensitive entities. As the selection process uses the principle of a ..." alt="" coords="17,155,185,181"/>
+<area shape="rect" id="node3" href="$class_select_basics___sensitive_entity.html" title="root class; the inheriting classes will be able to give sensitive Areas for the dynamic selection alg..." alt="" coords="5,80,197,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="34,5,169,32"/>
+</map>

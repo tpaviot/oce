@@ -1,0 +1,6 @@
+<map id="IFSelect_SelectInList" name="IFSelect_SelectInList">
+<area shape="rect" id="node2" href="$class_i_f_select___select_any_list.html" title="A SelectAnyList kind Selection selects a List of an Entity, as well as this Entity contains some..." alt="" coords="5,229,164,256"/>
+<area shape="rect" id="node3" href="$class_i_f_select___select_deduct.html" title="A SelectDeduct determines a list of Entities from an Input Selection, by a computation : Output list ..." alt="" coords="7,155,162,181"/>
+<area shape="rect" id="node4" href="$class_i_f_select___selection.html" title="A Selection allows to define a set of Interface Entities. Entities to be put on an output file should..." alt="" coords="19,80,150,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="17,5,152,32"/>
+</map>

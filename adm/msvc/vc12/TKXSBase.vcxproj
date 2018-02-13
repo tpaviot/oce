@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{23E04F35-01D3-08BD-0641-9C977D9DC325}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc12\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc12\obj\TKXSBase\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc12\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc12\objd\TKXSBase\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc12\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc12\obj\TKXSBase\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc12\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc12\objd\TKXSBase\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc12\bin\TKXSBase.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc12\obj\TKXSBase/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc12\obj\TKXSBase/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc12\obj\TKXSBase/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKG2d.lib;TKG3d.lib;TKTopAlgo.lib;TKGeomBase.lib;TKShHealing.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc12\bin\TKXSBase.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc12\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc12\bin\TKXSBase.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc12\lib\TKXSBase.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc12\bind\TKXSBase.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc12\objd\TKXSBase/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc12\objd\TKXSBase/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc12\objd\TKXSBase/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKG2d.lib;TKG3d.lib;TKTopAlgo.lib;TKGeomBase.lib;TKShHealing.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc12\bind\TKXSBase.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc12\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc12\bind\TKXSBase.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc12\libd\TKXSBase.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc12\bin\TKXSBase.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc12\obj\TKXSBase/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc12\obj\TKXSBase/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc12\obj\TKXSBase/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKG2d.lib;TKG3d.lib;TKTopAlgo.lib;TKGeomBase.lib;TKShHealing.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc12\bin\TKXSBase.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc12\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc12\bin\TKXSBase.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc12\lib\TKXSBase.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc12\bind\TKXSBase.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc12\objd\TKXSBase/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc12\objd\TKXSBase/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc12\objd\TKXSBase/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKG2d.lib;TKG3d.lib;TKTopAlgo.lib;TKGeomBase.lib;TKShHealing.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc12\bind\TKXSBase.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc12\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc12\bind\TKXSBase.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc12\libd\TKXSBase.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\Interface\Interface_BitMap.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_Category.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_Check.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_CheckIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_CheckTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_CopyControl.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_CopyMap.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_CopyTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_EntityCluster.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_EntityIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_EntityList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_FileParameter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_FileReaderData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_FileReaderTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_FloatWriter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GeneralLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GlobalNodeOfGeneralLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GlobalNodeOfReaderLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_Graph.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GraphContent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_HGraph.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_IntList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_IntVal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_InterfaceModel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_LineBuffer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_MSG.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_MapAsciiStringHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_NodeOfGeneralLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_NodeOfReaderLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ParamList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ParamSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ReaderLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ReaderModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ReportEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_STAT.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ShareFlags.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ShareTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_SignLabel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_SignType.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_Static.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_StaticStandards.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_TypedValue.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_UndefinedContent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ActorDispatch.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ActorOfFinderProcess.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ActorOfProcessForFinder_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ActorOfProcessForTransient_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ActorOfTransientProcess.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_Binder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_BinderOfTransientInteger.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_DataInfo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_DispatchControl.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_FindHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_Finder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_FinderProcess.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_IteratorOfProcessForFinder_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_IteratorOfProcessForTransient_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_MapContainer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_MultipleBinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ProcessForFinder_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ProcessForTransient_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ResultFromModel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ResultFromTransient.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_SimpleBinderOfTransient.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransferDispatch.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransferInput.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransferIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransferOutput.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransientListBinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransientMapper_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransientProcess.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_VoidBinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_AllConnected.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_AllShared.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_Articulations.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_Compare.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_ConnectedComponants.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_Cumulate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_Cycles.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_ExternalSources.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_SCRoots.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_StrongComponants.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_SubPartsIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Act.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Activator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_AppliedModifiers.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_BasicDumper.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_CheckCounter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ContextModif.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ContextWrite.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_DispGlobal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_DispPerCount.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_DispPerFiles.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_DispPerOne.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_DispPerSignature.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Dispatch.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_EditForm.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Editor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Functions.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_GeneralModifier.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_GraphCounter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_IntParam.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ListEditor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ModelCopier.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ModifEditForm.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ModifReorder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Modifier.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_PacketList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ParamEditor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectAnyList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectAnyType.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectBase.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectCombine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectControl.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectDeduct.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectDiff.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectEntityNumber.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectErrorEntities.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectExplore.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectExtract.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectFlag.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectInList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectIncorrectEntities.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectIntersection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectModelEntities.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectModelRoots.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectPointed.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectRange.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectRootComps.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectRoots.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectShared.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSharing.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSignature.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSignedShared.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSignedSharing.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSuite.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectType.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectUnion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectUnknownEntities.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Selection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectionIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SessionDumper.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SessionFile.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SessionPilot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ShareOut.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ShareOutResult.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignAncestor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignCategory.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignCounter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignMultiple.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignType.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignValidity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Signature.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignatureList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_TransformStandard.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Transformer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_WorkLibrary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_WorkSession.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_BinderOfShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_OrientedShapeMapper_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_Reader.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_ShapeBinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_ShapeInfo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_ShapeListBinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_ShapeMapper_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_TransferResultInfo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_ConnectedShapes.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Controller.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_FuncShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Functions.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Reader.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_SelectForTransfer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_SignTransferStatus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_TransferReader.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_TransferWriter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Utils.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Vars.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_WorkSession.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Writer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_DefaultGeneral.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_DescrGeneral.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_DescrProtocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_DescrReadWrite.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_Described.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_ECDescr.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_EDescr.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_ESDescr.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_EnumTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_Field.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FieldList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FieldList1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FieldListD.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FieldListN.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FileProtocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FileRecognizer_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FreeFormEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_GlobalNodeOfWriterLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_HeaderTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_NodeOfWriterLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_PDescr.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_Plex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectArrReal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectInt.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectNamed.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectReal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectType.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_Simple.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_StepDumper.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_StepModel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_StepReaderData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_StepReaderTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_StepWriter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_UndefinedEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_WriterLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFile\StepFile_CallFailure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFile\StepFile_Read.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFile\lex.step.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFile\step.tab.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFile\stepread.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection_FileDescription.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection_FileName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection_FileSchema.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection_HeaderRecognizer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection_RWFileDescription.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection_RWFileName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection_RWFileSchema.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\APIHeaderSection\APIHeaderSection_EditHeader.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\APIHeaderSection\APIHeaderSection_MakeHeader.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_Activator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_FileModifier_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_FloatFormat.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_ModelModifier_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_StepType.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_WorkLibrary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\UnitsMethods\UnitsMethods.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSAlgo\XSAlgo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSAlgo\XSAlgo_AlgoContainer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSAlgo\XSAlgo_ToolContainer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_AttrList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_CaseData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_DataInfo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_ElemHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_Element.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_IntVal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_MTHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_RealVal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_SignShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_SignText.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_Stat.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_Timer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TimerSentry.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TransientElem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TypedValue.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKXSBase.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

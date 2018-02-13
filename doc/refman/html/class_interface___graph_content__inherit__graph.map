@@ -1,0 +1,9 @@
+<map id="Interface_GraphContent" name="Interface_GraphContent">
+<area shape="rect" id="node3" href="$class_i_f_graph___all_connected.html" title="this class gives content of the CONNECTED COMPONANT(S) which include specific Entity(ies) ..." alt="" coords="421,5,573,32"/>
+<area shape="rect" id="node4" href="$class_i_f_graph___all_shared.html" title="this class determines all Entities shared by some specific ones, at any level (those which will be le..." alt="" coords="432,56,563,83"/>
+<area shape="rect" id="node5" href="$class_i_f_graph___articulations.html" title="this class gives entities which are Articulation points in a whole Model or in a sub&#45;part An Articula..." alt="" coords="424,107,571,133"/>
+<area shape="rect" id="node6" href="$class_i_f_graph___compare.html" title="this class evaluates effect of two compared sub&#45;parts : cumulation (union), common part (intersection..." alt="" coords="434,157,561,184"/>
+<area shape="rect" id="node7" href="$class_i_f_graph___cumulate.html" title="this class evaluates effect of cumulated sub&#45;parts : overlapping, forgotten entities Results are kept..." alt="" coords="432,208,563,235"/>
+<area shape="rect" id="node8" href="$class_i_f_graph___external_sources.html" title="this class gives entities which are Source of entities of a sub&#45;part, but are not contained by this s..." alt="" coords="412,259,583,285"/>
+<area shape="rect" id="node2" href="$class_interface___entity_iterator.html" title="Defines an Iterator on Entities. Allows considering of various criteria. " alt="" coords="5,132,157,159"/>
+</map>

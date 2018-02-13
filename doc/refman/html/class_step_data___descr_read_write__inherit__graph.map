@@ -1,0 +1,5 @@
+<map id="StepData_DescrReadWrite" name="StepData_DescrReadWrite">
+<area shape="rect" id="node2" href="$class_step_data___read_write_module.html" title="Defines basic File Access Module (Recognize, Read, Write) That is : ReaderModule (Recognize &amp; Read) +..." alt="" coords="5,155,192,181"/>
+<area shape="rect" id="node3" href="$class_interface___reader_module.html" title="Defines unitary operations required to read an Entity from a File (see FileReaderData, FileReaderTool), under control of a FileReaderTool. The initial creation is performed by a GeneralModule (set in GeneralLib). Then, which remains is Loading data from the FileReaderData to the Entity. " alt="" coords="18,80,179,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="31,5,166,32"/>
+</map>

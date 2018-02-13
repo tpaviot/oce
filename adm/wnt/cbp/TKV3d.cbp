@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKV3d" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKV3d" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__V3d_DLL" />
+					<Add option="-D__Graphic3d_DLL" />
+					<Add option="-D__Select3D_DLL" />
+					<Add option="-D__Prs3d_DLL" />
+					<Add option="-D__StdPrs_DLL" />
+					<Add option="-D__SelectMgr_DLL" />
+					<Add option="-D__PrsMgr_DLL" />
+					<Add option="-D__AIS_DLL" />
+					<Add option="-D__DsgPrs_DLL" />
+					<Add option="-D__StdSelect_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKV3d_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKV3d" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__V3d_DLL" />
+					<Add option="-D__Graphic3d_DLL" />
+					<Add option="-D__Select3D_DLL" />
+					<Add option="-D__Prs3d_DLL" />
+					<Add option="-D__StdPrs_DLL" />
+					<Add option="-D__SelectMgr_DLL" />
+					<Add option="-D__PrsMgr_DLL" />
+					<Add option="-D__AIS_DLL" />
+					<Add option="-D__DsgPrs_DLL" />
+					<Add option="-D__StdSelect_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKV3d_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="user32" />
+			<Add library="comdlg32" />
+			<Add library="gdi32" />
+			<Add library="opengl32" />
+			<Add library="freetype" />
+			<Add library="TKBRep" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKService" />
+			<Add library="TKShHealing" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKGeomBase" />
+			<Add library="TKMesh" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKHLR" />
+		</Linker>
+		<Unit filename="../../../src/V3d/V3d.cxx" />
+		<Unit filename="../../../src/V3d/V3d_AmbientLight.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_CircularGrid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_DirectionalLight.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_Light.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_Plane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_PositionLight.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_PositionalLight.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_RectangularGrid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_SpotLight.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_Trihedron.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_View.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_View_2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_View_3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_View_4.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_Viewer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_Viewer_3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/V3d/V3d_Viewer_4.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ArrayOfPoints.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ArrayOfPolygons.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ArrayOfPolylines.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ArrayOfPrimitives.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ArrayOfQuadrangleStrips.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ArrayOfQuadrangles.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ArrayOfSegments.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ArrayOfTriangleFans.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ArrayOfTriangleStrips.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ArrayOfTriangles.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_AspectFillArea3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_AspectLine3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_AspectMarker3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_AspectText3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_BSDF.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_CStructure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_CView.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_Camera.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ClipPlane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_DataStructureManager.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_GraphicDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_Group.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_HatchStyle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_MarkerImage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_MaterialAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_PresentationAttributes.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ShaderAttribute.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ShaderObject.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ShaderProgram.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ShaderVariable.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_Structure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_StructureManager.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_Texture1D.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_Texture1Dmanual.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_Texture1Dsegment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_Texture2D.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_Texture2Dmanual.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_Texture2Dplane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_TextureEnv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_TextureMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_TextureParams.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_TextureRoot.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_TextureSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_TransformPers.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_Vector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_Vertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Graphic3d/Graphic3d_ViewAffinity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_InteriorSensitivePointSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitiveBox.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitiveCircle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitiveCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitiveEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitiveFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitiveGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitivePoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitivePoly.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitivePrimitiveArray.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitiveSegment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitiveSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitiveTriangle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitiveTriangulation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Select3D/Select3D_SensitiveWire.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_Arrow.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_ArrowAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_BasicAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_DatumAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_DimensionAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_Drawer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_IsoAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_LineAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_PlaneAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_PointAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_Presentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_PresentationShadow.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_Projector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_ShadingAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_ShapeTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_Text.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_TextAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_ToolCylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_ToolDisk.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_ToolQuadric.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Prs3d/Prs3d_ToolSphere.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_BndBox.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_DeflectionCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_HLRPolyShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_HLRShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_HLRToolShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_Isolines.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_Plane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_PoleCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_ShadedShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_ShadedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_ToolPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_ToolRFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_ToolTriangulatedShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_ToolVertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_WFDeflectionRestrictedFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_WFDeflectionSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_WFPoleSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_WFRestrictedFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_WFShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdPrs/StdPrs_WFSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_AndFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_BaseFrustum.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_CompositionFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_EntityOwner.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_Filter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_FrustumBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_OrFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_RectangularFrustum.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_SelectableObject.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_SelectableObjectSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_SelectingVolumeManager.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_Selection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_SelectionManager.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_SensitiveEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_SensitiveEntitySet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_ToleranceMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_TriangularFrustum.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_TriangularFrustumSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/SelectMgr/SelectMgr_ViewerSelector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/PrsMgr/PrsMgr_ModedPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/PrsMgr/PrsMgr_PresentableObject.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/PrsMgr/PrsMgr_Presentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/PrsMgr/PrsMgr_PresentationManager.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/PrsMgr/PrsMgr_Prs.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_AngleDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Animation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_AnimationCamera.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_AnimationObject.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_AnimationTimer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_AttributeFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Axis.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_BadEdgeFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_C0RegularityFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Chamf2dDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Chamf3dDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Circle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_ColorScale.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_ColoredShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_ConcentricRelation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_ConnectedInteractive.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_DiameterDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Dimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_DimensionOwner.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_EllipseRadiusDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_EqualDistanceRelation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_EqualRadiusRelation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_ExclusionFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_FixRelation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_GlobalStatus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_GraphicTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_IdenticRelation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_InteractiveContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_InteractiveContext_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_InteractiveContext_2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_InteractiveContext_3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_InteractiveObject.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_LengthDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Line.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_LocalContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_LocalContext_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_LocalStatus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Manipulator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_ManipulatorOwner.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_MaxRadiusDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_MidPointRelation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_MinRadiusDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_MultipleConnectedInteractive.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_OffsetDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_ParallelRelation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_PerpendicularRelation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Plane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_PlaneTrihedron.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Point.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_PointCloud.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_RadiusDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Relation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_RubberBand.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Selection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Shape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_SignatureFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_SymmetricRelation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_TangentRelation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_TextLabel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_TexturedShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Triangulation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_Trihedron.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_TrihedronOwner.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AIS/AIS_TypeFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_AnglePresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_Chamf2dPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_ConcentricPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_DatumPrs.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_DiameterPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_EllipseRadiusPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_EqualDistancePresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_EqualRadiusPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_FilletRadiusPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_FixPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_IdenticPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_LengthPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_MidPointPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_OffsetPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_ParalPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_PerpenPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_RadiusPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_ShadedPlanePresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_ShapeDirPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_SymbPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_SymmetricPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_TangentPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_XYZAxisPresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/DsgPrs/DsgPrs_XYZPlanePresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdSelect/StdSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdSelect/StdSelect_BRepOwner.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdSelect/StdSelect_BRepSelectionTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdSelect/StdSelect_EdgeFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdSelect/StdSelect_FaceFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdSelect/StdSelect_Prs.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdSelect/StdSelect_Shape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdSelect/StdSelect_ShapeTypeFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StdSelect/StdSelect_ViewerSelector3d.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,29 @@
+<map id="BOPAlgo_Options" name="BOPAlgo_Options">
+<area shape="rect" id="node2" href="$class_b_o_p_algo___algo.html" title="The class provides the root interface for the algorithms in Boolean Component. &#160;" alt="" coords="194,157,303,184"/>
+<area shape="rect" id="node20" href="$class_b_rep_algo_a_p_i___algo.html" title="Provides the root interface for the API algorithms. " alt="" coords="181,309,316,336"/>
+<area shape="rect" id="node3" href="$class_b_o_p_algo___argument_analyzer.html" title="check the validity of argument(s) for Boolean Operations " alt="" coords="364,5,555,32"/>
+<area shape="rect" id="node4" href="$class_b_o_p_algo___builder_area.html" title="The root class for algorithms to build faces/solids from set of edges/faces. " alt="" coords="384,56,535,83"/>
+<area shape="rect" id="node7" href="$class_b_o_p_algo___builder_shape.html" title="Root class for algorithms that has shape as result. &#160;The class provides the History mechanism..." alt="" coords="379,107,539,133"/>
+<area shape="rect" id="node16" href="$class_b_o_p_algo___pave_filler.html" title="The class represents the Intersection phase of the Boolean Operations algorithm. &#160;It performs the pai..." alt="" coords="390,157,529,184"/>
+<area shape="rect" id="node18" href="$class_b_o_p_algo___shell_splitter.html" title="The class provides the splitting of the set of connected faces on separate loops. ..." alt="" coords="383,208,536,235"/>
+<area shape="rect" id="node19" href="$class_b_o_p_algo___wire_splitter.html" title="The class is to build loops from the given set of edges. " alt="" coords="384,259,535,285"/>
+<area shape="rect" id="node5" href="$class_b_o_p_algo___builder_face.html" title="The algorithm to build new faces from the given faces and set of edges lying on this face..." alt="" coords="632,5,784,32"/>
+<area shape="rect" id="node6" href="$class_b_o_p_algo___builder_solid.html" title="The algorithm to build solids from set of faces. " alt="" coords="632,56,784,83"/>
+<area shape="rect" id="node8" href="$class_b_o_p_algo___builder.html" title="The class is a General Fuse algorithm &#45; base algorithm for the algorithms in the Boolean Component..." alt="" coords="647,107,769,133"/>
+<area shape="rect" id="node9" href="$class_b_o_p_algo___b_o_p.html" title="The class represents the Building part of the Boolean Operations algorithm. &#160;The arguments of the alg..." alt="" coords="887,5,998,32"/>
+<area shape="rect" id="node12" href="$class_b_o_p_algo___cells_builder.html" title="The algorithm is based on the General Fuse algorithm (GFA). The result of GFA is all split parts of t..." alt="" coords="867,56,1019,83"/>
+<area shape="rect" id="node13" href="$class_b_o_p_algo___maker_volume.html" title="The algorithm is to build solids from set of shapes. It uses the BOPAlgo_Builder algorithm to interse..." alt="" coords="861,107,1024,133"/>
+<area shape="rect" id="node14" href="$class_b_o_p_algo___section.html" title="The algorithm to build a Section between the arguments. The Section consists of vertices and edges..." alt="" coords="879,157,1006,184"/>
+<area shape="rect" id="node15" href="$class_b_o_p_algo___splitter.html" title="The Splitter algorithm is the algorithm for splitting a group of arbitrary shapes by the other group ..." alt="" coords="881,208,1005,235"/>
+<area shape="rect" id="node10" href="$class_b_rep_feat___builder.html" title="Provides a basic tool to implement features topological operations. The main goal of the algorithm is..." alt="" coords="1072,5,1199,32"/>
+<area shape="rect" id="node11" href="$class_b_rep_feat___make_cylindrical_hole.html" title="Provides a tool to make cylindrical holes on a shape. " alt="" coords="1247,5,1452,32"/>
+<area shape="rect" id="node17" href="$class_b_o_p_algo___checker_s_i.html" title="Checks the shape on self&#45;interference. " alt="" coords="637,157,779,184"/>
+<area shape="rect" id="node21" href="$class_b_rep_algo_a_p_i___builder_algo.html" title="The class contains API level of the General Fuse algorithm. &#160;" alt="" coords="372,309,547,336"/>
+<area shape="rect" id="node28" href="$class_b_rep_algo_a_p_i___check.html" title="The class Check provides a diagnostic tool for checking single shape or couple of shapes..." alt="" coords="387,360,532,387"/>
+<area shape="rect" id="node22" href="$class_b_rep_algo_a_p_i___boolean_operation.html" title="The abstract class BooleanOperation is the root class of Boolean Operations (see Overview). Boolean Operations algorithm is divided onto two parts: &#160;" alt="" coords="603,309,813,336"/>
+<area shape="rect" id="node27" href="$class_b_rep_algo_a_p_i___splitter.html" title="The class contains API level of the Splitter algorithm, which allows splitting a group of arbitrary s..." alt="" coords="633,360,783,387"/>
+<area shape="rect" id="node23" href="$class_b_rep_algo_a_p_i___common.html" title="The class provides Boolean common operation between arguments and tools (Boolean Intersection). " alt="" coords="863,259,1023,285"/>
+<area shape="rect" id="node24" href="$class_b_rep_algo_a_p_i___cut.html" title="The class Cut provides Boolean cut operation between arguments and tools (Boolean Subtraction)..." alt="" coords="879,309,1007,336"/>
+<area shape="rect" id="node25" href="$class_b_rep_algo_a_p_i___fuse.html" title="The class provides Boolean fusion operation between arguments and tools (Boolean Union). " alt="" coords="874,360,1011,387"/>
+<area shape="rect" id="node26" href="$class_b_rep_algo_a_p_i___section.html" title="The algorithm is to build a Secton operation between arguments and tools. The result of Section opera..." alt="" coords="867,411,1019,437"/>
+</map>

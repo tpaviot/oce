@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{955867DD-165E-1730-14C2-10A5ADED34B1}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc10\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc10\obj\TKGeomAlgo\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc10\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc10\objd\TKGeomAlgo\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc10\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc10\obj\TKGeomAlgo\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc10\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc10\objd\TKGeomAlgo\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc10\bin\TKGeomAlgo.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\TKGeomAlgo/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc10\obj\TKGeomAlgo/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\TKGeomAlgo/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKMath.lib;TKG3d.lib;TKG2d.lib;TKGeomBase.lib;TKBRep.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc10\bin\TKGeomAlgo.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc10\bin\TKGeomAlgo.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc10\lib\TKGeomAlgo.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc10\bind\TKGeomAlgo.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKGeomAlgo/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc10\objd\TKGeomAlgo/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\TKGeomAlgo/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKMath.lib;TKG3d.lib;TKG2d.lib;TKGeomBase.lib;TKBRep.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc10\bind\TKGeomAlgo.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc10\bind\TKGeomAlgo.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc10\libd\TKGeomAlgo.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc10\bin\TKGeomAlgo.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\TKGeomAlgo/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc10\obj\TKGeomAlgo/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\TKGeomAlgo/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKMath.lib;TKG3d.lib;TKG2d.lib;TKGeomBase.lib;TKBRep.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc10\bin\TKGeomAlgo.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc10\bin\TKGeomAlgo.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc10\lib\TKGeomAlgo.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc10\bind\TKGeomAlgo.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKGeomAlgo/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc10\objd\TKGeomAlgo/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\TKGeomAlgo/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKMath.lib;TKG3d.lib;TKG2d.lib;TKGeomBase.lib;TKBRep.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc10\bind\TKGeomAlgo.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc10\bind\TKGeomAlgo.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc10\libd\TKGeomAlgo.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\Hatch\Hatch_Hatcher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Hatch\Hatch_Line.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Hatch\Hatch_Parameter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_IntSS.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_IntSS_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_LineConstructor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_LineTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_ParameterAndOrientation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_TheComputeLineBezierOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_TheComputeLineOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_TheImpPrmSvSurfacesOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_TheMultiLineOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_ThePrmPrmSvSurfacesOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomInt\GeomInt_WLApprox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntStart\IntStart_SITopolTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntWalk\IntWalk_PWalking.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntWalk\IntWalk_TheFunctionOfTheInt2S_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntWalk\IntWalk_TheInt2S_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntImp\IntImp_ComputeTangence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_HInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_Intersection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_IntersectionPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_IntersectionSegment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_TheCSFunctionOfHInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_TheExactHInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_TheHCurveTool_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_TheInterferenceOfHInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_ThePolygonOfHInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_ThePolygonToolOfHInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_ThePolyhedronOfHInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_ThePolyhedronToolOfHInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_TheQuadCurvExactHInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurveSurface\IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntSurf\IntSurf.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntSurf\IntSurf_InteriorPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntSurf\IntSurf_LineOn2S.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntSurf\IntSurf_PathPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntSurf\IntSurf_PntOn2S.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntSurf\IntSurf_Quadric.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntSurf\IntSurf_QuadricTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntSurf\IntSurf_Transition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_ALine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_ALineToWLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_ArcFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_CSFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_CurvIntSurf_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_GLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_HCurve2dTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_HInterTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_ImpImpIntersection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_ImpPrmIntersection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_InterferencePolyhedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_Intersection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_Line.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_LineConstructor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_Point.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_PointLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_PolyArc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_PolyLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_Polygo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_Polyhedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_PrmPrmIntersection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_PrmPrmIntersection_T3Bits.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_RLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_RstInt.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_SpecialPoints.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_TheIWLineOfTheIWalking_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_TheIWalking_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_ThePathPointOfTheSOnBounds_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_TheSOnBounds_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_TheSearchInside_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_TheSegmentOfTheSOnBounds_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_TheSurfFunction_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_WLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPatch\IntPatch_WLineTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_GInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_Geom2dCurveTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_IntConicCurveOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_TheIntConicCurveOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_TheIntPCurvePCurveOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dInt\Geom2dInt_TheProjPCurOfGInter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntImpParGen\IntImpParGen.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntImpParGen\IntImpParGen_Tool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRes2d\IntRes2d_Domain.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRes2d\IntRes2d_Intersection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRes2d\IntRes2d_IntersectionPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRes2d\IntRes2d_IntersectionSegment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRes2d\IntRes2d_Transition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurve\IntCurve_IConicTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurve\IntCurve_IntConicConic.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurve\IntCurve_IntConicConic_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurve\IntCurve_IntConicConic_Tool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurve\IntCurve_IntImpConicParConic_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurve\IntCurve_MyImpParToolOfIntImpConicParConic_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurve\IntCurve_PConic.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurve\IntCurve_PConicTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntCurve\IntCurve_ProjectOnPConicTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopTrans\TopTrans_CurveTransition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopTrans\TopTrans_SurfaceTransition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Intf\Intf.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Intf\Intf_Interference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Intf\Intf_InterferencePolygon2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Intf\Intf_Polygon2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Intf\Intf_SectionLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Intf\Intf_SectionPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Intf\Intf_TangentZone.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Intf\Intf_Tool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ApproxInt\ApproxInt_KnotTools.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ApproxInt\ApproxInt_SvSurfaces.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn_10.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn_11.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn_4.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn_5.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn_6.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn_7.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn_8.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanOn_9.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanRad.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanRad_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanRad_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanRad_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanRad_4.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d2TanRad_5.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d3Tan.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d3Tan_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d3Tan_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d3Tan_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d3Tan_4.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d3Tan_5.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d3Tan_6.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d3Tan_7.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d3Tan_8.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2d3Tan_9.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2dBisec.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2dTanCen.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2dTanOnRad.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2dTanOnRad_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2dTanOnRad_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2dTanOnRad_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2dTanOnRad_4.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Circ2dTanOnRad_5.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_CircLin2dBisec.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_CircPnt2dBisec.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Lin2d2Tan.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Lin2dBisec.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Lin2dTanObl.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Lin2dTanPar.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Lin2dTanPer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_LinPnt2dBisec.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccAna\GccAna_Pnt2dBisec.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccEnt\GccEnt.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccEnt\GccEnt_QualifiedCirc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccEnt\GccEnt_QualifiedLin.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccInt\GccInt_BCirc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccInt\GccInt_BElips.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccInt\GccInt_BHyper.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccInt\GccInt_BLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccInt\GccInt_BParab.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccInt\GccInt_BPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GccInt\GccInt_Bisec.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HatchGen\HatchGen_Domain.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HatchGen\HatchGen_IntersectionPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HatchGen\HatchGen_PointOnElement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HatchGen\HatchGen_PointOnHatching.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_Classifier_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_Element.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_Elements.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_FClass2dOfClassifier_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_Hatcher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_Hatching.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dHatch\Geom2dHatch_Intersector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Law\Law.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Law\Law_BSpFunc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Law\Law_BSpline.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Law\Law_BSplineKnotSplitting.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Law\Law_Composite.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Law\Law_Constant.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Law\Law_Function.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Law\Law_Interpol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Law\Law_Interpolate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Law\Law_Linear.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Law\Law_S.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AppBlend\AppBlend_Approx.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AppBlend\AppBlend_Debug.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_D1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_D2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_D3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_FreeGtoCConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_GlobalTranslationConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_GtoCConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_LineConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_LinearScalarConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_LinearXYZConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_PinpointConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_PlaneConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_Plate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plate\Plate_SampledCurveConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomPlate\GeomPlate_Aij.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomPlate\GeomPlate_BuildAveragePlane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomPlate\GeomPlate_BuildPlateSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomPlate\GeomPlate_CurveConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomPlate\GeomPlate_MakeApprox.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomPlate\GeomPlate_PlateG0Criterion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomPlate\GeomPlate_PlateG1Criterion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomPlate\GeomPlate_PointConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomPlate\GeomPlate_Surface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LocalAnalysis\LocalAnalysis.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LocalAnalysis\LocalAnalysis_CurveContinuity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LocalAnalysis\LocalAnalysis_SurfaceContinuity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAPI\GeomAPI.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAPI\GeomAPI_ExtremaCurveCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAPI\GeomAPI_ExtremaCurveSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAPI\GeomAPI_ExtremaSurfaceSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAPI\GeomAPI_IntCS.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAPI\GeomAPI_IntSS.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAPI\GeomAPI_Interpolate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAPI\GeomAPI_PointsToBSpline.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAPI\GeomAPI_PointsToBSplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAPI\GeomAPI_ProjectPointOnCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomAPI\GeomAPI_ProjectPointOnSurf.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_AppSurf_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_AppSweep_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_BSplineCurves.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_BezierCurves.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_BoundWithSurf.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Boundary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_CircularBlendFunc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_ConstantBiNormal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_ConstrainedFilling.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Coons.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_CoonsAlgPatch.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_CornerState.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_CorrectedFrenet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_CurveAndTrihedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Curved.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Darboux.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_DegeneratedBound.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_DiscreteTrihedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_DraftTrihedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_EvolvedSection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Filling.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Fixed.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Frenet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_FunctionDraft.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_FunctionGuide.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Generator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_GuideTrihedronAC.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_GuideTrihedronPlan.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Line.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_LocFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_LocationDraft.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_LocationGuide.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_LocationLaw.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_NSections.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Pipe.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_PlanFunc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_PolynomialConvertor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Profiler.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_QuasiAngularConvertor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_SectionGenerator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_SectionLaw.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_SectionPlacement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_SimpleBound.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_SnglrFunc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Stretch.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Sweep.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_SweepFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_SweepSectionGenerator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Tensor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_TgtField.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_TgtOnCoons.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_TrihedronLaw.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_TrihedronWithGuide.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_UniformSection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dAPI\Geom2dAPI_ExtremaCurveCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dAPI\Geom2dAPI_InterCurveCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dAPI\Geom2dAPI_Interpolate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dAPI\Geom2dAPI_PointsToBSpline.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dAPI\Geom2dAPI_ProjectPointOnCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d2TanOn.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d2TanOnGeo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d2TanOnIter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d2TanRad.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d2TanRadGeo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d3Tan.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2d3TanIter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2dTanCen.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2dTanCenGeo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2dTanOnRad.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Circ2dTanOnRadGeo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_CurveTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanCirCu.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanCuCu.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanCuCuCu.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanCuCuOnCu.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanCuPnt.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_FunctionTanObl.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Lin2d2Tan.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Lin2d2TanIter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Lin2dTanObl.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_Lin2dTanOblIter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_QCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dGcc\Geom2dGcc_QualifiedCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FairCurve\FairCurve_Batten.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FairCurve\FairCurve_BattenLaw.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FairCurve\FairCurve_DistributionOfEnergy.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FairCurve\FairCurve_DistributionOfJerk.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FairCurve\FairCurve_DistributionOfSagging.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FairCurve\FairCurve_DistributionOfTension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FairCurve\FairCurve_Energy.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FairCurve\FairCurve_EnergyOfBatten.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FairCurve\FairCurve_EnergyOfMVC.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FairCurve\FairCurve_MinimalVariation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FairCurve\FairCurve_Newton.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NLPlate\NLPlate_HGPPConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NLPlate\NLPlate_HPG0Constraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NLPlate\NLPlate_HPG0G1Constraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NLPlate\NLPlate_HPG0G2Constraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NLPlate\NLPlate_HPG0G3Constraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NLPlate\NLPlate_HPG1Constraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NLPlate\NLPlate_HPG2Constraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NLPlate\NLPlate_HPG3Constraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NLPlate\NLPlate_NLPlate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_Couple.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_Edge.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_Intersection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_Intersection_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_MaillageAffinage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_Point.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_SectionLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_StartPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_Triangle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopClass\TopClass.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopClass\TopClass_Intersection3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopClass\TopClass_SolidExplorer.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKGeomAlgo.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

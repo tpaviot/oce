@@ -1,0 +1,21 @@
+digraph schema_TKHLR
+{
+	TKHLR [ URL = "toolkit_tkhlr.html", shape = box ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKHLR -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKHLR -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKHLR -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKGeomBase [ URL = "toolkit_tkgeombase.html" , shape = box ]
+	TKHLR -> TKGeomBase [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKHLR -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKHLR -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKGeomAlgo [ URL = "toolkit_tkgeomalgo.html" , shape = box ]
+	TKHLR -> TKGeomAlgo [ color = "midnightblue", style = "solid" ]
+	TKTopAlgo [ URL = "toolkit_tktopalgo.html" , shape = box ]
+	TKHLR -> TKTopAlgo [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

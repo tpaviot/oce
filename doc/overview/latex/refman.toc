@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}Overview}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Prerequisites}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}The Model}{2}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Model Specifications}{2}{subsection.1.3}
+\contentsline {section}{\numberline {2}Building the Profile}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Defining Support Points}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Profile\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\DOTSB \leftarrow \joinrel \rhook $}}{}{}: Defining the Geometry}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Profile\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\DOTSB \leftarrow \joinrel \rhook $}}{}{}: Defining the Topology}{5}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Profile\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\DOTSB \leftarrow \joinrel \rhook $}}{}{}: Completing the Profile}{6}{subsection.2.4}
+\contentsline {section}{\numberline {3}Building the Body}{9}{section.3}
+\contentsline {subsection}{\numberline {3.1}Prism the Profile}{9}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Applying Fillets}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Adding the Neck}{11}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Creating a Hollowed Solid}{12}{subsection.3.4}
+\contentsline {section}{\numberline {4}Building the Threading}{14}{section.4}
+\contentsline {subsection}{\numberline {4.1}Creating Surfaces}{14}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Defining 2\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\DOTSB \leftarrow \joinrel \rhook $}}{}{}D Curves}{14}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Building Edges and Wires}{17}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Creating Threading}{18}{subsection.4.4}
+\contentsline {section}{\numberline {5}Building the Resulting Compound}{20}{section.5}
+\contentsline {section}{\numberline {6}Appendix}{21}{section.6}

@@ -1,0 +1,11 @@
+digraph schema_TKG3d
+{
+	TKG3d [ URL = "toolkit_tkg3d.html", shape = box ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKG3d -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKG3d -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKG3d -> TKG2d [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

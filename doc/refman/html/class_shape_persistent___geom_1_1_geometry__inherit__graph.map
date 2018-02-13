@@ -1,0 +1,4 @@
+<map id="ShapePersistent_Geom::Geometry" name="ShapePersistent_Geom::Geometry">
+<area shape="rect" id="node2" href="$class_std_obj_mgt___persistent.html" title="Root class for a temporary persistent object that reads data from a file and then creates transient o..." alt="" coords="10,80,161,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="18,5,153,32"/>
+</map>

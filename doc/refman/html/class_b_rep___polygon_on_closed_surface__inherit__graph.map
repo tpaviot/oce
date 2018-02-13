@@ -1,0 +1,5 @@
+<map id="BRep_PolygonOnClosedSurface" name="BRep_PolygonOnClosedSurface">
+<area shape="rect" id="node2" href="$class_b_rep___polygon_on_surface.html" title="Representation of a 2D polygon in the parametric space of a surface. " alt="" coords="25,155,195,181"/>
+<area shape="rect" id="node3" href="$class_b_rep___curve_representation.html" title="Root class for the curve representations. Contains a location. " alt="" coords="20,80,200,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="43,5,177,32"/>
+</map>

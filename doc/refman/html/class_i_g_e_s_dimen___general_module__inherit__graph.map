@@ -1,0 +1,5 @@
+<map id="IGESDimen_GeneralModule" name="IGESDimen_GeneralModule">
+<area shape="rect" id="node2" href="$class_i_g_e_s_data___general_module.html" title="Definition of General Services adapted to IGES. This Services comprise : Shared &amp; Implied Lists..." alt="" coords="10,155,185,181"/>
+<area shape="rect" id="node3" href="$class_interface___general_module.html" title="This class defines general services, which must be provided for each type of Entity (i..." alt="" coords="15,80,180,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="30,5,165,32"/>
+</map>

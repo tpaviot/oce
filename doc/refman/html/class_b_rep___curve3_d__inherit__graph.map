@@ -1,0 +1,5 @@
+<map id="BRep_Curve3D" name="BRep_Curve3D">
+<area shape="rect" id="node2" href="$class_b_rep___g_curve.html" title="Root class for the geometric curves representation. Contains a range. Contains a first and a last par..." alt="" coords="44,155,147,181"/>
+<area shape="rect" id="node3" href="$class_b_rep___curve_representation.html" title="Root class for the curve representations. Contains a location. " alt="" coords="5,80,185,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="28,5,163,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="MoniTool_TransientElem" name="MoniTool_TransientElem">
+<area shape="rect" id="node2" href="$class_moni_tool___element.html" title="a Element allows to map any kind of object as a Key for a Map. This works by defining, for a Hash Code, that of the real Key, not of the Element which acts only as an intermediate. When a Map asks for the HashCode of a Element, this one returns the code it has determined at creation time " alt="" coords="23,80,152,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="20,5,155,32"/>
+</map>

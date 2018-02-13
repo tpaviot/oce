@@ -1,0 +1,3 @@
+<map id="TopOpeBRepBuild_ShellFaceSet" name="TopOpeBRepBuild_ShellFaceSet">
+<area shape="rect" id="node2" href="$class_top_ope_b_rep_build___shape_set.html" title="Auxiliary class providing an exploration of a set of shapes to build faces or solids. To build faces : shapes are wires, elements are edges. To build solids : shapes are shells, elements are faces. The ShapeSet stores a list of shapes, a list of elements to start reconstructions, and a map to search neighbours. The map stores the connection between elements through subshapes of type &lt;SubShapeType&gt; given in constructor. &lt;SubShapeType&gt; is : " alt="" coords="16,5,208,32"/>
+</map>

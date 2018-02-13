@@ -1,0 +1,5 @@
+<map id="Geom2d_VectorWithMagnitude" name="Geom2d_VectorWithMagnitude">
+<area shape="rect" id="node2" href="$class_geom2d___vector.html" title="The abstract class Vector describes the common behavior of vectors in 2D space. The Geom2d package pr..." alt="" coords="49,155,165,181"/>
+<area shape="rect" id="node3" href="$class_geom2d___geometry.html" title="The general abstract class Geometry in 2D space describes the common behaviour of all the geometric e..." alt="" coords="39,80,174,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="39,5,174,32"/>
+</map>

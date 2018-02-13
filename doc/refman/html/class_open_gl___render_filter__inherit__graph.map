@@ -1,0 +1,7 @@
+<map id="OpenGl_RenderFilter" name="OpenGl_RenderFilter">
+<area shape="rect" id="node3" href="$class_open_gl___capping_algo_filter.html" title="Graphical capping rendering algorithm filter. Filters out everything except shaded primitives..." alt="" coords="381,5,555,32"/>
+<area shape="rect" id="node4" href="$class_open_gl___layer_list_1_1_open_gl___opaque_filter.html" title="Filter of TKOpenGl elements for processing only shading geometry and for collecting number of skipped..." alt="" coords="379,57,557,98"/>
+<area shape="rect" id="node5" href="$class_open_gl___layer_list_1_1_open_gl___transparent_filter.html" title="Filter of TKOpenGl elements for keeping only shading geometry with transparency. " alt="" coords="379,122,557,163"/>
+<area shape="rect" id="node6" href="$class_open_gl___raytrace_filter.html" title="Graphical ray&#45;tracing filter. Filters out all raytracable structures. " alt="" coords="391,188,545,215"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,97,140,124"/>
+</map>

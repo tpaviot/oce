@@ -1,0 +1,7 @@
+<map id="BRep_GCurve" name="BRep_GCurve">
+<area shape="rect" id="node4" href="$class_b_rep___curve3_d.html" title="Representation of a curve by a 3D curve. " alt="" coords="5,229,115,256"/>
+<area shape="rect" id="node5" href="$class_b_rep___curve_on_surface.html" title="Representation of a curve by a curve in the parametric space of a surface. " alt="" coords="139,229,293,256"/>
+<area shape="rect" id="node2" href="$class_b_rep___curve_representation.html" title="Root class for the curve representations. Contains a location. " alt="" coords="47,80,227,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="70,5,205,32"/>
+<area shape="rect" id="node6" href="$class_b_rep___curve_on_closed_surface.html" title="Representation of a curve by two pcurves on a closed surface. " alt="" coords="119,304,313,331"/>
+</map>

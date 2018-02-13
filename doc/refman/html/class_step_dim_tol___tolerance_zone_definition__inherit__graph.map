@@ -1,0 +1,6 @@
+<map id="StepDimTol_ToleranceZoneDefinition" name="StepDimTol_ToleranceZoneDefinition">
+<area shape="rect" id="node3" href="$class_step_dim_tol___non_uniform_zone_definition.html" title="Representation of STEP entity NonUniformZoneDefinition. " alt="" coords="430,5,621,47"/>
+<area shape="rect" id="node4" href="$class_step_dim_tol___projected_zone_definition.html" title="Representation of STEP entity ProjectedZoneDefinition. " alt="" coords="436,71,615,112"/>
+<area shape="rect" id="node5" href="$class_step_dim_tol___runout_zone_definition.html" title="Representation of STEP entity ToleranceZoneDefinition. " alt="" coords="416,137,635,163"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,78,140,105"/>
+</map>

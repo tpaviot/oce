@@ -1,0 +1,9 @@
+<map id="SelectMgr_BaseFrustum" name="SelectMgr_BaseFrustum">
+<area shape="rect" id="node3" href="$class_select_mgr___frustum.html" title="This is an internal class containing representation of rectangular selecting frustum, created in case of point and box selection, and algorithms for overlap detection between selecting frustum and sensitive entities. The principle of frustum calculation: " alt="" coords="424,5,593,32"/>
+<area shape="rect" id="node4" href="$class_select_mgr___frustum.html" title="SelectMgr_Frustum\&lt; 3 \&gt;" alt="" coords="425,56,592,83"/>
+<area shape="rect" id="node6" href="$class_select_mgr___frustum.html" title="SelectMgr_Frustum\&lt; 4 \&gt;" alt="" coords="425,107,592,133"/>
+<area shape="rect" id="node8" href="$class_select_mgr___triangular_frustum_set.html" title="This class is used to handle polyline selection. The main principle of polyline selection algorithm i..." alt="" coords="403,157,615,184"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,81,140,108"/>
+<area shape="rect" id="node5" href="$class_select_mgr___triangular_frustum.html" title="This class contains representation of triangular selecting frustum, created in case of polyline selec..." alt="" coords="669,56,861,83"/>
+<area shape="rect" id="node7" href="$class_select_mgr___rectangular_frustum.html" title="This class contains representation of rectangular selecting frustum, created in case of point and box..." alt="" coords="663,107,868,133"/>
+</map>

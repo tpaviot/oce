@@ -1,0 +1,6 @@
+<map id="Convert_ElementarySurfaceToBSplineSurface" name="Convert_ElementarySurfaceToBSplineSurface">
+<area shape="rect" id="node2" href="$class_convert___cone_to_b_spline_surface.html" title="This algorithm converts a bounded Cone into a rational B&#45;spline surface. The cone a Cone from package..." alt="" coords="241,5,447,32"/>
+<area shape="rect" id="node3" href="$class_convert___cylinder_to_b_spline_surface.html" title="This algorithm converts a bounded cylinder into a rational B&#45;spline surface. The cylinder is a Cylind..." alt="" coords="255,57,433,98"/>
+<area shape="rect" id="node4" href="$class_convert___sphere_to_b_spline_surface.html" title="This algorithm converts a bounded Sphere into a rational B&#45;spline surface. The sphere is a Sphere fro..." alt="" coords="236,123,452,149"/>
+<area shape="rect" id="node5" href="$class_convert___torus_to_b_spline_surface.html" title="This algorithm converts a bounded Torus into a rational B&#45;spline surface. The torus is a Torus from p..." alt="" coords="241,173,447,200"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="StepBasic_ApplicationContextElement" name="StepBasic_ApplicationContextElement">
+<area shape="rect" id="node3" href="$class_step_basic___product_concept_context.html" title="Representation of STEP entity ProductConceptContext. " alt="" coords="437,5,619,47"/>
+<area shape="rect" id="node4" href="$class_step_basic___product_context.html" title="StepBasic_ProductContext" alt="" coords="439,71,617,98"/>
+<area shape="rect" id="node6" href="$class_step_basic___product_definition_context.html" title="StepBasic_ProductDefinition\lContext" alt="" coords="435,123,621,164"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,71,140,98"/>
+<area shape="rect" id="node5" href="$class_step_basic___mechanical_context.html" title="StepBasic_MechanicalContext" alt="" coords="669,71,869,98"/>
+<area shape="rect" id="node7" href="$class_step_basic___design_context.html" title="class added to Schema AP214 around April 1996 " alt="" coords="682,130,857,157"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="XSControl_Controller" name="XSControl_Controller">
+<area shape="rect" id="node3" href="$class_i_g_e_s_control___controller.html" title="Controller for IGES&#45;5.1. " alt="" coords="5,155,161,181"/>
+<area shape="rect" id="node4" href="$class_s_t_e_p_control___controller.html" title="defines basic controller for STEP processor " alt="" coords="185,155,344,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="107,5,241,32"/>
+<area shape="rect" id="node5" href="$class_s_t_e_p_c_a_f_control___controller.html" title="Extends Controller from STEPControl in order to provide ActorWrite adapted for writing assemblies fro..." alt="" coords="172,229,357,256"/>
+</map>

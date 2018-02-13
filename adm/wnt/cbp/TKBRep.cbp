@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKBRep" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKBRep" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__TopoDS_DLL" />
+					<Add option="-D__TopExp_DLL" />
+					<Add option="-D__TopTools_DLL" />
+					<Add option="-D__BRep_DLL" />
+					<Add option="-D__BRepLProp_DLL" />
+					<Add option="-D__BRepAdaptor_DLL" />
+					<Add option="-D__BRepTools_DLL" />
+					<Add option="-D__BinTools_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKBRep_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKBRep" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__TopoDS_DLL" />
+					<Add option="-D__TopExp_DLL" />
+					<Add option="-D__TopTools_DLL" />
+					<Add option="-D__BRep_DLL" />
+					<Add option="-D__BRepLProp_DLL" />
+					<Add option="-D__BRepAdaptor_DLL" />
+					<Add option="-D__BRepTools_DLL" />
+					<Add option="-D__BinTools_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKBRep_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKGeomBase" />
+		</Linker>
+		<Unit filename="../../../src/TopoDS/TopoDS_AlertWithShape.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_Builder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_HShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_Iterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_Shape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_TCompSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_TCompound.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_TEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_TFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_TShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_TShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_TSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_TVertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDS/TopoDS_TWire.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopExp/TopExp.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopExp/TopExp_Explorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopTools/TopTools.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopTools/TopTools_LocationSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopTools/TopTools_MutexForShapeProvider.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopTools/TopTools_ShapeSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_Builder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_Curve3D.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_CurveOn2Surfaces.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_CurveOnClosedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_CurveOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_CurveRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_GCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_PointOnCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_PointOnCurveOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_PointOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_PointRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_PointsOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_Polygon3D.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_PolygonOnClosedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_PolygonOnClosedTriangulation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_PolygonOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_PolygonOnTriangulation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_TEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_TFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_TVertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRep/BRep_Tool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLProp/BRepLProp.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLProp/BRepLProp_CLProps_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLProp/BRepLProp_CurveTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLProp/BRepLProp_SLProps_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLProp/BRepLProp_SurfaceTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_CompCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_Curve2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_HCompCurve_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_HCurve2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_HCurve_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_HSurface_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_Surface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_Debug.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_GTrsfModification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_History.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_Modification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_Modifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_NurbsConvertModification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_Quilt.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_ReShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_ShapeSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_Substitution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_TrsfModification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTools/BRepTools_WireExplorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BinTools/BinTools.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BinTools/BinTools_Curve2dSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BinTools/BinTools_CurveSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BinTools/BinTools_LocationSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BinTools/BinTools_ShapeSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BinTools/BinTools_SurfaceSet.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

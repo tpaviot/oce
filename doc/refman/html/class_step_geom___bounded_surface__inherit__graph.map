@@ -1,0 +1,19 @@
+<map id="StepGeom_BoundedSurface" name="StepGeom_BoundedSurface">
+<area shape="rect" id="node6" href="$class_step_geom___b_spline_surface.html" title="StepGeom_BSplineSurface" alt="" coords="1180,253,1360,280"/>
+<area shape="rect" id="node16" href="$class_step_geom___curve_bounded_surface.html" title="Representation of STEP entity CurveBoundedSurface. " alt="" coords="1161,304,1379,331"/>
+<area shape="rect" id="node17" href="$class_step_geom___rectangular_composite_surface.html" title="StepGeom_RectangularComposite\lSurface" alt="" coords="1159,355,1381,397"/>
+<area shape="rect" id="node18" href="$class_step_geom___rectangular_trimmed_surface.html" title="StepGeom_RectangularTrimmed\lSurface" alt="" coords="1165,421,1375,462"/>
+<area shape="rect" id="node2" href="$class_step_geom___surface.html" title="StepGeom_Surface" alt="" coords="741,333,876,360"/>
+<area shape="rect" id="node3" href="$class_step_geom___geometric_representation_item.html" title="StepGeom_GeometricRepresentationItem" alt="" coords="431,333,693,360"/>
+<area shape="rect" id="node4" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="188,333,383,360"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,333,140,360"/>
+<area shape="rect" id="node7" href="$class_step_geom___bezier_surface.html" title="StepGeom_BezierSurface" alt="" coords="1451,5,1623,32"/>
+<area shape="rect" id="node8" href="$class_step_geom___bezier_surface_and_rational_b_spline_surface.html" title="StepGeom_BezierSurfaceAnd\lRationalBSplineSurface" alt="" coords="1439,57,1634,98"/>
+<area shape="rect" id="node9" href="$class_step_geom___b_spline_surface_with_knots.html" title="StepGeom_BSplineSurfaceWith\lKnots" alt="" coords="1433,122,1640,163"/>
+<area shape="rect" id="node10" href="$class_step_geom___b_spline_surface_with_knots_and_rational_b_spline_surface.html" title="StepGeom_BSplineSurfaceWith\lKnotsAndRationalBSplineSurface" alt="" coords="1429,187,1644,229"/>
+<area shape="rect" id="node11" href="$class_step_geom___quasi_uniform_surface.html" title="StepGeom_QuasiUniformSurface" alt="" coords="1430,253,1643,280"/>
+<area shape="rect" id="node12" href="$class_step_geom___quasi_uniform_surface_and_rational_b_spline_surface.html" title="StepGeom_QuasiUniformSurface\lAndRationalBSplineSurface" alt="" coords="1430,305,1643,346"/>
+<area shape="rect" id="node13" href="$class_step_geom___rational_b_spline_surface.html" title="StepGeom_RationalBSpline\lSurface" alt="" coords="1445,370,1628,411"/>
+<area shape="rect" id="node14" href="$class_step_geom___uniform_surface.html" title="StepGeom_UniformSurface" alt="" coords="1447,436,1626,463"/>
+<area shape="rect" id="node15" href="$class_step_geom___uniform_surface_and_rational_b_spline_surface.html" title="StepGeom_UniformSurfaceAnd\lRationalBSplineSurface" alt="" coords="1435,487,1638,529"/>
+</map>

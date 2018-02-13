@@ -1,0 +1,8 @@
+<map id="StepVisual_TessellatedItem" name="StepVisual_TessellatedItem">
+<area shape="rect" id="node5" href="$class_step_visual___coordinates_list.html" title="StepVisual_CoordinatesList" alt="" coords="1000,5,1183,32"/>
+<area shape="rect" id="node6" href="$class_step_visual___tessellated_curve_set.html" title="StepVisual_TessellatedCurveSet" alt="" coords="986,56,1197,83"/>
+<area shape="rect" id="node7" href="$class_step_visual___tessellated_geometric_set.html" title="StepVisual_TessellatedGeometricSet" alt="" coords="972,107,1211,133"/>
+<area shape="rect" id="node2" href="$class_step_geom___geometric_representation_item.html" title="StepGeom_GeometricRepresentationItem" alt="" coords="431,56,693,83"/>
+<area shape="rect" id="node3" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="188,56,383,83"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,56,140,83"/>
+</map>

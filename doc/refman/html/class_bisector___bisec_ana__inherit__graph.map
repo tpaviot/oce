@@ -1,0 +1,6 @@
+<map id="Bisector_BisecAna" name="Bisector_BisecAna">
+<area shape="rect" id="node2" href="$class_bisector___curve.html" title="Bisector_Curve" alt="" coords="18,229,127,256"/>
+<area shape="rect" id="node3" href="$class_geom2d___curve.html" title="The abstract class Curve describes the common behavior of curves in 2D space. The Geom2d package prov..." alt="" coords="17,155,128,181"/>
+<area shape="rect" id="node4" href="$class_geom2d___geometry.html" title="The general abstract class Geometry in 2D space describes the common behaviour of all the geometric e..." alt="" coords="5,80,140,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,5,140,32"/>
+</map>

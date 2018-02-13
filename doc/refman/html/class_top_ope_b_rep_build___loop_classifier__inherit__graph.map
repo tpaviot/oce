@@ -1,0 +1,6 @@
+<map id="TopOpeBRepBuild_LoopClassifier" name="TopOpeBRepBuild_LoopClassifier">
+<area shape="rect" id="node2" href="$class_top_ope_b_rep_build___composite_classifier.html" title="classify composite Loops, i.e, loops that can be either a Shape, or a block of Elements. " alt="" coords="111,80,309,121"/>
+<area shape="rect" id="node5" href="$class_top_ope_b_rep_build___pave_classifier.html" title="This class compares vertices on an edge. " alt="" coords="333,87,549,114"/>
+<area shape="rect" id="node3" href="$class_top_ope_b_rep_build___shell_face_classifier.html" title="Classify faces and shells. shapes are Shells, Elements are Faces. " alt="" coords="5,169,199,211"/>
+<area shape="rect" id="node4" href="$class_top_ope_b_rep_build___wire_edge_classifier.html" title="Classify edges and wires. shapes are Wires, Element are Edge. " alt="" coords="223,169,415,211"/>
+</map>

@@ -1,0 +1,1176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E2E6E4BA-032D-1701-05E2-0004C5394F29}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc12\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc12\obj\TKIGES\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc12\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc12\objd\TKIGES\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc12\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc12\obj\TKIGES\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc12\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc12\objd\TKIGES\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc12\bin\TKIGES.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc12\obj\TKIGES/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc12\obj\TKIGES/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc12\obj\TKIGES/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKTopAlgo.lib;TKShHealing.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKPrim.lib;TKBool.lib;TKXSBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc12\bin\TKIGES.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc12\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc12\bin\TKIGES.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc12\lib\TKIGES.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc12\bind\TKIGES.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc12\objd\TKIGES/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc12\objd\TKIGES/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc12\objd\TKIGES/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKTopAlgo.lib;TKShHealing.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKPrim.lib;TKBool.lib;TKXSBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc12\bind\TKIGES.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc12\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc12\bind\TKIGES.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc12\libd\TKIGES.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc12\bin\TKIGES.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc12\obj\TKIGES/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc12\obj\TKIGES/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc12\obj\TKIGES/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKTopAlgo.lib;TKShHealing.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKPrim.lib;TKBool.lib;TKXSBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc12\bin\TKIGES.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc12\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc12\bin\TKIGES.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc12\lib\TKIGES.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc12\bind\TKIGES.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc12\objd\TKIGES/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc12\objd\TKIGES/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc12\objd\TKIGES/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKTopAlgo.lib;TKShHealing.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKPrim.lib;TKBool.lib;TKXSBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc12\bind\TKIGES.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc12\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc12\bind\TKIGES.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc12\libd\TKIGES.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_BasicEditor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_ColorEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_DefSwitch.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_DefaultGeneral.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_DefaultSpecific.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_DirChecker.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_DirPart.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_FileProtocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_FileRecognizer_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_FreeFormatEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_GlobalNodeOfSpecificLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_GlobalNodeOfWriterLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_GlobalSection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_IGESDumper.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_IGESEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_IGESModel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_IGESReaderData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_IGESReaderTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_IGESType.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_IGESWriter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_LabelDisplayEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_LevelListEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_LineFontEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_NameEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_NodeOfSpecificLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_NodeOfWriterLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_ParamCursor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_ParamReader.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_SingleParentEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_SpecificLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_SpecificModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_ToolLocation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_TransfEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_UndefinedEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_ViewKindEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESData\IGESData_WriterLib_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESFile\IGESFile_Read.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESFile\analiges.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESFile\igesread.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESFile\liriges.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESFile\structiges.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_AssocGroupType.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ExternalRefFile.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ExternalRefFileIndex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ExternalRefFileName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ExternalRefLibName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ExternalRefName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ExternalReferenceFile.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_Group.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_GroupWithoutBackP.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_HArray1OfHArray1OfIGESEntity_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_HArray1OfHArray1OfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_HArray1OfHArray1OfReal_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_HArray1OfHArray1OfXYZ_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_HArray1OfHArray1OfXY_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_Hierarchy.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_Name.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_OrderedGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_OrderedGroupWithoutBackP.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_SingleParent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_SingularSubfigure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_SpecificModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_SubfigureDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolAssocGroupType.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolExternalRefFile.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolExternalRefFileIndex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolExternalRefFileName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolExternalRefLibName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolExternalRefName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolExternalReferenceFile.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolGroupWithoutBackP.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolHierarchy.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolOrderedGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolOrderedGroupWithoutBackP.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolSingleParent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolSingularSubfigure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESBasic\IGESBasic_ToolSubfigureDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_Color.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_DefinitionLevel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_DrawingSize.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_DrawingUnits.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_HighLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_IntercharacterSpacing.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_LineFontDefPattern.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_LineFontDefTemplate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_LineFontPredefined.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_NominalSize.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_Pick.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_SpecificModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_TextDisplayTemplate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_TextFontDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolColor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolDefinitionLevel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolDrawingSize.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolDrawingUnits.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolHighLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolIntercharacterSpacing.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolLineFontDefPattern.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolLineFontDefTemplate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolLineFontPredefined.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolNominalSize.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolPick.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolTextDisplayTemplate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolTextFontDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_ToolUniformRectGrid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGraph\IGESGraph_UniformRectGrid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_BSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_BSplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_Boundary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_BoundedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_CircularArc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_CompositeCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ConicArc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_CopiousData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_CurveOnSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_Direction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_Flash.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_Line.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_OffsetCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_OffsetSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_Plane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_Point.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_RuledSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_SpecificModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_SplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_SplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_SurfaceOfRevolution.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_TabulatedCylinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolBSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolBSplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolBoundary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolBoundedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolCircularArc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolCompositeCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolConicArc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolCopiousData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolCurveOnSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolDirection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolFlash.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolOffsetCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolOffsetSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolPlane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolRuledSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolSplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolSurfaceOfRevolution.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolTabulatedCylinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolTransformationMatrix.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_ToolTrimmedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_TransformationMatrix.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESGeom\IGESGeom_TrimmedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_AngularDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_BasicDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_CenterLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_CurveDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_DiameterDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_DimensionDisplayData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_DimensionTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_DimensionUnits.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_DimensionedGeometry.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_FlagNote.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_GeneralLabel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_GeneralNote.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_GeneralSymbol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_LeaderArrow.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_LinearDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_NewDimensionedGeometry.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_NewGeneralNote.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_OrdinateDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_PointDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_RadiusDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_Section.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_SectionedArea.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_SpecificModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolAngularDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolBasicDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolCenterLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolCurveDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolDiameterDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolDimensionDisplayData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolDimensionTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolDimensionUnits.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolDimensionedGeometry.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolFlagNote.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolGeneralLabel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolGeneralNote.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolGeneralSymbol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolLeaderArrow.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolLinearDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolNewDimensionedGeometry.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolNewGeneralNote.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolOrdinateDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolPointDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolRadiusDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolSection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolSectionedArea.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_ToolWitnessLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDimen\IGESDimen_WitnessLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_CircArraySubfigure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ConnectPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_Drawing.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_DrawingWithRotation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_LabelDisplay.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_NetworkSubfigure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_NetworkSubfigureDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_PerspectiveView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_Planar.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_RectArraySubfigure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_SegmentedViewsVisible.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_SpecificModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolCircArraySubfigure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolConnectPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolDrawing.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolDrawingWithRotation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolLabelDisplay.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolNetworkSubfigure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolNetworkSubfigureDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolPerspectiveView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolPlanar.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolRectArraySubfigure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolSegmentedViewsVisible.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolViewsVisible.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ToolViewsVisibleWithAttr.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_View.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ViewsVisible.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDraw\IGESDraw_ViewsVisibleWithAttr.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_Block.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_BooleanTree.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ConeFrustum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ConicalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_Cylinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_CylindricalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_EdgeList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_Ellipsoid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_Face.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_Loop.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ManifoldSolid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_PlaneSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_RightAngularWedge.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_SelectedComponent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_Shell.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_SolidAssembly.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_SolidInstance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_SolidOfLinearExtrusion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_SolidOfRevolution.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_SpecificModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_Sphere.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_SphericalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolBlock.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolBooleanTree.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolConeFrustum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolConicalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolCylinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolCylindricalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolEdgeList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolEllipsoid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolLoop.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolManifoldSolid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolPlaneSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolRightAngularWedge.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolSelectedComponent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolShell.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolSolidAssembly.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolSolidInstance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolSolidOfLinearExtrusion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolSolidOfRevolution.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolSphere.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolSphericalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolToroidalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolTorus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToolVertexList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_TopoBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_ToroidalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_Torus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSolid\IGESSolid_VertexList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_AssociativityDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_AttributeDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_AttributeTable.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_GenericData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_MacroDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_SpecificModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_TabularData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_ToolAssociativityDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_ToolAttributeDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_ToolAttributeTable.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_ToolGenericData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_ToolMacroDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_ToolTabularData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_ToolUnitsData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESDefs\IGESDefs_UnitsData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_DrilledHole.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ElementResults.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_FiniteElement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_Flow.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_FlowLineSpec.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_LevelFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_LevelToPWBLayerMap.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_LineWidening.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_NodalConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_NodalDisplAndRot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_NodalResults.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_Node.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_PWBArtworkStackup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_PWBDrilledHole.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_PartNumber.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_PinNumber.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_PipingFlow.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ReferenceDesignator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_RegionRestriction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_SpecificModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolDrilledHole.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolElementResults.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolFiniteElement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolFlow.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolFlowLineSpec.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolLevelFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolLevelToPWBLayerMap.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolLineWidening.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolNodalConstraint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolNodalDisplAndRot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolNodalResults.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolNode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolPWBArtworkStackup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolPWBDrilledHole.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolPartNumber.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolPinNumber.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolPipingFlow.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolReferenceDesignator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESAppli\IGESAppli_ToolRegionRestriction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESConvGeom\IGESConvGeom.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESConvGeom\IGESConvGeom_GeomBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_Activator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_AddFileComment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_AddGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_AutoCorrect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_ChangeLevelList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_ChangeLevelNumber.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_ComputeStatus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_CounterOfLevelNumber.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_DispPerDrawing.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_DispPerSingleView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_Dumper.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_EditDirPart.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_EditHeader.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_FileModifier_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_FloatFormat.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_IGESName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_IGESTypeForm.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_ModelModifier_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_RebuildDrawings.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_RebuildGroups.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_RemoveCurves.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectBasicGeom.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectBypassGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectBypassSubfigure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectDrawingFrom.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectFaces.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectFromDrawing.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectFromSingleView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectLevelNumber.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectPCurves.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectSingleViewFrom.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectSubordinate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SelectVisibleStatus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SetGlobalParameter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SetLabel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SetVersion5.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SignColor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SignLevelNumber.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SignStatus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_SplineToBSpline.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_UpdateCreationDate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_UpdateFileName.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_UpdateLastChange.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_ViewSorter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESSelect\IGESSelect_WorkLibrary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep_Actor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep_AlgoContainer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep_BRepEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep_BasicCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep_BasicSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep_CurveAndSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep_IGESBoundary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep_Reader.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep_ToolContainer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep_TopoCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESToBRep\IGESToBRep_TopoSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToIGES\GeomToIGES_GeomCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToIGES\GeomToIGES_GeomEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToIGES\GeomToIGES_GeomPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToIGES\GeomToIGES_GeomSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToIGES\GeomToIGES_GeomVector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dToIGES\Geom2dToIGES_Geom2dCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dToIGES\Geom2dToIGES_Geom2dEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dToIGES\Geom2dToIGES_Geom2dPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dToIGES\Geom2dToIGES_Geom2dVector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepToIGES\BRepToIGES_BREntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepToIGES\BRepToIGES_BRShell.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepToIGES\BRepToIGES_BRSolid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepToIGES\BRepToIGES_BRWire.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepToIGESBRep\BRepToIGESBRep_Entity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESControl\IGESControl_ActorWrite.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESControl\IGESControl_AlgoContainer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESControl\IGESControl_Controller.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESControl\IGESControl_IGESBoundary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESControl\IGESControl_Reader.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESControl\IGESControl_ToolContainer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IGESControl\IGESControl_Writer.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKIGES.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

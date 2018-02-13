@@ -1,0 +1,6 @@
+<map id="XCAFApp_Application" name="XCAFApp_Application">
+<area shape="rect" id="node2" href="$class_t_doc_std___application.html" title="The abstract root class for all application classes. They are in charge of: " alt="" coords="9,229,151,256"/>
+<area shape="rect" id="node3" href="$class_c_d_f___application.html" title="CDF_Application" alt="" coords="21,155,139,181"/>
+<area shape="rect" id="node4" href="$class_c_d_m___application.html" title="CDM_Application" alt="" coords="19,80,141,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="13,5,147,32"/>
+</map>

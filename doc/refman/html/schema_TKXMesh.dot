@@ -1,0 +1,17 @@
+digraph schema_TKXMesh
+{
+	TKXMesh [ URL = "toolkit_tkxmesh.html", shape = box ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKXMesh -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKXMesh -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKXMesh -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKXMesh -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKXMesh -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKMesh [ URL = "toolkit_tkmesh.html" , shape = box ]
+	TKXMesh -> TKMesh [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

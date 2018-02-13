@@ -1,0 +1,3 @@
+<map id="OSD_Timer" name="OSD_Timer">
+<area shape="rect" id="node2" href="$class_o_s_d___chronometer.html" title="This class measures CPU time (both user and system) consumed by current process or thread..." alt="" coords="5,5,136,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="StepRepr_MakeFromUsageOption" name="StepRepr_MakeFromUsageOption">
+<area shape="rect" id="node2" href="$class_step_repr___product_definition_usage.html" title="Representation of STEP entity ProductDefinitionUsage. " alt="" coords="25,169,206,211"/>
+<area shape="rect" id="node3" href="$class_step_basic___product_definition_relationship.html" title="Representation of STEP entity ProductDefinitionRelationship. " alt="" coords="22,80,209,121"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="48,5,183,32"/>
+</map>

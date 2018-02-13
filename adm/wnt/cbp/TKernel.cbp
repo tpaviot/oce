@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKernel" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKernel" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__FSD_DLL" />
+					<Add option="-D__MMgt_DLL" />
+					<Add option="-D__OSD_DLL" />
+					<Add option="-D__Plugin_DLL" />
+					<Add option="-D__Quantity_DLL" />
+					<Add option="-D__Resource_DLL" />
+					<Add option="-D__Standard_DLL" />
+					<Add option="-D__StdFail_DLL" />
+					<Add option="-D__Storage_DLL" />
+					<Add option="-D__TColStd_DLL" />
+					<Add option="-D__TCollection_DLL" />
+					<Add option="-D__TShort_DLL" />
+					<Add option="-D__Units_DLL" />
+					<Add option="-D__UnitsAPI_DLL" />
+					<Add option="-D__NCollection_DLL" />
+					<Add option="-D__Message_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKernel_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKernel" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__FSD_DLL" />
+					<Add option="-D__MMgt_DLL" />
+					<Add option="-D__OSD_DLL" />
+					<Add option="-D__Plugin_DLL" />
+					<Add option="-D__Quantity_DLL" />
+					<Add option="-D__Resource_DLL" />
+					<Add option="-D__Standard_DLL" />
+					<Add option="-D__StdFail_DLL" />
+					<Add option="-D__Storage_DLL" />
+					<Add option="-D__TColStd_DLL" />
+					<Add option="-D__TCollection_DLL" />
+					<Add option="-D__TShort_DLL" />
+					<Add option="-D__Units_DLL" />
+					<Add option="-D__UnitsAPI_DLL" />
+					<Add option="-D__NCollection_DLL" />
+					<Add option="-D__Message_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKernel_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="advapi32" />
+			<Add library="gdi32" />
+			<Add library="user32" />
+			<Add library="comdlg32" />
+			<Add library="wsock32" />
+			<Add library="Psapi" />
+		</Linker>
+		<Unit filename="../../../src/FSD/FSD_BinaryFile.cxx" />
+		<Unit filename="../../../src/FSD/FSD_CmpFile.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FSD/FSD_File.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Chronometer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Directory.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_DirectoryIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Disk.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Environment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Error.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_File.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_FileIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_FileNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Host.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_MAllocHook.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_MemInfo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_OpenFile.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Parallel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Path.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_PerfMeter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Process.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Protection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_SharedLibrary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Thread.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_Timer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_WNT.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/OSD/OSD_signal.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Plugin/Plugin.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Quantity/Quantity_Color.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Quantity/Quantity_Convert.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Quantity/Quantity_Date.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Quantity/Quantity_Period.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Resource/Resource_ConvertUnicode.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../src/Resource/Resource_LexicalCompare.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Resource/Resource_Manager.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Resource/Resource_Unicode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_ArrayStreamBuffer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_CLocaleSentry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_CString.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_ErrorHandler.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_ExtString.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_Failure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_GUID.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_MMgrOpt.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_MMgrRaw.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_MMgrRoot.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_MMgrTBBalloc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_Mutex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_OutOfMemory.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_Persistent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_Real.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_SStream.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_ShortReal.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_Transient.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_Type.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_UUID.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Standard/Standard_math.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_BaseDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_CallBack.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_Data.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_DefaultCallBack.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_HeaderData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_InternalData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_Root.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_RootData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_Schema.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_TypeData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_TypedCallBack.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Storage/Storage_stCONSTclCOM.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TColStd/TColStd_HPackedMapOfInteger.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TColStd/TColStd_MapIteratorOfPackedMapOfInteger.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TColStd/TColStd_PackedMapOfInteger.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TCollection/TCollection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TCollection/TCollection_AsciiString.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TCollection/TCollection_BaseSequence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TCollection/TCollection_BasicMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TCollection/TCollection_BasicMapIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TCollection/TCollection_ExtendedString.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TCollection/TCollection_HAsciiString.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TCollection/TCollection_HExtendedString.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TCollection/TCollection_MapNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TCollection/TCollection_SeqNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_Dimensions.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_Explorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_Lexicon.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_MathSentence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_Measurement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_Quantity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_Sentence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_ShiftedToken.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_ShiftedUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_Token.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_Unit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_UnitSentence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_UnitsDictionary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_UnitsLexicon.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Units/Units_UnitsSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/UnitsAPI/UnitsAPI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_AccAllocator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_AlignedAllocator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_BaseAllocator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_BaseList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_BaseMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_BaseSequence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_BaseVector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_HeapAllocator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_IncAllocator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_SparseArrayBase.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_UtfString.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/NCollection/NCollection_WinHeapAllocator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message_Alert.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message_Algorithm.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message_Messenger.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message_Msg.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message_MsgFile.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message_Printer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message_PrinterOStream.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message_ProgressIndicator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message_ProgressScale.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message_ProgressSentry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Message/Message_Report.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

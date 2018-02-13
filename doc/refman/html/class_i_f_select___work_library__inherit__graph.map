@@ -1,0 +1,5 @@
+<map id="IFSelect_WorkLibrary" name="IFSelect_WorkLibrary">
+<area shape="rect" id="node3" href="$class_i_g_e_s_select___work_library.html" title="Performs Read and Write an IGES File with an IGES Model. " alt="" coords="5,155,172,181"/>
+<area shape="rect" id="node4" href="$class_step_select___work_library.html" title="Performs Read and Write a STEP File with a STEP Model Following the protocols, Copy may be implemente..." alt="" coords="197,155,359,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="116,5,251,32"/>
+</map>

@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{907CC6EE-165A-0A87-0252-802864DBD492}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc11\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc11\obj\TKernel\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc11\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc11\objd\TKernel\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc11\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc11\obj\TKernel\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc11\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc11\objd\TKernel\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc11\bin\TKernel.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc11\obj\TKernel/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc11\obj\TKernel/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc11\obj\TKernel/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;comdlg32.lib;wsock32.lib;Psapi.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc11\bin\TKernel.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc11\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc11\bin\TKernel.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc11\lib\TKernel.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc11\bind\TKernel.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc11\objd\TKernel/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc11\objd\TKernel/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc11\objd\TKernel/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;comdlg32.lib;wsock32.lib;Psapi.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc11\bind\TKernel.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc11\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc11\bind\TKernel.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc11\libd\TKernel.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc11\bin\TKernel.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc11\obj\TKernel/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc11\obj\TKernel/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc11\obj\TKernel/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;comdlg32.lib;wsock32.lib;Psapi.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc11\bin\TKernel.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc11\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc11\bin\TKernel.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc11\lib\TKernel.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc11\bind\TKernel.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc11\objd\TKernel/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc11\objd\TKernel/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc11\objd\TKernel/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;comdlg32.lib;wsock32.lib;Psapi.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc11\bind\TKernel.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc11\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc11\bind\TKernel.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc11\libd\TKernel.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\FSD\FSD_BinaryFile.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FSD\FSD_CmpFile.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FSD\FSD_File.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Chronometer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Directory.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_DirectoryIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Disk.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Environment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Error.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_File.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_FileIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_FileNode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Host.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_MAllocHook.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_MemInfo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_OpenFile.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Parallel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Path.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_PerfMeter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Process.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Protection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_SharedLibrary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Thread.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_Timer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_WNT.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_signal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Plugin\Plugin.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Quantity\Quantity_Color.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Quantity\Quantity_Convert.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Quantity\Quantity_Date.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Quantity\Quantity_Period.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Resource\Resource_ConvertUnicode.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Resource\Resource_LexicalCompare.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Resource\Resource_Manager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Resource\Resource_Unicode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_ArrayStreamBuffer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_CLocaleSentry.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_CString.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_ErrorHandler.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_ExtString.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_Failure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_GUID.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_MMgrOpt.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_MMgrRaw.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_MMgrRoot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_MMgrTBBalloc.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_Mutex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_OutOfMemory.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_Persistent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_Real.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_SStream.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_ShortReal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_Transient.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_Type.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_UUID.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_math.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_BaseDriver.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_CallBack.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_Data.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_DefaultCallBack.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_HeaderData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_InternalData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_Root.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_RootData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_Schema.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_TypeData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_TypedCallBack.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Storage\Storage_stCONSTclCOM.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TColStd\TColStd_HPackedMapOfInteger.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TColStd\TColStd_MapIteratorOfPackedMapOfInteger.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TColStd\TColStd_PackedMapOfInteger.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TCollection\TCollection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TCollection\TCollection_AsciiString.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TCollection\TCollection_BaseSequence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TCollection\TCollection_BasicMap.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TCollection\TCollection_BasicMapIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TCollection\TCollection_ExtendedString.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TCollection\TCollection_HAsciiString.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TCollection\TCollection_HExtendedString.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TCollection\TCollection_MapNode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TCollection\TCollection_SeqNode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_Dimensions.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_Explorer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_Lexicon.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_MathSentence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_Measurement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_Quantity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_Sentence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_ShiftedToken.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_ShiftedUnit.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_Token.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_Unit.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_UnitSentence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_UnitsDictionary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_UnitsLexicon.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Units\Units_UnitsSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\UnitsAPI\UnitsAPI.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_AccAllocator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_AlignedAllocator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_BaseAllocator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_BaseList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_BaseMap.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_BaseSequence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_BaseVector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_HeapAllocator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_IncAllocator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_SparseArrayBase.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_UtfString.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NCollection\NCollection_WinHeapAllocator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_Alert.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_Algorithm.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_Messenger.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_Msg.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_MsgFile.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_Printer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_PrinterOStream.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_ProgressIndicator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_ProgressScale.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_ProgressSentry.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_Report.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKernel.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

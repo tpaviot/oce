@@ -1,0 +1,9 @@
+<map id="Geom_Conic" name="Geom_Conic">
+<area shape="rect" id="node5" href="$class_geom___circle.html" title="Describes a circle in 3D space. A circle is defined by its radius and, as with any conic curve..." alt="" coords="5,304,103,331"/>
+<area shape="rect" id="node6" href="$class_geom___ellipse.html" title="Describes an ellipse in 3D space. An ellipse is defined by its major and minor radii and..." alt="" coords="127,304,229,331"/>
+<area shape="rect" id="node7" href="$class_geom___hyperbola.html" title="Describes a branch of a hyperbola in 3D space. A hyperbola is defined by its major and minor radii an..." alt="" coords="254,304,377,331"/>
+<area shape="rect" id="node8" href="$class_geom___parabola.html" title="Describes a parabola in 3D space. A parabola is defined by its focal length (i.e. the distance betwee..." alt="" coords="401,304,515,331"/>
+<area shape="rect" id="node2" href="$class_geom___curve.html" title="The abstract class Curve describes the common behavior of curves in 3D space. The Geom package provid..." alt="" coords="198,155,294,181"/>
+<area shape="rect" id="node3" href="$class_geom___geometry.html" title="The abstract class Geometry for 3D space is the root class of all geometric objects from the Geom pac..." alt="" coords="185,80,307,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="179,5,313,32"/>
+</map>

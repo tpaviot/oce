@@ -1,0 +1,11 @@
+<map id="StepRepr_DerivedShapeAspect" name="StepRepr_DerivedShapeAspect">
+<area shape="rect" id="node4" href="$class_step_repr___apex.html" title="Added for Dimensional Tolerances. " alt="" coords="692,5,805,32"/>
+<area shape="rect" id="node5" href="$class_step_repr___centre_of_symmetry.html" title="Added for Dimensional Tolerances. " alt="" coords="651,56,846,83"/>
+<area shape="rect" id="node6" href="$class_step_repr___extension.html" title="Added for Dimensional Tolerances. " alt="" coords="678,107,819,133"/>
+<area shape="rect" id="node7" href="$class_step_repr___geometric_alignment.html" title="Added for Dimensional Tolerances. " alt="" coords="648,157,849,184"/>
+<area shape="rect" id="node8" href="$class_step_repr___parallel_offset.html" title="Added for Dimensional Tolerances. " alt="" coords="669,208,829,235"/>
+<area shape="rect" id="node9" href="$class_step_repr___perpendicular_to.html" title="Added for Dimensional Tolerances. " alt="" coords="661,259,837,285"/>
+<area shape="rect" id="node10" href="$class_step_repr___tangent.html" title="Added for Dimensional Tolerances. " alt="" coords="684,309,813,336"/>
+<area shape="rect" id="node2" href="$class_step_repr___shape_aspect.html" title="StepRepr_ShapeAspect" alt="" coords="188,157,349,184"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,157,140,184"/>
+</map>

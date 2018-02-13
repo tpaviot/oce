@@ -1,0 +1,12 @@
+<map id="Adaptor3d_Curve" name="Adaptor3d_Curve">
+<area shape="rect" id="node2" href="$class_adaptor3d___curve_on_surface.html" title="An interface between the services provided by a curve lying on a surface from the package Geom and th..." alt="" coords="173,5,355,32"/>
+<area shape="rect" id="node3" href="$class_adaptor3d___iso_curve.html" title="Defines an isoparametric curve on a surface. The type of isoparametric curve (U or V) is defined with..." alt="" coords="195,56,333,83"/>
+<area shape="rect" id="node4" href="$class_bi_tgte___curve_on_edge.html" title="private class used to create a filler rolling on an edge. " alt="" coords="191,107,337,133"/>
+<area shape="rect" id="node5" href="$class_bi_tgte___curve_on_vertex.html" title="private class used to create a filler rolling on an edge. " alt="" coords="187,157,341,184"/>
+<area shape="rect" id="node6" href="$class_b_rep_adaptor___comp_curve.html" title="The Curve from BRepAdaptor allows to use a Wire of the BRep topology like a 3D curve. Warning: With this class of curve, C0 and C1 continuities are not assumed. So be carful with some algorithm! " alt="" coords="178,208,350,235"/>
+<area shape="rect" id="node7" href="$class_b_rep_adaptor___curve.html" title="The Curve from BRepAdaptor allows to use an Edge of the BRep topology like a 3D curve. " alt="" coords="195,259,333,285"/>
+<area shape="rect" id="node8" href="$class_ch_fi_d_s___el_spine.html" title="Elementary Spine for cheminements and approximations. " alt="" coords="205,309,323,336"/>
+<area shape="rect" id="node9" href="$class_geom_adaptor___curve.html" title="This class provides an interface between the services provided by any curve from the package Geom and..." alt="" coords="193,360,335,387"/>
+<area shape="rect" id="node10" href="$class_geom_fill___snglr_func.html" title="to represent function C&#39;(t)^C&#39;&#39;(t) " alt="" coords="194,411,334,437"/>
+<area shape="rect" id="node11" href="$class_proj_lib___project_on_plane.html" title="Class used to project a 3d curve on a plane. The result will be a 3d curve. " alt="" coords="184,461,344,488"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="STEPSelections_SelectFaces" name="STEPSelections_SelectFaces">
+<area shape="rect" id="node2" href="$class_i_f_select___select_explore.html" title="A SelectExplore determines from an input list of Entities, a list obtained by a way of exploration..." alt="" coords="25,229,183,256"/>
+<area shape="rect" id="node3" href="$class_i_f_select___select_deduct.html" title="A SelectDeduct determines a list of Entities from an Input Selection, by a computation : Output list ..." alt="" coords="27,155,181,181"/>
+<area shape="rect" id="node4" href="$class_i_f_select___selection.html" title="A Selection allows to define a set of Interface Entities. Entities to be put on an output file should..." alt="" coords="39,80,169,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="37,5,171,32"/>
+</map>

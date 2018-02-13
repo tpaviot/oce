@@ -1,0 +1,7 @@
+<map id="BRepPrim_OneAxis" name="BRepPrim_OneAxis">
+<area shape="rect" id="node2" href="$class_b_rep_prim___revolution.html" title="Implement the OneAxis algoritm for a revolution surface. " alt="" coords="219,80,366,107"/>
+<area shape="rect" id="node3" href="$class_b_rep_prim___cone.html" title="Implement the cone primitive. " alt="" coords="5,155,124,181"/>
+<area shape="rect" id="node4" href="$class_b_rep_prim___cylinder.html" title="Cylinder primitive. " alt="" coords="148,155,283,181"/>
+<area shape="rect" id="node5" href="$class_b_rep_prim___sphere.html" title="Implements the sphere primitive. " alt="" coords="307,155,436,181"/>
+<area shape="rect" id="node6" href="$class_b_rep_prim___torus.html" title="Implements the torus primitive. " alt="" coords="461,155,581,181"/>
+</map>

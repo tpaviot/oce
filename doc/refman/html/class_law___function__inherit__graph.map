@@ -1,0 +1,9 @@
+<map id="Law_Function" name="Law_Function">
+<area shape="rect" id="node3" href="$class_law___b_sp_func.html" title="Law Function based on a BSpline curve 1d. Package methods and classes are implemented in package Law ..." alt="" coords="50,155,157,181"/>
+<area shape="rect" id="node6" href="$class_law___composite.html" title="Loi composite constituee d une liste de lois de ranges consecutifs. Cette implementation un peu lourd..." alt="" coords="181,155,295,181"/>
+<area shape="rect" id="node7" href="$class_law___constant.html" title="Loi constante. " alt="" coords="319,155,423,181"/>
+<area shape="rect" id="node8" href="$class_law___linear.html" title="Describes an linear evolution law. " alt="" coords="448,155,535,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="237,5,372,32"/>
+<area shape="rect" id="node4" href="$class_law___interpol.html" title="Provides an evolution law that interpolates a set of parameter and value pairs (wi, radi) " alt="" coords="5,229,100,256"/>
+<area shape="rect" id="node5" href="$class_law___s.html" title="Describes an &quot;S&quot; evolution law. " alt="" coords="125,229,186,256"/>
+</map>

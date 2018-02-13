@@ -1,0 +1,6 @@
+<map id="ShapeUpgrade_FaceDivide" name="ShapeUpgrade_FaceDivide">
+<area shape="rect" id="node4" href="$class_shape_upgrade___closed_face_divide.html" title="Divides a Face with one or more seam edge to avoid closed faces. Splitting is performed by U and V di..." alt="" coords="5,229,223,256"/>
+<area shape="rect" id="node5" href="$class_shape_upgrade___face_divide_area.html" title="Divides face by max area criterium. " alt="" coords="247,229,451,256"/>
+<area shape="rect" id="node2" href="$class_shape_upgrade___tool.html" title="Tool is a root class for splitting classes Provides context for recording changes, basic precision value and limit (minimal and maximal) values for tolerances. " alt="" coords="162,80,301,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="164,5,299,32"/>
+</map>

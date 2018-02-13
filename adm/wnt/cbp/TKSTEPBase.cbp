@@ -1,0 +1,2389 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKSTEPBase" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKSTEPBase" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__StepBasic_DLL" />
+					<Add option="-D__RWStepBasic_DLL" />
+					<Add option="-D__StepRepr_DLL" />
+					<Add option="-D__RWStepRepr_DLL" />
+					<Add option="-D__StepGeom_DLL" />
+					<Add option="-D__RWStepGeom_DLL" />
+					<Add option="-D__StepShape_DLL" />
+					<Add option="-D__RWStepShape_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKSTEPBase_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKSTEPBase" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__StepBasic_DLL" />
+					<Add option="-D__RWStepBasic_DLL" />
+					<Add option="-D__StepRepr_DLL" />
+					<Add option="-D__RWStepRepr_DLL" />
+					<Add option="-D__StepGeom_DLL" />
+					<Add option="-D__RWStepGeom_DLL" />
+					<Add option="-D__StepShape_DLL" />
+					<Add option="-D__RWStepShape_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKSTEPBase_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKernel" />
+			<Add library="TKXSBase" />
+			<Add library="TKMath" />
+		</Linker>
+		<Unit filename="../../../src/StepBasic/StepBasic_Action.cxx" />
+		<Unit filename="../../../src/StepBasic/StepBasic_ActionAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ActionMethod.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ActionRequestAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ActionRequestSolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Address.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ApplicationContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ApplicationContextElement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ApplicationProtocolDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Approval.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ApprovalAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ApprovalDateTime.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ApprovalPersonOrganization.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ApprovalRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ApprovalRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ApprovalStatus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_AreaUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_CalendarDate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Certification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_CertificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_CertificationType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_CharacterizedObject.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Contract.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ContractAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ContractType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ConversionBasedUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ConversionBasedUnitAndAreaUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ConversionBasedUnitAndLengthUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ConversionBasedUnitAndMassUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ConversionBasedUnitAndPlaneAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ConversionBasedUnitAndRatioUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ConversionBasedUnitAndSolidAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ConversionBasedUnitAndTimeUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ConversionBasedUnitAndVolumeUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_CoordinatedUniversalTimeOffset.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Date.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DateAndTime.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DateAndTimeAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DateAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DateRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DateTimeRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DateTimeSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DerivedUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DerivedUnitElement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DesignContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DigitalDocument.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DimensionalExponents.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Document.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DocumentFile.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DocumentProductAssociation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DocumentProductEquivalence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DocumentReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DocumentRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DocumentRepresentationType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DocumentType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_DocumentUsageConstraint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Effectivity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_EffectivityAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_EulerAngles.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ExternalIdentificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ExternalSource.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ExternallyDefinedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_GeneralProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Group.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_GroupAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_GroupRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_IdentificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_IdentificationRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_LengthMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_LengthUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_LocalTime.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_MassMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_MassUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_MeasureValueMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_MeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_MechanicalContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_NameAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_NamedUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ObjectRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_OrdinalDate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Organization.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_OrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_OrganizationRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_OrganizationalAddress.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Person.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_PersonAndOrganization.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_PersonAndOrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_PersonAndOrganizationRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_PersonOrganizationSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_PersonalAddress.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_PhysicallyModeledProductDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_PlaneAngleMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_PlaneAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Product.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductCategory.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductCategoryRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductConceptContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductDefinitionContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductDefinitionEffectivity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductDefinitionFormation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductDefinitionFormationRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductDefinitionFormationWithSpecifiedSource.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductDefinitionOrReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductDefinitionReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductDefinitionReferenceWithLocalRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductDefinitionRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductDefinitionWithAssociatedDocuments.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductOrFormationOrDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductRelatedProductCategory.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ProductType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_RatioMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_RatioUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_RoleAssociation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_RoleSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SecurityClassification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SecurityClassificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SecurityClassificationLevel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SiUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SiUnitAndAreaUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SiUnitAndLengthUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SiUnitAndMassUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SiUnitAndPlaneAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SiUnitAndRatioUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SiUnitAndSolidAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SiUnitAndThermodynamicTemperatureUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SiUnitAndTimeUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SiUnitAndVolumeUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SizeMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SizeSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SolidAngleMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SolidAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_SourceItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_ThermodynamicTemperatureUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_TimeMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_TimeUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_UncertaintyMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_Unit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_VersionedActionRequest.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_VolumeUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepBasic/StepBasic_WeekOfYearAndDayDate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWAction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWActionAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWActionMethod.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWActionRequestAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWActionRequestSolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWAddress.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWApplicationContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWApplicationContextElement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWApplicationProtocolDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWApproval.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWApprovalDateTime.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWApprovalPersonOrganization.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWApprovalRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWApprovalRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWApprovalStatus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWCalendarDate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWCertification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWCertificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWCertificationType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWCharacterizedObject.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWContract.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWContractAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWContractType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWConversionBasedUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWConversionBasedUnitAndAreaUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWConversionBasedUnitAndLengthUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWConversionBasedUnitAndMassUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWConversionBasedUnitAndPlaneAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWConversionBasedUnitAndRatioUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWConversionBasedUnitAndSolidAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWConversionBasedUnitAndTimeUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWConversionBasedUnitAndVolumeUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWCoordinatedUniversalTimeOffset.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDateAndTime.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDateRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDateTimeRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDerivedUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDerivedUnitElement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDimensionalExponents.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDocument.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDocumentFile.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDocumentProductAssociation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDocumentProductEquivalence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDocumentRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDocumentRepresentationType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDocumentType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWDocumentUsageConstraint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWEffectivity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWEffectivityAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWEulerAngles.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWExternalIdentificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWExternalSource.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWExternallyDefinedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWGeneralProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWGroupAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWGroupRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWIdentificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWIdentificationRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWLengthMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWLengthUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWLocalTime.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWMassMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWMassUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWMechanicalContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWNameAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWNamedUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWObjectRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWOrdinalDate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWOrganization.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWOrganizationRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWOrganizationalAddress.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWPerson.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWPersonAndOrganization.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWPersonAndOrganizationRole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWPersonalAddress.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWPlaneAngleMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWPlaneAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProduct.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductCategory.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductCategoryRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductConceptContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductDefinitionContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductDefinitionEffectivity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductDefinitionFormation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductDefinitionFormationRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductDefinitionFormationWithSpecifiedSource.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductDefinitionReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductDefinitionReferenceWithLocalRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductDefinitionRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductDefinitionWithAssociatedDocuments.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductRelatedProductCategory.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWProductType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWRatioMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWRoleAssociation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSecurityClassification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSecurityClassificationLevel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSiUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSiUnitAndAreaUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSiUnitAndLengthUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSiUnitAndMassUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSiUnitAndPlaneAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSiUnitAndRatioUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSiUnitAndSolidAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSiUnitAndThermodynamicTemperatureUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSiUnitAndTimeUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSiUnitAndVolumeUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSolidAngleMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWSolidAngleUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWThermodynamicTemperatureUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWUncertaintyMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWVersionedActionRequest.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepBasic/RWStepBasic_RWWeekOfYearAndDayDate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_AllAroundShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_Apex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_AssemblyComponentUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_AssemblyComponentUsageSubstitute.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_BetweenShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_CentreOfSymmetry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_CharacterizedDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_CharacterizedRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_CompShAspAndDatumFeatAndShAsp.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_CompositeGroupShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_CompositeShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_CompoundRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ConfigurationDesign.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ConfigurationDesignItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ConfigurationEffectivity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ConfigurationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ConstructiveGeometryRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ConstructiveGeometryRepresentationRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ContinuosShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_DataEnvironment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_DefinitionalRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_DerivedShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_DescriptiveRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_Extension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ExternallyDefinedRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_FeatureForDatumTargetRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_FunctionallyDefinedTransformation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_GeometricAlignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_GlobalUncertaintyAssignedContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_GlobalUnitAssignedContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_IntegerRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ItemDefinedTransformation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_MakeFromUsageOption.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_MappedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_MaterialDesignation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_MaterialProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_MaterialPropertyRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_MeasureRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_NextAssemblyUsageOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ParallelOffset.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ParametricRepresentationContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_PerpendicularTo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ProductConcept.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ProductDefinitionShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ProductDefinitionUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_PromissoryUsageOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_PropertyDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_PropertyDefinitionRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_PropertyDefinitionRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_QuantifiedAssemblyComponentUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ReprItemAndLengthMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ReprItemAndMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ReprItemAndMeasureWithUnitAndQRI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ReprItemAndPlaneAngleMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_Representation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_RepresentationContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_RepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_RepresentationMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_RepresentationRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_RepresentationRelationshipWithTransformation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_RepresentedDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ShapeAspectDerivingRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ShapeAspectRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ShapeAspectTransition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ShapeDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ShapeRepresentationRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ShapeRepresentationRelationshipWithTransformation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_SpecifiedHigherUsageOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_StructuralResponseProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_StructuralResponsePropertyDefinitionRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_SuppliedPartRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_Tangent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_Transformation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ValueRange.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepRepr/StepRepr_ValueRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWAllAroundShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWApex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWAssemblyComponentUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWAssemblyComponentUsageSubstitute.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWBetweenShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWCentreOfSymmetry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWCharacterizedRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWCompGroupShAspAndCompShAspAndDatumFeatAndShAsp.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWCompShAspAndDatumFeatAndShAsp.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWCompositeGroupShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWCompositeShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWCompoundRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWConfigurationDesign.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWConfigurationEffectivity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWConfigurationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWConstructiveGeometryRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWConstructiveGeometryRepresentationRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWContinuosShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWDataEnvironment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWDefinitionalRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWDerivedShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWDescriptiveRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWExtension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWFeatureForDatumTargetRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWFunctionallyDefinedTransformation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWGeometricAlignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWGlobalUncertaintyAssignedContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWGlobalUnitAssignedContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWIntegerRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWItemDefinedTransformation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWMakeFromUsageOption.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWMappedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWMaterialDesignation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWMaterialProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWMaterialPropertyRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWMeasureRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWParallelOffset.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWParametricRepresentationContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWPerpendicularTo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWProductConcept.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWProductDefinitionShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWPropertyDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWPropertyDefinitionRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWPropertyDefinitionRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWQuantifiedAssemblyComponentUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWReprItemAndLengthMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWReprItemAndLengthMeasureWithUnitAndQRI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnitAndQRI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWRepresentationContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWRepresentationMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWRepresentationRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWRepresentationRelationshipWithTransformation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWShapeAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWShapeAspectDerivingRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWShapeAspectRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWShapeAspectTransition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWShapeRepresentationRelationshipWithTransformation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWSpecifiedHigherUsageOccurrence.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWStructuralResponseProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWStructuralResponsePropertyDefinitionRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWTangent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepRepr/RWStepRepr_RWValueRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Axis1Placement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Axis2Placement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Axis2Placement2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Axis2Placement3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BSplineCurveWithKnots.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BSplineSurfaceWithKnots.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BezierCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BezierCurveAndRationalBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BezierSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BezierSurfaceAndRationalBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BoundaryCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BoundedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_BoundedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_CartesianPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_CartesianTransformationOperator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_CartesianTransformationOperator2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_CartesianTransformationOperator3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Circle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_CompositeCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_CompositeCurveOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_CompositeCurveSegment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Conic.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_ConicalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_CurveBoundedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_CurveOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_CurveReplica.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_CylindricalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_DegeneratePcurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_DegenerateToroidalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Direction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_ElementarySurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Ellipse.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_EvaluatedDegeneratePcurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_GeometricRepresentationContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_GeometricRepresentationContextAndParametricRepresentationContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_GeometricRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Hyperbola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_IntersectionCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Line.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_OffsetCurve3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_OffsetSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_OrientedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_OuterBoundaryCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Parabola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Pcurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_PcurveOrSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Placement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Plane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Point.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_PointOnCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_PointOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_PointReplica.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Polyline.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_QuasiUniformCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_QuasiUniformCurveAndRationalBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_QuasiUniformSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_RationalBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_RationalBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_RectangularCompositeSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_RectangularTrimmedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_ReparametrisedCompositeCurveSegment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_SeamCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_SphericalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Surface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_SurfaceBoundary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_SurfaceCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_SurfaceCurveAndBoundedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_SurfaceOfLinearExtrusion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_SurfaceOfRevolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_SurfacePatch.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_SurfaceReplica.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_SweptSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_ToroidalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_TrimmedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_TrimmingMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_TrimmingSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_UniformCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_UniformCurveAndRationalBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_UniformSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_UniformSurfaceAndRationalBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_Vector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepGeom/StepGeom_VectorOrDirection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWAxis1Placement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWAxis2Placement2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWAxis2Placement3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBSplineCurveWithKnots.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBSplineSurfaceWithKnots.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBezierCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBezierCurveAndRationalBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBezierSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBoundaryCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBoundedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWBoundedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWCartesianPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWCartesianTransformationOperator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWCartesianTransformationOperator3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWCircle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWCompositeCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWCompositeCurveOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWCompositeCurveSegment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWConic.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWConicalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWCurveBoundedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWCurveReplica.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWCylindricalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWDegeneratePcurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWDegenerateToroidalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWDirection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWElementarySurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWEllipse.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWEvaluatedDegeneratePcurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWGeometricRepresentationContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWGeometricRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWHyperbola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWIntersectionCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWOffsetCurve3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWOffsetSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWOrientedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWOuterBoundaryCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWParabola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWPcurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWPlacement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWPlane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWPointOnCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWPointOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWPointReplica.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWPolyline.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWQuasiUniformCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWQuasiUniformSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWRationalBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWRationalBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWRectangularCompositeSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWRectangularTrimmedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWReparametrisedCompositeCurveSegment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWSeamCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWSphericalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWSurfaceCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWSurfaceCurveAndBoundedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWSurfaceOfLinearExtrusion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWSurfaceOfRevolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWSurfacePatch.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWSurfaceReplica.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWSweptSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWToroidalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWTrimmedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWUniformCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWUniformCurveAndRationalBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWUniformSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepGeom/RWStepGeom_RWVector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_AdvancedBrepShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_AdvancedFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_AngularLocation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_AngularSize.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_Block.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_BooleanOperand.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_BooleanResult.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_BoxDomain.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_BoxedHalfSpace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_BrepWithVoids.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ClosedShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_CompoundShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ConnectedEdgeSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ConnectedFaceSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ConnectedFaceShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ConnectedFaceSubSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ContextDependentShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_CsgPrimitive.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_CsgSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_CsgShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_CsgSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_DefinitionalRepresentationAndShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_DimensionalCharacteristic.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_DimensionalCharacteristicRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_DimensionalLocation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_DimensionalLocationWithPath.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_DimensionalSize.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_DimensionalSizeWithPath.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_DirectedDimensionalLocation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_Edge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_EdgeBasedWireframeModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_EdgeBasedWireframeShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_EdgeCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_EdgeLoop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ExtrudedAreaSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ExtrudedFaceSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_Face.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_FaceBasedSurfaceModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_FaceBound.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_FaceOuterBound.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_FaceSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_FacetedBrep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_FacetedBrepAndBrepWithVoids.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_FacetedBrepShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_GeometricCurveSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_GeometricSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_GeometricSetSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_GeometricallyBoundedSurfaceShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_GeometricallyBoundedWireframeShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_HalfSpaceSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_LimitsAndFits.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_Loop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_LoopAndPath.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ManifoldSolidBrep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ManifoldSurfaceShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_MeasureQualification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_NonManifoldSurfaceShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_OpenShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_OrientedClosedShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_OrientedEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_OrientedFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_OrientedOpenShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_OrientedPath.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_Path.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_PlusMinusTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_PointRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_PolyLoop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_PrecisionQualifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_QualifiedRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ReversibleTopologyItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_RevolvedAreaSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_RevolvedFaceSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_RightAngularWedge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_RightCircularCone.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_RightCircularCylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_SeamEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ShapeDefinitionRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ShapeDimensionRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ShapeDimensionRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ShapeRepresentationWithParameters.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_Shell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ShellBasedSurfaceModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_SolidModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_SolidReplica.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_Sphere.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_Subedge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_Subface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_SurfaceModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_SweptAreaSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_SweptFaceSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ToleranceMethodDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ToleranceValue.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_TopologicalRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_Torus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_TransitionalShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_TypeQualifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ValueFormatTypeQualifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_ValueQualifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_Vertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_VertexLoop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepShape/StepShape_VertexPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWAdvancedBrepShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWAdvancedFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWAngularLocation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWAngularSize.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWBlock.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWBooleanResult.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWBoxDomain.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWBoxedHalfSpace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWBrepWithVoids.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWClosedShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWCompoundShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWConnectedEdgeSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWConnectedFaceSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWConnectedFaceShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWConnectedFaceSubSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWContextDependentShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWCsgShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWCsgSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWDimensionalCharacteristicRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWDimensionalLocation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWDimensionalLocationWithPath.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWDimensionalSize.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWDimensionalSizeWithPath.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWEdgeBasedWireframeModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWEdgeBasedWireframeShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWEdgeCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWEdgeLoop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWExtrudedAreaSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWExtrudedFaceSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWFaceBasedSurfaceModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWFaceBound.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWFaceOuterBound.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWFaceSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWFacetedBrep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWFacetedBrepAndBrepWithVoids.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWFacetedBrepShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWGeometricCurveSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWGeometricSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWHalfSpaceSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWLimitsAndFits.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWLoop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWLoopAndPath.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWManifoldSolidBrep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWManifoldSurfaceShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWMeasureQualification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWNonManifoldSurfaceShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWOpenShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWOrientedClosedShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWOrientedEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWOrientedFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWOrientedOpenShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWOrientedPath.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWPath.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWPlusMinusTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWPointRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWPolyLoop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWPrecisionQualifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWQualifiedRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWRevolvedAreaSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWRevolvedFaceSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWRightAngularWedge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWRightCircularCone.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWRightCircularCylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWSeamEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWShapeDefinitionRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWShapeDefinitionRepresentation_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWShapeDimensionRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWShapeRepresentationWithParameters.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWShellBasedSurfaceModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWSolidModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWSolidReplica.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWSphere.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWSubedge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWSubface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWSweptAreaSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWSweptFaceSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWToleranceValue.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWTopologicalRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWTorus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWTransitionalShapeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWTypeQualifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWValueFormatTypeQualifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWVertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWVertexLoop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepShape/RWStepShape_RWVertexPoint.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

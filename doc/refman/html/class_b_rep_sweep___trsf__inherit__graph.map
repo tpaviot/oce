@@ -1,0 +1,5 @@
+<map id="BRepSweep_Trsf" name="BRepSweep_Trsf">
+<area shape="rect" id="node3" href="$class_b_rep_sweep___rotation.html" title="Provides an algorithm to build object by Rotation sweep. " alt="" coords="5,169,153,196"/>
+<area shape="rect" id="node4" href="$class_b_rep_sweep___translation.html" title="Provides an algorithm to build object by translation sweep. " alt="" coords="178,169,341,196"/>
+<area shape="rect" id="node2" href="$class_b_rep_sweep___num_linear_regular_sweep.html" title="This a generic class is used to build Sweept primitives with a generating &quot;shape&quot; and a directing &quot;li..." alt="" coords="65,5,272,47"/>
+</map>

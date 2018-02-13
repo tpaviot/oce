@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "ApplicationFramework">
+         <FileRef
+            location = "group:TKCDF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKLCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBinL.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXmlL.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKStdL.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKTObj.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKVCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBin.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXml.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKStd.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBinTObj.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXmlTObj.xcodeproj">
+         </FileRef>
+   </Group>
+</Workspace>

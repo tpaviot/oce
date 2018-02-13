@@ -1,0 +1,9 @@
+<map id="CDM_Application" name="CDM_Application">
+<area shape="rect" id="node3" href="$class_c_d_f___application.html" title="CDF_Application" alt="" coords="255,155,374,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="247,5,382,32"/>
+<area shape="rect" id="node4" href="$class_t_doc_std___application.html" title="The abstract root class for all application classes. They are in charge of: " alt="" coords="243,229,386,256"/>
+<area shape="rect" id="node5" href="$class_app_std___application.html" title="Legacy class defining resources name for standard OCAF documents. " alt="" coords="5,304,141,331"/>
+<area shape="rect" id="node6" href="$class_app_std_l___application.html" title="Legacy class defining resources name for lite OCAF documents. " alt="" coords="166,304,309,331"/>
+<area shape="rect" id="node7" href="$class_t_obj___application.html" title="This is a base class for OCAF based TObj models with declared virtual methods. " alt="" coords="333,304,453,331"/>
+<area shape="rect" id="node8" href="$class_x_c_a_f_app___application.html" title="Implements an Application for the DECAF documents. " alt="" coords="477,304,627,331"/>
+</map>

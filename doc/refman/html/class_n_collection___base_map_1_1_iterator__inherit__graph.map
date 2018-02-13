@@ -1,0 +1,5 @@
+<map id="NCollection_BaseMap::Iterator" name="NCollection_BaseMap::Iterator">
+<area shape="rect" id="node2" href="$class_n_collection___data_map_1_1_iterator.html" title="NCollection_DataMap\l\&lt; TheKeyType, TheItemType,\l Hasher \&gt;::Iterator" alt="" coords="212,5,404,61"/>
+<area shape="rect" id="node3" href="$class_n_collection___double_map_1_1_iterator.html" title="NCollection_DoubleMap\l\&lt; TheKey1Type, TheKey2Type,\l Hasher1, Hasher2 \&gt;::Iterator" alt="" coords="206,85,410,141"/>
+<area shape="rect" id="node4" href="$class_n_collection___map_1_1_iterator.html" title="Implementation of the Iterator interface. " alt="" coords="204,166,412,207"/>
+</map>

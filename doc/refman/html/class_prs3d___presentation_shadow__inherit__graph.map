@@ -1,0 +1,5 @@
+<map id="Prs3d_PresentationShadow" name="Prs3d_PresentationShadow">
+<area shape="rect" id="node2" href="$class_prs3d___presentation.html" title="Defines a presentation object which can be displayed, highlighted or erased. The presentation object ..." alt="" coords="29,155,165,181"/>
+<area shape="rect" id="node3" href="$class_graphic3d___structure.html" title="This class allows the definition a graphic object. This graphic structure can be displayed, erased, or highlighted. This graphic structure can be connected with another graphic structure. Keywords: Structure, StructureManager, Display, Erase, Highlight, UnHighlight, Visible, Priority, Selectable, Visible, Visual, Connection, Ancestors, Descendants, Transformation. " alt="" coords="26,80,167,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="29,5,164,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Geom2d_Vector" name="Geom2d_Vector">
+<area shape="rect" id="node4" href="$class_geom2d___direction.html" title="The class Direction specifies a vector that is never null. It is a unit vector. " alt="" coords="5,229,135,256"/>
+<area shape="rect" id="node5" href="$class_geom2d___vector_with_magnitude.html" title="Defines a vector with magnitude. A vector with magnitude can have a zero length. " alt="" coords="159,229,362,256"/>
+<area shape="rect" id="node2" href="$class_geom2d___geometry.html" title="The general abstract class Geometry in 2D space describes the common behaviour of all the geometric e..." alt="" coords="97,80,232,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="97,5,232,32"/>
+</map>

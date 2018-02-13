@@ -1,0 +1,4 @@
+<map id="IFGraph_SCRoots" name="IFGraph_SCRoots">
+<area shape="rect" id="node2" href="$class_i_f_graph___strong_componants.html" title="determines strong componants of a graph, that is isolated entities (single componants) or loops ..." alt="" coords="5,80,192,107"/>
+<area shape="rect" id="node3" href="$class_i_f_graph___sub_parts_iterator.html" title="defines general form for graph classes of which result is not a single iteration on Entities..." alt="" coords="14,5,183,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="ShapePersistent_BRep::PolygonOnClosedTriangulation" name="ShapePersistent_BRep::PolygonOnClosedTriangulation">
+<area shape="rect" id="node2" href="$class_shape_persistent___b_rep_1_1_polygon_on_triangulation.html" title="ShapePersistent_BRep\l::PolygonOnTriangulation" alt="" coords="25,244,192,285"/>
+<area shape="rect" id="node3" href="$class_shape_persistent___b_rep_1_1_curve_representation.html" title="ShapePersistent_BRep\l::CurveRepresentation" alt="" coords="30,155,187,196"/>
+<area shape="rect" id="node4" href="$class_std_obj_mgt___persistent.html" title="Root class for a temporary persistent object that reads data from a file and then creates transient o..." alt="" coords="33,80,184,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="41,5,176,32"/>
+</map>

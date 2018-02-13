@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKFillet" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKFillet" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__ChFiDS_DLL" />
+					<Add option="-D__ChFi2d_DLL" />
+					<Add option="-D__ChFi3d_DLL" />
+					<Add option="-D__ChFiKPart_DLL" />
+					<Add option="-D__Blend_DLL" />
+					<Add option="-D__BRepBlend_DLL" />
+					<Add option="-D__BlendFunc_DLL" />
+					<Add option="-D__BRepFilletAPI_DLL" />
+					<Add option="-D__FilletSurf_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKFillet_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKFillet" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__ChFiDS_DLL" />
+					<Add option="-D__ChFi2d_DLL" />
+					<Add option="-D__ChFi3d_DLL" />
+					<Add option="-D__ChFiKPart_DLL" />
+					<Add option="-D__Blend_DLL" />
+					<Add option="-D__BRepBlend_DLL" />
+					<Add option="-D__BlendFunc_DLL" />
+					<Add option="-D__BRepFilletAPI_DLL" />
+					<Add option="-D__FilletSurf_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKFillet_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKBRep" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKGeomBase" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKG2d" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKG3d" />
+			<Add library="TKBool" />
+			<Add library="TKShHealing" />
+		</Linker>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_ChamfSpine.cxx" />
+		<Unit filename="../../../src/ChFiDS/ChFiDS_CircSection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_CommonPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_ElSpine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_FaceInterference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_FilSpine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_HElSpine_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_Map.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_Regul.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_Spine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_Stripe.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_StripeMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiDS/ChFiDS_SurfData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi2d/ChFi2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi2d/ChFi2d_AnaFilletAlgo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi2d/ChFi2d_Builder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi2d/ChFi2d_Builder_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi2d/ChFi2d_ChamferAPI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi2d/ChFi2d_FilletAPI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi2d/ChFi2d_FilletAlgo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder_2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder_6.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder_C1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder_C2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder_CnCrn.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder_NotImp.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_Builder_SpKP.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_ChBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_ChBuilder_C2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_ChBuilder_C3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_Debug.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_FilBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_FilBuilder_C2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_FilBuilder_C3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFi3d/ChFi3d_SearchSing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_CS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_ChAsymPlnCon.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_ChAsymPlnCyl.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_ChAsymPlnPln.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_ChPlnCon.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_ChPlnCyl.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_ChPlnPln.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_Fcts.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_FilPlnCon.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_FilPlnCyl.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_FilPlnPln.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_Rotule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ChFiKPart/ChFiKPart_ComputeData_Sphere.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Blend/Blend_AppFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Blend/Blend_CSFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Blend/Blend_CurvPointFuncInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Blend/Blend_Debug.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Blend/Blend_FuncInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Blend/Blend_Function.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Blend/Blend_Point.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Blend/Blend_RstRstFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Blend/Blend_SurfCurvFuncInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Blend/Blend_SurfPointFuncInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Blend/Blend_SurfRstFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_AppFunc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_AppFuncRoot.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_AppFuncRst.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_AppFuncRstRst.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_AppSurf_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_AppSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_BlendTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_CSWalking_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_CurvPointRadInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_Extremity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_HCurve2dTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_HCurveTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_Line.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_PointOnRst.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_RstRstConstRad.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_RstRstEvolRad.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_RstRstLineBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_SurfCurvConstRadInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_SurfCurvEvolRadInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_SurfPointConstRadInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_SurfPointEvolRadInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_SurfRstConstRad.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_SurfRstEvolRad.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_SurfRstLineBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBlend/BRepBlend_Walking_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_CSCircular.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_CSConstRad.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_ChAsym.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_ChAsymInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_ChamfInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_Chamfer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_ConstRad.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_ConstRadInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_Corde.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_EvolRad.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_EvolRadInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_Ruled.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_RuledInv.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BlendFunc/BlendFunc_Tensor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFilletAPI/BRepFilletAPI_MakeChamfer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFilletAPI/BRepFilletAPI_MakeFillet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFilletAPI/BRepFilletAPI_MakeFillet2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FilletSurf/FilletSurf_Builder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FilletSurf/FilletSurf_InternalBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

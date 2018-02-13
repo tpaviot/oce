@@ -1,0 +1,8 @@
+<map id="StepAP214_ApprovalItem" name="StepAP214_ApprovalItem">
+<area shape="rect" id="node3" href="$class_step_a_p214___date_and_time_item.html" title="StepAP214_DateAndTimeItem" alt="" coords="448,5,647,32"/>
+<area shape="rect" id="node4" href="$class_step_a_p214___date_item.html" title="StepAP214_DateItem" alt="" coords="474,56,621,83"/>
+<area shape="rect" id="node5" href="$class_step_a_p214___organization_item.html" title="StepAP214_OrganizationItem" alt="" coords="451,107,644,133"/>
+<area shape="rect" id="node6" href="$class_step_a_p214___person_and_organization_item.html" title="StepAP214_PersonAndOrganizationItem" alt="" coords="419,157,676,184"/>
+<area shape="rect" id="node7" href="$class_step_a_p214___security_classification_item.html" title="StepAP214_SecurityClassificationItem" alt="" coords="425,208,670,235"/>
+<area shape="rect" id="node2" href="$class_step_data___select_type.html" title="SelectType is the basis used for SELECT_TYPE definitions from the EXPRESS form. A SELECT_TYPE in EXPR..." alt="" coords="5,107,153,133"/>
+</map>

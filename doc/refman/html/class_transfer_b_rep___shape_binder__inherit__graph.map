@@ -1,0 +1,5 @@
+<map id="TransferBRep_ShapeBinder" name="TransferBRep_ShapeBinder">
+<area shape="rect" id="node2" href="$class_transfer_b_rep___binder_of_shape.html" title="Allows direct binding between a starting Object and the Result of its transfer when it is Unique..." alt="" coords="5,155,200,181"/>
+<area shape="rect" id="node3" href="$class_transfer___binder.html" title="A Binder is an auxiliary object to Map the Result of the Transfer of a given Object : it records the ..." alt="" coords="47,80,159,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="35,5,170,32"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="AIS_Dimension" name="AIS_Dimension">
+<area shape="rect" id="node6" href="$class_a_i_s___angle_dimension.html" title="Angle dimension. Can be constructed: " alt="" coords="5,379,149,405"/>
+<area shape="rect" id="node7" href="$class_a_i_s___diameter_dimension.html" title="Diameter dimension. Can be constructued: " alt="" coords="173,379,336,405"/>
+<area shape="rect" id="node8" href="$class_a_i_s___length_dimension.html" title="Length dimension. Can be constructued: " alt="" coords="361,379,511,405"/>
+<area shape="rect" id="node9" href="$class_a_i_s___radius_dimension.html" title="Radius dimension. Can be constructued: " alt="" coords="535,379,686,405"/>
+<area shape="rect" id="node2" href="$class_a_i_s___interactive_object.html" title="Defines a class of objects with display and selection services. Entities which are visualized and sel..." alt="" coords="272,229,419,256"/>
+<area shape="rect" id="node3" href="$class_select_mgr___selectable_object.html" title="A framework to supply the structure of the object to be selected. At the first pick, this structure is created by calling the appropriate algorithm and retaining this framework for further picking. This abstract framework is inherited in Application Interactive Services (AIS), notably in AIS_InteractiveObject. Consequently, 3D selection should be handled by the relevant daughter classes and their member functions in AIS. This is particularly true in the creation of new interactive objects. " alt="" coords="252,155,439,181"/>
+<area shape="rect" id="node4" href="$class_prs_mgr___presentable_object.html" title="A framework to supply the Graphic3d structure of the object to be presented. On the first display req..." alt="" coords="256,80,435,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="278,5,413,32"/>
+</map>

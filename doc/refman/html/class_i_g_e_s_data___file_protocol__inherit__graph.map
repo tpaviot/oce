@@ -1,0 +1,5 @@
+<map id="IGESData_FileProtocol" name="IGESData_FileProtocol">
+<area shape="rect" id="node2" href="$class_i_g_e_s_data___protocol.html" title="Description of basic Protocol for IGES This comprises treatement of IGESModel and Recognition of Unde..." alt="" coords="16,155,151,181"/>
+<area shape="rect" id="node3" href="$class_interface___protocol.html" title="General description of Interface Protocols. A Protocol defines a set of Entity types. This class provides also the notion of Active Protocol, as a working context, defined once then exploited by various Tools and Libraries. " alt="" coords="20,80,147,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="16,5,151,32"/>
+</map>

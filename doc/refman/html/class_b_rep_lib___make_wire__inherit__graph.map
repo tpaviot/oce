@@ -1,0 +1,4 @@
+<map id="BRepLib_MakeWire" name="BRepLib_MakeWire">
+<area shape="rect" id="node2" href="$class_b_rep_lib___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="5,80,152,107"/>
+<area shape="rect" id="node3" href="$class_b_rep_lib___command.html" title="Root class for all commands in BRepLib. " alt="" coords="10,5,147,32"/>
+</map>

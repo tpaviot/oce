@@ -1,0 +1,16 @@
+puts "TODO OCC24023 Windows: Checking local reference of handle to base type to temporary handle object"
+
+puts "========"
+puts "CR24023, check operability and performance of OCCT RTTI and handles"
+puts "========"
+puts ""
+
+pload QAcommands
+
+# check RTTI 
+QAHandleBool
+QAHandleKind
+QAHandleOps
+
+# check performance of creation and destruction handles, vs. C++ shared_ptr
+QAHandleInc

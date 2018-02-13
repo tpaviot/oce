@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKCDF" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../lin/cbp/lib/libTKCDF.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../lin/cbp/libd/libTKCDF.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/libd" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKernel" />
+		</Linker>
+		<Unit filename="../../../src/CDM/CDM_Application.cxx" />
+		<Unit filename="../../../src/CDM/CDM_COutMessageDriver.cxx" />
+		<Unit filename="../../../src/CDM/CDM_Document.cxx" />
+		<Unit filename="../../../src/CDM/CDM_MessageDriver.cxx" />
+		<Unit filename="../../../src/CDM/CDM_MetaData.cxx" />
+		<Unit filename="../../../src/CDM/CDM_NullMessageDriver.cxx" />
+		<Unit filename="../../../src/CDM/CDM_Reference.cxx" />
+		<Unit filename="../../../src/CDM/CDM_ReferenceIterator.cxx" />
+		<Unit filename="../../../src/PCDM/PCDM.cxx" />
+		<Unit filename="../../../src/PCDM/PCDM_DOMHeaderParser.cxx" />
+		<Unit filename="../../../src/PCDM/PCDM_Document.cxx" />
+		<Unit filename="../../../src/PCDM/PCDM_ReadWriter.cxx" />
+		<Unit filename="../../../src/PCDM/PCDM_ReadWriter_1.cxx" />
+		<Unit filename="../../../src/PCDM/PCDM_Reader.cxx" />
+		<Unit filename="../../../src/PCDM/PCDM_Reference.cxx" />
+		<Unit filename="../../../src/PCDM/PCDM_ReferenceIterator.cxx" />
+		<Unit filename="../../../src/PCDM/PCDM_RetrievalDriver.cxx" />
+		<Unit filename="../../../src/PCDM/PCDM_StorageDriver.cxx" />
+		<Unit filename="../../../src/PCDM/PCDM_Writer.cxx" />
+		<Unit filename="../../../src/CDF/CDF.cxx" />
+		<Unit filename="../../../src/CDF/CDF_Application.cxx" />
+		<Unit filename="../../../src/CDF/CDF_Directory.cxx" />
+		<Unit filename="../../../src/CDF/CDF_DirectoryIterator.cxx" />
+		<Unit filename="../../../src/CDF/CDF_FWOSDriver.cxx" />
+		<Unit filename="../../../src/CDF/CDF_MetaDataDriver.cxx" />
+		<Unit filename="../../../src/CDF/CDF_MetaDataDriverFactory.cxx" />
+		<Unit filename="../../../src/CDF/CDF_Session.cxx" />
+		<Unit filename="../../../src/CDF/CDF_Store.cxx" />
+		<Unit filename="../../../src/CDF/CDF_StoreList.cxx" />
+		<Unit filename="../../../src/UTL/UTL.cxx" />
+		<Unit filename="../../../src/LDOM/LDOMBasicString.cxx" />
+		<Unit filename="../../../src/LDOM/LDOMParser.cxx" />
+		<Unit filename="../../../src/LDOM/LDOMString.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_Attr.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_BasicAttribute.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_BasicElement.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_BasicNode.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_BasicText.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_CharReference.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_CharacterData.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_Document.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_Element.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_LDOMImplementation.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_MemManager.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_Node.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_NodeList.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_OSStream.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_XmlReader.cxx" />
+		<Unit filename="../../../src/LDOM/LDOM_XmlWriter.cxx" />
+	</Project>
+</CodeBlocks_project_file>

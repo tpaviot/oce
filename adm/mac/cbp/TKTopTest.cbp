@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKTopTest" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKTopTest.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKTopTest.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKBRep" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKBO" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKDraw" />
+			<Add library="TKHLR" />
+			<Add library="TKGeomBase" />
+			<Add library="TKMesh" />
+			<Add library="TKService" />
+			<Add library="TKV3d" />
+			<Add library="TKFillet" />
+			<Add library="TKPrim" />
+			<Add library="TKBool" />
+			<Add library="TKOffset" />
+			<Add library="TKFeat" />
+			<Add library="TKShHealing" />
+		</Linker>
+		<Unit filename="../../../src/BRepTest/BRepTest.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_BasicCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_ChamferCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_CheckCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_CurveCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_DraftAngleCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_ExtremaCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_FeatureCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_Fillet2DCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_FilletCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_FillingCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_GPropCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_MatCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_OtherCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_PrimitiveCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_ProjectionCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_SurfaceCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_SweepCommands.cxx" />
+		<Unit filename="../../../src/BRepTest/BRepTest_TopologyCommands.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest_API2dCommands.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest_APICommands.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest_ConstraintCommands.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest_ContinuityCommands.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest_CurveCommands.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest_CurveTanCommands.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest_DrawableQualifiedCurve2d.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest_FairCurveCommands.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest_PolyCommands.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest_SurfaceCommands.cxx" />
+		<Unit filename="../../../src/GeometryTest/GeometryTest_TestProjCommands.cxx" />
+		<Unit filename="../../../src/HLRTest/HLRTest.cxx" />
+		<Unit filename="../../../src/HLRTest/HLRTest_DrawableEdgeTool.cxx" />
+		<Unit filename="../../../src/HLRTest/HLRTest_DrawablePolyEdgeTool.cxx" />
+		<Unit filename="../../../src/HLRTest/HLRTest_OutLiner.cxx" />
+		<Unit filename="../../../src/HLRTest/HLRTest_Projector.cxx" />
+		<Unit filename="../../../src/HLRTest/HLRTest_ShapeData.cxx" />
+		<Unit filename="../../../src/MeshTest/MeshTest.cxx" />
+		<Unit filename="../../../src/MeshTest/MeshTest_CheckTopology.cxx" />
+		<Unit filename="../../../src/MeshTest/MeshTest_Debug.cxx" />
+		<Unit filename="../../../src/MeshTest/MeshTest_DrawableMesh.cxx" />
+		<Unit filename="../../../src/MeshTest/MeshTest_PluginCommands.cxx" />
+		<Unit filename="../../../src/GeomliteTest/GeomliteTest.cxx" />
+		<Unit filename="../../../src/GeomliteTest/GeomliteTest_API2dCommands.cxx" />
+		<Unit filename="../../../src/GeomliteTest/GeomliteTest_ApproxCommands.cxx" />
+		<Unit filename="../../../src/GeomliteTest/GeomliteTest_CurveCommands.cxx" />
+		<Unit filename="../../../src/GeomliteTest/GeomliteTest_ModificationCommands.cxx" />
+		<Unit filename="../../../src/GeomliteTest/GeomliteTest_SurfaceCommands.cxx" />
+		<Unit filename="../../../src/DrawFairCurve/DrawFairCurve_Batten.cxx" />
+		<Unit filename="../../../src/DrawFairCurve/DrawFairCurve_MinimalVariation.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_APICommands.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_BOPCommands.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_CellsCommands.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_CheckCommands.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_DebugCommands.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_DrawableShape.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_HistoryCommands.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_LowCommands.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_ObjCommands.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_Objects.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_OptionCommands.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_PartitionCommands.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_TolerCommands.cxx" />
+		<Unit filename="../../../src/BOPTest/BOPTest_UtilityCommands.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeAnalysis.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeCustom.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeExtend.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeFix.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeProcess.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeProcessAPI.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeTool.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeUpgrade.cxx" />
+	</Project>
+</CodeBlocks_project_file>

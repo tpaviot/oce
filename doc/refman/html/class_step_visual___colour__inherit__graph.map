@@ -1,0 +1,8 @@
+<map id="StepVisual_Colour" name="StepVisual_Colour">
+<area shape="rect" id="node3" href="$class_step_visual___background_colour.html" title="StepVisual_BackgroundColour" alt="" coords="367,5,566,32"/>
+<area shape="rect" id="node4" href="$class_step_visual___colour_specification.html" title="StepVisual_ColourSpecification" alt="" coords="365,56,568,83"/>
+<area shape="rect" id="node6" href="$class_step_visual___pre_defined_colour.html" title="StepVisual_PreDefinedColour" alt="" coords="371,111,563,137"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,56,140,83"/>
+<area shape="rect" id="node5" href="$class_step_visual___colour_rgb.html" title="StepVisual_ColourRgb" alt="" coords="627,53,779,80"/>
+<area shape="rect" id="node7" href="$class_step_visual___draughting_pre_defined_colour.html" title="StepVisual_DraughtingPre\lDefinedColour" alt="" coords="616,105,791,146"/>
+</map>

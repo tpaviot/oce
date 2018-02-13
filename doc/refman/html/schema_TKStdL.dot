@@ -1,0 +1,11 @@
+digraph schema_TKStdL
+{
+	TKStdL [ URL = "toolkit_tkstdl.html", shape = box ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKStdL -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKCDF [ URL = "toolkit_tkcdf.html" , shape = box ]
+	TKStdL -> TKCDF [ color = "midnightblue", style = "solid" ]
+	TKLCAF [ URL = "toolkit_tklcaf.html" , shape = box ]
+	TKStdL -> TKLCAF [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

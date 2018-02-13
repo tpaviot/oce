@@ -1,0 +1,5 @@
+<map id="AIS_Animation" name="AIS_Animation">
+<area shape="rect" id="node3" href="$class_a_i_s___animation_camera.html" title="Camera animation. " alt="" coords="5,155,159,181"/>
+<area shape="rect" id="node4" href="$class_a_i_s___animation_object.html" title="Animation defining object transformation. " alt="" coords="183,155,330,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="101,5,236,32"/>
+</map>

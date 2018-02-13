@@ -1,0 +1,5 @@
+<map id="IGESGraph_LineFontDefTemplate" name="IGESGraph_LineFontDefTemplate">
+<area shape="rect" id="node2" href="$class_i_g_e_s_data___line_font_entity.html" title="defines required type for LineFont in directory part an effective LineFont entity must inherits it ..." alt="" coords="29,155,199,181"/>
+<area shape="rect" id="node3" href="$class_i_g_e_s_data___i_g_e_s_entity.html" title="defines root of IGES Entity definition, including Directory Part, lists of (optionnal) Properties and..." alt="" coords="38,80,190,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="47,5,181,32"/>
+</map>

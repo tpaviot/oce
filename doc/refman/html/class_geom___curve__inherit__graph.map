@@ -1,0 +1,16 @@
+<map id="Geom_Curve" name="Geom_Curve">
+<area shape="rect" id="node4" href="$class_geom___bounded_curve.html" title="The abstract class BoundedCurve describes the common behavior of bounded curves in 3D space..." alt="" coords="523,81,670,108"/>
+<area shape="rect" id="node8" href="$class_geom___conic.html" title="The abstract class Conic describes the common behavior of conic curves in 3D space and..." alt="" coords="548,208,645,235"/>
+<area shape="rect" id="node13" href="$class_geom___line.html" title="Describes an infinite line. A line is defined and positioned in space with an axis (gp_Ax1 object) wh..." alt="" coords="553,259,641,285"/>
+<area shape="rect" id="node14" href="$class_geom___offset_curve.html" title="This class implements the basis services for an offset curve in 3D space. The Offset curve in this pa..." alt="" coords="531,309,662,336"/>
+<area shape="rect" id="node15" href="$class_shape_extend___complex_curve.html" title="Defines a curve which consists of several segments. Implements basic interface to it..." alt="" coords="501,360,692,387"/>
+<area shape="rect" id="node2" href="$class_geom___geometry.html" title="The abstract class Geometry for 3D space is the root class of all geometric objects from the Geom pac..." alt="" coords="188,259,309,285"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,259,140,285"/>
+<area shape="rect" id="node5" href="$class_geom___bezier_curve.html" title="Describes a rational or non&#45;rational Bezier curve. " alt="" coords="747,5,880,32"/>
+<area shape="rect" id="node6" href="$class_geom___b_spline_curve.html" title="Definition of the B_spline curve. A B&#45;spline curve can be Uniform or non&#45;uniform Rational or non&#45;rati..." alt="" coords="743,56,884,83"/>
+<area shape="rect" id="node7" href="$class_geom___trimmed_curve.html" title="Describes a portion of a curve (termed the &quot;basis curve&quot;) limited by two parameter values inside the ..." alt="" coords="740,107,887,133"/>
+<area shape="rect" id="node9" href="$class_geom___circle.html" title="Describes a circle in 3D space. A circle is defined by its radius and, as with any conic curve..." alt="" coords="765,157,862,184"/>
+<area shape="rect" id="node10" href="$class_geom___ellipse.html" title="Describes an ellipse in 3D space. An ellipse is defined by its major and minor radii and..." alt="" coords="762,208,865,235"/>
+<area shape="rect" id="node11" href="$class_geom___hyperbola.html" title="Describes a branch of a hyperbola in 3D space. A hyperbola is defined by its major and minor radii an..." alt="" coords="752,259,875,285"/>
+<area shape="rect" id="node12" href="$class_geom___parabola.html" title="Describes a parabola in 3D space. A parabola is defined by its focal length (i.e. the distance betwee..." alt="" coords="756,309,871,336"/>
+</map>

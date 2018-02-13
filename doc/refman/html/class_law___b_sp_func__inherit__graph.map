@@ -1,0 +1,6 @@
+<map id="Law_BSpFunc" name="Law_BSpFunc">
+<area shape="rect" id="node4" href="$class_law___interpol.html" title="Provides an evolution law that interpolates a set of parameter and value pairs (wi, radi) " alt="" coords="5,229,100,256"/>
+<area shape="rect" id="node5" href="$class_law___s.html" title="Describes an &quot;S&quot; evolution law. " alt="" coords="125,229,186,256"/>
+<area shape="rect" id="node2" href="$class_law___function.html" title="Root class for evolution laws. " alt="" coords="52,80,155,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="36,5,171,32"/>
+</map>

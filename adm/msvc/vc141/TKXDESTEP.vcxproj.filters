@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{66809ED8-0607-1100-04E5-0D98147B5D13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STEPCAFControl">
+      <UniqueIdentifier>{1BC28C78-0A80-065F-03AE-0DBE1D3C9B64}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\STEPCAFControl\STEPCAFControl_ActorWrite.cxx">
+      <Filter>Source files\STEPCAFControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPCAFControl\STEPCAFControl_Controller.cxx">
+      <Filter>Source files\STEPCAFControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPCAFControl\STEPCAFControl_ExternFile.cxx">
+      <Filter>Source files\STEPCAFControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPCAFControl\STEPCAFControl_GDTProperty.cxx">
+      <Filter>Source files\STEPCAFControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPCAFControl\STEPCAFControl_Reader.cxx">
+      <Filter>Source files\STEPCAFControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPCAFControl\STEPCAFControl_Writer.cxx">
+      <Filter>Source files\STEPCAFControl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKXDESTEP.rc" />  </ItemGroup>
+</Project>

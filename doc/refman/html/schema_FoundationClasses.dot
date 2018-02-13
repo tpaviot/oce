@@ -1,0 +1,6 @@
+digraph schema_FoundationClasses
+{
+	TKernel [ URL = "toolkit_tkernel.html" ]
+	TKMath [ URL = "toolkit_tkmath.html" ]
+	TKernel -> TKMath [ dir = "back", color = "midnightblue", style = "solid" ]
+}

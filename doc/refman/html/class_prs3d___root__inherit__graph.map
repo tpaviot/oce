@@ -1,0 +1,22 @@
+<map id="Prs3d_Root" name="Prs3d_Root">
+<area shape="rect" id="node2" href="$class_dsg_prs___datum_prs.html" title="A framework for displaying an XYZ trihedron. " alt="" coords="196,5,327,32"/>
+<area shape="rect" id="node3" href="$class_prs3d___arrow.html" title="Provides class methods to draw an arrow at a given location, along a given direction and using a give..." alt="" coords="213,56,309,83"/>
+<area shape="rect" id="node4" href="$class_prs3d___point.html" title="Prs3d_Point\&lt; AnyPoint,\l PointTool \&gt;" alt="" coords="180,107,343,149"/>
+<area shape="rect" id="node5" href="$class_prs3d___text.html" title="A framework to define the display of texts. " alt="" coords="217,173,305,200"/>
+<area shape="rect" id="node6" href="$class_std_prs___bnd_box.html" title="Tool for computing bounding box presentation. " alt="" coords="204,224,319,251"/>
+<area shape="rect" id="node7" href="$class_std_prs___curve.html" title="A framework to define display of lines, arcs of circles and conic sections. This is done with a fixed..." alt="" coords="211,275,312,301"/>
+<area shape="rect" id="node8" href="$class_std_prs___deflection_curve.html" title="A framework to provide display of any curve with respect to the maximal chordal deviation defined in ..." alt="" coords="182,325,341,352"/>
+<area shape="rect" id="node9" href="$class_std_prs___h_l_r_poly_shape.html" title="Instantiates Prs3d_PolyHLRShape to define a display of a shape where hidden and visible lines are ide..." alt="" coords="183,376,340,403"/>
+<area shape="rect" id="node10" href="$class_std_prs___h_l_r_shape.html" title="StdPrs_HLRShape" alt="" coords="196,427,327,453"/>
+<area shape="rect" id="node11" href="$class_std_prs___isolines.html" title="Tool for computing isoline representation for a face or surface. Depending on a flags set to the give..." alt="" coords="205,477,318,504"/>
+<area shape="rect" id="node12" href="$class_std_prs___plane.html" title="A framework to display infinite planes. " alt="" coords="210,528,313,555"/>
+<area shape="rect" id="node13" href="$class_std_prs___pole_curve.html" title="A framework to provide display of Bezier or BSpline curves (by drawing a broken line linking the pole..." alt="" coords="198,579,325,605"/>
+<area shape="rect" id="node14" href="$class_std_prs___shaded_shape.html" title="Auxiliary procedures to prepare Shaded presentation of specified shape. " alt="" coords="186,629,337,656"/>
+<area shape="rect" id="node15" href="$class_std_prs___shaded_surface.html" title="Computes the shading presentation of surfaces. Draws a surface by drawing the isoparametric curves wi..." alt="" coords="183,680,340,707"/>
+<area shape="rect" id="node16" href="$class_std_prs___w_f_deflection_restricted_face.html" title="A framework to provide display of U and V isoparameters of faces, while allowing you to impose a defl..." alt="" coords="144,731,379,757"/>
+<area shape="rect" id="node17" href="$class_std_prs___w_f_deflection_surface.html" title="Draws a surface by drawing the isoparametric curves with respect to a maximal chordial deviation..." alt="" coords="166,781,357,808"/>
+<area shape="rect" id="node18" href="$class_std_prs___w_f_pole_surface.html" title="Computes the presentation of surfaces by drawing a double network of lines linking the poles of the s..." alt="" coords="181,832,341,859"/>
+<area shape="rect" id="node19" href="$class_std_prs___w_f_restricted_face.html" title="StdPrs_WFRestrictedFace" alt="" coords="172,883,351,909"/>
+<area shape="rect" id="node20" href="$class_std_prs___w_f_shape.html" title="Tool for computing wireframe presentation of a TopoDS_Shape. " alt="" coords="198,933,325,960"/>
+<area shape="rect" id="node21" href="$class_std_prs___w_f_surface.html" title="Computes the wireframe presentation of surfaces by displaying a given number of U and/or V isoparamet..." alt="" coords="194,984,329,1011"/>
+</map>

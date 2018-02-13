@@ -1,0 +1,9 @@
+<map id="StepRepr_ReprItemAndMeasureWithUnit" name="StepRepr_ReprItemAndMeasureWithUnit">
+<area shape="rect" id="node4" href="$class_step_repr___repr_item_and_length_measure_with_unit.html" title="StepRepr_ReprItemAndLength\lMeasureWithUnit" alt="" coords="692,5,889,47"/>
+<area shape="rect" id="node5" href="$class_step_repr___repr_item_and_measure_with_unit_and_q_r_i.html" title="Base class for complex types (MEASURE_REPRESENTATION_ITEM, MEASURE_WITH_UNIT, QUALIFIED_REPRESENTATIO..." alt="" coords="687,71,895,112"/>
+<area shape="rect" id="node8" href="$class_step_repr___repr_item_and_plane_angle_measure_with_unit.html" title="StepRepr_ReprItemAndPlane\lAngleMeasureWithUnit" alt="" coords="695,136,886,177"/>
+<area shape="rect" id="node2" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="188,78,383,105"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,78,140,105"/>
+<area shape="rect" id="node6" href="$class_step_repr___repr_item_and_length_measure_with_unit_and_q_r_i.html" title="StepRepr_ReprItemAndLength\lMeasureWithUnitAndQRI" alt="" coords="944,39,1141,80"/>
+<area shape="rect" id="node7" href="$class_step_repr___repr_item_and_plane_angle_measure_with_unit_and_q_r_i.html" title="StepRepr_ReprItemAndPlane\lAngleMeasureWithUnitAndQRI" alt="" coords="943,104,1143,145"/>
+</map>

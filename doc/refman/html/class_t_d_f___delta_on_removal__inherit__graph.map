@@ -1,0 +1,6 @@
+<map id="TDF_DeltaOnRemoval" name="TDF_DeltaOnRemoval">
+<area shape="rect" id="node4" href="$class_t_d_f___default_delta_on_removal.html" title="This class provides a default implementation of a TDF_DeltaOnRemoval. " alt="" coords="5,229,195,256"/>
+<area shape="rect" id="node5" href="$class_t_naming___delta_on_removal.html" title="TNaming_DeltaOnRemoval" alt="" coords="219,229,395,256"/>
+<area shape="rect" id="node2" href="$class_t_d_f___attribute_delta.html" title="This class discribes the services we need to implement Delta and Undo/Redo services. " alt="" coords="137,80,269,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="135,5,270,32"/>
+</map>

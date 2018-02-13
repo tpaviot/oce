@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{C206A144-0B73-00C2-0996-226BD1D4A371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Interface">
+      <UniqueIdentifier>{368BA360-02D9-00AB-1190-88AFB1C69FB0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Transfer">
+      <UniqueIdentifier>{1E0E79B4-029F-14C2-085B-E95E923FF5F9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\IFGraph">
+      <UniqueIdentifier>{2DD2FA77-07FA-133A-17CA-DE031E9EBFA2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\IFSelect">
+      <UniqueIdentifier>{37454F9A-04F3-130B-0CE1-EFCCAA65C0DE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TransferBRep">
+      <UniqueIdentifier>{5954776B-1942-092C-0382-01E9D99FD43C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\XSControl">
+      <UniqueIdentifier>{26DD9F6A-0B48-0403-106E-D8B7B103C7F3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepData">
+      <UniqueIdentifier>{3C3B2594-0D9C-1506-1820-6E89D41AC222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepFile">
+      <UniqueIdentifier>{BF62F4CF-14BD-06AC-136F-4D7A2D905971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\HeaderSection">
+      <UniqueIdentifier>{E02E6BA0-07BF-0F1E-1966-4182EEFB0509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\RWHeaderSection">
+      <UniqueIdentifier>{07C10C71-0273-18BE-145A-BF6F1D180048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\APIHeaderSection">
+      <UniqueIdentifier>{BA8D95BA-082A-020F-10E7-5524CDE336E8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepSelect">
+      <UniqueIdentifier>{29D6024A-0E5D-0D27-14C2-F1276F541791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\UnitsMethods">
+      <UniqueIdentifier>{D74BF14B-0198-1675-1240-D723875D923F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\XSAlgo">
+      <UniqueIdentifier>{2C674F93-0A28-154F-09AA-A27FA369D44E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\MoniTool">
+      <UniqueIdentifier>{F16B5B4B-1987-1232-0247-4E9DE45FF033}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\Interface\Interface_BitMap.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_Category.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_Check.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_CheckIterator.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_CheckTool.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_CopyControl.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_CopyMap.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_CopyTool.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_EntityCluster.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_EntityIterator.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_EntityList.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_FileParameter.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_FileReaderData.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_FileReaderTool.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_FloatWriter.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GTool.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GeneralLib_0.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GeneralModule.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GlobalNodeOfGeneralLib_0.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GlobalNodeOfReaderLib_0.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_Graph.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_GraphContent.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_HGraph.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_IntList.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_IntVal.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_InterfaceModel.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_LineBuffer.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_MSG.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_MapAsciiStringHasher.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_NodeOfGeneralLib_0.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_NodeOfReaderLib_0.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ParamList.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ParamSet.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_Protocol.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ReaderLib_0.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ReaderModule.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ReportEntity.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_STAT.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ShareFlags.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_ShareTool.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_SignLabel.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_SignType.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_Static.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_StaticStandards.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_TypedValue.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Interface\Interface_UndefinedContent.cxx">
+      <Filter>Source files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ActorDispatch.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ActorOfFinderProcess.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ActorOfProcessForFinder_0.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ActorOfProcessForTransient_0.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ActorOfTransientProcess.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_Binder.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_BinderOfTransientInteger.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_DataInfo.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_DispatchControl.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_FindHasher.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_Finder.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_FinderProcess.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_IteratorOfProcessForFinder_0.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_IteratorOfProcessForTransient_0.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_MapContainer.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_MultipleBinder.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ProcessForFinder_0.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ProcessForTransient_0.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ResultFromModel.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_ResultFromTransient.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_SimpleBinderOfTransient.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransferDispatch.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransferInput.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransferIterator.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransferOutput.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransientListBinder.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransientMapper_0.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_TransientProcess.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Transfer\Transfer_VoidBinder.cxx">
+      <Filter>Source files\Transfer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_AllConnected.cxx">
+      <Filter>Source files\IFGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_AllShared.cxx">
+      <Filter>Source files\IFGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_Articulations.cxx">
+      <Filter>Source files\IFGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_Compare.cxx">
+      <Filter>Source files\IFGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_ConnectedComponants.cxx">
+      <Filter>Source files\IFGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_Cumulate.cxx">
+      <Filter>Source files\IFGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_Cycles.cxx">
+      <Filter>Source files\IFGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_ExternalSources.cxx">
+      <Filter>Source files\IFGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_SCRoots.cxx">
+      <Filter>Source files\IFGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_StrongComponants.cxx">
+      <Filter>Source files\IFGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFGraph\IFGraph_SubPartsIterator.cxx">
+      <Filter>Source files\IFGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Act.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Activator.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_AppliedModifiers.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_BasicDumper.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_CheckCounter.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ContextModif.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ContextWrite.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_DispGlobal.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_DispPerCount.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_DispPerFiles.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_DispPerOne.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_DispPerSignature.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Dispatch.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_EditForm.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Editor.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Functions.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_GeneralModifier.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_GraphCounter.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_IntParam.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ListEditor.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ModelCopier.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ModifEditForm.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ModifReorder.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Modifier.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_PacketList.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ParamEditor.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectAnyList.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectAnyType.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectBase.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectCombine.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectControl.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectDeduct.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectDiff.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectEntityNumber.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectErrorEntities.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectExplore.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectExtract.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectFlag.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectInList.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectIncorrectEntities.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectIntersection.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectModelEntities.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectModelRoots.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectPointed.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectRange.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectRootComps.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectRoots.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSent.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectShared.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSharing.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSignature.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSignedShared.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSignedSharing.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectSuite.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectType.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectUnion.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectUnknownEntities.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Selection.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SelectionIterator.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SessionDumper.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SessionFile.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SessionPilot.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ShareOut.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_ShareOutResult.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignAncestor.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignCategory.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignCounter.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignMultiple.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignType.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignValidity.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Signature.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_SignatureList.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_TransformStandard.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_Transformer.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_WorkLibrary.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IFSelect\IFSelect_WorkSession.cxx">
+      <Filter>Source files\IFSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep.cxx">
+      <Filter>Source files\TransferBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_BinderOfShape.cxx">
+      <Filter>Source files\TransferBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_OrientedShapeMapper_0.cxx">
+      <Filter>Source files\TransferBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_Reader.cxx">
+      <Filter>Source files\TransferBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_ShapeBinder.cxx">
+      <Filter>Source files\TransferBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_ShapeInfo.cxx">
+      <Filter>Source files\TransferBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_ShapeListBinder.cxx">
+      <Filter>Source files\TransferBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_ShapeMapper_0.cxx">
+      <Filter>Source files\TransferBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TransferBRep\TransferBRep_TransferResultInfo.cxx">
+      <Filter>Source files\TransferBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_ConnectedShapes.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Controller.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_FuncShape.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Functions.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Reader.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_SelectForTransfer.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_SignTransferStatus.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_TransferReader.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_TransferWriter.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Utils.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Vars.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_WorkSession.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSControl\XSControl_Writer.cxx">
+      <Filter>Source files\XSControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_DefaultGeneral.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_DescrGeneral.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_DescrProtocol.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_DescrReadWrite.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_Described.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_ECDescr.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_EDescr.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_ESDescr.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_EnumTool.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_Field.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FieldList.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FieldList1.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FieldListD.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FieldListN.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FileProtocol.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FileRecognizer_0.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_FreeFormEntity.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_GeneralModule.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_GlobalNodeOfWriterLib_0.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_HeaderTool.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_NodeOfWriterLib_0.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_PDescr.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_Plex.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_Protocol.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_ReadWriteModule.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectArrReal.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectInt.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectMember.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectNamed.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectReal.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_SelectType.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_Simple.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_StepDumper.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_StepModel.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_StepReaderData.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_StepReaderTool.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_StepWriter.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_UndefinedEntity.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepData\StepData_WriterLib_0.cxx">
+      <Filter>Source files\StepData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFile\StepFile_CallFailure.cxx">
+      <Filter>Source files\StepFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFile\StepFile_Read.cxx">
+      <Filter>Source files\StepFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFile\lex.step.c">
+      <Filter>Source files\StepFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFile\step.tab.c">
+      <Filter>Source files\StepFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFile\stepread.c">
+      <Filter>Source files\StepFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection.cxx">
+      <Filter>Source files\HeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection_FileDescription.cxx">
+      <Filter>Source files\HeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection_FileName.cxx">
+      <Filter>Source files\HeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection_FileSchema.cxx">
+      <Filter>Source files\HeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection_HeaderRecognizer.cxx">
+      <Filter>Source files\HeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HeaderSection\HeaderSection_Protocol.cxx">
+      <Filter>Source files\HeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection.cxx">
+      <Filter>Source files\RWHeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection_GeneralModule.cxx">
+      <Filter>Source files\RWHeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection_RWFileDescription.cxx">
+      <Filter>Source files\RWHeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection_RWFileName.cxx">
+      <Filter>Source files\RWHeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection_RWFileSchema.cxx">
+      <Filter>Source files\RWHeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWHeaderSection\RWHeaderSection_ReadWriteModule.cxx">
+      <Filter>Source files\RWHeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\APIHeaderSection\APIHeaderSection_EditHeader.cxx">
+      <Filter>Source files\APIHeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\APIHeaderSection\APIHeaderSection_MakeHeader.cxx">
+      <Filter>Source files\APIHeaderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_Activator.cxx">
+      <Filter>Source files\StepSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_FileModifier_0.cxx">
+      <Filter>Source files\StepSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_FloatFormat.cxx">
+      <Filter>Source files\StepSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_ModelModifier_0.cxx">
+      <Filter>Source files\StepSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_StepType.cxx">
+      <Filter>Source files\StepSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepSelect\StepSelect_WorkLibrary.cxx">
+      <Filter>Source files\StepSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\UnitsMethods\UnitsMethods.cxx">
+      <Filter>Source files\UnitsMethods</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSAlgo\XSAlgo.cxx">
+      <Filter>Source files\XSAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSAlgo\XSAlgo_AlgoContainer.cxx">
+      <Filter>Source files\XSAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\XSAlgo\XSAlgo_ToolContainer.cxx">
+      <Filter>Source files\XSAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_AttrList.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_CaseData.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_DataInfo.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_ElemHasher.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_Element.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_IntVal.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_MTHasher.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_RealVal.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_SignShape.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_SignText.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_Stat.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_Timer.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TimerSentry.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TransientElem.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MoniTool\MoniTool_TypedValue.cxx">
+      <Filter>Source files\MoniTool</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKXSBase.rc" />  </ItemGroup>
+</Project>

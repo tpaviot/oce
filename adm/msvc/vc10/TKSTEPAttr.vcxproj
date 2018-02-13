@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{27FC3321-01AA-00B1-117E-1699159C4956}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc10\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc10\obj\TKSTEPAttr\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc10\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc10\objd\TKSTEPAttr\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc10\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc10\obj\TKSTEPAttr\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc10\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc10\objd\TKSTEPAttr\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc10\bin\TKSTEPAttr.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\TKSTEPAttr/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc10\obj\TKSTEPAttr/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\TKSTEPAttr/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKXSBase.lib;TKSTEPBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc10\bin\TKSTEPAttr.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc10\bin\TKSTEPAttr.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc10\lib\TKSTEPAttr.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc10\bind\TKSTEPAttr.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKSTEPAttr/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc10\objd\TKSTEPAttr/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\TKSTEPAttr/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKXSBase.lib;TKSTEPBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc10\bind\TKSTEPAttr.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc10\bind\TKSTEPAttr.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc10\libd\TKSTEPAttr.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc10\bin\TKSTEPAttr.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\TKSTEPAttr/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc10\obj\TKSTEPAttr/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\TKSTEPAttr/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKXSBase.lib;TKSTEPBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc10\bin\TKSTEPAttr.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc10\bin\TKSTEPAttr.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc10\lib\TKSTEPAttr.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc10\bind\TKSTEPAttr.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKSTEPAttr/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc10\objd\TKSTEPAttr/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\TKSTEPAttr/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKXSBase.lib;TKSTEPBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc10\bind\TKSTEPAttr.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc10\bind\TKSTEPAttr.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc10\libd\TKSTEPAttr.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationCurveOccurrence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationFillArea.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationFillAreaOccurrence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationOccurrence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationPlane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationPlaneElement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationText.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationTextOccurrence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AreaInSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AreaOrView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_BackgroundColour.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_BoxCharacteristicSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraImage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraImage2dWithScale.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraImage3dWithScale.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3MultiClipping.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3MultiClippingInterectionSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3MultiClippingIntersection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3MultiClippingUnion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3MultiClippingUnionSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraUsage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_Colour.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ColourRgb.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ColourSpecification.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CompositeText.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CompositeTextWithExtent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ContextDependentInvisibility.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ContextDependentOverRidingStyledItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CoordinatesList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CurveStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CurveStyleFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CurveStyleFontPattern.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CurveStyleFontSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DirectionCountSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingAnnotationOccurrence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingCallout.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingCalloutElement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingModel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingPreDefinedColour.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingPreDefinedCurveFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ExternallyDefinedCurveFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ExternallyDefinedTextFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_FillAreaStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_FillAreaStyleColour.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_FillStyleSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_FontSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_Invisibility.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_InvisibilityContext.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_InvisibleItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_LayeredItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_MarkerMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_MarkerSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_MechanicalDesignGeometricPresentationArea.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_MechanicalDesignGeometricPresentationRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_NullStyleMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_OverRidingStyledItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PlanarBox.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PlanarExtent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PointStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PreDefinedColour.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PreDefinedCurveFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PreDefinedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PreDefinedTextFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationArea.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationLayerAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationLayerUsage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationRepresentationSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationSize.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationSizeAssignmentSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationStyleAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationStyleByContext.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationStyleSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentedItemRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_StyleContextSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_StyledItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_StyledItemTarget.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceSideStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleBoundary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleControlGrid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleElementSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleFillArea.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleParameterLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleSegmentationCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleSilhouette.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleUsage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_Template.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TemplateInstance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TessellatedAnnotationOccurrence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TessellatedCurveSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TessellatedGeometricSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TessellatedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TextLiteral.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TextOrCharacter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TextStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TextStyleForDefinedFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TextStyleWithBoxCharacteristics.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ViewVolume.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationCurveOccurrence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationFillArea.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationFillAreaOccurrence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationOccurrence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationPlane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAreaInSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWBackgroundColour.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraImage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModelD2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModelD3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModelD3MultiClipping.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModelD3MultiClippingIntersection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModelD3MultiClippingUnion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraUsage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWColour.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWColourRgb.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWColourSpecification.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCompositeText.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCompositeTextWithExtent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWContextDependentInvisibility.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWContextDependentOverRidingStyledItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCoordinatesList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCurveStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCurveStyleFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCurveStyleFontPattern.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWDraughtingCallout.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWDraughtingModel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWDraughtingPreDefinedColour.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWDraughtingPreDefinedCurveFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWExternallyDefinedCurveFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWFillAreaStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWFillAreaStyleColour.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWInvisibility.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWMechanicalDesignGeometricPresentationArea.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWOverRidingStyledItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPlanarBox.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPlanarExtent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPointStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPreDefinedColour.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPreDefinedCurveFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPreDefinedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationArea.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationLayerAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationLayerUsage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationSize.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationStyleAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationStyleByContext.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentedItemRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWStyledItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceSideStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleBoundary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleControlGrid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleFillArea.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleParameterLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleSegmentationCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleSilhouette.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleUsage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTemplate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTemplateInstance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTessellatedAnnotationOccurrence.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTessellatedCurveSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTessellatedGeometricSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTessellatedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTextLiteral.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTextStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTextStyleForDefinedFont.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTextStyleWithBoxCharacteristics.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWViewVolume.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_AngularityTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_CircularRunoutTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_CoaxialityTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_CommonDatum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ConcentricityTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_CylindricityTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_Datum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumFeature.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumOrCommonDatum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumReferenceCompartment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumReferenceElement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumReferenceModifier.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumReferenceModifierWithValue.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumSystemOrReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumTarget.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_FlatnessTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeneralDatumReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthDatRef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthMaxTol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthMod.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceRelationship.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceTarget.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceWithDatumReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceWithDefinedAreaUnit.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceWithDefinedUnit.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceWithMaximumTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceWithModifiers.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_LineProfileTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ModifiedGeometricTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_NonUniformZoneDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ParallelismTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_PerpendicularityTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_PlacedDatumTargetFeature.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_PositionTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ProjectedZoneDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_RoundnessTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_RunoutZoneDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_RunoutZoneOrientation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ShapeToleranceSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_SimpleDatumReferenceModifierMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_StraightnessTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_SurfaceProfileTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_SymmetryTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ToleranceZone.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ToleranceZoneDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ToleranceZoneForm.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ToleranceZoneTarget.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_TotalRunoutTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_UnequallyDisposedGeometricTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWAngularityTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWCircularRunoutTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWCoaxialityTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWCommonDatum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWConcentricityTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWCylindricityTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumFeature.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumReferenceCompartment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumReferenceElement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumReferenceModifierWithValue.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumTarget.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWFlatnessTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeneralDatumReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthDatRef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMod.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthMaxTol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthMod.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceRelationship.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceWithDatumReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceWithDefinedAreaUnit.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceWithDefinedUnit.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceWithMaximumTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceWithModifiers.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWLineProfileTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWModifiedGeometricTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWNonUniformZoneDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWParallelismTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWPerpendicularityTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWPlacedDatumTargetFeature.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWPositionTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWProjectedZoneDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWRoundnessTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWRunoutZoneDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWRunoutZoneOrientation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWStraightnessTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWSurfaceProfileTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWSymmetryTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWToleranceZone.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWToleranceZoneDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWToleranceZoneForm.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWTotalRunoutTolerance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWUnequallyDisposedGeometricTolerance.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKSTEPAttr.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

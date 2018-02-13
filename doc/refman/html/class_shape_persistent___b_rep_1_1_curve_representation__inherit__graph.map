@@ -1,0 +1,14 @@
+<map id="ShapePersistent_BRep::CurveRepresentation" name="ShapePersistent_BRep::CurveRepresentation">
+<area shape="rect" id="node4" href="$class_shape_persistent___b_rep_1_1_curve_on2_surfaces.html" title="ShapePersistent_BRep\l::CurveOn2Surfaces" alt="" coords="597,5,754,47"/>
+<area shape="rect" id="node5" href="$class_shape_persistent___b_rep_1_1_g_curve.html" title="ShapePersistent_BRep\l::GCurve" alt="" coords="597,71,754,112"/>
+<area shape="rect" id="node9" href="$class_shape_persistent___b_rep_1_1_polygon3_d.html" title="ShapePersistent_BRep\l::Polygon3D" alt="" coords="597,136,754,177"/>
+<area shape="rect" id="node10" href="$class_shape_persistent___b_rep_1_1_polygon_on_surface.html" title="ShapePersistent_BRep\l::PolygonOnSurface" alt="" coords="597,201,754,243"/>
+<area shape="rect" id="node12" href="$class_shape_persistent___b_rep_1_1_polygon_on_triangulation.html" title="ShapePersistent_BRep\l::PolygonOnTriangulation" alt="" coords="592,267,759,308"/>
+<area shape="rect" id="node2" href="$class_std_obj_mgt___persistent.html" title="Root class for a temporary persistent object that reads data from a file and then creates transient o..." alt="" coords="188,143,339,170"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,143,140,170"/>
+<area shape="rect" id="node6" href="$class_shape_persistent___b_rep_1_1_curve3_d.html" title="ShapePersistent_BRep\l::Curve3D" alt="" coords="831,39,989,80"/>
+<area shape="rect" id="node7" href="$class_shape_persistent___b_rep_1_1_curve_on_surface.html" title="ShapePersistent_BRep\l::CurveOnSurface" alt="" coords="831,104,989,145"/>
+<area shape="rect" id="node8" href="$class_shape_persistent___b_rep_1_1_curve_on_closed_surface.html" title="ShapePersistent_BRep\l::CurveOnClosedSurface" alt="" coords="1061,104,1224,145"/>
+<area shape="rect" id="node11" href="$class_shape_persistent___b_rep_1_1_polygon_on_closed_surface.html" title="ShapePersistent_BRep\l::PolygonOnClosedSurface" alt="" coords="821,201,999,243"/>
+<area shape="rect" id="node13" href="$class_shape_persistent___b_rep_1_1_polygon_on_closed_triangulation.html" title="ShapePersistent_BRep\l::PolygonOnClosedTriangulation" alt="" coords="807,267,1013,308"/>
+</map>

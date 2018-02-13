@@ -1,0 +1,5 @@
+<map id="StepDimTol_DatumTarget" name="StepDimTol_DatumTarget">
+<area shape="rect" id="node4" href="$class_step_dim_tol___placed_datum_target_feature.html" title="Representation of STEP entity PlacedDatumTargetFeature. " alt="" coords="5,229,216,271"/>
+<area shape="rect" id="node2" href="$class_step_repr___shape_aspect.html" title="StepRepr_ShapeAspect" alt="" coords="30,80,191,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="43,5,178,32"/>
+</map>

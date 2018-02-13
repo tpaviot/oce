@@ -1,0 +1,11 @@
+<map id="StepBasic_ProductDefinitionRelationship" name="StepBasic_ProductDefinitionRelationship">
+<area shape="rect" id="node3" href="$class_step_repr___product_definition_usage.html" title="Representation of STEP entity ProductDefinitionUsage. " alt="" coords="446,133,627,175"/>
+<area shape="rect" id="node10" href="$class_step_repr___supplied_part_relationship.html" title="StepRepr_SuppliedPartRelationship" alt="" coords="423,199,651,226"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,170,140,197"/>
+<area shape="rect" id="node4" href="$class_step_repr___assembly_component_usage.html" title="Representation of STEP entity AssemblyComponentUsage. " alt="" coords="705,104,912,145"/>
+<area shape="rect" id="node9" href="$class_step_repr___make_from_usage_option.html" title="Representation of STEP entity MakeFromUsageOption. " alt="" coords="699,170,919,197"/>
+<area shape="rect" id="node5" href="$class_step_repr___next_assembly_usage_occurrence.html" title="Representation of STEP entity NextAssemblyUsageOccurrence. " alt="" coords="967,5,1172,47"/>
+<area shape="rect" id="node6" href="$class_step_repr___promissory_usage_occurrence.html" title="StepRepr_PromissoryUsage\lOccurrence" alt="" coords="976,71,1163,112"/>
+<area shape="rect" id="node7" href="$class_step_repr___quantified_assembly_component_usage.html" title="Representation of STEP entity QuantifiedAssemblyComponentUsage. " alt="" coords="970,136,1169,177"/>
+<area shape="rect" id="node8" href="$class_step_repr___specified_higher_usage_occurrence.html" title="Representation of STEP entity SpecifiedHigherUsageOccurrence. " alt="" coords="983,201,1156,243"/>
+</map>

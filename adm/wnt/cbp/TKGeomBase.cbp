@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKGeomBase" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKGeomBase" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__ProjLib_DLL" />
+					<Add option="-D__GeomProjLib_DLL" />
+					<Add option="-D__GCPnts_DLL" />
+					<Add option="-D__CPnts_DLL" />
+					<Add option="-D__Approx_DLL" />
+					<Add option="-D__AppParCurves_DLL" />
+					<Add option="-D__FEmTool_DLL" />
+					<Add option="-D__AppCont_DLL" />
+					<Add option="-D__Extrema_DLL" />
+					<Add option="-D__IntAna_DLL" />
+					<Add option="-D__IntAna2d_DLL" />
+					<Add option="-D__GeomConvert_DLL" />
+					<Add option="-D__AdvApp2Var_DLL" />
+					<Add option="-D__GeomLib_DLL" />
+					<Add option="-D__Geom2dConvert_DLL" />
+					<Add option="-D__Hermit_DLL" />
+					<Add option="-D__BndLib_DLL" />
+					<Add option="-D__AppDef_DLL" />
+					<Add option="-D__GeomTools_DLL" />
+					<Add option="-D__GC_DLL" />
+					<Add option="-D__GCE2d_DLL" />
+					<Add option="-D__gce_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKGeomBase_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKGeomBase" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__ProjLib_DLL" />
+					<Add option="-D__GeomProjLib_DLL" />
+					<Add option="-D__GCPnts_DLL" />
+					<Add option="-D__CPnts_DLL" />
+					<Add option="-D__Approx_DLL" />
+					<Add option="-D__AppParCurves_DLL" />
+					<Add option="-D__FEmTool_DLL" />
+					<Add option="-D__AppCont_DLL" />
+					<Add option="-D__Extrema_DLL" />
+					<Add option="-D__IntAna_DLL" />
+					<Add option="-D__IntAna2d_DLL" />
+					<Add option="-D__GeomConvert_DLL" />
+					<Add option="-D__AdvApp2Var_DLL" />
+					<Add option="-D__GeomLib_DLL" />
+					<Add option="-D__Geom2dConvert_DLL" />
+					<Add option="-D__Hermit_DLL" />
+					<Add option="-D__BndLib_DLL" />
+					<Add option="-D__AppDef_DLL" />
+					<Add option="-D__GeomTools_DLL" />
+					<Add option="-D__GC_DLL" />
+					<Add option="-D__GCE2d_DLL" />
+					<Add option="-D__gce_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKGeomBase_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+		</Linker>
+		<Unit filename="../../../src/ProjLib/ProjLib.cxx" />
+		<Unit filename="../../../src/ProjLib/ProjLib_CompProjectedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_ComputeApprox.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_ComputeApproxOnPolarSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_Cone.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_Cylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_HCompProjectedCurve_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_HProjectedCurve_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_Plane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_PrjFunc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_PrjResolve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_ProjectOnPlane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_ProjectOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_ProjectedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_Projector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_Sphere.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/ProjLib/ProjLib_Torus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomProjLib/GeomProjLib.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCPnts/GCPnts_AbscissaPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCPnts/GCPnts_DistFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCPnts/GCPnts_DistFunction2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCPnts/GCPnts_QuasiUniformAbscissa.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCPnts/GCPnts_QuasiUniformDeflection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCPnts/GCPnts_TangentialDeflection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCPnts/GCPnts_UniformAbscissa.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCPnts/GCPnts_UniformDeflection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/CPnts/CPnts_AbscissaPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/CPnts/CPnts_MyGaussFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/CPnts/CPnts_MyRootFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/CPnts/CPnts_UniformDeflection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Approx/Approx_Curve2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Approx/Approx_Curve3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Approx/Approx_CurveOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Approx/Approx_CurvilinearParameter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Approx/Approx_CurvlinFunc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Approx/Approx_FitAndDivide2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Approx/Approx_FitAndDivide_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Approx/Approx_MCurvesToBSpCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Approx/Approx_SameParameter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Approx/Approx_SweepApproximation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Approx/Approx_SweepFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppParCurves/AppParCurves.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppParCurves/AppParCurves_ConstraintCouple.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppParCurves/AppParCurves_MultiBSpCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppParCurves/AppParCurves_MultiCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppParCurves/AppParCurves_MultiPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FEmTool/FEmTool_Assembly.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FEmTool/FEmTool_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FEmTool/FEmTool_ElementaryCriterion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FEmTool/FEmTool_ElementsOfRefMatrix.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FEmTool/FEmTool_LinearFlexion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FEmTool/FEmTool_LinearJerk.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FEmTool/FEmTool_LinearTension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FEmTool/FEmTool_ProfileMatrix.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/FEmTool/FEmTool_SparseMatrix.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppCont/AppCont_ContMatrices.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppCont/AppCont_ContMatrices_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppCont/AppCont_ContMatrices_2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppCont/AppCont_ContMatrices_3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppCont/AppCont_ContMatrices_4.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppCont/AppCont_LeastSquare.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_CCLocFOfLocECC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_CCLocFOfLocECC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_Curve2dTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_CurveTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ECC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ECC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ELPCOfLocateExtPC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ELPCOfLocateExtPC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_EPCOfELPCOfLocateExtPC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_EPCOfELPCOfLocateExtPC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_EPCOfExtPC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_EPCOfExtPC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtCC.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtCC2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtCS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtElC.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtElC2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtElCS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtElSS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtPC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtPC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtPElC.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtPElC2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtPElS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtPExtS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtPRevS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtPS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_ExtSS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_FuncExtCS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_FuncExtSS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_FuncPSDist.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_FuncPSNorm.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_GenExtCS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_GenExtPS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_GenExtSS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_GenLocateExtCS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_GenLocateExtPS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_GenLocateExtSS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_GlobOptFuncCC.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_GlobOptFuncCS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_LocECC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_LocECC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_LocEPCOfLocateExtPC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_LocEPCOfLocateExtPC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_LocateExtCC.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_LocateExtCC2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_LocateExtPC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_LocateExtPC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_PCFOfEPCOfELPCOfLocateExtPC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_PCFOfEPCOfExtPC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_PCFOfEPCOfExtPC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_PCLocFOfLocEPCOfLocateExtPC2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_PCLocFOfLocEPCOfLocateExtPC_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_POnCurv2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Extrema/Extrema_POnCurv_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna/IntAna_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna/IntAna_Int3Pln.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna/IntAna_IntConicQuad.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna/IntAna_IntLinTorus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna/IntAna_IntQuadQuad.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna/IntAna_QuadQuadGeo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna/IntAna_Quadric.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_AnaIntersection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_AnaIntersection_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_AnaIntersection_2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_AnaIntersection_3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_AnaIntersection_4.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_AnaIntersection_5.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_AnaIntersection_6.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_AnaIntersection_7.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_AnaIntersection_8.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_Conic.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_IntPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntAna2d/IntAna2d_Outils.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomConvert/GeomConvert.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomConvert/GeomConvert_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomConvert/GeomConvert_ApproxCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomConvert/GeomConvert_ApproxSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomConvert/GeomConvert_BSplineCurveKnotSplitting.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomConvert/GeomConvert_BSplineCurveToBezierCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomConvert/GeomConvert_BSplineSurfaceKnotSplitting.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomConvert/GeomConvert_BSplineSurfaceToBezierSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomConvert/GeomConvert_CompBezierSurfacesToBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomConvert/GeomConvert_CompCurveToBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_ApproxAFunc2Var.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_ApproxF2var.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Context.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Criterion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Data_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Data_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Data_2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Data_3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Data_4.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Data_5.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Data_6.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Data_7.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Framework.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Iso.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_MathBase.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_MathBase_mathinit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Network.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Node.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_Patch.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_SysBase.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApp2Var/AdvApp2Var_SysBase_baseinit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLib/GeomLib.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLib/GeomLib_Check2dBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLib/GeomLib_CheckBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLib/GeomLib_CheckCurveOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLib/GeomLib_DenominatorMultiplier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLib/GeomLib_Interpolate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLib/GeomLib_IsPlanarSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLib/GeomLib_LogSample.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLib/GeomLib_MakeCurvefromApprox.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLib/GeomLib_PolyFunc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLib/GeomLib_Tool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dConvert/Geom2dConvert.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dConvert/Geom2dConvert_ApproxCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dConvert/Geom2dConvert_BSplineCurveKnotSplitting.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dConvert/Geom2dConvert_BSplineCurveToBezierCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dConvert/Geom2dConvert_CompCurveToBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Hermit/Hermit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BndLib/BndLib.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BndLib/BndLib_Add2dCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BndLib/BndLib_Add3dCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BndLib/BndLib_AddSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_BSplineCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_Compute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_Gradient_BFGSOfMyGradientOfCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_Gradient_BFGSOfTheGradient_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_LinearCriteria.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_MultiLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_MultiPointConstraint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_MyBSplGradientOfBSplineCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_MyGradientOfCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_MyGradientbisOfBSplineCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_MyLineTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_ParFunctionOfMyGradientOfCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_ParFunctionOfTheGradient_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_ParLeastSquareOfMyGradientOfCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_ParLeastSquareOfTheGradient_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_ResConstraintOfMyGradientOfCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_ResConstraintOfTheGradient_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_SmoothCriterion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_TheFunction_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_TheGradient_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_TheLeastSquares_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_TheResol_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppDef/AppDef_Variational.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomTools/GeomTools.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomTools/GeomTools_Curve2dSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomTools/GeomTools_CurveSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomTools/GeomTools_Debug.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomTools/GeomTools_SurfaceSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomTools/GeomTools_UndefinedTypeHandler.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeArcOfCircle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeArcOfEllipse.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeArcOfHyperbola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeArcOfParabola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeCircle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeConicalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeCylindricalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeEllipse.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeHyperbola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeMirror.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakePlane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeRotation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeScale.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeSegment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeTranslation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeTrimmedCone.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GC/GC_MakeTrimmedCylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeArcOfCircle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeArcOfEllipse.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeArcOfHyperbola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeArcOfParabola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeCircle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeEllipse.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeHyperbola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeMirror.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeParabola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeRotation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeScale.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeSegment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GCE2d/GCE2d_MakeTranslation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeCirc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeCirc2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeCone.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeCylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeDir.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeDir2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeElips.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeElips2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeHypr.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeHypr2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeLin.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeLin2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeMirror.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeMirror2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeParab.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeParab2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakePln.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeRotation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeRotation2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeScale.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeScale2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeTranslation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_MakeTranslation2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/gce/gce_Root.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

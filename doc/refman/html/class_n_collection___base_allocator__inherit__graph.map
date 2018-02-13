@@ -1,0 +1,8 @@
+<map id="NCollection_BaseAllocator" name="NCollection_BaseAllocator">
+<area shape="rect" id="node3" href="$class_n_collection___acc_allocator.html" title="Class NCollection_AccAllocator &#45; accumulating memory allocator. This class allocates memory on reques..." alt="" coords="427,5,596,32"/>
+<area shape="rect" id="node4" href="$class_n_collection___aligned_allocator.html" title="NCollection allocator with managed memory alignment capabilities. " alt="" coords="417,56,606,83"/>
+<area shape="rect" id="node5" href="$class_n_collection___heap_allocator.html" title="NCollection_HeapAllocator" alt="" coords="423,107,599,133"/>
+<area shape="rect" id="node6" href="$class_n_collection___inc_allocator.html" title="NCollection_IncAllocator" alt="" coords="430,157,593,184"/>
+<area shape="rect" id="node7" href="$class_n_collection___win_heap_allocator.html" title="This memory allocator creates dedicated heap for allocations. This technics available only on Windows..." alt="" coords="412,208,611,235"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,107,140,133"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="IGESData_SpecificModule" name="IGESData_SpecificModule">
+<area shape="rect" id="node3" href="$class_i_g_e_s_appli___specific_module.html" title="Defines Services attached to IGES Entities : Dump &amp; OwnCorrect, for IGESAppli. " alt="" coords="415,5,592,32"/>
+<area shape="rect" id="node4" href="$class_i_g_e_s_basic___specific_module.html" title="Defines Services attached to IGES Entities : Dump &amp; OwnCorrect, for IGESBasic. " alt="" coords="413,56,594,83"/>
+<area shape="rect" id="node5" href="$class_i_g_e_s_data___default_specific.html" title="Specific IGES Services for UndefinedEntity, FreeFormatEntity. " alt="" coords="417,107,590,133"/>
+<area shape="rect" id="node6" href="$class_i_g_e_s_defs___specific_module.html" title="Defines Services attached to IGES Entities : Dump, for IGESDefs. " alt="" coords="416,157,591,184"/>
+<area shape="rect" id="node7" href="$class_i_g_e_s_dimen___specific_module.html" title="Defines Services attached to IGES Entities : Dump &amp; OwnCorrect, for IGESDimen. " alt="" coords="411,208,596,235"/>
+<area shape="rect" id="node8" href="$class_i_g_e_s_draw___specific_module.html" title="Defines Services attached to IGES Entities : Dump &amp; OwnCorrect, for IGESDraw. " alt="" coords="415,259,592,285"/>
+<area shape="rect" id="node9" href="$class_i_g_e_s_geom___specific_module.html" title="Defines Services attached to IGES Entities : Dump &amp; OwnCorrect, for IGESGeom. " alt="" coords="412,309,595,336"/>
+<area shape="rect" id="node10" href="$class_i_g_e_s_graph___specific_module.html" title="Defines Services attached to IGES Entities : Dump &amp; OwnCorrect, for IGESGraph. " alt="" coords="412,360,595,387"/>
+<area shape="rect" id="node11" href="$class_i_g_e_s_solid___specific_module.html" title="Defines Services attached to IGES Entities : Dump, for IGESSolid. " alt="" coords="415,411,592,437"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,208,140,235"/>
+</map>

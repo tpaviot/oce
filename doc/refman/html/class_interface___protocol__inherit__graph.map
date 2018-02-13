@@ -1,0 +1,18 @@
+<map id="Interface_Protocol" name="Interface_Protocol">
+<area shape="rect" id="node3" href="$class_i_g_e_s_data___protocol.html" title="Description of basic Protocol for IGES This comprises treatement of IGESModel and Recognition of Unde..." alt="" coords="363,233,497,260"/>
+<area shape="rect" id="node13" href="$class_step_data___protocol.html" title="Description of Basic Protocol for Step The class Protocol from StepData itself describes a default Pr..." alt="" coords="365,487,495,513"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,360,140,387"/>
+<area shape="rect" id="node4" href="$class_i_g_e_s_appli___protocol.html" title="Description of Protocol for IGESAppli. " alt="" coords="558,5,695,32"/>
+<area shape="rect" id="node5" href="$class_i_g_e_s_basic___protocol.html" title="Description of Protocol for IGESBasic. " alt="" coords="556,56,697,83"/>
+<area shape="rect" id="node6" href="$class_i_g_e_s_data___file_protocol.html" title="This class allows to define complex protocols, in order to treat various sub&#45;sets (or the complete se..." alt="" coords="549,107,705,133"/>
+<area shape="rect" id="node7" href="$class_i_g_e_s_defs___protocol.html" title="Description of Protocol for IGESDefs. " alt="" coords="559,157,694,184"/>
+<area shape="rect" id="node8" href="$class_i_g_e_s_dimen___protocol.html" title="Description of Protocol for IGESDimen. " alt="" coords="554,208,699,235"/>
+<area shape="rect" id="node9" href="$class_i_g_e_s_draw___protocol.html" title="Description of Protocol for IGESDraw. " alt="" coords="558,259,695,285"/>
+<area shape="rect" id="node10" href="$class_i_g_e_s_geom___protocol.html" title="Description of Protocol for IGESGeom. " alt="" coords="555,309,698,336"/>
+<area shape="rect" id="node11" href="$class_i_g_e_s_graph___protocol.html" title="Description of Protocol for IGESGraph. " alt="" coords="555,360,698,387"/>
+<area shape="rect" id="node12" href="$class_i_g_e_s_solid___protocol.html" title="Description of Protocol for IGESSolid. " alt="" coords="558,411,695,437"/>
+<area shape="rect" id="node14" href="$class_header_section___protocol.html" title="Protocol for HeaderSection Entities It requires HeaderSection as a Resource. " alt="" coords="545,461,708,488"/>
+<area shape="rect" id="node15" href="$class_step_a_p214___protocol.html" title="Protocol for StepAP214 Entities It requires StepAP214 as a Resource. " alt="" coords="555,512,698,539"/>
+<area shape="rect" id="node16" href="$class_step_data___file_protocol.html" title="A FileProtocol is defined as the addition of several already existing Protocols. It corresponds to th..." alt="" coords="551,563,703,589"/>
+<area shape="rect" id="node17" href="$class_step_data___descr_protocol.html" title="A DescrProtocol is a protocol dynamically (at execution time) defined with : " alt="" coords="756,563,921,589"/>
+</map>

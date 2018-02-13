@@ -1,0 +1,10 @@
+<map id="DrawTrSurf_Curve2d" name="DrawTrSurf_Curve2d">
+<area shape="rect" id="node5" href="$class_draw_tr_surf___bezier_curve2d.html" title="DrawTrSurf_BezierCurve2d" alt="" coords="763,5,937,32"/>
+<area shape="rect" id="node6" href="$class_draw_tr_surf___b_spline_curve2d.html" title="DrawTrSurf_BSplineCurve2d" alt="" coords="759,56,941,83"/>
+<area shape="rect" id="node9" href="$class_geometry_test___drawable_qualified_curve2d.html" title="Create geom curve drawable presentation with the position of a solution of a construction algorithm..." alt="" coords="743,107,957,149"/>
+<area shape="rect" id="node2" href="$class_draw_tr_surf___drawable.html" title="this class adds to the Drawable3D methods to display Curves and Curves on Surface. " alt="" coords="363,56,508,83"/>
+<area shape="rect" id="node3" href="$class_draw___drawable3_d.html" title="Draw_Drawable3D" alt="" coords="188,56,315,83"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,56,140,83"/>
+<area shape="rect" id="node7" href="$class_draw_fair_curve___batten.html" title="Interactive Draw object of type &quot;Batten&quot;. " alt="" coords="1005,56,1156,83"/>
+<area shape="rect" id="node8" href="$class_draw_fair_curve___minimal_variation.html" title="Interactive Draw object of type &quot;MVC&quot;. " alt="" coords="1204,56,1412,83"/>
+</map>

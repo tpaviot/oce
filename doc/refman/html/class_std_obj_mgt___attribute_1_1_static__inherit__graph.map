@@ -1,0 +1,15 @@
+<map id="StdObjMgt_Attribute&lt; Transient &gt;::Static" name="StdObjMgt_Attribute&lt; Transient &gt;::Static">
+<area shape="rect" id="node5" href="$class_std_obj_mgt___attribute_1_1_simple.html" title="StdObjMgt_Attribute\l\&lt; Transient \&gt;::Simple\l\&lt; Handle\&lt; StdObjMgt_Persistent \&gt; \&gt;" alt="" coords="764,581,1003,637"/>
+<area shape="rect" id="node19" href="$class_std_obj_mgt___attribute_1_1_simple.html" title="StdObjMgt_Attribute\l\&lt; Transient \&gt;::Simple\l\&lt; Standard_Integer \&gt;" alt="" coords="810,811,957,867"/>
+<area shape="rect" id="node24" href="$class_std_l_persistent___tree_node.html" title="StdLPersistent_TreeNode" alt="" coords="798,891,969,917"/>
+<area shape="rect" id="node25" href="$class_std_l_persistent___void_1_1instance.html" title="StdLPersistent_Void\l::instance\&lt; AttribClass \&gt;" alt="" coords="800,942,967,983"/>
+<area shape="rect" id="node27" href="$class_std_obj_mgt___attribute_1_1_simple.html" title="StdObjMgt_Attribute\l\&lt; Transient \&gt;::Simple\l\&lt; DataType \&gt;" alt="" coords="810,1008,957,1064"/>
+<area shape="rect" id="node3" href="$class_std_obj_mgt___persistent.html" title="Root class for a temporary persistent object that reads data from a file and then creates transient o..." alt="" coords="188,891,339,917"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,891,140,917"/>
+<area shape="rect" id="node6" href="$struct_std_obj_mgt___attribute_1_1_single_ref.html" title="StdObjMgt_Attribute\l\&lt; Transient \&gt;::SingleRef" alt="" coords="1071,443,1234,485"/>
+<area shape="rect" id="node12" href="$class_std_persistent___naming_1_1_naming.html" title="StdPersistent_Naming\l::Naming" alt="" coords="1332,406,1484,447"/>
+<area shape="rect" id="node13" href="$class_std_persistent___naming_1_1_naming__1.html" title="StdPersistent_Naming\l::Naming_1" alt="" coords="1561,406,1713,447"/>
+<area shape="rect" id="node20" href="$struct_std_obj_mgt___attribute_1_1_single_int.html" title="StdObjMgt_Attribute\l\&lt; Transient \&gt;::SingleInt" alt="" coords="1074,847,1231,889"/>
+<area shape="rect" id="node23" href="$class_std_persistent___data_xtd_1_1_geometry.html" title="StdPersistent_DataXtd\l::Geometry" alt="" coords="1331,945,1485,986"/>
+<area shape="rect" id="node26" href="$struct_std_persistent___data_xtd_1_1__void_1_1_instance.html" title="StdPersistent_DataXtd\l::_void::Instance\&lt; AttribClass \&gt;" alt="" coords="1051,942,1255,983"/>
+</map>

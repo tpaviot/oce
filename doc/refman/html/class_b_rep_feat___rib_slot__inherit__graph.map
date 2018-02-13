@@ -1,0 +1,6 @@
+<map id="BRepFeat_RibSlot" name="BRepFeat_RibSlot">
+<area shape="rect" id="node4" href="$class_b_rep_feat___make_linear_form.html" title="Builds a rib or a groove along a developable, planar surface. The semantics of mechanical features is..." alt="" coords="5,229,189,256"/>
+<area shape="rect" id="node5" href="$class_b_rep_feat___make_revolution_form.html" title="MakeRevolutionForm Generates a surface of revolution in the feature as it slides along a revolved fac..." alt="" coords="213,229,421,256"/>
+<area shape="rect" id="node2" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="111,80,302,107"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="116,5,297,32"/>
+</map>

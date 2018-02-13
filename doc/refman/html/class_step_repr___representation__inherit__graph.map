@@ -1,0 +1,43 @@
+<map id="StepRepr_Representation" name="StepRepr_Representation">
+<area shape="rect" id="node3" href="$class_step_f_e_a___element_representation.html" title="Representation of STEP entity ElementRepresentation. " alt="" coords="424,97,641,124"/>
+<area shape="rect" id="node7" href="$class_step_f_e_a___fea_model.html" title="Representation of STEP entity FeaModel. " alt="" coords="463,199,602,225"/>
+<area shape="rect" id="node9" href="$class_step_f_e_a___node_representation.html" title="Representation of STEP entity NodeRepresentation. " alt="" coords="433,300,632,327"/>
+<area shape="rect" id="node15" href="$class_step_repr___characterized_representation.html" title="StepRepr_CharacterizedRepresentation" alt="" coords="407,419,658,445"/>
+<area shape="rect" id="node16" href="$class_step_repr___constructive_geometry_representation.html" title="StepRepr_ConstructiveGeometry\lRepresentation" alt="" coords="427,470,638,511"/>
+<area shape="rect" id="node17" href="$class_step_repr___definitional_representation.html" title="StepRepr_DefinitionalRepresentation" alt="" coords="416,536,649,563"/>
+<area shape="rect" id="node19" href="$class_step_repr___externally_defined_representation.html" title="StepRepr_ExternallyDefined\lRepresentation" alt="" coords="441,587,625,629"/>
+<area shape="rect" id="node20" href="$class_step_shape___connected_face_shape_representation.html" title="Representation of STEP entity ConnectedFaceShapeRepresentation. " alt="" coords="422,653,643,694"/>
+<area shape="rect" id="node21" href="$class_step_shape___shape_representation.html" title="StepShape_ShapeRepresentation" alt="" coords="424,781,641,808"/>
+<area shape="rect" id="node35" href="$class_step_visual___draughting_model.html" title="Representation of STEP entity DraughtingModel. " alt="" coords="438,1032,627,1059"/>
+<area shape="rect" id="node37" href="$class_step_visual___presentation_representation.html" title="StepVisual_PresentationRepresentation" alt="" coords="407,1339,659,1365"/>
+<area shape="rect" id="node42" href="$class_step_visual___template.html" title="StepVisual_Template" alt="" coords="460,1389,605,1416"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,565,140,592"/>
+<area shape="rect" id="node4" href="$class_step_f_e_a___curve3d_element_representation.html" title="Representation of STEP entity Curve3dElementRepresentation. " alt="" coords="715,5,977,32"/>
+<area shape="rect" id="node5" href="$class_step_f_e_a___surface3d_element_representation.html" title="Representation of STEP entity Surface3dElementRepresentation. " alt="" coords="752,57,940,98"/>
+<area shape="rect" id="node6" href="$class_step_f_e_a___volume3d_element_representation.html" title="Representation of STEP entity Volume3dElementRepresentation. " alt="" coords="709,123,983,149"/>
+<area shape="rect" id="node8" href="$class_step_f_e_a___fea_model3d.html" title="Representation of STEP entity FeaModel3d. " alt="" coords="769,173,923,200"/>
+<area shape="rect" id="node10" href="$class_step_f_e_a___dummy_node.html" title="Representation of STEP entity DummyNode. " alt="" coords="767,224,925,251"/>
+<area shape="rect" id="node11" href="$class_step_f_e_a___geometric_node.html" title="Representation of STEP entity GeometricNode. " alt="" coords="760,275,932,301"/>
+<area shape="rect" id="node12" href="$class_step_f_e_a___node.html" title="Representation of STEP entity Node. " alt="" coords="790,325,902,352"/>
+<area shape="rect" id="node13" href="$class_step_f_e_a___node_with_solution_coordinate_system.html" title="Representation of STEP entity NodeWithSolutionCoordinateSystem. " alt="" coords="1039,289,1226,330"/>
+<area shape="rect" id="node14" href="$class_step_f_e_a___node_with_vector.html" title="Representation of STEP entity NodeWithVector. " alt="" coords="1044,355,1221,381"/>
+<area shape="rect" id="node18" href="$class_step_shape___definitional_representation_and_shape_representation.html" title="Implements complex type (DEFINITIONAL_REPRESENTATION,REPRESENTATION,SHAPE_REPRESENTATION) ..." alt="" coords="725,377,967,418"/>
+<area shape="rect" id="node22" href="$class_step_shape___advanced_brep_shape_representation.html" title="StepShape_AdvancedBrepShape\lRepresentation" alt="" coords="739,442,953,483"/>
+<area shape="rect" id="node23" href="$class_step_shape___compound_shape_representation.html" title="Representation of STEP entity CompoundShapeRepresentation. " alt="" coords="707,508,985,535"/>
+<area shape="rect" id="node24" href="$class_step_shape___csg_shape_representation.html" title="StepShape_CsgShapeRepresentation" alt="" coords="726,559,966,585"/>
+<area shape="rect" id="node25" href="$class_step_shape___edge_based_wireframe_shape_representation.html" title="Representation of STEP entity EdgeBasedWireframeShapeRepresentation. " alt="" coords="737,610,955,651"/>
+<area shape="rect" id="node26" href="$class_step_shape___faceted_brep_shape_representation.html" title="StepShape_FacetedBrepShape\lRepresentation" alt="" coords="744,675,948,717"/>
+<area shape="rect" id="node27" href="$class_step_shape___geometrically_bounded_surface_shape_representation.html" title="StepShape_GeometricallyBounded\lSurfaceShapeRepresentation" alt="" coords="734,741,958,782"/>
+<area shape="rect" id="node28" href="$class_step_shape___geometrically_bounded_wireframe_shape_representation.html" title="StepShape_GeometricallyBounded\lWireframeShapeRepresentation" alt="" coords="734,806,958,847"/>
+<area shape="rect" id="node29" href="$class_step_shape___manifold_surface_shape_representation.html" title="StepShape_ManifoldSurface\lShapeRepresentation" alt="" coords="753,871,939,913"/>
+<area shape="rect" id="node30" href="$class_step_shape___non_manifold_surface_shape_representation.html" title="Representation of STEP entity NonManifoldSurfaceShapeRepresentation. " alt="" coords="742,937,950,978"/>
+<area shape="rect" id="node31" href="$class_step_shape___point_representation.html" title="Representation of STEP entity PointRepresentation. " alt="" coords="741,1003,951,1029"/>
+<area shape="rect" id="node32" href="$class_step_shape___shape_dimension_representation.html" title="Representation of STEP entity ShapeDimensionRepresentation. " alt="" coords="751,1054,941,1095"/>
+<area shape="rect" id="node33" href="$class_step_shape___shape_representation_with_parameters.html" title="Representation of STEP entity ShapeRepresentationWithParameters. " alt="" coords="737,1119,955,1161"/>
+<area shape="rect" id="node34" href="$class_step_shape___transitional_shape_representation.html" title="StepShape_TransitionalShape\lRepresentation" alt="" coords="748,1185,944,1226"/>
+<area shape="rect" id="node36" href="$class_step_visual___characterized_object_and_characterized_representation_and_draughting_model_and_representation.html" title="Added for Dimensional Tolerances Complex STEP entity Characterized_Object &amp; Characterized_Representat..." alt="" coords="720,1251,972,1307"/>
+<area shape="rect" id="node38" href="$class_step_visual___mechanical_design_geometric_presentation_representation.html" title="StepVisual_MechanicalDesign\lGeometricPresentationRepresentation" alt="" coords="725,1331,967,1373"/>
+<area shape="rect" id="node39" href="$class_step_visual___presentation_area.html" title="StepVisual_PresentationArea" alt="" coords="750,1397,942,1424"/>
+<area shape="rect" id="node41" href="$class_step_visual___presentation_view.html" title="StepVisual_PresentationView" alt="" coords="749,1448,943,1475"/>
+<area shape="rect" id="node40" href="$class_step_visual___mechanical_design_geometric_presentation_area.html" title="StepVisual_MechanicalDesign\lGeometricPresentationArea" alt="" coords="1033,1390,1232,1431"/>
+</map>

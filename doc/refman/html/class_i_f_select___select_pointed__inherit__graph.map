@@ -1,0 +1,5 @@
+<map id="IFSelect_SelectPointed" name="IFSelect_SelectPointed">
+<area shape="rect" id="node2" href="$class_i_f_select___select_base.html" title="SelectBase works directly from an InterfaceModel : it is the first base for other Selections..." alt="" coords="13,155,157,181"/>
+<area shape="rect" id="node3" href="$class_i_f_select___selection.html" title="A Selection allows to define a set of Interface Entities. Entities to be put on an output file should..." alt="" coords="19,80,150,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="17,5,152,32"/>
+</map>

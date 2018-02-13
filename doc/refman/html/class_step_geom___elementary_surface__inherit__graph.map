@@ -1,0 +1,12 @@
+<map id="StepGeom_ElementarySurface" name="StepGeom_ElementarySurface">
+<area shape="rect" id="node6" href="$class_step_geom___conical_surface.html" title="StepGeom_ConicalSurface" alt="" coords="1181,5,1360,32"/>
+<area shape="rect" id="node7" href="$class_step_geom___cylindrical_surface.html" title="StepGeom_CylindricalSurface" alt="" coords="1173,56,1368,83"/>
+<area shape="rect" id="node8" href="$class_step_geom___plane.html" title="StepGeom_Plane" alt="" coords="1209,107,1333,133"/>
+<area shape="rect" id="node9" href="$class_step_geom___spherical_surface.html" title="StepGeom_SphericalSurface" alt="" coords="1176,157,1365,184"/>
+<area shape="rect" id="node10" href="$class_step_geom___toroidal_surface.html" title="StepGeom_ToroidalSurface" alt="" coords="1181,208,1361,235"/>
+<area shape="rect" id="node2" href="$class_step_geom___surface.html" title="StepGeom_Surface" alt="" coords="741,107,876,133"/>
+<area shape="rect" id="node3" href="$class_step_geom___geometric_representation_item.html" title="StepGeom_GeometricRepresentationItem" alt="" coords="431,107,693,133"/>
+<area shape="rect" id="node4" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="188,107,383,133"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,107,140,133"/>
+<area shape="rect" id="node11" href="$class_step_geom___degenerate_toroidal_surface.html" title="StepGeom_DegenerateToroidal\lSurface" alt="" coords="1416,201,1619,242"/>
+</map>

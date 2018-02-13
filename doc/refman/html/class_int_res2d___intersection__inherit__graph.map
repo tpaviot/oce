@@ -1,0 +1,17 @@
+<map id="IntRes2d_Intersection" name="IntRes2d_Intersection">
+<area shape="rect" id="node2" href="$class_bisector___inter.html" title="Intersection between two &lt;Bisec&gt; from Bisector. " alt="" coords="255,5,357,32"/>
+<area shape="rect" id="node3" href="$class_geom2d_int___g_inter.html" title="Geom2dInt_GInter" alt="" coords="243,56,369,83"/>
+<area shape="rect" id="node5" href="$class_geom2d_int___int_conic_curve_of_g_inter.html" title="Geom2dInt_IntConicCurveOf\lGInter" alt="" coords="214,107,398,149"/>
+<area shape="rect" id="node7" href="$class_geom2d_int___the_int_conic_curve_of_g_inter.html" title="Geom2dInt_TheIntConicCurve\lOfGInter" alt="" coords="210,173,402,214"/>
+<area shape="rect" id="node8" href="$class_geom2d_int___the_intersector_of_the_int_conic_curve_of_g_inter.html" title="Geom2dInt_TheIntersector\lOfTheIntConicCurveOfGInter" alt="" coords="215,238,397,279"/>
+<area shape="rect" id="node9" href="$class_geom2d_int___the_int_p_curve_p_curve_of_g_inter.html" title="Geom2dInt_TheIntPCurvePCurve\lOfGInter" alt="" coords="201,303,411,345"/>
+<area shape="rect" id="node10" href="$class_h_l_r_b_rep___c_inter.html" title="HLRBRep_CInter" alt="" coords="246,369,366,396"/>
+<area shape="rect" id="node11" href="$class_h_l_r_b_rep___int_conic_curve_of_c_inter.html" title="HLRBRep_IntConicCurveOfCInter" alt="" coords="200,420,412,447"/>
+<area shape="rect" id="node12" href="$class_h_l_r_b_rep___the_int_conic_curve_of_c_inter.html" title="HLRBRep_TheIntConicCurve\lOfCInter" alt="" coords="213,471,399,513"/>
+<area shape="rect" id="node13" href="$class_h_l_r_b_rep___the_intersector_of_the_int_conic_curve_of_c_inter.html" title="HLRBRep_TheIntersectorOf\lTheIntConicCurveOfCInter" alt="" coords="215,537,397,578"/>
+<area shape="rect" id="node14" href="$class_h_l_r_b_rep___the_int_p_curve_p_curve_of_c_inter.html" title="HLRBRep_TheIntPCurvePCurve\lOfCInter" alt="" coords="205,602,407,643"/>
+<area shape="rect" id="node15" href="$class_int_curve___int_conic_conic.html" title="Provides methods to intersect two conics. The exception ConstructionError is raised in constructors o..." alt="" coords="229,668,383,695"/>
+<area shape="rect" id="node16" href="$class_int_curve___int_imp_conic_par_conic.html" title="IntCurve_IntImpConicParConic" alt="" coords="208,719,404,745"/>
+<area shape="rect" id="node4" href="$class_geom2d_hatch___intersector.html" title="Geom2dHatch_Intersector" alt="" coords="460,56,633,83"/>
+<area shape="rect" id="node6" href="$class_b_rep_class___intersector.html" title="Intersect an Edge with a segment. Implement the Intersector2d required by the classifier. " alt="" coords="469,115,624,141"/>
+</map>

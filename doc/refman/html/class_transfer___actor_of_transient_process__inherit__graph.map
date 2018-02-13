@@ -1,0 +1,7 @@
+<map id="Transfer_ActorOfTransientProcess" name="Transfer_ActorOfTransientProcess">
+<area shape="rect" id="node4" href="$class_i_g_e_s_to_b_rep___actor.html" title="This class performs the transfer of an Entity from IGESToBRep. " alt="" coords="5,259,143,285"/>
+<area shape="rect" id="node5" href="$class_s_t_e_p_control___actor_read.html" title="This class performs the transfer of an Entity from AP214 and AP203, either Geometric or Topologic..." alt="" coords="167,259,333,285"/>
+<area shape="rect" id="node6" href="$class_transfer___actor_dispatch.html" title="This class allows to work with a TransferDispatch, i.e. to transfer entities from a data set to anoth..." alt="" coords="357,259,514,285"/>
+<area shape="rect" id="node2" href="$class_transfer___actor_of_process_for_transient.html" title="Transfer_ActorOfProcessFor\lTransient" alt="" coords="157,80,343,121"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="183,5,317,32"/>
+</map>

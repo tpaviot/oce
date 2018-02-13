@@ -1,0 +1,12 @@
+<map id="math_BFGS" name="math_BFGS">
+<area shape="rect" id="node2" href="$class_app_def___b_sp_gradient___b_f_g_s_of_my_b_spl_gradient_of_b_spline_compute.html" title="AppDef_BSpGradient\l_BFGSOfMyBSplGradientOfBSpline\lCompute" alt="" coords="169,5,399,61"/>
+<area shape="rect" id="node3" href="$class_app_def___gradient___b_f_g_s_of_my_gradientbis_of_b_spline_compute.html" title="AppDef_Gradient_BFGSOfMy\lGradientbisOfBSplineCompute" alt="" coords="185,86,383,127"/>
+<area shape="rect" id="node4" href="$class_app_def___gradient___b_f_g_s_of_my_gradient_of_compute.html" title="AppDef_Gradient_BFGSOfMy\lGradientOfCompute" alt="" coords="187,151,381,193"/>
+<area shape="rect" id="node5" href="$class_app_def___gradient___b_f_g_s_of_the_gradient.html" title="AppDef_Gradient_BFGSOfThe\lGradient" alt="" coords="185,217,383,258"/>
+<area shape="rect" id="node6" href="$class_b_rep_approx___b_sp_gradient___b_f_g_s_of_my_b_spl_gradient_of_the_compute_line_of_approx.html" title="BRepApprox_BSpGradient\l_BFGSOfMyBSplGradientOfTheCompute\lLineOfApprox" alt="" coords="155,283,413,339"/>
+<area shape="rect" id="node7" href="$class_b_rep_approx___gradient___b_f_g_s_of_my_gradientbis_of_the_compute_line_of_approx.html" title="BRepApprox_Gradient\l_BFGSOfMyGradientbisOfTheCompute\lLineOfApprox" alt="" coords="160,363,408,419"/>
+<area shape="rect" id="node8" href="$class_b_rep_approx___gradient___b_f_g_s_of_my_gradient_of_the_compute_line_bezier_of_approx.html" title="BRepApprox_Gradient\l_BFGSOfMyGradientOfTheCompute\lLineBezierOfApprox" alt="" coords="169,443,399,499"/>
+<area shape="rect" id="node9" href="$class_geom_int___b_sp_gradient___b_f_g_s_of_my_b_spl_gradient_of_the_compute_line_of_w_l_approx.html" title="GeomInt_BSpGradient\l_BFGSOfMyBSplGradientOfThe\lComputeLineOfWLApprox" alt="" coords="181,523,387,579"/>
+<area shape="rect" id="node10" href="$class_geom_int___gradient___b_f_g_s_of_my_gradientbis_of_the_compute_line_of_w_l_approx.html" title="GeomInt_Gradient_BFGSOfMy\lGradientbisOfTheComputeLineOfWLApprox" alt="" coords="148,603,420,645"/>
+<area shape="rect" id="node11" href="$class_geom_int___gradient___b_f_g_s_of_my_gradient_of_the_compute_line_bezier_of_w_l_approx.html" title="GeomInt_Gradient_BFGSOfMy\lGradientOfTheComputeLineBezier\lOfWLApprox" alt="" coords="175,669,393,725"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="STEPControl_ActorWrite" name="STEPControl_ActorWrite">
+<area shape="rect" id="node5" href="$class_s_t_e_p_c_a_f_control___actor_write.html" title="Extends ActorWrite from STEPControl by analysis of whether shape is assembly (based on information fr..." alt="" coords="11,319,203,345"/>
+<area shape="rect" id="node2" href="$class_transfer___actor_of_finder_process.html" title="The original class was renamed. Compatibility only. " alt="" coords="5,169,208,196"/>
+<area shape="rect" id="node3" href="$class_transfer___actor_of_process_for_finder.html" title="Transfer_ActorOfProcessFor\lFinder" alt="" coords="13,80,200,121"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="39,5,174,32"/>
+</map>

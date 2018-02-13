@@ -1,0 +1,27 @@
+digraph schema_TKDraw
+{
+	TKDraw [ URL = "toolkit_tkdraw.html", shape = box ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKDraw -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKDraw -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKGeomBase [ URL = "toolkit_tkgeombase.html" , shape = box ]
+	TKDraw -> TKGeomBase [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKDraw -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKDraw -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKDraw -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKGeomAlgo [ URL = "toolkit_tkgeomalgo.html" , shape = box ]
+	TKDraw -> TKGeomAlgo [ color = "midnightblue", style = "solid" ]
+	TKTopAlgo [ URL = "toolkit_tktopalgo.html" , shape = box ]
+	TKDraw -> TKTopAlgo [ color = "midnightblue", style = "solid" ]
+	TKMesh [ URL = "toolkit_tkmesh.html" , shape = box ]
+	TKDraw -> TKMesh [ color = "midnightblue", style = "solid" ]
+	TKService [ URL = "toolkit_tkservice.html" , shape = box ]
+	TKDraw -> TKService [ color = "midnightblue", style = "solid" ]
+	TKHLR [ URL = "toolkit_tkhlr.html" , shape = box ]
+	TKDraw -> TKHLR [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

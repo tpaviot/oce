@@ -1,0 +1,5 @@
+<map id="TopOpeBRepBuild_CompositeClassifier" name="TopOpeBRepBuild_CompositeClassifier">
+<area shape="rect" id="node3" href="$class_top_ope_b_rep_build___shell_face_classifier.html" title="Classify faces and shells. shapes are Shells, Elements are Faces. " alt="" coords="5,169,199,211"/>
+<area shape="rect" id="node4" href="$class_top_ope_b_rep_build___wire_edge_classifier.html" title="Classify edges and wires. shapes are Wires, Element are Edge. " alt="" coords="223,169,415,211"/>
+<area shape="rect" id="node2" href="$class_top_ope_b_rep_build___loop_classifier.html" title="classify loops in order to build Areas " alt="" coords="102,5,318,32"/>
+</map>

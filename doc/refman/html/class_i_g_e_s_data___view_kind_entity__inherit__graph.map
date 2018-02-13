@@ -1,0 +1,9 @@
+<map id="IGESData_ViewKindEntity" name="IGESData_ViewKindEntity">
+<area shape="rect" id="node4" href="$class_i_g_e_s_draw___perspective_view.html" title="defines IGESPerspectiveView, Type &lt;410&gt; Form &lt;1&gt; in package IGESDraw " alt="" coords="633,5,817,32"/>
+<area shape="rect" id="node5" href="$class_i_g_e_s_draw___segmented_views_visible.html" title="defines IGESSegmentedViewsVisible, Type &lt;402&gt; Form &lt;19&gt; in package IGESDraw " alt="" coords="611,56,840,83"/>
+<area shape="rect" id="node6" href="$class_i_g_e_s_draw___view.html" title="defines IGES View Entity, Type &lt;410&gt; Form &lt;0&gt; in package IGESDraw " alt="" coords="667,107,784,133"/>
+<area shape="rect" id="node7" href="$class_i_g_e_s_draw___views_visible.html" title="Defines IGESViewsVisible, Type &lt;402&gt;, Form &lt;3&gt; in package IGESDraw. " alt="" coords="644,157,807,184"/>
+<area shape="rect" id="node8" href="$class_i_g_e_s_draw___views_visible_with_attr.html" title="defines IGESViewsVisibleWithAttr, Type &lt;402&gt;, Form &lt;4&gt; in package IGESDraw " alt="" coords="620,208,831,235"/>
+<area shape="rect" id="node2" href="$class_i_g_e_s_data___i_g_e_s_entity.html" title="defines root of IGES Entity definition, including Directory Part, lists of (optionnal) Properties and..." alt="" coords="188,107,340,133"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,107,140,133"/>
+</map>

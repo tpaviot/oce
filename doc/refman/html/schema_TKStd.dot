@@ -1,0 +1,23 @@
+digraph schema_TKStd
+{
+	TKStd [ URL = "toolkit_tkstd.html", shape = box ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKStd -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKCDF [ URL = "toolkit_tkcdf.html" , shape = box ]
+	TKStd -> TKCDF [ color = "midnightblue", style = "solid" ]
+	TKCAF [ URL = "toolkit_tkcaf.html" , shape = box ]
+	TKStd -> TKCAF [ color = "midnightblue", style = "solid" ]
+	TKLCAF [ URL = "toolkit_tklcaf.html" , shape = box ]
+	TKStd -> TKLCAF [ color = "midnightblue", style = "solid" ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKStd -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKStd -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKStd -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKStd -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKStdL [ URL = "toolkit_tkstdl.html" , shape = box ]
+	TKStd -> TKStdL [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

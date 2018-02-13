@@ -1,0 +1,8 @@
+<map id="StdObjMgt_Attribute&lt; Transient &gt;::SingleRef" name="StdObjMgt_Attribute&lt; Transient &gt;::SingleRef">
+<area shape="rect" id="node12" href="$class_std_persistent___naming_1_1_naming.html" title="StdPersistent_Naming\l::Naming" alt="" coords="1291,406,1443,447"/>
+<area shape="rect" id="node2" href="$class_std_obj_mgt___attribute_1_1_simple.html" title="StdObjMgt_Attribute\l\&lt; Transient \&gt;::Simple\l\&lt; Handle\&lt; StdObjMgt_Persistent \&gt; \&gt;" alt="" coords="764,399,1003,455"/>
+<area shape="rect" id="node3" href="$class_std_obj_mgt___attribute_1_1_static.html" title="StdObjMgt_Attribute\l\&lt; Transient \&gt;::Static" alt="" coords="575,406,716,447"/>
+<area shape="rect" id="node5" href="$class_std_obj_mgt___persistent.html" title="Root class for a temporary persistent object that reads data from a file and then creates transient o..." alt="" coords="188,413,339,440"/>
+<area shape="rect" id="node6" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,413,140,440"/>
+<area shape="rect" id="node13" href="$class_std_persistent___naming_1_1_naming__1.html" title="StdPersistent_Naming\l::Naming_1" alt="" coords="1520,406,1672,447"/>
+</map>

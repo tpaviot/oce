@@ -1,0 +1,6 @@
+<map id="BRepToIGES_BREntity" name="BRepToIGES_BREntity">
+<area shape="rect" id="node2" href="$class_b_rep_to_i_g_e_s___b_r_shell.html" title="This class implements the transfer of Shape Entities from Geom To IGES. These can be : ..." alt="" coords="5,80,159,107"/>
+<area shape="rect" id="node3" href="$class_b_rep_to_i_g_e_s___b_r_solid.html" title="This class implements the transfer of Shape Entities from Geom To IGES. These can be : ..." alt="" coords="183,80,336,107"/>
+<area shape="rect" id="node4" href="$class_b_rep_to_i_g_e_s___b_r_wire.html" title="This class implements the transfer of Shape Entities from Geom To IGES. These can be : ..." alt="" coords="360,80,511,107"/>
+<area shape="rect" id="node5" href="$class_b_rep_to_i_g_e_s_b_rep___entity.html" title="provides methods to transfer BRep entity from CASCADE to IGESBRep. " alt="" coords="535,80,707,107"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="IFSelect_SelectBase" name="IFSelect_SelectBase">
+<area shape="rect" id="node4" href="$class_i_f_select___select_entity_number.html" title="A SelectEntityNumber gets in an InterfaceModel (through a Graph), the Entity which has a specified Nu..." alt="" coords="559,5,752,32"/>
+<area shape="rect" id="node5" href="$class_i_f_select___select_model_entities.html" title="A SelectModelEntities gets all the Entities of an InterfaceModel. " alt="" coords="559,56,752,83"/>
+<area shape="rect" id="node6" href="$class_i_f_select___select_model_roots.html" title="A SelectModelRoots gets all the Root Entities of an InterfaceModel. Remember that a &quot;Root Entity&quot; is ..." alt="" coords="564,107,747,133"/>
+<area shape="rect" id="node7" href="$class_i_f_select___select_pointed.html" title="This type of Selection is intended to describe a direct selection without an explicit criterium..." alt="" coords="576,157,735,184"/>
+<area shape="rect" id="node2" href="$class_i_f_select___selection.html" title="A Selection allows to define a set of Interface Entities. Entities to be put on an output file should..." alt="" coords="188,81,319,108"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,81,140,108"/>
+</map>

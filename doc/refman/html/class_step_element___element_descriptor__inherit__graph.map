@@ -1,0 +1,6 @@
+<map id="StepElement_ElementDescriptor" name="StepElement_ElementDescriptor">
+<area shape="rect" id="node3" href="$class_step_element___curve3d_element_descriptor.html" title="Representation of STEP entity Curve3dElementDescriptor. " alt="" coords="453,5,651,47"/>
+<area shape="rect" id="node4" href="$class_step_element___surface3d_element_descriptor.html" title="Representation of STEP entity Surface3dElementDescriptor. " alt="" coords="447,71,657,112"/>
+<area shape="rect" id="node5" href="$class_step_element___volume3d_element_descriptor.html" title="Representation of STEP entity Volume3dElementDescriptor. " alt="" coords="447,136,657,177"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,78,140,105"/>
+</map>

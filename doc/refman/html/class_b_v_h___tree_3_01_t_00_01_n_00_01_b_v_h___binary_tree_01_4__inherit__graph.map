@@ -1,0 +1,5 @@
+<map id="BVH_Tree&lt; T, N, BVH_BinaryTree &gt;" name="BVH_Tree&lt; T, N, BVH_BinaryTree &gt;">
+<area shape="rect" id="node2" href="$class_b_v_h___tree_base.html" title="Stores parameters of bounding volume hierarchy (BVH). Bounding volume hierarchy (BVH) organizes geome..." alt="" coords="8,155,167,181"/>
+<area shape="rect" id="node3" href="$class_b_v_h___tree_base_transient.html" title="A non&#45;template class for using as base for BVH_TreeBase (just to have a named base class)..." alt="" coords="5,80,169,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="20,5,155,32"/>
+</map>

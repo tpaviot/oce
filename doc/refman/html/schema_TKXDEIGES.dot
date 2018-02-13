@@ -1,0 +1,25 @@
+digraph schema_TKXDEIGES
+{
+	TKXDEIGES [ URL = "toolkit_tkxdeiges.html", shape = box ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKXDEIGES -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKXDEIGES -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKXDEIGES -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKXSBase [ URL = "toolkit_tkxsbase.html" , shape = box ]
+	TKXDEIGES -> TKXSBase [ color = "midnightblue", style = "solid" ]
+	TKCDF [ URL = "toolkit_tkcdf.html" , shape = box ]
+	TKXDEIGES -> TKCDF [ color = "midnightblue", style = "solid" ]
+	TKLCAF [ URL = "toolkit_tklcaf.html" , shape = box ]
+	TKXDEIGES -> TKLCAF [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKXDEIGES -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKXDEIGES -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKXCAF [ URL = "toolkit_tkxcaf.html" , shape = box ]
+	TKXDEIGES -> TKXCAF [ color = "midnightblue", style = "solid" ]
+	TKIGES [ URL = "toolkit_tkiges.html" , shape = box ]
+	TKXDEIGES -> TKIGES [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

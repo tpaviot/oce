@@ -1,0 +1,7 @@
+<map id="StepGeom_RectangularCompositeSurface" name="StepGeom_RectangularCompositeSurface">
+<area shape="rect" id="node2" href="$class_step_geom___bounded_surface.html" title="StepGeom_BoundedSurface" alt="" coords="43,304,230,331"/>
+<area shape="rect" id="node3" href="$class_step_geom___surface.html" title="StepGeom_Surface" alt="" coords="69,229,204,256"/>
+<area shape="rect" id="node4" href="$class_step_geom___geometric_representation_item.html" title="StepGeom_GeometricRepresentationItem" alt="" coords="5,155,268,181"/>
+<area shape="rect" id="node5" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="39,80,234,107"/>
+<area shape="rect" id="node6" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="69,5,204,32"/>
+</map>

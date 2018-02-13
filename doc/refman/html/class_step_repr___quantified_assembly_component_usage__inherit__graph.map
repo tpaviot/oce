@@ -1,0 +1,6 @@
+<map id="StepRepr_QuantifiedAssemblyComponentUsage" name="StepRepr_QuantifiedAssemblyComponentUsage">
+<area shape="rect" id="node2" href="$class_step_repr___assembly_component_usage.html" title="Representation of STEP entity AssemblyComponentUsage. " alt="" coords="5,259,212,300"/>
+<area shape="rect" id="node3" href="$class_step_repr___product_definition_usage.html" title="Representation of STEP entity ProductDefinitionUsage. " alt="" coords="18,169,199,211"/>
+<area shape="rect" id="node4" href="$class_step_basic___product_definition_relationship.html" title="Representation of STEP entity ProductDefinitionRelationship. " alt="" coords="15,80,202,121"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="41,5,176,32"/>
+</map>

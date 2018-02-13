@@ -1,0 +1,5 @@
+<map id="BRepBuilderAPI_NurbsConvert" name="BRepBuilderAPI_NurbsConvert">
+<area shape="rect" id="node2" href="$class_b_rep_builder_a_p_i___modify_shape.html" title="Implements the methods of MakeShape for the constant topology modifications. The methods are implemen..." alt="" coords="6,155,203,181"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="9,80,200,107"/>
+<area shape="rect" id="node4" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="14,5,195,32"/>
+</map>

@@ -1,0 +1,19 @@
+<map id="Geom2d_Curve" name="Geom2d_Curve">
+<area shape="rect" id="node4" href="$class_bisector___curve.html" title="Bisector_Curve" alt="" coords="555,81,665,108"/>
+<area shape="rect" id="node8" href="$class_geom2d___bounded_curve.html" title="The abstract class BoundedCurve describes the common behavior of bounded curves in 2D space..." alt="" coords="529,233,691,260"/>
+<area shape="rect" id="node12" href="$class_geom2d___conic.html" title="The abstract class Conic describes the common behavior of conic curves in 2D space and..." alt="" coords="555,335,665,361"/>
+<area shape="rect" id="node17" href="$class_geom2d___line.html" title="Describes an infinite line in the plane (2D space). A line is defined and positioned in the plane wit..." alt="" coords="559,385,661,412"/>
+<area shape="rect" id="node18" href="$class_geom2d___offset_curve.html" title="This class implements the basis services for the creation, edition, modification and evaluation of pl..." alt="" coords="538,436,682,463"/>
+<area shape="rect" id="node2" href="$class_geom2d___geometry.html" title="The general abstract class Geometry in 2D space describes the common behaviour of all the geometric e..." alt="" coords="188,335,323,361"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,335,140,361"/>
+<area shape="rect" id="node5" href="$class_bisector___bisec_ana.html" title="This class provides the bisecting line between two geometric elements.The elements are Circles..." alt="" coords="752,5,885,32"/>
+<area shape="rect" id="node6" href="$class_bisector___bisec_c_c.html" title="Construct the bisector between two curves. The curves can intersect only in their extremities..." alt="" coords="755,56,883,83"/>
+<area shape="rect" id="node7" href="$class_bisector___bisec_p_c.html" title="Provides the bisector between a point and a curve. the curvature on the curve has to be monoton..." alt="" coords="755,107,883,133"/>
+<area shape="rect" id="node9" href="$class_geom2d___bezier_curve.html" title="Describes a rational or non&#45;rational Bezier curve. " alt="" coords="745,157,892,184"/>
+<area shape="rect" id="node10" href="$class_geom2d___b_spline_curve.html" title="Describes a BSpline curve. A BSpline curve can be: " alt="" coords="741,208,896,235"/>
+<area shape="rect" id="node11" href="$class_geom2d___trimmed_curve.html" title="Defines a portion of a curve limited by two values of parameters inside the parametric domain of the ..." alt="" coords="739,259,899,285"/>
+<area shape="rect" id="node13" href="$class_geom2d___circle.html" title="Describes a circle in the plane (2D space). A circle is defined by its radius and, as with any conic curve, is positioned in the plane with a coordinate system (gp_Ax22d object) where the origin is the center of the circle. The coordinate system is the local coordinate system of the circle. The orientation (direct or indirect) of the local coordinate system gives an explicit orientation to the circle, determining the direction in which the parameter increases along the circle. The Geom2d_Circle circle is parameterized by an angle: P(U) = O + R*Cos(U)*XDir + R*Sin(U)*YDir where: " alt="" coords="763,309,874,336"/>
+<area shape="rect" id="node14" href="$class_geom2d___ellipse.html" title="Describes an ellipse in the plane (2D space). An ellipse is defined by its major and minor radii and..." alt="" coords="760,360,877,387"/>
+<area shape="rect" id="node15" href="$class_geom2d___hyperbola.html" title="Describes a branch of a hyperbola in the plane (2D space). A hyperbola is defined by its major and mi..." alt="" coords="751,411,887,437"/>
+<area shape="rect" id="node16" href="$class_geom2d___parabola.html" title="Describes a parabola in the plane (2D space). A parabola is defined by its focal length (i..." alt="" coords="754,461,883,488"/>
+</map>

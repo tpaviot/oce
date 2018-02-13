@@ -1,0 +1,6 @@
+<map id="IGESSelect_RebuildGroups" name="IGESSelect_RebuildGroups">
+<area shape="rect" id="node2" href="$class_i_g_e_s_select___model_modifier.html" title="IGESSelect_ModelModifier" alt="" coords="8,229,185,256"/>
+<area shape="rect" id="node3" href="$class_i_f_select___modifier.html" title="This class gives a frame for Actions which can work globally on a File once completely defined (i..." alt="" coords="35,155,158,181"/>
+<area shape="rect" id="node4" href="$class_i_f_select___general_modifier.html" title="This class gives a frame for Actions which modify the effect of a Dispatch, i.e. : By Selections and ..." alt="" coords="13,80,180,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="29,5,164,32"/>
+</map>

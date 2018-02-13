@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKXDEDRAW" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKXDEDRAW.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKXDEDRAW.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKCDF" />
+			<Add library="TKBRep" />
+			<Add library="TKXCAF" />
+			<Add library="TKernel" />
+			<Add library="TKIGES" />
+			<Add library="TKV3d" />
+			<Add library="TKMath" />
+			<Add library="TKService" />
+			<Add library="TKXSBase" />
+			<Add library="TKG2d" />
+			<Add library="TKCAF" />
+			<Add library="TKVCAF" />
+			<Add library="TKDraw" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKLCAF" />
+			<Add library="TKG3d" />
+			<Add library="TKSTEPBase" />
+			<Add library="TKSTEP" />
+			<Add library="TKMesh" />
+			<Add library="TKXSDRAW" />
+			<Add library="TKXDEIGES" />
+			<Add library="TKXDESTEP" />
+			<Add library="TKDCAF" />
+			<Add library="TKViewerTest" />
+			<Add library="TKBinXCAF" />
+			<Add library="TKXmlXCAF" />
+		</Linker>
+		<Unit filename="../../../src/XDEDRAW/XDEDRAW.cxx" />
+		<Unit filename="../../../src/XDEDRAW/XDEDRAW_Colors.cxx" />
+		<Unit filename="../../../src/XDEDRAW/XDEDRAW_Common.cxx" />
+		<Unit filename="../../../src/XDEDRAW/XDEDRAW_GDTs.cxx" />
+		<Unit filename="../../../src/XDEDRAW/XDEDRAW_Layers.cxx" />
+		<Unit filename="../../../src/XDEDRAW/XDEDRAW_Props.cxx" />
+		<Unit filename="../../../src/XDEDRAW/XDEDRAW_Shapes.cxx" />
+		<Unit filename="../../../src/XDEDRAW/XDEDRAW_Views.cxx" />
+	</Project>
+</CodeBlocks_project_file>

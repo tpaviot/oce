@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{DD713C43-1610-008A-014D-74936177DD9E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepElement">
+      <UniqueIdentifier>{76B77DB0-09BD-0A3A-0629-3CAE43D4E087}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepFEA">
+      <UniqueIdentifier>{E0DD3DDD-0697-1685-1417-8E171E8FDC66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\RWStepElement">
+      <UniqueIdentifier>{CED13E60-004B-1646-067C-2258F5FE63DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\RWStepFEA">
+      <UniqueIdentifier>{4EF83F58-182A-0C7A-1980-B0DF310D2F3F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_AnalysisItemWithinRepresentation.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_Curve3dElementDescriptor.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementEndReleasePacket.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementFreedom.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementFreedomMember.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementPurpose.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementPurposeMember.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementSectionDefinition.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementSectionDerivedDefinitions.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_ElementAspect.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_ElementAspectMember.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_ElementDescriptor.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_ElementMaterial.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_MeasureOrUnspecifiedValue.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_MeasureOrUnspecifiedValueMember.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_Surface3dElementDescriptor.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceElementProperty.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceElementPurpose.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceElementPurposeMember.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceSection.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceSectionField.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceSectionFieldConstant.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceSectionFieldVarying.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_UniformSurfaceSection.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_Volume3dElementDescriptor.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_VolumeElementPurpose.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_VolumeElementPurposeMember.cxx">
+      <Filter>Source files\StepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_AlignedCurve3dElementCoordinateSystem.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_AlignedSurface3dElementCoordinateSystem.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ArbitraryVolume3dElementCoordinateSystem.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ConstantSurface3dElementCoordinateSystem.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_Curve3dElementProperty.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_Curve3dElementRepresentation.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementEndCoordinateSystem.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementEndOffset.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementEndRelease.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementInterval.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementIntervalConstant.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementIntervalLinearlyVarying.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementLocation.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_DegreeOfFreedom.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_DegreeOfFreedomMember.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_DummyNode.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ElementGeometricRelationship.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ElementGroup.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ElementOrElementGroup.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ElementRepresentation.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaAreaDensity.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaAxis2Placement3d.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaCurveSectionGeometricRelationship.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaGroup.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaLinearElasticity.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaMassDensity.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaMaterialPropertyRepresentation.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaMaterialPropertyRepresentationItem.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaModel.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaModel3d.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaModelDefinition.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaMoistureAbsorption.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaParametricPoint.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaRepresentationItem.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaSecantCoefficientOfLinearThermalExpansion.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaShellBendingStiffness.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaShellMembraneBendingCouplingStiffness.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaShellMembraneStiffness.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaShellShearStiffness.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaSurfaceSectionGeometricRelationship.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FreedomAndCoefficient.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FreedomsList.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_GeometricNode.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_Node.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeDefinition.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeGroup.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeRepresentation.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeSet.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeWithSolutionCoordinateSystem.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeWithVector.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ParametricCurve3dElementCoordinateDirection.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ParametricCurve3dElementCoordinateSystem.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ParametricSurface3dElementCoordinateSystem.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_Surface3dElementRepresentation.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor22d.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor23d.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor23dMember.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor42d.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor43d.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor43dMember.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_Volume3dElementRepresentation.cxx">
+      <Filter>Source files\StepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWAnalysisItemWithinRepresentation.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWCurve3dElementDescriptor.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWCurveElementEndReleasePacket.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWCurveElementSectionDefinition.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWCurveElementSectionDerivedDefinitions.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWElementDescriptor.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWElementMaterial.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurface3dElementDescriptor.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurfaceElementProperty.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurfaceSection.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurfaceSectionField.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurfaceSectionFieldConstant.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurfaceSectionFieldVarying.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWUniformSurfaceSection.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWVolume3dElementDescriptor.cxx">
+      <Filter>Source files\RWStepElement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWAlignedCurve3dElementCoordinateSystem.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWAlignedSurface3dElementCoordinateSystem.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWArbitraryVolume3dElementCoordinateSystem.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWConstantSurface3dElementCoordinateSystem.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurve3dElementProperty.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurve3dElementRepresentation.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementEndOffset.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementEndRelease.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementInterval.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementIntervalConstant.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementIntervalLinearlyVarying.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementLocation.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWDummyNode.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWElementGeometricRelationship.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWElementGroup.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWElementRepresentation.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaAreaDensity.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaAxis2Placement3d.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaCurveSectionGeometricRelationship.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaGroup.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaLinearElasticity.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaMassDensity.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaMaterialPropertyRepresentation.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaMaterialPropertyRepresentationItem.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaModel.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaModel3d.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaModelDefinition.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaMoistureAbsorption.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaParametricPoint.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaRepresentationItem.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaSecantCoefficientOfLinearThermalExpansion.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaShellBendingStiffness.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaShellMembraneBendingCouplingStiffness.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaShellMembraneStiffness.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaShellShearStiffness.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaSurfaceSectionGeometricRelationship.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaTangentialCoefficientOfLinearThermalExpansion.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFreedomAndCoefficient.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFreedomsList.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWGeometricNode.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNode.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeDefinition.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeGroup.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeRepresentation.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeSet.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeWithSolutionCoordinateSystem.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeWithVector.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWParametricCurve3dElementCoordinateDirection.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWParametricCurve3dElementCoordinateSystem.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWParametricSurface3dElementCoordinateSystem.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWSurface3dElementRepresentation.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWVolume3dElementRepresentation.cxx">
+      <Filter>Source files\RWStepFEA</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKSTEP209.rc" />  </ItemGroup>
+</Project>

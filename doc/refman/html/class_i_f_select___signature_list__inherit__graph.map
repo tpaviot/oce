@@ -1,0 +1,7 @@
+<map id="IFSelect_SignatureList" name="IFSelect_SignatureList">
+<area shape="rect" id="node3" href="$class_i_f_select___check_counter.html" title="A CheckCounter allows to see a CheckList (i.e. CheckIterator) not per entity, its messages..." alt="" coords="5,155,164,181"/>
+<area shape="rect" id="node4" href="$class_i_f_select___sign_counter.html" title="SignCounter gives the frame to count signatures associated with entities, deducted from them..." alt="" coords="188,155,336,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="105,5,240,32"/>
+<area shape="rect" id="node5" href="$class_i_f_select___graph_counter.html" title="A GraphCounter computes values to be sorted with the help of a Graph. I.E. not from a Signature..." alt="" coords="86,237,243,263"/>
+<area shape="rect" id="node6" href="$class_i_g_e_s_select___counter_of_level_number.html" title="This class gives information about Level Number. It counts entities according level number..." alt="" coords="267,229,451,271"/>
+</map>

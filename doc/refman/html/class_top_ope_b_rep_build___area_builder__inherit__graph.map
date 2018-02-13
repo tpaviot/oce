@@ -1,0 +1,8 @@
+<map id="TopOpeBRepBuild_AreaBuilder" name="TopOpeBRepBuild_AreaBuilder">
+<area shape="rect" id="node2" href="$class_top_ope_b_rep_build___area1d_builder.html" title="TopOpeBRepBuild_Area1dBuilder" alt="" coords="256,9,472,36"/>
+<area shape="rect" id="node4" href="$class_top_ope_b_rep_build___area2d_builder.html" title="The Area2dBuilder algorithm is used to construct Faces from a LoopSet, where the Loop is the composit..." alt="" coords="256,64,472,91"/>
+<area shape="rect" id="node6" href="$class_top_ope_b_rep_build___area3d_builder.html" title="The Area3dBuilder algorithm is used to construct Solids from a LoopSet, where the Loop is the composi..." alt="" coords="256,121,472,148"/>
+<area shape="rect" id="node3" href="$class_top_ope_b_rep_build___edge_builder.html" title="TopOpeBRepBuild_EdgeBuilder" alt="" coords="520,5,725,32"/>
+<area shape="rect" id="node5" href="$class_top_ope_b_rep_build___face_area_builder.html" title="The FaceAreaBuilder algorithm is used to construct Faces from a LoopSet, where the Loop is the compos..." alt="" coords="527,57,718,98"/>
+<area shape="rect" id="node7" href="$class_top_ope_b_rep_build___solid_area_builder.html" title="The SolidAreaBuilder algorithm is used to construct Solids from a LoopSet, where the Loop is the comp..." alt="" coords="527,122,718,163"/>
+</map>

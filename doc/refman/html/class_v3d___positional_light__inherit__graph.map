@@ -1,0 +1,5 @@
+<map id="V3d_PositionalLight" name="V3d_PositionalLight">
+<area shape="rect" id="node2" href="$class_v3d___position_light.html" title="Base class for Positional, Spot and Directional Light classes. " alt="" coords="11,155,137,181"/>
+<area shape="rect" id="node3" href="$class_v3d___light.html" title="Defines services on Light type objects.. (base class for AmbientLight and PositionLight) ..." alt="" coords="34,80,114,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="7,5,141,32"/>
+</map>

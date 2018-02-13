@@ -1,0 +1,4 @@
+<map id="Interface_FileReaderTool" name="Interface_FileReaderTool">
+<area shape="rect" id="node2" href="$class_i_g_e_s_data___i_g_e_s_reader_tool.html" title="specific FileReaderTool for IGES Parameters are accessed through specific objects, ParamReaders " alt="" coords="5,80,188,107"/>
+<area shape="rect" id="node3" href="$class_step_data___step_reader_tool.html" title="Specific FileReaderTool for Step; works with FileReaderData provides references evaluation, plus access to litteral data and specific methods defined by FileReaderTool Remarks : works with a ReaderLib to load Entities. " alt="" coords="212,80,387,107"/>
+</map>

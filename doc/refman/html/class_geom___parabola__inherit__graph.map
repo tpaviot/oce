@@ -1,0 +1,6 @@
+<map id="Geom_Parabola" name="Geom_Parabola">
+<area shape="rect" id="node2" href="$class_geom___conic.html" title="The abstract class Conic describes the common behavior of conic curves in 3D space and..." alt="" coords="24,229,121,256"/>
+<area shape="rect" id="node3" href="$class_geom___curve.html" title="The abstract class Curve describes the common behavior of curves in 3D space. The Geom package provid..." alt="" coords="25,155,121,181"/>
+<area shape="rect" id="node4" href="$class_geom___geometry.html" title="The abstract class Geometry for 3D space is the root class of all geometric objects from the Geom pac..." alt="" coords="12,80,133,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,5,140,32"/>
+</map>

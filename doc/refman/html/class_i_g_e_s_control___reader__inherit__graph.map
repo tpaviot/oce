@@ -1,0 +1,4 @@
+<map id="IGESControl_Reader" name="IGESControl_Reader">
+<area shape="rect" id="node3" href="$class_i_g_e_s_c_a_f_control___reader.html" title="Provides a tool to read IGES file and put it into DECAF document. Besides transfer of shapes (includi..." alt="" coords="5,155,173,181"/>
+<area shape="rect" id="node2" href="$class_x_s_control___reader.html" title="A groundwork to convert a shape to data which complies with a particular norm. This data can be that ..." alt="" coords="26,5,153,32"/>
+</map>

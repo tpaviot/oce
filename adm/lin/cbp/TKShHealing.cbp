@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKShHealing" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../lin/cbp/lib/libTKShHealing.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../lin/cbp/libd/libTKShHealing.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/libd" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKBRep" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKG2d" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKG3d" />
+			<Add library="TKGeomBase" />
+			<Add library="TKGeomAlgo" />
+		</Linker>
+		<Unit filename="../../../src/ShapeBuild/ShapeBuild.cxx" />
+		<Unit filename="../../../src/ShapeBuild/ShapeBuild_Edge.cxx" />
+		<Unit filename="../../../src/ShapeBuild/ShapeBuild_ReShape.cxx" />
+		<Unit filename="../../../src/ShapeBuild/ShapeBuild_Vertex.cxx" />
+		<Unit filename="../../../src/ShapeExtend/ShapeExtend.cxx" />
+		<Unit filename="../../../src/ShapeExtend/ShapeExtend_BasicMsgRegistrator.cxx" />
+		<Unit filename="../../../src/ShapeExtend/ShapeExtend_ComplexCurve.cxx" />
+		<Unit filename="../../../src/ShapeExtend/ShapeExtend_CompositeSurface.cxx" />
+		<Unit filename="../../../src/ShapeExtend/ShapeExtend_Explorer.cxx" />
+		<Unit filename="../../../src/ShapeExtend/ShapeExtend_MsgRegistrator.cxx" />
+		<Unit filename="../../../src/ShapeExtend/ShapeExtend_WireData.cxx" />
+		<Unit filename="../../../src/ShapeConstruct/ShapeConstruct.cxx" />
+		<Unit filename="../../../src/ShapeConstruct/ShapeConstruct_Curve.cxx" />
+		<Unit filename="../../../src/ShapeConstruct/ShapeConstruct_MakeTriangulation.cxx" />
+		<Unit filename="../../../src/ShapeConstruct/ShapeConstruct_ProjectCurveOnSurface.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_BSplineRestriction.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_ConvertToBSpline.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_ConvertToRevolution.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_Curve.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_Curve2d.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_DirectModification.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_Modification.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_RestrictionParameters.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_Surface.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_SweptToElementary.cxx" />
+		<Unit filename="../../../src/ShapeCustom/ShapeCustom_TrsfModification.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_BoxBndTree.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_CheckSmallFace.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_Curve.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_Edge.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_FreeBoundData.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_FreeBounds.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_FreeBoundsProperties.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_Geom.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_ShapeContents.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_ShapeTolerance.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_Shell.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_Surface.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_TransferParameters.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_TransferParametersProj.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_Wire.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_WireOrder.cxx" />
+		<Unit filename="../../../src/ShapeAnalysis/ShapeAnalysis_WireVertex.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_ComposeShell.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_Edge.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_EdgeConnect.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_EdgeProjAux.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_Face.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_FaceConnect.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_FixSmallFace.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_FixSmallSolid.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_FreeBounds.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_IntersectionTool.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_Root.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_Shape.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_ShapeTolerance.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_Shell.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_Solid.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_SplitCommonVertex.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_SplitTool.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_Wire.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_WireSegment.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_WireVertex.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_Wire_1.cxx" />
+		<Unit filename="../../../src/ShapeFix/ShapeFix_Wireframe.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ClosedEdgeDivide.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ClosedFaceDivide.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ConvertCurve2dToBezier.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ConvertCurve3dToBezier.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ConvertSurfaceToBezierBasis.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_EdgeDivide.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_FaceDivide.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_FaceDivideArea.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_FixSmallBezierCurves.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_FixSmallCurves.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_RemoveInternalWires.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_RemoveLocations.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ShapeConvertToBezier.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ShapeDivide.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ShapeDivideAngle.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ShapeDivideArea.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ShapeDivideClosed.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ShapeDivideClosedEdges.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ShapeDivideContinuity.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_ShellSewing.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_SplitCurve.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_SplitCurve2d.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_SplitCurve2dContinuity.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_SplitCurve3d.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_SplitCurve3dContinuity.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_SplitSurface.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_SplitSurfaceAngle.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_SplitSurfaceArea.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_SplitSurfaceContinuity.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_Tool.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_UnifySameDomain.cxx" />
+		<Unit filename="../../../src/ShapeUpgrade/ShapeUpgrade_WireDivide.cxx" />
+		<Unit filename="../../../src/ShapeAlgo/ShapeAlgo.cxx" />
+		<Unit filename="../../../src/ShapeAlgo/ShapeAlgo_AlgoContainer.cxx" />
+		<Unit filename="../../../src/ShapeAlgo/ShapeAlgo_ToolContainer.cxx" />
+		<Unit filename="../../../src/ShapeProcess/ShapeProcess.cxx" />
+		<Unit filename="../../../src/ShapeProcess/ShapeProcess_Context.cxx" />
+		<Unit filename="../../../src/ShapeProcess/ShapeProcess_OperLibrary.cxx" />
+		<Unit filename="../../../src/ShapeProcess/ShapeProcess_Operator.cxx" />
+		<Unit filename="../../../src/ShapeProcess/ShapeProcess_ShapeContext.cxx" />
+		<Unit filename="../../../src/ShapeProcess/ShapeProcess_UOperator.cxx" />
+		<Unit filename="../../../src/ShapeProcessAPI/ShapeProcessAPI_ApplySequence.cxx" />
+	</Project>
+</CodeBlocks_project_file>

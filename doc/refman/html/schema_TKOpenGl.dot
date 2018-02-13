@@ -1,0 +1,13 @@
+digraph schema_TKOpenGl
+{
+	TKOpenGl [ URL = "toolkit_tkopengl.html", shape = box ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKOpenGl -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKService [ URL = "toolkit_tkservice.html" , shape = box ]
+	TKOpenGl -> TKService [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKOpenGl -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKV3d [ URL = "toolkit_tkv3d.html" , shape = box ]
+	TKOpenGl -> TKV3d [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

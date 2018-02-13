@@ -1,0 +1,12 @@
+<map id="OpenGl_GlFunctions" name="OpenGl_GlFunctions">
+<area shape="rect" id="node2" href="$struct_open_gl___arb_dbg.html" title="Debug context routines. " alt="" coords="227,5,343,32"/>
+<area shape="rect" id="node3" href="$struct_open_gl___arb_f_b_o.html" title="FBO is available on OpenGL 2.0+ hardware. " alt="" coords="225,56,345,83"/>
+<area shape="rect" id="node4" href="$struct_open_gl___arb_f_b_o_blit.html" title="FBO blit is available in OpenGL 3.0+. Moved out from OpenGl_ArbFBO since it is unavailable in OpenGL ..." alt="" coords="216,107,355,133"/>
+<area shape="rect" id="node5" href="$struct_open_gl___arb_ins.html" title="Instancing is available on OpenGL 3.0+ hardware. " alt="" coords="230,157,341,184"/>
+<area shape="rect" id="node6" href="$struct_open_gl___arb_sampler_object.html" title="Provide Sampler Object functionality (texture parameters stored independently from texture itself)..." alt="" coords="196,208,375,235"/>
+<area shape="rect" id="node7" href="$struct_open_gl___arb_t_b_o.html" title="TBO is available on OpenGL 3.0+ and OpenGL ES 3.2+ hardware. " alt="" coords="226,259,345,285"/>
+<area shape="rect" id="node8" href="$struct_open_gl___arb_tex_bindless.html" title="Provides bindless textures. This extension allows OpenGL applications to access texture objects in sh..." alt="" coords="203,309,367,336"/>
+<area shape="rect" id="node9" href="$struct_open_gl___ext_g_s.html" title="Geometry shader as extension is available on OpenGL 2.0+. " alt="" coords="229,360,341,387"/>
+<area shape="rect" id="node10" href="$struct_open_gl___gl_core11.html" title="OpenGL 1.1 core. Notice that all functions within this structure are actually exported by system GL l..." alt="" coords="222,411,349,437"/>
+<area shape="rect" id="node11" href="$struct_open_gl___gl_core11_fwd.html" title="OpenGL 1.1 core without deprecated Fixed Pipeline entry points. Notice that all functions within this..." alt="" coords="210,461,361,488"/>
+</map>

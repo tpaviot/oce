@@ -1,0 +1,9 @@
+<map id="GccInt_Bisec" name="GccInt_Bisec">
+<area shape="rect" id="node3" href="$class_gcc_int___b_circ.html" title="Describes a circle as a bisecting curve between two 2D geometric objects (such as circles or points)..." alt="" coords="5,155,104,181"/>
+<area shape="rect" id="node4" href="$class_gcc_int___b_elips.html" title="Describes an ellipse as a bisecting curve between two 2D geometric objects (such as circles or points..." alt="" coords="129,155,234,181"/>
+<area shape="rect" id="node5" href="$class_gcc_int___b_hyper.html" title="Describes a hyperbola as a bisecting curve between two 2D geometric objects (such as circles or point..." alt="" coords="258,155,369,181"/>
+<area shape="rect" id="node6" href="$class_gcc_int___b_line.html" title="Describes a line as a bisecting curve between two 2D geometric objects (such as lines, circles or points). " alt="" coords="393,155,493,181"/>
+<area shape="rect" id="node7" href="$class_gcc_int___b_parab.html" title="Describes a parabola as a bisecting curve between two 2D geometric objects (such as lines..." alt="" coords="517,155,627,181"/>
+<area shape="rect" id="node8" href="$class_gcc_int___b_point.html" title="Describes a point as a bisecting object between two 2D geometric objects. " alt="" coords="652,155,759,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="310,5,445,32"/>
+</map>

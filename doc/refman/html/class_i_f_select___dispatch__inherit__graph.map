@@ -1,0 +1,10 @@
+<map id="IFSelect_Dispatch" name="IFSelect_Dispatch">
+<area shape="rect" id="node3" href="$class_i_f_select___disp_global.html" title="A DispGlobal gathers all the input Entities into only one global Packet. " alt="" coords="397,5,537,32"/>
+<area shape="rect" id="node4" href="$class_i_f_select___disp_per_count.html" title="A DispPerCount gathers all the input Entities into one or several Packets, each containing a defined ..." alt="" coords="389,56,546,83"/>
+<area shape="rect" id="node5" href="$class_i_f_select___disp_per_files.html" title="A DispPerFiles produces a determined count of Packets from the input Entities. It divides..." alt="" coords="392,107,543,133"/>
+<area shape="rect" id="node6" href="$class_i_f_select___disp_per_one.html" title="A DispPerOne gathers all the input Entities into as many Packets as there Root Entities from the Fina..." alt="" coords="394,157,541,184"/>
+<area shape="rect" id="node7" href="$class_i_f_select___disp_per_signature.html" title="A DispPerSignature sorts input Entities according to a Signature : it works with a SignCounter to do ..." alt="" coords="378,208,557,235"/>
+<area shape="rect" id="node8" href="$class_i_g_e_s_select___disp_per_drawing.html" title="This type of dispatch defines sets of entities attached to distinct drawings. This information is tak..." alt="" coords="373,259,562,285"/>
+<area shape="rect" id="node9" href="$class_i_g_e_s_select___disp_per_single_view.html" title="This type of dispatch defines sets of entities attached to distinct single views. This information ap..." alt="" coords="364,309,571,336"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,157,140,184"/>
+</map>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKService" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKService.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKService.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-framework OpenGL" />
+			<Add option="-framework Appkit" />
+			<Add option="-framework IOKit" />
+			<Add library="objc" />
+			<Add library="freeimage" />
+			<Add library="freetype" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKBRep" />
+			<Add library="TKShHealing" />
+			<Add library="TKGeomBase" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKTopAlgo" />
+		</Linker>
+		<Unit filename="../../../src/Aspect/Aspect_Background.cxx" />
+		<Unit filename="../../../src/Aspect/Aspect_CircularGrid.cxx" />
+		<Unit filename="../../../src/Aspect/Aspect_DisplayConnection.cxx" />
+		<Unit filename="../../../src/Aspect/Aspect_GenId.cxx" />
+		<Unit filename="../../../src/Aspect/Aspect_GradientBackground.cxx" />
+		<Unit filename="../../../src/Aspect/Aspect_Grid.cxx" />
+		<Unit filename="../../../src/Aspect/Aspect_NeutralWindow.cxx" />
+		<Unit filename="../../../src/Aspect/Aspect_RectangularGrid.cxx" />
+		<Unit filename="../../../src/Aspect/Aspect_Window.cxx" />
+		<Unit filename="../../../src/SelectBasics/SelectBasics.cxx" />
+		<Unit filename="../../../src/SelectBasics/SelectBasics_EntityOwner.cxx" />
+		<Unit filename="../../../src/SelectBasics/SelectBasics_SensitiveEntity.cxx" />
+		<Unit filename="../../../src/Image/Image_AlienPixMap.cxx" />
+		<Unit filename="../../../src/Image/Image_Diff.cxx" />
+		<Unit filename="../../../src/Image/Image_PixMap.cxx" />
+		<Unit filename="../../../src/Image/Image_VideoRecorder.cxx" />
+		<Unit filename="../../../src/Cocoa/Cocoa_LocalPool.mm">
+			<Option compile="1" />
+			<Option link="1" />
+		</Unit>
+		<Unit filename="../../../src/Cocoa/Cocoa_Window.mm">
+			<Option compile="1" />
+			<Option link="1" />
+		</Unit>
+		<Unit filename="../../../src/Font/Font_BRepFont.cxx" />
+		<Unit filename="../../../src/Font/Font_BRepTextBuilder.cxx" />
+		<Unit filename="../../../src/Font/Font_FTFont.cxx" />
+		<Unit filename="../../../src/Font/Font_FTLibrary.cxx" />
+		<Unit filename="../../../src/Font/Font_FontMgr.cxx" />
+		<Unit filename="../../../src/Font/Font_SystemFont.cxx" />
+		<Unit filename="../../../src/Font/Font_TextFormatter.cxx" />
+	</Project>
+</CodeBlocks_project_file>

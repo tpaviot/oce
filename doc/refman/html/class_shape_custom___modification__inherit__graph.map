@@ -1,0 +1,9 @@
+<map id="ShapeCustom_Modification" name="ShapeCustom_Modification">
+<area shape="rect" id="node4" href="$class_shape_custom___b_spline_restriction.html" title="this tool intended for aproximation surfaces, curves and pcurves with specified degree ..." alt="" coords="629,5,848,32"/>
+<area shape="rect" id="node5" href="$class_shape_custom___convert_to_b_spline.html" title="implement a modification for BRepTools Modifier algortihm. Converts Surface of Linear Exctrusion..." alt="" coords="632,56,845,83"/>
+<area shape="rect" id="node6" href="$class_shape_custom___convert_to_revolution.html" title="implements a modification for the BRepTools Modifier algortihm. Converts all elementary surfaces into..." alt="" coords="625,107,852,133"/>
+<area shape="rect" id="node7" href="$class_shape_custom___direct_modification.html" title="implements a modification for the BRepTools Modifier algortihm. Will redress indirect surfaces..." alt="" coords="631,157,846,184"/>
+<area shape="rect" id="node8" href="$class_shape_custom___swept_to_elementary.html" title="implements a modification for the BRepTools Modifier algortihm. Converts all elementary surfaces into..." alt="" coords="625,208,852,235"/>
+<area shape="rect" id="node2" href="$class_b_rep_tools___modification.html" title="Defines geometric modifications to a shape, i.e. changes to faces, edges and vertices. " alt="" coords="188,107,349,133"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,107,140,133"/>
+</map>

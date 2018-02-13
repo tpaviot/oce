@@ -1,0 +1,4 @@
+<map id="GeomAdaptor_SurfaceOfRevolution" name="GeomAdaptor_SurfaceOfRevolution">
+<area shape="rect" id="node2" href="$class_geom_adaptor___surface.html" title="An interface between the services provided by any surface from the package Geom and those required of..." alt="" coords="41,80,195,107"/>
+<area shape="rect" id="node3" href="$class_adaptor3d___surface.html" title="Root class for surfaces on which geometric algorithms work. An adapted surface is an interface betwee..." alt="" coords="52,5,184,32"/>
+</map>

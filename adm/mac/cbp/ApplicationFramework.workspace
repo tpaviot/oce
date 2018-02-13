@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="ApplicationFramework">
+		<Project filename="TKCDF.cbp" >
+			<Depends filename="TKernel.cbp" />
+		</Project>
+		<Project filename="TKLCAF.cbp" >
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKernel.cbp" />
+		</Project>
+		<Project filename="TKCAF.cbp" >
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKLCAF.cbp" />
+			<Depends filename="TKBO.cbp" />
+		</Project>
+		<Project filename="TKBinL.cbp" >
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKLCAF.cbp" />
+		</Project>
+		<Project filename="TKXmlL.cbp" >
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKLCAF.cbp" />
+		</Project>
+		<Project filename="TKStdL.cbp" >
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKLCAF.cbp" />
+		</Project>
+		<Project filename="TKTObj.cbp" >
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKLCAF.cbp" />
+		</Project>
+		<Project filename="TKVCAF.cbp" >
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKService.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKLCAF.cbp" />
+			<Depends filename="TKBO.cbp" />
+			<Depends filename="TKCAF.cbp" />
+			<Depends filename="TKV3d.cbp" />
+		</Project>
+		<Project filename="TKBin.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKCAF.cbp" />
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKLCAF.cbp" />
+			<Depends filename="TKBinL.cbp" />
+		</Project>
+		<Project filename="TKXml.cbp" >
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKLCAF.cbp" />
+			<Depends filename="TKCAF.cbp" />
+			<Depends filename="TKXmlL.cbp" />
+		</Project>
+		<Project filename="TKStd.cbp" >
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKCAF.cbp" />
+			<Depends filename="TKLCAF.cbp" />
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKStdL.cbp" />
+		</Project>
+		<Project filename="TKBinTObj.cbp" >
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKTObj.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKLCAF.cbp" />
+			<Depends filename="TKBinL.cbp" />
+		</Project>
+		<Project filename="TKXmlTObj.cbp" >
+			<Depends filename="TKCDF.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKTObj.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKLCAF.cbp" />
+			<Depends filename="TKXmlL.cbp" />
+		</Project>
+	</Workspace>
+</CodeBlocks_workspace_file>

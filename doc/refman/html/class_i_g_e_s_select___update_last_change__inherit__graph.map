@@ -1,0 +1,6 @@
+<map id="IGESSelect_UpdateLastChange" name="IGESSelect_UpdateLastChange">
+<area shape="rect" id="node2" href="$class_i_g_e_s_select___model_modifier.html" title="IGESSelect_ModelModifier" alt="" coords="20,229,197,256"/>
+<area shape="rect" id="node3" href="$class_i_f_select___modifier.html" title="This class gives a frame for Actions which can work globally on a File once completely defined (i..." alt="" coords="47,155,170,181"/>
+<area shape="rect" id="node4" href="$class_i_f_select___general_modifier.html" title="This class gives a frame for Actions which modify the effect of a Dispatch, i.e. : By Selections and ..." alt="" coords="25,80,192,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="41,5,176,32"/>
+</map>

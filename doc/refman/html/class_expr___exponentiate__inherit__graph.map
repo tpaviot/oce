@@ -1,0 +1,5 @@
+<map id="Expr_Exponentiate" name="Expr_Exponentiate">
+<area shape="rect" id="node2" href="$class_expr___binary_expression.html" title="Defines all binary expressions. The order of the two operands is significant. " alt="" coords="9,155,168,181"/>
+<area shape="rect" id="node3" href="$class_expr___general_expression.html" title="Defines the general purposes of any expression. " alt="" coords="5,80,172,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="21,5,156,32"/>
+</map>

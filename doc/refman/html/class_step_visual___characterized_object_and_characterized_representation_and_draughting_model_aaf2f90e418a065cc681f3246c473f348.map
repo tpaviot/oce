@@ -1,0 +1,5 @@
+<map id="StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation" name="StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation">
+<area shape="rect" id="node2" href="$class_step_visual___draughting_model.html" title="Representation of STEP entity DraughtingModel. " alt="" coords="37,155,226,181"/>
+<area shape="rect" id="node3" href="$class_step_repr___representation.html" title="StepRepr_Representation" alt="" coords="46,80,217,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="64,5,199,32"/>
+</map>

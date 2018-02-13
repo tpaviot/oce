@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{F24A7E8F-0968-0F34-1847-236528C62FEF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\MeshVS">
+      <UniqueIdentifier>{751835F8-0D67-052F-092B-C01D76CE60A0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_CommonSensitiveEntity.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_DataSource.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_DataSource3D.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_DeformedDataSource.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_Drawer.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_DummySensitiveEntity.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_ElementalColorPrsBuilder.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_Mesh.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_MeshEntityOwner.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_MeshOwner.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_MeshPrsBuilder.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_NodalColorPrsBuilder.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_PrsBuilder.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_SensitiveFace.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_SensitiveMesh.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_SensitivePolyhedron.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_SensitiveQuad.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_SensitiveSegment.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_TextPrsBuilder.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_Tool.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_TwoColors.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MeshVS\MeshVS_VectorPrsBuilder.cxx">
+      <Filter>Source files\MeshVS</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKMeshVS.rc" />  </ItemGroup>
+</Project>

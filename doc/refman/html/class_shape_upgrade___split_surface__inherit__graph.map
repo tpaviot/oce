@@ -1,0 +1,7 @@
+<map id="ShapeUpgrade_SplitSurface" name="ShapeUpgrade_SplitSurface">
+<area shape="rect" id="node3" href="$class_shape_upgrade___convert_surface_to_bezier_basis.html" title="Converts a plane, bspline surface, surface of revolution, surface of extrusion, offset surface to gri..." alt="" coords="425,5,626,47"/>
+<area shape="rect" id="node4" href="$class_shape_upgrade___split_surface_angle.html" title="Splits a surfaces of revolution, cylindrical, toroidal, conical, spherical so that each resulting seg..." alt="" coords="433,71,617,112"/>
+<area shape="rect" id="node5" href="$class_shape_upgrade___split_surface_area.html" title="Split surface in the parametric space in according specified number of splits on the. " alt="" coords="420,137,631,163"/>
+<area shape="rect" id="node6" href="$class_shape_upgrade___split_surface_continuity.html" title="Splits a Surface with a continuity criterion. At the present moment C1 criterion is used only..." alt="" coords="433,188,617,229"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,107,140,134"/>
+</map>

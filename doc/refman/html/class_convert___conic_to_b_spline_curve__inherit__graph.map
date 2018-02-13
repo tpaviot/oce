@@ -1,0 +1,6 @@
+<map id="Convert_ConicToBSplineCurve" name="Convert_ConicToBSplineCurve">
+<area shape="rect" id="node2" href="$class_convert___circle_to_b_spline_curve.html" title="This algorithm converts a circle into a rational B&#45;spline curve. The circle is a Circ2d from package ..." alt="" coords="249,5,445,32"/>
+<area shape="rect" id="node3" href="$class_convert___ellipse_to_b_spline_curve.html" title="This algorithm converts a ellipse into a rational B&#45;spline curve. The ellipse is represented an Elips..." alt="" coords="262,57,433,98"/>
+<area shape="rect" id="node4" href="$class_convert___hyperbola_to_b_spline_curve.html" title="This algorithm converts a hyperbola into a rational B&#45;spline curve. The hyperbola is an Hypr2d from p..." alt="" coords="253,122,442,163"/>
+<area shape="rect" id="node5" href="$class_convert___parabola_to_b_spline_curve.html" title="This algorithm converts a parabola into a non rational B&#45;spline curve. The parabola is a Parab2d from..." alt="" coords="256,187,439,229"/>
+</map>

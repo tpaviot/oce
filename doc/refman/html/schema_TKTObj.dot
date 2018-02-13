@@ -1,0 +1,13 @@
+digraph schema_TKTObj
+{
+	TKTObj [ URL = "toolkit_tktobj.html", shape = box ]
+	TKCDF [ URL = "toolkit_tkcdf.html" , shape = box ]
+	TKTObj -> TKCDF [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKTObj -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKTObj -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKLCAF [ URL = "toolkit_tklcaf.html" , shape = box ]
+	TKTObj -> TKLCAF [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

@@ -1,0 +1,10 @@
+<map id="StepBasic_MeasureWithUnit" name="StepBasic_MeasureWithUnit">
+<area shape="rect" id="node3" href="$class_step_basic___length_measure_with_unit.html" title="StepBasic_LengthMeasureWithUnit" alt="" coords="425,5,653,32"/>
+<area shape="rect" id="node4" href="$class_step_basic___mass_measure_with_unit.html" title="StepBasic_MassMeasureWithUnit" alt="" coords="429,56,650,83"/>
+<area shape="rect" id="node5" href="$class_step_basic___plane_angle_measure_with_unit.html" title="StepBasic_PlaneAngleMeasure\lWithUnit" alt="" coords="437,107,642,149"/>
+<area shape="rect" id="node6" href="$class_step_basic___ratio_measure_with_unit.html" title="StepBasic_RatioMeasureWithUnit" alt="" coords="430,173,649,200"/>
+<area shape="rect" id="node7" href="$class_step_basic___solid_angle_measure_with_unit.html" title="StepBasic_SolidAngleMeasure\lWithUnit" alt="" coords="439,225,640,266"/>
+<area shape="rect" id="node8" href="$class_step_basic___time_measure_with_unit.html" title="StepBasic_TimeMeasureWithUnit" alt="" coords="431,291,648,317"/>
+<area shape="rect" id="node9" href="$class_step_basic___uncertainty_measure_with_unit.html" title="StepBasic_UncertaintyMeasure\lWithUnit" alt="" coords="437,342,642,383"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,173,140,200"/>
+</map>

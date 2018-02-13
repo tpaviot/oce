@@ -1,0 +1,17 @@
+digraph schema_TKMeshVS
+{
+	TKMeshVS [ URL = "toolkit_tkmeshvs.html", shape = box ]
+	TKV3d [ URL = "toolkit_tkv3d.html" , shape = box ]
+	TKMeshVS -> TKV3d [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKMeshVS -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKService [ URL = "toolkit_tkservice.html" , shape = box ]
+	TKMeshVS -> TKService [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKMeshVS -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKMeshVS -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKMeshVS -> TKG2d [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

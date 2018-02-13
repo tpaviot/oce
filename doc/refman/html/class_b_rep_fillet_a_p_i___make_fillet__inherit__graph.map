@@ -1,0 +1,5 @@
+<map id="BRepFilletAPI_MakeFillet" name="BRepFilletAPI_MakeFillet">
+<area shape="rect" id="node2" href="$class_b_rep_fillet_a_p_i___local_operation.html" title="Construction of fillets on the edges of a Shell. " alt="" coords="5,155,203,181"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="9,80,199,107"/>
+<area shape="rect" id="node4" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="13,5,195,32"/>
+</map>

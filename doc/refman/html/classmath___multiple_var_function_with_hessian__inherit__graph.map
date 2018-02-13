@@ -1,0 +1,9 @@
+<map id="math_MultipleVarFunctionWithHessian" name="math_MultipleVarFunctionWithHessian">
+<area shape="rect" id="node4" href="$class_extrema___glob_opt_func_c_c_c2.html" title="This class implements function which calculate Eucluidean distance between point on curve and point o..." alt="" coords="5,259,195,285"/>
+<area shape="rect" id="node5" href="$class_extrema___glob_opt_func_c_s.html" title="This class implements function which calculate square Eucluidean distance between point on curve and ..." alt="" coords="219,259,392,285"/>
+<area shape="rect" id="node6" href="$class_fair_curve___energy.html" title="necessary methodes to compute the energy of an FairCurve. " alt="" coords="417,259,541,285"/>
+<area shape="rect" id="node2" href="$classmath___multiple_var_function_with_gradient.html" title="The abstract class MultipleVarFunctionWithGradient describes the virtual functions associated with a ..." alt="" coords="219,80,392,121"/>
+<area shape="rect" id="node3" href="$classmath___multiple_var_function.html" title="Describes the virtual functions associated with a multiple variable function. " alt="" coords="219,5,392,32"/>
+<area shape="rect" id="node7" href="$class_fair_curve___energy_of_batten.html" title="Energy Criterium to minimize in Batten. " alt="" coords="294,333,469,360"/>
+<area shape="rect" id="node8" href="$class_fair_curve___energy_of_m_v_c.html" title="Energy Criterium to minimize in MinimalVariationCurve. " alt="" coords="493,333,659,360"/>
+</map>

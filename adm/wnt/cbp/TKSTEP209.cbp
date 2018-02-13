@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKSTEP209" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKSTEP209" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__StepElement_DLL" />
+					<Add option="-D__StepFEA_DLL" />
+					<Add option="-D__RWStepElement_DLL" />
+					<Add option="-D__RWStepFEA_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKSTEP209_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKSTEP209" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__StepElement_DLL" />
+					<Add option="-D__StepFEA_DLL" />
+					<Add option="-D__RWStepElement_DLL" />
+					<Add option="-D__RWStepFEA_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKSTEP209_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKernel" />
+			<Add library="TKXSBase" />
+			<Add library="TKSTEPBase" />
+		</Linker>
+		<Unit filename="../../../src/StepElement/StepElement_AnalysisItemWithinRepresentation.cxx" />
+		<Unit filename="../../../src/StepElement/StepElement_Curve3dElementDescriptor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_CurveElementEndReleasePacket.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_CurveElementFreedom.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_CurveElementFreedomMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_CurveElementPurpose.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_CurveElementPurposeMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_CurveElementSectionDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_CurveElementSectionDerivedDefinitions.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_ElementAspect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_ElementAspectMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_ElementDescriptor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_ElementMaterial.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_MeasureOrUnspecifiedValue.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_MeasureOrUnspecifiedValueMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_Surface3dElementDescriptor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_SurfaceElementProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_SurfaceElementPurpose.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_SurfaceElementPurposeMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_SurfaceSection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_SurfaceSectionField.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_SurfaceSectionFieldConstant.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_SurfaceSectionFieldVarying.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_UniformSurfaceSection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_Volume3dElementDescriptor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_VolumeElementPurpose.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepElement/StepElement_VolumeElementPurposeMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_AlignedCurve3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_AlignedSurface3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_ArbitraryVolume3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_ConstantSurface3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_Curve3dElementProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_Curve3dElementRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_CurveElementEndCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_CurveElementEndOffset.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_CurveElementEndRelease.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_CurveElementInterval.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_CurveElementIntervalConstant.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_CurveElementIntervalLinearlyVarying.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_CurveElementLocation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_DegreeOfFreedom.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_DegreeOfFreedomMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_DummyNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_ElementGeometricRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_ElementGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_ElementOrElementGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_ElementRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaAreaDensity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaAxis2Placement3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaCurveSectionGeometricRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaLinearElasticity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaMassDensity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaMaterialPropertyRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaMaterialPropertyRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaModel3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaModelDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaMoistureAbsorption.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaParametricPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaSecantCoefficientOfLinearThermalExpansion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaShellBendingStiffness.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaShellMembraneBendingCouplingStiffness.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaShellMembraneStiffness.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaShellShearStiffness.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaSurfaceSectionGeometricRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FreedomAndCoefficient.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_FreedomsList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_GeometricNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_Node.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_NodeDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_NodeGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_NodeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_NodeSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_NodeWithSolutionCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_NodeWithVector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_ParametricCurve3dElementCoordinateDirection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_ParametricCurve3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_ParametricSurface3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_Surface3dElementRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_SymmetricTensor22d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_SymmetricTensor23d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_SymmetricTensor23dMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_SymmetricTensor42d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_SymmetricTensor43d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_SymmetricTensor43dMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFEA/StepFEA_Volume3dElementRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWAnalysisItemWithinRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWCurve3dElementDescriptor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWCurveElementEndReleasePacket.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWCurveElementSectionDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWCurveElementSectionDerivedDefinitions.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWElementDescriptor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWElementMaterial.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWSurface3dElementDescriptor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWSurfaceElementProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWSurfaceSection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWSurfaceSectionField.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWSurfaceSectionFieldConstant.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWSurfaceSectionFieldVarying.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWUniformSurfaceSection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepElement/RWStepElement_RWVolume3dElementDescriptor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWAlignedCurve3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWAlignedSurface3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWArbitraryVolume3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWConstantSurface3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWCurve3dElementProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWCurve3dElementRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWCurveElementEndOffset.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWCurveElementEndRelease.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWCurveElementInterval.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWCurveElementIntervalConstant.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWCurveElementIntervalLinearlyVarying.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWCurveElementLocation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWDummyNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWElementGeometricRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWElementGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWElementRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaAreaDensity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaAxis2Placement3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaCurveSectionGeometricRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaLinearElasticity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaMassDensity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaMaterialPropertyRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaMaterialPropertyRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaModel3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaModelDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaMoistureAbsorption.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaParametricPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaRepresentationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaSecantCoefficientOfLinearThermalExpansion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaShellBendingStiffness.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaShellMembraneBendingCouplingStiffness.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaShellMembraneStiffness.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaShellShearStiffness.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaSurfaceSectionGeometricRelationship.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFeaTangentialCoefficientOfLinearThermalExpansion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFreedomAndCoefficient.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWFreedomsList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWGeometricNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWNodeDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWNodeGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWNodeRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWNodeSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWNodeWithSolutionCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWNodeWithVector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWParametricCurve3dElementCoordinateDirection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWParametricCurve3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWParametricSurface3dElementCoordinateSystem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWSurface3dElementRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepFEA/RWStepFEA_RWVolume3dElementRepresentation.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

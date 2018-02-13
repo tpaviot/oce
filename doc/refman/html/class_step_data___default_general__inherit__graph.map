@@ -1,0 +1,5 @@
+<map id="StepData_DefaultGeneral" name="StepData_DefaultGeneral">
+<area shape="rect" id="node2" href="$class_step_data___general_module.html" title="Specific features for General Services adapted to STEP. " alt="" coords="5,155,176,181"/>
+<area shape="rect" id="node3" href="$class_interface___general_module.html" title="This class defines general services, which must be provided for each type of Entity (i..." alt="" coords="8,80,173,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="23,5,158,32"/>
+</map>

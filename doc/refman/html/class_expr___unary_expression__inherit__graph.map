@@ -1,0 +1,25 @@
+<map id="Expr_UnaryExpression" name="Expr_UnaryExpression">
+<area shape="rect" id="node4" href="$class_expr___absolute.html" title="Expr_Absolute" alt="" coords="622,5,729,32"/>
+<area shape="rect" id="node5" href="$class_expr___arc_cosine.html" title="Expr_ArcCosine" alt="" coords="617,56,733,83"/>
+<area shape="rect" id="node6" href="$class_expr___arc_sine.html" title="Expr_ArcSine" alt="" coords="624,107,727,133"/>
+<area shape="rect" id="node7" href="$class_expr___arc_tangent.html" title="Expr_ArcTangent" alt="" coords="614,157,737,184"/>
+<area shape="rect" id="node8" href="$class_expr___arg_cosh.html" title="Expr_ArgCosh" alt="" coords="622,208,729,235"/>
+<area shape="rect" id="node9" href="$class_expr___arg_sinh.html" title="Expr_ArgSinh" alt="" coords="624,259,727,285"/>
+<area shape="rect" id="node10" href="$class_expr___arg_tanh.html" title="Expr_ArgTanh" alt="" coords="623,309,727,336"/>
+<area shape="rect" id="node11" href="$class_expr___cosh.html" title="Expr_Cosh" alt="" coords="632,360,719,387"/>
+<area shape="rect" id="node12" href="$class_expr___cosine.html" title="Expr_Cosine" alt="" coords="627,411,723,437"/>
+<area shape="rect" id="node13" href="$class_expr___exponential.html" title="Expr_Exponential" alt="" coords="613,461,737,488"/>
+<area shape="rect" id="node14" href="$class_expr___log_of10.html" title="Expr_LogOf10" alt="" coords="623,512,727,539"/>
+<area shape="rect" id="node15" href="$class_expr___log_ofe.html" title="Expr_LogOfe" alt="" coords="627,563,724,589"/>
+<area shape="rect" id="node16" href="$class_expr___sign.html" title="Expr_Sign" alt="" coords="634,613,717,640"/>
+<area shape="rect" id="node17" href="$class_expr___sine.html" title="Expr_Sine" alt="" coords="634,664,717,691"/>
+<area shape="rect" id="node18" href="$class_expr___sinh.html" title="Expr_Sinh" alt="" coords="634,715,717,741"/>
+<area shape="rect" id="node19" href="$class_expr___square.html" title="Expr_Square" alt="" coords="627,765,724,792"/>
+<area shape="rect" id="node20" href="$class_expr___square_root.html" title="Expr_SquareRoot" alt="" coords="613,816,737,843"/>
+<area shape="rect" id="node21" href="$class_expr___tangent.html" title="Expr_Tangent" alt="" coords="624,867,727,893"/>
+<area shape="rect" id="node22" href="$class_expr___tanh.html" title="Expr_Tanh" alt="" coords="633,917,717,944"/>
+<area shape="rect" id="node23" href="$class_expr___unary_function.html" title="Defines the use of an unary function in an expression with a given argument. " alt="" coords="605,968,745,995"/>
+<area shape="rect" id="node24" href="$class_expr___unary_minus.html" title="Expr_UnaryMinus" alt="" coords="613,1019,738,1045"/>
+<area shape="rect" id="node2" href="$class_expr___general_expression.html" title="Defines the general purposes of any expression. " alt="" coords="188,512,355,539"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,512,140,539"/>
+</map>

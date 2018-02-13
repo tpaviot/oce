@@ -1,0 +1,11 @@
+<map id="BVH_ObjectTransient" name="BVH_ObjectTransient">
+<area shape="rect" id="node3" href="$class_b_v_h___object.html" title="Abstract geometric object bounded by BVH box. " alt="" coords="383,143,525,170"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,143,140,170"/>
+<area shape="rect" id="node4" href="$class_b_v_h___primitive_set.html" title="Set of abstract geometric primitives organized with bounding volume hierarchy (BVH). Unlike an object set, this collection is designed for storing structural elements of a single object (such as triangles in the object triangulation). Because there may be a large number of such elements, the implementations of this interface should be sufficiently optimized. " alt="" coords="573,143,747,170"/>
+<area shape="rect" id="node5" href="$class_b_rep_extrema___triangle_set.html" title="Triangle set corresponding to specific face. " alt="" coords="803,5,977,47"/>
+<area shape="rect" id="node6" href="$class_b_v_h___triangulation.html" title="Triangulation as an example of BVH primitive set. " alt="" coords="821,71,959,112"/>
+<area shape="rect" id="node8" href="$class_open_gl___b_v_h_clip_primitive_set.html" title="Set of OpenGl_Structures for building BVH tree. " alt="" coords="795,136,985,177"/>
+<area shape="rect" id="node9" href="$class_select3_d___sensitive_set_1_1_bvh_primitive_set.html" title="The purpose of this class is to provide a link between BVH_PrimitiveSet and Select3D_SensitiveSet ins..." alt="" coords="798,202,982,258"/>
+<area shape="rect" id="node10" href="$class_select_mgr___sensitive_entity_set.html" title="This class is used to store all calculated sensitive entites of one selectable object. It provides an interface for building BVH tree which is used to speed&#45;up the performance of searching for overlap among sensitives of one selectable object. " alt="" coords="803,283,977,324"/>
+<area shape="rect" id="node7" href="$class_open_gl___triangle_set.html" title="Triangulation of single OpenGL primitive array. " alt="" coords="1033,71,1211,112"/>
+</map>

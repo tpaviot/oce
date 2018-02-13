@@ -1,0 +1,9 @@
+<map id="StepGeom_Placement" name="StepGeom_Placement">
+<area shape="rect" id="node5" href="$class_step_geom___axis1_placement.html" title="StepGeom_Axis1Placement" alt="" coords="5,304,192,331"/>
+<area shape="rect" id="node6" href="$class_step_geom___axis2_placement2d.html" title="StepGeom_Axis2Placement2d" alt="" coords="216,304,416,331"/>
+<area shape="rect" id="node7" href="$class_step_geom___axis2_placement3d.html" title="StepGeom_Axis2Placement3d" alt="" coords="440,304,640,331"/>
+<area shape="rect" id="node2" href="$class_step_geom___geometric_representation_item.html" title="StepGeom_GeometricRepresentationItem" alt="" coords="185,155,447,181"/>
+<area shape="rect" id="node3" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="219,80,413,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="249,5,383,32"/>
+<area shape="rect" id="node8" href="$class_step_f_e_a___fea_axis2_placement3d.html" title="Representation of STEP entity FeaAxis2Placement3d. " alt="" coords="433,379,647,405"/>
+</map>

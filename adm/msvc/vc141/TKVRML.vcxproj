@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{26117844-0692-0964-160D-A514EA004245}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc14\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc14\obj\TKVRML\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc14\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc14\objd\TKVRML\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc14\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc14\obj\TKVRML\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc14\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc14\objd\TKVRML\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc14\bin\TKVRML.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__VrmlConverter_DLL;__VrmlAPI_DLL;__Vrml_DLL;__VrmlData_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc14\obj\TKVRML/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc14\obj\TKVRML/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc14\obj\TKVRML/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__VrmlConverter_DLL;__VrmlAPI_DLL;__Vrml_DLL;__VrmlData_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKGeomBase.lib;TKernel.lib;TKPrim.lib;TKG2d.lib;TKG3d.lib;TKMesh.lib;TKHLR.lib;TKService.lib;TKGeomAlgo.lib;TKV3d.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc14\bin\TKVRML.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc14\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc14\bin\TKVRML.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc14\lib\TKVRML.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc14\bind\TKVRML.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__VrmlConverter_DLL;__VrmlAPI_DLL;__Vrml_DLL;__VrmlData_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc14\objd\TKVRML/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc14\objd\TKVRML/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc14\objd\TKVRML/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__VrmlConverter_DLL;__VrmlAPI_DLL;__Vrml_DLL;__VrmlData_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKGeomBase.lib;TKernel.lib;TKPrim.lib;TKG2d.lib;TKG3d.lib;TKMesh.lib;TKHLR.lib;TKService.lib;TKGeomAlgo.lib;TKV3d.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc14\bind\TKVRML.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc14\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc14\bind\TKVRML.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc14\libd\TKVRML.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc14\bin\TKVRML.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__VrmlConverter_DLL;__VrmlAPI_DLL;__Vrml_DLL;__VrmlData_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc14\obj\TKVRML/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc14\obj\TKVRML/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc14\obj\TKVRML/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__VrmlConverter_DLL;__VrmlAPI_DLL;__Vrml_DLL;__VrmlData_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKGeomBase.lib;TKernel.lib;TKPrim.lib;TKG2d.lib;TKG3d.lib;TKMesh.lib;TKHLR.lib;TKService.lib;TKGeomAlgo.lib;TKV3d.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc14\bin\TKVRML.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc14\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc14\bin\TKVRML.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc14\lib\TKVRML.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc14\bind\TKVRML.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__VrmlConverter_DLL;__VrmlAPI_DLL;__Vrml_DLL;__VrmlData_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc14\objd\TKVRML/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc14\objd\TKVRML/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc14\objd\TKVRML/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__VrmlConverter_DLL;__VrmlAPI_DLL;__Vrml_DLL;__VrmlData_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKGeomBase.lib;TKernel.lib;TKPrim.lib;TKG2d.lib;TKG3d.lib;TKMesh.lib;TKHLR.lib;TKService.lib;TKGeomAlgo.lib;TKV3d.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc14\bind\TKVRML.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc14\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc14\bind\TKVRML.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc14\libd\TKVRML.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_Curve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_DeflectionCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_Drawer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_HLRShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_IsoAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_LineAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_PointAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_Projector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_ShadedShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_ShadingAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_WFDeflectionRestrictedFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_WFDeflectionShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_WFRestrictedFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_WFShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlAPI\VrmlAPI.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlAPI\VrmlAPI_Writer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_AsciiText.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Cone.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Coordinate3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Cube.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Cylinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_DirectionalLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_FontStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Group.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_IndexedFaceSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_IndexedLineSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Info.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Instancing.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_LOD.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Material.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_MaterialBinding.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_MatrixTransform.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Normal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_NormalBinding.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_OrthographicCamera.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_PerspectiveCamera.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_PointLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_PointSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Rotation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_SFImage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_SFRotation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Scale.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Separator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_ShapeHints.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Sphere.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_SpotLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Switch.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Texture2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Texture2Transform.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_TextureCoordinate2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Transform.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_TransformSeparator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Translation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_WWWAnchor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_WWWInline.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_Geometry.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_Group.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_IndexedFaceSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_IndexedLineSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_Material.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_Node.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_Scene.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_ShapeConvert.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_WorldInfo.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKVRML.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

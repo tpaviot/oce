@@ -1,0 +1,25 @@
+<map id="math_MultipleVarFunction" name="math_MultipleVarFunction">
+<area shape="rect" id="node2" href="$class_extrema___glob_opt_func_c_c_c0.html" title="This class implements function which calculate Eucluidean distance between point on curve and point o..." alt="" coords="227,278,416,305"/>
+<area shape="rect" id="node3" href="$class_g_c_pnts___dist_function2d_m_v.html" title="The same as class GCPnts_DistFunction2d, but it can be used in minimization algorithms that requires ..." alt="" coords="230,329,413,355"/>
+<area shape="rect" id="node4" href="$class_g_c_pnts___dist_function_m_v.html" title="The same as class GCPnts_DistFunction, but it can be used in minimization algorithms that requires mu..." alt="" coords="237,379,405,406"/>
+<area shape="rect" id="node5" href="$classmath___multiple_var_function_with_gradient.html" title="The abstract class MultipleVarFunctionWithGradient describes the virtual functions associated with a ..." alt="" coords="235,431,408,472"/>
+<area shape="rect" id="node6" href="$class_app_def___b_sp_par_function_of_my_b_spl_gradient_of_b_spline_compute.html" title="AppDef_BSpParFunctionOfMy\lBSplGradientOfBSplineCompute" alt="" coords="482,5,691,47"/>
+<area shape="rect" id="node7" href="$class_app_def___par_function_of_my_gradientbis_of_b_spline_compute.html" title="AppDef_ParFunctionOfMyGradientbis\lOfBSplineCompute" alt="" coords="467,71,706,112"/>
+<area shape="rect" id="node8" href="$class_app_def___par_function_of_my_gradient_of_compute.html" title="AppDef_ParFunctionOfMyGradient\lOfCompute" alt="" coords="476,136,697,177"/>
+<area shape="rect" id="node9" href="$class_app_def___par_function_of_the_gradient.html" title="AppDef_ParFunctionOfTheGradient" alt="" coords="475,202,699,229"/>
+<area shape="rect" id="node10" href="$class_app_def___the_function.html" title="AppDef_TheFunction" alt="" coords="515,253,658,279"/>
+<area shape="rect" id="node11" href="$class_b_rep_approx___b_sp_par_function_of_my_b_spl_gradient_of_the_compute_line_of_approx.html" title="BRepApprox_BSpParFunction\lOfMyBSplGradientOfTheComputeLine\lOfApprox" alt="" coords="467,303,707,359"/>
+<area shape="rect" id="node12" href="$class_b_rep_approx___par_function_of_my_gradientbis_of_the_compute_line_of_approx.html" title="BRepApprox_ParFunctionOf\lMyGradientbisOfTheComputeLine\lOfApprox" alt="" coords="479,383,695,439"/>
+<area shape="rect" id="node13" href="$class_b_rep_approx___par_function_of_my_gradient_of_the_compute_line_bezier_of_approx.html" title="BRepApprox_ParFunctionOf\lMyGradientOfTheComputeLineBezier\lOfApprox" alt="" coords="469,463,705,519"/>
+<area shape="rect" id="node14" href="$class_extrema___func_p_s_dist.html" title="Functional for search of extremum of the square Euclidean distance between point P and surface S..." alt="" coords="513,543,661,570"/>
+<area shape="rect" id="node15" href="$class_extrema___glob_opt_func_c_c_c1.html" title="This class implements function which calculate Eucluidean distance between point on curve and point o..." alt="" coords="492,594,681,621"/>
+<area shape="rect" id="node16" href="$class_geom_int___b_sp_par_function_of_my_b_spl_gradient_of_the_compute_line_of_w_l_approx.html" title="GeomInt_BSpParFunctionOf\lMyBSplGradientOfTheComputeLine\lOfWLApprox" alt="" coords="473,645,700,701"/>
+<area shape="rect" id="node17" href="$class_geom_int___par_function_of_my_gradientbis_of_the_compute_line_of_w_l_approx.html" title="GeomInt_ParFunctionOfMyGradientbis\lOfTheComputeLineOfWLApprox" alt="" coords="464,725,709,767"/>
+<area shape="rect" id="node18" href="$class_geom_int___par_function_of_my_gradient_of_the_compute_line_bezier_of_w_l_approx.html" title="GeomInt_ParFunctionOfMyGradient\lOfTheComputeLineBezierOfWLApprox" alt="" coords="465,791,708,832"/>
+<area shape="rect" id="node19" href="$classmath___multiple_var_function_with_hessian.html" title="math_MultipleVarFunction\lWithHessian" alt="" coords="500,856,673,897"/>
+<area shape="rect" id="node20" href="$class_extrema___glob_opt_func_c_c_c2.html" title="This class implements function which calculate Eucluidean distance between point on curve and point o..." alt="" coords="757,813,947,839"/>
+<area shape="rect" id="node21" href="$class_extrema___glob_opt_func_c_s.html" title="This class implements function which calculate square Eucluidean distance between point on curve and ..." alt="" coords="765,863,939,890"/>
+<area shape="rect" id="node22" href="$class_fair_curve___energy.html" title="necessary methodes to compute the energy of an FairCurve. " alt="" coords="790,914,914,941"/>
+<area shape="rect" id="node23" href="$class_fair_curve___energy_of_batten.html" title="Energy Criterium to minimize in Batten. " alt="" coords="995,889,1169,915"/>
+<area shape="rect" id="node24" href="$class_fair_curve___energy_of_m_v_c.html" title="Energy Criterium to minimize in MinimalVariationCurve. " alt="" coords="999,939,1165,966"/>
+</map>

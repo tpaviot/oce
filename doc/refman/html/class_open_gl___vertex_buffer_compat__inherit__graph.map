@@ -1,0 +1,5 @@
+<map id="OpenGl_VertexBufferCompat" name="OpenGl_VertexBufferCompat">
+<area shape="rect" id="node2" href="$class_open_gl___vertex_buffer.html" title="Vertex Buffer Object &#45; is a general storage object for vertex attributes (position, normal, color). Notice that you should use OpenGl_IndexBuffer specialization for array of indices. " alt="" coords="28,155,172,181"/>
+<area shape="rect" id="node3" href="$class_open_gl___resource.html" title="Interface for OpenGl resource with following meaning: " alt="" coords="36,80,164,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="33,5,167,32"/>
+</map>

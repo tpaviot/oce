@@ -1,0 +1,8 @@
+<map id="StepData_Protocol" name="StepData_Protocol">
+<area shape="rect" id="node4" href="$class_header_section___protocol.html" title="Protocol for HeaderSection Entities It requires HeaderSection as a Resource. " alt="" coords="5,229,168,256"/>
+<area shape="rect" id="node5" href="$class_step_a_p214___protocol.html" title="Protocol for StepAP214 Entities It requires StepAP214 as a Resource. " alt="" coords="193,229,335,256"/>
+<area shape="rect" id="node6" href="$class_step_data___file_protocol.html" title="A FileProtocol is defined as the addition of several already existing Protocols. It corresponds to th..." alt="" coords="360,229,512,256"/>
+<area shape="rect" id="node2" href="$class_interface___protocol.html" title="General description of Interface Protocols. A Protocol defines a set of Entity types. This class provides also the notion of Active Protocol, as a working context, defined once then exploited by various Tools and Libraries. " alt="" coords="201,80,327,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="197,5,331,32"/>
+<area shape="rect" id="node7" href="$class_step_data___descr_protocol.html" title="A DescrProtocol is a protocol dynamically (at execution time) defined with : " alt="" coords="353,304,519,331"/>
+</map>

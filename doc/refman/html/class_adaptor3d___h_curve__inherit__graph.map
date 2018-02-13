@@ -1,0 +1,12 @@
+<map id="Adaptor3d_HCurve" name="Adaptor3d_HCurve">
+<area shape="rect" id="node3" href="$class_adaptor3d___h_curve_on_surface.html" title="Adaptor3d_HCurveOnSurface" alt="" coords="365,5,556,32"/>
+<area shape="rect" id="node4" href="$class_adaptor3d___h_iso_curve.html" title="Adaptor3d_HIsoCurve" alt="" coords="387,56,534,83"/>
+<area shape="rect" id="node5" href="$class_bi_tgte___h_curve_on_edge.html" title="BiTgte_HCurveOnEdge" alt="" coords="383,107,538,133"/>
+<area shape="rect" id="node6" href="$class_bi_tgte___h_curve_on_vertex.html" title="BiTgte_HCurveOnVertex" alt="" coords="379,157,542,184"/>
+<area shape="rect" id="node7" href="$class_b_rep_adaptor___h_comp_curve.html" title="BRepAdaptor_HCompCurve" alt="" coords="370,208,551,235"/>
+<area shape="rect" id="node8" href="$class_b_rep_adaptor___h_curve.html" title="BRepAdaptor_HCurve" alt="" coords="387,259,534,285"/>
+<area shape="rect" id="node9" href="$class_ch_fi_d_s___h_el_spine.html" title="ChFiDS_HElSpine" alt="" coords="397,309,525,336"/>
+<area shape="rect" id="node10" href="$class_geom_adaptor___g_h_curve.html" title="GeomAdaptor_GHCurve" alt="" coords="381,360,541,387"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,183,140,209"/>
+<area shape="rect" id="node11" href="$class_geom_adaptor___h_curve.html" title="An interface between the services provided by any curve from the package Geom and those required of t..." alt="" coords="604,360,755,387"/>
+</map>

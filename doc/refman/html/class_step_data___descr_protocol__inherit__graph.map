@@ -1,0 +1,6 @@
+<map id="StepData_DescrProtocol" name="StepData_DescrProtocol">
+<area shape="rect" id="node2" href="$class_step_data___file_protocol.html" title="A FileProtocol is defined as the addition of several already existing Protocols. It corresponds to th..." alt="" coords="12,229,164,256"/>
+<area shape="rect" id="node3" href="$class_step_data___protocol.html" title="Description of Basic Protocol for Step The class Protocol from StepData itself describes a default Pr..." alt="" coords="23,155,153,181"/>
+<area shape="rect" id="node4" href="$class_interface___protocol.html" title="General description of Interface Protocols. A Protocol defines a set of Entity types. This class provides also the notion of Active Protocol, as a working context, defined once then exploited by various Tools and Libraries. " alt="" coords="25,80,151,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="21,5,155,32"/>
+</map>

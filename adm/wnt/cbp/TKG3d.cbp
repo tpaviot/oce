@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKG3d" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKG3d" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__Geom_DLL" />
+					<Add option="-D__TColGeom_DLL" />
+					<Add option="-D__GeomAdaptor_DLL" />
+					<Add option="-D__AdvApprox_DLL" />
+					<Add option="-D__GeomLProp_DLL" />
+					<Add option="-D__Adaptor3d_DLL" />
+					<Add option="-D__LProp3d_DLL" />
+					<Add option="-D__TopAbs_DLL" />
+					<Add option="-D__GeomEvaluator_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKG3d_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKG3d" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__Geom_DLL" />
+					<Add option="-D__TColGeom_DLL" />
+					<Add option="-D__GeomAdaptor_DLL" />
+					<Add option="-D__AdvApprox_DLL" />
+					<Add option="-D__GeomLProp_DLL" />
+					<Add option="-D__Adaptor3d_DLL" />
+					<Add option="-D__LProp3d_DLL" />
+					<Add option="-D__TopAbs_DLL" />
+					<Add option="-D__GeomEvaluator_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKG3d_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKG2d" />
+		</Linker>
+		<Unit filename="../../../src/Geom/Geom_Axis1Placement.cxx" />
+		<Unit filename="../../../src/Geom/Geom_Axis2Placement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_AxisPlacement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_BSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_BSplineCurve_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_BSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_BSplineSurface_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_BezierCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_BezierSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_BoundedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_BoundedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_CartesianPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Circle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Conic.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_ConicalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_CylindricalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Direction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_ElementarySurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Ellipse.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Geometry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Hyperbola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Line.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_OffsetCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_OffsetSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_OsculatingSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Parabola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Plane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Point.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_RectangularTrimmedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_SphericalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Surface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_SurfaceOfLinearExtrusion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_SurfaceOfRevolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_SweptSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_ToroidalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Transformation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_TrimmedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_Vector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom/Geom_VectorWithMagnitude.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomAdaptor/GeomAdaptor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomAdaptor/GeomAdaptor_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomAdaptor/GeomAdaptor_GHCurve_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomAdaptor/GeomAdaptor_GHSurface_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomAdaptor/GeomAdaptor_HCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomAdaptor/GeomAdaptor_HSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomAdaptor/GeomAdaptor_HSurfaceOfLinearExtrusion_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomAdaptor/GeomAdaptor_HSurfaceOfRevolution_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomAdaptor/GeomAdaptor_Surface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomAdaptor/GeomAdaptor_SurfaceOfLinearExtrusion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomAdaptor/GeomAdaptor_SurfaceOfRevolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApprox/AdvApprox_ApproxAFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApprox/AdvApprox_Cutting.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApprox/AdvApprox_DichoCutting.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApprox/AdvApprox_PrefAndRec.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApprox/AdvApprox_PrefCutting.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AdvApprox/AdvApprox_SimpleApprox.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLProp/GeomLProp.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLProp/GeomLProp_CLProps_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLProp/GeomLProp_CurveTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLProp/GeomLProp_SLProps_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomLProp/GeomLProp_SurfaceTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_CurveOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_HCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_HCurveOnSurface_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_HIsoCurve_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_HSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_HSurfaceTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_HVertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_InterFunc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_IsoCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_Surface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor3d/Adaptor3d_TopolTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/LProp3d/LProp3d_CLProps_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/LProp3d/LProp3d_CurveTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/LProp3d/LProp3d_SLProps_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/LProp3d/LProp3d_SurfaceTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopAbs/TopAbs.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomEvaluator/GeomEvaluator_OffsetCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomEvaluator/GeomEvaluator_OffsetSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomEvaluator/GeomEvaluator_SurfaceOfExtrusion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomEvaluator/GeomEvaluator_SurfaceOfRevolution.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

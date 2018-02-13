@@ -1,0 +1,6 @@
+<map id="BOPAlgo_BuilderArea" name="BOPAlgo_BuilderArea">
+<area shape="rect" id="node4" href="$class_b_o_p_algo___builder_face.html" title="The algorithm to build new faces from the given faces and set of edges lying on this face..." alt="" coords="5,229,157,256"/>
+<area shape="rect" id="node5" href="$class_b_o_p_algo___builder_solid.html" title="The algorithm to build solids from set of faces. " alt="" coords="181,229,333,256"/>
+<area shape="rect" id="node2" href="$class_b_o_p_algo___algo.html" title="The class provides the root interface for the algorithms in Boolean Component. &#160;" alt="" coords="115,80,224,107"/>
+<area shape="rect" id="node3" href="$class_b_o_p_algo___options.html" title="The class provides the following options for the algorithms in Boolean Component: ..." alt="" coords="105,5,233,32"/>
+</map>

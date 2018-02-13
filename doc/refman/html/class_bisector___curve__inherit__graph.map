@@ -1,0 +1,8 @@
+<map id="Bisector_Curve" name="Bisector_Curve">
+<area shape="rect" id="node5" href="$class_bisector___bisec_ana.html" title="This class provides the bisecting line between two geometric elements.The elements are Circles..." alt="" coords="5,304,139,331"/>
+<area shape="rect" id="node6" href="$class_bisector___bisec_c_c.html" title="Construct the bisector between two curves. The curves can intersect only in their extremities..." alt="" coords="163,304,291,331"/>
+<area shape="rect" id="node7" href="$class_bisector___bisec_p_c.html" title="Provides the bisector between a point and a curve. the curvature on the curve has to be monoton..." alt="" coords="315,304,443,331"/>
+<area shape="rect" id="node2" href="$class_geom2d___curve.html" title="The abstract class Curve describes the common behavior of curves in 2D space. The Geom2d package prov..." alt="" coords="171,155,282,181"/>
+<area shape="rect" id="node3" href="$class_geom2d___geometry.html" title="The general abstract class Geometry in 2D space describes the common behaviour of all the geometric e..." alt="" coords="159,80,294,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="159,5,294,32"/>
+</map>

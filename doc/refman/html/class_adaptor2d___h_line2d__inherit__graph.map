@@ -1,0 +1,4 @@
+<map id="Adaptor2d_HLine2d" name="Adaptor2d_HLine2d">
+<area shape="rect" id="node2" href="$class_adaptor2d___h_curve2d.html" title="Root class for 2D curves manipulated by handles, on which geometric algorithms work. An adapted curve is an interface between the services provided by a curve, and those required of the curve by algorithms, which use it. A derived specific class is provided: Geom2dAdaptor_HCurve for a curve from the Geom2d package. " alt="" coords="5,80,148,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="9,5,144,32"/>
+</map>

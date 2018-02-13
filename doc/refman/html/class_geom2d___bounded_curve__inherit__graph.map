@@ -1,0 +1,8 @@
+<map id="Geom2d_BoundedCurve" name="Geom2d_BoundedCurve">
+<area shape="rect" id="node5" href="$class_geom2d___bezier_curve.html" title="Describes a rational or non&#45;rational Bezier curve. " alt="" coords="5,304,152,331"/>
+<area shape="rect" id="node6" href="$class_geom2d___b_spline_curve.html" title="Describes a BSpline curve. A BSpline curve can be: " alt="" coords="176,304,331,331"/>
+<area shape="rect" id="node7" href="$class_geom2d___trimmed_curve.html" title="Defines a portion of a curve limited by two values of parameters inside the parametric domain of the ..." alt="" coords="355,304,515,331"/>
+<area shape="rect" id="node2" href="$class_geom2d___curve.html" title="The abstract class Curve describes the common behavior of curves in 2D space. The Geom2d package prov..." alt="" coords="198,155,309,181"/>
+<area shape="rect" id="node3" href="$class_geom2d___geometry.html" title="The general abstract class Geometry in 2D space describes the common behaviour of all the geometric e..." alt="" coords="186,80,321,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="186,5,321,32"/>
+</map>

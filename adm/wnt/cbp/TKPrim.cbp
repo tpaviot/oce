@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKPrim" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKPrim" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__BRepPrim_DLL" />
+					<Add option="-D__BRepSweep_DLL" />
+					<Add option="-D__Sweep_DLL" />
+					<Add option="-D__BRepPrimAPI_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKPrim_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKPrim" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__BRepPrim_DLL" />
+					<Add option="-D__BRepSweep_DLL" />
+					<Add option="-D__Sweep_DLL" />
+					<Add option="-D__BRepPrimAPI_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKPrim_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKBRep" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKG2d" />
+			<Add library="TKGeomBase" />
+			<Add library="TKG3d" />
+			<Add library="TKTopAlgo" />
+		</Linker>
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Builder.cxx" />
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Cone.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Cylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrim/BRepPrim_FaceBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrim/BRepPrim_GWedge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrim/BRepPrim_OneAxis.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Revolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Sphere.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Torus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Wedge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Builder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Iterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepSweep/BRepSweep_NumLinearRegularSweep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Prism.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Revol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Rotation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Tool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Translation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Trsf.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Sweep/Sweep_NumShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Sweep/Sweep_NumShapeIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Sweep/Sweep_NumShapeTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeBox.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeCone.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeCylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeHalfSpace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeOneAxis.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakePrism.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeRevol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeRevolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeSphere.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeTorus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeWedge.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,8 @@
+<map id="OpenGl_TriangleSet" name="OpenGl_TriangleSet">
+<area shape="rect" id="node2" href="$class_b_v_h___triangulation.html" title="Triangulation as an example of BVH primitive set. " alt="" coords="66,304,249,331"/>
+<area shape="rect" id="node3" href="$class_b_v_h___primitive_set.html" title="Set of abstract geometric primitives organized with bounding volume hierarchy (BVH). Unlike an object set, this collection is designed for storing structural elements of a single object (such as triangles in the object triangulation). Because there may be a large number of such elements, the implementations of this interface should be sufficiently optimized. " alt="" coords="71,229,244,256"/>
+<area shape="rect" id="node4" href="$class_b_v_h___object.html" title="Abstract geometric object bounded by BVH box. " alt="" coords="7,155,150,181"/>
+<area shape="rect" id="node5" href="$class_b_v_h___object_transient.html" title="A non&#45;template class for using as base for BVH_Object (just to have a named base class). " alt="" coords="5,80,152,107"/>
+<area shape="rect" id="node6" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="11,5,146,32"/>
+<area shape="rect" id="node7" href="$class_b_v_h___set.html" title="Set of abstract entities (bounded by BVH boxes). This is the minimal geometry interface needed to con..." alt="" coords="174,155,298,181"/>
+</map>

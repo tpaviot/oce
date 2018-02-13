@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKXSBase" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKXSBase" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__Interface_DLL" />
+					<Add option="-D__Transfer_DLL" />
+					<Add option="-D__IFGraph_DLL" />
+					<Add option="-D__IFSelect_DLL" />
+					<Add option="-D__TransferBRep_DLL" />
+					<Add option="-D__XSControl_DLL" />
+					<Add option="-D__StepData_DLL" />
+					<Add option="-D__StepFile_DLL" />
+					<Add option="-D__HeaderSection_DLL" />
+					<Add option="-D__RWHeaderSection_DLL" />
+					<Add option="-D__APIHeaderSection_DLL" />
+					<Add option="-D__StepSelect_DLL" />
+					<Add option="-D__UnitsMethods_DLL" />
+					<Add option="-D__XSAlgo_DLL" />
+					<Add option="-D__LibCtl_DLL" />
+					<Add option="-D__MoniTool_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKXSBase_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKXSBase" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__Interface_DLL" />
+					<Add option="-D__Transfer_DLL" />
+					<Add option="-D__IFGraph_DLL" />
+					<Add option="-D__IFSelect_DLL" />
+					<Add option="-D__TransferBRep_DLL" />
+					<Add option="-D__XSControl_DLL" />
+					<Add option="-D__StepData_DLL" />
+					<Add option="-D__StepFile_DLL" />
+					<Add option="-D__HeaderSection_DLL" />
+					<Add option="-D__RWHeaderSection_DLL" />
+					<Add option="-D__APIHeaderSection_DLL" />
+					<Add option="-D__StepSelect_DLL" />
+					<Add option="-D__UnitsMethods_DLL" />
+					<Add option="-D__XSAlgo_DLL" />
+					<Add option="-D__LibCtl_DLL" />
+					<Add option="-D__MoniTool_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKXSBase_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKBRep" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKGeomBase" />
+			<Add library="TKShHealing" />
+		</Linker>
+		<Unit filename="../../../src/Interface/Interface_BitMap.cxx" />
+		<Unit filename="../../../src/Interface/Interface_Category.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_Check.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_CheckIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_CheckTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_CopyControl.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_CopyMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_CopyTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_EntityCluster.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_EntityIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_EntityList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_FileParameter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_FileReaderData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_FileReaderTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_FloatWriter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_GTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_GeneralLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_GlobalNodeOfGeneralLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_GlobalNodeOfReaderLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_Graph.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_GraphContent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_HGraph.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_IntList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_IntVal.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_InterfaceModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_LineBuffer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_MSG.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_MapAsciiStringHasher.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_NodeOfGeneralLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_NodeOfReaderLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_ParamList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_ParamSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_ReaderLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_ReaderModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_ReportEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_STAT.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_ShareFlags.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_ShareTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_SignLabel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_SignType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_Static.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_StaticStandards.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_TypedValue.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Interface/Interface_UndefinedContent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_ActorDispatch.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_ActorOfFinderProcess.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_ActorOfProcessForFinder_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_ActorOfProcessForTransient_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_ActorOfTransientProcess.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_Binder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_BinderOfTransientInteger.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_DataInfo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_DispatchControl.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_FindHasher.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_Finder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_FinderProcess.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_IteratorOfProcessForFinder_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_IteratorOfProcessForTransient_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_MapContainer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_MultipleBinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_ProcessForFinder_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_ProcessForTransient_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_ResultFromModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_ResultFromTransient.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_SimpleBinderOfTransient.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_TransferDispatch.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_TransferInput.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_TransferIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_TransferOutput.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_TransientListBinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_TransientMapper_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_TransientProcess.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Transfer/Transfer_VoidBinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFGraph/IFGraph_AllConnected.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFGraph/IFGraph_AllShared.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFGraph/IFGraph_Articulations.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFGraph/IFGraph_Compare.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFGraph/IFGraph_ConnectedComponants.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFGraph/IFGraph_Cumulate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFGraph/IFGraph_Cycles.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFGraph/IFGraph_ExternalSources.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFGraph/IFGraph_SCRoots.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFGraph/IFGraph_StrongComponants.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFGraph/IFGraph_SubPartsIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_Act.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_Activator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_AppliedModifiers.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_BasicDumper.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_CheckCounter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_ContextModif.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_ContextWrite.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_DispGlobal.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_DispPerCount.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_DispPerFiles.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_DispPerOne.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_DispPerSignature.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_Dispatch.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_EditForm.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_Editor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_Functions.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_GeneralModifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_GraphCounter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_IntParam.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_ListEditor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_ModelCopier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_ModifEditForm.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_ModifReorder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_Modifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_PacketList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_ParamEditor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectAnyList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectAnyType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectBase.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectCombine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectControl.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectDeduct.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectDiff.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectEntityNumber.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectErrorEntities.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectExplore.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectExtract.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectFlag.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectInList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectIncorrectEntities.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectIntersection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectModelEntities.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectModelRoots.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectPointed.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectRange.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectRootComps.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectRoots.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectSent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectShared.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectSharing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectSignature.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectSignedShared.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectSignedSharing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectSuite.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectUnion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectUnknownEntities.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_Selection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SelectionIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SessionDumper.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SessionFile.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SessionPilot.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_ShareOut.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_ShareOutResult.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SignAncestor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SignCategory.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SignCounter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SignMultiple.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SignType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SignValidity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_Signature.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_SignatureList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_TransformStandard.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_Transformer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_WorkLibrary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IFSelect/IFSelect_WorkSession.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TransferBRep/TransferBRep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TransferBRep/TransferBRep_BinderOfShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TransferBRep/TransferBRep_OrientedShapeMapper_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TransferBRep/TransferBRep_Reader.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TransferBRep/TransferBRep_ShapeBinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TransferBRep/TransferBRep_ShapeInfo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TransferBRep/TransferBRep_ShapeListBinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TransferBRep/TransferBRep_ShapeMapper_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TransferBRep/TransferBRep_TransferResultInfo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_ConnectedShapes.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_Controller.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_FuncShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_Functions.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_Reader.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_SelectForTransfer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_SignTransferStatus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_TransferReader.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_TransferWriter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_Utils.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_Vars.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_WorkSession.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSControl/XSControl_Writer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_DefaultGeneral.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_DescrGeneral.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_DescrProtocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_DescrReadWrite.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_Described.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_ECDescr.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_EDescr.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_ESDescr.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_EnumTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_Field.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_FieldList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_FieldList1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_FieldListD.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_FieldListN.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_FileProtocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_FileRecognizer_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_FreeFormEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_GlobalNodeOfWriterLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_HeaderTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_NodeOfWriterLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_PDescr.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_Plex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_SelectArrReal.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_SelectInt.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_SelectMember.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_SelectNamed.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_SelectReal.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_SelectType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_Simple.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_StepDumper.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_StepModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_StepReaderData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_StepReaderTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_StepWriter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_UndefinedEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepData/StepData_WriterLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFile/StepFile_CallFailure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFile/StepFile_Read.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepFile/lex.step.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../src/StepFile/step.tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../src/StepFile/stepread.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../src/HeaderSection/HeaderSection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/HeaderSection/HeaderSection_FileDescription.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/HeaderSection/HeaderSection_FileName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/HeaderSection/HeaderSection_FileSchema.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/HeaderSection/HeaderSection_HeaderRecognizer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/HeaderSection/HeaderSection_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWHeaderSection/RWHeaderSection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWHeaderSection/RWHeaderSection_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWHeaderSection/RWHeaderSection_RWFileDescription.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWHeaderSection/RWHeaderSection_RWFileName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWHeaderSection/RWHeaderSection_RWFileSchema.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWHeaderSection/RWHeaderSection_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/APIHeaderSection/APIHeaderSection_EditHeader.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/APIHeaderSection/APIHeaderSection_MakeHeader.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepSelect/StepSelect_Activator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepSelect/StepSelect_FileModifier_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepSelect/StepSelect_FloatFormat.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepSelect/StepSelect_ModelModifier_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepSelect/StepSelect_StepType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepSelect/StepSelect_WorkLibrary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/UnitsMethods/UnitsMethods.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSAlgo/XSAlgo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSAlgo/XSAlgo_AlgoContainer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSAlgo/XSAlgo_ToolContainer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_AttrList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_CaseData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_DataInfo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_ElemHasher.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_Element.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_IntVal.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_MTHasher.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_RealVal.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_SignShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_SignText.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_Stat.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_Timer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_TimerSentry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_TransientElem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MoniTool/MoniTool_TypedValue.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

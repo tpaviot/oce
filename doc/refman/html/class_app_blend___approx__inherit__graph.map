@@ -1,0 +1,6 @@
+<map id="AppBlend_Approx" name="AppBlend_Approx">
+<area shape="rect" id="node2" href="$class_b_rep_blend___app_surf.html" title="BRepBlend_AppSurf" alt="" coords="5,80,145,107"/>
+<area shape="rect" id="node3" href="$class_b_rep_blend___app_surface.html" title="Used to Approximate the blending surfaces. " alt="" coords="169,80,331,107"/>
+<area shape="rect" id="node4" href="$class_geom_fill___app_surf.html" title="Approximate a BSplineSurface passing by all the curves described in the SectionGenerator. " alt="" coords="355,80,481,107"/>
+<area shape="rect" id="node5" href="$class_geom_fill___app_sweep.html" title="Approximate a sweep surface passing by all the curves described in the SweepSectionGenerator. " alt="" coords="505,80,648,107"/>
+</map>

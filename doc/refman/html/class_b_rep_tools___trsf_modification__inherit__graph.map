@@ -1,0 +1,5 @@
+<map id="BRepTools_TrsfModification" name="BRepTools_TrsfModification">
+<area shape="rect" id="node4" href="$class_shape_custom___trsf_modification.html" title="Complements BRepTools_TrsfModification to provide reversible scaling regarding tolerances. Uses actual tolerances (attached to the shapes) not ones returned by BRep_Tool::Tolerance to work with tolerances lower than Precision::Confusion. " alt="" coords="5,229,207,256"/>
+<area shape="rect" id="node2" href="$class_b_rep_tools___modification.html" title="Defines geometric modifications to a shape, i.e. changes to faces, edges and vertices. " alt="" coords="25,80,187,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="39,5,173,32"/>
+</map>

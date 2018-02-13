@@ -1,0 +1,6 @@
+<map id="Adaptor3d_Surface" name="Adaptor3d_Surface">
+<area shape="rect" id="node2" href="$class_b_rep_adaptor___surface.html" title="The Surface from BRepAdaptor allows to use a Face of the BRep topology look like a 3D surface..." alt="" coords="5,80,156,107"/>
+<area shape="rect" id="node3" href="$class_geom_adaptor___surface.html" title="An interface between the services provided by any surface from the package Geom and those required of..." alt="" coords="180,80,333,107"/>
+<area shape="rect" id="node4" href="$class_geom_adaptor___surface_of_linear_extrusion.html" title="Generalised cylinder. This surface is obtained by sweeping a curve in a given direction. The parametrization range for the parameter U is defined with referenced the curve. The parametrization range for the parameter V is ]&#45;infinite,+infinite[ The position of the curve gives the origin for the parameter V. The continuity of the surface is CN in the V direction. " alt="" coords="37,155,239,196"/>
+<area shape="rect" id="node5" href="$class_geom_adaptor___surface_of_revolution.html" title="This class defines a complete surface of revolution. The surface is obtained by rotating a curve a co..." alt="" coords="263,162,488,189"/>
+</map>

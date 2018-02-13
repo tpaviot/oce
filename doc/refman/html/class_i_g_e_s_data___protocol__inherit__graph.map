@@ -1,0 +1,13 @@
+<map id="IGESData_Protocol" name="IGESData_Protocol">
+<area shape="rect" id="node4" href="$class_i_g_e_s_appli___protocol.html" title="Description of Protocol for IGESAppli. " alt="" coords="555,5,692,32"/>
+<area shape="rect" id="node5" href="$class_i_g_e_s_basic___protocol.html" title="Description of Protocol for IGESBasic. " alt="" coords="553,56,694,83"/>
+<area shape="rect" id="node6" href="$class_i_g_e_s_data___file_protocol.html" title="This class allows to define complex protocols, in order to treat various sub&#45;sets (or the complete se..." alt="" coords="545,107,701,133"/>
+<area shape="rect" id="node7" href="$class_i_g_e_s_defs___protocol.html" title="Description of Protocol for IGESDefs. " alt="" coords="556,157,691,184"/>
+<area shape="rect" id="node8" href="$class_i_g_e_s_dimen___protocol.html" title="Description of Protocol for IGESDimen. " alt="" coords="551,208,696,235"/>
+<area shape="rect" id="node9" href="$class_i_g_e_s_draw___protocol.html" title="Description of Protocol for IGESDraw. " alt="" coords="555,259,692,285"/>
+<area shape="rect" id="node10" href="$class_i_g_e_s_geom___protocol.html" title="Description of Protocol for IGESGeom. " alt="" coords="552,309,695,336"/>
+<area shape="rect" id="node11" href="$class_i_g_e_s_graph___protocol.html" title="Description of Protocol for IGESGraph. " alt="" coords="552,360,695,387"/>
+<area shape="rect" id="node12" href="$class_i_g_e_s_solid___protocol.html" title="Description of Protocol for IGESSolid. " alt="" coords="555,411,692,437"/>
+<area shape="rect" id="node2" href="$class_interface___protocol.html" title="General description of Interface Protocols. A Protocol defines a set of Entity types. This class provides also the notion of Active Protocol, as a working context, defined once then exploited by various Tools and Libraries. " alt="" coords="188,208,315,235"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,208,140,235"/>
+</map>

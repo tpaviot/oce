@@ -1,0 +1,8 @@
+<map id="StepData_GeneralModule" name="StepData_GeneralModule">
+<area shape="rect" id="node4" href="$class_r_w_header_section___general_module.html" title="Defines General Services for HeaderSection Entities (Share,Check,Copy; Trace already inherited) Depen..." alt="" coords="620,5,843,32"/>
+<area shape="rect" id="node5" href="$class_r_w_step_a_p214___general_module.html" title="Defines General Services for StepAP214 Entities (Share,Check,Copy; Trace already inherited) Depends (..." alt="" coords="629,56,833,83"/>
+<area shape="rect" id="node6" href="$class_step_data___default_general.html" title="DefaultGeneral defines a GeneralModule which processes Unknown Entity from StepData only..." alt="" coords="647,107,815,133"/>
+<area shape="rect" id="node7" href="$class_step_data___descr_general.html" title="Works with a Protocol by considering its entity descriptions. " alt="" coords="650,157,813,184"/>
+<area shape="rect" id="node2" href="$class_interface___general_module.html" title="This class defines general services, which must be provided for each type of Entity (i..." alt="" coords="188,81,353,108"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,81,140,108"/>
+</map>

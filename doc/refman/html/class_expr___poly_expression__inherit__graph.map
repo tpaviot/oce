@@ -1,0 +1,7 @@
+<map id="Expr_PolyExpression" name="Expr_PolyExpression">
+<area shape="rect" id="node4" href="$class_expr___poly_function.html" title="Defines the use of an n&#45;ary function in an expression with given arguments. " alt="" coords="5,229,137,256"/>
+<area shape="rect" id="node5" href="$class_expr___product.html" title="Expr_Product" alt="" coords="162,229,263,256"/>
+<area shape="rect" id="node6" href="$class_expr___sum.html" title="Expr_Sum" alt="" coords="287,229,370,256"/>
+<area shape="rect" id="node2" href="$class_expr___general_expression.html" title="Defines the general purposes of any expression. " alt="" coords="129,80,296,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="145,5,280,32"/>
+</map>

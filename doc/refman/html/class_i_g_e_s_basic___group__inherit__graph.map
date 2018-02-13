@@ -1,0 +1,7 @@
+<map id="IGESBasic_Group" name="IGESBasic_Group">
+<area shape="rect" id="node4" href="$class_i_g_e_s_basic___group_without_back_p.html" title="defines GroupWithoutBackP, Type &lt;402&gt; Form &lt;7&gt; in package IGESBasic this class defines a Group withou..." alt="" coords="567,5,779,32"/>
+<area shape="rect" id="node5" href="$class_i_g_e_s_basic___ordered_group.html" title="defines OrderedGroup, Type &lt;402&gt; Form &lt;14&gt; in package IGESBasic this class defines an Ordered Group w..." alt="" coords="586,56,761,83"/>
+<area shape="rect" id="node6" href="$class_i_g_e_s_basic___ordered_group_without_back_p.html" title="defines OrderedGroupWithoutBackP, Type &lt;402&gt; Form &lt;15&gt; in package IGESBasic Allows a collection of a ..." alt="" coords="564,107,783,149"/>
+<area shape="rect" id="node2" href="$class_i_g_e_s_data___i_g_e_s_entity.html" title="defines root of IGES Entity definition, including Directory Part, lists of (optionnal) Properties and..." alt="" coords="188,56,340,83"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,56,140,83"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="AIS_TypeFilter" name="AIS_TypeFilter">
+<area shape="rect" id="node4" href="$class_a_i_s___signature_filter.html" title="Selects Interactive Objects through their signatures and types. The signature provides an additional ..." alt="" coords="5,229,140,256"/>
+<area shape="rect" id="node2" href="$class_select_mgr___filter.html" title="The root class to define filter objects for selection. Advance handling of objects requires the servi..." alt="" coords="14,80,131,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,5,140,32"/>
+</map>

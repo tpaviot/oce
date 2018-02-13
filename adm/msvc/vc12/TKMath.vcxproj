@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DBC0E705-124E-1837-009D-E3E22C15E866}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc12\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc12\obj\TKMath\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc12\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc12\objd\TKMath\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc12\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc12\obj\TKMath\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc12\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc12\objd\TKMath\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc12\bin\TKMath.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc12\obj\TKMath/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc12\obj\TKMath/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc12\obj\TKMath/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc12\bin\TKMath.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc12\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc12\bin\TKMath.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc12\lib\TKMath.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc12\bind\TKMath.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc12\objd\TKMath/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc12\objd\TKMath/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc12\objd\TKMath/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc12\bind\TKMath.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc12\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc12\bind\TKMath.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc12\libd\TKMath.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc12\bin\TKMath.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc12\obj\TKMath/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc12\obj\TKMath/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc12\obj\TKMath/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc12\bin\TKMath.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc12\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc12\bin\TKMath.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc12\lib\TKMath.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc12\bind\TKMath.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc12\objd\TKMath/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc12\objd\TKMath/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc12\objd\TKMath/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc12\bind\TKMath.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc12\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc12\bind\TKMath.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc12\libd\TKMath.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\math\math.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_BFGS.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_BissecNewton.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_BracketMinimum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_BracketedRoot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_BrentMinimum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_ComputeGaussPointsAndWeights.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_ComputeKronrodPointsAndWeights.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_Crout.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_DirectPolynomialRoots.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_DoubleTab.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_EigenValuesSearcher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_FRPR.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_Function.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_FunctionAllRoots.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_FunctionRoot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_FunctionRoots.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_FunctionSample.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_FunctionSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_FunctionSetRoot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_FunctionWithDerivative.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_Gauss.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_GaussLeastSquare.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_GaussMultipleIntegration.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_GaussSetIntegration.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_GaussSingleIntegration.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_GlobOptMin.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_Householder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_IntegerVector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_Jacobi.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_Kronrod.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_KronrodSingleIntegration.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_Matrix.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_MultipleVarFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_NewtonFunctionRoot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_NewtonFunctionSetRoot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_NewtonMinimum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_PSO.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_PSOParticlesPool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_Powell.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_Recipes.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_SVD.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_TrigonometricFunctionRoots.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_Uzawa.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\math\math_Vector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ElCLib\ElCLib.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ElSLib\ElSLib.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BSplCLib\BSplCLib.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BSplCLib\BSplCLib_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BSplCLib\BSplCLib_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BSplCLib\BSplCLib_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BSplCLib\BSplCLib_BzSyntaxes.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BSplCLib\BSplCLib_Cache.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BSplSLib\BSplSLib.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BSplSLib\BSplSLib_BzSyntaxes.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BSplSLib\BSplSLib_Cache.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PLib\PLib.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PLib\PLib_Base.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PLib\PLib_DoubleJacobiPolynomial.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PLib\PLib_HermitJacobi.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PLib\PLib_JacobiPolynomial.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_CoherentLink.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_CoherentNode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_CoherentTriPtr.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_CoherentTriangle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_CoherentTriangulation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_Connect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_MakeLoops.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_Polygon2D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_Polygon3D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_PolygonOnTriangulation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_Triangle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Poly\Poly_Triangulation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\CSLib\CSLib.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\CSLib\CSLib_Class2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\CSLib\CSLib_NormalPolyDef.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_CircleToBSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_CompBezierCurves2dToBSplineCurve2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_CompBezierCurvesToBSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_CompPolynomialToPoles.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_ConeToBSplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_ConicToBSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_CylinderToBSplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_ElementarySurfaceToBSplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_EllipseToBSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_GridPolynomialToPoles.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_HyperbolaToBSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_ParabolaToBSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_PolynomialCosAndSin.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_SphereToBSplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Convert\Convert_TorusToBSplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bnd\Bnd_B2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bnd\Bnd_B2f_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bnd\Bnd_B3d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bnd\Bnd_B3f_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bnd\Bnd_BoundSortBox.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bnd\Bnd_BoundSortBox2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bnd\Bnd_Box.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bnd\Bnd_Box2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bnd\Bnd_Range.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bnd\Bnd_Sphere.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BVH\BVH.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BVH\BVH_BuildQueue.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BVH\BVH_BuildThread.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BVH\BVH_Properties.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Ax1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Ax2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Ax22d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Ax2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Ax3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Circ.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Circ2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Cone.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Cylinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Dir.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Dir2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Elips.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Elips2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_GTrsf.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_GTrsf2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Hypr.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Hypr2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Lin.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Lin2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Mat.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Mat2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Parab.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Parab2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Pln.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Pnt.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Pnt2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Quaternion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Sphere.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Torus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Trsf.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Trsf2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Vec.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_Vec2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_XY.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\gp\gp_XYZ.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopLoc\TopLoc_Datum3D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopLoc\TopLoc_ItemLocation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopLoc\TopLoc_Location.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopLoc\TopLoc_SListNodeOfItemLocation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopLoc\TopLoc_SListOfItemLocation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Absolute.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArcCosine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArcSine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArcTangent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArgCosh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArgSinh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArgTanh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_BinaryExpression.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_BinaryFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Cosh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Cosine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Difference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Different.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Division.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Equal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Exponential.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Exponentiate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_FunctionDerivative.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GeneralExpression.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GeneralFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GeneralRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GreaterThan.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GreaterThanOrEqual.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LessThan.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LessThanOrEqual.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LogOf10.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LogOfe.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedConstant.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedExpression.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedUnknown.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NumericValue.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Operators.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_PolyExpression.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_PolyFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Product.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_RUIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_RelationIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sign.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_SingleRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sinh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Square.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_SquareRoot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_SystemRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Tangent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Tanh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnaryExpression.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnaryFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnaryMinus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnknownIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp.tab.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_Analysis.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_GenExp.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_GenFct.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_GenRel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_Generator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_yaccintrf.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_yacclex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\lex.ExprIntrp.c">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKMath.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

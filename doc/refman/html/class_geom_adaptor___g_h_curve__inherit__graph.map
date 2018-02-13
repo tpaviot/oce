@@ -1,0 +1,5 @@
+<map id="GeomAdaptor_GHCurve" name="GeomAdaptor_GHCurve">
+<area shape="rect" id="node4" href="$class_geom_adaptor___h_curve.html" title="An interface between the services provided by any curve from the package Geom and those required of t..." alt="" coords="10,229,161,256"/>
+<area shape="rect" id="node2" href="$class_adaptor3d___h_curve.html" title="Root class for 3D curves manipulated by handles, on which geometric algorithms work. An adapted curve is an interface between the services provided by a curve and those required of the curve by algorithms which use it. Two derived concrete classes are provided: " alt="" coords="21,80,150,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="18,5,153,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="TopOpeBRepBuild_WireEdgeClassifier" name="TopOpeBRepBuild_WireEdgeClassifier">
+<area shape="rect" id="node2" href="$class_top_ope_b_rep_build___composite_classifier.html" title="classify composite Loops, i.e, loops that can be either a Shape, or a block of Elements. " alt="" coords="15,80,212,121"/>
+<area shape="rect" id="node3" href="$class_top_ope_b_rep_build___loop_classifier.html" title="classify loops in order to build Areas " alt="" coords="5,5,221,32"/>
+</map>

@@ -1,0 +1,24 @@
+puts "========================"
+puts "BUC60738"                
+puts "========================"
+puts ""                                  
+puts "=================================="
+puts "It takes visual check for this BUG"
+puts "=================================="
+                        
+vinit
+BUC60738
+vfit
+vsetdispmode 1
+
+
+set x_coord 261
+set y_coord 314
+
+checkcolor $x_coord $y_coord 0 1 0
+
+if {$stat != 1} {
+   puts "Error : The style of edge is NOT dash"
+}
+
+checkview -screenshot -3d -path ${imagedir}/${test_image}.png

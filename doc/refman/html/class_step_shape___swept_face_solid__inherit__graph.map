@@ -1,0 +1,8 @@
+<map id="StepShape_SweptFaceSolid" name="StepShape_SweptFaceSolid">
+<area shape="rect" id="node6" href="$class_step_shape___extruded_face_solid.html" title="StepShape_ExtrudedFaceSolid" alt="" coords="5,379,208,405"/>
+<area shape="rect" id="node7" href="$class_step_shape___revolved_face_solid.html" title="StepShape_RevolvedFaceSolid" alt="" coords="233,379,434,405"/>
+<area shape="rect" id="node2" href="$class_step_shape___solid_model.html" title="StepShape_SolidModel" alt="" coords="141,229,299,256"/>
+<area shape="rect" id="node3" href="$class_step_geom___geometric_representation_item.html" title="StepGeom_GeometricRepresentationItem" alt="" coords="89,155,351,181"/>
+<area shape="rect" id="node4" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="123,80,317,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="153,5,287,32"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="Interface_ReaderModule" name="Interface_ReaderModule">
+<area shape="rect" id="node3" href="$class_i_g_e_s_data___read_write_module.html" title="Defines basic File Access Module, under the control of IGESReaderTool for Reading and IGESWriter for ..." alt="" coords="397,208,588,235"/>
+<area shape="rect" id="node12" href="$class_step_data___read_write_module.html" title="Defines basic File Access Module (Recognize, Read, Write) That is : ReaderModule (Recognize &amp; Read) +..." alt="" coords="399,448,586,475"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,313,140,340"/>
+<area shape="rect" id="node4" href="$class_i_g_e_s_appli___read_write_module.html" title="Defines basic File Access Module for IGESAppli (specific parts) Specific actions concern : Read and W..." alt="" coords="650,5,842,32"/>
+<area shape="rect" id="node5" href="$class_i_g_e_s_basic___read_write_module.html" title="Defines basic File Access Module for IGESBasic (specific parts) Specific actions concern : Read and W..." alt="" coords="648,56,844,83"/>
+<area shape="rect" id="node6" href="$class_i_g_e_s_defs___read_write_module.html" title="Defines Defs File Access Module for IGESDefs (specific parts) Specific actions concern : Read and Wri..." alt="" coords="651,107,841,133"/>
+<area shape="rect" id="node7" href="$class_i_g_e_s_dimen___read_write_module.html" title="Defines Dimen File Access Module for IGESDimen (specific parts) Specific actions concern : Read and W..." alt="" coords="646,157,846,184"/>
+<area shape="rect" id="node8" href="$class_i_g_e_s_draw___read_write_module.html" title="Defines Draw File Access Module for IGESDraw (specific parts) Specific actions concern : Read and Wri..." alt="" coords="650,208,842,235"/>
+<area shape="rect" id="node9" href="$class_i_g_e_s_geom___read_write_module.html" title="Defines Geom File Access Module for IGESGeom (specific parts) Specific actions concern : Read and Wri..." alt="" coords="647,259,845,285"/>
+<area shape="rect" id="node10" href="$class_i_g_e_s_graph___read_write_module.html" title="Defines Graph File Access Module for IGESGraph (specific parts) Specific actions concern : Read and W..." alt="" coords="647,309,845,336"/>
+<area shape="rect" id="node11" href="$class_i_g_e_s_solid___read_write_module.html" title="Defines Solid File Access Module for IGESSolid (specific parts) Specific actions concern : Read and W..." alt="" coords="650,360,842,387"/>
+<area shape="rect" id="node13" href="$class_r_w_header_section___read_write_module.html" title="General module to read and write HeaderSection entities. " alt="" coords="647,411,845,453"/>
+<area shape="rect" id="node14" href="$class_r_w_step_a_p214___read_write_module.html" title="General module to read and write StepAP214 entities. " alt="" coords="636,477,856,504"/>
+<area shape="rect" id="node15" href="$class_step_data___descr_read_write.html" title="StepData_DescrReadWrite" alt="" coords="657,528,835,555"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="StepData_EDescr" name="StepData_EDescr">
+<area shape="rect" id="node3" href="$class_step_data___e_c_descr.html" title="Describes a Complex Entity (Plex) as a list of Simple ones. " alt="" coords="5,155,140,181"/>
+<area shape="rect" id="node4" href="$class_step_data___e_s_descr.html" title="This class is intended to describe the authorized form for a Simple (not Plex) Entity, as a list of fields. " alt="" coords="164,155,299,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="84,5,219,32"/>
+</map>

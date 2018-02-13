@@ -1,0 +1,5 @@
+<map id="ChFi3d_Builder" name="ChFi3d_Builder">
+<area shape="rect" id="node2" href="$class_ch_fi3d___ch_builder.html" title="construction tool for 3D chamfers on edges (on a solid). " alt="" coords="5,80,132,107"/>
+<area shape="rect" id="node3" href="$class_ch_fi3d___fil_builder.html" title="Tool of construction of fillets 3d on edges (on a solid). " alt="" coords="156,80,280,107"/>
+<area shape="rect" id="node4" href="$class_fillet_surf___internal_builder.html" title="This class is private. It is used by the class Builder from FilletSurf. It computes geometric informa..." alt="" coords="137,155,299,181"/>
+</map>

@@ -1,0 +1,20 @@
+<map id="MoniTool_SignText" name="MoniTool_SignText">
+<area shape="rect" id="node3" href="$class_interface___sign_label.html" title="Signature to give the Label from the Model. " alt="" coords="373,208,507,235"/>
+<area shape="rect" id="node4" href="$class_interface___sign_type.html" title="Provides the basic service to get a type name, according to a norm It can be used for other classes (..." alt="" coords="374,259,506,285"/>
+<area shape="rect" id="node19" href="$class_moni_tool___sign_shape.html" title="Signs HShape according to its real content (type of Shape) Context is not used. " alt="" coords="368,309,512,336"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,259,140,285"/>
+<area shape="rect" id="node5" href="$class_i_f_select___signature.html" title="Signature provides the basic service used by the classes SelectSignature and Counter (i..." alt="" coords="560,259,692,285"/>
+<area shape="rect" id="node6" href="$class_i_f_select___sign_category.html" title="This Signature returns the Category of an entity, as recorded in the model. " alt="" coords="761,5,916,32"/>
+<area shape="rect" id="node7" href="$class_i_f_select___sign_multiple.html" title="Multiple Signature : ordered list of other Signatures It concatenates on a same line the result of it..." alt="" coords="765,56,913,83"/>
+<area shape="rect" id="node8" href="$class_i_f_select___sign_type.html" title="This Signature returns the cdl Type of an entity, under two forms : " alt="" coords="773,107,904,133"/>
+<area shape="rect" id="node10" href="$class_i_f_select___sign_validity.html" title="This Signature returns the Validity Status of an entity, as deducted from data in the model : it can ..." alt="" coords="765,157,912,184"/>
+<area shape="rect" id="node11" href="$class_i_g_e_s_select___i_g_e_s_name.html" title="IGESName is a Signature specific to IGESNorm : it considers the Name of an IGESEntity as being its Sh..." alt="" coords="757,208,920,235"/>
+<area shape="rect" id="node12" href="$class_i_g_e_s_select___i_g_e_s_type_form.html" title="IGESTypeForm is a Signature specific to the IGES Norm : it gives the signature under two possible for..." alt="" coords="745,259,932,285"/>
+<area shape="rect" id="node13" href="$class_i_g_e_s_select___sign_color.html" title="Gives Color attached to an entity Several forms are possible, according to &lt;mode&gt; 1 : number : &quot;Dnn&quot; ..." alt="" coords="762,309,915,336"/>
+<area shape="rect" id="node14" href="$class_i_g_e_s_select___sign_level_number.html" title="Gives D.E. Level Number under two possible forms : " alt="" coords="740,360,937,387"/>
+<area shape="rect" id="node15" href="$class_i_g_e_s_select___sign_status.html" title="Gives D.E. Status under the form i,j,k,l (4 figures) i for BlankStatus j for SubordinateStatus k for ..." alt="" coords="758,411,919,437"/>
+<area shape="rect" id="node16" href="$class_step_select___step_type.html" title="StepType is a Signature specific to Step definitions : it considers the type as defined in STEP Schem..." alt="" coords="765,461,913,488"/>
+<area shape="rect" id="node18" href="$class_x_s_control___sign_transfer_status.html" title="This Signatures gives the Transfer Status of an entity, as recorded in a TransferProcess. It can be : " alt="" coords="741,512,937,539"/>
+<area shape="rect" id="node9" href="$class_i_f_select___sign_ancestor.html" title="IFSelect_SignAncestor" alt="" coords="1009,107,1164,133"/>
+<area shape="rect" id="node17" href="$class_s_t_e_p_selections___select_derived.html" title="STEPSelections_SelectDerived" alt="" coords="985,461,1188,488"/>
+</map>

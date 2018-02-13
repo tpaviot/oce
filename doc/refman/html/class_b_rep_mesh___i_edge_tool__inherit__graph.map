@@ -1,0 +1,5 @@
+<map id="BRepMesh_IEdgeTool" name="BRepMesh_IEdgeTool">
+<area shape="rect" id="node3" href="$class_b_rep_mesh___edge_tessellation_extractor.html" title="Auxiliary class implements functionality retrieving tessellated representation of an edge stored in p..." alt="" coords="5,155,197,196"/>
+<area shape="rect" id="node4" href="$class_b_rep_mesh___edge_tessellator.html" title="Auxiliary class implements functionality producing tessellated representation of an edge based on edg..." alt="" coords="221,162,408,189"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="141,5,275,32"/>
+</map>

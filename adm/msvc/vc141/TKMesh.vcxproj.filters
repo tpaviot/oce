@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{D3BA6447-1941-0061-01B9-84EBA68B0FC4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepMesh">
+      <UniqueIdentifier>{B8427B01-0E98-020F-028D-8D3DC7D31436}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_CircleTool.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Classifier.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DataStructureOfDelaun.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Delaun.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DiscretFactory.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DiscretRoot.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_EdgeParameterProvider.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_EdgeTessellationExtractor.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_EdgeTessellator.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_FaceAttribute.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_FastDiscret.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_FastDiscretFace.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_GeomTool.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_IEdgeTool.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_IncrementalMesh.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_SelectorOfDataStructureOfDelaun.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_ShapeTool.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_VertexTool.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_WireChecker.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_WireInterferenceChecker.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKMesh.rc" />  </ItemGroup>
+</Project>

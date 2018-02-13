@@ -1,0 +1,5 @@
+<map id="GeomAdaptor_GHSurface" name="GeomAdaptor_GHSurface">
+<area shape="rect" id="node4" href="$class_geom_adaptor___h_surface.html" title="An interface between the services provided by any surface from the package Geom and those required of..." alt="" coords="10,229,173,256"/>
+<area shape="rect" id="node2" href="$class_adaptor3d___h_surface.html" title="Root class for surfaces manipulated by handles, on which geometric algorithms work. An adapted surface is an interface between the services provided by a surface and those required of the surface by algorithms which use it. A derived concrete class is provided: GeomAdaptor_HSurface for a surface from the Geom package. " alt="" coords="21,80,162,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="24,5,159,32"/>
+</map>

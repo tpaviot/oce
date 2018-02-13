@@ -1,0 +1,5 @@
+<map id="VrmlData_Cone" name="VrmlData_Cone">
+<area shape="rect" id="node2" href="$class_vrml_data___geometry.html" title="VrmlData_Geometry" alt="" coords="5,155,145,181"/>
+<area shape="rect" id="node3" href="$class_vrml_data___node.html" title="VrmlData_Node" alt="" coords="19,80,132,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="8,5,143,32"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="Geom_ElementarySurface" name="Geom_ElementarySurface">
+<area shape="rect" id="node5" href="$class_geom___conical_surface.html" title="Describes a cone. A cone is defined by the half&#45;angle at its apex, and is positioned in space by a co..." alt="" coords="745,5,895,32"/>
+<area shape="rect" id="node6" href="$class_geom___cylindrical_surface.html" title="This class defines the infinite cylindrical surface. " alt="" coords="736,56,904,83"/>
+<area shape="rect" id="node7" href="$class_geom___plane.html" title="Describes a plane in 3D space. A plane is positioned in space by a coordinate system (a gp_Ax3 object..." alt="" coords="771,107,869,133"/>
+<area shape="rect" id="node8" href="$class_geom___spherical_surface.html" title="Describes a sphere. A sphere is defined by its radius, and is positioned in space by a coordinate sys..." alt="" coords="739,157,901,184"/>
+<area shape="rect" id="node9" href="$class_geom___toroidal_surface.html" title="Describes a torus. A torus is defined by its major and minor radii, and positioned in space with a co..." alt="" coords="743,208,897,235"/>
+<area shape="rect" id="node2" href="$class_geom___surface.html" title="Describes the common behavior of surfaces in 3D space. The Geom package provides many implementations..." alt="" coords="357,107,465,133"/>
+<area shape="rect" id="node3" href="$class_geom___geometry.html" title="The abstract class Geometry for 3D space is the root class of all geometric objects from the Geom pac..." alt="" coords="188,107,309,133"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,107,140,133"/>
+</map>

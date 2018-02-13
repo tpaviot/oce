@@ -1,0 +1,41 @@
+puts "============"
+puts "OCC21091"
+puts "OCC21450"
+puts "============"
+puts ""
+
+pload XSDRAW
+vinit
+
+meshfromstl m [locate_data_file shape.stl]
+
+meshtext m
+
+vsetdispmode m 34
+
+file delete -force ${imagedir}/${test_image}.pdf
+set aFile ${imagedir}/${test_image}.pdf
+
+vcaps -ffp 1
+vexport ${aFile} PDF
+
+if { [checkplatform -windows] } {
+   set refsize 153993
+} else {
+   set refsize 144401
+}
+
+if { [file exists ${aFile}] } {
+   puts "Export to PDF file was done"
+   set filesize [file size ${aFile}]
+   if { $filesize != $refsize } {
+      puts "Error: Export to PDF file was done but size of file is incorrect (refsize = $refsize, current = $filesize)."
+	  puts "Error: Compare content of resulting PDF file with reference."
+	  puts "Error: Update refsize if it's necessary."
+   }
+} else {
+   puts "Faulty : Export to PDF file was not done"
+}
+
+checkview -screenshot -3d -path ${imagedir}/${test_image}.png
+

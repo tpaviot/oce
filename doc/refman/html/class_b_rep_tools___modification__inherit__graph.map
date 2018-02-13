@@ -1,0 +1,15 @@
+<map id="BRepTools_Modification" name="BRepTools_Modification">
+<area shape="rect" id="node3" href="$class_b_rep_offset___simple_offset.html" title="This class represents mechanism of simple offset algorithm i. e. topology&#45;preserve offset constructio..." alt="" coords="432,5,601,32"/>
+<area shape="rect" id="node4" href="$class_b_rep_tools___g_trsf_modification.html" title="Defines a modification of the geometry by a GTrsf from gp. All methods return True and transform the ..." alt="" coords="421,56,613,83"/>
+<area shape="rect" id="node5" href="$class_b_rep_tools___nurbs_convert_modification.html" title="Defines a modification of the geometry by a Trsf from gp. All methods return True and transform the g..." alt="" coords="397,107,636,133"/>
+<area shape="rect" id="node6" href="$class_b_rep_tools___trsf_modification.html" title="Describes a modification that uses a gp_Trsf to change the geometry of a shape. All functions return ..." alt="" coords="425,157,608,184"/>
+<area shape="rect" id="node8" href="$class_draft___modification.html" title="Draft_Modification" alt="" coords="454,208,579,235"/>
+<area shape="rect" id="node9" href="$class_shape_custom___modification.html" title="A base class of Modification&#39;s from ShapeCustom. Implements message sending mechanism. " alt="" coords="427,284,607,311"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,132,140,159"/>
+<area shape="rect" id="node7" href="$class_shape_custom___trsf_modification.html" title="Complements BRepTools_TrsfModification to provide reversible scaling regarding tolerances. Uses actual tolerances (attached to the shapes) not ones returned by BRep_Tool::Tolerance to work with tolerances lower than Precision::Confusion. " alt="" coords="697,144,898,171"/>
+<area shape="rect" id="node10" href="$class_shape_custom___b_spline_restriction.html" title="this tool intended for aproximation surfaces, curves and pcurves with specified degree ..." alt="" coords="688,195,907,221"/>
+<area shape="rect" id="node11" href="$class_shape_custom___convert_to_b_spline.html" title="implement a modification for BRepTools Modifier algortihm. Converts Surface of Linear Exctrusion..." alt="" coords="691,245,904,272"/>
+<area shape="rect" id="node12" href="$class_shape_custom___convert_to_revolution.html" title="implements a modification for the BRepTools Modifier algortihm. Converts all elementary surfaces into..." alt="" coords="684,296,911,323"/>
+<area shape="rect" id="node13" href="$class_shape_custom___direct_modification.html" title="implements a modification for the BRepTools Modifier algortihm. Will redress indirect surfaces..." alt="" coords="690,347,905,373"/>
+<area shape="rect" id="node14" href="$class_shape_custom___swept_to_elementary.html" title="implements a modification for the BRepTools Modifier algortihm. Converts all elementary surfaces into..." alt="" coords="684,397,911,424"/>
+</map>

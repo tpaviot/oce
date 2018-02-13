@@ -1,0 +1,26 @@
+puts "TODO OCC25917 ALL: Faulty shapes in variables faulty_1 to faulty_"
+puts "TODO ?OCC25917 ALL: Error : The area of result shape is"
+puts "TODO OCC25917 ALL: Error :  is WRONG because number of "
+puts "========================"
+puts " OCC472 "
+puts "(case 3)"
+puts "========================"
+puts ""
+#####################################################
+## Bad result of Fuse Operation (Cut&Common - bad too). SAM1470 (#2634) 
+#####################################################
+
+restore [locate_data_file OCC472a.brep] b1 
+checkshape b1
+
+restore [locate_data_file OCC472b.brep] b2
+checkshape b2
+
+bfuse result b1 b2
+
+checknbshapes result -vertex 66 -edge 107
+
+checkprops result -s 229.516 
+checkshape result
+checkview -display result -2d -path ${imagedir}/${test_image}.png
+

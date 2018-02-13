@@ -1,0 +1,6 @@
+<map id="Expr_NamedExpression" name="Expr_NamedExpression">
+<area shape="rect" id="node4" href="$class_expr___named_constant.html" title="Describes any numeric constant known by a special name (as PI, e,...). " alt="" coords="5,229,155,256"/>
+<area shape="rect" id="node5" href="$class_expr___named_unknown.html" title="This class describes any variable of an expression. Assignment is treated directly in this class..." alt="" coords="179,229,330,256"/>
+<area shape="rect" id="node2" href="$class_expr___general_expression.html" title="Defines the general purposes of any expression. " alt="" coords="83,80,250,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="99,5,234,32"/>
+</map>

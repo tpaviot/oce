@@ -1,0 +1,25 @@
+digraph schema_TKFillet
+{
+	TKFillet [ URL = "toolkit_tkfillet.html", shape = box ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKFillet -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKFillet -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKFillet -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKGeomBase [ URL = "toolkit_tkgeombase.html" , shape = box ]
+	TKFillet -> TKGeomBase [ color = "midnightblue", style = "solid" ]
+	TKGeomAlgo [ URL = "toolkit_tkgeomalgo.html" , shape = box ]
+	TKFillet -> TKGeomAlgo [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKFillet -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKTopAlgo [ URL = "toolkit_tktopalgo.html" , shape = box ]
+	TKFillet -> TKTopAlgo [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKFillet -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKBool [ URL = "toolkit_tkbool.html" , shape = box ]
+	TKFillet -> TKBool [ color = "midnightblue", style = "solid" ]
+	TKShHealing [ URL = "toolkit_tkshhealing.html" , shape = box ]
+	TKFillet -> TKShHealing [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

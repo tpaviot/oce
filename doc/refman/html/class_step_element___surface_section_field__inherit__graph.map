@@ -1,0 +1,5 @@
+<map id="StepElement_SurfaceSectionField" name="StepElement_SurfaceSectionField">
+<area shape="rect" id="node3" href="$class_step_element___surface_section_field_constant.html" title="Representation of STEP entity SurfaceSectionFieldConstant. " alt="" coords="5,169,197,211"/>
+<area shape="rect" id="node4" href="$class_step_element___surface_section_field_varying.html" title="Representation of STEP entity SurfaceSectionFieldVarying. " alt="" coords="221,169,413,211"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="142,5,277,32"/>
+</map>

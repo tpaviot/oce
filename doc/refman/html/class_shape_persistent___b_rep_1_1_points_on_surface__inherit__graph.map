@@ -1,0 +1,7 @@
+<map id="ShapePersistent_BRep::PointsOnSurface" name="ShapePersistent_BRep::PointsOnSurface">
+<area shape="rect" id="node5" href="$class_shape_persistent___b_rep_1_1_point_on_curve_on_surface.html" title="ShapePersistent_BRep\l::PointOnCurveOnSurface" alt="" coords="5,333,176,375"/>
+<area shape="rect" id="node6" href="$class_shape_persistent___b_rep_1_1_point_on_surface.html" title="ShapePersistent_BRep\l::PointOnSurface" alt="" coords="200,333,357,375"/>
+<area shape="rect" id="node2" href="$class_shape_persistent___b_rep_1_1_point_representation.html" title="ShapePersistent_BRep\l::PointRepresentation" alt="" coords="105,155,263,196"/>
+<area shape="rect" id="node3" href="$class_std_obj_mgt___persistent.html" title="Root class for a temporary persistent object that reads data from a file and then creates transient o..." alt="" coords="109,80,259,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="117,5,251,32"/>
+</map>

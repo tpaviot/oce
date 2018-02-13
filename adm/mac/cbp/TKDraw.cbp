@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKDraw" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKDraw.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKDraw.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-framework Tcl" />
+			<Add option="-framework Tk" />
+			<Add option="-framework Appkit" />
+			<Add option="-framework IOKit" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="objc" />
+			<Add library="TKernel" />
+			<Add library="TKG2d" />
+			<Add library="TKGeomBase" />
+			<Add library="TKG3d" />
+			<Add library="TKMath" />
+			<Add library="TKBRep" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKMesh" />
+			<Add library="TKService" />
+			<Add library="TKHLR" />
+		</Linker>
+		<Unit filename="../../../src/Draw/CommandWindow.cxx" />
+		<Unit filename="../../../src/Draw/Draw.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Axis2D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Axis3D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_BasicCommands.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Box.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Chronometer.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Circle2D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Circle3D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Color.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Commands.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Debug.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Display.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Drawable2D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Drawable3D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_GraphicCommands.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Grid.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Interpretor.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Main.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Marker2D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Marker3D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Number.cxx" />
+		<Unit filename="../../../src/Draw/Draw_PloadCommands.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Printer.cxx" />
+		<Unit filename="../../../src/Draw/Draw_ProgressIndicator.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Segment2D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Segment3D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Text2D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Text3D.cxx" />
+		<Unit filename="../../../src/Draw/Draw_UnitCommands.cxx" />
+		<Unit filename="../../../src/Draw/Draw_VariableCommands.cxx" />
+		<Unit filename="../../../src/Draw/Draw_View.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Viewer.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Window.cxx" />
+		<Unit filename="../../../src/Draw/Draw_Window_1.mm">
+			<Option compile="1" />
+			<Option link="1" />
+		</Unit>
+		<Unit filename="../../../src/Draw/MainWindow.cxx" />
+		<Unit filename="../../../src/Draw/init.cxx" />
+		<Unit filename="../../../src/DBRep/DBRep.cxx" />
+		<Unit filename="../../../src/DBRep/DBRep_Debug.cxx" />
+		<Unit filename="../../../src/DBRep/DBRep_DrawableShape.cxx" />
+		<Unit filename="../../../src/DBRep/DBRep_Edge.cxx" />
+		<Unit filename="../../../src/DBRep/DBRep_Face.cxx" />
+		<Unit filename="../../../src/DBRep/DBRep_HideData.cxx" />
+		<Unit filename="../../../src/DBRep/DBRep_IsoBuilder.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_BSplineCurve.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_BSplineCurve2d.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_BSplineSurface.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_BezierCurve.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_BezierCurve2d.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_BezierSurface.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_Curve.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_Curve2d.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_Debug.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_Drawable.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_Point.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_Polygon2D.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_Polygon3D.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_Surface.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_Triangulation.cxx" />
+		<Unit filename="../../../src/DrawTrSurf/DrawTrSurf_Triangulation2D.cxx" />
+	</Project>
+</CodeBlocks_project_file>

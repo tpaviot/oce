@@ -1,0 +1,8 @@
+<map id="BRepAlgo_BooleanOperation" name="BRepAlgo_BooleanOperation">
+<area shape="rect" id="node4" href="$class_b_rep_algo___common.html" title="Describes functions for performing a topological common operation (Boolean intersection). A Common object provides the framework for: " alt="" coords="5,229,144,256"/>
+<area shape="rect" id="node5" href="$class_b_rep_algo___cut.html" title="Describes functions for performing a topological cut operation (Boolean subtraction). A Cut object provides the framework for: " alt="" coords="168,229,275,256"/>
+<area shape="rect" id="node6" href="$class_b_rep_algo___fuse.html" title="Describes functions for performing a topological fusion operation (Boolean union). A Fuse object provides the framework for: " alt="" coords="299,229,415,256"/>
+<area shape="rect" id="node7" href="$class_b_rep_algo___section.html" title="Construction of the section lines between two shapes. For this Boolean operation, each face of the fi..." alt="" coords="440,229,571,256"/>
+<area shape="rect" id="node2" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="194,80,385,107"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="199,5,380,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="StepBasic_Date" name="StepBasic_Date">
+<area shape="rect" id="node3" href="$class_step_basic___calendar_date.html" title="StepBasic_CalendarDate" alt="" coords="5,155,172,181"/>
+<area shape="rect" id="node4" href="$class_step_basic___ordinal_date.html" title="StepBasic_OrdinalDate" alt="" coords="197,155,354,181"/>
+<area shape="rect" id="node5" href="$class_step_basic___week_of_year_and_day_date.html" title="StepBasic_WeekOfYearAndDayDate" alt="" coords="379,155,615,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="208,5,343,32"/>
+</map>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKG2d" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKG2d" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__Geom2d_DLL" />
+					<Add option="-D__LProp_DLL" />
+					<Add option="-D__TColGeom2d_DLL" />
+					<Add option="-D__Adaptor2d_DLL" />
+					<Add option="-D__Geom2dLProp_DLL" />
+					<Add option="-D__Geom2dAdaptor_DLL" />
+					<Add option="-D__GProp_DLL" />
+					<Add option="-D__Geom2dEvaluator_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKG2d_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKG2d" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__Geom2d_DLL" />
+					<Add option="-D__LProp_DLL" />
+					<Add option="-D__TColGeom2d_DLL" />
+					<Add option="-D__Adaptor2d_DLL" />
+					<Add option="-D__Geom2dLProp_DLL" />
+					<Add option="-D__Geom2dAdaptor_DLL" />
+					<Add option="-D__GProp_DLL" />
+					<Add option="-D__Geom2dEvaluator_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKG2d_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+		</Linker>
+		<Unit filename="../../../src/Geom2d/Geom2d_AxisPlacement.cxx" />
+		<Unit filename="../../../src/Geom2d/Geom2d_BSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_BSplineCurve_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_BezierCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_BoundedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_CartesianPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Circle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Conic.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Direction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Ellipse.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Geometry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Hyperbola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Line.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_OffsetCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Parabola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Point.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Transformation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_TrimmedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_Vector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2d/Geom2d_VectorWithMagnitude.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/LProp/LProp_AnalyticCurInf.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/LProp/LProp_CurAndInf.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor2d/Adaptor2d_Curve2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor2d/Adaptor2d_HCurve2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor2d/Adaptor2d_HLine2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor2d/Adaptor2d_HOffsetCurve_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor2d/Adaptor2d_Line2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Adaptor2d/Adaptor2d_OffsetCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dLProp/Geom2dLProp_CLProps2d_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dLProp/Geom2dLProp_CurAndInf2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dLProp/Geom2dLProp_Curve2dTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dLProp/Geom2dLProp_FuncCurExt.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dLProp/Geom2dLProp_FuncCurNul.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dLProp/Geom2dLProp_NumericCurInf2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dAdaptor/Geom2dAdaptor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dAdaptor/Geom2dAdaptor_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dAdaptor/Geom2dAdaptor_GHCurve_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dAdaptor/Geom2dAdaptor_HCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GProp/GProp.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GProp/GProp_CelGProps.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GProp/GProp_GProps.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GProp/GProp_PEquation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GProp/GProp_PGProps.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GProp/GProp_PrincipalProps.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GProp/GProp_SelGProps.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GProp/GProp_VelGProps.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dEvaluator/Geom2dEvaluator_OffsetCurve.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

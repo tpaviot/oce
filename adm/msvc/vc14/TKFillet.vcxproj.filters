@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{BF8FA9E7-13DE-0B1B-02EA-95A6B7F46967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\ChFiDS">
+      <UniqueIdentifier>{3417547E-0F27-031A-0296-D056BCEE6DC7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\ChFi2d">
+      <UniqueIdentifier>{69604DF3-05C3-0150-0C03-3DB23B804DF9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\ChFi3d">
+      <UniqueIdentifier>{7F21F988-03AE-01F0-0DCF-663A0F6DE5DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\ChFiKPart">
+      <UniqueIdentifier>{0E95BE98-091F-0CE3-0469-CDC339CBFE2A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Blend">
+      <UniqueIdentifier>{9BADA99A-1080-0F55-1168-F49ECEE5E762}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepBlend">
+      <UniqueIdentifier>{BA05A7CC-031F-0572-0F44-99CEFEE4A8E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BlendFunc">
+      <UniqueIdentifier>{0B73BABD-1930-0616-0A4E-C7BA94AA659E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepFilletAPI">
+      <UniqueIdentifier>{F57AE055-093E-064C-182A-632C52F2F5A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\FilletSurf">
+      <UniqueIdentifier>{DD78C0E2-086B-03C6-18C1-3273AC48616A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_ChamfSpine.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_CircSection.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_CommonPoint.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_ElSpine.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_FaceInterference.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_FilSpine.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_HElSpine_0.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_Map.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_Regul.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_Spine.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_Stripe.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_StripeMap.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiDS\ChFiDS_SurfData.cxx">
+      <Filter>Source files\ChFiDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d.cxx">
+      <Filter>Source files\ChFi2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_AnaFilletAlgo.cxx">
+      <Filter>Source files\ChFi2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_Builder.cxx">
+      <Filter>Source files\ChFi2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_Builder_0.cxx">
+      <Filter>Source files\ChFi2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_ChamferAPI.cxx">
+      <Filter>Source files\ChFi2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_FilletAPI.cxx">
+      <Filter>Source files\ChFi2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi2d\ChFi2d_FilletAlgo.cxx">
+      <Filter>Source files\ChFi2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_Builder.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_Builder_0.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_Builder_1.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_Builder_2.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_Builder_6.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_Builder_C1.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_Builder_C2.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_Builder_CnCrn.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_Builder_NotImp.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_Builder_SpKP.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_ChBuilder.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_ChBuilder_C2.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_ChBuilder_C3.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_Debug.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_FilBuilder.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_FilBuilder_C2.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_FilBuilder_C3.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFi3d\ChFi3d_SearchSing.cxx">
+      <Filter>Source files\ChFi3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_CS.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChAsymPlnCon.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChAsymPlnCyl.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChAsymPlnPln.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChPlnCon.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChPlnCyl.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChPlnPln.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_Fcts.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_FilPlnCon.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_FilPlnCyl.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_FilPlnPln.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_Rotule.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_Sphere.cxx">
+      <Filter>Source files\ChFiKPart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Blend\Blend_AppFunction.cxx">
+      <Filter>Source files\Blend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Blend\Blend_CSFunction.cxx">
+      <Filter>Source files\Blend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Blend\Blend_CurvPointFuncInv.cxx">
+      <Filter>Source files\Blend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Blend\Blend_Debug.cxx">
+      <Filter>Source files\Blend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Blend\Blend_FuncInv.cxx">
+      <Filter>Source files\Blend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Blend\Blend_Function.cxx">
+      <Filter>Source files\Blend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Blend\Blend_Point.cxx">
+      <Filter>Source files\Blend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Blend\Blend_RstRstFunction.cxx">
+      <Filter>Source files\Blend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Blend\Blend_SurfCurvFuncInv.cxx">
+      <Filter>Source files\Blend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Blend\Blend_SurfPointFuncInv.cxx">
+      <Filter>Source files\Blend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Blend\Blend_SurfRstFunction.cxx">
+      <Filter>Source files\Blend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_AppFunc.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_AppFuncRoot.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_AppFuncRst.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_AppFuncRstRst.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_AppSurf_0.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_AppSurface.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_BlendTool.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_CSWalking_0.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_CurvPointRadInv.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_Extremity.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_HCurve2dTool.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_HCurveTool.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_Line.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_PointOnRst.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_RstRstConstRad.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_RstRstEvolRad.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_RstRstLineBuilder.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_SurfCurvConstRadInv.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_SurfCurvEvolRadInv.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_SurfPointConstRadInv.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_SurfPointEvolRadInv.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_SurfRstConstRad.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_SurfRstEvolRad.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_SurfRstLineBuilder.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepBlend\BRepBlend_Walking_0.cxx">
+      <Filter>Source files\BRepBlend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_CSCircular.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_CSConstRad.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_ChAsym.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_ChAsymInv.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_ChamfInv.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_Chamfer.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_ConstRad.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_ConstRadInv.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_Corde.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_EvolRad.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_EvolRadInv.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_Ruled.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_RuledInv.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BlendFunc\BlendFunc_Tensor.cxx">
+      <Filter>Source files\BlendFunc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFilletAPI\BRepFilletAPI_MakeChamfer.cxx">
+      <Filter>Source files\BRepFilletAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFilletAPI\BRepFilletAPI_MakeFillet.cxx">
+      <Filter>Source files\BRepFilletAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFilletAPI\BRepFilletAPI_MakeFillet2d.cxx">
+      <Filter>Source files\BRepFilletAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FilletSurf\FilletSurf_Builder.cxx">
+      <Filter>Source files\FilletSurf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FilletSurf\FilletSurf_InternalBuilder.cxx">
+      <Filter>Source files\FilletSurf</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKFillet.rc" />  </ItemGroup>
+</Project>

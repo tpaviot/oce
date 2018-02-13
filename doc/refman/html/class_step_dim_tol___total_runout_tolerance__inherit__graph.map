@@ -1,0 +1,5 @@
+<map id="StepDimTol_TotalRunoutTolerance" name="StepDimTol_TotalRunoutTolerance">
+<area shape="rect" id="node2" href="$class_step_dim_tol___geometric_tolerance_with_datum_reference.html" title="Representation of STEP entity GeometricToleranceWithDatumReference. " alt="" coords="10,155,222,196"/>
+<area shape="rect" id="node3" href="$class_step_dim_tol___geometric_tolerance.html" title="Representation of STEP entity GeometricTolerance. " alt="" coords="10,80,222,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="49,5,183,32"/>
+</map>

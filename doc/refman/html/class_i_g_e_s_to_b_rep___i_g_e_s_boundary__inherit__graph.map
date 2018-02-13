@@ -1,0 +1,4 @@
+<map id="IGESToBRep_IGESBoundary" name="IGESToBRep_IGESBoundary">
+<area shape="rect" id="node3" href="$class_i_g_e_s_control___i_g_e_s_boundary.html" title="Translates IGES boundary entity (types 141, 142 and 508) in Advanced Data Exchange. Redefines translation and treatment methods from inherited open class IGESToBRep_IGESBoundary. " alt="" coords="8,155,195,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="34,5,169,32"/>
+</map>

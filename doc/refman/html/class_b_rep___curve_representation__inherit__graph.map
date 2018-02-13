@@ -1,0 +1,13 @@
+<map id="BRep_CurveRepresentation" name="BRep_CurveRepresentation">
+<area shape="rect" id="node3" href="$class_b_rep___curve_on2_surfaces.html" title="Defines a continuity between two surfaces. " alt="" coords="431,5,599,32"/>
+<area shape="rect" id="node4" href="$class_b_rep___g_curve.html" title="Root class for the geometric curves representation. Contains a range. Contains a first and a last par..." alt="" coords="464,56,567,83"/>
+<area shape="rect" id="node8" href="$class_b_rep___polygon3_d.html" title="Representation by a 3D polygon. " alt="" coords="453,107,577,133"/>
+<area shape="rect" id="node9" href="$class_b_rep___polygon_on_surface.html" title="Representation of a 2D polygon in the parametric space of a surface. " alt="" coords="431,157,600,184"/>
+<area shape="rect" id="node11" href="$class_b_rep___polygon_on_triangulation.html" title="A representation by an array of nodes on a triangulation. " alt="" coords="416,208,615,235"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,107,140,133"/>
+<area shape="rect" id="node5" href="$class_b_rep___curve3_d.html" title="Representation of a curve by a 3D curve. " alt="" coords="727,31,837,57"/>
+<area shape="rect" id="node6" href="$class_b_rep___curve_on_surface.html" title="Representation of a curve by a curve in the parametric space of a surface. " alt="" coords="705,81,859,108"/>
+<area shape="rect" id="node7" href="$class_b_rep___curve_on_closed_surface.html" title="Representation of a curve by two pcurves on a closed surface. " alt="" coords="949,81,1144,108"/>
+<area shape="rect" id="node10" href="$class_b_rep___polygon_on_closed_surface.html" title="Representation by two 2d polygons in the parametric space of a surface. " alt="" coords="677,157,887,184"/>
+<area shape="rect" id="node12" href="$class_b_rep___polygon_on_closed_triangulation.html" title="A representation by two arrays of nodes on a triangulation. " alt="" coords="663,208,901,235"/>
+</map>

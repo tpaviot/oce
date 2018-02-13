@@ -1,0 +1,19 @@
+puts "================"
+puts "CR25519"
+puts "================"
+puts ""
+###############################################
+## BRepMesh can break mesh regularity for BSpline surfaces
+###############################################
+
+restore [locate_data_file bug25519_testtriangulation.brep] a
+
+tclean a
+incmesh a 0.01
+front
+fit
+isos a 0
+triangles a
+
+checktrinfo a -tri 3347 -nod 1780 -defl 0.08541878790375132 -tol_rel_defl 0.05 -tol_rel_tri 0.05 -tol_rel_nod 0.05
+checkview -screenshot -2d -path ${imagedir}/${test_image}.png

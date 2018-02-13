@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKBO" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKBO" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__IntTools_DLL" />
+					<Add option="-D__BRepAlgoAPI_DLL" />
+					<Add option="-D__BOPCol_DLL" />
+					<Add option="-D__BOPDS_DLL" />
+					<Add option="-D__BOPAlgo_DLL" />
+					<Add option="-D__BOPTools_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKBO_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKBO" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__IntTools_DLL" />
+					<Add option="-D__BRepAlgoAPI_DLL" />
+					<Add option="-D__BOPCol_DLL" />
+					<Add option="-D__BOPDS_DLL" />
+					<Add option="-D__BOPAlgo_DLL" />
+					<Add option="-D__BOPTools_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKBO_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKBRep" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKGeomBase" />
+			<Add library="TKPrim" />
+			<Add library="TKShHealing" />
+		</Linker>
+		<Unit filename="../../../src/IntTools/IntTools.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_BaseRangeSample.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_BeanFaceIntersector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_CArray1OfInteger_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_CArray1OfReal_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_CommonPrt.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_Context.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_CurveRangeLocalizeData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_CurveRangeSample.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_EdgeEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_EdgeFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_FClass2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_FaceFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_MarkedRangeSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_PntOn2Faces.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_PntOnFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_Range.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_Root.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_ShrunkRange.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_SurfaceRangeLocalizeData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_SurfaceRangeSample.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_Tools.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_TopolTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IntTools/IntTools_WLineTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Algo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_BooleanOperation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_BuilderAlgo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Check.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Common.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Cut.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Fuse.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Section.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Splitter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPCol/BOPCol_Box2DBndTree.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPCol/BOPCol_BoxBndTree.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPDS/BOPDS_CommonBlock.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPDS/BOPDS_DS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPDS/BOPDS_IndexRange.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPDS/BOPDS_Iterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPDS/BOPDS_IteratorSI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPDS/BOPDS_PassKey.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPDS/BOPDS_Pave.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPDS/BOPDS_PaveBlock.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPDS/BOPDS_ShapeInfo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPDS/BOPDS_SubIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Algo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_ArgumentAnalyzer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BOP.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BuilderArea.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BuilderFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BuilderShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BuilderSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder_2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder_3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder_4.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_CellsBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_CheckResult.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_CheckerSI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_CheckerSI_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_MakerVolume.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Options.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_10.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_11.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_3.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_4.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_5.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_6.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_7.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_8.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_9.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Section.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_SectionAttribute.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_ShellSplitter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Splitter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Tools.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_WireSplitter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_WireSplitter_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPTools/BOPTools.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools2D.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools2D_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools3D.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools_2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPTools/BOPTools_EdgeSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPTools/BOPTools_Set.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BOPTools/BOPTools_ShapeSet.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

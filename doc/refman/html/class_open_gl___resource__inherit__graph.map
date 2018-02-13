@@ -1,0 +1,18 @@
+<map id="OpenGl_Resource" name="OpenGl_Resource">
+<area shape="rect" id="node3" href="$class_open_gl___capping_plane_resource.html" title="Container of graphical resources for rendering capping plane associated to graphical clipping plane..." alt="" coords="364,5,572,32"/>
+<area shape="rect" id="node4" href="$class_open_gl___font.html" title="Texture font. " alt="" coords="419,56,517,83"/>
+<area shape="rect" id="node5" href="$class_open_gl___frame_buffer.html" title="Class implements FrameBuffer Object (FBO) resource intended for off&#45;screen rendering. " alt="" coords="397,107,539,133"/>
+<area shape="rect" id="node6" href="$class_open_gl___line_attributes.html" title="Utility class to manage OpenGL state of polygon hatching rasterization and keeping its cached state..." alt="" coords="391,157,545,184"/>
+<area shape="rect" id="node7" href="$class_open_gl___named_resource.html" title="Named resource object. " alt="" coords="383,208,553,235"/>
+<area shape="rect" id="node12" href="$class_open_gl___sampler.html" title="Class implements OpenGL sampler object resource that stores the sampling parameters for a texture acc..." alt="" coords="407,259,529,285"/>
+<area shape="rect" id="node13" href="$class_open_gl___shader_object.html" title="Wrapper for OpenGL shader object. " alt="" coords="392,309,544,336"/>
+<area shape="rect" id="node14" href="$class_open_gl___vertex_buffer.html" title="Vertex Buffer Object &#45; is a general storage object for vertex attributes (position, normal, color). Notice that you should use OpenGl_IndexBuffer specialization for array of indices. " alt="" coords="396,360,540,387"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,183,140,209"/>
+<area shape="rect" id="node8" href="$class_open_gl___shader_program.html" title="Wrapper for OpenGL program object. " alt="" coords="633,179,796,205"/>
+<area shape="rect" id="node10" href="$class_open_gl___texture.html" title="Texture resource. " alt="" coords="657,233,773,260"/>
+<area shape="rect" id="node9" href="$class_open_gl___shader_manager_1_1_open_gl___shader_program_f_f_p.html" title="Fake OpenGL program for tracking FFP state in the way consistent to programmable pipeline. " alt="" coords="857,169,1053,210"/>
+<area shape="rect" id="node11" href="$class_open_gl___point_sprite.html" title="Point sprite resource. On modern hardware it will be texture with extra parameters. On ancient hardware sprites will be drawn using bitmaps. " alt="" coords="887,235,1024,261"/>
+<area shape="rect" id="node15" href="$class_open_gl___index_buffer.html" title="Index buffer is just a VBO with special target (GL_ELEMENT_ARRAY_BUFFER). " alt="" coords="646,309,783,336"/>
+<area shape="rect" id="node16" href="$class_open_gl___texture_buffer_arb.html" title="Texture Buffer Object. This is a special 1D texture that VBO&#45;style initialized. The main differences ..." alt="" coords="630,360,799,387"/>
+<area shape="rect" id="node17" href="$class_open_gl___vertex_buffer_compat.html" title="Compatibility layer for old OpenGL without VBO. Make sure to pass pointer from GetDataOffset() instea..." alt="" coords="620,411,809,437"/>
+</map>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKLCAF" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKLCAF" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__TDF_DLL" />
+					<Add option="-D__TDataStd_DLL" />
+					<Add option="-D__TFunction_DLL" />
+					<Add option="-D__TDocStd_DLL" />
+					<Add option="-D__AppStdL_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKLCAF_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKLCAF" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__TDF_DLL" />
+					<Add option="-D__TDataStd_DLL" />
+					<Add option="-D__TFunction_DLL" />
+					<Add option="-D__TDocStd_DLL" />
+					<Add option="-D__AppStdL_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKLCAF_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKCDF" />
+			<Add library="TKernel" />
+		</Linker>
+		<Unit filename="../../../src/TDF/TDF.cxx" />
+		<Unit filename="../../../src/TDF/TDF_Attribute.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_AttributeDelta.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_AttributeIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_ChildIDIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_ChildIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_ClosureMode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_ClosureTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_ComparisonTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_CopyLabel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_CopyTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_Data.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_DataSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_DefaultDeltaOnModification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_DefaultDeltaOnRemoval.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_Delta.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_DeltaOnAddition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_DeltaOnForget.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_DeltaOnModification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_DeltaOnRemoval.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_DeltaOnResume.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_IDFilter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_Label.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_LabelNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_Reference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_RelocationTable.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_TagSource.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_Tool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDF/TDF_Transaction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_AsciiString.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_BooleanArray.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_BooleanList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_ByteArray.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_ChildNodeIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_Comment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_Current.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_DeltaOnModificationOfByteArray.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_DeltaOnModificationOfExtStringArray.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_DeltaOnModificationOfIntArray.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_DeltaOnModificationOfIntPackedMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_DeltaOnModificationOfRealArray.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_Directory.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_Expression.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_ExtStringArray.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_ExtStringList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringByte.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringHArray1OfInteger.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringHArray1OfReal.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringInteger.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringReal.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_HDataMapOfStringString.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_IntPackedMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_Integer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_IntegerArray.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_IntegerList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_Name.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_NamedData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_NoteBook.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_Real.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_RealArray.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_RealList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_ReferenceArray.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_ReferenceList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_Relation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_Tick.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_TreeNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_UAttribute.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataStd/TDataStd_Variable.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TFunction/TFunction_Driver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TFunction/TFunction_DriverTable.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TFunction/TFunction_Function.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TFunction/TFunction_GraphNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TFunction/TFunction_IFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TFunction/TFunction_Iterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TFunction/TFunction_Logbook.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TFunction/TFunction_Scope.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_Application.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_ApplicationDelta.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_CompoundDelta.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_Context.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_Document.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_Modified.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_MultiTransactionManager.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_Owner.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_PathParser.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_XLink.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_XLinkIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_XLinkRoot.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDocStd/TDocStd_XLinkTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppStdL/AppStdL_Application.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

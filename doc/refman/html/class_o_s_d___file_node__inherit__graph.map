@@ -1,0 +1,4 @@
+<map id="OSD_FileNode" name="OSD_FileNode">
+<area shape="rect" id="node2" href="$class_o_s_d___directory.html" title="Management of directories (a set of directory oriented tools) " alt="" coords="5,80,115,107"/>
+<area shape="rect" id="node3" href="$class_o_s_d___file.html" title="Basic tools to manage files Warning: &#39;ProgramError&#39; is raised when somebody wants to use the methods ..." alt="" coords="139,80,218,107"/>
+</map>

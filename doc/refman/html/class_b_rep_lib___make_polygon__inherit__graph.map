@@ -1,0 +1,4 @@
+<map id="BRepLib_MakePolygon" name="BRepLib_MakePolygon">
+<area shape="rect" id="node2" href="$class_b_rep_lib___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="11,80,157,107"/>
+<area shape="rect" id="node3" href="$class_b_rep_lib___command.html" title="Root class for all commands in BRepLib. " alt="" coords="15,5,153,32"/>
+</map>

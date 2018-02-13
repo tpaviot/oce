@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6685DBDD-0104-0DD2-04F2-E2B48BBB3EC0}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc12\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc12\obj\TKSTEP\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc12\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc12\objd\TKSTEP\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc12\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc12\obj\TKSTEP\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc12\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc12\objd\TKSTEP\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc12\bin\TKSTEP.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;__RWStepAP242_DLL;__StepAP242_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc12\obj\TKSTEP/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc12\obj\TKSTEP/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc12\obj\TKSTEP/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;__RWStepAP242_DLL;__StepAP242_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKSTEPAttr.lib;TKSTEP209.lib;TKSTEPBase.lib;TKBRep.lib;TKMath.lib;TKG2d.lib;TKShHealing.lib;TKTopAlgo.lib;TKG3d.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKXSBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc12\bin\TKSTEP.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc12\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc12\bin\TKSTEP.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc12\lib\TKSTEP.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc12\bind\TKSTEP.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;__RWStepAP242_DLL;__StepAP242_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc12\objd\TKSTEP/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc12\objd\TKSTEP/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc12\objd\TKSTEP/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;__RWStepAP242_DLL;__StepAP242_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKSTEPAttr.lib;TKSTEP209.lib;TKSTEPBase.lib;TKBRep.lib;TKMath.lib;TKG2d.lib;TKShHealing.lib;TKTopAlgo.lib;TKG3d.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKXSBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc12\bind\TKSTEP.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc12\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc12\bind\TKSTEP.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc12\libd\TKSTEP.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc12\bin\TKSTEP.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;__RWStepAP242_DLL;__StepAP242_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc12\obj\TKSTEP/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc12\obj\TKSTEP/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc12\obj\TKSTEP/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;__RWStepAP242_DLL;__StepAP242_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKSTEPAttr.lib;TKSTEP209.lib;TKSTEPBase.lib;TKBRep.lib;TKMath.lib;TKG2d.lib;TKShHealing.lib;TKTopAlgo.lib;TKG3d.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKXSBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc12\bin\TKSTEP.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc12\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc12\bin\TKSTEP.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc12\lib\TKSTEP.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc12\bind\TKSTEP.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;__RWStepAP242_DLL;__StepAP242_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc12\objd\TKSTEP/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc12\objd\TKSTEP/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc12\objd\TKSTEP/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;__RWStepAP242_DLL;__StepAP242_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKSTEPAttr.lib;TKSTEP209.lib;TKSTEPBase.lib;TKBRep.lib;TKMath.lib;TKG2d.lib;TKShHealing.lib;TKTopAlgo.lib;TKG3d.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKXSBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc12\bind\TKSTEP.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc12\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc12\bind\TKSTEP.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc12\libd\TKSTEP.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedApprovalAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedDateAndTimeAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedDateAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedDocumentReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedExternalIdentificationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedGroupAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedOrganizationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedPersonAndOrganizationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedPresentedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AppliedSecurityClassificationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_ApprovalItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignActualDateAndTimeAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignActualDateAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignApprovalAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignDateAndPersonAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignDateAndPersonItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignDateAndTimeItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignDatedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignDocumentReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignGeneralOrgItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignGroupAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignGroupedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignNominalDateAndTimeAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignNominalDateAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignOrganizationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignOrganizationItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignPersonAndOrganizationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignPresentedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignPresentedItemSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignReferencingItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_AutoDesignSecurityClassificationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_Class.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_DateAndTimeItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_DateItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_DocumentReferenceItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_ExternalIdentificationItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_ExternallyDefinedClass.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_ExternallyDefinedGeneralProperty.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_GroupItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_OrganizationItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_PersonAndOrganizationItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_PresentedItemSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_Protocol.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_RepItemGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP214\StepAP214_SecurityClassificationItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_GeneralModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedApprovalAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedDateAndTimeAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedDateAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedDocumentReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedExternalIdentificationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedGroupAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedOrganizationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedPersonAndOrganizationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedPresentedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAppliedSecurityClassificationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignActualDateAndTimeAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignActualDateAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignApprovalAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignDateAndPersonAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignDocumentReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignGroupAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignNominalDateAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignOrganizationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignPresentedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWAutoDesignSecurityClassificationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWClass.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWExternallyDefinedClass.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWExternallyDefinedGeneralProperty.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_RWRepItemGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP214\RWStepAP214_ReadWriteModule.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_ApprovedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignApproval.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignCertification.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignContract.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignDateAndTimeAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignPersonAndOrganizationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignSecurityClassification.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CcDesignSpecificationReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_CertifiedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_Change.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_ChangeRequest.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_ChangeRequestItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_ClassifiedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_ContractedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_DateTimeItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_PersonOrganizationItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_SpecifiedItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_StartRequest.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_StartRequestItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_StartWork.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP203\StepAP203_WorkItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignApproval.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignCertification.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignContract.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignDateAndTimeAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignPersonAndOrganizationAssignment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignSecurityClassification.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWCcDesignSpecificationReference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWChange.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWChangeRequest.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWStartRequest.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP203\RWStepAP203_RWStartWork.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_AP203Context.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_Assembly.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_ContextTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_ExternRefs.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_Part.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_PointHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_Styles.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_Tool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_UnitContext.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPConstruct\STEPConstruct_ValidationProps.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPEdit\STEPEdit.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPEdit\STEPEdit_EditContext.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPEdit\STEPEdit_EditSDR.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeAxis1Placement.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeAxis2Placement2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeAxis2Placement3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBSplineCurveWithKnots.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBSplineSurfaceWithKnots.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBoundedCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeBoundedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeCartesianPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeCircle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeConic.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeConicalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeCylindricalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeDirection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeElementarySurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeEllipse.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeHyperbola.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeParabola.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakePlane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakePolyline.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeRectangularTrimmedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeSphericalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeSurfaceOfLinearExtrusion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeSurfaceOfRevolution.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeSweptSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeToroidalSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_MakeVector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomToStep\GeomToStep_Root.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToGeom\StepToGeom.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_Builder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_CartesianPointHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_GeometricTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_MakeTransformed.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_NMTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_PointPair.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_PointPairHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_Root.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_Tool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateCompositeCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateCurveBoundedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateEdge.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateEdgeLoop.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslatePolyLoop.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateShell.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateVertex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepToTopoDS\StepToTopoDS_TranslateVertexLoop.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_Builder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_FacetedTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeBrepWithVoids.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeFacetedBrep.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeFacetedBrepAndBrepWithVoids.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeGeometricCurveSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeManifoldSolidBrep.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeShellBasedSurfaceModel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeStepEdge.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeStepFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeStepVertex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_MakeStepWire.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_Root.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_Tool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopoDSToStep\TopoDSToStep_WireframeBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPControl\STEPControl_ActorRead.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPControl\STEPControl_ActorWrite.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPControl\STEPControl_Controller.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPControl\STEPControl_Reader.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPControl\STEPControl_Writer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_AssemblyComponent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_AssemblyExplorer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_AssemblyLink.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_Counter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectAssembly.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectDerived.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectFaces.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectForTransfer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectGSCurves.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\STEPSelections\STEPSelections_SelectInstances.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP209\StepAP209_Construct.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP242\RWStepAP242_RWDraughtingModelItemAssociation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP242\RWStepAP242_RWGeometricItemSpecificUsage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP242\RWStepAP242_RWIdAttribute.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepAP242\RWStepAP242_RWItemIdentifiedRepresentationUsage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_DraughtingModelItemAssociation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_GeometricItemSpecificUsage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_IdAttribute.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_IdAttributeSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_ItemIdentifiedRepresentationUsage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepAP242\StepAP242_ItemIdentifiedRepresentationUsageDefinition.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKSTEP.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

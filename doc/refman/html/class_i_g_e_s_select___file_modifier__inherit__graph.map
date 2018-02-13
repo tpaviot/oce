@@ -1,0 +1,6 @@
+<map id="IGESSelect_FileModifier" name="IGESSelect_FileModifier">
+<area shape="rect" id="node4" href="$class_i_g_e_s_select___add_file_comment.html" title="This class allows to add comment lines on writing an IGES File These lines are added to Start Section..." alt="" coords="5,229,203,256"/>
+<area shape="rect" id="node5" href="$class_i_g_e_s_select___float_format.html" title="This class gives control out format for floatting values : ZeroSuppress or no, Main Format..." alt="" coords="227,229,394,256"/>
+<area shape="rect" id="node2" href="$class_i_f_select___general_modifier.html" title="This class gives a frame for Actions which modify the effect of a Dispatch, i.e. : By Selections and ..." alt="" coords="123,80,290,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="139,5,274,32"/>
+</map>

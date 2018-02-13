@@ -1,0 +1,6 @@
+<map id="StepFEA_NodeWithSolutionCoordinateSystem" name="StepFEA_NodeWithSolutionCoordinateSystem">
+<area shape="rect" id="node2" href="$class_step_f_e_a___node.html" title="Representation of STEP entity Node. " alt="" coords="49,229,161,256"/>
+<area shape="rect" id="node3" href="$class_step_f_e_a___node_representation.html" title="Representation of STEP entity NodeRepresentation. " alt="" coords="5,155,204,181"/>
+<area shape="rect" id="node4" href="$class_step_repr___representation.html" title="StepRepr_Representation" alt="" coords="19,80,190,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="37,5,172,32"/>
+</map>

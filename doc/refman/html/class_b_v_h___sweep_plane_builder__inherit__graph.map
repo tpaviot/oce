@@ -1,0 +1,6 @@
+<map id="BVH_SweepPlaneBuilder&lt; T, N &gt;" name="BVH_SweepPlaneBuilder&lt; T, N &gt;">
+<area shape="rect" id="node2" href="$class_b_v_h___queue_builder.html" title="Abstract BVH builder based on the concept of work queue. Queue based BVH builders support paralleliza..." alt="" coords="5,229,188,256"/>
+<area shape="rect" id="node3" href="$class_b_v_h___builder.html" title="Performs construction of BVH tree using bounding boxes (AABBs) of abstract objects. " alt="" coords="25,155,169,181"/>
+<area shape="rect" id="node4" href="$class_b_v_h___builder_transient.html" title="A non&#45;template class for using as base for BVH_Builder (just to have a named base class)..." alt="" coords="22,80,171,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="29,5,164,32"/>
+</map>

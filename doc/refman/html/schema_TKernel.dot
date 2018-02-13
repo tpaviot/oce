@@ -1,0 +1,4 @@
+digraph schema_TKernel
+{
+	TKernel [ URL = "toolkit_tkernel.html", shape = box ]
+}

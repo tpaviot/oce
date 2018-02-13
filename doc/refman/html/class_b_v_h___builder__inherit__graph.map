@@ -1,0 +1,10 @@
+<map id="BVH_Builder&lt; T, N &gt;" name="BVH_Builder&lt; T, N &gt;">
+<area shape="rect" id="node4" href="$class_b_v_h___linear_builder.html" title="Performs fast BVH construction using LBVH building approach. Algorithm uses spatial Morton codes to r..." alt="" coords="599,12,738,53"/>
+<area shape="rect" id="node5" href="$class_b_v_h___queue_builder.html" title="Abstract BVH builder based on the concept of work queue. Queue based BVH builders support paralleliza..." alt="" coords="577,78,760,105"/>
+<area shape="rect" id="node2" href="$class_b_v_h___builder_transient.html" title="A non&#45;template class for using as base for BVH_Builder (just to have a named base class)..." alt="" coords="188,49,337,75"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,49,140,75"/>
+<area shape="rect" id="node6" href="$class_b_v_h___binned_builder.html" title="Performs construction of BVH tree using binned SAH algorithm. Number of bins controls BVH quality in ..." alt="" coords="820,5,964,47"/>
+<area shape="rect" id="node7" href="$class_b_v_h___binned_builder.html" title="BVH_BinnedBuilder\&lt;\l T, N, 2 \&gt;" alt="" coords="820,71,964,112"/>
+<area shape="rect" id="node9" href="$class_b_v_h___sweep_plane_builder.html" title="Performs building of BVH tree using sweep plane SAH algorithm. " alt="" coords="808,136,976,177"/>
+<area shape="rect" id="node8" href="$class_b_v_h___spatial_median_builder.html" title="Performs building of BVH tree using spatial median split algorithm. " alt="" coords="1024,71,1203,112"/>
+</map>

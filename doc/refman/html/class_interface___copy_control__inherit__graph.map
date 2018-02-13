@@ -1,0 +1,5 @@
+<map id="Interface_CopyControl" name="Interface_CopyControl">
+<area shape="rect" id="node3" href="$class_interface___copy_map.html" title="Manages a Map for the need of single Transfers, such as Copies In such transfer, Starting Entities ar..." alt="" coords="5,155,139,181"/>
+<area shape="rect" id="node4" href="$class_transfer___dispatch_control.html" title="This is an auxiliary class for TransferDispatch, which allows to record simple copies, as CopyControl from Interface, but based on a TransientProcess. Hence, it allows in addition more actions (such as recording results of adaptations) " alt="" coords="163,155,330,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="91,5,226,32"/>
+</map>

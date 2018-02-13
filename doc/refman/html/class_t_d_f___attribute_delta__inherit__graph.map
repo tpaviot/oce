@@ -1,0 +1,17 @@
+<map id="TDF_AttributeDelta" name="TDF_AttributeDelta">
+<area shape="rect" id="node3" href="$class_t_d_f___delta_on_addition.html" title="This class provides default services for an AttributeDelta on an ADDITION action. ..." alt="" coords="379,173,526,199"/>
+<area shape="rect" id="node4" href="$class_t_d_f___delta_on_forget.html" title="This class provides default services for an AttributeDelta on an Forget action. " alt="" coords="384,223,521,250"/>
+<area shape="rect" id="node5" href="$class_t_d_f___delta_on_modification.html" title="This class provides default services for an AttributeDelta on a MODIFICATION action. " alt="" coords="368,274,537,301"/>
+<area shape="rect" id="node13" href="$class_t_d_f___delta_on_removal.html" title="This class provides default services for an AttributeDelta on a REMOVAL action. " alt="" coords="378,379,527,406"/>
+<area shape="rect" id="node16" href="$class_t_d_f___delta_on_resume.html" title="This class provides default services for an AttributeDelta on an Resume action. " alt="" coords="379,430,527,457"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,274,140,301"/>
+<area shape="rect" id="node6" href="$class_t_data_std___delta_on_modification_of_byte_array.html" title="This class provides default services for an AttributeDelta on a MODIFICATION action. " alt="" coords="591,5,789,47"/>
+<area shape="rect" id="node7" href="$class_t_data_std___delta_on_modification_of_ext_string_array.html" title="This class provides default services for an AttributeDelta on a MODIFICATION action. " alt="" coords="591,71,789,112"/>
+<area shape="rect" id="node8" href="$class_t_data_std___delta_on_modification_of_int_array.html" title="This class provides default services for an AttributeDelta on a MODIFICATION action. " alt="" coords="591,136,789,177"/>
+<area shape="rect" id="node9" href="$class_t_data_std___delta_on_modification_of_int_packed_map.html" title="This class provides default services for an AttributeDelta on a MODIFICATION action. " alt="" coords="591,201,789,243"/>
+<area shape="rect" id="node10" href="$class_t_data_std___delta_on_modification_of_real_array.html" title="This class provides default services for an AttributeDelta on a MODIFICATION action. " alt="" coords="591,267,789,308"/>
+<area shape="rect" id="node11" href="$class_t_d_f___default_delta_on_modification.html" title="This class provides a default implementation of a TDF_DeltaOnModification. " alt="" coords="585,333,795,359"/>
+<area shape="rect" id="node12" href="$class_t_naming___delta_on_modification.html" title="This class provides default services for an AttributeDelta on a MODIFICATION action. " alt="" coords="592,383,788,410"/>
+<area shape="rect" id="node14" href="$class_t_d_f___default_delta_on_removal.html" title="This class provides a default implementation of a TDF_DeltaOnRemoval. " alt="" coords="595,434,785,461"/>
+<area shape="rect" id="node15" href="$class_t_naming___delta_on_removal.html" title="TNaming_DeltaOnRemoval" alt="" coords="602,485,778,511"/>
+</map>

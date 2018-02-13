@@ -1,0 +1,6 @@
+<map id="StepBasic_SecurityClassificationAssignment" name="StepBasic_SecurityClassificationAssignment">
+<area shape="rect" id="node3" href="$class_step_a_p203___cc_design_security_classification.html" title="Representation of STEP entity CcDesignSecurityClassification. " alt="" coords="457,5,655,47"/>
+<area shape="rect" id="node4" href="$class_step_a_p214___applied_security_classification_assignment.html" title="StepAP214_AppliedSecurity\lClassificationAssignment" alt="" coords="463,71,649,112"/>
+<area shape="rect" id="node5" href="$class_step_a_p214___auto_design_security_classification_assignment.html" title="StepAP214_AutoDesignSecurity\lClassificationAssignment" alt="" coords="451,136,661,177"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,78,140,105"/>
+</map>

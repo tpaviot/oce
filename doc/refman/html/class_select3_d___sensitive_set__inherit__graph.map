@@ -1,0 +1,14 @@
+<map id="Select3D_SensitiveSet" name="Select3D_SensitiveSet">
+<area shape="rect" id="node5" href="$class_mesh_v_s___common_sensitive_entity.html" title="Sensitive entity covering entire mesh for global selection. " alt="" coords="847,5,1064,32"/>
+<area shape="rect" id="node6" href="$class_select3_d___interior_sensitive_point_set.html" title="This class handles the selection of arbitrary point set with internal type of sensitivity. The main principle is to split the point set given onto planar convex polygons and search for the overlap with one or more of them through traverse of BVH tree. " alt="" coords="869,57,1042,98"/>
+<area shape="rect" id="node7" href="$class_select3_d___sensitive_group.html" title="A framework to define selection of a sensitive group by a sensitive entity which is a set of 3D sensi..." alt="" coords="871,123,1040,149"/>
+<area shape="rect" id="node8" href="$class_select3_d___sensitive_poly.html" title="Sensitive Entity to make a face selectable. In some cases this class can raise Standard_ConstructionE..." alt="" coords="875,173,1035,200"/>
+<area shape="rect" id="node11" href="$class_select3_d___sensitive_primitive_array.html" title="Sensitive for triangulation or point set defined by Primitive Array. The primitives can be optionally..." alt="" coords="864,225,1047,266"/>
+<area shape="rect" id="node12" href="$class_select3_d___sensitive_triangulation.html" title="A framework to define selection of a sensitive entity made of a set of triangles. ..." alt="" coords="852,291,1059,317"/>
+<area shape="rect" id="node13" href="$class_select3_d___sensitive_wire.html" title="A framework to define selection of a wire owner by an elastic wire band. " alt="" coords="875,341,1036,368"/>
+<area shape="rect" id="node2" href="$class_select3_d___sensitive_entity.html" title="Abstract framework to define 3D sensitive entities. As the selection process uses the principle of a ..." alt="" coords="428,173,596,200"/>
+<area shape="rect" id="node3" href="$class_select_basics___sensitive_entity.html" title="root class; the inheriting classes will be able to give sensitive Areas for the dynamic selection alg..." alt="" coords="188,173,380,200"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,173,140,200"/>
+<area shape="rect" id="node9" href="$class_select3_d___sensitive_circle.html" title="A framework to define sensitive 3D arcs and circles. In some cases this class can raise Standard_Cons..." alt="" coords="1112,148,1279,175"/>
+<area shape="rect" id="node10" href="$class_select3_d___sensitive_curve.html" title="A framework to define a sensitive 3D curve. In some cases this class can raise Standard_ConstructionE..." alt="" coords="1112,199,1279,225"/>
+</map>

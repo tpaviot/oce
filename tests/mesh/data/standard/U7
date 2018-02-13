@@ -1,0 +1,25 @@
+set TheFileName shading_wrongshape_009.brep
+set bug_area "OCC22687"
+set rel_tol 10.7
+set bug_withouttri "OCC22687"
+set bug_freelinks "OCC22687"
+set bug_freenodes "OCC22687"
+
+if { [string compare $command "shading"] == 0 } {
+##set nbt 14
+  set nbt 8
+  set nbl 8
+  set nbn 83
+  set nbwithouttri([checkplatform]) $nbt
+  set nbfree([checkplatform]) $nbl
+  set nbfreenodes([checkplatform]) $nbn
+} else {
+  set bug_withouttri "OCC23105"
+##set nbt 14
+  set nbt 8
+  set nbn 60
+  set nbl 11
+  set nbwithouttri([checkplatform]) $nbt
+  set nbfree([checkplatform]) $nbl
+  set nbfreenodes([checkplatform]) $nbn
+}

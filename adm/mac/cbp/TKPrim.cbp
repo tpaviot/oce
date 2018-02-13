@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKPrim" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKPrim.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKPrim.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKBRep" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKG2d" />
+			<Add library="TKGeomBase" />
+			<Add library="TKG3d" />
+			<Add library="TKTopAlgo" />
+		</Linker>
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Builder.cxx" />
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Cone.cxx" />
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Cylinder.cxx" />
+		<Unit filename="../../../src/BRepPrim/BRepPrim_FaceBuilder.cxx" />
+		<Unit filename="../../../src/BRepPrim/BRepPrim_GWedge.cxx" />
+		<Unit filename="../../../src/BRepPrim/BRepPrim_OneAxis.cxx" />
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Revolution.cxx" />
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Sphere.cxx" />
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Torus.cxx" />
+		<Unit filename="../../../src/BRepPrim/BRepPrim_Wedge.cxx" />
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Builder.cxx" />
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Iterator.cxx" />
+		<Unit filename="../../../src/BRepSweep/BRepSweep_NumLinearRegularSweep.cxx" />
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Prism.cxx" />
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Revol.cxx" />
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Rotation.cxx" />
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Tool.cxx" />
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Translation.cxx" />
+		<Unit filename="../../../src/BRepSweep/BRepSweep_Trsf.cxx" />
+		<Unit filename="../../../src/Sweep/Sweep_NumShape.cxx" />
+		<Unit filename="../../../src/Sweep/Sweep_NumShapeIterator.cxx" />
+		<Unit filename="../../../src/Sweep/Sweep_NumShapeTool.cxx" />
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeBox.cxx" />
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeCone.cxx" />
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeCylinder.cxx" />
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeHalfSpace.cxx" />
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeOneAxis.cxx" />
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakePrism.cxx" />
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeRevol.cxx" />
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeRevolution.cxx" />
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeSphere.cxx" />
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeTorus.cxx" />
+		<Unit filename="../../../src/BRepPrimAPI/BRepPrimAPI_MakeWedge.cxx" />
+	</Project>
+</CodeBlocks_project_file>

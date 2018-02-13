@@ -1,0 +1,11 @@
+<map id="BVH_Set&lt; T, N &gt;" name="BVH_Set&lt; T, N &gt;">
+<area shape="rect" id="node2" href="$class_b_v_h___object_set.html" title="Array of abstract entities (bounded by BVH boxes) to built BVH. " alt="" coords="183,43,345,69"/>
+<area shape="rect" id="node4" href="$class_b_v_h___primitive_set.html" title="Set of abstract geometric primitives organized with bounding volume hierarchy (BVH). Unlike an object set, this collection is designed for storing structural elements of a single object (such as triangles in the object triangulation). Because there may be a large number of such elements, the implementations of this interface should be sufficiently optimized. " alt="" coords="177,163,351,189"/>
+<area shape="rect" id="node3" href="$class_b_v_h___geometry.html" title="BVH geometry as a set of abstract geometric objects organized with bounding volume hierarchy (BVH)..." alt="" coords="413,5,575,32"/>
+<area shape="rect" id="node5" href="$class_b_rep_extrema___triangle_set.html" title="Triangle set corresponding to specific face. " alt="" coords="407,57,581,98"/>
+<area shape="rect" id="node6" href="$class_b_v_h___triangulation.html" title="Triangulation as an example of BVH primitive set. " alt="" coords="425,122,563,163"/>
+<area shape="rect" id="node8" href="$class_open_gl___b_v_h_clip_primitive_set.html" title="Set of OpenGl_Structures for building BVH tree. " alt="" coords="399,187,589,229"/>
+<area shape="rect" id="node9" href="$class_select3_d___sensitive_set_1_1_bvh_primitive_set.html" title="The purpose of this class is to provide a link between BVH_PrimitiveSet and Select3D_SensitiveSet ins..." alt="" coords="402,253,586,309"/>
+<area shape="rect" id="node10" href="$class_select_mgr___sensitive_entity_set.html" title="This class is used to store all calculated sensitive entites of one selectable object. It provides an interface for building BVH tree which is used to speed&#45;up the performance of searching for overlap among sensitives of one selectable object. " alt="" coords="407,334,581,375"/>
+<area shape="rect" id="node7" href="$class_open_gl___triangle_set.html" title="Triangulation of single OpenGL primitive array. " alt="" coords="637,122,815,163"/>
+</map>

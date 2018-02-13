@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKCAF" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKCAF.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKCAF.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKernel" />
+			<Add library="TKGeomBase" />
+			<Add library="TKBRep" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKMath" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKCDF" />
+			<Add library="TKLCAF" />
+			<Add library="TKBO" />
+		</Linker>
+		<Unit filename="../../../src/TDataXtd/TDataXtd.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Axis.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Constraint.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Geometry.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Pattern.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_PatternStd.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Placement.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Plane.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Point.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Position.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Presentation.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Shape.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Triangulation.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_CopyShape.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_DeltaOnModification.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_DeltaOnRemoval.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_Identifier.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_Localizer.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_Name.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_NamedShape.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_Naming.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_NamingTool.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_SameShapeIterator.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_Scope.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_Selector.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_ShapesSet.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_Tool.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_TranslateTool.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_Translator.cxx" />
+		<Unit filename="../../../src/TNaming/TNaming_UsedShapes.cxx" />
+		<Unit filename="../../../src/AppStd/AppStd_Application.cxx" />
+	</Project>
+</CodeBlocks_project_file>

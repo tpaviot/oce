@@ -1,0 +1,7 @@
+<map id="StdObjMgt_Attribute&lt; Transient &gt;::SingleInt" name="StdObjMgt_Attribute&lt; Transient &gt;::SingleInt">
+<area shape="rect" id="node9" href="$class_std_persistent___data_xtd_1_1_geometry.html" title="StdPersistent_DataXtd\l::Geometry" alt="" coords="1184,136,1337,177"/>
+<area shape="rect" id="node2" href="$class_std_obj_mgt___attribute_1_1_simple.html" title="StdObjMgt_Attribute\l\&lt; Transient \&gt;::Simple\l\&lt; Standard_Integer \&gt;" alt="" coords="764,63,911,119"/>
+<area shape="rect" id="node3" href="$class_std_obj_mgt___attribute_1_1_static.html" title="StdObjMgt_Attribute\l\&lt; Transient \&gt;::Static" alt="" coords="575,71,716,112"/>
+<area shape="rect" id="node5" href="$class_std_obj_mgt___persistent.html" title="Root class for a temporary persistent object that reads data from a file and then creates transient o..." alt="" coords="188,78,339,105"/>
+<area shape="rect" id="node6" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,78,140,105"/>
+</map>

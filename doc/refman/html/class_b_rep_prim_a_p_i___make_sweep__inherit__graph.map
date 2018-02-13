@@ -1,0 +1,8 @@
+<map id="BRepPrimAPI_MakeSweep" name="BRepPrimAPI_MakeSweep">
+<area shape="rect" id="node4" href="$class_b_rep_offset_a_p_i___make_pipe.html" title="Describes functions to build pipes. A pipe is built a basis shape (called the profile) along a wire (..." alt="" coords="715,5,890,32"/>
+<area shape="rect" id="node5" href="$class_b_rep_offset_a_p_i___make_pipe_shell.html" title="This class provides for a framework to construct a shell or a solid along a spine consisting in a wir..." alt="" coords="701,56,904,83"/>
+<area shape="rect" id="node6" href="$class_b_rep_prim_a_p_i___make_prism.html" title="Describes functions to build linear swept topologies, called prisms. A prism is defined by: ..." alt="" coords="715,107,890,133"/>
+<area shape="rect" id="node7" href="$class_b_rep_prim_a_p_i___make_revol.html" title="Class to make revolved sweep topologies. " alt="" coords="717,157,889,184"/>
+<area shape="rect" id="node2" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="235,81,425,108"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="5,81,187,108"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="SelectMgr_RectangularFrustum" name="SelectMgr_RectangularFrustum">
+<area shape="rect" id="node2" href="$class_select_mgr___frustum.html" title="SelectMgr_Frustum\&lt; 4 \&gt;" alt="" coords="25,155,191,181"/>
+<area shape="rect" id="node3" href="$class_select_mgr___base_frustum.html" title="This class is an interface for different types of selecting frustums, defining different selection ty..." alt="" coords="25,80,191,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="41,5,175,32"/>
+</map>

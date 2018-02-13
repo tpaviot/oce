@@ -1,0 +1,8 @@
+<map id="BRepFeat_Form" name="BRepFeat_Form">
+<area shape="rect" id="node4" href="$class_b_rep_feat___make_d_prism.html" title="Describes functions to build draft prism topologies from basis shape surfaces. These can be depressio..." alt="" coords="5,229,168,256"/>
+<area shape="rect" id="node5" href="$class_b_rep_feat___make_pipe.html" title="Constructs compound shapes with pipe features. These can be depressions or protrusions. The semantics of pipe feature creation is based on the construction of shapes: " alt="" coords="193,229,338,256"/>
+<area shape="rect" id="node6" href="$class_b_rep_feat___make_prism.html" title="Describes functions to build prism features. These can be depressions or protrusions. The semantics of prism feature creation is based on the construction of shapes: " alt="" coords="362,229,515,256"/>
+<area shape="rect" id="node7" href="$class_b_rep_feat___make_revol.html" title="Describes functions to build revolved shells from basis shapes. " alt="" coords="539,229,690,256"/>
+<area shape="rect" id="node2" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="257,80,447,107"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="261,5,443,32"/>
+</map>

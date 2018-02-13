@@ -1,0 +1,4 @@
+<map id="SelectMgr_TriangularFrustumSet" name="SelectMgr_TriangularFrustumSet">
+<area shape="rect" id="node2" href="$class_select_mgr___base_frustum.html" title="This class is an interface for different types of selecting frustums, defining different selection ty..." alt="" coords="28,80,195,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="44,5,179,32"/>
+</map>

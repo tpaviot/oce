@@ -1,0 +1,77 @@
+<map id="NCollection_BaseVector" name="NCollection_BaseVector">
+<area shape="rect" id="node2" href="$class_n_collection___vector.html" title="Class NCollection_Vector (dynamic array of objects) " alt="" coords="267,5,400,47"/>
+<area shape="rect" id="node3" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BinLDrivers_DocumentSection \&gt;" alt="" coords="223,71,444,112"/>
+<area shape="rect" id="node4" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_Curve \&gt;" alt="" coords="267,136,400,177"/>
+<area shape="rect" id="node6" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_FaceInfo \&gt;" alt="" coords="259,201,407,243"/>
+<area shape="rect" id="node8" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_IndexRange \&gt;" alt="" coords="250,267,417,308"/>
+<area shape="rect" id="node10" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_InterfEE \&gt;" alt="" coords="261,332,406,373"/>
+<area shape="rect" id="node12" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_InterfEF \&gt;" alt="" coords="261,397,405,439"/>
+<area shape="rect" id="node14" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_InterfEZ \&gt;" alt="" coords="262,463,405,504"/>
+<area shape="rect" id="node16" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_InterfFF \&gt;" alt="" coords="262,528,405,569"/>
+<area shape="rect" id="node18" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_InterfFZ \&gt;" alt="" coords="262,593,405,635"/>
+<area shape="rect" id="node20" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_InterfVE \&gt;" alt="" coords="261,659,406,700"/>
+<area shape="rect" id="node22" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_InterfVF \&gt;" alt="" coords="261,724,405,765"/>
+<area shape="rect" id="node24" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_InterfVV \&gt;" alt="" coords="261,789,406,831"/>
+<area shape="rect" id="node26" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_InterfVZ \&gt;" alt="" coords="262,855,405,896"/>
+<area shape="rect" id="node28" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_InterfZZ \&gt;" alt="" coords="263,920,404,961"/>
+<area shape="rect" id="node30" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_ListOfPaveBlock \&gt;" alt="" coords="236,985,431,1027"/>
+<area shape="rect" id="node32" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_Pair \&gt;" alt="" coords="267,1051,400,1092"/>
+<area shape="rect" id="node34" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_Point \&gt;" alt="" coords="267,1116,400,1157"/>
+<area shape="rect" id="node36" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_ShapeInfo \&gt;" alt="" coords="255,1181,411,1223"/>
+<area shape="rect" id="node38" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BOPDS_VectorOfPair \&gt;" alt="" coords="247,1247,420,1288"/>
+<area shape="rect" id="node40" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BRepBuilderAPI_FastSewing\l::FS_Edge \&gt;" alt="" coords="232,1313,435,1369"/>
+<area shape="rect" id="node41" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BRepBuilderAPI_FastSewing\l::FS_Face \&gt;" alt="" coords="232,1393,435,1449"/>
+<area shape="rect" id="node42" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BRepBuilderAPI_FastSewing\l::FS_Vertex \&gt;" alt="" coords="232,1473,435,1529"/>
+<area shape="rect" id="node43" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; BRepMesh_Circle \&gt;" alt="" coords="258,1553,409,1595"/>
+<area shape="rect" id="node44" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; GLint \&gt;" alt="" coords="267,1619,400,1660"/>
+<area shape="rect" id="node45" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; GLuint \&gt;" alt="" coords="267,1684,400,1725"/>
+<area shape="rect" id="node46" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; gp_XYZ \&gt;" alt="" coords="267,1749,400,1791"/>
+<area shape="rect" id="node47" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Handle\&lt; OpenGl_Texture \&gt; \&gt;" alt="" coords="231,1815,435,1856"/>
+<area shape="rect" id="node48" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Handle\&lt; OpenGl_VertexBuffer \&gt; \&gt;" alt="" coords="217,1880,449,1921"/>
+<area shape="rect" id="node49" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Handle\&lt; Select3D_Sensitive\lEntity \&gt; \&gt;" alt="" coords="234,1946,433,2002"/>
+<area shape="rect" id="node50" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Handle\&lt; Select3D_Sensitive\lPoly \&gt; \&gt;" alt="" coords="234,2026,433,2082"/>
+<area shape="rect" id="node51" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Handle\&lt; SelectMgr\l_SensitiveEntity \&gt; \&gt;" alt="" coords="261,2106,406,2162"/>
+<area shape="rect" id="node52" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Handle\&lt; Standard_Transient \&gt; \&gt;" alt="" coords="222,2187,445,2228"/>
+<area shape="rect" id="node53" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Handle\&lt; StepRepr_Representation\lItem \&gt; \&gt;" alt="" coords="216,2253,451,2309"/>
+<area shape="rect" id="node54" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Handle\&lt; TCollection\l_HAsciiString \&gt; \&gt;" alt="" coords="258,2333,409,2389"/>
+<area shape="rect" id="node55" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Interface_FileParameter \&gt;" alt="" coords="242,2413,425,2455"/>
+<area shape="rect" id="node56" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; IntPolyh_Edge \&gt;" alt="" coords="267,2479,400,2520"/>
+<area shape="rect" id="node57" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; IntPolyh_Point \&gt;" alt="" coords="267,2544,400,2585"/>
+<area shape="rect" id="node58" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; IntPolyh_SectionLine \&gt;" alt="" coords="249,2609,417,2651"/>
+<area shape="rect" id="node59" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; IntPolyh_StartPoint \&gt;" alt="" coords="254,2675,413,2716"/>
+<area shape="rect" id="node60" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; IntPolyh_Triangle \&gt;" alt="" coords="261,2740,406,2781"/>
+<area shape="rect" id="node61" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; NCollection_UBTreeFiller\l::ObjBnd \&gt;" alt="" coords="244,2806,423,2862"/>
+<area shape="rect" id="node62" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; NCollection_Vec2\&lt;\l Standard_ShortReal \&gt; \&gt;" alt="" coords="250,2886,417,2942"/>
+<area shape="rect" id="node63" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; opencascade::handle\l\&lt; BVH_Object\&lt; Standard\l_ShortReal, N \&gt; \&gt; \&gt;" alt="" coords="248,2967,419,3037"/>
+<area shape="rect" id="node64" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; opencascade::handle\l\&lt; BVH_Object\&lt; T, N \&gt; \&gt; \&gt;" alt="" coords="244,3062,423,3118"/>
+<area shape="rect" id="node65" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; OpenGl_Font::Tile \&gt;" alt="" coords="258,3143,409,3184"/>
+<area shape="rect" id="node66" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Poly_CoherentLink \&gt;" alt="" coords="256,3208,411,3249"/>
+<area shape="rect" id="node67" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Poly_CoherentNode \&gt;" alt="" coords="253,3273,414,3315"/>
+<area shape="rect" id="node68" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Poly_CoherentTriangle \&gt;" alt="" coords="245,3339,421,3380"/>
+<area shape="rect" id="node69" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Standard_Boolean \&gt;" alt="" coords="257,3404,409,3445"/>
+<area shape="rect" id="node70" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Standard_Integer \&gt;" alt="" coords="261,3469,405,3511"/>
+<area shape="rect" id="node71" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Standard_ShortReal \&gt;" alt="" coords="252,3535,415,3576"/>
+<area shape="rect" id="node72" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; TopoDS_Face \&gt;" alt="" coords="267,3600,400,3641"/>
+<area shape="rect" id="node73" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; Type \&gt;" alt="" coords="267,3665,400,3707"/>
+<area shape="rect" id="node75" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; typename OpenGl::MatrixType\l\&lt; Standard_ShortReal \&gt;::Mat4 \&gt;" alt="" coords="228,3731,439,3787"/>
+<area shape="rect" id="node76" href="$class_n_collection___vector.html" title="NCollection_Vector\l\&lt; typename OpenGl::MatrixType\l\&lt; T \&gt;::Mat4 \&gt;" alt="" coords="228,3811,439,3867"/>
+<area shape="rect" id="node5" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_Curve \&gt;" alt="" coords="499,136,689,177"/>
+<area shape="rect" id="node7" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_FaceInfo \&gt;" alt="" coords="499,201,689,243"/>
+<area shape="rect" id="node9" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_IndexRange \&gt;" alt="" coords="499,267,689,308"/>
+<area shape="rect" id="node11" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_InterfEE \&gt;" alt="" coords="499,332,689,373"/>
+<area shape="rect" id="node13" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_InterfEF \&gt;" alt="" coords="499,397,689,439"/>
+<area shape="rect" id="node15" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_InterfEZ \&gt;" alt="" coords="499,463,689,504"/>
+<area shape="rect" id="node17" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_InterfFF \&gt;" alt="" coords="499,528,689,569"/>
+<area shape="rect" id="node19" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_InterfFZ \&gt;" alt="" coords="499,593,689,635"/>
+<area shape="rect" id="node21" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_InterfVE \&gt;" alt="" coords="499,659,689,700"/>
+<area shape="rect" id="node23" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_InterfVF \&gt;" alt="" coords="499,724,689,765"/>
+<area shape="rect" id="node25" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_InterfVV \&gt;" alt="" coords="499,789,689,831"/>
+<area shape="rect" id="node27" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_InterfVZ \&gt;" alt="" coords="499,855,689,896"/>
+<area shape="rect" id="node29" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_InterfZZ \&gt;" alt="" coords="499,920,689,961"/>
+<area shape="rect" id="node31" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_ListOfPaveBlock \&gt;" alt="" coords="499,985,689,1027"/>
+<area shape="rect" id="node33" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_Pair \&gt;" alt="" coords="499,1051,689,1092"/>
+<area shape="rect" id="node35" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_Point \&gt;" alt="" coords="499,1116,689,1157"/>
+<area shape="rect" id="node37" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_ShapeInfo \&gt;" alt="" coords="499,1181,689,1223"/>
+<area shape="rect" id="node39" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; BOPDS\l_VectorOfPair \&gt;" alt="" coords="499,1247,689,1288"/>
+<area shape="rect" id="node74" href="$class_b_o_p_col___n_c_vector.html" title="BOPCol_NCVector\&lt; Type \&gt;" alt="" coords="502,3673,686,3699"/>
+</map>

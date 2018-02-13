@@ -1,0 +1,12 @@
+<map id="StepGeom_Point" name="StepGeom_Point">
+<area shape="rect" id="node5" href="$class_step_f_e_a___fea_parametric_point.html" title="Representation of STEP entity FeaParametricPoint. " alt="" coords="911,5,1108,32"/>
+<area shape="rect" id="node6" href="$class_step_geom___cartesian_point.html" title="StepGeom_CartesianPoint" alt="" coords="921,56,1097,83"/>
+<area shape="rect" id="node7" href="$class_step_geom___degenerate_pcurve.html" title="StepGeom_DegeneratePcurve" alt="" coords="911,107,1107,133"/>
+<area shape="rect" id="node9" href="$class_step_geom___point_on_curve.html" title="StepGeom_PointOnCurve" alt="" coords="924,157,1095,184"/>
+<area shape="rect" id="node10" href="$class_step_geom___point_on_surface.html" title="StepGeom_PointOnSurface" alt="" coords="918,208,1101,235"/>
+<area shape="rect" id="node11" href="$class_step_geom___point_replica.html" title="StepGeom_PointReplica" alt="" coords="927,259,1091,285"/>
+<area shape="rect" id="node2" href="$class_step_geom___geometric_representation_item.html" title="StepGeom_GeometricRepresentationItem" alt="" coords="431,132,693,159"/>
+<area shape="rect" id="node3" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="188,132,383,159"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,132,140,159"/>
+<area shape="rect" id="node8" href="$class_step_geom___evaluated_degenerate_pcurve.html" title="StepGeom_EvaluatedDegenerate\lPcurve" alt="" coords="1156,99,1369,141"/>
+</map>

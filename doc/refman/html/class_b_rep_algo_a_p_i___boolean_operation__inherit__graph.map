@@ -1,0 +1,11 @@
+<map id="BRepAlgoAPI_BooleanOperation" name="BRepAlgoAPI_BooleanOperation">
+<area shape="rect" id="node7" href="$class_b_rep_algo_a_p_i___common.html" title="The class provides Boolean common operation between arguments and tools (Boolean Intersection). " alt="" coords="5,379,165,405"/>
+<area shape="rect" id="node8" href="$class_b_rep_algo_a_p_i___cut.html" title="The class Cut provides Boolean cut operation between arguments and tools (Boolean Subtraction)..." alt="" coords="189,379,317,405"/>
+<area shape="rect" id="node9" href="$class_b_rep_algo_a_p_i___fuse.html" title="The class provides Boolean fusion operation between arguments and tools (Boolean Union). " alt="" coords="342,379,479,405"/>
+<area shape="rect" id="node10" href="$class_b_rep_algo_a_p_i___section.html" title="The algorithm is to build a Secton operation between arguments and tools. The result of Section opera..." alt="" coords="504,379,656,405"/>
+<area shape="rect" id="node2" href="$class_b_rep_algo_a_p_i___builder_algo.html" title="The class contains API level of the General Fuse algorithm. &#160;" alt="" coords="245,229,419,256"/>
+<area shape="rect" id="node3" href="$class_b_rep_algo_a_p_i___algo.html" title="Provides the root interface for the API algorithms. " alt="" coords="265,155,399,181"/>
+<area shape="rect" id="node4" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="145,80,335,107"/>
+<area shape="rect" id="node5" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="149,5,331,32"/>
+<area shape="rect" id="node6" href="$class_b_o_p_algo___options.html" title="The class provides the following options for the algorithms in Boolean Component: ..." alt="" coords="360,80,488,107"/>
+</map>

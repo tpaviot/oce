@@ -1,0 +1,6 @@
+<map id="StepBasic_ApprovalAssignment" name="StepBasic_ApprovalAssignment">
+<area shape="rect" id="node3" href="$class_step_a_p203___cc_design_approval.html" title="Representation of STEP entity CcDesignApproval. " alt="" coords="448,5,648,32"/>
+<area shape="rect" id="node4" href="$class_step_a_p214___applied_approval_assignment.html" title="StepAP214_AppliedApproval\lAssignment" alt="" coords="455,57,641,98"/>
+<area shape="rect" id="node5" href="$class_step_a_p214___auto_design_approval_assignment.html" title="StepAP214_AutoDesignApproval\lAssignment" alt="" coords="443,122,653,163"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,64,140,91"/>
+</map>

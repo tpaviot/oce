@@ -1,0 +1,8 @@
+<map id="NCollection_ListNode" name="NCollection_ListNode">
+<area shape="rect" id="node2" href="$class_n_collection___t_list_node.html" title="NCollection_TListNode\l\&lt; TheItemType \&gt;" alt="" coords="200,9,353,51"/>
+<area shape="rect" id="node4" href="$class_n_collection___t_list_node.html" title="NCollection_TListNode\l\&lt; TheKey2Type \&gt;" alt="" coords="200,79,353,120"/>
+<area shape="rect" id="node6" href="$class_n_collection___t_list_node.html" title="NCollection_TListNode\l\&lt; TheKeyType \&gt;" alt="" coords="200,148,353,189"/>
+<area shape="rect" id="node3" href="$class_n_collection___data_map_1_1_data_map_node.html" title="NCollection_DataMap\l\&lt; TheItemType \&gt;::DataMapNode" alt="" coords="419,5,629,47"/>
+<area shape="rect" id="node5" href="$class_n_collection___double_map_1_1_double_map_node.html" title="NCollection_DoubleMap\l\&lt; TheKey1Type, TheKey2Type,\l Hasher1, Hasher2 \&gt;::DoubleMapNode" alt="" coords="401,71,647,127"/>
+<area shape="rect" id="node7" href="$class_n_collection___map_1_1_map_node.html" title="Adaptation of the TListNode to the map notations. " alt="" coords="420,152,628,193"/>
+</map>

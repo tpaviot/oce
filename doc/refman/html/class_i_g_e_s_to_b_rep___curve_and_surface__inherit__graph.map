@@ -1,0 +1,7 @@
+<map id="IGESToBRep_CurveAndSurface" name="IGESToBRep_CurveAndSurface">
+<area shape="rect" id="node2" href="$class_i_g_e_s_to_b_rep___basic_curve.html" title="Provides methods to transfer basic geometric curves entities from IGES to CASCADE. These can be : " alt="" coords="265,5,435,32"/>
+<area shape="rect" id="node3" href="$class_i_g_e_s_to_b_rep___basic_surface.html" title="Provides methods to transfer basic geometric surface entities from IGES to CASCADE. These can be : " alt="" coords="259,56,441,83"/>
+<area shape="rect" id="node4" href="$class_i_g_e_s_to_b_rep___b_rep_entity.html" title="Provides methods to transfer BRep entities ( VertexList 502, EdgeList 504, Loop 508, Face 510, Shell 514, ManifoldSolid 186) from IGES to CASCADE. " alt="" coords="264,107,436,133"/>
+<area shape="rect" id="node5" href="$class_i_g_e_s_to_b_rep___topo_curve.html" title="Provides methods to transfer topologic curves entities from IGES to CASCADE. " alt="" coords="267,157,433,184"/>
+<area shape="rect" id="node6" href="$class_i_g_e_s_to_b_rep___topo_surface.html" title="Provides methods to transfer topologic surfaces entities from IGES to CASCADE. " alt="" coords="261,208,439,235"/>
+</map>

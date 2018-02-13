@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKTopAlgo" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKTopAlgo" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__IntCurvesFace_DLL" />
+					<Add option="-D__MAT_DLL" />
+					<Add option="-D__MAT2d_DLL" />
+					<Add option="-D__Bisector_DLL" />
+					<Add option="-D__BRepMAT2d_DLL" />
+					<Add option="-D__BRepCheck_DLL" />
+					<Add option="-D__BRepBndLib_DLL" />
+					<Add option="-D__BRepExtrema_DLL" />
+					<Add option="-D__BRepClass_DLL" />
+					<Add option="-D__BRepClass3d_DLL" />
+					<Add option="-D__BRepLib_DLL" />
+					<Add option="-D__BRepGProp_DLL" />
+					<Add option="-D__BRepIntCurveSurface_DLL" />
+					<Add option="-D__BRepTopAdaptor_DLL" />
+					<Add option="-D__BRepBuilderAPI_DLL" />
+					<Add option="-D__BRepApprox_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKTopAlgo_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKTopAlgo" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__IntCurvesFace_DLL" />
+					<Add option="-D__MAT_DLL" />
+					<Add option="-D__MAT2d_DLL" />
+					<Add option="-D__Bisector_DLL" />
+					<Add option="-D__BRepMAT2d_DLL" />
+					<Add option="-D__BRepCheck_DLL" />
+					<Add option="-D__BRepBndLib_DLL" />
+					<Add option="-D__BRepExtrema_DLL" />
+					<Add option="-D__BRepClass_DLL" />
+					<Add option="-D__BRepClass3d_DLL" />
+					<Add option="-D__BRepLib_DLL" />
+					<Add option="-D__BRepGProp_DLL" />
+					<Add option="-D__BRepIntCurveSurface_DLL" />
+					<Add option="-D__BRepTopAdaptor_DLL" />
+					<Add option="-D__BRepBuilderAPI_DLL" />
+					<Add option="-D__BRepApprox_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKTopAlgo_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKGeomBase" />
+			<Add library="TKBRep" />
+			<Add library="TKGeomAlgo" />
+		</Linker>
+		<Unit filename="../../../src/IntCurvesFace/IntCurvesFace_Intersector.cxx" />
+		<Unit filename="../../../src/IntCurvesFace/IntCurvesFace_ShapeIntersector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT/MAT_Arc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT/MAT_BasicElt.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT/MAT_Bisector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT/MAT_Edge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT/MAT_Graph.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT/MAT_ListOfBisector_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT/MAT_ListOfEdge_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT/MAT_Node.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT/MAT_TListNodeOfListOfBisector_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT/MAT_TListNodeOfListOfEdge_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT/MAT_Zone.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT2d/MAT2d_BiInt.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT2d/MAT2d_Circuit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT2d/MAT2d_Connexion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT2d/MAT2d_CutCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT2d/MAT2d_Mat2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT2d/MAT2d_MiniPath.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT2d/MAT2d_SketchExplorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MAT2d/MAT2d_Tool2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Bisector/Bisector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Bisector/Bisector_Bisec.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Bisector/Bisector_BisecAna.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Bisector/Bisector_BisecCC.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Bisector/Bisector_BisecPC.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Bisector/Bisector_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Bisector/Bisector_FunctionH.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Bisector/Bisector_FunctionInter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Bisector/Bisector_Inter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Bisector/Bisector_PointOnBis.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Bisector/Bisector_PolyBis.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepMAT2d/BRepMAT2d_BisectingLocus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepMAT2d/BRepMAT2d_Explorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepMAT2d/BRepMAT2d_LinkTopoBilo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepCheck/BRepCheck.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepCheck/BRepCheck_Analyzer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepCheck/BRepCheck_Edge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepCheck/BRepCheck_Face.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepCheck/BRepCheck_Result.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepCheck/BRepCheck_Shell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepCheck/BRepCheck_Solid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepCheck/BRepCheck_Vertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepCheck/BRepCheck_Wire.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBndLib/BRepBndLib.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_DistShapeShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_DistanceSS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_ExtCC.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_ExtCF.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_ExtFF.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_ExtPC.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_ExtPF.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_OverlapTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_Poly.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_SelfIntersection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_ShapeProximity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepExtrema/BRepExtrema_TriangleSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass/BRepClass_Edge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass/BRepClass_FClass2dOfFClassifier_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass/BRepClass_FClassifier_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass/BRepClass_FaceClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass/BRepClass_FaceExplorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass/BRepClass_FacePassiveClassifier_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass/BRepClass_Intersector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass3d/BRepClass3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass3d/BRepClass3d_BndBoxTree.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass3d/BRepClass3d_Intersector3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass3d/BRepClass3d_SClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass3d/BRepClass3d_SolidClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass3d/BRepClass3d_SolidExplorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepClass3d/BRepClass3d_SolidPassiveClassifier_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_CheckCurveOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_Command.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_FindSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_FuseEdges.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_MakeEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_MakeEdge2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_MakeFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_MakePolygon.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_MakeShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_MakeShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_MakeSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_MakeVertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_MakeWire.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepLib/BRepLib_MakeWire_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepGProp/BRepGProp.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepGProp/BRepGProp_Cinert.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepGProp/BRepGProp_Domain.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepGProp/BRepGProp_EdgeTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepGProp/BRepGProp_Face.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepGProp/BRepGProp_Gauss.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepGProp/BRepGProp_Sinert.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepGProp/BRepGProp_TFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepGProp/BRepGProp_UFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepGProp/BRepGProp_Vinert.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepGProp/BRepGProp_VinertGK.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepIntCurveSurface/BRepIntCurveSurface_Inter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTopAdaptor/BRepTopAdaptor_FClass2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTopAdaptor/BRepTopAdaptor_HVertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTopAdaptor/BRepTopAdaptor_Tool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepTopAdaptor/BRepTopAdaptor_TopolTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_Collect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_Command.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_Copy.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_FastSewing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_FindPlane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_GTransform.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_MakeEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_MakeEdge2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_MakeFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_MakePolygon.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_MakeShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_MakeShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_MakeSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_MakeVertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_MakeWire.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_ModifyShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_NurbsConvert.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_Sewing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepBuilderAPI/BRepBuilderAPI_Transform.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_ApproxLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_Approx_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_MyGradientbisOfTheComputeLineOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_SurfaceTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_TheComputeLineBezierOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_TheComputeLineOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_TheImpPrmSvSurfacesOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_TheMultiLineOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_TheMultiLineToolOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_ThePrmPrmSvSurfacesOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepApprox/BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_0.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,4 @@
+<map id="NCollection_CellFilter_InspectorXYZ" name="NCollection_CellFilter_InspectorXYZ">
+<area shape="rect" id="node2" href="$class_b_rep_builder_a_p_i___fast_sewing_1_1_node_inspector.html" title="This inspector will find a node nearest to the given point not far than on the given tolerance..." alt="" coords="5,95,196,136"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___vertex_inspector.html" title="Class BRepBuilderAPI_VertexInspector derived from NCollection_CellFilter_InspectorXYZ This class defi..." alt="" coords="221,102,434,129"/>
+</map>

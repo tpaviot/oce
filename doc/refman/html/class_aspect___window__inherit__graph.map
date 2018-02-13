@@ -1,0 +1,6 @@
+<map id="Aspect_Window" name="Aspect_Window">
+<area shape="rect" id="node3" href="$class_aspect___neutral_window.html" title="Defines a platform&#45;neutral window. This class is intended to be used in context when window managemen..." alt="" coords="5,155,163,181"/>
+<area shape="rect" id="node4" href="$class_cocoa___window.html" title="This class defines Cocoa window. " alt="" coords="187,155,299,181"/>
+<area shape="rect" id="node5" href="$class_xw___window.html" title="This class defines XLib window intended for creation of OpenGL context. " alt="" coords="323,155,413,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="175,5,310,32"/>
+</map>

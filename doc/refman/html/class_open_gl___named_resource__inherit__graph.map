@@ -1,0 +1,8 @@
+<map id="OpenGl_NamedResource" name="OpenGl_NamedResource">
+<area shape="rect" id="node4" href="$class_open_gl___shader_program.html" title="Wrapper for OpenGL program object. " alt="" coords="29,229,191,256"/>
+<area shape="rect" id="node6" href="$class_open_gl___texture.html" title="Texture resource. " alt="" coords="229,229,345,256"/>
+<area shape="rect" id="node2" href="$class_open_gl___resource.html" title="Interface for OpenGl resource with following meaning: " alt="" coords="127,80,255,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="124,5,259,32"/>
+<area shape="rect" id="node5" href="$class_open_gl___shader_manager_1_1_open_gl___shader_program_f_f_p.html" title="Fake OpenGL program for tracking FFP state in the way consistent to programmable pipeline. " alt="" coords="5,304,201,345"/>
+<area shape="rect" id="node7" href="$class_open_gl___point_sprite.html" title="Point sprite resource. On modern hardware it will be texture with extra parameters. On ancient hardware sprites will be drawn using bitmaps. " alt="" coords="225,311,363,338"/>
+</map>

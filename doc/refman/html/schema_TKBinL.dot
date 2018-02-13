@@ -1,0 +1,11 @@
+digraph schema_TKBinL
+{
+	TKBinL [ URL = "toolkit_tkbinl.html", shape = box ]
+	TKCDF [ URL = "toolkit_tkcdf.html" , shape = box ]
+	TKBinL -> TKCDF [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKBinL -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKLCAF [ URL = "toolkit_tklcaf.html" , shape = box ]
+	TKBinL -> TKLCAF [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

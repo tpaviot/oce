@@ -1,0 +1,12 @@
+<map id="IGESData_ReadWriteModule" name="IGESData_ReadWriteModule">
+<area shape="rect" id="node4" href="$class_i_g_e_s_appli___read_write_module.html" title="Defines basic File Access Module for IGESAppli (specific parts) Specific actions concern : Read and W..." alt="" coords="640,5,832,32"/>
+<area shape="rect" id="node5" href="$class_i_g_e_s_basic___read_write_module.html" title="Defines basic File Access Module for IGESBasic (specific parts) Specific actions concern : Read and W..." alt="" coords="638,56,834,83"/>
+<area shape="rect" id="node6" href="$class_i_g_e_s_defs___read_write_module.html" title="Defines Defs File Access Module for IGESDefs (specific parts) Specific actions concern : Read and Wri..." alt="" coords="641,107,831,133"/>
+<area shape="rect" id="node7" href="$class_i_g_e_s_dimen___read_write_module.html" title="Defines Dimen File Access Module for IGESDimen (specific parts) Specific actions concern : Read and W..." alt="" coords="636,157,836,184"/>
+<area shape="rect" id="node8" href="$class_i_g_e_s_draw___read_write_module.html" title="Defines Draw File Access Module for IGESDraw (specific parts) Specific actions concern : Read and Wri..." alt="" coords="640,208,832,235"/>
+<area shape="rect" id="node9" href="$class_i_g_e_s_geom___read_write_module.html" title="Defines Geom File Access Module for IGESGeom (specific parts) Specific actions concern : Read and Wri..." alt="" coords="637,259,835,285"/>
+<area shape="rect" id="node10" href="$class_i_g_e_s_graph___read_write_module.html" title="Defines Graph File Access Module for IGESGraph (specific parts) Specific actions concern : Read and W..." alt="" coords="637,309,835,336"/>
+<area shape="rect" id="node11" href="$class_i_g_e_s_solid___read_write_module.html" title="Defines Solid File Access Module for IGESSolid (specific parts) Specific actions concern : Read and W..." alt="" coords="640,360,832,387"/>
+<area shape="rect" id="node2" href="$class_interface___reader_module.html" title="Defines unitary operations required to read an Entity from a File (see FileReaderData, FileReaderTool), under control of a FileReaderTool. The initial creation is performed by a GeneralModule (set in GeneralLib). Then, which remains is Loading data from the FileReaderData to the Entity. " alt="" coords="188,183,349,209"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,183,140,209"/>
+</map>

@@ -1,0 +1,11 @@
+digraph schema_TKSTEP209
+{
+	TKSTEP209 [ URL = "toolkit_tkstep209.html", shape = box ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKSTEP209 -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKXSBase [ URL = "toolkit_tkxsbase.html" , shape = box ]
+	TKSTEP209 -> TKXSBase [ color = "midnightblue", style = "solid" ]
+	TKSTEPBase [ URL = "toolkit_tkstepbase.html" , shape = box ]
+	TKSTEP209 -> TKSTEPBase [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

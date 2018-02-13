@@ -1,0 +1,4 @@
+<map id="BRepBuilderAPI_MakeEdge2d" name="BRepBuilderAPI_MakeEdge2d">
+<area shape="rect" id="node2" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="9,80,200,107"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="14,5,195,32"/>
+</map>

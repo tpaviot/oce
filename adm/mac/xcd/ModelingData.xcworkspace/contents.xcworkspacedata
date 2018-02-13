@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "ModelingData">
+         <FileRef
+            location = "group:TKG2d.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKG3d.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKGeomBase.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBRep.xcodeproj">
+         </FileRef>
+   </Group>
+</Workspace>

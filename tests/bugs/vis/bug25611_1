@@ -1,0 +1,26 @@
+puts "========"
+puts "OCC25611"
+puts "========"
+puts ""
+############################################################################
+puts "Displaying \'zbufftrihedron\' interferes with \'vgraduatedtrihedron\'"
+############################################################################
+
+set anImage $imagedir/${casename}.png
+
+# enable FFP until bug-fix for GLSL
+vcaps -ffp 1
+
+vinit View1
+psphere s 10
+vdisplay s
+vaxo
+vfit
+vsetdispmode s 1
+vgraduatedtrihedron -on
+vzbufftrihedron
+
+vdump $anImage
+vclear
+vclose View1 
+

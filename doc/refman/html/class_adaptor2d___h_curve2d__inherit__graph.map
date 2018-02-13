@@ -1,0 +1,10 @@
+<map id="Adaptor2d_HCurve2d" name="Adaptor2d_HCurve2d">
+<area shape="rect" id="node3" href="$class_adaptor2d___h_line2d.html" title="Adaptor2d_HLine2d" alt="" coords="411,5,545,32"/>
+<area shape="rect" id="node4" href="$class_adaptor2d___h_offset_curve.html" title="Adaptor2d_HOffsetCurve" alt="" coords="397,56,559,83"/>
+<area shape="rect" id="node5" href="$class_b_rep_adaptor___h_curve2d.html" title="BRepAdaptor_HCurve2d" alt="" coords="397,107,559,133"/>
+<area shape="rect" id="node6" href="$class_geom2d_adaptor___g_h_curve.html" title="Geom2dAdaptor_GHCurve" alt="" coords="391,157,565,184"/>
+<area shape="rect" id="node8" href="$class_proj_lib___h_comp_projected_curve.html" title="ProjLib_HCompProjectedCurve" alt="" coords="379,208,577,235"/>
+<area shape="rect" id="node9" href="$class_proj_lib___h_projected_curve.html" title="ProjLib_HProjectedCurve" alt="" coords="395,259,561,285"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,132,140,159"/>
+<area shape="rect" id="node7" href="$class_geom2d_adaptor___h_curve.html" title="Provides an interface between the services provided by any curve from the package Geom2d and those re..." alt="" coords="625,157,789,184"/>
+</map>

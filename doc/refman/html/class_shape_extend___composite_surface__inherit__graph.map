@@ -1,0 +1,5 @@
+<map id="ShapeExtend_CompositeSurface" name="ShapeExtend_CompositeSurface">
+<area shape="rect" id="node2" href="$class_geom___surface.html" title="Describes the common behavior of surfaces in 3D space. The Geom package provides many implementations..." alt="" coords="58,155,166,181"/>
+<area shape="rect" id="node3" href="$class_geom___geometry.html" title="The abstract class Geometry for 3D space is the root class of all geometric objects from the Geom pac..." alt="" coords="51,80,173,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="45,5,179,32"/>
+</map>

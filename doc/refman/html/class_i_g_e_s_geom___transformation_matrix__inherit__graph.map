@@ -1,0 +1,5 @@
+<map id="IGESGeom_TransformationMatrix" name="IGESGeom_TransformationMatrix">
+<area shape="rect" id="node2" href="$class_i_g_e_s_data___transf_entity.html" title="defines required type for Transf in directory part an effective Transf entity must inherits it ..." alt="" coords="35,155,191,181"/>
+<area shape="rect" id="node3" href="$class_i_g_e_s_data___i_g_e_s_entity.html" title="defines root of IGES Entity definition, including Directory Part, lists of (optionnal) Properties and..." alt="" coords="37,80,189,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="46,5,181,32"/>
+</map>

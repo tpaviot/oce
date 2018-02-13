@@ -1,0 +1,8 @@
+<map id="ShapePersistent_BRep::GCurve" name="ShapePersistent_BRep::GCurve">
+<area shape="rect" id="node5" href="$class_shape_persistent___b_rep_1_1_curve3_d.html" title="ShapePersistent_BRep\l::Curve3D" alt="" coords="5,333,163,375"/>
+<area shape="rect" id="node6" href="$class_shape_persistent___b_rep_1_1_curve_on_surface.html" title="ShapePersistent_BRep\l::CurveOnSurface" alt="" coords="187,333,344,375"/>
+<area shape="rect" id="node2" href="$class_shape_persistent___b_rep_1_1_curve_representation.html" title="ShapePersistent_BRep\l::CurveRepresentation" alt="" coords="96,155,253,196"/>
+<area shape="rect" id="node3" href="$class_std_obj_mgt___persistent.html" title="Root class for a temporary persistent object that reads data from a file and then creates transient o..." alt="" coords="99,80,250,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="107,5,242,32"/>
+<area shape="rect" id="node7" href="$class_shape_persistent___b_rep_1_1_curve_on_closed_surface.html" title="ShapePersistent_BRep\l::CurveOnClosedSurface" alt="" coords="184,423,347,464"/>
+</map>

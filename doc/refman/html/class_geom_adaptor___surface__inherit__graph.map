@@ -1,0 +1,5 @@
+<map id="GeomAdaptor_Surface" name="GeomAdaptor_Surface">
+<area shape="rect" id="node3" href="$class_geom_adaptor___surface_of_linear_extrusion.html" title="Generalised cylinder. This surface is obtained by sweeping a curve in a given direction. The parametrization range for the parameter U is defined with referenced the curve. The parametrization range for the parameter V is ]&#45;infinite,+infinite[ The position of the curve gives the origin for the parameter V. The continuity of the surface is CN in the V direction. " alt="" coords="5,155,207,196"/>
+<area shape="rect" id="node4" href="$class_geom_adaptor___surface_of_revolution.html" title="This class defines a complete surface of revolution. The surface is obtained by rotating a curve a co..." alt="" coords="231,162,456,189"/>
+<area shape="rect" id="node2" href="$class_adaptor3d___surface.html" title="Root class for surfaces on which geometric algorithms work. An adapted surface is an interface betwee..." alt="" coords="159,5,291,32"/>
+</map>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKViewerTest" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../lin/cbp/lib/libTKViewerTest.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../lin/cbp/libd/libTKViewerTest.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/libd" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="tcl8.6" />
+			<Add library="X11" />
+			<Add library="tk8.6" />
+			<Add library="Xext" />
+			<Add library="Xmu" />
+			<Add library="Xi" />
+			<Add library="GL" />
+			<Add library="freetype" />
+			<Add library="TKGeomBase" />
+			<Add library="TKFillet" />
+			<Add library="TKBRep" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKHLR" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKService" />
+			<Add library="TKShHealing" />
+			<Add library="TKBool" />
+			<Add library="TKPrim" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKG2d" />
+			<Add library="TKTopTest" />
+			<Add library="TKG3d" />
+			<Add library="TKOffset" />
+			<Add library="TKMesh" />
+			<Add library="TKV3d" />
+			<Add library="TKDraw" />
+			<Add library="TKOpenGl" />
+		</Linker>
+		<Unit filename="../../../src/ViewerTest/ViewerTest.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_AutoUpdater.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_CmdParser.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_EventManager.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_FilletCommands.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_ObjectCommands.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_OpenGlCommands.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_RelationCommands.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_ViewerCommands.cxx" />
+	</Project>
+</CodeBlocks_project_file>

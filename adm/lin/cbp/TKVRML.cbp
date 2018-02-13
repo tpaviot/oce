@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKVRML" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../lin/cbp/lib/libTKVRML.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../lin/cbp/libd/libTKVRML.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/libd" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKBRep" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKMath" />
+			<Add library="TKGeomBase" />
+			<Add library="TKernel" />
+			<Add library="TKPrim" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKMesh" />
+			<Add library="TKHLR" />
+			<Add library="TKService" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKV3d" />
+		</Linker>
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_Curve.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_DeflectionCurve.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_Drawer.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_HLRShape.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_IsoAspect.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_LineAspect.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_PointAspect.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_Projector.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_ShadedShape.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_ShadingAspect.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_WFDeflectionRestrictedFace.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_WFDeflectionShape.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_WFRestrictedFace.cxx" />
+		<Unit filename="../../../src/VrmlConverter/VrmlConverter_WFShape.cxx" />
+		<Unit filename="../../../src/VrmlAPI/VrmlAPI.cxx" />
+		<Unit filename="../../../src/VrmlAPI/VrmlAPI_Writer.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_AsciiText.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Cone.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Coordinate3.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Cube.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Cylinder.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_DirectionalLight.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_FontStyle.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Group.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_IndexedFaceSet.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_IndexedLineSet.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Info.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Instancing.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_LOD.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Material.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_MaterialBinding.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_MatrixTransform.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Normal.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_NormalBinding.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_OrthographicCamera.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_PerspectiveCamera.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_PointLight.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_PointSet.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Rotation.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_SFImage.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_SFRotation.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Scale.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Separator.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_ShapeHints.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Sphere.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_SpotLight.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Switch.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Texture2.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Texture2Transform.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_TextureCoordinate2.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Transform.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_TransformSeparator.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_Translation.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_WWWAnchor.cxx" />
+		<Unit filename="../../../src/Vrml/Vrml_WWWInline.cxx" />
+		<Unit filename="../../../src/VrmlData/VrmlData_Geometry.cxx" />
+		<Unit filename="../../../src/VrmlData/VrmlData_Group.cxx" />
+		<Unit filename="../../../src/VrmlData/VrmlData_IndexedFaceSet.cxx" />
+		<Unit filename="../../../src/VrmlData/VrmlData_IndexedLineSet.cxx" />
+		<Unit filename="../../../src/VrmlData/VrmlData_Material.cxx" />
+		<Unit filename="../../../src/VrmlData/VrmlData_Node.cxx" />
+		<Unit filename="../../../src/VrmlData/VrmlData_Scene.cxx" />
+		<Unit filename="../../../src/VrmlData/VrmlData_ShapeConvert.cxx" />
+		<Unit filename="../../../src/VrmlData/VrmlData_WorldInfo.cxx" />
+	</Project>
+</CodeBlocks_project_file>

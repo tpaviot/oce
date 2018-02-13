@@ -1,0 +1,12 @@
+<map id="DrawDim_Dimension" name="DrawDim_Dimension">
+<area shape="rect" id="node4" href="$class_draw_dim___angle.html" title="DrawDim_Angle" alt="" coords="585,5,700,32"/>
+<area shape="rect" id="node5" href="$class_draw_dim___distance.html" title="DrawDim_Distance" alt="" coords="577,56,709,83"/>
+<area shape="rect" id="node6" href="$class_draw_dim___planar_dimension.html" title="Dimensions between point, line and circle ON a plane. " alt="" coords="553,107,732,133"/>
+<area shape="rect" id="node11" href="$class_draw_dim___radius.html" title="DrawDim_Radius" alt="" coords="582,157,703,184"/>
+<area shape="rect" id="node2" href="$class_draw___drawable3_d.html" title="Draw_Drawable3D" alt="" coords="188,81,315,108"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,81,140,108"/>
+<area shape="rect" id="node7" href="$class_draw_dim___planar_angle.html" title="DrawDim_PlanarAngle" alt="" coords="790,31,941,57"/>
+<area shape="rect" id="node8" href="$class_draw_dim___planar_diameter.html" title="DrawDim_PlanarDiameter" alt="" coords="780,81,951,108"/>
+<area shape="rect" id="node9" href="$class_draw_dim___planar_distance.html" title="PlanarDistance point/point PlanarDistance point/line PlanarDistance line/line. " alt="" coords="781,132,950,159"/>
+<area shape="rect" id="node10" href="$class_draw_dim___planar_radius.html" title="DrawDim_PlanarRadius" alt="" coords="786,183,945,209"/>
+</map>

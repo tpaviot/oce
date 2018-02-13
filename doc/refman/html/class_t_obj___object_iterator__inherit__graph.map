@@ -1,0 +1,8 @@
+<map id="TObj_ObjectIterator" name="TObj_ObjectIterator">
+<area shape="rect" id="node3" href="$class_t_obj___label_iterator.html" title="TObj_LabelIterator" alt="" coords="113,155,240,181"/>
+<area shape="rect" id="node6" href="$class_t_obj___model_iterator.html" title="TObj_ModelIterator" alt="" coords="265,155,395,181"/>
+<area shape="rect" id="node7" href="$class_t_obj___sequence_iterator.html" title="TObj_SequenceIterator" alt="" coords="419,155,574,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="263,5,397,32"/>
+<area shape="rect" id="node4" href="$class_t_obj___ocaf_object_iterator.html" title="TObj_OcafObjectIterator" alt="" coords="5,229,167,256"/>
+<area shape="rect" id="node5" href="$class_t_obj___reference_iterator.html" title="TObj_ReferenceIterator" alt="" coords="191,229,346,256"/>
+</map>

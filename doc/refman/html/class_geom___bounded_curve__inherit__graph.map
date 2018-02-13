@@ -1,0 +1,8 @@
+<map id="Geom_BoundedCurve" name="Geom_BoundedCurve">
+<area shape="rect" id="node5" href="$class_geom___bezier_curve.html" title="Describes a rational or non&#45;rational Bezier curve. " alt="" coords="5,304,139,331"/>
+<area shape="rect" id="node6" href="$class_geom___b_spline_curve.html" title="Definition of the B_spline curve. A B&#45;spline curve can be Uniform or non&#45;uniform Rational or non&#45;rati..." alt="" coords="163,304,304,331"/>
+<area shape="rect" id="node7" href="$class_geom___trimmed_curve.html" title="Describes a portion of a curve (termed the &quot;basis curve&quot;) limited by two parameter values inside the ..." alt="" coords="328,304,475,331"/>
+<area shape="rect" id="node2" href="$class_geom___curve.html" title="The abstract class Curve describes the common behavior of curves in 3D space. The Geom package provid..." alt="" coords="185,155,281,181"/>
+<area shape="rect" id="node3" href="$class_geom___geometry.html" title="The abstract class Geometry for 3D space is the root class of all geometric objects from the Geom pac..." alt="" coords="173,80,294,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="166,5,301,32"/>
+</map>

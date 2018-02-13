@@ -1,0 +1,31 @@
+<map id="StepBasic_NamedUnit" name="StepBasic_NamedUnit">
+<area shape="rect" id="node3" href="$class_step_basic___area_unit.html" title="StepBasic_AreaUnit" alt="" coords="458,257,597,283"/>
+<area shape="rect" id="node4" href="$class_step_basic___conversion_based_unit.html" title="StepBasic_ConversionBasedUnit" alt="" coords="421,307,633,334"/>
+<area shape="rect" id="node13" href="$class_step_basic___length_unit.html" title="StepBasic_LengthUnit" alt="" coords="452,486,603,513"/>
+<area shape="rect" id="node14" href="$class_step_basic___mass_unit.html" title="Representation of STEP entity MassUnit. " alt="" coords="455,537,599,563"/>
+<area shape="rect" id="node15" href="$class_step_basic___plane_angle_unit.html" title="StepBasic_PlaneAngleUnit" alt="" coords="438,587,617,614"/>
+<area shape="rect" id="node16" href="$class_step_basic___ratio_unit.html" title="StepBasic_RatioUnit" alt="" coords="456,638,599,665"/>
+<area shape="rect" id="node17" href="$class_step_basic___si_unit.html" title="StepBasic_SiUnit" alt="" coords="465,689,589,715"/>
+<area shape="rect" id="node27" href="$class_step_basic___solid_angle_unit.html" title="StepBasic_SolidAngleUnit" alt="" coords="440,739,615,766"/>
+<area shape="rect" id="node28" href="$class_step_basic___thermodynamic_temperature_unit.html" title="Representation of STEP entity ThermodynamicTemperatureUnit. " alt="" coords="389,790,665,817"/>
+<area shape="rect" id="node29" href="$class_step_basic___time_unit.html" title="StepBasic_TimeUnit" alt="" coords="457,841,597,867"/>
+<area shape="rect" id="node30" href="$class_step_basic___volume_unit.html" title="StepBasic_VolumeUnit" alt="" coords="449,891,605,918"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,638,140,665"/>
+<area shape="rect" id="node5" href="$class_step_basic___conversion_based_unit_and_area_unit.html" title="StepBasic_ConversionBased\lUnitAndAreaUnit" alt="" coords="738,5,927,47"/>
+<area shape="rect" id="node6" href="$class_step_basic___conversion_based_unit_and_length_unit.html" title="StepBasic_ConversionBased\lUnitAndLengthUnit" alt="" coords="738,71,927,112"/>
+<area shape="rect" id="node7" href="$class_step_basic___conversion_based_unit_and_mass_unit.html" title="StepBasic_ConversionBased\lUnitAndMassUnit" alt="" coords="738,136,927,177"/>
+<area shape="rect" id="node8" href="$class_step_basic___conversion_based_unit_and_plane_angle_unit.html" title="StepBasic_ConversionBased\lUnitAndPlaneAngleUnit" alt="" coords="738,201,927,243"/>
+<area shape="rect" id="node9" href="$class_step_basic___conversion_based_unit_and_ratio_unit.html" title="StepBasic_ConversionBased\lUnitAndRatioUnit" alt="" coords="738,267,927,308"/>
+<area shape="rect" id="node10" href="$class_step_basic___conversion_based_unit_and_solid_angle_unit.html" title="StepBasic_ConversionBased\lUnitAndSolidAngleUnit" alt="" coords="738,332,927,373"/>
+<area shape="rect" id="node11" href="$class_step_basic___conversion_based_unit_and_time_unit.html" title="StepBasic_ConversionBased\lUnitAndTimeUnit" alt="" coords="738,397,927,439"/>
+<area shape="rect" id="node12" href="$class_step_basic___conversion_based_unit_and_volume_unit.html" title="StepBasic_ConversionBased\lUnitAndVolumeUnit" alt="" coords="738,463,927,504"/>
+<area shape="rect" id="node18" href="$class_step_basic___si_unit_and_area_unit.html" title="StepBasic_SiUnitAndAreaUnit" alt="" coords="734,529,931,555"/>
+<area shape="rect" id="node19" href="$class_step_basic___si_unit_and_length_unit.html" title="StepBasic_SiUnitAndLengthUnit" alt="" coords="728,579,937,606"/>
+<area shape="rect" id="node20" href="$class_step_basic___si_unit_and_mass_unit.html" title="StepBasic_SiUnitAndMassUnit" alt="" coords="731,630,934,657"/>
+<area shape="rect" id="node21" href="$class_step_basic___si_unit_and_plane_angle_unit.html" title="StepBasic_SiUnitAndPlane\lAngleUnit" alt="" coords="743,681,923,723"/>
+<area shape="rect" id="node22" href="$class_step_basic___si_unit_and_ratio_unit.html" title="StepBasic_SiUnitAndRatioUnit" alt="" coords="733,747,933,774"/>
+<area shape="rect" id="node23" href="$class_step_basic___si_unit_and_solid_angle_unit.html" title="StepBasic_SiUnitAndSolid\lAngleUnit" alt="" coords="745,799,921,840"/>
+<area shape="rect" id="node24" href="$class_step_basic___si_unit_and_thermodynamic_temperature_unit.html" title="StepBasic_SiUnitAndThermodynamic\lTemperatureUnit" alt="" coords="713,864,952,905"/>
+<area shape="rect" id="node25" href="$class_step_basic___si_unit_and_time_unit.html" title="StepBasic_SiUnitAndTimeUnit" alt="" coords="733,930,932,957"/>
+<area shape="rect" id="node26" href="$class_step_basic___si_unit_and_volume_unit.html" title="StepBasic_SiUnitAndVolumeUnit" alt="" coords="725,981,940,1007"/>
+</map>

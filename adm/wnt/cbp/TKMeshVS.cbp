@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKMeshVS" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKMeshVS" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__MeshVS_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKMeshVS_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKMeshVS" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__MeshVS_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKMeshVS_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKV3d" />
+			<Add library="TKMath" />
+			<Add library="TKService" />
+			<Add library="TKernel" />
+			<Add library="TKG3d" />
+			<Add library="TKG2d" />
+		</Linker>
+		<Unit filename="../../../src/MeshVS/MeshVS_CommonSensitiveEntity.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_DataSource.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_DataSource3D.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_DeformedDataSource.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_Drawer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_DummySensitiveEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_ElementalColorPrsBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_Mesh.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_MeshEntityOwner.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_MeshOwner.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_MeshPrsBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_NodalColorPrsBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_PrsBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitiveFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitiveMesh.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitivePolyhedron.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitiveQuad.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitiveSegment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_TextPrsBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_Tool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_TwoColors.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/MeshVS/MeshVS_VectorPrsBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

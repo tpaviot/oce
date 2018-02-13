@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKBool" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKBool" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__TopOpeBRep_DLL" />
+					<Add option="-D__TopOpeBRepDS_DLL" />
+					<Add option="-D__TopOpeBRepBuild_DLL" />
+					<Add option="-D__TopOpeBRepTool_DLL" />
+					<Add option="-D__BRepAlgo_DLL" />
+					<Add option="-D__BRepFill_DLL" />
+					<Add option="-D__BRepProj_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKBool_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKBool" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__TopOpeBRep_DLL" />
+					<Add option="-D__TopOpeBRepDS_DLL" />
+					<Add option="-D__TopOpeBRepBuild_DLL" />
+					<Add option="-D__TopOpeBRepTool_DLL" />
+					<Add option="-D__BRepAlgo_DLL" />
+					<Add option="-D__BRepFill_DLL" />
+					<Add option="-D__BRepProj_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKBool_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKBRep" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKPrim" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKShHealing" />
+			<Add library="TKGeomBase" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKBO" />
+		</Linker>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep.cxx" />
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_Bipoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_DRAW.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_DSFiller.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_EdgesFiller.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_EdgesIntersector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_EdgesIntersector_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_FFDumper.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_FFTransitionTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_FaceEdgeFiller.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_FaceEdgeFiller_DEB.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_FaceEdgeIntersector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_FacesFiller.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_FacesFiller_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_FacesIntersector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_GeomTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_Hctxee2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_Hctxff2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_LineInter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_Point2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_PointClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_PointGeomTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_ProcessGR.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_ProcessSectionEdges.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_ShapeIntersector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_ShapeIntersector2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_ShapeScanner.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_VPointInter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_VPointInterClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_VPointInterIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_WPointInter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_WPointInterIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_kpart.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_mergePDS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_sort.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_trace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_traceALWL.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_traceBOOPNINT.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_traceSIFF.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_vpr.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_vprclo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRep/TopOpeBRep_vprdeg.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Association.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_BuildTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Check.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Curve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_CurveData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_CurveExplorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_CurveIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_CurvePointInterference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_DRAW.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_DataStructure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Dumper.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_EIR.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_EXPORT.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Edge3dInterferenceTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_EdgeInterferenceTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_EdgeVertexInterference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Explorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_FIR.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_FaceEdgeInterference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_FaceInterferenceTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Filter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_FilterCurveInterferences.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_FilterEdgeInterferences.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_FilterFaceInterferences.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_GapFiller.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_GapTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_GeometryData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_HDataStructure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Interference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_InterferenceIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_InterferenceTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_ListOfShapeOn1State.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Marker.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Point.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_PointData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_PointExplorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_PointIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_ProcessEdgeInterferences.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_ProcessFaceInterferences.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_ProcessInterferencesTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Reducer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_ShapeData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_ShapeShapeInterference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_ShapeWithState.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_SolidSurfaceInterference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Surface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_SurfaceCurveInterference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_SurfaceData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_SurfaceExplorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_SurfaceIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_TKI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_TOOL.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_Transition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_connex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_funk.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_redu.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_repvg.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepDS/TopOpeBRepDS_samdom.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Area1dBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Area2dBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Area3dBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_AreaBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_BlockBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_BlockIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_BuildEdges.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_BuildFaces.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_BuildVertices.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Builder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Builder1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Builder1_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Builder1_2.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_BuilderON.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_BuilderON2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_CompositeClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_CorrectFace2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_EdgeBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_End.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_FREGU.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_FaceAreaBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_FaceBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_FuseFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_GIter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_GTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_GTopo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Grid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_GridEE.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_GridFF.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_GridSS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Griddump.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_HBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_KPart.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Loop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_LoopClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_LoopSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Merge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Pave.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_PaveClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_PaveSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_SREGU.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Section.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_ShapeListOfShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_ShapeSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_ShellFaceClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_ShellFaceSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_ShellToSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_SolidAreaBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_SolidBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Tools.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Tools2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_Tools_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_VertexInfo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_WireEdgeClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_WireEdgeSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_WireToFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_fctwes.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_ffsfs.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_ffwesk.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_keep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_kpkole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_makeedges.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_makefaces.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_makesolids.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_on.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepBuild/TopOpeBRepBuild_trace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_AncestorsTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_BoxSort.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_C2DF.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_CLASSI.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_CORRISO.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_CurveTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_DRAW.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_FuseEdges.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_GEOMETRY.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_GeomTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_HBoxTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_PROJECT.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_PURGE.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_PurgeInternalEdges.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_REGUS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_REGUW.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_RegularizeS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_RegularizeW.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_SC.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_STATE.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_ShapeClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_ShapeTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_SolidClassifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_TOOL.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_TOPOLOGY.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_box.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_connexity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_face.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_faulty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_makeTransition.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_matter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_mkTondgE.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_tol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_trace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopOpeBRepTool/TopOpeBRepTool_traceSTATE.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_AsDes.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_BooleanOperation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_BooleanOperations.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_Common.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_Cut.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_DSAccess.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_EdgeConnector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_FaceRestrictor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_Fuse.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_Image.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_Loop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_NormalProjection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_Section.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepAlgo/BRepAlgo_Tool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_ACRLaw.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_ApproxSeewing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_CompatibleWires.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_ComputeCLine_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_CurveConstraint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_Draft.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_DraftLaw.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_Edge3DLaw.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_EdgeFaceAndOrder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_EdgeOnSurfLaw.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_Evolved.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_FaceAndOrder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_Filling.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_Generator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_LocationLaw.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_MultiLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_NSections.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_OffsetAncestors.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_OffsetWire.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_Pipe.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_PipeShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_Section.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_SectionLaw.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_SectionPlacement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_ShapeLaw.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_Sweep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_TrimEdgeTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_TrimShellCorner.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepFill/BRepFill_TrimSurfaceTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepProj/BRepProj_Projection.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

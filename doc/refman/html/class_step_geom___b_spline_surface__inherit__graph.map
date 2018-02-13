@@ -1,0 +1,16 @@
+<map id="StepGeom_BSplineSurface" name="StepGeom_BSplineSurface">
+<area shape="rect" id="node7" href="$class_step_geom___bezier_surface.html" title="StepGeom_BezierSurface" alt="" coords="1408,5,1580,32"/>
+<area shape="rect" id="node8" href="$class_step_geom___bezier_surface_and_rational_b_spline_surface.html" title="StepGeom_BezierSurfaceAnd\lRationalBSplineSurface" alt="" coords="1397,57,1591,98"/>
+<area shape="rect" id="node9" href="$class_step_geom___b_spline_surface_with_knots.html" title="StepGeom_BSplineSurfaceWith\lKnots" alt="" coords="1391,122,1597,163"/>
+<area shape="rect" id="node10" href="$class_step_geom___b_spline_surface_with_knots_and_rational_b_spline_surface.html" title="StepGeom_BSplineSurfaceWith\lKnotsAndRationalBSplineSurface" alt="" coords="1387,187,1601,229"/>
+<area shape="rect" id="node11" href="$class_step_geom___quasi_uniform_surface.html" title="StepGeom_QuasiUniformSurface" alt="" coords="1387,253,1601,280"/>
+<area shape="rect" id="node12" href="$class_step_geom___quasi_uniform_surface_and_rational_b_spline_surface.html" title="StepGeom_QuasiUniformSurface\lAndRationalBSplineSurface" alt="" coords="1387,305,1601,346"/>
+<area shape="rect" id="node13" href="$class_step_geom___rational_b_spline_surface.html" title="StepGeom_RationalBSpline\lSurface" alt="" coords="1403,370,1585,411"/>
+<area shape="rect" id="node14" href="$class_step_geom___uniform_surface.html" title="StepGeom_UniformSurface" alt="" coords="1405,436,1583,463"/>
+<area shape="rect" id="node15" href="$class_step_geom___uniform_surface_and_rational_b_spline_surface.html" title="StepGeom_UniformSurfaceAnd\lRationalBSplineSurface" alt="" coords="1393,487,1595,529"/>
+<area shape="rect" id="node2" href="$class_step_geom___bounded_surface.html" title="StepGeom_BoundedSurface" alt="" coords="924,253,1111,280"/>
+<area shape="rect" id="node3" href="$class_step_geom___surface.html" title="StepGeom_Surface" alt="" coords="741,253,876,280"/>
+<area shape="rect" id="node4" href="$class_step_geom___geometric_representation_item.html" title="StepGeom_GeometricRepresentationItem" alt="" coords="431,253,693,280"/>
+<area shape="rect" id="node5" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="188,253,383,280"/>
+<area shape="rect" id="node6" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,253,140,280"/>
+</map>

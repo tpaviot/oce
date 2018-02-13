@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKMath" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKMath.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKMath.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="TKernel" />
+		</Linker>
+		<Unit filename="../../../src/math/math.cxx" />
+		<Unit filename="../../../src/math/math_BFGS.cxx" />
+		<Unit filename="../../../src/math/math_BissecNewton.cxx" />
+		<Unit filename="../../../src/math/math_BracketMinimum.cxx" />
+		<Unit filename="../../../src/math/math_BracketedRoot.cxx" />
+		<Unit filename="../../../src/math/math_BrentMinimum.cxx" />
+		<Unit filename="../../../src/math/math_ComputeGaussPointsAndWeights.cxx" />
+		<Unit filename="../../../src/math/math_ComputeKronrodPointsAndWeights.cxx" />
+		<Unit filename="../../../src/math/math_Crout.cxx" />
+		<Unit filename="../../../src/math/math_DirectPolynomialRoots.cxx" />
+		<Unit filename="../../../src/math/math_DoubleTab.cxx" />
+		<Unit filename="../../../src/math/math_EigenValuesSearcher.cxx" />
+		<Unit filename="../../../src/math/math_FRPR.cxx" />
+		<Unit filename="../../../src/math/math_Function.cxx" />
+		<Unit filename="../../../src/math/math_FunctionAllRoots.cxx" />
+		<Unit filename="../../../src/math/math_FunctionRoot.cxx" />
+		<Unit filename="../../../src/math/math_FunctionRoots.cxx" />
+		<Unit filename="../../../src/math/math_FunctionSample.cxx" />
+		<Unit filename="../../../src/math/math_FunctionSet.cxx" />
+		<Unit filename="../../../src/math/math_FunctionSetRoot.cxx" />
+		<Unit filename="../../../src/math/math_FunctionWithDerivative.cxx" />
+		<Unit filename="../../../src/math/math_Gauss.cxx" />
+		<Unit filename="../../../src/math/math_GaussLeastSquare.cxx" />
+		<Unit filename="../../../src/math/math_GaussMultipleIntegration.cxx" />
+		<Unit filename="../../../src/math/math_GaussSetIntegration.cxx" />
+		<Unit filename="../../../src/math/math_GaussSingleIntegration.cxx" />
+		<Unit filename="../../../src/math/math_GlobOptMin.cxx" />
+		<Unit filename="../../../src/math/math_Householder.cxx" />
+		<Unit filename="../../../src/math/math_IntegerVector.cxx" />
+		<Unit filename="../../../src/math/math_Jacobi.cxx" />
+		<Unit filename="../../../src/math/math_Kronrod.cxx" />
+		<Unit filename="../../../src/math/math_KronrodSingleIntegration.cxx" />
+		<Unit filename="../../../src/math/math_Matrix.cxx" />
+		<Unit filename="../../../src/math/math_MultipleVarFunction.cxx" />
+		<Unit filename="../../../src/math/math_NewtonFunctionRoot.cxx" />
+		<Unit filename="../../../src/math/math_NewtonFunctionSetRoot.cxx" />
+		<Unit filename="../../../src/math/math_NewtonMinimum.cxx" />
+		<Unit filename="../../../src/math/math_PSO.cxx" />
+		<Unit filename="../../../src/math/math_PSOParticlesPool.cxx" />
+		<Unit filename="../../../src/math/math_Powell.cxx" />
+		<Unit filename="../../../src/math/math_Recipes.cxx" />
+		<Unit filename="../../../src/math/math_SVD.cxx" />
+		<Unit filename="../../../src/math/math_TrigonometricFunctionRoots.cxx" />
+		<Unit filename="../../../src/math/math_Uzawa.cxx" />
+		<Unit filename="../../../src/math/math_Vector.cxx" />
+		<Unit filename="../../../src/ElCLib/ElCLib.cxx" />
+		<Unit filename="../../../src/ElSLib/ElSLib.cxx" />
+		<Unit filename="../../../src/BSplCLib/BSplCLib.cxx" />
+		<Unit filename="../../../src/BSplCLib/BSplCLib_1.cxx" />
+		<Unit filename="../../../src/BSplCLib/BSplCLib_2.cxx" />
+		<Unit filename="../../../src/BSplCLib/BSplCLib_3.cxx" />
+		<Unit filename="../../../src/BSplCLib/BSplCLib_BzSyntaxes.cxx" />
+		<Unit filename="../../../src/BSplCLib/BSplCLib_Cache.cxx" />
+		<Unit filename="../../../src/BSplSLib/BSplSLib.cxx" />
+		<Unit filename="../../../src/BSplSLib/BSplSLib_BzSyntaxes.cxx" />
+		<Unit filename="../../../src/BSplSLib/BSplSLib_Cache.cxx" />
+		<Unit filename="../../../src/PLib/PLib.cxx" />
+		<Unit filename="../../../src/PLib/PLib_Base.cxx" />
+		<Unit filename="../../../src/PLib/PLib_DoubleJacobiPolynomial.cxx" />
+		<Unit filename="../../../src/PLib/PLib_HermitJacobi.cxx" />
+		<Unit filename="../../../src/PLib/PLib_JacobiPolynomial.cxx" />
+		<Unit filename="../../../src/Poly/Poly.cxx" />
+		<Unit filename="../../../src/Poly/Poly_CoherentLink.cxx" />
+		<Unit filename="../../../src/Poly/Poly_CoherentNode.cxx" />
+		<Unit filename="../../../src/Poly/Poly_CoherentTriPtr.cxx" />
+		<Unit filename="../../../src/Poly/Poly_CoherentTriangle.cxx" />
+		<Unit filename="../../../src/Poly/Poly_CoherentTriangulation.cxx" />
+		<Unit filename="../../../src/Poly/Poly_Connect.cxx" />
+		<Unit filename="../../../src/Poly/Poly_MakeLoops.cxx" />
+		<Unit filename="../../../src/Poly/Poly_Polygon2D.cxx" />
+		<Unit filename="../../../src/Poly/Poly_Polygon3D.cxx" />
+		<Unit filename="../../../src/Poly/Poly_PolygonOnTriangulation.cxx" />
+		<Unit filename="../../../src/Poly/Poly_Triangle.cxx" />
+		<Unit filename="../../../src/Poly/Poly_Triangulation.cxx" />
+		<Unit filename="../../../src/CSLib/CSLib.cxx" />
+		<Unit filename="../../../src/CSLib/CSLib_Class2d.cxx" />
+		<Unit filename="../../../src/CSLib/CSLib_NormalPolyDef.cxx" />
+		<Unit filename="../../../src/Convert/Convert_CircleToBSplineCurve.cxx" />
+		<Unit filename="../../../src/Convert/Convert_CompBezierCurves2dToBSplineCurve2d.cxx" />
+		<Unit filename="../../../src/Convert/Convert_CompBezierCurvesToBSplineCurve.cxx" />
+		<Unit filename="../../../src/Convert/Convert_CompPolynomialToPoles.cxx" />
+		<Unit filename="../../../src/Convert/Convert_ConeToBSplineSurface.cxx" />
+		<Unit filename="../../../src/Convert/Convert_ConicToBSplineCurve.cxx" />
+		<Unit filename="../../../src/Convert/Convert_CylinderToBSplineSurface.cxx" />
+		<Unit filename="../../../src/Convert/Convert_ElementarySurfaceToBSplineSurface.cxx" />
+		<Unit filename="../../../src/Convert/Convert_EllipseToBSplineCurve.cxx" />
+		<Unit filename="../../../src/Convert/Convert_GridPolynomialToPoles.cxx" />
+		<Unit filename="../../../src/Convert/Convert_HyperbolaToBSplineCurve.cxx" />
+		<Unit filename="../../../src/Convert/Convert_ParabolaToBSplineCurve.cxx" />
+		<Unit filename="../../../src/Convert/Convert_PolynomialCosAndSin.cxx" />
+		<Unit filename="../../../src/Convert/Convert_SphereToBSplineSurface.cxx" />
+		<Unit filename="../../../src/Convert/Convert_TorusToBSplineSurface.cxx" />
+		<Unit filename="../../../src/Bnd/Bnd_B2d_0.cxx" />
+		<Unit filename="../../../src/Bnd/Bnd_B2f_0.cxx" />
+		<Unit filename="../../../src/Bnd/Bnd_B3d_0.cxx" />
+		<Unit filename="../../../src/Bnd/Bnd_B3f_0.cxx" />
+		<Unit filename="../../../src/Bnd/Bnd_BoundSortBox.cxx" />
+		<Unit filename="../../../src/Bnd/Bnd_BoundSortBox2d.cxx" />
+		<Unit filename="../../../src/Bnd/Bnd_Box.cxx" />
+		<Unit filename="../../../src/Bnd/Bnd_Box2d.cxx" />
+		<Unit filename="../../../src/Bnd/Bnd_Range.cxx" />
+		<Unit filename="../../../src/Bnd/Bnd_Sphere.cxx" />
+		<Unit filename="../../../src/BVH/BVH.cxx" />
+		<Unit filename="../../../src/BVH/BVH_BuildQueue.cxx" />
+		<Unit filename="../../../src/BVH/BVH_BuildThread.cxx" />
+		<Unit filename="../../../src/BVH/BVH_Properties.cxx" />
+		<Unit filename="../../../src/gp/gp.cxx" />
+		<Unit filename="../../../src/gp/gp_Ax1.cxx" />
+		<Unit filename="../../../src/gp/gp_Ax2.cxx" />
+		<Unit filename="../../../src/gp/gp_Ax22d.cxx" />
+		<Unit filename="../../../src/gp/gp_Ax2d.cxx" />
+		<Unit filename="../../../src/gp/gp_Ax3.cxx" />
+		<Unit filename="../../../src/gp/gp_Circ.cxx" />
+		<Unit filename="../../../src/gp/gp_Circ2d.cxx" />
+		<Unit filename="../../../src/gp/gp_Cone.cxx" />
+		<Unit filename="../../../src/gp/gp_Cylinder.cxx" />
+		<Unit filename="../../../src/gp/gp_Dir.cxx" />
+		<Unit filename="../../../src/gp/gp_Dir2d.cxx" />
+		<Unit filename="../../../src/gp/gp_Elips.cxx" />
+		<Unit filename="../../../src/gp/gp_Elips2d.cxx" />
+		<Unit filename="../../../src/gp/gp_GTrsf.cxx" />
+		<Unit filename="../../../src/gp/gp_GTrsf2d.cxx" />
+		<Unit filename="../../../src/gp/gp_Hypr.cxx" />
+		<Unit filename="../../../src/gp/gp_Hypr2d.cxx" />
+		<Unit filename="../../../src/gp/gp_Lin.cxx" />
+		<Unit filename="../../../src/gp/gp_Lin2d.cxx" />
+		<Unit filename="../../../src/gp/gp_Mat.cxx" />
+		<Unit filename="../../../src/gp/gp_Mat2d.cxx" />
+		<Unit filename="../../../src/gp/gp_Parab.cxx" />
+		<Unit filename="../../../src/gp/gp_Parab2d.cxx" />
+		<Unit filename="../../../src/gp/gp_Pln.cxx" />
+		<Unit filename="../../../src/gp/gp_Pnt.cxx" />
+		<Unit filename="../../../src/gp/gp_Pnt2d.cxx" />
+		<Unit filename="../../../src/gp/gp_Quaternion.cxx" />
+		<Unit filename="../../../src/gp/gp_Sphere.cxx" />
+		<Unit filename="../../../src/gp/gp_Torus.cxx" />
+		<Unit filename="../../../src/gp/gp_Trsf.cxx" />
+		<Unit filename="../../../src/gp/gp_Trsf2d.cxx" />
+		<Unit filename="../../../src/gp/gp_Vec.cxx" />
+		<Unit filename="../../../src/gp/gp_Vec2d.cxx" />
+		<Unit filename="../../../src/gp/gp_XY.cxx" />
+		<Unit filename="../../../src/gp/gp_XYZ.cxx" />
+		<Unit filename="../../../src/TopLoc/TopLoc_Datum3D.cxx" />
+		<Unit filename="../../../src/TopLoc/TopLoc_ItemLocation.cxx" />
+		<Unit filename="../../../src/TopLoc/TopLoc_Location.cxx" />
+		<Unit filename="../../../src/TopLoc/TopLoc_SListNodeOfItemLocation.cxx" />
+		<Unit filename="../../../src/TopLoc/TopLoc_SListOfItemLocation.cxx" />
+		<Unit filename="../../../src/Expr/Expr.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Absolute.cxx" />
+		<Unit filename="../../../src/Expr/Expr_ArcCosine.cxx" />
+		<Unit filename="../../../src/Expr/Expr_ArcSine.cxx" />
+		<Unit filename="../../../src/Expr/Expr_ArcTangent.cxx" />
+		<Unit filename="../../../src/Expr/Expr_ArgCosh.cxx" />
+		<Unit filename="../../../src/Expr/Expr_ArgSinh.cxx" />
+		<Unit filename="../../../src/Expr/Expr_ArgTanh.cxx" />
+		<Unit filename="../../../src/Expr/Expr_BinaryExpression.cxx" />
+		<Unit filename="../../../src/Expr/Expr_BinaryFunction.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Cosh.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Cosine.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Difference.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Different.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Division.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Equal.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Exponential.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Exponentiate.cxx" />
+		<Unit filename="../../../src/Expr/Expr_FunctionDerivative.cxx" />
+		<Unit filename="../../../src/Expr/Expr_GeneralExpression.cxx" />
+		<Unit filename="../../../src/Expr/Expr_GeneralFunction.cxx" />
+		<Unit filename="../../../src/Expr/Expr_GeneralRelation.cxx" />
+		<Unit filename="../../../src/Expr/Expr_GreaterThan.cxx" />
+		<Unit filename="../../../src/Expr/Expr_GreaterThanOrEqual.cxx" />
+		<Unit filename="../../../src/Expr/Expr_LessThan.cxx" />
+		<Unit filename="../../../src/Expr/Expr_LessThanOrEqual.cxx" />
+		<Unit filename="../../../src/Expr/Expr_LogOf10.cxx" />
+		<Unit filename="../../../src/Expr/Expr_LogOfe.cxx" />
+		<Unit filename="../../../src/Expr/Expr_NamedConstant.cxx" />
+		<Unit filename="../../../src/Expr/Expr_NamedExpression.cxx" />
+		<Unit filename="../../../src/Expr/Expr_NamedFunction.cxx" />
+		<Unit filename="../../../src/Expr/Expr_NamedUnknown.cxx" />
+		<Unit filename="../../../src/Expr/Expr_NumericValue.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Operators.cxx" />
+		<Unit filename="../../../src/Expr/Expr_PolyExpression.cxx" />
+		<Unit filename="../../../src/Expr/Expr_PolyFunction.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Product.cxx" />
+		<Unit filename="../../../src/Expr/Expr_RUIterator.cxx" />
+		<Unit filename="../../../src/Expr/Expr_RelationIterator.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Sign.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Sine.cxx" />
+		<Unit filename="../../../src/Expr/Expr_SingleRelation.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Sinh.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Square.cxx" />
+		<Unit filename="../../../src/Expr/Expr_SquareRoot.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Sum.cxx" />
+		<Unit filename="../../../src/Expr/Expr_SystemRelation.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Tangent.cxx" />
+		<Unit filename="../../../src/Expr/Expr_Tanh.cxx" />
+		<Unit filename="../../../src/Expr/Expr_UnaryExpression.cxx" />
+		<Unit filename="../../../src/Expr/Expr_UnaryFunction.cxx" />
+		<Unit filename="../../../src/Expr/Expr_UnaryMinus.cxx" />
+		<Unit filename="../../../src/Expr/Expr_UnknownIterator.cxx" />
+		<Unit filename="../../../src/ExprIntrp/ExprIntrp.cxx" />
+		<Unit filename="../../../src/ExprIntrp/ExprIntrp.tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../src/ExprIntrp/ExprIntrp_Analysis.cxx" />
+		<Unit filename="../../../src/ExprIntrp/ExprIntrp_GenExp.cxx" />
+		<Unit filename="../../../src/ExprIntrp/ExprIntrp_GenFct.cxx" />
+		<Unit filename="../../../src/ExprIntrp/ExprIntrp_GenRel.cxx" />
+		<Unit filename="../../../src/ExprIntrp/ExprIntrp_Generator.cxx" />
+		<Unit filename="../../../src/ExprIntrp/ExprIntrp_yaccintrf.cxx" />
+		<Unit filename="../../../src/ExprIntrp/ExprIntrp_yacclex.cxx" />
+		<Unit filename="../../../src/ExprIntrp/lex.ExprIntrp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

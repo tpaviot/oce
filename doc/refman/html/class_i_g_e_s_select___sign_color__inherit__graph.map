@@ -1,0 +1,6 @@
+<map id="IGESSelect_SignColor" name="IGESSelect_SignColor">
+<area shape="rect" id="node2" href="$class_i_f_select___signature.html" title="Signature provides the basic service used by the classes SelectSignature and Counter (i..." alt="" coords="16,229,148,256"/>
+<area shape="rect" id="node3" href="$class_interface___sign_type.html" title="Provides the basic service to get a type name, according to a norm It can be used for other classes (..." alt="" coords="16,155,148,181"/>
+<area shape="rect" id="node4" href="$class_moni_tool___sign_text.html" title="Provides the basic service to get a text which identifies an object in a context It can be used for o..." alt="" coords="16,80,148,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="15,5,149,32"/>
+</map>

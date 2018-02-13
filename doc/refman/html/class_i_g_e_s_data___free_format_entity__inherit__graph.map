@@ -1,0 +1,5 @@
+<map id="IGESData_FreeFormatEntity" name="IGESData_FreeFormatEntity">
+<area shape="rect" id="node2" href="$class_i_g_e_s_data___undefined_entity.html" title="undefined (unknown or error) entity specific of IGES DirPart can be correct or not : if it is not..." alt="" coords="10,155,189,181"/>
+<area shape="rect" id="node3" href="$class_i_g_e_s_data___i_g_e_s_entity.html" title="defines root of IGES Entity definition, including Directory Part, lists of (optionnal) Properties and..." alt="" coords="23,80,175,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="32,5,167,32"/>
+</map>

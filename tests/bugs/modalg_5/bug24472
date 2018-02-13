@@ -1,0 +1,61 @@
+puts "========="
+puts "CR24472"
+puts "========="
+puts ""
+###############################
+## Wrong section curves
+###############################
+
+restore [locate_data_file bug24472_Pipe_1.brep] b1
+
+explode b1 f
+copy b1_2 f1
+copy b1_3 f2
+copy b1_6 f3
+mksurface s1 f1
+mksurface s2 f2
+mksurface s3 f3
+
+puts ""
+puts "First test"
+# 1.1 geometry
+intersect i s1 s2
+
+#donly i_22; fit
+
+xdistcs i_22 s1 0 1 10 1e-7
+
+puts ""
+puts "Second test"
+# 1.2 topology
+bsection r f1 f2
+bopcheck r
+# r is self interfered
+explode r e
+mkcurve c r_1
+
+#donly r_1; fit
+
+xdistcs c s1 0.0714822451660209 1 10 1e-12 1e-7
+
+puts ""
+puts "Third test"
+# 2.1 geometry
+intersect i s1 s3
+
+#donly i_4; fit
+
+xdistcs i_4 s1 0 1 10 1e-6 1e-7
+
+puts ""
+puts "Fourth test"
+# 2.2 topology
+bsection r f1 f3
+bopcheck r
+#r is self interfered
+explode r
+mkcurve c r_1
+
+#donly r_1; fit
+
+xdistcs c s1 0.0714822451660209 1 10 1e-12 1e-7

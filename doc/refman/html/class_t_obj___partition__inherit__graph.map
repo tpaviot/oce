@@ -1,0 +1,5 @@
+<map id="TObj_Partition" name="TObj_Partition">
+<area shape="rect" id="node4" href="$class_t_obj___hidden_partition.html" title="TObj_HiddenPartition" alt="" coords="5,229,149,256"/>
+<area shape="rect" id="node2" href="$class_t_obj___object.html" title="Basis class for transient objects in OCAF&#45;based models. " alt="" coords="30,80,125,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="10,5,145,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="TransferBRep_BinderOfShape" name="TransferBRep_BinderOfShape">
+<area shape="rect" id="node4" href="$class_transfer_b_rep___shape_binder.html" title="A ShapeBinder is a BinderOfShape with some additional services to cast the Result under various kinds..." alt="" coords="12,229,193,256"/>
+<area shape="rect" id="node2" href="$class_transfer___binder.html" title="A Binder is an auxiliary object to Map the Result of the Transfer of a given Object : it records the ..." alt="" coords="47,80,159,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="35,5,170,32"/>
+</map>

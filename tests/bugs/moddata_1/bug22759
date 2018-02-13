@@ -1,0 +1,34 @@
+#puts "TODO OCC27416 Linux: Process killed by CPU limit"
+puts "TODO ?OCC26339 ALL: TEST INCOMPLETE"
+
+puts "============"
+puts "OCC22759"
+puts "============"
+puts ""
+#######################################################################
+# Crash during shape visualization
+#######################################################################
+
+set BugNumber OCC22759
+
+catch { pload XDE }
+
+cpulimit 400
+
+restore [locate_data_file OCC22759-weldt6.brep] result
+checkshape result
+tclean result
+
+set Deflection 0.001
+incmesh result ${Deflection}
+
+checktrinfo result -tri 394128 -nod 201035 -defl 0.0092442421472207319 -tol_rel_defl 0.001 -tol_rel_tri 0.001 -tol_rel_nod 0.001
+
+vinit
+vdisplay result
+vfit
+
+vsetdispmode 1
+
+checkview -screenshot -3d -path ${imagedir}/${test_image}.png
+checkprops result -s 9994.76

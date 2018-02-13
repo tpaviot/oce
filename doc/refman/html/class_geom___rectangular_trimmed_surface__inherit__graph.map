@@ -1,0 +1,6 @@
+<map id="Geom_RectangularTrimmedSurface" name="Geom_RectangularTrimmedSurface">
+<area shape="rect" id="node2" href="$class_geom___bounded_surface.html" title="The root class for bounded surfaces in 3D space. A bounded surface is defined by a rectangle in its 2..." alt="" coords="39,229,198,256"/>
+<area shape="rect" id="node3" href="$class_geom___surface.html" title="Describes the common behavior of surfaces in 3D space. The Geom package provides many implementations..." alt="" coords="65,155,173,181"/>
+<area shape="rect" id="node4" href="$class_geom___geometry.html" title="The abstract class Geometry for 3D space is the root class of all geometric objects from the Geom pac..." alt="" coords="58,80,179,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="51,5,186,32"/>
+</map>

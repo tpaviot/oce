@@ -1,0 +1,5 @@
+<map id="Geom_VectorWithMagnitude" name="Geom_VectorWithMagnitude">
+<area shape="rect" id="node2" href="$class_geom___vector.html" title="The abstract class Vector describes the common behavior of vectors in 3D space. The Geom package prov..." alt="" coords="49,155,151,181"/>
+<area shape="rect" id="node3" href="$class_geom___geometry.html" title="The abstract class Geometry for 3D space is the root class of all geometric objects from the Geom pac..." alt="" coords="39,80,161,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="33,5,167,32"/>
+</map>

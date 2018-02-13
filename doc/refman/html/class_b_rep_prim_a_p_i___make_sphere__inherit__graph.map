@@ -1,0 +1,5 @@
+<map id="BRepPrimAPI_MakeSphere" name="BRepPrimAPI_MakeSphere">
+<area shape="rect" id="node2" href="$class_b_rep_prim_a_p_i___make_one_axis.html" title="The abstract class MakeOneAxis is the root class of algorithms used to construct rotational primitive..." alt="" coords="5,155,196,181"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="5,80,196,107"/>
+<area shape="rect" id="node4" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="10,5,191,32"/>
+</map>

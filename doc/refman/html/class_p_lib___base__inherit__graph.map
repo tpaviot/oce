@@ -1,0 +1,5 @@
+<map id="PLib_Base" name="PLib_Base">
+<area shape="rect" id="node3" href="$class_p_lib___hermit_jacobi.html" title="This class provides method to work with Jacobi Polynomials relativly to an order of constraint q = my..." alt="" coords="5,155,136,181"/>
+<area shape="rect" id="node4" href="$class_p_lib___jacobi_polynomial.html" title="This class provides method to work with Jacobi Polynomials relativly to an order of constraint q = my..." alt="" coords="161,155,317,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="87,5,222,32"/>
+</map>

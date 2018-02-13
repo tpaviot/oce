@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKBinL" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKBinL.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKBinL.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKCDF" />
+			<Add library="TKernel" />
+			<Add library="TKLCAF" />
+		</Linker>
+		<Unit filename="../../../src/BinMDF/BinMDF.cxx" />
+		<Unit filename="../../../src/BinMDF/BinMDF_ADriver.cxx" />
+		<Unit filename="../../../src/BinMDF/BinMDF_ADriverTable.cxx" />
+		<Unit filename="../../../src/BinMDF/BinMDF_ReferenceDriver.cxx" />
+		<Unit filename="../../../src/BinMDF/BinMDF_TagSourceDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_AsciiStringDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_BooleanArrayDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_BooleanListDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_ByteArrayDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_CommentDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_DirectoryDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_ExpressionDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_ExtStringArrayDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_ExtStringListDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_IntPackedMapDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_IntegerArrayDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_IntegerDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_IntegerListDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_NameDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_NamedDataDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_NoteBookDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_RealArrayDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_RealDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_RealListDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_ReferenceArrayDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_ReferenceListDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_RelationDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_TickDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_TreeNodeDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_UAttributeDriver.cxx" />
+		<Unit filename="../../../src/BinMDataStd/BinMDataStd_VariableDriver.cxx" />
+		<Unit filename="../../../src/BinMFunction/BinMFunction.cxx" />
+		<Unit filename="../../../src/BinMFunction/BinMFunction_FunctionDriver.cxx" />
+		<Unit filename="../../../src/BinMFunction/BinMFunction_GraphNodeDriver.cxx" />
+		<Unit filename="../../../src/BinMFunction/BinMFunction_ScopeDriver.cxx" />
+		<Unit filename="../../../src/BinMDocStd/BinMDocStd.cxx" />
+		<Unit filename="../../../src/BinMDocStd/BinMDocStd_XLinkDriver.cxx" />
+		<Unit filename="../../../src/BinObjMgt/BinObjMgt_Persistent.cxx" />
+		<Unit filename="../../../src/BinLDrivers/BinLDrivers.cxx" />
+		<Unit filename="../../../src/BinLDrivers/BinLDrivers_DocumentRetrievalDriver.cxx" />
+		<Unit filename="../../../src/BinLDrivers/BinLDrivers_DocumentSection.cxx" />
+		<Unit filename="../../../src/BinLDrivers/BinLDrivers_DocumentStorageDriver.cxx" />
+	</Project>
+</CodeBlocks_project_file>

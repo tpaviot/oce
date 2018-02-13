@@ -1,0 +1,6 @@
+<map id="IntPatch_PointLine" name="IntPatch_PointLine">
+<area shape="rect" id="node4" href="$class_int_patch___r_line.html" title="Implementation of an intersection line described by a restriction line on one of the surfaces..." alt="" coords="5,229,116,256"/>
+<area shape="rect" id="node5" href="$class_int_patch___w_line.html" title="Definition of set of points as a result of the intersection between 2 parametrised patches..." alt="" coords="141,229,255,256"/>
+<area shape="rect" id="node2" href="$class_int_patch___line.html" title="Definition of an intersection line between two surfaces. A line may be either geometric : line..." alt="" coords="78,80,179,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="61,5,196,32"/>
+</map>

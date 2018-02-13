@@ -1,0 +1,4 @@
+<map id="ShapeFix_ComposeShell" name="ShapeFix_ComposeShell">
+<area shape="rect" id="node2" href="$class_shape_fix___root.html" title="Root class for fixing operations Provides context for recording changes (optional), basic precision value and limit (minimal and maximal) values for tolerances, and message registrator. " alt="" coords="34,80,145,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="22,5,157,32"/>
+</map>

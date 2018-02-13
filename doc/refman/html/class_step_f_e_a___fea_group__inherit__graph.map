@@ -1,0 +1,6 @@
+<map id="StepFEA_FeaGroup" name="StepFEA_FeaGroup">
+<area shape="rect" id="node4" href="$class_step_f_e_a___element_group.html" title="Representation of STEP entity ElementGroup. " alt="" coords="5,229,171,256"/>
+<area shape="rect" id="node5" href="$class_step_f_e_a___node_group.html" title="Representation of STEP entity NodeGroup. " alt="" coords="195,229,341,256"/>
+<area shape="rect" id="node2" href="$class_step_basic___group.html" title="Representation of STEP entity Group. " alt="" coords="115,80,239,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="110,5,245,32"/>
+</map>

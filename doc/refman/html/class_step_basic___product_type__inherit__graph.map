@@ -1,0 +1,5 @@
+<map id="StepBasic_ProductType" name="StepBasic_ProductType">
+<area shape="rect" id="node2" href="$class_step_basic___product_related_product_category.html" title="StepBasic_ProductRelated\lProductCategory" alt="" coords="9,155,188,196"/>
+<area shape="rect" id="node3" href="$class_step_basic___product_category.html" title="StepBasic_ProductCategory" alt="" coords="5,80,192,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="31,5,166,32"/>
+</map>

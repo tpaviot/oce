@@ -1,0 +1,17 @@
+digraph schema_TKXmlTObj
+{
+	TKXmlTObj [ URL = "toolkit_tkxmltobj.html", shape = box ]
+	TKCDF [ URL = "toolkit_tkcdf.html" , shape = box ]
+	TKXmlTObj -> TKCDF [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKXmlTObj -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKTObj [ URL = "toolkit_tktobj.html" , shape = box ]
+	TKXmlTObj -> TKTObj [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKXmlTObj -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKLCAF [ URL = "toolkit_tklcaf.html" , shape = box ]
+	TKXmlTObj -> TKLCAF [ color = "midnightblue", style = "solid" ]
+	TKXmlL [ URL = "toolkit_tkxmll.html" , shape = box ]
+	TKXmlTObj -> TKXmlL [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

@@ -1,0 +1,7 @@
+<map id="StepData_ReadWriteModule" name="StepData_ReadWriteModule">
+<area shape="rect" id="node4" href="$class_r_w_header_section___read_write_module.html" title="General module to read and write HeaderSection entities. " alt="" coords="643,5,841,47"/>
+<area shape="rect" id="node5" href="$class_r_w_step_a_p214___read_write_module.html" title="General module to read and write StepAP214 entities. " alt="" coords="632,71,852,98"/>
+<area shape="rect" id="node6" href="$class_step_data___descr_read_write.html" title="StepData_DescrReadWrite" alt="" coords="653,122,831,149"/>
+<area shape="rect" id="node2" href="$class_interface___reader_module.html" title="Defines unitary operations required to read an Entity from a File (see FileReaderData, FileReaderTool), under control of a FileReaderTool. The initial creation is performed by a GeneralModule (set in GeneralLib). Then, which remains is Loading data from the FileReaderData to the Entity. " alt="" coords="188,71,349,98"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,71,140,98"/>
+</map>

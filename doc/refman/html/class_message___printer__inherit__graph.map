@@ -1,0 +1,5 @@
+<map id="Message_Printer" name="Message_Printer">
+<area shape="rect" id="node3" href="$class_draw___printer.html" title="Implementation of Printer class with output (Message_Messenge) directed to Draw_Interpretor. " alt="" coords="5,155,101,181"/>
+<area shape="rect" id="node4" href="$class_message___printer_o_stream.html" title="Implementation of a message printer associated with an ostream The ostream may be either externally d..." alt="" coords="126,155,298,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="65,5,199,32"/>
+</map>

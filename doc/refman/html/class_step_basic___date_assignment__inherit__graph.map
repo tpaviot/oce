@@ -1,0 +1,6 @@
+<map id="StepBasic_DateAssignment" name="StepBasic_DateAssignment">
+<area shape="rect" id="node3" href="$class_step_a_p214___applied_date_assignment.html" title="StepAP214_AppliedDateAssignment" alt="" coords="421,5,656,32"/>
+<area shape="rect" id="node4" href="$class_step_a_p214___auto_design_actual_date_assignment.html" title="StepAP214_AutoDesignActual\lDateAssignment" alt="" coords="439,57,638,98"/>
+<area shape="rect" id="node5" href="$class_step_a_p214___auto_design_nominal_date_assignment.html" title="StepAP214_AutoDesignNominal\lDateAssignment" alt="" coords="434,122,643,163"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,64,140,91"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="ShapeUpgrade_SplitCurve3d" name="ShapeUpgrade_SplitCurve3d">
+<area shape="rect" id="node4" href="$class_shape_upgrade___convert_curve3d_to_bezier.html" title="converts/splits a 3d curve of any type to a list of beziers " alt="" coords="5,229,208,271"/>
+<area shape="rect" id="node5" href="$class_shape_upgrade___split_curve3d_continuity.html" title="Corrects/splits a 2d curve with a continuity criterion. Tolerance is used to correct the curve at a k..." alt="" coords="232,229,419,271"/>
+<area shape="rect" id="node2" href="$class_shape_upgrade___split_curve.html" title="Splits a curve with a criterion. " alt="" coords="130,80,302,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="149,5,283,32"/>
+</map>

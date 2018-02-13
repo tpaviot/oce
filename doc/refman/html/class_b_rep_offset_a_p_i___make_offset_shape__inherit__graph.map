@@ -1,0 +1,5 @@
+<map id="BRepOffsetAPI_MakeOffsetShape" name="BRepOffsetAPI_MakeOffsetShape">
+<area shape="rect" id="node4" href="$class_b_rep_offset_a_p_i___make_thick_solid.html" title="Describes functions to build hollowed solids. A hollowed solid is built from an initial solid and a s..." alt="" coords="5,244,213,271"/>
+<area shape="rect" id="node2" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="14,80,205,107"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="19,5,200,32"/>
+</map>

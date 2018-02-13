@@ -1,0 +1,8 @@
+<map id="ShapeUpgrade_ShapeDivide" name="ShapeUpgrade_ShapeDivide">
+<area shape="rect" id="node2" href="$class_shape_upgrade___shape_convert_to_bezier.html" title="API class for performing conversion of 3D, 2D curves to bezier curves and surfaces to bezier based su..." alt="" coords="247,5,442,47"/>
+<area shape="rect" id="node3" href="$class_shape_upgrade___shape_divide_angle.html" title="Splits all surfaces of revolution, cylindrical, toroidal, conical, spherical surfaces in the given sh..." alt="" coords="252,71,437,112"/>
+<area shape="rect" id="node4" href="$class_shape_upgrade___shape_divide_area.html" title="Divides faces from sprcified shape by max area criterium. " alt="" coords="239,137,451,163"/>
+<area shape="rect" id="node5" href="$class_shape_upgrade___shape_divide_closed.html" title="Divides all closed faces in the shape. Class ShapeUpgrade_ClosedFaceDivide is used as divide tool..." alt="" coords="252,188,437,229"/>
+<area shape="rect" id="node6" href="$class_shape_upgrade___shape_divide_closed_edges.html" title="ShapeUpgrade_ShapeDivide\lClosedEdges" alt="" coords="252,253,437,295"/>
+<area shape="rect" id="node7" href="$class_shape_upgrade___shape_divide_continuity.html" title="API Tool for converting shapes with C0 geometry into C1 ones. " alt="" coords="252,319,437,360"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="TopoDS_TFace" name="TopoDS_TFace">
+<area shape="rect" id="node4" href="$class_b_rep___t_face.html" title="The Tface from BRep is based on the TFace from TopoDS. The TFace contains : " alt="" coords="24,229,121,256"/>
+<area shape="rect" id="node2" href="$class_topo_d_s___t_shape.html" title="A TShape is a topological structure describing a set of points in a 2D or 3D space. " alt="" coords="13,80,132,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,5,140,32"/>
+</map>

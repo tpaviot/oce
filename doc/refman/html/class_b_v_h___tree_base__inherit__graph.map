@@ -1,0 +1,6 @@
+<map id="BVH_TreeBase&lt; T, N &gt;" name="BVH_TreeBase&lt; T, N &gt;">
+<area shape="rect" id="node4" href="$class_b_v_h___tree_3_01_t_00_01_n_00_01_b_v_h___binary_tree_01_4.html" title="Specialization of binary BVH tree. " alt="" coords="5,229,157,271"/>
+<area shape="rect" id="node5" href="$class_b_v_h___tree_3_01_t_00_01_n_00_01_b_v_h___quad_tree_01_4.html" title="Specialization of quad BVH (QBVH) tree. " alt="" coords="181,229,333,271"/>
+<area shape="rect" id="node2" href="$class_b_v_h___tree_base_transient.html" title="A non&#45;template class for using as base for BVH_TreeBase (just to have a named base class)..." alt="" coords="87,80,251,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="102,5,237,32"/>
+</map>

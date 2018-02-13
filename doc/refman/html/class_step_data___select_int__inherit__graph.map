@@ -1,0 +1,7 @@
+<map id="StepData_SelectInt" name="StepData_SelectInt">
+<area shape="rect" id="node4" href="$class_step_dim_tol___simple_datum_reference_modifier_member.html" title="Defines SimpleDatumReferenceModifier as unique member of DatumReferenceModifier Works with an EnumToo..." alt="" coords="585,5,817,47"/>
+<area shape="rect" id="node5" href="$class_step_visual___marker_member.html" title="Defines MarkerType as unique member of MarkerSelect Works with an EnumTool. " alt="" coords="612,71,791,98"/>
+<area shape="rect" id="node6" href="$class_step_visual___null_style_member.html" title="Defines NullStyle as unique member of PresentationStyleSelect Works with an EnumTool. " alt="" coords="606,122,797,149"/>
+<area shape="rect" id="node2" href="$class_step_data___select_member.html" title="The general form for a Select Member. A Select Member can, either define a value of a basic type (suc..." alt="" coords="188,71,355,98"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,71,140,98"/>
+</map>

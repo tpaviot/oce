@@ -1,0 +1,6 @@
+<map id="StepDimTol_GeneralDatumReference" name="StepDimTol_GeneralDatumReference">
+<area shape="rect" id="node4" href="$class_step_dim_tol___datum_reference_compartment.html" title="Representation of STEP entity DatumReferenceCompartment. " alt="" coords="5,229,197,271"/>
+<area shape="rect" id="node5" href="$class_step_dim_tol___datum_reference_element.html" title="Representation of STEP entity DatumReferenceElement. " alt="" coords="221,229,413,271"/>
+<area shape="rect" id="node2" href="$class_step_repr___shape_aspect.html" title="StepRepr_ShapeAspect" alt="" coords="129,80,290,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="142,5,277,32"/>
+</map>

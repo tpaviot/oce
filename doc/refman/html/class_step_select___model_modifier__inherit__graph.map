@@ -1,0 +1,5 @@
+<map id="StepSelect_ModelModifier" name="StepSelect_ModelModifier">
+<area shape="rect" id="node2" href="$class_i_f_select___modifier.html" title="This class gives a frame for Actions which can work globally on a File once completely defined (i..." alt="" coords="31,155,153,181"/>
+<area shape="rect" id="node3" href="$class_i_f_select___general_modifier.html" title="This class gives a frame for Actions which modify the effect of a Dispatch, i.e. : By Selections and ..." alt="" coords="9,80,175,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="25,5,159,32"/>
+</map>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="FoundationClasses">
+		<Project filename="TKernel.cbp" />
+		<Project filename="TKMath.cbp" >
+			<Depends filename="TKernel.cbp" />
+		</Project>
+	</Workspace>
+</CodeBlocks_workspace_file>

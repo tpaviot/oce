@@ -1,0 +1,5 @@
+<map id="IGESSelect_CounterOfLevelNumber" name="IGESSelect_CounterOfLevelNumber">
+<area shape="rect" id="node2" href="$class_i_f_select___sign_counter.html" title="SignCounter gives the frame to count signatures associated with entities, deducted from them..." alt="" coords="23,155,171,181"/>
+<area shape="rect" id="node3" href="$class_i_f_select___signature_list.html" title="A SignatureList is given as result from a Counter (any kind) It gives access to a list of signatures..." alt="" coords="21,80,174,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="30,5,165,32"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="BRepBlend_AppFuncRoot" name="BRepBlend_AppFuncRoot">
+<area shape="rect" id="node4" href="$class_b_rep_blend___app_func.html" title="Function to approximate by AppSurface for Surface/Surface contact. " alt="" coords="5,229,152,256"/>
+<area shape="rect" id="node5" href="$class_b_rep_blend___app_func_rst.html" title="Function to approximate by AppSurface for Curve/Surface contact. " alt="" coords="177,229,343,256"/>
+<area shape="rect" id="node6" href="$class_b_rep_blend___app_func_rst_rst.html" title="Function to approximate by AppSurface for Edge/Face (Curve/Curve contact). " alt="" coords="368,229,555,256"/>
+<area shape="rect" id="node2" href="$class_approx___sweep_function.html" title="defined the function used by SweepApproximation to perform sweeping application. " alt="" coords="181,80,339,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="193,5,327,32"/>
+</map>

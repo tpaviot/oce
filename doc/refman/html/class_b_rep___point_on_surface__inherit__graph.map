@@ -1,0 +1,5 @@
+<map id="BRep_PointOnSurface" name="BRep_PointOnSurface">
+<area shape="rect" id="node2" href="$class_b_rep___points_on_surface.html" title="Root for points on surface. " alt="" coords="15,155,174,181"/>
+<area shape="rect" id="node3" href="$class_b_rep___point_representation.html" title="Root class for the points representations. Contains a location and a parameter. " alt="" coords="5,80,184,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="27,5,162,32"/>
+</map>

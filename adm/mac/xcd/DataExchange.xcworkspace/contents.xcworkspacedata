@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "DataExchange">
+         <FileRef
+            location = "group:TKVRML.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKSTL.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXSBase.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXmlXCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBinXCAF.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKSTEPBase.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKIGES.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKSTEPAttr.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKSTEP209.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXDEIGES.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKSTEP.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXDESTEP.xcodeproj">
+         </FileRef>
+   </Group>
+</Workspace>

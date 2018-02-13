@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKXmlL" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKXmlL" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__XmlLDrivers_DLL" />
+					<Add option="-D__XmlMDF_DLL" />
+					<Add option="-D__XmlMDataStd_DLL" />
+					<Add option="-D__XmlMDocStd_DLL" />
+					<Add option="-D__XmlMFunction_DLL" />
+					<Add option="-D__XmlObjMgt_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKXmlL_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKXmlL" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__XmlLDrivers_DLL" />
+					<Add option="-D__XmlMDF_DLL" />
+					<Add option="-D__XmlMDataStd_DLL" />
+					<Add option="-D__XmlMDocStd_DLL" />
+					<Add option="-D__XmlMFunction_DLL" />
+					<Add option="-D__XmlObjMgt_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKXmlL_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKCDF" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKLCAF" />
+		</Linker>
+		<Unit filename="../../../src/XmlLDrivers/XmlLDrivers.cxx" />
+		<Unit filename="../../../src/XmlLDrivers/XmlLDrivers_DocumentRetrievalDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlLDrivers/XmlLDrivers_DocumentStorageDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlLDrivers/XmlLDrivers_NamespaceDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDF/XmlMDF.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDF/XmlMDF_ADriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDF/XmlMDF_ADriverTable.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDF/XmlMDF_ReferenceDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDF/XmlMDF_TagSourceDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_AsciiStringDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_BooleanArrayDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_BooleanListDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_ByteArrayDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_CommentDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_DirectoryDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_ExpressionDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_ExtStringArrayDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_ExtStringListDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_IntPackedMapDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_IntegerArrayDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_IntegerDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_IntegerListDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_NameDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_NamedDataDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_NoteBookDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_RealArrayDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_RealDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_RealListDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_ReferenceArrayDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_ReferenceListDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_RelationDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_TickDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_TreeNodeDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_UAttributeDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDataStd/XmlMDataStd_VariableDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDocStd/XmlMDocStd.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMDocStd/XmlMDocStd_XLinkDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMFunction/XmlMFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMFunction/XmlMFunction_FunctionDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMFunction/XmlMFunction_GraphNodeDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMFunction/XmlMFunction_ScopeDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlObjMgt/XmlObjMgt.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlObjMgt/XmlObjMgt_Array1.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlObjMgt/XmlObjMgt_GP.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlObjMgt/XmlObjMgt_Persistent.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

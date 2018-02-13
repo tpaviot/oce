@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKCAF" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKCAF" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__TDataXtd_DLL" />
+					<Add option="-D__TNaming_DLL" />
+					<Add option="-D__AppStd_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKCAF_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKCAF" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__TDataXtd_DLL" />
+					<Add option="-D__TNaming_DLL" />
+					<Add option="-D__AppStd_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKCAF_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKernel" />
+			<Add library="TKGeomBase" />
+			<Add library="TKBRep" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKMath" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKCDF" />
+			<Add library="TKLCAF" />
+			<Add library="TKBO" />
+		</Linker>
+		<Unit filename="../../../src/TDataXtd/TDataXtd.cxx" />
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Axis.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Constraint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Geometry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Pattern.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataXtd/TDataXtd_PatternStd.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Placement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Plane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Point.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Position.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Presentation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Shape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TDataXtd/TDataXtd_Triangulation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_CopyShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_DeltaOnModification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_DeltaOnRemoval.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_Identifier.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_Localizer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_Name.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_NamedShape.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_Naming.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_NamingTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_SameShapeIterator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_Scope.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_Selector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_ShapesSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_Tool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_TranslateTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_Translator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TNaming/TNaming_UsedShapes.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/AppStd/AppStd_Application.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

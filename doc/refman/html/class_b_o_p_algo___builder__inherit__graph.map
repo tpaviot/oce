@@ -1,0 +1,12 @@
+<map id="BOPAlgo_Builder" name="BOPAlgo_Builder">
+<area shape="rect" id="node5" href="$class_b_o_p_algo___b_o_p.html" title="The class represents the Building part of the Boolean Operations algorithm. &#160;The arguments of the alg..." alt="" coords="743,5,854,32"/>
+<area shape="rect" id="node8" href="$class_b_o_p_algo___cells_builder.html" title="The algorithm is based on the General Fuse algorithm (GFA). The result of GFA is all split parts of t..." alt="" coords="723,56,875,83"/>
+<area shape="rect" id="node9" href="$class_b_o_p_algo___maker_volume.html" title="The algorithm is to build solids from set of shapes. It uses the BOPAlgo_Builder algorithm to interse..." alt="" coords="717,107,880,133"/>
+<area shape="rect" id="node10" href="$class_b_o_p_algo___section.html" title="The algorithm to build a Section between the arguments. The Section consists of vertices and edges..." alt="" coords="735,157,862,184"/>
+<area shape="rect" id="node11" href="$class_b_o_p_algo___splitter.html" title="The Splitter algorithm is the algorithm for splitting a group of arbitrary shapes by the other group ..." alt="" coords="737,208,861,235"/>
+<area shape="rect" id="node2" href="$class_b_o_p_algo___builder_shape.html" title="Root class for algorithms that has shape as result. &#160;The class provides the History mechanism..." alt="" coords="339,107,499,133"/>
+<area shape="rect" id="node3" href="$class_b_o_p_algo___algo.html" title="The class provides the root interface for the algorithms in Boolean Component. &#160;" alt="" coords="181,107,291,133"/>
+<area shape="rect" id="node4" href="$class_b_o_p_algo___options.html" title="The class provides the following options for the algorithms in Boolean Component: ..." alt="" coords="5,107,133,133"/>
+<area shape="rect" id="node6" href="$class_b_rep_feat___builder.html" title="Provides a basic tool to implement features topological operations. The main goal of the algorithm is..." alt="" coords="928,5,1055,32"/>
+<area shape="rect" id="node7" href="$class_b_rep_feat___make_cylindrical_hole.html" title="Provides a tool to make cylindrical holes on a shape. " alt="" coords="1103,5,1308,32"/>
+</map>

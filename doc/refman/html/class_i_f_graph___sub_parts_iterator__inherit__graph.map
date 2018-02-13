@@ -1,0 +1,6 @@
+<map id="IFGraph_SubPartsIterator" name="IFGraph_SubPartsIterator">
+<area shape="rect" id="node2" href="$class_i_f_graph___connected_componants.html" title="determines Connected Componants in a Graph. They define disjoined sets of Entities ..." alt="" coords="5,80,216,107"/>
+<area shape="rect" id="node3" href="$class_i_f_graph___cycles.html" title="determines strong componants in a graph which are Cycles " alt="" coords="240,80,355,107"/>
+<area shape="rect" id="node4" href="$class_i_f_graph___strong_componants.html" title="determines strong componants of a graph, that is isolated entities (single componants) or loops ..." alt="" coords="379,80,565,107"/>
+<area shape="rect" id="node5" href="$class_i_f_graph___s_c_roots.html" title="determines strong componants in a graph which are Roots " alt="" coords="409,155,535,181"/>
+</map>

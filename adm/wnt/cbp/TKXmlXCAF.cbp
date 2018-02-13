@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKXmlXCAF" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKXmlXCAF" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__XmlXCAFDrivers_DLL" />
+					<Add option="-D__XmlMXCAFDoc_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKXmlXCAF_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKXmlXCAF" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__XmlXCAFDrivers_DLL" />
+					<Add option="-D__XmlMXCAFDoc_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKXmlXCAF_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKXmlL" />
+			<Add library="TKBRep" />
+			<Add library="TKCDF" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKG2d" />
+			<Add library="TKGeomBase" />
+			<Add library="TKCAF" />
+			<Add library="TKG3d" />
+			<Add library="TKLCAF" />
+			<Add library="TKXCAF" />
+			<Add library="TKXml" />
+		</Linker>
+		<Unit filename="../../../src/XmlXCAFDrivers/XmlXCAFDrivers.cxx" />
+		<Unit filename="../../../src/XmlXCAFDrivers/XmlXCAFDrivers_DocumentRetrievalDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlXCAFDrivers/XmlXCAFDrivers_DocumentStorageDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_AreaDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_AssemblyItemRefDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_CentroidDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_ClippingPlaneToolDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_ColorDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_ColorToolDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_DatumDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_DimTolDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_DimTolToolDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_DocumentToolDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_GraphNodeDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_LayerToolDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_LocationDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_MaterialDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_MaterialToolDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_NoteBalloonDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_NoteBinDataDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_NoteCommentDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_NoteDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_NotesToolDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_ShapeToolDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_ViewToolDriver.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XmlMXCAFDoc/XmlMXCAFDoc_VolumeDriver.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

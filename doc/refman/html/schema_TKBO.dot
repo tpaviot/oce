@@ -1,0 +1,25 @@
+digraph schema_TKBO
+{
+	TKBO [ URL = "toolkit_tkbo.html", shape = box ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKBO -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKTopAlgo [ URL = "toolkit_tktopalgo.html" , shape = box ]
+	TKBO -> TKTopAlgo [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKBO -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKBO -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKBO -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKBO -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKGeomAlgo [ URL = "toolkit_tkgeomalgo.html" , shape = box ]
+	TKBO -> TKGeomAlgo [ color = "midnightblue", style = "solid" ]
+	TKGeomBase [ URL = "toolkit_tkgeombase.html" , shape = box ]
+	TKBO -> TKGeomBase [ color = "midnightblue", style = "solid" ]
+	TKPrim [ URL = "toolkit_tkprim.html" , shape = box ]
+	TKBO -> TKPrim [ color = "midnightblue", style = "solid" ]
+	TKShHealing [ URL = "toolkit_tkshhealing.html" , shape = box ]
+	TKBO -> TKShHealing [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

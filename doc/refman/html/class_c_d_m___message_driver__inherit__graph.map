@@ -1,0 +1,5 @@
+<map id="CDM_MessageDriver" name="CDM_MessageDriver">
+<area shape="rect" id="node3" href="$class_c_d_m___c_out_message_driver.html" title="aMessageDriver for output to COUT (only ASCII strings) " alt="" coords="5,155,179,181"/>
+<area shape="rect" id="node4" href="$class_c_d_m___null_message_driver.html" title="a MessageDriver that writes nowhere. " alt="" coords="203,155,368,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="121,5,255,32"/>
+</map>

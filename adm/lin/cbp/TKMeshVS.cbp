@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKMeshVS" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../lin/cbp/lib/libTKMeshVS.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../lin/cbp/libd/libTKMeshVS.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/libd" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKV3d" />
+			<Add library="TKMath" />
+			<Add library="TKService" />
+			<Add library="TKernel" />
+			<Add library="TKG3d" />
+			<Add library="TKG2d" />
+		</Linker>
+		<Unit filename="../../../src/MeshVS/MeshVS_CommonSensitiveEntity.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_DataSource.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_DataSource3D.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_DeformedDataSource.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_Drawer.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_DummySensitiveEntity.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_ElementalColorPrsBuilder.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_Mesh.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_MeshEntityOwner.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_MeshOwner.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_MeshPrsBuilder.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_NodalColorPrsBuilder.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_PrsBuilder.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitiveFace.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitiveMesh.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitivePolyhedron.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitiveQuad.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitiveSegment.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_TextPrsBuilder.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_Tool.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_TwoColors.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_VectorPrsBuilder.cxx" />
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,4 @@
+<map id="TDataXtd_Presentation" name="TDataXtd_Presentation">
+<area shape="rect" id="node2" href="$class_t_d_f___attribute.html" title="A class each application has to implement. It is used to contain the application data. This abstract class, alongwith Label, is one of the cornerstones of Model Editor. The groundwork is to define the root of information. This information is to be attached to a Label, and could be of any of the following types: " alt="" coords="31,80,134,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="15,5,150,32"/>
+</map>

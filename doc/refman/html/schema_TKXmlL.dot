@@ -1,0 +1,13 @@
+digraph schema_TKXmlL
+{
+	TKXmlL [ URL = "toolkit_tkxmll.html", shape = box ]
+	TKCDF [ URL = "toolkit_tkcdf.html" , shape = box ]
+	TKXmlL -> TKCDF [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKXmlL -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKXmlL -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKLCAF [ URL = "toolkit_tklcaf.html" , shape = box ]
+	TKXmlL -> TKLCAF [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

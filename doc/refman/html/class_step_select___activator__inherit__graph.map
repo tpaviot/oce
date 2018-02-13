@@ -1,0 +1,4 @@
+<map id="StepSelect_Activator" name="StepSelect_Activator">
+<area shape="rect" id="node2" href="$class_i_f_select___activator.html" title="Defines the general frame for working with a SessionPilot. Each Activator treats a set of Commands..." alt="" coords="13,80,140,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="9,5,144,32"/>
+</map>

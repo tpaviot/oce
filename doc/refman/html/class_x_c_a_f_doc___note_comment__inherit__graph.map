@@ -1,0 +1,6 @@
+<map id="XCAFDoc_NoteComment" name="XCAFDoc_NoteComment">
+<area shape="rect" id="node5" href="$class_x_c_a_f_doc___note_balloon.html" title="A comment note attribute. Contains a textual comment. " alt="" coords="12,304,167,331"/>
+<area shape="rect" id="node2" href="$class_x_c_a_f_doc___note.html" title="A base note attribute. Any note contains the name of the user created the note and the creation times..." alt="" coords="33,155,145,181"/>
+<area shape="rect" id="node3" href="$class_t_d_f___attribute.html" title="A class each application has to implement. It is used to contain the application data. This abstract class, alongwith Label, is one of the cornerstones of Model Editor. The groundwork is to define the root of information. This information is to be attached to a Label, and could be of any of the following types: " alt="" coords="38,80,141,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="22,5,157,32"/>
+</map>

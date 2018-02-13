@@ -1,0 +1,32 @@
+<map id="StepShape_TopologicalRepresentationItem" name="StepShape_TopologicalRepresentationItem">
+<area shape="rect" id="node4" href="$class_step_shape___connected_edge_set.html" title="Representation of STEP entity ConnectedEdgeSet. " alt="" coords="749,63,955,90"/>
+<area shape="rect" id="node5" href="$class_step_shape___connected_face_set.html" title="StepShape_ConnectedFaceSet" alt="" coords="750,114,954,141"/>
+<area shape="rect" id="node11" href="$class_step_shape___edge.html" title="StepShape_Edge" alt="" coords="791,241,913,267"/>
+<area shape="rect" id="node16" href="$class_step_shape___face.html" title="StepShape_Face" alt="" coords="791,393,913,419"/>
+<area shape="rect" id="node21" href="$class_step_shape___face_bound.html" title="StepShape_FaceBound" alt="" coords="773,469,931,495"/>
+<area shape="rect" id="node23" href="$class_step_shape___loop.html" title="StepShape_Loop" alt="" coords="791,519,913,546"/>
+<area shape="rect" id="node27" href="$class_step_shape___loop_and_path.html" title="StepShape_LoopAndPath" alt="" coords="767,570,937,597"/>
+<area shape="rect" id="node28" href="$class_step_shape___path.html" title="StepShape_Path" alt="" coords="792,633,912,659"/>
+<area shape="rect" id="node30" href="$class_step_shape___vertex.html" title="StepShape_Vertex" alt="" coords="787,709,917,735"/>
+<area shape="rect" id="node2" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="188,469,383,495"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,469,140,495"/>
+<area shape="rect" id="node6" href="$class_step_shape___closed_shell.html" title="StepShape_ClosedShell" alt="" coords="1035,13,1197,39"/>
+<area shape="rect" id="node8" href="$class_step_shape___connected_face_sub_set.html" title="Representation of STEP entity ConnectedFaceSubSet. " alt="" coords="1003,63,1229,90"/>
+<area shape="rect" id="node9" href="$class_step_shape___open_shell.html" title="StepShape_OpenShell" alt="" coords="1039,114,1193,141"/>
+<area shape="rect" id="node7" href="$class_step_shape___oriented_closed_shell.html" title="StepShape_OrientedClosed\lShell" alt="" coords="1287,5,1470,47"/>
+<area shape="rect" id="node10" href="$class_step_shape___oriented_open_shell.html" title="StepShape_OrientedOpenShell" alt="" coords="1277,114,1480,141"/>
+<area shape="rect" id="node12" href="$class_step_shape___edge_curve.html" title="StepShape_EdgeCurve" alt="" coords="1039,165,1193,191"/>
+<area shape="rect" id="node13" href="$class_step_shape___oriented_edge.html" title="StepShape_OrientedEdge" alt="" coords="1030,215,1202,242"/>
+<area shape="rect" id="node15" href="$class_step_shape___subedge.html" title="Representation of STEP entity Subedge. " alt="" coords="1044,266,1188,293"/>
+<area shape="rect" id="node14" href="$class_step_shape___seam_edge.html" title="Representation of STEP entity SeamEdge. " alt="" coords="1300,215,1457,242"/>
+<area shape="rect" id="node17" href="$class_step_shape___face_surface.html" title="StepShape_FaceSurface" alt="" coords="1033,317,1199,343"/>
+<area shape="rect" id="node19" href="$class_step_shape___oriented_face.html" title="StepShape_OrientedFace" alt="" coords="1031,367,1201,394"/>
+<area shape="rect" id="node20" href="$class_step_shape___subface.html" title="Representation of STEP entity Subface. " alt="" coords="1046,418,1186,445"/>
+<area shape="rect" id="node18" href="$class_step_shape___advanced_face.html" title="StepShape_AdvancedFace" alt="" coords="1289,317,1468,343"/>
+<area shape="rect" id="node22" href="$class_step_shape___face_outer_bound.html" title="StepShape_FaceOuterBound" alt="" coords="1021,469,1211,495"/>
+<area shape="rect" id="node24" href="$class_step_shape___edge_loop.html" title="StepShape_EdgeLoop" alt="" coords="1041,519,1191,546"/>
+<area shape="rect" id="node25" href="$class_step_shape___poly_loop.html" title="StepShape_PolyLoop" alt="" coords="1043,570,1189,597"/>
+<area shape="rect" id="node26" href="$class_step_shape___vertex_loop.html" title="StepShape_VertexLoop" alt="" coords="1037,621,1195,647"/>
+<area shape="rect" id="node29" href="$class_step_shape___oriented_path.html" title="StepShape_OrientedPath" alt="" coords="1031,671,1201,698"/>
+<area shape="rect" id="node31" href="$class_step_shape___vertex_point.html" title="StepShape_VertexPoint" alt="" coords="1035,722,1197,749"/>
+</map>

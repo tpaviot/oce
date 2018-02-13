@@ -1,0 +1,35 @@
+<map id="StepGeom_Curve" name="StepGeom_Curve">
+<area shape="rect" id="node5" href="$class_step_geom___bounded_curve.html" title="StepGeom_BoundedCurve" alt="" coords="912,497,1087,524"/>
+<area shape="rect" id="node22" href="$class_step_geom___conic.html" title="StepGeom_Conic" alt="" coords="937,649,1061,676"/>
+<area shape="rect" id="node27" href="$class_step_geom___curve_replica.html" title="StepGeom_CurveReplica" alt="" coords="916,700,1083,727"/>
+<area shape="rect" id="node28" href="$class_step_geom___line.html" title="StepGeom_Line" alt="" coords="942,751,1057,777"/>
+<area shape="rect" id="node29" href="$class_step_geom___offset_curve3d.html" title="StepGeom_OffsetCurve3d" alt="" coords="914,801,1085,828"/>
+<area shape="rect" id="node30" href="$class_step_geom___pcurve.html" title="StepGeom_Pcurve" alt="" coords="934,852,1065,879"/>
+<area shape="rect" id="node31" href="$class_step_geom___surface_curve.html" title="StepGeom_SurfaceCurve" alt="" coords="916,903,1083,929"/>
+<area shape="rect" id="node2" href="$class_step_geom___geometric_representation_item.html" title="StepGeom_GeometricRepresentationItem" alt="" coords="431,751,693,777"/>
+<area shape="rect" id="node3" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="188,751,383,777"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,751,140,777"/>
+<area shape="rect" id="node6" href="$class_step_geom___b_spline_curve.html" title="StepGeom_BSplineCurve" alt="" coords="1146,283,1314,309"/>
+<area shape="rect" id="node16" href="$class_step_geom___composite_curve.html" title="StepGeom_CompositeCurve" alt="" coords="1137,447,1323,473"/>
+<area shape="rect" id="node20" href="$class_step_geom___polyline.html" title="StepGeom_Polyline" alt="" coords="1161,497,1299,524"/>
+<area shape="rect" id="node21" href="$class_step_geom___trimmed_curve.html" title="StepGeom_TrimmedCurve" alt="" coords="1143,548,1317,575"/>
+<area shape="rect" id="node7" href="$class_step_geom___bezier_curve.html" title="StepGeom_BezierCurve" alt="" coords="1409,5,1569,32"/>
+<area shape="rect" id="node8" href="$class_step_geom___bezier_curve_and_rational_b_spline_curve.html" title="StepGeom_BezierCurveAndRational\lBSplineCurve" alt="" coords="1373,57,1604,98"/>
+<area shape="rect" id="node9" href="$class_step_geom___b_spline_curve_with_knots.html" title="StepGeom_BSplineCurveWith\lKnots" alt="" coords="1391,122,1586,163"/>
+<area shape="rect" id="node10" href="$class_step_geom___b_spline_curve_with_knots_and_rational_b_spline_curve.html" title="StepGeom_BSplineCurveWith\lKnotsAndRationalBSplineCurve" alt="" coords="1387,187,1590,229"/>
+<area shape="rect" id="node11" href="$class_step_geom___quasi_uniform_curve.html" title="StepGeom_QuasiUniformCurve" alt="" coords="1388,253,1589,280"/>
+<area shape="rect" id="node12" href="$class_step_geom___quasi_uniform_curve_and_rational_b_spline_curve.html" title="StepGeom_QuasiUniformCurve\lAndRationalBSplineCurve" alt="" coords="1388,305,1589,346"/>
+<area shape="rect" id="node13" href="$class_step_geom___rational_b_spline_curve.html" title="StepGeom_RationalBSpline\lCurve" alt="" coords="1397,370,1580,411"/>
+<area shape="rect" id="node14" href="$class_step_geom___uniform_curve.html" title="StepGeom_UniformCurve" alt="" coords="1405,436,1572,463"/>
+<area shape="rect" id="node15" href="$class_step_geom___uniform_curve_and_rational_b_spline_curve.html" title="StepGeom_UniformCurveAnd\lRationalBSplineCurve" alt="" coords="1393,487,1584,529"/>
+<area shape="rect" id="node17" href="$class_step_geom___composite_curve_on_surface.html" title="StepGeom_CompositeCurveOn\lSurface" alt="" coords="1387,553,1590,594"/>
+<area shape="rect" id="node18" href="$class_step_geom___boundary_curve.html" title="StepGeom_BoundaryCurve" alt="" coords="1652,560,1831,587"/>
+<area shape="rect" id="node19" href="$class_step_geom___outer_boundary_curve.html" title="StepGeom_OuterBoundaryCurve" alt="" coords="1879,560,2089,587"/>
+<area shape="rect" id="node23" href="$class_step_geom___circle.html" title="StepGeom_Circle" alt="" coords="1168,599,1292,625"/>
+<area shape="rect" id="node24" href="$class_step_geom___ellipse.html" title="StepGeom_Ellipse" alt="" coords="1165,649,1295,676"/>
+<area shape="rect" id="node25" href="$class_step_geom___hyperbola.html" title="StepGeom_Hyperbola" alt="" coords="1155,700,1305,727"/>
+<area shape="rect" id="node26" href="$class_step_geom___parabola.html" title="StepGeom_Parabola" alt="" coords="1159,751,1301,777"/>
+<area shape="rect" id="node32" href="$class_step_geom___intersection_curve.html" title="StepGeom_IntersectionCurve" alt="" coords="1135,852,1325,879"/>
+<area shape="rect" id="node33" href="$class_step_geom___seam_curve.html" title="StepGeom_SeamCurve" alt="" coords="1151,903,1309,929"/>
+<area shape="rect" id="node34" href="$class_step_geom___surface_curve_and_bounded_curve.html" title="complex type: bounded_curve + surface_curve needed for curve_bounded_surfaces (S4132) ..." alt="" coords="1135,954,1325,995"/>
+</map>

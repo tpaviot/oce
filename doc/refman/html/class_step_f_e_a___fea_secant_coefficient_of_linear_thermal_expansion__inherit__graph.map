@@ -1,0 +1,5 @@
+<map id="StepFEA_FeaSecantCoefficientOfLinearThermalExpansion" name="StepFEA_FeaSecantCoefficientOfLinearThermalExpansion">
+<area shape="rect" id="node2" href="$class_step_f_e_a___fea_material_property_representation_item.html" title="Representation of STEP entity FeaMaterialPropertyRepresentationItem. " alt="" coords="9,155,207,196"/>
+<area shape="rect" id="node3" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="11,80,205,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="41,5,175,32"/>
+</map>

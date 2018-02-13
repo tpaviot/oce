@@ -1,0 +1,27 @@
+digraph schema_TKBool
+{
+	TKBool [ URL = "toolkit_tkbool.html", shape = box ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKBool -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKTopAlgo [ URL = "toolkit_tktopalgo.html" , shape = box ]
+	TKBool -> TKTopAlgo [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKBool -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKBool -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKPrim [ URL = "toolkit_tkprim.html" , shape = box ]
+	TKBool -> TKPrim [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKBool -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKBool -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKShHealing [ URL = "toolkit_tkshhealing.html" , shape = box ]
+	TKBool -> TKShHealing [ color = "midnightblue", style = "solid" ]
+	TKGeomBase [ URL = "toolkit_tkgeombase.html" , shape = box ]
+	TKBool -> TKGeomBase [ color = "midnightblue", style = "solid" ]
+	TKGeomAlgo [ URL = "toolkit_tkgeomalgo.html" , shape = box ]
+	TKBool -> TKGeomAlgo [ color = "midnightblue", style = "solid" ]
+	TKBO [ URL = "toolkit_tkbo.html" , shape = box ]
+	TKBool -> TKBO [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

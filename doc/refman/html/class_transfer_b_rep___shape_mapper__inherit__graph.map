@@ -1,0 +1,4 @@
+<map id="TransferBRep_ShapeMapper" name="TransferBRep_ShapeMapper">
+<area shape="rect" id="node2" href="$class_transfer___finder.html" title="a Finder allows to map any kind of object as a Key for a Map. This works by defining, for a Hash Code, that of the real Key, not of the Finder which acts only as an intermediate. When a Map asks for the HashCode of a Finder, this one returns the code it has determined at creation time " alt="" coords="43,80,154,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="31,5,166,32"/>
+</map>

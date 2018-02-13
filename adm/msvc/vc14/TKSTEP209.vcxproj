@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4F9AFAB4-0496-01A5-0ABF-3D8E1A3C52B9}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc14\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc14\obj\TKSTEP209\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc14\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc14\objd\TKSTEP209\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc14\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc14\obj\TKSTEP209\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc14\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc14\objd\TKSTEP209\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc14\bin\TKSTEP209.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc14\obj\TKSTEP209/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc14\obj\TKSTEP209/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc14\obj\TKSTEP209/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKXSBase.lib;TKSTEPBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc14\bin\TKSTEP209.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc14\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc14\bin\TKSTEP209.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc14\lib\TKSTEP209.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc14\bind\TKSTEP209.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc14\objd\TKSTEP209/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc14\objd\TKSTEP209/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc14\objd\TKSTEP209/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKXSBase.lib;TKSTEPBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc14\bind\TKSTEP209.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc14\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc14\bind\TKSTEP209.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc14\libd\TKSTEP209.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc14\bin\TKSTEP209.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc14\obj\TKSTEP209/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc14\obj\TKSTEP209/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc14\obj\TKSTEP209/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKXSBase.lib;TKSTEPBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc14\bin\TKSTEP209.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc14\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc14\bin\TKSTEP209.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc14\lib\TKSTEP209.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc14\bind\TKSTEP209.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc14\objd\TKSTEP209/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc14\objd\TKSTEP209/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc14\objd\TKSTEP209/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;TKXSBase.lib;TKSTEPBase.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc14\bind\TKSTEP209.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc14\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc14\bind\TKSTEP209.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc14\libd\TKSTEP209.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_AnalysisItemWithinRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_Curve3dElementDescriptor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementEndReleasePacket.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementFreedom.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementFreedomMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementPurpose.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementPurposeMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementSectionDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_CurveElementSectionDerivedDefinitions.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_ElementAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_ElementAspectMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_ElementDescriptor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_ElementMaterial.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_MeasureOrUnspecifiedValue.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_MeasureOrUnspecifiedValueMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_Surface3dElementDescriptor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceElementProperty.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceElementPurpose.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceElementPurposeMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceSection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceSectionField.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceSectionFieldConstant.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_SurfaceSectionFieldVarying.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_UniformSurfaceSection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_Volume3dElementDescriptor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_VolumeElementPurpose.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepElement\StepElement_VolumeElementPurposeMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_AlignedCurve3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_AlignedSurface3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ArbitraryVolume3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ConstantSurface3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_Curve3dElementProperty.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_Curve3dElementRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementEndCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementEndOffset.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementEndRelease.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementInterval.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementIntervalConstant.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementIntervalLinearlyVarying.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_CurveElementLocation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_DegreeOfFreedom.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_DegreeOfFreedomMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_DummyNode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ElementGeometricRelationship.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ElementGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ElementOrElementGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ElementRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaAreaDensity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaAxis2Placement3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaCurveSectionGeometricRelationship.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaLinearElasticity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaMassDensity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaMaterialPropertyRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaMaterialPropertyRepresentationItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaModel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaModel3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaModelDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaMoistureAbsorption.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaParametricPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaRepresentationItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaSecantCoefficientOfLinearThermalExpansion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaShellBendingStiffness.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaShellMembraneBendingCouplingStiffness.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaShellMembraneStiffness.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaShellShearStiffness.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaSurfaceSectionGeometricRelationship.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FreedomAndCoefficient.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_FreedomsList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_GeometricNode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_Node.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeWithSolutionCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_NodeWithVector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ParametricCurve3dElementCoordinateDirection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ParametricCurve3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_ParametricSurface3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_Surface3dElementRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor22d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor23d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor23dMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor42d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor43d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_SymmetricTensor43dMember.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepFEA\StepFEA_Volume3dElementRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWAnalysisItemWithinRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWCurve3dElementDescriptor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWCurveElementEndReleasePacket.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWCurveElementSectionDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWCurveElementSectionDerivedDefinitions.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWElementDescriptor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWElementMaterial.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurface3dElementDescriptor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurfaceElementProperty.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurfaceSection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurfaceSectionField.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurfaceSectionFieldConstant.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWSurfaceSectionFieldVarying.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWUniformSurfaceSection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepElement\RWStepElement_RWVolume3dElementDescriptor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWAlignedCurve3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWAlignedSurface3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWArbitraryVolume3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWConstantSurface3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurve3dElementProperty.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurve3dElementRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementEndOffset.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementEndRelease.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementInterval.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementIntervalConstant.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementIntervalLinearlyVarying.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWCurveElementLocation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWDummyNode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWElementGeometricRelationship.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWElementGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWElementRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaAreaDensity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaAxis2Placement3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaCurveSectionGeometricRelationship.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaLinearElasticity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaMassDensity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaMaterialPropertyRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaMaterialPropertyRepresentationItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaModel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaModel3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaModelDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaMoistureAbsorption.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaParametricPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaRepresentationItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaSecantCoefficientOfLinearThermalExpansion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaShellBendingStiffness.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaShellMembraneBendingCouplingStiffness.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaShellMembraneStiffness.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaShellShearStiffness.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaSurfaceSectionGeometricRelationship.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFeaTangentialCoefficientOfLinearThermalExpansion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFreedomAndCoefficient.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWFreedomsList.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWGeometricNode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeWithSolutionCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWNodeWithVector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWParametricCurve3dElementCoordinateDirection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWParametricCurve3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWParametricSurface3dElementCoordinateSystem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWSurface3dElementRepresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepFEA\RWStepFEA_RWVolume3dElementRepresentation.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKSTEP209.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

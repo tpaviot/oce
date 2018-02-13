@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "ModelingAlgorithms">
+         <FileRef
+            location = "group:TKGeomAlgo.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKTopAlgo.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKPrim.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKHLR.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKMesh.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKShHealing.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKXMesh.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBO.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKBool.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKFillet.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKFeat.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TKOffset.xcodeproj">
+         </FileRef>
+   </Group>
+</Workspace>

@@ -1,0 +1,8 @@
+<map id="XmlLDrivers_DocumentStorageDriver" name="XmlLDrivers_DocumentStorageDriver">
+<area shape="rect" id="node5" href="$class_xml_drivers___document_storage_driver.html" title="XmlDrivers_DocumentStorage\lDriver" alt="" coords="22,319,215,360"/>
+<area shape="rect" id="node7" href="$class_xml_t_obj_drivers___document_storage_driver.html" title="XmlTObjDrivers_DocumentStorage\lDriver" alt="" coords="239,319,459,360"/>
+<area shape="rect" id="node2" href="$class_p_c_d_m___storage_driver.html" title="persistent implemention of storage. " alt="" coords="161,155,305,181"/>
+<area shape="rect" id="node3" href="$class_p_c_d_m___writer.html" title="PCDM_Writer" alt="" coords="182,80,285,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="166,5,301,32"/>
+<area shape="rect" id="node6" href="$class_xml_x_c_a_f_drivers___document_storage_driver.html" title="storage driver of a XS document " alt="" coords="5,408,232,449"/>
+</map>

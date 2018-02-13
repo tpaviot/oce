@@ -1,0 +1,5 @@
+<map id="ShapeCustom_SweptToElementary" name="ShapeCustom_SweptToElementary">
+<area shape="rect" id="node2" href="$class_shape_custom___modification.html" title="A base class of Modification&#39;s from ShapeCustom. Implements message sending mechanism. " alt="" coords="29,155,209,181"/>
+<area shape="rect" id="node3" href="$class_b_rep_tools___modification.html" title="Defines geometric modifications to a shape, i.e. changes to faces, edges and vertices. " alt="" coords="38,80,199,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="51,5,186,32"/>
+</map>

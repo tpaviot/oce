@@ -1,0 +1,9 @@
+<map id="BRepCheck_Result" name="BRepCheck_Result">
+<area shape="rect" id="node3" href="$class_b_rep_check___edge.html" title="BRepCheck_Edge" alt="" coords="375,5,503,32"/>
+<area shape="rect" id="node4" href="$class_b_rep_check___face.html" title="BRepCheck_Face" alt="" coords="375,56,502,83"/>
+<area shape="rect" id="node5" href="$class_b_rep_check___shell.html" title="BRepCheck_Shell" alt="" coords="375,107,502,133"/>
+<area shape="rect" id="node6" href="$class_b_rep_check___solid.html" title="The class is to check a solid. " alt="" coords="375,157,502,184"/>
+<area shape="rect" id="node7" href="$class_b_rep_check___vertex.html" title="BRepCheck_Vertex" alt="" coords="371,208,507,235"/>
+<area shape="rect" id="node8" href="$class_b_rep_check___wire.html" title="BRepCheck_Wire" alt="" coords="376,259,501,285"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,132,140,159"/>
+</map>

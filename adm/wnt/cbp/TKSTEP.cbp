@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKSTEP" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKSTEP" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__StepAP214_DLL" />
+					<Add option="-D__RWStepAP214_DLL" />
+					<Add option="-D__StepAP203_DLL" />
+					<Add option="-D__RWStepAP203_DLL" />
+					<Add option="-D__STEPConstruct_DLL" />
+					<Add option="-D__STEPEdit_DLL" />
+					<Add option="-D__GeomToStep_DLL" />
+					<Add option="-D__StepToGeom_DLL" />
+					<Add option="-D__StepToTopoDS_DLL" />
+					<Add option="-D__TopoDSToStep_DLL" />
+					<Add option="-D__STEPControl_DLL" />
+					<Add option="-D__STEPSelections_DLL" />
+					<Add option="-D__StepAP209_DLL" />
+					<Add option="-D__RWStepAP242_DLL" />
+					<Add option="-D__StepAP242_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKSTEP_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKSTEP" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__StepAP214_DLL" />
+					<Add option="-D__RWStepAP214_DLL" />
+					<Add option="-D__StepAP203_DLL" />
+					<Add option="-D__RWStepAP203_DLL" />
+					<Add option="-D__STEPConstruct_DLL" />
+					<Add option="-D__STEPEdit_DLL" />
+					<Add option="-D__GeomToStep_DLL" />
+					<Add option="-D__StepToGeom_DLL" />
+					<Add option="-D__StepToTopoDS_DLL" />
+					<Add option="-D__TopoDSToStep_DLL" />
+					<Add option="-D__STEPControl_DLL" />
+					<Add option="-D__STEPSelections_DLL" />
+					<Add option="-D__StepAP209_DLL" />
+					<Add option="-D__RWStepAP242_DLL" />
+					<Add option="-D__StepAP242_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKSTEP_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKernel" />
+			<Add library="TKSTEPAttr" />
+			<Add library="TKSTEP209" />
+			<Add library="TKSTEPBase" />
+			<Add library="TKBRep" />
+			<Add library="TKMath" />
+			<Add library="TKG2d" />
+			<Add library="TKShHealing" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKG3d" />
+			<Add library="TKGeomBase" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKXSBase" />
+		</Linker>
+		<Unit filename="../../../src/StepAP214/StepAP214.cxx" />
+		<Unit filename="../../../src/StepAP214/StepAP214_AppliedApprovalAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AppliedDateAndTimeAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AppliedDateAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AppliedDocumentReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AppliedExternalIdentificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AppliedGroupAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AppliedOrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AppliedPersonAndOrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AppliedPresentedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AppliedSecurityClassificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_ApprovalItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignActualDateAndTimeAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignActualDateAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignApprovalAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignDateAndPersonAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignDateAndPersonItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignDateAndTimeItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignDatedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignDocumentReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignGeneralOrgItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignGroupAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignGroupedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignNominalDateAndTimeAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignNominalDateAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignOrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignOrganizationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignPersonAndOrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignPresentedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignPresentedItemSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignReferencingItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_AutoDesignSecurityClassificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_Class.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_DateAndTimeItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_DateItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_DocumentReferenceItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_ExternalIdentificationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_ExternallyDefinedClass.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_ExternallyDefinedGeneralProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_GroupItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_OrganizationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_PersonAndOrganizationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_PresentedItemSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_RepItemGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP214/StepAP214_SecurityClassificationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAppliedApprovalAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAppliedDateAndTimeAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAppliedDateAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAppliedDocumentReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAppliedExternalIdentificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAppliedGroupAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAppliedOrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAppliedPersonAndOrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAppliedPresentedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAppliedSecurityClassificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignActualDateAndTimeAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignActualDateAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignApprovalAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignDateAndPersonAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignDocumentReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignGroupAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignNominalDateAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignOrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignPresentedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWAutoDesignSecurityClassificationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWClass.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWExternallyDefinedClass.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWExternallyDefinedGeneralProperty.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_RWRepItemGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP214/RWStepAP214_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_ApprovedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_CcDesignApproval.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_CcDesignCertification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_CcDesignContract.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_CcDesignDateAndTimeAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_CcDesignPersonAndOrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_CcDesignSecurityClassification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_CcDesignSpecificationReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_CertifiedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_Change.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_ChangeRequest.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_ChangeRequestItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_ClassifiedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_ContractedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_DateTimeItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_PersonOrganizationItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_SpecifiedItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_StartRequest.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_StartRequestItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_StartWork.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP203/StepAP203_WorkItem.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP203/RWStepAP203_RWCcDesignApproval.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP203/RWStepAP203_RWCcDesignCertification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP203/RWStepAP203_RWCcDesignContract.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP203/RWStepAP203_RWCcDesignDateAndTimeAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP203/RWStepAP203_RWCcDesignPersonAndOrganizationAssignment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP203/RWStepAP203_RWCcDesignSecurityClassification.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP203/RWStepAP203_RWCcDesignSpecificationReference.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP203/RWStepAP203_RWChange.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP203/RWStepAP203_RWChangeRequest.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP203/RWStepAP203_RWStartRequest.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP203/RWStepAP203_RWStartWork.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPConstruct/STEPConstruct.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPConstruct/STEPConstruct_AP203Context.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPConstruct/STEPConstruct_Assembly.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPConstruct/STEPConstruct_ContextTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPConstruct/STEPConstruct_ExternRefs.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPConstruct/STEPConstruct_Part.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPConstruct/STEPConstruct_PointHasher.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPConstruct/STEPConstruct_Styles.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPConstruct/STEPConstruct_Tool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPConstruct/STEPConstruct_UnitContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPConstruct/STEPConstruct_ValidationProps.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPEdit/STEPEdit.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPEdit/STEPEdit_EditContext.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPEdit/STEPEdit_EditSDR.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeAxis1Placement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeAxis2Placement2d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeAxis2Placement3d.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeBSplineCurveWithKnots.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeBSplineSurfaceWithKnots.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeBoundedCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeBoundedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeCartesianPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeCircle.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeConic.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeConicalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeCylindricalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeDirection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeElementarySurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeEllipse.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeHyperbola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeParabola.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakePlane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakePolyline.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeRectangularTrimmedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeSphericalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeSurfaceOfLinearExtrusion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeSurfaceOfRevolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeSweptSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeToroidalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_MakeVector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToStep/GeomToStep_Root.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToGeom/StepToGeom.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_Builder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_CartesianPointHasher.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_GeometricTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_MakeTransformed.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_NMTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_PointPair.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_PointPairHasher.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_Root.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_Tool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_TranslateCompositeCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_TranslateCurveBoundedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_TranslateEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_TranslateEdgeLoop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_TranslateFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_TranslatePolyLoop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_TranslateShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_TranslateVertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepToTopoDS/StepToTopoDS_TranslateVertexLoop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_Builder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_FacetedTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_MakeBrepWithVoids.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_MakeFacetedBrep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_MakeFacetedBrepAndBrepWithVoids.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_MakeGeometricCurveSet.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_MakeManifoldSolidBrep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_MakeShellBasedSurfaceModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_MakeStepEdge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_MakeStepFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_MakeStepVertex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_MakeStepWire.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_Root.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_Tool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/TopoDSToStep/TopoDSToStep_WireframeBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPControl/STEPControl_ActorRead.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPControl/STEPControl_ActorWrite.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPControl/STEPControl_Controller.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPControl/STEPControl_Reader.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPControl/STEPControl_Writer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPSelections/STEPSelections_AssemblyComponent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPSelections/STEPSelections_AssemblyExplorer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPSelections/STEPSelections_AssemblyLink.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPSelections/STEPSelections_Counter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPSelections/STEPSelections_SelectAssembly.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPSelections/STEPSelections_SelectDerived.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPSelections/STEPSelections_SelectFaces.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPSelections/STEPSelections_SelectForTransfer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPSelections/STEPSelections_SelectGSCurves.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/STEPSelections/STEPSelections_SelectInstances.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP209/StepAP209_Construct.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP242/RWStepAP242_RWDraughtingModelItemAssociation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP242/RWStepAP242_RWGeometricItemSpecificUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP242/RWStepAP242_RWIdAttribute.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/RWStepAP242/RWStepAP242_RWItemIdentifiedRepresentationUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP242/StepAP242_DraughtingModelItemAssociation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP242/StepAP242_GeometricItemSpecificUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP242/StepAP242_IdAttribute.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP242/StepAP242_IdAttributeSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP242/StepAP242_ItemIdentifiedRepresentationUsage.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/StepAP242/StepAP242_ItemIdentifiedRepresentationUsageDefinition.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

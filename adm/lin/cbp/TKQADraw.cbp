@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKQADraw" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../lin/cbp/lib/libTKQADraw.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../lin/cbp/libd/libTKQADraw.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../lin/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../lin/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+					<Add option="-Wl,-rpath-link=../../../lin/cbp/libd" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="TKBRep" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKService" />
+			<Add library="TKG2d" />
+			<Add library="TKDraw" />
+			<Add library="TKV3d" />
+			<Add library="TKGeomBase" />
+			<Add library="TKG3d" />
+			<Add library="TKViewerTest" />
+			<Add library="TKCDF" />
+			<Add library="TKDCAF" />
+			<Add library="TKLCAF" />
+			<Add library="TKFillet" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKHLR" />
+			<Add library="TKBool" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKPrim" />
+			<Add library="TKBO" />
+			<Add library="TKShHealing" />
+			<Add library="TKOffset" />
+			<Add library="TKFeat" />
+			<Add library="TKCAF" />
+			<Add library="TKVCAF" />
+			<Add library="TKIGES" />
+			<Add library="TKXSBase" />
+			<Add library="TKMesh" />
+			<Add library="TKXCAF" />
+			<Add library="TKSTEP" />
+			<Add library="TKSTEPBase" />
+			<Add library="TKXDESTEP" />
+			<Add library="TKXSDRAW" />
+			<Add library="TKSTL" />
+			<Add library="TKXml" />
+		</Linker>
+		<Unit filename="../../../src/QABugs/QABugs.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_1.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_10.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_11.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_12.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_13.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_14.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_15.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_16.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_17.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_18.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_19.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_2.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_20.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_3.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_4.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_5.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_6.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_7.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_8.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_9.cxx" />
+		<Unit filename="../../../src/QABugs/QABugs_PresentableObject.cxx" />
+		<Unit filename="../../../src/QADNaming/QADNaming.cxx" />
+		<Unit filename="../../../src/QADNaming/QADNaming_BasicCommands.cxx" />
+		<Unit filename="../../../src/QADNaming/QADNaming_BuilderCommands.cxx" />
+		<Unit filename="../../../src/QADNaming/QADNaming_IteratorsCommands.cxx" />
+		<Unit filename="../../../src/QADNaming/QADNaming_SelectionCommands.cxx" />
+		<Unit filename="../../../src/QADNaming/QADNaming_ToolsCommands.cxx" />
+		<Unit filename="../../../src/QADraw/QADraw.cxx" />
+		<Unit filename="../../../src/QADraw/QADraw_Additional.cxx" />
+		<Unit filename="../../../src/QANCollection/QANCollection.cxx" />
+		<Unit filename="../../../src/QANCollection/QANCollection_Alloc.cxx" />
+		<Unit filename="../../../src/QANCollection/QANCollection_Common.cxx" />
+		<Unit filename="../../../src/QANCollection/QANCollection_Handle.cxx" />
+		<Unit filename="../../../src/QANCollection/QANCollection_Perf.cxx" />
+		<Unit filename="../../../src/QANCollection/QANCollection_Stl.cxx" />
+		<Unit filename="../../../src/QANCollection/QANCollection_Test.cxx" />
+	</Project>
+</CodeBlocks_project_file>

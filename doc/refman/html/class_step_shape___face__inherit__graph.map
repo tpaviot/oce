@@ -1,0 +1,9 @@
+<map id="StepShape_Face" name="StepShape_Face">
+<area shape="rect" id="node5" href="$class_step_shape___face_surface.html" title="StepShape_FaceSurface" alt="" coords="11,304,178,331"/>
+<area shape="rect" id="node7" href="$class_step_shape___oriented_face.html" title="StepShape_OrientedFace" alt="" coords="203,304,373,331"/>
+<area shape="rect" id="node8" href="$class_step_shape___subface.html" title="Representation of STEP entity Subface. " alt="" coords="398,304,538,331"/>
+<area shape="rect" id="node2" href="$class_step_shape___topological_representation_item.html" title="StepShape_TopologicalRepresentationItem" alt="" coords="153,155,423,181"/>
+<area shape="rect" id="node3" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="191,80,385,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="221,5,355,32"/>
+<area shape="rect" id="node6" href="$class_step_shape___advanced_face.html" title="StepShape_AdvancedFace" alt="" coords="5,379,184,405"/>
+</map>

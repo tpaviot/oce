@@ -1,0 +1,7 @@
+<map id="StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem" name="StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem">
+<area shape="rect" id="node2" href="$class_step_visual___annotation_curve_occurrence.html" title="StepVisual_AnnotationCurve\lOccurrence" alt="" coords="58,304,245,345"/>
+<area shape="rect" id="node3" href="$class_step_visual___annotation_occurrence.html" title="StepVisual_AnnotationOccurrence" alt="" coords="41,229,262,256"/>
+<area shape="rect" id="node4" href="$class_step_visual___styled_item.html" title="StepVisual_StyledItem" alt="" coords="74,155,229,181"/>
+<area shape="rect" id="node5" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="54,80,249,107"/>
+<area shape="rect" id="node6" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="84,5,219,32"/>
+</map>

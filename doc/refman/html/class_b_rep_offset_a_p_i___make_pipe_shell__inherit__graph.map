@@ -1,0 +1,5 @@
+<map id="BRepOffsetAPI_MakePipeShell" name="BRepOffsetAPI_MakePipeShell">
+<area shape="rect" id="node2" href="$class_b_rep_prim_a_p_i___make_sweep.html" title="The abstract class MakeSweep is the root class of swept primitives. Sweeps are objects you obtain by ..." alt="" coords="17,155,197,181"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="11,80,202,107"/>
+<area shape="rect" id="node4" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="16,5,197,32"/>
+</map>

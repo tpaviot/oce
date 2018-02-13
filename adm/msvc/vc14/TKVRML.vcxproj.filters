@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{72D8952E-11B5-08AE-1049-9F39DF906989}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\VrmlConverter">
+      <UniqueIdentifier>{00BF68B1-0CD9-0946-0515-B9D6FCD15989}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\VrmlAPI">
+      <UniqueIdentifier>{4D58C58F-0F13-1051-0BD0-D485BA97AFB1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Vrml">
+      <UniqueIdentifier>{8FC39FC7-17D9-11C5-1348-62D24EDD1D57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\VrmlData">
+      <UniqueIdentifier>{B166480B-0BA9-0234-0324-59EBCD88101F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_Curve.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_DeflectionCurve.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_Drawer.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_HLRShape.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_IsoAspect.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_LineAspect.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_PointAspect.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_Projector.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_ShadedShape.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_ShadingAspect.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_WFDeflectionRestrictedFace.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_WFDeflectionShape.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_WFRestrictedFace.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlConverter\VrmlConverter_WFShape.cxx">
+      <Filter>Source files\VrmlConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlAPI\VrmlAPI.cxx">
+      <Filter>Source files\VrmlAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlAPI\VrmlAPI_Writer.cxx">
+      <Filter>Source files\VrmlAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_AsciiText.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Cone.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Coordinate3.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Cube.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Cylinder.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_DirectionalLight.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_FontStyle.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Group.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_IndexedFaceSet.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_IndexedLineSet.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Info.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Instancing.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_LOD.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Material.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_MaterialBinding.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_MatrixTransform.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Normal.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_NormalBinding.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_OrthographicCamera.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_PerspectiveCamera.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_PointLight.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_PointSet.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Rotation.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_SFImage.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_SFRotation.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Scale.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Separator.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_ShapeHints.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Sphere.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_SpotLight.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Switch.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Texture2.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Texture2Transform.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_TextureCoordinate2.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Transform.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_TransformSeparator.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_Translation.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_WWWAnchor.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Vrml\Vrml_WWWInline.cxx">
+      <Filter>Source files\Vrml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_Geometry.cxx">
+      <Filter>Source files\VrmlData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_Group.cxx">
+      <Filter>Source files\VrmlData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_IndexedFaceSet.cxx">
+      <Filter>Source files\VrmlData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_IndexedLineSet.cxx">
+      <Filter>Source files\VrmlData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_Material.cxx">
+      <Filter>Source files\VrmlData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_Node.cxx">
+      <Filter>Source files\VrmlData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_Scene.cxx">
+      <Filter>Source files\VrmlData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_ShapeConvert.cxx">
+      <Filter>Source files\VrmlData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\VrmlData\VrmlData_WorldInfo.cxx">
+      <Filter>Source files\VrmlData</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKVRML.rc" />  </ItemGroup>
+</Project>

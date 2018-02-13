@@ -1,0 +1,4 @@
+<map id="HatchGen_IntersectionPoint" name="HatchGen_IntersectionPoint">
+<area shape="rect" id="node2" href="$class_hatch_gen___point_on_element.html" title="HatchGen_PointOnElement" alt="" coords="5,80,188,107"/>
+<area shape="rect" id="node3" href="$class_hatch_gen___point_on_hatching.html" title="HatchGen_PointOnHatching" alt="" coords="212,80,397,107"/>
+</map>

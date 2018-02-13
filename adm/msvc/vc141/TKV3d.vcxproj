@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{800497DA-10DD-068E-0961-6642608FD34C}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc14\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc14\obj\TKV3d\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc14\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc14\objd\TKV3d\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc14\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc14\obj\TKV3d\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc14\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc14\objd\TKV3d\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc14\bin\TKV3d.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc14\obj\TKV3d/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc14\obj\TKV3d/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc14\obj\TKV3d/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKShHealing.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;comdlg32.lib;gdi32.lib;opengl32.lib;freetype.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc14\bin\TKV3d.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc14\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc14\bin\TKV3d.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc14\lib\TKV3d.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc14\bind\TKV3d.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc14\objd\TKV3d/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc14\objd\TKV3d/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc14\objd\TKV3d/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKShHealing.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;comdlg32.lib;gdi32.lib;opengl32.lib;freetype.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc14\bind\TKV3d.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc14\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc14\bind\TKV3d.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc14\libd\TKV3d.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc14\bin\TKV3d.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc14\obj\TKV3d/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc14\obj\TKV3d/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc14\obj\TKV3d/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKShHealing.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;comdlg32.lib;gdi32.lib;opengl32.lib;freetype.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc14\bin\TKV3d.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc14\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>no</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc14\bin\TKV3d.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc14\lib\TKV3d.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc14\bind\TKV3d.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc14\objd\TKV3d/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc14\objd\TKV3d/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc14\objd\TKV3d/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKShHealing.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;comdlg32.lib;gdi32.lib;opengl32.lib;freetype.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc14\bind\TKV3d.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc14\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc14\bind\TKV3d.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc14\libd\TKV3d.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\V3d\V3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_AmbientLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_CircularGrid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_DirectionalLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Light.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Plane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_PositionLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_PositionalLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_RectangularGrid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_SpotLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Trihedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_4.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer_4.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPoints.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPolygons.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPolylines.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPrimitives.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfQuadrangleStrips.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfQuadrangles.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfSegments.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfTriangleFans.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfTriangleStrips.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfTriangles.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectFillArea3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectLine3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectMarker3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectText3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_BSDF.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CStructure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Camera.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ClipPlane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_DataStructureManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_GraphicDriver.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_HatchStyle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_MarkerImage.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_MaterialAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_PresentationAttributes.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ShaderAttribute.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ShaderObject.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ShaderProgram.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ShaderVariable.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Structure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_StructureManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture1D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture1Dmanual.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture1Dsegment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture2D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture2Dmanual.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture2Dplane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureEnv.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureMap.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureParams.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureRoot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TransformPers.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Vector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Vertex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ViewAffinity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_InteriorSensitivePointSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveBox.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveCircle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitivePoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitivePoly.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitivePrimitiveArray.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveSegment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveTriangle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveTriangulation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveWire.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Arrow.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ArrowAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_BasicAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_DatumAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_DimensionAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Drawer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_IsoAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_LineAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_PlaneAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_PointAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Presentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_PresentationShadow.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Projector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ShadingAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ShapeTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Text.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_TextAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ToolCylinder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ToolDisk.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ToolQuadric.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ToolSphere.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_BndBox.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_Curve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_DeflectionCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_HLRPolyShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_HLRShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_HLRToolShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_Isolines.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_Plane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_PoleCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ShadedShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ShadedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolRFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolTriangulatedShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolVertex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFDeflectionRestrictedFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFDeflectionSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFPoleSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFRestrictedFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_AndFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_BaseFrustum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_CompositionFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_EntityOwner.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_Filter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_FrustumBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_OrFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_RectangularFrustum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectableObject.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectableObjectSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectingVolumeManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_Selection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectionManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SensitiveEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SensitiveEntitySet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_ToleranceMap.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_TriangularFrustum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_TriangularFrustumSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_ViewerSelector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_ModedPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentableObject.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Presentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentationManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Prs.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_AngleDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Animation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_AnimationCamera.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_AnimationObject.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_AnimationTimer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_AttributeFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Axis.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_BadEdgeFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_C0RegularityFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Chamf2dDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Chamf3dDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Circle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ColorScale.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ColoredShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ConcentricRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ConnectedInteractive.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_DiameterDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Dimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_DimensionOwner.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_EllipseRadiusDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_EqualDistanceRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_EqualRadiusRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ExclusionFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_FixRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_GlobalStatus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_GraphicTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_IdenticRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveObject.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LengthDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Line.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LocalContext.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LocalContext_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LocalStatus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Manipulator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ManipulatorOwner.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MaxRadiusDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MidPointRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MinRadiusDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MultipleConnectedInteractive.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_OffsetDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ParallelRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_PerpendicularRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Plane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_PlaneTrihedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Point.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_PointCloud.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_RadiusDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Relation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_RubberBand.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Selection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Shape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_SignatureFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_SymmetricRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TangentRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TextLabel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TexturedShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Triangulation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Trihedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TrihedronOwner.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TypeFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_AnglePresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_Chamf2dPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ConcentricPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_DatumPrs.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_DiameterPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_EllipseRadiusPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_EqualDistancePresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_EqualRadiusPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_FilletRadiusPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_FixPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_IdenticPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_LengthPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_MidPointPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_OffsetPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ParalPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_PerpenPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_RadiusPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ShadedPlanePresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ShapeDirPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_SymbPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_SymmetricPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_TangentPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_XYZAxisPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_XYZPlanePresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepOwner.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepSelectionTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_EdgeFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_FaceFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_Prs.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_Shape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_ShapeTypeFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_ViewerSelector3d.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKV3d.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

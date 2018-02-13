@@ -1,0 +1,23 @@
+digraph schema_TKBin
+{
+	TKBin [ URL = "toolkit_tkbin.html", shape = box ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKBin -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKBin -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKBin -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKBin -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKBin -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKCAF [ URL = "toolkit_tkcaf.html" , shape = box ]
+	TKBin -> TKCAF [ color = "midnightblue", style = "solid" ]
+	TKCDF [ URL = "toolkit_tkcdf.html" , shape = box ]
+	TKBin -> TKCDF [ color = "midnightblue", style = "solid" ]
+	TKLCAF [ URL = "toolkit_tklcaf.html" , shape = box ]
+	TKBin -> TKLCAF [ color = "midnightblue", style = "solid" ]
+	TKBinL [ URL = "toolkit_tkbinl.html" , shape = box ]
+	TKBin -> TKBinL [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

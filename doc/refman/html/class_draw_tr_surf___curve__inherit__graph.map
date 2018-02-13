@@ -1,0 +1,7 @@
+<map id="DrawTrSurf_Curve" name="DrawTrSurf_Curve">
+<area shape="rect" id="node5" href="$class_draw_tr_surf___bezier_curve.html" title="DrawTrSurf_BezierCurve" alt="" coords="5,304,167,331"/>
+<area shape="rect" id="node6" href="$class_draw_tr_surf___b_spline_curve.html" title="DrawTrSurf_BSplineCurve" alt="" coords="191,304,360,331"/>
+<area shape="rect" id="node2" href="$class_draw_tr_surf___drawable.html" title="this class adds to the Drawable3D methods to display Curves and Curves on Surface. " alt="" coords="108,155,253,181"/>
+<area shape="rect" id="node3" href="$class_draw___drawable3_d.html" title="Draw_Drawable3D" alt="" coords="117,80,244,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="113,5,248,32"/>
+</map>

@@ -1,0 +1,6 @@
+digraph schema_TKCDF
+{
+	TKCDF [ URL = "toolkit_tkcdf.html", shape = box ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKCDF -> TKernel [ color = "midnightblue", style = "solid" ]
+}

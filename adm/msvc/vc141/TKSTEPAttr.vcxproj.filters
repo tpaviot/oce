@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{8D946DB0-14A5-0826-084E-9249CA2A8B54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepVisual">
+      <UniqueIdentifier>{2138652F-0F5E-0B24-1705-1BC017E0325E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\RWStepVisual">
+      <UniqueIdentifier>{0ADD2903-165D-10AA-01E5-8C2E663A2E69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StepDimTol">
+      <UniqueIdentifier>{BCF1AA09-1335-16ED-01D0-5CA022154FC2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\RWStepDimTol">
+      <UniqueIdentifier>{2764C814-0B47-130A-0665-BD04BD82357F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationCurveOccurrence.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationFillArea.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationFillAreaOccurrence.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationOccurrence.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationPlane.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationPlaneElement.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationText.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AnnotationTextOccurrence.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AreaInSet.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_AreaOrView.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_BackgroundColour.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_BoxCharacteristicSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraImage.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraImage2dWithScale.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraImage3dWithScale.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModel.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD2.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3MultiClipping.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3MultiClippingInterectionSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3MultiClippingIntersection.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3MultiClippingUnion.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraModelD3MultiClippingUnionSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CameraUsage.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_Colour.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ColourRgb.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ColourSpecification.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CompositeText.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CompositeTextWithExtent.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ContextDependentInvisibility.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ContextDependentOverRidingStyledItem.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CoordinatesList.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CurveStyle.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CurveStyleFont.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CurveStyleFontPattern.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_CurveStyleFontSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DirectionCountSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingAnnotationOccurrence.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingCallout.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingCalloutElement.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingModel.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingPreDefinedColour.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_DraughtingPreDefinedCurveFont.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ExternallyDefinedCurveFont.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ExternallyDefinedTextFont.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_FillAreaStyle.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_FillAreaStyleColour.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_FillStyleSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_FontSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_Invisibility.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_InvisibilityContext.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_InvisibleItem.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_LayeredItem.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_MarkerMember.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_MarkerSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_MechanicalDesignGeometricPresentationArea.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_MechanicalDesignGeometricPresentationRepresentation.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_NullStyleMember.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_OverRidingStyledItem.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PlanarBox.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PlanarExtent.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PointStyle.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PreDefinedColour.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PreDefinedCurveFont.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PreDefinedItem.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PreDefinedTextFont.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationArea.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationLayerAssignment.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationLayerUsage.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationRepresentation.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationRepresentationSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationSet.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationSize.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationSizeAssignmentSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationStyleAssignment.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationStyleByContext.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationStyleSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentationView.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentedItem.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_PresentedItemRepresentation.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_StyleContextSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_StyledItem.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_StyledItemTarget.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceSideStyle.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleBoundary.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleControlGrid.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleElementSelect.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleFillArea.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleParameterLine.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleSegmentationCurve.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleSilhouette.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_SurfaceStyleUsage.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_Template.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TemplateInstance.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TessellatedAnnotationOccurrence.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TessellatedCurveSet.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TessellatedGeometricSet.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TessellatedItem.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TextLiteral.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TextOrCharacter.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TextStyle.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TextStyleForDefinedFont.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_TextStyleWithBoxCharacteristics.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepVisual\StepVisual_ViewVolume.cxx">
+      <Filter>Source files\StepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationCurveOccurrence.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationFillArea.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationFillAreaOccurrence.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationOccurrence.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAnnotationPlane.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWAreaInSet.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWBackgroundColour.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraImage.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModel.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModelD2.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModelD3.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModelD3MultiClipping.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModelD3MultiClippingIntersection.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraModelD3MultiClippingUnion.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCameraUsage.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWColour.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWColourRgb.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWColourSpecification.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCompositeText.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCompositeTextWithExtent.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWContextDependentInvisibility.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWContextDependentOverRidingStyledItem.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCoordinatesList.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCurveStyle.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCurveStyleFont.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWCurveStyleFontPattern.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWDraughtingCallout.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWDraughtingModel.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWDraughtingPreDefinedColour.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWDraughtingPreDefinedCurveFont.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWExternallyDefinedCurveFont.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWFillAreaStyle.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWFillAreaStyleColour.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWInvisibility.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWMechanicalDesignGeometricPresentationArea.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWOverRidingStyledItem.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPlanarBox.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPlanarExtent.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPointStyle.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPreDefinedColour.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPreDefinedCurveFont.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPreDefinedItem.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationArea.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationLayerAssignment.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationLayerUsage.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationRepresentation.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationSet.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationSize.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationStyleAssignment.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationStyleByContext.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentationView.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWPresentedItemRepresentation.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWStyledItem.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceSideStyle.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleBoundary.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleControlGrid.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleFillArea.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleParameterLine.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleSegmentationCurve.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleSilhouette.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWSurfaceStyleUsage.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTemplate.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTemplateInstance.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTessellatedAnnotationOccurrence.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTessellatedCurveSet.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTessellatedGeometricSet.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTessellatedItem.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTextLiteral.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTextStyle.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTextStyleForDefinedFont.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWTextStyleWithBoxCharacteristics.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepVisual\RWStepVisual_RWViewVolume.cxx">
+      <Filter>Source files\RWStepVisual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_AngularityTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_CircularRunoutTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_CoaxialityTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_CommonDatum.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ConcentricityTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_CylindricityTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_Datum.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumFeature.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumOrCommonDatum.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumReference.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumReferenceCompartment.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumReferenceElement.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumReferenceModifier.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumReferenceModifierWithValue.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumSystem.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumSystemOrReference.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_DatumTarget.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_FlatnessTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeneralDatumReference.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthDatRef.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthMaxTol.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeoTolAndGeoTolWthMod.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceRelationship.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceTarget.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceWithDatumReference.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceWithDefinedAreaUnit.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceWithDefinedUnit.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceWithMaximumTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_GeometricToleranceWithModifiers.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_LineProfileTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ModifiedGeometricTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_NonUniformZoneDefinition.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ParallelismTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_PerpendicularityTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_PlacedDatumTargetFeature.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_PositionTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ProjectedZoneDefinition.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_RoundnessTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_RunoutZoneDefinition.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_RunoutZoneOrientation.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ShapeToleranceSelect.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_SimpleDatumReferenceModifierMember.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_StraightnessTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_SurfaceProfileTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_SymmetryTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ToleranceZone.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ToleranceZoneDefinition.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ToleranceZoneForm.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_ToleranceZoneTarget.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_TotalRunoutTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StepDimTol\StepDimTol_UnequallyDisposedGeometricTolerance.cxx">
+      <Filter>Source files\StepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWAngularityTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWCircularRunoutTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWCoaxialityTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWCommonDatum.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWConcentricityTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWCylindricityTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatum.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumFeature.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumReference.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumReferenceCompartment.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumReferenceElement.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumReferenceModifierWithValue.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumSystem.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWDatumTarget.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWFlatnessTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeneralDatumReference.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthDatRef.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMod.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthMaxTol.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeoTolAndGeoTolWthMod.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceRelationship.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceWithDatumReference.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceWithDefinedAreaUnit.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceWithDefinedUnit.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceWithMaximumTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWGeometricToleranceWithModifiers.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWLineProfileTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWModifiedGeometricTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWNonUniformZoneDefinition.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWParallelismTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWPerpendicularityTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWPlacedDatumTargetFeature.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWPositionTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWProjectedZoneDefinition.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWRoundnessTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWRunoutZoneDefinition.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWRunoutZoneOrientation.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWStraightnessTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWSurfaceProfileTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWSymmetryTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWToleranceZone.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWToleranceZoneDefinition.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWToleranceZoneForm.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWTotalRunoutTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\RWStepDimTol\RWStepDimTol_RWUnequallyDisposedGeometricTolerance.cxx">
+      <Filter>Source files\RWStepDimTol</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKSTEPAttr.rc" />  </ItemGroup>
+</Project>

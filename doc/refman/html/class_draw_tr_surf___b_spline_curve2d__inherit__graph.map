@@ -1,0 +1,8 @@
+<map id="DrawTrSurf_BSplineCurve2d" name="DrawTrSurf_BSplineCurve2d">
+<area shape="rect" id="node6" href="$class_draw_fair_curve___batten.html" title="Interactive Draw object of type &quot;Batten&quot;. " alt="" coords="34,379,185,405"/>
+<area shape="rect" id="node2" href="$class_draw_tr_surf___curve2d.html" title="This class defines a drawable curve in 2d space. The curve is drawned in the plane XOY..." alt="" coords="40,229,179,256"/>
+<area shape="rect" id="node3" href="$class_draw_tr_surf___drawable.html" title="this class adds to the Drawable3D methods to display Curves and Curves on Surface. " alt="" coords="37,155,182,181"/>
+<area shape="rect" id="node4" href="$class_draw___drawable3_d.html" title="Draw_Drawable3D" alt="" coords="46,80,173,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="42,5,177,32"/>
+<area shape="rect" id="node7" href="$class_draw_fair_curve___minimal_variation.html" title="Interactive Draw object of type &quot;MVC&quot;. " alt="" coords="5,453,213,480"/>
+</map>

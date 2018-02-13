@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKXSDRAW" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKXSDRAW" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__XSDRAW_DLL" />
+					<Add option="-D__XSDRAWIGES_DLL" />
+					<Add option="-D__XSDRAWSTEP_DLL" />
+					<Add option="-D__XSDRAWSTLVRML_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKXSDRAW_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKXSDRAW" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__XSDRAW_DLL" />
+					<Add option="-D__XSDRAWIGES_DLL" />
+					<Add option="-D__XSDRAWSTEP_DLL" />
+					<Add option="-D__XSDRAWSTLVRML_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKXSDRAW_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKBRep" />
+			<Add library="TKV3d" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKService" />
+			<Add library="TKXSBase" />
+			<Add library="TKMeshVS" />
+			<Add library="TKG3d" />
+			<Add library="TKViewerTest" />
+			<Add library="TKG2d" />
+			<Add library="TKSTEPBase" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKGeomBase" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKMesh" />
+			<Add library="TKDraw" />
+			<Add library="TKSTEP" />
+			<Add library="TKIGES" />
+			<Add library="TKSTL" />
+			<Add library="TKVRML" />
+		</Linker>
+		<Unit filename="../../../src/XSDRAW/XSDRAW.cxx" />
+		<Unit filename="../../../src/XSDRAW/XSDRAW_Functions.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSDRAW/XSDRAW_Vars.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSDRAWIGES/XSDRAWIGES.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSDRAWSTEP/XSDRAWSTEP.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_DataSource.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_DataSource3D.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_DrawableMesh.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

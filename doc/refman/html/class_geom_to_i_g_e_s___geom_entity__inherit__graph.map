@@ -1,0 +1,6 @@
+<map id="GeomToIGES_GeomEntity" name="GeomToIGES_GeomEntity">
+<area shape="rect" id="node2" href="$class_geom_to_i_g_e_s___geom_curve.html" title="This class implements the transfer of the Curve Entity from Geom To IGES. These can be : Curve ..." alt="" coords="238,5,414,32"/>
+<area shape="rect" id="node3" href="$class_geom_to_i_g_e_s___geom_point.html" title="This class implements the transfer of the Point Entity from Geom to IGES . These are : ..." alt="" coords="239,56,413,83"/>
+<area shape="rect" id="node4" href="$class_geom_to_i_g_e_s___geom_surface.html" title="This class implements the transfer of the Surface Entity from Geom To IGES. These can be : ..." alt="" coords="232,107,420,133"/>
+<area shape="rect" id="node5" href="$class_geom_to_i_g_e_s___geom_vector.html" title="This class implements the transfer of the Vector from Geom to IGES . These can be : ..." alt="" coords="235,157,417,184"/>
+</map>

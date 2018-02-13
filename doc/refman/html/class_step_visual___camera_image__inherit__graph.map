@@ -1,0 +1,7 @@
+<map id="StepVisual_CameraImage" name="StepVisual_CameraImage">
+<area shape="rect" id="node5" href="$class_step_visual___camera_image2d_with_scale.html" title="StepVisual_CameraImage2d\lWithScale" alt="" coords="5,304,192,345"/>
+<area shape="rect" id="node6" href="$class_step_visual___camera_image3d_with_scale.html" title="StepVisual_CameraImage3d\lWithScale" alt="" coords="216,304,403,345"/>
+<area shape="rect" id="node2" href="$class_step_repr___mapped_item.html" title="StepRepr_MappedItem" alt="" coords="127,155,281,181"/>
+<area shape="rect" id="node3" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="107,80,301,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="137,5,271,32"/>
+</map>

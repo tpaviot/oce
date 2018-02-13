@@ -1,0 +1,7 @@
+<map id="IFSelect_SelectAnyType" name="IFSelect_SelectAnyType">
+<area shape="rect" id="node6" href="$class_i_f_select___select_type.html" title="A SelectType keeps or rejects Entities of which the Type is Kind of a given Cdl Type. " alt="" coords="17,379,159,405"/>
+<area shape="rect" id="node2" href="$class_i_f_select___select_extract.html" title="A SelectExtract determines a list of Entities from an Input Selection, as a sub&#45;list of the Input Res..." alt="" coords="10,229,166,256"/>
+<area shape="rect" id="node3" href="$class_i_f_select___select_deduct.html" title="A SelectDeduct determines a list of Entities from an Input Selection, by a computation : Output list ..." alt="" coords="11,155,165,181"/>
+<area shape="rect" id="node4" href="$class_i_f_select___selection.html" title="A Selection allows to define a set of Interface Entities. Entities to be put on an output file should..." alt="" coords="23,80,153,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="21,5,155,32"/>
+</map>

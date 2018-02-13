@@ -1,0 +1,26 @@
+puts "TODO OCC12345 ALL: Error : The area of result shape is"
+puts "TODO OCC12345 ALL: Faulty shapes in variables faulty_1 to faulty_"
+
+puts "========================"
+puts " OCC420 "
+puts "PRO12473"
+puts "========================"
+puts ""
+
+restore [locate_data_file CTO909_objects.brep] a 
+checkshape a
+
+restore [locate_data_file CTO909_tool_4.brep] b 
+checkshape b
+
+bsection sec a b
+puts [checksection sec]
+checkshape sec
+explode a so
+renamevar a_1 a
+
+bcut result a b
+
+checkprops result -s 0 
+checkshape result
+checkview -display result -2d -path ${imagedir}/${test_image}.png

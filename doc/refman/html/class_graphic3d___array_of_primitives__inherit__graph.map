@@ -1,0 +1,12 @@
+<map id="Graphic3d_ArrayOfPrimitives" name="Graphic3d_ArrayOfPrimitives">
+<area shape="rect" id="node3" href="$class_graphic3d___array_of_points.html" title="Contains points array definition. " alt="" coords="443,5,612,32"/>
+<area shape="rect" id="node4" href="$class_graphic3d___array_of_polygons.html" title="Contains polygons array definition. " alt="" coords="434,56,621,83"/>
+<area shape="rect" id="node5" href="$class_graphic3d___array_of_polylines.html" title="Contains polylines array definition. " alt="" coords="435,107,620,133"/>
+<area shape="rect" id="node6" href="$class_graphic3d___array_of_quadrangles.html" title="Contains quatrangles array definition. " alt="" coords="425,157,630,184"/>
+<area shape="rect" id="node7" href="$class_graphic3d___array_of_quadrangle_strips.html" title="Contains quadrangles strip array definition. " alt="" coords="428,209,627,250"/>
+<area shape="rect" id="node8" href="$class_graphic3d___array_of_segments.html" title="Contains segments array definition. " alt="" coords="432,275,623,301"/>
+<area shape="rect" id="node9" href="$class_graphic3d___array_of_triangle_fans.html" title="Contains triangles fan array definition. " alt="" coords="424,325,631,352"/>
+<area shape="rect" id="node10" href="$class_graphic3d___array_of_triangles.html" title="Contains triangles array definition. " alt="" coords="435,376,619,403"/>
+<area shape="rect" id="node11" href="$class_graphic3d___array_of_triangle_strips.html" title="Contains triangles strip array definition. " alt="" coords="439,427,616,469"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,216,140,243"/>
+</map>

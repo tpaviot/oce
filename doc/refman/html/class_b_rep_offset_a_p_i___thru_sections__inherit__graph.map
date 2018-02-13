@@ -1,0 +1,4 @@
+<map id="BRepOffsetAPI_ThruSections" name="BRepOffsetAPI_ThruSections">
+<area shape="rect" id="node2" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="6,80,197,107"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="11,5,192,32"/>
+</map>

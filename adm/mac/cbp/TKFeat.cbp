@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKFeat" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKFeat.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKFeat.so" prefix_auto="0" extension_auto="0" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="0" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=c++0x" />
+			<Add option="-fPIC" />
+			<Add option="-DOCC_CONVERT_SIGNALS" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKBRep" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKGeomBase" />
+			<Add library="TKPrim" />
+			<Add library="TKG2d" />
+			<Add library="TKBO" />
+			<Add library="TKG3d" />
+			<Add library="TKBool" />
+			<Add library="TKShHealing" />
+		</Linker>
+		<Unit filename="../../../src/LocOpe/LocOpe.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_BuildShape.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_BuildWires.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_CSIntersector.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_CurveShapeIntersector.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_DPrism.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_FindEdges.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_FindEdgesInFace.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_GeneratedShape.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_Generator.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_GluedShape.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_Gluer.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_LinearForm.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_Pipe.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_Prism.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_Revol.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_RevolutionForm.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_SplitDrafts.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_SplitShape.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_Spliter.cxx" />
+		<Unit filename="../../../src/LocOpe/LocOpe_WiresOnShape.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_Builder.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_Form.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_Gluer.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_MakeCylindricalHole.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_MakeDPrism.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_MakeLinearForm.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_MakePipe.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_MakePrism.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_MakeRevol.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_MakeRevolutionForm.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_RibSlot.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_SplitShape.cxx" />
+		<Unit filename="../../../src/BRepFeat/BRepFeat_trace.cxx" />
+	</Project>
+</CodeBlocks_project_file>

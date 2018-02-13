@@ -1,0 +1,23 @@
+digraph schema_TKService
+{
+	TKService [ URL = "toolkit_tkservice.html", shape = box ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKService -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKService -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKService -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKShHealing [ URL = "toolkit_tkshhealing.html" , shape = box ]
+	TKService -> TKShHealing [ color = "midnightblue", style = "solid" ]
+	TKGeomBase [ URL = "toolkit_tkgeombase.html" , shape = box ]
+	TKService -> TKGeomBase [ color = "midnightblue", style = "solid" ]
+	TKGeomAlgo [ URL = "toolkit_tkgeomalgo.html" , shape = box ]
+	TKService -> TKGeomAlgo [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKService -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKService -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKTopAlgo [ URL = "toolkit_tktopalgo.html" , shape = box ]
+	TKService -> TKTopAlgo [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

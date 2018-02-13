@@ -1,0 +1,7 @@
+<map id="BRepPrim_Revolution" name="BRepPrim_Revolution">
+<area shape="rect" id="node3" href="$class_b_rep_prim___cone.html" title="Implement the cone primitive. " alt="" coords="5,155,124,181"/>
+<area shape="rect" id="node4" href="$class_b_rep_prim___cylinder.html" title="Cylinder primitive. " alt="" coords="148,155,283,181"/>
+<area shape="rect" id="node5" href="$class_b_rep_prim___sphere.html" title="Implements the sphere primitive. " alt="" coords="307,155,436,181"/>
+<area shape="rect" id="node6" href="$class_b_rep_prim___torus.html" title="Implements the torus primitive. " alt="" coords="461,155,581,181"/>
+<area shape="rect" id="node2" href="$class_b_rep_prim___one_axis.html" title="Algorithm to build primitives with one axis of revolution. " alt="" coords="223,5,362,32"/>
+</map>

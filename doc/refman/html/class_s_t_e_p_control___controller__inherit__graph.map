@@ -1,0 +1,5 @@
+<map id="STEPControl_Controller" name="STEPControl_Controller">
+<area shape="rect" id="node4" href="$class_s_t_e_p_c_a_f_control___controller.html" title="Extends Controller from STEPControl in order to provide ActorWrite adapted for writing assemblies fro..." alt="" coords="5,229,191,256"/>
+<area shape="rect" id="node2" href="$class_x_s_control___controller.html" title="This class allows a general X&#45;STEP engine to run generic functions on any interface norm..." alt="" coords="27,80,169,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="31,5,165,32"/>
+</map>

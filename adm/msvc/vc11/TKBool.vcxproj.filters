@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{77170AE8-0A59-158A-0C49-81842E0CF6A0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TopOpeBRep">
+      <UniqueIdentifier>{13C17D20-0114-065F-01A0-D659E1A6CA63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TopOpeBRepDS">
+      <UniqueIdentifier>{31374072-06D2-01CE-0D50-CE54FC2DA746}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TopOpeBRepBuild">
+      <UniqueIdentifier>{4109AF5E-10EA-17AF-0F95-8E24C9113D3C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TopOpeBRepTool">
+      <UniqueIdentifier>{CB412712-10B0-031A-1366-22B06F6D5D88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepAlgo">
+      <UniqueIdentifier>{17C668DE-05C5-18A5-09FF-54EF6B32731A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepFill">
+      <UniqueIdentifier>{22D06019-0B20-0108-0DE6-E07BDFE4A5D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepProj">
+      <UniqueIdentifier>{431852AF-11D7-1392-03C1-A48159282DAD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_Bipoint.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_DRAW.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_DSFiller.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_EdgesFiller.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_EdgesIntersector.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_EdgesIntersector_1.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_FFDumper.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_FFTransitionTool.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_FaceEdgeFiller.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_FaceEdgeFiller_DEB.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_FaceEdgeIntersector.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_FacesFiller.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_FacesFiller_1.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_FacesIntersector.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_GeomTool.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_Hctxee2d.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_Hctxff2d.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_LineInter.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_Point2d.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_PointClassifier.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_PointGeomTool.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_ProcessGR.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_ProcessSectionEdges.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_ShapeIntersector.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_ShapeIntersector2d.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_ShapeScanner.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_VPointInter.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_VPointInterClassifier.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_VPointInterIterator.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_WPointInter.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_WPointInterIterator.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_kpart.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_mergePDS.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_sort.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_trace.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_traceALWL.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_traceBOOPNINT.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_traceSIFF.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_vpr.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_vprclo.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRep\TopOpeBRep_vprdeg.cxx">
+      <Filter>Source files\TopOpeBRep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Association.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_BuildTool.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Check.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Curve.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_CurveData.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_CurveExplorer.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_CurveIterator.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_CurvePointInterference.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_DRAW.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_DataStructure.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Dumper.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_EIR.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_EXPORT.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Edge3dInterferenceTool.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_EdgeInterferenceTool.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_EdgeVertexInterference.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Explorer.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_FIR.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_FaceEdgeInterference.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_FaceInterferenceTool.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Filter.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_FilterCurveInterferences.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_FilterEdgeInterferences.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_FilterFaceInterferences.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_GapFiller.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_GapTool.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_GeometryData.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_HDataStructure.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Interference.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_InterferenceIterator.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_InterferenceTool.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_ListOfShapeOn1State.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Marker.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Point.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_PointData.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_PointExplorer.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_PointIterator.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_ProcessEdgeInterferences.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_ProcessFaceInterferences.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_ProcessInterferencesTool.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Reducer.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_ShapeData.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_ShapeShapeInterference.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_ShapeWithState.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_SolidSurfaceInterference.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Surface.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_SurfaceCurveInterference.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_SurfaceData.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_SurfaceExplorer.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_SurfaceIterator.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_TKI.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_TOOL.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_Transition.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_connex.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_funk.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_redu.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_repvg.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepDS\TopOpeBRepDS_samdom.cxx">
+      <Filter>Source files\TopOpeBRepDS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Area1dBuilder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Area2dBuilder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Area3dBuilder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_AreaBuilder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_BlockBuilder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_BlockIterator.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_BuildEdges.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_BuildFaces.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_BuildVertices.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Builder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Builder1.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Builder1_1.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Builder1_2.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_BuilderON.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_BuilderON2d.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_CompositeClassifier.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_CorrectFace2d.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_EdgeBuilder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_End.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_FREGU.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_FaceAreaBuilder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_FaceBuilder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_FuseFace.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_GIter.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_GTool.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_GTopo.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Grid.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_GridEE.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_GridFF.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_GridSS.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Griddump.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_HBuilder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_KPart.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Loop.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_LoopClassifier.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_LoopSet.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Merge.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Pave.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_PaveClassifier.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_PaveSet.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_SREGU.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Section.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_ShapeListOfShape.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_ShapeSet.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_ShellFaceClassifier.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_ShellFaceSet.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_ShellToSolid.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_SolidAreaBuilder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_SolidBuilder.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Tools.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Tools2d.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_Tools_1.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_VertexInfo.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_WireEdgeClassifier.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_WireEdgeSet.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_WireToFace.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_fctwes.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_ffsfs.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_ffwesk.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_keep.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_kpkole.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_makeedges.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_makefaces.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_makesolids.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_on.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepBuild\TopOpeBRepBuild_trace.cxx">
+      <Filter>Source files\TopOpeBRepBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_2d.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_AncestorsTool.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_BoxSort.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_C2DF.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_CLASSI.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_CORRISO.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_CurveTool.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_DRAW.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_FuseEdges.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_GEOMETRY.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_GeomTool.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_HBoxTool.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_PROJECT.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_PURGE.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_PurgeInternalEdges.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_REGUS.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_REGUW.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_RegularizeS.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_RegularizeW.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_SC.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_STATE.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_ShapeClassifier.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_ShapeTool.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_SolidClassifier.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_TOOL.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_TOPOLOGY.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_box.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_connexity.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_face.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_faulty.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_makeTransition.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_matter.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_mkTondgE.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_tol.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_trace.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopOpeBRepTool\TopOpeBRepTool_traceSTATE.cxx">
+      <Filter>Source files\TopOpeBRepTool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_1.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_AsDes.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_BooleanOperation.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_BooleanOperations.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_Common.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_Cut.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_DSAccess.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_EdgeConnector.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_FaceRestrictor.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_Fuse.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_Image.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_Loop.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_NormalProjection.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_Section.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_Tool.cxx">
+      <Filter>Source files\BRepAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_ACRLaw.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_ApproxSeewing.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_CompatibleWires.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_ComputeCLine_0.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_CurveConstraint.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_Draft.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_DraftLaw.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_Edge3DLaw.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_EdgeFaceAndOrder.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_EdgeOnSurfLaw.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_Evolved.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_FaceAndOrder.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_Filling.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_Generator.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_LocationLaw.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_MultiLine.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_NSections.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_OffsetAncestors.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_OffsetWire.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_Pipe.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_PipeShell.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_Section.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_SectionLaw.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_SectionPlacement.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_ShapeLaw.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_Sweep.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_TrimEdgeTool.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_TrimShellCorner.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepFill\BRepFill_TrimSurfaceTool.cxx">
+      <Filter>Source files\BRepFill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepProj\BRepProj_Projection.cxx">
+      <Filter>Source files\BRepProj</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKBool.rc" />  </ItemGroup>
+</Project>

@@ -1,0 +1,5 @@
+<map id="STEPControl_ActorRead" name="STEPControl_ActorRead">
+<area shape="rect" id="node2" href="$class_transfer___actor_of_transient_process.html" title="The original class was renamed. Compatibility only. " alt="" coords="13,169,185,211"/>
+<area shape="rect" id="node3" href="$class_transfer___actor_of_process_for_transient.html" title="Transfer_ActorOfProcessFor\lTransient" alt="" coords="5,80,192,121"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="31,5,166,32"/>
+</map>

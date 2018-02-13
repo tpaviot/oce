@@ -1,0 +1,6 @@
+<map id="Storage_BaseDriver" name="Storage_BaseDriver">
+<area shape="rect" id="node2" href="$class_d_d_f___i_o_stream.html" title="DDF_IOStream" alt="" coords="5,80,116,107"/>
+<area shape="rect" id="node3" href="$class_f_s_d___binary_file.html" title="FSD_BinaryFile" alt="" coords="140,80,253,107"/>
+<area shape="rect" id="node4" href="$class_f_s_d___cmp_file.html" title="FSD_CmpFile" alt="" coords="277,80,380,107"/>
+<area shape="rect" id="node5" href="$class_f_s_d___file.html" title="A general driver which defines as a file, the physical container for data to be stored or retrieved..." alt="" coords="404,80,480,107"/>
+</map>

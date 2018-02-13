@@ -1,0 +1,30 @@
+<map id="StepRepr_ShapeAspect" name="StepRepr_ShapeAspect">
+<area shape="rect" id="node3" href="$class_step_dim_tol___datum.html" title="Representation of STEP entity Datum. " alt="" coords="449,5,583,32"/>
+<area shape="rect" id="node4" href="$class_step_dim_tol___datum_feature.html" title="Representation of STEP entity DatumFeature. " alt="" coords="427,56,605,83"/>
+<area shape="rect" id="node5" href="$class_step_dim_tol___datum_system.html" title="Representation of STEP entity DatumSystem. " alt="" coords="427,107,605,133"/>
+<area shape="rect" id="node6" href="$class_step_dim_tol___datum_target.html" title="Representation of STEP entity DatumTarget. " alt="" coords="431,157,601,184"/>
+<area shape="rect" id="node8" href="$class_step_dim_tol___general_datum_reference.html" title="Representation of STEP entity GeneralDatumReference. " alt="" coords="397,208,635,235"/>
+<area shape="rect" id="node11" href="$class_step_dim_tol___tolerance_zone.html" title="Representation of STEP entity ToleranceZone. " alt="" coords="426,259,606,285"/>
+<area shape="rect" id="node12" href="$class_step_f_e_a___fea_model_definition.html" title="Representation of STEP entity FeaModelDefinition. " alt="" coords="420,309,612,336"/>
+<area shape="rect" id="node13" href="$class_step_f_e_a___node_definition.html" title="Representation of STEP entity NodeDefinition. " alt="" coords="433,360,599,387"/>
+<area shape="rect" id="node14" href="$class_step_repr___composite_shape_aspect.html" title="Added for Dimensional Tolerances. " alt="" coords="405,411,627,437"/>
+<area shape="rect" id="node20" href="$class_step_repr___comp_sh_asp_and_datum_feat_and_sh_asp.html" title="Added for Dimensional Tolerances. " alt="" coords="407,471,625,513"/>
+<area shape="rect" id="node22" href="$class_step_repr___derived_shape_aspect.html" title="Added for Dimensional Tolerances. " alt="" coords="415,673,617,700"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,259,140,285"/>
+<area shape="rect" id="node7" href="$class_step_dim_tol___placed_datum_target_feature.html" title="Representation of STEP entity PlacedDatumTargetFeature. " alt="" coords="699,115,910,157"/>
+<area shape="rect" id="node9" href="$class_step_dim_tol___datum_reference_compartment.html" title="Representation of STEP entity DatumReferenceCompartment. " alt="" coords="709,181,901,222"/>
+<area shape="rect" id="node10" href="$class_step_dim_tol___datum_reference_element.html" title="Representation of STEP entity DatumReferenceElement. " alt="" coords="709,246,901,287"/>
+<area shape="rect" id="node15" href="$class_step_dim_tol___common_datum.html" title="Representation of STEP entity CommonDatum. " alt="" coords="711,312,898,339"/>
+<area shape="rect" id="node16" href="$class_step_repr___composite_group_shape_aspect.html" title="Added for Dimensional Tolerances. " alt="" coords="696,363,913,405"/>
+<area shape="rect" id="node17" href="$class_step_repr___continuos_shape_aspect.html" title="Added for Dimensional Tolerances. " alt="" coords="695,429,914,456"/>
+<area shape="rect" id="node18" href="$class_step_repr___all_around_shape_aspect.html" title="Added for Dimensional Tolerances. " alt="" coords="975,404,1192,431"/>
+<area shape="rect" id="node19" href="$class_step_repr___between_shape_aspect.html" title="Added for Dimensional Tolerances. " alt="" coords="978,455,1189,481"/>
+<area shape="rect" id="node21" href="$class_step_repr___comp_group_sh_asp_and_comp_sh_asp_and_datum_feat_and_sh_asp.html" title="Added for Dimensional Tolerances. " alt="" coords="683,481,927,522"/>
+<area shape="rect" id="node23" href="$class_step_repr___apex.html" title="Added for Dimensional Tolerances. " alt="" coords="748,547,861,573"/>
+<area shape="rect" id="node24" href="$class_step_repr___centre_of_symmetry.html" title="Added for Dimensional Tolerances. " alt="" coords="707,597,902,624"/>
+<area shape="rect" id="node25" href="$class_step_repr___extension.html" title="Added for Dimensional Tolerances. " alt="" coords="734,648,875,675"/>
+<area shape="rect" id="node26" href="$class_step_repr___geometric_alignment.html" title="Added for Dimensional Tolerances. " alt="" coords="704,699,905,725"/>
+<area shape="rect" id="node27" href="$class_step_repr___parallel_offset.html" title="Added for Dimensional Tolerances. " alt="" coords="725,749,885,776"/>
+<area shape="rect" id="node28" href="$class_step_repr___perpendicular_to.html" title="Added for Dimensional Tolerances. " alt="" coords="717,800,893,827"/>
+<area shape="rect" id="node29" href="$class_step_repr___tangent.html" title="Added for Dimensional Tolerances. " alt="" coords="740,851,869,877"/>
+</map>

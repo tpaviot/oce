@@ -1,0 +1,5 @@
+<map id="TDataStd_DeltaOnModificationOfByteArray" name="TDataStd_DeltaOnModificationOfByteArray">
+<area shape="rect" id="node2" href="$class_t_d_f___delta_on_modification.html" title="This class provides default services for an AttributeDelta on a MODIFICATION action. " alt="" coords="20,155,189,181"/>
+<area shape="rect" id="node3" href="$class_t_d_f___attribute_delta.html" title="This class discribes the services we need to implement Delta and Undo/Redo services. " alt="" coords="39,80,171,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="37,5,172,32"/>
+</map>

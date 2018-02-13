@@ -1,0 +1,5 @@
+<map id="Interface_Static" name="Interface_Static">
+<area shape="rect" id="node2" href="$class_interface___typed_value.html" title="Now strictly equivalent to TypedValue from MoniTool, except for ParamType which remains for compatibi..." alt="" coords="7,155,153,181"/>
+<area shape="rect" id="node3" href="$class_moni_tool___typed_value.html" title="This class allows to dynamically manage .. typed values, i.e. values which have an alphanumeric expre..." alt="" coords="5,80,155,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="13,5,147,32"/>
+</map>

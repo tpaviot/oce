@@ -1,0 +1,19 @@
+digraph schema_TKTopAlgo
+{
+	TKTopAlgo [ URL = "toolkit_tktopalgo.html", shape = box ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKTopAlgo -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKTopAlgo -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKTopAlgo -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKTopAlgo -> TKG3d [ color = "midnightblue", style = "solid" ]
+	TKGeomBase [ URL = "toolkit_tkgeombase.html" , shape = box ]
+	TKTopAlgo -> TKGeomBase [ color = "midnightblue", style = "solid" ]
+	TKBRep [ URL = "toolkit_tkbrep.html" , shape = box ]
+	TKTopAlgo -> TKBRep [ color = "midnightblue", style = "solid" ]
+	TKGeomAlgo [ URL = "toolkit_tkgeomalgo.html" , shape = box ]
+	TKTopAlgo -> TKGeomAlgo [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

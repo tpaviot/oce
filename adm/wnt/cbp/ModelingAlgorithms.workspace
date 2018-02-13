@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="ModelingAlgorithms">
+		<Project filename="TKGeomAlgo.cbp" >
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKBRep.cbp" />
+		</Project>
+		<Project filename="TKTopAlgo.cbp" >
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+		</Project>
+		<Project filename="TKPrim.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+		</Project>
+		<Project filename="TKHLR.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+		</Project>
+		<Project filename="TKMesh.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+		</Project>
+		<Project filename="TKShHealing.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+		</Project>
+		<Project filename="TKXMesh.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKMesh.cbp" />
+		</Project>
+		<Project filename="TKBO.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKPrim.cbp" />
+			<Depends filename="TKShHealing.cbp" />
+		</Project>
+		<Project filename="TKBool.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKPrim.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKShHealing.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+			<Depends filename="TKBO.cbp" />
+		</Project>
+		<Project filename="TKFillet.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKBool.cbp" />
+			<Depends filename="TKShHealing.cbp" />
+		</Project>
+		<Project filename="TKFeat.cbp" >
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKPrim.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKBO.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKBool.cbp" />
+			<Depends filename="TKShHealing.cbp" />
+		</Project>
+		<Project filename="TKOffset.cbp" >
+			<Depends filename="TKFillet.cbp" />
+			<Depends filename="TKBRep.cbp" />
+			<Depends filename="TKTopAlgo.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKGeomAlgo.cbp" />
+			<Depends filename="TKShHealing.cbp" />
+			<Depends filename="TKBO.cbp" />
+			<Depends filename="TKPrim.cbp" />
+			<Depends filename="TKBool.cbp" />
+		</Project>
+	</Workspace>
+</CodeBlocks_workspace_file>

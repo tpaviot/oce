@@ -1,0 +1,7 @@
+<map id="Transfer_ActorOfProcessForFinder" name="Transfer_ActorOfProcessForFinder">
+<area shape="rect" id="node3" href="$class_transfer___actor_of_finder_process.html" title="The original class was renamed. Compatibility only. " alt="" coords="80,169,283,196"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="114,5,249,32"/>
+<area shape="rect" id="node4" href="$class_i_g_e_s_control___actor_write.html" title="Actor to write Shape to IGES. " alt="" coords="5,244,168,271"/>
+<area shape="rect" id="node5" href="$class_s_t_e_p_control___actor_write.html" title="This class performs the transfer of a Shape from TopoDS to AP203 or AP214 (CD2 or DIS) ..." alt="" coords="193,244,359,271"/>
+<area shape="rect" id="node6" href="$class_s_t_e_p_c_a_f_control___actor_write.html" title="Extends ActorWrite from STEPControl by analysis of whether shape is assembly (based on information fr..." alt="" coords="180,319,372,345"/>
+</map>

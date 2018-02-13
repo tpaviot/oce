@@ -1,0 +1,7 @@
+<map id="Intf_Polygon2d" name="Intf_Polygon2d">
+<area shape="rect" id="node2" href="$class_geom2d_int___the_polygon2d_of_the_int_p_curve_p_curve_of_g_inter.html" title="Geom2dInt_ThePolygon2dOf\lTheIntPCurvePCurveOfGInter" alt="" coords="168,5,355,47"/>
+<area shape="rect" id="node3" href="$class_h_l_r_b_rep___the_polygon2d_of_the_int_p_curve_p_curve_of_c_inter.html" title="HLRBRep_ThePolygon2dOfThe\lIntPCurvePCurveOfCInter" alt="" coords="160,71,363,112"/>
+<area shape="rect" id="node4" href="$class_int_patch___polygo.html" title="IntPatch_Polygo" alt="" coords="203,137,320,163"/>
+<area shape="rect" id="node5" href="$class_int_patch___poly_arc.html" title="IntPatch_PolyArc" alt="" coords="413,111,535,138"/>
+<area shape="rect" id="node6" href="$class_int_patch___poly_line.html" title="IntPatch_PolyLine" alt="" coords="411,162,537,189"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="PCDM_RetrievalDriver" name="PCDM_RetrievalDriver">
+<area shape="rect" id="node4" href="$class_bin_l_drivers___document_retrieval_driver.html" title="BinLDrivers_DocumentRetrieval\lDriver" alt="" coords="541,71,743,112"/>
+<area shape="rect" id="node8" href="$class_std_l_drivers___document_retrieval_driver.html" title="retrieval driver of a Part document " alt="" coords="541,136,743,177"/>
+<area shape="rect" id="node10" href="$class_xml_l_drivers___document_retrieval_driver.html" title="XmlLDrivers_DocumentRetrieval\lDriver" alt="" coords="540,201,744,243"/>
+<area shape="rect" id="node2" href="$class_p_c_d_m___reader.html" title="PCDM_Reader" alt="" coords="188,143,296,170"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,143,140,170"/>
+<area shape="rect" id="node5" href="$class_bin_drivers___document_retrieval_driver.html" title="BinDrivers_DocumentRetrieval\lDriver" alt="" coords="807,5,1001,47"/>
+<area shape="rect" id="node7" href="$class_bin_t_obj_drivers___document_retrieval_driver.html" title="BinTObjDrivers_DocumentRetrieval\lDriver" alt="" coords="793,71,1015,112"/>
+<area shape="rect" id="node6" href="$class_bin_x_c_a_f_drivers___document_retrieval_driver.html" title="BinXCAFDrivers_DocumentRetrieval\lDriver" alt="" coords="1065,5,1293,47"/>
+<area shape="rect" id="node9" href="$class_std_drivers___document_retrieval_driver.html" title="retrieval driver of a Part document " alt="" coords="806,136,1002,177"/>
+<area shape="rect" id="node11" href="$class_xml_drivers___document_retrieval_driver.html" title="XmlDrivers_DocumentRetrieval\lDriver" alt="" coords="805,201,1003,243"/>
+<area shape="rect" id="node13" href="$class_xml_t_obj_drivers___document_retrieval_driver.html" title="XmlTObjDrivers_DocumentRetrieval\lDriver" alt="" coords="792,267,1016,308"/>
+<area shape="rect" id="node12" href="$class_xml_x_c_a_f_drivers___document_retrieval_driver.html" title="retrieval driver of a XS document " alt="" coords="1064,201,1295,243"/>
+</map>

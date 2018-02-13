@@ -1,0 +1,5 @@
+<map id="IFSelect_Transformer" name="IFSelect_Transformer">
+<area shape="rect" id="node3" href="$class_i_f_select___transform_standard.html" title="This class runs transformations made by Modifiers, as the ModelCopier does when it produces files (th..." alt="" coords="5,155,192,181"/>
+<area shape="rect" id="node4" href="$class_i_g_e_s_select___spline_to_b_spline.html" title="This type of Transformer allows to convert Spline Curves (IGES type 112) and Surfaces (IGES Type 126)..." alt="" coords="216,155,408,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="138,5,273,32"/>
+</map>

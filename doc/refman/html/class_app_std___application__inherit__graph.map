@@ -1,0 +1,6 @@
+<map id="AppStd_Application" name="AppStd_Application">
+<area shape="rect" id="node2" href="$class_t_doc_std___application.html" title="The abstract root class for all application classes. They are in charge of: " alt="" coords="5,229,148,256"/>
+<area shape="rect" id="node3" href="$class_c_d_f___application.html" title="CDF_Application" alt="" coords="17,155,136,181"/>
+<area shape="rect" id="node4" href="$class_c_d_m___application.html" title="CDM_Application" alt="" coords="15,80,138,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="9,5,144,32"/>
+</map>

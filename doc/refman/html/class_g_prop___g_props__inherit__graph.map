@@ -1,0 +1,10 @@
+<map id="GProp_GProps" name="GProp_GProps">
+<area shape="rect" id="node2" href="$class_b_rep_g_prop___cinert.html" title="Computes the global properties of bounded curves in 3D space. The curve must have at least a continui..." alt="" coords="173,5,305,32"/>
+<area shape="rect" id="node3" href="$class_b_rep_g_prop___sinert.html" title="Computes the global properties of a face in 3D space. The face &#39;s requirements to evaluate the global..." alt="" coords="173,56,305,83"/>
+<area shape="rect" id="node4" href="$class_b_rep_g_prop___vinert.html" title="Computes the global properties of a geometric solid (3D closed region of space) delimited with : ..." alt="" coords="173,107,305,133"/>
+<area shape="rect" id="node5" href="$class_b_rep_g_prop___vinert_g_k.html" title="Computes the global properties of a geometric solid (3D closed region of space) delimited with : ..." alt="" coords="164,157,315,184"/>
+<area shape="rect" id="node6" href="$class_g_prop___cel_g_props.html" title="Computes the global properties of bounded curves in 3D space. It can be an elementary curve from pack..." alt="" coords="175,208,304,235"/>
+<area shape="rect" id="node7" href="$class_g_prop___p_g_props.html" title="A framework for computing the global properties of a set of points. A point mass is attached to each ..." alt="" coords="180,259,299,285"/>
+<area shape="rect" id="node8" href="$class_g_prop___sel_g_props.html" title="Computes the global properties of a bounded elementary surface in 3d (surface of the gp package) ..." alt="" coords="175,309,304,336"/>
+<area shape="rect" id="node9" href="$class_g_prop___vel_g_props.html" title="Computes the global properties and the volume of a geometric solid (3D closed region of space) The so..." alt="" coords="175,360,304,387"/>
+</map>

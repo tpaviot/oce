@@ -1,0 +1,5 @@
+<map id="Transfer_SimpleBinderOfTransient" name="Transfer_SimpleBinderOfTransient">
+<area shape="rect" id="node4" href="$class_transfer___binder_of_transient_integer.html" title="This type of Binder allows to attach as result, besides a Transient Object, an Integer Value..." alt="" coords="25,229,204,271"/>
+<area shape="rect" id="node2" href="$class_transfer___binder.html" title="A Binder is an auxiliary object to Map the Result of the Transfer of a given Object : it records the ..." alt="" coords="59,80,171,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="47,5,182,32"/>
+</map>

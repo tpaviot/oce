@@ -1,0 +1,5 @@
+<map id="AdvApprox_Cutting" name="AdvApprox_Cutting">
+<area shape="rect" id="node2" href="$class_adv_approx___dicho_cutting.html" title="if Cutting is necessary in [a,b], we cut at (a+b) / 2. " alt="" coords="5,80,171,107"/>
+<area shape="rect" id="node3" href="$class_adv_approx___pref_and_rec.html" title="inherits class Cutting; contains a list of preferential points (pi)i and a list of Recommended points..." alt="" coords="195,80,355,107"/>
+<area shape="rect" id="node4" href="$class_adv_approx___pref_cutting.html" title="inherits class Cutting; contains a list of preferential points (di)i if Cutting is necessary in [a..." alt="" coords="379,80,533,107"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="TDataXtd_Pattern" name="TDataXtd_Pattern">
+<area shape="rect" id="node4" href="$class_t_data_xtd___pattern_std.html" title="to create a PatternStd (LinearPattern, CircularPattern, RectangularPattern, RadialCircularPattern, MirrorPattern) " alt="" coords="5,229,148,256"/>
+<area shape="rect" id="node2" href="$class_t_d_f___attribute.html" title="A class each application has to implement. It is used to contain the application data. This abstract class, alongwith Label, is one of the cornerstones of Model Editor. The groundwork is to define the root of information. This information is to be attached to a Label, and could be of any of the following types: " alt="" coords="25,80,128,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="9,5,144,32"/>
+</map>

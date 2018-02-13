@@ -1,0 +1,14 @@
+TKernel
+TKService
+TKMath
+TKV3d
+CSF_OpenGlLibs
+CSF_XwLibs
+CSF_objc
+CSF_Appkit
+CSF_IOKit
+CSF_FREETYPE
+CSF_GL2PS
+CSF_user32
+CSF_gdi32
+CSF_TBB

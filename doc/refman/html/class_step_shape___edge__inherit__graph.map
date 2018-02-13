@@ -1,0 +1,9 @@
+<map id="StepShape_Edge" name="StepShape_Edge">
+<area shape="rect" id="node5" href="$class_step_shape___edge_curve.html" title="StepShape_EdgeCurve" alt="" coords="5,304,160,331"/>
+<area shape="rect" id="node6" href="$class_step_shape___oriented_edge.html" title="StepShape_OrientedEdge" alt="" coords="185,304,357,331"/>
+<area shape="rect" id="node8" href="$class_step_shape___subedge.html" title="Representation of STEP entity Subedge. " alt="" coords="381,304,525,331"/>
+<area shape="rect" id="node2" href="$class_step_shape___topological_representation_item.html" title="StepShape_TopologicalRepresentationItem" alt="" coords="135,155,406,181"/>
+<area shape="rect" id="node3" href="$class_step_repr___representation_item.html" title="StepRepr_RepresentationItem" alt="" coords="173,80,368,107"/>
+<area shape="rect" id="node4" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="203,5,338,32"/>
+<area shape="rect" id="node7" href="$class_step_shape___seam_edge.html" title="Representation of STEP entity SeamEdge. " alt="" coords="192,379,349,405"/>
+</map>

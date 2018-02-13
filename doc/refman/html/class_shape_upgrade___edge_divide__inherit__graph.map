@@ -1,0 +1,5 @@
+<map id="ShapeUpgrade_EdgeDivide" name="ShapeUpgrade_EdgeDivide">
+<area shape="rect" id="node4" href="$class_shape_upgrade___closed_edge_divide.html" title="ShapeUpgrade_ClosedEdgeDivide" alt="" coords="5,229,224,256"/>
+<area shape="rect" id="node2" href="$class_shape_upgrade___tool.html" title="Tool is a root class for splitting classes Provides context for recording changes, basic precision value and limit (minimal and maximal) values for tolerances. " alt="" coords="45,80,184,107"/>
+<area shape="rect" id="node3" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="47,5,182,32"/>
+</map>

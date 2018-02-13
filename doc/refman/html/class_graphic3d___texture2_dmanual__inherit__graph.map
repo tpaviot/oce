@@ -1,0 +1,6 @@
+<map id="Graphic3d_Texture2Dmanual" name="Graphic3d_Texture2Dmanual">
+<area shape="rect" id="node2" href="$class_graphic3d___texture2_d.html" title="This abstract class for managing 2D textures. " alt="" coords="27,229,173,256"/>
+<area shape="rect" id="node3" href="$class_graphic3d___texture_map.html" title="This is an abstract class for managing texture applyable on polygons. " alt="" coords="22,155,178,181"/>
+<area shape="rect" id="node4" href="$class_graphic3d___texture_root.html" title="This is the texture root class enable the dialog with the GraphicDriver allows the loading of texture..." alt="" coords="21,80,179,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="33,5,167,32"/>
+</map>

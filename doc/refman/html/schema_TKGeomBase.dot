@@ -1,0 +1,13 @@
+digraph schema_TKGeomBase
+{
+	TKGeomBase [ URL = "toolkit_tkgeombase.html", shape = box ]
+	TKernel [ URL = "toolkit_tkernel.html" , shape = box ]
+	TKGeomBase -> TKernel [ color = "midnightblue", style = "solid" ]
+	TKMath [ URL = "toolkit_tkmath.html" , shape = box ]
+	TKGeomBase -> TKMath [ color = "midnightblue", style = "solid" ]
+	TKG2d [ URL = "toolkit_tkg2d.html" , shape = box ]
+	TKGeomBase -> TKG2d [ color = "midnightblue", style = "solid" ]
+	TKG3d [ URL = "toolkit_tkg3d.html" , shape = box ]
+	TKGeomBase -> TKG3d [ color = "midnightblue", style = "solid" ]
+	aspect = 1
+}

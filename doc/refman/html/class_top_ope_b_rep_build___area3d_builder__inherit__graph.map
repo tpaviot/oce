@@ -1,0 +1,4 @@
+<map id="TopOpeBRepBuild_Area3dBuilder" name="TopOpeBRepBuild_Area3dBuilder">
+<area shape="rect" id="node3" href="$class_top_ope_b_rep_build___solid_area_builder.html" title="The SolidAreaBuilder algorithm is used to construct Solids from a LoopSet, where the Loop is the comp..." alt="" coords="18,155,209,196"/>
+<area shape="rect" id="node2" href="$class_top_ope_b_rep_build___area_builder.html" title="The AreaBuilder algorithm is used to reconstruct complex topological objects as Faces or Solids..." alt="" coords="12,5,215,32"/>
+</map>

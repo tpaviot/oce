@@ -1,0 +1,6 @@
+<map id="BRep_CurveOnClosedSurface" name="BRep_CurveOnClosedSurface">
+<area shape="rect" id="node2" href="$class_b_rep___curve_on_surface.html" title="Representation of a curve by a curve in the parametric space of a surface. " alt="" coords="25,229,180,256"/>
+<area shape="rect" id="node3" href="$class_b_rep___g_curve.html" title="Root class for the geometric curves representation. Contains a range. Contains a first and a last par..." alt="" coords="51,155,154,181"/>
+<area shape="rect" id="node4" href="$class_b_rep___curve_representation.html" title="Root class for the curve representations. Contains a location. " alt="" coords="13,80,193,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="35,5,170,32"/>
+</map>

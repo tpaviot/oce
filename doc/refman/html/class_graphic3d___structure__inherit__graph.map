@@ -1,0 +1,7 @@
+<map id="Graphic3d_Structure" name="Graphic3d_Structure">
+<area shape="rect" id="node3" href="$class_prs3d___presentation.html" title="Defines a presentation object which can be displayed, highlighted or erased. The presentation object ..." alt="" coords="190,155,326,181"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="191,5,325,32"/>
+<area shape="rect" id="node4" href="$class_prs3d___presentation_shadow.html" title="Defines a &quot;shadow&quot; of existing presentation object with custom aspects. " alt="" coords="5,229,188,256"/>
+<area shape="rect" id="node5" href="$class_prs_mgr___prs.html" title="PrsMgr_Prs" alt="" coords="213,229,303,256"/>
+<area shape="rect" id="node6" href="$class_std_select___prs.html" title="allows entities owners to be hilighted independantly from PresentableObjects " alt="" coords="327,229,434,256"/>
+</map>

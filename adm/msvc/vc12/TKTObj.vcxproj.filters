@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{3EECEA63-1634-063A-000F-CDBFF2F4B40C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TObj">
+      <UniqueIdentifier>{58BCD77D-15D4-1014-1060-D2C78D2B34DF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\TObj\TObj_Application.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_Assistant.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_CheckModel.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_HiddenPartition.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_LabelIterator.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_Model.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_ModelIterator.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_Object.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_ObjectIterator.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_OcafObjectIterator.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_Partition.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_Persistence.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_ReferenceIterator.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_SequenceIterator.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_TIntSparseArray.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_TModel.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_TNameContainer.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_TObject.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_TReference.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TObj\TObj_TXYZ.cxx">
+      <Filter>Source files\TObj</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKTObj.rc" />  </ItemGroup>
+</Project>

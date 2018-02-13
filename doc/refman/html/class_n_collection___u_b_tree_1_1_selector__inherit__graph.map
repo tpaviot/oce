@@ -1,0 +1,6 @@
+<map id="NCollection_UBTree&lt; TheObjType, TheBndType &gt;::Selector" name="NCollection_UBTree&lt; TheObjType, TheBndType &gt;::Selector">
+<area shape="rect" id="node2" href="$class_b_o_p_col___box2_d_bnd_tree_selector.html" title="BOPCol_Box2DBndTreeSelector" alt="" coords="236,5,447,32"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___bnd_box_tree_selector.html" title="Class BRepBuilderAPI_BndBoxTreeSelector derived from UBTree::Selector This class is used to select ov..." alt="" coords="245,57,438,98"/>
+<area shape="rect" id="node4" href="$class_b_rep_mesh___wire_checker_1_1_bnd_box2d_tree_selector.html" title="Selector. Used to identify segments with overlapped bounding boxes. Note that instance of selector ca..." alt="" coords="257,122,425,163"/>
+<area shape="rect" id="node5" href="$class_shape_analysis___box_bnd_tree_selector.html" title="ShapeAnalysis_BoxBndTree\lSelector" alt="" coords="248,187,435,229"/>
+</map>

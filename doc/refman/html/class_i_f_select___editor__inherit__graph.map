@@ -1,0 +1,9 @@
+<map id="IFSelect_Editor" name="IFSelect_Editor">
+<area shape="rect" id="node3" href="$class_a_p_i_header_section___edit_header.html" title="APIHeaderSection_EditHeader" alt="" coords="347,5,545,32"/>
+<area shape="rect" id="node4" href="$class_i_f_select___param_editor.html" title="A ParamEditor gives access for edition to a list of TypedValue (i.e. of Static too) Its definition is..." alt="" coords="371,56,521,83"/>
+<area shape="rect" id="node5" href="$class_i_g_e_s_select___edit_dir_part.html" title="This class is aimed to display and edit the Directory Part of an IGESEntity. " alt="" coords="366,107,526,133"/>
+<area shape="rect" id="node6" href="$class_i_g_e_s_select___edit_header.html" title="This class is aimed to display and edit the Header of an IGES Model : Start Section and Global Sectio..." alt="" coords="365,157,527,184"/>
+<area shape="rect" id="node7" href="$class_s_t_e_p_edit___edit_context.html" title="EditContext is an Editor fit for Product Definition Context (one per Model) , i.e. : " alt="" coords="369,208,523,235"/>
+<area shape="rect" id="node8" href="$class_s_t_e_p_edit___edit_s_d_r.html" title="EditSDR is an Editor fit for a Shape Definition Representation which designates a Product Definition..." alt="" coords="378,259,514,285"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,132,140,159"/>
+</map>

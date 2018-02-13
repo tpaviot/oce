@@ -1,0 +1,5 @@
+<map id="BRepFeat_MakeRevolutionForm" name="BRepFeat_MakeRevolutionForm">
+<area shape="rect" id="node2" href="$class_b_rep_feat___rib_slot.html" title="Provides functions to build mechanical features. Mechanical features include ribs &#45; protrusions and g..." alt="" coords="45,155,174,181"/>
+<area shape="rect" id="node3" href="$class_b_rep_builder_a_p_i___make_shape.html" title="This is the root class for all shape constructions. It stores the result. " alt="" coords="14,80,205,107"/>
+<area shape="rect" id="node4" href="$class_b_rep_builder_a_p_i___command.html" title="Root class for all commands in BRepBuilderAPI. " alt="" coords="19,5,200,32"/>
+</map>

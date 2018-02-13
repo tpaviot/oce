@@ -1,0 +1,12 @@
+<map id="Prs3d_BasicAspect" name="Prs3d_BasicAspect">
+<area shape="rect" id="node3" href="$class_prs3d___arrow_aspect.html" title="A framework for displaying arrows in representations of dimensions and relations. ..." alt="" coords="387,5,525,32"/>
+<area shape="rect" id="node4" href="$class_prs3d___datum_aspect.html" title="A framework to define the display of datums. " alt="" coords="385,56,527,83"/>
+<area shape="rect" id="node5" href="$class_prs3d___dimension_aspect.html" title="defines the attributes when drawing a Length Presentation. " alt="" coords="373,107,539,133"/>
+<area shape="rect" id="node6" href="$class_prs3d___line_aspect.html" title="A framework for defining how a line will be displayed in a presentation. Aspects of line display incl..." alt="" coords="392,157,520,184"/>
+<area shape="rect" id="node8" href="$class_prs3d___plane_aspect.html" title="A framework to define the display of planes. " alt="" coords="387,208,525,235"/>
+<area shape="rect" id="node9" href="$class_prs3d___point_aspect.html" title="This class defines attributes for the points The points are drawn using markers, whose size does not ..." alt="" coords="389,259,523,285"/>
+<area shape="rect" id="node10" href="$class_prs3d___shading_aspect.html" title="A framework to define the display of shading. The attributes which make up this definition include: ..." alt="" coords="381,309,531,336"/>
+<area shape="rect" id="node11" href="$class_prs3d___text_aspect.html" title="Defines the attributes when displaying a text. " alt="" coords="391,360,521,387"/>
+<area shape="rect" id="node2" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="5,183,140,209"/>
+<area shape="rect" id="node7" href="$class_prs3d___iso_aspect.html" title="A framework to define the display attributes of isoparameters. This framework can be used to modify t..." alt="" coords="587,157,708,184"/>
+</map>

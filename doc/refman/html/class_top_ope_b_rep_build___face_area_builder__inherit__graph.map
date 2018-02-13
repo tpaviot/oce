@@ -1,0 +1,4 @@
+<map id="TopOpeBRepBuild_FaceAreaBuilder" name="TopOpeBRepBuild_FaceAreaBuilder">
+<area shape="rect" id="node2" href="$class_top_ope_b_rep_build___area2d_builder.html" title="The Area2dBuilder algorithm is used to construct Faces from a LoopSet, where the Loop is the composit..." alt="" coords="5,80,221,107"/>
+<area shape="rect" id="node3" href="$class_top_ope_b_rep_build___area_builder.html" title="The AreaBuilder algorithm is used to reconstruct complex topological objects as Faces or Solids..." alt="" coords="12,5,215,32"/>
+</map>

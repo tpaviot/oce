@@ -1,0 +1,6 @@
+<map id="StdLPersistent_Void::instance&lt; AttribClass &gt;" name="StdLPersistent_Void::instance&lt; AttribClass &gt;">
+<area shape="rect" id="node6" href="$struct_std_persistent___data_xtd_1_1__void_1_1_instance.html" title="StdPersistent_DataXtd\l::_void::Instance\&lt; AttribClass \&gt;" alt="" coords="5,423,209,464"/>
+<area shape="rect" id="node2" href="$class_std_obj_mgt___attribute_1_1_static.html" title="StdObjMgt_Attribute\l\&lt; AttribClass \&gt;::Static" alt="" coords="31,244,183,285"/>
+<area shape="rect" id="node4" href="$class_std_obj_mgt___persistent.html" title="Root class for a temporary persistent object that reads data from a file and then creates transient o..." alt="" coords="32,80,183,107"/>
+<area shape="rect" id="node5" href="$class_standard___transient.html" title="Abstract class which forms the root of the entire Transient class hierarchy. " alt="" coords="40,5,175,32"/>
+</map>

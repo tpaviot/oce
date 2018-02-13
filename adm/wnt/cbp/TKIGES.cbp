@@ -1,0 +1,1470 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKIGES" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../wnt/cbp/bin/libTKIGES" imp_lib="../../../wnt/cbp/lib/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+					<Add option="-D__IGESData_DLL" />
+					<Add option="-D__IGESFile_DLL" />
+					<Add option="-D__IGESBasic_DLL" />
+					<Add option="-D__IGESGraph_DLL" />
+					<Add option="-D__IGESGeom_DLL" />
+					<Add option="-D__IGESDimen_DLL" />
+					<Add option="-D__IGESDraw_DLL" />
+					<Add option="-D__IGESSolid_DLL" />
+					<Add option="-D__IGESDefs_DLL" />
+					<Add option="-D__IGESAppli_DLL" />
+					<Add option="-D__IGESConvGeom_DLL" />
+					<Add option="-D__IGESSelect_DLL" />
+					<Add option="-D__IGESToBRep_DLL" />
+					<Add option="-D__GeomToIGES_DLL" />
+					<Add option="-D__Geom2dToIGES_DLL" />
+					<Add option="-D__BRepToIGES_DLL" />
+					<Add option="-D__BRepToIGESBRep_DLL" />
+					<Add option="-D__IGESControl_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKIGES_obj.link" />
+					<Add directory="../../../wnt/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../wnt/cbp/bind/libTKIGES" imp_lib="../../../wnt/cbp/libd/$(TARGET_OUTPUT_BASENAME)" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../wnt/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__IGESData_DLL" />
+					<Add option="-D__IGESFile_DLL" />
+					<Add option="-D__IGESBasic_DLL" />
+					<Add option="-D__IGESGraph_DLL" />
+					<Add option="-D__IGESGeom_DLL" />
+					<Add option="-D__IGESDimen_DLL" />
+					<Add option="-D__IGESDraw_DLL" />
+					<Add option="-D__IGESSolid_DLL" />
+					<Add option="-D__IGESDefs_DLL" />
+					<Add option="-D__IGESAppli_DLL" />
+					<Add option="-D__IGESConvGeom_DLL" />
+					<Add option="-D__IGESSelect_DLL" />
+					<Add option="-D__IGESToBRep_DLL" />
+					<Add option="-D__GeomToIGES_DLL" />
+					<Add option="-D__Geom2dToIGES_DLL" />
+					<Add option="-D__BRepToIGES_DLL" />
+					<Add option="-D__BRepToIGESBRep_DLL" />
+					<Add option="-D__IGESControl_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="@TKIGES_objd.link" />
+					<Add directory="../../../wnt/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mmmx" />
+			<Add option="-msse" />
+			<Add option="-msse2" />
+			<Add option="-mfpmath=sse" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--export-all-symbols" />
+			<Add library="TKBRep" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKShHealing" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKGeomBase" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKPrim" />
+			<Add library="TKBool" />
+			<Add library="TKXSBase" />
+		</Linker>
+		<Unit filename="../../../src/IGESData/IGESData.cxx" />
+		<Unit filename="../../../src/IGESData/IGESData_BasicEditor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_ColorEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_DefSwitch.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_DefaultGeneral.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_DefaultSpecific.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_DirChecker.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_DirPart.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_FileProtocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_FileRecognizer_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_FreeFormatEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_GlobalNodeOfSpecificLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_GlobalNodeOfWriterLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_GlobalSection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_IGESDumper.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_IGESEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_IGESModel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_IGESReaderData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_IGESReaderTool.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_IGESType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_IGESWriter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_LabelDisplayEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_LevelListEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_LineFontEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_NameEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_NodeOfSpecificLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_NodeOfWriterLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_ParamCursor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_ParamReader.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_SingleParentEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_SpecificLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_SpecificModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_ToolLocation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_TransfEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_UndefinedEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_ViewKindEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESData/IGESData_WriterLib_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESFile/IGESFile_Read.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESFile/analiges.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../src/IGESFile/igesread.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../src/IGESFile/liriges.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../src/IGESFile/structiges.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_AssocGroupType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ExternalRefFile.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ExternalRefFileIndex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ExternalRefFileName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ExternalRefLibName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ExternalRefName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ExternalReferenceFile.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_Group.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_GroupWithoutBackP.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_HArray1OfHArray1OfIGESEntity_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_HArray1OfHArray1OfInteger_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_HArray1OfHArray1OfReal_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_HArray1OfHArray1OfXYZ_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_HArray1OfHArray1OfXY_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_Hierarchy.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_Name.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_OrderedGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_OrderedGroupWithoutBackP.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_SingleParent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_SingularSubfigure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_SpecificModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_SubfigureDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolAssocGroupType.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolExternalRefFile.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolExternalRefFileIndex.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolExternalRefFileName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolExternalRefLibName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolExternalRefName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolExternalReferenceFile.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolGroupWithoutBackP.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolHierarchy.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolOrderedGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolOrderedGroupWithoutBackP.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolSingleParent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolSingularSubfigure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESBasic/IGESBasic_ToolSubfigureDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_Color.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_DefinitionLevel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_DrawingSize.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_DrawingUnits.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_HighLight.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_IntercharacterSpacing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_LineFontDefPattern.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_LineFontDefTemplate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_LineFontPredefined.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_NominalSize.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_Pick.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_SpecificModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_TextDisplayTemplate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_TextFontDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolColor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolDefinitionLevel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolDrawingSize.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolDrawingUnits.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolHighLight.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolIntercharacterSpacing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolLineFontDefPattern.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolLineFontDefTemplate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolLineFontPredefined.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolNominalSize.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolPick.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolTextDisplayTemplate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolTextFontDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_ToolUniformRectGrid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGraph/IGESGraph_UniformRectGrid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_BSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_BSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_Boundary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_BoundedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_CircularArc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_CompositeCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ConicArc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_CopiousData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_CurveOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_Direction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_Flash.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_Line.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_OffsetCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_OffsetSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_Plane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_Point.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_RuledSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_SpecificModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_SplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_SplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_SurfaceOfRevolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_TabulatedCylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolBSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolBSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolBoundary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolBoundedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolCircularArc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolCompositeCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolConicArc.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolCopiousData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolCurveOnSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolDirection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolFlash.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolOffsetCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolOffsetSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolPlane.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolRuledSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolSplineCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolSplineSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolSurfaceOfRevolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolTabulatedCylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolTransformationMatrix.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_ToolTrimmedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_TransformationMatrix.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESGeom/IGESGeom_TrimmedSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_AngularDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_BasicDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_CenterLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_CurveDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_DiameterDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_DimensionDisplayData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_DimensionTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_DimensionUnits.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_DimensionedGeometry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_FlagNote.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_GeneralLabel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_GeneralNote.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_GeneralSymbol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_LeaderArrow.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_LinearDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_NewDimensionedGeometry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_NewGeneralNote.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_OrdinateDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_PointDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_RadiusDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_Section.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_SectionedArea.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_SpecificModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolAngularDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolBasicDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolCenterLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolCurveDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolDiameterDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolDimensionDisplayData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolDimensionTolerance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolDimensionUnits.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolDimensionedGeometry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolFlagNote.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolGeneralLabel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolGeneralNote.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolGeneralSymbol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolLeaderArrow.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolLinearDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolNewDimensionedGeometry.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolNewGeneralNote.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolOrdinateDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolPointDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolRadiusDimension.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolSection.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolSectionedArea.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_ToolWitnessLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDimen/IGESDimen_WitnessLine.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_CircArraySubfigure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ConnectPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_Drawing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_DrawingWithRotation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_LabelDisplay.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_NetworkSubfigure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_NetworkSubfigureDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_PerspectiveView.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_Planar.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_RectArraySubfigure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_SegmentedViewsVisible.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_SpecificModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolCircArraySubfigure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolConnectPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolDrawing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolDrawingWithRotation.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolLabelDisplay.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolNetworkSubfigure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolNetworkSubfigureDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolPerspectiveView.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolPlanar.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolRectArraySubfigure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolSegmentedViewsVisible.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolView.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolViewsVisible.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ToolViewsVisibleWithAttr.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_View.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ViewsVisible.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDraw/IGESDraw_ViewsVisibleWithAttr.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_Block.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_BooleanTree.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ConeFrustum.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ConicalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_Cylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_CylindricalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_EdgeList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_Ellipsoid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_Face.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_Loop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ManifoldSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_PlaneSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_RightAngularWedge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_SelectedComponent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_Shell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_SolidAssembly.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_SolidInstance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_SolidOfLinearExtrusion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_SolidOfRevolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_SpecificModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_Sphere.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_SphericalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolBlock.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolBooleanTree.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolConeFrustum.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolConicalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolCylinder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolCylindricalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolEdgeList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolEllipsoid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolFace.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolLoop.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolManifoldSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolPlaneSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolRightAngularWedge.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolSelectedComponent.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolSolidAssembly.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolSolidInstance.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolSolidOfLinearExtrusion.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolSolidOfRevolution.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolSphere.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolSphericalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolToroidalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolTorus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToolVertexList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_TopoBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_ToroidalSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_Torus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSolid/IGESSolid_VertexList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_AssociativityDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_AttributeDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_AttributeTable.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_GenericData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_MacroDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_SpecificModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_TabularData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_ToolAssociativityDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_ToolAttributeDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_ToolAttributeTable.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_ToolGenericData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_ToolMacroDef.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_ToolTabularData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_ToolUnitsData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESDefs/IGESDefs_UnitsData.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_DrilledHole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ElementResults.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_FiniteElement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_Flow.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_FlowLineSpec.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_GeneralModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_LevelFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_LevelToPWBLayerMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_LineWidening.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_NodalConstraint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_NodalDisplAndRot.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_NodalResults.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_Node.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_PWBArtworkStackup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_PWBDrilledHole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_PartNumber.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_PinNumber.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_PipingFlow.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_Protocol.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ReadWriteModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ReferenceDesignator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_RegionRestriction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_SpecificModule.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolDrilledHole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolElementResults.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolFiniteElement.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolFlow.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolFlowLineSpec.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolLevelFunction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolLevelToPWBLayerMap.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolLineWidening.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolNodalConstraint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolNodalDisplAndRot.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolNodalResults.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolNode.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolPWBArtworkStackup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolPWBDrilledHole.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolPartNumber.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolPinNumber.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolPipingFlow.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolReferenceDesignator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESAppli/IGESAppli_ToolRegionRestriction.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESConvGeom/IGESConvGeom.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESConvGeom/IGESConvGeom_GeomBuilder.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_Activator.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_AddFileComment.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_AddGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_AutoCorrect.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_ChangeLevelList.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_ChangeLevelNumber.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_ComputeStatus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_CounterOfLevelNumber.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_DispPerDrawing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_DispPerSingleView.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_Dumper.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_EditDirPart.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_EditHeader.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_FileModifier_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_FloatFormat.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_IGESName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_IGESTypeForm.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_ModelModifier_0.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_RebuildDrawings.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_RebuildGroups.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_RemoveCurves.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectBasicGeom.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectBypassGroup.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectBypassSubfigure.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectDrawingFrom.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectFaces.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectFromDrawing.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectFromSingleView.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectLevelNumber.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectPCurves.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectSingleViewFrom.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectSubordinate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SelectVisibleStatus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SetGlobalParameter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SetLabel.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SetVersion5.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SignColor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SignLevelNumber.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SignStatus.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_SplineToBSpline.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_UpdateCreationDate.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_UpdateFileName.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_UpdateLastChange.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_ViewSorter.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESSelect/IGESSelect_WorkLibrary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep_Actor.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep_AlgoContainer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep_BRepEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep_BasicCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep_BasicSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep_CurveAndSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep_IGESBoundary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep_Reader.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep_ToolContainer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep_TopoCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESToBRep/IGESToBRep_TopoSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToIGES/GeomToIGES_GeomCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToIGES/GeomToIGES_GeomEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToIGES/GeomToIGES_GeomPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToIGES/GeomToIGES_GeomSurface.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/GeomToIGES/GeomToIGES_GeomVector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dToIGES/Geom2dToIGES_Geom2dCurve.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dToIGES/Geom2dToIGES_Geom2dEntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dToIGES/Geom2dToIGES_Geom2dPoint.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/Geom2dToIGES/Geom2dToIGES_Geom2dVector.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepToIGES/BRepToIGES_BREntity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepToIGES/BRepToIGES_BRShell.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepToIGES/BRepToIGES_BRSolid.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepToIGES/BRepToIGES_BRWire.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/BRepToIGESBRep/BRepToIGESBRep_Entity.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESControl/IGESControl_ActorWrite.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESControl/IGESControl_AlgoContainer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESControl/IGESControl_Controller.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESControl/IGESControl_IGESBoundary.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESControl/IGESControl_Reader.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESControl/IGESControl_ToolContainer.cxx">
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../src/IGESControl/IGESControl_Writer.cxx">
+			<Option link="0" />
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
