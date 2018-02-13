@@ -117,6 +117,20 @@ if (BUILD_WITH_DEBUG)
   set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS $<$<CONFIG:DEBUG>:OCCT_DEBUG>)
 endif()
 
+# oce-win-bundle handling for MSVC and MINGW
+if(MSVC OR MINGW)
+  if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/oce-win-bundle/oce-bundle-root.empty")
+      MESSAGE("Using oce-win-bundle checkout")
+      if (NOT DEFINED USE_BUNDLE)
+        set (USE_BUNDLE ON CACHE BOOL "Use OCE Windows Bundle that has been built and installed")
+      endif()
+      if(USE_BUNDLE)
+          ADD_SUBDIRECTORY(oce-win-bundle)
+          SET(OCE_SKIP_FIND_LIBRARIES TRUE)
+      ENDIF()
+  endif()
+endif(MSVC OR MINGW)
+
 # option to enable or disable use of precompiled headers
 if (NOT DEFINED BUILD_USE_PCH)
   set (BUILD_USE_PCH OFF CACHE BOOL "${BUILD_USE_PCH_DESCR}")
@@ -1152,3 +1166,8 @@ endforeach()
 OCCT_UPDATE_TARGET_FILE ()
 
 message (STATUS "Info: \(${CURRENT_TIME}\) OCCT configuration files prepared")
+
+# Final bundle step for dependencies
+if(OCE_USE_BUNDLE)
+  include(oce-win-bundle/depends.cmake)
+endif()
