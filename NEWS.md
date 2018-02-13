@@ -1,3 +1,24 @@
+### Version 0.18.3 - February 2018
+
+This version is binary compatible with OCE 0.18.x
+
+* Fix some typos / some rephrasing in README
+
+* Update for vtk 8
+
+* Fixed osx issue with xlocale
+
+* Added missing Precision.hxx header
+
+* Added missing header in Quantity_Color_1.hxx
+
+* Fixed MinGW issue in OSD_MemInfo.cxx
+
+* travis-ci (gcc-5/6/7, osx images) and appveyor updates (Mingw)
+
+Users who contributed to this release:
+  Thomas Séverin, Janus Weil, Michael Gielda, Nicolas Vuaille, Thomas Paviot
+
 ### Version 0.18.2 - August 2017
 
 This version is binary compatible with OCE 0.18.x
