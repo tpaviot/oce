@@ -1,49 +1,119 @@
 language: cpp
+
 compiler:
   - gcc
   - clang
+
+cache:
+ apt: true
+
 env:
   - RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - tcl8.5-dev
+      - tk8.5-dev
+      - libgl2ps-dev
+      - libfreeimage-dev
+      - libtbb-dev
+      - tclthread
+      - libgl1-mesa-dri
+      - xsltproc
+      - g++-5
+      - g++-6
+      - g++-7
+
 matrix:
   include:
   - os: linux
     compiler: gcc
-    env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    env: MATRIX_EVAL="CC=gcc-5 && CXX=g++-5" RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    dist: trusty
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - g++-5
+  - os: linux
+    compiler: gcc
+    env: MATRIX_EVAL="CC=gcc-6 && CXX=g++-6" RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    dist: trusty
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - g++-6
+  - os: linux
+    compiler: gcc
+    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - g++-7
     dist: trusty
   - os: linux
     compiler: clang
-    env: RUN_TESTS=true OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    env: RUN_TESTS=true OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON MATRIX_EVAL="CC=clang-4.0 && CXX=clang++-4.0"
     dist: trusty
+    addons:
+      apt:
+        sources:
+          - llvm-toolchain-trusty-4.0
+        packages:
+          - clang-4.0
   - os: linux
     compiler: gcc
-    env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=OFF
+    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF MATRIX_EVAL=""
   - os: linux
     compiler: gcc
-    env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON MATRIX_EVAL=""
   - os: linux
     compiler: gcc
-    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=OPENMP
+    env: OCE_MULTITHREAD_LIBRARY=OPENMP OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON MATRIX_EVAL=""
   - os: linux
     compiler: gcc
-    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON OCE_MULTITHREAD_LIBRARY=TBB
+    env: OCE_MULTITHREAD_LIBRARY=TBB OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON MATRIX_EVAL=""
   - os: osx
     compiler: clang
-    env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
   - os: osx
     osx_image: xcode8.3
     compiler: clang
-    env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
+  - os: osx
+    osx_image: xcode9.2
+    compiler: clang
+    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
+  - os: osx
+    osx_image: xcode9.3beta
+    compiler: clang
+    env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
   exclude:
   - env: RUN_TESTS=false OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=OFF
   allow_failures:
     - os: osx
       compiler: clang
-      env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
+      env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
     - os: osx
       osx_image: xcode8.3
       compiler: clang
-      env: OCE_USE_PCH=ON  OCE_COPY_HEADERS_BUILD=ON
-
+      env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
+    - os: osx
+      osx_image: xcode9.2
+      compiler: clang
+      env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
+    - os: osx
+      osx_image: xcode9.3beta
+      compiler: clang
+      env: OCE_USE_PCH=ON OCE_COPY_HEADERS_BUILD=ON
 
 before_install:
   # osx
@@ -55,15 +125,9 @@ before_install:
     fi
   # linux
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-        sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
-        sudo apt-get update -q;
-        sudo apt-get install tcl8.5-dev tk8.5-dev libgl2ps-dev libfreeimage-dev libtbb-dev;
-        sudo apt-get install tclthread;
-        sudo apt-get install libgl1-mesa-dri;
-        sudo apt-get install xsltproc;
-        sudo apt-get install -qq gcc-5 g++-5;
-        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5;     
+        eval "${MATRIX_EVAL}";
     fi
+
 before_script:
 #  Initialize xvfb server
 #  Depth is necessary, otherwise DRAWEXE exits with this message:
@@ -78,7 +142,9 @@ before_script:
     fi
   - mkdir cmake-build
   - cd cmake-build
+
 script: sh ../.travis.build.sh
+
 after_script:
   - test ! -r occt/summary.xml || xsltproc --param duration 1 ../.travis.xsl occt/summary.xml
   - if [ -r occt/summary.xml ]; then
@@ -89,6 +155,7 @@ after_script:
             for file in $(cat occt/summary.failed); do head -n -1 occt/$file.{tcl,log}; done;
         fi;
     fi
+
 branches:
   only:
     - master

@@ -13,7 +13,7 @@ oce stands for **o**pencascade **c**ommunity **e**dition. This project aims at g
 
 You can download source code as well as precompiled binaries for Windows at:
 
-**[oce-0.18.2](https://github.com/tpaviot/oce/releases/tag/OCE-0.18.2)** (August 2017)
+**[oce-0.18.3](https://github.com/tpaviot/oce/releases/tag/OCE-0.18.3)** (February 2018)
 
 ## OCE history
 
@@ -21,6 +21,7 @@ Below are listed all the oce releases since the beginning of the project, the ma
 
 | OCE release number | ABI Change | OCE release date | OCCT version |
 | ------------- | ------------- |  ------------- |------------- |
+| [0.18.3](https://github.com/tpaviot/oce/releases/tag/OCE-0.18.3)  | No | February | 6.9.1
 | [0.18.2](https://github.com/tpaviot/oce/releases/tag/OCE-0.18.2)  | No | August 2017 | 6.9.1
 | [0.18.1](https://github.com/tpaviot/oce/releases/tag/OCE-0.18.1)  | No | May 2017 | 6.9.1
 | [0.18](https://github.com/tpaviot/oce/releases/tag/OCE-0.18)  | Yes | January 2017 | 6.9.1
