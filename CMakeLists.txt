@@ -20,12 +20,12 @@
 project(OCE)
 
 set(OCE_VERSION_MAJOR 0)
-set(OCE_VERSION_MINOR 18)
+set(OCE_VERSION_MINOR 19)
 # OCE_VERSION_PATCH is used for bugfixes releases only
 # (uncomment following line)
-set(OCE_VERSION_PATCH 3)
+set(OCE_VERSION_PATCH)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-set(OCE_VERSION_DEVEL)
+set(OCE_VERSION_DEVEL -dev)
 
 # bugfix release: add ${OCE_VERSION_PATCH} to OCE_VERSION
 set(OCE_VERSION ${OCE_VERSION_MAJOR}.${OCE_VERSION_MINOR}${OCE_VERSION_DEVEL})
