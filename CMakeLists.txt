@@ -1167,6 +1167,14 @@ OCCT_UPDATE_TARGET_FILE ()
 
 message (STATUS "Info: \(${CURRENT_TIME}\) OCCT configuration files prepared")
 
+# Unit testing
+set (BUILD_USE_TESTING ON CACHE BOOL "Enable unittesting framework")
+if(BUILD_USE_TESTING)
+  include(CTest)
+  enable_testing()
+  subdirs(test)
+endif(BUILD_USE_TESTING)
+
 # Final bundle step for dependencies
 if(OCE_USE_BUNDLE)
   include(oce-win-bundle/depends.cmake)

@@ -1,8 +1,8 @@
 #
-# The OCE unittest framework use GoogleTest 1.7.0 (aka GTest)
-# The GTest source code is available in the /test/gtest-1.7.0 folder
+# The OCE unittest framework use GoogleTest 1.8.0 (aka GTest)
+# The GTest source code is available in the /test/gtest-1.8.0 folder
 #
-set(GTEST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/gtest-1.7.0)
+set(GTEST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/gtest-1.8.0)
 
 include_directories(${GTEST_ROOT}/include ${GTEST_ROOT})
 add_library(gtest STATIC ${GTEST_ROOT}/src/gtest-all.cc )
@@ -53,9 +53,9 @@ macro(add_oce_test test_name libs)
 	endif(TEST_DEPENDS_INCLUDE_DIRECTORIES)
 	
 	if (OCE_COVERAGE)
-		target_link_libraries(${test_name} gcov gtest)
+		target_link_libraries(${test_name} gcov gtest pthread)
 	else (OCE_COVERAGE)
-		target_link_libraries(${test_name} gtest)
+		target_link_libraries(${test_name} gtest pthread)
 	endif (OCE_COVERAGE)
 	gtest_add_tests(${test_name} "" ${SOURCE_FILES})
 endmacro(add_oce_test test_name libs)
