@@ -17,6 +17,8 @@
 #define NCollection_CellFilter_HeaderFile
 
 #include <Standard_Real.hxx>
+#include <gp_XY.hxx>
+#include <gp_XYZ.hxx>
 #include <NCollection_LocalArray.hxx>
 #include <NCollection_Array1.hxx>
 #include <NCollection_List.hxx>

@@ -16,6 +16,8 @@
 #define _BRepLib_CheckCurveOnSurface_HeaderFile
 
 #include <GeomLib_CheckCurveOnSurface.hxx>
+#include <TopoDS_Edge.hxx>
+#include <TopoDS_Face.hxx>
 
 //! Computes the max distance between edge and its
 //! 2d representation on the face.

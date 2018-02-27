@@ -23,6 +23,9 @@
 #include <Standard_Real.hxx>
 #include <IntTools_SequenceOfRoots.hxx>
 #include <Standard_Integer.hxx>
+
+#include <IntTools_SurfaceRangeSample.hxx>
+
 class TopoDS_Edge;
 class gp_Pnt;
 class Geom_Curve;

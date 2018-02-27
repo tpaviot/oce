@@ -16,6 +16,7 @@
 
 #include <NCollection_Handle.hxx>
 #include <NCollection_Array1.hxx>
+#include <BRepGProp_Face.hxx>
 
 class math_Vector;
 

@@ -24,6 +24,7 @@
 #include <TColStd_Array1OfTransient.hxx>
 #include <TColStd_HArray1OfTransient.hxx>
 #include <HLRAlgo_ListOfBPoint.hxx>
+#include <HLRAlgo_PolyData.hxx>
 #include <Standard_Transient.hxx>
 #include <Standard_Boolean.hxx>
 
