@@ -23,7 +23,7 @@
   #undef DrawText
 #endif
 
-#elif !defined(__ANDROID__) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX))
+#elif !defined(__ANDROID__) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX)) && !defined(__HAIKU__)
 
 #include <stdio.h>
 

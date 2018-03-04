@@ -24,7 +24,9 @@
   #include <windows.h>
 #else
   #include <pthread.h>
-  #include <sys/errno.h>
+  #ifndef __HAIKU__
+    #include <sys/errno.h>
+  #endif
   #include <unistd.h>
   #include <time.h>
 #endif
