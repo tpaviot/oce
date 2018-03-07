@@ -321,10 +321,10 @@ public:
   //! Compute component-wise modulus of the vector.
   NCollection_Vec4 cwiseAbs() const
   {
-    return NCollection_Vec4 (std::abs (v[0]),
-                             std::abs (v[1]),
-                             std::abs (v[2]),
-                             std::abs (v[3]));
+    return NCollection_Vec4 (std::fabs (v[0]),
+                             std::fabs (v[1]),
+                             std::fabs (v[2]),
+                             std::fabs (v[3]));
   }
 
   //! Compute maximum component of the vector.

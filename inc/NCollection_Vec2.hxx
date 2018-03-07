@@ -186,8 +186,8 @@ public:
   //! Compute component-wise modulus of the vector.
   NCollection_Vec2 cwiseAbs() const
   {
-    return NCollection_Vec2 (std::abs (v[0]),
-                             std::abs (v[1]));
+    return NCollection_Vec2 (std::fabs (v[0]),
+                             std::fabs (v[1]));
   }
 
   //! Compute maximum component of the vector.
