@@ -8,6 +8,7 @@ set -e
 echo "Timestamp" && date
 cmake -DBUILD_WITH_DEBUG:BOOL=OFF \
       -DCMAKE_BUILD_TYPE:STRING=Release \
+      -DBUILD_MODULE_Draw:BOOL=OFF \
       -DBUILD_USE_PCH:BOOL="${BUILD_USE_PCH}" \
       -DBUILD_Inspector:BOOL="${BUILD_Inspector=OFF}" \
       -DUSE_GL2PS:BOOL="${USE_GL2PS=OFF}" \
