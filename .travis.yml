@@ -72,9 +72,6 @@ matrix:
     env: BUILD_USE_PCH=OFF
   - os: linux
     compiler: gcc
-    env: BUILD_Inspector=ON
-  - os: linux
-    compiler: gcc
     env: USE_GL2PS=ON
     addons:
       apt:
@@ -96,14 +93,6 @@ matrix:
       apt:
         packages:
           - libtbb-dev
-          - libxi-dev
-  - os: linux
-    compiler: gcc
-    env: USE_FFMPEG=ON
-    addons:
-      apt:
-        packages:
-          - ffmpeg
           - libxi-dev
   - os: osx
     compiler: clang

@@ -3,18 +3,18 @@ set -e
 
 
 #  Default values
-: "${BUILD_USE_PCH=ON} ${USE_TBB=OFF} ${USE_FFMPEG=OFF} ${USE_GL2PS=OFF} ${USE_FREEIMAGE=OFF} ${BUILD_Inspector=OFF}"
+: "${BUILD_USE_PCH=ON} ${USE_TBB=OFF} ${USE_GL2PS=OFF} ${USE_FREEIMAGE=OFF}"
 
 echo "Timestamp" && date
 cmake -DBUILD_WITH_DEBUG:BOOL=OFF \
       -DCMAKE_BUILD_TYPE:STRING=Release \
       -DBUILD_MODULE_Draw:BOOL=OFF \
       -DBUILD_USE_PCH:BOOL="${BUILD_USE_PCH}" \
-      -DBUILD_Inspector:BOOL="${BUILD_Inspector=OFF}" \
+      -DBUILD_Inspector:BOOL=OFF \
       -DUSE_GL2PS:BOOL="${USE_GL2PS=OFF}" \
       -DUSE_FREEIMAGE:BOOL="${USE_FREEIMAGE=OFF}" \
       -DUSE_TBB:BOOL="${USE_TBB}" \
-      -DUSE_FFMPEG:BOOL="${USE_FFMPEG}" \
+      -DUSE_FFMPEG:BOOL=OFF \
       -DUSE_VTK:BOOL=OFF \
       ..
 echo ""
