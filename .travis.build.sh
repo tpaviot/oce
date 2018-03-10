@@ -16,6 +16,7 @@ cmake -DBUILD_WITH_DEBUG:BOOL=OFF \
       -DUSE_TBB:BOOL="${USE_TBB}" \
       -DUSE_FFMPEG:BOOL=OFF \
       -DUSE_VTK:BOOL=OFF \
+      -DINSTALL_DIR=/opt/build/oce0.19 \
       ..
 echo ""
 echo "Timestamp" && date

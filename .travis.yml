@@ -96,6 +96,7 @@ matrix:
           - libxi-dev
   - os: osx
     compiler: clang
+    env: BUILD_USE_PCH=OFF
   - os: osx
     compiler: clang
     env: BUILD_USE_PCH=OFF
