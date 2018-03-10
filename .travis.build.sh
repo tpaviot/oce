@@ -19,27 +19,30 @@ cmake -DBUILD_WITH_DEBUG:BOOL=OFF \
       ..
 echo ""
 echo "Timestamp" && date
-if test "$RUN_TESTS" = true; then
-    # travis-ci truncates when there are more than 10,000 lines of output.
-    # Builds generate around 9,000 lines of output, trim them to see test
-    # results.
-    make -j8 | grep Built
+make -j8 | grep Built
+make install
 
-    # Run OCE tests
-    echo "Timestamp" && date
-    make test
+# if test "$RUN_TESTS" = true; then
+#     # travis-ci truncates when there are more than 10,000 lines of output.
+#     # Builds generate around 9,000 lines of output, trim them to see test
+#     # results.
+#     make -j8 | grep Built
 
-    # Run OCCT tests, but overwrite DrawLaunchTests.draw to write
-    # an XML summary file at a specified location
-    cat > DrawLaunchTests.draw <<EOT
-testgrid -outdir occt -xml summary.xml -refresh 300
-exit
-EOT
+#     # Run OCE tests
+#     echo "Timestamp" && date
+#     make test
 
-    echo "Timestamp" && date
-    cmake -P DrawLaunchTests.cmake || true
-else
-    make -j8
-fi
+#     # Run OCCT tests, but overwrite DrawLaunchTests.draw to write
+#     # an XML summary file at a specified location
+#     cat > DrawLaunchTests.draw <<EOT
+# testgrid -outdir occt -xml summary.xml -refresh 300
+# exit
+# EOT
 
-echo "Timestamp" && date
+#     echo "Timestamp" && date
+#     cmake -P DrawLaunchTests.cmake || true
+# else
+#     make -j8
+# fi
+
+# echo "Timestamp" && date
