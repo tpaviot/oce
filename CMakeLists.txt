@@ -48,6 +48,11 @@ macro (OCCT_INCLUDE_CMAKE_FILE BEING_INCLUDED_FILE)
   endif()
 endmacro()
 
+if (APPLE)
+#XCODE_VERSION_MAJOR
+  add_definition("-stdlib=libc++")
+endif()
+
 # include variable description
 OCCT_INCLUDE_CMAKE_FILE ("adm/cmake/vardescr")
 
