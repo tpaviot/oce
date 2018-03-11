@@ -21,7 +21,9 @@ cmake -DBUILD_WITH_DEBUG:BOOL=OFF \
 echo ""
 echo "Timestamp" && date
 make -j8 | grep Built
-make install
+# check for custom.hs
+ls -l
+make install > installed_files
 
 # if test "$RUN_TESTS" = true; then
 #     # travis-ci truncates when there are more than 10,000 lines of output.
