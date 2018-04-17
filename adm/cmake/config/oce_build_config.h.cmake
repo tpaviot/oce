@@ -19,6 +19,9 @@
 /* Define to 1 if you have the <atomic.h> header file. */
 #cmakedefine OCE_HAVE_ATOMIC_H 1
 
+/* Define to 1 if you have the <xlocale.h> header file. */
+#cmakedefine HAVE_XLOCALE_H 1
+
 /* Define to 1 if the localtime_r function is available. */
 #cmakedefine HAVE_LOCALTIME_R 1
 
