@@ -28,7 +28,7 @@
 #endif
 #include <windows.h>
 
-#include <Strsafe.h>
+#include <strsafe.h>
 
 #ifndef STATUS_FLOAT_MULTIPLE_FAULTS
   // <ntstatus.h>

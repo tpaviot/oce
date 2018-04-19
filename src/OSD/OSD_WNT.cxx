@@ -23,7 +23,7 @@
 /***/
 #include <OSD_WNT_1.hxx>
 
-#include <Strsafe.h>
+#include <strsafe.h>
 #include <wchar.h>
 #include <stdlib.h>
 
