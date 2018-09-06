@@ -351,6 +351,10 @@ void StepToTopoDS_TranslateEdgeLoop::Init(const Handle(StepShape_FaceBound)& Fac
       Vstart = EC->EdgeEnd();
     }
 
+    if (Vstart.IsNull() || Vend.IsNull()) {
+        continue; // not treated
+    }
+
     Standard_Boolean istV = aTool.IsBound(Vstart);
     Standard_Boolean iseV = aTool.IsBound(Vend);
     TopoDS_Vertex V1, V2;
