@@ -57,7 +57,8 @@ public: //! @name mesher API
     const Standard_Real    theLinDeflection,
     const Standard_Boolean isRelative       = Standard_False,
     const Standard_Real    theAngDeflection = 0.5,
-    const Standard_Boolean isInParallel     = Standard_False);
+    const Standard_Boolean isInParallel     = Standard_False,
+    void(*callback)(int,int,int) = 0);
 
   //! Performs meshing ot the shape.
   Standard_EXPORT virtual void Perform();
@@ -234,6 +235,7 @@ protected:
   Standard_Real                               myMinSize;
   Standard_Boolean                            myInternalVerticesMode;
   Standard_Boolean                            myIsControlSurfaceDeflection;
+  void(*updateCallback)(int,int,int);
 };
 
 DEFINE_STANDARD_HANDLE(BRepMesh_IncrementalMesh,BRepMesh_DiscretRoot)
