@@ -69,7 +69,8 @@ public:
     const Standard_Boolean isInParallel = Standard_False,
     const Standard_Real    theMinSize   = Precision::Confusion(),
     const Standard_Boolean isInternalVerticesMode = Standard_True,
-    const Standard_Boolean isControlSurfaceDeflection = Standard_True);
+    const Standard_Boolean isControlSurfaceDeflection = Standard_True,
+    void(*callback)(int,int,int) = 0);
 
   //! if the boolean <relative> is True, the <br>
   //! deflection used for the polygonalisation of <br>
@@ -95,7 +96,8 @@ public:
     const Standard_Boolean isInParallel = Standard_False,
     const Standard_Real    theMinSize   = Precision::Confusion(),
     const Standard_Boolean isInternalVerticesMode = Standard_True,
-    const Standard_Boolean isControlSurfaceDeflection = Standard_True);
+    const Standard_Boolean isControlSurfaceDeflection = Standard_True,
+    void(*callback)(int,int,int) = 0);
 
   //! Build triangulation on the whole shape.
   Standard_EXPORT void Perform(const TopoDS_Shape& shape);
@@ -375,6 +377,7 @@ private:
   Standard_Real                                    myMinSize;
   Standard_Boolean                                 myInternalVerticesMode;
   Standard_Boolean                                 myIsControlSurfaceDeflection;
+  void(*updateCallback)(int,int,int);
 };
 
 DEFINE_STANDARD_HANDLE(BRepMesh_FastDiscret, Standard_Transient)

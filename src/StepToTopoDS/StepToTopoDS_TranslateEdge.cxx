@@ -288,6 +288,14 @@ void StepToTopoDS_TranslateEdge::Init(const Handle(StepShape_Edge)& aEdge,
     Vstart = EC->EdgeEnd();
   }
 
+  if( Vstart.IsNull() || Vend.IsNull() )
+  {
+    TP->AddFail(EC," Vertex in EdgeCurve is equal to 0");
+    myError = StepToTopoDS_TranslateEdgeOther;
+    done = Standard_False;
+    return;
+  }
+
   TopoDS_Vertex V1, V2;
 
   StepToTopoDS_TranslateVertex myTranVertex1(Vstart, aTool, NMTool);

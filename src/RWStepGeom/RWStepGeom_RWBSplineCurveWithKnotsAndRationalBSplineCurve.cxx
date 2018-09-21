@@ -58,17 +58,19 @@ void RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve::ReadStep
 {
 
 // sln 04.10.2001. BUC61003. Correction of looking for items of complex entity
-	Standard_Integer num = 0;  // num0
-	data->NamedForComplex("BOUNDED_CURVE BNDCRV",num0,num,ach);
+	Standard_Integer num = num0;
+	Standard_Integer numTmp = 0;
+	data->NamedForComplex("BOUNDED_CURVE BNDCRV",num0,numTmp,ach);
+	num = numTmp ? numTmp : num0;
 
 	// --- Instance of plex componant BoundedCurve ---
 
 	if (!data->CheckNbParams(num,0,ach,"bounded_curve")) return;
 
-//	num = data->NextForComplex(num);
 // sln 04.10.2001. BUC61003. Correction of looking for items of complex entity
 //        num =  0; gka TRJ9
-        data->NamedForComplex("B_SPLINE_CURVE BSPCR",num0,num,ach);
+        data->NamedForComplex("B_SPLINE_CURVE BSPCR",num0,numTmp,ach);
+	num = numTmp ? numTmp : data->NextForComplex(num);
 
 	// --- Instance of common supertype BSplineCurve ---
 
@@ -124,10 +126,10 @@ void RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve::ReadStep
 	//szv#4:S4163:12Mar99 `Standard_Boolean stat5 =` not needed
 	data->ReadLogical (num,5,"self_intersect",ach,aSelfIntersect);
 
-//	num = data->NextForComplex(num);
 // sln 04.10.2001. BUC61003. Correction of looking for items of complex entity
 //        num =  0; //gka TRJ9
-	data->NamedForComplex("B_SPLINE_CURVE_WITH_KNOTS BSCWK",num0,num,ach);
+	data->NamedForComplex("B_SPLINE_CURVE_WITH_KNOTS BSCWK",num0,numTmp,ach);
+	num = numTmp ? numTmp : data->NextForComplex(num);
 
 	// --- Instance of plex componant BSplineCurveWithKnots ---
 
@@ -176,28 +178,28 @@ void RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve::ReadStep
 	}
 	else ach->AddFail("Parameter #3 (knot_spec) is not an enumeration");
 
-//	num = data->NextForComplex(num);
 // sln 04.10.2001. BUC61003. Correction of looking for items of complex entity
 //        num =  0; gka TRJ9
-	data->NamedForComplex("CURVE",num0,num,ach);
+	data->NamedForComplex("CURVE",num0,numTmp,ach);
+	num = numTmp ? numTmp : data->NextForComplex(num);
 
 	// --- Instance of plex componant Curve ---
 
 	if (!data->CheckNbParams(num,0,ach,"curve")) return;
 
-//	num = data->NextForComplex(num);
 // sln 04.10.2001. BUC61003. Correction of looking for items of complex entity
         //num =  0;
-	data->NamedForComplex("GEOMETRIC_REPRESENTATION_ITEM GMRPIT",num0,num,ach);
+	data->NamedForComplex("GEOMETRIC_REPRESENTATION_ITEM GMRPIT",num0,numTmp,ach);
+	num = numTmp ? numTmp : data->NextForComplex(num);
 
 	// --- Instance of plex componant GeometricRepresentationItem ---
 
 	if (!data->CheckNbParams(num,0,ach,"geometric_representation_item")) return;
 
-//	num = data->NextForComplex(num);
 // sln 04.10.2001. BUC61003. Correction of looking for items of complex entity
         //num =  0;
-	data->NamedForComplex("RATIONAL_B_SPLINE_CURVE RBSC",num0,num,ach);
+	data->NamedForComplex("RATIONAL_B_SPLINE_CURVE RBSC",num0,numTmp,ach);
+	num = numTmp ? numTmp : data->NextForComplex(num);
 
 	// --- Instance of plex componant RationalBSplineCurve ---
 
@@ -221,7 +223,7 @@ void RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve::ReadStep
 //	num = data->NextForComplex(num);
 // sln 04.10.2001. BUC61003. Correction of looking for items of complex entity
         //num =  0;
-	data->NamedForComplex("REPRESENTATION_ITEM RPRITM",num0,num,ach);
+	data->NamedForComplex("REPRESENTATION_ITEM RPRITM",num0,numTmp,ach);
 
 	// --- Instance of plex componant RepresentationItem ---
 

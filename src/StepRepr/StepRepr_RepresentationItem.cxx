@@ -13,7 +13,6 @@
 
 #include <StepRepr_RepresentationItem.ixx>
 
-
 StepRepr_RepresentationItem::StepRepr_RepresentationItem ()  {}
 
 void StepRepr_RepresentationItem::Init(

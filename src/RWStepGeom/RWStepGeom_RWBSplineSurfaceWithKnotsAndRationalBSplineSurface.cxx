@@ -62,15 +62,17 @@ void RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface::ReadStep
 	 const Handle(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface)& ent) const
 {
 
-	Standard_Integer num = 0;    // num0
-	data->NamedForComplex("BOUNDED_SURFACE BNDSRF",num0,num,ach);
+	Standard_Integer num = num0;
+	Standard_Integer numTmp = 0;
+	data->NamedForComplex("BOUNDED_SURFACE BNDSRF",num0,numTmp,ach);
+	num = numTmp ? numTmp : num0;
 
 	// --- Instance of plex componant BoundedSurface ---
 
 	if (!data->CheckNbParams(num,0,ach,"bounded_surface")) return;
 
-//	num = data->NextForComplex(num);
-	data->NamedForComplex("B_SPLINE_SURFACE BSPSR",num0,num,ach);
+	data->NamedForComplex("B_SPLINE_SURFACE BSPSR",num0,numTmp,ach);
+	num = numTmp ? numTmp : data->NextForComplex(num);
 
 	// --- Instance of common supertype BSplineSurface ---
 
@@ -150,8 +152,8 @@ void RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface::ReadStep
 	//szv#4:S4163:12Mar99 `Standard_Boolean stat7 =` not needed
 	data->ReadLogical (num,7,"self_intersect",ach,aSelfIntersect);
 
-//	num = data->NextForComplex(num);
-	data->NamedForComplex("B_SPLINE_SURFACE_WITH_KNOTS BSSWK",num0,num,ach);
+	data->NamedForComplex("B_SPLINE_SURFACE_WITH_KNOTS BSSWK",num0,numTmp,ach);
+	num = numTmp ? numTmp : data->NextForComplex(num);
 
 	// --- Instance of plex componant BSplineSurfaceWithKnots ---
 
@@ -230,15 +232,15 @@ void RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface::ReadStep
 	}
 	else ach->AddFail("Parameter #5 (knot_spec) is not an enumeration");
 
-//	num = data->NextForComplex(num);
-	data->NamedForComplex("GEOMETRIC_REPRESENTATION_ITEM GMRPIT",num0,num,ach);
+	data->NamedForComplex("GEOMETRIC_REPRESENTATION_ITEM GMRPIT",num0,numTmp,ach);
+	num = numTmp ? numTmp : data->NextForComplex(num);
 
 	// --- Instance of plex componant GeometricRepresentationItem ---
 
 	if (!data->CheckNbParams(num,0,ach,"geometric_representation_item")) return;
 
-//	num = data->NextForComplex(num);
-	data->NamedForComplex("RATIONAL_B_SPLINE_SURFACE RBSS",num0,num,ach);
+	data->NamedForComplex("RATIONAL_B_SPLINE_SURFACE RBSS",num0,numTmp,ach);
+	num = numTmp ? numTmp : data->NextForComplex(num);
 
 	// --- Instance of plex componant RationalBSplineSurface ---
 
@@ -266,8 +268,8 @@ void RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface::ReadStep
 	  }
 	}
 
-//	num = data->NextForComplex(num);
-	data->NamedForComplex("REPRESENTATION_ITEM RPRITM",num0,num,ach);
+	data->NamedForComplex("REPRESENTATION_ITEM RPRITM",num0,numTmp,ach);
+	num = numTmp ? numTmp : data->NextForComplex(num);
 
 	// --- Instance of plex componant RepresentationItem ---
 
@@ -279,8 +281,8 @@ void RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface::ReadStep
 	//szv#4:S4163:12Mar99 `Standard_Boolean stat14 =` not needed
 	data->ReadString (num,1,"name",ach,aName);
 
-//	num = data->NextForComplex(num);
-	data->NamedForComplex("SURFACE SRFC",num0,num,ach);
+	data->NamedForComplex("SURFACE SRFC",num0,numTmp,ach);
+	num = numTmp ? numTmp : data->NextForComplex(num);
 
 	// --- Instance of plex componant Surface ---
 

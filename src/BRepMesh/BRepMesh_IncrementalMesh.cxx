@@ -72,7 +72,8 @@ BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()
   myInParallel(Standard_False),
   myMinSize   (Precision::Confusion()),
   myInternalVerticesMode(Standard_True),
-  myIsControlSurfaceDeflection(Standard_True)
+  myIsControlSurfaceDeflection(Standard_True),
+  updateCallback(0)
 {
 }
 
@@ -85,12 +86,14 @@ BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh(
   const Standard_Real    theLinDeflection,
   const Standard_Boolean isRelative,
   const Standard_Real    theAngDeflection,
-  const Standard_Boolean isInParallel)
+  const Standard_Boolean isInParallel,
+  void(*callback)(int,int,int))
   : myRelative  (isRelative),
     myInParallel(isInParallel),
     myMinSize   (Precision::Confusion()),
     myInternalVerticesMode(Standard_True),
-    myIsControlSurfaceDeflection(Standard_True)
+    myIsControlSurfaceDeflection(Standard_True),
+    updateCallback(callback)
 {
   myDeflection  = theLinDeflection;
   myAngle       = theAngDeflection;
@@ -147,7 +150,7 @@ void BRepMesh_IncrementalMesh::init()
   myMesh = new BRepMesh_FastDiscret(myDeflection, 
     myAngle, aBox, Standard_True, Standard_True, 
     myRelative, Standard_True, myInParallel, myMinSize,
-    myInternalVerticesMode, myIsControlSurfaceDeflection);
+    myInternalVerticesMode, myIsControlSurfaceDeflection, updateCallback);
 
   myMesh->InitSharedFaces(myShape);
 }
@@ -202,6 +205,8 @@ void BRepMesh_IncrementalMesh::Perform()
 //=======================================================================
 void BRepMesh_IncrementalMesh::update()
 {
+  int n = myFaces.Size();
+
   // Update edges data
   TopExp_Explorer aExplorer(myShape, TopAbs_EDGE);
   for (; aExplorer.More(); aExplorer.Next())
@@ -215,16 +220,20 @@ void BRepMesh_IncrementalMesh::update()
 
   // Update faces data
   NCollection_Vector<TopoDS_Face>::Iterator aFaceIt(myFaces);
-  for (; aFaceIt.More(); aFaceIt.Next())
+  for (; aFaceIt.More(); aFaceIt.Next()) {
     update(aFaceIt.Value());
+    if (updateCallback) (*updateCallback)(1,n,1);
+  }
   
+  if (updateCallback) (*updateCallback)(0,n,2);
 #if defined(_OPENMP)
   if (myInParallel)
   {
-    int i, n = myFaces.Size();
+    int i;
 #pragma omp parallel for private(i)
-    for (i = 0; i < n; ++i)
+    for (i = 0; i < n; ++i) {
       myMesh->Process(myFaces(i));
+    }
   }
   else
     OSD_Parallel::ForEach(myFaces.begin(), myFaces.end(), *myMesh, !myInParallel);
