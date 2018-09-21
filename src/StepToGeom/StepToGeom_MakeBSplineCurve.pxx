@@ -19,15 +19,14 @@
   Handle(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve) BSCWR;
 
   if (SC->IsKind(STANDARD_TYPE(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve))) {
-    BSCWR = 
-      Handle(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve)
-	::DownCast(SC);
-    BSCW = 
-      Handle(StepGeom_BSplineCurveWithKnots)
-	::DownCast(BSCWR->BSplineCurveWithKnots());
+    BSCWR = Handle(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve)::DownCast(SC);
+    BSCW = Handle(StepGeom_BSplineCurveWithKnots)::DownCast(BSCWR->BSplineCurveWithKnots());
+  } else BSCW = Handle(StepGeom_BSplineCurveWithKnots)::DownCast(SC);
+
+  if ( BSCW.IsNull() ) {
+    cout << "StepToGeom_MakeBSplineCurve (.pxx) failed, cast failed!" << endl;
+    return Standard_False;
   }
-  else
-    BSCW = Handle(StepGeom_BSplineCurveWithKnots)::DownCast(SC);
 
   const Standard_Integer Deg = BSCW->Degree();
   const Standard_Integer NbPoles = BSCW->NbControlPointsList();

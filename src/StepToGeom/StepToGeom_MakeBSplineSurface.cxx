@@ -34,6 +34,7 @@
 // BSplineSurface de Step
 //=============================================================================
 
+
 Standard_Boolean StepToGeom_MakeBSplineSurface::Convert
     (const Handle(StepGeom_BSplineSurface)& SS,
      Handle(Geom_BSplineSurface)& CS)
@@ -42,17 +43,15 @@ Standard_Boolean StepToGeom_MakeBSplineSurface::Convert
   Handle(StepGeom_BSplineSurfaceWithKnots) BS;
   Handle(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface) BSR;
 
-  if (SS->
-      IsKind(STANDARD_TYPE(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface))) {
-    BSR = 
-      Handle(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface)
-	::DownCast(SS);
-    BS = 
-      Handle(StepGeom_BSplineSurfaceWithKnots)
-	::DownCast(BSR->BSplineSurfaceWithKnots());
+  if (SS->IsKind(STANDARD_TYPE(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface))) {
+    BSR = Handle(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface)::DownCast(SS);
+    BS = BSR->BSplineSurfaceWithKnots();
+  } else BS = Handle(StepGeom_BSplineSurfaceWithKnots)::DownCast(SS);
+
+  if ( BS.IsNull() ) {
+    cout << "StepToGeom_MakeBSplineSurface failed, cast failed! " << endl;
+    return Standard_False;
   }
-  else
-    BS = Handle(StepGeom_BSplineSurfaceWithKnots)::DownCast(SS);
 
   const Standard_Integer UDeg = BS->UDegree();
   const Standard_Integer VDeg = BS->VDegree();
