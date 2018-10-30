@@ -806,7 +806,7 @@ void OSD_File::Rewind() {
 #include <Standard_PCharacter.hxx>
 #include <TCollection_ExtendedString.hxx>
 
-#include <Strsafe.h>
+#include <strsafe.h>
 
 #if defined(__CYGWIN32__) || defined(__MINGW32__)
 #define VAC
