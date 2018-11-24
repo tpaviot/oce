@@ -19,7 +19,7 @@
 #include <ctime>
 #include <stdint.h>
 
-#if (defined(_MSC_VER) && (_MSC_VER < 1800)) or (defined(__clang__) && (__clang_major__ == 4))
+#if (defined(_MSC_VER) && (_MSC_VER < 1800))
   // only Visual Studio 2013 (vc12) provides <cinttypes> header
   // we do not defined all macros here - only used by OCCT framework
   #define PRId64 "I64d"
