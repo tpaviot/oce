@@ -7,7 +7,7 @@ Appveyor:
 
 oce is a C++ 3D modeling library. It can be used to develop CAD/CAM softwares, for instance [FreeCad](http://www.freecadweb.org/) or [IfcOpenShell](http://www.ifcopenshell.org/).
 
-oce stands for **o**pencascade **c**ommunity **e**dition. This project aims at gathering patches/ changes/ improvements from the OCC community. Official OCCT documentation and sources are available at http://www.opencascade.org/, you can also theck their development portal at http://dev.opencascade.org.
+oce stands for **o**pencascade **c**ommunity **e**dition. This project aims at gathering patches/ changes/ improvements from the OCC community. Official OCCT documentation and sources are available at http://www.opencascade.org/, you can also check their development portal at http://dev.opencascade.org.
 
 ## Download latest release
 
@@ -78,7 +78,7 @@ To request write access to the repository, just ask @tpaviot (tpaviot@gmail.com)
 ``` bash
 $ git clone git://github.com/tpaviot/oce.git
 ```
-  * Stay to date with latest developements:
+  * Stay up-to-date with latest developments:
 
 ``` bash
 $ cd oce
