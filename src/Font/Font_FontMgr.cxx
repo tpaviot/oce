@@ -95,6 +95,10 @@ static const Font_FontMgr_FontAliasMapNode Font_FontMgr_MapOfFontsAliases[] =
 
   }
 
+#elif defined(HAVE_FONTCONFIG)
+
+  #include <fontconfig/fontconfig.h>
+
 #else
 
   #include <OSD_DirectoryIterator.hxx>
@@ -379,6 +383,36 @@ void Font_FontMgr::InitFontDataBase()
 
   // close registry key
   RegCloseKey (aFontsKey);
+
+#elif defined(HAVE_FONTCONFIG)
+
+  FcConfig *config = FcInitLoadConfigAndFonts();
+  FcPattern *pat = FcPatternCreate();
+  FcObjectSet *os = FcObjectSetBuild(FC_FILE, NULL);
+  FcFontSet *fs = FcFontList(config, pat, os);
+  FcObjectSetDestroy(os);
+  FcPatternDestroy(pat);
+
+  aFtLibrary = new Font_FTLibrary();
+  for (int i = 0; fs && i < fs->nfont; ++i)
+  {
+    FcPattern *font = fs->fonts[i];
+    FcChar8 *file;
+    if (FcPatternGetString(font, FC_FILE, 0, &file) == FcResultMatch)
+    {
+      Handle(Font_SystemFont) aNewFont = checkFont(aFtLibrary, (char *) file);
+      if (!aNewFont.IsNull())
+      {
+	myListOfFonts.Append (aNewFont);
+      }
+    }
+  }
+
+  if (fs)
+  {
+    FcFontSetDestroy(fs);
+  }
+  FcConfigDestroy(config);
 
 #else
 
