@@ -1,0 +1,17 @@
+
+puts "========"
+puts "OCC27910"
+puts "========"
+puts ""
+#######################################
+# Exception during offset computation
+#######################################
+
+restore [locate_data_file bug27910.brep] s
+
+offsetparameter 1e-7 p i
+offsetload s 10
+offsetperform result
+
+checkshape result
+

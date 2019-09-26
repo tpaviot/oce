@@ -1,0 +1,11 @@
+puts "========"
+puts "OCC267"
+puts "========"
+
+NewDocument D BinOcaf
+
+######################################################################
+
+file delete ${imagedir}/OCC267.cbf
+SaveAs D ${imagedir}/OCC267.cbf
+

@@ -1,0 +1,28 @@
+puts "========"
+puts "OCC26451"
+puts "========"
+puts ""
+##########################################################################
+# Crash importing STeP file
+##########################################################################
+
+stepread [locate_data_file bug26451_Test_STEP.stp] a *
+tpcompound result
+
+checkprops result -s 551394 
+checkshape result
+
+set nbshapes_expected "
+Number of shapes in shape
+ VERTEX    : 8057
+ EDGE      : 8372
+ WIRE      : 1988
+ FACE      : 1754
+ SHELL     : 1754
+ SOLID     : 0
+ COMPSOLID : 0
+ COMPOUND  : 1
+ SHAPE     : 21926
+"
+checknbshapes result -ref ${nbshapes_expected} -t -m "importing file"
+checkview -display result -3d -path ${imagedir}/${test_image}.png
