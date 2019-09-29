@@ -29,6 +29,8 @@
   #include <mach/task.h>
   #include <mach/mach.h>
   #include <malloc/malloc.h>
+#elif (defined(__OpenBSD__))
+  #include <unistd.h>
 #else
   #include <unistd.h>
   #include <malloc.h>
