@@ -1,7 +1,7 @@
-version: oce-0.18.3.{build}
+version: oce-0.19.{build}
 
 environment:
-  oce_version: 0.18.3
+  oce_version: 0.19
   matrix:
     - generator: "MinGW Makefiles"
       ARCH: "i686"

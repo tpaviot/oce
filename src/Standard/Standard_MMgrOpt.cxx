@@ -25,6 +25,10 @@
 # include <sys/mman.h>    /* mmap() */
 #endif
 
+#ifdef __HAIKU__
+# include <errno.h>
+#endif
+
 #include <fcntl.h>
 //
 #if defined (__sun) || defined(SOLARIS)

@@ -20,12 +20,12 @@
 project(OCE)
 
 set(OCE_VERSION_MAJOR 0)
-set(OCE_VERSION_MINOR 18)
+set(OCE_VERSION_MINOR 19)
 # OCE_VERSION_PATCH is used for bugfixes releases only
 # (uncomment following line)
-set(OCE_VERSION_PATCH 3)
+set(OCE_VERSION_PATCH)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-set(OCE_VERSION_DEVEL)
+set(OCE_VERSION_DEVEL -dev)
 
 # bugfix release: add ${OCE_VERSION_PATCH} to OCE_VERSION
 set(OCE_VERSION ${OCE_VERSION_MAJOR}.${OCE_VERSION_MINOR}${OCE_VERSION_DEVEL})
@@ -485,9 +485,9 @@ if(OCE_VISUALISATION)
 		endif(WIN32)
 	endif(OCE_WITH_FREEIMAGE)
 
-	if (NOT WIN32 AND NOT OCE_OSX_USE_COCOA)
+	if (NOT WIN32 AND NOT OCE_OSX_USE_COCOA AND NOT HAIKU)
 		find_package(X11 REQUIRED)
-	endif(NOT WIN32 AND NOT OCE_OSX_USE_COCOA)
+	endif(NOT WIN32 AND NOT OCE_OSX_USE_COCOA AND NOT HAIKU)
 
 	if (NOT APPLE OR OCE_OSX_USE_COCOA)
 		find_package(OpenGL REQUIRED)
@@ -731,6 +731,11 @@ if(UNIX)
 			# remark #981 "operands are evaluated in unspecified order", e.g. a = b() + c()
 			add_definitions("-diag-disable 383,522,858,981")
 		endif(INTEL)
+		if(HAIKU)
+			# Haiku networking resides in libnetwork
+			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lnetwork")
+			set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -lnetwork")
+		endif(HAIKU)
 	endif(APPLE)
 	add_definitions(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
 else(UNIX)
@@ -913,7 +918,11 @@ endif(NOT DEFINED OCE_INSTALL_SCRIPT_DIR)
 # Data
 if(NOT DEFINED OCE_INSTALL_DATA_DIR)
 	if(NOT MSVC)
-		set(OCE_INSTALL_DATA_DIR share/oce-${OCE_VERSION})
+		if(NOT HAIKU)
+			set(OCE_INSTALL_DATA_DIR share/oce-${OCE_VERSION})
+		else ()
+			set(OCE_INSTALL_DATA_DIR data/oce-${OCE_VERSION})
+		endif(NOT HAIKU)
 	else ()
 		set(OCE_INSTALL_DATA_DIR "share/oce")
 	endif(NOT MSVC)
@@ -937,8 +946,13 @@ if(NOT DEFINED OCE_INSTALL_CMAKE_DATA_DIR)
 			set(OCE_INSTALL_CMAKE_DATA_DIR
 				OCE.framework/Versions/${OCE_VERSION}/Resources)
 		else(APPLE)
-			set(OCE_INSTALL_CMAKE_DATA_DIR
-				lib${LIB_SUFFIX}/oce-${OCE_VERSION})
+			if(NOT HAIKU)
+				set(OCE_INSTALL_CMAKE_DATA_DIR
+					lib${LIB_SUFFIX}/oce-${OCE_VERSION})
+			else(NOT HAIKU)
+				set(OCE_INSTALL_CMAKE_DATA_DIR
+					lib${LIB_SUFFIX}/cmake)
+			endif(NOT HAIKU)
 		endif(APPLE)
 	endif(WIN32)
 endif(NOT DEFINED OCE_INSTALL_CMAKE_DATA_DIR)

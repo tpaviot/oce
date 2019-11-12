@@ -24,6 +24,10 @@
 #include <Standard_Mutex.hxx>
 #include <Standard_OStream.hxx>
 
+#ifdef __HAIKU__
+#include <Errors.h>
+#endif
+
 //=============================================
 // Standard_Mutex::Standard_Mutex
 //=============================================
