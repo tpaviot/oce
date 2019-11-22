@@ -31,7 +31,9 @@
   #include <malloc/malloc.h>
 #else
   #include <unistd.h>
-  #include <malloc.h>
+  #ifndef __OpenBSD__
+    #include <malloc.h>
+  #endif
 #endif
 
 #include <string>
