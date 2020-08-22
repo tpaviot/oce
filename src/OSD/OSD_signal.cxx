@@ -217,10 +217,9 @@ static void Handler (const int theSignal)
   // cout << "OSD::Handler: signal " << (int) theSignal << " occured inside a try block " <<  endl ;
   if ( ADR_ACT_SIGIO_HANDLER != NULL )
     (*ADR_ACT_SIGIO_HANDLER)() ;
-#ifdef linux
+#if defined(linux) && defined(HAVE_FEENABLEEXCEPT)
   if (fFltExceptions)
     feenableexcept (FE_INVALID | FE_DIVBYZERO | FE_OVERFLOW);
-    //feenableexcept (FE_INVALID | FE_DIVBYZERO);
 #endif
   sigset_t set;
   sigemptyset(&set);
@@ -338,10 +337,9 @@ static void SegvHandler(const int theSignal,
     return;
   }
 #endif
-#ifdef linux
+#if defined(linux) && defined(HAVE_FEENABLEEXCEPT)
   if (fFltExceptions)
     feenableexcept (FE_INVALID | FE_DIVBYZERO | FE_OVERFLOW);
-    //feenableexcept (FE_INVALID | FE_DIVBYZERO);
 #endif
 //  cout << "OSD::SegvHandler activated(SA_SIGINFO)" << endl ;
   if ( ip != NULL ) {
@@ -394,9 +392,8 @@ void OSD::SetSignal(const Standard_Boolean aFloatingSignal)
       cerr << "ieee_handler does not work !!! KO " << endl;
 #endif
     }
-#elif defined (linux)
+#elif defined(linux) && defined(HAVE_FEENABLEEXCEPT)
     feenableexcept (FE_INVALID | FE_DIVBYZERO | FE_OVERFLOW);
-    //feenableexcept (FE_INVALID | FE_DIVBYZERO);
     fFltExceptions = Standard_True;
 #endif
   }

@@ -640,6 +640,8 @@ if (NOT WIN32)
 	check_function_exists(localtime_r HAVE_LOCALTIME_R)
 	check_function_exists(clock_gettime HAVE_CLOCK_GETTIME)
 	check_function_exists(posix_memalign HAVE_POSIX_MEMALIGN)
+	check_function_exists(mallinfo HAVE_MALLINFO)
+	check_function_exists(feenableexcept HAVE_FEENABLEEXCEPT)
 	include(TestBigEndian)
 	test_big_endian(WORDS_BIGENDIAN)
 

@@ -143,8 +143,12 @@ void OSD_MemInfo::Update()
   }
   aFile.close();
 
+#if (defined(HAVE_MALLINFO))
   struct mallinfo aMI = mallinfo();
   myCounters[MemHeapUsage] = aMI.uordblks;
+#else
+  myCounters[MemHeapUsage] = Standard_Size(-1);
+#endif
 
 #elif (defined(__APPLE__))
   struct task_basic_info aTaskInfo;
