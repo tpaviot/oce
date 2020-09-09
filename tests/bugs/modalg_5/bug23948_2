@@ -1,0 +1,21 @@
+puts "========="
+puts "OCC23948"
+puts "========="
+puts ""
+###########################################################
+# Wrong intersection between a surface of revolution and a plane.
+###########################################################
+
+restore [locate_data_file bug22766_f1] f1
+restore [locate_data_file bug22766_f2] f2
+
+bopcurves f1 f2
+
+mksurface s1 f1
+mksurface s2 f2
+
+xdistcs c_1 s2 0 1 10 1e-3
+
+smallview
+fit
+checkview -screenshot -2d -path ${imagedir}/${test_image}.png

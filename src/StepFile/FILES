@@ -1,0 +1,12 @@
+lex.step.c
+recfile.pc
+recfile.ph
+step.tab.c
+step.tab.h
+StepFile_CallFailure.cxx
+StepFile_CallFailure.hxx
+StepFile_Read.cxx
+StepFile_Read.hxx
+StepFile_Transfer.hxx
+stepread.c
+stepread.ph

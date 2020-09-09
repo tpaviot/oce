@@ -1,0 +1,20 @@
+puts "TODO OCC27024 ALL: Error : operation bfuse is WRONG because number of SOLID entities in shape"
+puts "TODO OCC27024 ALL: Faulty shapes in variables faulty_1 to faulty_"
+
+puts "=========="
+puts "BUC60462"
+puts "=========="
+
+restore [locate_data_file buc60462c.brep] a 
+checkshape a
+restore [locate_data_file buc60462d.brep] b
+checkshape b
+puts "Fuse begin"
+bfuse result a b
+puts "Fuse end"
+
+checkshape result r
+checknbshapes result -solid 1 -m "operation bfuse"
+checkprops result -s 93237.9
+checkshape result
+checkview -display result -2d -path ${imagedir}/${test_image}.png

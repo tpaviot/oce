@@ -1,0 +1,24 @@
+puts "========"
+puts "OCC428"
+puts "SAM1414"
+puts "========"
+
+################################################
+## Exception during vizualization on attached shape in application.
+## Exception is raised in the package StdPrs.
+################################################
+
+restore [locate_data_file OCC428.brep] result
+
+tclean result
+vinit
+vdisplay result
+vsetdispmode result 1
+vclear
+
+isos result 0
+triangles result
+vfit
+
+checktrinfo result -tri !5496 -nod !5406
+checkview -screenshot -3d -path ${imagedir}/${test_image}.png

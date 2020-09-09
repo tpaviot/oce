@@ -1,0 +1,36 @@
+puts "============"
+puts "OCC23193"
+puts "============"
+puts ""
+###########################################################################
+# Some triangles are inverted when writing an STL file
+###########################################################################
+pload QAcommands
+
+
+set aFile $imagedir/bug23193_sample.stl
+
+vinit
+stepread [locate_data_file bug23193_sample.stp] a *
+incmesh a_1 1
+writestl a_1 ${aFile} 0
+
+meshfromstl m1 ${aFile}
+meshcolors m1 elem2 1
+vrotate 4 0 0
+vfit
+
+set x_coord 189
+set y_coord 236
+
+#checkcolor $x_coord $y_coord 0 0 0.7
+
+if { "[vreadpixel $x_coord $y_coord rgb name]" != "MATRABLUE" } {
+    puts "Error : There is missing triangle"
+}
+
+checkview -screenshot -3d -path ${imagedir}/${test_image}.png
+
+
+
+

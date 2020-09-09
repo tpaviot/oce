@@ -1,0 +1,11 @@
+puts "TODO #22911 ALL: Error : The area of result shape is"
+puts "TODO OCC25735 ALL: Faulty shapes in variables faulty_1 to"
+
+restore [locate_data_file a102] a
+restore [locate_data_file b136] b
+
+bop a b
+bopfuse result
+
+checkprops result -s 0
+checkview -display result -2d -otherwise { a b } -s -path ${imagedir}/${test_image}.png

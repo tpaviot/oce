@@ -1,0 +1,20 @@
+
+puts "============"
+puts "BUC60849"
+puts "============"
+puts ""
+
+restore [locate_data_file BUC60849.brep] result
+checkshape result
+
+set bndb [ lindex [bounding result] 3 ]
+
+if { $bndb  > 100.000001 } {
+    puts "Faulty BUC60849 : Bounding box of spherical surface is created wroughly."
+} else {
+    puts "BUC60849 OK :Bounding box of spherical surface is created properly."
+}
+checkprops result -s 125663 
+checkshape result
+checkview -display result -2d -path ${imagedir}/${test_image}.png
+

@@ -1,0 +1,9 @@
+puts "TODO #22911 ALL: Error : The area of result shape is"
+puts "TODO OCC25735 ALL: Faulty shapes in variables faulty_1 to"
+
+restore [locate_data_file CTO908_topo102-o.brep] obj
+restore [locate_data_file CTO908_topo102-t.brep] tool
+
+bcut result obj tool
+checkprops result -s 0
+checkview -display result -2d -s -otherwise { obj tool } -path ${imagedir}/${test_image}.png

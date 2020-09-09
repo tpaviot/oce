@@ -1,0 +1,23 @@
+puts "TODO OCC25735 ALL: Faulty shapes in variables faulty_1 to"
+puts "TODO OCC26582 ALL: Error : The area of result shape is"
+
+puts "========="
+puts " OCC497 "
+puts "(case 3)"
+puts "========="
+puts ""
+########################################################
+## Result of cut and fuse operation are faulty shapes although arguments are valid.
+########################################################
+
+restore [locate_data_file OCC497e.brep] a_1 
+checkshape a_1
+
+restore [locate_data_file OCC497f.brep] a_2
+checkshape a_2
+
+bcut result a_1 a_2
+
+checkprops result -s 2471.48 
+checkshape result
+checkview -display result -2d -path ${imagedir}/${test_image}.png

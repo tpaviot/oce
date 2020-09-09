@@ -1,0 +1,26 @@
+#puts "TODO OCC12345 ALL: An exception was caught"
+#puts "TODO OCC12345 ALL: \\*\\* Exception \\*\\*.*"
+#puts "TODO OCC12345 ALL: TEST INCOMPLETE"
+#puts "TODO OCC12345 ALL: xception"
+puts "TODO OCC25892 ALL: Faulty shapes in variables"
+puts "TODO OCC25892 ALL: The area of result shape is"
+
+puts "========================"
+puts " OCC469 "
+puts "========================"
+puts ""
+######################################################
+## It's impossible to fuse the two shapes in the file attached. #2740, SAM1493
+######################################################
+
+restore [locate_data_file OCC469.brep] a 
+explode a
+
+checkshape a_1
+checkshape a_2
+
+bfuse result a_1 a_2
+checkshape result
+
+checkprops result -s 10
+checkview -display result -2d -path ${imagedir}/${test_image}.png

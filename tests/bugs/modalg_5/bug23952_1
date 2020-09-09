@@ -1,0 +1,19 @@
+puts "TODO ?OCC24156 MacOS: \\*\\* Exception \\*\\*.*"
+puts "TODO ?OCC24156 MacOS: An exception was caught"
+puts "TODO OCC24156 MacOS: TEST INCOMPLETE"
+puts "TODO OCC24156 MacOS: \\*\\*\\* Abort"
+puts "TODO OCC24156 MacOS: ... The exception is"
+
+puts "================"
+puts "OCC23952"
+puts "================"
+puts ""
+###########################################################################################
+# Improving thread-safety of intersections, approximations and other modeling algorithms
+###########################################################################################
+
+pload QAcommands
+restore [locate_data_file bug23952_trim-torus.draw] a
+
+set NbUPoles 18
+OCC23952sweep $NbUPoles a
