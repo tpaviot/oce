@@ -104,7 +104,8 @@ void IVtkVTK_ShapeData::InsertLine (const IVtk_IdType   theShapeID,
                                     const IVtk_PointId  thePointId2,
                                     const IVtk_MeshType theMeshType)
 {
-  vtkIdType aPoints[2] = { thePointId1, thePointId2 };
+  vtkIdType aPoints[2] = { static_cast<vtkIdType>(thePointId1),
+                           static_cast<vtkIdType>(thePointId2)};
   myPolyData->InsertNextCell (VTK_LINE, 2, aPoints);
   const vtkIdType aShapeIDVTK = theShapeID;
   const vtkIdType aType = theMeshType;
@@ -165,7 +166,9 @@ void IVtkVTK_ShapeData::InsertTriangle (const IVtk_IdType   theShapeID,
                                         const IVtk_PointId  thePointId3,
                                         const IVtk_MeshType theMeshType)
 {
-  vtkIdType aPoints[3] = { thePointId1, thePointId2, thePointId3 };
+  vtkIdType aPoints[3] = { static_cast<vtkIdType>(thePointId1),
+                           static_cast<vtkIdType>(thePointId2),
+                           static_cast<vtkIdType>(thePointId3)};
   myPolyData->InsertNextCell (VTK_TRIANGLE, 3, aPoints);
   const vtkIdType aShapeIDVTK = theShapeID;
   const vtkIdType aType = theMeshType;
