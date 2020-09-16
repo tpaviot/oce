@@ -1,0 +1,15 @@
+puts "============"
+puts "OCC21747"
+puts "============"
+puts ""
+
+set BugNumber OCC21747
+
+vinit
+
+puts "${BugNumber}"
+puts "Type=VERTICAL, Color from RED to BLUE, Direction from TOP to BOTTOM"
+
+vbackground -gradient RED BLUE1 -gradientMode VERTICAL
+
+checkview -screenshot -3d -path ${imagedir}/${test_image}.png

@@ -1,0 +1,47 @@
+puts "=========="
+puts "OCC29403"
+puts "=========="
+puts ""
+#########################################################
+# Subshapes names are not imported from step
+#########################################################
+
+param read.stepcaf.subshapes.name 1
+param write.stepcaf.subshapes.name 1
+
+pload DCAF
+
+ReadStep doc [locate_data_file bug29403_ECOR030312.stp]
+set info1 [XStat doc]
+regexp {level N 0 +: +([-0-9.+eE]+)} $info1 full l0
+regexp {level N 1 +: +([-0-9.+eE]+)} $info1 full l1
+regexp {Total number of labels for shapes in the document += +([-0-9.+eE]+)} $info1 full nb
+regexp {Number of labels with name += +([-0-9.+eE]+)} $info1 full nbname
+
+WriteStep doc $imagedir/doc_subshapes.stp
+
+ReadStep after_doc $imagedir/doc_subshapes.stp
+
+set info2 [XStat after_doc]
+regexp {level N 0 +: +([-0-9.+eE]+)} $info2 full l0_1
+regexp {level N 1 +: +([-0-9.+eE]+)} $info2 full l1_1
+regexp {Total number of labels for shapes in the document += +([-0-9.+eE]+)} $info2 full nb_1
+regexp {Number of labels with name += +([-0-9.+eE]+)} $info2 full nbname_1
+
+if { ${l0} != ${l0_1} ||
+     ${l0} != "38"    ||
+     ${l1} != ${l1_1} ||
+	 ${l1} != "85"    ||
+     ${nb} != ${nb_1} ||
+	 ${nb} != "123"   ||
+     ${nbname} != ${nbname_1} ||
+	 ${nbname} != "123"} {
+    puts "Error : Document is read/written wrong!"
+}
+
+Close doc
+Close after_doc
+file delete -force $imagedir/doc_subshapes.stp
+
+param read.stepcaf.subshapes.name 0
+param write.stepcaf.subshapes.name 0

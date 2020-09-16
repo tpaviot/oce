@@ -1,0 +1,17 @@
+puts "======="
+puts "0026106: BRepMesh - revision of data model"
+puts "======="
+puts ""
+
+restore [locate_data_file bug26106_pipeBT.brep] result
+
+vinit
+vsetdispmode 1
+
+vdisplay result
+vfit
+
+tricheck result
+checktrinfo result -tri 3424 -nod 1801 -max_defl 0.52
+
+checkview -screenshot -3d -path ${imagedir}/${test_image}.png
