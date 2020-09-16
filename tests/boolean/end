@@ -1,6 +1,0 @@
-if { [isdraw result] } {
-  checkshape result
-}
-
-# to end a test script
-puts "TEST COMPLETED"

@@ -1,5 +1,0 @@
-restore [locate_data_file bug25926_input_slanted.brep] s
-
-OFFSETSHAPE 6 {} $calcul $type
-
-checkprops result -v 2.19865e+007

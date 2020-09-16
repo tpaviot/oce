@@ -1,3 +1,0 @@
-if { [array get Draw_Groups "TOPOLOGY Check commands"] == "" } {
-	pload TOPTEST
-}

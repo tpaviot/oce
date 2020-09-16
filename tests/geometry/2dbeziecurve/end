@@ -1,1 +1,0 @@
-checkview -display result -2d v2d -path ${imagedir}/${test_image}.png

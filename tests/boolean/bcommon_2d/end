@@ -1,2 +1,0 @@
-set result_vertices [explode result v]
-checkview -display result -2d -with ${result_vertices} -otherwise { a b } -l -path ${imagedir}/${test_image}.png

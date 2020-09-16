@@ -1,8 +1,0 @@
-pload MODELING VISUALIZATION XSDRAW
-cpulimit 100
-
-set off_param 80
-set calcul "p"
-set type "i"
-
-set command "withintersect"
