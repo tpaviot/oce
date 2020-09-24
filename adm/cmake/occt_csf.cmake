@@ -111,7 +111,7 @@ else()
       set (CSF_OpenGlLibs ${OpenGlLibs_LIB})
       OCCT_CHECK_AND_UNSET (OpenGlLibs_LIB)
     endif()
-    
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
   elseif (ANDROID)
     set (CSF_ThreadLibs  "c")
     set (CSF_OpenGlLibs  "EGL GLESv2")
