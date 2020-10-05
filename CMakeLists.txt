@@ -36,7 +36,7 @@ else()
 endif()
 
 # the name of the project
-project (OCCT)
+project (OCE)
 
 if (WIN32)
   add_definitions(-DUNICODE)
