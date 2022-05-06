@@ -80,21 +80,21 @@ Handle(IMeshTools_MeshAlgo) BRepMesh_MeshAlgoFactory::GetAlgo(
     break;
 
   case GeomAbs_Sphere:
-    return new NodeInsertionMeshAlgo<BRepMesh_SphereRangeSplitter>::Type;
+    return new DeflectionControlMeshAlgo<BRepMesh_SphereRangeSplitter>::Type;
     break;
 
   case GeomAbs_Cylinder:
     return theParameters.InternalVerticesMode ?
-      new NodeInsertionMeshAlgo<BRepMesh_CylinderRangeSplitter>::Type :
+      new DeflectionControlMeshAlgo<BRepMesh_CylinderRangeSplitter>::Type :
       new BaseMeshAlgo::Type;
     break;
 
   case GeomAbs_Cone:
-    return new NodeInsertionMeshAlgo<BRepMesh_ConeRangeSplitter>::Type;
+    return new DeflectionControlMeshAlgo<BRepMesh_ConeRangeSplitter>::Type;
     break;
 
   case GeomAbs_Torus:
-    return new NodeInsertionMeshAlgo<BRepMesh_TorusRangeSplitter>::Type;
+    return new DeflectionControlMeshAlgo<BRepMesh_TorusRangeSplitter>::Type;
     break;
 
   case GeomAbs_SurfaceOfRevolution:

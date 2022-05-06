@@ -19,6 +19,9 @@
 #include <BRepMesh_DelaunayNodeInsertionMeshAlgo.hxx>
 #include <BRepMesh_GeomTool.hxx>
 #include <GeomLib.hxx>
+#include <vector>
+#include <set>
+#include <utility>
 
 //! Extends node insertion Delaunay meshing algo in order to control 
 //! deflection of generated trianges. Splits triangles failing the check.
@@ -84,6 +87,26 @@ protected:
     const Standard_Integer aIterationsNb = 11;
     Standard_Boolean isInserted = Standard_True;
     Message_ProgressScope aPS(theRange, "Iteration", aIterationsNb);
+    //Collect the list of unique UV/XY coordinates
+    std::set<Standard_Real> uniqueX;
+    std::set<Standard_Real> uniqueY;
+    if(true){
+      IMeshData::IteratorOfMapOfInteger aTriangleIt(this->getStructure()->ElementsOfDomain());
+      for (; aTriangleIt.More(); aTriangleIt.Next())
+      {
+        const BRepMesh_Triangle& theTriangle = this->getStructure()->GetElement(aTriangleIt.Key());
+        Standard_Integer aNodexIndices[3];
+        this->getStructure()->ElementNodes(theTriangle, aNodexIndices);
+
+        TriangleNodeInfo aNodesInfo[3];
+        getTriangleInfo(theTriangle, aNodexIndices, aNodesInfo);
+        for(int i=0; i<3; i++){
+          uniqueX.insert(aNodesInfo[i].Point2d.X());
+          uniqueY.insert(aNodesInfo[i].Point2d.Y());
+        }
+      }
+    }
+
     for (Standard_Integer aPass = 1; aPass <= aIterationsNb && isInserted && !myIsAllDegenerated; ++aPass)
     {
       if (!aPS.More())
@@ -104,7 +127,7 @@ protected:
       for (; aTriangleIt.More(); aTriangleIt.Next())
       {
         const BRepMesh_Triangle& aTriangle = this->getStructure()->GetElement(aTriangleIt.Key());
-        splitTriangleGeometry(aTriangle);
+        splitTriangleGeometry(aTriangle, uniqueX, uniqueY);
       }
 
       isInserted = this->insertNodes(myControlNodes, theMesher, aPS.Next());
@@ -209,7 +232,7 @@ private:
   }
 
   // Check geometry of the given triangle. If triangle does not suit specified deflection, inserts new point.
-  void splitTriangleGeometry(const BRepMesh_Triangle& theTriangle)
+  void splitTriangleGeometry(const BRepMesh_Triangle& theTriangle, std::set<Standard_Real>& uniqueX, std::set<Standard_Real>& uniqueY)
   {
     if (theTriangle.Movability() != BRepMesh_Deleted)
     {
@@ -230,7 +253,7 @@ private:
                                  aNodesInfo[2].Point2d) / 3.;
 
         usePoint(aCenter2d, NormalDeviation(aNodesInfo[0].Point, aNormal));
-        splitLinks(aNodesInfo, aNodexIndices);
+        splitLinks(aNodesInfo, aNodexIndices, uniqueX, uniqueY);
       }
     }
   }
@@ -307,7 +330,10 @@ private:
   //! @return True if point fits specified deflection.
   void splitLinks(
     const TriangleNodeInfo (&theNodesInfo)[3],
-    const Standard_Integer (&theNodesIndices)[3])
+    const Standard_Integer (&theNodesIndices)[3],
+    std::set<Standard_Real>& uniqueX, 
+    std::set<Standard_Real>& uniqueY
+  )
   {
     // Check deflection at triangle links
     for (Standard_Integer i = 0; i < 3; ++i)
@@ -344,6 +370,52 @@ private:
                                                 aMidPnt2d))
           {
             myControlNodes->Append(aMidPnt2d);
+          }
+        }
+        else if(true){
+          //The midpoint needed to be adjusted, so let's also try adjusting at the known UV coordinates
+          std::vector<gp_XY> other_intermediates;
+          double delX = abs(theNodesInfo[i].Point2d.X()-theNodesInfo[j].Point2d.X());
+          double delY = abs(theNodesInfo[i].Point2d.Y()-theNodesInfo[j].Point2d.Y());
+          std::pair<Standard_Real, Standard_Real> p0(theNodesInfo[i].Point2d.X(), theNodesInfo[i].Point2d.Y());
+          std::pair<Standard_Real, Standard_Real> p1(theNodesInfo[j].Point2d.X(), theNodesInfo[j].Point2d.Y());
+          if(delX>0 || delY>0){
+            if(delX > delY){
+              //Interpolate along X
+              if(p0.first > p1.first){
+                std::swap(p0, p1);
+              }
+              std::set<Standard_Real>::iterator firstXit = uniqueX.lower_bound(p0.first);
+              while( firstXit !=  uniqueX.end() ){
+                if((*firstXit) >= p1.first){
+                  break;
+                }
+                double pct = ((*firstXit)-p0.first)/delX;
+                Standard_Real y = p0.second + pct*(p1.second - p0.second);
+                const gp_XY tpoint(*firstXit, y);
+                usePoint(tpoint, LineDeviation (theNodesInfo[i].Point, theNodesInfo[j].Point));
+
+                firstXit++;
+              }
+            }
+            else{
+              //Interpolate along Y
+              if(p0.second > p1.second){
+                std::swap(p0, p1);
+              }
+              std::set<Standard_Real>::iterator firstYit = uniqueY.lower_bound(p0.second);
+              while( firstYit !=  uniqueY.end() ){
+                if((*firstYit) >= p1.second){
+                  break;
+                }
+                double pct = ((*firstYit)-p0.second)/delY;
+                Standard_Real x = p0.first + pct*(p1.first - p0.first);
+                const gp_XY tpoint(x, *firstYit);
+                usePoint(tpoint, LineDeviation (theNodesInfo[i].Point, theNodesInfo[j].Point));
+
+                firstYit++;
+              }              
+            }
           }
         }
       }
