@@ -354,17 +354,25 @@ private:
   //! for specified angular deviation.
   Standard_Boolean checkLinkEndsForAngularDeviation(const TriangleNodeInfo& theNodeInfo1,
                                                     const TriangleNodeInfo& theNodeInfo2,
-                                                    const gp_XY& /*theMidPoint*/)
+                                                    const gp_XY& theMidPoint)
   {
-    gp_Dir aNorm1, aNorm2;
+    gp_Dir aNorm1, aNorm2, aNorm3;
     const Handle(Geom_Surface)& aSurf = this->getDFace()->GetSurface()->Surface().Surface();
     
     if ((GeomLib::NormEstim(aSurf, theNodeInfo1.Point2d, Precision::Confusion(), aNorm1) == 0) &&
         (GeomLib::NormEstim(aSurf, theNodeInfo2.Point2d, Precision::Confusion(), aNorm2) == 0))
     {
       Standard_Real anAngle = aNorm1.Angle(aNorm2);
-      if (anAngle > this->getParameters().AngleInterior)
+      if (anAngle > this->getParameters().AngleInterior){
         return Standard_False;
+      }
+      if(GeomLib::NormEstim(aSurf, theMidPoint, Precision::Confusion(), aNorm3) == 0){
+        Standard_Real anAngle2 = aNorm1.Angle(aNorm3);
+        Standard_Real anAngle3 = aNorm2.Angle(aNorm3);
+        if ((anAngle2 > this->getParameters().AngleInterior) || (anAngle3 > this->getParameters().AngleInterior)){
+          return Standard_False;
+        }
+      }
     }
 #if 0
     else if (GeomLib::NormEstim(aSurf, theMidPoint, Precision::Confusion(), aNorm1) != 0)
