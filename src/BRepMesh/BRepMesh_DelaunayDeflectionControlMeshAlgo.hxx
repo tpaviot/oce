@@ -359,22 +359,12 @@ private:
 
       if (myCouplesMap->Add(BRepMesh_OrientedEdge(aFirstVertex, aLastVertex)))
       {
-        const gp_XY aMidPnt2d = (theNodesInfo[i].Point2d +
+        gp_XY aMidPnt2d = (theNodesInfo[i].Point2d +
                                  theNodesInfo[j].Point2d) / 2.;
-
-        if (!usePoint (aMidPnt2d, LineDeviation (theNodesInfo[i].Point, 
-                                                 theNodesInfo[j].Point)))
-        {
-          if (!checkLinkEndsForAngularDeviation(theNodesInfo[i], 
-                                                theNodesInfo[j],
-                                                aMidPnt2d))
-          {
-            myControlNodes->Append(aMidPnt2d);
-          }
-        }
-        else if(true){
-          //The midpoint needed to be adjusted, so let's also try adjusting at the known UV coordinates
-          std::vector<gp_XY> other_intermediates;
+        if(false){
+          //Pick a midpoint that is closest to an existing UV boundary
+          double closestApproximateMidPntDist = -1;
+          gp_XY aMidPnt2dApprox(0,0);
           double delX = abs(theNodesInfo[i].Point2d.X()-theNodesInfo[j].Point2d.X());
           double delY = abs(theNodesInfo[i].Point2d.Y()-theNodesInfo[j].Point2d.Y());
           std::pair<Standard_Real, Standard_Real> p0(theNodesInfo[i].Point2d.X(), theNodesInfo[i].Point2d.Y());
@@ -393,7 +383,11 @@ private:
                 double pct = ((*firstXit)-p0.first)/delX;
                 Standard_Real y = p0.second + pct*(p1.second - p0.second);
                 const gp_XY tpoint(*firstXit, y);
-                usePoint(tpoint, LineDeviation (theNodesInfo[i].Point, theNodesInfo[j].Point));
+                double deltaSqr = (tpoint - aMidPnt2d).SquareModulus();
+                if(closestApproximateMidPntDist<0 || closestApproximateMidPntDist > deltaSqr){
+                  closestApproximateMidPntDist = deltaSqr;
+                  aMidPnt2dApprox = tpoint;
+                }
 
                 firstXit++;
               }
@@ -411,10 +405,83 @@ private:
                 double pct = ((*firstYit)-p0.second)/delY;
                 Standard_Real x = p0.first + pct*(p1.first - p0.first);
                 const gp_XY tpoint(x, *firstYit);
-                usePoint(tpoint, LineDeviation (theNodesInfo[i].Point, theNodesInfo[j].Point));
+                double deltaSqr = (tpoint - aMidPnt2d).SquareModulus();
+                if(closestApproximateMidPntDist<0 || closestApproximateMidPntDist > deltaSqr){
+                  closestApproximateMidPntDist = deltaSqr;
+                  aMidPnt2dApprox = tpoint;
+                }
 
                 firstYit++;
               }              
+            }
+          }
+          if(sqrt(closestApproximateMidPntDist) < .3*(theNodesInfo[i].Point2d-theNodesInfo[j].Point2d).Modulus()){
+            aMidPnt2d = aMidPnt2dApprox;
+          }
+        //End picking approximate midpoint
+        }
+
+
+        if (!usePoint (aMidPnt2d, LineDeviation (theNodesInfo[i].Point, 
+                                                 theNodesInfo[j].Point)))
+        {
+          if (!checkLinkEndsForAngularDeviation(theNodesInfo[i], 
+                                                theNodesInfo[j],
+                                                aMidPnt2d))
+          {
+            myControlNodes->Append(aMidPnt2d);
+          }
+        }
+        else if(true){
+          //The midpoint needed to be adjusted, so let's also try adjusting at the known UV coordinates
+          double delX = abs(theNodesInfo[i].Point2d.X()-theNodesInfo[j].Point2d.X());
+          double delY = abs(theNodesInfo[i].Point2d.Y()-theNodesInfo[j].Point2d.Y());
+          std::pair<Standard_Real, Standard_Real> p0(theNodesInfo[i].Point2d.X(), theNodesInfo[i].Point2d.Y());
+          std::pair<Standard_Real, Standard_Real> p1(theNodesInfo[j].Point2d.X(), theNodesInfo[j].Point2d.Y());
+          std::vector<gp_XY> interpPnts;              
+          if(delX>0 || delY>0){
+            if(delX > delY){
+              //Interpolate along X
+              if(p0.first > p1.first){
+                std::swap(p0, p1);
+              }
+              std::set<Standard_Real>::iterator firstXit = uniqueX.lower_bound(p0.first);
+              while( firstXit !=  uniqueX.end() ){
+                if((*firstXit) >= p1.first){
+                  break;
+                }
+                double pct = ((*firstXit)-p0.first)/delX;
+                Standard_Real y = p0.second + pct*(p1.second - p0.second);
+                const gp_XY tpoint(*firstXit, y);
+                interpPnts.push_back(tpoint);
+
+                firstXit++;
+              }
+            }
+            else{
+              //Interpolate along Y
+              if(p0.second > p1.second){
+                std::swap(p0, p1);
+              }
+              std::set<Standard_Real>::iterator firstYit = uniqueY.lower_bound(p0.second);
+              while( firstYit !=  uniqueY.end() ){
+                if((*firstYit) >= p1.second){
+                  break;
+                }
+                double pct = ((*firstYit)-p0.second)/delY;
+                Standard_Real x = p0.first + pct*(p1.first - p0.first);
+                const gp_XY tpoint(x, *firstYit);
+                interpPnts.push_back(tpoint);
+
+                firstYit++;
+              }              
+            }
+          }
+          //Do like 3 points
+          int stepSize = 1;//(int)floor(interpPnts.size() * .2);
+          if(stepSize>0){
+            for(int k=stepSize; k<=(int)interpPnts.size() - stepSize; k+=stepSize){
+              usePoint (interpPnts[i], LineDeviation (theNodesInfo[i].Point, theNodesInfo[j].Point));
             }
           }
         }
