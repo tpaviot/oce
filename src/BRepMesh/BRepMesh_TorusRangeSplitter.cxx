@@ -23,94 +23,116 @@
 Handle(IMeshData::ListOfPnt2d) BRepMesh_TorusRangeSplitter::GenerateSurfaceNodes(
   const IMeshTools_Parameters& theParameters) const
 {
-  const std::pair<Standard_Real, Standard_Real>& aRangeU = GetRangeU();
-  const std::pair<Standard_Real, Standard_Real>& aRangeV = GetRangeV();
+  #if 0
+    const std::pair<Standard_Real, Standard_Real>& aRangeU = GetRangeU();
+    const std::pair<Standard_Real, Standard_Real>& aRangeV = GetRangeV();
 
-  const Standard_Real aDiffU = aRangeU.second - aRangeU.first;
-  const Standard_Real aDiffV = aRangeV.second - aRangeV.first;
+    const Standard_Real aDiffU = aRangeU.second - aRangeU.first;
+    const Standard_Real aDiffV = aRangeV.second - aRangeV.first;
 
-  const gp_Torus aTorus = GetDFace()->GetSurface()->Torus();
-  const Standard_Real r = aTorus.MinorRadius();
-  const Standard_Real R = aTorus.MajorRadius();
+    const gp_Torus aTorus = GetDFace()->GetSurface()->Torus();
+    const Standard_Real r = aTorus.MinorRadius();
+    const Standard_Real R = aTorus.MajorRadius();
 
-  const Standard_Real oldDv = GCPnts_TangentialDeflection::ArcAngularStep(
-    r, GetDFace()->GetDeflection(), theParameters.Angle, theParameters.MinSize);
+    const Standard_Real oldDv = GCPnts_TangentialDeflection::ArcAngularStep(
+      r, GetDFace()->GetDeflection(), theParameters.Angle, theParameters.MinSize);
 
-  Standard_Real Dv = 0.9*oldDv; //TWOTHIRD * oldDv;
-  Dv = oldDv;
+    Standard_Real Dv = 0.9*oldDv; //TWOTHIRD * oldDv;
+    Dv = oldDv;
 
-  const Standard_Integer nbV = Max((Standard_Integer) (aDiffV / Dv), 2);
-  Dv = aDiffV / (nbV + 1);
+    const Standard_Integer nbV = Max((Standard_Integer) (aDiffV / Dv), 2);
+    Dv = aDiffV / (nbV + 1);
 
-  Standard_Real Du;
-  const Standard_Real ru = R + r;
-  if (ru > 1.e-16)
-  {
-    Du = GCPnts_TangentialDeflection::ArcAngularStep(ru,
-      GetDFace()->GetDeflection(), theParameters.Angle, theParameters.MinSize);
-
-    const Standard_Real aa = sqrt(Du*Du + oldDv*oldDv);
-    if (aa < gp::Resolution())
+    Standard_Real Du;
+    const Standard_Real ru = R + r;
+    if (ru > 1.e-16)
     {
-      return Handle(IMeshData::ListOfPnt2d)();
-    }
+      Du = GCPnts_TangentialDeflection::ArcAngularStep(ru,
+        GetDFace()->GetDeflection(), theParameters.Angle, theParameters.MinSize);
 
-    Du *= Min(oldDv, Du) / aa;
-  }
-  else
-  {
-    Du = Dv;
-  }
-
-  Standard_Integer nbU = Max((Standard_Integer) (aDiffU / Du), 2);
-  nbU = Max(nbU, (Standard_Integer) (nbV * aDiffU * R / (aDiffV * r) / 5.));
-  Du = aDiffU / (nbU + 1);
-
-  const Handle(NCollection_IncAllocator) aTmpAlloc =
-    new NCollection_IncAllocator(IMeshData::MEMORY_BLOCK_SIZE_HUGE);
-
-  Handle(IMeshData::SequenceOfReal) aParamU, aParamV;
-  if (R < r)
-  {
-    // As the points of edges are returned.
-    // in this case, the points are not representative.
-
-    //-- Choose DeltaX and DeltaY so that to avoid skipping points on the grid
-    aParamU = new IMeshData::SequenceOfReal(aTmpAlloc);
-    for (Standard_Integer i = 0; i <= nbU; i++)
-    {
-      aParamU->Append(aRangeU.first + i * Du);
-    }
-  }//R<r
-  else //U if R > r
-  {
-    aParamU = fillParams(GetParametersU(), GetRangeU(), nbU, 0.5, aTmpAlloc);
-  }
-
-  aParamV = fillParams(GetParametersV(), GetRangeV(), nbV, 2. / 3., aTmpAlloc);
-
-  const std::pair<Standard_Real, Standard_Real> aNewRangeU(aRangeU.first  + Du * 0.1,
-                                                           aRangeU.second - Du * 0.1);
-
-  const std::pair<Standard_Real, Standard_Real> aNewRangeV(aRangeV.first  + Dv * 0.1,
-                                                           aRangeV.second - Dv * 0.1);
-
-  Handle(IMeshData::ListOfPnt2d) aNodes = new IMeshData::ListOfPnt2d(aTmpAlloc);
-  for (Standard_Integer i = 1; i <= aParamU->Length(); ++i)
-  {
-    const Standard_Real aPasU = aParamU->Value(i);
-    if (aPasU >= aNewRangeU.first && aPasU < aNewRangeU.second)
-    {
-      for (Standard_Integer j = 1; j <= aParamV->Length(); ++j)
+      const Standard_Real aa = sqrt(Du*Du + oldDv*oldDv);
+      if (aa < gp::Resolution())
       {
-        const Standard_Real aPasV = aParamV->Value(j);
-        if (aPasV >= aNewRangeV.first && aPasV < aNewRangeV.second)
+        return Handle(IMeshData::ListOfPnt2d)();
+      }
+
+      Du *= Min(oldDv, Du) / aa;
+    }
+    else
+    {
+      Du = Dv;
+    }
+
+    Standard_Integer nbU = Max((Standard_Integer) (aDiffU / Du), 2);
+    nbU = Max(nbU, (Standard_Integer) (nbV * aDiffU * R / (aDiffV * r) / 5.));
+    Du = aDiffU / (nbU + 1);
+
+    const Handle(NCollection_IncAllocator) aTmpAlloc =
+      new NCollection_IncAllocator(IMeshData::MEMORY_BLOCK_SIZE_HUGE);
+
+    Handle(IMeshData::SequenceOfReal) aParamU, aParamV;
+    if (R < r)
+    {
+      // As the points of edges are returned.
+      // in this case, the points are not representative.
+
+      //-- Choose DeltaX and DeltaY so that to avoid skipping points on the grid
+      aParamU = new IMeshData::SequenceOfReal(aTmpAlloc);
+      for (Standard_Integer i = 0; i <= nbU; i++)
+      {
+        aParamU->Append(aRangeU.first + i * Du);
+      }
+    }//R<r
+    else //U if R > r
+    {
+      aParamU = fillParams(GetParametersU(), GetRangeU(), nbU, 0.5, aTmpAlloc);
+    }
+
+    aParamV = fillParams(GetParametersV(), GetRangeV(), nbV, 2. / 3., aTmpAlloc);
+
+    const std::pair<Standard_Real, Standard_Real> aNewRangeU(aRangeU.first  + Du * 0.1,
+                                                            aRangeU.second - Du * 0.1);
+
+    const std::pair<Standard_Real, Standard_Real> aNewRangeV(aRangeV.first  + Dv * 0.1,
+                                                            aRangeV.second - Dv * 0.1);
+
+    Handle(IMeshData::ListOfPnt2d) aNodes = new IMeshData::ListOfPnt2d(aTmpAlloc);
+    for (Standard_Integer i = 1; i <= aParamU->Length(); ++i)
+    {
+      const Standard_Real aPasU = aParamU->Value(i);
+      if (aPasU >= aNewRangeU.first && aPasU < aNewRangeU.second)
+      {
+        for (Standard_Integer j = 1; j <= aParamV->Length(); ++j)
         {
-          aNodes->Append(gp_Pnt2d(aPasU, aPasV));
+          const Standard_Real aPasV = aParamV->Value(j);
+          if (aPasV >= aNewRangeV.first && aPasV < aNewRangeV.second)
+          {
+            aNodes->Append(gp_Pnt2d(aPasU, aPasV));
+          }
         }
       }
     }
-  }
+  #else
+    const Handle(NCollection_IncAllocator) aTmpAlloc =
+      new NCollection_IncAllocator(IMeshData::MEMORY_BLOCK_SIZE_HUGE);
+    Handle(IMeshData::ListOfPnt2d) aNodes = new IMeshData::ListOfPnt2d(aTmpAlloc);
+    //iterate out from the boundary UV points
+    const Standard_Integer uLength = GetParametersU().Size();
+    const Standard_Integer vLength = GetParametersV().Size();
+    for (Standard_Integer i = 1; i <= uLength; ++i)
+    {
+      const Standard_Real aPasU = GetParametersU()(i);
+      for (Standard_Integer j = 2; j < vLength; ++j)
+      {
+        const Standard_Real aPasV = GetParametersV()(j);
+        gp_Pnt2d newpnt(aPasU, aPasV);
+        if(boundaryPnts.find(newpnt) == boundaryPnts.end()){
+          aNodes->Append(newpnt);
+        }
+      }
+    }
+    
+  #endif
 
   return aNodes;
 }
@@ -124,6 +146,7 @@ void BRepMesh_TorusRangeSplitter::AddPoint(const gp_Pnt2d& thePoint)
   BRepMesh_DefaultRangeSplitter::AddPoint(thePoint);
   GetParametersU().Add(thePoint.X());
   GetParametersV().Add(thePoint.Y());
+  boundaryPnts.insert(thePoint);
 }
 
 //=======================================================================

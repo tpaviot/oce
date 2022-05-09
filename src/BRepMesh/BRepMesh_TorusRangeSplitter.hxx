@@ -18,11 +18,23 @@
 
 #include <BRepMesh_UVParamRangeSplitter.hxx>
 #include <IMeshTools_Parameters.hxx>
+#include <set>
 
 //! Auxiliary class extending UV range splitter in order to generate
 //! internal nodes for NURBS surface.
 class BRepMesh_TorusRangeSplitter : public BRepMesh_UVParamRangeSplitter
 {
+private:
+  struct gpPnt2dSorter{
+    bool operator()(const gp_Pnt2d& a, const gp_Pnt2d& b) const{
+      if(a.X() == b.X()){
+        return a.Y()<b.Y();
+      }
+      return a.X()<b.X();
+    }
+  };
+  std::set<gp_Pnt2d, gpPnt2dSorter> boundaryPnts;
+
 public:
 
   //! Constructor.
