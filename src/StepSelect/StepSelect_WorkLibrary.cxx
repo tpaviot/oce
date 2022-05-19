@@ -72,6 +72,7 @@ Standard_Integer  StepSelect_WorkLibrary::ReadFile
   if (stepro.IsNull()) return 1;
   Handle(StepData_StepModel) stepmodel  = new StepData_StepModel;
   model  = stepmodel;
+  StepFile_ReadTrace (0);
   status = StepFile_Read(name, 0, stepmodel, stepro);
   return status;
 }
@@ -86,6 +87,7 @@ Standard_Integer  StepSelect_WorkLibrary::ReadStream (const Standard_CString the
   if (stepro.IsNull()) return 1;
   Handle(StepData_StepModel) stepmodel = new StepData_StepModel;
   model = stepmodel;
+  StepFile_ReadTrace(0);
   status = StepFile_Read(theName, &theIStream, stepmodel, stepro);
   return status;
 }
