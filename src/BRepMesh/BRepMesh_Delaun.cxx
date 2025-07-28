@@ -252,13 +252,19 @@ void BRepMesh_Delaun::initCirclesTool(const Bnd_Box2d &theBox,
 
 void DeterministicallyScrambleVertices(IMeshData::VectorOfInteger &theVertexIndices)
 {
+  if (theVertexIndices.Size() < 1)
+  {
+    // return;
+  }
   // We want to deterministically scramble the data. I am going to swap indices by scanning in prime number steps
   // This will be the same algorithm as a random shuffle, except that the indices will come from stepping by primes
   std::vector<int> prime_numbers = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173};
   int prime_index = prime_numbers.size() - 1;
   int pivot_index = 0;
+  std::cout << "theVertexIndices.Size()=" << theVertexIndices.Size() << ", theVertexIndices.Size() - 1=" << (theVertexIndices.Size() - 1) << std::endl;
   for (int elem_index = theVertexIndices.Size() - 1; elem_index >= 1; elem_index--)
   {
+    std::cout << "elem_index=" << elem_index << std::endl;
     while (prime_numbers[prime_index] >= elem_index && prime_index > 1)
     {
       prime_index--;
