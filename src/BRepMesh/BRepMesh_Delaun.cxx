@@ -264,12 +264,14 @@ void DeterministicallyScrambleVertices(IMeshData::VectorOfInteger &theVertexIndi
   std::cout << "theVertexIndices.Size()=" << theVertexIndices.Size() << ", theVertexIndices.Size() - 1=" << (theVertexIndices.Size() - 1) << std::endl;
   for (int elem_index = theVertexIndices.Size() - 1; elem_index >= 1; elem_index--)
   {
-    std::cout << "elem_index=" << elem_index << std::endl;
+    std::cout << "elem_index=" << elem_index << ", theVertexIndices.Size()=" << theVertexIndices.Size() << std::endl;
     while (prime_numbers[prime_index] >= elem_index && prime_index > 1)
     {
       prime_index--;
     }
+    std::cout << "prime_index=" << prime_index << ", prime_numbers.size()=" << prime_numbers.size() << std::endl;
     pivot_index = (pivot_index + prime_numbers[prime_index]) % elem_index;
+    std::cout << "pivot_index=" << pivot_index << ", theVertexIndices.Size()=" << theVertexIndices.Size() << std::endl;
     std::swap(theVertexIndices[elem_index], theVertexIndices[pivot_index]);
   }
   // Trying to emulate this
