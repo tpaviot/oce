@@ -481,7 +481,7 @@ private:
           int stepSize = 1;//(int)floor(interpPnts.size() * .2);
           if(stepSize>0){
             for(int k=stepSize; k<=(int)interpPnts.size() - stepSize; k+=stepSize){
-              usePoint (interpPnts[i], LineDeviation (theNodesInfo[i].Point, theNodesInfo[j].Point));
+              usePoint (interpPnts[k], LineDeviation (theNodesInfo[i].Point, theNodesInfo[j].Point));
             }
           }
         }
